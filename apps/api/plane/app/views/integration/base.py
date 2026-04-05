@@ -27,7 +27,8 @@ class IntegrationViewSet(BaseViewSet):
     ]
 
     def get_queryset(self):
-        return self.model.objects.filter(verified=True)
+        # List all integrations, not just verified ones, to ensure they appear in the panel
+        return self.model.objects.all()
 
 
 class WorkspaceIntegrationViewSet(BaseViewSet):

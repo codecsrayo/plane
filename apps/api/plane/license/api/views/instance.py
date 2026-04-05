@@ -54,6 +54,8 @@ class InstanceEndpoint(BaseAPIView):
             IS_GITHUB_ENABLED,
             GITHUB_APP_NAME,
             IS_GITLAB_ENABLED,
+            GITLAB_CLIENT_ID,
+            GITLAB_HOST,
             IS_GITEA_ENABLED,
             EMAIL_HOST,
             ENABLE_MAGIC_LINK_LOGIN,
@@ -90,6 +92,14 @@ class InstanceEndpoint(BaseAPIView):
                 {
                     "key": "IS_GITLAB_ENABLED",
                     "default": os.environ.get("IS_GITLAB_ENABLED", "0"),
+                },
+                {
+                    "key": "GITLAB_CLIENT_ID",
+                    "default": os.environ.get("GITLAB_CLIENT_ID", ""),
+                },
+                {
+                    "key": "GITLAB_HOST",
+                    "default": os.environ.get("GITLAB_HOST", "https://gitlab.com"),
                 },
                 {
                     "key": "IS_GITEA_ENABLED",
@@ -149,6 +159,10 @@ class InstanceEndpoint(BaseAPIView):
 
         # Github app name
         data["github_app_name"] = str(GITHUB_APP_NAME)
+
+        # Gitlab config
+        data["gitlab_client_id"] = GITLAB_CLIENT_ID
+        data["gitlab_host"] = GITLAB_HOST
 
         # Slack client
         data["slack_client_id"] = SLACK_CLIENT_ID

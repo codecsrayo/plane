@@ -32,7 +32,7 @@ export class IntegrationService extends APIService {
   }
 
   async deleteWorkspaceIntegration(workspaceSlug: string, integrationId: string): Promise<any> {
-    return this.delete(`/api/workspaces/${workspaceSlug}/workspace-integrations/${integrationId}/`)
+    return this.delete(`/api/workspaces/${workspaceSlug}/workspace-integrations/${integrationId}/provider/`)
       .then((res) => res?.data)
       .catch((error) => {
         throw error?.response?.data;

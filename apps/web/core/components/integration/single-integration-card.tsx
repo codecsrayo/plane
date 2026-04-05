@@ -69,6 +69,8 @@ export const SingleIntegrationCard = observer(function SingleIntegrationCard({ i
   const { startAuth, isConnecting: isInstalling } = useIntegrationPopup({
     provider: integration.provider,
     github_app_name: config?.github_app_name || "",
+    gitlab_client_id: config?.gitlab_client_id || "",
+    gitlab_host: config?.gitlab_host || "https://gitlab.com",
     slack_client_id: config?.slack_client_id || "",
   });
 
@@ -79,17 +81,12 @@ export const SingleIntegrationCard = observer(function SingleIntegrationCard({ i
   const handleRemoveIntegration = async () => {
     if (!workspaceSlug || !integration || !workspaceIntegrations) return;
 
-    // Match via integration_detail.id (populated by WorkspaceIntegrationSerializer)
-    const workspaceIntegrationId = workspaceIntegrations?.find(
-      (i) => i.integration_detail?.id === integration.id
-    )?.id;
-
-    if (!workspaceIntegrationId) return;
+    const workspaceIntegrationId = workspaceIntegrations?.find((i) => i.integration === integration.id)?.id;
 
     setDeletingIntegration(true);
 
     await integrationService
-      .deleteWorkspaceIntegration(workspaceSlug, workspaceIntegrationId)
+      .deleteWorkspaceIntegration(workspaceSlug, workspaceIntegrationId ?? "")
       .then(() => {
         mutate<IWorkspaceIntegration[]>(
           WORKSPACE_INTEGRATIONS(workspaceSlug),
@@ -115,18 +112,14 @@ export const SingleIntegrationCard = observer(function SingleIntegrationCard({ i
       });
   };
 
-  const isInstalled = workspaceIntegrations?.find((i: any) => i.integration_detail?.id === integration.id);
-
-  // Guard: if the provider is not locally known, skip rendering to avoid runtime errors
-  const providerDetails = integrationDetails[integration.provider];
-  if (!providerDetails) return null;
+  const isInstalled = workspaceIntegrations?.find((i: any) => i.integration_detail.id === integration.id);
 
   return (
     <div className="flex items-center justify-between gap-2 border-b border-subtle bg-surface-1 px-4 py-6">
       <div className="flex items-start gap-4">
         <div className="h-10 w-10 flex-shrink-0">
           <img
-            src={providerDetails.logo}
+            src={integrationDetails[integration.provider].logo}
             className="h-full w-full object-cover"
             alt={`${integration.title} Logo`}
           />
@@ -141,8 +134,8 @@ export const SingleIntegrationCard = observer(function SingleIntegrationCard({ i
           <p className="text-body-xs-regular text-secondary">
             {workspaceIntegrations
               ? isInstalled
-                ? providerDetails.installed
-                : providerDetails.notInstalled
+                ? integrationDetails[integration.provider].installed
+                : integrationDetails[integration.provider].notInstalled
               : "Loading..."}
           </p>
         </div>
