@@ -6,6 +6,7 @@
 
 export * from "./github-importer";
 export * from "./jira-importer";
+export * from "./gitlab-importer";
 
 import type { IProjectLite } from "../project";
 // types
