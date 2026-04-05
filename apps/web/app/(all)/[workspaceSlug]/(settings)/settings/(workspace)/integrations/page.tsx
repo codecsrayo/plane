@@ -31,11 +31,23 @@ function WorkspaceIntegrationsPage() {
   // derived values
   const isAdmin = allowPermissions([EUserPermissions.ADMIN], EUserPermissionsLevel.WORKSPACE);
   const pageTitle = currentWorkspace?.name ? `${currentWorkspace.name} - Integrations` : undefined;
-  const { data: appIntegrations } = useSWR(isAdmin ? APP_INTEGRATIONS : null, () =>
-    isAdmin ? integrationService.getAppIntegrationsList() : null
+
+  // fetch integrations — key is null when not admin so SWR skips the call
+  const {
+    data: appIntegrations,
+    isLoading: isIntegrationsLoading,
+    error: integrationsError,
+  } = useSWR(
+    isAdmin ? APP_INTEGRATIONS : null,
+    () => (isAdmin ? integrationService.getAppIntegrationsList() : null),
+    { shouldRetryOnError: false }
   );
 
   if (!isAdmin) return <NotAuthorizedView section="settings" className="h-auto" />;
+
+  // Determine render state
+  const isLoading = isIntegrationsLoading || (!appIntegrations && !integrationsError);
+  const hasIntegrations = Array.isArray(appIntegrations) && appIntegrations.length > 0;
 
   return (
     <>
@@ -43,12 +55,18 @@ function WorkspaceIntegrationsPage() {
       <section className="w-full overflow-y-auto">
         <IntegrationAndImportExportBanner bannerName="Integrations" />
         <div>
-          {appIntegrations ? (
+          {isLoading ? (
+            <IntegrationsSettingsLoader />
+          ) : integrationsError ? (
+            <p className="px-4 py-6 text-sm text-red-500">
+              Failed to load integrations. Please refresh the page and try again.
+            </p>
+          ) : hasIntegrations ? (
             appIntegrations.map((integration) => (
               <SingleIntegrationCard key={integration.id} integration={integration} />
             ))
           ) : (
-            <IntegrationsSettingsLoader />
+            <p className="px-4 py-6 text-sm text-secondary">No integrations are available at the moment.</p>
           )}
         </div>
       </section>
