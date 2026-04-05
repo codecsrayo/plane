@@ -95,6 +95,11 @@ from .api import APITokenSerializer, APITokenReadSerializer
 
 from .importer import ImporterSerializer
 
+from .integration import (
+    IntegrationSerializer,
+    WorkspaceIntegrationSerializer,
+)
+
 from .page import (
     PageSerializer,
     PageDetailSerializer,

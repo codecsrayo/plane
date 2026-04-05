@@ -18,6 +18,7 @@ import type { IAppIntegration, IWorkspaceIntegration } from "@plane/types";
 import { Loader } from "@plane/ui";
 // assets
 import GithubLogo from "@/app/assets/services/github.png?url";
+import GitlabLogo from "@/app/assets/services/gitlab.png?url";
 import SlackLogo from "@/app/assets/services/slack.png?url";
 // constants
 import { WORKSPACE_INTEGRATIONS } from "@/constants/fetch-keys";
@@ -38,6 +39,11 @@ const integrationDetails: { [key: string]: any } = {
     logo: GithubLogo,
     installed: "Activate GitHub on individual projects to sync with specific repositories.",
     notInstalled: "Connect with GitHub with your Plane workspace to sync project work items.",
+  },
+  gitlab: {
+    logo: GitlabLogo,
+    installed: "Activate GitLab on individual projects to sync with specific repositories.",
+    notInstalled: "Connect with GitLab with your Plane workspace to sync project work items.",
   },
   slack: {
     logo: SlackLogo,

@@ -226,6 +226,12 @@ from .notification.base import (
 from .exporter.base import ExportIssuesEndpoint
 
 
+from .integration.base import (
+    IntegrationViewSet,
+    WorkspaceIntegrationViewSet,
+)
+
+
 from .webhook.base import (
     WebhookEndpoint,
     WebhookLogsEndpoint,
