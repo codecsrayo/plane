@@ -386,6 +386,10 @@ export const coreRoutes: RouteConfigEntry[] = [
   // → /settings/profile/api-tokens
   route(":workspaceSlug/settings/api-tokens", "routes/redirects/core/api-tokens.tsx"),
 
+  // GitHub App installation callback — opened inside a popup by use-integration-popup
+  // GitHub redirects to: /auth/github/callback?installation_id=XXXX&state={workspaceSlug}
+  route("auth/github/callback", "./(all)/auth/github/callback/page.tsx"),
+
   // Inbox redirect: /:workspaceSlug/projects/:projectId/inbox
   // → /:workspaceSlug/projects/:projectId/intake
   route(":workspaceSlug/projects/:projectId/inbox", "routes/redirects/core/inbox.tsx"),

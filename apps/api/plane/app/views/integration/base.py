@@ -2,6 +2,10 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 # See the LICENSE file for details.
 
+# Python imports
+import os
+import requests
+
 # Third party imports
 from django.shortcuts import get_object_or_404
 from rest_framework import status
@@ -9,10 +13,11 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 
 # Module imports
-from plane.app.views.base import BaseViewSet
+from plane.app.views.base import BaseViewSet, BaseAPIView
 from plane.db.models import Integration, WorkspaceIntegration, Workspace, APIToken
 from plane.app.serializers import IntegrationSerializer, WorkspaceIntegrationSerializer
 from plane.app.permissions import WorkSpaceAdminPermission, ROLE, allow_permission
+from plane.license.utils.instance_value import get_configuration_value
 
 
 class IntegrationViewSet(BaseViewSet):
@@ -114,3 +119,133 @@ class WorkspaceIntegrationViewSet(BaseViewSet):
         )
         workspace_integration.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+    @allow_permission([ROLE.ADMIN], level="WORKSPACE")
+    def provider_install(self, request, slug, provider):
+        """
+        Install an integration for a given provider (github, gitlab, slack) using
+        the OAuth callback data (installation_id, code, etc.) received after the
+        user completes the OAuth flow in the popup window.
+
+        Expected payload varies by provider:
+          - GitHub:  { "installation_id": "12345678" }
+          - GitLab:  { "code": "xxxx" }
+          - Slack:   { "code": "xxxx" }
+        """
+        workspace = get_object_or_404(Workspace, slug=slug)
+        integration = get_object_or_404(Integration, provider=provider)
+
+        # Build metadata from the OAuth callback data
+        metadata = {}
+        config = {}
+
+        if provider == "github":
+            installation_id = request.data.get("installation_id")
+            if not installation_id:
+                return Response(
+                    {"error": "installation_id is required for GitHub integration"},
+                    status=status.HTTP_400_BAD_REQUEST,
+                )
+
+            # Exchange installation_id for an access token via GitHub Apps API
+            (GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET) = get_configuration_value(
+                [
+                    {"key": "GITHUB_CLIENT_ID", "default": os.environ.get("GITHUB_CLIENT_ID", "")},
+                    {"key": "GITHUB_CLIENT_SECRET", "default": os.environ.get("GITHUB_CLIENT_SECRET", "")},
+                ]
+            )
+
+            token_response = None
+            if GITHUB_CLIENT_ID and GITHUB_CLIENT_SECRET:
+                try:
+                    token_response = requests.post(
+                        f"https://api.github.com/app/installations/{installation_id}/access_tokens",
+                        headers={
+                            "Accept": "application/vnd.github+json",
+                        },
+                        timeout=10,
+                    )
+                except Exception:
+                    pass  # proceed without token — installation_id alone is enough to identify the install
+
+            metadata = {
+                "installation_id": installation_id,
+                "access_token": token_response.json().get("token") if token_response and token_response.ok else None,
+            }
+            config = {"installation_id": installation_id}
+
+        elif provider == "gitlab":
+            code = request.data.get("code")
+            if not code:
+                return Response(
+                    {"error": "code is required for GitLab integration"},
+                    status=status.HTTP_400_BAD_REQUEST,
+                )
+            metadata = {"code": code}
+
+        elif provider == "slack":
+            code = request.data.get("code")
+            if not code:
+                return Response(
+                    {"error": "code is required for Slack integration"},
+                    status=status.HTTP_400_BAD_REQUEST,
+                )
+
+            (SLACK_CLIENT_ID, SLACK_CLIENT_SECRET) = get_configuration_value(
+                [
+                    {"key": "SLACK_CLIENT_ID", "default": os.environ.get("SLACK_CLIENT_ID", "")},
+                    {"key": "SLACK_CLIENT_SECRET", "default": os.environ.get("SLACK_CLIENT_SECRET", "")},
+                ]
+            )
+
+            if SLACK_CLIENT_ID and SLACK_CLIENT_SECRET:
+                try:
+                    slack_response = requests.post(
+                        "https://slack.com/api/oauth.v2.access",
+                        data={
+                            "client_id": SLACK_CLIENT_ID,
+                            "client_secret": SLACK_CLIENT_SECRET,
+                            "code": code,
+                        },
+                        timeout=10,
+                    )
+                    if slack_response.ok:
+                        slack_data = slack_response.json()
+                        metadata = slack_data
+                        config = {
+                            "access_token": slack_data.get("access_token"),
+                            "team_id": slack_data.get("team", {}).get("id"),
+                            "team_name": slack_data.get("team", {}).get("name"),
+                        }
+                except Exception:
+                    metadata = {"code": code}
+            else:
+                metadata = {"code": code}
+
+        # Get or create an API token for this workspace
+        api_token, _ = APIToken.objects.get_or_create(
+            user=request.user,
+            workspace=workspace,
+            defaults={"label": f"{integration.title} Integration Token"},
+        )
+
+        # Create (or update if already exists) the WorkspaceIntegration
+        workspace_integration, created = WorkspaceIntegration.objects.get_or_create(
+            workspace=workspace,
+            integration=integration,
+            defaults={
+                "actor": request.user,
+                "api_token": api_token,
+                "metadata": metadata,
+                "config": config,
+            },
+        )
+
+        if not created:
+            # Update metadata/config with fresh OAuth data in case of re-install
+            workspace_integration.metadata = metadata
+            workspace_integration.config = config
+            workspace_integration.save(update_fields=["metadata", "config"])
+
+        serializer = WorkspaceIntegrationSerializer(workspace_integration)
+        return Response(serializer.data, status=status.HTTP_201_CREATED if created else status.HTTP_200_OK)

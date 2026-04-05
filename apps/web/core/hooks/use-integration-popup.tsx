@@ -4,8 +4,10 @@
  * See the LICENSE file for details.
  */
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams } from "next/navigation";
+import { mutate } from "swr";
+import { WORKSPACE_INTEGRATIONS } from "@/constants/fetch-keys";
 
 const useIntegrationPopup = ({
   provider,
@@ -36,6 +38,24 @@ const useIntegrationPopup = ({
   };
 
   const popup = useRef<any>();
+
+  // Listen for the postMessage sent by the callback page and refresh workspace integrations
+  useEffect(() => {
+    const handleMessage = (event: MessageEvent) => {
+      if (event.origin !== window.location.origin) return;
+      if (event.data?.type !== "github-integration") return;
+
+      setAuthLoader(false);
+
+      if (event.data?.success && workspaceSlug) {
+        // Revalidate the workspace integrations SWR cache so the card updates to "Installed"
+        mutate(WORKSPACE_INTEGRATIONS(workspaceSlug.toString()));
+      }
+    };
+
+    window.addEventListener("message", handleMessage);
+    return () => window.removeEventListener("message", handleMessage);
+  }, [workspaceSlug]);
 
   const checkPopup = () => {
     const check = setInterval(() => {

@@ -32,4 +32,10 @@ urlpatterns = [
         WorkspaceIntegrationViewSet.as_view({"delete": "provider_destroy"}),
         name="workspace-integrations-provider-delete",
     ),
+    # OAuth callback install: POST with installation_id / code after user completes OAuth popup
+    path(
+        "workspaces/<str:slug>/workspace-integrations/<str:provider>/install/",
+        WorkspaceIntegrationViewSet.as_view({"post": "provider_install"}),
+        name="workspace-integrations-provider-install",
+    ),
 ]
