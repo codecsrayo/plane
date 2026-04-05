@@ -18,7 +18,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "react-router";
 // services
-import { AppInstallationService } from "@/services/app_installation";
+import { AppInstallationService } from "@/services/app_installation.service";
 
 const appInstallationService = new AppInstallationService();
 
@@ -54,16 +54,16 @@ export default function GithubIntegrationCallbackPage() {
         installation_id,
         setup_action: setup_action ?? "install",
       })
-      .then(() => {
+      .then((result) => {
         setStatus("success");
         // Notify the parent window (integrations panel popup) so it can refresh
         window.opener?.postMessage({ type: "github-integration", success: true }, window.location.origin);
         // Auto-close after a short delay so the user sees the success state
         setTimeout(() => window.close(), 1500);
+        return result;
       })
       .catch((err) => {
-        const msg =
-          err?.data?.error ?? err?.statusText ?? "Failed to complete GitHub integration. Please try again.";
+        const msg = err?.data?.error ?? err?.statusText ?? "Failed to complete GitHub integration. Please try again.";
         setErrorMessage(msg);
         setStatus("error");
         window.opener?.postMessage({ type: "github-integration", success: false, error: msg }, window.location.origin);
@@ -72,10 +72,10 @@ export default function GithubIntegrationCallbackPage() {
 
   return (
     <div className="flex h-screen w-full items-center justify-center bg-surface-1">
-      <div className="flex flex-col items-center gap-4 rounded-lg border border-subtle bg-surface-2 p-10 shadow-sm">
+      <div className="shadow-sm flex flex-col items-center gap-4 rounded-lg border border-subtle bg-surface-2 p-10">
         {status === "processing" && (
           <>
-            <div className="h-8 w-8 animate-spin rounded-full border-4 border-primary-400 border-t-transparent" />
+            <div className="border-primary-400 h-8 w-8 animate-spin rounded-full border-4 border-t-transparent" />
             <p className="text-body-sm-medium text-secondary">Completing GitHub integration…</p>
           </>
         )}
@@ -91,14 +91,11 @@ export default function GithubIntegrationCallbackPage() {
 
         {status === "error" && (
           <>
-            <svg className="h-12 w-12 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="text-red-500 h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
-            <p className="text-body-sm-medium text-red-500">{errorMessage}</p>
-            <button
-              className="mt-2 text-sm text-secondary underline"
-              onClick={() => window.close()}
-            >
+            <p className="text-red-500 text-body-sm-medium">{errorMessage}</p>
+            <button className="text-sm mt-2 text-secondary underline" onClick={() => window.close()}>
               Close this window
             </button>
           </>
