@@ -1523,6 +1523,11 @@ export default {
           },
         },
       },
+      integrations: {
+        title: "Integrations",
+        heading: "Integrations",
+        description: "Connect GitHub, GitLab and Slack to sync your work items with external services.",
+      },
       webhooks: {
         heading: "Webhooks",
         description: "Automate notifications to external services when project events occur.",
