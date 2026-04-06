@@ -111,9 +111,6 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
       GITHUB_APP_NAME: config["GITHUB_APP_NAME"] ?? "",
       GITHUB_APP_ID: config["GITHUB_APP_ID"] ?? "",
       GITHUB_APP_PRIVATE_KEY: config["GITHUB_APP_PRIVATE_KEY"] ?? "",
-      GITHUB_CLIENT_ID: config["GITHUB_CLIENT_ID"] ?? "",
-      GITHUB_CLIENT_SECRET: config["GITHUB_CLIENT_SECRET"] ?? "",
-      GITHUB_ORGANIZATION_ID: config["GITHUB_ORGANIZATION_ID"] ?? "",
       SLACK_CLIENT_ID: config["SLACK_CLIENT_ID"] ?? "",
       SLACK_CLIENT_SECRET: config["SLACK_CLIENT_SECRET"] ?? "",
       GITLAB_HOST: config["GITLAB_HOST"] ?? "https://gitlab.com",
@@ -183,43 +180,6 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
       placeholder: "LS0tLS1CRUdJTi...",
       error: Boolean(errors.GITHUB_APP_PRIVATE_KEY),
       required: true,
-    },
-    {
-      key: "GITHUB_CLIENT_ID",
-      type: "text",
-      label: "Client ID",
-      description: (
-        <>
-          Found in your GitHub App settings under <CodeBlock darkerShade>General → Client ID</CodeBlock>.
-        </>
-      ),
-      placeholder: "Iv1.xxxxxxxxxxxx",
-      error: Boolean(errors.GITHUB_CLIENT_ID),
-      required: true,
-    },
-    {
-      key: "GITHUB_CLIENT_SECRET",
-      type: "password",
-      label: "Client secret",
-      description: (
-        <>
-          Generate one in your GitHub App settings under <CodeBlock darkerShade>General → Client secrets</CodeBlock>.
-        </>
-      ),
-      placeholder: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-      error: Boolean(errors.GITHUB_CLIENT_SECRET),
-      required: true,
-    },
-    {
-      key: "GITHUB_ORGANIZATION_ID",
-      type: "text",
-      label: "Organization ID (optional)",
-      description: (
-        <>Restrict login to members of a specific GitHub organization. Leave empty to allow any GitHub account.</>
-      ),
-      placeholder: "123456789",
-      error: Boolean(errors.GITHUB_ORGANIZATION_ID),
-      required: false,
     },
   ];
 
@@ -320,9 +280,6 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
         GITHUB_APP_NAME: get("GITHUB_APP_NAME"),
         GITHUB_APP_ID: get("GITHUB_APP_ID"),
         GITHUB_APP_PRIVATE_KEY: get("GITHUB_APP_PRIVATE_KEY"),
-        GITHUB_CLIENT_ID: get("GITHUB_CLIENT_ID"),
-        GITHUB_CLIENT_SECRET: get("GITHUB_CLIENT_SECRET"),
-        GITHUB_ORGANIZATION_ID: get("GITHUB_ORGANIZATION_ID"),
         SLACK_CLIENT_ID: get("SLACK_CLIENT_ID"),
         SLACK_CLIENT_SECRET: get("SLACK_CLIENT_SECRET"),
         GITLAB_HOST: get("GITLAB_HOST"),
