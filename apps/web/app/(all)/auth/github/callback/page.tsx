@@ -36,16 +36,24 @@ export default function GithubIntegrationCallbackPage() {
 
     const installation_id = searchParams.get("installation_id");
     const setup_action = searchParams.get("setup_action"); // "install" or "update"
-    // state param carries workspaceSlug (set in use-integration-popup.tsx)
+    // state param carries workspaceSlug
     const workspaceSlug = searchParams.get("state");
+    // api_installed=true means the API callback already saved the WorkspaceIntegration.
+    // Just notify the parent and close — no need to POST again.
+    const apiInstalled = searchParams.get("api_installed") === "true";
 
-    // GitHub sends setup_action=install on first install and setup_action=update on re-configure
-    // Both are valid; we handle them the same way.
     if (!installation_id || !workspaceSlug) {
       setErrorMessage("Missing installation_id or workspace context. Please close this window and try again.");
       setStatus("error");
-      // Notify parent of failure
       window.opener?.postMessage({ type: "github-integration", success: false }, window.location.origin);
+      return;
+    }
+
+    if (apiInstalled) {
+      // Backend already handled the install via /api/github/callback/ — just notify and close.
+      setStatus("success");
+      window.opener?.postMessage({ type: "github-integration", success: true }, window.location.origin);
+      setTimeout(() => window.close(), 1500);
       return;
     }
 
@@ -56,9 +64,7 @@ export default function GithubIntegrationCallbackPage() {
       })
       .then((result) => {
         setStatus("success");
-        // Notify the parent window (integrations panel popup) so it can refresh
         window.opener?.postMessage({ type: "github-integration", success: true }, window.location.origin);
-        // Auto-close after a short delay so the user sees the success state
         setTimeout(() => window.close(), 1500);
         return result;
       })

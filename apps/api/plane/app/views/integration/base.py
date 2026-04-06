@@ -308,7 +308,9 @@ class GithubAppCallbackEndpoint(BaseAPIView):
             logging.getLogger(__name__).error("GithubAppCallbackEndpoint: %s", e, exc_info=True)
             return redirect(f"/{workspace_slug}/settings/integrations?github_error=install_failed")
 
-        return redirect(f"/{workspace_slug}/settings/integrations/github?installed=true")
+        # Redirect to the frontend setup page so it can detect popup context,
+        # fire postMessage to the parent window, and close itself.
+        return redirect(f"/auth/github/callback?installation_id={installation_id}&setup_action={setup_action}&state={workspace_slug}&api_installed=true")
 
 
 class GithubRepoSyncViewSet(BaseViewSet):
