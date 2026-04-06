@@ -337,6 +337,14 @@ class GithubRepoSyncViewSet(BaseViewSet):
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
+        # Auto-register the Plane webhook on GitHub so we receive real-time events.
+        # Failure here must not roll back the sync creation.
+        self._register_github_webhook(
+            workspace_integration=workspace_integration,
+            owner=repo_owner,
+            repo_name=repo_name,
+        )
+
         return Response(
             {
                 "id": str(sync.id),
@@ -346,6 +354,54 @@ class GithubRepoSyncViewSet(BaseViewSet):
             },
             status=status.HTTP_201_CREATED,
         )
+
+    def _register_github_webhook(
+        self, *, workspace_integration, owner: str, repo_name: str
+    ) -> None:
+        """
+        Register a webhook on GitHub for the given repo so that Plane receives
+        real-time issue / PR / comment events.
+
+        All failures are swallowed so that sync creation is never blocked.
+        """
+        try:
+            from plane.utils.github_app import get_installation_access_token
+
+            installation_id = workspace_integration.metadata.get("installation_id")
+            if not installation_id:
+                return
+
+            token = get_installation_access_token(installation_id)
+            if not token:
+                return
+
+            webhook_secret = os.environ.get("GITHUB_WEBHOOK_SECRET", "")
+            web_url = os.environ.get("WEB_URL", "")
+            if not web_url:
+                return
+
+            requests.post(
+                f"https://api.github.com/repos/{owner}/{repo_name}/hooks",
+                headers={
+                    "Authorization": f"Bearer {token}",
+                    "Accept": "application/vnd.github+json",
+                    "X-GitHub-Api-Version": "2022-11-28",
+                },
+                json={
+                    "name": "web",
+                    "config": {
+                        "url": f"{web_url}/api/github-webhook/",
+                        "content_type": "json",
+                        "secret": webhook_secret,
+                    },
+                    "events": ["issues", "pull_request", "issue_comment"],
+                    "active": True,
+                },
+                timeout=10,
+            )
+        except Exception:
+            # Don't fail the sync creation if webhook registration fails
+            pass
 
     @allow_permission([ROLE.ADMIN], level="WORKSPACE")
     def destroy(self, request, slug, pk):

@@ -114,6 +114,13 @@ github_config_variables = [
         "category": "GITHUB",
         "is_encrypted": True,
     },
+    # Shared secret used to verify HMAC-SHA256 signatures on incoming GitHub webhook payloads
+    {
+        "key": "GITHUB_WEBHOOK_SECRET",
+        "value": os.environ.get("GITHUB_WEBHOOK_SECRET", ""),
+        "category": "GITHUB",
+        "is_encrypted": True,
+    },
 ]
 
 

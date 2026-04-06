@@ -22,6 +22,7 @@ from .intake import Intake, IntakeIssue
 from .integration import (
     GithubCommentSync,
     GithubIssueSync,
+    GithubPRStateMapping,
     GithubRepository,
     GithubRepositorySync,
     GitlabCommentSync,
