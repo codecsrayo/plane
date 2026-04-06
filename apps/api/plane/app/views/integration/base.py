@@ -7,7 +7,7 @@ import os
 import requests
 
 # Third party imports
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
@@ -236,6 +236,66 @@ class WorkspaceIntegrationViewSet(BaseViewSet):
 
         serializer = WorkspaceIntegrationSerializer(workspace_integration)
         return Response(serializer.data, status=status.HTTP_201_CREATED if created else status.HTTP_200_OK)
+
+
+class GithubAppCallbackEndpoint(BaseAPIView):
+    """
+    Direct GitHub App installation callback.
+
+    GitHub App Setup URL should point to:
+      https://{host}/api/github/callback/
+
+    GitHub redirects here with:
+      GET /api/github/callback/?installation_id=XXX&setup_action=install&state={workspaceSlug}
+
+    This view:
+    1. Reads installation_id and state (workspaceSlug) from query params
+    2. Creates/updates the WorkspaceIntegration record
+    3. Redirects to /{workspaceSlug}/settings/integrations/github with a success param
+    """
+
+    authentication_classes = []  # GitHub redirects unauthenticated
+    permission_classes = []
+
+    def get(self, request):
+        installation_id = request.GET.get("installation_id")
+        setup_action = request.GET.get("setup_action", "install")
+        workspace_slug = request.GET.get("state")
+
+        if not installation_id or not workspace_slug:
+            return redirect(f"/{workspace_slug or ''}/settings/integrations?github_error=missing_params")
+
+        try:
+            workspace = Workspace.objects.get(slug=workspace_slug)
+            integration = Integration.objects.get(provider="github")
+
+            # Find the first admin/owner of the workspace to act as the actor
+            # since this callback is unauthenticated.
+            from plane.db.models import WorkspaceMember
+
+            admin_member = (
+                WorkspaceMember.objects.filter(workspace=workspace, role__gte=20)
+                .select_related("member")
+                .first()
+            )
+            actor = admin_member.member if admin_member else None
+
+            update_defaults = {
+                "metadata": {"installation_id": installation_id, "setup_action": setup_action},
+                "config": {"installation_id": installation_id},
+            }
+            if actor:
+                update_defaults["actor"] = actor
+
+            WorkspaceIntegration.objects.update_or_create(
+                workspace=workspace,
+                integration=integration,
+                defaults=update_defaults,
+            )
+        except Exception:
+            return redirect(f"/{workspace_slug}/settings/integrations?github_error=install_failed")
+
+        return redirect(f"/{workspace_slug}/settings/integrations/github?installed=true")
 
 
 class GithubRepoSyncViewSet(BaseViewSet):

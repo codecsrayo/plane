@@ -7,9 +7,17 @@ from plane.app.views import (
     IntegrationViewSet,
     WorkspaceIntegrationViewSet,
     GithubRepoSyncViewSet,
+    GithubAppCallbackEndpoint,
 )
 
 urlpatterns = [
+    # Direct GitHub App installation callback (unauthenticated, registered as GitHub App Setup URL)
+    path(
+        "github/callback/",
+        GithubAppCallbackEndpoint.as_view(),
+        name="github-app-callback",
+    ),
+
     # Global integrations
     path(
         "integrations/",

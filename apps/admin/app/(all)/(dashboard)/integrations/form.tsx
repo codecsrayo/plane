@@ -7,6 +7,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { observer } from "mobx-react";
+import { Copy } from "lucide-react";
 import { useForm } from "react-hook-form";
 // plane internal packages
 import { Button, getButtonStyling } from "@plane/propel/button";
@@ -105,12 +106,14 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
     handleSubmit,
     control,
     reset,
+    setValue,
     formState: { errors, isDirty, isSubmitting },
   } = useForm<IntegrationConfigFormValues>({
     defaultValues: {
       GITHUB_APP_NAME: config["GITHUB_APP_NAME"] ?? "",
       GITHUB_APP_ID: config["GITHUB_APP_ID"] ?? "",
       GITHUB_APP_PRIVATE_KEY: config["GITHUB_APP_PRIVATE_KEY"] ?? "",
+      GITHUB_WEBHOOK_SECRET: config["GITHUB_WEBHOOK_SECRET"] ?? "",
       SLACK_CLIENT_ID: config["SLACK_CLIENT_ID"] ?? "",
       SLACK_CLIENT_SECRET: config["SLACK_CLIENT_SECRET"] ?? "",
       GITLAB_HOST: config["GITLAB_HOST"] ?? "https://gitlab.com",
@@ -118,6 +121,14 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
       GITLAB_CLIENT_SECRET: config["GITLAB_CLIENT_SECRET"] ?? "",
     },
   });
+
+  // ── GitHub helpers ─────────────────────────────────────────────────────────
+  const generateWebhookSecret = () => {
+    const secret = Array.from(crypto.getRandomValues(new Uint8Array(32)))
+      .map((b) => b.toString(16).padStart(2, "0"))
+      .join("");
+    setValue("GITHUB_WEBHOOK_SECRET", secret, { shouldDirty: true });
+  };
 
   // ── GitHub fields ──────────────────────────────────────────────────────────
   const githubFields: TControllerInputFormField[] = [
@@ -180,6 +191,15 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
       placeholder: "LS0tLS1CRUdJTi...",
       error: Boolean(errors.GITHUB_APP_PRIVATE_KEY),
       required: true,
+    },
+    {
+      key: "GITHUB_WEBHOOK_SECRET",
+      type: "password",
+      label: "Webhook secret",
+      description: "Used to verify webhook payloads from GitHub. Generate one or set your own.",
+      placeholder: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      error: Boolean(errors.GITHUB_WEBHOOK_SECRET),
+      required: false,
     },
   ];
 
@@ -280,6 +300,7 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
         GITHUB_APP_NAME: get("GITHUB_APP_NAME"),
         GITHUB_APP_ID: get("GITHUB_APP_ID"),
         GITHUB_APP_PRIVATE_KEY: get("GITHUB_APP_PRIVATE_KEY"),
+        GITHUB_WEBHOOK_SECRET: get("GITHUB_WEBHOOK_SECRET"),
         SLACK_CLIENT_ID: get("SLACK_CLIENT_ID"),
         SLACK_CLIENT_SECRET: get("SLACK_CLIENT_SECRET"),
         GITLAB_HOST: get("GITLAB_HOST"),
@@ -312,29 +333,122 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
       />
 
       <div className="flex flex-col gap-8">
-        <Section
-          title="GitHub App"
-          description={
-            <>
-              Required for the workspace Integrations panel. Create your GitHub App at{" "}
-              <a
-                href="https://github.com/settings/apps/new"
-                target="_blank"
-                rel="noreferrer"
-                className="text-accent-primary hover:underline"
-              >
-                github.com/settings/apps/new
-              </a>{" "}
-              and set the callback URL to <CodeBlock darkerShade>{origin}/auth/github/callback</CodeBlock>.
-            </>
-          }
-          fields={githubFields}
-          control={control}
-          errors={errors}
-          toggleKey="IS_GITHUB_ENABLED"
-          enabled={isGithubEnabled}
-          onToggle={() => handleToggle("IS_GITHUB_ENABLED", isGithubEnabled)}
-        />
+        {/* ── GitHub App ── */}
+        <div className="flex flex-col gap-4 border-b border-subtle pb-8">
+          {/* Header with toggle */}
+          <div className="flex items-start justify-between gap-4">
+            <div className="flex flex-col gap-1">
+              <div className="text-lg font-medium">GitHub App</div>
+              <p className="text-sm text-secondary">
+                Required for the workspace Integrations panel. Create your GitHub App at{" "}
+                <a
+                  href="https://github.com/settings/apps/new"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-accent-primary hover:underline"
+                >
+                  github.com/settings/apps/new
+                </a>{" "}
+                and set the <strong>Setup URL (Callback)</strong> to the value shown below.
+              </p>
+            </div>
+            <div className="flex shrink-0 items-center gap-2 pt-1">
+              <span className="text-sm text-secondary">{isGithubEnabled ? "Enabled" : "Disabled"}</span>
+              <ToggleSwitch
+                value={Boolean(isGithubEnabled)}
+                onChange={() => handleToggle("IS_GITHUB_ENABLED", isGithubEnabled)}
+                size="sm"
+              />
+            </div>
+          </div>
+
+          {/* Fields */}
+          <div className={isGithubEnabled === false ? "opacity-50" : undefined}>
+            {/* Standard fields: App name, App ID, Private key */}
+            {githubFields
+              .filter((f) => f.key !== "GITHUB_WEBHOOK_SECRET")
+              .map((field) => (
+                <div key={field.key} className="mb-4 last:mb-0">
+                  <ControllerInput
+                    control={control}
+                    type={field.type}
+                    name={field.key}
+                    label={field.label}
+                    description={field.description}
+                    placeholder={field.placeholder}
+                    error={Boolean(errors[field.key as keyof typeof errors])}
+                    required={field.required}
+                  />
+                </div>
+              ))}
+
+            {/* Webhook secret with Generate button */}
+            <div className="mb-4">
+              <div className="flex items-end gap-2">
+                <div className="flex-1">
+                  <ControllerInput
+                    control={control}
+                    type="password"
+                    name="GITHUB_WEBHOOK_SECRET"
+                    label="Webhook secret"
+                    description="Used to verify webhook payloads from GitHub. Generate one or set your own."
+                    placeholder="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+                    error={Boolean(errors.GITHUB_WEBHOOK_SECRET)}
+                    required={false}
+                  />
+                </div>
+                <Button
+                  variant="neutral-primary"
+                  size="sm"
+                  onClick={generateWebhookSecret}
+                  type="button"
+                  className="mb-0.5 shrink-0"
+                >
+                  Generate
+                </Button>
+              </div>
+            </div>
+          </div>
+
+          {/* Setup URLs info panel (outside the toggle opacity — always visible) */}
+          <div className="flex flex-col gap-3 rounded-md border border-subtle bg-surface-2 p-4">
+            <p className="text-sm font-medium">Setup URLs</p>
+
+            <div className="flex flex-col gap-1">
+              <label className="text-xs text-secondary">GitHub App Setup URL (Callback)</label>
+              <div className="flex items-center gap-2">
+                <code className="flex-1 rounded bg-surface-3 px-3 py-1.5 text-xs font-mono break-all">
+                  {origin}/api/github/callback/
+                </code>
+                <button
+                  type="button"
+                  onClick={() => navigator.clipboard.writeText(`${origin}/api/github/callback/`)}
+                  className="shrink-0 rounded p-1.5 text-secondary hover:bg-surface-3 hover:text-primary"
+                  title="Copy"
+                >
+                  <Copy size={14} />
+                </button>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-1">
+              <label className="text-xs text-secondary">Webhook URL</label>
+              <div className="flex items-center gap-2">
+                <code className="flex-1 rounded bg-surface-3 px-3 py-1.5 text-xs font-mono break-all">
+                  {origin}/api/github-webhook/
+                </code>
+                <button
+                  type="button"
+                  onClick={() => navigator.clipboard.writeText(`${origin}/api/github-webhook/`)}
+                  className="shrink-0 rounded p-1.5 text-secondary hover:bg-surface-3 hover:text-primary"
+                  title="Copy"
+                >
+                  <Copy size={14} />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <Section
           title="GitLab"

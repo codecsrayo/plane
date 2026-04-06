@@ -92,6 +92,7 @@ export type TInstanceIntegrationConfigurationKeys =
   | "GITHUB_APP_NAME"
   | "GITHUB_APP_ID"
   | "GITHUB_APP_PRIVATE_KEY"
+  | "GITHUB_WEBHOOK_SECRET"
   | "SLACK_CLIENT_ID"
   | "SLACK_CLIENT_SECRET"
   | "GITLAB_HOST"

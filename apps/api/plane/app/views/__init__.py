@@ -230,6 +230,7 @@ from .integration.base import (
     IntegrationViewSet,
     WorkspaceIntegrationViewSet,
     GithubRepoSyncViewSet,
+    GithubAppCallbackEndpoint,
 )
 
 
