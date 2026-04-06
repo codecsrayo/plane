@@ -14,14 +14,27 @@ from typing import Optional
 import requests
 
 
+def _get_config_value(key: str) -> Optional[str]:
+    """Read a value from InstanceConfiguration DB, falling back to env var."""
+    try:
+        from plane.db.models import InstanceConfiguration
+        config = InstanceConfiguration.objects.filter(key=key).first()
+        if config and config.value:
+            return config.value
+    except Exception:
+        pass
+    return os.environ.get(key)
+
+
 def get_installation_access_token(installation_id: str) -> Optional[str]:
     """
     Exchange a GitHub App installation_id for a short-lived installation access token.
-    Returns None if GITHUB_APP_ID or GITHUB_APP_PRIVATE_KEY env vars are not set,
-    or if the GitHub API call fails.
+    Reads GITHUB_APP_ID and GITHUB_APP_PRIVATE_KEY from InstanceConfiguration DB
+    (set via God Mode) with fallback to environment variables.
+    Returns None if credentials are not configured or the GitHub API call fails.
     """
-    app_id = os.environ.get("GITHUB_APP_ID")
-    private_key_b64 = os.environ.get("GITHUB_APP_PRIVATE_KEY")
+    app_id = _get_config_value("GITHUB_APP_ID")
+    private_key_b64 = _get_config_value("GITHUB_APP_PRIVATE_KEY")
 
     if not app_id or not private_key_b64:
         return None

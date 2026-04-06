@@ -109,6 +109,8 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
   } = useForm<IntegrationConfigFormValues>({
     defaultValues: {
       GITHUB_APP_NAME: config["GITHUB_APP_NAME"] ?? "",
+      GITHUB_APP_ID: config["GITHUB_APP_ID"] ?? "",
+      GITHUB_APP_PRIVATE_KEY: config["GITHUB_APP_PRIVATE_KEY"] ?? "",
       GITHUB_CLIENT_ID: config["GITHUB_CLIENT_ID"] ?? "",
       GITHUB_CLIENT_SECRET: config["GITHUB_CLIENT_SECRET"] ?? "",
       GITHUB_ORGANIZATION_ID: config["GITHUB_ORGANIZATION_ID"] ?? "",
@@ -143,6 +145,43 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
       ),
       placeholder: "your-github-app-name",
       error: Boolean(errors.GITHUB_APP_NAME),
+      required: true,
+    },
+    {
+      key: "GITHUB_APP_ID",
+      type: "text",
+      label: "App ID",
+      description: (
+        <>
+          Numeric ID of your GitHub App. Found in{" "}
+          <a
+            href="https://github.com/settings/apps"
+            target="_blank"
+            rel="noreferrer"
+            className="text-accent-primary hover:underline"
+          >
+            GitHub App settings
+          </a>{" "}
+          under <CodeBlock darkerShade>General → About → App ID</CodeBlock>.
+        </>
+      ),
+      placeholder: "123456",
+      error: Boolean(errors.GITHUB_APP_ID),
+      required: true,
+    },
+    {
+      key: "GITHUB_APP_PRIVATE_KEY",
+      type: "password",
+      label: "Private key (base64)",
+      description: (
+        <>
+          Generate a private key in your GitHub App settings and encode it:{" "}
+          <CodeBlock darkerShade>base64 -w0 private-key.pem</CodeBlock>. Required for
+          installation access tokens.
+        </>
+      ),
+      placeholder: "LS0tLS1CRUdJTi...",
+      error: Boolean(errors.GITHUB_APP_PRIVATE_KEY),
       required: true,
     },
     {
@@ -279,6 +318,8 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
       const get = (key: TInstanceIntegrationConfigurationKeys) => response.find((i) => i.key === key)?.value ?? "";
       reset({
         GITHUB_APP_NAME: get("GITHUB_APP_NAME"),
+        GITHUB_APP_ID: get("GITHUB_APP_ID"),
+        GITHUB_APP_PRIVATE_KEY: get("GITHUB_APP_PRIVATE_KEY"),
         GITHUB_CLIENT_ID: get("GITHUB_CLIENT_ID"),
         GITHUB_CLIENT_SECRET: get("GITHUB_CLIENT_SECRET"),
         GITHUB_ORGANIZATION_ID: get("GITHUB_ORGANIZATION_ID"),

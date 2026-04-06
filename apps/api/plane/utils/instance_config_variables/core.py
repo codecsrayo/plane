@@ -100,6 +100,20 @@ github_config_variables = [
         "category": "GITHUB",
         "is_encrypted": False,
     },
+    # Numeric App ID — used to sign JWTs for installation access tokens
+    {
+        "key": "GITHUB_APP_ID",
+        "value": os.environ.get("GITHUB_APP_ID", ""),
+        "category": "GITHUB",
+        "is_encrypted": False,
+    },
+    # Base64-encoded PEM private key — used to sign JWTs
+    {
+        "key": "GITHUB_APP_PRIVATE_KEY",
+        "value": os.environ.get("GITHUB_APP_PRIVATE_KEY", ""),
+        "category": "GITHUB",
+        "is_encrypted": True,
+    },
 ]
 
 

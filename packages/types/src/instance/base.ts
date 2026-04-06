@@ -90,6 +90,8 @@ export type TInstanceIntercomConfigurationKeys = "IS_INTERCOM_ENABLED" | "INTERC
 
 export type TInstanceIntegrationConfigurationKeys =
   | "GITHUB_APP_NAME"
+  | "GITHUB_APP_ID"
+  | "GITHUB_APP_PRIVATE_KEY"
   | "GITHUB_CLIENT_ID"
   | "GITHUB_CLIENT_SECRET"
   | "GITHUB_ORGANIZATION_ID"
