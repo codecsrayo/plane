@@ -406,6 +406,9 @@ export const coreRoutes: RouteConfigEntry[] = [
   // Normalizes params and redirects to /auth/github/callback for unified processing
   route("auth/github/setup", "./(all)/auth/github/setup/page.tsx"),
 
+  // GitHub personal OAuth callback — connects the user's personal GitHub account
+  route("auth/github/user-callback", "./(all)/auth/github/user-callback/page.tsx"),
+
   // Inbox redirect: /:workspaceSlug/projects/:projectId/inbox
   // → /:workspaceSlug/projects/:projectId/intake
   route(":workspaceSlug/projects/:projectId/inbox", "routes/redirects/core/inbox.tsx"),

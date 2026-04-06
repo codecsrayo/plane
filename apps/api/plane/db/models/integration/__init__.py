@@ -16,3 +16,5 @@ from .gitlab import (
     GitlabCommentSync,
 )
 from .slack import SlackProjectSync
+from .user_github_connection import UserGithubConnection
+from .github_pr_state import GithubPRStateMapping

@@ -18,15 +18,33 @@ from plane.db.models import (
     GithubRepositorySync
 )
 from plane.bgtasks.importer_task import github_importer_task
+from plane.utils.github_app import get_installation_access_token
 
 
 class GithubRepositoriesEndpoint(BaseAPIView):
-    """List GitHub repositories using the user's PAT"""
+    """List GitHub repositories via GitHub App installation access token"""
     permission_classes = [WorkSpaceAdminPermission]
 
     def get(self, request, slug):
-        # Get the GitHub token from the request or configuration
-        github_token = request.query_params.get("token") or os.environ.get("GITHUB_ACCESS_TOKEN")
+        # Resolve the installation token from the workspace's GitHub integration
+        github_token = None
+        try:
+            workspace = Workspace.objects.get(slug=slug)
+            workspace_integration = WorkspaceIntegration.objects.filter(
+                workspace=workspace,
+                integration__provider="github",
+            ).select_related("integration").first()
+            if workspace_integration:
+                installation_id = (workspace_integration.metadata or {}).get("installation_id")
+                if installation_id:
+                    github_token = get_installation_access_token(str(installation_id))
+        except Exception:
+            pass
+
+        # Fall back to a PAT if no installation token is available
+        if not github_token:
+            github_token = request.query_params.get("token") or os.environ.get("GITHUB_ACCESS_TOKEN")
+
         if not github_token:
             return Response(
                 {"error": "GitHub token not provided"},

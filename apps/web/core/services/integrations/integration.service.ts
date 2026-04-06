@@ -70,4 +70,80 @@ export class IntegrationService extends APIService {
         throw error?.response?.data;
       });
   }
+
+  async getRepoSyncs(workspaceSlug: string): Promise<any[]> {
+    return this.get(`/api/workspaces/${workspaceSlug}/workspace-integrations/github/repo-syncs/`)
+      .then((response) => response?.data)
+      .catch((error) => {
+        throw error?.response?.data;
+      });
+  }
+
+  async createRepoSync(
+    workspaceSlug: string,
+    data: { repo_id: string; repo_full_name: string; project_id: string }
+  ): Promise<any> {
+    return this.post(`/api/workspaces/${workspaceSlug}/workspace-integrations/github/repo-syncs/`, data)
+      .then((response) => response?.data)
+      .catch((error) => {
+        throw error?.response?.data;
+      });
+  }
+
+  async deleteRepoSync(workspaceSlug: string, syncId: string): Promise<any> {
+    return this.delete(
+      `/api/workspaces/${workspaceSlug}/workspace-integrations/github/repo-syncs/${syncId}/`
+    )
+      .then((response) => response?.data)
+      .catch((error) => {
+        throw error?.response?.data;
+      });
+  }
+
+  async getGithubRepositories(workspaceSlug: string): Promise<any[]> {
+    return this.get(`/api/workspaces/${workspaceSlug}/importers/github/repositories/`)
+      .then((response) => response?.data)
+      .catch((error) => {
+        throw error?.response?.data;
+      });
+  }
+
+  async getPRStateMappings(workspaceSlug: string, workspaceIntegrationId: string): Promise<any[]> {
+    return this.get(
+      `/api/workspaces/${workspaceSlug}/workspace-integrations/${workspaceIntegrationId}/pr-state-mappings/`
+    )
+      .then((response) => response?.data)
+      .catch((error) => {
+        throw error?.response?.data;
+      });
+  }
+
+  async createPRStateMapping(
+    workspaceSlug: string,
+    workspaceIntegrationId: string,
+    data: { project: string; state: string; github_pr_state: string }
+  ): Promise<any> {
+    return this.post(
+      `/api/workspaces/${workspaceSlug}/workspace-integrations/${workspaceIntegrationId}/pr-state-mappings/`,
+      data
+    )
+      .then((response) => response?.data)
+      .catch((error) => {
+        throw error?.response?.data;
+      });
+  }
+
+  async deletePRStateMapping(
+    workspaceSlug: string,
+    workspaceIntegrationId: string,
+    mappingId: string
+  ): Promise<any> {
+    return this.delete(
+      `/api/workspaces/${workspaceSlug}/workspace-integrations/${workspaceIntegrationId}/pr-state-mappings/${mappingId}/`
+    )
+      .then((response) => response?.data)
+      .catch((error) => {
+        throw error?.response?.data;
+      });
+  }
 }

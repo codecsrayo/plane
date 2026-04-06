@@ -18,6 +18,9 @@ import { Loader } from "@plane/ui";
 import GithubLogo from "@/app/assets/services/github.png?url";
 import GitlabLogo from "@/app/assets/services/gitlab.png?url";
 import SlackLogo from "@/app/assets/services/slack.png?url";
+// integration components
+import { GithubPRStateMapping } from "@/components/integration/github/pr-state-mapping";
+import { GithubProjectIssueSync } from "@/components/integration/github/project-issue-sync";
 // components
 import { NotAuthorizedView } from "@/components/auth-screens/not-authorized-view";
 import { PageHead } from "@/components/core/page-title";
@@ -224,29 +227,41 @@ function IntegrationDetailPage({ params }: Route.ComponentProps) {
         </div>
 
         {/* ----------------------------------------------------------------
-            Pull Request State Mapping — placeholder
+            Pull Request State Mapping — GitHub only
         ---------------------------------------------------------------- */}
-        <div className="rounded-lg border border-subtle bg-surface-1 p-5 space-y-3">
-          <h2 className="text-sm font-semibold text-primary">Pull Request State Mapping</h2>
-          <p className="text-xs text-tertiary">
-            Map pull-request states to Plane issue states.{" "}
+        <div className="rounded-lg border border-subtle bg-surface-1 p-5 space-y-4">
+          <div>
+            <h2 className="text-sm font-semibold text-primary">Pull Request State Mapping</h2>
+            <p className="mt-1 text-xs text-secondary">
+              Map GitHub pull request states to Plane issue states per project.
+            </p>
+          </div>
+          {provider === "github" && workspaceIntegration ? (
+            <GithubPRStateMapping workspaceIntegrationId={workspaceIntegration.id} />
+          ) : (
             <span className="rounded bg-custom-background-80 px-1.5 py-0.5 text-[11px] font-medium text-secondary">
               Coming soon
             </span>
-          </p>
+          )}
         </div>
 
         {/* ----------------------------------------------------------------
-            Project Issue Sync — placeholder
+            Project Issue Sync — GitHub only
         ---------------------------------------------------------------- */}
-        <div className="rounded-lg border border-subtle bg-surface-1 p-5 space-y-3">
-          <h2 className="text-sm font-semibold text-primary">Project Issue Sync</h2>
-          <p className="text-xs text-tertiary">
-            Sync issues between Plane projects and your {meta.title} repository.{" "}
+        <div className="rounded-lg border border-subtle bg-surface-1 p-5 space-y-4">
+          <div>
+            <h2 className="text-sm font-semibold text-primary">Project Issue Sync</h2>
+            <p className="mt-1 text-xs text-secondary">
+              Connect Plane projects to {meta.title} repositories for issue synchronization.
+            </p>
+          </div>
+          {provider === "github" ? (
+            <GithubProjectIssueSync workspaceSlug={workspaceSlug as string} />
+          ) : (
             <span className="rounded bg-custom-background-80 px-1.5 py-0.5 text-[11px] font-medium text-secondary">
               Coming soon
             </span>
-          </p>
+          )}
         </div>
       </section>
     </>

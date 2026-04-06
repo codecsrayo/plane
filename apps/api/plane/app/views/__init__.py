@@ -229,6 +229,7 @@ from .exporter.base import ExportIssuesEndpoint
 from .integration.base import (
     IntegrationViewSet,
     WorkspaceIntegrationViewSet,
+    GithubRepoSyncViewSet,
 )
 
 

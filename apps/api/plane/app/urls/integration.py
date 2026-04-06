@@ -6,6 +6,7 @@ from django.urls import path
 from plane.app.views import (
     IntegrationViewSet,
     WorkspaceIntegrationViewSet,
+    GithubRepoSyncViewSet,
 )
 
 urlpatterns = [
@@ -37,5 +38,16 @@ urlpatterns = [
         "workspaces/<str:slug>/workspace-integrations/<str:provider>/install/",
         WorkspaceIntegrationViewSet.as_view({"post": "provider_install"}),
         name="workspace-integrations-provider-install",
+    ),
+    # GitHub repository sync management
+    path(
+        "workspaces/<str:slug>/workspace-integrations/github/repo-syncs/",
+        GithubRepoSyncViewSet.as_view({"get": "list", "post": "create"}),
+        name="github-repo-syncs-list",
+    ),
+    path(
+        "workspaces/<str:slug>/workspace-integrations/github/repo-syncs/<uuid:pk>/",
+        GithubRepoSyncViewSet.as_view({"delete": "destroy"}),
+        name="github-repo-syncs-detail",
     ),
 ]
