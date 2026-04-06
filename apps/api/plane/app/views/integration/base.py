@@ -280,12 +280,23 @@ class GithubAppCallbackEndpoint(BaseAPIView):
             )
             actor = admin_member.member if admin_member else None
 
+            # Create or fetch an API token for the integration (required NOT NULL field)
+            api_token = None
+            if actor:
+                api_token, _ = APIToken.objects.get_or_create(
+                    user=actor,
+                    workspace=workspace,
+                    defaults={"label": f"{integration.title} Integration Token"},
+                )
+
             update_defaults = {
                 "metadata": {"installation_id": installation_id, "setup_action": setup_action},
                 "config": {"installation_id": installation_id},
             }
             if actor:
                 update_defaults["actor"] = actor
+            if api_token:
+                update_defaults["api_token"] = api_token
 
             WorkspaceIntegration.objects.update_or_create(
                 workspace=workspace,
@@ -294,9 +305,8 @@ class GithubAppCallbackEndpoint(BaseAPIView):
             )
         except Exception as e:
             import logging
-            logger = logging.getLogger(__name__)
-            logger.error("GithubAppCallbackEndpoint failed: %s", str(e), exc_info=True)
-            return redirect(f"/{workspace_slug}/settings/integrations?github_error={type(e).__name__}:{str(e)[:100]}")
+            logging.getLogger(__name__).error("GithubAppCallbackEndpoint: %s", e, exc_info=True)
+            return redirect(f"/{workspace_slug}/settings/integrations?github_error=install_failed")
 
         return redirect(f"/{workspace_slug}/settings/integrations/github?installed=true")
 
