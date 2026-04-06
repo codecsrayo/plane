@@ -7,6 +7,7 @@
 import { useState } from "react";
 import { observer } from "mobx-react";
 import { useParams } from "next/navigation";
+import { useNavigate } from "react-router";
 import useSWR, { mutate } from "swr";
 import { CheckCircle } from "lucide-react";
 import { EUserPermissions, EUserPermissionsLevel } from "@plane/constants";
@@ -60,6 +61,7 @@ export const SingleIntegrationCard = observer(function SingleIntegrationCard({ i
   const [deletingIntegration, setDeletingIntegration] = useState(false);
   // router
   const { workspaceSlug } = useParams();
+  const navigate = useNavigate();
   // store hooks
   const { config } = useInstance();
   const { allowPermissions } = useUserPermissions();
@@ -169,24 +171,22 @@ export const SingleIntegrationCard = observer(function SingleIntegrationCard({ i
       {/* Action */}
       {workspaceIntegrations ? (
         isInstalled ? (
-          // Always show Uninstall when installed — even if the admin has disabled the integration,
-          // so users can cleanly remove it and are never locked in.
+          // When installed, show "Configure" to navigate to the detail page.
           <Tooltip
             isMobile={isMobile}
             disabled={isUserAdmin}
             tooltipContent={!isUserAdmin ? "You don't have permission to perform this" : null}
           >
             <Button
-              className={`${!isUserAdmin ? "hover:cursor-not-allowed" : ""}`}
-              variant="error-fill"
+              className={`${!isUserAdmin ? "hover:cursor-not-allowed" : ""} w-fit`}
+              variant="primary"
               onClick={() => {
                 if (!isUserAdmin) return;
-                handleRemoveIntegration();
+                navigate(`/${workspaceSlug}/settings/integrations/${integration.provider}`);
               }}
               disabled={!isUserAdmin}
-              loading={deletingIntegration}
             >
-              {deletingIntegration ? "Uninstalling..." : "Uninstall"}
+              Configure →
             </Button>
           </Tooltip>
         ) : !isEnabled ? (

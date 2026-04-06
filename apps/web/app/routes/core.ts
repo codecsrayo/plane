@@ -286,6 +286,10 @@ export const coreRoutes: RouteConfigEntry[] = [
             ":workspaceSlug/settings/integrations",
             "./(all)/[workspaceSlug]/(settings)/settings/(workspace)/integrations/page.tsx"
           ),
+          route(
+            ":workspaceSlug/settings/integrations/:provider",
+            "./(all)/[workspaceSlug]/(settings)/settings/(workspace)/integrations/[provider]/page.tsx"
+          ),
         ]),
 
         // --------------------------------------------------------------------
@@ -389,6 +393,14 @@ export const coreRoutes: RouteConfigEntry[] = [
   // GitHub App installation callback — opened inside a popup by use-integration-popup
   // GitHub redirects to: /auth/github/callback?installation_id=XXXX&state={workspaceSlug}
   route("auth/github/callback", "./(all)/auth/github/callback/page.tsx"),
+
+  // Slack OAuth callback — opened inside a popup by use-integration-popup
+  // Slack redirects to: /auth/slack/callback?code=XXXX&state={workspaceSlug}
+  route("auth/slack/callback", "./(all)/auth/slack/callback/page.tsx"),
+
+  // GitLab OAuth callback — opened inside a popup by use-integration-popup
+  // GitLab redirects to: /auth/gitlab/callback?code=XXXX&state={workspaceSlug}
+  route("auth/gitlab/callback", "./(all)/auth/gitlab/callback/page.tsx"),
 
   // GitHub App Setup URL — used by GitHub after install/update when a Setup URL is configured
   // Normalizes params and redirects to /auth/github/callback for unified processing

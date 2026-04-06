@@ -43,7 +43,7 @@ const useIntegrationPopup = ({
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
       if (event.origin !== window.location.origin) return;
-      if (event.data?.type !== "github-integration") return;
+      if (!(["github-integration", "gitlab-integration", "slack-integration"] as string[]).includes(event.data?.type)) return;
 
       // Reset the loading state immediately so the button updates without waiting for checkPopup
       setAuthLoader(false);
