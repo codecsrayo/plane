@@ -31,7 +31,7 @@ const useIntegrationPopup = ({
   const providerUrls: { [key: string]: string } = {
     github: `https://github.com/apps/${github_app_name}/installations/new?state=${workspaceSlug?.toString()}`,
     gitlab: `${gitlab_host}/oauth/authorize?client_id=${gitlab_client_id}&redirect_uri=${window.location.origin}/auth/gitlab/callback&response_type=code&scope=api+read_user+read_repository+write_repository&state=${workspaceSlug?.toString()}`,
-    slack: `https://slack.com/oauth/v2/authorize?scope=chat:write,im:history,im:write,links:read,links:write,users:read,users:read.email&amp;user_scope=&amp;&client_id=${slack_client_id}&state=${workspaceSlug?.toString()}`,
+    slack: `https://slack.com/oauth/v2/authorize?scope=chat:write,im:history,im:write,links:read,links:write,users:read,users:read.email&user_scope=&client_id=${slack_client_id}&state=${workspaceSlug?.toString()}`,
     slackChannel: `https://slack.com/oauth/v2/authorize?scope=incoming-webhook&client_id=${slack_client_id}&state=${workspaceSlug?.toString()},${projectId?.toString()}${
       stateParams ? "," + stateParams : ""
     }`,

@@ -147,31 +147,11 @@ class WorkspaceIntegrationViewSet(BaseViewSet):
                     status=status.HTTP_400_BAD_REQUEST,
                 )
 
-            # Exchange installation_id for an access token via GitHub Apps API
-            (GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET) = get_configuration_value(
-                [
-                    {"key": "GITHUB_CLIENT_ID", "default": os.environ.get("GITHUB_CLIENT_ID", "")},
-                    {"key": "GITHUB_CLIENT_SECRET", "default": os.environ.get("GITHUB_CLIENT_SECRET", "")},
-                ]
-            )
-
-            token_response = None
-            if GITHUB_CLIENT_ID and GITHUB_CLIENT_SECRET:
-                try:
-                    token_response = requests.post(
-                        f"https://api.github.com/app/installations/{installation_id}/access_tokens",
-                        headers={
-                            "Accept": "application/vnd.github+json",
-                        },
-                        timeout=10,
-                    )
-                except Exception:
-                    pass  # proceed without token — installation_id alone is enough to identify the install
-
-            metadata = {
-                "installation_id": installation_id,
-                "access_token": token_response.json().get("token") if token_response and token_response.ok else None,
-            }
+            # Store the installation_id so the workspace is linked to the GitHub App install.
+            # Fetching an installation access token requires a signed App JWT (RS256 private key),
+            # which is not yet configured.  The installation_id is sufficient to identify the
+            # install and can be used to generate tokens later once the private key is added.
+            metadata = {"installation_id": installation_id}
             config = {"installation_id": installation_id}
 
         elif provider == "gitlab":
