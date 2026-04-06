@@ -351,18 +351,18 @@ IS_SLACK_ENABLED=1
 
 ---
 
-## Orden de implementación recomendado
+## Estado de implementación
 
-```
-1. TAREA 6 — GitLab callback      (~30 min, copiar el de GitHub)
-2. TAREA 7 — Slack callback        (~30 min, igual)
-3. TAREA 1 — Detail page           (~3 h, la más visible para el usuario)
-4. TAREA 5 — GitHub App JWT        (~1 h, desbloquea Tareas 3 y 4)
-5. TAREA 4 — Project Issue Sync    (~4 h)
-6. TAREA 3 — PR State Mapping      (~2 h)
-7. TAREA 2 — Cuenta personal       (~2 h)
-8. TAREA 8 — Webhooks completos    (~4+ h)
-```
+| Tarea | Estado |
+|---|---|
+| TAREA 1 — Detail page por integración | ✅ Hecho |
+| TAREA 2 — Cuenta personal GitHub | ✅ Hecho |
+| TAREA 3 — PR State Mapping | ✅ Hecho |
+| TAREA 4 — Project Issue Sync | ✅ Hecho |
+| TAREA 5 — GitHub App JWT | ✅ Hecho |
+| TAREA 6 — GitLab callback | ✅ Hecho |
+| TAREA 7 — Slack callback | ✅ Hecho |
+| TAREA 8 — Webhooks completos | ✅ Hecho |
 
 ---
 
