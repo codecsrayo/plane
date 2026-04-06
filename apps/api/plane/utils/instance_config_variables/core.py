@@ -81,6 +81,29 @@ github_config_variables = [
         "category": "GITHUB",
         "is_encrypted": False,
     },
+    # Required for the workspace integrations panel — the slug of the GitHub App
+    {
+        "key": "GITHUB_APP_NAME",
+        "value": os.environ.get("GITHUB_APP_NAME", ""),
+        "category": "GITHUB",
+        "is_encrypted": False,
+    },
+]
+
+
+slack_config_variables = [
+    {
+        "key": "SLACK_CLIENT_ID",
+        "value": os.environ.get("SLACK_CLIENT_ID", ""),
+        "category": "SLACK",
+        "is_encrypted": False,
+    },
+    {
+        "key": "SLACK_CLIENT_SECRET",
+        "value": os.environ.get("SLACK_CLIENT_SECRET", ""),
+        "category": "SLACK",
+        "is_encrypted": True,
+    },
 ]
 
 
@@ -254,6 +277,7 @@ core_config_variables = [
     *github_config_variables,
     *gitlab_config_variables,
     *gitea_config_variables,
+    *slack_config_variables,
     *smtp_config_variables,
     *llm_config_variables,
     *unsplash_config_variables,

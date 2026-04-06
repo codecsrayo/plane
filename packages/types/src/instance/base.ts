@@ -87,12 +87,15 @@ export interface IInstanceAdmin {
 
 export type TInstanceIntercomConfigurationKeys = "IS_INTERCOM_ENABLED" | "INTERCOM_APP_ID";
 
+export type TInstanceIntegrationConfigurationKeys = "GITHUB_APP_NAME" | "SLACK_CLIENT_ID" | "SLACK_CLIENT_SECRET";
+
 export type TInstanceConfigurationKeys =
   | TInstanceAIConfigurationKeys
   | TInstanceEmailConfigurationKeys
   | TInstanceImageConfigurationKeys
   | TInstanceAuthenticationKeys
   | TInstanceIntercomConfigurationKeys
+  | TInstanceIntegrationConfigurationKeys
   | TInstanceWorkspaceConfigurationKeys;
 
 export interface IInstanceConfiguration {
