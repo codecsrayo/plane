@@ -390,6 +390,10 @@ export const coreRoutes: RouteConfigEntry[] = [
   // GitHub redirects to: /auth/github/callback?installation_id=XXXX&state={workspaceSlug}
   route("auth/github/callback", "./(all)/auth/github/callback/page.tsx"),
 
+  // GitHub App Setup URL — used by GitHub after install/update when a Setup URL is configured
+  // Normalizes params and redirects to /auth/github/callback for unified processing
+  route("auth/github/setup", "./(all)/auth/github/setup/page.tsx"),
+
   // Inbox redirect: /:workspaceSlug/projects/:projectId/inbox
   // → /:workspaceSlug/projects/:projectId/intake
   route(":workspaceSlug/projects/:projectId/inbox", "routes/redirects/core/inbox.tsx"),

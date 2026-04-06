@@ -16,6 +16,7 @@ import { IntegrationsSettingsLoader } from "@/components/ui/loader/settings/inte
 // constants
 import { APP_INTEGRATIONS } from "@/constants/fetch-keys";
 // hooks
+import { useInstance } from "@/hooks/store/use-instance";
 import { useWorkspace } from "@/hooks/store/use-workspace";
 import { useUserPermissions } from "@/hooks/store/user";
 // services
@@ -27,6 +28,7 @@ function WorkspaceIntegrationsPage() {
   // store hooks
   const { currentWorkspace } = useWorkspace();
   const { allowPermissions } = useUserPermissions();
+  const { config } = useInstance();
 
   // derived values
   const isAdmin = allowPermissions([EUserPermissions.ADMIN], EUserPermissionsLevel.WORKSPACE);
@@ -44,9 +46,16 @@ function WorkspaceIntegrationsPage() {
         <IntegrationAndImportExportBanner bannerName="Integrations" />
         <div>
           {appIntegrations ? (
-            appIntegrations.map((integration) => (
-              <SingleIntegrationCard key={integration.id} integration={integration} />
-            ))
+            appIntegrations
+              .filter((integration) => {
+                if (integration.provider === "github") return config?.is_github_enabled ?? true;
+                if (integration.provider === "gitlab") return config?.is_gitlab_enabled ?? true;
+                if (integration.provider === "slack") return config?.is_slack_enabled ?? true;
+                return true;
+              })
+              .map((integration) => (
+                <SingleIntegrationCard key={integration.id} integration={integration} />
+              ))
           ) : (
             <IntegrationsSettingsLoader />
           )}

@@ -63,7 +63,7 @@ export default function GithubIntegrationCallbackPage() {
         return result;
       })
       .catch((err) => {
-        const msg = err?.data?.error ?? err?.statusText ?? "Failed to complete GitHub integration. Please try again.";
+        const msg = err?.data?.error ?? err?.error ?? err?.statusText ?? "Failed to complete GitHub integration. Please try again.";
         setErrorMessage(msg);
         setStatus("error");
         window.opener?.postMessage({ type: "github-integration", success: false, error: msg }, window.location.origin);

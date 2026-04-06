@@ -118,6 +118,26 @@ export const SingleIntegrationCard = observer(function SingleIntegrationCard({ i
 
   const isInstalled = workspaceIntegrations?.find((i: any) => i.integration_detail?.id === integration.id);
 
+  // Check if the integration is properly configured in God Mode (has required credentials)
+  const isConfigured =
+    integration.provider === "github"
+      ? !!config?.github_app_name
+      : integration.provider === "gitlab"
+        ? !!config?.gitlab_client_id
+        : integration.provider === "slack"
+          ? !!config?.slack_client_id
+          : true;
+
+  // Respect God Mode enable/disable flags per integration provider
+  const isEnabled =
+    integration.provider === "github"
+      ? (config?.is_github_enabled ?? true)
+      : integration.provider === "gitlab"
+        ? (config?.is_gitlab_enabled ?? true)
+        : integration.provider === "slack"
+          ? (config?.is_slack_enabled ?? true)
+          : true;
+
   // Guard: if the provider is not locally known, skip rendering to avoid runtime errors
   const providerDetails = integrationDetails[integration.provider];
   if (!providerDetails) return null;
@@ -147,6 +167,8 @@ export const SingleIntegrationCard = observer(function SingleIntegrationCard({ i
 
       {workspaceIntegrations ? (
         isInstalled ? (
+          // Always show Uninstall when installed — even if the admin has disabled the integration,
+          // so users can cleanly remove it and are never locked in.
           <Tooltip
             isMobile={isMobile}
             disabled={isUserAdmin}
@@ -165,19 +187,29 @@ export const SingleIntegrationCard = observer(function SingleIntegrationCard({ i
               {deletingIntegration ? "Uninstalling..." : "Uninstall"}
             </Button>
           </Tooltip>
+        ) : !isEnabled ? (
+          // Integration is disabled in God Mode — hide the Install button and show a notice.
+          <span className="text-sm text-secondary">Not available — disabled by admin</span>
         ) : (
           <Tooltip
             isMobile={isMobile}
-            disabled={isUserAdmin}
-            tooltipContent={!isUserAdmin ? "You don't have permission to perform this" : null}
+            tooltipContent={
+              !isUserAdmin
+                ? "You don't have permission to perform this"
+                : !isConfigured
+                  ? "Configure this integration in God Mode before installing"
+                  : null
+            }
+            disabled={isUserAdmin && isConfigured}
           >
             <Button
-              className={`${!isUserAdmin ? "hover:cursor-not-allowed" : ""}`}
+              className={`${!isUserAdmin || !isConfigured ? "hover:cursor-not-allowed" : ""}`}
               variant="primary"
               onClick={() => {
-                if (!isUserAdmin) return;
+                if (!isUserAdmin || !isConfigured) return;
                 startAuth();
               }}
+              disabled={!isUserAdmin || !isConfigured}
               loading={isInstalling}
             >
               {isInstalling ? "Installing..." : "Install"}

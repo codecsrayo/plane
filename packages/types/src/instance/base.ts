@@ -57,6 +57,7 @@ export interface IInstanceConfig {
   gitlab_client_id: string | undefined;
   gitlab_host: string | undefined;
   slack_client_id: string | undefined;
+  is_slack_enabled: boolean;
   posthog_api_key: string | undefined;
   posthog_host: string | undefined;
   has_unsplash_configured: boolean;

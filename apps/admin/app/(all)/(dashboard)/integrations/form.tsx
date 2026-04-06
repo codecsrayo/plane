@@ -6,11 +6,17 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { observer } from "mobx-react";
 import { useForm } from "react-hook-form";
 // plane internal packages
 import { Button, getButtonStyling } from "@plane/propel/button";
 import { TOAST_TYPE, setToast } from "@plane/propel/toast";
-import type { IFormattedInstanceConfiguration, TInstanceIntegrationConfigurationKeys } from "@plane/types";
+import type {
+  IFormattedInstanceConfiguration,
+  TInstanceAuthenticationMethodKeys,
+  TInstanceIntegrationConfigurationKeys,
+} from "@plane/types";
+import { ToggleSwitch } from "@plane/ui";
 // components
 import { CodeBlock } from "@/components/common/code-block";
 import { ConfirmDiscardModal } from "@/components/common/confirm-discard-modal";
@@ -32,40 +38,66 @@ function Section({
   fields,
   control,
   errors,
+  toggleKey,
+  enabled,
+  onToggle,
 }: {
   title: string;
   description: React.ReactNode;
   fields: TControllerInputFormField[];
   control: any;
   errors: any;
+  toggleKey?: TInstanceAuthenticationMethodKeys;
+  enabled?: boolean;
+  onToggle?: () => void;
 }) {
   return (
     <div className="flex flex-col gap-4 border-b border-subtle pb-8 last:border-none">
-      <div className="flex flex-col gap-1">
-        <div className="text-lg font-medium">{title}</div>
-        <p className="text-sm text-secondary">{description}</p>
+      <div className="flex items-start justify-between gap-4">
+        <div className="flex flex-col gap-1">
+          <div className="text-lg font-medium">{title}</div>
+          <p className="text-sm text-secondary">{description}</p>
+        </div>
+        {toggleKey !== undefined && onToggle !== undefined && (
+          <div className="flex shrink-0 items-center gap-2 pt-1">
+            <span className="text-sm text-secondary">{enabled ? "Enabled" : "Disabled"}</span>
+            <ToggleSwitch value={Boolean(enabled)} onChange={onToggle} size="sm" />
+          </div>
+        )}
       </div>
-      {fields.map((field) => (
-        <ControllerInput
-          key={field.key}
-          control={control}
-          type={field.type}
-          name={field.key}
-          label={field.label}
-          description={field.description}
-          placeholder={field.placeholder}
-          error={Boolean(errors[field.key])}
-          required={field.required}
-        />
-      ))}
+      <div className={enabled === false ? "opacity-50" : undefined}>
+        {fields.map((field) => (
+          <div key={field.key} className="mb-4 last:mb-0">
+            <ControllerInput
+              control={control}
+              type={field.type}
+              name={field.key}
+              label={field.label}
+              description={field.description}
+              placeholder={field.placeholder}
+              error={Boolean(errors[field.key])}
+              required={field.required}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
 
 // ─── Main form ────────────────────────────────────────────────────────────────
-export function InstanceIntegrationsConfigForm({ config }: Props) {
+export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrationsConfigForm({ config }: Props) {
   const [isDiscardChangesModalOpen, setIsDiscardChangesModalOpen] = useState(false);
-  const { updateInstanceConfigurations } = useInstance();
+  const { formattedConfig, updateInstanceConfigurations } = useInstance();
+
+  // ── Toggle helpers ─────────────────────────────────────────────────────────
+  const isGithubEnabled = Boolean(parseInt(formattedConfig?.IS_GITHUB_ENABLED ?? "0"));
+  const isGitlabEnabled = Boolean(parseInt(formattedConfig?.IS_GITLAB_ENABLED ?? "0"));
+  const isSlackEnabled = Boolean(parseInt(formattedConfig?.IS_SLACK_ENABLED ?? "0"));
+
+  const handleToggle = (key: TInstanceAuthenticationMethodKeys, current: boolean) => {
+    updateInstanceConfigurations({ [key]: current ? "0" : "1" } as Record<string, string>).catch(console.error);
+  };
 
   const origin = typeof window !== "undefined" ? window.location.origin : "";
 
@@ -301,6 +333,9 @@ export function InstanceIntegrationsConfigForm({ config }: Props) {
           fields={githubFields}
           control={control}
           errors={errors}
+          toggleKey="IS_GITHUB_ENABLED"
+          enabled={isGithubEnabled}
+          onToggle={() => handleToggle("IS_GITHUB_ENABLED", isGithubEnabled)}
         />
 
         <Section
@@ -322,6 +357,9 @@ export function InstanceIntegrationsConfigForm({ config }: Props) {
           fields={gitlabFields}
           control={control}
           errors={errors}
+          toggleKey="IS_GITLAB_ENABLED"
+          enabled={isGitlabEnabled}
+          onToggle={() => handleToggle("IS_GITLAB_ENABLED", isGitlabEnabled)}
         />
 
         <Section
@@ -343,6 +381,9 @@ export function InstanceIntegrationsConfigForm({ config }: Props) {
           fields={slackFields}
           control={control}
           errors={errors}
+          toggleKey="IS_SLACK_ENABLED"
+          enabled={isSlackEnabled}
+          onToggle={() => handleToggle("IS_SLACK_ENABLED", isSlackEnabled)}
         />
 
         {/* Actions */}
@@ -363,4 +404,4 @@ export function InstanceIntegrationsConfigForm({ config }: Props) {
       </div>
     </>
   );
-}
+});
