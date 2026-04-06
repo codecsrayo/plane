@@ -87,7 +87,16 @@ export interface IInstanceAdmin {
 
 export type TInstanceIntercomConfigurationKeys = "IS_INTERCOM_ENABLED" | "INTERCOM_APP_ID";
 
-export type TInstanceIntegrationConfigurationKeys = "GITHUB_APP_NAME" | "SLACK_CLIENT_ID" | "SLACK_CLIENT_SECRET";
+export type TInstanceIntegrationConfigurationKeys =
+  | "GITHUB_APP_NAME"
+  | "GITHUB_CLIENT_ID"
+  | "GITHUB_CLIENT_SECRET"
+  | "GITHUB_ORGANIZATION_ID"
+  | "SLACK_CLIENT_ID"
+  | "SLACK_CLIENT_SECRET"
+  | "GITLAB_HOST"
+  | "GITLAB_CLIENT_ID"
+  | "GITLAB_CLIENT_SECRET";
 
 export type TInstanceConfigurationKeys =
   | TInstanceAIConfigurationKeys

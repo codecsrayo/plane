@@ -39,16 +39,17 @@ const useIntegrationPopup = ({
 
   const popup = useRef<any>();
 
-  // Listen for the postMessage sent by the callback page and refresh workspace integrations
+  // Listen for postMessage from the OAuth callback popup and refresh workspace integrations
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
       if (event.origin !== window.location.origin) return;
       if (event.data?.type !== "github-integration") return;
 
+      // Reset the loading state immediately so the button updates without waiting for checkPopup
       setAuthLoader(false);
 
       if (event.data?.success && workspaceSlug) {
-        // Revalidate the workspace integrations SWR cache so the card updates to "Installed"
+        // Force revalidation so the card switches to "Installed" / "Uninstall"
         mutate(WORKSPACE_INTEGRATIONS(workspaceSlug.toString()));
       }
     };

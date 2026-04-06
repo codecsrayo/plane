@@ -81,13 +81,16 @@ export const SingleIntegrationCard = observer(function SingleIntegrationCard({ i
   const handleRemoveIntegration = async () => {
     if (!workspaceSlug || !integration || !workspaceIntegrations) return;
 
-    const workspaceIntegrationId = workspaceIntegrations?.find((i) => i.integration === integration.id)?.id;
+    // Match via integration_detail.id (the nested object from WorkspaceIntegrationSerializer)
+    const workspaceIntegrationId = workspaceIntegrations?.find((i) => i.integration_detail?.id === integration.id)?.id;
+
+    if (!workspaceIntegrationId) return;
 
     setDeletingIntegration(true);
 
     await integrationService
-      .deleteWorkspaceIntegration(workspaceSlug, workspaceIntegrationId ?? "")
-      .then(() => {
+      .deleteWorkspaceIntegration(workspaceSlug, workspaceIntegrationId)
+      .then((res) => {
         mutate<IWorkspaceIntegration[]>(
           WORKSPACE_INTEGRATIONS(workspaceSlug),
           (prevData) => prevData?.filter((i) => i.id !== workspaceIntegrationId),
@@ -100,6 +103,7 @@ export const SingleIntegrationCard = observer(function SingleIntegrationCard({ i
           title: "Deleted successfully!",
           message: `${integration.title} integration deleted successfully.`,
         });
+        return res;
       })
       .catch(() => {
         setDeletingIntegration(false);
@@ -112,17 +116,17 @@ export const SingleIntegrationCard = observer(function SingleIntegrationCard({ i
       });
   };
 
-  const isInstalled = workspaceIntegrations?.find((i: any) => i.integration_detail.id === integration.id);
+  const isInstalled = workspaceIntegrations?.find((i: any) => i.integration_detail?.id === integration.id);
+
+  // Guard: if the provider is not locally known, skip rendering to avoid runtime errors
+  const providerDetails = integrationDetails[integration.provider];
+  if (!providerDetails) return null;
 
   return (
     <div className="flex items-center justify-between gap-2 border-b border-subtle bg-surface-1 px-4 py-6">
       <div className="flex items-start gap-4">
         <div className="h-10 w-10 flex-shrink-0">
-          <img
-            src={integrationDetails[integration.provider].logo}
-            className="h-full w-full object-cover"
-            alt={`${integration.title} Logo`}
-          />
+          <img src={providerDetails.logo} className="h-full w-full object-cover" alt={`${integration.title} Logo`} />
         </div>
         <div>
           <h3 className="flex items-center gap-2 text-body-xs-medium">
@@ -134,8 +138,8 @@ export const SingleIntegrationCard = observer(function SingleIntegrationCard({ i
           <p className="text-body-xs-regular text-secondary">
             {workspaceIntegrations
               ? isInstalled
-                ? integrationDetails[integration.provider].installed
-                : integrationDetails[integration.provider].notInstalled
+                ? providerDetails.installed
+                : providerDetails.notInstalled
               : "Loading..."}
           </p>
         </div>

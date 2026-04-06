@@ -25,9 +25,49 @@ type Props = {
 
 type IntegrationConfigFormValues = Record<TInstanceIntegrationConfigurationKeys, string>;
 
+// ─── Section component ────────────────────────────────────────────────────────
+function Section({
+  title,
+  description,
+  fields,
+  control,
+  errors,
+}: {
+  title: string;
+  description: React.ReactNode;
+  fields: TControllerInputFormField[];
+  control: any;
+  errors: any;
+}) {
+  return (
+    <div className="flex flex-col gap-4 border-b border-subtle pb-8 last:border-none">
+      <div className="flex flex-col gap-1">
+        <div className="text-lg font-medium">{title}</div>
+        <p className="text-sm text-secondary">{description}</p>
+      </div>
+      {fields.map((field) => (
+        <ControllerInput
+          key={field.key}
+          control={control}
+          type={field.type}
+          name={field.key}
+          label={field.label}
+          description={field.description}
+          placeholder={field.placeholder}
+          error={Boolean(errors[field.key])}
+          required={field.required}
+        />
+      ))}
+    </div>
+  );
+}
+
+// ─── Main form ────────────────────────────────────────────────────────────────
 export function InstanceIntegrationsConfigForm({ config }: Props) {
   const [isDiscardChangesModalOpen, setIsDiscardChangesModalOpen] = useState(false);
   const { updateInstanceConfigurations } = useInstance();
+
+  const origin = typeof window !== "undefined" ? window.location.origin : "";
 
   const {
     handleSubmit,
@@ -37,21 +77,27 @@ export function InstanceIntegrationsConfigForm({ config }: Props) {
   } = useForm<IntegrationConfigFormValues>({
     defaultValues: {
       GITHUB_APP_NAME: config["GITHUB_APP_NAME"] ?? "",
+      GITHUB_CLIENT_ID: config["GITHUB_CLIENT_ID"] ?? "",
+      GITHUB_CLIENT_SECRET: config["GITHUB_CLIENT_SECRET"] ?? "",
+      GITHUB_ORGANIZATION_ID: config["GITHUB_ORGANIZATION_ID"] ?? "",
       SLACK_CLIENT_ID: config["SLACK_CLIENT_ID"] ?? "",
       SLACK_CLIENT_SECRET: config["SLACK_CLIENT_SECRET"] ?? "",
+      GITLAB_HOST: config["GITLAB_HOST"] ?? "https://gitlab.com",
+      GITLAB_CLIENT_ID: config["GITLAB_CLIENT_ID"] ?? "",
+      GITLAB_CLIENT_SECRET: config["GITLAB_CLIENT_SECRET"] ?? "",
     },
   });
 
-  const GITHUB_FIELDS: TControllerInputFormField[] = [
+  // ── GitHub fields ──────────────────────────────────────────────────────────
+  const githubFields: TControllerInputFormField[] = [
     {
       key: "GITHUB_APP_NAME",
       type: "text",
       label: "GitHub App name",
       description: (
         <>
-          The slug of your{" "}
+          Slug of your{" "}
           <a
-            tabIndex={-1}
             href="https://github.com/settings/apps"
             target="_blank"
             rel="noreferrer"
@@ -59,7 +105,7 @@ export function InstanceIntegrationsConfigForm({ config }: Props) {
           >
             GitHub App
           </a>
-          . It appears in the install URL:{" "}
+          . Appears in the install URL:{" "}
           <CodeBlock darkerShade>github.com/apps/&lt;THIS-NAME&gt;/installations/new</CodeBlock>
         </>
       ),
@@ -67,9 +113,95 @@ export function InstanceIntegrationsConfigForm({ config }: Props) {
       error: Boolean(errors.GITHUB_APP_NAME),
       required: true,
     },
+    {
+      key: "GITHUB_CLIENT_ID",
+      type: "text",
+      label: "Client ID",
+      description: (
+        <>
+          Found in your GitHub App settings under <CodeBlock darkerShade>General → Client ID</CodeBlock>.
+        </>
+      ),
+      placeholder: "Iv1.xxxxxxxxxxxx",
+      error: Boolean(errors.GITHUB_CLIENT_ID),
+      required: true,
+    },
+    {
+      key: "GITHUB_CLIENT_SECRET",
+      type: "password",
+      label: "Client secret",
+      description: (
+        <>
+          Generate one in your GitHub App settings under <CodeBlock darkerShade>General → Client secrets</CodeBlock>.
+        </>
+      ),
+      placeholder: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      error: Boolean(errors.GITHUB_CLIENT_SECRET),
+      required: true,
+    },
+    {
+      key: "GITHUB_ORGANIZATION_ID",
+      type: "text",
+      label: "Organization ID (optional)",
+      description: (
+        <>Restrict login to members of a specific GitHub organization. Leave empty to allow any GitHub account.</>
+      ),
+      placeholder: "123456789",
+      error: Boolean(errors.GITHUB_ORGANIZATION_ID),
+      required: false,
+    },
   ];
 
-  const SLACK_FIELDS: TControllerInputFormField[] = [
+  // ── GitLab fields ──────────────────────────────────────────────────────────
+  const gitlabFields: TControllerInputFormField[] = [
+    {
+      key: "GITLAB_HOST",
+      type: "text",
+      label: "GitLab host",
+      description: (
+        <>
+          Use <CodeBlock darkerShade>https://gitlab.com</CodeBlock> for GitLab.com or your self-hosted URL.
+        </>
+      ),
+      placeholder: "https://gitlab.com",
+      error: Boolean(errors.GITLAB_HOST),
+      required: true,
+    },
+    {
+      key: "GITLAB_CLIENT_ID",
+      type: "text",
+      label: "Application ID",
+      description: (
+        <>
+          Found in your{" "}
+          <a
+            href="https://gitlab.com/-/profile/applications"
+            target="_blank"
+            rel="noreferrer"
+            className="text-accent-primary hover:underline"
+          >
+            GitLab OAuth Application
+          </a>{" "}
+          settings.
+        </>
+      ),
+      placeholder: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      error: Boolean(errors.GITLAB_CLIENT_ID),
+      required: true,
+    },
+    {
+      key: "GITLAB_CLIENT_SECRET",
+      type: "password",
+      label: "Secret",
+      description: <>Secret from the same GitLab OAuth Application settings page.</>,
+      placeholder: "gloas-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      error: Boolean(errors.GITLAB_CLIENT_SECRET),
+      required: true,
+    },
+  ];
+
+  // ── Slack fields ───────────────────────────────────────────────────────────
+  const slackFields: TControllerInputFormField[] = [
     {
       key: "SLACK_CLIENT_ID",
       type: "text",
@@ -78,13 +210,12 @@ export function InstanceIntegrationsConfigForm({ config }: Props) {
         <>
           Found in your{" "}
           <a
-            tabIndex={-1}
             href="https://api.slack.com/apps"
             target="_blank"
             rel="noreferrer"
             className="text-accent-primary hover:underline"
           >
-            Slack App settings
+            Slack App
           </a>{" "}
           under Basic Information → App Credentials.
         </>
@@ -104,6 +235,7 @@ export function InstanceIntegrationsConfigForm({ config }: Props) {
     },
   ];
 
+  // ── Submit ─────────────────────────────────────────────────────────────────
   const onSubmit = async (formData: IntegrationConfigFormValues) => {
     try {
       const response = await updateInstanceConfigurations({ ...formData });
@@ -112,10 +244,17 @@ export function InstanceIntegrationsConfigForm({ config }: Props) {
         title: "Saved!",
         message: "Integration settings updated successfully.",
       });
+      const get = (key: TInstanceIntegrationConfigurationKeys) => response.find((i) => i.key === key)?.value ?? "";
       reset({
-        GITHUB_APP_NAME: response.find((i) => i.key === "GITHUB_APP_NAME")?.value ?? "",
-        SLACK_CLIENT_ID: response.find((i) => i.key === "SLACK_CLIENT_ID")?.value ?? "",
-        SLACK_CLIENT_SECRET: response.find((i) => i.key === "SLACK_CLIENT_SECRET")?.value ?? "",
+        GITHUB_APP_NAME: get("GITHUB_APP_NAME"),
+        GITHUB_CLIENT_ID: get("GITHUB_CLIENT_ID"),
+        GITHUB_CLIENT_SECRET: get("GITHUB_CLIENT_SECRET"),
+        GITHUB_ORGANIZATION_ID: get("GITHUB_ORGANIZATION_ID"),
+        SLACK_CLIENT_ID: get("SLACK_CLIENT_ID"),
+        SLACK_CLIENT_SECRET: get("SLACK_CLIENT_SECRET"),
+        GITLAB_HOST: get("GITLAB_HOST"),
+        GITLAB_CLIENT_ID: get("GITLAB_CLIENT_ID"),
+        GITLAB_CLIENT_SECRET: get("GITLAB_CLIENT_SECRET"),
       });
     } catch (err) {
       console.error(err);
@@ -141,72 +280,73 @@ export function InstanceIntegrationsConfigForm({ config }: Props) {
         onDiscardHref="/integrations"
         handleClose={() => setIsDiscardChangesModalOpen(false)}
       />
-      <div className="flex flex-col gap-10">
-        {/* GitHub App section */}
-        <div className="flex flex-col gap-4">
-          <div className="text-18 font-medium">GitHub App</div>
-          <p className="text-sm text-secondary">
-            Required to enable the Install button in the workspace Integrations panel. Create your GitHub App at{" "}
-            <a
-              href="https://github.com/settings/apps/new"
-              target="_blank"
-              rel="noreferrer"
-              className="text-accent-primary hover:underline"
-            >
-              github.com/settings/apps/new
-            </a>{" "}
-            and set the callback URL to{" "}
-            <CodeBlock darkerShade>
-              {typeof window !== "undefined" ? window.location.origin : ""}/auth/github/callback
-            </CodeBlock>
-          </p>
-          {GITHUB_FIELDS.map((field) => (
-            <ControllerInput
-              key={field.key}
-              control={control}
-              type={field.type}
-              name={field.key}
-              label={field.label}
-              description={field.description}
-              placeholder={field.placeholder}
-              error={field.error}
-              required={field.required}
-            />
-          ))}
-        </div>
 
-        {/* Slack section */}
-        <div className="flex flex-col gap-4">
-          <div className="text-18 font-medium">Slack</div>
-          <p className="text-sm text-secondary">
-            Required to enable Slack integration in the workspace Integrations panel. Create your Slack App at{" "}
-            <a
-              href="https://api.slack.com/apps"
-              target="_blank"
-              rel="noreferrer"
-              className="text-accent-primary hover:underline"
-            >
-              api.slack.com/apps
-            </a>
-            .
-          </p>
-          {SLACK_FIELDS.map((field) => (
-            <ControllerInput
-              key={field.key}
-              control={control}
-              type={field.type}
-              name={field.key}
-              label={field.label}
-              description={field.description}
-              placeholder={field.placeholder}
-              error={field.error}
-              required={field.required}
-            />
-          ))}
-        </div>
+      <div className="flex flex-col gap-8">
+        <Section
+          title="GitHub App"
+          description={
+            <>
+              Required for the workspace Integrations panel. Create your GitHub App at{" "}
+              <a
+                href="https://github.com/settings/apps/new"
+                target="_blank"
+                rel="noreferrer"
+                className="text-accent-primary hover:underline"
+              >
+                github.com/settings/apps/new
+              </a>{" "}
+              and set the callback URL to <CodeBlock darkerShade>{origin}/auth/github/callback</CodeBlock>.
+            </>
+          }
+          fields={githubFields}
+          control={control}
+          errors={errors}
+        />
+
+        <Section
+          title="GitLab"
+          description={
+            <>
+              Required for GitLab integration. Create an OAuth application at{" "}
+              <a
+                href="https://gitlab.com/-/profile/applications"
+                target="_blank"
+                rel="noreferrer"
+                className="text-accent-primary hover:underline"
+              >
+                gitlab.com/-/profile/applications
+              </a>{" "}
+              with redirect URI: <CodeBlock darkerShade>{origin}/auth/gitlab/callback</CodeBlock>.
+            </>
+          }
+          fields={gitlabFields}
+          control={control}
+          errors={errors}
+        />
+
+        <Section
+          title="Slack"
+          description={
+            <>
+              Required for Slack integration. Create a Slack App at{" "}
+              <a
+                href="https://api.slack.com/apps"
+                target="_blank"
+                rel="noreferrer"
+                className="text-accent-primary hover:underline"
+              >
+                api.slack.com/apps
+              </a>
+              .
+            </>
+          }
+          fields={slackFields}
+          control={control}
+          errors={errors}
+        />
 
         {/* Actions */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 pt-2">
           <Button
             variant="primary"
             size="lg"
