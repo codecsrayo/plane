@@ -41,19 +41,31 @@ class InstanceConfigurationEndpoint(BaseAPIView):
     @invalidate_cache(path="/api/instances/configurations/", user=False)
     @invalidate_cache(path="/api/instances/", user=False)
     def patch(self, request):
-        configurations = InstanceConfiguration.objects.filter(key__in=request.data.keys())
+        from plane.utils.instance_config_variables import instance_config_variables
 
-        bulk_configurations = []
-        for configuration in configurations:
-            value = request.data.get(configuration.key, configuration.value)
-            if configuration.is_encrypted:
-                configuration.value = encrypt_data(value)
-            else:
-                configuration.value = value
-            bulk_configurations.append(configuration)
+        # Get the keys from request data
+        keys = request.data.keys()
 
-        InstanceConfiguration.objects.bulk_update(bulk_configurations, ["value"], batch_size=100)
+        # Update or create configurations
+        for key in keys:
+            # Check if the key is in the allowed instance configuration variables
+            config_var = next((item for item in instance_config_variables if item["key"] == key), None)
 
+            if config_var:
+                value = request.data.get(key)
+                is_encrypted = config_var.get("is_encrypted", False)
+                category = config_var.get("category", "OTHERS")
+
+                InstanceConfiguration.objects.update_or_create(
+                    key=key,
+                    defaults={
+                        "value": encrypt_data(value) if is_encrypted else value,
+                        "is_encrypted": is_encrypted,
+                        "category": category,
+                    },
+                )
+
+        configurations = InstanceConfiguration.objects.filter(key__in=keys)
         serializer = InstanceConfigurationSerializer(configurations, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
