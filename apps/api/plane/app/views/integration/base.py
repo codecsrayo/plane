@@ -292,8 +292,11 @@ class GithubAppCallbackEndpoint(BaseAPIView):
                 integration=integration,
                 defaults=update_defaults,
             )
-        except Exception:
-            return redirect(f"/{workspace_slug}/settings/integrations?github_error=install_failed")
+        except Exception as e:
+            import logging
+            logger = logging.getLogger(__name__)
+            logger.error("GithubAppCallbackEndpoint failed: %s", str(e), exc_info=True)
+            return redirect(f"/{workspace_slug}/settings/integrations?github_error={type(e).__name__}:{str(e)[:100]}")
 
         return redirect(f"/{workspace_slug}/settings/integrations/github?installed=true")
 
