@@ -143,28 +143,30 @@ export const SingleIntegrationCard = observer(function SingleIntegrationCard({ i
   if (!providerDetails) return null;
 
   return (
-    <div className="flex items-center justify-between gap-2 border-b border-subtle bg-surface-1 px-4 py-6">
-      <div className="flex items-start gap-4">
-        <div className="h-10 w-10 flex-shrink-0">
-          <img src={providerDetails.logo} className="h-full w-full object-cover" alt={`${integration.title} Logo`} />
+    <div className="flex flex-col gap-4 rounded-lg border border-subtle bg-surface-1 p-5">
+      {/* Logo + title */}
+      <div className="flex items-center gap-3">
+        <div className="h-10 w-10 flex-shrink-0 rounded-lg border border-subtle p-1.5">
+          <img src={providerDetails.logo} className="h-full w-full object-contain" alt={`${integration.title} Logo`} />
         </div>
-        <div>
-          <h3 className="flex items-center gap-2 text-body-xs-medium">
-            {integration.title}
-            {workspaceIntegrations
-              ? isInstalled && <CheckCircle className="h-3.5 w-3.5 fill-transparent text-success-primary" />
-              : null}
-          </h3>
-          <p className="text-body-xs-regular text-secondary">
-            {workspaceIntegrations
-              ? isInstalled
-                ? providerDetails.installed
-                : providerDetails.notInstalled
-              : "Loading..."}
-          </p>
-        </div>
+        <h3 className="flex items-center gap-2 text-sm font-medium">
+          {integration.title}
+          {workspaceIntegrations
+            ? isInstalled && <CheckCircle className="h-3.5 w-3.5 fill-transparent text-success-primary" />
+            : null}
+        </h3>
       </div>
 
+      {/* Description */}
+      <p className="flex-1 text-xs text-secondary">
+        {workspaceIntegrations
+          ? isInstalled
+            ? providerDetails.installed
+            : providerDetails.notInstalled
+          : "Loading..."}
+      </p>
+
+      {/* Action */}
       {workspaceIntegrations ? (
         isInstalled ? (
           // Always show Uninstall when installed — even if the admin has disabled the integration,
@@ -188,8 +190,7 @@ export const SingleIntegrationCard = observer(function SingleIntegrationCard({ i
             </Button>
           </Tooltip>
         ) : !isEnabled ? (
-          // Integration is disabled in God Mode — hide the Install button and show a notice.
-          <span className="text-sm text-secondary">Not available — disabled by admin</span>
+          <span className="text-xs text-secondary">Disabled by admin</span>
         ) : (
           <Tooltip
             isMobile={isMobile}
@@ -203,7 +204,7 @@ export const SingleIntegrationCard = observer(function SingleIntegrationCard({ i
             disabled={isUserAdmin && isConfigured}
           >
             <Button
-              className={`${!isUserAdmin || !isConfigured ? "hover:cursor-not-allowed" : ""}`}
+              className={`${!isUserAdmin || !isConfigured ? "hover:cursor-not-allowed" : ""} w-fit`}
               variant="primary"
               onClick={() => {
                 if (!isUserAdmin || !isConfigured) return;
