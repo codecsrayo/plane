@@ -1,4 +1,41 @@
 services:
+  web:
+    container_name: web
+    build:
+      context: .
+      dockerfile: ./apps/web/Dockerfile.dev
+      args:
+        DOCKER_BUILDKIT: 1
+    restart: always
+    depends_on:
+      - api
+
+  admin:
+    container_name: admin
+    build:
+      context: .
+      dockerfile: ./apps/admin/Dockerfile.dev
+      args:
+        DOCKER_BUILDKIT: 1
+    restart: always
+    depends_on:
+      - api
+      - web
+
+  space:
+    container_name: space
+    build:
+      context: .
+      dockerfile: ./apps/space/Dockerfile.dev
+      args:
+        DOCKER_BUILDKIT: 1
+    restart: always
+    depends_on:
+      - api
+      - web
+
+
+
   plane-redis:
     image: valkey/valkey:7.2.11-alpine
     restart: unless-stopped
