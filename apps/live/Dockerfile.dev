@@ -4,7 +4,8 @@ RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
 COPY . .
-RUN corepack enable pnpm && pnpm add -g turbo
+RUN corepack enable && corepack prepare pnpm@latest --activate
+RUN npm install -g turbo
 RUN pnpm install
 EXPOSE 3003
 
