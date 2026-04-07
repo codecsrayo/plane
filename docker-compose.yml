@@ -1,4 +1,42 @@
 services:
+  proxy:
+    image: traefik:latest
+    container_name: proxy
+    command:
+      - --entrypoints.web.address=:80
+      - --entrypoints.websecure.address=:443
+      - --providers.docker=true
+      - --providers.docker.exposedbydefault=false
+      - --api.insecure=false
+      - --api.dashboard=false
+      - --providers.docker.network=proyectos-bi-quare
+      - --accesslog=true
+      - --log=true
+      - --log.level=DEBUG
+      - --providers.file.directory=/dynamic
+      - --providers.file.watch=true
+      - --certificatesresolvers.netlify.acme.email=${TRAEFIK_ACME_EMAIL}
+      - --certificatesresolvers.netlify.acme.storage=/acme.json
+      - --certificatesresolvers.netlify.acme.dnschallenge=true
+      - --certificatesresolvers.netlify.acme.dnschallenge.provider=netlify
+    ports:
+      - "80:80"
+      - "443:443"
+    env_file:
+      - ./.env
+    environment:
+      - NETLIFY_TOKEN=${NETLIFY_TOKEN}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./apps/proxy/acme.json:/acme.json
+    restart: unless-stopped
+    networks:
+      - traefik-public
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.traefik.service=api@internal"
+      - "traefik.http.routers.traefik.entrypoints=web"
+
   web:
     container_name: web
     build:
@@ -6,7 +44,33 @@ services:
       dockerfile: ./apps/web/Dockerfile.web
       args:
         DOCKER_BUILDKIT: 1
+        VITE_API_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
+        VITE_API_BASE_PATH: /api
+        VITE_ADMIN_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
+        VITE_ADMIN_BASE_PATH: /god-mode
+        VITE_LIVE_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
+        VITE_LIVE_BASE_PATH: /live
+        VITE_SPACE_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
+        VITE_SPACE_BASE_PATH: /spaces
+        VITE_WEB_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
+        VITE_WEB_BASE_PATH: ""
     restart: always
+    networks:
+      - default
+      - traefik-public
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=proyectos-bi-quare
+      - traefik.http.middlewares.plane-https.redirectscheme.scheme=https
+      - traefik.http.routers.plane-http.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`)
+      - traefik.http.routers.plane-http.entrypoints=web
+      - traefik.http.routers.plane-http.middlewares=plane-https
+      - traefik.http.routers.plane.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`)
+      - traefik.http.routers.plane.entrypoints=websecure
+      - traefik.http.routers.plane.tls=true
+      - traefik.http.routers.plane.tls.certresolver=netlify
+      - traefik.http.routers.plane.priority=1
+      - traefik.http.services.plane.loadbalancer.server.port=3000
     depends_on:
       - api
 
@@ -17,7 +81,29 @@ services:
       dockerfile: ./apps/admin/Dockerfile.admin
       args:
         DOCKER_BUILDKIT: 1
+        VITE_API_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
+        VITE_API_BASE_PATH: /api
+        VITE_ADMIN_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
+        VITE_ADMIN_BASE_PATH: /god-mode
+        VITE_SPACE_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
+        VITE_SPACE_BASE_PATH: /spaces
+        VITE_LIVE_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
+        VITE_LIVE_BASE_PATH: /live
+        VITE_WEB_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
+        VITE_WEB_BASE_PATH: ""
     restart: always
+    networks:
+      - default
+      - traefik-public
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=proyectos-bi-quare
+      - traefik.http.routers.plane-admin.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && PathPrefix(`/god-mode`)
+      - traefik.http.routers.plane-admin.entrypoints=websecure
+      - traefik.http.routers.plane-admin.tls=true
+      - traefik.http.routers.plane-admin.tls.certresolver=netlify
+      - traefik.http.routers.plane-admin.priority=100
+      - traefik.http.services.plane-admin.loadbalancer.server.port=3000
     depends_on:
       - api
       - web
@@ -29,7 +115,29 @@ services:
       dockerfile: ./apps/space/Dockerfile.space
       args:
         DOCKER_BUILDKIT: 1
+        VITE_API_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
+        VITE_API_BASE_PATH: /api
+        VITE_ADMIN_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
+        VITE_ADMIN_BASE_PATH: /god-mode
+        VITE_SPACE_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
+        VITE_SPACE_BASE_PATH: /spaces
+        VITE_LIVE_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
+        VITE_LIVE_BASE_PATH: /live
+        VITE_WEB_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
+        VITE_WEB_BASE_PATH: ""
     restart: always
+    networks:
+      - default
+      - traefik-public
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=proyectos-bi-quare
+      - traefik.http.routers.plane-space.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && PathPrefix(`/spaces`)
+      - traefik.http.routers.plane-space.entrypoints=websecure
+      - traefik.http.routers.plane-space.tls=true
+      - traefik.http.routers.plane-space.tls.certresolver=netlify
+      - traefik.http.routers.plane-space.priority=100
+      - traefik.http.services.plane-space.loadbalancer.server.port=3000
     depends_on:
       - api
       - web
@@ -45,6 +153,18 @@ services:
     command: ./bin/docker-entrypoint-api.sh
     env_file:
       - ./apps/api/.env
+    networks:
+      - default
+      - traefik-public
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=proyectos-bi-quare
+      - traefik.http.routers.plane-api.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && (PathPrefix(`/api`) || PathPrefix(`/auth`) || PathPrefix(`/static`))
+      - traefik.http.routers.plane-api.entrypoints=websecure
+      - traefik.http.routers.plane-api.tls=true
+      - traefik.http.routers.plane-api.tls.certresolver=netlify
+      - traefik.http.routers.plane-api.priority=100
+      - traefik.http.services.plane-api.loadbalancer.server.port=8000
     depends_on:
       - plane-db
       - plane-redis
@@ -104,6 +224,18 @@ services:
       args:
         DOCKER_BUILDKIT: 1
     restart: always
+    networks:
+      - default
+      - traefik-public
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=proyectos-bi-quare
+      - traefik.http.routers.plane-live.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && PathPrefix(`/live`)
+      - traefik.http.routers.plane-live.entrypoints=websecure
+      - traefik.http.routers.plane-live.tls=true
+      - traefik.http.routers.plane-live.tls.certresolver=netlify
+      - traefik.http.routers.plane-live.priority=100
+      - traefik.http.services.plane-live.loadbalancer.server.port=3000
 
   plane-db:
     container_name: plane-db
@@ -144,34 +276,39 @@ services:
     container_name: plane-minio
     image: minio/minio
     restart: always
+    networks:
+      - default
+      - traefik-public
     command: server /export --console-address ":9090"
     volumes:
       - uploads:/export
     environment:
       MINIO_ROOT_USER: ${AWS_ACCESS_KEY_ID}
       MINIO_ROOT_PASSWORD: ${AWS_SECRET_ACCESS_KEY}
-
-  # Comment this if you already have a reverse proxy running
-  proxy:
-    container_name: proxy
-    build:
-      context: ./apps/proxy
-      dockerfile: Dockerfile.ce
-    restart: always
-    ports:
-      - ${LISTEN_HTTP_PORT}:80
-      - ${LISTEN_HTTPS_PORT}:443
-    environment:
-      FILE_SIZE_LIMIT: ${FILE_SIZE_LIMIT:-5242880}
-      BUCKET_NAME: ${AWS_S3_BUCKET_NAME:-uploads}
-    depends_on:
-      - web
-      - api
-      - space
-      - admin
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=proyectos-bi-quare
+      - traefik.http.routers.plane-minio.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && PathPrefix(`/${AWS_S3_BUCKET_NAME:-uploads}`)
+      - traefik.http.routers.plane-minio.entrypoints=websecure
+      - traefik.http.routers.plane-minio.tls=true
+      - traefik.http.routers.plane-minio.tls.certresolver=netlify
+      - traefik.http.routers.plane-minio.priority=100
+      - traefik.http.services.plane-minio.loadbalancer.server.port=9000
 
 volumes:
   pgdata:
   redisdata:
   uploads:
   rabbitmq_data:
+
+networks:
+  default:
+    driver: bridge
+  traefik-public:
+    name: proyectos-bi-quare
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.99.0.0/24
+          gateway: 172.99.0.1

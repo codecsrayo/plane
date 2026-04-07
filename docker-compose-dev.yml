@@ -1,4 +1,39 @@
 services:
+  proxy:
+    image: traefik:latest
+    container_name: proxy
+    command:
+      - --entrypoints.web.address=:80
+      - --entrypoints.websecure.address=:443
+      - --providers.docker=true
+      - --providers.docker.exposedbydefault=false
+      - --api.insecure=false
+      - --api.dashboard=false
+      - --providers.docker.network=proyectos-bi-quare
+      - --accesslog=true
+      - --log=true
+      - --log.level=DEBUG
+      - --providers.file.directory=/dynamic
+      - --providers.file.watch=true
+      - --certificatesresolvers.netlify.acme.email=${TRAEFIK_ACME_EMAIL}
+      - --certificatesresolvers.netlify.acme.storage=/acme.json
+      - --certificatesresolvers.netlify.acme.dnschallenge=true
+      - --certificatesresolvers.netlify.acme.dnschallenge.provider=netlify
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    env_file:
+      - .env
+    environment:
+      - NETLIFY_TOKEN=${NETLIFY_TOKEN}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./apps/proxy/acme.json:/acme.json
+    restart: unless-stopped
+    networks:
+      - traefik-public
+
   web:
     container_name: plane-codecsrayo-web
     build:
@@ -21,6 +56,47 @@ services:
       default:
         aliases:
           - web
+      traefik-public:
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=${TRAEFIK_PUBLIC_NETWORK:-proyectos-bi-quare}
+      - traefik.http.middlewares.plane-codecsrayo-https.redirectscheme.scheme=https
+      - traefik.http.routers.plane-codecsrayo-http.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`)
+      - traefik.http.routers.plane-codecsrayo-http.entrypoints=web
+      - traefik.http.routers.plane-codecsrayo-http.middlewares=plane-codecsrayo-https
+      - traefik.http.routers.plane-codecsrayo.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`)
+      - traefik.http.routers.plane-codecsrayo.entrypoints=websecure
+      - traefik.http.routers.plane-codecsrayo.tls=true
+      - traefik.http.routers.plane-codecsrayo.tls.certresolver=netlify
+      - traefik.http.routers.plane-codecsrayo.priority=1
+      - traefik.http.services.plane-codecsrayo.loadbalancer.server.port=3000
+    develop:
+      watch:
+        - action: sync
+          path: ./apps/web
+          target: /app/apps/web
+          initial_sync: true
+          ignore:
+            - node_modules/
+            - build/
+            - .turbo/
+        - action: sync
+          path: ./packages
+          target: /app/packages
+          initial_sync: true
+          ignore:
+            - "*/node_modules/"
+            - "*/dist/"
+            - "*/build/"
+            - "*/.turbo/"
+        - action: rebuild
+          path: ./package.json
+        - action: rebuild
+          path: ./pnpm-lock.yaml
+        - action: rebuild
+          path: ./turbo.json
+        - action: rebuild
+          path: ./apps/web/package.json
     depends_on:
       - api
 
@@ -46,6 +122,43 @@ services:
       default:
         aliases:
           - admin
+      traefik-public:
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=${TRAEFIK_PUBLIC_NETWORK:-proyectos-bi-quare}
+      - traefik.http.routers.plane-codecsrayo-admin.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && PathPrefix(`/god-mode`)
+      - traefik.http.routers.plane-codecsrayo-admin.entrypoints=websecure
+      - traefik.http.routers.plane-codecsrayo-admin.tls=true
+      - traefik.http.routers.plane-codecsrayo-admin.tls.certresolver=netlify
+      - traefik.http.routers.plane-codecsrayo-admin.priority=100
+      - traefik.http.services.plane-codecsrayo-admin.loadbalancer.server.port=3001
+    develop:
+      watch:
+        - action: sync
+          path: ./apps/admin
+          target: /app/apps/admin
+          initial_sync: true
+          ignore:
+            - node_modules/
+            - build/
+            - .turbo/
+        - action: sync
+          path: ./packages
+          target: /app/packages
+          initial_sync: true
+          ignore:
+            - "*/node_modules/"
+            - "*/dist/"
+            - "*/build/"
+            - "*/.turbo/"
+        - action: rebuild
+          path: ./package.json
+        - action: rebuild
+          path: ./pnpm-lock.yaml
+        - action: rebuild
+          path: ./turbo.json
+        - action: rebuild
+          path: ./apps/admin/package.json
     depends_on:
       - api
       - web
@@ -72,6 +185,43 @@ services:
       default:
         aliases:
           - space
+      traefik-public:
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=${TRAEFIK_PUBLIC_NETWORK:-proyectos-bi-quare}
+      - traefik.http.routers.plane-codecsrayo-space.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && PathPrefix(`/spaces`)
+      - traefik.http.routers.plane-codecsrayo-space.entrypoints=websecure
+      - traefik.http.routers.plane-codecsrayo-space.tls=true
+      - traefik.http.routers.plane-codecsrayo-space.tls.certresolver=netlify
+      - traefik.http.routers.plane-codecsrayo-space.priority=100
+      - traefik.http.services.plane-codecsrayo-space.loadbalancer.server.port=3002
+    develop:
+      watch:
+        - action: sync
+          path: ./apps/space
+          target: /app/apps/space
+          initial_sync: true
+          ignore:
+            - node_modules/
+            - build/
+            - .turbo/
+        - action: sync
+          path: ./packages
+          target: /app/packages
+          initial_sync: true
+          ignore:
+            - "*/node_modules/"
+            - "*/dist/"
+            - "*/build/"
+            - "*/.turbo/"
+        - action: rebuild
+          path: ./package.json
+        - action: rebuild
+          path: ./pnpm-lock.yaml
+        - action: rebuild
+          path: ./turbo.json
+        - action: rebuild
+          path: ./apps/space/package.json
     depends_on:
       - api
       - web
@@ -88,8 +238,46 @@ services:
       default:
         aliases:
           - live
+      traefik-public:
     env_file:
       - ./apps/live/.env
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=${TRAEFIK_PUBLIC_NETWORK:-proyectos-bi-quare}
+      - traefik.http.routers.plane-codecsrayo-live.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && PathPrefix(`/live`)
+      - traefik.http.routers.plane-codecsrayo-live.entrypoints=websecure
+      - traefik.http.routers.plane-codecsrayo-live.tls=true
+      - traefik.http.routers.plane-codecsrayo-live.tls.certresolver=netlify
+      - traefik.http.routers.plane-codecsrayo-live.priority=100
+      - traefik.http.services.plane-codecsrayo-live.loadbalancer.server.port=3003
+    develop:
+      watch:
+        - action: sync
+          path: ./apps/live
+          target: /app/apps/live
+          initial_sync: true
+          ignore:
+            - node_modules/
+            - dist/
+            - build/
+            - .turbo/
+        - action: sync
+          path: ./packages
+          target: /app/packages
+          initial_sync: true
+          ignore:
+            - "*/node_modules/"
+            - "*/dist/"
+            - "*/build/"
+            - "*/.turbo/"
+        - action: rebuild
+          path: ./package.json
+        - action: rebuild
+          path: ./pnpm-lock.yaml
+        - action: rebuild
+          path: ./turbo.json
+        - action: rebuild
+          path: ./apps/live/package.json
     depends_on:
       - api
 
@@ -129,6 +317,7 @@ services:
       default:
         aliases:
           - plane-minio
+      traefik-public:
     entrypoint: >
       /bin/sh -c "
       mkdir -p /export/${AWS_S3_BUCKET_NAME} &&
@@ -145,6 +334,15 @@ services:
     environment:
       MINIO_ROOT_USER: ${AWS_ACCESS_KEY_ID}
       MINIO_ROOT_PASSWORD: ${AWS_SECRET_ACCESS_KEY}
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=${TRAEFIK_PUBLIC_NETWORK:-proyectos-bi-quare}
+      - traefik.http.routers.plane-codecsrayo-minio.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && PathPrefix(`/${AWS_S3_BUCKET_NAME:-uploads}`)
+      - traefik.http.routers.plane-codecsrayo-minio.entrypoints=websecure
+      - traefik.http.routers.plane-codecsrayo-minio.tls=true
+      - traefik.http.routers.plane-codecsrayo-minio.tls.certresolver=netlify
+      - traefik.http.routers.plane-codecsrayo-minio.priority=100
+      - traefik.http.services.plane-codecsrayo-minio.loadbalancer.server.port=9000
 
   plane-db:
     container_name: plane-codecsrayo-db
@@ -174,11 +372,32 @@ services:
       default:
         aliases:
           - api
+      traefik-public:
     volumes:
       - ./apps/api:/code
     command: ./bin/docker-entrypoint-api-local.sh
     env_file:
       - ./apps/api/.env
+    environment:
+      CORS_ALLOWED_ORIGINS: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
+      WEB_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
+      APP_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
+      APP_BASE_PATH: ""
+      ADMIN_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
+      ADMIN_BASE_PATH: /god-mode
+      SPACE_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
+      SPACE_BASE_PATH: /spaces
+      LIVE_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
+      LIVE_BASE_PATH: /live
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=${TRAEFIK_PUBLIC_NETWORK:-proyectos-bi-quare}
+      - traefik.http.routers.plane-codecsrayo-api.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && (PathPrefix(`/api`) || PathPrefix(`/auth`) || PathPrefix(`/static`))
+      - traefik.http.routers.plane-codecsrayo-api.entrypoints=websecure
+      - traefik.http.routers.plane-codecsrayo-api.tls=true
+      - traefik.http.routers.plane-codecsrayo-api.tls.certresolver=netlify
+      - traefik.http.routers.plane-codecsrayo-api.priority=100
+      - traefik.http.services.plane-codecsrayo-api.loadbalancer.server.port=8000
     depends_on:
       - plane-db
       - plane-redis
@@ -249,40 +468,6 @@ services:
       - plane-db
       - plane-redis
 
-  proxy:
-    container_name: plane-codecsrayo-proxy
-    build:
-      context: ./apps/proxy
-      dockerfile: Dockerfile.ce
-    restart: always
-    ports: !reset []
-    environment:
-      FILE_SIZE_LIMIT: ${FILE_SIZE_LIMIT:-5242880}
-      BUCKET_NAME: ${AWS_S3_BUCKET_NAME:-uploads}
-      SITE_ADDRESS: :80
-      TRUSTED_PROXIES: 0.0.0.0/0
-    depends_on:
-      - web
-      - api
-      - space
-      - admin
-      - live
-    networks:
-      - default
-      - traefik-public
-    labels:
-      - traefik.enable=true
-      - traefik.docker.network=proyectos-bi-quare
-      - traefik.http.routers.plane-codecsrayo-http.rule=Host(`plane.codecsrayo.com`)
-      - traefik.http.routers.plane-codecsrayo-http.entrypoints=web
-      - traefik.http.routers.plane-codecsrayo-http.middlewares=plane-codecsrayo-https
-      - traefik.http.middlewares.plane-codecsrayo-https.redirectscheme.scheme=https
-      - traefik.http.routers.plane-codecsrayo.rule=Host(`plane.codecsrayo.com`)
-      - traefik.http.routers.plane-codecsrayo.entrypoints=websecure
-      - traefik.http.routers.plane-codecsrayo.tls=true
-      - traefik.http.routers.plane-codecsrayo.tls.certresolver=netlify
-      - traefik.http.services.plane-codecsrayo.loadbalancer.server.port=80
-
 volumes:
   redisdata:
   uploads:
@@ -293,5 +478,10 @@ networks:
   default:
     driver: bridge
   traefik-public:
-    external: true
     name: proyectos-bi-quare
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.99.0.0/24
+          gateway: 172.99.0.1

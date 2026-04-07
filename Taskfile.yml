@@ -1,0 +1,175 @@
+version: "3"
+
+tasks:
+  # Show available tasks.
+  default:
+    cmds:
+      - task --list
+
+  help:
+    cmds:
+      - task --list
+
+  install:
+    cmds:
+      - pnpm install
+
+  build:
+    cmds:
+      - pnpm build
+
+  check:
+    cmds:
+      - pnpm check
+
+  lint:
+    cmds:
+      - pnpm check:lint
+
+  types:
+    cmds:
+      - pnpm check:types
+
+  fix:
+    cmds:
+      - pnpm fix
+
+  # Bootstrap local development without overwriting existing env files.
+  setup:
+    cmds:
+      - task setup:env
+      - task setup:secret
+      - task setup:deps
+      - 'echo "Setup complete."'
+      - 'echo "Next step: task dev:up"'
+
+  # Create .env files from examples only when they do not already exist.
+  setup:env:
+    cmds:
+      - |
+        for path in . ./apps/web ./apps/api ./apps/space ./apps/admin ./apps/live; do
+          if [ ! -f "$path/.env" ]; then
+            cp "$path/.env.example" "$path/.env"
+            echo "Created $path/.env"
+          else
+            echo "Skipped $path/.env (already exists)"
+          fi
+        done
+
+  # Generate the Django secret once and keep it stable across reruns.
+  setup:secret:
+    cmds:
+      - |
+        if ! grep -q '^SECRET_KEY=' ./apps/api/.env; then
+          SECRET_KEY="$(tr -dc 'a-z0-9' < /dev/urandom | head -c50)"
+          echo "SECRET_KEY=\"$SECRET_KEY\"" >> ./apps/api/.env
+          echo "Added SECRET_KEY to ./apps/api/.env"
+        else
+          echo "Skipped SECRET_KEY (already exists in ./apps/api/.env)"
+        fi
+
+  # Install JS dependencies using the repo's pinned pnpm setup.
+  setup:deps:
+    cmds:
+      - corepack enable pnpm
+      - pnpm install
+
+  # Validate generated compose configuration before running containers.
+  dev:config:
+    cmds:
+      - docker compose -f docker-compose-dev.yml config
+
+  prod:config:
+    cmds:
+      - docker compose -f docker-compose.yml config
+
+  dev:up:
+    cmds:
+      - docker compose -f docker-compose-dev.yml up -d --build
+
+  dev:down:
+    cmds:
+      - docker compose -f docker-compose-dev.yml down
+
+  dev:restart:
+    cmds:
+      - docker compose -f docker-compose-dev.yml down
+      - docker compose -f docker-compose-dev.yml up -d --build
+
+  dev:ps:
+    cmds:
+      - docker compose -f docker-compose-dev.yml ps
+
+  # Pass SERVICE=<name> to follow logs for a single container.
+  dev:logs:
+    cmds:
+      - |
+        if [ -n "{{.SERVICE}}" ]; then
+          docker compose -f docker-compose-dev.yml logs -f {{.SERVICE}}
+        else
+          docker compose -f docker-compose-dev.yml logs -f
+        fi
+
+  dev:logs:proxy:
+    cmds:
+      - docker compose -f docker-compose-dev.yml logs -f proxy
+
+  dev:rebuild:
+    cmds:
+      - docker compose -f docker-compose-dev.yml build --no-cache
+      - docker compose -f docker-compose-dev.yml up -d
+
+  dev:watch:
+    cmds:
+      - docker compose -f docker-compose-dev.yml watch web admin space live
+
+  # Start frontend services and attach compose watch in one command.
+  dev:up-watch:
+    cmds:
+      - docker compose -f docker-compose-dev.yml up --watch web admin space live
+
+  prod:up:
+    cmds:
+      - docker compose -f docker-compose.yml up -d --build
+
+  prod:down:
+    cmds:
+      - docker compose -f docker-compose.yml down
+
+  prod:restart:
+    cmds:
+      - docker compose -f docker-compose.yml down
+      - docker compose -f docker-compose.yml up -d --build
+
+  prod:ps:
+    cmds:
+      - docker compose -f docker-compose.yml ps
+
+  # Pass SERVICE=<name> to follow logs for a single container.
+  prod:logs:
+    cmds:
+      - |
+        if [ -n "{{.SERVICE}}" ]; then
+          docker compose -f docker-compose.yml logs -f {{.SERVICE}}
+        else
+          docker compose -f docker-compose.yml logs -f
+        fi
+
+  prod:logs:proxy:
+    cmds:
+      - docker compose -f docker-compose.yml logs -f proxy
+
+  prod:rebuild:
+    requires:
+      vars: [SERVICE]
+    cmds:
+      - docker compose -f docker-compose.yml up -d --build {{.SERVICE}}
+
+  dev:url:
+    cmds:
+      - 'echo "App: https://${PLANE_DOMAIN:-plane.codecsrayo.com}"'
+      - 'echo "Dashboard Proxy: http://localhost:8080"'
+
+  prod:url:
+    cmds:
+      - 'echo "App: https://${PLANE_DOMAIN:-plane.codecsrayo.com}"'
