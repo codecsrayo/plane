@@ -4,7 +4,7 @@
  * See the LICENSE file for details.
  */
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { observer } from "mobx-react";
 import { useNavigate } from "react-router";
 import useSWR, { mutate } from "swr";
@@ -120,14 +120,30 @@ function IntegrationDetailPage({ params }: Route.ComponentProps) {
     () => (isAdmin && workspaceSlug ? integrationService.getWorkspaceIntegrationsList(workspaceSlug) : null)
   );
 
+  // Derived: find the matching workspace integration after data loads
+  const workspaceIntegration = workspaceIntegrations?.find(
+    (i) => i.integration_detail?.provider === provider
+  );
+
+  // Redirect side-effects: unknown provider or integration not installed
+  // Must be in useEffect — calling navigate() during render causes hydration errors
+  useEffect(() => {
+    if (!meta) {
+      navigate(`/${workspaceSlug}/settings/integrations`, { replace: true });
+    }
+  }, [meta, workspaceSlug, navigate]);
+
+  useEffect(() => {
+    if (!isLoading && workspaceIntegrations && !workspaceIntegration) {
+      navigate(`/${workspaceSlug}/settings/integrations`, { replace: true });
+    }
+  }, [isLoading, workspaceIntegrations, workspaceIntegration, workspaceSlug, navigate]);
+
   // Not authorised
   if (!isAdmin) return <NotAuthorizedView section="settings" className="h-auto" />;
 
-  // Unknown provider
-  if (!meta) {
-    navigate(`/${workspaceSlug}/settings/integrations`, { replace: true });
-    return null;
-  }
+  // Unknown provider — render nothing while useEffect redirects
+  if (!meta) return null;
 
   // Loading
   if (isLoading || !workspaceIntegrations) {
@@ -140,16 +156,8 @@ function IntegrationDetailPage({ params }: Route.ComponentProps) {
     );
   }
 
-  // Find the matching workspace integration for this provider
-  const workspaceIntegration = workspaceIntegrations.find(
-    (i) => i.integration_detail?.provider === provider
-  );
-
-  // Not installed → redirect
-  if (!workspaceIntegration) {
-    navigate(`/${workspaceSlug}/settings/integrations`, { replace: true });
-    return null;
-  }
+  // Integration not installed — render nothing while useEffect redirects
+  if (!workspaceIntegration) return null;
 
   // Disconnect handler
   const handleDisconnect = async () => {
@@ -219,7 +227,7 @@ function IntegrationDetailPage({ params }: Route.ComponentProps) {
           <div className="flex items-center justify-between">
             <h2 className="text-sm font-semibold text-custom-text-100">Connected account</h2>
             <Button
-              variant="danger"
+              variant="error-fill"
               size="sm"
               onClick={handleDisconnect}
               loading={isDisconnecting}
