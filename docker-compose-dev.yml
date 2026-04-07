@@ -18,7 +18,9 @@ services:
         VITE_WEB_BASE_PATH: ""
     restart: always
     networks:
-      - default
+      default:
+        aliases:
+          - web
     depends_on:
       - api
 
@@ -41,7 +43,9 @@ services:
         VITE_WEB_BASE_PATH: ""
     restart: always
     networks:
-      - default
+      default:
+        aliases:
+          - admin
     depends_on:
       - api
       - web
@@ -65,7 +69,9 @@ services:
         VITE_WEB_BASE_PATH: ""
     restart: always
     networks:
-      - default
+      default:
+        aliases:
+          - space
     depends_on:
       - api
       - web
@@ -79,7 +85,9 @@ services:
         DOCKER_BUILDKIT: 1
     restart: always
     networks:
-      - default
+      default:
+        aliases:
+          - live
     env_file:
       - ./apps/live/.env
     depends_on:
@@ -90,7 +98,9 @@ services:
     image: valkey/valkey:7.2.11-alpine
     restart: unless-stopped
     networks:
-      - default
+      default:
+        aliases:
+          - plane-redis
     volumes:
       - redisdata:/data
 
@@ -99,7 +109,9 @@ services:
     image: rabbitmq:3.13.6-management-alpine
     restart: unless-stopped
     networks:
-      - default
+      default:
+        aliases:
+          - plane-mq
     volumes:
       - rabbitmq_data:/var/lib/rabbitmq
     env_file:
@@ -114,7 +126,9 @@ services:
     image: minio/minio
     restart: unless-stopped
     networks:
-      - default
+      default:
+        aliases:
+          - plane-minio
     entrypoint: >
       /bin/sh -c "
       mkdir -p /export/${AWS_S3_BUCKET_NAME} &&
@@ -137,7 +151,9 @@ services:
     image: postgres:15.7-alpine
     restart: unless-stopped
     networks:
-      - default
+      default:
+        aliases:
+          - plane-db
     command: postgres -c 'max_connections=1000'
     volumes:
       - pgdata:/var/lib/postgresql/data
@@ -155,7 +171,9 @@ services:
         DOCKER_BUILDKIT: 1
     restart: unless-stopped
     networks:
-      - default
+      default:
+        aliases:
+          - api
     volumes:
       - ./apps/api:/code
     command: ./bin/docker-entrypoint-api-local.sh
@@ -175,7 +193,9 @@ services:
         DOCKER_BUILDKIT: 1
     restart: unless-stopped
     networks:
-      - default
+      default:
+        aliases:
+          - worker
     volumes:
       - ./apps/api:/code
     command: ./bin/docker-entrypoint-worker.sh
@@ -195,7 +215,9 @@ services:
         DOCKER_BUILDKIT: 1
     restart: unless-stopped
     networks:
-      - default
+      default:
+        aliases:
+          - beat-worker
     volumes:
       - ./apps/api:/code
     command: ./bin/docker-entrypoint-beat.sh
@@ -215,7 +237,9 @@ services:
         DOCKER_BUILDKIT: 1
     restart: "no"
     networks:
-      - default
+      default:
+        aliases:
+          - migrator
     volumes:
       - ./apps/api:/code
     command: ./bin/docker-entrypoint-migrator.sh --settings=plane.settings.local

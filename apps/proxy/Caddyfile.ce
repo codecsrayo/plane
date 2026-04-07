@@ -4,12 +4,12 @@
 	}
 
   redir /spaces /spaces/ permanent
-	reverse_proxy /spaces/* space:3000
+	reverse_proxy /spaces/* space:3002
 
   redir /god-mode /god-mode/ permanent
-	reverse_proxy /god-mode/* admin:3000
+	reverse_proxy /god-mode/* admin:3001
 	
-	reverse_proxy /live/* live:3000
+	reverse_proxy /live/* live:3003
 
 	reverse_proxy /api/* api:8000
 
