@@ -1,6 +1,6 @@
 services:
   web:
-    container_name: web
+    container_name: plane-codecsrayo-web
     build:
       context: .
       dockerfile: ./apps/web/Dockerfile.dev
@@ -18,12 +18,12 @@ services:
         VITE_WEB_BASE_PATH: ""
     restart: always
     networks:
-      - dev_env
+      - default
     depends_on:
       - api
 
   admin:
-    container_name: admin
+    container_name: plane-codecsrayo-admin
     build:
       context: .
       dockerfile: ./apps/admin/Dockerfile.dev
@@ -41,13 +41,13 @@ services:
         VITE_WEB_BASE_PATH: ""
     restart: always
     networks:
-      - dev_env
+      - default
     depends_on:
       - api
       - web
 
   space:
-    container_name: space
+    container_name: plane-codecsrayo-space
     build:
       context: .
       dockerfile: ./apps/space/Dockerfile.dev
@@ -65,13 +65,13 @@ services:
         VITE_WEB_BASE_PATH: ""
     restart: always
     networks:
-      - dev_env
+      - default
     depends_on:
       - api
       - web
 
   live:
-    container_name: live
+    container_name: plane-codecsrayo-live
     build:
       context: .
       dockerfile: ./apps/live/Dockerfile.dev
@@ -79,25 +79,27 @@ services:
         DOCKER_BUILDKIT: 1
     restart: always
     networks:
-      - dev_env
+      - default
     env_file:
       - ./apps/live/.env
     depends_on:
       - api
 
   plane-redis:
+    container_name: plane-codecsrayo-redis
     image: valkey/valkey:7.2.11-alpine
     restart: unless-stopped
     networks:
-      - dev_env
+      - default
     volumes:
       - redisdata:/data
 
   plane-mq:
+    container_name: plane-codecsrayo-mq
     image: rabbitmq:3.13.6-management-alpine
     restart: unless-stopped
     networks:
-      - dev_env
+      - default
     volumes:
       - rabbitmq_data:/var/lib/rabbitmq
     env_file:
@@ -108,10 +110,11 @@ services:
       RABBITMQ_DEFAULT_VHOST: ${RABBITMQ_VHOST}
 
   plane-minio:
+    container_name: plane-codecsrayo-minio
     image: minio/minio
     restart: unless-stopped
     networks:
-      - dev_env
+      - default
     entrypoint: >
       /bin/sh -c "
       mkdir -p /export/${AWS_S3_BUCKET_NAME} &&
@@ -130,10 +133,11 @@ services:
       MINIO_ROOT_PASSWORD: ${AWS_SECRET_ACCESS_KEY}
 
   plane-db:
+    container_name: plane-codecsrayo-db
     image: postgres:15.7-alpine
     restart: unless-stopped
     networks:
-      - dev_env
+      - default
     command: postgres -c 'max_connections=1000'
     volumes:
       - pgdata:/var/lib/postgresql/data
@@ -143,6 +147,7 @@ services:
       PGDATA: /var/lib/postgresql/data
 
   api:
+    container_name: plane-codecsrayo-api
     build:
       context: ./apps/api
       dockerfile: Dockerfile.dev
@@ -150,7 +155,7 @@ services:
         DOCKER_BUILDKIT: 1
     restart: unless-stopped
     networks:
-      - dev_env
+      - default
     volumes:
       - ./apps/api:/code
     command: ./bin/docker-entrypoint-api-local.sh
@@ -162,6 +167,7 @@ services:
       - plane-mq
 
   worker:
+    container_name: plane-codecsrayo-worker
     build:
       context: ./apps/api
       dockerfile: Dockerfile.dev
@@ -169,7 +175,7 @@ services:
         DOCKER_BUILDKIT: 1
     restart: unless-stopped
     networks:
-      - dev_env
+      - default
     volumes:
       - ./apps/api:/code
     command: ./bin/docker-entrypoint-worker.sh
@@ -181,6 +187,7 @@ services:
       - plane-redis
 
   beat-worker:
+    container_name: plane-codecsrayo-beat-worker
     build:
       context: ./apps/api
       dockerfile: Dockerfile.dev
@@ -188,7 +195,7 @@ services:
         DOCKER_BUILDKIT: 1
     restart: unless-stopped
     networks:
-      - dev_env
+      - default
     volumes:
       - ./apps/api:/code
     command: ./bin/docker-entrypoint-beat.sh
@@ -200,6 +207,7 @@ services:
       - plane-redis
 
   migrator:
+    container_name: plane-codecsrayo-migrator
     build:
       context: ./apps/api
       dockerfile: Dockerfile.dev
@@ -207,7 +215,7 @@ services:
         DOCKER_BUILDKIT: 1
     restart: "no"
     networks:
-      - dev_env
+      - default
     volumes:
       - ./apps/api:/code
     command: ./bin/docker-entrypoint-migrator.sh --settings=plane.settings.local
@@ -218,11 +226,12 @@ services:
       - plane-redis
 
   proxy:
-    container_name: proxy
+    container_name: plane-codecsrayo-proxy
     build:
       context: ./apps/proxy
       dockerfile: Dockerfile.ce
     restart: always
+    ports: !reset []
     environment:
       FILE_SIZE_LIMIT: ${FILE_SIZE_LIMIT:-5242880}
       BUCKET_NAME: ${AWS_S3_BUCKET_NAME:-uploads}
@@ -235,7 +244,7 @@ services:
       - admin
       - live
     networks:
-      - dev_env
+      - default
       - traefik-public
     labels:
       - traefik.enable=true
@@ -257,7 +266,7 @@ volumes:
   rabbitmq_data:
 
 networks:
-  dev_env:
+  default:
     driver: bridge
   traefik-public:
     external: true
