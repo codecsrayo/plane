@@ -60,6 +60,7 @@ class InstanceEndpoint(BaseAPIView):
             EMAIL_HOST,
             ENABLE_MAGIC_LINK_LOGIN,
             ENABLE_EMAIL_PASSWORD,
+            IS_SLACK_ENABLED,
             SLACK_CLIENT_ID,
             POSTHOG_API_KEY,
             POSTHOG_HOST,
@@ -115,6 +116,10 @@ class InstanceEndpoint(BaseAPIView):
                     "default": os.environ.get("ENABLE_EMAIL_PASSWORD", "1"),
                 },
                 {
+                    "key": "IS_SLACK_ENABLED",
+                    "default": os.environ.get("IS_SLACK_ENABLED", "0"),
+                },
+                {
                     "key": "SLACK_CLIENT_ID",
                     "default": os.environ.get("SLACK_CLIENT_ID", None),
                 },
@@ -156,6 +161,7 @@ class InstanceEndpoint(BaseAPIView):
         data["is_gitea_enabled"] = IS_GITEA_ENABLED == "1"
         data["is_magic_login_enabled"] = ENABLE_MAGIC_LINK_LOGIN == "1"
         data["is_email_password_enabled"] = ENABLE_EMAIL_PASSWORD == "1"
+        data["is_slack_enabled"] = IS_SLACK_ENABLED == "1"
 
         # Github app name
         data["github_app_name"] = str(GITHUB_APP_NAME)

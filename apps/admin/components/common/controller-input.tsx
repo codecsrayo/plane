@@ -22,6 +22,7 @@ type Props = {
   placeholder: string;
   error: boolean;
   required: boolean;
+  disabled?: boolean;
 };
 
 export type TControllerInputFormField = {
@@ -32,10 +33,11 @@ export type TControllerInputFormField = {
   placeholder: string;
   error: boolean;
   required: boolean;
+  disabled?: boolean;
 };
 
 export function ControllerInput(props: Props) {
-  const { name, control, type, label, description, placeholder, error, required } = props;
+  const { name, control, type, label, description, placeholder, error, required, disabled = false } = props;
   // states
   const [showPassword, setShowPassword] = useState(false);
 
@@ -57,6 +59,7 @@ export function ControllerInput(props: Props) {
               ref={ref}
               hasError={error}
               placeholder={placeholder}
+              disabled={disabled}
               className={cn("w-full rounded-md font-medium", {
                 "pr-10": type === "password",
               })}
@@ -66,17 +69,21 @@ export function ControllerInput(props: Props) {
         {type === "password" &&
           (showPassword ? (
             <button
+              type="button"
               tabIndex={-1}
               className="absolute top-2.5 right-3 flex items-center justify-center text-placeholder"
               onClick={() => setShowPassword(false)}
+              disabled={disabled}
             >
               <EyeOff className="h-4 w-4" />
             </button>
           ) : (
             <button
+              type="button"
               tabIndex={-1}
               className="absolute top-2.5 right-3 flex items-center justify-center text-placeholder"
               onClick={() => setShowPassword(true)}
+              disabled={disabled}
             >
               <Eye className="h-4 w-4" />
             </button>

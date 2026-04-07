@@ -32,7 +32,7 @@ export class IntegrationService extends APIService {
   }
 
   async deleteWorkspaceIntegration(workspaceSlug: string, integrationId: string): Promise<any> {
-    return this.delete(`/api/workspaces/${workspaceSlug}/workspace-integrations/${integrationId}/provider/`)
+    return this.delete(`/api/workspaces/${workspaceSlug}/workspace-integrations/${integrationId}/`)
       .then((res) => res?.data)
       .catch((error) => {
         throw error?.response?.data;
@@ -98,9 +98,7 @@ export class IntegrationService extends APIService {
   }
 
   async deleteRepoSync(workspaceSlug: string, syncId: string): Promise<any> {
-    return this.delete(
-      `/api/workspaces/${workspaceSlug}/workspace-integrations/github/repo-syncs/${syncId}/`
-    )
+    return this.delete(`/api/workspaces/${workspaceSlug}/workspace-integrations/github/repo-syncs/${syncId}/`)
       .then((response) => response?.data)
       .catch((error) => {
         throw error?.response?.data;
@@ -140,11 +138,7 @@ export class IntegrationService extends APIService {
       });
   }
 
-  async deletePRStateMapping(
-    workspaceSlug: string,
-    workspaceIntegrationId: string,
-    mappingId: string
-  ): Promise<any> {
+  async deletePRStateMapping(workspaceSlug: string, workspaceIntegrationId: string, mappingId: string): Promise<any> {
     return this.delete(
       `/api/workspaces/${workspaceSlug}/workspace-integrations/${workspaceIntegrationId}/pr-state-mappings/${mappingId}/`
     )

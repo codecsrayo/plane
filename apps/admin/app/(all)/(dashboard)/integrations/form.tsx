@@ -77,7 +77,8 @@ function Section({
               description={field.description}
               placeholder={field.placeholder}
               error={Boolean(errors[field.key])}
-              required={field.required}
+              required={enabled === false ? false : field.required}
+              disabled={enabled === false}
             />
           </div>
         ))}
@@ -184,8 +185,7 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
       description: (
         <>
           Generate a private key in your GitHub App settings and encode it:{" "}
-          <CodeBlock darkerShade>base64 -w0 private-key.pem</CodeBlock>. Required for
-          installation access tokens.
+          <CodeBlock darkerShade>base64 -w0 private-key.pem</CodeBlock>. Required for installation access tokens.
         </>
       ),
       placeholder: "LS0tLS1CRUdJTi...",
@@ -377,7 +377,8 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
                     description={field.description}
                     placeholder={field.placeholder}
                     error={Boolean(errors[field.key as keyof typeof errors])}
-                    required={field.required}
+                    required={isGithubEnabled ? field.required : false}
+                    disabled={!isGithubEnabled}
                   />
                 </div>
               ))}
@@ -395,6 +396,7 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
                     placeholder="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
                     error={Boolean(errors.GITHUB_WEBHOOK_SECRET)}
                     required={false}
+                    disabled={!isGithubEnabled}
                   />
                 </div>
                 <Button
@@ -403,6 +405,7 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
                   onClick={generateWebhookSecret}
                   type="button"
                   className="mb-0.5 shrink-0"
+                  disabled={!isGithubEnabled}
                 >
                   Generate
                 </Button>
@@ -415,15 +418,15 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
             <p className="text-sm font-medium">Setup URLs</p>
 
             <div className="flex flex-col gap-1">
-              <label className="text-xs text-secondary">GitHub App Setup URL (Callback)</label>
+              <p className="text-xs text-secondary">GitHub App Setup URL (Callback)</p>
               <div className="flex items-center gap-2">
-                <code className="flex-1 rounded bg-surface-3 px-3 py-1.5 text-xs font-mono break-all">
+                <code className="bg-surface-3 text-xs font-mono flex-1 rounded px-3 py-1.5 break-all">
                   {origin}/api/github/callback/
                 </code>
                 <button
                   type="button"
                   onClick={() => navigator.clipboard.writeText(`${origin}/api/github/callback/`)}
-                  className="shrink-0 rounded p-1.5 text-secondary hover:bg-surface-3 hover:text-primary"
+                  className="hover:bg-surface-3 shrink-0 rounded p-1.5 text-secondary hover:text-primary"
                   title="Copy"
                 >
                   <Copy size={14} />
@@ -432,15 +435,15 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
             </div>
 
             <div className="flex flex-col gap-1">
-              <label className="text-xs text-secondary">Webhook URL</label>
+              <p className="text-xs text-secondary">Webhook URL</p>
               <div className="flex items-center gap-2">
-                <code className="flex-1 rounded bg-surface-3 px-3 py-1.5 text-xs font-mono break-all">
+                <code className="bg-surface-3 text-xs font-mono flex-1 rounded px-3 py-1.5 break-all">
                   {origin}/api/github-webhook/
                 </code>
                 <button
                   type="button"
                   onClick={() => navigator.clipboard.writeText(`${origin}/api/github-webhook/`)}
-                  className="shrink-0 rounded p-1.5 text-secondary hover:bg-surface-3 hover:text-primary"
+                  className="hover:bg-surface-3 shrink-0 rounded p-1.5 text-secondary hover:text-primary"
                   title="Copy"
                 >
                   <Copy size={14} />

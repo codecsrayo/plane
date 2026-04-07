@@ -126,6 +126,12 @@ github_config_variables = [
 
 slack_config_variables = [
     {
+        "key": "IS_SLACK_ENABLED",
+        "value": os.environ.get("IS_SLACK_ENABLED", "0"),
+        "category": "SLACK",
+        "is_encrypted": False,
+    },
+    {
         "key": "SLACK_CLIENT_ID",
         "value": os.environ.get("SLACK_CLIENT_ID", ""),
         "category": "SLACK",

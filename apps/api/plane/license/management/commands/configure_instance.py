@@ -104,6 +104,21 @@ class Command(BaseCommand):
                     )
                     if bool(GITEA_HOST) and bool(GITEA_CLIENT_ID) and bool(GITEA_CLIENT_SECRET):
                         value = "1"
+                elif item.get("key") == "IS_SLACK_ENABLED":
+                    SLACK_CLIENT_ID, SLACK_CLIENT_SECRET = get_configuration_value(
+                        [
+                            {
+                                "key": "SLACK_CLIENT_ID",
+                                "default": os.environ.get("SLACK_CLIENT_ID", ""),
+                            },
+                            {
+                                "key": "SLACK_CLIENT_SECRET",
+                                "default": os.environ.get("SLACK_CLIENT_SECRET", ""),
+                            },
+                        ]
+                    )
+                    if bool(SLACK_CLIENT_ID) and bool(SLACK_CLIENT_SECRET):
+                        value = "1"
 
                 if item.get("is_encrypted", False):
                     obj.value = encrypt_data(value)
