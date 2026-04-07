@@ -7,6 +7,7 @@ import os
 import requests
 
 # Third party imports
+from django.db import IntegrityError, transaction
 from django.shortcuts import get_object_or_404, redirect
 from rest_framework import status
 from rest_framework.response import Response
@@ -217,16 +218,25 @@ class WorkspaceIntegrationViewSet(BaseViewSet):
         )
 
         # Create (or update if already exists) the WorkspaceIntegration
-        workspace_integration, created = WorkspaceIntegration.objects.get_or_create(
-            workspace=workspace,
-            integration=integration,
-            defaults={
-                "actor": request.user,
-                "api_token": api_token,
-                "metadata": metadata,
-                "config": config,
-            },
-        )
+        try:
+            with transaction.atomic():
+                workspace_integration, created = WorkspaceIntegration.objects.get_or_create(
+                    workspace=workspace,
+                    integration=integration,
+                    defaults={
+                        "actor": request.user,
+                        "api_token": api_token,
+                        "metadata": metadata,
+                        "config": config,
+                    },
+                )
+        except IntegrityError:
+            # Race condition on simultaneous installs — fetch the existing record.
+            workspace_integration = WorkspaceIntegration.objects.get(
+                workspace=workspace,
+                integration=integration,
+            )
+            created = False
 
         if not created:
             # Update metadata/config with fresh OAuth data in case of re-install
@@ -298,11 +308,21 @@ class GithubAppCallbackEndpoint(BaseAPIView):
             if api_token:
                 update_defaults["api_token"] = api_token
 
-            WorkspaceIntegration.objects.update_or_create(
-                workspace=workspace,
-                integration=integration,
-                defaults=update_defaults,
-            )
+            try:
+                with transaction.atomic():
+                    WorkspaceIntegration.objects.update_or_create(
+                        workspace=workspace,
+                        integration=integration,
+                        defaults=update_defaults,
+                    )
+            except IntegrityError:
+                # Race condition: two simultaneous callback hits (GitHub sometimes
+                # redirects twice). The record was just created by the other request —
+                # simply update it in place so the latest installation_id wins.
+                WorkspaceIntegration.objects.filter(
+                    workspace=workspace,
+                    integration=integration,
+                ).update(**update_defaults)
         except Exception as e:
             import logging
             logging.getLogger(__name__).error("GithubAppCallbackEndpoint: %s", e, exc_info=True)
