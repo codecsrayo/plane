@@ -8,7 +8,7 @@ import { useState } from "react";
 import { observer } from "mobx-react";
 import { useNavigate } from "react-router";
 import useSWR, { mutate } from "swr";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Plus } from "lucide-react";
 import { EUserPermissions, EUserPermissionsLevel } from "@plane/constants";
 import { Button } from "@plane/propel/button";
 import { TOAST_TYPE, setToast } from "@plane/propel/toast";
@@ -19,8 +19,10 @@ import GithubLogo from "@/app/assets/services/github.png?url";
 import GitlabLogo from "@/app/assets/services/gitlab.png?url";
 import SlackLogo from "@/app/assets/services/slack.png?url";
 // integration components
-import { GithubPRStateMapping } from "@/components/integration/github/pr-state-mapping";
-import { GithubProjectIssueSync } from "@/components/integration/github/project-issue-sync";
+import { GithubPRStateMapping, getPRStateMappingSwrKey } from "@/components/integration/github/pr-state-mapping";
+import { GithubPRStateMappingModal } from "@/components/integration/github/pr-state-mapping-modal";
+import { GithubProjectIssueSync, getRepoSyncSwrKey } from "@/components/integration/github/project-issue-sync";
+import { GithubProjectIssueSyncModal } from "@/components/integration/github/project-issue-sync-modal";
 // components
 import { NotAuthorizedView } from "@/components/auth-screens/not-authorized-view";
 import { PageHead } from "@/components/core/page-title";
@@ -52,10 +54,9 @@ const integrationService = new IntegrationService();
 
 function ConnectedAccountDetails({ metadata }: { metadata: Record<string, unknown> | null }) {
   if (!metadata || Object.keys(metadata).length === 0) {
-    return <p className="text-sm text-tertiary">No account details available.</p>;
+    return <p className="text-sm text-custom-text-300">No account details available.</p>;
   }
 
-  // Pick the most meaningful fields to display
   const rows: { label: string; value: string }[] = [];
 
   if (typeof metadata.installation_id !== "undefined")
@@ -69,7 +70,6 @@ function ConnectedAccountDetails({ metadata }: { metadata: Record<string, unknow
   if (typeof metadata.login !== "undefined")
     rows.push({ label: "Login", value: String(metadata.login) });
 
-  // Fallback: show all keys we didn't already handle
   if (rows.length === 0) {
     for (const [k, v] of Object.entries(metadata)) {
       rows.push({ label: k, value: String(v) });
@@ -80,8 +80,8 @@ function ConnectedAccountDetails({ metadata }: { metadata: Record<string, unknow
     <dl className="space-y-2">
       {rows.map(({ label, value }) => (
         <div key={label} className="flex items-center gap-3">
-          <dt className="w-36 shrink-0 text-xs font-medium text-secondary">{label}</dt>
-          <dd className="text-xs text-primary">{value}</dd>
+          <dt className="w-36 shrink-0 text-xs font-medium text-custom-text-200">{label}</dt>
+          <dd className="text-xs text-custom-text-100">{value}</dd>
         </div>
       ))}
     </dl>
@@ -97,6 +97,8 @@ function IntegrationDetailPage({ params }: Route.ComponentProps) {
 
   // states
   const [isDisconnecting, setIsDisconnecting] = useState(false);
+  const [isPRMappingModalOpen, setIsPRMappingModalOpen] = useState(false);
+  const [isIssueSyncModalOpen, setIsIssueSyncModalOpen] = useState(false);
 
   // navigation
   const navigate = useNavigate();
@@ -177,6 +179,9 @@ function IntegrationDetailPage({ params }: Route.ComponentProps) {
     }
   };
 
+  const prMappingSwrKey = getPRStateMappingSwrKey(workspaceIntegration.id);
+  const repoSyncSwrKey = getRepoSyncSwrKey(workspaceSlug as string);
+
   return (
     <>
       <PageHead title={pageTitle} />
@@ -188,7 +193,7 @@ function IntegrationDetailPage({ params }: Route.ComponentProps) {
           {/* Back link */}
           <button
             type="button"
-            className="flex items-center gap-1.5 text-xs text-secondary hover:text-primary transition-colors w-fit"
+            className="flex items-center gap-1.5 text-xs text-custom-text-300 hover:text-custom-text-100 transition-colors w-fit"
             onClick={() => navigate(`/${workspaceSlug}/settings/integrations`)}
           >
             <ArrowLeft className="h-3.5 w-3.5" />
@@ -197,12 +202,12 @@ function IntegrationDetailPage({ params }: Route.ComponentProps) {
 
           {/* Logo + name */}
           <div className="flex items-center gap-4">
-            <div className="h-12 w-12 flex-shrink-0 rounded-xl border border-subtle p-2">
+            <div className="h-12 w-12 flex-shrink-0 rounded-xl border border-custom-border-200 p-2">
               <img src={meta.logo} className="h-full w-full object-contain" alt={`${meta.title} logo`} />
             </div>
             <div>
-              <h1 className="text-xl font-semibold text-primary">{meta.title}</h1>
-              <p className="text-sm text-secondary">Integration settings</p>
+              <h1 className="text-xl font-semibold text-custom-text-100">{meta.title}</h1>
+              <p className="text-sm text-custom-text-300">Integration settings</p>
             </div>
           </div>
         </div>
@@ -210,11 +215,11 @@ function IntegrationDetailPage({ params }: Route.ComponentProps) {
         {/* ----------------------------------------------------------------
             Connected account card
         ---------------------------------------------------------------- */}
-        <div className="rounded-lg border border-subtle bg-surface-1 p-5 space-y-4">
+        <div className="rounded-lg border border-custom-border-200 bg-custom-background-100 p-5 space-y-4">
           <div className="flex items-center justify-between">
-            <h2 className="text-sm font-semibold text-primary">Connected account</h2>
+            <h2 className="text-sm font-semibold text-custom-text-100">Connected account</h2>
             <Button
-              variant="error-fill"
+              variant="danger"
               size="sm"
               onClick={handleDisconnect}
               loading={isDisconnecting}
@@ -229,17 +234,29 @@ function IntegrationDetailPage({ params }: Route.ComponentProps) {
         {/* ----------------------------------------------------------------
             Pull Request State Mapping — GitHub only
         ---------------------------------------------------------------- */}
-        <div className="rounded-lg border border-subtle bg-surface-1 p-5 space-y-4">
-          <div>
-            <h2 className="text-sm font-semibold text-primary">Pull Request State Mapping</h2>
-            <p className="mt-1 text-xs text-secondary">
-              Map GitHub pull request states to Plane issue states per project.
-            </p>
+        <div className="rounded-lg border border-custom-border-200 bg-custom-background-100 p-5 space-y-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <h2 className="text-sm font-semibold text-custom-text-100">Pull Request State Mapping</h2>
+              <p className="mt-1 text-xs text-custom-text-300">
+                Map GitHub pull request states to Plane issue states per project.
+              </p>
+            </div>
+            {provider === "github" && (
+              <button
+                type="button"
+                onClick={() => setIsPRMappingModalOpen(true)}
+                className="flex h-7 w-7 items-center justify-center rounded-md border border-custom-border-200 text-custom-text-300 hover:text-custom-text-100 hover:border-custom-border-100 transition-colors"
+                title="Add PR state mapping"
+              >
+                <Plus className="h-4 w-4" />
+              </button>
+            )}
           </div>
           {provider === "github" && workspaceIntegration ? (
             <GithubPRStateMapping workspaceIntegrationId={workspaceIntegration.id} />
           ) : (
-            <span className="rounded bg-custom-background-80 px-1.5 py-0.5 text-[11px] font-medium text-secondary">
+            <span className="rounded bg-custom-background-80 px-1.5 py-0.5 text-[11px] font-medium text-custom-text-300">
               Coming soon
             </span>
           )}
@@ -248,24 +265,57 @@ function IntegrationDetailPage({ params }: Route.ComponentProps) {
         {/* ----------------------------------------------------------------
             Project Issue Sync — GitHub only
         ---------------------------------------------------------------- */}
-        <div className="rounded-lg border border-subtle bg-surface-1 p-5 space-y-4">
-          <div>
-            <h2 className="text-sm font-semibold text-primary">Project Issue Sync</h2>
-            <p className="mt-1 text-xs text-secondary">
-              Connect Plane projects to {meta.title} repositories for issue synchronization.
-            </p>
+        <div className="rounded-lg border border-custom-border-200 bg-custom-background-100 p-5 space-y-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <h2 className="text-sm font-semibold text-custom-text-100">Project Issue Sync</h2>
+              <p className="mt-1 text-xs text-custom-text-300">
+                Connect Plane projects to {meta.title} repositories for issue synchronization.
+              </p>
+            </div>
+            {provider === "github" && (
+              <button
+                type="button"
+                onClick={() => setIsIssueSyncModalOpen(true)}
+                className="flex h-7 w-7 items-center justify-center rounded-md border border-custom-border-200 text-custom-text-300 hover:text-custom-text-100 hover:border-custom-border-100 transition-colors"
+                title="Add project issue sync"
+              >
+                <Plus className="h-4 w-4" />
+              </button>
+            )}
           </div>
           {provider === "github" ? (
             <GithubProjectIssueSync workspaceSlug={workspaceSlug as string} />
           ) : (
-            <span className="rounded bg-custom-background-80 px-1.5 py-0.5 text-[11px] font-medium text-secondary">
+            <span className="rounded bg-custom-background-80 px-1.5 py-0.5 text-[11px] font-medium text-custom-text-300">
               Coming soon
             </span>
           )}
         </div>
       </section>
+
+      {/* Modals */}
+      {provider === "github" && (
+        <>
+          <GithubPRStateMappingModal
+            isOpen={isPRMappingModalOpen}
+            onClose={() => setIsPRMappingModalOpen(false)}
+            workspaceSlug={workspaceSlug as string}
+            workspaceIntegrationId={workspaceIntegration.id}
+            swrKey={prMappingSwrKey}
+          />
+          <GithubProjectIssueSyncModal
+            isOpen={isIssueSyncModalOpen}
+            onClose={() => setIsIssueSyncModalOpen(false)}
+            workspaceSlug={workspaceSlug as string}
+            swrKey={repoSyncSwrKey}
+          />
+        </>
+      )}
     </>
   );
 }
 
 export default observer(IntegrationDetailPage);
+
+

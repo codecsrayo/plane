@@ -81,7 +81,14 @@ export class IntegrationService extends APIService {
 
   async createRepoSync(
     workspaceSlug: string,
-    data: { repo_id: string; repo_full_name: string; project_id: string }
+    data: {
+      repo_id: string;
+      repo_full_name: string;
+      project_id: string;
+      issue_open_state?: string;
+      issue_closed_state?: string;
+      sync_direction?: "bidirectional" | "unidirectional";
+    }
   ): Promise<any> {
     return this.post(`/api/workspaces/${workspaceSlug}/workspace-integrations/github/repo-syncs/`, data)
       .then((response) => response?.data)
@@ -121,7 +128,7 @@ export class IntegrationService extends APIService {
   async createPRStateMapping(
     workspaceSlug: string,
     workspaceIntegrationId: string,
-    data: { project: string; state: string; github_pr_state: string }
+    data: { project: string; state: string; github_pr_state: string; prevent_regression?: boolean }
   ): Promise<any> {
     return this.post(
       `/api/workspaces/${workspaceSlug}/workspace-integrations/${workspaceIntegrationId}/pr-state-mappings/`,
