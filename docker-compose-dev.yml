@@ -6,16 +6,16 @@ services:
       dockerfile: ./apps/web/Dockerfile.dev
       args:
         DOCKER_BUILDKIT: 1
-        VITE_API_BASE_URL: ${VITE_API_BASE_URL}
-        VITE_ADMIN_BASE_URL: ${VITE_ADMIN_BASE_URL}
-        VITE_ADMIN_BASE_PATH: ${VITE_ADMIN_BASE_PATH}
-        VITE_LIVE_BASE_URL: ${VITE_LIVE_BASE_URL}
-        VITE_LIVE_BASE_PATH: ${VITE_LIVE_BASE_PATH}
-        VITE_SPACE_BASE_URL: ${VITE_SPACE_BASE_URL}
-        VITE_SPACE_BASE_PATH: ${VITE_SPACE_BASE_PATH}
-        VITE_WEB_BASE_URL: ${VITE_WEB_BASE_URL}
-        VITE_API_BASE_PATH: ${VITE_API_BASE_PATH}
-        VITE_WEB_BASE_PATH: ${VITE_WEB_BASE_PATH}
+        VITE_API_BASE_URL: https://plane.codecsrayo.com
+        VITE_API_BASE_PATH: /api
+        VITE_ADMIN_BASE_URL: https://plane.codecsrayo.com
+        VITE_ADMIN_BASE_PATH: /god-mode
+        VITE_LIVE_BASE_URL: https://plane.codecsrayo.com
+        VITE_LIVE_BASE_PATH: /live
+        VITE_SPACE_BASE_URL: https://plane.codecsrayo.com
+        VITE_SPACE_BASE_PATH: /spaces
+        VITE_WEB_BASE_URL: https://plane.codecsrayo.com
+        VITE_WEB_BASE_PATH: ""
     restart: always
     networks:
       - dev_env
@@ -29,16 +29,16 @@ services:
       dockerfile: ./apps/admin/Dockerfile.dev
       args:
         DOCKER_BUILDKIT: 1
-        VITE_API_BASE_URL: ${VITE_API_BASE_URL}
-        VITE_API_BASE_PATH: ${VITE_API_BASE_PATH}
-        VITE_ADMIN_BASE_URL: ${VITE_ADMIN_BASE_URL}
-        VITE_ADMIN_BASE_PATH: ${VITE_ADMIN_BASE_PATH}
-        VITE_SPACE_BASE_URL: ${VITE_SPACE_BASE_URL}
-        VITE_SPACE_BASE_PATH: ${VITE_SPACE_BASE_PATH}
-        VITE_LIVE_BASE_URL: ${VITE_LIVE_BASE_URL}
-        VITE_LIVE_BASE_PATH: ${VITE_LIVE_BASE_PATH}
-        VITE_WEB_BASE_URL: ${VITE_WEB_BASE_URL}
-        VITE_WEB_BASE_PATH: ${VITE_WEB_BASE_PATH}
+        VITE_API_BASE_URL: https://plane.codecsrayo.com
+        VITE_API_BASE_PATH: /api
+        VITE_ADMIN_BASE_URL: https://plane.codecsrayo.com
+        VITE_ADMIN_BASE_PATH: /god-mode
+        VITE_SPACE_BASE_URL: https://plane.codecsrayo.com
+        VITE_SPACE_BASE_PATH: /spaces
+        VITE_LIVE_BASE_URL: https://plane.codecsrayo.com
+        VITE_LIVE_BASE_PATH: /live
+        VITE_WEB_BASE_URL: https://plane.codecsrayo.com
+        VITE_WEB_BASE_PATH: ""
     restart: always
     networks:
       - dev_env
@@ -53,16 +53,16 @@ services:
       dockerfile: ./apps/space/Dockerfile.dev
       args:
         DOCKER_BUILDKIT: 1
-        VITE_API_BASE_URL: ${VITE_API_BASE_URL}
-        VITE_API_BASE_PATH: ${VITE_API_BASE_PATH}
-        VITE_ADMIN_BASE_URL: ${VITE_ADMIN_BASE_URL}
-        VITE_ADMIN_BASE_PATH: ${VITE_ADMIN_BASE_PATH}
-        VITE_SPACE_BASE_URL: ${VITE_SPACE_BASE_URL}
-        VITE_SPACE_BASE_PATH: ${VITE_SPACE_BASE_PATH}
-        VITE_LIVE_BASE_URL: ${VITE_LIVE_BASE_URL}
-        VITE_LIVE_BASE_PATH: ${VITE_LIVE_BASE_PATH}
-        VITE_WEB_BASE_URL: ${VITE_WEB_BASE_URL}
-        VITE_WEB_BASE_PATH: ${VITE_WEB_BASE_PATH}
+        VITE_API_BASE_URL: https://plane.codecsrayo.com
+        VITE_API_BASE_PATH: /api
+        VITE_ADMIN_BASE_URL: https://plane.codecsrayo.com
+        VITE_ADMIN_BASE_PATH: /god-mode
+        VITE_SPACE_BASE_URL: https://plane.codecsrayo.com
+        VITE_SPACE_BASE_PATH: /spaces
+        VITE_LIVE_BASE_URL: https://plane.codecsrayo.com
+        VITE_LIVE_BASE_PATH: /live
+        VITE_WEB_BASE_URL: https://plane.codecsrayo.com
+        VITE_WEB_BASE_PATH: ""
     restart: always
     networks:
       - dev_env
