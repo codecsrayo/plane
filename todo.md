@@ -29,10 +29,10 @@ Rama activa: `feature/integrations-panel-fix-17593507967815292912`
 | Dead code: GitHub installation access token sin JWT (siempre fallaba) | `7f6abcf38` |
 | `next/navigation` usado en 6 archivos de integración (runtime crash en react-router) | `29adc41ab` |
 | Import duplicado de `react-router` en `single-integration-card.tsx` | `29adc41ab` |
-| `GithubAppCallbackEndpoint` hacía `redirect()` en vez de `postMessage` — popup nunca cerraba y el padre no recibía la señal | pendiente commit |
-| `workspace=workspace` redundante en `get_or_create` de `GithubRepository` — filtro incorrecto causaba duplicados | pendiente commit |
-| `github_client_id` no expuesto en la API de instancia — UI de conexión personal sin datos | pendiente commit |
-| UI trigger para OAuth personal de GitHub ausente en la detail page (TAREA 2 estaba mal marcada como ✅) | pendiente commit |
+| `GithubAppCallbackEndpoint` hacía `redirect()` en vez de `postMessage` — popup nunca cerraba y el padre no recibía la señal | ✅ corregido |
+| `workspace=workspace` redundante en `get_or_create` de `GithubRepository` — filtro incorrecto causaba duplicados | ✅ corregido |
+| `github_client_id` no expuesto en la API de instancia — UI de conexión personal sin datos | ✅ corregido |
+| UI trigger para OAuth personal de GitHub presente en detail page con `user-callback` popup | ✅ corregido |
 
 ---
 
@@ -139,7 +139,9 @@ class GithubPRStateMapping(BaseModel):
         unique_together = [("workspace_integration", "project", "github_pr_state")]
 ```
 
-**Migración:** crear `0124_github_pr_state_mapping.py`
+**Migración:** `0124_githubprstatemapping_usergithubconnection.py` ✅ ya existe
+
+> ⚠️ **LO QUE FALTA:** el `GithubPRStateMappingViewSet` y su URL en `integration.py` no fueron implementados. El frontend llama a `/pr-state-mappings/` pero el backend no tiene ese endpoint registrado.
 
 **Endpoints:**
 ```
@@ -363,7 +365,7 @@ IS_SLACK_ENABLED=1
 |---|---|
 | TAREA 1 — Detail page por integración | ✅ Hecho |
 | TAREA 2 — Cuenta personal GitHub | ✅ Hecho (UI trigger agregado + `github_client_id` expuesto en instancia API) |
-| TAREA 3 — PR State Mapping | ✅ Hecho |
+| TAREA 3 — PR State Mapping | ⚠️ Parcial — modelo + migración + frontend OK, pero falta ViewSet y URL en el backend (no hay endpoint `pr-state-mappings/`) |
 | TAREA 4 — Project Issue Sync | ✅ Hecho |
 | TAREA 5 — GitHub App JWT | ✅ Hecho |
 | TAREA 6 — GitLab callback | ✅ Hecho |
