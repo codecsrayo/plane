@@ -129,7 +129,7 @@ export const CalendarDayTile = observer(function CalendarDayTile(props: Props) {
         },
       })
     );
-  }, [dayTileRef?.current, formattedDatePayload]);
+  }, [formattedDatePayload, handleDragAndDrop, issues]);
 
   if (!formattedDatePayload) return null;
   const issueIds = groupedIssueIds?.[formattedDatePayload];
@@ -196,7 +196,8 @@ export const CalendarDayTile = observer(function CalendarDayTile(props: Props) {
         </div>
 
         {/* Mobile view content */}
-        <div
+        <button
+          type="button"
           onClick={() => setSelectedDate(date.date)}
           className={cn(
             "mx-auto flex h-full w-full cursor-pointer flex-col items-center justify-start py-2.5 text-13 font-medium opacity-80 md:hidden",
@@ -213,7 +214,7 @@ export const CalendarDayTile = observer(function CalendarDayTile(props: Props) {
           >
             {date.date.getDate()}
           </div>
-        </div>
+        </button>
       </div>
     </>
   );

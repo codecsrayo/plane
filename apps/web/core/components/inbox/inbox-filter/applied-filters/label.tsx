@@ -41,22 +41,24 @@ export const InboxIssueAppliedFiltersLabel = observer(function InboxIssueApplied
               <LabelIcons color={optionDetail.color} />
             </div>
             <div className="truncate text-11">{optionDetail?.name}</div>
-            <div
+            <button
+              type="button"
               className="relative flex h-3 w-3 flex-shrink-0 cursor-pointer items-center justify-center overflow-hidden text-tertiary transition-all hover:text-secondary"
               onClick={() => handleInboxIssueFilters("labels", handleFilterValue(value))}
             >
               <CloseIcon className={`h-3 w-3`} />
-            </div>
+            </button>
           </div>
         );
       })}
 
-      <div
+      <button
+        type="button"
         className="relative flex h-3 w-3 flex-shrink-0 cursor-pointer items-center justify-center overflow-hidden text-tertiary transition-all hover:text-secondary"
         onClick={clearFilter}
       >
         <CloseIcon className={`h-3 w-3`} />
-      </div>
+      </button>
     </Tag>
   );
 });
