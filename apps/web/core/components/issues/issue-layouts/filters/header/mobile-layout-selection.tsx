@@ -39,9 +39,9 @@ export function MobileLayoutSelection({
       customButtonClassName="flex flex-grow justify-center text-secondary text-13"
       closeOnSelect
     >
-      {ISSUE_LAYOUTS.filter((l) => layouts.includes(l.key)).map((layout, index) => (
+      {ISSUE_LAYOUTS.filter((l) => layouts.includes(l.key)).map((layout) => (
         <CustomMenu.MenuItem
-          key={index}
+          key={layout.key}
           onClick={() => {
             onChange(layout.key);
           }}
