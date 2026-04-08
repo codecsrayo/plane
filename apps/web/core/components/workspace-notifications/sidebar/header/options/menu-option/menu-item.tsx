@@ -15,11 +15,12 @@ export const NotificationMenuOptionItem = observer(function NotificationMenuOpti
 
   if (type === "menu-item")
     return (
-      <div
+      <button
+        type="button"
         className="mx-2 flex cursor-pointer items-center gap-2 rounded-xs p-1 px-2 transition-all hover:bg-layer-1"
-        onClick={() => onClick && onClick()}
+        onClick={onClick}
       >
-        {prependIcon && prependIcon}
+        {prependIcon}
         <div
           className={cn("text-body-xs-medium whitespace-nowrap", {
             "text-primary": isActive,
@@ -29,7 +30,7 @@ export const NotificationMenuOptionItem = observer(function NotificationMenuOpti
           {label}
         </div>
         {appendIcon && <div className="ml-auto">{appendIcon}</div>}
-      </div>
+      </button>
     );
 
   return <div className="border-b border-subtle" />;
