@@ -19,11 +19,25 @@ class SessionMiddleware(MiddlewareMixin):
         engine = import_module(settings.SESSION_ENGINE)
         self.SessionStore = engine.SessionStore
 
+    def _get_session_key(self, request):
+        is_admin_path = "instances" in request.path
+        primary_cookie = (
+            settings.ADMIN_SESSION_COOKIE_NAME
+            if is_admin_path
+            else settings.SESSION_COOKIE_NAME
+        )
+        fallback_cookie = (
+            settings.SESSION_COOKIE_NAME
+            if is_admin_path
+            else settings.ADMIN_SESSION_COOKIE_NAME
+        )
+
+        return request.COOKIES.get(primary_cookie) or request.COOKIES.get(
+            fallback_cookie
+        )
+
     def process_request(self, request):
-        if "instances" in request.path:
-            session_key = request.COOKIES.get(settings.ADMIN_SESSION_COOKIE_NAME)
-        else:
-            session_key = request.COOKIES.get(settings.SESSION_COOKIE_NAME)
+        session_key = self._get_session_key(request)
         request.session = self.SessionStore(session_key)
 
     def process_response(self, request, response):
