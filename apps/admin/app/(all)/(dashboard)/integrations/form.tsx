@@ -7,7 +7,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { observer } from "mobx-react";
-import { Copy } from "lucide-react";
+import { Monitor } from "lucide-react";
 import { useForm } from "react-hook-form";
 // plane internal packages
 import { Button, getButtonStyling } from "@plane/propel/button";
@@ -23,6 +23,7 @@ import { CodeBlock } from "@/components/common/code-block";
 import { ConfirmDiscardModal } from "@/components/common/confirm-discard-modal";
 import type { TControllerInputFormField } from "@/components/common/controller-input";
 import { ControllerInput } from "@/components/common/controller-input";
+import { CopyField } from "@/components/common/copy-field";
 // hooks
 import { useInstance } from "@/hooks/store";
 
@@ -413,41 +414,43 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
             </div>
           </div>
 
-          {/* Setup URLs info panel (outside the toggle opacity — always visible) */}
-          <div className="flex flex-col gap-3 rounded-md border border-subtle bg-surface-2 p-4">
-            <p className="text-sm font-medium">Setup URLs</p>
+          {/* Setup URLs info panel — styled to match auth provider panels */}
+          <div className="flex flex-col gap-y-4">
+            <div className="text-base font-medium">Plane-provided details for GitHub</div>
 
-            <div className="flex flex-col gap-1">
-              <p className="text-xs text-secondary">GitHub App Setup URL (Callback)</p>
-              <div className="flex items-center gap-2">
-                <code className="bg-surface-3 text-xs font-mono flex-1 rounded px-3 py-1.5 break-all">
-                  {origin}/api/github/callback/
-                </code>
-                <button
-                  type="button"
-                  onClick={() => navigator.clipboard.writeText(`${origin}/api/github/callback/`)}
-                  className="hover:bg-surface-3 shrink-0 rounded p-1.5 text-secondary hover:text-primary"
-                  title="Copy"
-                >
-                  <Copy size={14} />
-                </button>
+            <div className="flex flex-col gap-y-4">
+              {/* Callback URL */}
+              <div className="flex flex-col gap-y-4 rounded-lg bg-layer-1 px-6 py-4">
+                <CopyField
+                  label="Setup URL (Callback)"
+                  url={`${origin}/api/github/callback/`}
+                  description={
+                    <p>
+                      Paste this into the <CodeBlock darkerShade>Setup URL (optional)</CodeBlock> field when creating
+                      your GitHub App.
+                    </p>
+                  }
+                />
               </div>
-            </div>
 
-            <div className="flex flex-col gap-1">
-              <p className="text-xs text-secondary">Webhook URL</p>
-              <div className="flex items-center gap-2">
-                <code className="bg-surface-3 text-xs font-mono flex-1 rounded px-3 py-1.5 break-all">
-                  {origin}/api/github-webhook/
-                </code>
-                <button
-                  type="button"
-                  onClick={() => navigator.clipboard.writeText(`${origin}/api/github-webhook/`)}
-                  className="hover:bg-surface-3 shrink-0 rounded p-1.5 text-secondary hover:text-primary"
-                  title="Copy"
-                >
-                  <Copy size={14} />
-                </button>
+              {/* Webhook URL */}
+              <div className="flex flex-col overflow-hidden rounded-lg">
+                <div className="flex items-center gap-x-3 bg-layer-3 px-6 py-3 text-11 font-medium text-secondary uppercase">
+                  <Monitor className="h-3 w-3" />
+                  Webhooks
+                </div>
+                <div className="flex flex-col gap-y-4 bg-layer-1 px-6 py-4">
+                  <CopyField
+                    label="Webhook URL"
+                    url={`${origin}/api/github-webhook/`}
+                    description={
+                      <p>
+                        Paste this into the <CodeBlock darkerShade>Webhook URL</CodeBlock> field in your GitHub App
+                        settings.
+                      </p>
+                    }
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -465,8 +468,8 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
                 className="text-accent-primary hover:underline"
               >
                 gitlab.com/-/profile/applications
-              </a>{" "}
-              with redirect URI: <CodeBlock darkerShade>{origin}/auth/gitlab/callback</CodeBlock>.
+              </a>
+              .
             </>
           }
           fields={gitlabFields}
@@ -476,6 +479,29 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
           enabled={isGitlabEnabled}
           onToggle={() => handleToggle("IS_GITLAB_ENABLED", isGitlabEnabled)}
         />
+
+        {/* GitLab redirect URI panel */}
+        <div className="-mt-4 flex flex-col gap-y-4 border-b border-subtle pb-8">
+          <div className="text-base font-medium">Plane-provided details for GitLab</div>
+          <div className="flex flex-col overflow-hidden rounded-lg">
+            <div className="flex items-center gap-x-3 bg-layer-3 px-6 py-3 text-11 font-medium text-secondary uppercase">
+              <Monitor className="h-3 w-3" />
+              OAuth
+            </div>
+            <div className="flex flex-col gap-y-4 bg-layer-1 px-6 py-4">
+              <CopyField
+                label="Redirect URI"
+                url={`${origin}/auth/gitlab/callback`}
+                description={
+                  <p>
+                    Paste this into the <CodeBlock darkerShade>Redirect URI</CodeBlock> field when creating your GitLab
+                    OAuth application.
+                  </p>
+                }
+              />
+            </div>
+          </div>
+        </div>
 
         <Section
           title="Slack"
@@ -500,6 +526,29 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
           enabled={isSlackEnabled}
           onToggle={() => handleToggle("IS_SLACK_ENABLED", isSlackEnabled)}
         />
+
+        {/* Slack redirect URI panel */}
+        <div className="-mt-4 flex flex-col gap-y-4 border-b border-subtle pb-8 last:border-none">
+          <div className="text-base font-medium">Plane-provided details for Slack</div>
+          <div className="flex flex-col overflow-hidden rounded-lg">
+            <div className="flex items-center gap-x-3 bg-layer-3 px-6 py-3 text-11 font-medium text-secondary uppercase">
+              <Monitor className="h-3 w-3" />
+              OAuth
+            </div>
+            <div className="flex flex-col gap-y-4 bg-layer-1 px-6 py-4">
+              <CopyField
+                label="Redirect URL"
+                url={`${origin}/auth/slack/callback/`}
+                description={
+                  <p>
+                    Paste this into the <CodeBlock darkerShade>Redirect URL</CodeBlock> field under OAuth & Permissions
+                    in your Slack App settings.
+                  </p>
+                }
+              />
+            </div>
+          </div>
+        </div>
 
         {/* Actions */}
         <div className="flex items-center gap-4 pt-2">
