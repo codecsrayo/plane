@@ -90,7 +90,7 @@ export const SingleIntegrationCard = observer(function SingleIntegrationCard({ i
   // Respect God Mode enable/disable flags per integration provider
   const isEnabled =
     integration.provider === "github"
-      ? (config?.is_github_enabled ?? true)
+      ? (config?.is_github_integration_enabled ?? true)
       : integration.provider === "gitlab"
         ? (config?.is_gitlab_enabled ?? true)
         : integration.provider === "slack"
