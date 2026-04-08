@@ -44,7 +44,7 @@ export function CollapsibleButton(props: Props) {
           )}
           <span className={cn("text-14 font-medium text-primary", titleClassName)}>{title}</span>
         </div>
-        {indicatorElement && indicatorElement}
+        {indicatorElement}
       </div>
       {actionItemElement && isOpen && actionItemElement}
     </div>
