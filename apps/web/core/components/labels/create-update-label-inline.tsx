@@ -89,41 +89,37 @@ export const CreateUpdateLabelInline = observer(
     const handleLabelCreate: SubmitHandler<IIssueLabel> = async (formData) => {
       if (isSubmitting) return;
 
-      await labelOperationsCallbacks
-        .createLabel(formData)
-        .then((_res) => {
-          handleClose();
-          reset(defaultValues);
-        })
-        .catch((error) => {
-          const errorMessage = getErrorMessage(error, "create");
-          setToast({
-            title: "Error!",
-            type: TOAST_TYPE.ERROR,
-            message: errorMessage,
-          });
-          reset(formData);
+      try {
+        await labelOperationsCallbacks.createLabel(formData);
+        handleClose();
+        reset(defaultValues);
+      } catch (error) {
+        const errorMessage = getErrorMessage(error, "create");
+        setToast({
+          title: "Error!",
+          type: TOAST_TYPE.ERROR,
+          message: errorMessage,
         });
+        reset(formData);
+      }
     };
 
     const handleLabelUpdate: SubmitHandler<IIssueLabel> = async (formData) => {
       if (!labelToUpdate?.id || isSubmitting) return;
 
-      await labelOperationsCallbacks
-        .updateLabel(labelToUpdate.id, formData)
-        .then((_res) => {
-          reset(defaultValues);
-          handleClose();
-        })
-        .catch((error) => {
-          const errorMessage = getErrorMessage(error, "update");
-          setToast({
-            title: "Oops!",
-            type: TOAST_TYPE.ERROR,
-            message: errorMessage,
-          });
-          reset(formData);
+      try {
+        await labelOperationsCallbacks.updateLabel(labelToUpdate.id, formData);
+        reset(defaultValues);
+        handleClose();
+      } catch (error) {
+        const errorMessage = getErrorMessage(error, "update");
+        setToast({
+          title: "Oops!",
+          type: TOAST_TYPE.ERROR,
+          message: errorMessage,
         });
+        reset(formData);
+      }
     };
 
     const handleFormSubmit = (formData: IIssueLabel) => {
@@ -197,7 +193,7 @@ export const CreateUpdateLabelInline = observer(
                           <TwitterPicker
                             colors={LABEL_COLOR_OPTIONS}
                             color={value}
-                            onChange={(value) => onChange(value.hex)}
+                            onChange={(selectedColor) => onChange(selectedColor.hex)}
                           />
                         )}
                       />
@@ -218,15 +214,14 @@ export const CreateUpdateLabelInline = observer(
                   message: t("project_settings.labels.label_max_char"),
                 },
               }}
-              render={({ field: { value, onChange, ref } }) => (
+              render={({ field: { value, onChange, ref: inputRef } }) => (
                 <Input
                   id="labelName"
                   name="name"
                   type="text"
-                  autoFocus
                   value={value}
                   onChange={onChange}
-                  ref={ref}
+                  ref={inputRef}
                   hasError={Boolean(errors.name)}
                   placeholder={t("project_settings.labels.label_title")}
                   className="w-full"

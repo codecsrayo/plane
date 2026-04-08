@@ -58,10 +58,15 @@ export const IssueLabel = observer(function IssueLabel(props: TIssueLabel) {
 
   const labelOperations: TLabelOperations = useMemo(
     () => ({
-      updateIssue: async (workspaceSlug: string, projectId: string, issueId: string, data: Partial<TIssue>) => {
+      updateIssue: async (
+        targetWorkspaceSlug: string,
+        targetProjectId: string,
+        targetIssueId: string,
+        data: Partial<TIssue>
+      ) => {
         try {
           if (onLabelUpdate) onLabelUpdate(data.label_ids || []);
-          else await updateIssue(workspaceSlug, projectId, issueId, data);
+          else await updateIssue(targetWorkspaceSlug, targetProjectId, targetIssueId, data);
         } catch (_error) {
           setToast({
             title: t("toast.error"),
@@ -70,9 +75,9 @@ export const IssueLabel = observer(function IssueLabel(props: TIssueLabel) {
           });
         }
       },
-      createLabel: async (workspaceSlug: string, projectId: string, data: Partial<IIssueLabel>) => {
+      createLabel: async (targetWorkspaceSlug: string, targetProjectId: string, data: Partial<IIssueLabel>) => {
         try {
-          const labelResponse = await createLabel(workspaceSlug, projectId, data);
+          const labelResponse = await createLabel(targetWorkspaceSlug, targetProjectId, data);
           if (!isInboxIssue)
             setToast({
               title: t("toast.success"),
@@ -94,7 +99,7 @@ export const IssueLabel = observer(function IssueLabel(props: TIssueLabel) {
         }
       },
     }),
-    [updateIssue, createLabel, onLabelUpdate]
+    [updateIssue, createLabel, isInboxIssue, onLabelUpdate, t]
   );
 
   return (

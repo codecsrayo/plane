@@ -49,62 +49,55 @@ export function CycleCreateUpdateModal(props: CycleModalProps) {
     if (!workspaceSlug || !projectId) return;
 
     const selectedProjectId = payload.project_id ?? projectId.toString();
-    await createCycle(workspaceSlug, selectedProjectId, payload)
-      .then((_res) => {
-        // mutate when the current cycle creation is active
-        if (payload.start_date && payload.end_date) {
-          const currentDate = new Date();
-          const cycleStartDate = new Date(payload.start_date);
-          const cycleEndDate = new Date(payload.end_date);
-          if (currentDate >= cycleStartDate && currentDate <= cycleEndDate) {
-            mutate(`PROJECT_ACTIVE_CYCLE_${selectedProjectId}`);
-          }
+    try {
+      await createCycle(workspaceSlug, selectedProjectId, payload);
+      // mutate when the current cycle creation is active
+      if (payload.start_date && payload.end_date) {
+        const currentDate = new Date();
+        const cycleStartDate = new Date(payload.start_date);
+        const cycleEndDate = new Date(payload.end_date);
+        if (currentDate >= cycleStartDate && currentDate <= cycleEndDate) {
+          mutate(`PROJECT_ACTIVE_CYCLE_${selectedProjectId}`);
         }
+      }
 
-        setToast({
-          type: TOAST_TYPE.SUCCESS,
-          title: "Success!",
-          message: "Cycle created successfully.",
-        });
-      })
-      .catch((err) => {
-        setToast({
-          type: TOAST_TYPE.ERROR,
-          title: "Error!",
-          message: err?.detail ?? "Error in creating cycle. Please try again.",
-        });
+      setToast({
+        type: TOAST_TYPE.SUCCESS,
+        title: "Success!",
+        message: "Cycle created successfully.",
       });
+    } catch (err: any) {
+      setToast({
+        type: TOAST_TYPE.ERROR,
+        title: "Error!",
+        message: err?.detail ?? "Error in creating cycle. Please try again.",
+      });
+    }
   };
 
   const handleUpdateCycle = async (cycleId: string, payload: Partial<ICycle>) => {
     if (!workspaceSlug || !projectId) return;
 
     const selectedProjectId = payload.project_id ?? projectId.toString();
-    await updateCycleDetails(workspaceSlug, selectedProjectId, cycleId, payload)
-      .then((_res) => {
-        setToast({
-          type: TOAST_TYPE.SUCCESS,
-          title: "Success!",
-          message: "Cycle updated successfully.",
-        });
-      })
-      .catch((err) => {
-        setToast({
-          type: TOAST_TYPE.ERROR,
-          title: "Error!",
-          message: err?.detail ?? "Error in updating cycle. Please try again.",
-        });
+    try {
+      await updateCycleDetails(workspaceSlug, selectedProjectId, cycleId, payload);
+      setToast({
+        type: TOAST_TYPE.SUCCESS,
+        title: "Success!",
+        message: "Cycle updated successfully.",
       });
+    } catch (err: any) {
+      setToast({
+        type: TOAST_TYPE.ERROR,
+        title: "Error!",
+        message: err?.detail ?? "Error in updating cycle. Please try again.",
+      });
+    }
   };
 
-  const dateChecker = async (projectId: string, payload: CycleDateCheckData) => {
-    let status = false;
-
-    await cycleService.cycleDateCheck(workspaceSlug, projectId, payload).then((res) => {
-      status = res.status;
-    });
-
-    return status;
+  const dateChecker = async (targetProjectId: string, payload: CycleDateCheckData) => {
+    const result = await cycleService.cycleDateCheck(workspaceSlug, targetProjectId, payload);
+    return result.status;
   };
 
   const handleFormSubmit = async (formData: Partial<ICycle>) => {
@@ -144,9 +137,8 @@ export function CycleCreateUpdateModal(props: CycleModalProps) {
     if (isDateValid) {
       if (data?.id) await handleUpdateCycle(data.id, payload);
       else {
-        await handleCreateCycle(payload).then(() => {
-          setCycleTab("all");
-        });
+        await handleCreateCycle(payload);
+        setCycleTab("all");
       }
       handleClose();
     } else
