@@ -48,7 +48,7 @@ export const ExtendedProjectSidebar = observer(function ExtendedProjectSidebar()
     if (sourceId === destinationId) return;
 
     const joinedProjectsList: TProject[] = [];
-    joinedProjects.map((projectId) => {
+    joinedProjects.forEach((projectId) => {
       const projectDetails = getPartialProjectById(projectId);
       if (projectDetails) joinedProjectsList.push(projectDetails);
     });
@@ -84,13 +84,12 @@ export const ExtendedProjectSidebar = observer(function ExtendedProjectSidebar()
 
   const handleClose = useCallback(() => toggleExtendedProjectSidebar(false), [toggleExtendedProjectSidebar]);
 
-  const handleCopyText = (projectId: string) => {
-    copyUrlToClipboard(`${workspaceSlug}/projects/${projectId}/issues`).then(() => {
-      setToast({
-        type: TOAST_TYPE.SUCCESS,
-        title: t("link_copied"),
-        message: t("project_link_copied_to_clipboard"),
-      });
+  const handleCopyText = async (projectId: string) => {
+    await copyUrlToClipboard(`${workspaceSlug}/projects/${projectId}/issues`);
+    setToast({
+      type: TOAST_TYPE.SUCCESS,
+      title: t("link_copied"),
+      message: t("project_link_copied_to_clipboard"),
     });
   };
   return (
@@ -134,7 +133,6 @@ export const ExtendedProjectSidebar = observer(function ExtendedProjectSidebar()
               className="w-full max-w-[234px] border-none bg-transparent text-13 outline-none placeholder:text-placeholder"
               placeholder={t("search")}
               value={searchQuery}
-              autoFocus
               onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
