@@ -8,7 +8,6 @@ import { FloatingOverlay } from "@floating-ui/react";
 import type { SuggestionProps } from "@tiptap/suggestion";
 import { forwardRef, useCallback, useEffect, useImperativeHandle, useLayoutEffect, useRef, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { debounce } from "lodash-es";
 // plane utils
 import { useOutsideClickDetector } from "@plane/hooks";
 import { cn } from "@plane/utils";
@@ -82,11 +81,15 @@ export const MentionsListDropdown = forwardRef(function MentionsListDropdown(pro
     });
   }, [sections]);
 
-  // debounced search callback
-  const debouncedSearchCallback = useCallback(
-    debounce(async (searchQuery: string) => {
+  // trigger debounced search when query changes
+  useEffect(() => {
+    if (query === undefined || query === null) return;
+
+    setIsLoading(true);
+
+    const timeoutId = window.setTimeout(async () => {
       try {
-        const sectionsResponse = await searchCallback?.(searchQuery);
+        const sectionsResponse = await searchCallback?.(query);
         if (sectionsResponse) {
           setSections(sectionsResponse);
         }
@@ -95,25 +98,12 @@ export const MentionsListDropdown = forwardRef(function MentionsListDropdown(pro
       } finally {
         setIsLoading(false);
       }
-    }, 300),
-    [searchCallback]
-  );
+    }, 300);
 
-  // trigger debounced search when query changes
-  useEffect(() => {
-    if (query !== undefined && query !== null) {
-      setIsLoading(true);
-      void debouncedSearchCallback(query);
-    }
-  }, [query, debouncedSearchCallback]);
-
-  // cancel pending debounced calls on unmount
-  useEffect(
-    () => () => {
-      debouncedSearchCallback.cancel();
-    },
-    [debouncedSearchCallback]
-  );
+    return () => {
+      window.clearTimeout(timeoutId);
+    };
+  }, [query, searchCallback]);
 
   // scroll to the dropdown item when navigating via keyboard
   useLayoutEffect(() => {
@@ -146,12 +136,10 @@ export const MentionsListDropdown = forwardRef(function MentionsListDropdown(pro
       />
       <div
         ref={dropdownContainer}
+        role="presentation"
         className="relative max-h-80 w-[14rem] space-y-2 overflow-y-auto rounded-md border-[0.5px] border-strong bg-surface-1 px-2 py-2.5 shadow-raised-200"
         style={{
           zIndex: 100,
-        }}
-        onClick={(e) => {
-          e.stopPropagation();
         }}
         onMouseDown={(e) => {
           e.stopPropagation();

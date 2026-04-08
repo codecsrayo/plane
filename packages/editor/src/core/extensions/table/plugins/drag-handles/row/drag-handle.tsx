@@ -161,9 +161,9 @@ export function RowDragHandle(props: RowDragHandleProps) {
           let tr = editor.state.tr;
           const selection = editor.state.selection;
           if (isCellSelection(selection)) {
-            const table = findTable(selection);
-            if (table) {
-              tr = moveSelectedRows(editor, table, selection, dropIndex, tr);
+            const selectedTable = findTable(selection);
+            if (selectedTable) {
+              tr = moveSelectedRows(editor, selectedTable, selection, dropIndex, tr);
             }
           }
           editor.view.dispatch(tr);
