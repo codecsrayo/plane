@@ -74,11 +74,11 @@ export const AuthHeader = observer(function AuthHeader(props: TAuthHeader) {
   const getHeaderSubHeader = (
     step: EAuthSteps,
     mode: EAuthModes,
-    invitation: IWorkspaceMemberInvitation | undefined,
+    workspaceInvitation: IWorkspaceMemberInvitation | undefined,
     email: string | undefined
   ) => {
-    if (invitation && email && invitation.email === email && invitation.workspace) {
-      const workspace = invitation.workspace;
+    if (workspaceInvitation && email && workspaceInvitation.email === email && workspaceInvitation.workspace) {
+      const workspace = workspaceInvitation.workspace;
       return {
         header: (
           <div className="relative inline-flex items-center gap-2">
@@ -88,7 +88,7 @@ export const AuthHeader = observer(function AuthHeader(props: TAuthHeader) {
           </div>
         ),
         subHeader:
-          mode == EAuthModes.SIGN_UP
+          mode === EAuthModes.SIGN_UP
             ? "Create an account to start managing work with your team."
             : "Log in to start managing work with your team.",
       };
