@@ -4,23 +4,23 @@
  * See the LICENSE file for details.
  */
 
+const getPreviousRow = (element: HTMLElement) => {
+  const previousRow = element.closest("tr")?.previousSibling;
+
+  if (previousRow) return previousRow;
+  //if previous row does not exist in the parent check the row with the header of the table
+  return element.closest("tbody")?.previousSibling?.childNodes?.[0];
+};
+
+const getNextRow = (element: HTMLElement) => {
+  const nextRow = element.closest("tr")?.nextSibling;
+
+  if (nextRow) return nextRow;
+  //if next row does not exist in the parent check the row with the body of the table
+  return element.closest("thead")?.nextSibling?.childNodes?.[0];
+};
+
 export const useTableKeyboardNavigation = () => {
-  const getPreviousRow = (element: HTMLElement) => {
-    const previousRow = element.closest("tr")?.previousSibling;
-
-    if (previousRow) return previousRow;
-    //if previous row does not exist in the parent check the row with the header of the table
-    return element.closest("tbody")?.previousSibling?.childNodes?.[0];
-  };
-
-  const getNextRow = (element: HTMLElement) => {
-    const nextRow = element.closest("tr")?.nextSibling;
-
-    if (nextRow) return nextRow;
-    //if next row does not exist in the parent check the row with the body of the table
-    return element.closest("thead")?.nextSibling?.childNodes?.[0];
-  };
-
   const handleKeyBoardNavigation = function (e: React.KeyboardEvent<HTMLTableElement>) {
     const element = e.target as HTMLElement;
 

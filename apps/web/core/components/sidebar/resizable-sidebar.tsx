@@ -146,13 +146,13 @@ export function ResizableSidebar({
     if (!isAnySidebarDropdownOpen && isCollapsed && isHoveringTrigger) {
       handlePeekLeave();
     }
-  }, [isAnySidebarDropdownOpen]);
+  }, [handlePeekLeave, isAnySidebarDropdownOpen, isCollapsed, isHoveringTrigger]);
 
   useEffect(() => {
     if (!isAnyExtendedSidebarExpanded && isCollapsed && isHoveringTrigger) {
       handlePeekLeave();
     }
-  }, [isAnyExtendedSidebarExpanded]);
+  }, [handlePeekLeave, isAnyExtendedSidebarExpanded, isCollapsed, isHoveringTrigger]);
 
   // Reset peek when sidebar is expanded
   useEffect(() => {
@@ -263,7 +263,7 @@ export function ResizableSidebar({
       </div>
 
       {/* Extended Sidebar */}
-      {extendedSidebar && extendedSidebar}
+      {extendedSidebar}
     </>
   );
 }
