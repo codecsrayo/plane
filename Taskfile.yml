@@ -111,6 +111,11 @@ tasks:
   dev:ps:
     cmds:
       - docker compose -f docker-compose-dev.yml ps
+  
+  dev:clean-volumes:
+    cmds:
+      - docker compose -f docker-compose-dev.yml down -v
+      - docker volume ls -q --filter "label=com.docker.compose.project=plane" | xargs -r docker volume rm
 
   # Pass SERVICE=<name> to follow logs for a single container.
   dev:logs:

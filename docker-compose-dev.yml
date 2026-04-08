@@ -13,8 +13,6 @@ services:
       - --accesslog=true
       - --log=true
       - --log.level=DEBUG
-      - --providers.file.directory=/dynamic
-      - --providers.file.watch=true
       - --certificatesresolvers.netlify.acme.email=${TRAEFIK_ACME_EMAIL}
       - --certificatesresolvers.netlify.acme.storage=/acme.json
       - --certificatesresolvers.netlify.acme.dnschallenge=true
