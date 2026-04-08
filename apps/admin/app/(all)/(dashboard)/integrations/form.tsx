@@ -14,7 +14,6 @@ import { Button, getButtonStyling } from "@plane/propel/button";
 import { TOAST_TYPE, setToast } from "@plane/propel/toast";
 import type {
   IFormattedInstanceConfiguration,
-  TInstanceAuthenticationMethodKeys,
   TInstanceIntegrationConfigurationKeys,
 } from "@plane/types";
 import { ToggleSwitch } from "@plane/ui";
@@ -32,61 +31,6 @@ type Props = {
 };
 
 type IntegrationConfigFormValues = Record<TInstanceIntegrationConfigurationKeys, string>;
-
-// ─── Section component ────────────────────────────────────────────────────────
-function Section({
-  title,
-  description,
-  fields,
-  control,
-  errors,
-  toggleKey,
-  enabled,
-  onToggle,
-}: {
-  title: string;
-  description: React.ReactNode;
-  fields: TControllerInputFormField[];
-  control: any;
-  errors: any;
-  toggleKey?: TInstanceAuthenticationMethodKeys;
-  enabled?: boolean;
-  onToggle?: () => void;
-}) {
-  return (
-    <div className="flex flex-col gap-4 border-b border-subtle pb-8 last:border-none">
-      <div className="flex items-start justify-between gap-4">
-        <div className="flex flex-col gap-1">
-          <div className="text-lg font-medium">{title}</div>
-          <p className="text-sm text-secondary">{description}</p>
-        </div>
-        {toggleKey !== undefined && onToggle !== undefined && (
-          <div className="flex shrink-0 items-center gap-2 pt-1">
-            <span className="text-sm text-secondary">{enabled ? "Enabled" : "Disabled"}</span>
-            <ToggleSwitch value={Boolean(enabled)} onChange={onToggle} size="sm" />
-          </div>
-        )}
-      </div>
-      <div className={enabled === false ? "opacity-50" : undefined}>
-        {fields.map((field) => (
-          <div key={field.key} className="mb-4 last:mb-0">
-            <ControllerInput
-              control={control}
-              type={field.type}
-              name={field.key}
-              label={field.label}
-              description={field.description}
-              placeholder={field.placeholder}
-              error={Boolean(errors[field.key])}
-              required={enabled === false ? false : field.required}
-              disabled={enabled === false}
-            />
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
 
 // ─── Main form ────────────────────────────────────────────────────────────────
 export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrationsConfigForm({ config }: Props) {
@@ -333,10 +277,10 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
         handleClose={() => setIsDiscardChangesModalOpen(false)}
       />
 
-      <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-12">
         {/* ── GitHub App ── */}
-        <div className="flex flex-col gap-4 border-b border-subtle pb-8">
-          {/* Header with toggle */}
+        <div className="flex flex-col gap-6 border-b border-subtle pb-10">
+          {/* Section header with toggle */}
           <div className="flex items-start justify-between gap-4">
             <div className="flex flex-col gap-1">
               <div className="text-lg font-medium">GitHub App</div>
@@ -349,8 +293,8 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
                   className="text-accent-primary hover:underline"
                 >
                   github.com/settings/apps/new
-                </a>{" "}
-                and set the <strong>Setup URL (Callback)</strong> to the value shown below.
+                </a>
+                .
               </p>
             </div>
             <div className="flex shrink-0 items-center gap-2 pt-1">
@@ -363,14 +307,137 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
             </div>
           </div>
 
-          {/* Fields */}
-          <div className={isGithubEnabled === false ? "opacity-50" : undefined}>
-            {/* Standard fields: App name, App ID, Private key */}
-            {githubFields
-              .filter((f) => f.key !== "GITHUB_WEBHOOK_SECRET")
-              .map((field) => (
-                <div key={field.key} className="mb-4 last:mb-0">
+          {/* Two-column body */}
+          <div className="grid w-full grid-cols-2 gap-x-12 gap-y-8">
+            {/* Left — GitHub-provided details for Plane */}
+            <div className="col-span-2 flex flex-col gap-y-4 md:col-span-1">
+              <div className="pt-2.5 text-18 font-medium">GitHub-provided details for Plane</div>
+              <div className={isGithubEnabled === false ? "flex flex-col gap-y-4 opacity-50" : "flex flex-col gap-y-4"}>
+                {githubFields
+                  .filter((f) => f.key !== "GITHUB_WEBHOOK_SECRET")
+                  .map((field) => (
+                    <ControllerInput
+                      key={field.key}
+                      control={control}
+                      type={field.type}
+                      name={field.key}
+                      label={field.label}
+                      description={field.description}
+                      placeholder={field.placeholder}
+                      error={Boolean(errors[field.key as keyof typeof errors])}
+                      required={isGithubEnabled ? field.required : false}
+                      disabled={!isGithubEnabled}
+                    />
+                  ))}
+
+                {/* Webhook secret with Generate button */}
+                <div className="flex items-end gap-2">
+                  <div className="flex-1">
+                    <ControllerInput
+                      control={control}
+                      type="password"
+                      name="GITHUB_WEBHOOK_SECRET"
+                      label="Webhook secret"
+                      description="Used to verify webhook payloads from GitHub. Generate one or set your own."
+                      placeholder="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+                      error={Boolean(errors.GITHUB_WEBHOOK_SECRET)}
+                      required={false}
+                      disabled={!isGithubEnabled}
+                    />
+                  </div>
+                  <Button
+                    variant="neutral-primary"
+                    size="sm"
+                    onClick={generateWebhookSecret}
+                    type="button"
+                    className="mb-0.5 shrink-0"
+                    disabled={!isGithubEnabled}
+                  >
+                    Generate
+                  </Button>
+                </div>
+              </div>
+            </div>
+
+            {/* Right — Plane-provided details for GitHub */}
+            <div className="col-span-2 flex flex-col gap-y-6 md:col-span-1">
+              <div className="pt-2 text-18 font-medium">Plane-provided details for GitHub</div>
+              <div className="flex flex-col gap-y-4">
+                {/* Callback URL */}
+                <div className="flex flex-col gap-y-4 rounded-lg bg-layer-1 px-6 py-4">
+                  <CopyField
+                    label="Setup URL (Callback)"
+                    url={`${origin}/api/github/callback/`}
+                    description={
+                      <p>
+                        Paste this into the <CodeBlock darkerShade>Setup URL (optional)</CodeBlock> field when creating
+                        your GitHub App.
+                      </p>
+                    }
+                  />
+                </div>
+                {/* Webhook URL */}
+                <div className="flex flex-col overflow-hidden rounded-lg">
+                  <div className="flex items-center gap-x-3 bg-layer-3 px-6 py-3 text-11 font-medium text-secondary uppercase">
+                    <Monitor className="h-3 w-3" />
+                    Webhooks
+                  </div>
+                  <div className="flex flex-col gap-y-4 bg-layer-1 px-6 py-4">
+                    <CopyField
+                      label="Webhook URL"
+                      url={`${origin}/api/github-webhook/`}
+                      description={
+                        <p>
+                          Paste this into the <CodeBlock darkerShade>Webhook URL</CodeBlock> field in your GitHub App
+                          settings.
+                        </p>
+                      }
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ── GitLab ── */}
+        <div className="flex flex-col gap-6 border-b border-subtle pb-10">
+          {/* Section header with toggle */}
+          <div className="flex items-start justify-between gap-4">
+            <div className="flex flex-col gap-1">
+              <div className="text-lg font-medium">GitLab</div>
+              <p className="text-sm text-secondary">
+                Required for GitLab integration. Create an OAuth application at{" "}
+                <a
+                  href="https://gitlab.com/-/profile/applications"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-accent-primary hover:underline"
+                >
+                  gitlab.com/-/profile/applications
+                </a>
+                .
+              </p>
+            </div>
+            <div className="flex shrink-0 items-center gap-2 pt-1">
+              <span className="text-sm text-secondary">{isGitlabEnabled ? "Enabled" : "Disabled"}</span>
+              <ToggleSwitch
+                value={Boolean(isGitlabEnabled)}
+                onChange={() => handleToggle("IS_GITLAB_ENABLED", isGitlabEnabled)}
+                size="sm"
+              />
+            </div>
+          </div>
+
+          {/* Two-column body */}
+          <div className="grid w-full grid-cols-2 gap-x-12 gap-y-8">
+            {/* Left — GitLab-provided details for Plane */}
+            <div className="col-span-2 flex flex-col gap-y-4 md:col-span-1">
+              <div className="pt-2.5 text-18 font-medium">GitLab-provided details for Plane</div>
+              <div className={isGitlabEnabled === false ? "flex flex-col gap-y-4 opacity-50" : "flex flex-col gap-y-4"}>
+                {gitlabFields.map((field) => (
                   <ControllerInput
+                    key={field.key}
                     control={control}
                     type={field.type}
                     name={field.key}
@@ -378,174 +445,115 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
                     description={field.description}
                     placeholder={field.placeholder}
                     error={Boolean(errors[field.key as keyof typeof errors])}
-                    required={isGithubEnabled ? field.required : false}
-                    disabled={!isGithubEnabled}
+                    required={isGitlabEnabled ? field.required : false}
+                    disabled={!isGitlabEnabled}
                   />
-                </div>
-              ))}
+                ))}
+              </div>
+            </div>
 
-            {/* Webhook secret with Generate button */}
-            <div className="mb-4">
-              <div className="flex items-end gap-2">
-                <div className="flex-1">
-                  <ControllerInput
-                    control={control}
-                    type="password"
-                    name="GITHUB_WEBHOOK_SECRET"
-                    label="Webhook secret"
-                    description="Used to verify webhook payloads from GitHub. Generate one or set your own."
-                    placeholder="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-                    error={Boolean(errors.GITHUB_WEBHOOK_SECRET)}
-                    required={false}
-                    disabled={!isGithubEnabled}
-                  />
+            {/* Right — Plane-provided details for GitLab */}
+            <div className="col-span-2 flex flex-col gap-y-6 md:col-span-1">
+              <div className="pt-2 text-18 font-medium">Plane-provided details for GitLab</div>
+              <div className="flex flex-col gap-y-4">
+                <div className="flex flex-col overflow-hidden rounded-lg">
+                  <div className="flex items-center gap-x-3 bg-layer-3 px-6 py-3 text-11 font-medium text-secondary uppercase">
+                    <Monitor className="h-3 w-3" />
+                    OAuth
+                  </div>
+                  <div className="flex flex-col gap-y-4 bg-layer-1 px-6 py-4">
+                    <CopyField
+                      label="Redirect URI"
+                      url={`${origin}/auth/gitlab/callback`}
+                      description={
+                        <p>
+                          Paste this into the <CodeBlock darkerShade>Redirect URI</CodeBlock> field when creating your
+                          GitLab OAuth application.
+                        </p>
+                      }
+                    />
+                  </div>
                 </div>
-                <Button
-                  variant="neutral-primary"
-                  size="sm"
-                  onClick={generateWebhookSecret}
-                  type="button"
-                  className="mb-0.5 shrink-0"
-                  disabled={!isGithubEnabled}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ── Slack ── */}
+        <div className="flex flex-col gap-6 border-b border-subtle pb-10 last:border-none">
+          {/* Section header with toggle */}
+          <div className="flex items-start justify-between gap-4">
+            <div className="flex flex-col gap-1">
+              <div className="text-lg font-medium">Slack</div>
+              <p className="text-sm text-secondary">
+                Required for Slack integration. Create a Slack App at{" "}
+                <a
+                  href="https://api.slack.com/apps"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-accent-primary hover:underline"
                 >
-                  Generate
-                </Button>
-              </div>
+                  api.slack.com/apps
+                </a>
+                .
+              </p>
+            </div>
+            <div className="flex shrink-0 items-center gap-2 pt-1">
+              <span className="text-sm text-secondary">{isSlackEnabled ? "Enabled" : "Disabled"}</span>
+              <ToggleSwitch
+                value={Boolean(isSlackEnabled)}
+                onChange={() => handleToggle("IS_SLACK_ENABLED", isSlackEnabled)}
+                size="sm"
+              />
             </div>
           </div>
 
-          {/* Setup URLs info panel — styled to match auth provider panels */}
-          <div className="flex flex-col gap-y-4">
-            <div className="text-base font-medium">Plane-provided details for GitHub</div>
-
-            <div className="flex flex-col gap-y-4">
-              {/* Callback URL */}
-              <div className="flex flex-col gap-y-4 rounded-lg bg-layer-1 px-6 py-4">
-                <CopyField
-                  label="Setup URL (Callback)"
-                  url={`${origin}/api/github/callback/`}
-                  description={
-                    <p>
-                      Paste this into the <CodeBlock darkerShade>Setup URL (optional)</CodeBlock> field when creating
-                      your GitHub App.
-                    </p>
-                  }
-                />
-              </div>
-
-              {/* Webhook URL */}
-              <div className="flex flex-col overflow-hidden rounded-lg">
-                <div className="flex items-center gap-x-3 bg-layer-3 px-6 py-3 text-11 font-medium text-secondary uppercase">
-                  <Monitor className="h-3 w-3" />
-                  Webhooks
-                </div>
-                <div className="flex flex-col gap-y-4 bg-layer-1 px-6 py-4">
-                  <CopyField
-                    label="Webhook URL"
-                    url={`${origin}/api/github-webhook/`}
-                    description={
-                      <p>
-                        Paste this into the <CodeBlock darkerShade>Webhook URL</CodeBlock> field in your GitHub App
-                        settings.
-                      </p>
-                    }
+          {/* Two-column body */}
+          <div className="grid w-full grid-cols-2 gap-x-12 gap-y-8">
+            {/* Left — Slack-provided details for Plane */}
+            <div className="col-span-2 flex flex-col gap-y-4 md:col-span-1">
+              <div className="pt-2.5 text-18 font-medium">Slack-provided details for Plane</div>
+              <div className={isSlackEnabled === false ? "flex flex-col gap-y-4 opacity-50" : "flex flex-col gap-y-4"}>
+                {slackFields.map((field) => (
+                  <ControllerInput
+                    key={field.key}
+                    control={control}
+                    type={field.type}
+                    name={field.key}
+                    label={field.label}
+                    description={field.description}
+                    placeholder={field.placeholder}
+                    error={Boolean(errors[field.key as keyof typeof errors])}
+                    required={isSlackEnabled ? field.required : false}
+                    disabled={!isSlackEnabled}
                   />
-                </div>
+                ))}
               </div>
             </div>
-          </div>
-        </div>
 
-        <Section
-          title="GitLab"
-          description={
-            <>
-              Required for GitLab integration. Create an OAuth application at{" "}
-              <a
-                href="https://gitlab.com/-/profile/applications"
-                target="_blank"
-                rel="noreferrer"
-                className="text-accent-primary hover:underline"
-              >
-                gitlab.com/-/profile/applications
-              </a>
-              .
-            </>
-          }
-          fields={gitlabFields}
-          control={control}
-          errors={errors}
-          toggleKey="IS_GITLAB_ENABLED"
-          enabled={isGitlabEnabled}
-          onToggle={() => handleToggle("IS_GITLAB_ENABLED", isGitlabEnabled)}
-        />
-
-        {/* GitLab redirect URI panel */}
-        <div className="-mt-4 flex flex-col gap-y-4 border-b border-subtle pb-8">
-          <div className="text-base font-medium">Plane-provided details for GitLab</div>
-          <div className="flex flex-col overflow-hidden rounded-lg">
-            <div className="flex items-center gap-x-3 bg-layer-3 px-6 py-3 text-11 font-medium text-secondary uppercase">
-              <Monitor className="h-3 w-3" />
-              OAuth
-            </div>
-            <div className="flex flex-col gap-y-4 bg-layer-1 px-6 py-4">
-              <CopyField
-                label="Redirect URI"
-                url={`${origin}/auth/gitlab/callback`}
-                description={
-                  <p>
-                    Paste this into the <CodeBlock darkerShade>Redirect URI</CodeBlock> field when creating your GitLab
-                    OAuth application.
-                  </p>
-                }
-              />
-            </div>
-          </div>
-        </div>
-
-        <Section
-          title="Slack"
-          description={
-            <>
-              Required for Slack integration. Create a Slack App at{" "}
-              <a
-                href="https://api.slack.com/apps"
-                target="_blank"
-                rel="noreferrer"
-                className="text-accent-primary hover:underline"
-              >
-                api.slack.com/apps
-              </a>
-              .
-            </>
-          }
-          fields={slackFields}
-          control={control}
-          errors={errors}
-          toggleKey="IS_SLACK_ENABLED"
-          enabled={isSlackEnabled}
-          onToggle={() => handleToggle("IS_SLACK_ENABLED", isSlackEnabled)}
-        />
-
-        {/* Slack redirect URI panel */}
-        <div className="-mt-4 flex flex-col gap-y-4 border-b border-subtle pb-8 last:border-none">
-          <div className="text-base font-medium">Plane-provided details for Slack</div>
-          <div className="flex flex-col overflow-hidden rounded-lg">
-            <div className="flex items-center gap-x-3 bg-layer-3 px-6 py-3 text-11 font-medium text-secondary uppercase">
-              <Monitor className="h-3 w-3" />
-              OAuth
-            </div>
-            <div className="flex flex-col gap-y-4 bg-layer-1 px-6 py-4">
-              <CopyField
-                label="Redirect URL"
-                url={`${origin}/auth/slack/callback/`}
-                description={
-                  <p>
-                    Paste this into the <CodeBlock darkerShade>Redirect URL</CodeBlock> field under OAuth & Permissions
-                    in your Slack App settings.
-                  </p>
-                }
-              />
+            {/* Right — Plane-provided details for Slack */}
+            <div className="col-span-2 flex flex-col gap-y-6 md:col-span-1">
+              <div className="pt-2 text-18 font-medium">Plane-provided details for Slack</div>
+              <div className="flex flex-col gap-y-4">
+                <div className="flex flex-col overflow-hidden rounded-lg">
+                  <div className="flex items-center gap-x-3 bg-layer-3 px-6 py-3 text-11 font-medium text-secondary uppercase">
+                    <Monitor className="h-3 w-3" />
+                    OAuth
+                  </div>
+                  <div className="flex flex-col gap-y-4 bg-layer-1 px-6 py-4">
+                    <CopyField
+                      label="Redirect URL"
+                      url={`${origin}/auth/slack/callback/`}
+                      description={
+                        <p>
+                          Paste this into the <CodeBlock darkerShade>Redirect URL</CodeBlock> field under OAuth &
+                          Permissions in your Slack App settings.
+                        </p>
+                      }
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
