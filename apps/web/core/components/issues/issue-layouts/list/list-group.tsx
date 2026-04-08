@@ -132,14 +132,15 @@ export const ListGroup = observer(function ListGroup(props: Props) {
   const loadMore = isPaginating ? (
     <ListLoaderItemRow />
   ) : (
-    <div
+    <button
+      type="button"
       className={
         "relative flex h-11 cursor-pointer items-center gap-3 border border-transparent border-t-subtle-1 bg-surface-1 p-3 pl-8 text-13 font-medium text-accent-primary hover:text-accent-secondary hover:underline"
       }
       onClick={() => loadMoreIssues(group.id)}
     >
       {t("common.load_more")} &darr;
-    </div>
+    </button>
   );
 
   const validateEmptyIssueGroups = (issueCount: number = 0) => {
@@ -198,7 +199,9 @@ export const ListGroup = observer(function ListGroup(props: Props) {
           const sourceGroupId = source?.data?.groupId as string | undefined;
           const currentGroupId = group.id;
 
-          sourceGroupId && handleWorkFlowState(sourceGroupId, currentGroupId);
+          if (sourceGroupId) {
+            handleWorkFlowState(sourceGroupId, currentGroupId);
+          }
 
           const sourceIndex = getGroupIndex(sourceGroupId);
           const currentIndex = getGroupIndex(currentGroupId);
@@ -237,13 +240,15 @@ export const ListGroup = observer(function ListGroup(props: Props) {
       })
     );
   }, [
-    groupRef?.current,
     group,
     orderBy,
     getGroupIndex,
-    setDragColumnOrientation,
-    setIsDraggingOverColumn,
+    handleCollapsedGroups,
+    handleOnDrop,
+    handleWorkFlowState,
+    isExpanded,
     isWorkflowDropDisabled,
+    t,
   ]);
 
   const isDragAllowed = group_by ? DRAG_ALLOWED_GROUPS.includes(group_by) : true;
@@ -317,8 +322,8 @@ export const ListGroup = observer(function ListGroup(props: Props) {
               <>{loadMore}</>
             ) : (
               <>
-                {Array.from({ length: 2 }).map((_, index) => (
-                  <ListLoaderItemRow key={index} />
+                {["list-loader-1", "list-loader-2"].map((loaderKey) => (
+                  <ListLoaderItemRow key={loaderKey} />
                 ))}
                 <ListLoaderItemRow ref={setIntersectionElement} />
               </>
