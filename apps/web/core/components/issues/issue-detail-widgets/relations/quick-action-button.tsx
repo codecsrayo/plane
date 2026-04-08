@@ -50,12 +50,12 @@ export const RelationActionButton = observer(function RelationActionButton(props
       maxHeight="lg"
       closeOnSelect
     >
-      {Object.values(ISSUE_RELATION_OPTIONS).map((item, index) => {
+      {Object.values(ISSUE_RELATION_OPTIONS).map((item) => {
         if (!item) return <></>;
 
         return (
           <CustomMenu.MenuItem
-            key={index}
+            key={item.key}
             onClick={() => {
               handleOnClick(item.key);
             }}
