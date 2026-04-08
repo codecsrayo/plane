@@ -18,6 +18,21 @@ type TReturnType = {
   scrollToElement: () => boolean;
 };
 
+const extractIdsFromHash = (hashString: string | null): string[] => {
+  if (!hashString) return [];
+
+  return hashString
+    .split(/[,\s|;]+/)
+    .map((id) => id.trim())
+    .filter((id) => id.length > 0);
+};
+
+const getCurrentHash = (): string | null => {
+  if (typeof window === "undefined") return null;
+  const hash = window.location.hash;
+  return hash ? hash.slice(1) : null;
+};
+
 /**
  * Custom hook for handling hash-based scrolling to a specific element
  * Supports multiple IDs in URL hash (comma-separated, space-separated, or other delimiters)
@@ -57,32 +72,6 @@ export const useHashScroll = (args: TArgs): TReturnType => {
       return false;
     }
   }, [elementId, scrollDelay]);
-
-  /**
-   * Extracts multiple IDs from hash string
-   * Supports various delimiters: comma, space, pipe, semicolon
-   * @param {string} hashString - The hash part of the URL
-   * @returns {string[]} - Array of clean ID strings
-   */
-  const extractIdsFromHash = (hashString: string | null): string[] => {
-    if (!hashString) return [];
-
-    // Split by common delimiters and clean up
-    return hashString
-      .split(/[,\s|;]+/) // Split by comma, space, pipe, or semicolon
-      .map((id) => id.trim()) // Remove whitespace
-      .filter((id) => id.length > 0); // Remove empty strings
-  };
-
-  /**
-   * Get current hash from window.location
-   * @returns {string | null} - Current hash without the # symbol
-   */
-  const getCurrentHash = (): string | null => {
-    if (typeof window === "undefined") return null;
-    const hash = window.location.hash;
-    return hash ? hash.slice(1) : null; // Remove the # symbol
-  };
 
   // Effect to handle hash changes and initial load
   useEffect(() => {
