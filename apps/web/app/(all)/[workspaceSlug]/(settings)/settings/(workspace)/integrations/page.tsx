@@ -48,7 +48,7 @@ function WorkspaceIntegrationsPage() {
           {appIntegrations ? (
             appIntegrations
               .filter((integration) => {
-                if (integration.provider === "github") return config?.is_github_enabled ?? true;
+                if (integration.provider === "github") return config?.is_github_integration_enabled ?? true;
                 if (integration.provider === "gitlab") return config?.is_gitlab_enabled ?? true;
                 if (integration.provider === "slack") return config?.is_slack_enabled ?? true;
                 return true;
