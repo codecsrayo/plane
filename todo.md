@@ -365,7 +365,7 @@ IS_SLACK_ENABLED=1
 |---|---|
 | TAREA 1 — Detail page por integración | ✅ Hecho |
 | TAREA 2 — Cuenta personal GitHub | ✅ Hecho (UI trigger agregado + `github_client_id` expuesto en instancia API) |
-| TAREA 3 — PR State Mapping | ⚠️ Parcial — modelo + migración + frontend OK, pero falta ViewSet y URL en el backend (no hay endpoint `pr-state-mappings/`) |
+| TAREA 3 — PR State Mapping | ✅ Hecho (ViewSet + serializer + URLs registradas en commit `542f78433`) |
 | TAREA 4 — Project Issue Sync | ✅ Hecho |
 | TAREA 5 — GitHub App JWT | ✅ Hecho |
 | TAREA 6 — GitLab callback | ✅ Hecho |
