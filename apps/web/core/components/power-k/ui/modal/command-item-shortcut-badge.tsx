@@ -75,7 +75,7 @@ export function ShortcutBadge({ shortcut }: { shortcut: string | undefined }) {
   return (
     <div className="pointer-events-none inline-flex shrink-0 items-center gap-1 font-medium select-none">
       {formatted?.split("").map((char, index) => (
-        <React.Fragment key={index}>
+        <React.Fragment key={`${char}-${index}`}>
           <kbd className="inline-flex h-5 items-center justify-center rounded-sm border border-strong bg-surface-1 px-1.5 font-code text-10 font-medium text-tertiary">
             {char.toUpperCase()}
           </kbd>
@@ -103,7 +103,7 @@ export function KeySequenceBadge({ sequence }: { sequence: string | undefined })
   return (
     <div className="pointer-events-none inline-flex shrink-0 items-center gap-1 font-medium select-none">
       {chars.map((char, index) => (
-        <React.Fragment key={index}>
+        <React.Fragment key={`${char}-${index}`}>
           <kbd className="inline-flex h-5 items-center justify-center rounded-sm border border-strong bg-surface-1 px-1.5 font-code text-10 font-medium text-tertiary">
             {char.toUpperCase()}
           </kbd>
