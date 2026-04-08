@@ -318,14 +318,14 @@ export const getGroupedWorkItemIds = (
   }
 
   // Get the default key for the group by key
-  const getDefaultGroupKey = (groupByKey: TIssueGroupByOptions) => {
-    switch (groupByKey) {
+  const getDefaultGroupKey = (currentGroupByKey: TIssueGroupByOptions) => {
+    switch (currentGroupByKey) {
       case "state_detail.group":
         return "state__group";
       case null:
         return null;
       default:
-        return ISSUE_GROUP_BY_KEY[groupByKey];
+        return ISSUE_GROUP_BY_KEY[currentGroupByKey];
     }
   };
 
@@ -336,7 +336,7 @@ export const getGroupedWorkItemIds = (
     if (Array.isArray(value)) {
       if (value.length === 0) return "None";
       // Sort & join to build deterministic set-like key
-      return value.slice().sort().join(",");
+      return value.slice().toSorted().join(",");
     }
     return value ?? "None";
   });
