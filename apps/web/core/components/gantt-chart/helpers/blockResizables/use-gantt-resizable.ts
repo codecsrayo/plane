@@ -46,14 +46,14 @@ export const useGanttResizable = (
     ganttContainerDimensions.current = ganttContainerElement.getBoundingClientRect();
 
     const dayWidth = currentViewData.data.dayWidth;
-    const mouseX =
+    const initialMouseX =
       event.clientX - ganttContainerDimensions.current.left - SIDEBAR_WIDTH + ganttContainerElement.scrollLeft;
 
     // record position on drag start
     initialPositionRef.current = {
       width: block.position.width ?? 0,
       marginLeft: block.position.marginLeft ?? 0,
-      offsetX: mouseX - block.position.marginLeft,
+      offsetX: initialMouseX - block.position.marginLeft,
     };
 
     const handleOnScroll = () => {
