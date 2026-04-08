@@ -145,12 +145,12 @@ export class ProjectInboxStore implements IProjectInboxStore {
 
   get getAppliedFiltersCount() {
     let count = 0;
-    this.inboxFilters != undefined &&
+    if (this.inboxFilters != undefined) {
       Object.keys(this.inboxFilters).forEach((key) => {
         const filterKey = key as keyof TInboxIssueFilter;
-        if (this.inboxFilters[filterKey] && this.inboxFilters?.[filterKey])
-          count = count + (this.inboxFilters?.[filterKey]?.length ?? 0);
+        if (this.inboxFilters[filterKey]) count = count + (this.inboxFilters[filterKey]?.length ?? 0);
       });
+    }
     return count;
   }
 
@@ -194,7 +194,7 @@ export class ProjectInboxStore implements IProjectInboxStore {
     paginationCursor: string
   ) => {
     const filters: Partial<Record<keyof TInboxIssueFilter, string>> = {};
-    !isEmpty(inboxFilters) &&
+    if (!isEmpty(inboxFilters)) {
       Object.keys(inboxFilters).forEach((key) => {
         const filterKey = key as keyof TInboxIssueFilter;
         if (inboxFilters[filterKey] && inboxFilters[filterKey]?.length) {
@@ -208,6 +208,7 @@ export class ProjectInboxStore implements IProjectInboxStore {
           } else filters[filterKey] = inboxFilters[filterKey]?.join(",");
         }
       });
+    }
 
     const sorting: TInboxIssueSortingOrderByQueryParam = {
       order_by: "-issue__created_at",
@@ -497,25 +498,24 @@ export class ProjectInboxStore implements IProjectInboxStore {
     const wasPending = currentIssue?.status === EInboxIssueStatus.PENDING;
     try {
       if (!currentIssue) return;
-      await this.inboxIssueService.destroy(workspaceSlug, projectId, inboxIssueId).then(() => {
-        runInAction(() => {
-          set(
-            this,
-            ["inboxIssuePaginationInfo", "total_results"],
-            (this.inboxIssuePaginationInfo?.total_results || 0) - 1
-          );
-          set(this, "inboxIssues", omit(this.inboxIssues, inboxIssueId));
-          set(
-            this,
-            ["inboxIssueIds"],
-            this.inboxIssueIds.filter((id) => id !== inboxIssueId)
-          );
-          // Decrement intake_count if the deleted issue was PENDING
-          if (wasPending) {
-            const currentCount = this.store.projectRoot.project.projectMap[projectId]?.intake_count ?? 0;
-            set(this.store.projectRoot.project.projectMap, [projectId, "intake_count"], Math.max(0, currentCount - 1));
-          }
-        });
+      await this.inboxIssueService.destroy(workspaceSlug, projectId, inboxIssueId);
+      runInAction(() => {
+        set(
+          this,
+          ["inboxIssuePaginationInfo", "total_results"],
+          (this.inboxIssuePaginationInfo?.total_results || 0) - 1
+        );
+        set(this, "inboxIssues", omit(this.inboxIssues, inboxIssueId));
+        set(
+          this,
+          ["inboxIssueIds"],
+          this.inboxIssueIds.filter((id) => id !== inboxIssueId)
+        );
+        // Decrement intake_count if the deleted issue was PENDING
+        if (wasPending) {
+          const currentCount = this.store.projectRoot.project.projectMap[projectId]?.intake_count ?? 0;
+          set(this.store.projectRoot.project.projectMap, [projectId, "intake_count"], Math.max(0, currentCount - 1));
+        }
       });
     } catch (error) {
       console.error("Error removing the intake issue");

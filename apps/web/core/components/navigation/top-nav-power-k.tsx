@@ -101,7 +101,7 @@ export const TopNavPowerK = observer(() => {
     return () => {
       setTopNavInputRef(null);
     };
-  }, [setTopNavInputRef]);
+  }, [inputRef, setTopNavInputRef]);
 
   const handleClear = () => {
     setSearchTerm("");
@@ -203,7 +203,7 @@ export const TopNavPowerK = observer(() => {
         return;
       }
     },
-    [searchTerm, activePage, context, shouldShowContextBasedActions, setActivePage, closePanel]
+    [searchTerm, activePage, context, shouldShowContextBasedActions, setActivePage, closePanel, isOpen, containerRef]
   );
 
   return (
@@ -213,7 +213,8 @@ export const TopNavPowerK = observer(() => {
           "w-[554px]": isOpen,
         })}
       >
-        <div
+        <button
+          type="button"
           className={cn(
             "flex h-7 w-full items-center rounded-lg border border-subtle-1 bg-layer-2 p-2 transition-colors duration-200",
             {
@@ -221,7 +222,6 @@ export const TopNavPowerK = observer(() => {
             }
           )}
           onClick={() => inputRef.current?.focus()}
-          role="button"
         >
           <SearchIcon className="mr-2 size-3.5 shrink-0 text-placeholder" />
           <input
@@ -243,7 +243,7 @@ export const TopNavPowerK = observer(() => {
               <CloseIcon className="size-3.5 text-placeholder hover:text-primary" />
             </button>
           )}
-        </div>
+        </button>
       </div>
       <div
         className={cn(
