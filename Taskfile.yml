@@ -33,6 +33,17 @@ tasks:
   fix:
     cmds:
       - pnpm fix
+  
+  acme-create:
+    cmds:
+      - |
+        if [ -d ./apps/proxy/acme.json ]; then
+          rm -rf ./apps/proxy/acme.json
+          touch ./apps/proxy/acme.json
+        elif [ ! -f ./apps/proxy/acme.json ]; then
+          touch ./apps/proxy/acme.json
+        fi
+      - chmod 600 ./apps/proxy/acme.json
 
   # Bootstrap local development without overwriting existing env files.
   setup:
@@ -84,6 +95,7 @@ tasks:
       - docker compose -f docker-compose.yml config
 
   dev:up:
+    deps: [acme-create]
     cmds:
       - docker compose -f docker-compose-dev.yml up -d --build
 
@@ -115,6 +127,7 @@ tasks:
       - docker compose -f docker-compose-dev.yml logs -f proxy
 
   dev:rebuild:
+    deps: [acme-create]
     cmds:
       - docker compose -f docker-compose-dev.yml build --no-cache
       - docker compose -f docker-compose-dev.yml up -d
@@ -129,6 +142,7 @@ tasks:
       - docker compose -f docker-compose-dev.yml up --watch web admin space live
 
   prod:up:
+    deps: [acme-create]
     cmds:
       - docker compose -f docker-compose.yml up -d --build
 
@@ -160,6 +174,7 @@ tasks:
       - docker compose -f docker-compose.yml logs -f proxy
 
   prod:rebuild:
+    deps: [acme-create]
     requires:
       vars: [SERVICE]
     cmds:
