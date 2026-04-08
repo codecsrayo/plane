@@ -33,20 +33,21 @@ export const useGanttResizable = (
 
   // handle block resize from the left end
   const handleBlockDrag = (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
     dragDirection: "left" | "right" | "move"
   ) => {
     const ganttContainerElement = ganttContainerRef.current;
     if (!currentViewData || !resizableRef.current || !block.position || !ganttContainerElement) return;
 
-    if (e.button !== 0) return;
+    if (event.button !== 0) return;
 
     const resizableDiv = resizableRef.current;
 
     ganttContainerDimensions.current = ganttContainerElement.getBoundingClientRect();
 
     const dayWidth = currentViewData.data.dayWidth;
-    const mouseX = e.clientX - ganttContainerDimensions.current.left - SIDEBAR_WIDTH + ganttContainerElement.scrollLeft;
+    const mouseX =
+      event.clientX - ganttContainerDimensions.current.left - SIDEBAR_WIDTH + ganttContainerElement.scrollLeft;
 
     // record position on drag start
     initialPositionRef.current = {
@@ -59,8 +60,8 @@ export const useGanttResizable = (
       if (currMouseEvent.current) handleMouseMove(currMouseEvent.current);
     };
 
-    const handleMouseMove = (e: MouseEvent) => {
-      currMouseEvent.current = e;
+    const handleMouseMove = (mouseEvent: MouseEvent) => {
+      currMouseEvent.current = mouseEvent;
       setIsMoving(dragDirection);
       setIsDragging(true);
 
@@ -68,7 +69,7 @@ export const useGanttResizable = (
 
       const { left: containerLeft } = ganttContainerDimensions.current;
 
-      const mouseX = e.clientX - containerLeft - SIDEBAR_WIDTH + ganttContainerElement.scrollLeft;
+      const mouseX = mouseEvent.clientX - containerLeft - SIDEBAR_WIDTH + ganttContainerElement.scrollLeft;
 
       let width = initialPositionRef.current.width;
       let marginLeft = initialPositionRef.current.marginLeft;
