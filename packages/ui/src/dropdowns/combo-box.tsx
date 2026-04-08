@@ -6,7 +6,7 @@
 
 import { Combobox } from "@headlessui/react";
 import type { ElementType, KeyboardEventHandler, ReactNode, Ref } from "react";
-import React, { Fragment, forwardRef, useEffect, useRef, useState } from "react";
+import React, { forwardRef, useEffect, useRef, useState } from "react";
 
 type Props = {
   as?: ElementType | undefined;
@@ -24,7 +24,7 @@ type Props = {
 };
 
 const ComboDropDown = forwardRef(function ComboDropDown(props: Props, ref) {
-  const { button, renderByDefault = true, children, ...rest } = props;
+  const { button, renderByDefault = true, children, as = "div", ...rest } = props;
 
   const dropDownButtonRef = useRef<HTMLDivElement | null>(null);
 
@@ -57,8 +57,10 @@ const ComboDropDown = forwardRef(function ComboDropDown(props: Props, ref) {
   return (
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-expect-error
-    <Combobox {...rest} ref={ref}>
-      <Combobox.Button as={Fragment}>{button}</Combobox.Button>
+    <Combobox as={as} {...rest} ref={ref}>
+      <Combobox.Button as="div" className="contents">
+        {button}
+      </Combobox.Button>
       {children}
     </Combobox>
   );

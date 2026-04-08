@@ -5,7 +5,7 @@
  */
 
 import { Combobox } from "@headlessui/react";
-import React, { Fragment } from "react";
+import React from "react";
 // helper
 import { cn } from "../../utils";
 import type { IMultiSelectDropdownButton, ISingleSelectDropdownButton } from "../dropdown";
@@ -22,7 +22,7 @@ export function DropdownButton(props: IMultiSelectDropdownButton | ISingleSelect
     disabled,
   } = props;
   return (
-    <Combobox.Button as={Fragment}>
+    <Combobox.Button as="div" className="contents">
       <button
         ref={setReferenceElement}
         type="button"

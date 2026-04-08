@@ -83,7 +83,7 @@ function CustomSelect(props: ICustomSelectProps) {
         >
           <>
             {customButton ? (
-              <Combobox.Button as={React.Fragment}>
+              <Combobox.Button as="div" className="contents">
                 <button
                   ref={setReferenceElement}
                   type="button"
@@ -97,7 +97,7 @@ function CustomSelect(props: ICustomSelectProps) {
                 </button>
               </Combobox.Button>
             ) : (
-              <Combobox.Button as={React.Fragment}>
+              <Combobox.Button as="div" className="contents">
                 <button
                   ref={setReferenceElement}
                   type="button"

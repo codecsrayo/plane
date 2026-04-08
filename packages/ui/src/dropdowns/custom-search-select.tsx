@@ -99,7 +99,7 @@ export function CustomSearchSelect(props: ICustomSearchSelectProps) {
         return (
           <>
             {customButton ? (
-              <Combobox.Button as={React.Fragment}>
+              <Combobox.Button as="div" className="contents">
                 <button
                   ref={setReferenceElement}
                   type="button"
@@ -117,7 +117,7 @@ export function CustomSearchSelect(props: ICustomSearchSelectProps) {
                 </button>
               </Combobox.Button>
             ) : (
-              <Combobox.Button as={React.Fragment}>
+              <Combobox.Button as="div" className="contents">
                 <button
                   ref={setReferenceElement}
                   type="button"
