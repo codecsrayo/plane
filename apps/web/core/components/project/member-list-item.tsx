@@ -45,25 +45,28 @@ export const ProjectMemberListItem = observer(function ProjectMemberListItem(pro
     if (!workspaceSlug || !projectId || !memberId) return;
 
     if (memberId === currentUser?.id) {
-      await leaveProject(workspaceSlug.toString(), projectId.toString())
-        .then(async () => {
-          router.push(`/${workspaceSlug}/projects`);
-        })
-        .catch((err) => {
-          setToast({
-            type: TOAST_TYPE.ERROR,
-            title: "You can’t leave this project yet.",
-            message: err?.error || "Something went wrong. Please try again.",
-          });
-        });
-    } else
-      await removeMemberFromProject(workspaceSlug.toString(), projectId.toString(), memberId).catch((err) =>
+      try {
+        await leaveProject(workspaceSlug.toString(), projectId.toString());
+        router.push(`/${workspaceSlug}/projects`);
+      } catch (err: any) {
         setToast({
           type: TOAST_TYPE.ERROR,
-          title: "You can't remove the member from this project yet.",
+          title: "You can’t leave this project yet.",
           message: err?.error || "Something went wrong. Please try again.",
-        })
-      );
+        });
+      }
+      return;
+    }
+
+    try {
+      await removeMemberFromProject(workspaceSlug.toString(), projectId.toString(), memberId);
+    } catch (err: any) {
+      setToast({
+        type: TOAST_TYPE.ERROR,
+        title: "You can't remove the member from this project yet.",
+        message: err?.error || "Something went wrong. Please try again.",
+      });
+    }
   };
 
   if (!memberDetails) return null;

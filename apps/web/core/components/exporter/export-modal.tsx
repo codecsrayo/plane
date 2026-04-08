@@ -78,28 +78,26 @@ export const Exporter = observer(function Exporter(props: Props) {
         project: value,
         multiple: multiple,
       };
-      await projectExportService
-        .csvExport(workspaceSlug, payload)
-        .then(() => {
-          mutateServices();
-          router.push(`/${workspaceSlug}/settings/exports`);
-          setExportLoading(false);
-          setToast({
-            type: TOAST_TYPE.SUCCESS,
-            title: t("workspace_settings.settings.exports.modal.toasts.success.title"),
-            message: t("workspace_settings.settings.exports.modal.toasts.success.message", {
-              entity: provider === "csv" ? "CSV" : provider === "xlsx" ? "Excel" : provider === "json" ? "JSON" : "",
-            }),
-          });
-        })
-        .catch(() => {
-          setExportLoading(false);
-          setToast({
-            type: TOAST_TYPE.ERROR,
-            title: t("error"),
-            message: t("workspace_settings.settings.exports.modal.toasts.error.message"),
-          });
+      try {
+        await projectExportService.csvExport(workspaceSlug, payload);
+        mutateServices();
+        router.push(`/${workspaceSlug}/settings/exports`);
+        setToast({
+          type: TOAST_TYPE.SUCCESS,
+          title: t("workspace_settings.settings.exports.modal.toasts.success.title"),
+          message: t("workspace_settings.settings.exports.modal.toasts.success.message", {
+            entity: provider === "csv" ? "CSV" : provider === "xlsx" ? "Excel" : provider === "json" ? "JSON" : "",
+          }),
         });
+      } catch {
+        setToast({
+          type: TOAST_TYPE.ERROR,
+          title: t("error"),
+          message: t("workspace_settings.settings.exports.modal.toasts.error.message"),
+        });
+      } finally {
+        setExportLoading(false);
+      }
     }
   }
 

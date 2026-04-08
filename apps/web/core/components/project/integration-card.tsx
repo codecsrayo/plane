@@ -46,7 +46,7 @@ export function IntegrationCard({ integration }: Props) {
       : null
   );
 
-  const handleChange = (repo: any) => {
+  const handleChange = async (repo: any) => {
     if (!workspaceSlug || !projectId || !integration) return;
 
     const {
@@ -56,30 +56,29 @@ export function IntegrationCard({ integration }: Props) {
       name,
     } = repo;
 
-    projectService
-      .syncGithubRepository(workspaceSlug, projectId, integration.id, {
+    try {
+      await projectService.syncGithubRepository(workspaceSlug, projectId, integration.id, {
         name,
         owner: login,
         repository_id: id,
         url: html_url,
-      })
-      .then(() => {
-        mutate(PROJECT_GITHUB_REPOSITORY(projectId));
-
-        setToast({
-          type: TOAST_TYPE.SUCCESS,
-          title: "Success!",
-          message: `${login}/${name} repository synced with the project successfully.`,
-        });
-      })
-      .catch((err) => {
-        console.error(err);
-        setToast({
-          type: TOAST_TYPE.ERROR,
-          title: "Error!",
-          message: "Repository could not be synced with the project. Please try again.",
-        });
       });
+
+      mutate(PROJECT_GITHUB_REPOSITORY(projectId));
+
+      setToast({
+        type: TOAST_TYPE.SUCCESS,
+        title: "Success!",
+        message: `${login}/${name} repository synced with the project successfully.`,
+      });
+    } catch (err) {
+      console.error(err);
+      setToast({
+        type: TOAST_TYPE.ERROR,
+        title: "Error!",
+        message: "Repository could not be synced with the project. Please try again.",
+      });
+    }
   };
 
   return (

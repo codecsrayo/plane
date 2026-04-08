@@ -105,7 +105,8 @@ export const ProjectMultiSelectModal = observer(function ProjectMultiSelectModal
               const projectDetails = projectDetailsMap.get(projectId);
               if (!projectDetails) return null;
               return (
-                <div
+                <button
+                  type="button"
                   key={projectDetails.id}
                   className="group flex cursor-pointer items-center gap-1.5 rounded-sm bg-surface-2 px-2 py-1"
                   onClick={() => {
@@ -117,7 +118,7 @@ export const ProjectMultiSelectModal = observer(function ProjectMultiSelectModal
                     {projectDetails.identifier}
                   </p>
                   <CloseIcon className="size-3 flex-shrink-0 text-placeholder transition-colors group-hover:text-secondary" />
-                </div>
+                </button>
               );
             })}
           </div>

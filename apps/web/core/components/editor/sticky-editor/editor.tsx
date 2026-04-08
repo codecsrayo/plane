@@ -42,6 +42,10 @@ interface StickyEditorWrapperProps extends Omit<
   handleDelete: () => void;
 }
 
+function isMutableRefObject<T>(forwardedRef: React.ForwardedRef<T>): forwardedRef is React.MutableRefObject<T | null> {
+  return !!forwardedRef && typeof forwardedRef === "object" && "current" in forwardedRef;
+}
+
 export const StickyEditor = React.forwardRef(function StickyEditor(
   props: StickyEditorWrapperProps,
   ref: React.ForwardedRef<EditorRefApi>
@@ -74,9 +78,6 @@ export const StickyEditor = React.forwardRef(function StickyEditor(
   });
   // editor config
   const { getEditorFileHandlers } = useEditorConfig();
-  function isMutableRefObject<T>(ref: React.ForwardedRef<T>): ref is React.MutableRefObject<T | null> {
-    return !!ref && typeof ref === "object" && "current" in ref;
-  }
   // derived values
   const editorRef = isMutableRefObject<EditorRefApi>(ref) ? ref.current : null;
 

@@ -130,17 +130,17 @@ export const ProjectViewForm = observer(function ProjectViewForm(props: Props) {
               }
               // TODO: fix types
               onChange={(val: any) => {
-                let logoValue = {};
+                let nextLogoValue = {};
 
                 if (val?.type === "emoji")
-                  logoValue = {
+                  nextLogoValue = {
                     value: val.value,
                   };
-                else if (val?.type === "icon") logoValue = val.value;
+                else if (val?.type === "icon") nextLogoValue = val.value;
 
                 setValue("logo_props", {
                   in_use: val?.type,
-                  [val?.type]: logoValue,
+                  [val?.type]: nextLogoValue,
                 });
                 setIsOpen(false);
               }}
@@ -173,7 +173,6 @@ export const ProjectViewForm = observer(function ProjectViewForm(props: Props) {
                     placeholder={t("common.title")}
                     className="w-full text-14"
                     tabIndex={getIndex("name")}
-                    autoFocus
                   />
                 )}
               />

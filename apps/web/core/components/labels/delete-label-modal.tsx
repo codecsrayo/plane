@@ -40,19 +40,18 @@ export const DeleteLabelModal = observer(function DeleteLabelModal(props: Props)
 
     setIsDeleteLoading(true);
 
-    await deleteLabel(workspaceSlug.toString(), projectId.toString(), data.id)
-      .then(() => {
-        handleClose();
-      })
-      .catch((err) => {
-        setIsDeleteLoading(false);
-        const error = err?.error || "Label could not be deleted. Please try again.";
-        setToast({
-          type: TOAST_TYPE.ERROR,
-          title: "Error!",
-          message: error,
-        });
+    try {
+      await deleteLabel(workspaceSlug.toString(), projectId.toString(), data.id);
+      handleClose();
+    } catch (err: any) {
+      setIsDeleteLoading(false);
+      const error = err?.error || "Label could not be deleted. Please try again.";
+      setToast({
+        type: TOAST_TYPE.ERROR,
+        title: "Error!",
+        message: error,
       });
+    }
   };
 
   return (

@@ -600,18 +600,16 @@ export class ProjectStore implements IProjectStore {
    * @returns Promise<void>
    */
   archiveProject = async (workspaceSlug: string, projectId: string) => {
-    await this.projectArchiveService
-      .archiveProject(workspaceSlug, projectId)
-      .then((response) => {
-        runInAction(() => {
-          set(this.projectMap, [projectId, "archived_at"], response.archived_at);
-          this.rootStore.favorite.removeFavoriteFromStore(projectId);
-        });
-      })
-      .catch((error) => {
-        console.log("Failed to archive project from project store");
-        throw error;
+    try {
+      const response = await this.projectArchiveService.archiveProject(workspaceSlug, projectId);
+      runInAction(() => {
+        set(this.projectMap, [projectId, "archived_at"], response.archived_at);
+        this.rootStore.favorite.removeFavoriteFromStore(projectId);
       });
+    } catch (error) {
+      console.log("Failed to archive project from project store");
+      throw error;
+    }
   };
 
   /**
@@ -621,16 +619,14 @@ export class ProjectStore implements IProjectStore {
    * @returns Promise<void>
    */
   restoreProject = async (workspaceSlug: string, projectId: string) => {
-    await this.projectArchiveService
-      .restoreProject(workspaceSlug, projectId)
-      .then(() => {
-        runInAction(() => {
-          set(this.projectMap, [projectId, "archived_at"], null);
-        });
-      })
-      .catch((error) => {
-        console.log("Failed to restore project from project store");
-        throw error;
+    try {
+      await this.projectArchiveService.restoreProject(workspaceSlug, projectId);
+      runInAction(() => {
+        set(this.projectMap, [projectId, "archived_at"], null);
       });
+    } catch (error) {
+      console.log("Failed to restore project from project store");
+      throw error;
+    }
   };
 }
