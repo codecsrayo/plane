@@ -93,6 +93,13 @@ github_config_variables = [
         "category": "GITHUB",
         "is_encrypted": False,
     },
+    # Toggle for the workspace GitHub App integration (independent from IS_GITHUB_ENABLED OAuth login)
+    {
+        "key": "IS_GITHUB_INTEGRATION_ENABLED",
+        "value": os.environ.get("IS_GITHUB_INTEGRATION_ENABLED", "0"),
+        "category": "GITHUB",
+        "is_encrypted": False,
+    },
     # Required for the workspace integrations panel — the slug of the GitHub App
     {
         "key": "GITHUB_APP_NAME",

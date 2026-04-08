@@ -66,6 +66,21 @@ class Command(BaseCommand):
                     )
                     if bool(GITHUB_CLIENT_ID) and bool(GITHUB_CLIENT_SECRET):
                         value = "1"
+                elif item.get("key") == "IS_GITHUB_INTEGRATION_ENABLED":
+                    GITHUB_APP_ID, GITHUB_APP_NAME = get_configuration_value(
+                        [
+                            {
+                                "key": "GITHUB_APP_ID",
+                                "default": os.environ.get("GITHUB_APP_ID", ""),
+                            },
+                            {
+                                "key": "GITHUB_APP_NAME",
+                                "default": os.environ.get("GITHUB_APP_NAME", ""),
+                            },
+                        ]
+                    )
+                    if bool(GITHUB_APP_ID) and bool(GITHUB_APP_NAME):
+                        value = "1"
                 elif item.get("key") == "IS_GITLAB_ENABLED":
                     GITLAB_HOST, GITLAB_CLIENT_ID, GITLAB_CLIENT_SECRET = get_configuration_value(
                         [

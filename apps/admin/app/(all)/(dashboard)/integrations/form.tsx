@@ -39,7 +39,7 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
   const { formattedConfig, updateInstanceConfigurations } = useInstance();
 
   // ── Toggle helpers ─────────────────────────────────────────────────────────
-  const isGithubEnabled = Boolean(parseInt(formattedConfig?.IS_GITHUB_ENABLED ?? "0"));
+  const isGithubEnabled = Boolean(parseInt(formattedConfig?.IS_GITHUB_INTEGRATION_ENABLED ?? "0"));
   const isGitlabEnabled = Boolean(parseInt(formattedConfig?.IS_GITLAB_ENABLED ?? "0"));
   const isSlackEnabled = Boolean(parseInt(formattedConfig?.IS_SLACK_ENABLED ?? "0"));
 
@@ -315,7 +315,7 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
               <span className="text-sm text-secondary">{isGithubEnabled ? "Enabled" : "Disabled"}</span>
               <ToggleSwitch
                 value={Boolean(isGithubEnabled)}
-                onChange={() => handleToggle("IS_GITHUB_ENABLED", isGithubEnabled)}
+                onChange={() => handleToggle("IS_GITHUB_INTEGRATION_ENABLED", isGithubEnabled)}
                 size="sm"
               />
             </div>
