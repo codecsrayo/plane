@@ -27,7 +27,6 @@ export function WebhookInput(props: Props) {
         autoComplete="off"
         hasError={hasError}
         placeholder="https://example.com/post"
-        autoFocus
       />
     </>
   );

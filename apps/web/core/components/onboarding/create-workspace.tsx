@@ -163,7 +163,6 @@ export const CreateWorkspace = observer(function CreateWorkspace(props: Props) {
                   ref={ref}
                   hasError={Boolean(errors.name)}
                   className="w-full border-strong placeholder:text-placeholder"
-                  autoFocus
                 />
               </div>
             )}
