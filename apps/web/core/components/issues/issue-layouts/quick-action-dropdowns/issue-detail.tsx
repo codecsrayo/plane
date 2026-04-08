@@ -155,23 +155,15 @@ export const WorkItemDetailQuickActions = observer(function WorkItemDetailQuickA
     .map((item) => {
       // Customize edit action for work item
       if (item.key === "edit") {
-        return {
-          ...item,
-          shouldRender: isEditingAllowed && !isPeekMode,
-        };
+        return Object.assign({}, item, { shouldRender: isEditingAllowed && !isPeekMode });
       }
       // Customize delete action for work item
       if (item.key === "delete") {
-        return {
-          ...item,
-        };
+        return item;
       }
       // Hide copy link in peek mode
       if (item.key === "copy-link") {
-        return {
-          ...item,
-          shouldRender: !isPeekMode,
-        };
+        return Object.assign({}, item, { shouldRender: !isPeekMode });
       }
       return item;
     })

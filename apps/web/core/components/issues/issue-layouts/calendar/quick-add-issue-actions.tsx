@@ -39,7 +39,7 @@ export const CalendarQuickAddIssueActions = observer(function CalendarQuickAddIs
   // router
   const { workspaceSlug, projectId, moduleId } = useParams();
   // states
-  const [isOpen, setIsOpen] = useState(false);
+  const [isQuickAddOpen, setIsQuickAddOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isExistingIssueModalOpen, setIsExistingIssueModalOpen] = useState(false);
   const { updateIssue } = useIssueDetail();
@@ -72,7 +72,7 @@ export const CalendarQuickAddIssueActions = observer(function CalendarQuickAddIs
   };
 
   const handleNewIssue = () => {
-    setIsOpen(true);
+    setIsQuickAddOpen(true);
     if (onOpen) onOpen();
   };
   const handleExistingIssue = () => {
@@ -103,8 +103,8 @@ export const CalendarQuickAddIssueActions = observer(function CalendarQuickAddIs
         />
       )}
       <QuickAddIssueRoot
-        isQuickAddOpen={isOpen}
-        setIsQuickAddOpen={(isOpen) => setIsOpen(isOpen)}
+        isQuickAddOpen={isQuickAddOpen}
+        setIsQuickAddOpen={(open) => setIsQuickAddOpen(open)}
         layout={EIssueLayoutTypes.CALENDAR}
         prePopulatedData={prePopulatedData}
         quickAddCallback={quickAddCallback}
