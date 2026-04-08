@@ -251,29 +251,28 @@ export const IssueFormRoot = observer(function IssueFormRoot(props: IssueFormPro
     // this condition helps to move the issues from draft to project issues
     if (formData.hasOwnProperty("is_draft")) submitData.is_draft = formData.is_draft;
 
-    await onSubmit(submitData, is_draft_issue)
-      .then(() => {
-        setGptAssistantModal(false);
-        if (isCreateMoreToggleEnabled && workItemTemplateId) {
-          handleTemplateChange({
-            workspaceSlug: workspaceSlug?.toString(),
-            reset,
-            editorRef,
-          });
-        } else {
-          reset({
-            ...DEFAULT_WORK_ITEM_FORM_VALUES,
-            ...(isCreateMoreToggleEnabled ? { ...data } : {}),
-            project_id: getValues<"project_id">("project_id"),
-            type_id: getValues<"type_id">("type_id"),
-            description_html: data?.description_html ?? "<p></p>",
-          });
-          editorRef?.current?.clearEditor();
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    try {
+      await onSubmit(submitData, is_draft_issue);
+      setGptAssistantModal(false);
+      if (isCreateMoreToggleEnabled && workItemTemplateId) {
+        handleTemplateChange({
+          workspaceSlug: workspaceSlug?.toString(),
+          reset,
+          editorRef,
+        });
+      } else {
+        reset({
+          ...DEFAULT_WORK_ITEM_FORM_VALUES,
+          ...(isCreateMoreToggleEnabled ? { ...data } : {}),
+          project_id: getValues<"project_id">("project_id"),
+          type_id: getValues<"type_id">("type_id"),
+          description_html: data?.description_html ?? "<p></p>",
+        });
+        editorRef?.current?.clearEditor();
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const handleMoveToProjects = async () => {
@@ -334,15 +333,15 @@ export const IssueFormRoot = observer(function IssueFormRoot(props: IssueFormPro
     const issue = getIssueById(parentId);
     if (!issue) return;
 
-    const projectDetails = getProjectById(issue.project_id);
-    if (!projectDetails) return;
+    const parentProjectDetails = getProjectById(issue.project_id);
+    if (!parentProjectDetails) return;
 
     const stateDetails = getStateById(issue.state_id);
 
     setSelectedParentIssue(
-      convertWorkItemDataToSearchResponse(workspaceSlug?.toString(), issue, projectDetails, stateDetails)
+      convertWorkItemDataToSearchResponse(workspaceSlug?.toString(), issue, parentProjectDetails, stateDetails)
     );
-  }, [watch, getIssueById, getProjectById, selectedParentIssue, getStateById]);
+  }, [watch, getIssueById, getProjectById, selectedParentIssue, getStateById, setSelectedParentIssue, workspaceSlug]);
 
   // executing this useEffect when isDirty changes
   useEffect(() => {
@@ -380,7 +379,7 @@ export const IssueFormRoot = observer(function IssueFormRoot(props: IssueFormPro
         <div className="w-full rounded-lg">
           <form
             ref={formRef}
-            onSubmit={handleSubmit((data) => handleFormSubmit(data))}
+            onSubmit={handleSubmit((formData) => handleFormSubmit(formData))}
             className="flex w-full flex-col"
           >
             <div className="rounded-t-lg bg-surface-1 p-5">
@@ -513,17 +512,14 @@ export const IssueFormRoot = observer(function IssueFormRoot(props: IssueFormPro
                   tabIndex={getIndex("create_more")}
                 >
                   {!data?.id && (
-                    <div
-                      className="inline-flex cursor-pointer items-center gap-1.5"
+                    <button
+                      type="button"
+                      className="inline-flex items-center gap-1.5"
                       onClick={() => onCreateMoreToggleChange(!isCreateMoreToggleEnabled)}
-                      onKeyDown={(e) => {
-                        if (e.key === "Enter") onCreateMoreToggleChange(!isCreateMoreToggleEnabled);
-                      }}
-                      role="button"
                     >
                       <ToggleSwitch value={isCreateMoreToggleEnabled} onChange={() => {}} size="sm" />
                       <span className="text-caption-sm-regular">{t("create_more")}</span>
-                    </div>
+                    </button>
                   )}
                   <div className="flex items-center gap-2">
                     <div tabIndex={getIndex("discard_button")}>

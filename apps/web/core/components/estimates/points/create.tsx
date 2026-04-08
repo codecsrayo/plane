@@ -57,13 +57,13 @@ export const EstimatePointCreate = observer(function EstimatePointCreate(props: 
   const [loader, setLoader] = useState(false);
 
   const handleSuccess = (value: string) => {
-    handleEstimatePointValue && handleEstimatePointValue(value);
+    handleEstimatePointValue?.(value);
     setEstimateInputValue("");
     closeCallBack();
   };
 
   const handleClose = () => {
-    handleEstimatePointError && handleEstimatePointError(estimateInputValue, undefined, "delete");
+    handleEstimatePointError?.(estimateInputValue, undefined, "delete");
     setEstimateInputValue("");
     closeCallBack();
   };
@@ -122,7 +122,7 @@ export const EstimatePointCreate = observer(function EstimatePointCreate(props: 
               await creteEstimatePoint(workspaceSlug, projectId, payload);
 
               setLoader(false);
-              handleEstimatePointError && handleEstimatePointError(estimateInputValue, undefined, "delete");
+              handleEstimatePointError?.(estimateInputValue, undefined, "delete");
               setToast({
                 type: TOAST_TYPE.SUCCESS,
                 title: t("project_settings.estimates.toasts.created.success.title"),
@@ -131,11 +131,10 @@ export const EstimatePointCreate = observer(function EstimatePointCreate(props: 
               handleClose();
             } catch {
               setLoader(false);
-              handleEstimatePointError &&
-                handleEstimatePointError(
-                  estimateInputValue,
-                  t("project_settings.estimates.validation.unable_to_process")
-                );
+              handleEstimatePointError?.(
+                estimateInputValue,
+                t("project_settings.estimates.validation.unable_to_process")
+              );
               setToast({
                 type: TOAST_TYPE.ERROR,
                 title: t("project_settings.estimates.toasts.created.error.title"),
@@ -150,20 +149,15 @@ export const EstimatePointCreate = observer(function EstimatePointCreate(props: 
           }
         } else {
           setLoader(false);
-          handleEstimatePointError &&
-            handleEstimatePointError(
-              estimateInputValue,
-              [EEstimateSystem.POINTS, EEstimateSystem.TIME].includes(estimateType)
-                ? t("project_settings.estimates.validation.numeric")
-                : t("project_settings.estimates.validation.character")
-            );
+          handleEstimatePointError?.(
+            estimateInputValue,
+            [EEstimateSystem.POINTS, EEstimateSystem.TIME].includes(estimateType)
+              ? t("project_settings.estimates.validation.numeric")
+              : t("project_settings.estimates.validation.character")
+          );
         }
-      } else
-        handleEstimatePointError &&
-          handleEstimatePointError(estimateInputValue, t("project_settings.estimates.validation.already_exists"));
-    } else
-      handleEstimatePointError &&
-        handleEstimatePointError(estimateInputValue, t("project_settings.estimates.validation.empty"));
+      } else handleEstimatePointError?.(estimateInputValue, t("project_settings.estimates.validation.already_exists"));
+    } else handleEstimatePointError?.(estimateInputValue, t("project_settings.estimates.validation.empty"));
   };
 
   return (
