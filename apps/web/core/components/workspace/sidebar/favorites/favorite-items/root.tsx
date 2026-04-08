@@ -54,13 +54,13 @@ export const FavoriteRoot = observer(function FavoriteRoot(props: Props) {
 
   // drag and drop
   useEffect(() => {
-    const element = elementRef.current;
+    const currentElement = elementRef.current;
 
-    if (!element) return;
+    if (!currentElement) return;
     const initialData = { id: favorite.id, isGroup: false, isChild: !!parentId, parentId };
     return combine(
       draggable({
-        element,
+        element: currentElement,
         dragHandle: elementRef.current,
         getInitialData: () => initialData,
         onDragStart: () => {
@@ -86,12 +86,12 @@ export const FavoriteRoot = observer(function FavoriteRoot(props: Props) {
         },
       }),
       dropTargetForElements({
-        element,
+        element: currentElement,
         canDrop: ({ source }) => getCanDrop(source, favorite, !!parentId),
         onDragStart: () => {
           setIsDragging(true);
         },
-        getData: ({ input, element }) => {
+        getData: ({ input, element: targetElement }) => {
           const blockedStates: InstructionType[] = ["make-child"];
           if (!isLastChild) {
             blockedStates.push("reorder-below");
@@ -99,7 +99,7 @@ export const FavoriteRoot = observer(function FavoriteRoot(props: Props) {
 
           return attachInstruction(initialData, {
             input,
-            element,
+            element: targetElement,
             currentLevel: 1,
             indentPerLevel: 0,
             mode: isLastChild ? "last-in-group" : "standard",
@@ -107,8 +107,8 @@ export const FavoriteRoot = observer(function FavoriteRoot(props: Props) {
           });
         },
         onDrag: ({ self, source, location }) => {
-          const instruction = getInstructionFromPayload(self, source, location);
-          setInstruction(instruction);
+          const currentInstruction = getInstructionFromPayload(self, source, location);
+          setInstruction(currentInstruction);
         },
         onDragLeave: () => {
           setInstruction(undefined);

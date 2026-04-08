@@ -70,14 +70,14 @@ export function FavoriteFolder(props: Props) {
   }, [favorite.id, favorite.children, workspaceSlug, fetchGroupedFavorites]);
 
   useEffect(() => {
-    const element = elementRef.current;
+    const currentElement = elementRef.current;
 
-    if (!element) return;
+    if (!currentElement) return;
     const initialData = { id: favorite.id, isGroup: true, isChild: false };
 
     return combine(
       draggable({
-        element,
+        element: currentElement,
         getInitialData: () => initialData,
         onDragStart: () => setIsDragging(true),
         onGenerateDragPreview: ({ nativeSetDragImage }) => {
@@ -103,9 +103,9 @@ export function FavoriteFolder(props: Props) {
         }, // canDrag: () => isDraggable,
       }),
       dropTargetForElements({
-        element,
+        element: currentElement,
         canDrop: ({ source }) => getCanDrop(source, favorite, false),
-        getData: ({ input, element }) => {
+        getData: ({ input, element: targetElement }) => {
           const blockedStates: InstructionType[] = [];
           if (!isLastChild) {
             blockedStates.push("reorder-below");
@@ -113,7 +113,7 @@ export function FavoriteFolder(props: Props) {
 
           return attachInstruction(initialData, {
             input,
-            element,
+            element: targetElement,
             currentLevel: 0,
             indentPerLevel: 0,
             mode: isLastChild ? "last-in-group" : "standard",
@@ -121,8 +121,8 @@ export function FavoriteFolder(props: Props) {
           });
         },
         onDrag: ({ source, self, location }) => {
-          const instruction = getInstructionFromPayload(self, source, location);
-          setInstruction(instruction);
+          const currentInstruction = getInstructionFromPayload(self, source, location);
+          setInstruction(currentInstruction);
         },
         onDragLeave: () => {
           setInstruction(undefined);
