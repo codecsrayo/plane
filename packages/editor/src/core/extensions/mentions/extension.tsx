@@ -27,8 +27,8 @@ export function CustomMentionExtension(props: TMentionHandler) {
     },
 
     addNodeView() {
-      return ReactNodeViewRenderer((props) => (
-        <MentionNodeView {...props} node={props.node as MentionNodeViewProps["node"]} />
+      return ReactNodeViewRenderer((nodeViewProps) => (
+        <MentionNodeView {...nodeViewProps} node={nodeViewProps.node as MentionNodeViewProps["node"]} />
       ));
     },
   }).configure({

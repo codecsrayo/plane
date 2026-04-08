@@ -62,8 +62,8 @@ export function ImageExtension(props: Props) {
 
     // render custom image node
     addNodeView() {
-      return ReactNodeViewRenderer((props) => (
-        <CustomImageNodeView {...props} node={props.node as CustomImageNodeViewProps["node"]} />
+      return ReactNodeViewRenderer((nodeViewProps) => (
+        <CustomImageNodeView {...nodeViewProps} node={nodeViewProps.node as CustomImageNodeViewProps["node"]} />
       ));
     },
   });

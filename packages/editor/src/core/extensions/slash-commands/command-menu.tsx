@@ -137,11 +137,15 @@ export const SlashCommandsMenu = forwardRef(function SlashCommandsMenu(props: Sl
       <div
         id="slash-command"
         ref={commandListContainer}
+        role="presentation"
         className="relative max-h-80 min-w-[12rem] space-y-2 overflow-y-auto rounded-md border-[0.5px] border-strong bg-surface-1 px-2 py-2.5 shadow-raised-200"
         style={{
           zIndex: 100,
         }}
         onClick={(e) => {
+          e.stopPropagation();
+        }}
+        onKeyDown={(e) => {
           e.stopPropagation();
         }}
         onMouseDown={(e) => {

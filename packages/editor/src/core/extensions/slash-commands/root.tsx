@@ -7,7 +7,7 @@
 import { Extension } from "@tiptap/core";
 import type { Editor } from "@tiptap/core";
 import { ReactRenderer } from "@tiptap/react";
-import Suggestion from "@tiptap/suggestion";
+import SuggestionExtension from "@tiptap/suggestion";
 import type { SuggestionOptions } from "@tiptap/suggestion";
 // constants
 import { CORE_EXTENSIONS } from "@/constants/extension";
@@ -30,6 +30,8 @@ export type TSlashCommandAdditionalOption = ISlashCommandItem & {
   section: TSlashCommandSectionKeys;
   pushAfter: TEditorCommands;
 };
+
+const noopCleanup = () => {};
 
 const Command = Extension.create<SlashCommandOptions>({
   name: CORE_EXTENSIONS.SLASH_COMMANDS,
@@ -56,11 +58,11 @@ const Command = Extension.create<SlashCommandOptions>({
   },
   addProseMirrorPlugins() {
     return [
-      Suggestion({
+      SuggestionExtension({
         editor: this.editor,
         render: () => {
           let component: ReactRenderer<CommandListInstance, SlashCommandsMenuProps> | null = null;
-          let cleanup: () => void = () => {};
+          let cleanup: () => void = noopCleanup;
           let editorRef: Editor | null = null;
 
           const handleClose = (editor?: Editor) => {

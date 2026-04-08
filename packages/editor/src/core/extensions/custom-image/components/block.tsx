@@ -236,6 +236,7 @@ export function CustomImageBlock(props: CustomImageBlockProps) {
       })}
     >
       <div
+        role="presentation"
         ref={containerRef}
         className="group/image-component relative inline-block max-w-full"
         onMouseDown={handleImageMouseDown}
@@ -334,6 +335,7 @@ export function CustomImageBlock(props: CustomImageBlockProps) {
               )}
             />
             <div
+              role="presentation"
               className={cn(
                 "absolute bottom-0 size-4 translate-y-1/2 rounded-full border-2 border-white bg-accent-primary transition-opacity duration-100 ease-in-out",
                 {

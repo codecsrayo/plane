@@ -4,11 +4,11 @@
  * See the LICENSE file for details.
  */
 
-import TextAlign from "@tiptap/extension-text-align";
+import TextAlignExtension from "@tiptap/extension-text-align";
 
 export type TTextAlign = "left" | "center" | "right";
 
-export const CustomTextAlignExtension = TextAlign.configure({
+export const CustomTextAlignExtension = TextAlignExtension.configure({
   alignments: ["left", "center", "right"],
   types: ["heading", "paragraph"],
 });

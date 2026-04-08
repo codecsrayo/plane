@@ -4,7 +4,7 @@
  * See the LICENSE file for details.
  */
 
-import StarterKit from "@tiptap/starter-kit";
+import StarterKitExtension from "@tiptap/starter-kit";
 
 type TArgs = {
   enableHistory: boolean;
@@ -13,7 +13,7 @@ type TArgs = {
 export const CustomStarterKitExtension = (args: TArgs) => {
   const { enableHistory } = args;
 
-  return StarterKit.configure({
+  return StarterKitExtension.configure({
     bulletList: {
       HTMLAttributes: {
         class: "list-disc pl-7 space-y-(--list-spacing-y)",

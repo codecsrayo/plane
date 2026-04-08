@@ -6,7 +6,7 @@
 
 import { mergeAttributes } from "@tiptap/core";
 import type { MentionOptions } from "@tiptap/extension-mention";
-import Mention from "@tiptap/extension-mention";
+import MentionExtension from "@tiptap/extension-mention";
 import type { MarkdownSerializerState } from "@tiptap/pm/markdown";
 import type { Node as NodeType } from "@tiptap/pm/model";
 // types
@@ -20,7 +20,7 @@ export type TMentionExtensionOptions = MentionOptions & {
   getMentionedEntityDetails: TMentionHandler["getMentionedEntityDetails"];
 };
 
-export const CustomMentionExtensionConfig = Mention.extend<TMentionExtensionOptions>({
+export const CustomMentionExtensionConfig = MentionExtension.extend<TMentionExtensionOptions>({
   addAttributes() {
     return {
       [EMentionComponentAttributeNames.ID]: {

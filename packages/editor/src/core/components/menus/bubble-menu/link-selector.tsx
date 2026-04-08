@@ -90,7 +90,6 @@ export function BubbleMenuLinkSelector(props: Props) {
               }
             }}
             onFocus={() => setError(false)}
-            autoFocus
           />
           {editor.getAttributes("link").href ? (
             <button

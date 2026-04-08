@@ -6,7 +6,7 @@
 
 import type { HocuspocusProvider } from "@hocuspocus/provider";
 import type { Extensions } from "@tiptap/core";
-import Collaboration from "@tiptap/extension-collaboration";
+import CollaborationExtension from "@tiptap/extension-collaboration";
 // react
 import type React from "react";
 import { useEffect, useMemo } from "react";
@@ -77,7 +77,7 @@ export const useCollaborativeEditor = (props: UseCollaborativeEditorArgs) => {
         dragDropEnabled,
       }),
       HeadingListExtension,
-      Collaboration.configure({
+      CollaborationExtension.configure({
         document: provider.document,
         field: "default",
       }),

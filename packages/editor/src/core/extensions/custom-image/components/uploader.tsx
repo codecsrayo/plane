@@ -208,8 +208,15 @@ export function CustomImageUploader(props: CustomImageUploaderProps) {
     [hasDuplicationFailed, editor.isEditable, updateAttributes]
   );
 
+  const handleUploaderClick = () => {
+    if (!failedToLoadImage && editor.isEditable && !hasDuplicationFailed) {
+      fileInputRef.current?.click();
+    }
+  };
+
   return (
-    <div
+    <button
+      type="button"
       className={cn(
         "image-upload-component flex cursor-default items-center justify-start gap-2 rounded-lg border border-dashed bg-layer-3 px-2 py-3 text-tertiary transition-all duration-200 ease-in-out",
         {
@@ -229,9 +236,11 @@ export function CustomImageUploader(props: CustomImageUploaderProps) {
       onDragOver={onDragEnter}
       onDragLeave={onDragLeave}
       contentEditable={false}
-      onClick={() => {
-        if (!failedToLoadImage && editor.isEditable && !hasDuplicationFailed) {
-          fileInputRef.current?.click();
+      onClick={handleUploaderClick}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          handleUploaderClick();
         }
       }}
     >
@@ -262,6 +271,6 @@ export function CustomImageUploader(props: CustomImageUploaderProps) {
         onChange={onFileChange}
         multiple
       />
-    </div>
+    </button>
   );
 }

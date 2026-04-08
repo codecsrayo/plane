@@ -4,11 +4,11 @@
  * See the LICENSE file for details.
  */
 
-import Blockquote from "@tiptap/extension-blockquote";
+import BlockquoteExtension from "@tiptap/extension-blockquote";
 // constants
 import { CORE_EXTENSIONS } from "@/constants/extension";
 
-export const CustomQuoteExtension = Blockquote.extend({
+export const CustomQuoteExtension = BlockquoteExtension.extend({
   addKeyboardShortcuts() {
     return {
       Enter: () => {
