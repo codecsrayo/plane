@@ -71,16 +71,23 @@ export function ShortcutBadge({ shortcut }: { shortcut: string | undefined }) {
   if (!shortcut) return null;
 
   const formatted = formatShortcutForDisplay(shortcut);
+  const formattedParts = formatted?.split("") ?? [];
+  const formattedPartCounts = new Map<string, number>();
 
   return (
     <div className="pointer-events-none inline-flex shrink-0 items-center gap-1 font-medium select-none">
-      {formatted?.split("").map((char, index) => (
-        <React.Fragment key={`${char}-${index}`}>
+      {formattedParts.map((char) => {
+        const count = (formattedPartCounts.get(char) ?? 0) + 1;
+        formattedPartCounts.set(char, count);
+
+        return (
+          <React.Fragment key={`${char}-${count}`}>
           <kbd className="inline-flex h-5 items-center justify-center rounded-sm border border-strong bg-surface-1 px-1.5 font-code text-10 font-medium text-tertiary">
             {char.toUpperCase()}
           </kbd>
-        </React.Fragment>
-      ))}
+          </React.Fragment>
+        );
+      })}
     </div>
   );
 }
@@ -99,17 +106,23 @@ export function KeySequenceBadge({ sequence }: { sequence: string | undefined })
   if (!sequence) return null;
 
   const chars = sequence.split("");
+  const charCounts = new Map<string, number>();
 
   return (
     <div className="pointer-events-none inline-flex shrink-0 items-center gap-1 font-medium select-none">
-      {chars.map((char, index) => (
-        <React.Fragment key={`${char}-${index}`}>
+      {chars.map((char, index) => {
+        const count = (charCounts.get(char) ?? 0) + 1;
+        charCounts.set(char, count);
+
+        return (
+          <React.Fragment key={`${char}-${count}`}>
           <kbd className="inline-flex h-5 items-center justify-center rounded-sm border border-strong bg-surface-1 px-1.5 font-code text-10 font-medium text-tertiary">
             {char.toUpperCase()}
           </kbd>
           {index < chars.length - 1 && <span className="text-10 text-placeholder">then</span>}
-        </React.Fragment>
-      ))}
+          </React.Fragment>
+        );
+      })}
     </div>
   );
 }
