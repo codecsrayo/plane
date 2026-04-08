@@ -14,23 +14,25 @@ interface TableSkeletonProps {
   rows: number;
 }
 
+const getColumnKey = (column: ColumnDef<any>) => String(column.id ?? column.accessorKey ?? column.header ?? "column");
+
 export function TableLoader({ columns, rows }: TableSkeletonProps) {
+  const rowKeys = Array.from({ length: rows }, (_, rowIndex) => `row-${rowIndex}`);
+
   return (
     <Table>
       <TableHeader>
         <TableRow>
-          {columns.map((column, index) => (
-            <TableHead key={column.header?.toString() ?? index}>
-              {typeof column.header === "string" ? column.header : ""}
-            </TableHead>
+          {columns.map((column) => (
+            <TableHead key={getColumnKey(column)}>{typeof column.header === "string" ? column.header : ""}</TableHead>
           ))}
         </TableRow>
       </TableHeader>
       <TableBody>
-        {Array.from({ length: rows }).map((_, rowIndex) => (
-          <TableRow key={rowIndex}>
-            {columns.map((_, colIndex) => (
-              <TableCell key={colIndex}>
+        {rowKeys.map((rowKey) => (
+          <TableRow key={rowKey}>
+            {columns.map((column) => (
+              <TableCell key={`${rowKey}-${getColumnKey(column)}`}>
                 <Loader.Item height="20px" width="100%" />
               </TableCell>
             ))}

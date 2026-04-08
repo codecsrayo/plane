@@ -44,7 +44,7 @@ export const useWorkItemCommentOperations = (
   const operations: TCommentsOperations = useMemo(() => {
     // Define operations object with all methods
     const ops: TCommentsOperations = {
-      copyCommentLink: (id) => {
+      copyCommentLink: async (id) => {
         if (!workspaceSlug || !issueDetails) return;
         try {
           const workItemLink = generateWorkItemLink({
@@ -55,12 +55,11 @@ export const useWorkItemCommentOperations = (
             sequenceId: issueDetails.sequence_id,
           });
           const commentLink = `${workItemLink}#comment-${id}`;
-          copyUrlToClipboard(commentLink).then(() => {
-            setToast({
-              title: t("common.success"),
-              type: TOAST_TYPE.SUCCESS,
-              message: t("issue.comments.copy_link.success"),
-            });
+          await copyUrlToClipboard(commentLink);
+          setToast({
+            title: t("common.success"),
+            type: TOAST_TYPE.SUCCESS,
+            message: t("issue.comments.copy_link.success"),
           });
         } catch (error) {
           console.error("Error in copying comment link:", error);
@@ -139,7 +138,7 @@ export const useWorkItemCommentOperations = (
           return res;
         } catch (error) {
           console.log("Error in uploading comment asset:", error);
-          throw new Error(t("issue.comments.upload.error"));
+          throw new Error(t("issue.comments.upload.error"), { cause: error });
         }
       },
       duplicateCommentAsset: async (assetId, commentId) => {
@@ -153,8 +152,8 @@ export const useWorkItemCommentOperations = (
             workspaceSlug,
           });
           return res;
-        } catch {
-          throw new Error("Asset duplication failed. Please try again later.");
+        } catch (error) {
+          throw new Error("Asset duplication failed. Please try again later.", { cause: error });
         }
       },
       addCommentReaction: async (commentId, reaction) => {
@@ -210,7 +209,26 @@ export const useWorkItemCommentOperations = (
       },
     };
     return ops;
-  }, [workspaceSlug, projectId, issueId, createComment, updateComment, uploadEditorAsset, removeComment]);
+  }, [
+    workspaceSlug,
+    projectId,
+    issueId,
+    issueDetails,
+    projectDetails?.identifier,
+    createComment,
+    updateComment,
+    removeComment,
+    uploadEditorAsset,
+    duplicateEditorAsset,
+    createCommentReaction,
+    removeCommentReaction,
+    getCommentReactionsByCommentId,
+    commentReactionsByUser,
+    getCommentReactionById,
+    getUserDetails,
+    currentUser,
+    t,
+  ]);
 
   return operations;
 };
