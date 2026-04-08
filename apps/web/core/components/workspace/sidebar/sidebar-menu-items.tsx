@@ -86,19 +86,18 @@ export const SidebarMenuItems = observer(function SidebarMenuItems() {
     () =>
       WORKSPACE_SIDEBAR_DYNAMIC_NAVIGATION_ITEMS_LINKS.map((item) => {
         const preference = workspacePreferences.items[item.key];
-        return {
-          ...item,
+        return Object.assign({}, item, {
           sort_order: preference ? preference.sort_order : 0,
-        };
-      }).sort((a, b) => a.sort_order - b.sort_order),
+        });
+      }).toSorted((a, b) => a.sort_order - b.sort_order),
     [workspacePreferences]
   );
 
   return (
     <>
       <div className="flex flex-col gap-0.5">
-        {filteredStaticNavigationItems.map((item, _index) => (
-          <SidebarItem key={`static_${_index}`} item={item} />
+        {filteredStaticNavigationItems.map((item) => (
+          <SidebarItem key={item.key} item={item} />
         ))}
       </div>
       <Disclosure as="div" className="flex flex-col" defaultOpen={!!isWorkspaceMenuOpen}>
@@ -148,11 +147,11 @@ export const SidebarMenuItems = observer(function SidebarMenuItems() {
           {isWorkspaceMenuOpen && (
             <Disclosure.Panel as="div" className="flex flex-col gap-0.5" static>
               <>
-                {WORKSPACE_SIDEBAR_STATIC_PINNED_NAVIGATION_ITEMS_LINKS.map((item, _index) => (
-                  <SidebarItem key={`static_${_index}`} item={item} />
+                {WORKSPACE_SIDEBAR_STATIC_PINNED_NAVIGATION_ITEMS_LINKS.map((item) => (
+                  <SidebarItem key={item.key} item={item} />
                 ))}
-                {sortedNavigationItems.map((item, _index) => (
-                  <SidebarItem key={`dynamic_${_index}`} item={item} />
+                {sortedNavigationItems.map((item) => (
+                  <SidebarItem key={item.key} item={item} />
                 ))}
                 <SidebarNavItem>
                   <button

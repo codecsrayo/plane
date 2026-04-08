@@ -88,22 +88,26 @@ export const MemberDropdownBase = observer(function MemberDropdownBase(props: TM
     if (!multiple) handleClose();
   };
 
-  const getDisplayName = (value: string | string[] | null, showUserDetails: boolean, placeholder: string = "") => {
-    if (Array.isArray(value)) {
-      if (value.length > 0) {
-        if (value.length === 1) {
-          return getUserDetails(value[0])?.display_name || placeholder;
+  const getDisplayName = (
+    selectedValue: string | string[] | null,
+    shouldShowUserDetails: boolean,
+    fallbackPlaceholder: string = ""
+  ) => {
+    if (Array.isArray(selectedValue)) {
+      if (selectedValue.length > 0) {
+        if (selectedValue.length === 1) {
+          return getUserDetails(selectedValue[0])?.display_name || fallbackPlaceholder;
         } else {
-          return showUserDetails ? `${value.length} ${t("members").toLocaleLowerCase()}` : "";
+          return shouldShowUserDetails ? `${selectedValue.length} ${t("members").toLocaleLowerCase()}` : "";
         }
       } else {
-        return placeholder;
+        return fallbackPlaceholder;
       }
     } else {
-      if (showUserDetails && value) {
-        return getUserDetails(value)?.display_name || placeholder;
+      if (shouldShowUserDetails && selectedValue) {
+        return getUserDetails(selectedValue)?.display_name || fallbackPlaceholder;
       } else {
-        return placeholder;
+        return fallbackPlaceholder;
       }
     }
   };
@@ -167,6 +171,7 @@ export const MemberDropdownBase = observer(function MemberDropdownBase(props: TM
     <ComboDropDown
       as="div"
       ref={dropdownRef}
+      role="presentation"
       {...comboboxProps}
       className={cn("h-full", className)}
       onChange={dropdownOnChange}

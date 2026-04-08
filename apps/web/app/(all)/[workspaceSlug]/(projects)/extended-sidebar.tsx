@@ -18,6 +18,37 @@ import { useWorkspaceNavigationPreferences } from "@/hooks/use-navigation-prefer
 import { ExtendedSidebarItem } from "@/plane-web/components/workspace/sidebar/extended-sidebar-item";
 import { ExtendedSidebarWrapper } from "./extended-sidebar-wrapper";
 
+const orderNavigationItem = (
+  sourceIndex: number,
+  destinationIndex: number,
+  navigationList: {
+    sort_order: number;
+    key: string;
+    labelTranslationKey: string;
+    href: string;
+    access: EUserWorkspaceRoles[];
+  }[]
+): number | undefined => {
+  if (sourceIndex < 0 || destinationIndex < 0 || navigationList.length <= 0) return undefined;
+
+  let updatedSortOrder: number | undefined = undefined;
+  const sortOrderDefaultValue = 10000;
+
+  if (destinationIndex === 0) {
+    const currentSortOrder = navigationList[destinationIndex].sort_order || 0;
+    updatedSortOrder = currentSortOrder - sortOrderDefaultValue;
+  } else if (destinationIndex === navigationList.length) {
+    const currentSortOrder = navigationList[destinationIndex - 1].sort_order || 0;
+    updatedSortOrder = currentSortOrder + sortOrderDefaultValue;
+  } else {
+    const destinationTopProjectSortOrder = navigationList[destinationIndex - 1].sort_order || 0;
+    const destinationBottomProjectSortOrder = navigationList[destinationIndex].sort_order || 0;
+    updatedSortOrder = (destinationTopProjectSortOrder + destinationBottomProjectSortOrder) / 2;
+  }
+
+  return updatedSortOrder;
+};
+
 export const ExtendedAppSidebar = observer(function ExtendedAppSidebar() {
   // refs
   const extendedSidebarRef = useRef<HTMLDivElement | null>(null);
@@ -42,13 +73,12 @@ export const ExtendedAppSidebar = observer(function ExtendedAppSidebar() {
     })
       .map((item) => {
         const preference = currentWorkspaceNavigationPreferences?.[item.key];
-        return {
-          ...item,
+        return Object.assign({}, item, {
           sort_order: preference?.sort_order ?? 0,
           is_pinned: preference?.is_pinned ?? false,
-        };
+        });
       })
-      .sort((a, b) => {
+      .toSorted((a, b) => {
         // First sort by pinned status (pinned items first)
         if (a.is_pinned !== b.is_pinned) {
           return b.is_pinned ? 1 : -1;
@@ -59,41 +89,6 @@ export const ExtendedAppSidebar = observer(function ExtendedAppSidebar() {
   }, [workspaceSlug, currentWorkspaceNavigationPreferences, allowPermissions]);
 
   const sortedNavigationItemsKeys = sortedNavigationItems.map((item) => item.key);
-
-  const orderNavigationItem = (
-    sourceIndex: number,
-    destinationIndex: number,
-    navigationList: {
-      sort_order: number;
-      key: string;
-      labelTranslationKey: string;
-      href: string;
-      access: EUserWorkspaceRoles[];
-    }[]
-  ): number | undefined => {
-    if (sourceIndex < 0 || destinationIndex < 0 || navigationList.length <= 0) return undefined;
-
-    let updatedSortOrder: number | undefined = undefined;
-    const sortOrderDefaultValue = 10000;
-
-    if (destinationIndex === 0) {
-      // updating project at the top of the project
-      const currentSortOrder = navigationList[destinationIndex].sort_order || 0;
-      updatedSortOrder = currentSortOrder - sortOrderDefaultValue;
-    } else if (destinationIndex === navigationList.length) {
-      // updating project at the bottom of the project
-      const currentSortOrder = navigationList[destinationIndex - 1].sort_order || 0;
-      updatedSortOrder = currentSortOrder + sortOrderDefaultValue;
-    } else {
-      // updating project in the middle of the project
-      const destinationTopProjectSortOrder = navigationList[destinationIndex - 1].sort_order || 0;
-      const destinationBottomProjectSortOrder = navigationList[destinationIndex].sort_order || 0;
-      const updatedValue = (destinationTopProjectSortOrder + destinationBottomProjectSortOrder) / 2;
-      updatedSortOrder = updatedValue;
-    }
-
-    return updatedSortOrder;
-  };
 
   const handleOnNavigationItemDrop = (
     sourceId: string | undefined,
