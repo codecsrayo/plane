@@ -55,27 +55,27 @@ export function EmojiRoot(props: EmojiRootProps) {
           data-slot="emoji-picker-list"
           className={cn("pb-2 select-none")}
           components={{
-            CategoryHeader: ({ category, ...props }) => (
+            CategoryHeader: ({ category, ...categoryHeaderProps }) => (
               <div
                 data-slot="emoji-picker-list-category-header"
                 className="bg-surface-1 px-3 pb-1.5 text-11 font-medium text-tertiary"
-                {...props}
+                {...categoryHeaderProps}
               >
                 {category.label}
               </div>
             ),
-            Row: ({ children, ...props }) => (
-              <div data-slot="emoji-picker-list-row" className="scroll-my-1.5 px-1.5" {...props}>
+            Row: ({ children, ...rowProps }) => (
+              <div data-slot="emoji-picker-list-row" className="scroll-my-1.5 px-1.5" {...rowProps}>
                 {children}
               </div>
             ),
-            Emoji: ({ emoji, ...props }) => (
+            Emoji: ({ emoji, ...emojiProps }) => (
               <button
                 type="button"
                 aria-label={emoji?.label ?? emoji?.emoji}
                 data-slot="emoji-picker-list-emoji"
                 className="data-active:bg-accent flex size-8 items-center justify-center rounded-md text-16"
-                {...props}
+                {...emojiProps}
               >
                 {emoji.emoji}
               </button>

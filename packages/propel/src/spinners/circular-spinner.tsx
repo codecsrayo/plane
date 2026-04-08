@@ -6,7 +6,7 @@
 
 import * as React from "react";
 // helpers
-import clsx from "clsx";
+import clsxFn from "clsx";
 
 export interface ISpinner extends React.SVGAttributes<SVGElement> {
   height?: string;
@@ -21,7 +21,7 @@ export function Spinner({ height = "32px", width = "32px", className = "" }: ISp
         aria-hidden="true"
         height={height}
         width={width}
-        className={clsx("animate-spin text-secondary", className)}
+        className={clsxFn("animate-spin text-secondary", className)}
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

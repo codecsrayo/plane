@@ -5,6 +5,7 @@
  */
 
 import type { Preview } from "@storybook/react-vite";
+// oxlint-disable-next-line import/no-unassigned-import
 import "./tailwind.css";
 
 const parameters: Preview["parameters"] = {
