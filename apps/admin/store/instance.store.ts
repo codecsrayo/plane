@@ -184,8 +184,8 @@ export class InstanceStore implements IInstanceStore {
       const response = await this.instanceService.updateConfigurations(data);
       runInAction(() => {
         this.instanceConfigurations = this.instanceConfigurations?.map((config) => {
-          const item = response.find((item) => item.key === config.key);
-          if (item) return item;
+          const updatedItem = response.find((responseItem) => responseItem.key === config.key);
+          if (updatedItem) return updatedItem;
           return config;
         });
       });

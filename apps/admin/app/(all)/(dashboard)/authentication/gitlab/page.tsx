@@ -54,14 +54,13 @@ const InstanceGitlabAuthenticationPage = observer(function InstanceGitlabAuthent
       },
     });
 
-    await updateConfigPromise
-      .then(() => {
-        setIsSubmitting(false);
-      })
-      .catch((err) => {
-        console.error(err);
-        setIsSubmitting(false);
-      });
+    try {
+      await updateConfigPromise;
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
   return (
     <PageWrapper
@@ -74,7 +73,7 @@ const InstanceGitlabAuthenticationPage = observer(function InstanceGitlabAuthent
             <ToggleSwitch
               value={Boolean(parseInt(enableGitlabConfig))}
               onChange={() => {
-                if (Boolean(parseInt(enableGitlabConfig)) === true) {
+                if (parseInt(enableGitlabConfig)) {
                   updateConfig("IS_GITLAB_ENABLED", "0");
                 } else {
                   updateConfig("IS_GITLAB_ENABLED", "1");

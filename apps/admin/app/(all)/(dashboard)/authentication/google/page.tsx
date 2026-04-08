@@ -54,14 +54,13 @@ const InstanceGoogleAuthenticationPage = observer(function InstanceGoogleAuthent
       },
     });
 
-    await updateConfigPromise
-      .then(() => {
-        setIsSubmitting(false);
-      })
-      .catch((err) => {
-        console.error(err);
-        setIsSubmitting(false);
-      });
+    try {
+      await updateConfigPromise;
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
   return (
     <PageWrapper
@@ -75,7 +74,7 @@ const InstanceGoogleAuthenticationPage = observer(function InstanceGoogleAuthent
             <ToggleSwitch
               value={Boolean(parseInt(enableGoogleConfig))}
               onChange={() => {
-                if (Boolean(parseInt(enableGoogleConfig)) === true) {
+                if (parseInt(enableGoogleConfig)) {
                   updateConfig("IS_GOOGLE_ENABLED", "0");
                 } else {
                   updateConfig("IS_GOOGLE_ENABLED", "1");

@@ -40,9 +40,11 @@ export const GiteaConfiguration = observer(function GiteaConfiguration(props: Pr
           <ToggleSwitch
             value={Boolean(parseInt(GiteaConfig))}
             onChange={() => {
-              Boolean(parseInt(GiteaConfig)) === true
-                ? updateConfig("IS_GITEA_ENABLED", "0")
-                : updateConfig("IS_GITEA_ENABLED", "1");
+              if (parseInt(GiteaConfig)) {
+                updateConfig("IS_GITEA_ENABLED", "0");
+              } else {
+                updateConfig("IS_GITEA_ENABLED", "1");
+              }
             }}
             size="sm"
             disabled={disabled}

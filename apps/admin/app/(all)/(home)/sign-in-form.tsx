@@ -95,7 +95,7 @@ export function InstanceSignInForm() {
   }, [errorCode, errorMessage]);
 
   const isButtonDisabled = useMemo(
-    () => (!isSubmitting && formData.email && formData.password ? false : true),
+    () => !(!isSubmitting && formData.email && formData.password),
     [formData.email, formData.password, isSubmitting]
   );
 
@@ -147,7 +147,6 @@ export function InstanceSignInForm() {
                 value={formData.email}
                 onChange={(e) => handleFormChange("email", e.target.value)}
                 autoComplete="off"
-                autoFocus
               />
             </div>
 

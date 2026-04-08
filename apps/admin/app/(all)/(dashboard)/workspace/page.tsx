@@ -64,14 +64,13 @@ const WorkspaceManagementPage = observer(function WorkspaceManagementPage(_props
       },
     });
 
-    await updateConfigPromise
-      .then(() => {
-        setIsSubmitting(false);
-      })
-      .catch((err) => {
-        console.error(err);
-        setIsSubmitting(false);
-      });
+    try {
+      await updateConfigPromise;
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -97,7 +96,7 @@ const WorkspaceManagementPage = observer(function WorkspaceManagementPage(_props
                 <ToggleSwitch
                   value={Boolean(parseInt(disableWorkspaceCreation))}
                   onChange={() => {
-                    if (Boolean(parseInt(disableWorkspaceCreation)) === true) {
+                    if (parseInt(disableWorkspaceCreation)) {
                       updateConfig("DISABLE_WORKSPACE_CREATION", "0");
                     } else {
                       updateConfig("DISABLE_WORKSPACE_CREATION", "1");
