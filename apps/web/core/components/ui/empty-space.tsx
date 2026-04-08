@@ -79,8 +79,14 @@ function EmptySpaceItem({ title, description, Icon, action, href }: EmptySpaceIt
 
   return (
     <>
-      <li className="cursor-pointer" onClick={action} role="button">
-        {spaceItem}
+      <li>
+        {action ? (
+          <button type="button" className="w-full cursor-pointer text-left" onClick={action}>
+            {spaceItem}
+          </button>
+        ) : (
+          spaceItem
+        )}
       </li>
     </>
   );

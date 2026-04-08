@@ -45,34 +45,34 @@ function WorkspaceInvitationPage() {
       : null
   );
 
-  const handleAccept = () => {
+  const handleAccept = async () => {
     if (!invitationDetail) return;
-    workspaceService
-      .joinWorkspace(invitationDetail.workspace.slug, invitationDetail.id, {
+    try {
+      await workspaceService.joinWorkspace(invitationDetail.workspace.slug, invitationDetail.id, {
         accepted: true,
         token: token,
-      })
-      .then(() => {
-        if (invitationDetail.email === currentUser?.email) {
-          router.push(`/${invitationDetail.workspace.slug}`);
-        } else {
-          router.push("/");
-        }
-      })
-      .catch((err: unknown) => console.error(err));
+      });
+      if (invitationDetail.email === currentUser?.email) {
+        router.push(`/${invitationDetail.workspace.slug}`);
+      } else {
+        router.push("/");
+      }
+    } catch (err: unknown) {
+      console.error(err);
+    }
   };
 
-  const handleReject = () => {
+  const handleReject = async () => {
     if (!invitationDetail || !token) return;
-    void workspaceService
-      .joinWorkspace(invitationDetail.workspace.slug, invitationDetail.id, {
+    try {
+      await workspaceService.joinWorkspace(invitationDetail.workspace.slug, invitationDetail.id, {
         accepted: false,
         token: token,
-      })
-      .then(() => {
-        router.push("/");
-      })
-      .catch((err: unknown) => console.error(err));
+      });
+      router.push("/");
+    } catch (err: unknown) {
+      console.error(err);
+    }
   };
 
   return (

@@ -65,46 +65,49 @@ export const RelationIssueListItem = observer(function RelationIssueListItem(pro
   const project = useProject();
   const { isMobile } = usePlatformOS();
   // derived values
-  const issue = getIssueById(relationIssueId);
-  const { handleRedirection } = useIssuePeekOverviewRedirection(!!issue?.is_epic);
-  const issueOperations = useRelationOperations(issue?.is_epic ? EIssueServiceType.EPICS : EIssueServiceType.ISSUES);
-  const projectDetail = (issue && issue.project_id && project.getProjectById(issue.project_id)) || undefined;
-  const projectId = issue?.project_id;
+  const relatedIssue = getIssueById(relationIssueId);
+  const { handleRedirection } = useIssuePeekOverviewRedirection(!!relatedIssue?.is_epic);
+  const issueOperations = useRelationOperations(
+    relatedIssue?.is_epic ? EIssueServiceType.EPICS : EIssueServiceType.ISSUES
+  );
+  const projectDetail =
+    (relatedIssue && relatedIssue.project_id && project.getProjectById(relatedIssue.project_id)) || undefined;
+  const projectId = relatedIssue?.project_id;
 
-  if (!issue || !projectId) return <></>;
+  if (!relatedIssue || !projectId) return <></>;
 
   const workItemLink = generateWorkItemLink({
     workspaceSlug: workspaceSlug.toString(),
-    projectId: issue?.project_id,
-    issueId: issue?.id,
+    projectId: relatedIssue.project_id,
+    issueId: relatedIssue.id,
     projectIdentifier: projectDetail?.identifier,
-    sequenceId: issue?.sequence_id,
-    isEpic: issue?.is_epic,
+    sequenceId: relatedIssue.sequence_id,
+    isEpic: relatedIssue.is_epic,
   });
 
   // handlers
-  const handleIssuePeekOverview = (issue: TIssue) => {
-    if (issue.is_epic) {
+  const handleIssuePeekOverview = (selectedIssue: TIssue) => {
+    if (selectedIssue.is_epic) {
       // open epics in new tab
       window.open(workItemLink, "_blank");
       return;
     }
-    handleRedirection(workspaceSlug, issue, isMobile);
+    handleRedirection(workspaceSlug, selectedIssue, isMobile);
   };
 
   const handleEditIssue = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.stopPropagation();
     e.preventDefault();
-    handleIssueCrudState("update", relationIssueId, { ...issue });
+    handleIssueCrudState("update", relationIssueId, { ...relatedIssue });
     toggleCreateIssueModal(true);
   };
 
   const handleDeleteIssue = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.stopPropagation();
     e.preventDefault();
-    handleIssueCrudState("delete", relationIssueId, issue);
+    handleIssueCrudState("delete", relationIssueId, relatedIssue);
     toggleDeleteIssueModal(relationIssueId);
-    handleIssueCrudState("removeRelation", issueId, issue, relationKey, relationIssueId);
+    handleIssueCrudState("removeRelation", issueId, relatedIssue, relationKey, relationIssueId);
   };
 
   const handleCopyIssueLink = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -122,12 +125,12 @@ export const RelationIssueListItem = observer(function RelationIssueListItem(pro
   return (
     <div key={relationIssueId}>
       <ControlLink
-        id={`issue-${issue.id}`}
+        id={`issue-${relatedIssue.id}`}
         href={workItemLink}
-        onClick={() => handleIssuePeekOverview(issue)}
+        onClick={() => handleIssuePeekOverview(relatedIssue)}
         className="w-full cursor-pointer"
       >
-        {issue && (
+        {relatedIssue && (
           <div className="group relative flex h-full min-h-11 w-full items-center px-1.5 py-1 transition-all hover:bg-surface-2">
             <span className="size-5 flex-shrink-0" />
             <div className="flex min-w-0 flex-1 cursor-pointer items-center gap-3">
@@ -135,22 +138,23 @@ export const RelationIssueListItem = observer(function RelationIssueListItem(pro
                 {projectDetail && (
                   <IssueIdentifier
                     projectId={projectDetail.id}
-                    issueTypeId={issue.type_id}
+                    issueTypeId={relatedIssue.type_id}
                     projectIdentifier={projectDetail.identifier}
-                    issueSequenceId={issue.sequence_id}
+                    issueSequenceId={relatedIssue.sequence_id}
                     size="xs"
                     variant="secondary"
                   />
                 )}
               </div>
 
-              <Tooltip tooltipContent={issue.name} isMobile={isMobile}>
-                <span className="w-0 flex-1 truncate text-13 text-primary">{issue.name}</span>
+              <Tooltip tooltipContent={relatedIssue.name} isMobile={isMobile}>
+                <span className="w-0 flex-1 truncate text-13 text-primary">{relatedIssue.name}</span>
               </Tooltip>
             </div>
             <div
+              role="presentation"
               className="flex-shrink-0 text-13"
-              onClick={(e) => {
+              onMouseDown={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
               }}
