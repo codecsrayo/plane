@@ -7,15 +7,12 @@
 import { useState } from "react";
 import Link from "next/link";
 import { observer } from "mobx-react";
-import { Monitor } from "lucide-react";
+import { Copy, Monitor } from "lucide-react";
 import { useForm } from "react-hook-form";
 // plane internal packages
 import { Button, getButtonStyling } from "@plane/propel/button";
 import { TOAST_TYPE, setToast } from "@plane/propel/toast";
-import type {
-  IFormattedInstanceConfiguration,
-  TInstanceIntegrationConfigurationKeys,
-} from "@plane/types";
+import type { IFormattedInstanceConfiguration, TInstanceIntegrationConfigurationKeys } from "@plane/types";
 import { ToggleSwitch } from "@plane/ui";
 // components
 import { CodeBlock } from "@/components/common/code-block";
@@ -51,6 +48,7 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
   const {
     handleSubmit,
     control,
+    getValues,
     reset,
     setValue,
     formState: { errors, isDirty, isSubmitting },
@@ -74,6 +72,18 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
       .map((b) => b.toString(16).padStart(2, "0"))
       .join("");
     setValue("GITHUB_WEBHOOK_SECRET", secret, { shouldDirty: true });
+  };
+
+  const copyWebhookSecret = () => {
+    const secret = getValues("GITHUB_WEBHOOK_SECRET");
+    if (!secret) return;
+
+    navigator.clipboard.writeText(secret);
+    setToast({
+      type: TOAST_TYPE.SUCCESS,
+      title: "Copied to clipboard",
+      message: "The Webhook secret has been successfully copied to your clipboard",
+    });
   };
 
   // ── GitHub fields ──────────────────────────────────────────────────────────
@@ -329,33 +339,6 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
                       disabled={!isGithubEnabled}
                     />
                   ))}
-
-                {/* Webhook secret with Generate button */}
-                <div className="flex items-end gap-2">
-                  <div className="flex-1">
-                    <ControllerInput
-                      control={control}
-                      type="password"
-                      name="GITHUB_WEBHOOK_SECRET"
-                      label="Webhook secret"
-                      description="Used to verify webhook payloads from GitHub. Generate one or set your own."
-                      placeholder="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-                      error={Boolean(errors.GITHUB_WEBHOOK_SECRET)}
-                      required={false}
-                      disabled={!isGithubEnabled}
-                    />
-                  </div>
-                  <Button
-                    variant="neutral-primary"
-                    size="sm"
-                    onClick={generateWebhookSecret}
-                    type="button"
-                    className="mb-0.5 shrink-0"
-                    disabled={!isGithubEnabled}
-                  >
-                    Generate
-                  </Button>
-                </div>
               </div>
             </div>
 
@@ -393,6 +376,42 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
                         </p>
                       }
                     />
+                    <div className="flex items-end gap-2">
+                      <div className="flex-1">
+                        <ControllerInput
+                          control={control}
+                          type="password"
+                          name="GITHUB_WEBHOOK_SECRET"
+                          label="Webhook secret"
+                          description="Used to verify webhook payloads from GitHub. Generate one or set your own."
+                          placeholder="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+                          error={Boolean(errors.GITHUB_WEBHOOK_SECRET)}
+                          required={false}
+                          disabled={!isGithubEnabled}
+                          rightContent={
+                            <button
+                              type="button"
+                              tabIndex={-1}
+                              className="flex items-center justify-center"
+                              onClick={copyWebhookSecret}
+                              disabled={!isGithubEnabled || !getValues("GITHUB_WEBHOOK_SECRET")}
+                            >
+                              <Copy className="h-4 w-4" />
+                            </button>
+                          }
+                        />
+                      </div>
+                      <Button
+                        variant="neutral-primary"
+                        size="sm"
+                        onClick={generateWebhookSecret}
+                        type="button"
+                        className="mb-0.5 shrink-0"
+                        disabled={!isGithubEnabled}
+                      >
+                        Generate
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </div>

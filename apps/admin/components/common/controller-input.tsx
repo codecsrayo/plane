@@ -23,6 +23,7 @@ type Props = {
   error: boolean;
   required: boolean;
   disabled?: boolean;
+  rightContent?: React.ReactNode;
 };
 
 export type TControllerInputFormField = {
@@ -34,10 +35,22 @@ export type TControllerInputFormField = {
   error: boolean;
   required: boolean;
   disabled?: boolean;
+  rightContent?: React.ReactNode;
 };
 
 export function ControllerInput(props: Props) {
-  const { name, control, type, label, description, placeholder, error, required, disabled = false } = props;
+  const {
+    name,
+    control,
+    type,
+    label,
+    description,
+    placeholder,
+    error,
+    required,
+    disabled = false,
+    rightContent,
+  } = props;
   // states
   const [showPassword, setShowPassword] = useState(false);
 
@@ -61,33 +74,39 @@ export function ControllerInput(props: Props) {
               placeholder={placeholder}
               disabled={disabled}
               className={cn("w-full rounded-md font-medium", {
-                "pr-10": type === "password",
+                "pr-10": (type === "password" && !rightContent) || (type !== "password" && !!rightContent),
+                "pr-20": type === "password" && rightContent,
               })}
             />
           )}
         />
-        {type === "password" &&
-          (showPassword ? (
-            <button
-              type="button"
-              tabIndex={-1}
-              className="absolute top-2.5 right-3 flex items-center justify-center text-placeholder"
-              onClick={() => setShowPassword(false)}
-              disabled={disabled}
-            >
-              <EyeOff className="h-4 w-4" />
-            </button>
-          ) : (
-            <button
-              type="button"
-              tabIndex={-1}
-              className="absolute top-2.5 right-3 flex items-center justify-center text-placeholder"
-              onClick={() => setShowPassword(true)}
-              disabled={disabled}
-            >
-              <Eye className="h-4 w-4" />
-            </button>
-          ))}
+        {(type === "password" || rightContent) && (
+          <div className="absolute top-2.5 right-3 flex items-center gap-2 text-placeholder">
+            {type === "password" &&
+              (showPassword ? (
+                <button
+                  type="button"
+                  tabIndex={-1}
+                  className="flex items-center justify-center"
+                  onClick={() => setShowPassword(false)}
+                  disabled={disabled}
+                >
+                  <EyeOff className="h-4 w-4" />
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  tabIndex={-1}
+                  className="flex items-center justify-center"
+                  onClick={() => setShowPassword(true)}
+                  disabled={disabled}
+                >
+                  <Eye className="h-4 w-4" />
+                </button>
+              ))}
+            {rightContent}
+          </div>
+        )}
       </div>
       {description && <p className="pt-0.5 text-11 text-tertiary">{description}</p>}
     </div>
