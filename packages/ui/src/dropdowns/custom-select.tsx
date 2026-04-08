@@ -68,7 +68,6 @@ function CustomSelect(props: ICustomSelectProps) {
   return (
     <DropdownContext.Provider value={closeDropdown}>
       <Combobox
-        as="div"
         ref={dropdownRef}
         tabIndex={tabIndex}
         value={value}

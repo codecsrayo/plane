@@ -74,7 +74,7 @@ export function CustomSearchSelect(props: ICustomSearchSelectProps) {
 
   const closeDropdown = () => {
     setIsOpen(false);
-    onClose && onClose();
+    onClose?.();
   };
 
   const handleKeyDown = useDropdownKeyDown(openDropdown, closeDropdown, isOpen);
@@ -87,7 +87,6 @@ export function CustomSearchSelect(props: ICustomSearchSelectProps) {
 
   return (
     <Combobox
-      as="div"
       ref={dropdownRef}
       tabIndex={tabIndex}
       className={cn("relative flex-shrink-0 text-left", className)}

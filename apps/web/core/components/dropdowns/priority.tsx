@@ -446,7 +446,6 @@ export function PriorityDropdown(props: Props) {
 
   return (
     <ComboDropDown
-      as="div"
       ref={dropdownRef}
       className={cn(
         "h-full",

@@ -166,7 +166,6 @@ export const DateDropdown = observer(function DateDropdown(props: Props) {
 
   return (
     <ComboDropDown
-      as="div"
       ref={dropdownRef}
       tabIndex={tabIndex}
       className={cn("h-full", className)}

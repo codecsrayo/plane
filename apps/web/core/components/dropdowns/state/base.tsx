@@ -205,7 +205,6 @@ export const WorkItemStateDropdownBase = observer(function WorkItemStateDropdown
 
   return (
     <ComboDropDown
-      as="div"
       ref={dropdownRef}
       className={cn("h-full", className)}
       value={stateValue}

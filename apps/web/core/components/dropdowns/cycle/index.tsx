@@ -136,7 +136,6 @@ export const CycleDropdown = observer(function CycleDropdown(props: Props) {
 
   return (
     <ComboDropDown
-      as="div"
       ref={dropdownRef}
       className={cn("h-full", className)}
       value={value}

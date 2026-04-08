@@ -169,7 +169,6 @@ export const MemberDropdownBase = observer(function MemberDropdownBase(props: TM
 
   return (
     <ComboDropDown
-      as="div"
       ref={dropdownRef}
       role="presentation"
       {...comboboxProps}

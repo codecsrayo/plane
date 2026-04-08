@@ -229,7 +229,6 @@ export const ProjectDropdownBase = observer(function ProjectDropdownBase(props: 
 
   return (
     <ComboDropDown
-      as="div"
       ref={dropdownRef}
       tabIndex={tabIndex}
       className={cn("h-full", className)}
