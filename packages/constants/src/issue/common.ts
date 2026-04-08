@@ -24,6 +24,7 @@ export type TIssueFilterPriorityObject = {
   icon: string;
 };
 
+/* oxlint-disable typescript-eslint/no-duplicate-enum-values */
 export enum EIssueGroupByToServerOptions {
   "state" = "state_id",
   "priority" = "priority",
@@ -35,9 +36,9 @@ export enum EIssueGroupByToServerOptions {
   "target_date" = "target_date",
   "project" = "project_id",
   "created_by" = "created_by",
-  // eslint-disable-next-line @typescript-eslint/no-duplicate-enum-values
   "team_project" = "project_id",
 }
+/* oxlint-enable typescript-eslint/no-duplicate-enum-values */
 
 export enum EIssueGroupBYServerToProperty {
   "state_id" = "state_id",
