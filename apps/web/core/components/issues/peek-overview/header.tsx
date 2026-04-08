@@ -116,15 +116,14 @@ export const IssuePeekOverviewHeader = observer(function IssuePeekOverviewHeader
     isArchived,
   });
 
-  const handleCopyText = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleCopyText = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     e.preventDefault();
-    copyUrlToClipboard(workItemLink).then(() => {
-      setToast({
-        type: TOAST_TYPE.SUCCESS,
-        title: t("common.link_copied"),
-        message: t("common.link_copied_to_clipboard"),
-      });
+    await copyUrlToClipboard(workItemLink);
+    setToast({
+      type: TOAST_TYPE.SUCCESS,
+      title: t("common.link_copied"),
+      message: t("common.link_copied_to_clipboard"),
     });
   };
 
@@ -132,9 +131,8 @@ export const IssuePeekOverviewHeader = observer(function IssuePeekOverviewHeader
     try {
       const deleteIssue = issueDetails?.archived_at ? removeArchivedIssue : removeIssue;
 
-      return deleteIssue(workspaceSlug, projectId, issueId).then(() => {
-        setPeekIssue(undefined);
-      });
+      await deleteIssue(workspaceSlug, projectId, issueId);
+      setPeekIssue(undefined);
     } catch (_error) {
       setToast({
         title: t("toast.error"),

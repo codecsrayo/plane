@@ -56,21 +56,21 @@ export const PageVersionsMainContent = observer(function PageVersionsMainContent
   const handleRestoreVersion = async () => {
     if (!restoreEnabled) return;
     setIsRestoring(true);
-    await handleRestore(versionDetails?.description_html ?? "<p></p>")
-      .then(() => {
-        setToast({
-          type: TOAST_TYPE.SUCCESS,
-          title: "Page version restored.",
-        });
-        handleClose();
-      })
-      .catch(() =>
-        setToast({
-          type: TOAST_TYPE.ERROR,
-          title: "Failed to restore page version.",
-        })
-      )
-      .finally(() => setIsRestoring(false));
+    try {
+      await handleRestore(versionDetails?.description_html ?? "<p></p>");
+      setToast({
+        type: TOAST_TYPE.SUCCESS,
+        title: "Page version restored.",
+      });
+      handleClose();
+    } catch {
+      setToast({
+        type: TOAST_TYPE.ERROR,
+        title: "Failed to restore page version.",
+      });
+    } finally {
+      setIsRestoring(false);
+    }
   };
 
   const handleRetry = async () => {
