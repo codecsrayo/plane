@@ -25,6 +25,7 @@ Rama activa: `feature/integrations-panel-fix-17593507967815292912`
 
 | Bug | Commit |
 |---|---|
+| `GitHub OAuth button visible sin config` — filtro `!== false` mostraba el botón cuando `enabled=undefined` (config no cargada o provider no configurado) | ✅ corregido (commit `992ae8751`) |
 | `&amp;` literal en URL OAuth de Slack | `7f6abcf38` |
 | Dead code: GitHub installation access token sin JWT (siempre fallaba) | `7f6abcf38` |
 | `next/navigation` usado en 6 archivos de integración (runtime crash en react-router) | `29adc41ab` |
