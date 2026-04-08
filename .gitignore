@@ -111,3 +111,7 @@ build/
 temp/
 scripts/
 apps/proxy/acme.json
+features/integrations/github/image.png
+features/integrations/github/image1.png
+features/integrations/github/image2.png
+features/integrations/github/readme.md

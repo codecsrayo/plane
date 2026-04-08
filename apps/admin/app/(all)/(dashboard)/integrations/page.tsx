@@ -24,14 +24,10 @@ const InstanceIntegrationsPage = observer(function InstanceIntegrationsPage(_pro
 
   return (
     <PageWrapper
-      header={
-        <div className="flex flex-col gap-1">
-          <h3 className="text-xl font-medium">Integrations</h3>
-          <p className="text-sm text-secondary">
-            Configure third-party integrations available to all workspaces on this instance.
-          </p>
-        </div>
-      }
+      header={{
+        title: "Integrations",
+        description: "Configure third-party integrations available to all workspaces on this instance.",
+      }}
     >
       {formattedConfig ? (
         <InstanceIntegrationsConfigForm config={formattedConfig} />

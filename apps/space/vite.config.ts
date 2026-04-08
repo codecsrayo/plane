@@ -34,7 +34,7 @@ export default defineConfig(() => ({
     dedupe: ["react", "react-dom"],
   },
   server: {
-    allowedHosts: true,
+    allowedHosts: true as const,
     host: "0.0.0.0",
   },
 }));

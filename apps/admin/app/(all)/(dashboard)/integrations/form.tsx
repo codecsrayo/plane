@@ -12,7 +12,11 @@ import { useForm } from "react-hook-form";
 // plane internal packages
 import { Button, getButtonStyling } from "@plane/propel/button";
 import { TOAST_TYPE, setToast } from "@plane/propel/toast";
-import type { IFormattedInstanceConfiguration, TInstanceIntegrationConfigurationKeys } from "@plane/types";
+import type {
+  IFormattedInstanceConfiguration,
+  TInstanceAuthenticationMethodKeys,
+  TInstanceIntegrationConfigurationKeys,
+} from "@plane/types";
 import { ToggleSwitch } from "@plane/ui";
 // components
 import { CodeBlock } from "@/components/common/code-block";
@@ -402,7 +406,7 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
                         />
                       </div>
                       <Button
-                        variant="neutral-primary"
+                        variant="secondary"
                         size="sm"
                         onClick={generateWebhookSecret}
                         type="button"
