@@ -5,7 +5,7 @@
  */
 
 import { useEffect, useRef, useState } from "react";
-import { useParams } from "next/navigation";
+import { useParams } from "react-router";
 import { mutate } from "swr";
 import { WORKSPACE_INTEGRATIONS } from "@/constants/fetch-keys";
 

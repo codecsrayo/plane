@@ -5,7 +5,7 @@
  */
 
 import React from "react";
-import { useParams } from "next/navigation";
+import { useParams } from "react-router";
 import useSWRInfinite from "swr/infinite";
 import type { IWorkspaceIntegration } from "@plane/types";
 import { CustomSearchSelect } from "@plane/ui";
