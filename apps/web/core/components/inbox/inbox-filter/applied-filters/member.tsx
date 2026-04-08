@@ -17,13 +17,13 @@ import { getFileURL } from "@plane/utils";
 import { useMember } from "@/hooks/store/use-member";
 import { useProjectInbox } from "@/hooks/store/use-project-inbox";
 
-type InboxIssueAppliedFiltersMember = {
+type TInboxIssueAppliedFiltersMemberProps = {
   filterKey: TInboxIssueFilterMemberKeys;
   label: string;
 };
 
 export const InboxIssueAppliedFiltersMember = observer(function InboxIssueAppliedFiltersMember(
-  props: InboxIssueAppliedFiltersMember
+  props: TInboxIssueAppliedFiltersMemberProps
 ) {
   const { filterKey, label } = props;
   // hooks
@@ -56,22 +56,24 @@ export const InboxIssueAppliedFiltersMember = observer(function InboxIssueApplie
               />
             </div>
             <div className="truncate text-11">{optionDetail?.display_name}</div>
-            <div
+            <button
+              type="button"
               className="relative flex h-3 w-3 flex-shrink-0 cursor-pointer items-center justify-center overflow-hidden text-tertiary transition-all hover:text-secondary"
               onClick={() => handleInboxIssueFilters(filterKey, handleFilterValue(value))}
             >
               <CloseIcon className={`h-3 w-3`} />
-            </div>
+            </button>
           </div>
         );
       })}
 
-      <div
+      <button
+        type="button"
         className="relative flex h-3 w-3 flex-shrink-0 cursor-pointer items-center justify-center overflow-hidden text-tertiary transition-all hover:text-secondary"
         onClick={clearFilter}
       >
         <CloseIcon className={`h-3 w-3`} />
-      </div>
+      </button>
     </Tag>
   );
 });

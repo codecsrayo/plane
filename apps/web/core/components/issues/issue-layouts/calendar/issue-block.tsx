@@ -58,12 +58,14 @@ export const CalendarIssueBlock = observer(
     const projectIdentifier = getProjectIdentifierById(issue?.project_id);
 
     // handlers
-    const handleIssuePeekOverview = (issue: TIssue) => handleRedirection(workspaceSlug.toString(), issue, isMobile);
+    const handleIssuePeekOverview = (workItem: TIssue) =>
+      handleRedirection(workspaceSlug.toString(), workItem, isMobile);
 
     useOutsideClickDetector(menuActionRef, () => setIsMenuActive(false));
 
     const customActionButton = (
-      <div
+      <button
+        type="button"
         ref={menuActionRef}
         className={`w-full cursor-pointer rounded-sm p-1 text-placeholder hover:bg-layer-1 ${
           isMenuActive ? "bg-layer-1-active text-primary" : "text-secondary"
@@ -71,7 +73,7 @@ export const CalendarIssueBlock = observer(
         onClick={() => setIsMenuActive(!isMenuActive)}
       >
         <MoreHorizontal className="h-3.5 w-3.5" />
-      </div>
+      </button>
     );
 
     const isMenuActionRefAboveScreenBottom =
@@ -136,7 +138,8 @@ export const CalendarIssueBlock = observer(
                     )}
                     <div className="truncate text-13 font-medium md:text-11 md:font-regular">{issue.name}</div>
                   </div>
-                  <div
+                  <button
+                    type="button"
                     className={cn("size-5 flex-shrink-0", {
                       "hidden group-hover/calendar-block:block": !isMobile,
                       block: isMenuActive,
@@ -152,7 +155,7 @@ export const CalendarIssueBlock = observer(
                       customActionButton,
                       placement,
                     })}
-                  </div>
+                  </button>
                 </div>
               </>
             </ControlLink>
