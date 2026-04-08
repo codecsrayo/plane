@@ -69,7 +69,7 @@ export const QuickAddIssueRoot = observer(function QuickAddIssueRoot(props: TQui
   // router
   const { workspaceSlug, projectId } = useParams();
   // states
-  const [isOpen, setIsOpen] = useState(isQuickAddOpen ?? false);
+  const [isQuickAddVisible, setIsQuickAddVisible] = useState(isQuickAddOpen ?? false);
   // form info
   const {
     reset,
@@ -81,19 +81,19 @@ export const QuickAddIssueRoot = observer(function QuickAddIssueRoot(props: TQui
 
   useEffect(() => {
     if (isQuickAddOpen !== undefined) {
-      setIsOpen(isQuickAddOpen);
+      setIsQuickAddVisible(isQuickAddOpen);
     }
   }, [isQuickAddOpen]);
 
   useEffect(() => {
-    if (!isOpen) reset({ ...defaultValues });
-  }, [isOpen, reset]);
+    if (!isQuickAddVisible) reset({ ...defaultValues });
+  }, [isQuickAddVisible, reset]);
 
-  const handleIsOpen = (isOpen: boolean) => {
+  const handleIsOpen = (nextIsOpen: boolean) => {
     if (isQuickAddOpen !== undefined && setIsQuickAddOpen) {
-      setIsQuickAddOpen(isOpen);
+      setIsQuickAddOpen(nextIsOpen);
     } else {
-      setIsOpen(isOpen);
+      setIsQuickAddVisible(nextIsOpen);
     }
   };
 
@@ -103,7 +103,7 @@ export const QuickAddIssueRoot = observer(function QuickAddIssueRoot(props: TQui
     reset({ ...defaultValues });
 
     const payload = createIssuePayload(projectId.toString(), {
-      ...(prePopulatedData ?? {}),
+      ...prePopulatedData,
       ...formData,
     });
 
@@ -143,13 +143,13 @@ export const QuickAddIssueRoot = observer(function QuickAddIssueRoot(props: TQui
         errors && errors?.name && errors?.name?.message ? `border-danger-strong bg-danger-subtle` : ``
       )}
     >
-      {isOpen ? (
+      {isQuickAddVisible ? (
         <QuickAddIssueFormRoot
-          isOpen={isOpen}
+          isOpen={isQuickAddVisible}
           layout={layout}
           prePopulatedData={prePopulatedData}
           projectId={projectId?.toString()}
-          hasError={errors && errors?.name && errors?.name?.message ? true : false}
+          hasError={!!errors?.name?.message}
           setFocus={setFocus}
           register={register}
           onSubmit={handleSubmit(onSubmitHandler)}
