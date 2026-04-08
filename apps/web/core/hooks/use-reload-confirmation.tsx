@@ -38,13 +38,13 @@ const useReloadConfirmations = (isActive = true, message?: string, defaultShowAl
       // show confirm dialog
       const isLeaving = confirm(alertMessage);
       if (isLeaving) {
-        onLeave && onLeave();
+        onLeave?.();
       } else {
         event.preventDefault();
         event.stopPropagation();
       }
     },
-    [isActive, showAlert]
+    [alertMessage, isActive, onLeave, showAlert]
   );
 
   useEffect(() => {
