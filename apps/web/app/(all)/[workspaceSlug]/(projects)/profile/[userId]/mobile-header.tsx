@@ -98,17 +98,17 @@ export const ProfileIssuesMobileHeader = observer(function ProfileIssuesMobileHe
         customButtonClassName="flex flex-center text-secondary text-13"
         closeOnSelect
       >
-        {ISSUE_LAYOUTS.map((layout, index) => {
+        {ISSUE_LAYOUTS.map((layout) => {
           if (layout.key === "spreadsheet" || layout.key === "gantt_chart" || layout.key === "calendar") return;
           return (
             <CustomMenu.MenuItem
-              key={index}
+              key={layout.key}
               onClick={() => {
-                handleLayoutChange(ISSUE_LAYOUTS[index].key);
+                handleLayoutChange(layout.key);
               }}
               className="flex items-center gap-2"
             >
-              <IssueLayoutIcon layout={ISSUE_LAYOUTS[index].key} className="h-3 w-3" />
+              <IssueLayoutIcon layout={layout.key} className="h-3 w-3" />
               <div className="text-tertiary">{t(layout.i18n_title)}</div>
             </CustomMenu.MenuItem>
           );
