@@ -36,7 +36,7 @@ type RichTextEditorWrapperProps = MakeOptional<
   );
 
 export const RichTextEditor = forwardRef(function RichTextEditor(
-  props: RichTextEditorWrapperProps,
+  editorProps: RichTextEditorWrapperProps,
   ref: React.ForwardedRef<EditorRefApi>
 ) {
   const {
@@ -46,7 +46,7 @@ export const RichTextEditor = forwardRef(function RichTextEditor(
     workspaceId,
     disabledExtensions: additionalDisabledExtensions = [],
     ...rest
-  } = props;
+  } = editorProps;
   // store hooks
   const { getMemberById } = useMember();
   // parse content
@@ -59,7 +59,7 @@ export const RichTextEditor = forwardRef(function RichTextEditor(
   return (
     <RichTextEditorWithRef
       mentionHandler={{
-        renderComponent: (props) => <EditorMentionsRoot {...props} />,
+        renderComponent: (mentionProps) => <EditorMentionsRoot {...mentionProps} />,
         getMentionedEntityDetails: (id: string) => ({
           display_name: getMemberById(id)?.member__display_name ?? "",
         }),
@@ -69,7 +69,7 @@ export const RichTextEditor = forwardRef(function RichTextEditor(
       editable={editable}
       fileHandler={getEditorFileHandlers({
         anchor,
-        uploadFile: editable ? props.uploadFile : async () => "",
+        uploadFile: editable ? editorProps.uploadFile : async () => "",
         workspaceId,
       })}
       getEditorMetaData={getEditorMetaData}

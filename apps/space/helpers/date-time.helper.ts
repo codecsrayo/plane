@@ -32,7 +32,7 @@ export const getDate = (date: string | Date | undefined | null): Date | undefine
   try {
     if (!date || date === "") return;
 
-    if (typeof date !== "string" && !(date instanceof String)) return date;
+    if (typeof date !== "string") return date;
 
     const [yearString, monthString, dayString] = date.substring(0, 10).split("-");
     const year = parseInt(yearString);

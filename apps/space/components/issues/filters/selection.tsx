@@ -37,7 +37,6 @@ export const FilterSelection = observer(function FilterSelection(props: Props) {
             placeholder="Search"
             value={filtersSearchQuery}
             onChange={(e) => setFiltersSearchQuery(e.target.value)}
-            autoFocus
           />
           {filtersSearchQuery !== "" && (
             <button type="button" className="grid place-items-center" onClick={() => setFiltersSearchQuery("")}>

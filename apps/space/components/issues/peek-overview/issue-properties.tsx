@@ -57,6 +57,7 @@ export const PeekOverviewIssueProperties = observer(function PeekOverviewIssuePr
         title: "Link copied!",
         message: "Work item link copied to clipboard",
       });
+      return;
     });
   };
 

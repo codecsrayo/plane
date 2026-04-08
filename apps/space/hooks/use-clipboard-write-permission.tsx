@@ -10,23 +10,16 @@ const useClipboardWritePermission = () => {
   const [isClipboardWriteAllowed, setClipboardWriteAllowed] = useState(false);
 
   useEffect(() => {
-    const checkClipboardWriteAccess = () => {
-      navigator.permissions
-
-        .query({ name: "clipboard-write" as PermissionName })
-        .then((result) => {
-          if (result.state === "granted") {
-            setClipboardWriteAllowed(true);
-          } else {
-            setClipboardWriteAllowed(false);
-          }
-        })
-        .catch(() => {
-          setClipboardWriteAllowed(false);
-        });
+    const checkClipboardWriteAccess = async () => {
+      try {
+        const result = await navigator.permissions.query({ name: "clipboard-write" as PermissionName });
+        setClipboardWriteAllowed(result.state === "granted");
+      } catch {
+        setClipboardWriteAllowed(false);
+      }
     };
 
-    checkClipboardWriteAccess();
+    void checkClipboardWriteAccess();
   }, []);
 
   return isClipboardWriteAllowed;

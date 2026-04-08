@@ -20,7 +20,8 @@ interface IHeaderSubGroupByCard {
 export const HeaderSubGroupByCard = observer(function HeaderSubGroupByCard(props: IHeaderSubGroupByCard) {
   const { icon, title, count, isExpanded, toggleExpanded } = props;
   return (
-    <div
+    <button
+      type="button"
       className={`relative flex w-full flex-shrink-0 cursor-pointer flex-row items-center gap-2 rounded-xs p-1.5`}
       onClick={() => toggleExpanded()}
     >
@@ -36,6 +37,6 @@ export const HeaderSubGroupByCard = observer(function HeaderSubGroupByCard(props
         <div className="line-clamp-1 text-primary">{title}</div>
         <div className="pl-2 text-13 font-medium text-tertiary">{count || 0}</div>
       </div>
-    </div>
+    </button>
   );
 });

@@ -20,6 +20,10 @@ import { useEditorFlagging } from "@/hooks/use-editor-flagging";
 import { EditorMentionsRoot } from "./embeds/mentions";
 import { IssueCommentToolbar } from "./toolbar";
 
+function isMutableRefObject<T>(forwardedRef: React.ForwardedRef<T>): forwardedRef is React.MutableRefObject<T | null> {
+  return !!forwardedRef && typeof forwardedRef === "object" && "current" in forwardedRef;
+}
+
 type LiteTextEditorWrapperProps = MakeOptional<
   Omit<ILiteTextEditorProps, "fileHandler" | "mentionHandler" | "extendedEditorProps">,
   "disabledExtensions" | "flaggedExtensions" | "getEditorMetaData"
@@ -39,7 +43,7 @@ type LiteTextEditorWrapperProps = MakeOptional<
   );
 
 export const LiteTextEditor = React.forwardRef(function LiteTextEditor(
-  props: LiteTextEditorWrapperProps,
+  editorProps: LiteTextEditorWrapperProps,
   ref: React.ForwardedRef<EditorRefApi>
 ) {
   const {
@@ -51,12 +55,9 @@ export const LiteTextEditor = React.forwardRef(function LiteTextEditor(
     showSubmitButton = true,
     workspaceId,
     ...rest
-  } = props;
-  function isMutableRefObject<T>(ref: React.ForwardedRef<T>): ref is React.MutableRefObject<T | null> {
-    return !!ref && typeof ref === "object" && "current" in ref;
-  }
+  } = editorProps;
   // derived values
-  const isEmpty = isCommentEmpty(props.initialValue);
+  const isEmpty = isCommentEmpty(editorProps.initialValue);
   const editorRef = isMutableRefObject<EditorRefApi>(ref) ? ref.current : null;
   const { liteText: liteTextEditorExtensions } = useEditorFlagging(anchor);
   // parse content
@@ -73,12 +74,12 @@ export const LiteTextEditor = React.forwardRef(function LiteTextEditor(
         editable={editable}
         fileHandler={getEditorFileHandlers({
           anchor,
-          uploadFile: editable ? props.uploadFile : async () => "",
+          uploadFile: editable ? editorProps.uploadFile : async () => "",
           workspaceId,
         })}
         getEditorMetaData={getEditorMetaData}
         mentionHandler={{
-          renderComponent: (props) => <EditorMentionsRoot {...props} />,
+          renderComponent: (mentionProps) => <EditorMentionsRoot {...mentionProps} />,
         }}
         extendedEditorProps={{}}
         {...rest}

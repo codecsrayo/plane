@@ -39,6 +39,8 @@ interface IKanbanGroup {
   scrollableContainerRef?: MutableRefObject<HTMLDivElement | null>;
 }
 
+const KANBAN_LOADER_KEYS = ["kanban-loader-1", "kanban-loader-2"] as const;
+
 // Loader components
 const KanbanIssueBlockLoader = forwardRef(function KanbanIssueBlockLoader(
   props: Record<string, unknown>,
@@ -95,14 +97,14 @@ export const KanbanGroup = observer(function KanbanGroup(props: IKanbanGroup) {
   const loadMore = isPaginating ? (
     <KanbanIssueBlockLoader />
   ) : (
-    <div
+    <button
+      type="button"
       className="w-full cursor-pointer p-3 text-13 font-medium text-accent-primary hover:text-accent-secondary hover:underline"
       onClick={loadMoreIssuesInThisGroup}
-      role="button"
     >
       {" "}
       Load More &darr;
-    </div>
+    </button>
   );
 
   const shouldLoadMore = nextPageResults === undefined ? issueIds?.length < groupIssueCount : !!nextPageResults;
@@ -126,8 +128,8 @@ export const KanbanGroup = observer(function KanbanGroup(props: IKanbanGroup) {
           <>{loadMore}</>
         ) : (
           <div className="flex flex-col gap-2">
-            {Array.from({ length: 2 }).map((_, index) => (
-              <KanbanIssueBlockLoader key={index} />
+            {KANBAN_LOADER_KEYS.map((loaderKey) => (
+              <KanbanIssueBlockLoader key={loaderKey} />
             ))}
             <KanbanIssueBlockLoader ref={setIntersectionElement} />
           </div>

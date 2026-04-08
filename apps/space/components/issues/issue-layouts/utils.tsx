@@ -139,33 +139,36 @@ const getPriorityColumns = () => {
   }));
 };
 
-const getLabelsColumns = (label: IIssueLabelStore) => {
-  const { labels: storeLabels } = label;
+const getLabelsColumns = (labelStore: IIssueLabelStore) => {
+  const { labels: storeLabels } = labelStore;
 
   if (!storeLabels) return;
 
   const labels = [...storeLabels, { id: "None", name: "None", color: "#666" }];
 
-  return labels.map((label) => ({
-    id: label.id,
-    name: label.name,
+  return labels.map((labelItem) => ({
+    id: labelItem.id,
+    name: labelItem.name,
     icon: (
-      <div className="h-[12px] w-[12px] rounded-full" style={{ backgroundColor: label.color ? label.color : "#666" }} />
+      <div
+        className="h-[12px] w-[12px] rounded-full"
+        style={{ backgroundColor: labelItem.color ? labelItem.color : "#666" }}
+      />
     ),
-    payload: label?.id === "None" ? {} : { label_ids: [label.id] },
+    payload: labelItem.id === "None" ? {} : { label_ids: [labelItem.id] },
   }));
 };
 
-const getAssigneeColumns = (member: IIssueMemberStore) => {
-  const { members } = member;
+const getAssigneeColumns = (memberStore: IIssueMemberStore) => {
+  const { members } = memberStore;
 
   if (!members) return;
 
-  const assigneeColumns: any = members.map((member) => ({
-    id: member.id,
-    name: member?.member__display_name || "",
-    icon: <Avatar name={member?.member__display_name} src={undefined} size="md" />,
-    payload: { assignee_ids: [member.id] },
+  const assigneeColumns: any = members.map((memberItem) => ({
+    id: memberItem.id,
+    name: memberItem.member__display_name || "",
+    icon: <Avatar name={memberItem.member__display_name} src={undefined} size="md" />,
+    payload: { assignee_ids: [memberItem.id] },
   }));
 
   assigneeColumns.push({ id: "None", name: "None", icon: <Avatar size="md" />, payload: {} });
@@ -173,15 +176,15 @@ const getAssigneeColumns = (member: IIssueMemberStore) => {
   return assigneeColumns;
 };
 
-const getCreatedByColumns = (member: IIssueMemberStore) => {
-  const { members } = member;
+const getCreatedByColumns = (memberStore: IIssueMemberStore) => {
+  const { members } = memberStore;
 
   if (!members) return;
 
-  return members.map((member) => ({
-    id: member.id,
-    name: member?.member__display_name || "",
-    icon: <Avatar name={member?.member__display_name} src={undefined} size="md" />,
+  return members.map((memberItem) => ({
+    id: memberItem.id,
+    name: memberItem.member__display_name || "",
+    icon: <Avatar name={memberItem.member__display_name} src={undefined} size="md" />,
     payload: {},
   }));
 };

@@ -57,6 +57,7 @@ export const PeekOverviewHeader = observer(function PeekOverviewHeader(props: Pr
         title: "Link copied!",
         message: "Work item link copied to clipboard.",
       });
+      return;
     });
   };
 
@@ -120,7 +121,6 @@ export const PeekOverviewHeader = observer(function PeekOverviewHeader(props: Pr
             type="button"
             onClick={handleCopyLink}
             className="shrink-0 text-tertiary hover:text-secondary focus:outline-none"
-            tabIndex={1}
           >
             <LinkIcon className="h-4 w-4 -rotate-45" />
           </button>

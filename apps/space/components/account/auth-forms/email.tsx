@@ -76,7 +76,6 @@ export const AuthEmailForm = observer(function AuthEmailForm(props: TAuthEmailFo
             placeholder="name@company.com"
             className={`h-10 w-full border-0 disable-autofill-style placeholder:text-placeholder autofill:bg-danger-subtle focus:bg-none active:bg-transparent`}
             autoComplete="off"
-            autoFocus
             ref={inputRef}
           />
           {email.length > 0 && (

@@ -91,51 +91,46 @@ export const AuthRoot = observer(function AuthRoot() {
   const handleEmailVerification = async (data: IEmailCheckData) => {
     setEmail(data.email);
 
-    await authService
-      .emailCheck(data)
-      .then(async (response) => {
-        let currentAuthMode: EAuthModes = response.existing ? EAuthModes.SIGN_IN : EAuthModes.SIGN_UP;
-        if (response.existing) {
-          currentAuthMode = EAuthModes.SIGN_IN;
-          setAuthMode(() => EAuthModes.SIGN_IN);
-        } else {
-          currentAuthMode = EAuthModes.SIGN_UP;
-          setAuthMode(() => EAuthModes.SIGN_UP);
-        }
+    try {
+      const response = await authService.emailCheck(data);
+      let currentAuthMode: EAuthModes = response.existing ? EAuthModes.SIGN_IN : EAuthModes.SIGN_UP;
+      if (response.existing) {
+        currentAuthMode = EAuthModes.SIGN_IN;
+        setAuthMode(() => EAuthModes.SIGN_IN);
+      } else {
+        currentAuthMode = EAuthModes.SIGN_UP;
+        setAuthMode(() => EAuthModes.SIGN_UP);
+      }
 
-        if (currentAuthMode === EAuthModes.SIGN_IN) {
-          if (isSMTPConfigured && isMagicLoginEnabled && response.status === "MAGIC_CODE") {
-            setAuthStep(EAuthSteps.UNIQUE_CODE);
-            generateEmailUniqueCode(data.email);
-          } else if (isEmailPasswordEnabled) {
-            setIsPasswordAutoset(false);
-            setAuthStep(EAuthSteps.PASSWORD);
-          } else {
-            const errorhandler = authErrorHandler("5005" as EAuthenticationErrorCodes);
-            setErrorInfo(errorhandler);
-          }
+      if (currentAuthMode === EAuthModes.SIGN_IN) {
+        if (isSMTPConfigured && isMagicLoginEnabled && response.status === "MAGIC_CODE") {
+          setAuthStep(EAuthSteps.UNIQUE_CODE);
+          await generateEmailUniqueCode(data.email);
+        } else if (isEmailPasswordEnabled) {
+          setIsPasswordAutoset(false);
+          setAuthStep(EAuthSteps.PASSWORD);
         } else {
-          if (isSMTPConfigured && isMagicLoginEnabled && response.status === "MAGIC_CODE") {
-            setAuthStep(EAuthSteps.UNIQUE_CODE);
-            generateEmailUniqueCode(data.email);
-          } else if (isEmailPasswordEnabled) {
-            setAuthStep(EAuthSteps.PASSWORD);
-          } else {
-            const errorhandler = authErrorHandler("5006" as EAuthenticationErrorCodes);
-            setErrorInfo(errorhandler);
-          }
+          const errorhandler = authErrorHandler("5005" as EAuthenticationErrorCodes);
+          setErrorInfo(errorhandler);
         }
-        return;
-      })
-      .catch((error) => {
-        const errorhandler = authErrorHandler(error?.error_code?.toString(), data?.email || undefined);
-        if (errorhandler?.type) setErrorInfo(errorhandler);
-      });
+      } else if (isSMTPConfigured && isMagicLoginEnabled && response.status === "MAGIC_CODE") {
+        setAuthStep(EAuthSteps.UNIQUE_CODE);
+        await generateEmailUniqueCode(data.email);
+      } else if (isEmailPasswordEnabled) {
+        setAuthStep(EAuthSteps.PASSWORD);
+      } else {
+        const errorhandler = authErrorHandler("5006" as EAuthenticationErrorCodes);
+        setErrorInfo(errorhandler);
+      }
+    } catch (error: any) {
+      const errorhandler = authErrorHandler(error?.error_code?.toString(), data?.email || undefined);
+      if (errorhandler?.type) setErrorInfo(errorhandler);
+    }
   };
 
   // generating the unique code
-  const generateEmailUniqueCode = async (email: string): Promise<{ code: string } | undefined> => {
-    const payload = { email: email };
+  const generateEmailUniqueCode = async (targetEmail: string): Promise<{ code: string } | undefined> => {
+    const payload = { email: targetEmail };
     return await authService
       .generateUniqueCode(payload)
       .then(() => ({ code: "" }))
@@ -185,7 +180,7 @@ export const AuthRoot = observer(function AuthRoot() {
             }}
           />
         )}
-        <TermsAndConditions isSignUp={authMode === EAuthModes.SIGN_UP ? true : false} />
+        <TermsAndConditions isSignUp={authMode === EAuthModes.SIGN_UP} />
       </div>
     </div>
   );

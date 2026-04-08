@@ -52,24 +52,23 @@ export const AddComment = observer(function AddComment(props: Props) {
   const onSubmit = async (formData: TIssuePublicComment) => {
     if (!anchor || !issueId || isSubmitting || !formData.comment_html) return;
 
-    await addIssueComment(anchor, issueId, formData)
-      .then(async (res) => {
-        reset(defaultValues);
-        editorRef.current?.clearEditor();
-        if (uploadedAssetIds.length > 0) {
-          await fileService.updateBulkAssetsUploadStatus(anchor, res.id, {
-            asset_ids: uploadedAssetIds,
-          });
-          setUploadAssetIds([]);
-        }
-      })
-      .catch(() =>
-        setToast({
-          type: TOAST_TYPE.ERROR,
-          title: "Error!",
-          message: "Comment could not be posted. Please try again.",
-        })
-      );
+    try {
+      const res = await addIssueComment(anchor, issueId, formData);
+      reset(defaultValues);
+      editorRef.current?.clearEditor();
+      if (uploadedAssetIds.length > 0) {
+        await fileService.updateBulkAssetsUploadStatus(anchor, res.id, {
+          asset_ids: uploadedAssetIds,
+        });
+        setUploadAssetIds([]);
+      }
+    } catch {
+      setToast({
+        type: TOAST_TYPE.ERROR,
+        title: "Error!",
+        message: "Comment could not be posted. Please try again.",
+      });
+    }
   };
 
   // TODO: on click if he user is not logged in redirect to login page
