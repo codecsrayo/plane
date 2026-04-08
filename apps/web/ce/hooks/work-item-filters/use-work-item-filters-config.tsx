@@ -101,7 +101,7 @@ export const useWorkItemFiltersConfig = (props: TUseWorkItemFiltersConfigProps):
   // derived values
   const operatorConfigs = useFiltersOperatorConfigs({ workspaceSlug });
   const filtersToShow = useMemo(() => new Set(allowedFilters), [allowedFilters]);
-  const project = useMemo(() => getProjectById(projectId), [projectId, getProjectById]);
+  const currentProject = useMemo(() => getProjectById(projectId), [projectId, getProjectById]);
   const members: IUserLite[] | undefined = useMemo(
     () =>
       memberIds
@@ -133,7 +133,9 @@ export const useWorkItemFiltersConfig = (props: TUseWorkItemFiltersConfigProps):
   const projects = useMemo(
     () =>
       projectIds
-        ? (projectIds.map((projectId) => getProjectById(projectId)).filter((project) => project) as IProject[])
+        ? (projectIds
+            .map((targetProjectId) => getProjectById(targetProjectId))
+            .filter((listedProject) => listedProject) as IProject[])
         : [],
     [projectIds, getProjectById]
   );
@@ -191,26 +193,26 @@ export const useWorkItemFiltersConfig = (props: TUseWorkItemFiltersConfigProps):
   const cycleFilterConfig = useMemo(
     () =>
       getCycleFilterConfig<TWorkItemFilterProperty>("cycle_id")({
-        isEnabled: isFilterEnabled("cycle_id") && project?.cycle_view === true && cycles !== undefined,
+        isEnabled: isFilterEnabled("cycle_id") && currentProject?.cycle_view === true && cycles !== undefined,
         filterIcon: CycleIcon,
         getOptionIcon: (cycleGroup) => <CycleGroupIcon cycleGroup={cycleGroup} className="h-3.5 w-3.5 flex-shrink-0" />,
         cycles: cycles ?? [],
         ...operatorConfigs,
       }),
-    [isFilterEnabled, project?.cycle_view, cycles, operatorConfigs]
+    [isFilterEnabled, currentProject?.cycle_view, cycles, operatorConfigs]
   );
 
   // module filter config
   const moduleFilterConfig = useMemo(
     () =>
       getModuleFilterConfig<TWorkItemFilterProperty>("module_id")({
-        isEnabled: isFilterEnabled("module_id") && project?.module_view === true && modules !== undefined,
+        isEnabled: isFilterEnabled("module_id") && currentProject?.module_view === true && modules !== undefined,
         filterIcon: ModuleIcon,
         getOptionIcon: () => <ModuleIcon className="h-3 w-3 flex-shrink-0" />,
         modules: modules ?? [],
         ...operatorConfigs,
       }),
-    [isFilterEnabled, project?.module_view, modules, operatorConfigs]
+    [isFilterEnabled, currentProject?.module_view, modules, operatorConfigs]
   );
 
   // assignee filter config
@@ -356,7 +358,7 @@ export const useWorkItemFiltersConfig = (props: TUseWorkItemFiltersConfigProps):
         isEnabled: isFilterEnabled("project_id") && projects !== undefined,
         filterIcon: Briefcase,
         projects: projects,
-        getOptionIcon: (project) => <Logo logo={project.logo_props} size={12} />,
+        getOptionIcon: (listedProject) => <Logo logo={listedProject.logo_props} size={12} />,
         ...operatorConfigs,
       }),
     [isFilterEnabled, projects, operatorConfigs]
