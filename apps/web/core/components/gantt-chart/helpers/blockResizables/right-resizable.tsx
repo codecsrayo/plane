@@ -42,12 +42,19 @@ export const RightResizable = observer(function RightResizable(props: RightResiz
           <div className="rounded-sm bg-accent-subtle px-2 py-1">{dateString}</div>
         </div>
       )}
-      <div
+      <button
+        type="button"
         onMouseDown={(e) => handleBlockDrag(e, "right")}
         onMouseOver={() => {
           setIsHovering(true);
         }}
+        onFocus={() => {
+          setIsHovering(true);
+        }}
         onMouseOut={() => {
+          setIsHovering(false);
+        }}
+        onBlur={() => {
           setIsHovering(false);
         }}
         className="absolute top-1/2 -right-1.5 z-[6] h-full w-3 -translate-y-1/2 cursor-col-resize rounded-md"
