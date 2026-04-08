@@ -40,7 +40,7 @@ export function SelectGitlabRepository(props: Props) {
 
   const { data: paginatedData, size, setSize, isValidating } = useSWRInfinite(getKey, fetchGitlabRepos);
 
-  const userRepositories = (paginatedData ?? []).map((data) => data.repositories).flat();
+  const userRepositories = (paginatedData ?? []).flatMap((data) => data.repositories);
   const totalCount = paginatedData && paginatedData.length > 0 ? paginatedData[0].total_count : 0;
 
   const options =
@@ -55,8 +55,8 @@ export function SelectGitlabRepository(props: Props) {
       value={value}
       options={options}
       onChange={(val: string) => {
-        const repo = userRepositories.find((repo) => repo.id === val);
-        onChange(repo);
+        const selected = userRepositories.find((r) => r.id === val);
+        onChange(selected);
       }}
       label={label}
       footerOption={

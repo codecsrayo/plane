@@ -4,17 +4,15 @@
  * See the LICENSE file for details.
  */
 
-import { useState } from "react";
 import { observer } from "mobx-react";
 import { useParams } from "next/navigation";
 import { useNavigate } from "react-router";
-import useSWR, { mutate } from "swr";
+import useSWR from "swr";
 import { CheckCircle } from "lucide-react";
 import { EUserPermissions, EUserPermissionsLevel } from "@plane/constants";
 import { Button } from "@plane/propel/button";
-import { TOAST_TYPE, setToast } from "@plane/propel/toast";
 import { Tooltip } from "@plane/propel/tooltip";
-import type { IAppIntegration, IWorkspaceIntegration } from "@plane/types";
+import type { IAppIntegration } from "@plane/types";
 // ui
 import { Loader } from "@plane/ui";
 // assets
@@ -57,8 +55,6 @@ const integrationDetails: { [key: string]: any } = {
 const integrationService = new IntegrationService();
 
 export const SingleIntegrationCard = observer(function SingleIntegrationCard({ integration }: Props) {
-  // states
-  const [deletingIntegration, setDeletingIntegration] = useState(false);
   // router
   const { workspaceSlug } = useParams();
   const navigate = useNavigate();
@@ -79,44 +75,6 @@ export const SingleIntegrationCard = observer(function SingleIntegrationCard({ i
   const { data: workspaceIntegrations } = useSWR(workspaceSlug ? WORKSPACE_INTEGRATIONS(workspaceSlug) : null, () =>
     workspaceSlug ? integrationService.getWorkspaceIntegrationsList(workspaceSlug) : null
   );
-
-  const handleRemoveIntegration = async () => {
-    if (!workspaceSlug || !integration || !workspaceIntegrations) return;
-
-    // Match via integration_detail.id (the nested object from WorkspaceIntegrationSerializer)
-    const workspaceIntegrationId = workspaceIntegrations?.find((i) => i.integration_detail?.id === integration.id)?.id;
-
-    if (!workspaceIntegrationId) return;
-
-    setDeletingIntegration(true);
-
-    await integrationService
-      .deleteWorkspaceIntegration(workspaceSlug, workspaceIntegrationId)
-      .then((res) => {
-        mutate<IWorkspaceIntegration[]>(
-          WORKSPACE_INTEGRATIONS(workspaceSlug),
-          (prevData) => prevData?.filter((i) => i.id !== workspaceIntegrationId),
-          false
-        );
-        setDeletingIntegration(false);
-
-        setToast({
-          type: TOAST_TYPE.SUCCESS,
-          title: "Deleted successfully!",
-          message: `${integration.title} integration deleted successfully.`,
-        });
-        return res;
-      })
-      .catch(() => {
-        setDeletingIntegration(false);
-
-        setToast({
-          type: TOAST_TYPE.ERROR,
-          title: "Error!",
-          message: `${integration.title} integration could not be deleted. Please try again.`,
-        });
-      });
-  };
 
   const isInstalled = workspaceIntegrations?.find((i: any) => i.integration_detail?.id === integration.id);
 
@@ -151,7 +109,7 @@ export const SingleIntegrationCard = observer(function SingleIntegrationCard({ i
         <div className="h-10 w-10 flex-shrink-0 rounded-lg border border-subtle p-1.5">
           <img src={providerDetails.logo} className="h-full w-full object-contain" alt={`${integration.title} Logo`} />
         </div>
-        <h3 className="flex items-center gap-2 text-sm font-medium">
+        <h3 className="text-sm flex items-center gap-2 font-medium">
           {integration.title}
           {workspaceIntegrations
             ? isInstalled && <CheckCircle className="h-3.5 w-3.5 fill-transparent text-success-primary" />
@@ -160,7 +118,7 @@ export const SingleIntegrationCard = observer(function SingleIntegrationCard({ i
       </div>
 
       {/* Description */}
-      <p className="flex-1 text-xs text-secondary">
+      <p className="text-xs flex-1 text-secondary">
         {workspaceIntegrations
           ? isInstalled
             ? providerDetails.installed

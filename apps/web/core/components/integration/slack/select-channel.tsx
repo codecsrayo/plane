@@ -72,6 +72,7 @@ export const SelectChannel = observer(function SelectChannel({ integration }: Pr
     }).then(() => {
       setSlackChannelAvailabilityToggle(false);
       setSlackChannel(null);
+      return undefined;
     });
     appInstallationService
       .removeSlackChannel(workspaceSlug, projectId, integration.id, slackChannel?.id)
@@ -91,7 +92,11 @@ export const SelectChannel = observer(function SelectChannel({ integration }: Pr
           role="switch"
           aria-checked
           onClick={() => {
-            slackChannelAvailabilityToggle ? handleDelete() : handleAuth();
+            if (slackChannelAvailabilityToggle) {
+              handleDelete();
+            } else {
+              handleAuth();
+            }
           }}
         >
           <span
