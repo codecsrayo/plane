@@ -111,6 +111,7 @@ export const CycleListItemAction = observer(function CycleListItemAction(props: 
     const addToFavoritePromise = addCycleToFavorites(workspaceSlug?.toString(), projectId.toString(), cycleId).then(
       () => {
         if (!isFavoriteMenuOpen) toggleFavoriteMenu(true);
+        return undefined;
       }
     );
 
@@ -194,7 +195,8 @@ export const CycleListItemAction = observer(function CycleListItemAction(props: 
       )}
       <CycleAdditionalActions cycleId={cycleId} projectId={projectId} />
       {showTransferIssues && (
-        <div
+        <button
+          type="button"
           className="flex h-6 cursor-pointer items-center gap-1 px-2 text-accent-secondary"
           onClick={() => {
             setTransferIssuesModal(true);
@@ -202,7 +204,7 @@ export const CycleListItemAction = observer(function CycleListItemAction(props: 
         >
           <TransferIcon className="w-4 fill-accent-primary" />
           <span>{t("project_cycles.transfer_work_items", { count: transferableIssuesCount })}</span>
-        </div>
+        </button>
       )}
       {isActive ? (
         <>

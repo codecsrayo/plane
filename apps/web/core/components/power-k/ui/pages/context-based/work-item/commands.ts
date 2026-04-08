@@ -142,56 +142,53 @@ export const usePowerKWorkItemContextBasedCommands = (): TPowerKCommandConfig[] 
     toggleDeleteIssueModal(true);
   }, [toggleDeleteIssueModal]);
 
-  const copyWorkItemIdToClipboard = useCallback(() => {
+  const copyWorkItemIdToClipboard = useCallback(async () => {
     const id = `${projectDetails?.identifier}-${entityDetails?.sequence_id}`;
-    copyTextToClipboard(id)
-      .then(() => {
-        setToast({
-          type: TOAST_TYPE.SUCCESS,
-          title: t("power_k.contextual_actions.work_item.copy_id_toast_success"),
-        });
-      })
-      .catch(() => {
-        setToast({
-          type: TOAST_TYPE.ERROR,
-          title: t("power_k.contextual_actions.work_item.copy_id_toast_error"),
-        });
+    try {
+      await copyTextToClipboard(id);
+      setToast({
+        type: TOAST_TYPE.SUCCESS,
+        title: t("power_k.contextual_actions.work_item.copy_id_toast_success"),
       });
+    } catch {
+      setToast({
+        type: TOAST_TYPE.ERROR,
+        title: t("power_k.contextual_actions.work_item.copy_id_toast_error"),
+      });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [entityDetails?.sequence_id, projectDetails?.identifier]);
 
-  const copyWorkItemTitleToClipboard = useCallback(() => {
-    copyTextToClipboard(entityDetails?.name ?? "")
-      .then(() => {
-        setToast({
-          type: TOAST_TYPE.SUCCESS,
-          title: t("power_k.contextual_actions.work_item.copy_title_toast_success"),
-        });
-      })
-      .catch(() => {
-        setToast({
-          type: TOAST_TYPE.ERROR,
-          title: t("power_k.contextual_actions.work_item.copy_title_toast_error"),
-        });
+  const copyWorkItemTitleToClipboard = useCallback(async () => {
+    try {
+      await copyTextToClipboard(entityDetails?.name ?? "");
+      setToast({
+        type: TOAST_TYPE.SUCCESS,
+        title: t("power_k.contextual_actions.work_item.copy_title_toast_success"),
       });
+    } catch {
+      setToast({
+        type: TOAST_TYPE.ERROR,
+        title: t("power_k.contextual_actions.work_item.copy_title_toast_error"),
+      });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [entityDetails?.name]);
 
-  const copyWorkItemUrlToClipboard = useCallback(() => {
+  const copyWorkItemUrlToClipboard = useCallback(async () => {
     const url = new URL(window.location.href);
-    copyTextToClipboard(url.href)
-      .then(() => {
-        setToast({
-          type: TOAST_TYPE.SUCCESS,
-          title: t("power_k.contextual_actions.work_item.copy_url_toast_success"),
-        });
-      })
-      .catch(() => {
-        setToast({
-          type: TOAST_TYPE.ERROR,
-          title: t("power_k.contextual_actions.work_item.copy_url_toast_error"),
-        });
+    try {
+      await copyTextToClipboard(url.href);
+      setToast({
+        type: TOAST_TYPE.SUCCESS,
+        title: t("power_k.contextual_actions.work_item.copy_url_toast_success"),
       });
+    } catch {
+      setToast({
+        type: TOAST_TYPE.ERROR,
+        title: t("power_k.contextual_actions.work_item.copy_url_toast_error"),
+      });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
