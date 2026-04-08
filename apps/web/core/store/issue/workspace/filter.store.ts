@@ -171,13 +171,13 @@ export class WorkspaceIssuesFilter extends IssueFilterHelperStore implements IWo
 
     // Get the view details if the view is not a static view
     if (STATIC_VIEW_TYPES.includes(viewId) === false) {
-      const _filters = await this.issueFilterService.getViewDetails(workspaceSlug, viewId);
-      richFilters = _filters?.rich_filters;
-      displayFilters = this.computedDisplayFilters(_filters?.display_filters, {
+      const viewFilters = await this.issueFilterService.getViewDetails(workspaceSlug, viewId);
+      richFilters = viewFilters?.rich_filters;
+      displayFilters = this.computedDisplayFilters(viewFilters?.display_filters, {
         layout: EIssueLayoutTypes.SPREADSHEET,
         order_by: "-created_at",
       });
-      displayProperties = this.computedDisplayProperties(_filters?.display_properties);
+      displayProperties = this.computedDisplayProperties(viewFilters?.display_properties);
     }
 
     // override existing order by if ordered by manual sort_order

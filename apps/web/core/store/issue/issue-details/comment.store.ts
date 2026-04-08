@@ -108,9 +108,9 @@ export class IssueCommentStore implements IIssueCommentStore {
 
     const commentIds = comments.map((comment) => comment.id);
     runInAction(() => {
-      update(this.comments, issueId, (_commentIds) => {
-        if (!_commentIds) return commentIds;
-        return uniq(concat(_commentIds, commentIds));
+      update(this.comments, issueId, (existingCommentIds) => {
+        if (!existingCommentIds) return commentIds;
+        return uniq(concat(existingCommentIds, commentIds));
       });
       comments.forEach((comment) => {
         this.rootIssueDetail.commentReaction.applyCommentReactions(comment.id, comment?.comment_reactions || []);

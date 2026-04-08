@@ -39,9 +39,9 @@ export function InboxIssueSnoozeModal(props: InboxIssueSnoozeModalProps) {
           captionLayout="dropdown"
           selected={date ? new Date(date) : undefined}
           defaultMonth={date ? new Date(date) : undefined}
-          onSelect={(date: Date | undefined) => {
-            if (!date) return;
-            setDate(date);
+          onSelect={(selectedDate: Date | undefined) => {
+            if (!selectedDate) return;
+            setDate(selectedDate);
           }}
           mode="single"
           disabled={[

@@ -82,6 +82,7 @@ export function CreateWebhookModal(props: ICreateWebhookModal) {
 
         const csvData = getCurrentHookAsCSV(currentWorkspace, webHook, secretKey ?? undefined);
         csvDownload(csvData, `webhook-secret-key-${Date.now()}`);
+        return undefined;
       })
       .catch((error) => {
         setToast({

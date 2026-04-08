@@ -87,21 +87,14 @@ export function NameColumn(props: NameProps) {
                 popoverClassName="justify-end"
                 buttonClassName="outline-none	origin-center rotate-90 size-8 aspect-square flex-shrink-0 grid place-items-center opacity-0 group-hover:opacity-100 transition-opacity"
                 render={() => (
-                  <div
-                    role="button"
-                    tabIndex={0}
+                  <button
+                    type="button"
                     className="flex cursor-pointer items-center gap-x-3"
                     onClick={() => setRemoveMemberModal(rowData)}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter" || e.key === " ") {
-                        e.preventDefault();
-                        setRemoveMemberModal(rowData);
-                      }
-                    }}
                     data-ph-element={MEMBER_TRACKER_ELEMENTS.WORKSPACE_MEMBER_TABLE_CONTEXT_MENU}
                   >
                     <TrashIcon className="size-3.5 align-middle" /> {id === currentUser?.id ? "Leave " : "Remove "}
-                  </div>
+                  </button>
                 )}
               />
             )}
@@ -153,11 +146,11 @@ export const AccountTypeColumn = observer(function AccountTypeColumn(props: Acco
           render={({ field: { value } }) => (
             <CustomSelect
               value={value as EUserPermissions}
-              onChange={async (value: EUserPermissions) => {
+              onChange={async (roleValue: EUserPermissions) => {
                 if (!workspaceSlug) return;
                 try {
                   await updateMember(workspaceSlug.toString(), rowData.member.id, {
-                    role: value as unknown as EUserPermissions,
+                    role: roleValue as unknown as EUserPermissions,
                   });
                 } catch (err: unknown) {
                   const error = err as { error?: string | string[] };
