@@ -42,7 +42,7 @@ export const CycleListLayout = observer(function CycleListLayout() {
       if (!workspaceSlug || !projectId || !cycleId) throw new Error();
       return issues.addIssueToCycle(workspaceSlug.toString(), projectId.toString(), cycleId.toString(), issueIds);
     },
-    [issues?.addIssueToCycle, workspaceSlug, projectId, cycleId]
+    [issues, workspaceSlug, projectId, cycleId]
   );
 
   return (

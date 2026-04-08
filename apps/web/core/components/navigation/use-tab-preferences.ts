@@ -11,6 +11,8 @@ import { useUser } from "@/hooks/store/user";
 import { DEFAULT_TAB_KEY } from "./tab-navigation-utils";
 import type { TTabPreferences } from "./tab-navigation-utils";
 
+const EMPTY_HIDDEN_TABS: string[] = [];
+
 export type TTabPreferencesHook = {
   tabPreferences: TTabPreferences;
   isLoading: boolean;
@@ -41,7 +43,7 @@ export const useTabPreferences = (workspaceSlug: string, projectId: string): TTa
   // Get preferences from store
   const storePreferences = getProjectUserProperties(projectId);
   const defaultTab = storePreferences?.preferences?.navigation?.default_tab || DEFAULT_TAB_KEY;
-  const hideInMoreMenu = storePreferences?.preferences?.navigation?.hide_in_more_menu || [];
+  const hideInMoreMenu = storePreferences?.preferences?.navigation?.hide_in_more_menu ?? EMPTY_HIDDEN_TABS;
 
   // Convert store preferences to component format
   const tabPreferences: TTabPreferences = useMemo(() => {

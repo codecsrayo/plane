@@ -4,7 +4,7 @@
  * See the LICENSE file for details.
  */
 
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { observer } from "mobx-react";
 import { stringToEmoji } from "@plane/propel/emoji-icon-picker";
 import { EmojiReactionGroup, EmojiReactionPicker } from "@plane/propel/emoji-reaction";
@@ -87,18 +87,21 @@ export const IssueReaction = observer(function IssueReaction(props: TIssueReacti
     [workspaceSlug, projectId, issueId, currentUser, createReaction, removeReaction, userReactions]
   );
 
-  const getReactionUsers = (reaction: string): string[] => {
-    const reactionUsers = (reactionIds?.[reaction] || [])
-      .map((reactionId) => {
-        const reactionDetails = getReactionById(reactionId);
-        return reactionDetails
-          ? getUserDetails(reactionDetails?.actor)?.display_name || reactionDetails?.display_name
-          : null;
-      })
-      .filter((displayName): displayName is string => !!displayName);
+  const getReactionUsers = useCallback(
+    (reaction: string): string[] => {
+      const reactionUsers = (reactionIds?.[reaction] || [])
+        .map((reactionId) => {
+          const reactionDetails = getReactionById(reactionId);
+          return reactionDetails
+            ? getUserDetails(reactionDetails?.actor)?.display_name || reactionDetails?.display_name
+            : null;
+        })
+        .filter((displayName): displayName is string => !!displayName);
 
-    return reactionUsers;
-  };
+      return reactionUsers;
+    },
+    [getReactionById, getUserDetails, reactionIds]
+  );
 
   // Transform reactions data to Propel EmojiReactionType format
   const reactions: EmojiReactionType[] = useMemo(() => {
@@ -112,7 +115,7 @@ export const IssueReaction = observer(function IssueReaction(props: TIssueReacti
         reacted: userReactions.includes(reaction),
         users: getReactionUsers(reaction),
       }));
-  }, [reactionIds, userReactions]);
+  }, [reactionIds, userReactions, getReactionUsers]);
 
   const handleReactionClick = (emoji: string) => {
     if (disabled) return;

@@ -135,6 +135,9 @@ export const SidebarProjectsListItem = observer(function SidebarProjectsListItem
     setLeaveProjectModal(true);
   };
 
+  const projectName = project?.name;
+  const projectLogoProps = project?.logo_props;
+
   useEffect(() => {
     const element = projectRef.current;
     const dragHandleElement = dragHandleRef.current;
@@ -162,9 +165,9 @@ export const SidebarProjectsListItem = observer(function SidebarProjectsListItem
               root.render(
                 <div className="flex items-center rounded-sm bg-surface-1 p-1 pr-2 text-13">
                   <div className="grid size-4 flex-shrink-0 place-items-center">
-                    {project && <Logo logo={project?.logo_props} />}
+                    {project && <Logo logo={projectLogoProps} />}
                   </div>
-                  <p className="truncate text-secondary">{project?.name}</p>
+                  <p className="truncate text-secondary">{projectName}</p>
                 </div>
               );
               return () => root.unmount();
@@ -177,13 +180,13 @@ export const SidebarProjectsListItem = observer(function SidebarProjectsListItem
         element,
         canDrop: ({ source }) =>
           !disableDrop && source?.data?.id !== projectId && source?.data?.dragInstanceId === "PROJECTS",
-        getData: ({ input, element }) => {
+        getData: ({ input, element: dropElement }) => {
           const data = { id: projectId };
 
           // attach instruction for last in list
           return attachInstruction(data, {
             input,
-            element,
+            element: dropElement,
             currentLevel: 0,
             indentPerLevel: 0,
             mode: isLastChild ? "last-in-group" : "standard",
@@ -222,7 +225,17 @@ export const SidebarProjectsListItem = observer(function SidebarProjectsListItem
         },
       })
     );
-  }, [projectId, isLastChild, projectListType, handleOnProjectDrop]);
+  }, [
+    projectId,
+    isLastChild,
+    projectListType,
+    handleOnProjectDrop,
+    disableDrop,
+    disableDrag,
+    project,
+    projectName,
+    projectLogoProps,
+  ]);
 
   useEffect(() => {
     if (isMenuActive) toggleAnySidebarDropdown(true);

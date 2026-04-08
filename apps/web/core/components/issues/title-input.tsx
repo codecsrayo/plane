@@ -110,7 +110,7 @@ export const IssueTitleInput = observer(function IssueTitleInput(props: IssueTit
         textarea.removeEventListener("blur", handleBlur);
       }
     };
-  }, [title, isSubmitting, setIsSubmitting]);
+  }, [title, value, isSubmitting, setIsSubmitting]);
 
   // Save on unmount if there are unsaved changes
   useEffect(

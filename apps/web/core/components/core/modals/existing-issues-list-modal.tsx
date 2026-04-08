@@ -4,7 +4,7 @@
  * See the LICENSE file for details.
  */
 
-import { useEffect, useState, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Rocket } from "lucide-react";
 import { Combobox } from "@headlessui/react";
 // i18n
@@ -98,7 +98,7 @@ export function ExistingIssuesListModal(props: Props) {
     handleClose();
   };
 
-  const handleSearch = () => {
+  const handleSearch = useCallback(() => {
     if (!isOpen || !workspaceSlug) return;
     setIsLoading(true);
     const searchService =
@@ -117,7 +117,15 @@ export function ExistingIssuesListModal(props: Props) {
         setIsSearching(false);
         setIsLoading(false);
       });
-  };
+  }, [
+    debouncedSearchTerm,
+    isOpen,
+    isWorkspaceLevel,
+    projectId,
+    searchParams,
+    workItemSearchServiceCallback,
+    workspaceSlug,
+  ]);
 
   const handleSelectIssues = () => {
     setSelectedIssues((prevData) => (prevData.length === filteredIssues.length ? [] : [...filteredIssues]));
@@ -132,7 +140,7 @@ export function ExistingIssuesListModal(props: Props) {
 
   useEffect(() => {
     handleSearch();
-  }, [debouncedSearchTerm, isOpen, isWorkspaceLevel, projectId, workspaceSlug]);
+  }, [handleSearch]);
 
   const filteredIssues = issues.filter((issue) => !shouldHideIssue?.(issue));
 
