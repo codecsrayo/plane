@@ -45,7 +45,7 @@ export function NameColumn(props: NameProps) {
 
   return (
     <Disclosure>
-      {({}) => (
+      {() => (
         <div className="group relative">
           <div className="flex w-72 items-center gap-2">
             <div className="flex flex-1 items-center gap-x-2 gap-y-2">
@@ -76,14 +76,15 @@ export function NameColumn(props: NameProps) {
                 placement="bottom-end"
               >
                 <CustomMenu.MenuItem>
-                  <div
+                  <button
+                    type="button"
                     className="flex cursor-pointer items-center gap-x-1 font-medium text-danger-primary"
                     data-ph-element={MEMBER_TRACKER_ELEMENTS.PROJECT_MEMBER_TABLE_CONTEXT_MENU}
                     onClick={() => setRemoveMemberModal(rowData)}
                   >
                     <CircleMinus className="size-3.5 flex-shrink-0" />
                     {rowData.member?.id === currentUser?.id ? "Leave " : "Remove "}
-                  </div>
+                  </button>
                 </CustomMenu.MenuItem>
               </CustomMenu>
             )}
@@ -111,18 +112,17 @@ export const AccountTypeColumn = observer(function AccountTypeColumn(props: Acco
   // derived values
   const roleLabel = ROLE[rowData.original_role ?? EUserPermissions.GUEST];
   const isCurrentUser = currentUser?.id === rowData.member.id;
-  const isRowDataWorkspaceAdmin = [EUserPermissions.ADMIN].includes(
-    Number(getWorkspaceMemberDetails(rowData.member.id)?.role) ?? EUserPermissions.GUEST
-  );
-  const isCurrentUserWorkspaceAdmin = currentUser
-    ? [EUserPermissions.ADMIN].includes(
-        Number(getWorkspaceMemberDetails(currentUser.id)?.role) ?? EUserPermissions.GUEST
-      )
-    : false;
+  const rowWorkspaceRole = Number(getWorkspaceMemberDetails(rowData.member.id)?.role ?? EUserPermissions.GUEST);
+  const isRowDataWorkspaceAdmin = [EUserPermissions.ADMIN].includes(rowWorkspaceRole);
+  const currentUserWorkspaceRole = currentUser
+    ? Number(getWorkspaceMemberDetails(currentUser.id)?.role ?? EUserPermissions.GUEST)
+    : EUserPermissions.GUEST;
+  const isCurrentUserWorkspaceAdmin = currentUser ? [EUserPermissions.ADMIN].includes(currentUserWorkspaceRole) : false;
   const currentProjectRole = getProjectRoleByWorkspaceSlugAndProjectId(workspaceSlug, projectId);
+  const normalizedCurrentProjectRole = Number(currentProjectRole ?? EUserPermissions.GUEST);
 
   const isCurrentUserProjectAdmin = currentProjectRole
-    ? ![EUserPermissions.MEMBER, EUserPermissions.GUEST].includes(Number(currentProjectRole) ?? EUserPermissions.GUEST)
+    ? ![EUserPermissions.MEMBER, EUserPermissions.GUEST].includes(normalizedCurrentProjectRole)
     : false;
 
   // logic
