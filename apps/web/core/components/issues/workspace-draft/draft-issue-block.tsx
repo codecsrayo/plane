@@ -183,11 +183,12 @@ export const DraftIssueBlock = observer(function DraftIssueBlock(props: Props) {
             <DraftIssueProperties
               className={`relative flex flex-wrap ${isSidebarCollapsed ? "md:flex-shrink-0 md:flex-grow" : "lg:flex-shrink-0 lg:flex-grow"} items-center gap-2 whitespace-nowrap`}
               issue={issue}
-              updateIssue={async (projectId, issueId, data) => {
-                await updateIssue(workspaceSlug, issueId, data);
+              updateIssue={async (projectId, targetIssueId, data) => {
+                await updateIssue(workspaceSlug, targetIssueId, data);
               }}
             />
-            <div
+            <button
+              type="button"
               className={cn("hidden", {
                 "md:flex": isSidebarCollapsed,
                 "lg:flex": !isSidebarCollapsed,
@@ -198,7 +199,7 @@ export const DraftIssueBlock = observer(function DraftIssueBlock(props: Props) {
               }}
             >
               <WorkspaceDraftIssueQuickActions parentRef={issueRef} MENU_ITEMS={MENU_ITEMS} />
-            </div>
+            </button>
           </div>
         </Row>
       </div>

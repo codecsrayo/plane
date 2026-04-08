@@ -140,8 +140,8 @@ export class MultipleSelectStore implements IMultipleSelectStore {
    * @param {TEntityDetails} entityDetails
    * @param {"add" | "remove"} action
    */
-  updateSelectedEntityDetails = (entityDetails: TEntityDetails, action: "add" | "remove") => {
-    if (action === "add") {
+  updateSelectedEntityDetails = (entityDetails: TEntityDetails, updateAction: "add" | "remove") => {
+    if (updateAction === "add") {
       runInAction(() => {
         if (this.getIsEntitySelected(entityDetails.entityID)) {
           remove(this.selectedEntityDetails, (en) => en.entityID === entityDetails.entityID);
@@ -164,8 +164,8 @@ export class MultipleSelectStore implements IMultipleSelectStore {
    * @param {TEntityDetails[]} entitiesList
    * @param {"add" | "remove"} action
    */
-  bulkUpdateSelectedEntityDetails = (entitiesList: TEntityDetails[], action: "add" | "remove") => {
-    if (action === "add") {
+  bulkUpdateSelectedEntityDetails = (entitiesList: TEntityDetails[], updateAction: "add" | "remove") => {
+    if (updateAction === "add") {
       runInAction(() => {
         let newEntities: TEntityDetails[] = [];
         newEntities = differenceWith(this.selectedEntityDetails, entitiesList, isEqual);

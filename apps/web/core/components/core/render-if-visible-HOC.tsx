@@ -47,11 +47,12 @@ function RenderIfVisible(props: Props) {
 
   // Set visibility with intersection observer
   useEffect(() => {
-    if (intersectionRef.current) {
+    const currentIntersectionElement = intersectionRef.current;
+    if (currentIntersectionElement) {
       const observer = new IntersectionObserver(
         (entries) => {
           //DO no remove comments for future
-          if (typeof window !== undefined && window.requestIdleCallback && useIdletime) {
+          if (typeof window !== "undefined" && window.requestIdleCallback && useIdletime) {
             window.requestIdleCallback(() => setShouldVisible(entries[entries.length - 1].isIntersecting), {
               timeout: 300,
             });
@@ -64,15 +65,12 @@ function RenderIfVisible(props: Props) {
           rootMargin: `${verticalOffset}% ${horizontalOffset}% ${verticalOffset}% ${horizontalOffset}%`,
         }
       );
-      observer.observe(intersectionRef.current);
+      observer.observe(currentIntersectionElement);
       return () => {
-        if (intersectionRef.current) {
-          // eslint-disable-next-line react-hooks/exhaustive-deps
-          observer.unobserve(intersectionRef.current);
-        }
+        observer.unobserve(currentIntersectionElement);
       };
     }
-  }, [intersectionRef, children, root, verticalOffset, horizontalOffset]);
+  }, [children, root, verticalOffset, horizontalOffset, useIdletime]);
 
   //Set height after render
   useEffect(() => {
