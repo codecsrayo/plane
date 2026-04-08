@@ -163,12 +163,10 @@ export const ProfileSetup = observer(function ProfileSetup(props: Props) {
       await Promise.all([
         updateCurrentUser(userDetailsPayload),
         formData.password && handleSetPassword(formData.password),
-      ]).then(() => {
-        if (formData.password) {
-        } else {
-          setProfileSetupStep(EProfileSetupSteps.USER_PERSONALIZATION);
-        }
-      });
+      ]);
+      if (!formData.password) {
+        setProfileSetupStep(EProfileSetupSteps.USER_PERSONALIZATION);
+      }
     } catch {
       setToast({
         type: TOAST_TYPE.ERROR,
@@ -240,8 +238,7 @@ export const ProfileSetup = observer(function ProfileSetup(props: Props) {
 
   // Check for all available fields validation and if password field is available, then checks for password validation (strength + confirmation).
   // Also handles the condition for optional password i.e if password field is optional it only checks for above validation if it's not empty.
-  const isButtonDisabled =
-    !isSubmitting && isValid ? (isPasswordAlreadySetup ? false : isValidPassword ? false : true) : true;
+  const isButtonDisabled = isSubmitting || !isValid || (!isPasswordAlreadySetup && !isValidPassword);
 
   return (
     <div className="flex h-full w-full">
@@ -283,7 +280,6 @@ export const ProfileSetup = observer(function ProfileSetup(props: Props) {
                       <img
                         src={getFileURL(userAvatar ?? "")}
                         className="absolute top-0 left-0 h-full w-full rounded-full object-cover"
-                        onClick={() => setIsImageUploadModalOpen(true)}
                         alt={user?.display_name}
                       />
                     </div>
@@ -315,7 +311,6 @@ export const ProfileSetup = observer(function ProfileSetup(props: Props) {
                         name="first_name"
                         type="text"
                         value={value}
-                        autoFocus
                         onChange={onChange}
                         ref={ref}
                         hasError={Boolean(errors.first_name)}
@@ -418,7 +413,7 @@ export const ProfileSetup = observer(function ProfileSetup(props: Props) {
                       control={control}
                       name="confirm_password"
                       rules={{
-                        required: watch("password") ? true : false,
+                        required: Boolean(watch("password")),
                         validate: (value) =>
                           watch("password") ? (value === watch("password") ? true : "Passwords don't match") : true,
                       }}
@@ -477,7 +472,8 @@ export const ProfileSetup = observer(function ProfileSetup(props: Props) {
                   render={({ field: { value, onChange } }) => (
                     <div className="flex flex-wrap gap-2 overflow-auto py-2 break-all">
                       {USER_ROLE.map((userRole) => (
-                        <div
+                        <button
+                          type="button"
                           key={userRole}
                           className={cn(
                             "shrink-0 rounded border-[0.5px] px-3 py-1.5 text-13 font-medium hover:cursor-pointer hover:bg-surface-2",
@@ -489,7 +485,7 @@ export const ProfileSetup = observer(function ProfileSetup(props: Props) {
                           onClick={() => onChange(userRole)}
                         >
                           {userRole}
-                        </div>
+                        </button>
                       ))}
                     </div>
                   )}
@@ -515,7 +511,8 @@ export const ProfileSetup = observer(function ProfileSetup(props: Props) {
                       {USER_DOMAIN.map((userDomain) => {
                         const isSelected = value?.includes(userDomain) || false;
                         return (
-                          <div
+                          <button
+                            type="button"
                             key={userDomain}
                             className={`flex-shrink-0 border-[0.5px] hover:cursor-pointer hover:bg-surface-2 ${
                               isSelected ? "border-accent-strong" : "border-strong"
@@ -530,7 +527,7 @@ export const ProfileSetup = observer(function ProfileSetup(props: Props) {
                             }}
                           >
                             {userDomain}
-                          </div>
+                          </button>
                         );
                       })}
                     </div>
