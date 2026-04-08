@@ -9,9 +9,9 @@ import { observer } from "mobx-react";
 import { ArchivedIssueQuickActions } from "../../quick-action-dropdowns";
 import { BaseListRoot } from "../base-list-root";
 
-export const ArchivedIssueListLayout = observer(function ArchivedIssueListLayout() {
-  const canEditPropertiesBasedOnProject = () => false;
+const canEditPropertiesBasedOnProject = () => false;
 
+export const ArchivedIssueListLayout = observer(function ArchivedIssueListLayout() {
   return (
     <BaseListRoot
       QuickActions={ArchivedIssueQuickActions}
