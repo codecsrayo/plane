@@ -105,31 +105,36 @@ export const GithubPRStateMappingModal = observer(function GithubPRStateMappingM
     <ModalCore isOpen={isOpen} handleClose={handleClose} width={EModalWidth.XL}>
       <div className="flex flex-col gap-5 p-5">
         {/* Header */}
-        <h2 className="text-base font-semibold text-primary">
-          Add Pull Request State Mapping for Plane project
-        </h2>
+        <h2 className="text-base font-semibold text-primary">Add Pull Request State Mapping for Plane project</h2>
 
         {/* Plane Project selector */}
         <div className="flex flex-col gap-1.5">
-          <label className="text-xs font-medium text-secondary">Plane Project</label>
+          <label htmlFor="github-pr-state-mapping-project" className="text-xs font-medium text-secondary">
+            Plane Project
+          </label>
           <select
-            className="w-full rounded-md border border-custom-border-200 bg-custom-background-100 px-3 py-2 text-sm text-primary outline-none focus:border-custom-primary-100"
+            id="github-pr-state-mapping-project"
+            className="border-custom-border-200 bg-custom-background-100 text-sm focus:border-custom-primary-100 w-full rounded-md border px-3 py-2 text-primary outline-none"
             value={selectedProject}
             onChange={(e) => handleProjectChange(e.target.value)}
           >
             <option value="">Choose Project...</option>
             {(workspaceProjectIds ?? []).map((id) => {
               const p = getProjectById(id);
-              return p ? <option key={id} value={id}>{p.name}</option> : null;
+              return p ? (
+                <option key={id} value={id}>
+                  {p.name}
+                </option>
+              ) : null;
             })}
           </select>
         </div>
 
         {/* PR Automation section */}
-        <div className="flex flex-col gap-3 rounded-lg border border-custom-border-200 p-4">
+        <div className="border-custom-border-200 flex flex-col gap-3 rounded-lg border p-4">
           <div>
             <p className="text-sm font-semibold text-primary">Pull Request Automation</p>
-            <p className="text-xs text-secondary mt-0.5">
+            <p className="text-xs mt-0.5 text-secondary">
               Configure pull request state mapping from GitHub to your Plane project
             </p>
           </div>
@@ -137,16 +142,18 @@ export const GithubPRStateMappingModal = observer(function GithubPRStateMappingM
           <div className="flex flex-col gap-2">
             {GITHUB_PR_STATES.map(({ value, label }) => (
               <div key={value} className="flex items-center justify-between gap-4">
-                <span className="w-40 shrink-0 text-sm text-primary">{label}</span>
+                <span className="text-sm w-40 shrink-0 text-primary">{label}</span>
                 <select
-                  className="flex-1 rounded-md border border-custom-border-200 bg-custom-background-100 px-3 py-1.5 text-sm text-primary outline-none focus:border-custom-primary-100 disabled:cursor-not-allowed disabled:opacity-60"
+                  className="border-custom-border-200 bg-custom-background-100 text-sm focus:border-custom-primary-100 flex-1 rounded-md border px-3 py-1.5 text-primary outline-none disabled:cursor-not-allowed disabled:opacity-60"
                   value={stateMapping[value] ?? ""}
                   onChange={(e) => handleStateChange(value, e.target.value)}
                   disabled={!selectedProject}
                 >
                   <option value="">Set State</option>
                   {projectStates.map((s) => (
-                    <option key={s.id} value={s.id}>{s.name}</option>
+                    <option key={s.id} value={s.id}>
+                      {s.name}
+                    </option>
                   ))}
                 </select>
               </div>
@@ -155,12 +162,12 @@ export const GithubPRStateMappingModal = observer(function GithubPRStateMappingM
         </div>
 
         {/* Prevent regression */}
-        <label className="flex items-center gap-2.5 cursor-pointer select-none">
+        <label className="flex cursor-pointer items-center gap-2.5 select-none">
           <input
             type="checkbox"
             checked={preventRegression}
             onChange={(e) => setPreventRegression(e.target.checked)}
-            className="h-3.5 w-3.5 rounded border-custom-border-200 accent-custom-primary-100"
+            className="border-custom-border-200 accent-custom-primary-100 h-3.5 w-3.5 rounded"
           />
           <span className="text-sm text-secondary">
             Prevent issues from moving to an earlier state due to PR updates
@@ -169,7 +176,7 @@ export const GithubPRStateMappingModal = observer(function GithubPRStateMappingM
 
         {/* Footer */}
         <div className="flex items-center justify-end gap-3">
-          <Button variant="neutral-primary" size="sm" onClick={handleClose}>
+          <Button variant="secondary" size="sm" onClick={handleClose}>
             Cancel
           </Button>
           <Button
