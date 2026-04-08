@@ -271,7 +271,6 @@ export function GptAssistantPopover(props: Props) {
                   prompt && prompt !== "" ? "Tell AI what action to perform on this content..." : "Ask AI anything..."
                 }`}
                 className="w-full"
-                autoFocus
               />
             )}
           />

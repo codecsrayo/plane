@@ -22,6 +22,13 @@ import { currentViewDataWithView } from "../data";
 import type { IMonthBlock, IMonthView, IWeekBlock } from "../views";
 import { getNumberOfDaysBetweenTwoDates, monthView, quarterView, weekView } from "../views";
 
+const updateCurrentLeftScrollPosition = (width: number) => {
+  const scrollContainer = document.querySelector("#gantt-container") as HTMLDivElement;
+  if (!scrollContainer) return;
+
+  scrollContainer.scrollLeft = width + scrollContainer?.scrollLeft;
+};
+
 type ChartViewRootProps = {
   border: boolean;
   title: string;
@@ -150,13 +157,6 @@ export const ChartViewRoot = observer(function ChartViewRoot(props: ChartViewRoo
     const scrollContainer = document.querySelector("#gantt-container") as HTMLDivElement;
     if (!scrollContainer) return;
     setItemsContainerWidth(width + scrollContainer?.scrollLeft);
-  };
-
-  const updateCurrentLeftScrollPosition = (width: number) => {
-    const scrollContainer = document.querySelector("#gantt-container") as HTMLDivElement;
-    if (!scrollContainer) return;
-
-    scrollContainer.scrollLeft = width + scrollContainer?.scrollLeft;
   };
 
   const handleScrollToCurrentSelectedDate = (currentState: ChartDataType, date: Date) => {

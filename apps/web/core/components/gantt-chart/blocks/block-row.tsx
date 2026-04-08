@@ -51,7 +51,7 @@ export const BlockRow = observer(function BlockRow(props: Props) {
     );
 
     // Observe if the block is visible on the chart
-    const observer = new IntersectionObserver(
+    const intersectionObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           setIsHidden(!entry.isIntersecting);
@@ -64,10 +64,10 @@ export const BlockRow = observer(function BlockRow(props: Props) {
       }
     );
 
-    observer.observe(timelineBlock);
+    intersectionObserver.observe(timelineBlock);
 
     return () => {
-      observer.unobserve(timelineBlock);
+      intersectionObserver.unobserve(timelineBlock);
     };
   }, [block]);
 

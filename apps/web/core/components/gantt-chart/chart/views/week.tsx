@@ -48,9 +48,9 @@ export const WeekChartView = observer(function WeekChartView(_props: any) {
               </div>
               {/** Days Sub title */}
               <div className="flex h-5 w-full">
-                {block?.children?.map((weekDay, index) => (
+                {block?.children?.map((weekDay) => (
                   <div
-                    key={`sub-title-${rootIndex}-${index}`}
+                    key={`sub-title-${rootIndex}-${weekDay.date.toISOString()}`}
                     className={cn(
                       "flex flex-shrink-0 justify-between p-1 text-center capitalize outline-[0.25px] outline-subtle-1",
                       {
@@ -75,9 +75,9 @@ export const WeekChartView = observer(function WeekChartView(_props: any) {
             </div>
             {/** Day Columns */}
             <div className="flex h-full w-full flex-grow bg-surface-1">
-              {block?.children?.map((weekDay, index) => (
+              {block?.children?.map((weekDay) => (
                 <div
-                  key={`column-${rootIndex}-${index}`}
+                  key={`column-${rootIndex}-${weekDay.date.toISOString()}`}
                   className={cn("h-full overflow-hidden outline-[0.25px] outline-subtle", {
                     "bg-accent-primary/20": weekDay.today,
                   })}

@@ -55,6 +55,7 @@ export const ChartDraggable = observer(function ChartDraggable(props: Props) {
         position={block.position}
       />
       <div
+        role="presentation"
         className={cn("relative z-[6] flex h-8 w-full items-center rounded-sm", {
           "pointer-events-none": isMoving,
         })}

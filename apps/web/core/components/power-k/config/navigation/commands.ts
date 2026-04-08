@@ -17,6 +17,11 @@ import { handlePowerKNavigate } from "@/components/power-k/utils/navigation";
 import { useProject } from "@/hooks/store/use-project";
 import { useUser } from "@/hooks/store/user";
 
+const baseWorkspaceConditions = (ctx: TPowerKContext) => Boolean(ctx.params.workspaceSlug?.toString());
+
+const baseProjectConditions = (ctx: TPowerKContext) =>
+  Boolean(ctx.params.workspaceSlug?.toString() && ctx.params.projectId?.toString());
+
 export type TPowerKNavigationCommandKeys =
   | "open_workspace"
   | "nav_home"
@@ -71,9 +76,6 @@ export const usePowerKNavigationCommandsRecord = (): Record<TPowerKNavigationCom
       ctx.params.workspaceSlug?.toString(),
       ctx.params.projectId?.toString()
     );
-  const baseWorkspaceConditions = (ctx: TPowerKContext) => Boolean(ctx.params.workspaceSlug?.toString());
-  const baseProjectConditions = (ctx: TPowerKContext) =>
-    Boolean(ctx.params.workspaceSlug?.toString() && ctx.params.projectId?.toString());
   const getContextProject = (ctx: TPowerKContext) => getPartialProjectById(ctx.params.projectId?.toString());
 
   return {

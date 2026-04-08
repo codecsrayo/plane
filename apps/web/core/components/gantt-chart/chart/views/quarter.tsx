@@ -56,9 +56,9 @@ export const QuarterChartView = observer(function QuarterChartView(_props: any) 
               </div>
               {/** Months Sub title */}
               <div className="flex h-5 w-full">
-                {quarterBlock?.children?.map((monthBlock, index) => (
+                {quarterBlock?.children?.map((monthBlock) => (
                   <div
-                    key={`sub-title-${rootIndex}-${index}`}
+                    key={`sub-title-${rootIndex}-${monthBlock.monthData.shortTitle}`}
                     className={cn(
                       "flex flex-shrink-0 justify-center text-center capitalize outline-[0.25px] outline-subtle-1",
                       {
@@ -82,9 +82,9 @@ export const QuarterChartView = observer(function QuarterChartView(_props: any) 
             </div>
             {/** Month Columns */}
             <div className="flex h-full w-full flex-grow">
-              {quarterBlock?.children?.map((monthBlock, index) => (
+              {quarterBlock?.children?.map((monthBlock) => (
                 <div
-                  key={`column-${rootIndex}-${index}`}
+                  key={`column-${rootIndex}-${monthBlock.monthData.shortTitle}`}
                   className={cn("h-full overflow-hidden outline-[0.25px] outline-subtle", {
                     "bg-accent-primary/20": monthBlock.today,
                   })}

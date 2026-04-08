@@ -80,6 +80,8 @@ export const ProductUpdatesChangelog = observer(function ProductUpdatesChangelog
       )}
       <iframe
         src={changeLogUrl}
+        title="Product updates changelog"
+        sandbox="allow-popups allow-forms"
         className={`h-full w-full ${isLoading ? "opacity-0" : "opacity-100"} transition-opacity duration-200`}
         onLoad={handleIframeLoad}
         onError={handleIframeError}

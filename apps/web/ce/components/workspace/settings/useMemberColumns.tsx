@@ -16,6 +16,8 @@ import { useMember } from "@/hooks/store/use-member";
 import { useUser, useUserPermissions } from "@/hooks/store/user";
 import type { IMemberFilters } from "@/store/member/utils";
 
+const isSuspended = (rowData: RowData) => rowData.is_active === false;
+
 export const useMemberColumns = () => {
   // states
   const [removeMemberModal, setRemoveMemberModal] = useState<RowData | null>(null);
@@ -33,8 +35,6 @@ export const useMemberColumns = () => {
 
   // derived values
   const isAdmin = allowPermissions([EUserPermissions.ADMIN], EUserPermissionsLevel.WORKSPACE);
-
-  const isSuspended = (rowData: RowData) => rowData.is_active === false;
 
   // handlers
   const handleDisplayFilterUpdate = (filterUpdates: Partial<IMemberFilters>) => {

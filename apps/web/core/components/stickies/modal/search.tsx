@@ -4,7 +4,7 @@
  * See the LICENSE file for details.
  */
 
-import { useCallback, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { debounce } from "lodash-es";
 import { observer } from "mobx-react";
 import { useParams } from "next/navigation";
@@ -45,12 +45,13 @@ export const StickySearch = observer(function StickySearch() {
     await fetchWorkspaceStickies(workspaceSlug.toString());
   };
 
-  const debouncedSearch = useCallback(
-    debounce(async () => {
-      await fetchStickies();
-    }, 500),
-    [fetchWorkspaceStickies]
+  const debouncedSearch = useRef(
+    debounce(async (slug: string) => {
+      await fetchWorkspaceStickies(slug);
+    }, 500)
   );
+
+  useEffect(() => () => debouncedSearch.current.cancel(), []);
 
   return (
     <div className="my-auto mr-2 flex items-center">
@@ -82,7 +83,7 @@ export const StickySearch = observer(function StickySearch() {
           value={searchQuery}
           onChange={(e) => {
             updateSearchQuery(e.target.value);
-            debouncedSearch();
+            debouncedSearch.current(workspaceSlug.toString());
           }}
           onKeyDown={handleInputKeyDown}
         />

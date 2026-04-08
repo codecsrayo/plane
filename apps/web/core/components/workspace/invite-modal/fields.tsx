@@ -96,11 +96,11 @@ export const InvitationFields = observer(function InvitationFields(props: TInvit
                     className="w-24 flex-grow"
                     input
                   >
-                    {Object.entries(ROLE).map(([key, value]) => {
+                    {Object.entries(ROLE).map(([key, roleLabel]) => {
                       if (currentWorkspaceRole && currentWorkspaceRole >= parseInt(key))
                         return (
                           <CustomSelect.Option key={key} value={parseInt(key)}>
-                            {value}
+                            {roleLabel}
                           </CustomSelect.Option>
                         );
                     })}

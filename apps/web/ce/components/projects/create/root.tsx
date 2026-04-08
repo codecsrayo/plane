@@ -111,6 +111,7 @@ export const CreateProjectForm = observer(function CreateProjectForm(props: TCre
           handleAddToFavorites(res.id);
         }
         handleNextStep(res.id);
+        return res;
       })
       .catch((err) => {
         try {
