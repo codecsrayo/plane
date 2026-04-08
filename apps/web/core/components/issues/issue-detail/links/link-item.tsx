@@ -82,7 +82,8 @@ export const IssueLinkItem = observer(function IssueLinkItem(props: TIssueLinkIt
           <p className="group-hover-text-secondary p-1 align-bottom text-caption-sm-regular leading-5 text-placeholder">
             {calculateTimeAgo(linkDetail.created_at)}
           </p>
-          <span
+          <button
+            type="button"
             onClick={() => {
               copyTextToClipboard(linkDetail.url);
               setToast({
@@ -94,7 +95,7 @@ export const IssueLinkItem = observer(function IssueLinkItem(props: TIssueLinkIt
             className="relative grid cursor-pointer place-items-center rounded-sm p-1 text-placeholder outline-none group-hover:text-secondary hover:bg-layer-1"
           >
             <CopyIcon className="h-3.5 w-3.5 stroke-[1.5]" />
-          </span>
+          </button>
           <CustomMenu
             ellipsis
             buttonClassName="text-placeholder group-hover:text-secondary"
