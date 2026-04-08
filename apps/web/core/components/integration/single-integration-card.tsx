@@ -5,8 +5,7 @@
  */
 
 import { observer } from "mobx-react";
-import { useParams } from "next/navigation";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import useSWR from "swr";
 import { CheckCircle } from "lucide-react";
 import { EUserPermissions, EUserPermissionsLevel } from "@plane/constants";

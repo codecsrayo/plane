@@ -5,7 +5,7 @@
  */
 
 import { observer } from "mobx-react";
-import { useParams } from "next/navigation";
+import { useParams } from "react-router";
 import useSWR, { mutate } from "swr";
 import { Trash2 } from "lucide-react";
 import { TOAST_TYPE, setToast } from "@plane/propel/toast";

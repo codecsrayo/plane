@@ -31,6 +31,7 @@ from .integration import (
     GitlabRepositorySync,
     Integration,
     SlackProjectSync,
+    UserGithubConnection,
     WorkspaceIntegration,
 )
 from .issue import (
