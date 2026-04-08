@@ -88,7 +88,8 @@ export const SubWorkItemTitleActions = observer(function SubWorkItemTitleActions
 
   return (
     // prevent click everywhere
-    <div
+    <button
+      type="button"
       className="flex items-center gap-2"
       onClick={(e) => {
         e.stopPropagation();
@@ -113,6 +114,6 @@ export const SubWorkItemTitleActions = observer(function SubWorkItemTitleActions
       {!disabled && (
         <SubIssuesActionButton issueId={parentId} disabled={disabled} issueServiceType={issueServiceType} />
       )}
-    </div>
+    </button>
   );
 });
