@@ -4,7 +4,7 @@
 
 # Module imports
 from .base import BaseSerializer
-from plane.db.models import Integration, WorkspaceIntegration
+from plane.db.models import Integration, WorkspaceIntegration, GithubPRStateMapping
 
 
 class IntegrationSerializer(BaseSerializer):
@@ -19,3 +19,10 @@ class WorkspaceIntegrationSerializer(BaseSerializer):
     class Meta:
         model = WorkspaceIntegration
         fields = "__all__"
+
+
+class GithubPRStateMappingSerializer(BaseSerializer):
+    class Meta:
+        model = GithubPRStateMapping
+        fields = "__all__"
+        read_only_fields = ("id", "workspace_integration", "created_at", "updated_at")

@@ -232,6 +232,7 @@ from .integration.base import (
     GithubRepoSyncViewSet,
     GithubAppCallbackEndpoint,
     UserGithubConnectionView,
+    GithubPRStateMappingViewSet,
 )
 
 

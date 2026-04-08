@@ -23,9 +23,14 @@ from plane.db.models import (
     APIToken,
     GithubRepository,
     GithubRepositorySync,
+    GithubPRStateMapping,
     UserGithubConnection,
 )
-from plane.app.serializers import IntegrationSerializer, WorkspaceIntegrationSerializer
+from plane.app.serializers import (
+    IntegrationSerializer,
+    WorkspaceIntegrationSerializer,
+    GithubPRStateMappingSerializer,
+)
 from plane.app.permissions import WorkSpaceAdminPermission, ROLE, allow_permission
 from plane.license.utils.instance_value import get_configuration_value
 from plane.authentication.utils.host import base_host
@@ -657,4 +662,52 @@ class GithubRepoSyncViewSet(BaseViewSet):
             workspace__slug=slug,
         )
         sync.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class GithubPRStateMappingViewSet(BaseViewSet):
+    """
+    Manage PR state mappings for a WorkspaceIntegration.
+
+    GET    /workspaces/{slug}/workspace-integrations/{wi_id}/pr-state-mappings/
+    POST   /workspaces/{slug}/workspace-integrations/{wi_id}/pr-state-mappings/
+    DELETE /workspaces/{slug}/workspace-integrations/{wi_id}/pr-state-mappings/{id}/
+    """
+
+    serializer_class = GithubPRStateMappingSerializer
+
+    def get_queryset(self):
+        return GithubPRStateMapping.objects.filter(
+            workspace_integration__workspace__slug=self.kwargs["slug"],
+            workspace_integration_id=self.kwargs["wi_id"],
+        ).select_related("state", "project")
+
+    @allow_permission([ROLE.ADMIN, ROLE.MEMBER], level="WORKSPACE")
+    def list(self, request, slug, wi_id):
+        mappings = self.get_queryset()
+        serializer = GithubPRStateMappingSerializer(mappings, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    @allow_permission([ROLE.ADMIN], level="WORKSPACE")
+    def create(self, request, slug, wi_id):
+        wi = get_object_or_404(
+            WorkspaceIntegration,
+            pk=wi_id,
+            workspace__slug=slug,
+        )
+        serializer = GithubPRStateMappingSerializer(data=request.data)
+        if not serializer.is_valid():
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        serializer.save(workspace_integration=wi)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+    @allow_permission([ROLE.ADMIN], level="WORKSPACE")
+    def destroy(self, request, slug, wi_id, pk):
+        mapping = get_object_or_404(
+            GithubPRStateMapping,
+            pk=pk,
+            workspace_integration__pk=wi_id,
+            workspace_integration__workspace__slug=slug,
+        )
+        mapping.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)

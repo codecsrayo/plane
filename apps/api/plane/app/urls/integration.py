@@ -9,6 +9,7 @@ from plane.app.views import (
     GithubRepoSyncViewSet,
     GithubAppCallbackEndpoint,
     UserGithubConnectionView,
+    GithubPRStateMappingViewSet,
 )
 
 urlpatterns = [
@@ -63,5 +64,16 @@ urlpatterns = [
         "workspaces/<str:slug>/workspace-integrations/github/repo-syncs/<uuid:pk>/",
         GithubRepoSyncViewSet.as_view({"delete": "destroy"}),
         name="github-repo-syncs-detail",
+    ),
+    # PR State Mapping endpoints
+    path(
+        "workspaces/<str:slug>/workspace-integrations/<uuid:wi_id>/pr-state-mappings/",
+        GithubPRStateMappingViewSet.as_view({"get": "list", "post": "create"}),
+        name="github-pr-state-mappings-list",
+    ),
+    path(
+        "workspaces/<str:slug>/workspace-integrations/<uuid:wi_id>/pr-state-mappings/<uuid:pk>/",
+        GithubPRStateMappingViewSet.as_view({"delete": "destroy"}),
+        name="github-pr-state-mappings-detail",
     ),
 ]

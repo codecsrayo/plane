@@ -98,6 +98,7 @@ from .importer import ImporterSerializer
 from .integration import (
     IntegrationSerializer,
     WorkspaceIntegrationSerializer,
+    GithubPRStateMappingSerializer,
 )
 
 from .page import (
