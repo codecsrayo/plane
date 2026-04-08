@@ -35,7 +35,7 @@ export const ReadonlyLabels = observer(function ReadonlyLabels(props: TReadonlyL
     if (projectId) {
       fetchProjectLabels(workspaceSlug?.toString(), projectId);
     }
-  }, [projectId, workspaceSlug]);
+  }, [fetchProjectLabels, projectId, workspaceSlug]);
 
   return (
     <div className={cn("flex items-center gap-2 text-body-xs-regular", className)}>

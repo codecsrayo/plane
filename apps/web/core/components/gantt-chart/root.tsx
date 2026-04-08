@@ -68,7 +68,7 @@ export const GanttChartRoot = observer(function GanttChartRoot(props: GanttChart
   // update the timeline store with updated blockIds
   useEffect(() => {
     setBlockIds(blockIds);
-  }, [blockIds]);
+  }, [blockIds, setBlockIds]);
 
   return (
     <ChartViewRoot

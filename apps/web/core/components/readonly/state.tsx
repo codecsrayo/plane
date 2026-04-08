@@ -4,7 +4,7 @@
  * See the LICENSE file for details.
  */
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { observer } from "mobx-react";
 // plane imports
 import { useTranslation } from "@plane/i18n";
@@ -35,7 +35,7 @@ export const ReadonlyState = observer(function ReadonlyState(props: TReadonlySta
   const state = getStateById(value);
 
   // fetch states if not provided
-  const fetchStates = async () => {
+  const fetchStates = useCallback(async () => {
     if ((stateIds === undefined || stateIds.length === 0) && projectId) {
       setStateLoader(true);
       try {
@@ -44,11 +44,11 @@ export const ReadonlyState = observer(function ReadonlyState(props: TReadonlySta
         setStateLoader(false);
       }
     }
-  };
+  }, [fetchProjectStates, projectId, stateIds, workspaceSlug]);
 
   useEffect(() => {
     fetchStates();
-  }, [projectId, workspaceSlug]);
+  }, [fetchStates]);
 
   if (stateLoader) {
     return (
