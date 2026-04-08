@@ -8,6 +8,7 @@ from plane.app.views import (
     WorkspaceIntegrationViewSet,
     GithubRepoSyncViewSet,
     GithubAppCallbackEndpoint,
+    UserGithubConnectionView,
 )
 
 urlpatterns = [
@@ -16,6 +17,11 @@ urlpatterns = [
         "github/callback/",
         GithubAppCallbackEndpoint.as_view(),
         name="github-app-callback",
+    ),
+    path(
+        "auth/github/user-callback/",
+        UserGithubConnectionView.as_view(),
+        name="github-user-callback",
     ),
 
     # Global integrations

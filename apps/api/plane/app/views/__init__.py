@@ -231,6 +231,7 @@ from .integration.base import (
     WorkspaceIntegrationViewSet,
     GithubRepoSyncViewSet,
     GithubAppCallbackEndpoint,
+    UserGithubConnectionView,
 )
 
 

@@ -22,10 +22,13 @@ from plane.db.models import (
     APIToken,
     GithubRepository,
     GithubRepositorySync,
+    UserGithubConnection,
 )
 from plane.app.serializers import IntegrationSerializer, WorkspaceIntegrationSerializer
 from plane.app.permissions import WorkSpaceAdminPermission, ROLE, allow_permission
 from plane.license.utils.instance_value import get_configuration_value
+from plane.authentication.utils.host import base_host
+from plane.utils.exception_logger import log_exception
 
 
 class IntegrationViewSet(BaseViewSet):
@@ -329,6 +332,113 @@ class GithubAppCallbackEndpoint(BaseAPIView):
             return redirect(f"/{workspace_slug}/settings/integrations?github_error=install_failed")
 
         return redirect(f"/{workspace_slug}/settings/integrations/github?installed=true")
+
+
+class UserGithubConnectionView(BaseAPIView):
+    """
+    Exchange a GitHub OAuth code for a personal user token and persist the
+    authenticated user's GitHub connection.
+    """
+
+    def post(self, request):
+        code = request.data.get("code")
+
+        if not code:
+            return Response(
+                {"error": "code is required"},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET = get_configuration_value(
+            [
+                {"key": "GITHUB_CLIENT_ID", "default": os.environ.get("GITHUB_CLIENT_ID", "")},
+                {"key": "GITHUB_CLIENT_SECRET", "default": os.environ.get("GITHUB_CLIENT_SECRET", "")},
+            ]
+        )
+
+        if not (GITHUB_CLIENT_ID and GITHUB_CLIENT_SECRET):
+            return Response(
+                {"error": "GitHub OAuth is not configured"},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        redirect_uri = f"{base_host(request=request, is_app=True).rstrip('/')}/auth/github/user-callback/"
+
+        try:
+            token_response = requests.post(
+                "https://github.com/login/oauth/access_token",
+                data={
+                    "client_id": GITHUB_CLIENT_ID,
+                    "client_secret": GITHUB_CLIENT_SECRET,
+                    "code": code,
+                    "redirect_uri": redirect_uri,
+                },
+                headers={"Accept": "application/json"},
+                timeout=10,
+            )
+            token_response.raise_for_status()
+            token_data = token_response.json()
+        except requests.RequestException as exc:
+            log_exception(exc)
+            return Response(
+                {"error": "Failed to exchange GitHub authorization code"},
+                status=status.HTTP_502_BAD_GATEWAY,
+            )
+
+        access_token = token_data.get("access_token")
+        if not access_token:
+            return Response(
+                {"error": token_data.get("error_description") or "GitHub did not return an access token"},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        try:
+            user_response = requests.get(
+                "https://api.github.com/user",
+                headers={
+                    "Authorization": f"Bearer {access_token}",
+                    "Accept": "application/json",
+                },
+                timeout=10,
+            )
+            user_response.raise_for_status()
+            github_user = user_response.json()
+        except requests.RequestException as exc:
+            log_exception(exc)
+            return Response(
+                {"error": "Failed to fetch GitHub user profile"},
+                status=status.HTTP_502_BAD_GATEWAY,
+            )
+
+        github_user_id = github_user.get("id")
+        github_username = github_user.get("login")
+
+        if not github_user_id or not github_username:
+            return Response(
+                {"error": "GitHub returned an incomplete user profile"},
+                status=status.HTTP_502_BAD_GATEWAY,
+            )
+
+        connection, created = UserGithubConnection.objects.update_or_create(
+            user=request.user,
+            defaults={
+                "github_user_id": str(github_user_id),
+                "github_username": github_username,
+                "github_avatar_url": github_user.get("avatar_url", ""),
+                "access_token": access_token,
+            },
+        )
+
+        return Response(
+            {
+                "id": str(connection.id),
+                "github_user_id": connection.github_user_id,
+                "github_username": connection.github_username,
+                "github_avatar_url": connection.github_avatar_url,
+                "created": created,
+            },
+            status=status.HTTP_201_CREATED if created else status.HTTP_200_OK,
+        )
 
 
 class GithubRepoSyncViewSet(BaseViewSet):
