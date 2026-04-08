@@ -42,6 +42,7 @@ export const updateFloatingUIFloaterPosition: UpdateFloatingUIFloaterPosition = 
           top: `${y}px`,
           ...options?.elementStyle,
         });
+        return { x, y, strategy };
       })
       .catch((error) => console.error("An error occurred while updating floating UI floater position:", error));
   });

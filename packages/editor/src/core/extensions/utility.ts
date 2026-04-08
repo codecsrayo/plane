@@ -116,9 +116,9 @@ export const UtilityExtension = (props: Props) => {
               uniqueAssets.add(args.asset);
             }
           } else if ("idToRemove" in args) {
-            const asset = this.storage.assetsList.find((asset) => asset.id === args.idToRemove);
-            if (asset) {
-              uniqueAssets.delete(asset);
+            const assetToRemove = this.storage.assetsList.find((asset) => asset.id === args.idToRemove);
+            if (assetToRemove) {
+              uniqueAssets.delete(assetToRemove);
             }
           }
           this.storage.assetsList = Array.from(uniqueAssets);

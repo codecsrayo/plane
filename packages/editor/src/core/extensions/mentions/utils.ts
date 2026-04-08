@@ -19,12 +19,14 @@ import type { TMentionHandler } from "@/types";
 import type { MentionsListDropdownProps } from "./mentions-list-dropdown";
 import { MentionsListDropdown } from "./mentions-list-dropdown";
 
+const noopCleanup = () => {};
+
 export const renderMentionsDropdown =
   (args: Pick<TMentionHandler, "searchCallback">): SuggestionOptions["render"] =>
   () => {
     const { searchCallback } = args;
     let component: ReactRenderer<CommandListInstance, MentionsListDropdownProps> | null = null;
-    let cleanup: () => void = () => {};
+    let cleanup: () => void = noopCleanup;
     let editorRef: Editor | null = null;
 
     const handleClose = (editor?: Editor) => {

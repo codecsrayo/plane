@@ -94,7 +94,7 @@ export const isValidHttpUrl = (string: string): { isValid: boolean; url: string 
   // Try again with https:// prefix
   try {
     const urlWithHttps = `https://${string}`;
-    new URL(urlWithHttps);
+    const _url = new URL(urlWithHttps);
     return {
       isValid: true,
       url: urlWithHttps,

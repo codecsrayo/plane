@@ -320,7 +320,8 @@ export const getSlashCommandFilteredSections =
     });
 
     const filteredSlashSections = SLASH_COMMAND_SECTIONS.map((section) => ({
-      ...section,
+      key: section.key,
+      title: section.title,
       items: section.items.filter((item) => {
         if (typeof query !== "string") return;
 

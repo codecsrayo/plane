@@ -98,8 +98,8 @@ export const insertTableCommand = (editor: Editor, range?: Range) => {
     const selection = window.getSelection();
     if (selection) {
       if (selection.rangeCount !== 0) {
-        const range = selection.getRangeAt(0);
-        if (findTableAncestor(range.startContainer)) {
+        const selectionRange = selection.getRangeAt(0);
+        if (findTableAncestor(selectionRange.startContainer)) {
           return;
         }
       }

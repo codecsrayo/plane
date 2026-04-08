@@ -32,6 +32,13 @@ type Props = {
   state?: TCollabValue["state"];
 };
 
+const handleContainerMouseLeave = () => {
+  const dragHandleElement = document.querySelector("#editor-side-menu");
+  if (!dragHandleElement?.classList.contains("side-menu-hidden")) {
+    dragHandleElement?.classList.add("side-menu-hidden");
+  }
+};
+
 export function EditorContainer(props: Props) {
   const { children, displayConfig, editor, editorContainerClassName, id, isTouchDevice, provider, state } = props;
   // refs
@@ -153,19 +160,14 @@ export function EditorContainer(props: Props) {
     }
   };
 
-  const handleContainerMouseLeave = () => {
-    const dragHandleElement = document.querySelector("#editor-side-menu");
-    if (!dragHandleElement?.classList.contains("side-menu-hidden")) {
-      dragHandleElement?.classList.add("side-menu-hidden");
-    }
-  };
-
   return (
     <>
       <div
         ref={containerRef}
         id={`editor-container-${id}`}
+        role="presentation"
         onClick={handleContainerClick}
+        onKeyDown={() => {}}
         onMouseLeave={handleContainerMouseLeave}
         className={cn(
           `editor-container relative cursor-text line-spacing-${displayConfig.lineSpacing ?? DEFAULT_DISPLAY_CONFIG.lineSpacing}`,
