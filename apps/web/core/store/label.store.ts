@@ -304,6 +304,7 @@ export class LabelStore implements ILabelStore {
       runInAction(() => {
         delete this.labelMap[labelId];
       });
+      return undefined;
     });
   };
 }

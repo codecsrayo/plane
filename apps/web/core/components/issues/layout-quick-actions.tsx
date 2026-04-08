@@ -31,6 +31,7 @@ export const LayoutQuickActions = observer(function LayoutQuickActions(props: Pr
         title: "Link copied",
         message: `${storeType === "EPIC" ? "Epics" : "Work items"} link copied to clipboard.`,
       });
+      return undefined;
     });
 
   const handleOpenInNewTab = () => window.open(`/${layoutLink}`, "_blank");

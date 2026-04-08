@@ -251,6 +251,7 @@ export class ProjectViewStore implements IProjectViewStore {
         delete this.viewMap[viewId];
         if (this.rootStore.favorite.entityMap[viewId]) this.rootStore.favorite.removeFavoriteFromStore(viewId);
       });
+      return undefined;
     });
   };
 

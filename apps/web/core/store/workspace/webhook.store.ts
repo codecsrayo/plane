@@ -96,12 +96,12 @@ export class WebhookStore implements IWebhookStore {
    */
   fetchWebhooks = async (workspaceSlug: string) =>
     await this.webhookService.fetchWebhooksList(workspaceSlug).then((response) => {
-      const webHookObject: { [webhookId: string]: IWebhook } = response.reduce((accumulator, currentWebhook) => {
+      const webHookObject: { [webhookId: string]: IWebhook } = {};
+      response.forEach((currentWebhook) => {
         if (currentWebhook && currentWebhook.id) {
-          return { ...accumulator, [currentWebhook.id]: currentWebhook };
+          webHookObject[currentWebhook.id] = currentWebhook;
         }
-        return accumulator;
-      }, {});
+      });
       runInAction(() => {
         this.webhooks = webHookObject;
       });
@@ -171,6 +171,7 @@ export class WebhookStore implements IWebhookStore {
       runInAction(() => {
         this.webhooks = _webhooks;
       });
+      return undefined;
     });
 
   /**

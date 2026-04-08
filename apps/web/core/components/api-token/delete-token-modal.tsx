@@ -56,6 +56,7 @@ export function DeleteApiTokenModal(props: Props) {
 
         handleClose();
         setDeleteLoading(false);
+        return undefined;
       })
       .catch((err) => {
         setToast({

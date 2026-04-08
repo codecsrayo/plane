@@ -54,13 +54,15 @@ export function PowerKModalSearchMenu(props: Props) {
           search: debouncedSearchTerm,
           workspace_search: !projectId ? true : isWorkspaceLevel,
         })
-        .then((results) => {
-          setResults(results);
-          const count = Object.keys(results.results).reduce(
-            (accumulator, key) => results.results[key as keyof typeof results.results]?.length + accumulator,
+        .then((searchResults) => {
+          setResults(searchResults);
+          const count = Object.keys(searchResults.results).reduce(
+            (accumulator, key) =>
+              searchResults.results[key as keyof typeof searchResults.results]?.length + accumulator,
             0
           );
           setResultsCount(count);
+          return undefined;
         })
         .catch(() => {
           setResults(WORKSPACE_DEFAULT_SEARCH_RESULT);

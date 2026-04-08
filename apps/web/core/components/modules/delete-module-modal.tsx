@@ -55,6 +55,7 @@ export const DeleteModuleModal = observer(function DeleteModuleModal(props: Prop
           title: "Success!",
           message: "Module deleted successfully.",
         });
+        return undefined;
       })
       .catch((errors) => {
         const isPermissionError = errors?.error === "You don't have the required permissions.";

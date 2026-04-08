@@ -199,5 +199,6 @@ export class GlobalViewStore implements IGlobalViewStore {
       runInAction(() => {
         delete this.globalViewMap[viewId];
       });
+      return undefined;
     });
 }
