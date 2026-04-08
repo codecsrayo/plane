@@ -47,8 +47,8 @@ export function Invitations(props: Props) {
   };
 
   const submitInvitations = async () => {
-    const invitation = invitations?.find((invitation) => invitation.id === invitationsRespond[0]);
-    if (invitationsRespond.length <= 0 && !invitation?.role) return;
+    const selectedInvitation = invitations?.find((invitation) => invitation.id === invitationsRespond[0]);
+    if (invitationsRespond.length <= 0 && !selectedInvitation?.role) return;
     setIsJoiningWorkspaces(true);
     try {
       await workspaceService.joinWorkspaces({ invitations: invitationsRespond });
@@ -74,7 +74,8 @@ export function Invitations(props: Props) {
             const isSelected = invitationsRespond.includes(invitation.id);
             const invitedWorkspace = invitation.workspace;
             return (
-              <div
+              <button
+                type="button"
                 key={invitation.id}
                 className={`flex cursor-pointer items-center gap-2 rounded-sm border border-subtle p-3.5 hover:bg-surface-2`}
                 onClick={() => handleInvitation(invitation, isSelected ? "withdraw" : "accepted")}
@@ -93,7 +94,7 @@ export function Invitations(props: Props) {
                 <span className={`flex-shrink-0`}>
                   <Checkbox checked={isSelected} />
                 </span>
-              </div>
+              </button>
             );
           })}
       </div>

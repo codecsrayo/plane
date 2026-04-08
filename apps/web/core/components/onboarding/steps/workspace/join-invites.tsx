@@ -48,9 +48,9 @@ export function WorkspaceJoinInvitesStep(props: Props) {
 
   // submit invitations
   const submitInvitations = async () => {
-    const invitation = invitations?.find((invitation) => invitation.id === invitationsRespond[0]);
+    const selectedInvitation = invitations?.find((invitation) => invitation.id === invitationsRespond[0]);
 
-    if (invitationsRespond.length <= 0 && !invitation?.role) return;
+    if (invitationsRespond.length <= 0 && !selectedInvitation?.role) return;
 
     setIsJoiningWorkspaces(true);
 
@@ -75,7 +75,8 @@ export function WorkspaceJoinInvitesStep(props: Props) {
             const isSelected = invitationsRespond.includes(invitation.id);
             const invitedWorkspace = invitation.workspace;
             return (
-              <div
+              <button
+                type="button"
                 key={invitation.id}
                 className={`flex cursor-pointer items-center gap-2 rounded-lg border border-subtle px-3 py-2 hover:bg-surface-2`}
                 onClick={() => handleInvitation(invitation, isSelected ? "withdraw" : "accepted")}
@@ -94,7 +95,7 @@ export function WorkspaceJoinInvitesStep(props: Props) {
                 <span className={`flex-shrink-0`}>
                   <Checkbox checked={isSelected} />
                 </span>
-              </div>
+              </button>
             );
           })}
       </div>

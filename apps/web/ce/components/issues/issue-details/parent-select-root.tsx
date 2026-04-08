@@ -53,16 +53,16 @@ export const IssueParentSelectRoot = observer(function IssueParentSelectRoot(pro
   };
 
   const handleRemoveSubIssue = async (
-    workspaceSlug: string,
-    projectId: string,
+    targetWorkspaceSlug: string,
+    targetProjectId: string,
     parentIssueId: string,
-    issueId: string
+    targetIssueId: string
   ) => {
     try {
-      setSubIssueHelpers(parentIssueId, "issue_loader", issueId);
-      await removeSubIssue(workspaceSlug, projectId, parentIssueId, issueId);
-      await fetchSubIssues(workspaceSlug, projectId, parentIssueId);
-      setSubIssueHelpers(parentIssueId, "issue_loader", issueId);
+      setSubIssueHelpers(parentIssueId, "issue_loader", targetIssueId);
+      await removeSubIssue(targetWorkspaceSlug, targetProjectId, parentIssueId, targetIssueId);
+      await fetchSubIssues(targetWorkspaceSlug, targetProjectId, parentIssueId);
+      setSubIssueHelpers(parentIssueId, "issue_loader", targetIssueId);
     } catch (_error) {
       setToast({
         type: TOAST_TYPE.ERROR,

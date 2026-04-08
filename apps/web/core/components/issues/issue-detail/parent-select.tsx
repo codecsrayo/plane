@@ -58,13 +58,13 @@ export const IssueParentSelect = observer(function IssueParentSelect(props: TIss
   const { isParentIssueModalOpen, toggleParentIssueModal } = useIssueDetail();
 
   // derived values
-  const issue = getIssueById(issueId);
-  const parentIssue = issue?.parent_id ? getIssueById(issue.parent_id) : undefined;
+  const currentIssue = getIssueById(issueId);
+  const parentIssue = currentIssue?.parent_id ? getIssueById(currentIssue.parent_id) : undefined;
   const parentIssueProjectDetails =
     parentIssue && parentIssue.project_id ? getProjectById(parentIssue.project_id) : undefined;
   const { isMobile } = usePlatformOS();
 
-  if (!issue) return <></>;
+  if (!currentIssue) return <></>;
 
   return (
     <>
@@ -73,7 +73,7 @@ export const IssueParentSelect = observer(function IssueParentSelect(props: TIss
         issueId={issueId}
         isOpen={isParentIssueModalOpen === issueId}
         handleClose={() => toggleParentIssueModal(null)}
-        onChange={(issue: any) => handleParentIssue(issue?.id)}
+        onChange={(selectedIssue: any) => handleParentIssue(selectedIssue?.id)}
       />
       <button
         type="button"
@@ -86,10 +86,10 @@ export const IssueParentSelect = observer(function IssueParentSelect(props: TIss
           },
           className
         )}
-        onClick={() => toggleParentIssueModal(issue.id)}
+        onClick={() => toggleParentIssueModal(currentIssue.id)}
         disabled={disabled}
       >
-        {issue.parent_id && parentIssue ? (
+        {currentIssue.parent_id && parentIssue ? (
           <div className="flex items-center gap-1.5">
             <Tooltip tooltipHeading="Title" tooltipContent={parentIssue.name} isMobile={isMobile}>
               <Link href={workItemLink} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
@@ -108,7 +108,8 @@ export const IssueParentSelect = observer(function IssueParentSelect(props: TIss
 
             {!disabled && (
               <Tooltip tooltipContent={t("common.remove")} position="bottom" isMobile={isMobile}>
-                <span
+                <button
+                  type="button"
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
@@ -116,7 +117,7 @@ export const IssueParentSelect = observer(function IssueParentSelect(props: TIss
                   }}
                 >
                   <CloseIcon className="h-2.5 w-2.5 text-tertiary hover:text-danger-primary" />
-                </span>
+                </button>
               </Tooltip>
             )}
           </div>
@@ -126,7 +127,7 @@ export const IssueParentSelect = observer(function IssueParentSelect(props: TIss
         {!disabled && (
           <span
             className={cn("flex-shrink-0 p-1 opacity-0 group-hover:opacity-100", {
-              "text-placeholder": !issue.parent_id && !parentIssue,
+              "text-placeholder": !currentIssue.parent_id && !parentIssue,
             })}
           >
             <EditIcon className="h-2.5 w-2.5 flex-shrink-0" />
