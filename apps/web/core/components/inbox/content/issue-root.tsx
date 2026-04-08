@@ -125,15 +125,15 @@ export const InboxIssueMainContent = observer(function InboxIssueMainContent(pro
           });
         }
       },
-      archive: async (workspaceSlug: string, projectId: string, issueId: string) => {
+      archive: async (targetWorkspaceSlug: string, targetProjectId: string, targetIssueId: string) => {
         try {
-          await archiveIssue(workspaceSlug, projectId, issueId);
+          await archiveIssue(targetWorkspaceSlug, targetProjectId, targetIssueId);
         } catch (error) {
           console.error("Error in archiving issue:", error);
         }
       },
     }),
-    [inboxIssue]
+    [archiveIssue, inboxIssue, projectId, removeIssue, workspaceSlug]
   );
 
   if (!issue) return <></>;
