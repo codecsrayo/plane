@@ -96,8 +96,8 @@ export const GlobalViewsHeader = observer(function GlobalViewsHeader() {
         ref={containerRef}
         className="horizontal-scrollbar flex scrollbar-sm h-full w-full items-center overflow-x-auto overflow-y-hidden"
       >
-        {DEFAULT_GLOBAL_VIEWS_LIST.map((tab, index) => (
-          <DefaultViewTab key={`${tab.key}-${index}`} tab={tab} />
+        {DEFAULT_GLOBAL_VIEWS_LIST.map((tab) => (
+          <DefaultViewTab key={tab.key} tab={tab} />
         ))}
 
         {currentWorkspaceViews?.map((viewId) => (

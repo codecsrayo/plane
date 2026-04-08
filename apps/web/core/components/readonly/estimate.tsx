@@ -45,7 +45,7 @@ export const ReadonlyEstimate = observer(function ReadonlyEstimate(props: TReado
     if (projectId) {
       getProjectEstimates(workspaceSlug, projectId);
     }
-  }, [projectId, workspaceSlug]);
+  }, [getProjectEstimates, projectId, workspaceSlug]);
 
   return (
     <div className={cn("flex items-center gap-1 text-body-xs-regular", className)}>

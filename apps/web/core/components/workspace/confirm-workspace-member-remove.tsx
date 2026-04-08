@@ -76,7 +76,7 @@ export const ConfirmWorkspaceMemberRemove = observer(function ConfirmWorkspaceMe
         <Button variant="secondary" size="lg" onClick={handleClose}>
           {t("cancel")}
         </Button>
-        <Button variant="error-fill" size="lg" tabIndex={1} onClick={handleDeletion} loading={isRemoving}>
+        <Button variant="error-fill" size="lg" onClick={handleDeletion} loading={isRemoving}>
           {currentUser?.id === userDetails.id
             ? isRemoving
               ? t("leaving")

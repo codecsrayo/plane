@@ -11,6 +11,6 @@ export type TPageMoveControlProps = {
   page: TPageInstance;
 };
 
-export function PageMoveControl({}: TPageMoveControlProps) {
+export function PageMoveControl(_props: TPageMoveControlProps) {
   return null;
 }

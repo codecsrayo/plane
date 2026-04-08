@@ -85,7 +85,7 @@ export const ConfirmProjectMemberRemove = observer(function ConfirmProjectMember
         <Button variant="secondary" size="lg" onClick={handleClose}>
           Cancel
         </Button>
-        <Button variant="error-fill" size="lg" tabIndex={1} onClick={handleDeletion} loading={isDeleteLoading}>
+        <Button variant="error-fill" size="lg" onClick={handleDeletion} loading={isDeleteLoading}>
           {isCurrentUser ? (isDeleteLoading ? "Leaving..." : "Leave") : isDeleteLoading ? "Removing..." : "Remove"}
         </Button>
       </div>

@@ -90,7 +90,6 @@ export const ProjectMemberList = observer(function ProjectMemberList(props: TPro
               className="w-full max-w-[234px] border-none bg-transparent text-13 placeholder:text-placeholder focus:outline-none"
               placeholder="Search"
               value={searchQuery}
-              autoFocus
               onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
