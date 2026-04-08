@@ -187,12 +187,13 @@ export const KanbanGroup = observer(function KanbanGroup(props: IKanbanGroup) {
     columnRef,
     groupId,
     sub_group_id,
-    setIsDraggingOverColumn,
     orderBy,
     isDropDisabled,
     isWorkflowDropDisabled,
     dropErrorMessage,
     handleOnDrop,
+    handleWorkFlowState,
+    t,
   ]);
 
   const prePopulateQuickAddData = (
@@ -260,12 +261,13 @@ export const KanbanGroup = observer(function KanbanGroup(props: IKanbanGroup) {
   const loadMore = isPaginating ? (
     <KanbanIssueBlockLoader />
   ) : (
-    <div
+    <button
+      type="button"
       className="sticky bottom-0 w-full cursor-pointer p-3 text-13 font-medium text-accent-primary hover:text-accent-secondary hover:underline"
       onClick={loadMoreIssuesInThisGroup}
     >
       {t("common.load_more")} &darr;
-    </div>
+    </button>
   );
 
   const shouldLoadMore = nextPageResults === undefined ? issueIds?.length < groupIssueCount : !!nextPageResults;
@@ -316,8 +318,8 @@ export const KanbanGroup = observer(function KanbanGroup(props: IKanbanGroup) {
           <>{loadMore}</>
         ) : (
           <div className="flex flex-col gap-2">
-            {Array.from({ length: 2 }).map((_, index) => (
-              <KanbanIssueBlockLoader key={index} />
+            {["kanban-loader-1", "kanban-loader-2"].map((loaderKey) => (
+              <KanbanIssueBlockLoader key={loaderKey} />
             ))}
             <KanbanIssueBlockLoader ref={setIntersectionElement} />
           </div>
