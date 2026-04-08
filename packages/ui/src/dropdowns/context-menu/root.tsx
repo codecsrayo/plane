@@ -4,7 +4,7 @@
  * See the LICENSE file for details.
  */
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import ReactDOM from "react-dom";
 // hooks
 import { usePlatformOS } from "../../hooks/use-platform-os";
@@ -90,11 +90,16 @@ function ContextMenuWithoutPortal(props: ContextMenuProps) {
     };
   }, []);
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     closeAllSubmenus();
     setIsOpen(false);
     setActiveItemIndex(0);
-  };
+  }, [closeAllSubmenus]);
+
+  const contextValue = useMemo(
+    () => ({ closeAllSubmenus, registerSubmenu, portalContainer }),
+    [closeAllSubmenus, registerSubmenu, portalContainer]
+  );
 
   // calculate position of context menu
   useEffect(() => {
@@ -137,7 +142,7 @@ function ContextMenuWithoutPortal(props: ContextMenuProps) {
       parentElement.removeEventListener("contextmenu", handleContextMenu);
       window.removeEventListener("keydown", hideContextMenu);
     };
-  }, [contextMenuRef, isMobile, isOpen, parentRef, setIsOpen, setPosition]);
+  }, [contextMenuRef, handleClose, isMobile, isOpen, parentRef, setIsOpen, setPosition]);
 
   // handle keyboard navigation
   useEffect(() => {
@@ -167,7 +172,7 @@ function ContextMenuWithoutPortal(props: ContextMenuProps) {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [activeItemIndex, isOpen, renderedItems, setIsOpen]);
+  }, [activeItemIndex, handleClose, isOpen, renderedItems, setIsOpen]);
 
   // Custom handler for nested menu portal clicks
   React.useEffect(() => {
@@ -219,7 +224,7 @@ function ContextMenuWithoutPortal(props: ContextMenuProps) {
         }}
         data-context-menu="true"
       >
-        <ContextMenuContext.Provider value={{ closeAllSubmenus, registerSubmenu, portalContainer }}>
+        <ContextMenuContext.Provider value={contextValue}>
           {renderedItems.map((item, index) => (
             <ContextMenuItem
               key={item.key}

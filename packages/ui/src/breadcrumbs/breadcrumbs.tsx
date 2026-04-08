@@ -68,9 +68,9 @@ function Breadcrumbs({ className, children, onBack, isLoading = false }: Breadcr
         <>
           <div className="flex items-center gap-2.5 p-1">
             {onBack && (
-              <span onClick={onBack} className="text-secondary">
+              <button type="button" onClick={onBack} className="text-secondary">
                 ...
-              </span>
+              </button>
             )}
             <ChevronRightIcon className="h-3.5 w-3.5 flex-shrink-0 text-placeholder" aria-hidden="true" />
           </div>

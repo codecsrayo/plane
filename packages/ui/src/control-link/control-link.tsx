@@ -34,7 +34,7 @@ export const ControlLink = React.forwardRef(function ControlLink(
   // if disabled but still has a ref or a className then it has to be rendered without a href
   if (disabled && (ref || className))
     return (
-      <a ref={ref} className={className}>
+      <a ref={ref} href={href} onClick={(event) => event.preventDefault()} aria-disabled="true" className={className}>
         {children}
       </a>
     );

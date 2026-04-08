@@ -25,7 +25,8 @@ export function LinkItemBlock(props: TLinkItemBlockProps) {
   // icons
   const Icon = getIconForLink(url);
   return (
-    <div
+    <button
+      type="button"
       onClick={onClick}
       className="group flex h-[56px] w-[230px] cursor-pointer items-center gap-4 rounded-md border-[0.5px] border-subtle bg-surface-1 px-4"
     >
@@ -70,6 +71,6 @@ export function LinkItemBlock(props: TLinkItemBlockProps) {
           </CustomMenu>
         </div>
       )}
-    </div>
+    </button>
   );
 }

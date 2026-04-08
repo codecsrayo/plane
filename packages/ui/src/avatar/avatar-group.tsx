@@ -65,8 +65,14 @@ export function AvatarGroup(props: Props) {
 
   return (
     <div className={cn("flex", sizeInfo.spacing)}>
-      {avatarsWithUpdatedProps.map((avatar, index) => (
-        <div key={index} className="rounded-full border border-subtle-1">
+      {avatarsWithUpdatedProps.map((avatar) => (
+        <div
+          key={String(
+            (avatar as React.ReactElement).key ??
+              `avatar-${totalAvatars}-${String((avatar as React.ReactElement).props?.name ?? "item")}`
+          )}
+          className="rounded-full border border-subtle-1"
+        >
           {avatar}
         </div>
       ))}

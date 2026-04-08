@@ -5,6 +5,7 @@
  */
 
 import type { Preview } from "@storybook/react";
+// oxlint-disable-next-line import/no-unassigned-import
 import "../styles/output.css";
 const preview: Preview = {
   parameters: {

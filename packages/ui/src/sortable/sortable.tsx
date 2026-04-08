@@ -87,18 +87,14 @@ export function Sortable<T>({ data, render, onChange, keyExtractor, containerCla
 
   const enhancedData = useMemo(() => {
     const uuid = id ? id : Math.random().toString(36).substring(7);
-    return data.map((item) => ({ ...item, __uuid__: uuid }));
-  }, [data, id]);
+    return data.map((item, index) => ({ ...item, __uuid__: `${uuid}-${keyExtractor(item, index)}` }));
+  }, [data, id, keyExtractor]);
 
   return (
     <>
-      {data.map((item, index) => (
-        <Draggable
-          key={keyExtractor(enhancedData[index], index)}
-          data={enhancedData[index]}
-          className={containerClassName}
-        >
-          <Fragment>{render(item, index)}</Fragment>
+      {enhancedData.map((item, index) => (
+        <Draggable key={String(item.__uuid__)} data={item} className={containerClassName}>
+          <Fragment>{render(data[index], index)}</Fragment>
         </Draggable>
       ))}
     </>

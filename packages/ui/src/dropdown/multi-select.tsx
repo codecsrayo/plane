@@ -93,8 +93,8 @@ export function MultiSelectDropdown(props: IMultiSelectDropdown) {
     if (!options) return undefined;
 
     const filteredOptions = queryArray
-      ? (options || []).filter((options) => {
-          const queryString = queryArray.map((query) => options.data[query]).join(" ");
+      ? (options || []).filter((optionItem) => {
+          const queryString = queryArray.map((queryKey) => optionItem.data[queryKey]).join(" ");
           return queryString.toLowerCase().includes(query.toLowerCase());
         })
       : options;
@@ -106,7 +106,7 @@ export function MultiSelectDropdown(props: IMultiSelectDropdown) {
       (option) => !(value ?? []).includes(option.data[option.value]),
       () => sortByKey && sortByKey.toLowerCase(),
     ]);
-  }, [query, options]);
+  }, [disableSorting, firstItem, options, query, queryArray, sortByKey, value]);
 
   // hooks
   const handleKeyDown = useDropdownKeyPressed(toggleDropdown, handleClose);
@@ -117,6 +117,7 @@ export function MultiSelectDropdown(props: IMultiSelectDropdown) {
     <Combobox
       as="div"
       ref={dropdownRef}
+      role="presentation"
       value={value}
       onChange={onChange}
       className={cn(
