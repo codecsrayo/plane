@@ -138,7 +138,8 @@ export const IssueRelationSelect = observer(function IssueRelationSelect(props: 
                     </Tooltip>
                     {!disabled && (
                       <Tooltip tooltipContent="Remove" position="bottom" isMobile={isMobile}>
-                        <span
+                        <button
+                          type="button"
                           onClick={(e) => {
                             e.preventDefault();
                             e.stopPropagation();
@@ -146,7 +147,7 @@ export const IssueRelationSelect = observer(function IssueRelationSelect(props: 
                           }}
                         >
                           <CloseIcon className="h-2.5 w-2.5 text-tertiary hover:text-danger-primary" />
-                        </span>
+                        </button>
                       </Tooltip>
                     )}
                   </div>

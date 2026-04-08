@@ -46,13 +46,14 @@ export function ProjectActionsMenu({
   return (
     <CustomMenu
       customButton={
-        <span
+        <button
+          type="button"
           ref={actionSectionRef}
           className="grid place-items-center rounded-sm p-0.5 text-placeholder hover:bg-layer-1"
           onClick={() => setIsMenuActive(!isMenuActive)}
         >
           <MoreHorizontal className="size-4" />
-        </span>
+        </button>
       }
       className="flex-shrink-0"
       customButtonClassName="grid place-items-center"

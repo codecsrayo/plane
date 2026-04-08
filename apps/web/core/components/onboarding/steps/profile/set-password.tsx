@@ -77,7 +77,8 @@ export function SetPasswordRoot({ onPasswordChange, onConfirmPasswordChange, dis
 
   return (
     <div className={`flex flex-col overflow-hidden rounded-lg bg-surface-2 transition-all duration-300 ease-in-out`}>
-      <div
+      <button
+        type="button"
         className={cn(
           "flex items-center justify-between px-3 py-2 text-13 transition-colors duration-200",
           disabled ? "cursor-not-allowed opacity-50" : "cursor-pointer",
@@ -93,7 +94,7 @@ export function SetPasswordRoot({ onPasswordChange, onConfirmPasswordChange, dis
         <div className="flex items-center gap-2 text-placeholder">
           <ChevronDownIcon className={chevronIconClasses} />
         </div>
-      </div>
+      </button>
 
       <div className={expandedContentClasses}>
         {/* Password input */}

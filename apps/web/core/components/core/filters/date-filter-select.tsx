@@ -54,8 +54,8 @@ export function DateFilterSelect({ title, value, onChange }: Props) {
       }
       onChange={onChange}
     >
-      {dueDateRange.map((option, index) => (
-        <CustomSelect.Option key={index} value={option.value}>
+      {dueDateRange.map((option) => (
+        <CustomSelect.Option key={option.value} value={option.value}>
           <div className="flex items-center gap-2">
             <span>{option.icon}</span>
             {title} {option.name}

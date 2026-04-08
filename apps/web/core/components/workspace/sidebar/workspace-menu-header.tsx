@@ -56,7 +56,8 @@ export const SidebarWorkspaceMenuHeader = observer(function SidebarWorkspaceMenu
       </Disclosure.Button>
       <CustomMenu
         customButton={
-          <span
+          <button
+            type="button"
             ref={actionSectionRef}
             className="my-auto grid place-items-center rounded-sm p-0.5 text-placeholder hover:bg-layer-1"
             onClick={() => {
@@ -64,7 +65,7 @@ export const SidebarWorkspaceMenuHeader = observer(function SidebarWorkspaceMenu
             }}
           >
             <MoreHorizontal className="size-4" />
-          </span>
+          </button>
         }
         className={cn(
           "pointer-events-none z-20 my-auto flex h-full flex-shrink-0 items-center opacity-0 group-hover/workspace-button:pointer-events-auto group-hover/workspace-button:opacity-100",

@@ -30,9 +30,9 @@ export const StateGroupStatComponent = observer(function StateGroupStatComponent
 
   return (
     <div>
-      {distribution.map((group, index) => (
+      {distribution.map((group) => (
         <SingleProgressStats
-          key={index}
+          key={group.state ?? "unknown"}
           title={
             <div className="flex items-center gap-2">
               <StateGroupIcon stateGroup={group.state as TStateGroups} />

@@ -130,7 +130,7 @@ export const WorkspaceImageUploadModal = observer(function WorkspaceImageUploadM
                   </button>
                   <img
                     src={image ? URL.createObjectURL(image) : value ? getFileURL(value) : ""}
-                    alt="image"
+                    alt="Workspace preview"
                     className="absolute top-0 left-0 h-full w-full rounded-md object-cover"
                   />
                 </>

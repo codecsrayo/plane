@@ -36,7 +36,7 @@ export const AssigneeStatComponent = observer(function AssigneeStatComponent(pro
   return (
     <div>
       {distribution && distribution.length > 0 ? (
-        distribution.map((assignee, index) => {
+        distribution.map((assignee) => {
           if (assignee?.id)
             return (
               <SingleProgressStats
@@ -58,7 +58,7 @@ export const AssigneeStatComponent = observer(function AssigneeStatComponent(pro
           else
             return (
               <SingleProgressStats
-                key={`unassigned-${index}`}
+                key={assignee.title ?? "unassigned"}
                 title={
                   <div className="flex items-center gap-2">
                     <div className="h-4 w-4 rounded-full border-2 border-subtle bg-layer-1">
