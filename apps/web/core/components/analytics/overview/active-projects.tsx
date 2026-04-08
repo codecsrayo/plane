@@ -32,6 +32,11 @@ const ActiveProjects = observer(function ActiveProjects() {
           })
       : null
   );
+  const analyticsLoaderKeys = Array.from(
+    { length: 5 },
+    (_, analyticsLoaderIndex) => `active-project-loader-${analyticsLoaderIndex}`
+  );
+
   return (
     <AnalyticsSectionWrapper
       title={`${t("workspace_analytics.active_projects")}`}
@@ -40,7 +45,9 @@ const ActiveProjects = observer(function ActiveProjects() {
     >
       <div className="flex h-[350px] flex-col gap-4 overflow-auto">
         {isProjectAnalyticsCountLoading &&
-          Array.from({ length: 5 }).map((_, index) => <Loader.Item key={index} height="40px" width="100%" />)}
+          analyticsLoaderKeys.map((analyticsLoaderKey) => (
+            <Loader.Item key={analyticsLoaderKey} height="40px" width="100%" />
+          ))}
         {!isProjectAnalyticsCountLoading &&
           projectAnalyticsCount?.map((project) => <ActiveProjectItem key={project.id} project={project} />)}
       </div>

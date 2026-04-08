@@ -8,10 +8,12 @@
 import { Loader } from "@plane/ui";
 
 export function StickiesLoader() {
+  const stickyLoaderKeys = Array.from({ length: 4 }, (_, stickyLoaderIndex) => `sticky-loader-${stickyLoaderIndex}`);
+
   return (
     <div className="grid grid-cols-4 gap-4 overflow-scroll pb-2">
-      {Array.from({ length: 4 }).map((_, index) => (
-        <Loader key={index} className="space-y-5 rounded-sm border border-subtle p-3">
+      {stickyLoaderKeys.map((stickyLoaderKey) => (
+        <Loader key={stickyLoaderKey} className="space-y-5 rounded-sm border border-subtle p-3">
           <div className="space-y-2">
             <Loader.Item height="20px" />
             <Loader.Item height="15px" width="75%" />

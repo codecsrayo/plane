@@ -55,10 +55,15 @@ export function KanbanColumnLoader({
 KanbanIssueBlockLoader.displayName = "KanbanIssueBlockLoader";
 
 export function KanbanLayoutLoader({ cardsInEachColumn = [2, 3, 2, 4, 3] }: { cardsInEachColumn?: number[] }) {
+  const kanbanColumns = cardsInEachColumn.map((cardsInColumn, columnIndex) => ({
+    cardsInColumn,
+    key: `kanban-column-${cardsInColumn}-${columnIndex}`,
+  }));
+
   return (
     <ContentWrapper className="flex-row gap-5 overflow-x-auto py-1.5">
-      {cardsInEachColumn.map((cardsInColumn, columnIndex) => (
-        <KanbanColumnLoader key={columnIndex} cardsInColumn={cardsInColumn} />
+      {kanbanColumns.map((column) => (
+        <KanbanColumnLoader key={column.key} cardsInColumn={column.cardsInColumn} />
       ))}
     </ContentWrapper>
   );
