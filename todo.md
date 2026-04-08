@@ -29,7 +29,7 @@ Rama activa: `feature/integrations-panel-fix-17593507967815292912`
 | Dead code: GitHub installation access token sin JWT (siempre fallaba) | `7f6abcf38` |
 | `next/navigation` usado en 6 archivos de integración (runtime crash en react-router) | `29adc41ab` |
 | Import duplicado de `react-router` en `single-integration-card.tsx` | `29adc41ab` |
-| `GithubAppCallbackEndpoint` hacía `redirect()` en vez de `postMessage` — popup nunca cerraba y el padre no recibía la señal | ✅ corregido |
+| `Combobox Fragment prop passthrough` — `Combobox.Button as={Fragment}` en 5 archivos causaba crash en flujo de creación de proyecto | ✅ corregido (commit `3cb7681f7`) |
 | `workspace=workspace` redundante en `get_or_create` de `GithubRepository` — filtro incorrecto causaba duplicados | ✅ corregido |
 | `github_client_id` no expuesto en la API de instancia — UI de conexión personal sin datos | ✅ corregido |
 | UI trigger para OAuth personal de GitHub presente en detail page con `user-callback` popup | ✅ corregido |
