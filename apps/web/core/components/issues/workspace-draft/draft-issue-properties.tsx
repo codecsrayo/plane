@@ -31,6 +31,11 @@ import { usePlatformOS } from "@/hooks/use-platform-os";
 import { IssuePropertyLabels } from "../issue-layouts/properties";
 // local components
 
+function stopEventPropagation(event: { stopPropagation: () => void; preventDefault: () => void }) {
+  event.stopPropagation();
+  event.preventDefault();
+}
+
 export interface IIssueProperties {
   issue: TWorkspaceDraftIssue;
   updateIssue:
@@ -130,16 +135,11 @@ export const DraftIssueProperties = observer(function DraftIssueProperties(props
   const maxDate = getDate(issue.target_date);
   maxDate?.setDate(maxDate.getDate());
 
-  const handleEventPropagation = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    e.preventDefault();
-  };
-
   return (
     <div className={className}>
       {/* basic properties */}
       {/* state */}
-      <div className="h-5" onClick={handleEventPropagation}>
+      <div role="presentation" className="h-5" onMouseDown={stopEventPropagation}>
         <StateDropdown
           buttonContainerClassName="truncate max-w-40"
           value={issue.state_id}
@@ -152,7 +152,7 @@ export const DraftIssueProperties = observer(function DraftIssueProperties(props
       </div>
 
       {/* priority */}
-      <div className="h-5" onClick={handleEventPropagation}>
+      <div role="presentation" className="h-5" onMouseDown={stopEventPropagation}>
         <PriorityDropdown
           value={issue?.priority}
           onChange={handlePriority}
@@ -175,7 +175,7 @@ export const DraftIssueProperties = observer(function DraftIssueProperties(props
       />
 
       {/* start date */}
-      <div className="h-5" onClick={handleEventPropagation}>
+      <div role="presentation" className="h-5" onMouseDown={stopEventPropagation}>
         <DateDropdown
           value={issue.start_date ?? null}
           onChange={handleStartDate}
@@ -190,7 +190,7 @@ export const DraftIssueProperties = observer(function DraftIssueProperties(props
       </div>
 
       {/* target/due date */}
-      <div className="h-5" onClick={handleEventPropagation}>
+      <div role="presentation" className="h-5" onMouseDown={stopEventPropagation}>
         <DateDropdown
           value={issue?.target_date ?? null}
           onChange={handleTargetDate}
@@ -209,7 +209,7 @@ export const DraftIssueProperties = observer(function DraftIssueProperties(props
       </div>
 
       {/* assignee */}
-      <div className="h-5" onClick={handleEventPropagation}>
+      <div role="presentation" className="h-5" onMouseDown={stopEventPropagation}>
         <MemberDropdown
           projectId={issue?.project_id}
           value={issue?.assignee_ids}
@@ -227,7 +227,7 @@ export const DraftIssueProperties = observer(function DraftIssueProperties(props
 
       {/* modules */}
       {projectDetails?.module_view && (
-        <div className="h-5" onClick={handleEventPropagation}>
+        <div role="presentation" className="h-5" onMouseDown={stopEventPropagation}>
           <ModuleDropdown
             buttonContainerClassName="truncate max-w-40"
             projectId={issue?.project_id}
@@ -244,7 +244,7 @@ export const DraftIssueProperties = observer(function DraftIssueProperties(props
 
       {/* cycles */}
       {projectDetails?.cycle_view && (
-        <div className="h-5" onClick={handleEventPropagation}>
+        <div role="presentation" className="h-5" onMouseDown={stopEventPropagation}>
           <CycleDropdown
             buttonContainerClassName="truncate max-w-40"
             projectId={issue?.project_id}
@@ -259,7 +259,7 @@ export const DraftIssueProperties = observer(function DraftIssueProperties(props
 
       {/* estimates */}
       {issue.project_id && areEstimateEnabledByProjectId(issue.project_id?.toString()) && (
-        <div className="h-5" onClick={handleEventPropagation}>
+        <div role="presentation" className="h-5" onMouseDown={stopEventPropagation}>
           <EstimateDropdown
             value={issue.estimate_point ?? undefined}
             onChange={handleEstimate}
