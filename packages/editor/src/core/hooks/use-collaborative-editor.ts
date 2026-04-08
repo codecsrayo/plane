@@ -164,7 +164,7 @@ export const useCollaborativeEditor = (props: UseCollaborativeEditorArgs) => {
 
   const titleExtensions = useMemo(
     () => [
-      Collaboration.configure({
+      CollaborationExtension.configure({
         document: provider.document,
         field: "title",
       }),

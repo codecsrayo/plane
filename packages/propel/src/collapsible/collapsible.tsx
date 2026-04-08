@@ -92,7 +92,7 @@ function Trigger({ children, className, buttonRef }: TriggerProps) {
 function Content({ children, className }: ContentProps) {
   return (
     <BaseCollapsible.Panel
-      className={clsx(
+      className={clsxFn(
         "flex h-[var(--collapsible-panel-height)] flex-col overflow-hidden text-13 transition-all ease-out data-[ending-style]:h-0 data-[starting-style]:h-0",
         className
       )}

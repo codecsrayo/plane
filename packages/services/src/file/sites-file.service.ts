@@ -20,7 +20,6 @@ import { generateFileUploadPayload, getAssetIdFromUrl, getFileMetaDataForUpload 
  * @remarks This service is only available for plane sites
  */
 export class SitesFileService extends FileService {
-  private cancelSource: any;
   fileUploadService: FileUploadService;
 
   /**
@@ -31,7 +30,7 @@ export class SitesFileService extends FileService {
     super(BASE_URL || API_BASE_URL);
     this.cancelUpload = this.cancelUpload.bind(this);
     // services
-    this.fileUploadService = new FileUploadService();
+    this.fileUploadService = new FileUploadService(BASE_URL);
   }
 
   /**
@@ -42,7 +41,7 @@ export class SitesFileService extends FileService {
    * @throws {Error} If the request fails
    */
   private async updateAssetUploadStatus(anchor: string, assetId: string): Promise<void> {
-    return this.patch(`/api/public/assets/v2/anchor/${anchor}/${assetId}/`)
+    return this.patch(`/api/public/assets/v2/anchor/${anchor}/${assetId}/`, {})
       .then((response) => response?.data)
       .catch((error) => {
         throw error?.response?.data;
@@ -118,6 +117,6 @@ export class SitesFileService extends FileService {
    * Cancels the upload
    */
   cancelUpload() {
-    this.cancelSource.cancelUpload();
+    this.fileUploadService.cancelUpload();
   }
 }

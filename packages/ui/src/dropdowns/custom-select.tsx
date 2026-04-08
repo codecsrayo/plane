@@ -67,82 +67,87 @@ function CustomSelect(props: ICustomSelectProps) {
 
   return (
     <DropdownContext.Provider value={closeDropdown}>
-      <Combobox
+      <div
         ref={dropdownRef}
-        tabIndex={tabIndex}
-        value={value}
-        onChange={(val) => {
-          onChange?.(val);
-          closeDropdown();
-        }}
         className={cn("relative flex-shrink-0 text-left", className)}
+        role="presentation"
         onKeyDown={handleKeyDown}
-        disabled={disabled}
       >
-        <>
-          {customButton ? (
-            <Combobox.Button as={React.Fragment}>
-              <button
-                ref={setReferenceElement}
-                type="button"
-                className={`flex items-center justify-between gap-1 rounded text-11 ${
-                  disabled ? "cursor-not-allowed text-secondary" : "cursor-pointer hover:bg-layer-transparent-hover"
-                } ${customButtonClassName}`}
-                onClick={toggleDropdown}
-              >
-                {customButton}
-              </button>
-            </Combobox.Button>
-          ) : (
-            <Combobox.Button as={React.Fragment}>
-              <button
-                ref={setReferenceElement}
-                type="button"
-                className={cn(
-                  "flex w-full items-center justify-between gap-1 rounded border border-strong",
-                  {
-                    "px-3 py-2 text-13": input,
-                    "px-2 py-1 text-11": !input,
-                    "cursor-not-allowed text-secondary": disabled,
-                    "cursor-pointer hover:bg-layer-transparent-hover": !disabled,
-                  },
-                  buttonClassName
-                )}
-                onClick={toggleDropdown}
-              >
-                {label}
-                {!noChevron && !disabled && <ChevronDownIcon className="h-3 w-3" aria-hidden="true" />}
-              </button>
-            </Combobox.Button>
-          )}
-        </>
-        {isOpen &&
-          createPortal(
-            <Combobox.Options data-prevent-outside-click>
-              <div
-                className={cn(
-                  "z-30 my-1 min-w-48 overflow-y-scroll rounded-md border-[0.5px] border-subtle-1 bg-surface-1 px-2 py-2.5 text-11 whitespace-nowrap focus:outline-none",
-                  optionsClassName
-                )}
-                ref={setPopperElement}
-                style={styles.popper}
-                {...attributes.popper}
-              >
-                <div
-                  className={cn("space-y-1 overflow-y-scroll", {
-                    "max-h-60": maxHeight === "lg",
-                    "max-h-48": maxHeight === "md",
-                    "max-h-36": maxHeight === "rg",
-                    "max-h-28": maxHeight === "sm",
-                  })}
+        <Combobox
+          value={value}
+          onChange={(val) => {
+            onChange?.(val);
+            closeDropdown();
+          }}
+          disabled={disabled}
+        >
+          <>
+            {customButton ? (
+              <Combobox.Button as={React.Fragment}>
+                <button
+                  ref={setReferenceElement}
+                  type="button"
+                  tabIndex={tabIndex}
+                  className={`flex items-center justify-between gap-1 rounded text-11 ${
+                    disabled ? "cursor-not-allowed text-secondary" : "cursor-pointer hover:bg-layer-transparent-hover"
+                  } ${customButtonClassName}`}
+                  onClick={toggleDropdown}
                 >
-                  {children}
+                  {customButton}
+                </button>
+              </Combobox.Button>
+            ) : (
+              <Combobox.Button as={React.Fragment}>
+                <button
+                  ref={setReferenceElement}
+                  type="button"
+                  tabIndex={tabIndex}
+                  className={cn(
+                    "flex w-full items-center justify-between gap-1 rounded border border-strong",
+                    {
+                      "px-3 py-2 text-13": input,
+                      "px-2 py-1 text-11": !input,
+                      "cursor-not-allowed text-secondary": disabled,
+                      "cursor-pointer hover:bg-layer-transparent-hover": !disabled,
+                    },
+                    buttonClassName
+                  )}
+                  onClick={toggleDropdown}
+                >
+                  {label}
+                  {!noChevron && !disabled && <ChevronDownIcon className="h-3 w-3" aria-hidden="true" />}
+                </button>
+              </Combobox.Button>
+            )}
+          </>
+          {isOpen &&
+            createPortal(
+              <Combobox.Options data-prevent-outside-click>
+                <div
+                  className={cn(
+                    "z-30 my-1 min-w-48 overflow-y-scroll rounded-md border-[0.5px] border-subtle-1 bg-surface-1 px-2 py-2.5 text-11 whitespace-nowrap focus:outline-none",
+                    optionsClassName
+                  )}
+                  ref={setPopperElement}
+                  style={styles.popper}
+                  {...attributes.popper}
+                >
+                  <div
+                    className={cn("space-y-1 overflow-y-scroll", {
+                      "max-h-60": maxHeight === "lg",
+                      "max-h-48": maxHeight === "md",
+                      "max-h-36": maxHeight === "rg",
+                      "max-h-28": maxHeight === "sm",
+                    })}
+                  >
+                    {children}
+                  </div>
                 </div>
-              </div>
-            </Combobox.Options>,
-            document.body
-          )}
-      </Combobox>
+              </Combobox.Options>,
+              document.body
+            )}
+        </Combobox>
+      </div>
     </DropdownContext.Provider>
   );
 }

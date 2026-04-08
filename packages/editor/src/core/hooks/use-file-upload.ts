@@ -127,7 +127,7 @@ export const useDropZone = (args: TDropzoneArgs) => {
   }, []);
 
   const onDrop = useCallback(
-    async (e: DragEvent<HTMLDivElement>) => {
+    async (e: DragEvent<HTMLElement>) => {
       e.preventDefault();
       setDraggedInside(false);
       const filesList = e.dataTransfer.files;

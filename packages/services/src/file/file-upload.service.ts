@@ -4,7 +4,8 @@
  * See the LICENSE file for details.
  */
 
-import { CancelToken, isCancel } from "axios";
+import { API_BASE_URL } from "@plane/constants";
+import { CanceledError, isCancel } from "axios";
 // api service
 import { APIService } from "../api.service";
 
@@ -14,7 +15,11 @@ import { APIService } from "../api.service";
  * @extends {APIService}
  */
 export class FileUploadService extends APIService {
-  private cancelSource: any;
+  private abortController: AbortController | null = null;
+
+  constructor(BASE_URL?: string) {
+    super(BASE_URL || API_BASE_URL);
+  }
 
   /**
    * Uploads a file to the specified signed URL
@@ -24,17 +29,17 @@ export class FileUploadService extends APIService {
    * @throws {Error} If the request fails
    */
   async uploadFile(url: string, data: FormData): Promise<void> {
-    this.cancelSource = CancelToken.source();
+    this.abortController = new AbortController();
     return this.post(url, data, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
-      cancelToken: this.cancelSource.token,
+      signal: this.abortController.signal,
       withCredentials: false,
     })
       .then((response) => response?.data)
       .catch((error) => {
-        if (isCancel(error)) {
+        if (isCancel(error) || error instanceof CanceledError) {
           console.log(error.message);
         } else {
           throw error?.response?.data;
@@ -46,6 +51,6 @@ export class FileUploadService extends APIService {
    * Cancels the upload
    */
   cancelUpload() {
-    this.cancelSource.cancel("Upload canceled");
+    this.abortController?.abort("Upload canceled");
   }
 }

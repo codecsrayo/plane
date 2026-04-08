@@ -153,11 +153,14 @@ export const Emoji = Node.create<EmojiOptions, EmojiStorage>({
     const { emojis: emojiOptions } = this.options;
     const supportMap: Record<number, boolean> = removeDuplicates(emojiOptions.map((item) => item.version))
       .filter((version) => typeof version === "number")
-      .reduce((versions, version) => {
-        const emoji = emojiOptions.find((item) => item.version === version && item.emoji);
-        versions[version] = emoji ? isEmojiSupported(emoji.emoji as string) : false;
-        return versions;
-      }, {});
+      .reduce(
+        (versions, version) => {
+          const emoji = emojiOptions.find((item) => item.version === version && item.emoji);
+          versions[version] = emoji ? isEmojiSupported(emoji.emoji as string) : false;
+          return versions;
+        },
+        {} as Record<number, boolean>
+      );
 
     return {
       emojis: this.options.emojis,
