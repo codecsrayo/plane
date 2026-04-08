@@ -21,6 +21,10 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+const handleAddReactionClick = () => {
+  alert("Add reaction clicked");
+};
+
 export const Single: Story = {
   args: {
     emoji: "👍",
@@ -136,11 +140,7 @@ export const AddButton: Story = {
     count: 0,
   },
   render() {
-    const handleAdd = () => {
-      alert("Add reaction clicked");
-    };
-
-    return <EmojiReactionButton onAddReaction={handleAdd} />;
+    return <EmojiReactionButton onAddReaction={handleAddReactionClick} />;
   },
 };
 
@@ -172,15 +172,11 @@ export const ReactionGroup: Story = {
       );
     };
 
-    const handleAddReaction = () => {
-      alert("Add reaction clicked");
-    };
-
     return (
       <EmojiReactionGroup
         reactions={reactions}
         onReactionClick={handleReactionClick}
-        onAddReaction={handleAddReaction}
+        onAddReaction={handleAddReactionClick}
       />
     );
   },

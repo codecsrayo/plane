@@ -23,14 +23,17 @@ export function Calendar({ className, showOutsideDays = true, ...props }: Calend
       className={cn("p-3", className)}
       weekStartsOn={props.weekStartsOn}
       components={{
-        Chevron: ({ className, ...props }) => (
+        Chevron: ({ className: chevronClassName, ...chevronProps }) => (
           <ChevronLeftIcon
             className={cn(
               "size-4",
-              { "rotate-180": props.orientation === "right", "-rotate-90": props.orientation === "down" },
-              className
+              {
+                "rotate-180": chevronProps.orientation === "right",
+                "-rotate-90": chevronProps.orientation === "down",
+              },
+              chevronClassName
             )}
-            {...props}
+            {...chevronProps}
           />
         ),
       }}

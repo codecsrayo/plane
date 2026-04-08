@@ -121,9 +121,9 @@ export const AreaChart = React.memo(function AreaChart<K extends string, T exten
           <CartesianGrid stroke="var(--border-color-subtle)" vertical={false} />
           <XAxis
             dataKey={xAxis.key}
-            tick={(props) => {
+            tick={(tickProps) => {
               const TickComponent = customTicks?.x || CustomXAxisTick;
-              return <TickComponent {...props} />;
+              return <TickComponent {...tickProps} />;
             }}
             tickLine={false}
             axisLine={false}
@@ -150,9 +150,9 @@ export const AreaChart = React.memo(function AreaChart<K extends string, T exten
                 className: AXIS_LABEL_CLASSNAME,
               }
             }
-            tick={(props) => {
+            tick={(tickProps) => {
               const TickComponent = customTicks?.y || CustomYAxisTick;
-              return <TickComponent {...props} />;
+              return <TickComponent {...tickProps} />;
             }}
             tickCount={tickCount.y}
             allowDecimals={!!yAxis.allowDecimals}

@@ -44,7 +44,7 @@ function RadarChart<T extends string, K extends string>(props: TRadarChartProps<
       <ResponsiveContainer width="100%" height="100%">
         <CoreRadarChart cx="50%" cy="50%" outerRadius="80%" data={data} margin={margin}>
           <PolarGrid stroke="var(--border-color-subtle)" />
-          <PolarAngleAxis dataKey={angleAxis.key} tick={(props) => <CustomRadarAxisTick {...props} />} />
+          <PolarAngleAxis dataKey={angleAxis.key} tick={(tickProps) => <CustomRadarAxisTick {...tickProps} />} />
           {showTooltip && (
             <Tooltip
               cursor={{

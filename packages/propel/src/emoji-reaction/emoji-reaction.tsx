@@ -135,9 +135,9 @@ const EmojiReactionGroup = React.forwardRef(function EmojiReactionGroup(
 ) {
   return (
     <div ref={ref} className={cn("flex flex-wrap items-center gap-2", className)} {...props}>
-      {reactions.map((reaction, index) => (
+      {reactions.map((reaction) => (
         <EmojiReaction
-          key={`${reaction.emoji}-${index}`}
+          key={reaction.emoji}
           emoji={reaction.emoji}
           count={reaction.count}
           reacted={reaction.reacted}

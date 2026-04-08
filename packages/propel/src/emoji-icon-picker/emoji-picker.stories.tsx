@@ -220,8 +220,11 @@ export const CloseOnSelectDisabled: Story = {
           <div className="rounded-sm border border-subtle bg-layer-1 p-4 text-13">
             <div className="mb-2 font-medium">Selected ({selectedValues.length}):</div>
             <div className="flex flex-wrap gap-2">
-              {selectedValues.map((val, idx) => (
-                <span key={idx} className="text-16">
+              {selectedValues.map((val) => (
+                <span
+                  key={`${val.type}-${typeof val.value === "string" ? val.value : val.value.name}`}
+                  className="text-16"
+                >
                   {val.type === "emoji" ? val.value : "🎨"}
                 </span>
               ))}
@@ -408,8 +411,11 @@ export const InFormContext: Story = {
       <div className="max-w-md p-4">
         <form onSubmit={handleSubmit} className="space-y-4 rounded-lg border border-subtle p-6">
           <div>
-            <label className="mb-2 block text-13 font-medium">Project Title</label>
+            <label htmlFor="project-title" className="mb-2 block text-13 font-medium">
+              Project Title
+            </label>
             <input
+              id="project-title"
               type="text"
               value={formData.title}
               onChange={(e) => setFormData((prev) => ({ ...prev, title: e.target.value }))}
@@ -418,7 +424,7 @@ export const InFormContext: Story = {
             />
           </div>
           <div>
-            <label className="mb-2 block text-13 font-medium">Project Icon</label>
+            <div className="mb-2 block text-13 font-medium">Project Icon</div>
             <EmojiPicker
               isOpen={isOpen}
               handleToggle={setIsOpen}

@@ -211,7 +211,11 @@ export const PromiseToast: Story = {
     const handlePromise = () => {
       const promise = new Promise<{ name?: string; error?: string }>((resolve, reject) => {
         setTimeout(() => {
-          Math.random() > 0.5 ? resolve({ name: "Success data" }) : reject({ error: "Failed" });
+          if (Math.random() > 0.5) {
+            resolve({ name: "Success data" });
+            return;
+          }
+          reject({ error: "Failed" });
         }, 2000);
       });
 

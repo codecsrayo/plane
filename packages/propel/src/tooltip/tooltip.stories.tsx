@@ -288,7 +288,10 @@ export const InFormField: Story = {
   render() {
     return (
       <div className="w-80">
-        <label className="text-gray-700 mb-1 flex items-center gap-2 text-13 font-medium">
+        <label
+          htmlFor="tooltip-email-address"
+          className="text-gray-700 mb-1 flex items-center gap-2 text-13 font-medium"
+        >
           Email Address
           <Tooltip
             tooltipHeading="Email Requirements"
@@ -299,6 +302,7 @@ export const InFormField: Story = {
           </Tooltip>
         </label>
         <input
+          id="tooltip-email-address"
           type="email"
           className="border-gray-300 w-full rounded-sm border px-3 py-2 text-13"
           placeholder="you@example.com"

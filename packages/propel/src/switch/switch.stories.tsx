@@ -39,7 +39,7 @@ export const WithLabel: Story = {
     return (
       <div className="flex items-center gap-2">
         <Switch {...args} value={value} onChange={setValue} label="Enable notifications" />
-        <label className="text-13">Enable notifications</label>
+        <span className="text-13">Enable notifications</span>
       </div>
     );
   },

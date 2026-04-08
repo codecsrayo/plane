@@ -49,8 +49,8 @@ export const List: Story = {
   render() {
     return (
       <Skeleton className="flex w-96 flex-col gap-3">
-        {[...Array(5)].map((_, i) => (
-          <div key={i} className="flex gap-3">
+        {Array.from({ length: 5 }, (_, index) => index + 1).map((item) => (
+          <div key={item} className="flex gap-3">
             <Skeleton.Item height="40px" width="40px" className="rounded-full" />
             <div className="flex flex-1 flex-col gap-2">
               <Skeleton.Item height="16px" width="70%" />
@@ -72,8 +72,8 @@ export const Table: Story = {
           <Skeleton.Item height="20px" width="200px" />
           <Skeleton.Item height="20px" width="120px" />
         </div>
-        {[...Array(5)].map((_, i) => (
-          <div key={i} className="flex gap-4">
+        {Array.from({ length: 5 }, (_, index) => index + 1).map((item) => (
+          <div key={item} className="flex gap-4">
             <Skeleton.Item height="40px" width="150px" />
             <Skeleton.Item height="40px" width="200px" />
             <Skeleton.Item height="40px" width="120px" />
@@ -119,8 +119,8 @@ export const AvatarGroup: Story = {
   render() {
     return (
       <Skeleton className="flex -space-x-2">
-        {[...Array(4)].map((_, i) => (
-          <Skeleton.Item key={i} height="40px" width="40px" className="rounded-full border-2 border-white" />
+        {Array.from({ length: 4 }, (_, index) => index + 1).map((item) => (
+          <Skeleton.Item key={item} height="40px" width="40px" className="rounded-full border-2 border-white" />
         ))}
       </Skeleton>
     );
