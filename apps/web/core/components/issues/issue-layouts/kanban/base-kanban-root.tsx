@@ -62,7 +62,7 @@ export const BaseKanBanRoot = observer(function BaseKanBanRoot(props: IBaseKanBa
     isEpic = false,
   } = props;
   // router
-  const { workspaceSlug, projectId } = useParams();
+  const { workspaceSlug, projectId: routeProjectId } = useParams();
   // store hooks
   const storeType = useIssueStoreType() as KanbanStoreType;
   const { allowPermissions } = useUserPermissions();
@@ -105,7 +105,7 @@ export const BaseKanBanRoot = observer(function BaseKanBanRoot(props: IBaseKanBa
         fetchNextIssues(groupId, subgroupId);
       }
     },
-    [fetchNextIssues]
+    [fetchNextIssues, issues]
   );
 
   const groupedIssueIds = issues?.groupedIssueIds;
@@ -130,9 +130,11 @@ export const BaseKanBanRoot = observer(function BaseKanBanRoot(props: IBaseKanBa
   const handleOnDrop = useGroupIssuesDragNDrop(storeType, orderBy, group_by, sub_group_by);
 
   const canEditProperties = useCallback(
-    (projectId: string | undefined) => {
+    (targetProjectId: string | undefined) => {
       const isEditingAllowedBasedOnProject =
-        canEditPropertiesBasedOnProject && projectId ? canEditPropertiesBasedOnProject(projectId) : isEditingAllowed;
+        canEditPropertiesBasedOnProject && targetProjectId
+          ? canEditPropertiesBasedOnProject(targetProjectId)
+          : isEditingAllowed;
 
       return enableInlineEditing && isEditingAllowedBasedOnProject;
     },
@@ -223,12 +225,12 @@ export const BaseKanBanRoot = observer(function BaseKanBanRoot(props: IBaseKanBa
         } else {
           collapsedGroups.push(value);
         }
-        updateFilters(projectId?.toString() ?? "", EIssueFilterType.KANBAN_FILTERS, {
+        updateFilters(routeProjectId?.toString() ?? "", EIssueFilterType.KANBAN_FILTERS, {
           [toggle]: collapsedGroups,
         });
       }
     },
-    [workspaceSlug, issuesFilter, projectId, updateFilters]
+    [workspaceSlug, issuesFilter, routeProjectId, updateFilters]
   );
 
   const collapsedGroups = issuesFilter?.issueFilters?.kanbanFilters || { group_by: [], sub_group_by: [] };
