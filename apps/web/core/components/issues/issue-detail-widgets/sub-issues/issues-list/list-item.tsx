@@ -88,7 +88,7 @@ export const SubIssuesListItem = observer(function SubIssuesListItem(props: Prop
   const displayProperties = subIssueFilters?.displayProperties ?? {};
 
   //
-  const handleIssuePeekOverview = (issue: TIssue) => handleRedirection(workspaceSlug, issue, isMobile);
+  const handleIssuePeekOverview = (targetIssue: TIssue) => handleRedirection(workspaceSlug, targetIssue, isMobile);
 
   if (!issue) return <></>;
 
@@ -125,7 +125,8 @@ export const SubIssuesListItem = observer(function SubIssuesListItem(props: Prop
                       <Loader width={14} strokeWidth={2} className="animate-spin" />
                     </div>
                   ) : (
-                    <div
+                    <button
+                      type="button"
                       className="flex h-full w-full cursor-pointer items-center justify-center text-placeholder hover:text-tertiary"
                       onClick={async (e) => {
                         e.preventDefault();
@@ -144,7 +145,7 @@ export const SubIssuesListItem = observer(function SubIssuesListItem(props: Prop
                         })}
                         strokeWidth={2.5}
                       />
-                    </div>
+                    </button>
                   )}
                 </>
               )}
@@ -170,7 +171,8 @@ export const SubIssuesListItem = observer(function SubIssuesListItem(props: Prop
               </Tooltip>
             </div>
 
-            <div
+            <button
+              type="button"
               className="flex-shrink-0 text-13"
               onClick={(e) => {
                 e.preventDefault();
@@ -186,7 +188,7 @@ export const SubIssuesListItem = observer(function SubIssuesListItem(props: Prop
                 displayProperties={displayProperties}
                 issue={issue}
               />
-            </div>
+            </button>
 
             <div className="flex-shrink-0 text-13">
               <CustomMenu placement="bottom-end" ellipsis>
