@@ -53,32 +53,30 @@ export const AuthFormRoot = observer(function AuthFormRoot(props: TAuthFormRoot)
   const handleEmailVerification = async (data: IEmailCheckData) => {
     setEmail(data.email);
     setErrorInfo(undefined);
-    await authService
-      .emailCheck(data)
-      .then(async (response) => {
-        if (response.existing) {
-          if (currentAuthMode === EAuthModes.SIGN_UP) setAuthMode(EAuthModes.SIGN_IN);
-          if (response.status === "MAGIC_CODE") {
-            setAuthStep(EAuthSteps.UNIQUE_CODE);
-            generateEmailUniqueCode(data.email);
-          } else if (response.status === "CREDENTIAL") {
-            setAuthStep(EAuthSteps.PASSWORD);
-          }
-        } else {
-          if (currentAuthMode === EAuthModes.SIGN_IN) setAuthMode(EAuthModes.SIGN_UP);
-          if (response.status === "MAGIC_CODE") {
-            setAuthStep(EAuthSteps.UNIQUE_CODE);
-            generateEmailUniqueCode(data.email);
-          } else if (response.status === "CREDENTIAL") {
-            setAuthStep(EAuthSteps.PASSWORD);
-          }
+    try {
+      const response = await authService.emailCheck(data);
+      if (response.existing) {
+        if (currentAuthMode === EAuthModes.SIGN_UP) setAuthMode(EAuthModes.SIGN_IN);
+        if (response.status === "MAGIC_CODE") {
+          setAuthStep(EAuthSteps.UNIQUE_CODE);
+          generateEmailUniqueCode(data.email);
+        } else if (response.status === "CREDENTIAL") {
+          setAuthStep(EAuthSteps.PASSWORD);
         }
-        setIsExistingEmail(response.existing);
-      })
-      .catch((error) => {
-        const errorhandler = authErrorHandler(error?.error_code?.toString(), data?.email || undefined);
-        if (errorhandler?.type) setErrorInfo(errorhandler);
-      });
+      } else {
+        if (currentAuthMode === EAuthModes.SIGN_IN) setAuthMode(EAuthModes.SIGN_UP);
+        if (response.status === "MAGIC_CODE") {
+          setAuthStep(EAuthSteps.UNIQUE_CODE);
+          generateEmailUniqueCode(data.email);
+        } else if (response.status === "CREDENTIAL") {
+          setAuthStep(EAuthSteps.PASSWORD);
+        }
+      }
+      setIsExistingEmail(response.existing);
+    } catch (error: any) {
+      const errorhandler = authErrorHandler(error?.error_code?.toString(), data?.email || undefined);
+      if (errorhandler?.type) setErrorInfo(errorhandler);
+    }
   };
 
   const handleEmailClear = () => {
@@ -90,9 +88,9 @@ export const AuthFormRoot = observer(function AuthFormRoot(props: TAuthFormRoot)
   };
 
   // generating the unique code
-  const generateEmailUniqueCode = async (email: string): Promise<{ code: string } | undefined> => {
+  const generateEmailUniqueCode = async (emailAddress: string): Promise<{ code: string } | undefined> => {
     if (!isSMTPConfigured) return;
-    const payload = { email: email };
+    const payload = { email: emailAddress };
     return await authService
       .generateUniqueCode(payload)
       .then(() => ({ code: "" }))
