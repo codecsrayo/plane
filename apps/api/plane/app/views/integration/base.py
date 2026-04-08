@@ -8,6 +8,7 @@ import requests
 
 # Third party imports
 from django.db import IntegrityError, transaction
+from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect
 from rest_framework import status
 from rest_framework.response import Response
@@ -251,20 +252,53 @@ class WorkspaceIntegrationViewSet(BaseViewSet):
         return Response(serializer.data, status=status.HTTP_201_CREATED if created else status.HTTP_200_OK)
 
 
+def _postmessage_html(success: bool, message_type: str, error: str = "") -> HttpResponse:
+    """
+    Return a minimal HTML page that sends a postMessage to the opener window
+    and closes itself. Used by OAuth/App callback endpoints so that the popup
+    flow works correctly regardless of which URL GitHub is configured to call.
+    """
+    payload = f'{{"type": "{message_type}", "success": {"true" if success else "false"}'
+    if error:
+        safe_error = error.replace('"', '\\"')
+        payload += f', "error": "{safe_error}"'
+    payload += "}"
+
+    html = f"""<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>Connecting…</title></head>
+<body>
+<script>
+(function () {{
+  try {{
+    window.opener && window.opener.postMessage({payload}, window.location.origin);
+  }} catch (e) {{}}
+  window.close();
+}})();
+</script>
+<p style="font-family:sans-serif;text-align:center;margin-top:4rem;">
+  {"Integration connected successfully. You may close this window." if success else "An error occurred. You may close this window."}
+</p>
+</body>
+</html>"""
+    return HttpResponse(html, content_type="text/html")
+
+
 class GithubAppCallbackEndpoint(BaseAPIView):
     """
     Direct GitHub App installation callback.
 
-    GitHub App Setup URL should point to:
+    Configure the GitHub App "Setup URL" to point here:
       https://{host}/api/github/callback/
 
-    GitHub redirects here with:
+    GitHub redirects the popup window here after installation:
       GET /api/github/callback/?installation_id=XXX&setup_action=install&state={workspaceSlug}
 
     This view:
     1. Reads installation_id and state (workspaceSlug) from query params
     2. Creates/updates the WorkspaceIntegration record
-    3. Redirects to /{workspaceSlug}/settings/integrations/github with a success param
+    3. Returns an HTML page that sends a postMessage to the opener and closes the popup.
+       (previously used redirect() which left the popup open and broke the parent flow)
     """
 
     authentication_classes = []  # GitHub redirects unauthenticated
@@ -276,14 +310,17 @@ class GithubAppCallbackEndpoint(BaseAPIView):
         workspace_slug = request.GET.get("state")
 
         if not installation_id or not workspace_slug:
-            return redirect(f"/{workspace_slug or ''}/settings/integrations?github_error=missing_params")
+            return _postmessage_html(
+                success=False,
+                message_type="github-integration",
+                error="Missing installation_id or workspace context.",
+            )
 
         try:
             workspace = Workspace.objects.get(slug=workspace_slug)
             integration = Integration.objects.get(provider="github")
 
-            # Find the first admin/owner of the workspace to act as the actor
-            # since this callback is unauthenticated.
+            # This callback is unauthenticated — find the first workspace admin to act as actor.
             from plane.db.models import WorkspaceMember
 
             admin_member = (
@@ -293,7 +330,6 @@ class GithubAppCallbackEndpoint(BaseAPIView):
             )
             actor = admin_member.member if admin_member else None
 
-            # Create or fetch an API token for the integration (required NOT NULL field)
             api_token = None
             if actor:
                 api_token, _ = APIToken.objects.get_or_create(
@@ -319,19 +355,22 @@ class GithubAppCallbackEndpoint(BaseAPIView):
                         defaults=update_defaults,
                     )
             except IntegrityError:
-                # Race condition: two simultaneous callback hits (GitHub sometimes
-                # redirects twice). The record was just created by the other request —
-                # simply update it in place so the latest installation_id wins.
+                # Race condition — record just created by a concurrent request; update in place.
                 WorkspaceIntegration.objects.filter(
                     workspace=workspace,
                     integration=integration,
                 ).update(**update_defaults)
+
         except Exception as e:
             import logging
             logging.getLogger(__name__).error("GithubAppCallbackEndpoint: %s", e, exc_info=True)
-            return redirect(f"/{workspace_slug}/settings/integrations?github_error=install_failed")
+            return _postmessage_html(
+                success=False,
+                message_type="github-integration",
+                error="Installation failed. Please try again.",
+            )
 
-        return redirect(f"/{workspace_slug}/settings/integrations/github?installed=true")
+        return _postmessage_html(success=True, message_type="github-integration")
 
 
 class UserGithubConnectionView(BaseAPIView):
@@ -511,15 +550,18 @@ class GithubRepoSyncViewSet(BaseViewSet):
         repo_owner = parts[0] if len(parts) == 2 else ""
         repo_name = parts[1] if len(parts) == 2 else repo_full_name
 
-        # Get or create the GithubRepository record
+        # Get or create the GithubRepository record.
+        # Note: workspace is intentionally omitted from the filter — ProjectBaseModel.save()
+        # derives it automatically from the project FK, so including it here would create
+        # a redundant (and potentially mis-matching) filter condition.
         repo, _ = GithubRepository.objects.get_or_create(
             repository_id=int(repo_id),
             project_id=project_id,
-            workspace=workspace,
             defaults={
                 "name": repo_name,
                 "owner": repo_owner,
                 "url": f"https://github.com/{repo_full_name}",
+                "workspace": workspace,
             },
         )
 

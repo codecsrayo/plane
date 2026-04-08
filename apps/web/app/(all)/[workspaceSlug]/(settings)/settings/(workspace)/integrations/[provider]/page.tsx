@@ -4,7 +4,7 @@
  * See the LICENSE file for details.
  */
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { observer } from "mobx-react";
 import { useNavigate } from "react-router";
 import useSWR, { mutate } from "swr";
@@ -31,6 +31,7 @@ import { WORKSPACE_INTEGRATIONS } from "@/constants/fetch-keys";
 // hooks
 import { useWorkspace } from "@/hooks/store/use-workspace";
 import { useUserPermissions } from "@/hooks/store/user";
+import { useInstance } from "@/hooks/store/use-instance";
 // services
 import { IntegrationService } from "@/services/integrations";
 // local imports
@@ -89,7 +90,96 @@ function ConnectedAccountDetails({ metadata }: { metadata: Record<string, unknow
 }
 
 // ---------------------------------------------------------------------------
-// Page component
+// Helper: GitHub personal account connection section
+// ---------------------------------------------------------------------------
+
+interface GithubPersonalConnectProps {
+  workspaceSlug: string;
+  githubClientId: string;
+}
+
+function GithubPersonalConnect({ workspaceSlug, githubClientId }: GithubPersonalConnectProps) {
+  const [personalConnection, setPersonalConnection] = useState<{
+    github_username: string;
+    github_avatar_url: string;
+  } | null>(null);
+  const [isConnecting, setIsConnecting] = useState(false);
+  const popup = useRef<Window | null>(null);
+
+  // Build personal OAuth URL (read:user scope, separate from GitHub App installation)
+  const oauthUrl = githubClientId
+    ? `https://github.com/login/oauth/authorize?client_id=${githubClientId}&scope=read:user,user:email&redirect_uri=${window.location.origin}/auth/github/user-callback`
+    : null;
+
+  // Listen for postMessage from the user-callback popup
+  const handleMessage = useCallback(
+    (event: MessageEvent) => {
+      if (event.origin !== window.location.origin) return;
+      if (event.data?.type !== "github-user-connection") return;
+      setIsConnecting(false);
+      if (event.data?.success) {
+        // Re-fetch connection status (simple approach: reload personal connection)
+        setPersonalConnection(event.data?.payload ?? null);
+      }
+    },
+    []
+  );
+
+  useEffect(() => {
+    window.addEventListener("message", handleMessage);
+    return () => window.removeEventListener("message", handleMessage);
+  }, [handleMessage]);
+
+  const openPersonalOAuth = () => {
+    if (!oauthUrl) return;
+    const width = 600, height = 600;
+    const left = window.innerWidth / 2 - width / 2;
+    const top = window.innerHeight / 2 - height / 2;
+    popup.current = window.open(oauthUrl, "", `width=${width},height=${height},top=${top},left=${left}`);
+    setIsConnecting(true);
+  };
+
+  if (!githubClientId) return null;
+
+  return (
+    <div className="rounded-lg border border-custom-border-200 bg-custom-background-100 p-5 space-y-4">
+      <div className="flex items-center justify-between">
+        <div>
+          <h2 className="text-sm font-semibold text-custom-text-100">Your GitHub Account</h2>
+          <p className="mt-1 text-xs text-custom-text-300">
+            Connect your personal GitHub account to enable user-level actions.
+          </p>
+        </div>
+        {personalConnection ? (
+          <div className="flex items-center gap-2">
+            {personalConnection.github_avatar_url && (
+              <img
+                src={personalConnection.github_avatar_url}
+                alt={personalConnection.github_username}
+                className="h-6 w-6 rounded-full"
+              />
+            )}
+            <span className="text-xs font-medium text-custom-text-100">
+              @{personalConnection.github_username}
+            </span>
+          </div>
+        ) : (
+          <Button
+            variant="neutral-primary"
+            size="sm"
+            onClick={openPersonalOAuth}
+            loading={isConnecting}
+            disabled={isConnecting}
+          >
+            {isConnecting ? "Connecting…" : "Connect account"}
+          </Button>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
 function IntegrationDetailPage({ params }: Route.ComponentProps) {
@@ -106,6 +196,7 @@ function IntegrationDetailPage({ params }: Route.ComponentProps) {
   // store hooks
   const { currentWorkspace } = useWorkspace();
   const { allowPermissions } = useUserPermissions();
+  const { config } = useInstance();
 
   // derived values
   const isAdmin = allowPermissions([EUserPermissions.ADMIN], EUserPermissionsLevel.WORKSPACE);
@@ -238,6 +329,16 @@ function IntegrationDetailPage({ params }: Route.ComponentProps) {
           </div>
           <ConnectedAccountDetails metadata={workspaceIntegration.metadata} />
         </div>
+
+        {/* ----------------------------------------------------------------
+            Personal GitHub account — GitHub only
+        ---------------------------------------------------------------- */}
+        {provider === "github" && config?.github_client_id && (
+          <GithubPersonalConnect
+            workspaceSlug={workspaceSlug as string}
+            githubClientId={config.github_client_id}
+          />
+        )}
 
         {/* ----------------------------------------------------------------
             Pull Request State Mapping — GitHub only

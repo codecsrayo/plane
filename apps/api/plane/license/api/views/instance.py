@@ -53,6 +53,7 @@ class InstanceEndpoint(BaseAPIView):
             IS_GOOGLE_ENABLED,
             IS_GITHUB_ENABLED,
             GITHUB_APP_NAME,
+            GITHUB_CLIENT_ID,
             IS_GITLAB_ENABLED,
             GITLAB_CLIENT_ID,
             GITLAB_HOST,
@@ -89,6 +90,10 @@ class InstanceEndpoint(BaseAPIView):
                 {
                     "key": "GITHUB_APP_NAME",
                     "default": os.environ.get("GITHUB_APP_NAME", ""),
+                },
+                {
+                    "key": "GITHUB_CLIENT_ID",
+                    "default": os.environ.get("GITHUB_CLIENT_ID", ""),
                 },
                 {
                     "key": "IS_GITLAB_ENABLED",
@@ -163,8 +168,9 @@ class InstanceEndpoint(BaseAPIView):
         data["is_email_password_enabled"] = ENABLE_EMAIL_PASSWORD == "1"
         data["is_slack_enabled"] = IS_SLACK_ENABLED == "1"
 
-        # Github app name
+        # Github app name and OAuth client
         data["github_app_name"] = str(GITHUB_APP_NAME)
+        data["github_client_id"] = GITHUB_CLIENT_ID
 
         # Gitlab config
         data["gitlab_client_id"] = GITLAB_CLIENT_ID

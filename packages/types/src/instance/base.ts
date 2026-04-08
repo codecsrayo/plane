@@ -54,6 +54,7 @@ export interface IInstanceConfig {
   is_magic_login_enabled: boolean;
   is_email_password_enabled: boolean;
   github_app_name: string | undefined;
+  github_client_id: string | undefined;
   gitlab_client_id: string | undefined;
   gitlab_host: string | undefined;
   slack_client_id: string | undefined;
