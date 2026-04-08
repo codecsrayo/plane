@@ -34,16 +34,8 @@ export const HelpMenuRoot = observer(function HelpMenuRoot() {
       <ProductUpdatesModal isOpen={isProductUpdatesModalOpen} handleClose={() => setProductUpdatesModalOpen(false)} />
 
       <CustomMenu
-        customButton={
-          <AppSidebarItem
-            variant="button"
-            item={{
-              icon: <HelpCircle className="size-5" />,
-              isActive: isNeedHelpOpen,
-            }}
-          />
-        }
-        // customButtonClassName="relative grid place-items-center rounded-md p-1.5 outline-none"
+        customButton={<AppSidebarItem.Icon icon={<HelpCircle className="size-5" />} highlight={isNeedHelpOpen} />}
+        customButtonClassName="group flex flex-col items-center justify-center gap-0.5 text-tertiary"
         menuButtonOnClick={() => !isNeedHelpOpen && setIsNeedHelpOpen(true)}
         onMenuClose={() => setIsNeedHelpOpen(false)}
         placement="bottom-end"
@@ -57,15 +49,11 @@ export const HelpMenuRoot = observer(function HelpMenuRoot() {
           </div>
         </CustomMenu.MenuItem>
         {isChatSupportEnabled && (
-          <CustomMenu.MenuItem>
-            <button
-              type="button"
-              onClick={openChatSupport}
-              className="flex w-full items-center gap-x-2 rounded-sm text-11 hover:bg-layer-1"
-            >
+          <CustomMenu.MenuItem onClick={openChatSupport}>
+            <div className="flex w-full items-center gap-x-2 rounded-sm text-11">
               <MessagesSquare className="h-3.5 w-3.5 text-secondary" />
               <span className="text-11">{t("message_support")}</span>
-            </button>
+            </div>
           </CustomMenu.MenuItem>
         )}
         <CustomMenu.MenuItem onClick={() => window.open("mailto:sales@plane.so", "_blank")}>
@@ -75,23 +63,15 @@ export const HelpMenuRoot = observer(function HelpMenuRoot() {
           </div>
         </CustomMenu.MenuItem>
         <div className="my-1 border-t border-subtle" />
-        <CustomMenu.MenuItem>
-          <button
-            type="button"
-            onClick={() => toggleShortcutsListModal(true)}
-            className="justify-sbg-layer-211 flex w-full items-center hover:bg-layer-1"
-          >
+        <CustomMenu.MenuItem onClick={() => toggleShortcutsListModal(true)}>
+          <div className="flex w-full items-center">
             <span className="text-11">{t("keyboard_shortcuts")}</span>
-          </button>
+          </div>
         </CustomMenu.MenuItem>
-        <CustomMenu.MenuItem>
-          <button
-            type="button"
-            onClick={() => setProductUpdatesModalOpen(true)}
-            className="justify-sbg-layer-211 flex w-full items-center hover:bg-layer-1"
-          >
+        <CustomMenu.MenuItem onClick={() => setProductUpdatesModalOpen(true)}>
+          <div className="flex w-full items-center">
             <span className="text-11">{t("whats_new")}</span>
-          </button>
+          </div>
         </CustomMenu.MenuItem>
         <CustomMenu.MenuItem onClick={() => window.open("https://forum.plane.so", "_blank", "noopener,noreferrer")}>
           <div className="flex items-center gap-x-2 rounded-sm text-11">

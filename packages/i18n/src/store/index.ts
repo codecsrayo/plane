@@ -4,7 +4,7 @@
  * See the LICENSE file for details.
  */
 
-import IntlMessageFormat from "intl-messageformat";
+import { IntlMessageFormat } from "intl-messageformat";
 import { get, merge } from "lodash-es";
 import { makeAutoObservable, runInAction } from "mobx";
 // constants
@@ -40,7 +40,9 @@ export class TranslationStore {
    * Constructor for the TranslationStore class
    */
   constructor() {
-    makeAutoObservable(this);
+    makeAutoObservable(this, { coreTranslations: false, messageCache: false, loadedLanguages: false } as any, {
+      autoBind: true,
+    });
     // Initialize with core translations immediately
     this.translations = this.coreTranslations;
     // Initialize language
@@ -162,7 +164,7 @@ export class TranslationStore {
       const merged = modules.reduce((acc: any, module: any) => merge(acc, module.default), {});
       return { default: merged };
     } catch (error) {
-      throw new Error(`Failed to import and merge files for ${language}: ${error}`);
+      throw new Error(`Failed to import and merge files for ${language}: ${error}`, { cause: error });
     }
   }
 

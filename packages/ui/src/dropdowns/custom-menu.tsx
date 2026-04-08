@@ -81,12 +81,12 @@ function CustomMenu(props: ICustomMenuDropdownProps) {
     menuButtonOnClick,
     onMenuClose,
     tabIndex,
-    closeOnSelect,
+    closeOnSelect: _closeOnSelect,
     openOnHover = false,
     useCaptureForOutsideClick = false,
   } = props;
 
-  const [referenceElement, setReferenceElement] = React.useState<HTMLButtonElement | null>(null);
+  const [referenceElement, setReferenceElement] = React.useState<HTMLElement | null>(null);
   const [popperElement, setPopperElement] = React.useState<HTMLDivElement | null>(null);
   const [isOpen, setIsOpen] = React.useState(false);
   // refs
@@ -107,6 +107,10 @@ function CustomMenu(props: ICustomMenuDropdownProps) {
       submenuClosersRef.current.delete(closeSubmenu);
     };
   }, []);
+  const menuContextValue = React.useMemo(
+    () => ({ closeAllSubmenus, registerSubmenu }),
+    [closeAllSubmenus, registerSubmenu]
+  );
 
   const openDropdown = () => {
     setIsOpen(true);
@@ -130,11 +134,8 @@ function CustomMenu(props: ICustomMenuDropdownProps) {
 
   const handleKeyDown = useDropdownKeyDown(openDropdown, closeDropdown, isOpen, selectActiveItem);
 
-  const handleOnClick = () => {
-    if (closeOnSelect) closeDropdown();
-  };
-
-  const handleMenuButtonClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const handleMenuButtonClick = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+    if (disabled) return;
     e.stopPropagation();
     e.preventDefault();
     if (isOpen) {
@@ -143,6 +144,14 @@ function CustomMenu(props: ICustomMenuDropdownProps) {
       openDropdown();
     }
     if (menuButtonOnClick) menuButtonOnClick();
+  };
+
+  const handleCustomButtonKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
+    if (disabled) return;
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      e.currentTarget.click();
+    }
   };
 
   const handleMouseEnter = () => {
@@ -213,7 +222,7 @@ function CustomMenu(props: ICustomMenuDropdownProps) {
         style={styles.popper}
         {...attributes.popper}
       >
-        <MenuContext.Provider value={{ closeAllSubmenus, registerSubmenu }}>{children}</MenuContext.Provider>
+        <MenuContext.Provider value={menuContextValue}>{children}</MenuContext.Provider>
       </div>
     </Menu.Items>
   );
@@ -229,11 +238,6 @@ function CustomMenu(props: ICustomMenuDropdownProps) {
       tabIndex={tabIndex}
       className={cn("relative w-min text-left", className)}
       onKeyDownCapture={handleKeyDown}
-      onClick={(e) => {
-        e.stopPropagation();
-        e.preventDefault();
-        handleOnClick();
-      }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       data-main-menu="true"
@@ -246,10 +250,11 @@ function CustomMenu(props: ICustomMenuDropdownProps) {
                 ref={setReferenceElement}
                 type="button"
                 onClick={handleMenuButtonClick}
+                onKeyDown={handleCustomButtonKeyDown}
                 className={customButtonClassName}
                 tabIndex={customButtonTabIndex}
-                disabled={disabled}
                 aria-label={ariaLabel}
+                disabled={disabled}
               >
                 {customButton}
               </button>
@@ -353,6 +358,7 @@ function SubMenu(props: ICustomSubMenuProps) {
   const closeSubmenu = React.useCallback(() => {
     setIsOpen(false);
   }, []);
+  const subMenuContextValue = React.useMemo(() => ({ closeSubmenu }), [closeSubmenu]);
 
   // Register this submenu with the main menu context
   React.useEffect(() => {
@@ -398,7 +404,8 @@ function SubMenu(props: ICustomSubMenuProps) {
       <span ref={setReferenceElement} className="w-full">
         <Menu.Item as="div" disabled={disabled}>
           {({ active }) => (
-            <div
+            <button
+              type="button"
               className={cn(
                 "flex w-full cursor-pointer items-center justify-between rounded-sm px-1 py-1.5 text-left text-secondary select-none",
                 {
@@ -408,10 +415,11 @@ function SubMenu(props: ICustomSubMenuProps) {
                 }
               )}
               onClick={handleClick}
+              disabled={disabled}
             >
               <span className="flex-1">{trigger}</span>
               <ChevronRightIcon className="h-3.5 w-3.5 flex-shrink-0" />
-            </div>
+            </button>
           )}
         </Menu.Item>
       </span>
@@ -444,7 +452,7 @@ function SubMenu(props: ICustomSubMenuProps) {
               }
             }}
           >
-            <SubMenuContext.Provider value={{ closeSubmenu }}>{children}</SubMenuContext.Provider>
+            <SubMenuContext.Provider value={subMenuContextValue}>{children}</SubMenuContext.Provider>
           </div>
         </Portal>
       )}
