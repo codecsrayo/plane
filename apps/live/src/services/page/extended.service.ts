@@ -12,7 +12,4 @@ import { PageCoreService } from "./core.service";
  * Implementation for this is found in the enterprise repository.
  */
 export abstract class PageService extends PageCoreService {
-  constructor() {
-    super();
-  }
 }

@@ -38,7 +38,7 @@ export const broadcastError = async (
     });
 
     await broadcastMessageToPage(hocuspocusServerInstance, pageId, errorEvent);
-  } catch (broadcastError) {
-    logger.error("Error broadcasting error message to frontend:", broadcastError);
+  } catch (error) {
+    logger.error("Error broadcasting error message to frontend:", error);
   }
 };
