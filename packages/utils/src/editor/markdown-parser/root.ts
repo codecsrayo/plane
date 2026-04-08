@@ -60,16 +60,16 @@ function addSpacesToCheckboxes() {
               // Extract text content from the div, unwrapping any paragraph tags
               const textContent: ElementContent[] = [];
               if (contentDiv.children) {
-                for (const child of contentDiv.children) {
-                  if (child.type === "element" && child.tagName === "p") {
+                for (const contentChild of contentDiv.children) {
+                  if (contentChild.type === "element" && contentChild.tagName === "p") {
                     // Unwrap paragraph - add its children directly
-                    const pElement = child;
+                    const pElement = contentChild;
                     if (pElement.children) {
                       textContent.push(...pElement.children);
                     }
                   } else {
                     // Keep other elements as-is
-                    textContent.push(child);
+                    textContent.push(contentChild);
                   }
                 }
               }

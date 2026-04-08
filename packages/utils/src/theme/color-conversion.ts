@@ -12,6 +12,11 @@
 import chroma from "chroma-js";
 import { validateAndAdjustOKLCH } from "./color-validation";
 
+const toHex = (value: number) => {
+  const hex = Math.round(Math.max(0, Math.min(255, value))).toString(16);
+  return hex.length === 1 ? `0${hex}` : hex;
+};
+
 /**
  * RGB color interface
  */
@@ -106,11 +111,6 @@ export function hexToRgb(hex: string): RGB {
  */
 export function rgbToHex(rgb: RGB): string {
   const { r, g, b } = rgb;
-  const toHex = (n: number) => {
-    const hex = Math.round(Math.max(0, Math.min(255, n))).toString(16);
-    return hex.length === 1 ? "0" + hex : hex;
-  };
-
   return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
 }
 

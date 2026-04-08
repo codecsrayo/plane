@@ -4,7 +4,9 @@
  * See the LICENSE file for details.
  */
 
-import "reflect-metadata";
+import * as reflectMetadata from "reflect-metadata";
+
+void reflectMetadata;
 
 /**
  * WebSocket method decorator

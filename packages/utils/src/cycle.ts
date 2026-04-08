@@ -21,7 +21,7 @@ import { satisfiesDateFilter } from "./filter";
 export const orderCycles = (cycles: ICycle[], sortByManual: boolean): ICycle[] => {
   if (cycles.length === 0) return [];
 
-  const acceptedStatuses = ["current", "upcoming", "draft"];
+  const acceptedStatuses = new Set(["current", "upcoming", "draft"]);
   const STATUS_ORDER: {
     [key: string]: number;
   } = {
@@ -30,7 +30,7 @@ export const orderCycles = (cycles: ICycle[], sortByManual: boolean): ICycle[] =
     draft: 3,
   };
 
-  let filteredCycles = cycles.filter((c) => acceptedStatuses.includes(c.status?.toLowerCase() ?? ""));
+  let filteredCycles = cycles.filter((c) => acceptedStatuses.has(c.status?.toLowerCase() ?? ""));
   if (sortByManual) filteredCycles = sortBy(filteredCycles, [(c) => c.sort_order]);
   else
     filteredCycles = sortBy(filteredCycles, [
@@ -76,7 +76,8 @@ export const shouldFilterCycle = (cycle: ICycle, filter: TCycleFilters): boolean
  * @param {boolean} isTypeIssue - Whether the type is an issue
  * @returns {number} Calculated scope
  */
-const scope = (p: any, isTypeIssue: boolean) => (isTypeIssue ? p.total_issues : p.total_estimate_points);
+const getScope = (progress: any, isTypeIssue: boolean) =>
+  isTypeIssue ? progress.total_issues : progress.total_estimate_points;
 
 /**
  * Calculates the ideal progress value
@@ -85,11 +86,11 @@ const scope = (p: any, isTypeIssue: boolean) => (isTypeIssue ? p.total_issues : 
  * @param {ICycle} cycle - Cycle data
  * @returns {number} Ideal progress value
  */
-const ideal = (date: string, scope: number, cycle: ICycle) =>
+const ideal = (date: string, totalScope: number, cycle: ICycle) =>
   Math.floor(
     ((findTotalDaysInRange(date, cycle.end_date) || 0) /
       (findTotalDaysInRange(cycle.start_date, cycle.end_date) || 0)) *
-      scope
+      totalScope
   );
 
 /**
@@ -109,11 +110,11 @@ const formatV1Data = (isTypeIssue: boolean, cycle: ICycle, isBurnDown: boolean, 
   const progress = [...Object.keys(data.completion_chart), ...extendedArray].map((p) => {
     const pending = data.completion_chart[p] || 0;
     const total = isTypeIssue ? cycle.total_issues : cycle.total_estimate_points;
-    const completed = scope(cycle, isTypeIssue) - pending;
+    const completed = getScope(cycle, isTypeIssue) - pending;
 
     return {
       date: p,
-      scope: p < today ? scope(cycle, isTypeIssue) : null,
+      scope: p < today ? getScope(cycle, isTypeIssue) : null,
       completed,
       backlog: isTypeIssue ? cycle.backlog_issues : cycle.backlog_estimate_points,
       started: p === today ? cycle[isTypeIssue ? "started_issues" : "started_estimate_points"] : undefined,
@@ -144,7 +145,7 @@ const formatV2Data = (isTypeIssue: boolean, cycle: ICycle, isBurnDown: boolean, 
   if (isEmpty(cycle.progress)) return extendedArray;
   today = format(startOfToday(), "yyyy-MM-dd");
   const todaysData = cycle?.progress[cycle?.progress.length - 1];
-  const scopeToday = scope(todaysData, isTypeIssue);
+  const scopeToday = getScope(todaysData, isTypeIssue);
   const idealToday = ideal(todaysData.date, scopeToday, cycle);
 
   let progress = [...orderBy(cycle?.progress, "date"), ...extendedArray].map((p) => {
@@ -156,7 +157,7 @@ const formatV2Data = (isTypeIssue: boolean, cycle: ICycle, isBurnDown: boolean, 
 
     return {
       date: dataDate,
-      scope: dataDate! < today ? scope(p, isTypeIssue) : dataDate! <= cycle.end_date! ? scopeToday : null,
+      scope: dataDate! < today ? getScope(p, isTypeIssue) : dataDate! <= cycle.end_date! ? scopeToday : null,
       completed,
       backlog: isTypeIssue ? p.backlog_issues : p.backlog_estimate_points,
       started: isTypeIssue ? p.started_issues : p.started_estimate_points,
@@ -165,7 +166,7 @@ const formatV2Data = (isTypeIssue: boolean, cycle: ICycle, isBurnDown: boolean, 
       pending: Math.abs(pending),
       ideal:
         dataDate! < today
-          ? ideal(dataDate, scope(p, isTypeIssue), cycle)
+          ? ideal(dataDate, getScope(p, isTypeIssue), cycle)
           : dataDate! < cycle.end_date!
             ? idealToday
             : null,

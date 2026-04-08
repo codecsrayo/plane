@@ -4,8 +4,10 @@
  * See the LICENSE file for details.
  */
 
-import "reflect-metadata";
+import * as reflectMetadata from "reflect-metadata";
 import type { RequestHandler } from "express";
+
+void reflectMetadata;
 
 // Define valid HTTP methods
 type RestMethod = "get" | "post" | "put" | "patch" | "delete";

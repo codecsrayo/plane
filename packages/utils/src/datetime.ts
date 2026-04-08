@@ -4,7 +4,16 @@
  * See the LICENSE file for details.
  */
 
-import { differenceInDays, format, formatDistanceToNow, isAfter, isEqual, isValid, parseISO } from "date-fns";
+import {
+  differenceInCalendarDays,
+  differenceInDays,
+  format,
+  formatDistanceToNow,
+  isAfter,
+  isEqual,
+  isValid,
+  parseISO,
+} from "date-fns";
 import { isNumber } from "lodash-es";
 
 // Format Date Helpers
@@ -284,7 +293,7 @@ export const getDate = (date: string | Date | undefined | null): Date | undefine
   try {
     if (!date || date === "") return;
 
-    if (typeof date !== "string" && !(date instanceof String)) return date;
+    if (typeof date !== "string") return date;
 
     const [yearString, monthString, dayString] = date.substring(0, 10).split("-");
     const year = parseInt(yearString);
@@ -391,22 +400,24 @@ export const getReadTimeFromWordsCount = (wordsCount: number): number => {
  */
 export const generateDateArray = (startDate: string | Date, endDate: string | Date) => {
   // Convert the start and end dates to Date objects if they aren't already
-  const start = new Date(startDate);
+  const currentDate = new Date(startDate);
   // start.setDate(start.getDate() + 1);
-  const end = new Date(endDate);
-  end.setDate(end.getDate() + 2);
+  const endBoundary = new Date(endDate);
+  endBoundary.setDate(endBoundary.getDate() + 2);
 
   // Create an empty array to store the dates
   const dateArray = [];
 
-  // Use a while loop to generate dates between the range
-  while (start <= end) {
+  const totalDays = differenceInCalendarDays(endBoundary, currentDate);
+
+  for (let dayOffset = 0; dayOffset <= totalDays; dayOffset++) {
+    const nextDate = new Date(currentDate);
+    nextDate.setDate(currentDate.getDate() + dayOffset);
+
     // Push the current date (converted to ISO string for consistency)
     dateArray.push({
-      date: new Date(start).toISOString().split("T")[0],
+      date: nextDate.toISOString().split("T")[0],
     });
-    // Increment the date by 1 day (86400000 milliseconds)
-    start.setDate(start.getDate() + 1);
   }
 
   return dateArray;

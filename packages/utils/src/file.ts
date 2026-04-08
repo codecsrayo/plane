@@ -44,7 +44,8 @@ export const getBase64Image = async (url: string): Promise<string> => {
 
   // Try to create a URL object to validate the URL
   try {
-    new URL(url);
+    const validatedUrl = new URL(url);
+    void validatedUrl;
   } catch {
     throw new Error("Invalid URL format");
   }
@@ -67,9 +68,9 @@ export const getBase64Image = async (url: string): Promise<string> => {
       }
     };
 
-    reader.onerror = () => {
+    reader.addEventListener("error", () => {
       reject(new Error("Failed to read the image file."));
-    };
+    });
 
     reader.readAsDataURL(blob);
   });
