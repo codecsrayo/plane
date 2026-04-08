@@ -64,7 +64,7 @@ function UserInvitationsPage() {
     }
   };
 
-  const submitInvitations = () => {
+  const submitInvitations = async () => {
     if (invitationsRespond.length === 0) {
       setToast({
         type: TOAST_TYPE.ERROR,
@@ -76,36 +76,24 @@ function UserInvitationsPage() {
 
     setIsJoiningWorkspaces(true);
 
-    workspaceService
-      .joinWorkspaces({ invitations: invitationsRespond })
-      .then(() => {
-        mutate(USER_WORKSPACES_LIST);
-        const firstInviteId = invitationsRespond[0];
-        const redirectWorkspace = invitations?.find((i) => i.id === firstInviteId)?.workspace;
-        updateUserProfile({ last_workspace_id: redirectWorkspace?.id })
-          .then(() => {
-            setIsJoiningWorkspaces(false);
-            fetchWorkspaces().then(() => {
-              router.push(`/${redirectWorkspace?.slug}`);
-            });
-          })
-          .catch(() => {
-            setToast({
-              type: TOAST_TYPE.ERROR,
-              title: t("error"),
-              message: t("something_went_wrong_please_try_again"),
-            });
-            setIsJoiningWorkspaces(false);
-          });
-      })
-      .catch((_err) => {
-        setToast({
-          type: TOAST_TYPE.ERROR,
-          title: t("error"),
-          message: t("something_went_wrong_please_try_again"),
-        });
-        setIsJoiningWorkspaces(false);
+    try {
+      await workspaceService.joinWorkspaces({ invitations: invitationsRespond });
+      mutate(USER_WORKSPACES_LIST);
+      const firstInviteId = invitationsRespond[0];
+      const redirectWorkspace = invitations?.find((i) => i.id === firstInviteId)?.workspace;
+
+      await updateUserProfile({ last_workspace_id: redirectWorkspace?.id });
+      await fetchWorkspaces();
+      router.push(`/${redirectWorkspace?.slug}`);
+    } catch {
+      setToast({
+        type: TOAST_TYPE.ERROR,
+        title: t("error"),
+        message: t("something_went_wrong_please_try_again"),
       });
+    } finally {
+      setIsJoiningWorkspaces(false);
+    }
   };
 
   return (
@@ -134,7 +122,8 @@ function UserInvitationsPage() {
                     const isSelected = invitationsRespond.includes(invitation.id);
 
                     return (
-                      <div
+                      <button
+                        type="button"
                         key={invitation.id}
                         className={`flex cursor-pointer items-center gap-2 rounded-sm border px-3.5 py-5 ${
                           isSelected ? "border-accent-strong" : "border-subtle hover:bg-layer-1"
@@ -155,7 +144,7 @@ function UserInvitationsPage() {
                         <span className={`flex-shrink-0 ${isSelected ? "text-accent-primary" : "text-secondary"}`}>
                           <CheckCircle2 className="h-5 w-5" />
                         </span>
-                      </div>
+                      </button>
                     );
                   })}
                 </div>
