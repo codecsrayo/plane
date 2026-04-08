@@ -27,8 +27,8 @@ type OAuthOptionsProps = {
 export function OAuthOptions(props: OAuthOptionsProps) {
   const { options, compact = false, showDivider = true, className = "", containerClassName = "" } = props;
 
-  // Filter enabled options
-  const enabledOptions = options.filter((option) => option.enabled !== false);
+  // Filter enabled options - only show explicitly enabled ones (not undefined)
+  const enabledOptions = options.filter((option) => option.enabled === true);
 
   if (enabledOptions.length === 0) return null;
 

@@ -43,7 +43,7 @@ export const useCoreOAuthConfig = (oauthActionText: string): TOAuthConfigs => {
       onClick: () => {
         window.location.assign(`${API_BASE_URL}/auth/google/${next_path ? `?next_path=${next_path}` : ``}`);
       },
-      enabled: config?.is_google_enabled,
+      enabled: config?.is_google_enabled ?? false,
     },
     {
       id: "github",
@@ -59,7 +59,7 @@ export const useCoreOAuthConfig = (oauthActionText: string): TOAuthConfigs => {
       onClick: () => {
         window.location.assign(`${API_BASE_URL}/auth/github/${next_path ? `?next_path=${next_path}` : ``}`);
       },
-      enabled: config?.is_github_enabled,
+      enabled: config?.is_github_enabled ?? false,
     },
     {
       id: "gitlab",
@@ -68,7 +68,7 @@ export const useCoreOAuthConfig = (oauthActionText: string): TOAuthConfigs => {
       onClick: () => {
         window.location.assign(`${API_BASE_URL}/auth/gitlab/${next_path ? `?next_path=${next_path}` : ``}`);
       },
-      enabled: config?.is_gitlab_enabled,
+      enabled: config?.is_gitlab_enabled ?? false,
     },
     {
       id: "gitea",
@@ -77,7 +77,7 @@ export const useCoreOAuthConfig = (oauthActionText: string): TOAuthConfigs => {
       onClick: () => {
         window.location.assign(`${API_BASE_URL}/auth/gitea/${next_path ? `?next_path=${next_path}` : ``}`);
       },
-      enabled: config?.is_gitea_enabled,
+      enabled: config?.is_gitea_enabled ?? false,
     },
   ];
 
