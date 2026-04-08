@@ -11,8 +11,6 @@ import { SearchIcon, CloseIcon } from "@plane/propel/icons";
 import type { TProjectDisplayFilters, TProjectFilters } from "@plane/types";
 // components
 import { FilterOption } from "@/components/issues/issue-layouts/filters";
-// hooks
-import { usePlatformOS } from "@/hooks/use-platform-os";
 // local imports
 import { FilterAccess } from "./access";
 import { FilterCreatedDate } from "./created-at";
@@ -31,8 +29,6 @@ export const ProjectFiltersSelection = observer(function ProjectFiltersSelection
   const { displayFilters, filters, handleFiltersUpdate, handleDisplayFiltersUpdate, memberIds } = props;
   // states
   const [filtersSearchQuery, setFiltersSearchQuery] = useState("");
-  // store
-  const { isMobile } = usePlatformOS();
 
   return (
     <div className="flex h-full w-full flex-col overflow-hidden">
@@ -45,7 +41,6 @@ export const ProjectFiltersSelection = observer(function ProjectFiltersSelection
             placeholder="Search"
             value={filtersSearchQuery}
             onChange={(e) => setFiltersSearchQuery(e.target.value)}
-            autoFocus={!isMobile}
           />
           {filtersSearchQuery !== "" && (
             <button type="button" className="grid place-items-center" onClick={() => setFiltersSearchQuery("")}>

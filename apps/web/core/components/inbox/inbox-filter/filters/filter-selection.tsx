@@ -10,7 +10,6 @@ import { SearchIcon, CloseIcon } from "@plane/propel/icons";
 // hooks
 import { useLabel } from "@/hooks/store/use-label";
 import { useMember } from "@/hooks/store/use-member";
-import { usePlatformOS } from "@/hooks/use-platform-os";
 // local imports
 import { FilterDate } from "./date";
 import { FilterLabels } from "./labels";
@@ -19,8 +18,6 @@ import { FilterPriority } from "./priority";
 import { FilterStatus } from "./status";
 
 export const InboxIssueFilterSelection = observer(function InboxIssueFilterSelection() {
-  // hooks
-  const { isMobile } = usePlatformOS();
   const {
     project: { projectMemberIds },
   } = useMember();
@@ -39,7 +36,6 @@ export const InboxIssueFilterSelection = observer(function InboxIssueFilterSelec
             placeholder="Search"
             value={filtersSearchQuery}
             onChange={(e) => setFiltersSearchQuery(e.target.value)}
-            autoFocus={!isMobile}
           />
           {filtersSearchQuery !== "" && (
             <button type="button" className="grid place-items-center" onClick={() => setFiltersSearchQuery("")}>

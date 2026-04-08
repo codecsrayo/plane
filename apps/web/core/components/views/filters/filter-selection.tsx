@@ -14,9 +14,6 @@ import { EViewAccess } from "@plane/types";
 import { FilterCreatedDate } from "@/components/common/filters/created-at";
 import { FilterCreatedBy } from "@/components/common/filters/created-by";
 import { FilterOption } from "@/components/issues/issue-layouts/filters";
-// constants
-// hooks
-import { usePlatformOS } from "@/hooks/use-platform-os";
 // plane web components
 import { FilterByAccess } from "@/plane-web/components/views/filters/access-filter";
 
@@ -30,8 +27,6 @@ export const ViewFiltersSelection = observer(function ViewFiltersSelection(props
   const { filters, handleFiltersUpdate, memberIds } = props;
   // states
   const [filtersSearchQuery, setFiltersSearchQuery] = useState("");
-  // store
-  const { isMobile } = usePlatformOS();
 
   // handles filter update
   const handleFilters = (key: keyof TViewFilterProps, value: boolean | string | EViewAccess | string[]) => {
@@ -68,7 +63,6 @@ export const ViewFiltersSelection = observer(function ViewFiltersSelection(props
             placeholder="Search"
             value={filtersSearchQuery}
             onChange={(e) => setFiltersSearchQuery(e.target.value)}
-            autoFocus={!isMobile}
           />
           {filtersSearchQuery !== "" && (
             <button type="button" className="grid place-items-center" onClick={() => setFiltersSearchQuery("")}>
