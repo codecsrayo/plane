@@ -17,6 +17,7 @@ from plane.authentication.adapter.error import (
 
 # Module imports
 from plane.authentication.adapter.oauth import OauthAdapter
+from plane.authentication.utils.host import base_host
 from plane.license.utils.instance_value import get_configuration_value
 
 
@@ -59,7 +60,7 @@ class GitHubOAuthProvider(OauthAdapter):
         if self.organization_id:
             self.scope += f" {self.organization_scope}"
 
-        redirect_uri = f"""{"https" if request.is_secure() else "http"}://{request.get_host()}/auth/github/callback/"""
+        redirect_uri = base_host(request=request, is_app=True).rstrip("/") + "/auth/github/callback/"
         url_params = {
             "client_id": client_id,
             "redirect_uri": redirect_uri,

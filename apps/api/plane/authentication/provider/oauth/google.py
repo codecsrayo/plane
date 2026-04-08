@@ -11,6 +11,7 @@ import pytz
 
 # Module imports
 from plane.authentication.adapter.oauth import OauthAdapter
+from plane.authentication.utils.host import base_host
 from plane.license.utils.instance_value import get_configuration_value
 from plane.authentication.adapter.error import (
     AUTHENTICATION_ERROR_CODES,
@@ -47,7 +48,7 @@ class GoogleOAuthProvider(OauthAdapter):
         client_id = GOOGLE_CLIENT_ID
         client_secret = GOOGLE_CLIENT_SECRET
 
-        redirect_uri = f"""{"https" if request.is_secure() else "http"}://{request.get_host()}/auth/google/callback/"""
+        redirect_uri = base_host(request=request, is_app=True).rstrip("/") + "/auth/google/callback/"
         url_params = {
             "client_id": client_id,
             "scope": self.scope,

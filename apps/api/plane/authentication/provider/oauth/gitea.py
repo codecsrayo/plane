@@ -10,6 +10,7 @@ import requests
 
 # Module imports
 from plane.authentication.adapter.oauth import OauthAdapter
+from plane.authentication.utils.host import base_host
 from plane.license.utils.instance_value import get_configuration_value
 from plane.authentication.adapter.error import (
     AUTHENTICATION_ERROR_CODES,
@@ -61,7 +62,7 @@ class GiteaOAuthProvider(OauthAdapter):
         client_id = GITEA_CLIENT_ID
         client_secret = GITEA_CLIENT_SECRET
 
-        redirect_uri = f"{'https' if request.is_secure() else 'http'}://{request.get_host()}/auth/gitea/callback/"
+        redirect_uri = base_host(request=request, is_app=True).rstrip("/") + "/auth/gitea/callback/"
         url_params = {
             "client_id": client_id,
             "scope": self.scope,

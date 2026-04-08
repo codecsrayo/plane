@@ -11,6 +11,7 @@ import pytz
 
 # Module imports
 from plane.authentication.adapter.oauth import OauthAdapter
+from plane.authentication.utils.host import base_host
 from plane.license.utils.instance_value import get_configuration_value
 from plane.authentication.adapter.error import (
     AuthenticationException,
@@ -53,7 +54,7 @@ class GitLabOAuthProvider(OauthAdapter):
         client_id = GITLAB_CLIENT_ID
         client_secret = GITLAB_CLIENT_SECRET
 
-        redirect_uri = f"""{"https" if request.is_secure() else "http"}://{request.get_host()}/auth/gitlab/callback/"""
+        redirect_uri = base_host(request=request, is_app=True).rstrip("/") + "/auth/gitlab/callback/"
         url_params = {
             "client_id": client_id,
             "redirect_uri": redirect_uri,
