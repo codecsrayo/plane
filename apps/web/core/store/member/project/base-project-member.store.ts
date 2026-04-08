@@ -436,6 +436,7 @@ export abstract class BaseProjectMemberStore implements IBaseProjectMemberStore 
       runInAction(() => {
         this.processMemberRemoval(projectId, userId);
       });
+      return undefined;
     });
   };
 

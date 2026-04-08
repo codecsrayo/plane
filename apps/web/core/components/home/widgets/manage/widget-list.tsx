@@ -43,6 +43,7 @@ export const WidgetList = observer(function WidgetList({ workspaceSlug }: { work
             title: t("toast.success"),
             message: t("home.widget.reordered_successfully"),
           });
+          return undefined;
         })
         .catch(() => {
           setToast({

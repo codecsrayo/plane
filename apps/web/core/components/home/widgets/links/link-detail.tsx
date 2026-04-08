@@ -53,6 +53,7 @@ export const ProjectLinkDetail = observer(function ProjectLinkDetail(props: TPro
         title: t("link_copied"),
         message: t("view_link_copied_to_clipboard"),
       });
+      return undefined;
     });
   }, [linkUrl, t]);
 

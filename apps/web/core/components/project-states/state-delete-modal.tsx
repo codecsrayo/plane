@@ -42,6 +42,7 @@ export const StateDeleteModal = observer(function StateDeleteModal(props: TState
     await deleteState(workspaceSlug.toString(), data.project_id, data.id)
       .then(() => {
         handleClose();
+        return undefined;
       })
       .catch((err) => {
         if (err.status === 400)

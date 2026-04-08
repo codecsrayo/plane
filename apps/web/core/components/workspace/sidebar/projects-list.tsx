@@ -75,6 +75,7 @@ export const SidebarProjectsList = observer(function SidebarProjectsList() {
         title: t("link_copied"),
         message: t("project_link_copied_to_clipboard"),
       });
+      return undefined;
     });
   };
 
@@ -229,8 +230,8 @@ export const SidebarProjectsList = observer(function SidebarProjectsList() {
             >
               {loader === "init-loader" && (
                 <Loader className="w-full space-y-1.5">
-                  {Array.from({ length: 4 }).map((_, index) => (
-                    <Loader.Item key={index} height="28px" />
+                  {Array.from({ length: 4 }, (_, loaderItem) => loaderItem).map((loaderItem) => (
+                    <Loader.Item key={loaderItem} height="28px" />
                   ))}
                 </Loader>
               )}
