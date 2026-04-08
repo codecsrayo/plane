@@ -107,9 +107,8 @@ export function NotificationSnoozeModal(props: TNotificationSnoozeModal) {
     dateTime?.setHours(hours);
     dateTime?.setMinutes(minutes);
 
-    await handleSubmitSnooze(dateTime).then(() => {
-      handleClose();
-    });
+    await handleSubmitSnooze(dateTime);
+    handleClose();
   };
 
   return (
@@ -173,7 +172,8 @@ export function NotificationSnoozeModal(props: TNotificationSnoozeModal) {
                   input
                 >
                   <div className="mb-2 flex h-9 w-full overflow-hidden rounded-xs">
-                    <div
+                    <button
+                      type="button"
                       onClick={() => {
                         setValue("period", "AM");
                       }}
@@ -183,8 +183,9 @@ export function NotificationSnoozeModal(props: TNotificationSnoozeModal) {
                       })}
                     >
                       AM
-                    </div>
-                    <div
+                    </button>
+                    <button
+                      type="button"
                       onClick={() => {
                         setValue("period", "PM");
                       }}
@@ -194,11 +195,11 @@ export function NotificationSnoozeModal(props: TNotificationSnoozeModal) {
                       })}
                     >
                       PM
-                    </div>
+                    </button>
                   </div>
                   {getTimeStamp().length > 0 ? (
-                    getTimeStamp().map((time, index) => (
-                      <CustomSelect.Option key={`${time}-${index}`} value={time.value}>
+                    getTimeStamp().map((time) => (
+                      <CustomSelect.Option key={time.value} value={time.value}>
                         <div className="flex items-center">
                           <span className="ml-3 block truncate">{time.label}</span>
                         </div>

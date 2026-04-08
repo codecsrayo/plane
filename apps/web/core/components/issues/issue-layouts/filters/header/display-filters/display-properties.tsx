@@ -50,11 +50,6 @@ export const FilterDisplayProperties = observer(function FilterDisplayProperties
       default:
         return true;
     }
-  }).map((property) => {
-    if (isEpic && property.key === "sub_issue_count") {
-      return { ...property, titleTranslationKey: "issue.display.properties.work_item_count" };
-    }
-    return property;
   });
 
   return (
@@ -67,24 +62,26 @@ export const FilterDisplayProperties = observer(function FilterDisplayProperties
       {previewEnabled && (
         <div className="mt-1 flex flex-wrap items-center gap-2">
           {filteredDisplayProperties.map((displayProperty) => (
-            <>
-              <button
-                key={displayProperty.key}
-                type="button"
-                className={`rounded-sm border px-2 py-0.5 text-11 transition-all ${
-                  displayProperties?.[displayProperty.key]
-                    ? "border-accent-strong bg-accent-primary text-on-color"
-                    : "border-subtle hover:bg-layer-1"
-                }`}
-                onClick={() =>
-                  handleUpdate({
-                    [displayProperty.key]: !displayProperties?.[displayProperty.key],
-                  })
-                }
-              >
-                {t(displayProperty.titleTranslationKey)}
-              </button>
-            </>
+            <button
+              key={displayProperty.key}
+              type="button"
+              className={`rounded-sm border px-2 py-0.5 text-11 transition-all ${
+                displayProperties?.[displayProperty.key]
+                  ? "border-accent-strong bg-accent-primary text-on-color"
+                  : "border-subtle hover:bg-layer-1"
+              }`}
+              onClick={() =>
+                handleUpdate({
+                  [displayProperty.key]: !displayProperties?.[displayProperty.key],
+                })
+              }
+            >
+              {t(
+                isEpic && displayProperty.key === "sub_issue_count"
+                  ? "issue.display.properties.work_item_count"
+                  : displayProperty.titleTranslationKey
+              )}
+            </button>
           ))}
         </div>
       )}
