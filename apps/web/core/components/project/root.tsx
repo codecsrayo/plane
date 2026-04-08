@@ -72,11 +72,12 @@ export const ProjectRoot = observer(function ProjectRoot() {
     clearAllFilters(workspaceSlug.toString());
     clearAllAppliedDisplayFilters(workspaceSlug.toString());
     if (isArchived) updateDisplayFilters(workspaceSlug.toString(), { archived_projects: true });
-  }, [clearAllFilters, clearAllAppliedDisplayFilters, workspaceSlug]);
+  }, [clearAllFilters, clearAllAppliedDisplayFilters, isArchived, updateDisplayFilters, workspaceSlug]);
 
   useEffect(() => {
+    if (!workspaceSlug) return;
     updateDisplayFilters(workspaceSlug.toString(), { archived_projects: isArchived });
-  }, [pathname]);
+  }, [isArchived, pathname, updateDisplayFilters, workspaceSlug]);
 
   return (
     <>

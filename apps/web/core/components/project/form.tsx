@@ -90,55 +90,54 @@ export function ProjectDetailsForm(props: IProjectDetailsForm) {
 
   const handleUpdateChange = async (payload: Partial<IProject>) => {
     if (!workspaceSlug || !project) return;
-    return updateProject(workspaceSlug.toString(), project.id, payload)
-      .then(() => {
-        setToast({
-          type: TOAST_TYPE.SUCCESS,
-          title: t("toast.success"),
-          message: t("project_settings.general.toast.success"),
-        });
-      })
-      .catch((err) => {
-        try {
-          // Handle the new error format where codes are nested in arrays under field names
-          const errorData = err ?? {};
+    try {
+      await updateProject(workspaceSlug.toString(), project.id, payload);
+      setToast({
+        type: TOAST_TYPE.SUCCESS,
+        title: t("toast.success"),
+        message: t("project_settings.general.toast.success"),
+      });
+    } catch (err) {
+      try {
+        // Handle the new error format where codes are nested in arrays under field names
+        const errorData = err ?? {};
 
-          const nameError = errorData.name?.includes("PROJECT_NAME_ALREADY_EXIST");
-          const identifierError = errorData?.identifier?.includes("PROJECT_IDENTIFIER_ALREADY_EXIST");
+        const nameError = errorData.name?.includes("PROJECT_NAME_ALREADY_EXIST");
+        const identifierError = errorData?.identifier?.includes("PROJECT_IDENTIFIER_ALREADY_EXIST");
 
-          if (nameError || identifierError) {
-            if (nameError) {
-              setToast({
-                type: TOAST_TYPE.ERROR,
-                title: t("toast.error"),
-                message: t("project_name_already_taken"),
-              });
-            }
-
-            if (identifierError) {
-              setToast({
-                type: TOAST_TYPE.ERROR,
-                title: t("toast.error"),
-                message: t("project_identifier_already_taken"),
-              });
-            }
-          } else {
+        if (nameError || identifierError) {
+          if (nameError) {
             setToast({
               type: TOAST_TYPE.ERROR,
               title: t("toast.error"),
-              message: t("something_went_wrong"),
+              message: t("project_name_already_taken"),
             });
           }
-        } catch (error) {
-          // Fallback error handling if the error processing fails
-          console.error("Error processing API error:", error);
+
+          if (identifierError) {
+            setToast({
+              type: TOAST_TYPE.ERROR,
+              title: t("toast.error"),
+              message: t("project_identifier_already_taken"),
+            });
+          }
+        } else {
           setToast({
             type: TOAST_TYPE.ERROR,
             title: t("toast.error"),
             message: t("something_went_wrong"),
           });
         }
-      });
+      } catch (error) {
+        // Fallback error handling if the error processing fails
+        console.error("Error processing API error:", error);
+        setToast({
+          type: TOAST_TYPE.ERROR,
+          title: t("toast.error"),
+          message: t("something_went_wrong"),
+        });
+      }
+    }
   };
 
   const onSubmit = async (formData: IProject) => {
@@ -177,14 +176,11 @@ export function ProjectDetailsForm(props: IProjectDetailsForm) {
       return;
     }
 
-    if (project.identifier !== formData.identifier)
-      await projectService
-        .checkProjectIdentifierAvailability(workspaceSlug, payload.identifier ?? "")
-        .then(async (res) => {
-          if (res.exists) setError("identifier", { message: t("common.identifier_already_exists") });
-          else await handleUpdateChange(payload);
-        });
-    else await handleUpdateChange(payload);
+    if (project.identifier !== formData.identifier) {
+      const result = await projectService.checkProjectIdentifierAvailability(workspaceSlug, payload.identifier ?? "");
+      if (result.exists) setError("identifier", { message: t("common.identifier_already_exists") });
+      else await handleUpdateChange(payload);
+    } else await handleUpdateChange(payload);
     setTimeout(() => {
       setIsLoading(false);
     }, 300);
@@ -414,8 +410,8 @@ export function ProjectDetailsForm(props: IProjectDetailsForm) {
                 <>
                   <TimezoneSelect
                     value={value}
-                    onChange={(value: string) => {
-                      onChange(value);
+                    onChange={(timezone: string) => {
+                      onChange(timezone);
                     }}
                     error={Boolean(errors.timezone)}
                     buttonClassName="border-none"
