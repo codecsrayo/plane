@@ -35,7 +35,7 @@ export const ThemeSwitcher = observer(function ThemeSwitcher(props: {
   const { t } = useTranslation();
   // derived values
   const currentTheme = useMemo(() => {
-    const userThemeOption = THEME_OPTIONS.find((t) => t.value === userProfile?.theme?.theme);
+    const userThemeOption = THEME_OPTIONS.find((themeOption) => themeOption.value === userProfile?.theme?.theme);
     return userThemeOption || null;
   }, [userProfile?.theme?.theme]);
 

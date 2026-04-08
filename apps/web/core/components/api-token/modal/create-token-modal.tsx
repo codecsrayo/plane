@@ -54,31 +54,29 @@ export function CreateApiTokenModal(props: Props) {
 
   const handleCreateToken = async (data: Partial<IApiToken>) => {
     // make the request to generate the token
-    await apiTokenService
-      .create(data)
-      .then((res) => {
-        setGeneratedToken(res);
-        downloadSecretKey(res);
+    try {
+      const createdToken = await apiTokenService.create(data);
+      setGeneratedToken(createdToken);
+      downloadSecretKey(createdToken);
 
-        mutate<IApiToken[]>(
-          API_TOKENS_LIST,
-          (prevData) => {
-            if (!prevData) return;
+      mutate<IApiToken[]>(
+        API_TOKENS_LIST,
+        (prevData) => {
+          if (!prevData) return;
 
-            return [res, ...prevData];
-          },
-          false
-        );
-      })
-      .catch((err) => {
-        setToast({
-          type: TOAST_TYPE.ERROR,
-          title: "Error!",
-          message: err.message || err.detail,
-        });
-
-        throw err;
+          return [createdToken, ...prevData];
+        },
+        false
+      );
+    } catch (err: any) {
+      setToast({
+        type: TOAST_TYPE.ERROR,
+        title: "Error!",
+        message: err.message || err.detail,
       });
+
+      throw err;
+    }
   };
 
   return (

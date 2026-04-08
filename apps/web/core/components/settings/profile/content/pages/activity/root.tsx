@@ -39,7 +39,7 @@ export const ActivityProfileSettings = observer(function ActivityProfileSettings
 
   const updateResultsCount = (count: number) => setResultsCount(count);
 
-  const updateEmptyState = (isEmpty: boolean) => setIsEmpty(isEmpty);
+  const updateEmptyState = (nextIsEmpty: boolean) => setIsEmpty(nextIsEmpty);
 
   const handleLoadMore = () => setPageCount((prev) => prev + 1);
 

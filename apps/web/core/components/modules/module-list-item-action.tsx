@@ -66,6 +66,7 @@ export const ModuleListItemAction = observer(function ModuleListItemAction(props
       () => {
         // open favorites menu if closed
         if (!storedValue) toggleFavoriteMenu(true);
+        return;
       }
     );
 
@@ -109,21 +110,20 @@ export const ModuleListItemAction = observer(function ModuleListItemAction(props
   const handleModuleDetailsChange = async (payload: Partial<IModule>) => {
     if (!workspaceSlug || !projectId) return;
 
-    await updateModuleDetails(workspaceSlug.toString(), projectId.toString(), moduleId, payload)
-      .then(() => {
-        setToast({
-          type: TOAST_TYPE.SUCCESS,
-          title: "Success!",
-          message: "Module updated successfully.",
-        });
-      })
-      .catch((err) => {
-        setToast({
-          type: TOAST_TYPE.ERROR,
-          title: "Error!",
-          message: err?.detail ?? "Module could not be updated. Please try again.",
-        });
+    try {
+      await updateModuleDetails(workspaceSlug.toString(), projectId.toString(), moduleId, payload);
+      setToast({
+        type: TOAST_TYPE.SUCCESS,
+        title: "Success!",
+        message: "Module updated successfully.",
       });
+    } catch (error: any) {
+      setToast({
+        type: TOAST_TYPE.ERROR,
+        title: "Error!",
+        message: error?.detail ?? "Module could not be updated. Please try again.",
+      });
+    }
   };
 
   const moduleLeadDetails = moduleDetails.lead_id ? getUserDetails(moduleDetails.lead_id) : undefined;

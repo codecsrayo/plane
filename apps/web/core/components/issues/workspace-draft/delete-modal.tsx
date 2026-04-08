@@ -67,28 +67,28 @@ export function WorkspaceDraftIssueDeleteIssueModal(props: Props) {
       onClose();
       return;
     }
-    if (onSubmit)
-      await onSubmit()
-        .then(() => {
-          setToast({
-            type: TOAST_TYPE.SUCCESS,
-            title: `${t("success")}!`,
-            message: t("workspace_draft_issues.toasts.deleted.success"),
-          });
-          onClose();
-        })
-        .catch((errors) => {
-          const isPermissionError = errors?.error === "Only admin or creator can delete the work item";
-          const currentError = isPermissionError
-            ? PROJECT_ERROR_MESSAGES.permissionError
-            : PROJECT_ERROR_MESSAGES.issueDeleteError;
-          setToast({
-            title: t(currentError.i18n_title),
-            type: TOAST_TYPE.ERROR,
-            message: currentError.i18n_message && t(currentError.i18n_message),
-          });
-        })
-        .finally(() => onClose());
+    if (onSubmit) {
+      try {
+        await onSubmit();
+        setToast({
+          type: TOAST_TYPE.SUCCESS,
+          title: `${t("success")}!`,
+          message: t("workspace_draft_issues.toasts.deleted.success"),
+        });
+      } catch (errors: any) {
+        const isPermissionError = errors?.error === "Only admin or creator can delete the work item";
+        const currentError = isPermissionError
+          ? PROJECT_ERROR_MESSAGES.permissionError
+          : PROJECT_ERROR_MESSAGES.issueDeleteError;
+        setToast({
+          title: t(currentError.i18n_title),
+          type: TOAST_TYPE.ERROR,
+          message: currentError.i18n_message && t(currentError.i18n_message),
+        });
+      } finally {
+        onClose();
+      }
+    }
   };
 
   return (

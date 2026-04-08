@@ -44,33 +44,33 @@ export const CycleDeleteModal = observer(function CycleDeleteModal(props: ICycle
 
     setLoader(true);
     try {
-      await deleteCycle(workspaceSlug, projectId, cycle.id)
-        .then(() => {
-          if (cycleId || peekCycle) router.push(`/${workspaceSlug}/projects/${projectId}/cycles`);
-          setToast({
-            type: TOAST_TYPE.SUCCESS,
-            title: "Success!",
-            message: "Cycle deleted successfully.",
-          });
-        })
-        .catch((errors) => {
-          const isPermissionError = errors?.error === "You don't have the required permissions.";
-          const currentError = isPermissionError
-            ? PROJECT_ERROR_MESSAGES.permissionError
-            : PROJECT_ERROR_MESSAGES.cycleDeleteError;
-          setToast({
-            title: t(currentError.i18n_title),
-            type: TOAST_TYPE.ERROR,
-            message: currentError.i18n_message && t(currentError.i18n_message),
-          });
-        })
-        .finally(() => handleClose());
-    } catch {
+      await deleteCycle(workspaceSlug, projectId, cycle.id);
+      if (cycleId || peekCycle) router.push(`/${workspaceSlug}/projects/${projectId}/cycles`);
       setToast({
-        type: TOAST_TYPE.ERROR,
-        title: "Warning!",
-        message: "Something went wrong please try again later.",
+        type: TOAST_TYPE.SUCCESS,
+        title: "Success!",
+        message: "Cycle deleted successfully.",
       });
+    } catch (errors: any) {
+      if (errors?.error) {
+        const isPermissionError = errors.error === "You don't have the required permissions.";
+        const currentError = isPermissionError
+          ? PROJECT_ERROR_MESSAGES.permissionError
+          : PROJECT_ERROR_MESSAGES.cycleDeleteError;
+        setToast({
+          title: t(currentError.i18n_title),
+          type: TOAST_TYPE.ERROR,
+          message: currentError.i18n_message && t(currentError.i18n_message),
+        });
+      } else {
+        setToast({
+          type: TOAST_TYPE.ERROR,
+          title: "Warning!",
+          message: "Something went wrong please try again later.",
+        });
+      }
+    } finally {
+      handleClose();
     }
 
     setLoader(false);

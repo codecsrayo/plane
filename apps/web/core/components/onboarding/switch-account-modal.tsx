@@ -40,20 +40,20 @@ export function SwitchAccountModal(props: Props) {
   const handleSwitchAccount = async () => {
     setSwitchingAccount(true);
 
-    await signOut()
-      .then(() => {
-        setTheme("system");
-        router.push("/");
-        handleClose();
-      })
-      .catch(() =>
-        setToast({
-          type: TOAST_TYPE.ERROR,
-          title: "Error!",
-          message: "Failed to sign out. Please try again.",
-        })
-      )
-      .finally(() => setSwitchingAccount(false));
+    try {
+      await signOut();
+      setTheme("system");
+      router.push("/");
+      handleClose();
+    } catch {
+      setToast({
+        type: TOAST_TYPE.ERROR,
+        title: "Error!",
+        message: "Failed to sign out. Please try again.",
+      });
+    } finally {
+      setSwitchingAccount(false);
+    }
   };
 
   return (

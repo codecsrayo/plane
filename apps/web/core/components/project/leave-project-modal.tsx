@@ -60,17 +60,17 @@ export const LeaveProjectModal = observer(function LeaveProjectModal(props: ILea
       if (data.projectName === project?.name) {
         if (data.confirmLeave === "Leave Project") {
           router.push(`/${workspaceSlug}/projects`);
-          return leaveProject(workspaceSlug.toString(), project.id)
-            .then(() => {
-              handleClose();
-            })
-            .catch((_err) => {
-              setToast({
-                type: TOAST_TYPE.ERROR,
-                title: "Error!",
-                message: "Something went wrong please try again later.",
-              });
+          try {
+            await leaveProject(workspaceSlug.toString(), project.id);
+            handleClose();
+          } catch {
+            setToast({
+              type: TOAST_TYPE.ERROR,
+              title: "Error!",
+              message: "Something went wrong please try again later.",
             });
+          }
+          return;
         } else {
           setToast({
             type: TOAST_TYPE.ERROR,

@@ -57,25 +57,23 @@ export const ForgotPasswordForm = observer(function ForgotPasswordForm() {
   });
 
   const handleForgotPassword = async (formData: TForgotPasswordFormValues) => {
-    await authService
-      .sendResetPasswordLink({
+    try {
+      await authService.sendResetPasswordLink({
         email: formData.email,
-      })
-      .then(() => {
-        setToast({
-          type: TOAST_TYPE.SUCCESS,
-          title: t("auth.forgot_password.toast.success.title"),
-          message: t("auth.forgot_password.toast.success.message"),
-        });
-        setResendCodeTimer(30);
-      })
-      .catch((err) => {
-        setToast({
-          type: TOAST_TYPE.ERROR,
-          title: t("auth.forgot_password.toast.error.title"),
-          message: err?.error ?? t("auth.forgot_password.toast.error.message"),
-        });
       });
+      setToast({
+        type: TOAST_TYPE.SUCCESS,
+        title: t("auth.forgot_password.toast.success.title"),
+        message: t("auth.forgot_password.toast.success.message"),
+      });
+      setResendCodeTimer(30);
+    } catch (err: any) {
+      setToast({
+        type: TOAST_TYPE.ERROR,
+        title: t("auth.forgot_password.toast.error.title"),
+        message: err?.error ?? t("auth.forgot_password.toast.error.message"),
+      });
+    }
   };
 
   return (

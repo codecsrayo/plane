@@ -66,14 +66,14 @@ export const ExtendedSidebarItem = observer(function ExtendedSidebarItem(props: 
   const handleLinkClick = () => toggleExtendedSidebar(true);
 
   useEffect(() => {
-    const element = navigationIemRef.current;
+    const navigationItemElement = navigationIemRef.current;
     const dragHandleElement = dragHandleRef.current;
 
-    if (!element) return;
+    if (!navigationItemElement) return;
 
     return combine(
       draggable({
-        element,
+        element: navigationItemElement,
         canDrag: () => !disableDrag,
         dragHandle: dragHandleElement ?? undefined,
         getInitialData: () => ({ id: item.key, dragInstanceId: "NAVIGATION" }), // var1
@@ -85,16 +85,16 @@ export const ExtendedSidebarItem = observer(function ExtendedSidebarItem(props: 
         },
       }),
       dropTargetForElements({
-        element,
+        element: navigationItemElement,
         canDrop: ({ source }) =>
           !disableDrop && source?.data?.id !== item.key && source?.data?.dragInstanceId === "NAVIGATION",
-        getData: ({ input, element }) => {
-          const data = { id: item.key };
+        getData: ({ input, element: dropTargetElement }) => {
+          const dragData = { id: item.key };
 
           // attach instruction for last in list
-          return attachInstruction(data, {
+          return attachInstruction(dragData, {
             input,
-            element,
+            element: dropTargetElement,
             currentLevel: 0,
             indentPerLevel: 0,
             mode: isLastChild ? "last-in-group" : "standard",

@@ -126,14 +126,14 @@ export const ProjectSettingsLabelList = observer(function ProjectSettingsLabelLi
               rootClassName="py-20"
             />
           ) : (
-            projectLabelsTree?.map((label, index) => {
-              if (label.children && label.children.length) {
+            projectLabelsTree?.map((treeLabel, index) => {
+              if (treeLabel.children && treeLabel.children.length) {
                 return (
                   <ProjectSettingLabelGroup
-                    key={label.id}
-                    label={label}
-                    labelChildren={label.children || []}
-                    handleLabelDelete={(label: IIssueLabel) => setSelectDeleteLabel(label)}
+                    key={treeLabel.id}
+                    label={treeLabel}
+                    labelChildren={treeLabel.children || []}
+                    handleLabelDelete={(selectedLabel: IIssueLabel) => setSelectDeleteLabel(selectedLabel)}
                     isUpdating={isUpdating}
                     setIsUpdating={setIsUpdating}
                     isLastChild={index === projectLabelsTree.length - 1}
@@ -145,10 +145,10 @@ export const ProjectSettingsLabelList = observer(function ProjectSettingsLabelLi
               }
               return (
                 <ProjectSettingLabelItem
-                  label={label}
-                  key={label.id}
+                  label={treeLabel}
+                  key={treeLabel.id}
                   setIsUpdating={setIsUpdating}
-                  handleLabelDelete={(label) => setSelectDeleteLabel(label)}
+                  handleLabelDelete={(selectedLabel) => setSelectDeleteLabel(selectedLabel)}
                   isChild={false}
                   isLastChild={index === projectLabelsTree.length - 1}
                   onDrop={onDrop}

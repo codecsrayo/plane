@@ -45,26 +45,26 @@ export const DeleteInboxIssueModal = observer(function DeleteInboxIssueModal({
 
   const handleDelete = async () => {
     setIsDeleting(true);
-    await onSubmit()
-      .then(() => {
-        setToast({
-          type: TOAST_TYPE.SUCCESS,
-          title: `${t("success")}`,
-          message: `${t("inbox_issue.modals.delete.success")}`,
-        });
-      })
-      .catch((errors) => {
-        const isPermissionError = errors?.error === "Only admin or creator can delete the work item";
-        const currentError = isPermissionError
-          ? PROJECT_ERROR_MESSAGES.permissionError
-          : PROJECT_ERROR_MESSAGES.issueDeleteError;
-        setToast({
-          title: t(currentError.i18n_title),
-          type: TOAST_TYPE.ERROR,
-          message: currentError.i18n_message && t(currentError.i18n_message),
-        });
-      })
-      .finally(() => handleClose());
+    try {
+      await onSubmit();
+      setToast({
+        type: TOAST_TYPE.SUCCESS,
+        title: `${t("success")}`,
+        message: `${t("inbox_issue.modals.delete.success")}`,
+      });
+    } catch (errors: any) {
+      const isPermissionError = errors?.error === "Only admin or creator can delete the work item";
+      const currentError = isPermissionError
+        ? PROJECT_ERROR_MESSAGES.permissionError
+        : PROJECT_ERROR_MESSAGES.issueDeleteError;
+      setToast({
+        title: t(currentError.i18n_title),
+        type: TOAST_TYPE.ERROR,
+        message: currentError.i18n_message && t(currentError.i18n_message),
+      });
+    } finally {
+      handleClose();
+    }
   };
 
   return (

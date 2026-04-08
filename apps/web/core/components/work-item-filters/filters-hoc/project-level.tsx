@@ -136,7 +136,7 @@ export const ProjectLevelWorkItemFiltersHOC = observer(function ProjectLevelWork
   );
 
   const handleViewUpdate = useCallback(
-    (filterExpression: TWorkItemFilterExpression) => {
+    async (filterExpression: TWorkItemFilterExpression) => {
       if (!viewDetails) {
         setToast({
           type: TOAST_TYPE.ERROR,
@@ -147,23 +147,22 @@ export const ProjectLevelWorkItemFiltersHOC = observer(function ProjectLevelWork
         return;
       }
 
-      updateView(workspaceSlug, projectId, viewDetails.id, {
-        ...getViewFilterPayload(filterExpression),
-      })
-        .then(() => {
-          setToast({
-            type: TOAST_TYPE.SUCCESS,
-            title: "Success!",
-            message: "Your view has been updated successfully.",
-          });
-        })
-        .catch(() => {
-          setToast({
-            type: TOAST_TYPE.ERROR,
-            title: "Error!",
-            message: "Your view could not be updated. Please try again.",
-          });
+      try {
+        await updateView(workspaceSlug, projectId, viewDetails.id, {
+          ...getViewFilterPayload(filterExpression),
         });
+        setToast({
+          type: TOAST_TYPE.SUCCESS,
+          title: "Success!",
+          message: "Your view has been updated successfully.",
+        });
+      } catch {
+        setToast({
+          type: TOAST_TYPE.ERROR,
+          title: "Error!",
+          message: "Your view could not be updated. Please try again.",
+        });
+      }
     },
     [viewDetails, updateView, workspaceSlug, projectId, getViewFilterPayload]
   );

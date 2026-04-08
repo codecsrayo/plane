@@ -320,7 +320,8 @@ export const IssueBlock = observer(function IssueBlock(props: IssueBlockProps) {
                 activeLayout="List"
                 isEpic={isEpic}
               />
-              <div
+              <button
+                type="button"
                 className={cn("hidden", {
                   "md:flex": isSidebarCollapsed,
                   "lg:flex": !isSidebarCollapsed,
@@ -334,7 +335,7 @@ export const IssueBlock = observer(function IssueBlock(props: IssueBlockProps) {
                   issue,
                   parentRef: issueRef,
                 })}
-              </div>
+              </button>
             </>
           ) : (
             <div className="h-4 w-4">

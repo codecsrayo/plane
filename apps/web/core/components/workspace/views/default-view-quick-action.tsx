@@ -37,6 +37,7 @@ export const DefaultWorkspaceViewQuickActions = observer(function DefaultWorkspa
         title: "Link Copied!",
         message: "View link copied to clipboard.",
       });
+      return;
     });
   const handleOpenInNewTab = () => window.open(`/${viewLink}`, "_blank");
 

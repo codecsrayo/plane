@@ -54,11 +54,11 @@ export const WorkItemLevelModals = observer(function WorkItemLevelModals(props: 
   const { fetchSubIssues: fetchSubWorkItems } = useIssueDetail();
   const { fetchSubIssues: fetchEpicSubWorkItems } = useIssueDetail(EIssueServiceType.EPICS);
 
-  const handleDeleteIssue = async (workspaceSlug: string, projectId: string, issueId: string) => {
+  const handleDeleteIssue = async (currentWorkspaceSlug: string, projectId: string, issueId: string) => {
     try {
       const isEpic = workItemDetails?.is_epic;
       const deleteAction = isEpic ? removeEpic : removeWorkItem;
-      const redirectPath = `/${workspaceSlug}/projects/${projectId}/${isEpic ? "epics" : "issues"}`;
+      const redirectPath = `/${currentWorkspaceSlug}/projects/${projectId}/${isEpic ? "epics" : "issues"}`;
 
       await deleteAction(projectId, issueId);
       router.push(redirectPath);

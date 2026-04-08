@@ -119,7 +119,7 @@ export const WorkspaceLevelWorkItemFiltersHOC = observer(function WorkspaceLevel
   );
 
   const handleViewUpdate = useCallback(
-    (filterExpression: TWorkItemFilterExpression) => {
+    async (filterExpression: TWorkItemFilterExpression) => {
       if (!viewDetails) {
         setToast({
           type: TOAST_TYPE.ERROR,
@@ -130,29 +130,27 @@ export const WorkspaceLevelWorkItemFiltersHOC = observer(function WorkspaceLevel
         return;
       }
 
-      updateGlobalView(
-        workspaceSlug,
-        viewDetails.id,
-        {
-          ...getViewFilterPayload(filterExpression),
-        },
-        /* No need to sync filters here as updateFilters already handles it */
-        false
-      )
-        .then(() => {
-          setToast({
-            type: TOAST_TYPE.SUCCESS,
-            title: "Success!",
-            message: "Your view has been updated successfully.",
-          });
-        })
-        .catch(() => {
-          setToast({
-            type: TOAST_TYPE.ERROR,
-            title: "Error!",
-            message: "Your view could not be updated. Please try again.",
-          });
+      try {
+        await updateGlobalView(
+          workspaceSlug,
+          viewDetails.id,
+          {
+            ...getViewFilterPayload(filterExpression),
+          },
+          false
+        );
+        setToast({
+          type: TOAST_TYPE.SUCCESS,
+          title: "Success!",
+          message: "Your view has been updated successfully.",
         });
+      } catch {
+        setToast({
+          type: TOAST_TYPE.ERROR,
+          title: "Error!",
+          message: "Your view could not be updated. Please try again.",
+        });
+      }
     },
     [viewDetails, updateGlobalView, workspaceSlug, getViewFilterPayload]
   );

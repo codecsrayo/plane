@@ -36,14 +36,14 @@ export type TAdditionalParseEditorContentReturnType =
 
 export const useAdditionalEditorMention = (_args: TUseAdditionalEditorMentionArgs) => {
   const updateAdditionalSections = useCallback(
-    (_args: TAdditionalEditorMentionHandlerArgs): TAdditionalEditorMentionHandlerReturnType => ({
+    (_mentionArgs: TAdditionalEditorMentionHandlerArgs): TAdditionalEditorMentionHandlerReturnType => ({
       sections: [],
     }),
     []
   );
 
   const parseAdditionalEditorContent = useCallback(
-    (_args: TAdditionalParseEditorContentArgs): TAdditionalParseEditorContentReturnType => undefined,
+    (_parseArgs: TAdditionalParseEditorContentArgs): TAdditionalParseEditorContentReturnType => undefined,
     []
   );
 

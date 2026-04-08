@@ -32,6 +32,7 @@ export const usePowerKMiscellaneousCommands = (): TPowerKCommandConfig[] => {
           type: TOAST_TYPE.SUCCESS,
           title: t("power_k.miscellaneous_actions.copy_current_page_url_toast_success"),
         });
+        return;
       })
       .catch(() => {
         setToast({

@@ -64,7 +64,8 @@ export const IssueGanttBlock = observer(function IssueGanttBlock(props: Props) {
       <Popover.Button
         className="w-full"
         render={
-          <div
+          <button
+            type="button"
             id={`issue-${issueId}`}
             className="space-between relative flex h-full w-full cursor-pointer items-center rounded-sm"
             style={blockStyle}
@@ -84,7 +85,7 @@ export const IssueGanttBlock = observer(function IssueGanttBlock(props: Props) {
                 showProgressText={duration >= 2}
               />
             )}
-          </div>
+          </button>
         }
       />
       <Popover.Panel side="bottom" align="start">

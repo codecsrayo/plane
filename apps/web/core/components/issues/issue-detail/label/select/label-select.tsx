@@ -109,8 +109,11 @@ export const IssueLabelSelect = observer(function IssueLabelSelect(props: IIssue
 
   const handleAddLabel = async (labelName: string) => {
     setSubmitting(true);
-    const label = await onAddLabel(workspaceSlug, projectId, { name: labelName, color: getRandomLabelColor() });
-    onSelect([...values, label.id]);
+    const createdLabel = await onAddLabel(workspaceSlug, projectId, {
+      name: labelName,
+      color: getRandomLabelColor(),
+    });
+    onSelect([...values, createdLabel.id]);
     setQuery("");
     setSubmitting(false);
   };
