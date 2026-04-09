@@ -36,6 +36,9 @@ Rama activa: `feature/integrations-panel-fix-17593507967815292912`
 | `IS_GITHUB_ENABLED` compartido — el toggle de GitHub App integration en /integrations activaba también el OAuth login de GitHub | ✅ corregido (commit `299003c81`) |
 | `Combobox Fragment prop passthrough` — `Combobox.Button as={Fragment}` en 5 archivos causaba crash en flujo de creación de proyecto | ✅ corregido (commit `3cb7681f7`) |
 | `workspace=workspace` redundante en `get_or_create` de `GithubRepository` — filtro incorrecto causaba duplicados | ✅ corregido |
+| **Soft-delete + re-registro 400 Bad Request:** `GithubRepository`/`GithubRepositorySync` usan soft delete; al re-crear tras eliminar, `get_or_create` ignoraba las filas soft-deleted e intentaba INSERT → violación de la OneToOneField unique constraint a nivel DB → 400. Fix: `all_objects` + resurrección del registro existente en lugar de crear uno nuevo | ✅ corregido (`e030f50`) |
+| **`GithubRepository` huérfano tras destroy:** `destroy` solo borraba el `GithubRepositorySync` pero no el `GithubRepository` asociado, dejando filas que bloqueaban futuros re-registros | ✅ corregido (`e030f50`) |
+| **Issues existentes no importados:** el sync era 100% basado en webhooks → solo recibía issues nuevos; issues ya existentes en GitHub nunca aparecían en Plane. Fix: nuevo task Celery `github_initial_issue_sync_task` disparado automáticamente al crear el sync, pagina todos los issues con GitHub App token respetando los estados configurados | ✅ corregido (`938a9de`) |
 | `github_client_id` no expuesto en la API de instancia — UI de conexión personal sin datos | ✅ corregido |
 | UI trigger para OAuth personal de GitHub presente en detail page con `user-callback` popup | ✅ corregido |
 | `GithubPRStateMapping.github_pr_state` solo tenía 3 choices (open/merged/closed) — frontend enviaba 6 (draft_open, review_requested, ready_for_merge incluidos) → 400 en API | ✅ corregido (`80b7aee`) |
@@ -390,7 +393,7 @@ IS_SLACK_ENABLED=1
 | TAREA 1 — Detail page por integración | ✅ Hecho |
 | TAREA 2 — Cuenta personal GitHub | ✅ Hecho (UI trigger agregado + `github_client_id` expuesto en instancia API) |
 | TAREA 3 — PR State Mapping | ✅ Hecho (ViewSet + serializer + URLs registradas en commit `542f78433`) |
-| TAREA 4 — Project Issue Sync | ✅ Hecho (bugs corregidos: credentials persistidas, repo_id validado, list enriquecida — commit `f4a520d`) |
+| TAREA 4 — Project Issue Sync | ✅ Hecho + bugs adicionales corregidos (commits `e030f50`, `938a9de`): soft-delete resurrection (400 en re-registro), cleanup de GithubRepository huérfano en destroy, importación inicial automática de issues existentes al conectar repo |
 | TAREA 5 — GitHub App JWT | ✅ Hecho |
 | TAREA 6 — GitLab callback | ✅ Hecho |
 | TAREA 7 — Slack callback | ✅ Hecho |
