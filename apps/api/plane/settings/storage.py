@@ -5,6 +5,7 @@
 # Python imports
 import os
 import uuid
+from urllib.parse import urlparse
 
 # Third party imports
 import boto3
@@ -37,8 +38,12 @@ class S3Storage(S3Boto3Storage):
         self.signed_url_expiration = int(os.environ.get("SIGNED_URL_EXPIRATION", "3600"))
 
         if os.environ.get("USE_MINIO") == "1":
-            # Determine protocol based on environment variable
-            if os.environ.get("MINIO_ENDPOINT_SSL") == "1":
+            # Prefer the public app URL scheme for presigned upload URLs behind a reverse proxy.
+            web_url = os.environ.get("WEB_URL")
+            parsed_web_url = urlparse(web_url) if web_url else None
+            if parsed_web_url and parsed_web_url.scheme:
+                endpoint_protocol = parsed_web_url.scheme
+            elif os.environ.get("MINIO_ENDPOINT_SSL") == "1":
                 endpoint_protocol = "https"
             else:
                 endpoint_protocol = request.scheme if request else "http"
