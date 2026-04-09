@@ -10,7 +10,7 @@ import { Controller } from "react-hook-form";
 // icons
 import { Eye, EyeOff } from "lucide-react";
 // plane internal packages
-import { Input } from "@plane/ui";
+import { Input, TextArea } from "@plane/ui";
 import { cn } from "@plane/utils";
 
 type Props = {
@@ -24,6 +24,8 @@ type Props = {
   required: boolean;
   disabled?: boolean;
   rightContent?: React.ReactNode;
+  multiline?: boolean;
+  textAreaClassName?: string;
 };
 
 export type TControllerInputFormField = {
@@ -36,6 +38,8 @@ export type TControllerInputFormField = {
   required: boolean;
   disabled?: boolean;
   rightContent?: React.ReactNode;
+  multiline?: boolean;
+  textAreaClassName?: string;
 };
 
 export function ControllerInput(props: Props) {
@@ -50,6 +54,8 @@ export function ControllerInput(props: Props) {
     required,
     disabled = false,
     rightContent,
+    multiline = false,
+    textAreaClassName,
   } = props;
   // states
   const [showPassword, setShowPassword] = useState(false);
@@ -62,25 +68,40 @@ export function ControllerInput(props: Props) {
           control={control}
           name={name}
           rules={{ required: required ? `${label} is required.` : false }}
-          render={({ field: { value, onChange, ref } }) => (
-            <Input
-              id={name}
-              name={name}
-              type={type === "password" && showPassword ? "text" : type}
-              value={value}
-              onChange={onChange}
-              ref={ref}
-              hasError={error}
-              placeholder={placeholder}
-              disabled={disabled}
-              className={cn("w-full rounded-md font-medium", {
-                "pr-10": (type === "password" && !rightContent) || (type !== "password" && !!rightContent),
-                "pr-20": type === "password" && rightContent,
-              })}
-            />
-          )}
+          render={({ field: { value, onChange, ref } }) =>
+            multiline ? (
+              <TextArea
+                id={name}
+                name={name}
+                value={value}
+                onChange={onChange}
+                ref={ref}
+                hasError={error}
+                placeholder={placeholder}
+                disabled={disabled}
+                rows={8}
+                className={cn("h-64 min-h-64 w-full resize-y rounded-md font-medium", textAreaClassName)}
+              />
+            ) : (
+              <Input
+                id={name}
+                name={name}
+                type={type === "password" && showPassword ? "text" : type}
+                value={value}
+                onChange={onChange}
+                ref={ref}
+                hasError={error}
+                placeholder={placeholder}
+                disabled={disabled}
+                className={cn("w-full rounded-md font-medium", {
+                  "pr-10": (type === "password" && !rightContent) || (type !== "password" && !!rightContent),
+                  "pr-20": type === "password" && rightContent,
+                })}
+              />
+            )
+          }
         />
-        {(type === "password" || rightContent) && (
+        {!multiline && (type === "password" || rightContent) && (
           <div className="absolute top-2.5 right-3 flex items-center gap-2 text-placeholder">
             {type === "password" &&
               (showPassword ? (
