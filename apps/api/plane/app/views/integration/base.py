@@ -601,20 +601,28 @@ class GithubRepoSyncViewSet(BaseViewSet):
         repo_name = parts[1] if len(parts) == 2 else repo_full_name
 
         # Get or create the GithubRepository record.
-        # Note: workspace is intentionally omitted from the filter — ProjectBaseModel.save()
-        # derives it automatically from the project FK, so including it here would create
-        # a redundant (and potentially mis-matching) filter condition.
-        repo, _ = GithubRepository.objects.get_or_create(
+        # Must use all_objects to include soft-deleted rows — otherwise get_or_create
+        # ignores them and tries to INSERT a duplicate, which trips the DB unique constraint.
+        repo = GithubRepository.all_objects.filter(
             repository_id=repo_id_int,
             project_id=project_id,
-            defaults={
-                "name": repo_name,
-                "owner": repo_owner,
-                "url": f"https://github.com/{repo_full_name}",
-                # workspace is intentionally omitted: ProjectBaseModel.save()
-                # auto-derives it from the project FK.
-            },
-        )
+        ).first()
+
+        if repo is None:
+            repo = GithubRepository.objects.create(
+                repository_id=repo_id_int,
+                project_id=project_id,
+                name=repo_name,
+                owner=repo_owner,
+                url=f"https://github.com/{repo_full_name}",
+            )
+        elif repo.deleted_at is not None:
+            # Resurrect the soft-deleted repo record so it can be reused.
+            repo.deleted_at = None
+            repo.name = repo_name
+            repo.owner = repo_owner
+            repo.url = f"https://github.com/{repo_full_name}"
+            repo.save(update_fields=["deleted_at", "name", "owner", "url"])
 
         # Build credentials dict — store optional sync config alongside any future tokens
         credentials = {
@@ -625,21 +633,38 @@ class GithubRepoSyncViewSet(BaseViewSet):
         if request.data.get("issue_closed_state"):
             credentials["issue_closed_state"] = request.data["issue_closed_state"]
 
-        sync, created = GithubRepositorySync.objects.get_or_create(
+        # Check for existing sync — including soft-deleted ones (all_objects bypasses the
+        # soft-delete manager so we don't hit the OneToOneField DB unique constraint).
+        existing_sync = GithubRepositorySync.all_objects.filter(
             repository=repo,
             project_id=project_id,
             workspace=workspace,
-            defaults={
-                "actor": request.user,
-                "workspace_integration": workspace_integration,
-                "credentials": credentials,
-            },
-        )
+        ).first()
 
-        if not created:
-            return Response(
-                {"error": "A sync for this project and repository already exists"},
-                status=status.HTTP_400_BAD_REQUEST,
+        if existing_sync is not None:
+            if existing_sync.deleted_at is None:
+                # Genuinely active sync already exists — reject the duplicate.
+                return Response(
+                    {"error": "A sync for this project and repository already exists"},
+                    status=status.HTTP_400_BAD_REQUEST,
+                )
+            # Resurrect the soft-deleted sync with fresh settings.
+            existing_sync.deleted_at = None
+            existing_sync.actor = request.user
+            existing_sync.workspace_integration = workspace_integration
+            existing_sync.credentials = credentials
+            existing_sync.save(
+                update_fields=["deleted_at", "actor", "workspace_integration", "credentials"]
+            )
+            sync = existing_sync
+        else:
+            sync = GithubRepositorySync.objects.create(
+                repository=repo,
+                project_id=project_id,
+                workspace=workspace,
+                actor=request.user,
+                workspace_integration=workspace_integration,
+                credentials=credentials,
             )
 
         # Auto-register the Plane webhook on GitHub so we receive real-time events.
@@ -715,13 +740,17 @@ class GithubRepoSyncViewSet(BaseViewSet):
 
     @allow_permission([ROLE.ADMIN], level="WORKSPACE")
     def destroy(self, request, slug, pk):
-        """Delete a GithubRepositorySync by its id."""
+        """Delete a GithubRepositorySync (and its orphaned GithubRepository) by id."""
         sync = get_object_or_404(
             GithubRepositorySync,
             pk=pk,
             workspace__slug=slug,
         )
+        # Capture the repo before deleting the sync so we can clean it up too.
+        # GithubRepository is a pure bridge record — without its sync it is orphaned.
+        repo = sync.repository
         sync.delete()
+        repo.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
