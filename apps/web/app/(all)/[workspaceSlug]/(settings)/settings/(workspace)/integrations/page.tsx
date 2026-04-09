@@ -42,9 +42,9 @@ function WorkspaceIntegrationsPage() {
   return (
     <>
       <PageHead title={pageTitle} />
-      <section className="w-full overflow-y-auto">
+      <section className="w-full overflow-y-auto px-6">
         <IntegrationAndImportExportBanner bannerName="Integrations" />
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {appIntegrations ? (
             appIntegrations
               .filter((integration) => {
@@ -53,9 +53,7 @@ function WorkspaceIntegrationsPage() {
                 if (integration.provider === "slack") return config?.is_slack_enabled ?? true;
                 return true;
               })
-              .map((integration) => (
-                <SingleIntegrationCard key={integration.id} integration={integration} />
-              ))
+              .map((integration) => <SingleIntegrationCard key={integration.id} integration={integration} />)
           ) : (
             <IntegrationsSettingsLoader />
           )}

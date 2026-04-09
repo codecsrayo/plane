@@ -102,7 +102,7 @@ export const SingleIntegrationCard = observer(function SingleIntegrationCard({ i
   if (!providerDetails) return null;
 
   return (
-    <div className="flex flex-col gap-4 rounded-lg border border-subtle bg-surface-1 p-5">
+    <div className="flex flex-col gap-5 rounded-lg border border-subtle bg-surface-1 p-6">
       {/* Logo + title */}
       <div className="flex items-center gap-3">
         <div className="h-10 w-10 flex-shrink-0 rounded-lg border border-subtle p-1.5">

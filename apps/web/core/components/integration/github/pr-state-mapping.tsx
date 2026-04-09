@@ -12,6 +12,7 @@ import { TOAST_TYPE, setToast } from "@plane/propel/toast";
 import { Loader } from "@plane/ui";
 // hooks
 import { useProject } from "@/hooks/store/use-project";
+import { useProjectState } from "@/hooks/store/use-project-state";
 // services
 import { IntegrationService } from "@/services/integrations";
 
@@ -27,6 +28,7 @@ export const getPRStateMappingSwrKey = (workspaceIntegrationId: string) =>
 export const GithubPRStateMapping = observer(function GithubPRStateMapping({ workspaceIntegrationId }: Props) {
   const { workspaceSlug } = useParams();
   const { getProjectById } = useProject();
+  const { getStateById } = useProjectState();
 
   const SWR_KEY = workspaceSlug ? getPRStateMappingSwrKey(workspaceIntegrationId) : null;
 
@@ -59,16 +61,21 @@ export const GithubPRStateMapping = observer(function GithubPRStateMapping({ wor
   }
 
   return (
-    <div className="flex flex-col divide-y divide-custom-border-200 rounded-md border border-custom-border-200">
+    <div className="divide-custom-border-200 border-custom-border-200 flex flex-col divide-y rounded-md border">
       {mappings.map((mapping: any) => {
         const project = getProjectById(mapping.project);
+        const state = getStateById(mapping.state);
         return (
           <div key={mapping.id} className="flex items-center justify-between px-4 py-3">
-            <div className="flex items-center gap-3 text-sm">
-              <span className="font-medium text-custom-text-100">{project?.name ?? mapping.project}</span>
+            <div className="text-sm flex items-center gap-3">
+              <span className="text-custom-text-100 font-medium">{project?.name ?? mapping.project}</span>
               <span className="text-custom-text-300">→</span>
-              <span className="capitalize rounded bg-custom-background-80 px-2 py-0.5 text-xs font-medium">
+              <span className="bg-custom-background-80 text-xs rounded px-2 py-0.5 font-medium capitalize">
                 {mapping.github_pr_state?.replace(/_/g, " ")}
+              </span>
+              <span className="text-custom-text-300">→</span>
+              <span className="border-custom-border-200 text-xs text-custom-text-100 rounded border px-2 py-0.5 font-medium">
+                {state?.name ?? mapping.state}
               </span>
             </div>
             <button

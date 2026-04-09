@@ -4,7 +4,7 @@
  * See the LICENSE file for details.
  */
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { observer } from "mobx-react";
 import { mutate } from "swr";
 import { Button } from "@plane/propel/button";
@@ -45,7 +45,7 @@ export const GithubPRStateMappingModal = observer(function GithubPRStateMappingM
   swrKey,
 }: Props) {
   const { workspaceProjectIds, getProjectById } = useProject();
-  const { getProjectStates } = useProjectState();
+  const { getProjectStates, fetchProjectStates } = useProjectState();
 
   const [selectedProject, setSelectedProject] = useState("");
   const [stateMapping, setStateMapping] = useState<StateMappingRow>({});
@@ -53,6 +53,14 @@ export const GithubPRStateMappingModal = observer(function GithubPRStateMappingM
   const [isSaving, setIsSaving] = useState(false);
 
   const projectStates = selectedProject ? (getProjectStates(selectedProject) ?? []) : [];
+
+  useEffect(() => {
+    if (!selectedProject) return;
+
+    fetchProjectStates(workspaceSlug, selectedProject).catch(() => {
+      setToast({ type: TOAST_TYPE.ERROR, title: "Failed to load project states" });
+    });
+  }, [fetchProjectStates, selectedProject, workspaceSlug]);
 
   const handleProjectChange = (projectId: string) => {
     setSelectedProject(projectId);
