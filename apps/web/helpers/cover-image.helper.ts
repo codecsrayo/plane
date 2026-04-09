@@ -272,8 +272,8 @@ export const handleCoverImageChange = async (
   }
 
   if (analysis.needsUpload) {
-    await uploadCoverImage(newImage, uploadConfig);
-    return;
+    const assetUrl = await uploadCoverImage(newImage, uploadConfig);
+    return { cover_image: assetUrl };
   }
 
   return { cover_image: newImage };
