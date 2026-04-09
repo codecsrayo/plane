@@ -7,8 +7,8 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { observer } from "mobx-react";
-import { Check, Copy, Monitor } from "lucide-react";
-import { useForm } from "react-hook-form";
+import { Check, Copy, KeyRound, Monitor } from "lucide-react";
+import { Controller, useForm } from "react-hook-form";
 // plane internal packages
 import { Button, getButtonStyling } from "@plane/propel/button";
 import { TOAST_TYPE, setToast } from "@plane/propel/toast";
@@ -17,7 +17,7 @@ import type {
   TInstanceAuthenticationMethodKeys,
   TInstanceIntegrationConfigurationKeys,
 } from "@plane/types";
-import { ToggleSwitch } from "@plane/ui";
+import { TextArea, ToggleSwitch } from "@plane/ui";
 // components
 import { CodeBlock } from "@/components/common/code-block";
 import { ConfirmDiscardModal } from "@/components/common/confirm-discard-modal";
@@ -33,10 +33,65 @@ type Props = {
 
 type IntegrationConfigFormValues = Record<TInstanceIntegrationConfigurationKeys, string>;
 
+const PEM_HEADER = "-----BEGIN";
+const decodeBase64 = (value: string) => globalThis.atob(value);
+const encodeBase64 = (value: string) => globalThis.btoa(value);
+
+const normalizePemBlock = (value: string) => {
+  const trimmedValue = value.trim();
+  if (!trimmedValue.startsWith(PEM_HEADER)) return trimmedValue;
+
+  const lines = trimmedValue
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean);
+
+  if (lines.length < 3) return trimmedValue;
+
+  const beginLine = lines[0];
+  const endLine = lines.at(-1);
+  if (!endLine?.startsWith("-----END")) return trimmedValue;
+
+  const body = lines.slice(1, -1).join("");
+  return `${beginLine}\n${body}\n${endLine}`;
+};
+
+const decodePrivateKeyForDisplay = (value: string) => {
+  if (!value) return "";
+
+  const trimmedValue = value.trim();
+  if (trimmedValue.startsWith(PEM_HEADER)) return normalizePemBlock(trimmedValue);
+
+  try {
+    const decodedValue = decodeBase64(trimmedValue).trim();
+    return decodedValue.startsWith(PEM_HEADER) ? normalizePemBlock(decodedValue) : value;
+  } catch {
+    return value;
+  }
+};
+
+const encodePrivateKeyForStorage = (value: string) => {
+  const trimmedValue = value.trim();
+  if (!trimmedValue) return "";
+
+  if (trimmedValue.startsWith(PEM_HEADER)) return encodeBase64(normalizePemBlock(trimmedValue));
+
+  try {
+    const decodedValue = decodeBase64(trimmedValue).trim();
+    return decodedValue.startsWith(PEM_HEADER) ? trimmedValue : encodeBase64(trimmedValue);
+  } catch {
+    return encodeBase64(trimmedValue);
+  }
+};
+
 // ─── Main form ────────────────────────────────────────────────────────────────
 export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrationsConfigForm({ config }: Props) {
   const [isDiscardChangesModalOpen, setIsDiscardChangesModalOpen] = useState(false);
   const [isWebhookSecretCopied, setIsWebhookSecretCopied] = useState(false);
+  const [isGithubPrivateKeySaved, setIsGithubPrivateKeySaved] = useState(Boolean(config["GITHUB_APP_PRIVATE_KEY"]));
+  const [githubPrivateKeyLabel, setGithubPrivateKeyLabel] = useState(
+    config["GITHUB_APP_PRIVATE_KEY"] ? "GitHub App private key" : ""
+  );
   const webhookSecretCopyTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const githubPrivateKeyFileInputRef = useRef<HTMLInputElement | null>(null);
   const { formattedConfig, updateInstanceConfigurations } = useInstance();
@@ -111,8 +166,10 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
 
     try {
       const pem = await file.text();
-      const pemBase64 = window.btoa(pem);
+      const pemBase64 = encodeBase64(pem);
       setValue("GITHUB_APP_PRIVATE_KEY", pemBase64, { shouldDirty: true, shouldValidate: true });
+      setIsGithubPrivateKeySaved(false);
+      setGithubPrivateKeyLabel(file.name);
       setToast({
         type: TOAST_TYPE.SUCCESS,
         title: "Private key loaded",
@@ -127,6 +184,27 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
     } finally {
       event.target.value = "";
     }
+  };
+
+  const handleGithubPrivateKeySave = () => {
+    const privateKeyValue = getValues("GITHUB_APP_PRIVATE_KEY");
+    if (!privateKeyValue.trim()) {
+      setToast({
+        type: TOAST_TYPE.ERROR,
+        title: "Private key required",
+        message: "Upload or paste a private key before saving it.",
+      });
+      return;
+    }
+
+    setIsGithubPrivateKeySaved(true);
+    if (!githubPrivateKeyLabel) setGithubPrivateKeyLabel("GitHub App private key");
+  };
+
+  const handleGithubPrivateKeyDelete = () => {
+    setValue("GITHUB_APP_PRIVATE_KEY", "", { shouldDirty: true, shouldValidate: true });
+    setIsGithubPrivateKeySaved(false);
+    setGithubPrivateKeyLabel("");
   };
 
   // ── GitHub fields ──────────────────────────────────────────────────────────
@@ -371,44 +449,101 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
                   .map((field) =>
                     field.key === "GITHUB_APP_PRIVATE_KEY" ? (
                       <div key={field.key} className="flex flex-col gap-2">
-                        <ControllerInput
-                          control={control}
-                          type={field.type}
-                          name={field.key}
-                          label="Private key"
-                          description={
-                            <>
-                              Upload your GitHub App <CodeBlock darkerShade>.pem</CodeBlock> file or paste the base64
-                              value directly. The form stores the value in base64 for backend compatibility.
-                            </>
-                          }
-                          placeholder={field.placeholder}
-                          error={Boolean(errors[field.key as keyof typeof errors])}
-                          required={isGithubEnabled ? field.required : false}
-                          disabled={!isGithubEnabled}
-                        />
-                        <div className="flex items-center gap-2">
-                          <input
-                            ref={githubPrivateKeyFileInputRef}
-                            type="file"
-                            accept=".pem"
-                            className="hidden"
-                            onChange={(e) => void handleGithubPrivateKeyUpload(e)}
-                            disabled={!isGithubEnabled}
-                          />
-                          <Button
-                            type="button"
-                            variant="secondary"
-                            size="sm"
-                            onClick={() => githubPrivateKeyFileInputRef.current?.click()}
-                            disabled={!isGithubEnabled}
-                          >
-                            Upload .pem
-                          </Button>
-                          <p className="text-11 text-tertiary">
-                            GitHub generates a PEM private key. Plane converts it to base64 before saving.
-                          </p>
-                        </div>
+                        {isGithubPrivateKeySaved ? (
+                          <div className="flex items-center justify-between gap-4 rounded-lg border border-subtle bg-layer-1 px-5 py-4">
+                            <div className="flex items-center gap-4">
+                              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-layer-2">
+                                <KeyRound className="h-5 w-5" />
+                              </div>
+                              <div className="flex flex-col">
+                                <p className="text-base font-medium">
+                                  {githubPrivateKeyLabel || "GitHub App private key"}
+                                </p>
+                                <p className="font-mono text-xs text-secondary">RSA private key configured</p>
+                                <p className="text-sm text-secondary">
+                                  Saved locally in this form. Use Save changes to persist it.
+                                </p>
+                              </div>
+                            </div>
+                            <Button
+                              type="button"
+                              variant="secondary"
+                              size="sm"
+                              onClick={handleGithubPrivateKeyDelete}
+                              disabled={!isGithubEnabled}
+                              className="text-destructive"
+                            >
+                              Delete
+                            </Button>
+                          </div>
+                        ) : (
+                          <>
+                            <div className="flex flex-col gap-1">
+                              <h4 className="text-13 text-tertiary">Private key</h4>
+                              <Controller
+                                control={control}
+                                name={field.key}
+                                rules={{ required: isGithubEnabled ? "Private key is required." : false }}
+                                render={({ field: { value, onChange, ref } }) => (
+                                  <TextArea
+                                    id={field.key}
+                                    name={field.key}
+                                    ref={ref}
+                                    value={decodePrivateKeyForDisplay(value)}
+                                    onChange={(e) => {
+                                      setIsGithubPrivateKeySaved(false);
+                                      onChange(encodePrivateKeyForStorage(e.target.value));
+                                    }}
+                                    hasError={Boolean(errors[field.key as keyof typeof errors])}
+                                    placeholder={
+                                      "-----BEGIN RSA PRIVATE KEY-----\nMIIE...\n-----END RSA PRIVATE KEY-----"
+                                    }
+                                    disabled={!isGithubEnabled}
+                                    rows={8}
+                                    className="font-mono text-sm h-64 min-h-64 w-full resize-y rounded-md"
+                                  />
+                                )}
+                              />
+                              <p className="pt-0.5 text-11 text-tertiary">
+                                <>
+                                  Upload your GitHub App <CodeBlock darkerShade>.pem</CodeBlock> file or paste the
+                                  base64 value directly. The form stores the value in base64 for backend compatibility.
+                                </>
+                              </p>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <input
+                                ref={githubPrivateKeyFileInputRef}
+                                type="file"
+                                accept=".pem"
+                                className="hidden"
+                                onChange={(e) => void handleGithubPrivateKeyUpload(e)}
+                                disabled={!isGithubEnabled}
+                              />
+                              <Button
+                                type="button"
+                                variant="secondary"
+                                size="sm"
+                                onClick={() => githubPrivateKeyFileInputRef.current?.click()}
+                                disabled={!isGithubEnabled}
+                              >
+                                Upload .pem
+                              </Button>
+                              <Button
+                                type="button"
+                                variant="primary"
+                                size="sm"
+                                onClick={handleGithubPrivateKeySave}
+                                disabled={!isGithubEnabled}
+                              >
+                                Guardar
+                              </Button>
+                              <p className="text-11 text-tertiary">
+                                GitHub generates a PEM private key. Plane converts it to base64 before saving.
+                              </p>
+                            </div>
+                          </>
+                        )}
                       </div>
                     ) : (
                       <ControllerInput
