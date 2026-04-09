@@ -469,25 +469,146 @@ class GitLabWebhookEndpoint(BaseAPIView):
 
     def handle_merge_request(self, payload):
         """
-        Handle GitLab `merge_request` webhook events.
+        Handle GitLab `merge_request` webhook events and update the linked Plane issue
+        state according to the configured GithubPRStateMapping (shared with GitHub).
 
-        TODO: Implement GitLab MR → Plane issue state mapping using a GitLab-specific
-        PR state mapping model (or extend GithubPRStateMapping to be provider-agnostic).
-        For now we log the event and skip state updates.
+        MR → Plane state flow:
+          1. Derive the logical pr_state from the MR action + state fields.
+          2. Find the GitlabRepositorySync for this project.
+          3. Find all Plane issues linked via "Closes/Fixes/Resolves #N" in the MR description.
+          4. For each linked issue, look up the GithubPRStateMapping and apply the target state,
+             respecting the prevent_regression flag.
 
         GitLab MR states: object_attributes.state ∈ {opened, merged, closed, locked}
+        GitLab MR actions: open, reopen, update, merge, close, approved, unapproved,
+                           approval, unapproval
         """
-        attr = payload.get("object_attributes", {})
-        gl_mr_state = attr.get("state")
-        project_id = payload.get("project", {}).get("id")
-        mr_iid = attr.get("iid")  # internal MR number within the project
+        import re
 
-        logger.debug(
-            "handle_merge_request: GitLab MR state=%s project_id=%s iid=%s — "
-            "GitLab PR state mapping not yet implemented",
-            gl_mr_state,
-            project_id,
-            mr_iid,
+        attr = payload.get("object_attributes", {})
+        gl_state = attr.get("state")      # opened / merged / closed / locked
+        action = attr.get("action")       # open / reopen / merge / close / update / approved …
+        draft = attr.get("draft", False) or attr.get("work_in_progress", False)
+        repo_id = payload.get("project", {}).get("id")
+        mr_iid = attr.get("iid")
+
+        # ------------------------------------------------------------------
+        # 1. Derive logical pr_state (reuse GithubPRStateMapping choices)
+        # ------------------------------------------------------------------
+        if action in ("open", "reopen"):
+            pr_state = "draft_open" if draft else "open"
+        elif action == "update" and draft:
+            pr_state = "draft_open"
+        elif action == "update" and not draft:
+            # Non-draft update carries no actionable state change
+            return Response({"status": "ignored"}, status=status.HTTP_200_OK)
+        elif action == "approved":
+            pr_state = "ready_for_merge"
+        elif action in ("unapproved", "unapproval"):
+            pr_state = "review_requested"
+        elif action == "merge" or gl_state == "merged":
+            pr_state = "merged"
+        elif action == "close" or gl_state == "closed":
+            pr_state = "closed"
+        else:
+            logger.debug(
+                "handle_merge_request: unhandled action=%s state=%s repo_id=%s mr=%s",
+                action, gl_state, repo_id, mr_iid,
+            )
+            return Response({"status": "ignored"}, status=status.HTTP_200_OK)
+
+        # ------------------------------------------------------------------
+        # 2. Find the GitLab repository sync record
+        # ------------------------------------------------------------------
+        sync = GitlabRepositorySync.objects.filter(
+            repository__repository_id=repo_id
+        ).select_related("workspace_integration").first()
+
+        if not sync:
+            logger.debug("handle_merge_request: no sync for repo_id=%s", repo_id)
+            return Response({"status": "ignored"}, status=status.HTTP_200_OK)
+
+        # ------------------------------------------------------------------
+        # 3. Extract linked Plane issue numbers from MR description
+        #    Matches: closes #N, fixes #N, resolves #N (case-insensitive)
+        # ------------------------------------------------------------------
+        mr_description = attr.get("description") or ""
+        linked_issue_numbers = list(
+            set(
+                int(n)
+                for n in re.findall(
+                    r"(?:closes?|fixes?|resolves?)\s+#(\d+)",
+                    mr_description,
+                    re.IGNORECASE,
+                )
+            )
         )
 
-        return Response({"status": "ignored"}, status=status.HTTP_200_OK)
+        if not linked_issue_numbers:
+            logger.debug(
+                "handle_merge_request: no linked issues in MR description for repo_id=%s pr_state=%s",
+                repo_id, pr_state,
+            )
+            return Response({"status": "ignored"}, status=status.HTTP_200_OK)
+
+        # ------------------------------------------------------------------
+        # 4. Look up the PR state mapping (GithubPRStateMapping is provider-agnostic)
+        # ------------------------------------------------------------------
+        mapping = GithubPRStateMapping.objects.filter(
+            workspace_integration=sync.workspace_integration,
+            project_id=sync.project_id,
+            github_pr_state=pr_state,
+        ).select_related("state").first()
+
+        if not mapping:
+            logger.debug(
+                "handle_merge_request: no mapping for pr_state=%s project=%s",
+                pr_state, sync.project_id,
+            )
+            return Response({"status": "ignored"}, status=status.HTTP_200_OK)
+
+        target_state = mapping.state
+
+        # ------------------------------------------------------------------
+        # 5. Apply state to each linked issue, respecting prevent_regression
+        # ------------------------------------------------------------------
+        updated_count = 0
+        for issue_number in linked_issue_numbers:
+            issue_sync = GitlabIssueSync.objects.filter(
+                repo_issue_id=issue_number,
+                repository_sync=sync,
+            ).select_related("issue__state").first()
+
+            if not issue_sync:
+                logger.debug(
+                    "handle_merge_request: no issue sync for issue_number=%s", issue_number
+                )
+                continue
+
+            issue = issue_sync.issue
+
+            if mapping.prevent_regression and issue.state:
+                if target_state.sequence < issue.state.sequence:
+                    logger.debug(
+                        "handle_merge_request: skipping regression for issue=%s "
+                        "(current_seq=%s target_seq=%s)",
+                        issue.id, issue.state.sequence, target_state.sequence,
+                    )
+                    continue
+
+            if issue.state_id == target_state.id:
+                continue
+
+            issue.state_id = target_state.id
+            issue.save(update_fields=["state_id", "updated_at"])
+            updated_count += 1
+
+        logger.debug(
+            "handle_merge_request: repo_id=%s mr=%s pr_state=%s updated_issues=%s",
+            repo_id, mr_iid, pr_state, updated_count,
+        )
+
+        return Response(
+            {"status": "success", "updated_issues": updated_count},
+            status=status.HTTP_200_OK,
+        )
