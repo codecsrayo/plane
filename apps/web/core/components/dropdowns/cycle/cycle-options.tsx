@@ -52,6 +52,12 @@ export const CycleOptions = observer(function CycleOptions(props: CycleOptionsPr
   const { getProjectCycleIds, fetchAllCycles, getCycleById } = useCycle();
   const { isMobile } = usePlatformOS();
 
+  const cycleIds = (getProjectCycleIds(projectId) ?? [])?.filter((cycleId) => {
+    const cycleDetails = getCycleById(cycleId);
+    if (currentCycleId && currentCycleId === cycleId) return false;
+    return cycleDetails?.status ? cycleDetails.status.toLowerCase() !== "completed" : true;
+  });
+
   const onOpen = useCallback(() => {
     if (workspaceSlug && !cycleIds) fetchAllCycles(workspaceSlug.toString(), projectId);
   }, [cycleIds, fetchAllCycles, projectId, workspaceSlug]);
@@ -76,12 +82,6 @@ export const CycleOptions = observer(function CycleOptions(props: CycleOptionsPr
         },
       },
     ],
-  });
-
-  const cycleIds = (getProjectCycleIds(projectId) ?? [])?.filter((cycleId) => {
-    const cycleDetails = getCycleById(cycleId);
-    if (currentCycleId && currentCycleId === cycleId) return false;
-    return cycleDetails?.status ? cycleDetails.status.toLowerCase() !== "completed" : true;
   });
 
   const searchInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
