@@ -10,6 +10,15 @@ from plane.db.models.base import BaseModel
 
 
 class GithubPRStateMapping(BaseModel):
+    GITHUB_PR_STATE_CHOICES = [
+        ("draft_open", "Draft Open"),
+        ("open", "Open"),
+        ("review_requested", "Review Requested"),
+        ("ready_for_merge", "Ready for Merge"),
+        ("merged", "Merged"),
+        ("closed", "Closed"),
+    ]
+
     workspace_integration = models.ForeignKey(
         "db.WorkspaceIntegration",
         on_delete=models.CASCADE,
@@ -27,7 +36,11 @@ class GithubPRStateMapping(BaseModel):
     )
     github_pr_state = models.CharField(
         max_length=20,
-        choices=[("open", "Open"), ("merged", "Merged"), ("closed", "Closed")],
+        choices=GITHUB_PR_STATE_CHOICES,
+    )
+    prevent_regression = models.BooleanField(
+        default=False,
+        help_text="Prevent issues from moving to an earlier state due to PR updates",
     )
 
     class Meta:
