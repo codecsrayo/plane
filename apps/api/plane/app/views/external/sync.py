@@ -84,21 +84,115 @@ class GitHubWebhookEndpoint(BaseAPIView):
         return Response({"status": "ignored"}, status=status.HTTP_200_OK)
 
     def handle_issue(self, payload):
+        """
+        Handle GitHub `issues` webhook events.
+
+        - opened:   Create a Plane issue + GithubIssueSync if not already tracked,
+                    then apply issue_open_state if configured.
+        - edited:   Sync title & description to the existing Plane issue.
+        - reopened: Apply issue_open_state if configured.
+        - closed:   Apply issue_closed_state if configured.
+        """
+        from plane.db.models import State
+
         action = payload.get("action")
-        gh_issue = payload.get("issue")
+        gh_issue = payload.get("issue", {})
         repo_id = payload.get("repository", {}).get("id")
 
-        sync = GithubRepositorySync.objects.filter(repository__repository_id=repo_id).first()
+        sync = (
+            GithubRepositorySync.objects.filter(repository__repository_id=repo_id)
+            .select_related("project", "workspace", "actor")
+            .first()
+        )
         if not sync:
             return Response({"error": "Sync not configured"}, status=status.HTTP_404_NOT_FOUND)
 
-        issue_sync = GithubIssueSync.objects.filter(github_issue_id=gh_issue["id"]).first()
-        if issue_sync:
-            if action in ["opened", "edited", "reopened", "closed"]:
-                issue = issue_sync.issue
-                issue.name = gh_issue["title"]
-                issue.description_html = gh_issue.get("body") or ""
-                issue.save()
+        gh_issue_id = gh_issue.get("id")      # GitHub internal ID (large int)
+        gh_issue_number = gh_issue.get("number")  # sequential number within the repo (#42)
+
+        issue_sync = (
+            GithubIssueSync.objects.filter(
+                github_issue_id=gh_issue_id,
+                repository_sync=sync,
+            )
+            .select_related("issue__state")
+            .first()
+        )
+
+        # ------------------------------------------------------------------
+        # CREATE: new GitHub issue → new Plane issue
+        # ------------------------------------------------------------------
+        if action == "opened" and not issue_sync:
+            # Resolve the open-state UUID from sync credentials, if configured
+            open_state_id = (sync.credentials or {}).get("issue_open_state")
+            state_kwargs = {}
+            if open_state_id:
+                try:
+                    target_state = State.objects.get(pk=open_state_id, project=sync.project)
+                    state_kwargs["state"] = target_state
+                except State.DoesNotExist:
+                    pass
+
+            new_issue = Issue.objects.create(
+                name=gh_issue.get("title", "(no title)"),
+                description_html=gh_issue.get("body") or "",
+                project=sync.project,
+                workspace=sync.workspace,
+                **state_kwargs,
+            )
+            GithubIssueSync.objects.create(
+                issue=new_issue,
+                repository_sync=sync,
+                repo_issue_id=gh_issue_number,   # sequential number, used by PR body links
+                github_issue_id=gh_issue_id,      # internal GitHub ID, used for event lookup
+                issue_url=gh_issue.get("html_url", ""),
+                project=sync.project,
+                workspace=sync.workspace,
+            )
+            return Response({"status": "created"}, status=status.HTTP_200_OK)
+
+        if not issue_sync:
+            # Issue is not tracked — nothing to do for edit/reopen/close
+            return Response({"status": "ignored"}, status=status.HTTP_200_OK)
+
+        issue = issue_sync.issue
+        credentials = sync.credentials or {}
+
+        # ------------------------------------------------------------------
+        # EDITED: sync title and description
+        # ------------------------------------------------------------------
+        if action == "edited":
+            issue.name = gh_issue.get("title", issue.name)
+            issue.description_html = gh_issue.get("body") or ""
+            issue.save(update_fields=["name", "description_html", "updated_at"])
+
+        # ------------------------------------------------------------------
+        # REOPENED: apply issue_open_state if configured
+        # ------------------------------------------------------------------
+        elif action == "reopened":
+            open_state_id = credentials.get("issue_open_state")
+            if open_state_id:
+                try:
+                    target_state = State.objects.get(pk=open_state_id, project=sync.project)
+                    if issue.state_id != target_state.id:
+                        issue.state_id = target_state.id
+                        issue.save(update_fields=["state_id", "updated_at"])
+                except State.DoesNotExist:
+                    logger.warning("handle_issue: issue_open_state %s not found", open_state_id)
+
+        # ------------------------------------------------------------------
+        # CLOSED: apply issue_closed_state if configured
+        # ------------------------------------------------------------------
+        elif action == "closed":
+            closed_state_id = credentials.get("issue_closed_state")
+            if closed_state_id:
+                try:
+                    target_state = State.objects.get(pk=closed_state_id, project=sync.project)
+                    if issue.state_id != target_state.id:
+                        issue.state_id = target_state.id
+                        issue.save(update_fields=["state_id", "updated_at"])
+                except State.DoesNotExist:
+                    logger.warning("handle_issue: issue_closed_state %s not found", closed_state_id)
 
         return Response({"status": "success"}, status=status.HTTP_200_OK)
 
@@ -107,6 +201,8 @@ class GitHubWebhookEndpoint(BaseAPIView):
         gh_comment = payload.get("comment")
         gh_issue = payload.get("issue")
 
+        # github_issue_id in GithubIssueSync stores the GitHub internal issue ID,
+        # which matches gh_issue["id"] from the issue_comment webhook payload.
         issue_sync = GithubIssueSync.objects.filter(github_issue_id=gh_issue["id"]).first()
         if not issue_sync:
             return Response({"error": "Issue not synced"}, status=status.HTTP_404_NOT_FOUND)
@@ -241,8 +337,11 @@ class GitHubWebhookEndpoint(BaseAPIView):
         # ------------------------------------------------------------------
         updated_count = 0
         for gh_issue_number in linked_issue_numbers:
+            # PR body uses the sequential issue number (#42), which is stored in
+            # repo_issue_id. github_issue_id holds the internal GitHub ID (large int)
+            # and is used only for issue-event lookups, not PR body parsing.
             issue_sync = GithubIssueSync.objects.filter(
-                github_issue_id=gh_issue_number,
+                repo_issue_id=gh_issue_number,
                 repository_sync=sync,
             ).select_related("issue__state").first()
 

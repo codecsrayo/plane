@@ -60,7 +60,7 @@ class GithubIssueSync(ProjectBaseModel):
 
     def __str__(self):
         """Return the github issue sync"""
-        return f"{self.repository.name}-{self.project.name}-{self.issue.name}"
+        return f"{self.repository_sync.repository.name}-{self.project.name}-{self.issue.name}"
 
     class Meta:
         unique_together = ["repository_sync", "issue"]

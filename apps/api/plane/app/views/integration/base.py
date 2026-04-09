@@ -585,7 +585,8 @@ class GithubRepoSyncViewSet(BaseViewSet):
                 "name": repo_name,
                 "owner": repo_owner,
                 "url": f"https://github.com/{repo_full_name}",
-                "workspace": workspace,
+                # workspace is intentionally omitted: ProjectBaseModel.save()
+                # auto-derives it from the project FK.
             },
         )
 
