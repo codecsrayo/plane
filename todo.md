@@ -339,6 +339,12 @@ requests.post(
 
 ## Variables de entorno necesarias (resumen)
 
+> ⚠️ **Las credenciales de auth e integración ya NO se leen desde el .env.**
+> Todo debe configurarse desde God Mode (panel de administración).
+> El .env solo es necesario para variables de infraestructura (DB, Redis, SECRET_KEY, etc.).
+
+
+
 ```bash
 # GitHub App
 GITHUB_APP_NAME=""           # slug del App (aparece en la URL de instalación)
