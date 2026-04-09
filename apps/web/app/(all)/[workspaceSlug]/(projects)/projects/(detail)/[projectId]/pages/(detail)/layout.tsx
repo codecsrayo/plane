@@ -9,6 +9,7 @@ import { Outlet } from "react-router";
 import useSWR from "swr";
 import { AppHeader } from "@/components/core/app-header";
 import { ContentWrapper } from "@/components/core/content-wrapper";
+import { useProject } from "@/hooks/store/use-project";
 // plane web hooks
 import { EPageStoreType, usePageStore } from "@/plane-web/hooks/store";
 // local components
@@ -17,12 +18,18 @@ import { PageDetailsHeader } from "./header";
 
 export default function ProjectPageDetailsLayout({ params }: Route.ComponentProps) {
   const { workspaceSlug, projectId } = params;
+  const { currentProjectDetails } = useProject();
   const { fetchPagesList } = usePageStore(EPageStoreType.PROJECT);
   // fetching pages list
-  useSWR(`PROJECT_PAGES_${projectId}`, () => fetchPagesList(workspaceSlug, projectId));
+  useSWR(currentProjectDetails?.page_view === false ? null : `PROJECT_PAGES_${projectId}`, () =>
+    fetchPagesList(workspaceSlug, projectId)
+  );
+
+  const shouldShowHeader = currentProjectDetails?.page_view !== false;
+
   return (
     <>
-      <AppHeader header={<PageDetailsHeader />} />
+      {shouldShowHeader && <AppHeader header={<PageDetailsHeader />} />}
       <ContentWrapper>
         <Outlet />
       </ContentWrapper>

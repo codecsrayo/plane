@@ -16,7 +16,6 @@ import type { TPage, TPageNavigationTabs } from "@plane/types";
 import { EUserProjectRoles } from "@plane/types";
 // components
 import { PageLoader } from "@/components/pages/loaders/page-loader";
-import { useProject } from "@/hooks/store/use-project";
 import { useUserPermissions } from "@/hooks/store/user";
 // plane web hooks
 import { EPageStoreType, usePageStore } from "@/plane-web/hooks/store";
@@ -32,7 +31,6 @@ export const PagesListMainContent = observer(function PagesListMainContent(props
   // plane hooks
   const { t } = useTranslation();
   // store hooks
-  const { currentProjectDetails } = useProject();
   const { isAnyPageAvailable, getCurrentProjectFilteredPageIdsByTab, getCurrentProjectPageIdsByTab, loader } =
     usePageStore(storeType);
   const { allowPermissions } = useUserPermissions();
@@ -41,8 +39,10 @@ export const PagesListMainContent = observer(function PagesListMainContent(props
   const [isCreatingPage, setIsCreatingPage] = useState(false);
   // router
   const router = useRouter();
-  const { workspaceSlug } = useParams();
+  const { workspaceSlug, projectId } = useParams();
   // derived values
+  const workspaceSlugParam = workspaceSlug?.toString();
+  const projectIdParam = projectId?.toString();
   const pageIds = getCurrentProjectPageIdsByTab(pageType);
   const filteredPageIds = getCurrentProjectFilteredPageIdsByTab(pageType);
   const canPerformEmptyStateActions = allowPermissions(
@@ -60,8 +60,17 @@ export const PagesListMainContent = observer(function PagesListMainContent(props
 
     await createPage(payload)
       .then((res) => {
-        const pageId = `/${workspaceSlug}/projects/${currentProjectDetails?.id}/pages/${res?.id}`;
-        router.push(pageId);
+        if (!res?.id || !workspaceSlugParam || !projectIdParam) {
+          setToast({
+            type: TOAST_TYPE.ERROR,
+            title: "Error!",
+            message: "Page could not be created. Please try again.",
+          });
+          return undefined;
+        }
+
+        const pageUrl = `/${workspaceSlugParam}/projects/${projectIdParam}/pages/${res.id}`;
+        router.push(pageUrl);
         return undefined;
       })
       .catch((err) => {

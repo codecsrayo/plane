@@ -9,22 +9,32 @@ import { observer } from "mobx-react";
 import Link from "next/link";
 import useSWR from "swr";
 // plane types
+import { EUserPermissionsLevel } from "@plane/constants";
 import { getButtonStyling } from "@plane/propel/button";
+import { useTranslation } from "@plane/i18n";
 import type { TSearchEntityRequestPayload, TWebhookConnectionQueryParams } from "@plane/types";
 import { EFileAssetType } from "@plane/types";
+import { EUserProjectRoles } from "@plane/types";
+import { useTheme } from "next-themes";
 // plane ui
 // plane utils
 import { cn } from "@plane/utils";
+// assets
+import darkPagesAsset from "@/app/assets/empty-state/disabled-feature/pages-dark.webp?url";
+import lightPagesAsset from "@/app/assets/empty-state/disabled-feature/pages-light.webp?url";
 // components
 import { LogoSpinner } from "@/components/common/logo-spinner";
 import { PageHead } from "@/components/core/page-title";
+import { DetailedEmptyState } from "@/components/empty-state/detailed-empty-state-root";
 import { IssuePeekOverview } from "@/components/issues/peek-overview";
 import type { TPageRootConfig, TPageRootHandlers } from "@/components/pages/editor/page-root";
 import { PageRoot } from "@/components/pages/editor/page-root";
 // hooks
 import { useEditorConfig } from "@/hooks/editor";
 import { useEditorAsset } from "@/hooks/store/use-editor-asset";
+import { useProject } from "@/hooks/store/use-project";
 import { useWorkspace } from "@/hooks/store/use-workspace";
+import { useUserPermissions } from "@/hooks/store/user";
 import { useAppRouter } from "@/hooks/use-app-router";
 // plane web hooks
 import { EPageStoreType, usePage, usePageStore } from "@/plane-web/hooks/store";
@@ -43,17 +53,24 @@ function PageDetailsPage({ params }: Route.ComponentProps) {
   // router
   const router = useAppRouter();
   const { workspaceSlug, projectId, pageId } = params;
+  // theme/hooks
+  const { resolvedTheme } = useTheme();
+  const { t } = useTranslation();
   // store hooks
   const { createPage, fetchPageDetails } = usePageStore(storeType);
   const page = usePage({
     pageId,
     storeType,
   });
+  const { currentProjectDetails } = useProject();
   const { getWorkspaceBySlug } = useWorkspace();
   const { uploadEditorAsset, duplicateEditorAsset } = useEditorAsset();
+  const { allowPermissions } = useUserPermissions();
   // derived values
   const workspaceId = workspaceSlug ? (getWorkspaceBySlug(workspaceSlug)?.id ?? "") : "";
   const { canCurrentUserAccessPage, id, name, updateDescription } = page ?? {};
+  const canPerformEmptyStateActions = allowPermissions([EUserProjectRoles.ADMIN], EUserPermissionsLevel.PROJECT);
+  const resolvedPath = resolvedTheme === "light" ? lightPagesAsset : darkPagesAsset;
   // entity search handler
   const fetchEntityCallback = useCallback(
     async (payload: TSearchEntityRequestPayload) =>
@@ -67,7 +84,7 @@ function PageDetailsPage({ params }: Route.ComponentProps) {
   const { getEditorFileHandlers } = useEditorConfig();
   // fetch page details
   const { error: pageDetailsError } = useSWR(
-    `PAGE_DETAILS_${pageId}`,
+    currentProjectDetails?.page_view === false ? null : `PAGE_DETAILS_${pageId}`,
     () => fetchPageDetails(workspaceSlug, projectId, pageId),
     {
       revalidateIfStale: true,
@@ -150,6 +167,24 @@ function PageDetailsPage({ params }: Route.ComponentProps) {
       router.push(pageRootHandlers.getRedirectionLink());
     }
   }, [page?.deleted_at, page?.id, router, pageRootHandlers]);
+
+  if (currentProjectDetails?.page_view === false)
+    return (
+      <div className="flex h-full w-full items-center justify-center">
+        <DetailedEmptyState
+          title={t("disabled_project.empty_state.page.title")}
+          description={t("disabled_project.empty_state.page.description")}
+          assetPath={resolvedPath}
+          primaryButton={{
+            text: t("disabled_project.empty_state.page.primary_button.text"),
+            onClick: () => {
+              router.push(`/${workspaceSlug}/settings/projects/${projectId}/features`);
+            },
+            disabled: !canPerformEmptyStateActions,
+          }}
+        />
+      </div>
+    );
 
   if ((!page || !id) && !pageDetailsError)
     return (

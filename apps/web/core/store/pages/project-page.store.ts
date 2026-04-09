@@ -119,7 +119,11 @@ export class ProjectPageStore implements IProjectPageStore {
    */
   get isAnyPageAvailable() {
     if (this.loader) return true;
-    return Object.keys(this.data).length > 0;
+
+    const { projectId } = this.store.router;
+    if (!projectId) return false;
+
+    return this.getCurrentProjectPageIds(projectId).length > 0;
   }
 
   /**

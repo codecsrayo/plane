@@ -18,7 +18,6 @@ import type { TPage } from "@plane/types";
 import { Breadcrumbs, Header } from "@plane/ui";
 // helpers
 import { BreadcrumbLink } from "@/components/common/breadcrumb-link";
-// hooks
 import { useProject } from "@/hooks/store/use-project";
 // plane web imports
 import { CommonProjectBreadcrumbs } from "@/plane-web/components/breadcrumbs/common";
@@ -33,7 +32,9 @@ export const PagesListHeader = observer(function PagesListHeader() {
   const searchParams = useSearchParams();
   const pageType = searchParams.get("type");
   // store hooks
-  const { currentProjectDetails, loader } = useProject();
+  const projectIdParam = projectId?.toString();
+  const workspaceSlugParam = workspaceSlug?.toString();
+  const { loader } = useProject();
   const { canCurrentUserCreatePage, createPage } = usePageStore(EPageStoreType.PROJECT);
   // handle page create
   const handleCreatePage = async () => {
@@ -45,7 +46,16 @@ export const PagesListHeader = observer(function PagesListHeader() {
 
     try {
       const res = await createPage(payload);
-      const pageUrl = `/${workspaceSlug}/projects/${currentProjectDetails?.id}/pages/${res?.id}`;
+      if (!res?.id || !workspaceSlugParam || !projectIdParam) {
+        setToast({
+          type: TOAST_TYPE.ERROR,
+          title: "Error!",
+          message: "Page could not be created. Please try again.",
+        });
+        return;
+      }
+
+      const pageUrl = `/${workspaceSlugParam}/projects/${projectIdParam}/pages/${res.id}`;
       router.push(pageUrl);
     } catch (err: any) {
       setToast({
@@ -62,12 +72,12 @@ export const PagesListHeader = observer(function PagesListHeader() {
     <Header>
       <Header.LeftItem>
         <Breadcrumbs isLoading={loader === "init-loader"}>
-          <CommonProjectBreadcrumbs workspaceSlug={workspaceSlug?.toString()} projectId={projectId?.toString()} />
+          <CommonProjectBreadcrumbs workspaceSlug={workspaceSlugParam} projectId={projectIdParam} />
           <Breadcrumbs.Item
             component={
               <BreadcrumbLink
                 label="Pages"
-                href={`/${workspaceSlug}/projects/${currentProjectDetails?.id}/pages/`}
+                href={`/${workspaceSlugParam}/projects/${projectIdParam}/pages/`}
                 icon={<PageIcon className="h-4 w-4 text-tertiary" />}
                 isLast
               />

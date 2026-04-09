@@ -201,6 +201,9 @@ class PageViewSet(BaseViewSet):
 
     def retrieve(self, request, slug, project_id, page_id=None):
         page = self.get_queryset().filter(pk=page_id).first()
+        if page is None:
+            return Response({"error": "Page not found"}, status=status.HTTP_404_NOT_FOUND)
+
         project = Project.objects.get(pk=project_id)
         track_visit = request.query_params.get("track_visit", "true").lower() == "true"
 
@@ -225,23 +228,20 @@ class PageViewSet(BaseViewSet):
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
-        if page is None:
-            return Response({"error": "Page not found"}, status=status.HTTP_404_NOT_FOUND)
-        else:
-            issue_ids = PageLog.objects.filter(page_id=page_id, entity_name="issue").values_list(
-                "entity_identifier", flat=True
+        issue_ids = PageLog.objects.filter(page_id=page_id, entity_name="issue").values_list(
+            "entity_identifier", flat=True
+        )
+        data = PageDetailSerializer(page).data
+        data["issue_ids"] = issue_ids
+        if track_visit:
+            recent_visited_task.delay(
+                slug=slug,
+                entity_name="page",
+                entity_identifier=page_id,
+                user_id=request.user.id,
+                project_id=project_id,
             )
-            data = PageDetailSerializer(page).data
-            data["issue_ids"] = issue_ids
-            if track_visit:
-                recent_visited_task.delay(
-                    slug=slug,
-                    entity_name="page",
-                    entity_identifier=page_id,
-                    user_id=request.user.id,
-                    project_id=project_id,
-                )
-            return Response(data, status=status.HTTP_200_OK)
+        return Response(data, status=status.HTTP_200_OK)
 
     def lock(self, request, slug, project_id, page_id):
         page = Page.objects.get(
