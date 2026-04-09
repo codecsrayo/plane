@@ -1,0 +1,1 @@
+- planificar el stack que reemplaza la api de django
