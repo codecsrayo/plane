@@ -142,64 +142,143 @@ class GitHubWebhookEndpoint(BaseAPIView):
         """
         Handle GitHub `pull_request` webhook events and update the linked Plane issue
         state according to the configured GithubPRStateMapping.
+
+        PR → Plane state flow:
+          1. Derive the logical gh_pr_state from the action + PR fields.
+          2. Find all Plane issues linked to this PR via "Closes/Fixes/Resolves #N" in the body.
+          3. For each linked issue, look up the GithubPRStateMapping and apply the target state,
+             respecting the prevent_regression flag.
         """
+        import re
+
         action = payload.get("action")
         pr = payload.get("pull_request", {})
         repo_id = payload.get("repository", {}).get("id")
-        pr_number = pr.get("number")
 
-        # Determine the logical PR state from the event action / payload fields
+        # ------------------------------------------------------------------
+        # 1. Derive logical GitHub PR state
+        # ------------------------------------------------------------------
+        draft = pr.get("draft", False)
+
         if action in ("opened", "reopened"):
+            gh_pr_state = "draft_open" if draft else "open"
+        elif action == "converted_to_draft":
+            gh_pr_state = "draft_open"
+        elif action == "ready_for_review":
             gh_pr_state = "open"
-        elif pr.get("merged") is True or action == "merged":
-            gh_pr_state = "merged"
+        elif action == "review_requested":
+            gh_pr_state = "review_requested"
         elif action == "closed":
-            gh_pr_state = "closed"
+            gh_pr_state = "merged" if pr.get("merged") else "closed"
+        elif action == "synchronize":
+            # Check review state to decide if ready_for_merge applies
+            # We rely on the requested_reviewers / review decision field
+            review_decision = pr.get("auto_merge") or pr.get("mergeable_state")
+            if review_decision == "clean":
+                gh_pr_state = "ready_for_merge"
+            else:
+                # Generic update — no state change needed
+                return Response({"status": "ignored"}, status=status.HTTP_200_OK)
         else:
-            # Ignore other actions (synchronize, labeled, assigned, …)
             return Response({"status": "ignored"}, status=status.HTTP_200_OK)
 
-        # Find the repository sync record
-        sync = GithubRepositorySync.objects.filter(repository__repository_id=repo_id).first()
+        # ------------------------------------------------------------------
+        # 2. Find the repository sync record
+        # ------------------------------------------------------------------
+        sync = GithubRepositorySync.objects.filter(
+            repository__repository_id=repo_id
+        ).select_related("workspace_integration").first()
+
         if not sync:
             logger.debug("handle_pull_request: no sync for repo_id=%s", repo_id)
             return Response({"status": "ignored"}, status=status.HTTP_200_OK)
 
-        # Look up the PR state mapping for this workspace integration + project
+        # ------------------------------------------------------------------
+        # 3. Extract linked Plane issue numbers from PR body
+        #    Matches: closes #N, fixes #N, resolves #N (case-insensitive)
+        # ------------------------------------------------------------------
+        pr_body = pr.get("body") or ""
+        linked_issue_numbers = list(
+            set(
+                int(n)
+                for n in re.findall(
+                    r"(?:closes?|fixes?|resolves?)\s+#(\d+)",
+                    pr_body,
+                    re.IGNORECASE,
+                )
+            )
+        )
+
+        if not linked_issue_numbers:
+            logger.debug(
+                "handle_pull_request: no linked issues in PR body for repo_id=%s pr_state=%s",
+                repo_id,
+                gh_pr_state,
+            )
+            return Response({"status": "ignored"}, status=status.HTTP_200_OK)
+
+        # ------------------------------------------------------------------
+        # 4. Look up mapping (one per project; all issues in the sync share the same project)
+        # ------------------------------------------------------------------
         mapping = GithubPRStateMapping.objects.filter(
             workspace_integration=sync.workspace_integration,
             project_id=sync.project_id,
             github_pr_state=gh_pr_state,
-        ).first()
+        ).select_related("state").first()
 
         if not mapping:
             logger.debug(
-                "handle_pull_request: no PR state mapping for gh_pr_state=%s project=%s",
+                "handle_pull_request: no mapping for gh_pr_state=%s project=%s",
                 gh_pr_state,
                 sync.project_id,
             )
             return Response({"status": "ignored"}, status=status.HTTP_200_OK)
 
-        # Find the Plane issue linked to this PR number via GithubIssueSync
-        issue_sync = GithubIssueSync.objects.filter(
-            github_issue_id=pr_number,
-            repository_sync=sync,
-        ).first()
+        target_state = mapping.state
 
-        if not issue_sync:
-            logger.debug(
-                "handle_pull_request: no issue sync for PR number=%s repo_id=%s",
-                pr_number,
-                repo_id,
-            )
-            return Response({"status": "ignored"}, status=status.HTTP_200_OK)
+        # ------------------------------------------------------------------
+        # 5. Apply state to each linked issue, respecting prevent_regression
+        # ------------------------------------------------------------------
+        updated_count = 0
+        for gh_issue_number in linked_issue_numbers:
+            issue_sync = GithubIssueSync.objects.filter(
+                github_issue_id=gh_issue_number,
+                repository_sync=sync,
+            ).select_related("issue__state").first()
 
-        # Update the issue state
-        issue = issue_sync.issue
-        issue.state_id = mapping.state_id
-        issue.save(update_fields=["state_id", "updated_at"])
+            if not issue_sync:
+                logger.debug(
+                    "handle_pull_request: no issue sync for gh_issue_number=%s", gh_issue_number
+                )
+                continue
 
-        return Response({"status": "success"}, status=status.HTTP_200_OK)
+            issue = issue_sync.issue
+
+            # Prevent regression: skip if target state is earlier in the workflow
+            if mapping.prevent_regression and issue.state:
+                if target_state.sequence < issue.state.sequence:
+                    logger.debug(
+                        "handle_pull_request: skipping regression for issue=%s "
+                        "(current_seq=%s target_seq=%s)",
+                        issue.id,
+                        issue.state.sequence,
+                        target_state.sequence,
+                    )
+                    continue
+
+            # Skip if already in the target state
+            if issue.state_id == target_state.id:
+                continue
+
+            issue.state_id = target_state.id
+            issue.save(update_fields=["state_id", "updated_at"])
+            updated_count += 1
+
+        return Response(
+            {"status": "success", "updated_issues": updated_count},
+            status=status.HTTP_200_OK,
+        )
+
 
 
 class GitLabWebhookEndpoint(BaseAPIView):
