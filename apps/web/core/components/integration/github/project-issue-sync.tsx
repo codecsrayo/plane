@@ -58,12 +58,19 @@ export const GithubProjectIssueSync = observer(function GithubProjectIssueSync({
     <div className="flex flex-col divide-y divide-custom-border-200 rounded-md border border-custom-border-200">
       {syncs.map((sync: any) => {
         const project = getProjectById(sync.project_id);
+        const projectLabel = project?.name ?? sync.project_name ?? sync.project_identifier ?? sync.project_id;
+        const isBidirectional = (sync.sync_direction ?? "bidirectional") === "bidirectional";
         return (
           <div key={sync.id} className="flex items-center justify-between px-4 py-3">
             <div className="flex items-center gap-3 text-sm">
               <span className="font-medium text-custom-text-200">{sync.repo_full_name}</span>
-              <span className="text-custom-text-300">↔</span>
-              <span className="font-medium text-custom-text-100">{project?.identifier ?? sync.project_id}</span>
+              <span className="text-custom-text-300">{isBidirectional ? "↔" : "→"}</span>
+              <span className="font-medium text-custom-text-100">{projectLabel}</span>
+              {sync.sync_direction && (
+                <span className="rounded bg-custom-background-80 px-1.5 py-0.5 text-[11px] font-medium text-custom-text-300 capitalize">
+                  {sync.sync_direction}
+                </span>
+              )}
             </div>
             <button
               onClick={() => handleRemove(sync.id)}

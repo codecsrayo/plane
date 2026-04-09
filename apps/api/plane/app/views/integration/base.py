@@ -502,9 +502,9 @@ class GithubRepoSyncViewSet(BaseViewSet):
             return self.model.objects.none()
         return self.model.objects.filter(
             workspace_integration=workspace_integration,
-        ).select_related("repository", "workspace_integration", "actor")
+        ).select_related("repository", "workspace_integration", "actor", "project")
 
-    @allow_permission([ROLE.ADMIN], level="WORKSPACE")
+    @allow_permission([ROLE.ADMIN, ROLE.MEMBER], level="WORKSPACE")
     def list(self, request, slug):
         """Return all repo syncs for this workspace's GitHub integration."""
         syncs = self.get_queryset()
@@ -512,10 +512,15 @@ class GithubRepoSyncViewSet(BaseViewSet):
             {
                 "id": str(s.id),
                 "project_id": str(s.project_id),
+                "project_name": s.project.name,
+                "project_identifier": s.project.identifier,
                 "repo_id": str(s.repository.repository_id),
                 "repo_full_name": f"{s.repository.owner}/{s.repository.name}",
                 "repo_name": s.repository.name,
                 "repo_owner": s.repository.owner,
+                "sync_direction": (s.credentials or {}).get("sync_direction", "bidirectional"),
+                "issue_open_state": (s.credentials or {}).get("issue_open_state"),
+                "issue_closed_state": (s.credentials or {}).get("issue_closed_state"),
                 "created_at": s.created_at,
             }
             for s in syncs
@@ -526,15 +531,29 @@ class GithubRepoSyncViewSet(BaseViewSet):
     def create(self, request, slug):
         """
         Create a GithubRepositorySync linking a project with a GitHub repo.
-        Body: { repo_id, repo_full_name, project_id }
+        Body: {
+            repo_id, repo_full_name, project_id,
+            issue_open_state?,    # Plane state UUID for open GitHub issues
+            issue_closed_state?,  # Plane state UUID for closed GitHub issues
+            sync_direction?       # "bidirectional" | "unidirectional"
+        }
         """
-        repo_id = request.data.get("repo_id")
+        repo_id_raw = request.data.get("repo_id")
         repo_full_name = request.data.get("repo_full_name", "")
         project_id = request.data.get("project_id")
 
-        if not all([repo_id, project_id]):
+        if not all([repo_id_raw, project_id]):
             return Response(
                 {"error": "repo_id and project_id are required"},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        # Validate repo_id is a numeric GitHub repository ID
+        try:
+            repo_id_int = int(repo_id_raw)
+        except (TypeError, ValueError):
+            return Response(
+                {"error": "repo_id must be a numeric GitHub repository ID"},
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
@@ -560,7 +579,7 @@ class GithubRepoSyncViewSet(BaseViewSet):
         # derives it automatically from the project FK, so including it here would create
         # a redundant (and potentially mis-matching) filter condition.
         repo, _ = GithubRepository.objects.get_or_create(
-            repository_id=int(repo_id),
+            repository_id=repo_id_int,
             project_id=project_id,
             defaults={
                 "name": repo_name,
@@ -570,6 +589,15 @@ class GithubRepoSyncViewSet(BaseViewSet):
             },
         )
 
+        # Build credentials dict — store optional sync config alongside any future tokens
+        credentials = {
+            "sync_direction": request.data.get("sync_direction", "bidirectional"),
+        }
+        if request.data.get("issue_open_state"):
+            credentials["issue_open_state"] = request.data["issue_open_state"]
+        if request.data.get("issue_closed_state"):
+            credentials["issue_closed_state"] = request.data["issue_closed_state"]
+
         sync, created = GithubRepositorySync.objects.get_or_create(
             repository=repo,
             project_id=project_id,
@@ -577,7 +605,7 @@ class GithubRepoSyncViewSet(BaseViewSet):
             defaults={
                 "actor": request.user,
                 "workspace_integration": workspace_integration,
-                "credentials": {},
+                "credentials": credentials,
             },
         )
 
@@ -599,8 +627,13 @@ class GithubRepoSyncViewSet(BaseViewSet):
             {
                 "id": str(sync.id),
                 "project_id": str(sync.project_id),
+                "project_name": sync.project.name,
+                "project_identifier": sync.project.identifier,
                 "repo_id": str(repo.repository_id),
                 "repo_full_name": f"{repo.owner}/{repo.name}",
+                "sync_direction": credentials.get("sync_direction", "bidirectional"),
+                "issue_open_state": credentials.get("issue_open_state"),
+                "issue_closed_state": credentials.get("issue_closed_state"),
             },
             status=status.HTTP_201_CREATED,
         )
