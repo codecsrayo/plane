@@ -4,10 +4,10 @@
  * See the LICENSE file for details.
  */
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { observer } from "mobx-react";
-import { Copy, Monitor } from "lucide-react";
+import { Check, Copy, Monitor } from "lucide-react";
 import { useForm } from "react-hook-form";
 // plane internal packages
 import { Button, getButtonStyling } from "@plane/propel/button";
@@ -36,7 +36,16 @@ type IntegrationConfigFormValues = Record<TInstanceIntegrationConfigurationKeys,
 // ─── Main form ────────────────────────────────────────────────────────────────
 export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrationsConfigForm({ config }: Props) {
   const [isDiscardChangesModalOpen, setIsDiscardChangesModalOpen] = useState(false);
+  const [isWebhookSecretCopied, setIsWebhookSecretCopied] = useState(false);
+  const webhookSecretCopyTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { formattedConfig, updateInstanceConfigurations } = useInstance();
+
+  useEffect(
+    () => () => {
+      if (webhookSecretCopyTimeoutRef.current) clearTimeout(webhookSecretCopyTimeoutRef.current);
+    },
+    []
+  );
 
   // ── Toggle helpers ─────────────────────────────────────────────────────────
   const isGithubEnabled = Boolean(parseInt(formattedConfig?.IS_GITHUB_INTEGRATION_ENABLED ?? "0"));
@@ -78,16 +87,21 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
     setValue("GITHUB_WEBHOOK_SECRET", secret, { shouldDirty: true });
   };
 
-  const copyWebhookSecret = () => {
+  const copyWebhookSecret = async () => {
     const secret = getValues("GITHUB_WEBHOOK_SECRET");
     if (!secret) return;
 
-    navigator.clipboard.writeText(secret);
-    setToast({
-      type: TOAST_TYPE.SUCCESS,
-      title: "Copied to clipboard",
-      message: "The Webhook secret has been successfully copied to your clipboard",
-    });
+    try {
+      await navigator.clipboard.writeText(secret);
+      setIsWebhookSecretCopied(true);
+      if (webhookSecretCopyTimeoutRef.current) clearTimeout(webhookSecretCopyTimeoutRef.current);
+      webhookSecretCopyTimeoutRef.current = setTimeout(() => {
+        setIsWebhookSecretCopied(false);
+        webhookSecretCopyTimeoutRef.current = null;
+      }, 2000);
+    } catch {
+      setIsWebhookSecretCopied(false);
+    }
   };
 
   // ── GitHub fields ──────────────────────────────────────────────────────────
@@ -397,10 +411,14 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
                               type="button"
                               tabIndex={-1}
                               className="flex items-center justify-center"
-                              onClick={copyWebhookSecret}
+                              onClick={() => void copyWebhookSecret()}
                               disabled={!isGithubEnabled || !getValues("GITHUB_WEBHOOK_SECRET")}
                             >
-                              <Copy className="h-4 w-4" />
+                              {isWebhookSecretCopied ? (
+                                <Check className="h-4 w-4 text-success-primary" />
+                              ) : (
+                                <Copy className="h-4 w-4" />
+                              )}
                             </button>
                           }
                         />
