@@ -32,6 +32,7 @@ Rama activa: `feature/integrations-panel-fix-17593507967815292912`
 | Import duplicado de `react-router` en `single-integration-card.tsx` | `29adc41ab` |
 | `is_github_enabled` en `SingleIntegrationCard.isEnabled` — mostraba "Disabled by admin" aunque IS_GITHUB_INTEGRATION_ENABLED=1 | ✅ corregido (commit `13e1d6932`) |
 | `is_github_enabled` usado para filtrar card en /settings/integrations — usaba el campo OAuth en lugar del campo de integración, card invisible aunque la integración estuviera habilitada | ✅ corregido (commit `8912173e2`) |
+| `IS_GITLAB_ENABLED` compartido — el toggle de GitLab integration en /integrations activaba también el OAuth login de GitLab | ✅ corregido (commit `d32862a8e`) |
 | `IS_GITHUB_ENABLED` compartido — el toggle de GitHub App integration en /integrations activaba también el OAuth login de GitHub | ✅ corregido (commit `299003c81`) |
 | `Combobox Fragment prop passthrough` — `Combobox.Button as={Fragment}` en 5 archivos causaba crash en flujo de creación de proyecto | ✅ corregido (commit `3cb7681f7`) |
 | `workspace=workspace` redundante en `get_or_create` de `GithubRepository` — filtro incorrecto causaba duplicados | ✅ corregido |
