@@ -2,6 +2,9 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 # See the LICENSE file for details.
 
+from functools import lru_cache
+
+from django.db import connections
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from plane.db.models import Issue, IssueComment, GithubIssueSync, GitlabIssueSync
@@ -13,17 +16,26 @@ from plane.bgtasks.sync_task import (
 )
 
 
+@lru_cache(maxsize=None)
+def _table_exists(using: str, table_name: str) -> bool:
+    connection = connections[using]
+    with connection.cursor() as cursor:
+        return table_name in connection.introspection.table_names(cursor)
+
+
 @receiver(post_save, sender=Issue)
 def sync_issue_to_external(sender, instance, created, **kwargs):
     if created:
         return
 
+    using = kwargs.get("using", "default")
+
     # Trigger GitHub sync task
-    if GithubIssueSync.objects.filter(issue=instance).exists():
+    if _table_exists(using, GithubIssueSync._meta.db_table) and GithubIssueSync.objects.filter(issue=instance).exists():
         sync_issue_to_github_task.delay(str(instance.id))
 
     # Trigger GitLab sync task
-    if GitlabIssueSync.objects.filter(issue=instance).exists():
+    if _table_exists(using, GitlabIssueSync._meta.db_table) and GitlabIssueSync.objects.filter(issue=instance).exists():
         sync_issue_to_gitlab_task.delay(str(instance.id))
 
 
@@ -33,12 +45,22 @@ def sync_comment_to_external(sender, instance, created, **kwargs):
     # We can check if it's already linked in CommentSync to decide if it's an update
     # or a new comment from Plane.
 
+    using = kwargs.get("using", "default")
+
     # Check for GitHub sync
-    github_issue_sync = GithubIssueSync.objects.filter(issue=instance.issue).first()
+    github_issue_sync = (
+        GithubIssueSync.objects.filter(issue=instance.issue).first()
+        if _table_exists(using, GithubIssueSync._meta.db_table)
+        else None
+    )
     if github_issue_sync:
         sync_comment_to_github_task.delay(str(instance.id))
 
     # Check for GitLab sync
-    gitlab_issue_sync = GitlabIssueSync.objects.filter(issue=instance.issue).first()
+    gitlab_issue_sync = (
+        GitlabIssueSync.objects.filter(issue=instance.issue).first()
+        if _table_exists(using, GitlabIssueSync._meta.db_table)
+        else None
+    )
     if gitlab_issue_sync:
         sync_comment_to_gitlab_task.delay(str(instance.id))
