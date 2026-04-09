@@ -38,6 +38,10 @@ Rama activa: `feature/integrations-panel-fix-17593507967815292912`
 | `workspace=workspace` redundante en `get_or_create` de `GithubRepository` — filtro incorrecto causaba duplicados | ✅ corregido |
 | `github_client_id` no expuesto en la API de instancia — UI de conexión personal sin datos | ✅ corregido |
 | UI trigger para OAuth personal de GitHub presente en detail page con `user-callback` popup | ✅ corregido |
+| `GithubPRStateMapping.github_pr_state` solo tenía 3 choices (open/merged/closed) — frontend enviaba 6 (draft_open, review_requested, ready_for_merge incluidos) → 400 en API | ✅ corregido (`80b7aee`) |
+| `prevent_regression` ausente en el modelo `GithubPRStateMapping` — el frontend lo enviaba, Django lo ignoraba silenciosamente | ✅ corregido (`80b7aee`) — migración `0125` |
+| `GithubRepositoriesEndpoint` llamaba `/user/repos` con installation token → 401; debe usar `/installation/repositories` | ✅ corregido (`72adb2d`) |
+| `getGithubRepositories` servicio retornaba el objeto wrapper `{repositories, total_count, page}` en lugar del array — lista de repos siempre vacía en modal de Issue Sync | ✅ corregido (`72adb2d`) |
 
 ---
 
