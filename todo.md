@@ -404,3 +404,11 @@ IS_SLACK_ENABLED=1
 | Nested Pages | ❌ Pendiente |
 | Project Templates | ❌ Pendiente |
 | LDAP / GAC / Databases | ❌ Pendiente |
+
+---
+
+## Bugs generales (no integraciones)
+
+| Bug | Archivo | Commit |
+|---|---|---|
+| `ReferenceError: Cannot access 'cycleIds' before initialization` en CycleOptions — temporal dead zone: `cycleIds` referenciado en `useCallback` antes de ser declarado | `apps/web/core/components/dropdowns/cycle/cycle-options.tsx` | `5be1ba3` |
