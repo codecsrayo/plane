@@ -41,11 +41,11 @@ class Command(BaseCommand):
                         [
                             {
                                 "key": "GOOGLE_CLIENT_ID",
-                                "default": os.environ.get("GOOGLE_CLIENT_ID", ""),
+                                "default": "",
                             },
                             {
                                 "key": "GOOGLE_CLIENT_SECRET",
-                                "default": os.environ.get("GOOGLE_CLIENT_SECRET", "0"),
+                                "default": "",
                             },
                         ]
                     )
@@ -56,11 +56,11 @@ class Command(BaseCommand):
                         [
                             {
                                 "key": "GITHUB_CLIENT_ID",
-                                "default": os.environ.get("GITHUB_CLIENT_ID", ""),
+                                "default": "",
                             },
                             {
                                 "key": "GITHUB_CLIENT_SECRET",
-                                "default": os.environ.get("GITHUB_CLIENT_SECRET", "0"),
+                                "default": "",
                             },
                         ]
                     )
@@ -71,11 +71,11 @@ class Command(BaseCommand):
                         [
                             {
                                 "key": "GITHUB_APP_ID",
-                                "default": os.environ.get("GITHUB_APP_ID", ""),
+                                "default": "",
                             },
                             {
                                 "key": "GITHUB_APP_NAME",
-                                "default": os.environ.get("GITHUB_APP_NAME", ""),
+                                "default": "",
                             },
                         ]
                     )
@@ -86,15 +86,15 @@ class Command(BaseCommand):
                         [
                             {
                                 "key": "GITLAB_HOST",
-                                "default": os.environ.get("GITLAB_HOST", "https://gitlab.com"),
+                                "default": "https://gitlab.com",
                             },
                             {
                                 "key": "GITLAB_CLIENT_ID",
-                                "default": os.environ.get("GITLAB_CLIENT_ID", ""),
+                                "default": "",
                             },
                             {
                                 "key": "GITLAB_CLIENT_SECRET",
-                                "default": os.environ.get("GITLAB_CLIENT_SECRET", ""),
+                                "default": "",
                             },
                         ]
                     )
@@ -105,15 +105,15 @@ class Command(BaseCommand):
                         [
                             {
                                 "key": "GITEA_HOST",
-                                "default": os.environ.get("GITEA_HOST", ""),
+                                "default": "",
                             },
                             {
                                 "key": "GITEA_CLIENT_ID",
-                                "default": os.environ.get("GITEA_CLIENT_ID", ""),
+                                "default": "",
                             },
                             {
                                 "key": "GITEA_CLIENT_SECRET",
-                                "default": os.environ.get("GITEA_CLIENT_SECRET", ""),
+                                "default": "",
                             },
                         ]
                     )
@@ -124,11 +124,11 @@ class Command(BaseCommand):
                         [
                             {
                                 "key": "SLACK_CLIENT_ID",
-                                "default": os.environ.get("SLACK_CLIENT_ID", ""),
+                                "default": "",
                             },
                             {
                                 "key": "SLACK_CLIENT_SECRET",
-                                "default": os.environ.get("SLACK_CLIENT_SECRET", ""),
+                                "default": "",
                             },
                         ]
                     )

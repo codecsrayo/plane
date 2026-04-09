@@ -27,15 +27,15 @@ class GiteaOAuthProvider(OauthAdapter):
             [
                 {
                     "key": "GITEA_CLIENT_ID",
-                    "default": os.environ.get("GITEA_CLIENT_ID"),
+                    "default": "",
                 },
                 {
                     "key": "GITEA_CLIENT_SECRET",
-                    "default": os.environ.get("GITEA_CLIENT_SECRET"),
+                    "default": "",
                 },
                 {
                     "key": "GITEA_HOST",
-                    "default": os.environ.get("GITEA_HOST"),
+                    "default": "",
                 },
             ]
         )

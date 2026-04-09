@@ -35,15 +35,15 @@ class GitHubOAuthProvider(OauthAdapter):
         GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET, GITHUB_ORGANIZATION_ID = get_configuration_value([
             {
                 "key": "GITHUB_CLIENT_ID",
-                "default": os.environ.get("GITHUB_CLIENT_ID"),
+                "default": "",
             },
             {
                 "key": "GITHUB_CLIENT_SECRET",
-                "default": os.environ.get("GITHUB_CLIENT_SECRET"),
+                "default": "",
             },
             {
                 "key": "GITHUB_ORGANIZATION_ID",
-                "default": os.environ.get("GITHUB_ORGANIZATION_ID"),
+                "default": "",
             },
         ])
 

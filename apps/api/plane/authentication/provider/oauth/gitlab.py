@@ -28,15 +28,15 @@ class GitLabOAuthProvider(OauthAdapter):
             [
                 {
                     "key": "GITLAB_CLIENT_ID",
-                    "default": os.environ.get("GITLAB_CLIENT_ID"),
+                    "default": "",
                 },
                 {
                     "key": "GITLAB_CLIENT_SECRET",
-                    "default": os.environ.get("GITLAB_CLIENT_SECRET"),
+                    "default": "",
                 },
                 {
                     "key": "GITLAB_HOST",
-                    "default": os.environ.get("GITLAB_HOST", "https://gitlab.com"),
+                    "default": "https://gitlab.com",
                 },
             ]
         )

@@ -30,11 +30,11 @@ class GoogleOAuthProvider(OauthAdapter):
             [
                 {
                     "key": "GOOGLE_CLIENT_ID",
-                    "default": os.environ.get("GOOGLE_CLIENT_ID"),
+                    "default": "",
                 },
                 {
                     "key": "GOOGLE_CLIENT_SECRET",
-                    "default": os.environ.get("GOOGLE_CLIENT_SECRET"),
+                    "default": "",
                 },
             ]
         )

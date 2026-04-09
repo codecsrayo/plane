@@ -82,39 +82,39 @@ class InstanceEndpoint(BaseAPIView):
                 },
                 {
                     "key": "IS_GOOGLE_ENABLED",
-                    "default": os.environ.get("IS_GOOGLE_ENABLED", "0"),
+                    "default": "0",
                 },
                 {
                     "key": "IS_GITHUB_ENABLED",
-                    "default": os.environ.get("IS_GITHUB_ENABLED", "0"),
+                    "default": "0",
                 },
                 {
                     "key": "IS_GITHUB_INTEGRATION_ENABLED",
-                    "default": os.environ.get("IS_GITHUB_INTEGRATION_ENABLED", "0"),
+                    "default": "0",
                 },
                 {
                     "key": "GITHUB_APP_NAME",
-                    "default": os.environ.get("GITHUB_APP_NAME", ""),
+                    "default": "",
                 },
                 {
                     "key": "GITHUB_CLIENT_ID",
-                    "default": os.environ.get("GITHUB_CLIENT_ID", ""),
+                    "default": "",
                 },
                 {
                     "key": "IS_GITLAB_ENABLED",
-                    "default": os.environ.get("IS_GITLAB_ENABLED", "0"),
+                    "default": "0",
                 },
                 {
                     "key": "GITLAB_CLIENT_ID",
-                    "default": os.environ.get("GITLAB_CLIENT_ID", ""),
+                    "default": "",
                 },
                 {
                     "key": "GITLAB_HOST",
-                    "default": os.environ.get("GITLAB_HOST", "https://gitlab.com"),
+                    "default": "https://gitlab.com",
                 },
                 {
                     "key": "IS_GITEA_ENABLED",
-                    "default": os.environ.get("IS_GITEA_ENABLED", "0"),
+                    "default": "0",
                 },
                 {"key": "EMAIL_HOST", "default": os.environ.get("EMAIL_HOST", "")},
                 {
@@ -127,11 +127,11 @@ class InstanceEndpoint(BaseAPIView):
                 },
                 {
                     "key": "IS_SLACK_ENABLED",
-                    "default": os.environ.get("IS_SLACK_ENABLED", "0"),
+                    "default": "0",
                 },
                 {
                     "key": "SLACK_CLIENT_ID",
-                    "default": os.environ.get("SLACK_CLIENT_ID", None),
+                    "default": "",
                 },
                 {
                     "key": "POSTHOG_API_KEY",
