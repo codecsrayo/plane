@@ -27,6 +27,10 @@ class Migration(migrations.Migration):
                     models.DateTimeField(auto_now=True, verbose_name="Last Modified At"),
                 ),
                 (
+                    "deleted_at",
+                    models.DateTimeField(blank=True, null=True, verbose_name="Deleted At"),
+                ),
+                (
                     "id",
                     models.UUIDField(
                         db_index=True,
@@ -111,6 +115,10 @@ class Migration(migrations.Migration):
                 (
                     "updated_at",
                     models.DateTimeField(auto_now=True, verbose_name="Last Modified At"),
+                ),
+                (
+                    "deleted_at",
+                    models.DateTimeField(blank=True, null=True, verbose_name="Deleted At"),
                 ),
                 (
                     "id",
