@@ -47,6 +47,10 @@ Rama activa: `feature/integrations-panel-fix-17593507967815292912`
 | Spacing faltante en grid de cards de integración — faltaba `mt-6` en el `<div>` del grid en `/settings/integrations` | ✅ corregido |
 | `handleCoverImageChange` no retornaba `asset_url` tras upload — hacía el upload y devolvía `undefined`, `coverImagePayload` quedaba vacío | ✅ corregido |
 | `entityIdentifier: ""` al subir cover image en proyecto nuevo — upstream ya usa `res.id` post-creación, fix obsoleto | ✅ upstream ya corregido |
+| **`GithubAppCallbackEndpoint` — handshake no se guardaba en BD (silent failure):** cuando `actor=None` (ningún admin activo en el workspace), `update_defaults` omitía `actor`/`api_token` → `update_or_create` lanzaba `IntegrityError` (campos NOT NULL) → el handler de IntegrityError hacía `.filter().update()` con 0 filas → devolvía `success=True` mintiendo → `installation_id` NUNCA se guardaba en BD | ✅ corregido — retorno temprano con `success=False` cuando no hay admin, `actor`/`api_token` siempre incluidos en `update_defaults` |
+| **`GithubAppCallbackEndpoint` — `WorkspaceMember` importado lazy dentro del `try` block** — si fallaba el import, `except Exception` lo silenciaba completamente sin log útil | ✅ corregido — movido al top-level import |
+| **`GithubAppCallbackEndpoint` — `except IntegrityError` (race condition) usaba `update(**update_defaults)`** que podía incluir `actor`/`api_token` en el UPDATE provocando un override innecesario; ahora solo actualiza `metadata` y `config` | ✅ corregido |
+| **`GithubAppCallbackEndpoint` — `except Exception` broad** capturaba `Workspace.DoesNotExist` e `Integration.DoesNotExist` sin distinción; ahora hay un `except (Workspace.DoesNotExist, Integration.DoesNotExist)` específico con log de warning, y el broad `except Exception` queda solo para errores inesperados | ✅ corregido |
 
 ---
 

@@ -25,6 +25,7 @@ from plane.db.models import (
     GithubRepositorySync,
     GithubPRStateMapping,
     UserGithubConnection,
+    WorkspaceMember,
 )
 from plane.app.serializers import (
     IntegrationSerializer,
@@ -326,31 +327,45 @@ class GithubAppCallbackEndpoint(BaseAPIView):
             integration = Integration.objects.get(provider="github")
 
             # This callback is unauthenticated — find the first workspace admin to act as actor.
-            from plane.db.models import WorkspaceMember
-
             admin_member = (
                 WorkspaceMember.objects.filter(workspace=workspace, role__gte=20)
                 .select_related("member")
+                .order_by("created_at")
                 .first()
             )
-            actor = admin_member.member if admin_member else None
 
-            api_token = None
-            if actor:
-                api_token, _ = APIToken.objects.get_or_create(
-                    user=actor,
-                    workspace=workspace,
-                    defaults={"label": f"{integration.title} Integration Token"},
+            if not admin_member:
+                # Cannot save WorkspaceIntegration without a valid actor (NOT NULL field).
+                # This should never happen in a healthy workspace but we must not return
+                # success=True and silently discard the installation_id.
+                import logging
+                logging.getLogger(__name__).error(
+                    "GithubAppCallbackEndpoint: no admin member found for workspace %s — "
+                    "installation_id %s cannot be persisted.",
+                    workspace_slug,
+                    installation_id,
+                )
+                return _postmessage_html(
+                    success=False,
+                    message_type="github-integration",
+                    error="No workspace admin found. Please contact your workspace administrator.",
                 )
 
+            actor = admin_member.member
+
+            api_token, _ = APIToken.objects.get_or_create(
+                user=actor,
+                workspace=workspace,
+                defaults={"label": f"{integration.title} Integration Token"},
+            )
+
+            # Both actor and api_token are guaranteed non-None at this point.
             update_defaults = {
                 "metadata": {"installation_id": installation_id, "setup_action": setup_action},
                 "config": {"installation_id": installation_id},
+                "actor": actor,
+                "api_token": api_token,
             }
-            if actor:
-                update_defaults["actor"] = actor
-            if api_token:
-                update_defaults["api_token"] = api_token
 
             try:
                 with transaction.atomic():
@@ -364,8 +379,19 @@ class GithubAppCallbackEndpoint(BaseAPIView):
                 WorkspaceIntegration.objects.filter(
                     workspace=workspace,
                     integration=integration,
-                ).update(**update_defaults)
+                ).update(
+                    metadata=update_defaults["metadata"],
+                    config=update_defaults["config"],
+                )
 
+        except (Workspace.DoesNotExist, Integration.DoesNotExist) as e:
+            import logging
+            logging.getLogger(__name__).warning("GithubAppCallbackEndpoint: %s", e)
+            return _postmessage_html(
+                success=False,
+                message_type="github-integration",
+                error="Workspace or integration not found.",
+            )
         except Exception as e:
             import logging
             logging.getLogger(__name__).error("GithubAppCallbackEndpoint: %s", e, exc_info=True)
