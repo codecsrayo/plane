@@ -44,6 +44,9 @@ Rama activa: `feature/integrations-panel-fix-17593507967815292912`
 | `getGithubRepositories` servicio retornaba el objeto wrapper `{repositories, total_count, page}` en lugar del array — lista de repos siempre vacía en modal de Issue Sync | ✅ corregido (`72adb2d`) |
 | `select-repository.tsx` llamaba URL `/workspace-integrations/{id}/github-repositories/` que no existía en el backend (404 silencioso) — repos no cargaban en Project Issue Sync | ✅ corregido — ruta agregada en `integration.py`, vista actualizada con `wi_id` opcional |
 | GitHub App installation token: repos no accesibles no aparecen en el filtro (comportamiento de la API de GitHub) — se agrega enlace "Manage GitHub App access" en el footer del selector cuando aplica | ✅ corregido — `is_installation_token` + `manage_installation_url` en respuesta, UI actualizada |
+| Spacing faltante en grid de cards de integración — faltaba `mt-6` en el `<div>` del grid en `/settings/integrations` | ✅ corregido |
+| `handleCoverImageChange` no retornaba `asset_url` tras upload — hacía el upload y devolvía `undefined`, `coverImagePayload` quedaba vacío | ✅ corregido |
+| `entityIdentifier: ""` al subir cover image en proyecto nuevo — upstream ya usa `res.id` post-creación, fix obsoleto | ✅ upstream ya corregido |
 
 ---
 
