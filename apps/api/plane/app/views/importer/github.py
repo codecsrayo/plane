@@ -59,18 +59,21 @@ class GithubRepositoriesEndpoint(BaseAPIView):
             "Accept": "application/vnd.github+json",
         }
 
-        # Call GitHub API
-        response = requests.get(
-            "https://api.github.com/user/repos",
-            headers=headers,
-            params={
-                "page": page,
-                "per_page": per_page,
-                "sort": "updated",
-                "type": "all",
-            },
-            timeout=10,
+        # Choose the correct endpoint based on token type.
+        # Installation access tokens (from GitHub App) must use /installation/repositories.
+        # Personal OAuth tokens use /user/repos.
+        is_installation_token = bool(
+            workspace_integration and (workspace_integration.metadata or {}).get("installation_id")
         )
+
+        if is_installation_token:
+            api_url = "https://api.github.com/installation/repositories"
+            params: dict = {"per_page": per_page, "page": page}
+        else:
+            api_url = "https://api.github.com/user/repos"
+            params = {"page": page, "per_page": per_page, "sort": "updated", "type": "all"}
+
+        response = requests.get(api_url, headers=headers, params=params, timeout=10)
 
         if response.status_code != 200:
             return Response(
@@ -78,9 +81,15 @@ class GithubRepositoriesEndpoint(BaseAPIView):
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
-        repos = response.json()
-        # Simplified total count from the current page length
-        total_count = len(repos)
+        payload = response.json()
+        # /installation/repositories returns { total_count, repositories: [...] }
+        # /user/repos returns a plain array
+        if isinstance(payload, dict):
+            repos = payload.get("repositories", [])
+            total_count = payload.get("total_count", len(repos))
+        else:
+            repos = payload
+            total_count = len(repos)
 
         return Response(
             {

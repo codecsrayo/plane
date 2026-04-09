@@ -107,7 +107,11 @@ export class IntegrationService extends APIService {
 
   async getGithubRepositories(workspaceSlug: string): Promise<any[]> {
     return this.get(`/api/workspaces/${workspaceSlug}/importers/github/repositories/`)
-      .then((response) => response?.data)
+      .then((response) => {
+        const data = response?.data;
+        // Backend wraps repos in { repositories: [...], total_count, page }
+        return Array.isArray(data) ? data : (data?.repositories ?? []);
+      })
       .catch((error) => {
         throw error?.response?.data;
       });
