@@ -38,6 +38,7 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
   const [isDiscardChangesModalOpen, setIsDiscardChangesModalOpen] = useState(false);
   const [isWebhookSecretCopied, setIsWebhookSecretCopied] = useState(false);
   const webhookSecretCopyTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const githubPrivateKeyFileInputRef = useRef<HTMLInputElement | null>(null);
   const { formattedConfig, updateInstanceConfigurations } = useInstance();
 
   useEffect(
@@ -101,6 +102,30 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
       }, 2000);
     } catch {
       setIsWebhookSecretCopied(false);
+    }
+  };
+
+  const handleGithubPrivateKeyUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    try {
+      const pem = await file.text();
+      const pemBase64 = window.btoa(pem);
+      setValue("GITHUB_APP_PRIVATE_KEY", pemBase64, { shouldDirty: true, shouldValidate: true });
+      setToast({
+        type: TOAST_TYPE.SUCCESS,
+        title: "Private key loaded",
+        message: `${file.name} was converted to base64 and loaded into the form.`,
+      });
+    } catch {
+      setToast({
+        type: TOAST_TYPE.ERROR,
+        title: "Invalid private key",
+        message: "Failed to read the .pem file. Please try again.",
+      });
+    } finally {
+      event.target.value = "";
     }
   };
 
@@ -343,20 +368,63 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
               <div className={isGithubEnabled === false ? "flex flex-col gap-y-4 opacity-50" : "flex flex-col gap-y-4"}>
                 {githubFields
                   .filter((f) => f.key !== "GITHUB_WEBHOOK_SECRET")
-                  .map((field) => (
-                    <ControllerInput
-                      key={field.key}
-                      control={control}
-                      type={field.type}
-                      name={field.key}
-                      label={field.label}
-                      description={field.description}
-                      placeholder={field.placeholder}
-                      error={Boolean(errors[field.key as keyof typeof errors])}
-                      required={isGithubEnabled ? field.required : false}
-                      disabled={!isGithubEnabled}
-                    />
-                  ))}
+                  .map((field) =>
+                    field.key === "GITHUB_APP_PRIVATE_KEY" ? (
+                      <div key={field.key} className="flex flex-col gap-2">
+                        <ControllerInput
+                          control={control}
+                          type={field.type}
+                          name={field.key}
+                          label="Private key"
+                          description={
+                            <>
+                              Upload your GitHub App <CodeBlock darkerShade>.pem</CodeBlock> file or paste the base64
+                              value directly. The form stores the value in base64 for backend compatibility.
+                            </>
+                          }
+                          placeholder={field.placeholder}
+                          error={Boolean(errors[field.key as keyof typeof errors])}
+                          required={isGithubEnabled ? field.required : false}
+                          disabled={!isGithubEnabled}
+                        />
+                        <div className="flex items-center gap-2">
+                          <input
+                            ref={githubPrivateKeyFileInputRef}
+                            type="file"
+                            accept=".pem"
+                            className="hidden"
+                            onChange={(e) => void handleGithubPrivateKeyUpload(e)}
+                            disabled={!isGithubEnabled}
+                          />
+                          <Button
+                            type="button"
+                            variant="secondary"
+                            size="sm"
+                            onClick={() => githubPrivateKeyFileInputRef.current?.click()}
+                            disabled={!isGithubEnabled}
+                          >
+                            Upload .pem
+                          </Button>
+                          <p className="text-11 text-tertiary">
+                            GitHub generates a PEM private key. Plane converts it to base64 before saving.
+                          </p>
+                        </div>
+                      </div>
+                    ) : (
+                      <ControllerInput
+                        key={field.key}
+                        control={control}
+                        type={field.type}
+                        name={field.key}
+                        label={field.label}
+                        description={field.description}
+                        placeholder={field.placeholder}
+                        error={Boolean(errors[field.key as keyof typeof errors])}
+                        required={isGithubEnabled ? field.required : false}
+                        disabled={!isGithubEnabled}
+                      />
+                    )
+                  )}
               </div>
             </div>
 

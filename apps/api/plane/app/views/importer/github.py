@@ -18,7 +18,7 @@ from plane.db.models import (
     GithubRepositorySync
 )
 from plane.bgtasks.importer_task import github_importer_task
-from plane.utils.github_app import get_installation_access_token
+from plane.utils.github_app import get_installation_access_token_result
 
 
 class GithubRepositoriesEndpoint(BaseAPIView):
@@ -28,6 +28,8 @@ class GithubRepositoriesEndpoint(BaseAPIView):
     def get(self, request, slug):
         # Resolve the installation token from the workspace's GitHub integration
         github_token = None
+        github_token_error = None
+        workspace_integration = None
         try:
             workspace = Workspace.objects.get(slug=slug)
             workspace_integration = WorkspaceIntegration.objects.filter(
@@ -37,7 +39,7 @@ class GithubRepositoriesEndpoint(BaseAPIView):
             if workspace_integration:
                 installation_id = (workspace_integration.metadata or {}).get("installation_id")
                 if installation_id:
-                    github_token = get_installation_access_token(str(installation_id))
+                    github_token, github_token_error = get_installation_access_token_result(str(installation_id))
         except Exception:
             pass
 
@@ -46,6 +48,17 @@ class GithubRepositoriesEndpoint(BaseAPIView):
             github_token = request.query_params.get("token") or os.environ.get("GITHUB_ACCESS_TOKEN")
 
         if not github_token:
+            if workspace_integration and (workspace_integration.metadata or {}).get("installation_id"):
+                error_map = {
+                    "github_app_not_configured": "GitHub App is not configured. Set GITHUB_APP_ID and GITHUB_APP_PRIVATE_KEY in God Mode integrations.",
+                    "invalid_github_app_private_key": "GitHub App private key is invalid. Verify the base64-encoded PEM in God Mode integrations.",
+                    "github_app_token_request_failed": "Failed to mint a GitHub installation token. Verify the app credentials and installation.",
+                }
+                if github_token_error in error_map:
+                    return Response(
+                        {"error": error_map[github_token_error]},
+                        status=status.HTTP_400_BAD_REQUEST
+                    )
             return Response(
                 {"error": "GitHub token not provided"},
                 status=status.HTTP_400_BAD_REQUEST
