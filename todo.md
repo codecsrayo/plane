@@ -42,6 +42,8 @@ Rama activa: `feature/integrations-panel-fix-17593507967815292912`
 | `prevent_regression` ausente en el modelo `GithubPRStateMapping` — el frontend lo enviaba, Django lo ignoraba silenciosamente | ✅ corregido (`80b7aee`) — migración `0125` |
 | `GithubRepositoriesEndpoint` llamaba `/user/repos` con installation token → 401; debe usar `/installation/repositories` | ✅ corregido (`72adb2d`) |
 | `getGithubRepositories` servicio retornaba el objeto wrapper `{repositories, total_count, page}` en lugar del array — lista de repos siempre vacía en modal de Issue Sync | ✅ corregido (`72adb2d`) |
+| `select-repository.tsx` llamaba URL `/workspace-integrations/{id}/github-repositories/` que no existía en el backend (404 silencioso) — repos no cargaban en Project Issue Sync | ✅ corregido — ruta agregada en `integration.py`, vista actualizada con `wi_id` opcional |
+| GitHub App installation token: repos no accesibles no aparecen en el filtro (comportamiento de la API de GitHub) — se agrega enlace "Manage GitHub App access" en el footer del selector cuando aplica | ✅ corregido — `is_installation_token` + `manage_installation_url` en respuesta, UI actualizada |
 
 ---
 

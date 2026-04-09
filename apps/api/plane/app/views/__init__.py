@@ -235,6 +235,8 @@ from .integration.base import (
     GithubPRStateMappingViewSet,
 )
 
+from .importer.github import GithubRepositoriesEndpoint
+
 
 from .webhook.base import (
     WebhookEndpoint,

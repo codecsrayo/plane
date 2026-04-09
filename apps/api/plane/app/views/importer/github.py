@@ -22,20 +22,35 @@ from plane.utils.github_app import get_installation_access_token_result
 
 
 class GithubRepositoriesEndpoint(BaseAPIView):
-    """List GitHub repositories via GitHub App installation access token"""
+    """List GitHub repositories via GitHub App installation access token.
+
+    Accessible from two URL patterns:
+      - /workspaces/{slug}/importers/github/repositories/
+      - /workspaces/{slug}/workspace-integrations/{wi_id}/github-repositories/
+
+    When wi_id is provided the specific WorkspaceIntegration is used;
+    otherwise the first GitHub integration for the workspace is used.
+    """
     permission_classes = [WorkSpaceAdminPermission]
 
-    def get(self, request, slug):
+    def get(self, request, slug, wi_id=None):
         # Resolve the installation token from the workspace's GitHub integration
         github_token = None
         github_token_error = None
         workspace_integration = None
         try:
             workspace = Workspace.objects.get(slug=slug)
-            workspace_integration = WorkspaceIntegration.objects.filter(
-                workspace=workspace,
-                integration__provider="github",
-            ).select_related("integration").first()
+            if wi_id:
+                workspace_integration = WorkspaceIntegration.objects.filter(
+                    pk=wi_id,
+                    workspace=workspace,
+                    integration__provider="github",
+                ).select_related("integration").first()
+            else:
+                workspace_integration = WorkspaceIntegration.objects.filter(
+                    workspace=workspace,
+                    integration__provider="github",
+                ).select_related("integration").first()
             if workspace_integration:
                 installation_id = (workspace_integration.metadata or {}).get("installation_id")
                 if installation_id:
@@ -121,6 +136,13 @@ class GithubRepositoriesEndpoint(BaseAPIView):
                 ],
                 "total_count": total_count,
                 "page": page,
+                "is_installation_token": is_installation_token,
+                # Link the user can visit to add more repos to the GitHub App installation
+                "manage_installation_url": (
+                    f"https://github.com/settings/installations/{(workspace_integration.metadata or {}).get('installation_id')}"
+                    if is_installation_token and workspace_integration
+                    else None
+                ),
             },
             status=status.HTTP_200_OK,
         )

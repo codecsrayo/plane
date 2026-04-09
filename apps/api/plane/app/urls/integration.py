@@ -10,6 +10,7 @@ from plane.app.views import (
     GithubAppCallbackEndpoint,
     UserGithubConnectionView,
     GithubPRStateMappingViewSet,
+    GithubRepositoriesEndpoint,
 )
 
 urlpatterns = [
@@ -64,6 +65,13 @@ urlpatterns = [
         "workspaces/<str:slug>/workspace-integrations/github/repo-syncs/<uuid:pk>/",
         GithubRepoSyncViewSet.as_view({"delete": "destroy"}),
         name="github-repo-syncs-detail",
+    ),
+    # List GitHub repositories accessible to a specific workspace integration.
+    # This is the URL the Project Issue Sync frontend (select-repository.tsx) calls.
+    path(
+        "workspaces/<str:slug>/workspace-integrations/<uuid:wi_id>/github-repositories/",
+        GithubRepositoriesEndpoint.as_view(),
+        name="workspace-integration-github-repositories",
     ),
     # PR State Mapping endpoints
     path(
