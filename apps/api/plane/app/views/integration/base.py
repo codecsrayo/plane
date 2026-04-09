@@ -675,6 +675,14 @@ class GithubRepoSyncViewSet(BaseViewSet):
             repo_name=repo_name,
         )
 
+        # Kick off the initial bulk import of existing GitHub issues in the background.
+        # This runs asynchronously — the API returns immediately while Celery processes it.
+        try:
+            from plane.bgtasks.github_sync_task import github_initial_issue_sync_task
+            github_initial_issue_sync_task.delay(str(sync.id))
+        except Exception:
+            pass  # Never block the response if Celery is unavailable
+
         return Response(
             {
                 "id": str(sync.id),
