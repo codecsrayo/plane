@@ -385,7 +385,7 @@ IS_SLACK_ENABLED=1
 | TAREA 5 — GitHub App JWT | ✅ Hecho |
 | TAREA 6 — GitLab callback | ✅ Hecho |
 | TAREA 7 — Slack callback | ✅ Hecho |
-| TAREA 8 — Webhooks completos | ✅ Hecho |
+| TAREA 8 — Webhooks completos | ✅ Hecho (GitHub `pull_request` handler reescrito: 6 estados, linking por body, prevent_regression — commit `9a96a5c`) |
 
 ---
 
