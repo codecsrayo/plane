@@ -160,6 +160,13 @@ gitlab_config_variables = [
         "category": "GITLAB",
         "is_encrypted": False,
     },
+    # Toggle for workspace GitLab integration (independent from IS_GITLAB_ENABLED OAuth login)
+    {
+        "key": "IS_GITLAB_INTEGRATION_ENABLED",
+        "value": "0",
+        "category": "GITLAB",
+        "is_encrypted": False,
+    },
     {
         "key": "GITLAB_HOST",
         "value": "https://gitlab.com",

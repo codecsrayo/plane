@@ -40,7 +40,7 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
 
   // ── Toggle helpers ─────────────────────────────────────────────────────────
   const isGithubEnabled = Boolean(parseInt(formattedConfig?.IS_GITHUB_INTEGRATION_ENABLED ?? "0"));
-  const isGitlabEnabled = Boolean(parseInt(formattedConfig?.IS_GITLAB_ENABLED ?? "0"));
+  const isGitlabEnabled = Boolean(parseInt(formattedConfig?.IS_GITLAB_INTEGRATION_ENABLED ?? "0"));
   const isSlackEnabled = Boolean(parseInt(formattedConfig?.IS_SLACK_ENABLED ?? "0"));
 
   const handleToggle = (key: TInstanceAuthenticationMethodKeys, current: boolean) => {
@@ -446,7 +446,7 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
               <span className="text-sm text-secondary">{isGitlabEnabled ? "Enabled" : "Disabled"}</span>
               <ToggleSwitch
                 value={Boolean(isGitlabEnabled)}
-                onChange={() => handleToggle("IS_GITLAB_ENABLED", isGitlabEnabled)}
+                onChange={() => handleToggle("IS_GITLAB_INTEGRATION_ENABLED", isGitlabEnabled)}
                 size="sm"
               />
             </div>

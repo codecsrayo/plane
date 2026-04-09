@@ -92,7 +92,7 @@ export const SingleIntegrationCard = observer(function SingleIntegrationCard({ i
     integration.provider === "github"
       ? (config?.is_github_integration_enabled ?? true)
       : integration.provider === "gitlab"
-        ? (config?.is_gitlab_enabled ?? true)
+        ? (config?.is_gitlab_integration_enabled ?? true)
         : integration.provider === "slack"
           ? (config?.is_slack_enabled ?? true)
           : true;

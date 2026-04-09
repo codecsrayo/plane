@@ -100,6 +100,21 @@ class Command(BaseCommand):
                     )
                     if bool(GITLAB_HOST) and bool(GITLAB_CLIENT_ID) and bool(GITLAB_CLIENT_SECRET):
                         value = "1"
+                elif item.get("key") == "IS_GITLAB_INTEGRATION_ENABLED":
+                    GITLAB_CLIENT_ID_CHECK, GITLAB_CLIENT_SECRET_CHECK = get_configuration_value(
+                        [
+                            {
+                                "key": "GITLAB_CLIENT_ID",
+                                "default": "",
+                            },
+                            {
+                                "key": "GITLAB_CLIENT_SECRET",
+                                "default": "",
+                            },
+                        ]
+                    )
+                    if bool(GITLAB_CLIENT_ID_CHECK) and bool(GITLAB_CLIENT_SECRET_CHECK):
+                        value = "1"
                 elif item.get("key") == "IS_GITEA_ENABLED":
                     GITEA_HOST, GITEA_CLIENT_ID, GITEA_CLIENT_SECRET = get_configuration_value(
                         [

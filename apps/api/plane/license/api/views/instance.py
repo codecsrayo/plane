@@ -56,6 +56,7 @@ class InstanceEndpoint(BaseAPIView):
             GITHUB_APP_NAME,
             GITHUB_CLIENT_ID,
             IS_GITLAB_ENABLED,
+            IS_GITLAB_INTEGRATION_ENABLED,
             GITLAB_CLIENT_ID,
             GITLAB_HOST,
             IS_GITEA_ENABLED,
@@ -102,6 +103,10 @@ class InstanceEndpoint(BaseAPIView):
                 },
                 {
                     "key": "IS_GITLAB_ENABLED",
+                    "default": "0",
+                },
+                {
+                    "key": "IS_GITLAB_INTEGRATION_ENABLED",
                     "default": "0",
                 },
                 {
@@ -169,6 +174,7 @@ class InstanceEndpoint(BaseAPIView):
         data["is_github_enabled"] = IS_GITHUB_ENABLED == "1"
         data["is_github_integration_enabled"] = IS_GITHUB_INTEGRATION_ENABLED == "1"
         data["is_gitlab_enabled"] = IS_GITLAB_ENABLED == "1"
+        data["is_gitlab_integration_enabled"] = IS_GITLAB_INTEGRATION_ENABLED == "1"
         data["is_gitea_enabled"] = IS_GITEA_ENABLED == "1"
         data["is_magic_login_enabled"] = ENABLE_MAGIC_LINK_LOGIN == "1"
         data["is_email_password_enabled"] = ENABLE_EMAIL_PASSWORD == "1"
