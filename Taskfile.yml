@@ -156,7 +156,7 @@ tasks:
       - docker compose -f docker-compose-dev.yml build --no-cache
       - docker compose -f docker-compose-dev.yml up -d
 
-  rust:watch:
+  compose:watch:
     cmds:
       - docker compose -f docker-compose-dev.yml watch web admin space live
 
