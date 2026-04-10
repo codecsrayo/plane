@@ -37,7 +37,7 @@ apalis          = { version = "0.7", features = ["limit", "timeout", "retry"] }
 apalis-sql      = { version = "0.7", features = ["postgres", "tokio-comp"] }
 
 # ── Cron jobs ─────────────────────────────────────────────────────────────────
-tokio-cron-scheduler = { version = "0.15" }
+tokio-cron-scheduler = { version = "=0.14.0" }
 
 # ── Redis / Valkey ────────────────────────────────────────────────────────────
 fred            = { version = "10", features = ["i-std", "i-client", "subscriber-client"] }
