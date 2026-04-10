@@ -9,73 +9,27 @@ members = [".", "migration"]
 
 # ── Runtime & HTTP ────────────────────────────────────────────────────────────
 [dependencies]
-axum            = { version = "0.8", features = ["macros", "multipart"] }
-tokio           = { version = "1", features = ["full"] }
-tower           = { version = "0.5" }
-tower-http      = { version = "0.6", features = ["cors", "trace", "compression-gzip"] }
-
-# ── ORM & Migrations ──────────────────────────────────────────────────────────
-sea-orm         = { version = "1.1", features = [
-                    "sqlx-postgres",
-                    "runtime-tokio-rustls",
-                    "macros",
-                    "with-uuid",
-                    "with-chrono",
-                    "with-json",
-] }
-sea-orm-migration = { version = "1.1" }
-
-# ── Serialización ─────────────────────────────────────────────────────────────
-serde           = { version = "1", features = ["derive"] }
-serde_json      = { version = "1" }
-
-# ── Auth ──────────────────────────────────────────────────────────────────────
-# Pinado a 9.x — jsonwebtoken 10+ usa edition 2024
-jsonwebtoken    = { version = "=9.3.1" }
-
-# ── Background jobs ───────────────────────────────────────────────────────────
-apalis          = { version = "0.7", features = ["limit", "timeout", "retry"] }
-apalis-sql      = { version = "0.7", features = ["postgres", "tokio-comp"] }
-
-# ── Cron jobs ─────────────────────────────────────────────────────────────────
-# Pinado a 0.14 — 0.15+ usa edition 2024
-tokio-cron-scheduler = { version = "=0.14.0" }
-
-# ── Redis / Valkey ────────────────────────────────────────────────────────────
-fred            = { version = "10", features = ["i-std", "i-client", "subscriber-client"] }
-
-# ── S3 / MinIO ────────────────────────────────────────────────────────────────
-aws-sdk-s3      = { version = "1" }
-aws-config      = { version = "1" }
-
-# ── Email ─────────────────────────────────────────────────────────────────────
-# Pinado a 0.11.19 — 0.11.20+ usa edition 2024
-lettre          = { version = "=0.11.19", features = ["tokio1", "tokio1-native-tls", "smtp-transport", "builder"] }
-
-# ── HTTP client ───────────────────────────────────────────────────────────────
-reqwest         = { version = "0.12", features = ["json", "rustls-tls"], default-features = false }
-
-# ── Logging & Tracing ─────────────────────────────────────────────────────────
-tracing             = { version = "0.1" }
-tracing-subscriber  = { version = "0.3", features = ["env-filter", "json"] }
-
-# ── Config ────────────────────────────────────────────────────────────────────
-dotenvy         = { version = "0.15" }
-
-# ── Métricas ─────────────────────────────────────────────────────────────────
-axum-prometheus = { version = "0.7" }
-
-# ── API Docs ──────────────────────────────────────────────────────────────────
-utoipa              = { version = "5", features = ["axum_extras", "uuid", "chrono"] }
-utoipa-swagger-ui   = { version = "8", features = ["axum"] }
-
-# ── Utilidades ────────────────────────────────────────────────────────────────
-async-trait     = { version = "0.1" }
-uuid            = { version = "1", features = ["v4", "serde"] }
-chrono          = { version = "0.4", features = ["serde"] }
-thiserror       = { version = "2" }
-anyhow          = { version = "1" }
-
-# ── Dev / Test ────────────────────────────────────────────────────────────────
-[dev-dependencies]
-axum-test       = { version = "17" }
+anyhow = "1.0.102"
+apalis = { version = "0.7.4", features = ["limit", "timeout", "retry"] }
+apalis-sql = { version = "0.7.4", features = ["postgres", "tokio-comp"] }
+async-trait = "0.1.89"
+aws-config = "1.8.15"
+aws-sdk-s3 = "1.129.0"
+axum = { version = "0.8.8", features = ["macros", "multipart"] }
+chrono = { version = "0.4.44", features = ["serde"] }
+dotenvy = "0.15.7"
+fred = { version = "10.1.0", features = ["i-std", "i-client", "subscriber-client"] }
+lettre = { version = "0.11.21", features = ["tokio1", "tokio1-native-tls", "smtp-transport", "builder"] }
+sea-orm = { version = "1.1.20", features = ["sqlx-postgres", "runtime-tokio-rustls", "macros", "with-uuid", "with-chrono", "with-json"] }
+sea-orm-migration = "1.1.20"
+serde = { version = "1.0.228", features = ["derive"] }
+serde_json = "1.0.149"
+thiserror = "2.0.18"
+tokio = { version = "1.51.1", features = ["full"] }
+tower = "0.5.3"
+tower-http = { version = "0.6.8", features = ["cors", "trace", "compression-gzip"] }
+tracing = "0.1.44"
+tracing-subscriber = { version = "0.3.23", features = ["env-filter", "json"] }
+utoipa = { version = "5.4.0", features = ["axum_extras", "uuid", "chrono"] }
+utoipa-swagger-ui = { version = "9.0.2", features = ["axum"] }
+uuid = { version = "1.23.0", features = ["v4", "serde"] }
