@@ -50,6 +50,7 @@ tasks:
     cmds:
       - task setup:env
       - task setup:secret
+      - task setup:rust
       - task setup:deps
       - 'echo "Setup complete."'
       - 'echo "Next step: task dev:up"'
@@ -78,6 +79,20 @@ tasks:
         else
           echo "Skipped SECRET_KEY (already exists in ./apps/api/.env)"
         fi
+
+  # Ensure the local Rust toolchain matches the repo for api_rust work.
+  setup:rust:
+    cmds:
+      - |
+        if ! command -v rustup >/dev/null 2>&1; then
+          echo "Installing rustup..."
+          curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal
+        fi
+
+        . "$HOME/.cargo/env"
+        rustup toolchain install stable --profile minimal --component rustfmt --component clippy
+        rustup override set stable
+        cargo --version
 
   # Install JS dependencies using the repo's pinned pnpm setup.
   setup:deps:
