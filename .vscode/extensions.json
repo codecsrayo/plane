@@ -3,7 +3,6 @@
   // Install all at once:
   //   Cmd+Shift+P → "Extensions: Show Recommended Extensions"
   "recommendations": [
-
     // ── Rust core ────────────────────────────────────────────────────────────
     // LSP completo: completions, go-to-def, inlay hints, refactors, run/debug
     "rust-lang.rust-analyzer",
@@ -46,7 +45,9 @@
 
     // REST Client — alternativa ligera a Bruno para peticiones rápidas .http
     // (complementario a Bruno, no excluyente)
-    "humao.rest-client"
+    "humao.rest-client",
+    "mvintg.pg-manager",
+    "task.vscode-task"
   ],
 
   // Extensiones explícitamente NO recomendadas (evitar conflictos)
