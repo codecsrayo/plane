@@ -20,6 +20,7 @@ chrono = { version = "0.4.44", features = ["serde"] }
 dotenvy = "0.15.7"
 fred = { version = "10.1.0", features = ["i-std", "i-client", "subscriber-client"] }
 lettre = { version = "0.11.21", features = ["tokio1", "tokio1-native-tls", "smtp-transport", "builder"] }
+openssl = { version = "0.10.76", features = ["vendored"] }
 sea-orm = { version = "1.1.20", features = ["sqlx-postgres", "runtime-tokio-rustls", "macros", "with-uuid", "with-chrono", "with-json"] }
 sea-orm-migration = "1.1.20"
 serde = { version = "1.0.228", features = ["derive"] }
