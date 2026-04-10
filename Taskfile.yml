@@ -157,6 +157,13 @@ tasks:
     cmds:
       - docker compose -f docker-compose-dev.yml watch web admin space live
 
+  dev:rust:clean:
+    cmds:
+      - cd apps/api_rust && cargo clean
+      - rm -rf apps/api_rust/target
+      - cd apps/api_rust/migration && cargo clean
+      - rm -rf apps/api_rust/migration/target
+
   # Start frontend services and attach compose watch in one command.
   dev:up-watch:
     cmds:
