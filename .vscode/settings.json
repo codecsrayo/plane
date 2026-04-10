@@ -1,0 +1,29 @@
+{
+  // ── rust-analyzer — workspace discovery ──────────────────────────────────
+  // El monorepo tiene raíz JS/Python, no Rust. Sin esto rust-analyzer
+  // no encuentra el workspace y lanza "failed to discover workspace".
+  "rust-analyzer.linkedProjects": [
+    "apps/api_rust/Cargo.toml"
+  ],
+
+  // Ejecutar cargo check en cada save (más rápido que clippy para dev)
+  "rust-analyzer.checkOnSave": true,
+  "rust-analyzer.check.command": "clippy",
+
+  // Inlay hints — muestra tipos inferidos y nombres de parámetros inline
+  "rust-analyzer.inlayHints.parameterHints.enable": true,
+  "rust-analyzer.inlayHints.typeHints.enable": true,
+  "rust-analyzer.inlayHints.chainingHints.enable": true,
+
+  // Formato automático al guardar (usa rustfmt)
+  "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust-analyzer",
+    "editor.formatOnSave": true
+  },
+
+  // Even Better TOML — usar Taplo como formatter para Cargo.toml
+  "[toml]": {
+    "editor.defaultFormatter": "tamasfe.even-better-toml",
+    "editor.formatOnSave": true
+  }
+}
