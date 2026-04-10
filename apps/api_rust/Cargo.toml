@@ -40,7 +40,7 @@ apalis-sql      = { version = "0.7", features = ["postgres", "tokio-comp"] }
 tokio-cron-scheduler = { version = "0.15" }
 
 # ── Redis / Valkey ────────────────────────────────────────────────────────────
-fred            = { version = "10", features = ["tokio-runtime", "pool"] }
+fred            = { version = "10", features = ["i-std", "i-client", "subscriber-client"] }
 
 # ── S3 / MinIO ────────────────────────────────────────────────────────────────
 aws-sdk-s3      = { version = "1" }
