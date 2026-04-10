@@ -1,11 +1,13 @@
 pub use sea_orm_migration::prelude::*;
 
-mod migrations::m20240101_000001_auth;
-mod migrations::m20240101_000002_users_and_sessions;
-mod migrations::m20240101_000003_workspaces_and_tokens;
-mod migrations::m20240101_000004_projects_and_states;
-mod migrations::m20240101_000005_issues_and_modules;
-mod migrations::m20240101_000006_integrations_and_misc;
+mod migrations;
+
+use migrations::m20240101_000001_auth;
+use migrations::m20240101_000002_users_and_sessions;
+use migrations::m20240101_000003_workspaces_and_tokens;
+use migrations::m20240101_000004_projects_and_states;
+use migrations::m20240101_000005_issues_and_modules;
+use migrations::m20240101_000006_integrations_and_misc;
 
 pub struct Migrator;
 
