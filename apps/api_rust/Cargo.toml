@@ -30,13 +30,15 @@ serde           = { version = "1", features = ["derive"] }
 serde_json      = { version = "1" }
 
 # ── Auth ──────────────────────────────────────────────────────────────────────
+# Pinado a 9.x — jsonwebtoken 10+ usa edition 2024
 jsonwebtoken    = { version = "=9.3.1" }
 
-# ── Background jobs (Celery → apalis con backend Postgres) ───────────────────
+# ── Background jobs ───────────────────────────────────────────────────────────
 apalis          = { version = "0.7", features = ["limit", "timeout", "retry"] }
 apalis-sql      = { version = "0.7", features = ["postgres", "tokio-comp"] }
 
 # ── Cron jobs ─────────────────────────────────────────────────────────────────
+# Pinado a 0.14 — 0.15+ usa edition 2024
 tokio-cron-scheduler = { version = "=0.14.0" }
 
 # ── Redis / Valkey ────────────────────────────────────────────────────────────
@@ -47,9 +49,10 @@ aws-sdk-s3      = { version = "1" }
 aws-config      = { version = "1" }
 
 # ── Email ─────────────────────────────────────────────────────────────────────
+# Pinado a 0.11.19 — 0.11.20+ usa edition 2024
 lettre          = { version = "=0.11.19", features = ["tokio1", "tokio1-native-tls", "smtp-transport", "builder"] }
 
-# ── HTTP client (integraciones externas: GitHub, etc.) ───────────────────────
+# ── HTTP client ───────────────────────────────────────────────────────────────
 reqwest         = { version = "0.12", features = ["json", "rustls-tls"], default-features = false }
 
 # ── Logging & Tracing ─────────────────────────────────────────────────────────
@@ -62,7 +65,7 @@ dotenvy         = { version = "0.15" }
 # ── Métricas ─────────────────────────────────────────────────────────────────
 axum-prometheus = { version = "0.7" }
 
-# ── API Docs (OpenAPI / Swagger UI) ───────────────────────────────────────────
+# ── API Docs ──────────────────────────────────────────────────────────────────
 utoipa              = { version = "5", features = ["axum_extras", "uuid", "chrono"] }
 utoipa-swagger-ui   = { version = "8", features = ["axum"] }
 
@@ -76,3 +79,20 @@ anyhow          = { version = "1" }
 # ── Dev / Test ────────────────────────────────────────────────────────────────
 [dev-dependencies]
 axum-test       = { version = "17" }
+
+# ── Forzar versiones seguras de dependencias transitivas ─────────────────────
+# Necesario porque rust-analyzer < feb-2025 no soporta edition = "2024".
+# Estos crates actualizaron a edition 2024 en versiones recientes;
+# los pineamos a la última versión estable con edition 2021/2018.
+[patch.crates-io]
+rand                    = { version = "=0.9.2" }
+time                    = { version = "=0.3.45" }
+indexmap                = { version = "=2.13.1" }
+hashbrown               = { version = "=0.16.1" }
+getrandom               = { version = "=0.3.4" }
+hmac                    = { version = "=0.12.1" }
+sha2                    = { version = "=0.10.9" }
+sha1                    = { version = "=0.10.6" }
+md-5                    = { version = "=0.10.6" }
+reserve-port            = { version = "=2.3.0" }
+rust-multipart-rfc7578_2 = { version = "=0.8.0" }
