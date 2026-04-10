@@ -3,39 +3,48 @@ version: "3"
 tasks:
   # Show available tasks.
   default:
+    desc: List available tasks
     cmds:
       - task --list
 
   help:
+    desc: List available tasks
     cmds:
       - task --list
 
 
   npm:install:
+    desc: Install JavaScript dependencies with pnpm
     cmds:
       - pnpm install
 
   npm:build:
+    desc: Build all JavaScript packages and applications
     cmds:
       - pnpm build
 
   npm:check:
+    desc: Run all JavaScript checks
     cmds:
       - pnpm check
 
   npm:lint:
+    desc: Run JavaScript lint checks
     cmds:
       - pnpm check:lint
 
   npm:types:
+    desc: Run JavaScript and TypeScript type checks
     cmds:
       - pnpm check:types
 
   npm:fix:
+    desc: Auto-fix JavaScript formatting and lint issues
     cmds:
       - pnpm fix
   
   acme-create:
+    desc: Ensure the local ACME certificate file exists with secure permissions
     cmds:
       - |
         if [ -d ./apps/proxy/acme.json ]; then
@@ -49,6 +58,7 @@ tasks:
 
   # Bootstrap local development without overwriting existing env files.
   setup:
+    desc: Bootstrap the local development environment
     deps: [acme-create]
     cmds:
       - task setup:env
@@ -60,6 +70,7 @@ tasks:
 
   # Create .env files from examples only when they do not already exist.
   setup:env:
+    desc: Create missing environment files from examples
     cmds:
       - |
         for path in . ./apps/web ./apps/api ./apps/space ./apps/admin ./apps/live; do
@@ -73,6 +84,7 @@ tasks:
 
   # Generate the Django secret once and keep it stable across reruns.
   setup:secret:
+    desc: Generate and persist the Django secret key for local development
     cmds:
       - |
         if ! grep -q '^SECRET_KEY=' ./apps/api/.env; then
@@ -85,6 +97,7 @@ tasks:
 
   # Ensure the local Rust toolchain matches the repo for api_rust work.
   setup:rust:
+    desc: Install and configure the local Rust toolchain for api_rust
     cmds:
       - |
         if ! command -v rustup >/dev/null 2>&1; then
@@ -99,38 +112,46 @@ tasks:
 
   # Install JS dependencies using the repo's pinned pnpm setup.
   setup:deps:
+    desc: Enable pnpm and install JavaScript dependencies
     cmds:
       - corepack enable pnpm
       - pnpm install
 
   # Validate generated compose configuration before running containers.
   compose:config:
+    desc: Validate the development Docker Compose configuration
     cmds:
       - docker compose -f docker-compose-dev.yml config
 
   compose:prod:config:
+    desc: Validate the production Docker Compose configuration
     cmds:
       - docker compose -f docker-compose.yml config
 
   compose:up:
+    desc: Start development containers in detached mode
     deps: [acme-create]
     cmds:
       - docker compose -f docker-compose-dev.yml up -d --build
 
   compose:down:
+    desc: Stop development containers
     cmds:
       - docker compose -f docker-compose-dev.yml down
 
   compose:restart:
+    desc: Restart development containers
     cmds:
       - docker compose -f docker-compose-dev.yml down
       - docker compose -f docker-compose-dev.yml up -d --build
 
   compose:ps:
+    desc: Show running development containers
     cmds:
       - docker compose -f docker-compose-dev.yml ps
   
   compose:clean-volumes:
+    desc: Recreate development containers after removing Compose-managed volumes
     cmds:
       - docker compose -f docker-compose-dev.yml down -v
       - docker volume ls -q --filter "label=com.docker.compose.project=plane" | xargs -r docker volume rm
@@ -138,6 +159,7 @@ tasks:
 
   # Pass SERVICE=<name> to follow logs for a single container.
   compose:logs:
+    desc: Follow development container logs, optionally filtered by SERVICE
     cmds:
       - |
         if [ -n "{{.SERVICE}}" ]; then
@@ -147,20 +169,24 @@ tasks:
         fi
 
   compose:logs:proxy:
+    desc: Follow proxy logs in development
     cmds:
       - docker compose -f docker-compose-dev.yml logs -f proxy
 
   compose:rebuild:
+    desc: Rebuild and restart development containers without cache
     deps: [acme-create]
     cmds:
       - docker compose -f docker-compose-dev.yml build --no-cache
       - docker compose -f docker-compose-dev.yml up -d
 
   compose:watch:
+    desc: Watch and sync changes for selected development services
     cmds:
       - docker compose -f docker-compose-dev.yml watch web admin space live
 
   rust:clean:
+    desc: Clean Rust build artifacts for the API and migration crates
     cmds:
       - cd apps/api_rust && cargo clean
       - rm -rf apps/api_rust/target
@@ -168,53 +194,71 @@ tasks:
       - rm -rf apps/api_rust/migration/target
   
   rust:watch-run:
+    desc: Run the Rust API with cargo-watch
     cmds:
       - cd apps/api_rust && cargo watch -x run
 
   rust:watch-x-clippy:
+    desc: Run clippy on file changes for the Rust API workspace
     cmds:
       - cd apps/api_rust && cargo watch -x clippy
+
+  rust:migrations:
+    desc: Run SeaORM migrations with CMD=<up|down|fresh|refresh|reset|status>
+    vars:
+      CMD: '{{default "status" .CMD}}'
+    cmds:
+      - cd apps/api_rust && cargo run -p migration --features migrate -- {{.CMD}}
   
   rust:build:
+    desc: Build the Rust API workspace
     cmds:
       - cd apps/api_rust && cargo build
       
   rust:cargo-check:
+    desc: Run cargo check for the Rust API workspace
     cmds:
       - cd apps/api_rust && cargo check
   
   
 
   rust:watch-test:
+    desc: Run Rust tests on file changes with cargo-watch
     cmds:
       - cd apps/api_rust && cargo watch -x test
 
 
   # Start frontend services and attach compose watch in one command.
   compose:up-watch:
+    desc: Start key development services with Compose watch enabled
     cmds:
       - docker compose -f docker-compose-dev.yml up --watch web admin space live
 
   prod:up:
+    desc: Start production containers in detached mode
     deps: [acme-create]
     cmds:
       - docker compose -f docker-compose.yml up -d --build
 
   prod:down:
+    desc: Stop production containers
     cmds:
       - docker compose -f docker-compose.yml down
 
   prod:restart:
+    desc: Restart production containers
     cmds:
       - docker compose -f docker-compose.yml down
       - docker compose -f docker-compose.yml up -d --build
 
   prod:ps:
+    desc: Show running production containers
     cmds:
       - docker compose -f docker-compose.yml ps
 
   # Pass SERVICE=<name> to follow logs for a single container.
   prod:logs:
+    desc: Follow production container logs, optionally filtered by SERVICE
     cmds:
       - |
         if [ -n "{{.SERVICE}}" ]; then
@@ -224,10 +268,12 @@ tasks:
         fi
 
   prod:logs:proxy:
+    desc: Follow proxy logs in production
     cmds:
       - docker compose -f docker-compose.yml logs -f proxy
 
   prod:rebuild:
+    desc: Rebuild and restart a specific production service
     deps: [acme-create]
     requires:
       vars: [SERVICE]
@@ -235,10 +281,12 @@ tasks:
       - docker compose -f docker-compose.yml up -d --build {{.SERVICE}}
 
   compose:url:
+    desc: Show development application URLs
     cmds:
       - 'echo "App: https://${PLANE_DOMAIN:-plane.codecsrayo.com}"'
       - 'echo "Dashboard Proxy: http://localhost:8080"'
 
   prod:url:
+    desc: Show production application URLs
     cmds:
       - 'echo "App: https://${PLANE_DOMAIN:-plane.codecsrayo.com}"'
