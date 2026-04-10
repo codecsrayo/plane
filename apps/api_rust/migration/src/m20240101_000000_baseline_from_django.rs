@@ -1,21 +1,17 @@
-/// Baseline migration — Schema inicial importado desde Django
-///
-/// Este archivo es un STUB que compila correctamente.
-/// Para completarlo:
-///
-///   1. Con acceso a la DB de Django en ejecución:
-///        pg_dump --schema-only --no-owner --no-acl \
-///          -d postgres://plane:plane@localhost:5432/plane \
-///          > /tmp/django_schema.sql
-///
-///   2. Pegar el contenido del dump en `up()` dentro de `manager.get_connection().execute_unprepared(SQL)`.
-///
-///   3. El `down()` debe hacer DROP de todas las tablas en orden inverso
-///      respetando las FK (o simplemente `DROP SCHEMA public CASCADE; CREATE SCHEMA public;`
-///      en entornos de dev).
-///
-/// IMPORTANTE: Una vez aplicado, Django ya no gestiona el schema.
-/// Rust es el único dueño desde ese punto.
+// Baseline migration: schema inicial importado desde Django.
+//
+// STUB compilable. Para completarlo con acceso a la DB:
+//
+//   pg_dump --schema-only --no-owner --no-acl \
+//       -d postgres://plane:plane@localhost:5432/plane \
+//       > apps/api_rust/migration/sql/baseline.sql
+//
+// Luego reemplazar up() con:
+//   db.execute_unprepared(include_str!("../sql/baseline.sql")).await?;
+//
+// down() en dev: DROP SCHEMA public CASCADE; CREATE SCHEMA public;
+//
+// Una vez aplicado, Rust es el unico dueno del schema.
 use sea_orm_migration::prelude::*;
 
 pub struct Migration;
@@ -29,14 +25,10 @@ impl MigrationName for Migration {
 #[async_trait::async_trait]
 impl MigrationTrait for Migration {
     async fn up(&self, manager: &SchemaManager) -> Result<(), DbErr> {
-        // TODO: reemplazar con el pg_dump --schema-only de la DB Django.
-        // Ejemplo de cómo ejecutar SQL raw:
+        // TODO: reemplazar con execute_unprepared(include_str!("../sql/baseline.sql"))
+        // cuando haya acceso a la DB de Django.
         //
-        //   let db = manager.get_connection();
-        //   db.execute_unprepared(include_str!("../sql/baseline.sql")).await?;
-        //
-        // Por ahora se crea solo la tabla de control de migraciones de SeaORM
-        // para que `sea-orm-cli migrate status` funcione en dev.
+        // Tabla placeholder para que sea-orm-cli migrate status funcione en dev.
         manager
             .create_table(
                 Table::create()
@@ -62,7 +54,6 @@ impl MigrationTrait for Migration {
     }
 }
 
-/// Tabla placeholder — se elimina cuando se reemplaza por el baseline real.
 #[derive(DeriveIden)]
 enum Placeholder {
     Table,
