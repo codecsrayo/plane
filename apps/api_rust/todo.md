@@ -2,101 +2,135 @@
 
 ## Objetivo
 
-Reemplazar progresivamente la API Django + Celery por un stack Rust que comparte
-la misma base de datos PostgreSQL. No es un rewrite big-bang — se migra endpoint
-por endpoint detrás del proxy Traefik existente.
+Reemplazar la API Django + Celery por un stack Rust completo que toma ownership
+total del schema PostgreSQL. Django desaparece incluyendo sus migraciones.
 
-**Metas concretas:**
-- Reducir uso de RAM: ~750 MB (Django + Celery + RabbitMQ) → ~20 MB
-- Eliminar los workers de Celery (bgworker + beatworker) y RabbitMQ
-- Mantener 100% de compatibilidad de API (mismas URLs, mismos payloads)
-- Mismo PostgreSQL, mismo Redis/Valkey
+**Metas:**
+- ~750 MB (Django + Celery + RabbitMQ) → ~20 MB
+- Eliminar bgworker, beatworker, RabbitMQ
+- Rust es el dueño del schema — no más migraciones Django
+- Mismo PostgreSQL, mismo Redis/Valkey, mismo plane-live
 
 ---
 
-## plane-live: NO se toca
+## plane-live — NO se toca
 
 `plane-live` es un servidor **Hocuspocus (Y.js CRDT)** para edición colaborativa
-en tiempo real de Pages e issue descriptions. No es un WebSocket genérico — implementa
-el protocolo de sincronización CRDT de Y.js, con:
+de Pages e issue descriptions. Implementa sincronización CRDT por WebSocket,
+persiste estado binario Y.js + HTML via HTTP a la API, y usa Redis para sync
+entre múltiples instancias. Es Node.js (~60 MB), no Python. No es el problema.
 
-- `@hocuspocus/extension-redis` → pub/sub entre múltiples instancias del servidor
-- `@hocuspocus/extension-database` → persiste estado binario Y.js + HTML + JSON
-  de vuelta a la API vía HTTP
-- `TitleSyncExtension` → sincroniza el título del documento cuando cambia en el editor
-- `ForceCloseHandler` → expulsa conexiones cuando el documento está bloqueado/archivado
-
-**Por qué no se reemplaza con Axum WebSockets:**
-Hocuspocus es un protocolo específico (Y.js awareness + sync messages). Existe `y-crdt`
-(port Rust de Y.js) pero construir un servidor Hocuspocus-compatible desde cero en Rust
-sería semanas de trabajo para cero beneficio — plane-live es **Node.js** (~50–80 MB RAM),
-no Python. No es el problema.
-
-**Conclusión:** `plane-live` se mantiene intacto. Solo se migra Django → Rust.
+**Se mantiene intacto.** Solo se migra Django → Rust.
 
 ---
 
-## Migraciones de base de datos
+## ORM: SeaORM
 
-**Django sigue siendo el dueño del schema.** Rust nunca hace DDL (CREATE TABLE,
-ALTER TABLE, etc.).
+**Por qué SeaORM y no Diesel:**
 
-### En desarrollo / CI
+| | SeaORM | Diesel + diesel-async |
+|---|---|---|
+| Async nativo Tokio | ✅ | ⚠️ wrapper sobre sync |
+| Migrations en Rust | ✅ sea-orm-migration | ✅ diesel_migrations! |
+| Generar entities desde DB existente | ✅ `sea-orm-cli generate entity` | ⚠️ solo structs básicos |
+| Relaciones FK / M2M | ✅ has_many, belongs_to, many_to_many | ⚠️ M2M manual |
+| Soft delete integrado | ✅ con ActiveModel hooks | ⚠️ manual |
+| Con Axum | ✅ natural | ✅ funciona |
 
-SQLx verifica las queries en tiempo de compilación contra la DB real. Para eso necesita
-`DATABASE_URL` al hacer `cargo build`:
+El factor decisivo es `sea-orm-cli generate entity --database-url $DATABASE_URL`:
+apunta al Postgres existente (con el schema de Django) y genera automáticamente
+todos los entities Rust. Con 127 migraciones y ~50 modelos Django, esto ahorra
+semanas de trabajo de transcripción manual.
+
+---
+
+## Migraciones: sea-orm-migration (Rust toma ownership del schema)
+
+Django desaparece — Rust es el nuevo dueño del schema. El flujo es:
+
+### Paso 1 — Baseline (una sola vez, al inicio de Fase 0)
+
+Volcar el schema actual de Django como una migración baseline en SeaORM:
 
 ```bash
-# 1. Levantar la DB (la misma que usa Django)
-docker compose up -d plane-db
+# 1. Generar el SQL del schema actual de Django
+docker compose run --rm api python manage.py sqlmigrate ... # o pg_dump --schema-only
 
-# 2. Aplicar migraciones de Django (única fuente de verdad del schema)
-docker compose run --rm api python manage.py migrate
+# 2. Crear la migración baseline en SeaORM
+sea-orm-cli migrate generate "baseline_from_django"
+# → editar el archivo generado para incluir el SQL del dump
 
-# 3. Generar el cache de SQLx (archivos en .sqlx/) para compilación offline
-cd apps/api_rust
-cargo sqlx prepare
+# 3. Generar todos los entities desde la DB existente
+sea-orm-cli generate entity \
+  --database-url postgres://... \
+  --output-dir src/entities \
+  --with-serde both \
+  --date-time-crate time
+```
 
-# 4. Commit del directorio .sqlx/ al repo
-git add .sqlx/
+### Paso 2 — Todas las migraciones futuras en Rust
+
+```bash
+# Crear nueva migración
+sea-orm-cli migrate generate "add_column_x_to_issues"
+
+# Aplicar en dev
+sea-orm-cli migrate up
+
+# Revertir
+sea-orm-cli migrate down
+```
+
+Cada migración es un archivo Rust con `up()` y `down()`:
+
+```rust
+// m20240101_000001_add_column_x_to_issues.rs
+#[async_trait::async_trait]
+impl MigrationTrait for Migration {
+    async fn up(&self, manager: &SchemaManager) -> Result<(), DbErr> {
+        manager
+            .alter_table(
+                Table::alter()
+                    .table(Issues::Table)
+                    .add_column(ColumnDef::new(Issues::PriorityWeight).integer().not_null().default(0))
+                    .to_owned(),
+            )
+            .await
+    }
+
+    async fn down(&self, manager: &SchemaManager) -> Result<(), DbErr> {
+        manager
+            .alter_table(
+                Table::alter()
+                    .table(Issues::Table)
+                    .drop_column(Issues::PriorityWeight)
+                    .to_owned(),
+            )
+            .await
+    }
+}
 ```
 
 ### En producción (CI/CD)
 
-El binario Rust se compila con `SQLX_OFFLINE=true` — usa los archivos `.sqlx/`
-cacheados, no necesita acceso a la DB en build time:
-
 ```bash
-SQLX_OFFLINE=true cargo build --release
+# El binario Rust aplica sus propias migraciones al arrancar
+# (o vía comando separado antes del deploy)
+./plane-api migrate up
 ```
 
-El pipeline de deploy es:
-1. `plane-migrator` (Django) aplica migraciones → schema actualizado
-2. Contenedor Rust arranca con el schema ya listo
-
-### Flujo cuando se agrega un campo nuevo
-
-```
-1. Crear migración Django normalmente (apps/api/plane/db/migrations/)
-2. Aplicar en la DB de dev: python manage.py migrate
-3. Actualizar el struct Rust correspondiente en src/models/
-4. Actualizar la query SQLx afectada en src/routes/ o src/jobs/
-5. Regenerar cache: cargo sqlx prepare
-6. Commit de ambos (migración Django + .sqlx/ actualizado)
-```
-
-**Nunca se usa `sqlx migrate`** — ese comando es para proyectos donde Rust es el
-dueño del schema. Aquí Django lo es.
+`plane-migrator` (Django) desaparece del docker-compose.
 
 ---
 
-## Stack elegido
+## Stack completo
 
 | Rol | Librería | Reemplaza |
 |---|---|---|
-| HTTP framework | **Axum** (tokio-rs) | Django REST Framework + uvicorn |
+| HTTP framework | **Axum** | Django REST Framework + uvicorn |
 | Async runtime | **Tokio** | — |
-| Query builder | **SQLx** (offline mode) | Django ORM |
+| ORM | **SeaORM** | Django ORM |
+| Migrations | **sea-orm-migration** | Django migrations (127 archivos) |
 | Serialización | **serde + serde_json** | DRF serializers |
 | Auth JWT | **jsonwebtoken** | DRF TokenAuthentication |
 | Background jobs | **apalis** (backend: Postgres) | Celery bgworker + RabbitMQ |
@@ -106,28 +140,29 @@ dueño del schema. Aquí Django lo es.
 | Email | **lettre** | Django email backend |
 | HTTP client | **reqwest** | requests |
 | Logging | **tracing + tracing-subscriber** | python-json-logger |
-| Config | **dotenvy** | django settings / .env |
+| Config | **dotenvy** | django settings |
 | Métricas | **axum-prometheus** | scout-apm |
 
-### Lo que se elimina
+### Lo que desaparece
 
-| Actual | RAM | Resultado |
+| Contenedor | RAM | Resultado |
 |---|---|---|
 | api (Django + uvicorn) | ~280 MB | → Rust ~20 MB |
-| bgworker (Celery) | ~200 MB | → eliminado (apalis en el mismo binario) |
-| beatworker (Celery beat) | ~150 MB | → eliminado (tokio-cron-scheduler) |
-| plane-mq (RabbitMQ) | ~120 MB | → eliminado (apalis usa Postgres) |
-| **Total** | **~750 MB** | **→ ~20 MB** |
+| bgworker (Celery) | ~200 MB | → eliminado |
+| beatworker (Celery beat) | ~150 MB | → eliminado |
+| plane-mq (RabbitMQ) | ~120 MB | → eliminado |
+| plane-migrator (Django) | — | → eliminado |
+| **Total** | **~750 MB** | **~20 MB** |
 
-### Lo que se mantiene intacto
+### Lo que se mantiene
 
 | Servicio | Por qué |
 |---|---|
-| plane-live (Hocuspocus/Node.js) | protocolo Y.js CRDT — no reemplazable trivialmente |
-| plane-db (PostgreSQL) | misma DB compartida |
-| plane-redis (Valkey) | sigue siendo necesario para plane-live y caché |
-| plane-minio (MinIO) | almacenamiento de archivos, sin cambio |
-| proxy (Traefik) | el mismo, solo se agrega routing al contenedor Rust |
+| plane-live (Hocuspocus/Node.js) | protocolo Y.js CRDT — no reemplazable |
+| plane-db (PostgreSQL) | misma DB, Rust toma ownership del schema |
+| plane-redis (Valkey) | sigue necesario para plane-live y caché |
+| plane-minio (MinIO) | sin cambio |
+| proxy (Traefik) | el mismo, se agrega routing al contenedor Rust |
 
 ---
 
@@ -136,164 +171,134 @@ dueño del schema. Aquí Django lo es.
 ```
 apps/api_rust/
 ├── Cargo.toml
-├── Cargo.lock
-├── .sqlx/                       ← cache SQLx para compilación offline (commit al repo)
-├── .env.example
 ├── src/
-│   ├── main.rs                  ← bootstrap: router + AppState + servidor HTTP
-│   ├── config.rs                ← env vars tipadas (mismas que Django)
-│   ├── db.rs                    ← PgPool setup
-│   ├── error.rs                 ← AppError → HTTP response (equivale a DRF exception handler)
+│   ├── main.rs                  ← bootstrap: router + AppState + migraciones
+│   ├── config.rs                ← env vars tipadas
+│   ├── error.rs                 ← AppError → HTTP response
 │   ├── auth/
-│   │   ├── mod.rs
-│   │   ├── middleware.rs        ← extractor de token → CurrentUser (lee authtoken_token)
+│   │   ├── middleware.rs        ← extractor de token → CurrentUser
 │   │   └── permissions.rs      ← workspace/project role checks
-│   ├── models/                  ← structs mapeando tablas existentes (SQLx FromRow)
-│   │   ├── mod.rs
+│   ├── entities/                ← generado por sea-orm-cli (NO editar a mano)
 │   │   ├── issue.rs
 │   │   ├── project.rs
 │   │   ├── workspace.rs
 │   │   ├── state.rs
 │   │   └── ...
-│   ├── routes/                  ← un archivo por dominio, registrados en main.rs
-│   │   ├── mod.rs
+│   ├── routes/                  ← un archivo por dominio
 │   │   ├── issues.rs
 │   │   ├── projects.rs
 │   │   ├── workspaces.rs
 │   │   ├── cycles.rs
 │   │   ├── modules.rs
 │   │   └── integrations.rs
-│   └── jobs/                    ← apalis workers + cron (reemplazan Celery)
-│       ├── mod.rs
+│   └── jobs/                    ← apalis workers + cron
 │       ├── github_sync.rs
 │       ├── notifications.rs
 │       ├── export.rs
-│       └── scheduled.rs        ← cleanup, exporter_expired, etc.
-└── Dockerfile                   ← multi-stage: builder (600 MB) → runner (~15 MB)
+│       └── scheduled.rs
+├── migration/                   ← sea-orm-migration crate separado
+│   ├── Cargo.toml
+│   └── src/
+│       ├── lib.rs
+│       ├── m20240101_000000_baseline_from_django.rs   ← dump inicial
+│       └── m20240201_000001_...rs                     ← futuras migraciones
+└── Dockerfile
 ```
+
+---
+
+## Soft delete — consideración importante
+
+Los modelos de Django usan `SoftDeletionManager` que filtra `deleted_at IS NULL`
+automáticamente. En SeaORM no hay manager mágico.
+
+**Solución: `SoftDeleteActiveModel` trait custom:**
+
+```rust
+// src/entities/traits.rs
+pub trait SoftDelete {
+    fn is_deleted(&self) -> bool;
+}
+
+// En cada query, agregar condición explícita:
+Issue::find()
+    .filter(issue::Column::DeletedAt.is_null())
+    .filter(issue::Column::ProjectId.eq(project_id))
+    .all(&db)
+    .await?
+```
+
+Alternativamente, usar `sea-orm-softdelete` crate que añade el filtro automático
+similar al manager de Django.
 
 ---
 
 ## Estrategia de migración — por fases
 
-### Fase 0 — Scaffolding (1–2 días)
+### Fase 0 — Scaffolding + Baseline (2–3 días)
 
-- [ ] `cargo init --name plane-api`
-- [ ] `Cargo.toml` con dependencias base
-- [ ] `config.rs` con las mismas env vars que Django
-- [ ] Conexión a PostgreSQL con `sqlx::PgPool`
-- [ ] `GET /api/health/` → `{"status": "ok"}`
-- [ ] Generar `.sqlx/` con `cargo sqlx prepare` y commitear
+- [ ] `cargo new plane-api && cargo new migration`
+- [ ] `Cargo.toml` con SeaORM, Axum, Tokio, apalis
+- [ ] Generar baseline SQL desde la DB actual de Django
+- [ ] Crear migración `m_baseline_from_django` con ese SQL
+- [ ] Generar entities con `sea-orm-cli generate entity`
+- [ ] `GET /api/health/` funcionando contra la DB
 - [ ] Dockerfile multi-stage
-- [ ] Agregar contenedor `api_rust` en `docker-compose.yml`
-- [ ] Traefik: priority routing — Rust maneja solo paths migrados, Django el resto
+- [ ] Traefik: routing condicional por path
 
-### Fase 1 — Auth middleware (prerequisito de todo)
+### Fase 1 — Auth middleware
 
-- [ ] Leer tabla `authtoken_token` → `CurrentUser` extractor de Axum
-- [ ] Middleware de role check (workspace_member, project_member)
+- [ ] Leer tabla `authtoken_token` → `CurrentUser` extractor Axum
+- [ ] Role check (workspace_member, project_member) via SeaORM
 - [ ] Tests de integración contra DB real
 
 ### Fase 2 — Endpoints de alta frecuencia
 
-- [ ] `GET  /api/workspaces/{slug}/projects/`
-- [ ] `GET  /api/workspaces/{slug}/projects/{id}/issues/`
-- [ ] `GET  /api/workspaces/{slug}/projects/{id}/issues/{id}/`
-- [ ] `POST /api/workspaces/{slug}/projects/{id}/issues/`
-- [ ] `PATCH /api/workspaces/{slug}/projects/{id}/issues/{id}/`
-- [ ] `GET  /api/workspaces/{slug}/projects/{id}/states/`
-- [ ] `GET  /api/workspaces/{slug}/projects/{id}/members/`
-- [ ] `GET  /api/workspaces/{slug}/projects/{id}/cycles/`
-- [ ] `GET  /api/workspaces/{slug}/projects/{id}/modules/`
+- [ ] `GET/POST /api/workspaces/{slug}/projects/{id}/issues/`
+- [ ] `GET/PATCH/DELETE /api/workspaces/{slug}/projects/{id}/issues/{id}/`
+- [ ] `GET /api/workspaces/{slug}/projects/{id}/states/`
+- [ ] `GET /api/workspaces/{slug}/projects/{id}/members/`
+- [ ] `GET /api/workspaces/{slug}/projects/{id}/cycles/`
+- [ ] `GET /api/workspaces/{slug}/projects/{id}/modules/`
+- [ ] `GET /api/workspaces/{slug}/projects/`
 
 ### Fase 3 — Background jobs (eliminar Celery + RabbitMQ)
 
-- [ ] Setup apalis con backend PostgreSQL (tabla `apalis.jobs`)
-- [ ] Migrar `github_initial_issue_sync_task`
-- [ ] Migrar `sync_issue_to_github_task` / `sync_comment_to_github_task`
-- [ ] Migrar `notification_task`
-- [ ] Migrar `export_task`
-- [ ] Migrar `issue_activities_task`
-- [ ] Migrar tasks de email (magic link, invitaciones, activaciones)
-- [ ] Setup tokio-cron-scheduler para tareas periódicas:
-  - `cleanup_task` (daily)
-  - `exporter_expired_task` (hourly)
+- [ ] Setup apalis con backend PostgreSQL
+- [ ] Migrar todos los Celery tasks a apalis workers
+- [ ] Setup tokio-cron-scheduler para tareas periódicas
 - [ ] Eliminar `bgworker`, `beatworker`, `plane-mq` del docker-compose
 
 ### Fase 4 — Endpoints restantes (~275 paths)
 
-Cubrir el resto priorizando por frecuencia de uso en logs de producción.
+Cubrir el resto priorizando por frecuencia de uso en logs.
 
-### Fase 5 — Shutdown Django
+### Fase 5 — Shutdown Django completo
 
-- [ ] 0 tráfico va al contenedor `api` en producción
-- [ ] Eliminar contenedor `api` del docker-compose
-- [ ] Mantener migraciones Django en un contenedor de utilidad (`plane-migrator`)
-  para futuros schema changes — solo corre `manage.py migrate`, no levanta servidor
-
----
-
-## Decisiones de diseño
-
-### SQLx sin ORM — por qué
-
-Django ORM genera N+1 queries y abstrae demasiado. Con SQLx las queries son SQL
-plano verificado en compile time. Más verboso, más predecible, más rápido.
-
-```rust
-// Ejemplo: listar issues con estado, sin N+1
-let issues = sqlx::query_as!(
-    IssueRow,
-    r#"
-    SELECT
-        i.id, i.name, i.description_html, i.priority, i.created_at,
-        s.id AS state_id, s.name AS state_name, s.color AS state_color
-    FROM issues i
-    JOIN states s ON s.id = i.state_id
-    WHERE i.project_id = $1
-      AND i.deleted_at IS NULL
-    ORDER BY i.created_at DESC
-    LIMIT $2 OFFSET $3
-    "#,
-    project_id, limit, offset,
-)
-.fetch_all(&pool)
-.await?;
-```
-
-### Soft delete — obligatorio en cada query
-
-Todos los modelos tienen `deleted_at`. En Django lo maneja el `SoftDeletionManager`.
-En Rust no hay manager mágico — cada query debe incluir `AND deleted_at IS NULL`
-o tendrá datos erróneos.
-
-```rust
-// ⚠️ SIEMPRE incluir deleted_at IS NULL
-WHERE project_id = $1 AND deleted_at IS NULL
-```
-
-### Auth durante la transición (Fases 0–4)
-
-Rust lee la tabla `authtoken_token` de Django directamente — no reimplementa login.
-Django sigue siendo el auth server. En Fase 5 (shutdown Django) se decide si se
-migra el auth también o se mantiene como servicio separado.
-
-### apalis — por qué Postgres en vez de RabbitMQ
-
-apalis persiste los jobs en una tabla `apalis.jobs`. Sin broker externo.
-Ventajas:
-- Un servicio menos en docker-compose (~120 MB de RabbitMQ eliminados)
-- Los jobs sobreviven reinicios del worker
-- Visibilidad directa: `SELECT * FROM apalis.jobs WHERE status = 'Failed'`
-- Reintentos configurables con backoff
-- Dashboard opcional via apalis-web
+- [ ] 0 tráfico hacia el contenedor `api`
+- [ ] Eliminar `api`, `plane-migrator` del docker-compose
+- [ ] Eliminar el directorio `apps/api/` del repo (o archivar en rama)
+- [ ] Rust aplica sus propias migraciones en el deploy
 
 ---
 
-## Próximo paso inmediato — Fase 0
+## Próximo paso — Fase 0
 
 ```bash
 cd apps/api_rust
+
+# Inicializar workspace Cargo
 cargo init --name plane-api
-# Luego agregar Cargo.toml con dependencias base
+
+# Inicializar crate de migraciones
+cargo new migration --lib
+
+# Instalar CLI de SeaORM
+cargo install sea-orm-cli
+
+# Generar entities desde la DB existente de Django
+sea-orm-cli generate entity \
+  --database-url "postgres://plane:plane@localhost:5432/plane" \
+  --output-dir src/entities \
+  --with-serde both
 ```
