@@ -1332,11 +1332,11 @@ impl MigrationTrait for Migration {
                         .col(ColumnDef::new(Alias::new("project_id")).uuid().null())
                         .col(ColumnDef::new(Alias::new("updated_by_id")).uuid().null())
                         .col(ColumnDef::new(Alias::new("workspace_id")).uuid().not_null())
-                        .foreign_key(ForeignKey::create().name(&format!("{}_created_by", tbl)).from(Alias::new(tbl), Alias::new("created_by_id")).to(Alias::new("users"), Alias::new("id")))
-                        .foreign_key(ForeignKey::create().name(&format!("{}_updated_by", tbl)).from(Alias::new(tbl), Alias::new("updated_by_id")).to(Alias::new("users"), Alias::new("id")))
-                        .foreign_key(ForeignKey::create().name(&format!("{}_{}", tbl, fk_suffix)).from(Alias::new(tbl), Alias::new(rel_col)).to(Alias::new(rel_tbl), Alias::new("id")))
-                        .foreign_key(ForeignKey::create().name(&format!("{}_draft_issue_id", tbl)).from(Alias::new(tbl), Alias::new("draft_issue_id")).to(Alias::new("draft_issues"), Alias::new("id")))
-                        .foreign_key(ForeignKey::create().name(&format!("{}_workspace_id", tbl)).from(Alias::new(tbl), Alias::new("workspace_id")).to(Alias::new("workspaces"), Alias::new("id")))
+                        .foreign_key(ForeignKey::create().name(format!("{}_created_by", tbl)).from(Alias::new(tbl), Alias::new("created_by_id")).to(Alias::new("users"), Alias::new("id")))
+                        .foreign_key(ForeignKey::create().name(format!("{}_updated_by", tbl)).from(Alias::new(tbl), Alias::new("updated_by_id")).to(Alias::new("users"), Alias::new("id")))
+                        .foreign_key(ForeignKey::create().name(format!("{}_{}", tbl, fk_suffix)).from(Alias::new(tbl), Alias::new(rel_col)).to(Alias::new(rel_tbl), Alias::new("id")))
+                        .foreign_key(ForeignKey::create().name(format!("{}_draft_issue_id", tbl)).from(Alias::new(tbl), Alias::new("draft_issue_id")).to(Alias::new("draft_issues"), Alias::new("id")))
+                        .foreign_key(ForeignKey::create().name(format!("{}_workspace_id", tbl)).from(Alias::new(tbl), Alias::new("workspace_id")).to(Alias::new("workspaces"), Alias::new("id")))
                         .to_owned(),
                 )
                 .await?;
