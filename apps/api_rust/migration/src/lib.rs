@@ -1,6 +1,11 @@
 pub use sea_orm_migration::prelude::*;
 
-mod baseline;
+mod migrations::m20240101_000001_auth;
+mod migrations::m20240101_000002_users_and_sessions;
+mod migrations::m20240101_000003_workspaces_and_tokens;
+mod migrations::m20240101_000004_projects_and_states;
+mod migrations::m20240101_000005_issues_and_modules;
+mod migrations::m20240101_000006_integrations_and_misc;
 
 pub struct Migrator;
 
@@ -8,9 +13,12 @@ pub struct Migrator;
 impl MigratorTrait for Migrator {
     fn migrations() -> Vec<Box<dyn MigrationTrait>> {
         vec![
-            Box::new(baseline::Migration),
-            // Futuras migraciones se agregan aquí en orden:
-            // Box::new(m20240201_000001_add_..::Migration),
+            Box::new(m20240101_000001_auth::Migration),
+            Box::new(m20240101_000002_users_and_sessions::Migration),
+            Box::new(m20240101_000003_workspaces_and_tokens::Migration),
+            Box::new(m20240101_000004_projects_and_states::Migration),
+            Box::new(m20240101_000005_issues_and_modules::Migration),
+            Box::new(m20240101_000006_integrations_and_misc::Migration),
         ]
     }
 }
