@@ -167,13 +167,13 @@ tasks:
       - cd apps/api_rust/migration && cargo clean
       - rm -rf apps/api_rust/migration/target
   
-  rust:check:
+  rust:watch-run:
     cmds:
-      - cd apps/api_rust && cargo check
+      - cd apps/api_rust && cargo watch -x run
 
-  rust:watch-x-check:
+  rust:watch-x-clippy:
     cmds:
-      - cd apps/api_rust && cargo watch -x check
+      - cd apps/api_rust && cargo watch -x clippy
   
   rust:build:
     cmds:
