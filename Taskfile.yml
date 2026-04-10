@@ -10,27 +10,28 @@ tasks:
     cmds:
       - task --list
 
-  install:
+
+  npm:install:
     cmds:
       - pnpm install
 
-  build:
+  npm:build:
     cmds:
       - pnpm build
 
-  check:
+  npm:check:
     cmds:
       - pnpm check
 
-  lint:
+  npm:lint:
     cmds:
       - pnpm check:lint
 
-  types:
+  npm:types:
     cmds:
       - pnpm check:types
 
-  fix:
+  npm:fix:
     cmds:
       - pnpm fix
   
@@ -44,9 +45,11 @@ tasks:
           touch ./apps/proxy/acme.json
         fi
       - chmod 600 ./apps/proxy/acme.json
+    internal: true
 
   # Bootstrap local development without overwriting existing env files.
   setup:
+    deps: [acme-create]
     cmds:
       - task setup:env
       - task setup:secret
@@ -101,40 +104,40 @@ tasks:
       - pnpm install
 
   # Validate generated compose configuration before running containers.
-  dev:config:
+  compose:config:
     cmds:
       - docker compose -f docker-compose-dev.yml config
 
-  prod:config:
+  compose:prod:config:
     cmds:
       - docker compose -f docker-compose.yml config
 
-  dev:up:
+  compose:up:
     deps: [acme-create]
     cmds:
       - docker compose -f docker-compose-dev.yml up -d --build
 
-  dev:down:
+  compose:down:
     cmds:
       - docker compose -f docker-compose-dev.yml down
 
-  dev:restart:
+  compose:restart:
     cmds:
       - docker compose -f docker-compose-dev.yml down
       - docker compose -f docker-compose-dev.yml up -d --build
 
-  dev:ps:
+  compose:ps:
     cmds:
       - docker compose -f docker-compose-dev.yml ps
   
-  dev:clean-volumes:
+  compose:clean-volumes:
     cmds:
       - docker compose -f docker-compose-dev.yml down -v
       - docker volume ls -q --filter "label=com.docker.compose.project=plane" | xargs -r docker volume rm
       - docker compose -f docker-compose-dev.yml up -d --build
 
   # Pass SERVICE=<name> to follow logs for a single container.
-  dev:logs:
+  compose:logs:
     cmds:
       - |
         if [ -n "{{.SERVICE}}" ]; then
@@ -143,29 +146,47 @@ tasks:
           docker compose -f docker-compose-dev.yml logs -f
         fi
 
-  dev:logs:proxy:
+  compose:logs:proxy:
     cmds:
       - docker compose -f docker-compose-dev.yml logs -f proxy
 
-  dev:rebuild:
+  compose:rebuild:
     deps: [acme-create]
     cmds:
       - docker compose -f docker-compose-dev.yml build --no-cache
       - docker compose -f docker-compose-dev.yml up -d
 
-  dev:watch:
+  rust:watch:
     cmds:
       - docker compose -f docker-compose-dev.yml watch web admin space live
 
-  dev:rust:clean:
+  rust:clean:
     cmds:
       - cd apps/api_rust && cargo clean
       - rm -rf apps/api_rust/target
       - cd apps/api_rust/migration && cargo clean
       - rm -rf apps/api_rust/migration/target
+  
+  rust:check:
+    cmds:
+      - cd apps/api_rust && cargo check
+
+  rust:watch-x-check:
+    cmds:
+      - cd apps/api_rust && cargo watch -x check
+  
+  rust:build:
+    cmds:
+      - cd apps/api_rust && cargo build
+  
+
+  rust:watch-test:
+    cmds:
+      - cd apps/api_rust && cargo watch -x test
+
 
   # Start frontend services and attach compose watch in one command.
-  dev:up-watch:
+  compose:up-watch:
     cmds:
       - docker compose -f docker-compose-dev.yml up --watch web admin space live
 
@@ -208,7 +229,7 @@ tasks:
     cmds:
       - docker compose -f docker-compose.yml up -d --build {{.SERVICE}}
 
-  dev:url:
+  compose:url:
     cmds:
       - 'echo "App: https://${PLANE_DOMAIN:-plane.codecsrayo.com}"'
       - 'echo "Dashboard Proxy: http://localhost:8080"'
