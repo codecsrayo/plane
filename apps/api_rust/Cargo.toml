@@ -3,4 +3,76 @@ name = "api_rust"
 version = "0.1.0"
 edition = "2021"
 
+# ── Workspace members ─────────────────────────────────────────────────────────
+[workspace]
+members = [".", "migration"]
+
+# ── Runtime & HTTP ────────────────────────────────────────────────────────────
 [dependencies]
+axum            = { version = "0.8", features = ["macros", "multipart"] }
+tokio           = { version = "1", features = ["full"] }
+tower           = { version = "0.5" }
+tower-http      = { version = "0.6", features = ["cors", "trace", "compression-gzip"] }
+
+# ── ORM & Migrations ──────────────────────────────────────────────────────────
+sea-orm         = { version = "1.1", features = [
+                    "sqlx-postgres",
+                    "runtime-tokio-rustls",
+                    "macros",
+                    "with-uuid",
+                    "with-chrono",
+                    "with-json",
+] }
+sea-orm-migration = { version = "1.1" }
+
+# ── Serialización ─────────────────────────────────────────────────────────────
+serde           = { version = "1", features = ["derive"] }
+serde_json      = { version = "1" }
+
+# ── Auth ──────────────────────────────────────────────────────────────────────
+jsonwebtoken    = { version = "10" }
+
+# ── Background jobs (Celery → apalis con backend Postgres) ───────────────────
+apalis          = { version = "0.7", features = ["limit", "timeout", "retry"] }
+apalis-sql      = { version = "0.7", features = ["postgres", "tokio-comp"] }
+
+# ── Cron jobs ─────────────────────────────────────────────────────────────────
+tokio-cron-scheduler = { version = "0.15" }
+
+# ── Redis / Valkey ────────────────────────────────────────────────────────────
+fred            = { version = "10", features = ["tokio-runtime", "pool"] }
+
+# ── S3 / MinIO ────────────────────────────────────────────────────────────────
+aws-sdk-s3      = { version = "1" }
+aws-config      = { version = "1" }
+
+# ── Email ─────────────────────────────────────────────────────────────────────
+lettre          = { version = "0.11", features = ["tokio1", "tokio1-native-tls", "smtp-transport", "builder"] }
+
+# ── HTTP client (integraciones externas: GitHub, etc.) ───────────────────────
+reqwest         = { version = "0.12", features = ["json", "rustls-tls"], default-features = false }
+
+# ── Logging & Tracing ─────────────────────────────────────────────────────────
+tracing             = { version = "0.1" }
+tracing-subscriber  = { version = "0.3", features = ["env-filter", "json"] }
+
+# ── Config ────────────────────────────────────────────────────────────────────
+dotenvy         = { version = "0.15" }
+
+# ── Métricas ─────────────────────────────────────────────────────────────────
+axum-prometheus = { version = "0.7" }
+
+# ── API Docs (OpenAPI / Swagger UI) ───────────────────────────────────────────
+utoipa              = { version = "5", features = ["axum_extras", "uuid", "chrono"] }
+utoipa-swagger-ui   = { version = "8", features = ["axum"] }
+
+# ── Utilidades ────────────────────────────────────────────────────────────────
+async-trait     = { version = "0.1" }
+uuid            = { version = "1", features = ["v4", "serde"] }
+chrono          = { version = "0.4", features = ["serde"] }
+thiserror       = { version = "2" }
+anyhow          = { version = "1" }
+
+# ── Dev / Test ────────────────────────────────────────────────────────────────
+[dev-dependencies]
+axum-test       = { version = "17" }
