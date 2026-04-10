@@ -4,7 +4,7 @@ pub struct Migration;
 
 impl MigrationName for Migration {
     fn name(&self) -> &str {
-        "m20240101_000000_baseline_from_django"
+        "m20240101_000000_baseline"
     }
 }
 
