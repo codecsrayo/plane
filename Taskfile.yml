@@ -178,6 +178,11 @@ tasks:
   rust:build:
     cmds:
       - cd apps/api_rust && cargo build
+      
+  rust:cargo-check:
+    cmds:
+      - cd apps/api_rust && cargo check
+  
   
 
   rust:watch-test:
