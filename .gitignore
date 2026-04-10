@@ -72,7 +72,8 @@ pnpm-debug.log
 *.njsproj
 *.sln
 package-lock.json
-.vscode
+.vscode/*
+!.vscode/extensions.json
 
 # Sentry
 .sentryclirc

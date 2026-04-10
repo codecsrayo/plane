@@ -1,0 +1,61 @@
+{
+  // ─── VSCode Recommended Extensions — Plane Monorepo ───────────────────────
+  // Install all at once:
+  //   Cmd+Shift+P → "Extensions: Show Recommended Extensions"
+  "recommendations": [
+
+    // ── Rust core ────────────────────────────────────────────────────────────
+    // LSP completo: completions, go-to-def, inlay hints, refactors, run/debug
+    "rust-lang.rust-analyzer",
+
+    // Debugger LLDB — requerido por rust-analyzer para breakpoints en Rust
+    // (alternativa: ms-vscode.cpptools, pero CodeLLDB es superior para Rust)
+    "vadimcn.vscode-lldb",
+
+    // ── Cargo / dependencias ─────────────────────────────────────────────────
+    // Muestra versión actual vs última disponible inline en Cargo.toml
+    // Permite cambiar versión con un click y abre docs.rs desde el editor
+    // Nota: "crates" (serayuzgur) fue deprecado → "dependi" es el sucesor
+    "fill-labs.dependi",
+
+    // ── TOML ─────────────────────────────────────────────────────────────────
+    // "Better TOML" está archivado — su propio autor recomienda este sucesor
+    // Syntax highlight, validación TOML v1.0, schema JSON, formatter (Taplo)
+    // 3.8M installs, actualizado activamente en 2024/2025
+    "tamasfe.even-better-toml",
+
+    // ── Testing ──────────────────────────────────────────────────────────────
+    // UI de tests integrada en VSCode — muestra árbol de tests cargo,
+    // permite correr/debuggear tests individuales sin terminal
+    "swellaby.vscode-rust-test-adapter",
+
+    // ── Calidad / DX ─────────────────────────────────────────────────────────
+    // Muestra diagnósticos (errores/warnings) inline al final de cada línea
+    // Evita tener que abrir el panel Problems para ver qué falla
+    "usernamehw.errorlens",
+
+    // ── Utilidades generales del monorepo ─────────────────────────────────────
+    // Docker — edición de Dockerfile y docker-compose con syntax + linting
+    "ms-azuretools.vscode-docker",
+
+    // GitLens — blame inline, historial por línea, comparación de ramas
+    "eamodio.gitlens",
+
+    // DotENV — syntax highlight para archivos .env
+    "mikestead.dotenv",
+
+    // REST Client — alternativa ligera a Bruno para peticiones rápidas .http
+    // (complementario a Bruno, no excluyente)
+    "humao.rest-client"
+  ],
+
+  // Extensiones explícitamente NO recomendadas (evitar conflictos)
+  "unwantedRecommendations": [
+    // Reemplazado por rust-lang.rust-analyzer
+    "rust-lang.rust",
+    // Archivado — usar tamasfe.even-better-toml
+    "bungcip.better-toml",
+    // Deprecado — usar fill-labs.dependi
+    "serayuzgur.crates"
+  ]
+}
