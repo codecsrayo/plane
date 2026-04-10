@@ -26,16 +26,18 @@ entre múltiples instancias. Es Node.js (~60 MB), no Python. No es el problema.
 
 ## ORM: SeaORM
 
-**Por qué SeaORM y no Diesel:**
+**SeaORM es el único ORM del proyecto. No se usa Diesel.**
 
-| | SeaORM | Diesel + diesel-async |
-|---|---|---|
-| Async nativo Tokio | ✅ | ⚠️ wrapper sobre sync |
-| Migrations en Rust | ✅ sea-orm-migration | ✅ diesel_migrations! |
-| Generar entities desde DB existente | ✅ `sea-orm-cli generate entity` | ⚠️ solo structs básicos |
-| Relaciones FK / M2M | ✅ has_many, belongs_to, many_to_many | ⚠️ M2M manual |
-| Soft delete integrado | ✅ con ActiveModel hooks | ⚠️ manual |
-| Con Axum | ✅ natural | ✅ funciona |
+Razones:
+
+| Característica | SeaORM |
+|---|---|
+| Async nativo Tokio | ✅ |
+| Migrations en Rust | ✅ sea-orm-migration |
+| Generar entities desde DB existente | ✅ `sea-orm-cli generate entity` |
+| Relaciones FK / M2M | ✅ has_many, belongs_to, many_to_many |
+| Soft delete integrado | ✅ con ActiveModel hooks o `sea-orm-softdelete` |
+| Con Axum | ✅ natural |
 
 El factor decisivo es `sea-orm-cli generate entity --database-url $DATABASE_URL`:
 apunta al Postgres existente (con el schema de Django) y genera automáticamente
@@ -142,6 +144,7 @@ impl MigrationTrait for Migration {
 | Logging | **tracing + tracing-subscriber** | python-json-logger |
 | Config | **dotenvy** | django settings |
 | Métricas | **axum-prometheus** | scout-apm |
+| API Docs | **utoipa + utoipa-swagger-ui** | drf-spectacular |
 
 ### Lo que desaparece
 
@@ -163,6 +166,125 @@ impl MigrationTrait for Migration {
 | plane-redis (Valkey) | sigue necesario para plane-live y caché |
 | plane-minio (MinIO) | sin cambio |
 | proxy (Traefik) | el mismo, se agrega routing al contenedor Rust |
+
+---
+
+## Testing de la API
+
+### Documentación interactiva: utoipa + Swagger UI
+
+`utoipa` genera el spec OpenAPI 3.x a partir de macros Rust. Se monta en Axum:
+
+```toml
+# Cargo.toml
+utoipa = { version = "4", features = ["axum_extras", "uuid", "chrono"] }
+utoipa-swagger-ui = { version = "6", features = ["axum"] }
+```
+
+```rust
+// main.rs — montar Swagger UI en /docs
+use utoipa_swagger_ui::SwaggerUi;
+
+let app = Router::new()
+    .merge(SwaggerUi::new("/docs")
+        .url("/api-docs/openapi.json", ApiDoc::openapi()));
+```
+
+Acceder a `http://localhost:8000/docs` para explorar y probar endpoints manualmente.
+
+### Tests automatizados en Rust
+
+**Opción recomendada: `axum-test`**
+
+Permite hacer requests HTTP directamente al router de Axum sin levantar un
+servidor TCP real. Ideal para tests de integración rápidos:
+
+```toml
+[dev-dependencies]
+axum-test = "14"
+tokio = { version = "1", features = ["full"] }
+```
+
+```rust
+#[tokio::test]
+async fn test_get_issues() {
+    let app = build_app(test_db_state()).await;
+    let server = TestServer::new(app).unwrap();
+
+    let response = server
+        .get("/api/workspaces/my-ws/projects/1/issues/")
+        .add_header("Authorization", "Bearer test-token")
+        .await;
+
+    response.assert_status_ok();
+    response.assert_json_contains(&json!({ "count": 0 }));
+}
+```
+
+**Alternativa ligera: `httpc-test`**
+
+Más simple, sin estado entre requests. Útil para smoke tests rápidos:
+
+```toml
+[dev-dependencies]
+httpc-test = "0.1"
+```
+
+```rust
+#[tokio::test]
+async fn test_health() -> httpc_test::Result<()> {
+    let hc = httpc_test::new_client("http://localhost:8000")?;
+    let res = hc.do_get("/api/health/").await?;
+    res.print().await?;
+    Ok(())
+}
+```
+
+### Cliente externo: Bruno (recomendado sobre Postman/Insomnia)
+
+Bruno es open source, almacena las colecciones como archivos en el repo (no
+en la nube), y funciona offline. Las colecciones viven en `apps/api_rust/tests/bruno/`.
+
+```bash
+# Instalar Bruno
+brew install bruno  # macOS
+# o descargar desde https://www.usebruno.com/
+
+# Estructura de colección en el repo
+apps/api_rust/tests/bruno/
+├── bruno.json
+├── environments/
+│   ├── local.bru
+│   └── staging.bru
+├── health/
+│   └── get_health.bru
+├── issues/
+│   ├── list_issues.bru
+│   └── create_issue.bru
+└── workspaces/
+    └── list_workspaces.bru
+```
+
+**Comparativa de clientes externos:**
+
+| Cliente | Open Source | Archivos en git | Offline | CI/CD |
+|---|---|---|---|---|
+| **Bruno** | ✅ | ✅ archivos `.bru` | ✅ | ✅ `bruno run` |
+| Hoppscotch | ✅ | ⚠️ export manual | ✅ | ⚠️ limitado |
+| Postman | ❌ | ❌ cloud propietario | ⚠️ | ✅ Newman |
+| Insomnia | ⚠️ | ⚠️ export manual | ✅ | ✅ |
+
+**Veredicto**: Bruno para exploración manual + `axum-test` para tests
+automatizados en CI. Son complementarios, no excluyentes.
+
+### Resumen de estrategia de testing
+
+```
+Desarrollo manual    → utoipa Swagger UI  (/docs)
+Tests automatizados  → axum-test          (cargo test)
+Exploración/QA       → Bruno              (colecciones en repo)
+CI/CD pipeline       → cargo test + bruno run --env staging
+```
 
 ---
 
@@ -202,6 +324,11 @@ apps/api_rust/
 │       ├── lib.rs
 │       ├── m20240101_000000_baseline_from_django.rs   ← dump inicial
 │       └── m20240201_000001_...rs                     ← futuras migraciones
+├── tests/
+│   └── bruno/                   ← colecciones Bruno versionadas en git
+│       ├── bruno.json
+│       ├── environments/
+│       └── ...
 └── Dockerfile
 ```
 
@@ -238,19 +365,21 @@ similar al manager de Django.
 ### Fase 0 — Scaffolding + Baseline (2–3 días)
 
 - [ ] `cargo new plane-api && cargo new migration`
-- [ ] `Cargo.toml` con SeaORM, Axum, Tokio, apalis
+- [ ] `Cargo.toml` con SeaORM, Axum, Tokio, apalis, utoipa
 - [ ] Generar baseline SQL desde la DB actual de Django
 - [ ] Crear migración `m_baseline_from_django` con ese SQL
 - [ ] Generar entities con `sea-orm-cli generate entity`
 - [ ] `GET /api/health/` funcionando contra la DB
 - [ ] Dockerfile multi-stage
 - [ ] Traefik: routing condicional por path
+- [ ] Montar Swagger UI en `/docs`
+- [ ] Colección Bruno inicial en `tests/bruno/`
 
 ### Fase 1 — Auth middleware
 
 - [ ] Leer tabla `authtoken_token` → `CurrentUser` extractor Axum
 - [ ] Role check (workspace_member, project_member) via SeaORM
-- [ ] Tests de integración contra DB real
+- [ ] Tests de integración con `axum-test` contra DB real
 
 ### Fase 2 — Endpoints de alta frecuencia
 
