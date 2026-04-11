@@ -247,8 +247,14 @@ tasks:
       - docker exec -it plane-codecsrayo-db pg_dump -U plane -d plane --schema-only -f /tmp/baseline.sql
 
       # Copiar el dump al host
-      - docker cp plane-codecsrayo-db:/tmp/baseline_old.sql ./apps/api_rust/migration/sql/baseline.sql
-  
+      - sudo docker cp plane-codecsrayo-db:/tmp/baseline.sql ./apps/api_rust/migration/sql/baseline.sql
+
+  rust:migrations:drop-db:
+    desc: Drop and recreate the plane database
+    cmds:
+      - docker exec -it plane-codecsrayo-db psql -U plane -d postgres -c "DROP DATABASE plane WITH (FORCE);"
+      - docker exec -it plane-codecsrayo-db psql -U plane -d postgres -c "CREATE DATABASE plane;"
+    
   rust:build:
     desc: Build the Rust API workspace
     cmds:
