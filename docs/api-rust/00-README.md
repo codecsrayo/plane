@@ -34,6 +34,7 @@ estado: activo---
 | 16 | [[16-diagramas-flujo]] | Diagramas de flujo adicionales |
 | 17 | [[17-estructura-django]] | Estructura de carpetas Django (fuente de migración) |
 | 18 | [[18-implementacion-api-inicial]] | Bootstrap API inicial — main.rs, config, error, Swagger UI |
+| 19 | [[19-autenticacion-session-apikey]] | Autenticación — Session Cookie y API Key (implementación completa) |
 
 ## Estado de implementación — resumen
 
