@@ -2,20 +2,20 @@
 .mermaid {
   display: block;
   margin: 0 auto;
-  overflow-x: auto;
-  /* Ancho máximo del contenedor — ajusta a tu gusto */
-  max-width: 100%;
+  /* Sin scroll horizontal — el diagrama se encoge para caber */
+  overflow: hidden;
   width: 100%;
 }
 
 .mermaid svg {
   display: block;
   margin: 0 auto;
-  /* Escala el SVG al ancho disponible manteniendo proporciones */
+  /* Fuerza al SVG a caber en el contenedor sin scroll */
   width: 100% !important;
   height: auto !important;
-  /* Tamaño mínimo para que no quede demasiado pequeño */
-  min-width: 300px;
-  /* Tamaño máximo absoluto — evita que diagramas simples se estiren demasiado */
-  max-width: 900px;
+  max-width: 100%;
+  /* Zoom de reducción — baja el valor si los diagramas siguen desbordando */
+  /* 0.75 = 75% del tamaño original, ajusta entre 0.5 y 1.0 */
+  transform: scale(0.75);
+  transform-origin: top center;
 }
