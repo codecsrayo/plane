@@ -127,10 +127,8 @@ pub mod workspaces;
 // FIX 1: `crate::utils` — no `..utils` (ruta relativa inválida en Rust)
 // FIX 2: `use` con `as _` — importa el trait sin re-exportarlo (solo activa el macro)
 use crate::impl_soft_delete;
-use crate::utils::soft_delete::SoftDeleteExt as _;
 
 // Usuarios y sesiones
-impl_soft_delete!(accounts::Entity, accounts::Column::DeletedAt);
 impl_soft_delete!(devices::Entity, devices::Column::DeletedAt);
 impl_soft_delete!(device_sessions::Entity, device_sessions::Column::DeletedAt);
 impl_soft_delete!(social_login_connections::Entity, social_login_connections::Column::DeletedAt);
@@ -226,10 +224,6 @@ impl_soft_delete!(github_comment_syncs::Entity, github_comment_syncs::Column::De
 impl_soft_delete!(github_issue_syncs::Entity, github_issue_syncs::Column::DeletedAt);
 impl_soft_delete!(github_repositories::Entity, github_repositories::Column::DeletedAt);
 impl_soft_delete!(github_repository_syncs::Entity, github_repository_syncs::Column::DeletedAt);
-impl_soft_delete!(gitlab_comment_syncs::Entity, gitlab_comment_syncs::Column::DeletedAt);
-impl_soft_delete!(gitlab_issue_syncs::Entity, gitlab_issue_syncs::Column::DeletedAt);
-impl_soft_delete!(gitlab_repositories::Entity, gitlab_repositories::Column::DeletedAt);
-impl_soft_delete!(gitlab_repository_syncs::Entity, gitlab_repository_syncs::Column::DeletedAt);
 impl_soft_delete!(slack_project_syncs::Entity, slack_project_syncs::Column::DeletedAt);
 impl_soft_delete!(db_githubprstatemapping::Entity, db_githubprstatemapping::Column::DeletedAt);
 
