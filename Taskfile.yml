@@ -211,9 +211,16 @@ tasks:
       - cd apps/api_rust && cargo run -p migration --features migrate -- {{.CMD}}
 
   rust:migrations:up:
-    desc: Apply all pending migrations
+    desc: Apply all pending 
     cmds:
       - cargo run --manifest-path apps/api_rust/migration/Cargo.toml --features migrate -- up
+
+  rust:migrations:validate:
+    desc: Validate the current schema against the baseline
+    cmds:
+      - task: rust:migrations:drop-db
+      - task: rust:migrations:up
+      - task: rust:migrations:dump
 
   rust:migrations:down:
     desc: Revert the last migration
