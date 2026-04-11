@@ -1,28 +1,40 @@
----
-titulo: Plane — Vault de documentación
-tags:
-  - plane
-  - vault
-  - readme
----
+# Plane Docs — Vault Obsidian
 
-# Plane — Vault de documentación
+> Documentación técnica del proyecto de migración Django → Rust.
 
-Este directorio es un vault [Obsidian](https://obsidian.md) con la documentación
-técnica del proyecto Plane CE (fork).
+## Punto de entrada
 
-## Cómo abrirlo
+📂 [`api-rust/MOC.md`](api-rust/MOC.md) — Mapa de contenido completo con todos los clusters temáticos.
 
-1. Instalar Obsidian
-2. *Open folder as vault* → seleccionar esta carpeta (`docs/`)
-3. Obsidian solo verá los `.md` — el código del repo queda fuera
+## Estructura del vault
 
-## Módulos documentados
+```
+docs/
+├── .obsidian/          ← configuración del vault (plugins, temas)
+└── api-rust/           ← documentación de la API Rust
+    ├── MOC.md          ← 🗺️ Mapa de Contenido (empezar aquí)
+    │
+    ├── vision-*.md     ← Visión: objetivo, stack, arquitectura
+    ├── fundamentos-*.md ← ORM, migraciones, soft delete
+    ├── impl-*.md       ← Implementación: bootstrap, auth, patrones
+    ├── dominio-*.md    ← Dominio: workspace seed, integraciones, settings
+    ├── plan-*.md       ← Planificación: fases, riesgos
+    └── ref-*.md        ← Referencia: estructura, diagramas, testing
+```
 
-| Carpeta | Módulo |
-|---------|--------|
-| `api-rust/` | Migración Django → Rust (SeaORM, Axum, Apalis) |
+## Convención de prefijos
 
-## Entrada principal
+| Prefijo | Cluster | Descripción |
+|---------|---------|-------------|
+| `vision-` | Visión | Qué, por qué, panorama general |
+| `fundamentos-` | Fundamentos | Base técnica: DB, ORM, persistencia |
+| `impl-` | Implementación | Código concreto de la API |
+| `dominio-` | Dominio | Lógica de negocio de features |
+| `plan-` | Planificación | Estrategia y riesgos |
+| `ref-` | Referencia | Diagramas, estructuras, testing |
 
-→ [[api-rust/00-README]]
+## Plugins Obsidian activos
+
+- **obsidian-git** — sync automático con git
+- **diagram-zoom-drag** — zoom en diagramas Mermaid
+- **Obsidian Nord** — tema visual
