@@ -203,6 +203,14 @@ tasks:
     cmds:
       - cd apps/api_rust && cargo watch -x clippy
 
+  db:dump-schema:
+    desc: Dump current DB schema from running Postgres container into baseline.sql (CONTAINER=<id>)
+    vars:
+      CONTAINER: '{{default "8f0838951974" .CONTAINER}}'
+    cmds:
+      - docker exec {{.CONTAINER}} pg_dump -U plane -d plane --schema-only -f /tmp/baseline.sql
+      - docker cp {{.CONTAINER}}:/tmp/baseline.sql ./apps/api_rust/migration/sql/baseline.sql
+
   rust:migrations:
     desc: Run SeaORM migrations with CMD=<up|down|fresh|refresh|reset|status>
     vars:
