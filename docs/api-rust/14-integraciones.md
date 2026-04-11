@@ -138,21 +138,21 @@ sequenceDiagram
     participant Rust as Axum (Rust)
     participant DB as PostgreSQL
 
-    User->>Frontend: Click "Connect GitHub"
-    Frontend->>GH: Abrir popup → github.com/apps/{app}/installations/new?state={slug}
+    User->>Frontend: Click Connect GitHub
+    Frontend->>GH: Abrir popup — github.com/apps/APP/installations/new?state=SLUG
     GH->>User: Pedir autorización
     User->>GH: Aprobar
-    GH->>Rust: GET /api/github/callback/?installation_id=XXX&state={slug}
-    Note over Rust: Sin autenticación (GitHub redirige directamente)
+    GH->>Rust: GET /api/github/callback/ installation_id=XXX state=SLUG
+    Note over Rust: Sin autenticacion — GitHub redirige directamente
     Rust->>DB: SELECT workspace WHERE slug = state
-    Rust->>DB: SELECT workspace_members WHERE role >= 20 (admin)
-    Rust->>DB: UPSERT workspace_integrations SET metadata={installation_id}
+    Rust->>DB: SELECT workspace_members WHERE role >= 20 admin
+    Rust->>DB: UPSERT workspace_integrations SET metadata=installation_id
     Rust-->>Frontend: HTML con window.postMessage type=github-integration success=true
     Frontend->>Frontend: Popup se cierra, parent recibe el postMessage
-    Frontend->>Rust: POST /api/workspaces/{slug}/workspace-integrations/github/install/
+    Frontend->>Rust: POST /api/workspaces/SLUG/workspace-integrations/github/install/
                      Body: { installation_id }
     Rust->>DB: GET OR CREATE WorkspaceIntegration
-    Rust-->>Frontend: 201 { workspace_integration }
+    Rust-->>Frontend: 201 workspace_integration creada
 ```
 
 #### Generación del JWT para GitHub App
@@ -233,19 +233,19 @@ sequenceDiagram
     participant Slack as Slack OAuth
     participant Rust as Axum
 
-    User->>Frontend: Click "Connect Slack"
+    User->>Frontend: Click Connect Slack
     Frontend->>Slack: Abrir popup → slack.com/oauth/v2/authorize?client_id=...
     Slack->>User: Autorizar
     Slack-->>Frontend: Redirect con ?code=XXX
-    Frontend->>Rust: POST /api/workspaces/{slug}/workspace-integrations/slack/install/
+    Frontend->>Rust: POST /api/workspaces/SLUG/workspace-integrations/slack/install/
                      Body: { code }
     Rust->>Slack: POST https://slack.com/api/oauth.v2.access
                   { client_id, client_secret, code }
-    Slack-->>Rust: { access_token, team: { id, name }, ... }
+    Slack-->>Rust: access_token + team id + team name
     Rust->>DB: UPSERT workspace_integrations
                metadata = slack_response
                config = { access_token, team_id, team_name }
-    Rust-->>Frontend: 201 { workspace_integration }
+    Rust-->>Frontend: 201 workspace_integration creada
 ```
 
 **Variables de instancia requeridas (instance_configurations):**
