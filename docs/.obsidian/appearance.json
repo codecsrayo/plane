@@ -1,12 +1,4 @@
 {
-  "theme": "obsidian",
-  "cssTheme": "Minimal",
-  "baseFontSize": 15,
-  "textFontFamily": "JetBrains Mono",
-  "monospaceFontFamily": "JetBrains Mono",
-  "interfaceFontFamily": "",
-  "translucency": false,
-  "nativeMenus": false,
-  "showInlineTitle": true,
-  "accentColor": "#7C6AF7"
+  "showRibbon": true,
+  "cssTheme": "Obsidian Nord"
 }

@@ -1,41 +1,54 @@
 {
   "main": {
-    "id": "main",
+    "id": "44935eaab8e43a20",
     "type": "split",
     "children": [
       {
-        "id": "editor-root",
+        "id": "8fa62701001d1472",
         "type": "tabs",
         "children": [
           {
-            "id": "welcome-tab",
+            "id": "b76278faf09a28cf",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "api-rust/10-patrones.md",
                 "mode": "source",
-                "backlinks": false,
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "10-patrones"
             }
           }
-        ],
-        "currentTab": 0
+        ]
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "left-sidebar",
+    "id": "8642db62458f825a",
     "type": "split",
     "children": [
       {
-        "id": "left-tabs",
+        "id": "42b5e83ad35b501a",
         "type": "tabs",
         "children": [
           {
-            "id": "search-leaf",
+            "id": "6f350420e85996aa",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Explorador de archivos"
+            }
+          },
+          {
+            "id": "25957f9f44151463",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -46,61 +59,42 @@
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "Buscar"
             }
           },
           {
-            "id": "tag-leaf",
+            "id": "48caf0be8b21aa03",
             "type": "leaf",
             "state": {
-              "type": "tag",
-              "state": {
-                "sortOrder": "frequency",
-                "useHierarchy": true
-              }
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Marcadores"
             }
           }
-        ],
-        "currentTab": 0
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 240,
-    "collapsed": false
+    "width": 300
   },
   "right": {
-    "id": "right-sidebar",
+    "id": "1787d43d78767b4c",
     "type": "split",
     "children": [
       {
-        "id": "right-tabs",
+        "id": "96e313b014df48bc",
         "type": "tabs",
         "children": [
           {
-            "id": "file-explorer-leaf",
-            "type": "leaf",
-            "state": {
-              "type": "file-explorer",
-              "state": {
-                "sortOrder": "alphabetical"
-              }
-            }
-          },
-          {
-            "id": "outline-leaf",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {}
-            }
-          },
-          {
-            "id": "backlink-leaf",
+            "id": "1b90c48cb7500351",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "api-rust/04-arquitectura.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -108,22 +102,90 @@
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "Enlaces entrantes de 04-arquitectura"
+            }
+          },
+          {
+            "id": "4d717a02a7a51b02",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "api-rust/04-arquitectura.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Enlaces salientes de 04-arquitectura"
+            }
+          },
+          {
+            "id": "56000aac411db5ff",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "Todas las propiedades"
+            }
+          },
+          {
+            "id": "8810bf6b6f42dab2",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "api-rust/04-arquitectura.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Esquema de 04-arquitectura"
+            }
+          },
+          {
+            "id": "d0c9cba320dc7a5d",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Etiquetas"
             }
           }
-        ],
-        "currentTab": 0
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 260,
-    "collapsed": false
+    "width": 300,
+    "collapsed": true
   },
-  "floating": {},
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Abrir selector rápido": false,
+      "graph:Abrir vista gráfica": false,
+      "canvas:Crear nuevo lienzo": false,
+      "daily-notes:Abrir la nota de hoy": false,
+      "templates:Insertar plantilla": false,
+      "command-palette:Abrir paleta de comandos": false,
+      "bases:Crear nueva base": false
+    }
+  },
+  "active": "b76278faf09a28cf",
   "lastOpenFiles": [
-    "README.md",
-    "api-rust/00-README.md",
-    "api-rust/15-workspace-settings.md",
-    "api-rust/14-integraciones.md"
+    "api-rust/04-arquitectura.md",
+    "README.md"
   ]
 }
