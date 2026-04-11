@@ -1,7 +1,2 @@
-pub mod m20240101_000001_auth_django;
-pub mod m20240101_000002_users_and_sessions;
-pub mod m20240101_000003_workspaces_and_tokens;
-pub mod m20240101_000004_projects_and_states;
-pub mod m20240101_000005_issues_and_modules;
-pub mod m20240101_000006_integrations_and_misc;
 pub mod m20240101_000007_seed_data;
+pub mod m20260410_000001_baseline;
