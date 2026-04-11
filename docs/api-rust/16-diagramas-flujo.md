@@ -43,7 +43,7 @@ flowchart TD
     G --> H[(INSERT workspaces)]
     H --> I[(INSERT workspace_members\nrole = Owner / 20)]
     I --> J[apalis: push\nWorkspaceSeedJob]
-    J --> K([201 Created\n{ workspace }])
+    J --> K([201 Created — workspace])
 
     F --> L{¿Es miembro?}
     L -- No --> ERR403[403 Forbidden\nAppError::Forbidden]
@@ -58,9 +58,9 @@ flowchart TD
     O -- Sí --> P{¿Es Owner?}
     P -- No --> ERR403
     P -- Sí --> Q[soft_delete workspace\nUPDATE deleted_at = NOW]
-    O -- No --> R[UPDATE workspaces\n{ name, logo, slug }]
+    O -- No --> R[UPDATE workspaces name/logo/slug]
 
-    N --> RESP200([200 OK\n{ workspace }])
+    N --> RESP200([200 OK — workspace])
     R --> RESP200
     Q --> RESP204([204 No Content])
 ```
@@ -71,7 +71,7 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    START([apalis poll → WorkspaceSeedJob\n{ workspace_id }]) --> WS[SELECT workspace]
+    START([apalis poll: WorkspaceSeedJob]) --> WS[SELECT workspace]
     WS --> BOT[INSERT users\nbot_user_for_workspace]
     BOT --> WM[INSERT workspace_members\nbot como Member / 15]
     WM --> PROJ[INSERT projects\n'Default Project']
@@ -98,15 +98,15 @@ flowchart TD
     C --> D[repositories::workspace_members\n::list_members — filtra deleted_at IS NULL]
     D --> E([200 OK — lista de miembros])
 
-    A2([Admin invita]) --> F[POST /api/workspaces/:slug/invitations/\n{ email, role }]
+    A2([Admin invita]) --> F[POST /api/workspaces/:slug/invitations/\nemail + role]
     F --> G[WorkspaceMemberGuard\nrole ≥ Admin / 20]
     G --> H{¿Email ya es miembro?}
     H -- Sí --> ERR409[409 Conflict]
     H -- No --> I[INSERT workspace_member_invites\nstatus = pending]
     I --> J[apalis: push EmailJob\ninvitación por correo]
-    J --> K([201 Created { invite }])
+    J --> K([201 Created — invite])
 
-    A3([Invitado acepta]) --> L[POST /api/auth/workspace-invitations/accept/\n{ token }]
+    A3([Invitado acepta]) --> L[POST /api/auth/workspace-invitations/accept/\ntoken]
     L --> M{¿Token válido\ny no expirado?}
     M -- No --> ERR410[410 Gone / 400]
     M -- Sí --> N[INSERT workspace_members\nrole = invite.role]
@@ -170,21 +170,21 @@ flowchart TD
     end
 
     subgraph CREATE["Crear proyecto"]
-        C1[POST /api/workspaces/:slug/projects/\n{ name, identifier, network }] --> C2[WorkspaceMemberGuard\nrole ≥ Member / 15]
+        C1[POST /api/workspaces/:slug/projects/\nname + identifier + network] --> C2[WorkspaceMemberGuard\nrole ≥ Member / 15]
         C2 --> C3[Validar identifier único\nen el workspace]
         C3 --> F1{¿Único?}
         F1 -- No --> E409[409 Conflict\nidentifier duplicado]
         F1 -- Sí --> C4[INSERT projects]
         C4 --> C5[INSERT project_members\ncreador como Admin / 18]
         C5 --> C6[INSERT states × 5\npor defecto]
-        C6 --> C7([201 Created { project }])
+        C6 --> C7([201 Created — project])
     end
 
     subgraph UPDATE["Actualizar proyecto"]
-        U1[PATCH /api/workspaces/:slug/projects/:id/\n{ name, description, network }] --> U2[ProjectMemberGuard\nrole ≥ Admin / 18]
+        U1[PATCH /api/workspaces/:slug/projects/:id/\nname + description + network] --> U2[ProjectMemberGuard\nrole ≥ Admin / 18]
         U2 --> U3[repositories::projects\n::update_project]
         U3 --> U4[(UPDATE projects SET ...)]
-        U4 --> U5([200 OK { project }])
+        U4 --> U5([200 OK — project])
     end
 
     subgraph DELETE_P["Eliminar proyecto"]
@@ -219,7 +219,7 @@ flowchart TD
 
     Q1 --> RESP200([200 OK — Vec issues])
     Q2 --> RESP200
-    INS --> RESP201([201 Created { issue }])
+    INS --> RESP201([201 Created — issue])
     DETAIL --> Q3[(SELECT issue WHERE id=? AND deleted_at IS NULL)]
     Q3 --> RESP200
     UPDATE --> UPD[(UPDATE issues SET ...\n+ INSERT issue_activity)]
