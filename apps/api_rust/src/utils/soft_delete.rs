@@ -13,7 +13,7 @@
 ///     .all(&db)
 ///     .await?;
 /// ```
-use sea_orm::{EntityTrait, QueryFilter, Select};
+use sea_orm::EntityTrait;
 
 pub trait SoftDeleteExt<E: EntityTrait>: Sized {
     /// Filtra registros activos: `WHERE deleted_at IS NULL`
@@ -21,6 +21,7 @@ pub trait SoftDeleteExt<E: EntityTrait>: Sized {
 }
 
 /// Implementa `SoftDeleteExt` para una entidad con columna `deleted_at`.
+/// `QueryFilter` y `Select` se importan dentro del macro — no en el módulo.
 ///
 /// # Ejemplo
 /// ```rust
