@@ -4,4 +4,3 @@ pub mod m20240101_000003_workspaces_and_tokens;
 pub mod m20240101_000004_projects_and_states;
 pub mod m20240101_000005_issues_and_modules;
 pub mod m20240101_000006_integrations_and_misc;
-pub mod m20240101_000007_fixup_missing_columns_and_fks;
