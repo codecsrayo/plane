@@ -209,6 +209,36 @@ tasks:
       CMD: '{{default "status" .CMD}}'
     cmds:
       - cd apps/api_rust && cargo run -p migration --features migrate -- {{.CMD}}
+
+  rust:migrations:up:
+    desc: Apply all pending migrations
+    cmds:
+      - cargo run --manifest-path apps/api_rust/migration/Cargo.toml --features migrate -- up
+
+  rust:migrations:down:
+    desc: Revert the last migration
+    cmds:
+      - cargo run --manifest-path apps/api_rust/migration/Cargo.toml --features migrate -- down
+
+  rust:migrations:status:
+    desc: Show status of all migrations
+    cmds:
+      - cargo run --manifest-path apps/api_rust/migration/Cargo.toml --features migrate -- status
+
+  rust:migrations:fresh:
+    desc: Drop all tables and re-apply all migrations
+    cmds:
+      - cargo run --manifest-path apps/api_rust/migration/Cargo.toml --features migrate -- fresh
+
+  rust:migrations:refresh:
+    desc: Rollback all and re-apply all migrations
+    cmds:
+      - cargo run --manifest-path apps/api_rust/migration/Cargo.toml --features migrate -- refresh
+
+  rust:migrations:reset:
+    desc: Rollback all migrations
+    cmds:
+      - cargo run --manifest-path apps/api_rust/migration/Cargo.toml --features migrate -- reset
   
   rust:build:
     desc: Build the Rust API workspace
