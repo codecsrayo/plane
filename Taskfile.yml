@@ -61,12 +61,12 @@ tasks:
     desc: Bootstrap the local development environment
     deps: [acme-create]
     cmds:
-      - task setup:env
-      - task setup:secret
-      - task setup:rust
-      - task setup:deps
-      - 'echo "Setup complete."'
-      - 'echo "Next step: task dev:up"'
+      - task: setup:env
+      - task: setup:secret
+      - task: setup:rust
+      - task: setup:deps
+      - echo "Setup complete."
+      - echo "Next step: task dev:up"
 
   # Create .env files from examples only when they do not already exist.
   setup:env:
@@ -109,6 +109,7 @@ tasks:
         rustup toolchain install stable --profile minimal --component rustfmt --component clippy
         rustup override set stable
         cargo --version
+      - sudo apt update && sudo apt install -y pkg-config libssl-dev
 
   # Install JS dependencies using the repo's pinned pnpm setup.
   setup:deps:
@@ -220,7 +221,6 @@ tasks:
     cmds:
       - task: rust:migrations:drop-db
       - task: rust:migrations:up
-      - task: rust:migrations:dump
 
   rust:migrations:down:
     desc: Revert the last migration
@@ -247,14 +247,6 @@ tasks:
     cmds:
       - cargo run --manifest-path apps/api_rust/migration/Cargo.toml --features migrate -- reset
 
-  rust:migrations:dump:
-    desc: Dump the current schema to a file
-    cmds:
-      # Dump del schema actual (equivalente al baseline.sql)
-      - docker exec -it plane-codecsrayo-db pg_dump -U plane -d plane --schema-only -f /tmp/baseline.sql
-
-      # Copiar el dump al host
-      - sudo docker cp plane-codecsrayo-db:/tmp/baseline.sql ./apps/api_rust/migration/sql/baseline.sql
 
   rust:migrations:drop-db:
     desc: Drop and recreate the plane database
