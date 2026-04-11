@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "8fa62701001d1472",
+        "id": "24038186ca11cc14",
         "type": "tabs",
         "children": [
           {
-            "id": "b76278faf09a28cf",
+            "id": "c6347acf6f925812",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "api-rust/10-patrones.md",
+                "file": "api-rust/16-diagramas-flujo.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "10-patrones"
+              "title": "16-diagramas-flujo"
             }
           }
         ]
@@ -54,7 +54,7 @@
               "type": "search",
               "state": {
                 "query": "",
-                "matchingCase": false,
+                "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
                 "extraContext": false,
@@ -113,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "api-rust/04-arquitectura.md",
+                "file": "api-rust/16-diagramas-flujo.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Enlaces salientes de 04-arquitectura"
+              "title": "Enlaces salientes de 16-diagramas-flujo"
             }
           },
           {
@@ -141,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "api-rust/04-arquitectura.md",
+                "file": "api-rust/16-diagramas-flujo.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Esquema de 04-arquitectura"
+              "title": "Esquema de 16-diagramas-flujo"
             }
           },
           {
@@ -164,12 +164,23 @@
               "icon": "lucide-tags",
               "title": "Etiquetas"
             }
+          },
+          {
+            "id": "7c3f6de4bf78dc03",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
           }
-        ]
+        ],
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
-    "width": 300,
+    "width": 337.5,
     "collapsed": true
   },
   "left-ribbon": {
@@ -180,12 +191,29 @@
       "daily-notes:Abrir la nota de hoy": false,
       "templates:Insertar plantilla": false,
       "command-palette:Abrir paleta de comandos": false,
-      "bases:Crear nueva base": false
+      "bases:Crear nueva base": false,
+      "obsidian-git:Open Git source control": false
     }
   },
-  "active": "b76278faf09a28cf",
+  "active": "c6347acf6f925812",
   "lastOpenFiles": [
+    "api-rust/05-testing.md",
+    "Sin título.base",
+    "Sin título.canvas",
+    "README.md",
+    "api-rust/16-diagramas-flujo.md",
+    "api-rust/10-patrones.md",
     "api-rust/04-arquitectura.md",
-    "README.md"
+    "Sin título 1.base",
+    "Sin título 2.base",
+    "Sin título 4.base",
+    "Sin título 3.base",
+    "api-rust/13-estructura-archivos.md",
+    "api-rust/15-workspace-settings.md",
+    "api-rust/14-integraciones.md",
+    "api-rust/12-cosas-criticas.md",
+    "api-rust/11-diagramas-secuencia.md",
+    "api-rust/06-soft-delete.md",
+    "api-rust/00-README.md"
   ]
 }
