@@ -227,23 +227,34 @@ base64 = "0.22"
 
 ```mermaid
 sequenceDiagram
-    actor User as 🧑 Admin workspace
-    participant Frontend
-    participant Slack as Slack OAuth
-    participant Rust as Axum
 
-    User->>Frontend: Click Connect Slack
-    Frontend->>Slack: Abrir popup → slack.com/oauth/v2/authorize?client_id=...
-    Slack->>User: Autorizar
-    Slack-->>Frontend: Redirect con ?code=XXX
-    Frontend->>Rust: POST /api/workspaces/SLUG/workspace-integrations/slack/install/ — Body: code
-    Rust->>Slack: POST https://slack.com/api/oauth.v2.access
-                  client_id + client_secret + code
-    Slack-->>Rust: access_token + team id + team name
-    Rust->>DB: UPSERT workspace_integrations
-               metadata = slack_response
-               config: access_token + team_id + team_name
-    Rust-->>Frontend: 201 workspace_integration creada
+    actor User as 🧑 Admin workspace
+
+    participant Frontend
+
+    participant Slack as Slack OAuth
+
+    participant Rust as Axum
+
+  
+
+    User->>Frontend: Click Connect Slack
+
+    Frontend->>Slack: Abrir popup → slack.com/oauth/v2/authorize?client_id=...
+
+    Slack->>User: Autorizar
+
+    Slack-->>Frontend: Redirect con ?code=XXX
+
+    Frontend->>Rust: POST /api/workspaces/SLUG/workspace-integrations/slack/install/ — Body: code
+
+    Rust->>Slack: POST https://slack.com/api/oauth.v2.access - client_id + client_secret + code
+
+    Slack-->>Rust: access_token + team id + team name
+
+    Rust->>DB: UPSERT workspace_integrations - metadata = slack_response - config: access_token + team_id + team_name
+
+    Rust-->>Frontend: 201 workspace_integration creada
 ```
 
 **Variables de instancia requeridas (instance_configurations):**
