@@ -613,3 +613,733 @@ task rust:migrations:status
 # Drop + re-aplicar todo (dev only)
 task rust:migrations:fresh
 ```
+
+---
+
+## Población de datos iniciales (workspace seed)
+
+### Qué hace el seed en Django
+
+`workspace_seed_task.py` es un **Celery task** disparado con `.delay(workspace_id)`
+inmediatamente después de `POST /api/workspaces/`. Crea de forma asíncrona:
+
+```
+workspace creado
+    └─ bot_user               (User.is_bot=true, bot_type=WORKSPACE_SEED)
+    └─ WorkspaceMember        (rol 20 = admin para el bot)
+    └─ Project                (nombre = nombre del workspace)
+        ├─ ProjectMember      (todos los workspace_members heredan rol)
+        ├─ ProjectUserProperty (display_filters + display_properties por user)
+        ├─ States             × 5  (Backlog, Todo, In Progress, Done, Cancelled)
+        ├─ Labels             × 2  (admin, concepts)
+        ├─ Cycles             × 2  (CURRENT: hoy+14d, UPCOMING: siguiente bloque)
+        ├─ Modules            × N
+        ├─ Issues             × N  (con IssueSequence + IssueActivity + labels/cycles/modules)
+        ├─ IssueViews         × N
+        └─ Pages              × N  (globales y de proyecto)
+```
+
+Los datos de plantilla viven en **8 archivos JSON** en `apps/api/plane/seeds/data/`:
+
+| Archivo          | Descripción                                     |
+| ---------------- | ----------------------------------------------- |
+| `projects.json`  | 1 proyecto demo con nombre, identifier, logo    |
+| `states.json`    | 5 estados con color, grupo (backlog/started/…)  |
+| `labels.json`    | 2 labels (admin, concepts)                      |
+| `cycles.json`    | 2 ciclos con tipo CURRENT / UPCOMING            |
+| `modules.json`   | N módulos con nombre y orden                    |
+| `issues.json`    | N issues con description_html, priority, refs   |
+| `views.json`     | N vistas con filtros                            |
+| `pages.json`     | N páginas con description_html                  |
+
+### Migración a Rust — WorkspaceSeedJob (apalis)
+
+#### Paso 1 — Copiar los JSON al proyecto Rust
+
+```bash
+mkdir -p apps/api_rust/seeds/data
+cp apps/api/plane/seeds/data/*.json apps/api_rust/seeds/data/
+```
+
+Los JSON se incluyen en el binario con `include_str!()` para evitar rutas
+en runtime, o se montan como volumen en Docker. Recomendado: `include_str!`
+para garantizar que siempre estén presentes.
+
+#### Paso 2 — Estructuras de deserialización
+
+```rust
+// src/jobs/workspace_seed/seed_data.rs
+use serde::Deserialize;
+
+#[derive(Debug, Deserialize)]
+pub struct ProjectSeed {
+    pub id: i32,
+    pub name: String,
+    pub identifier: String,
+    pub description: Option<String>,
+    pub network: i16,
+    pub cover_image: Option<String>,
+    pub logo_props: serde_json::Value,
+}
+
+#[derive(Debug, Deserialize)]
+pub struct StateSeed {
+    pub id: i32,
+    pub name: String,
+    pub color: String,
+    pub sequence: f64,
+    pub group: String,
+    pub default: bool,
+    pub project_id: i32,
+}
+
+#[derive(Debug, Deserialize)]
+pub struct LabelSeed {
+    pub id: i32,
+    pub name: String,
+    pub color: String,
+    pub sort_order: f64,
+    pub project_id: i32,
+}
+
+#[derive(Debug, Deserialize)]
+pub struct CycleSeed {
+    pub id: i32,
+    pub name: String,
+    pub project_id: i32,
+    #[serde(rename = "type")]
+    pub cycle_type: String, // "CURRENT" | "UPCOMING"
+}
+
+#[derive(Debug, Deserialize)]
+pub struct IssueSeed {
+    pub id: i32,
+    pub name: String,
+    pub sequence_id: i32,
+    pub description_html: Option<String>,
+    pub description_stripped: Option<String>,
+    pub sort_order: f64,
+    pub state_id: i32,
+    pub labels: Vec<i32>,
+    pub priority: String,
+    pub project_id: i32,
+    pub cycle_id: Option<i32>,
+    pub module_ids: Option<Vec<i32>>,
+}
+```
+
+#### Paso 3 — El job apalis
+
+```rust
+// src/jobs/workspace_seed/mod.rs
+use apalis::prelude::*;
+use sea_orm::DatabaseConnection;
+use serde::{Deserialize, Serialize};
+use uuid::Uuid;
+use std::collections::HashMap;
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct WorkspaceSeedJob {
+    pub workspace_id: Uuid,
+}
+
+pub async fn handle_workspace_seed(
+    job: WorkspaceSeedJob,
+    ctx: Data<DatabaseConnection>,
+) -> Result<(), apalis::prelude::Error> {
+    let db = ctx.as_ref();
+    seed_workspace(db, job.workspace_id).await
+        .map_err(|e| apalis::prelude::Error::Failed(e.to_string().into()))
+}
+
+async fn seed_workspace(db: &DatabaseConnection, workspace_id: Uuid) -> anyhow::Result<()> {
+    // 1. Verificar idempotencia
+    let existing = projects::Entity::find()
+        .filter(projects::Column::WorkspaceId.eq(workspace_id))
+        .count(db).await?;
+    if existing > 0 {
+        tracing::info!("Workspace {workspace_id} already seeded, skipping");
+        return Ok(());
+    }
+
+    // 2. Cargar seeds desde JSON embebido en el binario
+    let projects_tpl: Vec<ProjectSeed> = serde_json::from_str(
+        include_str!("../../seeds/data/projects.json"))?;
+    let states_tpl: Vec<StateSeed> = serde_json::from_str(
+        include_str!("../../seeds/data/states.json"))?;
+    let labels_tpl: Vec<LabelSeed> = serde_json::from_str(
+        include_str!("../../seeds/data/labels.json"))?;
+    let cycles_tpl: Vec<CycleSeed> = serde_json::from_str(
+        include_str!("../../seeds/data/cycles.json"))?;
+    let issues_tpl: Vec<IssueSeed> = serde_json::from_str(
+        include_str!("../../seeds/data/issues.json"))?;
+    // …modules, views, pages igual
+
+    // 3. Crear bot user + agregar a workspace
+    let bot_id = create_bot_user(db, workspace_id).await?;
+    add_bot_to_workspace(db, workspace_id, bot_id).await?;
+
+    // 4. Obtener workspace_members para propagar al proyecto
+    let members = workspace_members::Entity::find()
+        .filter(workspace_members::Column::WorkspaceId.eq(workspace_id))
+        .all(db).await?;
+
+    // 5. Crear proyecto + miembros + user_properties
+    // Mapa seed_id(i32) → real_uuid
+    let project_map: HashMap<i32, Uuid> =
+        create_project_and_members(db, workspace_id, &projects_tpl, &members, bot_id).await?;
+
+    // 6. Estados, labels, ciclos, módulos — en orden (FKs)
+    let state_map  = create_states(db, workspace_id, &states_tpl, &project_map, bot_id).await?;
+    let label_map  = create_labels(db, workspace_id, &labels_tpl, &project_map, bot_id).await?;
+    let cycle_map  = create_cycles(db, workspace_id, &cycles_tpl, &project_map, bot_id).await?;
+    let module_map = create_modules(db, workspace_id, &modules_tpl, &project_map, bot_id).await?;
+
+    // 7. Issues con todas sus relaciones
+    create_issues(db, workspace_id, &issues_tpl,
+        &project_map, &state_map, &label_map, &cycle_map, &module_map, bot_id).await?;
+
+    // 8. Views y pages
+    create_views(db, workspace_id, &views_tpl, &project_map, bot_id).await?;
+    create_pages(db, workspace_id, &pages_tpl, &project_map, bot_id).await?;
+
+    tracing::info!("Workspace {workspace_id} seeded successfully");
+    Ok(())
+}
+```
+
+#### Paso 4 — Encolar el job desde el handler de workspaces
+
+```rust
+// src/routes/workspaces.rs — POST /api/workspaces/
+async fn create_workspace(
+    State(state): State<AppState>,
+    CurrentUser(user): CurrentUser,
+    Json(payload): Json<CreateWorkspaceRequest>,
+) -> Result<Json<WorkspaceResponse>, AppError> {
+    // … crear workspace y workspace_member …
+
+    // Encolar seed job asíncrono — no bloquea la respuesta HTTP
+    if let Err(e) = state.job_storage
+        .push(WorkspaceSeedJob { workspace_id: new_workspace.id })
+        .await
+    {
+        tracing::warn!("Failed to enqueue workspace seed: {e}");
+        // No fallar la request — el seed es best-effort
+    }
+
+    Ok(Json(workspace_response))
+}
+```
+
+#### Mapa de IDs — patrón crítico
+
+Los JSON usan IDs enteros temporales (1, 2, 3…). Al insertar en Postgres
+se generan UUIDs reales. `HashMap<i32, Uuid>` resuelve referencias cruzadas:
+
+```rust
+let mut state_map: HashMap<i32, Uuid> = HashMap::new();
+
+for seed in &states_tpl {
+    let model = states::ActiveModel {
+        id: Set(Uuid::new_v4()),
+        name: Set(seed.name.clone()),
+        // …
+    }.insert(db).await?;
+    state_map.insert(seed.id, model.id);
+}
+
+// Al crear issue: resolver FK
+let real_state_id = state_map[&issue_seed.state_id];
+```
+
+### Datos globales (estáticos) vs datos de workspace (dinámicos)
+
+| Tipo                        | Dónde                          | Cuándo              |
+| --------------------------- | ------------------------------ | ------------------- |
+| `integrations` (3 filas)    | migración `m007_seed_data`     | al arrancar DB      |
+| `instance_configurations`   | migración `m007_seed_data`     | al arrancar DB      |
+| `auth_permission` / grupos  | migración `m001_auth_django`   | al arrancar DB      |
+| Proyecto demo + issues      | `WorkspaceSeedJob` (apalis)    | al crear workspace  |
+| Bot user por workspace      | `WorkspaceSeedJob` (apalis)    | al crear workspace  |
+
+---
+
+## Patrones de diseño y arquitectura
+
+### 1. Repository Pattern — aislar SeaORM de los handlers
+
+Los handlers Axum no deben contener queries SeaORM directamente. El módulo
+`src/repositories/` encapsula todo el acceso a datos:
+
+```
+src/
+├── repositories/
+│   ├── mod.rs
+│   ├── issues.rs        ← list_issues, get_issue, create_issue, update_issue
+│   ├── workspaces.rs    ← get_workspace_by_slug, list_workspaces_for_user
+│   ├── projects.rs
+│   └── states.rs
+├── routes/
+│   └── issues.rs        ← solo recibe AppState, llama a repositories::issues::*
+```
+
+```rust
+// src/repositories/issues.rs
+pub async fn list_issues(
+    db: &DatabaseConnection,
+    project_id: Uuid,
+    filters: IssueFilters,
+) -> Result<Vec<issues::Model>, DbErr> {
+    issues::Entity::find()
+        .active()   // WHERE deleted_at IS NULL — via SoftDeleteExt
+        .filter(issues::Column::ProjectId.eq(project_id))
+        .order_by_asc(issues::Column::SortOrder)
+        .all(db)
+        .await
+}
+```
+
+Ventaja principal: los tests pueden mockear el repository sin levantar DB real.
+
+---
+
+### 2. AppState — estado global del servidor
+
+```rust
+// src/main.rs
+#[derive(Clone)]
+pub struct AppState {
+    pub db:          DatabaseConnection,       // pool SeaORM (Postgres)
+    pub redis:       fred::clients::Pool,      // pool Redis/Valkey
+    pub s3:          aws_sdk_s3::Client,       // cliente S3/MinIO
+    pub config:      Arc<Config>,              // env vars tipadas (dotenvy)
+    pub job_storage: PgPool,                   // apalis backend (Postgres)
+}
+```
+
+Se registra en Axum con `.with_state(state)`. Los handlers lo reciben
+con `State(state): State<AppState>`.
+
+---
+
+### 3. Extractor Pattern — autenticación y permisos
+
+Axum permite extractors personalizados que corren **antes** del handler,
+implementando auth + RBAC sin middleware global:
+
+```rust
+// src/auth/middleware.rs
+
+/// Extrae y valida el token desde la tabla authtoken_token.
+/// Si falla → 401 automático antes de entrar al handler.
+pub struct CurrentUser(pub users::Model);
+
+#[async_trait]
+impl<S> FromRequestParts<S> for CurrentUser
+where S: Send + Sync + AsRef<AppState>,
+{
+    type Rejection = AppError;
+
+    async fn from_request_parts(parts: &mut Parts, state: &S) -> Result<Self, Self::Rejection> {
+        let token = extract_bearer_token(parts)?;
+        let user = validate_token(&state.as_ref().db, &token).await?;
+        Ok(CurrentUser(user))
+    }
+}
+
+/// Extrae workspace_member con su rol.
+/// Falla con 403 si el usuario no es miembro del workspace.
+pub struct WorkspaceMemberGuard {
+    pub user:   users::Model,
+    pub member: workspace_members::Model,
+}
+
+/// Extrae project_member. Verifica membership en workspace Y proyecto.
+pub struct ProjectMemberGuard {
+    pub user:           users::Model,
+    pub project_member: project_members::Model,
+}
+```
+
+Uso en handlers — los guards se componen directamente en la firma:
+
+```rust
+// Solo autenticación
+async fn list_workspaces(
+    State(state): State<AppState>,
+    CurrentUser(user): CurrentUser,  // ← 401 si token inválido
+) -> Result<Json<Vec<WorkspaceResponse>>, AppError> { … }
+
+// Auth + membership en workspace
+async fn get_project(
+    State(state): State<AppState>,
+    WorkspaceMemberGuard { user, member }: WorkspaceMemberGuard, // ← 403 si no es miembro
+    Path((slug, project_id)): Path<(String, Uuid)>,
+) -> Result<Json<ProjectResponse>, AppError> { … }
+```
+
+---
+
+### 4. Error unificado — AppError
+
+```rust
+// src/error.rs
+#[derive(Error, Debug)]
+pub enum AppError {
+    #[error("Not found")]
+    NotFound,
+    #[error("Unauthorized")]
+    Unauthorized,
+    #[error("Forbidden")]
+    Forbidden,
+    #[error("Validation error: {0}")]
+    Validation(String),
+    #[error("Database error: {0}")]
+    Database(#[from] sea_orm::DbErr),
+    #[error("Internal error: {0}")]
+    Internal(#[from] anyhow::Error),
+}
+
+impl IntoResponse for AppError {
+    fn into_response(self) -> Response {
+        let (status, message) = match &self {
+            AppError::NotFound      => (StatusCode::NOT_FOUND,            self.to_string()),
+            AppError::Unauthorized  => (StatusCode::UNAUTHORIZED,         self.to_string()),
+            AppError::Forbidden     => (StatusCode::FORBIDDEN,            self.to_string()),
+            AppError::Validation(m) => (StatusCode::UNPROCESSABLE_ENTITY, m.clone()),
+            AppError::Database(_)   => (StatusCode::INTERNAL_SERVER_ERROR, "DB error".into()),
+            AppError::Internal(_)   => (StatusCode::INTERNAL_SERVER_ERROR, "Internal error".into()),
+        };
+        (status, Json(serde_json::json!({ "error": message }))).into_response()
+    }
+}
+```
+
+Todos los handlers retornan `Result<T, AppError>`. Los errores SeaORM
+y `anyhow` se convierten automáticamente via `#[from]`.
+
+---
+
+### 5. Job Pattern — apalis workers
+
+Cada job sigue el mismo patrón de registro. Todos los workers corren en
+el **mismo proceso** que Axum (mismo binario Tokio), eliminando RabbitMQ
+y los contenedores bgworker/beatworker:
+
+```rust
+// src/jobs/mod.rs
+pub fn build_monitor(db: DatabaseConnection) -> Monitor {
+    let storage = PostgresStorage::new(db.clone());
+
+    Monitor::new()
+        .register(
+            WorkerBuilder::new("workspace-seed-worker")
+                .data(db.clone())
+                .build_fn(workspace_seed::handle_workspace_seed),
+        )
+        .register(
+            WorkerBuilder::new("github-sync-worker")
+                .data(db.clone())
+                .build_fn(github_sync::handle_github_sync),
+        )
+        .register(
+            WorkerBuilder::new("notification-worker")
+                .data(db.clone())
+                .build_fn(notifications::handle_notification),
+        )
+}
+```
+
+---
+
+### 6. Cron jobs — tokio-cron-scheduler
+
+Reemplaza Celery beatworker. Corre en el mismo proceso:
+
+```rust
+// src/jobs/scheduled.rs
+pub async fn start_scheduler(db: DatabaseConnection) -> anyhow::Result<()> {
+    let scheduler = JobScheduler::new().await?;
+
+    // Limpieza de tokens expirados (diario 3am UTC)
+    scheduler.add(
+        Job::new_async("0 0 3 * * *", move |_, _| {
+            let db = db.clone();
+            Box::pin(async move {
+                if let Err(e) = cleanup_expired_tokens(&db).await {
+                    tracing::error!("Token cleanup failed: {e}");
+                }
+            })
+        })?
+    ).await?;
+
+    scheduler.start().await?;
+    Ok(())
+}
+```
+
+---
+
+## Integración en el flujo — diagramas de secuencia
+
+### Creación de workspace + seed asíncrono
+
+```mermaid
+sequenceDiagram
+    actor User as 🧑 Usuario
+    participant Axum as Axum Handler<br/>(POST /api/workspaces/)
+    participant DB as PostgreSQL
+    participant Apalis as apalis<br/>(tabla apalis_jobs)
+    participant Worker as WorkspaceSeed<br/>Worker (Tokio)
+
+    User->>Axum: POST /api/workspaces/ { name, slug }
+    Axum->>DB: INSERT INTO workspaces
+    DB-->>Axum: workspace { id, slug }
+    Axum->>DB: INSERT INTO workspace_members (owner, role=20)
+    Axum->>Apalis: push(WorkspaceSeedJob { workspace_id })
+    Note over Apalis: INSERT en apalis_jobs<br/>(no bloquea la respuesta)
+    Axum-->>User: 201 Created { workspace }
+
+    Note over Worker: poll cada ~1s
+    Worker->>Apalis: pull job
+    Worker->>DB: SELECT workspace
+    Worker->>DB: INSERT bot_user
+    Worker->>DB: INSERT workspace_member (bot)
+    Worker->>DB: INSERT project + members + user_properties
+    Worker->>DB: INSERT states × 5
+    Worker->>DB: INSERT labels × 2
+    Worker->>DB: INSERT cycles × 2
+    Worker->>DB: INSERT modules × N
+    Worker->>DB: INSERT issues × N (+ sequences + activities + label/cycle/module)
+    Worker->>DB: INSERT views × N
+    Worker->>DB: INSERT pages × N
+    Worker-->>Apalis: job completado ✅
+```
+
+### Flujo de request autenticado (issues)
+
+```mermaid
+sequenceDiagram
+    actor User as 🧑 Usuario
+    participant Axum as Axum Router
+    participant Auth as CurrentUser<br/>Extractor
+    participant Guard as ProjectMember<br/>Guard
+    participant Repo as repositories::<br/>issues
+    participant DB as PostgreSQL
+
+    User->>Axum: GET /api/workspaces/my-ws/projects/abc/issues/
+    Note over Axum: Tower middleware: tracing, CORS, gzip
+    Axum->>Auth: from_request_parts()
+    Auth->>DB: SELECT FROM authtoken_token WHERE key = ?
+    Auth->>DB: SELECT FROM users WHERE id = ?
+    DB-->>Auth: User ✅
+    Axum->>Guard: from_request_parts()
+    Guard->>DB: SELECT workspace_members WHERE slug=? AND member_id=?
+    Guard->>DB: SELECT project_members WHERE project_id=? AND member_id=?
+    DB-->>Guard: ProjectMember { role } ✅
+    Axum->>Repo: list_issues(db, project_id, filters)
+    Repo->>DB: SELECT FROM issues WHERE deleted_at IS NULL AND project_id=?
+    DB-->>Repo: Vec<issues::Model>
+    Axum-->>User: 200 OK [{ id, name, state, ... }]
+```
+
+---
+
+## Cosas críticas a tener en cuenta
+
+### 1. Bot user — enum `bot_type` en Postgres
+
+El bot user se crea con `is_bot=true` y `bot_type='WORKSPACE_SEED'`.
+`bot_type` es un enum Postgres. Verificar que el enum `bot_type_enum`
+en la migración baseline incluye el valor `'WORKSPACE_SEED'` antes de
+ejecutar el seed job — si no existe → error en runtime.
+
+### 2. Soft delete en todas las entidades del seed
+
+Todas las entidades creadas por el seed tienen `deleted_at = NULL`.
+Los queries en rutas deben siempre usar `.active()` para no devolver
+registros eliminados por el usuario.
+
+### 3. Ciclos — fechas relativas, no absolutas
+
+Los JSON de `cycles.json` tienen `type: "CURRENT" | "UPCOMING"`, no fechas.
+Calcular en runtime:
+
+```rust
+let now = Utc::now();
+let (start_date, end_date) = match cycle_seed.cycle_type.as_str() {
+    "CURRENT"  => (now, now + Duration::days(14)),
+    "UPCOMING" => {
+        let last = cycles::Entity::find()
+            .filter(cycles::Column::ProjectId.eq(real_project_id))
+            .order_by_desc(cycles::Column::EndDate)
+            .one(db).await?;
+        match last {
+            Some(c) => (c.end_date + Duration::days(1), c.end_date + Duration::days(15)),
+            None    => (now + Duration::days(14), now + Duration::days(28)),
+        }
+    }
+    _ => return Err(anyhow::anyhow!("Unknown cycle type: {}", cycle_seed.cycle_type)),
+};
+```
+
+### 4. `IssueSequence` — tabla separada obligatoria
+
+Por cada issue creado en el seed se debe crear también un `IssueSequence`.
+Es lo que genera el `#` de referencia visible en la UI. Sin esto las issues
+no son navegables desde el frontend.
+
+### 5. Dependencias en el seed — orden estricto
+
+```
+workspace → bot_user → project → states → labels → cycles → modules → issues → views → pages
+```
+
+Issues referencian states, labels, cycles y modules via FK. Insertar fuera
+de orden genera violaciones de FK en runtime.
+
+### 6. `ProjectIdentifier` — tabla separada obligatoria
+
+Al crear el proyecto en el seed, crear también la fila en `project_identifiers`:
+
+```rust
+project_identifiers::ActiveModel {
+    id: Set(Uuid::new_v4()),
+    workspace_id: Set(workspace_id),
+    project_id: Set(real_project_id),
+    identifier: Set(identifier.clone()),
+    created_by_id: Set(bot_id),
+    ..Default::default()
+}.insert(db).await?;
+```
+
+Sin esto el proyecto no tiene identifier único y el frontend no puede
+construir las rutas de issues (`WS-1`, `WS-2`…).
+
+### 7. `description_html` en issues — insertar verbatim
+
+Las issues del seed tienen HTML rico con imágenes externas
+(`media.docs.plane.so`), callouts y listas. No transformar ni validar.
+Se pasa como `String` directo a SeaORM.
+
+### 8. `display_filters` y `display_properties` — JSONB exacto
+
+Al crear `ProjectUserProperty` en el seed, usar los mismos defaults que
+Django (ver `workspace_seed_task.py` líneas ~90-115). El frontend los
+consume directamente sin transformación y espera las claves exactas.
+
+### 9. Entidades Django legacy — NO borrar hasta Fase 5
+
+Las entities `django_celery_beat_*`, `django_content_type`,
+`django_migrations`, `django_session` siguen presentes en la DB mientras
+Django esté activo. No borrar los archivos `.rs` correspondientes hasta
+completar la Fase 5 (shutdown Django).
+
+### 10. `apalis_jobs` table — inicializar antes del primer job
+
+```rust
+// En main.rs, al arrancar, antes de registrar workers
+PostgresStorage::setup(&db).await?;
+```
+
+Sin esto el primer intento de push/pull de job falla con "table not found".
+
+### 11. Migración incremental — Traefik routing dual (Fases 1–4)
+
+Durante la migración Django y Rust corren en paralelo. Traefik enruta
+por path prefix, con Rust tomando mayor prioridad:
+
+```yaml
+# Rust — alta prioridad, toma los endpoints ya migrados
+- "traefik.http.routers.api-rust.rule=PathPrefix(`/api/`)"
+- "traefik.http.routers.api-rust.priority=10"
+# Django — baja prioridad, solo recibe lo que Rust no maneja aún
+- "traefik.http.routers.api-django.rule=PathPrefix(`/api/`)"
+- "traefik.http.routers.api-django.priority=5"
+```
+
+Esto permite mover endpoints uno a uno sin downtime.
+
+### 12. Redis — `fred` v10, API diferente a `redis-rs`
+
+El proyecto usa `fred` v10 (pool nativo async). Los pipelines usan
+`client.pipeline()`. Para pub/sub (plane-live sync entre instancias)
+usar `subscriber_client`. No mezclar con `deadpool-redis`.
+
+### 13. Todas las fechas en UTC — `chrono::DateTime<Utc>`
+
+SeaORM + Postgres almacena en UTC. Los seeds calculan fechas de ciclos
+en UTC. El frontend convierte a timezone local en el cliente.
+
+---
+
+## Estructura completa de archivos — estado objetivo
+
+```
+apps/api_rust/
+├── Cargo.toml
+├── Dockerfile
+├── seeds/
+│   └── data/
+│       ├── projects.json    ← copiado de apps/api/plane/seeds/data/
+│       ├── states.json
+│       ├── labels.json
+│       ├── cycles.json
+│       ├── modules.json
+│       ├── issues.json
+│       ├── views.json
+│       └── pages.json
+├── src/
+│   ├── main.rs              ← bootstrap: AppState + router + workers + scheduler
+│   ├── config.rs            ← env vars tipadas (dotenvy)
+│   ├── error.rs             ← AppError → HTTP responses (thiserror)
+│   ├── lib.rs
+│   ├── auth/
+│   │   ├── middleware.rs    ← CurrentUser extractor
+│   │   └── permissions.rs  ← WorkspaceMemberGuard, ProjectMemberGuard
+│   ├── entities/            ← 122 entidades generadas por sea-orm-cli (NO editar)
+│   ├── repositories/        ← acceso a DB aislado, un archivo por dominio
+│   │   ├── mod.rs
+│   │   ├── issues.rs
+│   │   ├── workspaces.rs
+│   │   ├── projects.rs
+│   │   ├── states.rs
+│   │   └── ...
+│   ├── routes/              ← handlers Axum, llaman a repositories
+│   │   ├── issues.rs
+│   │   ├── projects.rs
+│   │   ├── workspaces.rs
+│   │   ├── cycles.rs
+│   │   ├── modules.rs
+│   │   └── integrations.rs
+│   ├── jobs/                ← apalis workers + cron
+│   │   ├── mod.rs           ← build_monitor() — registra todos los workers
+│   │   ├── workspace_seed/
+│   │   │   ├── mod.rs       ← WorkspaceSeedJob, handle_workspace_seed
+│   │   │   └── seed_data.rs ← structs de deserialización de JSON
+│   │   ├── github_sync.rs
+│   │   ├── notifications.rs
+│   │   ├── export.rs
+│   │   └── scheduled.rs     ← tokio-cron-scheduler (reemplaza beatworker)
+│   └── utils/
+│       ├── mod.rs
+│       └── soft_delete.rs   ← SoftDeleteExt trait + impl_soft_delete! macro ✅
+├── migration/
+│   ├── Cargo.toml
+│   └── src/
+│       ├── lib.rs            ← Migrator con todas las migraciones en orden
+│       ├── main.rs
+│       └── migrations/
+│           ├── mod.rs
+│           ├── m20260410_000001_baseline.rs  ← schema completo desde Django ✅
+│           └── m20240101_000007_seed_data.rs ← integrations + instance_configs ✅
+└── tests/
+    └── bruno/
+        ├── bruno.json
+        ├── environments/
+        │   ├── local.bru
+        │   └── staging.bru
+        └── health/
+            └── get_health.bru
+```
