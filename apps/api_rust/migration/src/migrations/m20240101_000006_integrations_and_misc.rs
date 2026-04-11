@@ -1860,22 +1860,21 @@ impl MigrationTrait for Migration {
         }
 
         // Remove the deferred FK we added to project_deploy_boards.intake_id
+        // Use raw SQL because SeaORM's drop_foreign_key has no IF EXISTS support
         manager
-            .drop_foreign_key(
-                ForeignKey::drop()
-                    .name("project_deploy_boards_intake_id_36aa612d_fk_intakes_id")
-                    .table(Alias::new("project_deploy_boards"))
-                    .to_owned(),
+            .get_connection()
+            .execute_unprepared(
+                "ALTER TABLE project_deploy_boards \
+                 DROP CONSTRAINT IF EXISTS project_deploy_boards_intake_id_36aa612d_fk_intakes_id",
             )
             .await?;
 
         // Remove the deferred FK we added to issue_comments.description_id
         manager
-            .drop_foreign_key(
-                ForeignKey::drop()
-                    .name("issue_comments_description_id_0cb72512_fk_descriptions_id")
-                    .table(Alias::new("issue_comments"))
-                    .to_owned(),
+            .get_connection()
+            .execute_unprepared(
+                "ALTER TABLE issue_comments \
+                 DROP CONSTRAINT IF EXISTS issue_comments_description_id_0cb72512_fk_descriptions_id",
             )
             .await?;
 
