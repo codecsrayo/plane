@@ -6,6 +6,7 @@ Reemplazar la API Django + Celery por un stack Rust completo que toma ownership
 total del schema PostgreSQL. Django desaparece incluyendo sus migraciones.
 
 **Metas:**
+
 - ~750 MB (Django + Celery + RabbitMQ) → ~20 MB
 - Eliminar bgworker, beatworker, RabbitMQ
 - Rust es el dueño del schema — no más migraciones Django
@@ -30,14 +31,14 @@ entre múltiples instancias. Es Node.js (~60 MB), no Python. No es el problema.
 
 Razones:
 
-| Característica | SeaORM |
-|---|---|
-| Async nativo Tokio | ✅ |
-| Migrations en Rust | ✅ sea-orm-migration |
-| Generar entities desde DB existente | ✅ `sea-orm-cli generate entity` |
-| Relaciones FK / M2M | ✅ has_many, belongs_to, many_to_many |
-| Soft delete integrado | ✅ con ActiveModel hooks o `sea-orm-softdelete` |
-| Con Axum | ✅ natural |
+| Característica                      | SeaORM                                          |
+| ----------------------------------- | ----------------------------------------------- |
+| Async nativo Tokio                  | ✅                                              |
+| Migrations en Rust                  | ✅ sea-orm-migration                            |
+| Generar entities desde DB existente | ✅ `sea-orm-cli generate entity`                |
+| Relaciones FK / M2M                 | ✅ has_many, belongs_to, many_to_many           |
+| Soft delete integrado               | ✅ con ActiveModel hooks o `sea-orm-softdelete` |
+| Con Axum                            | ✅ natural                                      |
 
 El factor decisivo es `sea-orm-cli generate entity --database-url $DATABASE_URL`:
 apunta al Postgres existente (con el schema de Django) y genera automáticamente
@@ -59,12 +60,12 @@ Volcar el schema actual de Django como una migración baseline en SeaORM:
 docker compose run --rm api python manage.py sqlmigrate ... # o pg_dump --schema-only
 
 # 2. Crear la migración baseline en SeaORM
-sea-orm-cli migrate generate "baseline_from_django"
+sea migrate generate "baseline_from_django"
 # → editar el archivo generado para incluir el SQL del dump
 
 # 3. Generar todos los entities desde la DB existente
-sea-orm-cli generate entity \
-  --database-url postgres://... \
+sea generate entity \
+  --database-url postgres://plane:k1rh814uw1gnCDjTinZK_df7OkAjXJ8QFcjNcFjwsME@localhost/plane \
   --output-dir src/entities \
   --with-serde both \
   --date-time-crate time
@@ -74,13 +75,13 @@ sea-orm-cli generate entity \
 
 ```bash
 # Crear nueva migración
-sea-orm-cli migrate generate "add_column_x_to_issues"
+sea migrate generate "add_column_x_to_issues"
 
 # Aplicar en dev
-sea-orm-cli migrate up
+sea migrate up
 
 # Revertir
-sea-orm-cli migrate down
+sea migrate down
 ```
 
 Cada migración es un archivo Rust con `up()` y `down()`:
@@ -127,45 +128,45 @@ impl MigrationTrait for Migration {
 
 ## Stack completo
 
-| Rol | Librería | Reemplaza |
-|---|---|---|
-| HTTP framework | **Axum** | Django REST Framework + uvicorn |
-| Async runtime | **Tokio** | — |
-| ORM | **SeaORM** | Django ORM |
-| Migrations | **sea-orm-migration** | Django migrations (127 archivos) |
-| Serialización | **serde + serde_json** | DRF serializers |
-| Auth JWT | **jsonwebtoken** | DRF TokenAuthentication |
-| Background jobs | **apalis** (backend: Postgres) | Celery bgworker + RabbitMQ |
-| Cron jobs | **tokio-cron-scheduler** | Celery beatworker |
-| Redis | **fred** | django-redis |
-| S3 / MinIO | **aws-sdk-s3** | boto3 + django-storages |
-| Email | **lettre** | Django email backend |
-| HTTP client | **reqwest** | requests |
-| Logging | **tracing + tracing-subscriber** | python-json-logger |
-| Config | **dotenvy** | django settings |
-| Métricas | **axum-prometheus** | scout-apm |
-| API Docs | **utoipa + utoipa-swagger-ui** | drf-spectacular |
+| Rol             | Librería                         | Reemplaza                        |
+| --------------- | -------------------------------- | -------------------------------- |
+| HTTP framework  | **Axum**                         | Django REST Framework + uvicorn  |
+| Async runtime   | **Tokio**                        | —                                |
+| ORM             | **SeaORM**                       | Django ORM                       |
+| Migrations      | **sea-orm-migration**            | Django migrations (127 archivos) |
+| Serialización   | **serde + serde_json**           | DRF serializers                  |
+| Auth JWT        | **jsonwebtoken**                 | DRF TokenAuthentication          |
+| Background jobs | **apalis** (backend: Postgres)   | Celery bgworker + RabbitMQ       |
+| Cron jobs       | **tokio-cron-scheduler**         | Celery beatworker                |
+| Redis           | **fred**                         | django-redis                     |
+| S3 / MinIO      | **aws-sdk-s3**                   | boto3 + django-storages          |
+| Email           | **lettre**                       | Django email backend             |
+| HTTP client     | **reqwest**                      | requests                         |
+| Logging         | **tracing + tracing-subscriber** | python-json-logger               |
+| Config          | **dotenvy**                      | django settings                  |
+| Métricas        | **axum-prometheus**              | scout-apm                        |
+| API Docs        | **utoipa + utoipa-swagger-ui**   | drf-spectacular                  |
 
 ### Lo que desaparece
 
-| Contenedor | RAM | Resultado |
-|---|---|---|
-| api (Django + uvicorn) | ~280 MB | → Rust ~20 MB |
-| bgworker (Celery) | ~200 MB | → eliminado |
-| beatworker (Celery beat) | ~150 MB | → eliminado |
-| plane-mq (RabbitMQ) | ~120 MB | → eliminado |
-| plane-migrator (Django) | — | → eliminado |
-| **Total** | **~750 MB** | **~20 MB** |
+| Contenedor               | RAM         | Resultado     |
+| ------------------------ | ----------- | ------------- |
+| api (Django + uvicorn)   | ~280 MB     | → Rust ~20 MB |
+| bgworker (Celery)        | ~200 MB     | → eliminado   |
+| beatworker (Celery beat) | ~150 MB     | → eliminado   |
+| plane-mq (RabbitMQ)      | ~120 MB     | → eliminado   |
+| plane-migrator (Django)  | —           | → eliminado   |
+| **Total**                | **~750 MB** | **~20 MB**    |
 
 ### Lo que se mantiene
 
-| Servicio | Por qué |
-|---|---|
-| plane-live (Hocuspocus/Node.js) | protocolo Y.js CRDT — no reemplazable |
-| plane-db (PostgreSQL) | misma DB, Rust toma ownership del schema |
-| plane-redis (Valkey) | sigue necesario para plane-live y caché |
-| plane-minio (MinIO) | sin cambio |
-| proxy (Traefik) | el mismo, se agrega routing al contenedor Rust |
+| Servicio                        | Por qué                                        |
+| ------------------------------- | ---------------------------------------------- |
+| plane-live (Hocuspocus/Node.js) | protocolo Y.js CRDT — no reemplazable          |
+| plane-db (PostgreSQL)           | misma DB, Rust toma ownership del schema       |
+| plane-redis (Valkey)            | sigue necesario para plane-live y caché        |
+| plane-minio (MinIO)             | sin cambio                                     |
+| proxy (Traefik)                 | el mismo, se agrega routing al contenedor Rust |
 
 ---
 
@@ -267,12 +268,12 @@ apps/api_rust/tests/bruno/
 
 **Comparativa de clientes externos:**
 
-| Cliente | Open Source | Archivos en git | Offline | CI/CD |
-|---|---|---|---|---|
-| **Bruno** | ✅ | ✅ archivos `.bru` | ✅ | ✅ `bruno run` |
-| Hoppscotch | ✅ | ⚠️ export manual | ✅ | ⚠️ limitado |
-| Postman | ❌ | ❌ cloud propietario | ⚠️ | ✅ Newman |
-| Insomnia | ⚠️ | ⚠️ export manual | ✅ | ✅ |
+| Cliente    | Open Source | Archivos en git      | Offline | CI/CD          |
+| ---------- | ----------- | -------------------- | ------- | -------------- |
+| **Bruno**  | ✅          | ✅ archivos `.bru`   | ✅      | ✅ `bruno run` |
+| Hoppscotch | ✅          | ⚠️ export manual     | ✅      | ⚠️ limitado    |
+| Postman    | ❌          | ❌ cloud propietario | ⚠️      | ✅ Newman      |
+| Insomnia   | ⚠️          | ⚠️ export manual     | ✅      | ✅             |
 
 **Veredicto**: Bruno para exploración manual + `axum-test` para tests
 automatizados en CI. Son complementarios, no excluyentes.
@@ -339,12 +340,14 @@ apps/api_rust/
 **Decisión:** trait custom en `src/utils/soft_delete.rs` — NO se usa `seaorm-soft-delete` (crate 0.1.0, riesgo de incompatibilidad con sea-orm 1.1.x).
 
 **Archivos:**
+
 - `src/utils/soft_delete.rs` — trait `SoftDeleteExt<E>` + macro `impl_soft_delete!`
 - `src/entities/mod.rs` — macro aplicado a las 98 entidades con `deleted_at`
 - `src/utils/mod.rs` — módulo registrado
 - `src/main.rs` — `pub mod utils` agregado
 
 **Uso en rutas:**
+
 ```rust
 use crate::utils::soft_delete::SoftDeleteExt;
 
@@ -356,6 +359,7 @@ let issues = issues::Entity::find()
 ```
 
 **Errores del borrador original corregidos:**
+
 - `pub use ..utils::...` → `use crate::utils::...` (ruta relativa inválida)
 - `pub use SoftDeleteExt` → `use ... as _` (no re-exportar, solo activar impls)
 
@@ -439,14 +443,14 @@ sea-orm-cli generate entity \
 
 ### Archivos de migración
 
-| Archivo | Tablas creadas | Estado |
-|---|---|---|
-| `m20240101_000001_auth_django` | auth_group, auth_group_permissions, auth_permission, django_*, changelogs, instances, integrations | ✅ |
-| `m20240101_000002_users_and_sessions` | users, accounts, sessions, devices, device_sessions, file_assets, social_login_connections, user_github_connections, profiles | ✅ |
-| `m20240101_000003_workspaces_and_tokens` | workspaces, workspace_members, workspace_member_invites, workspace_themes, workspace_integrations, workspace_user_*, api_tokens, api_activity_logs, webhooks, webhook_logs, notifications, profiles | ✅ |
-| `m20240101_000004_projects_and_states` | projects, states, labels, estimates, estimate_points, issue_types, project_*, **project_deploy_boards** ✅ fix | ✅ |
-| `m20240101_000005_issues_and_modules` | issues, issue_*, cycles, cycle_*, modules, module_*, pages, page_*, draft_issues, **draft_issue_*** ✅ indexes+UQ fix | ✅ |
-| `m20240101_000006_integrations_and_misc` | descriptions, description_versions, intakes, intake_issues, deploy_boards, exporters, importers, github_*, gitlab_*, slack_project_syncs | 🔄 pendiente prueba |
+| Archivo                                  | Tablas creadas                                                                                                                                                                                       | Estado              |
+| ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- |
+| `m20240101_000001_auth_django`           | auth*group, auth_group_permissions, auth_permission, django*\*, changelogs, instances, integrations                                                                                                  | ✅                  |
+| `m20240101_000002_users_and_sessions`    | users, accounts, sessions, devices, device_sessions, file_assets, social_login_connections, user_github_connections, profiles                                                                        | ✅                  |
+| `m20240101_000003_workspaces_and_tokens` | workspaces, workspace*members, workspace_member_invites, workspace_themes, workspace_integrations, workspace_user*\*, api_tokens, api_activity_logs, webhooks, webhook_logs, notifications, profiles | ✅                  |
+| `m20240101_000004_projects_and_states`   | projects, states, labels, estimates, estimate*points, issue_types, project*\*, **project_deploy_boards** ✅ fix                                                                                      | ✅                  |
+| `m20240101_000005_issues_and_modules`    | issues, issue*\*, cycles, cycle*_, modules, module\__, pages, page*\*, draft_issues, \*\*draft_issue*\*\*\* ✅ indexes+UQ fix                                                                        | ✅                  |
+| `m20240101_000006_integrations_and_misc` | descriptions, description*versions, intakes, intake_issues, deploy_boards, exporters, importers, github*_, gitlab\__, slack_project_syncs                                                            | 🔄 pendiente prueba |
 
 ### Fixes aplicados (10 abr 2026)
 
