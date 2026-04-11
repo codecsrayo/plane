@@ -2,7 +2,7 @@ pub use sea_orm_migration::prelude::*;
 
 mod migrations;
 
-use migrations::m20240101_000001_auth;
+use migrations::m20240101_000001_auth_django;
 use migrations::m20240101_000002_users_and_sessions;
 use migrations::m20240101_000003_workspaces_and_tokens;
 use migrations::m20240101_000004_projects_and_states;
@@ -15,7 +15,7 @@ pub struct Migrator;
 impl MigratorTrait for Migrator {
     fn migrations() -> Vec<Box<dyn MigrationTrait>> {
         vec![
-            Box::new(m20240101_000001_auth::Migration),
+            Box::new(m20240101_000001_auth_django::Migration),
             Box::new(m20240101_000002_users_and_sessions::Migration),
             Box::new(m20240101_000003_workspaces_and_tokens::Migration),
             Box::new(m20240101_000004_projects_and_states::Migration),

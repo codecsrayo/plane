@@ -1,4 +1,4 @@
-pub mod m20240101_000001_auth;
+pub mod m20240101_000001_auth_django;
 pub mod m20240101_000002_users_and_sessions;
 pub mod m20240101_000003_workspaces_and_tokens;
 pub mod m20240101_000004_projects_and_states;
