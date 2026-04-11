@@ -1,0 +1,188 @@
+/* ================================================================
+   Plane Docs Theme — inspirado en Minimal + Windsurf dark palette
+   Compatible con Obsidian 1.x
+   ================================================================ */
+
+/* ── Paleta base ── */
+:root {
+  --color-bg-primary:      #1e1e2e;
+  --color-bg-secondary:    #181825;
+  --color-bg-tertiary:     #13131f;
+  --color-bg-hover:        #2a2a3d;
+  --color-bg-active:       #313149;
+  --color-border:          #2e2e45;
+  --color-text-primary:    #cdd6f4;
+  --color-text-secondary:  #a6adc8;
+  --color-text-muted:      #6c7086;
+  --color-accent:          #7c6af7;
+  --color-accent-2:        #89b4fa;
+  --color-green:           #a6e3a1;
+  --color-yellow:          #f9e2af;
+  --color-red:             #f38ba8;
+  --color-orange:          #fab387;
+  --color-teal:            #94e2d5;
+}
+
+/* ── App shell ── */
+.app-container,
+body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+}
+
+/* ── Ocultar ribbon izquierda ── */
+.side-dock-ribbon { display: none !important; }
+
+/* ── Sidebars ── */
+.workspace-ribbon,
+.nav-files-container,
+.workspace-sidebar {
+  background-color: var(--color-bg-secondary) !important;
+  border-color: var(--color-border) !important;
+}
+
+.nav-file-title,
+.nav-folder-title {
+  color: var(--color-text-secondary);
+  border-radius: 4px;
+  padding: 2px 6px;
+}
+.nav-file-title:hover,
+.nav-folder-title:hover {
+  background-color: var(--color-bg-hover);
+  color: var(--color-text-primary);
+}
+.nav-file-title.is-active {
+  background-color: var(--color-bg-active);
+  color: var(--color-accent);
+}
+.nav-folder-title-content { font-weight: 600; }
+
+/* ── Editor principal ── */
+.markdown-source-view,
+.cm-editor,
+.cm-content {
+  background-color: var(--color-bg-primary) !important;
+  color: var(--color-text-primary) !important;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* ── Headers ── */
+.cm-header-1, .markdown-preview-view h1 { color: var(--color-accent); font-size: 1.8em; }
+.cm-header-2, .markdown-preview-view h2 { color: var(--color-accent-2); font-size: 1.4em; }
+.cm-header-3, .markdown-preview-view h3 { color: var(--color-teal); font-size: 1.2em; }
+.cm-header-4, .markdown-preview-view h4 { color: var(--color-green); }
+
+/* ── Links ── */
+.cm-link, .cm-hmd-internal-link,
+.markdown-preview-view a {
+  color: var(--color-accent-2) !important;
+  text-decoration: none;
+}
+.cm-link:hover,
+.markdown-preview-view a:hover { text-decoration: underline; }
+
+/* ── Inline code ── */
+.cm-inline-code,
+code {
+  background: var(--color-bg-tertiary);
+  color: var(--color-orange);
+  border-radius: 4px;
+  padding: 1px 5px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ── Code blocks ── */
+pre, pre code {
+  background: var(--color-bg-tertiary) !important;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 14px 18px !important;
+  color: var(--color-text-primary) !important;
+  font-size: 13px;
+}
+
+/* ── Tablas ── */
+.markdown-preview-view th {
+  background: var(--color-bg-tertiary);
+  color: var(--color-accent-2);
+  border: 1px solid var(--color-border);
+  padding: 6px 12px;
+}
+.markdown-preview-view td {
+  border: 1px solid var(--color-border);
+  padding: 5px 12px;
+  color: var(--color-text-primary);
+}
+.markdown-preview-view tr:hover td { background: var(--color-bg-hover); }
+
+/* ── Blockquotes / Callouts ── */
+.callout {
+  border-radius: 6px;
+  border-left: 3px solid;
+  padding: 10px 14px;
+  margin: 12px 0;
+}
+.callout[data-callout="note"]      { background: #1a2235; border-color: var(--color-accent-2); }
+.callout[data-callout="tip"]       { background: #1a2b1e; border-color: var(--color-green); }
+.callout[data-callout="warning"],
+.callout[data-callout="important"] { background: #2e2210; border-color: var(--color-yellow); }
+.callout[data-callout="danger"]    { background: #2e1218; border-color: var(--color-red); }
+.callout[data-callout="summary"]   { background: #1e1a35; border-color: var(--color-accent); }
+
+.callout-title { font-weight: 700; font-size: 0.9em; letter-spacing: 0.03em; }
+.callout-content { color: var(--color-text-secondary); margin-top: 4px; }
+
+/* ── Tags ── */
+.cm-hashtag, .tag {
+  background: var(--color-bg-active);
+  color: var(--color-accent);
+  border-radius: 10px;
+  padding: 1px 8px;
+  font-size: 0.82em;
+}
+
+/* ── Frontmatter ── */
+.metadata-container {
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 8px 12px;
+  margin-bottom: 20px;
+  display: none; /* oculto por defecto — showFrontmatter: false */
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-text-muted); }
+
+/* ── Tab bar ── */
+.workspace-tab-header-container {
+  background: var(--color-bg-secondary);
+  border-bottom: 1px solid var(--color-border);
+}
+.workspace-tab-header {
+  color: var(--color-text-muted);
+  font-size: 13px;
+}
+.workspace-tab-header.is-active {
+  color: var(--color-text-primary);
+  border-bottom: 2px solid var(--color-accent);
+}
+
+/* ── Status bar ── */
+.status-bar {
+  background: var(--color-bg-secondary);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: 12px;
+}
+
+/* ── Graph view ── */
+.graph-view.color-fill { color: var(--color-accent); }
+.graph-view.color-line { color: var(--color-border); }
+.graph-view.color-text { color: var(--color-text-secondary); }

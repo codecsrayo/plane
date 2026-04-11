@@ -1,11 +1,22 @@
 {
   "promptDelete": false,
-  "defaultViewMode": "preview",
+  "defaultViewMode": "source",
   "vimMode": false,
-  "foldHeading": false,
+  "foldHeading": true,
   "showLineNumber": false,
   "readableLineLength": true,
   "strictLineBreaks": false,
   "showFrontmatter": false,
-  "livePreview": true
+  "livePreview": true,
+  "showRibbon": false,
+  "newFileLocation": "current",
+  "spellcheck": false,
+  "tabSize": 2,
+  "useTab": false,
+  "pdfExportSettings": {
+    "pageSize": "A4",
+    "landscape": false,
+    "margin": "0",
+    "downscaleEmbeddedImages": true
+  }
 }

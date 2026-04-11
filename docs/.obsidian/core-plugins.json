@@ -6,5 +6,7 @@
   "backlink",
   "tag-pane",
   "outline",
-  "word-count"
+  "word-count",
+  "starred",
+  "markdown-importer"
 ]
