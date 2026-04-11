@@ -554,6 +554,7 @@ impl MigrationTrait for Migration {
                             .not_null()
                             .primary_key(),
                     )
+                    .col(ColumnDef::new(Alias::new("project")).custom(Alias::new("uuid[]")).null())
                     .col(
                         ColumnDef::new(Alias::new("provider"))
                             .string_len(50)
