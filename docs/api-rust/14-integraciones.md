@@ -147,7 +147,7 @@ sequenceDiagram
     Rust->>DB: SELECT workspace WHERE slug = state
     Rust->>DB: SELECT workspace_members WHERE role >= 20 (admin)
     Rust->>DB: UPSERT workspace_integrations SET metadata={installation_id}
-    Rust-->>Frontend: HTML con window.postMessage({type:"github-integration", success:true})
+    Rust-->>Frontend: HTML con window.postMessage type=github-integration success=true
     Frontend->>Frontend: Popup se cierra, parent recibe el postMessage
     Frontend->>Rust: POST /api/workspaces/{slug}/workspace-integrations/github/install/
                      Body: { installation_id }

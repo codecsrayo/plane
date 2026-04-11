@@ -209,17 +209,16 @@ sequenceDiagram
     participant Celery as bgworker (Celery)
     participant S3 as MinIO / S3
 
-    User->>UI: Selecciona proyectos + formato + click "Export"
-    UI->>API: POST /api/workspaces/{slug}/exports/
-             { provider: "csv", project: [id1, id2], multiple: false }
+    User->>UI: Selecciona proyectos + formato + click Export
+    UI->>API: POST /api/workspaces/slug/exports/ provider+project+multiple
     API->>Celery: export_task.delay(export_id)
-    API-->>UI: 201 { id, status: "processing" }
-    Note over UI: Polling GET /exports/ hasta status="completed"
+    API-->>UI: 201 — id + status processing
+    Note over UI: Polling GET /exports/ hasta status=completed
     Celery->>S3: Subir archivo generado
-    Celery->>API: Actualizar ExporterHistory.status = "completed" + url
-    UI->>API: GET /api/workspaces/{slug}/exports/
-    API-->>UI: [{ id, status: "completed", url }]
-    User->>UI: Click "Download" → redirige a url de S3
+    Celery->>API: Actualizar ExporterHistory status=completed + url
+    UI->>API: GET /api/workspaces/slug/exports/
+    API-->>UI: id + status completed + url
+    User->>UI: Click Download — redirige a url de S3
 ```
 
 **Endpoints Django:**
@@ -418,11 +417,11 @@ sequenceDiagram
     Router->>Layout: render layout
     Layout->>RBAC: getWorkspaceRoleByWorkspaceSlug(slug)
     RBAC-->>Layout: EUserWorkspaceRoles.ADMIN
-    Layout->>Layout: WORKSPACE_SETTINGS_ACCESS["/settings/members/"].includes(ADMIN) → true
+    Layout->>Layout: WORKSPACE_SETTINGS_ACCESS members — ADMIN — true
     Layout->>Layout: render Sidebar + <Outlet />
     Layout->>Page: render WorkspaceMembersPage
     Page->>API: GET /api/workspaces/{slug}/members/
-    API-->>Page: [{ id, member, role, is_active }]
+    API-->>Page: id + member + role + is_active
     Page->>Browser: Renderiza lista de miembros
 
     Note over User,Browser: Usuario cambia rol de un miembro
