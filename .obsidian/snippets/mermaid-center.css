@@ -1,8 +1,21 @@
-/* Centrar diagramas Mermaid en modo lectura */
-.mermaid,
+/* Centrar y ajustar tamaño de diagramas Mermaid en modo lectura */
+.mermaid {
+  display: block;
+  margin: 0 auto;
+  overflow-x: auto;
+  /* Ancho máximo del contenedor — ajusta a tu gusto */
+  max-width: 100%;
+  width: 100%;
+}
+
 .mermaid svg {
   display: block;
   margin: 0 auto;
-  max-width: 100%;
-  overflow-x: auto;
+  /* Escala el SVG al ancho disponible manteniendo proporciones */
+  width: 100% !important;
+  height: auto !important;
+  /* Tamaño mínimo para que no quede demasiado pequeño */
+  min-width: 300px;
+  /* Tamaño máximo absoluto — evita que diagramas simples se estiren demasiado */
+  max-width: 900px;
 }
