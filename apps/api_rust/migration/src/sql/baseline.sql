@@ -25,10 +25,6 @@ SET default_table_access_method = heap;
 -- Name: accounts; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE seaql_migrations (
-    version VARCHAR(255) PRIMARY KEY,
-    applied_at BIGINT NOT NULL
-);
 
 CREATE TABLE public.accounts (
     created_at timestamp with time zone NOT NULL,
