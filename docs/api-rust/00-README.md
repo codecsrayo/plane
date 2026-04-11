@@ -31,6 +31,8 @@ estado: activo---
 | 13 | [[13-estructura-archivos]] | Árbol de directorios del proyecto Rust |
 | 14 | [[14-integraciones]] | GitHub App, GitLab OAuth, Slack OAuth |
 | 15 | [[15-workspace-settings]] | Flujo completo del panel de configuración |
+| 16 | [[16-diagramas-flujo]] | Diagramas de flujo adicionales |
+| 17 | [[17-estructura-django]] | Estructura de carpetas Django (fuente de migración) |
 
 ## Estado de implementación — resumen
 
