@@ -90,7 +90,7 @@ GET  /api/github/callback/
 
 POST /api/auth/github/user-callback/
      ← UserGithubConnectionView (auth requerida)
-     ← Body: { code }
+     ← Body: code
      ← Intercambia code por access_token OAuth personal del usuario
 ```
 
@@ -133,9 +133,9 @@ DELETE /api/workspaces/{slug}/workspace-integrations/{wi_id}/pr-state-mappings/{
 ```mermaid
 sequenceDiagram
     actor User as 🧑 Admin workspace
-    participant Frontend as Frontend (popup)
+    participant Frontend as Frontend popup
     participant GH as GitHub App
-    participant Rust as Axum (Rust)
+    participant Rust as Axum Rust
     participant DB as PostgreSQL
 
     User->>Frontend: Click Connect GitHub
@@ -150,7 +150,7 @@ sequenceDiagram
     Rust-->>Frontend: HTML con window.postMessage type=github-integration success=true
     Frontend->>Frontend: Popup se cierra, parent recibe el postMessage
     Frontend->>Rust: POST /api/workspaces/SLUG/workspace-integrations/github/install/
-                     Body: { installation_id }
+                     Body: installation_id
     Rust->>DB: GET OR CREATE WorkspaceIntegration
     Rust-->>Frontend: 201 workspace_integration creada
 ```
@@ -238,13 +238,13 @@ sequenceDiagram
     Slack->>User: Autorizar
     Slack-->>Frontend: Redirect con ?code=XXX
     Frontend->>Rust: POST /api/workspaces/SLUG/workspace-integrations/slack/install/
-                     Body: { code }
+                     Body: code
     Rust->>Slack: POST https://slack.com/api/oauth.v2.access
-                  { client_id, client_secret, code }
+                  client_id + client_secret + code
     Slack-->>Rust: access_token + team id + team name
     Rust->>DB: UPSERT workspace_integrations
                metadata = slack_response
-               config = { access_token, team_id, team_name }
+               config: access_token + team_id + team_name
     Rust-->>Frontend: 201 workspace_integration creada
 ```
 
