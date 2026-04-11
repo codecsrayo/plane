@@ -1,0 +1,8 @@
+/* Centrar diagramas Mermaid en modo lectura */
+.mermaid,
+.mermaid svg {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  overflow-x: auto;
+}
