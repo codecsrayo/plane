@@ -324,49 +324,88 @@ where
 #### 3.5 Check de rol dentro del handler
 
 Los guards solo verifican **membresía** — el check de **rol mínimo** se hace
-en el handler cuando la operación lo requiere:
+en el handler cuando la operación lo requiere.
+
+##### God mode — Workspace Admin override
+
+En Django (`apps/api/plane/app/permissions/base.py`) existe un bypass explícito:
+un usuario con `role = 20` en el **workspace** puede ejecutar cualquier operación
+de proyecto aunque su **project role** sea menor al requerido, siempre que sea
+miembro activo del proyecto. Este comportamiento debe replicarse en Rust.
+
+```
+┌─────────────────────────────────────────────────────────┐
+│  ¿Tiene el rol requerido en el proyecto?  ──── Sí ────► OK
+│                    │ No
+│                    ▼
+│  ¿Es Workspace Admin (role=20) Y miembro del proyecto? ─ Sí ─► OK (god mode)
+│                    │ No
+│                    ▼
+│                  403 Forbidden
+└─────────────────────────────────────────────────────────┘
+```
+
+##### Implementación Rust
 
 ```rust
-// src/routes/workspaces.rs
+// src/routes/mod.rs
 
-/// Constantes de rol (espejo de EUserWorkspaceRoles en el frontend)
 pub const ROLE_GUEST:  i16 = 5;
 pub const ROLE_VIEWER: i16 = 10;
 pub const ROLE_MEMBER: i16 = 15;
 pub const ROLE_ADMIN:  i16 = 20;
 
-/// Helper — retorna 403 si el rol del miembro es menor al requerido
-fn require_role(member_role: i16, required: i16) -> Result<(), AppError> {
-    if member_role < required {
-        return Err(AppError::Forbidden);
+/// Check de rol con Workspace Admin override (god mode).
+///
+/// Pasa si:
+///   1. El project_role >= required_role  (camino normal), O
+///   2. El workspace_role == ADMIN (20)   (god mode — replica base.py de Django)
+///
+/// Retorna 403 solo si ninguna condición se cumple.
+pub fn require_role(
+    project_role:   i16,
+    workspace_role: i16,
+    required_role:  i16,
+) -> Result<(), AppError> {
+    // Camino 1 — rol de proyecto suficiente
+    if project_role >= required_role {
+        return Ok(());
     }
-    Ok(())
+    // Camino 2 — Workspace Admin override (god mode)
+    if workspace_role >= ROLE_ADMIN {
+        return Ok(());
+    }
+    Err(AppError::Forbidden)
 }
 
-// Ejemplo: solo Admin puede eliminar workspace
-async fn delete_workspace(
+// Ejemplo de uso en handler
+async fn update_issue(
     State(state): State<AppState>,
-    WorkspaceMemberGuard { user, member }: WorkspaceMemberGuard,
-    Path(slug): Path<String>,
-) -> Result<StatusCode, AppError> {
-    require_role(member.role, ROLE_ADMIN)?;  // ← 403 si role < 20
+    ProjectMemberGuard { user, workspace_member, project_member }: ProjectMemberGuard,
+    Path((slug, project_id, issue_id)): Path<(String, Uuid, Uuid)>,
+    Json(payload): Json<UpdateIssueRequest>,
+) -> Result<Json<IssueResponse>, AppError> {
+    // Member (15) requerido — pero Workspace Admin siempre pasa
+    require_role(project_member.role, workspace_member.role, ROLE_MEMBER)?;
 
-    repositories::workspaces::soft_delete(&state.db, &slug).await?;
-    Ok(StatusCode::NO_CONTENT)
-}
-
-// Ejemplo: solo miembro puede crear issues (role >= 15)
-async fn create_issue(
-    State(state): State<AppState>,
-    ProjectMemberGuard { user, project_member, .. }: ProjectMemberGuard,
-    Json(payload): Json<CreateIssueRequest>,
-) -> Result<(StatusCode, Json<IssueResponse>), AppError> {
-    require_role(project_member.role, ROLE_MEMBER)?;
-
-    let issue = repositories::issues::create_issue(&state.db, user.id, payload).await?;
-    Ok((StatusCode::CREATED, Json(issue.into())))
+    let issue = repositories::issues::update(&state.db, issue_id, payload).await?;
+    Ok(Json(issue.into()))
 }
 ```
+
+##### Casos edge documentados en Django
+
+| Situación | project_role | workspace_role | required | Resultado |
+|-----------|:---:|:---:|:---:|:---:|
+| Member normal con permiso | 15 | 15 | 15 | ✅ OK |
+| Viewer sin permiso | 10 | 10 | 15 | ❌ 403 |
+| Viewer pero WS Admin | 10 | 20 | 15 | ✅ OK (god mode) |
+| Guest pero WS Admin | 5 | 20 | 20 | ✅ OK (god mode) |
+| No miembro del proyecto | — | 20 | 15 | ❌ 403 — el god mode requiere ser miembro del proyecto |
+
+> **Importante:** el god mode NO aplica si el usuario no es miembro del proyecto.
+> `ProjectMemberGuard` ya retorna 403 antes de llegar al check de rol si no
+> existe fila en `project_members`. El override es de **rol**, no de membresía.
 
 ---
 
