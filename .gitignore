@@ -143,4 +143,9 @@ Cargo.lock
 rust-project.json
 
 
-# End of https://www.toptal.com/developers/gitignore/api/rust,rust-analy
+# End of https://www.toptal.com/developers/gitignore/api/rust,rust-analy-e 
+# Obsidian — session files (change on every open)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache
+.obsidian/.trash/
