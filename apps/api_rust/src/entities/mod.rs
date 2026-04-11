@@ -126,6 +126,7 @@ pub mod workspaces;
 // ── Soft delete ──────────────────────────────────────────────────────────────
 // FIX 1: `crate::utils` — no `..utils` (ruta relativa inválida en Rust)
 // FIX 2: `use` con `as _` — importa el trait sin re-exportarlo (solo activa el macro)
+use crate::impl_soft_delete;
 use crate::utils::soft_delete::SoftDeleteExt as _;
 
 // Usuarios y sesiones
