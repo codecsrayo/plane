@@ -1,3 +1,8 @@
+/* Zoom del espacio de lectura al 60% */
+.markdown-reading-view {
+  zoom: 0.6;
+}
+
 /* Centrar y ajustar tamaño de diagramas Mermaid en modo lectura */
 .mermaid {
   display: block;
