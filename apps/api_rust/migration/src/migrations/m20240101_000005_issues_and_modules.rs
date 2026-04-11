@@ -1340,6 +1340,40 @@ impl MigrationTrait for Migration {
                         .to_owned(),
                 )
                 .await?;
+
+            // Indexes
+            for col in ["created_by_id", "updated_by_id", "draft_issue_id", "project_id", "workspace_id", rel_col] {
+                manager
+                    .create_index(
+                        Index::create()
+                            .name(format!("{}_{}", tbl, col))
+                            .table(Alias::new(tbl))
+                            .col(Alias::new(col))
+                            .to_owned(),
+                    )
+                    .await?;
+            }
+
+            // Partial unique constraints (WHERE deleted_at IS NULL)
+            let uniq_name = if is_assignees {
+                "draft_issue_assignee_unique_issue_assignee_when_deleted_at_null"
+            } else if is_cycles {
+                "draft_issue_cycle_when_deleted_at_null"
+            } else if is_labels {
+                "" // no unique constraint for labels in baseline
+            } else {
+                "module_draft_issue_unique_issue_module_when_deleted_at_null"
+            };
+
+            if !uniq_name.is_empty() {
+                manager
+                    .get_connection()
+                    .execute_unprepared(&format!(
+                        "CREATE UNIQUE INDEX IF NOT EXISTS {} ON {} (draft_issue_id, {}) WHERE deleted_at IS NULL",
+                        uniq_name, tbl, rel_col
+                    ))
+                    .await?;
+            }
         }
 
         Ok(())

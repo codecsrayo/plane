@@ -1674,11 +1674,156 @@ impl MigrationTrait for Migration {
             )
             .await?;
 
+        // ── project_deploy_boards ─────────────────────────────────────────
+        // (FK to intakes is deferred to migration 6 since intakes is created there)
+        manager
+            .create_table(
+                Table::create()
+                    .table(Alias::new("project_deploy_boards"))
+                    .if_not_exists()
+                    .col(
+                        ColumnDef::new(Alias::new("created_at"))
+                            .timestamp_with_time_zone()
+                            .not_null(),
+                    )
+                    .col(
+                        ColumnDef::new(Alias::new("updated_at"))
+                            .timestamp_with_time_zone()
+                            .not_null(),
+                    )
+                    .col(
+                        ColumnDef::new(Alias::new("deleted_at"))
+                            .timestamp_with_time_zone()
+                            .null(),
+                    )
+                    .col(
+                        ColumnDef::new(Alias::new("id"))
+                            .uuid()
+                            .not_null()
+                            .primary_key(),
+                    )
+                    .col(
+                        ColumnDef::new(Alias::new("anchor"))
+                            .string_len(255)
+                            .not_null(),
+                    )
+                    .col(
+                        ColumnDef::new(Alias::new("comments"))
+                            .boolean()
+                            .not_null(),
+                    )
+                    .col(
+                        ColumnDef::new(Alias::new("reactions"))
+                            .boolean()
+                            .not_null(),
+                    )
+                    .col(
+                        ColumnDef::new(Alias::new("votes"))
+                            .boolean()
+                            .not_null(),
+                    )
+                    .col(
+                        ColumnDef::new(Alias::new("views"))
+                            .json_binary()
+                            .not_null(),
+                    )
+                    .col(ColumnDef::new(Alias::new("created_by_id")).uuid().null())
+                    .col(ColumnDef::new(Alias::new("intake_id")).uuid().null())
+                    .col(
+                        ColumnDef::new(Alias::new("project_id"))
+                            .uuid()
+                            .not_null(),
+                    )
+                    .col(ColumnDef::new(Alias::new("updated_by_id")).uuid().null())
+                    .col(
+                        ColumnDef::new(Alias::new("workspace_id"))
+                            .uuid()
+                            .not_null(),
+                    )
+                    .foreign_key(
+                        ForeignKey::create()
+                            .name("project_deploy_boards_created_by_id_2ea72f98_fk_users_id")
+                            .from(Alias::new("project_deploy_boards"), Alias::new("created_by_id"))
+                            .to(Alias::new("users"), Alias::new("id")),
+                    )
+                    .foreign_key(
+                        ForeignKey::create()
+                            .name("project_deploy_boards_updated_by_id_290eb99e_fk_users_id")
+                            .from(Alias::new("project_deploy_boards"), Alias::new("updated_by_id"))
+                            .to(Alias::new("users"), Alias::new("id")),
+                    )
+                    .foreign_key(
+                        ForeignKey::create()
+                            .name("project_deploy_boards_project_id_49d887b2_fk_projects_id")
+                            .from(Alias::new("project_deploy_boards"), Alias::new("project_id"))
+                            .to(Alias::new("projects"), Alias::new("id")),
+                    )
+                    .foreign_key(
+                        ForeignKey::create()
+                            .name("project_deploy_boards_workspace_id_cd92f164_fk_workspaces_id")
+                            .from(Alias::new("project_deploy_boards"), Alias::new("workspace_id"))
+                            .to(Alias::new("workspaces"), Alias::new("id")),
+                    )
+                    .to_owned(),
+            )
+            .await?;
+
+        manager
+            .create_index(
+                Index::create()
+                    .name("project_deploy_boards_created_by_id_2ea72f98")
+                    .table(Alias::new("project_deploy_boards"))
+                    .col(Alias::new("created_by_id"))
+                    .to_owned(),
+            )
+            .await?;
+
+        manager
+            .create_index(
+                Index::create()
+                    .name("project_deploy_boards_inbox_id_a6a75525")
+                    .table(Alias::new("project_deploy_boards"))
+                    .col(Alias::new("intake_id"))
+                    .to_owned(),
+            )
+            .await?;
+
+        manager
+            .create_index(
+                Index::create()
+                    .name("project_deploy_boards_project_id_49d887b2")
+                    .table(Alias::new("project_deploy_boards"))
+                    .col(Alias::new("project_id"))
+                    .to_owned(),
+            )
+            .await?;
+
+        manager
+            .create_index(
+                Index::create()
+                    .name("project_deploy_boards_updated_by_id_290eb99e")
+                    .table(Alias::new("project_deploy_boards"))
+                    .col(Alias::new("updated_by_id"))
+                    .to_owned(),
+            )
+            .await?;
+
+        manager
+            .create_index(
+                Index::create()
+                    .name("project_deploy_boards_workspace_id_cd92f164")
+                    .table(Alias::new("project_deploy_boards"))
+                    .col(Alias::new("workspace_id"))
+                    .to_owned(),
+            )
+            .await?;
+
         Ok(())
     }
 
     async fn down(&self, manager: &SchemaManager) -> Result<(), DbErr> {
         for table in [
+            "project_deploy_boards",
             "project_webhooks",
             "project_user_properties",
             "project_issue_types",
