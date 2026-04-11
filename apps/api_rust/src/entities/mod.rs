@@ -54,6 +54,7 @@ pub mod instances;
 pub mod intake_issues;
 pub mod intakes;
 pub mod integrations;
+pub mod issue;
 pub mod issue_activities;
 pub mod issue_assignees;
 pub mod issue_attachments;
@@ -84,6 +85,7 @@ pub mod page_logs;
 pub mod page_versions;
 pub mod pages;
 pub mod profiles;
+pub mod project;
 pub mod project_deploy_boards;
 pub mod project_identifiers;
 pub mod project_issue_types;
@@ -97,6 +99,7 @@ pub mod projects;
 pub mod sessions;
 pub mod slack_project_syncs;
 pub mod social_login_connections;
+pub mod state;
 pub mod states;
 pub mod stickies;
 pub mod teams;
@@ -109,6 +112,7 @@ pub mod users_groups;
 pub mod users_user_permissions;
 pub mod webhook_logs;
 pub mod webhooks;
+pub mod workspace;
 pub mod workspace_home_preferences;
 pub mod workspace_integrations;
 pub mod workspace_member_invites;
@@ -118,3 +122,133 @@ pub mod workspace_user_links;
 pub mod workspace_user_preferences;
 pub mod workspace_user_properties;
 pub mod workspaces;
+
+// ── Soft delete ──────────────────────────────────────────────────────────────
+// FIX 1: `crate::utils` — no `..utils` (ruta relativa inválida en Rust)
+// FIX 2: `use` con `as _` — importa el trait sin re-exportarlo (solo activa el macro)
+use crate::utils::soft_delete::SoftDeleteExt as _;
+
+// Usuarios y sesiones
+impl_soft_delete!(accounts::Entity, accounts::Column::DeletedAt);
+impl_soft_delete!(devices::Entity, devices::Column::DeletedAt);
+impl_soft_delete!(device_sessions::Entity, device_sessions::Column::DeletedAt);
+impl_soft_delete!(social_login_connections::Entity, social_login_connections::Column::DeletedAt);
+impl_soft_delete!(user_favorites::Entity, user_favorites::Column::DeletedAt);
+impl_soft_delete!(user_github_connections::Entity, user_github_connections::Column::DeletedAt);
+impl_soft_delete!(user_notification_preferences::Entity, user_notification_preferences::Column::DeletedAt);
+impl_soft_delete!(user_recent_visits::Entity, user_recent_visits::Column::DeletedAt);
+
+// Workspaces
+impl_soft_delete!(workspace::Entity, workspace::Column::DeletedAt);
+impl_soft_delete!(workspaces::Entity, workspaces::Column::DeletedAt);
+impl_soft_delete!(workspace_home_preferences::Entity, workspace_home_preferences::Column::DeletedAt);
+impl_soft_delete!(workspace_integrations::Entity, workspace_integrations::Column::DeletedAt);
+impl_soft_delete!(workspace_member_invites::Entity, workspace_member_invites::Column::DeletedAt);
+impl_soft_delete!(workspace_members::Entity, workspace_members::Column::DeletedAt);
+impl_soft_delete!(workspace_themes::Entity, workspace_themes::Column::DeletedAt);
+impl_soft_delete!(workspace_user_links::Entity, workspace_user_links::Column::DeletedAt);
+impl_soft_delete!(workspace_user_preferences::Entity, workspace_user_preferences::Column::DeletedAt);
+impl_soft_delete!(workspace_user_properties::Entity, workspace_user_properties::Column::DeletedAt);
+
+// Proyectos
+impl_soft_delete!(project::Entity, project::Column::DeletedAt);
+impl_soft_delete!(projects::Entity, projects::Column::DeletedAt);
+impl_soft_delete!(project_deploy_boards::Entity, project_deploy_boards::Column::DeletedAt);
+impl_soft_delete!(project_identifiers::Entity, project_identifiers::Column::DeletedAt);
+impl_soft_delete!(project_issue_types::Entity, project_issue_types::Column::DeletedAt);
+impl_soft_delete!(project_member_invites::Entity, project_member_invites::Column::DeletedAt);
+impl_soft_delete!(project_members::Entity, project_members::Column::DeletedAt);
+impl_soft_delete!(project_pages::Entity, project_pages::Column::DeletedAt);
+impl_soft_delete!(project_public_members::Entity, project_public_members::Column::DeletedAt);
+impl_soft_delete!(project_user_properties::Entity, project_user_properties::Column::DeletedAt);
+impl_soft_delete!(project_webhooks::Entity, project_webhooks::Column::DeletedAt);
+
+// Issues
+impl_soft_delete!(issue::Entity, issue::Column::DeletedAt);
+impl_soft_delete!(issues::Entity, issues::Column::DeletedAt);
+impl_soft_delete!(issue_activities::Entity, issue_activities::Column::DeletedAt);
+impl_soft_delete!(issue_assignees::Entity, issue_assignees::Column::DeletedAt);
+impl_soft_delete!(issue_attachments::Entity, issue_attachments::Column::DeletedAt);
+impl_soft_delete!(issue_blockers::Entity, issue_blockers::Column::DeletedAt);
+impl_soft_delete!(issue_comments::Entity, issue_comments::Column::DeletedAt);
+impl_soft_delete!(issue_description_versions::Entity, issue_description_versions::Column::DeletedAt);
+impl_soft_delete!(issue_labels::Entity, issue_labels::Column::DeletedAt);
+impl_soft_delete!(issue_links::Entity, issue_links::Column::DeletedAt);
+impl_soft_delete!(issue_mentions::Entity, issue_mentions::Column::DeletedAt);
+impl_soft_delete!(issue_reactions::Entity, issue_reactions::Column::DeletedAt);
+impl_soft_delete!(issue_relations::Entity, issue_relations::Column::DeletedAt);
+impl_soft_delete!(issue_sequences::Entity, issue_sequences::Column::DeletedAt);
+impl_soft_delete!(issue_subscribers::Entity, issue_subscribers::Column::DeletedAt);
+impl_soft_delete!(issue_types::Entity, issue_types::Column::DeletedAt);
+impl_soft_delete!(issue_versions::Entity, issue_versions::Column::DeletedAt);
+impl_soft_delete!(issue_views::Entity, issue_views::Column::DeletedAt);
+impl_soft_delete!(issue_votes::Entity, issue_votes::Column::DeletedAt);
+
+// Draft issues
+impl_soft_delete!(draft_issues::Entity, draft_issues::Column::DeletedAt);
+impl_soft_delete!(draft_issue_assignees::Entity, draft_issue_assignees::Column::DeletedAt);
+impl_soft_delete!(draft_issue_cycles::Entity, draft_issue_cycles::Column::DeletedAt);
+impl_soft_delete!(draft_issue_labels::Entity, draft_issue_labels::Column::DeletedAt);
+impl_soft_delete!(draft_issue_modules::Entity, draft_issue_modules::Column::DeletedAt);
+
+// States, Labels, Estimates
+impl_soft_delete!(state::Entity, state::Column::DeletedAt);
+impl_soft_delete!(states::Entity, states::Column::DeletedAt);
+impl_soft_delete!(labels::Entity, labels::Column::DeletedAt);
+impl_soft_delete!(estimates::Entity, estimates::Column::DeletedAt);
+impl_soft_delete!(estimate_points::Entity, estimate_points::Column::DeletedAt);
+
+// Cycles
+impl_soft_delete!(cycles::Entity, cycles::Column::DeletedAt);
+impl_soft_delete!(cycle_issues::Entity, cycle_issues::Column::DeletedAt);
+impl_soft_delete!(cycle_user_properties::Entity, cycle_user_properties::Column::DeletedAt);
+
+// Modules
+impl_soft_delete!(modules::Entity, modules::Column::DeletedAt);
+impl_soft_delete!(module_issues::Entity, module_issues::Column::DeletedAt);
+impl_soft_delete!(module_links::Entity, module_links::Column::DeletedAt);
+impl_soft_delete!(module_members::Entity, module_members::Column::DeletedAt);
+impl_soft_delete!(module_user_properties::Entity, module_user_properties::Column::DeletedAt);
+
+// Pages
+impl_soft_delete!(pages::Entity, pages::Column::DeletedAt);
+impl_soft_delete!(page_labels::Entity, page_labels::Column::DeletedAt);
+impl_soft_delete!(page_logs::Entity, page_logs::Column::DeletedAt);
+impl_soft_delete!(page_versions::Entity, page_versions::Column::DeletedAt);
+
+// Integraciones
+impl_soft_delete!(integrations::Entity, integrations::Column::DeletedAt);
+impl_soft_delete!(instances::Entity, instances::Column::DeletedAt);
+impl_soft_delete!(instance_admins::Entity, instance_admins::Column::DeletedAt);
+impl_soft_delete!(instance_configurations::Entity, instance_configurations::Column::DeletedAt);
+impl_soft_delete!(github_comment_syncs::Entity, github_comment_syncs::Column::DeletedAt);
+impl_soft_delete!(github_issue_syncs::Entity, github_issue_syncs::Column::DeletedAt);
+impl_soft_delete!(github_repositories::Entity, github_repositories::Column::DeletedAt);
+impl_soft_delete!(github_repository_syncs::Entity, github_repository_syncs::Column::DeletedAt);
+impl_soft_delete!(gitlab_comment_syncs::Entity, gitlab_comment_syncs::Column::DeletedAt);
+impl_soft_delete!(gitlab_issue_syncs::Entity, gitlab_issue_syncs::Column::DeletedAt);
+impl_soft_delete!(gitlab_repositories::Entity, gitlab_repositories::Column::DeletedAt);
+impl_soft_delete!(gitlab_repository_syncs::Entity, gitlab_repository_syncs::Column::DeletedAt);
+impl_soft_delete!(slack_project_syncs::Entity, slack_project_syncs::Column::DeletedAt);
+impl_soft_delete!(db_githubprstatemapping::Entity, db_githubprstatemapping::Column::DeletedAt);
+
+// Misc
+impl_soft_delete!(analytic_views::Entity, analytic_views::Column::DeletedAt);
+impl_soft_delete!(api_activity_logs::Entity, api_activity_logs::Column::DeletedAt);
+impl_soft_delete!(api_tokens::Entity, api_tokens::Column::DeletedAt);
+impl_soft_delete!(changelogs::Entity, changelogs::Column::DeletedAt);
+impl_soft_delete!(comment_reactions::Entity, comment_reactions::Column::DeletedAt);
+impl_soft_delete!(deploy_boards::Entity, deploy_boards::Column::DeletedAt);
+impl_soft_delete!(description_versions::Entity, description_versions::Column::DeletedAt);
+impl_soft_delete!(descriptions::Entity, descriptions::Column::DeletedAt);
+impl_soft_delete!(email_notification_logs::Entity, email_notification_logs::Column::DeletedAt);
+impl_soft_delete!(exporters::Entity, exporters::Column::DeletedAt);
+impl_soft_delete!(file_assets::Entity, file_assets::Column::DeletedAt);
+impl_soft_delete!(importers::Entity, importers::Column::DeletedAt);
+impl_soft_delete!(intake_issues::Entity, intake_issues::Column::DeletedAt);
+impl_soft_delete!(intakes::Entity, intakes::Column::DeletedAt);
+impl_soft_delete!(notifications::Entity, notifications::Column::DeletedAt);
+impl_soft_delete!(stickies::Entity, stickies::Column::DeletedAt);
+impl_soft_delete!(teams::Entity, teams::Column::DeletedAt);
+impl_soft_delete!(webhook_logs::Entity, webhook_logs::Column::DeletedAt);
+impl_soft_delete!(webhooks::Entity, webhooks::Column::DeletedAt);

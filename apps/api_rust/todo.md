@@ -334,29 +334,30 @@ apps/api_rust/
 
 ---
 
-## Soft delete — consideración importante
+## Soft delete — implementado ✅
 
-Los modelos de Django usan `SoftDeletionManager` que filtra `deleted_at IS NULL`
-automáticamente. En SeaORM no hay manager mágico.
+**Decisión:** trait custom en `src/utils/soft_delete.rs` — NO se usa `seaorm-soft-delete` (crate 0.1.0, riesgo de incompatibilidad con sea-orm 1.1.x).
 
-**Solución: `SoftDeleteActiveModel` trait custom:**
+**Archivos:**
+- `src/utils/soft_delete.rs` — trait `SoftDeleteExt<E>` + macro `impl_soft_delete!`
+- `src/entities/mod.rs` — macro aplicado a las 98 entidades con `deleted_at`
+- `src/utils/mod.rs` — módulo registrado
+- `src/main.rs` — `pub mod utils` agregado
 
+**Uso en rutas:**
 ```rust
-// src/entities/traits.rs
-pub trait SoftDelete {
-    fn is_deleted(&self) -> bool;
-}
+use crate::utils::soft_delete::SoftDeleteExt;
 
-// En cada query, agregar condición explícita:
-Issue::find()
-    .filter(issue::Column::DeletedAt.is_null())
-    .filter(issue::Column::ProjectId.eq(project_id))
+let issues = issues::Entity::find()
+    .active()                                      // WHERE deleted_at IS NULL
+    .filter(issues::Column::ProjectId.eq(project_id))
     .all(&db)
-    .await?
+    .await?;
 ```
 
-Alternativamente, usar `sea-orm-softdelete` crate que añade el filtro automático
-similar al manager de Django.
+**Errores del borrador original corregidos:**
+- `pub use ..utils::...` → `use crate::utils::...` (ruta relativa inválida)
+- `pub use SoftDeleteExt` → `use ... as _` (no re-exportar, solo activar impls)
 
 ---
 
