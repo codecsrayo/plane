@@ -4,7 +4,9 @@ tags:
   - seaorm
   - migraciones
   - rust
-relacionado: [[00-README]], [[08-estado-migraciones]]
+relacionado:
+  - "[[00-README]]"
+  - "[[08-estado-migraciones]]"
 ---
 
 ## ORM: SeaORM

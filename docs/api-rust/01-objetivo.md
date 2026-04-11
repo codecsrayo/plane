@@ -4,7 +4,8 @@ tags:
   - plane
   - rust
   - objetivo
-relacionado: [[00-README]]
+relacionado:
+  - "[[00-README]]"
 ---
 
 ## Objetivo

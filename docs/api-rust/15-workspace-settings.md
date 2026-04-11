@@ -5,7 +5,10 @@ tags:
   - settings
   - frontend
   - rbac
-relacionado: [[14-integraciones]], [[10-patrones]], [[11-diagramas-secuencia]]
+relacionado:
+  - "[[14-integraciones]]"
+  - "[[10-patrones]]"
+  - "[[11-diagramas-secuencia]]"
 ---
 
 > [!NOTE] Panel de configuración del workspace

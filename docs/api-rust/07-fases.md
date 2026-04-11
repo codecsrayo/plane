@@ -4,7 +4,9 @@ tags:
   - migracion
   - fases
   - planificacion
-relacionado: [[04-arquitectura]], [[08-estado-migraciones]]
+relacionado:
+  - "[[04-arquitectura]]"
+  - "[[08-estado-migraciones]]"
 ---
 
 ## Estrategia de migración — por fases

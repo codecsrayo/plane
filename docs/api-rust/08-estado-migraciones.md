@@ -4,7 +4,9 @@ tags:
   - migraciones
   - seaorm
   - seguimiento
-relacionado: [[02-orm-y-migraciones]], [[07-fases]]
+relacionado:
+  - "[[02-orm-y-migraciones]]"
+  - "[[07-fases]]"
 ---
 
 ## Estado de migraciones — seguimiento

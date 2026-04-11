@@ -4,7 +4,10 @@ tags:
   - critico
   - riesgos
   - produccion
-relacionado: [[06-soft-delete]], [[09-workspace-seed]], [[14-integraciones]]
+relacionado:
+  - "[[06-soft-delete]]"
+  - "[[09-workspace-seed]]"
+  - "[[14-integraciones]]"
 ---
 
 > [!DANGER] Leer antes de implementar cualquier feature

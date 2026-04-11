@@ -6,7 +6,10 @@ tags:
   - repository-pattern
   - appstate
   - apalis
-relacionado: [[03-stack]], [[06-soft-delete]], [[09-workspace-seed]]
+relacionado:
+  - "[[03-stack]]"
+  - "[[06-soft-delete]]"
+  - "[[09-workspace-seed]]"
 ---
 
 ## Patrones de diseño y arquitectura

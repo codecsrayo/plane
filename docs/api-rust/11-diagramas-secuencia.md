@@ -4,7 +4,10 @@ tags:
   - mermaid
   - secuencia
   - arquitectura
-relacionado: [[09-workspace-seed]], [[10-patrones]], [[15-workspace-settings]]
+relacionado:
+  - "[[09-workspace-seed]]"
+  - "[[10-patrones]]"
+  - "[[15-workspace-settings]]"
 ---
 
 ## Integración en el flujo — diagramas de secuencia

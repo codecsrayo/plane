@@ -5,7 +5,9 @@ tags:
   - mermaid
   - django
   - rust
-relacionado: [[03-stack]], [[07-fases]]
+relacionado:
+  - "[[03-stack]]"
+  - "[[07-fases]]"
 ---
 
 ## Arquitectura actual vs futura — diagrama de flujo

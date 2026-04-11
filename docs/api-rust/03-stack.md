@@ -6,7 +6,9 @@ tags:
   - axum
   - seaorm
   - apalis
-relacionado: [[00-README]], [[04-arquitectura]]
+relacionado:
+  - "[[00-README]]"
+  - "[[04-arquitectura]]"
 ---
 
 ## Stack completo

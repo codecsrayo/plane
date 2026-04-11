@@ -6,7 +6,10 @@ tags:
   - gitlab
   - slack
   - oauth
-relacionado: [[15-workspace-settings]], [[12-cosas-criticas]], [[09-workspace-seed]]
+relacionado:
+  - "[[15-workspace-settings]]"
+  - "[[12-cosas-criticas]]"
+  - "[[09-workspace-seed]]"
 ---
 
 > [!NOTE] Entidades ya generadas

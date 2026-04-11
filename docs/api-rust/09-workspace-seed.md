@@ -5,7 +5,9 @@ tags:
   - seed
   - workspace
   - jobs
-relacionado: [[10-patrones]], [[11-diagramas-secuencia]]
+relacionado:
+  - "[[10-patrones]]"
+  - "[[11-diagramas-secuencia]]"
 ---
 
 ## Población de datos iniciales (workspace seed)

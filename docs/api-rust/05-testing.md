@@ -5,7 +5,9 @@ tags:
   - bruno
   - axum-test
   - swagger
-relacionado: [[00-README]], [[13-estructura-archivos]]
+relacionado:
+  - "[[00-README]]"
+  - "[[13-estructura-archivos]]"
 ---
 
 ## Testing de la API

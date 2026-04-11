@@ -4,7 +4,9 @@ tags:
   - seaorm
   - soft-delete
   - rust
-relacionado: [[10-patrones]], [[12-cosas-criticas]]
+relacionado:
+  - "[[10-patrones]]"
+  - "[[12-cosas-criticas]]"
 ---
 
 ## Soft delete — implementado ✅

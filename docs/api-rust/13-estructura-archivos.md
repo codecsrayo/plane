@@ -4,7 +4,9 @@ tags:
   - estructura
   - rust
   - archivos
-relacionado: [[05-testing]], [[10-patrones]]
+relacionado:
+  - "[[05-testing]]"
+  - "[[10-patrones]]"
 ---
 
 ## Estructura completa de archivos — estado objetivo
