@@ -10,6 +10,8 @@ pub struct Model {
     pub id: Uuid,
     pub is_active: bool,
     pub user_agent: Option<String>,
+    // NOTE: baseline_old.sql defines this as `inet`; mapped to String since sea-orm
+    // feature `with-ipnetwork` is not enabled. Enable it and use IpNetwork if needed.
     pub ip_address: Option<String>,
     pub start_time: DateTimeWithTimeZone,
     pub end_time: Option<DateTimeWithTimeZone>,

@@ -7,7 +7,7 @@ pub struct Model {
     pub updated_at: DateTimeWithTimeZone,
     #[sea_orm(primary_key)]
     pub id: Uuid,
-    pub project: Option<Vec<String>>,
+    pub project: Option<Vec<Uuid>>,
     pub provider: String,
     pub status: String,
     pub reason: String,

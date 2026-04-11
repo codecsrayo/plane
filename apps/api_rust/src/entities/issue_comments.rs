@@ -8,7 +8,7 @@ pub struct Model {
     #[sea_orm(primary_key)]
     pub id: Uuid,
     pub comment_stripped: String,
-    pub attachments: String,
+    pub attachments: Vec<String>,
     pub created_by_id: Option<Uuid>,
     pub issue_id: Uuid,
     pub project_id: Uuid,

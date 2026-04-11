@@ -12,7 +12,7 @@ pub struct Model {
     pub old_value: Option<String>,
     pub new_value: Option<String>,
     pub comment: String,
-    pub attachments: String,
+    pub attachments: Vec<String>,
     pub created_by_id: Option<Uuid>,
     pub issue_id: Option<Uuid>,
     pub issue_comment_id: Option<Uuid>,

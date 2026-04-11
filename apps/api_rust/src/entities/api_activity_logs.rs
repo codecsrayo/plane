@@ -15,6 +15,8 @@ pub struct Model {
     pub body: Option<String>,
     pub response_code: i32,
     pub response_body: Option<String>,
+    // NOTE: baseline_old.sql defines this as `inet`; mapped to String since sea-orm
+    // feature `with-ipnetwork` is not enabled. Enable it and use IpNetwork if needed.
     pub ip_address: Option<String>,
     pub user_agent: Option<String>,
     pub created_by_id: Option<Uuid>,
