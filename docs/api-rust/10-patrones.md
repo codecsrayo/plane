@@ -14,6 +14,21 @@ relacionado:
 
 ## Patrones de diseño y arquitectura
 
+> **Referencias externas por patrón:**
+>
+> | # | Patrón | Documentación oficial | Guía de referencia |
+> |---|--------|-----------------------|--------------------|
+> | 1 | Repository Pattern | [SeaORM — Queries](https://www.sea-ql.org/SeaORM/docs/basic-crud/select/) | [Rust API Guidelines — Modules](https://rust-lang.github.io/api-guidelines/organization.html) |
+> | 2 | AppState (Axum) | [Axum — State](https://docs.rs/axum/latest/axum/extract/struct.State.html) | [Axum examples/todos](https://github.com/tokio-rs/axum/tree/main/examples/todos) |
+> | 3 | Extractor Pattern | [Axum — FromRequestParts](https://docs.rs/axum/latest/axum/extract/trait.FromRequestParts.html) | [Axum — custom extractor](https://github.com/tokio-rs/axum/blob/main/examples/customize-extractor-error/src/main.rs) |
+> | 4 | Error unificado | [thiserror crate](https://docs.rs/thiserror/latest/thiserror/) | [Axum — IntoResponse](https://docs.rs/axum/latest/axum/response/trait.IntoResponse.html) |
+> | 5 | Job Pattern (apalis) | [apalis — Book](https://docs.rs/apalis/latest/apalis/) | [apalis — postgres example](https://github.com/geofmureithi/apalis/tree/main/examples/postgres) |
+> | 6 | Cron jobs | [tokio-cron-scheduler](https://docs.rs/tokio-cron-scheduler/latest/tokio_cron_scheduler/) | [cron expression syntax](https://crontab.guru/) |
+>
+> Diagrama de flujo completo de implementación → **[[16-diagramas-flujo]]**
+
+---
+
 ### 1. Repository Pattern — aislar SeaORM de los handlers
 
 Los handlers Axum no deben contener queries SeaORM directamente. El módulo
