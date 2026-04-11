@@ -149,8 +149,7 @@ sequenceDiagram
     Rust->>DB: UPSERT workspace_integrations SET metadata=installation_id
     Rust-->>Frontend: HTML con window.postMessage type=github-integration success=true
     Frontend->>Frontend: Popup se cierra, parent recibe el postMessage
-    Frontend->>Rust: POST /api/workspaces/SLUG/workspace-integrations/github/install/
-                     Body: installation_id
+    Frontend->>Rust: POST /api/workspaces/SLUG/workspace-integrations/github/install/ — Body: installation_id
     Rust->>DB: GET OR CREATE WorkspaceIntegration
     Rust-->>Frontend: 201 workspace_integration creada
 ```
@@ -237,8 +236,7 @@ sequenceDiagram
     Frontend->>Slack: Abrir popup → slack.com/oauth/v2/authorize?client_id=...
     Slack->>User: Autorizar
     Slack-->>Frontend: Redirect con ?code=XXX
-    Frontend->>Rust: POST /api/workspaces/SLUG/workspace-integrations/slack/install/
-                     Body: code
+    Frontend->>Rust: POST /api/workspaces/SLUG/workspace-integrations/slack/install/ — Body: code
     Rust->>Slack: POST https://slack.com/api/oauth.v2.access
                   client_id + client_secret + code
     Slack-->>Rust: access_token + team id + team name
