@@ -1,3 +1,4 @@
+// migration/src/main.rs
 use sea_orm_migration::prelude::*;
 
 #[tokio::main]

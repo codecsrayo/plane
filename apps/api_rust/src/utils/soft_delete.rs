@@ -1,3 +1,4 @@
+// src/utils/soft_delete.rs
 /// Soft-delete support para entidades SeaORM.
 ///
 /// Equivalente al `SoftDeletionManager` de Django — filtra `deleted_at IS NULL`

@@ -1,3 +1,4 @@
+// migration/src/migrations/m20260410_000001_baseline.rs
 use sea_orm_migration::prelude::*;
 
 #[derive(DeriveMigrationName)]

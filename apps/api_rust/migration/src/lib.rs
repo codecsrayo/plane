@@ -1,3 +1,4 @@
+// migration/src/lib.rs
 pub use sea_orm_migration::prelude::*;
 
 mod migrations;

@@ -1,3 +1,4 @@
+// migration/src/migrations/m20240101_000007_seed_data.rs
 use sea_orm_migration::prelude::*;
 
 /// Seeds static reference data that Django inserts automatically via RunPython migrations:
