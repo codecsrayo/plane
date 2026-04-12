@@ -309,16 +309,7 @@ src/
       types.rs           ← structs Request/Response
 ```
 
-### Dependencias Rust requeridas
-
-```toml
-[dependencies]
-reqwest = { version = "0.12", features = ["json", "rustls-tls"] }
-serde = { version = "1", features = ["derive"] }
-serde_json = "1"
-```
-
-> No se requiere SDK de OpenAI para Rust — usar `reqwest` directo a la API REST de cada proveedor es más liviano y explícito.
+> No se requiere SDK de OpenAI para Rust — usar `reqwest` (ya en Cargo.toml) directo a la API REST de cada proveedor es más liviano y explícito.
 
 ### Lógica `llm_call()` Rust
 

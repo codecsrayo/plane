@@ -189,6 +189,9 @@ pub fn build_monitor(db: sea_orm::DatabaseConnection) -> Monitor {
 | `email_notification_task` | `EmailJob`                  | Cola de eventos                                      |
 | `webhook_task`            | `WebhookDeliveryJob`        | Post-mutación — ver [[dominio-workspace-settings]]   |
 | `export_task`             | `ExportJob`                 | Request usuario — ver [[dominio-workspace-settings]] |
+| `cleanup_task`            | `CleanupCron`               | tokio-cron-scheduler (Fase 3)                        |
+| `issue_automation_task`   | `AutomationCron`            | Cron diario (Fase 4)                                 |
+| `magic_link_code_task`    | —                           | Pendiente — depende de auth Rust completo            |
 
 ---
 

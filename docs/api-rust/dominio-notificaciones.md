@@ -454,20 +454,12 @@ if let Err(e) = state.job_storage.push(NotificationJob { // silence-patterns-ok:
 
 ---
 
-## Cargo.toml — dependencias adicionales
-
-```toml
-lettre = { version = "0.11", features = ["tokio1-native-tls", "builder"] }
-```
-
----
-
 ## Plan de implementación
 
 ```
 Fase 3:
   [ ] src/jobs/notifications.rs    — NotificationJob (apalis) + handler
-  [ ] src/jobs/email.rs            — EmailJob (apalis) + handler lettre
+  [ ] src/jobs/email.rs            — EmailJob (apalis) + handler lettre (ya en Cargo.toml)
   [ ] src/utils/email_templates.rs — plantillas HTML de correo (issue-activity, invitation)
   [ ] src/jobs/scheduled.rs        — cron de envío de notificaciones agrupadas
   [ ] src/routes/notifications.rs  — GET /notifications/ + read/unread + preferences

@@ -467,19 +467,13 @@ pub struct PriorityMapping {
 
 ---
 
-## Cargo.toml — dependencias adicionales
-
-```toml
-aes-gcm = "0.10"   # cifrado de tokens
-hex     = "0.4"    # encode/decode del token cifrado
-```
-
 ---
 
 ## Plan de implementación
 
 ```
 Fase 3:
+  [ ] Cargo.toml: agregar aes-gcm = "0.10" + hex = "0.4" (cifrado de tokens de importer)
   [ ] src/jobs/importer.rs           — CsvImporterJob + GithubImporterJob (apalis)
   [ ] src/routes/importers.rs        — POST iniciar importación + GET estado
   [ ] src/utils/importer_mapping.rs  — mapeo de estados/prioridades CSV→Plane

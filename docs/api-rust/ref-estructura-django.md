@@ -162,17 +162,17 @@ apps/api/
 
 ## Background tasks Celery → apalis jobs
 
-| Celery task               | Equivalente Rust     | Trigger               |
-| ------------------------- | -------------------- | --------------------- |
-| `workspace_seed_task`     | `WorkspaceSeedJob`   | Workspace creado      |
-| `github_sync_task`        | `GithubSyncJob`      | Webhook GitHub / cron |
-| `notification_task`       | `NotificationJob`    | Cola de eventos       |
-| `email_notification_task` | `EmailJob`           | Cola de eventos       |
-| `webhook_task`            | `WebhookDispatchJob` | Post-mutación         |
-| `export_task`             | `ExportJob`          | Request usuario       |
-| `cleanup_task`            | `CleanupCron`        | tokio-cron-scheduler  |
-| `issue_automation_task`   | `AutomationCron`     | Cron diario           |
-| `magic_link_code_task`    | —                    | Pendiente auth Rust   |
+| Celery task               | Equivalente Rust              | Trigger               |
+| ------------------------- | ----------------------------- | --------------------- |
+| `workspace_seed_task`     | `WorkspaceSeedJob`            | Workspace creado      |
+| `github_sync_task`        | `GithubInitialIssueSyncJob`   | Webhook GitHub / cron |
+| `notification_task`       | `NotificationJob`             | Cola de eventos       |
+| `email_notification_task` | `EmailJob`                    | Cola de eventos       |
+| `webhook_task`            | `WebhookDeliveryJob`          | Post-mutación         |
+| `export_task`             | `ExportJob`                   | Request usuario       |
+| `cleanup_task`            | `CleanupCron`                 | tokio-cron-scheduler  |
+| `issue_automation_task`   | `AutomationCron`              | Cron diario           |
+| `magic_link_code_task`    | —                             | Pendiente auth Rust   |
 
 ---
 
