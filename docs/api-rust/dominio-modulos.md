@@ -46,42 +46,42 @@ projects
 
 | Método | URL | Guard | Fase |
 |--------|-----|-------|------|
-| `GET` | `/api/workspaces/{slug}/projects/{id}/modules/` | `ProjectMemberGuard (≥5)` | 2 |
-| `POST` | `/api/workspaces/{slug}/projects/{id}/modules/` | `ProjectMemberGuard (≥15)` | 2 |
-| `GET` | `/api/workspaces/{slug}/projects/{id}/modules/{pk}/` | `ProjectMemberGuard (≥5)` | 2 |
-| `PATCH` | `/api/workspaces/{slug}/projects/{id}/modules/{pk}/` | `ProjectMemberGuard (≥15)` | 4 |
-| `DELETE` | `/api/workspaces/{slug}/projects/{id}/modules/{pk}/` | `ProjectMemberGuard (≥15)` | 4 |
+| `GET` | `/workspaces/{slug}/projects/{id}/modules/` | `ProjectMemberGuard (≥5)` | 2 |
+| `POST` | `/workspaces/{slug}/projects/{id}/modules/` | `ProjectMemberGuard (≥15)` | 2 |
+| `GET` | `/workspaces/{slug}/projects/{id}/modules/{pk}/` | `ProjectMemberGuard (≥5)` | 2 |
+| `PATCH` | `/workspaces/{slug}/projects/{id}/modules/{pk}/` | `ProjectMemberGuard (≥15)` | 4 |
+| `DELETE` | `/workspaces/{slug}/projects/{id}/modules/{pk}/` | `ProjectMemberGuard (≥15)` | 4 |
 
 ### Issues del módulo
 
 | Método | URL | Guard | Fase |
 |--------|-----|-------|------|
-| `GET/POST` | `/api/workspaces/{slug}/projects/{id}/modules/{module_id}/issues/` | `ProjectMemberGuard (≥5/15)` | 4 |
-| `DELETE` | `/api/workspaces/{slug}/projects/{id}/modules/{module_id}/issues/{issue_id}/` | `ProjectMemberGuard (≥15)` | 4 |
-| `GET/POST/DELETE` | `/api/workspaces/{slug}/projects/{id}/issues/{issue_id}/modules/` | `ProjectMemberGuard (≥5/15)` | 4 |
+| `GET/POST` | `/workspaces/{slug}/projects/{id}/modules/{module_id}/issues/` | `ProjectMemberGuard (≥5/15)` | 4 |
+| `GET/PUT/PATCH/DELETE` | `/workspaces/{slug}/projects/{id}/modules/{module_id}/issues/{issue_id}/` | `ProjectMemberGuard (≥15)` | 4 |
+| `GET/POST/DELETE` | `/workspaces/{slug}/projects/{id}/issues/{issue_id}/modules/` | `ProjectMemberGuard (≥5/15)` | 4 |
 
 ### Links del módulo
 
 | Método | URL | Guard | Fase |
 |--------|-----|-------|------|
-| `GET/POST` | `/api/workspaces/{slug}/projects/{id}/modules/{module_id}/module-links/` | `ProjectMemberGuard (≥5/15)` | 4 |
-| `PATCH/DELETE` | `/api/workspaces/{slug}/projects/{id}/modules/{module_id}/module-links/{pk}/` | `ProjectMemberGuard (≥15)` | 4 |
+| `GET/POST` | `/workspaces/{slug}/projects/{id}/modules/{module_id}/module-links/` | `ProjectMemberGuard (≥5/15)` | 4 |
+| `GET/PUT/PATCH/DELETE` | `/workspaces/{slug}/projects/{id}/modules/{module_id}/module-links/{pk}/` | `ProjectMemberGuard (≥15)` | 4 |
 
 ### Archivo y listado archivados
 
 | Método | URL | Guard | Fase |
 |--------|-----|-------|------|
-| `POST/DELETE` | `/api/workspaces/{slug}/projects/{id}/modules/{module_id}/archive/` | `ProjectMemberGuard (≥15)` | 4 |
-| `GET` | `/api/workspaces/{slug}/projects/{id}/archived-modules/` | `ProjectMemberGuard (≥5)` | 4 |
-| `GET/DELETE` | `/api/workspaces/{slug}/projects/{id}/archived-modules/{pk}/` | `ProjectMemberGuard (≥5/15)` | 4 |
+| `POST/DELETE` | `/workspaces/{slug}/projects/{id}/modules/{module_id}/archive/` | `ProjectMemberGuard (≥15)` | 4 |
+| `GET` | `/workspaces/{slug}/projects/{id}/archived-modules/` | `ProjectMemberGuard (≥5)` | 4 |
+| `GET/DELETE` | `/workspaces/{slug}/projects/{id}/archived-modules/{pk}/` | `ProjectMemberGuard (≥5/15)` | 4 |
 
 ### Favoritos y preferencias de usuario
 
 | Método | URL | Guard | Fase |
 |--------|-----|-------|------|
-| `GET/POST` | `/api/workspaces/{slug}/projects/{id}/user-favorite-modules/` | `ProjectMemberGuard (≥5)` | 4 |
-| `DELETE` | `/api/workspaces/{slug}/projects/{id}/user-favorite-modules/{module_id}/` | `ProjectMemberGuard (≥5)` | 4 |
-| `GET/PATCH` | `/api/workspaces/{slug}/projects/{id}/modules/{module_id}/user-properties/` | `ProjectMemberGuard (≥5)` | 4 |
+| `GET/POST` | `/workspaces/{slug}/projects/{id}/user-favorite-modules/` | `ProjectMemberGuard (≥5)` | 4 |
+| `DELETE` | `/workspaces/{slug}/projects/{id}/user-favorite-modules/{module_id}/` | `ProjectMemberGuard (≥5)` | 4 |
+| `GET/PATCH` | `/workspaces/{slug}/projects/{id}/modules/{module_id}/user-properties/` | `ProjectMemberGuard (≥5)` | 4 |
 
 ---
 
