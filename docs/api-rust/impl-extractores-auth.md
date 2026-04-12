@@ -269,16 +269,12 @@ pub const ROLE_ADMIN:  i16 = 20;
 En Django (`apps/api/plane/app/permissions/base.py`) existe un bypass explícito:
 un usuario con `role = 20` en el **workspace** puede ejecutar cualquier operación de proyecto aunque su **project role** sea menor al requerido, siempre que sea miembro activo del proyecto.
 
-```
-┌─────────────────────────────────────────────────────────┐
-│  ¿Tiene el rol requerido en el proyecto?  ──── Sí ────► OK
-│                    │ No
-│                    ▼
-│  ¿Es Workspace Admin (role=20) Y miembro del proyecto? ─ Sí ─► OK (god mode)
-│                    │ No
-│                    ▼
-│                  403 Forbidden
-└─────────────────────────────────────────────────────────┘
+```mermaid
+flowchart TD
+    A{¿Tiene el rol requerido\nen el proyecto?} -- Sí --> OK([✅ OK])
+    A -- No --> B{¿Es Workspace Admin (20)\nY miembro del proyecto?}
+    B -- Sí --> OK
+    B -- No --> ERR([❌ 403 Forbidden])
 ```
 
 ```rust

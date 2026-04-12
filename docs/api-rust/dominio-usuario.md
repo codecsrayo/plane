@@ -31,12 +31,13 @@ estado: activo
 
 ## Modelo de datos
 
-```
-users (tabla principal)
-    ├─ profiles (perfil extendido)
-    ├─ accounts (cuentas OAuth vinculadas: github, google, etc.)
-    ├─ sessions (dispositivos y sesiones activas)
-    └─ user_notification_preferences (configuración de correo/in-app)
+```mermaid
+mindmap
+    root((users))
+        profiles(profiles)
+        accounts(accounts)
+        sessions(sessions)
+        notifications(user_notification_preferences)
 ```
 
 ---

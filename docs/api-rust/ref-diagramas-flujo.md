@@ -216,27 +216,18 @@ flowchart TD
 
 ---
 
-## Tabla de rutas por entidad
+## 🗺️ Referencia de Rutas por Dominio
 
-| Entidad        | Método           | Ruta                                              | Guard mínimo                            | Fase |
-| -------------- | ---------------- | ------------------------------------------------- | --------------------------------------- | ---- |
-| Workspaces     | GET              | `/api/workspaces/`                                | `CurrentUser`                           | 2    |
-| Workspace      | POST             | `/api/workspaces/`                                | `CurrentUser`                           | 2    |
-| Workspace      | GET/PATCH/DELETE | `/api/workspaces/:slug/`                          | `WorkspaceMemberGuard`                  | 2    |
-| WS Members     | GET              | `/api/workspaces/:slug/members/`                  | `WorkspaceMemberGuard (≥15)`            | 2    |
-| WS Members     | PATCH/DELETE     | `/api/workspaces/:slug/members/:pk/`              | `WorkspaceMemberGuard (≥20)`            | 2    |
-| WS Invitations | GET/POST         | `/api/workspaces/:slug/invitations/`              | `WorkspaceMemberGuard (≥20)`            | 2    |
-| WS Webhooks    | GET/POST         | `/api/workspaces/:slug/webhooks/`                 | `WorkspaceMemberGuard (≥20)`            | 2    |
-| Projects       | GET              | `/api/workspaces/:slug/projects/`                 | `WorkspaceMemberGuard (≥5)`             | 2    |
-| Project        | POST             | `/api/workspaces/:slug/projects/`                 | `WorkspaceMemberGuard (≥15)`            | 2    |
-| Project        | GET/PATCH/DELETE | `/api/workspaces/:slug/projects/:id/`             | `ProjectMemberGuard (≥18 PATCH/DELETE)` | 2    |
-| Issues         | GET/POST         | `/api/workspaces/:slug/projects/:id/issues/`      | `ProjectMemberGuard (≥5 GET, ≥15 POST)` | 2    |
-| Issue          | GET/PATCH/DELETE | `/api/workspaces/:slug/projects/:id/issues/:iid/` | `ProjectMemberGuard (≥15 PATCH/DELETE)` | 2    |
-| States         | GET              | `/api/workspaces/:slug/projects/:id/states/`      | `ProjectMemberGuard (≥5)`               | 2    |
-| Members        | GET              | `/api/workspaces/:slug/projects/:id/members/`     | `ProjectMemberGuard (≥5)`               | 2    |
-| Cycles         | GET/POST         | `/api/workspaces/:slug/projects/:id/cycles/`      | `ProjectMemberGuard (≥5 GET, ≥15 POST)` | 2    |
-| Modules        | GET/POST         | `/api/workspaces/:slug/projects/:id/modules/`     | `ProjectMemberGuard (≥5 GET, ≥15 POST)` | 2    |
-| Exports        | GET/POST         | `/api/workspaces/:slug/exports/`                  | `WorkspaceMemberGuard (≥5)`             | 3    |
+Para evitar redundancia, las tablas detalladas de endpoints se mantienen en sus respectivos documentos de dominio:
+
+| Dominio                | Contenido                                          |
+| ---------------------- | -------------------------------------------------- |
+| [[dominio-workspace-settings]] | Configuración, Miembros, Webhooks y Exportaciones  |
+| [[dominio-proyectos]]          | CRUD de Proyectos, Estados y Estimaciones          |
+| [[dominio-issues]]             | CRUD de Issues, Comentarios, Relaciones y Actividad |
+| [[dominio-integraciones]]      | GitHub, GitLab y Slack                             |
+| [[dominio-ciclos]]             | Gestión de Ciclos                                  |
+| [[dominio-modulos]]            | Gestión de Módulos                                 |
 
 ---
 

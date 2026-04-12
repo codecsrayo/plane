@@ -29,12 +29,13 @@ estado: activo
 
 ## Modelo de datos
 
-```
-workspaces
-    ├─ views (Workspace Views — Globales)
-    └─ projects
-            ├─ views (Project Views)
-            └─ user_favorite_views (M2M → views)
+```mermaid
+mindmap
+    root((workspaces))
+        global_views(views global)
+        projects(projects)
+            project_views(views project)
+            favorites(user_favorite_views)
 ```
 
 Las vistas guardan un objeto `query` (JSON) que contiene los mismos parámetros de filtrado que el endpoint de issues.
@@ -123,7 +124,7 @@ pub struct CreateViewRequest {
     pub access:      Option<String>,     // "public" | "private" — validar contra allowlist
 }
 
-// ── Fix-33: Guards requeridos en handler ──────────────────────────────────
+// - Fix-33: Guards requeridos en handler -----------------
 // const MAX_VIEW_NAME: usize  = 255;
 // const MAX_VIEW_QUERY: usize = 64 * 1024; // 64 KB
 //
@@ -142,7 +143,7 @@ pub struct CreateViewRequest {
 // Riesgo sin validación:
 //   • query sin límite: atacante persiste JSON de 10 MB → lento en reads y
 //     tabla de vistas se infla sin control.
-// ──────────────────────────────────────────────────────────────────────────
+// -------------------------------------
 
 #[derive(Serialize, ToSchema)]
 pub struct ViewResponse {

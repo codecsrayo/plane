@@ -162,25 +162,17 @@ bruno run --env staging tests/bruno/
 
 ### Estructura de la colección
 
-```
-apps/api_rust/tests/bruno/
-├── bruno.json
-├── environments/
-│   ├── local.bru
-│   └── staging.bru
-├── health/
-│   └── get_health.bru
-├── workspaces/
-│   ├── list_workspaces.bru
-│   ├── create_workspace.bru
-│   └── get_workspace.bru
-├── issues/
-│   ├── list_issues.bru
-│   ├── create_issue.bru
-│   └── update_issue.bru
-└── integrations/
-    ├── list_integrations.bru
-    └── connect_github.bru
+```mermaid
+mindmap
+    root((tests/bruno/))
+        Config(bruno.json)
+        Envs(environments/)
+            Local(local.bru)
+            Staging(staging.bru)
+        Health(health/)
+        Workspaces(workspaces/)
+        Issues(issues/)
+        Integrations(integrations/)
 ```
 
 ### Comparativa de clientes externos
