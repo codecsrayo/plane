@@ -217,27 +217,14 @@ tokio::spawn(async move {
 
 ### Encolar un job desde un handler
 
+> Ejemplo completo con contexto de workspace: [[dominio-workspace-seed#Encolar el job desde el handler de workspaces]].
+
 ```rust
-// En routes/workspaces.rs — POST /api/workspaces/
-async fn create_workspace(
-    State(state): State<AppState>,
-    CurrentUser(user): CurrentUser,
-    Json(payload): Json<CreateWorkspaceRequest>,
-) -> Result<Json<WorkspaceResponse>, AppError> {
-    // ... crear workspace ...
-
-    // Encolar job asíncrono — no bloquea la respuesta HTTP
-    // ✅ pg_pool es el sqlx::PgPool extraído de SeaORM — PostgresStorage lo usa directamente
-    let mut storage = PostgresStorage::<WorkspaceSeedJob>::new(state.pg_pool.clone());
-    if let Err(e) = storage
-        .push(WorkspaceSeedJob { workspace_id: new_workspace.id })
-        .await
-    {
-        tracing::warn!("Failed to enqueue workspace seed: {e}");
-        // No fallar la request — el seed es best-effort
-    }
-
-    Ok(Json(workspace_response))
+// Patrón genérico — en cualquier handler POST que dispara un job
+let mut storage = PostgresStorage::<MiJob>::new(state.pg_pool.clone());
+if let Err(e) = storage.push(MiJob { ... }).await {
+    tracing::warn!("Failed to enqueue job: {e}");
+    // No fallar la request — jobs son best-effort salvo indicación contraria
 }
 ```
 
