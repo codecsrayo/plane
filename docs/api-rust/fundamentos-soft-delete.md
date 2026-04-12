@@ -33,12 +33,12 @@ Se usa un **trait custom** en `src/utils/soft_delete.rs`.
 
 ## Archivos involucrados
 
-| Archivo | Rol |
-|---------|-----|
+| Archivo                    | Rol                                                  |
+| -------------------------- | ---------------------------------------------------- |
 | `src/utils/soft_delete.rs` | Trait `SoftDeleteExt<E>` + macro `impl_soft_delete!` |
-| `src/entities/mod.rs` | Macro aplicada a las 98 entidades con `deleted_at` |
-| `src/utils/mod.rs` | Módulo registrado |
-| `src/main.rs` | `pub mod utils` agregado |
+| `src/entities/mod.rs`      | Macro aplicada a las 98 entidades con `deleted_at`   |
+| `src/utils/mod.rs`         | Módulo registrado                                    |
+| `src/main.rs`              | `pub mod utils` agregado                             |
 
 ---
 
@@ -131,9 +131,9 @@ active_model.update(&db).await?;
 
 ## Errores del borrador original (corregidos)
 
-| Error original | Corrección |
-|----------------|------------|
-| `pub use ..utils::...` | `use crate::utils::...` (ruta relativa inválida) |
+| Error original          | Corrección                                          |
+| ----------------------- | --------------------------------------------------- |
+| `pub use ..utils::...`  | `use crate::utils::...` (ruta relativa inválida)    |
 | `pub use SoftDeleteExt` | `use ... as _` (no re-exportar, solo activar impls) |
 
 ---

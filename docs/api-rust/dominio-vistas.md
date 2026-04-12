@@ -18,6 +18,9 @@ estado: activo
 
 # Dominio — Issue Views
 
+> [!NOTE] INC-16 — Dominio de vistas
+> Este dominio no estaba documentado previamente.
+
 > [!NOTE] Vistas personalizadas de issues
 > Las vistas permiten guardar configuraciones de filtros, agrupación y ordenamiento para issues, ya sea a nivel de proyecto o a nivel global del workspace.
 
@@ -44,30 +47,30 @@ Las vistas guardan un objeto `query` (JSON) que contiene los mismos parámetros 
 
 ### Vistas de proyecto (Project Views)
 
-| Método | URL | Guard | Fase |
-|--------|-----|-------|------|
-| `GET/POST` | `/workspaces/{slug}/projects/{project_id}/views/` | `ProjectMemberGuard (≥5/15)` | 4 |
-| `GET/PUT/PATCH/DELETE` | `/workspaces/{slug}/projects/{project_id}/views/{pk}/` | `ProjectMemberGuard (≥5/15)` | 4 |
+| Método                 | URL                                                    | Guard                        | Fase |
+| ---------------------- | ------------------------------------------------------ | ---------------------------- | ---- |
+| `GET/POST`             | `/workspaces/{slug}/projects/{project_id}/views/`      | `ProjectMemberGuard (≥5/15)` | 4    |
+| `GET/PUT/PATCH/DELETE` | `/workspaces/{slug}/projects/{project_id}/views/{pk}/` | `ProjectMemberGuard (≥5/15)` | 4    |
 
 ### Vistas globales (Workspace Views)
 
-| Método | URL | Guard | Fase |
-|--------|-----|-------|------|
-| `GET/POST` | `/workspaces/{slug}/views/` | `WorkspaceMemberGuard (≥5/15)` | 4 |
-| `GET/PUT/PATCH/DELETE` | `/workspaces/{slug}/views/{pk}/` | `WorkspaceMemberGuard (≥5/15)` | 4 |
+| Método                 | URL                              | Guard                          | Fase |
+| ---------------------- | -------------------------------- | ------------------------------ | ---- |
+| `GET/POST`             | `/workspaces/{slug}/views/`      | `WorkspaceMemberGuard (≥5/15)` | 4    |
+| `GET/PUT/PATCH/DELETE` | `/workspaces/{slug}/views/{pk}/` | `WorkspaceMemberGuard (≥5/15)` | 4    |
 
 ### Listado de issues de vista global
 
-| Método | URL | Descripción | Fase |
-|--------|-----|-------------|------|
-| `GET` | `/workspaces/{slug}/issues/` | `WorkspaceViewIssuesViewSet` — lista issues aplicando filtros de una vista global o parámetros directos | 4 |
+| Método | URL                          | Descripción                                                                                             | Fase |
+| ------ | ---------------------------- | ------------------------------------------------------------------------------------------------------- | ---- |
+| `GET`  | `/workspaces/{slug}/issues/` | `WorkspaceViewIssuesViewSet` — lista issues aplicando filtros de una vista global o parámetros directos | 4    |
 
 ### Favoritos de vistas
 
-| Método | URL | Guard | Fase |
-|--------|-----|-------|------|
-| `GET/POST` | `/workspaces/{slug}/projects/{project_id}/user-favorite-views/` | `ProjectMemberGuard (≥5)` | 4 |
-| `DELETE` | `/workspaces/{slug}/projects/{project_id}/user-favorite-views/{view_id}/` | `ProjectMemberGuard (≥5)` | 4 |
+| Método     | URL                                                                       | Guard                     | Fase |
+| ---------- | ------------------------------------------------------------------------- | ------------------------- | ---- |
+| `GET/POST` | `/workspaces/{slug}/projects/{project_id}/user-favorite-views/`           | `ProjectMemberGuard (≥5)` | 4    |
+| `DELETE`   | `/workspaces/{slug}/projects/{project_id}/user-favorite-views/{view_id}/` | `ProjectMemberGuard (≥5)` | 4    |
 
 ---
 
@@ -139,9 +142,9 @@ pub struct ViewResponse {
 
 ## Entidades SeaORM involucradas ✅
 
-| Entidad | Tabla | Notas |
-|---------|-------|-------|
-| `issue_views.rs` | `issue_views` | Contiene el campo `query` (jsonb) |
+| Entidad             | Tabla            | Notas                                                  |
+| ------------------- | ---------------- | ------------------------------------------------------ |
+| `issue_views.rs`    | `issue_views`    | Contiene el campo `query` (jsonb)                      |
 | `user_favorites.rs` | `user_favorites` | Para marcar vistas como favoritas (entity_type='view') |
 
 ---

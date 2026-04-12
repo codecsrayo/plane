@@ -20,6 +20,9 @@ estado: activo
 
 # Dominio — Usuario (Perfil y Preferencias)
 
+> [!NOTE] INC-18 — Dominio de usuario
+> Este dominio no estaba documentado previamente.
+
 > [!NOTE] Gestión del usuario autenticado
 > Endpoints bajo `/users/me/` para el perfil, configuración, cuentas vinculadas y dashboards personales.
 
@@ -44,41 +47,41 @@ users (tabla principal)
 
 ### Perfil y cuenta — `UserEndpoint`
 
-| Método | URL | Descripción | Fase |
-|--------|-----|-------------|------|
-| `GET` | `/users/me/` | Datos del usuario actual | 1 |
-| `PATCH` | `/users/me/` | Actualizar perfil (nombre, avatar) | 4 |
-| `DELETE` | `/users/me/` | Desactivar cuenta (soft delete) | 5 |
-| `GET` | `/users/me/settings/` | Configuración del usuario | 4 |
-| `POST` | `/users/me/email/generate-code/` | Generar código de verificación de correo | 4 |
-| `PATCH` | `/users/me/email/` | Cambiar correo electrónico | 4 |
-| `GET` | `/users/me/instance-admin/` | ¿Es administrador de la instancia? | 4 |
-| `GET` | `/users/session/` | Info de sesión actual | 1 |
+| Método   | URL                              | Descripción                              | Fase |
+| -------- | -------------------------------- | ---------------------------------------- | ---- |
+| `GET`    | `/users/me/`                     | Datos del usuario actual                 | 1    |
+| `PATCH`  | `/users/me/`                     | Actualizar perfil (nombre, avatar)       | 4    |
+| `DELETE` | `/users/me/`                     | Desactivar cuenta (soft delete)          | 5    |
+| `GET`    | `/users/me/settings/`            | Configuración del usuario                | 4    |
+| `POST`   | `/users/me/email/generate-code/` | Generar código de verificación de correo | 4    |
+| `PATCH`  | `/users/me/email/`               | Cambiar correo electrónico               | 4    |
+| `GET`    | `/users/me/instance-admin/`      | ¿Es administrador de la instancia?       | 4    |
+| `GET`    | `/users/session/`                | Info de sesión actual                    | 1    |
 
 ### Perfil extendido y Onboarding
 
-| Método | URL | Descripción | Fase |
-|--------|-----|-------------|------|
-| `GET/PATCH` | `/users/me/profile/` | `ProfileEndpoint` — rol, compañía, onboarding status | 1 |
-| `POST` | `/users/me/onboard/` | Marcar onboarding como completado | 1 |
-| `POST` | `/users/me/tour-completed/` | Marcar tour inicial como completado | 4 |
+| Método      | URL                         | Descripción                                          | Fase |
+| ----------- | --------------------------- | ---------------------------------------------------- | ---- |
+| `GET/PATCH` | `/users/me/profile/`        | `ProfileEndpoint` — rol, compañía, onboarding status | 1    |
+| `POST`      | `/users/me/onboard/`        | Marcar onboarding como completado                    | 1    |
+| `POST`      | `/users/me/tour-completed/` | Marcar tour inicial como completado                  | 4    |
 
 ### Cuentas OAuth — `AccountEndpoint`
 
-| Método | URL | Descripción | Fase |
-|--------|-----|-------------|------|
-| `GET` | `/users/me/accounts/` | Lista cuentas vinculadas (GitHub, Google, etc.) | 4 |
-| `DELETE` | `/users/me/accounts/{pk}/` | Desvincular cuenta | 4 |
+| Método   | URL                        | Descripción                                     | Fase |
+| -------- | -------------------------- | ----------------------------------------------- | ---- |
+| `GET`    | `/users/me/accounts/`      | Lista cuentas vinculadas (GitHub, Google, etc.) | 4    |
+| `DELETE` | `/users/me/accounts/{pk}/` | Desvincular cuenta                              | 4    |
 
 ### Actividad y Dashboards
 
-| Método | URL | Descripción | Fase |
-|--------|-----|-------------|------|
-| `GET` | `/users/me/workspaces/` | Workspaces a los que pertenece el usuario | 2 |
-| `GET` | `/users/me/activities/` | Historial de actividad del usuario | 4 |
-| `GET` | `/users/me/workspaces/{slug}/activity-graph/` | Datos para el heatmap de actividad | 4 |
-| `GET` | `/users/me/workspaces/{slug}/issues-completed-graph/` | Histograma de issues completados | 4 |
-| `GET` | `/users/me/workspaces/{slug}/dashboard/` | Resumen del dashboard personal del workspace | 4 |
+| Método | URL                                                   | Descripción                                  | Fase |
+| ------ | ----------------------------------------------------- | -------------------------------------------- | ---- |
+| `GET`  | `/users/me/workspaces/`                               | Workspaces a los que pertenece el usuario    | 2    |
+| `GET`  | `/users/me/activities/`                               | Historial de actividad del usuario           | 4    |
+| `GET`  | `/users/me/workspaces/{slug}/activity-graph/`         | Datos para el heatmap de actividad           | 4    |
+| `GET`  | `/users/me/workspaces/{slug}/issues-completed-graph/` | Histograma de issues completados             | 4    |
+| `GET`  | `/users/me/workspaces/{slug}/dashboard/`              | Resumen del dashboard personal del workspace | 4    |
 
 ---
 
@@ -128,11 +131,11 @@ pub struct UserResponse {
 
 ## Entidades SeaORM involucradas ✅
 
-| Entidad | Tabla |
-|---------|-------|
-| `users.rs` | `users` |
-| `profiles.rs` | `profiles` |
-| `accounts.rs` | `accounts` |
+| Entidad                 | Tabla                |
+| ----------------------- | -------------------- |
+| `users.rs`              | `users`              |
+| `profiles.rs`           | `profiles`           |
+| `accounts.rs`           | `accounts`           |
 | `user_recent_visits.rs` | `user_recent_visits` |
 
 ---

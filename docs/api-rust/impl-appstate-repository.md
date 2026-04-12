@@ -22,6 +22,7 @@ estado: activo
 # AppState y Repository Pattern
 
 > **Documentación oficial:**
+>
 > - [SeaORM — Queries](https://www.sea-ql.org/SeaORM/docs/basic-crud/select/)
 > - [Axum — State](https://docs.rs/axum/latest/axum/extract/struct.State.html)
 > - [Axum examples/todos](https://github.com/tokio-rs/axum/tree/main/examples/todos)

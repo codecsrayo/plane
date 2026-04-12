@@ -33,11 +33,11 @@ estado: activo
 
 Plane soporta 3 integraciones externas. Sus filas maestras viven en la tabla `integrations` (3 filas estáticas, insertadas por migración `m007_seed_data`).
 
-| Integración | Provider key | Autenticación | Función principal |
-|-------------|--------------|--------------|-------------------|
-| **GitHub** | `github` | GitHub App (JWT + token) | Sync bidireccional issues/PRs, webhooks |
-| **GitLab** | `gitlab` | OAuth 2.0 code flow | Sync bidireccional issues/comentarios |
-| **Slack** | `slack` | OAuth 2.0 code flow | Notificaciones de actividad en canales |
+| Integración | Provider key | Autenticación            | Función principal                       |
+| ----------- | ------------ | ------------------------ | --------------------------------------- |
+| **GitHub**  | `github`     | GitHub App (JWT + token) | Sync bidireccional issues/PRs, webhooks |
+| **GitLab**  | `gitlab`     | OAuth 2.0 code flow      | Sync bidireccional issues/comentarios   |
+| **Slack**   | `slack`      | OAuth 2.0 code flow      | Notificaciones de actividad en canales  |
 
 ---
 
@@ -259,15 +259,15 @@ pub async fn get_instance_config(
 
 ## Variables de entorno por integración
 
-| Variable | Integración | Uso |
-|----------|-------------|-----|
-| `GITHUB_APP_ID` | GitHub | ID de la GitHub App |
-| `GITHUB_APP_PRIVATE_KEY` | GitHub | PEM base64 para JWT RS256 |
-| `GITHUB_CLIENT_ID` | GitHub | OAuth personal connection |
-| `GITHUB_CLIENT_SECRET` | GitHub | OAuth personal connection |
-| `GITHUB_WEBHOOK_SECRET` | GitHub | Verificar firma HMAC |
-| `SLACK_CLIENT_ID` | Slack | OAuth app install flow |
-| `SLACK_CLIENT_SECRET` | Slack | Intercambiar code por access_token |
+| Variable                 | Integración | Uso                                |
+| ------------------------ | ----------- | ---------------------------------- |
+| `GITHUB_APP_ID`          | GitHub      | ID de la GitHub App                |
+| `GITHUB_APP_PRIVATE_KEY` | GitHub      | PEM base64 para JWT RS256          |
+| `GITHUB_CLIENT_ID`       | GitHub      | OAuth personal connection          |
+| `GITHUB_CLIENT_SECRET`   | GitHub      | OAuth personal connection          |
+| `GITHUB_WEBHOOK_SECRET`  | GitHub      | Verificar firma HMAC               |
+| `SLACK_CLIENT_ID`        | Slack       | OAuth app install flow             |
+| `SLACK_CLIENT_SECRET`    | Slack       | Intercambiar code por access_token |
 
 ---
 
@@ -300,6 +300,7 @@ pub async fn get_instance_config(
 ```
 
 **Prioridad:**
+
 1. `GET /api/integrations/` — desbloquea el panel en el frontend
 2. `GET/POST/DELETE /api/workspaces/{slug}/workspace-integrations/`
 3. `GET /api/github/callback/` + `POST /install/`
@@ -310,21 +311,21 @@ pub async fn get_instance_config(
 
 ## Entidades Rust generadas ✅
 
-| Entidad Rust | Tabla DB |
-|--------------|----------|
-| `integrations.rs` | `integrations` |
-| `workspace_integrations.rs` | `workspace_integrations` |
-| `github_repositories.rs` | `github_repositories` |
+| Entidad Rust                 | Tabla DB                  |
+| ---------------------------- | ------------------------- |
+| `integrations.rs`            | `integrations`            |
+| `workspace_integrations.rs`  | `workspace_integrations`  |
+| `github_repositories.rs`     | `github_repositories`     |
 | `github_repository_syncs.rs` | `github_repository_syncs` |
-| `github_issue_syncs.rs` | `github_issue_syncs` |
-| `github_comment_syncs.rs` | `github_comment_syncs` |
+| `github_issue_syncs.rs`      | `github_issue_syncs`      |
+| `github_comment_syncs.rs`    | `github_comment_syncs`    |
 | `db_githubprstatemapping.rs` | `db_githubprstatemapping` |
 | `user_github_connections.rs` | `user_github_connections` |
-| `gitlab_repositories.rs` | `gitlab_repositories` |
+| `gitlab_repositories.rs`     | `gitlab_repositories`     |
 | `gitlab_repository_syncs.rs` | `gitlab_repository_syncs` |
-| `gitlab_issue_syncs.rs` | `gitlab_issue_syncs` |
-| `gitlab_comment_syncs.rs` | `gitlab_comment_syncs` |
-| `slack_project_syncs.rs` | `slack_project_syncs` |
+| `gitlab_issue_syncs.rs`      | `gitlab_issue_syncs`      |
+| `gitlab_comment_syncs.rs`    | `gitlab_comment_syncs`    |
+| `slack_project_syncs.rs`     | `slack_project_syncs`     |
 
 ---
 

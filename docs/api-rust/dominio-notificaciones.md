@@ -22,6 +22,7 @@ estado: activo
 # Dominio — Notifications y Email Jobs
 
 > [!NOTE] Dos capas de notificación
+>
 > 1. **In-app notifications** — almacenadas en `notifications`, accesibles vía REST.
 > 2. **Email notifications** — enviadas por `EmailJob` (apalis + lettre). Disparadas por `NotificationJob`.
 
@@ -46,17 +47,17 @@ users
 
 ## Endpoints REST — in-app notifications
 
-| Método | URL | Guard | Fase |
-|--------|-----|-------|------|
-| `GET` | `/workspaces/{slug}/users/notifications/` | `WorkspaceMemberGuard (≥5)` | 4 |
-| `GET` | `/workspaces/{slug}/users/notifications/{pk}/` | `WorkspaceMemberGuard (≥5)` | 4 |
-| `PATCH` | `/workspaces/{slug}/users/notifications/{pk}/` | `WorkspaceMemberGuard (≥5)` | 4 |
-| `DELETE` | `/workspaces/{slug}/users/notifications/{pk}/` | `WorkspaceMemberGuard (≥5)` | 4 |
-| `POST/DELETE` | `/workspaces/{slug}/users/notifications/{pk}/read/` | `WorkspaceMemberGuard (≥5)` | 4 |
-| `POST/DELETE` | `/workspaces/{slug}/users/notifications/{pk}/archive/` | `WorkspaceMemberGuard (≥5)` | 4 |
-| `GET` | `/workspaces/{slug}/users/notifications/unread/` | `WorkspaceMemberGuard (≥5)` | 4 |
-| `POST` | `/workspaces/{slug}/users/notifications/mark-all-read/` | `WorkspaceMemberGuard (≥5)` | 4 |
-| `GET/PATCH` | `/users/me/notification-preferences/` | `AuthGuard` | 4 |
+| Método        | URL                                                     | Guard                       | Fase |
+| ------------- | ------------------------------------------------------- | --------------------------- | ---- |
+| `GET`         | `/workspaces/{slug}/users/notifications/`               | `WorkspaceMemberGuard (≥5)` | 4    |
+| `GET`         | `/workspaces/{slug}/users/notifications/{pk}/`          | `WorkspaceMemberGuard (≥5)` | 4    |
+| `PATCH`       | `/workspaces/{slug}/users/notifications/{pk}/`          | `WorkspaceMemberGuard (≥5)` | 4    |
+| `DELETE`      | `/workspaces/{slug}/users/notifications/{pk}/`          | `WorkspaceMemberGuard (≥5)` | 4    |
+| `POST/DELETE` | `/workspaces/{slug}/users/notifications/{pk}/read/`     | `WorkspaceMemberGuard (≥5)` | 4    |
+| `POST/DELETE` | `/workspaces/{slug}/users/notifications/{pk}/archive/`  | `WorkspaceMemberGuard (≥5)` | 4    |
+| `GET`         | `/workspaces/{slug}/users/notifications/unread/`        | `WorkspaceMemberGuard (≥5)` | 4    |
+| `POST`        | `/workspaces/{slug}/users/notifications/mark-all-read/` | `WorkspaceMemberGuard (≥5)` | 4    |
+| `GET/PATCH`   | `/users/me/notification-preferences/`                   | `AuthGuard`                 | 4    |
 
 ---
 
@@ -261,14 +262,14 @@ pub async fn handle_email(
 
 ### Configuración SMTP (variables de entorno)
 
-| Variable | Descripción | Django equiv |
-|----------|-------------|-------------|
-| `EMAIL_HOST` | Servidor SMTP | `EMAIL_HOST` |
-| `EMAIL_PORT` | Puerto SMTP (587 TLS / 465 SSL) | `EMAIL_PORT` |
-| `EMAIL_HOST_USER` | Usuario SMTP | `EMAIL_HOST_USER` |
-| `EMAIL_HOST_PASSWORD` | Contraseña SMTP | `EMAIL_HOST_PASSWORD` |
-| `EMAIL_FROM` | Dirección remitente | `DEFAULT_FROM_EMAIL` |
-| `EMAIL_USE_TLS` | Usar STARTTLS | `EMAIL_USE_TLS` |
+| Variable              | Descripción                     | Django equiv          |
+| --------------------- | ------------------------------- | --------------------- |
+| `EMAIL_HOST`          | Servidor SMTP                   | `EMAIL_HOST`          |
+| `EMAIL_PORT`          | Puerto SMTP (587 TLS / 465 SSL) | `EMAIL_PORT`          |
+| `EMAIL_HOST_USER`     | Usuario SMTP                    | `EMAIL_HOST_USER`     |
+| `EMAIL_HOST_PASSWORD` | Contraseña SMTP                 | `EMAIL_HOST_PASSWORD` |
+| `EMAIL_FROM`          | Dirección remitente             | `DEFAULT_FROM_EMAIL`  |
+| `EMAIL_USE_TLS`       | Usar STARTTLS                   | `EMAIL_USE_TLS`       |
 
 ---
 
@@ -310,11 +311,11 @@ pub fn render_notification_email(job: &NotificationJob) -> (String, String) {
 
 Registradas en `tokio-cron-scheduler` al arrancar (ver [[impl-error-jobs-cron]]):
 
-| Tarea | Frecuencia | Qué hace |
-|-------|-----------|---------|
-| `clean_old_notifications` | Diario (3:00 AM) | Borrar notificaciones > 90 días |
-| `send_digest_emails` | Diario (8:00 AM) | Resumen de actividad para usuarios con digest activado |
-| `cleanup_read_notifications` | Semanal | Archivar automáticamente las leídas > 30 días |
+| Tarea                        | Frecuencia       | Qué hace                                               |
+| ---------------------------- | ---------------- | ------------------------------------------------------ |
+| `clean_old_notifications`    | Diario (3:00 AM) | Borrar notificaciones > 90 días                        |
+| `send_digest_emails`         | Diario (8:00 AM) | Resumen de actividad para usuarios con digest activado |
+| `cleanup_read_notifications` | Semanal          | Archivar automáticamente las leídas > 30 días          |
 
 ```rust
 // src/jobs/scheduled.rs (fragmento — notificaciones)
@@ -392,11 +393,11 @@ state.job_storage.push(NotificationJob {
 
 ## Entidades SeaORM involucradas ✅
 
-| Entidad | Tabla |
-|---------|-------|
-| `notifications.rs` | `notifications` |
+| Entidad                            | Tabla                           |
+| ---------------------------------- | ------------------------------- |
+| `notifications.rs`                 | `notifications`                 |
 | `user_notification_preferences.rs` | `user_notification_preferences` |
-| `email_notification_logs.rs` | `email_notification_logs` |
+| `email_notification_logs.rs`       | `email_notification_logs`       |
 
 ---
 

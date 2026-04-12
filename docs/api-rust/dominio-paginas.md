@@ -47,40 +47,40 @@ workspaces
 
 ### CRUD de página
 
-| Método | URL | Guard | Fase |
-|--------|-----|-------|------|
-| `GET` | `/workspaces/{slug}/projects/{id}/pages/` | `ProjectMemberGuard (≥5)` | 4 |
-| `POST` | `/workspaces/{slug}/projects/{id}/pages/` | `ProjectMemberGuard (≥15)` | 4 |
-| `GET` | `/workspaces/{slug}/projects/{id}/pages/{page_id}/` | `ProjectMemberGuard (≥5)` | 4 |
-| `PATCH` | `/workspaces/{slug}/projects/{id}/pages/{page_id}/` | `ProjectMemberGuard (≥5)` | 4 |
-| `DELETE` | `/workspaces/{slug}/projects/{id}/pages/{page_id}/` | `ProjectMemberGuard (≥20)` | 4 |
-| `GET` | `/workspaces/{slug}/projects/{id}/pages-summary/` | `ProjectMemberGuard (≥5)` | 4 |
+| Método   | URL                                                 | Guard                      | Fase |
+| -------- | --------------------------------------------------- | -------------------------- | ---- |
+| `GET`    | `/workspaces/{slug}/projects/{id}/pages/`           | `ProjectMemberGuard (≥5)`  | 4    |
+| `POST`   | `/workspaces/{slug}/projects/{id}/pages/`           | `ProjectMemberGuard (≥15)` | 4    |
+| `GET`    | `/workspaces/{slug}/projects/{id}/pages/{page_id}/` | `ProjectMemberGuard (≥5)`  | 4    |
+| `PATCH`  | `/workspaces/{slug}/projects/{id}/pages/{page_id}/` | `ProjectMemberGuard (≥5)`  | 4    |
+| `DELETE` | `/workspaces/{slug}/projects/{id}/pages/{page_id}/` | `ProjectMemberGuard (≥20)` | 4    |
+| `GET`    | `/workspaces/{slug}/projects/{id}/pages-summary/`   | `ProjectMemberGuard (≥5)`  | 4    |
 
 ### Descripción (contenido enriquecido)
 
-| Método | URL | Guard | Fase |
-|--------|-----|-------|------|
-| `GET/PATCH` | `/workspaces/{slug}/projects/{id}/pages/{page_id}/description/` | `ProjectMemberGuard (≥5)` | 4 |
+| Método      | URL                                                             | Guard                     | Fase |
+| ----------- | --------------------------------------------------------------- | ------------------------- | ---- |
+| `GET/PATCH` | `/workspaces/{slug}/projects/{id}/pages/{page_id}/description/` | `ProjectMemberGuard (≥5)` | 4    |
 
 > [!WARNING] La descripción tiene endpoint propio
 > El contenido HTML de la página se gestiona en un endpoint separado del metadata. Permite actualizaciones de contenido frecuentes sin tocar el resto de los campos.
 
 ### Versiones
 
-| Método | URL | Guard | Fase |
-|--------|-----|-------|------|
-| `GET` | `/workspaces/{slug}/projects/{id}/pages/{page_id}/versions/` | `ProjectMemberGuard (≥5)` | 4 |
-| `GET` | `/workspaces/{slug}/projects/{id}/pages/{page_id}/versions/{pk}/` | `ProjectMemberGuard (≥5)` | 4 |
+| Método | URL                                                               | Guard                     | Fase |
+| ------ | ----------------------------------------------------------------- | ------------------------- | ---- |
+| `GET`  | `/workspaces/{slug}/projects/{id}/pages/{page_id}/versions/`      | `ProjectMemberGuard (≥5)` | 4    |
+| `GET`  | `/workspaces/{slug}/projects/{id}/pages/{page_id}/versions/{pk}/` | `ProjectMemberGuard (≥5)` | 4    |
 
 ### Operaciones especiales
 
-| Método | URL | Guard | Fase |
-|--------|-----|-------|------|
-| `POST/DELETE` | `/workspaces/{slug}/projects/{id}/pages/{page_id}/archive/` | `ProjectMemberGuard (≥15)` | 4 |
-| `POST/DELETE` | `/workspaces/{slug}/projects/{id}/pages/{page_id}/lock/` | `ProjectMemberGuard (≥15)` | 4 |
-| `POST` | `/workspaces/{slug}/projects/{id}/pages/{page_id}/access/` | `ProjectMemberGuard (≥20)` | 4 |
-| `POST` | `/workspaces/{slug}/projects/{id}/pages/{page_id}/duplicate/` | `ProjectMemberGuard (≥15)` | 4 |
-| `POST/DELETE` | `/workspaces/{slug}/projects/{id}/favorite-pages/{page_id}/` | `ProjectMemberGuard (≥5)` | 4 |
+| Método        | URL                                                           | Guard                      | Fase |
+| ------------- | ------------------------------------------------------------- | -------------------------- | ---- |
+| `POST/DELETE` | `/workspaces/{slug}/projects/{id}/pages/{page_id}/archive/`   | `ProjectMemberGuard (≥15)` | 4    |
+| `POST/DELETE` | `/workspaces/{slug}/projects/{id}/pages/{page_id}/lock/`      | `ProjectMemberGuard (≥15)` | 4    |
+| `POST`        | `/workspaces/{slug}/projects/{id}/pages/{page_id}/access/`    | `ProjectMemberGuard (≥20)` | 4    |
+| `POST`        | `/workspaces/{slug}/projects/{id}/pages/{page_id}/duplicate/` | `ProjectMemberGuard (≥15)` | 4    |
+| `POST/DELETE` | `/workspaces/{slug}/projects/{id}/favorite-pages/{page_id}/`  | `ProjectMemberGuard (≥5)`  | 4    |
 
 ---
 
@@ -120,10 +120,10 @@ pub async fn lock_page(
 
 **Acceso — valores posibles de `access`:**
 
-| Valor | Significado |
-|-------|-------------|
-| `0` | `PUBLIC` — visible para todos los miembros del proyecto |
-| `1` | `SECRET` — solo visible para el owner |
+| Valor | Significado                                             |
+| ----- | ------------------------------------------------------- |
+| `0`   | `PUBLIC` — visible para todos los miembros del proyecto |
+| `1`   | `SECRET` — solo visible para el owner                   |
 
 ---
 
@@ -281,11 +281,11 @@ pub struct PageSummary {
 
 ## Entidades SeaORM involucradas ✅
 
-| Entidad | Tabla |
-|---------|-------|
-| `pages.rs` | `pages` |
-| `page_labels.rs` | `page_labels` |
-| `page_logs.rs` | `page_logs` |
+| Entidad            | Tabla           |
+| ------------------ | --------------- |
+| `pages.rs`         | `pages`         |
+| `page_labels.rs`   | `page_labels`   |
+| `page_logs.rs`     | `page_logs`     |
 | `page_versions.rs` | `page_versions` |
 
 ---

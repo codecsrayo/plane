@@ -170,6 +170,7 @@ Durante la migración Django y Rust corren en paralelo. Traefik enruta por path 
 El proyecto usa `fred` v10 (pool nativo async).
 
 **Diferencias críticas vs `redis-rs`:**
+
 - Pipelines: `client.pipeline()` (no `pipe()`)
 - Pub/Sub: usar `subscriber_client()` (no el cliente principal)
 - **No mezclar con `deadpool-redis`** — rompe el pool

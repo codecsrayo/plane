@@ -35,6 +35,7 @@ projects
 ```
 
 **Tipos de ciclo (`status`):**
+
 - `CURRENT` — ciclo activo hoy (start_date ≤ hoy ≤ end_date)
 - `UPCOMING` — ciclo futuro (start_date > hoy)
 - `COMPLETED` — ciclo pasado (end_date < hoy)
@@ -46,43 +47,46 @@ projects
 
 ### CRUD de ciclo
 
-| Método | URL | Guard | Fase |
-|--------|-----|-------|------|
-| `GET` | `/workspaces/{slug}/projects/{id}/cycles/` | `ProjectMemberGuard (≥5)` | 2 |
-| `POST` | `/workspaces/{slug}/projects/{id}/cycles/` | `ProjectMemberGuard (≥15)` | 2 |
-| `GET/PATCH/DELETE` | `/workspaces/{slug}/projects/{id}/cycles/{pk}/` | `ProjectMemberGuard (≥5/15)` | 2 |
+| Método             | URL                                             | Guard                        | Fase |
+| ------------------ | ----------------------------------------------- | ---------------------------- | ---- |
+| `GET`              | `/workspaces/{slug}/projects/{id}/cycles/`      | `ProjectMemberGuard (≥5)`    | 2    |
+| `POST`             | `/workspaces/{slug}/projects/{id}/cycles/`      | `ProjectMemberGuard (≥15)`   | 2    |
+| `GET/PATCH/DELETE` | `/workspaces/{slug}/projects/{id}/cycles/{pk}/` | `ProjectMemberGuard (≥5/15)` | 2    |
 
 ### Issues del ciclo
 
-| Método | URL | Guard | Fase |
-|--------|-----|-------|------|
-| `GET/POST` | `/workspaces/{slug}/projects/{id}/cycles/{cycle_id}/cycle-issues/` | `ProjectMemberGuard (≥5/15)` | 4 |
-| `GET/PUT/PATCH/DELETE` | `/workspaces/{slug}/projects/{id}/cycles/{cycle_id}/cycle-issues/{issue_id}/` | `ProjectMemberGuard (≥15)` | 4 |
+| Método                 | URL                                                                           | Guard                        | Fase |
+| ---------------------- | ----------------------------------------------------------------------------- | ---------------------------- | ---- |
+| `GET/POST`             | `/workspaces/{slug}/projects/{id}/cycles/{cycle_id}/cycle-issues/`            | `ProjectMemberGuard (≥5/15)` | 4    |
+| `GET/PUT/PATCH/DELETE` | `/workspaces/{slug}/projects/{id}/cycles/{cycle_id}/cycle-issues/{issue_id}/` | `ProjectMemberGuard (≥15)`   | 4    |
 
 ### Operaciones especiales
 
-| Método | URL | Guard | Fase |
-|--------|-----|-------|------|
-| `POST` | `/workspaces/{slug}/projects/{id}/cycles/date-check/` | `ProjectMemberGuard (≥5)` | 4 |
-| `POST` | `/workspaces/{slug}/projects/{id}/cycles/{cycle_id}/transfer-issues/` | `ProjectMemberGuard (≥15)` | 4 |
-| `POST/DELETE` | `/workspaces/{slug}/projects/{id}/cycles/{cycle_id}/archive/` | `ProjectMemberGuard (≥15)` | 4 |
-| `GET` | `/workspaces/{slug}/projects/{id}/archived-cycles/` | `ProjectMemberGuard (≥5)` | 4 |
-| `GET` | `/workspaces/{slug}/projects/{id}/archived-cycles/{pk}/` | `ProjectMemberGuard (≥5)` | 4 |
+| Método        | URL                                                                   | Guard                      | Fase |
+| ------------- | --------------------------------------------------------------------- | -------------------------- | ---- |
+| `POST`        | `/workspaces/{slug}/projects/{id}/cycles/date-check/`                 | `ProjectMemberGuard (≥5)`  | 4    |
+| `POST`        | `/workspaces/{slug}/projects/{id}/cycles/{cycle_id}/transfer-issues/` | `ProjectMemberGuard (≥15)` | 4    |
+| `POST/DELETE` | `/workspaces/{slug}/projects/{id}/cycles/{cycle_id}/archive/`         | `ProjectMemberGuard (≥15)` | 4    |
+| `GET`         | `/workspaces/{slug}/projects/{id}/archived-cycles/`                   | `ProjectMemberGuard (≥5)`  | 4    |
+| `GET`         | `/workspaces/{slug}/projects/{id}/archived-cycles/{pk}/`              | `ProjectMemberGuard (≥5)`  | 4    |
+
+> [!WARNING] INC-05 corregido
+> El endpoint `/archived-cycles/{pk}/` solo acepta `GET`. Para desarchivar (unarchive) se debe usar `DELETE /cycles/{cycle_id}/archive/`. (Igual que INC-10 para módulos).
 
 ### Analytics y progreso
 
-| Método | URL | Guard | Fase |
-|--------|-----|-------|------|
-| `GET` | `/workspaces/{slug}/projects/{id}/cycles/{cycle_id}/progress/` | `ProjectMemberGuard (≥5)` | 4 |
-| `GET` | `/workspaces/{slug}/projects/{id}/cycles/{cycle_id}/analytics/` | `ProjectMemberGuard (≥5)` | 4 |
+| Método | URL                                                             | Guard                     | Fase |
+| ------ | --------------------------------------------------------------- | ------------------------- | ---- |
+| `GET`  | `/workspaces/{slug}/projects/{id}/cycles/{cycle_id}/progress/`  | `ProjectMemberGuard (≥5)` | 4    |
+| `GET`  | `/workspaces/{slug}/projects/{id}/cycles/{cycle_id}/analytics/` | `ProjectMemberGuard (≥5)` | 4    |
 
 ### Favoritos y preferencias
 
-| Método | URL | Guard | Fase |
-|--------|-----|-------|------|
-| `GET/POST` | `/workspaces/{slug}/projects/{id}/user-favorite-cycles/` | `ProjectMemberGuard (≥5)` | 4 |
-| `DELETE` | `/workspaces/{slug}/projects/{id}/user-favorite-cycles/{cycle_id}/` | `ProjectMemberGuard (≥5)` | 4 |
-| `GET/PATCH` | `/workspaces/{slug}/projects/{id}/cycles/{cycle_id}/user-properties/` | `ProjectMemberGuard (≥5)` | 4 |
+| Método      | URL                                                                   | Guard                     | Fase |
+| ----------- | --------------------------------------------------------------------- | ------------------------- | ---- |
+| `GET/POST`  | `/workspaces/{slug}/projects/{id}/user-favorite-cycles/`              | `ProjectMemberGuard (≥5)` | 4    |
+| `DELETE`    | `/workspaces/{slug}/projects/{id}/user-favorite-cycles/{cycle_id}/`   | `ProjectMemberGuard (≥5)` | 4    |
+| `GET/PATCH` | `/workspaces/{slug}/projects/{id}/cycles/{cycle_id}/user-properties/` | `ProjectMemberGuard (≥5)` | 4    |
 
 ---
 
@@ -261,6 +265,7 @@ pub struct CycleResponse {
 
 > [!NOTE] `status` se calcula en runtime
 > No se almacena en DB. Se deriva de `start_date`, `end_date` vs la fecha actual:
+>
 > - Sin fechas → `"DRAFT"`
 > - start_date > hoy → `"UPCOMING"`
 > - end_date < hoy → `"COMPLETED"`
@@ -280,10 +285,10 @@ pub struct CycleResponse {
 
 ## Entidades SeaORM involucradas ✅
 
-| Entidad | Tabla |
-|---------|-------|
-| `cycles.rs` | `cycles` |
-| `cycle_issues.rs` | `cycle_issues` |
+| Entidad                    | Tabla                   |
+| -------------------------- | ----------------------- |
+| `cycles.rs`                | `cycles`                |
+| `cycle_issues.rs`          | `cycle_issues`          |
 | `cycle_user_properties.rs` | `cycle_user_properties` |
 
 ---

@@ -25,6 +25,7 @@ estado: activo
 # Extractores de autenticación y RBAC (Axum Extractor Pattern)
 
 > **Documentación oficial:**
+>
 > - [Axum — `FromRequestParts` trait](https://docs.rs/axum/latest/axum/extract/trait.FromRequestParts.html)
 > - [Axum — `FromRequest` trait](https://docs.rs/axum/latest/axum/extract/trait.FromRequest.html)
 > - [Axum — custom extractor error](https://github.com/tokio-rs/axum/blob/main/examples/customize-extractor-error/src/main.rs)
@@ -40,10 +41,10 @@ Axum permite extractors personalizados que corren **antes** del handler, impleme
 
 ### `FromRequestParts` vs `FromRequest`
 
-| Trait | Lee el body | Cuándo usarlo |
-|-------|:-----------:|---------------|
-| `FromRequestParts` | ❌ | Auth, headers, path params, query params — **usar siempre que sea posible** |
-| `FromRequest` | ✅ | Solo cuando necesitas leer el body (JSON, form data) |
+| Trait              | Lee el body | Cuándo usarlo                                                               |
+| ------------------ | :---------: | --------------------------------------------------------------------------- |
+| `FromRequestParts` |     ❌      | Auth, headers, path params, query params — **usar siempre que sea posible** |
+| `FromRequest`      |     ✅      | Solo cuando necesitas leer el body (JSON, form data)                        |
 
 Los extractores de auth **siempre** implementan `FromRequestParts`.
 
@@ -305,13 +306,13 @@ async fn update_issue(
 
 ### Tabla de casos edge
 
-| Situación | project_role | workspace_role | required | Resultado |
-|-----------|:---:|:---:|:---:|:---:|
-| Member normal con permiso | 15 | 15 | 15 | ✅ OK |
-| Viewer sin permiso | 10 | 10 | 15 | ❌ 403 |
-| Viewer pero WS Admin | 10 | 20 | 15 | ✅ OK (god mode) |
-| Guest pero WS Admin | 5 | 20 | 20 | ✅ OK (god mode) |
-| No miembro del proyecto | — | 20 | 15 | ❌ 403 — god mode requiere ser miembro |
+| Situación                 | project_role | workspace_role | required |               Resultado                |
+| ------------------------- | :----------: | :------------: | :------: | :------------------------------------: |
+| Member normal con permiso |      15      |       15       |    15    |                 ✅ OK                  |
+| Viewer sin permiso        |      10      |       10       |    15    |                 ❌ 403                 |
+| Viewer pero WS Admin      |      10      |       20       |    15    |            ✅ OK (god mode)            |
+| Guest pero WS Admin       |      5       |       20       |    20    |            ✅ OK (god mode)            |
+| No miembro del proyecto   |      —       |       20       |    15    | ❌ 403 — god mode requiere ser miembro |
 
 > **Importante:** el god mode NO aplica si el usuario no es miembro del proyecto. `ProjectMemberGuard` retorna 403 antes de llegar al check de rol.
 
@@ -428,14 +429,14 @@ async fn test_non_member_returns_403() {
 
 ## Comparación con Django
 
-| Aspecto | Django DRF | Axum Extractor Pattern |
-|---------|-----------|------------------------|
-| Auth | `permission_classes = [IsAuthenticated]` en cada ViewSet | `CurrentUser` extractor en la firma del handler |
-| RBAC | `BaseWorkspacePermissions` herencia de clases | Composición de guards |
-| Error 401/403 | Raises `PermissionDenied` | `type Rejection = AppError` automático |
-| Reutilización | Herencia | Composición — `WorkspaceMemberGuard` llama a `CurrentUser` |
-| Testeo | `self.client.force_authenticate(user)` | `TestServer` con token real en header |
-| Middleware global | `DEFAULT_AUTHENTICATION_CLASSES` en settings.py | No existe — cada handler declara lo que necesita |
+| Aspecto           | Django DRF                                               | Axum Extractor Pattern                                     |
+| ----------------- | -------------------------------------------------------- | ---------------------------------------------------------- |
+| Auth              | `permission_classes = [IsAuthenticated]` en cada ViewSet | `CurrentUser` extractor en la firma del handler            |
+| RBAC              | `BaseWorkspacePermissions` herencia de clases            | Composición de guards                                      |
+| Error 401/403     | Raises `PermissionDenied`                                | `type Rejection = AppError` automático                     |
+| Reutilización     | Herencia                                                 | Composición — `WorkspaceMemberGuard` llama a `CurrentUser` |
+| Testeo            | `self.client.force_authenticate(user)`                   | `TestServer` con token real en header                      |
+| Middleware global | `DEFAULT_AUTHENTICATION_CLASSES` en settings.py          | No existe — cada handler declara lo que necesita           |
 
 ---
 

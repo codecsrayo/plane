@@ -29,47 +29,47 @@ estado: activo
 
 ### Analytics de workspace
 
-| Método | URL | Guard | Fase |
-|--------|-----|-------|------|
-| `GET` | `/workspaces/{slug}/analytics/` | `WorkspaceMemberGuard (≥5)` | 4 |
-| `GET` | `/workspaces/{slug}/default-analytics/` | `WorkspaceMemberGuard (≥5)` | 4 |
-| `POST` | `/workspaces/{slug}/export-analytics/` | `WorkspaceMemberGuard (≥15)` | 4 |
-| `GET` | `/workspaces/{slug}/project-stats/` | `WorkspaceMemberGuard (≥5)` | 4 |
+| Método | URL                                     | Guard                        | Fase |
+| ------ | --------------------------------------- | ---------------------------- | ---- |
+| `GET`  | `/workspaces/{slug}/analytics/`         | `WorkspaceMemberGuard (≥5)`  | 4    |
+| `GET`  | `/workspaces/{slug}/default-analytics/` | `WorkspaceMemberGuard (≥5)`  | 4    |
+| `POST` | `/workspaces/{slug}/export-analytics/`  | `WorkspaceMemberGuard (≥15)` | 4    |
+| `GET`  | `/workspaces/{slug}/project-stats/`     | `WorkspaceMemberGuard (≥5)`  | 4    |
 
 > [!WARNING] INC-11 corregido
 > El endpoint `/export-analytics/` es `POST` en Django, ya que requiere un body con los filtros y ejes a exportar.
 
 ### Analytic views (guardadas)
 
-| Método | URL | Guard | Fase |
-|--------|-----|-------|------|
-| `GET/POST` | `/workspaces/{slug}/analytic-view/` | `WorkspaceMemberGuard (≥5)` | 4 |
-| `GET/PATCH/DELETE` | `/workspaces/{slug}/analytic-view/{pk}/` | `WorkspaceMemberGuard (≥5)` | 4 |
-| `GET` | `/workspaces/{slug}/saved-analytic-view/{analytic_id}/` | `WorkspaceMemberGuard (≥5)` | 4 |
+| Método             | URL                                                     | Guard                       | Fase |
+| ------------------ | ------------------------------------------------------- | --------------------------- | ---- |
+| `GET/POST`         | `/workspaces/{slug}/analytic-view/`                     | `WorkspaceMemberGuard (≥5)` | 4    |
+| `GET/PATCH/DELETE` | `/workspaces/{slug}/analytic-view/{pk}/`                | `WorkspaceMemberGuard (≥5)` | 4    |
+| `GET`              | `/workspaces/{slug}/saved-analytic-view/{analytic_id}/` | `WorkspaceMemberGuard (≥5)` | 4    |
 
 > [!WARNING] INC-12 corregido
 > El endpoint `/saved-analytic-view/{analytic_id}/` es `GET` en Django.
 
 ### Advance analytics
 
-| Método | URL | Guard | Fase |
-|--------|-----|-------|------|
-| `GET` | `/workspaces/{slug}/advance-analytics/` | `WorkspaceMemberGuard (≥5)` | 4 |
-| `GET` | `/workspaces/{slug}/advance-analytics-stats/` | `WorkspaceMemberGuard (≥5)` | 4 |
-| `GET` | `/workspaces/{slug}/advance-analytics-charts/` | `WorkspaceMemberGuard (≥5)` | 4 |
-| `GET` | `/workspaces/{slug}/projects/{id}/advance-analytics/` | `ProjectMemberGuard (≥5)` | 4 |
-| `GET` | `/workspaces/{slug}/projects/{id}/advance-analytics-stats/` | `ProjectMemberGuard (≥5)` | 4 |
-| `GET` | `/workspaces/{slug}/projects/{id}/advance-analytics-charts/` | `ProjectMemberGuard (≥5)` | 4 |
+| Método | URL                                                          | Guard                       | Fase |
+| ------ | ------------------------------------------------------------ | --------------------------- | ---- |
+| `GET`  | `/workspaces/{slug}/advance-analytics/`                      | `WorkspaceMemberGuard (≥5)` | 4    |
+| `GET`  | `/workspaces/{slug}/advance-analytics-stats/`                | `WorkspaceMemberGuard (≥5)` | 4    |
+| `GET`  | `/workspaces/{slug}/advance-analytics-charts/`               | `WorkspaceMemberGuard (≥5)` | 4    |
+| `GET`  | `/workspaces/{slug}/projects/{id}/advance-analytics/`        | `ProjectMemberGuard (≥5)`   | 4    |
+| `GET`  | `/workspaces/{slug}/projects/{id}/advance-analytics-stats/`  | `ProjectMemberGuard (≥5)`   | 4    |
+| `GET`  | `/workspaces/{slug}/projects/{id}/advance-analytics-charts/` | `ProjectMemberGuard (≥5)`   | 4    |
 
 ### Stats de usuario en workspace
 
-| Método | URL | Guard | Fase |
-|--------|-----|-------|------|
-| `GET` | `/workspaces/{slug}/user-stats/{user_id}/` | `WorkspaceMemberGuard (≥5)` | 4 |
-| `GET` | `/workspaces/{slug}/user-activity/{user_id}/` | `WorkspaceMemberGuard (≥5)` | 4 |
-| `GET` | `/workspaces/{slug}/user-activity/{user_id}/export/` | `WorkspaceMemberGuard (≥5)` | 4 |
-| `GET` | `/workspaces/{slug}/user-profile/{user_id}/` | `WorkspaceMemberGuard (≥5)` | 4 |
-| `GET` | `/workspaces/{slug}/user-issues/{user_id}/` | `WorkspaceMemberGuard (≥5)` | 4 |
+| Método | URL                                                  | Guard                       | Fase |
+| ------ | ---------------------------------------------------- | --------------------------- | ---- |
+| `GET`  | `/workspaces/{slug}/user-stats/{user_id}/`           | `WorkspaceMemberGuard (≥5)` | 4    |
+| `GET`  | `/workspaces/{slug}/user-activity/{user_id}/`        | `WorkspaceMemberGuard (≥5)` | 4    |
+| `GET`  | `/workspaces/{slug}/user-activity/{user_id}/export/` | `WorkspaceMemberGuard (≥5)` | 4    |
+| `GET`  | `/workspaces/{slug}/user-profile/{user_id}/`         | `WorkspaceMemberGuard (≥5)` | 4    |
+| `GET`  | `/workspaces/{slug}/user-issues/{user_id}/`          | `WorkspaceMemberGuard (≥5)` | 4    |
 
 > [!NOTE] INC-08 — En Django estos endpoints están en `urls/workspace.py` (vistas `WorkspaceUserProfileStatsEndpoint`, `WorkspaceUserActivityEndpoint`, etc.), no en el módulo analytics. En Rust deben vivir en el router de **workspace**, no en analytics.
 
@@ -286,6 +286,7 @@ pub async fn export_analytics(
 > Analytics no es crítico para el flujo de trabajo diario. Ver [[plan-fases#Fase 4]]. Puede ser de las últimas rutas en migrar — Django sigue sirviendo analytics mientras Rust cubre issues/workspaces/projects.
 
 **Orden de prioridad interno (Fase 4):**
+
 1. `GET /default-analytics/` — usado en el dashboard principal
 2. `GET /user-stats/{user_id}/` — usado en el perfil de usuario
 3. `GET /analytics/` — analytics configurable
@@ -306,12 +307,12 @@ pub async fn export_analytics(
 
 ## Entidades SeaORM involucradas ✅
 
-| Entidad | Tabla |
-|---------|-------|
-| `analytic_views.rs` | `analytic_views` |
-| `issues.rs` | `issues` (queries agregadas) |
+| Entidad               | Tabla                              |
+| --------------------- | ---------------------------------- |
+| `analytic_views.rs`   | `analytic_views`                   |
+| `issues.rs`           | `issues` (queries agregadas)       |
 | `issue_activities.rs` | `issue_activities` (user activity) |
-| `cycles.rs` | `cycles` (cycle completion rate) |
+| `cycles.rs`           | `cycles` (cycle completion rate)   |
 
 ---
 
