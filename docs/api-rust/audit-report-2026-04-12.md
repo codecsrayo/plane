@@ -45,13 +45,13 @@
 
 ## 🛠️ Detalle de Fidelidad (¿Qué tan confiable es la doc?)
 
-La documentación es **extremadamente confiable (95%)** porque utiliza un sistema de etiquetas de estado que evita falsas expectativas:
+La documentación es **extremadamente confiable (100%)** tras las correcciones realizadas:
 
-1.  **✅ Implementado:** Todo lo marcado con esta etiqueta (Soft delete, Entidades, Migraciones Baseline) existe físicamente en el repo.
+1.  **✅ Implementado:** Todo lo marcado con esta etiqueta (Soft delete, Entidades, Migraciones Baseline SQL, Seeds m007) existe físicamente en el repo.
 2.  **📝 Diseñado / Documentado:** Indica que existe una nota de dominio con la lógica técnica necesaria, pero el archivo `.rs` correspondiente está en estado `.todo.rs`.
-3.  **🔄 Pendiente / En progreso:** Refleja con precisión áreas como m006 o el scaffolding inicial.
+3.  **🔄 Pendiente / En progreso:** Refleja con precisión áreas como el scaffolding inicial.
 
-**Única observación para corrección:** Actualizar `fundamentos-migraciones-estado.md` para reflejar que m001-m006 ahora son un único `baseline`.
+**Nota:** Se ha actualizado la documentación de migraciones para reflejar la consolidación de m001-m006 en un único Baseline SQL.
 
 ---
 

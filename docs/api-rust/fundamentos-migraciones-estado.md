@@ -18,37 +18,29 @@ estado: activo
 
 # Estado de migraciones SeaORM
 
-> [!SUCCESS] Actualizado: 10 abril 2026
-> m001–m005 aplicadas. m006 pendiente de prueba en entorno completo.
+> [!SUCCESS] Actualizado: 12 abril 2026
+> m001–m006 consolidadas en Baseline SQL. m007 (seeds) aplicada.
 
 ---
 
 ## Seguimiento de archivos de migración
 
-| Archivo                                  | Tablas principales creadas                                                                                                                                              | Estado              |
-| ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- |
-| `m20260410_000001_baseline`              | auth*group, auth_permission, django*\*, changelogs, instances, integrations                                                                                             | ✅                  |
-| `m20240101_000002_users_and_sessions`    | users, accounts, sessions, devices, file_assets, social_login_connections, user_github_connections, profiles                                                            | ✅                  |
-| `m20240101_000003_workspaces_and_tokens` | workspaces, workspace_members, workspace_member_invites, workspace_themes, workspace_integrations, api_tokens, api_activity_logs, webhooks, webhook_logs, notifications | ✅                  |
-| `m20240101_000004_projects_and_states`   | projects, states, labels, estimates, estimate*points, issue_types, project*\*, **project_deploy_boards**                                                                | ✅                  |
-| `m20240101_000005_issues_and_modules`    | issues, issue*\*, cycles, cycle*_, modules, module\__, pages, page*\*, draft_issues, draft_issue*\*                                                                     | ✅                  |
-| `m20240101_000006_integrations_and_misc` | descriptions, description*versions, intakes, intake_issues, deploy_boards, exporters, importers, github*_, gitlab\__, slack_project_syncs                               | 🔄 pendiente prueba |
+| Archivo                      | Contenido                                                                   | Estado |
+| ---------------------------- | --------------------------------------------------------------------------- | ------ |
+| `m20260410_000001_baseline`  | Schema completo (Django legacy) cargado vía `sql/baseline.sql`              | ✅     |
+| `m20240101_000007_seed_data` | Filas estáticas para `integrations` e `instance_configurations`             | ✅     |
 
-> [!NOTE] Tablas de integraciones en m006
-> Las entidades SeaORM para GitHub, GitLab y Slack ya están generadas en `src/entities/`. Ver [[dominio-integraciones]] para el detalle completo.
+> [!NOTE] Consolidación de migraciones
+> Para simplificar el arranque del proyecto Rust, las migraciones incrementales `m001` a `m006` que existían en la fase de diseño se han consolidado en un único script SQL de **baseline**. Esto garantiza que el schema sea idéntico al de Django sin el overhead de 120+ archivos de migración.
 
 ---
 
 ## Fixes aplicados (10 abr 2026)
 
-### m005 — `issues_and_modules`
+### Baseline SQL
 
-- **fix** `needless_borrows_for_generic_args`: removido `&` en 5 llamadas `.name(&format!(...))`
-- **fix** `draft_issue_assignees/cycles/labels/modules`: agregados indexes y unique constraints parciales (`WHERE deleted_at IS NULL`)
-
-### m004 — `projects_and_states`
-
-- **fix** `project_deploy_boards`: tabla faltante agregada (FK a `intakes` diferida a m006)
+- **fix** `indexes`: agregados indexes y unique constraints parciales (`WHERE deleted_at IS NULL`) para todas las entidades core.
+- **fix** `project_deploy_boards`: tabla integrada correctamente con FKs a `intakes`.
 
 ### `migration/src/main.rs`
 
@@ -106,9 +98,8 @@ Las migraciones clave que influyeron en el schema baseline de Rust:
 
 ## Próximos pasos
 
-- [ ] Probar m006 en entorno completo con las FK de `intakes` → `project_deploy_boards`
-- [ ] Crear m007 para seed estático: filas de `integrations` + `instance_configurations`
-- [ ] Verificar constraint unique de `github_pr_state` en m006
+- [ ] Verificar constraint unique de `github_pr_state` en el baseline SQL.
+- [ ] Iniciar implementación de Repositories en Rust.
 
 ---
 

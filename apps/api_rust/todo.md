@@ -31,8 +31,8 @@ Notas relevantes para este módulo:
 | Ítem | Estado |
 |------|--------|
 | Soft delete (`SoftDeleteExt`) | ✅ |
-| Migraciones m001–m005 | ✅ |
-| Migración m006 (integraciones) | 🔄 pendiente prueba |
+| Migraciones m001–m006 (Baseline SQL) | ✅ |
+| Migración m007 (Seed data) | ✅ |
 | Fase 0 — scaffolding | 🔄 en progreso |
 | Fase 1 — Auth middleware | ⬜ |
 | Fase 2 — Endpoints alta frecuencia | ⬜ |

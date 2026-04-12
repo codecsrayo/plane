@@ -36,7 +36,7 @@ estado: activo
 
 ## Fase 0 — Scaffolding + Baseline (2–3 días)
 
-- [x] Baseline de migraciones SeaORM (m001–m005 ✅, m006 🔄)
+- [x] Baseline de migraciones SeaORM (m001–m006 ✅ vía Baseline SQL)
 - [x] Entities generadas (`sea-orm-cli generate entity`) — 122 entities ✅
 - [x] Soft delete implementado ✅
 - [ ] `main.rs` completo (AppState + router + Swagger UI) — ver [[impl-bootstrap]]
