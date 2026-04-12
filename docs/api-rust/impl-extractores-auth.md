@@ -285,6 +285,7 @@ flowchart TD
 ```
 
 ```rust
+// src/auth/permissions.rs
 /// Check de rol con Workspace Admin override.
 /// Pasa si:
 ///   1. project_role >= required_role  (camino normal)
@@ -334,6 +335,7 @@ async fn update_issue(
 Axum ejecuta los extractors en orden de **izquierda a derecha**:
 
 ```rust
+// src/routes/issues.rs — ejemplo de uso
 // ✅ Correcto — State primero, body (Json) último
 async fn update_issue(
     State(state): State<AppState>,            // 1. AppState
