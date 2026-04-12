@@ -383,7 +383,7 @@ pub async fn check_notification_preference(
 // En create_issue, update_issue, create_comment, etc.:
 // Best-effort — no bloquear la respuesta HTTP si el job falla
 
-state.job_storage.push(NotificationJob {
+if let Err(e) = state.job_storage.push(NotificationJob { // silence-patterns-ok: best-effort, no bloquear el handler principal
     issue_id:     issue.id,
     project_id:   project_id,
     workspace_id: workspace.id,
@@ -392,7 +392,9 @@ state.job_storage.push(NotificationJob {
     field:        None,
     old_value:    None,
     new_value:    None,
-}).await.ok(); // best-effort
+}).await {
+    tracing::warn!(issue_id = %issue.id, "Failed to enqueue NotificationJob: {e}");
+}
 ```
 
 ---
