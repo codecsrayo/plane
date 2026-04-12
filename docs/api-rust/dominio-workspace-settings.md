@@ -242,6 +242,39 @@ graph TD
 
 **Eventos disponibles:** `issue`, `cycle`, `module`, `issue_comment`, `project`
 
+**Flujo de entrega de webhook:**
+
+```mermaid
+sequenceDiagram
+    participant Handler as Axum Handler<br/>(issue/cycle/module event)
+    participant Apalis as apalis<br/>(tabla apalis_jobs)
+    participant Worker as WebhookDelivery<br/>Worker (Tokio)
+    participant DB as PostgreSQL
+    participant Target as URL externa<br/>(webhook.url)
+
+    Handler->>DB: SELECT webhooks WHERE workspace_id=? AND is_active=true
+    DB-->>Handler: Vec<webhooks::Model>
+    loop Por cada webhook activo con el evento suscrito
+        Handler->>Apalis: push(WebhookDeliveryJob { webhook_id, event_type, payload })
+    end
+    Handler-->>Handler: continúa sin bloquear
+
+    Note over Worker: poll cada ~1s
+    Worker->>Apalis: pull job
+    Worker->>DB: SELECT webhooks WHERE id=? AND is_active=true
+    DB-->>Worker: webhook { url, secret_key }
+    Worker->>Worker: validate_webhook_url(url)<br/>⛔ SSRF check (RFC-1918, loopback, cloud metadata)
+    alt URL inválida o privada
+        Worker-->>Apalis: job fallido — blocked SSRF attempt (tracing::warn)
+    else URL válida
+        Worker->>Worker: compute_hmac_sha256(secret_key, payload)
+        Worker->>Target: POST {url} — X-Plane-Signature + X-Plane-Event + JSON body
+        Target-->>Worker: HTTP response (cualquier código)
+        Worker->>DB: INSERT webhook_logs { status_code, response_time, error? }
+        Worker-->>Apalis: job completado ✅
+    end
+```
+
 **Job de despacho de webhook (Fase 3):**
 
 > [!WARNING] Fix #20 — SSRF via `webhook.url` sin validación de dominio

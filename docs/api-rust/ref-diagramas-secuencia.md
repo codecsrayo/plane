@@ -198,8 +198,117 @@ Ver: [[impl-autenticacion]]
 
 ---
 
+## 7. Entrega de webhook (evento → URL externa)
+
+```mermaid
+sequenceDiagram
+    participant Handler as Axum Handler<br/>(issue/cycle/module event)
+    participant Apalis as apalis<br/>(tabla apalis_jobs)
+    participant Worker as WebhookDelivery<br/>Worker (Tokio)
+    participant DB as PostgreSQL
+    participant Target as URL externa<br/>(webhook.url)
+
+    Handler->>DB: SELECT webhooks WHERE workspace_id=? AND is_active=true
+    DB-->>Handler: Vec<webhooks::Model>
+    loop Por cada webhook activo con el evento suscrito
+        Handler->>Apalis: push(WebhookDeliveryJob { webhook_id, event_type, payload })
+    end
+
+    Worker->>Apalis: pull job
+    Worker->>DB: SELECT webhooks WHERE id=? AND is_active=true
+    DB-->>Worker: webhook { url, secret_key }
+    Worker->>Worker: validate_webhook_url(url)<br/>⛔ SSRF check (RFC-1918, loopback, metadata)
+    alt URL inválida / privada
+        Worker-->>Apalis: job fallido — blocked SSRF (tracing::warn)
+    else URL válida
+        Worker->>Worker: compute_hmac_sha256(secret_key, payload)
+        Worker->>Target: POST {url} — X-Plane-Signature + X-Plane-Event + JSON
+        Target-->>Worker: HTTP response
+        Worker->>DB: INSERT webhook_logs { status_code, response_time }
+        Worker-->>Apalis: job completado ✅
+    end
+```
+
+Ver detalles: [[dominio-workspace-settings#WS-6 — Webhooks]]
+
+---
+
+## 8. Sincronización inicial de issues — GitHub App
+
+```mermaid
+sequenceDiagram
+    actor Admin as 🧑 Admin workspace
+    participant API as Axum API
+    participant Apalis as apalis<br/>(tabla apalis_jobs)
+    participant Worker as GithubInitialIssueSync<br/>Worker (Tokio)
+    participant DB as PostgreSQL
+    participant GH as GitHub API
+
+    Admin->>API: POST /workspace-integrations/github/repo-syncs/
+    API->>DB: INSERT github_repository_syncs (status=queued)
+    API->>Apalis: push(GithubInitialIssueSyncJob { repo_sync_id })
+    API-->>Admin: 201 { repo_sync_id, status: "queued" }
+
+    Worker->>Apalis: pull job
+    Worker->>DB: SELECT repo_sync JOIN workspace_integrations
+    DB-->>Worker: { installation_id, owner, repo, mappings }
+    Worker->>GH: POST /app/installations/{id}/access_tokens (JWT RS256)
+    GH-->>Worker: installation_token
+    Worker->>DB: UPDATE github_repository_syncs SET status=started
+
+    loop Paginación (per_page=100)
+        Worker->>GH: GET /repos/{owner}/{repo}/issues?state=all&page=N
+        GH-->>Worker: [ { number, title, body, state, labels } ]
+        loop Por cada issue (excluir PRs)
+            Worker->>DB: INSERT issues + issue_sequences + github_issue_syncs
+            Worker->>DB: UPDATE imported_issues += 1
+        end
+    end
+
+    Worker->>DB: UPDATE status=completed
+    Worker-->>Apalis: job completado ✅
+```
+
+Ver detalles: [[dominio-integraciones#Job apalis — GithubInitialIssueSyncJob]]
+
+---
+
+## 9. Despacho de notificaciones (evento → in-app + email)
+
+```mermaid
+sequenceDiagram
+    participant Handler as Axum Handler<br/>(issue / comment event)
+    participant Apalis as apalis<br/>(tabla apalis_jobs)
+    participant Worker as NotificationJob<br/>Worker (Tokio)
+    participant DB as PostgreSQL
+    participant EmailWorker as EmailJob<br/>(lettre / SMTP)
+
+    Handler->>Apalis: push(NotificationJob { issue_id, actor_id, event_type })
+    Note over Handler: best-effort — fallo logueado, no bloquea
+
+    Worker->>Apalis: pull job
+    Worker->>DB: get_recipients — SELECT subscribers + assignees + mencionados
+    DB-->>Worker: Vec<user_id>
+
+    loop Por cada recipient (excluir actor_id)
+        Worker->>DB: check_notification_preference(user_id, event_type)
+        Worker->>DB: INSERT notifications { receiver_id, title, data, read_at=NULL }
+        alt should_email = true
+            Worker->>DB: SELECT users WHERE id=receiver_id
+            Worker->>Apalis: push(EmailJob { to, subject, html_body })
+            EmailWorker->>EmailWorker: send via lettre (SMTP)
+        end
+    end
+
+    Worker-->>Apalis: job completado ✅
+```
+
+Ver detalles: [[dominio-notificaciones#NotificationJob — job apalis Fase 3]]
+
+---
+
 ## 🔗 Navegar
 
 ← [[MOC]] | → [[ref-diagramas-flujo]]
 
-**Relacionado:** Workspace Seed: [[dominio-workspace-seed]] | Extractores: [[impl-extractores-auth]] | Integraciones: [[dominio-integraciones]]
+**Relacionado:** Workspace Seed: [[dominio-workspace-seed]] | Extractores: [[impl-extractores-auth]] | Integraciones: [[dominio-integraciones]] | Notificaciones: [[dominio-notificaciones]] | Settings: [[dominio-workspace-settings]]

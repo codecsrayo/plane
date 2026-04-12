@@ -81,6 +81,39 @@ pub struct NotificationQueryParams {
 
 ## `NotificationJob` — job apalis (Fase 3)
 
+**Flujo de despacho de notificaciones:**
+
+```mermaid
+sequenceDiagram
+    participant Handler as Axum Handler<br/>(issue / comment event)
+    participant Apalis as apalis<br/>(tabla apalis_jobs)
+    participant Worker as NotificationJob<br/>Worker (Tokio)
+    participant DB as PostgreSQL
+    participant EmailWorker as EmailJob<br/>Worker (lettre)
+
+    Handler->>Apalis: push(NotificationJob { issue_id, actor_id, event_type, field, old_value, new_value })
+    Note over Handler: best-effort — fallo logueado pero no bloquea el handler
+
+    Worker->>Apalis: pull job
+    Worker->>DB: get_recipients(issue_id, event_type)<br/>SELECT subscribers + assignees + mentionados
+    DB-->>Worker: Vec<user_id>
+
+    loop Por cada recipient (excluir actor_id)
+        Worker->>DB: check_notification_preference(user_id, event_type)
+        DB-->>Worker: should_email: bool
+        Worker->>DB: INSERT notifications { receiver_id, title, data, entity_type, read_at=NULL }
+
+        alt should_email = true
+            Worker->>DB: SELECT users WHERE id=receiver_id
+            DB-->>Worker: user { email, display_name }
+            Worker->>Apalis: push(EmailJob { to, subject, html_body })
+            Note over EmailWorker: EmailJob lo toma y envía vía lettre (SMTP)
+        end
+    end
+
+    Worker-->>Apalis: job completado ✅
+```
+
 Disparado desde los handlers de issues/comments cuando ocurren eventos relevantes:
 
 ```rust

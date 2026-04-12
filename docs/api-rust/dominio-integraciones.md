@@ -258,7 +258,47 @@ pub fn postmessage_html(
 
 ## Job apalis — GithubInitialIssueSyncJob
 
-```rust
+**Flujo de sincronización inicial:**
+
+```mermaid
+sequenceDiagram
+    actor Admin as 🧑 Admin workspace
+    participant API as Axum API
+    participant DB as PostgreSQL
+    participant Apalis as apalis<br/>(tabla apalis_jobs)
+    participant Worker as GithubInitialIssueSync<br/>Worker (Tokio)
+    participant GH as GitHub API
+
+    Admin->>API: POST /workspace-integrations/github/repo-syncs/<br/>{ repository_id, project_id, mappings }
+    API->>DB: INSERT github_repository_syncs (status=queued)
+    API->>Apalis: push(GithubInitialIssueSyncJob { repo_sync_id })
+    API-->>Admin: 201 { repo_sync_id, status: "queued" }
+
+    Note over Worker: poll cada ~1s
+    Worker->>Apalis: pull job
+    Worker->>DB: SELECT github_repository_syncs JOIN workspace_integrations
+    DB-->>Worker: { installation_id, owner, repo, mappings }
+    Worker->>GH: POST /app/installations/{id}/access_tokens<br/>(JWT RS256 firmado con GITHUB_APP_PRIVATE_KEY)
+    GH-->>Worker: installation_token (válido 1h)
+    Worker->>DB: UPDATE github_repository_syncs SET status=started
+
+    loop Paginación (per_page=100)
+        Worker->>GH: GET /repos/{owner}/{repo}/issues?state=all&per_page=100&page=N
+        GH-->>Worker: [ { number, title, body, state, labels, ... } ]
+        loop Por cada issue (excluir PRs — tienen "pull_request" key)
+            Worker->>DB: INSERT issues (external_id=number, external_source="github")
+            Worker->>DB: INSERT issue_sequences
+            Worker->>DB: INSERT github_issue_syncs { issue_id, github_issue_id }
+            Worker->>DB: UPDATE github_repository_syncs.imported_issues += 1
+        end
+        Note over Worker: Si response < 100 items → última página
+    end
+
+    Worker->>DB: UPDATE github_repository_syncs SET status=completed
+    Worker-->>Apalis: job completado ✅
+```
+
+
 // src/jobs/github_sync.rs
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct GithubInitialIssueSyncJob {
