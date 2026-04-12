@@ -250,6 +250,11 @@ where S: Send + Sync + AsRef<AppState>,
             .and_then(|v| v.to_str().ok())
             .ok_or(AppError::Unauthorized)?;
 
+        // Validación de longitud — evita queries DB con inputs gigantes
+        if raw_key.len() > 128 {
+            return Err(AppError::Unauthorized);
+        }
+
         let now = Utc::now();
 
         let token = api_tokens::Entity::find()
@@ -266,11 +271,20 @@ where S: Send + Sync + AsRef<AppState>,
             .map_err(AppError::Database)?
             .ok_or(AppError::Unauthorized)?;
 
-        // Actualizar last_used fire-and-forget
+        // ✅ Rate limit AQUÍ — tenemos token.is_service, aplicamos el límite correcto.
+        // El middleware de rate limit genérico no tiene acceso al modelo del token
+        // y siempre aplicaría RATE_LIMIT_HUMAN (bug silencioso para tokens de servicio).
+        let limit = if token.is_service { RATE_LIMIT_SERVICE } else { RATE_LIMIT_HUMAN };
+        let app_state = state.as_ref();
+        apply_rate_limit(&app_state.rate_limit, raw_key, limit)?;
+
+        // Actualizar last_used fire-and-forget — log errores en lugar de descartarlos
         {
             let mut active: api_tokens::ActiveModel = token.clone().into();
             active.last_used = Set(Some(now.into()));
-            let _ = active.update(&state.as_ref().db).await;
+            if let Err(e) = active.update(&state.as_ref().db).await {
+                tracing::warn!(error = %e, "Failed to update last_used for api token");
+            }
         }
 
         let user = users::Entity::find_by_id(token.user_id)
@@ -283,21 +297,52 @@ where S: Send + Sync + AsRef<AppState>,
         Ok(ApiKeyUser(ApiKeyContext { user, token }))
     }
 }
+
+/// Aplica el rate limit en memoria al bucket del token dado.
+/// Retorna `Err(AppError::RateLimited)` si se superó el límite.
+/// Separar la lógica facilita el test unitario sin levantar un servidor.
+pub fn apply_rate_limit(
+    state: &RateLimitState,
+    raw_key: &str,
+    limit: u32,
+) -> Result<(), AppError> {
+    use std::time::{SystemTime, UNIX_EPOCH};
+    let window  = 60u64;
+    let now     = SystemTime::now().duration_since(UNIX_EPOCH).unwrap_or_default().as_secs();
+    let window_start = (now / window) * window;
+
+    let bucket = bucket_key(raw_key);
+    // NOTA: en producción con múltiples réplicas migrar a Redis (Fase 3).
+    // Este mutex es per-proceso — correcto para instancia única.
+    let mut buckets = state.buckets.blocking_lock();
+    let entry = buckets.entry(bucket).or_insert((0, window_start));
+    if entry.1 < window_start { *entry = (0, window_start); }
+    entry.0 += 1;
+    if entry.0 > limit {
+        Err(AppError::RateLimited)
+    } else {
+        Ok(())
+    }
+}
 ```
 
 ### Rate limit middleware — `src/auth/rate_limit.rs`
+
+> [!IMPORTANT] Arquitectura actualizada
+> El **enforcement** del rate limit (contar requests, retornar 429) ocurre dentro de `ApiKeyUser::from_request_parts` porque en ese punto el extractor ya tiene `token.is_service` — lo que permite elegir el límite correcto (`RATE_LIMIT_HUMAN=60` vs `RATE_LIMIT_SERVICE=300`).
+>
+> El middleware Tower de abajo es solo un **inyector de headers de respuesta** (`X-RateLimit-*`) y no toma decisiones de bloqueo.
 
 ```rust
 use axum::{body::Body, http::{Request, Response, StatusCode, HeaderValue}, middleware::Next};
 use std::{collections::HashMap, sync::Arc};
 use tokio::sync::Mutex;
-// SHA-256 para nunca almacenar tokens en plaintext en memoria
 use sha2::{Sha256, Digest};
 
 /// Genera un bucket key opaco a partir del raw token.
-/// Nunca almacenar el token crudo en el HashMap — cualquier
-/// memory dump / heap profiler expondría todas las claves activas.
-fn bucket_key(raw_token: &str) -> String {
+/// ⚠️ NUNCA almacenar el raw token como key del HashMap:
+///    cualquier memory dump / heap profiler expondría todas las claves activas.
+pub fn bucket_key(raw_token: &str) -> String {
     let mut h = Sha256::new();
     h.update(raw_token.as_bytes());
     format!("{:x}", h.finalize())
@@ -305,64 +350,29 @@ fn bucket_key(raw_token: &str) -> String {
 
 #[derive(Default)]
 pub struct RateLimitState {
-    /// sha256(token) → (request_count, window_start_unix)
-    /// ⚠️ NUNCA usar el raw token como key — usar `bucket_key()` siempre
-    pub buckets: Mutex<HashMap<String, (u32, i64)>>,
+    /// sha256(token) → (request_count, window_start_unix_secs)
+    pub buckets: Mutex<HashMap<String, (u32, u64)>>,
 }
 
-pub async fn rate_limit_middleware(
-    State(rl): State<Arc<RateLimitState>>,
+/// Middleware Tower — inyecta headers X-RateLimit-* en la respuesta.
+/// No bloquea — el bloqueo ocurre en ApiKeyUser::from_request_parts.
+pub async fn rate_limit_headers_middleware(
     req: Request<Body>,
     next: Next,
 ) -> Response<Body> {
-    let raw_key = req.headers()
-        .get("x-api-key")
-        .and_then(|v| v.to_str().ok())
-        .map(|s| s.to_string());
+    let window  = 60u64;
+    let now     = chrono::Utc::now().timestamp() as u64;
+    let reset_at = ((now / window) + 1) * window;
 
-    let Some(raw_key) = raw_key else { return next.run(req).await; };
-
-    // ✅ Hashear antes de entrar al bucket — raw_key no se almacena nunca
-    let bucket = bucket_key(&raw_key);
-
-    let limit   = RATE_LIMIT_HUMAN;
-    let window  = 60i64;
-    let now     = chrono::Utc::now().timestamp();
-    let window_start = (now / window) * window;
-    let reset_at     = window_start + window;
-
-    let (count, remaining) = {
-        let mut buckets = rl.buckets.lock().await;
-        let entry = buckets.entry(bucket).or_insert((0, window_start));
-        if entry.1 < window_start { *entry = (0, window_start); }
-        entry.0 += 1;
-        (entry.0, limit.saturating_sub(entry.0))
-    };
-
-    // Construir HeaderValues sin unwrap() — usar from_static para literales
-    // y manejo explícito para valores dinámicos
     let reset_hv = HeaderValue::from_str(&reset_at.to_string())
         .unwrap_or_else(|_| HeaderValue::from_static("0"));
-    let remaining_hv = HeaderValue::from_str(&remaining.to_string())
-        .unwrap_or_else(|_| HeaderValue::from_static("0"));
-
-    if count > limit {
-        let mut resp = Response::new(Body::from(r#"{"error":"Rate limit exceeded"}"#));
-        *resp.status_mut() = StatusCode::TOO_MANY_REQUESTS;
-        resp.headers_mut().insert("X-RateLimit-Remaining", HeaderValue::from_static("0"));
-        resp.headers_mut().insert("X-RateLimit-Reset", reset_hv);
-        return resp;
-    }
 
     let mut resp = next.run(req).await;
-    resp.headers_mut().insert("X-RateLimit-Remaining", remaining_hv);
+    // Los headers de remaining los añade el extractor vía Extension si es necesario.
     resp.headers_mut().insert("X-RateLimit-Reset", reset_hv);
     resp
 }
 ```
-
-> [!IMPORTANT] Dependencia requerida
-> Agregar a `Cargo.toml`: `sha2 = "0.10"`
 
 > [!NOTE] Migración a Redis en Fase 3
 > El rate limit en memoria no es consistente entre múltiples instancias. Migrar a `fred` (Redis) en la Fase 3 para entornos con múltiples réplicas.
