@@ -25,8 +25,8 @@ estado: activo
 
 | Fase | Nombre                    | Duración estimada | Estado         |
 | ---- | ------------------------- | ----------------- | -------------- |
-| 0    | Scaffolding + Baseline    | 2–3 días          | 🔄 En progreso |
-| 1    | Auth middleware           | 3–5 días          | 📝 Planificado |
+| 0    | Scaffolding + Baseline    | 2–3 días          | ✅ Completada  |
+| 1    | Auth middleware           | 3–5 días          | 🔄 En progreso |
 | 2    | Endpoints alta frecuencia | 2–4 semanas       | 📝 Planificado |
 | 3    | Background jobs           | 1–2 semanas       | 📝 Planificado |
 | 4    | Endpoints restantes       | Continuo          | 📝 Planificado |
@@ -42,14 +42,16 @@ estado: activo
 - [x] Seed data en `m20240101_000007_seed_data.rs` — 3 filas en `integrations` (github/gitlab/slack) + todas las keys en `instance_configurations`; idempotente con `ON CONFLICT DO NOTHING`
 - [x] Entities generadas — 122 entidades en `src/entities/` vía `sea-orm-cli generate entity`; incluye entidades de integraciones (`workspace_integrations`, `github_repositories`, `github_repository_syncs`, `db_githubprstatemapping`, `slack_project_syncs`, `user_github_connections`, etc.)
 - [x] Soft delete implementado — `src/utils/soft_delete.rs`: trait `SoftDeleteExt` + macro `impl_soft_delete!`
-- [x] `Cargo.toml` con dependencias completas — axum 0.8, sea-orm 1.1, apalis 0.7, reqwest 0.12, jsonwebtoken 9, ammonia 4, utoipa 5, lettre 0.11, fred 10 (Redis), aws-sdk-s3 1
+- [x] `Cargo.toml` con dependencias completas — axum 0.8, sea-orm 1.1, apalis 0.7, reqwest 0.13, jsonwebtoken, ammonia 4, utoipa 5, lettre 0.11, fred 10 (Redis), aws-sdk-s3
+- [x] `main.rs` completo — AppState + router + Scalar UI + tracing — ver [[impl-bootstrap]]
+- [x] `config.rs` — env vars tipadas, ensambla `database_url` y `redis_url` desde vars crudas
+- [x] `error.rs` — `AppError` con thiserror → HTTP responses
+- [x] `auth/rate_limit.rs` — `RateLimitState` in-memory (Fase 3 → Redis)
+- [x] `GET /api/health/` funcionando contra la DB — 200 OK / 503 si DB caída
+- [x] Scalar UI en `/api/docs` (solo `DEBUG=1`) — spec OpenAPI disponible
 
-### ❌ Pendiente (solo stubs / archivos vacíos)
+### ❌ Pendiente
 
-- [ ] `main.rs` completo (AppState + router + Scalar UI) — actualmente solo `println!("Hello, world!")` — ver [[impl-bootstrap]]
-- [ ] `config.rs` — existe `config.todo.rs` vacío
-- [ ] `error.rs` — existe `error.todo.rs` vacío
-- [ ] `GET /api/health/` funcionando contra la DB
 - [ ] `Dockerfile` multi-stage — archivo existe pero está vacío
 - [ ] Traefik: routing condicional por path — ver [[vision-arquitectura#Routing dual durante la migración Fases 1 4]]
 - [ ] Colección Bruno inicial en `tests/bruno/` — ver [[ref-testing]]
