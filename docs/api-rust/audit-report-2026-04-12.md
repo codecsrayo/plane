@@ -1,3 +1,16 @@
+---
+titulo: Informe de Auditoría: Documentación vs. Implementación (API Rust)
+aliases:
+  - informe-auditoria
+  - auditoria-2026-04-12
+tags:
+  - plane
+  - rust
+  - referencia
+  - auditoria
+estado: activo
+---
+
 # Informe de Auditoría: Documentación vs. Implementación (API Rust)
 
 **Fecha:** 12 de Abril de 2026

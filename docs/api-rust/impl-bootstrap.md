@@ -38,22 +38,21 @@ estado: activo
 
 ## Estructura de archivos — versión inicial
 
-```
-src/
-├── main.rs          ← bootstrap completo: AppState + router + Swagger + workers
-├── config.rs        ← env vars tipadas con dotenvy
-├── error.rs         ← AppError → HTTP responses
-├── lib.rs           ← re-exports públicos
-├── auth/
-│   ├── mod.rs
-│   └── middleware.rs   ← CurrentUser extractor
-├── routes/
-│   ├── mod.rs          ← build_router() + OpenApi struct
-│   └── health.rs       ← GET /api/health (primer endpoint real)
-├── utils/
-│   ├── mod.rs
-│   └── soft_delete.rs  ← ya existe ✅
-└── entities/           ← ya existen ✅
+```mermaid
+mindmap
+    root((src/))
+        main.rs(main.rs - Bootstrap)
+        config.rs(config.rs - Env Vars)
+        error.rs(error.rs - AppError)
+        lib.rs(lib.rs - Re-exports)
+        auth(auth/)
+            middleware.rs(middleware.rs - CurrentUser)
+        routes(routes/)
+            mod.rs(mod.rs - build_router)
+            health.rs(health.rs - /api/health)
+        utils(utils/)
+            soft_delete.rs(soft_delete.rs ✅)
+        entities(entities/ ✅)
 ```
 
 ---

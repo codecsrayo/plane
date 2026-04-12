@@ -31,56 +31,33 @@ estado: activo
 
 ## 🏗️ Arquitectura general
 
-```
-┌──────────────────────────────────────────────────────────────────┐
-│                         Frontend (Next.js)                        │
-│                                                                    │
-│  ┌───────────────────┐        ┌──────────────────────────────┐   │
-│  │  GptAssistantPop  │        │      EditorAIMenu            │   │
-│  │  over.tsx         │        │  (pages editor — Pi menu)    │   │
-│  │  (issue detail)   │        │                              │   │
-│  └────────┬──────────┘        └──────────────┬───────────────┘   │
-│           │ createGptTask()                   │ performEditorTask()│
-│           │                                   │ (ASK_ANYTHING     │
-│           │                                   │  → AskPiMenu)     │
-│           ▼                                   ▼                   │
-│        AIService (apps/web/core/services/ai.service.ts)          │
-│        AIService (packages/services/src/ai/ai.service.ts)        │
-└───────────────────────────────┬──────────────────────────────────┘
-                                │ HTTP POST
-                ┌───────────────▼──────────────────┐
-                │          Django API               │
-                │  plane/app/views/external/base.py │
-                │                                   │
-                │  POST /api/workspaces/{slug}/      │
-                │       projects/{id}/ai-assistant/  │
-                │    → GPTIntegrationEndpoint        │
-                │                                   │
-                │  POST /api/workspaces/{slug}/      │
-                │       ai-assistant/                │
-                │    → WorkspaceGPTIntegrationEndpoint│
-                │                                   │
-                │  POST /api/workspaces/{slug}/      │
-                │       rephrase-grammar/            │
-                │    → ⚠️ NO REGISTRADO (ver errores)│
-                └───────────────┬──────────────────┘
-                                │
-                ┌───────────────▼──────────────────┐
-                │       get_llm_response()          │
-                │   (via openai SDK universal)      │
-                │                                   │
-                │  ┌──────────┐ ┌─────────────────┐│
-                │  │  OpenAI  │ │   Anthropic      ││
-                │  │ gpt-4o   │ │ claude-3-sonnet  ││
-                │  │ gpt-4o-mi│ │ claude-3-haiku   ││
-                │  │ o1-mini  │ │ claude-3-opus    ││
-                │  └──────────┘ └─────────────────┘│
-                │  ┌──────────┐                     │
-                │  │  Gemini  │ (prefijo gemini/)   │
-                │  │ gemini-pr│                     │
-                │  │ 1.5-pro  │                     │
-                │  └──────────┘                     │
-                └───────────────────────────────────┘
+```mermaid
+flowchart TD
+    subgraph Frontend["Frontend (Next.js)"]
+        GAP[GptAssistantPopover]
+        EAM[EditorAIMenu]
+        AIS[AIService]
+    end
+
+    subgraph Backend["Django API / Rust API"]
+        GPT[GPTIntegrationEndpoint]
+        WGPT[WorkspaceGPTIntegrationEndpoint]
+        REPH[RephraseEndpoint]
+    end
+
+    subgraph LLM["Proveedores LLM"]
+        OAI[OpenAI]
+        ANT[Anthropic]
+        GEM[Gemini]
+    end
+
+    GAP -- "createGptTask()" --> AIS
+    EAM -- "performEditorTask()" --> AIS
+    AIS -- "POST /api/.../ai-assistant/" --> GPT
+    AIS -- "POST /api/.../ai-assistant/" --> WGPT
+    AIS -- "POST /api/.../rephrase-grammar/" --> REPH
+
+    GPT & WGPT & REPH -- "get_llm_response()" --> LLM
 ```
 
 ---
@@ -371,7 +348,7 @@ pub struct RephrasePayload {
     pub formal_score: Option<u8>,   // 0–10
 }
 
-// ── Fix-29: Validación requerida en el handler ────────────────────────────
+// - Fix-29: Validación requerida en el handler --------------
 // const MAX_AI_INPUT: usize = 10_000;
 //
 // if payload.text_input.len() > MAX_AI_INPUT {
@@ -382,7 +359,7 @@ pub struct RephrasePayload {
 //
 // Sin este guard: atacante envía 1–10 MB → costo directo en tokens del LLM,
 // latencia descontrolada (DoS efectivo) y prompt-injection amplificada.
-// ────────────────────────────────────────────────────────────────────────────
+// --------------------------------------
 
 #[derive(Serialize)]
 pub struct RephraseResponse {

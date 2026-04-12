@@ -45,22 +45,21 @@ Plane soporta 3 integraciones externas. Sus filas maestras viven en la tabla `in
 
 ## Modelo de datos — relaciones clave
 
-```
-integrations (3 filas estáticas)
-    └─ workspace_integrations           (1 por workspace por proveedor)
-            ├─ metadata: { installation_id }   (GitHub)
-            ├─ config:   { installation_id }   (GitHub)
-            └─ actor_id → users.id
-
-github_repositories       (1 por repo conectado a un proyecto)
-    └─ github_repository_syncs
-            └─ credentials: { sync_direction, issue_open_state, issue_closed_state }
-
-github_issue_syncs         (1 por issue importado de GitHub)
-github_comment_syncs       (1 por comment importado)
-db_githubprstatemapping    (mapeo PR state → Plane state)
-slack_project_syncs        (1 por proyecto con Slack conectado)
-user_github_connections    (conexión OAuth personal por usuario)
+```mermaid
+mindmap
+    root((Integraciones))
+        Global(integrations - static seed)
+            WS(workspace_integrations)
+                Actor(actor_id)
+        GitHub(GitHub specific)
+            Repos(github_repositories)
+                Syncs(github_repository_syncs)
+            Issues(github_issue_syncs)
+            Comments(github_comment_syncs)
+            PR_Map(db_githubprstatemapping)
+            User_Conn(user_github_connections)
+        Slack(Slack specific)
+            Project_Syncs(slack_project_syncs)
 ```
 
 ---

@@ -33,24 +33,25 @@ estado: activo
 
 ## Modelo de datos — relaciones
 
-```
-issues (tabla principal)
-    ├─ issue_assignees         (M2M → users)
-    ├─ issue_labels            (M2M → labels)
-    ├─ issue_subscribers       (M2M → users)
-    ├─ issue_reactions         (M2M → users, emoji codepoint)
-    ├─ issue_attachments       (1→N, almacenamiento S3/MinIO)
-    ├─ issue_links             (1→N, URLs externas)
-    ├─ issue_comments          (1→N)
-    │       └─ comment_reactions (M2M → users, emoji codepoint)
-    ├─ issue_activities        (1→N, historial de cambios)
-    ├─ issue_relations         (M2M reflexiva: blocks/blocked_by/duplicate/relates_to)
-    ├─ issue_sequences         (1→1, genera el #ID legible e.g. WS-42)
-    ├─ issue_mentions          (M2M → users, menciones en descripción)
-    ├─ issue_votes             (M2M → users, sin endpoint en CE)
-    ├─ issue_versions          (1→N, historial de versiones del issue)
-    ├─ cycle_issues            (M2M → cycles)
-    └─ module_issues           (M2M → modules)
+```mermaid
+mindmap
+    root((issues))
+        assignees(issue_assignees)
+        labels(issue_labels)
+        subscribers(issue_subscribers)
+        reactions(issue_reactions)
+        attachments(issue_attachments)
+        links(issue_links)
+        comments(issue_comments)
+            comment_reactions(comment_reactions)
+        activities(issue_activities)
+        relations(issue_relations)
+        sequences(issue_sequences)
+        mentions(issue_mentions)
+        votes(issue_votes)
+        versions(issue_versions)
+        cycle_issues(cycle_issues)
+        module_issues(module_issues)
 ```
 
 ---
@@ -271,7 +272,7 @@ pub async fn create_issue(
     Path((_slug, project_id)): Path<(String, Uuid)>,
     Json(payload): Json<CreateIssueRequest>,
 ) -> Result<Json<IssueResponse>, AppError> {
-    // ── Validaciones de input ──────────────────────────────────────────────
+    // - Validaciones de input -----------------------
 
     // [Fix #11] Validar priority contra valores permitidos — evitar strings
     // arbitrarios almacenados en DB que romperían filtros y la UI.
@@ -303,7 +304,7 @@ pub async fn create_issue(
 
     let db = &state.db;
 
-    // ── [Fix #14] Toda la creación en una transacción atómica ─────────────
+    // - [Fix #14] Toda la creación en una transacción atómica ------─
     // Sin transacción: si falla el INSERT de issue_sequences (paso 3),
     // el issue queda en DB sin sequence_id → huérfano no navegable desde la UI.
     let txn = db.begin().await.map_err(AppError::Database)?;

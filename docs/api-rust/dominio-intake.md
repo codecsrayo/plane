@@ -31,12 +31,13 @@ estado: activo
 
 ## Modelo de datos
 
-```
-projects
-    └─ intakes              (configuración del intake del proyecto, generalmente 1 por proyecto)
-            └─ intake_issues (issues pendientes de revisión)
-                    ├─ issue_id → issues    (issue real una vez aprobado)
-                    └─ duplicate_of → issues (si se marca como duplicado)
+```mermaid
+mindmap
+    root((projects))
+        intakes(intakes)
+            issues(intake_issues)
+                real_issue(issue_id)
+                duplicate(duplicate_of)
 ```
 
 **Estados de un `intake_issue`:**

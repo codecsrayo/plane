@@ -56,16 +56,17 @@ time = "0.3"   # requerido por Cookie::max_age
 
 ### Cómo funciona en Django
 
-```
-Browser              Django               PostgreSQL
-  │  Cookie: session-id=abc123  ──────────► │
-  │                    │  SELECT FROM sessions WHERE session_key='abc123'
-  │                    │  AND expire_date > NOW()
-  │                    │ ◄─────────────────────│
-  │                    │  user_id = "uuid"
-  │                    │  SELECT FROM users WHERE id = 'uuid'
-  │ ◄──────────────────│
-  │  200 OK
+```mermaid
+sequenceDiagram
+    participant Browser
+    participant Django
+    participant PostgreSQL
+    Browser->>Django: Cookie: session-id=abc123
+    Django->>PostgreSQL: SELECT FROM sessions WHERE session_key='abc123' AND expire_date > NOW()
+    PostgreSQL-->>Django: user_id = "uuid"
+    Django->>PostgreSQL: SELECT FROM users WHERE id = 'uuid'
+    PostgreSQL-->>Django: user_model
+    Django-->>Browser: 200 OK
 ```
 
 **Puntos clave:**

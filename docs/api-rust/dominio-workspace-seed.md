@@ -29,20 +29,24 @@ estado: activo
 
 `workspace_seed_task.py` es un **Celery task** disparado con `.delay(workspace_id)` inmediatamente después de `POST /api/workspaces/`. Crea de forma asíncrona:
 
-```
-workspace creado
-    └─ bot_user               (User.is_bot=true, bot_type=WORKSPACE_SEED)
-    └─ WorkspaceMember        (rol 20 = admin para el bot)
-    └─ Project                (nombre = nombre del workspace)
-        ├─ ProjectMember      (todos los workspace_members heredan rol)
-        ├─ ProjectUserProperty (display_filters + display_properties por user)
-        ├─ States             × 5  (Backlog, Todo, In Progress, Done, Cancelled)
-        ├─ Labels             × 2  (admin, concepts)
-        ├─ Cycles             × 2  (CURRENT: hoy+14d, UPCOMING: siguiente bloque)
-        ├─ Modules            × N
-        ├─ Issues             × N  (con IssueSequence + IssueActivity + labels/cycles/modules)
-        ├─ IssueViews         × N
-        └─ Pages              × N  (globales y de proyecto)
+```mermaid
+mindmap
+    root((Workspace Seed))
+        Bot(Bot User)
+            Type(WORKSPACE_SEED)
+            Member(Workspace Member Admin)
+        Project(Project)
+            Members(Project Members)
+            Props(User Properties)
+            States(States x5)
+            Labels(Labels x2)
+            Cycles(Cycles x2)
+            Modules(Modules xN)
+            Issues(Issues xN)
+                Sequences(Issue Sequences)
+                Activities(Issue Activities)
+            Views(Views xN)
+            Pages(Pages xN)
 ```
 
 ---
