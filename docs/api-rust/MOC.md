@@ -41,7 +41,8 @@ _Base técnica: schema, ORM, persistencia._
 | Nota                               | Contenido                                        |
 | ---------------------------------- | ------------------------------------------------ |
 | [[fundamentos-orm]]                | SeaORM, sea-orm-migration, baseline desde Django |
-| [[fundamentos-migraciones-estado]] | Estado de m001–m006, fixes aplicados, comandos   |
+| [[fundamentos-migraciones-estado]] | Estado de m001–m007, fixes aplicados, comandos   |
+| [[fundamentos-siembra-datos]]      | Integrations, Instance Config y Workspace Seed    |
 | [[fundamentos-soft-delete]]        | Trait SoftDeleteExt + macro `impl_soft_delete!`  |
 
 ---
@@ -149,6 +150,9 @@ vision-stack ──────────────────────�
      │                                      │
      ▼                                      ▼
 fundamentos-orm ────────────────────► fundamentos-migraciones-estado
+     │                                      │
+     ▼                                      ▼
+fundamentos-siembra-datos ──────────► dominio-workspace-seed
      │                                      │
      ▼                                      ▼
 impl-bootstrap ─────────────────────► impl-autenticacion
