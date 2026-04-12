@@ -160,12 +160,15 @@ pub struct HealthResponse {
 #[derive(Serialize, Deserialize, ToSchema)]
 pub struct DbStatus {
     pub connected: bool,
+    // ⚠️ NO incluir el mensaje de error interno — puede contener
+    // connection strings, schema names u otros detalles del servidor.
+    // Sólo exponer si DEBUG=true para facilitar diagnóstico en desarrollo.
     #[schema(nullable)]
     pub error: Option<String>,
 }
 
 /// Verifica el estado del servidor y la conectividad con PostgreSQL.
-/// No requiere autenticación.
+/// No requiere autenticación — es el único endpoint completamente público.
 #[utoipa::path(
     get,
     path = "/api/health",
@@ -177,17 +180,37 @@ pub struct DbStatus {
 )]
 pub async fn health(
     State(state): State<AppState>,
-) -> Result<Json<HealthResponse>, AppError> {
-    let db_status = match state.db.ping().await {
-        Ok(_)  => DbStatus { connected: true, error: None },
-        Err(e) => DbStatus { connected: false, error: Some(e.to_string()) },
+) -> impl axum::response::IntoResponse {
+    use axum::http::StatusCode;
+
+    let db_result = state.db.ping().await;
+    let connected = db_result.is_ok();
+
+    // ✅ En producción: loguear internamente, no exponer al cliente.
+    // En desarrollo (debug=true): incluir mensaje para facilitar diagnóstico.
+    let error_msg = match &db_result {
+        Ok(_)  => None,
+        Err(e) => {
+            tracing::error!(error = %e, "Database ping failed");
+            if state.config.debug {
+                Some(e.to_string())
+            } else {
+                Some("Database unavailable".into()) // mensaje genérico en producción
+            }
+        }
     };
 
-    Ok(Json(HealthResponse {
-        status:   if db_status.connected { "ok".into() } else { "degraded".into() },
+    let db_status = DbStatus { connected, error: error_msg };
+    let response = Json(HealthResponse {
+        status:   if connected { "ok".into() } else { "degraded".into() },
         version:  env!("CARGO_PKG_VERSION").to_string(),
         database: db_status,
-    }))
+    });
+
+    // ✅ HTTP 503 cuando DB no está disponible — no retornar 200 en degradado.
+    // Los health checks de load balancers/k8s dependen del status code correcto.
+    let status = if connected { StatusCode::OK } else { StatusCode::SERVICE_UNAVAILABLE };
+    (status, response)
 }
 ```
 
@@ -253,13 +276,21 @@ pub fn build_router(state: AppState) -> Router {
         .route("/health", get(health::health));
         // .route("/workspaces", get(workspaces::list))  // Fase 2
 
-    let swagger = SwaggerUi::new("/api/docs")
-        .url("/api/docs/openapi.json", ApiDoc::openapi());
+    let mut router = Router::new()
+        .nest("/api", api_router);
 
-    Router::new()
-        .nest("/api", api_router)
-        .merge(swagger)
-        .with_state(state)
+    // ✅ Swagger UI sólo disponible en desarrollo (DEBUG=true).
+    // En producción expone el schema completo de la API — información valiosa
+    // para atacantes que quieran enumerar endpoints y estructuras de datos.
+    // Si se necesita en staging, proteger con BasicAuth o IP allowlist via Traefik.
+    if state.config.debug {
+        let swagger = SwaggerUi::new("/api/docs")
+            .url("/api/docs/openapi.json", ApiDoc::openapi());
+        router = router.merge(swagger);
+        tracing::warn!("Swagger UI habilitado (DEBUG=true) — deshabilitar en producción");
+    }
+
+    router.with_state(state)
 }
 ```
 
