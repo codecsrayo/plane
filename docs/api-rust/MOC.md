@@ -116,8 +116,8 @@ _Documentación de apoyo: estructura, diagramas, testing._
 | Área                               | Estado               | Notas                                                 |
 | ---------------------------------- | -------------------- | ----------------------------------------------------- |
 | Soft delete                        | ✅ Implementado      | `src/utils/soft_delete.rs`                            |
-| Migraciones m001–m005              | ✅ Aplicadas         | Baseline completo                                     |
-| Migración m006 (integraciones)     | 🔄 Pendiente prueba  |                                                       |
+| Migraciones m001–m006 (Baseline)   | ✅ Aplicadas         | Schema completo vía `sql/baseline.sql`                |
+| Migración m007 (Seeds)             | ✅ Aplicadas         | Integraciones e Instance config inicial               |
 | Bootstrap API (`main.rs`)          | 📝 Diseñado          | Ver [[impl-bootstrap]]                                |
 | Auth Session Cookie                | 📝 Diseñado          | Ver [[impl-autenticacion]]                            |
 | Auth API Key                       | 📝 Diseñado          | Ver [[impl-autenticacion]]                            |

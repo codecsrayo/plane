@@ -154,7 +154,7 @@ apps/api/
 | `plane/authentication/`                      | OAuth providers          | Pendiente Fase 3                            | 📝 No iniciado |
 | `plane/settings/`                            | Config por entorno       | `src/config.rs` (dotenvy)                   | ✅             |
 | `plane/celery.py`                            | Broker Celery            | apalis (PostgreSQL-backed)                  | ✅             |
-| `plane/db/models/integration/`               | Modelos integración      | `migration/src/migrations/m006`             | 🔄 Pendiente   |
+| `plane/db/models/integration/`               | Modelos integración      | `migration/src/migrations/m001 (baseline)`  | ✅             |
 | `plane/license/`                             | Gestión instancia        | Pendiente                                   | 📝 No iniciado |
 | `plane/utils/github_app.py`                  | Cliente GitHub App       | `src/utils/github_app.rs`                   | 📝 Diseñado    |
 
@@ -189,7 +189,7 @@ apps/api/
 | `0124_githubprstatemapping_usergithubconnection` | PR mapping + user OAuth                     |
 | `0126_gitlab_sync_models`                        | GitLab sync completo — **última migración** |
 
-> Las últimas 5 son las que materializa la migración Rust `m006`.
+> Las últimas 5 son las que materializa la migración Rust `m001` (Baseline SQL).
 
 ---
 
