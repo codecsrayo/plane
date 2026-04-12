@@ -7,30 +7,32 @@ edition = "2021"
 [workspace]
 members = [".", "migration"]
 
-# ── Runtime & HTTP ────────────────────────────────────────────────────────────
+# ── Dependencies — versiones resueltas por cargo ──────────────────────────────
 [dependencies]
-anyhow = "1.0.102"
-apalis = { version = "0.7.4", features = ["limit", "timeout", "retry"] }
-apalis-sql = { version = "0.7.4", features = ["postgres", "tokio-comp"] }
-async-trait = "0.1.89"
-aws-config = "1.8.15"
-aws-sdk-s3 = "1.129.0"
-axum = { version = "0.8.8", features = ["macros", "multipart"] }
-chrono = { version = "0.4.44", features = ["serde"] }
-dotenvy = "0.15.7"
-fred = { version = "10.1.0", features = [
-    "i-std",
-    "i-client",
-    "subscriber-client",
-] }
-lettre = { version = "0.11.21", features = [
-    "tokio1",
-    "tokio1-native-tls",
-    "smtp-transport",
-    "builder",
-] }
-openssl = { version = "0.10.76", features = ["vendored"] }
-sea-orm = { version = "1.1.20", features = [
+
+# Utilidades generales
+anyhow       = "*"
+async-trait  = "*"
+thiserror    = "*"
+
+# Async runtime
+tokio        = { version = "*", features = ["full"] }
+
+# HTTP — servidor
+axum         = { version = "*", features = ["macros", "multipart"] }
+axum-extra   = { version = "*", features = ["cookie", "typed-header"] }
+tower        = "*"
+tower-http   = { version = "*", features = ["cors", "trace", "compression-gzip"] }
+
+# HTTP — cliente (no crear Client::new() por request)
+reqwest      = { version = "*", features = ["json", "rustls-tls"], default-features = false }
+
+# OpenAPI + Scalar UI
+utoipa        = { version = "*", features = ["axum_extras", "uuid", "chrono"] }
+utoipa-scalar = { version = "*", features = ["axum"] }
+
+# Base de datos — SeaORM + PostgreSQL
+sea-orm = { version = "*", features = [
     "sqlx-postgres",
     "runtime-tokio-rustls",
     "macros",
@@ -38,25 +40,47 @@ sea-orm = { version = "1.1.20", features = [
     "with-chrono",
     "with-json",
 ] }
-serde = { version = "1.0.228", features = ["derive"] }
-serde_json = "1.0.149"
-sha2 = "0.10"                                              # hash de API keys en rate limiter — NUNCA almacenar raw token en memoria
-ammonia = "4.0"                                            # sanitización de HTML de usuario — previene XSS almacenado en description_html
-base64 = "0.22"                                            # encode/decode de cursores de paginación
-jsonwebtoken = "9"                                          # JWT RS256 para GitHub App auth
-reqwest = { version = "0.12", features = ["json", "rustls-tls"], default-features = false } # HTTP client compartido — no crear Client::new() por request
-axum-extra = { version = "0.10", features = ["cookie"] }  # CookieJar para session auth
-time = "0.3"                                               # Cookie::max_age en session logout
-thiserror = "2.0.18"
-tokio = { version = "1.51.1", features = ["full"] }
-tower = "0.5.3"
-tower-http = { version = "0.6.8", features = [
-    "cors",
-    "trace",
-    "compression-gzip",
+
+# Jobs / colas — apalis sobre Postgres
+apalis     = { version = "*", features = ["limit", "timeout", "retry"] }
+apalis-sql = { version = "*", features = ["postgres", "tokio-comp"] }
+
+# Redis / Valkey
+fred = { version = "*", features = [
+    "i-std",
+    "i-client",
+    "subscriber-client",
 ] }
-tracing = "0.1.44"
-tracing-subscriber = { version = "0.3.23", features = ["env-filter", "json"] }
-utoipa = { version = "5.4.0", features = ["axum_extras", "uuid", "chrono"] }
-utoipa-scalar     = { version = "0.2", features = ["axum"] }
-uuid = { version = "1.23.0", features = ["v4", "serde"] }
+
+# S3 / MinIO
+aws-config  = "*"
+aws-sdk-s3  = "*"
+
+# Email
+lettre = { version = "*", features = [
+    "tokio1",
+    "tokio1-native-tls",
+    "smtp-transport",
+    "builder",
+] }
+
+# Crypto / seguridad
+openssl      = { version = "*", features = ["vendored"] }
+sha2         = "*"          # hash de API keys — NUNCA almacenar raw token en memoria
+jsonwebtoken = "*"          # JWT RS256 para GitHub App auth
+
+# Serialización
+serde      = { version = "*", features = ["derive"] }
+serde_json = "*"
+chrono     = { version = "*", features = ["serde"] }
+uuid       = { version = "*", features = ["v4", "serde"] }
+time       = "*"            # Cookie::max_age en session logout
+
+# Contenido / sanitización
+ammonia = "*"   # sanitización de HTML — previene XSS en description_html
+base64  = "*"   # encode/decode de cursores de paginación
+dotenvy = "*"   # carga de .env en desarrollo
+
+# Observabilidad
+tracing            = "*"
+tracing-subscriber = { version = "*", features = ["env-filter", "json"] }
