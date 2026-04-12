@@ -101,8 +101,33 @@ estado: activo
 ### Workspace Settings (Fase 2 extendida)
 
 - [ ] `GET/POST /api/workspaces/{slug}/webhooks/` — ver [[dominio-workspace-settings]]
-- [ ] `GET /api/integrations/` — ver [[dominio-integraciones]]
-- [ ] `GET/POST/DELETE /api/workspaces/{slug}/workspace-integrations/` — ver [[dominio-integraciones]]
+
+### Integraciones (Fase 2 extendida) — ver [[dominio-integraciones]]
+
+#### Globales
+- [ ] `GET /api/integrations/` — listado de providers disponibles (3 filas estáticas: github/gitlab/slack)
+- [ ] `GET /api/github/callback/` — sin auth; recibe `installation_id` + `state={workspace_slug}` de GitHub App; devuelve HTML con `postMessage`
+- [ ] `POST /api/auth/github/user-callback/` — auth requerida; intercambia `code` por access_token OAuth personal; guarda en `user_github_connections`
+
+#### Por workspace (requieren WorkspaceAdmin)
+- [ ] `GET /api/workspaces/{slug}/workspace-integrations/`
+- [ ] `POST /api/workspaces/{slug}/workspace-integrations/`
+- [ ] `GET/PATCH/DELETE /api/workspaces/{slug}/workspace-integrations/{pk}/`
+- [ ] `DELETE /api/workspaces/{slug}/workspace-integrations/{provider}/provider/` — desinstala por nombre de provider
+- [ ] `POST /api/workspaces/{slug}/workspace-integrations/{provider}/install/` — github: `{installation_id}`, gitlab/slack: `{code}`
+
+#### Repos y sincronización (requieren WorkspaceAdmin)
+- [ ] `GET /api/workspaces/{slug}/workspace-integrations/{wi_id}/github-repositories/` — lista repos accesibles vía installation token
+- [ ] `GET/POST /api/workspaces/{slug}/workspace-integrations/github/repo-syncs/` — listar/crear `GithubRepositorySync`
+- [ ] `DELETE /api/workspaces/{slug}/workspace-integrations/github/repo-syncs/{id}/` — desconectar repo; debe soft-delete `GithubRepository` + `GithubRepositorySync` juntos para evitar huérfanos
+
+#### PR State Mapping
+- [ ] `GET/POST /api/workspaces/{slug}/workspace-integrations/{wi_id}/pr-state-mappings/`
+- [ ] `DELETE /api/workspaces/{slug}/workspace-integrations/{wi_id}/pr-state-mappings/{id}/`
+
+#### Webhooks entrantes (sin auth de usuario — validación HMAC obligatoria)
+- [ ] `POST /api/github-webhook/` — verificar `X-Hub-Signature-256`; handlers para `issues`, `pull_request`, `issue_comment`
+- [ ] `POST /api/gitlab-webhook/` — verificar `X-Gitlab-Token`; handlers para `merge_request`, `note`
 
 ---
 
