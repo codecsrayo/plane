@@ -41,6 +41,7 @@ estado: activo
 Busca en múltiples entidades del workspace y devuelve resultados agrupados:
 
 ```rust
+// src/routes/search.rs
 #[derive(Deserialize, ToSchema)]
 pub struct GlobalSearchParams {
     pub query:      String,       // ⚠️ FIX-30: validar 2–200 chars; sin límite → LIKE query gigante → DB stress
@@ -83,6 +84,7 @@ pub struct SearchResultItem {
 ## Implementación — búsqueda global
 
 ```rust
+// src/routes/search.rs
 pub async fn global_search(
     State(state): State<AppState>,
     WorkspaceMemberGuard { user, workspace, .. }: WorkspaceMemberGuard,
@@ -127,6 +129,7 @@ pub async fn global_search(
 ## Búsqueda de issues — implementación
 
 ```rust
+// src/routes/search.rs
 async fn search_issues(
     db: &DatabaseConnection,
     query: &str,
@@ -180,6 +183,7 @@ Más específico que `/search/`, solo busca issues en un proyecto y es usado por
 - Selector de issues al añadir a ciclo/módulo
 
 ```rust
+// src/routes/search.rs
 #[derive(Deserialize, ToSchema)]
 pub struct SearchIssuesParams {
     pub query:      String,  // ⚠️ FIX-30: validar 2–200 chars
@@ -238,6 +242,7 @@ pub async fn search_project_issues(
 Versión más configurable de `/search/`. El cliente especifica qué entidades buscar:
 
 ```rust
+// src/routes/search.rs
 #[derive(Deserialize, ToSchema)]
 pub struct EntitySearchParams {
     pub query:    String,
@@ -253,6 +258,7 @@ pub struct EntitySearchParams {
 Sin full-text search, aplicar un orden de relevancia básico:
 
 ```rust
+// src/routes/search.rs
 // Prioridad 1: coincidencia exacta en nombre (case-insensitive)
 // Prioridad 2: coincidencia en nombre con ILIKE (starts with)
 // Prioridad 3: coincidencia en descripción
@@ -268,6 +274,7 @@ Sin full-text search, aplicar un orden de relevancia básico:
 Con SeaORM se puede usar `order_by_expr` con una expresión CASE:
 
 ```rust
+// src/routes/search.rs
 use sea_orm::sea_query::Expr;
 
 let lower_name = Expr::col(issues::Column::Name).cast_as(Alias::new("text")).binary(
@@ -282,6 +289,7 @@ query.order_by_desc(issues::Column::UpdatedAt)
 ## Acceso a proyectos en búsqueda global
 
 ```rust
+// src/routes/search.rs
 /// Devuelve los project_ids a los que el usuario tiene acceso en el workspace.
 /// Incluye proyectos donde es miembro explícito + proyectos públicos del workspace.
 async fn get_accessible_project_ids(

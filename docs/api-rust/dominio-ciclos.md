@@ -95,6 +95,7 @@ projects
 ## Regla crítica — un issue, un ciclo activo
 
 ```rust
+// src/routes/cycle_issues.rs
 // Al agregar un issue a un ciclo (POST /cycle-issues/):
 // 1. Verificar que el issue no esté ya en otro ciclo ACTIVO
 // 2. Si está, removerlo del anterior antes de agregar al nuevo
@@ -145,6 +146,7 @@ pub async fn add_issue_to_cycle(
 Verifica que las fechas de un nuevo ciclo no se solapen con ciclos existentes:
 
 ```rust
+// src/routes/cycles.rs
 pub async fn date_check(
     State(state): State<AppState>,
     ProjectMemberGuard { project, .. }: ProjectMemberGuard,
@@ -172,6 +174,7 @@ pub async fn date_check(
 Mueve todos los issues incompletos del ciclo origen al ciclo destino:
 
 ```rust
+// src/routes/cycle_issues.rs
 pub async fn transfer_issues(
     State(state): State<AppState>,
     ProjectMemberGuard { workspace, .. }: ProjectMemberGuard,
@@ -211,6 +214,7 @@ pub struct TransferIssuesRequest {
 El endpoint `GET /cycles/{id}/analytics/` devuelve métricas de burndown:
 
 ```rust
+// src/routes/cycles.rs
 #[derive(Serialize, ToSchema)]
 pub struct CycleAnalytics {
     pub total_issues:     u64,
@@ -237,6 +241,7 @@ pub struct BurndownPoint {
 ## DTOs
 
 ```rust
+// src/routes/cycles.rs
 #[derive(Deserialize, ToSchema)]
 pub struct CreateCycleRequest {
     pub name:        String,
