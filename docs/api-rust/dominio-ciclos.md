@@ -67,7 +67,7 @@ projects
 | `POST` | `/workspaces/{slug}/projects/{id}/cycles/{cycle_id}/transfer-issues/` | `ProjectMemberGuard (≥15)` | 4 |
 | `POST/DELETE` | `/workspaces/{slug}/projects/{id}/cycles/{cycle_id}/archive/` | `ProjectMemberGuard (≥15)` | 4 |
 | `GET` | `/workspaces/{slug}/projects/{id}/archived-cycles/` | `ProjectMemberGuard (≥5)` | 4 |
-| `GET/DELETE` | `/workspaces/{slug}/projects/{id}/archived-cycles/{pk}/` | `ProjectMemberGuard (≥5/15)` | 4 |
+| `GET` | `/workspaces/{slug}/projects/{id}/archived-cycles/{pk}/` | `ProjectMemberGuard (≥5)` | 4 |
 
 ### Analytics y progreso
 
@@ -273,7 +273,7 @@ pub struct CycleResponse {
 1. **Un issue, un ciclo activo** — al agregar, remover del ciclo anterior si existe.
 2. **`status` calculado** — no persiste en DB. Calcular al serializar.
 3. **Soft delete de `cycle_issues`** — usar `deleted_at`, no DELETE físico.
-4. **Archivar** — `POST /archive/` setea `archived_at = NOW()`. No afecta a los issues.
+4. **Archivar/Desarchivar** — `POST /cycles/{id}/archive/` setea `archived_at = NOW()`. `DELETE /cycles/{id}/archive/` limpia `archived_at`. El endpoint `/archived-cycles/{pk}/` solo sirve para `GET` — no hay `DELETE` en esa ruta. No afecta a los issues.
 5. **Date check antes de crear** — el frontend llama a `date-check` antes de `POST /cycles/`. El backend debe validar también (no confiar solo en frontend).
 
 ---
