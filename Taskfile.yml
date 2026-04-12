@@ -66,7 +66,7 @@ tasks:
       - task: setup:rust
       - task: setup:deps
       - echo "Setup complete."
-      - echo "Next step: task dev:up"
+      - 'echo "Next step: task dev:up"'
 
   # Create .env files from examples only when they do not already exist.
   setup:env:
@@ -203,6 +203,22 @@ tasks:
     desc: Run clippy on file changes for the Rust API workspace
     cmds:
       - cd apps/api_rust && cargo watch -x clippy
+
+  rust:clippy:
+    desc: Run clippy with default lints (warnings shown, not fatal)
+    cmds:
+      - cd apps/api_rust && cargo clippy --all-targets --all-features
+
+  rust:clippy-strict:
+    desc: Run clippy treating all warnings as errors (-D warnings)
+    cmds:
+      - cd apps/api_rust && cargo clippy --all-targets --all-features -- -D warnings
+
+  rust:lint:
+    desc: Full lint pass — clippy strict + rustfmt check
+    cmds:
+      - task: rust:clippy-strict
+      - cd apps/api_rust && cargo fmt --all -- --check
 
   rust:migrations:
     desc: Run SeaORM migrations with CMD=<up|down|fresh|refresh|reset|status>
