@@ -133,6 +133,7 @@ where
 Reutiliza `CurrentUser` internamente — no duplica la lógica de token.
 
 ```rust
+// src/auth/extractors.rs
 use axum::extract::Path;
 use std::collections::HashMap;
 use crate::entities::workspace_members;
@@ -197,6 +198,7 @@ where
 Verifica membresía en workspace **y** en el proyecto. Cadena completa.
 
 ```rust
+// src/auth/permissions.rs
 use crate::entities::{projects, project_members};
 
 /// Cadena de verificación:
