@@ -49,18 +49,18 @@ workspaces
 
 | Método | URL | Guard | Fase |
 |--------|-----|-------|------|
-| `GET` | `/api/workspaces/{slug}/projects/{id}/pages/` | `ProjectMemberGuard (≥5)` | 4 |
-| `POST` | `/api/workspaces/{slug}/projects/{id}/pages/` | `ProjectMemberGuard (≥15)` | 4 |
-| `GET` | `/api/workspaces/{slug}/projects/{id}/pages/{page_id}/` | `ProjectMemberGuard (≥5)` | 4 |
-| `PATCH` | `/api/workspaces/{slug}/projects/{id}/pages/{page_id}/` | `ProjectMemberGuard (≥5)` | 4 |
-| `DELETE` | `/api/workspaces/{slug}/projects/{id}/pages/{page_id}/` | `ProjectMemberGuard (≥20)` | 4 |
-| `GET` | `/api/workspaces/{slug}/projects/{id}/pages-summary/` | `ProjectMemberGuard (≥5)` | 4 |
+| `GET` | `/workspaces/{slug}/projects/{id}/pages/` | `ProjectMemberGuard (≥5)` | 4 |
+| `POST` | `/workspaces/{slug}/projects/{id}/pages/` | `ProjectMemberGuard (≥15)` | 4 |
+| `GET` | `/workspaces/{slug}/projects/{id}/pages/{page_id}/` | `ProjectMemberGuard (≥5)` | 4 |
+| `PATCH` | `/workspaces/{slug}/projects/{id}/pages/{page_id}/` | `ProjectMemberGuard (≥5)` | 4 |
+| `DELETE` | `/workspaces/{slug}/projects/{id}/pages/{page_id}/` | `ProjectMemberGuard (≥20)` | 4 |
+| `GET` | `/workspaces/{slug}/projects/{id}/pages-summary/` | `ProjectMemberGuard (≥5)` | 4 |
 
 ### Descripción (contenido enriquecido)
 
 | Método | URL | Guard | Fase |
 |--------|-----|-------|------|
-| `GET/PATCH` | `/api/workspaces/{slug}/projects/{id}/pages/{page_id}/description/` | `ProjectMemberGuard (≥5)` | 4 |
+| `GET/PATCH` | `/workspaces/{slug}/projects/{id}/pages/{page_id}/description/` | `ProjectMemberGuard (≥5)` | 4 |
 
 > [!WARNING] La descripción tiene endpoint propio
 > El contenido HTML de la página se gestiona en un endpoint separado del metadata. Permite actualizaciones de contenido frecuentes sin tocar el resto de los campos.
@@ -69,18 +69,18 @@ workspaces
 
 | Método | URL | Guard | Fase |
 |--------|-----|-------|------|
-| `GET` | `/api/workspaces/{slug}/projects/{id}/pages/{page_id}/versions/` | `ProjectMemberGuard (≥5)` | 4 |
-| `GET` | `/api/workspaces/{slug}/projects/{id}/pages/{page_id}/versions/{pk}/` | `ProjectMemberGuard (≥5)` | 4 |
+| `GET` | `/workspaces/{slug}/projects/{id}/pages/{page_id}/versions/` | `ProjectMemberGuard (≥5)` | 4 |
+| `GET` | `/workspaces/{slug}/projects/{id}/pages/{page_id}/versions/{pk}/` | `ProjectMemberGuard (≥5)` | 4 |
 
 ### Operaciones especiales
 
 | Método | URL | Guard | Fase |
 |--------|-----|-------|------|
-| `POST/DELETE` | `/api/workspaces/{slug}/projects/{id}/pages/{page_id}/archive/` | `ProjectMemberGuard (≥15)` | 4 |
-| `POST/DELETE` | `/api/workspaces/{slug}/projects/{id}/pages/{page_id}/lock/` | `ProjectMemberGuard (≥15)` | 4 |
-| `POST` | `/api/workspaces/{slug}/projects/{id}/pages/{page_id}/access/` | `ProjectMemberGuard (≥20)` | 4 |
-| `POST` | `/api/workspaces/{slug}/projects/{id}/pages/{page_id}/duplicate/` | `ProjectMemberGuard (≥15)` | 4 |
-| `POST/DELETE` | `/api/workspaces/{slug}/projects/{id}/favorite-pages/{page_id}/` | `ProjectMemberGuard (≥5)` | 4 |
+| `POST/DELETE` | `/workspaces/{slug}/projects/{id}/pages/{page_id}/archive/` | `ProjectMemberGuard (≥15)` | 4 |
+| `POST/DELETE` | `/workspaces/{slug}/projects/{id}/pages/{page_id}/lock/` | `ProjectMemberGuard (≥15)` | 4 |
+| `POST` | `/workspaces/{slug}/projects/{id}/pages/{page_id}/access/` | `ProjectMemberGuard (≥20)` | 4 |
+| `POST` | `/workspaces/{slug}/projects/{id}/pages/{page_id}/duplicate/` | `ProjectMemberGuard (≥15)` | 4 |
+| `POST/DELETE` | `/workspaces/{slug}/projects/{id}/favorite-pages/{page_id}/` | `ProjectMemberGuard (≥5)` | 4 |
 
 ---
 
