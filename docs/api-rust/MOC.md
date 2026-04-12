@@ -106,8 +106,9 @@ _Documentación de apoyo: estructura, diagramas, testing._
 | --------------------------- | -------------------------------------------------------- |
 | [[ref-guia-estilo]]         | Estándares y convenciones de documentación               |
 | [[ref-estructura-archivos]] | Árbol de directorios del proyecto Rust (estado objetivo) |
-| [[ref-estructura-django]]   | Árbol completo de `apps/api` — fuente de migración       |
-| [[ref-diagramas-secuencia]] | Sequence diagrams: workspace seed, auth, requests        |
+| [[ref-estructura-django]]      | Árbol completo de `apps/api` — fuente de migración              |
+| [[ref-inconsistencias-django]] | Auditoría docs vs Django real — 19 inconsistencias en 9 archivos |
+| [[ref-diagramas-secuencia]]    | Sequence diagrams: workspace seed, auth, requests               |
 | [[ref-diagramas-flujo]]     | Flowcharts: workspace, projects, issues, roles           |
 | [[ref-testing]]             | Swagger UI, axum-test, Bruno — estrategia completa       |
 | [[audit-report-2026-04-12]] | Último informe de auditoría de implementación            |
