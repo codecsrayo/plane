@@ -383,4 +383,4 @@ pub struct RephraseResponse {
 
 ---
 
-_Dominio documentado desde rama `feature/integrations-panel-fix-17593507967815292912`_
+_`docs/api-rust/dominio-ia.md` · rama `feature/integrations-panel-fix-17593507967815292912`_

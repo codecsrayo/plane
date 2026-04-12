@@ -294,3 +294,7 @@ Esto permite mover endpoints uno a uno sin downtime. Ver [[vision-arquitectura]]
 ← [[MOC]] | → [[plan-riesgos]]
 
 **Relacionado:** Arquitectura: [[vision-arquitectura]] | Bootstrap: [[impl-bootstrap]] | Estado actual: [[fundamentos-migraciones-estado]]
+
+---
+
+_`docs/api-rust/plan-fases.md` · rama `feature/integrations-panel-fix-17593507967815292912`_

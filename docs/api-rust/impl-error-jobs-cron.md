@@ -304,3 +304,7 @@ Fase 3:
 ← [[impl-extractores-auth]] | [[MOC]] | → [[dominio-workspace-seed]]
 
 **Relacionado:** Workspace seed (ejemplo completo): [[dominio-workspace-seed]] | Integraciones (GithubSyncJob): [[dominio-integraciones]] | Riesgos: [[plan-riesgos]]
+
+---
+
+_`docs/api-rust/impl-error-jobs-cron.md` · rama `feature/integrations-panel-fix-17593507967815292912`_

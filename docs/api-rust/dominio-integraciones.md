@@ -461,3 +461,7 @@ pub async fn get_instance_config(
 ← [[dominio-workspace-seed]] | [[MOC]] | → [[dominio-workspace-settings]]
 
 **Relacionado:** Flujo en settings: [[dominio-workspace-settings#WS-5 — Integrations]] | Diagrama secuencia: [[ref-diagramas-secuencia#3. Flujo OAuth — GitHub App instalación workspace]] | Riesgos: [[plan-riesgos]]
+
+---
+
+_`docs/api-rust/dominio-integraciones.md` · rama `feature/integrations-panel-fix-17593507967815292912`_

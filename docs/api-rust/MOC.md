@@ -195,4 +195,4 @@ dominio-workspace-seed ─────────────► dominio-integr
 
 ---
 
-_Vault: `docs/` rama `feature/integrations-panel-fix-17593507967815292912`_
+_`docs/api-rust/MOC.md` · rama `feature/integrations-panel-fix-17593507967815292912`_

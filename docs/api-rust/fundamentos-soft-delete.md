@@ -162,3 +162,7 @@ Algunas entidades no tienen `deleted_at` — no usar `.active()` en ellas:
 ## 🔗 Navegar
 
 ← [[fundamentos-orm]] | [[MOC]] | Uso en repository: [[impl-appstate-repository]] | Riesgos: [[plan-riesgos]]
+
+---
+
+_`docs/api-rust/fundamentos-soft-delete.md` · rama `feature/integrations-panel-fix-17593507967815292912`_

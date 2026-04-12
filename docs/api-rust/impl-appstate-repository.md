@@ -281,3 +281,7 @@ Fase 3:
 ← [[impl-bootstrap]] | [[MOC]] | → [[impl-extractores-auth]] | → [[impl-error-jobs-cron]]
 
 **Relacionado:** [[fundamentos-soft-delete]] (soft delete en queries) | [[ref-estructura-archivos]] (dónde van los repositories)
+
+---
+
+_`docs/api-rust/impl-appstate-repository.md` · rama `feature/integrations-panel-fix-17593507967815292912`_

@@ -168,3 +168,7 @@ Esto permite mover endpoints uno a uno sin downtime. Ver [[plan-fases]] para la 
 ## 🔗 Navegar
 
 ← [[vision-stack]] | [[MOC]] | → [[plan-fases]] | Diagramas detallados: [[ref-diagramas-flujo]]
+
+---
+
+_`docs/api-rust/vision-arquitectura.md` · rama `feature/integrations-panel-fix-17593507967815292912`_

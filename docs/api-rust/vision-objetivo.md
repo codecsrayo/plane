@@ -83,3 +83,7 @@ estado: activo
 ## 🔗 Navegar
 
 ← [[MOC]] | → [[vision-stack]] | → [[vision-arquitectura]] | → [[plan-fases]]
+
+---
+
+_`docs/api-rust/vision-objetivo.md` · rama `feature/integrations-panel-fix-17593507967815292912`_

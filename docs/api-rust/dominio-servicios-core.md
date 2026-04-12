@@ -108,3 +108,7 @@ Fase 2:
 ## 🔗 Navegar
 
 ← [[dominio-usuario]] | [[MOC]] | → [[dominio-busqueda]]
+
+---
+
+_`docs/api-rust/dominio-servicios-core.md` · rama `feature/integrations-panel-fix-17593507967815292912`_

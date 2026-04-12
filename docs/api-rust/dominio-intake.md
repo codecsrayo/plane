@@ -337,3 +337,7 @@ Fase 3:
 ← [[dominio-notificaciones]] | [[MOC]] | → [[dominio-analytics]]
 
 **Relacionado:** Issues: [[dominio-issues]] | Proyectos: [[dominio-proyectos]] | Jobs: [[impl-error-jobs-cron]]
+
+---
+
+_`docs/api-rust/dominio-intake.md` · rama `feature/integrations-panel-fix-17593507967815292912`_

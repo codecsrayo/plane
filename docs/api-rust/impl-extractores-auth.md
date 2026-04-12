@@ -413,3 +413,7 @@ Fase 1:
 ← [[impl-autenticacion]] | [[MOC]] | → [[impl-error-jobs-cron]]
 
 **Relacionado:** Diagramas: [[ref-diagramas-flujo]] | Auth Session/APIKey: [[impl-autenticacion]] | Testing: [[ref-testing]]
+
+---
+
+_`docs/api-rust/impl-extractores-auth.md` · rama `feature/integrations-panel-fix-17593507967815292912`_

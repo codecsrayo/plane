@@ -481,3 +481,7 @@ Fase 3:
 ← [[impl-bootstrap]] | [[MOC]] | → [[impl-extractores-auth]]
 
 **Relacionado:** Extractores Bearer Token: [[impl-extractores-auth]] | Riesgos: [[plan-riesgos]] | Estructura Django auth: [[ref-estructura-django]]
+
+---
+
+_`docs/api-rust/impl-autenticacion.md` · rama `feature/integrations-panel-fix-17593507967815292912`_

@@ -307,3 +307,7 @@ Fase 3:
 ← [[dominio-ciclos]] | [[MOC]] | → [[dominio-paginas]]
 
 **Relacionado:** Issues: [[dominio-issues]] | Cycles: [[dominio-ciclos]] | Seed: [[dominio-workspace-seed]]
+
+---
+
+_`docs/api-rust/dominio-modulos.md` · rama `feature/integrations-panel-fix-17593507967815292912`_

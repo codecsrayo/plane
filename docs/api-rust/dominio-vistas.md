@@ -183,3 +183,7 @@ Fase 3:
 ## 🔗 Navegar
 
 ← [[dominio-issues]] | [[MOC]] | → [[dominio-workspace-settings]]
+
+---
+
+_`docs/api-rust/dominio-vistas.md` · rama `feature/integrations-panel-fix-17593507967815292912`_

@@ -192,3 +192,7 @@ Las migraciones clave que influyeron en el schema baseline de Rust:
 ## 🔗 Navegar
 
 ← [[fundamentos-orm]] | [[MOC]] | → [[plan-fases]] | Riesgos: [[plan-riesgos]]
+
+---
+
+_`docs/api-rust/fundamentos-migraciones-estado.md` · rama `feature/integrations-panel-fix-17593507967815292912`_

@@ -97,3 +97,7 @@ graph TD
 
 - Descripciones, advertencias y prosa en **Español**.
 - Términos técnicos, nombres de variables, tablas y código en **Inglés** (conforme al código fuente).
+
+---
+
+_`docs/api-rust/ref-guia-estilo.md` · rama `feature/integrations-panel-fix-17593507967815292912`_

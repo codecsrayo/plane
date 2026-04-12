@@ -470,3 +470,7 @@ Fase 3:
 ← [[dominio-paginas]] | [[MOC]] | → [[dominio-intake]]
 
 **Relacionado:** Jobs: [[impl-error-jobs-cron]] | Issues: [[dominio-issues]] | Riesgos: [[plan-riesgos]]
+
+---
+
+_`docs/api-rust/dominio-notificaciones.md` · rama `feature/integrations-panel-fix-17593507967815292912`_

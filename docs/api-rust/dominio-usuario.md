@@ -161,3 +161,7 @@ Fase 4:
 ## 🔗 Navegar
 
 ← [[dominio-vistas]] | [[MOC]] | → [[impl-autenticacion]]
+
+---
+
+_`docs/api-rust/dominio-usuario.md` · rama `feature/integrations-panel-fix-17593507967815292912`_

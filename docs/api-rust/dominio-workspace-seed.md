@@ -338,3 +338,7 @@ Fase 2:
 ← [[impl-error-jobs-cron]] | [[MOC]] | → [[dominio-integraciones]]
 
 **Relacionado:** Diagrama de secuencia: [[ref-diagramas-secuencia#1. Creación de workspace + seed asíncrono]] | Riesgos: [[plan-riesgos]] | Estructura de archivos: [[ref-estructura-archivos]]
+
+---
+
+_`docs/api-rust/dominio-workspace-seed.md` · rama `feature/integrations-panel-fix-17593507967815292912`_

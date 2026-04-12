@@ -169,3 +169,7 @@ Todo campo `description_html` almacenado debe pasar por `ammonia::Builder` antes
 La documentación **no es un manual de lo que "es", sino un mapa de lo que "será"**, manteniendo una honestidad técnica ejemplar sobre el estado actual.
 
 **Recomendación:** Se puede confiar al 100% en los documentos de `dominio-*.md` como base para empezar a programar, ya que las estructuras de datos y endpoints coinciden con la API de Django que se busca reemplazar.
+
+---
+
+_`docs/api-rust/audit-report-2026-04-12.md` · rama `feature/integrations-panel-fix-17593507967815292912`_

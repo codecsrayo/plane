@@ -175,3 +175,7 @@ sea-orm-cli generate entity \
 ## 🔗 Navegar
 
 ← [[MOC]] | Estado actual de migraciones: [[fundamentos-migraciones-estado]] | Soft delete: [[fundamentos-soft-delete]] | Estructura: [[ref-estructura-archivos]]
+
+---
+
+_`docs/api-rust/fundamentos-orm.md` · rama `feature/integrations-panel-fix-17593507967815292912`_

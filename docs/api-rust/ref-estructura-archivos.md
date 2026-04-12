@@ -149,3 +149,7 @@ Ver [[ref-estructura-django]] para el árbol completo de Django.
 ## 🔗 Navegar
 
 ← [[MOC]] | Estructura Django: [[ref-estructura-django]] | Bootstrap: [[impl-bootstrap]] | Testing: [[ref-testing]]
+
+---
+
+_`docs/api-rust/ref-estructura-archivos.md` · rama `feature/integrations-panel-fix-17593507967815292912`_

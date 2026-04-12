@@ -333,3 +333,7 @@ Fase 4:
 ← [[dominio-intake]] | [[MOC]] | → [[dominio-importadores]]
 
 **Relacionado:** Issues: [[dominio-issues]] | Cycles: [[dominio-ciclos]] | Plan de fases: [[plan-fases]]
+
+---
+
+_`docs/api-rust/dominio-analytics.md` · rama `feature/integrations-panel-fix-17593507967815292912`_

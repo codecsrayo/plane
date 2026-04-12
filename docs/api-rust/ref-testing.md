@@ -238,3 +238,7 @@ jobs:
 ## 🔗 Navegar
 
 ← [[impl-bootstrap]] | [[MOC]] | Estructura: [[ref-estructura-archivos]] | Extractores: [[impl-extractores-auth]]
+
+---
+
+_`docs/api-rust/ref-testing.md` · rama `feature/integrations-panel-fix-17593507967815292912`_

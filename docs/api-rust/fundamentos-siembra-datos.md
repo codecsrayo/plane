@@ -87,3 +87,7 @@ Para evitar condiciones de carrera (race conditions) donde dos workers intenten 
 ## 🔗 Navegar
 
 ← [[fundamentos-migraciones-estado]] | [[MOC]] | → [[dominio-workspace-seed]]
+
+---
+
+_`docs/api-rust/fundamentos-siembra-datos.md` · rama `feature/integrations-panel-fix-17593507967815292912`_

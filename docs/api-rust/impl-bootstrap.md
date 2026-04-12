@@ -538,3 +538,7 @@ Los endpoints de la Fase 2 se listan en [[plan-fases#Fase 2 — Endpoints de alt
 ← [[plan-fases]] | [[MOC]] | → [[impl-autenticacion]]
 
 **Siguiente paso:** implementar `CurrentUser` extractor → [[impl-extractores-auth]]
+
+---
+
+_`docs/api-rust/impl-bootstrap.md` · rama `feature/integrations-panel-fix-17593507967815292912`_

@@ -484,3 +484,7 @@ Fase 3:
 ← [[dominio-analytics]] | [[MOC]] | → [[dominio-busqueda]]
 
 **Relacionado:** Integraciones: [[dominio-integraciones]] | Issues: [[dominio-issues]] | Jobs: [[impl-error-jobs-cron]]
+
+---
+
+_`docs/api-rust/dominio-importadores.md` · rama `feature/integrations-panel-fix-17593507967815292912`_

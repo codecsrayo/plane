@@ -312,3 +312,7 @@ Ver detalles: [[dominio-notificaciones#NotificationJob — job apalis Fase 3]]
 ← [[MOC]] | → [[ref-diagramas-flujo]]
 
 **Relacionado:** Workspace Seed: [[dominio-workspace-seed]] | Extractores: [[impl-extractores-auth]] | Integraciones: [[dominio-integraciones]] | Notificaciones: [[dominio-notificaciones]] | Settings: [[dominio-workspace-settings]]
+
+---
+
+_`docs/api-rust/ref-diagramas-secuencia.md` · rama `feature/integrations-panel-fix-17593507967815292912`_

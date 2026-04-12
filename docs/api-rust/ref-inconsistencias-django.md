@@ -459,5 +459,5 @@ Los siguientes dominios fueron auditados y **no presentan inconsistencias**:
 
 ---
 
-_Auditoría realizada sobre rama `feature/integrations-panel-fix-17593507967815292912`_
+_`docs/api-rust/ref-inconsistencias-django.md` · rama `feature/integrations-panel-fix-17593507967815292912`_
 _Fuente de verdad: `apps/api/plane/app/urls/_.py`\*

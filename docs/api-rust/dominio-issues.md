@@ -576,3 +576,7 @@ Fase 4:
 ← [[dominio-proyectos]] | [[MOC]] | → [[dominio-ciclos]]
 
 **Relacionado:** Cycles: [[dominio-ciclos]] | Modules: [[dominio-modulos]] | Extractores: [[impl-extractores-auth]] | Búsqueda: [[dominio-busqueda]]
+
+---
+
+_`docs/api-rust/dominio-issues.md` · rama `feature/integrations-panel-fix-17593507967815292912`_

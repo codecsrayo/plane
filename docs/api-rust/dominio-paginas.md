@@ -330,3 +330,7 @@ Fase 4:
 ← [[dominio-modulos]] | [[MOC]] | → [[dominio-notificaciones]]
 
 **Relacionado:** Issues: [[dominio-issues]] | Proyectos: [[dominio-proyectos]] | Seed (pages iniciales): [[dominio-workspace-seed]]
+
+---
+
+_`docs/api-rust/dominio-paginas.md` · rama `feature/integrations-panel-fix-17593507967815292912`_

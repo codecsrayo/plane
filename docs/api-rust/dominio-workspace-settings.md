@@ -478,3 +478,7 @@ Endpoints del workspace para gestionar estado de UI del usuario (homescreen, sti
 ← [[dominio-integraciones]] | [[MOC]] | → [[ref-diagramas-flujo]]
 
 **Relacionado:** Integraciones detalle: [[dominio-integraciones]] | Diagrama secuencia: [[ref-diagramas-secuencia#5. Flujo Workspace Settings — cambio de rol de miembro]] | Jobs: [[impl-error-jobs-cron]]
+
+---
+
+_`docs/api-rust/dominio-workspace-settings.md` · rama `feature/integrations-panel-fix-17593507967815292912`_

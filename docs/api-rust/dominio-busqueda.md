@@ -380,3 +380,7 @@ Fase 2:
 ← [[dominio-importadores]] | [[MOC]] | → [[dominio-issues]]
 
 **Relacionado:** Issues: [[dominio-issues]] | Proyectos: [[dominio-proyectos]] | Repository Pattern: [[impl-appstate-repository]]
+
+---
+
+_`docs/api-rust/dominio-busqueda.md` · rama `feature/integrations-panel-fix-17593507967815292912`_

@@ -293,3 +293,7 @@ flowchart TD
 ← [[ref-diagramas-secuencia]] | [[MOC]]
 
 **Relacionado:** Extractores: [[impl-extractores-auth]] | Workspace Settings: [[dominio-workspace-settings]] | Fases: [[plan-fases]]
+
+---
+
+_`docs/api-rust/ref-diagramas-flujo.md` · rama `feature/integrations-panel-fix-17593507967815292912`_

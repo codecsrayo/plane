@@ -341,3 +341,7 @@ Fase 4:
 ← [[dominio-workspace-settings]] | [[MOC]] | → [[dominio-issues]]
 
 **Relacionado:** Issues: [[dominio-issues]] | Cycles: [[dominio-ciclos]] | Modules: [[dominio-modulos]] | Guards: [[impl-extractores-auth]]
+
+---
+
+_`docs/api-rust/dominio-proyectos.md` · rama `feature/integrations-panel-fix-17593507967815292912`_

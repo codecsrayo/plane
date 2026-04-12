@@ -138,3 +138,7 @@ anyhow          = "1"
 ## 🔗 Navegar
 
 ← [[vision-objetivo]] | [[MOC]] | → [[vision-arquitectura]] | Código: [[impl-bootstrap]]
+
+---
+
+_`docs/api-rust/vision-stack.md` · rama `feature/integrations-panel-fix-17593507967815292912`_

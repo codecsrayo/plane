@@ -207,3 +207,7 @@ Antes de cualquier deploy a producción, verificar:
 ← [[plan-fases]] | [[MOC]]
 
 **Relacionado:** Workspace Seed: [[dominio-workspace-seed]] | Integraciones: [[dominio-integraciones]] | Soft delete: [[fundamentos-soft-delete]]
+
+---
+
+_`docs/api-rust/plan-riesgos.md` · rama `feature/integrations-panel-fix-17593507967815292912`_
