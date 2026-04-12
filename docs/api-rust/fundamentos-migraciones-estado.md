@@ -29,7 +29,7 @@ estado: activo
 | Archivo                      | Contenido                                                                   | Estado |
 | ---------------------------- | --------------------------------------------------------------------------- | ------ |
 | `m20260410_000001_baseline`  | Schema completo (Django legacy) cargado vía `sql/baseline.sql`              | ✅     |
-| `m20240101_000007_seed_data` | Filas estáticas para `integrations` e `instance_configurations`             | ✅     |
+| `m20240101_000007_seed_data` | Filas estáticas para `integrations` e `instance_configurations`. Ver [[fundamentos-siembra-datos]]. | ✅     |
 
 > [!NOTE] Consolidación de migraciones
 > Para simplificar el arranque del proyecto Rust, las migraciones incrementales `m001` a `m006` que existían en la fase de diseño se han consolidado en un único script SQL de **baseline**. Esto garantiza que el schema sea idéntico al de Django sin el overhead de 120+ archivos de migración.
