@@ -36,6 +36,8 @@ estado: activo
 | WS-4 | [Exports](#ws-4--exports) | `/{slug}/settings/exports/` | Admin, Member |
 | WS-5 | [Integrations](#ws-5--integrations) | `/{slug}/settings/integrations/` | Admin |
 | WS-6 | [Webhooks](#ws-6--webhooks) | `/{slug}/settings/webhooks/` | Admin |
+| WS-7 | [UI State](#ws-7--workspace-ui-state-endpoints-modernos) | - | Admin, Member |
+| WS-8 | [Aggregates](#ws-8--workspace-aggregates) | - | Admin, Member |
 
 ---
 
@@ -86,8 +88,8 @@ Router::new()
 
 | Método | URL | Guard |
 |--------|-----|-------|
-| `GET` | `/api/workspaces/{slug}/members/` | `WorkspaceMemberGuard (≥15)` |
-| `GET` | `/api/workspaces/{slug}/members/{pk}/` | `WorkspaceMemberGuard (≥15)` |
+| `GET` | `/api/workspaces/{slug}/members/` | `WorkspaceMemberGuard (≥5)` |
+| `GET` | `/api/workspaces/{slug}/members/{pk}/` | `WorkspaceMemberGuard (≥5)` |
 | `PATCH` | `/api/workspaces/{slug}/members/{pk}/` | `WorkspaceMemberGuard (≥20)` |
 | `DELETE` | `/api/workspaces/{slug}/members/{pk}/` | `WorkspaceMemberGuard (≥20)` |
 | `POST` | `/api/workspaces/{slug}/members/leave/` | `WorkspaceMemberGuard (≥5)` |
@@ -300,6 +302,34 @@ Endpoints del workspace para gestionar estado de UI del usuario (homescreen, sti
 | `GET/POST` | `/api/workspaces/{slug}/stickies/` | `WorkspaceStickyViewSet` |
 | `GET/PATCH/DELETE` | `/api/workspaces/{slug}/stickies/{pk}/` | `WorkspaceStickyViewSet` |
 | `GET/PATCH` | `/api/workspaces/{slug}/sidebar-preferences/` | `WorkspaceUserPreferenceViewSet` |
+
+**Workspace Favorites (INC-15):**
+
+| Método | URL | Vista Django |
+|--------|-----|-------------|
+| `GET/POST` | `/api/workspaces/{slug}/user-favorites/` | `WorkspaceFavoriteEndpoint` |
+| `GET/PATCH/DELETE` | `/api/workspaces/{slug}/user-favorites/{favorite_id}/` | `WorkspaceFavoriteEndpoint` |
+| `GET` | `/api/workspaces/{slug}/user-favorites/{favorite_id}/group/` | `WorkspaceFavoriteGroupEndpoint` |
+
+---
+
+## WS-8 — Workspace Aggregates
+
+> [!WARNING] INC-17 — Endpoints de agregación cross-project.
+
+| Método | URL | Vista Django | Descripción |
+|--------|-----|-------------|-------------|
+| `GET` | `/api/workspaces/{slug}/labels/` | `WorkspaceLabelsEndpoint` | Todos los labels del workspace |
+| `GET` | `/api/workspaces/{slug}/states/` | `WorkspaceStatesEndpoint` | Todos los estados del workspace |
+| `GET` | `/api/workspaces/{slug}/estimates/` | `WorkspaceEstimatesEndpoint` | Todos los sistemas de estimación |
+| `GET` | `/api/workspaces/{slug}/modules/` | `WorkspaceModulesEndpoint` | Todos los módulos del workspace |
+| `GET` | `/api/workspaces/{slug}/cycles/` | `WorkspaceCyclesEndpoint` | Todos los ciclos del workspace |
+| `GET/PATCH` | `/api/workspaces/{slug}/user-properties/` | `WorkspaceUserPropertiesEndpoint` | Filtros globales del usuario |
+| `GET/POST` | `/api/workspaces/{slug}/workspace-themes/` | `WorkspaceThemeViewSet` | Temas del workspace |
+| `GET/PATCH/DELETE` | `/api/workspaces/{slug}/workspace-themes/{pk}/` | `WorkspaceThemeViewSet` | — |
+| `GET` | `/api/workspaces/{slug}/workspace-views/` | `WorkspaceMemberUserViewsEndpoint` | Vistas guardadas del usuario |
+| `GET` | `/api/workspaces/{slug}/workspace-members/me/` | `WorkspaceMemberUserEndpoint` | Info del miembro actual |
+| `GET` | `/api/workspaces/{slug}/project-members/` | `WorkspaceProjectMemberEndpoint` | Roles en proyectos |
 
 ---
 

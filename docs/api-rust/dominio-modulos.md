@@ -60,6 +60,9 @@ projects
 | `GET/PUT/PATCH/DELETE` | `/workspaces/{slug}/projects/{id}/modules/{module_id}/issues/{issue_id}/` | `ProjectMemberGuard (≥15)` | 4 |
 | `POST` | `/workspaces/{slug}/projects/{id}/issues/{issue_id}/modules/` | `ProjectMemberGuard (≥15)` | 4 |
 
+> [!WARNING] INC-04 corregido
+> El endpoint `/issues/{issue_id}/modules/` solo acepta `POST` en Django. El `DELETE` de un issue de un módulo se hace por la ruta inversa `DELETE /modules/{module_id}/issues/{issue_id}/`.
+
 ### Links del módulo
 
 | Método | URL | Guard | Fase |
@@ -73,7 +76,10 @@ projects
 |--------|-----|-------|------|
 | `POST/DELETE` | `/workspaces/{slug}/projects/{id}/modules/{module_id}/archive/` | `ProjectMemberGuard (≥15)` | 4 |
 | `GET` | `/workspaces/{slug}/projects/{id}/archived-modules/` | `ProjectMemberGuard (≥5)` | 4 |
-| `GET/DELETE` | `/workspaces/{slug}/projects/{id}/archived-modules/{pk}/` | `ProjectMemberGuard (≥5/15)` | 4 |
+| `GET` | `/workspaces/{slug}/projects/{id}/archived-modules/{pk}/` | `ProjectMemberGuard (≥5)` | 4 |
+
+> [!WARNING] INC-10 corregido
+> El endpoint `/archived-modules/{pk}/` solo acepta `GET`. Para desarchivar (unarchive) se debe usar `DELETE /modules/{module_id}/archive/`.
 
 ### Favoritos y preferencias de usuario
 
