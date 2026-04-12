@@ -131,6 +131,8 @@ workspaces
 | `POST` | `/workspaces/{slug}/projects/{project_id}/states/{pk}/mark-default/` | Marcar estado como default del grupo | 4 |
 | `GET` | `/workspaces/{slug}/projects/{project_id}/intake-state/` | `IntakeStateEndpoint` — estado especial de Intake/Triage | 4 |
 
+> [!NOTE] INC-07 — En Django, `intake-state` está registrado en `urls/state.py`, no en `urls/project.py`. En Rust, este endpoint debe ir en el módulo `states`, no en `projects`.
+
 > [!WARNING] Django expone `PATCH` en states, no `PUT`
 > El `StateViewSet` usa `partial_update` (PATCH), no `update` (PUT). En Axum solo registrar PATCH.
 

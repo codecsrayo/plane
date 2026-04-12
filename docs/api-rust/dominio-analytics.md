@@ -65,6 +65,8 @@ estado: activo
 | `GET` | `/workspaces/{slug}/user-profile/{user_id}/` | `WorkspaceMemberGuard (≥5)` | 4 |
 | `GET` | `/workspaces/{slug}/user-issues/{user_id}/` | `WorkspaceMemberGuard (≥5)` | 4 |
 
+> [!NOTE] INC-08 — En Django estos endpoints están en `urls/workspace.py` (vistas `WorkspaceUserProfileStatsEndpoint`, `WorkspaceUserActivityEndpoint`, etc.), no en el módulo analytics. En Rust deben vivir en el router de **workspace**, no en analytics.
+
 ---
 
 ## `GET /analytics/` — analytics principal

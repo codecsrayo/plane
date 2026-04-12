@@ -74,7 +74,7 @@ issues (tabla principal)
 | Método | URL real Django | Descripción | Fase |
 |--------|----------------|-------------|------|
 | `GET` | `/workspaces/{slug}/projects/{project_id}/issues/list/` | `IssueListEndpoint` — lista ligera con IDs, sin joins pesados | 2 |
-| `GET` | `/workspaces/{slug}/projects/{project_id}/issues-detail/` | `IssueDetailEndpoint` — issues con joins expandidos para board/list view | 2 |
+| `GET` | `/workspaces/{slug}/projects/{project_id}/issues-detail/` | `IssueDetailEndpoint` — lista de issues con joins expandidos (assignees, labels, state populados); distinto del retrieve individual `/{pk}/` que devuelve un solo issue | 2 |
 | `GET` | `/workspaces/{slug}/projects/{project_id}/v2/issues/` | `IssuePaginatedViewSet` — paginación cursor v2 | 4 |
 
 ### Labels
