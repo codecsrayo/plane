@@ -31,38 +31,39 @@ estado: activo
 
 | Método | URL | Guard | Fase |
 |--------|-----|-------|------|
-| `GET` | `/api/workspaces/{slug}/analytics/` | `WorkspaceMemberGuard (≥5)` | 4 |
-| `GET` | `/api/workspaces/{slug}/default-analytics/` | `WorkspaceMemberGuard (≥5)` | 4 |
-| `GET` | `/api/workspaces/{slug}/export-analytics/` | `WorkspaceMemberGuard (≥5)` | 4 |
-| `GET` | `/api/workspaces/{slug}/project-stats/` | `WorkspaceMemberGuard (≥5)` | 4 |
+| `GET` | `/workspaces/{slug}/analytics/` | `WorkspaceMemberGuard (≥5)` | 4 |
+| `GET` | `/workspaces/{slug}/default-analytics/` | `WorkspaceMemberGuard (≥5)` | 4 |
+| `GET` | `/workspaces/{slug}/export-analytics/` | `WorkspaceMemberGuard (≥5)` | 4 |
+| `GET` | `/workspaces/{slug}/project-stats/` | `WorkspaceMemberGuard (≥5)` | 4 |
 
 ### Analytic views (guardadas)
 
 | Método | URL | Guard | Fase |
 |--------|-----|-------|------|
-| `GET/POST` | `/api/workspaces/{slug}/analytic-view/` | `WorkspaceMemberGuard (≥5)` | 4 |
-| `GET/PATCH/DELETE` | `/api/workspaces/{slug}/analytic-view/{pk}/` | `WorkspaceMemberGuard (≥5)` | 4 |
-| `POST` | `/api/workspaces/{slug}/saved-analytic-view/{analytic_id}/` | `WorkspaceMemberGuard (≥5)` | 4 |
+| `GET/POST` | `/workspaces/{slug}/analytic-view/` | `WorkspaceMemberGuard (≥5)` | 4 |
+| `GET/PATCH/DELETE` | `/workspaces/{slug}/analytic-view/{pk}/` | `WorkspaceMemberGuard (≥5)` | 4 |
+| `POST` | `/workspaces/{slug}/saved-analytic-view/{analytic_id}/` | `WorkspaceMemberGuard (≥5)` | 4 |
 
 ### Advance analytics
 
 | Método | URL | Guard | Fase |
 |--------|-----|-------|------|
-| `GET` | `/api/workspaces/{slug}/advance-analytics/` | `WorkspaceMemberGuard (≥5)` | 4 |
-| `GET` | `/api/workspaces/{slug}/advance-analytics-stats/` | `WorkspaceMemberGuard (≥5)` | 4 |
-| `GET` | `/api/workspaces/{slug}/advance-analytics-charts/` | `WorkspaceMemberGuard (≥5)` | 4 |
-| `GET` | `/api/workspaces/{slug}/projects/{id}/advance-analytics/` | `ProjectMemberGuard (≥5)` | 4 |
-| `GET` | `/api/workspaces/{slug}/projects/{id}/advance-analytics-stats/` | `ProjectMemberGuard (≥5)` | 4 |
-| `GET` | `/api/workspaces/{slug}/projects/{id}/advance-analytics-charts/` | `ProjectMemberGuard (≥5)` | 4 |
+| `GET` | `/workspaces/{slug}/advance-analytics/` | `WorkspaceMemberGuard (≥5)` | 4 |
+| `GET` | `/workspaces/{slug}/advance-analytics-stats/` | `WorkspaceMemberGuard (≥5)` | 4 |
+| `GET` | `/workspaces/{slug}/advance-analytics-charts/` | `WorkspaceMemberGuard (≥5)` | 4 |
+| `GET` | `/workspaces/{slug}/projects/{id}/advance-analytics/` | `ProjectMemberGuard (≥5)` | 4 |
+| `GET` | `/workspaces/{slug}/projects/{id}/advance-analytics-stats/` | `ProjectMemberGuard (≥5)` | 4 |
+| `GET` | `/workspaces/{slug}/projects/{id}/advance-analytics-charts/` | `ProjectMemberGuard (≥5)` | 4 |
 
 ### Stats de usuario en workspace
 
 | Método | URL | Guard | Fase |
 |--------|-----|-------|------|
-| `GET` | `/api/workspaces/{slug}/user-stats/{user_id}/` | `WorkspaceMemberGuard (≥5)` | 4 |
-| `GET` | `/api/workspaces/{slug}/user-activity/{user_id}/` | `WorkspaceMemberGuard (≥5)` | 4 |
-| `GET` | `/api/workspaces/{slug}/user-profile/{user_id}/` | `WorkspaceMemberGuard (≥5)` | 4 |
-| `GET` | `/api/workspaces/{slug}/user-issues/{user_id}/` | `WorkspaceMemberGuard (≥5)` | 4 |
+| `GET` | `/workspaces/{slug}/user-stats/{user_id}/` | `WorkspaceMemberGuard (≥5)` | 4 |
+| `GET` | `/workspaces/{slug}/user-activity/{user_id}/` | `WorkspaceMemberGuard (≥5)` | 4 |
+| `GET` | `/workspaces/{slug}/user-activity/{user_id}/export/` | `WorkspaceMemberGuard (≥5)` | 4 |
+| `GET` | `/workspaces/{slug}/user-profile/{user_id}/` | `WorkspaceMemberGuard (≥5)` | 4 |
+| `GET` | `/workspaces/{slug}/user-issues/{user_id}/` | `WorkspaceMemberGuard (≥5)` | 4 |
 
 ---
 
