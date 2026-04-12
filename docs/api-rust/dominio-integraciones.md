@@ -174,11 +174,52 @@ pub async fn get_installation_access_token(
 // src/utils/oauth_popup.rs
 use axum::response::Html;
 
-pub fn postmessage_html(success: bool, message_type: &str, error: Option<&str>) -> Html<String> {
-    let error_json   = error
-        .map(|e| format!(r#", "error": "{}""#, e.replace('"', "\\\"")))
-        .unwrap_or_default();
-    let success_str  = if success { "true" } else { "false" };
+/// Tipos de mensaje permitidos explícitamente para postMessage OAuth.
+/// [Fix #16] Allowlist para evitar XSS via message_type no sanitizado.
+#[derive(Debug, Clone, Copy)]
+pub enum OAuthMessageType {
+    GithubIntegration,
+    GitlabIntegration,
+    SlackIntegration,
+    GithubUserConnection,
+}
+
+impl OAuthMessageType {
+    /// Retorna el string literal exacto enviado al frontend.
+    /// ⚠️ Los valores deben coincidir con los que espera el frontend Next.js.
+    pub fn as_str(&self) -> &'static str {
+        match self {
+            Self::GithubIntegration    => "github-integration",
+            Self::GitlabIntegration    => "gitlab-integration",
+            Self::SlackIntegration     => "slack-integration",
+            Self::GithubUserConnection => "github-user-connection",
+        }
+    }
+}
+
+/// Genera el HTML de cierre de popup OAuth con postMessage al opener.
+///
+/// [Fix #16] message_type ahora es un enum tipado — nunca interpolado
+/// desde input externo. Un atacante que controle el parámetro `state=`
+/// del callback de GitHub podría antes inyectar JS arbitrario en el
+/// `<script>` si message_type era un &str libre.
+///
+/// [Fix #17] El mensaje de error se serializa con serde_json para garantizar
+/// escaping correcto de todos los caracteres especiales (\n, ', ", etc.).
+/// El reemplazo manual `.replace('"', "\\\"")` anterior no escapaba
+/// backticks ni saltos de línea — suficiente para romper el JSON o inyectar JS.
+pub fn postmessage_html(
+    success: bool,
+    message_type: OAuthMessageType,  // ← enum, no &str libre
+    error: Option<&str>,
+) -> Html<String> {
+    // Serializar a JSON con escaping completo vía serde_json
+    let payload = serde_json::json!({
+        "type":    message_type.as_str(),
+        "success": success,
+        "error":   error,
+    });
+    let payload_json = payload.to_string(); // escaping garantizado
 
     Html(format!(r#"<!DOCTYPE html>
 <html><head><meta charset="utf-8"></head>
@@ -187,7 +228,7 @@ pub fn postmessage_html(success: bool, message_type: &str, error: Option<&str>) 
 (function(){{
   try{{
     window.opener && window.opener.postMessage(
-      {{"type":"{message_type}","success":{success_str}{error_json}}},
+      {payload_json},
       window.location.origin
     );
   }}catch(e){{}}
