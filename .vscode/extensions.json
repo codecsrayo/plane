@@ -5,16 +5,6 @@
   "recommendations": [
     // ── Rust core ────────────────────────────────────────────────────────────
     // LSP completo: completions, go-to-def, inlay hints, refactors, run/debug
-    "rust-lang.rust-analyzer",
-
-    // Debugger LLDB — requerido por rust-analyzer para breakpoints en Rust
-    // (alternativa: ms-vscode.cpptools, pero CodeLLDB es superior para Rust)
-    "vadimcn.vscode-lldb",
-
-    // ── Cargo / dependencias ─────────────────────────────────────────────────
-    // Muestra versión actual vs última disponible inline en Cargo.toml
-    // Permite cambiar versión con un click y abre docs.rs desde el editor
-    // Nota: "crates" (serayuzgur) fue deprecado → "dependi" es el sucesor
     "fill-labs.dependi",
 
     // ── TOML ─────────────────────────────────────────────────────────────────
@@ -38,16 +28,15 @@
     "ms-azuretools.vscode-docker",
 
     // GitLens — blame inline, historial por línea, comparación de ramas
-    "eamodio.gitlens",
-
-    // DotENV — syntax highlight para archivos .env
     "mikestead.dotenv",
 
     // REST Client — alternativa ligera a Bruno para peticiones rápidas .http
     // (complementario a Bruno, no excluyente)
     "humao.rest-client",
     "mvintg.pg-manager",
-    "task.vscode-task"
+    "task.vscode-task",
+    "vadimcn.vscode-lldb",
+    "rust-lang.rust-analyzer"
   ],
 
   // Extensiones explícitamente NO recomendadas (evitar conflictos)
