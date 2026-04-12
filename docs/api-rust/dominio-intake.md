@@ -319,6 +319,14 @@ scheduler.add(Job::new_async("0 */30 * * * *", |_, _| Box::pin(async {
 
 ---
 
+## Plan de implementación
+
+```
+Fase 3:
+  [ ] src/routes/intake.rs         — CRUD de intake forms + IntakeIssueEndpoint
+  [ ] src/jobs/scheduled.rs        — cron de desnoozear issues (IntakeSnoozeCronJob)
+```
+
 ## 🔗 Navegar
 
 ← [[dominio-notificaciones]] | [[MOC]] | → [[dominio-analytics]]

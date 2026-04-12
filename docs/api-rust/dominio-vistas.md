@@ -170,6 +170,15 @@ pub struct ViewResponse {
 
 ---
 
+## Plan de implementación
+
+```
+Fase 3:
+  [ ] src/routes/views.rs          — CRUD workspace-views + project-views
+                                     POST/DELETE /favorite-views/{id}/
+                                     GET /issues/ (issues filtrados por view.query)
+```
+
 ## 🔗 Navegar
 
 ← [[dominio-issues]] | [[MOC]] | → [[dominio-workspace-settings]]

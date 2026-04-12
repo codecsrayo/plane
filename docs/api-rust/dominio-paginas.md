@@ -314,6 +314,16 @@ pub struct PageSummary {
 
 ---
 
+## Plan de implementación
+
+```
+Fase 4:
+  [ ] src/routes/pages.rs          — CRUD + lock/unlock + archive + duplicate + access
+  [ ] src/routes/page_versions.rs  — GET versiones + GET versión específica
+  [ ] src/utils/page_version.rs    — create_page_version helper (snapshot on save)
+  [ ] src/routes/favorite_pages.rs — POST/DELETE /favorite-pages/{id}/
+```
+
 ## 🔗 Navegar
 
 ← [[dominio-modulos]] | [[MOC]] | → [[dominio-notificaciones]]

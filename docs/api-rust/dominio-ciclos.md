@@ -293,6 +293,18 @@ pub struct CycleResponse {
 
 ---
 
+## Plan de implementación
+
+```
+Fase 2:
+  [ ] src/routes/cycles.rs         — CRUD + CycleListEndpoint + CycleDetailEndpoint
+  [ ] src/routes/cycle_issues.rs   — añadir/quitar issues de ciclo + transfer issues
+
+Fase 3:
+  [ ] src/jobs/scheduled.rs        — cron de cálculo de progreso de ciclos (completadas en doc)
+  [ ] src/utils/cycle_progress.rs  — helper: completedIssues / totalIssues → porcentaje
+```
+
 ## 🔗 Navegar
 
 ← [[dominio-issues]] | [[MOC]] | → [[dominio-modulos]]

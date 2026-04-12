@@ -317,6 +317,16 @@ pub async fn export_analytics(
 
 ---
 
+## Plan de implementación
+
+```
+Fase 4:
+  [ ] src/routes/analytics.rs       — GET /analytics/ + GET /default-analytics/
+                                       GET /user-stats/{user_id}/
+                                       GET /export/ (CSV streaming response)
+  [ ] src/repositories/analytics.rs — queries GROUP BY dinámicas con allowlist x_axis/y_axis
+```
+
 ## 🔗 Navegar
 
 ← [[dominio-intake]] | [[MOC]] | → [[dominio-importadores]]

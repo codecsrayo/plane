@@ -463,6 +463,15 @@ hex     = "0.4"    # encode/decode del token cifrado
 
 ---
 
+## Plan de implementación
+
+```
+Fase 3:
+  [ ] src/jobs/importer.rs           — CsvImporterJob + GithubImporterJob (apalis)
+  [ ] src/routes/importers.rs        — POST iniciar importación + GET estado
+  [ ] src/utils/importer_mapping.rs  — mapeo de estados/prioridades CSV→Plane
+```
+
 ## 🔗 Navegar
 
 ← [[dominio-analytics]] | [[MOC]] | → [[dominio-busqueda]]

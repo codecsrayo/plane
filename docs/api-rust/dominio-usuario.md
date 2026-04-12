@@ -140,6 +140,23 @@ pub struct UserResponse {
 
 ---
 
+## Plan de implementación
+
+```
+Fase 1:
+  [ ] src/routes/users.rs          — GET /users/me/ + GET /users/me/profile/ (PATCH)
+                                     POST /users/me/onboard/ + GET /users/me/workspaces/
+
+Fase 4:
+  [ ] src/routes/users.rs          — PATCH /users/me/ + DELETE /users/me/ (soft)
+                                     GET /users/me/settings/ + PATCH email + tour-completed
+                                     GET /users/me/accounts/ + DELETE account
+                                     GET /users/me/activities/
+                                     GET /users/me/workspaces/{slug}/activity-graph/
+                                     GET /users/me/workspaces/{slug}/issues-completed-graph/
+                                     GET /users/me/workspaces/{slug}/dashboard/
+```
+
 ## 🔗 Navegar
 
 ← [[dominio-vistas]] | [[MOC]] | → [[impl-autenticacion]]

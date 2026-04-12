@@ -256,6 +256,21 @@ pub struct IssueQueryParams {
 
 ---
 
+## Plan de implementación
+
+```
+Fase 1:
+  [ ] src/main.rs             — construir AppState (db + config + http)
+
+Fase 2:
+  [ ] src/repositories/       — módulo con un repositorio por dominio (issues, workspaces…)
+  [ ] src/main.rs             — añadir redis (fred::Pool) a AppState
+
+Fase 3:
+  [ ] src/main.rs             — añadir apalis PostgresStorage a AppState
+  [ ] src/auth/rate_limit.rs  — RateLimitState migrar de DashMap a Redis
+```
+
 ## 🔗 Navegar
 
 ← [[impl-bootstrap]] | [[MOC]] | → [[impl-extractores-auth]] | → [[impl-error-jobs-cron]]

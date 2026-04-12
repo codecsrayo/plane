@@ -93,6 +93,17 @@ estado: activo
 
 ---
 
+## Plan de implementación
+
+```
+Fase 2:
+  [ ] src/routes/assets.rs         — GET/DELETE /assets/v2/{asset_id}/
+                                     POST /assets/v2/entity/ (presigned upload)
+  [ ] src/routes/api_tokens.rs     — CRUD /api-tokens/
+  [ ] src/routes/timezones.rs      — GET /timezones/ (lista estática)
+  [ ] src/utils/s3.rs              — generate_presigned_url + delete_asset (aws-sdk-s3)
+```
+
 ## 🔗 Navegar
 
 ← [[dominio-usuario]] | [[MOC]] | → [[dominio-busqueda]]

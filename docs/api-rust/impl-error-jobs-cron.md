@@ -287,6 +287,19 @@ pub async fn start_scheduler(db: sea_orm::DatabaseConnection) -> anyhow::Result<
 
 ---
 
+## Plan de implementación
+
+```
+Fase 1:
+  [ ] src/error.rs            — AppError enum completo + IntoResponse
+
+Fase 3:
+  [ ] src/jobs/mod.rs         — build_monitor() con todos los workers registrados
+  [ ] src/jobs/notifications.rs — NotificationJob handler
+  [ ] src/jobs/email.rs         — EmailJob handler (lettre)
+  [ ] src/jobs/scheduled.rs     — crons: deadline, snooze intake, cycle progress
+```
+
 ## 🔗 Navegar
 
 ← [[impl-extractores-auth]] | [[MOC]] | → [[dominio-workspace-seed]]

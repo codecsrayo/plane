@@ -451,6 +451,18 @@ where S: Send + Sync + AsRef<AppState>,
 
 ---
 
+## Plan de implementación
+
+```
+Fase 1:
+  [ ] src/auth/middleware.rs    — session cookie middleware (tower Layer)
+  [ ] src/auth/rate_limit.rs   — RateLimitState (DashMap en memoria, migrar a Redis Fase 3)
+  [ ] src/auth/extractors.rs   — CurrentUser + guards (ver impl-extractores-auth)
+
+Fase 3:
+  [ ] src/auth/rate_limit.rs   — migrar RateLimitState a Redis (fred) para multi-réplica
+```
+
 ## 🔗 Navegar
 
 ← [[impl-bootstrap]] | [[MOC]] | → [[impl-extractores-auth]]

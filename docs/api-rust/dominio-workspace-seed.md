@@ -316,6 +316,16 @@ async fn create_workspace(
 
 ---
 
+## Plan de implementación
+
+```
+Fase 2:
+  [ ] src/jobs/workspace_seed/mod.rs       — run_workspace_seed orquestador
+  [ ] src/jobs/workspace_seed/seed_data.rs — create_default_states + create_default_labels
+                                             + create_default_members + create_default_cycles
+  [ ] src/routes/workspaces.rs             — llamar al seed en POST /api/workspaces/
+```
+
 ## 🔗 Navegar
 
 ← [[impl-error-jobs-cron]] | [[MOC]] | → [[dominio-integraciones]]

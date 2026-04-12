@@ -365,6 +365,15 @@ Documentar como opción de Fase 4+ cuando el volumen de issues supere 50k por wo
 
 ---
 
+## Plan de implementación
+
+```
+Fase 2:
+  [ ] src/routes/search.rs          — GET /workspaces/{slug}/search/ (GlobalSearchParams)
+                                       GET /workspaces/{slug}/projects/{id}/search-issues/
+                                       GET /workspaces/{slug}/projects/{id}/workspace-search/
+```
+
 ## 🔗 Navegar
 
 ← [[dominio-importadores]] | [[MOC]] | → [[dominio-issues]]

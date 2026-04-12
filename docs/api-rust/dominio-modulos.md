@@ -291,6 +291,15 @@ pub struct ModuleResponse {
 
 ---
 
+## Plan de implementación
+
+```
+Fase 3:
+  [ ] src/routes/modules.rs        — CRUD + ModuleListEndpoint + ModuleDetailEndpoint
+  [ ] src/routes/module_issues.rs  — añadir/quitar issues de módulo
+  [ ] src/routes/module_links.rs   — CRUD links de módulo
+```
+
 ## 🔗 Navegar
 
 ← [[dominio-ciclos]] | [[MOC]] | → [[dominio-paginas]]

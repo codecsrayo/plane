@@ -474,6 +474,17 @@ Los endpoints de la Fase 2 se listan en [[plan-fases#Fase 2 — Endpoints de alt
 
 ---
 
+## Plan de implementación
+
+```
+Fase 1 (bootstrap mínimo funcional):
+  [ ] src/config.rs          — Config::from_env() + fn required()
+  [ ] src/error.rs           — AppError enum + IntoResponse impl
+  [ ] src/routes/health.rs   — GET /api/health (DB ping, sin auth)
+  [ ] src/routes/mod.rs      — build_router() + OpenApi struct + Swagger UI (solo DEBUG)
+  [ ] src/main.rs            — AppState + TCP listener + tracing subscriber
+```
+
 ## 🔗 Navegar
 
 ← [[plan-fases]] | [[MOC]] | → [[impl-autenticacion]]

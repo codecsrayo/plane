@@ -446,6 +446,17 @@ async fn test_non_member_returns_403() {
 
 ---
 
+## Plan de implementación
+
+```
+Fase 1:
+  [ ] src/auth/extractors.rs  — CurrentUser (Bearer token)
+                                 WorkspaceMemberGuard (slug → workspace + member)
+                                 ProjectMemberGuard (project_id → project + member)
+  [ ] src/routes/mod.rs       — constantes ROLE_GUEST/VIEWER/MEMBER/ADMIN
+                                 fn require_role() con Workspace Admin override
+```
+
 ## 🔗 Navegar
 
 ← [[impl-autenticacion]] | [[MOC]] | → [[impl-error-jobs-cron]]
