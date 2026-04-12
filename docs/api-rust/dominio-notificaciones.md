@@ -48,14 +48,15 @@ users
 
 | Método | URL | Guard | Fase |
 |--------|-----|-------|------|
-| `GET` | `/api/workspaces/{slug}/users/notifications/` | `WorkspaceMemberGuard (≥5)` | 4 |
-| `GET` | `/api/workspaces/{slug}/users/notifications/{pk}/` | `WorkspaceMemberGuard (≥5)` | 4 |
-| `PATCH` | `/api/workspaces/{slug}/users/notifications/{pk}/` | `WorkspaceMemberGuard (≥5)` | 4 |
-| `DELETE` | `/api/workspaces/{slug}/users/notifications/{pk}/` | `WorkspaceMemberGuard (≥5)` | 4 |
-| `POST` | `/api/workspaces/{slug}/users/notifications/{pk}/read/` | `WorkspaceMemberGuard (≥5)` | 4 |
-| `POST` | `/api/workspaces/{slug}/users/notifications/{pk}/archive/` | `WorkspaceMemberGuard (≥5)` | 4 |
-| `GET` | `/api/workspaces/{slug}/users/notifications/unread/` | `WorkspaceMemberGuard (≥5)` | 4 |
-| `POST` | `/api/workspaces/{slug}/users/notifications/mark-all-read/` | `WorkspaceMemberGuard (≥5)` | 4 |
+| `GET` | `/workspaces/{slug}/users/notifications/` | `WorkspaceMemberGuard (≥5)` | 4 |
+| `GET` | `/workspaces/{slug}/users/notifications/{pk}/` | `WorkspaceMemberGuard (≥5)` | 4 |
+| `PATCH` | `/workspaces/{slug}/users/notifications/{pk}/` | `WorkspaceMemberGuard (≥5)` | 4 |
+| `DELETE` | `/workspaces/{slug}/users/notifications/{pk}/` | `WorkspaceMemberGuard (≥5)` | 4 |
+| `POST/DELETE` | `/workspaces/{slug}/users/notifications/{pk}/read/` | `WorkspaceMemberGuard (≥5)` | 4 |
+| `POST/DELETE` | `/workspaces/{slug}/users/notifications/{pk}/archive/` | `WorkspaceMemberGuard (≥5)` | 4 |
+| `GET` | `/workspaces/{slug}/users/notifications/unread/` | `WorkspaceMemberGuard (≥5)` | 4 |
+| `POST` | `/workspaces/{slug}/users/notifications/mark-all-read/` | `WorkspaceMemberGuard (≥5)` | 4 |
+| `GET/PATCH` | `/users/me/notification-preferences/` | `AuthGuard` | 4 |
 
 ---
 
