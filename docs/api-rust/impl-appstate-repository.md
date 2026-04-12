@@ -161,28 +161,27 @@ Los tests pueden **mockear el repository** sin levantar DB real. El handler solo
 
 ## 3. Inicialización de AppState en `main.rs`
 
+> Bootstrap completo → [[impl-bootstrap#main.rs — bootstrap completo]].
+
+Evolución del `AppState` por fases:
+
 ```rust
-// src/main.rs (fragmento)
-use sea_orm::Database;
-use std::sync::Arc;
-
-// 1. Conectar a PostgreSQL
-let db = Database::connect(&config.database_url).await?;
-
-// 2. (Fase 2) Conectar a Redis
-// let redis = fred::Pool::new(RedisConfig::from_url(&config.redis_url)?, None, None, None, 6)?;
-// redis.connect();
-
-// 3. (Fase 3) Inicializar apalis PostgreSQL storage
-// PostgresStorage::setup(&db).await?;
-
-// 4. Construir AppState
+// Fase 1 — mínimo funcional
 let state = AppState {
     db,
     config:     Arc::new(config),
     rate_limit: Arc::new(RateLimitState::default()),
-    // redis, pg_pool, s3 — agregar en sus respectivas Fases
 };
+
+// Fase 2 — agregar Redis
+// let redis = fred::Pool::new(RedisConfig::from_url(&config.redis_url)?, ...)?;
+// redis.connect();
+// state.redis = redis;
+
+// Fase 3 — agregar apalis
+// let pg_pool = db.get_postgres_connection_pool().clone();
+// PostgresStorage::setup(&pg_pool).await?;
+// state.pg_pool = pg_pool;
 ```
 
 ---
