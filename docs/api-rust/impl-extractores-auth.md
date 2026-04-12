@@ -360,6 +360,8 @@ async fn update_issue(
 
 ## Testing de extractors
 
+`build_test_app()` — helper que levanta el router con estado real de test:
+
 ```rust
 // tests/auth_extractors.rs
 use axum_test::TestServer;
@@ -375,24 +377,9 @@ async fn build_test_app() -> TestServer {
         .with_state(state);
     TestServer::new(app).unwrap()
 }
-
-#[tokio::test]
-async fn test_no_token_returns_401() {
-    let server = build_test_app().await;
-    let resp = server.get("/api/workspaces/my-ws/projects/abc/issues").await;
-    resp.assert_status(StatusCode::UNAUTHORIZED);
-}
-
-#[tokio::test]
-async fn test_non_member_returns_403() {
-    let server = build_test_app().await;
-    let resp = server
-        .get("/api/workspaces/other-ws/projects/abc/issues")
-        .add_header("Authorization", "Token valid_token_other_user")
-        .await;
-    resp.assert_status(StatusCode::FORBIDDEN);
-}
 ```
+
+Los casos de test (`test_no_token_returns_401`, `test_non_member_returns_403`, `test_member_can_list_issues`) están en → [[ref-testing#Tests de extractores de auth]]
 
 ---
 

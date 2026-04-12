@@ -110,25 +110,25 @@ Cada job sigue el mismo patrón de registro. Todos los workers corren en el **mi
 ### Patrón de un job
 
 ```rust
-// src/jobs/notifications.rs
+// Ejemplo genérico — el spec real de cada job está en su dominio correspondiente
+// (ej: dominio-notificaciones, dominio-workspace-seed, dominio-workspace-settings)
 use apalis::prelude::*;
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct NotificationJob {
-    pub user_id:    Uuid,
-    pub issue_id:   Uuid,
+pub struct MiJob {
+    pub entity_id:  Uuid,
     pub event_type: String,
 }
 
-pub async fn handle_notification(
-    job: NotificationJob,
+pub async fn handle_mi_job(
+    job: MiJob,
     ctx: Data<sea_orm::DatabaseConnection>,
 ) -> Result<(), apalis::prelude::Error> {
     let db = ctx.as_ref();
-    // lógica de notificación...
-    tracing::info!("Notification sent to user {}", job.user_id);
+    // lógica del job...
+    tracing::info!(entity_id = %job.entity_id, "Job procesado");
     Ok(())
 }
 ```
