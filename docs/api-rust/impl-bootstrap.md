@@ -12,6 +12,7 @@ tags:
   - swagger
   - implementacion
   - pendiente-implementar
+  - todo-rs
 relacionado:
   - "[[MOC]]"
   - "[[vision-stack]]"

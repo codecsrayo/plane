@@ -11,6 +11,7 @@ tags:
   - dominio
   - rust
   - pendiente-implementar
+  - todo-rs
 relacionado:
   - "[[MOC]]"
   - "[[impl-error-jobs-cron]]"

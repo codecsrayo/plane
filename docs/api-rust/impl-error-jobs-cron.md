@@ -14,6 +14,7 @@ tags:
   - jobs
   - cron
   - pendiente-implementar
+  - todo-rs
 relacionado:
   - "[[MOC]]"
   - "[[impl-appstate-repository]]"
