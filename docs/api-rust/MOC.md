@@ -75,6 +75,7 @@ estado: activo
 | [[dominio-analytics]] | Analytics: demand, burn-down, custom charts, exports |
 | [[dominio-importadores]] | Importadores: GitHub, Jira, CSV — jobs de migración |
 | [[dominio-busqueda]] | Global search, workspace search, filtros avanzados |
+| [[dominio-ia]] | Asistente Pi, reformulación de texto, multi-proveedor LLM (OpenAI/Anthropic/Gemini) |
 
 ---
 
@@ -125,6 +126,7 @@ estado: activo
 | Dominio Analytics (Fase 4) | 📝 Documentado | Ver [[dominio-analytics]] — ~5 endpoints |
 | Dominio Importadores (Fase 4) | 📝 Documentado | Ver [[dominio-importadores]] — ~4 endpoints |
 | Dominio Búsqueda (Fase 4) | 📝 Documentado | Ver [[dominio-busqueda]] — ~3 endpoints |
+| Dominio IA / Asistente Pi (Fase 4) | 🔴 Pendiente urgente | Ver [[dominio-ia]] — 3 endpoints, 1 ausente en Django |
 
 ---
 
@@ -164,6 +166,9 @@ dominio-workspace-seed ─────────────► dominio-integr
                                                              │
                                                              ▼
                                                       dominio-busqueda
+                                                             │
+                                                             ▼
+                                                        dominio-ia
 ```
 
 ---
