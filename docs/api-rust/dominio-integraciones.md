@@ -281,10 +281,12 @@ pub async fn handle_github_initial_sync(
 Disparar desde el handler de creación de repo sync:
 
 ```rust
-state.job_storage
+if let Err(e) = state.job_storage
     .push(GithubInitialIssueSyncJob { repo_sync_id: new_sync.id })
-    .await
-    .ok(); // best-effort
+    .await // silence-patterns-ok: best-effort, no se bloquea el handler pero se registra
+{
+    tracing::warn!(repo_sync_id = %new_sync.id, "Failed to enqueue GithubInitialIssueSyncJob: {e}");
+}
 ```
 
 ---
@@ -368,7 +370,7 @@ pub async fn get_instance_config(
 5. **PR State Mapping — enum Postgres** — valores exactos: `draft_open`, `open`, `review_requested`, `ready_for_merge`, `merged`, `closed`
 6. **Instalación Slack — intercambio de code en el backend** — `SLACK_CLIENT_ID` y `SLACK_CLIENT_SECRET` son del backend, no del frontend
 7. **Paginación de repos GitHub — dos endpoints distintos** — GitHub App: `/installation/repositories`; OAuth personal: `/user/repos`
-8. **Webhook registration — best-effort** — `let _ = register_github_webhook(...).await;`
+8. **Webhook registration — best-effort** — `if let Err(e) = register_github_webhook(...).await { tracing::warn!(...) }` // silence-patterns-ok
 9. **`user_github_connections` — token personal del usuario** — tabla distinta al `workspace_integrations`
 
 ---
