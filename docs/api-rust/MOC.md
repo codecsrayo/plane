@@ -122,7 +122,7 @@ _Documentación de apoyo: estructura, diagramas, testing._
 | Soft delete                        | ✅ Implementado      | `src/utils/soft_delete.rs`                            |
 | Migración Baseline (`m001`)        | ✅ Aplicada          | Schema completo vía `sql/baseline.sql`                |
 | Migración m007 (Seeds)             | ✅ Aplicadas         | Integraciones e Instance config inicial               |
-| Bootstrap API (`main.rs`)          | 📝 Diseñado          | Ver [[impl-bootstrap]]                                |
+| Bootstrap API (`main.rs`)          | ✅ Implementado      | `main.rs`, `config.rs`, `error.rs`, `routes/health.rs`, Scalar UI |
 | Auth Session Cookie                | 📝 Diseñado          | Ver [[impl-autenticacion]]                            |
 | Auth API Key                       | 📝 Diseñado          | Ver [[impl-autenticacion]]                            |
 | Extractores WorkspaceMemberGuard   | 📝 Diseñado          | Ver [[impl-extractores-auth]]                         |

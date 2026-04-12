@@ -11,8 +11,7 @@ tags:
   - utoipa
   - scalar
   - implementacion
-  - pendiente-implementar
-  - todo-rs
+  - implementado
 relacionado:
   - "[[MOC]]"
   - "[[vision-stack]]"
@@ -40,20 +39,21 @@ estado: activo
 
 ```tree
 src/
-├── main.rs          ← bootstrap completo: AppState + router + Scalar + workers
-├── config.rs        ← env vars tipadas con dotenvy
-├── error.rs         ← AppError → HTTP responses
-├── lib.rs           ← re-exports públicos
+├── main.rs          ✅ bootstrap completo: AppState + router + Scalar + workers
+├── config.rs        ✅ env vars tipadas con dotenvy
+├── error.rs         ✅ AppError → HTTP responses
 ├── auth/
-│   ├── mod.rs
-│   └── middleware.rs   ← CurrentUser extractor
+│   ├── mod.rs          ✅
+│   └── rate_limit.rs   ✅ RateLimitState in-memory (Fase 3 → Redis)
+│   ├── middleware.rs   📝 CurrentUser extractor — pendiente
+│   └── permissions.rs  📝 RBAC — pendiente
 ├── routes/
-│   ├── mod.rs          ← build_router() + OpenApi struct
-│   └── health.rs       ← GET /api/health (primer endpoint real)
+│   ├── mod.rs          ✅ build_router() + OpenApi struct
+│   └── health.rs       ✅ GET /api/health (primer endpoint real)
 ├── utils/
-│   ├── mod.rs
-│   └── soft_delete.rs  ← ya existe ✅
-└── entities/           ← ya existen ✅
+│   ├── mod.rs          ✅
+│   └── soft_delete.rs  ✅
+└── entities/           ✅ generadas por sea-orm-codegen (100+ tablas)
 ```
 
 ---
@@ -524,9 +524,9 @@ open http://localhost:8000/api/docs
 
 | Método | Path                     | Auth | Estado         |
 | ------ | ------------------------ | :--: | -------------- |
-| `GET`  | `/api/health`            |  ❌  | 📝 Implementar |
-| `GET`  | `/api/docs`              |  ❌  | 📝 Implementar |
-| `GET`  | `/api/docs/openapi.json` |  ❌  | 📝 Implementar |
+| `GET`  | `/api/health`            |  ❌  | ✅ Implementado |
+| `GET`  | `/api/docs`              |  ❌  | ✅ Implementado |
+| `GET`  | `/api/docs/openapi.json` |  ❌  | ✅ Implementado |
 
 Los endpoints de la Fase 2 se listan en [[plan-fases#Fase 2 — Endpoints de alta frecuencia]].
 
