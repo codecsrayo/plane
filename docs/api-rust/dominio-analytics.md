@@ -33,8 +33,11 @@ estado: activo
 |--------|-----|-------|------|
 | `GET` | `/workspaces/{slug}/analytics/` | `WorkspaceMemberGuard (≥5)` | 4 |
 | `GET` | `/workspaces/{slug}/default-analytics/` | `WorkspaceMemberGuard (≥5)` | 4 |
-| `GET` | `/workspaces/{slug}/export-analytics/` | `WorkspaceMemberGuard (≥5)` | 4 |
+| `POST` | `/workspaces/{slug}/export-analytics/` | `WorkspaceMemberGuard (≥15)` | 4 |
 | `GET` | `/workspaces/{slug}/project-stats/` | `WorkspaceMemberGuard (≥5)` | 4 |
+
+> [!WARNING] INC-11 corregido
+> El endpoint `/export-analytics/` es `POST` en Django, ya que requiere un body con los filtros y ejes a exportar.
 
 ### Analytic views (guardadas)
 
@@ -42,7 +45,10 @@ estado: activo
 |--------|-----|-------|------|
 | `GET/POST` | `/workspaces/{slug}/analytic-view/` | `WorkspaceMemberGuard (≥5)` | 4 |
 | `GET/PATCH/DELETE` | `/workspaces/{slug}/analytic-view/{pk}/` | `WorkspaceMemberGuard (≥5)` | 4 |
-| `POST` | `/workspaces/{slug}/saved-analytic-view/{analytic_id}/` | `WorkspaceMemberGuard (≥5)` | 4 |
+| `GET` | `/workspaces/{slug}/saved-analytic-view/{analytic_id}/` | `WorkspaceMemberGuard (≥5)` | 4 |
+
+> [!WARNING] INC-12 corregido
+> El endpoint `/saved-analytic-view/{analytic_id}/` es `GET` en Django.
 
 ### Advance analytics
 
@@ -244,13 +250,13 @@ pub struct TimeSeriesPoint {
 
 ## Export analytics — CSV
 
-`GET /export-analytics/` devuelve un CSV de los datos del analytics actual:
+`POST /export-analytics/` devuelve un CSV de los datos del analytics actual:
 
 ```rust
 pub async fn export_analytics(
     State(state): State<AppState>,
     WorkspaceMemberGuard { workspace, .. }: WorkspaceMemberGuard,
-    Query(params): Query<AnalyticsQueryParams>,
+    Json(params): Json<AnalyticsQueryParams>,
 ) -> Result<impl IntoResponse, AppError> {
     let data = compute_analytics(&state.db, workspace.id, &params).await
         .map_err(|e| AppError::Internal(e.to_string()))?;
