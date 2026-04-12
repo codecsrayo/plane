@@ -36,12 +36,21 @@ estado: activo
 
 ## Fase 0 — Scaffolding + Baseline (2–3 días)
 
-- [x] Baseline de migraciones SeaORM (m001–m006 ✅ vía Baseline SQL)
-- [x] Entities generadas (`sea-orm-cli generate entity`) — 122 entities ✅
-- [x] Soft delete implementado ✅
-- [ ] `main.rs` completo (AppState + router + Swagger UI) — ver [[impl-bootstrap]]
+### ✅ Implementado en código real
+
+- [x] Baseline SQL consolidado en `m20260410_000001_baseline.rs` — schema completo (tablas + índices + unique constraints parciales `WHERE deleted_at IS NULL`) cargado vía `include_str!("../sql/baseline.sql")`
+- [x] Seed data en `m20240101_000007_seed_data.rs` — 3 filas en `integrations` (github/gitlab/slack) + todas las keys en `instance_configurations`; idempotente con `ON CONFLICT DO NOTHING`
+- [x] Entities generadas — 122 entidades en `src/entities/` vía `sea-orm-cli generate entity`; incluye entidades de integraciones (`workspace_integrations`, `github_repositories`, `github_repository_syncs`, `db_githubprstatemapping`, `slack_project_syncs`, `user_github_connections`, etc.)
+- [x] Soft delete implementado — `src/utils/soft_delete.rs`: trait `SoftDeleteExt` + macro `impl_soft_delete!`
+- [x] `Cargo.toml` con dependencias completas — axum 0.8, sea-orm 1.1, apalis 0.7, reqwest 0.12, jsonwebtoken 9, ammonia 4, utoipa 5, lettre 0.11, fred 10 (Redis), aws-sdk-s3 1
+
+### ❌ Pendiente (solo stubs / archivos vacíos)
+
+- [ ] `main.rs` completo (AppState + router + Swagger UI) — actualmente solo `println!("Hello, world!")` — ver [[impl-bootstrap]]
+- [ ] `config.rs` — existe `config.todo.rs` vacío
+- [ ] `error.rs` — existe `error.todo.rs` vacío
 - [ ] `GET /api/health/` funcionando contra la DB
-- [ ] Dockerfile multi-stage
+- [ ] `Dockerfile` multi-stage — archivo existe pero está vacío
 - [ ] Traefik: routing condicional por path — ver [[vision-arquitectura#Routing dual durante la migración Fases 1 4]]
 - [ ] Colección Bruno inicial en `tests/bruno/` — ver [[ref-testing]]
 
