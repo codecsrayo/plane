@@ -68,6 +68,59 @@ La documentación es **extremadamente confiable (100%)** tras las correcciones r
 
 ---
 
+
+---
+
+## 🔐 Auditoría de Seguridad — Patrones Inseguros (Sesiones 1 y 2)
+
+> [!WARNING] Todos los hallazgos están documentados en los archivos de dominio correspondientes. Esta sección es el índice consolidado para revisión pre-implementación.
+
+### Vulnerabilidades críticas (🔴 Alta / Crítica) — RESUELTAS en docs
+
+| Fix # | Archivo | Vulnerabilidad | Severidad |
+| ----- | ------- | -------------- | --------- |
+| 20 | `dominio-workspace-settings.md` | SSRF via `webhook.url` sin validación — permite redirigir peticiones a red interna | 🔴 Crítica |
+| 21 | `dominio-workspace-settings.md` | `reqwest::Client::new()` por cada delivery de webhook — agota file descriptors bajo carga | 🔴 Alta |
+| 22 | `dominio-issues.md` | `unwrap()` doble en cron de deadline — pánico silencioso detiene el worker entero | 🔴 Alta |
+| 23 | `dominio-notificaciones.md` | `send_notification_email` falla silenciosamente — errores tragados sin log ni retry | 🔴 Alta |
+| 24 | `dominio-importadores.md` | `reqwest::Client::new()` en importadores CSV/JSON — mismo problema que Fix-21 | 🔴 Alta |
+| 25 | `dominio-importadores.md` | `serde_json::to_string().unwrap()` en importadores — pánico si el valor no serializa | 🔴 Alta |
+| 26 | `dominio-importadores.md` | Clave de estado vacía `""` guardada silenciosamente en DB — datos corruptos | 🔴 Alta |
+| 27 | `dominio-importadores.md` | `project_id.unwrap()` ×3 en importadores — pánico si el issue no tiene proyecto | 🔴 Alta |
+| 28 | `dominio-intake.md` | Doble `unwrap()` en cron de intake — pánico para cualquier issue en la cola | 🔴 Alta |
+| 31 | `dominio-paginas.md` | `description_html` y `name` sin límite — cada PATCH crea snapshot en `page_versions`; atacante llena DB con versiones de 1 MB | 🔴 Alta |
+| 32 | `dominio-paginas.md` | `description_html` servido como HTML crudo sin sanitización → **XSS persistente** para todos los miembros que abran la página | 🔴 Alta |
+| 33 | `dominio-vistas.md` | `query: serde_json::Value` sin límite de tamaño — JSON blob arbitrario infla tabla de vistas | 🔴 Alta |
+| 34 | `dominio-analytics.md` | `x_axis`/`y_axis` en `GROUP BY` dinámico sin allowlist documentada inline → SQL injection si se interpola directamente | 🔴 Alta |
+
+### Vulnerabilidades menores (🟠 Media) — RESUELTAS en docs
+
+| Fix # | Archivo | Vulnerabilidad | Severidad |
+| ----- | ------- | -------------- | --------- |
+| 29 | `dominio-ia.md` | `text_input: String` sin límite en `RephrasePayload` — payload de 1–10 MB enviado al LLM → costo / DoS | 🟠 Media |
+| 30 | `dominio-busqueda.md` | `query: String` sin límite en `GlobalSearchParams` y `SearchIssuesParams` — LIKE query gigante → DB stress | 🟠 Media |
+
+### Patrón transversal — reqwest (resuelto en Fix-21/24)
+
+Cualquier handler o utility que llame a URLs externas debe:
+1. Reutilizar `state.http: reqwest::Client` (compartido en AppState, construido una vez en `main.rs`).
+2. Nunca llamar `reqwest::Client::new()` en el path de una petición HTTP.
+
+### Patrón transversal — sanitización HTML (Fix-32)
+
+Todo campo `description_html` almacenado debe pasar por `ammonia::Builder` antes de persistirse:
+- Allowlist: tags Tiptap estándar (`p`, `h1`–`h6`, `ul`, `ol`, `li`, `strong`, `em`, `a[href]`, `code`, `pre`, `blockquote`, `table`, `tr`, `td`, `th`).
+- Strip: `<script>`, event handlers (`on*`), `href="javascript:"`, iframes, objetos embebidos.
+- Aplica en: `POST /pages/`, `PATCH /pages/{id}/description/`, cualquier futuro endpoint que persista HTML.
+
+### Gap documentacional identificado
+
+`dominio-integraciones.md` documenta el flujo de instalación OAuth de GitHub (`GET /api/github/callback/`) pero **no documenta el endpoint de recepción de webhooks entrantes de GitHub/GitLab** (el que GitHub llama con `X-Hub-Signature-256`). Cuando se implemente, se debe documentar:
+- Verificación HMAC-SHA256 del header `X-Hub-Signature-256` antes de procesar cualquier payload.
+- El endpoint debe ser público (sin `CurrentUser`) pero con firma obligatoria.
+- Validar tamaño máximo del payload (ej. 25 MB — límite de GitHub).
+
+---
 ## 📝 Conclusión y Recomendación
 
 La documentación **no es un manual de lo que "es", sino un mapa de lo que "será"**, manteniendo una honestidad técnica ejemplar sobre el estado actual.
