@@ -10,6 +10,7 @@ tags:
   - rust
   - axum
   - seaorm
+  - pendiente-implementar
 relacionado:
   - "[[MOC]]"
   - "[[dominio-proyectos]]"

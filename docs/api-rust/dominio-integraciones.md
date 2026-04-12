@@ -12,6 +12,7 @@ tags:
   - slack
   - oauth
   - dominio
+  - pendiente-implementar
 relacionado:
   - "[[MOC]]"
   - "[[dominio-workspace-settings]]"

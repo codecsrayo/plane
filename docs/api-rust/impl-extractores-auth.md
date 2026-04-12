@@ -12,6 +12,7 @@ tags:
   - auth
   - rbac
   - extractores
+  - pendiente-implementar
 relacionado:
   - "[[MOC]]"
   - "[[impl-autenticacion]]"

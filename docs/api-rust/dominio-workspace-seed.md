@@ -10,6 +10,7 @@ tags:
   - workspace
   - jobs
   - dominio
+  - pendiente-implementar
 relacionado:
   - "[[MOC]]"
   - "[[impl-error-jobs-cron]]"

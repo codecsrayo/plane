@@ -12,6 +12,7 @@ tags:
   - dominio
   - rust
   - axum
+  - pendiente-implementar
 relacionado:
   - "[[MOC]]"
   - "[[dominio-issues]]"

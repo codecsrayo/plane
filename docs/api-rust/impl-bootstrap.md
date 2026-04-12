@@ -11,6 +11,7 @@ tags:
   - utoipa
   - swagger
   - implementacion
+  - pendiente-implementar
 relacionado:
   - "[[MOC]]"
   - "[[vision-stack]]"

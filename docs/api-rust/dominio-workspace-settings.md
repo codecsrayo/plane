@@ -9,6 +9,7 @@ tags:
   - frontend
   - rbac
   - dominio
+  - pendiente-implementar
 relacionado:
   - "[[MOC]]"
   - "[[dominio-integraciones]]"

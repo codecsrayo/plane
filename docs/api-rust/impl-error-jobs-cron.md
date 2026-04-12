@@ -13,6 +13,7 @@ tags:
   - error
   - jobs
   - cron
+  - pendiente-implementar
 relacionado:
   - "[[MOC]]"
   - "[[impl-appstate-repository]]"
