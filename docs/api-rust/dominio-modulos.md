@@ -58,7 +58,7 @@ projects
 |--------|-----|-------|------|
 | `GET/POST` | `/workspaces/{slug}/projects/{id}/modules/{module_id}/issues/` | `ProjectMemberGuard (≥5/15)` | 4 |
 | `GET/PUT/PATCH/DELETE` | `/workspaces/{slug}/projects/{id}/modules/{module_id}/issues/{issue_id}/` | `ProjectMemberGuard (≥15)` | 4 |
-| `GET/POST/DELETE` | `/workspaces/{slug}/projects/{id}/issues/{issue_id}/modules/` | `ProjectMemberGuard (≥5/15)` | 4 |
+| `POST` | `/workspaces/{slug}/projects/{id}/issues/{issue_id}/modules/` | `ProjectMemberGuard (≥15)` | 4 |
 
 ### Links del módulo
 
@@ -135,11 +135,13 @@ pub struct AddModuleIssuesRequest {
 
 ## Handler — issue-centric module assignment
 
-El endpoint `/issues/{issue_id}/modules/` permite asignar/desasignar módulos desde la perspectiva del issue:
+El endpoint `/issues/{issue_id}/modules/` solo acepta `POST` (Django: `create_issue_modules`).
+El `DELETE` de un issue de un módulo se hace por la ruta inversa `DELETE /modules/{module_id}/issues/{issue_id}/`.
+
+> [!WARNING] INC-04 corregido — Django solo mapea `POST` en esta ruta, no `GET` ni `DELETE`.
 
 ```rust
-// POST /issues/{issue_id}/modules/ — asignar a módulos (lista)
-// DELETE /issues/{issue_id}/modules/ — desasignar de módulos (lista en body)
+// POST /issues/{issue_id}/modules/ — asignar issue a uno o varios módulos
 pub async fn assign_issue_modules(
     State(state): State<AppState>,
     ProjectMemberGuard { user, workspace, .. }: ProjectMemberGuard,
