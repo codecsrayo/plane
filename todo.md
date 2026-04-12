@@ -479,3 +479,4 @@ Todos los archivos modificados llevan la tag `// silence-patterns-ok` en cada l�
 |---|---|---|
 | 2026-04-12 | Merge `docs/restructure-api-rust` (8ccb7f8) | Reemplazó 18 árboles ASCII con mermaid mindmaps; eliminó tabla de rutas en `ref-diagramas-flujo.md`; introdujo `ref-guia-estilo.md` |
 | 2026-04-12 | **Restauración post-merge** | Restaurados 18 archivos con árboles ASCII completos; restaurada tabla de rutas; fijado `dominio-ia.md` (nota ⚠️ NO REGISTRADO recuperada); fijado `dominio-workspace-settings.md` (conexiones incompletas en graph mermaid); `ref-guia-estilo.md` y `audit-report-2026-04-12.md` conservados |
+| 2026-04-12 | **Path comments — cobertura total** | Agregados `// path` comments como primera línea en todos los bloques de código (`rust`, `python`, `typescript`, `toml`, `sql`) en los 40 archivos de `docs/api-rust/`. Commits `017874ee1` (batch 1) y `1aa9e77a3` (batch 2). Total ~62 bloques corregidos. |
