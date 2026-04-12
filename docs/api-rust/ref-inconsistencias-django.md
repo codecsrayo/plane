@@ -423,29 +423,31 @@ Los siguientes dominios fueron auditados y **no presentan inconsistencias**:
 
 ---
 
-## 📋 Plan de correcciones
+## 📋 Historial de correcciones
 
-| #      | Documento a corregir                                                                                    | Prioridad | Tipo                 |
-| ------ | ------------------------------------------------------------------------------------------------------- | --------- | -------------------- |
-| INC-01 | `dominio-workspace-settings.md` — URL `/exports/` → `/export-issues/` + solo POST                       | 🔴 Alta   | URL incorrecta       |
-| INC-02 | `dominio-workspace-settings.md` — agregar `webhook-logs`                                                | 🔴 Alta   | Endpoint ausente     |
-| INC-03 | `dominio-workspace-settings.md` — agregar 8 endpoints UI state                                          | 🔴 Alta   | Endpoints ausentes   |
-| INC-10 | `dominio-modulos.md` — `archived-modules/{pk}/` sin DELETE (igual a INC-05)                             | 🔴 Alta   | Método incorrecto    |
-| INC-11 | `dominio-analytics.md` — `export-analytics` es POST, no GET                                             | 🔴 Alta   | Método incorrecto    |
-| INC-12 | `dominio-analytics.md` — `saved-analytic-view` es GET, no POST                                          | 🔴 Alta   | Método incorrecto    |
-| INC-13 | `dominio-workspace-settings.md` — guard GET /members/ es ≥5 no ≥15                                      | 🔴 Alta   | Guard incorrecto     |
-| INC-04 | `dominio-modulos.md` — `issues/{id}/modules/` solo POST                                                 | 🟡 Media  | Método incorrecto    |
-| INC-05 | `dominio-ciclos.md` — `archived-cycles/{pk}/` sin DELETE                                                | 🟡 Media  | Método incorrecto    |
-| INC-06 | `dominio-issues.md` — `user-properties` es `GET/PATCH` (upsert)                                         | 🟡 Media  | Semántica incorrecta |
-| INC-14 | `dominio-issues.md` — `issue_votes` sin endpoint en Django                                              | 🟡 Media  | Entidad fantasma     |
-| INC-15 | `dominio-workspace-settings.md` — agregar workspace favorites (3 endpoints)                             | 🟡 Media  | Endpoints ausentes   |
-| INC-07 | `dominio-proyectos.md` — nota: `intake-state` va en módulo states en Rust                               | 🟢 Baja   | Placement            |
-| INC-08 | `dominio-analytics.md` — nota: user-stats/activity/profile en workspace router                          | 🟢 Baja   | Placement            |
-| INC-09 | `dominio-issues.md` — clarificar `issues-detail/` vs `/{pk}/`                                           | 🟢 Baja   | Claridad             |
-| INC-16 | Crear `dominio-vistas.md` — Issue Views + Workspace Views (7 endpoints)                                 | 🟢 Baja   | Dominio ausente      |
-| INC-17 | Agregar workspace aggregates (11 endpoints) a un doc existente                                          | 🟢 Baja   | Dominio ausente      |
-| INC-18 | Crear `dominio-usuario.md` — 13 endpoints de `/users/me/`                                               | 🟢 Baja   | Dominio ausente      |
-| INC-19 | Assets/file management (`asset.py`), API tokens (`api.py`), timezones (`timezone.py`) — no documentados | 🟢 Baja   | Dominios ausentes    |
+> Todas las inconsistencias han sido corregidas en sus documentos de dominio. Esta tabla es registro histórico.
+
+| #      | Documento corregido                       | Fix aplicado                                                       | Estado |
+| ------ | ----------------------------------------- | ------------------------------------------------------------------ | ------ |
+| INC-01 | `dominio-workspace-settings.md`           | URL `/exports/` → `/export-issues/` + solo POST                    | ✅     |
+| INC-02 | `dominio-workspace-settings.md`           | Endpoint `webhook-logs` agregado                                   | ✅     |
+| INC-03 | `dominio-workspace-settings.md`           | 8 endpoints UI state + quick-links agregados                       | ✅     |
+| INC-04 | `dominio-modulos.md`                      | `issues/{id}/modules/` solo POST                                   | ✅     |
+| INC-05 | `dominio-ciclos.md`                       | `archived-cycles/{pk}/` sin DELETE                                 | ✅     |
+| INC-06 | `dominio-issues.md`                       | `user-properties` es `GET/PATCH` (upsert, sin POST separado)       | ✅     |
+| INC-07 | `dominio-proyectos.md`                    | Nota: `intake-state` va en módulo `states` en Rust                 | ✅     |
+| INC-08 | `dominio-analytics.md`                    | Nota: user-stats/activity/profile van en router workspace          | ✅     |
+| INC-09 | `dominio-issues.md`                       | Aclarado `issues-detail/` vs `/{pk}/`                              | ✅     |
+| INC-10 | `dominio-modulos.md`                      | `archived-modules/{pk}/` sin DELETE                                | ✅     |
+| INC-11 | `dominio-analytics.md`                    | `export-analytics` es POST, no GET                                 | ✅     |
+| INC-12 | `dominio-analytics.md`                    | `saved-analytic-view` es GET, no POST                              | ✅     |
+| INC-13 | `dominio-workspace-settings.md`           | Guard `GET /members/` es `≥5` (GUEST), no `≥15`                   | ✅     |
+| INC-14 | `dominio-issues.md`                       | `issue_votes` anotada como sin endpoint CE                         | ✅     |
+| INC-15 | `dominio-workspace-settings.md`           | Workspace favorites (3 endpoints) agregados                        | ✅     |
+| INC-16 | `dominio-vistas.md` (nuevo)               | Dominio Issue Views + Workspace Views creado                       | ✅     |
+| INC-17 | `dominio-workspace-settings.md`           | Workspace aggregates documentados                                  | ✅     |
+| INC-18 | `dominio-usuario.md` (nuevo)              | 13 endpoints `/users/me/` documentados                             | ✅     |
+| INC-19 | Pendiente                                 | Assets, API tokens, timezones — no documentados aún               | ⏳     |
 
 ---
 
