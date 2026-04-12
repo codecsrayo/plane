@@ -288,13 +288,25 @@ where S: Send + Sync + AsRef<AppState>,
 ### Rate limit middleware — `src/auth/rate_limit.rs`
 
 ```rust
-use axum::{body::Body, http::{Request, Response, StatusCode}, middleware::Next};
+use axum::{body::Body, http::{Request, Response, StatusCode, HeaderValue}, middleware::Next};
 use std::{collections::HashMap, sync::Arc};
 use tokio::sync::Mutex;
+// SHA-256 para nunca almacenar tokens en plaintext en memoria
+use sha2::{Sha256, Digest};
+
+/// Genera un bucket key opaco a partir del raw token.
+/// Nunca almacenar el token crudo en el HashMap — cualquier
+/// memory dump / heap profiler expondría todas las claves activas.
+fn bucket_key(raw_token: &str) -> String {
+    let mut h = Sha256::new();
+    h.update(raw_token.as_bytes());
+    format!("{:x}", h.finalize())
+}
 
 #[derive(Default)]
 pub struct RateLimitState {
-    /// token_key → (request_count, window_start_unix)
+    /// sha256(token) → (request_count, window_start_unix)
+    /// ⚠️ NUNCA usar el raw token como key — usar `bucket_key()` siempre
     pub buckets: Mutex<HashMap<String, (u32, i64)>>,
 }
 
@@ -303,12 +315,15 @@ pub async fn rate_limit_middleware(
     req: Request<Body>,
     next: Next,
 ) -> Response<Body> {
-    let api_key = req.headers()
+    let raw_key = req.headers()
         .get("x-api-key")
         .and_then(|v| v.to_str().ok())
         .map(|s| s.to_string());
 
-    let Some(key) = api_key else { return next.run(req).await; };
+    let Some(raw_key) = raw_key else { return next.run(req).await; };
+
+    // ✅ Hashear antes de entrar al bucket — raw_key no se almacena nunca
+    let bucket = bucket_key(&raw_key);
 
     let limit   = RATE_LIMIT_HUMAN;
     let window  = 60i64;
@@ -318,26 +333,36 @@ pub async fn rate_limit_middleware(
 
     let (count, remaining) = {
         let mut buckets = rl.buckets.lock().await;
-        let entry = buckets.entry(key).or_insert((0, window_start));
+        let entry = buckets.entry(bucket).or_insert((0, window_start));
         if entry.1 < window_start { *entry = (0, window_start); }
         entry.0 += 1;
         (entry.0, limit.saturating_sub(entry.0))
     };
 
+    // Construir HeaderValues sin unwrap() — usar from_static para literales
+    // y manejo explícito para valores dinámicos
+    let reset_hv = HeaderValue::from_str(&reset_at.to_string())
+        .unwrap_or_else(|_| HeaderValue::from_static("0"));
+    let remaining_hv = HeaderValue::from_str(&remaining.to_string())
+        .unwrap_or_else(|_| HeaderValue::from_static("0"));
+
     if count > limit {
         let mut resp = Response::new(Body::from(r#"{"error":"Rate limit exceeded"}"#));
         *resp.status_mut() = StatusCode::TOO_MANY_REQUESTS;
-        resp.headers_mut().insert("X-RateLimit-Remaining", "0".parse().unwrap());
-        resp.headers_mut().insert("X-RateLimit-Reset", reset_at.to_string().parse().unwrap());
+        resp.headers_mut().insert("X-RateLimit-Remaining", HeaderValue::from_static("0"));
+        resp.headers_mut().insert("X-RateLimit-Reset", reset_hv);
         return resp;
     }
 
     let mut resp = next.run(req).await;
-    resp.headers_mut().insert("X-RateLimit-Remaining", remaining.to_string().parse().unwrap());
-    resp.headers_mut().insert("X-RateLimit-Reset", reset_at.to_string().parse().unwrap());
+    resp.headers_mut().insert("X-RateLimit-Remaining", remaining_hv);
+    resp.headers_mut().insert("X-RateLimit-Reset", reset_hv);
     resp
 }
 ```
+
+> [!IMPORTANT] Dependencia requerida
+> Agregar a `Cargo.toml`: `sha2 = "0.10"`
 
 > [!NOTE] Migración a Redis en Fase 3
 > El rate limit en memoria no es consistente entre múltiples instancias. Migrar a `fred` (Redis) en la Fase 3 para entornos con múltiples réplicas.
