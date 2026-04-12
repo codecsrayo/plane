@@ -81,6 +81,7 @@ estado: activo
 Devuelve issues agrupados por la dimensión solicitada (`x_axis`) y contados/sumados por otra (`y_axis`):
 
 ```rust
+// src/routes/analytics.rs
 #[derive(Deserialize, ToSchema)]
 pub struct AnalyticsQueryParams {
     // Dimensiones de agrupación del eje X
@@ -125,6 +126,7 @@ pub struct AnalyticsGroup {
 Analytics con `x_axis=priority` y `y_axis=issue_count`:
 
 ```rust
+// src/routes/analytics.rs
 pub async fn analytics_by_priority(
     db: &DatabaseConnection,
     project_ids: &[Uuid],
@@ -170,6 +172,7 @@ fn priority_color(priority: &str) -> Option<String> {
 Devuelve un conjunto predefinido de métricas para el workspace dashboard:
 
 ```rust
+// src/routes/analytics.rs
 #[derive(Serialize, ToSchema)]
 pub struct DefaultAnalytics {
     pub total_issues:          u64,
@@ -190,6 +193,7 @@ pub struct DefaultAnalytics {
 ## `GET /user-stats/{user_id}/` — estadísticas de usuario
 
 ```rust
+// src/routes/analytics.rs
 #[derive(Serialize, ToSchema)]
 pub struct UserStats {
     pub assigned_issues:   u64,
@@ -228,6 +232,7 @@ pub struct CreateAnalyticViewRequest {
 El conjunto "advance" incluye métricas de equipo más elaboradas. Requiere queries más complejas:
 
 ```rust
+// src/routes/analytics.rs
 #[derive(Serialize, ToSchema)]
 pub struct AdvanceAnalytics {
     // Issues creados vs completados en un período
@@ -255,6 +260,7 @@ pub struct TimeSeriesPoint {
 `POST /export-analytics/` devuelve un CSV de los datos del analytics actual:
 
 ```rust
+// src/routes/analytics.rs
 pub async fn export_analytics(
     State(state): State<AppState>,
     WorkspaceMemberGuard { workspace, .. }: WorkspaceMemberGuard,
