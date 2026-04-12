@@ -443,3 +443,30 @@ Arquitectura completa de la integración IA de Plane: asistente Pi, reformulaci�
 
 ### Documento generado
 `docs/api-rust/dominio-ia.md` — incluye: arquitectura, mapa de archivos, flujos mermaid, config de proveedores, errores, plan de implementación Rust.
+
+---
+
+## Correcciones — Patrones de error silencioso (docs/api-rust/)
+
+> Rama: `feature/integrations-panel-fix-17593507967815292912`
+> Completado: 2026-04-12
+
+Todos los archivos modificados llevan la tag `// silence-patterns-ok` en cada línea corregida.
+
+| # | Archivo | Patrón corregido | Fix aplicado | Commit |
+|---|---------|-----------------|--------------|--------|
+| 1 | `dominio-importadores.md` | `serde_json::to_value(...).unwrap()` | `map_err(AppError::Internal)?` | `cbdfa3f` |
+| 2 | `dominio-importadores.md` | `update_importer_status(...).await.ok()` | `if let Err(e) + tracing::warn!` | `cbdfa3f` |
+| 3 | `dominio-importadores.md` | `update_importer_progress(...).await.ok()` | `if let Err(e) + tracing::warn!` | `cbdfa3f` |
+| 4 | `dominio-importadores.md` | `update_importer_status("completed").await.ok()` | `if let Err(e) + tracing::warn!` | `cbdfa3f` |
+| 5-7 | `dominio-importadores.md` | `importer.project_id.unwrap()` ×3 | `ok_or_else(anyhow!)?` al inicio de función | `cbdfa3f` |
+| 8 | `dominio-importadores.md` | `.insert(db).await.ok()` en labels | `if let Err(e) + tracing::warn!` | `cbdfa3f` |
+| 9 | `dominio-intake.md` | `Job::new_async(...).unwrap()` | `map_err(anyhow!)?` | `d41eef4` |
+| 10 | `dominio-intake.md` | `scheduler.add(...).await.unwrap()` | `map_err(anyhow!)?` | `d41eef4` |
+| 11 | `dominio-issues.md` | `let _ = txn.rollback().await` | `if let Err(rb_err) + tracing::error!` | `6c244e2` |
+| 12 | `dominio-integraciones.md` | `job_storage.push(...).await.ok()` | `if let Err(e) + tracing::warn!` | `9056ac1` |
+| 13 | `dominio-integraciones.md` | `let _ = register_github_webhook(...).await` | `if let Err(e) + tracing::warn!` (nota de diseño) | `9056ac1` |
+| 14 | `dominio-workspace-settings.md` | `.expect("failed to build HTTP client")` | `map_err(anyhow!)?` propagando en startup | `0ffe3bd` |
+| 15 | `dominio-workspace-seed.md` | `.try_into().unwrap()` | `.expect()` con comentario `SAFETY:` (invariante estático) | `8fad804` |
+| 16 | `impl-bootstrap.md` | `dotenv().ok()` | `match dotenv()` con `tracing::debug!/warn!` por caso | `4c388ab` |
+| 17 | `dominio-notificaciones.md` | `job_storage.push(NotificationJob{...}).await.ok()` | `if let Err(e) + tracing::warn!` | `db1d637` |
