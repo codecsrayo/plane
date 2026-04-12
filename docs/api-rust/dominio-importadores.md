@@ -187,7 +187,8 @@ pub async fn create_github_importer(
         service:        Set("github".into()),
         status:         Set("queued".into()),
         token:          Set(Some(encrypted_token)),
-        metadata:       Set(Some(serde_json::to_value(&payload.metadata).unwrap())),
+        metadata:       Set(Some(serde_json::to_value(&payload.metadata)
+            .map_err(|e| AppError::Internal(format!("metadata serialization failed: {e}")))?)), // silence-patterns-ok
         initiated_by_id: Set(Some(user.id)),
         total_issues:   Set(0),
         imported_issues: Set(0),
@@ -226,7 +227,9 @@ pub async fn handle_github_importer(
         .ok_or_else(|| apalis::prelude::Error::Failed("importer not found".into()))?;
 
     // Marcar como processing
-    update_importer_status(db, importer.id, "processing", None).await.ok();
+    if let Err(e) = update_importer_status(db, importer.id, "processing", None).await { // silence-patterns-ok
+        tracing::warn!(importer_id = %importer.id, "Failed to mark importer as processing: {e}");
+    }
 
     let metadata: ImporterMetadata = serde_json::from_value(
         importer.metadata.clone().unwrap_or_default()
@@ -273,9 +276,10 @@ pub async fn handle_github_importer(
 
             total += 1;
 
-            // Actualizar contador cada 10 issues
             if total % 10 == 0 {
-                update_importer_progress(db, importer.id, total).await.ok();
+                if let Err(e) = update_importer_progress(db, importer.id, total).await { // silence-patterns-ok
+                    tracing::warn!(importer_id = %importer.id, "Failed to update importer progress: {e}");
+                }
             }
         }
 
@@ -286,7 +290,9 @@ pub async fn handle_github_importer(
         tokio::time::sleep(std::time::Duration::from_millis(100)).await;
     }
 
-    update_importer_status(db, importer.id, "completed", Some(total)).await.ok();
+    if let Err(e) = update_importer_status(db, importer.id, "completed", Some(total)).await { // silence-patterns-ok
+        tracing::warn!(importer_id = %importer.id, "Failed to mark importer as completed: {e}");
+    }
     tracing::info!("GitHub importer {} completed: {} issues", job.importer_id, total);
     Ok(())
 }
@@ -303,6 +309,9 @@ async fn import_single_issue(
     gh_issue: &serde_json::Value,
     importer: &importers::Model,
 ) -> anyhow::Result<()> {
+    // Validar project_id una sola vez — el importer siempre debe tenerlo // silence-patterns-ok
+    let project_id = importer.project_id
+        .ok_or_else(|| anyhow::anyhow!("importer {} has no project_id", importer.id))?;
     let gh_state = gh_issue["state"].as_str().unwrap_or("open");
     let gh_labels: Vec<String> = gh_issue["labels"]
         .as_array().unwrap_or(&vec![])
@@ -329,7 +338,7 @@ async fn import_single_issue(
         description_html: Set(gh_issue["body"].as_str().map(|b| markdown_to_html(b))),
         state_id:         Set(state_id),
         priority:         Set(priority),
-        project_id:       Set(importer.project_id.unwrap()),
+        project_id:       Set(project_id), // silence-patterns-ok: validado con ok_or_else al inicio
         workspace_id:     Set(importer.workspace_id),
         external_id:      Set(Some(gh_issue["number"].to_string())),
         external_source:  Set(Some("github".into())),
@@ -340,7 +349,7 @@ async fn import_single_issue(
     issue_sequences::ActiveModel {
         id: Set(Uuid::new_v4()),
         issue_id: Set(issue_id),
-        project_id: Set(importer.project_id.unwrap()),
+        project_id: Set(project_id), // silence-patterns-ok
         workspace_id: Set(importer.workspace_id),
         sequence_id: Set(0),
         ..Default::default()
@@ -349,14 +358,16 @@ async fn import_single_issue(
     // Importar labels mapeadas
     for gh_label in &gh_labels {
         if let Some(mapping) = metadata.label_map.iter().find(|m| &m.github_label == gh_label) {
-            issue_labels::ActiveModel {
+            if let Err(e) = issue_labels::ActiveModel { // silence-patterns-ok: label opcional, no crítica
                 id: Set(Uuid::new_v4()),
                 issue_id: Set(issue_id),
                 label_id: Set(mapping.plane_label_id),
-                project_id: Set(importer.project_id.unwrap()),
+                project_id: Set(project_id), // silence-patterns-ok
                 workspace_id: Set(importer.workspace_id),
                 ..Default::default()
-            }.insert(db).await.ok();
+            }.insert(db).await {
+                tracing::warn!(issue_id = %issue_id, label_id = %mapping.plane_label_id, "Failed to insert issue label: {e}");
+            }
         }
     }
 
