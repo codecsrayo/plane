@@ -82,6 +82,7 @@ sequenceDiagram
 ```rust
 use axum::{async_trait, extract::FromRequestParts, http::request::Parts};
 use axum_extra::extract::CookieJar;
+use axum::extract::FromRef;
 use chrono::Utc;
 use sea_orm::{ColumnTrait, EntityTrait, QueryFilter};
 use crate::{AppState, entities::{sessions, users}, error::AppError};
@@ -111,11 +112,14 @@ pub struct SessionUser(pub users::Model);
 
 #[async_trait]
 impl<S> FromRequestParts<S> for SessionUser
-where S: Send + Sync + AsRef<AppState>,
+where
+    S: Send + Sync,
+    AppState: FromRef<S>,
 {
     type Rejection = AppError;
 
     async fn from_request_parts(parts: &mut Parts, state: &S) -> Result<Self, AppError> {
+        let app_state = AppState::from_ref(state);
         let jar  = CookieJar::from_headers(&parts.headers);
         let kind = SessionKind::from_path(parts.uri.path());
 
@@ -133,19 +137,18 @@ where S: Send + Sync + AsRef<AppState>,
 
         let session = sessions::Entity::find_by_id(&session_key)
             .filter(sessions::Column::ExpireDate.gt(Utc::now()))
-            .one(&state.as_ref().db)
+            .one(&app_state.db)
             .await
             .map_err(AppError::Database)?
             .ok_or(AppError::Unauthorized)?;
 
-        // ✅ Usar user_id directo — NO decodificar session_data (pickle Python)
         let user_id: uuid::Uuid = session.user_id
             .ok_or(AppError::Unauthorized)?
             .parse()
             .map_err(|_| AppError::Unauthorized)?;
 
         let user = users::Entity::find_by_id(user_id)
-            .one(&state.as_ref().db)
+            .one(&app_state.db)
             .await
             .map_err(AppError::Database)?
             .ok_or(AppError::Unauthorized)?;
@@ -188,18 +191,24 @@ let user_id_str = session.user_id.ok_or(AppError::Unauthorized)?;
 ### Logout — `src/auth/logout.rs`
 
 ```rust
-use axum::{extract::State, http::StatusCode};
+use axum::{extract::State, http::{StatusCode, Uri}};
 use axum_extra::extract::{CookieJar, cookie::{Cookie, SameSite}};
 
 pub async fn logout(
     State(state): State<AppState>,
+    uri: Uri,
     jar: CookieJar,
-    SessionUser(user): SessionUser,
+    SessionUser(_user): SessionUser,
 ) -> Result<(CookieJar, StatusCode), AppError> {
-    // Borrar sesión de la DB
+    // ✅ Usar SessionKind::from_path para determinar qué cookie leer —
+    // igual que lo hace el extractor SessionUser. Sin esto, un admin
+    // en /instances/... buscaría "session-id" primero (equivocado).
+    let kind = SessionKind::from_path(uri.path());
+
+    // Borrar sesión de la DB — intentar cookie principal primero, luego fallback
     let session_key = jar
-        .get(SESSION_COOKIE_NAME)
-        .or_else(|| jar.get(ADMIN_SESSION_COOKIE_NAME))
+        .get(kind.primary_cookie())
+        .or_else(|| jar.get(kind.fallback_cookie()))
         .map(|c| c.value().to_string());
 
     if let Some(key) = session_key {
@@ -232,6 +241,7 @@ pub async fn logout(
 
 ```rust
 use axum::{async_trait, extract::FromRequestParts, http::request::Parts};
+use axum::extract::FromRef;
 use chrono::Utc;
 use sea_orm::{ActiveModelTrait, ColumnTrait, EntityTrait, QueryFilter, Set};
 use crate::{AppState, entities::{api_tokens, users}, error::AppError};
@@ -249,11 +259,14 @@ pub struct ApiKeyUser(pub ApiKeyContext);
 
 #[async_trait]
 impl<S> FromRequestParts<S> for ApiKeyUser
-where S: Send + Sync + AsRef<AppState>,
+where
+    S: Send + Sync,
+    AppState: FromRef<S>,
 {
     type Rejection = AppError;
 
     async fn from_request_parts(parts: &mut Parts, state: &S) -> Result<Self, AppError> {
+        let app_state = AppState::from_ref(state);
         let raw_key = parts.headers
             .get(API_KEY_HEADER)
             .and_then(|v| v.to_str().ok())
@@ -275,7 +288,7 @@ where S: Send + Sync + AsRef<AppState>,
                     .add(api_tokens::Column::ExpiredAt.is_null())
                     .add(api_tokens::Column::ExpiredAt.gt(now)),
             )
-            .one(&state.as_ref().db)
+            .one(&app_state.db)
             .await
             .map_err(AppError::Database)?
             .ok_or(AppError::Unauthorized)?;
@@ -284,20 +297,19 @@ where S: Send + Sync + AsRef<AppState>,
         // El middleware de rate limit genérico no tiene acceso al modelo del token
         // y siempre aplicaría RATE_LIMIT_HUMAN (bug silencioso para tokens de servicio).
         let limit = if token.is_service { RATE_LIMIT_SERVICE } else { RATE_LIMIT_HUMAN };
-        let app_state = state.as_ref();
         apply_rate_limit(&app_state.rate_limit, raw_key, limit)?;
 
         // Actualizar last_used fire-and-forget — log errores en lugar de descartarlos
         {
             let mut active: api_tokens::ActiveModel = token.clone().into();
             active.last_used = Set(Some(now.into()));
-            if let Err(e) = active.update(&state.as_ref().db).await {
+            if let Err(e) = active.update(&app_state.db).await {
                 tracing::warn!(error = %e, "Failed to update last_used for api token");
             }
         }
 
         let user = users::Entity::find_by_id(token.user_id)
-            .one(&state.as_ref().db)
+            .one(&app_state.db)
             .await
             .map_err(AppError::Database)?
             .ok_or(AppError::Unauthorized)?;
@@ -321,9 +333,10 @@ pub fn apply_rate_limit(
     let window_start = (now / window) * window;
 
     let bucket = bucket_key(raw_key);
-    // NOTA: en producción con múltiples réplicas migrar a Redis (Fase 3).
-    // Este mutex es per-proceso — correcto para instancia única.
-    let mut buckets = state.buckets.blocking_lock();
+    // ✅ std::sync::Mutex::lock() — correcto en contexto async cuando
+    // la sección crítica no contiene .await (solo HashMap lookup + increment).
+    // NUNCA usar tokio::sync::Mutex::blocking_lock() en async — bloquea el runtime.
+    let mut buckets = state.buckets.lock().unwrap_or_else(|p| p.into_inner());
     let entry = buckets.entry(bucket).or_insert((0, window_start));
     if entry.1 < window_start { *entry = (0, window_start); }
     entry.0 += 1;
@@ -345,7 +358,7 @@ pub fn apply_rate_limit(
 ```rust
 use axum::{body::Body, http::{Request, Response, StatusCode, HeaderValue}, middleware::Next};
 use std::{collections::HashMap, sync::Arc};
-use tokio::sync::Mutex;
+// ✅ std::sync::Mutex — NO tokio::sync::Mutex — ver RateLimitState
 use sha2::{Sha256, Digest};
 
 /// Genera un bucket key opaco a partir del raw token.
@@ -360,7 +373,12 @@ pub fn bucket_key(raw_token: &str) -> String {
 #[derive(Default)]
 pub struct RateLimitState {
     /// sha256(token) → (request_count, window_start_unix_secs)
-    pub buckets: Mutex<HashMap<String, (u32, u64)>>,
+    /// ✅ std::sync::Mutex (NO tokio::sync::Mutex) — la sección crítica es
+    /// trivial (lookup + increment en HashMap) y no contiene ningún .await,
+    /// por lo que bloquear el hilo del OS es correcto y eficiente.
+    /// Usar tokio::sync::Mutex aquí y llamar .blocking_lock() en async
+    /// bloquearía el thread del runtime Tokio — anti-patrón crítico.
+    pub buckets: std::sync::Mutex<HashMap<String, (u32, u64)>>,
 }
 
 /// Middleware Tower — inyecta headers X-RateLimit-* en la respuesta.

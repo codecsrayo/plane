@@ -140,7 +140,10 @@ use apalis::{prelude::*, layers::TraceLayer};
 use apalis_sql::postgres::PostgresStorage;
 
 pub fn build_monitor(db: sea_orm::DatabaseConnection) -> Monitor {
-    let storage = PostgresStorage::new(db.clone());
+    // ✅ PostgresStorage::new() requiere sqlx::PgPool, NO sea_orm::DatabaseConnection.
+    // SeaORM expone el pool interno vía get_postgres_connection_pool().
+    let pool = db.get_postgres_connection_pool().clone();
+    let storage = PostgresStorage::new(pool);
 
     Monitor::new()
         .register(
@@ -199,7 +202,9 @@ pub fn build_monitor(db: sea_orm::DatabaseConnection) -> Monitor {
 use apalis_sql::postgres::PostgresStorage;
 
 // Al arrancar, antes de registrar workers:
-PostgresStorage::setup(&db).await?;
+// ✅ setup() también necesita sqlx::PgPool — extraer antes de construir AppState
+let pg_pool = db.get_postgres_connection_pool().clone();
+PostgresStorage::setup(&pg_pool).await?;
 
 // Construir y arrancar el monitor en una tarea Tokio paralela
 let monitor = jobs::build_monitor(db.clone());
@@ -222,7 +227,9 @@ async fn create_workspace(
     // ... crear workspace ...
 
     // Encolar job asíncrono — no bloquea la respuesta HTTP
-    if let Err(e) = state.job_storage
+    // ✅ pg_pool es el sqlx::PgPool extraído de SeaORM — PostgresStorage lo usa directamente
+    let mut storage = PostgresStorage::<WorkspaceSeedJob>::new(state.pg_pool.clone());
+    if let Err(e) = storage
         .push(WorkspaceSeedJob { workspace_id: new_workspace.id })
         .await
     {

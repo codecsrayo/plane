@@ -44,7 +44,10 @@ pub struct AppState {
     pub redis:       fred::clients::Pool,           // pool Redis/Valkey
     pub s3:          aws_sdk_s3::Client,            // cliente S3/MinIO
     pub config:      Arc<Config>,                   // env vars tipadas (dotenvy)
-    pub job_storage: PgPool,                        // apalis backend (Postgres)
+    /// Pool sqlx puro — extraído de `db` vía `get_postgres_connection_pool()`.
+    /// apalis-sql lo requiere como `sqlx::PgPool`, no como `DatabaseConnection`.
+    /// Se usa para `PostgresStorage::setup()` y para encolar jobs.
+    pub pg_pool:     sqlx::PgPool,                 // apalis backend (Postgres)
     pub rate_limit:  Arc<RateLimitState>,           // rate limit API keys (en memoria → Redis Fase 3)
 }
 ```
@@ -176,9 +179,9 @@ let db = Database::connect(&config.database_url).await?;
 // 4. Construir AppState
 let state = AppState {
     db,
-    config: Arc::new(config),
+    config:     Arc::new(config),
     rate_limit: Arc::new(RateLimitState::default()),
-    // redis, job_storage, s3 — agregar en sus respectivas Fases
+    // redis, pg_pool, s3 — agregar en sus respectivas Fases
 };
 ```
 

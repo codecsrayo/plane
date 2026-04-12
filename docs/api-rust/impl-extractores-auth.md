@@ -61,7 +61,7 @@ Valida el token Bearer contra la tabla `authtoken_token`.
 
 use axum::{
     async_trait,
-    extract::FromRequestParts,
+    extract::{FromRequestParts, FromRef},
     http::{request::Parts, header::AUTHORIZATION},
 };
 use sea_orm::{EntityTrait, ColumnTrait, QueryFilter};
@@ -78,11 +78,13 @@ pub struct CurrentUser(pub users::Model);
 #[async_trait]
 impl<S> FromRequestParts<S> for CurrentUser
 where
-    S: Send + Sync + AsRef<AppState>,
+    S: Send + Sync,
+    AppState: FromRef<S>,
 {
     type Rejection = AppError;
 
     async fn from_request_parts(parts: &mut Parts, state: &S) -> Result<Self, AppError> {
+        let app_state = AppState::from_ref(state);
         let auth_header = parts
             .headers
             .get(AUTHORIZATION)
@@ -94,13 +96,13 @@ where
             .strip_prefix("Token ")
             .ok_or(AppError::Unauthorized)?;
 
-        // DRF genera tokens de 40 hex chars. Valores mayores son inválidos
-        // y causarían una query DB innecesaria con input potencialmente enorme.
-        if token_key.len() > 64 {
+        // DRF genera tokens de exactamente 40 hex chars.
+        // Rechazar cualquier valor distinto evita queries innecesarias con input inválido.
+        if token_key.len() > 40 {
             return Err(AppError::Unauthorized);
         }
 
-        let db = &state.as_ref().db;
+        let db = &app_state.db;
 
         let token = authtoken_token::Entity::find()
             .filter(authtoken_token::Column::Key.eq(token_key))
@@ -150,7 +152,8 @@ pub struct WorkspaceMemberGuard {
 #[async_trait]
 impl<S> FromRequestParts<S> for WorkspaceMemberGuard
 where
-    S: Send + Sync + AsRef<AppState>,
+    S: Send + Sync,
+    AppState: FromRef<S>,
 {
     type Rejection = AppError;
 
@@ -163,7 +166,7 @@ where
             .map_err(|_| AppError::NotFound)?;
 
         let slug = params.get("slug").ok_or(AppError::NotFound)?;
-        let db = &state.as_ref().db;
+        let db = &AppState::from_ref(state).db;
 
         let workspace = workspaces::Entity::find()
             .filter(workspaces::Column::Slug.eq(slug.as_str()))
@@ -207,7 +210,8 @@ pub struct ProjectMemberGuard {
 #[async_trait]
 impl<S> FromRequestParts<S> for ProjectMemberGuard
 where
-    S: Send + Sync + AsRef<AppState>,
+    S: Send + Sync,
+    AppState: FromRef<S>,
 {
     type Rejection = AppError;
 
@@ -225,7 +229,7 @@ where
             .and_then(|s| s.parse().ok())
             .ok_or(AppError::NotFound)?;
 
-        let db = &state.as_ref().db;
+        let db = &AppState::from_ref(state).db;
 
         let _project = projects::Entity::find_by_id(project_id)
             .filter(projects::Column::WorkspaceId.eq(workspace_member.workspace_id))
@@ -257,7 +261,8 @@ Los guards solo verifican **membresía** — el check de **rol mínimo** se hace
 ### Constantes de rol
 
 ```rust
-// src/routes/mod.rs
+// src/auth/permissions.rs  ← ubicación correcta (no routes/mod.rs)
+// Ver ref-estructura-archivos.md — ROLE_* viven en auth/, no en routes/
 pub const ROLE_GUEST:  i16 = 5;
 pub const ROLE_VIEWER: i16 = 10;
 pub const ROLE_MEMBER: i16 = 15;
@@ -448,11 +453,12 @@ async fn test_non_member_returns_403() {
 
 ```
 Fase 1:
-  [ ] src/auth/extractors.rs  — CurrentUser (Bearer token)
-                                 WorkspaceMemberGuard (slug → workspace + member)
-                                 ProjectMemberGuard (project_id → project + member)
-  [ ] src/routes/mod.rs       — constantes ROLE_GUEST/VIEWER/MEMBER/ADMIN
-                                 fn require_role() con Workspace Admin override
+  [ ] src/auth/extractors.rs   — CurrentUser (Bearer token)
+                                  WorkspaceMemberGuard (slug → workspace + member)
+                                  ProjectMemberGuard (project_id → project + member)
+  [ ] src/auth/permissions.rs  — constantes ROLE_GUEST/VIEWER/MEMBER/ADMIN
+                                  fn require_role() con Workspace Admin override
+                                  (NO en routes/mod.rs — auth vive en src/auth/)
 ```
 
 ## 🔗 Navegar

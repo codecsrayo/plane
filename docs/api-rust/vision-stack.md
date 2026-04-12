@@ -87,7 +87,9 @@ jsonwebtoken = { version = "9", features = [] }
 base64 = "0.22"
 
 # Background jobs
-apalis = { version = "latest", features = ["postgres"] }
+# ⚠️ Cargo NO acepta "latest" como versión — usar semver exacto
+apalis = { version = "0.7.4", features = ["limit", "timeout", "retry"] }
+apalis-sql = { version = "0.7.4", features = ["postgres", "tokio-comp"] }
 
 # Redis
 fred = { version = "10", features = ["pool", "subscriber-client"] }

@@ -134,7 +134,37 @@ Todo campo `description_html` almacenado debe pasar por `ammonia::Builder` antes
 - Validar tamaño máximo del payload (ej. 25 MB — límite de GitHub).
 
 ---
-## 📝 Conclusión y Recomendación
+## 🦀 Auditoría de Calidad — Anti-patrones Rust en Documentación (2026-04-12)
+
+> Auditoría realizada sobre los archivos `impl-*.md` y `vision-stack.md`. Todos los hallazgos listados aquí han sido **corregidos in-situ** en sus respectivos documentos.
+
+### Errores que impedirían compilación (🔴 resueltos)
+
+| # | Archivo | Anti-patrón | Fix aplicado |
+|---|---|---|---|
+| A1 | `impl-autenticacion.md` | `tokio::sync::Mutex::blocking_lock()` en contexto async — bloquea el runtime Tokio | `std::sync::Mutex::lock()` — sección crítica sin `.await` |
+| A2 | `impl-error-jobs-cron.md` | `PostgresStorage::new(db.clone())` pasando `sea_orm::DatabaseConnection` — tipo incorrecto | `db.get_postgres_connection_pool().clone()` para obtener `sqlx::PgPool` |
+| A3 | `impl-appstate-repository.md` | `job_storage: PgPool` + `state.job_storage.push(job)` — `PgPool` no tiene `.push()` | Campo renombrado a `pg_pool: sqlx::PgPool`; push via `PostgresStorage::new(state.pg_pool.clone())` |
+| A4 | `vision-stack.md` | `version = "latest"` en Cargo.toml — Cargo rechaza "latest" como specifier semver | Versiones exactas: `apalis = "0.7.4"`, `apalis-sql = "0.7.4"` con features correctas |
+
+### Anti-patrones de diseño (🟠 resueltos)
+
+| # | Archivo | Anti-patrón | Fix aplicado |
+|---|---|---|---|
+| A5 | `impl-autenticacion.md` (3×) | `S: AsRef<AppState>` — no estándar en Axum 0.8; requiere impl manual de `AsRef` en el estado | `AppState: FromRef<S>` + `AppState::from_ref(state)` — patrón idiomático Axum |
+| A5b | `impl-extractores-auth.md` (3×) | Mismo `AsRef<AppState>` en `CurrentUser`, `WorkspaceMemberGuard`, `ProjectMemberGuard` | Mismo fix — `FromRef<S>` |
+| A6 | `impl-autenticacion.md` | `logout` siempre busca `SESSION_COOKIE_NAME` primero ignorando la ruta `/instances/...` — borra sesión incorrecta en admin paths | `SessionKind::from_path(uri.path())` + `kind.primary_cookie()` consistente con el extractor |
+
+### Inconsistencias entre documentos (🟡 resueltas)
+
+| # | Archivos | Inconsistencia | Fix aplicado |
+|---|---|---|---|
+| A7 | `impl-bootstrap.md` vs `impl-autenticacion.md` | `AppState` Fase 1 sin `rate_limit`, pero `ApiKeyUser` (también Fase 1) lo usa | `rate_limit: Arc<RateLimitState>` agregado al AppState y su inicialización en bootstrap |
+| A8 | `impl-extractores-auth.md` vs `ref-estructura-archivos.md` | `ROLE_*` y `require_role` ubicados en `src/routes/mod.rs` pero `ref-estructura-archivos` dice `src/auth/permissions.rs` | Corregido a `src/auth/permissions.rs` en código de ejemplo y plan de implementación |
+| A9 | `impl-extractores-auth.md` | Comentario "40 hex chars" pero límite `> 64` — tokens de 41–64 chars pasaban sin ser de DRF | Límite corregido a `> 40` con comentario exacto |
+
+**Nota:** El audit-report previo (Sesiones 1 y 2) cubría vulnerabilidades de seguridad en los `dominio-*.md`. Esta auditoría complementa con anti-patrones de código Rust en los `impl-*.md`.
+
 
 La documentación **no es un manual de lo que "es", sino un mapa de lo que "será"**, manteniendo una honestidad técnica ejemplar sobre el estado actual.
 

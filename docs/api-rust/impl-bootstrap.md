@@ -369,13 +369,17 @@ pub mod utils;
 pub mod auth;
 
 use config::Config;
+use auth::rate_limit::RateLimitState;
 
 #[derive(Clone)]
 pub struct AppState {
-    pub db:     sea_orm::DatabaseConnection,
-    pub config: Arc<Config>,
+    pub db:         sea_orm::DatabaseConnection,
+    pub config:     Arc<Config>,
+    /// Rate limit para API keys — std::sync::Mutex interno (ver impl-autenticacion.md).
+    /// Requerido desde Fase 1: ApiKeyUser::from_request_parts lo usa directamente.
+    pub rate_limit: Arc<RateLimitState>,
     // Fase 2: pub redis: fred::clients::Pool,
-    // Fase 3: pub job_storage: PgPool,
+    // Fase 3: pub pg_pool: sqlx::PgPool,  ← para apalis PostgresStorage
 }
 
 #[tokio::main]
@@ -408,7 +412,8 @@ async fn main() -> anyhow::Result<()> {
     // 4. AppState
     let state = AppState {
         db,
-        config: Arc::new(config.clone()),
+        config:     Arc::new(config.clone()),
+        rate_limit: Arc::new(RateLimitState::default()),
     };
 
     // 5. Router
