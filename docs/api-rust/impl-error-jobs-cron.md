@@ -56,6 +56,11 @@ pub enum AppError {
     #[error("Forbidden")]
     Forbidden,
 
+    /// HTTP 429 — rate limit superado para este API key.
+    /// Retornado por `apply_rate_limit()` en `src/auth/api_key.rs`.
+    #[error("Rate limit exceeded")]
+    RateLimited,
+
     #[error("Validation error: {0}")]
     Validation(String),
 
@@ -74,13 +79,16 @@ impl IntoResponse for AppError {
             AppError::NotFound      => (StatusCode::NOT_FOUND,            "Not found".into()),
             AppError::Unauthorized  => (StatusCode::UNAUTHORIZED,         "Unauthorized".into()),
             AppError::Forbidden     => (StatusCode::FORBIDDEN,            "Forbidden".into()),
+            AppError::RateLimited   => (StatusCode::TOO_MANY_REQUESTS,    "Rate limit exceeded".into()),
             AppError::Validation(m) => (StatusCode::UNPROCESSABLE_ENTITY, m.clone()),
             AppError::Database(e)   => {
-                tracing::error!("DB error: {e}");
+                // ⚠️ Loguear internamente — NUNCA exponer `e` al cliente:
+                // puede contener connection strings, schema names u otros detalles internos.
+                tracing::error!(error = %e, "Database error");
                 (StatusCode::INTERNAL_SERVER_ERROR, "Database error".into())
             }
             AppError::Internal(e)   => {
-                tracing::error!("Internal error: {e}");
+                tracing::error!(error = %e, "Internal error");
                 (StatusCode::INTERNAL_SERVER_ERROR, "Internal server error".into())
             }
         };
