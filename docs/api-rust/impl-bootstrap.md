@@ -11,7 +11,7 @@ tags:
   - utoipa
   - scalar
   - implementacion
-  - implementado
+  - parcial
 relacionado:
   - "[[MOC]]"
   - "[[vision-stack]]"
@@ -19,7 +19,7 @@ relacionado:
   - "[[impl-extractores-auth]]"
   - "[[ref-estructura-archivos]]"
   - "[[plan-fases]]"
-estado: activo
+estado: parcial
 ---
 
 # Implementación inicial — Bootstrap de la API
