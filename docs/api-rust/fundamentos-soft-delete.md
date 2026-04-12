@@ -99,6 +99,7 @@ impl_soft_delete!(workspace_members::Entity);
 ## Uso en rutas (handlers)
 
 ```rust
+// src/routes/issues.rs
 use crate::utils::soft_delete::SoftDeleteExt;
 
 // ✅ Filtrar solo activos
@@ -122,6 +123,7 @@ let existing = github_repository_syncs::Entity::find()
 ## Soft delete de un registro
 
 ```rust
+// src/routes/issues.rs
 // Soft delete — actualizar deleted_at en lugar de DELETE
 let mut active_model: issues::ActiveModel = issue.into();
 active_model.deleted_at = Set(Some(chrono::Utc::now().into()));

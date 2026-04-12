@@ -56,6 +56,7 @@ Los JSON de `cycles.json` tienen `type: "CURRENT" | "UPCOMING"`, no fechas.
 **Solución:** Calcular en runtime:
 
 ```rust
+// src/jobs/workspace_seed.rs
 let now = Utc::now();
 let (start_date, end_date) = match cycle_seed.cycle_type.as_str() {
     "CURRENT"  => (now, now + Duration::days(14)),
@@ -100,6 +101,7 @@ workspace → bot_user → project → states → labels → cycles → modules 
 Al crear el proyecto en el seed, crear también la fila en `project_identifiers`:
 
 ```rust
+// src/jobs/workspace_seed.rs
 project_identifiers::ActiveModel {
     id:           Set(Uuid::new_v4()),
     workspace_id: Set(workspace_id),
@@ -145,6 +147,7 @@ Las entities `django_celery_beat_*`, `django_content_type`, `django_migrations`,
 ## 10. `apalis_jobs` table — inicializar antes del primer job
 
 ```rust
+// src/main.rs
 // En main.rs, al arrancar, antes de registrar workers
 PostgresStorage::setup(&db).await?;
 ```

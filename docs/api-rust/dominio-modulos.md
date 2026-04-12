@@ -217,6 +217,7 @@ pub fn compute_module_status(
 Links son URLs de referencia del módulo (documentación, PRs, etc.):
 
 ```rust
+// src/routes/modules.rs
 #[derive(Deserialize, ToSchema)]
 pub struct CreateModuleLinkRequest {
     pub title: Option<String>,
@@ -239,6 +240,7 @@ pub struct ModuleLinkResponse {
 ## DTOs
 
 ```rust
+// src/routes/modules.rs
 #[derive(Deserialize, ToSchema)]
 pub struct CreateModuleRequest {
     pub name:         String,

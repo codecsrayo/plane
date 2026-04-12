@@ -59,6 +59,7 @@ estado: activo
 Las siguientes ya están presentes en `apps/api_rust/Cargo.toml`:
 
 ```toml
+# apps/api_rust/Cargo.toml
 # ── HTTP & Async ──────────────────────────────────────────────────────────────
 axum            = { version = "0.8.8", features = ["macros", "multipart"] }
 axum-extra      = { version = "0.10", features = ["cookie"] }

@@ -248,6 +248,7 @@ pub async fn update_intake_issue(
 ## DTOs
 
 ```rust
+// src/routes/intake.rs
 #[derive(Deserialize, ToSchema)]
 pub struct CreateIntakeIssueRequest {
     pub name:             String,

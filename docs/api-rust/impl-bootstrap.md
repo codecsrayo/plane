@@ -468,6 +468,7 @@ pub async fn list_workspaces(
 ### Paso 2 — Registrar en `routes/mod.rs`
 
 ```rust
+// src/routes/mod.rs
 // En build_router():
 .route("/workspaces", get(workspaces::list_workspaces))
 

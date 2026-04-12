@@ -73,12 +73,14 @@ Acceder a `http://localhost:8000/api/docs` para explorar y probar endpoints manu
 Permite hacer requests HTTP directamente al router de Axum sin levantar un servidor TCP real. Ideal para tests de integración rápidos:
 
 ```toml
+# Cargo.toml
 [dev-dependencies]
 axum-test = "14"
 tokio = { version = "1", features = ["full"] }
 ```
 
 ```rust
+// tests/issues.rs
 #[tokio::test]
 async fn test_get_issues() {
     let app = build_app(test_db_state()).await;
@@ -131,11 +133,13 @@ async fn test_member_can_list_issues() {
 Más simple, sin estado entre requests. Útil para smoke tests rápidos:
 
 ```toml
+# Cargo.toml
 [dev-dependencies]
 httpc-test = "0.1"
 ```
 
 ```rust
+// tests/health.rs
 #[tokio::test]
 async fn test_health() -> httpc_test::Result<()> {
     let hc = httpc_test::new_client("http://localhost:8000")?;

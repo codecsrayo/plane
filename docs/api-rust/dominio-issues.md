@@ -220,6 +220,7 @@ issues (tabla principal)
 ## Modelo de filtros — `GET /issues/`
 
 ```rust
+// src/routes/issues.rs
 #[derive(Deserialize, ToSchema)]
 pub struct IssueQueryParams {
     // Paginación cursor-based
@@ -441,6 +442,7 @@ pub enum IssueRelationType {
 ## DTOs principales
 
 ```rust
+// src/routes/issues.rs
 #[derive(Deserialize, ToSchema)]
 pub struct CreateIssueRequest {
     pub name:             String,

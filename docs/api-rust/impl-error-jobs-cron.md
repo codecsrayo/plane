@@ -110,6 +110,7 @@ Cada job sigue el mismo patrón de registro. Todos los workers corren en el **mi
 ### Patrón de un job
 
 ```rust
+// src/jobs/mod.rs
 // Ejemplo genérico — el spec real de cada job está en su dominio correspondiente
 // (ej: dominio-notificaciones, dominio-workspace-seed, dominio-workspace-settings)
 use apalis::prelude::*;
@@ -224,6 +225,7 @@ tokio::spawn(async move {
 > Ejemplo completo con contexto de workspace: [[dominio-workspace-seed#Encolar el job desde el handler de workspaces]].
 
 ```rust
+// src/routes/issues.rs
 // Patrón genérico — en cualquier handler POST que dispara un job
 let mut storage = PostgresStorage::<MiJob>::new(state.pg_pool.clone());
 if let Err(e) = storage.push(MiJob { ... }).await {

@@ -153,6 +153,7 @@ pub struct GitHubRepo {
 ## `POST /importers/github/` — iniciar importación
 
 ```rust
+// src/routes/importers.rs
 #[derive(Deserialize, ToSchema)]
 pub struct CreateGithubImporterRequest {
     pub repo_url:    String,         // "https://github.com/owner/repo"
@@ -382,6 +383,7 @@ async fn import_single_issue(
 ## GitLab Importer — diferencias con GitHub
 
 ```rust
+// src/routes/importers.rs
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct GitLabImporterJob {
     pub importer_id: Uuid,
@@ -412,6 +414,7 @@ pub async fn handle_gitlab_importer(
 ## DTOs
 
 ```rust
+// src/routes/importers.rs
 #[derive(Serialize, ToSchema)]
 pub struct ImporterResponse {
     pub id:              Uuid,

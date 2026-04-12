@@ -80,6 +80,7 @@ src/
 ### Ejemplo — `repositories/issues.rs`
 
 ```rust
+// src/repositories/issues.rs
 use sea_orm::{ColumnTrait, DatabaseConnection, EntityTrait, QueryFilter, QueryOrder};
 use uuid::Uuid;
 use crate::{entities::issues, error::AppError, utils::soft_delete::SoftDeleteExt};
@@ -166,6 +167,7 @@ Los tests pueden **mockear el repository** sin levantar DB real. El handler solo
 Evolución del `AppState` por fases:
 
 ```rust
+// src/main.rs
 // Fase 1 — mínimo funcional
 let state = AppState {
     db,

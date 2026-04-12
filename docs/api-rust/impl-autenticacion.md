@@ -172,6 +172,7 @@ where
 ### Diferencia crítica: `session_data` vs `user_id`
 
 ```sql
+-- migration/src/migrations/m_create_sessions_table.sql
 -- Tabla sessions en PostgreSQL
 session_key  TEXT PRIMARY KEY   -- clave aleatoria 128 chars
 session_data TEXT               -- base64(pickle(dict)) — SOLO lo lee Python
@@ -180,6 +181,7 @@ user_id      VARCHAR(50)        -- ← Rust usa SOLO esta columna (indexada)
 ```
 
 ```rust
+// src/auth/session.rs
 // ✅ Correcto
 let user_id_str = session.user_id.ok_or(AppError::Unauthorized)?;
 

@@ -208,6 +208,7 @@ pub async fn duplicate_page(
 ## DTOs
 
 ```rust
+// src/routes/pages.rs
 #[derive(Deserialize, ToSchema)]
 pub struct CreatePageRequest {
     pub name:             String,           // ⚠️ FIX-31: validar máx 255 chars
@@ -275,6 +276,7 @@ pub struct PageVersionResponse {
 `GET /pages-summary/` devuelve solo `id`, `name`, `updated_at` — sin `description_html`. Usado para la sidebar de navegación de páginas:
 
 ```rust
+// src/routes/pages.rs
 #[derive(Serialize, ToSchema)]
 pub struct PageSummary {
     pub id:         Uuid,

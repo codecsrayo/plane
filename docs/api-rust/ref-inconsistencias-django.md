@@ -101,6 +101,7 @@ GET/POST/DELETE  /workspaces/{slug}/projects/{id}/issues/{issue_id}/modules/
 **Django real** (`apps/api/plane/app/urls/module.py`):
 
 ```python
+# apps/api/plane/app/urls/module.py
 ModuleIssueViewSet.as_view({"post": "create_issue_modules"})
 # Solo POST — sin GET ni DELETE en esta ruta
 ```
@@ -122,6 +123,7 @@ GET/DELETE  /workspaces/{slug}/projects/{id}/archived-cycles/{pk}/
 **Django real** (`apps/api/plane/app/urls/cycle.py`):
 
 ```python
+# apps/api/plane/app/urls/cycle.py
 CycleArchiveUnarchiveEndpoint.as_view()
 # No hay map explícito de métodos — la vista maneja GET internamente
 # No hay DELETE registrado en esta ruta específica
@@ -146,6 +148,7 @@ GET/DELETE  /workspaces/{slug}/projects/{id}/archived-modules/{pk}/
 **Django real** (`apps/api/plane/app/views/module/archive.py`):
 
 ```python
+# apps/api/plane/app/views/module/archive.py
 class ModuleArchiveUnarchiveEndpoint(BaseAPIView):
     def get(self, request, slug, project_id, pk=None): ...   # lista o detalle
     def post(self, request, slug, project_id, module_id): ...  # archivar
@@ -177,6 +180,7 @@ GET  /workspaces/{slug}/export-analytics/
 **Django real** (`apps/api/plane/app/views/analytic/base.py` línea 234):
 
 ```python
+# apps/api/plane/app/views/analytic/base.py
 class ExportAnalyticsEndpoint(BaseAPIView):
     def post(self, request, slug): ...   # ← solo POST
 ```
@@ -198,6 +202,7 @@ POST  /workspaces/{slug}/saved-analytic-view/{analytic_id}/
 **Django real** (`apps/api/plane/app/views/analytic/base.py` línea 208):
 
 ```python
+# apps/api/plane/app/views/analytic/base.py
 class SavedAnalyticEndpoint(BaseAPIView):
     def get(self, request, slug, analytic_id): ...   # ← solo GET
 ```
@@ -219,6 +224,7 @@ GET  /api/workspaces/{slug}/members/  →  WorkspaceMemberGuard (≥15)
 **Django real** (`apps/api/plane/app/views/workspace/member.py` línea 45):
 
 ```python
+# apps/api/plane/app/views/workspace/member.py
 @allow_permission(allowed_roles=[ROLE.ADMIN, ROLE.MEMBER, ROLE.GUEST], level="WORKSPACE")
 def list(self, request, slug): ...
 ```
@@ -254,6 +260,7 @@ GET/POST/PATCH  /workspaces/{slug}/projects/{project_id}/user-properties/
 **Django real** (`apps/api/plane/app/urls/issue.py`):
 
 ```python
+# apps/api/plane/app/urls/issue.py
 ProjectUserDisplayPropertyEndpoint.as_view()
 # Sin map de métodos explícito → depende de la vista
 ```

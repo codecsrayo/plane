@@ -66,6 +66,7 @@ users
 ## Filtros del listado de notificaciones
 
 ```rust
+// src/jobs/notifications.rs
 #[derive(Deserialize, ToSchema)]
 pub struct NotificationQueryParams {
     pub type_:     Option<String>,  // "assigned"|"mentioned"|"subscribed"|"created"
