@@ -422,7 +422,7 @@ pub async fn get_instance_config(
 [ ] src/utils/oauth_popup.rs        — postmessage_html helper
 [ ] src/routes/integrations.rs      — todos los endpoints
 [ ] src/jobs/github_sync.rs         — GithubInitialIssueSyncJob (apalis)
-[ ] Cargo.toml: jsonwebtoken = "9", base64 = "0.22"
+✅ Cargo.toml: jsonwebtoken = "9", base64 = "0.22" — ya presentes
 [ ] Router: /api/github/callback/ sin middleware de auth
 ```
 
