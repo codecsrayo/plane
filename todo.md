@@ -424,3 +424,22 @@ IS_SLACK_ENABLED=1
 | Bug | Archivo | Commit |
 |---|---|---|
 | `ReferenceError: Cannot access 'cycleIds' before initialization` en CycleOptions — temporal dead zone: `cycleIds` referenciado en `useCallback` antes de ser declarado | `apps/web/core/components/dropdowns/cycle/cycle-options.tsx` | `5be1ba3` |
+
+---
+
+## Documentación IA — dominio-ia.md (docs/api-rust/)
+
+### Qué se documentó
+Arquitectura completa de la integración IA de Plane: asistente Pi, reformulación de texto, multi-proveedor LLM.
+
+### Errores encontrados en el código IA
+
+| Error | Severidad | Detalle |
+|---|---|---|
+| **Endpoint `/rephrase-grammar/` ausente en Django** | 🔴 Crítico | El frontend llama `POST /api/workspaces/{slug}/rephrase-grammar/` desde el editor de páginas (Ask Pi + reformulación) pero la URL **no está registrada** en `apps/api/plane/app/urls/external.py` → 404 en producción |
+| **`ASK_ANYTHING` incompleto en EditorAIMenu** | 🟡 Medio | El flujo retorna temprano sin llamar al backend; el input de `AskPiMenu` actualiza `query` en estado local pero no lo envía — botón de submit sin `onClick` |
+| **Modelos Anthropic desactualizados** | 🟡 Medio | Solo incluye Claude 3 (2024); Claude 3.5, 3.7, Claude 4 serían rechazados por la validación de `model not in provider.models` |
+| **Gemini vía OpenAI SDK sin proxy documentado** | 🟡 Medio | Requiere proxy LiteLLM externo no documentado ni validado en el código |
+
+### Documento generado
+`docs/api-rust/dominio-ia.md` — incluye: arquitectura, mapa de archivos, flujos mermaid, config de proveedores, errores, plan de implementación Rust.
