@@ -166,7 +166,12 @@ async fn seed_workspace(
 
     // Lock exclusivo por workspace — bloquea otros workers que intenten sembrar el mismo workspace.
     // Usar los bytes del UUID como la clave i64 del advisory lock.
-    let lock_key = i64::from_le_bytes(workspace_id.as_bytes()[..8].try_into().unwrap());
+    // Los primeros 8 bytes de un UUID v4 siempre existen — slice nunca falla.
+    // SAFETY: workspace_id.as_bytes() devuelve exactamente 16 bytes; [..8] es siempre válido.
+    let lock_key = i64::from_le_bytes(
+        workspace_id.as_bytes()[..8].try_into()
+            .expect("UUID bytes slice [..8] always yields exactly 8 bytes") // silence-patterns-ok: invariante estático garantizado por el tipo UUID
+    );
     let locked: bool = txn.query_one(
         sea_orm::Statement::from_sql_and_values(
             sea_orm::DatabaseBackend::Postgres,
