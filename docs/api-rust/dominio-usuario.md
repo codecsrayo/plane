@@ -31,7 +31,7 @@ estado: activo
 
 ## Modelo de datos
 
-```
+```tree
 users (tabla principal)
     ├─ profiles (perfil extendido)
     ├─ accounts (cuentas OAuth vinculadas: github, google, etc.)

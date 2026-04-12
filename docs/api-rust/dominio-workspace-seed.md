@@ -29,7 +29,7 @@ estado: activo
 
 `workspace_seed_task.py` es un **Celery task** disparado con `.delay(workspace_id)` inmediatamente después de `POST /api/workspaces/`. Crea de forma asíncrona:
 
-```
+```tree
 workspace creado
     └─ bot_user               (User.is_bot=true, bot_type=WORKSPACE_SEED)
     └─ WorkspaceMember        (rol 20 = admin para el bot)

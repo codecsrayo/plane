@@ -29,7 +29,7 @@ estado: activo
 
 ## Modelo de datos
 
-```
+```tree
 workspaces
     ├─ views (Workspace Views — Globales)
     └─ projects

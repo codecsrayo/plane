@@ -128,7 +128,7 @@ impl MigrationTrait for Migration {
 
 ## Estructura del crate de migraciones
 
-```
+```tree
 migration/
 ├── Cargo.toml
 └── src/

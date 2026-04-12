@@ -162,7 +162,7 @@ bruno run --env staging tests/bruno/
 
 ### Estructura de la colección
 
-```
+```tree
 apps/api_rust/tests/bruno/
 ├── bruno.json
 ├── environments/

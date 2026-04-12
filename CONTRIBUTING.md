@@ -115,7 +115,7 @@ This guide is designed to help contributors understand how to add or update tran
 
 Translations are organized by language in the locales directory. Each language has its own folder containing JSON files for translations. Here's how it looks:
 
-```
+```tree
 packages/i18n/src/locales/
     ├── en/
     │   ├── core.json       # Critical translations

@@ -29,7 +29,7 @@ estado: activo
 
 ## Modelo de datos
 
-```
+```tree
 projects
     └─ cycles
             ├─ cycle_issues           (M2M → issues)

@@ -30,7 +30,7 @@ estado: activo
 
 ## Modelo de datos
 
-```
+```tree
 workspaces
     └─ projects
             ├─ project_members          (M2M → users, rol propio)

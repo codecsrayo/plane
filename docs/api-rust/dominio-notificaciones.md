@@ -32,7 +32,7 @@ estado: activo
 
 ## Modelo de datos
 
-```
+```tree
 users
     └─ notifications                    (in-app, 1→N por user)
             ├─ triggered_by_id → users  (quién generó el evento)

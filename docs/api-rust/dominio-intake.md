@@ -31,7 +31,7 @@ estado: activo
 
 ## Modelo de datos
 
-```
+```tree
 projects
     └─ intakes              (configuración del intake del proyecto, generalmente 1 por proyecto)
             └─ intake_issues (issues pendientes de revisión)

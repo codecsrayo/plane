@@ -62,7 +62,7 @@ Los handlers Axum **no deben contener queries SeaORM directamente**. El módulo 
 
 ### Estructura de módulos
 
-```
+```tree
 src/
 ├── repositories/
 │   ├── mod.rs

@@ -45,7 +45,7 @@ Plane soporta 3 integraciones externas. Sus filas maestras viven en la tabla `in
 
 ## Modelo de datos — relaciones clave
 
-```
+```tree
 integrations (3 filas estáticas)
     └─ workspace_integrations           (1 por workspace por proveedor)
             ├─ metadata: { installation_id }   (GitHub)
@@ -298,25 +298,24 @@ sequenceDiagram
     Worker-->>Apalis: job completado ✅
 ```
 
-
-// src/jobs/github_sync.rs
-#[derive(Debug, Clone, Serialize, Deserialize)]
+// src/jobs/github_sync.rs #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct GithubInitialIssueSyncJob {
-    pub repo_sync_id: Uuid,
+pub repo_sync_id: Uuid,
 }
 
 pub async fn handle_github_initial_sync(
-    job: GithubInitialIssueSyncJob,
-    ctx: Data<DatabaseConnection>,
+job: GithubInitialIssueSyncJob,
+ctx: Data<DatabaseConnection>,
 ) -> Result<(), apalis::prelude::Error> {
-    let db = ctx.as_ref();
-    // ... obtener installation_id desde workspace_integration
-    // ... paginar GET /repos/{owner}/{repo}/issues?state=all&per_page=100
-    // ... filtrar PRs (tienen "pull_request" key)
-    // ... crear Issue + GithubIssueSync por cada issue importado
-    Ok(())
+let db = ctx.as_ref();
+// ... obtener installation_id desde workspace_integration
+// ... paginar GET /repos/{owner}/{repo}/issues?state=all&per_page=100
+// ... filtrar PRs (tienen "pull_request" key)
+// ... crear Issue + GithubIssueSync por cada issue importado
+Ok(())
 }
-```
+
+````
 
 Disparar desde el handler de creación de repo sync:
 
@@ -327,7 +326,7 @@ if let Err(e) = state.job_storage
 {
     tracing::warn!(repo_sync_id = %new_sync.id, "Failed to enqueue GithubInitialIssueSyncJob: {e}");
 }
-```
+````
 
 ---
 

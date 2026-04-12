@@ -8,7 +8,7 @@
 
 ## Estructura del vault
 
-```
+```tree
 docs/
 ├── .obsidian/          ← configuración del vault (plugins, temas)
 └── api-rust/           ← documentación de la API Rust
@@ -24,14 +24,14 @@ docs/
 
 ## Convención de prefijos
 
-| Prefijo | Cluster | Descripción |
-|---------|---------|-------------|
-| `vision-` | Visión | Qué, por qué, panorama general |
-| `fundamentos-` | Fundamentos | Base técnica: DB, ORM, persistencia |
-| `impl-` | Implementación | Código concreto de la API |
-| `dominio-` | Dominio | Lógica de negocio de features |
-| `plan-` | Planificación | Estrategia y riesgos |
-| `ref-` | Referencia | Diagramas, estructuras, testing |
+| Prefijo        | Cluster        | Descripción                         |
+| -------------- | -------------- | ----------------------------------- |
+| `vision-`      | Visión         | Qué, por qué, panorama general      |
+| `fundamentos-` | Fundamentos    | Base técnica: DB, ORM, persistencia |
+| `impl-`        | Implementación | Código concreto de la API           |
+| `dominio-`     | Dominio        | Lógica de negocio de features       |
+| `plan-`        | Planificación  | Estrategia y riesgos                |
+| `ref-`         | Referencia     | Diagramas, estructuras, testing     |
 
 ## Plugins Obsidian activos
 

@@ -28,7 +28,7 @@ estado: activo
 
 ## Modelo de datos
 
-```
+```tree
 projects
     └─ pages
             ├─ page_labels      (M2M → labels)

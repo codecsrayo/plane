@@ -38,7 +38,7 @@ estado: activo
 
 ## Estructura de archivos — versión inicial
 
-```
+```tree
 src/
 ├── main.rs          ← bootstrap completo: AppState + router + Swagger + workers
 ├── config.rs        ← env vars tipadas con dotenvy

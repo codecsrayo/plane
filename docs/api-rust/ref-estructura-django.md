@@ -27,7 +27,7 @@ estado: activo
 
 ## Árbol completo
 
-```
+```tree
 apps/api/
 ├── manage.py                          ← entry point Django (equiv: src/main.rs)
 └── plane/

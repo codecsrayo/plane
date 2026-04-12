@@ -33,7 +33,7 @@ estado: activo
 
 ## Modelo de datos — relaciones
 
-```
+```tree
 issues (tabla principal)
     ├─ issue_assignees         (M2M → users)
     ├─ issue_labels            (M2M → labels)

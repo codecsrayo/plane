@@ -29,7 +29,7 @@ estado: activo
 
 ## Modelo de datos
 
-```
+```tree
 projects
     └─ modules
             ├─ module_issues          (M2M → issues, un issue puede estar en varios módulos)
