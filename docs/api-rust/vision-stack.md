@@ -59,41 +59,53 @@ estado: activo
 Las siguientes ya están presentes en `apps/api_rust/Cargo.toml`:
 
 ```toml
+# ── HTTP & Async ──────────────────────────────────────────────────────────────
 axum            = { version = "0.8.8", features = ["macros", "multipart"] }
-utoipa          = { version = "5.4.0", features = ["axum_extras", "uuid", "chrono"] }
-utoipa-swagger-ui = { version = "9.0.2", features = ["axum"] }
-tower-http      = { version = "0.6.8", features = ["cors", "trace", "compression-gzip"] }
-sea-orm         = { version = "1.1.20", features = ["sqlx-postgres", "runtime-tokio-rustls", "macros"] }
-dotenvy         = "0.15.7"
-tracing         = "0.1.44"
-tracing-subscriber = { version = "0.3.23", features = ["env-filter", "json"] }
-thiserror       = "2.0.18"
+axum-extra      = { version = "0.10", features = ["cookie"] }
 tokio           = { version = "1.51.1", features = ["full"] }
+tower           = "0.5.3"
+tower-http      = { version = "0.6.8", features = ["cors", "trace", "compression-gzip"] }
+time            = "0.3"
+
+# ── ORM & DB ─────────────────────────────────────────────────────────────────
+sea-orm         = { version = "1.1.20", features = [
+    "sqlx-postgres", "runtime-tokio-rustls", "macros",
+    "with-uuid", "with-chrono", "with-json",
+] }
+dotenvy         = "0.15.7"
+
+# ── Background jobs ──────────────────────────────────────────────────────────
+apalis          = { version = "0.7.4", features = ["limit", "timeout", "retry"] }
+apalis-sql      = { version = "0.7.4", features = ["postgres", "tokio-comp"] }
+
+# ── Redis ────────────────────────────────────────────────────────────────────
+fred            = { version = "10.1.0", features = ["i-std", "i-client", ...] }
+
+# ── Auth & Crypto ─────────────────────────────────────────────────────────────
+jsonwebtoken    = { version = "9", features = [] }
+base64          = "0.22"
+sha2            = "0.10"
+
+# ── Serialización ─────────────────────────────────────────────────────────────
 serde           = { version = "1.0.228", features = ["derive"] }
 serde_json      = "1.0.149"
 uuid            = { version = "1.23.0", features = ["v4", "serde"] }
 chrono          = { version = "0.4.44", features = ["serde"] }
+
+# ── API Docs ──────────────────────────────────────────────────────────────────
+utoipa          = { version = "5.4.0", features = ["axum_extras", "uuid", "chrono"] }
+utoipa-swagger-ui = { version = "9.0.2", features = ["axum"] }
+
+# ── Observabilidad ────────────────────────────────────────────────────────────
+tracing         = "0.1.44"
+tracing-subscriber = { version = "0.3.23", features = ["env-filter", "json"] }
+
+# ── Error handling ────────────────────────────────────────────────────────────
+thiserror       = "2.0.18"
+anyhow          = "1"
 ```
 
-**Dependencias pendientes de agregar** (según features que se implementen):
-
-```toml
-# Auth Session Cookie
-axum-extra = { version = "0.10", features = ["cookie"] }
-time = "0.3"   # requerido por Cookie::max_age
-
-# GitHub App JWT
-jsonwebtoken = { version = "9", features = [] }
-base64 = "0.22"
-
-# Background jobs
-# ⚠️ Cargo NO acepta "latest" como versión — usar semver exacto
-apalis = { version = "0.7.4", features = ["limit", "timeout", "retry"] }
-apalis-sql = { version = "0.7.4", features = ["postgres", "tokio-comp"] }
-
-# Redis
-fred = { version = "10", features = ["pool", "subscriber-client"] }
-```
+> El `Cargo.toml` real en `apps/api_rust/Cargo.toml` es la fuente de verdad — este bloque es una vista consolidada de las dependencias principales.
 
 ---
 
@@ -111,7 +123,7 @@ fred = { version = "10", features = ["pool", "subscriber-client"] }
 
 - Elimina RabbitMQ completamente
 - Jobs corren en el **mismo proceso** que Axum (mismo binario Tokio)
-- Requiere `PostgresStorage::setup(&db).await?` al arrancar
+- Requiere `PostgresStorage::setup(&pg_pool).await?` al arrancar — donde `pg_pool` es `sqlx::PgPool` extraído vía `db.get_postgres_connection_pool()` (no el `DatabaseConnection` de SeaORM directamente)
 - Ver [[impl-error-jobs-cron]] para registro de workers
 - Ver [[dominio-workspace-seed]] para ejemplo completo
 
