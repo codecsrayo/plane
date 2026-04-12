@@ -207,16 +207,35 @@ pub async fn duplicate_page(
 ```rust
 #[derive(Deserialize, ToSchema)]
 pub struct CreatePageRequest {
-    pub name:             String,
-    pub description_html: Option<String>,
-    pub access:           Option<i16>,     // 0=public, 1=secret
+    pub name:             String,           // ⚠️ FIX-31: validar máx 255 chars
+    pub description_html: Option<String>,   // ⚠️ FIX-31: validar máx 512 KB — cada PATCH genera snapshot en page_versions
+    pub access:           Option<i16>,      // 0=public, 1=secret — validar que sea 0 o 1
     pub label_ids:        Option<Vec<Uuid>>,
 }
 
+// ── Fix-31: Guards requeridos en handler de create/update ─────────────────
+// const MAX_PAGE_NAME: usize    = 255;
+// const MAX_PAGE_HTML: usize    = 512 * 1024; // 512 KB
+//
+// if payload.name.len() > MAX_PAGE_NAME {
+//     return Err(AppError::bad_request("name exceeds 255 characters"));
+// }
+// if let Some(ref html) = payload.description_html {
+//     if html.len() > MAX_PAGE_HTML {
+//         return Err(AppError::bad_request("description_html exceeds 512 KB"));
+//     }
+// }
+//
+// Riesgo sin validación:
+//   • Sin límite en description_html: cada PATCH a /description/ crea un snapshot
+//     en page_versions. Atacante envía 1 MB 100 veces → 100 MB en DB.
+//   • Sin límite en name: queries con ORDER BY name se vuelven costosas.
+// ──────────────────────────────────────────────────────────────────────────
+
 #[derive(Deserialize, ToSchema)]
 pub struct UpdatePageDescriptionRequest {
-    pub description_html: String,
-    pub description_binary: Option<Vec<u8>>, // para YJS collaboration (futuro)
+    pub description_html:   String,            // ⚠️ FIX-31: validar máx 512 KB
+    pub description_binary: Option<Vec<u8>>,   // para YJS collaboration (futuro) — también limitar tamaño
 }
 
 #[derive(Serialize, ToSchema)]
@@ -268,7 +287,7 @@ pub struct PageSummary {
 
 ## Puntos críticos
 
-> [!WARNING] 6 puntos críticos
+> [!WARNING] 7 puntos críticos — incluye Fix-32 XSS
 
 1. **Descripción en endpoint separado** — `PATCH /pages/{id}/description/` solo actualiza `description_html`. El `PATCH /pages/{id}/` solo actualiza metadata (name, access, labels). No mezclar.
 2. **Versión en cada save** — al `PATCH /description/`, crear snapshot en `page_versions` si el contenido cambió.
@@ -276,6 +295,11 @@ pub struct PageSummary {
 4. **Access check** — páginas con `access=1` (SECRET) solo visibles para el `owned_by`. En `GET /pages/`, filtrar si el usuario no es owner.
 5. **Archivar no es soft-delete** — `archived_at` es distinto de `deleted_at`. Las páginas archivadas siguen visibles pero no en el listado principal.
 6. **Duplicar** — la copia siempre queda como `SECRET` (access=1) y propiedad del usuario que duplica.
+7. **⚠️ FIX-32 — Sanitizar `description_html` en ingreso** — el contenido HTML se almacena y sirve sin filtrado. Sin sanitización, un usuario puede inyectar `<script>`, event handlers u otras cargas XSS que se ejecutarán en el navegador de cualquier miembro que abra la página.
+   - Usar crate `ammonia` en Rust para sanitizar en el handler de `POST /pages/` y `PATCH /description/` antes de persistir.
+   - Permitlist: tags seguros de Tiptap (`p`, `h1`–`h6`, `ul`, `ol`, `li`, `strong`, `em`, `a`, `code`, `pre`, `blockquote`, `table`, `tr`, `td`, `th`).
+   - Strip: cualquier tag o atributo no listado, especialmente `<script>`, `onerror`, `onclick`, `href="javascript:"`.
+   - La sanitización en el backend es obligatoria incluso si el frontend (Tiptap) ya sanea — el API puede recibir requests directas sin pasar por el editor.
 
 ---
 
