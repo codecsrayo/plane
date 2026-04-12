@@ -205,6 +205,7 @@ pub async fn handle_notification(
 ## Receptores por tipo de evento
 
 ```rust
+// src/jobs/notifications.rs
 async fn get_recipients(
     db: &DatabaseConnection,
     job: &NotificationJob,
@@ -381,6 +382,7 @@ scheduler.add(
 ## Preferencias de notificación por usuario
 
 ```rust
+// src/routes/notifications.rs
 // Un usuario puede desactivar tipos específicos de notificación por workspace
 // Tabla: user_notification_preferences
 
@@ -413,6 +415,7 @@ pub async fn check_notification_preference(
 ## Enqueue desde handlers de issues
 
 ```rust
+// src/routes/issues.rs
 // En create_issue, update_issue, create_comment, etc.:
 // Best-effort — no bloquear la respuesta HTTP si el job falla
 

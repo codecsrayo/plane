@@ -91,6 +91,7 @@ users (tabla principal)
 Endpoint fundamental para el arranque del frontend.
 
 ```rust
+// src/routes/users.rs
 pub async fn get_me(
     CurrentUser(user): CurrentUser,
     State(state): State<AppState>,
@@ -111,6 +112,7 @@ pub async fn get_me(
 ## DTOs
 
 ```rust
+// src/routes/users.rs
 #[derive(Serialize, ToSchema)]
 pub struct UserResponse {
     pub id:         Uuid,

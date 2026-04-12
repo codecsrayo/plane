@@ -179,6 +179,7 @@ workspaces
 ## Handler — `POST /projects/`
 
 ```rust
+// src/routes/projects.rs
 pub async fn create_project(
     State(state): State<AppState>,
     WorkspaceMemberGuard { user, workspace, .. }: WorkspaceMemberGuard,
@@ -251,6 +252,7 @@ pub async fn create_project(
 ## DTOs
 
 ```rust
+// src/routes/projects.rs
 #[derive(Deserialize, ToSchema)]
 pub struct CreateProjectRequest {
     pub name:        String,

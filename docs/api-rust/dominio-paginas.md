@@ -88,6 +88,7 @@ workspaces
 ## Lock y Access — control de edición
 
 ```rust
+// src/routes/pages.rs
 // POST /pages/{id}/lock/ — bloquear página para edición exclusiva
 pub async fn lock_page(
     State(state): State<AppState>,
@@ -173,6 +174,7 @@ pub async fn create_page_version(
 ## Duplicate page — clonar página
 
 ```rust
+// src/routes/pages.rs
 pub async fn duplicate_page(
     State(state): State<AppState>,
     ProjectMemberGuard { user, workspace, project, .. }: ProjectMemberGuard,

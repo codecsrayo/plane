@@ -342,6 +342,7 @@ async fn get_accessible_project_ids(
 Para escalar la búsqueda sin Elasticsearch:
 
 ```sql
+-- migration/src/migrations/m_add_pg_trgm_search_indexes.sql
 -- Activar extensión (en migración futura)
 CREATE EXTENSION IF NOT EXISTS pg_trgm;
 

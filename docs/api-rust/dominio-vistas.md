@@ -80,6 +80,7 @@ Las vistas guardan un objeto `query` (JSON) que contiene los mismos parámetros 
 Este endpoint es crucial para el "All Issues" o vistas globales del workspace. Debe agregar issues de múltiples proyectos.
 
 ```rust
+// src/routes/views.rs
 pub async fn list_workspace_view_issues(
     State(state): State<AppState>,
     WorkspaceMemberGuard { user, workspace, .. }: WorkspaceMemberGuard,
@@ -115,6 +116,7 @@ pub async fn list_workspace_view_issues(
 ## DTOs
 
 ```rust
+// src/routes/views.rs
 #[derive(Deserialize, ToSchema)]
 pub struct CreateViewRequest {
     pub name:        String,             // ⚠️ FIX-33: validar máx 255 chars

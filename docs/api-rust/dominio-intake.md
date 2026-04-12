@@ -127,6 +127,7 @@ sequenceDiagram
 ## Handler — `POST /intake-issues/`
 
 ```rust
+// src/routes/intake.rs
 pub async fn create_intake_issue(
     State(state): State<AppState>,
     ProjectMemberGuard { user, workspace, project, .. }: ProjectMemberGuard,
@@ -178,6 +179,7 @@ pub async fn create_intake_issue(
 ## Handler — `PATCH /intake-issues/{pk}/` (cambio de status)
 
 ```rust
+// src/routes/intake.rs
 pub async fn update_intake_issue(
     State(state): State<AppState>,
     ProjectMemberGuard { user, .. }: ProjectMemberGuard,

@@ -104,6 +104,7 @@ sequenceDiagram
 Devuelve los repositorios a los que tiene acceso el PAT del usuario. El token se pasa como header `X-Github-Token`:
 
 ```rust
+// src/routes/importers.rs
 pub async fn list_github_repositories(
     State(state): State<AppState>,
     WorkspaceMemberGuard { .. }: WorkspaceMemberGuard,
@@ -303,6 +304,7 @@ pub async fn handle_github_importer(
 ## Mapeo de issues GitHub → Plane
 
 ```rust
+// src/jobs/github_import.rs
 async fn import_single_issue(
     db: &DatabaseConnection,
     metadata: &ImporterMetadata,

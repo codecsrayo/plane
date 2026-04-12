@@ -262,6 +262,7 @@ pub struct IssueQueryParams {
 ## Handler — `POST /issues/`
 
 ```rust
+// src/routes/issues.rs
 /// Prioridades válidas — mismos valores que Django (plane/db/models/issue.py)
 const VALID_PRIORITIES: &[&str] = &["urgent", "high", "medium", "low", "none"];
 
@@ -422,6 +423,7 @@ pub async fn record_activity(db, issue_id, actor_id, project_id, workspace_id, c
 ## IssueRelations — tipos y simetría
 
 ```rust
+// src/entities/issue_relations.rs
 pub enum IssueRelationType {
     Blocks,      // A bloquea B → también crea B BlockedBy A
     BlockedBy,   // inversa
@@ -490,6 +492,7 @@ pub struct IssueResponse {
 ## Paginación — cursor-based
 
 ```rust
+// src/utils/pagination.rs
 // cursor = base64( sort_order + ":" + uuid )
 pub fn decode_cursor(cursor: &str) -> Option<(f64, Uuid)> {
     // Cursor válido = base64( f64_str + ":" + uuid ) ≈ máximo ~60 chars en base64.

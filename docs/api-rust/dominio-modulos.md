@@ -98,6 +98,7 @@ projects
 El frontend envía una lista de `issue_ids` para agregar al módulo en un solo request:
 
 ```rust
+// src/routes/modules.rs
 pub async fn add_issues_to_module(
     State(state): State<AppState>,
     ProjectMemberGuard { user, project, workspace, .. }: ProjectMemberGuard,
@@ -149,6 +150,7 @@ El `DELETE` de un issue de un módulo se hace por la ruta inversa `DELETE /modul
 > [!WARNING] INC-04 corregido — Django solo mapea `POST` en esta ruta, no `GET` ni `DELETE`.
 
 ```rust
+// src/routes/modules.rs
 // POST /issues/{issue_id}/modules/ — asignar issue a uno o varios módulos
 pub async fn assign_issue_modules(
     State(state): State<AppState>,
@@ -190,6 +192,7 @@ pub async fn assign_issue_modules(
 Al igual que los ciclos, el `status` se calcula comparando fechas con hoy:
 
 ```rust
+// src/utils/module_status.rs
 pub fn compute_module_status(
     start_date: Option<NaiveDate>,
     end_date: Option<NaiveDate>,

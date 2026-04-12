@@ -255,6 +255,7 @@ async fn seed_workspace(
 Los JSON usan IDs enteros temporales (1, 2, 3…). Al insertar en Postgres se generan UUIDs reales. `HashMap<i32, Uuid>` resuelve referencias cruzadas:
 
 ```rust
+// src/jobs/workspace_seed.rs
 let mut state_map: HashMap<i32, Uuid> = HashMap::new();
 
 for seed in &states_tpl {

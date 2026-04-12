@@ -164,7 +164,8 @@ sequenceDiagram
 ### Lógica de selección
 
 ```python
-# get_llm_config() — apps/api/plane/app/views/external/base.py
+# apps/api/plane/app/views/external/base.py
+# get_llm_config()
 api_key, provider_key, model = get_configuration_value([LLM_API_KEY, LLM_PROVIDER, LLM_MODEL])
 provider = SUPPORTED_PROVIDERS.get(provider_key.lower())  # openai | anthropic | gemini
 if not model: model = provider.default_model
@@ -314,6 +315,7 @@ src/
 ### Lógica `llm_call()` Rust
 
 ```rust
+// src/integrations/llm/client.rs
 pub async fn llm_call(
     api_key: &str,
     model: &str,
@@ -331,6 +333,7 @@ pub async fn llm_call(
 ### Payload para `/rephrase-grammar/` (fix error #1)
 
 ```rust
+// src/routes/ai.rs
 #[derive(Deserialize)]
 pub struct RephrasePayload {
     pub task: AiEditorTask,
