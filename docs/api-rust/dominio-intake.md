@@ -300,12 +300,16 @@ pub struct IntakeIssueResponse {
 
 ```rust
 // src/jobs/scheduled.rs
-scheduler.add(Job::new_async("0 */30 * * * *", |_, _| Box::pin(async {
+let job = Job::new_async("0 */30 * * * *", |_, _| Box::pin(async {
     // Cada 30 minutos: devolver a PENDING los snoozed vencidos
     // UPDATE intake_issues SET status=0
     // WHERE status=-1 AND snoozed_till < NOW() AND deleted_at IS NULL
     tracing::info!("Re-activating snoozed intake issues");
-})).unwrap()).await.unwrap();
+}))
+.map_err(|e| anyhow::anyhow!("Invalid cron expression for intake unsnooze job: {e}"))?; // silence-patterns-ok
+
+scheduler.add(job).await
+    .map_err(|e| anyhow::anyhow!("Failed to register intake unsnooze job: {e}"))?; // silence-patterns-ok
 ```
 
 ---
