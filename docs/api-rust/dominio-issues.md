@@ -202,7 +202,7 @@ issues (tabla principal)
 
 | Método | URL real Django | Descripción | Fase |
 |--------|----------------|-------------|------|
-| `GET/POST/PATCH` | `/workspaces/{slug}/projects/{project_id}/user-properties/` | `ProjectUserDisplayPropertyEndpoint` — preferencias de filtros, agrupación, orden por usuario+proyecto | 4 |
+| `GET/PATCH` | `/workspaces/{slug}/projects/{project_id}/user-properties/` | `ProjectUserDisplayPropertyEndpoint` — preferencias de filtros, agrupación, orden por usuario+proyecto (upsert — sin POST separado) | 4 |
 
 ### Workspace-level issues
 
