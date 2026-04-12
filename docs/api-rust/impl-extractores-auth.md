@@ -92,6 +92,12 @@ where
             .strip_prefix("Token ")
             .ok_or(AppError::Unauthorized)?;
 
+        // DRF genera tokens de 40 hex chars. Valores mayores son inválidos
+        // y causarían una query DB innecesaria con input potencialmente enorme.
+        if token_key.len() > 64 {
+            return Err(AppError::Unauthorized);
+        }
+
         let db = &state.as_ref().db;
 
         let token = authtoken_token::Entity::find()

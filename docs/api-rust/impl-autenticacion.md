@@ -122,6 +122,12 @@ where S: Send + Sync + AsRef<AppState>,
             .map(|c| c.value().to_string())
             .ok_or(AppError::Unauthorized)?;
 
+        // Django genera session_key de 128 chars. Valores más largos son inválidos
+        // y causarían una query DB innecesaria con input potencialmente enorme.
+        if session_key.len() > 128 {
+            return Err(AppError::Unauthorized);
+        }
+
         let session = sessions::Entity::find_by_id(&session_key)
             .filter(sessions::Column::ExpireDate.gt(Utc::now()))
             .one(&state.as_ref().db)
