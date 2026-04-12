@@ -260,72 +260,127 @@ pub struct IssueQueryParams {
 ## Handler — `POST /issues/`
 
 ```rust
+/// Prioridades válidas — mismos valores que Django (plane/db/models/issue.py)
+const VALID_PRIORITIES: &[&str] = &["urgent", "high", "medium", "low", "none"];
+
 pub async fn create_issue(
     State(state): State<AppState>,
     ProjectMemberGuard { user, project, workspace, .. }: ProjectMemberGuard,
     Path((_slug, project_id)): Path<(String, Uuid)>,
     Json(payload): Json<CreateIssueRequest>,
 ) -> Result<Json<IssueResponse>, AppError> {
+    // ── Validaciones de input ──────────────────────────────────────────────
+
+    // [Fix #11] Validar priority contra valores permitidos — evitar strings
+    // arbitrarios almacenados en DB que romperían filtros y la UI.
+    let priority = payload.priority.as_deref().unwrap_or("none");
+    if !VALID_PRIORITIES.contains(&priority) {
+        return Err(AppError::Validation(
+            format!("priority debe ser uno de: {}", VALID_PRIORITIES.join(", "))
+        ));
+    }
+
+    // [Fix #12] description_html viene del usuario — NO almacenar verbatim sin sanitizar.
+    // El frontend (TipTap/ProseMirror) genera HTML estructurado; el backend
+    // debe sanitizarlo para eliminar <script>, event handlers y URLs javascript:.
+    // Usar la crate `ammonia` con el allowlist de tags de Tiptap.
+    // NOTA: plan-riesgos ítem 7 aplica sólo al seed (fuente confiable), NO a input de usuario.
+    //
+    // Implementación requerida (Fase 2):
+    //   let clean_html = ammonia::Builder::default()
+    //       .tags(TIPTAP_ALLOWED_TAGS)
+    //       .clean(&raw_html).to_string();
+    //
+    // Hasta que ammonia esté integrado, rechazar HTML con <script para bloquear
+    // el vector más común de XSS almacenado:
+    if let Some(ref html) = payload.description_html {
+        if html.to_lowercase().contains("<script") {
+            return Err(AppError::Validation("description_html contiene contenido no permitido".into()));
+        }
+    }
+
     let db = &state.db;
 
-    // 1. sort_order = max existente + 10_000 (o 65_535 si vacío)
-    let max_sort = issues::Entity::find()
-        .active()
-        .filter(issues::Column::ProjectId.eq(project_id))
-        .select_only()
-        .column_as(issues::Column::SortOrder.max(), "max_sort")
-        .into_tuple::<Option<f64>>()
-        .one(db).await?.flatten().unwrap_or(0.0);
-    let sort_order = max_sort + 10_000.0;
+    // ── [Fix #14] Toda la creación en una transacción atómica ─────────────
+    // Sin transacción: si falla el INSERT de issue_sequences (paso 3),
+    // el issue queda en DB sin sequence_id → huérfano no navegable desde la UI.
+    let txn = db.begin().await.map_err(AppError::Database)?;
 
-    // 2. INSERT issue
-    let issue_id = Uuid::new_v4();
-    let issue = issues::ActiveModel {
-        id:              Set(issue_id),
-        name:            Set(payload.name),
-        description_html: Set(payload.description_html),
-        priority:        Set(payload.priority.unwrap_or("none".into())),
-        state_id:        Set(payload.state_id),
-        parent_id:       Set(payload.parent_id),
-        project_id:      Set(project_id),
-        workspace_id:    Set(workspace.id),
-        sort_order:      Set(sort_order),
-        created_by_id:   Set(Some(user.id)),
-        ..Default::default()
-    }.insert(db).await?;
+    let result = async {
+        // 1. sort_order = max existente + 10_000 (o 65_535 si vacío)
+        let max_sort = issues::Entity::find()
+            .active()
+            .filter(issues::Column::ProjectId.eq(project_id))
+            .select_only()
+            .column_as(issues::Column::SortOrder.max(), "max_sort")
+            .into_tuple::<Option<f64>>()
+            .one(&txn).await?.flatten().unwrap_or(0.0);
+        let sort_order = max_sort + 10_000.0;
 
-    // 3. INSERT issue_sequences (sequence_id legible auto-increment per-project)
-    let sequence = issue_sequences::ActiveModel {
-        id: Set(Uuid::new_v4()), issue_id: Set(issue_id),
-        project_id: Set(project_id), workspace_id: Set(workspace.id),
-        ..Default::default()
-    }.insert(db).await?;
+        // 2. INSERT issue
+        let issue_id = Uuid::new_v4();
+        let issue = issues::ActiveModel {
+            id:               Set(issue_id),
+            name:             Set(payload.name),
+            description_html: Set(payload.description_html),
+            priority:         Set(priority.to_string()),
+            state_id:         Set(payload.state_id),
+            parent_id:        Set(payload.parent_id),
+            project_id:       Set(project_id),
+            workspace_id:     Set(workspace.id),
+            sort_order:       Set(sort_order),
+            created_by_id:    Set(Some(user.id)),
+            ..Default::default()
+        }.insert(&txn).await?;
 
-    // 4. M2M labels
-    for label_id in payload.label_ids.unwrap_or_default() {
-        issue_labels::ActiveModel {
-            id: Set(Uuid::new_v4()), issue_id: Set(issue_id), label_id: Set(label_id),
+        // 3. INSERT issue_sequences — obligatorio: sin esto el issue no tiene #ID legible
+        let sequence = issue_sequences::ActiveModel {
+            id: Set(Uuid::new_v4()), issue_id: Set(issue_id),
             project_id: Set(project_id), workspace_id: Set(workspace.id),
             ..Default::default()
-        }.insert(db).await?;
+        }.insert(&txn).await?;
+
+        // 4. M2M labels
+        for label_id in payload.label_ids.unwrap_or_default() {
+            issue_labels::ActiveModel {
+                id: Set(Uuid::new_v4()), issue_id: Set(issue_id), label_id: Set(label_id),
+                project_id: Set(project_id), workspace_id: Set(workspace.id),
+                ..Default::default()
+            }.insert(&txn).await?;
+        }
+
+        // 5. M2M assignees
+        for assignee_id in payload.assignee_ids.unwrap_or_default() {
+            issue_assignees::ActiveModel {
+                id: Set(Uuid::new_v4()), issue_id: Set(issue_id), assignee_id: Set(assignee_id),
+                project_id: Set(project_id), workspace_id: Set(workspace.id),
+                ..Default::default()
+            }.insert(&txn).await?;
+        }
+
+        Ok::<_, sea_orm::DbErr>((issue, sequence, issue_id))
+    }.await;
+
+    match result {
+        Ok((issue, sequence, issue_id)) => {
+            txn.commit().await.map_err(AppError::Database)?;
+
+            // [Fix #13] IssueActivity — loguear error en lugar de descartarlo con .ok()
+            // record_activity es best-effort pero sus fallos deben ser visibles en logs.
+            if let Err(e) = record_activity(db, issue_id, user.id, project_id, workspace.id, vec![
+                FieldChange { field: "state".into(), old_value: None,
+                              new_value: Some("created".into()), verb: "created".into() }
+            ]).await {
+                tracing::warn!(error = %e, issue_id = %issue_id, "Failed to record issue activity");
+            }
+
+            Ok(Json(IssueResponse::from_model(issue, sequence)))
+        }
+        Err(e) => {
+            let _ = txn.rollback().await;
+            Err(AppError::Database(e))
+        }
     }
-
-    // 5. M2M assignees
-    for assignee_id in payload.assignee_ids.unwrap_or_default() {
-        issue_assignees::ActiveModel {
-            id: Set(Uuid::new_v4()), issue_id: Set(issue_id), assignee_id: Set(assignee_id),
-            project_id: Set(project_id), workspace_id: Set(workspace.id),
-            ..Default::default()
-        }.insert(db).await?;
-    }
-
-    // 6. IssueActivity — "created"
-    record_activity(db, issue_id, user.id, project_id, workspace.id, vec![
-        FieldChange { field: "state".into(), old_value: None,
-                      new_value: Some("created".into()), verb: "created".into() }
-    ]).await.ok();
-
-    Ok(Json(IssueResponse::from_model(issue, sequence)))
 }
 ```
 
@@ -433,6 +488,11 @@ pub struct IssueResponse {
 ```rust
 // cursor = base64( sort_order + ":" + uuid )
 pub fn decode_cursor(cursor: &str) -> Option<(f64, Uuid)> {
+    // Cursor válido = base64( f64_str + ":" + uuid ) ≈ máximo ~60 chars en base64.
+    // Rechazar inputs gigantes antes de decodificar para evitar asignación innecesaria.
+    if cursor.len() > 128 {
+        return None;
+    }
     let decoded = base64::engine::general_purpose::STANDARD.decode(cursor).ok()?;
     let s = String::from_utf8(decoded).ok()?;
     let (sort_str, id_str) = s.splitn(2, ':').collect_tuple()?;

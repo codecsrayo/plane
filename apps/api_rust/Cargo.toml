@@ -41,6 +41,8 @@ sea-orm = { version = "1.1.20", features = [
 serde = { version = "1.0.228", features = ["derive"] }
 serde_json = "1.0.149"
 sha2 = "0.10"                                              # hash de API keys en rate limiter — NUNCA almacenar raw token en memoria
+ammonia = "4.0"                                            # sanitización de HTML de usuario — previene XSS almacenado en description_html
+base64 = "0.22"                                            # encode/decode de cursores de paginación
 axum-extra = { version = "0.10", features = ["cookie"] }  # CookieJar para session auth
 time = "0.3"                                               # Cookie::max_age en session logout
 thiserror = "2.0.18"
