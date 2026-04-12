@@ -48,41 +48,41 @@ projects
 
 | Método | URL | Guard | Fase |
 |--------|-----|-------|------|
-| `GET` | `/api/workspaces/{slug}/projects/{id}/cycles/` | `ProjectMemberGuard (≥5)` | 2 |
-| `POST` | `/api/workspaces/{slug}/projects/{id}/cycles/` | `ProjectMemberGuard (≥15)` | 2 |
-| `GET/PATCH/DELETE` | `/api/workspaces/{slug}/projects/{id}/cycles/{pk}/` | `ProjectMemberGuard (≥5/15)` | 2 |
+| `GET` | `/workspaces/{slug}/projects/{id}/cycles/` | `ProjectMemberGuard (≥5)` | 2 |
+| `POST` | `/workspaces/{slug}/projects/{id}/cycles/` | `ProjectMemberGuard (≥15)` | 2 |
+| `GET/PATCH/DELETE` | `/workspaces/{slug}/projects/{id}/cycles/{pk}/` | `ProjectMemberGuard (≥5/15)` | 2 |
 
 ### Issues del ciclo
 
 | Método | URL | Guard | Fase |
 |--------|-----|-------|------|
-| `GET/POST` | `/api/workspaces/{slug}/projects/{id}/cycles/{cycle_id}/cycle-issues/` | `ProjectMemberGuard (≥5/15)` | 4 |
-| `DELETE` | `/api/workspaces/{slug}/projects/{id}/cycles/{cycle_id}/cycle-issues/{issue_id}/` | `ProjectMemberGuard (≥15)` | 4 |
+| `GET/POST` | `/workspaces/{slug}/projects/{id}/cycles/{cycle_id}/cycle-issues/` | `ProjectMemberGuard (≥5/15)` | 4 |
+| `GET/PUT/PATCH/DELETE` | `/workspaces/{slug}/projects/{id}/cycles/{cycle_id}/cycle-issues/{issue_id}/` | `ProjectMemberGuard (≥15)` | 4 |
 
 ### Operaciones especiales
 
 | Método | URL | Guard | Fase |
 |--------|-----|-------|------|
-| `GET` | `/api/workspaces/{slug}/projects/{id}/cycles/date-check/` | `ProjectMemberGuard (≥5)` | 4 |
-| `POST` | `/api/workspaces/{slug}/projects/{id}/cycles/{cycle_id}/transfer-issues/` | `ProjectMemberGuard (≥15)` | 4 |
-| `POST/DELETE` | `/api/workspaces/{slug}/projects/{id}/cycles/{cycle_id}/archive/` | `ProjectMemberGuard (≥15)` | 4 |
-| `GET` | `/api/workspaces/{slug}/projects/{id}/archived-cycles/` | `ProjectMemberGuard (≥5)` | 4 |
-| `GET/DELETE` | `/api/workspaces/{slug}/projects/{id}/archived-cycles/{pk}/` | `ProjectMemberGuard (≥5/15)` | 4 |
+| `POST` | `/workspaces/{slug}/projects/{id}/cycles/date-check/` | `ProjectMemberGuard (≥5)` | 4 |
+| `POST` | `/workspaces/{slug}/projects/{id}/cycles/{cycle_id}/transfer-issues/` | `ProjectMemberGuard (≥15)` | 4 |
+| `POST/DELETE` | `/workspaces/{slug}/projects/{id}/cycles/{cycle_id}/archive/` | `ProjectMemberGuard (≥15)` | 4 |
+| `GET` | `/workspaces/{slug}/projects/{id}/archived-cycles/` | `ProjectMemberGuard (≥5)` | 4 |
+| `GET/DELETE` | `/workspaces/{slug}/projects/{id}/archived-cycles/{pk}/` | `ProjectMemberGuard (≥5/15)` | 4 |
 
 ### Analytics y progreso
 
 | Método | URL | Guard | Fase |
 |--------|-----|-------|------|
-| `GET` | `/api/workspaces/{slug}/projects/{id}/cycles/{cycle_id}/progress/` | `ProjectMemberGuard (≥5)` | 4 |
-| `GET` | `/api/workspaces/{slug}/projects/{id}/cycles/{cycle_id}/analytics/` | `ProjectMemberGuard (≥5)` | 4 |
+| `GET` | `/workspaces/{slug}/projects/{id}/cycles/{cycle_id}/progress/` | `ProjectMemberGuard (≥5)` | 4 |
+| `GET` | `/workspaces/{slug}/projects/{id}/cycles/{cycle_id}/analytics/` | `ProjectMemberGuard (≥5)` | 4 |
 
 ### Favoritos y preferencias
 
 | Método | URL | Guard | Fase |
 |--------|-----|-------|------|
-| `GET/POST` | `/api/workspaces/{slug}/projects/{id}/user-favorite-cycles/` | `ProjectMemberGuard (≥5)` | 4 |
-| `DELETE` | `/api/workspaces/{slug}/projects/{id}/user-favorite-cycles/{cycle_id}/` | `ProjectMemberGuard (≥5)` | 4 |
-| `GET/PATCH` | `/api/workspaces/{slug}/projects/{id}/cycles/{cycle_id}/user-properties/` | `ProjectMemberGuard (≥5)` | 4 |
+| `GET/POST` | `/workspaces/{slug}/projects/{id}/user-favorite-cycles/` | `ProjectMemberGuard (≥5)` | 4 |
+| `DELETE` | `/workspaces/{slug}/projects/{id}/user-favorite-cycles/{cycle_id}/` | `ProjectMemberGuard (≥5)` | 4 |
+| `GET/PATCH` | `/workspaces/{slug}/projects/{id}/cycles/{cycle_id}/user-properties/` | `ProjectMemberGuard (≥5)` | 4 |
 
 ---
 
