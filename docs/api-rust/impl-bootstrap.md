@@ -354,6 +354,8 @@ pub fn build_router(state: AppState) -> Router {
 
 ## `main.rs` — bootstrap completo
 
+> **AppState** — definición completa (Fase 1 → Fase 3) en [[impl-appstate-repository#1. AppState — estado global del servidor]].
+
 ```rust
 // src/main.rs
 use std::{net::SocketAddr, sync::Arc};
@@ -371,16 +373,11 @@ pub mod auth;
 use config::Config;
 use auth::rate_limit::RateLimitState;
 
-#[derive(Clone)]
-pub struct AppState {
-    pub db:         sea_orm::DatabaseConnection,
-    pub config:     Arc<Config>,
-    /// Rate limit para API keys — std::sync::Mutex interno (ver impl-autenticacion.md).
-    /// Requerido desde Fase 1: ApiKeyUser::from_request_parts lo usa directamente.
-    pub rate_limit: Arc<RateLimitState>,
-    // Fase 2: pub redis: fred::clients::Pool,
-    // Fase 3: pub pg_pool: sqlx::PgPool,  ← para apalis PostgresStorage
-}
+// AppState se define en src/main.rs — ver impl-appstate-repository para la definición completa.
+// Fase 1 mínima:
+//   pub db: sea_orm::DatabaseConnection
+//   pub config: Arc<Config>
+//   pub rate_limit: Arc<RateLimitState>
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
