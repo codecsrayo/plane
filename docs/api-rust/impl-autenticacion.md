@@ -458,27 +458,19 @@ where S: Send + Sync + AsRef<AppState>,
 
 ---
 
-## Checklist de implementación
-
-- [ ] Agregar `axum-extra` y `time` a `Cargo.toml`
-- [ ] `src/auth/session.rs` — `SessionUser` extractor
-- [ ] `src/auth/logout.rs` — handler POST `/auth/sign-out/`
-- [ ] `src/auth/api_key.rs` — `ApiKeyUser` extractor
-- [ ] `src/auth/rate_limit.rs` — middleware Tower
-- [ ] `src/auth/any_auth.rs` — `AnyAuth` combinado
-- [ ] Agregar `rate_limit: Arc<RateLimitState>` a `AppState`
-- [ ] Registrar `/auth/sign-out/` en el router
-- [ ] Tests en `tests/auth.rs`
-
----
-
 ## Plan de implementación
+
+> Tracking completo en [[plan-fases#Fase 1 — Auth middleware]].
 
 ```
 Fase 1:
-  [ ] src/auth/middleware.rs    — session cookie middleware (tower Layer)
-  [ ] src/auth/rate_limit.rs   — RateLimitState (DashMap en memoria, migrar a Redis Fase 3)
-  [ ] src/auth/extractors.rs   — CurrentUser + guards (ver impl-extractores-auth)
+  [ ] src/auth/session.rs      — SessionUser extractor (Cookie)
+  [ ] src/auth/logout.rs       — handler POST /auth/sign-out/
+  [ ] src/auth/api_key.rs      — ApiKeyUser extractor (X-Api-Key)
+  [ ] src/auth/rate_limit.rs   — RateLimitState (std::sync::Mutex<HashMap>)
+                                  bucket_key() + apply_rate_limit()
+                                  middleware Tower para X-RateLimit-* headers
+  [ ] src/auth/any_auth.rs     — AnyAuth combinado (session OR api key)
 
 Fase 3:
   [ ] src/auth/rate_limit.rs   — migrar RateLimitState a Redis (fred) para multi-réplica
