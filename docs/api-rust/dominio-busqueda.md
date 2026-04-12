@@ -29,9 +29,9 @@ estado: activo
 
 | Método | URL | Guard | Fase |
 |--------|-----|-------|------|
-| `GET` | `/api/workspaces/{slug}/search/` | `WorkspaceMemberGuard (≥5)` | 4 |
-| `GET` | `/api/workspaces/{slug}/projects/{id}/search-issues/` | `ProjectMemberGuard (≥5)` | 4 |
-| `GET` | `/api/workspaces/{slug}/entity-search/` | `WorkspaceMemberGuard (≥5)` | 4 |
+| `GET` | `/workspaces/{slug}/search/` | `WorkspaceMemberGuard (≥5)` | 4 |
+| `GET` | `/workspaces/{slug}/projects/{id}/search-issues/` | `ProjectMemberGuard (≥5)` | 4 |
+| `GET` | `/workspaces/{slug}/entity-search/` | `WorkspaceMemberGuard (≥5)` | 4 |
 
 ---
 
