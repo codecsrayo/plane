@@ -1,0 +1,13 @@
+{
+  "configurations": [
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Run API",
+      "cargo": {
+        "args": ["run"]
+      },
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}
