@@ -56,31 +56,31 @@ projects
 
 | Método | URL | Guard | Fase |
 |--------|-----|-------|------|
-| `GET/POST` | `/api/workspaces/{slug}/projects/{id}/intakes/` | `ProjectMemberGuard (≥15)` | 4 |
-| `GET/PATCH/DELETE` | `/api/workspaces/{slug}/projects/{id}/intakes/{pk}/` | `ProjectMemberGuard (≥15)` | 4 |
+| `GET/POST` | `/workspaces/{slug}/projects/{id}/intakes/` | `ProjectMemberGuard (≥15)` | 4 |
+| `GET/PATCH/DELETE` | `/workspaces/{slug}/projects/{id}/intakes/{pk}/` | `ProjectMemberGuard (≥15)` | 4 |
 
 ### Issues en el intake
 
 | Método | URL | Guard | Fase |
 |--------|-----|-------|------|
-| `GET/POST` | `/api/workspaces/{slug}/projects/{id}/intake-issues/` | `ProjectMemberGuard (≥5)` | 4 |
-| `GET/PATCH/DELETE` | `/api/workspaces/{slug}/projects/{id}/intake-issues/{pk}/` | `ProjectMemberGuard (≥5/15)` | 4 |
+| `GET/POST` | `/workspaces/{slug}/projects/{id}/intake-issues/` | `ProjectMemberGuard (≥5)` | 4 |
+| `GET/PATCH/DELETE` | `/workspaces/{slug}/projects/{id}/intake-issues/{pk}/` | `ProjectMemberGuard (≥5/15)` | 4 |
 
 ### Versiones de descripción de intake-issues
 
 | Método | URL | Guard | Fase |
 |--------|-----|-------|------|
-| `GET` | `/api/workspaces/{slug}/projects/{id}/intake-work-items/{work_item_id}/description-versions/` | `ProjectMemberGuard (≥5)` | 4 |
-| `GET` | `/api/workspaces/{slug}/projects/{id}/intake-work-items/{work_item_id}/description-versions/{pk}/` | `ProjectMemberGuard (≥5)` | 4 |
+| `GET` | `/workspaces/{slug}/projects/{id}/intake-work-items/{work_item_id}/description-versions/` | `ProjectMemberGuard (≥5)` | 4 |
+| `GET` | `/workspaces/{slug}/projects/{id}/intake-work-items/{work_item_id}/description-versions/{pk}/` | `ProjectMemberGuard (≥5)` | 4 |
 
 ### Compatibilidad (endpoints Inbox deprecados — mantener por retrocompat)
 
 | Método | URL | Guard | Fase |
 |--------|-----|-------|------|
-| `GET/POST` | `/api/workspaces/{slug}/projects/{id}/inboxes/` | `ProjectMemberGuard (≥5)` | 4 |
-| `GET/PATCH/DELETE` | `/api/workspaces/{slug}/projects/{id}/inboxes/{pk}/` | `ProjectMemberGuard (≥5)` | 4 |
-| `GET/POST` | `/api/workspaces/{slug}/projects/{id}/inbox-issues/` | `ProjectMemberGuard (≥5)` | 4 |
-| `GET/PATCH/DELETE` | `/api/workspaces/{slug}/projects/{id}/inbox-issues/{pk}/` | `ProjectMemberGuard (≥5)` | 4 |
+| `GET/POST` | `/workspaces/{slug}/projects/{id}/inboxes/` | `ProjectMemberGuard (≥5)` | 4 |
+| `GET/PATCH/DELETE` | `/workspaces/{slug}/projects/{id}/inboxes/{pk}/` | `ProjectMemberGuard (≥5)` | 4 |
+| `GET/POST` | `/workspaces/{slug}/projects/{id}/inbox-issues/` | `ProjectMemberGuard (≥5)` | 4 |
+| `GET/PATCH/DELETE` | `/workspaces/{slug}/projects/{id}/inbox-issues/{pk}/` | `ProjectMemberGuard (≥5)` | 4 |
 
 ---
 
