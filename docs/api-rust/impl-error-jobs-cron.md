@@ -26,6 +26,7 @@ estado: activo
 # AppError, Job Pattern (apalis) y Cron
 
 > **Documentación oficial:**
+>
 > - [thiserror crate](https://docs.rs/thiserror/latest/thiserror/)
 > - [Axum — IntoResponse](https://docs.rs/axum/latest/axum/response/trait.IntoResponse.html)
 > - [apalis — Book](https://docs.rs/apalis/latest/apalis/)
@@ -167,14 +168,14 @@ pub fn build_monitor(db: sea_orm::DatabaseConnection) -> Monitor {
 
 ### Tabla de Celery tasks → apalis jobs
 
-| Celery task | Equivalente apalis | Trigger |
-|-------------|-------------------|---------|
-| `workspace_seed_task` | `WorkspaceSeedJob` | Workspace creado — ver [[dominio-workspace-seed]] |
-| `github_sync_task` | `GithubInitialIssueSyncJob` | Repo sync creado — ver [[dominio-integraciones]] |
-| `notification_task` | `NotificationJob` | Cola de eventos |
-| `email_notification_task` | `EmailJob` | Cola de eventos |
-| `webhook_task` | `WebhookDeliveryJob` | Post-mutación — ver [[dominio-workspace-settings]] |
-| `export_task` | `ExportJob` | Request usuario — ver [[dominio-workspace-settings]] |
+| Celery task               | Equivalente apalis          | Trigger                                              |
+| ------------------------- | --------------------------- | ---------------------------------------------------- |
+| `workspace_seed_task`     | `WorkspaceSeedJob`          | Workspace creado — ver [[dominio-workspace-seed]]    |
+| `github_sync_task`        | `GithubInitialIssueSyncJob` | Repo sync creado — ver [[dominio-integraciones]]     |
+| `notification_task`       | `NotificationJob`           | Cola de eventos                                      |
+| `email_notification_task` | `EmailJob`                  | Cola de eventos                                      |
+| `webhook_task`            | `WebhookDeliveryJob`        | Post-mutación — ver [[dominio-workspace-settings]]   |
+| `export_task`             | `ExportJob`                 | Request usuario — ver [[dominio-workspace-settings]] |
 
 ---
 
@@ -267,12 +268,12 @@ pub async fn start_scheduler(db: sea_orm::DatabaseConnection) -> anyhow::Result<
 
 ### Cron tasks de Django → Rust
 
-| Celery beat task | Equivalente Rust | Cron expression |
-|-----------------|-----------------|-----------------|
-| Limpiar tokens expirados | `cleanup_expired_tokens` | `0 0 3 * * *` (3am UTC diario) |
-| Digest notificaciones | `send_notification_digests` | `0 0 8 * * *` (8am UTC diario) |
-| Limpieza de assets | `cleanup_expired_assets` | `0 0 4 * * *` |
-| Issue automation | `run_issue_automation` | `0 0 0 * * *` (medianoche) |
+| Celery beat task         | Equivalente Rust            | Cron expression                |
+| ------------------------ | --------------------------- | ------------------------------ |
+| Limpiar tokens expirados | `cleanup_expired_tokens`    | `0 0 3 * * *` (3am UTC diario) |
+| Digest notificaciones    | `send_notification_digests` | `0 0 8 * * *` (8am UTC diario) |
+| Limpieza de assets       | `cleanup_expired_assets`    | `0 0 4 * * *`                  |
+| Issue automation         | `run_issue_automation`      | `0 0 0 * * *` (medianoche)     |
 
 > Usar [crontab.guru](https://crontab.guru/) para verificar expresiones cron.
 

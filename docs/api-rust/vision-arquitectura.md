@@ -115,26 +115,26 @@ flowchart LR
 
 ### Tabla de impacto por contenedor
 
-| Contenedor | RAM | Resultado |
-|------------|-----|-----------|
-| api (Django + uvicorn) | ~280 MB | → Rust ~20 MB |
-| bgworker (Celery) | ~200 MB | → eliminado |
-| beatworker (Celery beat) | ~150 MB | → eliminado |
-| plane-mq (RabbitMQ) | ~120 MB | → eliminado |
-| plane-migrator (Django) | — | → eliminado |
-| **Total** | **~750 MB** | **~20 MB** |
+| Contenedor               | RAM         | Resultado     |
+| ------------------------ | ----------- | ------------- |
+| api (Django + uvicorn)   | ~280 MB     | → Rust ~20 MB |
+| bgworker (Celery)        | ~200 MB     | → eliminado   |
+| beatworker (Celery beat) | ~150 MB     | → eliminado   |
+| plane-mq (RabbitMQ)      | ~120 MB     | → eliminado   |
+| plane-migrator (Django)  | —           | → eliminado   |
+| **Total**                | **~750 MB** | **~20 MB**    |
 
 ---
 
 ## Lo que se mantiene
 
-| Servicio | Por qué |
-|----------|---------|
-| plane-live (Hocuspocus/Node.js) | Protocolo Y.js CRDT — no reemplazable |
-| plane-db (PostgreSQL) | Misma DB, Rust toma ownership del schema |
-| plane-redis (Valkey) | Sigue necesario para plane-live y caché |
-| plane-minio (MinIO) | Sin cambio |
-| Proxy (Traefik) | El mismo, se agrega routing al contenedor Rust |
+| Servicio                        | Por qué                                        |
+| ------------------------------- | ---------------------------------------------- |
+| plane-live (Hocuspocus/Node.js) | Protocolo Y.js CRDT — no reemplazable          |
+| plane-db (PostgreSQL)           | Misma DB, Rust toma ownership del schema       |
+| plane-redis (Valkey)            | Sigue necesario para plane-live y caché        |
+| plane-minio (MinIO)             | Sin cambio                                     |
+| Proxy (Traefik)                 | El mismo, se agrega routing al contenedor Rust |
 
 ---
 

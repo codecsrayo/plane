@@ -185,12 +185,12 @@ apps/api_rust/tests/bruno/
 
 ### Comparativa de clientes externos
 
-| Cliente | Open Source | Archivos en git | Offline | CI/CD |
-|---------|:-----------:|:---------------:|:-------:|:-----:|
-| **Bruno** | ✅ | ✅ archivos `.bru` | ✅ | ✅ `bruno run` |
-| Hoppscotch | ✅ | ⚠️ export manual | ✅ | ⚠️ limitado |
-| Postman | ❌ | ❌ cloud propietario | ⚠️ | ✅ Newman |
-| Insomnia | ⚠️ | ⚠️ export manual | ✅ | ✅ |
+| Cliente    | Open Source |   Archivos en git    | Offline |     CI/CD      |
+| ---------- | :---------: | :------------------: | :-----: | :------------: |
+| **Bruno**  |     ✅      |  ✅ archivos `.bru`  |   ✅    | ✅ `bruno run` |
+| Hoppscotch |     ✅      |   ⚠️ export manual   |   ✅    |  ⚠️ limitado   |
+| Postman    |     ❌      | ❌ cloud propietario |   ⚠️    |   ✅ Newman    |
+| Insomnia   |     ⚠️      |   ⚠️ export manual   |   ✅    |       ✅       |
 
 **Veredicto:** Bruno para exploración manual + `axum-test` para tests automatizados en CI. Son complementarios.
 

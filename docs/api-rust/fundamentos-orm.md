@@ -26,14 +26,14 @@ estado: activo
 
 **SeaORM es el único ORM del proyecto. No se usa Diesel.**
 
-| Característica | SeaORM | Diesel |
-|----------------|--------|--------|
-| Async nativo Tokio | ✅ | ❌ (síncrono) |
-| Migrations en Rust | ✅ `sea-orm-migration` | ✅ diesel_migrations |
-| Generar entities desde DB existente | ✅ `sea-orm-cli generate entity` | ❌ requiere esquema manual |
-| Relaciones FK / M2M | ✅ has_many, belongs_to, many_to_many | ✅ |
-| Soft delete integrado | ✅ con hooks o trait custom | ⚠️ manual |
-| Con Axum | ✅ natural | ✅ con adaptadores |
+| Característica                      | SeaORM                                | Diesel                     |
+| ----------------------------------- | ------------------------------------- | -------------------------- |
+| Async nativo Tokio                  | ✅                                    | ❌ (síncrono)              |
+| Migrations en Rust                  | ✅ `sea-orm-migration`                | ✅ diesel_migrations       |
+| Generar entities desde DB existente | ✅ `sea-orm-cli generate entity`      | ❌ requiere esquema manual |
+| Relaciones FK / M2M                 | ✅ has_many, belongs_to, many_to_many | ✅                         |
+| Soft delete integrado               | ✅ con hooks o trait custom           | ⚠️ manual                  |
+| Con Axum                            | ✅ natural                            | ✅ con adaptadores         |
 
 **El factor decisivo:** `sea-orm-cli generate entity --database-url $DATABASE_URL` apunta al Postgres existente (con el schema de Django) y genera automáticamente todos los entities Rust. Con 126 migraciones y ~50 modelos Django, esto ahorra semanas de trabajo de transcripción manual.
 

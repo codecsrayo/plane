@@ -27,11 +27,11 @@ estado: activo
 
 ## Endpoints a implementar
 
-| Método | URL | Guard | Fase |
-|--------|-----|-------|------|
-| `GET` | `/workspaces/{slug}/search/` | `WorkspaceMemberGuard (≥5)` | 4 |
-| `GET` | `/workspaces/{slug}/projects/{id}/search-issues/` | `ProjectMemberGuard (≥5)` | 4 |
-| `GET` | `/workspaces/{slug}/entity-search/` | `WorkspaceMemberGuard (≥5)` | 4 |
+| Método | URL                                               | Guard                       | Fase |
+| ------ | ------------------------------------------------- | --------------------------- | ---- |
+| `GET`  | `/workspaces/{slug}/search/`                      | `WorkspaceMemberGuard (≥5)` | 4    |
+| `GET`  | `/workspaces/{slug}/projects/{id}/search-issues/` | `ProjectMemberGuard (≥5)`   | 4    |
+| `GET`  | `/workspaces/{slug}/entity-search/`               | `WorkspaceMemberGuard (≥5)` | 4    |
 
 ---
 
@@ -169,6 +169,7 @@ async fn search_issues(
 ## `GET /search-issues/` — búsqueda dentro de un proyecto
 
 Más específico que `/search/`, solo busca issues en un proyecto y es usado por el frontend para:
+
 - Autocomplete al asignar issues relacionados (`issue_relations`)
 - Autocomplete al asignar padre (`parent_id`)
 - Selector de issues al añadir a ciclo/módulo
@@ -345,13 +346,13 @@ Documentar como opción de Fase 4+ cuando el volumen de issues supere 50k por wo
 
 ## Entidades SeaORM involucradas ✅
 
-| Entidad | Tabla | Campos buscados |
-|---------|-------|-----------------|
-| `issues.rs` | `issues` | `name`, `description_html` |
-| `projects.rs` | `projects` | `name`, `identifier` |
-| `cycles.rs` | `cycles` | `name` |
-| `modules.rs` | `modules` | `name` |
-| `pages.rs` | `pages` | `name`, `description_html` |
+| Entidad              | Tabla             | Campos buscados                       |
+| -------------------- | ----------------- | ------------------------------------- |
+| `issues.rs`          | `issues`          | `name`, `description_html`            |
+| `projects.rs`        | `projects`        | `name`, `identifier`                  |
+| `cycles.rs`          | `cycles`          | `name`                                |
+| `modules.rs`         | `modules`         | `name`                                |
+| `pages.rs`           | `pages`           | `name`, `description_html`            |
 | `issue_sequences.rs` | `issue_sequences` | `sequence_id` (join para obtener #ID) |
 
 ---

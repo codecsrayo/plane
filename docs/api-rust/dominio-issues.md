@@ -45,7 +45,7 @@ issues (tabla principal)
     ├─ issue_relations         (M2M reflexiva: blocks/blocked_by/duplicate/relates_to)
     ├─ issue_sequences         (1→1, genera el #ID legible e.g. WS-42)
     ├─ issue_mentions          (M2M → users, menciones en descripción)
-    ├─ issue_votes             (M2M → users)
+    ├─ issue_votes             (M2M → users, sin endpoint en CE)
     ├─ issue_versions          (1→N, historial de versiones del issue)
     ├─ cycle_issues            (M2M → cycles)
     └─ module_issues           (M2M → modules)
@@ -61,60 +61,60 @@ issues (tabla principal)
 
 ### CRUD principal — `IssueViewSet`
 
-| Método | URL real Django | Guard | Fase |
-|--------|----------------|-------|------|
-| `GET` | `/workspaces/{slug}/projects/{project_id}/issues/` | `ProjectMemberGuard (≥5)` | 2 |
-| `POST` | `/workspaces/{slug}/projects/{project_id}/issues/` | `ProjectMemberGuard (≥15)` | 2 |
-| `GET` | `/workspaces/{slug}/projects/{project_id}/issues/{pk}/` | `ProjectMemberGuard (≥5)` | 2 |
-| `PUT/PATCH` | `/workspaces/{slug}/projects/{project_id}/issues/{pk}/` | `ProjectMemberGuard (≥15)` | 2 |
-| `DELETE` | `/workspaces/{slug}/projects/{project_id}/issues/{pk}/` | `ProjectMemberGuard (≥15)` | 2 |
+| Método      | URL real Django                                         | Guard                      | Fase |
+| ----------- | ------------------------------------------------------- | -------------------------- | ---- |
+| `GET`       | `/workspaces/{slug}/projects/{project_id}/issues/`      | `ProjectMemberGuard (≥5)`  | 2    |
+| `POST`      | `/workspaces/{slug}/projects/{project_id}/issues/`      | `ProjectMemberGuard (≥15)` | 2    |
+| `GET`       | `/workspaces/{slug}/projects/{project_id}/issues/{pk}/` | `ProjectMemberGuard (≥5)`  | 2    |
+| `PUT/PATCH` | `/workspaces/{slug}/projects/{project_id}/issues/{pk}/` | `ProjectMemberGuard (≥15)` | 2    |
+| `DELETE`    | `/workspaces/{slug}/projects/{project_id}/issues/{pk}/` | `ProjectMemberGuard (≥15)` | 2    |
 
 ### Listados especializados
 
-| Método | URL real Django | Descripción | Fase |
-|--------|----------------|-------------|------|
-| `GET` | `/workspaces/{slug}/projects/{project_id}/issues/list/` | `IssueListEndpoint` — lista ligera con IDs, sin joins pesados | 2 |
-| `GET` | `/workspaces/{slug}/projects/{project_id}/issues-detail/` | `IssueDetailEndpoint` — lista de issues con joins expandidos (assignees, labels, state populados); distinto del retrieve individual `/{pk}/` que devuelve un solo issue | 2 |
-| `GET` | `/workspaces/{slug}/projects/{project_id}/v2/issues/` | `IssuePaginatedViewSet` — paginación cursor v2 | 4 |
+| Método | URL real Django                                           | Descripción                                                                                                                                                                      | Fase |
+| ------ | --------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---- |
+| `GET`  | `/workspaces/{slug}/projects/{project_id}/issues/list/`   | `IssueListEndpoint` — lista ligera con IDs, sin joins pesados                                                                                                                    | 2    |
+| `GET`  | `/workspaces/{slug}/projects/{project_id}/issues-detail/` | `IssueDetailEndpoint` — lista de issues con joins expandidos (assignees, labels, state populados); distinto del retrieve individual `/{pk}/` que devuelve un solo issue (INC-09) | 2    |
+| `GET`  | `/workspaces/{slug}/projects/{project_id}/v2/issues/`     | `IssuePaginatedViewSet` — paginación cursor v2                                                                                                                                   | 4    |
 
 ### Labels
 
-| Método | URL real Django | Guard | Fase |
-|--------|----------------|-------|------|
-| `GET/POST` | `/workspaces/{slug}/projects/{project_id}/issue-labels/` | `ProjectMemberGuard (≥5/≥15)` | 2 |
-| `GET/PUT/PATCH/DELETE` | `/workspaces/{slug}/projects/{project_id}/issue-labels/{pk}/` | `ProjectMemberGuard (≥15)` | 2 |
-| `POST` | `/workspaces/{slug}/projects/{project_id}/bulk-create-labels/` | `BulkCreateIssueLabelsEndpoint` | 4 |
+| Método                 | URL real Django                                                | Guard                           | Fase |
+| ---------------------- | -------------------------------------------------------------- | ------------------------------- | ---- |
+| `GET/POST`             | `/workspaces/{slug}/projects/{project_id}/issue-labels/`       | `ProjectMemberGuard (≥5/≥15)`   | 2    |
+| `GET/PUT/PATCH/DELETE` | `/workspaces/{slug}/projects/{project_id}/issue-labels/{pk}/`  | `ProjectMemberGuard (≥15)`      | 2    |
+| `POST`                 | `/workspaces/{slug}/projects/{project_id}/bulk-create-labels/` | `BulkCreateIssueLabelsEndpoint` | 4    |
 
 ### Operaciones bulk
 
-| Método | URL real Django | Descripción | Fase |
-|--------|----------------|-------------|------|
-| `POST` | `/workspaces/{slug}/projects/{project_id}/bulk-delete-issues/` | Elimina lista de issue IDs | 4 |
-| `POST` | `/workspaces/{slug}/projects/{project_id}/bulk-archive-issues/` | Archiva lista de issue IDs | 4 |
-| `PATCH` | `/workspaces/{slug}/projects/{project_id}/issue-dates/` | `IssueBulkUpdateDateEndpoint` — actualiza fechas en bulk | 4 |
+| Método  | URL real Django                                                 | Descripción                                              | Fase |
+| ------- | --------------------------------------------------------------- | -------------------------------------------------------- | ---- |
+| `POST`  | `/workspaces/{slug}/projects/{project_id}/bulk-delete-issues/`  | Elimina lista de issue IDs                               | 4    |
+| `POST`  | `/workspaces/{slug}/projects/{project_id}/bulk-archive-issues/` | Archiva lista de issue IDs                               | 4    |
+| `PATCH` | `/workspaces/{slug}/projects/{project_id}/issue-dates/`         | `IssueBulkUpdateDateEndpoint` — actualiza fechas en bulk | 4    |
 
 ### Sub-issues
 
-| Método | URL real Django | Guard | Fase |
-|--------|----------------|-------|------|
-| `GET` | `/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/sub-issues/` | `SubIssuesEndpoint` — lista hijos directos | 4 |
+| Método | URL real Django                                                          | Guard                                      | Fase |
+| ------ | ------------------------------------------------------------------------ | ------------------------------------------ | ---- |
+| `GET`  | `/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/sub-issues/` | `SubIssuesEndpoint` — lista hijos directos | 4    |
 
 ### Archivado y papelera
 
-| Método | URL real Django | Descripción | Fase |
-|--------|----------------|-------------|------|
-| `GET` | `/workspaces/{slug}/projects/{project_id}/archived-issues/` | Lista issues archivados | 4 |
-| `GET` | `/workspaces/{slug}/projects/{project_id}/issues/{pk}/archive/` | Detalle de issue archivado | 4 |
-| `POST` | `/workspaces/{slug}/projects/{project_id}/issues/{pk}/archive/` | Archivar issue (sets `archived_at`) | 4 |
-| `DELETE` | `/workspaces/{slug}/projects/{project_id}/issues/{pk}/archive/` | Desarchivar issue (clears `archived_at`) | 4 |
-| `GET` | `/workspaces/{slug}/projects/{project_id}/deleted-issues/` | `DeletedIssuesListViewSet` — papelera soft-deleted | 4 |
+| Método   | URL real Django                                                 | Descripción                                        | Fase |
+| -------- | --------------------------------------------------------------- | -------------------------------------------------- | ---- |
+| `GET`    | `/workspaces/{slug}/projects/{project_id}/archived-issues/`     | Lista issues archivados                            | 4    |
+| `GET`    | `/workspaces/{slug}/projects/{project_id}/issues/{pk}/archive/` | Detalle de issue archivado                         | 4    |
+| `POST`   | `/workspaces/{slug}/projects/{project_id}/issues/{pk}/archive/` | Archivar issue (sets `archived_at`)                | 4    |
+| `DELETE` | `/workspaces/{slug}/projects/{project_id}/issues/{pk}/archive/` | Desarchivar issue (clears `archived_at`)           | 4    |
+| `GET`    | `/workspaces/{slug}/projects/{project_id}/deleted-issues/`      | `DeletedIssuesListViewSet` — papelera soft-deleted | 4    |
 
 ### Meta e identificador legible
 
-| Método | URL real Django | Descripción | Fase |
-|--------|----------------|-------------|------|
-| `GET` | `/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/meta/` | `IssueMetaEndpoint` — conteos: sub-issues, links, attachments, reactions | 4 |
-| `GET` | `/workspaces/{slug}/work-items/{project_identifier}-{issue_identifier}/` | `IssueDetailIdentifierEndpoint` — lookup por slug legible e.g. `WS-42` | 4 |
+| Método | URL real Django                                                          | Descripción                                                              | Fase |
+| ------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ---- |
+| `GET`  | `/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/meta/`       | `IssueMetaEndpoint` — conteos: sub-issues, links, attachments, reactions | 4    |
+| `GET`  | `/workspaces/{slug}/work-items/{project_identifier}-{issue_identifier}/` | `IssueDetailIdentifierEndpoint` — lookup por slug legible e.g. `WS-42`   | 4    |
 
 > [!WARNING] URL especial de identificador
 > El path `/workspaces/{slug}/work-items/{project_identifier}-{issue_identifier}/` usa
@@ -123,26 +123,26 @@ issues (tabla principal)
 
 ### Comentarios
 
-| Método | URL real Django | Guard | Fase |
-|--------|----------------|-------|------|
-| `GET/POST` | `/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/comments/` | `ProjectMemberGuard (≥5)` | 4 |
-| `GET/PUT/PATCH/DELETE` | `/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/comments/{pk}/` | autor o `ProjectMemberGuard (≥15)` | 4 |
+| Método                 | URL real Django                                                             | Guard                              | Fase |
+| ---------------------- | --------------------------------------------------------------------------- | ---------------------------------- | ---- |
+| `GET/POST`             | `/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/comments/`      | `ProjectMemberGuard (≥5)`          | 4    |
+| `GET/PUT/PATCH/DELETE` | `/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/comments/{pk}/` | autor o `ProjectMemberGuard (≥15)` | 4    |
 
 ### Reacciones a comentarios — `CommentReactionViewSet`
 
-| Método | URL real Django | Nota | Fase |
-|--------|----------------|------|------|
-| `GET/POST` | `/workspaces/{slug}/projects/{project_id}/comments/{comment_id}/reactions/` | Path directo bajo `projects/{id}/`, sin `/issues/{id}/` intermedio | 4 |
-| `DELETE` | `/workspaces/{slug}/projects/{project_id}/comments/{comment_id}/reactions/{reaction_code}/` | `reaction_code` = codepoint string | 4 |
+| Método     | URL real Django                                                                             | Nota                                                               | Fase |
+| ---------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ | ---- |
+| `GET/POST` | `/workspaces/{slug}/projects/{project_id}/comments/{comment_id}/reactions/`                 | Path directo bajo `projects/{id}/`, sin `/issues/{id}/` intermedio | 4    |
+| `DELETE`   | `/workspaces/{slug}/projects/{project_id}/comments/{comment_id}/reactions/{reaction_code}/` | `reaction_code` = codepoint string                                 | 4    |
 
 ### Attachments
 
-| Método | URL real Django | Descripción | Fase |
-|--------|----------------|-------------|------|
-| `GET/POST` | `/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-attachments/` | v1 | 4 |
-| `DELETE` | `/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-attachments/{pk}/` | v1 | 4 |
-| `GET/POST` | `/assets/v2/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/attachments/` | **v2 — prefix `/assets/v2/`, no `/api/`** | 4 |
-| `DELETE` | `/assets/v2/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/attachments/{pk}/` | v2 | 4 |
+| Método     | URL real Django                                                                          | Descripción                               | Fase |
+| ---------- | ---------------------------------------------------------------------------------------- | ----------------------------------------- | ---- |
+| `GET/POST` | `/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-attachments/`          | v1                                        | 4    |
+| `DELETE`   | `/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-attachments/{pk}/`     | v1                                        | 4    |
+| `GET/POST` | `/assets/v2/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/attachments/`      | **v2 — prefix `/assets/v2/`, no `/api/`** | 4    |
+| `DELETE`   | `/assets/v2/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/attachments/{pk}/` | v2                                        | 4    |
 
 > [!WARNING] Router separado para v2
 > Los endpoints de attachments v2 usan `/assets/v2/` en lugar de `/api/`.
@@ -150,49 +150,49 @@ issues (tabla principal)
 
 ### Links
 
-| Método | URL real Django | Guard | Fase |
-|--------|----------------|-------|------|
-| `GET/POST` | `/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-links/` | `ProjectMemberGuard (≥5)` | 4 |
-| `GET/PUT/PATCH/DELETE` | `/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-links/{pk}/` | `ProjectMemberGuard (≥15)` | 4 |
+| Método                 | URL real Django                                                                | Guard                      | Fase |
+| ---------------------- | ------------------------------------------------------------------------------ | -------------------------- | ---- |
+| `GET/POST`             | `/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-links/`      | `ProjectMemberGuard (≥5)`  | 4    |
+| `GET/PUT/PATCH/DELETE` | `/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-links/{pk}/` | `ProjectMemberGuard (≥15)` | 4    |
 
 ### Historial / Actividad
 
-| Método | URL real Django | Fase |
-|--------|----------------|------|
-| `GET` | `/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/history/` | 4 |
+| Método | URL real Django                                                       | Fase |
+| ------ | --------------------------------------------------------------------- | ---- |
+| `GET`  | `/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/history/` | 4    |
 
 ### Versiones
 
-| Método | URL real Django | Descripción | Fase |
-|--------|----------------|-------------|------|
-| `GET` | `/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/versions/` | Lista versiones | 4 |
-| `GET/DELETE` | `/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/versions/{pk}/` | Detalle / eliminar versión | 4 |
-| `GET` | `/workspaces/{slug}/projects/{project_id}/work-items/{work_item_id}/description-versions/` | `WorkItemDescriptionVersionEndpoint` | 4 |
-| `GET/DELETE` | `/workspaces/{slug}/projects/{project_id}/work-items/{work_item_id}/description-versions/{pk}/` | | 4 |
+| Método       | URL real Django                                                                                 | Descripción                          | Fase |
+| ------------ | ----------------------------------------------------------------------------------------------- | ------------------------------------ | ---- |
+| `GET`        | `/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/versions/`                          | Lista versiones                      | 4    |
+| `GET/DELETE` | `/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/versions/{pk}/`                     | Detalle / eliminar versión           | 4    |
+| `GET`        | `/workspaces/{slug}/projects/{project_id}/work-items/{work_item_id}/description-versions/`      | `WorkItemDescriptionVersionEndpoint` | 4    |
+| `GET/DELETE` | `/workspaces/{slug}/projects/{project_id}/work-items/{work_item_id}/description-versions/{pk}/` |                                      | 4    |
 
 ### Suscriptores
 
-| Método | URL real Django | Descripción | Fase |
-|--------|----------------|-------------|------|
-| `GET/POST` | `/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-subscribers/` | Lista y añadir suscriptores | 4 |
-| `DELETE` | `/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-subscribers/{subscriber_id}/` | Eliminar suscriptor por ID | 4 |
-| `GET` | `/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/subscribe/` | Estado de suscripción del usuario actual | 4 |
-| `POST` | `/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/subscribe/` | Suscribirse | 4 |
-| `DELETE` | `/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/subscribe/` | Desuscribirse | 4 |
+| Método     | URL real Django                                                                                 | Descripción                              | Fase |
+| ---------- | ----------------------------------------------------------------------------------------------- | ---------------------------------------- | ---- |
+| `GET/POST` | `/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-subscribers/`                 | Lista y añadir suscriptores              | 4    |
+| `DELETE`   | `/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-subscribers/{subscriber_id}/` | Eliminar suscriptor por ID               | 4    |
+| `GET`      | `/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/subscribe/`                         | Estado de suscripción del usuario actual | 4    |
+| `POST`     | `/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/subscribe/`                         | Suscribirse                              | 4    |
+| `DELETE`   | `/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/subscribe/`                         | Desuscribirse                            | 4    |
 
 ### Reacciones al issue
 
-| Método | URL real Django | Descripción | Fase |
-|--------|----------------|-------------|------|
-| `GET/POST` | `/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/reactions/` | Listar / añadir reacción | 4 |
-| `DELETE` | `/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/reactions/{reaction_code}/` | `reaction_code` = codepoint Unicode string (e.g. `"1F44D"`) | 4 |
+| Método     | URL real Django                                                                         | Descripción                                                 | Fase |
+| ---------- | --------------------------------------------------------------------------------------- | ----------------------------------------------------------- | ---- |
+| `GET/POST` | `/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/reactions/`                 | Listar / añadir reacción                                    | 4    |
+| `DELETE`   | `/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/reactions/{reaction_code}/` | `reaction_code` = codepoint Unicode string (e.g. `"1F44D"`) | 4    |
 
 ### Relaciones entre issues
 
-| Método | URL real Django | Descripción | Fase |
-|--------|----------------|-------------|------|
-| `GET/POST` | `/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-relation/` | Listar / crear relación | 4 |
-| `POST` | `/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/remove-relation/` | **Eliminar relación — `POST` con body JSON, NO `DELETE /{id}`** | 4 |
+| Método     | URL real Django                                                               | Descripción                                                     | Fase |
+| ---------- | ----------------------------------------------------------------------------- | --------------------------------------------------------------- | ---- |
+| `GET/POST` | `/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-relation/`  | Listar / crear relación                                         | 4    |
+| `POST`     | `/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/remove-relation/` | **Eliminar relación — `POST` con body JSON, NO `DELETE /{id}`** | 4    |
 
 > [!WARNING] Patrón atípico — remove-relation
 > Django usa `POST /remove-relation/` con body `{"relation_type": "blocks", "related_issue_id": "uuid"}`.
@@ -200,18 +200,18 @@ issues (tabla principal)
 
 ### Propiedades de display del usuario
 
-| Método | URL real Django | Descripción | Fase |
-|--------|----------------|-------------|------|
-| `GET/PATCH` | `/workspaces/{slug}/projects/{project_id}/user-properties/` | `ProjectUserDisplayPropertyEndpoint` — preferencias de filtros, agrupación, orden por usuario+proyecto (upsert — sin POST separado) | 4 |
+| Método      | URL real Django                                             | Descripción                                                                                                                                  | Fase |
+| ----------- | ----------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ---- |
+| `GET/PATCH` | `/workspaces/{slug}/projects/{project_id}/user-properties/` | `ProjectUserDisplayPropertyEndpoint` — preferencias de filtros, agrupación, orden por usuario+proyecto (upsert — sin POST separado) (INC-06) | 4    |
 
 ### Workspace-level issues
 
-| Método | URL real Django | Descripción | Fase |
-|--------|----------------|-------------|------|
-| `GET` | `/workspaces/{slug}/user-issues/{user_id}/` | Issues asignados a un usuario específico del workspace | 4 |
-| `GET/POST` | `/workspaces/{slug}/draft-issues/` | Borradores del workspace | 4 |
-| `GET/PATCH/DELETE` | `/workspaces/{slug}/draft-issues/{pk}/` | Detalle / editar / eliminar borrador | 4 |
-| `POST` | `/workspaces/{slug}/draft-to-issue/{draft_id}/` | Promover borrador a issue real | 4 |
+| Método             | URL real Django                                 | Descripción                                            | Fase |
+| ------------------ | ----------------------------------------------- | ------------------------------------------------------ | ---- |
+| `GET`              | `/workspaces/{slug}/user-issues/{user_id}/`     | Issues asignados a un usuario específico del workspace | 4    |
+| `GET/POST`         | `/workspaces/{slug}/draft-issues/`              | Borradores del workspace                               | 4    |
+| `GET/PATCH/DELETE` | `/workspaces/{slug}/draft-issues/{pk}/`         | Detalle / editar / eliminar borrador                   | 4    |
+| `POST`             | `/workspaces/{slug}/draft-to-issue/{draft_id}/` | Promover borrador a issue real                         | 4    |
 
 ---
 
@@ -461,23 +461,23 @@ pub fn decode_cursor(cursor: &str) -> Option<(f64, Uuid)> {
 
 ## Entidades SeaORM involucradas
 
-| Entidad | Tabla | Notas |
-|---------|-------|-------|
-| `issues.rs` | `issues` | `deleted_at`, `archived_at`, `parent_id` |
-| `issue_sequences.rs` | `issue_sequences` | auto-increment per-project |
-| `issue_assignees.rs` | `issue_assignees` | M2M |
-| `issue_labels.rs` | `issue_labels` | M2M |
-| `issue_comments.rs` | `issue_comments` | soft delete |
-| `comment_reactions.rs` | `comment_reactions` | emoji codepoint |
-| `issue_activities.rs` | `issue_activities` | audit trail |
-| `issue_attachments.rs` | `issue_attachments` | S3/MinIO key |
-| `issue_links.rs` | `issue_links` | URLs externas |
-| `issue_reactions.rs` | `issue_reactions` | emoji codepoint |
-| `issue_relations.rs` | `issue_relations` | M2M reflexiva |
-| `issue_subscribers.rs` | `issue_subscribers` | M2M |
-| `issue_mentions.rs` | `issue_mentions` | M2M |
-| `issue_votes.rs` | `issue_votes` | |
-| `issue_versions.rs` | `issue_versions` | historial |
+| Entidad                | Tabla               | Notas                                    |
+| ---------------------- | ------------------- | ---------------------------------------- |
+| `issues.rs`            | `issues`            | `deleted_at`, `archived_at`, `parent_id` |
+| `issue_sequences.rs`   | `issue_sequences`   | auto-increment per-project               |
+| `issue_assignees.rs`   | `issue_assignees`   | M2M                                      |
+| `issue_labels.rs`      | `issue_labels`      | M2M                                      |
+| `issue_comments.rs`    | `issue_comments`    | soft delete                              |
+| `comment_reactions.rs` | `comment_reactions` | emoji codepoint                          |
+| `issue_activities.rs`  | `issue_activities`  | audit trail                              |
+| `issue_attachments.rs` | `issue_attachments` | S3/MinIO key                             |
+| `issue_links.rs`       | `issue_links`       | URLs externas                            |
+| `issue_reactions.rs`   | `issue_reactions`   | emoji codepoint                          |
+| `issue_relations.rs`   | `issue_relations`   | M2M reflexiva                            |
+| `issue_subscribers.rs` | `issue_subscribers` | M2M                                      |
+| `issue_mentions.rs`    | `issue_mentions`    | M2M                                      |
+| `issue_votes.rs`       | `issue_votes`       | Sin endpoint en CE (INC-14)              |
+| `issue_versions.rs`    | `issue_versions`    | historial                                |
 
 ---
 

@@ -40,13 +40,13 @@ projects
 
 **Estados de un `intake_issue`:**
 
-| `status` (int) | Nombre | Descripción |
-|---------------|--------|-------------|
-| `-2` | `DECLINED` | Rechazado — no se convierte en issue |
-| `-1` | `SNOOZED` | Pospuesto hasta `snoozed_till` |
-| `0` | `PENDING` | Pendiente de revisión (estado inicial) |
-| `1` | `ACCEPTED` | Aceptado — issue real creado |
-| `2` | `DUPLICATE` | Marcado como duplicado de otro issue |
+| `status` (int) | Nombre      | Descripción                            |
+| -------------- | ----------- | -------------------------------------- |
+| `-2`           | `DECLINED`  | Rechazado — no se convierte en issue   |
+| `-1`           | `SNOOZED`   | Pospuesto hasta `snoozed_till`         |
+| `0`            | `PENDING`   | Pendiente de revisión (estado inicial) |
+| `1`            | `ACCEPTED`  | Aceptado — issue real creado           |
+| `2`            | `DUPLICATE` | Marcado como duplicado de otro issue   |
 
 ---
 
@@ -54,33 +54,33 @@ projects
 
 ### Gestión de intakes (configuración del módulo)
 
-| Método | URL | Guard | Fase |
-|--------|-----|-------|------|
-| `GET/POST` | `/workspaces/{slug}/projects/{id}/intakes/` | `ProjectMemberGuard (≥15)` | 4 |
-| `GET/PATCH/DELETE` | `/workspaces/{slug}/projects/{id}/intakes/{pk}/` | `ProjectMemberGuard (≥15)` | 4 |
+| Método             | URL                                              | Guard                      | Fase |
+| ------------------ | ------------------------------------------------ | -------------------------- | ---- |
+| `GET/POST`         | `/workspaces/{slug}/projects/{id}/intakes/`      | `ProjectMemberGuard (≥15)` | 4    |
+| `GET/PATCH/DELETE` | `/workspaces/{slug}/projects/{id}/intakes/{pk}/` | `ProjectMemberGuard (≥15)` | 4    |
 
 ### Issues en el intake
 
-| Método | URL | Guard | Fase |
-|--------|-----|-------|------|
-| `GET/POST` | `/workspaces/{slug}/projects/{id}/intake-issues/` | `ProjectMemberGuard (≥5)` | 4 |
-| `GET/PATCH/DELETE` | `/workspaces/{slug}/projects/{id}/intake-issues/{pk}/` | `ProjectMemberGuard (≥5/15)` | 4 |
+| Método             | URL                                                    | Guard                        | Fase |
+| ------------------ | ------------------------------------------------------ | ---------------------------- | ---- |
+| `GET/POST`         | `/workspaces/{slug}/projects/{id}/intake-issues/`      | `ProjectMemberGuard (≥5)`    | 4    |
+| `GET/PATCH/DELETE` | `/workspaces/{slug}/projects/{id}/intake-issues/{pk}/` | `ProjectMemberGuard (≥5/15)` | 4    |
 
 ### Versiones de descripción de intake-issues
 
-| Método | URL | Guard | Fase |
-|--------|-----|-------|------|
-| `GET` | `/workspaces/{slug}/projects/{id}/intake-work-items/{work_item_id}/description-versions/` | `ProjectMemberGuard (≥5)` | 4 |
-| `GET` | `/workspaces/{slug}/projects/{id}/intake-work-items/{work_item_id}/description-versions/{pk}/` | `ProjectMemberGuard (≥5)` | 4 |
+| Método | URL                                                                                            | Guard                     | Fase |
+| ------ | ---------------------------------------------------------------------------------------------- | ------------------------- | ---- |
+| `GET`  | `/workspaces/{slug}/projects/{id}/intake-work-items/{work_item_id}/description-versions/`      | `ProjectMemberGuard (≥5)` | 4    |
+| `GET`  | `/workspaces/{slug}/projects/{id}/intake-work-items/{work_item_id}/description-versions/{pk}/` | `ProjectMemberGuard (≥5)` | 4    |
 
 ### Compatibilidad (endpoints Inbox deprecados — mantener por retrocompat)
 
-| Método | URL | Guard | Fase |
-|--------|-----|-------|------|
-| `GET/POST` | `/workspaces/{slug}/projects/{id}/inboxes/` | `ProjectMemberGuard (≥5)` | 4 |
-| `GET/PATCH/DELETE` | `/workspaces/{slug}/projects/{id}/inboxes/{pk}/` | `ProjectMemberGuard (≥5)` | 4 |
-| `GET/POST` | `/workspaces/{slug}/projects/{id}/inbox-issues/` | `ProjectMemberGuard (≥5)` | 4 |
-| `GET/PATCH/DELETE` | `/workspaces/{slug}/projects/{id}/inbox-issues/{pk}/` | `ProjectMemberGuard (≥5)` | 4 |
+| Método             | URL                                                   | Guard                     | Fase |
+| ------------------ | ----------------------------------------------------- | ------------------------- | ---- |
+| `GET/POST`         | `/workspaces/{slug}/projects/{id}/inboxes/`           | `ProjectMemberGuard (≥5)` | 4    |
+| `GET/PATCH/DELETE` | `/workspaces/{slug}/projects/{id}/inboxes/{pk}/`      | `ProjectMemberGuard (≥5)` | 4    |
+| `GET/POST`         | `/workspaces/{slug}/projects/{id}/inbox-issues/`      | `ProjectMemberGuard (≥5)` | 4    |
+| `GET/PATCH/DELETE` | `/workspaces/{slug}/projects/{id}/inbox-issues/{pk}/` | `ProjectMemberGuard (≥5)` | 4    |
 
 ---
 
@@ -233,12 +233,12 @@ pub async fn update_intake_issue(
 
 ## Source values — origen del intake issue
 
-| `source` | Descripción |
-|----------|-------------|
-| `"IN_APP"` | Creado desde la UI de Plane |
-| `"API"` | Creado vía API externa |
-| `"EMAIL"` | Enviado por email (futuro) |
-| `"FORM"` | Enviado desde formulario público (futuro) |
+| `source`   | Descripción                               |
+| ---------- | ----------------------------------------- |
+| `"IN_APP"` | Creado desde la UI de Plane               |
+| `"API"`    | Creado vía API externa                    |
+| `"EMAIL"`  | Enviado por email (futuro)                |
+| `"FORM"`   | Enviado desde formulario público (futuro) |
 
 ---
 
@@ -311,10 +311,10 @@ scheduler.add(Job::new_async("0 */30 * * * *", |_, _| Box::pin(async {
 
 ## Entidades SeaORM involucradas ✅
 
-| Entidad | Tabla |
-|---------|-------|
-| `intakes.rs` | `intakes` |
-| `intake_issues.rs` | `intake_issues` |
+| Entidad                   | Tabla                  |
+| ------------------------- | ---------------------- |
+| `intakes.rs`              | `intakes`              |
+| `intake_issues.rs`        | `intake_issues`        |
 | `description_versions.rs` | `description_versions` |
 
 ---

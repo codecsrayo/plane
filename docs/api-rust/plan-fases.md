@@ -23,14 +23,14 @@ estado: activo
 
 ## Resumen de fases
 
-| Fase | Nombre | Duración estimada | Estado |
-|------|--------|-------------------|--------|
-| 0 | Scaffolding + Baseline | 2–3 días | 🔄 En progreso |
-| 1 | Auth middleware | 3–5 días | 📝 Planificado |
-| 2 | Endpoints alta frecuencia | 2–4 semanas | 📝 Planificado |
-| 3 | Background jobs | 1–2 semanas | 📝 Planificado |
-| 4 | Endpoints restantes | Continuo | 📝 Planificado |
-| 5 | Shutdown Django completo | 1 día | 📝 Planificado |
+| Fase | Nombre                    | Duración estimada | Estado         |
+| ---- | ------------------------- | ----------------- | -------------- |
+| 0    | Scaffolding + Baseline    | 2–3 días          | 🔄 En progreso |
+| 1    | Auth middleware           | 3–5 días          | 📝 Planificado |
+| 2    | Endpoints alta frecuencia | 2–4 semanas       | 📝 Planificado |
+| 3    | Background jobs           | 1–2 semanas       | 📝 Planificado |
+| 4    | Endpoints restantes       | Continuo          | 📝 Planificado |
+| 5    | Shutdown Django completo  | 1 día             | 📝 Planificado |
 
 ---
 
@@ -62,6 +62,7 @@ estado: activo
 ## Fase 2 — Endpoints de alta frecuencia
 
 ### Workspaces
+
 - [ ] `GET /api/workspaces/`
 - [ ] `POST /api/workspaces/`
 - [ ] `GET/PATCH/DELETE /api/workspaces/{slug}/`
@@ -71,21 +72,25 @@ estado: activo
 - [ ] `DELETE /api/workspaces/{slug}/invitations/{pk}/`
 
 ### Projects
+
 - [ ] `GET /api/workspaces/{slug}/projects/`
 - [ ] `POST /api/workspaces/{slug}/projects/`
 - [ ] `GET/PATCH/DELETE /api/workspaces/{slug}/projects/{id}/`
 
 ### Issues
+
 - [ ] `GET/POST /api/workspaces/{slug}/projects/{id}/issues/`
 - [ ] `GET/PATCH/DELETE /api/workspaces/{slug}/projects/{id}/issues/{id}/`
 
 ### Otros alta frecuencia
+
 - [ ] `GET /api/workspaces/{slug}/projects/{id}/states/`
 - [ ] `GET /api/workspaces/{slug}/projects/{id}/members/`
 - [ ] `GET /api/workspaces/{slug}/projects/{id}/cycles/`
 - [ ] `GET /api/workspaces/{slug}/projects/{id}/modules/`
 
 ### Workspace Settings (Fase 2 extendida)
+
 - [ ] `GET/POST /api/workspaces/{slug}/webhooks/` — ver [[dominio-workspace-settings]]
 - [ ] `GET /api/integrations/` — ver [[dominio-integraciones]]
 - [ ] `GET/POST/DELETE /api/workspaces/{slug}/workspace-integrations/` — ver [[dominio-integraciones]]
@@ -111,6 +116,7 @@ Cubrir el resto priorizando por frecuencia de uso en logs de Traefik.
 Ver docs de dominio en [[MOC#🏗️ Dominio]] para contexto detallado de cada área.
 
 ### Issues — ver [[dominio-issues]]
+
 - [ ] `GET/POST /api/workspaces/{slug}/projects/{id}/issues/{id}/comments/`
 - [ ] `GET/PATCH/DELETE /api/workspaces/{slug}/projects/{id}/issues/{id}/comments/{comment_id}/`
 - [ ] `GET/POST /api/workspaces/{slug}/projects/{id}/issues/{id}/attachments/`
@@ -123,16 +129,17 @@ Ver docs de dominio en [[MOC#🏗️ Dominio]] para contexto detallado de cada �
 - [ ] `DELETE /api/workspaces/{slug}/projects/{id}/issues/{id}/relations/{relation_id}/`
 - [ ] `GET/POST /api/workspaces/{slug}/projects/{id}/issues/{id}/sub-issues/`
 - [ ] `GET /api/workspaces/{slug}/projects/{id}/issues/{id}/activity/`
-- [ ] `GET/POST /api/workspaces/{slug}/projects/{id}/issues/` *(bulk create)*
+- [ ] `GET/POST /api/workspaces/{slug}/projects/{id}/issues/` _(bulk create)_
 - [ ] `POST /api/workspaces/{slug}/projects/{id}/issues/bulk-update/`
 - [ ] `POST /api/workspaces/{slug}/projects/{id}/issues/bulk-delete/`
-- [ ] `GET /api/workspaces/{slug}/projects/{id}/issues/{id}/` *(expandido con relaciones)*
+- [ ] `GET /api/workspaces/{slug}/projects/{id}/issues/{id}/` _(expandido con relaciones)_
 - [ ] `GET/POST /api/workspaces/{slug}/projects/{id}/issue-views/`
 - [ ] `GET/PATCH/DELETE /api/workspaces/{slug}/projects/{id}/issue-views/{view_id}/`
-- [ ] `GET/POST /api/workspaces/{slug}/issue-views/` *(workspace-level views)*
+- [ ] `GET/POST /api/workspaces/{slug}/issue-views/` _(workspace-level views)_
 - [ ] `GET/POST /api/workspaces/{slug}/projects/{id}/spreadsheet-states/`
 
 ### Proyectos — ver [[dominio-proyectos]]
+
 - [ ] `GET/POST /api/workspaces/{slug}/projects/{id}/states/`
 - [ ] `GET/PATCH/DELETE /api/workspaces/{slug}/projects/{id}/states/{state_id}/`
 - [ ] `GET/POST /api/workspaces/{slug}/projects/{id}/labels/`
@@ -144,9 +151,10 @@ Ver docs de dominio en [[MOC#🏗️ Dominio]] para contexto detallado de cada �
 - [ ] `PATCH/DELETE /api/workspaces/{slug}/projects/{id}/members/{member_id}/`
 - [ ] `GET/POST /api/workspaces/{slug}/projects/{id}/invitations/`
 - [ ] `DELETE /api/workspaces/{slug}/projects/{id}/invitations/{invite_id}/`
-- [ ] `GET/POST /api/workspaces/{slug}/projects/` *(listado paginado completo con filtros)*
+- [ ] `GET/POST /api/workspaces/{slug}/projects/` _(listado paginado completo con filtros)_
 
 ### Ciclos — ver [[dominio-ciclos]]
+
 - [ ] `GET/POST /api/workspaces/{slug}/projects/{id}/cycles/`
 - [ ] `GET/PATCH/DELETE /api/workspaces/{slug}/projects/{id}/cycles/{cycle_id}/`
 - [ ] `GET/POST /api/workspaces/{slug}/projects/{id}/cycles/{cycle_id}/cycle-issues/`
@@ -158,6 +166,7 @@ Ver docs de dominio en [[MOC#🏗️ Dominio]] para contexto detallado de cada �
 - [ ] `GET /api/workspaces/{slug}/projects/{id}/cycles/completed/`
 
 ### Módulos — ver [[dominio-modulos]]
+
 - [ ] `GET/POST /api/workspaces/{slug}/projects/{id}/modules/`
 - [ ] `GET/PATCH/DELETE /api/workspaces/{slug}/projects/{id}/modules/{module_id}/`
 - [ ] `GET/POST /api/workspaces/{slug}/projects/{id}/modules/{module_id}/module-issues/`
@@ -167,6 +176,7 @@ Ver docs de dominio en [[MOC#🏗️ Dominio]] para contexto detallado de cada �
 - [ ] `GET /api/workspaces/{slug}/projects/{id}/modules/{module_id}/sub-issues/`
 
 ### Páginas — ver [[dominio-paginas]]
+
 - [ ] `GET/POST /api/workspaces/{slug}/projects/{id}/pages/`
 - [ ] `GET/PATCH/DELETE /api/workspaces/{slug}/projects/{id}/pages/{page_id}/`
 - [ ] `GET/POST /api/workspaces/{slug}/projects/{id}/pages/{page_id}/blocks/`
@@ -177,6 +187,7 @@ Ver docs de dominio en [[MOC#🏗️ Dominio]] para contexto detallado de cada �
 - [ ] `POST /api/workspaces/{slug}/projects/{id}/pages/{page_id}/unarchive/`
 
 ### Notificaciones — ver [[dominio-notificaciones]]
+
 - [ ] `GET /api/users/me/notifications/`
 - [ ] `PATCH /api/users/me/notifications/{notification_id}/read/`
 - [ ] `POST /api/users/me/notifications/mark-all-read/`
@@ -186,7 +197,8 @@ Ver docs de dominio en [[MOC#🏗️ Dominio]] para contexto detallado de cada �
 - [ ] `PATCH /api/users/me/notification-preferences/`
 
 ### Intake / Triage — ver [[dominio-intake]]
-- [ ] `GET/POST /api/workspaces/{slug}/projects/{id}/intake/` *(sources)*
+
+- [ ] `GET/POST /api/workspaces/{slug}/projects/{id}/intake/` _(sources)_
 - [ ] `GET/POST /api/workspaces/{slug}/projects/{id}/intake-issues/`
 - [ ] `GET/PATCH/DELETE /api/workspaces/{slug}/projects/{id}/intake-issues/{intake_id}/`
 - [ ] `POST /api/workspaces/{slug}/projects/{id}/intake-issues/{intake_id}/accept/`
@@ -194,24 +206,25 @@ Ver docs de dominio en [[MOC#🏗️ Dominio]] para contexto detallado de cada �
 - [ ] `POST /api/workspaces/{slug}/projects/{id}/intake-issues/{intake_id}/snoozed/`
 
 ### Analytics — ver [[dominio-analytics]]
-- [ ] `GET /api/workspaces/{slug}/analytics/` *(demand analytics)*
+
+- [ ] `GET /api/workspaces/{slug}/analytics/` _(demand analytics)_
 - [ ] `GET /api/workspaces/{slug}/analytics/export/`
 - [ ] `GET /api/workspaces/{slug}/projects/{id}/analytics/`
 - [ ] `GET /api/workspaces/{slug}/projects/{id}/analytics/burn-down/`
 - [ ] `GET /api/workspaces/{slug}/projects/{id}/analytics/custom/`
 
 ### Importadores — ver [[dominio-importadores]]
+
 - [ ] `GET/POST /api/workspaces/{slug}/importers/github/`
 - [ ] `GET/DELETE /api/workspaces/{slug}/importers/github/{importer_id}/`
 - [ ] `GET/POST /api/workspaces/{slug}/importers/jira/`
 - [ ] `GET/POST /api/workspaces/{slug}/importers/csv/`
 
 ### Búsqueda — ver [[dominio-busqueda]]
+
 - [ ] `GET /api/workspaces/{slug}/search/`
 - [ ] `GET /api/workspaces/{slug}/projects/{id}/search/`
-- [ ] `GET /api/search/` *(global)*
-
-
+- [ ] `GET /api/search/` _(global)_
 
 ## Fase 5 — Shutdown Django completo
 

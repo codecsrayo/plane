@@ -49,16 +49,16 @@ workspace creado
 
 Los datos de plantilla viven en 8 archivos JSON en `apps/api_rust/seeds/data/`:
 
-| Archivo | Descripción |
-|---------|-------------|
-| `projects.json` | 1 proyecto demo con nombre, identifier, logo |
-| `states.json` | 5 estados con color, grupo (backlog/started/…) |
-| `labels.json` | 2 labels (admin, concepts) |
-| `cycles.json` | 2 ciclos con tipo CURRENT / UPCOMING |
-| `modules.json` | N módulos con nombre y orden |
-| `issues.json` | N issues con description_html, priority, refs |
-| `views.json` | N vistas con filtros |
-| `pages.json` | N páginas con description_html |
+| Archivo         | Descripción                                    |
+| --------------- | ---------------------------------------------- |
+| `projects.json` | 1 proyecto demo con nombre, identifier, logo   |
+| `states.json`   | 5 estados con color, grupo (backlog/started/…) |
+| `labels.json`   | 2 labels (admin, concepts)                     |
+| `cycles.json`   | 2 ciclos con tipo CURRENT / UPCOMING           |
+| `modules.json`  | N módulos con nombre y orden                   |
+| `issues.json`   | N issues con description_html, priority, refs  |
+| `views.json`    | N vistas con filtros                           |
+| `pages.json`    | N páginas con description_html                 |
 
 ```bash
 # Copiar desde el proyecto Django
@@ -257,13 +257,13 @@ async fn create_workspace(
 
 ## Datos globales vs datos de workspace
 
-| Tipo | Dónde | Cuándo |
-|------|--------|--------|
-| `integrations` (3 filas) | Migración `m007_seed_data` | Al arrancar DB |
-| `instance_configurations` | Migración `m007_seed_data` | Al arrancar DB |
-| `auth_permission` / grupos | Migración `m001_baseline` | Al arrancar DB |
-| Proyecto demo + issues | `WorkspaceSeedJob` (apalis) | Al crear workspace |
-| Bot user por workspace | `WorkspaceSeedJob` (apalis) | Al crear workspace |
+| Tipo                       | Dónde                       | Cuándo             |
+| -------------------------- | --------------------------- | ------------------ |
+| `integrations` (3 filas)   | Migración `m007_seed_data`  | Al arrancar DB     |
+| `instance_configurations`  | Migración `m007_seed_data`  | Al arrancar DB     |
+| `auth_permission` / grupos | Migración `m001_baseline`   | Al arrancar DB     |
+| Proyecto demo + issues     | `WorkspaceSeedJob` (apalis) | Al crear workspace |
+| Bot user por workspace     | `WorkspaceSeedJob` (apalis) | Al crear workspace |
 
 ---
 

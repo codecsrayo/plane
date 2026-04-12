@@ -31,10 +31,10 @@ estado: activo
 
 ## Contexto — cómo autentifica Django hoy
 
-| Mecanismo | Módulo Django | Quién lo usa | Header / Cookie |
-|-----------|---------------|-------------|-----------------|
-| **Session cookie** | `plane/app/` + `plane/authentication/` | Frontend Next.js (web app) | Cookie `session-id` |
-| **API Key** | `plane/api/` | Integraciones externas, CLI, scripts | Header `X-Api-Key` |
+| Mecanismo          | Módulo Django                          | Quién lo usa                         | Header / Cookie     |
+| ------------------ | -------------------------------------- | ------------------------------------ | ------------------- |
+| **Session cookie** | `plane/app/` + `plane/authentication/` | Frontend Next.js (web app)           | Cookie `session-id` |
+| **API Key**        | `plane/api/`                           | Integraciones externas, CLI, scripts | Header `X-Api-Key`  |
 
 La app web vive **100% en session cookies** — no usa JWT ni Bearer tokens.
 
@@ -67,6 +67,7 @@ Browser              Django               PostgreSQL
 ```
 
 **Puntos clave:**
+
 - `session_key` es una cadena aleatoria de 128 chars — **no JWT, no encriptado**
 - La tabla `sessions` tiene `user_id` como columna directa — Rust **no necesita decodificar `session_data`** (pickle Python)
 - Dos cookies distintas según el path:
@@ -148,14 +149,14 @@ where S: Send + Sync + AsRef<AppState>,
 
 ### Atributos de la cookie (réplica exacta de Django)
 
-| Atributo Django | Valor | Rust (`Cookie::build`) |
-|----------------|-------|------------------------|
-| `SESSION_COOKIE_HTTPONLY = True` | No accesible desde JS | `.http_only(true)` |
-| `SESSION_COOKIE_SECURE` | Solo HTTPS en prod | `.secure(config.is_production)` |
-| `SESSION_COOKIE_SAMESITE` | `"Lax"` | `.same_site(SameSite::Lax)` |
-| `SESSION_COOKIE_DOMAIN` | `COOKIE_DOMAIN` env var | `.domain(config.cookie_domain.as_deref())` |
-| `SESSION_COOKIE_AGE = 604800` | 7 días | `.max_age(time::Duration::days(7))` |
-| `ADMIN_SESSION_COOKIE_AGE = 3600` | 1 hora | `.max_age(time::Duration::hours(1))` |
+| Atributo Django                   | Valor                   | Rust (`Cookie::build`)                     |
+| --------------------------------- | ----------------------- | ------------------------------------------ |
+| `SESSION_COOKIE_HTTPONLY = True`  | No accesible desde JS   | `.http_only(true)`                         |
+| `SESSION_COOKIE_SECURE`           | Solo HTTPS en prod      | `.secure(config.is_production)`            |
+| `SESSION_COOKIE_SAMESITE`         | `"Lax"`                 | `.same_site(SameSite::Lax)`                |
+| `SESSION_COOKIE_DOMAIN`           | `COOKIE_DOMAIN` env var | `.domain(config.cookie_domain.as_deref())` |
+| `SESSION_COOKIE_AGE = 604800`     | 7 días                  | `.max_age(time::Duration::days(7))`        |
+| `ADMIN_SESSION_COOKIE_AGE = 3600` | 1 hora                  | `.max_age(time::Duration::hours(1))`       |
 
 ### Diferencia crítica: `session_data` vs `user_id`
 
@@ -377,21 +378,21 @@ where S: Send + Sync + AsRef<AppState>,
 
 ### Session Cookie
 
-| Aspecto | Django | Rust |
-|---------|--------|------|
-| Leer cookie | `request.COOKIES.get("session-id")` | `CookieJar::from_headers(&parts.headers)` |
-| Buscar sesión | `SessionStore(session_key)` | `sessions::Entity::find_by_id(&key).filter(expire_date > now)` |
-| Obtener user_id | `session["_auth_user_id"]` | `session.user_id` (columna directa) |
-| Logout — DB | `logout(request)` | `sessions::Entity::delete_by_id(&key)` |
-| Logout — cookie | `response.delete_cookie(...)` | `Cookie::build(...).max_age(Duration::ZERO)` |
+| Aspecto         | Django                              | Rust                                                           |
+| --------------- | ----------------------------------- | -------------------------------------------------------------- |
+| Leer cookie     | `request.COOKIES.get("session-id")` | `CookieJar::from_headers(&parts.headers)`                      |
+| Buscar sesión   | `SessionStore(session_key)`         | `sessions::Entity::find_by_id(&key).filter(expire_date > now)` |
+| Obtener user_id | `session["_auth_user_id"]`          | `session.user_id` (columna directa)                            |
+| Logout — DB     | `logout(request)`                   | `sessions::Entity::delete_by_id(&key)`                         |
+| Logout — cookie | `response.delete_cookie(...)`       | `Cookie::build(...).max_age(Duration::ZERO)`                   |
 
 ### API Key
 
-| Aspecto | Django | Rust |
-|---------|--------|------|
-| Leer header | `request.headers.get("X-Api-Key")` | `parts.headers.get("x-api-key")` |
-| Check expiración | `expired_at__gt=now OR expired_at__isnull=True` | `Condition::any().add(ExpiredAt.is_null()).add(ExpiredAt.gt(now))` |
-| Rate limit normal | 60/min (Redis cache) | `RATE_LIMIT_HUMAN = 60` (memoria → Redis Fase 3) |
+| Aspecto           | Django                                          | Rust                                                               |
+| ----------------- | ----------------------------------------------- | ------------------------------------------------------------------ |
+| Leer header       | `request.headers.get("X-Api-Key")`              | `parts.headers.get("x-api-key")`                                   |
+| Check expiración  | `expired_at__gt=now OR expired_at__isnull=True` | `Condition::any().add(ExpiredAt.is_null()).add(ExpiredAt.gt(now))` |
+| Rate limit normal | 60/min (Redis cache)                            | `RATE_LIMIT_HUMAN = 60` (memoria → Redis Fase 3)                   |
 
 ---
 

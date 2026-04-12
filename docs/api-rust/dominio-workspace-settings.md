@@ -28,16 +28,16 @@ estado: activo
 
 ## Índice de secciones
 
-| # | Sección | Ruta frontend | Roles con acceso |
-|---|---------|--------------| ---------------- |
-| WS-1 | [General](#ws-1--general) | `/{slug}/settings/` | Admin, Member |
-| WS-2 | [Members](#ws-2--members) | `/{slug}/settings/members/` | Admin, Member |
-| WS-3 | [Billing & Plans](#ws-3--billing--plans) | `/{slug}/settings/billing/` | Admin (CE: vacío) |
-| WS-4 | [Exports](#ws-4--exports) | `/{slug}/settings/exports/` | Admin, Member |
-| WS-5 | [Integrations](#ws-5--integrations) | `/{slug}/settings/integrations/` | Admin |
-| WS-6 | [Webhooks](#ws-6--webhooks) | `/{slug}/settings/webhooks/` | Admin |
-| WS-7 | [UI State](#ws-7--workspace-ui-state-endpoints-modernos) | - | Admin, Member |
-| WS-8 | [Aggregates](#ws-8--workspace-aggregates) | - | Admin, Member |
+| #    | Sección                                                  | Ruta frontend                    | Roles con acceso  |
+| ---- | -------------------------------------------------------- | -------------------------------- | ----------------- |
+| WS-1 | [General](#ws-1--general)                                | `/{slug}/settings/`              | Admin, Member     |
+| WS-2 | [Members](#ws-2--members)                                | `/{slug}/settings/members/`      | Admin, Member     |
+| WS-3 | [Billing & Plans](#ws-3--billing--plans)                 | `/{slug}/settings/billing/`      | Admin (CE: vacío) |
+| WS-4 | [Exports](#ws-4--exports)                                | `/{slug}/settings/exports/`      | Admin, Member     |
+| WS-5 | [Integrations](#ws-5--integrations)                      | `/{slug}/settings/integrations/` | Admin             |
+| WS-6 | [Webhooks](#ws-6--webhooks)                              | `/{slug}/settings/webhooks/`     | Admin             |
+| WS-7 | [UI State](#ws-7--workspace-ui-state-endpoints-modernos) | -                                | Admin, Member     |
+| WS-8 | [Aggregates](#ws-8--workspace-aggregates)                | -                                | Admin, Member     |
 
 ---
 
@@ -46,13 +46,13 @@ estado: activo
 ```typescript
 // packages/constants/src/settings/workspace.ts
 WORKSPACE_SETTINGS_ACCESS = {
-  "/settings":              [Admin, Member],
-  "/settings/members":      [Admin, Member],
-  "/settings/billing":      [Admin],
-  "/settings/exports":      [Admin, Member],
+  "/settings": [Admin, Member],
+  "/settings/members": [Admin, Member],
+  "/settings/billing": [Admin],
+  "/settings/exports": [Admin, Member],
   "/settings/integrations": [Admin],
-  "/settings/webhooks":     [Admin],
-}
+  "/settings/webhooks": [Admin],
+};
 ```
 
 El layout `WorkspaceSettingLayout` verifica el rol del usuario con MobX antes de renderizar la página. Si no tiene acceso → `<NotAuthorizedView />`.
@@ -65,10 +65,10 @@ El layout `WorkspaceSettingLayout` verifica el rol del usuario con MobX antes de
 
 **Endpoints:**
 
-| Método | URL | Guard |
-|--------|-----|-------|
-| `GET` | `/api/workspaces/{slug}/` | `WorkspaceMemberGuard (≥5)` |
-| `PATCH` | `/api/workspaces/{slug}/` | `WorkspaceMemberGuard (≥20)` |
+| Método   | URL                       | Guard                        |
+| -------- | ------------------------- | ---------------------------- |
+| `GET`    | `/api/workspaces/{slug}/` | `WorkspaceMemberGuard (≥5)`  |
+| `PATCH`  | `/api/workspaces/{slug}/` | `WorkspaceMemberGuard (≥20)` |
 | `DELETE` | `/api/workspaces/{slug}/` | `WorkspaceMemberGuard (≥20)` |
 
 ```rust
@@ -86,25 +86,28 @@ Router::new()
 
 **Endpoints:**
 
-| Método | URL | Guard |
-|--------|-----|-------|
-| `GET` | `/api/workspaces/{slug}/members/` | `WorkspaceMemberGuard (≥5)` |
-| `GET` | `/api/workspaces/{slug}/members/{pk}/` | `WorkspaceMemberGuard (≥5)` |
+| Método  | URL                                    | Guard                        |
+| ------- | -------------------------------------- | ---------------------------- |
+| `GET`   | `/api/workspaces/{slug}/members/`      | `WorkspaceMemberGuard (≥5)`  |
+| `GET`   | `/api/workspaces/{slug}/members/{pk}/` | `WorkspaceMemberGuard (≥5)`  |
 | `PATCH` | `/api/workspaces/{slug}/members/{pk}/` | `WorkspaceMemberGuard (≥20)` |
-| `DELETE` | `/api/workspaces/{slug}/members/{pk}/` | `WorkspaceMemberGuard (≥20)` |
-| `POST` | `/api/workspaces/{slug}/members/leave/` | `WorkspaceMemberGuard (≥5)` |
-| `GET` | `/api/workspaces/{slug}/invitations/` | `WorkspaceMemberGuard (≥20)` |
-| `POST` | `/api/workspaces/{slug}/invitations/` | `WorkspaceMemberGuard (≥20)` |
-| `DELETE` | `/api/workspaces/{slug}/invitations/{pk}/` | `WorkspaceMemberGuard (≥20)` |
+
+> [!NOTE] INC-13 corregido
+> GUEST (5) tiene permiso para listar miembros.
+> | `DELETE` | `/api/workspaces/{slug}/members/{pk}/` | `WorkspaceMemberGuard (≥20)` |
+> | `POST` | `/api/workspaces/{slug}/members/leave/` | `WorkspaceMemberGuard (≥5)` |
+> | `GET` | `/api/workspaces/{slug}/invitations/` | `WorkspaceMemberGuard (≥20)` |
+> | `POST` | `/api/workspaces/{slug}/invitations/` | `WorkspaceMemberGuard (≥20)` |
+> | `DELETE` | `/api/workspaces/{slug}/invitations/{pk}/` | `WorkspaceMemberGuard (≥20)` |
 
 **Roles:**
 
-| Valor | Nombre | Puede invitar | Puede cambiar roles | Puede expulsar |
-|-------|--------|:---:|:---:|:---:|
-| 20 | Admin / Owner | ✅ | ✅ | ✅ |
-| 15 | Member | ❌ | ❌ | ❌ |
-| 10 | Viewer | ❌ | ❌ | ❌ |
-| 5 | Guest | ❌ | ❌ | ❌ |
+| Valor | Nombre        | Puede invitar | Puede cambiar roles | Puede expulsar |
+| ----- | ------------- | :-----------: | :-----------------: | :------------: |
+| 20    | Admin / Owner |      ✅       |         ✅          |       ✅       |
+| 15    | Member        |      ❌       |         ❌          |       ❌       |
+| 10    | Viewer        |      ❌       |         ❌          |       ❌       |
+| 5     | Guest         |      ❌       |         ❌          |       ❌       |
 
 > [!WARNING] No expulsar al único Owner
 > El handler de DELETE debe verificar que el workspace tendrá al menos un Owner tras la operación. Si intenta expulsar al último → 400 Bad Request.
@@ -125,8 +128,8 @@ Router::new()
 
 **Endpoints:**
 
-| Método | URL | Guard |
-|--------|-----|-------|
+| Método | URL                                     | Guard                       |
+| ------ | --------------------------------------- | --------------------------- |
 | `POST` | `/api/workspaces/{slug}/export-issues/` | `WorkspaceMemberGuard (≥5)` |
 
 > [!WARNING] INC-01 corregido
@@ -187,11 +190,11 @@ pub async fn handle_export(
 
 **Resumen de endpoints:**
 
-| Método | URL |
-|--------|-----|
-| `GET` | `/api/integrations/` |
-| `GET` | `/api/workspaces/{slug}/workspace-integrations/` |
-| `POST` | `/api/workspaces/{slug}/workspace-integrations/{provider}/install/` |
+| Método   | URL                                                                  |
+| -------- | -------------------------------------------------------------------- |
+| `GET`    | `/api/integrations/`                                                 |
+| `GET`    | `/api/workspaces/{slug}/workspace-integrations/`                     |
+| `POST`   | `/api/workspaces/{slug}/workspace-integrations/{provider}/install/`  |
 | `DELETE` | `/api/workspaces/{slug}/workspace-integrations/{provider}/provider/` |
 
 **Flujo de la página (`/settings/integrations/`):**
@@ -215,15 +218,15 @@ WorkspaceIntegrationsPage (useSWR)
 
 **Endpoints:**
 
-| Método | URL | Guard |
-|--------|-----|-------|
-| `GET` | `/api/workspaces/{slug}/webhooks/` | `WorkspaceMemberGuard (≥20)` |
-| `POST` | `/api/workspaces/{slug}/webhooks/` | `WorkspaceMemberGuard (≥20)` |
-| `GET` | `/api/workspaces/{slug}/webhooks/{pk}/` | `WorkspaceMemberGuard (≥20)` |
-| `PATCH` | `/api/workspaces/{slug}/webhooks/{pk}/` | `WorkspaceMemberGuard (≥20)` |
-| `DELETE` | `/api/workspaces/{slug}/webhooks/{pk}/` | `WorkspaceMemberGuard (≥20)` |
-| `POST` | `/api/workspaces/{slug}/webhooks/{pk}/regenerate/` | `WorkspaceMemberGuard (≥20)` |
-| `GET` | `/api/workspaces/{slug}/webhook-logs/{webhook_id}/` | `WorkspaceMemberGuard (≥20)` |
+| Método   | URL                                                 | Guard                        |
+| -------- | --------------------------------------------------- | ---------------------------- |
+| `GET`    | `/api/workspaces/{slug}/webhooks/`                  | `WorkspaceMemberGuard (≥20)` |
+| `POST`   | `/api/workspaces/{slug}/webhooks/`                  | `WorkspaceMemberGuard (≥20)` |
+| `GET`    | `/api/workspaces/{slug}/webhooks/{pk}/`             | `WorkspaceMemberGuard (≥20)` |
+| `PATCH`  | `/api/workspaces/{slug}/webhooks/{pk}/`             | `WorkspaceMemberGuard (≥20)` |
+| `DELETE` | `/api/workspaces/{slug}/webhooks/{pk}/`             | `WorkspaceMemberGuard (≥20)` |
+| `POST`   | `/api/workspaces/{slug}/webhooks/{pk}/regenerate/`  | `WorkspaceMemberGuard (≥20)` |
+| `GET`    | `/api/workspaces/{slug}/webhook-logs/{webhook_id}/` | `WorkspaceMemberGuard (≥20)` |
 
 **Eventos disponibles:** `issue`, `cycle`, `module`, `issue_comment`, `project`
 
@@ -292,24 +295,24 @@ Fase 2 extendida:
 
 Endpoints del workspace para gestionar estado de UI del usuario (homescreen, stickies, visitas recientes):
 
-| Método | URL | Vista Django |
-|--------|-----|-------------|
-| `GET/POST` | `/api/workspaces/{slug}/quick-links/` | `QuickLinkViewSet` |
-| `GET/PATCH/DELETE` | `/api/workspaces/{slug}/quick-links/{pk}/` | `QuickLinkViewSet` |
-| `GET` | `/api/workspaces/{slug}/recent-visits/` | `UserRecentVisitViewSet` |
-| `GET/PATCH` | `/api/workspaces/{slug}/home-preferences/` | `WorkspaceHomePreferenceViewSet` |
-| `GET/PATCH` | `/api/workspaces/{slug}/home-preferences/{key}/` | `WorkspaceHomePreferenceViewSet` |
-| `GET/POST` | `/api/workspaces/{slug}/stickies/` | `WorkspaceStickyViewSet` |
-| `GET/PATCH/DELETE` | `/api/workspaces/{slug}/stickies/{pk}/` | `WorkspaceStickyViewSet` |
-| `GET/PATCH` | `/api/workspaces/{slug}/sidebar-preferences/` | `WorkspaceUserPreferenceViewSet` |
+| Método             | URL                                              | Vista Django                     |
+| ------------------ | ------------------------------------------------ | -------------------------------- |
+| `GET/POST`         | `/api/workspaces/{slug}/quick-links/`            | `QuickLinkViewSet`               |
+| `GET/PATCH/DELETE` | `/api/workspaces/{slug}/quick-links/{pk}/`       | `QuickLinkViewSet`               |
+| `GET`              | `/api/workspaces/{slug}/recent-visits/`          | `UserRecentVisitViewSet`         |
+| `GET/PATCH`        | `/api/workspaces/{slug}/home-preferences/`       | `WorkspaceHomePreferenceViewSet` |
+| `GET/PATCH`        | `/api/workspaces/{slug}/home-preferences/{key}/` | `WorkspaceHomePreferenceViewSet` |
+| `GET/POST`         | `/api/workspaces/{slug}/stickies/`               | `WorkspaceStickyViewSet`         |
+| `GET/PATCH/DELETE` | `/api/workspaces/{slug}/stickies/{pk}/`          | `WorkspaceStickyViewSet`         |
+| `GET/PATCH`        | `/api/workspaces/{slug}/sidebar-preferences/`    | `WorkspaceUserPreferenceViewSet` |
 
 **Workspace Favorites (INC-15):**
 
-| Método | URL | Vista Django |
-|--------|-----|-------------|
-| `GET/POST` | `/api/workspaces/{slug}/user-favorites/` | `WorkspaceFavoriteEndpoint` |
-| `GET/PATCH/DELETE` | `/api/workspaces/{slug}/user-favorites/{favorite_id}/` | `WorkspaceFavoriteEndpoint` |
-| `GET` | `/api/workspaces/{slug}/user-favorites/{favorite_id}/group/` | `WorkspaceFavoriteGroupEndpoint` |
+| Método             | URL                                                          | Vista Django                     |
+| ------------------ | ------------------------------------------------------------ | -------------------------------- |
+| `GET/POST`         | `/api/workspaces/{slug}/user-favorites/`                     | `WorkspaceFavoriteEndpoint`      |
+| `GET/PATCH/DELETE` | `/api/workspaces/{slug}/user-favorites/{favorite_id}/`       | `WorkspaceFavoriteEndpoint`      |
+| `GET`              | `/api/workspaces/{slug}/user-favorites/{favorite_id}/group/` | `WorkspaceFavoriteGroupEndpoint` |
 
 ---
 
@@ -317,34 +320,34 @@ Endpoints del workspace para gestionar estado de UI del usuario (homescreen, sti
 
 > [!WARNING] INC-17 — Endpoints de agregación cross-project.
 
-| Método | URL | Vista Django | Descripción |
-|--------|-----|-------------|-------------|
-| `GET` | `/api/workspaces/{slug}/labels/` | `WorkspaceLabelsEndpoint` | Todos los labels del workspace |
-| `GET` | `/api/workspaces/{slug}/states/` | `WorkspaceStatesEndpoint` | Todos los estados del workspace |
-| `GET` | `/api/workspaces/{slug}/estimates/` | `WorkspaceEstimatesEndpoint` | Todos los sistemas de estimación |
-| `GET` | `/api/workspaces/{slug}/modules/` | `WorkspaceModulesEndpoint` | Todos los módulos del workspace |
-| `GET` | `/api/workspaces/{slug}/cycles/` | `WorkspaceCyclesEndpoint` | Todos los ciclos del workspace |
-| `GET/PATCH` | `/api/workspaces/{slug}/user-properties/` | `WorkspaceUserPropertiesEndpoint` | Filtros globales del usuario |
-| `GET/POST` | `/api/workspaces/{slug}/workspace-themes/` | `WorkspaceThemeViewSet` | Temas del workspace |
-| `GET/PATCH/DELETE` | `/api/workspaces/{slug}/workspace-themes/{pk}/` | `WorkspaceThemeViewSet` | — |
-| `GET` | `/api/workspaces/{slug}/workspace-views/` | `WorkspaceMemberUserViewsEndpoint` | Vistas guardadas del usuario |
-| `GET` | `/api/workspaces/{slug}/workspace-members/me/` | `WorkspaceMemberUserEndpoint` | Info del miembro actual |
-| `GET` | `/api/workspaces/{slug}/project-members/` | `WorkspaceProjectMemberEndpoint` | Roles en proyectos |
+| Método             | URL                                             | Vista Django                       | Descripción                      |
+| ------------------ | ----------------------------------------------- | ---------------------------------- | -------------------------------- |
+| `GET`              | `/api/workspaces/{slug}/labels/`                | `WorkspaceLabelsEndpoint`          | Todos los labels del workspace   |
+| `GET`              | `/api/workspaces/{slug}/states/`                | `WorkspaceStatesEndpoint`          | Todos los estados del workspace  |
+| `GET`              | `/api/workspaces/{slug}/estimates/`             | `WorkspaceEstimatesEndpoint`       | Todos los sistemas de estimación |
+| `GET`              | `/api/workspaces/{slug}/modules/`               | `WorkspaceModulesEndpoint`         | Todos los módulos del workspace  |
+| `GET`              | `/api/workspaces/{slug}/cycles/`                | `WorkspaceCyclesEndpoint`          | Todos los ciclos del workspace   |
+| `GET/PATCH`        | `/api/workspaces/{slug}/user-properties/`       | `WorkspaceUserPropertiesEndpoint`  | Filtros globales del usuario     |
+| `GET/POST`         | `/api/workspaces/{slug}/workspace-themes/`      | `WorkspaceThemeViewSet`            | Temas del workspace              |
+| `GET/PATCH/DELETE` | `/api/workspaces/{slug}/workspace-themes/{pk}/` | `WorkspaceThemeViewSet`            | —                                |
+| `GET`              | `/api/workspaces/{slug}/workspace-views/`       | `WorkspaceMemberUserViewsEndpoint` | Vistas guardadas del usuario     |
+| `GET`              | `/api/workspaces/{slug}/workspace-members/me/`  | `WorkspaceMemberUserEndpoint`      | Info del miembro actual          |
+| `GET`              | `/api/workspaces/{slug}/project-members/`       | `WorkspaceProjectMemberEndpoint`   | Roles en proyectos               |
 
 ---
 
 ## Entidades SeaORM relevantes
 
-| Sección | Entidad Rust | Notas |
-|---------|-------------|-------|
-| General | `workspaces.rs` | PATCH + soft delete |
-| Members | `workspace_members.rs` | Filtrar `is_active=true` |
-| Members | `workspace_member_invites.rs` | Status: pending/accepted |
-| Exports | `exporter_histories.rs` | status: processing/completed/failed |
-| Integrations | `workspace_integrations.rs` | Ver [[dominio-integraciones]] |
-| Integrations | `integrations.rs` | 3 filas estáticas (seed) |
-| Webhooks | `webhooks.rs` | secret_key para HMAC |
-| Webhooks | `webhook_logs.rs` | Historial de entregas |
+| Sección      | Entidad Rust                  | Notas                               |
+| ------------ | ----------------------------- | ----------------------------------- |
+| General      | `workspaces.rs`               | PATCH + soft delete                 |
+| Members      | `workspace_members.rs`        | Filtrar `is_active=true`            |
+| Members      | `workspace_member_invites.rs` | Status: pending/accepted            |
+| Exports      | `exporter_histories.rs`       | status: processing/completed/failed |
+| Integrations | `workspace_integrations.rs`   | Ver [[dominio-integraciones]]       |
+| Integrations | `integrations.rs`             | 3 filas estáticas (seed)            |
+| Webhooks     | `webhooks.rs`                 | secret_key para HMAC                |
+| Webhooks     | `webhook_logs.rs`             | Historial de entregas               |
 
 ---
 

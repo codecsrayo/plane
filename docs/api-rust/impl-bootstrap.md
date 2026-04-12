@@ -25,6 +25,7 @@ estado: activo
 
 > [!INFO] Objetivo de este documento
 > Paso a paso para levantar la API Rust en su versión inicial con:
+>
 > - `main.rs` completo (AppState + router + Swagger UI)
 > - `config.rs` con variables de entorno tipadas
 > - `error.rs` unificado
@@ -420,23 +421,23 @@ open http://localhost:8000/api/docs
 
 ## Errores comunes en el arranque
 
-| Error | Causa | Solución |
-|-------|-------|----------|
-| `Variable de entorno requerida: DATABASE_URL` | No hay `.env` | Crear `.env` con las vars del paso anterior |
-| `error connecting to database` | PostgreSQL no disponible | `docker compose up plane-db` |
-| `Address already in use` | Puerto 8000 ocupado | `API_PORT=8001` o matar el proceso |
-| `No such file or directory (Cargo.lock)` | Directorio incorrecto | `cd apps/api_rust && cargo run` |
-| Swagger UI carga en blanco | Feature faltante | Verificar `features = ["axum"]` en utoipa-swagger-ui |
+| Error                                         | Causa                    | Solución                                             |
+| --------------------------------------------- | ------------------------ | ---------------------------------------------------- |
+| `Variable de entorno requerida: DATABASE_URL` | No hay `.env`            | Crear `.env` con las vars del paso anterior          |
+| `error connecting to database`                | PostgreSQL no disponible | `docker compose up plane-db`                         |
+| `Address already in use`                      | Puerto 8000 ocupado      | `API_PORT=8001` o matar el proceso                   |
+| `No such file or directory (Cargo.lock)`      | Directorio incorrecto    | `cd apps/api_rust && cargo run`                      |
+| Swagger UI carga en blanco                    | Feature faltante         | Verificar `features = ["axum"]` en utoipa-swagger-ui |
 
 ---
 
 ## Endpoints de la versión inicial (v0.1)
 
-| Método | Path | Auth | Estado |
-|--------|------|:----:|--------|
-| `GET` | `/api/health` | ❌ | 📝 Implementar |
-| `GET` | `/api/docs` | ❌ | 📝 Implementar |
-| `GET` | `/api/docs/openapi.json` | ❌ | 📝 Implementar |
+| Método | Path                     | Auth | Estado         |
+| ------ | ------------------------ | :--: | -------------- |
+| `GET`  | `/api/health`            |  ❌  | 📝 Implementar |
+| `GET`  | `/api/docs`              |  ❌  | 📝 Implementar |
+| `GET`  | `/api/docs/openapi.json` |  ❌  | 📝 Implementar |
 
 Los endpoints de la Fase 2 se listan en [[plan-fases#Fase 2 — Endpoints de alta frecuencia]].
 

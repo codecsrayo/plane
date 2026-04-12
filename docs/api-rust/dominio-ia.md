@@ -20,6 +20,7 @@ estado: activo
 
 > [!SUMMARY] Objetivo
 > Plane expone dos capacidades de IA a usuarios autenticados:
+>
 > 1. **Asistente libre (Pi)** — responde cualquier prompt en el contexto de un workspace o proyecto.
 > 2. **Reformulación de texto (rephrase-grammar)** — mejora selecciones del editor con control de tono.
 >
@@ -85,24 +86,24 @@ estado: activo
 
 ## 📁 Mapa de archivos
 
-| Capa | Archivo | Rol |
-|------|---------|-----|
-| **Tipos** | `packages/types/src/ai.ts` | `IGptResponse` — respuesta del asistente de proyecto |
-| **Tipos instancia** | `packages/types/src/instance/ai.ts` | Keys de configuración: `LLM_API_KEY`, `LLM_MODEL` |
-| **Constantes** | `packages/constants/src/ai.ts` | Enum `AI_EDITOR_TASKS` |
-| **Constantes web** | `apps/web/core/constants/ai.ts` | Enum + `LOADING_TEXTS` por tarea |
-| **Servicio (paquete)** | `packages/services/src/ai/ai.service.ts` | `prompt()`, `rephraseGrammar()` |
-| **Servicio (web)** | `apps/web/core/services/ai.service.ts` | `createGptTask()`, `performEditorTask()` |
-| **Plugin editor** | `packages/editor/src/core/plugins/ai-handle.ts` | Botón ✨ en el margen del editor (Tiptap) |
-| **Menú editor** | `packages/editor/src/core/components/menus/ai-menu.tsx` | `AIFeaturesMenu` — popover Tippy |
-| **Tipos editor** | `packages/editor/src/core/types/ai.ts` | `TAIHandler`, `TAIMenuProps` |
-| **Menú Pi** | `apps/web/ce/components/pages/editor/ai/menu.tsx` | `EditorAIMenu` — panel lateral 700px |
-| **Submenú Ask Pi** | `apps/web/ce/components/pages/editor/ai/ask-pi-menu.tsx` | Input libre + acciones de respuesta |
-| **Popover issue** | `apps/web/core/components/core/modals/gpt-assistant-popover.tsx` | `GptAssistantPopover` — desde detail de issue |
-| **Backend** | `apps/api/plane/app/views/external/base.py` | Endpoints + proveedores LLM |
-| **URLs** | `apps/api/plane/app/urls/external.py` | Registro de rutas |
-| **Config instancia** | `apps/api/plane/utils/instance_config_variables/core.py` | Variables `LLM_*` en BD cifrada |
-| **Admin UI** | `apps/admin/app/(all)/(dashboard)/ai/` | Panel de configuración del operador |
+| Capa                   | Archivo                                                          | Rol                                                  |
+| ---------------------- | ---------------------------------------------------------------- | ---------------------------------------------------- |
+| **Tipos**              | `packages/types/src/ai.ts`                                       | `IGptResponse` — respuesta del asistente de proyecto |
+| **Tipos instancia**    | `packages/types/src/instance/ai.ts`                              | Keys de configuración: `LLM_API_KEY`, `LLM_MODEL`    |
+| **Constantes**         | `packages/constants/src/ai.ts`                                   | Enum `AI_EDITOR_TASKS`                               |
+| **Constantes web**     | `apps/web/core/constants/ai.ts`                                  | Enum + `LOADING_TEXTS` por tarea                     |
+| **Servicio (paquete)** | `packages/services/src/ai/ai.service.ts`                         | `prompt()`, `rephraseGrammar()`                      |
+| **Servicio (web)**     | `apps/web/core/services/ai.service.ts`                           | `createGptTask()`, `performEditorTask()`             |
+| **Plugin editor**      | `packages/editor/src/core/plugins/ai-handle.ts`                  | Botón ✨ en el margen del editor (Tiptap)            |
+| **Menú editor**        | `packages/editor/src/core/components/menus/ai-menu.tsx`          | `AIFeaturesMenu` — popover Tippy                     |
+| **Tipos editor**       | `packages/editor/src/core/types/ai.ts`                           | `TAIHandler`, `TAIMenuProps`                         |
+| **Menú Pi**            | `apps/web/ce/components/pages/editor/ai/menu.tsx`                | `EditorAIMenu` — panel lateral 700px                 |
+| **Submenú Ask Pi**     | `apps/web/ce/components/pages/editor/ai/ask-pi-menu.tsx`         | Input libre + acciones de respuesta                  |
+| **Popover issue**      | `apps/web/core/components/core/modals/gpt-assistant-popover.tsx` | `GptAssistantPopover` — desde detail de issue        |
+| **Backend**            | `apps/api/plane/app/views/external/base.py`                      | Endpoints + proveedores LLM                          |
+| **URLs**               | `apps/api/plane/app/urls/external.py`                            | Registro de rutas                                    |
+| **Config instancia**   | `apps/api/plane/utils/instance_config_variables/core.py`         | Variables `LLM_*` en BD cifrada                      |
+| **Admin UI**           | `apps/admin/app/(all)/(dashboard)/ai/`                           | Panel de configuración del operador                  |
 
 ---
 
@@ -165,20 +166,20 @@ sequenceDiagram
 
 ### Variables de instancia
 
-| Variable | Default | Cifrada | Descripción |
-|----------|---------|---------|-------------|
-| `LLM_API_KEY` | `None` | ✅ Sí | API key del proveedor activo |
-| `LLM_PROVIDER` | `"openai"` | No | Proveedor: `openai`, `anthropic`, `gemini` |
-| `LLM_MODEL` | `"gpt-4o-mini"` | No | Modelo específico a usar |
-| `GPT_ENGINE` | `"gpt-3.5-turbo"` | No | **Deprecado** — usar `LLM_MODEL` |
+| Variable       | Default           | Cifrada | Descripción                                |
+| -------------- | ----------------- | ------- | ------------------------------------------ |
+| `LLM_API_KEY`  | `None`            | ✅ Sí   | API key del proveedor activo               |
+| `LLM_PROVIDER` | `"openai"`        | No      | Proveedor: `openai`, `anthropic`, `gemini` |
+| `LLM_MODEL`    | `"gpt-4o-mini"`   | No      | Modelo específico a usar                   |
+| `GPT_ENGINE`   | `"gpt-3.5-turbo"` | No      | **Deprecado** — usar `LLM_MODEL`           |
 
 ### Modelos soportados por proveedor
 
-| Proveedor | Modelos disponibles | Default |
-|-----------|---------------------|---------|
-| **OpenAI** | `gpt-3.5-turbo`, `gpt-4o-mini`, `gpt-4o`, `o1-mini`, `o1-preview` | `gpt-4o-mini` |
+| Proveedor     | Modelos disponibles                                                                                                                                                               | Default                    |
+| ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
+| **OpenAI**    | `gpt-3.5-turbo`, `gpt-4o-mini`, `gpt-4o`, `o1-mini`, `o1-preview`                                                                                                                 | `gpt-4o-mini`              |
 | **Anthropic** | `claude-3-5-sonnet-20240620`, `claude-3-haiku-20240307`, `claude-3-opus-20240229`, `claude-3-sonnet-20240229`, `claude-2.1`, `claude-2`, `claude-instant-1.2`, `claude-instant-1` | `claude-3-sonnet-20240229` |
-| **Gemini** | `gemini-pro`, `gemini-1.5-pro-latest`, `gemini-pro-vision` | `gemini-pro` |
+| **Gemini**    | `gemini-pro`, `gemini-1.5-pro-latest`, `gemini-pro-vision`                                                                                                                        | `gemini-pro`               |
 
 > **Nota técnica:** Gemini se invoca a través del SDK de OpenAI con el prefijo `gemini/` en el nombre del modelo (compatible vía LiteLLM o proxy). Todos los proveedores usan el mismo cliente `OpenAI(api_key=...)`.
 
@@ -197,23 +198,27 @@ if model not in provider.models: → error
 ## 🎨 Componentes UI
 
 ### `GptAssistantPopover` — Issue detail
+
 - Entrada libre de tarea/prompt
 - Muestra contexto del issue como `RichTextEditor` read-only
 - Acciones: Generate → Use this response
 - Rate limit: 50 requests/mes/usuario (error HTTP 429)
 
 ### `EditorAIMenu` — Editor de páginas (210px → 700px)
+
 - Panel colapsable de tareas de IA
 - Tono ajustable: `Default (5/5)`, `💼 Professional (0/10)`, `😃 Casual (10/0)`
 - El panel se expande a 700px al activar una tarea
 - Advertencia de compartir datos con terceros
 
 ### `AskPiMenu` — Subpanel Ask Pi
+
 - Input libre "Tell AI what to do..."
 - Respuesta en RichTextEditor read-only
 - Acciones: `Replace selection`, `Add to next line` (CornerDownRight), `Re-generate` (RefreshCcw)
 
 ### `AIHandlePlugin` — Tiptap plugin
+
 - Botón ✨ sparkles en el margen lateral del editor
 - Calcula `NodeSelection` para el nodo apuntado por cursor
 - Maneja casos especiales: `blockquote`, listas anidadas
@@ -223,6 +228,7 @@ if model not in provider.models: → error
 ## 🔌 Endpoints Django
 
 ### `POST /api/workspaces/{slug}/projects/{project_id}/ai-assistant/`
+
 **Vista:** `GPTIntegrationEndpoint`
 **Roles:** `ADMIN`, `MEMBER`
 
@@ -240,6 +246,7 @@ if model not in provider.models: → error
 ```
 
 ### `POST /api/workspaces/{slug}/ai-assistant/`
+
 **Vista:** `WorkspaceGPTIntegrationEndpoint`
 **Roles:** `ADMIN`, `MEMBER` (nivel workspace)
 
@@ -252,6 +259,7 @@ if model not in provider.models: → error
 ```
 
 ### `POST /api/workspaces/{slug}/rephrase-grammar/`
+
 **Estado:** ⚠️ **NO IMPLEMENTADO en Django**
 Llamado por `AIService.performEditorTask()` / `rephraseGrammar()` desde el frontend.
 La ruta **no está registrada** en `apps/api/plane/app/urls/external.py`.
@@ -261,9 +269,11 @@ La ruta **no está registrada** en `apps/api/plane/app/urls/external.py`.
 ## ⚠️ Errores encontrados
 
 ### Error 1 — Endpoint `/rephrase-grammar/` ausente en Django
+
 **Severidad:** 🔴 Crítico — funcionalidad rota en producción
 
 El frontend llama:
+
 ```
 POST /api/workspaces/{slug}/rephrase-grammar/
 Body: { task, text_input, casual_score?, formal_score? }
@@ -274,16 +284,19 @@ Pero `apps/api/plane/app/urls/external.py` **no registra esta ruta**. Cualquier 
 **Fix requerido en Rust:** Implementar el endpoint con la lógica equivalente al asistente de workspace, aceptando el payload de editor (`TTaskPayload`).
 
 ### Error 2 — Modelos de Anthropic desactualizados
+
 **Severidad:** 🟡 Medio
 
 Los modelos listados en `AnthropicProvider` son de la familia Claude 3 (2024). A la fecha no incluyen `claude-3-5-haiku`, `claude-3-7-sonnet` ni modelos de la familia Claude 4. Si un operador configura un modelo más reciente vía env var, la validación del backend lo rechazará.
 
 ### Error 3 — Gemini vía OpenAI SDK sin proxy
+
 **Severidad:** 🟡 Medio
 
 `get_llm_response()` usa `OpenAI(api_key=...)` para todos los proveedores, incluyendo Gemini. Gemini no es compatible directamente con el SDK de OpenAI sin un proxy LiteLLM intermedio. La integración Gemini es funcional **solo si** existe un proxy configurado externamente — no está documentado ni validado en el código.
 
 ### Error 4 — `ASK_ANYTHING` no envía prompt al backend
+
 **Severidad:** 🟡 Medio
 
 En `EditorAIMenu`, al activar `ASK_ANYTHING` el flujo retorna temprano (`if (key === AI_EDITOR_TASKS.ASK_ANYTHING) return;`) sin llamar al backend. El input del `AskPiMenu` captura texto pero el botón de submit no tiene `onClick` conectado — el campo `query` se actualiza en estado local pero nunca se envía. La funcionalidad está **incompleta**.
@@ -367,15 +380,15 @@ pub struct RephraseResponse {
 
 ## 📊 Estado de implementación
 
-| Componente | Estado | Notas |
-|------------|--------|-------|
-| Endpoint `/projects/{id}/ai-assistant/` | 📝 Planificado | Migrar de Django |
-| Endpoint `/ai-assistant/` (workspace) | 📝 Planificado | Migrar de Django |
-| Endpoint `/rephrase-grammar/` | 🔴 Pendiente urgente | No existe en Django — nuevo |
-| Multi-proveedor OpenAI | 📝 Planificado | Via reqwest |
-| Multi-proveedor Anthropic | 📝 Planificado | Via reqwest nativo |
-| Multi-proveedor Gemini | 📝 Planificado | Via reqwest nativo |
-| Config desde instancia BD | 📝 Planificado | Reutilizar capa config existente |
+| Componente                              | Estado               | Notas                            |
+| --------------------------------------- | -------------------- | -------------------------------- |
+| Endpoint `/projects/{id}/ai-assistant/` | 📝 Planificado       | Migrar de Django                 |
+| Endpoint `/ai-assistant/` (workspace)   | 📝 Planificado       | Migrar de Django                 |
+| Endpoint `/rephrase-grammar/`           | 🔴 Pendiente urgente | No existe en Django — nuevo      |
+| Multi-proveedor OpenAI                  | 📝 Planificado       | Via reqwest                      |
+| Multi-proveedor Anthropic               | 📝 Planificado       | Via reqwest nativo               |
+| Multi-proveedor Gemini                  | 📝 Planificado       | Via reqwest nativo               |
+| Config desde instancia BD               | 📝 Planificado       | Reutilizar capa config existente |
 
 ---
 
@@ -388,4 +401,4 @@ pub struct RephraseResponse {
 
 ---
 
-*Dominio documentado desde rama `feature/integrations-panel-fix-17593507967815292912`*
+_Dominio documentado desde rama `feature/integrations-panel-fix-17593507967815292912`_
