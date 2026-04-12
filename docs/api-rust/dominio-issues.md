@@ -379,7 +379,9 @@ pub async fn create_issue(
             Ok(Json(IssueResponse::from_model(issue, sequence)))
         }
         Err(e) => {
-            let _ = txn.rollback().await;
+            if let Err(rb_err) = txn.rollback().await { // silence-patterns-ok: rollback en error path, loguear pero no ocultar
+                tracing::error!(rollback_error = %rb_err, original_error = %e, "Transaction rollback failed after insert error");
+            }
             Err(AppError::Database(e))
         }
     }
