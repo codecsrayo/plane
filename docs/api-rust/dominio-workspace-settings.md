@@ -232,8 +232,18 @@ WorkspaceIntegrationsPage (useSWR)
 
 **Job de despacho de webhook (Fase 3):**
 
+> [!WARNING] Fix #20 — SSRF via `webhook.url` sin validación de dominio
+> El URL del webhook puede apuntar a servicios internos (`http://169.254.169.254/`,
+> `http://localhost/`, rangos RFC-1918, etc.). Se debe validar antes de enviar.
+>
+> Fix #21 — `reqwest::Client::new()` por request (ver también Fix #18)
+> El cliente debe vivir en `AppState` y pasarse como `Data<reqwest::Client>`.
+
 ```rust
 // src/jobs/webhooks.rs
+use std::net::IpAddr;
+use url::Url;
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct WebhookDeliveryJob {
     pub webhook_id:  Uuid,
@@ -241,32 +251,99 @@ pub struct WebhookDeliveryJob {
     pub payload:     serde_json::Value,
 }
 
+/// Rechaza URLs que apunten a redes privadas / loopback / link-local (SSRF).
+/// Devuelve error si el URL es inválido o resuelve a una dirección no pública.
+fn validate_webhook_url(raw: &str) -> Result<Url, anyhow::Error> {
+    let url = Url::parse(raw)
+        .map_err(|_| anyhow::anyhow!("invalid webhook URL"))?;
+
+    // Solo HTTP/HTTPS permitidos
+    if !matches!(url.scheme(), "http" | "https") {
+        anyhow::bail!("webhook URL scheme must be http or https");
+    }
+
+    let host = url.host_str()
+        .ok_or_else(|| anyhow::anyhow!("webhook URL has no host"))?;
+
+    // Bloquear literales de IP privada / loopback
+    if let Ok(ip) = host.parse::<IpAddr>() {
+        if ip.is_loopback() || ip.is_unspecified() || is_private_ip(ip) {
+            anyhow::bail!("webhook URL resolves to a private/reserved address");
+        }
+    }
+
+    // Bloquear hostnames conocidos de metadata cloud y loopback por nombre
+    let blocked_hosts = ["localhost", "metadata.google.internal"];
+    if blocked_hosts.contains(&host) {
+        anyhow::bail!("webhook URL host is blocked");
+    }
+
+    Ok(url)
+}
+
+fn is_private_ip(ip: IpAddr) -> bool {
+    match ip {
+        IpAddr::V4(v4) => {
+            v4.is_private()        // 10.x, 172.16-31.x, 192.168.x
+            || v4.is_link_local()  // 169.254.x.x (AWS metadata)
+            || v4.is_broadcast()
+            || v4.is_documentation()
+        }
+        IpAddr::V6(v6) => v6.is_loopback() || v6.is_unspecified(),
+    }
+}
+
+/// `http_client` se inyecta desde AppState — se construye UNA VEZ en main.rs.
 pub async fn handle_webhook_delivery(
     job: WebhookDeliveryJob,
-    ctx: Data<DatabaseConnection>,
+    db:  Data<DatabaseConnection>,
+    http_client: Data<reqwest::Client>,
 ) -> Result<(), apalis::prelude::Error> {
-    let db = ctx.as_ref();
+    let db = db.as_ref();
     let webhook = webhooks::Entity::find_by_id(job.webhook_id)
         .one(db).await?
         .ok_or_else(|| apalis::prelude::Error::Failed("not found".into()))?;
 
     if !webhook.is_active { return Ok(()); }
 
+    // [Fix #20] Validar URL antes de hacer cualquier petición
+    let validated_url = validate_webhook_url(&webhook.url).map_err(|e| {
+        tracing::warn!(webhook_id = %job.webhook_id, error = %e, "blocked SSRF attempt");
+        apalis::prelude::Error::Failed(e.to_string().into())
+    })?;
+
     // Firmar con HMAC-SHA256
     let signature = compute_hmac_signature(&webhook.secret_key, &job.payload);
 
-    // HTTP POST al URL del webhook — fallo silencioso, registrar en webhook_logs
-    let _ = reqwest::Client::new()
-        .post(&webhook.url)
+    // [Fix #21] Usar cliente compartido — sin new() por request
+    let result = http_client
+        .post(validated_url)
         .header("X-Plane-Delivery", uuid::Uuid::new_v4().to_string())
         .header("X-Plane-Event", &job.event_type)
-        .header("X-Plane-Signature", signature)
+        .header("X-Plane-Signature", &signature)
         .json(&job.payload)
         .timeout(std::time::Duration::from_secs(30))
-        .send().await;
+        .send()
+        .await;
+
+    // Fallo silencioso pero registrado en webhook_logs
+    if let Err(e) = result {
+        tracing::warn!(webhook_id = %job.webhook_id, error = %e, "webhook delivery failed");
+    }
 
     Ok(())
 }
+```
+
+**Construcción del cliente en `main.rs` (una sola vez):**
+
+```rust
+// src/main.rs — al construir AppState
+let http_client = reqwest::Client::builder()
+    .timeout(std::time::Duration::from_secs(30))
+    .build()
+    .expect("failed to build HTTP client");
+// Se pasa como Data<reqwest::Client> al worker de apalis
 ```
 
 ---
