@@ -116,11 +116,32 @@ pub async fn list_workspace_view_issues(
 ```rust
 #[derive(Deserialize, ToSchema)]
 pub struct CreateViewRequest {
-    pub name:        String,
-    pub description: Option<String>,
-    pub query:       serde_json::Value, // Objeto IssueQueryParams
-    pub access:      Option<String>,    // "public" | "private"
+    pub name:        String,             // ⚠️ FIX-33: validar máx 255 chars
+    pub description: Option<String>,     // validar máx 1 000 chars
+    pub query:       serde_json::Value,  // ⚠️ FIX-33: JSON arbitrario — validar tamaño máx 64 KB antes de persistir
+    pub access:      Option<String>,     // "public" | "private" — validar contra allowlist
 }
+
+// ── Fix-33: Guards requeridos en handler ──────────────────────────────────
+// const MAX_VIEW_NAME: usize  = 255;
+// const MAX_VIEW_QUERY: usize = 64 * 1024; // 64 KB
+//
+// if payload.name.len() > MAX_VIEW_NAME {
+//     return Err(AppError::bad_request("name exceeds 255 characters"));
+// }
+// let query_bytes = serde_json::to_vec(&payload.query)
+//     .map_err(|_| AppError::bad_request("invalid query JSON"))?;
+// if query_bytes.len() > MAX_VIEW_QUERY {
+//     return Err(AppError::bad_request("query exceeds 64 KB"));
+// }
+// if !matches!(payload.access.as_deref(), None | Some("public") | Some("private")) {
+//     return Err(AppError::bad_request("access must be 'public' or 'private'"));
+// }
+//
+// Riesgo sin validación:
+//   • query sin límite: atacante persiste JSON de 10 MB → lento en reads y
+//     tabla de vistas se infla sin control.
+// ──────────────────────────────────────────────────────────────────────────
 
 #[derive(Serialize, ToSchema)]
 pub struct ViewResponse {

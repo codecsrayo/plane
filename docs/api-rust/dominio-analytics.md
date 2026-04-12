@@ -83,11 +83,12 @@ Devuelve issues agrupados por la dimensión solicitada (`x_axis`) y contados/sum
 #[derive(Deserialize, ToSchema)]
 pub struct AnalyticsQueryParams {
     // Dimensiones de agrupación del eje X
-    pub x_axis: String,   // "state_id"|"priority"|"assignees"|"label_ids"|
+    pub x_axis: String,   // ⚠️ FIX-34: VALIDAR contra allowlist antes de usar en GROUP BY
+                          // Valores permitidos: "state_id"|"priority"|"assignees"|"label_ids"|
                           // "estimate_point"|"created_at"|"start_date"|"due_date"|
                           // "cycle_id"|"module_ids"
     // Métricas del eje Y
-    pub y_axis: String,   // "issue_count" | "estimate"
+    pub y_axis: String,   // ⚠️ FIX-34: VALIDAR contra allowlist — "issue_count" | "estimate"
 
     // Filtros opcionales (mismos que GET /issues/)
     pub state_ids:     Option<String>,    // CSV de UUIDs
