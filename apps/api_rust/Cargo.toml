@@ -43,6 +43,8 @@ serde_json = "1.0.149"
 sha2 = "0.10"                                              # hash de API keys en rate limiter — NUNCA almacenar raw token en memoria
 ammonia = "4.0"                                            # sanitización de HTML de usuario — previene XSS almacenado en description_html
 base64 = "0.22"                                            # encode/decode de cursores de paginación
+jsonwebtoken = "9"                                          # JWT RS256 para GitHub App auth
+reqwest = { version = "0.12", features = ["json", "rustls-tls"], default-features = false } # HTTP client compartido — no crear Client::new() por request
 axum-extra = { version = "0.10", features = ["cookie"] }  # CookieJar para session auth
 time = "0.3"                                               # Cookie::max_age en session logout
 thiserror = "2.0.18"

@@ -148,7 +148,20 @@ pub async fn get_installation_access_token(
     let claims = AppClaims { iat: now - 60, exp: now + 600, iss: app_id };
     let app_jwt = encode(&Header::new(Algorithm::RS256), &claims, &encoding_key)?;
 
-    let resp = reqwest::Client::new()
+    // [Fix #18] Reutilizar un cliente HTTP compartido desde AppState.
+    // reqwest::Client::new() por cada llamada crea un nuevo pool de conexiones
+    // TCP — ineficiente bajo carga y puede agotar descriptores de archivo.
+    // El cliente se almacena en AppState y se clona (Arc interno, barato).
+    // Ver: https://docs.rs/reqwest/latest/reqwest/struct.Client.html#note
+    //
+    // En AppState agregar: pub http: reqwest::Client,
+    // En main.rs:          http: reqwest::Client::builder()
+    //                           .timeout(Duration::from_secs(30))
+    //                           .build()?,
+    //
+    // La firma de esta función debe recibir el cliente:
+    //   get_installation_access_token(http: &reqwest::Client, db, installation_id)
+    let resp = http_client
         .post(format!(
             "https://api.github.com/app/installations/{installation_id}/access_tokens"
         ))
@@ -278,10 +291,40 @@ state.job_storage
 
 ```rust
 // src/utils/instance_config.rs
+/// Claves permitidas para `get_instance_config`.
+///
+/// [Fix #19] Sin allowlist, cualquier código que llame a esta función con
+/// una clave arbitraria puede leer cualquier variable de entorno del proceso
+/// (DATABASE_URL, SECRET_KEY, AWS_SECRET_ACCESS_KEY, etc.) si no existe en DB.
+/// Un bug en un handler que pase input del usuario como `key` sería una
+/// lectura arbitraria de env vars.
+const ALLOWED_INSTANCE_CONFIG_KEYS: &[&str] = &[
+    "GITHUB_APP_ID",
+    "GITHUB_APP_PRIVATE_KEY",
+    "GITHUB_CLIENT_ID",
+    "GITHUB_CLIENT_SECRET",
+    "GITHUB_WEBHOOK_SECRET",
+    "GITLAB_CLIENT_ID",
+    "GITLAB_CLIENT_SECRET",
+    "SLACK_CLIENT_ID",
+    "SLACK_CLIENT_SECRET",
+    "OPENAI_API_KEY",
+    "EMAIL_HOST",
+    "EMAIL_HOST_USER",
+    "EMAIL_HOST_PASSWORD",
+    "EMAIL_PORT",
+    "EMAIL_USE_TLS",
+];
+
 pub async fn get_instance_config(
     db: &DatabaseConnection,
     key: &str,
 ) -> anyhow::Result<Option<String>> {
+    // Validar contra allowlist antes de cualquier lookup
+    if !ALLOWED_INSTANCE_CONFIG_KEYS.contains(&key) {
+        anyhow::bail!("get_instance_config: clave no permitida '{key}'");
+    }
+
     // 1. Buscar en instance_configurations (prioridad DB sobre env)
     if let Some(row) = instance_configurations::Entity::find()
         .filter(instance_configurations::Column::Key.eq(key))
@@ -291,7 +334,7 @@ pub async fn get_instance_config(
             return Ok(Some(row.value));
         }
     }
-    // 2. Fallback a variable de entorno
+    // 2. Fallback a variable de entorno (solo claves del allowlist)
     Ok(std::env::var(key).ok())
 }
 ```
