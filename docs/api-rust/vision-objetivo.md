@@ -63,7 +63,7 @@ estado: activo
 | Background jobs   | apalis (PostgreSQL-backed)                  | Celery + RabbitMQ               | Elimina un broker entero; jobs en la misma DB        |
 | Soft delete       | Trait custom                                | `seaorm-soft-delete` crate      | Versión 0.1.0 incompatible con sea-orm 1.1.x         |
 | Auth session      | Cookie `session-id` + tabla `sessions`      | JWT                             | Compatibilidad con el frontend Next.js existente     |
-| Documentación API | utoipa + Swagger UI                         | OpenAPI manual                  | Generación automática desde macros Rust              |
+| Documentación API | utoipa + Scalar UI                          | OpenAPI manual                  | Generación automática desde macros Rust, UI moderna  |
 | Migrations        | `sea-orm-migration` consolidado en baseline | Replicar 126 migraciones Django | Impracticable; un baseline hace lo mismo             |
 
 ---

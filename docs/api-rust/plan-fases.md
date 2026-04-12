@@ -46,7 +46,7 @@ estado: activo
 
 ### ❌ Pendiente (solo stubs / archivos vacíos)
 
-- [ ] `main.rs` completo (AppState + router + Swagger UI) — actualmente solo `println!("Hello, world!")` — ver [[impl-bootstrap]]
+- [ ] `main.rs` completo (AppState + router + Scalar UI) — actualmente solo `println!("Hello, world!")` — ver [[impl-bootstrap]]
 - [ ] `config.rs` — existe `config.todo.rs` vacío
 - [ ] `error.rs` — existe `error.todo.rs` vacío
 - [ ] `GET /api/health/` funcionando contra la DB

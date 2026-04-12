@@ -4,12 +4,12 @@ aliases:
   - testing
   - bruno
   - axum-test
-  - swagger-ui
+  - scalar
 tags:
   - testing
   - bruno
   - axum-test
-  - swagger
+  - scalar
 relacionado:
   - "[[MOC]]"
   - "[[impl-bootstrap]]"
@@ -25,7 +25,7 @@ estado: activo
 ## Resumen de estrategia
 
 ```
-Desarrollo manual    → utoipa Swagger UI     (/api/docs)
+Desarrollo manual    → utoipa Scalar UI      (/api/docs)
 Tests automatizados  → axum-test             (cargo test)
 Exploración/QA       → Bruno                 (colecciones en repo)
 CI/CD pipeline       → cargo test + bruno run --env staging
@@ -33,38 +33,34 @@ CI/CD pipeline       → cargo test + bruno run --env staging
 
 ---
 
-## 1. Swagger UI — utoipa
+## 1. Scalar UI — utoipa
 
-`utoipa` genera el spec OpenAPI 3.x a partir de macros Rust. Se monta en Axum:
+`utoipa` genera el spec OpenAPI 3.x a partir de macros Rust. Se renderiza con **Scalar** (UI moderna, ligera, sin dependencias externas). Se monta en Axum:
 
 ```toml
 # Cargo.toml
-utoipa = { version = "5.4.0", features = ["axum_extras", "uuid", "chrono"] }
-utoipa-swagger-ui = { version = "9.0.2", features = ["axum"] }
+utoipa        = { version = "5.4.0", features = ["axum_extras", "uuid", "chrono"] }
+utoipa-scalar = { version = "0.2", features = ["axum"] }
 ```
 
 ```rust
-// src/routes/mod.rs — montar Swagger UI en /api/docs
-use utoipa_swagger_ui::SwaggerUi;
-
-let swagger = SwaggerUi::new("/api/docs")
-    .url("/api/docs/openapi.json", ApiDoc::openapi());
+// src/routes/mod.rs — montar Scalar UI en /api/docs
+use utoipa_scalar::{Scalar, Servable};
 
 Router::new()
     .nest("/api", api_router)
-    .merge(swagger)
+    .merge(Scalar::with_url("/api/docs", ApiDoc::openapi()))
     .with_state(state)
 ```
 
 Acceder a `http://localhost:8000/api/docs` para explorar y probar endpoints manualmente.
 
-### Autorización en Swagger UI
+### Autorización en Scalar UI
 
 1. Abrir `http://localhost:8000/api/docs`
-2. Click en "Authorize" (candado 🔒)
-3. En `TokenAuth (apiKey)` ingresar: `Token <tu_token_aquí>`
-4. Click "Authorize" y cerrar
-5. Todos los requests subsiguientes llevarán el header `Authorization: Token ...`
+2. Click en el icono de autenticación (🔑)
+3. Ingresar: `Token <tu_token_aquí>`
+4. Todos los requests subsiguientes llevarán el header `Authorization: Token ...`
 
 ---
 

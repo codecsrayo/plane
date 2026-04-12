@@ -53,7 +53,7 @@ _Código concreto: cómo se construye la API._
 
 | Nota                         | Contenido                                                   |
 | ---------------------------- | ----------------------------------------------------------- |
-| [[impl-bootstrap]]           | `main.rs`, `config.rs`, `error.rs`, Swagger UI              |
+| [[impl-bootstrap]]           | `main.rs`, `config.rs`, `error.rs`, Scalar UI               |
 | [[impl-autenticacion]]       | Session Cookie + API Key — extractores completos            |
 | [[impl-appstate-repository]] | AppState, Repository Pattern — aislar SeaORM                |
 | [[impl-extractores-auth]]    | CurrentUser, WorkspaceMemberGuard, ProjectMemberGuard, RBAC |
@@ -110,7 +110,7 @@ _Documentación de apoyo: estructura, diagramas, testing._
 | [[ref-inconsistencias-django]] | Auditoría docs vs Django real — 19 inconsistencias en 9 archivos |
 | [[ref-diagramas-secuencia]]    | Sequence diagrams: workspace seed, auth, requests               |
 | [[ref-diagramas-flujo]]     | Flowcharts: workspace, projects, issues, roles           |
-| [[ref-testing]]             | Swagger UI, axum-test, Bruno — estrategia completa       |
+| [[ref-testing]]             | Scalar UI, axum-test, Bruno — estrategia completa        |
 | [[audit-report-2026-04-12]] | Último informe de auditoría de implementación            |
 
 ---

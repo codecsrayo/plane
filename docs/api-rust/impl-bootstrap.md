@@ -4,12 +4,12 @@ aliases:
   - bootstrap
   - main-rs
   - config-rs
-  - swagger
+  - scalar
 tags:
   - rust
   - axum
   - utoipa
-  - swagger
+  - scalar
   - implementacion
   - pendiente-implementar
   - todo-rs
@@ -28,11 +28,11 @@ estado: activo
 > [!INFO] Objetivo de este documento
 > Paso a paso para levantar la API Rust en su versión inicial con:
 >
-> - `main.rs` completo (AppState + router + Swagger UI)
+> - `main.rs` completo (AppState + router + Scalar UI)
 > - `config.rs` con variables de entorno tipadas
 > - `error.rs` unificado
 > - Primer endpoint real (`GET /api/health`)
-> - Swagger UI disponible en `/api/docs`
+> - Scalar UI disponible en `/api/docs`
 
 ---
 
@@ -40,7 +40,7 @@ estado: activo
 
 ```tree
 src/
-├── main.rs          ← bootstrap completo: AppState + router + Swagger + workers
+├── main.rs          ← bootstrap completo: AppState + router + Scalar + workers
 ├── config.rs        ← env vars tipadas con dotenvy
 ├── error.rs         ← AppError → HTTP responses
 ├── lib.rs           ← re-exports públicos
@@ -278,7 +278,7 @@ pub async fn health(
 // src/routes/mod.rs
 use axum::{routing::get, Router};
 use utoipa::OpenApi;
-use utoipa_swagger_ui::SwaggerUi;
+use utoipa_scalar::{Scalar, Servable};
 use crate::AppState;
 
 pub mod health;
@@ -335,15 +335,13 @@ pub fn build_router(state: AppState) -> Router {
     let mut router = Router::new()
         .nest("/api", api_router);
 
-    // ✅ Swagger UI sólo disponible en desarrollo (DEBUG=true).
+    // ✅ Scalar UI sólo disponible en desarrollo (DEBUG=true).
     // En producción expone el schema completo de la API — información valiosa
     // para atacantes que quieran enumerar endpoints y estructuras de datos.
     // Si se necesita en staging, proteger con BasicAuth o IP allowlist via Traefik.
     if state.config.debug {
-        let swagger = SwaggerUi::new("/api/docs")
-            .url("/api/docs/openapi.json", ApiDoc::openapi());
-        router = router.merge(swagger);
-        tracing::warn!("Swagger UI habilitado (DEBUG=true) — deshabilitar en producción");
+        router = router.merge(Scalar::with_url("/api/docs", ApiDoc::openapi()));
+        tracing::warn!("Scalar UI habilitado (DEBUG=true) — deshabilitar en producción");
     }
 
     router.with_state(state)
@@ -422,7 +420,7 @@ async fn main() -> anyhow::Result<()> {
 
     tracing::info!(
         addr = %addr,
-        swagger_ui = format!("http://{}:{}/api/docs", config.host, config.port),
+        scalar_ui  = format!("http://{}:{}/api/docs", config.host, config.port),
         health     = format!("http://{}:{}/api/health", config.host, config.port),
         "🚀 Servidor listo"
     );
@@ -479,7 +477,7 @@ workspaces::list_workspaces,
 workspaces::WorkspaceResponse,
 ```
 
-### Paso 3 — Verificar en Swagger UI
+### Paso 3 — Verificar en Scalar UI
 
 ```bash
 cargo run
@@ -503,7 +501,7 @@ cargo run
 curl http://localhost:8000/api/health
 # {"status":"ok","version":"0.1.0","database":{"connected":true,"error":null}}
 
-# 4. Abrir Swagger UI
+# 4. Abrir Scalar UI
 open http://localhost:8000/api/docs
 ```
 
@@ -518,7 +516,7 @@ open http://localhost:8000/api/docs
 | `error connecting to database` | PostgreSQL no disponible | `docker compose up plane-db` |
 | `Address already in use` | Puerto 8000 ocupado | `API_PORT=8001` o matar el proceso |
 | `No such file or directory (Cargo.lock)` | Directorio incorrecto | `cd apps/api_rust && cargo run` |
-| Swagger UI carga en blanco | Feature faltante | Verificar `features = ["axum"]` en utoipa-swagger-ui |
+| Scalar UI carga en blanco  | Feature faltante | Verificar `features = ["axum"]` en utoipa-scalar     |
 
 ---
 

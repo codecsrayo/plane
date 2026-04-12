@@ -46,7 +46,7 @@ estado: activo
 | Logging         | **tracing + tracing-subscriber** | 0.1       | python-json-logger                   |
 | Config          | **dotenvy**                      | 0.15.7    | django settings                      |
 | Métricas        | **axum-prometheus**              | latest    | scout-apm                            |
-| API Docs        | **utoipa + utoipa-swagger-ui**   | 5.4 / 9.0 | drf-spectacular                      |
+| API Docs        | **utoipa + utoipa-scalar**       | 5.4 / 0.2 | drf-spectacular                      |
 | Error handling  | **thiserror**                    | 2.0       | DRF exceptions                       |
 | Misc UUIDs      | **uuid** (feature: v4, serde)    | 1.23      | uuid Django                          |
 | Fechas          | **chrono** (feature: serde)      | 0.4       | Django timezone                      |
@@ -95,7 +95,7 @@ chrono          = { version = "0.4.44", features = ["serde"] }
 
 # ── API Docs ──────────────────────────────────────────────────────────────────
 utoipa          = { version = "5.4.0", features = ["axum_extras", "uuid", "chrono"] }
-utoipa-swagger-ui = { version = "9.0.2", features = ["axum"] }
+utoipa-scalar     = { version = "0.2", features = ["axum"] }
 
 # ── Observabilidad ────────────────────────────────────────────────────────────
 tracing         = "0.1.44"
