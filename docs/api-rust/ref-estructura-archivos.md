@@ -18,30 +18,96 @@ estado: activo
 
 # Estructura completa de archivos — estado objetivo
 
-```mermaid
-mindmap
-    root((apps/api_rust/))
-        Config(Configuración)
-            Cargo.toml
-            Dockerfile
-            env(.env)
-        Seeds(Seeds Data)
-            projects.json
-            issues.json
-            etc(json templates)
-        Src(Source Code)
-            main.rs(Bootstrap)
-            auth(Authentication)
-            entities(ORM Entities)
-            repositories(Data Access)
-            routes(HTTP Handlers)
-            jobs(Background Workers)
-            utils(Shared Helpers)
-        Migration(Database Migrations)
-            baseline(m001_baseline.rs)
-            seeds(m007_seed_data.rs)
-        Tests(Testing)
-            bruno(Bruno Collections)
+```
+apps/api_rust/
+├── Cargo.toml
+├── Dockerfile
+├── seeds/
+│   └── data/
+│       ├── projects.json    ← copiado de apps/api/plane/seeds/data/
+│       ├── states.json
+│       ├── labels.json
+│       ├── cycles.json
+│       ├── modules.json
+│       ├── issues.json
+│       ├── views.json
+│       └── pages.json
+├── src/
+│   ├── main.rs              ← bootstrap: AppState + router + workers + scheduler
+│   ├── config.rs            ← env vars tipadas (dotenvy)
+│   ├── error.rs             ← AppError → HTTP responses (thiserror)
+│   ├── lib.rs               ← re-exports públicos
+│   ├── auth/
+│   │   ├── mod.rs
+│   │   ├── extractors.rs    ← CurrentUser, WorkspaceMemberGuard, ProjectMemberGuard
+│   │   ├── session.rs       ← SessionUser extractor (Cookie)
+│   │   ├── api_key.rs       ← ApiKeyUser extractor (X-Api-Key)
+│   │   ├── any_auth.rs      ← AnyAuth — session OR api key
+│   │   ├── logout.rs        ← handler POST /auth/sign-out/
+│   │   ├── rate_limit.rs    ← middleware Tower rate limit
+│   │   └── permissions.rs   ← require_role(), constantes ROLE_*
+│   ├── entities/            ← 122 entidades generadas por sea-orm-cli (NO editar)
+│   │   ├── mod.rs           ← impl_soft_delete! aplicado a las 98 entidades con deleted_at
+│   │   ├── issues.rs
+│   │   ├── projects.rs
+│   │   ├── workspaces.rs
+│   │   ├── workspace_members.rs
+│   │   ├── users.rs
+│   │   ├── sessions.rs
+│   │   ├── api_tokens.rs
+│   │   ├── authtoken_token.rs
+│   │   └── ...              ← 114 entidades más
+│   ├── repositories/        ← acceso a DB aislado, un archivo por dominio
+│   │   ├── mod.rs
+│   │   ├── issues.rs        ← list_issues, get_issue, create_issue, update_issue
+│   │   ├── workspaces.rs    ← get_workspace_by_slug, list_workspaces_for_user
+│   │   ├── projects.rs
+│   │   ├── states.rs
+│   │   └── ...
+│   ├── routes/              ← handlers Axum, llaman a repositories
+│   │   ├── mod.rs           ← build_router() + OpenApi struct + ApiDoc
+│   │   ├── health.rs        ← GET /api/health
+│   │   ├── issues.rs
+│   │   ├── projects.rs
+│   │   ├── workspaces.rs
+│   │   ├── cycles.rs
+│   │   ├── modules.rs
+│   │   └── integrations.rs
+│   ├── jobs/                ← apalis workers + cron
+│   │   ├── mod.rs           ← build_monitor() — registra todos los workers
+│   │   ├── workspace_seed/
+│   │   │   ├── mod.rs       ← WorkspaceSeedJob, handle_workspace_seed
+│   │   │   └── seed_data.rs ← structs de deserialización de JSON
+│   │   ├── github_sync.rs   ← GithubInitialIssueSyncJob
+│   │   ├── notifications.rs ← NotificationJob
+│   │   ├── export.rs        ← ExportJob
+│   │   ├── webhooks.rs      ← WebhookDeliveryJob
+│   │   └── scheduled.rs     ← tokio-cron-scheduler (reemplaza beatworker)
+│   └── utils/
+│       ├── mod.rs
+│       ├── soft_delete.rs   ← SoftDeleteExt trait + impl_soft_delete! macro ✅
+│       ├── github_app.rs    ← get_installation_access_token (JWT RS256)
+│       ├── instance_config.rs ← get_instance_config (DB + env fallback)
+│       ├── oauth_popup.rs   ← postmessage_html helper (GitHub, GitLab, Slack callbacks)
+│       └── github_webhooks.rs ← register_github_webhook
+├── migration/
+│   ├── Cargo.toml           ← incluye dotenvy
+│   └── src/
+│       ├── lib.rs            ← Migrator con todas las migraciones en orden
+│       ├── main.rs           ← auto-carga .env, construye DATABASE_URL desde POSTGRES_*
+│       └── migrations/
+│           ├── mod.rs
+│           ├── m20260410_000001_baseline.rs         ← schema completo desde Django ✅
+│           ├── m20240101_000006_integrations.rs     ← GitHub, GitLab, Slack 🔄
+│           └── m20240101_000007_seed_data.rs        ← integrations + instance_configs
+└── tests/
+    └── bruno/
+        ├── bruno.json
+        ├── environments/
+        │   ├── local.bru
+        │   └── staging.bru
+        └── health/
+            └── get_health.bru
 ```
 
 ---

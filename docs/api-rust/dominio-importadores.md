@@ -32,13 +32,12 @@ estado: activo
 
 ## Modelo de datos
 
-```mermaid
-mindmap
-    root((workspaces))
-        importers(importers)
-            token(Token Encrypted)
-            metadata(Metadata JSON)
-            status(Status)
+```
+workspaces
+    └─ importers                  (registro de cada operación de importación)
+            ├─ token: encrypted   (PAT de GitHub/GitLab del usuario)
+            ├─ metadata: JSON     (repo, mapeo de labels, mapeo de estados)
+            └─ status             (queued, processing, completed, failed)
 ```
 
 La tabla `importers` almacena todo el estado de la importación. Los issues importados se crean directamente en `issues`.

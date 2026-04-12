@@ -144,38 +144,46 @@ _Documentación de apoyo: estructura, diagramas, testing._
 
 ## 🔗 Relaciones clave entre notas
 
-```mermaid
-graph TD
-    VO[vision-objetivo] --> VA[vision-arquitectura]
-    VO --> VS[vision-stack]
-    VS --> PF[plan-fases]
-    VA --> PF
-
-    FORM[fundamentos-orm] --> FME[fundamentos-migraciones-estado]
-    FSD[fundamentos-siembra-datos] --> DWS[dominio-workspace-seed]
-    FORM --> FSD
-
-    IB[impl-bootstrap] --> IA[impl-autenticacion]
-    IAR[impl-appstate-repository] --> IEA[impl-extractores-auth]
-    IB --> IAR
-
-    DWS --> DI[dominio-integraciones]
-    DI --> DP[dominio-proyectos]
-    DI --> DIS[dominio-issues]
-    DI --> DWSG[dominio-workspace-settings]
-
-    DP --> DC[dominio-ciclos]
-    DP --> DM[dominio-modulos]
-
-    DIS --> DN[dominio-notificaciones]
-    DIS --> DPA[dominio-paginas]
-
-    DN --> DIN[dominio-intake]
-    DN --> DA[dominio-analytics]
-    DN --> DIMP[dominio-importadores]
-
-    DIMP --> DB[dominio-busqueda]
-    DB --> DIA[dominio-ia]
+```
+vision-objetivo ──────────────────► vision-arquitectura
+     │                                      │
+     ▼                                      ▼
+vision-stack ──────────────────────► plan-fases
+     │                                      │
+     ▼                                      ▼
+fundamentos-orm ────────────────────► fundamentos-migraciones-estado
+     │                                      │
+     ▼                                      ▼
+fundamentos-siembra-datos ──────────► dominio-workspace-seed
+     │                                      │
+     ▼                                      ▼
+impl-bootstrap ─────────────────────► impl-autenticacion
+     │                                      │
+     ▼                                      ▼
+impl-appstate-repository ───────────► impl-extractores-auth
+     │                                      │
+     ▼                                      ▼
+dominio-workspace-seed ─────────────► dominio-integraciones
+                                           │
+                              ┌────────────┼────────────┐
+                              ▼            ▼            ▼
+                   dominio-proyectos  dominio-issues  dominio-workspace-settings
+                              │            │
+                    ┌─────────┤            ├──────────────┐
+                    ▼         ▼            ▼              ▼
+             dominio-ciclos  dominio-  dominio-       dominio-
+                            modulos   notificaciones  paginas
+                                           │
+                              ┌────────────┼─────────────┐
+                              ▼            ▼             ▼
+                       dominio-intake  dominio-analytics dominio-
+                                                        importadores
+                                                             │
+                                                             ▼
+                                                      dominio-busqueda
+                                                             │
+                                                             ▼
+                                                        dominio-ia
 ```
 
 ---

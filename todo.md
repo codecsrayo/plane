@@ -470,3 +470,12 @@ Todos los archivos modificados llevan la tag `// silence-patterns-ok` en cada l�
 | 15 | `dominio-workspace-seed.md` | `.try_into().unwrap()` | `.expect()` con comentario `SAFETY:` (invariante estático) | `8fad804` |
 | 16 | `impl-bootstrap.md` | `dotenv().ok()` | `match dotenv()` con `tracing::debug!/warn!` por caso | `4c388ab` |
 | 17 | `dominio-notificaciones.md` | `job_storage.push(NotificationJob{...}).await.ok()` | `if let Err(e) + tracing::warn!` | `db1d637` |
+
+---
+
+## 📝 Historial de cambios en documentación
+
+| Fecha | Acción | Detalle |
+|---|---|---|
+| 2026-04-12 | Merge `docs/restructure-api-rust` (8ccb7f8) | Reemplazó 18 árboles ASCII con mermaid mindmaps; eliminó tabla de rutas en `ref-diagramas-flujo.md`; introdujo `ref-guia-estilo.md` |
+| 2026-04-12 | **Restauración post-merge** | Restaurados 18 archivos con árboles ASCII completos; restaurada tabla de rutas; fijado `dominio-ia.md` (nota ⚠️ NO REGISTRADO recuperada); fijado `dominio-workspace-settings.md` (conexiones incompletas en graph mermaid); `ref-guia-estilo.md` y `audit-report-2026-04-12.md` conservados |

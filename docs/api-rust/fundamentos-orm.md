@@ -128,17 +128,17 @@ impl MigrationTrait for Migration {
 
 ## Estructura del crate de migraciones
 
-```mermaid
-mindmap
-    root((migration/))
-        Config(Cargo.toml)
-        Src(src/)
-            lib(lib.rs - Migrator)
-            main(main.rs - CLI entry)
-            migrations(migrations/)
-                m001(m001_baseline.rs ✅)
-                m006(m006_integrations.rs 🔄)
-                m007(m007_seed_data.rs ✅)
+```
+migration/
+├── Cargo.toml
+└── src/
+    ├── lib.rs            ← Migrator con todas las migraciones en orden
+    ├── main.rs           ← auto-carga .env desde raíz del proyecto
+    └── migrations/
+        ├── mod.rs
+        ├── m20260410_000001_baseline.rs        ← schema completo desde Django ✅
+        ├── m20240101_000006_integrations.rs    ← integraciones 🔄
+        └── m20240101_000007_seed_data.rs       ← integrations + instance_configs ✅
 ```
 
 > [!IMPORTANT] `migration/src/main.rs` auto-carga `.env`

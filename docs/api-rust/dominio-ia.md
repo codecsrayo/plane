@@ -42,22 +42,22 @@ flowchart TD
     subgraph Backend["Django API / Rust API"]
         GPT[GPTIntegrationEndpoint]
         WGPT[WorkspaceGPTIntegrationEndpoint]
-        REPH[RephraseEndpoint]
+        REPH["⚠️ RephraseEndpoint\n(NO REGISTRADO en urls/external.py)"]
     end
 
     subgraph LLM["Proveedores LLM"]
-        OAI[OpenAI]
-        ANT[Anthropic]
-        GEM[Gemini]
+        OAI["OpenAI (gpt-4o, gpt-4o-mini, o1-mini)"]
+        ANT["Anthropic (claude-3-sonnet/haiku/opus)"]
+        GEM["Gemini (gemini-1.5-pro)"]
     end
 
     GAP -- "createGptTask()" --> AIS
     EAM -- "performEditorTask()" --> AIS
-    AIS -- "POST /api/.../ai-assistant/" --> GPT
+    AIS -- "POST /api/.../projects/{id}/ai-assistant/" --> GPT
     AIS -- "POST /api/.../ai-assistant/" --> WGPT
     AIS -- "POST /api/.../rephrase-grammar/" --> REPH
 
-    GPT & WGPT & REPH -- "get_llm_response()" --> LLM
+    GPT & WGPT & REPH -- "get_llm_response()\nvia openai SDK universal" --> LLM
 ```
 
 ---

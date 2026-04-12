@@ -204,19 +204,22 @@ pub async fn handle_export(
 ```mermaid
 graph TD
     Page[WorkspaceIntegrationsPage] --> SWR1[GET /api/integrations/]
-    Page --> SWR2[GET /api/workspaces/.../workspace-integrations/]
+    Page --> SWR2["GET /api/workspaces/{slug}/workspace-integrations/"]
     Page --> Card1[SingleIntegrationCard: GitHub]
     Page --> Card2[SingleIntegrationCard: GitLab]
     Page --> Card3[SingleIntegrationCard: Slack]
 
     subgraph CardProps[Propiedades por Card]
-        IsEnabled[isEnabled: Instance Config]
-        IsInstalled[isInstalled: WS Integration]
-        Connect[Botón Connect -> Popup]
-        Configure[Botón Configure -> Details]
+        IsEnabled["isEnabled: instance config\n(IS_GITHUB_INTEGRATION_ENABLED etc.)"]
+        IsInstalled["isInstalled: workspace_integrations\nfiltrado por provider"]
+        Connect["Botón Connect → popup OAuth"]
+        Configure["Botón Configure → /settings/integrations/{provider}/"]
     end
 
     Card1 & Card2 & Card3 --- IsEnabled
+    Card1 & Card2 & Card3 --- IsInstalled
+    Card1 & Card2 & Card3 --- Connect
+    Card1 & Card2 & Card3 --- Configure
 ```
 
 ---

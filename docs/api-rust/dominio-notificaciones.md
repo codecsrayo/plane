@@ -32,16 +32,17 @@ estado: activo
 
 ## Modelo de datos
 
-```mermaid
-mindmap
-    root((users))
-        notifications(notifications)
-            actor(triggered_by_id)
-            issue(issue_id)
-            project(project_id)
-        preferences(user_notification_preferences)
-            type(notification_type)
-            value(true/false)
+```
+users
+    └─ notifications                    (in-app, 1→N por user)
+            ├─ triggered_by_id → users  (quién generó el evento)
+            ├─ issue_id → issues        (sobre qué issue)
+            └─ project_id → projects
+
+users
+    └─ user_notification_preferences    (configuración por workspace)
+            ├─ property: notification_type
+            └─ value: true/false
 ```
 
 ---
@@ -286,14 +287,13 @@ pub async fn handle_email(
 
 Los templates son HTML embebidos en el binario con `include_str!()`:
 
-```mermaid
-mindmap
-    root((email templates))
-        assigned(notification_issue_assigned.html)
-        comment(notification_issue_comment.html)
-        mentioned(notification_issue_mentioned.html)
-        invite(workspace_invite.html)
-        base(base.html)
+```
+src/templates/email/
+    ├── notification_issue_assigned.html
+    ├── notification_issue_comment.html
+    ├── notification_issue_mentioned.html
+    ├── workspace_invite.html
+    └── base.html
 ```
 
 ```rust

@@ -27,28 +27,113 @@ estado: activo
 
 ## Árbol completo
 
-```mermaid
-mindmap
-    root((apps/api/))
-        Entry(manage.py - Entry point)
-        Plane(plane/)
-            Settings(settings/ - Config)
-            Broker(celery.py - Broker)
-            URLs(urls.py - URL Dispatcher)
-            DB(db/ - Persistence Layer)
-                Models(models/ - ORM Models)
-                Migrations(migrations/ - 126 migrations)
-                Commands(management/commands/)
-            Workers(bgtasks/ - Celery tasks)
-            API(app/ - Main API)
-                Permissions(permissions/)
-                Serializers(serializers/)
-                Views(views/)
-            Auth(authentication/)
-                Providers(provider/oauth/)
-                Views_Auth(views/app/)
-            License(license/)
-            Utils(utils/)
+```
+apps/api/
+├── manage.py                          ← entry point Django (equiv: src/main.rs)
+└── plane/
+    ├── settings/                      ← configuración por entorno
+    │   ├── common.py                  ← settings base (equiv: src/config.rs)
+    │   ├── redis.py                   ← Redis/cache config
+    │   └── storage.py                 ← S3/MinIO config
+    │
+    ├── celery.py                      ← configuración Celery broker (equiv: src/jobs/)
+    ├── urls.py                        ← root URL dispatcher (equiv: src/routes/mod.rs)
+    │
+    ├── db/                            ← capa de datos principal
+    │   ├── mixins.py                  ← SoftDeleteMixin (equiv: src/utils/soft_delete.rs)
+    │   ├── models/                    ← 33 archivos de modelos ORM
+    │   │   ├── base.py               ← BaseModel con UUID, timestamps, soft-delete
+    │   │   ├── user.py               ← User, Profile, Account, Device
+    │   │   ├── workspace.py          ← Workspace, WorkspaceMember, etc.
+    │   │   ├── project.py            ← Project, ProjectMember, etc.
+    │   │   ├── issue.py              ← Issue, IssueActivity, etc.
+    │   │   ├── state.py              ← State
+    │   │   ├── label.py              ← Label
+    │   │   ├── cycle.py              ← Cycle, CycleIssue, etc.
+    │   │   ├── module.py             ← Module, ModuleIssue, etc.
+    │   │   ├── page.py               ← Page, PageLog, etc.
+    │   │   ├── description.py        ← Description, DescriptionVersion
+    │   │   ├── view.py               ← IssueView, IssueViewFavorite
+    │   │   ├── notification.py       ← Notification
+    │   │   ├── webhook.py            ← Webhook, WebhookLog
+    │   │   ├── intake.py             ← Intake, IntakeIssue
+    │   │   ├── estimate.py           ← Estimate, EstimatePoint
+    │   │   ├── asset.py              ← FileAsset
+    │   │   ├── api.py                ← APIToken
+    │   │   ├── draft.py              ← DraftIssue
+    │   │   ├── exporter.py           ← ExporterHistory
+    │   │   ├── deploy_board.py       ← DeployBoard
+    │   │   ├── session.py            ← Session (tabla custom con user_id directo)
+    │   │   └── integration/          ← modelos de integraciones
+    │   │       ├── base.py           ← WorkspaceIntegration
+    │   │       ├── github.py         ← GithubRepository, GithubIssue
+    │   │       ├── github_pr_state.py← GithubPRStateMapping
+    │   │       ├── gitlab.py         ← GitlabIssueSync
+    │   │       ├── slack.py          ← SlackProjectSync
+    │   │       └── user_github_connection.py ← UserGithubConnection
+    │   │
+    │   ├── migrations/               ← 126 migraciones históricas
+    │   │   ├── 0001_initial.py       ← schema inicial 2022
+    │   │   ├── ...
+    │   │   └── 0126_gitlab_sync_models.py   ← última migración
+    │   │
+    │   └── management/commands/      ← comandos Django CLI (equiv: apalis jobs + cron)
+    │       ├── configure_instance.py ← equivale a workspace_seed en Rust
+    │       └── ...
+    │
+    ├── bgtasks/                       ← 36 tareas Celery (equiv: src/jobs/)
+    │   ├── workspace_seed_task.py     ← seed de workspace (equiv: jobs/workspace_seed/)
+    │   ├── github_sync_task.py        ← sync GitHub (equiv: jobs/github_sync.rs)
+    │   ├── notification_task.py       ← notificaciones
+    │   ├── export_task.py             ← exportación CSV/Excel
+    │   ├── webhook_task.py            ← despacho de webhooks
+    │   ├── cleanup_task.py            ← limpieza de assets expirados
+    │   └── ...
+    │
+    ├── app/                           ← API principal autenticada (equiv: src/routes/)
+    │   ├── permissions/               ← guards de acceso (equiv: src/auth/permissions.rs)
+    │   │   ├── base.py               ← God mode workspace admin override
+    │   │   ├── workspace.py           ← WorkspaceMemberPermission
+    │   │   └── project.py             ← ProjectMemberPermission
+    │   ├── middleware/
+    │   │   └── api_authentication.py  ← Session + Token auth (equiv: src/auth/)
+    │   ├── serializers/               ← 24 serializadores DRF (equiv: DTOs en Rust)
+    │   ├── urls/                      ← 24 archivos de rutas
+    │   └── views/                     ← handlers DRF (equiv: src/routes/)
+    │       ├── workspace/
+    │       ├── issue/
+    │       ├── cycle/
+    │       ├── module/
+    │       ├── page/
+    │       ├── integration/
+    │       └── project/
+    │
+    ├── authentication/                ← autenticación y OAuth
+    │   ├── provider/
+    │   │   ├── credentials/
+    │   │   │   ├── email.py          ← login email/password
+    │   │   │   └── magic_code.py     ← magic link
+    │   │   └── oauth/
+    │   │       ├── github.py         ← OAuth GitHub
+    │   │       ├── gitlab.py         ← OAuth GitLab
+    │   │       ├── google.py         ← OAuth Google
+    │   │       └── gitea.py          ← OAuth Gitea
+    │   └── views/app/                ← vistas de autenticación
+    │       ├── email.py
+    │       ├── github.py
+    │       └── signout.py
+    │
+    ├── license/                       ← gestión de instancia/licencia
+    │   ├── models/
+    │   │   └── instance.py           ← Instance, InstanceConfiguration
+    │   └── api/views/
+    │       └── instance.py           ← config de instancia (God Mode)
+    │
+    └── utils/                         ← utilidades compartidas
+        ├── github_app.py              ← cliente GitHub App (equiv: src/utils/github_app.rs)
+        ├── paginator.py               ← paginación cursor-based
+        ├── issue_filters.py           ← filtros de issues
+        └── instance_config_variables/ ← variables de configuración de instancia
 ```
 
 ---

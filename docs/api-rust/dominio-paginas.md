@@ -28,15 +28,15 @@ estado: activo
 
 ## Modelo de datos
 
-```mermaid
-mindmap
-    root((workspaces))
-        global_pages(pages global)
-        projects(projects)
-            pages(pages)
-                labels(page_labels)
-                logs(page_logs)
-                versions(page_versions)
+```
+projects
+    └─ pages
+            ├─ page_labels      (M2M → labels)
+            ├─ page_logs        (historial de cambios — log de actividad)
+            └─ page_versions    (snapshots de descripción)
+
+workspaces
+    └─ pages (páginas globales, sin project_id — accesibles desde todo el workspace)
 ```
 
 > [!NOTE] Pages globales vs pages de proyecto
@@ -214,7 +214,7 @@ pub struct CreatePageRequest {
     pub label_ids:        Option<Vec<Uuid>>,
 }
 
-// - Fix-31: Guards requeridos en handler de create/update --------─
+// ── Fix-31: Guards requeridos en handler de create/update ─────────────────
 // const MAX_PAGE_NAME: usize    = 255;
 // const MAX_PAGE_HTML: usize    = 512 * 1024; // 512 KB
 //
@@ -231,7 +231,7 @@ pub struct CreatePageRequest {
 //   • Sin límite en description_html: cada PATCH a /description/ crea un snapshot
 //     en page_versions. Atacante envía 1 MB 100 veces → 100 MB en DB.
 //   • Sin límite en name: queries con ORDER BY name se vuelven costosas.
-// -------------------------------------
+// ──────────────────────────────────────────────────────────────────────────
 
 #[derive(Deserialize, ToSchema)]
 pub struct UpdatePageDescriptionRequest {

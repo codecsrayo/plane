@@ -29,12 +29,11 @@ estado: activo
 
 ## Modelo de datos
 
-```mermaid
-mindmap
-    root((projects))
-        cycles(cycles)
-            issues(cycle_issues)
-            props(cycle_user_properties)
+```
+projects
+    └─ cycles
+            ├─ cycle_issues           (M2M → issues)
+            └─ cycle_user_properties  (preferencias de vista por usuario)
 ```
 
 **Tipos de ciclo (`status`):**

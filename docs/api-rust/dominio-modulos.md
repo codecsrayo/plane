@@ -29,14 +29,13 @@ estado: activo
 
 ## Modelo de datos
 
-```mermaid
-mindmap
-    root((projects))
-        modules(modules)
-            issues(module_issues)
-            links(module_links)
-            members(module_members)
-            props(module_user_properties)
+```
+projects
+    └─ modules
+            ├─ module_issues          (M2M → issues, un issue puede estar en varios módulos)
+            ├─ module_links           (1→N, URLs de referencia del módulo)
+            ├─ module_members         (M2M → users, responsables del módulo)
+            └─ module_user_properties (preferencias de vista por usuario)
 ```
 
 **Diferencia clave vs Cycles:** `module_issues` no tiene la restricción "un módulo activo por issue". Un issue puede pertenecer a N módulos.

@@ -62,16 +62,16 @@ Los handlers Axum **no deben contener queries SeaORM directamente**. El módulo 
 
 ### Estructura de módulos
 
-```mermaid
-mindmap
-    root((src/))
-        repositories(repositories/)
-            issues(issues.rs)
-            workspaces(workspaces.rs)
-            projects(projects.rs)
-            states(states.rs)
-        routes(routes/)
-            handlers(handlers - llaman a repos)
+```
+src/
+├── repositories/
+│   ├── mod.rs
+│   ├── issues.rs        ← list_issues, get_issue, create_issue, update_issue
+│   ├── workspaces.rs    ← get_workspace_by_slug, list_workspaces_for_user
+│   ├── projects.rs
+│   └── states.rs
+├── routes/
+│   └── issues.rs        ← solo recibe AppState, llama a repositories::issues::*
 ```
 
 ### Ejemplo — `repositories/issues.rs`

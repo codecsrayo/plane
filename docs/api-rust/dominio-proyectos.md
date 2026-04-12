@@ -30,19 +30,18 @@ estado: activo
 
 ## Modelo de datos
 
-```mermaid
-mindmap
-    root((workspaces))
-        projects(projects)
-            members(project_members)
-            invites(project_member_invites)
-            identifiers(project_identifiers)
-            states(states)
-            labels(labels)
-            estimates(estimates)
-                points(estimate_points)
-            deploy_boards(deploy_boards)
-            props(project_user_properties)
+```
+workspaces
+    └─ projects
+            ├─ project_members          (M2M → users, rol propio)
+            ├─ project_member_invites   (invitaciones pendientes)
+            ├─ project_identifiers      (prefijo único e.g. "WS", "PROJ")
+            ├─ states                   (estados propios del proyecto)
+            ├─ labels                   (labels propios, ver dominio-issues)
+            ├─ estimates                (sistema de puntos)
+            │       └─ estimate_points  (valores posibles del sistema)
+            ├─ deploy_boards            (tableros públicos)
+            └─ project_user_properties  (preferencias por usuario)
 ```
 
 ---
