@@ -42,7 +42,7 @@ Busca en múltiples entidades del workspace y devuelve resultados agrupados:
 ```rust
 #[derive(Deserialize, ToSchema)]
 pub struct GlobalSearchParams {
-    pub query:      String,       // texto a buscar
+    pub query:      String,       // ⚠️ FIX-30: validar 2–200 chars; sin límite → LIKE query gigante → DB stress
     pub entity:     Option<String>, // filtrar por tipo: "issue"|"project"|"cycle"|"module"|"page"
     pub project_id: Option<Uuid>,   // acotar al proyecto
     pub workspace_slug: String,
@@ -88,6 +88,10 @@ pub async fn global_search(
     Query(params): Query<GlobalSearchParams>,
 ) -> Result<Json<GlobalSearchResponse>, AppError> {
     let db = &state.db;
+    // Fix-30: guard longitud de query (global search)
+    if params.query.len() < 2 || params.query.len() > 200 {
+        return Err(AppError::bad_request("query must be between 2 and 200 characters"));
+    }
     let q = format!("%{}%", params.query.to_lowercase());
     let limit: u64 = 5; // máximo 5 resultados por entidad
 
@@ -177,7 +181,7 @@ Más específico que `/search/`, solo busca issues en un proyecto y es usado por
 ```rust
 #[derive(Deserialize, ToSchema)]
 pub struct SearchIssuesParams {
-    pub query:      String,
+    pub query:      String,  // ⚠️ FIX-30: validar 2–200 chars
     pub priority:   Option<String>,
     pub state_id:   Option<Uuid>,
     pub exclude:    Option<Vec<Uuid>>,  // excluir IDs específicos (e.g. el propio issue)
@@ -190,6 +194,10 @@ pub async fn search_project_issues(
     Path((_slug, project_id)): Path<(String, Uuid)>,
     Query(params): Query<SearchIssuesParams>,
 ) -> Result<Json<Vec<SearchResultItem>>, AppError> {
+    // Fix-30: rechazar queries vacías o demasiado largas
+    if params.query.len() < 2 || params.query.len() > 200 {
+        return Err(AppError::bad_request("query must be between 2 and 200 characters"));
+    }
     let q = format!("%{}%", params.query.to_lowercase());
     let limit = params.limit.unwrap_or(20).min(50); // máximo 50
 

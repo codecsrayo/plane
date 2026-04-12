@@ -365,10 +365,23 @@ pub async fn llm_call(
 #[derive(Deserialize)]
 pub struct RephrasePayload {
     pub task: AiEditorTask,
-    pub text_input: String,
+    pub text_input: String,  // ⚠️ FIX-29: validar máx 10 000 chars antes de reenviar al LLM
     pub casual_score: Option<u8>,   // 0–10
     pub formal_score: Option<u8>,   // 0–10
 }
+
+// ── Fix-29: Validación requerida en el handler ────────────────────────────
+// const MAX_AI_INPUT: usize = 10_000;
+//
+// if payload.text_input.len() > MAX_AI_INPUT {
+//     return Err(AppError::bad_request(
+//         "text_input exceeds maximum allowed length (10 000 chars)"
+//     ));
+// }
+//
+// Sin este guard: atacante envía 1–10 MB → costo directo en tokens del LLM,
+// latencia descontrolada (DoS efectivo) y prompt-injection amplificada.
+// ────────────────────────────────────────────────────────────────────────────
 
 #[derive(Serialize)]
 pub struct RephraseResponse {
