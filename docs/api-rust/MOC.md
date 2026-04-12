@@ -65,6 +65,16 @@ estado: activo
 | [[dominio-workspace-seed]] | WorkspaceSeedJob apalis — datos iniciales JSON |
 | [[dominio-integraciones]] | GitHub App, GitLab OAuth, Slack OAuth — flujos y endpoints |
 | [[dominio-workspace-settings]] | Panel de configuración: General, Members, Exports, Webhooks |
+| [[dominio-issues]] | Issues CRUD completo, comments, attachments, links, reactions, relations, sub-issues, actividad |
+| [[dominio-proyectos]] | Projects CRUD, members, invitations, states, labels, estimates, identificadores |
+| [[dominio-ciclos]] | Cycles CRUD, cycle-issues, transfers, progress, analytics por ciclo |
+| [[dominio-modulos]] | Modules CRUD, module-issues, links, sub-issues anidados |
+| [[dominio-paginas]] | Pages CRUD, bloques, favoritos, permisos, public access |
+| [[dominio-notificaciones]] | Notificaciones, reads, suscripciones, email/in-app delivery |
+| [[dominio-intake]] | Intake (Triage): sources, filters, accept/decline, conversión a issue |
+| [[dominio-analytics]] | Analytics: demand, burn-down, custom charts, exports |
+| [[dominio-importadores]] | Importadores: GitHub, Jira, CSV — jobs de migración |
+| [[dominio-busqueda]] | Global search, workspace search, filtros avanzados |
 
 ---
 
@@ -105,6 +115,16 @@ estado: activo
 | WorkspaceSeedJob (apalis) | 📝 Diseñado | Ver [[dominio-workspace-seed]] |
 | Endpoints Fase 2 | 📝 Planificado | Ver [[plan-fases]] |
 | Background jobs Fase 3 | 📝 Planificado | |
+| Dominio Issues (Fase 4) | 📝 Documentado | Ver [[dominio-issues]] — ~20 endpoints |
+| Dominio Proyectos (Fase 4) | 📝 Documentado | Ver [[dominio-proyectos]] — ~15 endpoints |
+| Dominio Ciclos (Fase 4) | 📝 Documentado | Ver [[dominio-ciclos]] — ~8 endpoints |
+| Dominio Módulos (Fase 4) | 📝 Documentado | Ver [[dominio-modulos]] — ~8 endpoints |
+| Dominio Páginas (Fase 4) | 📝 Documentado | Ver [[dominio-paginas]] — ~8 endpoints |
+| Dominio Notificaciones (Fase 4) | 📝 Documentado | Ver [[dominio-notificaciones]] — ~6 endpoints |
+| Dominio Intake (Fase 4) | 📝 Documentado | Ver [[dominio-intake]] — ~6 endpoints |
+| Dominio Analytics (Fase 4) | 📝 Documentado | Ver [[dominio-analytics]] — ~5 endpoints |
+| Dominio Importadores (Fase 4) | 📝 Documentado | Ver [[dominio-importadores]] — ~4 endpoints |
+| Dominio Búsqueda (Fase 4) | 📝 Documentado | Ver [[dominio-busqueda]] — ~3 endpoints |
 
 ---
 
@@ -128,8 +148,22 @@ impl-appstate-repository ───────────► impl-extractores-a
      ▼                                      ▼
 dominio-workspace-seed ─────────────► dominio-integraciones
                                            │
-                                           ▼
-                                    dominio-workspace-settings
+                              ┌────────────┼────────────┐
+                              ▼            ▼            ▼
+                   dominio-proyectos  dominio-issues  dominio-workspace-settings
+                              │            │
+                    ┌─────────┤            ├──────────────┐
+                    ▼         ▼            ▼              ▼
+             dominio-ciclos  dominio-  dominio-       dominio-
+                            modulos   notificaciones  paginas
+                                           │
+                              ┌────────────┼─────────────┐
+                              ▼            ▼             ▼
+                       dominio-intake  dominio-analytics dominio-
+                                                        importadores
+                                                             │
+                                                             ▼
+                                                      dominio-busqueda
 ```
 
 ---

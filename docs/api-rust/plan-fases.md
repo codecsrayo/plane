@@ -105,22 +105,113 @@ estado: activo
 
 ---
 
-## Fase 4 — Endpoints restantes (~275 paths)
+## Fase 4 — Endpoints restantes (~83 endpoints)
 
 Cubrir el resto priorizando por frecuencia de uso en logs de Traefik.
+Ver docs de dominio en [[MOC#🏗️ Dominio]] para contexto detallado de cada área.
 
-Categorías pendientes:
-- Issues: comments, attachments, links, reactions, relations, sub-issues
-- Pages + versions
-- Cycles + cycle issues
-- Modules + module issues
-- Analytics (puede mantenerse en Django más tiempo)
-- Import/Export avanzado
-- Intake/Triage
-- Deploy boards (space API pública)
-- Autenticación OAuth (GitHub, GitLab, Google, Gitea)
+### Issues — ver [[dominio-issues]]
+- [ ] `GET/POST /api/workspaces/{slug}/projects/{id}/issues/{id}/comments/`
+- [ ] `GET/PATCH/DELETE /api/workspaces/{slug}/projects/{id}/issues/{id}/comments/{comment_id}/`
+- [ ] `GET/POST /api/workspaces/{slug}/projects/{id}/issues/{id}/attachments/`
+- [ ] `DELETE /api/workspaces/{slug}/projects/{id}/issues/{id}/attachments/{attachment_id}/`
+- [ ] `GET/POST /api/workspaces/{slug}/projects/{id}/issues/{id}/links/`
+- [ ] `PATCH/DELETE /api/workspaces/{slug}/projects/{id}/issues/{id}/links/{link_id}/`
+- [ ] `POST /api/workspaces/{slug}/projects/{id}/issues/{id}/reactions/`
+- [ ] `DELETE /api/workspaces/{slug}/projects/{id}/issues/{id}/reactions/{reaction_id}/`
+- [ ] `GET/POST /api/workspaces/{slug}/projects/{id}/issues/{id}/relations/`
+- [ ] `DELETE /api/workspaces/{slug}/projects/{id}/issues/{id}/relations/{relation_id}/`
+- [ ] `GET/POST /api/workspaces/{slug}/projects/{id}/issues/{id}/sub-issues/`
+- [ ] `GET /api/workspaces/{slug}/projects/{id}/issues/{id}/activity/`
+- [ ] `GET/POST /api/workspaces/{slug}/projects/{id}/issues/` *(bulk create)*
+- [ ] `POST /api/workspaces/{slug}/projects/{id}/issues/bulk-update/`
+- [ ] `POST /api/workspaces/{slug}/projects/{id}/issues/bulk-delete/`
+- [ ] `GET /api/workspaces/{slug}/projects/{id}/issues/{id}/` *(expandido con relaciones)*
+- [ ] `GET/POST /api/workspaces/{slug}/projects/{id}/issue-views/`
+- [ ] `GET/PATCH/DELETE /api/workspaces/{slug}/projects/{id}/issue-views/{view_id}/`
+- [ ] `GET/POST /api/workspaces/{slug}/issue-views/` *(workspace-level views)*
+- [ ] `GET/POST /api/workspaces/{slug}/projects/{id}/spreadsheet-states/`
 
----
+### Proyectos — ver [[dominio-proyectos]]
+- [ ] `GET/POST /api/workspaces/{slug}/projects/{id}/states/`
+- [ ] `GET/PATCH/DELETE /api/workspaces/{slug}/projects/{id}/states/{state_id}/`
+- [ ] `GET/POST /api/workspaces/{slug}/projects/{id}/labels/`
+- [ ] `GET/PATCH/DELETE /api/workspaces/{slug}/projects/{id}/labels/{label_id}/`
+- [ ] `GET/POST /api/workspaces/{slug}/projects/{id}/estimates/`
+- [ ] `GET/PATCH/DELETE /api/workspaces/{slug}/projects/{id}/estimates/{estimate_id}/`
+- [ ] `GET/POST /api/workspaces/{slug}/projects/{id}/identifiers/`
+- [ ] `GET/POST /api/workspaces/{slug}/projects/{id}/members/`
+- [ ] `PATCH/DELETE /api/workspaces/{slug}/projects/{id}/members/{member_id}/`
+- [ ] `GET/POST /api/workspaces/{slug}/projects/{id}/invitations/`
+- [ ] `DELETE /api/workspaces/{slug}/projects/{id}/invitations/{invite_id}/`
+- [ ] `GET/POST /api/workspaces/{slug}/projects/` *(listado paginado completo con filtros)*
+
+### Ciclos — ver [[dominio-ciclos]]
+- [ ] `GET/POST /api/workspaces/{slug}/projects/{id}/cycles/`
+- [ ] `GET/PATCH/DELETE /api/workspaces/{slug}/projects/{id}/cycles/{cycle_id}/`
+- [ ] `GET/POST /api/workspaces/{slug}/projects/{id}/cycles/{cycle_id}/cycle-issues/`
+- [ ] `DELETE /api/workspaces/{slug}/projects/{id}/cycles/{cycle_id}/cycle-issues/{issue_id}/`
+- [ ] `POST /api/workspaces/{slug}/projects/{id}/cycles/{cycle_id}/transfer-issues/`
+- [ ] `GET /api/workspaces/{slug}/projects/{id}/cycles/{cycle_id}/progress/`
+- [ ] `GET /api/workspaces/{slug}/projects/{id}/cycles/current/`
+- [ ] `GET /api/workspaces/{slug}/projects/{id}/cycles/upcoming/`
+- [ ] `GET /api/workspaces/{slug}/projects/{id}/cycles/completed/`
+
+### Módulos — ver [[dominio-modulos]]
+- [ ] `GET/POST /api/workspaces/{slug}/projects/{id}/modules/`
+- [ ] `GET/PATCH/DELETE /api/workspaces/{slug}/projects/{id}/modules/{module_id}/`
+- [ ] `GET/POST /api/workspaces/{slug}/projects/{id}/modules/{module_id}/module-issues/`
+- [ ] `DELETE /api/workspaces/{slug}/projects/{id}/modules/{module_id}/module-issues/{issue_id}/`
+- [ ] `GET/POST /api/workspaces/{slug}/projects/{id}/modules/{module_id}/links/`
+- [ ] `PATCH/DELETE /api/workspaces/{slug}/projects/{id}/modules/{module_id}/links/{link_id}/`
+- [ ] `GET /api/workspaces/{slug}/projects/{id}/modules/{module_id}/sub-issues/`
+
+### Páginas — ver [[dominio-paginas]]
+- [ ] `GET/POST /api/workspaces/{slug}/projects/{id}/pages/`
+- [ ] `GET/PATCH/DELETE /api/workspaces/{slug}/projects/{id}/pages/{page_id}/`
+- [ ] `GET/POST /api/workspaces/{slug}/projects/{id}/pages/{page_id}/blocks/`
+- [ ] `GET/PATCH/DELETE /api/workspaces/{slug}/projects/{id}/pages/{page_id}/blocks/{block_id}/`
+- [ ] `POST /api/workspaces/{slug}/projects/{id}/pages/{page_id}/favorite/`
+- [ ] `DELETE /api/workspaces/{slug}/projects/{id}/pages/{page_id}/favorite/`
+- [ ] `POST /api/workspaces/{slug}/projects/{id}/pages/{page_id}/archive/`
+- [ ] `POST /api/workspaces/{slug}/projects/{id}/pages/{page_id}/unarchive/`
+
+### Notificaciones — ver [[dominio-notificaciones]]
+- [ ] `GET /api/users/me/notifications/`
+- [ ] `PATCH /api/users/me/notifications/{notification_id}/read/`
+- [ ] `POST /api/users/me/notifications/mark-all-read/`
+- [ ] `GET/POST /api/workspaces/{slug}/projects/{id}/issues/{id}/subscriptions/`
+- [ ] `DELETE /api/workspaces/{slug}/projects/{id}/issues/{id}/subscriptions/`
+- [ ] `GET /api/users/me/notification-preferences/`
+- [ ] `PATCH /api/users/me/notification-preferences/`
+
+### Intake / Triage — ver [[dominio-intake]]
+- [ ] `GET/POST /api/workspaces/{slug}/projects/{id}/intake/` *(sources)*
+- [ ] `GET/POST /api/workspaces/{slug}/projects/{id}/intake-issues/`
+- [ ] `GET/PATCH/DELETE /api/workspaces/{slug}/projects/{id}/intake-issues/{intake_id}/`
+- [ ] `POST /api/workspaces/{slug}/projects/{id}/intake-issues/{intake_id}/accept/`
+- [ ] `POST /api/workspaces/{slug}/projects/{id}/intake-issues/{intake_id}/decline/`
+- [ ] `POST /api/workspaces/{slug}/projects/{id}/intake-issues/{intake_id}/snoozed/`
+
+### Analytics — ver [[dominio-analytics]]
+- [ ] `GET /api/workspaces/{slug}/analytics/` *(demand analytics)*
+- [ ] `GET /api/workspaces/{slug}/analytics/export/`
+- [ ] `GET /api/workspaces/{slug}/projects/{id}/analytics/`
+- [ ] `GET /api/workspaces/{slug}/projects/{id}/analytics/burn-down/`
+- [ ] `GET /api/workspaces/{slug}/projects/{id}/analytics/custom/`
+
+### Importadores — ver [[dominio-importadores]]
+- [ ] `GET/POST /api/workspaces/{slug}/importers/github/`
+- [ ] `GET/DELETE /api/workspaces/{slug}/importers/github/{importer_id}/`
+- [ ] `GET/POST /api/workspaces/{slug}/importers/jira/`
+- [ ] `GET/POST /api/workspaces/{slug}/importers/csv/`
+
+### Búsqueda — ver [[dominio-busqueda]]
+- [ ] `GET /api/workspaces/{slug}/search/`
+- [ ] `GET /api/workspaces/{slug}/projects/{id}/search/`
+- [ ] `GET /api/search/` *(global)*
+
+
 
 ## Fase 5 — Shutdown Django completo
 
