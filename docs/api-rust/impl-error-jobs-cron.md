@@ -133,9 +133,10 @@ pub async fn handle_mi_job(
 }
 ```
 
-### Registro de todos los workers — `src/jobs/mod.rs`
+### Registro de todos los workers
 
 ```rust
+// src/jobs/mod.rs
 use apalis::{prelude::*, layers::TraceLayer};
 use apalis_sql::postgres::PostgresStorage;
 

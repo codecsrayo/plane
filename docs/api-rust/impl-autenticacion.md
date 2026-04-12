@@ -77,9 +77,8 @@ sequenceDiagram
   - `session-id` → rutas normales (7 días TTL)
   - `admin-session-id` → rutas con `instances` en el path (1 hora TTL)
 
-### `src/auth/session.rs`
-
 ```rust
+// src/auth/session.rs
 use axum::{async_trait, extract::FromRequestParts, http::request::Parts};
 use axum_extra::extract::CookieJar;
 use axum::extract::FromRef;
@@ -188,9 +187,10 @@ let user_id_str = session.user_id.ok_or(AppError::Unauthorized)?;
 // let data = base64::decode(&session.session_data)?;
 ```
 
-### Logout — `src/auth/logout.rs`
+### Logout
 
 ```rust
+// src/auth/logout.rs
 use axum::{extract::State, http::{StatusCode, Uri}};
 use axum_extra::extract::{CookieJar, cookie::{Cookie, SameSite}};
 
@@ -237,9 +237,8 @@ pub async fn logout(
 
 ## Parte 2 — API Key (`X-Api-Key`)
 
-### `src/auth/api_key.rs`
-
 ```rust
+// src/auth/api_key.rs
 use axum::{async_trait, extract::FromRequestParts, http::request::Parts};
 use axum::extract::FromRef;
 use chrono::Utc;
@@ -348,7 +347,7 @@ pub fn apply_rate_limit(
 }
 ```
 
-### Rate limit middleware — `src/auth/rate_limit.rs`
+### Rate limit middleware
 
 > [!IMPORTANT] Arquitectura actualizada
 > El **enforcement** del rate limit (contar requests, retornar 429) ocurre dentro de `ApiKeyUser::from_request_parts` porque en ese punto el extractor ya tiene `token.is_service` — lo que permite elegir el límite correcto (`RATE_LIMIT_HUMAN=60` vs `RATE_LIMIT_SERVICE=300`).
@@ -356,6 +355,7 @@ pub fn apply_rate_limit(
 > El middleware Tower de abajo es solo un **inyector de headers de respuesta** (`X-RateLimit-*`) y no toma decisiones de bloqueo.
 
 ```rust
+// src/auth/rate_limit.rs
 use axum::{body::Body, http::{Request, Response, StatusCode, HeaderValue}, middleware::Next};
 use std::{collections::HashMap, sync::Arc};
 // ✅ std::sync::Mutex — NO tokio::sync::Mutex — ver RateLimitState

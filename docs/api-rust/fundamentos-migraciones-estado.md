@@ -43,7 +43,7 @@ estado: activo
 - **fix** `indexes`: agregados indexes y unique constraints parciales (`WHERE deleted_at IS NULL`) para todas las entidades core.
 - **fix** `project_deploy_boards`: tabla integrada correctamente con FKs a `intakes`.
 
-### `migration/src/main.rs`
+### migration/src/main.rs
 
 - **fix**: auto-carga `.env` desde raíz del proyecto
 - **fix**: construye `DATABASE_URL` desde variables `POSTGRES_*`
