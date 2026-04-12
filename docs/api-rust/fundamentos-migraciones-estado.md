@@ -8,6 +8,7 @@ tags:
   - seaorm
   - seguimiento
   - fundamentos
+  - implementado
 relacionado:
   - "[[MOC]]"
   - "[[fundamentos-orm]]"

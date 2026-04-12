@@ -9,6 +9,7 @@ tags:
   - migraciones
   - rust
   - fundamentos
+  - implementado
 relacionado:
   - "[[MOC]]"
   - "[[fundamentos-migraciones-estado]]"

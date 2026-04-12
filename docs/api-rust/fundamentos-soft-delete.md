@@ -8,6 +8,7 @@ tags:
   - soft-delete
   - rust
   - fundamentos
+  - implementado
 relacionado:
   - "[[MOC]]"
   - "[[fundamentos-orm]]"
