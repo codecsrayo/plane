@@ -344,7 +344,7 @@ pub async fn handle_webhook_delivery(
 let http_client = reqwest::Client::builder()
     .timeout(std::time::Duration::from_secs(30))
     .build()
-    .expect("failed to build HTTP client");
+    .map_err(|e| anyhow::anyhow!("Failed to build HTTP client: {e}"))?; // silence-patterns-ok: fallo en startup → propagar, no panicar
 // Se pasa como Data<reqwest::Client> al worker de apalis
 ```
 
