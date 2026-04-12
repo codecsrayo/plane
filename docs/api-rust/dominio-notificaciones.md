@@ -144,10 +144,18 @@ pub async fn handle_notification(
             .map_err(|e| apalis::prelude::Error::Failed(e.to_string().into()))?;
 
         // 2b. Email (best-effort, no falla el job si el email falla)
+        // [Fix #23] Error loguado explícitamente — `let _` descartaba fallos sin traza
         if should_email {
             if let Ok(user) = users::Entity::find_by_id(user_id).one(db).await {
                 if let Some(u) = user {
-                    let _ = send_notification_email(db, &u, &job).await;
+                    if let Err(e) = send_notification_email(db, &u, &job).await {
+                        tracing::warn!(
+                            user_id  = %user_id,
+                            issue_id = %job.issue_id,
+                            error    = %e,
+                            "send_notification_email failed (best-effort, continuing)"
+                        );
+                    }
                 }
             }
         }
@@ -319,10 +327,18 @@ Registradas en `tokio-cron-scheduler` al arrancar (ver [[impl-error-jobs-cron]])
 
 ```rust
 // src/jobs/scheduled.rs (fragmento — notificaciones)
-scheduler.add(Job::new_async("0 0 3 * * *", |_, _| Box::pin(async {
-    // DELETE FROM notifications WHERE created_at < NOW() - INTERVAL '90 days'
-    tracing::info!("Cleaning old notifications");
-})).unwrap()).await.unwrap();
+// [Fix #22] unwrap() doble reemplazado: Job::new_async puede fallar con cron inválido;
+// scheduler.add() puede fallar si el scheduler ya fue cerrado.
+// Ambos se propagan al caller (startup) en lugar de causar panic en runtime.
+scheduler.add(
+    Job::new_async("0 0 3 * * *", |_, _| Box::pin(async {
+        // DELETE FROM notifications WHERE created_at < NOW() - INTERVAL '90 days'
+        tracing::info!("Cleaning old notifications");
+    }))
+    .map_err(|e| anyhow::anyhow!("cron job creation failed: {e}"))?
+)
+.await
+.map_err(|e| anyhow::anyhow!("cron job scheduling failed: {e}"))?;
 ```
 
 ---
