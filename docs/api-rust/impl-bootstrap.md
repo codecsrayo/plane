@@ -60,6 +60,12 @@ src/
 
 ## `config.rs` — variables de entorno
 
+> [!IMPORTANT] Regla de construcción de URLs
+> `.env` solo provee variables **crudas** (`POSTGRES_HOST`, `POSTGRES_PORT`, etc.).
+> `config.rs` es el único lugar que **ensambla** `database_url` y `redis_url`.
+> Nunca poner `DATABASE_URL` ni `REDIS_URL` completas en `.env`.
+> El mismo patrón ya está implementado en `migration/src/main.rs`.
+
 ```rust
 // src/config.rs
 use dotenvy::dotenv;
@@ -68,30 +74,30 @@ use std::env;
 /// Equivalente a `plane/settings/common.py` en Django.
 #[derive(Debug, Clone)]
 pub struct Config {
-    // Base de datos
-    pub database_url:  String,   // DATABASE_URL — postgresql://user:pass@host/db
+    // Base de datos — construida en from_env() desde POSTGRES_*
+    pub database_url:  String,
 
-    // Redis
-    pub redis_url:     String,   // REDIS_URL — redis://host:6379
+    // Redis — construida en from_env() desde REDIS_HOST / REDIS_PORT
+    pub redis_url:     String,
 
     // Servidor
-    pub host:          String,   // API_HOST — default "0.0.0.0"
-    pub port:          u16,      // API_PORT — default 8000
+    pub host:          String,          // API_HOST — default "0.0.0.0"
+    pub port:          u16,             // API_PORT — default 8000
 
     // App
-    pub secret_key:    String,   // SECRET_KEY
-    pub debug:         bool,     // DEBUG
+    pub secret_key:    String,          // SECRET_KEY
+    pub debug:         bool,            // DEBUG
 
     // S3/MinIO
-    pub aws_s3_bucket: String,   // AWS_S3_BUCKET_NAME
-    pub aws_endpoint:  String,   // AWS_S3_ENDPOINT_URL
+    pub aws_s3_bucket: String,          // AWS_S3_BUCKET_NAME
+    pub aws_endpoint:  String,          // AWS_S3_ENDPOINT_URL
 
     // Cookies
-    pub cookie_domain:    Option<String>, // COOKIE_DOMAIN
-    pub is_production:    bool,           // derivado de DEBUG=0
+    pub cookie_domain: Option<String>,  // COOKIE_DOMAIN
+    pub is_production: bool,            // derivado de DEBUG=0
 
     // CORS
-    pub cors_origins:  Vec<String>, // CORS_ORIGINS — comma-separated
+    pub cors_origins:  Vec<String>,     // CORS_ORIGINS — comma-separated
 }
 
 impl Config {
@@ -100,7 +106,7 @@ impl Config {
         // Se loguea a nivel debug para no contaminar logs de prod. // silence-patterns-ok
         match dotenv() {
             Ok(path) => tracing::debug!(".env loaded from {}", path.display()),
-            Err(dotenv::Error::Io(_)) => tracing::debug!("No .env file found, using environment variables directly"),
+            Err(dotenvy::Error::Io(_)) => tracing::debug!("No .env file found, using environment variables directly"),
             Err(e) => tracing::warn!("dotenv error (non-fatal): {e}"),
         }
 
@@ -109,9 +115,8 @@ impl Config {
             .unwrap_or(false);
 
         Ok(Self {
-            database_url:  required("DATABASE_URL")?,
-            redis_url:     env::var("REDIS_URL")
-                               .unwrap_or_else(|_| "redis://localhost:6379".into()),
+            database_url:  build_database_url()?,
+            redis_url:     build_redis_url(),
             host:          env::var("API_HOST").unwrap_or_else(|_| "0.0.0.0".into()),
             port:          env::var("API_PORT")
                                .unwrap_or_else(|_| "8000".into())
@@ -132,6 +137,39 @@ impl Config {
     }
 }
 
+/// Construye `postgresql://user:pass@host:port/db` desde variables crudas.
+///
+/// Variables leídas (todas con defaults de desarrollo):
+/// - `POSTGRES_USER`     (default: "plane")
+/// - `POSTGRES_PASSWORD` (default: "")
+/// - `POSTGRES_HOST`     (default: "localhost")
+/// - `POSTGRES_PORT`     (default: "5432")
+/// - `POSTGRES_DB`       (default: "plane")
+fn build_database_url() -> anyhow::Result<String> {
+    let user = env::var("POSTGRES_USER").unwrap_or_else(|_| "plane".into());
+    let pass = env::var("POSTGRES_PASSWORD").unwrap_or_default();
+    let host = env::var("POSTGRES_HOST").unwrap_or_else(|_| "localhost".into());
+    let port = env::var("POSTGRES_PORT").unwrap_or_else(|_| "5432".into());
+    let db   = env::var("POSTGRES_DB").unwrap_or_else(|_| "plane".into());
+
+    // Validar que el puerto sea numérico antes de construir la URL.
+    port.parse::<u16>()
+        .map_err(|_| anyhow::anyhow!("POSTGRES_PORT inválido: '{port}' — debe ser un número entre 1 y 65535"))?;
+
+    Ok(format!("postgresql://{user}:{pass}@{host}:{port}/{db}"))
+}
+
+/// Construye `redis://host:port` desde variables crudas.
+///
+/// Variables leídas:
+/// - `REDIS_HOST` (default: "localhost")
+/// - `REDIS_PORT` (default: "6379")
+fn build_redis_url() -> String {
+    let host = env::var("REDIS_HOST").unwrap_or_else(|_| "localhost".into());
+    let port = env::var("REDIS_PORT").unwrap_or_else(|_| "6379".into());
+    format!("redis://{host}:{port}")
+}
+
 fn required(key: &str) -> anyhow::Result<String> {
     env::var(key).map_err(|_| anyhow::anyhow!("Variable de entorno requerida: {key}"))
 }
@@ -140,8 +178,18 @@ fn required(key: &str) -> anyhow::Result<String> {
 **Variables mínimas para arrancar** (`.env` en desarrollo):
 
 ```bash
-DATABASE_URL=postgresql://plane:plane@localhost:5432/plane
-REDIS_URL=redis://localhost:6379
+# PostgreSQL — variables crudas; config.rs ensambla la URL
+POSTGRES_USER=plane
+POSTGRES_PASSWORD=plane
+POSTGRES_HOST=localhost
+POSTGRES_PORT=5432
+POSTGRES_DB=plane
+
+# Redis — variables crudas; config.rs ensambla la URL
+REDIS_HOST=localhost
+REDIS_PORT=6379
+
+# App
 SECRET_KEY=dev-secret-key-change-in-production
 DEBUG=1
 API_PORT=8000
@@ -460,13 +508,14 @@ open http://localhost:8000/api/docs
 
 ## Errores comunes en el arranque
 
-| Error                                         | Causa                    | Solución                                             |
-| --------------------------------------------- | ------------------------ | ---------------------------------------------------- |
-| `Variable de entorno requerida: DATABASE_URL` | No hay `.env`            | Crear `.env` con las vars del paso anterior          |
-| `error connecting to database`                | PostgreSQL no disponible | `docker compose up plane-db`                         |
-| `Address already in use`                      | Puerto 8000 ocupado      | `API_PORT=8001` o matar el proceso                   |
-| `No such file or directory (Cargo.lock)`      | Directorio incorrecto    | `cd apps/api_rust && cargo run`                      |
-| Swagger UI carga en blanco                    | Feature faltante         | Verificar `features = ["axum"]` en utoipa-swagger-ui |
+| Error | Causa | Solución |
+| ----- | ----- | -------- |
+| `Variable de entorno requerida: SECRET_KEY` | No hay `.env` o falta la var | Crear `.env` con las vars del paso anterior |
+| `POSTGRES_PORT inválido: 'abc'` | `POSTGRES_PORT` no es número | Corregir el valor en `.env` |
+| `error connecting to database` | PostgreSQL no disponible | `docker compose up plane-db` |
+| `Address already in use` | Puerto 8000 ocupado | `API_PORT=8001` o matar el proceso |
+| `No such file or directory (Cargo.lock)` | Directorio incorrecto | `cd apps/api_rust && cargo run` |
+| Swagger UI carga en blanco | Feature faltante | Verificar `features = ["axum"]` en utoipa-swagger-ui |
 
 ---
 
