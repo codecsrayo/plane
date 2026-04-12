@@ -151,16 +151,46 @@ async fn seed_workspace(
     db: &sea_orm::DatabaseConnection,
     workspace_id: Uuid,
 ) -> anyhow::Result<()> {
-    // 1. Idempotencia — no re-sembrar si ya existe un proyecto
+    // 1. Idempotencia — no re-sembrar si ya existe un proyecto.
+    //
+    // [Fix #15a] Race condition: la comprobación DEBE ocurrir dentro de la
+    // transacción con un advisory lock de Postgres para evitar que dos
+    // instancias del worker ejecuten el seed simultáneamente para el mismo
+    // workspace (apalis puede reencolar un job si el worker muere antes del ACK).
+    //
+    // pg_try_advisory_xact_lock(key) — el lock se libera automáticamente
+    // al hacer commit/rollback, no se necesita unlock manual.
+    let txn = db.begin().await?;
+
+    // Lock exclusivo por workspace — bloquea otros workers que intenten sembrar el mismo workspace.
+    // Usar los bytes del UUID como la clave i64 del advisory lock.
+    let lock_key = i64::from_le_bytes(workspace_id.as_bytes()[..8].try_into().unwrap());
+    let locked: bool = txn.query_one(
+        sea_orm::Statement::from_sql_and_values(
+            sea_orm::DatabaseBackend::Postgres,
+            "SELECT pg_try_advisory_xact_lock($1)",
+            [lock_key.into()],
+        )
+    ).await?.try_get_by_index(0)?;
+
+    if !locked {
+        tracing::warn!(workspace_id = %workspace_id, "Seed already in progress (advisory lock held), skipping");
+        txn.rollback().await?;
+        return Ok(());
+    }
+
+    // Con el lock adquirido, verificar idempotencia dentro de la misma transacción.
     let existing = projects::Entity::find()
         .filter(projects::Column::WorkspaceId.eq(workspace_id))
-        .count(db).await?;
+        .count(&txn).await?;
     if existing > 0 {
-        tracing::info!("Workspace {workspace_id} already seeded, skipping");
+        tracing::info!(workspace_id = %workspace_id, "Workspace already seeded, skipping");
+        txn.rollback().await?;
         return Ok(());
     }
 
     // 2. Cargar seeds desde JSON embebido en el binario
+    // include_str! se resuelve en tiempo de compilación — no hay I/O en runtime.
     let projects_tpl: Vec<ProjectSeed> = serde_json::from_str(
         include_str!("../../seeds/data/projects.json"))?;
     let states_tpl: Vec<StateSeed> = serde_json::from_str(
@@ -173,35 +203,40 @@ async fn seed_workspace(
         include_str!("../../seeds/data/issues.json"))?;
     // ...modules, views, pages igual
 
+    // [Fix #15b] Todos los INSERTs dentro de la misma transacción — si algo
+    // falla a mitad (ej. FK violation en issues), el rollback deja el workspace
+    // limpio y apalis puede reintentar el job sin datos huérfanos.
+
     // 3. Bot user
-    let bot_id = create_bot_user(db, workspace_id).await?;
-    add_bot_to_workspace(db, workspace_id, bot_id).await?;
+    let bot_id = create_bot_user(&txn, workspace_id).await?;
+    add_bot_to_workspace(&txn, workspace_id, bot_id).await?;
 
     // 4. Workspace members actuales
     let members = workspace_members::Entity::find()
         .filter(workspace_members::Column::WorkspaceId.eq(workspace_id))
-        .all(db).await?;
+        .all(&txn).await?;
 
     // 5. Proyecto + miembros — devuelve mapa seed_id(i32) → real_uuid
     let project_map = create_project_and_members(
-        db, workspace_id, &projects_tpl, &members, bot_id
+        &txn, workspace_id, &projects_tpl, &members, bot_id
     ).await?;
 
     // 6. Resto en orden estricto (respeta FKs)
-    let state_map  = create_states(db, workspace_id, &states_tpl, &project_map, bot_id).await?;
-    let label_map  = create_labels(db, workspace_id, &labels_tpl, &project_map, bot_id).await?;
-    let cycle_map  = create_cycles(db, workspace_id, &cycles_tpl, &project_map, bot_id).await?;
-    let module_map = create_modules(db, workspace_id, &modules_tpl, &project_map, bot_id).await?;
+    let state_map  = create_states(&txn, workspace_id, &states_tpl, &project_map, bot_id).await?;
+    let label_map  = create_labels(&txn, workspace_id, &labels_tpl, &project_map, bot_id).await?;
+    let cycle_map  = create_cycles(&txn, workspace_id, &cycles_tpl, &project_map, bot_id).await?;
+    let module_map = create_modules(&txn, workspace_id, &modules_tpl, &project_map, bot_id).await?;
 
     // 7. Issues con relaciones
-    create_issues(db, workspace_id, &issues_tpl,
+    create_issues(&txn, workspace_id, &issues_tpl,
         &project_map, &state_map, &label_map, &cycle_map, &module_map, bot_id).await?;
 
     // 8. Views y pages
-    create_views(db, workspace_id, &views_tpl, &project_map, bot_id).await?;
-    create_pages(db, workspace_id, &pages_tpl, &project_map, bot_id).await?;
+    create_views(&txn, workspace_id, &views_tpl, &project_map, bot_id).await?;
+    create_pages(&txn, workspace_id, &pages_tpl, &project_map, bot_id).await?;
 
-    tracing::info!("Workspace {workspace_id} seeded successfully");
+    txn.commit().await?;
+    tracing::info!(workspace_id = %workspace_id, "Workspace seeded successfully");
     Ok(())
 }
 ```
