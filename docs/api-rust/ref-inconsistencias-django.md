@@ -19,7 +19,8 @@ estado: activo
 > las rutas registradas en `apps/api/plane/app/urls/*.py`.
 > Fuente de verdad: el código Django. Los docs son la referencia para la implementación Rust.
 >
-> **Resultado:** 9 inconsistencias encontradas en 7 documentos.
+> **Resultado auditoría v1:** 9 inconsistencias en 7 documentos.
+> **Resultado auditoría v2 (completa):** 19 inconsistencias en 9 documentos + 4 dominios completamente no documentados.
 
 ---
 
@@ -123,6 +124,103 @@ El `DELETE` (desarchivar) se hace en `/cycles/{cycle_id}/archive/` con `DELETE`,
 
 ---
 
+---
+
+### INC-10 · `dominio-modulos.md` — `DELETE /archived-modules/{pk}/` incorrecto
+
+**Documento dice:**
+```
+GET/DELETE  /workspaces/{slug}/projects/{id}/archived-modules/{pk}/
+```
+
+**Django real** (`apps/api/plane/app/views/module/archive.py`):
+```python
+class ModuleArchiveUnarchiveEndpoint(BaseAPIView):
+    def get(self, request, slug, project_id, pk=None): ...   # lista o detalle
+    def post(self, request, slug, project_id, module_id): ...  # archivar
+    def delete(self, request, slug, project_id, module_id): ...  # DESARCHIVAR
+```
+
+El `delete()` recibe `module_id` y está mapeado SOLO a `/modules/{module_id}/archive/`.
+La ruta `/archived-modules/{pk}/` solo acepta `GET` (detalle del módulo archivado).
+
+**Idéntico a INC-05** para ciclos. El patrón correcto:
+- `POST /modules/{id}/archive/` → archivar
+- `DELETE /modules/{id}/archive/` → desarchivar
+- `GET /archived-modules/` → listar archivados
+- `GET /archived-modules/{pk}/` → detalle archivado (sin DELETE)
+
+**Fix:** Corregir a solo `GET` en `/archived-modules/{pk}/`; aclarar que unarchive usa `DELETE /modules/{id}/archive/`.
+
+---
+
+### INC-11 · `dominio-analytics.md` — `ExportAnalyticsEndpoint` es `POST`, no `GET`
+
+**Documento dice:**
+```
+GET  /workspaces/{slug}/export-analytics/
+```
+
+**Django real** (`apps/api/plane/app/views/analytic/base.py` línea 234):
+```python
+class ExportAnalyticsEndpoint(BaseAPIView):
+    def post(self, request, slug): ...   # ← solo POST
+```
+
+El export requiere body con filtros (`project_ids`, `provider`, etc.) → necesariamente POST.
+
+**Fix:** Corregir a `POST /workspaces/{slug}/export-analytics/` en la tabla de `dominio-analytics.md`.
+
+---
+
+### INC-12 · `dominio-analytics.md` — `SavedAnalyticEndpoint` es `GET`, no `POST`
+
+**Documento dice:**
+```
+POST  /workspaces/{slug}/saved-analytic-view/{analytic_id}/
+```
+
+**Django real** (`apps/api/plane/app/views/analytic/base.py` línea 208):
+```python
+class SavedAnalyticEndpoint(BaseAPIView):
+    def get(self, request, slug, analytic_id): ...   # ← solo GET
+```
+
+El endpoint devuelve la vista guardada como JSON para precargar los filtros. No crea datos.
+
+**Fix:** Corregir a `GET /workspaces/{slug}/saved-analytic-view/{analytic_id}/`.
+
+---
+
+### INC-13 · `dominio-workspace-settings.md` WS-2 — Guard de `GET /members/` es `≥5` (GUEST), no `≥15`
+
+**Documento dice:**
+```
+GET  /api/workspaces/{slug}/members/  →  WorkspaceMemberGuard (≥15)
+```
+
+**Django real** (`apps/api/plane/app/views/workspace/member.py` línea 45):
+```python
+@allow_permission(allowed_roles=[ROLE.ADMIN, ROLE.MEMBER, ROLE.GUEST], level="WORKSPACE")
+def list(self, request, slug): ...
+```
+
+`ROLE.GUEST = 5`. Cualquier miembro del workspace (incluidos guests) puede ver la lista de miembros.
+
+**Fix:** Corregir guard a `WorkspaceMemberGuard (≥5)` para el método GET de `/members/`.
+
+---
+
+### INC-14 · `dominio-issues.md` — `issue_votes` listada en entidades pero sin endpoint en Django
+
+**Documento lista** `issue_votes.rs` en la tabla "Entidades SeaORM involucradas".
+
+**Django real** (`apps/api/plane/app/urls/issue.py`): **No existe ningún endpoint de votes** registrado. La tabla existe en la DB (migración) pero no tiene API REST expuesta en CE.
+
+**Fix en Rust:** No implementar endpoint de votes en Fase 4. Omitir o agregar nota "sin endpoint en CE".
+
+---
+
 ## 🟡 Medias — ausencias de endpoints reales
 
 ---
@@ -193,6 +291,91 @@ Vista: `IssueDetailEndpoint` — devuelve issues con joins expandidos para board
 
 ---
 
+---
+
+### INC-15 · `dominio-workspace-settings.md` WS-7 — Workspace Favorites ausentes
+
+**Documento WS-7** agrega quick-links, stickies, sidebar-preferences, home-preferences, recent-visits. Pero **omite** los endpoints de favoritos del workspace:
+
+**Django real** (`apps/api/plane/app/urls/workspace.py`):
+```
+GET/POST   /workspaces/{slug}/user-favorites/
+GET/PATCH/DELETE /workspaces/{slug}/user-favorites/{favorite_id}/
+GET        /workspaces/{slug}/user-favorites/{favorite_id}/group/
+```
+
+Vistas: `WorkspaceFavoriteEndpoint`, `WorkspaceFavoriteGroupEndpoint`.
+
+> Son distintos a `/user-favorite-projects/`, `/user-favorite-cycles/`, etc. Son los "favoritos unificados" de la sidebar del workspace (issues, páginas, vistas).
+
+**Fix:** Agregar estos 3 endpoints a WS-7.
+
+---
+
+### INC-16 · Dominio "Issue Views" completamente no documentado
+
+**Django real** (`apps/api/plane/app/urls/views.py`): 7 endpoints sin ningún documento en `docs/api-rust/`:
+
+| Método | URL | Vista |
+|--------|-----|-------|
+| `GET/POST` | `/workspaces/{slug}/projects/{id}/views/` | `IssueViewViewSet` |
+| `GET/PUT/PATCH/DELETE` | `/workspaces/{slug}/projects/{id}/views/{pk}/` | `IssueViewViewSet` |
+| `GET/POST` | `/workspaces/{slug}/views/` | `WorkspaceViewViewSet` |
+| `GET/PUT/PATCH/DELETE` | `/workspaces/{slug}/views/{pk}/` | `WorkspaceViewViewSet` |
+| `GET` | `/workspaces/{slug}/issues/` | `WorkspaceViewIssuesViewSet` |
+| `GET/POST` | `/workspaces/{slug}/projects/{id}/user-favorite-views/` | `IssueViewFavoriteViewSet` |
+| `DELETE` | `/workspaces/{slug}/projects/{id}/user-favorite-views/{view_id}/` | `IssueViewFavoriteViewSet` |
+
+**Fix:** Crear `dominio-vistas.md` o agregar sección a `dominio-workspace-settings.md`.
+
+---
+
+### INC-17 · Endpoints workspace-level agregados no documentados
+
+**Django real** (`workspace.py`): endpoints que agregan datos cross-project, ninguno documentado:
+
+| URL | Vista | Descripción |
+|-----|-------|-------------|
+| `GET /workspaces/{slug}/labels/` | `WorkspaceLabelsEndpoint` | Todos los labels del workspace |
+| `GET /workspaces/{slug}/states/` | `WorkspaceStatesEndpoint` | Todos los estados del workspace |
+| `GET /workspaces/{slug}/estimates/` | `WorkspaceEstimatesEndpoint` | Todos los sistemas de estimación |
+| `GET /workspaces/{slug}/modules/` | `WorkspaceModulesEndpoint` | Todos los módulos del workspace |
+| `GET /workspaces/{slug}/cycles/` | `WorkspaceCyclesEndpoint` | Todos los ciclos del workspace |
+| `GET/PATCH /workspaces/{slug}/user-properties/` | `WorkspaceUserPropertiesEndpoint` | Filtros globales del usuario |
+| `GET/POST /workspaces/{slug}/workspace-themes/` | `WorkspaceThemeViewSet` | Temas del workspace |
+| `GET/PATCH/DELETE /workspaces/{slug}/workspace-themes/{pk}/` | `WorkspaceThemeViewSet` | — |
+| `GET /workspaces/{slug}/workspace-views/` | `WorkspaceMemberUserViewsEndpoint` | Vistas guardadas del usuario |
+| `GET /workspaces/{slug}/workspace-members/me/` | `WorkspaceMemberUserEndpoint` | Info del miembro actual |
+| `GET /workspaces/{slug}/project-members/` | `WorkspaceProjectMemberEndpoint` | Roles en proyectos |
+
+**Fix:** Agregar sección "Workspace Aggregates" al `dominio-workspace-settings.md` u otro doc relevante.
+
+---
+
+### INC-18 · Endpoints de usuario (`/users/me/`) no documentados
+
+**Django real** (`user.py`): endpoints de perfil de usuario sin documento en `docs/api-rust/`:
+
+| URL | Descripción |
+|-----|-------------|
+| `GET/PATCH/DELETE /users/me/` | Perfil + desactivar cuenta |
+| `GET /users/me/settings/` | Configuración del usuario |
+| `POST /users/me/email/generate-code/` | Generar código de verificación |
+| `PATCH /users/me/email/` | Cambiar email |
+| `GET/PATCH /users/me/profile/` | Perfil extendido |
+| `GET /users/me/accounts/`, `DELETE /users/me/accounts/{pk}/` | Cuentas OAuth vinculadas |
+| `GET /users/me/activities/` | Historial de actividad |
+| `GET /users/me/workspaces/` | Workspaces del usuario |
+| `GET /users/last-visited-workspace/` | Último workspace visitado |
+| `GET /users/session/` | Info de sesión |
+| `GET /users/me/workspaces/{slug}/activity-graph/` | Gráfico de actividad |
+| `GET /users/me/workspaces/{slug}/issues-completed-graph/` | Gráfico issues completados |
+| `GET /users/me/workspaces/{slug}/dashboard/` | Dashboard personal |
+
+**Fix:** Crear `dominio-usuario.md` con todos estos endpoints.
+
+---
+
 ## 🟢 Confirmaciones — endpoints correctamente documentados
 
 Los siguientes dominios fueron auditados y **no presentan inconsistencias**:
@@ -222,12 +405,22 @@ Los siguientes dominios fueron auditados y **no presentan inconsistencias**:
 | INC-01 | `dominio-workspace-settings.md` — URL `/exports/` → `/export-issues/` + solo POST | 🔴 Alta | URL incorrecta |
 | INC-02 | `dominio-workspace-settings.md` — agregar `webhook-logs` | 🔴 Alta | Endpoint ausente |
 | INC-03 | `dominio-workspace-settings.md` — agregar 8 endpoints UI state | 🔴 Alta | Endpoints ausentes |
+| INC-10 | `dominio-modulos.md` — `archived-modules/{pk}/` sin DELETE (igual a INC-05) | 🔴 Alta | Método incorrecto |
+| INC-11 | `dominio-analytics.md` — `export-analytics` es POST, no GET | 🔴 Alta | Método incorrecto |
+| INC-12 | `dominio-analytics.md` — `saved-analytic-view` es GET, no POST | 🔴 Alta | Método incorrecto |
+| INC-13 | `dominio-workspace-settings.md` — guard GET /members/ es ≥5 no ≥15 | 🔴 Alta | Guard incorrecto |
 | INC-04 | `dominio-modulos.md` — `issues/{id}/modules/` solo POST | 🟡 Media | Método incorrecto |
 | INC-05 | `dominio-ciclos.md` — `archived-cycles/{pk}/` sin DELETE | 🟡 Media | Método incorrecto |
 | INC-06 | `dominio-issues.md` — `user-properties` es `GET/PATCH` (upsert) | 🟡 Media | Semántica incorrecta |
+| INC-14 | `dominio-issues.md` — `issue_votes` sin endpoint en Django | 🟡 Media | Entidad fantasma |
+| INC-15 | `dominio-workspace-settings.md` — agregar workspace favorites (3 endpoints) | 🟡 Media | Endpoints ausentes |
 | INC-07 | `dominio-proyectos.md` — nota: `intake-state` va en módulo states en Rust | 🟢 Baja | Placement |
 | INC-08 | `dominio-analytics.md` — nota: user-stats/activity/profile en workspace router | 🟢 Baja | Placement |
 | INC-09 | `dominio-issues.md` — clarificar `issues-detail/` vs `/{pk}/` | 🟢 Baja | Claridad |
+| INC-16 | Crear `dominio-vistas.md` — Issue Views + Workspace Views (7 endpoints) | 🟢 Baja | Dominio ausente |
+| INC-17 | Agregar workspace aggregates (11 endpoints) a un doc existente | 🟢 Baja | Dominio ausente |
+| INC-18 | Crear `dominio-usuario.md` — 13 endpoints de `/users/me/` | 🟢 Baja | Dominio ausente |
+| INC-19 | Assets/file management (`asset.py`), API tokens (`api.py`), timezones (`timezone.py`) — no documentados | 🟢 Baja | Dominios ausentes |
 
 ---
 
