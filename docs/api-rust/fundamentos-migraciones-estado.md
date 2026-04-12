@@ -2,7 +2,7 @@
 titulo: Estado de migraciones SeaORM
 aliases:
   - estado-migraciones
-  - migraciones-m001-m006
+  - migraciones-baseline
 tags:
   - migraciones
   - seaorm
@@ -93,7 +93,7 @@ Las migraciones clave que influyeron en el schema baseline de Rust:
 | `0124_githubprstatemapping_usergithubconnection` | PR mapping + user OAuth           |
 | `0126_gitlab_sync_models`                        | GitLab sync completo              |
 
-> Las últimas 5 son las que materializa la migración Rust `m006`. Ver [[dominio-integraciones]] para la documentación completa de esas entidades.
+> Las últimas 5 son las que materializa la migración Rust `m20260410_000001_baseline` (Baseline SQL). Ver [[dominio-integraciones]] para la documentación completa de esas entidades.
 
 ---
 
