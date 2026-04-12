@@ -354,47 +354,7 @@ async fn update_issue(
 
 ## Diagrama de flujo del extractor chain
 
-```mermaid
-flowchart TD
-    REQ([HTTP Request]) --> AX[Axum Router\nmatch route]
-    AX --> E1[Extractor 1: State\nAppState]
-    E1 --> E2[Extractor 2: ProjectMemberGuard]
-
-    subgraph PMG[ProjectMemberGuard internamente]
-        direction TB
-        T1[Leer header Authorization] --> T2{Formato Token XYZ?}
-        T2 -- No --> R401A[Reject 401]
-        T2 -- Sí --> T3[SELECT authtoken_token WHERE key=?]
-        T3 --> T4{Existe?}
-        T4 -- No --> R401B[Reject 401]
-        T4 -- Sí --> T5[SELECT users WHERE id=?]
-        T5 --> T6{is_active?}
-        T6 -- No --> R401C[Reject 401]
-        T6 -- Sí --> T7[Leer :slug del path]
-        T7 --> T8[SELECT workspaces WHERE slug=?]
-        T8 --> T9{Existe?}
-        T9 -- No --> R404A[Reject 404]
-        T9 -- Sí --> T10[SELECT workspace_members]
-        T10 --> T11{Es miembro WS?}
-        T11 -- No --> R403A[Reject 403]
-        T11 -- Sí --> T12[Leer :project_id]
-        T12 --> T13[SELECT projects WHERE id=?]
-        T13 --> T14{Existe?}
-        T14 -- No --> R404B[Reject 404]
-        T14 -- Sí --> T15[SELECT project_members]
-        T15 --> T16{Es miembro proyecto?}
-        T16 -- No --> R403B[Reject 403]
-        T16 -- Sí --> OK[Ok — ProjectMemberGuard]
-    end
-
-    R401A & R401B & R401C --> RESP401([Response 401])
-    R403A & R403B --> RESP403([Response 403])
-    R404A & R404B --> RESP404([Response 404])
-    OK --> E3[Extractor 3: Path params]
-    E3 --> E4[Extractor 4: Json body]
-    E4 --> HANDLER[Handler]
-    HANDLER --> RESP200([Response 200/201/204])
-```
+> Diagrama completo con las 5 queries secuenciales de `ProjectMemberGuard` → [[ref-diagramas-flujo#Extractor chain — ProjectMemberGuard internamente]]
 
 ---
 
