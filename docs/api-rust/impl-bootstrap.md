@@ -96,7 +96,13 @@ pub struct Config {
 
 impl Config {
     pub fn from_env() -> anyhow::Result<Self> {
-        dotenv().ok();
+        // dotenv es best-effort: en producción no hay .env file y eso es normal.
+        // Se loguea a nivel debug para no contaminar logs de prod. // silence-patterns-ok
+        match dotenv() {
+            Ok(path) => tracing::debug!(".env loaded from {}", path.display()),
+            Err(dotenv::Error::Io(_)) => tracing::debug!("No .env file found, using environment variables directly"),
+            Err(e) => tracing::warn!("dotenv error (non-fatal): {e}"),
+        }
 
         let debug = env::var("DEBUG")
             .map(|v| v == "1" || v.to_lowercase() == "true")
