@@ -125,9 +125,12 @@ Router::new()
 
 | Método | URL | Guard |
 |--------|-----|-------|
-| `GET` | `/api/workspaces/{slug}/exports/` | `WorkspaceMemberGuard (≥5)` |
-| `POST` | `/api/workspaces/{slug}/exports/` | `WorkspaceMemberGuard (≥5)` |
-| `DELETE` | `/api/workspaces/{slug}/exports/{pk}/` | `WorkspaceMemberGuard (≥5)` |
+| `POST` | `/api/workspaces/{slug}/export-issues/` | `WorkspaceMemberGuard (≥5)` |
+
+> [!WARNING] INC-01 corregido
+> Django solo expone `POST /export-issues/` (`ExportIssuesEndpoint`). No hay `GET` para listar
+> ni `DELETE` para cancelar — el status se devuelve en el response del POST.
+> La URL `/exports/` era incorrecta.
 
 **Flujo:**
 
@@ -138,15 +141,12 @@ sequenceDiagram
     participant Apalis as apalis jobs
     participant S3 as MinIO / S3
 
-    User->>API: POST /exports/ { project_ids, provider: "csv" }
+    User->>API: POST /export-issues/ { project_ids, provider: "csv" }
     API->>Apalis: push(ExportJob { export_id, project_ids, provider })
-    API-->>User: 201 { id, status: "processing" }
+    API-->>User: 201 { id, status: "processing", url: null }
 
-    Note over User: Polling GET /exports/ hasta status=completed
     Apalis->>S3: Subir archivo generado
     Apalis->>API: UPDATE exporter_histories status=completed + url
-    User->>API: GET /exports/
-    API-->>User: { status: "completed", url: "..." }
 ```
 
 **Job apalis (Fase 3):**
@@ -221,6 +221,7 @@ WorkspaceIntegrationsPage (useSWR)
 | `PATCH` | `/api/workspaces/{slug}/webhooks/{pk}/` | `WorkspaceMemberGuard (≥20)` |
 | `DELETE` | `/api/workspaces/{slug}/webhooks/{pk}/` | `WorkspaceMemberGuard (≥20)` |
 | `POST` | `/api/workspaces/{slug}/webhooks/{pk}/regenerate/` | `WorkspaceMemberGuard (≥20)` |
+| `GET` | `/api/workspaces/{slug}/webhook-logs/{webhook_id}/` | `WorkspaceMemberGuard (≥20)` |
 
 **Eventos disponibles:** `issue`, `cycle`, `module`, `issue_comment`, `project`
 
@@ -280,6 +281,25 @@ Fase 3 (background jobs):
 Fase 2 extendida:
   [ ] WS-5 Integrations → ver dominio-integraciones
 ```
+
+---
+
+## WS-7 — Workspace UI State (endpoints modernos)
+
+> [!WARNING] INC-03 — Estos endpoints existían en Django pero no estaban documentados.
+
+Endpoints del workspace para gestionar estado de UI del usuario (homescreen, stickies, visitas recientes):
+
+| Método | URL | Vista Django |
+|--------|-----|-------------|
+| `GET/POST` | `/api/workspaces/{slug}/quick-links/` | `QuickLinkViewSet` |
+| `GET/PATCH/DELETE` | `/api/workspaces/{slug}/quick-links/{pk}/` | `QuickLinkViewSet` |
+| `GET` | `/api/workspaces/{slug}/recent-visits/` | `UserRecentVisitViewSet` |
+| `GET/PATCH` | `/api/workspaces/{slug}/home-preferences/` | `WorkspaceHomePreferenceViewSet` |
+| `GET/PATCH` | `/api/workspaces/{slug}/home-preferences/{key}/` | `WorkspaceHomePreferenceViewSet` |
+| `GET/POST` | `/api/workspaces/{slug}/stickies/` | `WorkspaceStickyViewSet` |
+| `GET/PATCH/DELETE` | `/api/workspaces/{slug}/stickies/{pk}/` | `WorkspaceStickyViewSet` |
+| `GET/PATCH` | `/api/workspaces/{slug}/sidebar-preferences/` | `WorkspaceUserPreferenceViewSet` |
 
 ---
 
