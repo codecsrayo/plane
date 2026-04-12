@@ -48,19 +48,19 @@ La tabla `importers` almacena todo el estado de la importación. Los issues impo
 
 | Método | URL | Guard | Fase |
 |--------|-----|-------|------|
-| `GET` | `/api/workspaces/{slug}/importers/github/repositories/` | `WorkspaceMemberGuard (≥15)` | 4 |
-| `GET` | `/api/workspaces/{slug}/importers/github/` | `WorkspaceMemberGuard (≥15)` | 4 |
-| `POST` | `/api/workspaces/{slug}/importers/github/` | `WorkspaceMemberGuard (≥15)` | 4 |
-| `GET/DELETE` | `/api/workspaces/{slug}/importers/github/{importer_id}/` | `WorkspaceMemberGuard (≥15)` | 4 |
+| `GET` | `/workspaces/{slug}/importers/github/repositories/` | `WorkspaceMemberGuard (≥15)` | 4 |
+| `GET` | `/workspaces/{slug}/importers/github/` | `WorkspaceMemberGuard (≥15)` | 4 |
+| `POST` | `/workspaces/{slug}/importers/github/` | `WorkspaceMemberGuard (≥15)` | 4 |
+| `GET/DELETE` | `/workspaces/{slug}/importers/github/{importer_id}/` | `WorkspaceMemberGuard (≥15)` | 4 |
 
 ### GitLab Importer
 
 | Método | URL | Guard | Fase |
 |--------|-----|-------|------|
-| `GET` | `/api/workspaces/{slug}/importers/gitlab/repositories/` | `WorkspaceMemberGuard (≥15)` | 4 |
-| `GET` | `/api/workspaces/{slug}/importers/gitlab/` | `WorkspaceMemberGuard (≥15)` | 4 |
-| `POST` | `/api/workspaces/{slug}/importers/gitlab/` | `WorkspaceMemberGuard (≥15)` | 4 |
-| `GET/DELETE` | `/api/workspaces/{slug}/importers/gitlab/{importer_id}/` | `WorkspaceMemberGuard (≥15)` | 4 |
+| `GET` | `/workspaces/{slug}/importers/gitlab/repositories/` | `WorkspaceMemberGuard (≥15)` | 4 |
+| `GET` | `/workspaces/{slug}/importers/gitlab/` | `WorkspaceMemberGuard (≥15)` | 4 |
+| `POST` | `/workspaces/{slug}/importers/gitlab/` | `WorkspaceMemberGuard (≥15)` | 4 |
+| `GET/DELETE` | `/workspaces/{slug}/importers/gitlab/{importer_id}/` | `WorkspaceMemberGuard (≥15)` | 4 |
 
 ---
 
