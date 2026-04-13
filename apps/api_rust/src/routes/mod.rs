@@ -1,5 +1,9 @@
 // src/routes/mod.rs
-use axum::{middleware, routing::{get, post}, Router};
+use axum::{
+    middleware,
+    routing::{get, post},
+    Json, Router,
+};
 use utoipa::OpenApi;
 use utoipa_scalar::{Scalar, Servable};
 use crate::{auth, AppState};
@@ -52,6 +56,10 @@ impl utoipa::Modify for SecurityAddon {
     }
 }
 
+async fn openapi_json() -> Json<utoipa::openapi::OpenApi> {
+    Json(ApiDoc::openapi())
+}
+
 pub fn build_router(state: AppState) -> Router {
     let api_router = Router::new()
         .route("/health", get(health::health))
@@ -65,7 +73,9 @@ pub fn build_router(state: AppState) -> Router {
     // ✅ Scalar UI solo en desarrollo (DEBUG=true).
     // En producción expone el schema completo — proteger con IP allowlist si se necesita en staging.
     if state.config.debug {
-        router = router.merge(Scalar::with_url("/api/docs", ApiDoc::openapi()));
+        router = router
+            .route("/api/docs/openapi.json", get(openapi_json))
+            .merge(Scalar::with_url("/api/docs", ApiDoc::openapi()));
         tracing::warn!("Scalar UI habilitado (DEBUG=true) — deshabilitar en producción");
     }
 
