@@ -83,6 +83,7 @@ ammonia = "*" # sanitización de HTML — previene XSS en description_html
 base64 = "*"  # encode/decode de cursores de paginación
 dotenvy = "*" # carga de .env en desarrollo
 flate2 = "*"
+urlencoding = "*" # encode de parámetros en URLs de reset password
 
 # Observabilidad
 tracing = "*"

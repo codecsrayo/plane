@@ -34,6 +34,10 @@ pub mod health;
         auth::magic_auth::magic_sign_up,
         auth::magic_auth::magic_sign_in_space,
         auth::magic_auth::magic_sign_up_space,
+        auth::forgot_reset_password::forgot_password,
+        auth::forgot_reset_password::reset_password,
+        auth::forgot_reset_password::forgot_password_space,
+        auth::forgot_reset_password::reset_password_space,
         auth::logout::logout,
         auth::logout::logout_space,
         auth::password_management::change_password,
@@ -49,6 +53,8 @@ pub mod health;
             auth::magic_auth::MagicAuthForm,
             auth::magic_auth::MagicGenerateRequest,
             auth::magic_auth::MagicGenerateResponse,
+            auth::forgot_reset_password::ForgotPasswordRequest,
+            auth::forgot_reset_password::ResetPasswordForm,
             auth::password_management::ChangePasswordRequest,
             auth::password_management::SetPasswordRequest,
             auth::responses::EmailCheckResponse,
@@ -131,6 +137,22 @@ pub fn build_router(state: AppState) -> Router {
         .route(
             "/auth/set-password",
             post(auth::password_management::set_password),
+        )
+        .route(
+            "/auth/forgot-password",
+            post(auth::forgot_reset_password::forgot_password),
+        )
+        .route(
+            "/auth/reset-password/:uidb64/:token",
+            post(auth::forgot_reset_password::reset_password),
+        )
+        .route(
+            "/auth/spaces/forgot-password",
+            post(auth::forgot_reset_password::forgot_password_space),
+        )
+        .route(
+            "/auth/spaces/reset-password/:uidb64/:token",
+            post(auth::forgot_reset_password::reset_password_space),
         )
         .route("/auth/sign-out", post(auth::logout::logout))
         .route("/auth/spaces/sign-out", post(auth::logout::logout_space))

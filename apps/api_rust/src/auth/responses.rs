@@ -58,6 +58,22 @@ impl AuthError {
     pub const fn password_already_set() -> Self {
         Self::new(StatusCode::BAD_REQUEST, 5145, "PASSWORD_ALREADY_SET")
     }
+
+    pub const fn user_does_not_exist() -> Self {
+        Self::new(StatusCode::BAD_REQUEST, 5060, "USER_DOES_NOT_EXIST")
+    }
+
+    pub const fn smtp_not_configured() -> Self {
+        Self::new(StatusCode::BAD_REQUEST, 5025, "SMTP_NOT_CONFIGURED")
+    }
+
+    pub const fn invalid_password_token() -> Self {
+        Self::new(StatusCode::BAD_REQUEST, 5125, "INVALID_PASSWORD_TOKEN")
+    }
+
+    pub const fn expired_password_token() -> Self {
+        Self::new(StatusCode::BAD_REQUEST, 5130, "EXPIRED_PASSWORD_TOKEN")
+    }
 }
 
 impl IntoResponse for AuthError {
