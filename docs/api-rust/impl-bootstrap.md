@@ -30,7 +30,7 @@ estado: parcial
 > - `main.rs` completo (AppState + router + Scalar UI)
 > - `config.rs` con variables de entorno tipadas
 > - `error.rs` unificado
-> - Primer endpoint real (`GET /api/health`)
+> - Primeros endpoints reales (`GET /api/health`, `POST /api/auth/sign-out`)
 > - Scalar UI disponible en `/api/docs`
 
 ---
@@ -44,12 +44,16 @@ src/
 ├── error.rs         ✅ AppError → HTTP responses
 ├── auth/
 │   ├── mod.rs          ✅
-│   └── rate_limit.rs   ✅ RateLimitState in-memory (Fase 3 → Redis)
+│   ├── rate_limit.rs   ✅ RateLimitState in-memory (Fase 3 → Redis)
 │   ├── extractors.rs   ✅ WorkspaceMemberGuard + ProjectMemberGuard
-│   └── permissions.rs  ✅ RBAC base (`require_role`)
+│   ├── permissions.rs  ✅ RBAC base (`require_role`)
+│   ├── session.rs      ✅ SessionUser
+│   ├── api_key.rs      ✅ ApiKeyUser
+│   ├── any_auth.rs     ✅ AnyAuth
+│   └── logout.rs       ✅ POST /api/auth/sign-out
 ├── routes/
 │   ├── mod.rs          ✅ build_router() + OpenApi struct
-│   └── health.rs       ✅ GET /api/health (primer endpoint real)
+│   └── health.rs       ✅ GET /api/health
 ├── utils/
 │   ├── mod.rs          ✅
 │   └── soft_delete.rs  ✅
@@ -329,7 +333,9 @@ impl utoipa::Modify for SecurityAddon {
 
 pub fn build_router(state: AppState) -> Router {
     let api_router = Router::new()
-        .route("/health", get(health::health));
+        .route("/health", get(health::health))
+        .route("/auth/sign-out", post(auth::logout::logout))
+        .layer(middleware::from_fn(auth::rate_limit::rate_limit_headers_middleware));
         // .route("/workspaces", get(workspaces::list))  // Fase 2
 
     let mut router = Router::new()
@@ -526,8 +532,13 @@ open http://localhost:8000/api/docs
 | Método | Path                     | Auth | Estado          |
 | ------ | ------------------------ | :--: | --------------- |
 | `GET`  | `/api/health`            |  ❌  | ✅ Implementado |
+| `POST` | `/api/auth/sign-out`     |  ✅  | ✅ Implementado |
 | `GET`  | `/api/docs`              |  ❌  | ✅ Implementado |
 | `GET`  | `/api/docs/openapi.json` |  ❌  | ✅ Implementado |
+
+> [!NOTE] Estado actual del router
+> La capa base de auth ya está implementada, pero los endpoints de negocio de Fase 2
+> todavía no están registrados. Hoy el router expone solo `health` y `sign-out`.
 
 Los endpoints de la Fase 2 se listan en [[plan-fases#Fase 2 — Endpoints de alta frecuencia]].
 
