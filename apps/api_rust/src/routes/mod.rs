@@ -1,4 +1,5 @@
 // src/routes/mod.rs
+use crate::{auth, AppState};
 use axum::{
     middleware,
     routing::{get, post},
@@ -6,7 +7,6 @@ use axum::{
 };
 use utoipa::OpenApi;
 use utoipa_scalar::{Scalar, Servable};
-use crate::{auth, AppState};
 
 pub mod health;
 // pub mod workspaces;  // Fase 2
@@ -22,13 +22,28 @@ pub mod health;
     paths(
         health::health,
         auth::csrf::get_csrf_token,
+        auth::email_auth::sign_in,
+        auth::email_auth::sign_up,
+        auth::email_auth::sign_in_space,
+        auth::email_auth::sign_up_space,
+        auth::email_check::email_check,
+        auth::email_check::email_check_space,
         auth::logout::logout,
         auth::logout::logout_space,
+        auth::password_management::change_password,
+        auth::password_management::set_password,
         // Fase 2: workspaces::list_workspaces,
     ),
     components(
         schemas(
+            auth::responses::AuthErrorBody,
             auth::csrf::CsrfTokenResponse,
+            auth::email_auth::CredentialAuthForm,
+            auth::email_check::EmailCheckRequest,
+            auth::password_management::ChangePasswordRequest,
+            auth::password_management::SetPasswordRequest,
+            auth::responses::EmailCheckResponse,
+            auth::responses::PasswordMessageResponse,
             health::HealthResponse,
             health::DbStatus,
         )
@@ -67,13 +82,37 @@ pub fn build_router(state: AppState) -> Router {
     let api_router = Router::new()
         .route("/health", get(health::health))
         .route("/auth/get-csrf-token", get(auth::csrf::get_csrf_token))
+        .route("/auth/sign-in", post(auth::email_auth::sign_in))
+        .route("/auth/sign-up", post(auth::email_auth::sign_up))
+        .route(
+            "/auth/spaces/sign-in",
+            post(auth::email_auth::sign_in_space),
+        )
+        .route(
+            "/auth/spaces/sign-up",
+            post(auth::email_auth::sign_up_space),
+        )
+        .route("/auth/email-check", post(auth::email_check::email_check))
+        .route(
+            "/auth/spaces/email-check",
+            post(auth::email_check::email_check_space),
+        )
+        .route(
+            "/auth/change-password",
+            post(auth::password_management::change_password),
+        )
+        .route(
+            "/auth/set-password",
+            post(auth::password_management::set_password),
+        )
         .route("/auth/sign-out", post(auth::logout::logout))
         .route("/auth/spaces/sign-out", post(auth::logout::logout_space))
-        .layer(middleware::from_fn(auth::rate_limit::rate_limit_headers_middleware));
-        // .route("/workspaces", get(workspaces::list))  // Fase 2
+        .layer(middleware::from_fn(
+            auth::rate_limit::rate_limit_headers_middleware,
+        ));
+    // .route("/workspaces", get(workspaces::list))  // Fase 2
 
-    let mut router = Router::new()
-        .nest("/api", api_router);
+    let mut router = Router::new().nest("/api", api_router);
 
     // ✅ Scalar UI solo en desarrollo (DEBUG=true).
     // En producción expone el schema completo — proteger con IP allowlist si se necesita en staging.
