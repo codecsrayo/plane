@@ -32,7 +32,7 @@ flowchart TD
     A([🧑 Request llega al router Axum]) --> B{¿Token Bearer\npresente?}
 
     B -- No --> ERR401[401 Unauthorized]
-    B -- Sí --> C[CurrentUser extractor]
+    B -- Sí --> C[ApiKeyUser extractor]
 
     C --> D{¿Token válido\ny usuario activo?}
     D -- No --> ERR401
@@ -94,7 +94,7 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    REQ([Request a /workspaces/:slug/projects/:id/**]) --> CU[CurrentUser extractor]
+    REQ([Request a /workspaces/:slug/projects/:id/**]) --> CU[ApiKeyUser extractor]
     CU --> F1{¿Token OK?}
     F1 -- No --> E401[401 Unauthorized]
     F1 -- Sí --> WG[WorkspaceMemberGuard]
@@ -175,7 +175,7 @@ flowchart LR
     end
 
     subgraph GUARDS["Guards en Axum"]
-        GU1["CurrentUser\n→ 401 si token inválido"]
+        GU1["ApiKeyUser\n→ 401 si token inválido"]
         GU2["WorkspaceMemberGuard\n→ 403 si no es miembro WS"]
         GU3["ProjectMemberGuard\n→ 403 si no es miembro proyecto"]
         GU1 --> GU2 --> GU3
@@ -220,8 +220,8 @@ flowchart TD
 
 | Entidad        | Método           | Ruta                                              | Guard mínimo                            | Fase |
 | -------------- | ---------------- | ------------------------------------------------- | --------------------------------------- | ---- |
-| Workspaces     | GET              | `/api/workspaces/`                                | `CurrentUser`                           | 2    |
-| Workspace      | POST             | `/api/workspaces/`                                | `CurrentUser`                           | 2    |
+| Workspaces     | GET              | `/api/workspaces/`                                | `ApiKeyUser`                            | 2    |
+| Workspace      | POST             | `/api/workspaces/`                                | `ApiKeyUser`                            | 2    |
 | Workspace      | GET/PATCH/DELETE | `/api/workspaces/:slug/`                          | `WorkspaceMemberGuard`                  | 2    |
 | WS Members     | GET              | `/api/workspaces/:slug/members/`                  | `WorkspaceMemberGuard (≥15)`            | 2    |
 | WS Members     | PATCH/DELETE     | `/api/workspaces/:slug/members/:pk/`              | `WorkspaceMemberGuard (≥20)`            | 2    |
@@ -252,9 +252,9 @@ flowchart TD
 
     subgraph PMG[ProjectMemberGuard internamente]
         direction TB
-        T1[Leer header Authorization] --> T2{Formato Token XYZ?}
+        T1[Leer header X-Api-Key] --> T2{¿API key presente?}
         T2 -- No --> R401A[Reject 401]
-        T2 -- Sí --> T3[SELECT authtoken_token WHERE key=?]
+        T2 -- Sí --> T3[SELECT api_tokens WHERE token=?]
         T3 --> T4{Existe?}
         T4 -- No --> R401B[Reject 401]
         T4 -- Sí --> T5[SELECT users WHERE id=?]

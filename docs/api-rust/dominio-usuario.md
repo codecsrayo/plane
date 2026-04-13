@@ -93,9 +93,10 @@ Endpoint fundamental para el arranque del frontend.
 ```rust
 // src/routes/users.rs
 pub async fn get_me(
-    CurrentUser(user): CurrentUser,
+    ApiKeyUser(ctx): ApiKeyUser,
     State(state): State<AppState>,
 ) -> Result<Json<UserResponse>, AppError> {
+    let user = ctx.user;
     let db = &state.db;
 
     // Obtener perfil relacionado

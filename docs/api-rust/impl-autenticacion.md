@@ -482,7 +482,7 @@ Fase 3:
 
 ← [[impl-bootstrap]] | [[MOC]] | → [[impl-extractores-auth]]
 
-**Relacionado:** Extractores Bearer Token: [[impl-extractores-auth]] | Riesgos: [[plan-riesgos]] | Estructura Django auth: [[ref-estructura-django]]
+**Relacionado:** Guards y RBAC: [[impl-extractores-auth]] | Riesgos: [[plan-riesgos]] | Estructura Django auth: [[ref-estructura-django]]
 
 ---
 

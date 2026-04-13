@@ -67,7 +67,7 @@ Ver detalles de implementación: [[dominio-workspace-seed]]
 sequenceDiagram
     actor User as 🧑 Usuario
     participant Axum as Axum Router
-    participant Auth as CurrentUser<br/>Extractor
+    participant Auth as ApiKeyUser<br/>Extractor
     participant Guard as ProjectMember<br/>Guard
     participant Repo as repositories::<br/>issues
     participant DB as PostgreSQL
@@ -75,9 +75,9 @@ sequenceDiagram
     User->>Axum: GET /api/workspaces/my-ws/projects/abc/issues/
     Note over Axum: Tower middleware: tracing, CORS, gzip
     Axum->>Auth: from_request_parts()
-    Auth->>DB: SELECT FROM authtoken_token WHERE key = ?
+    Auth->>DB: SELECT FROM api_tokens WHERE token = ?
     Auth->>DB: SELECT FROM users WHERE id = ?
-    DB-->>Auth: User ✅
+    DB-->>Auth: Api token + user ✅
     Axum->>Guard: from_request_parts()
     Guard->>DB: SELECT workspace_members WHERE slug=? AND member_id=?
     Guard->>DB: SELECT project_members WHERE project_id=? AND member_id=?

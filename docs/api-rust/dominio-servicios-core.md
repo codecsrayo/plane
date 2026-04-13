@@ -65,13 +65,13 @@ estado: activo
 
 **Propósito:** Permitir acceso programático a la API mediante tokens de larga duración.
 
-| Método       | URL                           | Guard         |
-| ------------ | ----------------------------- | ------------- |
-| `GET/POST`   | `/api/users/api-tokens/`      | `CurrentUser` |
-| `GET/DELETE` | `/api/users/api-tokens/{pk}/` | `CurrentUser` |
+| Método       | URL                           | Guard        |
+| ------------ | ----------------------------- | ------------ |
+| `GET/POST`   | `/api/users/api-tokens/`      | `ApiKeyUser` |
+| `GET/DELETE` | `/api/users/api-tokens/{pk}/` | `ApiKeyUser` |
 
 > [!COMMENT] Nota de implementación en Rust
-> Los API Tokens se validan en un middleware de autenticación que busca el header `X-API-Key` o `Authorization: Api-Key <token>`.
+> Los API Tokens se validan en el extractor `ApiKeyUser`, usando `X-Api-Key` contra `api_tokens`.
 
 ---
 

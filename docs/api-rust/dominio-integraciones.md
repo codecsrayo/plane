@@ -402,7 +402,7 @@ pub async fn get_instance_config(
 
 > [!WARNING] 9 puntos críticos específicos de integraciones
 
-1. **`GET /api/github/callback/` es sin autenticación** — no usar `CurrentUser` extractor
+1. **`GET /api/github/callback/` es sin autenticación** — no usar `ApiKeyUser` ni guards
 2. **GithubAppCallback busca el primer admin** — `WorkspaceMember WHERE role >= 20`
 3. **Soft-delete en GithubRepository y GithubRepositorySync** — NO usar `.active()` al crear para no violar constraint unique; resucitar si existe soft-deleted
 4. **GitHub devuelve PRs en el endpoint de issues** — filtrar los que tengan `"pull_request"` key

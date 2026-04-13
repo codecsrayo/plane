@@ -279,9 +279,10 @@ let real_state_id = state_map[&issue_seed.state_id];
 // src/routes/workspaces.rs — POST /api/workspaces/
 async fn create_workspace(
     State(state): State<AppState>,
-    CurrentUser(user): CurrentUser,
+    ApiKeyUser(ctx): ApiKeyUser,
     Json(payload): Json<CreateWorkspaceRequest>,
 ) -> Result<Json<WorkspaceResponse>, AppError> {
+    let user = ctx.user;
     // ... crear workspace y workspace_member ...
 
     // Best-effort — no bloquear la respuesta HTTP

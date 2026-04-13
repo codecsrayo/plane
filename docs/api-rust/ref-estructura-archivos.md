@@ -39,7 +39,7 @@ apps/api_rust/
 │   ├── lib.rs               ← re-exports públicos
 │   ├── auth/
 │   │   ├── mod.rs
-│   │   ├── extractors.rs    ← CurrentUser, WorkspaceMemberGuard, ProjectMemberGuard
+│   │   ├── extractors.rs    ← WorkspaceMemberGuard, ProjectMemberGuard
 │   │   ├── session.rs       ← SessionUser extractor (Cookie)
 │   │   ├── api_key.rs       ← ApiKeyUser extractor (X-Api-Key)
 │   │   ├── any_auth.rs      ← AnyAuth — session OR api key

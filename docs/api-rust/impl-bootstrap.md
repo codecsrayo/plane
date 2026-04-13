@@ -45,7 +45,7 @@ src/
 ├── auth/
 │   ├── mod.rs          ✅
 │   └── rate_limit.rs   ✅ RateLimitState in-memory (Fase 3 → Redis)
-│   ├── middleware.rs   📝 CurrentUser extractor — pendiente
+│   ├── extractors.rs   📝 WorkspaceMemberGuard + ProjectMemberGuard — pendiente
 │   └── permissions.rs  📝 RBAC — pendiente
 ├── routes/
 │   ├── mod.rs          ✅ build_router() + OpenApi struct
@@ -457,8 +457,9 @@ pub struct WorkspaceResponse {
 )]
 pub async fn list_workspaces(
     State(state): State<AppState>,
-    CurrentUser(user): CurrentUser,
+    ApiKeyUser(ctx): ApiKeyUser,
 ) -> Result<Json<Vec<WorkspaceResponse>>, AppError> {
+    let user = ctx.user;
     todo!()
 }
 ```
@@ -509,21 +510,21 @@ open http://localhost:8000/api/docs
 
 ## Errores comunes en el arranque
 
-| Error | Causa | Solución |
-| ----- | ----- | -------- |
-| `Variable de entorno requerida: SECRET_KEY` | No hay `.env` o falta la var | Crear `.env` con las vars del paso anterior |
-| `POSTGRES_PORT inválido: 'abc'` | `POSTGRES_PORT` no es número | Corregir el valor en `.env` |
-| `error connecting to database` | PostgreSQL no disponible | `docker compose up plane-db` |
-| `Address already in use` | Puerto 8000 ocupado | `API_PORT=8001` o matar el proceso |
-| `No such file or directory (Cargo.lock)` | Directorio incorrecto | `cd apps/api_rust && cargo run` |
-| Scalar UI carga en blanco  | Feature faltante | Verificar `features = ["axum"]` en utoipa-scalar     |
+| Error                                       | Causa                        | Solución                                         |
+| ------------------------------------------- | ---------------------------- | ------------------------------------------------ |
+| `Variable de entorno requerida: SECRET_KEY` | No hay `.env` o falta la var | Crear `.env` con las vars del paso anterior      |
+| `POSTGRES_PORT inválido: 'abc'`             | `POSTGRES_PORT` no es número | Corregir el valor en `.env`                      |
+| `error connecting to database`              | PostgreSQL no disponible     | `docker compose up plane-db`                     |
+| `Address already in use`                    | Puerto 8000 ocupado          | `API_PORT=8001` o matar el proceso               |
+| `No such file or directory (Cargo.lock)`    | Directorio incorrecto        | `cd apps/api_rust && cargo run`                  |
+| Scalar UI carga en blanco                   | Feature faltante             | Verificar `features = ["axum"]` en utoipa-scalar |
 
 ---
 
 ## Endpoints de la versión inicial (v0.1)
 
-| Método | Path                     | Auth | Estado         |
-| ------ | ------------------------ | :--: | -------------- |
+| Método | Path                     | Auth | Estado          |
+| ------ | ------------------------ | :--: | --------------- |
 | `GET`  | `/api/health`            |  ❌  | ✅ Implementado |
 | `GET`  | `/api/docs`              |  ❌  | ✅ Implementado |
 | `GET`  | `/api/docs/openapi.json` |  ❌  | ✅ Implementado |
@@ -536,7 +537,7 @@ Los endpoints de la Fase 2 se listan en [[plan-fases#Fase 2 — Endpoints de alt
 
 ← [[plan-fases]] | [[MOC]] | → [[impl-autenticacion]]
 
-**Siguiente paso:** implementar `CurrentUser` extractor → [[impl-extractores-auth]]
+**Siguiente paso:** implementar `WorkspaceMemberGuard` y `ProjectMemberGuard` → [[impl-extractores-auth]]
 
 ---
 
