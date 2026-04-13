@@ -1,4 +1,4 @@
-use axum::{extract::State, Json};
+use axum::{extract::State, http::HeaderMap, Json};
 use axum_extra::extract::{
     cookie::{Cookie, SameSite},
     CookieJar,
@@ -52,6 +52,13 @@ pub fn is_valid_csrf(form_token: &str, cookie_token: &str) -> bool {
     !form_token.is_empty() && form_token == cookie_token
 }
 
+pub fn is_valid_csrf_header(headers: &HeaderMap, cookie_token: &str) -> bool {
+    headers
+        .get("x-csrftoken")
+        .and_then(|value| value.to_str().ok())
+        .is_some_and(|header_token| is_valid_csrf(header_token, cookie_token))
+}
+
 pub fn safe_redirect_target(next_path: Option<&str>) -> String {
     match next_path {
         Some(path) if path.starts_with('/') && !path.starts_with("//") => path.to_owned(),
@@ -72,7 +79,10 @@ mod tests {
 
     #[test]
     fn redirect_target_stays_local() {
-        assert_eq!(safe_redirect_target(Some("/workspace/demo")), "/workspace/demo");
+        assert_eq!(
+            safe_redirect_target(Some("/workspace/demo")),
+            "/workspace/demo"
+        );
         assert_eq!(safe_redirect_target(Some("//evil.com")), "/");
         assert_eq!(safe_redirect_target(Some("https://evil.com")), "/");
         assert_eq!(safe_redirect_target(None), "/");

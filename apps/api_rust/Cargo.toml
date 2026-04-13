@@ -76,11 +76,13 @@ serde_json = "*"
 chrono = { version = "*", features = ["serde"] }
 uuid = { version = "*", features = ["v4", "serde"] }
 time = "*"                                           # Cookie::max_age en session logout
+zxcvbn = "*"
 
 # Contenido / sanitización
 ammonia = "*" # sanitización de HTML — previene XSS en description_html
 base64 = "*"  # encode/decode de cursores de paginación
 dotenvy = "*" # carga de .env en desarrollo
+flate2 = "*"
 
 # Observabilidad
 tracing = "*"
