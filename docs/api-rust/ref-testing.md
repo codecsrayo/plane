@@ -59,8 +59,8 @@ Acceder a `http://localhost:8000/api/docs` para explorar y probar endpoints manu
 
 1. Abrir `http://localhost:8000/api/docs`
 2. Click en el icono de autenticación (🔑)
-3. Ingresar: `Token <tu_token_aquí>`
-4. Todos los requests subsiguientes llevarán el header `Authorization: Token ...`
+3. Ingresar tu API key en el esquema `TokenAuth`
+4. Todos los requests subsiguientes llevarán el header `X-Api-Key: <tu_token_aquí>`
 
 ---
 
@@ -84,7 +84,7 @@ async fn test_get_issues() {
 
     let response = server
         .get("/api/workspaces/my-ws/projects/1/issues/")
-        .add_header("Authorization", "Bearer test-token")
+        .add_header("X-Api-Key", "test-token")
         .await;
 
     response.assert_status_ok();
@@ -108,7 +108,7 @@ async fn test_non_member_returns_403() {
     let server = build_test_app().await;
     let resp = server
         .get("/api/workspaces/other-ws/projects/abc/issues")
-        .add_header("Authorization", "Token valid_token_other_user")
+        .add_header("X-Api-Key", "valid_token_other_user")
         .await;
     resp.assert_status(StatusCode::FORBIDDEN);
 }
@@ -118,7 +118,7 @@ async fn test_member_can_list_issues() {
     let server = build_test_app().await;
     let resp = server
         .get("/api/workspaces/my-ws/projects/abc/issues")
-        .add_header("Authorization", "Token valid_token_member")
+        .add_header("X-Api-Key", "valid_token_member")
         .await;
     resp.assert_status(StatusCode::OK);
 }

@@ -26,7 +26,7 @@ estado: activo
 | Fase | Nombre                    | Duración estimada | Estado         |
 | ---- | ------------------------- | ----------------- | -------------- |
 | 0    | Scaffolding + Baseline    | 2–3 días          | ✅ Completada  |
-| 1    | Auth middleware           | 3–5 días          | 🔄 En progreso |
+| 1    | Auth middleware           | 3–5 días          | 🟡 Iniciada    |
 | 2    | Endpoints alta frecuencia | 2–4 semanas       | 📝 Planificado |
 | 3    | Background jobs           | 1–2 semanas       | 📝 Planificado |
 | 4    | Endpoints restantes       | Continuo          | 📝 Planificado |
@@ -60,11 +60,14 @@ estado: activo
 
 ## Fase 1 — Auth middleware
 
+> Estado real: existe el groundwork (`RateLimitState`, `AppState`, `health`, Scalar UI),
+> pero los extractores y guards todavía no están implementados en código.
+
 - [ ] Session Cookie extractor (`SessionUser`) — ver [[impl-autenticacion]]
 - [ ] API Key extractor (`ApiKeyUser`) — ver [[impl-autenticacion]]
 - [ ] `WorkspaceMemberGuard` — ver [[impl-extractores-auth]]
 - [ ] `ProjectMemberGuard` — ver [[impl-extractores-auth]]
-- [ ] Rate limit middleware (API keys) — ver [[impl-autenticacion]]
+- [ ] Rate limit enforcement para API keys (`ApiKeyUser`) + headers `X-RateLimit-*` — ver [[impl-autenticacion]]
 - [ ] Tests de integración con `axum-test` contra DB real — ver [[ref-testing]]
 
 ---

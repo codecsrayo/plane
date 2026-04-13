@@ -312,7 +312,7 @@ pub mod health;
 )]
 pub struct ApiDoc;
 
-/// Agrega el esquema de seguridad "Token" a la spec OpenAPI.
+/// Agrega el esquema de seguridad "TokenAuth" a la spec OpenAPI.
 struct SecurityAddon;
 
 impl utoipa::Modify for SecurityAddon {
@@ -321,7 +321,7 @@ impl utoipa::Modify for SecurityAddon {
         if let Some(components) = openapi.components.as_mut() {
             components.add_security_scheme(
                 "TokenAuth",
-                SecurityScheme::ApiKey(ApiKey::Header(ApiKeyValue::new("Authorization"))),
+                SecurityScheme::ApiKey(ApiKey::Header(ApiKeyValue::new("X-Api-Key"))),
             );
         }
     }

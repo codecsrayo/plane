@@ -44,7 +44,7 @@ impl utoipa::Modify for SecurityAddon {
         if let Some(components) = openapi.components.as_mut() {
             components.add_security_scheme(
                 "TokenAuth",
-                SecurityScheme::ApiKey(ApiKey::Header(ApiKeyValue::new("Authorization"))),
+                SecurityScheme::ApiKey(ApiKey::Header(ApiKeyValue::new("X-Api-Key"))),
             );
         }
     }
