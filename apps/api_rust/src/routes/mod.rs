@@ -21,11 +21,14 @@ pub mod health;
     ),
     paths(
         health::health,
+        auth::csrf::get_csrf_token,
         auth::logout::logout,
+        auth::logout::logout_space,
         // Fase 2: workspaces::list_workspaces,
     ),
     components(
         schemas(
+            auth::csrf::CsrfTokenResponse,
             health::HealthResponse,
             health::DbStatus,
         )
@@ -63,7 +66,9 @@ async fn openapi_json() -> Json<utoipa::openapi::OpenApi> {
 pub fn build_router(state: AppState) -> Router {
     let api_router = Router::new()
         .route("/health", get(health::health))
+        .route("/auth/get-csrf-token", get(auth::csrf::get_csrf_token))
         .route("/auth/sign-out", post(auth::logout::logout))
+        .route("/auth/spaces/sign-out", post(auth::logout::logout_space))
         .layer(middleware::from_fn(auth::rate_limit::rate_limit_headers_middleware));
         // .route("/workspaces", get(workspaces::list))  // Fase 2
 

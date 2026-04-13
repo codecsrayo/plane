@@ -43,7 +43,8 @@ apps/api_rust/
 │   │   ├── session.rs       ← SessionUser extractor (Cookie)
 │   │   ├── api_key.rs       ← ApiKeyUser extractor (X-Api-Key)
 │   │   ├── any_auth.rs      ← AnyAuth — session OR api key
-│   │   ├── logout.rs        ← handler POST /auth/sign-out/
+│   │   ├── csrf.rs          ← GET /auth/get-csrf-token/
+│   │   ├── logout.rs        ← handlers POST /auth/sign-out/ y /auth/spaces/sign-out/
 │   │   ├── rate_limit.rs    ← middleware Tower rate limit
 │   │   └── permissions.rs   ← require_role(), constantes ROLE_*
 │   ├── entities/            ← 122 entidades generadas por sea-orm-cli (NO editar)

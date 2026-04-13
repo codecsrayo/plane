@@ -118,29 +118,29 @@ _Documentación de apoyo: estructura, diagramas, testing._
 
 ## 📊 Estado de implementación
 
-| Área                               | Estado               | Notas                                                                                                                  |
-| ---------------------------------- | -------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| Soft delete                        | ✅ Implementado      | `src/utils/soft_delete.rs`                                                                                             |
-| Migración Baseline (`m001`)        | ✅ Aplicada          | Schema completo vía `sql/baseline.sql`                                                                                 |
-| Migración m007 (Seeds)             | ✅ Aplicadas         | Integraciones e Instance config inicial                                                                                |
-| Bootstrap API (`main.rs`)          | 🟡 Parcial           | `main.rs`, `config.rs`, `error.rs`, `routes/health.rs`, `auth/logout.rs`, Scalar UI ✅ — Dockerfile, Traefik, Bruno ❌ |
-| Auth Session Cookie                | 🔄 En progreso       | `SessionUser` + `logout` implementados; faltan tests de integración                                                    |
-| Auth API Key                       | 🔄 En progreso       | `ApiKeyUser` + rate limit base implementados; falta validación end-to-end                                              |
-| Extractores WorkspaceMemberGuard   | 🔄 En progreso       | `WorkspaceMemberGuard` y `ProjectMemberGuard` implementados; falta uso en endpoints reales                             |
-| WorkspaceSeedJob (apalis)          | 📝 Diseñado          | Ver [[dominio-workspace-seed]]                                                                                         |
-| Endpoints Fase 2                   | 📝 Planificado       | Ver [[plan-fases]]                                                                                                     |
-| Background jobs Fase 3             | 📝 Planificado       |                                                                                                                        |
-| Dominio Issues (Fase 4)            | 📝 Documentado       | Ver [[dominio-issues]] — ~20 endpoints                                                                                 |
-| Dominio Proyectos (Fase 4)         | 📝 Documentado       | Ver [[dominio-proyectos]] — ~15 endpoints                                                                              |
-| Dominio Ciclos (Fase 4)            | 📝 Documentado       | Ver [[dominio-ciclos]] — ~8 endpoints                                                                                  |
-| Dominio Módulos (Fase 4)           | 📝 Documentado       | Ver [[dominio-modulos]] — ~8 endpoints                                                                                 |
-| Dominio Páginas (Fase 4)           | 📝 Documentado       | Ver [[dominio-paginas]] — ~8 endpoints                                                                                 |
-| Dominio Notificaciones (Fase 4)    | 📝 Documentado       | Ver [[dominio-notificaciones]] — ~6 endpoints                                                                          |
-| Dominio Intake (Fase 4)            | 📝 Documentado       | Ver [[dominio-intake]] — ~6 endpoints                                                                                  |
-| Dominio Analytics (Fase 4)         | 📝 Documentado       | Ver [[dominio-analytics]] — ~5 endpoints                                                                               |
-| Dominio Importadores (Fase 4)      | 📝 Documentado       | Ver [[dominio-importadores]] — ~4 endpoints                                                                            |
-| Dominio Búsqueda (Fase 4)          | 📝 Documentado       | Ver [[dominio-busqueda]] — ~3 endpoints                                                                                |
-| Dominio IA / Asistente Pi (Fase 4) | 🔴 Pendiente urgente | Ver [[dominio-ia]] — 3 endpoints, 1 ausente en Django                                                                  |
+| Área                               | Estado               | Notas                                                                                                                                  |
+| ---------------------------------- | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| Soft delete                        | ✅ Implementado      | `src/utils/soft_delete.rs`                                                                                                             |
+| Migración Baseline (`m001`)        | ✅ Aplicada          | Schema completo vía `sql/baseline.sql`                                                                                                 |
+| Migración m007 (Seeds)             | ✅ Aplicadas         | Integraciones e Instance config inicial                                                                                                |
+| Bootstrap API (`main.rs`)          | 🟡 Parcial           | `main.rs`, `config.rs`, `error.rs`, `routes/health.rs`, `auth/csrf.rs`, `auth/logout.rs`, Scalar UI ✅ — Dockerfile, Traefik, Bruno ❌ |
+| Auth Session Cookie                | 🔄 En progreso       | `SessionUser` + `logout` implementados; faltan tests de integración                                                                    |
+| Auth API Key                       | 🔄 En progreso       | `ApiKeyUser` + rate limit base implementados; falta validación end-to-end                                                              |
+| Extractores WorkspaceMemberGuard   | 🔄 En progreso       | `WorkspaceMemberGuard` y `ProjectMemberGuard` implementados; falta uso en endpoints reales                                             |
+| WorkspaceSeedJob (apalis)          | 📝 Diseñado          | Ver [[dominio-workspace-seed]]                                                                                                         |
+| Endpoints Fase 2                   | 📝 Planificado       | Ver [[plan-fases]]                                                                                                                     |
+| Background jobs Fase 3             | 📝 Planificado       |                                                                                                                                        |
+| Dominio Issues (Fase 4)            | 📝 Documentado       | Ver [[dominio-issues]] — ~20 endpoints                                                                                                 |
+| Dominio Proyectos (Fase 4)         | 📝 Documentado       | Ver [[dominio-proyectos]] — ~15 endpoints                                                                                              |
+| Dominio Ciclos (Fase 4)            | 📝 Documentado       | Ver [[dominio-ciclos]] — ~8 endpoints                                                                                                  |
+| Dominio Módulos (Fase 4)           | 📝 Documentado       | Ver [[dominio-modulos]] — ~8 endpoints                                                                                                 |
+| Dominio Páginas (Fase 4)           | 📝 Documentado       | Ver [[dominio-paginas]] — ~8 endpoints                                                                                                 |
+| Dominio Notificaciones (Fase 4)    | 📝 Documentado       | Ver [[dominio-notificaciones]] — ~6 endpoints                                                                                          |
+| Dominio Intake (Fase 4)            | 📝 Documentado       | Ver [[dominio-intake]] — ~6 endpoints                                                                                                  |
+| Dominio Analytics (Fase 4)         | 📝 Documentado       | Ver [[dominio-analytics]] — ~5 endpoints                                                                                               |
+| Dominio Importadores (Fase 4)      | 📝 Documentado       | Ver [[dominio-importadores]] — ~4 endpoints                                                                                            |
+| Dominio Búsqueda (Fase 4)          | 📝 Documentado       | Ver [[dominio-busqueda]] — ~3 endpoints                                                                                                |
+| Dominio IA / Asistente Pi (Fase 4) | 🔴 Pendiente urgente | Ver [[dominio-ia]] — 3 endpoints, 1 ausente en Django                                                                                  |
 
 ---
 

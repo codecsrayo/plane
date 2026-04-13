@@ -468,8 +468,9 @@ where S: Send + Sync + AsRef<AppState>,
 
 ```
 Fase 1:
+  [x] src/auth/csrf.rs         — GET /auth/get-csrf-token/ + validación CSRF básica
   [x] src/auth/session.rs      — SessionUser extractor (Cookie)
-  [x] src/auth/logout.rs       — handler POST /auth/sign-out/
+  [x] src/auth/logout.rs       — handlers POST /auth/sign-out/ y /auth/spaces/sign-out/
   [x] src/auth/api_key.rs      — ApiKeyUser extractor (X-Api-Key)
   [x] src/auth/rate_limit.rs   — RateLimitState (std::sync::Mutex<HashMap>)
                                   bucket_key() + apply_rate_limit()

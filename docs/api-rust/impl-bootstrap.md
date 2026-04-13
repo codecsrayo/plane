@@ -30,7 +30,7 @@ estado: parcial
 > - `main.rs` completo (AppState + router + Scalar UI)
 > - `config.rs` con variables de entorno tipadas
 > - `error.rs` unificado
-> - Primeros endpoints reales (`GET /api/health`, `POST /api/auth/sign-out`)
+> - Primeros endpoints reales (`GET /api/health`, `GET /api/auth/get-csrf-token`, `POST /api/auth/sign-out`, `POST /api/auth/spaces/sign-out`)
 > - Scalar UI disponible en `/api/docs`
 
 ---
@@ -50,7 +50,8 @@ src/
 │   ├── session.rs      ✅ SessionUser
 │   ├── api_key.rs      ✅ ApiKeyUser
 │   ├── any_auth.rs     ✅ AnyAuth
-│   └── logout.rs       ✅ POST /api/auth/sign-out
+│   ├── csrf.rs         ✅ GET /api/auth/get-csrf-token
+│   └── logout.rs       ✅ POST /api/auth/sign-out + POST /api/auth/spaces/sign-out
 ├── routes/
 │   ├── mod.rs          ✅ build_router() + OpenApi struct
 │   └── health.rs       ✅ GET /api/health
@@ -535,16 +536,19 @@ open http://localhost:8000/api/docs
 
 ## Endpoints de la versión inicial (v0.1)
 
-| Método | Path                     | Auth | Estado          |
-| ------ | ------------------------ | :--: | --------------- |
-| `GET`  | `/api/health`            |  ❌  | ✅ Implementado |
-| `POST` | `/api/auth/sign-out`     |  ✅  | ✅ Implementado |
-| `GET`  | `/api/docs`              |  ❌  | ✅ Implementado |
-| `GET`  | `/api/docs/openapi.json` |  ❌  | ✅ Implementado |
+| Método | Path                        | Auth | Estado          |
+| ------ | --------------------------- | :--: | --------------- |
+| `GET`  | `/api/health`               |  ❌  | ✅ Implementado |
+| `GET`  | `/api/auth/get-csrf-token`  |  ❌  | ✅ Implementado |
+| `POST` | `/api/auth/sign-out`        |  ✅  | ✅ Implementado |
+| `POST` | `/api/auth/spaces/sign-out` |  ✅  | ✅ Implementado |
+| `GET`  | `/api/docs`                 |  ❌  | ✅ Implementado |
+| `GET`  | `/api/docs/openapi.json`    |  ❌  | ✅ Implementado |
 
 > [!NOTE] Estado actual del router
 > La capa base de auth ya está implementada, pero los endpoints de negocio de Fase 2
-> todavía no están registrados. Hoy el router expone solo `health` y `sign-out`.
+> todavía no están registrados. Hoy el router expone `health`, CSRF, `sign-out`
+> y `spaces/sign-out`.
 
 Los endpoints de la Fase 2 se listan en [[plan-fases#Fase 2 — Endpoints de alta frecuencia]].
 

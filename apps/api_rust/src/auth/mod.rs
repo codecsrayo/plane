@@ -1,6 +1,7 @@
 // src/auth/mod.rs
 pub mod any_auth;
 pub mod api_key;
+pub mod csrf;
 pub mod extractors;
 pub mod logout;
 pub mod permissions;
