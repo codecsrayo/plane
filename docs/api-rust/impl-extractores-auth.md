@@ -2,7 +2,6 @@
 titulo: Extractores de autenticación y RBAC
 aliases:
   - extractores
-  - CurrentUser
   - WorkspaceMemberGuard
   - ProjectMemberGuard
   - RBAC
@@ -52,65 +51,13 @@ Los extractores de auth **siempre** implementan `FromRequestParts`.
 
 ---
 
-## Extractor 1 — `CurrentUser`
+## Extractor 1 — `WorkspaceMemberGuard`
 
-> [!WARNING] `authtoken_token` no existe en este codebase
-> Plane **no usa** `djangorestframework`'s `TokenAuthentication` ni la tabla `authtoken_token`.
-> La única autenticación por token es `APIKeyAuthentication` sobre la tabla `api_tokens`
-> (header `X-Api-Key`). Ver [`impl-autenticacion.md`](impl-autenticacion.md) — Parte 2.
+> [!NOTE] Sin `CurrentUser` intermedio
+> `authtoken_token` (DRF) no existe — no hay justificación para un wrapper.
+> Los guards llaman `ApiKeyUser` directamente. Auth base → [[impl-autenticacion]] Parte 2.
 
-`CurrentUser` es un wrapper delgado sobre `ApiKeyUser` (definido en `impl-autenticacion.md`).
-No duplica lógica — delega completamente en el extractor ya probado.
-
-```rust
-// src/auth/extractors.rs
-use axum::{async_trait, extract::{FromRequestParts, FromRef}, http::request::Parts};
-use crate::{AppState, error::AppError, entities::users, auth::api_key::ApiKeyUser};
-
-/// Extrae el usuario autenticado desde el header `X-Api-Key`.
-/// Retorna 401 automáticamente si:
-///   - No hay header X-Api-Key
-///   - El token no existe en api_tokens
-///   - El token está inactivo, expirado o soft-deleted
-///   - El usuario asociado tiene is_active = false
-///
-/// ⚠️  NO usa Authorization: Bearer ni Authorization: Token —
-///     esos formatos no existen en este codebase (sin authtoken_token).
-pub struct CurrentUser(pub users::Model);
-
-#[async_trait]
-impl<S> FromRequestParts<S> for CurrentUser
-where
-    S: Send + Sync,
-    AppState: FromRef<S>,
-{
-    type Rejection = AppError;
-
-    async fn from_request_parts(parts: &mut Parts, state: &S) -> Result<Self, AppError> {
-        // Delegar en ApiKeyUser — toda la lógica de validación, rate limit
-        // y actualización de last_used vive ahí. Sin duplicación.
-        let ApiKeyUser(ctx) = ApiKeyUser::from_request_parts(parts, state).await?;
-        Ok(CurrentUser(ctx.user))
-    }
-}
-```
-
-### Comparación con Django
-
-| Aspecto           | Django (`APIKeyAuthentication`)          | Rust (`CurrentUser`)                         |
-| ----------------- | ---------------------------------------- | -------------------------------------------- |
-| Header            | `X-Api-Key`                              | `X-Api-Key`                                  |
-| Tabla             | `api_tokens`                             | `api_tokens`                                 |
-| Límite longitud   | 255 chars (`max_length=255` en el model) | 128 (validación conservadora en `ApiKeyUser`)|
-| `is_active` check | `is_active=True` en query                | `Column::IsActive.eq(true)`                  |
-| Expiración        | `expired_at__gt=now OR isnull`           | `Condition::any(is_null, gt(now))`           |
-| `last_used`       | `save(update_fields=["last_used"])`      | fire-and-forget con `tracing::warn!` si falla|
-
----
-
-## Extractor 2 — `WorkspaceMemberGuard`
-
-Reutiliza `CurrentUser` internamente — no duplica la lógica de token.
+Llama a `ApiKeyUser` directamente.
 
 ```rust
 // src/auth/extractors.rs
@@ -139,8 +86,8 @@ where
     type Rejection = AppError;
 
     async fn from_request_parts(parts: &mut Parts, state: &S) -> Result<Self, AppError> {
-        // Reutilizar CurrentUser — ya valida token + usuario activo
-        let CurrentUser(user) = CurrentUser::from_request_parts(parts, state).await?;
+        let ApiKeyUser(ctx) = ApiKeyUser::from_request_parts(parts, state).await?;
+        let user = ctx.user;
 
         let Path(params) = Path::<HashMap<String, String>>::from_request_parts(parts, state)
             .await
@@ -173,7 +120,7 @@ where
 
 ---
 
-## Extractor 3 — `ProjectMemberGuard`
+## Extractor 2 — `ProjectMemberGuard`
 
 Verifica membresía en workspace **y** en el proyecto. Cadena completa.
 
@@ -371,10 +318,10 @@ Los casos de test (`test_no_token_returns_401`, `test_non_member_returns_403`, `
 
 | Aspecto           | Django DRF                                               | Axum Extractor Pattern                                     |
 | ----------------- | -------------------------------------------------------- | ---------------------------------------------------------- |
-| Auth              | `permission_classes = [IsAuthenticated]` en cada ViewSet | `CurrentUser` extractor en la firma del handler (X-Api-Key → api_tokens) |
+| Auth              | `permission_classes = [IsAuthenticated]` en cada ViewSet | `ApiKeyUser` directo en guards (X-Api-Key → api_tokens)  |
 | RBAC              | `BaseWorkspacePermissions` herencia de clases            | Composición de guards                                      |
 | Error 401/403     | Raises `PermissionDenied`                                | `type Rejection = AppError` automático                     |
-| Reutilización     | Herencia                                                 | Composición — `WorkspaceMemberGuard` llama a `CurrentUser` |
+| Reutilización     | Herencia                                                 | Composición — `WorkspaceMemberGuard` llama a `ApiKeyUser` |
 | Testeo            | `self.client.force_authenticate(user)`                   | `TestServer` con token real en header                      |
 | Middleware global | `DEFAULT_AUTHENTICATION_CLASSES` en settings.py          | No existe — cada handler declara lo que necesita           |
 
@@ -384,15 +331,11 @@ Los casos de test (`test_no_token_returns_401`, `test_non_member_returns_403`, `
 
 ```
 Fase 1:
-  [ ] src/auth/extractors.rs   — CurrentUser (wrapper sobre ApiKeyUser → X-Api-Key)
-                                  WorkspaceMemberGuard (slug → workspace + member)
-                                  ProjectMemberGuard (project_id → project + member)
+  [ ] src/auth/extractors.rs   — WorkspaceMemberGuard (ApiKeyUser → slug → workspace + member)
+                                  ProjectMemberGuard (ApiKeyUser → project_id → project + member)
   [ ] src/auth/permissions.rs  — constantes ROLE_GUEST/VIEWER/MEMBER/ADMIN
                                   fn require_role() con Workspace Admin override
                                   (NO en routes/mod.rs — auth vive en src/auth/)
-
-Nota: CurrentUser NO usa Authorization: Bearer ni authtoken_token (tabla DRF inexistente).
-      Delega en ApiKeyUser (impl-autenticacion.md Parte 2 → api_tokens + X-Api-Key).
 ```
 
 ## 🔗 Navegar
