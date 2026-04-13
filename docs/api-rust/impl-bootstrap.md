@@ -331,6 +331,10 @@ impl utoipa::Modify for SecurityAddon {
     }
 }
 
+async fn openapi_json() -> Json<utoipa::openapi::OpenApi> {
+    Json(ApiDoc::openapi())
+}
+
 pub fn build_router(state: AppState) -> Router {
     let api_router = Router::new()
         .route("/health", get(health::health))
@@ -346,7 +350,9 @@ pub fn build_router(state: AppState) -> Router {
     // para atacantes que quieran enumerar endpoints y estructuras de datos.
     // Si se necesita en staging, proteger con BasicAuth o IP allowlist via Traefik.
     if state.config.debug {
-        router = router.merge(Scalar::with_url("/api/docs", ApiDoc::openapi()));
+        router = router
+            .route("/api/docs/openapi.json", get(openapi_json))
+            .merge(Scalar::with_url("/api/docs", ApiDoc::openapi()));
         tracing::warn!("Scalar UI habilitado (DEBUG=true) — deshabilitar en producción");
     }
 

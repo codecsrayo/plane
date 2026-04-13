@@ -49,11 +49,13 @@ use utoipa_scalar::{Scalar, Servable};
 
 Router::new()
     .nest("/api", api_router)
+    .route("/api/docs/openapi.json", get(openapi_json))
     .merge(Scalar::with_url("/api/docs", ApiDoc::openapi()))
     .with_state(state)
 ```
 
 Acceder a `http://localhost:8000/api/docs` para explorar y probar endpoints manualmente.
+La spec JSON queda disponible en `http://localhost:8000/api/docs/openapi.json`.
 
 ### Autorización en Scalar UI
 
