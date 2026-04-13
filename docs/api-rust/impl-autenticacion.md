@@ -483,6 +483,11 @@ Fase 3:
 Magic auth (implementado):
   [x] src/auth/magic_auth.rs   — POST /auth/magic-generate, /auth/magic-sign-in,
                                   /auth/magic-sign-up y variantes /spaces/
+
+Forgot / reset password (implementado):
+  [x] src/auth/forgot_reset_password.rs — POST /auth/forgot-password,
+                                           POST /auth/reset-password/:uidb64/:token
+                                           y variantes /spaces/
 ```
 
 ---
@@ -569,6 +574,79 @@ pub struct AppState {
 ```
 
 Redis se inicializa en `main.rs` con `fred::Builder` y se conecta antes de servir tráfico.
+
+---
+
+## Parte 6 — Forgot / Reset Password
+
+### Endpoints
+
+| Método | Path | Descripción |
+|--------|------|-------------|
+| POST | `/api/auth/forgot-password` | Solicita reset — envía email (app) |
+| POST | `/api/auth/reset-password/:uidb64/:token` | Aplica nueva contraseña (app) |
+| POST | `/api/auth/spaces/forgot-password` | Igual, superficie space |
+| POST | `/api/auth/spaces/reset-password/:uidb64/:token` | Igual, superficie space |
+
+### Flujo — forgot-password
+
+```
+POST /api/auth/forgot-password { "email": "user@example.com" }
+ ├─ instancia configurada
+ ├─ EMAIL_HOST presente → SMTP_NOT_CONFIGURED (5025) si vacío
+ ├─ email válido (lettre parser) → INVALID_EMAIL (5005) si mal
+ ├─ usuario existe → USER_DOES_NOT_EXIST (5060) si no
+ ├─ genera: uidb64 = base64url(user_id.to_string())
+ │           token  = uuid_v4.simple() (32 hex chars)
+ ├─ Redis SET pwreset_{uidb64} → { token, user_id, email } TTL=86400s
+ ├─ envía email SMTP (error → log, no expuesto al cliente)
+ └─ { "message": "Check your email to reset your password" }
+```
+
+### Flujo — reset-password
+
+```
+POST /api/auth/reset-password/:uidb64/:token  body: password=...
+ ├─ decode uidb64 → UUID → INVALID_PASSWORD_TOKEN (5125) si falla
+ ├─ Redis GET pwreset_{uidb64}
+ │   ├─ no existe → EXPIRED_PASSWORD_TOKEN (5130)  [redirect]
+ │   └─ token distinto (tiempo constante) → INVALID_PASSWORD_TOKEN (5125) [redirect]
+ ├─ password presente y no vacío → INVALID_PASSWORD (5020)
+ ├─ zxcvbn score ≥ 3 → PASSWORD_TOO_WEAK (5021)
+ ├─ UPDATE users SET password=hash, is_password_autoset=false
+ ├─ Redis DEL pwreset_{uidb64}   ← invalida token inmediatamente
+ └─ redirect /sign-in/?success=true  (app) | space base (space)
+```
+
+### Diferencia clave vs Django
+
+| | Django | Rust |
+|---|---|---|
+| Token | HMAC stateless (PasswordResetTokenGenerator) | UUID aleatorio en Redis |
+| TTL | 3 días (PASSWORD_RESET_TIMEOUT) | 24 horas |
+| Revocación | No — válido hasta que expira o cambia la contraseña | Sí — se elimina de Redis al usar |
+| Timing attack | No protegido | `constant_time_eq` en validación |
+
+### Redis schema
+
+```
+Clave:  pwreset_{uidb64}
+TTL:    86 400 segundos (24 h)
+Valor:  JSON { "token": "...", "user_id": "uuid", "email": "..." }
+```
+
+### Códigos de error (redirect params en reset, JSON en forgot)
+
+| Código | Constante | Situación |
+|--------|-----------|-----------|
+| 5000 | `INSTANCE_NOT_CONFIGURED` | Instancia no inicializada |
+| 5005 | `INVALID_EMAIL` | Email con formato inválido |
+| 5025 | `SMTP_NOT_CONFIGURED` | `EMAIL_HOST` vacío |
+| 5060 | `USER_DOES_NOT_EXIST` | Email no registrado |
+| 5020 | `INVALID_PASSWORD` | Campo password vacío en reset |
+| 5021 | `PASSWORD_TOO_WEAK` | zxcvbn score < 3 |
+| 5125 | `INVALID_PASSWORD_TOKEN` | uidb64 inválido o token incorrecto |
+| 5130 | `EXPIRED_PASSWORD_TOKEN` | TTL expirado en Redis |
 
 ## 🔗 Navegar
 
