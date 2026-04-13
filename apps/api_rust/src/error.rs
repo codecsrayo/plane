@@ -18,6 +18,9 @@ pub enum AppError {
     #[error("Forbidden")]
     Forbidden,
 
+    #[error("Rate limit exceeded")]
+    RateLimited,
+
     #[error("Bad request: {0}")]
     BadRequest(String),
 
@@ -39,6 +42,7 @@ impl IntoResponse for AppError {
             AppError::NotFound      => (StatusCode::NOT_FOUND,            self.to_string()),
             AppError::Unauthorized  => (StatusCode::UNAUTHORIZED,         self.to_string()),
             AppError::Forbidden     => (StatusCode::FORBIDDEN,            self.to_string()),
+            AppError::RateLimited   => (StatusCode::TOO_MANY_REQUESTS,    self.to_string()),
             AppError::BadRequest(m) => (StatusCode::BAD_REQUEST,          m.clone()),
             AppError::Database(e)   => {
                 tracing::error!(error = %e, "Database error");

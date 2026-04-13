@@ -27,7 +27,9 @@ estado: activo
 # Autenticación — Session Cookie y API Key
 
 > [!INFO] Estado actual en Rust
-> Existe el groundwork (`AppState`, `RateLimitState`, `health`, Scalar UI), pero la autenticación y permisos siguen sin implementarse. Este documento cubre la implementación completa.
+> La capa base ya está implementada en código: `SessionUser`, `ApiKeyUser`, `AnyAuth`,
+> `logout`, `RateLimitState`, `429 RateLimited` y headers `X-RateLimit-*` para requests
+> con `X-Api-Key`. Lo pendiente son tests de integración y el uso en endpoints reales.
 
 ---
 
@@ -466,13 +468,13 @@ where S: Send + Sync + AsRef<AppState>,
 
 ```
 Fase 1:
-  [ ] src/auth/session.rs      — SessionUser extractor (Cookie)
-  [ ] src/auth/logout.rs       — handler POST /auth/sign-out/
-  [ ] src/auth/api_key.rs      — ApiKeyUser extractor (X-Api-Key)
-  [ ] src/auth/rate_limit.rs   — RateLimitState (std::sync::Mutex<HashMap>)
+  [x] src/auth/session.rs      — SessionUser extractor (Cookie)
+  [x] src/auth/logout.rs       — handler POST /auth/sign-out/
+  [x] src/auth/api_key.rs      — ApiKeyUser extractor (X-Api-Key)
+  [x] src/auth/rate_limit.rs   — RateLimitState (std::sync::Mutex<HashMap>)
                                   bucket_key() + apply_rate_limit()
                                   middleware Tower para X-RateLimit-* headers
-  [ ] src/auth/any_auth.rs     — AnyAuth combinado (session OR api key)
+  [x] src/auth/any_auth.rs     — AnyAuth combinado (session OR api key)
 
 Fase 3:
   [ ] src/auth/rate_limit.rs   — migrar RateLimitState a Redis (fred) para multi-réplica

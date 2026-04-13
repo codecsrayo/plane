@@ -1,8 +1,8 @@
 // src/routes/mod.rs
-use axum::{routing::get, Router};
+use axum::{middleware, routing::{get, post}, Router};
 use utoipa::OpenApi;
 use utoipa_scalar::{Scalar, Servable};
-use crate::AppState;
+use crate::{auth, AppState};
 
 pub mod health;
 // pub mod workspaces;  // Fase 2
@@ -17,6 +17,7 @@ pub mod health;
     ),
     paths(
         health::health,
+        auth::logout::logout,
         // Fase 2: workspaces::list_workspaces,
     ),
     components(
@@ -27,6 +28,7 @@ pub mod health;
     ),
     tags(
         (name = "Health",     description = "Health check"),
+        (name = "Auth",       description = "Autenticación"),
         (name = "Workspaces", description = "Gestión de workspaces"),
         (name = "Projects",   description = "Gestión de proyectos"),
         (name = "Issues",     description = "Issues y work items"),
@@ -52,7 +54,9 @@ impl utoipa::Modify for SecurityAddon {
 
 pub fn build_router(state: AppState) -> Router {
     let api_router = Router::new()
-        .route("/health", get(health::health));
+        .route("/health", get(health::health))
+        .route("/auth/sign-out", post(auth::logout::logout))
+        .layer(middleware::from_fn(auth::rate_limit::rate_limit_headers_middleware));
         // .route("/workspaces", get(workspaces::list))  // Fase 2
 
     let mut router = Router::new()

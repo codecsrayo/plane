@@ -45,8 +45,8 @@ src/
 ├── auth/
 │   ├── mod.rs          ✅
 │   └── rate_limit.rs   ✅ RateLimitState in-memory (Fase 3 → Redis)
-│   ├── extractors.rs   📝 WorkspaceMemberGuard + ProjectMemberGuard — pendiente
-│   └── permissions.rs  📝 RBAC — pendiente
+│   ├── extractors.rs   ✅ WorkspaceMemberGuard + ProjectMemberGuard
+│   └── permissions.rs  ✅ RBAC base (`require_role`)
 ├── routes/
 │   ├── mod.rs          ✅ build_router() + OpenApi struct
 │   └── health.rs       ✅ GET /api/health (primer endpoint real)

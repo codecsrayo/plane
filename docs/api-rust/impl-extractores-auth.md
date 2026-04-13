@@ -73,11 +73,10 @@ use crate::entities::workspace_members;
 ///   - 404 si el workspace no existe
 ///   - 403 si el usuario no es miembro del workspace
 pub struct WorkspaceMemberGuard {
-    pub user:   users::Model,
-    pub member: workspace_members::Model,
+    pub user:      users::Model,
+    pub workspace: workspaces::Model,
+    pub member:    workspace_members::Model,
 }
-
-#[async_trait]
 impl<S> FromRequestParts<S> for WorkspaceMemberGuard
 where
     S: Send + Sync,
@@ -85,7 +84,12 @@ where
 {
     type Rejection = AppError;
 
-    async fn from_request_parts(parts: &mut Parts, state: &S) -> Result<Self, AppError> {
+    fn from_request_parts(
+        parts: &mut Parts,
+        state: &S,
+    ) -> impl Future<Output = Result<Self, AppError>> + Send {
+        let db = AppState::from_ref(state).db;
+        async move {
         let ApiKeyUser(ctx) = ApiKeyUser::from_request_parts(parts, state).await?;
         let user = ctx.user;
 
@@ -94,26 +98,26 @@ where
             .map_err(|_| AppError::NotFound)?;
 
         let slug = params.get("slug").ok_or(AppError::NotFound)?;
-        let db = &AppState::from_ref(state).db;
-
         let workspace = workspaces::Entity::find()
+            .active()
             .filter(workspaces::Column::Slug.eq(slug.as_str()))
-            .filter(workspaces::Column::DeletedAt.is_null())
-            .one(db)
+            .one(&db)
             .await
             .map_err(AppError::Database)?
             .ok_or(AppError::NotFound)?;
 
         let member = workspace_members::Entity::find()
+            .active()
             .filter(workspace_members::Column::WorkspaceId.eq(workspace.id))
             .filter(workspace_members::Column::MemberId.eq(user.id))
             .filter(workspace_members::Column::IsActive.eq(true))
-            .one(db)
+            .one(&db)
             .await
             .map_err(AppError::Database)?
             .ok_or(AppError::Forbidden)?;
 
-        Ok(WorkspaceMemberGuard { user, member })
+        Ok(WorkspaceMemberGuard { user, workspace, member })
+        }
     }
 }
 ```
@@ -132,11 +136,11 @@ use crate::entities::{projects, project_members};
 ///   Token válido → usuario activo → miembro workspace → miembro proyecto
 pub struct ProjectMemberGuard {
     pub user:             users::Model,
+    pub workspace:        workspaces::Model,
+    pub project:          projects::Model,
     pub workspace_member: workspace_members::Model,
     pub project_member:   project_members::Model,
 }
-
-#[async_trait]
 impl<S> FromRequestParts<S> for ProjectMemberGuard
 where
     S: Send + Sync,
@@ -144,9 +148,14 @@ where
 {
     type Rejection = AppError;
 
-    async fn from_request_parts(parts: &mut Parts, state: &S) -> Result<Self, AppError> {
+    fn from_request_parts(
+        parts: &mut Parts,
+        state: &S,
+    ) -> impl Future<Output = Result<Self, AppError>> + Send {
+        let db = AppState::from_ref(state).db;
+        async move {
         // Reutilizar WorkspaceMemberGuard
-        let WorkspaceMemberGuard { user, member: workspace_member } =
+        let WorkspaceMemberGuard { user, workspace, member: workspace_member } =
             WorkspaceMemberGuard::from_request_parts(parts, state).await?;
 
         let Path(params) = Path::<HashMap<String, String>>::from_request_parts(parts, state)
@@ -158,25 +167,27 @@ where
             .and_then(|s| s.parse().ok())
             .ok_or(AppError::NotFound)?;
 
-        let db = &AppState::from_ref(state).db;
-
-        let _project = projects::Entity::find_by_id(project_id)
-            .filter(projects::Column::WorkspaceId.eq(workspace_member.workspace_id))
+        let project = projects::Entity::find_by_id(project_id)
+            .filter(projects::Column::WorkspaceId.eq(workspace.id))
             .filter(projects::Column::DeletedAt.is_null())
-            .one(db)
+            .one(&db)
             .await
             .map_err(AppError::Database)?
             .ok_or(AppError::NotFound)?;
 
         let project_member = project_members::Entity::find()
+            .active()
             .filter(project_members::Column::ProjectId.eq(project_id))
+            .filter(project_members::Column::WorkspaceId.eq(workspace.id))
             .filter(project_members::Column::MemberId.eq(user.id))
-            .one(db)
+            .filter(project_members::Column::IsActive.eq(true))
+            .one(&db)
             .await
             .map_err(AppError::Database)?
             .ok_or(AppError::Forbidden)?;
 
-        Ok(ProjectMemberGuard { user, workspace_member, project_member })
+        Ok(ProjectMemberGuard { user, workspace, project, workspace_member, project_member })
+        }
     }
 }
 ```
@@ -331,9 +342,9 @@ Los casos de test (`test_no_token_returns_401`, `test_non_member_returns_403`, `
 
 ```
 Fase 1:
-  [ ] src/auth/extractors.rs   — WorkspaceMemberGuard (ApiKeyUser → slug → workspace + member)
+  [x] src/auth/extractors.rs   — WorkspaceMemberGuard (ApiKeyUser → slug → workspace + member)
                                   ProjectMemberGuard (ApiKeyUser → project_id → project + member)
-  [ ] src/auth/permissions.rs  — constantes ROLE_GUEST/VIEWER/MEMBER/ADMIN
+  [x] src/auth/permissions.rs  — constantes ROLE_GUEST/VIEWER/MEMBER/ADMIN
                                   fn require_role() con Workspace Admin override
                                   (NO en routes/mod.rs — auth vive en src/auth/)
 ```

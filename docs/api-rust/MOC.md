@@ -123,9 +123,9 @@ _Documentación de apoyo: estructura, diagramas, testing._
 | Migración Baseline (`m001`)        | ✅ Aplicada          | Schema completo vía `sql/baseline.sql`                                                               |
 | Migración m007 (Seeds)             | ✅ Aplicadas         | Integraciones e Instance config inicial                                                              |
 | Bootstrap API (`main.rs`)          | 🟡 Parcial           | `main.rs`, `config.rs`, `error.rs`, `routes/health.rs`, Scalar UI ✅ — Dockerfile, Traefik, Bruno ❌ |
-| Auth Session Cookie                | 📝 Diseñado          | Ver [[impl-autenticacion]]                                                                           |
-| Auth API Key                       | 📝 Diseñado          | Ver [[impl-autenticacion]]                                                                           |
-| Extractores WorkspaceMemberGuard   | 📝 Diseñado          | Ver [[impl-extractores-auth]]                                                                        |
+| Auth Session Cookie                | 🔄 En progreso       | `SessionUser` + `logout` implementados; faltan tests de integración                                  |
+| Auth API Key                       | 🔄 En progreso       | `ApiKeyUser` + rate limit base implementados; falta validación end-to-end                            |
+| Extractores WorkspaceMemberGuard   | 🔄 En progreso       | `WorkspaceMemberGuard` y `ProjectMemberGuard` implementados; falta uso en endpoints reales           |
 | WorkspaceSeedJob (apalis)          | 📝 Diseñado          | Ver [[dominio-workspace-seed]]                                                                       |
 | Endpoints Fase 2                   | 📝 Planificado       | Ver [[plan-fases]]                                                                                   |
 | Background jobs Fase 3             | 📝 Planificado       |                                                                                                      |

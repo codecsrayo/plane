@@ -26,7 +26,7 @@ estado: activo
 | Fase | Nombre                    | Duración estimada | Estado         |
 | ---- | ------------------------- | ----------------- | -------------- |
 | 0    | Scaffolding + Baseline    | 2–3 días          | ✅ Completada  |
-| 1    | Auth middleware           | 3–5 días          | 🟡 Iniciada    |
+| 1    | Auth middleware           | 3–5 días          | 🔄 En progreso |
 | 2    | Endpoints alta frecuencia | 2–4 semanas       | 📝 Planificado |
 | 3    | Background jobs           | 1–2 semanas       | 📝 Planificado |
 | 4    | Endpoints restantes       | Continuo          | 📝 Planificado |
@@ -60,14 +60,14 @@ estado: activo
 
 ## Fase 1 — Auth middleware
 
-> Estado real: existe el groundwork (`RateLimitState`, `AppState`, `health`, Scalar UI),
-> pero los extractores y guards todavía no están implementados en código.
+> Estado real: la capa base de auth ya existe en código (`SessionUser`, `ApiKeyUser`,
+> `AnyAuth`, guards, RBAC, logout, `429` y headers `X-RateLimit-*` solo para API keys).
 
-- [ ] Session Cookie extractor (`SessionUser`) — ver [[impl-autenticacion]]
-- [ ] API Key extractor (`ApiKeyUser`) — ver [[impl-autenticacion]]
-- [ ] `WorkspaceMemberGuard` — ver [[impl-extractores-auth]]
-- [ ] `ProjectMemberGuard` — ver [[impl-extractores-auth]]
-- [ ] Rate limit enforcement para API keys (`ApiKeyUser`) + headers `X-RateLimit-*` — ver [[impl-autenticacion]]
+- [x] Session Cookie extractor (`SessionUser`) — ver [[impl-autenticacion]]
+- [x] API Key extractor (`ApiKeyUser`) — ver [[impl-autenticacion]]
+- [x] `WorkspaceMemberGuard` — ver [[impl-extractores-auth]]
+- [x] `ProjectMemberGuard` — ver [[impl-extractores-auth]]
+- [x] Rate limit enforcement para API keys (`ApiKeyUser`) + headers `X-RateLimit-*` — ver [[impl-autenticacion]]
 - [ ] Tests de integración con `axum-test` contra DB real — ver [[ref-testing]]
 
 ---
