@@ -7,7 +7,8 @@ use axum_extra::extract::CookieJar;
 use chrono::Utc;
 use lettre::Address;
 use sea_orm::{
-    ActiveModelTrait, ActiveValue::Set, ColumnTrait, EntityTrait, QueryFilter, TransactionTrait,
+    ActiveModelTrait, ActiveValue::Set, ColumnTrait, EntityTrait, QueryFilter, QueryOrder,
+    TransactionTrait,
 };
 use serde::Deserialize;
 use serde_json::json;
@@ -20,6 +21,7 @@ use crate::{
     },
     entities::{
         instances, profiles, user_notification_preferences, users, workspace_member_invites,
+        workspace_members, workspaces,
     },
     error::AppError,
     utils::{
@@ -184,6 +186,7 @@ async fn authenticate_existing_user(
         ));
     };
 
+    ensure_profile_exists(state, &user).await?;
     if !verify_password(password, &user.password) {
         return Ok(redirect_error(
             state,
@@ -196,11 +199,9 @@ async fn authenticate_existing_user(
 
     let user = update_login_metadata(state, user, headers).await?;
     let jar = replace_session_cookie(state, headers, jar, &user, surface).await?;
+    let redirect_to = success_redirect(state, &user, surface, form.next_path.as_deref()).await?;
 
-    Ok((
-        jar,
-        Redirect::to(&success_redirect(state, surface, form.next_path.as_deref())),
-    ))
+    Ok((jar, Redirect::to(&redirect_to)))
 }
 
 async fn create_and_authenticate_user(
@@ -409,11 +410,9 @@ async fn create_and_authenticate_user(
         .map_err(AppError::Database)?
         .ok_or(AppError::Unauthorized)?;
     let jar = issue_session_cookie(state, headers, jar, &user, surface).await?;
+    let redirect_to = success_redirect(state, &user, surface, form.next_path.as_deref()).await?;
 
-    Ok((
-        jar,
-        Redirect::to(&success_redirect(state, surface, form.next_path.as_deref())),
-    ))
+    Ok((jar, Redirect::to(&redirect_to)))
 }
 
 async fn update_login_metadata(
@@ -502,7 +501,7 @@ async fn ensure_email_password_enabled(
     }
 }
 
-async fn ensure_signup_allowed(
+pub(crate) async fn ensure_signup_allowed(
     state: &AppState,
     email: &str,
     next_path: &Option<String>,
@@ -543,7 +542,7 @@ async fn ensure_signup_allowed(
     }
 }
 
-fn redirect_error(
+pub(crate) fn redirect_error(
     state: &AppState,
     surface: SessionSurface,
     next_path: Option<&str>,
@@ -561,13 +560,29 @@ fn redirect_error(
     )
 }
 
-fn success_redirect(state: &AppState, surface: SessionSurface, next_path: Option<&str>) -> String {
-    let path = safe_next_path(next_path).unwrap_or_else(|| "/".to_owned());
+async fn success_redirect(
+    state: &AppState,
+    user: &users::Model,
+    surface: SessionSurface,
+    next_path: Option<&str>,
+) -> Result<String, AppError> {
     match surface {
-        SessionSurface::Space => format!("{}{}", space_base(state).trim_end_matches('/'), path),
-        SessionSurface::App | SessionSurface::Admin => {
-            format!("{}{}", app_base(state).trim_end_matches('/'), path)
+        SessionSurface::Space => {
+            let path = safe_next_path(next_path).unwrap_or_else(|| "/".to_owned());
+            Ok(format!(
+                "{}{}",
+                space_base(state).trim_end_matches('/'),
+                path
+            ))
         }
+        SessionSurface::App | SessionSurface::Admin => match safe_next_path(next_path) {
+            Some(path) => Ok(format!("{}{}", app_base(state).trim_end_matches('/'), path)),
+            None => Ok(format!(
+                "{}/{}",
+                app_base(state).trim_end_matches('/'),
+                app_default_path(state, user).await?
+            )),
+        },
     }
 }
 
@@ -605,7 +620,7 @@ fn app_base(state: &AppState) -> String {
         .unwrap_or_else(|| "/".to_owned())
 }
 
-fn space_base(state: &AppState) -> String {
+pub(crate) fn space_base(state: &AppState) -> String {
     let base = state
         .config
         .space_base_url
@@ -622,7 +637,7 @@ fn space_base(state: &AppState) -> String {
     }
 }
 
-fn safe_next_path(next_path: Option<&str>) -> Option<String> {
+pub(crate) fn safe_next_path(next_path: Option<&str>) -> Option<String> {
     let path = next_path?.trim();
     if path.is_empty() {
         return None;
@@ -643,4 +658,149 @@ fn normalize_email(email: &str) -> String {
 
 fn is_valid_email(email: &str) -> bool {
     email.parse::<Address>().is_ok()
+}
+
+pub(crate) async fn app_default_path(
+    state: &AppState,
+    user: &users::Model,
+) -> Result<String, AppError> {
+    let profile = profiles::Entity::find()
+        .filter(profiles::Column::UserId.eq(user.id))
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    let Some(profile) = profile else {
+        return Ok("onboarding".to_owned());
+    };
+
+    if !profile.is_onboarded {
+        return Ok("onboarding".to_owned());
+    }
+
+    if let Some(last_workspace_id) = profile.last_workspace_id {
+        let membership = workspace_members::Entity::find()
+            .filter(workspace_members::Column::WorkspaceId.eq(last_workspace_id))
+            .filter(workspace_members::Column::MemberId.eq(user.id))
+            .filter(workspace_members::Column::IsActive.eq(true))
+            .filter(workspace_members::Column::DeletedAt.is_null())
+            .one(&state.db)
+            .await
+            .map_err(AppError::Database)?;
+
+        if membership.is_some() {
+            let workspace = workspaces::Entity::find_by_id(last_workspace_id)
+                .filter(workspaces::Column::DeletedAt.is_null())
+                .one(&state.db)
+                .await
+                .map_err(AppError::Database)?;
+            if let Some(workspace) = workspace {
+                return Ok(workspace.slug);
+            }
+        }
+    }
+
+    let fallback_member = workspace_members::Entity::find()
+        .filter(workspace_members::Column::MemberId.eq(user.id))
+        .filter(workspace_members::Column::IsActive.eq(true))
+        .filter(workspace_members::Column::DeletedAt.is_null())
+        .order_by_asc(workspace_members::Column::CreatedAt)
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+    if let Some(member) = fallback_member {
+        let workspace = workspaces::Entity::find_by_id(member.workspace_id)
+            .filter(workspaces::Column::DeletedAt.is_null())
+            .one(&state.db)
+            .await
+            .map_err(AppError::Database)?;
+        if let Some(workspace) = workspace {
+            return Ok(workspace.slug);
+        }
+    }
+
+    if let Some(email) = user.email.as_deref() {
+        let has_invites = workspace_member_invites::Entity::find()
+            .active()
+            .filter(workspace_member_invites::Column::Email.eq(email))
+            .one(&state.db)
+            .await
+            .map_err(AppError::Database)?
+            .is_some();
+        if has_invites {
+            return Ok("invitations".to_owned());
+        }
+    }
+
+    Ok("create-workspace".to_owned())
+}
+
+pub(crate) async fn ensure_profile_exists(
+    state: &AppState,
+    user: &users::Model,
+) -> Result<(), AppError> {
+    let profile = profiles::Entity::find()
+        .filter(profiles::Column::UserId.eq(user.id))
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+    if profile.is_some() {
+        return Ok(());
+    }
+
+    let now = Utc::now();
+    profiles::ActiveModel {
+        created_at: Set(now.into()),
+        updated_at: Set(now.into()),
+        id: Set(uuid::Uuid::new_v4()),
+        theme: Set(json!({})),
+        is_tour_completed: Set(false),
+        onboarding_step: Set(json!({
+            "profile_complete": false,
+            "workspace_create": false,
+            "workspace_invite": false,
+            "workspace_join": false
+        })),
+        use_case: Set(None),
+        role: Set(None),
+        is_onboarded: Set(false),
+        last_workspace_id: Set(None),
+        billing_address_country: Set("INDIA".to_owned()),
+        billing_address: Set(None),
+        has_billing_address: Set(false),
+        company_name: Set(String::new()),
+        user_id: Set(user.id),
+        is_mobile_onboarded: Set(false),
+        mobile_onboarding_step: Set(json!({
+            "profile_complete": false,
+            "workspace_create": false,
+            "workspace_join": false
+        })),
+        mobile_timezone_auto_set: Set(false),
+        language: Set("en".to_owned()),
+        is_smooth_cursor_enabled: Set(false),
+        start_of_the_week: Set(0),
+        is_app_rail_docked: Set(true),
+        background_color: Set(format!(
+            "#{}",
+            &uuid::Uuid::new_v4().simple().to_string()[..6]
+        )),
+        goals: Set(json!({})),
+        has_marketing_email_consent: Set(false),
+        is_navigation_tour_completed: Set(false),
+        is_subscribed_to_changelog: Set(false),
+        notification_view_mode: Set("full".to_owned()),
+        product_tour: Set(json!({
+            "work_items": false,
+            "cycles": false,
+            "modules": false,
+            "intake": false,
+            "pages": false
+        })),
+    }
+    .insert(&state.db)
+    .await
+    .map_err(AppError::Database)?;
+
+    Ok(())
 }

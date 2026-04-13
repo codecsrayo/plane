@@ -28,6 +28,12 @@ pub mod health;
         auth::email_auth::sign_up_space,
         auth::email_check::email_check,
         auth::email_check::email_check_space,
+        auth::magic_auth::magic_generate,
+        auth::magic_auth::magic_generate_space,
+        auth::magic_auth::magic_sign_in,
+        auth::magic_auth::magic_sign_up,
+        auth::magic_auth::magic_sign_in_space,
+        auth::magic_auth::magic_sign_up_space,
         auth::logout::logout,
         auth::logout::logout_space,
         auth::password_management::change_password,
@@ -40,6 +46,9 @@ pub mod health;
             auth::csrf::CsrfTokenResponse,
             auth::email_auth::CredentialAuthForm,
             auth::email_check::EmailCheckRequest,
+            auth::magic_auth::MagicAuthForm,
+            auth::magic_auth::MagicGenerateRequest,
+            auth::magic_auth::MagicGenerateResponse,
             auth::password_management::ChangePasswordRequest,
             auth::password_management::SetPasswordRequest,
             auth::responses::EmailCheckResponse,
@@ -85,12 +94,30 @@ pub fn build_router(state: AppState) -> Router {
         .route("/auth/sign-in", post(auth::email_auth::sign_in))
         .route("/auth/sign-up", post(auth::email_auth::sign_up))
         .route(
+            "/auth/magic-generate",
+            post(auth::magic_auth::magic_generate),
+        )
+        .route("/auth/magic-sign-in", post(auth::magic_auth::magic_sign_in))
+        .route("/auth/magic-sign-up", post(auth::magic_auth::magic_sign_up))
+        .route(
             "/auth/spaces/sign-in",
             post(auth::email_auth::sign_in_space),
         )
         .route(
             "/auth/spaces/sign-up",
             post(auth::email_auth::sign_up_space),
+        )
+        .route(
+            "/auth/spaces/magic-generate",
+            post(auth::magic_auth::magic_generate_space),
+        )
+        .route(
+            "/auth/spaces/magic-sign-in",
+            post(auth::magic_auth::magic_sign_in_space),
+        )
+        .route(
+            "/auth/spaces/magic-sign-up",
+            post(auth::magic_auth::magic_sign_up_space),
         )
         .route("/auth/email-check", post(auth::email_check::email_check))
         .route(

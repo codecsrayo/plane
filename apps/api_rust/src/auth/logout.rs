@@ -216,6 +216,13 @@ mod tests {
     fn space_redirect_joins_safe_path() {
         let state = AppState {
             db: sea_orm::DatabaseConnection::Disconnected,
+            redis: {
+                let config = fred::prelude::Config::from_url("redis://127.0.0.1:6379")
+                    .expect("redis config");
+                fred::prelude::Builder::from_config(config)
+                    .build_pool(1)
+                    .expect("redis pool")
+            },
             config: Arc::new(Config {
                 database_url: String::new(),
                 redis_url: String::new(),

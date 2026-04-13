@@ -1,4 +1,7 @@
 // src/main.rs
+use fred::prelude::{
+    Builder as RedisBuilder, ClientLike, Config as RedisConfig, Pool as RedisPool,
+};
 use sea_orm::Database;
 use std::{net::SocketAddr, sync::Arc};
 use tokio::net::TcpListener;
@@ -19,6 +22,7 @@ use config::Config;
 #[derive(Clone)]
 pub struct AppState {
     pub db: sea_orm::DatabaseConnection,
+    pub redis: RedisPool,
     pub config: Arc<Config>,
     pub rate_limit: Arc<RateLimitState>,
 }
@@ -53,9 +57,28 @@ async fn main() -> anyhow::Result<()> {
 
     tracing::info!("✅ PostgreSQL conectado");
 
+    tracing::info!("Conectando a Redis...");
+    let redis_config = RedisConfig::from_url(&config.redis_url).map_err(|e| {
+        tracing::error!("No se pudo construir la configuración de Redis: {e}");
+        anyhow::anyhow!(e.to_string())
+    })?;
+    let redis = RedisBuilder::from_config(redis_config)
+        .build_pool(1)
+        .map_err(|e| {
+            tracing::error!("No se pudo crear el pool de Redis: {e}");
+            anyhow::anyhow!(e.to_string())
+        })?;
+    let _redis_task = redis.connect();
+    redis.wait_for_connect().await.map_err(|e| {
+        tracing::error!("No se pudo conectar a Redis: {e}");
+        anyhow::anyhow!(e.to_string())
+    })?;
+    tracing::info!("✅ Redis conectado");
+
     // 4. AppState
     let state = AppState {
         db,
+        redis,
         config: Arc::new(config.clone()),
         rate_limit: Arc::new(RateLimitState::default()),
     };
