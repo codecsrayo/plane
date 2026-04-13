@@ -9,7 +9,7 @@ use uuid::Uuid;
 
 use crate::{
     auth::api_key::ApiKeyUser,
-    entities::{project_members, projects, workspace_members, workspaces, users},
+    entities::{project_members, projects, users, workspace_members, workspaces},
     error::AppError,
     utils::soft_delete::SoftDeleteExt,
     AppState,

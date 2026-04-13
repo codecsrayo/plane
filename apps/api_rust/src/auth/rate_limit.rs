@@ -33,11 +33,7 @@ pub fn bucket_key(raw_token: &str) -> String {
 }
 
 /// Aplica el rate limit en memoria al bucket del token dado.
-pub fn apply_rate_limit(
-    state: &RateLimitState,
-    raw_key: &str,
-    limit: u32,
-) -> Result<(), AppError> {
+pub fn apply_rate_limit(state: &RateLimitState, raw_key: &str, limit: u32) -> Result<(), AppError> {
     use std::time::{SystemTime, UNIX_EPOCH};
 
     let window = 60u64;
@@ -64,10 +60,7 @@ pub fn apply_rate_limit(
 }
 
 /// Middleware Tower — inyecta headers X-RateLimit-* en la respuesta.
-pub async fn rate_limit_headers_middleware(
-    req: Request<Body>,
-    next: Next,
-) -> Response<Body> {
+pub async fn rate_limit_headers_middleware(req: Request<Body>, next: Next) -> Response<Body> {
     let has_api_key = req.headers().contains_key("x-api-key");
     let window = 60u64;
     let now = chrono::Utc::now().timestamp() as u64;

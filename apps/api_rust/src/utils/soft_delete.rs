@@ -31,9 +31,7 @@ pub trait SoftDeleteExt<E: EntityTrait>: Sized {
 #[macro_export]
 macro_rules! impl_soft_delete {
     ($entity:path, $column:path) => {
-        impl $crate::utils::soft_delete::SoftDeleteExt<$entity>
-            for sea_orm::Select<$entity>
-        {
+        impl $crate::utils::soft_delete::SoftDeleteExt<$entity> for sea_orm::Select<$entity> {
             fn active(self) -> Self {
                 use sea_orm::{ColumnTrait, QueryFilter};
                 self.filter($column.is_null())
