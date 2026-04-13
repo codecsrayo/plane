@@ -54,25 +54,28 @@ Los extractores de auth **siempre** implementan `FromRequestParts`.
 
 ## Extractor 1 — `CurrentUser`
 
-Valida el token Bearer contra la tabla `authtoken_token`.
+> [!WARNING] `authtoken_token` no existe en este codebase
+> Plane **no usa** `djangorestframework`'s `TokenAuthentication` ni la tabla `authtoken_token`.
+> La única autenticación por token es `APIKeyAuthentication` sobre la tabla `api_tokens`
+> (header `X-Api-Key`). Ver [`impl-autenticacion.md`](impl-autenticacion.md) — Parte 2.
+
+`CurrentUser` es un wrapper delgado sobre `ApiKeyUser` (definido en `impl-autenticacion.md`).
+No duplica lógica — delega completamente en el extractor ya probado.
 
 ```rust
 // src/auth/extractors.rs
+use axum::{async_trait, extract::{FromRequestParts, FromRef}, http::request::Parts};
+use crate::{AppState, error::AppError, entities::users, auth::api_key::ApiKeyUser};
 
-use axum::{
-    async_trait,
-    extract::{FromRequestParts, FromRef},
-    http::{request::Parts, header::AUTHORIZATION},
-};
-use sea_orm::{EntityTrait, ColumnTrait, QueryFilter};
-use crate::{AppState, error::AppError, entities::{authtoken_token, users}};
-
-/// Extrae y valida el token Bearer.
+/// Extrae el usuario autenticado desde el header `X-Api-Key`.
 /// Retorna 401 automáticamente si:
-///   - No hay header Authorization
-///   - El formato no es "Token <key>"
-///   - El token no existe en la DB
+///   - No hay header X-Api-Key
+///   - El token no existe en api_tokens
+///   - El token está inactivo, expirado o soft-deleted
 ///   - El usuario asociado tiene is_active = false
+///
+/// ⚠️  NO usa Authorization: Bearer ni Authorization: Token —
+///     esos formatos no existen en este codebase (sin authtoken_token).
 pub struct CurrentUser(pub users::Model);
 
 #[async_trait]
@@ -84,47 +87,24 @@ where
     type Rejection = AppError;
 
     async fn from_request_parts(parts: &mut Parts, state: &S) -> Result<Self, AppError> {
-        let app_state = AppState::from_ref(state);
-        let auth_header = parts
-            .headers
-            .get(AUTHORIZATION)
-            .and_then(|v| v.to_str().ok())
-            .ok_or(AppError::Unauthorized)?;
-
-        // Django REST Framework usa "Token" en lugar de "Bearer"
-        let token_key = auth_header
-            .strip_prefix("Token ")
-            .ok_or(AppError::Unauthorized)?;
-
-        // DRF genera tokens de exactamente 40 hex chars.
-        // Rechazar cualquier valor distinto evita queries innecesarias con input inválido.
-        if token_key.len() > 40 {
-            return Err(AppError::Unauthorized);
-        }
-
-        let db = &app_state.db;
-
-        let token = authtoken_token::Entity::find()
-            .filter(authtoken_token::Column::Key.eq(token_key))
-            .one(db)
-            .await
-            .map_err(AppError::Database)?
-            .ok_or(AppError::Unauthorized)?;
-
-        let user = users::Entity::find_by_id(token.user_id)
-            .one(db)
-            .await
-            .map_err(AppError::Database)?
-            .ok_or(AppError::Unauthorized)?;
-
-        if !user.is_active {
-            return Err(AppError::Unauthorized);
-        }
-
-        Ok(CurrentUser(user))
+        // Delegar en ApiKeyUser — toda la lógica de validación, rate limit
+        // y actualización de last_used vive ahí. Sin duplicación.
+        let ApiKeyUser(ctx) = ApiKeyUser::from_request_parts(parts, state).await?;
+        Ok(CurrentUser(ctx.user))
     }
 }
 ```
+
+### Comparación con Django
+
+| Aspecto           | Django (`APIKeyAuthentication`)          | Rust (`CurrentUser`)                         |
+| ----------------- | ---------------------------------------- | -------------------------------------------- |
+| Header            | `X-Api-Key`                              | `X-Api-Key`                                  |
+| Tabla             | `api_tokens`                             | `api_tokens`                                 |
+| Límite longitud   | 255 chars (`max_length=255` en el model) | 128 (validación conservadora en `ApiKeyUser`)|
+| `is_active` check | `is_active=True` en query                | `Column::IsActive.eq(true)`                  |
+| Expiración        | `expired_at__gt=now OR isnull`           | `Condition::any(is_null, gt(now))`           |
+| `last_used`       | `save(update_fields=["last_used"])`      | fire-and-forget con `tracing::warn!` si falla|
 
 ---
 
@@ -391,7 +371,7 @@ Los casos de test (`test_no_token_returns_401`, `test_non_member_returns_403`, `
 
 | Aspecto           | Django DRF                                               | Axum Extractor Pattern                                     |
 | ----------------- | -------------------------------------------------------- | ---------------------------------------------------------- |
-| Auth              | `permission_classes = [IsAuthenticated]` en cada ViewSet | `CurrentUser` extractor en la firma del handler            |
+| Auth              | `permission_classes = [IsAuthenticated]` en cada ViewSet | `CurrentUser` extractor en la firma del handler (X-Api-Key → api_tokens) |
 | RBAC              | `BaseWorkspacePermissions` herencia de clases            | Composición de guards                                      |
 | Error 401/403     | Raises `PermissionDenied`                                | `type Rejection = AppError` automático                     |
 | Reutilización     | Herencia                                                 | Composición — `WorkspaceMemberGuard` llama a `CurrentUser` |
@@ -404,12 +384,15 @@ Los casos de test (`test_no_token_returns_401`, `test_non_member_returns_403`, `
 
 ```
 Fase 1:
-  [ ] src/auth/extractors.rs   — CurrentUser (Bearer token)
+  [ ] src/auth/extractors.rs   — CurrentUser (wrapper sobre ApiKeyUser → X-Api-Key)
                                   WorkspaceMemberGuard (slug → workspace + member)
                                   ProjectMemberGuard (project_id → project + member)
   [ ] src/auth/permissions.rs  — constantes ROLE_GUEST/VIEWER/MEMBER/ADMIN
                                   fn require_role() con Workspace Admin override
                                   (NO en routes/mod.rs — auth vive en src/auth/)
+
+Nota: CurrentUser NO usa Authorization: Bearer ni authtoken_token (tabla DRF inexistente).
+      Delega en ApiKeyUser (impl-autenticacion.md Parte 2 → api_tokens + X-Api-Key).
 ```
 
 ## 🔗 Navegar
