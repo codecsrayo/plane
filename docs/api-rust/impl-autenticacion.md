@@ -27,7 +27,7 @@ estado: activo
 # Autenticación — Session Cookie y API Key
 
 > [!INFO] Estado actual en Rust
-> **Cero implementado.** `src/auth/middleware.todo.rs` y `src/auth/permissions.todo.rs` están vacíos. Este documento cubre la implementación completa.
+> Existe el groundwork (`AppState`, `RateLimitState`, `health`, Scalar UI), pero la autenticación y permisos siguen sin implementarse. Este documento cubre la implementación completa.
 
 ---
 

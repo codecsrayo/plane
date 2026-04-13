@@ -125,7 +125,7 @@ where
 Verifica membresía en workspace **y** en el proyecto. Cadena completa.
 
 ```rust
-// src/auth/permissions.rs
+// src/auth/extractors.rs
 use crate::entities::{projects, project_members};
 
 /// Cadena de verificación:
@@ -316,14 +316,14 @@ Los casos de test (`test_no_token_returns_401`, `test_non_member_returns_403`, `
 
 ## Comparación con Django
 
-| Aspecto           | Django DRF                                               | Axum Extractor Pattern                                     |
-| ----------------- | -------------------------------------------------------- | ---------------------------------------------------------- |
-| Auth              | `permission_classes = [IsAuthenticated]` en cada ViewSet | `ApiKeyUser` directo en guards (X-Api-Key → api_tokens)  |
-| RBAC              | `BaseWorkspacePermissions` herencia de clases            | Composición de guards                                      |
-| Error 401/403     | Raises `PermissionDenied`                                | `type Rejection = AppError` automático                     |
+| Aspecto           | Django DRF                                               | Axum Extractor Pattern                                    |
+| ----------------- | -------------------------------------------------------- | --------------------------------------------------------- |
+| Auth              | `permission_classes = [IsAuthenticated]` en cada ViewSet | `ApiKeyUser` directo en guards (X-Api-Key → api_tokens)   |
+| RBAC              | `BaseWorkspacePermissions` herencia de clases            | Composición de guards                                     |
+| Error 401/403     | Raises `PermissionDenied`                                | `type Rejection = AppError` automático                    |
 | Reutilización     | Herencia                                                 | Composición — `WorkspaceMemberGuard` llama a `ApiKeyUser` |
-| Testeo            | `self.client.force_authenticate(user)`                   | `TestServer` con token real en header                      |
-| Middleware global | `DEFAULT_AUTHENTICATION_CLASSES` en settings.py          | No existe — cada handler declara lo que necesita           |
+| Testeo            | `self.client.force_authenticate(user)`                   | `TestServer` con token real en header                     |
+| Middleware global | `DEFAULT_AUTHENTICATION_CLASSES` en settings.py          | No existe — cada handler declara lo que necesita          |
 
 ---
 

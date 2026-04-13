@@ -94,7 +94,7 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    REQ([Request a /workspaces/:slug/projects/:id/**]) --> CU[ApiKeyUser extractor]
+    REQ([Request a /workspaces/:slug/projects/:project_id/**]) --> CU[ApiKeyUser extractor]
     CU --> F1{¿Token OK?}
     F1 -- No --> E401[401 Unauthorized]
     F1 -- Sí --> WG[WorkspaceMemberGuard]
@@ -127,7 +127,7 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    REQ([Request a /projects/:id/issues/**]) --> GRD[ProjectMemberGuard]
+    REQ([Request a /projects/:project_id/issues/**]) --> GRD[ProjectMemberGuard]
     GRD --> OP{¿Operación?}
 
     OP -- "GET /issues/" --> LIST[list_issues\ncon IssueFilters]
@@ -218,25 +218,25 @@ flowchart TD
 
 ## Tabla de rutas por entidad
 
-| Entidad        | Método           | Ruta                                              | Guard mínimo                            | Fase |
-| -------------- | ---------------- | ------------------------------------------------- | --------------------------------------- | ---- |
-| Workspaces     | GET              | `/api/workspaces/`                                | `ApiKeyUser`                            | 2    |
-| Workspace      | POST             | `/api/workspaces/`                                | `ApiKeyUser`                            | 2    |
-| Workspace      | GET/PATCH/DELETE | `/api/workspaces/:slug/`                          | `WorkspaceMemberGuard`                  | 2    |
-| WS Members     | GET              | `/api/workspaces/:slug/members/`                  | `WorkspaceMemberGuard (≥15)`            | 2    |
-| WS Members     | PATCH/DELETE     | `/api/workspaces/:slug/members/:pk/`              | `WorkspaceMemberGuard (≥20)`            | 2    |
-| WS Invitations | GET/POST         | `/api/workspaces/:slug/invitations/`              | `WorkspaceMemberGuard (≥20)`            | 2    |
-| WS Webhooks    | GET/POST         | `/api/workspaces/:slug/webhooks/`                 | `WorkspaceMemberGuard (≥20)`            | 2    |
-| Projects       | GET              | `/api/workspaces/:slug/projects/`                 | `WorkspaceMemberGuard (≥5)`             | 2    |
-| Project        | POST             | `/api/workspaces/:slug/projects/`                 | `WorkspaceMemberGuard (≥15)`            | 2    |
-| Project        | GET/PATCH/DELETE | `/api/workspaces/:slug/projects/:id/`             | `ProjectMemberGuard (≥18 PATCH/DELETE)` | 2    |
-| Issues         | GET/POST         | `/api/workspaces/:slug/projects/:id/issues/`      | `ProjectMemberGuard (≥5 GET, ≥15 POST)` | 2    |
-| Issue          | GET/PATCH/DELETE | `/api/workspaces/:slug/projects/:id/issues/:iid/` | `ProjectMemberGuard (≥15 PATCH/DELETE)` | 2    |
-| States         | GET              | `/api/workspaces/:slug/projects/:id/states/`      | `ProjectMemberGuard (≥5)`               | 2    |
-| Members        | GET              | `/api/workspaces/:slug/projects/:id/members/`     | `ProjectMemberGuard (≥5)`               | 2    |
-| Cycles         | GET/POST         | `/api/workspaces/:slug/projects/:id/cycles/`      | `ProjectMemberGuard (≥5 GET, ≥15 POST)` | 2    |
-| Modules        | GET/POST         | `/api/workspaces/:slug/projects/:id/modules/`     | `ProjectMemberGuard (≥5 GET, ≥15 POST)` | 2    |
-| Exports        | GET/POST         | `/api/workspaces/:slug/exports/`                  | `WorkspaceMemberGuard (≥5)`             | 3    |
+| Entidad        | Método           | Ruta                                                      | Guard mínimo                            | Fase |
+| -------------- | ---------------- | --------------------------------------------------------- | --------------------------------------- | ---- |
+| Workspaces     | GET              | `/api/workspaces/`                                        | `ApiKeyUser`                            | 2    |
+| Workspace      | POST             | `/api/workspaces/`                                        | `ApiKeyUser`                            | 2    |
+| Workspace      | GET/PATCH/DELETE | `/api/workspaces/:slug/`                                  | `WorkspaceMemberGuard`                  | 2    |
+| WS Members     | GET              | `/api/workspaces/:slug/members/`                          | `WorkspaceMemberGuard (≥15)`            | 2    |
+| WS Members     | PATCH/DELETE     | `/api/workspaces/:slug/members/:pk/`                      | `WorkspaceMemberGuard (≥20)`            | 2    |
+| WS Invitations | GET/POST         | `/api/workspaces/:slug/invitations/`                      | `WorkspaceMemberGuard (≥20)`            | 2    |
+| WS Webhooks    | GET/POST         | `/api/workspaces/:slug/webhooks/`                         | `WorkspaceMemberGuard (≥20)`            | 2    |
+| Projects       | GET              | `/api/workspaces/:slug/projects/`                         | `WorkspaceMemberGuard (≥5)`             | 2    |
+| Project        | POST             | `/api/workspaces/:slug/projects/`                         | `WorkspaceMemberGuard (≥15)`            | 2    |
+| Project        | GET/PATCH/DELETE | `/api/workspaces/:slug/projects/:project_id/`             | `ProjectMemberGuard (≥20 PATCH/DELETE)` | 2    |
+| Issues         | GET/POST         | `/api/workspaces/:slug/projects/:project_id/issues/`      | `ProjectMemberGuard (≥5 GET, ≥15 POST)` | 2    |
+| Issue          | GET/PATCH/DELETE | `/api/workspaces/:slug/projects/:project_id/issues/:iid/` | `ProjectMemberGuard (≥15 PATCH/DELETE)` | 2    |
+| States         | GET              | `/api/workspaces/:slug/projects/:project_id/states/`      | `ProjectMemberGuard (≥5)`               | 2    |
+| Members        | GET              | `/api/workspaces/:slug/projects/:project_id/members/`     | `ProjectMemberGuard (≥5)`               | 2    |
+| Cycles         | GET/POST         | `/api/workspaces/:slug/projects/:project_id/cycles/`      | `ProjectMemberGuard (≥5 GET, ≥15 POST)` | 2    |
+| Modules        | GET/POST         | `/api/workspaces/:slug/projects/:project_id/modules/`     | `ProjectMemberGuard (≥5 GET, ≥15 POST)` | 2    |
+| Exports        | GET/POST         | `/api/workspaces/:slug/exports/`                          | `WorkspaceMemberGuard (≥5)`             | 3    |
 
 ---
 
