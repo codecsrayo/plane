@@ -479,7 +479,96 @@ Fase 1:
 
 Fase 3:
   [ ] src/auth/rate_limit.rs   — migrar RateLimitState a Redis (fred) para multi-réplica
+
+Magic auth (implementado):
+  [x] src/auth/magic_auth.rs   — POST /auth/magic-generate, /auth/magic-sign-in,
+                                  /auth/magic-sign-up y variantes /spaces/
 ```
+
+---
+
+## Parte 5 — Magic Link Authentication
+
+### Endpoints implementados
+
+| Método | Path | Descripción |
+|--------|------|-------------|
+| POST | `/api/auth/magic-generate` | Genera y envía código a email (app) |
+| POST | `/api/auth/magic-sign-in` | Valida código y crea sesión — usuario existente (app) |
+| POST | `/api/auth/magic-sign-up` | Valida código y crea usuario + sesión — usuario nuevo (app) |
+| POST | `/api/auth/spaces/magic-generate` | Igual, superficie space |
+| POST | `/api/auth/spaces/magic-sign-in` | Igual, superficie space |
+| POST | `/api/auth/spaces/magic-sign-up` | Igual, superficie space |
+
+### Flujo — generate
+
+```
+POST /api/auth/magic-generate { "email": "user@example.com" }
+ ├─ instancia configurada y ENABLE_MAGIC_LINK_LOGIN activo
+ ├─ EMAIL_HOST configurado → SMTP_NOT_CONFIGURED si vacío
+ ├─ Redis GET magic_<email>
+ │   ├─ existe → incrementa current_attempt; si > 2 → EMAIL_CODE_ATTEMPT_EXHAUSTED_*
+ │   └─ no existe → crea MagicCodeData { attempt: 0, token: 6-dígitos, email }
+ ├─ Redis SET magic_<email> TTL=600s
+ ├─ envía email SMTP (error → log, no falla la respuesta)
+ └─ { "key": "magic_<email>" }
+```
+
+### Flujo — sign-in / sign-up
+
+```
+POST /api/auth/magic-sign-in { email, code, next_path }
+ ├─ código / email presentes → error MAGIC_SIGN_IN_EMAIL_CODE_REQUIRED
+ ├─ usuario debe existir (sign-in) / no existir (sign-up)
+ ├─ Redis GET magic_<email>
+ │   ├─ no existe → EXPIRED_MAGIC_CODE_SIGN_IN / _SIGN_UP
+ │   └─ token != code → INVALID_MAGIC_CODE_SIGN_IN / _SIGN_UP
+ ├─ Redis DEL magic_<email>   ← invalida inmediatamente tras uso
+ ├─ sign-up → create_magic_user (is_password_autoset=true, is_email_verified=true)
+ ├─ issue_session_cookie / replace_session_cookie
+ └─ redirect app/space con next_path o default
+```
+
+### Redis schema
+
+```
+Clave:  magic_<email_normalizado>
+TTL:    600 segundos
+Valor:  JSON { "current_attempt": 0-3, "email": "...", "token": "NNNNNN" }
+```
+
+### Códigos de error
+
+| Código | Constante | Situación |
+|--------|-----------|-----------|
+| 5016 | `MAGIC_LINK_LOGIN_DISABLED` | `ENABLE_MAGIC_LINK_LOGIN=0` |
+| 5025 | `SMTP_NOT_CONFIGURED` | `EMAIL_HOST` vacío |
+| 5055/5085 | `MAGIC_SIGN_UP/IN_EMAIL_CODE_REQUIRED` | Campos faltantes |
+| 5090/5092 | `INVALID_MAGIC_CODE_SIGN_IN/UP` | Token incorrecto |
+| 5095/5097 | `EXPIRED_MAGIC_CODE_SIGN_IN/UP` | TTL expirado en Redis |
+| 5100 | `EMAIL_CODE_ATTEMPT_EXHAUSTED_SIGN_IN` | >2 intentos, usuario existe |
+| 5102 | `EMAIL_CODE_ATTEMPT_EXHAUSTED_SIGN_UP` | >2 intentos, usuario nuevo |
+
+### Dependencias Cargo.toml
+
+```toml
+fred = { version = "9", features = ["tokio-runtime"] }
+lettre = { version = "0.11", features = ["tokio1-native-tls", "builder"] }
+uuid = { version = "1", features = ["v4"] }
+```
+
+### `AppState` — campo Redis
+
+```rust
+pub struct AppState {
+    pub db: sea_orm::DatabaseConnection,
+    pub redis: fred::prelude::Pool,   // ← agregado en esta fase
+    pub config: Arc<Config>,
+    pub rate_limit: Arc<RateLimitState>,
+}
+```
+
+Redis se inicializa en `main.rs` con `fred::Builder` y se conecta antes de servir tráfico.
 
 ## 🔗 Navegar
 
