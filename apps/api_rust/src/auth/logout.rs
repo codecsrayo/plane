@@ -24,9 +24,9 @@ use crate::{
     path = "/api/auth/sign-out",
     tag = "Auth",
     responses(
-        (status = 303, description = "Sesión cerrada"),
-        (status = 401, description = "No autenticado"),
-        (status = 403, description = "CSRF inválido"),
+        (status = 303, description = "Signed out"),
+        (status = 401, description = "Unauthorized"),
+        (status = 403, description = "Invalid CSRF token"),
     )
 )]
 pub async fn logout(
@@ -43,9 +43,9 @@ pub async fn logout(
     path = "/api/auth/spaces/sign-out",
     tag = "Auth",
     responses(
-        (status = 303, description = "Sesión cerrada"),
-        (status = 401, description = "No autenticado"),
-        (status = 403, description = "CSRF inválido"),
+        (status = 303, description = "Signed out"),
+        (status = 401, description = "Unauthorized"),
+        (status = 403, description = "Invalid CSRF token"),
     )
 )]
 pub async fn logout_space(

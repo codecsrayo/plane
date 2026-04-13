@@ -17,7 +17,7 @@ pub mod health;
     info(
         title = "Plane API (Rust)",
         version = "0.1.0",
-        description = "API REST de Plane — migración Django → Rust",
+        description = "Plane REST API",
     ),
     paths(
         health::health,
@@ -34,11 +34,11 @@ pub mod health;
         )
     ),
     tags(
-        (name = "Health",     description = "Health check"),
-        (name = "Auth",       description = "Autenticación"),
-        (name = "Workspaces", description = "Gestión de workspaces"),
-        (name = "Projects",   description = "Gestión de proyectos"),
-        (name = "Issues",     description = "Issues y work items"),
+        (name = "Health",     description = "Health checks"),
+        (name = "Auth",       description = "Authentication"),
+        (name = "Workspaces", description = "Workspace management"),
+        (name = "Projects",   description = "Project management"),
+        (name = "Issues",     description = "Issues and work items"),
     ),
     modifiers(&SecurityAddon)
 )]

@@ -27,7 +27,7 @@ pub struct CsrfTokenResponse {
     path = "/api/auth/get-csrf-token",
     tag = "Auth",
     responses(
-        (status = 200, description = "CSRF token emitido", body = CsrfTokenResponse),
+        (status = 200, description = "CSRF token issued", body = CsrfTokenResponse),
     )
 )]
 pub async fn get_csrf_token(

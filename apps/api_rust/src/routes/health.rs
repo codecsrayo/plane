@@ -27,8 +27,8 @@ pub struct DbStatus {
     path = "/api/health",
     tag = "Health",
     responses(
-        (status = 200, description = "Servidor activo",   body = HealthResponse),
-        (status = 503, description = "DB no disponible",  body = HealthResponse),
+        (status = 200, description = "Server is healthy", body = HealthResponse),
+        (status = 503, description = "Database unavailable", body = HealthResponse),
     )
 )]
 pub async fn health(
