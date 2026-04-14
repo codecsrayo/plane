@@ -10,6 +10,7 @@ use utoipa::OpenApi;
 use utoipa_scalar::{Scalar, Servable};
 
 pub mod analytics;
+pub mod assets;
 pub mod cycles;
 pub mod exporter;
 pub mod intake;
@@ -229,6 +230,14 @@ pub mod workspaces;
         analytics::default_analytics,
         analytics::project_stats,
         analytics::workspace_analytics,
+        assets::initiate_user_asset_upload,
+        assets::complete_user_asset_upload,
+        assets::delete_user_asset,
+        assets::initiate_workspace_asset_upload,
+        assets::complete_workspace_asset_upload,
+        assets::delete_workspace_asset,
+        assets::get_workspace_asset,
+        assets::get_static_asset,
     ),
     components(
         schemas(
@@ -287,6 +296,7 @@ pub mod workspaces;
         (name = "Exporter",      description = "Issue export"),
         (name = "Search",        description = "Global and project search"),
         (name = "Analytics",    description = "Workspace analytics and project stats"),
+        (name = "Assets",       description = "File assets — user/workspace/project uploads"),
         (name = "Timezones",     description = "Supported timezones"),
         (name = "Users",         description = "Current user profile and settings"),
         (name = "Views",         description = "Issue views (workspace & project)"),
@@ -802,6 +812,30 @@ pub fn build_router(state: AppState) -> Router {
         .route(
             "/workspaces/{slug}/saved-analytic-view/{analytic_id}/",
             get(analytics::get_saved_analytic_view),
+        )
+        // ── Assets ───────────────────────────────────────────────────────────
+        .route(
+            "/assets/v2/user-assets/",
+            post(assets::initiate_user_asset_upload),
+        )
+        .route(
+            "/assets/v2/user-assets/{asset_id}/",
+            patch(assets::complete_user_asset_upload)
+                .delete(assets::delete_user_asset),
+        )
+        .route(
+            "/assets/v2/workspaces/{slug}/",
+            post(assets::initiate_workspace_asset_upload),
+        )
+        .route(
+            "/assets/v2/workspaces/{slug}/{asset_id}/",
+            get(assets::get_workspace_asset)
+                .patch(assets::complete_workspace_asset_upload)
+                .delete(assets::delete_workspace_asset),
+        )
+        .route(
+            "/assets/v2/static/{asset_id}/",
+            get(assets::get_static_asset),
         )
         .layer(middleware::from_fn(
             auth::rate_limit::rate_limit_headers_middleware,
