@@ -243,6 +243,8 @@ impl_soft_delete!(issue_links::Entity, issue_links::Column::DeletedAt);
 impl_soft_delete!(issue_mentions::Entity, issue_mentions::Column::DeletedAt);
 impl_soft_delete!(issue_reactions::Entity, issue_reactions::Column::DeletedAt);
 impl_soft_delete!(issue_relations::Entity, issue_relations::Column::DeletedAt);
+impl_soft_delete!(issue_activities::Entity, issue_activities::Column::DeletedAt);
+impl_soft_delete!(comment_reactions::Entity, comment_reactions::Column::DeletedAt);
 impl_soft_delete!(issue_sequences::Entity, issue_sequences::Column::DeletedAt);
 impl_soft_delete!(
     issue_subscribers::Entity,

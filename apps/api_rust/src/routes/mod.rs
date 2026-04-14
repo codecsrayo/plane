@@ -23,6 +23,7 @@ pub mod labels;
 pub mod notifications;
 pub mod webhooks;
 pub mod health;
+pub mod issue_extras;
 pub mod issues;
 pub mod modules;
 pub mod helpers;
@@ -251,6 +252,27 @@ pub mod workspaces;
         external::unsplash,
         external::project_ai_assistant,
         external::workspace_ai_assistant,
+        issue_extras::list_comments,
+        issue_extras::create_comment,
+        issue_extras::update_comment,
+        issue_extras::delete_comment,
+        issue_extras::list_issue_reactions,
+        issue_extras::add_issue_reaction,
+        issue_extras::remove_issue_reaction,
+        issue_extras::add_comment_reaction,
+        issue_extras::remove_comment_reaction,
+        issue_extras::list_issue_links,
+        issue_extras::create_issue_link,
+        issue_extras::update_issue_link,
+        issue_extras::delete_issue_link,
+        issue_extras::list_issue_relations,
+        issue_extras::create_issue_relation,
+        issue_extras::remove_issue_relation,
+        issue_extras::list_issue_activities,
+        issue_extras::list_issue_subscribers,
+        issue_extras::subscribe_to_issue,
+        issue_extras::unsubscribe_from_issue,
+        issue_extras::list_sub_issues,
     ),
     components(
         schemas(
@@ -886,6 +908,64 @@ pub fn build_router(state: AppState) -> Router {
         .route(
             "/workspaces/{slug}/ai-assistant/",
             post(external::workspace_ai_assistant),
+        )
+        // ── Issue extras (comments, reactions, links, relations, history) ────
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/comments/",
+            get(issue_extras::list_comments).post(issue_extras::create_comment),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/comments/{pk}/",
+            patch(issue_extras::update_comment).delete(issue_extras::delete_comment),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/reactions/",
+            get(issue_extras::list_issue_reactions),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/reactions/{reaction_code}/",
+            post(issue_extras::add_issue_reaction)
+                .delete(issue_extras::remove_issue_reaction),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/comments/{comment_id}/reactions/{reaction_code}/",
+            post(issue_extras::add_comment_reaction)
+                .delete(issue_extras::remove_comment_reaction),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-links/",
+            get(issue_extras::list_issue_links).post(issue_extras::create_issue_link),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-links/{pk}/",
+            patch(issue_extras::update_issue_link)
+                .delete(issue_extras::delete_issue_link),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-relation/",
+            get(issue_extras::list_issue_relations)
+                .post(issue_extras::create_issue_relation),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/remove-relation/",
+            delete(issue_extras::remove_issue_relation),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/history/",
+            get(issue_extras::list_issue_activities),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-subscribers/",
+            get(issue_extras::list_issue_subscribers),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/subscribe/",
+            post(issue_extras::subscribe_to_issue)
+                .delete(issue_extras::unsubscribe_from_issue),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/sub-issues/",
+            get(issue_extras::list_sub_issues),
         )
         .layer(middleware::from_fn(
             auth::rate_limit::rate_limit_headers_middleware,
