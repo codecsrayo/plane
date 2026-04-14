@@ -1141,8 +1141,10 @@ pub async fn list_github_repositories(
         .context("GitHub repos response is not JSON")
         .map_err(AppError::Internal)?;
 
-    let (repos, total_count): (Vec<serde_json::Value>, usize) = if payload.is_array() {
-        let arr = payload.as_array().unwrap();
+    // Usar `if let` evita el `unwrap()` que hubiera pánico si `payload` cambia
+    // de tipo entre la comprobación `is_array()` y el acceso — antipatrón TOCTOU
+    // en memoria (aunque aquí no hay concurrencia, es mala práctica de Rust).
+    let (repos, total_count): (Vec<serde_json::Value>, usize) = if let Some(arr) = payload.as_array() {
         let len = arr.len();
         (arr.clone(), len)
     } else {
