@@ -42,7 +42,7 @@ pub async fn handle_export_issues(
     job: ExportIssuesJob,
     ctx: Data<AppState>,
 ) -> Result<(), Error> {
-    let state = ctx.0.clone();
+    let state: AppState = (*ctx).clone();
 
     if let Err(e) = run_export(&state, &job.exporter_token).await {
         tracing::error!(

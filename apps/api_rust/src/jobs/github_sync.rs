@@ -45,7 +45,7 @@ pub async fn handle_github_initial_sync(
     job: GithubInitialSyncJob,
     ctx: Data<AppState>,
 ) -> Result<(), Error> {
-    let state = ctx.0.clone();
+    let state: AppState = (*ctx).clone();
     let repo_sync_id = job.repo_sync_id;
 
     if let Err(e) = run_sync(&state, repo_sync_id).await {

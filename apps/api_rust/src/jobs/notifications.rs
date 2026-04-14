@@ -42,7 +42,7 @@ pub async fn handle_issue_activity_notification(
     job: IssueActivityNotificationJob,
     ctx: Data<AppState>,
 ) -> Result<(), Error> {
-    let state = ctx.0.clone();
+    let state: AppState = (*ctx).clone();
 
     if let Err(e) = run_notification(&state, job.activity_id).await {
         tracing::error!(

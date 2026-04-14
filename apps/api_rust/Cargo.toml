@@ -52,6 +52,9 @@ sea-orm = { version = "1.1.20", features = [
     "with-json",
 ] }
 
+# sqlx — requerido para PgPool en apalis_sql workers
+sqlx = { version = "0.8", features = ["postgres", "runtime-tokio-rustls"] }
+
 # Jobs / colas — apalis sobre Postgres (versión estable; RC descartada)
 apalis     = { version = "0.7.4", features = ["limit", "timeout", "retry"] }
 apalis-sql = { version = "0.7.4", features = ["postgres", "tokio-comp"] }

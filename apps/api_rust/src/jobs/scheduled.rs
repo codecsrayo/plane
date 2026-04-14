@@ -37,7 +37,7 @@ pub async fn handle_run_issue_automation(
     _job: RunIssueAutomationJob,
     ctx: Data<AppState>,
 ) -> Result<(), Error> {
-    let state = ctx.0.clone();
+    let state: AppState = (*ctx).clone();
 
     let archived = archive_old_issues(&state).await.unwrap_or_else(|e| {
         tracing::error!(error = %e, "scheduled: archive_old_issues falló");
