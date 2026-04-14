@@ -16,6 +16,7 @@ use sea_orm::{
     ActiveModelTrait, ColumnTrait, EntityTrait, PaginatorTrait, QueryFilter,
     QueryOrder, Set, TransactionTrait,
 };
+use std::collections::HashSet;
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 
@@ -790,33 +791,64 @@ pub async fn create_invitations(
         return Err(AppError::BadRequest("emails list is required".into()));
     }
 
-    let ws = workspace_by_slug(&state.db, &slug).await?;
-    let member = require_member(&state.db, ws.id, user.id).await?;
-    require_admin(&member)?;
-
-    let now = chrono::Utc::now().fixed_offset();
-    let mut created = Vec::with_capacity(body.emails.len());
-
+    // ── 1. Validación de roles — upfront, antes de cualquier query de BD ─────
+    //
+    // Fallar rápido evita que una solicitud parcialmente inválida emita queries
+    // o inserciones antes de descubrir el error.
     for invite_req in &body.emails {
-        // Validar rol del invitado
         if ![ROLE_GUEST, ROLE_VIEWER, ROLE_MEMBER, ROLE_ADMIN].contains(&invite_req.role) {
             return Err(AppError::BadRequest(format!(
                 "Invalid role {} for email {}",
                 invite_req.role, invite_req.email
             )));
         }
+    }
 
-        // Evitar duplicados pendientes para el mismo email en el mismo workspace
-        let existing = workspace_member_invites::Entity::find()
-            .active()
-            .filter(workspace_member_invites::Column::WorkspaceId.eq(ws.id))
-            .filter(workspace_member_invites::Column::Email.eq(&invite_req.email))
-            .filter(workspace_member_invites::Column::Accepted.eq(false))
-            .count(&state.db)
-            .await
-            .map_err(AppError::Database)?;
+    let ws = workspace_by_slug(&state.db, &slug).await?;
+    let member = require_member(&state.db, ws.id, user.id).await?;
+    require_admin(&member)?;
 
-        if existing > 0 {
+    // ── 2. Deduplicación en memoria del payload ───────────────────────────────
+    //
+    // Un mismo email listado dos veces en la request no debe producir dos rows;
+    // normalizar a lowercase para comparación case-insensitive (igual que Django).
+    let mut seen_in_payload: HashSet<String> = HashSet::with_capacity(body.emails.len());
+    let unique_invites: Vec<&InviteEmail> = body.emails
+        .iter()
+        .filter(|i| seen_in_payload.insert(i.email.to_lowercase()))
+        .collect();
+
+    // ── 3. Bulk-check — 1 SELECT reemplaza N COUNT queries ───────────────────
+    //
+    // Antes: por cada email → COUNT(*) WHERE email = ? (N queries)
+    // Ahora: 1 query → SELECT email WHERE email IN (e1, e2, …) AND accepted = false
+    let candidate_emails: Vec<String> =
+        unique_invites.iter().map(|i| i.email.clone()).collect();
+
+    let already_invited: HashSet<String> = workspace_member_invites::Entity::find()
+        .active()
+        .filter(workspace_member_invites::Column::WorkspaceId.eq(ws.id))
+        .filter(workspace_member_invites::Column::Email.is_in(candidate_emails))
+        .filter(workspace_member_invites::Column::Accepted.eq(false))
+        .all(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .into_iter()
+        .map(|m| m.email.to_lowercase())
+        .collect();
+
+    // ── 4. Construir ActiveModels y Models en memoria ─────────────────────────
+    //
+    // Los UUIDs se generan localmente — no se necesita `exec_with_returning`
+    // ni una segunda query para recuperar las filas recién insertadas.
+    let now = chrono::Utc::now().fixed_offset();
+    let mut active_models: Vec<workspace_member_invites::ActiveModel> =
+        Vec::with_capacity(unique_invites.len());
+    let mut created_models: Vec<workspace_member_invites::Model> =
+        Vec::with_capacity(unique_invites.len());
+
+    for invite_req in &unique_invites {
+        if already_invited.contains(&invite_req.email.to_lowercase()) {
             tracing::warn!(
                 email = %invite_req.email,
                 workspace = %ws.slug,
@@ -825,13 +857,16 @@ pub async fn create_invitations(
             continue;
         }
 
-        let new_invite = workspace_member_invites::ActiveModel {
-            id: Set(Uuid::new_v4()),
+        let id = Uuid::new_v4();
+        let token = Uuid::new_v4().to_string();
+
+        active_models.push(workspace_member_invites::ActiveModel {
+            id: Set(id),
             workspace_id: Set(ws.id),
             email: Set(invite_req.email.clone()),
             role: Set(invite_req.role),
             accepted: Set(false),
-            token: Set(Uuid::new_v4().to_string()),
+            token: Set(token.clone()),
             message: Set(None),
             responded_at: Set(None),
             created_by_id: Set(Some(user.id)),
@@ -839,16 +874,41 @@ pub async fn create_invitations(
             created_at: Set(now),
             updated_at: Set(now),
             deleted_at: Set(None),
-        };
+        });
 
-        let saved = new_invite
-            .insert(&state.db)
-            .await
-            .map_err(AppError::Database)?;
-        created.push(saved);
+        // Model local — refleja exactamente lo que se va a persistir.
+        created_models.push(workspace_member_invites::Model {
+            id,
+            workspace_id: ws.id,
+            email: invite_req.email.clone(),
+            role: invite_req.role,
+            accepted: false,
+            token,
+            message: None,
+            responded_at: None,
+            created_by_id: Some(user.id),
+            updated_by_id: Some(user.id),
+            created_at: now,
+            updated_at: now,
+            deleted_at: None,
+        });
     }
 
-    let responses: Vec<InvitationResponse> = created.iter().map(InvitationResponse::from).collect();
+    // ── 5. Bulk insert en transacción — 1 INSERT … VALUES (…), (…) ───────────
+    //
+    // Si no hay nada nuevo que insertar (todos eran duplicados) se omite la
+    // transacción por completo.
+    if !active_models.is_empty() {
+        let txn = state.db.begin().await.map_err(AppError::Database)?;
+        workspace_member_invites::Entity::insert_many(active_models)
+            .exec(&txn)
+            .await
+            .map_err(AppError::Database)?;
+        txn.commit().await.map_err(AppError::Database)?;
+    }
+
+    let responses: Vec<InvitationResponse> =
+        created_models.iter().map(InvitationResponse::from).collect();
     Ok((StatusCode::CREATED, Json(responses)))
 }
 
