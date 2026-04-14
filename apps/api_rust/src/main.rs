@@ -64,7 +64,7 @@ async fn main() -> anyhow::Result<()> {
         anyhow::anyhow!(e.to_string())
     })?;
     let redis = RedisBuilder::from_config(redis_config)
-        .build_pool(1)
+        .build_pool(4)
         .map_err(|e| {
             tracing::error!("No se pudo crear el pool de Redis: {e}");
             anyhow::anyhow!(e.to_string())
