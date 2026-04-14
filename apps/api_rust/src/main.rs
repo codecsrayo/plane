@@ -145,10 +145,9 @@ async fn main() -> anyhow::Result<()> {
     if let Err(e) = redis_for_shutdown.quit().await {
         tracing::warn!("Error al enviar QUIT a Redis: {e}");
     }
-    for handle in redis_tasks {
-        if let Err(e) = handle.await {
-            tracing::warn!("Error al unir tarea de Redis: {e}");
-        }
+    // redis.connect() retorna un único JoinHandle, no un Vec.
+    if let Err(e) = redis_tasks.await {
+        tracing::warn!("Error al unir tarea de Redis: {e}");
     }
     tracing::info!("✅ Redis cerrado correctamente");
 

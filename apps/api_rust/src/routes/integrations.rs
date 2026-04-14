@@ -34,7 +34,7 @@ use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 
 use crate::{
-    auth::{api_key::ApiKeyUser, extractors::WorkspaceMemberGuard, permissions::require_workspace_admin},
+    auth::{api_key::ApiKeyUser, extractors::WorkspaceMemberGuard, permissions::{require_workspace_admin, ROLE_ADMIN}},
     entities::{
         api_tokens, db_githubprstatemapping, github_repositories, github_repository_syncs,
         integrations, user_github_connections, workspace_integrations, workspace_members,
@@ -1183,9 +1183,9 @@ pub async fn list_github_repositories(
         )
     };
 
-    // `.query()` está disponible en reqwest::RequestBuilder sin importar
-    // default-features; serializa cada par (k, v) con URL encoding correcto.
-    let resp: reqwest::Response = state
+    // Separamos send().await del manejo de errores para que el compilador
+    // infiera correctamente el tipo reqwest::Response (evita E0282).
+    let send_result = state
         .http
         .get(&api_url)
         .query(&query_params)
@@ -1193,7 +1193,8 @@ pub async fn list_github_repositories(
         .header("Accept", "application/vnd.github+json")
         .header("User-Agent", "plane-api-rust/0.1")
         .send()
-        .await
+        .await;
+    let resp: reqwest::Response = send_result
         .context("Failed to contact GitHub API")
         .map_err(AppError::Internal)?;
 

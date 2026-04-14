@@ -170,6 +170,7 @@ pub fn decrypt_token(stored: &str) -> Result<String, AppError> {
 #[cfg(test)]
 mod tests {
     use super::{decrypt_token, encrypt_token, TOKEN_PREFIX};
+    use base64::Engine as _;
 
     // ── Tests que no requieren clave configurada ─────────────────────────────
 
