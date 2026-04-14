@@ -10,6 +10,10 @@ use utoipa::OpenApi;
 use utoipa_scalar::{Scalar, Servable};
 
 pub mod cycles;
+pub mod exporter;
+pub mod intake;
+pub mod pages;
+pub mod search;
 pub mod estimates;
 pub mod labels;
 pub mod notifications;
@@ -158,6 +162,32 @@ pub mod workspaces;
         webhooks::delete_webhook,
         webhooks::regenerate_secret,
         webhooks::list_webhook_logs,
+        pages::list_pages,
+        pages::create_page,
+        pages::get_page,
+        pages::update_page,
+        pages::delete_page,
+        pages::archive_page,
+        pages::unarchive_page,
+        pages::lock_page,
+        pages::unlock_page,
+        pages::duplicate_page,
+        pages::list_page_versions,
+        pages::get_page_version,
+        intake::list_intakes,
+        intake::create_intake,
+        intake::get_intake,
+        intake::update_intake,
+        intake::delete_intake,
+        intake::list_intake_issues,
+        intake::create_intake_issue,
+        intake::get_intake_issue,
+        intake::update_intake_issue,
+        intake::delete_intake_issue,
+        exporter::export_issues,
+        exporter::get_export_status,
+        search::global_search,
+        search::search_issues,
     ),
     components(
         schemas(
@@ -211,6 +241,10 @@ pub mod workspaces;
         (name = "Estimates",     description = "Project estimates"),
         (name = "Notifications", description = "User notifications"),
         (name = "Webhooks",      description = "Workspace webhooks"),
+        (name = "Pages",         description = "Project pages"),
+        (name = "Intake",        description = "Issue intake / inbox"),
+        (name = "Exporter",      description = "Issue export"),
+        (name = "Search",        description = "Global and project search"),
         (name = "Integrations", description = "GitHub · GitLab · Slack integrations"),
     ),
     modifiers(&SecurityAddon)
@@ -564,6 +598,76 @@ pub fn build_router(state: AppState) -> Router {
         .route(
             "/workspaces/{slug}/webhook-logs/{webhook_id}/",
             get(webhooks::list_webhook_logs),
+        )
+        // ── Pages ────────────────────────────────────────────────────────────
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/pages/",
+            get(pages::list_pages).post(pages::create_page),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/pages/{page_id}/",
+            get(pages::get_page)
+                .patch(pages::update_page)
+                .delete(pages::delete_page),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/pages/{page_id}/archive/",
+            post(pages::archive_page).delete(pages::unarchive_page),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/pages/{page_id}/lock/",
+            post(pages::lock_page).delete(pages::unlock_page),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/pages/{page_id}/duplicate/",
+            post(pages::duplicate_page),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/pages/{page_id}/versions/",
+            get(pages::list_page_versions),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/pages/{page_id}/versions/{pk}/",
+            get(pages::get_page_version),
+        )
+        // ── Intake ───────────────────────────────────────────────────────────
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/intakes/",
+            get(intake::list_intakes).post(intake::create_intake),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/intakes/{pk}/",
+            get(intake::get_intake)
+                .patch(intake::update_intake)
+                .delete(intake::delete_intake),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/intake-issues/",
+            get(intake::list_intake_issues).post(intake::create_intake_issue),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/intake-issues/{pk}/",
+            get(intake::get_intake_issue)
+                .patch(intake::update_intake_issue)
+                .delete(intake::delete_intake_issue),
+        )
+        // ── Exporter ─────────────────────────────────────────────────────────
+        .route(
+            "/workspaces/{slug}/export-issues/",
+            post(exporter::export_issues),
+        )
+        .route(
+            "/workspaces/{slug}/export-issues/{token}/",
+            get(exporter::get_export_status),
+        )
+        // ── Search ───────────────────────────────────────────────────────────
+        .route(
+            "/workspaces/{slug}/search/",
+            get(search::global_search),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/search-issues/",
+            get(search::search_issues),
         )
         .layer(middleware::from_fn(
             auth::rate_limit::rate_limit_headers_middleware,
