@@ -60,7 +60,7 @@ const VALID_Y_AXIS: &[&str] = &["issue_count", "estimate"];
 
 // ── DTOs ─────────────────────────────────────────────────────────────────────
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct AnalyticViewResponse {
     pub id: Uuid,
     pub name: String,
@@ -74,7 +74,7 @@ pub struct AnalyticViewResponse {
     pub updated_at: DateTime<FixedOffset>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct CreateAnalyticViewRequest {
     pub name: String,
     pub description: Option<String>,
@@ -82,7 +82,7 @@ pub struct CreateAnalyticViewRequest {
     pub query_dict: Option<serde_json::Value>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct UpdateAnalyticViewRequest {
     pub name: Option<String>,
     pub description: Option<String>,
@@ -90,7 +90,7 @@ pub struct UpdateAnalyticViewRequest {
     pub query_dict: Option<serde_json::Value>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct AnalyticsQuery {
     pub x_axis: Option<String>,
     pub y_axis: Option<String>,
@@ -99,13 +99,13 @@ pub struct AnalyticsQuery {
     pub project_ids: Option<String>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct ProjectStatsQuery {
     pub fields: Option<String>,
     pub project_ids: Option<String>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct ExportAnalyticsRequest {
     pub x_axis: Option<String>,
     pub y_axis: Option<String>,
