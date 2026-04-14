@@ -520,6 +520,12 @@ pub async fn update_issue(
             if let Some(draft) = body.is_draft {
                 am.is_draft = Set(draft);
             }
+            if body.estimate_point_id.is_some() {
+                am.estimate_point_id = Set(body.estimate_point_id);
+            }
+            if body.type_id.is_some() {
+                am.type_id = Set(body.type_id);
+            }
             am.updated_by_id = Set(Some(user_id));
 
             let assignees = assignees.clone();
