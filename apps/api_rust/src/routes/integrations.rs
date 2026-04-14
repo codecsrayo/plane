@@ -45,6 +45,7 @@ use crate::{
         instance_config::get_instance_config,
         oauth_popup::{postmessage_html, OAuthMessageType},
         soft_delete::SoftDeleteExt,
+        token_cipher::encrypt_token,
     },
     AppState,
 };
@@ -540,6 +541,13 @@ pub async fn github_user_callback(
 
     let user_id = guard.user.id;
 
+    // El access_token se cifra con AES-256-GCM antes de ser almacenado.
+    // Formato: `v1:<base64(nonce[12] || ciphertext_with_tag)>`.
+    // Si TOKEN_ENCRYPTION_KEY no está configurada, se almacena en texto plano
+    // con un WARN en logs — degradación controlada para deploys sin configuración.
+    // Filas legacy sin prefijo `v1:` (de Django) son legibles por decrypt_token.
+    let encrypted_token = encrypt_token(&access_token);
+
     // Upsert user_github_connections
     let existing = user_github_connections::Entity::find()
         .filter(user_github_connections::Column::UserId.eq(user_id))
@@ -547,17 +555,12 @@ pub async fn github_user_callback(
         .await
         .map_err(AppError::Database)?;
 
-    // SECURITY: `access_token` se almacena en texto plano para mantener
-    // interoperabilidad con la API Django que comparte esta tabla.
-    // El modelo Django tiene el mismo comportamiento ("encrypted in production ideally").
-    // Corrección pendiente: migración coordinada a cifrado simétrico (ej. Fernet/AES-GCM)
-    // en ambos servicios simultáneamente. Ver docs/api-rust/SECURITY.md.
     let (conn, created) = if let Some(conn) = existing {
         let mut am: user_github_connections::ActiveModel = conn.into();
         am.github_user_id = Set(github_user_id);
         am.github_username = Set(github_username);
         am.github_avatar_url = Set(github_avatar_url);
-        am.access_token = Set(access_token);
+        am.access_token = Set(encrypted_token);
         (am.update(&state.db).await.map_err(AppError::Database)?, false)
     } else {
         let new_conn = user_github_connections::ActiveModel {
@@ -566,7 +569,7 @@ pub async fn github_user_callback(
             github_user_id: Set(github_user_id),
             github_username: Set(github_username),
             github_avatar_url: Set(github_avatar_url),
-            access_token: Set(access_token),
+            access_token: Set(encrypted_token),
             ..Default::default()
         };
         (new_conn.insert(&state.db).await.map_err(AppError::Database)?, true)

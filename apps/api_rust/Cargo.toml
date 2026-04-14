@@ -70,6 +70,7 @@ lettre = { version = "*", features = [
 openssl = { version = "*", features = ["vendored"] }
 sha2 = "*"                                           # hash de API keys — NUNCA almacenar raw token en memoria
 jsonwebtoken = "*"                                   # JWT RS256 para GitHub App auth
+aes-gcm = "*"                                        # AES-256-GCM para cifrado de tokens OAuth en reposo
 
 # Serialización
 serde = { version = "*", features = ["derive"] }
