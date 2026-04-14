@@ -27,6 +27,7 @@ use crate::{
     },
     entities::{workspace_member_invites, workspace_members, workspaces},
     error::AppError,
+    routes::helpers::{require_workspace_member, workspace_by_slug},
     utils::{instance_config::get_config_value, soft_delete::SoftDeleteExt},
     AppState,
 };
@@ -53,38 +54,10 @@ const RESTRICTED_SLUGS: &[&str] = &[
     "space", "spaces", "static", "terms", "updates", "workspaces",
 ];
 
-// ─── Helpers internos ────────────────────────────────────────────────────────
-
-/// Recupera workspace activo por slug.
-async fn workspace_by_slug(
-    db: &sea_orm::DatabaseConnection,
-    slug: &str,
-) -> Result<workspaces::Model, AppError> {
-    workspaces::Entity::find()
-        .active()
-        .filter(workspaces::Column::Slug.eq(slug))
-        .one(db)
-        .await
-        .map_err(AppError::Database)?
-        .ok_or(AppError::NotFound)
-}
-
-/// Verifica que `user_id` sea miembro activo del workspace. Retorna el registro.
-async fn require_member(
-    db: &sea_orm::DatabaseConnection,
-    workspace_id: Uuid,
-    user_id: Uuid,
-) -> Result<workspace_members::Model, AppError> {
-    workspace_members::Entity::find()
-        .active()
-        .filter(workspace_members::Column::WorkspaceId.eq(workspace_id))
-        .filter(workspace_members::Column::MemberId.eq(user_id))
-        .filter(workspace_members::Column::IsActive.eq(true))
-        .one(db)
-        .await
-        .map_err(AppError::Database)?
-        .ok_or(AppError::Forbidden)
-}
+// ─── Helpers de slug ─────────────────────────────────────────────────────────
+//
+// `workspace_by_slug` y `require_workspace_member` viven en `helpers.rs`
+// y se importan arriba. Solo queda la validación local del formato del slug.
 
 fn validate_slug(slug: &str) -> Result<(), AppError> {
     if slug.is_empty() || slug.len() > 48 {
@@ -454,7 +427,7 @@ pub async fn get_workspace(
     Path(slug): Path<String>,
 ) -> Result<Json<WorkspaceResponse>, AppError> {
     let ws = workspace_by_slug(&state.db, &slug).await?;
-    let member = require_member(&state.db, ws.id, user.id).await?;
+    let member = require_workspace_member(&state.db, ws.id, user.id).await?;
 
     let total = workspace_members::Entity::find()
         .active()
@@ -495,7 +468,7 @@ pub async fn update_workspace(
     Json(body): Json<UpdateWorkspaceRequest>,
 ) -> Result<Json<WorkspaceResponse>, AppError> {
     let ws = workspace_by_slug(&state.db, &slug).await?;
-    let member = require_member(&state.db, ws.id, user.id).await?;
+    let member = require_workspace_member(&state.db, ws.id, user.id).await?;
     require_admin(&member)?;
 
     if let Some(ref name) = body.name {
@@ -555,7 +528,7 @@ pub async fn delete_workspace(
 
     // Solo el owner puede eliminar el workspace (equivalente Django)
     if ws.owner_id != user.id {
-        let member = require_member(&state.db, ws.id, user.id).await?;
+        let member = require_workspace_member(&state.db, ws.id, user.id).await?;
         require_admin(&member)?;
         // Admin no owner puede eliminar solo si tiene permiso — aquí solo owner
         return Err(AppError::Forbidden);
@@ -592,7 +565,7 @@ pub async fn list_members(
     Path(slug): Path<String>,
 ) -> Result<Json<Vec<WorkspaceMemberResponse>>, AppError> {
     let ws = workspace_by_slug(&state.db, &slug).await?;
-    require_member(&state.db, ws.id, user.id).await?;
+    require_workspace_member(&state.db, ws.id, user.id).await?;
 
     let members = workspace_members::Entity::find()
         .active()
@@ -634,7 +607,7 @@ pub async fn update_member(
     Json(body): Json<UpdateMemberRoleRequest>,
 ) -> Result<Json<WorkspaceMemberResponse>, AppError> {
     let ws = workspace_by_slug(&state.db, &slug).await?;
-    let caller = require_member(&state.db, ws.id, user.id).await?;
+    let caller = require_workspace_member(&state.db, ws.id, user.id).await?;
     require_admin(&caller)?;
 
     // Validar rol
@@ -696,7 +669,7 @@ pub async fn remove_member(
     Path((slug, pk)): Path<(String, Uuid)>,
 ) -> Result<StatusCode, AppError> {
     let ws = workspace_by_slug(&state.db, &slug).await?;
-    let caller = require_member(&state.db, ws.id, user.id).await?;
+    let caller = require_workspace_member(&state.db, ws.id, user.id).await?;
     require_admin(&caller)?;
 
     let target = workspace_members::Entity::find_by_id(pk)
@@ -747,7 +720,7 @@ pub async fn list_invitations(
     Path(slug): Path<String>,
 ) -> Result<Json<Vec<InvitationResponse>>, AppError> {
     let ws = workspace_by_slug(&state.db, &slug).await?;
-    let member = require_member(&state.db, ws.id, user.id).await?;
+    let member = require_workspace_member(&state.db, ws.id, user.id).await?;
     require_admin(&member)?;
 
     let invites = workspace_member_invites::Entity::find()
@@ -805,7 +778,7 @@ pub async fn create_invitations(
     }
 
     let ws = workspace_by_slug(&state.db, &slug).await?;
-    let member = require_member(&state.db, ws.id, user.id).await?;
+    let member = require_workspace_member(&state.db, ws.id, user.id).await?;
     require_admin(&member)?;
 
     // ── 2. Deduplicación en memoria del payload ───────────────────────────────
@@ -936,7 +909,7 @@ pub async fn delete_invitation(
     Path((slug, pk)): Path<(String, Uuid)>,
 ) -> Result<StatusCode, AppError> {
     let ws = workspace_by_slug(&state.db, &slug).await?;
-    let member = require_member(&state.db, ws.id, user.id).await?;
+    let member = require_workspace_member(&state.db, ws.id, user.id).await?;
     require_admin(&member)?;
 
     let invite = workspace_member_invites::Entity::find_by_id(pk)
