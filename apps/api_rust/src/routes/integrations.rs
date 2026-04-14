@@ -28,7 +28,6 @@ use axum::{
 };
 use sea_orm::{
     ActiveModelTrait, ActiveValue::Set, ColumnTrait, EntityTrait, QueryFilter, QueryOrder,
-    QuerySelect,
 };
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
@@ -1056,7 +1055,7 @@ pub async fn list_github_repositories(
     let per_page = params.per_page.unwrap_or(30).min(100);
 
     // Installation token → /installation/repositories; PAT → /user/repos
-    let (api_url, mut query_params): (String, Vec<(&str, String)>) = if is_installation_token {
+    let (api_url, query_params): (String, Vec<(&str, String)>) = if is_installation_token {
         (
             "https://api.github.com/installation/repositories".into(),
             vec![

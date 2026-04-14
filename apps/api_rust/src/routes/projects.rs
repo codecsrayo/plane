@@ -131,15 +131,6 @@ async fn require_workspace_member(
         .ok_or(AppError::Forbidden)
 }
 
-/// Verifica que el usuario sea Admin del workspace.
-fn require_workspace_admin(member: &workspace_members::Model) -> Result<(), AppError> {
-    if member.role >= ROLE_ADMIN {
-        Ok(())
-    } else {
-        Err(AppError::Forbidden)
-    }
-}
-
 /// Obtiene proyecto activo por id dentro del workspace.
 async fn project_by_id(
     db: &sea_orm::DatabaseConnection,
@@ -301,7 +292,6 @@ pub struct UpdateProjectRequest {
     pub intake_view: Option<bool>,
     pub is_time_tracking_enabled: Option<bool>,
     pub cover_image: Option<String>,
-    pub background_color: Option<String>,
     pub archive_in: Option<i32>,
     pub close_in: Option<i32>,
     pub guest_view_all_features: Option<bool>,
