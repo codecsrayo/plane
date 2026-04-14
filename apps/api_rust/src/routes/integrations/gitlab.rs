@@ -16,7 +16,7 @@ use crate::{
     auth::{extractors::WorkspaceMemberGuard, permissions::require_workspace_admin},
     entities::workspace_integrations,
     error::AppError,
-    utils::instance_config::get_instance_config,
+    utils::{instance_config::get_instance_config, soft_delete::SoftDeleteExt},
     AppState,
 };
 
@@ -65,7 +65,7 @@ pub async fn list_gitlab_repositories(
 
     let gitlab_token = params
         .token
-        .or_else(|| wi.metadata.get("code").and_then(|v| v.as_str()).map(str::to_owned))
+        .or_else(|| wi.metadata.get("code").and_then(|v: &serde_json::Value| v.as_str()).map(str::to_owned))
         .or_else(|| std::env::var("GITLAB_ACCESS_TOKEN").ok())
         .ok_or_else(|| AppError::BadRequest("GitLab token not provided".into()))?;
 

@@ -26,7 +26,7 @@ use crate::{
     auth::{extractors::WorkspaceMemberGuard, permissions::require_workspace_admin},
     entities::{integrations, workspace_integrations},
     error::AppError,
-    utils::instance_config::get_instance_config,
+    utils::{instance_config::get_instance_config, soft_delete::SoftDeleteExt},
     AppState,
 };
 
