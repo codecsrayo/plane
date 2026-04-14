@@ -19,13 +19,14 @@ use axum::{
 };
 use sea_orm::{
     ActiveModelTrait, ActiveValue::Set, ColumnTrait, EntityTrait, QueryFilter, QueryOrder,
+    QuerySelect,
 };
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 
 use crate::{
     auth::extractors::WorkspaceMemberGuard,
-    entities::notifications,
+    entities::{issue_assignees, issue_subscribers, issues, notifications},
     error::AppError,
     utils::soft_delete::SoftDeleteExt,
     AppState,
@@ -107,6 +108,14 @@ pub async fn list_notifications(
         .filter(notifications::Column::WorkspaceId.eq(guard.workspace.id))
         .filter(notifications::Column::DeletedAt.is_null());
 
+    // Filtro snoozed (default: false — no pospuestas)
+    let show_snoozed = filter.snoozed.unwrap_or(false);
+    if show_snoozed {
+        query = query.filter(notifications::Column::SnoozedTill.is_not_null());
+    } else {
+        query = query.filter(notifications::Column::SnoozedTill.is_null());
+    }
+
     // Por defecto no mostrar archivadas
     let include_archived = filter.archived.unwrap_or(false);
     if !include_archived {
@@ -119,6 +128,55 @@ pub async fn list_notifications(
             query = query.filter(notifications::Column::ReadAt.is_not_null());
         } else {
             query = query.filter(notifications::Column::ReadAt.is_null());
+        }
+    }
+
+    // Filtrar por tipo: subscribed | assigned | created (comma-separated, default "all")
+    if let Some(ref type_str) = filter.type_filter {
+        let types: Vec<&str> = type_str.split(',').map(str::trim).collect();
+        if !types.contains(&"all") {
+            let mut issue_ids: Vec<Uuid> = Vec::new();
+
+            if types.contains(&"assigned") {
+                let ids = issue_assignees::Entity::find()
+                    .select_only()
+                    .column(issue_assignees::Column::IssueId)
+                    .filter(issue_assignees::Column::AssigneeId.eq(guard.user.id))
+                    .into_tuple::<Uuid>()
+                    .all(&state.db)
+                    .await
+                    .map_err(AppError::Database)?;
+                issue_ids.extend(ids);
+            }
+
+            if types.contains(&"created") {
+                let ids = issues::Entity::find()
+                    .select_only()
+                    .column(issues::Column::Id)
+                    .filter(issues::Column::CreatedById.eq(guard.user.id))
+                    .filter(issues::Column::WorkspaceId.eq(guard.workspace.id))
+                    .into_tuple::<Uuid>()
+                    .all(&state.db)
+                    .await
+                    .map_err(AppError::Database)?;
+                issue_ids.extend(ids);
+            }
+
+            if types.contains(&"subscribed") {
+                let ids = issue_subscribers::Entity::find()
+                    .select_only()
+                    .column(issue_subscribers::Column::IssueId)
+                    .filter(issue_subscribers::Column::SubscriberId.eq(guard.user.id))
+                    .filter(issue_subscribers::Column::WorkspaceId.eq(guard.workspace.id))
+                    .into_tuple::<Uuid>()
+                    .all(&state.db)
+                    .await
+                    .map_err(AppError::Database)?;
+                issue_ids.extend(ids);
+            }
+
+            issue_ids.dedup();
+            query = query.filter(notifications::Column::EntityIdentifier.is_in(issue_ids));
         }
     }
 
