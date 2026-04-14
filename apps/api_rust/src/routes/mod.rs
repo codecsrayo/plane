@@ -9,6 +9,7 @@ use utoipa::OpenApi;
 use utoipa_scalar::{Scalar, Servable};
 
 pub mod health;
+pub mod projects;
 pub mod workspaces;
 
 #[derive(OpenApi)]
@@ -53,7 +54,17 @@ pub mod workspaces;
         workspaces::list_invitations,
         workspaces::create_invitations,
         workspaces::delete_invitation,
-        // Fase 2b: projects::list_projects,
+        projects::list_projects,
+        projects::create_project,
+        projects::get_project,
+        projects::update_project,
+        projects::delete_project,
+        projects::list_project_members,
+        projects::update_project_member,
+        projects::remove_project_member,
+        projects::list_project_invitations,
+        projects::create_project_invitations,
+        projects::delete_project_invitation,
     ),
     components(
         schemas(
@@ -81,6 +92,14 @@ pub mod workspaces;
             workspaces::CreateInvitationRequest,
             workspaces::InviteEmail,
             workspaces::SlugCheckResponse,
+            projects::ProjectResponse,
+            projects::CreateProjectRequest,
+            projects::UpdateProjectRequest,
+            projects::ProjectMemberResponse,
+            projects::UpdateProjectMemberRequest,
+            projects::ProjectInvitationResponse,
+            projects::CreateProjectInvitationRequest,
+            projects::ProjectInviteEmail,
         )
     ),
     tags(
@@ -206,6 +225,34 @@ pub fn build_router(state: AppState) -> Router {
         .route(
             "/workspaces/:slug/invitations/:pk",
             delete(workspaces::delete_invitation),
+        )
+        // ── Projects (Fase 2b) ───────────────────────────────────────────────
+        .route(
+            "/workspaces/:slug/projects",
+            get(projects::list_projects).post(projects::create_project),
+        )
+        .route(
+            "/workspaces/:slug/projects/:project_id",
+            get(projects::get_project)
+                .patch(projects::update_project)
+                .delete(projects::delete_project),
+        )
+        .route(
+            "/workspaces/:slug/projects/:project_id/members",
+            get(projects::list_project_members),
+        )
+        .route(
+            "/workspaces/:slug/projects/:project_id/members/:pk",
+            patch(projects::update_project_member).delete(projects::remove_project_member),
+        )
+        .route(
+            "/workspaces/:slug/projects/:project_id/invitations",
+            get(projects::list_project_invitations)
+                .post(projects::create_project_invitations),
+        )
+        .route(
+            "/workspaces/:slug/projects/:project_id/invitations/:pk",
+            delete(projects::delete_project_invitation),
         )
         .layer(middleware::from_fn(
             auth::rate_limit::rate_limit_headers_middleware,
