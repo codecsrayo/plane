@@ -15,7 +15,6 @@ use crate::{
     auth::extractors::WorkspaceMemberGuard,
     entities::exporters,
     error::AppError,
-    utils::soft_delete::SoftDeleteExt,
     AppState,
 };
 

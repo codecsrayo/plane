@@ -75,7 +75,7 @@ pub struct EstimateResponse {
     pub updated_at: chrono::DateTime<chrono::FixedOffset>,
 }
 
-#[derive(Debug, Deserialize, utoipa::ToSchema)]
+#[derive(Debug, Clone, Deserialize, utoipa::ToSchema)]
 pub struct EstimatePointInput {
     pub key: i32,
     pub value: String,

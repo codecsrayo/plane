@@ -5,10 +5,11 @@
 //!   GET /api/workspaces/{slug}/projects/{project_id}/search-issues/
 
 use axum::{
-    extract::{Path, Query, State},
+    extract::{Query, State},
     Json,
 };
-use sea_orm::{ColumnTrait, EntityTrait, QueryFilter, QueryLimit, QueryOrder};
+use sea_orm::{ColumnTrait, EntityTrait, QueryFilter, QueryOrder, QuerySelect};
+use sea_orm::sea_query::extension::postgres::PgExpr;
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 
@@ -17,7 +18,7 @@ use crate::{
         extractors::{ProjectMemberGuard, WorkspaceMemberGuard},
         permissions::{require_role, ROLE_GUEST},
     },
-    entities::{cycles, issues, modules, pages, project_pages, projects},
+    entities::{cycles, issues, modules, pages, projects},
     error::AppError,
     utils::soft_delete::SoftDeleteExt,
     AppState,
