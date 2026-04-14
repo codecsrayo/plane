@@ -30,6 +30,17 @@ use crate::{
     AppState,
 };
 
+// ─── Alias de permisos ───────────────────────────────────────────────────────
+
+/// Alias local de [`require_workspace_admin`].
+///
+/// Permite usar `require_admin(&member)?` de forma concisa en todos los
+/// handlers de este módulo sin importar un símbolo adicional en cada llamada.
+#[inline(always)]
+fn require_admin(member: &workspace_members::Model) -> Result<(), AppError> {
+    require_workspace_admin(member)
+}
+
 // ─── Slugs reservados ────────────────────────────────────────────────────────
 
 const RESTRICTED_SLUGS: &[&str] = &[

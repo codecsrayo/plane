@@ -20,7 +20,13 @@ use crate::error::AppError;
 #[derive(Debug, Default)]
 pub struct RateLimitState {
     pub buckets: std::sync::Mutex<HashMap<String, (u32, u64)>>,
+    /// Contador de inserciones nuevas desde el último ciclo de poda.
+    /// Se usa para amortizar el costo de `retain` cada PRUNE_INTERVAL entradas.
+    insert_count: std::sync::atomic::AtomicU64,
 }
+
+/// Cada cuántas inserciones nuevas se ejecuta la poda de entradas vencidas.
+const PRUNE_INTERVAL: u64 = 1_000;
 
 /// Genera un bucket key opaco a partir del raw token.
 pub fn bucket_key(raw_token: &str) -> String {
@@ -45,6 +51,8 @@ pub fn apply_rate_limit(state: &RateLimitState, raw_key: &str, limit: u32) -> Re
 
     let bucket = bucket_key(raw_key);
     let mut buckets = state.buckets.lock().unwrap_or_else(|p| p.into_inner());
+
+    let is_new_entry = !buckets.contains_key(&bucket);
     let entry = buckets.entry(bucket).or_insert((0, window_start));
 
     if entry.1 < window_start {
@@ -52,7 +60,20 @@ pub fn apply_rate_limit(state: &RateLimitState, raw_key: &str, limit: u32) -> Re
     }
 
     entry.0 += 1;
-    if entry.0 > limit {
+    let over_limit = entry.0 > limit;
+
+    // Poda amortizada: eliminar buckets de ventanas vencidas cada PRUNE_INTERVAL
+    // inserciones nuevas para evitar crecimiento ilimitado del HashMap (memory leak).
+    if is_new_entry {
+        let prev = state
+            .insert_count
+            .fetch_add(1, std::sync::atomic::Ordering::Relaxed);
+        if prev % PRUNE_INTERVAL == PRUNE_INTERVAL - 1 {
+            buckets.retain(|_, v| v.1 >= window_start);
+        }
+    }
+
+    if over_limit {
         Err(AppError::RateLimited)
     } else {
         Ok(())
