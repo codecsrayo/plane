@@ -1,5 +1,7 @@
 // src/main.rs
-use fred::prelude::{
+use apalis::prelude::{Monitor, WorkerBuilder, WorkerFactoryFn};
+use apalis_sql::postgres::PostgresStorage;
+use fred::prelude:{
     Builder as RedisBuilder, ClientLike, Config as RedisConfig, Pool as RedisPool,
 };
 use sea_orm::Database;
@@ -34,10 +36,71 @@ async fn shutdown_signal() {
     }
 }
 
+/// Inicializa los workers de apalis (jobs en segundo plano).
+/// Cada worker consume una cola de PostgreSQL de forma independiente.
+async fn start_job_workers(db_url: String, state: AppState) -> anyhow::Result<()> {
+    use jobs::{
+        export::{ExportIssuesJob, handle_export_issues},
+        github_sync::{GithubInitialSyncJob, handle_github_initial_sync},
+        notifications::{IssueActivityNotificationJob, handle_issue_activity_notification},
+        scheduled::{RunIssueAutomationJob, handle_run_issue_automation},
+    };
+
+    // Crear storages de PostgreSQL para cada tipo de job
+    let github_storage =
+        PostgresStorage::<GithubInitialSyncJob>::connect(&db_url).await?;
+    github_storage.setup().await?;
+
+    let notif_storage =
+        PostgresStorage::<IssueActivityNotificationJob>::connect(&db_url).await?;
+    notif_storage.setup().await?;
+
+    let export_storage =
+        PostgresStorage::<ExportIssuesJob>::connect(&db_url).await?;
+    export_storage.setup().await?;
+
+    let scheduled_storage =
+        PostgresStorage::<RunIssueAutomationJob>::connect(&db_url).await?;
+    scheduled_storage.setup().await?;
+
+    // Monitor agrupa todos los workers y los ejecuta concurrentemente
+    Monitor::new()
+        .register(
+            WorkerBuilder::new("github-initial-sync")
+                .data(state.clone())
+                .backend(github_storage)
+                .build_fn(handle_github_initial_sync),
+        )
+        .register(
+            WorkerBuilder::new("issue-activity-notification")
+                .data(state.clone())
+                .backend(notif_storage)
+                .build_fn(handle_issue_activity_notification),
+        )
+        .register(
+            WorkerBuilder::new("export-issues")
+                .data(state.clone())
+                .backend(export_storage)
+                .build_fn(handle_export_issues),
+        )
+        .register(
+            WorkerBuilder::new("issue-automation")
+                .data(state.clone())
+                .backend(scheduled_storage)
+                .build_fn(handle_run_issue_automation),
+        )
+        .run()
+        .await?;
+
+    Ok(())
+}
+
+
 pub mod auth;
 mod config;
 pub mod entities;
 mod error;
+pub mod jobs;
 mod routes;
 pub mod utils;
 
@@ -120,6 +183,16 @@ async fn main() -> anyhow::Result<()> {
             .build()
             .expect("Error al construir reqwest::Client"),
     };
+
+
+    // 5a. Apalis job workers — inician en background, no bloquean el servidor
+    let db_url = config.database_url.clone();
+    let state_for_jobs = state.clone();
+    tokio::spawn(async move {
+        if let Err(e) = start_job_workers(db_url, state_for_jobs).await {
+            tracing::error!(error = %e, "Error al iniciar workers de apalis");
+        }
+    });
 
     // 5. Router
     let app = routes::build_router(state);
