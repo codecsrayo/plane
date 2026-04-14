@@ -10,6 +10,7 @@ use utoipa_scalar::{Scalar, Servable};
 
 pub mod health;
 pub mod projects;
+pub mod states;
 pub mod workspaces;
 
 #[derive(OpenApi)]
@@ -65,6 +66,13 @@ pub mod workspaces;
         projects::list_project_invitations,
         projects::create_project_invitations,
         projects::delete_project_invitation,
+        states::list_states,
+        states::get_state,
+        states::create_state,
+        states::update_state,
+        states::delete_state,
+        states::intake_state,
+        states::mark_default,
     ),
     components(
         schemas(
@@ -100,6 +108,9 @@ pub mod workspaces;
             projects::ProjectInvitationResponse,
             projects::CreateProjectInvitationRequest,
             projects::ProjectInviteEmail,
+            states::StateResponse,
+            states::CreateStateRequest,
+            states::UpdateStateRequest,
         )
     ),
     tags(
@@ -107,6 +118,7 @@ pub mod workspaces;
         (name = "Auth",       description = "Authentication"),
         (name = "Workspaces", description = "Workspace management"),
         (name = "Projects",   description = "Project management"),
+        (name = "States",     description = "Project state management"),
         (name = "Issues",     description = "Issues and work items"),
     ),
     modifiers(&SecurityAddon)
@@ -253,6 +265,25 @@ pub fn build_router(state: AppState) -> Router {
         .route(
             "/workspaces/:slug/projects/:project_id/invitations/:pk",
             delete(projects::delete_project_invitation),
+        )
+        // ── States (Fase 3) ──────────────────────────────────────────────────
+        .route(
+            "/workspaces/:slug/projects/:project_id/states",
+            get(states::list_states).post(states::create_state),
+        )
+        .route(
+            "/workspaces/:slug/projects/:project_id/states/:pk",
+            get(states::get_state)
+                .patch(states::update_state)
+                .delete(states::delete_state),
+        )
+        .route(
+            "/workspaces/:slug/projects/:project_id/intake-state",
+            get(states::intake_state),
+        )
+        .route(
+            "/workspaces/:slug/projects/:project_id/states/:pk/mark-default",
+            post(states::mark_default),
         )
         .layer(middleware::from_fn(
             auth::rate_limit::rate_limit_headers_middleware,
