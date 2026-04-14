@@ -2,15 +2,14 @@
 use crate::{auth, AppState};
 use axum::{
     middleware,
-    routing::{get, post},
+    routing::{delete, get, patch, post},
     Json, Router,
 };
 use utoipa::OpenApi;
 use utoipa_scalar::{Scalar, Servable};
 
 pub mod health;
-// pub mod workspaces;  // Fase 2
-// pub mod issues;
+pub mod workspaces;
 
 #[derive(OpenApi)]
 #[openapi(
@@ -42,7 +41,19 @@ pub mod health;
         auth::logout::logout_space,
         auth::password_management::change_password,
         auth::password_management::set_password,
-        // Fase 2: workspaces::list_workspaces,
+        workspaces::slug_check,
+        workspaces::list_workspaces,
+        workspaces::create_workspace,
+        workspaces::get_workspace,
+        workspaces::update_workspace,
+        workspaces::delete_workspace,
+        workspaces::list_members,
+        workspaces::update_member,
+        workspaces::remove_member,
+        workspaces::list_invitations,
+        workspaces::create_invitations,
+        workspaces::delete_invitation,
+        // Fase 2b: projects::list_projects,
     ),
     components(
         schemas(
@@ -61,6 +72,15 @@ pub mod health;
             auth::responses::PasswordMessageResponse,
             health::HealthResponse,
             health::DbStatus,
+            workspaces::WorkspaceResponse,
+            workspaces::CreateWorkspaceRequest,
+            workspaces::UpdateWorkspaceRequest,
+            workspaces::WorkspaceMemberResponse,
+            workspaces::UpdateMemberRoleRequest,
+            workspaces::InvitationResponse,
+            workspaces::CreateInvitationRequest,
+            workspaces::InviteEmail,
+            workspaces::SlugCheckResponse,
         )
     ),
     tags(
@@ -156,10 +176,40 @@ pub fn build_router(state: AppState) -> Router {
         )
         .route("/auth/sign-out", post(auth::logout::logout))
         .route("/auth/spaces/sign-out", post(auth::logout::logout_space))
+        // ── Workspaces (Fase 2) ──────────────────────────────────────────────
+        .route(
+            "/workspace-slug-check",
+            get(workspaces::slug_check),
+        )
+        .route(
+            "/workspaces",
+            get(workspaces::list_workspaces).post(workspaces::create_workspace),
+        )
+        .route(
+            "/workspaces/:slug",
+            get(workspaces::get_workspace)
+                .patch(workspaces::update_workspace)
+                .delete(workspaces::delete_workspace),
+        )
+        .route(
+            "/workspaces/:slug/members",
+            get(workspaces::list_members),
+        )
+        .route(
+            "/workspaces/:slug/members/:pk",
+            patch(workspaces::update_member).delete(workspaces::remove_member),
+        )
+        .route(
+            "/workspaces/:slug/invitations",
+            get(workspaces::list_invitations).post(workspaces::create_invitations),
+        )
+        .route(
+            "/workspaces/:slug/invitations/:pk",
+            delete(workspaces::delete_invitation),
+        )
         .layer(middleware::from_fn(
             auth::rate_limit::rate_limit_headers_middleware,
         ));
-    // .route("/workspaces", get(workspaces::list))  // Fase 2
 
     let mut router = Router::new().nest("/api", api_router);
 
