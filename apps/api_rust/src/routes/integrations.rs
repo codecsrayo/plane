@@ -162,20 +162,20 @@ impl WorkspaceIntegrationResponse {
     }
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct CreateWorkspaceIntegrationRequest {
     pub integration: Uuid,
     pub metadata: Option<serde_json::Value>,
     pub config: Option<serde_json::Value>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct UpdateWorkspaceIntegrationRequest {
     pub metadata: Option<serde_json::Value>,
     pub config: Option<serde_json::Value>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct ProviderInstallRequest {
     // GitHub
     pub installation_id: Option<String>,
@@ -183,7 +183,7 @@ pub struct ProviderInstallRequest {
     pub code: Option<String>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct GithubRepoSyncCreateRequest {
     pub repo_id: serde_json::Value,
     pub repo_full_name: Option<String>,
@@ -206,7 +206,7 @@ pub struct GithubRepoSyncResponse {
     pub issue_closed_state: Option<String>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct PrStateMappingCreateRequest {
     pub github_pr_state: String,
     pub project_id: Uuid,
@@ -237,7 +237,7 @@ impl PrStateMappingResponse {
     }
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct UserGithubCallbackRequest {
     pub code: String,
 }
@@ -453,7 +453,7 @@ pub async fn github_user_callback(
         .ok_or_else(|| AppError::BadRequest("GitHub OAuth is not configured".into()))?;
 
     // Intercambiar code por access_token
-    let token_resp = state
+    let token_resp: reqwest::Response = state
         .http
         .post("https://github.com/login/oauth/access_token")
         .form(&[
@@ -966,7 +966,7 @@ async fn build_slack_metadata(
         _ => return (serde_json::json!({ "code": code }), serde_json::json!({})),
     };
 
-    let Ok(resp) = state
+    let Ok(resp): Result<reqwest::Response, _> = state
         .http
         .post("https://slack.com/api/oauth.v2.access")
         .form(&[
@@ -984,7 +984,7 @@ async fn build_slack_metadata(
         return (serde_json::json!({ "code": code }), serde_json::json!({}));
     }
 
-    let Ok(slack_data) = resp.json::<serde_json::Value>().await else {
+    let Ok(slack_data): Result<serde_json::Value, _> = resp.json::<serde_json::Value>().await else {
         return (serde_json::json!({ "code": code }), serde_json::json!({}));
     };
 
@@ -1076,7 +1076,7 @@ pub async fn list_github_repositories(
         )
     };
 
-    let resp = state
+    let resp: reqwest::Response = state
         .http
         .get(&api_url)
         .header("Authorization", format!("Bearer {github_token}"))

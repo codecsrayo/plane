@@ -34,7 +34,7 @@ use zxcvbn::{Score, zxcvbn};
 
 use crate::{
     auth::{
-        email_auth::{redirect_error, safe_next_path, space_base},
+        email_auth::{space_base},
         responses::{AuthError, AuthErrorBody, PasswordMessageResponse},
         session::SessionSurface,
     },
@@ -106,7 +106,7 @@ pub async fn reset_password(
     State(state): State<AppState>,
     Path((uidb64, token)): Path<(String, String)>,
     _headers: HeaderMap,
-    jar: CookieJar,
+    _jar: CookieJar,
     Form(form): Form<ResetPasswordForm>,
 ) -> Result<(CookieJar, Redirect), AppError> {
     handle_reset_password(&state, uidb64, token, form, SessionSurface::App).await
@@ -152,7 +152,7 @@ pub async fn reset_password_space(
     State(state): State<AppState>,
     Path((uidb64, token)): Path<(String, String)>,
     _headers: HeaderMap,
-    jar: CookieJar,
+    _jar: CookieJar,
     Form(form): Form<ResetPasswordForm>,
 ) -> Result<(CookieJar, Redirect), AppError> {
     handle_reset_password(&state, uidb64, token, form, SessionSurface::Space).await

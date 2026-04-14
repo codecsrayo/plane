@@ -13,7 +13,7 @@ use axum::{
 };
 use chrono::{DateTime, Utc};
 use sea_orm::{
-    ActiveModelTrait, ActiveValue, ColumnTrait, EntityTrait, PaginatorTrait, QueryFilter,
+    ActiveModelTrait, ColumnTrait, EntityTrait, PaginatorTrait, QueryFilter,
     QueryOrder, Set, TransactionTrait,
 };
 use serde::{Deserialize, Serialize};
@@ -21,7 +21,7 @@ use uuid::Uuid;
 
 use crate::{
     auth::any_auth::AnyAuth,
-    entities::{users, workspace_member_invites, workspace_members, workspaces},
+    entities::{workspace_member_invites, workspace_members, workspaces},
     error::AppError,
     utils::{instance_config::get_config_value, soft_delete::SoftDeleteExt},
     AppState,

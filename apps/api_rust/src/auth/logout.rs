@@ -243,6 +243,7 @@ mod tests {
                 cors_origins: vec![],
             }),
             rate_limit: Arc::new(RateLimitState::default()),
+            http: reqwest::Client::new(),
         };
 
         assert_eq!(

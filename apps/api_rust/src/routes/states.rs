@@ -213,14 +213,14 @@ pub struct WorkspaceProjectStatePath {
 )]
 pub async fn list_states(
     State(app): State<AppState>,
-    AnyAuth(user_id): AnyAuth,
+    AnyAuth(user): AnyAuth,
     Path(p): Path<WorkspaceProjectPath>,
     Query(q): Query<GroupedQuery>,
 ) -> Result<impl IntoResponse, AppError> {
     let db = &app.db;
     let ws = workspace_by_slug(db, &p.slug).await?;
-    require_workspace_member(db, ws.id, user_id).await?;
-    let pm = project_member_for_user(db, p.project_id, user_id).await?;
+    require_workspace_member(db, ws.id, user.id).await?;
+    let pm = project_member_for_user(db, p.project_id, user.id).await?;
     require_project_member(&pm)?;
 
     let raw_states = states::Entity::find()
@@ -268,13 +268,13 @@ pub async fn list_states(
 )]
 pub async fn get_state(
     State(app): State<AppState>,
-    AnyAuth(user_id): AnyAuth,
+    AnyAuth(user): AnyAuth,
     Path(p): Path<WorkspaceProjectStatePath>,
 ) -> Result<impl IntoResponse, AppError> {
     let db = &app.db;
     let ws = workspace_by_slug(db, &p.slug).await?;
-    require_workspace_member(db, ws.id, user_id).await?;
-    let pm = project_member_for_user(db, p.project_id, user_id).await?;
+    require_workspace_member(db, ws.id, user.id).await?;
+    let pm = project_member_for_user(db, p.project_id, user.id).await?;
     require_project_member(&pm)?;
 
     let state = states::Entity::find_by_id(p.pk)
@@ -309,14 +309,14 @@ pub async fn get_state(
 )]
 pub async fn create_state(
     State(app): State<AppState>,
-    AnyAuth(user_id): AnyAuth,
+    AnyAuth(user): AnyAuth,
     Path(p): Path<WorkspaceProjectPath>,
     Json(body): Json<CreateStateRequest>,
 ) -> Result<impl IntoResponse, AppError> {
     let db = &app.db;
     let ws = workspace_by_slug(db, &p.slug).await?;
-    let wm = require_workspace_member(db, ws.id, user_id).await?;
-    let pm = project_member_for_user(db, p.project_id, user_id).await?;
+    let wm = require_workspace_member(db, ws.id, user.id).await?;
+    let pm = project_member_for_user(db, p.project_id, user.id).await?;
     require_admin(&pm, &wm)?;
 
     validate_group(&body.group)?;
@@ -361,8 +361,8 @@ pub async fn create_state(
         is_triage: Set(false),
         project_id: Set(p.project_id),
         workspace_id: Set(ws.id),
-        created_by_id: Set(Some(user_id)),
-        updated_by_id: Set(Some(user_id)),
+        created_by_id: Set(Some(user.id)),
+        updated_by_id: Set(Some(user.id)),
         external_id: Set(None),
         external_source: Set(None),
         created_at: Set(now),
@@ -406,14 +406,14 @@ pub async fn create_state(
 )]
 pub async fn update_state(
     State(app): State<AppState>,
-    AnyAuth(user_id): AnyAuth,
+    AnyAuth(user): AnyAuth,
     Path(p): Path<WorkspaceProjectStatePath>,
     Json(body): Json<UpdateStateRequest>,
 ) -> Result<impl IntoResponse, AppError> {
     let db = &app.db;
     let ws = workspace_by_slug(db, &p.slug).await?;
-    let wm = require_workspace_member(db, ws.id, user_id).await?;
-    let pm = project_member_for_user(db, p.project_id, user_id).await?;
+    let wm = require_workspace_member(db, ws.id, user.id).await?;
+    let pm = project_member_for_user(db, p.project_id, user.id).await?;
     require_admin(&pm, &wm)?;
 
     let existing = states::Entity::find_by_id(p.pk)
@@ -467,7 +467,7 @@ pub async fn update_state(
     if let Some(def) = body.default {
         active.default = Set(def);
     }
-    active.updated_by_id = Set(Some(user_id));
+    active.updated_by_id = Set(Some(user.id));
     active.updated_at = Set(now);
 
     let updated = active.update(db).await.map_err(|e| {
@@ -502,13 +502,13 @@ pub async fn update_state(
 )]
 pub async fn delete_state(
     State(app): State<AppState>,
-    AnyAuth(user_id): AnyAuth,
+    AnyAuth(user): AnyAuth,
     Path(p): Path<WorkspaceProjectStatePath>,
 ) -> Result<impl IntoResponse, AppError> {
     let db = &app.db;
     let ws = workspace_by_slug(db, &p.slug).await?;
-    let wm = require_workspace_member(db, ws.id, user_id).await?;
-    let pm = project_member_for_user(db, p.project_id, user_id).await?;
+    let wm = require_workspace_member(db, ws.id, user.id).await?;
+    let pm = project_member_for_user(db, p.project_id, user.id).await?;
     require_admin(&pm, &wm)?;
 
     let state = states::Entity::find_by_id(p.pk)
@@ -569,13 +569,13 @@ pub async fn delete_state(
 )]
 pub async fn intake_state(
     State(app): State<AppState>,
-    AnyAuth(user_id): AnyAuth,
+    AnyAuth(user): AnyAuth,
     Path(p): Path<WorkspaceProjectPath>,
 ) -> Result<impl IntoResponse, AppError> {
     let db = &app.db;
     let ws = workspace_by_slug(db, &p.slug).await?;
-    require_workspace_member(db, ws.id, user_id).await?;
-    let pm = project_member_for_user(db, p.project_id, user_id).await?;
+    require_workspace_member(db, ws.id, user.id).await?;
+    let pm = project_member_for_user(db, p.project_id, user.id).await?;
     require_project_member(&pm)?;
 
     let state = states::Entity::find()
@@ -610,13 +610,13 @@ pub async fn intake_state(
 )]
 pub async fn mark_default(
     State(app): State<AppState>,
-    AnyAuth(user_id): AnyAuth,
+    AnyAuth(user): AnyAuth,
     Path(p): Path<WorkspaceProjectStatePath>,
 ) -> Result<impl IntoResponse, AppError> {
     let db = &app.db;
     let ws = workspace_by_slug(db, &p.slug).await?;
-    let wm = require_workspace_member(db, ws.id, user_id).await?;
-    let pm = project_member_for_user(db, p.project_id, user_id).await?;
+    let wm = require_workspace_member(db, ws.id, user.id).await?;
+    let pm = project_member_for_user(db, p.project_id, user.id).await?;
     require_admin(&pm, &wm)?;
 
     // Verificar que el estado existe

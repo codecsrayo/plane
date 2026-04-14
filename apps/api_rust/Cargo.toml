@@ -27,6 +27,7 @@ tower-http = { version = "*", features = ["cors", "trace", "compression-gzip"] }
 # HTTP — cliente (no crear Client::new() por request)
 reqwest = { version = "0.13.2", features = [
     "json",
+    "form",
     "rustls",
     "gzip",
     "brotli",
