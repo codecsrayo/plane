@@ -27,13 +27,14 @@ use axum::{
     Json,
 };
 use sea_orm::{
-    ActiveModelTrait, ActiveValue::Set, ColumnTrait, EntityTrait, QueryFilter, QueryOrder,
+    ActiveModelTrait, ActiveValue::Set, ColumnTrait, EntityTrait, IsolationLevel, QueryFilter,
+    QueryOrder, TransactionTrait,
 };
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 
 use crate::{
-    auth::extractors::WorkspaceMemberGuard,
+    auth::{api_key::ApiKeyUser, extractors::WorkspaceMemberGuard, permissions::require_workspace_admin},
     entities::{
         api_tokens, db_githubprstatemapping, github_repositories, github_repository_syncs,
         integrations, user_github_connections, workspace_integrations, workspace_members,
@@ -48,60 +49,71 @@ use crate::{
     AppState,
 };
 
-// ── Roles ────────────────────────────────────────────────────────────────────
-const ROLE_ADMIN: i16 = 20;
-
-fn require_admin(member: &workspace_members::Model) -> Result<(), AppError> {
-    if member.role >= ROLE_ADMIN {
-        Ok(())
-    } else {
-        Err(AppError::Forbidden)
-    }
-}
-
 // ── Helpers internos ─────────────────────────────────────────────────────────
 
 /// Busca o crea un api_token para (user, workspace).
 /// Replica el comportamiento de `APIToken.objects.get_or_create` de Django.
+///
+/// La operación se ejecuta dentro de una transacción con nivel SERIALIZABLE
+/// para evitar la race condition TOCTOU (check-then-insert) que existía antes.
+/// Si dos requests concurrentes pasan el SELECT vacío al mismo tiempo, solo
+/// una INSERT tendrá éxito; la otra leerá el token recién creado.
 async fn get_or_create_api_token(
     state: &AppState,
     user_id: Uuid,
     workspace_id: Uuid,
     label: &str,
 ) -> Result<api_tokens::Model, AppError> {
-    // Buscar token existente activo para este usuario y workspace
-    if let Some(token) = api_tokens::Entity::find()
-        .filter(api_tokens::Column::UserId.eq(user_id))
-        .filter(api_tokens::Column::WorkspaceId.eq(workspace_id))
-        .filter(api_tokens::Column::IsActive.eq(true))
-        .filter(api_tokens::Column::DeletedAt.is_null())
-        .one(&state.db)
-        .await
-        .map_err(AppError::Database)?
-    {
-        return Ok(token);
-    }
+    let label = label.to_owned();
 
-    // Crear uno nuevo
-    let raw = format!("{}", Uuid::new_v4().as_simple());
-    let new_token = api_tokens::ActiveModel {
-        id: Set(Uuid::new_v4()),
-        token: Set(raw),
-        label: Set(label.to_owned()),
-        user_type: Set(1),
-        user_id: Set(user_id),
-        workspace_id: Set(Some(workspace_id)),
-        description: Set(String::new()),
-        is_active: Set(true),
-        is_service: Set(false),
-        allowed_rate_limit: Set("default".to_owned()),
-        ..Default::default()
-    };
+    let token = state
+        .db
+        .transaction_with_config::<_, api_tokens::Model, AppError>(
+            |txn| {
+                let label = label.clone();
+                Box::pin(async move {
+                    // SELECT dentro de la transacción
+                    if let Some(token) = api_tokens::Entity::find()
+                        .filter(api_tokens::Column::UserId.eq(user_id))
+                        .filter(api_tokens::Column::WorkspaceId.eq(workspace_id))
+                        .filter(api_tokens::Column::IsActive.eq(true))
+                        .filter(api_tokens::Column::DeletedAt.is_null())
+                        .one(txn)
+                        .await
+                        .map_err(AppError::Database)?
+                    {
+                        return Ok(token);
+                    }
 
-    new_token
-        .insert(&state.db)
+                    // INSERT solo si no existía dentro del mismo snapshot
+                    let raw = Uuid::new_v4().as_simple().to_string();
+                    let new_token = api_tokens::ActiveModel {
+                        id: Set(Uuid::new_v4()),
+                        token: Set(raw),
+                        label: Set(label),
+                        user_type: Set(1),
+                        user_id: Set(user_id),
+                        workspace_id: Set(Some(workspace_id)),
+                        description: Set(String::new()),
+                        is_active: Set(true),
+                        is_service: Set(false),
+                        allowed_rate_limit: Set("default".to_owned()),
+                        ..Default::default()
+                    };
+
+                    new_token.insert(txn).await.map_err(AppError::Database)
+                })
+            },
+            Some(IsolationLevel::Serializable),
+            None,
+        )
         .await
-        .map_err(AppError::Database)
+        .map_err(|e| match e {
+            sea_orm::TransactionError::Transaction(app_err) => app_err,
+            sea_orm::TransactionError::Connection(db_err) => AppError::Database(db_err),
+        })?;
+
+    Ok(token)
 }
 
 // ── DTOs ─────────────────────────────────────────────────────────────────────
@@ -288,9 +300,8 @@ const VALID_PR_STATES: &[&str] = &[
 )]
 pub async fn list_integrations(
     State(state): State<AppState>,
-    guard: WorkspaceMemberGuard, // requiere auth pero no workspace específico
+    _auth: ApiKeyUser, // valida que hay sesión activa; no necesita workspace
 ) -> Result<Json<Vec<IntegrationResponse>>, AppError> {
-    let _ = guard; // solo valida que hay sesión activa
     let rows = integrations::Entity::find()
         .active()
         .order_by_asc(integrations::Column::Title)
@@ -536,6 +547,11 @@ pub async fn github_user_callback(
         .await
         .map_err(AppError::Database)?;
 
+    // SECURITY: `access_token` se almacena en texto plano para mantener
+    // interoperabilidad con la API Django que comparte esta tabla.
+    // El modelo Django tiene el mismo comportamiento ("encrypted in production ideally").
+    // Corrección pendiente: migración coordinada a cifrado simétrico (ej. Fernet/AES-GCM)
+    // en ambos servicios simultáneamente. Ver docs/api-rust/SECURITY.md.
     let (conn, created) = if let Some(conn) = existing {
         let mut am: user_github_connections::ActiveModel = conn.into();
         am.github_user_id = Set(github_user_id);
@@ -592,7 +608,7 @@ pub async fn list_workspace_integrations(
     State(state): State<AppState>,
     guard: WorkspaceMemberGuard,
 ) -> Result<Json<Vec<WorkspaceIntegrationResponse>>, AppError> {
-    require_admin(&guard.member)?;
+    require_workspace_admin(&guard.member)?;
 
     let rows = workspace_integrations::Entity::find()
         .active()
@@ -601,14 +617,26 @@ pub async fn list_workspace_integrations(
         .await
         .map_err(AppError::Database)?;
 
-    let mut result = Vec::with_capacity(rows.len());
-    for wi in rows {
-        let integration = integrations::Entity::find_by_id(wi.integration_id)
-            .one(&state.db)
+    // Batch-fetch todas las integraciones referenciadas en una sola query
+    // evita N+1: antes se hacía una query por cada workspace_integration.
+    let integration_ids: Vec<Uuid> = rows.iter().map(|wi| wi.integration_id).collect();
+    let integrations_map: std::collections::HashMap<Uuid, integrations::Model> =
+        integrations::Entity::find()
+            .filter(integrations::Column::Id.is_in(integration_ids))
+            .all(&state.db)
             .await
-            .map_err(AppError::Database)?;
-        result.push(WorkspaceIntegrationResponse::from_model(wi, integration));
-    }
+            .map_err(AppError::Database)?
+            .into_iter()
+            .map(|i| (i.id, i))
+            .collect();
+
+    let result = rows
+        .into_iter()
+        .map(|wi| {
+            let integration = integrations_map.get(&wi.integration_id).cloned();
+            WorkspaceIntegrationResponse::from_model(wi, integration)
+        })
+        .collect();
 
     Ok(Json(result))
 }
@@ -633,7 +661,7 @@ pub async fn create_workspace_integration(
     guard: WorkspaceMemberGuard,
     Json(body): Json<CreateWorkspaceIntegrationRequest>,
 ) -> Result<(StatusCode, Json<WorkspaceIntegrationResponse>), AppError> {
-    require_admin(&guard.member)?;
+    require_workspace_admin(&guard.member)?;
 
     let integration = integrations::Entity::find_by_id(body.integration)
         .active()
@@ -706,7 +734,7 @@ pub async fn get_workspace_integration(
     guard: WorkspaceMemberGuard,
     Path((_slug, pk)): Path<(String, Uuid)>,
 ) -> Result<Json<WorkspaceIntegrationResponse>, AppError> {
-    require_admin(&guard.member)?;
+    require_workspace_admin(&guard.member)?;
 
     let wi = workspace_integrations::Entity::find_by_id(pk)
         .active()
@@ -746,7 +774,7 @@ pub async fn update_workspace_integration(
     Path((_slug, pk)): Path<(String, Uuid)>,
     Json(body): Json<UpdateWorkspaceIntegrationRequest>,
 ) -> Result<Json<WorkspaceIntegrationResponse>, AppError> {
-    require_admin(&guard.member)?;
+    require_workspace_admin(&guard.member)?;
 
     let wi = workspace_integrations::Entity::find_by_id(pk)
         .active()
@@ -794,7 +822,7 @@ pub async fn delete_workspace_integration(
     guard: WorkspaceMemberGuard,
     Path((_slug, pk)): Path<(String, Uuid)>,
 ) -> Result<StatusCode, AppError> {
-    require_admin(&guard.member)?;
+    require_workspace_admin(&guard.member)?;
 
     let wi = workspace_integrations::Entity::find_by_id(pk)
         .active()
@@ -832,7 +860,7 @@ pub async fn delete_workspace_integration_by_provider(
     guard: WorkspaceMemberGuard,
     Path((_slug, provider)): Path<(String, String)>,
 ) -> Result<StatusCode, AppError> {
-    require_admin(&guard.member)?;
+    require_workspace_admin(&guard.member)?;
 
     let wi = workspace_integrations::Entity::find()
         .active()
@@ -874,7 +902,7 @@ pub async fn provider_install(
     Path((_slug, provider)): Path<(String, String)>,
     Json(body): Json<ProviderInstallRequest>,
 ) -> Result<(StatusCode, Json<WorkspaceIntegrationResponse>), AppError> {
-    require_admin(&guard.member)?;
+    require_workspace_admin(&guard.member)?;
 
     let integration = integrations::Entity::find()
         .active()
@@ -1020,7 +1048,7 @@ pub async fn list_github_repositories(
     Path((_slug, wi_id)): Path<(String, Uuid)>,
     Query(params): Query<GithubReposQuery>,
 ) -> Result<Json<serde_json::Value>, AppError> {
-    require_admin(&guard.member)?;
+    require_workspace_admin(&guard.member)?;
 
     let wi = workspace_integrations::Entity::find_by_id(wi_id)
         .active()
@@ -1175,7 +1203,7 @@ pub async fn list_github_repo_syncs(
     State(state): State<AppState>,
     guard: WorkspaceMemberGuard,
 ) -> Result<Json<Vec<GithubRepoSyncResponse>>, AppError> {
-    require_admin(&guard.member)?;
+    require_workspace_admin(&guard.member)?;
 
     // Obtener workspace_integration de GitHub para este workspace
     let wi = workspace_integrations::Entity::find()
@@ -1198,50 +1226,57 @@ pub async fn list_github_repo_syncs(
         .await
         .map_err(AppError::Database)?;
 
-    let mut result = Vec::with_capacity(syncs.len());
-    for sync in syncs {
-        let repo = github_repositories::Entity::find_by_id(sync.repository_id)
-            .one(&state.db)
+    // Batch-fetch todos los repositorios referenciados en una sola query.
+    // Antes se hacía una query por sync dentro del loop → N+1 antipattern.
+    let repo_ids: Vec<Uuid> = syncs.iter().map(|s| s.repository_id).collect();
+    let repos_map: std::collections::HashMap<Uuid, github_repositories::Model> =
+        github_repositories::Entity::find()
+            .filter(github_repositories::Column::Id.is_in(repo_ids))
+            .all(&state.db)
             .await
-            .map_err(AppError::Database)?;
+            .map_err(AppError::Database)?
+            .into_iter()
+            .map(|r| (r.id, r))
+            .collect();
 
-        let credentials = &sync.credentials;
-        let sync_direction = credentials
-            .get("sync_direction")
-            .and_then(|v| v.as_str())
-            .unwrap_or("bidirectional")
-            .to_owned();
-        let issue_open_state = credentials
-            .get("issue_open_state")
-            .and_then(|v| v.as_str())
-            .map(str::to_owned);
-        let issue_closed_state = credentials
-            .get("issue_closed_state")
-            .and_then(|v| v.as_str())
-            .map(str::to_owned);
+    let result = syncs
+        .into_iter()
+        .map(|sync| {
+            let credentials = &sync.credentials;
+            let sync_direction = credentials
+                .get("sync_direction")
+                .and_then(|v| v.as_str())
+                .unwrap_or("bidirectional")
+                .to_owned();
+            let issue_open_state = credentials
+                .get("issue_open_state")
+                .and_then(|v| v.as_str())
+                .map(str::to_owned);
+            let issue_closed_state = credentials
+                .get("issue_closed_state")
+                .and_then(|v| v.as_str())
+                .map(str::to_owned);
 
-        let (repo_id, repo_name, repo_owner) = if let Some(r) = repo {
-            (
-                r.repository_id.to_string(),
-                r.name.clone(),
-                r.owner.clone(),
-            )
-        } else {
-            ("".into(), "".into(), "".into())
-        };
+            let (repo_id, repo_name, repo_owner) =
+                if let Some(r) = repos_map.get(&sync.repository_id) {
+                    (r.repository_id.to_string(), r.name.clone(), r.owner.clone())
+                } else {
+                    (String::new(), String::new(), String::new())
+                };
 
-        result.push(GithubRepoSyncResponse {
-            id: sync.id,
-            project_id: sync.project_id,
-            repo_id: repo_id.clone(),
-            repo_full_name: format!("{repo_owner}/{repo_name}"),
-            repo_name,
-            repo_owner,
-            sync_direction,
-            issue_open_state,
-            issue_closed_state,
-        });
-    }
+            GithubRepoSyncResponse {
+                id: sync.id,
+                project_id: sync.project_id,
+                repo_id,
+                repo_full_name: format!("{repo_owner}/{repo_name}"),
+                repo_name,
+                repo_owner,
+                sync_direction,
+                issue_open_state,
+                issue_closed_state,
+            }
+        })
+        .collect();
 
     Ok(Json(result))
 }
@@ -1264,7 +1299,7 @@ pub async fn create_github_repo_sync(
     guard: WorkspaceMemberGuard,
     Json(body): Json<GithubRepoSyncCreateRequest>,
 ) -> Result<(StatusCode, Json<GithubRepoSyncResponse>), AppError> {
-    require_admin(&guard.member)?;
+    require_workspace_admin(&guard.member)?;
 
     // Validar repo_id numérico
     let repo_id_int: i64 = match &body.repo_id {
@@ -1495,7 +1530,7 @@ pub async fn delete_github_repo_sync(
     guard: WorkspaceMemberGuard,
     Path((_slug, pk)): Path<(String, Uuid)>,
 ) -> Result<StatusCode, AppError> {
-    require_admin(&guard.member)?;
+    require_workspace_admin(&guard.member)?;
 
     let sync = github_repository_syncs::Entity::find_by_id(pk)
         .active()
@@ -1507,21 +1542,40 @@ pub async fn delete_github_repo_sync(
 
     let repo_id = sync.repository_id;
 
-    // Soft-delete sync
-    let mut am: github_repository_syncs::ActiveModel = sync.into();
-    am.deleted_at = Set(Some(chrono::Utc::now().into()));
-    am.update(&state.db).await.map_err(AppError::Database)?;
+    // Ambos soft-deletes (sync + repo huérfano) deben ser atómicos.
+    // Sin transacción, un fallo en el segundo update deja el sync eliminado
+    // pero el repo activo → estado inconsistente en la base de datos.
+    state
+        .db
+        .transaction::<_, (), AppError>(|txn| {
+            Box::pin(async move {
+                let now: chrono::DateTime<chrono::FixedOffset> =
+                    chrono::Utc::now().into();
 
-    // Soft-delete repo huérfano
-    if let Some(repo) = github_repositories::Entity::find_by_id(repo_id)
-        .one(&state.db)
+                // Soft-delete sync
+                let mut am: github_repository_syncs::ActiveModel = sync.into();
+                am.deleted_at = Set(Some(now));
+                am.update(txn).await.map_err(AppError::Database)?;
+
+                // Soft-delete repo huérfano
+                if let Some(repo) = github_repositories::Entity::find_by_id(repo_id)
+                    .one(txn)
+                    .await
+                    .map_err(AppError::Database)?
+                {
+                    let mut ram: github_repositories::ActiveModel = repo.into();
+                    ram.deleted_at = Set(Some(now));
+                    ram.update(txn).await.map_err(AppError::Database)?;
+                }
+
+                Ok(())
+            })
+        })
         .await
-        .map_err(AppError::Database)?
-    {
-        let mut ram: github_repositories::ActiveModel = repo.into();
-        ram.deleted_at = Set(Some(chrono::Utc::now().into()));
-        ram.update(&state.db).await.map_err(AppError::Database)?;
-    }
+        .map_err(|e| match e {
+            sea_orm::TransactionError::Transaction(app_err) => app_err,
+            sea_orm::TransactionError::Connection(db_err) => AppError::Database(db_err),
+        })?;
 
     Ok(StatusCode::NO_CONTENT)
 }
@@ -1546,7 +1600,7 @@ pub async fn list_pr_state_mappings(
     guard: WorkspaceMemberGuard,
     Path((_slug, wi_id)): Path<(String, Uuid)>,
 ) -> Result<Json<Vec<PrStateMappingResponse>>, AppError> {
-    require_admin(&guard.member)?;
+    require_workspace_admin(&guard.member)?;
 
     let mappings = db_githubprstatemapping::Entity::find()
         .active()
@@ -1582,7 +1636,7 @@ pub async fn create_pr_state_mapping(
     Path((_slug, wi_id)): Path<(String, Uuid)>,
     Json(body): Json<PrStateMappingCreateRequest>,
 ) -> Result<(StatusCode, Json<PrStateMappingResponse>), AppError> {
-    require_admin(&guard.member)?;
+    require_workspace_admin(&guard.member)?;
 
     // Validar que el PR state sea un valor del enum Postgres
     if !VALID_PR_STATES.contains(&body.github_pr_state.as_str()) {
@@ -1643,7 +1697,7 @@ pub async fn delete_pr_state_mapping(
     guard: WorkspaceMemberGuard,
     Path((_slug, wi_id, pk)): Path<(String, Uuid, Uuid)>,
 ) -> Result<StatusCode, AppError> {
-    require_admin(&guard.member)?;
+    require_workspace_admin(&guard.member)?;
 
     let mapping = db_githubprstatemapping::Entity::find_by_id(pk)
         .active()

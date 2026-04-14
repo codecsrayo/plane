@@ -20,19 +20,15 @@ use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 
 use crate::{
-    auth::any_auth::AnyAuth,
+    auth::{
+        any_auth::AnyAuth,
+        permissions::{require_workspace_admin, ROLE_ADMIN, ROLE_GUEST, ROLE_MEMBER, ROLE_VIEWER},
+    },
     entities::{workspace_member_invites, workspace_members, workspaces},
     error::AppError,
     utils::{instance_config::get_config_value, soft_delete::SoftDeleteExt},
     AppState,
 };
-
-// ─── Constantes de rol (espeja `permissions.rs`) ─────────────────────────────
-
-const ROLE_GUEST: i16 = 5;
-const ROLE_VIEWER: i16 = 10;
-const ROLE_MEMBER: i16 = 15;
-const ROLE_ADMIN: i16 = 20;
 
 // ─── Slugs reservados ────────────────────────────────────────────────────────
 
@@ -76,15 +72,6 @@ async fn require_member(
         .await
         .map_err(AppError::Database)?
         .ok_or(AppError::Forbidden)
-}
-
-/// Falla con `Forbidden` si el rol del miembro es menor que `ROLE_ADMIN`.
-fn require_admin(member: &workspace_members::Model) -> Result<(), AppError> {
-    if member.role >= ROLE_ADMIN {
-        Ok(())
-    } else {
-        Err(AppError::Forbidden)
-    }
 }
 
 fn validate_slug(slug: &str) -> Result<(), AppError> {
