@@ -669,7 +669,7 @@ pub async fn mark_default(
 
 /// Normaliza la secuencia dentro de cada grupo a un valor entre 0 y 1
 /// (posición relativa), espejando la lógica de Django.
-fn normalize_sequence_by_group(states: &mut Vec<StateResponse>) {
+fn normalize_sequence_by_group(states: &mut [StateResponse]) {
     use std::collections::HashMap;
     let mut group_counts: HashMap<String, usize> = HashMap::new();
     let mut group_indices: HashMap<String, usize> = HashMap::new();

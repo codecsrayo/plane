@@ -11,11 +11,11 @@ const AUTH_HASH_SALT: &str = "django.contrib.auth.models.AbstractBaseUser.get_se
 const SIGNER_SUFFIX: &str = "signer";
 
 pub fn session_auth_hash(password_hash: &str, secret_key: &str) -> anyhow::Result<String> {
-    Ok(hex_hmac_sha256(
+    hex_hmac_sha256(
         &format!("{AUTH_HASH_SALT}{SIGNER_SUFFIX}"),
         password_hash,
         secret_key,
-    )?)
+    )
 }
 
 pub fn encode_session(data: &Map<String, Value>, secret_key: &str) -> anyhow::Result<String> {
