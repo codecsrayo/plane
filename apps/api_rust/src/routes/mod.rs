@@ -9,6 +9,7 @@ use axum::{
 use utoipa::OpenApi;
 use utoipa_scalar::{Scalar, Servable};
 
+pub mod analytics;
 pub mod cycles;
 pub mod exporter;
 pub mod intake;
@@ -218,6 +219,16 @@ pub mod workspaces;
         views::delete_project_view,
         views::add_favorite_view,
         views::remove_favorite_view,
+        analytics::list_analytic_views,
+        analytics::create_analytic_view,
+        analytics::get_analytic_view,
+        analytics::update_analytic_view,
+        analytics::delete_analytic_view,
+        analytics::get_saved_analytic_view,
+        analytics::export_analytics,
+        analytics::default_analytics,
+        analytics::project_stats,
+        analytics::workspace_analytics,
     ),
     components(
         schemas(
@@ -275,6 +286,7 @@ pub mod workspaces;
         (name = "Intake",        description = "Issue intake / inbox"),
         (name = "Exporter",      description = "Issue export"),
         (name = "Search",        description = "Global and project search"),
+        (name = "Analytics",    description = "Workspace analytics and project stats"),
         (name = "Timezones",     description = "Supported timezones"),
         (name = "Users",         description = "Current user profile and settings"),
         (name = "Views",         description = "Issue views (workspace & project)"),
@@ -759,6 +771,37 @@ pub fn build_router(state: AppState) -> Router {
         .route(
             "/workspaces/{slug}/projects/{project_id}/user-favorite-views/{view_id}/",
             delete(views::remove_favorite_view),
+        )
+        // ── Analytics ─────────────────────────────────────────────────────────
+        .route(
+            "/workspaces/{slug}/analytics/",
+            get(analytics::workspace_analytics),
+        )
+        .route(
+            "/workspaces/{slug}/default-analytics/",
+            get(analytics::default_analytics),
+        )
+        .route(
+            "/workspaces/{slug}/project-stats/",
+            get(analytics::project_stats),
+        )
+        .route(
+            "/workspaces/{slug}/export-analytics/",
+            post(analytics::export_analytics),
+        )
+        .route(
+            "/workspaces/{slug}/analytic-view/",
+            get(analytics::list_analytic_views).post(analytics::create_analytic_view),
+        )
+        .route(
+            "/workspaces/{slug}/analytic-view/{pk}/",
+            get(analytics::get_analytic_view)
+                .patch(analytics::update_analytic_view)
+                .delete(analytics::delete_analytic_view),
+        )
+        .route(
+            "/workspaces/{slug}/saved-analytic-view/{analytic_id}/",
+            get(analytics::get_saved_analytic_view),
         )
         .layer(middleware::from_fn(
             auth::rate_limit::rate_limit_headers_middleware,
