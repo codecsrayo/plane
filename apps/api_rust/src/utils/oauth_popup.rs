@@ -14,6 +14,8 @@ pub enum OAuthMessageType {
     GitlabIntegration,
     SlackIntegration,
     GithubUserConnection,
+    GoogleAuth,
+    GiteaAuth,
 }
 
 impl OAuthMessageType {
@@ -25,6 +27,8 @@ impl OAuthMessageType {
             Self::GitlabIntegration => "gitlab-integration",
             Self::SlackIntegration => "slack-integration",
             Self::GithubUserConnection => "github-user-connection",
+            Self::GoogleAuth => "google-auth",
+            Self::GiteaAuth => "gitea-auth",
         }
     }
 }
@@ -38,6 +42,7 @@ pub fn postmessage_html(
     success: bool,
     message_type: OAuthMessageType,
     error: Option<&str>,
+    target_origin: Option<&str>,
 ) -> Html<String> {
     // Serializar a JSON con escaping completo vía serde_json — nunca concatenar strings
     let payload = serde_json::json!({
@@ -46,6 +51,10 @@ pub fn postmessage_html(
         "error":   error,
     });
     let payload_json = payload.to_string();
+    let origin_expr = match target_origin {
+        Some(o) => serde_json::to_string(o).unwrap(),
+        None => "window.location.origin".to_owned(),
+    };
 
     Html(format!(
         r#"<!DOCTYPE html>
@@ -54,9 +63,10 @@ pub fn postmessage_html(
 <script>
 (function(){{
   try{{
+    var targetOrigin = {origin_expr};
     window.opener && window.opener.postMessage(
       {payload_json},
-      window.location.origin
+      targetOrigin
     );
   }}catch(e){{}}
   window.close();
