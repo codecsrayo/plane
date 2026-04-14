@@ -27,6 +27,7 @@ pub mod projects;
 pub mod states;
 pub mod timezones;
 pub mod users;
+pub mod views;
 pub mod workspaces;
 
 #[derive(OpenApi)]
@@ -205,6 +206,18 @@ pub mod workspaces;
         users::get_account,
         users::delete_account,
         users::list_user_workspaces,
+        views::list_workspace_views,
+        views::create_workspace_view,
+        views::get_workspace_view,
+        views::update_workspace_view,
+        views::delete_workspace_view,
+        views::list_project_views,
+        views::create_project_view,
+        views::get_project_view,
+        views::update_project_view,
+        views::delete_project_view,
+        views::add_favorite_view,
+        views::remove_favorite_view,
     ),
     components(
         schemas(
@@ -264,6 +277,7 @@ pub mod workspaces;
         (name = "Search",        description = "Global and project search"),
         (name = "Timezones",     description = "Supported timezones"),
         (name = "Users",         description = "Current user profile and settings"),
+        (name = "Views",         description = "Issue views (workspace & project)"),
         (name = "Integrations", description = "GitHub · GitLab · Slack integrations"),
     ),
     modifiers(&SecurityAddon)
@@ -715,6 +729,37 @@ pub fn build_router(state: AppState) -> Router {
             get(users::get_account).delete(users::delete_account),
         )
         .route("/users/me/workspaces/", get(users::list_user_workspaces))
+        // ── Workspace Views ───────────────────────────────────────────────────
+        .route(
+            "/workspaces/{slug}/views/",
+            get(views::list_workspace_views).post(views::create_workspace_view),
+        )
+        .route(
+            "/workspaces/{slug}/views/{pk}/",
+            get(views::get_workspace_view)
+                .patch(views::update_workspace_view)
+                .delete(views::delete_workspace_view),
+        )
+        // ── Project Views ─────────────────────────────────────────────────────
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/views/",
+            get(views::list_project_views).post(views::create_project_view),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/views/{pk}/",
+            get(views::get_project_view)
+                .patch(views::update_project_view)
+                .delete(views::delete_project_view),
+        )
+        // ── View Favorites ────────────────────────────────────────────────────
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/user-favorite-views/",
+            post(views::add_favorite_view),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/user-favorite-views/{view_id}/",
+            delete(views::remove_favorite_view),
+        )
         .layer(middleware::from_fn(
             auth::rate_limit::rate_limit_headers_middleware,
         ))
