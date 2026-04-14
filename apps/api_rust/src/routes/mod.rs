@@ -220,7 +220,7 @@ pub fn build_router(state: AppState) -> Router {
             post(auth::forgot_reset_password::forgot_password),
         )
         .route(
-            "/auth/reset-password/:uidb64/:token",
+            "/auth/reset-password/{uidb64}/{token}",
             post(auth::forgot_reset_password::reset_password),
         )
         .route(
@@ -228,7 +228,7 @@ pub fn build_router(state: AppState) -> Router {
             post(auth::forgot_reset_password::forgot_password_space),
         )
         .route(
-            "/auth/spaces/reset-password/:uidb64/:token",
+            "/auth/spaces/reset-password/{uidb64}/{token}",
             post(auth::forgot_reset_password::reset_password_space),
         )
         .route("/auth/sign-out", post(auth::logout::logout))
@@ -247,113 +247,113 @@ pub fn build_router(state: AppState) -> Router {
             get(workspaces::list_workspaces).post(workspaces::create_workspace),
         )
         .route(
-            "/workspaces/:slug",
+            "/workspaces/{slug}",
             get(workspaces::get_workspace)
                 .patch(workspaces::update_workspace)
                 .delete(workspaces::delete_workspace),
         )
-        .route("/workspaces/:slug/members", get(workspaces::list_members))
+        .route("/workspaces/{slug}/members", get(workspaces::list_members))
         .route(
-            "/workspaces/:slug/members/:pk",
+            "/workspaces/{slug}/members/{pk}",
             patch(workspaces::update_member).delete(workspaces::remove_member),
         )
         .route(
-            "/workspaces/:slug/invitations",
+            "/workspaces/{slug}/invitations",
             get(workspaces::list_invitations).post(workspaces::create_invitations),
         )
         .route(
-            "/workspaces/:slug/invitations/:pk",
+            "/workspaces/{slug}/invitations/{pk}",
             delete(workspaces::delete_invitation),
         )
         // ── Workspace integrations ───────────────────────────────────────────
         .route(
-            "/workspaces/:slug/workspace-integrations/",
+            "/workspaces/{slug}/workspace-integrations/",
             get(integrations::list_workspace_integrations)
                 .post(integrations::create_workspace_integration),
         )
         // Rutas específicas de GitHub ANTES de las rutas genéricas con :pk
         // para evitar que "github" sea capturado como un UUID
         .route(
-            "/workspaces/:slug/workspace-integrations/github/repo-syncs/",
+            "/workspaces/{slug}/workspace-integrations/github/repo-syncs/",
             get(integrations::list_github_repo_syncs)
                 .post(integrations::create_github_repo_sync),
         )
         .route(
-            "/workspaces/:slug/workspace-integrations/github/repo-syncs/:pk/",
+            "/workspaces/{slug}/workspace-integrations/github/repo-syncs/{pk}/",
             delete(integrations::delete_github_repo_sync),
         )
         .route(
-            "/workspaces/:slug/workspace-integrations/:pk/",
+            "/workspaces/{slug}/workspace-integrations/{pk}/",
             get(integrations::get_workspace_integration)
                 .patch(integrations::update_workspace_integration)
                 .delete(integrations::delete_workspace_integration),
         )
         .route(
-            "/workspaces/:slug/workspace-integrations/:provider/provider/",
+            "/workspaces/{slug}/workspace-integrations/{provider}/provider/",
             delete(integrations::delete_workspace_integration_by_provider),
         )
         .route(
-            "/workspaces/:slug/workspace-integrations/:provider/install/",
+            "/workspaces/{slug}/workspace-integrations/{provider}/install/",
             post(integrations::provider_install),
         )
         .route(
-            "/workspaces/:slug/workspace-integrations/:wi_id/github-repositories/",
+            "/workspaces/{slug}/workspace-integrations/{wi_id}/github-repositories/",
             get(integrations::list_github_repositories),
         )
         .route(
-            "/workspaces/:slug/workspace-integrations/:wi_id/pr-state-mappings/",
+            "/workspaces/{slug}/workspace-integrations/{wi_id}/pr-state-mappings/",
             get(integrations::list_pr_state_mappings)
                 .post(integrations::create_pr_state_mapping),
         )
         .route(
-            "/workspaces/:slug/workspace-integrations/:wi_id/pr-state-mappings/:pk/",
+            "/workspaces/{slug}/workspace-integrations/{wi_id}/pr-state-mappings/{pk}/",
             delete(integrations::delete_pr_state_mapping),
         )
         // ── Projects (Fase 2b) ───────────────────────────────────────────────
         .route(
-            "/workspaces/:slug/projects",
+            "/workspaces/{slug}/projects",
             get(projects::list_projects).post(projects::create_project),
         )
         .route(
-            "/workspaces/:slug/projects/:project_id",
+            "/workspaces/{slug}/projects/{project_id}",
             get(projects::get_project)
                 .patch(projects::update_project)
                 .delete(projects::delete_project),
         )
         .route(
-            "/workspaces/:slug/projects/:project_id/members",
+            "/workspaces/{slug}/projects/{project_id}/members",
             get(projects::list_project_members),
         )
         .route(
-            "/workspaces/:slug/projects/:project_id/members/:pk",
+            "/workspaces/{slug}/projects/{project_id}/members/{pk}",
             patch(projects::update_project_member).delete(projects::remove_project_member),
         )
         .route(
-            "/workspaces/:slug/projects/:project_id/invitations",
+            "/workspaces/{slug}/projects/{project_id}/invitations",
             get(projects::list_project_invitations)
                 .post(projects::create_project_invitations),
         )
         .route(
-            "/workspaces/:slug/projects/:project_id/invitations/:pk",
+            "/workspaces/{slug}/projects/{project_id}/invitations/{pk}",
             delete(projects::delete_project_invitation),
         )
         // ── States (Fase 3) ──────────────────────────────────────────────────
         .route(
-            "/workspaces/:slug/projects/:project_id/states",
+            "/workspaces/{slug}/projects/{project_id}/states",
             get(states::list_states).post(states::create_state),
         )
         .route(
-            "/workspaces/:slug/projects/:project_id/states/:pk",
+            "/workspaces/{slug}/projects/{project_id}/states/{pk}",
             get(states::get_state)
                 .patch(states::update_state)
                 .delete(states::delete_state),
         )
         .route(
-            "/workspaces/:slug/projects/:project_id/intake-state",
+            "/workspaces/{slug}/projects/{project_id}/intake-state",
             get(states::intake_state),
         )
         .route(
-            "/workspaces/:slug/projects/:project_id/states/:pk/mark-default",
+            "/workspaces/{slug}/projects/{project_id}/states/{pk}/mark-default",
             post(states::mark_default),
         )
         .layer(middleware::from_fn(
