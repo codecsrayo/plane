@@ -228,11 +228,23 @@ mod tests {
     fn tampered_ciphertext_fails_auth() {
         set_test_key();
         let stored = encrypt_token("legit_token");
-        // Corromper el último byte del ciphertext
-        let mut bytes = stored.as_bytes().to_vec();
-        let last = bytes.last_mut().unwrap();
-        *last ^= 0xFF;
-        let tampered = String::from_utf8(bytes).unwrap();
+
+        // Extraer el blob binario (nonce + ciphertext) desde el v1:<b64>
+        let b64_part = stored.strip_prefix(TOKEN_PREFIX).unwrap();
+        let mut blob = base64::engine::general_purpose::STANDARD
+            .decode(b64_part)
+            .unwrap();
+
+        // Corromper el último byte del ciphertext (fuera del nonce de 12 bytes).
+        // Esto invalida el auth tag GCM sin producir bytes no-UTF-8 en la string.
+        *blob.last_mut().unwrap() ^= 0xFF;
+
+        // Recodificar como v1:<b64> — la string resultante es UTF-8 válido
+        let tampered = format!(
+            "{TOKEN_PREFIX}{}",
+            base64::engine::general_purpose::STANDARD.encode(&blob)
+        );
+
         assert!(
             decrypt_token(&tampered).is_err(),
             "GCM auth tag debe detectar tampering"
