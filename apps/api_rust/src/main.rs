@@ -49,22 +49,19 @@ async fn start_job_workers(db_url: String, state: AppState) -> anyhow::Result<()
     // Crear PgPool compartido para todos los storages de apalis
     let pg_pool = sqlx::PgPool::connect(&db_url).await?;
 
-    // Crear storages de PostgreSQL para cada tipo de job
+    // setup() es asociado en PostgresStorage::<()> — se llama una vez para
+    // crear/verificar la tabla de jobs en la base de datos.
+    PostgresStorage::<()>::setup(&pg_pool).await?;
+
+    // Crear storages tipados (no requieren setup individual)
     let github_storage: PostgresStorage<GithubInitialSyncJob> =
         PostgresStorage::new(pg_pool.clone());
-    github_storage.setup().await?;
-
     let notif_storage: PostgresStorage<IssueActivityNotificationJob> =
         PostgresStorage::new(pg_pool.clone());
-    notif_storage.setup().await?;
-
     let export_storage: PostgresStorage<ExportIssuesJob> =
         PostgresStorage::new(pg_pool.clone());
-    export_storage.setup().await?;
-
     let scheduled_storage: PostgresStorage<RunIssueAutomationJob> =
         PostgresStorage::new(pg_pool);
-    scheduled_storage.setup().await?;
 
     // Monitor agrupa todos los workers y los ejecuta concurrentemente
     Monitor::new()
