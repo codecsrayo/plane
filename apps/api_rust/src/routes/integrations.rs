@@ -1076,13 +1076,27 @@ pub async fn list_github_repositories(
         )
     };
 
+    // reqwest 0.13 con default-features=false no expone .query() en RequestBuilder;
+    // se construye la query string manualmente — los valores son numéricos o ASCII simple.
+    let api_url_with_params = {
+        let qs: String = query_params
+            .iter()
+            .map(|(k, v)| format!("{}={}", k, v))
+            .collect::<Vec<_>>()
+            .join("&");
+        if qs.is_empty() {
+            api_url.clone()
+        } else {
+            format!("{}?{}", api_url, qs)
+        }
+    };
+
     let resp: reqwest::Response = state
         .http
-        .get(&api_url)
+        .get(&api_url_with_params)
         .header("Authorization", format!("Bearer {github_token}"))
         .header("Accept", "application/vnd.github+json")
         .header("User-Agent", "plane-api-rust/0.1")
-        .query(&query_params)
         .send()
         .await
         .context("Failed to contact GitHub API")
@@ -1095,24 +1109,24 @@ pub async fn list_github_repositories(
     }
 
     let payload: serde_json::Value = resp
-        .json()
+        .json::<serde_json::Value>()
         .await
         .context("GitHub repos response is not JSON")
         .map_err(AppError::Internal)?;
 
-    let (repos, total_count) = if payload.is_array() {
+    let (repos, total_count): (Vec<serde_json::Value>, usize) = if payload.is_array() {
         let arr = payload.as_array().unwrap();
         let len = arr.len();
         (arr.clone(), len)
     } else {
-        let repos = payload
+        let repos: Vec<serde_json::Value> = payload
             .get("repositories")
-            .and_then(|r| r.as_array())
+            .and_then(|r: &serde_json::Value| r.as_array())
             .cloned()
             .unwrap_or_default();
         let total = payload
             .get("total_count")
-            .and_then(|t| t.as_u64())
+            .and_then(|t: &serde_json::Value| t.as_u64())
             .unwrap_or(repos.len() as u64) as usize;
         (repos, total)
     };
@@ -1123,16 +1137,16 @@ pub async fn list_github_repositories(
 
     let mapped: Vec<serde_json::Value> = repos
         .iter()
-        .map(|repo| {
+        .map(|repo: &serde_json::Value| {
             serde_json::json!({
                 "id": repo["id"].as_i64().unwrap_or(0).to_string(),
                 "full_name": repo["full_name"],
                 "name": repo["name"],
                 "owner": repo["owner"]["login"],
-                "description": repo.get("description").and_then(|d| d.as_str()).unwrap_or(""),
+                "description": repo.get("description").and_then(|d: &serde_json::Value| d.as_str()).unwrap_or(""),
                 "private": repo["private"],
                 "url": repo["html_url"],
-                "issues_count": repo.get("open_issues_count").and_then(|c| c.as_u64()).unwrap_or(0),
+                "issues_count": repo.get("open_issues_count").and_then(|c: &serde_json::Value| c.as_u64()).unwrap_or(0),
             })
         })
         .collect();
