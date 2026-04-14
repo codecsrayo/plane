@@ -7,6 +7,33 @@ use std::{net::SocketAddr, sync::Arc};
 use tokio::net::TcpListener;
 use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt, EnvFilter};
 
+/// Espera SIGINT (Ctrl-C) o SIGTERM antes de iniciar el shutdown graceful.
+async fn shutdown_signal() {
+    let ctrl_c = async {
+        tokio::signal::ctrl_c()
+            .await
+            .expect("No se pudo instalar el handler de Ctrl-C");
+    };
+
+    #[cfg(unix)]
+    let sigterm = async {
+        tokio::signal::unix::signal(tokio::signal::unix::SignalKind::terminate())
+            .expect("No se pudo instalar el handler de SIGTERM")
+            .recv()
+            .await;
+    };
+
+    // En plataformas no-Unix (Windows) SIGTERM no existe; se usa un future que
+    // nunca resuelve para que sólo Ctrl-C sea efectivo.
+    #[cfg(not(unix))]
+    let sigterm = std::future::pending::<()>();
+
+    tokio::select! {
+        _ = ctrl_c  => tracing::info!("SIGINT recibido, iniciando shutdown graceful..."),
+        _ = sigterm => tracing::info!("SIGTERM recibido, iniciando shutdown graceful..."),
+    }
+}
+
 pub mod auth;
 mod config;
 pub mod entities;
@@ -69,12 +96,18 @@ async fn main() -> anyhow::Result<()> {
             tracing::error!("No se pudo crear el pool de Redis: {e}");
             anyhow::anyhow!(e.to_string())
         })?;
-    let _redis_task = redis.connect();
+
+    // Se guardan los JoinHandles para hacer join ordenado en shutdown.
+    // RedisPool es Clone (Arc interno): se clona antes de moverlo al AppState
+    // para conservar una referencia disponible en el cierre graceful.
+    let redis_tasks = redis.connect();
     redis.wait_for_connect().await.map_err(|e| {
         tracing::error!("No se pudo conectar a Redis: {e}");
         anyhow::anyhow!(e.to_string())
     })?;
     tracing::info!("✅ Redis conectado");
+
+    let redis_for_shutdown = redis.clone();
 
     // 4. AppState
     let state = AppState {
@@ -102,6 +135,22 @@ async fn main() -> anyhow::Result<()> {
         "🚀 Servidor listo"
     );
 
-    axum::serve(listener, app).await?;
+    // El servidor drena conexiones activas antes de retornar.
+    axum::serve(listener, app)
+        .with_graceful_shutdown(shutdown_signal())
+        .await?;
+
+    // 7. Shutdown ordenado de Redis
+    tracing::info!("Cerrando conexiones Redis...");
+    if let Err(e) = redis_for_shutdown.quit().await {
+        tracing::warn!("Error al enviar QUIT a Redis: {e}");
+    }
+    for handle in redis_tasks {
+        if let Err(e) = handle.await {
+            tracing::warn!("Error al unir tarea de Redis: {e}");
+        }
+    }
+    tracing::info!("✅ Redis cerrado correctamente");
+
     Ok(())
 }
