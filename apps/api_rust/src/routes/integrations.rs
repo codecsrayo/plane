@@ -264,9 +264,10 @@ pub struct UserGithubConnectionResponse {
 }
 
 #[derive(Debug, Deserialize)]
-pub struct GithubReposQuery {
+pub struct ExternalReposQuery {
     pub page: Option<u32>,
     pub per_page: Option<u32>,
+    pub token: Option<String>,
 }
 
 #[derive(Debug, Deserialize)]
@@ -336,6 +337,7 @@ pub async fn github_app_callback(
             false,
             OAuthMessageType::GithubIntegration,
             Some("Missing installation_id or workspace context."),
+            None,
         );
     };
 
@@ -346,13 +348,14 @@ pub async fn github_app_callback(
         .to_owned();
 
     match github_app_callback_inner(&state, installation_id, &setup_action, workspace_slug).await {
-        Ok(()) => postmessage_html(true, OAuthMessageType::GithubIntegration, None),
+        Ok(()) => postmessage_html(true, OAuthMessageType::GithubIntegration, None, None),
         Err(e) => {
             tracing::error!(error = %e, "GithubAppCallback failed");
             postmessage_html(
                 false,
                 OAuthMessageType::GithubIntegration,
                 Some("Installation failed. Please try again."),
+                None,
             )
         }
     }
@@ -1126,7 +1129,7 @@ pub async fn list_github_repositories(
     State(state): State<AppState>,
     guard: WorkspaceMemberGuard,
     Path((_slug, wi_id)): Path<(String, Uuid)>,
-    Query(params): Query<GithubReposQuery>,
+    Query(params): Query<ExternalReposQuery>,
 ) -> Result<Json<serde_json::Value>, AppError> {
     require_workspace_admin(&guard.member)?;
 
@@ -1664,6 +1667,115 @@ pub async fn delete_github_repo_sync(
         })?;
 
     Ok(StatusCode::NO_CONTENT)
+}
+
+// ── 18. GET /workspaces/{slug}/workspace-integrations/{wi_id}/gitlab-repositories/ ─
+
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/workspace-integrations/{wi_id}/gitlab-repositories/",
+    tag = "Integrations",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("wi_id" = Uuid, Path, description = "WorkspaceIntegration ID"),
+        ("page" = Option<u32>, Query, description = "Página (default 1)"),
+        ("per_page" = Option<u32>, Query, description = "Proyectos por página (default 30)"),
+        ("token" = Option<String>, Query, description = "GitLab PAT (opcional si hay token en env)"),
+    ),
+    responses(
+        (status = 200, description = "Lista de proyectos GitLab"),
+        (status = 400, description = "Error de configuración o token faltante"),
+    ),
+    security(("TokenAuth" = []))
+)]
+pub async fn list_gitlab_repositories(
+    State(state): State<AppState>,
+    guard: WorkspaceMemberGuard,
+    Path((_slug, wi_id)): Path<(String, Uuid)>,
+    Query(params): Query<ExternalReposQuery>,
+) -> Result<Json<serde_json::Value>, AppError> {
+    require_workspace_admin(&guard.member)?;
+
+    let wi = workspace_integrations::Entity::find_by_id(wi_id)
+        .active()
+        .filter(workspace_integrations::Column::WorkspaceId.eq(guard.workspace.id))
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    let gitlab_host = get_instance_config(&state, "GITLAB_HOST")
+        .await?
+        .unwrap_or_else(|| "https://gitlab.com".to_owned())
+        .trim_end_matches('/')
+        .to_owned();
+
+    let gitlab_token = params.token
+        .or_else(|| wi.metadata.get("code").and_then(|v| v.as_str()).map(str::to_owned))
+        .or_else(|| std::env::var("GITLAB_ACCESS_TOKEN").ok())
+        .ok_or_else(|| AppError::BadRequest("GitLab token not provided".into()))?;
+
+    let page = params.page.unwrap_or(1);
+    let per_page = params.per_page.unwrap_or(30).min(100);
+
+    let resp = state
+        .http
+        .get(format!("{gitlab_host}/api/v4/projects"))
+        .header("PRIVATE-TOKEN", &gitlab_token)
+        .query(&[
+            ("page", page.to_string()),
+            ("per_page", per_page.to_string()),
+            ("membership", "true".to_owned()),
+            ("simple", "true".to_owned()),
+            ("order_by", "updated_at".to_owned()),
+        ])
+        .send()
+        .await
+        .context("Failed to contact GitLab API")
+        .map_err(AppError::Internal)?;
+
+    if !resp.status().is_success() {
+        return Err(AppError::BadRequest(format!(
+            "Failed to fetch repositories from GitLab at {gitlab_host}"
+        )));
+    }
+
+    let total_count = resp
+        .headers()
+        .get("x-total")
+        .and_then(|v| v.to_str().ok())
+        .and_then(|v| v.parse::<u64>().ok());
+
+    let repos: Vec<serde_json::Value> = resp
+        .json()
+        .await
+        .context("GitLab projects response is not JSON")
+        .map_err(AppError::Internal)?;
+
+    let mapped: Vec<serde_json::Value> = repos
+        .iter()
+        .map(|repo| {
+            serde_json::json!({
+                "id": repo["id"].as_i64().unwrap_or(0).to_string(),
+                "full_name": repo["path_with_namespace"],
+                "name": repo["name"],
+                "owner": repo["namespace"]["name"],
+                "description": repo.get("description").and_then(|v| v.as_str()).unwrap_or(""),
+                "private": repo.get("visibility").and_then(|v| v.as_str()).map(|v| v != "public").unwrap_or(true),
+                "url": repo["web_url"],
+                "issues_count": repo.get("open_issues_count").and_then(|v| v.as_u64()).unwrap_or(0),
+            })
+        })
+        .collect();
+
+    let total_count = total_count
+        .unwrap_or(mapped.len() as u64);
+
+    Ok(Json(serde_json::json!({
+        "repositories": mapped,
+        "total_count": total_count,
+        "page": page,
+    })))
 }
 
 // ── 15. GET /workspaces/{slug}/workspace-integrations/{wi_id}/pr-state-mappings/ ─

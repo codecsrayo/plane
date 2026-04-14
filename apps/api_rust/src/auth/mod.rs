@@ -8,6 +8,7 @@ pub mod extractors;
 pub mod forgot_reset_password;
 pub mod logout;
 pub mod magic_auth;
+pub mod oauth;
 pub mod password_management;
 pub mod permissions;
 pub mod rate_limit;

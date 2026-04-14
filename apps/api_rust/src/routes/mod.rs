@@ -38,6 +38,12 @@ pub mod workspaces;
         auth::magic_auth::magic_sign_up,
         auth::magic_auth::magic_sign_in_space,
         auth::magic_auth::magic_sign_up_space,
+        auth::oauth::gitlab_initiate,
+        auth::oauth::gitlab_callback,
+        auth::oauth::google_initiate,
+        auth::oauth::google_callback,
+        auth::oauth::gitea_initiate,
+        auth::oauth::gitea_callback,
         auth::forgot_reset_password::forgot_password,
         auth::forgot_reset_password::reset_password,
         auth::forgot_reset_password::forgot_password_space,
@@ -87,6 +93,7 @@ pub mod workspaces;
         integrations::delete_workspace_integration_by_provider,
         integrations::provider_install,
         integrations::list_github_repositories,
+        integrations::list_gitlab_repositories,
         integrations::list_github_repo_syncs,
         integrations::create_github_repo_sync,
         integrations::delete_github_repo_sync,
@@ -169,7 +176,11 @@ pub fn build_router(state: AppState) -> Router {
     // ── Rutas sin autenticación ──────────────────────────────────────────────
     let public_routes = Router::new()
         // GitHub App Setup URL callback — sin middleware de auth
-        .route("/github/callback/", get(integrations::github_app_callback));
+        .route("/github/callback/", get(integrations::github_app_callback))
+        // GitLab OAuth callback — sin middleware de auth (manejado por frontend)
+        .route("/auth/gitlab/callback/", get(auth::oauth::gitlab_callback))
+        .route("/auth/google/callback/", get(auth::oauth::google_callback))
+        .route("/auth/gitea/callback/", get(auth::oauth::gitea_callback));
 
     let api_router = Router::new()
         .route("/health", get(health::health))
@@ -238,6 +249,10 @@ pub fn build_router(state: AppState) -> Router {
             "/auth/github/user-callback/",
             post(integrations::github_user_callback),
         )
+        // ── OAuth Initiation ──
+        .route("/auth/gitlab/", get(auth::oauth::gitlab_initiate))
+        .route("/auth/google/", get(auth::oauth::google_initiate))
+        .route("/auth/gitea/", get(auth::oauth::gitea_initiate))
         // ── Integrations globales ────────────────────────────────────────────
         .route("/integrations/", get(integrations::list_integrations))
         // ── Workspaces (Fase 2) ──────────────────────────────────────────────
@@ -299,6 +314,10 @@ pub fn build_router(state: AppState) -> Router {
         .route(
             "/workspaces/{slug}/workspace-integrations/{wi_id}/github-repositories/",
             get(integrations::list_github_repositories),
+        )
+        .route(
+            "/workspaces/{slug}/workspace-integrations/{wi_id}/gitlab-repositories/",
+            get(integrations::list_gitlab_repositories),
         )
         .route(
             "/workspaces/{slug}/workspace-integrations/{wi_id}/pr-state-mappings/",
