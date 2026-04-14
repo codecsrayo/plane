@@ -25,6 +25,8 @@ pub mod helpers;
 pub mod integrations;
 pub mod projects;
 pub mod states;
+pub mod timezones;
+pub mod users;
 pub mod workspaces;
 
 #[derive(OpenApi)]
@@ -188,6 +190,21 @@ pub mod workspaces;
         exporter::get_export_status,
         search::global_search,
         search::search_issues,
+        timezones::list_timezones,
+        users::get_me,
+        users::update_me,
+        users::deactivate_me,
+        users::get_session,
+        users::get_settings,
+        users::get_instance_admin,
+        users::update_onboard,
+        users::update_tour_completed,
+        users::get_profile,
+        users::update_profile,
+        users::list_accounts,
+        users::get_account,
+        users::delete_account,
+        users::list_user_workspaces,
     ),
     components(
         schemas(
@@ -245,6 +262,8 @@ pub mod workspaces;
         (name = "Intake",        description = "Issue intake / inbox"),
         (name = "Exporter",      description = "Issue export"),
         (name = "Search",        description = "Global and project search"),
+        (name = "Timezones",     description = "Supported timezones"),
+        (name = "Users",         description = "Current user profile and settings"),
         (name = "Integrations", description = "GitHub · GitLab · Slack integrations"),
     ),
     modifiers(&SecurityAddon)
@@ -669,6 +688,33 @@ pub fn build_router(state: AppState) -> Router {
             "/workspaces/{slug}/projects/{project_id}/search-issues/",
             get(search::search_issues),
         )
+        // ── Timezones ─────────────────────────────────────────────────────────
+        .route("/timezones/", get(timezones::list_timezones))
+        // ── Users (me) ───────────────────────────────────────────────────────
+        .route(
+            "/users/me/",
+            get(users::get_me)
+                .patch(users::update_me)
+                .delete(users::deactivate_me),
+        )
+        .route("/users/session/", get(users::get_session))
+        .route("/users/me/settings/", get(users::get_settings))
+        .route("/users/me/instance-admin/", get(users::get_instance_admin))
+        .route("/users/me/onboard/", patch(users::update_onboard))
+        .route(
+            "/users/me/tour-completed/",
+            patch(users::update_tour_completed),
+        )
+        .route(
+            "/users/me/profile/",
+            get(users::get_profile).patch(users::update_profile),
+        )
+        .route("/users/me/accounts/", get(users::list_accounts))
+        .route(
+            "/users/me/accounts/{pk}/",
+            get(users::get_account).delete(users::delete_account),
+        )
+        .route("/users/me/workspaces/", get(users::list_user_workspaces))
         .layer(middleware::from_fn(
             auth::rate_limit::rate_limit_headers_middleware,
         ))
