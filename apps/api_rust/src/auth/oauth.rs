@@ -182,7 +182,7 @@ pub async fn gitlab_initiate(
         ("state", oauth_state.as_str()),
     ];
 
-    let query = serde_urlencoded::to_string(&params).unwrap();
+    let query = serde_urlencoded::to_string(params).unwrap();
     let url = format!("{}/oauth/authorize?{}", gitlab_host.trim_end_matches('/'), query);
 
     let cookie = Cookie::build((OAUTH_STATE_COOKIE, oauth_state))
@@ -297,7 +297,7 @@ pub async fn google_initiate(
         ("state", oauth_state.as_str()),
     ];
 
-    let query = serde_urlencoded::to_string(&params).unwrap();
+    let query = serde_urlencoded::to_string(params).unwrap();
     let url = format!("https://accounts.google.com/o/oauth2/v2/auth?{query}");
 
     let cookie = Cookie::build((OAUTH_STATE_COOKIE, oauth_state))
@@ -413,7 +413,7 @@ pub async fn gitea_initiate(
         ("state", oauth_state.as_str()),
     ];
 
-    let query = serde_urlencoded::to_string(&params).unwrap();
+    let query = serde_urlencoded::to_string(params).unwrap();
     let url = format!("{}/login/oauth/authorize?{}", gitea_host.trim_end_matches('/'), query);
 
     let cookie = Cookie::build((OAUTH_STATE_COOKIE, oauth_state))
