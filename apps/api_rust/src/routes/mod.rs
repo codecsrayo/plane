@@ -9,7 +9,10 @@ use axum::{
 use utoipa::OpenApi;
 use utoipa_scalar::{Scalar, Servable};
 
+pub mod cycles;
 pub mod health;
+pub mod issues;
+pub mod modules;
 pub mod helpers;
 pub mod integrations;
 pub mod projects;
@@ -100,6 +103,27 @@ pub mod workspaces;
         integrations::pr_state::list_pr_state_mappings,
         integrations::pr_state::create_pr_state_mapping,
         integrations::pr_state::delete_pr_state_mapping,
+        issues::list_issues,
+        issues::create_issue,
+        issues::get_issue,
+        issues::update_issue,
+        issues::delete_issue,
+        cycles::list_cycles,
+        cycles::create_cycle,
+        cycles::get_cycle,
+        cycles::update_cycle,
+        cycles::delete_cycle,
+        cycles::list_cycle_issues,
+        cycles::add_issues_to_cycle,
+        cycles::remove_issue_from_cycle,
+        modules::list_modules,
+        modules::create_module,
+        modules::get_module,
+        modules::update_module,
+        modules::delete_module,
+        modules::list_module_issues,
+        modules::add_issues_to_module,
+        modules::remove_issue_from_module,
     ),
     components(
         schemas(
@@ -147,6 +171,8 @@ pub mod workspaces;
         (name = "Projects",     description = "Project management"),
         (name = "States",       description = "Project state management"),
         (name = "Issues",       description = "Issues and work items"),
+        (name = "Cycles",       description = "Sprint cycles"),
+        (name = "Modules",      description = "Feature modules"),
         (name = "Integrations", description = "GitHub · GitLab · Slack integrations"),
     ),
     modifiers(&SecurityAddon)
@@ -374,6 +400,55 @@ pub fn build_router(state: AppState) -> Router {
         .route(
             "/workspaces/{slug}/projects/{project_id}/states/{pk}/mark-default",
             post(states::mark_default),
+        )
+        // ── Issues ──────────────────────────────────────────────────────────
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/issues/",
+            get(issues::list_issues).post(issues::create_issue),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/issues/{pk}/",
+            get(issues::get_issue)
+                .patch(issues::update_issue)
+                .delete(issues::delete_issue),
+        )
+        // ── Cycles ──────────────────────────────────────────────────────────
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/cycles/",
+            get(cycles::list_cycles).post(cycles::create_cycle),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/cycles/{pk}/",
+            get(cycles::get_cycle)
+                .patch(cycles::update_cycle)
+                .delete(cycles::delete_cycle),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/cycle-issues/",
+            get(cycles::list_cycle_issues).post(cycles::add_issues_to_cycle),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/cycle-issues/{issue_id}/",
+            delete(cycles::remove_issue_from_cycle),
+        )
+        // ── Modules ─────────────────────────────────────────────────────────
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/modules/",
+            get(modules::list_modules).post(modules::create_module),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/modules/{pk}/",
+            get(modules::get_module)
+                .patch(modules::update_module)
+                .delete(modules::delete_module),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/modules/{module_id}/issues/",
+            get(modules::list_module_issues).post(modules::add_issues_to_module),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/modules/{module_id}/issues/{issue_id}/",
+            delete(modules::remove_issue_from_module),
         )
         .layer(middleware::from_fn(
             auth::rate_limit::rate_limit_headers_middleware,
