@@ -1,7 +1,7 @@
 // src/main.rs
 use apalis::prelude::{Monitor, WorkerBuilder, WorkerFactoryFn};
 use apalis_sql::postgres::PostgresStorage;
-use fred::prelude:{
+use fred::prelude::{
     Builder as RedisBuilder, ClientLike, Config as RedisConfig, Pool as RedisPool,
 };
 use sea_orm::Database;
