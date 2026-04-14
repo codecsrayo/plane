@@ -27,6 +27,14 @@ pub struct Config {
     pub aws_s3_bucket: String, // AWS_S3_BUCKET_NAME
     pub aws_endpoint: String,  // AWS_S3_ENDPOINT_URL
 
+    // LLM AI assistant
+    pub llm_api_key: Option<String>,   // LLM_API_KEY
+    pub llm_provider: String,          // LLM_PROVIDER (openai|anthropic|gemini)
+    pub llm_model: Option<String>,     // LLM_MODEL
+
+    // Unsplash
+    pub unsplash_access_key: Option<String>, // UNSPLASH_ACCESS_KEY
+
     // Cookies
     pub cookie_domain: Option<String>, // COOKIE_DOMAIN
     pub is_production: bool,           // derivado de DEBUG=0
@@ -68,6 +76,10 @@ impl Config {
             admin_base_url: env::var("ADMIN_BASE_URL").ok(),
             aws_s3_bucket: env::var("AWS_S3_BUCKET_NAME").unwrap_or_default(),
             aws_endpoint: env::var("AWS_S3_ENDPOINT_URL").unwrap_or_default(),
+            llm_api_key: env::var("LLM_API_KEY").ok(),
+            llm_provider: env::var("LLM_PROVIDER").unwrap_or_else(|_| "openai".into()),
+            llm_model: env::var("LLM_MODEL").ok(),
+            unsplash_access_key: env::var("UNSPLASH_ACCESS_KEY").ok(),
             cookie_domain: env::var("COOKIE_DOMAIN").ok(),
             session_cookie_age: env::var("SESSION_COOKIE_AGE")
                 .unwrap_or_else(|_| "604800".into())

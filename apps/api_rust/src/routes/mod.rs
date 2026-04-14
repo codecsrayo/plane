@@ -12,7 +12,9 @@ use utoipa_scalar::{Scalar, Servable};
 pub mod analytics;
 pub mod assets;
 pub mod cycles;
+pub mod external;
 pub mod exporter;
+pub mod importer;
 pub mod intake;
 pub mod pages;
 pub mod search;
@@ -238,6 +240,17 @@ pub mod workspaces;
         assets::delete_workspace_asset,
         assets::get_workspace_asset,
         assets::get_static_asset,
+        importer::list_github_import_repositories,
+        importer::list_github_importers,
+        importer::create_github_importer,
+        importer::delete_github_importer,
+        importer::list_gitlab_import_repositories,
+        importer::list_gitlab_importers,
+        importer::create_gitlab_importer,
+        importer::delete_gitlab_importer,
+        external::unsplash,
+        external::project_ai_assistant,
+        external::workspace_ai_assistant,
     ),
     components(
         schemas(
@@ -297,6 +310,8 @@ pub mod workspaces;
         (name = "Search",        description = "Global and project search"),
         (name = "Analytics",    description = "Workspace analytics and project stats"),
         (name = "Assets",       description = "File assets — user/workspace/project uploads"),
+        (name = "External",     description = "AI assistant and Unsplash integration"),
+        (name = "Importer",     description = "GitHub and GitLab issue importers"),
         (name = "Timezones",     description = "Supported timezones"),
         (name = "Users",         description = "Current user profile and settings"),
         (name = "Views",         description = "Issue views (workspace & project)"),
@@ -836,6 +851,41 @@ pub fn build_router(state: AppState) -> Router {
         .route(
             "/assets/v2/static/{asset_id}/",
             get(assets::get_static_asset),
+        )
+        // ── Importer ──────────────────────────────────────────────────────────
+        .route(
+            "/workspaces/{slug}/importers/github/repositories/",
+            get(importer::list_github_import_repositories),
+        )
+        .route(
+            "/workspaces/{slug}/importers/github/",
+            get(importer::list_github_importers).post(importer::create_github_importer),
+        )
+        .route(
+            "/workspaces/{slug}/importers/github/{importer_id}/",
+            delete(importer::delete_github_importer),
+        )
+        .route(
+            "/workspaces/{slug}/importers/gitlab/repositories/",
+            get(importer::list_gitlab_import_repositories),
+        )
+        .route(
+            "/workspaces/{slug}/importers/gitlab/",
+            get(importer::list_gitlab_importers).post(importer::create_gitlab_importer),
+        )
+        .route(
+            "/workspaces/{slug}/importers/gitlab/{importer_id}/",
+            delete(importer::delete_gitlab_importer),
+        )
+        // ── External ──────────────────────────────────────────────────────────
+        .route("/unsplash/", get(external::unsplash))
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/ai-assistant/",
+            post(external::project_ai_assistant),
+        )
+        .route(
+            "/workspaces/{slug}/ai-assistant/",
+            post(external::workspace_ai_assistant),
         )
         .layer(middleware::from_fn(
             auth::rate_limit::rate_limit_headers_middleware,
