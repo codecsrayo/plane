@@ -20,21 +20,18 @@ use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 
 use crate::{
-    auth::any_auth::AnyAuth,
+    auth::{
+        any_auth::AnyAuth,
+        permissions::{ROLE_ADMIN, ROLE_GUEST, ROLE_MEMBER, ROLE_VIEWER},
+    },
     entities::{
-        project_member_invites, project_members, projects, states, workspace_members, workspaces,
+        project_member_invites, project_members, projects, states, workspace_members,
     },
     error::AppError,
+    routes::helpers::{require_workspace_member, workspace_by_slug},
     utils::soft_delete::SoftDeleteExt,
     AppState,
 };
-
-// ─── Constantes de rol ────────────────────────────────────────────────────────
-
-const ROLE_GUEST: i16 = 5;
-const ROLE_VIEWER: i16 = 10;
-const ROLE_MEMBER: i16 = 15;
-const ROLE_ADMIN: i16 = 20;
 
 // ─── Estados por defecto al crear un proyecto (espeja DEFAULT_STATES de Django) ─
 
@@ -99,37 +96,6 @@ const DEFAULT_STATES: &[DefaultState] = &[
 ];
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
-
-/// Obtiene workspace activo por slug.
-async fn workspace_by_slug(
-    db: &sea_orm::DatabaseConnection,
-    slug: &str,
-) -> Result<workspaces::Model, AppError> {
-    workspaces::Entity::find()
-        .active()
-        .filter(workspaces::Column::Slug.eq(slug))
-        .one(db)
-        .await
-        .map_err(AppError::Database)?
-        .ok_or(AppError::NotFound)
-}
-
-/// Verifica membresía activa en workspace.
-async fn require_workspace_member(
-    db: &sea_orm::DatabaseConnection,
-    workspace_id: Uuid,
-    user_id: Uuid,
-) -> Result<workspace_members::Model, AppError> {
-    workspace_members::Entity::find()
-        .active()
-        .filter(workspace_members::Column::WorkspaceId.eq(workspace_id))
-        .filter(workspace_members::Column::MemberId.eq(user_id))
-        .filter(workspace_members::Column::IsActive.eq(true))
-        .one(db)
-        .await
-        .map_err(AppError::Database)?
-        .ok_or(AppError::Forbidden)
-}
 
 /// Obtiene proyecto activo por id dentro del workspace.
 async fn project_by_id(

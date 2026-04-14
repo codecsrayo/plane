@@ -1,6 +1,7 @@
 // src/routes/mod.rs
 use crate::{auth, AppState};
 use axum::{
+    extract::DefaultBodyLimit,
     middleware,
     routing::{delete, get, patch, post},
     Json, Router,
@@ -9,6 +10,7 @@ use utoipa::OpenApi;
 use utoipa_scalar::{Scalar, Servable};
 
 pub mod health;
+pub mod helpers;
 pub mod integrations;
 pub mod projects;
 pub mod states;
@@ -356,7 +358,8 @@ pub fn build_router(state: AppState) -> Router {
         )
         .layer(middleware::from_fn(
             auth::rate_limit::rate_limit_headers_middleware,
-        ));
+        ))
+        .layer(DefaultBodyLimit::max(1_048_576)); // 1 MB — previene DoS por payload masivo
 
     let mut router = Router::new()
         .nest("/api", api_router)

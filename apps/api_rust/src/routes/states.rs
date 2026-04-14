@@ -22,47 +22,13 @@ use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 
 use crate::{
-    auth::any_auth::AnyAuth,
-    entities::{project_members, states, workspace_members, workspaces},
+    auth::{any_auth::AnyAuth, permissions::ROLE_ADMIN},
+    entities::{project_members, states, workspace_members},
     error::AppError,
+    routes::helpers::{require_workspace_member, workspace_by_slug},
     utils::soft_delete::SoftDeleteExt,
     AppState,
 };
-
-// ─── Constantes de rol ────────────────────────────────────────────────────────
-
-const ROLE_ADMIN: i16 = 20;
-
-// ─── Helpers ─────────────────────────────────────────────────────────────────
-
-async fn workspace_by_slug(
-    db: &sea_orm::DatabaseConnection,
-    slug: &str,
-) -> Result<workspaces::Model, AppError> {
-    workspaces::Entity::find()
-        .active()
-        .filter(workspaces::Column::Slug.eq(slug))
-        .one(db)
-        .await
-        .map_err(AppError::Database)?
-        .ok_or(AppError::NotFound)
-}
-
-async fn require_workspace_member(
-    db: &sea_orm::DatabaseConnection,
-    workspace_id: Uuid,
-    user_id: Uuid,
-) -> Result<workspace_members::Model, AppError> {
-    workspace_members::Entity::find()
-        .active()
-        .filter(workspace_members::Column::WorkspaceId.eq(workspace_id))
-        .filter(workspace_members::Column::MemberId.eq(user_id))
-        .filter(workspace_members::Column::IsActive.eq(true))
-        .one(db)
-        .await
-        .map_err(AppError::Database)?
-        .ok_or(AppError::Forbidden)
-}
 
 async fn project_member_for_user(
     db: &sea_orm::DatabaseConnection,
@@ -244,7 +210,9 @@ pub async fn list_states(
         for s in responses {
             map.entry(s.group.clone()).or_default().push(s);
         }
-        return Ok((StatusCode::OK, Json(serde_json::to_value(map).unwrap())).into_response());
+        let value = serde_json::to_value(map)
+            .map_err(|e| AppError::Internal(e.into()))?;
+        return Ok((StatusCode::OK, Json(value)).into_response());
     }
 
     Ok((StatusCode::OK, Json(responses)).into_response())
@@ -382,7 +350,7 @@ pub async fn create_state(
             }
         })?;
 
-    Ok((StatusCode::OK, Json(StateResponse::from(&inserted))).into_response())
+    Ok((StatusCode::CREATED, Json(StateResponse::from(&inserted))).into_response())
 }
 
 /// Actualiza parcialmente un estado. Solo Admin.
