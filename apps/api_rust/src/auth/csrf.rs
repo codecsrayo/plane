@@ -1,4 +1,5 @@
 use axum::{extract::State, http::HeaderMap, Json};
+use openssl::memcmp;
 use axum_extra::extract::{
     cookie::{Cookie, SameSite},
     CookieJar,
@@ -48,8 +49,21 @@ pub async fn get_csrf_token(
     )
 }
 
+/// Validates a CSRF token using constant-time comparison to prevent timing attacks.
+///
+/// Direct string equality (`==`) short-circuits on the first differing byte,
+/// leaking timing information that could be exploited to brute-force the token.
+/// `openssl::memcmp::eq` always compares all bytes in constant time.
 pub fn is_valid_csrf(form_token: &str, cookie_token: &str) -> bool {
-    !form_token.is_empty() && form_token == cookie_token
+    if form_token.is_empty() {
+        return false;
+    }
+    // Length check is not secret — both tokens are UUID v4 (36 bytes).
+    // Returning early on length mismatch is safe and avoids padding concerns.
+    if form_token.len() != cookie_token.len() {
+        return false;
+    }
+    memcmp::eq(form_token.as_bytes(), cookie_token.as_bytes())
 }
 
 pub fn is_valid_csrf_header(headers: &HeaderMap, cookie_token: &str) -> bool {
