@@ -678,34 +678,58 @@ pub async fn create_workspace_integration(
     )
     .await?;
 
-    // Verificar que no exista ya
-    let existing = workspace_integrations::Entity::find()
-        .active()
-        .filter(workspace_integrations::Column::WorkspaceId.eq(guard.workspace.id))
-        .filter(workspace_integrations::Column::IntegrationId.eq(integration.id))
-        .one(&state.db)
+    // ── Verificar unicidad e insertar en transacción SERIALIZABLE ────────────
+    // Antipatrón corregido: SELECT luego INSERT sin transacción es TOCTOU.
+    // Dos requests concurrentes pueden pasar el SELECT "not found" al mismo
+    // tiempo y ambas insertar el mismo workspace_integration.
+    let wi = state
+        .db
+        .transaction_with_config::<_, workspace_integrations::Model, AppError>(
+            |txn| {
+                let integration_id = integration.id;
+                let workspace_id = guard.workspace.id;
+                let user_id = guard.user.id;
+                let api_token_id = api_token.id;
+                let metadata = body.metadata.clone().unwrap_or(serde_json::json!({}));
+                let config = body.config.clone().unwrap_or(serde_json::json!({}));
+                Box::pin(async move {
+                    let existing = workspace_integrations::Entity::find()
+                        .active()
+                        .filter(workspace_integrations::Column::WorkspaceId.eq(workspace_id))
+                        .filter(workspace_integrations::Column::IntegrationId.eq(integration_id))
+                        .one(txn)
+                        .await
+                        .map_err(AppError::Database)?;
+
+                    if existing.is_some() {
+                        return Err(AppError::BadRequest(
+                            "Integration already installed".into(),
+                        ));
+                    }
+
+                    workspace_integrations::ActiveModel {
+                        id: Set(Uuid::new_v4()),
+                        workspace_id: Set(workspace_id),
+                        integration_id: Set(integration_id),
+                        actor_id: Set(user_id),
+                        api_token_id: Set(api_token_id),
+                        metadata: Set(metadata),
+                        config: Set(config),
+                        ..Default::default()
+                    }
+                    .insert(txn)
+                    .await
+                    .map_err(AppError::Database)
+                })
+            },
+            Some(IsolationLevel::Serializable),
+            None,
+        )
         .await
-        .map_err(AppError::Database)?;
-
-    if existing.is_some() {
-        return Err(AppError::BadRequest(
-            "Integration already installed".into(),
-        ));
-    }
-
-    let wi = workspace_integrations::ActiveModel {
-        id: Set(Uuid::new_v4()),
-        workspace_id: Set(guard.workspace.id),
-        integration_id: Set(integration.id),
-        actor_id: Set(guard.user.id),
-        api_token_id: Set(api_token.id),
-        metadata: Set(body.metadata.unwrap_or(serde_json::json!({}))),
-        config: Set(body.config.unwrap_or(serde_json::json!({}))),
-        ..Default::default()
-    }
-    .insert(&state.db)
-    .await
-    .map_err(AppError::Database)?;
+        .map_err(|e| match e {
+            sea_orm::TransactionError::Transaction(app_err) => app_err,
+            sea_orm::TransactionError::Connection(db_err) => AppError::Database(db_err),
+        })?;
 
     Ok((
         StatusCode::CREATED,
@@ -947,33 +971,58 @@ pub async fn provider_install(
     )
     .await?;
 
-    // get_or_create con upsert en caso de reinsatalación
-    let existing = workspace_integrations::Entity::find()
-        .filter(workspace_integrations::Column::WorkspaceId.eq(guard.workspace.id))
-        .filter(workspace_integrations::Column::IntegrationId.eq(integration.id))
-        .filter(workspace_integrations::Column::DeletedAt.is_null())
-        .one(&state.db)
-        .await
-        .map_err(AppError::Database)?;
+    // ── Upsert en transacción SERIALIZABLE ──────────────────────────────────
+    // Antipatrón corregido: SELECT luego INSERT sin transacción es TOCTOU —
+    // dos requests concurrentes pueden pasar el SELECT vacío simultáneamente,
+    // y ambas insertar el mismo workspace_integration, violando la unicidad.
+    // Mismo patrón que `get_or_create_api_token`.
+    let (wi, created) = state
+        .db
+        .transaction_with_config::<_, (workspace_integrations::Model, bool), AppError>(
+            |txn| {
+                let metadata = metadata.clone();
+                let config = config.clone();
+                let integration_id = integration.id;
+                let workspace_id = guard.workspace.id;
+                let user_id = guard.user.id;
+                let api_token_id = api_token.id;
+                Box::pin(async move {
+                    let existing = workspace_integrations::Entity::find()
+                        .filter(workspace_integrations::Column::WorkspaceId.eq(workspace_id))
+                        .filter(workspace_integrations::Column::IntegrationId.eq(integration_id))
+                        .filter(workspace_integrations::Column::DeletedAt.is_null())
+                        .one(txn)
+                        .await
+                        .map_err(AppError::Database)?;
 
-    let (wi, created) = if let Some(wi) = existing {
-        let mut am: workspace_integrations::ActiveModel = wi.into();
-        am.metadata = Set(metadata);
-        am.config = Set(config);
-        (am.update(&state.db).await.map_err(AppError::Database)?, false)
-    } else {
-        let new_wi = workspace_integrations::ActiveModel {
-            id: Set(Uuid::new_v4()),
-            workspace_id: Set(guard.workspace.id),
-            integration_id: Set(integration.id),
-            actor_id: Set(guard.user.id),
-            api_token_id: Set(api_token.id),
-            metadata: Set(metadata),
-            config: Set(config),
-            ..Default::default()
-        };
-        (new_wi.insert(&state.db).await.map_err(AppError::Database)?, true)
-    };
+                    if let Some(wi) = existing {
+                        let mut am: workspace_integrations::ActiveModel = wi.into();
+                        am.metadata = Set(metadata);
+                        am.config = Set(config);
+                        Ok((am.update(txn).await.map_err(AppError::Database)?, false))
+                    } else {
+                        let new_wi = workspace_integrations::ActiveModel {
+                            id: Set(Uuid::new_v4()),
+                            workspace_id: Set(workspace_id),
+                            integration_id: Set(integration_id),
+                            actor_id: Set(user_id),
+                            api_token_id: Set(api_token_id),
+                            metadata: Set(metadata),
+                            config: Set(config),
+                            ..Default::default()
+                        };
+                        Ok((new_wi.insert(txn).await.map_err(AppError::Database)?, true))
+                    }
+                })
+            },
+            Some(IsolationLevel::Serializable),
+            None,
+        )
+        .await
+        .map_err(|e| match e {
+            sea_orm::TransactionError::Transaction(app_err) => app_err,
+            sea_orm::TransactionError::Connection(db_err) => AppError::Database(db_err),
+        })?;
 
     let status = if created { StatusCode::CREATED } else { StatusCode::OK };
     Ok((status, Json(WorkspaceIntegrationResponse::from_model(wi, Some(integration)))))
