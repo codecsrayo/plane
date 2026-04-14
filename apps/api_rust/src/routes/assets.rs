@@ -303,6 +303,7 @@ pub async fn initiate_user_asset_upload(
         updated_by_id: Set(Some(user.id)),
         created_at: Set(now),
         updated_at: Set(now),
+        deleted_at: Set(None),
     };
 
     let asset = new_asset.insert(&state.db).await.map_err(AppError::Database)?;
@@ -497,6 +498,7 @@ pub async fn initiate_workspace_asset_upload(
         updated_by_id: Set(Some(guard.user.id)),
         created_at: Set(now),
         updated_at: Set(now),
+        deleted_at: Set(None),
     };
 
     let asset = new_asset.insert(&state.db).await.map_err(AppError::Database)?;
