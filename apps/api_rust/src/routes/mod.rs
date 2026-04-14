@@ -9,6 +9,7 @@ use utoipa::OpenApi;
 use utoipa_scalar::{Scalar, Servable};
 
 pub mod health;
+pub mod integrations;
 pub mod projects;
 pub mod states;
 pub mod workspaces;
@@ -73,6 +74,23 @@ pub mod workspaces;
         states::delete_state,
         states::intake_state,
         states::mark_default,
+        integrations::list_integrations,
+        integrations::github_app_callback,
+        integrations::github_user_callback,
+        integrations::list_workspace_integrations,
+        integrations::create_workspace_integration,
+        integrations::get_workspace_integration,
+        integrations::update_workspace_integration,
+        integrations::delete_workspace_integration,
+        integrations::delete_workspace_integration_by_provider,
+        integrations::provider_install,
+        integrations::list_github_repositories,
+        integrations::list_github_repo_syncs,
+        integrations::create_github_repo_sync,
+        integrations::delete_github_repo_sync,
+        integrations::list_pr_state_mappings,
+        integrations::create_pr_state_mapping,
+        integrations::delete_pr_state_mapping,
     ),
     components(
         schemas(
@@ -114,12 +132,13 @@ pub mod workspaces;
         )
     ),
     tags(
-        (name = "Health",     description = "Health checks"),
-        (name = "Auth",       description = "Authentication"),
-        (name = "Workspaces", description = "Workspace management"),
-        (name = "Projects",   description = "Project management"),
-        (name = "States",     description = "Project state management"),
-        (name = "Issues",     description = "Issues and work items"),
+        (name = "Health",       description = "Health checks"),
+        (name = "Auth",         description = "Authentication"),
+        (name = "Workspaces",   description = "Workspace management"),
+        (name = "Projects",     description = "Project management"),
+        (name = "States",       description = "Project state management"),
+        (name = "Issues",       description = "Issues and work items"),
+        (name = "Integrations", description = "GitHub · GitLab · Slack integrations"),
     ),
     modifiers(&SecurityAddon)
 )]
@@ -145,6 +164,11 @@ async fn openapi_json() -> Json<utoipa::openapi::OpenApi> {
 }
 
 pub fn build_router(state: AppState) -> Router {
+    // ── Rutas sin autenticación ──────────────────────────────────────────────
+    let public_routes = Router::new()
+        // GitHub App Setup URL callback — sin middleware de auth
+        .route("/github/callback/", get(integrations::github_app_callback));
+
     let api_router = Router::new()
         .route("/health", get(health::health))
         .route("/auth/get-csrf-token", get(auth::csrf::get_csrf_token))
@@ -207,11 +231,15 @@ pub fn build_router(state: AppState) -> Router {
         )
         .route("/auth/sign-out", post(auth::logout::logout))
         .route("/auth/spaces/sign-out", post(auth::logout::logout_space))
-        // ── Workspaces (Fase 2) ──────────────────────────────────────────────
+        // ── GitHub user OAuth callback (con auth) ────────────────────────────
         .route(
-            "/workspace-slug-check",
-            get(workspaces::slug_check),
+            "/auth/github/user-callback/",
+            post(integrations::github_user_callback),
         )
+        // ── Integrations globales ────────────────────────────────────────────
+        .route("/integrations/", get(integrations::list_integrations))
+        // ── Workspaces (Fase 2) ──────────────────────────────────────────────
+        .route("/workspace-slug-check", get(workspaces::slug_check))
         .route(
             "/workspaces",
             get(workspaces::list_workspaces).post(workspaces::create_workspace),
@@ -222,10 +250,7 @@ pub fn build_router(state: AppState) -> Router {
                 .patch(workspaces::update_workspace)
                 .delete(workspaces::delete_workspace),
         )
-        .route(
-            "/workspaces/:slug/members",
-            get(workspaces::list_members),
-        )
+        .route("/workspaces/:slug/members", get(workspaces::list_members))
         .route(
             "/workspaces/:slug/members/:pk",
             patch(workspaces::update_member).delete(workspaces::remove_member),
@@ -237,6 +262,50 @@ pub fn build_router(state: AppState) -> Router {
         .route(
             "/workspaces/:slug/invitations/:pk",
             delete(workspaces::delete_invitation),
+        )
+        // ── Workspace integrations ───────────────────────────────────────────
+        .route(
+            "/workspaces/:slug/workspace-integrations/",
+            get(integrations::list_workspace_integrations)
+                .post(integrations::create_workspace_integration),
+        )
+        // Rutas específicas de GitHub ANTES de las rutas genéricas con :pk
+        // para evitar que "github" sea capturado como un UUID
+        .route(
+            "/workspaces/:slug/workspace-integrations/github/repo-syncs/",
+            get(integrations::list_github_repo_syncs)
+                .post(integrations::create_github_repo_sync),
+        )
+        .route(
+            "/workspaces/:slug/workspace-integrations/github/repo-syncs/:pk/",
+            delete(integrations::delete_github_repo_sync),
+        )
+        .route(
+            "/workspaces/:slug/workspace-integrations/:pk/",
+            get(integrations::get_workspace_integration)
+                .patch(integrations::update_workspace_integration)
+                .delete(integrations::delete_workspace_integration),
+        )
+        .route(
+            "/workspaces/:slug/workspace-integrations/:provider/provider/",
+            delete(integrations::delete_workspace_integration_by_provider),
+        )
+        .route(
+            "/workspaces/:slug/workspace-integrations/:provider/install/",
+            post(integrations::provider_install),
+        )
+        .route(
+            "/workspaces/:slug/workspace-integrations/:wi_id/github-repositories/",
+            get(integrations::list_github_repositories),
+        )
+        .route(
+            "/workspaces/:slug/workspace-integrations/:wi_id/pr-state-mappings/",
+            get(integrations::list_pr_state_mappings)
+                .post(integrations::create_pr_state_mapping),
+        )
+        .route(
+            "/workspaces/:slug/workspace-integrations/:wi_id/pr-state-mappings/:pk/",
+            delete(integrations::delete_pr_state_mapping),
         )
         // ── Projects (Fase 2b) ───────────────────────────────────────────────
         .route(
@@ -289,10 +358,11 @@ pub fn build_router(state: AppState) -> Router {
             auth::rate_limit::rate_limit_headers_middleware,
         ));
 
-    let mut router = Router::new().nest("/api", api_router);
+    let mut router = Router::new()
+        .nest("/api", api_router)
+        .nest("/api", public_routes);
 
     // ✅ Scalar UI solo en desarrollo (DEBUG=true).
-    // En producción expone el schema completo — proteger con IP allowlist si se necesita en staging.
     if state.config.debug {
         router = router
             .route("/api/docs/openapi.json", get(openapi_json))

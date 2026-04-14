@@ -21,6 +21,7 @@ use config::Config;
 /// Fase 3 agrega: redis (fred::Pool), s3 (aws_sdk_s3::Client), pg_pool (sqlx::PgPool).
 #[derive(Clone)]
 pub struct AppState {
+    pub http: reqwest::Client,
     pub db: sea_orm::DatabaseConnection,
     pub redis: RedisPool,
     pub config: Arc<Config>,
@@ -81,6 +82,10 @@ async fn main() -> anyhow::Result<()> {
         redis,
         config: Arc::new(config.clone()),
         rate_limit: Arc::new(RateLimitState::default()),
+        http: reqwest::Client::builder()
+            .timeout(std::time::Duration::from_secs(30))
+            .build()
+            .expect("Error al construir reqwest::Client"),
     };
 
     // 5. Router
