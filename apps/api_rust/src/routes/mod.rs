@@ -10,6 +10,10 @@ use utoipa::OpenApi;
 use utoipa_scalar::{Scalar, Servable};
 
 pub mod cycles;
+pub mod estimates;
+pub mod labels;
+pub mod notifications;
+pub mod webhooks;
 pub mod health;
 pub mod issues;
 pub mod modules;
@@ -124,6 +128,36 @@ pub mod workspaces;
         modules::list_module_issues,
         modules::add_issues_to_module,
         modules::remove_issue_from_module,
+        labels::list_labels,
+        labels::create_label,
+        labels::get_label,
+        labels::update_label,
+        labels::delete_label,
+        estimates::list_estimates,
+        estimates::create_estimate,
+        estimates::get_estimate,
+        estimates::update_estimate,
+        estimates::delete_estimate,
+        estimates::create_estimate_point,
+        estimates::update_estimate_point,
+        estimates::delete_estimate_point,
+        notifications::list_notifications,
+        notifications::get_notification,
+        notifications::update_notification,
+        notifications::delete_notification,
+        notifications::mark_read,
+        notifications::mark_unread,
+        notifications::archive_notification,
+        notifications::unarchive_notification,
+        notifications::unread_count,
+        notifications::mark_all_read,
+        webhooks::list_webhooks,
+        webhooks::create_webhook,
+        webhooks::get_webhook,
+        webhooks::update_webhook,
+        webhooks::delete_webhook,
+        webhooks::regenerate_secret,
+        webhooks::list_webhook_logs,
     ),
     components(
         schemas(
@@ -173,6 +207,10 @@ pub mod workspaces;
         (name = "Issues",       description = "Issues and work items"),
         (name = "Cycles",       description = "Sprint cycles"),
         (name = "Modules",      description = "Feature modules"),
+        (name = "Labels",        description = "Project labels"),
+        (name = "Estimates",     description = "Project estimates"),
+        (name = "Notifications", description = "User notifications"),
+        (name = "Webhooks",      description = "Workspace webhooks"),
         (name = "Integrations", description = "GitHub · GitLab · Slack integrations"),
     ),
     modifiers(&SecurityAddon)
@@ -449,6 +487,83 @@ pub fn build_router(state: AppState) -> Router {
         .route(
             "/workspaces/{slug}/projects/{project_id}/modules/{module_id}/issues/{issue_id}/",
             delete(modules::remove_issue_from_module),
+        )
+        // ── Labels ──────────────────────────────────────────────────────────
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/labels/",
+            get(labels::list_labels).post(labels::create_label),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/labels/{pk}/",
+            get(labels::get_label)
+                .patch(labels::update_label)
+                .delete(labels::delete_label),
+        )
+        // ── Estimates ────────────────────────────────────────────────────────
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/estimates/",
+            get(estimates::list_estimates).post(estimates::create_estimate),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/estimates/{estimate_id}/",
+            get(estimates::get_estimate)
+                .patch(estimates::update_estimate)
+                .delete(estimates::delete_estimate),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/estimates/{estimate_id}/estimate-points/",
+            post(estimates::create_estimate_point),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/estimates/{estimate_id}/estimate-points/{pk}/",
+            patch(estimates::update_estimate_point).delete(estimates::delete_estimate_point),
+        )
+        // ── Notifications ────────────────────────────────────────────────────
+        .route(
+            "/workspaces/{slug}/users/notifications/unread/",
+            get(notifications::unread_count),
+        )
+        .route(
+            "/workspaces/{slug}/users/notifications/mark-all-read/",
+            post(notifications::mark_all_read),
+        )
+        .route(
+            "/workspaces/{slug}/users/notifications/",
+            get(notifications::list_notifications),
+        )
+        .route(
+            "/workspaces/{slug}/users/notifications/{pk}/",
+            get(notifications::get_notification)
+                .patch(notifications::update_notification)
+                .delete(notifications::delete_notification),
+        )
+        .route(
+            "/workspaces/{slug}/users/notifications/{pk}/read/",
+            post(notifications::mark_read).delete(notifications::mark_unread),
+        )
+        .route(
+            "/workspaces/{slug}/users/notifications/{pk}/archive/",
+            post(notifications::archive_notification)
+                .delete(notifications::unarchive_notification),
+        )
+        // ── Webhooks ─────────────────────────────────────────────────────────
+        .route(
+            "/workspaces/{slug}/webhooks/",
+            get(webhooks::list_webhooks).post(webhooks::create_webhook),
+        )
+        .route(
+            "/workspaces/{slug}/webhooks/{pk}/",
+            get(webhooks::get_webhook)
+                .patch(webhooks::update_webhook)
+                .delete(webhooks::delete_webhook),
+        )
+        .route(
+            "/workspaces/{slug}/webhooks/{pk}/regenerate/",
+            post(webhooks::regenerate_secret),
+        )
+        .route(
+            "/workspaces/{slug}/webhook-logs/{webhook_id}/",
+            get(webhooks::list_webhook_logs),
         )
         .layer(middleware::from_fn(
             auth::rate_limit::rate_limit_headers_middleware,
