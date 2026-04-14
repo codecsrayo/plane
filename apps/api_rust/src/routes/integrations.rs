@@ -932,8 +932,9 @@ pub async fn provider_install(
                 .code
                 .ok_or_else(|| AppError::BadRequest("code is required for Slack integration".into()))?;
 
-            let (metadata, config) = build_slack_metadata(&state, &code).await;
-            (metadata, config)
+            // `?` propaga errores de OAuth al cliente (400/502) en lugar de
+            // devolver 201 con metadata incompleta de forma silenciosa.
+            build_slack_metadata(&state, &code).await?
         }
         _ => return Err(AppError::BadRequest(format!("Unknown provider: {provider}"))),
     };
@@ -979,21 +980,33 @@ pub async fn provider_install(
 }
 
 /// Intercambia el code de Slack por access_token y construye metadata/config.
-/// Si SLACK_CLIENT_ID/SECRET no están configurados, guarda sólo el code.
+///
+/// # Degradación controlada vs. error real
+/// - Si `SLACK_CLIENT_ID`/`SLACK_CLIENT_SECRET` no están configurados en DB ni
+///   en env, devuelve `Ok((code_json, {}))` — instalación parcial intencional.
+/// - Si las credenciales sí están configuradas pero el exchange falla (red,
+///   code inválido, respuesta de Slack con `ok: false`), devuelve `Err` para
+///   que `provider_install` pueda retornar 400/502 al cliente.
+///
+/// Antipatrón corregido: la versión anterior absorbía todos los errores como
+/// fallback silencioso, por lo que una instalación de Slack fallida devolvía
+/// 201 al cliente con metadata incompleta sin ningún indicador de fallo.
 async fn build_slack_metadata(
     state: &AppState,
     code: &str,
-) -> (serde_json::Value, serde_json::Value) {
-    let client_id = match get_instance_config(state, "SLACK_CLIENT_ID").await {
-        Ok(Some(v)) if !v.is_empty() => v,
-        _ => return (serde_json::json!({ "code": code }), serde_json::json!({})),
+) -> Result<(serde_json::Value, serde_json::Value), AppError> {
+    // Sin credenciales: degradación intencional — no es un error.
+    let client_id = match get_instance_config(state, "SLACK_CLIENT_ID").await? {
+        Some(v) if !v.is_empty() => v,
+        _ => return Ok((serde_json::json!({ "code": code }), serde_json::json!({}))),
     };
-    let client_secret = match get_instance_config(state, "SLACK_CLIENT_SECRET").await {
-        Ok(Some(v)) if !v.is_empty() => v,
-        _ => return (serde_json::json!({ "code": code }), serde_json::json!({})),
+    let client_secret = match get_instance_config(state, "SLACK_CLIENT_SECRET").await? {
+        Some(v) if !v.is_empty() => v,
+        _ => return Ok((serde_json::json!({ "code": code }), serde_json::json!({}))),
     };
 
-    let Ok(resp): Result<reqwest::Response, _> = state
+    // Con credenciales configuradas, fallos de red son errores reales.
+    let resp = state
         .http
         .post("https://slack.com/api/oauth.v2.access")
         .form(&[
@@ -1003,17 +1016,32 @@ async fn build_slack_metadata(
         ])
         .send()
         .await
-    else {
-        return (serde_json::json!({ "code": code }), serde_json::json!({}));
-    };
+        .context("Error al contactar Slack OAuth endpoint")
+        .map_err(AppError::Internal)?;
 
     if !resp.status().is_success() {
-        return (serde_json::json!({ "code": code }), serde_json::json!({}));
+        let status = resp.status();
+        return Err(AppError::BadRequest(format!(
+            "Slack OAuth token exchange failed: HTTP {status}"
+        )));
     }
 
-    let Ok(slack_data): Result<serde_json::Value, _> = resp.json::<serde_json::Value>().await else {
-        return (serde_json::json!({ "code": code }), serde_json::json!({}));
-    };
+    let slack_data: serde_json::Value = resp
+        .json()
+        .await
+        .context("Slack OAuth response is not valid JSON")
+        .map_err(AppError::Internal)?;
+
+    // Slack devuelve siempre HTTP 200; el campo `ok` indica el resultado real.
+    if !slack_data.get("ok").and_then(|v| v.as_bool()).unwrap_or(false) {
+        let err_msg = slack_data
+            .get("error")
+            .and_then(|v| v.as_str())
+            .unwrap_or("unknown_error");
+        return Err(AppError::BadRequest(format!(
+            "Slack OAuth error: {err_msg}"
+        )));
+    }
 
     let config = serde_json::json!({
         "access_token": slack_data.get("access_token"),
@@ -1021,7 +1049,7 @@ async fn build_slack_metadata(
         "team_name":    slack_data.get("team").and_then(|t| t.get("name")),
     });
 
-    (slack_data, config)
+    Ok((slack_data, config))
 }
 
 // ── 11. GET /workspaces/{slug}/workspace-integrations/{wi_id}/github-repositories/ ─
