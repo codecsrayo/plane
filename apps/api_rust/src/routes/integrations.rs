@@ -1553,8 +1553,23 @@ async fn register_github_webhook(
         .await?
         .context("No se pudo obtener installation token")?;
 
-    let webhook_secret = std::env::var("GITHUB_WEBHOOK_SECRET").unwrap_or_default();
-    let web_url = std::env::var("WEB_URL").context("WEB_URL no configurado")?;
+    // Antipatrón corregido: std::env::var() por request bypasa el sistema
+    // DB-first de get_instance_config y puede exponer variables de entorno
+    // no relacionadas si la allowlist no se respeta.
+    //
+    // GITHUB_WEBHOOK_SECRET → get_instance_config (DB-first con allowlist)
+    // WEB_URL               → AppState.config.web_url (leído una vez al inicio)
+    let webhook_secret = get_instance_config(state, "GITHUB_WEBHOOK_SECRET")
+        .await
+        .unwrap_or_default()
+        .unwrap_or_default();
+
+    let web_url = state
+        .config
+        .web_url
+        .as_deref()
+        .context("WEB_URL no configurado — requerido para registrar webhooks de GitHub")?
+        .to_owned();
 
     let resp = state
         .http
