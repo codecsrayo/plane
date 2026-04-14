@@ -30,9 +30,6 @@ use crate::{
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct RunIssueAutomationJob;
 
-impl Job for RunIssueAutomationJob {
-    const NAME: &'static str = "plane::run_issue_automation";
-}
 
 // ── Handler ───────────────────────────────────────────────────────────────────
 

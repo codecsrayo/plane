@@ -35,9 +35,6 @@ pub struct ExportIssuesJob {
     pub exporter_token: String,
 }
 
-impl Job for ExportIssuesJob {
-    const NAME: &'static str = "plane::export_issues";
-}
 
 // ── Handler ───────────────────────────────────────────────────────────────────
 

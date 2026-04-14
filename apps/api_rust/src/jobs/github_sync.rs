@@ -37,9 +37,6 @@ pub struct GithubInitialSyncJob {
     pub repo_sync_id: Uuid,
 }
 
-impl Job for GithubInitialSyncJob {
-    const NAME: &'static str = "plane::github_initial_sync";
-}
 
 // ── Handler ───────────────────────────────────────────────────────────────────
 

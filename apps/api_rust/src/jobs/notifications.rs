@@ -35,9 +35,6 @@ pub struct IssueActivityNotificationJob {
     pub activity_id: Uuid,
 }
 
-impl Job for IssueActivityNotificationJob {
-    const NAME: &'static str = "plane::issue_activity_notification";
-}
 
 // ── Handler ───────────────────────────────────────────────────────────────────
 
