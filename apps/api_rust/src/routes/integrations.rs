@@ -1183,24 +1183,12 @@ pub async fn list_github_repositories(
         )
     };
 
-    // reqwest 0.13 con default-features=false no expone .query() en RequestBuilder;
-    // se construye la query string manualmente — los valores son numéricos o ASCII simple.
-    let api_url_with_params = {
-        let qs: String = query_params
-            .iter()
-            .map(|(k, v)| format!("{}={}", k, v))
-            .collect::<Vec<_>>()
-            .join("&");
-        if qs.is_empty() {
-            api_url.clone()
-        } else {
-            format!("{}?{}", api_url, qs)
-        }
-    };
-
+    // `.query()` está disponible en reqwest::RequestBuilder sin importar
+    // default-features; serializa cada par (k, v) con URL encoding correcto.
     let resp: reqwest::Response = state
         .http
-        .get(&api_url_with_params)
+        .get(&api_url)
+        .query(&query_params)
         .header("Authorization", format!("Bearer {github_token}"))
         .header("Accept", "application/vnd.github+json")
         .header("User-Agent", "plane-api-rust/0.1")
