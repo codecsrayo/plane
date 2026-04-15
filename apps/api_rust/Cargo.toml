@@ -95,12 +95,7 @@ lettre = { version = "0.11.21", default-features = false, features = [
 openssl      = { version = "0.10.77" }
 sha2         = "0.11.0"    # hash de API keys — NUNCA almacenar raw token en memoria
 jsonwebtoken = "10.3.0"    # JWT RS256 para GitHub App auth
-aes-gcm      = "0.10.3"   # AES-256-GCM para cifrado de tokens OAuth en reposo (versión estable; RC descartada)
-# Fernet compat — descifrado de instance_configurations escritos por Django
-hmac         = "0.12.1"   # HMAC-SHA256 para verificar tokens Fernet
-pbkdf2       = { version = "0.12.2", default-features = false } # PBKDF2-HMAC-SHA256 para derivar clave Fernet
-aes          = "0.8.4"    # AES-128-CBC primitiva para Fernet decrypt
-cbc          = { version = "0.1.2", features = ["alloc"] } # CBC block mode para Fernet
+aes-gcm      = "0.10.3"   # AES-256-GCM para cifrado de tokens OAuth en reposo
 
 # Serialización
 serde      = { version = "1.0.228", features = ["derive"] }
