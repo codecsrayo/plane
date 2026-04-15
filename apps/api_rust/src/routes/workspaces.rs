@@ -28,7 +28,7 @@ use crate::{
     entities::{workspace_member_invites, workspace_members, workspaces},
     error::AppError,
     routes::helpers::{require_workspace_member, workspace_by_slug},
-    utils::{instance_config::get_config_value, soft_delete::SoftDeleteExt, url::contains_url},
+    utils::{instance_config::get_config_value, soft_delete::SoftDeleteExt, url::contains_url, color::get_random_color},
     AppState,
 };
 
@@ -143,8 +143,13 @@ pub struct WorkspaceResponse {
     pub name: String,
     pub slug: String,
     pub logo: Option<String>,
+    /// Computed logo URL: prefers logo_asset, falls back to logo field.
+    /// Mirrors Django's `Workspace.logo_url` property.
+    pub logo_url: Option<String>,
     pub organization_size: Option<String>,
     pub owner_id: Uuid,
+    pub created_by: Option<Uuid>,
+    pub updated_by: Option<Uuid>,
     pub timezone: String,
     pub background_color: String,
     pub created_at: DateTime<Utc>,
@@ -158,18 +163,34 @@ pub struct WorkspaceResponse {
 }
 
 impl WorkspaceResponse {
+    /// Build response from a workspace model.
+    ///
+    /// `logo_url` mirrors Django's computed property:
+    ///   - If `logo_asset` exists → use its `asset_url` (resolved via join)
+    ///   - Else if `logo` is set → use it directly
+    ///   - Else → `None`
+    ///
+    /// When the caller hasn't performed a join on `file_assets`, pass `None`
+    /// for `logo_asset_url` and the function falls back to `ws.logo`.
     fn from_model(
         ws: &workspaces::Model,
         total_members: Option<i64>,
         role: Option<i16>,
+        logo_asset_url: Option<String>,
     ) -> Self {
+        // Compute logo_url mirroring Django: logo_asset > logo > None
+        let logo_url = logo_asset_url.or_else(|| ws.logo.clone());
+
         Self {
             id: ws.id,
             name: ws.name.clone(),
             slug: ws.slug.clone(),
             logo: ws.logo.clone(),
+            logo_url,
             organization_size: ws.organization_size.clone(),
             owner_id: ws.owner_id,
+            created_by: ws.created_by_id,
+            updated_by: ws.updated_by_id,
             timezone: ws.timezone.clone(),
             background_color: ws.background_color.clone(),
             created_at: ws.created_at.into(),
@@ -186,6 +207,11 @@ pub struct CreateWorkspaceRequest {
     pub slug: String,
     pub organization_size: Option<String>,
     pub timezone: Option<String>,
+    /// Logo URL — mirrors Django's `logo` TextField.
+    pub logo: Option<String>,
+    /// Company role of the creating user — stored on WorkspaceMember.
+    /// Mirrors Django: `request.data.get("company_role", "")`.
+    pub company_role: Option<String>,
 }
 
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
@@ -353,7 +379,7 @@ pub async fn list_workspaces(
         .iter()
         .map(|ws| {
             let role = member_role_map.get(&ws.id).copied();
-            WorkspaceResponse::from_model(ws, None, role)
+            WorkspaceResponse::from_model(ws, None, role, None)
         })
         .collect();
 
@@ -418,13 +444,13 @@ pub async fn create_workspace(
         id: Set(ws_id),
         name: Set(body.name.clone()),
         slug: Set(slug),
-        logo: Set(None),
+        logo: Set(body.logo.clone()),
         organization_size: Set(body.organization_size.clone()),
         owner_id: Set(user.id),
         created_by_id: Set(Some(user.id)),
         updated_by_id: Set(Some(user.id)),
         timezone: Set(body.timezone.unwrap_or_else(|| "UTC".into())),
-        background_color: Set(String::new()),
+        background_color: Set(get_random_color()),
         created_at: Set(now),
         updated_at: Set(now),
         deleted_at: Set(None),
@@ -453,13 +479,13 @@ pub async fn create_workspace(
         AppError::Database(e)
     })?;
 
-    // Crear membresía Admin
+    // Crear membresía Admin — mirrors Django: role=20, company_role from request
     let new_member = workspace_members::ActiveModel {
         id: Set(Uuid::new_v4()),
         workspace_id: Set(ws_id),
         member_id: Set(user.id),
         role: Set(ROLE_ADMIN),
-        company_role: Set(None),
+        company_role: Set(body.company_role.clone()),
         is_active: Set(true),
         created_by_id: Set(Some(user.id)),
         updated_by_id: Set(Some(user.id)),
@@ -480,26 +506,28 @@ pub async fn create_workspace(
 
     txn.commit().await.map_err(AppError::Database)?;
 
-    // Encolar siembra de datos iniciales — best-effort (no bloquea la respuesta)
+    // Encolar siembra de datos iniciales — best-effort (no bloquea la respuesta).
+    // Uses the shared pg_pool from AppState instead of opening a new connection.
     {
         use crate::jobs::workspace_seed::WorkspaceSeedJob;
         use apalis::prelude::Storage;
         use apalis_sql::postgres::PostgresStorage;
 
-        if let Ok(pg_pool) = sqlx::PgPool::connect(&state.config.database_url).await {
-            let mut seed_storage: PostgresStorage<WorkspaceSeedJob> =
-                PostgresStorage::new(pg_pool);
-            let _ = seed_storage
-                .push(WorkspaceSeedJob {
-                    workspace_id: ws_id,
-                    owner_id: user.id,
-                    workspace_name: body.name.clone(),
-                })
-                .await;
+        let mut seed_storage: PostgresStorage<WorkspaceSeedJob> =
+            PostgresStorage::new(state.pg_pool.clone());
+        if let Err(e) = seed_storage
+            .push(WorkspaceSeedJob {
+                workspace_id: ws_id,
+                owner_id: user.id,
+                workspace_name: body.name.clone(),
+            })
+            .await
+        {
+            tracing::warn!(error = %e, "Failed to enqueue workspace seed job");
         }
     }
 
-    let resp = WorkspaceResponse::from_model(&ws, Some(1), Some(ROLE_ADMIN));
+    let resp = WorkspaceResponse::from_model(&ws, Some(1), Some(ROLE_ADMIN), None);
     Ok((StatusCode::CREATED, Json(resp)))
 }
 
@@ -538,6 +566,7 @@ pub async fn get_workspace(
         &ws,
         Some(total as i64),
         Some(member.role),
+        None,
     )))
 }
 
@@ -603,6 +632,7 @@ pub async fn update_workspace(
         &updated,
         None,
         Some(member.role),
+        None,
     )))
 }
 
