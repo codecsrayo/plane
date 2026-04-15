@@ -233,7 +233,20 @@ async fn main() -> anyhow::Result<()> {
     });
 
     // 5. Router
-    let app = routes::build_router(state);
+    //
+    // NormalizePathLayer DEBE envolver al Router *desde fuera* y servirse vía
+    // `ServiceExt::into_make_service`, no aplicarse con `Router::layer()`.
+    //
+    // Razón: en axum 0.7/0.8, `Router::layer()` ejecuta el middleware DESPUÉS
+    // del path-matching de cada ruta — la barra final ya causó el 404 antes
+    // de que la capa pudiera strippearla. Envolviendo desde fuera, la capa
+    // corre ANTES del routing y reescribe el path correctamente.
+    use tower::Layer;
+    use tower::ServiceExt;
+    use tower_http::normalize_path::NormalizePathLayer;
+
+    let router = routes::build_router(state);
+    let app = NormalizePathLayer::trim_trailing_slash().layer(router);
 
     // 6. Servidor TCP
     let addr: SocketAddr = format!("{}:{}", config.host, config.port).parse()?;
@@ -247,7 +260,13 @@ async fn main() -> anyhow::Result<()> {
     );
 
     // El servidor drena conexiones activas antes de retornar.
-    axum::serve(listener, app)
+    // `into_make_service` viene de `tower::ServiceExt` (importado arriba) —
+    // axum::serve requiere un MakeService, y `NormalizePath<Router>` no lo
+    // implementa directamente.
+    axum::serve(
+        listener,
+        ServiceExt::<axum::extract::Request>::into_make_service(app),
+    )
         .with_graceful_shutdown(shutdown_signal())
         .await?;
 
