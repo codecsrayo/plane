@@ -36,17 +36,6 @@ use crate::{
     entities::{email_notification_logs, issues, projects, users, workspaces},
 };
 
-// ── Tipos internos ─────────────────────────────────────────────────────────────
-
-/// Representa un cambio agrupado por actor dentro de un issue.
-#[derive(Debug)]
-struct ActorChange {
-    actor_id: Uuid,
-    field: Option<String>,
-    old_value: Option<String>,
-    new_value: Option<String>,
-}
-
 // ── Punto de entrada ──────────────────────────────────────────────────────────
 
 /// Procesa todos los `email_notification_logs` sin `processed_at` y envía

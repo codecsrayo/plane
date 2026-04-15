@@ -2,12 +2,12 @@
 //! Tareas de limpieza periódica.
 //!
 //! Equivalentes a:
-//!   - `plane/bgtasks/deletion_task.py`         → hard_delete
-//!   - `plane/bgtasks/cleanup_task.py`           → delete_api_logs, delete_email_notification_logs,
-//!                                                  delete_page_versions, delete_issue_description_versions,
-//!                                                  delete_webhook_logs
-//!   - `plane/bgtasks/exporter_expired_task.py`  → delete_old_s3_links
-//!   - `plane/bgtasks/file_asset_task.py`        → delete_unuploaded_file_assets
+//!   - `plane/bgtasks/deletion_task.py`        → hard_delete
+//!   - `plane/bgtasks/cleanup_task.py`          → delete_api_logs,
+//!     delete_email_notification_logs, delete_page_versions,
+//!     delete_issue_description_versions, delete_webhook_logs
+//!   - `plane/bgtasks/exporter_expired_task.py` → delete_old_s3_links
+//!   - `plane/bgtasks/file_asset_task.py`       → delete_unuploaded_file_assets
 //!
 //! Estas funciones se invocan directamente desde el scheduler (`cron.rs`),
 //! no a través de apalis — son tareas sin estado de reintento.
