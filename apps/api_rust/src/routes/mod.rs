@@ -216,6 +216,7 @@ pub mod instances;
         users::get_account,
         users::delete_account,
         users::list_user_workspaces,
+        users::get_user_project_roles,
         views::list_workspace_views,
         views::create_workspace_view,
         views::get_workspace_view,
@@ -829,6 +830,11 @@ pub fn build_router(state: AppState) -> Router {
             get(users::get_account).delete(users::delete_account),
         )
         .route("/users/me/workspaces", get(users::list_user_workspaces))
+        // Mirror Django: users/me/workspaces/<slug>/project-roles/ -> UserProjectRolesEndpoint
+        .route(
+            "/users/me/workspaces/{slug}/project-roles",
+            get(users::get_user_project_roles),
+        )
         // ── Workspace Views ───────────────────────────────────────────────────
         .route(
             "/workspaces/{slug}/views",

@@ -34,7 +34,7 @@ use uuid::Uuid;
 
 use crate::{
     auth::any_auth::{AnyAuth, OptionalAnyAuth},
-    entities::{accounts, profiles, users, workspace_members, workspaces},
+    entities::{accounts, profiles, project_members, users, workspace_members, workspaces},
     error::AppError,
     utils::soft_delete::SoftDeleteExt,
     AppState,
@@ -736,4 +736,87 @@ pub async fn list_user_workspaces(
         .collect();
 
     Ok(Json(resp))
+}
+
+// ─── GET /api/users/me/workspaces/{slug}/project-roles ───────────────────────
+//
+// Espejo de Django `UserProjectRolesEndpoint` en
+// `plane/app/views/project/member.py:327`. Devuelve un mapa
+// `{project_id_str: role_int}` con los roles del usuario en cada proyecto
+// del workspace donde es miembro activo. El frontend lo consume para
+// resolver permisos por proyecto sin hacer N requests.
+
+/// `GET /api/users/me/workspaces/{slug}/project-roles`
+///
+/// Devuelve `HashMap<project_id_string, role_int>` con los roles del
+/// usuario en cada proyecto del workspace. Solo incluye proyectos donde
+/// el usuario tiene `is_active = true` Y existe membresía activa al
+/// workspace (mirror del filtro `member__member_workspace__is_active=True`
+/// de Django).
+#[utoipa::path(
+    get,
+    path = "/api/users/me/workspaces/{slug}/project-roles",
+    tag = "Users",
+    security(("TokenAuth" = []), ("SessionCookie" = [])),
+    params(("slug" = String, Path, description = "Workspace slug")),
+    responses(
+        (status = 200, description = "Map of project_id -> role"),
+        (status = 401, description = "Unauthorized"),
+        (status = 404, description = "Workspace not found"),
+    )
+)]
+pub async fn get_user_project_roles(
+    State(state): State<AppState>,
+    AnyAuth(user): AnyAuth,
+    Path(slug): Path<String>,
+) -> Result<Json<std::collections::HashMap<String, i16>>, AppError> {
+    // 1) Workspace debe existir (404 si no).
+    let ws = workspaces::Entity::find()
+        .active()
+        .filter(workspaces::Column::Slug.eq(slug))
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    // 2) Mirror del filtro Django:
+    //    member__member_workspace__workspace__slug=slug
+    //    AND member__member_workspace__is_active=True
+    //
+    //    Equivale a: el usuario debe tener una membresía activa AL WORKSPACE
+    //    además de a los proyectos. Si no la tiene, devolvemos mapa vacío
+    //    (Django retorna {} también porque el queryset queda vacío, no 403).
+    let ws_membership = workspace_members::Entity::find()
+        .active()
+        .filter(workspace_members::Column::WorkspaceId.eq(ws.id))
+        .filter(workspace_members::Column::MemberId.eq(user.id))
+        .filter(workspace_members::Column::IsActive.eq(true))
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    if ws_membership.is_none() {
+        return Ok(Json(std::collections::HashMap::new()));
+    }
+
+    // 3) Proyectos del workspace donde el usuario es miembro activo.
+    //    Nota: project_members.member_id es Option<Uuid> en el schema,
+    //    así que el filtro por igualdad ya descarta NULLs.
+    let pms = project_members::Entity::find()
+        .active()
+        .filter(project_members::Column::WorkspaceId.eq(ws.id))
+        .filter(project_members::Column::MemberId.eq(user.id))
+        .filter(project_members::Column::IsActive.eq(true))
+        .all(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    // 4) Construir mapa {project_id_str: role}. Mirror exacto de Django:
+    //    {str(member["project_id"]): member["role"] for member in project_members}
+    let map: std::collections::HashMap<String, i16> = pms
+        .into_iter()
+        .map(|pm| (pm.project_id.to_string(), pm.role))
+        .collect();
+
+    Ok(Json(map))
 }
