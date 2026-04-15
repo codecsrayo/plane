@@ -26,14 +26,14 @@ use crate::{
 
 // ── DTOs ─────────────────────────────────────────────────────────────────────
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct UnsplashQuery {
     pub query: Option<String>,
     pub page: Option<u32>,
     pub per_page: Option<u32>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct AiAssistantRequest {
     /// Tarea a realizar (requerido).
     pub task: String,
@@ -41,7 +41,7 @@ pub struct AiAssistantRequest {
     pub prompt: Option<String>,
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct AiAssistantResponse {
     pub response: String,
     pub response_html: String,

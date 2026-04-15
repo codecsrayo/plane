@@ -30,7 +30,7 @@ use crate::{
 
 // ── DTOs ─────────────────────────────────────────────────────────────────────
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct WebhookResponse {
     pub id: Uuid,
     pub url: String,
@@ -67,7 +67,7 @@ impl WebhookResponse {
     }
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct WebhookLogResponse {
     pub id: Uuid,
     pub event_type: Option<String>,

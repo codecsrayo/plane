@@ -203,7 +203,7 @@ pub struct InviteEmail {
     pub role: i16,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct SlugCheckQuery {
     pub slug: String,
 }

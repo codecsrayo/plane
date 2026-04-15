@@ -33,7 +33,7 @@ use crate::{
 
 // ── DTOs ─────────────────────────────────────────────────────────────────────
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct IssueResponse {
     pub id: Uuid,
     pub name: String,

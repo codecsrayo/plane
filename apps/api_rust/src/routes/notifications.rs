@@ -34,7 +34,7 @@ use crate::{
 
 // ── DTOs ─────────────────────────────────────────────────────────────────────
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct NotificationResponse {
     pub id: Uuid,
     pub title: String,
@@ -71,12 +71,12 @@ impl NotificationResponse {
     }
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct UnreadCountResponse {
     pub count: u64,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct NotificationFilter {
     pub read: Option<bool>,
     pub archived: Option<bool>,

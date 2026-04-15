@@ -35,7 +35,7 @@ use crate::{
 
 // ── DTOs ─────────────────────────────────────────────────────────────────────
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct ModuleResponse {
     pub id: Uuid,
     pub name: String,
@@ -76,7 +76,7 @@ impl ModuleResponse {
     }
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct ModuleIssueResponse {
     pub id: Uuid,
     pub module_id: Uuid,

@@ -46,7 +46,7 @@ use crate::{
 // ── DTOs ─────────────────────────────────────────────────────────────────────
 
 /// Representación pública del usuario autenticado (`/users/me/`).
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct UserMeResponse {
     pub id: Uuid,
     pub username: String,
@@ -68,7 +68,7 @@ pub struct UserMeResponse {
 }
 
 /// Settings del usuario (`/users/me/settings/`).
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct UserSettingsResponse {
     pub id: Uuid,
     pub email: Option<String>,
@@ -82,7 +82,7 @@ pub struct UserSettingsResponse {
 }
 
 /// Perfil del usuario (`/users/me/profile/`).
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct ProfileResponse {
     pub id: Uuid,
     pub user_id: Uuid,
@@ -102,7 +102,7 @@ pub struct ProfileResponse {
 }
 
 /// Cuenta OAuth del usuario (`/users/me/accounts/`).
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct AccountResponse {
     pub id: Uuid,
     pub provider: String,
@@ -113,7 +113,7 @@ pub struct AccountResponse {
 }
 
 /// Workspace del usuario (`/users/me/workspaces/`).
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct UserWorkspaceResponse {
     pub id: Uuid,
     pub name: String,
@@ -127,7 +127,7 @@ pub struct UserWorkspaceResponse {
 }
 
 /// Body para PATCH `/users/me/`.
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct UpdateUserRequest {
     pub display_name: Option<String>,
     pub first_name: Option<String>,
@@ -138,7 +138,7 @@ pub struct UpdateUserRequest {
 }
 
 /// Body para PATCH `/users/me/profile/`.
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct UpdateProfileRequest {
     pub role: Option<String>,
     pub use_case: Option<String>,
@@ -152,13 +152,13 @@ pub struct UpdateProfileRequest {
 }
 
 /// Body para PATCH `/users/me/onboard/`.
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct OnboardRequest {
     pub is_onboarded: Option<bool>,
 }
 
 /// Body para PATCH `/users/me/tour-completed/`.
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct TourCompletedRequest {
     pub is_tour_completed: Option<bool>,
 }

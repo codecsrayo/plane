@@ -28,7 +28,7 @@ pub struct ExportIssuesRequest {
     pub provider: Option<String>,
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct ExportIssuesResponse {
     pub token: String,
     pub status: String,

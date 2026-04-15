@@ -144,13 +144,13 @@ pub struct GroupedQuery {
 
 // ─── Path params ─────────────────────────────────────────────────────────────
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct WorkspaceProjectPath {
     pub slug: String,
     pub project_id: Uuid,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct WorkspaceProjectStatePath {
     pub slug: String,
     pub project_id: Uuid,

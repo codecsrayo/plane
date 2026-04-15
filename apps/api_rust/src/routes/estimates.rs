@@ -35,7 +35,7 @@ use crate::{
 
 // ── DTOs ─────────────────────────────────────────────────────────────────────
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct EstimatePointResponse {
     pub id: Uuid,
     pub key: i32,
@@ -60,7 +60,7 @@ impl EstimatePointResponse {
     }
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct EstimateResponse {
     pub id: Uuid,
     pub name: String,

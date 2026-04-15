@@ -23,7 +23,7 @@ pub const VALID_PR_STATES: &[&str] = &[
 
 // ── Response DTOs ─────────────────────────────────────────────────────────────
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct IntegrationResponse {
     pub id: Uuid,
     pub title: String,
@@ -50,7 +50,7 @@ impl IntegrationResponse {
     }
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct WorkspaceIntegrationResponse {
     pub id: Uuid,
     pub integration_id: Uuid,
@@ -78,7 +78,7 @@ impl WorkspaceIntegrationResponse {
     }
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct GithubRepoSyncResponse {
     pub id: Uuid,
     pub project_id: Uuid,
@@ -91,7 +91,7 @@ pub struct GithubRepoSyncResponse {
     pub issue_closed_state: Option<String>,
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct PrStateMappingResponse {
     pub id: Uuid,
     pub github_pr_state: String,
@@ -114,7 +114,7 @@ impl PrStateMappingResponse {
     }
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct UserGithubConnectionResponse {
     pub id: Uuid,
     pub github_user_id: String,
@@ -171,14 +171,14 @@ pub struct UserGithubCallbackRequest {
 
 // ── Query params ──────────────────────────────────────────────────────────────
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct ExternalReposQuery {
     pub page: Option<u32>,
     pub per_page: Option<u32>,
     pub token: Option<String>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct GithubCallbackQuery {
     pub installation_id: Option<String>,
     pub setup_action: Option<String>,

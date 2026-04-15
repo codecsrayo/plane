@@ -51,7 +51,7 @@ const ACCESS_PUBLIC: i16 = 1;
 
 // ── DTOs ─────────────────────────────────────────────────────────────────────
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct IssueViewResponse {
     pub id: Uuid,
     pub name: String,
@@ -77,7 +77,7 @@ pub struct IssueViewResponse {
     pub is_favorite: Option<bool>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct CreateViewRequest {
     pub name: String,
     pub description: Option<String>,
@@ -91,7 +91,7 @@ pub struct CreateViewRequest {
     pub access: Option<i16>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct UpdateViewRequest {
     pub name: Option<String>,
     pub description: Option<String>,
@@ -105,7 +105,7 @@ pub struct UpdateViewRequest {
     pub sort_order: Option<f64>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct AddFavoriteRequest {
     /// ID de la view a favoritar.
     pub view: Uuid,

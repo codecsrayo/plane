@@ -43,7 +43,7 @@ pub const STATUS_DUPLICATE: i32 = 2;
 
 // ── DTOs ─────────────────────────────────────────────────────────────────────
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct IntakeResponse {
     pub id: Uuid,
     pub name: String,
@@ -72,7 +72,7 @@ impl IntakeResponse {
     }
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct IntakeIssueResponse {
     pub id: Uuid,
     pub issue_id: Uuid,

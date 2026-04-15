@@ -47,7 +47,7 @@ use crate::{
 
 // ── DTOs ─────────────────────────────────────────────────────────────────────
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct CommentResponse {
     pub id: Uuid,
     pub comment_html: String,
@@ -66,20 +66,20 @@ pub struct CommentResponse {
     pub edited_at: Option<DateTime<FixedOffset>>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct CreateCommentRequest {
     pub comment_html: String,
     pub access: Option<String>,
     pub parent_id: Option<Uuid>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct UpdateCommentRequest {
     pub comment_html: Option<String>,
     pub access: Option<String>,
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct ReactionResponse {
     pub id: Uuid,
     pub reaction: String,
@@ -89,7 +89,7 @@ pub struct ReactionResponse {
     pub created_at: DateTime<FixedOffset>,
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct CommentReactionResponse {
     pub id: Uuid,
     pub reaction: String,
@@ -99,7 +99,7 @@ pub struct CommentReactionResponse {
     pub created_at: DateTime<FixedOffset>,
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct IssueLinkResponse {
     pub id: Uuid,
     pub title: Option<String>,
@@ -112,21 +112,21 @@ pub struct IssueLinkResponse {
     pub updated_at: DateTime<FixedOffset>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct CreateLinkRequest {
     pub url: String,
     pub title: Option<String>,
     pub metadata: Option<serde_json::Value>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct UpdateLinkRequest {
     pub url: Option<String>,
     pub title: Option<String>,
     pub metadata: Option<serde_json::Value>,
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct IssueRelationResponse {
     pub id: Uuid,
     pub relation_type: String,
@@ -137,19 +137,19 @@ pub struct IssueRelationResponse {
     pub created_at: DateTime<FixedOffset>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct CreateRelationRequest {
     pub relation_type: String,
     pub related_issue_id: Uuid,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct RemoveRelationRequest {
     pub relation_type: String,
     pub related_issue_id: Uuid,
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct ActivityResponse {
     pub id: Uuid,
     pub verb: String,
@@ -164,7 +164,7 @@ pub struct ActivityResponse {
     pub created_at: DateTime<FixedOffset>,
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct SubscriberResponse {
     pub id: Uuid,
     pub subscriber_id: Uuid,

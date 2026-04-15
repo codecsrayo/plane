@@ -35,7 +35,7 @@ use crate::{
 
 // ── DTOs ─────────────────────────────────────────────────────────────────────
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct CycleResponse {
     pub id: Uuid,
     pub name: String,
@@ -94,7 +94,7 @@ impl CycleResponse {
     }
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct CycleIssueResponse {
     pub id: Uuid,
     pub cycle_id: Uuid,

@@ -26,7 +26,7 @@ use crate::{
 
 // ── Query params ─────────────────────────────────────────────────────────────
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct SearchQuery {
     pub query: Option<String>,
     #[serde(rename = "type")]
@@ -35,7 +35,7 @@ pub struct SearchQuery {
 
 // ── Response DTOs ─────────────────────────────────────────────────────────────
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct SearchResult {
     pub entity_name: String,
     pub id: Uuid,
@@ -44,7 +44,7 @@ pub struct SearchResult {
     pub workspace_id: Uuid,
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct GlobalSearchResponse {
     pub issues: Vec<SearchResult>,
     pub cycles: Vec<SearchResult>,

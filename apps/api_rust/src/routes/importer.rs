@@ -38,7 +38,7 @@ use crate::{
 
 // ── DTOs ─────────────────────────────────────────────────────────────────────
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct ImporterResponse {
     pub id: Uuid,
     pub service: String,
@@ -50,7 +50,7 @@ pub struct ImporterResponse {
     pub updated_at: DateTime<FixedOffset>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct CreateGithubImportRequest {
     pub project_id: Uuid,
     pub owner: String,
@@ -60,7 +60,7 @@ pub struct CreateGithubImportRequest {
     pub import_comments: Option<bool>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct CreateGitlabImportRequest {
     pub project_id: Uuid,
     /// Namespace del grupo o usuario (p.ej. "myorg").
@@ -74,13 +74,13 @@ pub struct CreateGitlabImportRequest {
     pub import_comments: Option<bool>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct GithubReposQuery {
     pub page: Option<u32>,
     pub token: Option<String>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct GitlabReposQuery {
     pub page: Option<u32>,
     pub token: Option<String>,

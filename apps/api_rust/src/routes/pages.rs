@@ -42,7 +42,7 @@ const ACCESS_PRIVATE: i16 = 1;
 
 // ── DTOs ─────────────────────────────────────────────────────────────────────
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct PageResponse {
     pub id: Uuid,
     pub name: String,
@@ -79,7 +79,7 @@ impl PageResponse {
     }
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct PageVersionResponse {
     pub id: Uuid,
     pub page_id: Uuid,

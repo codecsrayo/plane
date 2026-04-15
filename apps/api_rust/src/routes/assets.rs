@@ -81,7 +81,7 @@ const USER_ENTITY_TYPES: &[&str] = &[ENTITY_USER_AVATAR, ENTITY_USER_COVER];
 
 // ── DTOs ─────────────────────────────────────────────────────────────────────
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct InitiateUploadRequest {
     /// Nombre del archivo original.
     pub name: String,
@@ -96,13 +96,13 @@ pub struct InitiateUploadRequest {
     pub entity_identifier: Option<Uuid>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct CompleteUploadRequest {
     /// Metadatos adicionales a guardar en `attributes`.
     pub attributes: Option<serde_json::Value>,
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct UploadResponse {
     /// URL de subida directa a S3 (presigned PUT).
     pub upload_url: String,
@@ -110,7 +110,7 @@ pub struct UploadResponse {
     pub asset_url: String,
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct AssetResponse {
     pub id: Uuid,
     pub asset: String,
