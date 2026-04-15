@@ -77,9 +77,12 @@ aws-config  = "1.8.15"
 aws-sdk-s3  = "1.129.0"
 
 # Email
-lettre = { version = "0.11.21", features = [
+# default-features = false es OBLIGATORIO: los defaults de lettre incluyen `native-tls`,
+# lo que genera conflicto en compile-time con `tokio1` si `tokio1-native-tls` no está activo.
+# Usamos rustls de forma consistente con reqwest / sea-orm / sqlx.
+lettre = { version = "0.11.21", default-features = false, features = [
     "tokio1",
-    "tokio1-rustls-tls",   # rustls en lugar de native-tls — consistente con reqwest/sea-orm/sqlx
+    "tokio1-rustls-tls",   # rustls TLS para SMTP — sin native-tls ni OpenSSL adicional
     "smtp-transport",
     "builder",
 ] }
