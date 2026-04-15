@@ -6,6 +6,8 @@ use axum::{
     routing::{delete, get, patch, post},
     Json, Router,
 };
+use tower_http::normalize_path::NormalizePathLayer;
+use tower::ServiceBuilder;
 use utoipa::OpenApi;
 use utoipa_scalar::{Scalar, Servable};
 
@@ -468,9 +470,9 @@ pub fn build_router(state: AppState) -> Router {
         // ── Integrations globales ────────────────────────────────────────────
         .route("/integrations/", get(integrations::list_integrations))
         // ── Workspaces (Fase 2) ──────────────────────────────────────────────
-        // Ambas variantes (con y sin trailing slash) para compatibilidad con el frontend
+        // NormalizePathLayer (aplicado al router final) elimina trailing slashes
+        // automáticamente, por lo que solo se necesita una variante por ruta.
         .route("/workspace-slug-check", get(workspaces::slug_check))
-        .route("/workspace-slug-check/", get(workspaces::slug_check))
         .route(
             "/workspaces",
             get(workspaces::list_workspaces).post(workspaces::create_workspace),
@@ -1180,5 +1182,10 @@ pub fn build_router(state: AppState) -> Router {
         tracing::warn!("Scalar UI habilitado (DEBUG=true) — deshabilitar en producción");
     }
 
-    router.with_state(state)
+    // NormalizePathLayer elimina trailing slashes antes del routing, evitando
+    // 404 cuando el frontend envía /api/workspaces/ vs /api/workspaces.
+    // Se aplica al router final para cubrir TODAS las rutas uniformemente.
+    router
+        .layer(ServiceBuilder::new().layer(NormalizePathLayer::trim_trailing_slash()))
+        .with_state(state)
 }
