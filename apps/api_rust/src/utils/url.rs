@@ -1,0 +1,104 @@
+// src/utils/url.rs
+//! URL detection utilities — mirrors `plane/utils/url.py`.
+//!
+//! The primary export [`contains_url`] checks whether a string contains an
+//! embedded URL.  Django uses this to reject workspace/user names that sneak
+//! in links (phishing, spam).  The regex intentionally matches the same four
+//! alternatives as the Python `URL_PATTERN`:
+//!
+//! 1. `https?://…`
+//! 2. `www.…`
+//! 3. bare domain (`foo.example.com`)
+//! 4. IPv4 literal (`192.168.1.1`)
+//!
+//! ReDoS protection mirrors the Python version: input length cap + per-line
+//! truncation.
+
+use std::sync::OnceLock;
+use regex::Regex;
+
+/// Returns a reference to the compiled URL detection regex.
+///
+/// Equivalent to Django's `URL_PATTERN`.  Compiled once on first call.
+fn url_pattern() -> &'static Regex {
+    static PATTERN: OnceLock<Regex> = OnceLock::new();
+    PATTERN.get_or_init(|| {
+        Regex::new(concat!(
+            r"(?i)(?:",
+            // 1) http:// or https:// followed by non-whitespace
+            r"https?://\S+",
+            r"|",
+            // 2) www. followed by valid domain segments
+            r"www\.[a-zA-Z0-9](?:[a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?)*",
+            r"|",
+            // 3) bare domain: one or more labels ending with a 2-6 char TLD
+            r"(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,6}",
+            r"|",
+            // 4) IPv4 literal
+            r"(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)",
+            r")",
+        ))
+        .expect("URL_PATTERN regex must compile")
+    })
+});
+
+/// Returns `true` if `value` contains an embedded URL.
+///
+/// Mirrors `plane.utils.url.contains_url` from the Django codebase, including
+/// the same ReDoS protections (input length cap, per-line truncation).
+pub fn contains_url(value: &str) -> bool {
+    // Prevent ReDoS by limiting input length (same as Python: 1000 chars)
+    if value.len() > 1000 {
+        return false;
+    }
+
+    for line in value.lines() {
+        // Truncate very long lines (same as Python: 500 chars per line)
+        let check = if line.len() > 500 { &line[..500] } else { line };
+        if url_pattern().is_match(check) {
+            return true;
+        }
+    }
+
+    false
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn detects_http_url() {
+        assert!(contains_url("check http://example.com please"));
+        assert!(contains_url("https://foo.bar"));
+    }
+
+    #[test]
+    fn detects_www_url() {
+        assert!(contains_url("visit www.example.com"));
+    }
+
+    #[test]
+    fn detects_bare_domain() {
+        assert!(contains_url("go to example.com"));
+    }
+
+    #[test]
+    fn detects_ipv4() {
+        assert!(contains_url("server at 192.168.1.1"));
+    }
+
+    #[test]
+    fn allows_normal_names() {
+        assert!(!contains_url("My Workspace"));
+        assert!(!contains_url("acme-corp"));
+        assert!(!contains_url("test 123"));
+        assert!(!contains_url(""));
+    }
+
+    #[test]
+    fn long_input_returns_false() {
+        let long = "a".repeat(1001);
+        assert!(!contains_url(&long));
+    }
+}
