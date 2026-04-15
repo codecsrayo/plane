@@ -18,7 +18,7 @@ use crate::{
 
 #[utoipa::path(
     post,
-    path = "/api/auth/sign-out",
+    path = "/auth/sign-out",
     tag = "Auth",
     responses(
         (status = 303, description = "Signed out"),
@@ -38,7 +38,7 @@ pub async fn logout(
 
 #[utoipa::path(
     post,
-    path = "/api/auth/spaces/sign-out",
+    path = "/auth/spaces/sign-out",
     tag = "Auth",
     responses(
         (status = 303, description = "Signed out"),

@@ -3,7 +3,7 @@
 //!
 //! Endpoints implementados:
 //!   GET  /api/github/callback/                                         (sin auth)
-//!   POST /api/auth/github/user-callback/
+//!   POST /auth/github/user-callback/
 //!   GET  /api/workspaces/{slug}/workspace-integrations/{wi_id}/github-repositories/
 //!   GET  /api/workspaces/{slug}/workspace-integrations/github/repo-syncs/
 //!   POST /api/workspaces/{slug}/workspace-integrations/github/repo-syncs/
@@ -173,12 +173,12 @@ async fn github_app_callback_inner(
     Ok(())
 }
 
-// ── POST /api/auth/github/user-callback/ ─────────────────────────────────────
+// ── POST /auth/github/user-callback/ ─────────────────────────────────────
 
 /// Intercambia un OAuth code de GitHub por un token personal de usuario.
 #[utoipa::path(
     post,
-    path = "/api/auth/github/user-callback/",
+    path = "/auth/github/user-callback/",
     tag = "Integrations",
     responses(
         (status = 201, description = "Conexión creada"),

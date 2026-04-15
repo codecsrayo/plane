@@ -35,7 +35,7 @@ pub struct SetPasswordRequest {
 
 #[utoipa::path(
     post,
-    path = "/api/auth/change-password",
+    path = "/auth/change-password",
     tag = "Auth",
     request_body = ChangePasswordRequest,
     responses(
@@ -95,7 +95,7 @@ pub async fn change_password(
 
 #[utoipa::path(
     post,
-    path = "/api/auth/set-password",
+    path = "/auth/set-password",
     tag = "Auth",
     request_body = SetPasswordRequest,
     responses(

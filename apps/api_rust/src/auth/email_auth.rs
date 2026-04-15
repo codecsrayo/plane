@@ -42,7 +42,7 @@ pub struct CredentialAuthForm {
 
 #[utoipa::path(
     post,
-    path = "/api/auth/sign-in",
+    path = "/auth/sign-in",
     tag = "Auth",
     request_body(
         content = CredentialAuthForm,
@@ -64,7 +64,7 @@ pub async fn sign_in(
 
 #[utoipa::path(
     post,
-    path = "/api/auth/sign-up",
+    path = "/auth/sign-up",
     tag = "Auth",
     request_body(
         content = CredentialAuthForm,
@@ -86,7 +86,7 @@ pub async fn sign_up(
 
 #[utoipa::path(
     post,
-    path = "/api/auth/spaces/sign-in",
+    path = "/auth/spaces/sign-in",
     tag = "Auth",
     request_body(
         content = CredentialAuthForm,
@@ -108,7 +108,7 @@ pub async fn sign_in_space(
 
 #[utoipa::path(
     post,
-    path = "/api/auth/spaces/sign-up",
+    path = "/auth/spaces/sign-up",
     tag = "Auth",
     request_body(
         content = CredentialAuthForm,

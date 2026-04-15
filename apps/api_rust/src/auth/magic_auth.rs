@@ -60,7 +60,7 @@ struct MagicCodeData {
 
 #[utoipa::path(
     post,
-    path = "/api/auth/magic-generate",
+    path = "/auth/magic-generate",
     tag = "Auth",
     request_body = MagicGenerateRequest,
     responses(
@@ -77,7 +77,7 @@ pub async fn magic_generate(
 
 #[utoipa::path(
     post,
-    path = "/api/auth/spaces/magic-generate",
+    path = "/auth/spaces/magic-generate",
     tag = "Auth",
     request_body = MagicGenerateRequest,
     responses(
@@ -94,7 +94,7 @@ pub async fn magic_generate_space(
 
 #[utoipa::path(
     post,
-    path = "/api/auth/magic-sign-in",
+    path = "/auth/magic-sign-in",
     tag = "Auth",
     request_body(
         content = MagicAuthForm,
@@ -125,7 +125,7 @@ pub async fn magic_sign_in(
 
 #[utoipa::path(
     post,
-    path = "/api/auth/magic-sign-up",
+    path = "/auth/magic-sign-up",
     tag = "Auth",
     request_body(
         content = MagicAuthForm,
@@ -156,7 +156,7 @@ pub async fn magic_sign_up(
 
 #[utoipa::path(
     post,
-    path = "/api/auth/spaces/magic-sign-in",
+    path = "/auth/spaces/magic-sign-in",
     tag = "Auth",
     request_body(
         content = MagicAuthForm,
@@ -187,7 +187,7 @@ pub async fn magic_sign_in_space(
 
 #[utoipa::path(
     post,
-    path = "/api/auth/spaces/magic-sign-up",
+    path = "/auth/spaces/magic-sign-up",
     tag = "Auth",
     request_body(
         content = MagicAuthForm,

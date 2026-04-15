@@ -1,10 +1,10 @@
 // src/auth/forgot_reset_password.rs
 //
 // Implementa:
-//   POST  /api/auth/forgot-password
-//   POST  /api/auth/reset-password/:uidb64/:token
-//   POST  /api/auth/spaces/forgot-password
-//   POST  /api/auth/spaces/reset-password/:uidb64/:token
+//   POST  /auth/forgot-password
+//   POST  /auth/reset-password/:uidb64/:token
+//   POST  /auth/spaces/forgot-password
+//   POST  /auth/spaces/reset-password/:uidb64/:token
 //
 // Equivalente a las vistas Django:
 //   - authentication/views/app/password_management.py   → ForgotPasswordEndpoint / ResetPasswordEndpoint
@@ -70,7 +70,7 @@ struct ResetTokenData {
 
 #[utoipa::path(
     post,
-    path = "/api/auth/forgot-password",
+    path = "/auth/forgot-password",
     tag = "Auth",
     request_body = ForgotPasswordRequest,
     responses(
@@ -87,7 +87,7 @@ pub async fn forgot_password(
 
 #[utoipa::path(
     post,
-    path = "/api/auth/reset-password/{uidb64}/{token}",
+    path = "/auth/reset-password/{uidb64}/{token}",
     tag = "Auth",
     params(
         ("uidb64" = String, Path, description = "Base64url-encoded user UUID"),
@@ -116,7 +116,7 @@ pub async fn reset_password(
 
 #[utoipa::path(
     post,
-    path = "/api/auth/spaces/forgot-password",
+    path = "/auth/spaces/forgot-password",
     tag = "Auth",
     request_body = ForgotPasswordRequest,
     responses(
@@ -133,7 +133,7 @@ pub async fn forgot_password_space(
 
 #[utoipa::path(
     post,
-    path = "/api/auth/spaces/reset-password/{uidb64}/{token}",
+    path = "/auth/spaces/reset-password/{uidb64}/{token}",
     tag = "Auth",
     params(
         ("uidb64" = String, Path, description = "Base64url-encoded user UUID"),

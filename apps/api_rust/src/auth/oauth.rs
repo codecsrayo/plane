@@ -151,7 +151,7 @@ async fn update_oauth_login_metadata(
 
 #[utoipa::path(
     get,
-    path = "/api/auth/gitlab/",
+    path = "/auth/gitlab/",
     tag = "Auth",
     responses(
         (status = 302, description = "Redirección a GitLab"),
@@ -170,7 +170,7 @@ pub async fn gitlab_initiate(
         .unwrap_or_else(|| "https://gitlab.com".to_owned());
 
     let web_url = state.config.web_url.as_deref().unwrap_or("").trim_end_matches('/');
-    let redirect_uri = format!("{}/api/auth/gitlab/callback/", web_url);
+    let redirect_uri = format!("{}/auth/gitlab/callback/", web_url);
 
     let oauth_state = Uuid::new_v4().simple().to_string();
 
@@ -197,7 +197,7 @@ pub async fn gitlab_initiate(
 
 #[utoipa::path(
     get,
-    path = "/api/auth/gitlab/callback/",
+    path = "/auth/gitlab/callback/",
     tag = "Auth",
     params(
         ("code" = Option<String>, Query, description = "Authorization code"),
@@ -225,7 +225,7 @@ pub async fn gitlab_callback(
     let client_secret = get_instance_config(&state, "GITLAB_CLIENT_SECRET").await?.unwrap_or_default();
     let gitlab_host = get_instance_config(&state, "GITLAB_HOST").await?.unwrap_or_else(|| "https://gitlab.com".to_owned());
     let web_url = state.config.web_url.as_deref().unwrap_or("").trim_end_matches('/');
-    let redirect_uri = format!("{}/api/auth/gitlab/callback/", web_url);
+    let redirect_uri = format!("{}/auth/gitlab/callback/", web_url);
 
     // Exchange code for token
     let token_resp = state.http.post(format!("{}/oauth/token", gitlab_host.trim_end_matches('/')))
@@ -270,7 +270,7 @@ pub async fn gitlab_callback(
 
 #[utoipa::path(
     get,
-    path = "/api/auth/google/",
+    path = "/auth/google/",
     tag = "Auth",
     responses(
         (status = 302, description = "Redirección a Google"),
@@ -285,7 +285,7 @@ pub async fn google_initiate(
         .ok_or_else(|| AppError::BadRequest("Google OAuth is not configured".into()))?;
 
     let web_url = state.config.web_url.as_deref().unwrap_or("").trim_end_matches('/');
-    let redirect_uri = format!("{}/api/auth/google/callback/", web_url);
+    let redirect_uri = format!("{}/auth/google/callback/", web_url);
 
     let oauth_state = Uuid::new_v4().simple().to_string();
     let params = [
@@ -312,7 +312,7 @@ pub async fn google_initiate(
 
 #[utoipa::path(
     get,
-    path = "/api/auth/google/callback/",
+    path = "/auth/google/callback/",
     tag = "Auth",
     params(
         ("code" = Option<String>, Query, description = "Authorization code"),
@@ -339,7 +339,7 @@ pub async fn google_callback(
     let client_id = get_instance_config(&state, "GOOGLE_CLIENT_ID").await?.unwrap_or_default();
     let client_secret = get_instance_config(&state, "GOOGLE_CLIENT_SECRET").await?.unwrap_or_default();
     let web_url = state.config.web_url.as_deref().unwrap_or("").trim_end_matches('/');
-    let redirect_uri = format!("{}/api/auth/google/callback/", web_url);
+    let redirect_uri = format!("{}/auth/google/callback/", web_url);
 
     // Exchange code for token
     let token_resp = state.http.post("https://oauth2.googleapis.com/token")
@@ -384,7 +384,7 @@ pub async fn google_callback(
 
 #[utoipa::path(
     get,
-    path = "/api/auth/gitea/",
+    path = "/auth/gitea/",
     tag = "Auth",
     responses(
         (status = 302, description = "Redirección a Gitea"),
@@ -403,7 +403,7 @@ pub async fn gitea_initiate(
         .unwrap_or_else(|| "https://gitea.com".to_owned());
 
     let web_url = state.config.web_url.as_deref().unwrap_or("").trim_end_matches('/');
-    let redirect_uri = format!("{}/api/auth/gitea/callback/", web_url);
+    let redirect_uri = format!("{}/auth/gitea/callback/", web_url);
 
     let oauth_state = Uuid::new_v4().simple().to_string();
     let params = [
@@ -428,7 +428,7 @@ pub async fn gitea_initiate(
 
 #[utoipa::path(
     get,
-    path = "/api/auth/gitea/callback/",
+    path = "/auth/gitea/callback/",
     tag = "Auth",
     params(
         ("code" = Option<String>, Query, description = "Authorization code"),
@@ -456,7 +456,7 @@ pub async fn gitea_callback(
     let client_secret = get_instance_config(&state, "GITEA_CLIENT_SECRET").await?.unwrap_or_default();
     let gitea_host = get_instance_config(&state, "GITEA_HOST").await?.unwrap_or_else(|| "https://gitea.com".to_owned());
     let web_url = state.config.web_url.as_deref().unwrap_or("").trim_end_matches('/');
-    let redirect_uri = format!("{}/api/auth/gitea/callback/", web_url);
+    let redirect_uri = format!("{}/auth/gitea/callback/", web_url);
 
     // Exchange code for token
     let token_resp = state.http.post(format!("{}/login/oauth/access_token", gitea_host.trim_end_matches('/')))

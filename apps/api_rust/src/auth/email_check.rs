@@ -20,7 +20,7 @@ pub struct EmailCheckRequest {
 
 #[utoipa::path(
     post,
-    path = "/api/auth/email-check",
+    path = "/auth/email-check",
     tag = "Auth",
     request_body = EmailCheckRequest,
     responses(
@@ -37,7 +37,7 @@ pub async fn email_check(
 
 #[utoipa::path(
     post,
-    path = "/api/auth/spaces/email-check",
+    path = "/auth/spaces/email-check",
     tag = "Auth",
     request_body = EmailCheckRequest,
     responses(

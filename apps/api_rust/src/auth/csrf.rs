@@ -25,7 +25,7 @@ pub struct CsrfTokenResponse {
 
 #[utoipa::path(
     get,
-    path = "/api/auth/get-csrf-token",
+    path = "/auth/get-csrf-token",
     tag = "Auth",
     responses(
         (status = 200, description = "CSRF token issued", body = CsrfTokenResponse),
