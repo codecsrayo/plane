@@ -1056,7 +1056,7 @@ pub fn build_router(state: AppState) -> Router {
             patch(workspace_extras::update_sticky).delete(workspace_extras::delete_sticky),
         )
         .route(
-            "/workspaces/{slug}/user-preference",
+            "/workspaces/{slug}/sidebar-preferences",
             get(workspace_extras::get_user_preferences)
                 .patch(workspace_extras::update_user_preferences),
         )

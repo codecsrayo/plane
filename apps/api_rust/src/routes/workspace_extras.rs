@@ -1062,10 +1062,17 @@ pub struct UpdateUserPreferenceItem {
     pub sort_order: Option<f64>,
 }
 
-/// GET /workspaces/{slug}/user-preference/
+/// GET /workspaces/{slug}/sidebar-preferences/
+///
+/// Espejo de Django `WorkspaceUserPreferenceViewSet.get` en
+/// `plane/app/views/workspace/user_preference.py:26`. Devuelve el mapa
+/// `{key: {is_pinned, sort_order}}` y SIEMBRA los keys faltantes con
+/// defaults (sort_order = 65535 + i*10000, pinned para drafts/your_work/
+/// stickies) para que el frontend tenga estado consistente desde el
+/// primer render.
 #[utoipa::path(
     get,
-    path = "/api/workspaces/{slug}/user-preference/",
+    path = "/api/workspaces/{slug}/sidebar-preferences/",
     tag = "Workspace Extras",
     params(("slug" = String, Path, description = "Workspace slug")),
     responses(
@@ -1082,6 +1089,88 @@ pub async fn get_user_preferences(
     let ws = workspace_by_slug(db, &slug).await?;
     let _member = require_workspace_member(db, ws.id, user_id).await?;
 
+    // ── 1. Seed de keys faltantes ───────────────────────────────────────────
+    //
+    // Mirror exacto de Django: el GET es responsable de garantizar que
+    // existan filas para cada UserPreferenceKeys.choices. Si no existen,
+    // se crean con defaults; si ya existen (race condition entre tabs)
+    // se ignoran via ON CONFLICT DO NOTHING.
+    //
+    // Orden y defaults son normativos — el frontend asume estos valores.
+    const PREFERENCE_KEYS: &[&str] = &[
+        "views",
+        "active_cycles",
+        "analytics",
+        "drafts",
+        "your_work",
+        "archives",
+        "stickies",
+    ];
+    const PINNED_BY_DEFAULT: &[&str] = &["drafts", "your_work", "stickies"];
+
+    // Keys ya presentes para este (workspace, user).
+    let existing_keys: std::collections::HashSet<String> =
+        workspace_user_preferences::Entity::find()
+            .filter(workspace_user_preferences::Column::WorkspaceId.eq(ws.id))
+            .filter(workspace_user_preferences::Column::UserId.eq(user_id))
+            .filter(workspace_user_preferences::Column::DeletedAt.is_null())
+            .all(db)
+            .await
+            .map_err(AppError::Database)?
+            .into_iter()
+            .map(|p| p.key)
+            .collect();
+
+    // Construir ActiveModel solo para los keys que faltan, manteniendo el
+    // mismo cálculo de sort_order que Django: 65535 + i*10000 donde `i` es
+    // la posición dentro del subset de keys faltantes (no del total).
+    let now = chrono::Utc::now().fixed_offset();
+    let mut to_insert = Vec::new();
+    for (i, key) in PREFERENCE_KEYS
+        .iter()
+        .filter(|k| !existing_keys.contains(**k))
+        .enumerate()
+    {
+        let sort_order = 65535.0_f64 + (i as f64) * 10000.0;
+        let is_pinned = PINNED_BY_DEFAULT.contains(key);
+        to_insert.push(workspace_user_preferences::ActiveModel {
+            id: Set(Uuid::new_v4()),
+            key: Set(key.to_string()),
+            is_pinned: Set(is_pinned),
+            sort_order: Set(sort_order),
+            user_id: Set(user_id),
+            workspace_id: Set(ws.id),
+            created_by_id: Set(Some(user_id)),
+            updated_by_id: Set(Some(user_id)),
+            created_at: Set(now),
+            updated_at: Set(now),
+            deleted_at: Set(None),
+        });
+    }
+
+    if !to_insert.is_empty() {
+        // ON CONFLICT DO NOTHING — espejo de bulk_create(ignore_conflicts=True).
+        // La unique constraint cubre (workspace_id, user_id, key) cuando
+        // deleted_at IS NULL, así que reaplicar el GET concurrentemente
+        // desde otra pestaña no rompe.
+        use sea_orm::sea_query::OnConflict;
+        workspace_user_preferences::Entity::insert_many(to_insert)
+            .on_conflict(
+                OnConflict::columns([
+                    workspace_user_preferences::Column::WorkspaceId,
+                    workspace_user_preferences::Column::UserId,
+                    workspace_user_preferences::Column::Key,
+                ])
+                .do_nothing()
+                .to_owned(),
+            )
+            .do_nothing()
+            .exec(db)
+            .await
+            .map_err(AppError::Database)?;
+    }
+
+    // ── 2. Leer todas las preferencias (incluye las recién insertadas) ──────
     let prefs = workspace_user_preferences::Entity::find()
         .filter(workspace_user_preferences::Column::WorkspaceId.eq(ws.id))
         .filter(workspace_user_preferences::Column::UserId.eq(user_id))
@@ -1108,12 +1197,12 @@ pub async fn get_user_preferences(
     Ok((StatusCode::OK, Json(map)))
 }
 
-/// PATCH /workspaces/{slug}/user-preference/
+/// PATCH /workspaces/{slug}/sidebar-preferences/
 ///
 /// Body: array de objetos `{key, is_pinned?, sort_order?}`
 #[utoipa::path(
     patch,
-    path = "/api/workspaces/{slug}/user-preference/",
+    path = "/api/workspaces/{slug}/sidebar-preferences/",
     tag = "Workspace Extras",
     params(("slug" = String, Path, description = "Workspace slug")),
     responses(
