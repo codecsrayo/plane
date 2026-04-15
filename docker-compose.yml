@@ -156,7 +156,8 @@ services:
 
   # ── API — Rust (reemplaza Django) ─────────────────────────────────────────────
   # Puerto interno: 8000 (igual que Django — Traefik no cambia)
-  # Workers Celery eliminados: apalis corre en el mismo proceso de api_rust
+  # Workers Celery eliminados: apalis + cron.rs corren en el mismo proceso
+  # Migraciones: Migrator::up se ejecuta en startup — no requiere servicio separado
   api:
     container_name: api
     build:
@@ -215,6 +216,17 @@ services:
       LLM_MODEL: ${LLM_MODEL:-}
       # Unsplash (opcional)
       UNSPLASH_ACCESS_KEY: ${UNSPLASH_ACCESS_KEY:-}
+      # Email — usado por cron stack_email_notification
+      EMAIL_HOST: ${EMAIL_HOST:-}
+      EMAIL_PORT: ${EMAIL_PORT:-587}
+      EMAIL_HOST_USER: ${EMAIL_HOST_USER:-}
+      EMAIL_HOST_PASSWORD: ${EMAIL_HOST_PASSWORD:-}
+      EMAIL_USE_TLS: ${EMAIL_USE_TLS:-1}
+      EMAIL_USE_SSL: ${EMAIL_USE_SSL:-0}
+      EMAIL_FROM: ${EMAIL_FROM:-noreply@plane.so}
+      # Limpieza periódica
+      HARD_DELETE_AFTER_DAYS: ${HARD_DELETE_AFTER_DAYS:-30}
+      UNUPLOADED_ASSET_DELETE_DAYS: ${UNUPLOADED_ASSET_DELETE_DAYS:-7}
     networks:
       - default
       - traefik-public
@@ -228,55 +240,17 @@ services:
       - traefik.http.routers.plane-api.tls.certresolver=netlify
       - traefik.http.routers.plane-api.priority=100
       - traefik.http.services.plane-api.loadbalancer.server.port=8000
-    depends_on:
-      migrator:
-        condition: service_completed_successfully
-      plane-db:
-        condition: service_healthy
-      plane-redis:
-        condition: service_started
-
-  # ── Migrator — Django sólo para migraciones ───────────────────────────────────
-  # Django se mantiene ÚNICAMENTE para:
-  #   1. Ejecutar migraciones de la base de datos (manage.py migrate)
-  #   2. Inicializar la instancia (manage.py configure_instance)
-  # Se ejecuta una vez y termina (restart: no).
-  migrator:
-    container_name: plane-migrator
-    build:
-      context: ./apps/api
-      dockerfile: Dockerfile.api
-      args:
-        DOCKER_BUILDKIT: 1
-    restart: no
-    command: ./bin/docker-entrypoint-migrator.sh
-    env_file:
-      - ./apps/api/.env
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8000/health || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 60s
     depends_on:
       plane-db:
         condition: service_healthy
       plane-redis:
         condition: service_started
-
-  # ── Beat worker — tareas periódicas Django (automatizaciones) ─────────────────
-  # Se mantiene hasta que las tareas periódicas estén portadas al scheduler
-  # de apalis (jobs/scheduled.rs).
-  beat-worker:
-    container_name: beatworker
-    build:
-      context: ./apps/api
-      dockerfile: Dockerfile.api
-      args:
-        DOCKER_BUILDKIT: 1
-    restart: always
-    command: ./bin/docker-entrypoint-beat.sh
-    env_file:
-      - ./apps/api/.env
-    depends_on:
-      - migrator
-      - plane-db
-      - plane-redis
-      - plane-mq
 
   # ── Live — colaboración en tiempo real ────────────────────────────────────────
   live:
@@ -299,6 +273,9 @@ services:
       - traefik.http.routers.plane-live.tls.certresolver=netlify
       - traefik.http.routers.plane-live.priority=100
       - traefik.http.services.plane-live.loadbalancer.server.port=3000
+    depends_on:
+      api:
+        condition: service_healthy
 
   # ── Infraestructura ───────────────────────────────────────────────────────────
   plane-db:
@@ -329,19 +306,6 @@ services:
     volumes:
       - redisdata:/data
 
-  plane-mq:
-    container_name: plane-mq
-    image: rabbitmq:3.13.6-management-alpine
-    restart: always
-    env_file:
-      - .env
-    environment:
-      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
-      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD}
-      RABBITMQ_DEFAULT_VHOST: ${RABBITMQ_VHOST}
-    volumes:
-      - rabbitmq_data:/var/lib/rabbitmq
-
   plane-minio:
     container_name: plane-minio
     image: minio/minio
@@ -369,7 +333,6 @@ volumes:
   pgdata:
   redisdata:
   uploads:
-  rabbitmq_data:
 
 networks:
   default:
