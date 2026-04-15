@@ -295,7 +295,6 @@ async fn run_seed(state: &AppState, job: WorkspaceSeedJob) -> anyhow::Result<()>
             deleted_at: Set(None),
             external_id: Set(None),
             external_source: Set(None),
-            sort_order: Set(65535.0),
             is_triage: Set(false),
         }
         .insert(db)
@@ -330,7 +329,6 @@ async fn run_seed(state: &AppState, job: WorkspaceSeedJob) -> anyhow::Result<()>
             sort_order: Set(*sort_order),
             external_id: Set(None),
             external_source: Set(None),
-            sort_order: Set(65535.0),
         }
         .insert(db)
         .await
@@ -367,7 +365,6 @@ async fn run_seed(state: &AppState, job: WorkspaceSeedJob) -> anyhow::Result<()>
         view_props: Set(serde_json::json!({})),
         external_id: Set(None),
         external_source: Set(None),
-            sort_order: Set(65535.0),
         progress_snapshot: Set(serde_json::json!({})),
         logo_props: Set(serde_json::json!({})),
         timezone: Set("UTC".to_string()),
@@ -396,7 +393,6 @@ async fn run_seed(state: &AppState, job: WorkspaceSeedJob) -> anyhow::Result<()>
         view_props: Set(serde_json::json!({})),
         external_id: Set(None),
         external_source: Set(None),
-            sort_order: Set(65535.0),
         progress_snapshot: Set(serde_json::json!({})),
         logo_props: Set(serde_json::json!({})),
         timezone: Set("UTC".to_string()),
@@ -446,7 +442,6 @@ async fn run_seed(state: &AppState, job: WorkspaceSeedJob) -> anyhow::Result<()>
             view_props: Set(serde_json::json!({})),
             external_id: Set(None),
             external_source: Set(None),
-            sort_order: Set(65535.0),
             logo_props: Set(serde_json::json!({})),
         }
         .insert(db)
@@ -495,7 +490,6 @@ async fn run_seed(state: &AppState, job: WorkspaceSeedJob) -> anyhow::Result<()>
             point: Set(None),
             external_id: Set(None),
             external_source: Set(None),
-            sort_order: Set(65535.0),
             created_by_id: Set(Some(bot_id)),
             updated_by_id: Set(Some(bot_id)),
             created_at: Set(now),
