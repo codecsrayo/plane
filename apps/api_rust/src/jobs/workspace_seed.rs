@@ -407,7 +407,7 @@ async fn run_seed(state: &AppState, job: WorkspaceSeedJob) -> anyhow::Result<()>
         .collect();
 
     // ── 7. Modules ────────────────────────────────────────────────────────────
-    let modules_data = vec![
+    let modules_data = [
         (1u32, "Core Workflow (System)",    "planned",     "Manage, visualize, and track your work items across views."),
         (2,    "Onboarding Flow (Feature)", "backlog",     "Everything about getting started - creating a project, inviting teammates."),
         (3,    "Workspace Setup (Area)",    "in-progress", "The personalization layer - settings, labels, automations."),
@@ -453,7 +453,8 @@ async fn run_seed(state: &AppState, job: WorkspaceSeedJob) -> anyhow::Result<()>
 
     // ── 8. Issues ─────────────────────────────────────────────────────────────
     // (seed_id, name, seq, state_seed, priority, sort_order, label_seeds, cycle_seed, module_seeds)
-    let issues_data: Vec<(u32, &str, i32, u32, &str, f64, Vec<u32>, Option<u32>, Vec<u32>)> = vec![
+    type IssueSeed<'a> = (u32, &'a str, i32, u32, &'a str, f64, Vec<u32>, Option<u32>, Vec<u32>);
+    let issues_data: Vec<IssueSeed<'_>> = vec![
         (1, "Welcome to Plane 👋",          1, 4, "urgent", 1000.0, vec![],  Some(1), vec![1]),
         (2, "1. Create Projects 🎯",         2, 2, "high",   2000.0, vec![2], Some(1), vec![1]),
         (3, "2. Invite Teammates 🤝",        3, 2, "high",   3000.0, vec![2], Some(1), vec![2]),
