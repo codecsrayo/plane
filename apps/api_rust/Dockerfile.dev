@@ -1,0 +1,53 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Dockerfile.dev — API Rust (desarrollo)
+#
+# Diseñado para hot-reload con cargo-watch.
+# El código fuente se monta como volumen desde el host; los artefactos de
+# compilación se almacenan en volúmenes nombrados para reutilizar caché entre
+# reinicios sin contaminar el directorio del host.
+#
+# USO (desde docker-compose-dev.yml):
+#   context: .
+#   dockerfile: ./apps/api_rust/Dockerfile.dev
+# ─────────────────────────────────────────────────────────────────────────────
+
+FROM rust:1.87-slim-bookworm
+
+# Dependencias del sistema necesarias para compilar (libpq, openssl, etc.)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        pkg-config \
+        libssl-dev \
+        libpq-dev \
+        ca-certificates \
+        curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# cargo-watch: reconstruye y reinicia el binario ante cambios en src/
+# Se fija versión para builds reproducibles.
+RUN cargo install cargo-watch --version 8.5.3 --locked
+
+WORKDIR /app
+
+# El código fuente se monta en tiempo de ejecución (ver volumes en compose).
+# Sólo pre-descargamos las dependencias usando manifiestos dummy para
+# aprovechar la caché del layer en la primera construcción de la imagen.
+COPY apps/api_rust/Cargo.toml apps/api_rust/Cargo.lock ./
+COPY apps/api_rust/migration/Cargo.toml ./migration/
+
+RUN mkdir -p src migration/src && \
+    echo 'fn main() {}' > src/main.rs && \
+    touch migration/src/lib.rs && \
+    echo 'fn main() {}' > migration/src/main.rs && \
+    cargo fetch && \
+    rm -rf src migration/src
+
+EXPOSE 8001
+
+# cargo-watch compila y ejecuta el binario ante cualquier cambio en src/ o
+# Cargo.toml. Se pasan flags de diagnóstico para dev.
+# RUST_LOG se define en el env_file del compose.
+CMD ["cargo", "watch", \
+     "--watch", "src", \
+     "--watch", "Cargo.toml", \
+     "--watch", "migration/src", \
+     "-x", "run"]
