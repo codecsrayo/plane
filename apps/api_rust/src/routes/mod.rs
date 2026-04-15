@@ -388,83 +388,93 @@ pub fn build_router(state: AppState) -> Router {
     // ── Rutas sin autenticación ──────────────────────────────────────────────
     let public_routes = Router::new()
         // GitHub App Setup URL callback — sin middleware de auth
-        .route("/github/callback/", get(integrations::github_app_callback))
-        // GitLab OAuth callback — sin middleware de auth (manejado por frontend)
-        .route("/auth/gitlab/callback/", get(auth::oauth::gitlab_callback))
-        .route("/auth/google/callback/", get(auth::oauth::google_callback))
-        .route("/auth/gitea/callback/", get(auth::oauth::gitea_callback));
+        .route("/github/callback/", get(integrations::github_app_callback));
 
-    let api_router = Router::new()
-        .route("/health", get(health::health))
-        .route("/auth/get-csrf-token", get(auth::csrf::get_csrf_token))
-        .route("/auth/sign-in", post(auth::email_auth::sign_in))
-        .route("/auth/sign-up", post(auth::email_auth::sign_up))
+    // ── Auth routes — nested at /auth to match Django's path("auth/", ...) ──
+    // Public auth routes (no auth middleware, e.g. OAuth callbacks)
+    let auth_public_routes = Router::new()
+        .route("/gitlab/callback/", get(auth::oauth::gitlab_callback))
+        .route("/google/callback/", get(auth::oauth::google_callback))
+        .route("/gitea/callback/", get(auth::oauth::gitea_callback));
+
+    // Auth routes with rate limiting (mirrors plane.authentication.urls)
+    let auth_router = Router::new()
+        .route("/get-csrf-token", get(auth::csrf::get_csrf_token))
+        .route("/sign-in", post(auth::email_auth::sign_in))
+        .route("/sign-up", post(auth::email_auth::sign_up))
         .route(
-            "/auth/magic-generate",
+            "/magic-generate",
             post(auth::magic_auth::magic_generate),
         )
-        .route("/auth/magic-sign-in", post(auth::magic_auth::magic_sign_in))
-        .route("/auth/magic-sign-up", post(auth::magic_auth::magic_sign_up))
+        .route("/magic-sign-in", post(auth::magic_auth::magic_sign_in))
+        .route("/magic-sign-up", post(auth::magic_auth::magic_sign_up))
         .route(
-            "/auth/spaces/sign-in",
+            "/spaces/sign-in",
             post(auth::email_auth::sign_in_space),
         )
         .route(
-            "/auth/spaces/sign-up",
+            "/spaces/sign-up",
             post(auth::email_auth::sign_up_space),
         )
         .route(
-            "/auth/spaces/magic-generate",
+            "/spaces/magic-generate",
             post(auth::magic_auth::magic_generate_space),
         )
         .route(
-            "/auth/spaces/magic-sign-in",
+            "/spaces/magic-sign-in",
             post(auth::magic_auth::magic_sign_in_space),
         )
         .route(
-            "/auth/spaces/magic-sign-up",
+            "/spaces/magic-sign-up",
             post(auth::magic_auth::magic_sign_up_space),
         )
-        .route("/auth/email-check", post(auth::email_check::email_check))
+        .route("/email-check", post(auth::email_check::email_check))
         .route(
-            "/auth/spaces/email-check",
+            "/spaces/email-check",
             post(auth::email_check::email_check_space),
         )
         .route(
-            "/auth/change-password",
+            "/change-password",
             post(auth::password_management::change_password),
         )
         .route(
-            "/auth/set-password",
+            "/set-password",
             post(auth::password_management::set_password),
         )
         .route(
-            "/auth/forgot-password",
+            "/forgot-password",
             post(auth::forgot_reset_password::forgot_password),
         )
         .route(
-            "/auth/reset-password/{uidb64}/{token}",
+            "/reset-password/{uidb64}/{token}",
             post(auth::forgot_reset_password::reset_password),
         )
         .route(
-            "/auth/spaces/forgot-password",
+            "/spaces/forgot-password",
             post(auth::forgot_reset_password::forgot_password_space),
         )
         .route(
-            "/auth/spaces/reset-password/{uidb64}/{token}",
+            "/spaces/reset-password/{uidb64}/{token}",
             post(auth::forgot_reset_password::reset_password_space),
         )
-        .route("/auth/sign-out", post(auth::logout::logout))
-        .route("/auth/spaces/sign-out", post(auth::logout::logout_space))
+        .route("/sign-out", post(auth::logout::logout))
+        .route("/spaces/sign-out", post(auth::logout::logout_space))
         // ── GitHub user OAuth callback (con auth) ────────────────────────────
         .route(
-            "/auth/github/user-callback/",
+            "/github/user-callback/",
             post(integrations::github_user_callback),
         )
         // ── OAuth Initiation ──
-        .route("/auth/gitlab/", get(auth::oauth::gitlab_initiate))
-        .route("/auth/google/", get(auth::oauth::google_initiate))
-        .route("/auth/gitea/", get(auth::oauth::gitea_initiate))
+        .route("/gitlab/", get(auth::oauth::gitlab_initiate))
+        .route("/google/", get(auth::oauth::google_initiate))
+        .route("/gitea/", get(auth::oauth::gitea_initiate))
+        .layer(middleware::from_fn(
+            auth::rate_limit::rate_limit_headers_middleware,
+        ))
+        .layer(DefaultBodyLimit::max(1_048_576));
+
+    let api_router = Router::new()
+        .route("/health", get(health::health))
         // ── Integrations globales ────────────────────────────────────────────
         .route("/integrations/", get(integrations::list_integrations))
         // ── Workspaces (Fase 2) ──────────────────────────────────────────────
@@ -1170,7 +1180,11 @@ pub fn build_router(state: AppState) -> Router {
 
     let mut router = Router::new()
         .nest("/api", api_router)
-        .nest("/api", public_routes);
+        .nest("/api", public_routes)
+        // Auth routes at /auth/* — matches Django: path("auth/", include("plane.authentication.urls"))
+        // Caddy routes /auth/* to the API server, frontend calls /auth/email-check/ etc.
+        .nest("/auth", auth_router)
+        .nest("/auth", auth_public_routes);
 
     // ✅ Scalar UI solo en desarrollo (DEBUG=true).
     if state.config.debug {
