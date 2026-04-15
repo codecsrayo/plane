@@ -37,6 +37,7 @@ services:
     build:
       context: .
       dockerfile: ./apps/web/Dockerfile.dev
+      args:
         VITE_API_BASE_URL: https://plane.codecsrayo.com
         VITE_API_BASE_PATH: /api
         VITE_ADMIN_BASE_URL: https://plane.codecsrayo.com
@@ -102,6 +103,7 @@ services:
     build:
       context: .
       dockerfile: ./apps/admin/Dockerfile.dev
+      args:
         VITE_API_BASE_URL: https://plane.codecsrayo.com
         VITE_API_BASE_PATH: /api
         VITE_ADMIN_BASE_URL: https://plane.codecsrayo.com
@@ -165,6 +167,7 @@ services:
     build:
       context: .
       dockerfile: ./apps/space/Dockerfile.dev
+      args:
         VITE_API_BASE_URL: https://plane.codecsrayo.com
         VITE_API_BASE_PATH: /api
         VITE_ADMIN_BASE_URL: https://plane.codecsrayo.com
