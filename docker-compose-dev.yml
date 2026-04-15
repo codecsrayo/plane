@@ -96,7 +96,8 @@ services:
         - action: rebuild
           path: ./apps/web/package.json
     depends_on:
-      - api
+      api:
+        condition: service_healthy
 
   admin:
     container_name: plane-codecsrayo-admin
@@ -158,8 +159,10 @@ services:
         - action: rebuild
           path: ./apps/admin/package.json
     depends_on:
-      - api
-      - web
+      api:
+        condition: service_healthy
+      web:
+        condition: service_started
 
   space:
     container_name: plane-codecsrayo-space
@@ -221,8 +224,10 @@ services:
         - action: rebuild
           path: ./apps/space/package.json
     depends_on:
-      - api
-      - web
+      api:
+        condition: service_healthy
+      web:
+        condition: service_started
 
   live:
     container_name: plane-codecsrayo-live
@@ -277,7 +282,8 @@ services:
         - action: rebuild
           path: ./apps/live/package.json
     depends_on:
-      - api
+      api:
+        condition: service_healthy
 
   plane-redis:
     container_name: plane-codecsrayo-redis
@@ -359,12 +365,18 @@ services:
       PGDATA: /var/lib/postgresql/data
     ports:
       - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
 
   api:
     container_name: plane-codecsrayo-api
     build:
-      context: ./apps/api
-      dockerfile: Dockerfile.dev
+      context: .
+      dockerfile: ./apps/api_rust/Dockerfile.dev
       args:
         DOCKER_BUILDKIT: 1
     restart: unless-stopped
@@ -374,11 +386,15 @@ services:
           - api
       traefik-public:
     volumes:
-      - ./apps/api:/code
-    command: ./bin/docker-entrypoint-api-local.sh
+      - ./apps/api_rust:/app
+      - rust_target:/app/target
+      - cargo_registry:/usr/local/cargo/registry
     env_file:
       - ./apps/api/.env
     environment:
+      API_PORT: "8000"
+      RUST_LOG: "debug,sea_orm=info,sqlx=warn"
+      RUST_BACKTRACE: "1"
       CORS_ALLOWED_ORIGINS: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
       WEB_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
       APP_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
@@ -398,78 +414,19 @@ services:
       - traefik.http.routers.plane-codecsrayo-api.tls.certresolver=netlify
       - traefik.http.routers.plane-codecsrayo-api.priority=100
       - traefik.http.services.plane-codecsrayo-api.loadbalancer.server.port=8000
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8000/health || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 60s
     depends_on:
-      - plane-db
-      - plane-redis
-      - plane-mq
-
-  api_rust:
-    container_name: plane-codecsrayo-api-rust
-    build:
-      context: .
-      dockerfile: ./apps/api_rust/Dockerfile.dev
-      args:
-        DOCKER_BUILDKIT: 1
-    restart: unless-stopped
-    networks:
-      default:
-        aliases:
-          - api-rust
-      traefik-public:
-    # El código fuente se monta para que cargo-watch detecte cambios en vivo.
-    # Los artefactos de compilación van a volúmenes nombrados para reutilizar
-    # caché entre reinicios sin contaminar el directorio del host.
-    volumes:
-      - ./apps/api_rust:/app
-      - rust_target:/app/target
-      - cargo_registry:/usr/local/cargo/registry
-    env_file:
-      - ./apps/api/.env
-    environment:
-      # Puerto interno diferente al de Django para coexistir en dev
-      API_PORT: "8001"
-      RUST_LOG: "debug,sea_orm=info,sqlx=warn"
-      RUST_BACKTRACE: "1"
-      CORS_ALLOWED_ORIGINS: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
-      WEB_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
-      APP_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
-    labels:
-      - traefik.enable=true
-      - traefik.docker.network=${TRAEFIK_PUBLIC_NETWORK:-proyectos-bi-quare}
-      # Prefijo /api-rust permite que coexista con Django (/api) durante la
-      # migración. Cuando un módulo esté listo para producción se cambia aquí.
-      - traefik.http.routers.plane-codecsrayo-api-rust.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && PathPrefix(`/api-rust`)
-      - traefik.http.routers.plane-codecsrayo-api-rust.entrypoints=websecure
-      - traefik.http.routers.plane-codecsrayo-api-rust.tls=true
-      - traefik.http.routers.plane-codecsrayo-api-rust.tls.certresolver=netlify
-      - traefik.http.routers.plane-codecsrayo-api-rust.priority=100
-      - traefik.http.services.plane-codecsrayo-api-rust.loadbalancer.server.port=8001
-    depends_on:
-      - plane-db
-      - plane-redis
-      - plane-mq
-
-  worker:
-    container_name: plane-codecsrayo-worker
-    build:
-      context: ./apps/api
-      dockerfile: Dockerfile.dev
-      args:
-        DOCKER_BUILDKIT: 1
-    restart: unless-stopped
-    networks:
-      default:
-        aliases:
-          - worker
-    volumes:
-      - ./apps/api:/code
-    command: ./bin/docker-entrypoint-worker.sh
-    env_file:
-      - ./apps/api/.env
-    depends_on:
-      - api
-      - plane-db
-      - plane-redis
+      plane-db:
+        condition: service_healthy
+      plane-redis:
+        condition: service_started
+      plane-mq:
+        condition: service_started
 
   beat-worker:
     container_name: plane-codecsrayo-beat-worker
@@ -489,7 +446,6 @@ services:
     env_file:
       - ./apps/api/.env
     depends_on:
-      - api
       - plane-db
       - plane-redis
 
@@ -511,8 +467,10 @@ services:
     env_file:
       - ./apps/api/.env
     depends_on:
-      - plane-db
-      - plane-redis
+      plane-db:
+        condition: service_healthy
+      plane-redis:
+        condition: service_started
 
 volumes:
   redisdata:
