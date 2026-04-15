@@ -38,6 +38,9 @@ RUN curl -fsSL \
 
 WORKDIR /app
 
+# Paralelismo explícito — sobreescribible con CARGO_BUILD_JOBS=N en compose/host
+ENV CARGO_BUILD_JOBS=8
+
 # ── Caché de dependencias ─────────────────────────────────────────────────────
 # Copiar .cargo/config.toml primero para que el linker mold aplique ya
 # en la compilación de deps del layer siguiente.

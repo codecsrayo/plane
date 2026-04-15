@@ -1,27 +1,37 @@
 # .cargo/config.toml — configuración de compilación para api_rust
-#
+
 # ─── Linker ───────────────────────────────────────────────────────────────────
-# mold es 5-10× más rápido que ld en la fase de enlazado (linking).
-# Solo aplica en Linux x86_64 (entorno Docker y WSL); en macOS Cargo usa lld
-# de Apple automáticamente.
+# mold es 5-10× más rápido que ld en la fase de linking.
+# Solo aplica en Linux x86_64 (Docker / WSL).
 [target.x86_64-unknown-linux-gnu]
-linker = "clang"
-rustflags = ["-C", "link-arg=-fuse-ld=mold"]
+linker     = "clang"
+rustflags  = ["-C", "link-arg=-fuse-ld=mold"]
+
+# ─── Paralelismo ──────────────────────────────────────────────────────────────
+# Cargo detecta los CPUs disponibles, pero ser explícito evita sorpresas
+# con límites de CPU en Docker Desktop.
+# Sobreescribible en host: CARGO_BUILD_JOBS=N docker compose up
+[build]
+jobs = 8
 
 # ─── Perfil dev ───────────────────────────────────────────────────────────────
-# opt-level = 0  → sin optimización (default, compilación más rápida)
-# debug = 1      → info de debug reducida — suficiente para backtrace en dev,
-#                  genera objetos más pequeños y linkea más rápido que debug=2
-# incremental    → reutiliza artefactos entre recompilaciones parciales
+# opt-level = 0       → sin optimización (compilación más rápida)
+# debug = 1           → debug info reducida — suficiente para backtrace,
+#                       objetos más pequeños → link más rápido
+# incremental         → reutiliza artefactos entre recompilaciones
+# codegen-units = 256 → divide cada crate en 256 unidades LLVM para
+#                       máximo paralelismo DENTRO de un crate
+# split-debuginfo     → en Linux omite el paso serial dwp post-link
 [profile.dev]
-opt-level   = 0
-debug       = 1
-incremental = true
+opt-level       = 0
+debug           = 1
+incremental     = true
+codegen-units   = 256
+split-debuginfo = "unpacked"
 
 # ─── Deps en perfil dev ───────────────────────────────────────────────────────
-# Las dependencias se compilan una sola vez con opt-level=3 aunque el perfil
-# dev del binario sea 0. Resultado: deps rápidas en runtime sin penalizar
-# el tiempo de recompilación del código propio.
+# Dependencias compiladas una sola vez con opt-level=3.
+# Runtime rápido sin penalizar la recompilación del código propio.
 [profile.dev.package."*"]
 opt-level = 3
 debug     = false

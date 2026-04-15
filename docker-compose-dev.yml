@@ -37,8 +37,6 @@ services:
     build:
       context: .
       dockerfile: ./apps/web/Dockerfile.dev
-      args:
-        DOCKER_BUILDKIT: 1
         VITE_API_BASE_URL: https://plane.codecsrayo.com
         VITE_API_BASE_PATH: /api
         VITE_ADMIN_BASE_URL: https://plane.codecsrayo.com
@@ -104,8 +102,6 @@ services:
     build:
       context: .
       dockerfile: ./apps/admin/Dockerfile.dev
-      args:
-        DOCKER_BUILDKIT: 1
         VITE_API_BASE_URL: https://plane.codecsrayo.com
         VITE_API_BASE_PATH: /api
         VITE_ADMIN_BASE_URL: https://plane.codecsrayo.com
@@ -169,8 +165,6 @@ services:
     build:
       context: .
       dockerfile: ./apps/space/Dockerfile.dev
-      args:
-        DOCKER_BUILDKIT: 1
         VITE_API_BASE_URL: https://plane.codecsrayo.com
         VITE_API_BASE_PATH: /api
         VITE_ADMIN_BASE_URL: https://plane.codecsrayo.com
@@ -234,8 +228,6 @@ services:
     build:
       context: .
       dockerfile: ./apps/live/Dockerfile.dev
-      args:
-        DOCKER_BUILDKIT: 1
     restart: always
     networks:
       default:
@@ -360,8 +352,6 @@ services:
     build:
       context: .
       dockerfile: ./apps/api_rust/Dockerfile.dev
-      args:
-        DOCKER_BUILDKIT: 1
     restart: unless-stopped
     networks:
       default:
