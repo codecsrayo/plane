@@ -1,0 +1,7 @@
+# Versión del compilador Rust fijada para garantizar builds reproducibles
+# tanto en entornos locales como en Docker.
+#
+# Requisito mínimo impuesto por aws-sdk-s3 y dependencias AWS: rustc 1.91.1
+# Se usa 1.94 para alinear con el entorno local de desarrollo.
+[toolchain]
+channel = "1.94"
