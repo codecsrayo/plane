@@ -1,4 +1,12 @@
+# docker-compose.yml
+# API: Rust (api_rust) reemplaza Django (api).
+# Django se mantiene SOLO para migraciones (migrator) y beat scheduler
+# que aún no están portados a Rust.
+# Worker Celery eliminado — apalis corre dentro del proceso api_rust.
+
 services:
+
+  # ── Reverse proxy ────────────────────────────────────────────────────────────
   proxy:
     image: traefik:latest
     container_name: proxy
@@ -12,7 +20,7 @@ services:
       - --providers.docker.network=proyectos-bi-quare
       - --accesslog=true
       - --log=true
-      - --log.level=DEBUG
+      - --log.level=INFO
       - --certificatesresolvers.netlify.acme.email=${TRAEFIK_ACME_EMAIL}
       - --certificatesresolvers.netlify.acme.storage=/acme.json
       - --certificatesresolvers.netlify.acme.dnschallenge=true
@@ -35,6 +43,7 @@ services:
       - "traefik.http.routers.traefik.service=api@internal"
       - "traefik.http.routers.traefik.entrypoints=web"
 
+  # ── Frontend apps ─────────────────────────────────────────────────────────────
   web:
     container_name: web
     build:
@@ -70,7 +79,8 @@ services:
       - traefik.http.routers.plane.priority=1
       - traefik.http.services.plane.loadbalancer.server.port=3000
     depends_on:
-      - api
+      api:
+        condition: service_healthy
 
   admin:
     container_name: admin
@@ -103,8 +113,10 @@ services:
       - traefik.http.routers.plane-admin.priority=100
       - traefik.http.services.plane-admin.loadbalancer.server.port=3000
     depends_on:
-      - api
-      - web
+      api:
+        condition: service_healthy
+      web:
+        condition: service_started
 
   space:
     container_name: space
@@ -137,26 +149,79 @@ services:
       - traefik.http.routers.plane-space.priority=100
       - traefik.http.services.plane-space.loadbalancer.server.port=3000
     depends_on:
-      - api
-      - web
+      api:
+        condition: service_healthy
+      web:
+        condition: service_started
 
+  # ── API — Rust (reemplaza Django) ─────────────────────────────────────────────
+  # Puerto interno: 8000 (igual que Django — Traefik no cambia)
+  # Workers Celery eliminados: apalis corre en el mismo proceso de api_rust
   api:
     container_name: api
     build:
-      context: ./apps/api
-      dockerfile: Dockerfile.api
+      context: .
+      dockerfile: ./apps/api_rust/Dockerfile
       args:
         DOCKER_BUILDKIT: 1
     restart: always
-    command: ./bin/docker-entrypoint-api.sh
     env_file:
-      - ./apps/api/.env
+      - ./.env
+    environment:
+      # Conexión PostgreSQL
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_HOST: plane-db
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: ${POSTGRES_DB}
+      # Redis
+      REDIS_HOST: plane-redis
+      REDIS_PORT: 6379
+      # Servidor
+      API_HOST: 0.0.0.0
+      API_PORT: 8000
+      DEBUG: ${DEBUG:-0}
+      SECRET_KEY: ${SECRET_KEY}
+      # CORS — permite el frontend
+      CORS_ORIGINS: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
+      COOKIE_DOMAIN: ${PLANE_DOMAIN:-plane.codecsrayo.com}
+      # URLs del frontend (para redirecciones OAuth, emails, etc.)
+      WEB_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
+      APP_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
+      SPACE_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}/spaces
+      ADMIN_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}/god-mode
+      # S3 / MinIO
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      AWS_S3_BUCKET_NAME: ${AWS_S3_BUCKET_NAME:-uploads}
+      AWS_S3_ENDPOINT_URL: http://plane-minio:9000
+      # OAuth (opcional)
+      GITHUB_CLIENT_ID: ${GITHUB_CLIENT_ID:-}
+      GITHUB_CLIENT_SECRET: ${GITHUB_CLIENT_SECRET:-}
+      GITLAB_CLIENT_ID: ${GITLAB_CLIENT_ID:-}
+      GITLAB_CLIENT_SECRET: ${GITLAB_CLIENT_SECRET:-}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:-}
+      # GitHub App (integraciones)
+      GITHUB_APP_ID: ${GITHUB_APP_ID:-}
+      GITHUB_APP_NAME: ${GITHUB_APP_NAME:-}
+      GITHUB_APP_PRIVATE_KEY: ${GITHUB_APP_PRIVATE_KEY:-}
+      GITHUB_APP_WEBHOOK_SECRET: ${GITHUB_APP_WEBHOOK_SECRET:-}
+      GITHUB_APP_CLIENT_ID: ${GITHUB_APP_CLIENT_ID:-}
+      GITHUB_APP_CLIENT_SECRET: ${GITHUB_APP_CLIENT_SECRET:-}
+      # AI / LLM (opcional)
+      LLM_API_KEY: ${LLM_API_KEY:-}
+      LLM_PROVIDER: ${LLM_PROVIDER:-openai}
+      LLM_MODEL: ${LLM_MODEL:-}
+      # Unsplash (opcional)
+      UNSPLASH_ACCESS_KEY: ${UNSPLASH_ACCESS_KEY:-}
     networks:
       - default
       - traefik-public
     labels:
       - traefik.enable=true
       - traefik.docker.network=proyectos-bi-quare
+      # Mismas reglas que Django — Traefik transparente al cambio
       - traefik.http.routers.plane-api.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && (PathPrefix(`/api`) || PathPrefix(`/auth`) || PathPrefix(`/static`))
       - traefik.http.routers.plane-api.entrypoints=websecure
       - traefik.http.routers.plane-api.tls=true
@@ -164,41 +229,18 @@ services:
       - traefik.http.routers.plane-api.priority=100
       - traefik.http.services.plane-api.loadbalancer.server.port=8000
     depends_on:
-      - plane-db
-      - plane-redis
+      migrator:
+        condition: service_completed_successfully
+      plane-db:
+        condition: service_healthy
+      plane-redis:
+        condition: service_started
 
-  worker:
-    container_name: bgworker
-    build:
-      context: ./apps/api
-      dockerfile: Dockerfile.api
-      args:
-        DOCKER_BUILDKIT: 1
-    restart: always
-    command: ./bin/docker-entrypoint-worker.sh
-    env_file:
-      - ./apps/api/.env
-    depends_on:
-      - api
-      - plane-db
-      - plane-redis
-
-  beat-worker:
-    container_name: beatworker
-    build:
-      context: ./apps/api
-      dockerfile: Dockerfile.api
-      args:
-        DOCKER_BUILDKIT: 1
-    restart: always
-    command: ./bin/docker-entrypoint-beat.sh
-    env_file:
-      - ./apps/api/.env
-    depends_on:
-      - api
-      - plane-db
-      - plane-redis
-
+  # ── Migrator — Django sólo para migraciones ───────────────────────────────────
+  # Django se mantiene ÚNICAMENTE para:
+  #   1. Ejecutar migraciones de la base de datos (manage.py migrate)
+  #   2. Inicializar la instancia (manage.py configure_instance)
+  # Se ejecuta una vez y termina (restart: no).
   migrator:
     container_name: plane-migrator
     build:
@@ -211,9 +253,32 @@ services:
     env_file:
       - ./apps/api/.env
     depends_on:
+      plane-db:
+        condition: service_healthy
+      plane-redis:
+        condition: service_started
+
+  # ── Beat worker — tareas periódicas Django (automatizaciones) ─────────────────
+  # Se mantiene hasta que las tareas periódicas estén portadas al scheduler
+  # de apalis (jobs/scheduled.rs).
+  beat-worker:
+    container_name: beatworker
+    build:
+      context: ./apps/api
+      dockerfile: Dockerfile.api
+      args:
+        DOCKER_BUILDKIT: 1
+    restart: always
+    command: ./bin/docker-entrypoint-beat.sh
+    env_file:
+      - ./apps/api/.env
+    depends_on:
+      - migrator
       - plane-db
       - plane-redis
+      - plane-mq
 
+  # ── Live — colaboración en tiempo real ────────────────────────────────────────
   live:
     container_name: plane-live
     build:
@@ -235,6 +300,7 @@ services:
       - traefik.http.routers.plane-live.priority=100
       - traefik.http.services.plane-live.loadbalancer.server.port=3000
 
+  # ── Infraestructura ───────────────────────────────────────────────────────────
   plane-db:
     container_name: plane-db
     image: postgres:15.7-alpine
@@ -249,6 +315,12 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       PGDATA: /var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
 
   plane-redis:
     container_name: plane-redis
