@@ -28,7 +28,7 @@ use crate::{
     entities::{workspace_member_invites, workspace_members, workspaces},
     error::AppError,
     routes::helpers::{require_workspace_member, workspace_by_slug},
-    utils::{instance_config::get_config_value, soft_delete::SoftDeleteExt},
+    utils::{instance_config::get_config_value, soft_delete::SoftDeleteExt, url::contains_url},
     AppState,
 };
 
@@ -293,8 +293,10 @@ pub async fn slug_check(
     if RESTRICTED_SLUGS.contains(&slug.as_str()) {
         return Ok(Json(SlugCheckResponse { status: false }));
     }
+    // No usar .active() aquí: la unique constraint de la BD aplica sobre TODAS
+    // las filas (incluyendo soft-deleted).  Si filtramos solo activas, reportamos
+    // el slug como disponible pero el INSERT real falla por la constraint.
     let exists = workspaces::Entity::find()
-        .active()
         .filter(workspaces::Column::Slug.eq(&slug))
         .count(&state.db)
         .await
@@ -372,6 +374,7 @@ pub async fn list_workspaces(
         (status = 400, description = "Validation error"),
         (status = 401, description = "Unauthorized"),
         (status = 403, description = "Workspace creation disabled"),
+        (status = 409, description = "Slug already exists"),
     )
 )]
 pub async fn create_workspace(
@@ -392,19 +395,18 @@ pub async fn create_workspace(
             "Name must be between 1 and 80 characters".into(),
         ));
     }
+    if contains_url(&body.name) {
+        return Err(AppError::BadRequest(
+            "Name cannot contain a URL".into(),
+        ));
+    }
     let slug = body.slug.to_lowercase();
     validate_slug(&slug)?;
 
-    // Verificar slug disponible
-    let exists = workspaces::Entity::find()
-        .active()
-        .filter(workspaces::Column::Slug.eq(&slug))
-        .count(&state.db)
-        .await
-        .map_err(AppError::Database)?;
-    if exists > 0 {
-        return Err(AppError::BadRequest("Slug already taken".into()));
-    }
+    // No hacemos pre-check de slug disponible: es un patrón TOCTOU (time-of-check
+    // vs time-of-use). Dos requests concurrentes pueden ambas pasar la verificación
+    // y una falla en el INSERT.  Dejamos que la unique constraint de la BD sea la
+    // fuente de verdad y mapeamos la violación a 409 Conflict (como Django).
 
     let ws_id = Uuid::new_v4();
     let now = chrono::Utc::now().fixed_offset();
@@ -429,6 +431,24 @@ pub async fn create_workspace(
         logo_asset_id: Set(None),
     };
     let ws = new_ws.insert(&txn).await.map_err(|e| {
+        // Mapear unique constraint violation → 409 Conflict (espejo de Django)
+        if let sea_orm::DbErr::Query(ref runtime_err) = e {
+            let msg = runtime_err.to_string();
+            if msg.contains("unique") || msg.contains("duplicate key") {
+                return AppError::Conflict(
+                    "The workspace with the slug already exists".into(),
+                );
+            }
+        }
+        // Capturar también Exec errors que SeaORM puede emitir en insert
+        if let sea_orm::DbErr::Exec(ref runtime_err) = e {
+            let msg = runtime_err.to_string();
+            if msg.contains("unique") || msg.contains("duplicate key") {
+                return AppError::Conflict(
+                    "The workspace with the slug already exists".into(),
+                );
+            }
+        }
         tracing::error!(error = %e, "Failed to insert workspace");
         AppError::Database(e)
     })?;
@@ -552,6 +572,11 @@ pub async fn update_workspace(
         if name.is_empty() || name.len() > 80 {
             return Err(AppError::BadRequest(
                 "Name must be between 1 and 80 characters".into(),
+            ));
+        }
+        if contains_url(name) {
+            return Err(AppError::BadRequest(
+                "Name cannot contain a URL".into(),
             ));
         }
     }
