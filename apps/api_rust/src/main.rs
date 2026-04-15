@@ -234,19 +234,15 @@ async fn main() -> anyhow::Result<()> {
 
     // 5. Router
     //
-    // NormalizePathLayer DEBE envolver al Router *desde fuera* y servirse vía
-    // `ServiceExt::into_make_service`, no aplicarse con `Router::layer()`.
-    //
-    // Razón: en axum 0.7/0.8, `Router::layer()` ejecuta el middleware DESPUÉS
-    // del path-matching de cada ruta — la barra final ya causó el 404 antes
-    // de que la capa pudiera strippearla. Envolviendo desde fuera, la capa
-    // corre ANTES del routing y reescribe el path correctamente.
-    use tower::Layer;
-    use tower::ServiceExt;
+    // NormalizePathLayer se aplica vía `Router::layer()`, que en axum 0.8
+    // envuelve el RouterService completo — la capa corre ANTES del
+    // path-matching interno, por lo que la barra final se stripea correctamente
+    // antes de que el router intente resolver la ruta.
+    // Esto permite seguir usando `Router::into_make_service()` de forma directa.
     use tower_http::normalize_path::NormalizePathLayer;
 
-    let router = routes::build_router(state);
-    let app = NormalizePathLayer::trim_trailing_slash().layer(router);
+    let app = routes::build_router(state)
+        .layer(NormalizePathLayer::trim_trailing_slash());
 
     // 6. Servidor TCP
     let addr: SocketAddr = format!("{}:{}", config.host, config.port).parse()?;
@@ -259,13 +255,11 @@ async fn main() -> anyhow::Result<()> {
         "🚀 Servidor listo"
     );
 
-    // El servidor drena conexiones activas antes de retornar.
-    // `into_make_service` viene de `tower::ServiceExt` (importado arriba) —
-    // axum::serve requiere un MakeService, y `NormalizePath<Router>` no lo
-    // implementa directamente.
+    // `Router::into_make_service()` produce el MakeService que axum::serve
+    // requiere. El servidor drena conexiones activas antes de retornar.
     axum::serve(
         listener,
-        ServiceExt::<axum::extract::Request>::into_make_service(app),
+        app.into_make_service(),
     )
         .with_graceful_shutdown(shutdown_signal())
         .await?;
