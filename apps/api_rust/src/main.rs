@@ -4,6 +4,7 @@ use apalis_sql::postgres::PostgresStorage;
 use fred::prelude::{
     Builder as RedisBuilder, ClientLike, Config as RedisConfig, Pool as RedisPool,
 };
+use migration::{Migrator, MigratorTrait};
 use sea_orm::Database;
 use std::{net::SocketAddr, sync::Arc};
 use tokio::net::TcpListener;
@@ -157,6 +158,15 @@ async fn main() -> anyhow::Result<()> {
 
     tracing::info!("✅ PostgreSQL conectado");
 
+    // Ejecutar migraciones SeaORM pendientes — reemplaza el servicio `migrator`
+    // (manage.py migrate). Idempotente: no hace nada si el schema ya está al día.
+    tracing::info!("Ejecutando migraciones pendientes...");
+    Migrator::up(&db, None).await.map_err(|e| {
+        tracing::error!("Fallo al ejecutar migraciones: {e}");
+        e
+    })?;
+    tracing::info!("✅ Migraciones aplicadas");
+
     tracing::info!("Conectando a Redis...");
     let redis_config = RedisConfig::from_url(&config.redis_url).map_err(|e| {
         tracing::error!("No se pudo construir la configuración de Redis: {e}");
@@ -201,6 +211,12 @@ async fn main() -> anyhow::Result<()> {
         if let Err(e) = start_job_workers(db_url, state_for_jobs).await {
             tracing::error!(error = %e, "Error al iniciar workers de apalis");
         }
+    });
+
+    // 5b. Scheduler de tareas periódicas — reemplaza Celery beat
+    let state_for_cron = state.clone();
+    tokio::spawn(async move {
+        jobs::cron::start_cron(state_for_cron).await;
     });
 
     // 5. Router

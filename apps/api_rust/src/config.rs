@@ -43,6 +43,19 @@ pub struct Config {
 
     // CORS
     pub cors_origins: Vec<String>, // CORS_ORIGINS — comma-separated
+
+    // Email — equivalente a plane/settings/common.py EMAIL_*
+    pub email_host: Option<String>,          // EMAIL_HOST
+    pub email_port: u16,                     // EMAIL_PORT (default 587)
+    pub email_host_user: Option<String>,     // EMAIL_HOST_USER
+    pub email_host_password: Option<String>, // EMAIL_HOST_PASSWORD
+    pub email_use_tls: bool,                 // EMAIL_USE_TLS == "1"
+    pub email_use_ssl: bool,                 // EMAIL_USE_SSL == "1"
+    pub email_from: String,                  // EMAIL_FROM
+
+    // Limpieza periódica
+    pub hard_delete_after_days: i64,        // HARD_DELETE_AFTER_DAYS (default 30)
+    pub unuploaded_asset_delete_days: i64,  // UNUPLOADED_ASSET_DELETE_DAYS (default 7)
 }
 
 impl Config {
@@ -93,6 +106,25 @@ impl Config {
                 .map(|s| s.trim().to_string())
                 .filter(|s| !s.is_empty())
                 .collect(),
+            email_host: env::var("EMAIL_HOST").ok(),
+            email_port: env::var("EMAIL_PORT")
+                .unwrap_or_else(|_| "587".into())
+                .parse()
+                .unwrap_or(587),
+            email_host_user: env::var("EMAIL_HOST_USER").ok(),
+            email_host_password: env::var("EMAIL_HOST_PASSWORD").ok(),
+            email_use_tls: env::var("EMAIL_USE_TLS").map(|v| v == "1").unwrap_or(false),
+            email_use_ssl: env::var("EMAIL_USE_SSL").map(|v| v == "1").unwrap_or(false),
+            email_from: env::var("EMAIL_FROM")
+                .unwrap_or_else(|_| "noreply@plane.so".into()),
+            hard_delete_after_days: env::var("HARD_DELETE_AFTER_DAYS")
+                .unwrap_or_else(|_| "30".into())
+                .parse()
+                .unwrap_or(30),
+            unuploaded_asset_delete_days: env::var("UNUPLOADED_ASSET_DELETE_DAYS")
+                .unwrap_or_else(|_| "7".into())
+                .parse()
+                .unwrap_or(7),
         })
     }
 }

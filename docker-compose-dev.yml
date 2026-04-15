@@ -428,50 +428,6 @@ services:
       plane-mq:
         condition: service_started
 
-  beat-worker:
-    container_name: plane-codecsrayo-beat-worker
-    build:
-      context: ./apps/api
-      dockerfile: Dockerfile.dev
-      args:
-        DOCKER_BUILDKIT: 1
-    restart: unless-stopped
-    networks:
-      default:
-        aliases:
-          - beat-worker
-    volumes:
-      - ./apps/api:/code
-    command: ./bin/docker-entrypoint-beat.sh
-    env_file:
-      - ./apps/api/.env
-    depends_on:
-      - plane-db
-      - plane-redis
-
-  migrator:
-    container_name: plane-codecsrayo-migrator
-    build:
-      context: ./apps/api
-      dockerfile: Dockerfile.dev
-      args:
-        DOCKER_BUILDKIT: 1
-    restart: "no"
-    networks:
-      default:
-        aliases:
-          - migrator
-    volumes:
-      - ./apps/api:/code
-    command: ./bin/docker-entrypoint-migrator.sh --settings=plane.settings.local
-    env_file:
-      - ./apps/api/.env
-    depends_on:
-      plane-db:
-        condition: service_healthy
-      plane-redis:
-        condition: service_started
-
 volumes:
   redisdata:
   uploads:
