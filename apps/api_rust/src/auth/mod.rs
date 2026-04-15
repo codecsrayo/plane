@@ -6,6 +6,7 @@ pub mod email_auth;
 pub mod email_check;
 pub mod extractors;
 pub mod forgot_reset_password;
+pub mod god_mode;
 pub mod logout;
 pub mod magic_auth;
 pub mod oauth;

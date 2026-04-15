@@ -291,6 +291,9 @@ pub mod instances;
         instances::email_credentials_check,
         instances::instance_workspace_slug_check,
         instances::list_instance_workspaces,
+        auth::god_mode::admin_sign_up,
+        auth::god_mode::admin_sign_in,
+        auth::god_mode::admin_sign_out,
     ),
     components(
         schemas(
@@ -1108,6 +1111,19 @@ pub fn build_router(state: AppState) -> Router {
         .route(
             "/instances/",
             get(instances::get_instance).patch(instances::patch_instance),
+        )
+        // God Mode auth — rutas específicas ANTES de /admins/ para evitar conflictos
+        .route(
+            "/instances/admins/sign-up/",
+            post(auth::god_mode::admin_sign_up),
+        )
+        .route(
+            "/instances/admins/sign-in/",
+            post(auth::god_mode::admin_sign_in),
+        )
+        .route(
+            "/instances/admins/sign-out/",
+            post(auth::god_mode::admin_sign_out),
         )
         .route(
             "/instances/admins/sign-up-screen-visited/",
