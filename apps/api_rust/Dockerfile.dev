@@ -17,14 +17,14 @@
 FROM rust:1.94-slim-bookworm
 
 # ── Dependencias del sistema ──────────────────────────────────────────────────
-# clang + mold: linker rápido (referenciado en .cargo/config.toml)
+# mold: linker rápido — usado como backend vía cc -fuse-ld=mold (.cargo/config.toml)
+# No se requiere clang: cc/gcc (incluido en rust:slim) sirve de frontend.
 RUN apt-get update && apt-get install -y --no-install-recommends \
         pkg-config \
         libssl-dev \
         libpq-dev \
         ca-certificates \
         curl \
-        clang \
         mold \
     && rm -rf /var/lib/apt/lists/*
 

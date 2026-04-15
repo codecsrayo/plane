@@ -14,7 +14,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         libssl-dev \
         libpq-dev \
         ca-certificates \
-        clang \
         mold \
     && rm -rf /var/lib/apt/lists/*
 
