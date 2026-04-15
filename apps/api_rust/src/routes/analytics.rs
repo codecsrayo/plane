@@ -844,6 +844,33 @@ pub async fn workspace_analytics(
     let ws_id = guard.workspace.id;
     let db = &state.db;
 
+    // Parsear y validar project_ids para evitar inyección SQL en raw SQL.
+    // Se aceptan únicamente UUIDs válidos; cualquier valor malformado produce 400.
+    let project_id_filter = match params.project_ids.as_deref() {
+        Some(raw) if !raw.is_empty() => {
+            let ids: Result<Vec<Uuid>, _> = raw
+                .split(',')
+                .map(|s| s.trim().parse::<Uuid>())
+                .collect();
+            match ids {
+                Ok(uuids) if !uuids.is_empty() => {
+                    let list = uuids
+                        .iter()
+                        .map(|u| format!("'{u}'"))
+                        .collect::<Vec<_>>()
+                        .join(", ");
+                    format!("AND i.project_id IN ({list})")
+                }
+                _ => {
+                    return Err(AppError::BadRequest(
+                        "project_ids contains invalid UUID values".into(),
+                    ))
+                }
+            }
+        }
+        _ => String::new(),
+    };
+
     // Construir SELECT y GROUP BY según x_axis
     let (x_col, x_join) = axis_to_sql_col(&x_axis);
     let y_col = if y_axis == "estimate" {
@@ -866,6 +893,7 @@ pub async fn workspace_analytics(
          WHERE i.workspace_id = '{ws_id}'
            AND i.deleted_at IS NULL
            AND i.archived_at IS NULL
+           {project_id_filter}
          GROUP BY {x_col}
          ORDER BY value DESC",
         x_col = x_col,
@@ -873,6 +901,7 @@ pub async fn workspace_analytics(
         x_join = x_join,
         estimate_join = estimate_join,
         ws_id = ws_id,
+        project_id_filter = project_id_filter,
     );
 
     let rows = db
@@ -896,11 +925,14 @@ pub async fn workspace_analytics(
         })
         .collect();
 
-    // Total issues en el workspace
+    // Total issues en el workspace (aplica el mismo filtro de proyectos)
     let total_sql = format!(
         "SELECT COUNT(*) AS cnt FROM issues i
          WHERE i.workspace_id = '{ws_id}'
-           AND i.deleted_at IS NULL AND i.archived_at IS NULL"
+           AND i.deleted_at IS NULL AND i.archived_at IS NULL
+           {project_id_filter}",
+        ws_id = ws_id,
+        project_id_filter = project_id_filter,
     );
     let total_row = db
         .query_one(Statement::from_string(
