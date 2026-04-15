@@ -280,6 +280,17 @@ pub mod instances;
         instances::get_instance,
         instances::patch_instance,
         instances::signup_screen_visited,
+        instances::list_instance_admins,
+        instances::create_instance_admin,
+        instances::get_instance_admin_me,
+        instances::get_instance_admin_session,
+        instances::delete_instance_admin,
+        instances::list_configurations,
+        instances::update_configurations,
+        instances::disable_email_feature,
+        instances::email_credentials_check,
+        instances::instance_workspace_slug_check,
+        instances::list_instance_workspaces,
     ),
     components(
         schemas(
@@ -1099,8 +1110,40 @@ pub fn build_router(state: AppState) -> Router {
             get(instances::get_instance).patch(instances::patch_instance),
         )
         .route(
-            "/instances/signup-screen-visited/",
+            "/instances/admins/sign-up-screen-visited/",
             post(instances::signup_screen_visited),
+        )
+        .route(
+            "/instances/admins/",
+            get(instances::list_instance_admins).post(instances::create_instance_admin),
+        )
+        // Rutas específicas ANTES de /{pk}/ para evitar captura incorrecta
+        .route("/instances/admins/me/",      get(instances::get_instance_admin_me))
+        .route("/instances/admins/session/", get(instances::get_instance_admin_session))
+        .route(
+            "/instances/admins/{pk}/",
+            delete(instances::delete_instance_admin),
+        )
+        // Configurations — disable-email-feature ANTES de la ruta raíz
+        .route(
+            "/instances/configurations/disable-email-feature/",
+            delete(instances::disable_email_feature),
+        )
+        .route(
+            "/instances/configurations/",
+            get(instances::list_configurations).patch(instances::update_configurations),
+        )
+        .route(
+            "/instances/email-credentials-check/",
+            post(instances::email_credentials_check),
+        )
+        .route(
+            "/instances/workspace-slug-check/",
+            get(instances::instance_workspace_slug_check),
+        )
+        .route(
+            "/instances/workspaces/",
+            get(instances::list_instance_workspaces),
         )
         .layer(middleware::from_fn(
             auth::rate_limit::rate_limit_headers_middleware,

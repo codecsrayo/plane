@@ -1,5 +1,6 @@
 // src/utils/mod.rs
 pub mod django_sessions;
+pub mod fernet;
 pub mod github_app;
 pub mod instance_config;
 pub mod oauth_popup;
