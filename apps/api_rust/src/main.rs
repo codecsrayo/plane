@@ -39,7 +39,7 @@ async fn shutdown_signal() {
 
 /// Inicializa los workers de apalis (jobs en segundo plano).
 /// Cada worker consume una cola de PostgreSQL de forma independiente.
-async fn start_job_workers(db_url: String, state: AppState) -> anyhow::Result<()> {
+async fn start_job_workers(state: AppState) -> anyhow::Result<()> {
     use jobs::{
         export::{ExportIssuesJob, handle_export_issues},
         github_sync::{GithubInitialSyncJob, handle_github_initial_sync},
@@ -48,8 +48,8 @@ async fn start_job_workers(db_url: String, state: AppState) -> anyhow::Result<()
         workspace_seed::{WorkspaceSeedJob, handle_workspace_seed},
     };
 
-    // Crear PgPool compartido para todos los storages de apalis
-    let pg_pool = sqlx::PgPool::connect(&db_url).await?;
+    // Reuse shared PgPool from AppState — no new connection needed
+    let pg_pool = state.pg_pool.clone();
 
     // setup() es asociado en PostgresStorage::<()> — se llama una vez para
     // crear/verificar la tabla de jobs en la base de datos.
@@ -118,7 +118,7 @@ use auth::rate_limit::RateLimitState;
 use config::Config;
 
 /// Estado global del servidor — Fase 1.
-/// Fase 3 agrega: redis (fred::Pool), s3 (aws_sdk_s3::Client), pg_pool (sqlx::PgPool).
+/// Fase 3 agrega: redis (fred::Pool), s3 (aws_sdk_s3::Client).
 #[derive(Clone)]
 pub struct AppState {
     pub http: reqwest::Client,
@@ -126,6 +126,9 @@ pub struct AppState {
     pub redis: RedisPool,
     pub config: Arc<Config>,
     pub rate_limit: Arc<RateLimitState>,
+    /// Shared sqlx PgPool for apalis job enqueue — avoids creating a new
+    /// connection per enqueue (was an anti-pattern in create_workspace).
+    pub pg_pool: sqlx::PgPool,
 }
 
 #[tokio::main]
@@ -167,6 +170,14 @@ async fn main() -> anyhow::Result<()> {
     })?;
     tracing::info!("✅ Migraciones aplicadas");
 
+    // 3b. sqlx PgPool — shared pool for apalis job enqueue + workers.
+    // Avoids creating a new PgPool per job enqueue (anti-pattern).
+    let pg_pool = sqlx::PgPool::connect(&config.database_url).await.map_err(|e| {
+        tracing::error!("No se pudo crear sqlx PgPool: {e}");
+        e
+    })?;
+    tracing::info!("✅ sqlx PgPool conectado");
+
     tracing::info!("Conectando a Redis...");
     let redis_config = RedisConfig::from_url(&config.redis_url).map_err(|e| {
         tracing::error!("No se pudo construir la configuración de Redis: {e}");
@@ -195,6 +206,7 @@ async fn main() -> anyhow::Result<()> {
     let state = AppState {
         db,
         redis,
+        pg_pool: pg_pool.clone(),
         config: Arc::new(config.clone()),
         rate_limit: Arc::new(RateLimitState::default()),
         http: reqwest::Client::builder()
@@ -218,10 +230,9 @@ async fn main() -> anyhow::Result<()> {
 
 
     // 5a. Apalis job workers — inician en background, no bloquean el servidor
-    let db_url = config.database_url.clone();
     let state_for_jobs = state.clone();
     tokio::spawn(async move {
-        if let Err(e) = start_job_workers(db_url, state_for_jobs).await {
+        if let Err(e) = start_job_workers(state_for_jobs).await {
             tracing::error!(error = %e, "Error al iniciar workers de apalis");
         }
     });

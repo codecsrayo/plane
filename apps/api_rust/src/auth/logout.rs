@@ -257,6 +257,8 @@ mod tests {
             }),
             rate_limit: Arc::new(RateLimitState::default()),
             http: reqwest::Client::new(),
+            pg_pool: sqlx::PgPool::connect_lazy("postgres://localhost/test_dummy")
+                .expect("lazy pg pool for test"),
         };
 
         assert_eq!(
