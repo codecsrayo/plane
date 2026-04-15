@@ -27,14 +27,16 @@ use axum::{
 };
 use chrono::{DateTime, FixedOffset};
 use sea_orm::{
+    sea_query::{Expr, OnConflict},
     ActiveModelTrait, ColumnTrait, EntityTrait, PaginatorTrait, QueryFilter, QueryOrder, Set,
+    TransactionTrait,
 };
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 
 use crate::{
     auth::any_auth::{AnyAuth, OptionalAnyAuth},
-    entities::{accounts, profiles, project_members, users, workspace_members, workspaces},
+    entities::{accounts, profiles, project_members, users, workspace_member_invites, workspace_members, workspaces},
     error::AppError,
     utils::soft_delete::SoftDeleteExt,
     AppState,
@@ -819,4 +821,292 @@ pub async fn get_user_project_roles(
         .collect();
 
     Ok(Json(map))
+}
+
+// ─── /api/users/me/workspaces/invitations/ (GET + POST) ─────────────────────
+//
+// Espejo de Django `UserWorkspaceInvitationsViewSet` en
+// `plane/app/views/workspace/invite.py:244`. El frontend lo consume durante
+// onboarding (`apps/web/app/(all)/onboarding/page.tsx:43`) para mostrar
+// invitaciones pendientes y aceptarlas en bulk.
+
+/// Workspace embebido en la respuesta de invitación (mirror de
+/// `WorkspaceLiteSerializer`: id, name, slug, logo_url).
+#[derive(Debug, Serialize, utoipa::ToSchema)]
+pub struct UserInviteWorkspaceLite {
+    pub id: Uuid,
+    pub name: String,
+    pub slug: String,
+    /// Mirror simplificado de `Workspace.logo_url`. Si el workspace usa
+    /// `logo_asset` (no el campo `logo` legacy) este campo será `None` —
+    /// limitación aceptable para el flujo de onboarding (no hay UI que
+    /// muestre el logo en esta vista). Si se requiere, hacer JOIN con
+    /// `file_assets` similar a `WorkspaceResponse::from_model`.
+    pub logo_url: Option<String>,
+}
+
+/// Respuesta de `GET /api/users/me/workspaces/invitations/`.
+///
+/// Mirror de `WorkSpaceMemberInviteSerializer(model=WorkspaceMemberInvite,
+/// fields="__all__")` con `workspace` nested y `invite_link` computado.
+#[derive(Debug, Serialize, utoipa::ToSchema)]
+pub struct UserWorkspaceInviteResponse {
+    pub id: Uuid,
+    pub email: String,
+    pub accepted: bool,
+    pub token: String,
+    pub message: Option<String>,
+    pub responded_at: Option<DateTime<FixedOffset>>,
+    pub role: i16,
+    pub created_at: DateTime<FixedOffset>,
+    pub updated_at: DateTime<FixedOffset>,
+    pub created_by: Option<Uuid>,
+    pub workspace: UserInviteWorkspaceLite,
+    pub invite_link: String,
+}
+
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
+pub struct JoinWorkspacesRequest {
+    /// Lista de UUIDs de invitaciones a aceptar. Mirror exacto del campo
+    /// `invitations` que envía el frontend en el POST.
+    pub invitations: Vec<Uuid>,
+}
+
+/// `GET /api/users/me/workspaces/invitations/`
+///
+/// Lista las invitaciones pendientes del usuario autenticado, filtradas
+/// por su email. Mirror de `BaseViewSet.list` sobre el queryset
+/// `WorkspaceMemberInvite.objects.filter(email=request.user.email)`.
+#[utoipa::path(
+    get,
+    path = "/api/users/me/workspaces/invitations/",
+    tag = "Users",
+    security(("TokenAuth" = []), ("SessionCookie" = [])),
+    responses(
+        (status = 200, description = "List of pending workspace invitations"),
+        (status = 401, description = "Unauthorized"),
+    )
+)]
+pub async fn list_user_workspace_invitations(
+    State(state): State<AppState>,
+    AnyAuth(user): AnyAuth,
+) -> Result<Json<Vec<UserWorkspaceInviteResponse>>, AppError> {
+    // Sin email no hay forma de matchear invitaciones (Django igual: filter
+    // por email vacío devuelve queryset vacío).
+    let Some(email) = user.email.as_ref() else {
+        return Ok(Json(Vec::new()));
+    };
+
+    // Invitaciones activas del usuario.
+    let invites = workspace_member_invites::Entity::find()
+        .active()
+        .filter(workspace_member_invites::Column::Email.eq(email))
+        .order_by_desc(workspace_member_invites::Column::CreatedAt)
+        .all(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    if invites.is_empty() {
+        return Ok(Json(Vec::new()));
+    }
+
+    // select_related("workspace"): cargar workspaces en una sola query.
+    let workspace_ids: Vec<Uuid> = invites.iter().map(|i| i.workspace_id).collect();
+    let workspaces_list = workspaces::Entity::find()
+        .filter(workspaces::Column::Id.is_in(workspace_ids))
+        .all(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+    let workspaces_by_id: std::collections::HashMap<Uuid, &workspaces::Model> =
+        workspaces_list.iter().map(|w| (w.id, w)).collect();
+
+    let resp: Vec<UserWorkspaceInviteResponse> = invites
+        .into_iter()
+        .filter_map(|i| {
+            // Si el workspace fue eliminado entre queries, descartamos la
+            // invitación (Django con select_related dejaría workspace=None y
+            // el serializer fallaría — preferimos filtrar silenciosamente).
+            let ws = workspaces_by_id.get(&i.workspace_id)?;
+            Some(UserWorkspaceInviteResponse {
+                id: i.id,
+                // invite_link mirror exacto de Django:
+                //   f"/workspace-invitations/?invitation_id={obj.id}&slug={obj.workspace.slug}&token={obj.token}"
+                invite_link: format!(
+                    "/workspace-invitations/?invitation_id={}&slug={}&token={}",
+                    i.id, ws.slug, i.token
+                ),
+                email: i.email,
+                accepted: i.accepted,
+                token: i.token,
+                message: i.message,
+                responded_at: i.responded_at,
+                role: i.role,
+                created_at: i.created_at,
+                updated_at: i.updated_at,
+                created_by: i.created_by_id,
+                workspace: UserInviteWorkspaceLite {
+                    id: ws.id,
+                    name: ws.name.clone(),
+                    slug: ws.slug.clone(),
+                    logo_url: ws.logo.clone(),
+                },
+            })
+        })
+        .collect();
+
+    Ok(Json(resp))
+}
+
+/// `POST /api/users/me/workspaces/invitations/`
+///
+/// Acepta en bulk las invitaciones cuyos UUIDs vienen en el body
+/// (`{"invitations": [uuid, ...]}`). Para cada una:
+///   1. Si ya existe `WorkspaceMember` (incluso desactivado), lo reactiva
+///      con el rol de la invitación.
+///   2. Si no existe, lo crea via `INSERT ... ON CONFLICT DO NOTHING`
+///      (mirror de `bulk_create(ignore_conflicts=True)`).
+///   3. Borra las invitaciones procesadas.
+///
+/// Devuelve 204. Solo procesa invitaciones cuyo `email` coincide con el
+/// del usuario autenticado — defensa contra UUID-guessing.
+#[utoipa::path(
+    post,
+    path = "/api/users/me/workspaces/invitations/",
+    tag = "Users",
+    security(("TokenAuth" = []), ("SessionCookie" = [])),
+    request_body = JoinWorkspacesRequest,
+    responses(
+        (status = 204, description = "Joined successfully"),
+        (status = 401, description = "Unauthorized"),
+    )
+)]
+pub async fn join_user_workspace_invitations(
+    State(state): State<AppState>,
+    AnyAuth(user): AnyAuth,
+    Json(body): Json<JoinWorkspacesRequest>,
+) -> Result<StatusCode, AppError> {
+    // Sin email -> no hay invitaciones a aceptar (silencioso, mirror Django).
+    let Some(email) = user.email.as_ref() else {
+        return Ok(StatusCode::NO_CONTENT);
+    };
+    if body.invitations.is_empty() {
+        return Ok(StatusCode::NO_CONTENT);
+    }
+
+    // ── 1. Cargar invitaciones que matchean pk ∈ payload AND email == user.email
+    //
+    // El doble filtro (pk + email) es la defensa de Django contra que un
+    // usuario acepte la invitación de OTRO conociendo su UUID. Crucial
+    // mantenerlo en Rust.
+    let invites = workspace_member_invites::Entity::find()
+        .active()
+        .filter(workspace_member_invites::Column::Id.is_in(body.invitations.clone()))
+        .filter(workspace_member_invites::Column::Email.eq(email))
+        .all(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    if invites.is_empty() {
+        return Ok(StatusCode::NO_CONTENT);
+    }
+
+    let now = chrono::Utc::now().fixed_offset();
+    let txn = state
+        .db
+        .begin()
+        .await
+        .map_err(AppError::Database)?;
+
+    // ── 2. Reactivar membresías existentes con el rol de la invitación.
+    //
+    // Mirror de:
+    //   WorkspaceMember.objects.filter(workspace_id=invitation.workspace_id,
+    //                                  member=request.user)
+    //                          .update(is_active=True, role=invitation.role)
+    //
+    // Iteramos para preservar el `role` por invitación (un UPDATE bulk con
+    // mismo rol perdería la granularidad).
+    for inv in &invites {
+        if let Some(existing) = workspace_members::Entity::find()
+            .filter(workspace_members::Column::WorkspaceId.eq(inv.workspace_id))
+            .filter(workspace_members::Column::MemberId.eq(user.id))
+            .filter(workspace_members::Column::DeletedAt.is_null())
+            .one(&txn)
+            .await
+            .map_err(AppError::Database)?
+        {
+            let mut active: workspace_members::ActiveModel = existing.into();
+            active.is_active = Set(true);
+            active.role = Set(inv.role);
+            active.updated_at = Set(now);
+            active.updated_by_id = Set(Some(user.id));
+            active.update(&txn).await.map_err(AppError::Database)?;
+        }
+    }
+
+    // ── 3. Bulk insert de membresías nuevas con ON CONFLICT DO NOTHING.
+    //
+    // La unique constraint `workspace_member_unique_workspace_member_when_deleted_at_null`
+    // cubre (workspace_id, member_id) cuando deleted_at IS NULL — mirror del
+    // `ignore_conflicts=True` de Django.
+    let new_members: Vec<workspace_members::ActiveModel> = invites
+        .iter()
+        .map(|inv| workspace_members::ActiveModel {
+            id: Set(Uuid::new_v4()),
+            workspace_id: Set(inv.workspace_id),
+            member_id: Set(user.id),
+            role: Set(inv.role),
+            company_role: Set(None),
+            view_props: Set(serde_json::json!({})),
+            default_props: Set(serde_json::json!({})),
+            issue_props: Set(serde_json::json!({})),
+            is_active: Set(true),
+            explored_features: Set(serde_json::json!([])),
+            getting_started_checklist: Set(serde_json::json!({})),
+            tips: Set(serde_json::json!({})),
+            created_by_id: Set(Some(user.id)),
+            updated_by_id: Set(Some(user.id)),
+            created_at: Set(now),
+            updated_at: Set(now),
+            deleted_at: Set(None),
+        })
+        .collect();
+
+    workspace_members::Entity::insert_many(new_members)
+        .on_conflict(
+            OnConflict::columns([
+                workspace_members::Column::WorkspaceId,
+                workspace_members::Column::MemberId,
+            ])
+            .do_nothing()
+            .to_owned(),
+        )
+        .do_nothing()
+        .exec(&txn)
+        .await
+        .map_err(AppError::Database)?;
+
+    // ── 4. Soft-delete de las invitaciones procesadas.
+    //
+    // Django hace .delete() (con soft delete habilitado a nivel de manager
+    // base). Replicamos seteando deleted_at en lugar de DELETE físico para
+    // mantener trazabilidad y consistencia con el resto del codebase.
+    let invite_ids: Vec<Uuid> = invites.iter().map(|i| i.id).collect();
+    workspace_member_invites::Entity::update_many()
+        .col_expr(
+            workspace_member_invites::Column::DeletedAt,
+            Expr::value(now),
+        )
+        .col_expr(
+            workspace_member_invites::Column::UpdatedAt,
+            Expr::value(now),
+        )
+        .filter(workspace_member_invites::Column::Id.is_in(invite_ids))
+        .exec(&txn)
+        .await
+        .map_err(AppError::Database)?;
+
+    txn.commit().await.map_err(AppError::Database)?;
+
+    Ok(StatusCode::NO_CONTENT)
 }

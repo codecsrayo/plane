@@ -217,6 +217,8 @@ pub mod instances;
         users::delete_account,
         users::list_user_workspaces,
         users::get_user_project_roles,
+        users::list_user_workspace_invitations,
+        users::join_user_workspace_invitations,
         views::list_workspace_views,
         views::create_workspace_view,
         views::get_workspace_view,
@@ -830,6 +832,14 @@ pub fn build_router(state: AppState) -> Router {
             get(users::get_account).delete(users::delete_account),
         )
         .route("/users/me/workspaces", get(users::list_user_workspaces))
+        // Mirror Django: users/me/workspaces/invitations/ -> UserWorkspaceInvitationsViewSet
+        // (GET list pending invites, POST bulk-accept). Llamado por el flujo
+        // de onboarding del frontend.
+        .route(
+            "/users/me/workspaces/invitations",
+            get(users::list_user_workspace_invitations)
+                .post(users::join_user_workspace_invitations),
+        )
         // Mirror Django: users/me/workspaces/<slug>/project-roles/ -> UserProjectRolesEndpoint
         .route(
             "/users/me/workspaces/{slug}/project-roles",
