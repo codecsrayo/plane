@@ -26,7 +26,7 @@ use lettre::{
     AsyncSmtpTransport, AsyncTransport, Message, Tokio1Executor,
 };
 use sea_orm::{
-    ActiveModelTrait, ColumnTrait, ConnectionTrait, DatabaseConnection, EntityTrait,
+    ColumnTrait, ConnectionTrait, DatabaseConnection, EntityTrait,
     QueryFilter, QueryOrder,
 };
 use uuid::Uuid;
@@ -113,24 +113,8 @@ pub async fn stack_email_notification(
         }
     }
 
-    // 4. Marcar todos como processed_at = NOW()
+    // 4. Marcar todos como processed_at = NOW() (UPDATE individual por compatibilidad de tipos)
     let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
-    let stmt = sea_orm::Statement::from_sql_and_values(
-        sea_orm::DatabaseBackend::Postgres,
-        &format!(
-            "UPDATE email_notification_logs SET processed_at = $1 WHERE id = ANY($2::uuid[])"
-        ),
-        vec![
-            now.into(),
-            all_ids
-                .iter()
-                .map(|id| id.to_string())
-                .collect::<Vec<_>>()
-                .join(",")
-                .into(),
-        ],
-    );
-    // Usamos UPDATE individual para compatibilidad con el tipo de parámetro
     for id in &all_ids {
         let s = sea_orm::Statement::from_sql_and_values(
             sea_orm::DatabaseBackend::Postgres,
