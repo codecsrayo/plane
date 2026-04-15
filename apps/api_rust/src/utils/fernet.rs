@@ -113,7 +113,7 @@ fn fernet_decrypt(raw: &[u8]) -> Result<String, AppError> {
     }
 
     // ── AES-128-CBC decrypt ───────────────────────────────────────────────
-    if ciphertext.is_empty() || ciphertext.len() % 16 != 0 {
+    if ciphertext.is_empty() || !ciphertext.len().is_multiple_of(16) {
         return Err(AppError::Internal(anyhow::anyhow!(
             "fernet: longitud de ciphertext inválida ({})", ciphertext.len()
         )));
