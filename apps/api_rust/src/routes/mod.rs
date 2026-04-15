@@ -388,14 +388,14 @@ pub fn build_router(state: AppState) -> Router {
     // ── Rutas sin autenticación ──────────────────────────────────────────────
     let public_routes = Router::new()
         // GitHub App Setup URL callback — sin middleware de auth
-        .route("/github/callback/", get(integrations::github_app_callback));
+        .route("/github/callback", get(integrations::github_app_callback));
 
     // ── Auth routes — nested at /auth to match Django's path("auth/", ...) ──
     // Public auth routes (no auth middleware, e.g. OAuth callbacks)
     let auth_public_routes = Router::new()
-        .route("/gitlab/callback/", get(auth::oauth::gitlab_callback))
-        .route("/google/callback/", get(auth::oauth::google_callback))
-        .route("/gitea/callback/", get(auth::oauth::gitea_callback));
+        .route("/gitlab/callback", get(auth::oauth::gitlab_callback))
+        .route("/google/callback", get(auth::oauth::google_callback))
+        .route("/gitea/callback", get(auth::oauth::gitea_callback));
 
     // Auth routes with rate limiting (mirrors plane.authentication.urls)
     let auth_router = Router::new()
@@ -461,13 +461,13 @@ pub fn build_router(state: AppState) -> Router {
         .route("/spaces/sign-out", post(auth::logout::logout_space))
         // ── GitHub user OAuth callback (con auth) ────────────────────────────
         .route(
-            "/github/user-callback/",
+            "/github/user-callback",
             post(integrations::github_user_callback),
         )
         // ── OAuth Initiation ──
-        .route("/gitlab/", get(auth::oauth::gitlab_initiate))
-        .route("/google/", get(auth::oauth::google_initiate))
-        .route("/gitea/", get(auth::oauth::gitea_initiate))
+        .route("/gitlab", get(auth::oauth::gitlab_initiate))
+        .route("/google", get(auth::oauth::google_initiate))
+        .route("/gitea", get(auth::oauth::gitea_initiate))
         .layer(middleware::from_fn(
             auth::rate_limit::rate_limit_headers_middleware,
         ))
@@ -476,7 +476,7 @@ pub fn build_router(state: AppState) -> Router {
     let api_router = Router::new()
         .route("/health", get(health::health))
         // ── Integrations globales ────────────────────────────────────────────
-        .route("/integrations/", get(integrations::list_integrations))
+        .route("/integrations", get(integrations::list_integrations))
         // ── Workspaces (Fase 2) ──────────────────────────────────────────────
         // NormalizePathLayer (aplicado al router final) elimina trailing slashes
         // automáticamente, por lo que solo se necesita una variante por ruta.
@@ -506,50 +506,50 @@ pub fn build_router(state: AppState) -> Router {
         )
         // ── Workspace integrations ───────────────────────────────────────────
         .route(
-            "/workspaces/{slug}/workspace-integrations/",
+            "/workspaces/{slug}/workspace-integrations",
             get(integrations::list_workspace_integrations)
                 .post(integrations::create_workspace_integration),
         )
         // Rutas específicas de GitHub ANTES de las rutas genéricas con :pk
         // para evitar que "github" sea capturado como un UUID
         .route(
-            "/workspaces/{slug}/workspace-integrations/github/repo-syncs/",
+            "/workspaces/{slug}/workspace-integrations/github/repo-syncs",
             get(integrations::list_github_repo_syncs)
                 .post(integrations::create_github_repo_sync),
         )
         .route(
-            "/workspaces/{slug}/workspace-integrations/github/repo-syncs/{pk}/",
+            "/workspaces/{slug}/workspace-integrations/github/repo-syncs/{pk}",
             delete(integrations::delete_github_repo_sync),
         )
         .route(
-            "/workspaces/{slug}/workspace-integrations/{pk}/",
+            "/workspaces/{slug}/workspace-integrations/{pk}",
             get(integrations::get_workspace_integration)
                 .patch(integrations::update_workspace_integration)
                 .delete(integrations::delete_workspace_integration),
         )
         .route(
-            "/workspaces/{slug}/workspace-integrations/{provider}/provider/",
+            "/workspaces/{slug}/workspace-integrations/{provider}/provider",
             delete(integrations::delete_workspace_integration_by_provider),
         )
         .route(
-            "/workspaces/{slug}/workspace-integrations/{provider}/install/",
+            "/workspaces/{slug}/workspace-integrations/{provider}/install",
             post(integrations::provider_install),
         )
         .route(
-            "/workspaces/{slug}/workspace-integrations/{wi_id}/github-repositories/",
+            "/workspaces/{slug}/workspace-integrations/{wi_id}/github-repositories",
             get(integrations::list_github_repositories),
         )
         .route(
-            "/workspaces/{slug}/workspace-integrations/{wi_id}/gitlab-repositories/",
+            "/workspaces/{slug}/workspace-integrations/{wi_id}/gitlab-repositories",
             get(integrations::list_gitlab_repositories),
         )
         .route(
-            "/workspaces/{slug}/workspace-integrations/{wi_id}/pr-state-mappings/",
+            "/workspaces/{slug}/workspace-integrations/{wi_id}/pr-state-mappings",
             get(integrations::list_pr_state_mappings)
                 .post(integrations::create_pr_state_mapping),
         )
         .route(
-            "/workspaces/{slug}/workspace-integrations/{wi_id}/pr-state-mappings/{pk}/",
+            "/workspaces/{slug}/workspace-integrations/{wi_id}/pr-state-mappings/{pk}",
             delete(integrations::delete_pr_state_mapping),
         )
         // ── Projects (Fase 2b) ───────────────────────────────────────────────
@@ -601,576 +601,576 @@ pub fn build_router(state: AppState) -> Router {
         )
         // ── Issues ──────────────────────────────────────────────────────────
         .route(
-            "/workspaces/{slug}/projects/{project_id}/issues/",
+            "/workspaces/{slug}/projects/{project_id}/issues",
             get(issues::list_issues).post(issues::create_issue),
         )
         .route(
-            "/workspaces/{slug}/projects/{project_id}/issues/{pk}/",
+            "/workspaces/{slug}/projects/{project_id}/issues/{pk}",
             get(issues::get_issue)
                 .patch(issues::update_issue)
                 .delete(issues::delete_issue),
         )
         // ── Cycles ──────────────────────────────────────────────────────────
         .route(
-            "/workspaces/{slug}/projects/{project_id}/cycles/",
+            "/workspaces/{slug}/projects/{project_id}/cycles",
             get(cycles::list_cycles).post(cycles::create_cycle),
         )
         .route(
-            "/workspaces/{slug}/projects/{project_id}/cycles/{pk}/",
+            "/workspaces/{slug}/projects/{project_id}/cycles/{pk}",
             get(cycles::get_cycle)
                 .patch(cycles::update_cycle)
                 .delete(cycles::delete_cycle),
         )
         .route(
-            "/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/cycle-issues/",
+            "/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/cycle-issues",
             get(cycles::list_cycle_issues).post(cycles::add_issues_to_cycle),
         )
         .route(
-            "/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/cycle-issues/{issue_id}/",
+            "/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/cycle-issues/{issue_id}",
             delete(cycles::remove_issue_from_cycle),
         )
         // ── Modules ─────────────────────────────────────────────────────────
         .route(
-            "/workspaces/{slug}/projects/{project_id}/modules/",
+            "/workspaces/{slug}/projects/{project_id}/modules",
             get(modules::list_modules).post(modules::create_module),
         )
         .route(
-            "/workspaces/{slug}/projects/{project_id}/modules/{pk}/",
+            "/workspaces/{slug}/projects/{project_id}/modules/{pk}",
             get(modules::get_module)
                 .patch(modules::update_module)
                 .delete(modules::delete_module),
         )
         .route(
-            "/workspaces/{slug}/projects/{project_id}/modules/{module_id}/issues/",
+            "/workspaces/{slug}/projects/{project_id}/modules/{module_id}/issues",
             get(modules::list_module_issues).post(modules::add_issues_to_module),
         )
         .route(
-            "/workspaces/{slug}/projects/{project_id}/modules/{module_id}/issues/{issue_id}/",
+            "/workspaces/{slug}/projects/{project_id}/modules/{module_id}/issues/{issue_id}",
             delete(modules::remove_issue_from_module),
         )
         // ── Labels ──────────────────────────────────────────────────────────
         .route(
-            "/workspaces/{slug}/projects/{project_id}/labels/",
+            "/workspaces/{slug}/projects/{project_id}/labels",
             get(labels::list_labels).post(labels::create_label),
         )
         .route(
-            "/workspaces/{slug}/projects/{project_id}/labels/{pk}/",
+            "/workspaces/{slug}/projects/{project_id}/labels/{pk}",
             get(labels::get_label)
                 .patch(labels::update_label)
                 .delete(labels::delete_label),
         )
         // ── Estimates ────────────────────────────────────────────────────────
         .route(
-            "/workspaces/{slug}/projects/{project_id}/estimates/",
+            "/workspaces/{slug}/projects/{project_id}/estimates",
             get(estimates::list_estimates).post(estimates::create_estimate),
         )
         .route(
-            "/workspaces/{slug}/projects/{project_id}/estimates/{estimate_id}/",
+            "/workspaces/{slug}/projects/{project_id}/estimates/{estimate_id}",
             get(estimates::get_estimate)
                 .patch(estimates::update_estimate)
                 .delete(estimates::delete_estimate),
         )
         .route(
-            "/workspaces/{slug}/projects/{project_id}/estimates/{estimate_id}/estimate-points/",
+            "/workspaces/{slug}/projects/{project_id}/estimates/{estimate_id}/estimate-points",
             post(estimates::create_estimate_point),
         )
         .route(
-            "/workspaces/{slug}/projects/{project_id}/estimates/{estimate_id}/estimate-points/{pk}/",
+            "/workspaces/{slug}/projects/{project_id}/estimates/{estimate_id}/estimate-points/{pk}",
             patch(estimates::update_estimate_point).delete(estimates::delete_estimate_point),
         )
         // ── Notifications ────────────────────────────────────────────────────
         .route(
-            "/workspaces/{slug}/users/notifications/unread/",
+            "/workspaces/{slug}/users/notifications/unread",
             get(notifications::unread_count),
         )
         .route(
-            "/workspaces/{slug}/users/notifications/mark-all-read/",
+            "/workspaces/{slug}/users/notifications/mark-all-read",
             post(notifications::mark_all_read),
         )
         .route(
-            "/workspaces/{slug}/users/notifications/",
+            "/workspaces/{slug}/users/notifications",
             get(notifications::list_notifications),
         )
         .route(
-            "/workspaces/{slug}/users/notifications/{pk}/",
+            "/workspaces/{slug}/users/notifications/{pk}",
             get(notifications::get_notification)
                 .patch(notifications::update_notification)
                 .delete(notifications::delete_notification),
         )
         .route(
-            "/workspaces/{slug}/users/notifications/{pk}/read/",
+            "/workspaces/{slug}/users/notifications/{pk}/read",
             post(notifications::mark_read).delete(notifications::mark_unread),
         )
         .route(
-            "/workspaces/{slug}/users/notifications/{pk}/archive/",
+            "/workspaces/{slug}/users/notifications/{pk}/archive",
             post(notifications::archive_notification)
                 .delete(notifications::unarchive_notification),
         )
         // ── Webhooks ─────────────────────────────────────────────────────────
         .route(
-            "/workspaces/{slug}/webhooks/",
+            "/workspaces/{slug}/webhooks",
             get(webhooks::list_webhooks).post(webhooks::create_webhook),
         )
         .route(
-            "/workspaces/{slug}/webhooks/{pk}/",
+            "/workspaces/{slug}/webhooks/{pk}",
             get(webhooks::get_webhook)
                 .patch(webhooks::update_webhook)
                 .delete(webhooks::delete_webhook),
         )
         .route(
-            "/workspaces/{slug}/webhooks/{pk}/regenerate/",
+            "/workspaces/{slug}/webhooks/{pk}/regenerate",
             post(webhooks::regenerate_secret),
         )
         .route(
-            "/workspaces/{slug}/webhook-logs/{webhook_id}/",
+            "/workspaces/{slug}/webhook-logs/{webhook_id}",
             get(webhooks::list_webhook_logs),
         )
         // ── Pages ────────────────────────────────────────────────────────────
         .route(
-            "/workspaces/{slug}/projects/{project_id}/pages/",
+            "/workspaces/{slug}/projects/{project_id}/pages",
             get(pages::list_pages).post(pages::create_page),
         )
         .route(
-            "/workspaces/{slug}/projects/{project_id}/pages/{page_id}/",
+            "/workspaces/{slug}/projects/{project_id}/pages/{page_id}",
             get(pages::get_page)
                 .patch(pages::update_page)
                 .delete(pages::delete_page),
         )
         .route(
-            "/workspaces/{slug}/projects/{project_id}/pages/{page_id}/archive/",
+            "/workspaces/{slug}/projects/{project_id}/pages/{page_id}/archive",
             post(pages::archive_page).delete(pages::unarchive_page),
         )
         .route(
-            "/workspaces/{slug}/projects/{project_id}/pages/{page_id}/lock/",
+            "/workspaces/{slug}/projects/{project_id}/pages/{page_id}/lock",
             post(pages::lock_page).delete(pages::unlock_page),
         )
         .route(
-            "/workspaces/{slug}/projects/{project_id}/pages/{page_id}/duplicate/",
+            "/workspaces/{slug}/projects/{project_id}/pages/{page_id}/duplicate",
             post(pages::duplicate_page),
         )
         .route(
-            "/workspaces/{slug}/projects/{project_id}/pages/{page_id}/versions/",
+            "/workspaces/{slug}/projects/{project_id}/pages/{page_id}/versions",
             get(pages::list_page_versions),
         )
         .route(
-            "/workspaces/{slug}/projects/{project_id}/pages/{page_id}/versions/{pk}/",
+            "/workspaces/{slug}/projects/{project_id}/pages/{page_id}/versions/{pk}",
             get(pages::get_page_version),
         )
         // ── Intake ───────────────────────────────────────────────────────────
         .route(
-            "/workspaces/{slug}/projects/{project_id}/intakes/",
+            "/workspaces/{slug}/projects/{project_id}/intakes",
             get(intake::list_intakes).post(intake::create_intake),
         )
         .route(
-            "/workspaces/{slug}/projects/{project_id}/intakes/{pk}/",
+            "/workspaces/{slug}/projects/{project_id}/intakes/{pk}",
             get(intake::get_intake)
                 .patch(intake::update_intake)
                 .delete(intake::delete_intake),
         )
         .route(
-            "/workspaces/{slug}/projects/{project_id}/intake-issues/",
+            "/workspaces/{slug}/projects/{project_id}/intake-issues",
             get(intake::list_intake_issues).post(intake::create_intake_issue),
         )
         .route(
-            "/workspaces/{slug}/projects/{project_id}/intake-issues/{pk}/",
+            "/workspaces/{slug}/projects/{project_id}/intake-issues/{pk}",
             get(intake::get_intake_issue)
                 .patch(intake::update_intake_issue)
                 .delete(intake::delete_intake_issue),
         )
         // ── Exporter ─────────────────────────────────────────────────────────
         .route(
-            "/workspaces/{slug}/export-issues/",
+            "/workspaces/{slug}/export-issues",
             post(exporter::export_issues),
         )
         .route(
-            "/workspaces/{slug}/export-issues/{token}/",
+            "/workspaces/{slug}/export-issues/{token}",
             get(exporter::get_export_status),
         )
         // ── Search ───────────────────────────────────────────────────────────
         .route(
-            "/workspaces/{slug}/search/",
+            "/workspaces/{slug}/search",
             get(search::global_search),
         )
         .route(
-            "/workspaces/{slug}/projects/{project_id}/search-issues/",
+            "/workspaces/{slug}/projects/{project_id}/search-issues",
             get(search::search_issues),
         )
         // ── Timezones ─────────────────────────────────────────────────────────
-        .route("/timezones/", get(timezones::list_timezones))
+        .route("/timezones", get(timezones::list_timezones))
         // ── Users (me) ───────────────────────────────────────────────────────
         .route(
-            "/users/me/",
+            "/users/me",
             get(users::get_me)
                 .patch(users::update_me)
                 .delete(users::deactivate_me),
         )
-        .route("/users/session/", get(users::get_session))
-        .route("/users/me/settings/", get(users::get_settings))
-        .route("/users/me/instance-admin/", get(users::get_instance_admin))
-        .route("/users/me/onboard/", patch(users::update_onboard))
+        .route("/users/session", get(users::get_session))
+        .route("/users/me/settings", get(users::get_settings))
+        .route("/users/me/instance-admin", get(users::get_instance_admin))
+        .route("/users/me/onboard", patch(users::update_onboard))
         .route(
-            "/users/me/tour-completed/",
+            "/users/me/tour-completed",
             patch(users::update_tour_completed),
         )
         .route(
-            "/users/me/profile/",
+            "/users/me/profile",
             get(users::get_profile).patch(users::update_profile),
         )
-        .route("/users/me/accounts/", get(users::list_accounts))
+        .route("/users/me/accounts", get(users::list_accounts))
         .route(
-            "/users/me/accounts/{pk}/",
+            "/users/me/accounts/{pk}",
             get(users::get_account).delete(users::delete_account),
         )
-        .route("/users/me/workspaces/", get(users::list_user_workspaces))
+        .route("/users/me/workspaces", get(users::list_user_workspaces))
         // ── Workspace Views ───────────────────────────────────────────────────
         .route(
-            "/workspaces/{slug}/views/",
+            "/workspaces/{slug}/views",
             get(views::list_workspace_views).post(views::create_workspace_view),
         )
         .route(
-            "/workspaces/{slug}/views/{pk}/",
+            "/workspaces/{slug}/views/{pk}",
             get(views::get_workspace_view)
                 .patch(views::update_workspace_view)
                 .delete(views::delete_workspace_view),
         )
         // ── Project Views ─────────────────────────────────────────────────────
         .route(
-            "/workspaces/{slug}/projects/{project_id}/views/",
+            "/workspaces/{slug}/projects/{project_id}/views",
             get(views::list_project_views).post(views::create_project_view),
         )
         .route(
-            "/workspaces/{slug}/projects/{project_id}/views/{pk}/",
+            "/workspaces/{slug}/projects/{project_id}/views/{pk}",
             get(views::get_project_view)
                 .patch(views::update_project_view)
                 .delete(views::delete_project_view),
         )
         // ── View Favorites ────────────────────────────────────────────────────
         .route(
-            "/workspaces/{slug}/projects/{project_id}/user-favorite-views/",
+            "/workspaces/{slug}/projects/{project_id}/user-favorite-views",
             post(views::add_favorite_view),
         )
         .route(
-            "/workspaces/{slug}/projects/{project_id}/user-favorite-views/{view_id}/",
+            "/workspaces/{slug}/projects/{project_id}/user-favorite-views/{view_id}",
             delete(views::remove_favorite_view),
         )
         // ── Analytics ─────────────────────────────────────────────────────────
         .route(
-            "/workspaces/{slug}/analytics/",
+            "/workspaces/{slug}/analytics",
             get(analytics::workspace_analytics),
         )
         .route(
-            "/workspaces/{slug}/default-analytics/",
+            "/workspaces/{slug}/default-analytics",
             get(analytics::default_analytics),
         )
         .route(
-            "/workspaces/{slug}/project-stats/",
+            "/workspaces/{slug}/project-stats",
             get(analytics::project_stats),
         )
         .route(
-            "/workspaces/{slug}/export-analytics/",
+            "/workspaces/{slug}/export-analytics",
             post(analytics::export_analytics),
         )
         .route(
-            "/workspaces/{slug}/analytic-view/",
+            "/workspaces/{slug}/analytic-view",
             get(analytics::list_analytic_views).post(analytics::create_analytic_view),
         )
         .route(
-            "/workspaces/{slug}/analytic-view/{pk}/",
+            "/workspaces/{slug}/analytic-view/{pk}",
             get(analytics::get_analytic_view)
                 .patch(analytics::update_analytic_view)
                 .delete(analytics::delete_analytic_view),
         )
         .route(
-            "/workspaces/{slug}/saved-analytic-view/{analytic_id}/",
+            "/workspaces/{slug}/saved-analytic-view/{analytic_id}",
             get(analytics::get_saved_analytic_view),
         )
         // ── Assets ───────────────────────────────────────────────────────────
         .route(
-            "/assets/v2/user-assets/",
+            "/assets/v2/user-assets",
             post(assets::initiate_user_asset_upload),
         )
         .route(
-            "/assets/v2/user-assets/{asset_id}/",
+            "/assets/v2/user-assets/{asset_id}",
             patch(assets::complete_user_asset_upload)
                 .delete(assets::delete_user_asset),
         )
         .route(
-            "/assets/v2/workspaces/{slug}/",
+            "/assets/v2/workspaces/{slug}",
             post(assets::initiate_workspace_asset_upload),
         )
         .route(
-            "/assets/v2/workspaces/{slug}/{asset_id}/",
+            "/assets/v2/workspaces/{slug}/{asset_id}",
             get(assets::get_workspace_asset)
                 .patch(assets::complete_workspace_asset_upload)
                 .delete(assets::delete_workspace_asset),
         )
         .route(
-            "/assets/v2/static/{asset_id}/",
+            "/assets/v2/static/{asset_id}",
             get(assets::get_static_asset),
         )
         // ── Importer ──────────────────────────────────────────────────────────
         .route(
-            "/workspaces/{slug}/importers/github/repositories/",
+            "/workspaces/{slug}/importers/github/repositories",
             get(importer::list_github_import_repositories),
         )
         .route(
-            "/workspaces/{slug}/importers/github/",
+            "/workspaces/{slug}/importers/github",
             get(importer::list_github_importers).post(importer::create_github_importer),
         )
         .route(
-            "/workspaces/{slug}/importers/github/{importer_id}/",
+            "/workspaces/{slug}/importers/github/{importer_id}",
             delete(importer::delete_github_importer),
         )
         .route(
-            "/workspaces/{slug}/importers/gitlab/repositories/",
+            "/workspaces/{slug}/importers/gitlab/repositories",
             get(importer::list_gitlab_import_repositories),
         )
         .route(
-            "/workspaces/{slug}/importers/gitlab/",
+            "/workspaces/{slug}/importers/gitlab",
             get(importer::list_gitlab_importers).post(importer::create_gitlab_importer),
         )
         .route(
-            "/workspaces/{slug}/importers/gitlab/{importer_id}/",
+            "/workspaces/{slug}/importers/gitlab/{importer_id}",
             delete(importer::delete_gitlab_importer),
         )
         // ── External ──────────────────────────────────────────────────────────
-        .route("/unsplash/", get(external::unsplash))
+        .route("/unsplash", get(external::unsplash))
         .route(
-            "/workspaces/{slug}/projects/{project_id}/ai-assistant/",
+            "/workspaces/{slug}/projects/{project_id}/ai-assistant",
             post(external::project_ai_assistant),
         )
         .route(
-            "/workspaces/{slug}/ai-assistant/",
+            "/workspaces/{slug}/ai-assistant",
             post(external::workspace_ai_assistant),
         )
         // ── Issue extras (comments, reactions, links, relations, history) ────
         .route(
-            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/comments/",
+            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/comments",
             get(issue_extras::list_comments).post(issue_extras::create_comment),
         )
         .route(
-            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/comments/{pk}/",
+            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/comments/{pk}",
             patch(issue_extras::update_comment).delete(issue_extras::delete_comment),
         )
         .route(
-            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/reactions/",
+            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/reactions",
             get(issue_extras::list_issue_reactions),
         )
         .route(
-            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/reactions/{reaction_code}/",
+            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/reactions/{reaction_code}",
             post(issue_extras::add_issue_reaction)
                 .delete(issue_extras::remove_issue_reaction),
         )
         .route(
-            "/workspaces/{slug}/projects/{project_id}/comments/{comment_id}/reactions/{reaction_code}/",
+            "/workspaces/{slug}/projects/{project_id}/comments/{comment_id}/reactions/{reaction_code}",
             post(issue_extras::add_comment_reaction)
                 .delete(issue_extras::remove_comment_reaction),
         )
         .route(
-            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-links/",
+            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-links",
             get(issue_extras::list_issue_links).post(issue_extras::create_issue_link),
         )
         .route(
-            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-links/{pk}/",
+            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-links/{pk}",
             patch(issue_extras::update_issue_link)
                 .delete(issue_extras::delete_issue_link),
         )
         .route(
-            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-relation/",
+            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-relation",
             get(issue_extras::list_issue_relations)
                 .post(issue_extras::create_issue_relation),
         )
         .route(
-            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/remove-relation/",
+            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/remove-relation",
             delete(issue_extras::remove_issue_relation),
         )
         .route(
-            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/history/",
+            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/history",
             get(issue_extras::list_issue_activities),
         )
         .route(
-            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-subscribers/",
+            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-subscribers",
             get(issue_extras::list_issue_subscribers),
         )
         .route(
-            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/subscribe/",
+            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/subscribe",
             post(issue_extras::subscribe_to_issue)
                 .delete(issue_extras::unsubscribe_from_issue),
         )
         .route(
-            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/sub-issues/",
+            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/sub-issues",
             get(issue_extras::list_sub_issues),
         )
         // ── Workspace Extras (favorites, home prefs, quick links, recent visits, stickies) ──
         .route(
-            "/workspaces/{slug}/user-favorites/",
+            "/workspaces/{slug}/user-favorites",
             get(workspace_extras::list_favorites).post(workspace_extras::create_favorite),
         )
         .route(
-            "/workspaces/{slug}/user-favorites/{favorite_id}/",
+            "/workspaces/{slug}/user-favorites/{favorite_id}",
             patch(workspace_extras::update_favorite).delete(workspace_extras::delete_favorite),
         )
         .route(
-            "/workspaces/{slug}/user-favorites/{favorite_id}/children/",
+            "/workspaces/{slug}/user-favorites/{favorite_id}/children",
             get(workspace_extras::list_favorite_children),
         )
         .route(
-            "/workspaces/{slug}/home-preference/",
+            "/workspaces/{slug}/home-preference",
             get(workspace_extras::get_home_preferences),
         )
         .route(
-            "/workspaces/{slug}/home-preference/{key}/",
+            "/workspaces/{slug}/home-preference/{key}",
             patch(workspace_extras::update_home_preference),
         )
         .route(
-            "/workspaces/{slug}/quick-links/",
+            "/workspaces/{slug}/quick-links",
             get(workspace_extras::list_quick_links).post(workspace_extras::create_quick_link),
         )
         .route(
-            "/workspaces/{slug}/quick-links/{pk}/",
+            "/workspaces/{slug}/quick-links/{pk}",
             patch(workspace_extras::update_quick_link).delete(workspace_extras::delete_quick_link),
         )
         .route(
-            "/workspaces/{slug}/user-recent-visit/",
+            "/workspaces/{slug}/user-recent-visit",
             get(workspace_extras::list_recent_visits),
         )
         .route(
-            "/workspaces/{slug}/stickies/",
+            "/workspaces/{slug}/stickies",
             get(workspace_extras::list_stickies).post(workspace_extras::create_sticky),
         )
         .route(
-            "/workspaces/{slug}/stickies/{pk}/",
+            "/workspaces/{slug}/stickies/{pk}",
             patch(workspace_extras::update_sticky).delete(workspace_extras::delete_sticky),
         )
         .route(
-            "/workspaces/{slug}/user-preference/",
+            "/workspaces/{slug}/user-preference",
             get(workspace_extras::get_user_preferences)
                 .patch(workspace_extras::update_user_preferences),
         )
         // ── Draft Issues ──────────────────────────────────────────────────────
         .route(
-            "/workspaces/{slug}/draft-issues/",
+            "/workspaces/{slug}/draft-issues",
             get(workspace_extras::list_draft_issues).post(workspace_extras::create_draft_issue),
         )
         .route(
-            "/workspaces/{slug}/draft-issues/{pk}/",
+            "/workspaces/{slug}/draft-issues/{pk}",
             get(workspace_extras::get_draft_issue)
                 .patch(workspace_extras::update_draft_issue)
                 .delete(workspace_extras::delete_draft_issue),
         )
         // ── Workspace-level aggregate views ──────────────────────────────────
         .route(
-            "/workspaces/{slug}/cycles/",
+            "/workspaces/{slug}/cycles",
             get(workspace_extras::list_workspace_cycles),
         )
         .route(
-            "/workspaces/{slug}/modules/",
+            "/workspaces/{slug}/modules",
             get(workspace_extras::list_workspace_modules),
         )
         .route(
-            "/workspaces/{slug}/estimates/",
+            "/workspaces/{slug}/estimates",
             get(workspace_extras::list_workspace_estimates),
         )
         .route(
-            "/workspaces/{slug}/labels/",
+            "/workspaces/{slug}/labels",
             get(workspace_extras::list_workspace_labels),
         )
         .route(
-            "/workspaces/{slug}/states/",
+            "/workspaces/{slug}/states",
             get(workspace_extras::list_workspace_states),
         )
         // ── Issue attachments ─────────────────────────────────────────────────
         .route(
-            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-attachments/",
+            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-attachments",
             get(issue_extras2::list_issue_attachments)
                 .post(issue_extras2::initiate_issue_attachment_upload),
         )
         .route(
-            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-attachments/{pk}/",
+            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-attachments/{pk}",
             patch(issue_extras2::complete_issue_attachment_upload)
                 .delete(issue_extras2::delete_issue_attachment),
         )
         // ── Issue archive / unarchive ─────────────────────────────────────────
         .route(
-            "/workspaces/{slug}/projects/{project_id}/issues/{pk}/archive/",
+            "/workspaces/{slug}/projects/{project_id}/issues/{pk}/archive",
             post(issue_extras2::archive_issue).delete(issue_extras2::unarchive_issue),
         )
         .route(
-            "/workspaces/{slug}/projects/{project_id}/bulk-archive-issues/",
+            "/workspaces/{slug}/projects/{project_id}/bulk-archive-issues",
             post(issue_extras2::bulk_archive_issues),
         )
         // ── Issue versions ────────────────────────────────────────────────────
         .route(
-            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/versions/",
+            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/versions",
             get(issue_extras2::list_issue_versions),
         )
         .route(
-            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/versions/{pk}/",
+            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/versions/{pk}",
             get(issue_extras2::get_issue_version),
         )
         // ── API Tokens ────────────────────────────────────────────────────────
         .route(
-            "/api-tokens/",
+            "/api-tokens",
             get(api_tokens::list_api_tokens).post(api_tokens::create_api_token),
         )
         .route(
-            "/api-tokens/{pk}/",
+            "/api-tokens/{pk}",
             get(api_tokens::get_api_token)
                 .patch(api_tokens::update_api_token)
                 .delete(api_tokens::delete_api_token),
         )
         // ── Instance ──────────────────────────────────────────────────────────
         .route(
-            "/instances/",
+            "/instances",
             get(instances::get_instance).patch(instances::patch_instance),
         )
         // God Mode auth — rutas específicas ANTES de /admins/ para evitar conflictos
         .route(
-            "/instances/admins/sign-up/",
+            "/instances/admins/sign-up",
             post(auth::god_mode::admin_sign_up),
         )
         .route(
-            "/instances/admins/sign-in/",
+            "/instances/admins/sign-in",
             post(auth::god_mode::admin_sign_in),
         )
         .route(
-            "/instances/admins/sign-out/",
+            "/instances/admins/sign-out",
             post(auth::god_mode::admin_sign_out),
         )
         .route(
-            "/instances/admins/sign-up-screen-visited/",
+            "/instances/admins/sign-up-screen-visited",
             post(instances::signup_screen_visited),
         )
         .route(
-            "/instances/admins/",
+            "/instances/admins",
             get(instances::list_instance_admins).post(instances::create_instance_admin),
         )
         // Rutas específicas ANTES de /{pk}/ para evitar captura incorrecta
-        .route("/instances/admins/me/",      get(instances::get_instance_admin_me))
-        .route("/instances/admins/session/", get(instances::get_instance_admin_session))
+        .route("/instances/admins/me",      get(instances::get_instance_admin_me))
+        .route("/instances/admins/session", get(instances::get_instance_admin_session))
         .route(
-            "/instances/admins/{pk}/",
+            "/instances/admins/{pk}",
             delete(instances::delete_instance_admin),
         )
         // Configurations — disable-email-feature ANTES de la ruta raíz
         .route(
-            "/instances/configurations/disable-email-feature/",
+            "/instances/configurations/disable-email-feature",
             delete(instances::disable_email_feature),
         )
         .route(
-            "/instances/configurations/",
+            "/instances/configurations",
             get(instances::list_configurations).patch(instances::update_configurations),
         )
         .route(
-            "/instances/email-credentials-check/",
+            "/instances/email-credentials-check",
             post(instances::email_credentials_check),
         )
         .route(
-            "/instances/workspace-slug-check/",
+            "/instances/workspace-slug-check",
             get(instances::instance_workspace_slug_check),
         )
         .route(
-            "/instances/workspaces/",
+            "/instances/workspaces",
             get(instances::list_instance_workspaces),
         )
         .layer(middleware::from_fn(

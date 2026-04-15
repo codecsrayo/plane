@@ -241,7 +241,7 @@ services:
       - traefik.http.routers.plane-api.priority=100
       - traefik.http.services.plane-api.loadbalancer.server.port=8000
     healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:8000/health || exit 1"]
+      test: ["CMD-SHELL", "curl -f http://localhost:8000/api/health || exit 1"]
       interval: 15s
       timeout: 5s
       retries: 5
