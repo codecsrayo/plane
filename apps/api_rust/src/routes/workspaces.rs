@@ -25,7 +25,7 @@ use crate::{
         any_auth::AnyAuth,
         permissions::{require_workspace_admin, ROLE_ADMIN, ROLE_GUEST, ROLE_MEMBER, ROLE_VIEWER},
     },
-    entities::{workspace_member_invites, workspace_members, workspaces},
+    entities::{draft_issues, workspace_member_invites, workspace_members, workspaces},
     error::AppError,
     routes::helpers::{require_workspace_member, workspace_by_slug},
     utils::{instance_config::get_config_value, soft_delete::SoftDeleteExt, url::contains_url, color::get_random_color},
@@ -1059,4 +1059,117 @@ pub async fn delete_invitation(
     active.update(&state.db).await.map_err(AppError::Database)?;
 
     Ok(StatusCode::NO_CONTENT)
+}
+
+// ─── GET /api/workspaces/{slug}/workspace-members/me ─────────────────────────
+//
+// Espejo de Django `WorkspaceMemberUserEndpoint.get` en
+// `plane/app/views/workspace/member.py:217`. Devuelve la membresía completa
+// del usuario autenticado en el workspace, con un campo extra
+// `draft_issue_count` que el frontend usa para badges de "Drafts".
+//
+// Comportamiento Django: si el usuario NO tiene una membresía activa,
+// `WorkspaceMemberMeSerializer(None).data` produce un objeto vacío `{}` con
+// status 200 — no 404 ni 403. Replicamos exactamente para no romper al
+// frontend que asume 200 estable y solo lee campos opcionales.
+
+/// Respuesta de `GET /api/workspaces/{slug}/workspace-members/me`.
+///
+/// Mirror de `WorkspaceMemberMeSerializer(model=WorkspaceMember, fields="__all__")`
+/// más el campo anotado `draft_issue_count`. Todos los campos JSONB
+/// (`view_props`, `default_props`, etc.) se exponen tal cual los almacena
+/// Postgres, igual que en Django.
+#[derive(Debug, Serialize, utoipa::ToSchema)]
+pub struct WorkspaceMemberMeResponse {
+    pub id: Uuid,
+    pub created_at: DateTime<Utc>,
+    pub updated_at: DateTime<Utc>,
+    pub role: i16,
+    pub company_role: Option<String>,
+    pub view_props: serde_json::Value,
+    pub default_props: serde_json::Value,
+    pub issue_props: serde_json::Value,
+    pub is_active: bool,
+    pub explored_features: serde_json::Value,
+    pub getting_started_checklist: serde_json::Value,
+    pub tips: serde_json::Value,
+    pub created_by: Option<Uuid>,
+    pub updated_by: Option<Uuid>,
+    pub member: Uuid,
+    pub workspace: Uuid,
+    pub draft_issue_count: u64,
+}
+
+/// `GET /api/workspaces/{slug}/workspace-members/me`
+///
+/// Devuelve la membresía del usuario autenticado en el workspace, o un
+/// objeto vacío si no es miembro activo (compat Django).
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/workspace-members/me",
+    tag = "Workspaces",
+    security(("TokenAuth" = []), ("SessionCookie" = [])),
+    params(("slug" = String, Path, description = "Workspace slug")),
+    responses(
+        (status = 200, description = "Current user's workspace membership (or empty object if not a member)"),
+        (status = 404, description = "Workspace not found"),
+    )
+)]
+pub async fn get_workspace_member_me(
+    State(state): State<AppState>,
+    AnyAuth(user): AnyAuth,
+    Path(slug): Path<String>,
+) -> Result<Json<serde_json::Value>, AppError> {
+    let ws = workspace_by_slug(&state.db, &slug).await?;
+
+    let membership = workspace_members::Entity::find()
+        .active()
+        .filter(workspace_members::Column::WorkspaceId.eq(ws.id))
+        .filter(workspace_members::Column::MemberId.eq(user.id))
+        .filter(workspace_members::Column::IsActive.eq(true))
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    let Some(m) = membership else {
+        // Compat Django: serializer sobre None produce {} con status 200.
+        return Ok(Json(serde_json::json!({})));
+    };
+
+    // draft_issue_count: borradores creados por el usuario en este workspace
+    // (no soft-deleted). Espejo de la subquery anotada en Django:
+    //   DraftIssue.objects.filter(created_by=request.user,
+    //                             workspace_id=OuterRef("workspace_id"))
+    //     .annotate(count=Count("id"))
+    let draft_issue_count = draft_issues::Entity::find()
+        .active()
+        .filter(draft_issues::Column::CreatedById.eq(user.id))
+        .filter(draft_issues::Column::WorkspaceId.eq(ws.id))
+        .count(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    let resp = WorkspaceMemberMeResponse {
+        id: m.id,
+        created_at: m.created_at.into(),
+        updated_at: m.updated_at.into(),
+        role: m.role,
+        company_role: m.company_role,
+        view_props: m.view_props,
+        default_props: m.default_props,
+        issue_props: m.issue_props,
+        is_active: m.is_active,
+        explored_features: m.explored_features,
+        getting_started_checklist: m.getting_started_checklist,
+        tips: m.tips,
+        created_by: m.created_by_id,
+        updated_by: m.updated_by_id,
+        member: m.member_id,
+        workspace: m.workspace_id,
+        draft_issue_count,
+    };
+
+    Ok(Json(serde_json::to_value(resp).map_err(|e| {
+        AppError::Internal(anyhow::anyhow!("serialize WorkspaceMemberMeResponse: {e}"))
+    })?))
 }
