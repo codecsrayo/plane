@@ -14,7 +14,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         libssl-dev \
         libpq-dev \
         ca-certificates \
-        mold \
     && rm -rf /var/lib/apt/lists/*
 
 # Usa el OpenSSL del sistema (libssl-dev) enlazado estáticamente.

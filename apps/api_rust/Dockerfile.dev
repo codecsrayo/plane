@@ -2,30 +2,28 @@
 # Dockerfile.dev — API Rust (desarrollo)
 #
 # Optimizaciones de tiempo de compilación:
-#   1. mold linker  → 5-10× más rápido que ld en la fase de linking
-#   2. cargo build  → pre-compila TODAS las dependencias en el layer de imagen;
-#                     Docker copia el /app/target al volumen rust_target en el
-#                     primer arranque (named volume copy-on-first-use)
-#   3. cargo-binstall → instala cargo-watch como binario pre-compilado,
-#                       no compila desde fuente (ahorra ~8 min en docker build)
+#   1. rust-lld (bundled)  → inyectado automáticamente por Rust 1.87+;
+#                            más rápido que GNU ld, sin dependencias extra.
+#   2. cargo build         → pre-compila TODAS las dependencias en el layer de imagen;
+#                            Docker copia el /app/target al volumen rust_target en el
+#                            primer arranque (named volume copy-on-first-use)
+#   3. cargo-binstall      → instala cargo-watch como binario pre-compilado,
+#                            no compila desde fuente (ahorra ~8 min en docker build)
 #
 # USO (desde docker-compose-dev.yml):
-#   context: .
-#   dockerfile: ./apps/api_rust/Dockerfile.dev
+#   context: .\n#   dockerfile: ./apps/api_rust/Dockerfile.dev
 # ─────────────────────────────────────────────────────────────────────────────
 
 FROM rust:1.94-slim-bookworm
 
 # ── Dependencias del sistema ──────────────────────────────────────────────────
-# mold: linker rápido — usado como backend vía cc -fuse-ld=mold (.cargo/config.toml)
-# No se requiere clang: cc/gcc (incluido en rust:slim) sirve de frontend.
+# No se requiere clang ni mold: Rust 1.87+ usa rust-lld bundled automáticamente.
 RUN apt-get update && apt-get install -y --no-install-recommends \
         pkg-config \
         libssl-dev \
         libpq-dev \
         ca-certificates \
         curl \
-        mold \
     && rm -rf /var/lib/apt/lists/*
 
 # ── cargo-binstall → cargo-watch (binario pre-compilado) ─────────────────────
@@ -42,17 +40,11 @@ WORKDIR /app
 ENV CARGO_BUILD_JOBS=8
 
 # ── Caché de dependencias ─────────────────────────────────────────────────────
-# Copiar .cargo/config.toml primero para que el linker mold aplique ya
-# en la compilación de deps del layer siguiente.
 COPY apps/api_rust/.cargo ./.cargo
 COPY apps/api_rust/Cargo.toml apps/api_rust/Cargo.lock ./
 COPY apps/api_rust/migration/Cargo.toml ./migration/
 
 # PRE-COMPILAR todas las dependencias (no solo descargar).
-# cargo build con dummy main compila los ~200 crates de deps y los deja
-# en /app/target. Docker copia este directorio al volumen nombrado
-# rust_target en el primer arranque (named-volume copy semantics), por lo
-# que la primera compilación en el contenedor ya tiene las deps listas.
 RUN mkdir -p src migration/src && \
     echo 'fn main() {}' > src/main.rs && \
     touch migration/src/lib.rs && \
@@ -62,8 +54,6 @@ RUN mkdir -p src migration/src && \
 
 EXPOSE 8001
 
-# cargo-watch reconstruye solo los archivos modificados gracias a la
-# compilación incremental configurada en .cargo/config.toml
 CMD ["cargo", "watch", \
      "--watch", "src", \
      "--watch", "Cargo.toml", \

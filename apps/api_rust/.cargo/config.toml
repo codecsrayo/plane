@@ -1,11 +1,14 @@
 # .cargo/config.toml — configuración de compilación para api_rust
 
 # ─── Linker ───────────────────────────────────────────────────────────────────
-# mold es 5-10× más rápido que ld en la fase de linking.
-# Solo aplica en Linux x86_64 (Docker / WSL).
-[target.x86_64-unknown-linux-gnu]
-linker     = "cc"
-rustflags  = ["-C", "link-arg=-fuse-ld=mold"]
+# Rust 1.87+ inyecta rust-lld (bundled con rustup) automáticamente vía:
+#   -B<sysroot>/.../bin/gcc-ld  -fuse-ld=lld
+#
+# NO se define [target.x86_64-unknown-linux-gnu] con -fuse-ld=mold porque:
+#   1. mold no está disponible en todos los entornos (dev, CI, Docker slim).
+#   2. Cuando la toolchain ya pasa -fuse-ld=lld, agregar -fuse-ld=mold
+#      genera dos flags en conflicto → "collect2: fatal error: cannot find 'ld'".
+#   3. rust-lld bundled ya es mucho más rápido que GNU ld sin dependencia extra.
 
 # ─── Paralelismo ──────────────────────────────────────────────────────────────
 # Cargo detecta los CPUs disponibles, pero ser explícito evita sorpresas
