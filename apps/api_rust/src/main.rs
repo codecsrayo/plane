@@ -203,6 +203,19 @@ async fn main() -> anyhow::Result<()> {
             .expect("Error al construir reqwest::Client"),
     };
 
+    // 4a. Startup equivalente a `register_instance` + `configure_instance` Django.
+    //     Idempotente: no modifica filas ya existentes.
+    tracing::info!("Ejecutando bootstrap de instancia...");
+    utils::startup::ensure_instance_registered(&state).await.map_err(|e| {
+        tracing::error!("Error en register_instance: {e:?}");
+        anyhow::anyhow!("register_instance falló")
+    })?;
+    utils::startup::ensure_configurations_seeded(&state).await.map_err(|e| {
+        tracing::error!("Error en configure_instance: {e:?}");
+        anyhow::anyhow!("configure_instance falló")
+    })?;
+    tracing::info!("✅ Bootstrap de instancia completado");
+
 
     // 5a. Apalis job workers — inician en background, no bloquean el servidor
     let db_url = config.database_url.clone();

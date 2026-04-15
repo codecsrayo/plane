@@ -247,7 +247,10 @@ pub async fn get_instance(
     OptionalAnyAuth(_opt): OptionalAnyAuth,
 ) -> Result<impl IntoResponse, AppError> {
     match instances::Entity::find().active().one(&state.db).await.map_err(AppError::Database)? {
-        None => Ok(Json(json!({"is_activated": false, "is_setup_done": false})).into_response()),
+        None => Ok(Json(json!({
+            "instance": { "is_activated": false, "is_setup_done": false },
+            "config": null
+        })).into_response()),
         Some(inst) => Ok(Json(json!({
             "instance": serialize_instance(&state, &inst).await,
             "config":   build_config(&state).await,

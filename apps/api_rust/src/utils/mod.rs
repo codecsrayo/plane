@@ -7,4 +7,5 @@ pub mod oauth_popup;
 pub mod passwords;
 pub mod s3;
 pub mod soft_delete;
+pub mod startup;
 pub mod token_cipher;
