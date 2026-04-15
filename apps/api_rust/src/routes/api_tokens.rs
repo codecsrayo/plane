@@ -99,7 +99,7 @@ impl From<api_tokens::Model> for ApiTokenReadResponse {
     }
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct CreateApiTokenRequest {
     /// Etiqueta descriptiva. Si se omite, se genera un UUID hex.
     pub label: Option<String>,
@@ -107,7 +107,7 @@ pub struct CreateApiTokenRequest {
     pub expired_at: Option<DateTime<Utc>>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct UpdateApiTokenRequest {
     pub label: Option<String>,
     pub description: Option<String>,
@@ -130,9 +130,10 @@ pub struct UpdateApiTokenRequest {
 )]
 pub async fn list_api_tokens(
     State(state): State<AppState>,
-    AnyAuth(user_id): AnyAuth,
+    AnyAuth(auth_user): AnyAuth,
 ) -> Result<impl axum::response::IntoResponse, AppError> {
     let db = &state.db;
+    let user_id = auth_user.id;
 
     let tokens = api_tokens::Entity::find()
         .filter(api_tokens::Column::UserId.eq(user_id))
@@ -161,10 +162,11 @@ pub async fn list_api_tokens(
 )]
 pub async fn create_api_token(
     State(state): State<AppState>,
-    AnyAuth(user_id): AnyAuth,
+    AnyAuth(auth_user): AnyAuth,
     Json(body): Json<CreateApiTokenRequest>,
 ) -> Result<impl axum::response::IntoResponse, AppError> {
     let db = &state.db;
+    let user_id = auth_user.id;
 
     // Generar token aleatorio seguro (32 bytes hex = 64 caracteres)
     let raw_token = {
@@ -221,10 +223,11 @@ pub async fn create_api_token(
 )]
 pub async fn get_api_token(
     State(state): State<AppState>,
-    AnyAuth(user_id): AnyAuth,
+    AnyAuth(auth_user): AnyAuth,
     Path(pk): Path<Uuid>,
 ) -> Result<impl axum::response::IntoResponse, AppError> {
     let db = &state.db;
+    let user_id = auth_user.id;
 
     let token = api_tokens::Entity::find_by_id(pk)
         .filter(api_tokens::Column::UserId.eq(user_id))
@@ -253,11 +256,12 @@ pub async fn get_api_token(
 )]
 pub async fn update_api_token(
     State(state): State<AppState>,
-    AnyAuth(user_id): AnyAuth,
+    AnyAuth(auth_user): AnyAuth,
     Path(pk): Path<Uuid>,
     Json(body): Json<UpdateApiTokenRequest>,
 ) -> Result<impl axum::response::IntoResponse, AppError> {
     let db = &state.db;
+    let user_id = auth_user.id;
 
     let token = api_tokens::Entity::find_by_id(pk)
         .filter(api_tokens::Column::UserId.eq(user_id))
@@ -304,10 +308,11 @@ pub async fn update_api_token(
 )]
 pub async fn delete_api_token(
     State(state): State<AppState>,
-    AnyAuth(user_id): AnyAuth,
+    AnyAuth(auth_user): AnyAuth,
     Path(pk): Path<Uuid>,
 ) -> Result<StatusCode, AppError> {
     let db = &state.db;
+    let user_id = auth_user.id;
 
     let token = api_tokens::Entity::find_by_id(pk)
         .filter(api_tokens::Column::UserId.eq(user_id))

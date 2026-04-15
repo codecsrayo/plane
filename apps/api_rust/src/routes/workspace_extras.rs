@@ -22,7 +22,7 @@ use axum::{
 };
 use chrono::{DateTime, Utc};
 use sea_orm::{
-    ActiveModelTrait, ColumnTrait, EntityTrait, QueryFilter, QueryOrder, Set,
+    ActiveModelTrait, ColumnTrait, EntityTrait, QueryFilter, QueryOrder, QuerySelect, Set,
 };
 use serde::{Deserialize, Serialize};
 use serde_json::Value as JsonValue;
@@ -34,7 +34,7 @@ use crate::{
         cycles, draft_issues, estimates, estimate_points, labels, modules,
         stickies, states, user_favorites, user_recent_visits,
         workspace_home_preferences, workspace_user_links,
-        workspace_user_preferences, workspaces,
+        workspace_user_preferences,
     },
     error::AppError,
     routes::helpers::{require_workspace_member, workspace_by_slug},
@@ -91,7 +91,7 @@ impl From<user_favorites::Model> for FavoriteResponse {
     }
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct CreateFavoriteRequest {
     pub entity_type: String,
     pub entity_identifier: Option<Uuid>,
@@ -102,7 +102,7 @@ pub struct CreateFavoriteRequest {
     pub project_id: Option<Uuid>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct UpdateFavoriteRequest {
     pub name: Option<String>,
     pub sequence: Option<f64>,
@@ -125,10 +125,11 @@ pub struct UpdateFavoriteRequest {
 )]
 pub async fn list_favorites(
     State(state): State<AppState>,
-    AnyAuth(user_id): AnyAuth,
+    AnyAuth(auth_user): AnyAuth,
     Path(slug): Path<String>,
 ) -> Result<impl axum::response::IntoResponse, AppError> {
     let db = &state.db;
+    let user_id = auth_user.id;
     let ws = workspace_by_slug(db, &slug).await?;
     let _member = require_workspace_member(db, ws.id, user_id).await?;
 
@@ -159,11 +160,12 @@ pub async fn list_favorites(
 )]
 pub async fn create_favorite(
     State(state): State<AppState>,
-    AnyAuth(user_id): AnyAuth,
+    AnyAuth(auth_user): AnyAuth,
     Path(slug): Path<String>,
     Json(body): Json<CreateFavoriteRequest>,
 ) -> Result<impl axum::response::IntoResponse, AppError> {
     let db = &state.db;
+    let user_id = auth_user.id;
     let ws = workspace_by_slug(db, &slug).await?;
     let member = require_workspace_member(db, ws.id, user_id).await?;
     require_member_or_admin(member.role)?;
@@ -224,11 +226,12 @@ pub async fn create_favorite(
 )]
 pub async fn update_favorite(
     State(state): State<AppState>,
-    AnyAuth(user_id): AnyAuth,
+    AnyAuth(auth_user): AnyAuth,
     Path((slug, favorite_id)): Path<(String, Uuid)>,
     Json(body): Json<UpdateFavoriteRequest>,
 ) -> Result<impl axum::response::IntoResponse, AppError> {
     let db = &state.db;
+    let user_id = auth_user.id;
     let ws = workspace_by_slug(db, &slug).await?;
     let member = require_workspace_member(db, ws.id, user_id).await?;
     require_member_or_admin(member.role)?;
@@ -276,10 +279,11 @@ pub async fn update_favorite(
 )]
 pub async fn delete_favorite(
     State(state): State<AppState>,
-    AnyAuth(user_id): AnyAuth,
+    AnyAuth(auth_user): AnyAuth,
     Path((slug, favorite_id)): Path<(String, Uuid)>,
 ) -> Result<StatusCode, AppError> {
     let db = &state.db;
+    let user_id = auth_user.id;
     let ws = workspace_by_slug(db, &slug).await?;
     let member = require_workspace_member(db, ws.id, user_id).await?;
     require_member_or_admin(member.role)?;
@@ -318,10 +322,11 @@ pub async fn delete_favorite(
 )]
 pub async fn list_favorite_children(
     State(state): State<AppState>,
-    AnyAuth(user_id): AnyAuth,
+    AnyAuth(auth_user): AnyAuth,
     Path((slug, favorite_id)): Path<(String, Uuid)>,
 ) -> Result<impl axum::response::IntoResponse, AppError> {
     let db = &state.db;
+    let user_id = auth_user.id;
     let ws = workspace_by_slug(db, &slug).await?;
     let member = require_workspace_member(db, ws.id, user_id).await?;
     require_member_or_admin(member.role)?;
@@ -365,7 +370,7 @@ impl From<workspace_home_preferences::Model> for HomePreferenceResponse {
     }
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct UpdateHomePreferenceRequest {
     pub is_enabled: Option<bool>,
     pub config: Option<JsonValue>,
@@ -384,10 +389,11 @@ pub struct UpdateHomePreferenceRequest {
 )]
 pub async fn get_home_preferences(
     State(state): State<AppState>,
-    AnyAuth(user_id): AnyAuth,
+    AnyAuth(auth_user): AnyAuth,
     Path(slug): Path<String>,
 ) -> Result<impl axum::response::IntoResponse, AppError> {
     let db = &state.db;
+    let user_id = auth_user.id;
     let ws = workspace_by_slug(db, &slug).await?;
     let _member = require_workspace_member(db, ws.id, user_id).await?;
 
@@ -420,11 +426,12 @@ pub async fn get_home_preferences(
 )]
 pub async fn update_home_preference(
     State(state): State<AppState>,
-    AnyAuth(user_id): AnyAuth,
+    AnyAuth(auth_user): AnyAuth,
     Path((slug, key)): Path<(String, String)>,
     Json(body): Json<UpdateHomePreferenceRequest>,
 ) -> Result<impl axum::response::IntoResponse, AppError> {
     let db = &state.db;
+    let user_id = auth_user.id;
     let ws = workspace_by_slug(db, &slug).await?;
     let _member = require_workspace_member(db, ws.id, user_id).await?;
 
@@ -489,7 +496,7 @@ impl From<workspace_user_links::Model> for QuickLinkResponse {
     }
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct CreateQuickLinkRequest {
     pub title: Option<String>,
     pub url: String,
@@ -497,7 +504,7 @@ pub struct CreateQuickLinkRequest {
     pub project_id: Option<Uuid>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct UpdateQuickLinkRequest {
     pub title: Option<String>,
     pub url: Option<String>,
@@ -516,10 +523,11 @@ pub struct UpdateQuickLinkRequest {
 )]
 pub async fn list_quick_links(
     State(state): State<AppState>,
-    AnyAuth(user_id): AnyAuth,
+    AnyAuth(auth_user): AnyAuth,
     Path(slug): Path<String>,
 ) -> Result<impl axum::response::IntoResponse, AppError> {
     let db = &state.db;
+    let user_id = auth_user.id;
     let ws = workspace_by_slug(db, &slug).await?;
     let _member = require_workspace_member(db, ws.id, user_id).await?;
 
@@ -548,11 +556,12 @@ pub async fn list_quick_links(
 )]
 pub async fn create_quick_link(
     State(state): State<AppState>,
-    AnyAuth(user_id): AnyAuth,
+    AnyAuth(auth_user): AnyAuth,
     Path(slug): Path<String>,
     Json(body): Json<CreateQuickLinkRequest>,
 ) -> Result<impl axum::response::IntoResponse, AppError> {
     let db = &state.db;
+    let user_id = auth_user.id;
     let ws = workspace_by_slug(db, &slug).await?;
     let _member = require_workspace_member(db, ws.id, user_id).await?;
 
@@ -596,11 +605,12 @@ pub async fn create_quick_link(
 )]
 pub async fn update_quick_link(
     State(state): State<AppState>,
-    AnyAuth(user_id): AnyAuth,
+    AnyAuth(auth_user): AnyAuth,
     Path((slug, pk)): Path<(String, Uuid)>,
     Json(body): Json<UpdateQuickLinkRequest>,
 ) -> Result<impl axum::response::IntoResponse, AppError> {
     let db = &state.db;
+    let user_id = auth_user.id;
     let ws = workspace_by_slug(db, &slug).await?;
     let _member = require_workspace_member(db, ws.id, user_id).await?;
 
@@ -647,10 +657,11 @@ pub async fn update_quick_link(
 )]
 pub async fn delete_quick_link(
     State(state): State<AppState>,
-    AnyAuth(user_id): AnyAuth,
+    AnyAuth(auth_user): AnyAuth,
     Path((slug, pk)): Path<(String, Uuid)>,
 ) -> Result<StatusCode, AppError> {
     let db = &state.db;
+    let user_id = auth_user.id;
     let ws = workspace_by_slug(db, &slug).await?;
     let _member = require_workspace_member(db, ws.id, user_id).await?;
 
@@ -700,7 +711,7 @@ impl From<user_recent_visits::Model> for RecentVisitResponse {
     }
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct RecentVisitQuery {
     pub entity_name: Option<String>,
 }
@@ -720,11 +731,12 @@ pub struct RecentVisitQuery {
 )]
 pub async fn list_recent_visits(
     State(state): State<AppState>,
-    AnyAuth(user_id): AnyAuth,
+    AnyAuth(auth_user): AnyAuth,
     Path(slug): Path<String>,
     Query(q): Query<RecentVisitQuery>,
 ) -> Result<impl axum::response::IntoResponse, AppError> {
     let db = &state.db;
+    let user_id = auth_user.id;
     let ws = workspace_by_slug(db, &slug).await?;
     let _member = require_workspace_member(db, ws.id, user_id).await?;
 
@@ -802,7 +814,7 @@ impl From<stickies::Model> for StickyResponse {
     }
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct CreateStickyRequest {
     pub name: Option<String>,
     pub description: Option<JsonValue>,
@@ -814,7 +826,7 @@ pub struct CreateStickyRequest {
     pub sort_order: Option<f64>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct UpdateStickyRequest {
     pub name: Option<String>,
     pub description: Option<JsonValue>,
@@ -826,7 +838,7 @@ pub struct UpdateStickyRequest {
     pub sort_order: Option<f64>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct StickyListQuery {
     pub query: Option<String>,
 }
@@ -846,11 +858,12 @@ pub struct StickyListQuery {
 )]
 pub async fn list_stickies(
     State(state): State<AppState>,
-    AnyAuth(user_id): AnyAuth,
+    AnyAuth(auth_user): AnyAuth,
     Path(slug): Path<String>,
     Query(q): Query<StickyListQuery>,
 ) -> Result<impl axum::response::IntoResponse, AppError> {
     let db = &state.db;
+    let user_id = auth_user.id;
     let ws = workspace_by_slug(db, &slug).await?;
     let _member = require_workspace_member(db, ws.id, user_id).await?;
 
@@ -889,11 +902,12 @@ pub async fn list_stickies(
 )]
 pub async fn create_sticky(
     State(state): State<AppState>,
-    AnyAuth(user_id): AnyAuth,
+    AnyAuth(auth_user): AnyAuth,
     Path(slug): Path<String>,
     Json(body): Json<CreateStickyRequest>,
 ) -> Result<impl axum::response::IntoResponse, AppError> {
     let db = &state.db;
+    let user_id = auth_user.id;
     let ws = workspace_by_slug(db, &slug).await?;
     let _member = require_workspace_member(db, ws.id, user_id).await?;
 
@@ -939,11 +953,12 @@ pub async fn create_sticky(
 )]
 pub async fn update_sticky(
     State(state): State<AppState>,
-    AnyAuth(user_id): AnyAuth,
+    AnyAuth(auth_user): AnyAuth,
     Path((slug, pk)): Path<(String, Uuid)>,
     Json(body): Json<UpdateStickyRequest>,
 ) -> Result<impl axum::response::IntoResponse, AppError> {
     let db = &state.db;
+    let user_id = auth_user.id;
     let ws = workspace_by_slug(db, &slug).await?;
     let _member = require_workspace_member(db, ws.id, user_id).await?;
 
@@ -1005,10 +1020,11 @@ pub async fn update_sticky(
 )]
 pub async fn delete_sticky(
     State(state): State<AppState>,
-    AnyAuth(user_id): AnyAuth,
+    AnyAuth(auth_user): AnyAuth,
     Path((slug, pk)): Path<(String, Uuid)>,
 ) -> Result<StatusCode, AppError> {
     let db = &state.db;
+    let user_id = auth_user.id;
     let ws = workspace_by_slug(db, &slug).await?;
     let _member = require_workspace_member(db, ws.id, user_id).await?;
 
@@ -1039,7 +1055,7 @@ pub struct UserPreferenceEntry {
     pub sort_order: f64,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct UpdateUserPreferenceItem {
     pub key: String,
     pub is_pinned: Option<bool>,
@@ -1058,10 +1074,11 @@ pub struct UpdateUserPreferenceItem {
 )]
 pub async fn get_user_preferences(
     State(state): State<AppState>,
-    AnyAuth(user_id): AnyAuth,
+    AnyAuth(auth_user): AnyAuth,
     Path(slug): Path<String>,
 ) -> Result<impl axum::response::IntoResponse, AppError> {
     let db = &state.db;
+    let user_id = auth_user.id;
     let ws = workspace_by_slug(db, &slug).await?;
     let _member = require_workspace_member(db, ws.id, user_id).await?;
 
@@ -1105,11 +1122,12 @@ pub async fn get_user_preferences(
 )]
 pub async fn update_user_preferences(
     State(state): State<AppState>,
-    AnyAuth(user_id): AnyAuth,
+    AnyAuth(auth_user): AnyAuth,
     Path(slug): Path<String>,
     Json(body): Json<Vec<UpdateUserPreferenceItem>>,
 ) -> Result<impl axum::response::IntoResponse, AppError> {
     let db = &state.db;
+    let user_id = auth_user.id;
     let ws = workspace_by_slug(db, &slug).await?;
     let _member = require_workspace_member(db, ws.id, user_id).await?;
 
@@ -1189,7 +1207,7 @@ impl From<draft_issues::Model> for DraftIssueResponse {
     }
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct CreateDraftIssueRequest {
     pub name: Option<String>,
     pub description_html: Option<String>,
@@ -1204,7 +1222,7 @@ pub struct CreateDraftIssueRequest {
     pub sort_order: Option<f64>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct UpdateDraftIssueRequest {
     pub name: Option<String>,
     pub description_html: Option<String>,
@@ -1231,10 +1249,11 @@ pub struct UpdateDraftIssueRequest {
 )]
 pub async fn list_draft_issues(
     State(state): State<AppState>,
-    AnyAuth(user_id): AnyAuth,
+    AnyAuth(auth_user): AnyAuth,
     Path(slug): Path<String>,
 ) -> Result<impl axum::response::IntoResponse, AppError> {
     let db = &state.db;
+    let user_id = auth_user.id;
     let ws = workspace_by_slug(db, &slug).await?;
     let _member = require_workspace_member(db, ws.id, user_id).await?;
 
@@ -1263,11 +1282,12 @@ pub async fn list_draft_issues(
 )]
 pub async fn create_draft_issue(
     State(state): State<AppState>,
-    AnyAuth(user_id): AnyAuth,
+    AnyAuth(auth_user): AnyAuth,
     Path(slug): Path<String>,
     Json(body): Json<CreateDraftIssueRequest>,
 ) -> Result<impl axum::response::IntoResponse, AppError> {
     let db = &state.db;
+    let user_id = auth_user.id;
     let ws = workspace_by_slug(db, &slug).await?;
     let _member = require_workspace_member(db, ws.id, user_id).await?;
 
@@ -1319,10 +1339,11 @@ pub async fn create_draft_issue(
 )]
 pub async fn get_draft_issue(
     State(state): State<AppState>,
-    AnyAuth(user_id): AnyAuth,
+    AnyAuth(auth_user): AnyAuth,
     Path((slug, pk)): Path<(String, Uuid)>,
 ) -> Result<impl axum::response::IntoResponse, AppError> {
     let db = &state.db;
+    let user_id = auth_user.id;
     let ws = workspace_by_slug(db, &slug).await?;
     let _member = require_workspace_member(db, ws.id, user_id).await?;
 
@@ -1355,11 +1376,12 @@ pub async fn get_draft_issue(
 )]
 pub async fn update_draft_issue(
     State(state): State<AppState>,
-    AnyAuth(user_id): AnyAuth,
+    AnyAuth(auth_user): AnyAuth,
     Path((slug, pk)): Path<(String, Uuid)>,
     Json(body): Json<UpdateDraftIssueRequest>,
 ) -> Result<StatusCode, AppError> {
     let db = &state.db;
+    let user_id = auth_user.id;
     let ws = workspace_by_slug(db, &slug).await?;
     let member = require_workspace_member(db, ws.id, user_id).await?;
     require_member_or_admin(member.role)?;
@@ -1430,10 +1452,11 @@ pub async fn update_draft_issue(
 )]
 pub async fn delete_draft_issue(
     State(state): State<AppState>,
-    AnyAuth(user_id): AnyAuth,
+    AnyAuth(auth_user): AnyAuth,
     Path((slug, pk)): Path<(String, Uuid)>,
 ) -> Result<StatusCode, AppError> {
     let db = &state.db;
+    let user_id = auth_user.id;
     let ws = workspace_by_slug(db, &slug).await?;
     let _member = require_workspace_member(db, ws.id, user_id).await?;
 
@@ -1507,10 +1530,11 @@ impl From<cycles::Model> for WorkspaceCycleResponse {
 )]
 pub async fn list_workspace_cycles(
     State(state): State<AppState>,
-    AnyAuth(user_id): AnyAuth,
+    AnyAuth(auth_user): AnyAuth,
     Path(slug): Path<String>,
 ) -> Result<impl axum::response::IntoResponse, AppError> {
     let db = &state.db;
+    let user_id = auth_user.id;
     let ws = workspace_by_slug(db, &slug).await?;
     let _member = require_workspace_member(db, ws.id, user_id).await?;
 
@@ -1574,10 +1598,11 @@ impl From<modules::Model> for WorkspaceModuleResponse {
 )]
 pub async fn list_workspace_modules(
     State(state): State<AppState>,
-    AnyAuth(user_id): AnyAuth,
+    AnyAuth(auth_user): AnyAuth,
     Path(slug): Path<String>,
 ) -> Result<impl axum::response::IntoResponse, AppError> {
     let db = &state.db;
+    let user_id = auth_user.id;
     let ws = workspace_by_slug(db, &slug).await?;
     let _member = require_workspace_member(db, ws.id, user_id).await?;
 
@@ -1640,10 +1665,11 @@ pub struct WorkspaceEstimateResponse {
 )]
 pub async fn list_workspace_estimates(
     State(state): State<AppState>,
-    AnyAuth(user_id): AnyAuth,
+    AnyAuth(auth_user): AnyAuth,
     Path(slug): Path<String>,
 ) -> Result<impl axum::response::IntoResponse, AppError> {
     let db = &state.db;
+    let user_id = auth_user.id;
     let ws = workspace_by_slug(db, &slug).await?;
     let _member = require_workspace_member(db, ws.id, user_id).await?;
 
@@ -1689,8 +1715,8 @@ pub struct WorkspaceLabelResponse {
     pub id: Uuid,
     pub name: String,
     pub color: String,
-    pub description: Option<String>,
-    pub project_id: Uuid,
+    pub description: String,
+    pub project_id: Option<Uuid>,
     pub workspace_id: Uuid,
     pub parent_id: Option<Uuid>,
     pub created_at: DateTime<Utc>,
@@ -1725,10 +1751,11 @@ impl From<labels::Model> for WorkspaceLabelResponse {
 )]
 pub async fn list_workspace_labels(
     State(state): State<AppState>,
-    AnyAuth(user_id): AnyAuth,
+    AnyAuth(auth_user): AnyAuth,
     Path(slug): Path<String>,
 ) -> Result<impl axum::response::IntoResponse, AppError> {
     let db = &state.db;
+    let user_id = auth_user.id;
     let ws = workspace_by_slug(db, &slug).await?;
     let _member = require_workspace_member(db, ws.id, user_id).await?;
 
@@ -1791,10 +1818,11 @@ impl From<states::Model> for WorkspaceStateResponse {
 )]
 pub async fn list_workspace_states(
     State(state): State<AppState>,
-    AnyAuth(user_id): AnyAuth,
+    AnyAuth(auth_user): AnyAuth,
     Path(slug): Path<String>,
 ) -> Result<impl axum::response::IntoResponse, AppError> {
     let db = &state.db;
+    let user_id = auth_user.id;
     let ws = workspace_by_slug(db, &slug).await?;
     let _member = require_workspace_member(db, ws.id, user_id).await?;
 

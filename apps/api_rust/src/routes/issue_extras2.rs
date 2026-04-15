@@ -71,7 +71,7 @@ impl From<file_assets::Model> for IssueAttachmentResponse {
     }
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct InitiateAttachmentRequest {
     pub name: String,
     pub r#type: String,
@@ -397,7 +397,7 @@ pub async fn unarchive_issue(
 }
 
 /// POST /workspaces/{slug}/projects/{project_id}/bulk-archive-issues/
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct BulkArchiveRequest {
     pub issue_ids: Vec<Uuid>,
 }
