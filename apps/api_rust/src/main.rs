@@ -161,7 +161,7 @@ async fn main() -> anyhow::Result<()> {
     // Ejecutar migraciones SeaORM pendientes — reemplaza el servicio `migrator`
     // (manage.py migrate). Idempotente: no hace nada si el schema ya está al día.
     tracing::info!("Ejecutando migraciones pendientes...");
-    Migrator::up(&db, None).await.map_err(|e| {
+    Migrator::up(&db, None::<u32>).await.map_err(|e| {
         tracing::error!("Fallo al ejecutar migraciones: {e}");
         e
     })?;

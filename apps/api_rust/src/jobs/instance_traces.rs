@@ -10,7 +10,7 @@
 //!   - Si la instancia tiene `is_telemetry_enabled = false`, la tarea
 //!     retorna sin emitir nada.
 
-use sea_orm::{ColumnTrait, DatabaseConnection, EntityTrait, QueryFilter, QuerySelect};
+use sea_orm::{DatabaseConnection, EntityTrait, PaginatorTrait};
 
 use crate::{
     entities::{

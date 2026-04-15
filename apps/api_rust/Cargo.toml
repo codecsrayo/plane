@@ -42,6 +42,9 @@ utoipa        = { version = "5.4.0", features = ["axum_extras", "uuid", "chrono"
 utoipa-scalar = { version = "0.3.0", features = ["axum"] }
 
 # Base de datos — SeaORM + PostgreSQL
+# Crate de migraciones SeaORM — ejecutado en startup via Migrator::up
+migration = { path = "migration" }
+
 # Alineado con sea-orm-migration "1.1.20" declarado en migration/Cargo.toml
 sea-orm = { version = "1.1.20", features = [
     "sqlx-postgres",

@@ -18,22 +18,11 @@
 
 use aws_sdk_s3::Client as S3Client;
 use sea_orm::{
-    ActiveModelTrait, ActiveValue::Set, ColumnTrait, DatabaseConnection, EntityTrait,
-    QueryFilter, Statement,
+    ActiveModelTrait, ActiveValue::Set, ColumnTrait, ConnectionTrait, DatabaseConnection,
+    EntityTrait, QueryFilter, Statement,
 };
-use sea_orm::sea_query::PostgresQueryBuilder;
-use uuid::Uuid;
 
-use crate::{
-    config::Config,
-    entities::{
-        api_activity_logs, cycle_issues, cycles, email_notification_logs, estimate_points,
-        estimates, exporters, file_assets, issue_activities, issue_comments, issue_description_versions,
-        issue_links, issue_reactions, issue_views, issues, labels, module_issues, modules,
-        page_versions, pages, projects, states, user_favorites, webhook_logs, workspaces,
-    },
-    utils::soft_delete::SoftDeleteExt,
-};
+use crate::entities::{exporters};
 
 // ── hard_delete ───────────────────────────────────────────────────────────────
 
@@ -47,27 +36,6 @@ pub async fn hard_delete(db: &DatabaseConnection, days: i64) -> anyhow::Result<(
     let cutoff_dt: chrono::DateTime<chrono::FixedOffset> = cutoff.into();
 
     // Hoja → raíz para respetar FKs
-    macro_rules! purge {
-        ($entity:expr, $col:expr) => {{
-            let n = $entity
-                .filter($col.lt(cutoff_dt))
-                .all(db)
-                .await?
-                .len();
-            $entity
-                .filter($col.lt(cutoff_dt))
-                .all(db)
-                .await?
-                .into_iter()
-                .map(|m| m.into())
-                .collect::<Vec<_>>()
-                .into_iter()
-                .for_each(|_am: sea_orm::ActiveValue<_>| { /* handled below */ });
-            n
-        }};
-    }
-
-    // Usamos raw SQL para mayor eficiencia — una sola consulta por entidad.
     let tables: &[&str] = &[
         "estimate_points",
         "estimates",
@@ -99,7 +67,7 @@ pub async fn hard_delete(db: &DatabaseConnection, days: i64) -> anyhow::Result<(
             &sql,
             vec![cutoff_dt.into()],
         );
-        let result = db.execute(stmt).await?;
+        let result: sea_orm::ExecResult = db.execute(stmt).await?;
         let n = result.rows_affected();
         if n > 0 {
             tracing::info!(table, deleted = n, "hard_delete: purged rows");

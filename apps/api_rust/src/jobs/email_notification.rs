@@ -19,22 +19,21 @@
 
 use std::collections::HashMap;
 
-use fred::prelude::{KeysInterface, RedisPool};
+use fred::prelude::{KeysInterface, Pool as RedisPool};
 use lettre::{
     message::{header::ContentType, MultiPart, SinglePart},
     transport::smtp::authentication::Credentials,
     AsyncSmtpTransport, AsyncTransport, Message, Tokio1Executor,
 };
 use sea_orm::{
-    ActiveModelTrait, ActiveValue::Set, ColumnTrait, DatabaseConnection, EntityTrait,
+    ActiveModelTrait, ColumnTrait, ConnectionTrait, DatabaseConnection, EntityTrait,
     QueryFilter, QueryOrder,
 };
 use uuid::Uuid;
 
 use crate::{
     config::Config,
-    entities::{email_notification_logs, issues, project_members, projects, users, workspaces},
-    utils::soft_delete::SoftDeleteExt,
+    entities::{email_notification_logs, issues, projects, users, workspaces},
 };
 
 // ── Tipos internos ─────────────────────────────────────────────────────────────
