@@ -40,7 +40,7 @@ fn url_pattern() -> &'static Regex {
         ))
         .expect("URL_PATTERN regex must compile")
     })
-});
+}
 
 /// Returns `true` if `value` contains an embedded URL.
 ///
