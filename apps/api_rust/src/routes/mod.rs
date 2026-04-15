@@ -37,6 +37,7 @@ pub mod workspaces;
 pub mod workspace_extras;
 pub mod issue_extras2;
 pub mod api_tokens;
+pub mod instances;
 
 #[derive(OpenApi)]
 #[openapi(
@@ -276,6 +277,9 @@ pub mod api_tokens;
         issue_extras::subscribe_to_issue,
         issue_extras::unsubscribe_from_issue,
         issue_extras::list_sub_issues,
+        instances::get_instance,
+        instances::patch_instance,
+        instances::signup_screen_visited,
     ),
     components(
         schemas(
@@ -318,6 +322,7 @@ pub mod api_tokens;
     ),
     tags(
         (name = "Health",       description = "Health checks"),
+        (name = "Instance",     description = "Instance configuration and feature flags"),
         (name = "Auth",         description = "Authentication"),
         (name = "Workspaces",   description = "Workspace management"),
         (name = "Projects",     description = "Project management"),
@@ -1087,6 +1092,15 @@ pub fn build_router(state: AppState) -> Router {
             get(api_tokens::get_api_token)
                 .patch(api_tokens::update_api_token)
                 .delete(api_tokens::delete_api_token),
+        )
+        // ── Instance ──────────────────────────────────────────────────────────
+        .route(
+            "/instances/",
+            get(instances::get_instance).patch(instances::patch_instance),
+        )
+        .route(
+            "/instances/signup-screen-visited/",
+            post(instances::signup_screen_visited),
         )
         .layer(middleware::from_fn(
             auth::rate_limit::rate_limit_headers_middleware,
