@@ -1,10 +1,13 @@
 # ─────────────────────────────────────────────────────────────────────────────
 # Dockerfile.dev — API Rust (desarrollo)
 #
-# Diseñado para hot-reload con cargo-watch.
-# El código fuente se monta como volumen desde el host; los artefactos de
-# compilación se almacenan en volúmenes nombrados para reutilizar caché entre
-# reinicios sin contaminar el directorio del host.
+# Optimizaciones de tiempo de compilación:
+#   1. mold linker  → 5-10× más rápido que ld en la fase de linking
+#   2. cargo build  → pre-compila TODAS las dependencias en el layer de imagen;
+#                     Docker copia el /app/target al volumen rust_target en el
+#                     primer arranque (named volume copy-on-first-use)
+#   3. cargo-binstall → instala cargo-watch como binario pre-compilado,
+#                       no compila desde fuente (ahorra ~8 min en docker build)
 #
 # USO (desde docker-compose-dev.yml):
 #   context: .
@@ -13,39 +16,51 @@
 
 FROM rust:1.94-slim-bookworm
 
-# Dependencias del sistema necesarias para compilar (libpq, openssl, etc.)
+# ── Dependencias del sistema ──────────────────────────────────────────────────
+# clang + mold: linker rápido (referenciado en .cargo/config.toml)
 RUN apt-get update && apt-get install -y --no-install-recommends \
         pkg-config \
         libssl-dev \
         libpq-dev \
         ca-certificates \
         curl \
+        clang \
+        mold \
     && rm -rf /var/lib/apt/lists/*
 
-# cargo-watch: reconstruye y reinicia el binario ante cambios en src/
-# Se fija versión para builds reproducibles.
-RUN cargo install cargo-watch --version 8.5.3 --locked
+# ── cargo-binstall → cargo-watch (binario pre-compilado) ─────────────────────
+# cargo-binstall descarga el binario de cargo-watch desde GitHub Releases,
+# evitando compilarlo desde fuente (~8 min → ~20 s).
+RUN curl -fsSL \
+    https://github.com/cargo-bins/cargo-binstall/releases/latest/download/cargo-binstall-x86_64-unknown-linux-musl.tgz \
+    | tar -xz -C /usr/local/cargo/bin/ \
+    && cargo binstall cargo-watch@8.5.3 --no-confirm --locked
 
 WORKDIR /app
 
-# El código fuente se monta en tiempo de ejecución (ver volumes en compose).
-# Sólo pre-descargamos las dependencias usando manifiestos dummy para
-# aprovechar la caché del layer en la primera construcción de la imagen.
+# ── Caché de dependencias ─────────────────────────────────────────────────────
+# Copiar .cargo/config.toml primero para que el linker mold aplique ya
+# en la compilación de deps del layer siguiente.
+COPY apps/api_rust/.cargo ./.cargo
 COPY apps/api_rust/Cargo.toml apps/api_rust/Cargo.lock ./
 COPY apps/api_rust/migration/Cargo.toml ./migration/
 
+# PRE-COMPILAR todas las dependencias (no solo descargar).
+# cargo build con dummy main compila los ~200 crates de deps y los deja
+# en /app/target. Docker copia este directorio al volumen nombrado
+# rust_target en el primer arranque (named-volume copy semantics), por lo
+# que la primera compilación en el contenedor ya tiene las deps listas.
 RUN mkdir -p src migration/src && \
     echo 'fn main() {}' > src/main.rs && \
     touch migration/src/lib.rs && \
     echo 'fn main() {}' > migration/src/main.rs && \
-    cargo fetch && \
+    cargo build && \
     rm -rf src migration/src
 
 EXPOSE 8001
 
-# cargo-watch compila y ejecuta el binario ante cualquier cambio en src/ o
-# Cargo.toml. Se pasan flags de diagnóstico para dev.
-# RUST_LOG se define en el env_file del compose.
+# cargo-watch reconstruye solo los archivos modificados gracias a la
+# compilación incremental configurada en .cargo/config.toml
 CMD ["cargo", "watch", \
      "--watch", "src", \
      "--watch", "Cargo.toml", \

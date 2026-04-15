@@ -19,7 +19,14 @@ async-trait  = "0.1.89"
 thiserror    = "2.0.18"
 
 # Async runtime
-tokio = { version = "1.51.1", features = ["full"] }
+tokio = { version = "1.51.1", features = [
+    "rt-multi-thread",  # runtime multi-hilo para #[tokio::main]
+    "macros",           # #[tokio::main], #[tokio::test]
+    "net",              # tokio::net (TcpListener en Axum)
+    "time",             # tokio::time::sleep / interval
+    "signal",           # graceful shutdown — SIGTERM/SIGINT
+    "sync",             # Mutex, RwLock, broadcast, watch
+] }
 
 # HTTP — servidor
 axum       = { version = "0.8.9", features = ["macros", "multipart"] }
@@ -72,7 +79,7 @@ aws-sdk-s3  = "1.129.0"
 # Email
 lettre = { version = "0.11.21", features = [
     "tokio1",
-    "tokio1-native-tls",
+    "tokio1-rustls-tls",   # rustls en lugar de native-tls — consistente con reqwest/sea-orm/sqlx
     "smtp-transport",
     "builder",
 ] }
