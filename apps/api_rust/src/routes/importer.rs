@@ -172,7 +172,7 @@ async fn get_or_create_importer_token(
 )]
 pub async fn list_github_import_repositories(
     State(state): State<AppState>,
-    guard: WorkspaceMemberGuard,
+    _guard: WorkspaceMemberGuard,
     Query(params): Query<GithubReposQuery>,
 ) -> Result<impl IntoResponse, AppError> {
     let page = params.page.unwrap_or(1).max(1);
@@ -424,7 +424,7 @@ pub async fn delete_github_importer(
 )]
 pub async fn list_gitlab_import_repositories(
     State(state): State<AppState>,
-    guard: WorkspaceMemberGuard,
+    _guard: WorkspaceMemberGuard,
     Query(params): Query<GitlabReposQuery>,
 ) -> Result<impl IntoResponse, AppError> {
     let page = params.page.unwrap_or(1).max(1);
