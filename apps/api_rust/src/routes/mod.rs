@@ -468,7 +468,9 @@ pub fn build_router(state: AppState) -> Router {
         // ── Integrations globales ────────────────────────────────────────────
         .route("/integrations/", get(integrations::list_integrations))
         // ── Workspaces (Fase 2) ──────────────────────────────────────────────
+        // Ambas variantes (con y sin trailing slash) para compatibilidad con el frontend
         .route("/workspace-slug-check", get(workspaces::slug_check))
+        .route("/workspace-slug-check/", get(workspaces::slug_check))
         .route(
             "/workspaces",
             get(workspaces::list_workspaces).post(workspaces::create_workspace),
