@@ -32,12 +32,17 @@ where
     }
 }
 
-/// Permite usar `Option<AnyAuth>` como extractor en handlers de axum.
+/// Extractor opcional de autenticación.
 ///
-/// axum solo genera `Option<T>` automáticamente cuando `T::Rejection = Infallible`.
-/// Como `AnyAuth::Rejection = AppError`, se requiere esta implementación explícita
-/// para que el extractor sea opcional sin rechazar la solicitud.
-impl<S> FromRequestParts<S> for Option<AnyAuth>
+/// Necesario porque axum solo genera `Option<T>` automáticamente cuando
+/// `T::Rejection = Infallible`. Como `AnyAuth::Rejection = AppError`, la orphan
+/// rule impide implementar `FromRequestParts` para `Option<AnyAuth>` (tipo foráneo).
+/// Este newtype local resuelve ambas restricciones sin modificar `AnyAuth`.
+///
+/// Uso en handler: `OptionalAnyAuth(user_opt): OptionalAnyAuth`
+pub struct OptionalAnyAuth(pub Option<users::Model>);
+
+impl<S> FromRequestParts<S> for OptionalAnyAuth
 where
     S: Send + Sync,
     AppState: FromRef<S>,
@@ -45,6 +50,7 @@ where
     type Rejection = std::convert::Infallible;
 
     async fn from_request_parts(parts: &mut Parts, state: &S) -> Result<Self, Self::Rejection> {
-        Ok(AnyAuth::from_request_parts(parts, state).await.ok())
+        let user = AnyAuth::from_request_parts(parts, state).await.ok().map(|a| a.0);
+        Ok(OptionalAnyAuth(user))
     }
 }

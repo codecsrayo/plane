@@ -33,7 +33,7 @@ use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 
 use crate::{
-    auth::any_auth::AnyAuth,
+    auth::any_auth::{AnyAuth, OptionalAnyAuth},
     entities::{accounts, profiles, users, workspace_members, workspaces},
     error::AppError,
     utils::soft_delete::SoftDeleteExt,
@@ -382,9 +382,9 @@ pub async fn deactivate_me(
         (status = 200, description = "Session info"),
     )
 )]
-pub async fn get_session(user_opt: Option<AnyAuth>) -> impl IntoResponse {
+pub async fn get_session(OptionalAnyAuth(user_opt): OptionalAnyAuth) -> impl IntoResponse {
     match user_opt {
-        Some(AnyAuth(user)) => Json(serde_json::json!({
+        Some(user) => Json(serde_json::json!({
             "is_authenticated": true,
             "user": user_to_me_response(&user),
         })),
