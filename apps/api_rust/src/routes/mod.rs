@@ -34,6 +34,9 @@ pub mod timezones;
 pub mod users;
 pub mod views;
 pub mod workspaces;
+pub mod workspace_extras;
+pub mod issue_extras2;
+pub mod api_tokens;
 
 #[derive(OpenApi)]
 #[openapi(
@@ -966,6 +969,124 @@ pub fn build_router(state: AppState) -> Router {
         .route(
             "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/sub-issues/",
             get(issue_extras::list_sub_issues),
+        )
+        // ── Workspace Extras (favorites, home prefs, quick links, recent visits, stickies) ──
+        .route(
+            "/workspaces/{slug}/user-favorites/",
+            get(workspace_extras::list_favorites).post(workspace_extras::create_favorite),
+        )
+        .route(
+            "/workspaces/{slug}/user-favorites/{favorite_id}/",
+            patch(workspace_extras::update_favorite).delete(workspace_extras::delete_favorite),
+        )
+        .route(
+            "/workspaces/{slug}/user-favorites/{favorite_id}/children/",
+            get(workspace_extras::list_favorite_children),
+        )
+        .route(
+            "/workspaces/{slug}/home-preference/",
+            get(workspace_extras::get_home_preferences),
+        )
+        .route(
+            "/workspaces/{slug}/home-preference/{key}/",
+            patch(workspace_extras::update_home_preference),
+        )
+        .route(
+            "/workspaces/{slug}/quick-links/",
+            get(workspace_extras::list_quick_links).post(workspace_extras::create_quick_link),
+        )
+        .route(
+            "/workspaces/{slug}/quick-links/{pk}/",
+            patch(workspace_extras::update_quick_link).delete(workspace_extras::delete_quick_link),
+        )
+        .route(
+            "/workspaces/{slug}/user-recent-visit/",
+            get(workspace_extras::list_recent_visits),
+        )
+        .route(
+            "/workspaces/{slug}/stickies/",
+            get(workspace_extras::list_stickies).post(workspace_extras::create_sticky),
+        )
+        .route(
+            "/workspaces/{slug}/stickies/{pk}/",
+            patch(workspace_extras::update_sticky).delete(workspace_extras::delete_sticky),
+        )
+        .route(
+            "/workspaces/{slug}/user-preference/",
+            get(workspace_extras::get_user_preferences)
+                .patch(workspace_extras::update_user_preferences),
+        )
+        // ── Draft Issues ──────────────────────────────────────────────────────
+        .route(
+            "/workspaces/{slug}/draft-issues/",
+            get(workspace_extras::list_draft_issues).post(workspace_extras::create_draft_issue),
+        )
+        .route(
+            "/workspaces/{slug}/draft-issues/{pk}/",
+            get(workspace_extras::get_draft_issue)
+                .patch(workspace_extras::update_draft_issue)
+                .delete(workspace_extras::delete_draft_issue),
+        )
+        // ── Workspace-level aggregate views ──────────────────────────────────
+        .route(
+            "/workspaces/{slug}/cycles/",
+            get(workspace_extras::list_workspace_cycles),
+        )
+        .route(
+            "/workspaces/{slug}/modules/",
+            get(workspace_extras::list_workspace_modules),
+        )
+        .route(
+            "/workspaces/{slug}/estimates/",
+            get(workspace_extras::list_workspace_estimates),
+        )
+        .route(
+            "/workspaces/{slug}/labels/",
+            get(workspace_extras::list_workspace_labels),
+        )
+        .route(
+            "/workspaces/{slug}/states/",
+            get(workspace_extras::list_workspace_states),
+        )
+        // ── Issue attachments ─────────────────────────────────────────────────
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-attachments/",
+            get(issue_extras2::list_issue_attachments)
+                .post(issue_extras2::initiate_issue_attachment_upload),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-attachments/{pk}/",
+            patch(issue_extras2::complete_issue_attachment_upload)
+                .delete(issue_extras2::delete_issue_attachment),
+        )
+        // ── Issue archive / unarchive ─────────────────────────────────────────
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/issues/{pk}/archive/",
+            post(issue_extras2::archive_issue).delete(issue_extras2::unarchive_issue),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/bulk-archive-issues/",
+            post(issue_extras2::bulk_archive_issues),
+        )
+        // ── Issue versions ────────────────────────────────────────────────────
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/versions/",
+            get(issue_extras2::list_issue_versions),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/versions/{pk}/",
+            get(issue_extras2::get_issue_version),
+        )
+        // ── API Tokens ────────────────────────────────────────────────────────
+        .route(
+            "/api-tokens/",
+            get(api_tokens::list_api_tokens).post(api_tokens::create_api_token),
+        )
+        .route(
+            "/api-tokens/{pk}/",
+            get(api_tokens::get_api_token)
+                .patch(api_tokens::update_api_token)
+                .delete(api_tokens::delete_api_token),
         )
         .layer(middleware::from_fn(
             auth::rate_limit::rate_limit_headers_middleware,
