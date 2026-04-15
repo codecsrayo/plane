@@ -1,9 +1,55 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Dockerfile.dev — web (Next.js / React Router)
+#
+# Optimización de caché de layers:
+#   ANTES: COPY . . → pnpm install   (pnpm install nunca se cachea)
+#   AHORA: manifests → pnpm install → COPY fuente
+#          pnpm install solo se re-ejecuta si cambia el lockfile o
+#          algún package.json del workspace
+# ─────────────────────────────────────────────────────────────────────────────
 FROM node:22-alpine
 
 RUN apk add --no-cache libc6-compat
 
+# Activar corepack con la versión exacta del campo "packageManager" del root
+# package.json — builds reproducibles sin depender de "latest".
+RUN corepack enable && corepack prepare pnpm@10.32.1 --activate
+
 WORKDIR /app
 
+# ── Layer 1: manifests del workspace ─────────────────────────────────────────
+# Solo se invalida cuando cambia pnpm-lock.yaml o un package.json.
+# Cambios en src/ NO invalidan este layer → pnpm install se cachea.
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml turbo.json ./
+# apps
+COPY apps/web/package.json   ./apps/web/
+COPY apps/admin/package.json ./apps/admin/
+COPY apps/space/package.json ./apps/space/
+COPY apps/live/package.json  ./apps/live/
+# packages
+COPY packages/codemods/package.json       ./packages/codemods/
+COPY packages/constants/package.json      ./packages/constants/
+COPY packages/decorators/package.json     ./packages/decorators/
+COPY packages/editor/package.json         ./packages/editor/
+COPY packages/hooks/package.json          ./packages/hooks/
+COPY packages/i18n/package.json           ./packages/i18n/
+COPY packages/logger/package.json         ./packages/logger/
+COPY packages/propel/package.json         ./packages/propel/
+COPY packages/services/package.json       ./packages/services/
+COPY packages/shared-state/package.json   ./packages/shared-state/
+COPY packages/tailwind-config/package.json ./packages/tailwind-config/
+COPY packages/types/package.json          ./packages/types/
+COPY packages/typescript-config/package.json ./packages/typescript-config/
+COPY packages/ui/package.json             ./packages/ui/
+COPY packages/utils/package.json          ./packages/utils/
+
+# ── Layer 2: instalar dependencias (cacheado) ─────────────────────────────────
+# --frozen-lockfile: falla si el lockfile está desincronizado (no lo modifica)
+RUN pnpm install --frozen-lockfile
+
+# ── Layer 3: código fuente ────────────────────────────────────────────────────
+# En dev este layer es sobreescrito por docker compose watch (sync),
+# pero se incluye para que la imagen sea autónoma.
 COPY . .
 
 ARG VITE_API_BASE_URL
@@ -17,23 +63,18 @@ ARG VITE_SPACE_BASE_PATH
 ARG VITE_WEB_BASE_URL
 ARG VITE_WEB_BASE_PATH
 
-ENV VITE_API_BASE_URL=$VITE_API_BASE_URL
-ENV VITE_API_BASE_PATH=$VITE_API_BASE_PATH
-ENV VITE_ADMIN_BASE_URL=$VITE_ADMIN_BASE_URL
-ENV VITE_ADMIN_BASE_PATH=$VITE_ADMIN_BASE_PATH
-ENV VITE_LIVE_BASE_URL=$VITE_LIVE_BASE_URL
-ENV VITE_LIVE_BASE_PATH=$VITE_LIVE_BASE_PATH
-ENV VITE_SPACE_BASE_URL=$VITE_SPACE_BASE_URL
-ENV VITE_SPACE_BASE_PATH=$VITE_SPACE_BASE_PATH
-ENV VITE_WEB_BASE_URL=$VITE_WEB_BASE_URL
-ENV VITE_WEB_BASE_PATH=$VITE_WEB_BASE_PATH
-
-RUN corepack enable && corepack prepare pnpm@latest --activate
-RUN npm install -g turbo
-RUN pnpm install
+ENV VITE_API_BASE_URL=$VITE_API_BASE_URL \
+    VITE_API_BASE_PATH=$VITE_API_BASE_PATH \
+    VITE_ADMIN_BASE_URL=$VITE_ADMIN_BASE_URL \
+    VITE_ADMIN_BASE_PATH=$VITE_ADMIN_BASE_PATH \
+    VITE_LIVE_BASE_URL=$VITE_LIVE_BASE_URL \
+    VITE_LIVE_BASE_PATH=$VITE_LIVE_BASE_PATH \
+    VITE_SPACE_BASE_URL=$VITE_SPACE_BASE_URL \
+    VITE_SPACE_BASE_PATH=$VITE_SPACE_BASE_PATH \
+    VITE_WEB_BASE_URL=$VITE_WEB_BASE_URL \
+    VITE_WEB_BASE_PATH=$VITE_WEB_BASE_PATH \
+    TURBO_TELEMETRY_DISABLED=1
 
 EXPOSE 3000
-
-VOLUME [ "/app/node_modules", "/app/web/node_modules" ]
 
 CMD ["pnpm", "dev", "--filter=web"]

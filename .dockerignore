@@ -67,3 +67,10 @@ temp/
 build/
 node_modules/
 README.md
+
+# ── Backend — no necesario en builds de frontend ─────────────────────────────
+apps/api/
+apps/api_rust/
+# Artefactos de Rust
+target/
+**/*.rs
