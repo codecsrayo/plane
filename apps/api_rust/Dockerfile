@@ -14,6 +14,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         libssl-dev \
         libpq-dev \
         ca-certificates \
+        clang \
+        mold \
     && rm -rf /var/lib/apt/lists/*
 
 # Usa el OpenSSL del sistema (libssl-dev) enlazado estáticamente.
@@ -26,6 +28,7 @@ WORKDIR /build
 # ── Caché de dependencias ─────────────────────────────────────────────────────
 # Copiar sólo manifiestos para cachear el layer de compilación de deps.
 # Cuando sólo cambia src/ este layer no se invalida.
+COPY apps/api_rust/.cargo ./.cargo
 COPY apps/api_rust/Cargo.toml apps/api_rust/Cargo.lock ./
 COPY apps/api_rust/migration/Cargo.toml ./migration/
 
