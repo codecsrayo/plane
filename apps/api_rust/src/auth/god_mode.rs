@@ -530,7 +530,7 @@ pub async fn admin_sign_out(
     let now = Utc::now();
     // Best-effort: no bloqueamos el logout si falla
     if let Ok(Some(session)) = {
-        use sea_orm::{EntityTrait, QueryFilter, ColumnTrait};
+        use sea_orm::EntityTrait;
         use crate::entities::sessions;
         let key = jar
             .get(ADMIN_SESSION_COOKIE_NAME)
