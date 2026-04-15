@@ -103,7 +103,7 @@ time       = "0.3.47"    # Cookie::max_age en session logout
 zxcvbn     = "3.1.0"
 
 # Contenido / sanitización
-ammonia    = "3.3.1"  # sanitización de HTML — previene XSS en description_html
+ammonia = "4.1.2"  # sanitización de HTML — previene XSS en description_html
 base64     = "0.22.1" # encode/decode de cursores de paginación
 dotenvy    = "0.15.7" # carga de .env en desarrollo
 flate2     = "1.1.9"
@@ -114,3 +114,4 @@ regex      = "1.11.1" # html_to_text en email_notification
 tracing            = "0.1.44"
 tracing-subscriber = { version = "0.3.23", features = ["env-filter", "json"] }
 serde_urlencoded = "0.7.1"
+
