@@ -1,0 +1,9 @@
+# Ignorar backend en builds de frontend
+apps/api/
+apps/api_rust/
+# Artefactos de Rust/Python
+target/
+**/*.rs
+**/*.pyc
+venv/
+.venv/
