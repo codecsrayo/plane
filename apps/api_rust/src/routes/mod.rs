@@ -1194,16 +1194,11 @@ pub fn build_router(state: AppState) -> Router {
         tracing::warn!("Scalar UI habilitado (DEBUG=true) — deshabilitar en producción");
     }
 
-    // NormalizePathLayer NO se aplica aquí — debe envolver al Router *desde
-    // fuera* en main.rs usando `ServiceBuilder` + `ServiceExt::into_make_service`.
+    // NormalizePathLayer se aplica en main.rs envolviendo al Router *desde
+    // fuera* con `NormalizePathLayer::trim_trailing_slash().layer(router)`.
     //
-    // Razón: en axum 0.7/0.8 `Router::layer()` ejecuta el middleware DESPUÉS
-    // del path-matching (envuelve a cada handler), por lo que un request a
-    // `/api/workspace-slug-check/` ya falló el match contra `/workspace-slug-check`
-    // antes de que la capa pueda strippear la barra final → 404.
-    //
-    // El patrón correcto (ver main.rs):
-    //   let app = NormalizePathLayer::trim_trailing_slash().layer(router);
-    //   axum::serve(listener, ServiceExt::<Request>::into_make_service(app)).await?;
+    // Razón: `Router::layer()` en axum 0.8 ejecuta el middleware DESPUÉS
+    // del path-matching, por lo que la barra final no se stripea a tiempo.
+    // Envolviendo externamente, la capa corre ANTES del routing.
     router.with_state(state)
 }

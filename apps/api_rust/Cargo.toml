@@ -31,7 +31,7 @@ tokio = { version = "1.51.1", features = [
 # HTTP — servidor
 axum       = { version = "0.8.9", features = ["macros", "multipart"] }
 axum-extra = { version = "0.12.6", features = ["cookie", "typed-header"] }
-tower      = "0.5.3"
+tower      = { version = "0.5.3", features = ["make"] }
 tower-http = { version = "0.6.8", features = ["cors", "trace", "compression-gzip", "normalize-path"] }
 
 # HTTP — cliente (no crear Client::new() por request)

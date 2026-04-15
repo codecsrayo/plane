@@ -245,15 +245,23 @@ async fn main() -> anyhow::Result<()> {
 
     // 5. Router
     //
-    // NormalizePathLayer se aplica vía `Router::layer()`, que en axum 0.8
-    // envuelve el RouterService completo — la capa corre ANTES del
-    // path-matching interno, por lo que la barra final se stripea correctamente
-    // antes de que el router intente resolver la ruta.
-    // Esto permite seguir usando `Router::into_make_service()` de forma directa.
+    // NormalizePathLayer DEBE envolver al Router *desde fuera* usando
+    // `tower::Layer::layer()`, NO `Router::layer()`.
+    //
+    // Razón: en axum 0.8 `Router::layer()` aplica middleware DESPUÉS del
+    // path-matching (envuelve cada handler individualmente), por lo que un
+    // request a `/api/workspace-slug-check/` ya falló el match contra
+    // `/workspace-slug-check` antes de que la capa pueda strippear la barra
+    // final → 404.
+    //
+    // Al envolver externamente, NormalizePathLayer intercepta el request
+    // ANTES de que el Router haga routing, trimmeando la barra final
+    // correctamente.
+    use tower::Layer;
     use tower_http::normalize_path::NormalizePathLayer;
 
-    let app = routes::build_router(state)
-        .layer(NormalizePathLayer::trim_trailing_slash());
+    let router = routes::build_router(state);
+    let app = NormalizePathLayer::trim_trailing_slash().layer(router);
 
     // 6. Servidor TCP
     let addr: SocketAddr = format!("{}:{}", config.host, config.port).parse()?;
@@ -266,11 +274,14 @@ async fn main() -> anyhow::Result<()> {
         "🚀 Servidor listo"
     );
 
-    // `Router::into_make_service()` produce el MakeService que axum::serve
-    // requiere. El servidor drena conexiones activas antes de retornar.
+    // El tipo resultante de NormalizePathLayer::layer() es `Trim<Router>`,
+    // que implementa `tower::Service<Request>` pero NO tiene
+    // `into_make_service()` (método exclusivo de `axum::Router`).
+    // `tower::make::Shared` convierte cualquier `Service + Clone` en un
+    // `MakeService` compatible con `axum::serve`.
     axum::serve(
         listener,
-        app.into_make_service(),
+        tower::make::Shared::new(app),
     )
         .with_graceful_shutdown(shutdown_signal())
         .await?;
