@@ -8,8 +8,6 @@ use migration::{Migrator, MigratorTrait};
 use sea_orm::Database;
 use std::{net::SocketAddr, sync::Arc};
 use tokio::net::TcpListener;
-use tower::Layer;
-use tower_http::normalize_path::NormalizePathLayer;
 use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt, EnvFilter};
 
 /// Espera SIGINT (Ctrl-C) o SIGTERM antes de iniciar el shutdown graceful.
@@ -236,11 +234,6 @@ async fn main() -> anyhow::Result<()> {
 
     // 5. Router
     let app = routes::build_router(state);
-
-    // NormalizePathLayer debe envolver el servicio ANTES de axum::serve,
-    // no como layer del Router. Si se añade vía Router::layer(), corre después
-    // del matching y no puede corregir 404s por trailing slash.
-    let app = NormalizePathLayer::trim_trailing_slash().layer(app);
 
     // 6. Servidor TCP
     let addr: SocketAddr = format!("{}:{}", config.host, config.port).parse()?;

@@ -6,6 +6,7 @@ use axum::{
     routing::{delete, get, patch, post},
     Json, Router,
 };
+use tower_http::normalize_path::NormalizePathLayer;
 use utoipa::OpenApi;
 use utoipa_scalar::{Scalar, Servable};
 
@@ -1180,7 +1181,15 @@ pub fn build_router(state: AppState) -> Router {
         tracing::warn!("Scalar UI habilitado (DEBUG=true) — deshabilitar en producción");
     }
 
-    // NormalizePathLayer se aplica en main.rs sobre el servicio completo,
-    // antes de axum::serve. No se añade aquí para evitar que corra después del routing.
+    // NormalizePathLayer aplicado sobre el Router final (no via axum::serve).
+    // En Axum 0.7+, Router::layer() envuelve la pila completa de servicios,
+    // por lo que la capa corre ANTES del routing y puede normalizar el path
+    // antes de que se intente el matching de rutas.
+    // Esto resuelve los 404 cuando el frontend envía trailing slash
+    // (e.g. POST /api/workspaces/ → normaliza a /api/workspaces).
+    let router = router.layer(NormalizePathLayer::trim_trailing_slash());
+
+    // NormalizePath en main.rs (wrapping axum::serve) NO funciona porque
+    // NormalizePath<Router> no implementa Service<IncomingStream> que axum::serve exige.
     router.with_state(state)
 }
