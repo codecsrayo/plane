@@ -44,6 +44,7 @@ async fn start_job_workers(db_url: String, state: AppState) -> anyhow::Result<()
         github_sync::{GithubInitialSyncJob, handle_github_initial_sync},
         notifications::{IssueActivityNotificationJob, handle_issue_activity_notification},
         scheduled::{RunIssueAutomationJob, handle_run_issue_automation},
+        workspace_seed::{WorkspaceSeedJob, handle_workspace_seed},
     };
 
     // Crear PgPool compartido para todos los storages de apalis
@@ -61,6 +62,8 @@ async fn start_job_workers(db_url: String, state: AppState) -> anyhow::Result<()
     let export_storage: PostgresStorage<ExportIssuesJob> =
         PostgresStorage::new(pg_pool.clone());
     let scheduled_storage: PostgresStorage<RunIssueAutomationJob> =
+        PostgresStorage::new(pg_pool.clone());
+    let seed_storage: PostgresStorage<WorkspaceSeedJob> =
         PostgresStorage::new(pg_pool);
 
     // Monitor agrupa todos los workers y los ejecuta concurrentemente
@@ -88,6 +91,12 @@ async fn start_job_workers(db_url: String, state: AppState) -> anyhow::Result<()
                 .data(state.clone())
                 .backend(scheduled_storage)
                 .build_fn(handle_run_issue_automation),
+        )
+        .register(
+            WorkerBuilder::new("workspace-seed")
+                .data(state.clone())
+                .backend(seed_storage)
+                .build_fn(handle_workspace_seed),
         )
         .run()
         .await?;

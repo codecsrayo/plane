@@ -402,6 +402,25 @@ pub async fn create_workspace(
 
     txn.commit().await.map_err(AppError::Database)?;
 
+    // Encolar siembra de datos iniciales — best-effort (no bloquea la respuesta)
+    {
+        use crate::jobs::workspace_seed::WorkspaceSeedJob;
+        use apalis::prelude::Storage;
+        use apalis_sql::postgres::PostgresStorage;
+
+        if let Ok(pg_pool) = sqlx::PgPool::connect(&state.config.database_url).await {
+            let mut seed_storage: PostgresStorage<WorkspaceSeedJob> =
+                PostgresStorage::new(pg_pool);
+            let _ = seed_storage
+                .push(WorkspaceSeedJob {
+                    workspace_id: ws_id,
+                    owner_id: user.id,
+                    workspace_name: body.name.clone(),
+                })
+                .await;
+        }
+    }
+
     let resp = WorkspaceResponse::from_model(&ws, Some(1), Some(ROLE_ADMIN));
     Ok((StatusCode::CREATED, Json(resp)))
 }

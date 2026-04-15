@@ -11,3 +11,4 @@ pub mod export;
 pub mod github_sync;
 pub mod notifications;
 pub mod scheduled;
+pub mod workspace_seed;
