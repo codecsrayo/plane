@@ -78,7 +78,11 @@ lettre = { version = "0.11.21", features = [
 ] }
 
 # Crypto / seguridad
-openssl      = { version = "0.10.77", features = ["vendored"] }
+# "vendored" eliminado: fuerza compilar OpenSSL desde fuente (requiere Perl)
+# y añade minutos al build. El sistema ya provee libssl-dev en todos los
+# entornos (Docker + local). Para builds estáticos de distribución usar
+# OPENSSL_STATIC=1 con la lib del sistema.
+openssl      = { version = "0.10.77" }
 sha2         = "0.11.0"    # hash de API keys — NUNCA almacenar raw token en memoria
 jsonwebtoken = "10.3.0"    # JWT RS256 para GitHub App auth
 aes-gcm      = "0.10.3"   # AES-256-GCM para cifrado de tokens OAuth en reposo (versión estable; RC descartada)

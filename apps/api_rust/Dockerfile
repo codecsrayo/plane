@@ -16,6 +16,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
+# Usa el OpenSSL del sistema (libssl-dev) enlazado estáticamente.
+# Sustituye al feature "vendored" (que compilaba OpenSSL desde fuente con Perl)
+# manteniendo la portabilidad del binario sin la dependencia de Perl.
+ENV OPENSSL_STATIC=1
+
 WORKDIR /build
 
 # ── Caché de dependencias ─────────────────────────────────────────────────────
