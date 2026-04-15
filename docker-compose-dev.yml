@@ -296,23 +296,6 @@ services:
     volumes:
       - redisdata:/data
 
-  plane-mq:
-    container_name: plane-codecsrayo-mq
-    image: rabbitmq:3.13.6-management-alpine
-    restart: unless-stopped
-    networks:
-      default:
-        aliases:
-          - plane-mq
-    volumes:
-      - rabbitmq_data:/var/lib/rabbitmq
-    env_file:
-      - .env
-    environment:
-      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
-      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD}
-      RABBITMQ_DEFAULT_VHOST: ${RABBITMQ_VHOST}
-
   plane-minio:
     container_name: plane-codecsrayo-minio
     image: minio/minio
@@ -425,14 +408,11 @@ services:
         condition: service_healthy
       plane-redis:
         condition: service_started
-      plane-mq:
-        condition: service_started
 
 volumes:
   redisdata:
   uploads:
   pgdata:
-  rabbitmq_data:
   # Caché de compilación Rust — evita recompilar deps en cada reinicio del contenedor
   rust_target:
   cargo_registry:
