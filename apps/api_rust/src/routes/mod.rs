@@ -320,6 +320,8 @@ pub mod instances;
             workspaces::CreateWorkspaceRequest,
             workspaces::UpdateWorkspaceRequest,
             workspaces::WorkspaceMemberResponse,
+            workspaces::WorkspaceMemberNestedResponse,
+            workspaces::UserLiteDto,
             workspaces::WorkspaceMemberMeResponse,
             workspaces::UpdateMemberRoleRequest,
             workspaces::InvitationResponse,

@@ -25,7 +25,7 @@ use crate::{
         any_auth::AnyAuth,
         permissions::{require_workspace_admin, ROLE_ADMIN, ROLE_GUEST, ROLE_MEMBER, ROLE_VIEWER},
     },
-    entities::{draft_issues, workspace_member_invites, workspace_members, workspaces},
+    entities::{draft_issues, users, workspace_member_invites, workspace_members, workspaces},
     error::AppError,
     routes::helpers::{require_workspace_member, workspace_by_slug},
     utils::{instance_config::get_config_value, soft_delete::SoftDeleteExt, url::contains_url, color::get_random_color},
@@ -243,6 +243,102 @@ impl From<&workspace_members::Model> for WorkspaceMemberResponse {
             created_at: m.created_at.into(),
         }
     }
+}
+
+// ─── DTOs Django-compat para listado de miembros ─────────────────────────────
+//
+// Django expone los miembros del workspace con el `member` ANIDADO como objeto
+// de usuario (ver `WorkSpaceMemberSerializer` en
+// `apps/api/plane/app/serializers/workspace.py:85-90` con
+// `member = UserLiteSerializer(read_only=True)`). El frontend consume este
+// shape directamente en `workspace-member.store.ts:240`:
+//
+//     set(this.memberRoot?.memberMap, member.member.id, { ...member.member, ... });
+//
+// El DTO flat de arriba (`WorkspaceMemberResponse`) NO es compatible con ese
+// acceso a `member.member.id` y causa
+//   TypeError: Cannot read properties of undefined (reading 'id')
+// cuando el frontend apunta al Rust. Estos DTOs nuevos reflejan exactamente la
+// salida del serializer Django con `fields=("id", "member", "role")`.
+
+/// Mirror de `UserLiteSerializer` + rama admin de `UserAdminLiteSerializer`
+/// (`apps/api/plane/app/serializers/user.py:141-170`).
+///
+/// `email` y `last_login_medium` solo se emiten cuando el caller es no-Guest
+/// (Django: `if workspace_member.role > 5` en
+/// `apps/api/plane/app/views/workspace/member.py:51`). `skip_serializing_if`
+/// mantiene el shape JSON idéntico al de Django cuando el caller es Guest —
+/// las claves no aparecen, no se mandan como `null`.
+#[derive(Debug, Serialize, utoipa::ToSchema)]
+pub struct UserLiteDto {
+    pub id: Uuid,
+    pub first_name: String,
+    pub last_name: String,
+    pub avatar: String,
+    pub avatar_url: Option<String>,
+    pub is_bot: bool,
+    pub display_name: String,
+    /// Solo presente si el caller es no-Guest (paridad con `UserAdminLiteSerializer`).
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub email: Option<String>,
+    /// Solo presente si el caller es no-Guest (paridad con `UserAdminLiteSerializer`).
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub last_login_medium: Option<String>,
+}
+
+/// Construye un `UserLiteDto` a partir del modelo SeaORM, aplicando la misma
+/// lógica de `avatar_url` que `User.avatar_url` en Django
+/// (`apps/api/plane/db/models/user.py:142-151`):
+///
+///   1. Si hay `avatar_asset_id`, devuelve `/api/assets/v2/static/{id}/`.
+///      Este path es el branch `USER_AVATAR` de `FileAsset.asset_url`
+///      (`apps/api/plane/db/models/asset.py:79-100`), por lo que se compone
+///      directamente desde el UUID sin necesidad de un JOIN a `file_assets` —
+///      el `entity_type` del asset apuntado por `users.avatar_asset_id` es
+///      siempre `USER_AVATAR` por invariante del modelo Django.
+///   2. Si no, devuelve el string legacy `avatar` si no está vacío.
+///   3. En cualquier otro caso, `None`.
+///
+/// `is_admin` activa los campos que `UserAdminLiteSerializer` añade sobre
+/// `UserLiteSerializer`.
+fn user_to_lite(user: &users::Model, is_admin: bool) -> UserLiteDto {
+    let avatar_url = if let Some(asset_id) = user.avatar_asset_id {
+        Some(format!("/api/assets/v2/static/{}/", asset_id))
+    } else if !user.avatar.is_empty() {
+        Some(user.avatar.clone())
+    } else {
+        None
+    };
+
+    UserLiteDto {
+        id: user.id,
+        first_name: user.first_name.clone(),
+        last_name: user.last_name.clone(),
+        avatar: user.avatar.clone(),
+        avatar_url,
+        is_bot: user.is_bot,
+        display_name: user.display_name.clone(),
+        email: if is_admin { user.email.clone() } else { None },
+        last_login_medium: if is_admin {
+            Some(user.last_login_medium.clone())
+        } else {
+            None
+        },
+    }
+}
+
+/// Mirror de `WorkSpaceMemberSerializer` con `fields=("id","member","role")`
+/// (uso explícito en
+/// `apps/api/plane/app/views/workspace/member.py:52,54,71,73`). NO incluye
+/// `company_role`, `is_active`, `created_at`, etc. — el serializer Django con
+/// esa whitelist tampoco los emite, y emitir campos extra rompería consumidores
+/// que hacen `{ ...member }` spread (cualquier campo extra pisaría propiedades
+/// del store MobX).
+#[derive(Debug, Serialize, utoipa::ToSchema)]
+pub struct WorkspaceMemberNestedResponse {
+    pub id: Uuid,
+    pub member: UserLiteDto,
+    pub role: i16,
 }
 
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
@@ -679,7 +775,17 @@ pub async fn delete_workspace(
 
 /// `GET /api/workspaces/{slug}/members/`
 ///
-/// Lista miembros activos del workspace.
+/// Lista miembros activos del workspace con el usuario anidado.
+///
+/// Mirror exacto de `WorkSpaceMemberViewSet.list`
+/// (`apps/api/plane/app/views/workspace/member.py:45-55`). Shape de respuesta
+/// idéntico al de Django con `WorkSpaceMemberSerializer(fields=("id","member",
+/// "role"))` — necesario porque el frontend (`workspace-member.store.ts:240`)
+/// accede a `member.member.id` y falla con TypeError si el shape no es nested.
+///
+/// El branch admin/no-admin sigue a Django: `if workspace_member.role > 5`
+/// (ROLE_GUEST) usa `UserAdminLiteSerializer` (incluye `email`/
+/// `last_login_medium`); caso contrario `UserLiteSerializer`.
 #[utoipa::path(
     get,
     path = "/api/workspaces/{slug}/members/",
@@ -687,7 +793,7 @@ pub async fn delete_workspace(
     security(("TokenAuth" = []), ("SessionCookie" = [])),
     params(("slug" = String, Path, description = "Workspace slug")),
     responses(
-        (status = 200, description = "Member list", body = Vec<WorkspaceMemberResponse>),
+        (status = 200, description = "Member list", body = Vec<WorkspaceMemberNestedResponse>),
         (status = 403, description = "Not a member"),
     )
 )]
@@ -695,10 +801,19 @@ pub async fn list_members(
     State(state): State<AppState>,
     AnyAuth(user): AnyAuth,
     Path(slug): Path<String>,
-) -> Result<Json<Vec<WorkspaceMemberResponse>>, AppError> {
+) -> Result<Json<Vec<WorkspaceMemberNestedResponse>>, AppError> {
     let ws = workspace_by_slug(&state.db, &slug).await?;
-    require_workspace_member(&state.db, ws.id, user.id).await?;
+    let caller = require_workspace_member(&state.db, ws.id, user.id).await?;
 
+    // Paridad Django: `if workspace_member.role > 5` usa AdminSerializer.
+    // ROLE_GUEST = 5 en plane/app/permissions/base.py y en auth/permissions.rs.
+    let is_admin = caller.role > ROLE_GUEST;
+
+    // ── 1. Fetch de memberships ───────────────────────────────────────────────
+    //
+    // Django: `.filter(workspace__slug=self.kwargs.get("slug"))` sobre el
+    // queryset base del viewset + list-view adicional filtra por is_active=True.
+    // `.active()` aplica el filtro soft-delete (deleted_at IS NULL).
     let members = workspace_members::Entity::find()
         .active()
         .filter(workspace_members::Column::WorkspaceId.eq(ws.id))
@@ -708,7 +823,54 @@ pub async fn list_members(
         .await
         .map_err(AppError::Database)?;
 
-    Ok(Json(members.iter().map(WorkspaceMemberResponse::from).collect()))
+    if members.is_empty() {
+        return Ok(Json(Vec::new()));
+    }
+
+    // ── 2. Batch-fetch de usuarios referenciados ──────────────────────────────
+    //
+    // Dos queries total (no N+1). Django hace lo equivalente con
+    // `select_related("member", "member__avatar_asset")` — nosotros resolvemos
+    // avatar_url sin JOIN adicional a `file_assets` porque el path se computa
+    // directo desde `avatar_asset_id` (ver `user_to_lite`). Deduplicamos via
+    // HashSet por si hubiera duplicados inesperados (no debería, la unique
+    // constraint parcial lo impide, pero cuesta poco protegerse).
+    let member_ids: Vec<Uuid> = members
+        .iter()
+        .map(|m| m.member_id)
+        .collect::<HashSet<_>>()
+        .into_iter()
+        .collect();
+
+    let users_vec = users::Entity::find()
+        .filter(users::Column::Id.is_in(member_ids))
+        .all(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    let users_by_id: std::collections::HashMap<Uuid, users::Model> =
+        users_vec.into_iter().map(|u| (u.id, u)).collect();
+
+    // ── 3. Ensamblado del shape Django-compatible ─────────────────────────────
+    //
+    // Django hace INNER JOIN vía `select_related("member")`: si un user fue
+    // hard-deleted pero la membership quedó huérfana, la fila desaparece del
+    // resultset (comportamiento implícito de join required). Replicamos con
+    // `filter_map`: si no hay entrada en `users_by_id`, se omite la fila. Esto
+    // evita devolver `member: null` al frontend (que reventaría igual en
+    // `member.member.id`).
+    let response: Vec<WorkspaceMemberNestedResponse> = members
+        .iter()
+        .filter_map(|m| {
+            users_by_id.get(&m.member_id).map(|u| WorkspaceMemberNestedResponse {
+                id: m.id,
+                member: user_to_lite(u, is_admin),
+                role: m.role,
+            })
+        })
+        .collect();
+
+    Ok(Json(response))
 }
 
 /// `PATCH /api/workspaces/{slug}/members/{pk}/`
