@@ -17,6 +17,48 @@ const viteEnv = Object.keys(process.env)
 
 const basePath = joinUrlPath(process.env.VITE_ADMIN_BASE_PATH ?? "", "/") ?? "/";
 
+// Dependencias descubiertas que Vite re-optimiza on-the-fly durante navegación,
+// lo que dispara un full reload y deja pendientes requests al hash previo
+// (reproducido como 504 Gateway Timeout cuando el admin corre detrás de un
+// reverse proxy con timeouts agresivos). Pre-declararlas fuerza un único
+// pre-bundle al arranque, evitando el reload y los hashes stale.
+// Fuente de la lista: output de Vite "new dependencies optimized: ..." en
+// docker-compose-dev.yml del servicio `admin`.
+const optimizeDepsInclude = [
+  "next-themes",
+  "swr",
+  "mobx-react",
+  "mobx",
+  "@bprogress/core",
+  "lucide-react",
+  "lodash-es",
+  "uuid",
+  "axios",
+  "file-type",
+  "react-popper",
+  "@headlessui/react",
+  "react-color",
+  "@radix-ui/react-scroll-area",
+  "@atlaskit/pragmatic-drag-and-drop/dist/cjs/entry-point/element/adapter.js",
+  "@atlaskit/pragmatic-drag-and-drop/dist/cjs/entry-point/combine.js",
+  "@atlaskit/pragmatic-drag-and-drop-hitbox/dist/cjs/closest-edge.js",
+  "@blueprintjs/popover2",
+  "date-fns",
+  "date-fns/differenceInCalendarDays",
+  "clsx",
+  "tailwind-merge",
+  "rehype-parse",
+  "rehype-remark",
+  "remark-gfm",
+  "remark-stringify",
+  "unified",
+  "sanitize-html",
+  "chroma-js",
+  "class-variance-authority",
+  "@base-ui-components/react/tooltip",
+  "@base-ui-components/react/toast",
+];
+
 export default defineConfig(() => ({
   base: basePath,
   define: {
@@ -33,6 +75,9 @@ export default defineConfig(() => ({
       "next/navigation": path.resolve(__dirname, "app/compat/next/navigation.ts"),
     },
     dedupe: ["react", "react-dom"],
+  },
+  optimizeDeps: {
+    include: optimizeDepsInclude,
   },
   server: {
     allowedHosts: true as const,
