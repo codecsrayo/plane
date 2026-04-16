@@ -368,6 +368,7 @@ services:
     env_file:
       - ./apps/api/.env
     environment:
+      DEBUG: "true"
       API_PORT: "8000"
       RUST_LOG: "debug,sea_orm=info,sqlx=warn"
       RUST_BACKTRACE: "1"
