@@ -79,6 +79,7 @@ export const CreateProjectForm = observer(function CreateProjectForm(props: TCre
 
     return createProject(workspaceSlug.toString(), payload)
       .then(async (res) => {
+        let coverUploadFailed = false;
         if (coverImage && needsCoverUpload) {
           try {
             uploadedAssetUrl = await uploadCoverImage(coverImage, {
@@ -88,28 +89,39 @@ export const CreateProjectForm = observer(function CreateProjectForm(props: TCre
               isUserAsset: false,
             });
           } catch (error) {
+            // El proyecto ya se creo; no abortamos el flujo por un
+            // fallo de asset secundario. Avisamos al usuario y seguimos
+            // con la navegacion/redireccion normales.
+            coverUploadFailed = true;
             console.error("Error uploading cover image:", error);
             setToast({
-              type: TOAST_TYPE.ERROR,
-              title: t("toast.error"),
+              type: TOAST_TYPE.WARNING,
+              title: t("toast.warning"),
               message: error instanceof Error ? error.message : "Failed to upload cover image",
             });
-            return Promise.reject(error);
           }
         }
 
-        if (uploadedAssetUrl) {
-          await updateCoverImageStatus(res.id, uploadedAssetUrl);
-          await updateProject(workspaceSlug.toString(), res.id, { cover_image_url: uploadedAssetUrl });
-        } else if (coverImage && !needsCoverUpload) {
-          await updateCoverImageStatus(res.id, coverImage);
-          await updateProject(workspaceSlug.toString(), res.id, { cover_image_url: coverImage });
+        try {
+          if (uploadedAssetUrl) {
+            await updateCoverImageStatus(res.id, uploadedAssetUrl);
+            await updateProject(workspaceSlug.toString(), res.id, { cover_image_url: uploadedAssetUrl });
+          } else if (coverImage && !needsCoverUpload) {
+            await updateCoverImageStatus(res.id, coverImage);
+            await updateProject(workspaceSlug.toString(), res.id, { cover_image_url: coverImage });
+          }
+        } catch (error) {
+          // Tampoco abortamos por fallos post-creacion del cover.
+          console.error("Error updating cover image metadata:", error);
         }
-        setToast({
-          type: TOAST_TYPE.SUCCESS,
-          title: t("success"),
-          message: t("project_created_successfully"),
-        });
+
+        if (!coverUploadFailed) {
+          setToast({
+            type: TOAST_TYPE.SUCCESS,
+            title: t("success"),
+            message: t("project_created_successfully"),
+          });
+        }
 
         if (setToFavorite) {
           handleAddToFavorites(res.id);
