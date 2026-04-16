@@ -117,7 +117,7 @@ function AppSidebarItemIcon({ icon, highlight }: AppSidebarItemIconProps) {
 // forwardRef permite que Tooltip (base-ui / blueprintjs) asigne un ref
 // directamente sin necesitar el workaround del <span className="contents">.
 const AppSidebarLinkItem = React.forwardRef<HTMLAnchorElement, AppSidebarLinkItemProps>(function AppSidebarLinkItem(
-  { href, children, className },
+  { href, children, className }: AppSidebarLinkItemProps = {} as AppSidebarLinkItemProps,
   ref
 ) {
   if (!href) return null;
@@ -133,7 +133,10 @@ AppSidebarLinkItem.displayName = "AppSidebarLinkItem";
 // forwardRef en el botón también — cualquier Tooltip que envuelva la variante
 // "button" puede asignar ref sin el span workaround.
 const AppSidebarButtonItem = React.forwardRef<HTMLButtonElement | HTMLDivElement, AppSidebarButtonItemProps>(
-  function AppSidebarButtonItem({ children, onClick, disabled = false, className, as = "button" }, ref) {
+  function AppSidebarButtonItem(
+    { children, onClick, disabled = false, className, as = "button" }: AppSidebarButtonItemProps = {} as AppSidebarButtonItemProps,
+    ref
+  ) {
     // Cuando `as="div"` el caller es responsable del comportamiento de boton
     // (lo tipico: un <Menu.Button> de Headless UI que envuelve a este
     // componente y ya aporta onClick/keyboard/aria). Aqui solo emitimos un
