@@ -88,7 +88,8 @@ pub struct WorkspaceIssueItem {
     pub link_count:      i64,
     pub is_draft:        bool,
     pub archived_at:     Option<chrono::NaiveDate>,
-    pub state__group:    Option<String>,
+    #[serde(rename = "state__group")]
+    pub state_group:     Option<String>,
     pub assignee_ids:    Vec<Uuid>,
     pub label_ids:       Vec<Uuid>,
     pub module_ids:      Vec<Uuid>,
@@ -104,10 +105,10 @@ fn parse_cursor(cursor: Option<&str>, fallback_per_page: u64) -> (u64, u64) {
         if parts.len() == 3 {
             let page_size = parts[0].parse::<u64>().unwrap_or(fallback_per_page);
             let current_page = parts[1].parse::<u64>().unwrap_or(0);
-            return (page_size.min(PAGINATOR_MAX_LIMIT).max(1), current_page);
+            return (page_size.clamp(1, PAGINATOR_MAX_LIMIT), current_page);
         }
     }
-    (fallback_per_page.min(PAGINATOR_MAX_LIMIT).max(1), 0)
+    (fallback_per_page.clamp(1, PAGINATOR_MAX_LIMIT), 0)
 }
 
 // ── Enriquecimiento batch ─────────────────────────────────────────────────────
@@ -531,7 +532,7 @@ pub async fn list_workspace_view_issues(
         .into_iter()
         .map(|m| {
             let id = m.id;
-            let state__group = m
+            let state_group = m
                 .state_id
                 .and_then(|sid| enrich.state_groups.get(&sid).cloned());
 
@@ -558,7 +559,7 @@ pub async fn list_workspace_view_issues(
                 link_count: enrich.links.get(&id).copied().unwrap_or(0),
                 is_draft: m.is_draft,
                 archived_at: m.archived_at,
-                state__group,
+                state_group,
                 assignee_ids: enrich.assignees.remove(&id).unwrap_or_default(),
                 label_ids: enrich.labels.remove(&id).unwrap_or_default(),
                 module_ids: enrich.modules.remove(&id).unwrap_or_default(),
