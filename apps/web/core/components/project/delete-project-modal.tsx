@@ -43,7 +43,9 @@ export function DeleteProjectModal(props: DeleteProjectModal) {
     watch,
   } = useForm({ defaultValues });
 
-  const canDelete = watch("projectName") === project?.name && watch("confirmDelete") === "delete my project";
+  const canDelete =
+    watch("projectName").trim() === project?.name?.trim() &&
+    watch("confirmDelete").trim().toLowerCase() === "delete my project";
 
   const handleClose = () => {
     const timer = setTimeout(() => {
