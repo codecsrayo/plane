@@ -2373,7 +2373,7 @@ pub async fn get_workspace_user_activity(
                     id: p.id,
                     identifier: p.identifier.clone(),
                     name: p.name.clone(),
-                    logo_props: p.logo_props.clone().into(),
+                    logo_props: p.logo_props.clone(),
                 }
             });
 
