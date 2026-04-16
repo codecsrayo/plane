@@ -20,9 +20,8 @@ import { useInstance } from "@/hooks/store/use-instance";
 import { useWorkspace } from "@/hooks/store/use-workspace";
 import { useUserPermissions } from "@/hooks/store/user";
 // services
-import { IntegrationService } from "@/services/integrations";
-
-const integrationService = new IntegrationService();
+import { integrationService } from "@/services/integrations";
+import { isIntegrationEnabled } from "@/components/integration/utils";
 
 function WorkspaceIntegrationsPage() {
   // store hooks
@@ -47,12 +46,7 @@ function WorkspaceIntegrationsPage() {
         <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {appIntegrations ? (
             appIntegrations
-              .filter((integration) => {
-                if (integration.provider === "github") return config?.is_github_integration_enabled ?? true;
-                if (integration.provider === "gitlab") return config?.is_gitlab_integration_enabled ?? true;
-                if (integration.provider === "slack") return config?.is_slack_enabled ?? true;
-                return true;
-              })
+              .filter((integration) => isIntegrationEnabled(integration.provider, config))
               .map((integration) => <SingleIntegrationCard key={integration.id} integration={integration} />)
           ) : (
             <IntegrationsSettingsLoader />

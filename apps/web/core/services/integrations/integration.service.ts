@@ -32,6 +32,8 @@ export interface IGithubPRStateMapping {
   github_pr_state: string;
 }
 
+export type TIntegrationDeleteResponse = void;
+
 export class IntegrationService extends APIService {
   constructor() {
     super(API_BASE_URL);
@@ -53,7 +55,7 @@ export class IntegrationService extends APIService {
       });
   }
 
-  async deleteWorkspaceIntegration(workspaceSlug: string, integrationId: string): Promise<any> {
+  async deleteWorkspaceIntegration(workspaceSlug: string, integrationId: string): Promise<TIntegrationDeleteResponse> {
     return this.delete(`/api/workspaces/${workspaceSlug}/workspace-integrations/${integrationId}/`)
       .then((res) => res?.data)
       .catch((error) => {
@@ -85,7 +87,11 @@ export class IntegrationService extends APIService {
       });
   }
 
-  async deleteImporterService(workspaceSlug: string, service: string, importerId: string): Promise<any> {
+  async deleteImporterService(
+    workspaceSlug: string,
+    service: string,
+    importerId: string
+  ): Promise<TIntegrationDeleteResponse> {
     return this.delete(`/api/workspaces/${workspaceSlug}/importers/${service}/${importerId}/`)
       .then((response) => response?.data)
       .catch((error) => {
@@ -174,3 +180,5 @@ export class IntegrationService extends APIService {
       });
   }
 }
+
+export const integrationService = new IntegrationService();

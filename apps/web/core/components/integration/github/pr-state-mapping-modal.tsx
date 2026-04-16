@@ -14,9 +14,7 @@ import { EModalWidth, ModalCore } from "@plane/ui";
 import { useProject } from "@/hooks/store/use-project";
 import { useProjectState } from "@/hooks/store/use-project-state";
 // services
-import { IntegrationService } from "@/services/integrations";
-
-const integrationService = new IntegrationService();
+import { integrationService } from "@/services/integrations";
 
 const GITHUB_PR_STATES: { value: string; label: string }[] = [
   { value: "draft_open", label: "Draft Open" },

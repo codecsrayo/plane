@@ -15,9 +15,8 @@ import { EModalWidth, ModalCore } from "@plane/ui";
 import { useProject } from "@/hooks/store/use-project";
 import { useProjectState } from "@/hooks/store/use-project-state";
 // services
-import { IntegrationService } from "@/services/integrations";
-
-const integrationService = new IntegrationService();
+import { getGithubReposSwrKey } from "@/components/integration/utils";
+import { integrationService } from "@/services/integrations";
 
 type SyncDirection = "bidirectional" | "unidirectional";
 type GithubRepositoryOption = IGithubRepository & { name?: string };
@@ -48,7 +47,7 @@ export const GithubProjectIssueSyncModal = observer(function GithubProjectIssueS
   const [syncDirection, setSyncDirection] = useState<SyncDirection>("bidirectional");
   const [isSyncing, setIsSyncing] = useState(false);
 
-  const REPOS_KEY = `GITHUB_REPOS_${workspaceSlug}`;
+  const REPOS_KEY = getGithubReposSwrKey(workspaceSlug);
   const { data: repos, isLoading: reposLoading } = useSWR<GithubRepositoryOption[]>(isOpen ? REPOS_KEY : null, () =>
     integrationService.getGithubRepositories(workspaceSlug)
   );

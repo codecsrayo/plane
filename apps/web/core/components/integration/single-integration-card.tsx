@@ -26,13 +26,12 @@ import { useUserPermissions } from "@/hooks/store/user";
 import useIntegrationPopup from "@/hooks/use-integration-popup";
 import { usePlatformOS } from "@/hooks/use-platform-os";
 // services
-import { IntegrationService } from "@/services/integrations";
+import { integrationService } from "@/services/integrations";
+import { isIntegrationEnabled, type TIntegrationProvider } from "./utils";
 
 type Props = {
   integration: IAppIntegration;
 };
-
-type TIntegrationProvider = "github" | "gitlab" | "slack";
 
 type TIntegrationProviderDetail = {
   logo: string;
@@ -57,9 +56,6 @@ const integrationDetails: Record<TIntegrationProvider, TIntegrationProviderDetai
     notInstalled: "Connect with Slack with your Plane workspace to sync project work items.",
   },
 };
-
-// services
-const integrationService = new IntegrationService();
 
 export const SingleIntegrationCard = observer(function SingleIntegrationCard({ integration }: Props) {
   // router
@@ -100,14 +96,7 @@ export const SingleIntegrationCard = observer(function SingleIntegrationCard({ i
           : true;
 
   // Respect God Mode enable/disable flags per integration provider
-  const isEnabled =
-    integration.provider === "github"
-      ? (config?.is_github_integration_enabled ?? true)
-      : integration.provider === "gitlab"
-        ? (config?.is_gitlab_integration_enabled ?? true)
-        : integration.provider === "slack"
-          ? (config?.is_slack_enabled ?? true)
-          : true;
+  const isEnabled = isIntegrationEnabled(integration.provider, config);
 
   // Guard: if the provider is not locally known, skip rendering to avoid runtime errors
   if (!providerDetails) return null;

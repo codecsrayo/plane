@@ -19,11 +19,9 @@ import { ImportExportSettingsLoader } from "@/components/ui/loader/settings/impo
 // constants
 import { EXPORT_SERVICES_LIST } from "@/constants/fetch-keys";
 // services
-import { IntegrationService } from "@/services/integrations";
+import { integrationService } from "@/services/integrations";
 // local imports
 import { useExportColumns } from "./column";
-
-const integrationService = new IntegrationService();
 
 type Props = {
   workspaceSlug: string;
