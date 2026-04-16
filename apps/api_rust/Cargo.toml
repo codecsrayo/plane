@@ -97,6 +97,7 @@ openssl      = { version = "0.10.77" }
 sha2         = "0.11.0"    # hash de API keys — NUNCA almacenar raw token en memoria
 jsonwebtoken = "10.3.0"    # JWT RS256 para GitHub App auth
 aes-gcm      = "0.10.3"   # AES-256-GCM para cifrado de tokens OAuth en reposo
+hmac-sha256  = "1.1.12"   # HMAC-SHA256 puro sin deps, para firma SigV4 presigned POST a S3
 
 # Serialización
 serde      = { version = "1.0.228", features = ["derive"] }
