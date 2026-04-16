@@ -1150,10 +1150,19 @@ pub async fn get_user_preferences(
 
     if !to_insert.is_empty() {
         // ON CONFLICT DO NOTHING — espejo de bulk_create(ignore_conflicts=True).
-        // La unique constraint cubre (workspace_id, user_id, key) cuando
-        // deleted_at IS NULL, así que reaplicar el GET concurrentemente
-        // desde otra pestaña no rompe.
-        use sea_orm::sea_query::OnConflict;
+        // La unique constraint parcial cubre (workspace_id, user_id, key) cuando
+        // deleted_at IS NULL, así que reaplicar el GET concurrentemente desde otra
+        // pestaña no rompe.
+        //
+        // IMPORTANTE: PostgreSQL EXIGE repetir el predicado `WHERE deleted_at IS NULL`
+        // en el conflict target para poder inferir un arbiter index parcial — sin
+        // `.target_and_where(...)` el INSERT revienta con "there is no unique or
+        // exclusion constraint matching the ON CONFLICT specification" aunque las
+        // columnas coincidan exactamente con la constraint. Ver
+        // plane/db/models/workspace.py:443-451 (constraint Django) y
+        // https://www.postgresql.org/docs/current/sql-insert.html#SQL-ON-CONFLICT
+        // ("index_predicate … must satisfy arbiter indexes").
+        use sea_orm::sea_query::{Expr, OnConflict};
         workspace_user_preferences::Entity::insert_many(to_insert)
             .on_conflict(
                 OnConflict::columns([
@@ -1161,6 +1170,9 @@ pub async fn get_user_preferences(
                     workspace_user_preferences::Column::UserId,
                     workspace_user_preferences::Column::Key,
                 ])
+                .target_and_where(
+                    Expr::col(workspace_user_preferences::Column::DeletedAt).is_null(),
+                )
                 .do_nothing()
                 .to_owned(),
             )
