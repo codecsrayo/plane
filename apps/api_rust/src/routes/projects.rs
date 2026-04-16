@@ -235,6 +235,45 @@ impl ProjectResponse {
     }
 }
 
+/// Respuesta plana de `GET /workspaces/{slug}/projects/` — espeja **exactamente**
+/// los 22 campos que Django expone mediante `.values(...)` en
+/// `ProjectViewSet.list` (`plane/app/views/project/base.py`).
+///
+/// Claves importantes:
+/// - `workspace` (no `workspace_id`): el frontend filtra con `project.workspace`.
+/// - `project_lead` (no `project_lead_id`): convención DRF para FK.
+/// - `inbox_view`: alias de `intake_view`.
+/// - `sort_order`: viene de `project_user_properties` del usuario.
+/// - `intake_count`: conteo de `intake_issues` con status=-2 (PENDING).
+///
+/// NO incluye `description`, `emoji`, `cover_image`, `timezone`, etc. — Django
+/// tampoco los manda en este endpoint; para eso existe `/projects/{id}/` y
+/// `/projects/details/`.
+#[derive(Debug, Serialize, utoipa::ToSchema)]
+pub struct ProjectListResponse {
+    pub id: Uuid,
+    pub name: String,
+    pub identifier: String,
+    pub sort_order: Option<f64>,
+    pub logo_props: serde_json::Value,
+    pub member_role: Option<i16>,
+    pub intake_count: i64,
+    pub archived_at: Option<DateTime<Utc>>,
+    pub workspace: Uuid,
+    pub cycle_view: bool,
+    pub issue_views_view: bool,
+    pub module_view: bool,
+    pub page_view: bool,
+    pub inbox_view: bool,
+    pub guest_view_all_features: bool,
+    pub project_lead: Option<Uuid>,
+    pub network: i16,
+    pub created_at: DateTime<Utc>,
+    pub updated_at: DateTime<Utc>,
+    pub created_by: Option<Uuid>,
+    pub updated_by: Option<Uuid>,
+}
+
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct CreateProjectRequest {
     pub name: String,
@@ -338,8 +377,13 @@ pub struct ProjectInviteEmail {
 
 /// `GET /api/workspaces/{slug}/projects/`
 ///
-/// Lista proyectos visibles para el usuario en el workspace.
-/// Un workspace admin ve todos; un miembro normal ve solo sus proyectos.
+/// Lista proyectos visibles para el usuario en el workspace. Espeja
+/// `ProjectViewSet.list` de Django:
+/// - ADMIN: todos los proyectos del workspace.
+/// - MEMBER: proyectos donde es miembro activo **o** `network == 2` (public).
+/// - GUEST: solo proyectos donde es miembro activo.
+///
+/// Devuelve [`ProjectListResponse`] con el mismo shape que `.values(...)` de DRF.
 #[utoipa::path(
     get,
     path = "/api/workspaces/{slug}/projects/",
@@ -347,7 +391,7 @@ pub struct ProjectInviteEmail {
     security(("TokenAuth" = []), ("SessionCookie" = [])),
     params(("slug" = String, Path, description = "Workspace slug")),
     responses(
-        (status = 200, description = "Project list", body = Vec<ProjectResponse>),
+        (status = 200, description = "Project list", body = Vec<ProjectListResponse>),
         (status = 403, description = "Not a workspace member"),
     )
 )]
@@ -355,22 +399,20 @@ pub async fn list_projects(
     State(state): State<AppState>,
     AnyAuth(user): AnyAuth,
     Path(slug): Path<String>,
-) -> Result<Json<Vec<ProjectResponse>>, AppError> {
+) -> Result<Json<Vec<ProjectListResponse>>, AppError> {
     let ws = workspace_by_slug(&state.db, &slug).await?;
     let wm = require_workspace_member(&state.db, ws.id, user.id).await?;
 
+    // ── 1. Filtrado por rol (espeja `def list` de Django) ───────────────────
     let projects_list = if wm.role >= ROLE_ADMIN {
-        // Admin ve todos los proyectos del workspace
         projects::Entity::find()
             .active()
             .filter(projects::Column::WorkspaceId.eq(ws.id))
-            .order_by_asc(projects::Column::Name)
             .all(&state.db)
             .await
             .map_err(AppError::Database)?
     } else {
-        // Miembro ve solo los proyectos donde tiene membresía
-        let project_ids: Vec<Uuid> = project_members::Entity::find()
+        let member_project_ids: Vec<Uuid> = project_members::Entity::find()
             .active()
             .filter(project_members::Column::WorkspaceId.eq(ws.id))
             .filter(project_members::Column::MemberId.eq(user.id))
@@ -382,38 +424,137 @@ pub async fn list_projects(
             .map(|pm| pm.project_id)
             .collect();
 
-        if project_ids.is_empty() {
-            return Ok(Json(vec![]));
+        if wm.role == ROLE_GUEST {
+            // GUEST: estrictamente sus proyectos
+            if member_project_ids.is_empty() {
+                return Ok(Json(vec![]));
+            }
+            projects::Entity::find()
+                .active()
+                .filter(projects::Column::WorkspaceId.eq(ws.id))
+                .filter(projects::Column::Id.is_in(member_project_ids))
+                .all(&state.db)
+                .await
+                .map_err(AppError::Database)?
+        } else {
+            // MEMBER (o VIEWER): sus proyectos + proyectos públicos (network=2)
+            use sea_orm::Condition;
+            let condition = if member_project_ids.is_empty() {
+                Condition::all().add(projects::Column::Network.eq(2i16))
+            } else {
+                Condition::any()
+                    .add(projects::Column::Id.is_in(member_project_ids))
+                    .add(projects::Column::Network.eq(2i16))
+            };
+            projects::Entity::find()
+                .active()
+                .filter(projects::Column::WorkspaceId.eq(ws.id))
+                .filter(condition)
+                .all(&state.db)
+                .await
+                .map_err(AppError::Database)?
         }
-
-        projects::Entity::find()
-            .active()
-            .filter(projects::Column::WorkspaceId.eq(ws.id))
-            .filter(projects::Column::Id.is_in(project_ids))
-            .order_by_asc(projects::Column::Name)
-            .all(&state.db)
-            .await
-            .map_err(AppError::Database)?
     };
 
-    // Membresías del usuario en todos esos proyectos para anotar role
-    let pm_list = project_members::Entity::find()
+    if projects_list.is_empty() {
+        return Ok(Json(vec![]));
+    }
+
+    let project_ids: Vec<Uuid> = projects_list.iter().map(|p| p.id).collect();
+
+    // ── 2. `member_role` del usuario por proyecto (solo memberships activas) ─
+    let pm_map: std::collections::HashMap<Uuid, i16> = project_members::Entity::find()
         .active()
         .filter(project_members::Column::WorkspaceId.eq(ws.id))
         .filter(project_members::Column::MemberId.eq(user.id))
+        .filter(project_members::Column::IsActive.eq(true))
+        .filter(project_members::Column::ProjectId.is_in(project_ids.clone()))
+        .all(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .into_iter()
+        .map(|pm| (pm.project_id, pm.role))
+        .collect();
+
+    // ── 3. `sort_order` por proyecto, del usuario actual ────────────────────
+    let sort_orders: std::collections::HashMap<Uuid, f64> =
+        project_user_properties::Entity::find()
+            .filter(project_user_properties::Column::UserId.eq(user.id))
+            .filter(project_user_properties::Column::WorkspaceId.eq(ws.id))
+            .filter(project_user_properties::Column::ProjectId.is_in(project_ids.clone()))
+            .filter(project_user_properties::Column::DeletedAt.is_null())
+            .all(&state.db)
+            .await
+            .map_err(AppError::Database)?
+            .into_iter()
+            .map(|p| (p.project_id, p.sort_order))
+            .collect();
+
+    // ── 4. `intake_count` por proyecto (status=-2 PENDING, no soft-deleted) ─
+    //
+    // Una sola query agrupada en lugar de N+1 (más eficiente que el loop en
+    // `list_projects_detail`). Espeja el `Count(filter=Q(status=-2, ...))` de Django.
+    let mut intake_counts: std::collections::HashMap<Uuid, i64> =
+        std::collections::HashMap::new();
+    let intake_rows: Vec<(Uuid, i64)> = intake_issues::Entity::find()
+        .select_only()
+        .column(intake_issues::Column::ProjectId)
+        .column_as(
+            sea_orm::sea_query::Expr::col(intake_issues::Column::Id).count(),
+            "count",
+        )
+        .filter(intake_issues::Column::ProjectId.is_in(project_ids.clone()))
+        .filter(intake_issues::Column::Status.eq(-2i32))
+        .filter(intake_issues::Column::DeletedAt.is_null())
+        .group_by(intake_issues::Column::ProjectId)
+        .into_tuple()
         .all(&state.db)
         .await
         .map_err(AppError::Database)?;
-    let pm_map: std::collections::HashMap<Uuid, i16> =
-        pm_list.into_iter().map(|pm| (pm.project_id, pm.role)).collect();
+    for (pid, c) in intake_rows {
+        intake_counts.insert(pid, c);
+    }
 
-    let responses = projects_list
+    // ── 5. Ensamblar + ordenar por (sort_order NULLS LAST, name) como Django ─
+    let mut responses: Vec<ProjectListResponse> = projects_list
         .iter()
-        .map(|p| {
-            let role = pm_map.get(&p.id).copied();
-            ProjectResponse::from_model(p, None, role)
+        .map(|p| ProjectListResponse {
+            id: p.id,
+            name: p.name.clone(),
+            identifier: p.identifier.clone(),
+            sort_order: sort_orders.get(&p.id).copied(),
+            logo_props: p.logo_props.clone(),
+            member_role: pm_map.get(&p.id).copied(),
+            intake_count: *intake_counts.get(&p.id).unwrap_or(&0),
+            archived_at: p.archived_at.map(Into::into),
+            workspace: p.workspace_id,
+            cycle_view: p.cycle_view,
+            issue_views_view: p.issue_views_view,
+            module_view: p.module_view,
+            page_view: p.page_view,
+            inbox_view: p.intake_view,
+            guest_view_all_features: p.guest_view_all_features,
+            project_lead: p.project_lead_id,
+            network: p.network,
+            created_at: p.created_at.into(),
+            updated_at: p.updated_at.into(),
+            created_by: p.created_by_id,
+            updated_by: p.updated_by_id,
         })
         .collect();
+
+    responses.sort_by(|a, b| {
+        // NULLS LAST en sort_order, luego por name (case-sensitive como PG default).
+        match (a.sort_order, b.sort_order) {
+            (Some(x), Some(y)) => x
+                .partial_cmp(&y)
+                .unwrap_or(std::cmp::Ordering::Equal)
+                .then_with(|| a.name.cmp(&b.name)),
+            (Some(_), None) => std::cmp::Ordering::Less,
+            (None, Some(_)) => std::cmp::Ordering::Greater,
+            (None, None) => a.name.cmp(&b.name),
+        }
+    });
 
     Ok(Json(responses))
 }

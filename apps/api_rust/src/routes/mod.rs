@@ -330,6 +330,7 @@ pub mod instances;
             workspaces::InviteEmail,
             workspaces::SlugCheckResponse,
             projects::ProjectResponse,
+            projects::ProjectListResponse,
             projects::ProjectDetailResponse,
             projects::CreateProjectRequest,
             projects::UpdateProjectRequest,
