@@ -22,7 +22,8 @@ use axum::{
 };
 use chrono::{DateTime, Utc};
 use sea_orm::{
-    ActiveModelTrait, ColumnTrait, EntityTrait, QueryFilter, QueryOrder, QuerySelect, Set,
+    ActiveModelTrait, ColumnTrait, EntityTrait, PaginatorTrait, QueryFilter, QueryOrder,
+    QuerySelect, Set,
 };
 use serde::{Deserialize, Serialize};
 use serde_json::Value as JsonValue;
@@ -38,6 +39,7 @@ use crate::{
     },
     error::AppError,
     routes::helpers::{require_workspace_member, workspace_by_slug},
+    utils::pagination,
     AppState,
 };
 
@@ -931,9 +933,18 @@ pub struct UpdateStickyRequest {
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct StickyListQuery {
     pub query: Option<String>,
+    /// Cursor en formato Django: `"per_page:offset:is_prev"` (e.g. `"20:0:0"`).
+    pub cursor: Option<String>,
+    /// Override opcional del per_page (Django lo toma antes que el cursor).
+    pub per_page: Option<u64>,
 }
 
 /// GET /workspaces/{slug}/stickies/
+///
+/// Paridad con Django (`plane/app/views/workspace/sticky.py::WorkspaceStickyViewSet.list`).
+/// Devuelve shape paginado: `{ results, total_count, next_cursor, prev_cursor,
+/// next_page_results, prev_page_results, count, total_pages, total_results,
+/// grouped_by, sub_grouped_by, extra_stats }`.
 #[utoipa::path(
     get,
     path = "/api/workspaces/{slug}/stickies/",
@@ -941,9 +952,11 @@ pub struct StickyListQuery {
     params(
         ("slug" = String, Path, description = "Workspace slug"),
         ("query" = Option<String>, Query, description = "Buscar en descripción"),
+        ("cursor" = Option<String>, Query, description = "Cursor Django: per_page:offset:is_prev"),
+        ("per_page" = Option<u64>, Query, description = "Override per_page"),
     ),
     responses(
-        (status = 200, description = "Lista de stickies"),
+        (status = 200, description = "Lista paginada de stickies"),
     )
 )]
 pub async fn list_stickies(
@@ -957,27 +970,46 @@ pub async fn list_stickies(
     let ws = workspace_by_slug(db, &slug).await?;
     let _member = require_workspace_member(db, ws.id, user_id).await?;
 
+    // Paridad con Django `WorkspaceStickyViewSet.list` + `paginate(default_per_page=20)`.
+    const DEFAULT_PER_PAGE: u64 = 20;
+    const MAX_PER_PAGE: u64 = pagination::DEFAULT_MAX_LIMIT;
+
+    let cursor = pagination::parse_cursor_or_default(q.cursor.as_deref(), DEFAULT_PER_PAGE)?;
+    let limit = pagination::resolve_per_page(
+        Some(cursor.per_page),
+        q.per_page,
+        DEFAULT_PER_PAGE,
+        MAX_PER_PAGE,
+    );
+
     let mut query = stickies::Entity::find()
         .filter(stickies::Column::WorkspaceId.eq(ws.id))
         .filter(stickies::Column::OwnerId.eq(user_id))
         .filter(stickies::Column::DeletedAt.is_null());
 
-    if let Some(search) = &q.query {
-        if !search.is_empty() {
-            query = query.filter(
-                stickies::Column::DescriptionStripped.contains(search.as_str()),
-            );
-        }
+    if let Some(search) = q.query.as_deref().filter(|s| !s.is_empty()) {
+        query = query.filter(stickies::Column::DescriptionStripped.contains(search));
     }
 
-    let items = query
-        .order_by_desc(stickies::Column::SortOrder)
-        .all(db)
+    // Count y page deben usar el MISMO query (mismos filtros) — clonamos antes
+    // de aplicar el orden para evitar divergencia.
+    let total_count = query
+        .clone()
+        .count(db)
         .await
         .map_err(AppError::Database)?;
 
-    let resp: Vec<StickyResponse> = items.into_iter().map(Into::into).collect();
-    Ok((StatusCode::OK, Json(resp)))
+    let items = query
+        .order_by_desc(stickies::Column::SortOrder)
+        .paginate(db, limit)
+        .fetch_page(cursor.offset)
+        .await
+        .map_err(AppError::Database)?;
+
+    let results: Vec<StickyResponse> = items.into_iter().map(Into::into).collect();
+    let body = pagination::build_response(results, total_count, limit, cursor.offset);
+
+    Ok((StatusCode::OK, Json(body)))
 }
 
 /// POST /workspaces/{slug}/stickies/
