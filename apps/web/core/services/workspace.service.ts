@@ -121,7 +121,10 @@ export class WorkspaceService extends APIService {
     return this.get(`/api/workspaces/${workspaceSlug}/workspace-members/me/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response;
+        // Preserve the full response object so callers can check `.status`.
+        // For network errors (no HTTP response), synthesize a response-like
+        // object with status 0 to avoid silent undefined propagation.
+        throw error?.response ?? { status: 0, data: null };
       });
   }
 

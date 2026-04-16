@@ -4,7 +4,7 @@
  * See the LICENSE file for details.
  */
 
-import type { ReactElement } from "react";
+import type { ReactNode } from "react";
 import { createContext } from "react";
 // plane web store
 import { RootStore } from "@/plane-web/store/root.store";
@@ -22,6 +22,6 @@ const initializeStore = () => {
 
 export const store = initializeStore();
 
-export function StoreProvider({ children }: { children: ReactElement }) {
+export function StoreProvider({ children }: { children: ReactNode } = {}) {
   return <StoreContext.Provider value={store}>{children}</StoreContext.Provider>;
 }

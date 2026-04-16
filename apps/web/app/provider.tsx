@@ -33,7 +33,7 @@ export interface IAppProvider {
   children: React.ReactNode;
 }
 
-export function AppProvider(props: IAppProvider) {
+export function AppProvider(props: IAppProvider = { children: null }) {
   const { children } = props;
   // themes
   const { resolvedTheme } = useTheme();

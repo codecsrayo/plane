@@ -48,7 +48,8 @@ export function ResizableSidebar({
   extendedSidebar,
   isAnyExtendedSidebarExpanded = false,
   isAnySidebarDropdownOpen = false,
-}: ResizableSidebarProps) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+}: ResizableSidebarProps = {} as any) {
   // states
   const [isResizing, setIsResizing] = useState(false);
   const [isHoveringTrigger, setIsHoveringTrigger] = useState(false);

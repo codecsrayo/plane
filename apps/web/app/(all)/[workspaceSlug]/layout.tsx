@@ -13,7 +13,7 @@ import { WorkspaceAuthWrapper } from "@/layouts/auth-layout/workspace-wrapper";
 import type { Route } from "./+types/layout";
 
 export default function WorkspaceLayout(props: Route.ComponentProps) {
-  const { workspaceSlug } = props.params;
+  const { workspaceSlug } = props?.params ?? {};
 
   return (
     <AuthenticationWrapper>

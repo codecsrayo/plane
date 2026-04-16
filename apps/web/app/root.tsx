@@ -58,7 +58,7 @@ export const links: LinksFunction = () => [
   },
 ];
 
-export function Layout({ children }: { children: ReactNode }) {
+export function Layout({ children }: { children: ReactNode } = {}) {
   const isSessionRecorderEnabled = parseInt(process.env.VITE_ENABLE_SESSION_RECORDER || "0");
 
   return (

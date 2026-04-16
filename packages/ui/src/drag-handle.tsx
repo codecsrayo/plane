@@ -15,7 +15,7 @@ interface IDragHandle {
 }
 
 export const DragHandle = forwardRef(function DragHandle(
-  props: IDragHandle,
+  props: IDragHandle = {},
   ref: React.ForwardedRef<HTMLButtonElement | null>
 ) {
   const { className, disabled = false } = props;
