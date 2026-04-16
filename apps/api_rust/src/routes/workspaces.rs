@@ -301,7 +301,7 @@ pub struct UserLiteDto {
 ///
 /// `is_admin` activa los campos que `UserAdminLiteSerializer` añade sobre
 /// `UserLiteSerializer`.
-fn user_to_lite(user: &users::Model, is_admin: bool) -> UserLiteDto {
+pub(crate) fn user_to_lite(user: &users::Model, is_admin: bool) -> UserLiteDto {
     let avatar_url = if let Some(asset_id) = user.avatar_asset_id {
         Some(format!("/api/assets/v2/static/{}/", asset_id))
     } else if !user.avatar.is_empty() {

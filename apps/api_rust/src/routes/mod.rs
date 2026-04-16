@@ -95,6 +95,7 @@ pub mod instances;
         projects::update_project,
         projects::delete_project,
         projects::list_project_members,
+        projects::get_project_member_me,
         projects::update_project_member,
         projects::remove_project_member,
         projects::list_project_invitations,
@@ -335,6 +336,9 @@ pub mod instances;
             projects::CreateProjectRequest,
             projects::UpdateProjectRequest,
             projects::ProjectMemberResponse,
+            projects::ProjectMemberMeResponse,
+            projects::WorkspaceLiteDto,
+            projects::ProjectLiteDto,
             projects::UpdateProjectMemberRequest,
             projects::ProjectInvitationResponse,
             projects::CreateProjectInvitationRequest,
@@ -591,6 +595,14 @@ pub fn build_router(state: AppState) -> Router {
         .route(
             "/workspaces/{slug}/projects/{project_id}/members/{pk}",
             patch(projects::update_project_member).delete(projects::remove_project_member),
+        )
+        // Django URL: `workspaces/<slug>/projects/<project_id>/project-members/me/`
+        // (`apps/api/plane/app/urls/project.py:98-100`). Devuelve el ProjectMember
+        // del usuario autenticado. El frontend (base-permissions.store) depende
+        // de este endpoint para cargar permisos de proyecto.
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/project-members/me",
+            get(projects::get_project_member_me),
         )
         .route(
             "/workspaces/{slug}/projects/{project_id}/invitations",

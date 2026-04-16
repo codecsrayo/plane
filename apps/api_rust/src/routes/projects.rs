@@ -26,8 +26,8 @@ use crate::{
     },
     entities::{
         intake_issues, issue_sequences, project_deploy_boards, project_member_invites,
-        project_members, project_user_properties, projects, states, user_favorites,
-        workspace_members,
+        project_members, project_user_properties, projects, states, user_favorites, users,
+        workspace_members, workspaces,
     },
     error::AppError,
     routes::helpers::{require_workspace_member, workspace_by_slug},
@@ -1494,4 +1494,189 @@ pub async fn delete_project_invitation(
     active.update(&state.db).await.map_err(AppError::Database)?;
 
     Ok(StatusCode::NO_CONTENT)
+}
+
+// ─── GET /workspaces/{slug}/projects/{project_id}/project-members/me ──────────
+//
+// Mirror de `plane/app/views/project/member.py::ProjectMemberUserEndpoint`:
+// devuelve el ProjectMember del usuario autenticado serializado con
+// `ProjectMemberSerializer` (workspace/project/member anidados como "lite").
+//
+// Nota: Django usa `ProjectMember.objects.get(...)` sobre el manager que ya
+// filtra `deleted_at__isnull=True`; la ausencia de resultado levanta 404 vía
+// DoesNotExist. Aquí lo traducimos a `AppError::NotFound` con los mismos
+// filtros (is_active + deleted_at IS NULL via `.active()`).
+
+/// Subconjunto de `WorkspaceLiteSerializer`
+/// (`apps/api/plane/app/serializers/workspace.py:78-82`):
+/// `["name", "slug", "id", "logo_url"]`. NO incluye `logo` crudo, igual que Django.
+#[derive(Debug, Serialize, utoipa::ToSchema)]
+pub struct WorkspaceLiteDto {
+    pub id: Uuid,
+    pub name: String,
+    pub slug: String,
+    /// Mirror de `Workspace.logo_url` (`apps/api/plane/db/models/workspace.py:146-154`):
+    /// `logo_asset.asset_url` → `logo` crudo → `None`.
+    pub logo_url: Option<String>,
+}
+
+impl From<&workspaces::Model> for WorkspaceLiteDto {
+    fn from(w: &workspaces::Model) -> Self {
+        // logo_asset.asset_url para WORKSPACE_LOGO es `/api/assets/v2/static/{id}/`
+        // (ver `apps/api/plane/db/models/asset.py:79-87`).
+        let logo_url = if let Some(asset_id) = w.logo_asset_id {
+            Some(format!("/api/assets/v2/static/{}/", asset_id))
+        } else {
+            w.logo.clone()
+        };
+        Self {
+            id: w.id,
+            name: w.name.clone(),
+            slug: w.slug.clone(),
+            logo_url,
+        }
+    }
+}
+
+/// Subconjunto de `ProjectLiteSerializer`
+/// (`apps/api/plane/app/serializers/project.py:97-108`):
+/// `["id","identifier","name","cover_image","cover_image_url","logo_props","description"]`.
+#[derive(Debug, Serialize, utoipa::ToSchema)]
+pub struct ProjectLiteDto {
+    pub id: Uuid,
+    pub identifier: String,
+    pub name: String,
+    pub cover_image: Option<String>,
+    /// Mirror de `Project.cover_image_url`
+    /// (`apps/api/plane/db/models/project.py:127-137`).
+    pub cover_image_url: Option<String>,
+    pub logo_props: serde_json::Value,
+    pub description: String,
+}
+
+impl From<&projects::Model> for ProjectLiteDto {
+    fn from(p: &projects::Model) -> Self {
+        // PROJECT_COVER.asset_url → `/api/assets/v2/static/{id}/`
+        let cover_image_url = if let Some(asset_id) = p.cover_image_asset_id {
+            Some(format!("/api/assets/v2/static/{}/", asset_id))
+        } else {
+            p.cover_image.clone()
+        };
+        Self {
+            id: p.id,
+            identifier: p.identifier.clone(),
+            name: p.name.clone(),
+            cover_image: p.cover_image.clone(),
+            cover_image_url,
+            logo_props: p.logo_props.clone(),
+            description: p.description.clone(),
+        }
+    }
+}
+
+/// Mirror de `ProjectMemberSerializer` (fields="__all__") con
+/// `workspace`, `project`, `member` anidados (Lite). Se listan explícitamente
+/// los campos que el store del frontend consume para no filtrar de más; los
+/// campos devueltos son los que persiste el modelo `ProjectMember`
+/// (`apps/api/plane/db/models/project.py::ProjectMember`).
+#[derive(Debug, Serialize, utoipa::ToSchema)]
+pub struct ProjectMemberMeResponse {
+    pub id: Uuid,
+    pub role: i16,
+    pub is_active: bool,
+    pub comment: Option<String>,
+    pub view_props: serde_json::Value,
+    pub default_props: serde_json::Value,
+    pub preferences: serde_json::Value,
+    pub sort_order: f64,
+    pub created_at: DateTime<Utc>,
+    pub updated_at: DateTime<Utc>,
+    pub created_by: Option<Uuid>,
+    pub updated_by: Option<Uuid>,
+    pub member: Option<crate::routes::workspaces::UserLiteDto>,
+    pub project: ProjectLiteDto,
+    pub workspace: WorkspaceLiteDto,
+    pub project_id: Uuid,
+    pub workspace_id: Uuid,
+    pub member_id: Option<Uuid>,
+}
+
+/// `GET /api/workspaces/{slug}/projects/{project_id}/project-members/me/`
+///
+/// Devuelve el ProjectMember del usuario autenticado. 404 si no tiene
+/// membresía activa (paridad con `ProjectMember.objects.get(...)` de Django).
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/projects/{project_id}/project-members/me/",
+    tag = "Projects",
+    security(("TokenAuth" = []), ("SessionCookie" = [])),
+    params(
+        ("slug"       = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid,   Path, description = "Project UUID"),
+    ),
+    responses(
+        (status = 200, description = "Current user's project member", body = ProjectMemberMeResponse),
+        (status = 404, description = "User is not a member of this project"),
+    )
+)]
+pub async fn get_project_member_me(
+    State(state): State<AppState>,
+    AnyAuth(user): AnyAuth,
+    Path((slug, project_id)): Path<(String, Uuid)>,
+) -> Result<Json<ProjectMemberMeResponse>, AppError> {
+    let ws = workspace_by_slug(&state.db, &slug).await?;
+    // Django NO exige workspace-member para este endpoint, pero la consulta
+    // por (workspace_slug, project_id, member=request.user, is_active=true)
+    // devuelve 404 si el usuario no pertenece. Replicamos la misma semántica:
+    // buscamos directamente la fila y devolvemos 404 si no existe.
+
+    let member = project_members::Entity::find()
+        .active()
+        .filter(project_members::Column::ProjectId.eq(project_id))
+        .filter(project_members::Column::WorkspaceId.eq(ws.id))
+        .filter(project_members::Column::MemberId.eq(user.id))
+        .filter(project_members::Column::IsActive.eq(true))
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    // Cargamos proyecto activo y usuario para los anidados.
+    // `project_by_id` filtra `deleted_at IS NULL` — si el proyecto está borrado
+    // devolvemos 404, igual que Django (`ProjectMember.project` con manager
+    // `active_objects` filtra deleted_at).
+    let project = project_by_id(&state.db, ws.id, project_id).await?;
+
+    let user_row = users::Entity::find_by_id(user.id)
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    // Admin-visibility para email/last_login_medium: mismos criterios que otros
+    // serializadores (`is_admin = role >= ROLE_ADMIN` en el proyecto).
+    let is_admin = member.role >= ROLE_ADMIN;
+    let member_dto = user_row
+        .as_ref()
+        .map(|u| crate::routes::workspaces::user_to_lite(u, is_admin));
+
+    Ok(Json(ProjectMemberMeResponse {
+        id: member.id,
+        role: member.role,
+        is_active: member.is_active,
+        comment: member.comment.clone(),
+        view_props: member.view_props.clone(),
+        default_props: member.default_props.clone(),
+        preferences: member.preferences.clone(),
+        sort_order: member.sort_order,
+        created_at: member.created_at.into(),
+        updated_at: member.updated_at.into(),
+        created_by: member.created_by_id,
+        updated_by: member.updated_by_id,
+        member: member_dto,
+        project: ProjectLiteDto::from(&project),
+        workspace: WorkspaceLiteDto::from(&ws),
+        project_id: member.project_id,
+        workspace_id: member.workspace_id,
+        member_id: member.member_id,
+    }))
 }
