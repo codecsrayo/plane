@@ -10,6 +10,7 @@ import { useParams } from "react-router";
 import useSWR, { mutate } from "swr";
 // types
 import type { IWorkspaceIntegration, ISlackIntegration } from "@plane/types";
+import { TOAST_TYPE, setToast } from "@plane/propel/toast";
 // ui
 import { Loader } from "@plane/ui";
 // fetch-keys
@@ -35,7 +36,6 @@ export const SelectChannel = observer(function SelectChannel({ integration }: Pr
 
   const { workspaceSlug, projectId } = useParams();
 
-  // FIXME:
   const { startAuth } = useIntegrationPopup({
     provider: "slackChannel",
     stateParams: integration.id,
@@ -43,44 +43,51 @@ export const SelectChannel = observer(function SelectChannel({ integration }: Pr
     slack_client_id: config?.slack_client_id || "",
   });
 
-  const { data: projectIntegration } = useSWR(
-    workspaceSlug && projectId && integration.id ? SLACK_CHANNEL_INFO(workspaceSlug, projectId) : null,
-    () =>
-      workspaceSlug && projectId && integration.id
-        ? appInstallationService.getSlackChannelDetail(workspaceSlug, projectId, integration.id)
-        : null
+  const swrKey = workspaceSlug && projectId && integration.id ? SLACK_CHANNEL_INFO(workspaceSlug, projectId) : null;
+
+  const { data: projectIntegration } = useSWR<ISlackIntegration[]>(swrKey, () =>
+    appInstallationService.getSlackChannelDetail(workspaceSlug as string, projectId as string, integration.id)
   );
 
   useEffect(() => {
-    if (projectId && projectIntegration && projectIntegration.length > 0) {
+    if (projectId && projectIntegration) {
       const projectSlackIntegrationCheck: ISlackIntegration | undefined = projectIntegration.find(
         (_slack: ISlackIntegration) => _slack.project === projectId
       );
       if (projectSlackIntegrationCheck) {
         setSlackChannel(() => projectSlackIntegrationCheck);
         setSlackChannelAvailabilityToggle(true);
+        return;
       }
+
+      setSlackChannel(null);
+      setSlackChannelAvailabilityToggle(false);
     }
   }, [projectIntegration, projectId]);
 
   const handleDelete = async () => {
-    if (!workspaceSlug || !projectId) return;
-    if (projectIntegration.length === 0) return;
-    mutate(SLACK_CHANNEL_INFO(workspaceSlug?.toString(), projectId?.toString()), (prevData: any) => {
-      if (!prevData) return;
-      return prevData.id !== integration.id;
-    }).then(() => {
+    if (!workspaceSlug || !projectId || !swrKey || !slackChannel?.id) return;
+
+    try {
+      await mutate(
+        swrKey,
+        async (currentData: ISlackIntegration[] = []) => {
+          await appInstallationService.removeSlackChannel(workspaceSlug, projectId, integration.id, slackChannel.id);
+          return currentData.filter((channel) => channel.id !== slackChannel.id);
+        },
+        {
+          optimisticData: (currentData: ISlackIntegration[] = []) =>
+            currentData.filter((channel) => channel.id !== slackChannel.id),
+          rollbackOnError: true,
+          revalidate: false,
+        }
+      );
       setSlackChannelAvailabilityToggle(false);
       setSlackChannel(null);
-      return undefined;
-    });
-    appInstallationService
-      .removeSlackChannel(workspaceSlug, projectId, integration.id, slackChannel?.id)
-      .catch((err) => console.error(err));
-  };
-
-  const handleAuth = async () => {
-    await startAuth();
+      setToast({ type: TOAST_TYPE.SUCCESS, title: "Slack channel disconnected" });
+    } catch {
+      setToast({ type: TOAST_TYPE.ERROR, title: "Failed to disconnect Slack channel" });
+    }
   };
 
   return (
@@ -88,14 +95,14 @@ export const SelectChannel = observer(function SelectChannel({ integration }: Pr
       {projectIntegration ? (
         <button
           type="button"
-          className={`bg-gray-700 relative inline-flex h-4 w-6 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none`}
+          className="bg-gray-700 relative inline-flex h-4 w-6 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none"
           role="switch"
-          aria-checked
+          aria-checked={slackChannelAvailabilityToggle}
           onClick={() => {
             if (slackChannelAvailabilityToggle) {
               handleDelete();
             } else {
-              handleAuth();
+              startAuth();
             }
           }}
         >

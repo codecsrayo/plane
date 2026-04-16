@@ -12,7 +12,7 @@ import { Loader } from "@plane/ui";
 // hooks
 import { useProject } from "@/hooks/store/use-project";
 // services
-import { IntegrationService } from "@/services/integrations";
+import { IntegrationService, type IGithubRepoSync } from "@/services/integrations";
 
 const integrationService = new IntegrationService();
 
@@ -27,7 +27,7 @@ export const GithubProjectIssueSync = observer(function GithubProjectIssueSync({
 
   const SYNCS_KEY = getRepoSyncSwrKey(workspaceSlug);
 
-  const { data: syncs, isLoading } = useSWR(SYNCS_KEY, () =>
+  const { data: syncs, isLoading } = useSWR<IGithubRepoSync[]>(SYNCS_KEY, () =>
     integrationService.getRepoSyncs(workspaceSlug)
   );
 
@@ -55,27 +55,24 @@ export const GithubProjectIssueSync = observer(function GithubProjectIssueSync({
   }
 
   return (
-    <div className="flex flex-col divide-y divide-custom-border-200 rounded-md border border-custom-border-200">
-      {syncs.map((sync: any) => {
+    <div className="divide-custom-border-200 border-custom-border-200 flex flex-col divide-y rounded-md border">
+      {syncs.map((sync) => {
         const project = getProjectById(sync.project_id);
         const projectLabel = project?.name ?? sync.project_name ?? sync.project_identifier ?? sync.project_id;
         const isBidirectional = (sync.sync_direction ?? "bidirectional") === "bidirectional";
         return (
           <div key={sync.id} className="flex items-center justify-between px-4 py-3">
-            <div className="flex items-center gap-3 text-sm">
-              <span className="font-medium text-custom-text-200">{sync.repo_full_name}</span>
+            <div className="text-sm flex items-center gap-3">
+              <span className="text-custom-text-200 font-medium">{sync.repo_full_name}</span>
               <span className="text-custom-text-300">{isBidirectional ? "↔" : "→"}</span>
-              <span className="font-medium text-custom-text-100">{projectLabel}</span>
+              <span className="text-custom-text-100 font-medium">{projectLabel}</span>
               {sync.sync_direction && (
-                <span className="rounded bg-custom-background-80 px-1.5 py-0.5 text-[11px] font-medium text-custom-text-300 capitalize">
+                <span className="bg-custom-background-80 text-custom-text-300 rounded px-1.5 py-0.5 text-[11px] font-medium capitalize">
                   {sync.sync_direction}
                 </span>
               )}
             </div>
-            <button
-              onClick={() => handleRemove(sync.id)}
-              className="text-red-500 hover:text-red-400 transition-colors"
-            >
+            <button onClick={() => handleRemove(sync.id)} className="text-red-500 hover:text-red-400 transition-colors">
               <Trash2 className="h-4 w-4" />
             </button>
           </div>

@@ -5,10 +5,32 @@
  */
 
 import { API_BASE_URL } from "@plane/constants";
-import type { IAppIntegration, IImporterService, IWorkspaceIntegration, IExportServiceResponse } from "@plane/types";
+import type {
+  IAppIntegration,
+  IImporterService,
+  IWorkspaceIntegration,
+  IExportServiceResponse,
+  IGithubRepository,
+} from "@plane/types";
 import { APIService } from "@/services/api.service";
 // types
 // helper
+
+export interface IGithubRepoSync {
+  id: string;
+  project_id: string;
+  project_name?: string;
+  project_identifier?: string;
+  repo_full_name: string;
+  sync_direction?: "bidirectional" | "unidirectional";
+}
+
+export interface IGithubPRStateMapping {
+  id: string;
+  project: string;
+  state: string;
+  github_pr_state: string;
+}
 
 export class IntegrationService extends APIService {
   constructor() {
@@ -71,7 +93,7 @@ export class IntegrationService extends APIService {
       });
   }
 
-  async getRepoSyncs(workspaceSlug: string): Promise<any[]> {
+  async getRepoSyncs(workspaceSlug: string): Promise<IGithubRepoSync[]> {
     return this.get(`/api/workspaces/${workspaceSlug}/workspace-integrations/github/repo-syncs/`)
       .then((response) => response?.data)
       .catch((error) => {
@@ -89,7 +111,7 @@ export class IntegrationService extends APIService {
       issue_closed_state?: string;
       sync_direction?: "bidirectional" | "unidirectional";
     }
-  ): Promise<any> {
+  ): Promise<IGithubRepoSync> {
     return this.post(`/api/workspaces/${workspaceSlug}/workspace-integrations/github/repo-syncs/`, data)
       .then((response) => response?.data)
       .catch((error) => {
@@ -97,7 +119,7 @@ export class IntegrationService extends APIService {
       });
   }
 
-  async deleteRepoSync(workspaceSlug: string, syncId: string): Promise<any> {
+  async deleteRepoSync(workspaceSlug: string, syncId: string): Promise<void> {
     return this.delete(`/api/workspaces/${workspaceSlug}/workspace-integrations/github/repo-syncs/${syncId}/`)
       .then((response) => response?.data)
       .catch((error) => {
@@ -105,7 +127,7 @@ export class IntegrationService extends APIService {
       });
   }
 
-  async getGithubRepositories(workspaceSlug: string): Promise<any[]> {
+  async getGithubRepositories(workspaceSlug: string): Promise<IGithubRepository[]> {
     return this.get(`/api/workspaces/${workspaceSlug}/importers/github/repositories/`)
       .then((response) => {
         const data = response?.data;
@@ -117,7 +139,7 @@ export class IntegrationService extends APIService {
       });
   }
 
-  async getPRStateMappings(workspaceSlug: string, workspaceIntegrationId: string): Promise<any[]> {
+  async getPRStateMappings(workspaceSlug: string, workspaceIntegrationId: string): Promise<IGithubPRStateMapping[]> {
     return this.get(
       `/api/workspaces/${workspaceSlug}/workspace-integrations/${workspaceIntegrationId}/pr-state-mappings/`
     )
@@ -131,7 +153,7 @@ export class IntegrationService extends APIService {
     workspaceSlug: string,
     workspaceIntegrationId: string,
     data: { project: string; state: string; github_pr_state: string; prevent_regression?: boolean }
-  ): Promise<any> {
+  ): Promise<IGithubPRStateMapping> {
     return this.post(
       `/api/workspaces/${workspaceSlug}/workspace-integrations/${workspaceIntegrationId}/pr-state-mappings/`,
       data
@@ -142,7 +164,7 @@ export class IntegrationService extends APIService {
       });
   }
 
-  async deletePRStateMapping(workspaceSlug: string, workspaceIntegrationId: string, mappingId: string): Promise<any> {
+  async deletePRStateMapping(workspaceSlug: string, workspaceIntegrationId: string, mappingId: string): Promise<void> {
     return this.delete(
       `/api/workspaces/${workspaceSlug}/workspace-integrations/${workspaceIntegrationId}/pr-state-mappings/${mappingId}/`
     )

@@ -14,7 +14,7 @@ import { Loader } from "@plane/ui";
 import { useProject } from "@/hooks/store/use-project";
 import { useProjectState } from "@/hooks/store/use-project-state";
 // services
-import { IntegrationService } from "@/services/integrations";
+import { IntegrationService, type IGithubPRStateMapping } from "@/services/integrations";
 
 const integrationService = new IntegrationService();
 
@@ -32,7 +32,7 @@ export const GithubPRStateMapping = observer(function GithubPRStateMapping({ wor
 
   const SWR_KEY = workspaceSlug ? getPRStateMappingSwrKey(workspaceIntegrationId) : null;
 
-  const { data: mappings, isLoading } = useSWR(SWR_KEY, () =>
+  const { data: mappings, isLoading } = useSWR<IGithubPRStateMapping[]>(SWR_KEY, () =>
     integrationService.getPRStateMappings(workspaceSlug as string, workspaceIntegrationId)
   );
 
@@ -62,7 +62,7 @@ export const GithubPRStateMapping = observer(function GithubPRStateMapping({ wor
 
   return (
     <div className="divide-custom-border-200 border-custom-border-200 flex flex-col divide-y rounded-md border">
-      {mappings.map((mapping: any) => {
+      {mappings.map((mapping) => {
         const project = getProjectById(mapping.project);
         const state = getStateById(mapping.state);
         return (

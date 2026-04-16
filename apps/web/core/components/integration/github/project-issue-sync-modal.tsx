@@ -6,10 +6,10 @@
 
 import { useState } from "react";
 import { observer } from "mobx-react";
-import useSWR from "swr";
-import { mutate } from "swr";
+import useSWR, { mutate } from "swr";
 import { Button } from "@plane/propel/button";
 import { TOAST_TYPE, setToast } from "@plane/propel/toast";
+import type { IGithubRepository } from "@plane/types";
 import { EModalWidth, ModalCore } from "@plane/ui";
 // hooks
 import { useProject } from "@/hooks/store/use-project";
@@ -20,6 +20,10 @@ import { IntegrationService } from "@/services/integrations";
 const integrationService = new IntegrationService();
 
 type SyncDirection = "bidirectional" | "unidirectional";
+type GithubRepositoryOption = IGithubRepository & { name?: string };
+type IntegrationError = {
+  error?: string;
+};
 
 type Props = {
   isOpen: boolean;
@@ -45,7 +49,7 @@ export const GithubProjectIssueSyncModal = observer(function GithubProjectIssueS
   const [isSyncing, setIsSyncing] = useState(false);
 
   const REPOS_KEY = `GITHUB_REPOS_${workspaceSlug}`;
-  const { data: repos, isLoading: reposLoading } = useSWR(isOpen ? REPOS_KEY : null, () =>
+  const { data: repos, isLoading: reposLoading } = useSWR<GithubRepositoryOption[]>(isOpen ? REPOS_KEY : null, () =>
     integrationService.getGithubRepositories(workspaceSlug)
   );
 
@@ -68,7 +72,7 @@ export const GithubProjectIssueSyncModal = observer(function GithubProjectIssueS
 
   const handleStartSync = async () => {
     if (!selectedRepo || !selectedProject) return;
-    const repo = repos?.find((r: any) => r.full_name === selectedRepo || String(r.id) === selectedRepo);
+    const repo = repos?.find((r) => r.full_name === selectedRepo || String(r.id) === selectedRepo);
     setIsSyncing(true);
     try {
       await integrationService.createRepoSync(workspaceSlug, {
@@ -82,8 +86,10 @@ export const GithubProjectIssueSyncModal = observer(function GithubProjectIssueS
       mutate(swrKey);
       setToast({ type: TOAST_TYPE.SUCCESS, title: "Repository synced" });
       handleClose();
-    } catch (err: any) {
-      const msg = err?.error ?? "Failed to start sync";
+    } catch (err: unknown) {
+      const msg =
+        (typeof err === "object" && err !== null && "error" in err ? (err as IntegrationError).error : undefined) ??
+        "Failed to start sync";
       setToast({ type: TOAST_TYPE.ERROR, title: msg });
     } finally {
       setIsSyncing(false);
@@ -134,7 +140,7 @@ export const GithubProjectIssueSyncModal = observer(function GithubProjectIssueS
               onChange={(e) => setSelectedRepo(e.target.value)}
             >
               <option value="">Choose Repository...</option>
-              {(repos ?? []).map((r: any) => (
+              {(repos ?? []).map((r) => (
                 <option key={r.id ?? r.full_name} value={r.full_name ?? String(r.id)}>
                   {r.full_name ?? r.name}
                 </option>
