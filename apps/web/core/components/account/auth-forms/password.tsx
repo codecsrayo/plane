@@ -103,7 +103,12 @@ export const AuthPasswordForm = observer(function AuthPasswordForm(props: Props)
       )
     );
 
-  const isButtonDisabled = useMemo(
+  // ✅ Esta expresión calcula cuándo el botón debe estar habilitado, no deshabilitado.
+  // El lint commit 46629055 removió `? false : true` de `isButtonDisabled`, lo que
+  // invirtió el significado (cond ? false : true === !cond). Se renombra a
+  // `isButtonEnabled` y se usa `disabled={!isButtonEnabled}` abajo para evitar
+  // volver a caer en la misma confusión.
+  const isButtonEnabled = useMemo(
     () =>
       !isSubmitting &&
       Boolean(passwordFormData.password) &&
@@ -277,7 +282,7 @@ export const AuthPasswordForm = observer(function AuthPasswordForm(props: Props)
         <div className="space-y-2.5">
           {mode === EAuthModes.SIGN_IN ? (
             <>
-              <Button type="submit" variant="primary" className="w-full" size="xl" disabled={isButtonDisabled}>
+              <Button type="submit" variant="primary" className="w-full" size="xl" disabled={!isButtonEnabled}>
                 {isSubmitting ? (
                   <Spinner height="20px" width="20px" />
                 ) : isSMTPConfigured ? (
@@ -300,7 +305,7 @@ export const AuthPasswordForm = observer(function AuthPasswordForm(props: Props)
               )}
             </>
           ) : (
-            <Button type="submit" variant="primary" className="w-full" size="xl" disabled={isButtonDisabled}>
+            <Button type="submit" variant="primary" className="w-full" size="xl" disabled={!isButtonEnabled}>
               {isSubmitting ? <Spinner height="20px" width="20px" /> : "Create account"}
             </Button>
           )}
