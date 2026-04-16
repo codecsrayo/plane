@@ -45,6 +45,49 @@ type ITooltipProps = {
 // el tipo; con un objeto realmente vacío el componente renderiza un provider sin contenido
 // útil, pero no revienta la app — una mejora estricta sobre reventar el subtree de React.
 // Mismo patrón aplicado en AppSidebarItem (commit 099091c) y ui Tooltip (commit 6aec132).
+// Normaliza `children` para que BaseTooltip.Trigger pueda pasarle una ref:
+//
+// base-ui's <Tooltip.Trigger render={children}/> clona `children` y le asigna
+// una ref. Si `children` es un function component sin React.forwardRef, React
+// loguea:
+//   "Warning: Function components cannot be given refs. Attempts to access
+//    this ref will fail. Did you mean to use React.forwardRef()?
+//    Check the render method of `TooltipTrigger`."
+//
+// El fix correcto seria que cada caller envolviera su function component en
+// forwardRef, pero hay 184 usos de <Tooltip> en el repo — una migracion masiva
+// es fragil. En su lugar, cuando detectamos que `children` es un function
+// component (ni string DOM ni class ni forwardRef), lo envolvemos en un
+// <span> inline que SI acepta ref. El <span> es transparente visualmente y
+// mantiene las posiciones del tooltip.
+function ensureRefCompatibleChild(children: React.ReactElement): React.ReactElement {
+  if (!React.isValidElement(children)) return children;
+  const type = (children as React.ReactElement).type;
+  // Strings ("div", "button", etc.) y tags DOM siempre aceptan ref.
+  if (typeof type === "string") return children;
+  // forwardRef/memoForwardRef exponen $$typeof === Symbol(react.forward_ref).
+  // Accedemos via any porque el tipo publico de React no expone $$typeof.
+  const $$typeof = (type as unknown as { $$typeof?: symbol })?.$$typeof;
+  const FORWARD_REF = Symbol.for("react.forward_ref");
+  const MEMO = Symbol.for("react.memo");
+  if ($$typeof === FORWARD_REF) return children;
+  // memo puede envolver un forwardRef — profundizar una capa.
+  if ($$typeof === MEMO) {
+    const inner = (type as unknown as { type?: unknown }).type as
+      | { $$typeof?: symbol }
+      | undefined;
+    if (inner?.$$typeof === FORWARD_REF) return children;
+  }
+  // Class components: function con prototype.isReactComponent.
+  if (typeof type === "function") {
+    const proto = (type as unknown as { prototype?: { isReactComponent?: unknown } }).prototype;
+    if (proto?.isReactComponent) return children;
+    // Function component sin forwardRef — envolvemos en <span>.
+    return <span className="contents">{children}</span>;
+  }
+  return children;
+}
+
 export function Tooltip(props: ITooltipProps = {} as ITooltipProps) {
   const {
     tooltipHeading,
@@ -68,10 +111,17 @@ export function Tooltip(props: ITooltipProps = {} as ITooltipProps) {
     return { finalSide: side, finalAlign: align };
   }, [position, side, align]);
 
+  // Guard: si children no es un elemento valido (null/undefined/string/number),
+  // no hay anchor para el tooltip. Renderizamos children tal cual sin el
+  // provider — evita reventar base-ui con 'render' no-element.
+  if (!React.isValidElement(children)) return <>{children}</>;
+
+  const safeChild = ensureRefCompatibleChild(children);
+
   return (
     <BaseTooltip.Provider>
       <BaseTooltip.Root delay={openDelay} closeDelay={closeDelay} disabled={disabled}>
-        <BaseTooltip.Trigger render={children} />
+        <BaseTooltip.Trigger render={safeChild} />
         <BaseTooltip.Portal>
           <BaseTooltip.Positioner
             className={cn(

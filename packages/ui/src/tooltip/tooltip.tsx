@@ -101,10 +101,37 @@ export function Tooltip(props: ITooltipProps = {} as ITooltipProps) {
   // temprano sin romper el subtree.
   if (!children) return null;
 
+  // Normaliza `children` para que `cloneElement(…, { ref })` no dispare:
+  //   "Warning: Function components cannot be given refs. … Check the render
+  //    method of `TooltipTrigger`."
+  // Si children es un function component sin forwardRef, no puede recibir
+  // ref — lo envolvemos en un <span> transparente. Mismo helper que en
+  // packages/propel/src/tooltip/root.tsx (mantener sincronizado si se
+  // modifica uno).
+  const safeChild = ((): React.ReactElement => {
+    if (!React.isValidElement(children)) return children;
+    const type = (children as React.ReactElement).type;
+    if (typeof type === "string") return children;
+    const FORWARD_REF = Symbol.for("react.forward_ref");
+    const MEMO = Symbol.for("react.memo");
+    const $$typeof = (type as unknown as { $$typeof?: symbol })?.$$typeof;
+    if ($$typeof === FORWARD_REF) return children;
+    if ($$typeof === MEMO) {
+      const inner = (type as unknown as { type?: { $$typeof?: symbol } }).type;
+      if (inner?.$$typeof === FORWARD_REF) return children;
+    }
+    if (typeof type === "function") {
+      const proto = (type as unknown as { prototype?: { isReactComponent?: unknown } }).prototype;
+      if (proto?.isReactComponent) return children;
+      return <span className="contents">{children}</span>;
+    }
+    return children;
+  })();
+
   if (!shouldRender) {
     return (
       <div ref={toolTipRef} className="flex h-full items-center">
-        {children}
+        {safeChild}
       </div>
     );
   }
@@ -130,10 +157,10 @@ export function Tooltip(props: ITooltipProps = {} as ITooltipProps) {
       }
       position={position}
       renderTarget={({ isOpen: isTooltipOpen, ref: eleReference, ...tooltipProps }) =>
-        React.cloneElement(children, {
+        React.cloneElement(safeChild, {
           ref: eleReference,
           ...tooltipProps,
-          ...children.props,
+          ...safeChild.props,
         })
       }
     />
