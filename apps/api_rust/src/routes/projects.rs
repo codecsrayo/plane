@@ -13,8 +13,8 @@ use axum::{
 };
 use chrono::{DateTime, Utc};
 use sea_orm::{
-    ActiveModelTrait, ColumnTrait, EntityTrait, PaginatorTrait, QueryFilter, QueryOrder, Set,
-    TransactionTrait,
+    ActiveModelTrait, ColumnTrait, EntityTrait, PaginatorTrait, QueryFilter, QueryOrder,
+    QuerySelect, Set, TransactionTrait,
 };
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
@@ -25,7 +25,9 @@ use crate::{
         permissions::{ROLE_ADMIN, ROLE_GUEST, ROLE_MEMBER, ROLE_VIEWER},
     },
     entities::{
-        project_member_invites, project_members, projects, states, workspace_members,
+        intake_issues, issue_sequences, project_deploy_boards, project_member_invites,
+        project_members, project_user_properties, projects, states, user_favorites,
+        workspace_members,
     },
     error::AppError,
     routes::helpers::{require_workspace_member, workspace_by_slug},
@@ -407,6 +409,233 @@ pub async fn list_projects(
         .map(|p| {
             let role = pm_map.get(&p.id).copied();
             ProjectResponse::from_model(p, None, role)
+        })
+        .collect();
+
+    Ok(Json(responses))
+}
+
+// ─── DTO extendido para /details ──────────────────────────────────────────────
+
+/// Respuesta extendida de proyecto — espeja `ProjectListSerializer` de Django.
+/// Incluye campos calculados: `is_favorite`, `sort_order`, `members`, `anchor`,
+/// `inbox_view`, `intake_count`, `next_work_item_sequence`.
+#[derive(Debug, Serialize, utoipa::ToSchema)]
+pub struct ProjectDetailResponse {
+    #[serde(flatten)]
+    pub base: ProjectResponse,
+    pub is_favorite: bool,
+    pub sort_order: Option<f64>,
+    /// UUIDs de miembros activos del proyecto.
+    pub members: Vec<Uuid>,
+    /// Anchor del deploy-board público, si existe.
+    pub anchor: Option<String>,
+    /// Alias de intake_view para compatibilidad con el frontend.
+    pub inbox_view: bool,
+    /// Número de intake-issues pendientes (status = -2).
+    pub intake_count: i64,
+    /// Próximo sequence_id disponible para un nuevo issue.
+    pub next_work_item_sequence: i64,
+}
+
+/// `GET /api/workspaces/{slug}/projects/details/`
+///
+/// Lista completa de proyectos con todos los campos calculados que el
+/// frontend necesita para renderizar el sidebar y la home de proyectos.
+/// Espeja `ProjectViewSet.list_detail` de Django.
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/projects/details/",
+    tag = "Projects",
+    security(("TokenAuth" = []), ("SessionCookie" = [])),
+    params(("slug" = String, Path, description = "Workspace slug")),
+    responses(
+        (status = 200, description = "Project detail list", body = Vec<ProjectDetailResponse>),
+        (status = 403, description = "Not a workspace member"),
+    )
+)]
+pub async fn list_projects_detail(
+    State(state): State<AppState>,
+    AnyAuth(user): AnyAuth,
+    Path(slug): Path<String>,
+) -> Result<Json<Vec<ProjectDetailResponse>>, AppError> {
+    let ws = workspace_by_slug(&state.db, &slug).await?;
+    let wm = require_workspace_member(&state.db, ws.id, user.id).await?;
+
+    // ── 1. Proyectos visibles según rol ──────────────────────────────────────
+    let projects_list = if wm.role >= ROLE_ADMIN {
+        projects::Entity::find()
+            .active()
+            .filter(projects::Column::WorkspaceId.eq(ws.id))
+            .order_by_asc(projects::Column::Name)
+            .all(&state.db)
+            .await
+            .map_err(AppError::Database)?
+    } else {
+        let member_project_ids: Vec<Uuid> = project_members::Entity::find()
+            .active()
+            .filter(project_members::Column::WorkspaceId.eq(ws.id))
+            .filter(project_members::Column::MemberId.eq(user.id))
+            .filter(project_members::Column::IsActive.eq(true))
+            .all(&state.db)
+            .await
+            .map_err(AppError::Database)?
+            .into_iter()
+            .map(|pm| pm.project_id)
+            .collect();
+
+        if wm.role == ROLE_GUEST {
+            if member_project_ids.is_empty() {
+                return Ok(Json(vec![]));
+            }
+            projects::Entity::find()
+                .active()
+                .filter(projects::Column::WorkspaceId.eq(ws.id))
+                .filter(projects::Column::Id.is_in(member_project_ids))
+                .order_by_asc(projects::Column::Name)
+                .all(&state.db)
+                .await
+                .map_err(AppError::Database)?
+        } else {
+            // MEMBER: propios + proyectos públicos (network=2)
+            use sea_orm::Condition;
+            let condition = if member_project_ids.is_empty() {
+                Condition::all().add(projects::Column::Network.eq(2i16))
+            } else {
+                Condition::any()
+                    .add(projects::Column::Id.is_in(member_project_ids))
+                    .add(projects::Column::Network.eq(2i16))
+            };
+            projects::Entity::find()
+                .active()
+                .filter(projects::Column::WorkspaceId.eq(ws.id))
+                .filter(condition)
+                .order_by_asc(projects::Column::Name)
+                .all(&state.db)
+                .await
+                .map_err(AppError::Database)?
+        }
+    };
+
+    if projects_list.is_empty() {
+        return Ok(Json(vec![]));
+    }
+
+    let project_ids: Vec<Uuid> = projects_list.iter().map(|p| p.id).collect();
+
+    // ── 2. Membresías: role del usuario y lista completa de miembros ─────────
+    let all_members = project_members::Entity::find()
+        .active()
+        .filter(project_members::Column::WorkspaceId.eq(ws.id))
+        .filter(project_members::Column::ProjectId.is_in(project_ids.clone()))
+        .filter(project_members::Column::IsActive.eq(true))
+        .all(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    let user_role_map: std::collections::HashMap<Uuid, i16> = all_members
+        .iter()
+        .filter(|m| m.member_id == Some(user.id))
+        .map(|m| (m.project_id, m.role))
+        .collect();
+
+    let mut members_map: std::collections::HashMap<Uuid, Vec<Uuid>> =
+        std::collections::HashMap::new();
+    for m in &all_members {
+        if let Some(mid) = m.member_id {
+            members_map.entry(m.project_id).or_default().push(mid);
+        }
+    }
+
+    // ── 3. Favoritos del usuario ──────────────────────────────────────────────
+    let favorites: std::collections::HashSet<Uuid> = user_favorites::Entity::find()
+        .active()
+        .filter(user_favorites::Column::UserId.eq(user.id))
+        .filter(user_favorites::Column::WorkspaceId.eq(ws.id))
+        .filter(user_favorites::Column::EntityType.eq("project"))
+        .filter(user_favorites::Column::EntityIdentifier.is_in(project_ids.clone()))
+        .all(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .into_iter()
+        .filter_map(|f| f.entity_identifier)
+        .collect();
+
+    // ── 4. sort_order del usuario por proyecto ────────────────────────────────
+    let sort_orders: std::collections::HashMap<Uuid, f64> =
+        project_user_properties::Entity::find()
+            .filter(project_user_properties::Column::UserId.eq(user.id))
+            .filter(project_user_properties::Column::WorkspaceId.eq(ws.id))
+            .filter(project_user_properties::Column::ProjectId.is_in(project_ids.clone()))
+            .filter(project_user_properties::Column::DeletedAt.is_null())
+            .all(&state.db)
+            .await
+            .map_err(AppError::Database)?
+            .into_iter()
+            .map(|p| (p.project_id, p.sort_order))
+            .collect();
+
+    // ── 5. Deploy-board anchor ────────────────────────────────────────────────
+    let anchors: std::collections::HashMap<Uuid, String> =
+        project_deploy_boards::Entity::find()
+            .filter(project_deploy_boards::Column::WorkspaceId.eq(ws.id))
+            .filter(project_deploy_boards::Column::ProjectId.is_in(project_ids.clone()))
+            .filter(project_deploy_boards::Column::DeletedAt.is_null())
+            .all(&state.db)
+            .await
+            .map_err(AppError::Database)?
+            .into_iter()
+            .map(|d| (d.project_id, d.anchor))
+            .collect();
+
+    // ── 6. intake_count (pending = -2) por proyecto ───────────────────────────
+    let mut intake_counts: std::collections::HashMap<Uuid, i64> =
+        std::collections::HashMap::new();
+    for &pid in &project_ids {
+        let count = intake_issues::Entity::find()
+            .filter(intake_issues::Column::ProjectId.eq(pid))
+            .filter(intake_issues::Column::Status.eq(-2i32))
+            .filter(intake_issues::Column::DeletedAt.is_null())
+            .count(&state.db)
+            .await
+            .map_err(AppError::Database)? as i64;
+        intake_counts.insert(pid, count);
+    }
+
+    // ── 7. next_work_item_sequence por proyecto ───────────────────────────────
+    let mut next_sequences: std::collections::HashMap<Uuid, i64> =
+        std::collections::HashMap::new();
+    for &pid in &project_ids {
+        let max_seq = issue_sequences::Entity::find()
+            .select_only()
+            .column(issue_sequences::Column::Sequence)
+            .filter(issue_sequences::Column::ProjectId.eq(pid))
+            .filter(issue_sequences::Column::DeletedAt.is_null())
+            .order_by_desc(issue_sequences::Column::Sequence)
+            .limit(1)
+            .into_tuple::<i64>()
+            .one(&state.db)
+            .await
+            .map_err(AppError::Database)?;
+        next_sequences.insert(pid, max_seq.map(|s| s + 1).unwrap_or(1));
+    }
+
+    // ── 8. Ensamblar respuestas ───────────────────────────────────────────────
+    let responses = projects_list
+        .iter()
+        .map(|p| {
+            let role = user_role_map.get(&p.id).copied();
+            let base = ProjectResponse::from_model(p, None, role);
+            ProjectDetailResponse {
+                is_favorite: favorites.contains(&p.id),
+                sort_order: sort_orders.get(&p.id).copied(),
+                members: members_map.get(&p.id).cloned().unwrap_or_default(),
+                anchor: anchors.get(&p.id).cloned(),
+                inbox_view: p.intake_view,
+                intake_count: *intake_counts.get(&p.id).unwrap_or(&0),
+                next_work_item_sequence: *next_sequences.get(&p.id).unwrap_or(&1),
+                base,
+            }
         })
         .collect();
 

@@ -89,6 +89,7 @@ pub mod instances;
         workspaces::create_invitations,
         workspaces::delete_invitation,
         projects::list_projects,
+        projects::list_projects_detail,
         projects::create_project,
         projects::get_project,
         projects::update_project,
@@ -329,6 +330,7 @@ pub mod instances;
             workspaces::InviteEmail,
             workspaces::SlugCheckResponse,
             projects::ProjectResponse,
+            projects::ProjectDetailResponse,
             projects::CreateProjectRequest,
             projects::UpdateProjectRequest,
             projects::ProjectMemberResponse,
@@ -568,6 +570,12 @@ pub fn build_router(state: AppState) -> Router {
         .route(
             "/workspaces/{slug}/projects",
             get(projects::list_projects).post(projects::create_project),
+        )
+        // IMPORTANTE: esta ruta literal debe ir ANTES de /{project_id} para que
+        // "details" no sea interpretado como un UUID de proyecto.
+        .route(
+            "/workspaces/{slug}/projects/details",
+            get(projects::list_projects_detail),
         )
         .route(
             "/workspaces/{slug}/projects/{project_id}",
