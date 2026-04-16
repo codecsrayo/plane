@@ -73,7 +73,8 @@ impl NotificationResponse {
 
 #[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct UnreadCountResponse {
-    pub count: u64,
+    pub total_unread_notifications_count: u64,
+    pub mention_unread_notifications_count: u64,
 }
 
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
@@ -435,17 +436,41 @@ pub async fn unread_count(
 ) -> Result<Json<UnreadCountResponse>, AppError> {
     use sea_orm::PaginatorTrait;
 
-    let count = notifications::Entity::find()
+    // Total de no leídas, sin archivadas, sin pospuestas, excluyendo menciones
+    // (espeja el QuerySet de Django: .exclude(sender__icontains="mentioned"))
+    let total_unread = notifications::Entity::find()
         .filter(notifications::Column::ReceiverId.eq(guard.user.id))
         .filter(notifications::Column::WorkspaceId.eq(guard.workspace.id))
         .filter(notifications::Column::ReadAt.is_null())
         .filter(notifications::Column::ArchivedAt.is_null())
+        .filter(notifications::Column::SnoozedTill.is_null())
         .filter(notifications::Column::DeletedAt.is_null())
+        .filter(
+            sea_orm::Condition::all().add(
+                notifications::Column::Sender.not_like("%mentioned%"),
+            ),
+        )
         .count(&state.db)
         .await
         .map_err(AppError::Database)?;
 
-    Ok(Json(UnreadCountResponse { count }))
+    // Solo menciones no leídas
+    let mention_unread = notifications::Entity::find()
+        .filter(notifications::Column::ReceiverId.eq(guard.user.id))
+        .filter(notifications::Column::WorkspaceId.eq(guard.workspace.id))
+        .filter(notifications::Column::ReadAt.is_null())
+        .filter(notifications::Column::ArchivedAt.is_null())
+        .filter(notifications::Column::SnoozedTill.is_null())
+        .filter(notifications::Column::DeletedAt.is_null())
+        .filter(notifications::Column::Sender.like("%mentioned%"))
+        .count(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    Ok(Json(UnreadCountResponse {
+        total_unread_notifications_count: total_unread,
+        mention_unread_notifications_count: mention_unread,
+    }))
 }
 
 // ── POST /notifications/mark-all-read/ ───────────────────────────────────────

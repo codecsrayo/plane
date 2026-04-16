@@ -8,7 +8,7 @@ use sea_orm::{ColumnTrait, EntityTrait, QueryFilter};
 use uuid::Uuid;
 
 use crate::{
-    auth::api_key::ApiKeyUser,
+    auth::any_auth::AnyAuth,
     entities::{project_members, projects, users, workspace_members, workspaces},
     error::AppError,
     utils::soft_delete::SoftDeleteExt,
@@ -30,8 +30,7 @@ where
 
     async fn from_request_parts(parts: &mut Parts, state: &S) -> Result<Self, Self::Rejection> {
         let db = AppState::from_ref(state).db;
-        let ApiKeyUser(ctx) = ApiKeyUser::from_request_parts(parts, state).await?;
-        let user = ctx.user;
+        let AnyAuth(user) = AnyAuth::from_request_parts(parts, state).await?;
         let Path(params) = Path::<HashMap<String, String>>::from_request_parts(parts, state)
             .await
             .map_err(|_| AppError::NotFound)?;
