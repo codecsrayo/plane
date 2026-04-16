@@ -39,6 +39,19 @@ interface ITooltipProps {
   renderByDefault?: boolean;
 }
 
+// Nota: el `= {} as ITooltipProps` final es defensivo. Con destructuring inline en el parámetro
+// (`function Foo({ a = 1 }: Props) { ... }`) el bind revienta con "Cannot destructure property …
+// of 'undefined' as it is undefined" si el primer argumento llega como `undefined` — los defaults
+// por propiedad no cubren el caso del objeto entero. React garantiza un objeto de props vía JSX,
+// pero HMR swaps, patrones render-as-value, HOCs con props mal tipados y boundaries de Fast
+// Refresh pueden filtrar `undefined`. El cast a ITooltipProps es necesario porque `tooltipContent`
+// y `children` están tipados como requeridos.
+//
+// `children` también se guardea explícitamente más abajo: el render path llama a
+// `React.cloneElement(children, …)`, que revienta si `children` es `undefined`. Con el default
+// `= {}` el destructuring ya no crashea, pero sin el guard de children el componente seguiría
+// reventando una línea más abajo. Mismo patrón (default + guard temprano) que se aplicó en
+// AppSidebarItem (commit 099091c) y en el Tooltip de propel (commit 00c84b0).
 export function Tooltip({
   tooltipHeading,
   tooltipContent,
@@ -52,7 +65,7 @@ export function Tooltip({
 
   //FIXME: tooltip should always render on hover and not by default, this is a temporary fix
   renderByDefault = true,
-}: ITooltipProps) {
+}: ITooltipProps = {} as ITooltipProps) {
   const toolTipRef = useRef<HTMLDivElement | null>(null);
 
   const [shouldRender, setShouldRender] = useState(renderByDefault);
@@ -72,6 +85,11 @@ export function Tooltip({
       element?.removeEventListener("mouseenter", onHover);
     };
   }, [toolTipRef, shouldRender]);
+
+  // Guard explícito: `React.cloneElement(children, …)` en el renderTarget de Tooltip2 revienta
+  // si `children` es `undefined`. Si no hay nada que anclar, no hay tooltip posible — salimos
+  // temprano sin romper el subtree.
+  if (!children) return null;
 
   if (!shouldRender) {
     return (
