@@ -24,7 +24,7 @@ use crate::{
     },
     entities::{file_assets, issue_versions, issues, states},
     error::AppError,
-    utils::s3::{build_s3_client, presigned_put_url},
+    utils::s3_presigned_post::{generate_presigned_post, PresignedPost},
     AppState,
 };
 
@@ -80,7 +80,8 @@ pub struct InitiateAttachmentRequest {
 
 #[derive(Debug, Serialize)]
 pub struct InitiateAttachmentResponse {
-    pub upload_url: String,
+    /// Datos para POST multipart/form-data al bucket (espejo Django/boto3 generate_presigned_post).
+    pub upload_data: PresignedPost,
     pub asset_id: Uuid,
     pub attachment: IssueAttachmentResponse,
 }
@@ -186,18 +187,20 @@ pub async fn initiate_issue_attachment_upload(
 
     let saved = new_asset.insert(db).await.map_err(AppError::Database)?;
 
-    let s3 = build_s3_client(&state.config);
-    let upload_url = presigned_put_url(
-        &s3,
+    let upload_data = generate_presigned_post(
         &state.config.aws_s3_bucket,
+        &state.config.aws_endpoint,
+        &state.config.aws_region,
+        &state.config.aws_access_key_id,
+        &state.config.aws_secret_access_key,
         &asset_key,
         &body.r#type,
+        size,
         3600,
-    )
-    .await?;
+    )?;
 
     Ok((StatusCode::OK, Json(InitiateAttachmentResponse {
-        upload_url,
+        upload_data,
         asset_id: saved.id,
         attachment: saved.into(),
     })))
