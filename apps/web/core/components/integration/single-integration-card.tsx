@@ -11,7 +11,7 @@ import { CheckCircle } from "lucide-react";
 import { EUserPermissions, EUserPermissionsLevel } from "@plane/constants";
 import { Button } from "@plane/propel/button";
 import { Tooltip } from "@plane/propel/tooltip";
-import type { IAppIntegration } from "@plane/types";
+import type { IAppIntegration, IWorkspaceIntegration } from "@plane/types";
 // ui
 import { Loader } from "@plane/ui";
 // assets
@@ -32,7 +32,15 @@ type Props = {
   integration: IAppIntegration;
 };
 
-const integrationDetails: { [key: string]: any } = {
+type TIntegrationProvider = "github" | "gitlab" | "slack";
+
+type TIntegrationProviderDetail = {
+  logo: string;
+  installed: string;
+  notInstalled: string;
+};
+
+const integrationDetails: Record<TIntegrationProvider, TIntegrationProviderDetail> = {
   github: {
     logo: GithubLogo,
     installed: "Activate GitHub on individual projects to sync with specific repositories.",
@@ -75,9 +83,13 @@ export const SingleIntegrationCard = observer(function SingleIntegrationCard({ i
     workspaceSlug ? integrationService.getWorkspaceIntegrationsList(workspaceSlug) : null
   );
 
-  const isInstalled = workspaceIntegrations?.find((i: any) => i.integration_detail?.id === integration.id);
+  const isInstalled = workspaceIntegrations?.find(
+    (i: IWorkspaceIntegration) => i.integration_detail?.id === integration.id
+  );
 
-  // Check if the integration is properly configured in God Mode (has required credentials)
+  // Guard: if the provider is not locally known, skip rendering to avoid runtime errors
+  const providerKey = integration.provider as TIntegrationProvider;
+  const providerDetails: TIntegrationProviderDetail | undefined = integrationDetails[providerKey];
   const isConfigured =
     integration.provider === "github"
       ? !!config?.github_app_name
@@ -98,7 +110,6 @@ export const SingleIntegrationCard = observer(function SingleIntegrationCard({ i
           : true;
 
   // Guard: if the provider is not locally known, skip rendering to avoid runtime errors
-  const providerDetails = integrationDetails[integration.provider];
   if (!providerDetails) return null;
 
   return (
