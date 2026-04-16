@@ -26,7 +26,7 @@ use axum::{
     Json,
 };
 use sea_orm::{
-    ColumnTrait, EntityTrait, QueryFilter, QueryOrder, QuerySelect,
+    ColumnTrait, EntityTrait, PaginatorTrait, QueryFilter, QueryOrder, QuerySelect,
 };
 use serde::{Deserialize, Serialize};
 use std::collections::{HashMap, HashSet};
@@ -218,7 +218,8 @@ async fn load_enrichment(
     }
 
     // Attachment counts agrupados
-    let raw_attachments: Vec<(Uuid, i64)> = file_assets::Entity::find()
+    // Nota: file_assets.issue_id es Option<Uuid> en el modelo, por eso el tuple es (Option<Uuid>, i64)
+    let raw_attachments: Vec<(Option<Uuid>, i64)> = file_assets::Entity::find()
         .select_only()
         .column(file_assets::Column::IssueId)
         .column_as(
