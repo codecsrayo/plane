@@ -29,6 +29,7 @@ pub mod modules;
 pub mod helpers;
 pub mod integrations;
 pub mod projects;
+pub mod project_user_properties;
 pub mod states;
 pub mod timezones;
 pub mod users;
@@ -96,6 +97,8 @@ pub mod instances;
         projects::delete_project,
         projects::list_project_members,
         projects::get_project_member_me,
+        project_user_properties::get_project_user_properties,
+        project_user_properties::update_project_user_properties,
         projects::update_project_member,
         projects::remove_project_member,
         projects::list_project_invitations,
@@ -339,6 +342,8 @@ pub mod instances;
             projects::ProjectMemberMeResponse,
             projects::WorkspaceLiteDto,
             projects::ProjectLiteDto,
+            project_user_properties::ProjectUserPropertyResponse,
+            project_user_properties::UpdateProjectUserPropertyRequest,
             projects::UpdateProjectMemberRequest,
             projects::ProjectInvitationResponse,
             projects::CreateProjectInvitationRequest,
@@ -603,6 +608,14 @@ pub fn build_router(state: AppState) -> Router {
         .route(
             "/workspaces/{slug}/projects/{project_id}/project-members/me",
             get(projects::get_project_member_me),
+        )
+        // Django URL: `workspaces/<slug>/projects/<project_id>/user-properties/`
+        // (`apps/api/plane/app/urls/issue.py:216-219`). GET hace get_or_create
+        // así que NUNCA devuelve 404 si el proyecto existe.
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/user-properties",
+            get(project_user_properties::get_project_user_properties)
+                .patch(project_user_properties::update_project_user_properties),
         )
         .route(
             "/workspaces/{slug}/projects/{project_id}/invitations",
