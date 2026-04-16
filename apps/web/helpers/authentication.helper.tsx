@@ -9,6 +9,38 @@ import Link from "next/link";
 // plane imports
 import { SUPPORT_EMAIL } from "@plane/constants";
 
+export const ALLOWED_GLOBAL_NEXT_PATHS = new Set([
+  "/create-workspace",
+  "/onboarding",
+  "/invitations",
+  "/workspace-invitations",
+]);
+
+export const isValidRelativePath = (url: string): boolean => {
+  const disallowedSchemes = /^(https?|ftp):\/\//i;
+  return !disallowedSchemes.test(url);
+};
+
+export const sanitizeNextPath = (
+  nextPath: string | null | undefined,
+  workspaceSlugs: Iterable<string> = []
+): string | undefined => {
+  if (!nextPath || !isValidRelativePath(nextPath)) return undefined;
+
+  const normalizedNextPath = nextPath.toString().trim();
+  if (!normalizedNextPath.startsWith("/")) return undefined;
+
+  const parsedNextPath = new URL(normalizedNextPath, "http://plane.local");
+  const sanitizedNextPath = `${parsedNextPath.pathname}${parsedNextPath.search}${parsedNextPath.hash}`;
+
+  if (ALLOWED_GLOBAL_NEXT_PATHS.has(parsedNextPath.pathname)) return sanitizedNextPath;
+
+  const workspaceSlug = parsedNextPath.pathname.split("/").find(Boolean);
+  if (!workspaceSlug) return undefined;
+
+  return [...workspaceSlugs].includes(workspaceSlug) ? sanitizedNextPath : undefined;
+};
+
 export enum EPageTypes {
   PUBLIC = "PUBLIC",
   NON_AUTHENTICATED = "NON_AUTHENTICATED",

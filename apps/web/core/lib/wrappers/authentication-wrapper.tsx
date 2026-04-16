@@ -12,7 +12,7 @@ import useSWR from "swr";
 // components
 import { LogoSpinner } from "@/components/common/logo-spinner";
 // helpers
-import { EPageTypes } from "@/helpers/authentication.helper";
+import { EPageTypes, sanitizeNextPath } from "@/helpers/authentication.helper";
 // hooks
 import { useWorkspace } from "@/hooks/store/use-workspace";
 import { useUser, useUserProfile, useUserSettings } from "@/hooks/store/user";
@@ -31,18 +31,6 @@ type TRedirectConfig =
       method: "push" | "replace";
     }
   | undefined;
-
-const ALLOWED_GLOBAL_NEXT_PATHS = new Set([
-  "/create-workspace",
-  "/onboarding",
-  "/invitations",
-  "/workspace-invitations",
-]);
-
-const isValidURL = (url: string): boolean => {
-  const disallowedSchemes = /^(https?|ftp):\/\//i;
-  return !disallowedSchemes.test(url);
-};
 
 export const AuthenticationWrapper = observer(function AuthenticationWrapper(props: TAuthenticationWrapper) {
   const pathname = usePathname();
@@ -71,22 +59,10 @@ export const AuthenticationWrapper = observer(function AuthenticationWrapper(pro
     false;
 
   const getValidNextPath = (): string | undefined => {
-    if (!nextPath || !isValidURL(nextPath)) return undefined;
-
-    const normalizedNextPath = nextPath.toString().trim();
-    if (!normalizedNextPath.startsWith("/")) return undefined;
-
-    const parsedNextPath = new URL(normalizedNextPath, "http://plane.local");
-    const sanitizedNextPath = `${parsedNextPath.pathname}${parsedNextPath.search}${parsedNextPath.hash}`;
-
-    if (ALLOWED_GLOBAL_NEXT_PATHS.has(parsedNextPath.pathname)) return sanitizedNextPath;
-
-    const workspaceSlug = parsedNextPath.pathname.split("/").find(Boolean);
-    if (!workspaceSlug) return undefined;
-
-    const isWorkspaceRouteValid = Object.values(workspaces || {}).some((workspace) => workspace.slug === workspaceSlug);
-
-    return isWorkspaceRouteValid ? sanitizedNextPath : undefined;
+    return sanitizeNextPath(
+      nextPath,
+      Object.values(workspaces || {}).map((workspace) => workspace.slug)
+    );
   };
 
   const getWorkspaceRedirectionUrl = (): string => {

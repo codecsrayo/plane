@@ -11,10 +11,11 @@ import { EAuthModes, EAuthSteps } from "@plane/constants";
 import type { IEmailCheckData } from "@plane/types";
 // helpers
 import type { TAuthErrorInfo } from "@/helpers/authentication.helper";
-import { authErrorHandler } from "@/helpers/authentication.helper";
+import { authErrorHandler, sanitizeNextPath } from "@/helpers/authentication.helper";
 // hooks
 import { useInstance } from "@/hooks/store/use-instance";
 import { useAppRouter } from "@/hooks/use-app-router";
+import { useWorkspace } from "@/hooks/store/use-workspace";
 // services
 import { AuthService } from "@/services/auth.service";
 // local components
@@ -46,8 +47,13 @@ export const AuthFormRoot = observer(function AuthFormRoot(props: TAuthFormRoot)
   const [isExistingEmail, setIsExistingEmail] = useState(false);
   // hooks
   const { config } = useInstance();
+  const { workspaces } = useWorkspace();
 
   const isSMTPConfigured = config?.is_smtp_configured || false;
+  const sanitizedNextPath = sanitizeNextPath(
+    nextPath,
+    Object.values(workspaces || {}).map((workspace) => workspace.slug)
+  );
 
   // submit handler- email verification
   const handleEmailVerification = async (data: IEmailCheckData) => {
@@ -112,7 +118,7 @@ export const AuthFormRoot = observer(function AuthFormRoot(props: TAuthFormRoot)
         isExistingEmail={isExistingEmail}
         handleEmailClear={handleEmailClear}
         generateEmailUniqueCode={generateEmailUniqueCode}
-        nextPath={nextPath || undefined}
+        nextPath={sanitizedNextPath}
       />
     );
   }
@@ -127,7 +133,7 @@ export const AuthFormRoot = observer(function AuthFormRoot(props: TAuthFormRoot)
           if (step === EAuthSteps.UNIQUE_CODE) generateEmailUniqueCode(email);
           setAuthStep(step);
         }}
-        nextPath={nextPath || undefined}
+        nextPath={sanitizedNextPath}
       />
     );
   }
