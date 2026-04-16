@@ -5,6 +5,7 @@
  */
 
 import type { ReactNode } from "react";
+import { useEffect, useState } from "react";
 import Script from "next/script";
 import { Links, Meta, Outlet, Scripts } from "react-router";
 import type { LinksFunction } from "react-router";
@@ -137,9 +138,23 @@ export default function Root() {
 
 export function HydrateFallback() {
   const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
-  // if we are on the server or the theme is not resolved, return an empty div
-  if (typeof window === "undefined" || resolvedTheme === undefined) return <div />;
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Paridad server/cliente:
+  // - En SSR `typeof window === 'undefined'` → devolvíamos <div />.
+  // - En el primer render del cliente `mounted` aún es false, así que también
+  //   devolvemos <div />. Esto garantiza que el HTML hidratado coincide byte a
+  //   byte con el HTML del server y evita:
+  //     "Hydration failed because the initial UI does not match…"
+  //     "Expected server HTML to contain a matching <div> in <div>"
+  // - Después del primer useEffect `mounted` pasa a true y recién entonces
+  //   montamos el spinner completo — en ese punto ya no hay hidratación y el
+  //   cambio es un re-render normal del cliente.
+  if (!mounted || resolvedTheme === undefined) return <div />;
 
   return (
     <div className="relative flex h-screen w-full items-center justify-center bg-canvas">
