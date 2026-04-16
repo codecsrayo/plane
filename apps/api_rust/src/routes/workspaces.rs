@@ -1,4 +1,5 @@
 // src/routes/workspaces.rs
+// NOTE: get_user_profile added below — mirror of WorkspaceUserProfileEndpoint
 //! Endpoints de Workspace — Fase 2.
 //!
 //! Equivalente a `plane/app/views/workspace/base.py` y `member.py` en Django.
@@ -13,8 +14,8 @@ use axum::{
 };
 use chrono::{DateTime, Utc};
 use sea_orm::{
-    ActiveModelTrait, ColumnTrait, EntityTrait, PaginatorTrait, QueryFilter,
-    QueryOrder, Set, TransactionTrait,
+    ActiveModelTrait, ColumnTrait, ConnectionTrait, EntityTrait, FromQueryResult,
+    PaginatorTrait, QueryFilter, QueryOrder, Set, Statement, TransactionTrait,
 };
 use std::collections::HashSet;
 use serde::{Deserialize, Serialize};
@@ -1334,4 +1335,265 @@ pub async fn get_workspace_member_me(
     Ok(Json(serde_json::to_value(resp).map_err(|e| {
         AppError::Internal(anyhow::anyhow!("serialize WorkspaceMemberMeResponse: {e}"))
     })?))
+}
+
+// ─── User Profile ─────────────────────────────────────────────────────────────
+//
+// Mirror de `WorkspaceUserProfileEndpoint.get`
+// (`apps/api/plane/app/views/workspace/user.py:280`).
+//
+// Shape de respuesta:
+//   { project_data: [...], user_data: { email, first_name, ... } }
+//
+// `project_data` solo se incluye cuando `requesting_workspace_member.role >= 15`
+// (MEMBER+). Cada entrada contiene contadores de issues del target user en ese
+// proyecto.  Los proyectos filtrados son aquellos donde el REQUESTER es miembro
+// activo (no el target) — igual que en Django.
+
+/// Fila de resultado del SQL de estadísticas por proyecto.
+///
+/// `logo_props` se recupera como `String` (JSON serializado) porque SeaORM
+/// no implementa `FromQueryResult` para `serde_json::Value` directamente en
+/// consultas raw. Se deserializa en el ensamblado del DTO.
+#[derive(Debug, FromQueryResult)]
+struct ProjectProfileRow {
+    id: Uuid,
+    logo_props: String,
+    created_issues: i64,
+    assigned_issues: i64,
+    completed_issues: i64,
+    pending_issues: i64,
+}
+
+/// Entrada de `project_data` en la respuesta final.
+#[derive(Debug, Serialize, utoipa::ToSchema)]
+pub struct ProjectProfileData {
+    pub id: Uuid,
+    pub logo_props: serde_json::Value,
+    pub created_issues: i64,
+    pub assigned_issues: i64,
+    pub completed_issues: i64,
+    pub pending_issues: i64,
+}
+
+/// Datos del usuario target en la respuesta.
+#[derive(Debug, Serialize, utoipa::ToSchema)]
+pub struct UserProfileData {
+    pub email: Option<String>,
+    pub first_name: String,
+    pub last_name: String,
+    pub avatar_url: Option<String>,
+    pub cover_image_url: Option<String>,
+    pub date_joined: DateTime<Utc>,
+    pub user_timezone: String,
+    pub display_name: String,
+}
+
+/// Respuesta de `GET /api/workspaces/{slug}/user-profile/{user_id}/`.
+///
+/// Mirror exacto de `WorkspaceUserProfileEndpoint.get` en Django.
+#[derive(Debug, Serialize, utoipa::ToSchema)]
+pub struct UserProfileResponse {
+    /// Estadísticas por proyecto — vacío si el requester es Guest/Viewer.
+    pub project_data: Vec<ProjectProfileData>,
+    pub user_data: UserProfileData,
+}
+
+/// `GET /api/workspaces/{slug}/user-profile/{user_id}/`
+///
+/// Devuelve el perfil de un usuario en el contexto del workspace:
+/// datos personales + estadísticas de issues por proyecto.
+///
+/// `project_data` solo se popula cuando el requester tiene rol >= Member (15).
+/// Los proyectos devueltos son aquellos donde el **requester** es miembro activo,
+/// y los contadores de issues refieren al usuario **target** (`user_id`).
+///
+/// Mirror de `WorkspaceUserProfileEndpoint`
+/// (`apps/api/plane/app/views/workspace/user.py:280`).
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/user-profile/{user_id}/",
+    tag = "Workspaces",
+    security(("TokenAuth" = []), ("SessionCookie" = [])),
+    params(
+        ("slug"    = String, Path, description = "Workspace slug"),
+        ("user_id" = Uuid,   Path, description = "Target user UUID"),
+    ),
+    responses(
+        (status = 200, description = "User profile", body = UserProfileResponse),
+        (status = 403, description = "Not a workspace member"),
+        (status = 404, description = "User or workspace not found"),
+    )
+)]
+pub async fn get_user_profile(
+    State(state): State<AppState>,
+    AnyAuth(user): AnyAuth,
+    Path((slug, user_id)): Path<(String, Uuid)>,
+) -> Result<Json<UserProfileResponse>, AppError> {
+    let ws = workspace_by_slug(&state.db, &slug).await?;
+    let requester = require_workspace_member(&state.db, ws.id, user.id).await?;
+
+    // ── 1. Fetch del usuario target ───────────────────────────────────────────
+    //
+    // Django: `User.objects.get(pk=user_id)` — lanza 404 si no existe.
+    let target_user = users::Entity::find_by_id(user_id)
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    // ── 2. Compute avatar_url — mirror de User.avatar_url (Django) ───────────
+    //
+    // Django: `avatar_asset.asset_url` > `avatar` > None
+    // Path asset: `/api/assets/v2/static/{id}/` (entity_type = USER_AVATAR)
+    let avatar_url = if let Some(asset_id) = target_user.avatar_asset_id {
+        Some(format!("/api/assets/v2/static/{}/", asset_id))
+    } else if !target_user.avatar.is_empty() {
+        Some(target_user.avatar.clone())
+    } else {
+        None
+    };
+
+    // ── 3. Compute cover_image_url — mirror de User.cover_image_url (Django) ─
+    let cover_image_url = if let Some(asset_id) = target_user.cover_image_asset_id {
+        Some(format!("/api/assets/v2/static/{}/", asset_id))
+    } else {
+        target_user.cover_image.clone()
+    };
+
+    let user_data = UserProfileData {
+        email: target_user.email.clone(),
+        first_name: target_user.first_name.clone(),
+        last_name: target_user.last_name.clone(),
+        avatar_url,
+        cover_image_url,
+        date_joined: target_user.date_joined.into(),
+        user_timezone: target_user.user_timezone.clone(),
+        display_name: target_user.display_name.clone(),
+    };
+
+    // ── 4. Project stats — solo si requester.role >= MEMBER (15) ────────────
+    //
+    // Django: `if requesting_workspace_member.role >= 15`
+    // Roles: Guest=5, Viewer=10, Member=15, Admin=20
+    let project_data = if requester.role >= ROLE_MEMBER {
+        let ws_id = ws.id;
+
+        // Una sola query agrega todos los contadores por proyecto, evitando
+        // N+1 queries. Subqueries correlacionadas se reemplazan por LEFT JOINs
+        // sobre subqueries agrupadas — mismo plan que si Django hiciera
+        // `annotate(Count(...))` en bulk.
+        //
+        // Filtro de proyectos: archivados = false, el REQUESTER es miembro activo.
+        // Contadores: issues del TARGET user (created / assigned / completed / pending).
+        let sql = format!(
+            r#"
+            SELECT
+                p.id                                  AS id,
+                p.logo_props::text                    AS logo_props,
+                COALESCE(ci.cnt,    0)                AS created_issues,
+                COALESCE(ai.cnt,    0)                AS assigned_issues,
+                COALESCE(compi.cnt, 0)                AS completed_issues,
+                COALESCE(pi2.cnt,   0)                AS pending_issues
+            FROM projects p
+            JOIN project_members pm
+                ON  pm.project_id  = p.id
+                AND pm.member_id   = '{requester_id}'
+                AND pm.is_active   = true
+                AND pm.deleted_at  IS NULL
+
+            -- created_issues: issues creadas por el target user en el proyecto
+            LEFT JOIN (
+                SELECT project_id, COUNT(*) AS cnt
+                FROM   issues
+                WHERE  created_by_id = '{user_id}'
+                  AND  archived_at   IS NULL
+                  AND  is_draft      = false
+                  AND  deleted_at    IS NULL
+                GROUP BY project_id
+            ) ci ON ci.project_id = p.id
+
+            -- assigned_issues: issues asignadas al target user
+            LEFT JOIN (
+                SELECT i.project_id, COUNT(DISTINCT ia.id) AS cnt
+                FROM   issue_assignees ia
+                JOIN   issues i ON i.id = ia.issue_id
+                WHERE  ia.assignee_id = '{user_id}'
+                  AND  ia.deleted_at  IS NULL
+                  AND  i.archived_at  IS NULL
+                  AND  i.is_draft     = false
+                  AND  i.deleted_at   IS NULL
+                GROUP BY i.project_id
+            ) ai ON ai.project_id = p.id
+
+            -- completed_issues: asignadas + completadas
+            LEFT JOIN (
+                SELECT i.project_id, COUNT(DISTINCT ia.id) AS cnt
+                FROM   issue_assignees ia
+                JOIN   issues i ON i.id = ia.issue_id
+                WHERE  ia.assignee_id    = '{user_id}'
+                  AND  ia.deleted_at     IS NULL
+                  AND  i.completed_at    IS NOT NULL
+                  AND  i.archived_at     IS NULL
+                  AND  i.is_draft        = false
+                  AND  i.deleted_at      IS NULL
+                GROUP BY i.project_id
+            ) compi ON compi.project_id = p.id
+
+            -- pending_issues: asignadas en estados backlog/unstarted/started
+            LEFT JOIN (
+                SELECT i.project_id, COUNT(DISTINCT ia.id) AS cnt
+                FROM   issue_assignees ia
+                JOIN   issues i ON i.id = ia.issue_id
+                JOIN   states s ON s.id = i.state_id
+                WHERE  ia.assignee_id = '{user_id}'
+                  AND  ia.deleted_at  IS NULL
+                  AND  s.group        IN ('backlog', 'unstarted', 'started')
+                  AND  i.archived_at  IS NULL
+                  AND  i.is_draft     = false
+                  AND  i.deleted_at   IS NULL
+                GROUP BY i.project_id
+            ) pi2 ON pi2.project_id = p.id
+
+            WHERE p.workspace_id = '{ws_id}'
+              AND p.archived_at  IS NULL
+              AND p.deleted_at   IS NULL
+            "#,
+            requester_id = requester.member_id,
+            user_id = user_id,
+            ws_id = ws_id,
+        );
+
+        let rows = ProjectProfileRow::find_by_statement(Statement::from_string(
+            sea_orm::DatabaseBackend::Postgres,
+            sql,
+        ))
+        .all(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+        rows.into_iter()
+            .map(|row| {
+                // logo_props viene como String JSON; deserializar con fallback seguro.
+                let logo_props = serde_json::from_str(&row.logo_props)
+                    .unwrap_or(serde_json::json!({}));
+                ProjectProfileData {
+                    id: row.id,
+                    logo_props,
+                    created_issues: row.created_issues,
+                    assigned_issues: row.assigned_issues,
+                    completed_issues: row.completed_issues,
+                    pending_issues: row.pending_issues,
+                }
+            })
+            .collect()
+    } else {
+        // Guest / Viewer — sin acceso a estadísticas de proyectos (paridad Django)
+        Vec::new()
+    };
+
+    Ok(Json(UserProfileResponse {
+        project_data,
+        user_data,
+    }))
 }

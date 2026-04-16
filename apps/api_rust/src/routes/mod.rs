@@ -87,6 +87,7 @@ pub mod instances;
         workspaces::update_member,
         workspaces::remove_member,
         workspaces::get_workspace_member_me,
+        workspaces::get_user_profile,
         workspaces::list_invitations,
         workspaces::create_invitations,
         workspaces::delete_invitation,
@@ -333,6 +334,9 @@ pub mod instances;
             workspaces::WorkspaceMemberNestedResponse,
             workspaces::UserLiteDto,
             workspaces::WorkspaceMemberMeResponse,
+            workspaces::UserProfileResponse,
+            workspaces::UserProfileData,
+            workspaces::ProjectProfileData,
             workspaces::UpdateMemberRoleRequest,
             workspaces::InvitationResponse,
             workspaces::CreateInvitationRequest,
@@ -524,6 +528,11 @@ pub fn build_router(state: AppState) -> Router {
         .route(
             "/workspaces/{slug}/workspace-members/me",
             get(workspaces::get_workspace_member_me),
+        )
+        // Mirror Django: workspaces/<slug>/user-profile/<user_id>/ -> WorkspaceUserProfileEndpoint
+        .route(
+            "/workspaces/{slug}/user-profile/{user_id}",
+            get(workspaces::get_user_profile),
         )
         .route(
             "/workspaces/{slug}/invitations",
