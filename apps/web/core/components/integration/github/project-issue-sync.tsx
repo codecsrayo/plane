@@ -4,17 +4,17 @@
  * See the LICENSE file for details.
  */
 
+import { useState } from "react";
 import { observer } from "mobx-react";
 import useSWR, { mutate } from "swr";
 import { Trash2 } from "lucide-react";
 import { TOAST_TYPE, setToast } from "@plane/propel/toast";
 import { Loader } from "@plane/ui";
+import { IntegrationConfirmActionModal } from "@/components/integration/confirm-action-modal";
 // hooks
 import { useProject } from "@/hooks/store/use-project";
 // services
-import { IntegrationService, type IGithubRepoSync } from "@/services/integrations";
-
-const integrationService = new IntegrationService();
+import { integrationService, type IGithubRepoSync } from "@/services/integrations";
 
 type Props = {
   workspaceSlug: string;
@@ -24,6 +24,8 @@ export const getRepoSyncSwrKey = (workspaceSlug: string) => `GITHUB_REPO_SYNCS_$
 
 export const GithubProjectIssueSync = observer(function GithubProjectIssueSync({ workspaceSlug }: Props) {
   const { getProjectById } = useProject();
+  const [syncToDelete, setSyncToDelete] = useState<string | null>(null);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   const SYNCS_KEY = getRepoSyncSwrKey(workspaceSlug);
 
@@ -31,13 +33,20 @@ export const GithubProjectIssueSync = observer(function GithubProjectIssueSync({
     integrationService.getRepoSyncs(workspaceSlug)
   );
 
-  const handleRemove = async (syncId: string) => {
+  const handleRemove = async () => {
+    if (!syncToDelete) return;
+
+    setIsDeleting(true);
+
     try {
-      await integrationService.deleteRepoSync(workspaceSlug, syncId);
+      await integrationService.deleteRepoSync(workspaceSlug, syncToDelete);
       mutate(SYNCS_KEY);
       setToast({ type: TOAST_TYPE.SUCCESS, title: "Sync removed" });
     } catch {
       setToast({ type: TOAST_TYPE.ERROR, title: "Failed to remove sync" });
+    } finally {
+      setIsDeleting(false);
+      setSyncToDelete(null);
     }
   };
 
@@ -72,12 +81,26 @@ export const GithubProjectIssueSync = observer(function GithubProjectIssueSync({
                 </span>
               )}
             </div>
-            <button onClick={() => handleRemove(sync.id)} className="text-red-500 hover:text-red-400 transition-colors">
+            <button
+              type="button"
+              onClick={() => setSyncToDelete(sync.id)}
+              className="text-red-500 hover:text-red-400 transition-colors"
+              aria-label={`Remove sync for ${projectLabel}`}
+            >
               <Trash2 className="h-4 w-4" />
             </button>
           </div>
         );
       })}
+
+      <IntegrationConfirmActionModal
+        isOpen={Boolean(syncToDelete)}
+        onClose={() => setSyncToDelete(null)}
+        onConfirm={handleRemove}
+        isSubmitting={isDeleting}
+        title="Remove project issue sync"
+        content="Are you sure you want to remove this repository sync? This action cannot be undone."
+      />
     </div>
   );
 });
