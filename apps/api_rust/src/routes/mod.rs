@@ -1218,21 +1218,36 @@ pub fn build_router(state: AppState) -> Router {
         ))
         .layer(DefaultBodyLimit::max(1_048_576)); // 1 MB — previene DoS por payload masivo
 
-    let mut router = Router::new()
+    // ✅ Scalar UI solo en desarrollo (DEBUG=true).
+    //
+    // FIX (axum 0.8): las rutas de Scalar se mergean al router raíz ANTES
+    // de los `nest("/api", ...)`. Antes se agregaban después y devolvían 404:
+    // `nest("/api", api_router)` registra internamente un wildcard que
+    // capturaba `/api/docs`, enruta al `api_router` (donde no existe
+    // `/docs`) y responde 404 sin caer en el `.route("/api/docs", ...)` del
+    // router raíz.
+    //
+    // Registrando Scalar primero, la ruta estática `/api/docs` queda como
+    // más específica que el catch-all del nest y axum la prioriza correctamente.
+    //
+    // Además: docs NO pasa por el rate-limit middleware (aplicado al
+    // api_router), lo cual es correcto — no queremos rate-limit en docs.
+    let root = if state.config.debug {
+        tracing::warn!("Scalar UI habilitado (DEBUG=true) — deshabilitar en producción");
+        Router::new()
+            .route("/api/docs/openapi.json", get(openapi_json))
+            .merge(Scalar::with_url("/api/docs", ApiDoc::openapi()))
+    } else {
+        Router::new()
+    };
+
+    let router = root
         .nest("/api", api_router)
         .nest("/api", public_routes)
         // Auth routes at /auth/* — matches Django: path("auth/", include("plane.authentication.urls"))
         // Caddy routes /auth/* to the API server, frontend calls /auth/email-check/ etc.
         .nest("/auth", auth_router)
         .nest("/auth", auth_public_routes);
-
-    // ✅ Scalar UI solo en desarrollo (DEBUG=true).
-    if state.config.debug {
-        router = router
-            .route("/api/docs/openapi.json", get(openapi_json))
-            .merge(Scalar::with_url("/api/docs", ApiDoc::openapi()));
-        tracing::warn!("Scalar UI habilitado (DEBUG=true) — deshabilitar en producción");
-    }
 
     // NormalizePathLayer se aplica en main.rs envolviendo al Router *desde
     // fuera* con `NormalizePathLayer::trim_trailing_slash().layer(router)`.
