@@ -23,7 +23,7 @@ use uuid::Uuid;
 
 use crate::{
     auth::{any_auth::AnyAuth, permissions::ROLE_ADMIN},
-    entities::{project_members, states, workspace_members},
+    entities::{project_members, projects, states, workspace_members},
     error::AppError,
     routes::helpers::{require_workspace_member, workspace_by_slug},
     utils::soft_delete::SoftDeleteExt,
@@ -521,6 +521,11 @@ pub async fn delete_state(
 }
 
 /// Obtiene el estado de triage del proyecto (intake state).
+///
+/// Si el proyecto nunca tuvo un estado triage (e.g. creado antes de que se
+/// implementara la semilla automática, o migrado desde Django sin él), lo crea
+/// de forma idempotente — espejando la lógica de Django en
+/// `plane/app/views/intake/base.py` (líneas 239-249).
 #[utoipa::path(
     get,
     path = "/workspaces/{slug}/projects/{project_id}/intake-state/",
@@ -531,7 +536,7 @@ pub async fn delete_state(
     ),
     responses(
         (status = 200, description = "Estado triage", body = StateResponse),
-        (status = 404, description = "Sin estado triage"),
+        (status = 404, description = "Proyecto o workspace no encontrado"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -546,7 +551,17 @@ pub async fn intake_state(
     let pm = project_member_for_user(db, p.project_id, user.id).await?;
     require_project_member(&pm)?;
 
-    let state = states::Entity::find()
+    // Verificar que el proyecto realmente pertenece al workspace (y no está eliminado)
+    let _project = projects::Entity::find_by_id(p.project_id)
+        .active()
+        .filter(projects::Column::WorkspaceId.eq(ws.id))
+        .one(db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    // Buscar el estado triage existente
+    if let Some(state) = states::Entity::find()
         .active()
         .filter(states::Column::ProjectId.eq(p.project_id))
         .filter(states::Column::WorkspaceId.eq(ws.id))
@@ -554,9 +569,42 @@ pub async fn intake_state(
         .one(db)
         .await
         .map_err(AppError::Database)?
-        .ok_or(AppError::NotFound)?;
+    {
+        return Ok((StatusCode::OK, Json(StateResponse::from(&state))).into_response());
+    }
 
-    Ok((StatusCode::OK, Json(StateResponse::from(&state))).into_response())
+    // No existe → crear idempotente (get-or-create), igual que Django en intake POST.
+    // Los valores son los mismos que usa Django: name="Triage", color="#4E5355",
+    // sequence=65000, group="triage", default=false, is_triage=true.
+    let now = chrono::Utc::now().fixed_offset();
+    let new_state = states::ActiveModel {
+        id: ActiveValue::Set(Uuid::new_v4()),
+        name: Set("Triage".to_string()),
+        description: Set(String::new()),
+        color: Set("#4E5355".to_string()),
+        slug: Set("triage".to_string()),
+        group: Set("triage".to_string()),
+        sequence: Set(65000.0),
+        default: Set(false),
+        is_triage: Set(true),
+        project_id: Set(p.project_id),
+        workspace_id: Set(ws.id),
+        // El estado triage es de sistema — no tiene propietario explícito.
+        created_by_id: Set(None),
+        updated_by_id: Set(None),
+        external_id: Set(None),
+        external_source: Set(None),
+        created_at: Set(now),
+        updated_at: Set(now),
+        deleted_at: Set(None),
+    };
+
+    let inserted = new_state
+        .insert(db)
+        .await
+        .map_err(AppError::Database)?;
+
+    Ok((StatusCode::OK, Json(StateResponse::from(&inserted))).into_response())
 }
 
 /// Marca un estado como default del proyecto (desactiva el anterior). Solo Admin.
