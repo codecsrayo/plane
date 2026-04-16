@@ -4,7 +4,7 @@
  * See the LICENSE file for details.
  */
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useEffect, useState } from "react";
 import { observer } from "mobx-react";
 import { useNavigate } from "react-router";
 import useSWR, { mutate } from "swr";
@@ -19,10 +19,13 @@ import GithubLogo from "@/app/assets/services/github.png?url";
 import GitlabLogo from "@/app/assets/services/gitlab.png?url";
 import SlackLogo from "@/app/assets/services/slack.png?url";
 // integration components
+import { ConnectedAccountDetails } from "@/components/integration/connected-account-details";
 import { GithubPRStateMapping, getPRStateMappingSwrKey } from "@/components/integration/github/pr-state-mapping";
 import { GithubPRStateMappingModal } from "@/components/integration/github/pr-state-mapping-modal";
+import { GithubPersonalConnectCard } from "@/components/integration/github/personal-connect-card";
 import { GithubProjectIssueSync, getRepoSyncSwrKey } from "@/components/integration/github/project-issue-sync";
 import { GithubProjectIssueSyncModal } from "@/components/integration/github/project-issue-sync-modal";
+import { IntegrationConfirmActionModal } from "@/components/integration/confirm-action-modal";
 // components
 import { NotAuthorizedView } from "@/components/auth-screens/not-authorized-view";
 import { PageHead } from "@/components/core/page-title";
@@ -33,7 +36,7 @@ import { useWorkspace } from "@/hooks/store/use-workspace";
 import { useUserPermissions } from "@/hooks/store/user";
 import { useInstance } from "@/hooks/store/use-instance";
 // services
-import { IntegrationService } from "@/services/integrations";
+import { integrationService } from "@/services/integrations";
 // local imports
 import type { Route } from "./+types/page";
 
@@ -47,146 +50,12 @@ const integrationMeta: Record<string, { logo: string; title: string }> = {
   slack: { logo: SlackLogo, title: "Slack" },
 };
 
-const integrationService = new IntegrationService();
-
-// ---------------------------------------------------------------------------
-// Helper: render the metadata card for the connected account
-// ---------------------------------------------------------------------------
-
-function ConnectedAccountDetails({ metadata }: { metadata: Record<string, unknown> | null }) {
-  if (!metadata || Object.keys(metadata).length === 0) {
-    return <p className="text-sm text-custom-text-300">No account details available.</p>;
-  }
-
-  const rows: { label: string; value: string }[] = [];
-
-  if (typeof metadata.installation_id !== "undefined")
-    rows.push({ label: "Installation ID", value: String(metadata.installation_id) });
-  if (typeof metadata.team_name !== "undefined")
-    rows.push({ label: "Team name", value: String(metadata.team_name) });
-  if (typeof metadata.team_id !== "undefined")
-    rows.push({ label: "Team ID", value: String(metadata.team_id) });
-  if (typeof metadata.account !== "undefined")
-    rows.push({ label: "Account", value: String(metadata.account) });
-  if (typeof metadata.login !== "undefined")
-    rows.push({ label: "Login", value: String(metadata.login) });
-
-  if (rows.length === 0) {
-    for (const [k, v] of Object.entries(metadata)) {
-      rows.push({ label: k, value: String(v) });
-    }
-  }
-
-  return (
-    <dl className="space-y-2">
-      {rows.map(({ label, value }) => (
-        <div key={label} className="flex items-center gap-3">
-          <dt className="w-36 shrink-0 text-xs font-medium text-custom-text-200">{label}</dt>
-          <dd className="text-xs text-custom-text-100">{value}</dd>
-        </div>
-      ))}
-    </dl>
-  );
-}
-
-// ---------------------------------------------------------------------------
-// Helper: GitHub personal account connection section
-// ---------------------------------------------------------------------------
-
-interface GithubPersonalConnectProps {
-  workspaceSlug: string;
-  githubClientId: string;
-}
-
-function GithubPersonalConnect({ workspaceSlug, githubClientId }: GithubPersonalConnectProps) {
-  const [personalConnection, setPersonalConnection] = useState<{
-    github_username: string;
-    github_avatar_url: string;
-  } | null>(null);
-  const [isConnecting, setIsConnecting] = useState(false);
-  const popup = useRef<Window | null>(null);
-
-  // Build personal OAuth URL (read:user scope, separate from GitHub App installation)
-  const oauthUrl = githubClientId
-    ? `https://github.com/login/oauth/authorize?client_id=${githubClientId}&scope=read:user,user:email&redirect_uri=${window.location.origin}/auth/github/user-callback`
-    : null;
-
-  // Listen for postMessage from the user-callback popup
-  const handleMessage = useCallback(
-    (event: MessageEvent) => {
-      if (event.origin !== window.location.origin) return;
-      if (event.data?.type !== "github-user-connection") return;
-      setIsConnecting(false);
-      if (event.data?.success) {
-        // Re-fetch connection status (simple approach: reload personal connection)
-        setPersonalConnection(event.data?.payload ?? null);
-      }
-    },
-    []
-  );
-
-  useEffect(() => {
-    window.addEventListener("message", handleMessage);
-    return () => window.removeEventListener("message", handleMessage);
-  }, [handleMessage]);
-
-  const openPersonalOAuth = () => {
-    if (!oauthUrl) return;
-    const width = 600, height = 600;
-    const left = window.innerWidth / 2 - width / 2;
-    const top = window.innerHeight / 2 - height / 2;
-    popup.current = window.open(oauthUrl, "", `width=${width},height=${height},top=${top},left=${left}`);
-    setIsConnecting(true);
-  };
-
-  if (!githubClientId) return null;
-
-  return (
-    <div className="rounded-lg border border-custom-border-200 bg-custom-background-100 p-5 space-y-4">
-      <div className="flex items-center justify-between">
-        <div>
-          <h2 className="text-sm font-semibold text-custom-text-100">Your GitHub Account</h2>
-          <p className="mt-1 text-xs text-custom-text-300">
-            Connect your personal GitHub account to enable user-level actions.
-          </p>
-        </div>
-        {personalConnection ? (
-          <div className="flex items-center gap-2">
-            {personalConnection.github_avatar_url && (
-              <img
-                src={personalConnection.github_avatar_url}
-                alt={personalConnection.github_username}
-                className="h-6 w-6 rounded-full"
-              />
-            )}
-            <span className="text-xs font-medium text-custom-text-100">
-              @{personalConnection.github_username}
-            </span>
-          </div>
-        ) : (
-          <Button
-            variant="neutral-primary"
-            size="sm"
-            onClick={openPersonalOAuth}
-            loading={isConnecting}
-            disabled={isConnecting}
-          >
-            {isConnecting ? "Connecting…" : "Connect account"}
-          </Button>
-        )}
-      </div>
-    </div>
-  );
-}
-
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-
 function IntegrationDetailPage({ params }: Route.ComponentProps) {
   const { workspaceSlug, provider } = params;
 
   // states
   const [isDisconnecting, setIsDisconnecting] = useState(false);
+  const [isDisconnectModalOpen, setIsDisconnectModalOpen] = useState(false);
   const [isPRMappingModalOpen, setIsPRMappingModalOpen] = useState(false);
   const [isIssueSyncModalOpen, setIsIssueSyncModalOpen] = useState(false);
 
@@ -212,9 +81,7 @@ function IntegrationDetailPage({ params }: Route.ComponentProps) {
   );
 
   // Derived: find the matching workspace integration after data loads
-  const workspaceIntegration = workspaceIntegrations?.find(
-    (i) => i.integration_detail?.provider === provider
-  );
+  const workspaceIntegration = workspaceIntegrations?.find((i) => i.integration_detail?.provider === provider);
 
   // Redirect side-effects: unknown provider or integration not installed
   // Must be in useEffect — calling navigate() during render causes hydration errors
@@ -235,6 +102,7 @@ function IntegrationDetailPage({ params }: Route.ComponentProps) {
 
   // Unknown provider — render nothing while useEffect redirects
   if (!meta) return null;
+  if (!workspaceSlug) return null;
 
   // Loading
   if (isLoading || !workspaceIntegrations) {
@@ -252,7 +120,7 @@ function IntegrationDetailPage({ params }: Route.ComponentProps) {
 
   // Disconnect handler
   const handleDisconnect = async () => {
-    if (!workspaceSlug || !workspaceIntegration) return;
+    if (!workspaceIntegration) return;
 
     setIsDisconnecting(true);
     try {
@@ -267,6 +135,7 @@ function IntegrationDetailPage({ params }: Route.ComponentProps) {
         title: "Disconnected",
         message: `${meta.title} integration removed successfully.`,
       });
+      setIsDisconnectModalOpen(false);
       navigate(`/${workspaceSlug}/settings/integrations`);
     } catch {
       setToast({
@@ -279,7 +148,7 @@ function IntegrationDetailPage({ params }: Route.ComponentProps) {
   };
 
   const prMappingSwrKey = getPRStateMappingSwrKey(workspaceIntegration.id);
-  const repoSyncSwrKey = getRepoSyncSwrKey(workspaceSlug as string);
+  const repoSyncSwrKey = getRepoSyncSwrKey(workspaceSlug);
 
   return (
     <>
@@ -292,7 +161,7 @@ function IntegrationDetailPage({ params }: Route.ComponentProps) {
           {/* Back link */}
           <button
             type="button"
-            className="flex items-center gap-1.5 text-xs text-custom-text-300 hover:text-custom-text-100 transition-colors w-fit"
+            className="text-xs text-custom-text-300 hover:text-custom-text-100 flex w-fit items-center gap-1.5 transition-colors"
             onClick={() => navigate(`/${workspaceSlug}/settings/integrations`)}
           >
             <ArrowLeft className="h-3.5 w-3.5" />
@@ -301,11 +170,11 @@ function IntegrationDetailPage({ params }: Route.ComponentProps) {
 
           {/* Logo + name */}
           <div className="flex items-center gap-4">
-            <div className="h-12 w-12 flex-shrink-0 rounded-xl border border-custom-border-200 p-2">
+            <div className="border-custom-border-200 h-12 w-12 flex-shrink-0 rounded-xl border p-2">
               <img src={meta.logo} className="h-full w-full object-contain" alt={`${meta.title} logo`} />
             </div>
             <div>
-              <h1 className="text-xl font-semibold text-custom-text-100">{meta.title}</h1>
+              <h1 className="text-xl text-custom-text-100 font-semibold">{meta.title}</h1>
               <p className="text-sm text-custom-text-300">Integration settings</p>
             </div>
           </div>
@@ -314,13 +183,13 @@ function IntegrationDetailPage({ params }: Route.ComponentProps) {
         {/* ----------------------------------------------------------------
             Connected account card
         ---------------------------------------------------------------- */}
-        <div className="rounded-lg border border-custom-border-200 bg-custom-background-100 p-5 space-y-4">
+        <div className="border-custom-border-200 bg-custom-background-100 space-y-4 rounded-lg border p-5">
           <div className="flex items-center justify-between">
-            <h2 className="text-sm font-semibold text-custom-text-100">Connected account</h2>
+            <h2 className="text-sm text-custom-text-100 font-semibold">Connected account</h2>
             <Button
               variant="error-fill"
               size="sm"
-              onClick={handleDisconnect}
+              onClick={() => setIsDisconnectModalOpen(true)}
               loading={isDisconnecting}
               disabled={isDisconnecting}
             >
@@ -334,20 +203,17 @@ function IntegrationDetailPage({ params }: Route.ComponentProps) {
             Personal GitHub account — GitHub only
         ---------------------------------------------------------------- */}
         {provider === "github" && config?.github_client_id && (
-          <GithubPersonalConnect
-            workspaceSlug={workspaceSlug as string}
-            githubClientId={config.github_client_id}
-          />
+          <GithubPersonalConnectCard githubClientId={config.github_client_id} />
         )}
 
         {/* ----------------------------------------------------------------
             Pull Request State Mapping — GitHub only
         ---------------------------------------------------------------- */}
-        <div className="rounded-lg border border-custom-border-200 bg-custom-background-100 p-5 space-y-4">
+        <div className="border-custom-border-200 bg-custom-background-100 space-y-4 rounded-lg border p-5">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-sm font-semibold text-custom-text-100">Pull Request State Mapping</h2>
-              <p className="mt-1 text-xs text-custom-text-300">
+              <h2 className="text-sm text-custom-text-100 font-semibold">Pull Request State Mapping</h2>
+              <p className="text-xs text-custom-text-300 mt-1">
                 Map GitHub pull request states to Plane issue states per project.
               </p>
             </div>
@@ -355,7 +221,7 @@ function IntegrationDetailPage({ params }: Route.ComponentProps) {
               <button
                 type="button"
                 onClick={() => setIsPRMappingModalOpen(true)}
-                className="flex h-7 w-7 items-center justify-center rounded-md border border-custom-border-200 text-custom-text-300 hover:text-custom-text-100 hover:border-custom-border-100 transition-colors"
+                className="border-custom-border-200 text-custom-text-300 hover:text-custom-text-100 hover:border-custom-border-100 flex h-7 w-7 items-center justify-center rounded-md border transition-colors"
                 title="Add PR state mapping"
               >
                 <Plus className="h-4 w-4" />
@@ -365,7 +231,7 @@ function IntegrationDetailPage({ params }: Route.ComponentProps) {
           {provider === "github" && workspaceIntegration ? (
             <GithubPRStateMapping workspaceIntegrationId={workspaceIntegration.id} />
           ) : (
-            <span className="rounded bg-custom-background-80 px-1.5 py-0.5 text-[11px] font-medium text-custom-text-300">
+            <span className="bg-custom-background-80 text-custom-text-300 rounded px-1.5 py-0.5 text-[11px] font-medium">
               Coming soon
             </span>
           )}
@@ -374,11 +240,11 @@ function IntegrationDetailPage({ params }: Route.ComponentProps) {
         {/* ----------------------------------------------------------------
             Project Issue Sync — GitHub only
         ---------------------------------------------------------------- */}
-        <div className="rounded-lg border border-custom-border-200 bg-custom-background-100 p-5 space-y-4">
+        <div className="border-custom-border-200 bg-custom-background-100 space-y-4 rounded-lg border p-5">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-sm font-semibold text-custom-text-100">Project Issue Sync</h2>
-              <p className="mt-1 text-xs text-custom-text-300">
+              <h2 className="text-sm text-custom-text-100 font-semibold">Project Issue Sync</h2>
+              <p className="text-xs text-custom-text-300 mt-1">
                 Connect Plane projects to {meta.title} repositories for issue synchronization.
               </p>
             </div>
@@ -386,7 +252,7 @@ function IntegrationDetailPage({ params }: Route.ComponentProps) {
               <button
                 type="button"
                 onClick={() => setIsIssueSyncModalOpen(true)}
-                className="flex h-7 w-7 items-center justify-center rounded-md border border-custom-border-200 text-custom-text-300 hover:text-custom-text-100 hover:border-custom-border-100 transition-colors"
+                className="border-custom-border-200 text-custom-text-300 hover:text-custom-text-100 hover:border-custom-border-100 flex h-7 w-7 items-center justify-center rounded-md border transition-colors"
                 title="Add project issue sync"
               >
                 <Plus className="h-4 w-4" />
@@ -394,9 +260,9 @@ function IntegrationDetailPage({ params }: Route.ComponentProps) {
             )}
           </div>
           {provider === "github" ? (
-            <GithubProjectIssueSync workspaceSlug={workspaceSlug as string} />
+            <GithubProjectIssueSync workspaceSlug={workspaceSlug} />
           ) : (
-            <span className="rounded bg-custom-background-80 px-1.5 py-0.5 text-[11px] font-medium text-custom-text-300">
+            <span className="bg-custom-background-80 text-custom-text-300 rounded px-1.5 py-0.5 text-[11px] font-medium">
               Coming soon
             </span>
           )}
@@ -409,22 +275,34 @@ function IntegrationDetailPage({ params }: Route.ComponentProps) {
           <GithubPRStateMappingModal
             isOpen={isPRMappingModalOpen}
             onClose={() => setIsPRMappingModalOpen(false)}
-            workspaceSlug={workspaceSlug as string}
+            workspaceSlug={workspaceSlug}
             workspaceIntegrationId={workspaceIntegration.id}
             swrKey={prMappingSwrKey}
           />
           <GithubProjectIssueSyncModal
             isOpen={isIssueSyncModalOpen}
             onClose={() => setIsIssueSyncModalOpen(false)}
-            workspaceSlug={workspaceSlug as string}
+            workspaceSlug={workspaceSlug}
             swrKey={repoSyncSwrKey}
           />
         </>
       )}
+
+      <IntegrationConfirmActionModal
+        isOpen={isDisconnectModalOpen}
+        onClose={() => setIsDisconnectModalOpen(false)}
+        onConfirm={handleDisconnect}
+        isSubmitting={isDisconnecting}
+        title={`Disconnect ${meta.title}`}
+        content={
+          <>
+            Are you sure you want to disconnect <span className="font-medium text-primary">{meta.title}</span>? Any
+            project-level mappings and repository sync setup may stop working until the integration is installed again.
+          </>
+        }
+      />
     </>
   );
 }
 
 export default observer(IntegrationDetailPage);
-
-
