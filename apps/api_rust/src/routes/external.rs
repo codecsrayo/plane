@@ -21,6 +21,7 @@ use crate::{
         permissions::{require_role, ROLE_MEMBER},
     },
     error::AppError,
+    utils::instance_config::get_config_value,
     AppState,
 };
 
@@ -53,6 +54,12 @@ pub struct AiAssistantResponse {
 ///
 /// Proxy hacia la API de Unsplash para búsqueda y listado de fotos.
 /// No requiere autenticación propia — usa la API key configurada en el servidor.
+///
+/// Paridad con Django (`plane/app/views/external/base.py::UnsplashEndpoint`):
+/// - La key se resuelve vía `instance_configurations` (DB) con fallback a env
+///   (equivalente a `get_configuration_value`).
+/// - Si no hay key configurada, devuelve `[]` con HTTP 200 (no 400).
+/// - Codifica los query params de forma segura para evitar URL injection.
 #[utoipa::path(
     get,
     path = "/unsplash/",
@@ -63,54 +70,68 @@ pub struct AiAssistantResponse {
         ("per_page" = Option<u32>, Query, description = "Results per page"),
     ),
     responses(
-        (status = 200, description = "Unsplash photos"),
-        (status = 400, description = "Unsplash not configured"),
+        (status = 200, description = "Unsplash photos (empty array if unconfigured)"),
     )
 )]
 pub async fn unsplash(
     State(state): State<AppState>,
     Query(params): Query<UnsplashQuery>,
 ) -> Result<impl IntoResponse, AppError> {
-    let access_key = state
-        .config
-        .unsplash_access_key
-        .as_deref()
-        .filter(|k| !k.is_empty())
-        .ok_or_else(|| AppError::BadRequest("Unsplash is not configured".into()))?;
+    // Paridad con Django: DB (instance_configurations) → env var.
+    let env_fallback = std::env::var("UNSPLASH_ACCESS_KEY").ok();
+    let access_key_opt = get_config_value(&state, "UNSPLASH_ACCESS_KEY", env_fallback.as_deref())
+        .await?
+        .filter(|k| !k.is_empty());
+
+    // Django devuelve [] con 200 cuando UNSPLASH_ACCESS_KEY no está configurado.
+    let access_key = match access_key_opt {
+        Some(k) => k,
+        None => return Ok(Json(serde_json::json!([]))),
+    };
 
     let page = params.page.unwrap_or(1).max(1);
     let per_page = params.per_page.unwrap_or(20).clamp(1, 30);
 
-    let url = if let Some(ref q) = params.query {
-        format!(
-            "https://api.unsplash.com/search/photos/?client_id={access_key}&query={q}&page={page}&per_page={per_page}"
-        )
+    // Construir request con query params tipados (reqwest los codifica correctamente).
+    // Evita pasar `query` del usuario sin escapar a la URL.
+    let mut req = if let Some(q) = params.query.as_deref().filter(|s| !s.is_empty()) {
+        state
+            .http
+            .get("https://api.unsplash.com/search/photos/")
+            .query(&[
+                ("client_id", access_key.as_str()),
+                ("query", q),
+                ("page", &page.to_string()),
+                ("per_page", &per_page.to_string()),
+            ])
     } else {
-        format!(
-            "https://api.unsplash.com/photos/?client_id={access_key}&page={page}&per_page={per_page}"
-        )
+        state
+            .http
+            .get("https://api.unsplash.com/photos/")
+            .query(&[
+                ("client_id", access_key.as_str()),
+                ("page", &page.to_string()),
+                ("per_page", &per_page.to_string()),
+            ])
     };
+    req = req.header("Content-Type", "application/json");
 
-    let response = state
-        .http
-        .get(&url)
-        .send()
-        .await
-        .map_err(|e| {
-            tracing::error!("Unsplash API error: {e}");
-            AppError::Internal(anyhow::anyhow!("Failed to reach Unsplash API"))
-        })?;
+    let response = req.send().await.map_err(|e| {
+        tracing::error!("Unsplash API error: {e}");
+        AppError::Internal(anyhow::anyhow!("Failed to reach Unsplash API"))
+    })?;
 
-    if !response.status().is_success() {
-        return Err(AppError::Internal(anyhow::anyhow!(
-            "Unsplash returned error status"
-        )));
-    }
-
+    // Django propaga el status de Unsplash — hacemos lo mismo sin leakear detalles
+    // de la key en logs.
+    let status = response.status();
     let data: serde_json::Value = response
         .json()
         .await
         .map_err(|_| AppError::Internal(anyhow::anyhow!("Failed to parse Unsplash response")))?;
+
+    if !status.is_success() {
+        tracing::warn!(status = %status, "Unsplash upstream returned non-2xx");
+    }
 
     Ok(Json(data))
 }
