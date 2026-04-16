@@ -534,6 +534,11 @@ pub fn build_router(state: AppState) -> Router {
             "/workspaces/{slug}/user-profile/{user_id}",
             get(workspaces::get_user_profile),
         )
+        // Mirror Django: workspaces/<slug>/user-stats/<user_id>/ -> WorkspaceUserProfileStatsEndpoint
+        .route(
+            "/workspaces/{slug}/user-stats/{user_id}",
+            get(workspaces::get_user_stats),
+        )
         .route(
             "/workspaces/{slug}/invitations",
             get(workspaces::list_invitations).post(workspaces::create_invitations),

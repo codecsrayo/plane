@@ -1597,3 +1597,392 @@ pub async fn get_user_profile(
         user_data,
     }))
 }
+
+// ═══════════════════════════════════════════════════════════════════════════
+// WORKSPACE USER STATS  (WorkspaceUserProfileStatsEndpoint)
+// ═══════════════════════════════════════════════════════════════════════════
+//
+// GET /workspaces/{slug}/user-stats/{user_id}/
+//
+// Mirror de Django `WorkspaceUserProfileStatsEndpoint.get`
+// (plane/app/views/workspace/user.py).
+//
+// Devuelve:
+//   - state_distribution     : [{state_group, state_count}]
+//   - priority_distribution  : [{priority, priority_count}]
+//   - created_issues         : i64
+//   - assigned_issues        : i64
+//   - completed_issues       : i64
+//   - pending_issues         : i64
+//   - subscribed_issues      : i64
+//   - present_cycles         : [{cycle__name, cycle__id, cycle__project_id}]
+//   - upcoming_cycles        : [{cycle__name, cycle__id, cycle__project_id}]
+//
+// Permiso: miembro activo del workspace (cualquier rol).
+
+#[derive(Debug, Serialize, FromQueryResult)]
+pub struct StateDistributionRow {
+    pub state_group: String,
+    pub state_count: i64,
+}
+
+#[derive(Debug, Serialize, FromQueryResult)]
+pub struct PriorityDistributionRow {
+    pub priority: String,
+    pub priority_count: i64,
+}
+
+#[derive(Debug, FromQueryResult)]
+pub struct CycleInfoRow {
+    pub cycle_name: String,
+    pub cycle_id: Uuid,
+    pub cycle_project_id: Uuid,
+}
+
+// Serialización que reproduce la forma Django: keys con doble underscore
+// como `cycle__name`, `cycle__id`, `cycle__project_id`.
+impl serde::Serialize for CycleInfoRow {
+    fn serialize<S: serde::Serializer>(&self, s: S) -> Result<S::Ok, S::Error> {
+        use serde::ser::SerializeMap;
+        let mut map = s.serialize_map(Some(3))?;
+        map.serialize_entry("cycle__name", &self.cycle_name)?;
+        map.serialize_entry("cycle__id", &self.cycle_id)?;
+        map.serialize_entry("cycle__project_id", &self.cycle_project_id)?;
+        map.end()
+    }
+}
+
+#[derive(Debug, Serialize)]
+pub struct UserStatsResponse {
+    pub state_distribution: Vec<StateDistributionRow>,
+    pub priority_distribution: Vec<PriorityDistributionRow>,
+    pub created_issues: i64,
+    pub assigned_issues: i64,
+    pub completed_issues: i64,
+    pub pending_issues: i64,
+    pub subscribed_issues: i64,
+    pub present_cycles: Vec<CycleInfoRow>,
+    pub upcoming_cycles: Vec<CycleInfoRow>,
+}
+
+/// GET /workspaces/{slug}/user-stats/{user_id}/
+///
+/// Mirror Django `WorkspaceUserProfileStatsEndpoint.get`.
+/// Requiere membresía activa del requester en el workspace; estadísticas
+/// calculadas para el `user_id` indicado en la URL.
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/user-stats/{user_id}/",
+    tag = "Workspaces",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("user_id" = Uuid, Path, description = "Target user ID"),
+    ),
+    responses(
+        (status = 200, description = "Estadísticas del usuario en el workspace"),
+        (status = 401, description = "No autenticado"),
+        (status = 403, description = "No es miembro activo del workspace"),
+        (status = 404, description = "Workspace no encontrado"),
+    )
+)]
+pub async fn get_user_stats(
+    State(state): State<AppState>,
+    AnyAuth(requester): AnyAuth,
+    Path((slug, user_id)): Path<(String, Uuid)>,
+) -> Result<Json<UserStatsResponse>, AppError> {
+    let db = &state.db;
+    let ws = workspace_by_slug(db, &slug).await?;
+    // Autorización: el requester debe ser miembro activo (cualquier rol)
+    let requester_id = requester.id;
+    let _member = require_workspace_member(db, ws.id, requester_id).await?;
+    let ws_id = ws.id;
+
+    // ── state_distribution ───────────────────────────────────────────────────
+    // Mirror: issues asignadas al user_id, agrupadas por state.group, excluye
+    // issue_assignees con deleted_at != NULL (paridad con la condición
+    // `Q(issue_assignee__deleted_at__isnull=True)` en Django).
+    let state_sql = format!(
+        r#"
+        SELECT s.group AS state_group, COUNT(DISTINCT ia.id) AS state_count
+        FROM issue_assignees ia
+        JOIN issues      i  ON i.id  = ia.issue_id
+        JOIN states      s  ON s.id  = i.state_id
+        JOIN projects    p  ON p.id  = i.project_id
+        JOIN project_members pm
+             ON  pm.project_id = p.id
+             AND pm.member_id  = '{requester_id}'
+             AND pm.is_active  = true
+             AND pm.deleted_at IS NULL
+        WHERE ia.assignee_id = '{user_id}'
+          AND ia.deleted_at  IS NULL
+          AND i.workspace_id = '{ws_id}'
+          AND i.archived_at  IS NULL
+          AND i.is_draft     = false
+          AND i.deleted_at   IS NULL
+          AND p.deleted_at   IS NULL
+        GROUP BY s.group
+        ORDER BY s.group
+        "#,
+        requester_id = requester_id,
+        user_id = user_id,
+        ws_id = ws_id,
+    );
+
+    let state_distribution = StateDistributionRow::find_by_statement(Statement::from_string(
+        sea_orm::DatabaseBackend::Postgres,
+        state_sql,
+    ))
+    .all(db)
+    .await
+    .map_err(AppError::Database)?;
+
+    // ── priority_distribution ────────────────────────────────────────────────
+    // Mirror: mismas issues asignadas, agrupadas por priority.
+    // Orden Django: urgent=0, high=1, medium=2, low=3, none=4.
+    let priority_sql = format!(
+        r#"
+        SELECT i.priority,
+               COUNT(DISTINCT ia.id) AS priority_count,
+               CASE i.priority
+                   WHEN 'urgent' THEN 0
+                   WHEN 'high'   THEN 1
+                   WHEN 'medium' THEN 2
+                   WHEN 'low'    THEN 3
+                   ELSE 4
+               END AS priority_order
+        FROM issue_assignees ia
+        JOIN issues   i  ON i.id  = ia.issue_id
+        JOIN projects p  ON p.id  = i.project_id
+        JOIN project_members pm
+             ON  pm.project_id = p.id
+             AND pm.member_id  = '{requester_id}'
+             AND pm.is_active  = true
+             AND pm.deleted_at IS NULL
+        WHERE ia.assignee_id = '{user_id}'
+          AND ia.deleted_at  IS NULL
+          AND i.workspace_id = '{ws_id}'
+          AND i.archived_at  IS NULL
+          AND i.is_draft     = false
+          AND i.deleted_at   IS NULL
+          AND p.deleted_at   IS NULL
+        GROUP BY i.priority
+        HAVING COUNT(DISTINCT ia.id) >= 1
+        ORDER BY priority_order
+        "#,
+        requester_id = requester_id,
+        user_id = user_id,
+        ws_id = ws_id,
+    );
+
+    let priority_distribution =
+        PriorityDistributionRow::find_by_statement(Statement::from_string(
+            sea_orm::DatabaseBackend::Postgres,
+            priority_sql,
+        ))
+        .all(db)
+        .await
+        .map_err(AppError::Database)?;
+
+    // ── contadores escalares ─────────────────────────────────────────────────
+    // Una sola query multi-columna para reducir round-trips a la DB.
+    let counters_sql = format!(
+        r#"
+        SELECT
+            -- created_issues
+            (
+                SELECT COUNT(*)
+                FROM   issues i
+                JOIN   projects p  ON p.id  = i.project_id
+                JOIN   project_members pm
+                       ON  pm.project_id = p.id
+                       AND pm.member_id  = '{requester_id}'
+                       AND pm.is_active  = true
+                       AND pm.deleted_at IS NULL
+                WHERE  i.workspace_id  = '{ws_id}'
+                  AND  i.created_by_id = '{user_id}'
+                  AND  i.archived_at   IS NULL
+                  AND  i.is_draft      = false
+                  AND  i.deleted_at    IS NULL
+                  AND  p.deleted_at    IS NULL
+            ) AS created_issues,
+
+            -- assigned_issues
+            (
+                SELECT COUNT(DISTINCT ia.id)
+                FROM   issue_assignees ia
+                JOIN   issues i ON i.id = ia.issue_id
+                JOIN   projects p ON p.id = i.project_id
+                JOIN   project_members pm
+                       ON  pm.project_id = p.id
+                       AND pm.member_id  = '{requester_id}'
+                       AND pm.is_active  = true
+                       AND pm.deleted_at IS NULL
+                WHERE  ia.assignee_id = '{user_id}'
+                  AND  ia.deleted_at  IS NULL
+                  AND  i.workspace_id = '{ws_id}'
+                  AND  i.archived_at  IS NULL
+                  AND  i.is_draft     = false
+                  AND  i.deleted_at   IS NULL
+                  AND  p.deleted_at   IS NULL
+            ) AS assigned_issues,
+
+            -- completed_issues
+            (
+                SELECT COUNT(DISTINCT ia.id)
+                FROM   issue_assignees ia
+                JOIN   issues i ON i.id = ia.issue_id
+                JOIN   states s ON s.id = i.state_id
+                JOIN   projects p ON p.id = i.project_id
+                JOIN   project_members pm
+                       ON  pm.project_id = p.id
+                       AND pm.member_id  = '{requester_id}'
+                       AND pm.is_active  = true
+                       AND pm.deleted_at IS NULL
+                WHERE  ia.assignee_id = '{user_id}'
+                  AND  ia.deleted_at  IS NULL
+                  AND  s.group        = 'completed'
+                  AND  i.workspace_id = '{ws_id}'
+                  AND  i.archived_at  IS NULL
+                  AND  i.is_draft     = false
+                  AND  i.deleted_at   IS NULL
+                  AND  p.deleted_at   IS NULL
+            ) AS completed_issues,
+
+            -- pending_issues: no completadas ni canceladas
+            (
+                SELECT COUNT(DISTINCT ia.id)
+                FROM   issue_assignees ia
+                JOIN   issues i ON i.id = ia.issue_id
+                JOIN   states s ON s.id = i.state_id
+                JOIN   projects p ON p.id = i.project_id
+                JOIN   project_members pm
+                       ON  pm.project_id = p.id
+                       AND pm.member_id  = '{requester_id}'
+                       AND pm.is_active  = true
+                       AND pm.deleted_at IS NULL
+                WHERE  ia.assignee_id = '{user_id}'
+                  AND  ia.deleted_at  IS NULL
+                  AND  s.group        NOT IN ('completed', 'cancelled')
+                  AND  i.workspace_id = '{ws_id}'
+                  AND  i.archived_at  IS NULL
+                  AND  i.is_draft     = false
+                  AND  i.deleted_at   IS NULL
+                  AND  p.deleted_at   IS NULL
+            ) AS pending_issues,
+
+            -- subscribed_issues
+            (
+                SELECT COUNT(DISTINCT isub.id)
+                FROM   issue_subscribers isub
+                JOIN   projects p ON p.id = isub.project_id
+                JOIN   project_members pm
+                       ON  pm.project_id = p.id
+                       AND pm.member_id  = '{requester_id}'
+                       AND pm.is_active  = true
+                       AND pm.deleted_at IS NULL
+                WHERE  isub.subscriber_id = '{user_id}'
+                  AND  isub.workspace_id  = '{ws_id}'
+                  AND  p.archived_at      IS NULL
+                  AND  p.deleted_at       IS NULL
+            ) AS subscribed_issues
+        "#,
+        requester_id = requester_id,
+        user_id = user_id,
+        ws_id = ws_id,
+    );
+
+    #[derive(Debug, FromQueryResult)]
+    struct CountersRow {
+        created_issues: i64,
+        assigned_issues: i64,
+        completed_issues: i64,
+        pending_issues: i64,
+        subscribed_issues: i64,
+    }
+
+    let counters = CountersRow::find_by_statement(Statement::from_string(
+        sea_orm::DatabaseBackend::Postgres,
+        counters_sql,
+    ))
+    .one(db)
+    .await
+    .map_err(AppError::Database)?
+    .unwrap_or(CountersRow {
+        created_issues: 0,
+        assigned_issues: 0,
+        completed_issues: 0,
+        pending_issues: 0,
+        subscribed_issues: 0,
+    });
+
+    // ── upcoming_cycles ──────────────────────────────────────────────────────
+    // Mirror: CycleIssue donde cycle.start_date > now() e issue tiene al user asignado.
+    let upcoming_sql = format!(
+        r#"
+        SELECT DISTINCT
+               c.name       AS cycle_name,
+               c.id         AS cycle_id,
+               c.project_id AS cycle_project_id
+        FROM   cycle_issues ci
+        JOIN   cycles c ON c.id = ci.cycle_id
+        JOIN   issue_assignees ia ON ia.issue_id = ci.issue_id AND ia.deleted_at IS NULL
+        WHERE  c.workspace_id = '{ws_id}'
+          AND  c.start_date   > NOW()
+          AND  ia.assignee_id = '{user_id}'
+          AND  ci.deleted_at  IS NULL
+          AND  c.deleted_at   IS NULL
+        "#,
+        ws_id = ws_id,
+        user_id = user_id,
+    );
+
+    let upcoming_cycles = CycleInfoRow::find_by_statement(Statement::from_string(
+        sea_orm::DatabaseBackend::Postgres,
+        upcoming_sql,
+    ))
+    .all(db)
+    .await
+    .map_err(AppError::Database)?;
+
+    // ── present_cycles ───────────────────────────────────────────────────────
+    // Mirror: start_date < now() AND end_date > now().
+    let present_sql = format!(
+        r#"
+        SELECT DISTINCT
+               c.name       AS cycle_name,
+               c.id         AS cycle_id,
+               c.project_id AS cycle_project_id
+        FROM   cycle_issues ci
+        JOIN   cycles c ON c.id = ci.cycle_id
+        JOIN   issue_assignees ia ON ia.issue_id = ci.issue_id AND ia.deleted_at IS NULL
+        WHERE  c.workspace_id = '{ws_id}'
+          AND  c.start_date   < NOW()
+          AND  c.end_date     > NOW()
+          AND  ia.assignee_id = '{user_id}'
+          AND  ci.deleted_at  IS NULL
+          AND  c.deleted_at   IS NULL
+        "#,
+        ws_id = ws_id,
+        user_id = user_id,
+    );
+
+    let present_cycles = CycleInfoRow::find_by_statement(Statement::from_string(
+        sea_orm::DatabaseBackend::Postgres,
+        present_sql,
+    ))
+    .all(db)
+    .await
+    .map_err(AppError::Database)?;
+
+    Ok(Json(UserStatsResponse {
+        state_distribution,
+        priority_distribution,
+        created_issues: counters.created_issues,
+        assigned_issues: counters.assigned_issues,
+        completed_issues: counters.completed_issues,
+        pending_issues: counters.pending_issues,
+        subscribed_issues: counters.subscribed_issues,
+        present_cycles,
+        upcoming_cycles,
+    }))
+}
