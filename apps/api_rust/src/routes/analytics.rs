@@ -12,6 +12,10 @@
 //!   GET/POST   /api/workspaces/{slug}/analytic-view/
 //!   GET/PATCH/DELETE /api/workspaces/{slug}/analytic-view/{pk}/
 //!   GET        /api/workspaces/{slug}/saved-analytic-view/{analytic_id}/
+//!
+//!   GET    /api/workspaces/{slug}/advance-analytics/
+//!   GET    /api/workspaces/{slug}/advance-analytics-stats/
+//!   GET    /api/workspaces/{slug}/advance-analytics-charts/
 
 use axum::{
     extract::{Path, Query, State},
@@ -19,7 +23,7 @@ use axum::{
     response::IntoResponse,
     Json,
 };
-use chrono::{DateTime, Datelike, FixedOffset, Utc};
+use chrono::{DateTime, Datelike, FixedOffset, NaiveDate, Utc};
 use sea_orm::{
     ActiveModelTrait, ColumnTrait, EntityTrait, FromQueryResult, QueryFilter, QueryOrder, Set,
     Statement,
@@ -981,5 +985,764 @@ fn axis_to_sql_col(axis: &str) -> (String, String) {
             "LEFT JOIN issue_modules im ON im.issue_id = i.id AND im.deleted_at IS NULL".into(),
         ),
         _ => ("i.id::text".into(), String::new()),
+    }
+}
+
+// ── Advance Analytics ─────────────────────────────────────────────────────────
+
+// Helper: build date clause for analytics (created_at filter)
+fn analytics_date_clause(date_filter: Option<&str>, col: &str) -> String {
+    let Some(df) = date_filter else { return String::new() };
+    let today = chrono::Utc::now().date_naive();
+    let (gte, lte) = match df {
+        "yesterday" => {
+            let d = today - chrono::Duration::days(1);
+            (d.to_string(), d.to_string())
+        }
+        "last_7_days" => ((today - chrono::Duration::days(7)).to_string(), today.to_string()),
+        "last_30_days" => ((today - chrono::Duration::days(30)).to_string(), today.to_string()),
+        "last_3_months" => ((today - chrono::Duration::days(90)).to_string(), today.to_string()),
+        _ => return String::new(),
+    };
+    format!("AND DATE({col}) >= '{gte}' AND DATE({col}) <= '{lte}'")
+}
+
+// Helper: chart period range as (start, end) NaiveDates
+fn chart_period_range(date_filter: Option<&str>) -> Option<(chrono::NaiveDate, chrono::NaiveDate)> {
+    let today = chrono::Utc::now().date_naive();
+    match date_filter? {
+        "yesterday" => {
+            let d = today - chrono::Duration::days(1);
+            Some((d, d))
+        }
+        "last_7_days" => Some((today - chrono::Duration::days(7), today)),
+        "last_30_days" => Some((today - chrono::Duration::days(30), today)),
+        "last_3_months" => Some((today - chrono::Duration::days(90), today)),
+        _ => None,
+    }
+}
+
+/// Valida y construye el filtro SQL de project_ids a partir de una cadena separada por comas.
+/// Devuelve Err si algún valor no es UUID válido (prevención de inyección SQL).
+fn project_ids_filter(raw: Option<&str>) -> Result<String, AppError> {
+    match raw {
+        Some(s) if !s.trim().is_empty() => {
+            let ids: Result<Vec<Uuid>, _> = s.split(',').map(|p| p.trim().parse::<Uuid>()).collect();
+            match ids {
+                Ok(uuids) if !uuids.is_empty() => {
+                    let list = uuids.iter().map(|u| format!("'{u}'")).collect::<Vec<_>>().join(", ");
+                    Ok(format!("AND i.project_id IN ({list})"))
+                }
+                _ => Err(AppError::BadRequest("project_ids contains invalid UUID values".into())),
+            }
+        }
+        _ => Ok(String::new()),
+    }
+}
+
+/// Filtro base de workspace para issues: considera solo proyectos donde el usuario es miembro activo.
+fn base_issue_filter(ws_id: Uuid, user_id: Uuid) -> String {
+    format!(
+        "i.workspace_id = '{ws_id}'
+         AND i.deleted_at IS NULL
+         AND i.archived_at IS NULL
+         AND EXISTS (
+             SELECT 1 FROM project_members pm
+             WHERE pm.project_id = i.project_id
+               AND pm.member_id = '{user_id}'
+               AND pm.is_active = true
+               AND pm.deleted_at IS NULL
+         )"
+    )
+}
+
+// ── Query structs para advance analytics ─────────────────────────────────────
+
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
+pub struct AdvanceAnalyticsQuery {
+    pub tab: Option<String>,
+    pub date_filter: Option<String>,
+    pub project_ids: Option<String>,
+}
+
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
+pub struct AdvanceAnalyticsStatsQuery {
+    #[serde(rename = "type")]
+    pub stat_type: Option<String>,
+    pub date_filter: Option<String>,
+    pub project_ids: Option<String>,
+}
+
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
+pub struct AdvanceAnalyticsChartQuery {
+    #[serde(rename = "type")]
+    pub chart_type: Option<String>,
+    pub date_filter: Option<String>,
+    pub project_ids: Option<String>,
+    pub x_axis: Option<String>,
+    pub group_by: Option<String>,
+}
+
+// ── GET /workspaces/{slug}/advance-analytics/ ─────────────────────────────────
+
+/// GET /api/workspaces/{slug}/advance-analytics/
+///
+/// Métricas agregadas del workspace. `tab=overview` (default) o `tab=work-items`.
+#[utoipa::path(
+    get,
+    path = "/workspaces/{slug}/advance-analytics/",
+    tag = "Analytics",
+    security(("TokenAuth" = [])),
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("tab" = Option<String>, Query, description = "overview | work-items"),
+        ("date_filter" = Option<String>, Query, description = "Date filter"),
+        ("project_ids" = Option<String>, Query, description = "Comma-separated project IDs"),
+    ),
+    responses(
+        (status = 200, description = "Advance analytics overview"),
+        (status = 400, description = "Invalid tab"),
+        (status = 403, description = "Forbidden"),
+    )
+)]
+pub async fn advance_analytics(
+    State(state): State<AppState>,
+    guard: WorkspaceMemberGuard,
+    Query(params): Query<AdvanceAnalyticsQuery>,
+) -> Result<impl IntoResponse, AppError> {
+    if guard.member.role < ROLE_MEMBER {
+        return Err(AppError::Forbidden);
+    }
+
+    let ws_id = guard.workspace.id;
+    let user_id = guard.user.id;
+    let db = &state.db;
+
+    let tab = params.tab.as_deref().unwrap_or("overview");
+    let date_filter = params.date_filter.as_deref();
+
+    // Validar y construir filtro de project_ids
+    let raw_project_ids = params.project_ids.as_deref();
+    let project_id_filter = project_ids_filter(raw_project_ids)?;
+
+    // Cláusula de fecha sobre created_at
+    let date_clause_created = analytics_date_clause(date_filter, "i.created_at");
+
+    match tab {
+        "overview" => {
+            let base_filter = base_issue_filter(ws_id, user_id);
+
+            // Total users / admins / members / guests
+            // Si se filtra por project_ids usamos project_members, si no workspace_members
+            let (total_users, total_admins, total_members, total_guests) =
+                if let Some(raw) = raw_project_ids.filter(|s| !s.trim().is_empty()) {
+                    let ids: Result<Vec<Uuid>, _> =
+                        raw.split(',').map(|p| p.trim().parse::<Uuid>()).collect();
+                    let ids = ids.map_err(|_| AppError::BadRequest("project_ids contains invalid UUID values".into()))?;
+                    let list = ids.iter().map(|u| format!("'{u}'")).collect::<Vec<_>>().join(", ");
+
+                    let date_pm = analytics_date_clause(date_filter, "pm.created_at");
+                    let total = {
+                        let sql = format!(
+                            "SELECT COUNT(DISTINCT pm.member_id) AS cnt
+                             FROM project_members pm
+                             JOIN users u ON u.id = pm.member_id
+                             WHERE pm.project_id IN ({list})
+                               AND pm.is_active = true
+                               AND u.is_bot = false
+                               AND pm.deleted_at IS NULL
+                               {date_pm}",
+                        );
+                        db.query_one(Statement::from_string(sea_orm::DatabaseBackend::Postgres, sql))
+                            .await.map_err(AppError::Database)?
+                            .and_then(|r| r.try_get::<i64>("", "cnt").ok()).unwrap_or(0)
+                    };
+                    let admins = {
+                        let sql = format!(
+                            "SELECT COUNT(DISTINCT pm.member_id) AS cnt
+                             FROM project_members pm
+                             JOIN users u ON u.id = pm.member_id
+                             WHERE pm.project_id IN ({list})
+                               AND pm.is_active = true AND pm.role = 20
+                               AND u.is_bot = false AND pm.deleted_at IS NULL {date_pm}",
+                        );
+                        db.query_one(Statement::from_string(sea_orm::DatabaseBackend::Postgres, sql))
+                            .await.map_err(AppError::Database)?
+                            .and_then(|r| r.try_get::<i64>("", "cnt").ok()).unwrap_or(0)
+                    };
+                    let mems = {
+                        let sql = format!(
+                            "SELECT COUNT(DISTINCT pm.member_id) AS cnt
+                             FROM project_members pm
+                             JOIN users u ON u.id = pm.member_id
+                             WHERE pm.project_id IN ({list})
+                               AND pm.is_active = true AND pm.role = 15
+                               AND u.is_bot = false AND pm.deleted_at IS NULL {date_pm}",
+                        );
+                        db.query_one(Statement::from_string(sea_orm::DatabaseBackend::Postgres, sql))
+                            .await.map_err(AppError::Database)?
+                            .and_then(|r| r.try_get::<i64>("", "cnt").ok()).unwrap_or(0)
+                    };
+                    let guests = {
+                        let sql = format!(
+                            "SELECT COUNT(DISTINCT pm.member_id) AS cnt
+                             FROM project_members pm
+                             JOIN users u ON u.id = pm.member_id
+                             WHERE pm.project_id IN ({list})
+                               AND pm.is_active = true AND pm.role = 5
+                               AND u.is_bot = false AND pm.deleted_at IS NULL {date_pm}",
+                        );
+                        db.query_one(Statement::from_string(sea_orm::DatabaseBackend::Postgres, sql))
+                            .await.map_err(AppError::Database)?
+                            .and_then(|r| r.try_get::<i64>("", "cnt").ok()).unwrap_or(0)
+                    };
+                    (total, admins, mems, guests)
+                } else {
+                    let date_wm = analytics_date_clause(date_filter, "wm.created_at");
+                    let total = {
+                        let sql = format!(
+                            "SELECT COUNT(*) AS cnt FROM workspace_members wm
+                             JOIN users u ON u.id = wm.member_id
+                             WHERE wm.workspace_id = '{ws_id}'
+                               AND wm.is_active = true AND u.is_bot = false
+                               AND wm.deleted_at IS NULL {date_wm}",
+                        );
+                        db.query_one(Statement::from_string(sea_orm::DatabaseBackend::Postgres, sql))
+                            .await.map_err(AppError::Database)?
+                            .and_then(|r| r.try_get::<i64>("", "cnt").ok()).unwrap_or(0)
+                    };
+                    let admins = {
+                        let sql = format!(
+                            "SELECT COUNT(*) AS cnt FROM workspace_members wm
+                             JOIN users u ON u.id = wm.member_id
+                             WHERE wm.workspace_id = '{ws_id}' AND wm.role = 20
+                               AND wm.is_active = true AND u.is_bot = false
+                               AND wm.deleted_at IS NULL {date_wm}",
+                        );
+                        db.query_one(Statement::from_string(sea_orm::DatabaseBackend::Postgres, sql))
+                            .await.map_err(AppError::Database)?
+                            .and_then(|r| r.try_get::<i64>("", "cnt").ok()).unwrap_or(0)
+                    };
+                    let mems = {
+                        let sql = format!(
+                            "SELECT COUNT(*) AS cnt FROM workspace_members wm
+                             JOIN users u ON u.id = wm.member_id
+                             WHERE wm.workspace_id = '{ws_id}' AND wm.role = 15
+                               AND wm.is_active = true AND u.is_bot = false
+                               AND wm.deleted_at IS NULL {date_wm}",
+                        );
+                        db.query_one(Statement::from_string(sea_orm::DatabaseBackend::Postgres, sql))
+                            .await.map_err(AppError::Database)?
+                            .and_then(|r| r.try_get::<i64>("", "cnt").ok()).unwrap_or(0)
+                    };
+                    let guests = {
+                        let sql = format!(
+                            "SELECT COUNT(*) AS cnt FROM workspace_members wm
+                             JOIN users u ON u.id = wm.member_id
+                             WHERE wm.workspace_id = '{ws_id}' AND wm.role = 5
+                               AND wm.is_active = true AND u.is_bot = false
+                               AND wm.deleted_at IS NULL {date_wm}",
+                        );
+                        db.query_one(Statement::from_string(sea_orm::DatabaseBackend::Postgres, sql))
+                            .await.map_err(AppError::Database)?
+                            .and_then(|r| r.try_get::<i64>("", "cnt").ok()).unwrap_or(0)
+                    };
+                    (total, admins, mems, guests)
+                };
+
+            // Total projects accesibles por el usuario
+            let total_projects = {
+                let pid_filter_proj = match raw_project_ids.filter(|s| !s.trim().is_empty()) {
+                    Some(raw) => {
+                        let ids: Result<Vec<Uuid>, _> =
+                            raw.split(',').map(|p| p.trim().parse::<Uuid>()).collect();
+                        let ids = ids.map_err(|_| AppError::BadRequest("project_ids contains invalid UUID values".into()))?;
+                        let list = ids.iter().map(|u| format!("'{u}'")).collect::<Vec<_>>().join(", ");
+                        format!("AND p.id IN ({list})")
+                    }
+                    _ => String::new(),
+                };
+                let sql = format!(
+                    "SELECT COUNT(DISTINCT p.id) AS cnt
+                     FROM projects p
+                     JOIN project_members pm ON pm.project_id = p.id
+                       AND pm.member_id = '{user_id}' AND pm.is_active = true AND pm.deleted_at IS NULL
+                     WHERE p.workspace_id = '{ws_id}'
+                       AND p.deleted_at IS NULL AND p.archived_at IS NULL
+                       {pid_filter_proj}",
+                );
+                db.query_one(Statement::from_string(sea_orm::DatabaseBackend::Postgres, sql))
+                    .await.map_err(AppError::Database)?
+                    .and_then(|r| r.try_get::<i64>("", "cnt").ok()).unwrap_or(0)
+            };
+
+            // Total work items
+            let total_work_items = {
+                let sql = format!(
+                    "SELECT COUNT(*) AS cnt FROM issues i
+                     WHERE {base_filter} {project_id_filter} {date_clause_created}",
+                );
+                db.query_one(Statement::from_string(sea_orm::DatabaseBackend::Postgres, sql))
+                    .await.map_err(AppError::Database)?
+                    .and_then(|r| r.try_get::<i64>("", "cnt").ok()).unwrap_or(0)
+            };
+
+            // Total cycles
+            let total_cycles = {
+                let cycles_pid_filter = project_ids_filter(raw_project_ids)?
+                    .replace("i.project_id", "c.project_id");
+                let date_clause_cycles = analytics_date_clause(date_filter, "c.created_at");
+                let sql = format!(
+                    "SELECT COUNT(*) AS cnt FROM cycles c
+                     WHERE c.workspace_id = '{ws_id}' AND c.deleted_at IS NULL
+                       AND EXISTS (
+                           SELECT 1 FROM project_members pm WHERE pm.project_id = c.project_id
+                             AND pm.member_id = '{user_id}' AND pm.is_active = true AND pm.deleted_at IS NULL
+                       )
+                       {cycles_pid_filter}
+                     {date_clause_cycles}",
+                );
+                db.query_one(Statement::from_string(sea_orm::DatabaseBackend::Postgres, sql))
+                    .await.map_err(AppError::Database)?
+                    .and_then(|r| r.try_get::<i64>("", "cnt").ok()).unwrap_or(0)
+            };
+
+            // Total intake (issues con intake_issues relacionados)
+            let total_intake = {
+                let sql = format!(
+                    "SELECT COUNT(*) AS cnt FROM issues i
+                     JOIN intake_issues ii ON ii.issue_id = i.id
+                     WHERE {base_filter} {project_id_filter}
+                       AND ii.status IN (-2, -1, 0, 1, 2)
+                       {date_clause_created}",
+                );
+                db.query_one(Statement::from_string(sea_orm::DatabaseBackend::Postgres, sql))
+                    .await.map_err(AppError::Database)?
+                    .and_then(|r| r.try_get::<i64>("", "cnt").ok()).unwrap_or(0)
+            };
+
+            Ok(Json(serde_json::json!({
+                "total_users": { "count": total_users },
+                "total_admins": { "count": total_admins },
+                "total_members": { "count": total_members },
+                "total_guests": { "count": total_guests },
+                "total_projects": { "count": total_projects },
+                "total_work_items": { "count": total_work_items },
+                "total_cycles": { "count": total_cycles },
+                "total_intake": { "count": total_intake },
+            })))
+        }
+
+        "work-items" => {
+            let base_filter = base_issue_filter(ws_id, user_id);
+            let sql = format!(
+                "SELECT
+                   COUNT(*) AS total,
+                   COUNT(*) FILTER (WHERE s.group = 'started') AS started,
+                   COUNT(*) FILTER (WHERE s.group = 'backlog') AS backlog,
+                   COUNT(*) FILTER (WHERE s.group = 'unstarted') AS unstarted,
+                   COUNT(*) FILTER (WHERE s.group = 'completed') AS completed
+                 FROM issues i
+                 JOIN states s ON s.id = i.state_id
+                 WHERE {base_filter} {project_id_filter} {date_clause_created}",
+            );
+            let row = db
+                .query_one(Statement::from_string(sea_orm::DatabaseBackend::Postgres, sql))
+                .await.map_err(AppError::Database)?;
+
+            let (total, started, backlog, unstarted, completed) = row
+                .map(|r| {
+                    (
+                        r.try_get::<i64>("", "total").unwrap_or(0),
+                        r.try_get::<i64>("", "started").unwrap_or(0),
+                        r.try_get::<i64>("", "backlog").unwrap_or(0),
+                        r.try_get::<i64>("", "unstarted").unwrap_or(0),
+                        r.try_get::<i64>("", "completed").unwrap_or(0),
+                    )
+                })
+                .unwrap_or((0, 0, 0, 0, 0));
+
+            Ok(Json(serde_json::json!({
+                "total_work_items": { "count": total },
+                "started_work_items": { "count": started },
+                "backlog_work_items": { "count": backlog },
+                "un_started_work_items": { "count": unstarted },
+                "completed_work_items": { "count": completed },
+            })))
+        }
+
+        _ => Err(AppError::BadRequest("Invalid tab".into())),
+    }
+}
+
+// ── GET /workspaces/{slug}/advance-analytics-stats/ ───────────────────────────
+
+/// GET /api/workspaces/{slug}/advance-analytics-stats/
+///
+/// Estadísticas por proyecto desagregadas por estado. `type=work-items` (default).
+#[utoipa::path(
+    get,
+    path = "/workspaces/{slug}/advance-analytics-stats/",
+    tag = "Analytics",
+    security(("TokenAuth" = [])),
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("type" = Option<String>, Query, description = "work-items"),
+        ("date_filter" = Option<String>, Query, description = "Date filter"),
+        ("project_ids" = Option<String>, Query, description = "Comma-separated project IDs"),
+    ),
+    responses(
+        (status = 200, description = "Work items stats per project"),
+        (status = 400, description = "Invalid type"),
+        (status = 403, description = "Forbidden"),
+    )
+)]
+pub async fn advance_analytics_stats(
+    State(state): State<AppState>,
+    guard: WorkspaceMemberGuard,
+    Query(params): Query<AdvanceAnalyticsStatsQuery>,
+) -> Result<impl IntoResponse, AppError> {
+    if guard.member.role < ROLE_MEMBER {
+        return Err(AppError::Forbidden);
+    }
+
+    let stat_type = params.stat_type.as_deref().unwrap_or("work-items");
+    if stat_type != "work-items" {
+        return Err(AppError::BadRequest("Invalid type".into()));
+    }
+
+    let ws_id = guard.workspace.id;
+    let user_id = guard.user.id;
+    let db = &state.db;
+
+    let project_id_filter = project_ids_filter(params.project_ids.as_deref())?;
+    let date_clause = analytics_date_clause(params.date_filter.as_deref(), "i.created_at");
+    let base_filter = base_issue_filter(ws_id, user_id);
+
+    let sql = format!(
+        "SELECT
+           i.project_id,
+           p.name AS project_name,
+           COUNT(*) FILTER (WHERE s.group = 'cancelled') AS cancelled_work_items,
+           COUNT(*) FILTER (WHERE s.group = 'completed') AS completed_work_items,
+           COUNT(*) FILTER (WHERE s.group = 'backlog') AS backlog_work_items,
+           COUNT(*) FILTER (WHERE s.group = 'unstarted') AS un_started_work_items,
+           COUNT(*) FILTER (WHERE s.group = 'started') AS started_work_items
+         FROM issues i
+         JOIN states s ON s.id = i.state_id
+         JOIN projects p ON p.id = i.project_id
+         WHERE {base_filter} {project_id_filter} {date_clause}
+         GROUP BY i.project_id, p.name
+         ORDER BY i.project_id",
+    );
+
+    let rows = db
+        .query_all(Statement::from_string(sea_orm::DatabaseBackend::Postgres, sql))
+        .await
+        .map_err(AppError::Database)?;
+
+    let result: Vec<serde_json::Value> = rows
+        .iter()
+        .map(|r| {
+            serde_json::json!({
+                "project_id": r.try_get::<Uuid>("", "project_id").ok(),
+                "project__name": r.try_get::<String>("", "project_name").unwrap_or_default(),
+                "cancelled_work_items": r.try_get::<i64>("", "cancelled_work_items").unwrap_or(0),
+                "completed_work_items": r.try_get::<i64>("", "completed_work_items").unwrap_or(0),
+                "backlog_work_items": r.try_get::<i64>("", "backlog_work_items").unwrap_or(0),
+                "un_started_work_items": r.try_get::<i64>("", "un_started_work_items").unwrap_or(0),
+                "started_work_items": r.try_get::<i64>("", "started_work_items").unwrap_or(0),
+            })
+        })
+        .collect();
+
+    Ok(Json(result))
+}
+
+// ── GET /workspaces/{slug}/advance-analytics-charts/ ─────────────────────────
+
+/// GET /api/workspaces/{slug}/advance-analytics-charts/
+///
+/// Datos para gráficas de analytics avanzado.
+/// `type=projects` (default) | `type=work-items` | `type=custom-work-items`
+#[utoipa::path(
+    get,
+    path = "/workspaces/{slug}/advance-analytics-charts/",
+    tag = "Analytics",
+    security(("TokenAuth" = [])),
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("type" = Option<String>, Query, description = "projects | work-items | custom-work-items"),
+        ("date_filter" = Option<String>, Query, description = "Date filter"),
+        ("project_ids" = Option<String>, Query, description = "Comma-separated project IDs"),
+        ("x_axis" = Option<String>, Query, description = "X axis for custom chart"),
+        ("group_by" = Option<String>, Query, description = "Group by for custom chart"),
+    ),
+    responses(
+        (status = 200, description = "Chart data"),
+        (status = 400, description = "Invalid type"),
+        (status = 403, description = "Forbidden"),
+    )
+)]
+pub async fn advance_analytics_charts(
+    State(state): State<AppState>,
+    guard: WorkspaceMemberGuard,
+    Query(params): Query<AdvanceAnalyticsChartQuery>,
+) -> Result<impl IntoResponse, AppError> {
+    if guard.member.role < ROLE_MEMBER {
+        return Err(AppError::Forbidden);
+    }
+
+    let ws_id = guard.workspace.id;
+    let user_id = guard.user.id;
+    let db = &state.db;
+
+    let chart_type = params.chart_type.as_deref().unwrap_or("projects");
+    let date_filter = params.date_filter.as_deref();
+    let project_id_filter = project_ids_filter(params.project_ids.as_deref())?;
+    let date_clause = analytics_date_clause(date_filter, "i.created_at");
+    let base_filter = base_issue_filter(ws_id, user_id);
+
+    match chart_type {
+        "projects" => {
+            // Conteo de entidades por tipo en el workspace
+
+            let work_items: i64 = {
+                let sql = format!(
+                    "SELECT COUNT(*) AS cnt FROM issues i
+                     WHERE {base_filter} {project_id_filter} {date_clause}",
+                );
+                db.query_one(Statement::from_string(sea_orm::DatabaseBackend::Postgres, sql))
+                    .await.map_err(AppError::Database)?
+                    .and_then(|r| r.try_get::<i64>("", "cnt").ok()).unwrap_or(0)
+            };
+
+            let cycles: i64 = {
+                let pid_f = project_ids_filter(params.project_ids.as_deref())?
+                    .replace("i.project_id", "c.project_id");
+                let dc = analytics_date_clause(date_filter, "c.created_at");
+                let sql = format!(
+                    "SELECT COUNT(*) AS cnt FROM cycles c
+                     WHERE c.workspace_id = '{ws_id}' AND c.deleted_at IS NULL
+                       AND EXISTS (SELECT 1 FROM project_members pm WHERE pm.project_id = c.project_id
+                         AND pm.member_id = '{user_id}' AND pm.is_active = true AND pm.deleted_at IS NULL)
+                     {pid_f} {dc}",
+                );
+                db.query_one(Statement::from_string(sea_orm::DatabaseBackend::Postgres, sql))
+                    .await.map_err(AppError::Database)?
+                    .and_then(|r| r.try_get::<i64>("", "cnt").ok()).unwrap_or(0)
+            };
+
+            let modules: i64 = {
+                let pid_f = project_ids_filter(params.project_ids.as_deref())?
+                    .replace("i.project_id", "m.project_id");
+                let dc = analytics_date_clause(date_filter, "m.created_at");
+                let sql = format!(
+                    "SELECT COUNT(*) AS cnt FROM modules m
+                     WHERE m.workspace_id = '{ws_id}' AND m.deleted_at IS NULL
+                       AND EXISTS (SELECT 1 FROM project_members pm WHERE pm.project_id = m.project_id
+                         AND pm.member_id = '{user_id}' AND pm.is_active = true AND pm.deleted_at IS NULL)
+                     {pid_f} {dc}",
+                );
+                db.query_one(Statement::from_string(sea_orm::DatabaseBackend::Postgres, sql))
+                    .await.map_err(AppError::Database)?
+                    .and_then(|r| r.try_get::<i64>("", "cnt").ok()).unwrap_or(0)
+            };
+
+            let intake: i64 = {
+                let sql = format!(
+                    "SELECT COUNT(*) AS cnt FROM issues i
+                     JOIN intake_issues ii ON ii.issue_id = i.id
+                     WHERE {base_filter} {project_id_filter} {date_clause}",
+                );
+                db.query_one(Statement::from_string(sea_orm::DatabaseBackend::Postgres, sql))
+                    .await.map_err(AppError::Database)?
+                    .and_then(|r| r.try_get::<i64>("", "cnt").ok()).unwrap_or(0)
+            };
+
+            let members: i64 = {
+                let dc = analytics_date_clause(date_filter, "wm.created_at");
+                let sql = format!(
+                    "SELECT COUNT(*) AS cnt FROM workspace_members wm
+                     JOIN users u ON u.id = wm.member_id
+                     WHERE wm.workspace_id = '{ws_id}' AND wm.is_active = true
+                       AND u.is_bot = false AND wm.deleted_at IS NULL {dc}",
+                );
+                db.query_one(Statement::from_string(sea_orm::DatabaseBackend::Postgres, sql))
+                    .await.map_err(AppError::Database)?
+                    .and_then(|r| r.try_get::<i64>("", "cnt").ok()).unwrap_or(0)
+            };
+
+            let pages: i64 = {
+                let pid_f = project_ids_filter(params.project_ids.as_deref())?
+                    .replace("i.project_id", "pp.project_id");
+                let dc = analytics_date_clause(date_filter, "pp.created_at");
+                let sql = format!(
+                    "SELECT COUNT(*) AS cnt FROM project_pages pp
+                     WHERE pp.workspace_id = '{ws_id}' AND pp.deleted_at IS NULL
+                       AND EXISTS (SELECT 1 FROM project_members pm WHERE pm.project_id = pp.project_id
+                         AND pm.member_id = '{user_id}' AND pm.is_active = true AND pm.deleted_at IS NULL)
+                     {pid_f} {dc}",
+                );
+                db.query_one(Statement::from_string(sea_orm::DatabaseBackend::Postgres, sql))
+                    .await.map_err(AppError::Database)?
+                    .and_then(|r| r.try_get::<i64>("", "cnt").ok()).unwrap_or(0)
+            };
+
+            let views: i64 = {
+                let pid_f = project_ids_filter(params.project_ids.as_deref())?
+                    .replace("i.project_id", "iv.project_id");
+                let dc = analytics_date_clause(date_filter, "iv.created_at");
+                let sql = format!(
+                    "SELECT COUNT(*) AS cnt FROM issue_views iv
+                     WHERE iv.workspace_id = '{ws_id}' AND iv.deleted_at IS NULL
+                       AND EXISTS (SELECT 1 FROM project_members pm WHERE pm.project_id = iv.project_id
+                         AND pm.member_id = '{user_id}' AND pm.is_active = true AND pm.deleted_at IS NULL)
+                     {pid_f} {dc}",
+                );
+                db.query_one(Statement::from_string(sea_orm::DatabaseBackend::Postgres, sql))
+                    .await.map_err(AppError::Database)?
+                    .and_then(|r| r.try_get::<i64>("", "cnt").ok()).unwrap_or(0)
+            };
+
+            let result = vec![
+                serde_json::json!({"key": "work_items", "name": "Work Items", "count": work_items}),
+                serde_json::json!({"key": "cycles", "name": "Cycles", "count": cycles}),
+                serde_json::json!({"key": "modules", "name": "Modules", "count": modules}),
+                serde_json::json!({"key": "intake", "name": "Intake", "count": intake}),
+                serde_json::json!({"key": "members", "name": "Members", "count": members}),
+                serde_json::json!({"key": "pages", "name": "Pages", "count": pages}),
+                serde_json::json!({"key": "views", "name": "Views", "count": views}),
+            ];
+            Ok(Json(serde_json::Value::Array(result)))
+        }
+
+        "work-items" => {
+            // Gráfica mensual de issues creados vs completados desde el inicio del workspace
+            let workspace_sql = format!(
+                "SELECT created_at FROM workspaces WHERE id = '{ws_id}'",
+            );
+            let ws_row = db
+                .query_one(Statement::from_string(sea_orm::DatabaseBackend::Postgres, workspace_sql))
+                .await
+                .map_err(AppError::Database)?;
+
+            let ws_created: chrono::NaiveDate = ws_row
+                .and_then(|r| {
+                    r.try_get::<chrono::DateTime<chrono::FixedOffset>>("", "created_at")
+                        .ok()
+                        .map(|dt| dt.date_naive().with_day(1).unwrap_or(dt.date_naive()))
+                })
+                .unwrap_or_else(|| chrono::Utc::now().date_naive().with_day(1).unwrap());
+
+            let (sql_start, sql_end) = if let Some((s, e)) = chart_period_range(date_filter) {
+                (s, e)
+            } else {
+                (ws_created, chrono::Utc::now().date_naive())
+            };
+
+            let monthly_sql = format!(
+                "SELECT
+                   DATE_TRUNC('month', i.created_at)::date AS month,
+                   COUNT(*) AS created_count,
+                   COUNT(*) FILTER (WHERE s.group = 'completed') AS completed_count
+                 FROM issues i
+                 JOIN states s ON s.id = i.state_id
+                 WHERE {base_filter} {project_id_filter}
+                   AND DATE(i.created_at) >= '{sql_start}' AND DATE(i.created_at) <= '{sql_end}'
+                 GROUP BY month ORDER BY month",
+            );
+
+            let monthly_rows = db
+                .query_all(Statement::from_string(sea_orm::DatabaseBackend::Postgres, monthly_sql))
+                .await
+                .map_err(AppError::Database)?;
+
+            use std::collections::HashMap;
+            let stats_map: HashMap<String, (i64, i64)> = monthly_rows
+                .iter()
+                .filter_map(|r| {
+                    let month = r.try_get::<chrono::NaiveDate>("", "month").ok()?;
+                    let created = r.try_get::<i64>("", "created_count").unwrap_or(0);
+                    let completed = r.try_get::<i64>("", "completed_count").unwrap_or(0);
+                    Some((month.format("%Y-%m-%d").to_string(), (created, completed)))
+                })
+                .collect();
+
+            let mut data = Vec::new();
+            let mut current = sql_start.with_day(1).unwrap_or(sql_start);
+            let last_month = chrono::Utc::now().date_naive().with_day(1).unwrap_or(sql_end);
+
+            while current <= last_month {
+                let key = current.format("%Y-%m-%d").to_string();
+                let (created, completed) = stats_map.get(&key).copied().unwrap_or((0, 0));
+                data.push(serde_json::json!({
+                    "key": key,
+                    "name": key,
+                    "count": created,
+                    "created_issues": created,
+                    "completed_issues": completed,
+                }));
+                // Avanzar al siguiente mes
+                if current.month() == 12 {
+                    current = current.with_year(current.year() + 1).unwrap().with_month(1).unwrap();
+                } else {
+                    current = current.with_month(current.month() + 1).unwrap();
+                }
+            }
+
+            Ok(Json(serde_json::json!({
+                "data": data,
+                "schema": { "completed_issues": "completed_issues", "created_issues": "created_issues" }
+            })))
+        }
+
+        "custom-work-items" => {
+            let x_axis = params.x_axis.as_deref().unwrap_or("priority");
+
+            if !VALID_X_AXIS.contains(&x_axis) {
+                return Err(AppError::BadRequest(
+                    "x_axis value is not valid".into(),
+                ));
+            }
+
+            if let Some(ref gb) = params.group_by {
+                if !VALID_X_AXIS.contains(&gb.as_str()) || gb.as_str() == x_axis {
+                    return Err(AppError::BadRequest(
+                        "group_by must be valid and different from x_axis".into(),
+                    ));
+                }
+            }
+
+            let (x_col, x_join) = axis_to_sql_col(x_axis);
+
+            let sql = format!(
+                "SELECT {x_col} AS x_axis_value, COUNT(DISTINCT i.id) AS value
+                 FROM issues i {x_join}
+                 WHERE {base_filter} {project_id_filter} {date_clause}
+                 GROUP BY {x_col}
+                 ORDER BY value DESC",
+            );
+
+            let rows = db
+                .query_all(Statement::from_string(sea_orm::DatabaseBackend::Postgres, sql))
+                .await
+                .map_err(AppError::Database)?;
+
+            let distribution: Vec<serde_json::Value> = rows
+                .iter()
+                .map(|r| {
+                    serde_json::json!({
+                        "x_axis": r.try_get::<String>("", "x_axis_value").ok()
+                            .or_else(|| r.try_get::<Uuid>("", "x_axis_value").ok().map(|u| u.to_string())),
+                        "value": r.try_get::<i64>("", "value").unwrap_or(0),
+                    })
+                })
+                .collect();
+
+            Ok(Json(serde_json::json!({ "distribution": distribution })))
+        }
+
+        _ => Err(AppError::BadRequest("Invalid type".into())),
     }
 }

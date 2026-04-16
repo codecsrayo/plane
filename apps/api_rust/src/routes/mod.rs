@@ -248,6 +248,9 @@ pub mod instances;
         analytics::default_analytics,
         analytics::project_stats,
         analytics::workspace_analytics,
+        analytics::advance_analytics,
+        analytics::advance_analytics_stats,
+        analytics::advance_analytics_charts,
         assets::initiate_user_asset_upload,
         assets::complete_user_asset_upload,
         assets::delete_user_asset,
@@ -952,6 +955,19 @@ pub fn build_router(state: AppState) -> Router {
         .route(
             "/workspaces/{slug}/saved-analytic-view/{analytic_id}",
             get(analytics::get_saved_analytic_view),
+        )
+        // ── Advance Analytics ─────────────────────────────────────────────────
+        .route(
+            "/workspaces/{slug}/advance-analytics",
+            get(analytics::advance_analytics),
+        )
+        .route(
+            "/workspaces/{slug}/advance-analytics-stats",
+            get(analytics::advance_analytics_stats),
+        )
+        .route(
+            "/workspaces/{slug}/advance-analytics-charts",
+            get(analytics::advance_analytics_charts),
         )
         // ── Assets ───────────────────────────────────────────────────────────
         .route(
