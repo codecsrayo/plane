@@ -1070,6 +1070,13 @@ pub fn build_router(state: AppState) -> Router {
             get(workspace_extras::get_user_preferences)
                 .patch(workspace_extras::update_user_preferences),
         )
+        // Mirror Django: workspaces/<slug>/user-properties/
+        //   → WorkspaceUserPropertiesEndpoint (plane/app/urls/workspace.py:162)
+        .route(
+            "/workspaces/{slug}/user-properties",
+            get(workspace_extras::get_workspace_user_properties)
+                .patch(workspace_extras::update_workspace_user_properties),
+        )
         // ── Draft Issues ──────────────────────────────────────────────────────
         .route(
             "/workspaces/{slug}/draft-issues",

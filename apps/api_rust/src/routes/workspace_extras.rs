@@ -34,7 +34,7 @@ use crate::{
         cycles, draft_issues, estimates, estimate_points, labels, modules,
         stickies, states, user_favorites, user_recent_visits,
         workspace_home_preferences, workspace_user_links,
-        workspace_user_preferences,
+        workspace_user_preferences, workspace_user_properties,
     },
     error::AppError,
     routes::helpers::{require_workspace_member, workspace_by_slug},
@@ -1925,5 +1925,332 @@ pub async fn list_workspace_states(
         .map_err(AppError::Database)?;
 
     let resp: Vec<WorkspaceStateResponse> = items.into_iter().map(Into::into).collect();
+    Ok((StatusCode::OK, Json(resp)))
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// WORKSPACE USER PROPERTIES
+// ═══════════════════════════════════════════════════════════════════════════
+//
+// Mirror de Django `WorkspaceUserPropertiesEndpoint`
+// (plane/app/views/workspace/user.py:252).
+//
+// GET   /workspaces/{slug}/user-properties/
+// PATCH /workspaces/{slug}/user-properties/
+//
+// Ambos operan bajo la semántica `get_or_create(user, workspace)`: si no
+// existe la fila la crean con defaults. En Rust se implementa de forma
+// atómica con `INSERT ... ON CONFLICT DO NOTHING` para evitar race
+// conditions entre tabs del mismo usuario, seguido de un SELECT.
+//
+// Permiso: `WorkspaceViewerPermission` (cualquier miembro activo del
+// workspace).
+//
+// Seguridad y diferencias intencionales respecto a Django:
+// - El body del PATCH usa una whitelist estricta; `id`, `user_id`,
+//   `workspace_id`, timestamps y `deleted_at` no pueden ser pisados desde
+//   el request.
+// - `navigation_control_preference` se valida contra el enum Django
+//   (`ACCORDION` | `TABBED`). Django delega la validación al CharField
+//   + choices a nivel de serializer; aquí se hace explícito.
+// - `navigation_project_limit` se valida en rango `0..=1000` para evitar
+//   valores absurdos / overflow de `i32`. Django no valida; este
+//   endurecimiento es consistente con la política de no introducir
+//   patrones inseguros.
+
+/// Valores permitidos para `navigation_control_preference`.
+///
+/// Mirror del enum Django
+/// `WorkspaceUserProperties.NavigationControlPreference.choices`.
+const NAVIGATION_CONTROL_PREFERENCES: &[&str] = &["ACCORDION", "TABBED"];
+
+/// Límite razonable para `navigation_project_limit`. Django no valida;
+/// aquí se acota para evitar valores hostiles o absurdos.
+const MAX_NAVIGATION_PROJECT_LIMIT: i32 = 1000;
+
+/// Defaults idénticos a Django `get_default_filters` en
+/// `plane/db/models/workspace.py:62`.
+fn default_filters() -> JsonValue {
+    serde_json::json!({
+        "priority": null,
+        "state": null,
+        "state_group": null,
+        "assignees": null,
+        "created_by": null,
+        "labels": null,
+        "start_date": null,
+        "target_date": null,
+        "subscriber": null,
+    })
+}
+
+/// Mirror de `get_default_display_filters`
+/// (plane/db/models/workspace.py:76).
+fn default_display_filters() -> JsonValue {
+    serde_json::json!({
+        "display_filters": {
+            "group_by": null,
+            "order_by": "-created_at",
+            "type": null,
+            "sub_issue": true,
+            "show_empty_groups": true,
+            "layout": "list",
+            "calendar_date_range": "",
+        }
+    })
+}
+
+/// Mirror de `get_default_display_properties`
+/// (plane/db/models/workspace.py:90).
+fn default_display_properties() -> JsonValue {
+    serde_json::json!({
+        "display_properties": {
+            "assignee": true,
+            "attachment_count": true,
+            "created_on": true,
+            "due_date": true,
+            "estimate": true,
+            "key": true,
+            "labels": true,
+            "link": true,
+            "priority": true,
+            "start_date": true,
+            "state": true,
+            "sub_issue_count": true,
+            "updated_on": true,
+        }
+    })
+}
+
+#[derive(Debug, Serialize)]
+pub struct WorkspaceUserPropertiesResponse {
+    pub id: Uuid,
+    pub workspace: Uuid,
+    pub user: Uuid,
+    pub filters: JsonValue,
+    pub display_filters: JsonValue,
+    pub display_properties: JsonValue,
+    pub rich_filters: JsonValue,
+    pub navigation_project_limit: i32,
+    pub navigation_control_preference: String,
+    pub created_by: Option<Uuid>,
+    pub updated_by: Option<Uuid>,
+    pub created_at: DateTime<Utc>,
+    pub updated_at: DateTime<Utc>,
+    pub deleted_at: Option<DateTime<Utc>>,
+}
+
+impl From<workspace_user_properties::Model> for WorkspaceUserPropertiesResponse {
+    fn from(m: workspace_user_properties::Model) -> Self {
+        Self {
+            id: m.id,
+            // Django `WorkspaceUserPropertiesSerializer` usa `fields = "__all__"`
+            // con `read_only_fields = ["workspace", "user"]`. En la respuesta
+            // JSON esos FK aparecen como `workspace` y `user` (no como
+            // `workspace_id`/`user_id`). Preservamos ese contrato para el
+            // frontend.
+            workspace: m.workspace_id,
+            user: m.user_id,
+            filters: m.filters,
+            display_filters: m.display_filters,
+            display_properties: m.display_properties,
+            rich_filters: m.rich_filters,
+            navigation_project_limit: m.navigation_project_limit,
+            navigation_control_preference: m.navigation_control_preference,
+            created_by: m.created_by_id,
+            updated_by: m.updated_by_id,
+            created_at: m.created_at.into(),
+            updated_at: m.updated_at.into(),
+            deleted_at: m.deleted_at.map(Into::into),
+        }
+    }
+}
+
+/// Body aceptado por el PATCH. Todos los campos son opcionales
+/// (partial update, igual que Django `partial=True`). Los FKs y timestamps
+/// quedan fuera de la whitelist por diseño.
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
+pub struct UpdateWorkspaceUserPropertiesRequest {
+    pub filters: Option<JsonValue>,
+    pub display_filters: Option<JsonValue>,
+    pub display_properties: Option<JsonValue>,
+    pub rich_filters: Option<JsonValue>,
+    pub navigation_project_limit: Option<i32>,
+    pub navigation_control_preference: Option<String>,
+}
+
+/// Devuelve la fila existente o la crea con defaults.
+///
+/// Implementa `get_or_create(user=..., workspace=...)` de forma atómica:
+/// 1. `INSERT ... ON CONFLICT DO NOTHING` con defaults Django.
+/// 2. `SELECT` filtrando por `(workspace_id, user_id)` activos.
+///
+/// La unique constraint parcial
+/// `workspace_user_properties_unique_workspace_user_when_deleted_at_null`
+/// (ver `plane/db/models/workspace.py:338-344`) garantiza que no existan
+/// dos filas activas para el mismo par (workspace, user).
+async fn get_or_create_workspace_user_properties(
+    db: &sea_orm::DatabaseConnection,
+    workspace_id: Uuid,
+    user_id: Uuid,
+) -> Result<workspace_user_properties::Model, AppError> {
+    use sea_orm::sea_query::OnConflict;
+
+    let now = chrono::Utc::now().fixed_offset();
+
+    // Intento de insert con ON CONFLICT DO NOTHING.
+    // Si ya existe una fila activa para (workspace_id, user_id) la unique
+    // constraint parcial hace fallar el insert silenciosamente.
+    let to_insert = workspace_user_properties::ActiveModel {
+        id: Set(Uuid::new_v4()),
+        created_at: Set(now),
+        updated_at: Set(now),
+        filters: Set(default_filters()),
+        display_filters: Set(default_display_filters()),
+        display_properties: Set(default_display_properties()),
+        rich_filters: Set(serde_json::json!({})),
+        navigation_project_limit: Set(10),
+        navigation_control_preference: Set("ACCORDION".to_string()),
+        created_by_id: Set(Some(user_id)),
+        updated_by_id: Set(Some(user_id)),
+        user_id: Set(user_id),
+        workspace_id: Set(workspace_id),
+        deleted_at: Set(None),
+    };
+
+    workspace_user_properties::Entity::insert(to_insert)
+        .on_conflict(
+            OnConflict::columns([
+                workspace_user_properties::Column::WorkspaceId,
+                workspace_user_properties::Column::UserId,
+            ])
+            .do_nothing()
+            .to_owned(),
+        )
+        .do_nothing()
+        .exec(db)
+        .await
+        .map_err(AppError::Database)?;
+
+    // SELECT garantizado: ya sea la fila recién insertada o la existente.
+    workspace_user_properties::Entity::find()
+        .filter(workspace_user_properties::Column::WorkspaceId.eq(workspace_id))
+        .filter(workspace_user_properties::Column::UserId.eq(user_id))
+        .filter(workspace_user_properties::Column::DeletedAt.is_null())
+        .one(db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)
+}
+
+/// GET /workspaces/{slug}/user-properties/
+///
+/// Mirror Django: `WorkspaceUserPropertiesEndpoint.get`
+/// (plane/app/views/workspace/user.py:269).
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/user-properties/",
+    tag = "Workspace Extras",
+    params(("slug" = String, Path, description = "Workspace slug")),
+    responses(
+        (status = 200, description = "Propiedades del usuario en el workspace"),
+        (status = 403, description = "No es miembro activo del workspace"),
+        (status = 404, description = "Workspace no existe"),
+    )
+)]
+pub async fn get_workspace_user_properties(
+    State(state): State<AppState>,
+    AnyAuth(auth_user): AnyAuth,
+    Path(slug): Path<String>,
+) -> Result<impl axum::response::IntoResponse, AppError> {
+    let db = &state.db;
+    let user_id = auth_user.id;
+    let ws = workspace_by_slug(db, &slug).await?;
+    let _member = require_workspace_member(db, ws.id, user_id).await?;
+
+    let props = get_or_create_workspace_user_properties(db, ws.id, user_id).await?;
+    let resp: WorkspaceUserPropertiesResponse = props.into();
+    Ok((StatusCode::OK, Json(resp)))
+}
+
+/// PATCH /workspaces/{slug}/user-properties/
+///
+/// Mirror Django: `WorkspaceUserPropertiesEndpoint.patch`
+/// (plane/app/views/workspace/user.py:255).
+///
+/// Política de actualización:
+/// - Whitelist estricta (FKs/timestamps/id nunca se tocan desde el body).
+/// - `navigation_control_preference` ∈ {"ACCORDION", "TABBED"}.
+/// - `navigation_project_limit` ∈ [0, MAX_NAVIGATION_PROJECT_LIMIT].
+/// - Campos JSON (`filters`, `display_filters`, `display_properties`,
+///   `rich_filters`) se reemplazan por valor, respetando el contrato
+///   `partial=True` del serializer Django.
+#[utoipa::path(
+    patch,
+    path = "/api/workspaces/{slug}/user-properties/",
+    tag = "Workspace Extras",
+    params(("slug" = String, Path, description = "Workspace slug")),
+    responses(
+        (status = 200, description = "Propiedades actualizadas"),
+        (status = 400, description = "Body inválido"),
+        (status = 403, description = "No es miembro activo del workspace"),
+        (status = 404, description = "Workspace no existe"),
+    )
+)]
+pub async fn update_workspace_user_properties(
+    State(state): State<AppState>,
+    AnyAuth(auth_user): AnyAuth,
+    Path(slug): Path<String>,
+    Json(body): Json<UpdateWorkspaceUserPropertiesRequest>,
+) -> Result<impl axum::response::IntoResponse, AppError> {
+    let db = &state.db;
+    let user_id = auth_user.id;
+    let ws = workspace_by_slug(db, &slug).await?;
+    let _member = require_workspace_member(db, ws.id, user_id).await?;
+
+    // Validaciones antes de tocar DB: fallan rápido y no consumen escritura.
+    if let Some(ref pref) = body.navigation_control_preference {
+        if !NAVIGATION_CONTROL_PREFERENCES.contains(&pref.as_str()) {
+            return Err(AppError::BadRequest(format!(
+                "navigation_control_preference must be one of {:?}",
+                NAVIGATION_CONTROL_PREFERENCES
+            )));
+        }
+    }
+    if let Some(limit) = body.navigation_project_limit {
+        if !(0..=MAX_NAVIGATION_PROJECT_LIMIT).contains(&limit) {
+            return Err(AppError::BadRequest(format!(
+                "navigation_project_limit must be between 0 and {}",
+                MAX_NAVIGATION_PROJECT_LIMIT
+            )));
+        }
+    }
+
+    let existing = get_or_create_workspace_user_properties(db, ws.id, user_id).await?;
+
+    let mut active: workspace_user_properties::ActiveModel = existing.into();
+    if let Some(v) = body.filters {
+        active.filters = Set(v);
+    }
+    if let Some(v) = body.display_filters {
+        active.display_filters = Set(v);
+    }
+    if let Some(v) = body.display_properties {
+        active.display_properties = Set(v);
+    }
+    if let Some(v) = body.rich_filters {
+        active.rich_filters = Set(v);
+    }
+    if let Some(v) = body.navigation_project_limit {
+        active.navigation_project_limit = Set(v);
+    }
+    if let Some(v) = body.navigation_control_preference {
+        active.navigation_control_preference = Set(v);
+    }
+    active.updated_at = Set(chrono::Utc::now().fixed_offset());
+    active.updated_by_id = Set(Some(user_id));
+
+    let saved = active.update(db).await.map_err(AppError::Database)?;
+    let resp: WorkspaceUserPropertiesResponse = saved.into();
     Ok((StatusCode::OK, Json(resp)))
 }
