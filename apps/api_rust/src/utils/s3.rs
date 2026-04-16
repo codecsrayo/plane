@@ -53,6 +53,15 @@ pub fn build_s3_client(config: &Config) -> Client {
 ///
 /// El cliente sube directamente al bucket; la API solo firma la URL.
 /// TTL por defecto: 1 hora (para completar el upload desde el browser).
+///
+/// NOTA: Actualmente no tiene callers en el código: el frontend
+/// (`packages/services/src/file/file-upload.service.ts`) espera el contrato
+/// de Django/boto3 que es **POST multipart/form-data** con `policy` firmada,
+/// no `PUT` directo. El flujo vigente usa
+/// [`crate::utils::s3_presigned_post::generate_presigned_post`].
+/// Se conserva este helper por si algún flujo server-to-server futuro (ej.
+/// carga server-side de archivos desde un worker) requiere un PUT simple.
+#[allow(dead_code)]
 pub async fn presigned_put_url(
     client: &Client,
     bucket: &str,
@@ -79,6 +88,10 @@ pub async fn presigned_put_url(
 }
 
 /// Genera una presigned URL de `GET` para acceder a un objeto.
+///
+/// Sin callers actuales; se conserva como helper para futuros endpoints que
+/// necesiten servir URLs de descarga con expiración.
+#[allow(dead_code)]
 pub async fn presigned_get_url(
     client: &Client,
     bucket: &str,
