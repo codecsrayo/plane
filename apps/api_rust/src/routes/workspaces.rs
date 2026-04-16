@@ -14,7 +14,7 @@ use axum::{
 };
 use chrono::{DateTime, Utc};
 use sea_orm::{
-    ActiveModelTrait, ColumnTrait, ConnectionTrait, EntityTrait, FromQueryResult,
+    ActiveModelTrait, ColumnTrait, EntityTrait, FromQueryResult,
     PaginatorTrait, QueryFilter, QueryOrder, Set, Statement, TransactionTrait,
 };
 use std::collections::HashSet;
