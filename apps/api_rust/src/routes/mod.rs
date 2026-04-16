@@ -700,12 +700,24 @@ pub fn build_router(state: AppState) -> Router {
             delete(modules::remove_issue_from_module),
         )
         // ── Labels ──────────────────────────────────────────────────────────
+        // Rutas canónicas (/labels/)
         .route(
             "/workspaces/{slug}/projects/{project_id}/labels",
             get(labels::list_labels).post(labels::create_label),
         )
         .route(
             "/workspaces/{slug}/projects/{project_id}/labels/{pk}",
+            get(labels::get_label)
+                .patch(labels::update_label)
+                .delete(labels::delete_label),
+        )
+        // Alias Django-compatible (/issue-labels/) – mismos handlers
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/issue-labels",
+            get(labels::list_labels).post(labels::create_label),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/issue-labels/{pk}",
             get(labels::get_label)
                 .patch(labels::update_label)
                 .delete(labels::delete_label),
