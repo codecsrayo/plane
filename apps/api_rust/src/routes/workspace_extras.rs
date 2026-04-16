@@ -2124,6 +2124,22 @@ async fn get_or_create_workspace_user_properties(
                 workspace_user_properties::Column::WorkspaceId,
                 workspace_user_properties::Column::UserId,
             ])
+            // REQUISITO de PostgreSQL, no decoración: cuando el arbiter index es parcial
+            // (`UNIQUE (workspace_id, user_id) WHERE deleted_at IS NULL`, ver
+            // WorkspaceUserProperties.Meta.constraints en plane/db/models/workspace.py:338-344),
+            // el `ON CONFLICT` DEBE repetir el mismo predicado o PostgreSQL rechaza con
+            // `there is no unique or exclusion constraint matching the ON CONFLICT specification`
+            // (ver https://www.postgresql.org/docs/current/sql-insert.html#SQL-ON-CONFLICT
+            // → "If an index_predicate is specified, it must, as a further requirement for
+            //    inference, satisfy arbiter indexes"). El otro unique existente
+            // (`unique_together = [workspace, user, deleted_at]`) tampoco matchea porque
+            // incluye `deleted_at` como tercera columna y nosotros solo apuntamos a dos.
+            .target_and_where(
+                sea_orm::sea_query::Expr::col(
+                    workspace_user_properties::Column::DeletedAt,
+                )
+                .is_null(),
+            )
             .do_nothing()
             .to_owned(),
         )
