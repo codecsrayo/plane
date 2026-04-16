@@ -543,6 +543,7 @@ export default {
   toast: {
     success: "Thành công!",
     error: "Lỗi!",
+    warning: "Cảnh báo!",
   },
   links: {
     toasts: {

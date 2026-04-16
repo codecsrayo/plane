@@ -538,6 +538,7 @@ export default {
   toast: {
     success: "Başarılı!",
     error: "Hata!",
+    warning: "Uyarı!",
   },
   links: {
     toasts: {

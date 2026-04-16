@@ -530,6 +530,7 @@ export default {
   toast: {
     success: "성공!",
     error: "오류!",
+    warning: "경고!",
   },
   links: {
     toasts: {

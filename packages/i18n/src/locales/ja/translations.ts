@@ -536,6 +536,7 @@ export default {
   toast: {
     success: "成功！",
     error: "エラー！",
+    warning: "警告！",
   },
   links: {
     toasts: {

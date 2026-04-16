@@ -550,6 +550,7 @@ export default {
   toast: {
     success: "¡Éxito!",
     error: "¡Error!",
+    warning: "¡Atención!",
   },
   links: {
     toasts: {
