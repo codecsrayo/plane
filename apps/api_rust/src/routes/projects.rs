@@ -665,39 +665,61 @@ pub async fn create_project(
     Path(slug): Path<String>,
     Json(body): Json<CreateProjectRequest>,
 ) -> Result<impl IntoResponse, AppError> {
+    // ── Validaciones de forma (forbidden chars, longitud) ────────────────────
+    // Espejan plane.db.models.project.Project.FORBIDDEN_IDENTIFIER_CHARS_PATTERN
+    // y ProjectSerializer.validate_identifier de Django.
     if body.name.is_empty() || body.name.len() > 255 {
-        return Err(AppError::BadRequest(
-            "Project name must be between 1 and 255 characters".into(),
-        ));
+        return Err(AppError::Validation(serde_json::json!({
+            "name": ["PROJECT_NAME_INVALID_LENGTH"]
+        })));
     }
     if body.identifier.is_empty() || body.identifier.len() > 12 {
-        return Err(AppError::BadRequest(
-            "Identifier must be between 1 and 12 characters".into(),
-        ));
+        return Err(AppError::Validation(serde_json::json!({
+            "identifier": ["PROJECT_IDENTIFIER_INVALID_LENGTH"]
+        })));
     }
-    let identifier = body.identifier.to_uppercase();
-    if !identifier.chars().all(|c| c.is_alphanumeric() || c == '_') {
-        return Err(AppError::BadRequest(
-            "Identifier can only contain letters, numbers and underscores".into(),
-        ));
+    let identifier = body.identifier.trim().to_uppercase();
+    // Django rechaza: & + , : ; $ ^ } { * = ? @ # | ' < > . ( ) % ! -
+    const FORBIDDEN_CHARS: &[char] = &[
+        '&', '+', ',', ':', ';', '$', '^', '}', '{', '*', '=', '?', '@', '#', '|', '\'', '<',
+        '>', '.', '(', ')', '%', '!', '-',
+    ];
+    if identifier.chars().any(|c| FORBIDDEN_CHARS.contains(&c)) {
+        return Err(AppError::Validation(serde_json::json!({
+            "identifier": ["PROJECT_IDENTIFIER_CANNOT_CONTAIN_SPECIAL_CHARACTERS"]
+        })));
     }
 
     let ws = workspace_by_slug(&state.db, &slug).await?;
     // Cualquier miembro activo puede crear proyectos
     require_workspace_member(&state.db, ws.id, user.id).await?;
 
-    // Verificar que el identificador sea único en el workspace
-    let dup = projects::Entity::find()
+    // ── Unicidad de identifier (solo proyectos no soft-deleted) ──────────────
+    let dup_identifier = projects::Entity::find()
         .active()
         .filter(projects::Column::WorkspaceId.eq(ws.id))
         .filter(projects::Column::Identifier.eq(&identifier))
         .count(&state.db)
         .await
         .map_err(AppError::Database)?;
-    if dup > 0 {
-        return Err(AppError::BadRequest(
-            "Project identifier already exists in this workspace".into(),
-        ));
+    if dup_identifier > 0 {
+        return Err(AppError::Validation(serde_json::json!({
+            "identifier": ["PROJECT_IDENTIFIER_ALREADY_EXIST"]
+        })));
+    }
+
+    // ── Unicidad de name (espeja ProjectSerializer.validate_name de Django) ──
+    let dup_name = projects::Entity::find()
+        .active()
+        .filter(projects::Column::WorkspaceId.eq(ws.id))
+        .filter(projects::Column::Name.eq(&body.name))
+        .count(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+    if dup_name > 0 {
+        return Err(AppError::Validation(serde_json::json!({
+            "name": ["PROJECT_NAME_ALREADY_EXIST"]
+        })));
     }
 
     let project_id = Uuid::new_v4();

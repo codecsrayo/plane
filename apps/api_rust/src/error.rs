@@ -24,6 +24,13 @@ pub enum AppError {
     #[error("Bad request: {0}")]
     BadRequest(String),
 
+    /// Validation error in DRF-compatible field-keyed format.
+    /// Body shape: `{"field_name": ["ERROR_CODE", ...], ...}` — status 400.
+    /// Use this when the frontend expects specific error codes per field
+    /// (e.g. `PROJECT_IDENTIFIER_ALREADY_EXIST`).
+    #[error("Validation error")]
+    Validation(serde_json::Value),
+
     #[error("Conflict: {0}")]
     Conflict(String),
 
@@ -41,26 +48,57 @@ struct ErrorBody {
 
 impl IntoResponse for AppError {
     fn into_response(self) -> Response {
-        let (status, message) = match &self {
-            AppError::NotFound => (StatusCode::NOT_FOUND, self.to_string()),
-            AppError::Unauthorized => (StatusCode::UNAUTHORIZED, self.to_string()),
-            AppError::Forbidden => (StatusCode::FORBIDDEN, self.to_string()),
-            AppError::RateLimited => (StatusCode::TOO_MANY_REQUESTS, self.to_string()),
-            AppError::BadRequest(m) => (StatusCode::BAD_REQUEST, m.clone()),
-            AppError::Conflict(m) => (StatusCode::CONFLICT, m.clone()),
+        match &self {
+            AppError::NotFound => (
+                StatusCode::NOT_FOUND,
+                Json(ErrorBody { error: self.to_string() }),
+            )
+                .into_response(),
+            AppError::Unauthorized => (
+                StatusCode::UNAUTHORIZED,
+                Json(ErrorBody { error: self.to_string() }),
+            )
+                .into_response(),
+            AppError::Forbidden => (
+                StatusCode::FORBIDDEN,
+                Json(ErrorBody { error: self.to_string() }),
+            )
+                .into_response(),
+            AppError::RateLimited => (
+                StatusCode::TOO_MANY_REQUESTS,
+                Json(ErrorBody { error: self.to_string() }),
+            )
+                .into_response(),
+            AppError::BadRequest(m) => (
+                StatusCode::BAD_REQUEST,
+                Json(ErrorBody { error: m.clone() }),
+            )
+                .into_response(),
+            AppError::Validation(body) => {
+                // DRF format: render the field-keyed JSON as-is, no wrapper.
+                (StatusCode::BAD_REQUEST, Json(body.clone())).into_response()
+            }
+            AppError::Conflict(m) => (
+                StatusCode::CONFLICT,
+                Json(ErrorBody { error: m.clone() }),
+            )
+                .into_response(),
             AppError::Database(e) => {
                 tracing::error!(error = %e, "Database error");
-                (StatusCode::INTERNAL_SERVER_ERROR, "Database error".into())
+                (
+                    StatusCode::INTERNAL_SERVER_ERROR,
+                    Json(ErrorBody { error: "Database error".into() }),
+                )
+                    .into_response()
             }
             AppError::Internal(e) => {
                 tracing::error!(error = %e, "Internal error");
                 (
                     StatusCode::INTERNAL_SERVER_ERROR,
-                    "Internal server error".into(),
+                    Json(ErrorBody { error: "Internal server error".into() }),
                 )
+                    .into_response()
             }
-        };
-
-        (status, Json(ErrorBody { error: message })).into_response()
+        }
     }
 }
