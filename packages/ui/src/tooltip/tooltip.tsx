@@ -39,33 +39,43 @@ interface ITooltipProps {
   renderByDefault?: boolean;
 }
 
-// Nota: el `= {} as ITooltipProps` final es defensivo. Con destructuring inline en el parámetro
-// (`function Foo({ a = 1 }: Props) { ... }`) el bind revienta con "Cannot destructure property …
-// of 'undefined' as it is undefined" si el primer argumento llega como `undefined` — los defaults
-// por propiedad no cubren el caso del objeto entero. React garantiza un objeto de props vía JSX,
-// pero HMR swaps, patrones render-as-value, HOCs con props mal tipados y boundaries de Fast
-// Refresh pueden filtrar `undefined`. El cast a ITooltipProps es necesario porque `tooltipContent`
-// y `children` están tipados como requeridos.
+// Defensa en dos capas contra `props` inválido:
 //
-// `children` también se guardea explícitamente más abajo: el render path llama a
-// `React.cloneElement(children, …)`, que revienta si `children` es `undefined`. Con el default
-// `= {}` el destructuring ya no crashea, pero sin el guard de children el componente seguiría
-// reventando una línea más abajo. Mismo patrón (default + guard temprano) que se aplicó en
-// AppSidebarItem (commit 099091c) y en el Tooltip de propel (commit 00c84b0).
-export function Tooltip({
-  tooltipHeading,
-  tooltipContent,
-  position = "top",
-  children,
-  disabled = false,
-  className = "",
-  openDelay = 200,
-  closeDelay,
-  isMobile = false,
+// 1. Default del parámetro (`= {} as ITooltipProps`): atrapa el caso en que el componente es
+//    invocado con `undefined` (render-as-value en libs headless, HMR/Fast Refresh swaps,
+//    spreads de `undefined`, HOCs con props mal tipados). Los defaults por propiedad NO cubren
+//    el caso del objeto entero — si `props` es `undefined`, la destructuración inline en el
+//    parámetro revienta con "Cannot destructure property … of 'props' as it is undefined"
+//    antes de que cualquier default por-prop llegue a evaluarse.
+//
+// 2. Nullish-coalesce en el cuerpo (`props ?? ({} as ITooltipProps)`): el default de parámetro
+//    SOLO se dispara con `undefined`, no con `null`. Si un HOC o render prop mal tipado pasa
+//    `null` explícito, volveríamos a crashear con "as it is null". El `??` absorbe ese caso.
+//    Por eso la destructuración se hizo migrar al cuerpo — con inline-en-parámetro no hay
+//    dónde meter el `??`.
+//
+// Guard explícito de `children` más abajo: `React.cloneElement(children, …)` en el renderTarget
+// de Tooltip2 revienta si `children` es `undefined`. Si no hay nada que anclar, no hay tooltip
+// posible — salimos temprano sin romper el subtree.
+//
+// El cast a `ITooltipProps` es necesario porque `tooltipContent` y `children` son requeridos
+// en el tipo. Mismo patrón aplicado en AppSidebarItem (commit 099091c) y en el Tooltip de
+// propel (commit 00c84b0).
+export function Tooltip(props: ITooltipProps = {} as ITooltipProps) {
+  const {
+    tooltipHeading,
+    tooltipContent,
+    position = "top",
+    children,
+    disabled = false,
+    className = "",
+    openDelay = 200,
+    closeDelay,
+    isMobile = false,
 
-  //FIXME: tooltip should always render on hover and not by default, this is a temporary fix
-  renderByDefault = true,
-}: ITooltipProps = {} as ITooltipProps) {
+    //FIXME: tooltip should always render on hover and not by default, this is a temporary fix
+    renderByDefault = true,
+  } = props ?? ({} as ITooltipProps);
   const toolTipRef = useRef<HTMLDivElement | null>(null);
 
   const [shouldRender, setShouldRender] = useState(renderByDefault);
