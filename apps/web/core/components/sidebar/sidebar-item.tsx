@@ -126,7 +126,13 @@ export type AppSidebarItemComponent = React.FC<AppSidebarItemProps> & {
   Button: React.FC<AppSidebarButtonItemProps>;
 };
 
-function AppSidebarItem({ variant = "link", item }: AppSidebarItemProps) {
+// Nota: el `= {}` final es defensivo. Un `function Foo({ a = 1 })` crashea si
+// se invoca con `undefined` como primer argumento — los defaults por propiedad
+// no cubren el caso del objeto entero. El codemod WEB-5459 convirtió esto de
+// arrow-function a function-declaration; mantener el fallback explícito evita
+// el "Cannot read properties of undefined (reading 'variant')" si algún consumer
+// pasa `undefined` (p.ej. via HMR, HOC con props mal tipados, o render-as-value).
+function AppSidebarItem({ variant = "link", item }: AppSidebarItemProps = {}) {
   if (!item) return null;
 
   const { icon, isActive, label, href, onClick, disabled, showLabel = true } = item;
