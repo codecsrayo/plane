@@ -12,7 +12,7 @@
 //! el 404 visto en el panel de proyecto del frontend.
 
 use axum::{
-    extract::{Path, State},
+    extract::State,
     Json,
 };
 use chrono::{DateTime, Utc};
@@ -23,8 +23,8 @@ use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 
 use crate::{
-    auth::any_auth::AnyAuth,
-    entities::{project_user_properties, projects, workspaces},
+    auth::extractors::ProjectMemberGuard,
+    entities::project_user_properties,
     error::AppError,
     utils::soft_delete::SoftDeleteExt,
     AppState,
@@ -78,6 +78,20 @@ fn default_display_properties() -> serde_json::Value {
         "state": true,
         "sub_issue_count": true,
         "updated_on": true,
+    })
+}
+
+/// Mirror de `get_default_preferences` en
+/// `apps/api/plane/db/models/project.py:64-65`.
+fn default_preferences() -> serde_json::Value {
+    serde_json::json!({
+        "pages": {
+            "block_display": true
+        },
+        "navigation": {
+            "default_tab": "work_items",
+            "hide_in_more_menu": []
+        }
     })
 }
 
@@ -178,7 +192,7 @@ async fn get_or_create(
         display_filters: Set(default_display_filters()),
         display_properties: Set(default_display_properties()),
         rich_filters: Set(serde_json::json!({})),
-        preferences: Set(serde_json::json!({})),
+        preferences: Set(default_preferences()),
         sort_order: Set(65535.0),
         created_at: Set(now),
         updated_at: Set(now),
@@ -193,42 +207,20 @@ async fn get_or_create(
     Ok(created)
 }
 
-/// Resuelve el workspace por slug y verifica que el proyecto exista activo.
-/// No requerimos membresía de proyecto explícita — el decorador
-/// `@allow_permission([ADMIN, MEMBER, GUEST])` de Django exige un rol, pero
-/// cualquier rol basta. Para simplificar y mantener la paridad, solo exigimos
-/// workspace-member y que el proyecto exista dentro del workspace.
-async fn resolve_scope(
-    db: &sea_orm::DatabaseConnection,
-    slug: &str,
-    project_id: Uuid,
-) -> Result<(workspaces::Model, projects::Model), AppError> {
-    let ws = workspaces::Entity::find()
-        .active()
-        .filter(workspaces::Column::Slug.eq(slug))
-        .one(db)
-        .await
-        .map_err(AppError::Database)?
-        .ok_or(AppError::NotFound)?;
-
-    let project = projects::Entity::find_by_id(project_id)
-        .active()
-        .filter(projects::Column::WorkspaceId.eq(ws.id))
-        .one(db)
-        .await
-        .map_err(AppError::Database)?
-        .ok_or(AppError::NotFound)?;
-
-    Ok((ws, project))
-}
-
 // ─── GET ──────────────────────────────────────────────────────────────────────
 
 /// `GET /api/workspaces/{slug}/projects/{project_id}/user-properties/`
 ///
-/// `get_or_create` — NUNCA devuelve 404 si el proyecto existe; si la fila del
-/// usuario no existe la crea con defaults. Paridad con Django
-/// (`ProjectUserDisplayPropertyEndpoint.get`, issue/base.py:754-757).
+/// Paridad con Django (`ProjectUserDisplayPropertyEndpoint.get`,
+/// issue/base.py:754-757) + decorator `@allow_permission([ADMIN, MEMBER, GUEST])`:
+///
+/// - `ProjectMemberGuard` valida: workspace por slug + proyecto vivo en ese
+///   workspace + membresía activa del usuario al proyecto. Si cualquier
+///   condición falla: 404 (workspace/proyecto no existen) o 403 (sin
+///   membresía), replicando exactamente la semántica de Django.
+/// - `get_or_create` garantiza que NUNCA devolvemos 404 por ausencia de fila
+///   de propiedades — si no existe, se crea con defaults. Esto es lo que
+///   resuelve el 404 original del panel de proyecto en el frontend.
 #[utoipa::path(
     get,
     path = "/api/workspaces/{slug}/projects/{project_id}/user-properties/",
@@ -240,15 +232,21 @@ async fn resolve_scope(
     ),
     responses(
         (status = 200, description = "User properties", body = ProjectUserPropertyResponse),
+        (status = 403, description = "User is not a member of the project"),
+        (status = 404, description = "Workspace or project not found"),
     )
 )]
 pub async fn get_project_user_properties(
     State(state): State<AppState>,
-    AnyAuth(user): AnyAuth,
-    Path((slug, project_id)): Path<(String, Uuid)>,
+    guard: ProjectMemberGuard,
 ) -> Result<Json<ProjectUserPropertyResponse>, AppError> {
-    let (ws, _project) = resolve_scope(&state.db, &slug, project_id).await?;
-    let row = get_or_create(&state.db, ws.id, project_id, user.id).await?;
+    let row = get_or_create(
+        &state.db,
+        guard.workspace.id,
+        guard.project.id,
+        guard.user.id,
+    )
+    .await?;
     Ok(Json(ProjectUserPropertyResponse::from(&row)))
 }
 
@@ -259,6 +257,9 @@ pub async fn get_project_user_properties(
 /// Actualiza parcialmente los campos. Si la fila no existe, la crea antes
 /// de aplicar el patch (misma semántica que Django,
 /// `ProjectUserDisplayPropertyEndpoint.patch`, issue/base.py:732-751).
+///
+/// Validación de permisos idéntica a Django: requiere membresía activa al
+/// proyecto (`ProjectMemberGuard`). Sin membresía → 403.
 #[utoipa::path(
     patch,
     path = "/api/workspaces/{slug}/projects/{project_id}/user-properties/",
@@ -271,16 +272,22 @@ pub async fn get_project_user_properties(
     request_body = UpdateProjectUserPropertyRequest,
     responses(
         (status = 200, description = "Updated user properties", body = ProjectUserPropertyResponse),
+        (status = 403, description = "User is not a member of the project"),
+        (status = 404, description = "Workspace or project not found"),
     )
 )]
 pub async fn update_project_user_properties(
     State(state): State<AppState>,
-    AnyAuth(user): AnyAuth,
-    Path((slug, project_id)): Path<(String, Uuid)>,
+    guard: ProjectMemberGuard,
     Json(body): Json<UpdateProjectUserPropertyRequest>,
 ) -> Result<Json<ProjectUserPropertyResponse>, AppError> {
-    let (ws, _project) = resolve_scope(&state.db, &slug, project_id).await?;
-    let row = get_or_create(&state.db, ws.id, project_id, user.id).await?;
+    let row = get_or_create(
+        &state.db,
+        guard.workspace.id,
+        guard.project.id,
+        guard.user.id,
+    )
+    .await?;
 
     let mut am: project_user_properties::ActiveModel = row.into();
     if let Some(v) = body.filters {
@@ -302,7 +309,7 @@ pub async fn update_project_user_properties(
         am.sort_order = Set(v);
     }
     am.updated_at = Set(chrono::Utc::now().fixed_offset());
-    am.updated_by_id = Set(Some(user.id));
+    am.updated_by_id = Set(Some(guard.user.id));
 
     let updated = am.update(&state.db).await.map_err(AppError::Database)?;
     Ok(Json(ProjectUserPropertyResponse::from(&updated)))
