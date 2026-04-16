@@ -4,6 +4,7 @@
  * See the LICENSE file for details.
  */
 
+import { useEffect } from "react";
 import type { ReactNode } from "react";
 import { observer } from "mobx-react";
 import { useSearchParams, usePathname } from "next/navigation";
@@ -23,6 +24,13 @@ type TAuthenticationWrapper = {
   children: ReactNode;
   pageType?: TPageType;
 };
+
+type TRedirectConfig =
+  | {
+      href: string;
+      method: "push" | "replace";
+    }
+  | undefined;
 
 const ALLOWED_GLOBAL_NEXT_PATHS = new Set([
   "/create-workspace",
@@ -105,6 +113,104 @@ export const AuthenticationWrapper = observer(function AuthenticationWrapper(pro
     return redirectionRoute;
   };
 
+  const getLoginRedirectUrl = (): string => {
+    const sanitizedSearchParams = new URLSearchParams(searchParams.toString());
+    sanitizedSearchParams.delete("next_path");
+    const sanitizedSearch = sanitizedSearchParams.toString();
+    const currentPath = `${pathname}${sanitizedSearch ? `?${sanitizedSearch}` : ""}`;
+
+    return `/${currentPath ? `?next_path=${encodeURIComponent(currentPath)}` : ""}`;
+  };
+
+  const getRedirectConfig = (): TRedirectConfig => {
+    if (pageType === EPageTypes.PUBLIC) return undefined;
+
+    if (pageType === EPageTypes.NON_AUTHENTICATED) {
+      if (!currentUser?.id) return undefined;
+
+      if (currentUserProfile?.id && isUserOnboard) {
+        return {
+          href: getWorkspaceRedirectionUrl(),
+          method: "push",
+        };
+      }
+
+      return {
+        href: "/onboarding",
+        method: "push",
+      };
+    }
+
+    if (pageType === EPageTypes.ONBOARDING) {
+      if (!currentUser?.id) {
+        return {
+          href: getLoginRedirectUrl(),
+          method: "push",
+        };
+      }
+
+      if (currentUser && currentUserProfile?.id && isUserOnboard) {
+        return {
+          href: getWorkspaceRedirectionUrl(),
+          method: "replace",
+        };
+      }
+
+      return undefined;
+    }
+
+    if (pageType === EPageTypes.SET_PASSWORD) {
+      if (!currentUser?.id) {
+        return {
+          href: getLoginRedirectUrl(),
+          method: "push",
+        };
+      }
+
+      if (currentUser && !currentUser?.is_password_autoset && currentUserProfile?.id && isUserOnboard) {
+        return {
+          href: getWorkspaceRedirectionUrl(),
+          method: "push",
+        };
+      }
+
+      return undefined;
+    }
+
+    if (pageType === EPageTypes.AUTHENTICATED) {
+      if (!currentUser?.id) {
+        return {
+          href: getLoginRedirectUrl(),
+          method: "push",
+        };
+      }
+
+      if (!currentUserProfile?.id || !isUserOnboard) {
+        return {
+          href: "/onboarding",
+          method: "push",
+        };
+      }
+    }
+
+    return undefined;
+  };
+
+  const redirectConfig = getRedirectConfig();
+  const redirectHref = redirectConfig?.href;
+  const redirectMethod = redirectConfig?.method;
+
+  useEffect(() => {
+    if (!redirectHref || !redirectMethod) return;
+
+    if (redirectMethod === "replace") {
+      router.replace(redirectHref);
+      return;
+    }
+
+    router.push(redirectHref);
+  }, [redirectHref, redirectMethod, router]);
+
   if ((isUserSWRLoading || isUserLoading || workspacesLoader) && !currentUser?.id)
     return (
       <div className="relative flex h-screen w-full items-center justify-center">
@@ -114,58 +220,7 @@ export const AuthenticationWrapper = observer(function AuthenticationWrapper(pro
 
   if (pageType === EPageTypes.PUBLIC) return <>{children}</>;
 
-  if (pageType === EPageTypes.NON_AUTHENTICATED) {
-    if (!currentUser?.id) return <>{children}</>;
-    else {
-      if (currentUserProfile?.id && isUserOnboard) {
-        const currentRedirectRoute = getWorkspaceRedirectionUrl();
-        router.push(currentRedirectRoute);
-        return <></>;
-      } else {
-        router.push("/onboarding");
-        return <></>;
-      }
-    }
-  }
-
-  if (pageType === EPageTypes.ONBOARDING) {
-    if (!currentUser?.id) {
-      router.push(`/${pathname ? `?next_path=${pathname}` : ``}`);
-      return <></>;
-    } else {
-      if (currentUser && currentUserProfile?.id && isUserOnboard) {
-        const currentRedirectRoute = getWorkspaceRedirectionUrl();
-        router.replace(currentRedirectRoute);
-        return <></>;
-      } else return <>{children}</>;
-    }
-  }
-
-  if (pageType === EPageTypes.SET_PASSWORD) {
-    if (!currentUser?.id) {
-      router.push(`/${pathname ? `?next_path=${pathname}` : ``}`);
-      return <></>;
-    } else {
-      if (currentUser && !currentUser?.is_password_autoset && currentUserProfile?.id && isUserOnboard) {
-        const currentRedirectRoute = getWorkspaceRedirectionUrl();
-        router.push(currentRedirectRoute);
-        return <></>;
-      } else return <>{children}</>;
-    }
-  }
-
-  if (pageType === EPageTypes.AUTHENTICATED) {
-    if (currentUser?.id) {
-      if (currentUserProfile && currentUserProfile?.id && isUserOnboard) return <>{children}</>;
-      else {
-        router.push(`/onboarding`);
-        return <></>;
-      }
-    } else {
-      router.push(`/${pathname ? `?next_path=${pathname}` : ``}`);
-      return <></>;
-    }
-  }
+  if (redirectConfig) return <></>;
 
   return <>{children}</>;
 });

@@ -58,7 +58,7 @@ export abstract class APIService {
       (response) => response,
       (error) => {
         if (error?.response?.status === 401 && typeof window !== "undefined") {
-          const { pathname, search } = window.location;
+          const { pathname, search, hash } = window.location;
 
           // 1. Ya disparamos un redirect en este ciclo de vida del módulo — no duplicar.
           // 2. Estamos en una landing de auth (incluyendo `/`) — redirigir a `/?next_path=/`
@@ -73,9 +73,11 @@ export abstract class APIService {
           }
 
           hasDispatched401Redirect = true;
-          // `encodeURIComponent` para que pathnames con caracteres especiales (espacios,
-          // unicode en slugs, `?`, `#`) no rompan el parseo en el landing.
-          window.location.replace(`/?next_path=${encodeURIComponent(pathname)}`);
+          // Preservamos pathname, search y hash para que el retorno post-login mantenga
+          // contexto de filtros, tabs y anchors. `encodeURIComponent` evita romper el
+          // parseo del query string del landing.
+          const currentPath = `${pathname}${search}${hash}`;
+          window.location.replace(`/?next_path=${encodeURIComponent(currentPath)}`);
         }
         return Promise.reject(error);
       }

@@ -196,7 +196,7 @@ export const CreateUpdateIssueModalBase = observer(function CreateUpdateIssueMod
         setUploadedAssetIds([]);
       }
 
-      if (!response) throw new Error();
+      if (!response) return undefined;
 
       // check if we should add issue to cycle/module
       if (!is_draft_issue) {
