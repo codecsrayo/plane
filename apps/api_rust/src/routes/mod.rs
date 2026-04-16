@@ -36,6 +36,7 @@ pub mod users;
 pub mod views;
 pub mod workspaces;
 pub mod workspace_extras;
+pub mod workspace_view_issues;
 pub mod issue_extras2;
 pub mod api_tokens;
 pub mod instances;
@@ -224,6 +225,7 @@ pub mod instances;
         users::get_user_project_roles,
         users::list_user_workspace_invitations,
         users::join_user_workspace_invitations,
+        workspace_view_issues::list_workspace_view_issues,
         views::list_workspace_views,
         views::create_workspace_view,
         views::get_workspace_view,
@@ -880,6 +882,14 @@ pub fn build_router(state: AppState) -> Router {
         .route(
             "/users/me/workspaces/{slug}/project-roles",
             get(users::get_user_project_roles),
+        )
+        // ── Workspace View Issues (global view / spreadsheet) ─────────────────
+        // Mirror Django: workspaces/<slug>/issues/ → WorkspaceViewIssuesViewSet
+        // (plane/app/urls/views.py:52). Retorna issues de todos los proyectos
+        // del workspace a los que el usuario tiene acceso.
+        .route(
+            "/workspaces/{slug}/issues",
+            get(workspace_view_issues::list_workspace_view_issues),
         )
         // ── Workspace Views ───────────────────────────────────────────────────
         .route(
