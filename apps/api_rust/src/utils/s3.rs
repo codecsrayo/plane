@@ -6,18 +6,47 @@
 
 use std::time::Duration;
 
-use aws_sdk_s3::presigning::PresigningConfig;
-use aws_sdk_s3::Client;
+use aws_credential_types::Credentials;
+use aws_sdk_s3::{
+    config::{BehaviorVersion, Region},
+    presigning::PresigningConfig,
+    Client,
+};
 
 use crate::{config::Config, error::AppError};
 
-/// Construye un cliente S3 configurado con el endpoint y región de la instancia.
-pub async fn build_s3_client(config: &Config) -> Client {
-    let s3_config = aws_config::defaults(aws_config::BehaviorVersion::latest())
+/// Construye un cliente S3 configurado con credenciales, región y endpoint explícitos.
+///
+/// Equivalente a `boto3.client("s3", aws_access_key_id=..., aws_secret_access_key=...,
+/// region_name=..., endpoint_url=..., config=Config(signature_version="s3v4"))` en Django.
+///
+/// - `force_path_style = true` siempre que haya un `aws_endpoint` personalizado — MinIO
+///   self-hosted no soporta virtual-hosted style.
+/// - La región cae a `us-east-1` si `AWS_REGION` no está configurada (igual que boto3).
+pub fn build_s3_client(config: &Config) -> Client {
+    let creds = Credentials::new(
+        &config.aws_access_key_id,
+        &config.aws_secret_access_key,
+        None,        // session token
+        None,        // expiry
+        "plane-env", // provider name para logs
+    );
+
+    let region = Region::new(config.aws_region.clone());
+
+    // force_path_style se activa cuando hay un endpoint personalizado (MinIO / compatible)
+    // porque la mayoría de instalaciones self-hosted no soportan virtual-hosted style.
+    let force_path = config.use_minio || !config.aws_endpoint.is_empty();
+
+    let s3_conf = aws_sdk_s3::Config::builder()
+        .behavior_version(BehaviorVersion::latest())
+        .credentials_provider(creds)
+        .region(region)
         .endpoint_url(&config.aws_endpoint)
-        .load()
-        .await;
-    Client::new(&s3_config)
+        .force_path_style(force_path)
+        .build();
+
+    Client::from_conf(s3_conf)
 }
 
 /// Genera una presigned URL de `PUT` para subir un objeto.

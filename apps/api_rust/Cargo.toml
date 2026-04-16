@@ -73,8 +73,9 @@ apalis-sql = { version = "0.7.4", features = ["postgres", "tokio-comp"] }
 fred = { version = "10.1.0", features = ["i-std", "i-client", "subscriber-client"] }
 
 # S3 / MinIO
-aws-config  = "1.8.15"
-aws-sdk-s3  = "1.129.0"
+aws-config          = "1.8.15"
+aws-credential-types = { version = "1", features = ["hardcoded-credentials"] }
+aws-sdk-s3          = "1.129.0"
 
 # Email
 # default-features = false es OBLIGATORIO: los defaults de lettre incluyen `native-tls`,

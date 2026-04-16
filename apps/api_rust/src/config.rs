@@ -24,8 +24,12 @@ pub struct Config {
     pub admin_base_url: Option<String>, // ADMIN_BASE_URL
 
     // S3/MinIO
-    pub aws_s3_bucket: String, // AWS_S3_BUCKET_NAME
-    pub aws_endpoint: String,  // AWS_S3_ENDPOINT_URL
+    pub aws_s3_bucket: String,       // AWS_S3_BUCKET_NAME
+    pub aws_endpoint: String,        // AWS_S3_ENDPOINT_URL
+    pub aws_access_key_id: String,   // AWS_ACCESS_KEY_ID
+    pub aws_secret_access_key: String, // AWS_SECRET_ACCESS_KEY
+    pub aws_region: String,          // AWS_REGION (default: us-east-1)
+    pub use_minio: bool,             // USE_MINIO == "1"
 
     // LLM AI assistant
     pub llm_api_key: Option<String>,   // LLM_API_KEY
@@ -89,6 +93,10 @@ impl Config {
             admin_base_url: env::var("ADMIN_BASE_URL").ok(),
             aws_s3_bucket: env::var("AWS_S3_BUCKET_NAME").unwrap_or_default(),
             aws_endpoint: env::var("AWS_S3_ENDPOINT_URL").unwrap_or_default(),
+            aws_access_key_id: env::var("AWS_ACCESS_KEY_ID").unwrap_or_else(|_| "access-key".into()),
+            aws_secret_access_key: env::var("AWS_SECRET_ACCESS_KEY").unwrap_or_else(|_| "secret-key".into()),
+            aws_region: env::var("AWS_REGION").unwrap_or_else(|_| "us-east-1".into()),
+            use_minio: env::var("USE_MINIO").map(|v| v == "1").unwrap_or(false),
             llm_api_key: env::var("LLM_API_KEY").ok(),
             llm_provider: env::var("LLM_PROVIDER").unwrap_or_else(|_| "openai".into()),
             llm_model: env::var("LLM_MODEL").ok(),

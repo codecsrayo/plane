@@ -308,7 +308,7 @@ pub async fn initiate_user_asset_upload(
 
     let asset = new_asset.insert(&state.db).await.map_err(AppError::Database)?;
 
-    let s3 = build_s3_client(&state.config).await;
+    let s3 = build_s3_client(&state.config);
     let upload_url = presigned_put_url(
         &s3,
         &state.config.aws_s3_bucket,
@@ -503,7 +503,7 @@ pub async fn initiate_workspace_asset_upload(
 
     let asset = new_asset.insert(&state.db).await.map_err(AppError::Database)?;
 
-    let s3 = build_s3_client(&state.config).await;
+    let s3 = build_s3_client(&state.config);
     let upload_url = presigned_put_url(
         &s3,
         &state.config.aws_s3_bucket,
