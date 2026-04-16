@@ -160,6 +160,9 @@ pub struct ProjectResponse {
     pub identifier: String,
     pub description: String,
     pub network: i16,
+    /// FK al workspace. En Django el serializer expone la FK como `workspace`
+    /// (no `workspace_id`); el frontend filtra proyectos por `project.workspace`.
+    #[serde(rename = "workspace")]
     pub workspace_id: Uuid,
     pub emoji: Option<String>,
     pub icon_prop: Option<serde_json::Value>,
