@@ -59,6 +59,7 @@ export const UserMenuRoot = observer(function UserMenuRoot() {
       customButton={
         <AppSidebarItem
           variant="button"
+          as="div"
           item={{
             icon: (
               <Avatar

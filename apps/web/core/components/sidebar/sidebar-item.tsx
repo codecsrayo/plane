@@ -24,6 +24,12 @@ interface AppSidebarItemData {
 interface AppSidebarItemProps {
   variant?: "link" | "button";
   item?: AppSidebarItemData;
+  /**
+   * Cuando `variant="button"` y el consumer ya envuelve este item en un
+   * elemento interactivo (ej. `<Menu.Button>` de Headless UI), pasar
+   * `as="div"` para evitar el warning `<button>` dentro de `<button>`.
+   */
+  as?: "button" | "div";
 }
 
 interface AppSidebarItemLabelProps {
@@ -47,6 +53,16 @@ interface AppSidebarButtonItemProps {
   onClick?: () => void;
   disabled?: boolean;
   className?: string;
+  /**
+   * Elemento HTML a renderizar. Default: `"button"`.
+   *
+   * Usar `"div"` cuando este componente se usa como `customButton` /
+   * `Menu.Button` de Headless UI o similar — esos wrappers YA renderizan
+   * un `<button>` y anidar otro dispara:
+   *   "Warning: validateDOMNesting(…): <button> cannot appear as a
+   *    descendant of <button>."
+   */
+  as?: "button" | "div";
 }
 
 // ============================================================================
@@ -107,7 +123,25 @@ function AppSidebarLinkItem({ href, children, className }: AppSidebarLinkItemPro
   );
 }
 
-function AppSidebarButtonItem({ children, onClick, disabled = false, className }: AppSidebarButtonItemProps) {
+function AppSidebarButtonItem({
+  children,
+  onClick,
+  disabled = false,
+  className,
+  as = "button",
+}: AppSidebarButtonItemProps) {
+  // Cuando `as="div"` el caller es responsable del comportamiento de boton
+  // (lo tipico: un <Menu.Button> de Headless UI que envuelve a este
+  // componente y ya aporta onClick/keyboard/aria). Aqui solo emitimos un
+  // contenedor para los hijos — evita el warning validateDOMNesting de
+  // <button> dentro de <button>.
+  if (as === "div") {
+    return (
+      <div className={cn(styles.base, className)} aria-disabled={disabled || undefined}>
+        {children}
+      </div>
+    );
+  }
   return (
     <button className={cn(styles.base, className)} onClick={onClick} disabled={disabled} type="button">
       {children}
@@ -132,7 +166,7 @@ export type AppSidebarItemComponent = React.FC<AppSidebarItemProps> & {
 // arrow-function a function-declaration; mantener el fallback explícito evita
 // el "Cannot read properties of undefined (reading 'variant')" si algún consumer
 // pasa `undefined` (p.ej. via HMR, HOC con props mal tipados, o render-as-value).
-function AppSidebarItem({ variant = "link", item }: AppSidebarItemProps = {}) {
+function AppSidebarItem({ variant = "link", item, as }: AppSidebarItemProps = {}) {
   if (!item) return null;
 
   const { icon, isActive, label, href, onClick, disabled, showLabel = true } = item;
@@ -149,7 +183,7 @@ function AppSidebarItem({ variant = "link", item }: AppSidebarItemProps = {}) {
   }
 
   return (
-    <AppSidebarButtonItem onClick={onClick} disabled={disabled}>
+    <AppSidebarButtonItem onClick={onClick} disabled={disabled} as={as}>
       {commonItems}
     </AppSidebarButtonItem>
   );
