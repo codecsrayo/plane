@@ -180,7 +180,13 @@ export abstract class BaseWorkspaceRootStore implements IWorkspaceRootStore {
    * fetch user workspaces from API
    */
   fetchWorkspaces = async () => {
-    this.loader = true;
+    // MobX strict-mode: this.loader = true/false son mutaciones directas de
+    // observables — deben ir dentro de action/runInAction. Antes se hacian
+    // sueltas fuera de action y disparaban:
+    //   "[MobX] ...Tried to modify: WorkspaceRootStore@N.loader"
+    runInAction(() => {
+      this.loader = true;
+    });
     try {
       const workspaceResponse = await this.workspaceService.userWorkspaces();
       runInAction(() => {
@@ -190,7 +196,9 @@ export abstract class BaseWorkspaceRootStore implements IWorkspaceRootStore {
       });
       return workspaceResponse;
     } finally {
-      this.loader = false;
+      runInAction(() => {
+        this.loader = false;
+      });
     }
   };
 
