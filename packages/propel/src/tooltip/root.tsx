@@ -26,14 +26,25 @@ type ITooltipProps = {
   sideOffset?: number;
 };
 
-// Nota: el `= {} as ITooltipProps` final es defensivo. `function Foo(props) { const { a = 1 } = props; }`
-// crashea con "Cannot destructure property 'a' of 'props' as it is undefined" si `props` llega como
-// `undefined` — los defaults por propiedad no cubren el caso del objeto entero. React normalmente
-// garantiza un objeto de props vía JSX, pero HMR swaps, patrones render-as-value (p.ej. `render={Tooltip}`
-// en libs de headless UI), HOCs con props mal tipados, y boundaries de Fast Refresh pueden filtrar
-// `undefined`. El cast a ITooltipProps es necesario porque `children` es requerido en el tipo; si el
-// objeto llega vacío el componente simplemente no renderiza contenido útil, pero no revienta la app.
-// Mismo patrón que se aplicó en AppSidebarItem (commit 099091c).
+// Defensa en dos capas contra `props` inválido:
+//
+// 1. Default del parámetro (`= {} as ITooltipProps`): atrapa el caso en que el componente es
+//    invocado con `undefined` (p.ej. `<Tooltip {...undefined} />`, render-as-value en libs
+//    headless tipo base-ui donde un `render={Tooltip}` acaba llamando al componente sin
+//    argumentos, o HMR/Fast Refresh swaps que filtran `undefined`). Los defaults por propiedad
+//    NO cubren esto — si `props` entero es `undefined`, la destructuración crashea con
+//    "Cannot destructure property 'tooltipHeading' of 'props' as it is undefined" antes de
+//    que los defaults por-prop lleguen a aplicarse.
+//
+// 2. Nullish-coalesce dentro del cuerpo (`props ?? ({} as ITooltipProps)`): el default de
+//    parámetro SOLO se dispara con `undefined`, no con `null`. Si un HOC o un render prop mal
+//    tipado llega a pasar `null` explícito, la función recibiría `props === null` y la
+//    destructuración volvería a crashear con "as it is null". El `??` absorbe ese caso.
+//
+// El cast a `ITooltipProps` es necesario porque `children` está declarado como requerido en
+// el tipo; con un objeto realmente vacío el componente renderiza un provider sin contenido
+// útil, pero no revienta la app — una mejora estricta sobre reventar el subtree de React.
+// Mismo patrón aplicado en AppSidebarItem (commit 099091c) y ui Tooltip (commit 6aec132).
 export function Tooltip(props: ITooltipProps = {} as ITooltipProps) {
   const {
     tooltipHeading,
@@ -48,7 +59,7 @@ export function Tooltip(props: ITooltipProps = {} as ITooltipProps) {
     sideOffset = 10,
     closeDelay,
     isMobile = false,
-  } = props;
+  } = props ?? ({} as ITooltipProps);
   const { finalSide, finalAlign } = React.useMemo(() => {
     if (position) {
       const converted = convertPlacementToSideAndAlign(position);
