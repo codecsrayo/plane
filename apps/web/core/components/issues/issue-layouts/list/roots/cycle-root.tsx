@@ -38,8 +38,8 @@ export const CycleListLayout = observer(function CycleListLayout() {
   );
 
   const addIssuesToView = useCallback(
-    (issueIds: string[]) => {
-      if (!workspaceSlug || !projectId || !cycleId) throw new Error();
+    async (issueIds: string[]) => {
+      if (!workspaceSlug || !projectId || !cycleId) return;
       return issues.addIssueToCycle(workspaceSlug.toString(), projectId.toString(), cycleId.toString(), issueIds);
     },
     [issues, workspaceSlug, projectId, cycleId]

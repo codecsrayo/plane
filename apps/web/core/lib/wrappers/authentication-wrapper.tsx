@@ -24,6 +24,13 @@ type TAuthenticationWrapper = {
   pageType?: TPageType;
 };
 
+const ALLOWED_GLOBAL_NEXT_PATHS = new Set([
+  "/create-workspace",
+  "/onboarding",
+  "/invitations",
+  "/workspace-invitations",
+]);
+
 const isValidURL = (url: string): boolean => {
   const disallowedSchemes = /^(https?|ftp):\/\//i;
   return !disallowedSchemes.test(url);
@@ -55,12 +62,32 @@ export const AuthenticationWrapper = observer(function AuthenticationWrapper(pro
       currentUserProfile?.onboarding_step?.workspace_join) ||
     false;
 
+  const getValidNextPath = (): string | undefined => {
+    if (!nextPath || !isValidURL(nextPath)) return undefined;
+
+    const normalizedNextPath = nextPath.toString().trim();
+    if (!normalizedNextPath.startsWith("/")) return undefined;
+
+    const parsedNextPath = new URL(normalizedNextPath, "http://plane.local");
+    const sanitizedNextPath = `${parsedNextPath.pathname}${parsedNextPath.search}${parsedNextPath.hash}`;
+
+    if (ALLOWED_GLOBAL_NEXT_PATHS.has(parsedNextPath.pathname)) return sanitizedNextPath;
+
+    const workspaceSlug = parsedNextPath.pathname.split("/").find(Boolean);
+    if (!workspaceSlug) return undefined;
+
+    const isWorkspaceRouteValid = Object.values(workspaces || {}).some((workspace) => workspace.slug === workspaceSlug);
+
+    return isWorkspaceRouteValid ? sanitizedNextPath : undefined;
+  };
+
   const getWorkspaceRedirectionUrl = (): string => {
     let redirectionRoute = "/create-workspace";
+    const validNextPath = getValidNextPath();
 
     // validating the nextPath from the router query
-    if (nextPath && isValidURL(nextPath.toString())) {
-      redirectionRoute = nextPath.toString();
+    if (validNextPath) {
+      redirectionRoute = validNextPath;
       return redirectionRoute;
     }
 

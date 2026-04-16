@@ -351,7 +351,6 @@ export abstract class BaseWorkspaceRootStore implements IWorkspaceRootStore {
       });
     } catch (error) {
       console.error("Failed to fetch project navigation preferences:", error);
-      throw error;
     }
   };
 

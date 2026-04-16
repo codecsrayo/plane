@@ -27,8 +27,8 @@ export const CycleCalendarLayout = observer(function CycleCalendarLayout() {
     cycleId && currentProjectCompletedCycleIds ? currentProjectCompletedCycleIds.includes(cycleId.toString()) : false;
 
   const addIssuesToView = useCallback(
-    (issueIds: string[]) => {
-      if (!workspaceSlug || !projectId || !cycleId) throw new Error();
+    async (issueIds: string[]) => {
+      if (!workspaceSlug || !projectId || !cycleId) return;
       return addIssueToCycle(workspaceSlug.toString(), projectId.toString(), cycleId.toString(), issueIds);
     },
     [addIssueToCycle, workspaceSlug, projectId, cycleId]

@@ -23,8 +23,8 @@ export const ModuleListLayout = observer(function ModuleListLayout() {
   return (
     <BaseListRoot
       QuickActions={ModuleIssueQuickActions}
-      addIssuesToView={(issueIds: string[]) => {
-        if (!workspaceSlug || !projectId || !moduleId) throw new Error();
+      addIssuesToView={async (issueIds: string[]) => {
+        if (!workspaceSlug || !projectId || !moduleId) return;
         return issues.addIssuesToModule(workspaceSlug.toString(), projectId.toString(), moduleId.toString(), issueIds);
       }}
       viewId={moduleId?.toString()}

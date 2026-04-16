@@ -50,6 +50,7 @@ export const WorkspaceAuthWrapper = observer(function WorkspaceAuthWrapper(props
   const { children, isLoading: isParentLoading = false } = props;
   // router params
   const { workspaceSlug } = useParams();
+  const normalizedWorkspaceSlug = workspaceSlug?.toString();
   // store hooks
   const { signOut, data: currentUser } = useUser();
   const { fetchPartialProjects } = useProject();
@@ -67,64 +68,73 @@ export const WorkspaceAuthWrapper = observer(function WorkspaceAuthWrapper(props
     [EUserPermissions.ADMIN, EUserPermissions.MEMBER],
     EUserPermissionsLevel.WORKSPACE
   );
+  const swrOptions = {
+    revalidateIfStale: false,
+    revalidateOnFocus: false,
+    shouldRetryOnError: false,
+  } as const;
   const allWorkspaces = workspaces ? Object.values(workspaces) : undefined;
   const currentWorkspace =
-    (allWorkspaces && allWorkspaces.find((workspace) => workspace?.slug === workspaceSlug)) || undefined;
-  const currentWorkspaceInfo = workspaceSlug && workspaceInfoBySlug(workspaceSlug.toString());
+    (allWorkspaces && allWorkspaces.find((workspace) => workspace?.slug === normalizedWorkspaceSlug)) || undefined;
+  const currentWorkspaceInfo = normalizedWorkspaceSlug && workspaceInfoBySlug(normalizedWorkspaceSlug);
 
   // fetching user workspace information
-  useSWR(
-    workspaceSlug && currentWorkspace ? WORKSPACE_MEMBER_ME_INFORMATION(workspaceSlug.toString()) : null,
-    workspaceSlug && currentWorkspace ? () => fetchUserWorkspaceInfo(workspaceSlug.toString()) : null,
-    { revalidateIfStale: false, revalidateOnFocus: false }
+  const {
+    data: workspaceMemberInfo,
+    error: workspaceMemberInfoError,
+    isLoading: isWorkspaceMemberInfoLoading,
+  } = useSWR(
+    normalizedWorkspaceSlug && currentWorkspace ? WORKSPACE_MEMBER_ME_INFORMATION(normalizedWorkspaceSlug) : null,
+    normalizedWorkspaceSlug && currentWorkspace ? () => fetchUserWorkspaceInfo(normalizedWorkspaceSlug) : null,
+    swrOptions
   );
   useSWR(
-    workspaceSlug && currentWorkspace ? WORKSPACE_PROJECTS_ROLES_INFORMATION(workspaceSlug.toString()) : null,
-    workspaceSlug && currentWorkspace ? () => fetchUserProjectPermissions(workspaceSlug.toString()) : null,
-    { revalidateIfStale: false, revalidateOnFocus: false }
+    normalizedWorkspaceSlug && currentWorkspace ? WORKSPACE_PROJECTS_ROLES_INFORMATION(normalizedWorkspaceSlug) : null,
+    normalizedWorkspaceSlug && currentWorkspace ? () => fetchUserProjectPermissions(normalizedWorkspaceSlug) : null,
+    swrOptions
   );
 
   // fetching workspace projects
   useSWR(
-    workspaceSlug && currentWorkspace ? WORKSPACE_PARTIAL_PROJECTS(workspaceSlug.toString()) : null,
-    workspaceSlug && currentWorkspace ? () => fetchPartialProjects(workspaceSlug.toString()) : null,
-    { revalidateIfStale: false, revalidateOnFocus: false }
+    normalizedWorkspaceSlug && currentWorkspace ? WORKSPACE_PARTIAL_PROJECTS(normalizedWorkspaceSlug) : null,
+    normalizedWorkspaceSlug && currentWorkspace ? () => fetchPartialProjects(normalizedWorkspaceSlug) : null,
+    swrOptions
   );
   // fetch workspace members
   useSWR(
-    workspaceSlug && currentWorkspace ? WORKSPACE_MEMBERS(workspaceSlug.toString()) : null,
-    workspaceSlug && currentWorkspace ? () => fetchWorkspaceMembers(workspaceSlug.toString()) : null,
-    { revalidateIfStale: false, revalidateOnFocus: false }
+    normalizedWorkspaceSlug && currentWorkspace ? WORKSPACE_MEMBERS(normalizedWorkspaceSlug) : null,
+    normalizedWorkspaceSlug && currentWorkspace ? () => fetchWorkspaceMembers(normalizedWorkspaceSlug) : null,
+    swrOptions
   );
   // fetch workspace favorite
   useSWR(
-    workspaceSlug && currentWorkspace && canPerformWorkspaceMemberActions
-      ? WORKSPACE_FAVORITE(workspaceSlug.toString())
+    normalizedWorkspaceSlug && currentWorkspace && canPerformWorkspaceMemberActions
+      ? WORKSPACE_FAVORITE(normalizedWorkspaceSlug)
       : null,
-    workspaceSlug && currentWorkspace && canPerformWorkspaceMemberActions
-      ? () => fetchFavorite(workspaceSlug.toString())
+    normalizedWorkspaceSlug && currentWorkspace && canPerformWorkspaceMemberActions
+      ? () => fetchFavorite(normalizedWorkspaceSlug)
       : null,
-    { revalidateIfStale: false, revalidateOnFocus: false }
+    swrOptions
   );
   // fetch workspace states
   useSWR(
-    workspaceSlug ? WORKSPACE_STATES(workspaceSlug.toString()) : null,
-    workspaceSlug ? () => fetchWorkspaceStates(workspaceSlug.toString()) : null,
-    { revalidateIfStale: false, revalidateOnFocus: false }
+    normalizedWorkspaceSlug ? WORKSPACE_STATES(normalizedWorkspaceSlug) : null,
+    normalizedWorkspaceSlug ? () => fetchWorkspaceStates(normalizedWorkspaceSlug) : null,
+    swrOptions
   );
 
   // fetch workspace sidebar preferences
   useSWR(
-    workspaceSlug ? WORKSPACE_SIDEBAR_PREFERENCES(workspaceSlug.toString()) : null,
-    workspaceSlug ? () => fetchSidebarNavigationPreferences(workspaceSlug.toString()) : null,
-    { revalidateIfStale: false, revalidateOnFocus: false }
+    normalizedWorkspaceSlug ? WORKSPACE_SIDEBAR_PREFERENCES(normalizedWorkspaceSlug) : null,
+    normalizedWorkspaceSlug ? () => fetchSidebarNavigationPreferences(normalizedWorkspaceSlug) : null,
+    swrOptions
   );
 
   // fetch workspace project navigation preferences
   useSWR(
-    workspaceSlug ? WORKSPACE_PROJECT_NAVIGATION_PREFERENCES(workspaceSlug.toString()) : null,
-    workspaceSlug ? () => fetchProjectNavigationPreferences(workspaceSlug.toString()) : null,
-    { revalidateIfStale: false, revalidateOnFocus: false }
+    normalizedWorkspaceSlug ? WORKSPACE_PROJECT_NAVIGATION_PREFERENCES(normalizedWorkspaceSlug) : null,
+    normalizedWorkspaceSlug ? () => fetchProjectNavigationPreferences(normalizedWorkspaceSlug) : null,
+    swrOptions
   );
 
   const handleSignOut = async () => {
@@ -138,7 +148,7 @@ export const WorkspaceAuthWrapper = observer(function WorkspaceAuthWrapper(props
   };
 
   // if list of workspaces are not there then we have to render the spinner
-  if (isParentLoading || allWorkspaces === undefined || loader) {
+  if (isParentLoading || allWorkspaces === undefined || loader || isWorkspaceMemberInfoLoading) {
     return (
       <div className="grid h-full place-items-center rounded-lg border border-subtle p-4">
         <div className="flex flex-col items-center gap-3 text-center">
@@ -149,7 +159,7 @@ export const WorkspaceAuthWrapper = observer(function WorkspaceAuthWrapper(props
   }
 
   // if workspaces are there and we are trying to access the workspace that we are not part of then show the existing workspaces
-  if (currentWorkspace === undefined && !currentWorkspaceInfo) {
+  if (currentWorkspace === undefined && !currentWorkspaceInfo && !workspaceMemberInfo) {
     return (
       <div className="relative flex h-full w-full flex-col items-center justify-center bg-surface-2">
         <div className="relative container mx-auto flex h-full w-full flex-col overflow-hidden overflow-y-auto px-5 py-14 md:px-0">
@@ -203,8 +213,30 @@ export const WorkspaceAuthWrapper = observer(function WorkspaceAuthWrapper(props
     );
   }
 
+  if (workspaceMemberInfoError && workspaceMemberInfoError?.status >= 500) {
+    return (
+      <div className="h-screen w-full overflow-hidden bg-surface-1">
+        <div className="grid h-full place-items-center p-4">
+          <div className="space-y-8 text-center">
+            <div className="space-y-2">
+              <h3 className="text-16 font-semibold">Unable to load workspace</h3>
+              <p className="mx-auto w-1/2 text-13 text-secondary">
+                We could not complete the workspace bootstrap. Please retry the load.
+              </p>
+            </div>
+            <div className="flex items-center justify-center gap-2">
+              <Button variant="primary" onClick={() => window.location.reload()}>
+                Retry
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   // while user does not have access to view that workspace
-  if (currentWorkspaceInfo === undefined) {
+  if (currentWorkspaceInfo === undefined && !workspaceMemberInfo) {
     return (
       <div className={`h-screen w-full overflow-hidden bg-surface-1`}>
         <div className="grid h-full place-items-center p-4">

@@ -23,8 +23,8 @@ export const ModuleCalendarLayout = observer(function ModuleCalendarLayout() {
   } = useIssues(EIssuesStoreType.MODULE);
 
   const addIssuesToView = useCallback(
-    (issueIds: string[]) => {
-      if (!workspaceSlug || !projectId || !moduleId) throw new Error();
+    async (issueIds: string[]) => {
+      if (!workspaceSlug || !projectId || !moduleId) return;
       return addIssuesToModule(workspaceSlug.toString(), projectId.toString(), moduleId.toString(), issueIds);
     },
     [addIssuesToModule, workspaceSlug, projectId, moduleId]

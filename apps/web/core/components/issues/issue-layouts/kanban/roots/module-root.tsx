@@ -24,8 +24,8 @@ export const ModuleKanBanLayout = observer(function ModuleKanBanLayout() {
   return (
     <BaseKanBanRoot
       QuickActions={ModuleIssueQuickActions}
-      addIssuesToView={(issueIds: string[]) => {
-        if (!workspaceSlug || !projectId || !moduleId) throw new Error();
+      addIssuesToView={async (issueIds: string[]) => {
+        if (!workspaceSlug || !projectId || !moduleId) return;
         return issues.addIssuesToModule(workspaceSlug.toString(), projectId.toString(), moduleId.toString(), issueIds);
       }}
       viewId={moduleId?.toString()}
