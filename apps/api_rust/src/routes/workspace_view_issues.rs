@@ -366,15 +366,20 @@ pub async fn list_workspace_view_issues(
 
     if memberships.is_empty() {
         // El usuario no pertenece a ningún proyecto en el workspace
+        // Shape mirror de Django `OffsetPaginator.paginate()`
+        // (plane/utils/paginator.py:715-730).
         return Ok(Json(serde_json::json!({
-            "prev_cursor":       format!("{page_size}:-1:0"),
-            "cursor":            format!("{page_size}:0:0"),
-            "next_cursor":       null,
-            "prev_page_results": false,
+            "grouped_by":        null,
+            "sub_grouped_by":    null,
+            "total_count":       0,
+            "next_cursor":       format!("{page_size}:1:0"),
+            "prev_cursor":       format!("{page_size}:-1:1"),
             "next_page_results": false,
-            "page_count":        0,
-            "total_results":     0,
+            "prev_page_results": false,
+            "count":             0,
             "total_pages":       0,
+            "total_results":     0,
+            "extra_stats":       null,
             "results":           [],
         })));
     }
@@ -461,15 +466,20 @@ pub async fn list_workspace_view_issues(
 
     // Si no hay ninguna condición válida, el usuario no ve nada
     if full_ids.is_empty() && rest_ids.is_empty() {
+        // Shape mirror de Django `OffsetPaginator.paginate()`
+        // (plane/utils/paginator.py:715-730).
         return Ok(Json(serde_json::json!({
-            "prev_cursor":       format!("{page_size}:-1:0"),
-            "cursor":            format!("{page_size}:0:0"),
-            "next_cursor":       null,
-            "prev_page_results": false,
+            "grouped_by":        null,
+            "sub_grouped_by":    null,
+            "total_count":       0,
+            "next_cursor":       format!("{page_size}:1:0"),
+            "prev_cursor":       format!("{page_size}:-1:1"),
             "next_page_results": false,
-            "page_count":        0,
-            "total_results":     0,
+            "prev_page_results": false,
+            "count":             0,
             "total_pages":       0,
+            "total_results":     0,
+            "extra_stats":       null,
             "results":           [],
         })));
     }
@@ -567,31 +577,39 @@ pub async fn list_workspace_view_issues(
         })
         .collect();
 
-    // ── 10. Respuesta paginada (formato global_paginator.py de Django) ─────────
+    // ── 10. Respuesta paginada ────────────────────────────────────────────────
+    //
+    // Shape mirror exacto de `OffsetPaginator.paginate()` en
+    // `plane/utils/paginator.py:715-730`. El frontend lee `total_count`
+    // (no `total_results`) en `base-issues.store.ts:1290`, y el tipo
+    // `TIssuesResponse` (packages/types/src/issues/issue.ts:126) declara
+    // `grouped_by`, `count`, `extra_stats` como requeridos.
     let has_next = end_index < total_results;
     let has_prev = current_page > 0;
 
+    // En Django, `next_cursor` y `prev_cursor` son SIEMPRE strings
+    // (via `str(cursor_result.next)`). La lógica de si hay página se controla
+    // vía `next_page_results` / `prev_page_results`.
     let prev_cursor = if current_page == 0 {
-        format!("{page_size}:-1:0")
+        // Página previa "vacía": offset -1, is_prev=1
+        format!("{page_size}:-1:1")
     } else {
-        format!("{page_size}:{}:0", current_page - 1)
+        format!("{page_size}:{}:1", current_page - 1)
     };
-    let cursor_str  = format!("{page_size}:{current_page}:0");
-    let next_cursor = if has_next {
-        Some(format!("{page_size}:{}:0", current_page + 1))
-    } else {
-        None
-    };
+    let next_cursor = format!("{page_size}:{}:0", current_page + 1);
 
     Ok(Json(serde_json::json!({
-        "prev_cursor":       prev_cursor,
-        "cursor":            cursor_str,
+        "grouped_by":        null,
+        "sub_grouped_by":    null,
+        "total_count":       total_results,
         "next_cursor":       next_cursor,
-        "prev_page_results": has_prev,
+        "prev_cursor":       prev_cursor,
         "next_page_results": has_next,
-        "page_count":        page_count,
-        "total_results":     total_results,
+        "prev_page_results": has_prev,
+        "count":             page_count,
         "total_pages":       total_pages,
+        "total_results":     total_results,
+        "extra_stats":       null,
         "results":           results,
     })))
 }
