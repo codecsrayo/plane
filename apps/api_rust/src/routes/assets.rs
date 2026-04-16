@@ -32,7 +32,7 @@ use crate::{
     auth::extractors::WorkspaceMemberGuard,
     entities::{file_assets, projects, users, workspaces},
     error::AppError,
-    utils::s3::{build_s3_client, presigned_put_url},
+    utils::s3_presigned_post::{generate_presigned_post, PresignedPost},
     AppState,
 };
 
@@ -104,8 +104,10 @@ pub struct CompleteUploadRequest {
 
 #[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct UploadResponse {
-    /// URL de subida directa a S3 (presigned PUT).
-    pub upload_url: String,
+    /// Datos para el POST multipart/form-data al bucket.
+    /// El cliente envía los `fields` como campos del form + el `file`.
+    /// Espejo de `S3Storage.generate_presigned_post` en Django (boto3).
+    pub upload_data: PresignedPost,
     pub asset_id: Uuid,
     pub asset_url: String,
 }
@@ -308,20 +310,22 @@ pub async fn initiate_user_asset_upload(
 
     let asset = new_asset.insert(&state.db).await.map_err(AppError::Database)?;
 
-    let s3 = build_s3_client(&state.config);
-    let upload_url = presigned_put_url(
-        &s3,
+    let upload_data = generate_presigned_post(
         &state.config.aws_s3_bucket,
+        &state.config.aws_endpoint,
+        &state.config.aws_region,
+        &state.config.aws_access_key_id,
+        &state.config.aws_secret_access_key,
         &asset_key,
         &content_type,
-        UPLOAD_URL_TTL_SECS,
-    )
-    .await?;
+        size_limit as i64,
+        UPLOAD_URL_TTL_SECS as i64,
+    )?;
 
     let asset_url = asset_url_from_key(&asset_key, &state.config.aws_endpoint, &state.config.aws_s3_bucket);
 
     Ok(Json(UploadResponse {
-        upload_url,
+        upload_data,
         asset_id: asset.id,
         asset_url,
     }))
@@ -503,20 +507,22 @@ pub async fn initiate_workspace_asset_upload(
 
     let asset = new_asset.insert(&state.db).await.map_err(AppError::Database)?;
 
-    let s3 = build_s3_client(&state.config);
-    let upload_url = presigned_put_url(
-        &s3,
+    let upload_data = generate_presigned_post(
         &state.config.aws_s3_bucket,
+        &state.config.aws_endpoint,
+        &state.config.aws_region,
+        &state.config.aws_access_key_id,
+        &state.config.aws_secret_access_key,
         &asset_key,
         &content_type,
-        UPLOAD_URL_TTL_SECS,
-    )
-    .await?;
+        size_limit as i64,
+        UPLOAD_URL_TTL_SECS as i64,
+    )?;
 
     let asset_url = asset_url_from_key(&asset_key, &state.config.aws_endpoint, &state.config.aws_s3_bucket);
 
     Ok(Json(UploadResponse {
-        upload_url,
+        upload_data,
         asset_id: asset.id,
         asset_url,
     }))
