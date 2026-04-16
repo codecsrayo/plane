@@ -26,7 +26,15 @@ type ITooltipProps = {
   sideOffset?: number;
 };
 
-export function Tooltip(props: ITooltipProps) {
+// Nota: el `= {} as ITooltipProps` final es defensivo. `function Foo(props) { const { a = 1 } = props; }`
+// crashea con "Cannot destructure property 'a' of 'props' as it is undefined" si `props` llega como
+// `undefined` — los defaults por propiedad no cubren el caso del objeto entero. React normalmente
+// garantiza un objeto de props vía JSX, pero HMR swaps, patrones render-as-value (p.ej. `render={Tooltip}`
+// en libs de headless UI), HOCs con props mal tipados, y boundaries de Fast Refresh pueden filtrar
+// `undefined`. El cast a ITooltipProps es necesario porque `children` es requerido en el tipo; si el
+// objeto llega vacío el componente simplemente no renderiza contenido útil, pero no revienta la app.
+// Mismo patrón que se aplicó en AppSidebarItem (commit 099091c).
+export function Tooltip(props: ITooltipProps = {} as ITooltipProps) {
   const {
     tooltipHeading,
     tooltipContent,
