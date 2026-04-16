@@ -349,9 +349,10 @@ pub async fn list_favorite_children(
 // HOME PREFERENCES
 // ═══════════════════════════════════════════════════════════════════════════
 
+/// Respuesta del GET — mirror de Django `.values("key", "is_enabled", "config", "sort_order")`.
+/// No incluye `id` porque Django tampoco lo expone en este endpoint.
 #[derive(Debug, Serialize)]
 pub struct HomePreferenceResponse {
-    pub id: Uuid,
     pub key: String,
     pub is_enabled: bool,
     pub config: JsonValue,
@@ -361,7 +362,6 @@ pub struct HomePreferenceResponse {
 impl From<workspace_home_preferences::Model> for HomePreferenceResponse {
     fn from(m: workspace_home_preferences::Model) -> Self {
         Self {
-            id: m.id,
             key: m.key,
             is_enabled: m.is_enabled,
             config: m.config,
@@ -377,10 +377,30 @@ pub struct UpdateHomePreferenceRequest {
     pub sort_order: Option<f64>,
 }
 
-/// GET /workspaces/{slug}/home-preference/
+/// Keys que se auto-siembran en el GET.
+///
+/// Mirror de Django `WorkspaceHomePreference.HomeWidgetKeys.choices`
+/// EXCLUYENDO `quick_tutorial` y `new_at_plane` (filtradas explícitamente
+/// en `workspace/home.py:33-36`).
+const HOME_PREFERENCE_KEYS: &[&str] = &["quick_links", "recents", "my_stickies"];
+
+/// GET /workspaces/{slug}/home-preferences/
+///
+/// Mirror de Django `WorkspaceHomePreferenceViewSet.get`
+/// (`plane/app/views/workspace/home.py:23`).
+///
+/// Comportamiento de auto-seed: para cada key faltante en
+/// `HOME_PREFERENCE_KEYS` se crea una fila con defaults (is_enabled=true,
+/// config={}, sort_order = 1000 − position). Esto garantiza que el
+/// frontend siempre reciba un set completo de widgets sin necesidad de
+/// un flujo de inicialización separado.
+///
+/// Se usa `INSERT ... ON CONFLICT DO NOTHING` para evitar race conditions
+/// entre tabs del mismo usuario, coherente con el `bulk_create(
+/// ignore_conflicts=True)` de Django.
 #[utoipa::path(
     get,
-    path = "/api/workspaces/{slug}/home-preference/",
+    path = "/api/workspaces/{slug}/home-preferences/",
     tag = "Workspace Extras",
     params(("slug" = String, Path, description = "Workspace slug")),
     responses(
@@ -397,6 +417,74 @@ pub async fn get_home_preferences(
     let ws = workspace_by_slug(db, &slug).await?;
     let _member = require_workspace_member(db, ws.id, user_id).await?;
 
+    // ── 1. Leer keys existentes ────────────────────────────────────────────
+    let existing_keys: std::collections::HashSet<String> =
+        workspace_home_preferences::Entity::find()
+            .filter(workspace_home_preferences::Column::WorkspaceId.eq(ws.id))
+            .filter(workspace_home_preferences::Column::UserId.eq(user_id))
+            .filter(workspace_home_preferences::Column::DeletedAt.is_null())
+            .all(db)
+            .await
+            .map_err(AppError::Database)?
+            .into_iter()
+            .map(|p| p.key)
+            .collect();
+
+    // ── 2. Auto-seed keys faltantes ────────────────────────────────────────
+    //
+    // sort_order = 1000 − position (mirror Django: `sort_order = 1000 - sort_order_counter`).
+    let now = chrono::Utc::now().fixed_offset();
+    let missing: Vec<_> = HOME_PREFERENCE_KEYS
+        .iter()
+        .filter(|k| !existing_keys.contains(**k))
+        .collect();
+
+    if !missing.is_empty() {
+        let to_insert: Vec<workspace_home_preferences::ActiveModel> = missing
+            .iter()
+            .enumerate()
+            .map(|(i, key)| {
+                let sort_order = 1000.0 - (i as f64 + 1.0);
+                workspace_home_preferences::ActiveModel {
+                    id: Set(Uuid::new_v4()),
+                    key: Set(key.to_string()),
+                    is_enabled: Set(true),
+                    config: Set(serde_json::json!({})),
+                    sort_order: Set(sort_order),
+                    user_id: Set(user_id),
+                    workspace_id: Set(ws.id),
+                    created_by_id: Set(Some(user_id)),
+                    updated_by_id: Set(Some(user_id)),
+                    created_at: Set(now),
+                    updated_at: Set(now),
+                    deleted_at: Set(None),
+                }
+            })
+            .collect();
+
+        // ON CONFLICT DO NOTHING — mirror de bulk_create(ignore_conflicts=True).
+        // La unique constraint parcial cubre (workspace, user, key) WHERE deleted_at IS NULL.
+        use sea_orm::sea_query::{Expr, OnConflict};
+        workspace_home_preferences::Entity::insert_many(to_insert)
+            .on_conflict(
+                OnConflict::columns([
+                    workspace_home_preferences::Column::WorkspaceId,
+                    workspace_home_preferences::Column::UserId,
+                    workspace_home_preferences::Column::Key,
+                ])
+                .target_and_where(
+                    Expr::col(workspace_home_preferences::Column::DeletedAt).is_null(),
+                )
+                .do_nothing()
+                .to_owned(),
+            )
+            .do_nothing()
+            .exec(db)
+            .await
+            .map_err(AppError::Database)?;
+    }
+
+    // ── 3. Leer todas (incluidas las recién insertadas) ────────────────────
     let prefs = workspace_home_preferences::Entity::find()
         .filter(workspace_home_preferences::Column::WorkspaceId.eq(ws.id))
         .filter(workspace_home_preferences::Column::UserId.eq(user_id))
@@ -410,10 +498,10 @@ pub async fn get_home_preferences(
     Ok((StatusCode::OK, Json(resp)))
 }
 
-/// PATCH /workspaces/{slug}/home-preference/{key}/
+/// PATCH /workspaces/{slug}/home-preferences/{key}/
 #[utoipa::path(
     patch,
-    path = "/api/workspaces/{slug}/home-preference/{key}/",
+    path = "/api/workspaces/{slug}/home-preferences/{key}/",
     tag = "Workspace Extras",
     params(
         ("slug" = String, Path, description = "Workspace slug"),

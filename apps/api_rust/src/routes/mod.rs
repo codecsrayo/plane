@@ -1040,11 +1040,11 @@ pub fn build_router(state: AppState) -> Router {
             get(workspace_extras::list_favorite_children),
         )
         .route(
-            "/workspaces/{slug}/home-preference",
+            "/workspaces/{slug}/home-preferences",
             get(workspace_extras::get_home_preferences),
         )
         .route(
-            "/workspaces/{slug}/home-preference/{key}",
+            "/workspaces/{slug}/home-preferences/{key}",
             patch(workspace_extras::update_home_preference),
         )
         .route(
