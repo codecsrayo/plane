@@ -1078,6 +1078,17 @@ pub async fn join_user_workspace_invitations(
                 workspace_members::Column::WorkspaceId,
                 workspace_members::Column::MemberId,
             ])
+            // PostgreSQL EXIGE repetir el predicado del arbiter index parcial en el
+            // conflict target. La unique constraint Django (ver
+            // plane/db/models/workspace.py:215-223) es
+            //   UNIQUE (workspace_id, member_id) WHERE deleted_at IS NULL
+            // y sin `.target_and_where(...)` el INSERT revienta con
+            // "there is no unique or exclusion constraint matching the ON CONFLICT
+            // specification" — el otro unique existente (unique_together sobre las
+            // 3 columnas incluyendo deleted_at) tampoco matchea porque el conflict
+            // target solo menciona 2. Ver
+            // https://www.postgresql.org/docs/current/sql-insert.html#SQL-ON-CONFLICT.
+            .target_and_where(Expr::col(workspace_members::Column::DeletedAt).is_null())
             .do_nothing()
             .to_owned(),
         )
