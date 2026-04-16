@@ -111,7 +111,7 @@ pub async fn start_cron(state: AppState) {
         tokio::spawn(daily_at(1, 30, "delete_old_s3_links", move || {
             let s = s.clone();
             async move {
-                let s3 = build_s3_client(&s.config).await;
+                let s3 = build_s3_client(&s.config);
                 cleanup::delete_old_s3_links(&s.db, &s3, &s.config.aws_s3_bucket).await?;
                 Ok(())
             }

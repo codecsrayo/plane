@@ -186,7 +186,7 @@ pub async fn initiate_issue_attachment_upload(
 
     let saved = new_asset.insert(db).await.map_err(AppError::Database)?;
 
-    let s3 = build_s3_client(&state.config).await;
+    let s3 = build_s3_client(&state.config);
     let upload_url = presigned_put_url(
         &s3,
         &state.config.aws_s3_bucket,
