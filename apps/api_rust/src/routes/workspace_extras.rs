@@ -804,10 +804,12 @@ pub struct RecentVisitQuery {
     pub entity_name: Option<String>,
 }
 
-/// GET /workspaces/{slug}/user-recent-visit/
+/// GET /workspaces/{slug}/recent-visits/
+///
+/// Paridad con Django (`plane/app/views/workspace/recent_visit.py::UserRecentVisitViewSet`).
 #[utoipa::path(
     get,
-    path = "/api/workspaces/{slug}/user-recent-visit/",
+    path = "/api/workspaces/{slug}/recent-visits/",
     tag = "Workspace Extras",
     params(
         ("slug" = String, Path, description = "Workspace slug"),

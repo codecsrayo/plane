@@ -1056,7 +1056,7 @@ pub fn build_router(state: AppState) -> Router {
             patch(workspace_extras::update_quick_link).delete(workspace_extras::delete_quick_link),
         )
         .route(
-            "/workspaces/{slug}/user-recent-visit",
+            "/workspaces/{slug}/recent-visits",
             get(workspace_extras::list_recent_visits),
         )
         .route(
