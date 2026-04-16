@@ -8,6 +8,7 @@ pub mod oauth_popup;
 pub mod pagination;
 pub mod passwords;
 pub mod s3;
+pub mod s3_presigned_post;
 pub mod soft_delete;
 pub mod startup;
 pub mod token_cipher;
