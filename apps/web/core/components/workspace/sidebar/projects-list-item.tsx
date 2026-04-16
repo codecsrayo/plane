@@ -321,10 +321,12 @@ export const SidebarProjectsListItem = observer(function SidebarProjectsListItem
                 position="top-end"
                 disabled={isDragging}
               >
-                <button
-                  type="button"
+                {/* DragHandle ya usa forwardRef y renderiza su propio <button>.
+                    Eliminar el <button> wrapper externo evita el warning de React:
+                    "validateDOMNesting: <button> cannot appear as a descendant of <button>". */}
+                <DragHandle
                   className={cn(
-                    "absolute top-1/2 -left-3 hidden -translate-y-1/2 cursor-grab items-center justify-center rounded-sm text-placeholder group-hover/project-item:flex",
+                    "absolute top-1/2 -left-3 hidden -translate-y-1/2 items-center justify-center bg-transparent text-placeholder group-hover/project-item:flex",
                     {
                       "cursor-not-allowed opacity-60": project.sort_order === null,
                       "cursor-grabbing": isDragging,
@@ -332,9 +334,7 @@ export const SidebarProjectsListItem = observer(function SidebarProjectsListItem
                     }
                   )}
                   ref={dragHandleRef}
-                >
-                  <DragHandle className="bg-transparent" />
-                </button>
+                />
               </Tooltip>
             )}
             <>

@@ -4,6 +4,7 @@
  * See the LICENSE file for details.
  */
 
+import React from "react";
 import Link from "next/link";
 import { cn } from "@plane/utils";
 
@@ -113,51 +114,70 @@ function AppSidebarItemIcon({ icon, highlight }: AppSidebarItemIconProps) {
   );
 }
 
-function AppSidebarLinkItem({ href, children, className }: AppSidebarLinkItemProps) {
+// forwardRef permite que Tooltip (base-ui / blueprintjs) asigne un ref
+// directamente sin necesitar el workaround del <span className="contents">.
+const AppSidebarLinkItem = React.forwardRef<HTMLAnchorElement, AppSidebarLinkItemProps>(function AppSidebarLinkItem(
+  { href, children, className },
+  ref
+) {
   if (!href) return null;
 
   return (
-    <Link href={href} className={cn(styles.base, className)}>
+    <Link href={href} ref={ref} className={cn(styles.base, className)}>
       {children}
     </Link>
   );
-}
+});
+AppSidebarLinkItem.displayName = "AppSidebarLinkItem";
 
-function AppSidebarButtonItem({
-  children,
-  onClick,
-  disabled = false,
-  className,
-  as = "button",
-}: AppSidebarButtonItemProps) {
-  // Cuando `as="div"` el caller es responsable del comportamiento de boton
-  // (lo tipico: un <Menu.Button> de Headless UI que envuelve a este
-  // componente y ya aporta onClick/keyboard/aria). Aqui solo emitimos un
-  // contenedor para los hijos — evita el warning validateDOMNesting de
-  // <button> dentro de <button>.
-  if (as === "div") {
+// forwardRef en el botón también — cualquier Tooltip que envuelva la variante
+// "button" puede asignar ref sin el span workaround.
+const AppSidebarButtonItem = React.forwardRef<HTMLButtonElement | HTMLDivElement, AppSidebarButtonItemProps>(
+  function AppSidebarButtonItem({ children, onClick, disabled = false, className, as = "button" }, ref) {
+    // Cuando `as="div"` el caller es responsable del comportamiento de boton
+    // (lo tipico: un <Menu.Button> de Headless UI que envuelve a este
+    // componente y ya aporta onClick/keyboard/aria). Aqui solo emitimos un
+    // contenedor para los hijos — evita el warning validateDOMNesting de
+    // <button> dentro de <button>.
+    if (as === "div") {
+      return (
+        <div
+          ref={ref as React.ForwardedRef<HTMLDivElement>}
+          className={cn(styles.base, className)}
+          aria-disabled={disabled || undefined}
+        >
+          {children}
+        </div>
+      );
+    }
     return (
-      <div className={cn(styles.base, className)} aria-disabled={disabled || undefined}>
+      <button
+        ref={ref as React.ForwardedRef<HTMLButtonElement>}
+        className={cn(styles.base, className)}
+        onClick={onClick}
+        disabled={disabled}
+        type="button"
+      >
         {children}
-      </div>
+      </button>
     );
   }
-  return (
-    <button className={cn(styles.base, className)} onClick={onClick} disabled={disabled} type="button">
-      {children}
-    </button>
-  );
-}
+);
+AppSidebarButtonItem.displayName = "AppSidebarButtonItem";
 
 // ============================================================================
 // MAIN COMPONENT
 // ============================================================================
 
-export type AppSidebarItemComponent = React.FC<AppSidebarItemProps> & {
+export type AppSidebarItemComponent = React.ForwardRefExoticComponent<
+  AppSidebarItemProps & React.RefAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement>
+> & {
   Label: React.FC<AppSidebarItemLabelProps>;
   Icon: React.FC<AppSidebarItemIconProps>;
-  Link: React.FC<AppSidebarLinkItemProps>;
-  Button: React.FC<AppSidebarButtonItemProps>;
+  Link: React.ForwardRefExoticComponent<AppSidebarLinkItemProps & React.RefAttributes<HTMLAnchorElement>>;
+  Button: React.ForwardRefExoticComponent<
+    AppSidebarButtonItemProps & React.RefAttributes<HTMLButtonElement | HTMLDivElement>
+  >;
 };
 
 // Nota: el `= {}` final es defensivo. Un `function Foo({ a = 1 })` crashea si
@@ -166,7 +186,17 @@ export type AppSidebarItemComponent = React.FC<AppSidebarItemProps> & {
 // arrow-function a function-declaration; mantener el fallback explícito evita
 // el "Cannot read properties of undefined (reading 'variant')" si algún consumer
 // pasa `undefined` (p.ej. via HMR, HOC con props mal tipados, o render-as-value).
-function AppSidebarItem({ variant = "link", item, as }: AppSidebarItemProps = {}) {
+//
+// forwardRef expone el ref al elemento host subyacente (anchor o button/div)
+// de forma que Tooltip (base-ui / blueprintjs) no necesita el workaround del
+// <span className="contents"> — puede asignar el ref directamente a este
+// componente sin disparar:
+//   "Warning: Function components cannot be given refs. …
+//    Check the render method of `TooltipTrigger`."
+const AppSidebarItemBase = React.forwardRef<
+  HTMLAnchorElement | HTMLButtonElement | HTMLDivElement,
+  AppSidebarItemProps
+>(function AppSidebarItem({ variant = "link", item, as }: AppSidebarItemProps = {}, ref) {
   if (!item) return null;
 
   const { icon, isActive, label, href, onClick, disabled, showLabel = true } = item;
@@ -179,19 +209,34 @@ function AppSidebarItem({ variant = "link", item, as }: AppSidebarItemProps = {}
   );
 
   if (variant === "link") {
-    return <AppSidebarLinkItem href={href}>{commonItems}</AppSidebarLinkItem>;
+    return (
+      <AppSidebarLinkItem href={href} ref={ref as React.ForwardedRef<HTMLAnchorElement>}>
+        {commonItems}
+      </AppSidebarLinkItem>
+    );
   }
 
   return (
-    <AppSidebarButtonItem onClick={onClick} disabled={disabled} as={as}>
+    <AppSidebarButtonItem
+      onClick={onClick}
+      disabled={disabled}
+      as={as}
+      ref={ref as React.ForwardedRef<HTMLButtonElement | HTMLDivElement>}
+    >
       {commonItems}
     </AppSidebarButtonItem>
   );
-}
+});
+AppSidebarItemBase.displayName = "AppSidebarItem";
 
 // ============================================================================
 // COMPOUND COMPONENT ASSIGNMENT
 // ============================================================================
+
+// Cast necesario: forwardRef devuelve un tipo genérico sin espacio para
+// propiedades estáticas; el cast a AppSidebarItemComponent expone los
+// sub-componentes manteniendo la firma forwardRef del componente base.
+const AppSidebarItem = AppSidebarItemBase as AppSidebarItemComponent;
 
 AppSidebarItem.Label = AppSidebarItemLabel;
 AppSidebarItem.Icon = AppSidebarItemIcon;
