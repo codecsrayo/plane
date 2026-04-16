@@ -7,16 +7,19 @@
 import React from "react";
 import { useParams } from "react-router";
 import useSWRInfinite from "swr/infinite";
-import type { IWorkspaceIntegration } from "@plane/types";
+import type { IGitlabRepoInfo, IWorkspaceIntegration } from "@plane/types";
 import { CustomSearchSelect } from "@plane/ui";
 import { truncateText } from "@plane/utils";
 import { GitlabIntegrationService } from "@/services/integrations/gitlab.service";
 
+// Tuple that matches exactly what getKey() returns for useSWRInfinite
+type TGitlabRepoKey = [workspaceSlug: string, token: string, page: number, cacheTag: string];
+
 type Props = {
   integration: IWorkspaceIntegration;
-  value: any;
+  value: string | undefined;
   label: string | React.ReactNode;
-  onChange: (repo: any) => void;
+  onChange: (repo: IGitlabRepoInfo | undefined) => void;
   characterLimit?: number;
   token: string;
 };
@@ -32,9 +35,9 @@ export function SelectGitlabRepository(props: Props) {
     return [workspaceSlug, token, pageIndex + 1, "gitlab-repositories"];
   };
 
-  const fetchGitlabRepos = async (key: any[]) => {
+  const fetchGitlabRepos = async (key: TGitlabRepoKey) => {
     const [slug, gitToken, page] = key;
-    const data = await gitlabService.listAllRepositories(slug as string, gitToken as string, page as number);
+    const data = await gitlabService.listAllRepositories(slug, gitToken, page);
     return data;
   };
 
