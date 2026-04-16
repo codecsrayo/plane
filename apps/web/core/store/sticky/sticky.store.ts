@@ -103,9 +103,14 @@ export class StickyStore implements IStickyStore {
 
   fetchRecentSticky = async (workspaceSlug: string) => {
     const response = await this.stickyService.getStickies(workspaceSlug, "1:0:0", undefined, 1);
+    // Defensivo: si el backend devuelve un shape inesperado (undefined, null,
+    // o sin `results`) no reventamos el store — dejamos recentStickyId como
+    // estaba y seguimos.
+    const results = response?.results;
+    if (!Array.isArray(results) || results.length === 0) return;
     runInAction(() => {
-      this.recentStickyId = response.results[0]?.id;
-      this.stickies[response.results[0]?.id] = response.results[0];
+      this.recentStickyId = results[0]?.id;
+      if (results[0]) this.stickies[results[0].id] = results[0];
     });
   };
   fetchNextWorkspaceStickies = async (workspaceSlug: string) => {
@@ -121,10 +126,15 @@ export class StickyStore implements IStickyStore {
       );
 
       runInAction(() => {
-        const { results, ...paginationInfo } = response;
+        // Defensivo: tolerar response undefined o sin results (backend caido,
+        // shape inesperado, 500, etc.) — marcar como loaded y salir sin
+        // mutar estado, en vez de reventar con 'Cannot read properties of
+        // undefined (reading forEach)'.
+        const { results, ...paginationInfo } = response ?? { results: [] };
+        const safeResults = Array.isArray(results) ? results : [];
 
         // Add new stickies to store
-        results.forEach((sticky) => {
+        safeResults.forEach((sticky) => {
           if (!this.workspaceStickies[workspaceSlug]?.includes(sticky.id)) {
             this.workspaceStickies[workspaceSlug] = [...(this.workspaceStickies[workspaceSlug] || []), sticky.id];
           }
@@ -158,12 +168,17 @@ export class StickyStore implements IStickyStore {
       );
 
       runInAction(() => {
-        const { results, ...paginationInfo } = response;
+        // Defensivo: tolerar response undefined o sin results (backend caido,
+        // shape inesperado, 500) sin reventar. Reseteamos el bucket a []
+        // para que el UI no quede con datos stale y el loader vuelva a
+        // loaded.
+        const { results, ...paginationInfo } = response ?? { results: [] };
+        const safeResults = Array.isArray(results) ? results : [];
 
-        results.forEach((sticky) => {
+        safeResults.forEach((sticky) => {
           this.stickies[sticky.id] = sticky;
         });
-        this.workspaceStickies[workspaceSlug] = results.map((sticky) => sticky.id);
+        this.workspaceStickies[workspaceSlug] = safeResults.map((sticky) => sticky.id);
         set(this, "paginationInfo", paginationInfo);
         this.loader = "loaded";
       });
