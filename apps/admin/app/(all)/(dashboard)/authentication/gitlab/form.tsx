@@ -24,6 +24,8 @@ import type { TCopyField } from "@/components/common/copy-field";
 import { CopyField } from "@/components/common/copy-field";
 // hooks
 import { useInstance } from "@/hooks/store";
+// lib
+import { logger } from "@/lib/logger";
 
 type Props = {
   config: IFormattedInstanceConfiguration;
@@ -161,7 +163,7 @@ export function InstanceGitlabConfigForm(props: Props) {
         ENABLE_GITLAB_SYNC: response.find((item) => item.key === "ENABLE_GITLAB_SYNC")?.value,
       });
     } catch (err) {
-      console.error(err);
+      logger.error(err);
     }
   };
 

@@ -22,6 +22,8 @@ import { WorkspaceListItem } from "@/components/workspace/list-item";
 import { useInstance, useWorkspace } from "@/hooks/store";
 // types
 import type { Route } from "./+types/page";
+// lib
+import { logger } from "@/lib/logger";
 
 const WorkspaceManagementPage = observer(function WorkspaceManagementPage(_props: Route.ComponentProps) {
   // states
@@ -67,7 +69,7 @@ const WorkspaceManagementPage = observer(function WorkspaceManagementPage(_props
     try {
       await updateConfigPromise;
     } catch (error) {
-      console.error(error);
+      logger.error(error);
     } finally {
       setIsSubmitting(false);
     }

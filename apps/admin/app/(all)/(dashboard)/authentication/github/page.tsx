@@ -24,6 +24,8 @@ import { useInstance } from "@/hooks/store";
 import type { Route } from "./+types/page";
 // local
 import { InstanceGithubConfigForm } from "./form";
+// lib
+import { logger } from "@/lib/logger";
 
 const InstanceGithubAuthenticationPage = observer(function InstanceGithubAuthenticationPage(
   _props: Route.ComponentProps
@@ -63,7 +65,7 @@ const InstanceGithubAuthenticationPage = observer(function InstanceGithubAuthent
     try {
       await updateConfigPromise;
     } catch (error) {
-      console.error(error);
+      logger.error(error);
     } finally {
       setIsSubmitting(false);
     }

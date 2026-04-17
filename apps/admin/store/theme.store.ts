@@ -7,6 +7,8 @@
 import { action, observable, makeObservable } from "mobx";
 // root store
 import type { RootStore } from "./root.store";
+// lib
+import { logger } from "@/lib/logger";
 
 type TTheme = "dark" | "light";
 export interface IThemeStore {
@@ -15,7 +17,7 @@ export interface IThemeStore {
   theme: string | undefined;
   isSidebarCollapsed: boolean | undefined;
   // actions
-  hydrate: (data: any) => void;
+  hydrate: (data: TTheme | undefined) => void;
   toggleNewUserPopup: () => void;
   toggleSidebar: (collapsed: boolean) => void;
   setTheme: (currentTheme: TTheme) => void;
@@ -40,7 +42,7 @@ export class ThemeStore implements IThemeStore {
     });
   }
 
-  hydrate = (data: any) => {
+  hydrate = (data: TTheme | undefined) => {
     if (data) this.theme = data;
   };
 
@@ -68,7 +70,7 @@ export class ThemeStore implements IThemeStore {
       localStorage.setItem("theme", currentTheme);
       this.theme = currentTheme;
     } catch (error) {
-      console.error("setting user theme error", error);
+      logger.error("setting user theme error", error);
     }
   };
 }

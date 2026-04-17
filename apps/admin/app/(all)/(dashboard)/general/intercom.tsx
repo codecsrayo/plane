@@ -12,6 +12,8 @@ import type { IFormattedInstanceConfiguration } from "@plane/types";
 import { ToggleSwitch } from "@plane/ui";
 // hooks
 import { useInstance } from "@/hooks/store";
+// lib
+import { logger } from "@/lib/logger";
 
 type TIntercomConfig = {
   isTelemetryEnabled: boolean;
@@ -41,7 +43,7 @@ export const IntercomConfig = observer(function IntercomConfig(props: TIntercomC
     try {
       await updateInstanceConfigurations(payload);
     } catch (error) {
-      console.error(error);
+      logger.error(error);
     } finally {
       setIsSubmitting(false);
     }

@@ -19,6 +19,8 @@ import { ControllerInput } from "@/components/common/controller-input";
 import { useInstance } from "@/hooks/store";
 // local components
 import { SendTestEmailModal } from "./test-email-modal";
+// lib
+import { logger } from "@/lib/logger";
 
 type IInstanceEmailForm = {
   config: IFormattedInstanceConfiguration;
@@ -118,7 +120,7 @@ export function InstanceEmailForm(props: IInstanceEmailForm) {
           message: "Email Settings updated successfully",
         })
       )
-      .catch((err) => console.error(err));
+      .catch((err) => logger.error(err));
   };
 
   const useTLSValue = watch("EMAIL_USE_TLS");

@@ -21,6 +21,8 @@ import { useInstance } from "@/hooks/store";
 import type { Route } from "./+types/page";
 // local
 import { InstanceGiteaConfigForm } from "./form";
+// lib
+import { logger } from "@/lib/logger";
 
 const InstanceGiteaAuthenticationPage = observer(function InstanceGiteaAuthenticationPage() {
   // store
@@ -55,7 +57,7 @@ const InstanceGiteaAuthenticationPage = observer(function InstanceGiteaAuthentic
     try {
       await updateConfigPromise;
     } catch (error) {
-      console.error(error);
+      logger.error(error);
     } finally {
       setIsSubmitting(false);
     }

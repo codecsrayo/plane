@@ -14,6 +14,8 @@ import type { TControllerInputFormField } from "@/components/common/controller-i
 import { ControllerInput } from "@/components/common/controller-input";
 // hooks
 import { useInstance } from "@/hooks/store";
+// lib
+import { logger } from "@/lib/logger";
 
 type IInstanceAIForm = {
   config: IFormattedInstanceConfiguration;
@@ -93,7 +95,7 @@ export function InstanceAIForm(props: IInstanceAIForm) {
           message: "AI Settings updated successfully",
         })
       )
-      .catch((err) => console.error(err));
+      .catch((err) => logger.error(err));
   };
 
   return (

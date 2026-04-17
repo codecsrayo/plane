@@ -25,6 +25,8 @@ import type { TCopyField } from "@/components/common/copy-field";
 import { CopyField } from "@/components/common/copy-field";
 // hooks
 import { useInstance } from "@/hooks/store";
+// lib
+import { logger } from "@/lib/logger";
 
 type Props = {
   config: IFormattedInstanceConfiguration;
@@ -166,7 +168,7 @@ export function InstanceGoogleConfigForm(props: Props) {
         ENABLE_GOOGLE_SYNC: response.find((item) => item.key === "ENABLE_GOOGLE_SYNC")?.value,
       });
     } catch (err) {
-      console.error(err);
+      logger.error(err);
     }
   };
 

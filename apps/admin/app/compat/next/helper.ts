@@ -4,6 +4,9 @@
  * See the LICENSE file for details.
  */
 
+// lib
+import { logger } from "@/lib/logger";
+
 /**
  * Ensures that a URL has a trailing slash while preserving query parameters and fragments
  * @param url - The URL to process
@@ -35,7 +38,7 @@ export function ensureTrailingSlash(url: string): string {
     return urlObj.toString();
   } catch (error) {
     // If URL parsing fails, return the original URL
-    console.warn("Failed to parse URL for trailing slash enforcement:", url, error);
+    logger.warn("Failed to parse URL for trailing slash enforcement:", url, error);
     return url;
   }
 }

@@ -18,6 +18,8 @@ import { ControllerInput } from "@/components/common/controller-input";
 import { useInstance } from "@/hooks/store";
 // components
 import { IntercomConfig } from "./intercom";
+// lib
+import { logger } from "@/lib/logger";
 
 export interface IGeneralConfigurationForm {
   instance: IInstance;
@@ -52,7 +54,7 @@ export const GeneralConfigurationForm = observer(function GeneralConfigurationFo
       try {
         await updateInstanceConfigurations({ IS_INTERCOM_ENABLED: "0" });
       } catch (error) {
-        console.error(error);
+        logger.error(error);
       }
     }
 
@@ -64,7 +66,7 @@ export const GeneralConfigurationForm = observer(function GeneralConfigurationFo
           message: "Settings updated successfully",
         })
       )
-      .catch((err) => console.error(err));
+      .catch((err) => logger.error(err));
   };
 
   return (

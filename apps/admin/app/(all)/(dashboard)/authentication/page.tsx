@@ -24,6 +24,8 @@ import { useInstance } from "@/hooks/store";
 import { toBool } from "@/helpers/config";
 // types
 import type { Route } from "./+types/page";
+// lib
+import { logger } from "@/lib/logger";
 
 const InstanceAuthenticationPage = observer(function InstanceAuthenticationPage(_props: Route.ComponentProps) {
   // theme
@@ -92,7 +94,7 @@ const InstanceAuthenticationPage = observer(function InstanceAuthenticationPage(
           return undefined;
         })
         .catch((err) => {
-          console.error(err);
+          logger.error(err);
           setIsSubmitting(false);
         });
     },

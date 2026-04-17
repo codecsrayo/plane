@@ -20,11 +20,13 @@ import type {
 } from "@plane/types";
 // root store
 import type { RootStore } from "@/store/root.store";
+// lib
+import { logger } from "@/lib/logger";
 
 export interface IInstanceStore {
   // issues
   isLoading: boolean;
-  error: any;
+  error: { message: string } | undefined;
   instanceStatus: TInstanceStatus | undefined;
   instance: IInstance | undefined;
   config: IInstanceConfig | undefined;
@@ -44,7 +46,7 @@ export interface IInstanceStore {
 
 export class InstanceStore implements IInstanceStore {
   isLoading: boolean = true;
-  error: any = undefined;
+  error: { message: string } | undefined = undefined;
   instanceStatus: TInstanceStatus | undefined = undefined;
   instance: IInstance | undefined = undefined;
   config: IInstanceConfig | undefined = undefined;
@@ -108,14 +110,13 @@ export class InstanceStore implements IInstanceStore {
       if (this.instance === undefined && !instanceInfo?.instance?.workspaces_exist)
         this.store.theme.toggleNewUserPopup();
       runInAction(() => {
-        // console.log("instanceInfo: ", instanceInfo);
         this.isLoading = false;
         this.instance = instanceInfo.instance;
         this.config = instanceInfo.config;
       });
       return instanceInfo;
     } catch (error) {
-      console.error("Error fetching the instance info");
+      logger.error("Error fetching the instance info");
       this.isLoading = false;
       this.error = { message: "Failed to fetch the instance info" };
       this.instanceStatus = {
@@ -140,7 +141,7 @@ export class InstanceStore implements IInstanceStore {
       }
       return instanceResponse;
     } catch (error) {
-      console.error("Error updating the instance info");
+      logger.error("Error updating the instance info");
       throw error;
     }
   };
@@ -155,7 +156,7 @@ export class InstanceStore implements IInstanceStore {
       if (instanceAdmins) runInAction(() => (this.instanceAdmins = instanceAdmins));
       return instanceAdmins;
     } catch (error) {
-      console.error("Error fetching the instance admins");
+      logger.error("Error fetching the instance admins");
       throw error;
     }
   };
@@ -170,7 +171,7 @@ export class InstanceStore implements IInstanceStore {
       if (instanceConfigurations) runInAction(() => (this.instanceConfigurations = instanceConfigurations));
       return instanceConfigurations;
     } catch (error) {
-      console.error("Error fetching the instance configurations");
+      logger.error("Error fetching the instance configurations");
       throw error;
     }
   };
@@ -191,7 +192,7 @@ export class InstanceStore implements IInstanceStore {
       });
       return response;
     } catch (error) {
-      console.error("Error updating the instance configurations");
+      logger.error("Error updating the instance configurations");
       throw error;
     }
   };
@@ -217,7 +218,7 @@ export class InstanceStore implements IInstanceStore {
       });
       await this.instanceService.disableEmail();
     } catch (_error) {
-      console.error("Error disabling the email");
+      logger.error("Error disabling the email");
       this.instanceConfigurations = instanceConfigurations;
     }
   };

@@ -11,6 +11,8 @@ import { InstanceWorkspaceService } from "@plane/services";
 import type { IWorkspace, TLoader, TPaginationInfo } from "@plane/types";
 // root store
 import type { RootStore } from "@/store/root.store";
+// lib
+import { logger } from "@/lib/logger";
 
 export interface IWorkspaceStore {
   // observables
@@ -100,7 +102,7 @@ export class WorkspaceStore implements IWorkspaceStore {
       });
       return paginatedWorkspaceData.results;
     } catch (error) {
-      console.error("Error fetching workspaces", error);
+      logger.error("Error fetching workspaces", error);
       throw error;
     } finally {
       this.loader = "loaded";
@@ -125,7 +127,7 @@ export class WorkspaceStore implements IWorkspaceStore {
       });
       return paginatedWorkspaceData.results;
     } catch (error) {
-      console.error("Error fetching next workspaces", error);
+      logger.error("Error fetching next workspaces", error);
       throw error;
     } finally {
       this.loader = "loaded";
@@ -147,7 +149,7 @@ export class WorkspaceStore implements IWorkspaceStore {
       });
       return workspace;
     } catch (error) {
-      console.error("Error creating workspace", error);
+      logger.error("Error creating workspace", error);
       throw error;
     } finally {
       this.loader = "loaded";

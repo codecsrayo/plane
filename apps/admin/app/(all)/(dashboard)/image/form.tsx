@@ -12,6 +12,8 @@ import type { IFormattedInstanceConfiguration, TInstanceImageConfigurationKeys }
 import { ControllerInput } from "@/components/common/controller-input";
 // hooks
 import { useInstance } from "@/hooks/store";
+// lib
+import { logger } from "@/lib/logger";
 
 type IInstanceImageConfigForm = {
   config: IFormattedInstanceConfiguration;
@@ -45,7 +47,7 @@ export function InstanceImageConfigForm(props: IInstanceImageConfigForm) {
           message: "Image Configuration Settings updated successfully",
         })
       )
-      .catch((err) => console.error(err));
+      .catch((err) => logger.error(err));
   };
 
   return (

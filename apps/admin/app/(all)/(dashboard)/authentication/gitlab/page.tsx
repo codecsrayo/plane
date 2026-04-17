@@ -21,6 +21,8 @@ import { toBool } from "@/helpers/config";
 import type { Route } from "./+types/page";
 // local
 import { InstanceGitlabConfigForm } from "./form";
+// lib
+import { logger } from "@/lib/logger";
 
 const InstanceGitlabAuthenticationPage = observer(function InstanceGitlabAuthenticationPage(
   _props: Route.ComponentProps
@@ -58,7 +60,7 @@ const InstanceGitlabAuthenticationPage = observer(function InstanceGitlabAuthent
     try {
       await updateConfigPromise;
     } catch (error) {
-      console.error(error);
+      logger.error(error);
     } finally {
       setIsSubmitting(false);
     }

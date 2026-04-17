@@ -21,6 +21,8 @@ import { toBool } from "@/helpers/config";
 import type { Route } from "./+types/page";
 // local
 import { InstanceGoogleConfigForm } from "./form";
+// lib
+import { logger } from "@/lib/logger";
 
 const InstanceGoogleAuthenticationPage = observer(function InstanceGoogleAuthenticationPage(
   _props: Route.ComponentProps
@@ -58,7 +60,7 @@ const InstanceGoogleAuthenticationPage = observer(function InstanceGoogleAuthent
     try {
       await updateConfigPromise;
     } catch (error) {
-      console.error(error);
+      logger.error(error);
     } finally {
       setIsSubmitting(false);
     }
