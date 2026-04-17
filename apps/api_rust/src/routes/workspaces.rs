@@ -34,7 +34,9 @@ use crate::{
     routes::helpers::{require_workspace_member, workspace_by_slug},
     utils::{
         color::get_random_color, instance_config::get_config_value,
-        pagination, soft_delete::SoftDeleteExt, url::contains_url,
+        pagination,
+        posthog::{track_event, EVENT_WORKSPACE_DELETED},
+        soft_delete::SoftDeleteExt, url::contains_url,
     },
     AppState,
 };
@@ -771,6 +773,8 @@ pub async fn delete_workspace(
 
     let now = chrono::Utc::now().fixed_offset();
     let ws_id = ws.id;
+    let ws_name = ws.name.clone();
+    let ws_slug = ws.slug.clone();
 
     // Espejo de `WorkspaceViewSet.destroy`
     // (`apps/api/plane/app/views/workspace/base.py:184-201`):
@@ -808,6 +812,33 @@ pub async fn delete_workspace(
     active.update(&txn).await.map_err(AppError::Database)?;
 
     txn.commit().await.map_err(AppError::Database)?;
+
+    // Espejo de `track_event.delay(event_name=WORKSPACE_DELETED, ...)` en
+    // `base.py:188-200`. Django lo corre via Celery; nosotros vía `tokio::spawn`
+    // dentro de `utils::posthog::track_event`. El evento se emite sólo tras
+    // commit exitoso — si la transacción hubiera fallado, no queremos reportar
+    // un delete que no sucedió.
+    //
+    // Nota sobre `role`: Django hardcodea `"role": "owner"` en la view y luego
+    // `preprocess_data_properties` lo recalcula consultando `Workspace.objects`
+    // con el slug. Pero para este punto el workspace ya está soft-deleted, y el
+    // manager por defecto filtra por `deleted_at IS NULL` → `DoesNotExist` →
+    // `"role": "unknown"`. En Rust somos deterministas: ya validamos arriba
+    // que `ws.owner_id == user.id`, así que el role siempre es `owner`.
+    let mut props = serde_json::Map::new();
+    props.insert("user_id".into(), serde_json::json!(user.id.to_string()));
+    props.insert("workspace_id".into(), serde_json::json!(ws_id.to_string()));
+    props.insert("workspace_slug".into(), serde_json::json!(ws_slug));
+    props.insert("workspace_name".into(), serde_json::json!(ws_name));
+    props.insert("role".into(), serde_json::json!("owner"));
+    props.insert("deleted_at".into(), serde_json::json!(now.to_rfc3339()));
+    track_event(
+        &state,
+        user.id,
+        EVENT_WORKSPACE_DELETED,
+        slug,
+        props,
+    );
 
     Ok(StatusCode::NO_CONTENT)
 }

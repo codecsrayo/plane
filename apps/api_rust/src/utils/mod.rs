@@ -7,6 +7,7 @@ pub mod instance_config;
 pub mod oauth_popup;
 pub mod pagination;
 pub mod passwords;
+pub mod posthog;
 pub mod s3;
 pub mod s3_presigned_post;
 pub mod soft_delete;
