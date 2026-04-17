@@ -189,7 +189,20 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
 
     try {
       const pem = await file.text();
-      const pemBase64 = encodeBase64(pem);
+      const trimmedPem = pem.trim();
+
+      // Validate PEM structure before encoding — a file renamed to .pem is not a key.
+      // Require at minimum a -----BEGIN header and a -----END footer.
+      if (!trimmedPem.startsWith("-----BEGIN") || !trimmedPem.includes("-----END")) {
+        setToast({
+          type: TOAST_TYPE.ERROR,
+          title: "Invalid file",
+          message: "The selected file does not appear to be a valid PEM key. Make sure you upload the .pem file downloaded from GitHub.",
+        });
+        return;
+      }
+
+      const pemBase64 = encodeBase64(trimmedPem);
       setValue("GITHUB_APP_PRIVATE_KEY", pemBase64, { shouldDirty: true, shouldValidate: true });
       setLocalKeyState("unsaved");
       setToast({
