@@ -1,12 +1,8 @@
-# Copyright (c) 2023-present Plane Software, Inc. and contributors
-# SPDX-License-Identifier: AGPL-3.0-only
-# See the LICENSE file for details.
-
 from django.urls import path
 
 
 from plane.app.views import UnsplashEndpoint
-from plane.app.views import GPTIntegrationEndpoint, WorkspaceGPTIntegrationEndpoint
+from plane.app.views import GPTIntegrationEndpoint, RephraseGrammarEndpoint, WorkspaceGPTIntegrationEndpoint
 from plane.app.views.external.sync import GitHubWebhookEndpoint, GitLabWebhookEndpoint
 
 
@@ -23,5 +19,10 @@ urlpatterns = [
         "workspaces/<str:slug>/ai-assistant/",
         WorkspaceGPTIntegrationEndpoint.as_view(),
         name="importer",
+    ),
+    path(
+        "workspaces/<str:slug>/rephrase-grammar/",
+        RephraseGrammarEndpoint.as_view(),
+        name="rephrase-grammar",
     ),
 ]
