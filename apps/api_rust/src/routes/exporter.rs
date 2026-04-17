@@ -366,6 +366,10 @@ pub async fn export_issues(
     storage
         .push(ExportIssuesJob {
             exporter_token: token.clone(),
+            // Paridad Django (apps/api/plane/app/views/exporter/base.py:28,54):
+            // default = false (export single consolidated file). El worker
+            // todavía no respeta este flag — ver TODO en jobs/export.rs.
+            multiple: body.multiple.unwrap_or(false),
         })
         .await
         .map_err(|e| AppError::Internal(anyhow::anyhow!("Job queue error: {e}")))?;

@@ -30,9 +30,22 @@ use crate::{
 // ── Job payload ───────────────────────────────────────────────────────────────
 
 /// Payload: token único del registro ExporterHistory a procesar.
+///
+/// Paridad Django (apps/api/plane/app/views/exporter/base.py:49-56):
+/// `issue_export_task.delay(..., multiple=multiple, ...)`. El flag `multiple`
+/// decide si el worker genera un CSV por proyecto (true) o uno solo con todas
+/// las issues del workspace (false) — ver `export_task.py:204-213`.
+///
+/// TODO(paridad-worker): el handler actual
+/// (`apps/api_rust/src/jobs/export.rs`) siempre hace split por proyecto (loop
+/// incondicional), por lo que `multiple=false` no se respeta todavía.
+/// Threadeamos el flag igual para que el valor persista end-to-end cuando se
+/// implemente la rama single-file.
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ExportIssuesJob {
     pub exporter_token: String,
+    #[serde(default)]
+    pub multiple: bool,
 }
 
 
@@ -44,7 +57,7 @@ pub async fn handle_export_issues(
 ) -> Result<(), Error> {
     let state: AppState = (*ctx).clone();
 
-    if let Err(e) = run_export(&state, &job.exporter_token).await {
+    if let Err(e) = run_export(&state, &job.exporter_token, job.multiple).await {
         tracing::error!(
             token = %job.exporter_token,
             error = %e,
@@ -58,8 +71,14 @@ pub async fn handle_export_issues(
     Ok(())
 }
 
-async fn run_export(state: &AppState, token: &str) -> anyhow::Result<()> {
+async fn run_export(state: &AppState, token: &str, multiple: bool) -> anyhow::Result<()> {
     use anyhow::Context as _;
+
+    // TODO(paridad-worker): `multiple=false` debería consolidar todas las
+    // issues del workspace en un único CSV (ver apps/api/plane/bgtasks/
+    // export_task.py:204-213). El loop de abajo siempre hace split por
+    // proyecto. Por ahora sólo logueamos el flag para observabilidad.
+    tracing::debug!(token, multiple, "export_issues: iniciando job");
 
     // 1. Cargar el ExporterHistory
     let exporter = exporters::Entity::find()
