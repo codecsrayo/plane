@@ -6,7 +6,7 @@
 
 import { API_BASE_URL } from "@plane/constants";
 import type { IGithubRepoInfo, IGithubRepositoriesResponse, IGithubServiceImportFormData } from "@plane/types";
-import { APIService } from "@/services/api.service";
+import { ApiError, APIService } from "@/services/api.service";
 // helpers
 // types
 
@@ -39,7 +39,7 @@ export class GithubIntegrationService extends APIService {
     )
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -49,7 +49,7 @@ export class GithubIntegrationService extends APIService {
     })
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -60,7 +60,7 @@ export class GithubIntegrationService extends APIService {
     return this.post(`/api/workspaces/${workspaceSlug}/projects/importers/${integrationServiceType}/`, data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 }

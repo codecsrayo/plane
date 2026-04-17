@@ -38,6 +38,42 @@ const isAuthLandingRoute = (pathname: string): boolean => AUTH_LANDING_ROUTES.so
  */
 let hasDispatched401Redirect = false;
 
+/**
+ * Typed error wrapper for HTTP responses rejected by `APIService` methods.
+ *
+ * Throwing a plain Axios response object (the previous pattern) loses the
+ * Error prototype chain: `instanceof Error` returns false, `stack` is absent,
+ * and TypeScript types the catch variable as `unknown` — all of which make
+ * upstream error handling fragile.
+ *
+ * `ApiError` preserves backward-compat surface (`.data`, `.status`,
+ * `.statusText`) so existing callers that access `err?.data?.error` or
+ * `err?.statusText` continue to work without changes, while also providing
+ * a proper stack trace and a human-readable `.message`.
+ *
+ * Usage in service catch blocks:
+ *   .catch((error) => { throw new ApiError(error?.response); })
+ */
+export class ApiError extends Error {
+  readonly status: number;
+  readonly statusText: string;
+  // Intentionally `unknown` — callers narrow as needed (e.g. `(err.data as {error: string}).error`)
+  readonly data: unknown;
+
+  constructor(response: { status?: number; statusText?: string; data?: unknown } | null | undefined) {
+    const backendMessage =
+      response?.data != null && typeof response.data === "object"
+        ? ((response.data as Record<string, unknown>).error as string | undefined)
+        : undefined;
+    super(backendMessage ?? response?.statusText ?? "API request failed");
+    this.name = "ApiError";
+    this.status = response?.status ?? 0;
+    this.statusText = response?.statusText ?? "";
+    this.data = response?.data ?? null;
+  }
+}
+
+
 export abstract class APIService {
   protected baseURL: string;
   private axiosInstance: AxiosInstance;

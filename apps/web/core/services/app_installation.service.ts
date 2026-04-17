@@ -12,7 +12,7 @@ import type {
   TProviderInstallPayload,
   TSlackChannelCreatePayload,
 } from "@plane/types";
-import { APIService } from "@/services/api.service";
+import { ApiError, APIService } from "@/services/api.service";
 
 /**
  * Service wrapper around workspace-integration endpoints.
@@ -42,7 +42,7 @@ export class AppInstallationService extends APIService {
     return this.post(`/api/workspaces/${workspaceSlug}/workspace-integrations/${provider}/install/`, data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -58,7 +58,7 @@ export class AppInstallationService extends APIService {
     )
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -72,7 +72,7 @@ export class AppInstallationService extends APIService {
     )
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -87,7 +87,7 @@ export class AppInstallationService extends APIService {
     )
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response;
+        throw new ApiError(error?.response);
       });
   }
 }

@@ -6,7 +6,7 @@
 
 import { API_BASE_URL } from "@plane/constants";
 import type { IGitlabRepoInfo } from "@plane/types";
-import { APIService } from "@/services/api.service";
+import { ApiError, APIService } from "@/services/api.service";
 
 export class GitlabIntegrationService extends APIService {
   constructor() {
@@ -30,7 +30,7 @@ export class GitlabIntegrationService extends APIService {
     })
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 }

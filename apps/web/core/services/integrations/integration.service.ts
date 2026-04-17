@@ -14,7 +14,7 @@ import type {
   IGithubRepository,
   TGithubRepoSyncCreatePayload,
 } from "@plane/types";
-import { APIService } from "@/services/api.service";
+import { ApiError, APIService } from "@/services/api.service";
 // types
 // helper
 
@@ -40,7 +40,7 @@ export class IntegrationService extends APIService {
     return this.get(`/api/integrations/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -48,7 +48,7 @@ export class IntegrationService extends APIService {
     return this.get(`/api/workspaces/${workspaceSlug}/workspace-integrations/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -56,7 +56,7 @@ export class IntegrationService extends APIService {
     return this.delete(`/api/workspaces/${workspaceSlug}/workspace-integrations/${integrationId}/`)
       .then((res) => res?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -64,7 +64,7 @@ export class IntegrationService extends APIService {
     return this.get(`/api/workspaces/${workspaceSlug}/importers/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
   async getExportsServicesList(
@@ -80,7 +80,7 @@ export class IntegrationService extends APIService {
     })
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -92,7 +92,7 @@ export class IntegrationService extends APIService {
     return this.delete(`/api/workspaces/${workspaceSlug}/importers/${service}/${importerId}/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -100,7 +100,7 @@ export class IntegrationService extends APIService {
     return this.get(`/api/workspaces/${workspaceSlug}/workspace-integrations/github/repo-syncs/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -108,7 +108,7 @@ export class IntegrationService extends APIService {
     return this.post(`/api/workspaces/${workspaceSlug}/workspace-integrations/github/repo-syncs/`, data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -116,7 +116,7 @@ export class IntegrationService extends APIService {
     return this.delete(`/api/workspaces/${workspaceSlug}/workspace-integrations/github/repo-syncs/${syncId}/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -128,7 +128,7 @@ export class IntegrationService extends APIService {
         return Array.isArray(data) ? data : (data?.repositories ?? []);
       })
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -138,7 +138,7 @@ export class IntegrationService extends APIService {
     )
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -153,7 +153,7 @@ export class IntegrationService extends APIService {
     )
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -163,7 +163,7 @@ export class IntegrationService extends APIService {
     )
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 }

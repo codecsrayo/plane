@@ -14,7 +14,7 @@
  */
 
 import { API_BASE_URL } from "@plane/constants";
-import { APIService } from "@/services/api.service";
+import { ApiError, APIService } from "@/services/api.service";
 
 export type TUserConnectionResponse = {
   id: string;
@@ -31,7 +31,7 @@ export class GithubUserConnectionService extends APIService {
     return this.post("/api/auth/github/user-callback/", { code })
       .then((res) => res?.data)
       .catch((err) => {
-        throw err?.response;
+        throw new ApiError(err?.response);
       });
   }
 }

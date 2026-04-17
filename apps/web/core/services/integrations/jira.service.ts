@@ -6,7 +6,7 @@
 
 import { API_BASE_URL } from "@plane/constants";
 import type { IJiraMetadata, IJiraResponse, IJiraImporterForm } from "@plane/types";
-import { APIService } from "@/services/api.service";
+import { ApiError, APIService } from "@/services/api.service";
 // types
 
 export class JiraImporterService extends APIService {
@@ -20,7 +20,7 @@ export class JiraImporterService extends APIService {
     })
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -28,7 +28,7 @@ export class JiraImporterService extends APIService {
     return this.post(`/api/workspaces/${workspaceSlug}/projects/importers/jira/`, data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 }
