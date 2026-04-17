@@ -179,6 +179,8 @@ pub mod instances;
         notifications::unarchive_notification,
         notifications::unread_count,
         notifications::mark_all_read,
+        notifications::get_user_notification_preferences,
+        notifications::update_user_notification_preferences,
         webhooks::list_webhooks,
         webhooks::create_webhook,
         webhooks::get_webhook,
@@ -369,6 +371,8 @@ pub mod instances;
             states::UpdateStateRequest,
             timezones::TimezoneEntry,
             timezones::TimezonesResponse,
+            notifications::UserNotificationPreferenceResponse,
+            notifications::UpdateUserNotificationPreferenceRequest,
         )
     ),
     tags(
@@ -898,6 +902,19 @@ pub fn build_router(state: AppState) -> Router {
         .route("/users/session", get(users::get_session))
         .route("/users/me/settings", get(users::get_settings))
         .route("/users/me/instance-admin", get(users::get_instance_admin))
+        // Mirror Django: users/me/notification-preferences/
+        //   → UserNotificationPreferenceEndpoint
+        //   (apps/api/plane/app/urls/notification.py:47-51)
+        //
+        // GET/PATCH sobre la fila única de preferencias del usuario
+        // autenticado. Si la fila no existe (usuarios migrados o creados
+        // por flujos que no disparan el signal Django), se crea con los
+        // defaults del modelo. Evita el 500 que tendría Django con `.get()`.
+        .route(
+            "/users/me/notification-preferences",
+            get(notifications::get_user_notification_preferences)
+                .patch(notifications::update_user_notification_preferences),
+        )
         .route("/users/me/onboard", patch(users::update_onboard))
         .route(
             "/users/me/tour-completed",

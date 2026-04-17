@@ -25,8 +25,10 @@ use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 
 use crate::{
-    auth::extractors::WorkspaceMemberGuard,
-    entities::{issue_assignees, issue_subscribers, issues, notifications},
+    auth::{any_auth::AnyAuth, extractors::WorkspaceMemberGuard},
+    entities::{
+        issue_assignees, issue_subscribers, issues, notifications, user_notification_preferences,
+    },
     error::AppError,
     utils::soft_delete::SoftDeleteExt,
     AppState,
@@ -503,4 +505,206 @@ pub async fn mark_all_read(
         .map_err(AppError::Database)?;
 
     Ok(Json(serde_json::json!({ "message": "All notifications marked as read" })))
+}
+
+// ═════════════════════════════════════════════════════════════════════════════
+// User Notification Preferences — /users/me/notification-preferences
+// ═════════════════════════════════════════════════════════════════════════════
+//
+// Equivale a `UserNotificationPreferenceEndpoint` de Django
+// (`plane/app/views/notification/base.py:291`).
+//
+// Django expone `GET` y `PATCH` sobre la fila única del usuario autenticado.
+// El queryset se resuelve con `.get(user=request.user)`, pero la existencia
+// de la fila depende de un signal `post_save` en el modelo User
+// (`plane/db/models/user.py:305`). Usuarios creados por la vía Rust no
+// disparan ese signal, así que la fila puede no existir y `.get()` haría
+// 500. Mirroring the *intent* (no el bug), aquí usamos get_or_create.
+//
+// Seguridad: aunque el serializer de Django usa `fields = "__all__"` y
+// aceptaría escribir FKs (`user`, `workspace`, `project`), aquí solo
+// permitimos modificar los 5 booleanos de preferencia — evita el antipatrón
+// de mass-assignment sobre foreign keys.
+
+#[derive(Debug, Serialize, utoipa::ToSchema)]
+pub struct UserNotificationPreferenceResponse {
+    pub id: Uuid,
+    pub created_at: chrono::DateTime<chrono::FixedOffset>,
+    pub updated_at: chrono::DateTime<chrono::FixedOffset>,
+    pub created_by: Option<Uuid>,
+    pub updated_by: Option<Uuid>,
+    pub user: Uuid,
+    pub workspace: Option<Uuid>,
+    pub project: Option<Uuid>,
+    pub property_change: bool,
+    pub state_change: bool,
+    pub comment: bool,
+    pub mention: bool,
+    pub issue_completed: bool,
+    pub deleted_at: Option<chrono::DateTime<chrono::FixedOffset>>,
+}
+
+impl UserNotificationPreferenceResponse {
+    fn from_model(m: user_notification_preferences::Model) -> Self {
+        // Los nombres de campos (`user`, `workspace`, `project`, `created_by`,
+        // `updated_by`) replican el output de DRF con `fields = "__all__"`,
+        // donde los FKs se serializan como el valor de su PK, no como
+        // `*_id`. Esto mantiene compatibilidad con el frontend.
+        Self {
+            id: m.id,
+            created_at: m.created_at,
+            updated_at: m.updated_at,
+            created_by: m.created_by_id,
+            updated_by: m.updated_by_id,
+            user: m.user_id,
+            workspace: m.workspace_id,
+            project: m.project_id,
+            property_change: m.property_change,
+            state_change: m.state_change,
+            comment: m.comment,
+            mention: m.mention,
+            issue_completed: m.issue_completed,
+            deleted_at: m.deleted_at,
+        }
+    }
+}
+
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
+pub struct UpdateUserNotificationPreferenceRequest {
+    pub property_change: Option<bool>,
+    pub state_change: Option<bool>,
+    pub comment: Option<bool>,
+    pub mention: Option<bool>,
+    pub issue_completed: Option<bool>,
+}
+
+/// Obtiene o crea la fila de preferencias del usuario autenticado.
+///
+/// Django confía en un `post_save` signal para crear la fila al registrar
+/// al usuario; si el usuario se registró por el flujo Rust (que no dispara
+/// señales Django), la fila puede no existir. Creamos con los valores por
+/// defecto del modelo Django (todos `true`) para evitar un 500.
+async fn get_or_create_preferences(
+    db: &sea_orm::DatabaseConnection,
+    user_id: Uuid,
+) -> Result<user_notification_preferences::Model, AppError> {
+    if let Some(existing) = user_notification_preferences::Entity::find()
+        .filter(user_notification_preferences::Column::UserId.eq(user_id))
+        .filter(user_notification_preferences::Column::DeletedAt.is_null())
+        .one(db)
+        .await
+        .map_err(AppError::Database)?
+    {
+        return Ok(existing);
+    }
+
+    let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
+    let new_row = user_notification_preferences::ActiveModel {
+        id: Set(Uuid::new_v4()),
+        created_at: Set(now),
+        updated_at: Set(now),
+        user_id: Set(user_id),
+        workspace_id: Set(None),
+        project_id: Set(None),
+        // Defaults de Django (`plane/db/models/user.py:305-312`).
+        property_change: Set(true),
+        state_change: Set(true),
+        comment: Set(true),
+        mention: Set(true),
+        issue_completed: Set(true),
+        created_by_id: Set(Some(user_id)),
+        updated_by_id: Set(Some(user_id)),
+        deleted_at: Set(None),
+    };
+
+    // Race-safe: si otro request creó la fila entre el SELECT y el INSERT,
+    // el INSERT falla por la (esperada) unicidad lógica por usuario; caemos
+    // al re-SELECT en lugar de propagar el error.
+    match new_row.insert(db).await {
+        Ok(m) => Ok(m),
+        Err(_) => user_notification_preferences::Entity::find()
+            .filter(user_notification_preferences::Column::UserId.eq(user_id))
+            .filter(user_notification_preferences::Column::DeletedAt.is_null())
+            .one(db)
+            .await
+            .map_err(AppError::Database)?
+            .ok_or_else(|| AppError::BadRequest("could not create preferences".into())),
+    }
+}
+
+/// GET /api/users/me/notification-preferences
+///
+/// Mirror Django: `UserNotificationPreferenceEndpoint.get`
+/// (`plane/app/views/notification/base.py:296`).
+#[utoipa::path(
+    get,
+    path = "/api/users/me/notification-preferences",
+    tag = "Notifications",
+    responses(
+        (status = 200, description = "Preferencias de notificación del usuario"),
+        (status = 401, description = "Unauthorized"),
+    ),
+    security(("TokenAuth" = []))
+)]
+pub async fn get_user_notification_preferences(
+    State(state): State<AppState>,
+    AnyAuth(user): AnyAuth,
+) -> Result<Json<UserNotificationPreferenceResponse>, AppError> {
+    let prefs = get_or_create_preferences(&state.db, user.id).await?;
+    Ok(Json(UserNotificationPreferenceResponse::from_model(prefs)))
+}
+
+/// PATCH /api/users/me/notification-preferences
+///
+/// Mirror Django: `UserNotificationPreferenceEndpoint.patch`
+/// (`plane/app/views/notification/base.py:302`).
+///
+/// A diferencia de Django (que usa `fields = "__all__"` y permitiría
+/// reescribir `user`, `workspace`, `project` por JSON), aquí solo se
+/// aceptan los cinco booleanos de preferencia. Esto bloquea el
+/// mass-assignment sobre foreign keys sin romper el contrato con el
+/// frontend (que solo envía esos campos).
+#[utoipa::path(
+    patch,
+    path = "/api/users/me/notification-preferences",
+    tag = "Notifications",
+    request_body = UpdateUserNotificationPreferenceRequest,
+    responses(
+        (status = 200, description = "Preferencias actualizadas"),
+        (status = 400, description = "Validación fallida"),
+        (status = 401, description = "Unauthorized"),
+    ),
+    security(("TokenAuth" = []))
+)]
+pub async fn update_user_notification_preferences(
+    State(state): State<AppState>,
+    AnyAuth(user): AnyAuth,
+    Json(body): Json<UpdateUserNotificationPreferenceRequest>,
+) -> Result<Json<UserNotificationPreferenceResponse>, AppError> {
+    let current = get_or_create_preferences(&state.db, user.id).await?;
+
+    let mut active: user_notification_preferences::ActiveModel = current.into();
+
+    if let Some(v) = body.property_change {
+        active.property_change = Set(v);
+    }
+    if let Some(v) = body.state_change {
+        active.state_change = Set(v);
+    }
+    if let Some(v) = body.comment {
+        active.comment = Set(v);
+    }
+    if let Some(v) = body.mention {
+        active.mention = Set(v);
+    }
+    if let Some(v) = body.issue_completed {
+        active.issue_completed = Set(v);
+    }
+
+    // Audit: el usuario autenticado es quien modifica.
+    active.updated_by_id = Set(Some(user.id));
+    active.updated_at = Set(chrono::Utc::now().into());
+
+    let updated = active.update(&state.db).await.map_err(AppError::Database)?;
+    Ok(Json(UserNotificationPreferenceResponse::from_model(updated)))
 }
