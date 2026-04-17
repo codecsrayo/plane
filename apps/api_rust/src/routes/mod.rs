@@ -1225,6 +1225,10 @@ pub fn build_router(state: AppState) -> Router {
             "/workspaces/{slug}/projects/{project_id}/bulk-archive-issues",
             post(issue_extras2::bulk_archive_issues),
         )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/issue-dates",
+            post(issue_extras2::bulk_update_issue_dates),
+        )
         // ── Issue versions ────────────────────────────────────────────────────
         .route(
             "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/versions",

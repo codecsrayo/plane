@@ -5,14 +5,17 @@
 //!   issue/attachment.py  → adjuntos de issue (FileAsset v2)
 //!   issue/archive.py     → archivar / desarchivar issues
 //!   issue/version.py     → versiones de issue
+//!   issue/base.py        → bulk update de fechas de issue (IssueBulkUpdateDateEndpoint)
 
 use axum::{
     extract::{Path, State},
     http::StatusCode,
     Json,
 };
-use chrono::{DateTime, Utc};
-use sea_orm::{ActiveModelTrait, ColumnTrait, EntityTrait, QueryFilter, QueryOrder, Set};
+use chrono::{DateTime, NaiveDate, Utc};
+use sea_orm::{
+    ActiveModelTrait, ColumnTrait, EntityTrait, QueryFilter, QueryOrder, Set, TransactionTrait,
+};
 use serde::{Deserialize, Serialize};
 use serde_json::Value as JsonValue;
 use uuid::Uuid;
@@ -578,4 +581,182 @@ pub async fn get_issue_version(
         .ok_or(AppError::NotFound)?;
 
     Ok((StatusCode::OK, Json(IssueVersionResponse::from(version))))
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// BULK UPDATE ISSUE DATES
+// ═══════════════════════════════════════════════════════════════════════════
+//
+// Espejo Django: apps/api/plane/app/views/issue/base.py::IssueBulkUpdateDateEndpoint
+//   POST /workspaces/{slug}/projects/{project_id}/issue-dates/
+//
+// Actualiza `start_date` y/o `target_date` de múltiples issues en una sola
+// llamada, validando que para cada issue `start_date <= target_date` tomando
+// en cuenta los valores actuales cuando el cliente omite uno de los campos.
+//
+// Permisos: ADMIN | MEMBER a nivel de proyecto (ROLE_MEMBER).
+//
+// Notas de diseño:
+//   - Todo el trabajo ocurre dentro de una transacción para garantizar
+//     atomicidad: si alguna issue viola la validación de fechas, ninguna
+//     se persiste (evita estados parciales inconsistentes).
+//   - Filtramos por `project_id` (tomado del guard) para que ningún `id`
+//     enviado por el cliente pueda modificar issues fuera del proyecto
+//     actual, incluso si pertenecen al mismo workspace.
+//   - `updated_by_id` se setea al usuario autenticado, espejando el
+//     comportamiento de `update_issue` en este crate.
+//   - Todavía NO emitimos `issue_activity` porque el resto de endpoints de
+//     escritura del port Rust aún no lo hace; introducir un insert ad-hoc
+//     aquí sería inconsistente con el resto del código.
+
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
+pub struct IssueDateUpdate {
+    pub id: Uuid,
+    pub start_date: Option<NaiveDate>,
+    pub target_date: Option<NaiveDate>,
+}
+
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
+pub struct BulkUpdateIssueDatesRequest {
+    pub updates: Vec<IssueDateUpdate>,
+}
+
+/// Devuelve `false` si, tomando en cuenta los valores actuales y los nuevos,
+/// `start_date > target_date`. Mantiene la semántica exacta de la función
+/// `validate_dates` de Django.
+fn validate_dates(
+    current_start: Option<NaiveDate>,
+    current_target: Option<NaiveDate>,
+    new_start: Option<NaiveDate>,
+    new_target: Option<NaiveDate>,
+) -> bool {
+    let start = new_start.or(current_start);
+    let target = new_target.or(current_target);
+    match (start, target) {
+        (Some(s), Some(t)) => s <= t,
+        _ => true,
+    }
+}
+
+/// POST /workspaces/{slug}/projects/{project_id}/issue-dates/
+#[utoipa::path(
+    post,
+    path = "/api/workspaces/{slug}/projects/{project_id}/issue-dates/",
+    tag = "Issue Extras",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project ID"),
+    ),
+    request_body = BulkUpdateIssueDatesRequest,
+    responses(
+        (status = 200, description = "Issues actualizados"),
+        (status = 400, description = "Start date excede target date"),
+    ),
+    security(("TokenAuth" = []))
+)]
+pub async fn bulk_update_issue_dates(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Path((_slug, _project_id)): Path<(String, Uuid)>,
+    Json(body): Json<BulkUpdateIssueDatesRequest>,
+) -> Result<impl axum::response::IntoResponse, AppError> {
+    require_role(guard.project_member.role, guard.workspace_member.role, ROLE_MEMBER)?;
+
+    // Early-exit: nada que hacer.
+    if body.updates.is_empty() {
+        return Ok((
+            StatusCode::OK,
+            Json(serde_json::json!({"message": "Issues updated successfully"})),
+        ));
+    }
+
+    let project_id = guard.project.id;
+    let user_id = guard.user.id;
+
+    // Snapshot inmutable de IDs + payload para mover a la transacción sin
+    // perder el borrow de `body`.
+    let updates = body.updates;
+
+    state
+        .db
+        .transaction::<_, (), AppError>(move |txn| {
+            // `move` en el closure externo toma ownership de `updates`,
+            // `project_id` y `user_id`; `async move` los transfiere al
+            // future interno. Mismo patrón de ownership que `update_issue`.
+            Box::pin(async move {
+                // Cargamos todas las issues afectadas en una sola query,
+                // filtrando por project_id para evitar que un id malicioso
+                // alcance otro proyecto del mismo workspace.
+                let ids: Vec<Uuid> = updates.iter().map(|u| u.id).collect();
+                let issues_loaded = issues::Entity::find()
+                    .filter(issues::Column::Id.is_in(ids))
+                    .filter(issues::Column::ProjectId.eq(project_id))
+                    .filter(issues::Column::DeletedAt.is_null())
+                    .all(txn)
+                    .await
+                    .map_err(AppError::Database)?;
+
+                // Index by id para lookup O(1).
+                let mut by_id: std::collections::HashMap<Uuid, issues::Model> = issues_loaded
+                    .into_iter()
+                    .map(|m| (m.id, m))
+                    .collect();
+
+                // Primera pasada: validación pura (sin writes). Si alguna
+                // fila falla, la transacción aborta y nada persiste.
+                for update in &updates {
+                    if let Some(issue) = by_id.get(&update.id) {
+                        if !validate_dates(
+                            issue.start_date,
+                            issue.target_date,
+                            update.start_date,
+                            update.target_date,
+                        ) {
+                            return Err(AppError::BadRequest(
+                                "Start date cannot exceed target date".into(),
+                            ));
+                        }
+                    }
+                    // Si `by_id` no contiene el issue (no existe, otro
+                    // proyecto, o soft-deleted), lo ignoramos silenciosamente
+                    // — mismo comportamiento que Django (`if not issue: continue`).
+                }
+
+                // Segunda pasada: aplicar updates.
+                let now = chrono::Utc::now();
+                for update in &updates {
+                    let Some(issue) = by_id.remove(&update.id) else {
+                        continue;
+                    };
+                    // Si el cliente no envió ninguna fecha para este issue,
+                    // no hay nada que tocar.
+                    if update.start_date.is_none() && update.target_date.is_none() {
+                        continue;
+                    }
+
+                    let mut am: issues::ActiveModel = issue.into();
+                    if let Some(sd) = update.start_date {
+                        am.start_date = Set(Some(sd));
+                    }
+                    if let Some(td) = update.target_date {
+                        am.target_date = Set(Some(td));
+                    }
+                    am.updated_by_id = Set(Some(user_id));
+                    am.updated_at = Set(now.into());
+                    am.update(txn).await.map_err(AppError::Database)?;
+                }
+
+                Ok(())
+            })
+        })
+        .await
+        .map_err(|e| match e {
+            sea_orm::TransactionError::Transaction(app_err) => app_err,
+            sea_orm::TransactionError::Connection(db_err) => AppError::Database(db_err),
+        })?;
+
+    Ok((
+        StatusCode::OK,
+        Json(serde_json::json!({"message": "Issues updated successfully"})),
+    ))
 }
