@@ -407,19 +407,18 @@ fn format_user_name(first: &str, last: &str) -> String {
 }
 
 /// Construye el segmento humano-legible del filename para un proyecto.
-/// Formato: `{identifier}-{name_slugified}` — ej. `FRONT-web-platform`.
-/// Si el `name` está vacío o queda vacío tras sanitizar, usamos sólo el
-/// identifier. Si AMBOS están vacíos (teóricamente imposible: `identifier`
-/// es NOT NULL en el esquema), el caller cae al fallback UUID-truncado.
+/// Preferimos `name` (ej. `test2`, `web-platform`) que es lo que los usuarios
+/// reconocen en la UI. `identifier` (código corto UPPER tipo `TEST2`, `FRONT`)
+/// queda solo como fallback para el caso raro en que el `name` quede vacío
+/// tras sanitizar (puros caracteres no-ASCII o string vacío).
+/// Si AMBOS están vacíos (teóricamente imposible: ambos son NOT NULL en el
+/// esquema), el caller cae al fallback UUID-truncado.
 fn project_label(identifier: &str, name: &str) -> String {
-    let ident = sanitize_filename_segment(identifier);
     let name_s = sanitize_filename_segment(name);
-    match (ident.is_empty(), name_s.is_empty()) {
-        (true, true) => String::new(),
-        (false, true) => ident,
-        (true, false) => name_s,
-        (false, false) => format!("{ident}-{name_s}"),
+    if !name_s.is_empty() {
+        return name_s;
     }
+    sanitize_filename_segment(identifier)
 }
 
 /// Sanitiza un segmento de filename: colapsa espacios/caracteres no seguros
