@@ -60,9 +60,11 @@ export function CopyField(props: Props) {
       <Button variant="secondary" size="lg" className="flex items-center justify-between py-2" onClick={handleCopy}>
         <p className="text-13 font-medium">{url}</p>
         {isCopied ? (
-          <CheckIcon width={18} height={18} color="#16A34A" />
+          // text-success-primary resolves via currentColor — respects dark mode and theming
+          <CheckIcon width={18} height={18} className="text-success-primary" />
         ) : (
-          <CopyIcon width={18} height={18} color="#B9B9B9" />
+          // text-tertiary matches the muted icon token used across the admin UI
+          <CopyIcon width={18} height={18} className="text-tertiary" />
         )}
       </Button>
       <div className="text-11 text-tertiary">{description}</div>
