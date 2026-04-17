@@ -70,17 +70,36 @@ pub struct UserMeResponse {
 }
 
 /// Settings del usuario (`/users/me/settings/`).
+///
+/// Mirror exacto de `UserMeSettingsSerializer`
+/// (`apps/api/plane/app/serializers/user.py:90-138`): expone SOLO
+/// `["id", "email", "workspace"]`. El bloque `workspace` resuelve server-side
+/// la lógica de redirección que consume el SPA al iniciar sesión.
 #[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct UserSettingsResponse {
     pub id: Uuid,
     pub email: Option<String>,
-    pub display_name: String,
-    pub avatar: String,
-    pub cover_image: Option<String>,
-    pub is_email_verified: bool,
-    pub is_onboarded: bool,
-    pub onboarding_step: serde_json::Value,
+    pub workspace: UserSettingsWorkspace,
+}
+
+/// Bloque `workspace` dentro de `/users/me/settings/`.
+///
+/// La shape es asimétrica (paridad con Django):
+/// - Cuando hay `last_workspace_id` válido y membresía activa: se incluyen
+///   `last_workspace_name` y `last_workspace_logo`.
+/// - En caso contrario: esas dos claves se omiten del JSON (no se emiten
+///   como `null`).
+#[derive(Debug, Serialize, utoipa::ToSchema)]
+pub struct UserSettingsWorkspace {
     pub last_workspace_id: Option<Uuid>,
+    pub last_workspace_slug: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub last_workspace_name: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub last_workspace_logo: Option<String>,
+    pub fallback_workspace_id: Option<Uuid>,
+    pub fallback_workspace_slug: Option<String>,
+    pub invites: u64,
 }
 
 /// Perfil del usuario (`/users/me/profile/`).
@@ -416,16 +435,108 @@ pub async fn get_settings(
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
+    // `workspace_invites` = count de WorkspaceMemberInvite por email del user.
+    // Mirror: `WorkspaceMemberInvite.objects.filter(email=obj.email).count()`.
+    // `WorkspaceMemberInvite` hereda de `BaseModel → AuditModel → SoftDeleteModel`
+    // (apps/api/plane/db/mixins.py:61-66), cuyo manager por defecto
+    // `SoftDeletionManager` aplica `.filter(deleted_at__isnull=True)`
+    // (apps/api/plane/db/mixins.py:58). Por tanto `.objects` ya excluye
+    // soft-deleted; replicamos con `.active()`.
+    let invites = if let Some(email) = user.email.as_deref() {
+        workspace_member_invites::Entity::find()
+            .active()
+            .filter(workspace_member_invites::Column::Email.eq(email))
+            .count(&state.db)
+            .await
+            .map_err(AppError::Database)?
+    } else {
+        0
+    };
+
+    // Rama 1: hay `last_workspace_id` + membresía activa del user en ese workspace.
+    // Mirror: `Workspace.objects.filter(pk=..., workspace_member__member=obj.id,
+    //                                   workspace_member__is_active=True).exists()`.
+    let last_workspace = if let Some(last_id) = profile.last_workspace_id {
+        let has_active_membership = workspace_members::Entity::find()
+            .filter(workspace_members::Column::WorkspaceId.eq(last_id))
+            .filter(workspace_members::Column::MemberId.eq(user.id))
+            .filter(workspace_members::Column::IsActive.eq(true))
+            .active()
+            .count(&state.db)
+            .await
+            .map_err(AppError::Database)?
+            > 0;
+
+        if has_active_membership {
+            workspaces::Entity::find_by_id(last_id)
+                .active()
+                .one(&state.db)
+                .await
+                .map_err(AppError::Database)?
+        } else {
+            None
+        }
+    } else {
+        None
+    };
+
+    let workspace = if let Some(ws) = last_workspace {
+        // `workspace.logo_asset.asset_url` → `/api/assets/v2/static/{id}/`
+        // Django: `"" ` si no hay asset (string vacío, no None).
+        let logo = ws
+            .logo_asset_id
+            .map(|aid| format!("/api/assets/v2/static/{}/", aid))
+            .unwrap_or_default();
+        UserSettingsWorkspace {
+            last_workspace_id: Some(ws.id),
+            last_workspace_slug: Some(ws.slug.clone()),
+            last_workspace_name: Some(ws.name.clone()),
+            last_workspace_logo: Some(logo),
+            fallback_workspace_id: Some(ws.id),
+            fallback_workspace_slug: Some(ws.slug),
+            invites,
+        }
+    } else {
+        // Rama 2: sin last_workspace válido → fallback = workspace más antiguo
+        // donde el user es miembro activo.
+        // Mirror: `.filter(workspace_member__member_id=obj.id,
+        //                  workspace_member__is_active=True).order_by("created_at").first()`.
+        let fallback_member = workspace_members::Entity::find()
+            .filter(workspace_members::Column::MemberId.eq(user.id))
+            .filter(workspace_members::Column::IsActive.eq(true))
+            .active()
+            .order_by_asc(workspace_members::Column::CreatedAt)
+            .one(&state.db)
+            .await
+            .map_err(AppError::Database)?;
+
+        let fallback_ws = if let Some(member) = fallback_member {
+            workspaces::Entity::find_by_id(member.workspace_id)
+                .active()
+                .one(&state.db)
+                .await
+                .map_err(AppError::Database)?
+        } else {
+            None
+        };
+
+        UserSettingsWorkspace {
+            last_workspace_id: None,
+            last_workspace_slug: None,
+            // Claves omitidas del JSON (paridad con Django: rama `else` no
+            // incluye `last_workspace_name` ni `last_workspace_logo`).
+            last_workspace_name: None,
+            last_workspace_logo: None,
+            fallback_workspace_id: fallback_ws.as_ref().map(|w| w.id),
+            fallback_workspace_slug: fallback_ws.map(|w| w.slug),
+            invites,
+        }
+    };
+
     Ok(Json(UserSettingsResponse {
         id: user.id,
         email: user.email.clone(),
-        display_name: user.display_name.clone(),
-        avatar: user.avatar.clone(),
-        cover_image: user.cover_image.clone(),
-        is_email_verified: user.is_email_verified,
-        is_onboarded: profile.is_onboarded,
-        onboarding_step: profile.onboarding_step,
-        last_workspace_id: profile.last_workspace_id,
+        workspace,
     }))
 }
 
