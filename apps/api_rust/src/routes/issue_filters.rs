@@ -48,7 +48,7 @@
 //!   `workspace_id` cuando está disponible.
 
 use sea_orm::{
-    ColumnTrait, Condition, EntityTrait, QueryFilter, QuerySelect, Select,
+    ColumnTrait, Condition, EntityTrait, QueryFilter, QuerySelect, QueryTrait, Select,
 };
 use serde::Deserialize;
 use uuid::Uuid;
@@ -194,11 +194,16 @@ pub async fn apply_issue_filters(
     if let Some(name) = params.name.as_deref() {
         let trimmed = name.trim();
         if !trimmed.is_empty() {
-            // `ColumnTrait::contains` → LIKE '%term%' (case-sensitive en
-            // Postgres). Consistente con otros endpoints del codebase
-            // (instances.rs:630). `icontains` de Django requiere ILIKE;
-            // paridad exacta queda para un follow-up.
-            query = query.filter(issues::Column::Name.contains(trimmed));
+            // Mirror de `name__icontains` en filter_name (issue_filters.py:~240).
+            // Postgres `ILIKE` es case-insensitive; paridad exacta con Django
+            // (y con el uso actual en `search.rs:104`).
+            //
+            // `%` y `_` en el input actúan como wildcards SQL, mismo comportamiento
+            // que Django — no se escapan para mantener paridad de UX.
+            let pattern = format!("%{}%", trimmed);
+            query = query.filter(
+                sea_orm::sea_query::Expr::col(issues::Column::Name).ilike(pattern),
+            );
         }
     }
 
@@ -217,7 +222,14 @@ pub async fn apply_issue_filters(
         let groups: &[&str] = match type_filter {
             "backlog" => &["backlog"],
             "active" => &["unstarted", "started"],
-            _ => &[], // `all` o desconocido → no filtra (mirror issue_filters.py:297-305)
+            // `all` (y valores desconocidos) NO aplican filtro aquí. Django
+            // (issue_filters.py:298,304) explícitamente pone `group IN
+            // [backlog, unstarted, started, completed, cancelled]` — excluye
+            // `triage`. En nuestro port, `triage` ya queda excluido antes
+            // por `load_triage_state_ids + is_not_in` en el handler, así que
+            // omitir el IN acá es funcionalmente equivalente y ahorra una
+            // pre-query de state IDs.
+            _ => &[],
         };
         if !groups.is_empty() {
             let state_ids = load_state_ids_by_groups(db, workspace_id, groups).await?;
@@ -282,23 +294,19 @@ pub async fn apply_issue_filters(
 
     if let Some(raw) = params.module.as_deref() {
         let ids = parse_uuids_csv(raw);
-        if !ids.is_empty() {
-            let issue_ids = load_issues_in_modules(db, workspace_id, ids).await?;
-            if issue_ids.is_empty() {
-                return Ok(FilteredQuery::Empty);
-            }
-            query = query.filter(issues::Column::Id.is_in(issue_ids));
+        let has_none = csv_contains_none(raw);
+        match apply_module_membership(db, query, workspace_id, ids, has_none).await? {
+            FilteredQuery::Active(q) => query = q,
+            FilteredQuery::Empty => return Ok(FilteredQuery::Empty),
         }
     }
 
     if let Some(raw) = params.cycle.as_deref() {
         let ids = parse_uuids_csv(raw);
-        if !ids.is_empty() {
-            let issue_ids = load_issues_in_cycles(db, workspace_id, ids).await?;
-            if issue_ids.is_empty() {
-                return Ok(FilteredQuery::Empty);
-            }
-            query = query.filter(issues::Column::Id.is_in(issue_ids));
+        let has_none = csv_contains_none(raw);
+        match apply_cycle_membership(db, query, workspace_id, ids, has_none).await? {
+            FilteredQuery::Active(q) => query = q,
+            FilteredQuery::Empty => return Ok(FilteredQuery::Empty),
         }
     }
 
@@ -425,6 +433,100 @@ async fn load_issues_in_modules(
         .await
         .map_err(AppError::Database)?;
     Ok(dedup(rows))
+}
+
+async fn apply_module_membership(
+    db: &sea_orm::DatabaseConnection,
+    query: Select<issues::Entity>,
+    workspace_id: Uuid,
+    module_ids: Vec<Uuid>,
+    has_none: bool,
+) -> Result<FilteredQuery, AppError> {
+    if !has_none && module_ids.is_empty() {
+        return Ok(FilteredQuery::Active(query));
+    }
+
+    // Subquery: issue_ids con al menos un module_issue activo en este workspace.
+    // Se usa para la rama `None` (issues SIN módulo) — `issue.id NOT IN (subq)`.
+    // Preferimos subquery sobre `load_all_ids` para no traer potencialmente
+    // millones de UUIDs al proceso.
+    let without_link_subq = module_issues::Entity::find()
+        .select_only()
+        .column(module_issues::Column::IssueId)
+        .filter(module_issues::Column::WorkspaceId.eq(workspace_id))
+        .filter(module_issues::Column::DeletedAt.is_null())
+        .into_query();
+
+    let filtered = match (has_none, module_ids.is_empty()) {
+        (true, true) => {
+            // Solo "None" → issues sin ningún módulo.
+            query.filter(issues::Column::Id.not_in_subquery(without_link_subq))
+        }
+        (false, false) => {
+            // Solo UUIDs → comportamiento existente con pre-query.
+            let matching = load_issues_in_modules(db, workspace_id, module_ids).await?;
+            if matching.is_empty() {
+                return Ok(FilteredQuery::Empty);
+            }
+            query.filter(issues::Column::Id.is_in(matching))
+        }
+        (true, false) => {
+            // None + UUIDs → unión: (id IN matching) OR (id NOT IN any_link).
+            // Mirror del Django `filter(**{"issue_module__module_id__in": [...],
+            // "issue_module__module_id__isnull": True})` pero con semántica
+            // correcta (Django combinaría con AND, lo que es siempre vacío —
+            // aquí interpretamos la intención real del usuario: "con estos
+            // módulos O sin ninguno").
+            let matching = load_issues_in_modules(db, workspace_id, module_ids).await?;
+            let cond = Condition::any()
+                .add(issues::Column::Id.is_in(matching))
+                .add(issues::Column::Id.not_in_subquery(without_link_subq));
+            query.filter(cond)
+        }
+        (false, true) => unreachable!("cubierto por el early-return"),
+    };
+
+    Ok(FilteredQuery::Active(filtered))
+}
+
+async fn apply_cycle_membership(
+    db: &sea_orm::DatabaseConnection,
+    query: Select<issues::Entity>,
+    workspace_id: Uuid,
+    cycle_ids: Vec<Uuid>,
+    has_none: bool,
+) -> Result<FilteredQuery, AppError> {
+    if !has_none && cycle_ids.is_empty() {
+        return Ok(FilteredQuery::Active(query));
+    }
+
+    let without_link_subq = cycle_issues::Entity::find()
+        .select_only()
+        .column(cycle_issues::Column::IssueId)
+        .filter(cycle_issues::Column::WorkspaceId.eq(workspace_id))
+        .filter(cycle_issues::Column::DeletedAt.is_null())
+        .into_query();
+
+    let filtered = match (has_none, cycle_ids.is_empty()) {
+        (true, true) => query.filter(issues::Column::Id.not_in_subquery(without_link_subq)),
+        (false, false) => {
+            let matching = load_issues_in_cycles(db, workspace_id, cycle_ids).await?;
+            if matching.is_empty() {
+                return Ok(FilteredQuery::Empty);
+            }
+            query.filter(issues::Column::Id.is_in(matching))
+        }
+        (true, false) => {
+            let matching = load_issues_in_cycles(db, workspace_id, cycle_ids).await?;
+            let cond = Condition::any()
+                .add(issues::Column::Id.is_in(matching))
+                .add(issues::Column::Id.not_in_subquery(without_link_subq));
+            query.filter(cond)
+        }
+        (false, true) => unreachable!("cubierto por el early-return"),
+    };
+
+    Ok(FilteredQuery::Active(filtered))
 }
 
 async fn load_issues_in_cycles(
