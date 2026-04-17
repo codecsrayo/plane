@@ -19,6 +19,7 @@ use axum::{
     http::StatusCode,
     Json,
 };
+use chrono::{DateTime, FixedOffset, Utc};
 use sea_orm::{
     ActiveModelTrait, ActiveValue::Set, ColumnTrait, EntityTrait, QueryFilter, QueryOrder,
 };
@@ -229,6 +230,12 @@ pub async fn create_page(
     // Django usa `request.data.get("description_html", "<p></p>")` al crear.
     let description_html = body.description_html.unwrap_or_else(|| "<p></p>".into());
 
+    // Django rellena created_at/updated_at vía `BaseModel.save()`
+    // (`auto_now_add=True` / `auto_now=True`). Las columnas en DB son NOT NULL;
+    // SeaORM no las auto-popula, hay que setearlas explícitamente. Se comparte
+    // el mismo instante para la página y su fila en project_pages.
+    let now: DateTime<FixedOffset> = Utc::now().into();
+
     let page = pages::ActiveModel {
         id: Set(Uuid::new_v4()),
         name: Set(name),
@@ -246,6 +253,8 @@ pub async fn create_page(
         logo_props: Set(serde_json::json!({})),
         created_by_id: Set(Some(guard.user.id)),
         updated_by_id: Set(Some(guard.user.id)),
+        created_at: Set(now),
+        updated_at: Set(now),
         ..Default::default()
     }
     .insert(&state.db)
@@ -260,6 +269,8 @@ pub async fn create_page(
         workspace_id: Set(guard.workspace.id),
         created_by_id: Set(Some(guard.user.id)),
         updated_by_id: Set(Some(guard.user.id)),
+        created_at: Set(now),
+        updated_at: Set(now),
         ..Default::default()
     }
     .insert(&state.db)
@@ -546,6 +557,9 @@ pub async fn duplicate_page(
 
     let source = find_project_page(&state.db, guard.project.id, page_id).await?;
 
+    // Django auto-popula timestamps en save(); SeaORM no lo hace.
+    let now: DateTime<FixedOffset> = Utc::now().into();
+
     let new_page = pages::ActiveModel {
         id: Set(Uuid::new_v4()),
         name: Set(format!("Copy of {}", source.name)),
@@ -563,6 +577,8 @@ pub async fn duplicate_page(
         logo_props: Set(source.logo_props.clone()),
         created_by_id: Set(Some(guard.user.id)),
         updated_by_id: Set(Some(guard.user.id)),
+        created_at: Set(now),
+        updated_at: Set(now),
         ..Default::default()
     }
     .insert(&state.db)
@@ -576,6 +592,8 @@ pub async fn duplicate_page(
         workspace_id: Set(guard.workspace.id),
         created_by_id: Set(Some(guard.user.id)),
         updated_by_id: Set(Some(guard.user.id)),
+        created_at: Set(now),
+        updated_at: Set(now),
         ..Default::default()
     }
     .insert(&state.db)
