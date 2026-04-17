@@ -18,9 +18,10 @@
 //!   DELETE /api/users/me/accounts/{pk}/
 //!   GET    /api/users/me/workspaces/
 //!   GET    /api/users/me/instance-admin/
+//!   GET    /api/users/me/activities/
 
 use axum::{
-    extract::{Path, State},
+    extract::{Path, Query, State},
     http::StatusCode,
     response::IntoResponse,
     Json,
@@ -36,9 +37,12 @@ use uuid::Uuid;
 
 use crate::{
     auth::any_auth::{AnyAuth, OptionalAnyAuth},
-    entities::{accounts, profiles, project_members, users, workspace_member_invites, workspace_members, workspaces},
+    entities::{
+        accounts, issue_activities, issues, profiles, project_members, projects, users,
+        workspace_member_invites, workspace_members, workspaces,
+    },
     error::AppError,
-    utils::soft_delete::SoftDeleteExt,
+    utils::{pagination, soft_delete::SoftDeleteExt},
     AppState,
 };
 
@@ -1231,4 +1235,279 @@ pub async fn join_user_workspace_invitations(
     txn.commit().await.map_err(AppError::Database)?;
 
     Ok(StatusCode::NO_CONTENT)
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// ME ACTIVITIES  (UserActivityEndpoint)
+// ═══════════════════════════════════════════════════════════════════════════
+//
+// GET /api/users/me/activities/
+//
+// Mirror de Django `UserActivityEndpoint.get`
+// (plane/app/views/user/base.py:380).
+//
+// Devuelve TODAS las `IssueActivity` del requester en cualquier workspace/
+// proyecto, con paginación cursor estilo Django.
+//
+// A diferencia de `WorkspaceUserActivityEndpoint`:
+//   - No filtra por workspace/proyecto (es cross-workspace).
+//   - No excluye field in (comment|vote|reaction|draft) — Django tampoco lo hace
+//     en este endpoint (sólo en el workspace-scoped). Ver Django: queryset
+//     puro `actor=request.user`.
+//   - No requiere membership checks (sólo actividades del propio usuario).
+//   - `default_per_page = 1000` (mirror de `BasePaginator.get_per_page`).
+//
+// Response shape idéntico a `BasePaginator.paginate`, los DTOs de detalle se
+// re-usan desde `routes::workspaces`.
+
+/// Query params de `GET /users/me/activities/`.
+#[derive(Debug, Deserialize)]
+pub struct MeActivitiesQuery {
+    pub per_page: Option<u64>,
+    pub cursor: Option<String>,
+    pub order_by: Option<String>,
+}
+
+/// `GET /api/users/me/activities/`
+///
+/// Actividades (issue activities) del requester en todos los workspaces.
+/// Mirror de `UserActivityEndpoint` en Django.
+#[utoipa::path(
+    get,
+    path = "/api/users/me/activities/",
+    tag = "Users",
+    security(("TokenAuth" = []), ("SessionCookie" = [])),
+    params(
+        ("cursor"   = Option<String>, Query, description = "Cursor {per_page}:{offset}:{is_prev}"),
+        ("per_page" = Option<u64>,    Query, description = "Items per page (default 1000, max 1000)"),
+        ("order_by" = Option<String>, Query, description = "Ordering column, prefix with `-` for desc (default `-created_at`)"),
+    ),
+    responses(
+        (status = 200, description = "Paginated list of the authenticated user's issue activities"),
+        (status = 401, description = "Unauthorized"),
+    )
+)]
+pub async fn get_my_activities(
+    State(state): State<AppState>,
+    AnyAuth(user): AnyAuth,
+    Query(q): Query<MeActivitiesQuery>,
+) -> Result<impl IntoResponse, AppError> {
+    use crate::routes::workspaces::{
+        ActivityActorDetail, ActivityIssueDetail, ActivityProjectDetail, ActivityWorkspaceDetail,
+        UserActivityItem,
+    };
+    use std::collections::{HashMap, HashSet};
+
+    let db = &state.db;
+
+    // Mirror de `BasePaginator.get_per_page`: default_per_page=1000, max_per_page=1000.
+    const DEFAULT_PER_PAGE: u64 = 1000;
+    const MAX_PER_PAGE: u64 = pagination::DEFAULT_MAX_LIMIT;
+
+    let cursor = pagination::parse_cursor_or_default(q.cursor.as_deref(), DEFAULT_PER_PAGE)?;
+    let limit = pagination::resolve_per_page(
+        Some(cursor.per_page),
+        q.per_page,
+        DEFAULT_PER_PAGE,
+        MAX_PER_PAGE,
+    );
+
+    // ── Base query ───────────────────────────────────────────────────────────
+    // Django: IssueActivity.objects.filter(actor=request.user)
+    //
+    // SECURITY NOTE: el filtro por `actor_id = auth_user.id` es el único
+    // control de acceso necesario — un usuario sólo puede ver SUS propias
+    // actividades. No hay IDOR posible porque el actor se deriva de la
+    // credencial, no del path.
+    // Soft-delete: filtramos `deleted_at IS NULL` para alinear con el manager
+    // base del resto del codebase Rust (el queryset de Django aplica el mismo
+    // filtro vía `SoftDeleteManager` a nivel de modelo).
+    let base = issue_activities::Entity::find()
+        .filter(issue_activities::Column::ActorId.eq(user.id))
+        .filter(issue_activities::Column::DeletedAt.is_null());
+
+    // Total antes de paginar (mismo filtro, sin orden ni offset).
+    let total_count = base.clone().count(db).await.map_err(AppError::Database)?;
+
+    // ── Ordenamiento (default -created_at) ───────────────────────────────────
+    let order_col = q.order_by.as_deref().unwrap_or("-created_at");
+    let (col, asc) = if let Some(stripped) = order_col.strip_prefix('-') {
+        (stripped, false)
+    } else {
+        (order_col, true)
+    };
+    let ordered = match col {
+        "created_at" => {
+            if asc {
+                base.order_by_asc(issue_activities::Column::CreatedAt)
+            } else {
+                base.order_by_desc(issue_activities::Column::CreatedAt)
+            }
+        }
+        "updated_at" => {
+            if asc {
+                base.order_by_asc(issue_activities::Column::UpdatedAt)
+            } else {
+                base.order_by_desc(issue_activities::Column::UpdatedAt)
+            }
+        }
+        // Cualquier columna no whitelisted → fallback seguro al default.
+        // Esto previene SQL injection vía `order_by` y alinea con el spirit
+        // del `BasePaginator` de Django (que sólo acepta columnas del modelo).
+        _ => base.order_by_desc(issue_activities::Column::CreatedAt),
+    };
+
+    // ── Fetch de la página ───────────────────────────────────────────────────
+    let activities = ordered
+        .paginate(db, limit)
+        .fetch_page(cursor.offset)
+        .await
+        .map_err(AppError::Database)?;
+
+    if activities.is_empty() {
+        let body = pagination::build_response(
+            Vec::<UserActivityItem>::new(),
+            total_count,
+            limit,
+            cursor.offset,
+        );
+        return Ok((StatusCode::OK, Json(body)));
+    }
+
+    // ── Batch-fetch de objetos relacionados (evitar N+1) ─────────────────────
+    //
+    // Como el actor siempre es el requester, reutilizamos el `users::Model`
+    // que ya trae AnyAuth, evitando una query extra.
+
+    let actor_avatar_url = if let Some(asset_id) = user.avatar_asset_id {
+        Some(format!("/api/assets/v2/static/{}/", asset_id))
+    } else if !user.avatar.is_empty() {
+        Some(user.avatar.clone())
+    } else {
+        None
+    };
+
+    // Issue IDs de la página actual
+    let issue_ids: Vec<Uuid> = activities
+        .iter()
+        .filter_map(|a| a.issue_id)
+        .collect::<HashSet<_>>()
+        .into_iter()
+        .collect();
+
+    let issues_map: HashMap<Uuid, issues::Model> = if !issue_ids.is_empty() {
+        issues::Entity::find()
+            .filter(issues::Column::Id.is_in(issue_ids))
+            .filter(issues::Column::DeletedAt.is_null())
+            .all(db)
+            .await
+            .map_err(AppError::Database)?
+            .into_iter()
+            .map(|i| (i.id, i))
+            .collect()
+    } else {
+        HashMap::new()
+    };
+
+    // Project IDs (siempre NOT NULL en IssueActivity)
+    let project_ids: Vec<Uuid> = activities
+        .iter()
+        .map(|a| a.project_id)
+        .collect::<HashSet<_>>()
+        .into_iter()
+        .collect();
+
+    let projects_map: HashMap<Uuid, projects::Model> = projects::Entity::find()
+        .filter(projects::Column::Id.is_in(project_ids))
+        .all(db)
+        .await
+        .map_err(AppError::Database)?
+        .into_iter()
+        .map(|p| (p.id, p))
+        .collect();
+
+    // Workspace IDs — cross-workspace, por eso batch-fetch (a diferencia del
+    // endpoint workspace-scoped que resuelve uno solo).
+    let workspace_ids: Vec<Uuid> = activities
+        .iter()
+        .map(|a| a.workspace_id)
+        .collect::<HashSet<_>>()
+        .into_iter()
+        .collect();
+
+    let workspaces_map: HashMap<Uuid, workspaces::Model> = workspaces::Entity::find()
+        .filter(workspaces::Column::Id.is_in(workspace_ids))
+        .all(db)
+        .await
+        .map_err(AppError::Database)?
+        .into_iter()
+        .map(|w| (w.id, w))
+        .collect();
+
+    // ── Ensamblar respuesta ──────────────────────────────────────────────────
+    let results: Vec<UserActivityItem> = activities
+        .into_iter()
+        .map(|a| {
+            let actor_detail = a.actor_id.map(|_| ActivityActorDetail {
+                id: user.id,
+                first_name: user.first_name.clone(),
+                last_name: user.last_name.clone(),
+                avatar: user.avatar.clone(),
+                avatar_url: actor_avatar_url.clone(),
+                is_bot: user.is_bot,
+                display_name: user.display_name.clone(),
+            });
+
+            let issue_detail = a.issue_id.and_then(|iid| {
+                issues_map.get(&iid).map(|i| ActivityIssueDetail {
+                    id: i.id,
+                    name: i.name.clone(),
+                    sequence_id: i.sequence_id,
+                    project_id: i.project_id,
+                    workspace_id: i.workspace_id,
+                })
+            });
+
+            let project_detail = projects_map.get(&a.project_id).map(|p| ActivityProjectDetail {
+                id: p.id,
+                identifier: p.identifier.clone(),
+                name: p.name.clone(),
+                logo_props: p.logo_props.clone(),
+            });
+
+            let workspace_detail =
+                workspaces_map.get(&a.workspace_id).map(|w| ActivityWorkspaceDetail {
+                    id: w.id,
+                    name: w.name.clone(),
+                    slug: w.slug.clone(),
+                    logo: w.logo.clone(),
+                });
+
+            UserActivityItem {
+                id: a.id,
+                verb: a.verb,
+                field: a.field,
+                old_value: a.old_value,
+                new_value: a.new_value,
+                comment: a.comment,
+                actor_id: a.actor_id,
+                issue_id: a.issue_id,
+                issue_comment_id: a.issue_comment_id,
+                project_id: a.project_id,
+                workspace_id: a.workspace_id,
+                old_identifier: a.old_identifier,
+                new_identifier: a.new_identifier,
+                epoch: a.epoch,
+                created_at: a.created_at.into(),
+                updated_at: a.updated_at.into(),
+                actor_detail,
+                issue_detail,
+                project_detail,
+                workspace_detail,
+            }
+        })
+        .collect();
+
+    let body = pagination::build_response(results, total_count, limit, cursor.offset);
+    Ok((StatusCode::OK, Json(body)))
 }

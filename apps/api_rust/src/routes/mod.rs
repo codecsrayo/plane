@@ -233,6 +233,7 @@ pub mod instances;
         users::get_user_project_roles,
         users::list_user_workspace_invitations,
         users::join_user_workspace_invitations,
+        users::get_my_activities,
         workspace_view_issues::list_workspace_view_issues,
         views::list_workspace_views,
         views::create_workspace_view,
@@ -930,6 +931,11 @@ pub fn build_router(state: AppState) -> Router {
             get(users::get_account).delete(users::delete_account),
         )
         .route("/users/me/workspaces", get(users::list_user_workspaces))
+        // Mirror Django: users/me/activities/ -> UserActivityEndpoint
+        // (plane/app/urls/user.py:65, plane/app/views/user/base.py:380).
+        // Devuelve todas las IssueActivity del requester (cross-workspace)
+        // con paginación cursor estilo Django.
+        .route("/users/me/activities", get(users::get_my_activities))
         // Mirror Django: users/me/workspaces/invitations/ -> UserWorkspaceInvitationsViewSet
         // (GET list pending invites, POST bulk-accept). Llamado por el flujo
         // de onboarding del frontend.
