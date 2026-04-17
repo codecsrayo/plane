@@ -42,7 +42,8 @@ use zip::CompressionMethod;
 
 use crate::{
     entities::{
-        exporters, issue_assignees, issue_labels, issues, labels, states, users, workspaces,
+        exporters, issue_assignees, issue_labels, issues, labels, projects, states, users,
+        workspaces,
     },
     utils::{
         s3::{build_s3_client, build_s3_presign_client},
@@ -147,24 +148,63 @@ async fn run_export(state: &AppState, token: &str, multiple: bool) -> anyhow::Re
     // 4. Batch-fetch de relaciones — evita N+1 (paridad con `prefetch_related`).
     let maps = fetch_related_maps(state, &all_issues).await?;
 
+    // 4b. Batch-fetch de proyectos (id → identifier + name) para armar
+    //     filenames legibles. Divergimos acá de Django a propósito: el
+    //     worker Python usa `{slug}-{project_id}` con el UUID crudo
+    //     (export_task.py:208), lo que produce archivos indistinguibles
+    //     a simple vista cuando se exportan varios proyectos de un mismo
+    //     workspace. Mapeamos por identifier (ej. "FRONT", "API") que es
+    //     el short-code único por workspace que ya se muestra en la UI.
+    let project_info: std::collections::HashMap<Uuid, (String, String)> =
+        projects::Entity::find()
+            .filter(projects::Column::Id.is_in(project_ids.clone()))
+            .all(&state.db)
+            .await?
+            .into_iter()
+            .map(|p| (p.id, (p.identifier, p.name)))
+            .collect();
+
     // 5. Armar lista de (filename, bytes) según `multiple` + provider.
     //    Django en export_task.py:203-215 construye `files = [(name, content)]`
     //    y se lo pasa a `create_zip_file`.
     let mut files: Vec<(String, Vec<u8>)> = Vec::new();
 
     if multiple {
+        // Proteger contra colisiones de identifier (teóricamente imposible:
+        // `identifier` es UNIQUE por workspace en el modelo de Plane) y
+        // contra proyectos que no vengan en `project_info` (borrado en
+        // carrera). Fallback: project_id truncado a 8 chars.
+        let mut used_names: std::collections::HashSet<String> =
+            std::collections::HashSet::new();
+
         for project_id in &project_ids {
             let project_issues: Vec<&issues::Model> = all_issues
                 .iter()
                 .filter(|i| &i.project_id == project_id)
                 .collect();
 
-            let base_name = format!("{slug}-{project_id}");
+            let label = project_info
+                .get(project_id)
+                .map(|(ident, name)| project_label(ident, name))
+                .filter(|s| !s.is_empty())
+                .unwrap_or_else(|| {
+                    // Proyecto borrado entre el enqueue del job y su
+                    // ejecución, o identifier/name que quedan vacíos tras
+                    // sanitizar (puros caracteres no-ASCII): degradamos al
+                    // UUID truncado en vez de fallar todo el export.
+                    project_id.simple().to_string().chars().take(8).collect()
+                });
+            let base_name =
+                unique_base_name(&format!("{slug}-{label}"), &mut used_names);
+
             let (filename, content) = encode_issues(&base_name, &project_issues, &maps, &provider)?;
             files.push((filename, content));
         }
     } else {
-        let base_name = format!("{slug}-{workspace_id}");
+        // `multiple=false` → un único archivo consolidado del workspace
+        // (paridad con export_task.py:211-215). Se nombra con el slug del
+        // workspace en vez del UUID para legibilidad.
+        let base_name = format!("{slug}-all-projects");
         let refs: Vec<&issues::Model> = all_issues.iter().collect();
         let (filename, content) = encode_issues(&base_name, &refs, &maps, &provider)?;
         files.push((filename, content));
@@ -351,6 +391,74 @@ fn format_user_name(first: &str, last: &str) -> String {
         (true, false) => l.to_owned(),
         (false, true) => f.to_owned(),
         (false, false) => format!("{f} {l}"),
+    }
+}
+
+/// Construye el segmento humano-legible del filename para un proyecto.
+/// Formato: `{identifier}-{name_slugified}` — ej. `FRONT-web-platform`.
+/// Si el `name` está vacío o queda vacío tras sanitizar, usamos sólo el
+/// identifier. Si AMBOS están vacíos (teóricamente imposible: `identifier`
+/// es NOT NULL en el esquema), el caller cae al fallback UUID-truncado.
+fn project_label(identifier: &str, name: &str) -> String {
+    let ident = sanitize_filename_segment(identifier);
+    let name_s = sanitize_filename_segment(name);
+    match (ident.is_empty(), name_s.is_empty()) {
+        (true, true) => String::new(),
+        (false, true) => ident,
+        (true, false) => name_s,
+        (false, false) => format!("{ident}-{name_s}"),
+    }
+}
+
+/// Sanitiza un segmento de filename: colapsa espacios/caracteres no seguros
+/// a `-`, limita longitud y evita los problemas clásicos de filenames en
+/// Windows/macOS/Linux (`/`, `\`, `:`, `*`, `?`, `"`, `<`, `>`, `|`).
+/// No hace lowercasing porque los identifiers de Plane son UPPER por convención
+/// y preservar el case original mejora la legibilidad.
+fn sanitize_filename_segment(s: &str) -> String {
+    const MAX_LEN: usize = 64; // Defensivo: algunos FS truncan a 255; dejamos margen.
+
+    let mut out = String::with_capacity(s.len());
+    let mut last_was_dash = false;
+    for ch in s.chars() {
+        let safe = match ch {
+            // Permitidos tal cual: alfanuméricos ASCII + `_`.
+            c if c.is_ascii_alphanumeric() || c == '_' => {
+                out.push(c);
+                last_was_dash = false;
+                continue;
+            }
+            // Cualquier otra cosa (espacios, puntos, slashes, unicode, etc.)
+            // colapsa a un solo `-`.
+            _ => '-',
+        };
+        if !last_was_dash && !out.is_empty() {
+            out.push(safe);
+            last_was_dash = true;
+        }
+    }
+    // Trim de dashes trailing + longitud máxima.
+    let trimmed = out.trim_matches('-').to_owned();
+    trimmed.chars().take(MAX_LEN).collect()
+}
+
+/// Garantiza unicidad de `base_name` dentro del ZIP. Si el nombre ya se usó
+/// (caso degenerado: dos proyectos con el mismo identifier sanitizado),
+/// apendea `-2`, `-3`, etc. hasta encontrar uno libre.
+fn unique_base_name(
+    candidate: &str,
+    used: &mut std::collections::HashSet<String>,
+) -> String {
+    if used.insert(candidate.to_owned()) {
+        return candidate.to_owned();
+    }
+    let mut n: u32 = 2;
+    loop {
+        let next = format!("{candidate}-{n}");
+        if used.insert(next.clone()) {
+            return next;
+        }
+        n += 1;
     }
 }
 
