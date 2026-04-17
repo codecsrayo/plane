@@ -17,23 +17,24 @@
  *      closes itself. The auto-close timer is cleared on unmount to avoid the
  *      memory-leak that occurs when the component is torn down before the delay
  *      fires.
+ *
+ * UI delegated to the shared OAuthCallbackPage component (Fix #4).
  */
 
 import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "react-router";
 // services
 import { AppInstallationService } from "@/services/app_installation.service";
+// components
+import { OAuthCallbackPage, type TOAuthCallbackStatus } from "@/components/integration/oauth-callback-page";
 
 const appInstallationService = new AppInstallationService();
 
-type TStatus = "processing" | "success" | "error";
-
 export default function GithubIntegrationCallbackPage() {
   const [searchParams] = useSearchParams();
-  const [status, setStatus] = useState<TStatus>("processing");
+  const [status, setStatus] = useState<TOAuthCallbackStatus>("processing");
   const [errorMessage, setErrorMessage] = useState<string>("");
   const called = useRef(false); // guard against React double-invoke in dev
-  // Fix #3: keep a reference to the auto-close timer so it can be cancelled on unmount.
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
@@ -43,8 +44,8 @@ export default function GithubIntegrationCallbackPage() {
     const installation_id = searchParams.get("installation_id");
     const setup_action = searchParams.get("setup_action"); // "install" or "update"
 
-    // Fix #1: state is now `<nonce>:<workspaceSlug>`.
-    // Split on the first colon only so workspaceSlugs containing colons are safe.
+    // state is `<nonce>:<workspaceSlug>` — split on first colon only so
+    // workspaceSlugs containing colons remain intact.
     const rawState = searchParams.get("state") ?? "";
     const colonIndex = rawState.indexOf(":");
     const csrfNonce = colonIndex !== -1 ? rawState.slice(0, colonIndex) : "";
@@ -55,7 +56,6 @@ export default function GithubIntegrationCallbackPage() {
     if (!installation_id || !workspaceSlug) {
       setErrorMessage("Missing installation_id or workspace context. Please close this window and try again.");
       setStatus("error");
-      // Notify parent of failure; include nonce so parent can validate even error paths.
       window.opener?.postMessage({ type: "github-integration", success: false, csrfNonce }, window.location.origin);
       return;
     }
@@ -67,10 +67,7 @@ export default function GithubIntegrationCallbackPage() {
       })
       .then((result) => {
         setStatus("success");
-        // Notify the parent window (integrations panel) so it can refresh.
-        // Return the nonce so the parent can validate the CSRF token.
         window.opener?.postMessage({ type: "github-integration", success: true, csrfNonce }, window.location.origin);
-        // Fix #3: store the timer ID so it can be cleared if this component unmounts early.
         closeTimer.current = setTimeout(() => window.close(), 1500);
         return result;
       })
@@ -85,43 +82,17 @@ export default function GithubIntegrationCallbackPage() {
         );
       });
 
-    // Fix #3: cleanup — cancel the auto-close timer if the component unmounts before it fires.
     return () => {
       if (closeTimer.current !== null) clearTimeout(closeTimer.current);
     };
   }, [searchParams]);
 
   return (
-    <div className="flex h-screen w-full items-center justify-center bg-surface-1">
-      <div className="shadow-sm flex flex-col items-center gap-4 rounded-lg border border-subtle bg-surface-2 p-10">
-        {status === "processing" && (
-          <>
-            <div className="border-primary-400 h-8 w-8 animate-spin rounded-full border-4 border-t-transparent" />
-            <p className="text-body-sm-medium text-secondary">Completing GitHub integration…</p>
-          </>
-        )}
-
-        {status === "success" && (
-          <>
-            <svg className="h-12 w-12 text-success-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-            </svg>
-            <p className="text-body-sm-medium">GitHub integrated successfully! Closing…</p>
-          </>
-        )}
-
-        {status === "error" && (
-          <>
-            <svg className="text-red-500 h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-            <p className="text-red-500 text-body-sm-medium">{errorMessage}</p>
-            <button className="text-sm mt-2 text-secondary underline" onClick={() => window.close()}>
-              Close this window
-            </button>
-          </>
-        )}
-      </div>
-    </div>
+    <OAuthCallbackPage
+      status={status}
+      errorMessage={errorMessage}
+      processingText="Completing GitHub integration…"
+      successText="GitHub integrated successfully! Closing…"
+    />
   );
 }

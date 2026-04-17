@@ -4,7 +4,7 @@
  * See the LICENSE file for details.
  */
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useParams } from "react-router";
 import { mutate } from "swr";
 import { WORKSPACE_INTEGRATIONS } from "@/constants/fetch-keys";
@@ -39,23 +39,28 @@ const useIntegrationPopup = ({
   const popup = useRef<Window | null>(null);
 
   /**
-   * Build the provider OAuth URL at call-time so the CSRF nonce is always
-   * fresh. The nonce is embedded as the first segment of the `state` param
-   * using the format `<nonce>:<workspaceSlug>[,<extras>]`.
-   * Callbacks parse this format to recover workspaceSlug and return the nonce
-   * in the postMessage payload for validation.
+   * Fix #5: memoised URL factory — the closure is only recreated when a
+   * provider config value or routing param actually changes. The nonce is
+   * intentionally NOT a dependency; it is passed as a call-time argument
+   * inside `openPopup` so every `startAuth` embeds a fresh nonce without
+   * triggering a re-render cycle.
    */
-  const buildProviderUrl = (nonce: string): Record<string, string> => {
-    const baseState = `${nonce}:${workspaceSlug?.toString()}`;
-    return {
-      github: `https://github.com/apps/${github_app_name}/installations/new?state=${baseState}`,
-      gitlab: `${gitlab_host}/oauth/authorize?client_id=${gitlab_client_id}&redirect_uri=${window.location.origin}/auth/gitlab/callback&response_type=code&scope=api+read_user+read_repository+write_repository&state=${baseState}`,
-      slack: `https://slack.com/oauth/v2/authorize?scope=chat:write,im:history,im:write,links:read,links:write,users:read,users:read.email&user_scope=&client_id=${slack_client_id}&state=${baseState}`,
-      slackChannel: `https://slack.com/oauth/v2/authorize?scope=incoming-webhook&client_id=${slack_client_id}&state=${baseState},${projectId?.toString()}${
-        stateParams ? "," + stateParams : ""
-      }`,
-    };
-  };
+  const buildProviderUrl = useMemo(
+    () =>
+      (nonce: string): Record<string, string> => {
+        const baseState = `${nonce}:${workspaceSlug?.toString()}`;
+        return {
+          github: `https://github.com/apps/${github_app_name}/installations/new?state=${baseState}`,
+          gitlab: `${gitlab_host}/oauth/authorize?client_id=${gitlab_client_id}&redirect_uri=${window.location.origin}/auth/gitlab/callback&response_type=code&scope=api+read_user+read_repository+write_repository&state=${baseState}`,
+          slack: `https://slack.com/oauth/v2/authorize?scope=chat:write,im:history,im:write,links:read,links:write,users:read,users:read.email&user_scope=&client_id=${slack_client_id}&state=${baseState}`,
+          slackChannel: `https://slack.com/oauth/v2/authorize?scope=incoming-webhook&client_id=${slack_client_id}&state=${baseState},${projectId?.toString()}${
+            stateParams ? "," + stateParams : ""
+          }`,
+        };
+      },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [github_app_name, gitlab_client_id, gitlab_host, slack_client_id, workspaceSlug, projectId, stateParams]
+  );
 
   // Listen for postMessage from the OAuth callback popup and refresh workspace integrations.
   useEffect(() => {
