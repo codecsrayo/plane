@@ -12,13 +12,17 @@
 //!   DELETE /api/workspaces/{slug}/projects/{project_id}/pages/{page_id}/lock/
 //!   POST   /api/workspaces/{slug}/projects/{project_id}/pages/{page_id}/duplicate/
 //!   GET    /api/workspaces/{slug}/projects/{project_id}/pages/{page_id}/versions/
-//!   GET    /api/workspaces/{slug}/projects/{project_id}/pages/{page_id}/versions/{pk}/
+//!   GET    /api/workspaces/{slug}/projects/{project_id}/pages/{page_id}/versions/{pk}
+//!   GET    /api/workspaces/{slug}/projects/{project_id}/pages/{page_id}/description/
+//!   PATCH  /api/workspaces/{slug}/projects/{project_id}/pages/{page_id}/description/
 
 use axum::{
     extract::{Path, State},
-    http::StatusCode,
+    http::{header, StatusCode},
+    response::IntoResponse,
     Json,
 };
+use base64::{engine::general_purpose::STANDARD as BASE64_STANDARD, Engine as _};
 use chrono::{DateTime, FixedOffset, Utc};
 use sea_orm::{
     ActiveModelTrait, ActiveValue::Set, ColumnTrait, EntityTrait, QueryFilter, QueryOrder,
@@ -33,7 +37,7 @@ use crate::{
     },
     entities::{page_versions, pages, project_pages},
     error::AppError,
-    utils::soft_delete::SoftDeleteExt,
+    utils::{content_validator, soft_delete::SoftDeleteExt},
     AppState,
 };
 
@@ -115,6 +119,23 @@ pub struct UpdatePageRequest {
     pub color: Option<String>,
     pub access: Option<i16>,
     pub parent_id: Option<Uuid>,
+}
+
+/// Body para `PATCH /pages/{id}/description/` — mirror de
+/// `PageBinaryUpdateSerializer` en Django. Todos los campos son opcionales: el
+/// cliente puede enviar solo el que necesita actualizar (e.g. el editor Y.js
+/// envía únicamente `description_binary` al autosave, mientras que al cerrar
+/// la página envía también `description_html` y `description_json`).
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
+pub struct UpdatePageDescriptionRequest {
+    /// Base64 del documento Y.js serializado. Decode + validación de tamaño
+    /// (10 MB) + heurística de patrones sospechosos aplican en el handler.
+    pub description_binary: Option<String>,
+    /// HTML del editor. Será sanitizado con `ammonia` antes de guardar,
+    /// preservando los tags custom de Plane (`mention-component`, etc.).
+    pub description_html: Option<String>,
+    /// Representación JSON (Tiptap ProseMirror doc). Se guarda tal cual.
+    pub description_json: Option<serde_json::Value>,
 }
 
 // ── Helper: resolve page through project_pages ────────────────────────────────
@@ -705,4 +726,198 @@ pub async fn get_page_version(
         owned_by_id: v.owned_by_id,
         created_at: v.created_at,
     }))
+}
+// ── GET /pages/{page_id}/description/ ────────────────────────────────────────
+//
+// Mirror de `PagesDescriptionViewSet.retrieve` en
+// `apps/api/plane/app/views/page/base.py`. Sirve el documento Y.js binario
+// (`description_binary`) como `application/octet-stream` para que el editor
+// colaborativo lo cargue al abrir la página.
+//
+// Control de acceso: Django usa `Q(owned_by=user) | Q(access=0)`. En Rust
+// replicamos ese filtro con el mismo patrón que `get_page`: un 404/403 según
+// visibilidad — nunca revelamos que la página existe si el usuario no puede
+// verla. `find_project_page` ya garantiza que la fila pertenece al proyecto
+// y no está soft-deleted (`project_pages.deleted_at IS NULL`).
+
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/projects/{project_id}/pages/{page_id}/description/",
+    tag = "Pages",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project ID"),
+        ("page_id" = Uuid, Path, description = "Page ID"),
+    ),
+    responses(
+        (status = 200, description = "Binary Y.js document", content_type = "application/octet-stream"),
+        (status = 403, description = "Página privada de otro usuario"),
+        (status = 404, description = "No encontrada"),
+    ),
+    security(("TokenAuth" = []))
+)]
+pub async fn get_page_description(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Path((_slug, _project_id, page_id)): Path<(String, Uuid, Uuid)>,
+) -> Result<impl IntoResponse, AppError> {
+    require_role(guard.project_member.role, guard.workspace_member.role, ROLE_GUEST)?;
+
+    let page = find_project_page(&state.db, guard.project.id, page_id).await?;
+
+    // Acceso: pública o propietario. Private de otro usuario ⇒ 403.
+    if page.access == ACCESS_PRIVATE && page.owned_by_id != guard.user.id {
+        return Err(AppError::Forbidden);
+    }
+
+    // Django envía `b""` cuando `description_binary` es NULL (stream_data yield
+    // b""), con status 200. Replicamos esa semántica devolviendo un body vacío
+    // en ese caso para que el editor sepa que debe inicializar un doc nuevo.
+    let bytes = page.description_binary.unwrap_or_default();
+
+    // Headers explícitos. Los arrays de `(HeaderName, &str)` implementan
+    // `IntoResponseParts` en Axum y se aplican antes del body, por lo que el
+    // Content-Type aquí gana frente al default de `Vec<u8>`.
+    let headers = [
+        (header::CONTENT_TYPE, "application/octet-stream"),
+        (
+            header::CONTENT_DISPOSITION,
+            r#"attachment; filename="page_description.bin""#,
+        ),
+    ];
+    Ok((headers, bytes))
+}
+
+// ── PATCH /pages/{page_id}/description/ ──────────────────────────────────────
+//
+// Mirror de `PagesDescriptionViewSet.partial_update` en
+// `apps/api/plane/app/views/page/base.py:520`. Acepta cualquier combinación
+// de `description_binary` (base64), `description_html` (sanitizado) y
+// `description_json` (JSON). Los tres se guardan atómicamente en una misma
+// fila de `pages` con el timestamp de `updated_at` refrescado por SeaORM.
+//
+// Validaciones previas al write (código de error y mensaje idénticos a Django
+// para que el frontend compartido siga funcionando):
+// * `page.is_locked`   ⇒ 400 {"error_code": 4701, "error_message": "PAGE_LOCKED"}
+// * `page.archived_at` ⇒ 400 {"error_code": 4702, "error_message": "PAGE_ARCHIVED"}
+//
+// NOTA: Django dispara dos tareas Celery en background tras guardar:
+//   * `page_transaction(new_html, old_html, page_id)` — track de cambios.
+//   * `track_page_version(page_id, existing_instance, user_id)` — snapshot en
+//     `page_versions`.
+// El API Rust aún no tiene el job system para estas tareas (el worker de jobs
+// solo cubre notificaciones hoy). Las dejamos como TODO visibles para no
+// perder trazabilidad; el editor sigue funcionando sin versionado histórico
+// en el Rust path — cuando haya cliente, el Django path sigue disponible.
+
+#[utoipa::path(
+    patch,
+    path = "/api/workspaces/{slug}/projects/{project_id}/pages/{page_id}/description/",
+    tag = "Pages",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project ID"),
+        ("page_id" = Uuid, Path, description = "Page ID"),
+    ),
+    responses(
+        (status = 200, description = "Updated successfully"),
+        (status = 400, description = "Página bloqueada, archivada o contenido inválido"),
+        (status = 403, description = "Página privada de otro usuario"),
+        (status = 404, description = "No encontrada"),
+    ),
+    security(("TokenAuth" = []))
+)]
+pub async fn update_page_description(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Path((_slug, _project_id, page_id)): Path<(String, Uuid, Uuid)>,
+    Json(body): Json<UpdatePageDescriptionRequest>,
+) -> Result<Json<serde_json::Value>, AppError> {
+    require_role(guard.project_member.role, guard.workspace_member.role, ROLE_MEMBER)?;
+
+    let page = find_project_page(&state.db, guard.project.id, page_id).await?;
+
+    // Mismo filtro de acceso que el GET — Django usa `Q(owned_by=user) | Q(access=0)`.
+    if page.access == ACCESS_PRIVATE && page.owned_by_id != guard.user.id {
+        return Err(AppError::Forbidden);
+    }
+
+    // Validaciones de estado de la página. Mantener el mismo shape JSON que
+    // Django (`error_code` int + `error_message` str) porque el cliente
+    // compartido hace `response.data.error_code === 4701` para toast-specific.
+    // Códigos definidos en `apps/api/plane/utils/error_codes.py:12-13`.
+    if page.is_locked {
+        return Err(AppError::Validation(serde_json::json!({
+            "error_code": 4701,
+            "error_message": "PAGE_LOCKED",
+        })));
+    }
+    if page.archived_at.is_some() {
+        return Err(AppError::Validation(serde_json::json!({
+            "error_code": 4702,
+            "error_message": "PAGE_ARCHIVED",
+        })));
+    }
+
+    // Sanitizar/validar contenido ANTES de abrir la mutación. Cualquier
+    // fallo de validación devuelve 400 sin tocar la DB. Los mensajes espejean
+    // los de `PageBinaryUpdateSerializer` en Django para que el frontend
+    // pueda mostrarlos sin traducciones adicionales.
+    let decoded_binary: Option<Vec<u8>> = if let Some(ref b64) = body.description_binary {
+        if b64.is_empty() {
+            // DRF trata `""` como "no cambiar" pero el serializer usa
+            // `allow_blank=True` y guarda el binario decodificado tal cual.
+            // Un base64 vacío decodifica a `vec![]`, que el validador acepta.
+            Some(Vec::new())
+        } else {
+            let decoded = BASE64_STANDARD.decode(b64).map_err(|_| {
+                AppError::BadRequest("Failed to decode base64 data".into())
+            })?;
+            content_validator::validate_binary_data(&decoded).map_err(|e| {
+                AppError::BadRequest(format!("Invalid binary data: {e}"))
+            })?;
+            Some(decoded)
+        }
+    } else {
+        None
+    };
+
+    let sanitized_html: Option<String> = match body.description_html {
+        Some(ref raw) => {
+            let clean = content_validator::validate_and_sanitize_html(raw)
+                .map_err(AppError::BadRequest)?;
+            Some(clean)
+        }
+        None => None,
+    };
+
+    // Aplicar solo los campos presentes. `updated_at` lo refresca SeaORM al
+    // llamar `update()` si el modelo tiene `auto_now`; en este proyecto no es
+    // así, así que lo setamos manualmente igual que en `update_page`.
+    let now: DateTime<FixedOffset> = Utc::now().into();
+    let mut am: pages::ActiveModel = page.into();
+
+    if let Some(bytes) = decoded_binary {
+        // Option<Vec<u8>> en la entidad: guardamos `Some(bytes)`; un buffer
+        // vacío se guarda como `Some(vec![])` y no como `None` (Django también
+        // persiste b"" sin convertirlo a NULL).
+        am.description_binary = Set(Some(bytes));
+    }
+    if let Some(html) = sanitized_html {
+        am.description_html = Set(html);
+    }
+    if let Some(json) = body.description_json {
+        am.description_json = Set(json);
+    }
+    am.updated_by_id = Set(Some(guard.user.id));
+    am.updated_at = Set(now);
+
+    am.update(&state.db).await.map_err(AppError::Database)?;
+
+    // TODO(api_rust): encolar `page_transaction` y `track_page_version` cuando
+    // el job worker soporte tareas de page versioning. Por ahora el Django
+    // path sigue disponible como fallback para clientes que necesiten el
+    // historial. Ver `apps/api/plane/app/views/page/base.py:556-571`.
+
+    Ok(Json(serde_json::json!({ "message": "Updated successfully" })))
 }

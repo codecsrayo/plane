@@ -852,6 +852,10 @@ pub fn build_router(state: AppState) -> Router {
             "/workspaces/{slug}/projects/{project_id}/pages/{page_id}/versions/{pk}",
             get(pages::get_page_version),
         )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/pages/{page_id}/description",
+            get(pages::get_page_description).patch(pages::update_page_description),
+        )
         // ── Intake ───────────────────────────────────────────────────────────
         .route(
             "/workspaces/{slug}/projects/{project_id}/intakes",
