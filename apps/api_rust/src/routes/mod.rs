@@ -209,6 +209,7 @@ pub mod instances;
         intake::update_intake_issue,
         intake::delete_intake_issue,
         exporter::export_issues,
+        exporter::list_export_issues,
         exporter::get_export_status,
         search::global_search,
         search::search_issues,
@@ -868,7 +869,7 @@ pub fn build_router(state: AppState) -> Router {
         // ── Exporter ─────────────────────────────────────────────────────────
         .route(
             "/workspaces/{slug}/export-issues",
-            post(exporter::export_issues),
+            get(exporter::list_export_issues).post(exporter::export_issues),
         )
         .route(
             "/workspaces/{slug}/export-issues/{token}",

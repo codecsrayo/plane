@@ -1,20 +1,37 @@
 // src/routes/exporter.rs
-//! POST /api/workspaces/{slug}/export-issues/ — inicia un job de exportación
-//! y retorna el token del ExporterHistory para que el cliente haga polling.
+//! Endpoints de export de issues — paridad con
+//! `apps/api/plane/app/views/exporter/base.py::ExportIssuesEndpoint`.
+//!
+//! - `GET  /api/workspaces/{slug}/export-issues/` — lista paginada de
+//!   `ExporterHistory` filtrado por `type="issue_exports"` (requiere
+//!   `per_page` + `cursor`).
+//! - `POST /api/workspaces/{slug}/export-issues/` — encola un job de
+//!   export y retorna el token para polling.
+//! - `GET  /api/workspaces/{slug}/export-issues/{token}/` — consulta el
+//!   estado del job.
+
+use std::collections::HashMap;
 
 use axum::{
-    extract::{Path, State},
+    extract::{Path, Query, State},
     http::StatusCode,
+    response::IntoResponse,
     Json,
 };
-use sea_orm::{ActiveModelTrait, ActiveValue::Set, ColumnTrait, EntityTrait, QueryFilter};
+use chrono::{DateTime, Utc};
+use sea_orm::{
+    ActiveModelTrait, ActiveValue::Set, ColumnTrait, EntityTrait, PaginatorTrait, QueryFilter,
+    QueryOrder,
+};
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 
 use crate::{
     auth::{extractors::WorkspaceMemberGuard, permissions::ROLE_MEMBER},
-    entities::exporters,
+    entities::{exporters, users},
     error::AppError,
+    routes::workspaces::{user_to_lite, UserLiteDto},
+    utils::pagination,
     AppState,
 };
 
@@ -33,6 +50,178 @@ pub struct ExportIssuesResponse {
     pub token: String,
     pub status: String,
     pub url: Option<String>,
+}
+
+// ── GET /export-issues/ ──────────────────────────────────────────────────────
+
+/// Query params de `GET /workspaces/{slug}/export-issues/`.
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
+pub struct ListExportIssuesQuery {
+    /// Cursor Django: `"{per_page}:{offset}:{is_prev}"` (e.g. `"10:0:0"`).
+    pub cursor: Option<String>,
+    /// Override del per_page. Django lo toma antes que el valor del cursor.
+    pub per_page: Option<u64>,
+    /// Campo de orden, formato Django: `"-created_at"` (default) o `"created_at"`.
+    /// Sólo se soporta `created_at` por paridad con el uso real del frontend.
+    pub order_by: Option<String>,
+}
+
+/// Mirror de `ExporterHistorySerializer`
+/// (apps/api/plane/app/serializers/exporter.py:11-30).
+///
+/// Campos emitidos: id, created_at, updated_at, project, provider, status, url,
+/// initiated_by, initiated_by_detail (UserLiteSerializer no-admin), token,
+/// created_by, updated_by.
+#[derive(Debug, Serialize, utoipa::ToSchema)]
+pub struct ExporterHistoryResponse {
+    pub id: Uuid,
+    pub created_at: DateTime<Utc>,
+    pub updated_at: DateTime<Utc>,
+    pub project: Option<Vec<Uuid>>,
+    pub provider: String,
+    pub status: String,
+    pub url: Option<String>,
+    pub initiated_by: Uuid,
+    pub initiated_by_detail: Option<UserLiteDto>,
+    pub token: String,
+    pub created_by: Option<Uuid>,
+    pub updated_by: Option<Uuid>,
+}
+
+/// GET /api/workspaces/{slug}/export-issues/ — lista paginada de exports.
+///
+/// Paridad con `ExportIssuesEndpoint.get`
+/// (apps/api/plane/app/views/exporter/base.py:67-84):
+///  - `@allow_permission([ADMIN, MEMBER], level="WORKSPACE")` → role >= MEMBER.
+///  - Filtra por `workspace.slug == slug` y `type == "issue_exports"`.
+///  - Requiere `per_page` Y `cursor` en la query — si falta alguno, 400.
+///  - `order_by` default = `"-created_at"`.
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/export-issues/",
+    tag = "Exporter",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("cursor" = Option<String>, Query, description = "Cursor Django: per_page:offset:is_prev"),
+        ("per_page" = Option<u64>, Query, description = "Override per_page"),
+        ("order_by" = Option<String>, Query, description = "Orden, default '-created_at'"),
+    ),
+    responses(
+        (status = 200, description = "Lista paginada de ExporterHistory"),
+        (status = 400, description = "Falta per_page o cursor"),
+        (status = 403, description = "Role insuficiente (GUEST no permitido)"),
+    ),
+    security(("TokenAuth" = []))
+)]
+pub async fn list_export_issues(
+    State(state): State<AppState>,
+    guard: WorkspaceMemberGuard,
+    Query(q): Query<ListExportIssuesQuery>,
+) -> Result<impl IntoResponse, AppError> {
+    // Paridad Django: `@allow_permission([ADMIN, MEMBER], level="WORKSPACE")`.
+    if guard.member.role < ROLE_MEMBER {
+        return Err(AppError::Forbidden);
+    }
+
+    // Paridad Django (apps/api/plane/app/views/exporter/base.py:73-84): este
+    // endpoint requiere **ambos** `per_page` y `cursor` presentes. Sin alguno
+    // responde 400 con `{"error": "per_page and cursor are required"}`. No
+    // fallback a defaults — replicamos el shape de error.
+    if q.per_page.is_none() || q.cursor.as_deref().map(str::trim).is_none_or(str::is_empty) {
+        return Err(AppError::BadRequest(
+            "per_page and cursor are required".into(),
+        ));
+    }
+
+    const DEFAULT_PER_PAGE: u64 = 10;
+    const MAX_PER_PAGE: u64 = pagination::DEFAULT_MAX_LIMIT;
+
+    let cursor = pagination::parse_cursor_or_default(q.cursor.as_deref(), DEFAULT_PER_PAGE)?;
+    let limit = pagination::resolve_per_page(
+        Some(cursor.per_page),
+        q.per_page,
+        DEFAULT_PER_PAGE,
+        MAX_PER_PAGE,
+    );
+
+    // Paridad Django: `order_by=request.GET.get("order_by", "-created_at")`.
+    // Sólo soportamos created_at (asc/desc) porque ninguna otra columna se usa
+    // en los callsites del frontend. Cualquier otro valor cae al default para
+    // evitar expandir la superficie de SQL injection via dynamic column.
+    let order_desc = match q.order_by.as_deref().unwrap_or("-created_at") {
+        "created_at" => false,
+        _ => true, // "-created_at" o cualquier otro → desc
+    };
+
+    let base = exporters::Entity::find()
+        .filter(exporters::Column::WorkspaceId.eq(guard.workspace.id))
+        .filter(exporters::Column::Type.eq("issue_exports"))
+        .filter(exporters::Column::DeletedAt.is_null());
+
+    let total_count = base
+        .clone()
+        .count(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    let ordered = if order_desc {
+        base.order_by_desc(exporters::Column::CreatedAt)
+    } else {
+        base.order_by_asc(exporters::Column::CreatedAt)
+    };
+
+    let rows = ordered
+        .paginate(&state.db, limit)
+        .fetch_page(cursor.offset)
+        .await
+        .map_err(AppError::Database)?;
+
+    // Batch-load de `initiated_by` para evitar N+1 (paridad con
+    // `select_related("initiated_by")` en Django, apps/api/plane/app/views/
+    // exporter/base.py:69).
+    let initiator_ids: Vec<Uuid> = {
+        let mut seen = std::collections::HashSet::new();
+        rows.iter()
+            .map(|r| r.initiated_by_id)
+            .filter(|id| seen.insert(*id))
+            .collect()
+    };
+
+    let users_by_id: HashMap<Uuid, users::Model> = if initiator_ids.is_empty() {
+        HashMap::new()
+    } else {
+        users::Entity::find()
+            .filter(users::Column::Id.is_in(initiator_ids))
+            .all(&state.db)
+            .await
+            .map_err(AppError::Database)?
+            .into_iter()
+            .map(|u| (u.id, u))
+            .collect()
+    };
+
+    let results: Vec<ExporterHistoryResponse> = rows
+        .into_iter()
+        .map(|row| ExporterHistoryResponse {
+            // `initiated_by_detail` usa `UserLiteSerializer` (no-admin), así
+            // que `is_admin=false` → sin email ni last_login_medium.
+            initiated_by_detail: users_by_id.get(&row.initiated_by_id).map(|u| user_to_lite(u, false)),
+            id: row.id,
+            created_at: row.created_at.into(),
+            updated_at: row.updated_at.into(),
+            project: row.project,
+            provider: row.provider,
+            status: row.status,
+            url: row.url,
+            initiated_by: row.initiated_by_id,
+            token: row.token,
+            created_by: row.created_by_id,
+            updated_by: row.updated_by_id,
+        })
+        .collect();
+
+    let body = pagination::build_response(results, total_count, limit, cursor.offset);
+    Ok((StatusCode::OK, Json(body)))
 }
 
 // ── POST /export-issues/ ──────────────────────────────────────────────────────
