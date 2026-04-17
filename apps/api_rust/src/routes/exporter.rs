@@ -28,10 +28,10 @@ use uuid::Uuid;
 
 use crate::{
     auth::{extractors::WorkspaceMemberGuard, permissions::ROLE_MEMBER},
-    entities::{exporters, users},
+    entities::{exporters, project_members, projects, users},
     error::AppError,
     routes::workspaces::{user_to_lite, UserLiteDto},
-    utils::pagination,
+    utils::{pagination, soft_delete::SoftDeleteExt},
     AppState,
 };
 
@@ -39,10 +39,26 @@ use crate::{
 
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct ExportIssuesRequest {
-    /// IDs de proyectos a exportar (vacío = todos los proyectos del workspace)
-    pub project_ids: Option<Vec<Uuid>>,
-    /// Formato de exportación: "csv" (único soportado actualmente)
+    /// IDs de proyectos a exportar. Paridad Django: el campo del body es
+    /// `project` (no `project_ids`) — ver
+    /// apps/api/plane/app/views/exporter/base.py:29. Si está ausente o vacío,
+    /// se usan todos los proyectos del workspace donde el user es miembro
+    /// activo y el proyecto no está archivado.
+    pub project: Option<Vec<Uuid>>,
+    /// Formato de exportación: "csv", "xlsx" o "json".
     pub provider: Option<String>,
+    /// Aceptado por paridad con Django (apps/api/plane/app/views/exporter/
+    /// base.py:28) aunque no se usa en este punto del flujo — lo consume el
+    /// worker vía la fila persistida.
+    #[serde(default)]
+    pub multiple: Option<bool>,
+}
+
+/// Response shape de Django (apps/api/plane/app/views/exporter/base.py:57-60):
+/// `200 {"message": "Once the export is ready you will be able to download it"}`.
+#[derive(Debug, Serialize, utoipa::ToSchema)]
+pub struct ExportIssuesEnqueuedResponse {
+    pub message: String,
 }
 
 #[derive(Debug, Serialize, utoipa::ToSchema)]
@@ -232,8 +248,9 @@ pub async fn list_export_issues(
     tag = "Exporter",
     params(("slug" = String, Path, description = "Workspace slug")),
     responses(
-        (status = 201, description = "Exportación iniciada — polling por token"),
-        (status = 400, description = "Error de validación"),
+        (status = 200, description = "Exportación encolada"),
+        (status = 400, description = "Provider inválido"),
+        (status = 403, description = "Role insuficiente (GUEST no permitido)"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -241,7 +258,7 @@ pub async fn export_issues(
     State(state): State<AppState>,
     guard: WorkspaceMemberGuard,
     Json(body): Json<ExportIssuesRequest>,
-) -> Result<(StatusCode, Json<ExportIssuesResponse>), AppError> {
+) -> Result<(StatusCode, Json<ExportIssuesEnqueuedResponse>), AppError> {
     // Paridad Django: `@allow_permission([ADMIN, MEMBER], level="WORKSPACE")`
     // (apps/api/plane/app/views/exporter/base.py:22). GUEST (role=5) no puede
     // encolar exports. `WorkspaceMemberGuard` sólo valida membresía, así que
@@ -260,6 +277,37 @@ pub async fn export_issues(
         )));
     }
 
+    // Paridad Django (apps/api/plane/app/views/exporter/base.py:29,32-39):
+    //   project_ids = request.data.get("project", [])
+    //   if not project_ids:
+    //       project_ids = Project.objects.filter(
+    //           workspace__slug=slug,
+    //           project_projectmember__member=request.user,
+    //           project_projectmember__is_active=True,
+    //           archived_at__isnull=True,
+    //       ).values_list("id", flat=True)
+    //
+    // El listado del frontend (column.tsx) hace `project.length`, y el worker
+    // falla con "No hay proyectos en el exporter" si `project` es NULL, así
+    // que este fallback es **requerido** — nunca persistir NULL en `project`.
+    let project_ids: Vec<Uuid> = match body.project.as_ref() {
+        Some(ids) if !ids.is_empty() => ids.clone(),
+        _ => projects::Entity::find()
+            .active()
+            .inner_join(project_members::Entity)
+            .filter(projects::Column::WorkspaceId.eq(guard.workspace.id))
+            .filter(projects::Column::ArchivedAt.is_null())
+            .filter(project_members::Column::MemberId.eq(guard.user.id))
+            .filter(project_members::Column::IsActive.eq(true))
+            .filter(project_members::Column::DeletedAt.is_null())
+            .all(&state.db)
+            .await
+            .map_err(AppError::Database)?
+            .into_iter()
+            .map(|p| p.id)
+            .collect(),
+    };
+
     // Generar token único para este job
     let token = format!("{}", Uuid::new_v4().as_simple());
 
@@ -272,7 +320,7 @@ pub async fn export_issues(
     //    not-null constraint`.
     let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
 
-    let exporter = exporters::ActiveModel {
+    let _exporter = exporters::ActiveModel {
         id: Set(Uuid::new_v4()),
         created_at: Set(now),
         updated_at: Set(now),
@@ -282,7 +330,10 @@ pub async fn export_issues(
         reason: Set(String::new()),
         key: Set(String::new()),
         url: Set(None),
-        project: Set(body.project_ids.clone()),
+        // Nunca NULL: si el user no mandó `project` o mandó `[]`, lo
+        // completamos con el fallback arriba. Django persiste exactamente el
+        // mismo array resuelto (línea 43 del view).
+        project: Set(Some(project_ids)),
         initiated_by_id: Set(guard.user.id),
         created_by_id: Set(Some(guard.user.id)),
         updated_by_id: Set(Some(guard.user.id)),
@@ -319,12 +370,15 @@ pub async fn export_issues(
         .await
         .map_err(|e| AppError::Internal(anyhow::anyhow!("Job queue error: {e}")))?;
 
+    // Paridad exacta de shape con Django (apps/api/plane/app/views/exporter/
+    // base.py:57-60): 200 OK con `{"message": "..."}`. El frontend
+    // (export-modal.tsx:82, export-form.tsx:110) no lee el body de la
+    // respuesta, sólo refresca via SWR el listado; devolver token/status/url
+    // aquí es divergencia innecesaria.
     Ok((
-        StatusCode::CREATED,
-        Json(ExportIssuesResponse {
-            token,
-            status: exporter.status,
-            url: exporter.url,
+        StatusCode::OK,
+        Json(ExportIssuesEnqueuedResponse {
+            message: "Once the export is ready you will be able to download it".to_owned(),
         }),
     ))
 }

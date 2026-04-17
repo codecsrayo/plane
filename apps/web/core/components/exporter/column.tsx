@@ -54,7 +54,14 @@ export const useExportColumns = () => {
     {
       key: "Exported projects",
       content: "Exported projects",
-      tdRender: (rowData: RowData) => <div className="text-13">{rowData.project.length} project(s)</div>,
+      // Defensivo: filas legacy creadas antes del fix del backend tienen
+      // `project = null` en la DB, lo que rompía toda la tabla con
+      // "Cannot read properties of null (reading 'length')". El fallback del
+      // backend (routes/exporter.rs) previene nuevas filas null, pero esto
+      // mantiene el listado funcional para datos históricos.
+      tdRender: (rowData: RowData) => (
+        <div className="text-13">{rowData.project?.length ?? 0} project(s)</div>
+      ),
     },
     {
       key: "Format",
