@@ -50,6 +50,7 @@
 use sea_orm::{
     ColumnTrait, Condition, EntityTrait, QueryFilter, QuerySelect, QueryTrait, Select,
 };
+use sea_orm::sea_query::extension::postgres::PgExpr;
 use serde::Deserialize;
 use uuid::Uuid;
 
