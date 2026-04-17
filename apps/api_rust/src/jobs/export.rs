@@ -261,10 +261,14 @@ async fn run_export(state: &AppState, token: &str) -> anyhow::Result<()> {
         .context("Error al generar URL firmada")?;
 
     // 6. Actualizar ExporterHistory
+    // Paridad Django (apps/api/plane/db/mixins.py:20): `auto_now=True` bumpea
+    // `updated_at` en cada `save()`. SeaORM no lo hace solo, así que lo
+    // seteamos explícitamente.
     let mut am: exporters::ActiveModel = exporter.into();
     am.status = Set("completed".to_owned());
     am.url = Set(Some(presigned.uri().to_string()));
     am.key = Set(file_name);
+    am.updated_at = Set(chrono::Utc::now().into());
     am.update(&state.db).await?;
 
     tracing::info!(token, "export_issues: completado");
@@ -282,6 +286,7 @@ async fn mark_export_failed(state: &AppState, token: &str, reason: &str) -> anyh
         let mut am: exporters::ActiveModel = exp.into();
         am.status = Set("failed".to_owned());
         am.reason = Set(reason.chars().take(500).collect());
+        am.updated_at = Set(chrono::Utc::now().into());
         am.update(&state.db).await?;
     }
     Ok(())

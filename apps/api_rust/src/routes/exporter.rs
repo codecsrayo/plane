@@ -263,8 +263,19 @@ pub async fn export_issues(
     // Generar token único para este job
     let token = format!("{}", Uuid::new_v4().as_simple());
 
+    // Paridad Django: `TimeAuditModel` (apps/api/plane/db/mixins.py:19-20)
+    // rellena `created_at`/`updated_at` vía `auto_now_add`/`auto_now`. En el
+    // entity gen de SeaORM (src/entities/exporters.rs:8-10) ambas columnas son
+    // `NOT NULL` sin `ActiveModelBehavior::before_save`, así que el call site
+    // debe setearlas explícitamente — omitirlas produce 500:
+    //   `null value in column "created_at" of relation "exporters" violates
+    //    not-null constraint`.
+    let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
+
     let exporter = exporters::ActiveModel {
         id: Set(Uuid::new_v4()),
+        created_at: Set(now),
+        updated_at: Set(now),
         token: Set(token.clone()),
         provider: Set(provider),
         status: Set("queued".to_owned()),
@@ -284,7 +295,7 @@ pub async fn export_issues(
         name: Set(None),
         filters: Set(None),
         rich_filters: Set(None),
-        ..Default::default()
+        deleted_at: Set(None),
     }
     .insert(&state.db)
     .await
