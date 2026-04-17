@@ -39,32 +39,110 @@ use crate::{
 
 // ── DTOs ─────────────────────────────────────────────────────────────────────
 
+/// Shape de `GET /workspaces/{slug}/projects/{project_id}/issues/{pk}/`.
+///
+/// Espejo EXACTO de `IssueDetailSerializer` en
+/// `apps/api/plane/app/serializers/issue.py:924-935`, que extiende
+/// `IssueSerializer` (línea 760) con `description_html`, `is_subscribed`,
+/// `is_intake`. El frontend (`packages/types/src/issues/issue.ts:TIssue`)
+/// consume exactamente este shape.
+///
+/// # Diferencias con el DTO previo (`IssueResponse`)
+/// - Sin `workspace_id` — Django no lo incluye en el serializer de detail.
+/// - Sin `type_id` — tampoco está en `IssueSerializer.Meta.fields`.
+/// - Renombres: `created_by_id → created_by`, `updated_by_id → updated_by`,
+///   `estimate_point_id → estimate_point` (convención Django cuando el campo
+///   se declara como FK en el serializer, no como UUIDField crudo).
+/// - Añadidos: `cycle_id`, `module_ids`, `sub_issues_count`, `attachment_count`,
+///   `link_count`, `is_subscribed`, `is_intake`.
 #[derive(Debug, Serialize, utoipa::ToSchema)]
-pub struct IssueResponse {
+pub struct IssueDetailResponse {
     pub id: Uuid,
     pub name: String,
-    pub description_html: String,
-    pub priority: String,
     pub state_id: Option<Uuid>,
-    pub parent_id: Option<Uuid>,
-    pub project_id: Uuid,
-    pub workspace_id: Uuid,
-    pub sequence_id: i32,
     pub sort_order: f64,
+    pub completed_at: Option<chrono::DateTime<chrono::FixedOffset>>,
+    // Django expone el FK de estimate como `estimate_point` (source de la FK),
+    // no como `estimate_point_id` crudo. El frontend lee `estimate_point`.
+    #[serde(rename = "estimate_point")]
+    pub estimate_point_id: Option<Uuid>,
+    pub priority: String,
     pub start_date: Option<chrono::NaiveDate>,
     pub target_date: Option<chrono::NaiveDate>,
-    pub completed_at: Option<chrono::DateTime<chrono::FixedOffset>>,
-    pub archived_at: Option<chrono::NaiveDate>,
-    pub is_draft: bool,
-    pub estimate_point_id: Option<Uuid>,
-    pub type_id: Option<Uuid>,
-    pub created_by_id: Option<Uuid>,
-    pub updated_by_id: Option<Uuid>,
+    pub sequence_id: i32,
+    pub project_id: Uuid,
+    pub parent_id: Option<Uuid>,
+    // Enriquecido — primer cycle activo asociado al issue.
+    pub cycle_id: Option<Uuid>,
+    // Enriquecidos — arrays de IDs de relaciones M2M.
+    pub module_ids: Vec<Uuid>,
+    pub label_ids: Vec<Uuid>,
+    pub assignee_ids: Vec<Uuid>,
+    // Enriquecidos — contadores agregados.
+    pub sub_issues_count: i64,
     pub created_at: chrono::DateTime<chrono::FixedOffset>,
     pub updated_at: chrono::DateTime<chrono::FixedOffset>,
-    // Relaciones enriquecidas
-    pub assignee_ids: Vec<Uuid>,
+    // Django renderiza los FKs de auditoría como `created_by`/`updated_by`
+    // (no `_id`) porque el serializer los declara como ForeignKey fields.
+    #[serde(rename = "created_by")]
+    pub created_by_id: Option<Uuid>,
+    #[serde(rename = "updated_by")]
+    pub updated_by_id: Option<Uuid>,
+    pub attachment_count: i64,
+    pub link_count: i64,
+    pub is_draft: bool,
+    pub archived_at: Option<chrono::NaiveDate>,
+    // Extras propios de `IssueDetailSerializer` (no están en el shape list).
+    pub description_html: String,
+    pub is_subscribed: bool,
+    pub is_intake: bool,
+}
+
+/// Shape de `POST /workspaces/{slug}/projects/{project_id}/issues/`.
+///
+/// Espejo EXACTO de la proyección `.values(...)` que Django usa en
+/// `apps/api/plane/app/views/issue/base.py:427-454` tras crear un issue.
+///
+/// # Diferencias con `IssueDetailResponse`
+/// - Incluye `deleted_at` (siempre `null` inmediatamente tras create, pero
+///   Django lo proyecta — el frontend puede leerlo sin romperse).
+/// - Omite `description_html`, `is_subscribed`, `is_intake` — la vista de
+///   create no los expone.
+///
+/// Mantener ambos shapes separados evita el antipatrón de "DTO unión con
+/// todos los campos opcionales", que pierde información y confunde al
+/// consumidor sobre qué endpoint está llamando.
+#[derive(Debug, Serialize, utoipa::ToSchema)]
+pub struct IssueCreateResponse {
+    pub id: Uuid,
+    pub name: String,
+    pub state_id: Option<Uuid>,
+    pub sort_order: f64,
+    pub completed_at: Option<chrono::DateTime<chrono::FixedOffset>>,
+    #[serde(rename = "estimate_point")]
+    pub estimate_point_id: Option<Uuid>,
+    pub priority: String,
+    pub start_date: Option<chrono::NaiveDate>,
+    pub target_date: Option<chrono::NaiveDate>,
+    pub sequence_id: i32,
+    pub project_id: Uuid,
+    pub parent_id: Option<Uuid>,
+    pub cycle_id: Option<Uuid>,
+    pub module_ids: Vec<Uuid>,
     pub label_ids: Vec<Uuid>,
+    pub assignee_ids: Vec<Uuid>,
+    pub sub_issues_count: i64,
+    pub created_at: chrono::DateTime<chrono::FixedOffset>,
+    pub updated_at: chrono::DateTime<chrono::FixedOffset>,
+    #[serde(rename = "created_by")]
+    pub created_by_id: Option<Uuid>,
+    #[serde(rename = "updated_by")]
+    pub updated_by_id: Option<Uuid>,
+    pub attachment_count: i64,
+    pub link_count: i64,
+    pub is_draft: bool,
+    pub archived_at: Option<chrono::NaiveDate>,
+    pub deleted_at: Option<chrono::DateTime<chrono::FixedOffset>>,
 }
 
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
@@ -221,13 +299,30 @@ pub struct ProjectIssueItem {
     pub module_ids:       Vec<Uuid>,
 }
 
-// ── Helper ────────────────────────────────────────────────────────────────────
+// ── Helpers ───────────────────────────────────────────────────────────────────
 
-/// Enriquece un issue model con sus assignees y labels en batch.
+/// Enriquece un lote de issues y los convierte al shape de `IssueDetailSerializer`
+/// de Django (`GET /issues/{pk}/`).
+///
+/// # Estado actual (commit 1 del refactor)
+/// Carga batch de **assignees** y **labels** — los dos M2M más simples.
+/// Los siguientes campos se devuelven con valor por defecto (stub):
+///   - `cycle_id`, `module_ids`, `sub_issues_count`, `attachment_count`,
+///     `link_count`, `is_subscribed`, `is_intake`.
+///
+/// Commit 2 del refactor reemplaza este helper por llamadas directas a
+/// `load_enrichment` (que ya carga cycle/modules/counts) más queries
+/// específicas para `is_subscribed` / `is_intake`. Se mantiene aquí como
+/// puente temporal para que el shape sea correcto sin acoplar el cableo.
+///
+/// # Antipatrón evitado
+/// N+1: ambos `is_in()` hacen 1 query por relación, independiente del
+/// tamaño del lote. Para un solo issue (caso GET detail) la diferencia
+/// no importa, pero mantiene el contrato uniforme.
 async fn enrich_issues(
     db: &sea_orm::DatabaseConnection,
     issue_models: Vec<issues::Model>,
-) -> Result<Vec<IssueResponse>, AppError> {
+) -> Result<Vec<IssueDetailResponse>, AppError> {
     if issue_models.is_empty() {
         return Ok(vec![]);
     }
@@ -266,33 +361,91 @@ async fn enrich_issues(
         .into_iter()
         .map(|m| {
             let id = m.id;
-            IssueResponse {
+            IssueDetailResponse {
                 id,
                 name: m.name,
-                description_html: m.description_html,
-                priority: m.priority,
                 state_id: m.state_id,
-                parent_id: m.parent_id,
-                project_id: m.project_id,
-                workspace_id: m.workspace_id,
-                sequence_id: m.sequence_id,
                 sort_order: m.sort_order,
+                completed_at: m.completed_at,
+                estimate_point_id: m.estimate_point_id,
+                priority: m.priority,
                 start_date: m.start_date,
                 target_date: m.target_date,
-                completed_at: m.completed_at,
-                archived_at: m.archived_at,
-                is_draft: m.is_draft,
-                estimate_point_id: m.estimate_point_id,
-                type_id: m.type_id,
-                created_by_id: m.created_by_id,
-                updated_by_id: m.updated_by_id,
+                sequence_id: m.sequence_id,
+                project_id: m.project_id,
+                parent_id: m.parent_id,
+                // Stubs — commit 2 los reemplaza por `load_enrichment`.
+                cycle_id: None,
+                module_ids: Vec::new(),
+                sub_issues_count: 0,
+                attachment_count: 0,
+                link_count: 0,
+                is_subscribed: false,
+                is_intake: false,
+                // Enriquecidos reales:
+                label_ids: label_map.remove(&id).unwrap_or_default(),
+                assignee_ids: assignee_map.remove(&id).unwrap_or_default(),
+                // Flat fields del modelo:
+                description_html: m.description_html,
                 created_at: m.created_at,
                 updated_at: m.updated_at,
-                assignee_ids: assignee_map.remove(&id).unwrap_or_default(),
-                label_ids: label_map.remove(&id).unwrap_or_default(),
+                created_by_id: m.created_by_id,
+                updated_by_id: m.updated_by_id,
+                is_draft: m.is_draft,
+                archived_at: m.archived_at,
             }
         })
         .collect())
+}
+
+/// Construye el shape de respuesta de `POST /issues/` — espejo de la
+/// proyección `.values(...)` en `base.py:427-454`.
+///
+/// # Estado actual (commit 1)
+/// Reutiliza `enrich_issues` para obtener assignees/labels (los únicos
+/// enriquecidos reales del commit 1) y luego copia los campos flat al DTO
+/// de create. Los stubs (`cycle_id`, `module_ids`, counts) permanecen en
+/// defaults hasta commit 2.
+///
+/// # Nota sobre `deleted_at`
+/// Inmediatamente tras un create siempre es `None`, pero Django lo incluye
+/// en la proyección. Lo respetamos para paridad estricta de shape.
+async fn build_create_response(
+    db: &sea_orm::DatabaseConnection,
+    issue_model: issues::Model,
+) -> Result<IssueCreateResponse, AppError> {
+    let deleted_at = issue_model.deleted_at;
+    let mut detail = enrich_issues(db, vec![issue_model]).await?;
+    let d = detail.pop().ok_or(AppError::NotFound)?;
+
+    Ok(IssueCreateResponse {
+        id: d.id,
+        name: d.name,
+        state_id: d.state_id,
+        sort_order: d.sort_order,
+        completed_at: d.completed_at,
+        estimate_point_id: d.estimate_point_id,
+        priority: d.priority,
+        start_date: d.start_date,
+        target_date: d.target_date,
+        sequence_id: d.sequence_id,
+        project_id: d.project_id,
+        parent_id: d.parent_id,
+        cycle_id: d.cycle_id,
+        module_ids: d.module_ids,
+        label_ids: d.label_ids,
+        assignee_ids: d.assignee_ids,
+        sub_issues_count: d.sub_issues_count,
+        created_at: d.created_at,
+        updated_at: d.updated_at,
+        created_by_id: d.created_by_id,
+        updated_by_id: d.updated_by_id,
+        attachment_count: d.attachment_count,
+        link_count: d.link_count,
+        is_draft: d.is_draft,
+        archived_at: d.archived_at,
+        deleted_at,
+    })
 }
 
 /// Sincroniza los assignees de un issue dentro de una transacción.
@@ -608,7 +761,7 @@ pub async fn create_issue(
     State(state): State<AppState>,
     guard: ProjectMemberGuard,
     Json(body): Json<CreateIssueRequest>,
-) -> Result<(StatusCode, Json<IssueResponse>), AppError> {
+) -> Result<(StatusCode, Json<IssueCreateResponse>), AppError> {
     require_role(guard.project_member.role, guard.workspace_member.role, ROLE_MEMBER)?;
 
     if body.name.trim().is_empty() {
@@ -700,8 +853,7 @@ pub async fn create_issue(
             sea_orm::TransactionError::Connection(db_err) => AppError::Database(db_err),
         })?;
 
-    let mut result = enrich_issues(&state.db, vec![issue]).await?;
-    let response = result.pop().ok_or(AppError::NotFound)?;
+    let response = build_create_response(&state.db, issue).await?;
     Ok((StatusCode::CREATED, Json(response)))
 }
 
@@ -726,7 +878,7 @@ pub async fn get_issue(
     State(state): State<AppState>,
     guard: ProjectMemberGuard,
     Path((_slug, _project_id, pk)): Path<(String, Uuid, Uuid)>,
-) -> Result<Json<IssueResponse>, AppError> {
+) -> Result<Json<IssueDetailResponse>, AppError> {
     require_role(guard.project_member.role, guard.workspace_member.role, ROLE_GUEST)?;
 
     let issue = issues::Entity::find_by_id(pk)
@@ -753,17 +905,28 @@ pub async fn get_issue(
         ("pk" = Uuid, Path, description = "Issue ID"),
     ),
     responses(
-        (status = 200, description = "Issue actualizado"),
+        (status = 204, description = "Issue actualizado (sin body, paridad Django)"),
         (status = 404, description = "No encontrado"),
     ),
     security(("TokenAuth" = []))
 )]
+/// Actualiza un issue parcialmente.
+///
+/// # Paridad con Django
+/// Django responde **204 No Content** (ver `base.py:700`), no el issue
+/// actualizado. El frontend resuelve el nuevo estado por optimistic update
+/// a partir del body de la request (`base-issues.store.ts` → `updateIssue`).
+/// Devolver un body aquí sería divergencia de contrato.
+///
+/// # Side-effect del `let _ = ...`
+/// La transacción se ejecuta y persiste igual; el valor devuelto se
+/// descarta porque ya no se serializa.
 pub async fn update_issue(
     State(state): State<AppState>,
     guard: ProjectMemberGuard,
     Path((_slug, _project_id, pk)): Path<(String, Uuid, Uuid)>,
     Json(body): Json<UpdateIssueRequest>,
-) -> Result<Json<IssueResponse>, AppError> {
+) -> Result<StatusCode, AppError> {
     require_role(guard.project_member.role, guard.workspace_member.role, ROLE_MEMBER)?;
 
     let issue = issues::Entity::find_by_id(pk)
@@ -780,7 +943,9 @@ pub async fn update_issue(
     let assignees = body.assignees.clone();
     let label_ids = body.labels.clone();
 
-    let updated_issue = state
+    // El valor se descarta — PATCH devuelve 204 sin body (Django parity).
+    // Mantenemos el binding para propagar errores de tx; el `_` evita warning.
+    let _ = state
         .db
         .transaction::<_, issues::Model, AppError>(|txn| {
             let mut am: issues::ActiveModel = issue.into();
@@ -838,8 +1003,7 @@ pub async fn update_issue(
             sea_orm::TransactionError::Connection(db_err) => AppError::Database(db_err),
         })?;
 
-    let mut result = enrich_issues(&state.db, vec![updated_issue]).await?;
-    Ok(Json(result.pop().ok_or(AppError::NotFound)?))
+    Ok(StatusCode::NO_CONTENT)
 }
 
 // ── DELETE /workspaces/{slug}/projects/{project_id}/issues/{pk}/ ──────────────
