@@ -9,13 +9,14 @@
 //!   DELETE /api/workspaces/{slug}/projects/{project_id}/issues/{pk}/
 
 use axum::{
-    extract::{Path, State},
+    extract::{Path, Query, State},
     http::StatusCode,
+    response::IntoResponse,
     Json,
 };
 use sea_orm::{
-    ActiveModelTrait, ActiveValue::Set, ColumnTrait, EntityTrait, IsolationLevel, QueryFilter,
-    QueryOrder, TransactionTrait,
+    ActiveModelTrait, ActiveValue::Set, ColumnTrait, EntityTrait, IsolationLevel, PaginatorTrait,
+    QueryFilter, QuerySelect, TransactionTrait,
 };
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
@@ -27,6 +28,10 @@ use crate::{
     },
     entities::{issue_assignees, issue_labels, issues, labels},
     error::AppError,
+    routes::issue_pagination::{
+        apply_issue_order, collect_state_ids, empty_paginated_response, load_enrichment,
+        load_triage_state_ids, paginated_response, parse_cursor, DEFAULT_PER_PAGE,
+    },
     utils::soft_delete::SoftDeleteExt,
     AppState,
 };
@@ -90,6 +95,66 @@ pub struct UpdateIssueRequest {
     pub assignees: Option<Vec<Uuid>>,
     pub labels: Option<Vec<Uuid>>,
     pub is_draft: Option<bool>,
+}
+
+// ── Query params para list_issues ────────────────────────────────────────────
+
+/// Query params de `GET /workspaces/{slug}/projects/{project_id}/issues/`.
+/// Mirror parcial de `IssueViewSet.list()` (apps/api/plane/app/views/issue/base.py:251).
+///
+/// Campos postergados a futuras iteraciones (no críticos para desbloquear el
+/// render del panel de integrations):
+///   - `group_by` / `sub_group_by`    → requieren paginators dedicados.
+///   - filtros de `issue_filters(...)` → labels, assignees, priority, etc.
+#[derive(Debug, Deserialize)]
+pub struct ListIssuesQuery {
+    pub cursor:   Option<String>,
+    pub per_page: Option<u64>,
+    pub order_by: Option<String>,
+}
+
+// ── DTO serializado en la respuesta paginada ─────────────────────────────────
+
+/// Espejo exacto de `issue_on_results` en
+/// `apps/api/plane/utils/grouper.py:93-141`.
+///
+/// Son los 23 campos que Django expone vía `.values(*required_fields)` en el
+/// listado paginado, más los tres arrays enriquecidos (`assignee_ids`,
+/// `label_ids`, `module_ids`).
+///
+/// Los nombres se serializan exactamente como en Django para que el frontend
+/// (`base-issues.store.ts` + `packages/types/src/issues/issue.ts`) no requiera
+/// cambios. `state__group` usa rename explícito para respetar el doble-guion
+/// bajo de Django.
+#[derive(Debug, Serialize)]
+pub struct ProjectIssueItem {
+    pub id:               Uuid,
+    pub name:             String,
+    pub state_id:         Option<Uuid>,
+    pub sort_order:       f64,
+    pub completed_at:     Option<chrono::DateTime<chrono::FixedOffset>>,
+    pub estimate_point:   Option<Uuid>,
+    pub priority:         String,
+    pub start_date:       Option<chrono::NaiveDate>,
+    pub target_date:      Option<chrono::NaiveDate>,
+    pub sequence_id:      i32,
+    pub project_id:       Uuid,
+    pub parent_id:        Option<Uuid>,
+    pub cycle_id:         Option<Uuid>,
+    pub sub_issues_count: i64,
+    pub created_at:       chrono::DateTime<chrono::FixedOffset>,
+    pub updated_at:       chrono::DateTime<chrono::FixedOffset>,
+    pub created_by:       Option<Uuid>,
+    pub updated_by:       Option<Uuid>,
+    pub attachment_count: i64,
+    pub link_count:       i64,
+    pub is_draft:         bool,
+    pub archived_at:      Option<chrono::NaiveDate>,
+    #[serde(rename = "state__group")]
+    pub state_group:      Option<String>,
+    pub assignee_ids:     Vec<Uuid>,
+    pub label_ids:        Vec<Uuid>,
+    pub module_ids:       Vec<Uuid>,
 }
 
 // ── Helper ────────────────────────────────────────────────────────────────────
@@ -268,11 +333,14 @@ async fn sync_labels(
     path = "/api/workspaces/{slug}/projects/{project_id}/issues/",
     tag = "Issues",
     params(
-        ("slug" = String, Path, description = "Workspace slug"),
-        ("project_id" = Uuid, Path, description = "Project ID"),
+        ("slug"       = String, Path,  description = "Workspace slug"),
+        ("project_id" = Uuid,   Path,  description = "Project ID"),
+        ("cursor"     = Option<String>, Query, description = "Cursor Django: {per_page}:{page}:{is_prev}"),
+        ("per_page"   = Option<u64>,    Query, description = "Tamaño de página (ignorado si viene en cursor)"),
+        ("order_by"   = Option<String>, Query, description = "Campo de ordenamiento, ej: -created_at"),
     ),
     responses(
-        (status = 200, description = "Lista de issues"),
+        (status = 200, description = "Lista paginada de issues del proyecto"),
         (status = 403, description = "Sin acceso"),
     ),
     security(("TokenAuth" = []))
@@ -280,21 +348,142 @@ async fn sync_labels(
 pub async fn list_issues(
     State(state): State<AppState>,
     guard: ProjectMemberGuard,
-) -> Result<Json<Vec<IssueResponse>>, AppError> {
+    Query(params): Query<ListIssuesQuery>,
+) -> Result<impl IntoResponse, AppError> {
     require_role(guard.project_member.role, guard.workspace_member.role, ROLE_GUEST)?;
 
-    let rows = issues::Entity::find()
+    let db = &state.db;
+    let project_id = guard.project.id;
+    let user_id = guard.user.id;
+
+    // ── 1. Paginación ─────────────────────────────────────────────────────────
+    let fallback_per_page = params.per_page.unwrap_or(DEFAULT_PER_PAGE);
+    let (page_size, current_page) = parse_cursor(params.cursor.as_deref(), fallback_per_page);
+
+    // ── 2. Mirror de `IssueManager.get_queryset` (db/models/issue.py:92-101) ──
+    //
+    // El manager Django aplica 4 exclusiones implícitas a TODOS los listados
+    // que parten de `Issue.issue_objects`. La lista hereda además el
+    // `SoftDeletionManager.active()` → `deleted_at IS NULL`.
+    //
+    //   1. deleted_at IS NULL                    ← `.active()`
+    //   2. archived_at IS NULL                   ← filtro explícito
+    //   3. project.archived_at IS NULL           ← early-return si el project
+    //                                               cargado por el guard ya
+    //                                               está archivado. No puede
+    //                                               cambiar dentro de esta
+    //                                               request.
+    //   4. is_draft = false                      ← filtro explícito
+    //   5. state.group != 'triage'               ← pre-query de state_ids en
+    //                                               triage + NOT IN.
+    //
+    // Antipatrón evitado: NO hacemos JOIN con `states` en cada query; los
+    // state IDs en triage se resuelven en una única query adicional.
+
+    if guard.project.archived_at.is_some() {
+        // Proyecto archivado → no hay issues visibles (mirror de la exclusión
+        // del manager). Respondemos con el shape paginado vacío.
+        return Ok(Json(empty_paginated_response(page_size)));
+    }
+
+    let triage_state_ids = load_triage_state_ids(db, project_id).await?;
+
+    // ── 3. Query base de issues del proyecto ──────────────────────────────────
+    let mut base_query = issues::Entity::find()
         .active()
-        .filter(issues::Column::ProjectId.eq(guard.project.id))
+        .filter(issues::Column::ProjectId.eq(project_id))
         .filter(issues::Column::ArchivedAt.is_null())
-        .filter(issues::Column::IsDraft.eq(false))
-        .order_by_asc(issues::Column::CreatedAt)
-        .all(&state.db)
+        .filter(issues::Column::IsDraft.eq(false));
+
+    if !triage_state_ids.is_empty() {
+        base_query = base_query.filter(issues::Column::StateId.is_not_in(triage_state_ids));
+    }
+
+    // ── 4. Restricción guest ──────────────────────────────────────────────────
+    //
+    // Mirror de base.py:297-308: si el user es role=5 en este proyecto Y el
+    // proyecto tiene `guest_view_all_features=false`, solo ve sus propios
+    // issues (`created_by = user`).
+    //
+    // El guard ya validó la membresía; `project_member.role` es el rol en
+    // este proyecto específico.
+    let is_restricted_guest = guard.project_member.role == 5 && !guard.project.guest_view_all_features;
+    if is_restricted_guest {
+        base_query = base_query.filter(issues::Column::CreatedById.eq(user_id));
+    }
+
+    // ── 5. Total count ────────────────────────────────────────────────────────
+    let total_results = base_query.clone().count(db).await.map_err(AppError::Database)?;
+
+    // ── 6. Ordenamiento ───────────────────────────────────────────────────────
+    let order_by_param = params.order_by.as_deref().unwrap_or("-created_at");
+    let ordered_query = apply_issue_order(base_query, order_by_param);
+
+    // ── 7. Paginación offset ──────────────────────────────────────────────────
+    let start_index = current_page * page_size;
+    let issue_models = ordered_query
+        .offset(start_index)
+        .limit(page_size)
+        .all(db)
         .await
         .map_err(AppError::Database)?;
 
-    let result = enrich_issues(&state.db, rows).await?;
-    Ok(Json(result))
+    // ── 8. Enriquecimiento batch (sin N+1) ────────────────────────────────────
+    let issue_ids: Vec<Uuid> = issue_models.iter().map(|i| i.id).collect();
+    let state_ids = collect_state_ids(&issue_models);
+
+    let mut enrich = load_enrichment(db, &issue_ids, &state_ids).await?;
+
+    // ── 9. Serializar a ProjectIssueItem (mirror `issue_on_results`) ──────────
+    let results: Vec<ProjectIssueItem> = issue_models
+        .into_iter()
+        .map(|m| {
+            let id = m.id;
+            let state_group = m
+                .state_id
+                .and_then(|sid| enrich.state_groups.get(&sid).cloned());
+
+            ProjectIssueItem {
+                id,
+                name: m.name,
+                state_id: m.state_id,
+                sort_order: m.sort_order,
+                completed_at: m.completed_at,
+                estimate_point: m.estimate_point_id,
+                priority: m.priority,
+                start_date: m.start_date,
+                target_date: m.target_date,
+                sequence_id: m.sequence_id,
+                project_id: m.project_id,
+                parent_id: m.parent_id,
+                cycle_id: enrich.cycles.remove(&id),
+                sub_issues_count: enrich.sub_counts.get(&id).copied().unwrap_or(0),
+                created_at: m.created_at,
+                updated_at: m.updated_at,
+                created_by: m.created_by_id,
+                updated_by: m.updated_by_id,
+                attachment_count: enrich.attachments.get(&id).copied().unwrap_or(0),
+                link_count: enrich.links.get(&id).copied().unwrap_or(0),
+                is_draft: m.is_draft,
+                archived_at: m.archived_at,
+                state_group,
+                assignee_ids: enrich.assignees.remove(&id).unwrap_or_default(),
+                label_ids: enrich.labels.remove(&id).unwrap_or_default(),
+                module_ids: enrich.modules.remove(&id).unwrap_or_default(),
+            }
+        })
+        .collect();
+
+    // ── 10. Respuesta paginada ────────────────────────────────────────────────
+    //
+    // Shape mirror de `OffsetPaginator.paginate()` (plane/utils/paginator.py:715-730).
+    // El frontend lee `total_count` y `results` en base-issues.store.ts:1272-1291.
+    Ok(Json(paginated_response(
+        results,
+        page_size,
+        current_page,
+        total_results,
+    )))
 }
 
 // ── POST /workspaces/{slug}/projects/{project_id}/issues/ ─────────────────────
