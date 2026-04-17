@@ -125,54 +125,142 @@ fn csv_contains_none(raw: &str) -> bool {
     raw.split(',').map(str::trim).any(|s| s == "None")
 }
 
-// ── Guard contra rich filters (conocido gap vs Django) ───────────────────────
+// ── Parseo de rich filters (subconjunto Django-parity) ──────────────────────
 
-/// El frontend envía `?filters=<JSON>` cuando hay un rich-filter tree activo
-/// (p. ej. un view guardado con `{and: [{priority__in: ["high"]}, ...]}`).
-/// Django lo procesa con `ComplexFilterBackend` + `IssueFilterSet`; la
-/// implementación Rust aún NO porta esa capa, así que ignorarlo silenciosamente
-/// produciría issues "filtrados" mal (el user vería más de lo que debería).
+/// Parsea `?filters=<JSON>` y fusiona los campos reconocidos en `params`.
 ///
-/// Este guard devuelve 400 BadRequest cuando el param viene con **contenido
-/// real**. Formas vacías equivalentes a "sin filtros" se aceptan como no-op
-/// porque ciertos layouts del frontend (gantt_chart, spreadsheet) siempre
-/// construyen el param aunque no haya filtros activos.
+/// El frontend envía este blob cuando usa el layout=spreadsheet o una vista
+/// guardada, p. ej. `?filters={"state_group__in":"backlog"}`. Django lo
+/// procesa con `ComplexFilterBackend` + `IssueFilterSet`; la Rust API porta
+/// el subconjunto de keys 1:1 mapeables a los flat params que este módulo ya
+/// implementa.
 ///
-/// # Formas tratadas como no-op
-/// - Param ausente (`raw == None`)
-/// - Param vacío (`filters=`)
-/// - `filters={}`  — objeto vacío (el caso del gantt chart)
-/// - `filters=[]`  — array vacío
-/// - `filters=null`
+/// Keys reconocidas (espejo de `IssueFilterSet` en
+/// `plane/utils/filters/filterset.py`):
 ///
-/// # Forma que dispara 400
-/// Cualquier JSON con contenido (keys en un objeto, items en un array,
-/// literal no-null) o JSON malformado.
+/// | JSON key                   | `IssueFilterParams` field |
+/// |----------------------------|--------------------------|
+/// | `state_group` / `...__in`  | `state_group`            |
+/// | `state_id`    / `...__in`  | `state`                  |
+/// | `priority`    / `...__in`  | `priority`               |
+/// | `label_id`    / `...__in`  | `labels`                 |
+/// | `assignee_id` / `...__in`  | `assignees`              |
+/// | `created_by_id`/ `...__in` | `created_by`             |
+/// | `module_id`   / `...__in`  | `module`                 |
+/// | `cycle_id`    / `...__in`  | `cycle`                  |
 ///
-/// Referencias:
-///   - Django backend: `plane/utils/filters/filter_backend.py`
-///   - Django filterset: `plane/utils/filters/filterset.py::IssueFilterSet`
-///   - Frontend origin:  `apps/web/core/store/issue/helpers/
-///                        issue-filter-helper.store.ts:116`
-pub fn reject_if_rich_filters(raw: Option<&str>) -> Result<(), AppError> {
-    // Early-return para param ausente o vacío — no hay nada que parsear.
+/// # Prioridad
+///
+/// Si el flat query-param ya está seteado (`Some`), el valor del JSON se
+/// ignora — flat params tienen precedencia (el usuario los puso explícitamente
+/// en la URL además del blob `filters`).
+///
+/// # Seguridad
+///
+/// Keys **desconocidas** retornan 400. Ignorarlas silenciosamente devolvería
+/// más resultados de los esperados (data leak semántico); mejor fallar
+/// explícitamente y trackear el gap.
+///
+/// # No-ops seguros
+///
+/// - `filters` ausente, vacío, `null`, `{}`, `[]` → sin cambios en `params`.
+pub fn merge_json_filters(
+    raw: Option<&str>,
+    params: &mut IssueFilterParams,
+) -> Result<(), AppError> {
     let Some(trimmed) = raw.map(str::trim).filter(|s| !s.is_empty()) else {
         return Ok(());
     };
 
-    // Parsear y diferenciar "vacío estructural" de "con contenido".
-    // Si el parse falla, lo tratamos como rich-filter malformado → 400.
-    match serde_json::from_str::<serde_json::Value>(trimmed) {
-        Ok(serde_json::Value::Null) => Ok(()),
-        Ok(serde_json::Value::Object(m)) if m.is_empty() => Ok(()),
-        Ok(serde_json::Value::Array(a)) if a.is_empty() => Ok(()),
-        _ => Err(AppError::BadRequest(
-            "Rich filters (?filters=<JSON>) are not yet supported by the Rust \
-             API. Use the flat query params (priority, state, labels, \
-             assignees, cycle, module, etc.) or hit the Django backend. \
-             Tracking: rich-filters Django-parity follow-up."
-                .into(),
-        )),
+    let obj = match serde_json::from_str::<serde_json::Value>(trimmed) {
+        Ok(serde_json::Value::Null) => return Ok(()),
+        Ok(serde_json::Value::Object(m)) if m.is_empty() => return Ok(()),
+        Ok(serde_json::Value::Array(a)) if a.is_empty() => return Ok(()),
+        Ok(serde_json::Value::Object(m)) => m,
+        Ok(_) => {
+            return Err(AppError::BadRequest(
+                "?filters debe ser un objeto JSON (recibido: array, string o número)".into(),
+            ))
+        }
+        Err(_) => {
+            return Err(AppError::BadRequest(
+                "?filters contiene JSON malformado".into(),
+            ))
+        }
+    };
+
+    for (key, val) in &obj {
+        let csv = json_filter_value_to_csv(val).map_err(|_| {
+            AppError::BadRequest(format!(
+                "?filters: valor inválido para la clave '{}' (se esperaba string o array de strings)",
+                key
+            ))
+        })?;
+
+        // Sólo escribe si el flat param no tiene ya un valor (flat params
+        // tienen precedencia sobre el blob JSON).
+        match key.as_str() {
+            "state_group" | "state_group__in" => {
+                params.state_group.get_or_insert(csv);
+            }
+            "state_id" | "state_id__in" => {
+                params.state.get_or_insert(csv);
+            }
+            "priority" | "priority__in" => {
+                params.priority.get_or_insert(csv);
+            }
+            "label_id" | "label_id__in" => {
+                params.labels.get_or_insert(csv);
+            }
+            "assignee_id" | "assignee_id__in" => {
+                params.assignees.get_or_insert(csv);
+            }
+            "created_by_id" | "created_by_id__in" => {
+                params.created_by.get_or_insert(csv);
+            }
+            "module_id" | "module_id__in" => {
+                params.module.get_or_insert(csv);
+            }
+            "cycle_id" | "cycle_id__in" => {
+                params.cycle.get_or_insert(csv);
+            }
+            unknown => {
+                return Err(AppError::BadRequest(format!(
+                    "?filters: la clave '{}' no está soportada por la Rust API. \
+                     Usa los flat query params equivalentes (priority, state_group, \
+                     labels, assignees, cycle, module, etc.) o apunta al backend Django. \
+                     Tracking: rich-filters Django-parity follow-up.",
+                    unknown
+                )));
+            }
+        }
+    }
+
+    Ok(())
+}
+
+/// Convierte el valor JSON de un filtro a una cadena CSV compatible con
+/// `IssueFilterParams` (los campos son `Option<String>` comma-separated).
+///
+/// Acepta:
+/// - `"backlog"` → `"backlog"`
+/// - `["high","medium"]` → `"high,medium"`
+/// - `["uuid1","uuid2"]` → `"uuid1,uuid2"`
+fn json_filter_value_to_csv(val: &serde_json::Value) -> Result<String, ()> {
+    match val {
+        serde_json::Value::String(s) => Ok(s.clone()),
+        serde_json::Value::Array(arr) => {
+            let parts: Result<Vec<String>, ()> = arr
+                .iter()
+                .map(|v| match v {
+                    serde_json::Value::String(s) => Ok(s.clone()),
+                    serde_json::Value::Number(n) => Ok(n.to_string()),
+                    _ => Err(()),
+                })
+                .collect();
+            Ok(parts?.join(","))
+        }
+        _ => Err(()),
     }
 }
 

@@ -41,7 +41,7 @@ use crate::{
         apply_issue_order, collect_state_ids, empty_paginated_response, load_enrichment,
         load_workspace_triage_state_ids, paginated_response, parse_cursor, DEFAULT_PER_PAGE,
     },
-    routes::issue_filters::{apply_issue_filters, reject_if_rich_filters, FilteredQuery},
+    routes::issue_filters::{apply_issue_filters, merge_json_filters, FilteredQuery},
     utils::soft_delete::SoftDeleteExt,
     AppState,
 };
@@ -81,10 +81,10 @@ pub struct WorkspaceIssuesQuery {
     pub type_filter:       Option<String>,
     pub start_target_date: Option<String>,
 
-    // ── Rich filters (known gap vs Django) ───────────────────────────────────
+    // ── Rich filters (subconjunto Django-parity) ─────────────────────────────
     //
-    // Capturado solo para detectar presencia y rechazar con 400.
-    // Ver `issue_filters::reject_if_rich_filters`.
+    // Blob JSON que el frontend envía en spreadsheet layout y vistas guardadas.
+    // Se parsea con `issue_filters::merge_json_filters`; keys desconocidas → 400.
     pub filters:           Option<String>,
 }
 
@@ -173,11 +173,6 @@ pub async fn list_workspace_view_issues(
     guard: WorkspaceMemberGuard,
     Query(params): Query<WorkspaceIssuesQuery>,
 ) -> Result<impl IntoResponse, AppError> {
-    // Rechaza `?filters=<JSON>` antes de ejecutar nada — ver
-    // `issue_filters::reject_if_rich_filters` para el contexto completo del
-    // gap vs `ComplexFilterBackend` de Django.
-    reject_if_rich_filters(params.filters.as_deref())?;
-
     let db = &state.db;
     let workspace_id = guard.workspace.id;
     let user_id = guard.user.id;
@@ -340,7 +335,11 @@ pub async fn list_workspace_view_issues(
     // state, state_group, priority, created_by, parent, name, start_date,
     // target_date, labels, assignees, module, cycle, type, start_target_date.
     // Ver `routes::issue_filters` para el mapeo detallado.
-    let filter_params = params.to_filter_params();
+    //
+    // `merge_json_filters` fusiona el blob `?filters=<JSON>` (spreadsheet
+    // layout, views guardadas) sobre los flat params. Keys desconocidas → 400.
+    let mut filter_params = params.to_filter_params();
+    merge_json_filters(params.filters.as_deref(), &mut filter_params)?;
     let filtered = apply_issue_filters(db, base_query, &filter_params, workspace_id).await?;
     let base_query = match filtered {
         FilteredQuery::Active(q) => q,

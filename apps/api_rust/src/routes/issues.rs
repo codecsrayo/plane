@@ -32,7 +32,7 @@ use crate::{
         apply_issue_order, collect_state_ids, empty_paginated_response, load_enrichment,
         load_triage_state_ids, paginated_response, parse_cursor, DEFAULT_PER_PAGE,
     },
-    routes::issue_filters::{apply_issue_filters, reject_if_rich_filters, FilteredQuery},
+    routes::issue_filters::{apply_issue_filters, merge_json_filters, FilteredQuery},
     utils::soft_delete::SoftDeleteExt,
     AppState,
 };
@@ -223,11 +223,11 @@ pub struct ListIssuesQuery {
     pub type_filter:       Option<String>,
     pub start_target_date: Option<String>,
 
-    // ── Rich filters (known gap vs Django) ───────────────────────────────────
+    // ── Rich filters (subconjunto Django-parity) ─────────────────────────────
     //
-    // Capturado solo para detectar su presencia y rechazar con 400 antes de
-    // ejecutar la query. NO se parsea — ver
-    // `issue_filters::reject_if_rich_filters` para el contexto completo.
+    // Blob JSON que el frontend envía en spreadsheet layout y vistas guardadas.
+    // Se parsea con `issue_filters::merge_json_filters` y se fusiona en los
+    // flat params; keys desconocidas → 400.
     pub filters:           Option<String>,
 }
 
@@ -564,11 +564,12 @@ pub async fn list_issues(
 ) -> Result<impl IntoResponse, AppError> {
     require_role(guard.project_member.role, guard.workspace_member.role, ROLE_GUEST)?;
 
-    // Rechaza `?filters=<JSON>` antes de ejecutar nada — el frontend lo envía
-    // cuando hay un rich-filter tree activo (views guardados, etc.). El port
-    // Rust aún no implementa `ComplexFilterBackend`; aceptar la request sin
-    // aplicar el filtro devolvería resultados incorrectos silenciosamente.
-    reject_if_rich_filters(params.filters.as_deref())?;
+    // Parsea `?filters=<JSON>` y fusiona los campos reconocidos en los
+    // filter_params (state_group__in, priority__in, label_id__in, etc.).
+    // Keys desconocidas retornan 400 para prevenir data leaks silenciosos.
+    // Ver `issue_filters::merge_json_filters` para el mapeo completo.
+    let mut filter_params = params.to_filter_params();
+    merge_json_filters(params.filters.as_deref(), &mut filter_params)?;
 
     let db = &state.db;
     let project_id = guard.project.id;
@@ -650,11 +651,14 @@ pub async fn list_issues(
     // `type`, `start_target_date`. Ver `routes::issue_filters` para la
     // lista completa y el mapeo detallado.
     //
+    // `filter_params` ya incluye la fusión del blob `?filters=<JSON>` hecha
+    // al inicio del handler — usamos esa versión (NO llamar `to_filter_params`
+    // de nuevo, sombrearía la fusión y descartaría el JSON).
+    //
     // `FilteredQuery::Empty` → algún filtro implica 0 matches garantizados
     // (p. ej. `labels=<uuid>` sin ningún issue con ese label). Hacemos
     // early-return con el shape paginado vacío.
     let workspace_id = guard.workspace.id;
-    let filter_params = params.to_filter_params();
     let filtered = apply_issue_filters(db, base_query, &filter_params, workspace_id).await?;
     let base_query = match filtered {
         FilteredQuery::Active(q) => q,
