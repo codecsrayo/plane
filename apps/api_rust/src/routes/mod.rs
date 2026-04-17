@@ -24,6 +24,7 @@ pub mod notifications;
 pub mod webhooks;
 pub mod health;
 pub mod issue_extras;
+pub mod issue_pagination;
 pub mod issues;
 pub mod modules;
 pub mod helpers;
