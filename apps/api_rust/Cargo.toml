@@ -19,7 +19,7 @@ async-trait  = "0.1.89"
 thiserror    = "2.0.18"
 
 # Async runtime
-tokio = { version = "1.51.1", features = [
+tokio = { version = "1.52.1", features = [
     "rt-multi-thread",  # runtime multi-hilo para #[tokio::main]
     "macros",           # #[tokio::main], #[tokio::test]
     "net",              # tokio::net (TcpListener en Axum)
@@ -103,7 +103,7 @@ hmac-sha256  = "1.1.12"   # HMAC-SHA256 puro sin deps, para firma SigV4 presigne
 serde      = { version = "1.0.228", features = ["derive"] }
 serde_json = "1.0.149"
 chrono     = { version = "0.4.44", features = ["serde"] }
-uuid       = { version = "1.23.0", features = ["v4", "serde"] }
+uuid       = { version = "1.23.1", features = ["v4", "serde"] }
 time       = "0.3.47"    # Cookie::max_age en session logout
 zxcvbn     = "3.1.0"
 
@@ -113,7 +113,7 @@ base64     = "0.22.1" # encode/decode de cursores de paginación
 dotenvy    = "0.15.7" # carga de .env en desarrollo
 flate2     = "1.1.9"
 urlencoding = "2.1.3" # encode de parámetros en URLs de reset password
-rand       = "0.9"     # random color generation (mirrors Django get_random_color)
+rand       = "0.10.1"     # random color generation (mirrors Django get_random_color)
 regex      = "1.11.1" # html_to_text en email_notification
 
 # Export de issues — paridad con apps/api/plane/bgtasks/export_task.py
@@ -121,7 +121,7 @@ regex      = "1.11.1" # html_to_text en email_notification
 # - `rust_xlsxwriter`: emite .xlsx (Django usa `openpyxl`).
 # - `csv`: escape RFC 4180 + sanitización de inyección CSV consistente con
 #   `apps/api/plane/utils/csv_utils.py::sanitize_csv_value`.
-zip             = { version = "2.2", default-features = false, features = ["deflate"] }
+zip             = { version = "8.5.1", default-features = false, features = ["deflate"] }
 rust_xlsxwriter = "0.94"
 csv             = "1.3"
 
