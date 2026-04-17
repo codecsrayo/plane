@@ -32,6 +32,7 @@ use crate::{
         apply_issue_order, collect_state_ids, empty_paginated_response, load_enrichment,
         load_triage_state_ids, paginated_response, parse_cursor, DEFAULT_PER_PAGE,
     },
+    routes::issue_filters::{apply_issue_filters, FilteredQuery},
     utils::soft_delete::SoftDeleteExt,
     AppState,
 };
@@ -108,9 +109,12 @@ pub struct UpdateIssueRequest {
 ///   - filtros de `issue_filters(...)` → labels, assignees, priority, etc.
 #[derive(Debug, Deserialize)]
 pub struct ListIssuesQuery {
+    // ── Paginación / orden ────────────────────────────────────────────────────
     pub cursor:   Option<String>,
     pub per_page: Option<u64>,
     pub order_by: Option<String>,
+
+    // ── Toggles simples ───────────────────────────────────────────────────────
     /// `false` excluye sub-issues (mirror de `filter_sub_issue_toggle`
     /// en plane/utils/issue_filters.py:380).
     pub sub_issue: Option<String>,
@@ -118,6 +122,52 @@ pub struct ListIssuesQuery {
     /// Mirror del `updated_at__gt` en base.py:256.
     #[serde(rename = "updated_at__gt")]
     pub updated_at_gt: Option<chrono::DateTime<chrono::FixedOffset>>,
+
+    // ── Filtros delegados al módulo `issue_filters` ──────────────────────────
+    //
+    // Se inlinean aquí porque axum's `Query<T>` usa `serde_urlencoded`, que
+    // no soporta `#[serde(flatten)]`. La duplicación entre este struct y
+    // `WorkspaceIssuesQuery` es el precio — la lógica de parsing y
+    // aplicación vive en un solo lugar (`issue_filters::apply_issue_filters`).
+    pub state:             Option<String>,
+    pub state_group:       Option<String>,
+    pub priority:          Option<String>,
+    pub created_by:        Option<String>,
+    pub parent:            Option<String>,
+    pub name:              Option<String>,
+    pub start_date:        Option<String>,
+    pub target_date:       Option<String>,
+    pub labels:            Option<String>,
+    pub assignees:         Option<String>,
+    pub module:            Option<String>,
+    pub cycle:             Option<String>,
+    #[serde(rename = "type")]
+    pub type_filter:       Option<String>,
+    pub start_target_date: Option<String>,
+}
+
+impl ListIssuesQuery {
+    /// Construye los parámetros de filtro para pasar a
+    /// `issue_filters::apply_issue_filters`. Los campos son `Option<String>`,
+    /// así que el move es barato (no allocations extra).
+    fn to_filter_params(&self) -> crate::routes::issue_filters::IssueFilterParams {
+        crate::routes::issue_filters::IssueFilterParams {
+            state:             self.state.clone(),
+            state_group:       self.state_group.clone(),
+            priority:          self.priority.clone(),
+            created_by:        self.created_by.clone(),
+            parent:            self.parent.clone(),
+            name:              self.name.clone(),
+            start_date:        self.start_date.clone(),
+            target_date:       self.target_date.clone(),
+            labels:            self.labels.clone(),
+            assignees:         self.assignees.clone(),
+            module:            self.module.clone(),
+            cycle:             self.cycle.clone(),
+            type_filter:       self.type_filter.clone(),
+            start_target_date: self.start_target_date.clone(),
+        }
+    }
 }
 
 // ── DTO serializado en la respuesta paginada ─────────────────────────────────
@@ -431,6 +481,24 @@ pub async fn list_issues(
     if let Some(updated_at_gt) = params.updated_at_gt {
         base_query = base_query.filter(issues::Column::UpdatedAt.gt(updated_at_gt));
     }
+
+    // ── 4.5. Filtros del módulo compartido ────────────────────────────────────
+    //
+    // `state`, `state_group`, `priority`, `created_by`, `parent`, `name`,
+    // `start_date`, `target_date`, `labels`, `assignees`, `module`, `cycle`,
+    // `type`, `start_target_date`. Ver `routes::issue_filters` para la
+    // lista completa y el mapeo detallado.
+    //
+    // `FilteredQuery::Empty` → algún filtro implica 0 matches garantizados
+    // (p. ej. `labels=<uuid>` sin ningún issue con ese label). Hacemos
+    // early-return con el shape paginado vacío.
+    let workspace_id = guard.workspace.id;
+    let filter_params = params.to_filter_params();
+    let filtered = apply_issue_filters(db, base_query, &filter_params, workspace_id).await?;
+    let base_query = match filtered {
+        FilteredQuery::Active(q) => q,
+        FilteredQuery::Empty => return Ok(Json(empty_paginated_response(page_size))),
+    };
 
     // ── 5. Total count ────────────────────────────────────────────────────────
     let total_results = base_query.clone().count(db).await.map_err(AppError::Database)?;
