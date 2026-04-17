@@ -505,24 +505,28 @@ pub async fn get_settings(
         // donde el user es miembro activo.
         // Mirror: `.filter(workspace_member__member_id=obj.id,
         //                  workspace_member__is_active=True).order_by("created_at").first()`.
-        let fallback_member = workspace_members::Entity::find()
+        //
+        // Implementado como JOIN single-query para mantener paridad con Django:
+        // una versión previa hacía `workspace_members.find().order_by(wm.created_at)
+        // .limit(1)` y luego `workspaces.find_by_id(...)`. Ese patrón rompe en dos
+        // dimensiones respecto a Django:
+        //   1) Si el user tiene una membresía activa en un workspace
+        //      soft-deleted MÁS ANTIGUO que uno vivo, el LIMIT 1 captura la fila
+        //      muerta y el find_by_id posterior devuelve None → fallback = null.
+        //      El ORM de Django filtra `workspaces.deleted_at IS NULL` en el mismo
+        //      SELECT antes del LIMIT, así que el soft-deleted nunca compite.
+        //   2) Ordenaba por `workspace_members.created_at`, pero Django ordena por
+        //      `workspaces.created_at` — columnas distintas, valores distintos.
+        let fallback_ws = workspaces::Entity::find()
+            .active()
+            .inner_join(workspace_members::Entity)
             .filter(workspace_members::Column::MemberId.eq(user.id))
             .filter(workspace_members::Column::IsActive.eq(true))
-            .active()
-            .order_by_asc(workspace_members::Column::CreatedAt)
+            .filter(workspace_members::Column::DeletedAt.is_null())
+            .order_by_asc(workspaces::Column::CreatedAt)
             .one(&state.db)
             .await
             .map_err(AppError::Database)?;
-
-        let fallback_ws = if let Some(member) = fallback_member {
-            workspaces::Entity::find_by_id(member.workspace_id)
-                .active()
-                .one(&state.db)
-                .await
-                .map_err(AppError::Database)?
-        } else {
-            None
-        };
 
         UserSettingsWorkspace {
             last_workspace_id: None,
