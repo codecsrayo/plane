@@ -13,6 +13,16 @@ import type { IUser } from "@plane/types";
 // root store
 import type { RootStore } from "@/store/root.store";
 
+/** Shape of HTTP/Axios-style errors thrown by Plane services. */
+interface IServiceError {
+  status?: number;
+  message?: string;
+}
+
+function isServiceError(error: unknown): error is IServiceError {
+  return typeof error === "object" && error !== null;
+}
+
 export interface IUserStore {
   // observables
   isLoading: boolean;
@@ -20,7 +30,7 @@ export interface IUserStore {
   isUserLoggedIn: boolean | undefined;
   currentUser: IUser | undefined;
   // fetch actions
-  hydrate: (data: any) => void;
+  hydrate: (data: IUser | undefined) => void;
   fetchCurrentUser: () => Promise<IUser>;
   reset: () => void;
   signOut: () => void;
@@ -52,7 +62,7 @@ export class UserStore implements IUserStore {
     this.authService = new AuthService();
   }
 
-  hydrate = (data: any) => {
+  hydrate = (data: IUser | undefined) => {
     if (data) this.currentUser = data;
   };
 
@@ -79,18 +89,19 @@ export class UserStore implements IUserStore {
         });
       }
       return currentUser;
-    } catch (error: any) {
+    } catch (error: unknown) {
       this.isLoading = false;
       this.isUserLoggedIn = false;
-      if (error.status === 403)
+      const serviceError = isServiceError(error) ? error : {};
+      if (serviceError.status === 403)
         this.userStatus = {
           status: EUserStatus.AUTHENTICATION_NOT_DONE,
-          message: error?.message || "",
+          message: serviceError.message ?? "",
         };
       else
         this.userStatus = {
           status: EUserStatus.ERROR,
-          message: error?.message || "",
+          message: serviceError.message ?? "",
         };
       throw error;
     }

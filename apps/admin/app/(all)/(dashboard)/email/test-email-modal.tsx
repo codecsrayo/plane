@@ -55,8 +55,12 @@ export function SendTestEmailModal(props: Props) {
     try {
       await instanceService.sendTestEmail(receiverEmail);
       setSendEmailStep(ESendEmailSteps.SUCCESS);
-    } catch (sendError: any) {
-      setError(sendError?.error || "Failed to send email");
+    } catch (sendError: unknown) {
+      const errorMessage =
+        typeof sendError === "object" && sendError !== null && "error" in sendError
+          ? String((sendError as Record<string, unknown>).error)
+          : "Failed to send email";
+      setError(errorMessage);
       setSendEmailStep(ESendEmailSteps.FAILED);
     } finally {
       setIsLoading(false);

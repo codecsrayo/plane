@@ -7,12 +7,13 @@
 import { createContext } from "react";
 // plane admin store
 import { RootStore } from "../store/root.store";
+import type { TRootStoreHydrateData } from "../store/root.store";
 
 let rootStore = new RootStore();
 
 export const StoreContext = createContext(rootStore);
 
-function initializeStore(initialData = {}) {
+function initializeStore(initialData: TRootStoreHydrateData = {}) {
   const singletonRootStore = rootStore ?? new RootStore();
   // If your page has Next.js data fetching methods that use a Mobx store, it will
   // get hydrated here, check `pages/ssg.js` and `pages/ssr.js` for more details
@@ -28,8 +29,7 @@ function initializeStore(initialData = {}) {
 
 export type StoreProviderProps = {
   children: React.ReactNode;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  initialState?: any;
+  initialState?: TRootStoreHydrateData;
 };
 
 export function StoreProvider({ children, initialState = {} }: StoreProviderProps) {

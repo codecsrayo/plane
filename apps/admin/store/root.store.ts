@@ -5,6 +5,8 @@
  */
 
 import { enableStaticRendering } from "mobx-react";
+// plane types
+import type { IUser, IWorkspace, IInstanceInfo } from "@plane/types";
 // stores
 import type { IInstanceStore } from "./instance.store";
 import { InstanceStore } from "./instance.store";
@@ -16,6 +18,17 @@ import type { IWorkspaceStore } from "./workspace.store";
 import { WorkspaceStore } from "./workspace.store";
 
 enableStaticRendering(typeof window === "undefined");
+
+/**
+ * Shape of the server-side hydration payload passed to `RootStore.hydrate`.
+ * All fields are optional — partial hydration is valid on SSR/SSG pages.
+ */
+export type TRootStoreHydrateData = {
+  theme?: "dark" | "light";
+  instance?: IInstanceInfo;
+  user?: IUser;
+  workspace?: Record<string, IWorkspace>;
+};
 
 export class RootStore {
   theme: IThemeStore;
@@ -30,11 +43,11 @@ export class RootStore {
     this.workspace = new WorkspaceStore(this);
   }
 
-  hydrate(initialData: any) {
+  hydrate(initialData: TRootStoreHydrateData) {
     this.theme.hydrate(initialData.theme);
-    this.instance.hydrate(initialData.instance);
+    this.instance.hydrate(initialData.instance as IInstanceInfo);
     this.user.hydrate(initialData.user);
-    this.workspace.hydrate(initialData.workspace);
+    this.workspace.hydrate(initialData.workspace ?? {});
   }
 
   resetOnSignOut() {

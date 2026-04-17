@@ -12,7 +12,7 @@ type Props = {
   description?: React.ReactNode;
   image?: string;
   primaryButton?: {
-    icon?: any;
+    icon?: React.ComponentType<{ className?: string }>;
     text: string;
     onClick: () => void;
   };
