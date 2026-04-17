@@ -41,6 +41,10 @@ use crate::{
 const ACCESS_PUBLIC: i16 = 0;
 const ACCESS_PRIVATE: i16 = 1;
 
+// ── Defaults (matches Django Page model defaults) ─────────────────────────────
+// `Page.DEFAULT_SORT_ORDER = 65535` — ver plane/db/models/page.py
+const DEFAULT_SORT_ORDER: f64 = 65535.0;
+
 // ── DTOs ─────────────────────────────────────────────────────────────────────
 
 #[derive(Debug, Serialize, utoipa::ToSchema)]
@@ -251,6 +255,12 @@ pub async fn create_page(
         is_locked: Set(false),
         view_props: Set(serde_json::json!({})),
         logo_props: Set(serde_json::json!({})),
+        // NOT NULL sin default en la entidad generada — hay que setearlos
+        // explícitamente con los defaults de Django:
+        // `is_global = BooleanField(default=False)`
+        // `sort_order = FloatField(default=DEFAULT_SORT_ORDER)`
+        is_global: Set(false),
+        sort_order: Set(DEFAULT_SORT_ORDER),
         created_by_id: Set(Some(guard.user.id)),
         updated_by_id: Set(Some(guard.user.id)),
         created_at: Set(now),
@@ -575,6 +585,11 @@ pub async fn duplicate_page(
         is_locked: Set(false),
         view_props: Set(source.view_props.clone()),
         logo_props: Set(source.logo_props.clone()),
+        // NOT NULL — conservar el valor original al duplicar (Django comparte
+        // la misma fila lógica al hacer .save() de un model nuevo con los
+        // atributos copiados). is_global se hereda; sort_order también.
+        is_global: Set(source.is_global),
+        sort_order: Set(source.sort_order),
         created_by_id: Set(Some(guard.user.id)),
         updated_by_id: Set(Some(guard.user.id)),
         created_at: Set(now),
