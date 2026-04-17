@@ -10,7 +10,11 @@ import useSWRInfinite from "swr/infinite";
 import type { IGithubRepo, IGithubRepositoriesResponse, IWorkspaceIntegration } from "@plane/types";
 import { CustomSearchSelect, Spinner } from "@plane/ui";
 import { truncateText } from "@plane/utils";
-import { ProjectService } from "@/services/project";
+import { GithubIntegrationService } from "@/services/integrations/github.service";
+
+// Tuple key for useSWRInfinite — captures every input that should invalidate
+// the cache when it changes (workspace, integration, page, cache tag).
+type TGithubRepoKey = [workspaceSlug: string, workspaceIntegrationId: string, page: number, cacheTag: string];
 
 type Props = {
   integration: IWorkspaceIntegration;
@@ -21,22 +25,24 @@ type Props = {
   characterLimit?: number;
 };
 
-const projectService = new ProjectService();
+const githubService = new GithubIntegrationService();
 
 export function SelectRepository(props: Props) {
   const { integration, value, label, onChange, characterLimit = 25 } = props;
   const { workspaceSlug } = useParams();
 
-  const getKey = (pageIndex: number) => {
-    if (!workspaceSlug || !integration) return undefined;
-    return `${process.env.VITE_API_BASE_URL}/api/workspaces/${workspaceSlug}/workspace-integrations/${
-      integration.id
-    }/github-repositories/?page=${pageIndex + 1}`;
+  // Return a structured tuple key — relying on `APIService.baseURL` to
+  // resolve the absolute URL keeps the service as the single source of
+  // truth for endpoint layout and avoids leaking `process.env` into the
+  // component (which Vite only substitutes at build time).
+  const getKey = (pageIndex: number): TGithubRepoKey | null => {
+    if (!workspaceSlug || !integration) return null;
+    return [workspaceSlug.toString(), integration.id, pageIndex + 1, "github-repositories"];
   };
 
-  const fetchGithubRepos = async (url: string): Promise<IGithubRepositoriesResponse> => {
-    const data = await projectService.getGithubRepositories(url);
-    return data;
+  const fetchGithubRepos = async (key: TGithubRepoKey): Promise<IGithubRepositoriesResponse> => {
+    const [slug, integrationId, page] = key;
+    return githubService.listAllRepositories(slug, integrationId, page);
   };
 
   const {
@@ -49,8 +55,10 @@ export function SelectRepository(props: Props) {
 
   const isLoading = !paginatedData && !error;
 
-  let userRepositories = (paginatedData ?? []).flatMap((data) => data.repositories ?? []);
-  userRepositories = userRepositories.filter((data) => data?.id);
+  // Flatten pages and defensively filter out entries without a stable id —
+  // the backend used to emit rows with only `full_name`, but the UI key
+  // contract requires `id`.
+  const userRepositories = (paginatedData ?? []).flatMap((data) => data.repositories ?? []).filter((data) => data?.id);
 
   const totalCount = paginatedData && paginatedData.length > 0 ? paginatedData[0].total_count : 0;
   const isInstallationToken = paginatedData?.[0]?.is_installation_token ?? false;
