@@ -26,7 +26,7 @@ use crate::{
         extractors::ProjectMemberGuard,
         permissions::{require_role, ROLE_GUEST, ROLE_MEMBER},
     },
-    entities::{issue_assignees, issue_labels, issues, labels},
+    entities::{intake_issues, issue_assignees, issue_labels, issue_subscribers, issues, labels},
     error::AppError,
     routes::issue_pagination::{
         apply_issue_order, collect_state_ids, empty_paginated_response, load_enrichment,
@@ -301,150 +301,145 @@ pub struct ProjectIssueItem {
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
-/// Enriquece un lote de issues y los convierte al shape de `IssueDetailSerializer`
-/// de Django (`GET /issues/{pk}/`).
+/// Construye el shape `IssueDetailResponse` para un issue individual,
+/// reutilizando el helper compartido `load_enrichment` + dos queries
+/// específicas de detalle.
 ///
-/// # Estado actual (commit 1 del refactor)
-/// Carga batch de **assignees** y **labels** — los dos M2M más simples.
-/// Los siguientes campos se devuelven con valor por defecto (stub):
-///   - `cycle_id`, `module_ids`, `sub_issues_count`, `attachment_count`,
-///     `link_count`, `is_subscribed`, `is_intake`.
+/// Espejo de las anotaciones del `retrieve()` en
+/// `apps/api/plane/app/views/issue/base.py:480-575`.
 ///
-/// Commit 2 del refactor reemplaza este helper por llamadas directas a
-/// `load_enrichment` (que ya carga cycle/modules/counts) más queries
-/// específicas para `is_subscribed` / `is_intake`. Se mantiene aquí como
-/// puente temporal para que el shape sea correcto sin acoplar el cableo.
+/// # Campos poblados (vs commit 1, que dejaba stubs)
+/// - `cycle_id`, `module_ids`, `sub_issues_count`, `attachment_count`,
+///   `link_count` — vía `load_enrichment`.
+/// - `is_subscribed` — query puntual a `issue_subscribers`.
+/// - `is_intake`    — query puntual a `intake_issues` con status ∈ (-2, 0).
 ///
-/// # Antipatrón evitado
-/// N+1: ambos `is_in()` hacen 1 query por relación, independiente del
-/// tamaño del lote. Para un solo issue (caso GET detail) la diferencia
-/// no importa, pero mantiene el contrato uniforme.
-async fn enrich_issues(
+/// # Estrategia
+/// `load_enrichment` está diseñado para batching N issues; aquí lo usamos
+/// con N=1. El overhead es una query por relación en lugar de una query
+/// por issue × relación — sigue siendo O(1) roundtrips. Mantener un solo
+/// helper de enrichment (en vez de una versión "single" y otra "batch")
+/// evita drift entre ambos código paths.
+///
+/// # `state_ids = &[]`
+/// `IssueDetailResponse` no expone `state__group` (solo el listing lo usa
+/// vía `ProjectIssueItem`). Pasamos slice vacío → `load_enrichment` hace
+/// early-return de la query de states.
+async fn build_detail_response(
     db: &sea_orm::DatabaseConnection,
-    issue_models: Vec<issues::Model>,
-) -> Result<Vec<IssueDetailResponse>, AppError> {
-    if issue_models.is_empty() {
-        return Ok(vec![]);
-    }
+    issue_model: issues::Model,
+    user_id: Uuid,
+) -> Result<IssueDetailResponse, AppError> {
+    let id = issue_model.id;
+    let issue_ids = [id];
+    let mut maps = load_enrichment(db, &issue_ids, &[]).await?;
 
-    let ids: Vec<Uuid> = issue_models.iter().map(|i| i.id).collect();
-
-    // Batch-fetch assignees — evita N+1
-    let assignees = issue_assignees::Entity::find()
-        .filter(issue_assignees::Column::IssueId.is_in(ids.clone()))
-        .filter(issue_assignees::Column::DeletedAt.is_null())
-        .all(db)
+    // is_subscribed — mirror del `Exists(IssueSubscriber.objects.filter(...))`
+    // en base.py:566-574. Usamos `count > 0` como equivalente a EXISTS; el
+    // índice compuesto (issue_id, subscriber_id) hace que la query sea O(log n).
+    let is_subscribed = issue_subscribers::Entity::find()
+        .active()
+        .filter(issue_subscribers::Column::IssueId.eq(id))
+        .filter(issue_subscribers::Column::SubscriberId.eq(user_id))
+        .count(db)
         .await
-        .map_err(AppError::Database)?;
+        .map_err(AppError::Database)?
+        > 0;
 
-    let mut assignee_map: std::collections::HashMap<Uuid, Vec<Uuid>> =
-        std::collections::HashMap::new();
-    for a in assignees {
-        assignee_map.entry(a.issue_id).or_default().push(a.assignee_id);
-    }
-
-    // Batch-fetch labels — evita N+1
-    let label_rows = issue_labels::Entity::find()
-        .filter(issue_labels::Column::IssueId.is_in(ids))
-        .filter(issue_labels::Column::DeletedAt.is_null())
-        .all(db)
+    // is_intake — mirror del pattern en base.py:1305-1313.
+    //
+    // # Sobre la divergencia con el `retrieve()` principal
+    // El `retrieve()` de Django (base.py:480-575) NO anota este campo —
+    // parece un oversight, porque `IssueDetailSerializer` lo declara como
+    // `BooleanField(read_only=True)`. El endpoint paralelo que consulta
+    // issues por `sequence_id` (`base.py:1225-1314`) sí lo anota.
+    //
+    // El Rust port lo pobla correctamente en ambos casos. Los statuses
+    // `-2` (PENDING) y `0` (SNOOZED) son los que cuentan como "en intake"
+    // según la lógica del inbox.
+    let is_intake = intake_issues::Entity::find()
+        .active()
+        .filter(intake_issues::Column::IssueId.eq(id))
+        .filter(intake_issues::Column::Status.is_in(vec![-2_i32, 0]))
+        .count(db)
         .await
-        .map_err(AppError::Database)?;
+        .map_err(AppError::Database)?
+        > 0;
 
-    let mut label_map: std::collections::HashMap<Uuid, Vec<Uuid>> =
-        std::collections::HashMap::new();
-    for l in label_rows {
-        label_map.entry(l.issue_id).or_default().push(l.label_id);
-    }
-
-    Ok(issue_models
-        .into_iter()
-        .map(|m| {
-            let id = m.id;
-            IssueDetailResponse {
-                id,
-                name: m.name,
-                state_id: m.state_id,
-                sort_order: m.sort_order,
-                completed_at: m.completed_at,
-                estimate_point_id: m.estimate_point_id,
-                priority: m.priority,
-                start_date: m.start_date,
-                target_date: m.target_date,
-                sequence_id: m.sequence_id,
-                project_id: m.project_id,
-                parent_id: m.parent_id,
-                // Stubs — commit 2 los reemplaza por `load_enrichment`.
-                cycle_id: None,
-                module_ids: Vec::new(),
-                sub_issues_count: 0,
-                attachment_count: 0,
-                link_count: 0,
-                is_subscribed: false,
-                is_intake: false,
-                // Enriquecidos reales:
-                label_ids: label_map.remove(&id).unwrap_or_default(),
-                assignee_ids: assignee_map.remove(&id).unwrap_or_default(),
-                // Flat fields del modelo:
-                description_html: m.description_html,
-                created_at: m.created_at,
-                updated_at: m.updated_at,
-                created_by_id: m.created_by_id,
-                updated_by_id: m.updated_by_id,
-                is_draft: m.is_draft,
-                archived_at: m.archived_at,
-            }
-        })
-        .collect())
+    Ok(IssueDetailResponse {
+        id,
+        name: issue_model.name,
+        state_id: issue_model.state_id,
+        sort_order: issue_model.sort_order,
+        completed_at: issue_model.completed_at,
+        estimate_point_id: issue_model.estimate_point_id,
+        priority: issue_model.priority,
+        start_date: issue_model.start_date,
+        target_date: issue_model.target_date,
+        sequence_id: issue_model.sequence_id,
+        project_id: issue_model.project_id,
+        parent_id: issue_model.parent_id,
+        cycle_id: maps.cycles.remove(&id),
+        module_ids: maps.modules.remove(&id).unwrap_or_default(),
+        label_ids: maps.labels.remove(&id).unwrap_or_default(),
+        assignee_ids: maps.assignees.remove(&id).unwrap_or_default(),
+        sub_issues_count: maps.sub_counts.get(&id).copied().unwrap_or(0),
+        attachment_count: maps.attachments.get(&id).copied().unwrap_or(0),
+        link_count: maps.links.get(&id).copied().unwrap_or(0),
+        created_at: issue_model.created_at,
+        updated_at: issue_model.updated_at,
+        created_by_id: issue_model.created_by_id,
+        updated_by_id: issue_model.updated_by_id,
+        is_draft: issue_model.is_draft,
+        archived_at: issue_model.archived_at,
+        description_html: issue_model.description_html,
+        is_subscribed,
+        is_intake,
+    })
 }
 
-/// Construye el shape de respuesta de `POST /issues/` — espejo de la
-/// proyección `.values(...)` en `base.py:427-454`.
+/// Construye el shape `IssueCreateResponse` — espejo de la proyección
+/// `.values(...)` en `base.py:427-454`.
 ///
-/// # Estado actual (commit 1)
-/// Reutiliza `enrich_issues` para obtener assignees/labels (los únicos
-/// enriquecidos reales del commit 1) y luego copia los campos flat al DTO
-/// de create. Los stubs (`cycle_id`, `module_ids`, counts) permanecen en
-/// defaults hasta commit 2.
-///
-/// # Nota sobre `deleted_at`
-/// Inmediatamente tras un create siempre es `None`, pero Django lo incluye
-/// en la proyección. Lo respetamos para paridad estricta de shape.
+/// Reutiliza `load_enrichment` para cycle/modules/labels/assignees/counts.
+/// No consulta `is_subscribed` ni `is_intake` (Django no los proyecta en
+/// create). Incluye `deleted_at` directamente del modelo (siempre `None`
+/// inmediatamente tras create, pero lo emitimos para paridad estricta).
 async fn build_create_response(
     db: &sea_orm::DatabaseConnection,
     issue_model: issues::Model,
 ) -> Result<IssueCreateResponse, AppError> {
-    let deleted_at = issue_model.deleted_at;
-    let mut detail = enrich_issues(db, vec![issue_model]).await?;
-    let d = detail.pop().ok_or(AppError::NotFound)?;
+    let id = issue_model.id;
+    let issue_ids = [id];
+    let mut maps = load_enrichment(db, &issue_ids, &[]).await?;
 
     Ok(IssueCreateResponse {
-        id: d.id,
-        name: d.name,
-        state_id: d.state_id,
-        sort_order: d.sort_order,
-        completed_at: d.completed_at,
-        estimate_point_id: d.estimate_point_id,
-        priority: d.priority,
-        start_date: d.start_date,
-        target_date: d.target_date,
-        sequence_id: d.sequence_id,
-        project_id: d.project_id,
-        parent_id: d.parent_id,
-        cycle_id: d.cycle_id,
-        module_ids: d.module_ids,
-        label_ids: d.label_ids,
-        assignee_ids: d.assignee_ids,
-        sub_issues_count: d.sub_issues_count,
-        created_at: d.created_at,
-        updated_at: d.updated_at,
-        created_by_id: d.created_by_id,
-        updated_by_id: d.updated_by_id,
-        attachment_count: d.attachment_count,
-        link_count: d.link_count,
-        is_draft: d.is_draft,
-        archived_at: d.archived_at,
-        deleted_at,
+        id,
+        name: issue_model.name,
+        state_id: issue_model.state_id,
+        sort_order: issue_model.sort_order,
+        completed_at: issue_model.completed_at,
+        estimate_point_id: issue_model.estimate_point_id,
+        priority: issue_model.priority,
+        start_date: issue_model.start_date,
+        target_date: issue_model.target_date,
+        sequence_id: issue_model.sequence_id,
+        project_id: issue_model.project_id,
+        parent_id: issue_model.parent_id,
+        cycle_id: maps.cycles.remove(&id),
+        module_ids: maps.modules.remove(&id).unwrap_or_default(),
+        label_ids: maps.labels.remove(&id).unwrap_or_default(),
+        assignee_ids: maps.assignees.remove(&id).unwrap_or_default(),
+        sub_issues_count: maps.sub_counts.get(&id).copied().unwrap_or(0),
+        attachment_count: maps.attachments.get(&id).copied().unwrap_or(0),
+        link_count: maps.links.get(&id).copied().unwrap_or(0),
+        created_at: issue_model.created_at,
+        updated_at: issue_model.updated_at,
+        created_by_id: issue_model.created_by_id,
+        updated_by_id: issue_model.updated_by_id,
+        is_draft: issue_model.is_draft,
+        archived_at: issue_model.archived_at,
+        deleted_at: issue_model.deleted_at,
     })
 }
 
@@ -889,8 +884,8 @@ pub async fn get_issue(
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
-    let mut result = enrich_issues(&state.db, vec![issue]).await?;
-    Ok(Json(result.pop().ok_or(AppError::NotFound)?))
+    let response = build_detail_response(&state.db, issue, guard.user.id).await?;
+    Ok(Json(response))
 }
 
 // ── PATCH /workspaces/{slug}/projects/{project_id}/issues/{pk}/ ───────────────
