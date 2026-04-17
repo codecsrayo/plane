@@ -367,6 +367,8 @@ pub mod instances;
             states::StateResponse,
             states::CreateStateRequest,
             states::UpdateStateRequest,
+            timezones::TimezoneEntry,
+            timezones::TimezonesResponse,
         )
     ),
     tags(
