@@ -4,7 +4,6 @@
  * See the LICENSE file for details.
  */
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { AxiosInstance, AxiosRequestConfig } from "axios";
 import axios from "axios";
 
@@ -103,7 +102,7 @@ export abstract class APIService {
     return this.axiosInstance.patch(url, data, config);
   }
 
-  delete(url: string, data?: any, config: AxiosRequestConfig = {}) {
+  delete<T = unknown>(url: string, data?: T, config: AxiosRequestConfig = {}) {
     return this.axiosInstance.delete(url, { data, ...config });
   }
 
