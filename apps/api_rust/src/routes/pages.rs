@@ -91,7 +91,12 @@ pub struct PageVersionResponse {
 
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct CreatePageRequest {
-    pub name: String,
+    // `name` es opcional y por defecto vacío para reflejar Django:
+    // `Page.name = TextField(blank=True)` + PageSerializer sin `required=True`.
+    // El frontend crea páginas desde el botón "Create your first Page"
+    // enviando únicamente `{ access }`, sin `name`.
+    #[serde(default)]
+    pub name: Option<String>,
     pub description_html: Option<String>,
     pub color: Option<String>,
     pub access: Option<i16>,
@@ -207,18 +212,31 @@ pub async fn create_page(
 ) -> Result<(StatusCode, Json<PageResponse>), AppError> {
     require_role(guard.project_member.role, guard.workspace_member.role, ROLE_MEMBER)?;
 
-    if body.name.trim().is_empty() {
-        return Err(AppError::BadRequest("name es requerido".into()));
+    // Validar `access` contra el choice set de Django
+    // `Page.access = PositiveSmallIntegerField(choices=((0, "Public"), (1, "Private")), default=0)`.
+    // Django rechazaría cualquier otro valor en el serializer; replicamos esa
+    // validación aquí para no guardar basura en DB.
+    let access = body.access.unwrap_or(ACCESS_PUBLIC);
+    if access != ACCESS_PUBLIC && access != ACCESS_PRIVATE {
+        return Err(AppError::BadRequest(
+            "access debe ser 0 (Public) o 1 (Private)".into(),
+        ));
     }
+
+    // Django permite nombres vacíos (`TextField(blank=True)`), no rechazamos.
+    let name = body.name.unwrap_or_default();
+
+    // Django usa `request.data.get("description_html", "<p></p>")` al crear.
+    let description_html = body.description_html.unwrap_or_else(|| "<p></p>".into());
 
     let page = pages::ActiveModel {
         id: Set(Uuid::new_v4()),
-        name: Set(body.name),
-        description_html: Set(body.description_html.unwrap_or_default()),
+        name: Set(name),
+        description_html: Set(description_html),
         description_json: Set(serde_json::json!({})),
         description_stripped: Set(None),
         description_binary: Set(None),
-        access: Set(body.access.unwrap_or(ACCESS_PUBLIC)),
+        access: Set(access),
         color: Set(body.color.unwrap_or_default()),
         parent_id: Set(body.parent_id),
         owned_by_id: Set(guard.user.id),
