@@ -203,7 +203,10 @@ pub async fn load_enrichment(
         sub_counts.insert(parent_id, cnt);
     }
 
-    // Attachment counts — agrupado por issue_id (Option<Uuid> en el modelo).
+    // Attachment counts — agrupado por issue_id (Option<Uuid> en el modelo,
+    // porque `file_assets` también almacena attachments de otras entities
+    // como páginas, comments, etc.). El `map(Some).collect()` envuelve los
+    // UUIDs en `Option<Uuid>` para que matchee el tipo de la columna.
     let raw_attachments: Vec<(Option<Uuid>, i64)> = file_assets::Entity::find()
         .select_only()
         .column(file_assets::Column::IssueId)
