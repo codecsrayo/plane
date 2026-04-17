@@ -55,6 +55,7 @@ export default function GithubUserCallbackPage() {
   const [status, setStatus] = useState<TOAuthCallbackStatus>("processing");
   const [errorMessage, setErrorMessage] = useState<string>("");
   const called = useRef(false);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     if (called.current) return;
@@ -81,7 +82,7 @@ export default function GithubUserCallbackPage() {
       .then(() => {
         setStatus("success");
         window.opener?.postMessage({ type: "github-user-connection", success: true, state }, origin);
-        setTimeout(() => window.close(), 1500);
+        closeTimer.current = setTimeout(() => window.close(), 1500);
         return undefined;
       })
       .catch((err) => {
@@ -90,6 +91,10 @@ export default function GithubUserCallbackPage() {
         setStatus("error");
         window.opener?.postMessage({ type: "github-user-connection", success: false, state, error: msg }, origin);
       });
+
+    return () => {
+      if (closeTimer.current !== null) clearTimeout(closeTimer.current);
+    };
   }, [searchParams]);
 
   return (
