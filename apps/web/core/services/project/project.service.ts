@@ -6,7 +6,7 @@
 
 import { API_BASE_URL } from "@plane/constants";
 import type {
-  GithubRepositoriesResponse,
+  IGithubRepositoriesResponse,
   IProjectUserPropertiesResponse,
   ISearchIssueResponse,
   TProjectAnalyticsCount,
@@ -118,42 +118,11 @@ export class ProjectService extends APIService {
       });
   }
 
-  async getGithubRepositories(url: string): Promise<GithubRepositoriesResponse> {
+  async getGithubRepositories(url: string): Promise<IGithubRepositoriesResponse> {
     return this.request({
       method: "get",
       url,
     })
-      .then((response) => response?.data)
-      .catch((error) => {
-        throw error?.response?.data;
-      });
-  }
-
-  async syncGithubRepository(
-    workspaceSlug: string,
-    projectId: string,
-    workspaceIntegrationId: string,
-    data: {
-      name: string;
-      owner: string;
-      repository_id: string;
-      url: string;
-    }
-  ): Promise<any> {
-    return this.post(
-      `/api/workspaces/${workspaceSlug}/projects/${projectId}/workspace-integrations/${workspaceIntegrationId}/github-repository-sync/`,
-      data
-    )
-      .then((response) => response?.data)
-      .catch((error) => {
-        throw error?.response?.data;
-      });
-  }
-
-  async getProjectGithubRepository(workspaceSlug: string, projectId: string, integrationId: string): Promise<any> {
-    return this.get(
-      `/api/workspaces/${workspaceSlug}/projects/${projectId}/workspace-integrations/${integrationId}/github-repository-sync/`
-    )
       .then((response) => response?.data)
       .catch((error) => {
         throw error?.response?.data;

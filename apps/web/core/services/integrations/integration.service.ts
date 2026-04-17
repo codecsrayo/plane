@@ -10,20 +10,17 @@ import type {
   IImporterService,
   IWorkspaceIntegration,
   IExportServiceResponse,
+  IGithubRepoSync,
   IGithubRepository,
+  TGithubRepoSyncCreatePayload,
 } from "@plane/types";
 import { APIService } from "@/services/api.service";
 // types
 // helper
 
-export interface IGithubRepoSync {
-  id: string;
-  project_id: string;
-  project_name?: string;
-  project_identifier?: string;
-  repo_full_name: string;
-  sync_direction?: "bidirectional" | "unidirectional";
-}
+// Re-export so existing `import { IGithubRepoSync } from "@/services/integrations"`
+// call sites keep working. The canonical definition now lives in @plane/types.
+export type { IGithubRepoSync } from "@plane/types";
 
 export interface IGithubPRStateMapping {
   id: string;
@@ -107,17 +104,7 @@ export class IntegrationService extends APIService {
       });
   }
 
-  async createRepoSync(
-    workspaceSlug: string,
-    data: {
-      repo_id: string;
-      repo_full_name: string;
-      project_id: string;
-      issue_open_state?: string;
-      issue_closed_state?: string;
-      sync_direction?: "bidirectional" | "unidirectional";
-    }
-  ): Promise<IGithubRepoSync> {
+  async createRepoSync(workspaceSlug: string, data: TGithubRepoSyncCreatePayload): Promise<IGithubRepoSync> {
     return this.post(`/api/workspaces/${workspaceSlug}/workspace-integrations/github/repo-syncs/`, data)
       .then((response) => response?.data)
       .catch((error) => {
