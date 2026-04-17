@@ -69,36 +69,59 @@ export function EditorAIMenu(props: Props) {
   // states
   const [activeTask, setActiveTask] = useState<AI_EDITOR_TASKS | null>(null);
   const [response, setResponse] = useState<string | undefined>(undefined);
+  const [isLoading, setIsLoading] = useState(false);
   const [isRegenerating, setIsRegenerating] = useState(false);
+  // capture selection at click time so it stays available when user later submits
+  const [selectedText, setSelectedText] = useState<string>("");
+  // remember last query so the regenerate button can replay ASK_ANYTHING
+  const lastQueryRef = useRef<string>("");
   // refs
   const responseContainerRef = useRef<HTMLDivElement>(null);
-  // params
+
   const handleGenerateResponse = async (payload: TTaskPayload) => {
     if (!workspaceSlug) return;
-    await aiService.performEditorTask(workspaceSlug.toString(), payload).then((res) => setResponse(res.response));
+    setIsLoading(true);
+    try {
+      const res = await aiService.performEditorTask(workspaceSlug.toString(), payload);
+      setResponse(res.response);
+    } finally {
+      setIsLoading(false);
+    }
   };
-  // handle task click
+
+  // handle task click — captures selection, opens panel; defers generation for ASK_ANYTHING
   const handleClick = async (key: AI_EDITOR_TASKS) => {
     const selection = editorRef?.getSelectedText();
     if (!selection || activeTask === key) return;
     setActiveTask(key);
-    if (key === AI_EDITOR_TASKS.ASK_ANYTHING) return;
+    setSelectedText(selection);
     setResponse(undefined);
     setIsRegenerating(false);
+    if (key === AI_EDITOR_TASKS.ASK_ANYTHING) return; // wait for user to type a query
+    await handleGenerateResponse({ task: key, text_input: selection });
+  };
+
+  // called by AskPiMenu when user submits a query
+  const handleAskPiSubmit = async (query: string) => {
+    if (!selectedText || !query.trim()) return;
+    lastQueryRef.current = query;
+    setResponse(undefined);
     await handleGenerateResponse({
-      task: key,
-      text_input: selection,
+      task: AI_EDITOR_TASKS.ASK_ANYTHING,
+      text_input: selectedText,
+      prompt: query,
     });
   };
+
   // handle re-generate response
   const handleRegenerate = async () => {
-    const selection = editorRef?.getSelectedText();
-    if (!selection || !activeTask) return;
+    if (!selectedText || !activeTask) return;
     setIsRegenerating(true);
-    await handleGenerateResponse({
-      task: activeTask,
-      text_input: selection,
-    })
+    const payload: TTaskPayload =
+      activeTask === AI_EDITOR_TASKS.ASK_ANYTHING
+        ? { task: activeTask, text_input: selectedText, prompt: lastQueryRef.current }
+        : { task: activeTask, text_input: selectedText };
+    await handleGenerateResponse(payload)
       .then(() =>
         responseContainerRef.current?.scrollTo({
           top: 0,
@@ -107,18 +130,17 @@ export function EditorAIMenu(props: Props) {
       )
       .finally(() => setIsRegenerating(false));
   };
-  // handle re-generate response
+
+  // handle tone change for non-ASK_ANYTHING tasks
   const handleToneChange = async (key: string) => {
     const selectedTone = TONES_LIST.find((t) => t.key === key);
-    const selection = editorRef?.getSelectedText();
-    if (!selectedTone || !selection || !activeTask) return;
+    if (!selectedTone || !selectedText || !activeTask) return;
     setResponse(undefined);
-    setIsRegenerating(false);
     await handleGenerateResponse({
       casual_score: selectedTone.casual_score,
       formal_score: selectedTone.formal_score,
       task: activeTask,
-      text_input: selection,
+      text_input: selectedText,
     }).then(() =>
       responseContainerRef.current?.scrollTo({
         top: 0,
@@ -126,6 +148,7 @@ export function EditorAIMenu(props: Props) {
       })
     );
   };
+
   // handle replace selected text with the response
   const handleInsertText = (insertOnNextLine: boolean) => {
     if (!response) return;
@@ -138,6 +161,10 @@ export function EditorAIMenu(props: Props) {
     if (!isOpen) {
       setActiveTask(null);
       setResponse(undefined);
+      setSelectedText("");
+      setIsLoading(false);
+      setIsRegenerating(false);
+      lastQueryRef.current = "";
     }
   }, [isOpen]);
 
@@ -198,7 +225,9 @@ export function EditorAIMenu(props: Props) {
             <AskPiMenu
               handleInsertText={handleInsertText}
               handleRegenerate={handleRegenerate}
+              isLoading={isLoading}
               isRegenerating={isRegenerating}
+              onAskSubmit={handleAskPiSubmit}
               response={response}
               workspaceSlug={workspaceSlug}
             />
@@ -307,3 +336,4 @@ export function EditorAIMenu(props: Props) {
     </div>
   );
 }
+

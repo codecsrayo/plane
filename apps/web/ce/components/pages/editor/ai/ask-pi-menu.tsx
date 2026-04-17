@@ -11,26 +11,34 @@ import { Tooltip } from "@plane/propel/tooltip";
 // components
 import { cn } from "@plane/utils";
 import { RichTextEditor } from "@/components/editor/rich-text";
-// helpers
 // hooks
 import { useWorkspace } from "@/hooks/store/use-workspace";
 
 type Props = {
   handleInsertText: (insertOnNextLine: boolean) => void;
   handleRegenerate: () => Promise<void>;
+  isLoading: boolean;
   isRegenerating: boolean;
+  onAskSubmit: (query: string) => Promise<void>;
   response: string | undefined;
   workspaceSlug: string;
 };
 
 export function AskPiMenu(props: Props) {
-  const { handleInsertText, handleRegenerate, isRegenerating, response, workspaceSlug } = props;
+  const { handleInsertText, handleRegenerate, isLoading, isRegenerating, onAskSubmit, response, workspaceSlug } = props;
   // states
   const [query, setQuery] = useState("");
   // store hooks
   const { getWorkspaceBySlug } = useWorkspace();
   // derived values
   const workspaceId = getWorkspaceBySlug(workspaceSlug)?.id ?? "";
+
+  const handleSubmit = async () => {
+    const trimmed = query.trim();
+    if (!trimmed || isLoading) return;
+    await onAskSubmit(trimmed);
+    setQuery("");
+  };
 
   return (
     <>
@@ -93,8 +101,10 @@ export function AskPiMenu(props: Props) {
               </Tooltip>
             </div>
           </div>
+        ) : isLoading ? (
+          <p className="text-13 text-secondary">Pi is generating response...</p>
         ) : (
-          <p className="text-13 text-secondary">AI is answering...</p>
+          <p className="text-13 text-secondary">Ask Pi anything about the selected text.</p>
         )}
       </div>
       <div className="px-4 py-3">
@@ -107,11 +117,30 @@ export function AskPiMenu(props: Props) {
             className="w-full border-none bg-transparent text-13 outline-none placeholder:text-placeholder"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && !e.shiftKey) {
+                e.preventDefault();
+                handleSubmit();
+              }
+            }}
             placeholder="Tell AI what to do..."
+            disabled={isLoading}
           />
-          <span className="grid size-4 flex-shrink-0 place-items-center">
-            <CircleArrowUp className="size-4 text-secondary" />
-          </span>
+          <button
+            type="button"
+            className={cn("grid size-4 flex-shrink-0 place-items-center transition-opacity", {
+              "opacity-40 cursor-not-allowed": !query.trim() || isLoading,
+            })}
+            onClick={handleSubmit}
+            disabled={!query.trim() || isLoading}
+            aria-label="Submit query to Pi"
+          >
+            <CircleArrowUp
+              className={cn("size-4 text-secondary", {
+                "text-accent-primary": query.trim() && !isLoading,
+              })}
+            />
+          </button>
         </div>
       </div>
     </>

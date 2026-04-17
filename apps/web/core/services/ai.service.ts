@@ -18,6 +18,8 @@ import { APIService } from "@/services/api.service";
 export type TTaskPayload = {
   casual_score?: number;
   formal_score?: number;
+  /** Freeform user instruction, required for the ASK_ANYTHING task. */
+  prompt?: string;
   task: AI_EDITOR_TASKS;
   text_input: string;
 };
