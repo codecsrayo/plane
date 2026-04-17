@@ -26,7 +26,7 @@ use axum::{
     Json,
 };
 use sea_orm::{
-    ColumnTrait, EntityTrait, PaginatorTrait, QueryFilter, QueryOrder, QuerySelect,
+    ColumnTrait, EntityTrait, PaginatorTrait, QueryFilter, QuerySelect,
 };
 use serde::{Deserialize, Serialize};
 use std::collections::{HashMap, HashSet};
@@ -35,20 +35,15 @@ use uuid::Uuid;
 use crate::{
     auth::extractors::WorkspaceMemberGuard,
     auth::permissions::ROLE_GUEST,
-    entities::{
-        cycle_issues, file_assets, issue_assignees, issue_labels, issue_links,
-        issues, module_issues, project_members, projects, states,
-    },
+    entities::{issues, project_members, projects},
     error::AppError,
+    routes::issue_pagination::{
+        apply_issue_order, collect_state_ids, empty_paginated_response, load_enrichment,
+        paginated_response, parse_cursor, DEFAULT_PER_PAGE,
+    },
     utils::soft_delete::SoftDeleteExt,
     AppState,
 };
-
-// ── Constantes ────────────────────────────────────────────────────────────────
-
-const PAGINATOR_MAX_LIMIT: u64 = 1000;
-const DEFAULT_PER_PAGE: u64 = 100;
-const ENTITY_TYPE_ISSUE_ATTACHMENT: &str = "issue_attachment";
 
 // ── Query params ──────────────────────────────────────────────────────────────
 
@@ -93,208 +88,6 @@ pub struct WorkspaceIssueItem {
     pub assignee_ids:    Vec<Uuid>,
     pub label_ids:       Vec<Uuid>,
     pub module_ids:      Vec<Uuid>,
-}
-
-// ── Cursor helper ─────────────────────────────────────────────────────────────
-
-/// Parsea el cursor de Django: `{page_size}:{current_page}:{is_prev}`.
-/// Retorna `(page_size, current_page)`.
-fn parse_cursor(cursor: Option<&str>, fallback_per_page: u64) -> (u64, u64) {
-    if let Some(c) = cursor {
-        let parts: Vec<&str> = c.splitn(3, ':').collect();
-        if parts.len() == 3 {
-            let page_size = parts[0].parse::<u64>().unwrap_or(fallback_per_page);
-            let current_page = parts[1].parse::<u64>().unwrap_or(0);
-            return (page_size.clamp(1, PAGINATOR_MAX_LIMIT), current_page);
-        }
-    }
-    (fallback_per_page.clamp(1, PAGINATOR_MAX_LIMIT), 0)
-}
-
-// ── Enriquecimiento batch ─────────────────────────────────────────────────────
-
-struct EnrichmentMaps {
-    assignees:    HashMap<Uuid, Vec<Uuid>>,
-    labels:       HashMap<Uuid, Vec<Uuid>>,
-    modules:      HashMap<Uuid, Vec<Uuid>>,
-    cycles:       HashMap<Uuid, Uuid>,
-    sub_counts:   HashMap<Uuid, i64>,
-    attachments:  HashMap<Uuid, i64>,
-    links:        HashMap<Uuid, i64>,
-    state_groups: HashMap<Uuid, String>,
-}
-
-/// Carga todos los datos relacionados en batch para evitar N+1.
-async fn load_enrichment(
-    db: &sea_orm::DatabaseConnection,
-    issue_ids: &[Uuid],
-    state_ids: &[Uuid],
-) -> Result<EnrichmentMaps, AppError> {
-    if issue_ids.is_empty() {
-        return Ok(EnrichmentMaps {
-            assignees:    HashMap::new(),
-            labels:       HashMap::new(),
-            modules:      HashMap::new(),
-            cycles:       HashMap::new(),
-            sub_counts:   HashMap::new(),
-            attachments:  HashMap::new(),
-            links:        HashMap::new(),
-            state_groups: HashMap::new(),
-        });
-    }
-
-    // Assignees
-    let raw_assignees = issue_assignees::Entity::find()
-        .active()
-        .filter(issue_assignees::Column::IssueId.is_in(issue_ids.to_vec()))
-        .all(db)
-        .await
-        .map_err(AppError::Database)?;
-
-    let mut assignees: HashMap<Uuid, Vec<Uuid>> = HashMap::new();
-    for a in raw_assignees {
-        assignees.entry(a.issue_id).or_default().push(a.assignee_id);
-    }
-
-    // Labels
-    let raw_labels = issue_labels::Entity::find()
-        .active()
-        .filter(issue_labels::Column::IssueId.is_in(issue_ids.to_vec()))
-        .all(db)
-        .await
-        .map_err(AppError::Database)?;
-
-    let mut labels: HashMap<Uuid, Vec<Uuid>> = HashMap::new();
-    for l in raw_labels {
-        labels.entry(l.issue_id).or_default().push(l.label_id);
-    }
-
-    // Modules
-    let raw_modules = module_issues::Entity::find()
-        .active()
-        .filter(module_issues::Column::IssueId.is_in(issue_ids.to_vec()))
-        .all(db)
-        .await
-        .map_err(AppError::Database)?;
-
-    let mut modules: HashMap<Uuid, Vec<Uuid>> = HashMap::new();
-    for m in raw_modules {
-        modules.entry(m.issue_id).or_default().push(m.module_id);
-    }
-
-    // Cycle IDs — solo el primer ciclo activo por issue (igual que el Subquery de Django)
-    let raw_cycles = cycle_issues::Entity::find()
-        .active()
-        .filter(cycle_issues::Column::IssueId.is_in(issue_ids.to_vec()))
-        .all(db)
-        .await
-        .map_err(AppError::Database)?;
-
-    let mut cycles: HashMap<Uuid, Uuid> = HashMap::new();
-    for ci in raw_cycles {
-        // El entry solo inserta si no existe, preservando el primero (equivalente a [:1])
-        cycles.entry(ci.issue_id).or_insert(ci.cycle_id);
-    }
-
-    // Sub-issues count por issue padre
-    // Usamos una query raw agrupada para evitar N+1
-    let raw_sub: Vec<(Uuid, i64)> = issues::Entity::find()
-        .select_only()
-        .column(issues::Column::ParentId)
-        .column_as(
-            sea_orm::sea_query::Expr::col(issues::Column::Id).count(),
-            "cnt",
-        )
-        .filter(issues::Column::ParentId.is_in(issue_ids.to_vec()))
-        .filter(issues::Column::DeletedAt.is_null())
-        .group_by(issues::Column::ParentId)
-        .into_tuple()
-        .all(db)
-        .await
-        .map_err(AppError::Database)?;
-
-    let mut sub_counts: HashMap<Uuid, i64> = HashMap::new();
-    for (parent_id, cnt) in raw_sub {
-        sub_counts.insert(parent_id, cnt);
-    }
-
-    // Attachment counts agrupados
-    // Nota: file_assets.issue_id es Option<Uuid> en el modelo, por eso el tuple es (Option<Uuid>, i64)
-    let raw_attachments: Vec<(Option<Uuid>, i64)> = file_assets::Entity::find()
-        .select_only()
-        .column(file_assets::Column::IssueId)
-        .column_as(
-            sea_orm::sea_query::Expr::col(file_assets::Column::Id).count(),
-            "cnt",
-        )
-        .filter(file_assets::Column::IssueId.is_in(
-            issue_ids.iter().cloned().map(Some).collect::<Vec<_>>(),
-        ))
-        .filter(
-            file_assets::Column::EntityType
-                .eq(ENTITY_TYPE_ISSUE_ATTACHMENT),
-        )
-        .filter(file_assets::Column::DeletedAt.is_null())
-        .group_by(file_assets::Column::IssueId)
-        .into_tuple()
-        .all(db)
-        .await
-        .map_err(AppError::Database)?;
-
-    let mut attachments: HashMap<Uuid, i64> = HashMap::new();
-    for (issue_id, cnt) in raw_attachments {
-        if let Some(id) = issue_id {
-            attachments.insert(id, cnt);
-        }
-    }
-
-    // Link counts agrupados
-    let raw_links: Vec<(Uuid, i64)> = issue_links::Entity::find()
-        .select_only()
-        .column(issue_links::Column::IssueId)
-        .column_as(
-            sea_orm::sea_query::Expr::col(issue_links::Column::Id).count(),
-            "cnt",
-        )
-        .filter(issue_links::Column::IssueId.is_in(issue_ids.to_vec()))
-        .filter(issue_links::Column::DeletedAt.is_null())
-        .group_by(issue_links::Column::IssueId)
-        .into_tuple()
-        .all(db)
-        .await
-        .map_err(AppError::Database)?;
-
-    let mut links: HashMap<Uuid, i64> = HashMap::new();
-    for (issue_id, cnt) in raw_links {
-        links.insert(issue_id, cnt);
-    }
-
-    // State groups (solo para states referenciados por estos issues)
-    let state_rows = states::Entity::find()
-        .select_only()
-        .column(states::Column::Id)
-        .column(states::Column::Group)
-        .filter(states::Column::Id.is_in(state_ids.to_vec()))
-        .into_tuple::<(Uuid, String)>()
-        .all(db)
-        .await
-        .map_err(AppError::Database)?;
-
-    let mut state_groups: HashMap<Uuid, String> = HashMap::new();
-    for (id, group) in state_rows {
-        state_groups.insert(id, group);
-    }
-
-    Ok(EnrichmentMaps {
-        assignees,
-        labels,
-        modules,
-        cycles,
-        sub_counts,
-        attachments,
-        links,
-        state_groups,
-    })
 }
 
 // ── Handler ───────────────────────────────────────────────────────────────────
@@ -365,23 +158,10 @@ pub async fn list_workspace_view_issues(
         .map_err(AppError::Database)?;
 
     if memberships.is_empty() {
-        // El usuario no pertenece a ningún proyecto en el workspace
+        // El usuario no pertenece a ningún proyecto en el workspace.
         // Shape mirror de Django `OffsetPaginator.paginate()`
         // (plane/utils/paginator.py:715-730).
-        return Ok(Json(serde_json::json!({
-            "grouped_by":        null,
-            "sub_grouped_by":    null,
-            "total_count":       0,
-            "next_cursor":       format!("{page_size}:1:0"),
-            "prev_cursor":       format!("{page_size}:-1:1"),
-            "next_page_results": false,
-            "prev_page_results": false,
-            "count":             0,
-            "total_pages":       0,
-            "total_results":     0,
-            "extra_stats":       null,
-            "results":           [],
-        })));
+        return Ok(Json(empty_paginated_response(page_size)));
     }
 
     let project_ids: Vec<Uuid> = memberships.iter().map(|m| m.project_id).collect();
@@ -464,24 +244,9 @@ pub async fn list_workspace_view_issues(
         cond
     };
 
-    // Si no hay ninguna condición válida, el usuario no ve nada
+    // Si no hay ninguna condición válida, el usuario no ve nada.
     if full_ids.is_empty() && rest_ids.is_empty() {
-        // Shape mirror de Django `OffsetPaginator.paginate()`
-        // (plane/utils/paginator.py:715-730).
-        return Ok(Json(serde_json::json!({
-            "grouped_by":        null,
-            "sub_grouped_by":    null,
-            "total_count":       0,
-            "next_cursor":       format!("{page_size}:1:0"),
-            "prev_cursor":       format!("{page_size}:-1:1"),
-            "next_page_results": false,
-            "prev_page_results": false,
-            "count":             0,
-            "total_pages":       0,
-            "total_results":     0,
-            "extra_stats":       null,
-            "results":           [],
-        })));
+        return Ok(Json(empty_paginated_response(page_size)));
     }
 
     // Query base: issues activos (no soft-deleted), no archivados
@@ -499,23 +264,12 @@ pub async fn list_workspace_view_issues(
     // ── 5. Total count (para paginación) ──────────────────────────────────────
     let total_results = base_query.clone().count(db).await.map_err(AppError::Database)?;
 
-    let total_pages = if total_results == 0 {
-        0u64
-    } else {
-        total_results.div_ceil(page_size)
-    };
-
     // ── 6. Ordenamiento ───────────────────────────────────────────────────────
-    let order_by_param = params
-        .order_by
-        .as_deref()
-        .unwrap_or("-created_at");
-
-    let ordered_query = apply_order(base_query, order_by_param);
+    let order_by_param = params.order_by.as_deref().unwrap_or("-created_at");
+    let ordered_query = apply_issue_order(base_query, order_by_param);
 
     // ── 7. Paginación offset ──────────────────────────────────────────────────
     let start_index = current_page * page_size;
-    let end_index = (start_index + page_size).min(total_results);
 
     let issue_models = ordered_query
         .offset(start_index)
@@ -524,16 +278,9 @@ pub async fn list_workspace_view_issues(
         .await
         .map_err(AppError::Database)?;
 
-    let page_count = issue_models.len() as u64;
-
     // ── 8. Enriquecimiento batch ──────────────────────────────────────────────
     let issue_ids: Vec<Uuid> = issue_models.iter().map(|i| i.id).collect();
-    let state_ids: Vec<Uuid> = issue_models
-        .iter()
-        .filter_map(|i| i.state_id)
-        .collect::<HashSet<_>>()
-        .into_iter()
-        .collect();
+    let state_ids = collect_state_ids(&issue_models);
 
     let mut enrich = load_enrichment(db, &issue_ids, &state_ids).await?;
 
@@ -581,70 +328,13 @@ pub async fn list_workspace_view_issues(
     //
     // Shape mirror exacto de `OffsetPaginator.paginate()` en
     // `plane/utils/paginator.py:715-730`. El frontend lee `total_count`
-    // (no `total_results`) en `base-issues.store.ts:1290`, y el tipo
-    // `TIssuesResponse` (packages/types/src/issues/issue.ts:126) declara
+    // en `base-issues.store.ts:1290`, y `TIssuesResponse`
+    // (packages/types/src/issues/issue.ts:126) declara
     // `grouped_by`, `count`, `extra_stats` como requeridos.
-    let has_next = end_index < total_results;
-    let has_prev = current_page > 0;
-
-    // En Django, `next_cursor` y `prev_cursor` son SIEMPRE strings
-    // (via `str(cursor_result.next)`). La lógica de si hay página se controla
-    // vía `next_page_results` / `prev_page_results`.
-    let prev_cursor = if current_page == 0 {
-        // Página previa "vacía": offset -1, is_prev=1
-        format!("{page_size}:-1:1")
-    } else {
-        format!("{page_size}:{}:1", current_page - 1)
-    };
-    let next_cursor = format!("{page_size}:{}:0", current_page + 1);
-
-    Ok(Json(serde_json::json!({
-        "grouped_by":        null,
-        "sub_grouped_by":    null,
-        "total_count":       total_results,
-        "next_cursor":       next_cursor,
-        "prev_cursor":       prev_cursor,
-        "next_page_results": has_next,
-        "prev_page_results": has_prev,
-        "count":             page_count,
-        "total_pages":       total_pages,
-        "total_results":     total_results,
-        "extra_stats":       null,
-        "results":           results,
-    })))
-}
-
-// ── Ordenamiento ──────────────────────────────────────────────────────────────
-
-/// Aplica el `order_by` de Django al SelectModel de SeaORM.
-/// Prefijo `-` indica descendente. Se soportan los campos más usados
-/// en la vista global (spreadsheet / list).
-fn apply_order(
-    query: sea_orm::Select<issues::Entity>,
-    order_by: &str,
-) -> sea_orm::Select<issues::Entity> {
-    use sea_orm::Order::{Asc, Desc};
-
-    let (col, dir): (issues::Column, _) = match order_by {
-        "-created_at"    => (issues::Column::CreatedAt,   Desc),
-        "created_at"     => (issues::Column::CreatedAt,   Asc),
-        "-updated_at"    => (issues::Column::UpdatedAt,   Desc),
-        "updated_at"     => (issues::Column::UpdatedAt,   Asc),
-        "-priority"      => (issues::Column::Priority,    Desc),
-        "priority"       => (issues::Column::Priority,    Asc),
-        "-sort_order"    => (issues::Column::SortOrder,   Desc),
-        "sort_order"     => (issues::Column::SortOrder,   Asc),
-        "-sequence_id"   => (issues::Column::SequenceId,  Desc),
-        "sequence_id"    => (issues::Column::SequenceId,  Asc),
-        "-target_date"   => (issues::Column::TargetDate,  Desc),
-        "target_date"    => (issues::Column::TargetDate,  Asc),
-        "-start_date"    => (issues::Column::StartDate,   Desc),
-        "start_date"     => (issues::Column::StartDate,   Asc),
-        "-completed_at"  => (issues::Column::CompletedAt, Desc),
-        "completed_at"   => (issues::Column::CompletedAt, Asc),
-        // Default seguro
-        _                => (issues::Column::CreatedAt,   Desc),
-    };
-
-    query.order_by(col, dir)
+    Ok(Json(paginated_response(
+        results,
+        page_size,
+        current_page,
+        total_results,
+    )))
 }
