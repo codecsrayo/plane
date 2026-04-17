@@ -24,7 +24,7 @@ use uuid::Uuid;
 
 use crate::{
     auth::{
-        api_key::ApiKeyUser,
+        any_auth::AnyAuth,
         extractors::WorkspaceMemberGuard,
         permissions::{require_workspace_admin, ROLE_ADMIN},
     },
@@ -861,8 +861,11 @@ async fn register_github_webhook(
 
 // ── list_integrations (endpoint global) ─────────────────────────────────────
 //
-// Se expone aquí porque usa ApiKeyUser (sin workspace) y es la entrada más
-// simple del módulo de integraciones. Re-exportado desde mod.rs.
+// Catálogo global de integraciones disponibles. En Django el equivalente
+// (`IntegrationViewSet`) usa `IsAuthenticated`, que acepta tanto sesión como
+// API token. Usamos `AnyAuth` para replicar ese contrato — de lo contrario el
+// frontend, que manda cookie de sesión, recibe 401 y cae en el loop del
+// interceptor (`/settings/integrations/` → `/?next_path=…`).
 
 /// Lista todas las integraciones disponibles (GitHub, GitLab, Slack).
 #[utoipa::path(
@@ -877,7 +880,7 @@ async fn register_github_webhook(
 )]
 pub async fn list_integrations(
     State(state): State<AppState>,
-    _auth: ApiKeyUser,
+    _auth: AnyAuth,
 ) -> Result<Json<Vec<IntegrationResponse>>, AppError> {
     let rows = integrations::Entity::find()
         .active()
