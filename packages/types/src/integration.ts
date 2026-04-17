@@ -130,8 +130,12 @@ export type TSlackChannelCreatePayload = {
  * Note: `owner` is a **string** (the GitHub login), not an object, and the
  * html URL is keyed as `url` — NOT `html_url`. Callers that assume otherwise
  * are bugs that `any` used to hide.
+ *
+ * Named `IGithubRepo` rather than `IGithubRepoInfo` to avoid collision with
+ * the unrelated `IGithubRepoInfo` in `importer/github-importer.ts` (which
+ * represents collaborators/issue-count metadata for the import flow).
  */
-export interface IGithubRepoInfo {
+export interface IGithubRepo {
   id: string;
   full_name: string;
   name: string;
@@ -143,9 +147,54 @@ export interface IGithubRepoInfo {
 }
 
 export interface IGithubRepositoriesResponse {
-  repositories: IGithubRepoInfo[];
+  repositories: IGithubRepo[];
   total_count: number;
   page: number;
   is_installation_token?: boolean;
   manage_installation_url?: string | null;
 }
+
+/**
+ * Response shape for
+ *   GET  /api/workspaces/{slug}/workspace-integrations/github/repo-syncs/
+ *   POST /api/workspaces/{slug}/workspace-integrations/github/repo-syncs/
+ *
+ * Guaranteed fields are intersection of Django (`views/integration/base.py::GithubRepositorySyncViewSet`)
+ * and Rust (`routes/integrations/github.rs::list_github_repo_syncs / create_github_repo_sync`).
+ *
+ * Divergence flagged for parity follow-up:
+ *   - `project_name` / `project_identifier` / `created_at` → Django only (Rust DTO omits).
+ *   - `repo_owner` / `repo_name` → Rust always; Django on LIST but not on CREATE response.
+ */
+export interface IGithubRepoSync {
+  id: string;
+  project_id: string;
+  repo_id: string;
+  repo_full_name: string;
+  sync_direction?: "bidirectional" | "unidirectional";
+  issue_open_state?: string | null;
+  issue_closed_state?: string | null;
+  repo_owner?: string;
+  repo_name?: string;
+  project_name?: string;
+  project_identifier?: string;
+  created_at?: string;
+}
+
+/**
+ * Payload for POST .../workspace-integrations/github/repo-syncs/
+ * Mirrors `GithubRepoSyncCreateRequest` (Rust) and the body parsed by
+ * `GithubRepositorySyncViewSet.create` (Django).
+ *
+ * `repo_id` is the numeric GitHub repository id (the backend tolerates
+ * both string-of-digits and JSON number; we standardize on string to
+ * match what `IGithubRepo.id` already exposes).
+ */
+export type TGithubRepoSyncCreatePayload = {
+  repo_id: string;
+  repo_full_name: string;
+  project_id: string;
+  sync_direction?: "bidirectional" | "unidirectional";
+  issue_open_state?: string;
+  issue_closed_state?: string;
+};
