@@ -83,11 +83,8 @@ export abstract class APIService {
     );
   }
 
-  get(url: string, params = {}, config: AxiosRequestConfig = {}) {
-    return this.axiosInstance.get(url, {
-      ...params,
-      ...config,
-    });
+  get(url: string, config: AxiosRequestConfig = {}) {
+    return this.axiosInstance.get(url, config);
   }
 
   post(url: string, data = {}, config: AxiosRequestConfig = {}) {
