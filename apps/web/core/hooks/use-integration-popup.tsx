@@ -110,7 +110,20 @@ const useIntegrationPopup = ({
       height = 600;
     const left = window.innerWidth / 2 - width / 2;
     const top = window.innerHeight / 2 - height / 2;
-    const url = buildProviderUrl(nonce)[provider];
+
+    const urlMap = buildProviderUrl(nonce);
+
+    // Guard: reject unknown providers before calling window.open.
+    // An undefined URL causes window.open to open a blank page and fails silently.
+    if (!(provider in urlMap)) {
+      // Clean up the nonce we just stored — it will never be consumed by the
+      // postMessage handler, so leaving it would be a stale credential.
+      sessionStorage.removeItem(OAUTH_CSRF_NONCE_KEY);
+      console.error(`[useIntegrationPopup] Unknown OAuth provider: "${provider}". No popup was opened.`);
+      return null;
+    }
+
+    const url = urlMap[provider];
 
     return window.open(url, "", `width=${width}, height=${height}, top=${top}, left=${left}`) ?? null;
   };
@@ -122,6 +135,12 @@ const useIntegrationPopup = ({
     sessionStorage.setItem(OAUTH_CSRF_NONCE_KEY, nonce);
 
     popup.current = openPopup(nonce);
+
+    // If openPopup returned null (unknown provider, blocked popup, etc.) the
+    // nonce has already been cleaned up inside openPopup. Do not start the
+    // loader — there is no popup to track.
+    if (!popup.current) return;
+
     checkPopup();
     setAuthLoader(true);
   };
