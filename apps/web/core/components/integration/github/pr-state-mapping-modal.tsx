@@ -86,25 +86,67 @@ export const GithubPRStateMappingModal = observer(function GithubPRStateMappingM
     }
 
     setIsSaving(true);
-    try {
-      await Promise.all(
-        entries.map(([githubPrState, planeStateId]) =>
-          integrationService.createPRStateMapping(workspaceSlug, workspaceIntegrationId, {
-            project: selectedProject,
-            state: planeStateId,
-            github_pr_state: githubPrState,
-            prevent_regression: preventRegression,
-          })
-        )
-      );
-      mutate(swrKey);
+
+    // Sequential creates (not Promise.all) for two reasons:
+    //
+    //   1. The DB has a UNIQUE constraint on
+    //      (workspace_integration, project, github_pr_state). Parallel
+    //      POSTs with the same triple race and one gets a 500/400 —
+    //      harder to reason about than a serialised failure.
+    //   2. If the Nth POST fails, rows 1..N-1 are already persisted.
+    //      Promise.all reported "all failed" on any partial error,
+    //      which was a UX lie. Here we record exactly what succeeded
+    //      and surface that to the user.
+    //
+    // We intentionally do NOT compensate-delete successful creates on
+    // failure: the delete is itself a network call that can fail, and
+    // silently discarding the user's work is worse than persisting a
+    // partial state they can see in the list.
+    const failures: { githubPrState: string; error: unknown }[] = [];
+    let successCount = 0;
+    for (const [githubPrState, planeStateId] of entries) {
+      try {
+        // oxlint-disable-next-line no-await-in-loop -- serial on purpose: see comment above.
+        await integrationService.createPRStateMapping(workspaceSlug, workspaceIntegrationId, {
+          project: selectedProject,
+          state: planeStateId,
+          github_pr_state: githubPrState,
+          prevent_regression: preventRegression,
+        });
+        successCount += 1;
+      } catch (error) {
+        failures.push({ githubPrState, error });
+      }
+    }
+
+    // Always revalidate — even a partial save mutates the server state
+    // and the list underneath the modal should reflect reality.
+    mutate(swrKey);
+    setIsSaving(false);
+
+    if (failures.length === 0) {
       setToast({ type: TOAST_TYPE.SUCCESS, title: "Mappings saved" });
       handleClose();
-    } catch {
-      setToast({ type: TOAST_TYPE.ERROR, title: "Failed to save mappings" });
-    } finally {
-      setIsSaving(false);
+      return;
     }
+
+    const labelFor = (prState: string) => GITHUB_PR_STATES.find((s) => s.value === prState)?.label ?? prState;
+    const failedLabels = failures.map((f) => labelFor(f.githubPrState)).join(", ");
+
+    if (successCount === 0) {
+      setToast({
+        type: TOAST_TYPE.ERROR,
+        title: "Failed to save mappings",
+        message: `None of the selected mappings could be saved (${failedLabels}).`,
+      });
+      return;
+    }
+
+    setToast({
+      type: TOAST_TYPE.ERROR,
+      title: `Saved ${successCount} of ${entries.length} mappings`,
+      message: `These failed and were not saved: ${failedLabels}.`,
+    });
   };
 
   return (
