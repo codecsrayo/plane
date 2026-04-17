@@ -12,7 +12,7 @@ use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 
 use crate::{
-    auth::extractors::WorkspaceMemberGuard,
+    auth::{extractors::WorkspaceMemberGuard, permissions::ROLE_MEMBER},
     entities::exporters,
     error::AppError,
     AppState,
@@ -53,7 +53,23 @@ pub async fn export_issues(
     guard: WorkspaceMemberGuard,
     Json(body): Json<ExportIssuesRequest>,
 ) -> Result<(StatusCode, Json<ExportIssuesResponse>), AppError> {
+    // Paridad Django: `@allow_permission([ADMIN, MEMBER], level="WORKSPACE")`
+    // (apps/api/plane/app/views/exporter/base.py:22). GUEST (role=5) no puede
+    // encolar exports. `WorkspaceMemberGuard` sólo valida membresía, así que
+    // hay que forzar el piso de rol acá.
+    if guard.member.role < ROLE_MEMBER {
+        return Err(AppError::Forbidden);
+    }
+
+    // Paridad Django: sólo csv/xlsx/json son providers válidos
+    // (apps/api/plane/app/views/exporter/base.py:31,62-65). Cualquier otro
+    // valor → 400 con el mismo shape de error.
     let provider = body.provider.as_deref().unwrap_or("csv").to_owned();
+    if !matches!(provider.as_str(), "csv" | "xlsx" | "json") {
+        return Err(AppError::BadRequest(format!(
+            "Provider '{provider}' not found."
+        )));
+    }
 
     // Generar token único para este job
     let token = format!("{}", Uuid::new_v4().as_simple());
@@ -71,7 +87,11 @@ pub async fn export_issues(
         created_by_id: Set(Some(guard.user.id)),
         updated_by_id: Set(Some(guard.user.id)),
         workspace_id: Set(guard.workspace.id),
-        r#type: Set("issues".to_owned()),
+        // Paridad Django: `type="issue_exports"` es el default del modelo
+        // (apps/api/plane/db/models/exporter.py:26-33) y es el filtro usado
+        // por el GET de listado. Si escribimos `"issues"`, los registros
+        // creados por Rust quedan invisibles al listar.
+        r#type: Set("issue_exports".to_owned()),
         name: Set(None),
         filters: Set(None),
         rich_filters: Set(None),
