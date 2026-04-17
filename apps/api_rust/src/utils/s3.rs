@@ -49,6 +49,105 @@ pub fn build_s3_client(config: &Config) -> Client {
     Client::from_conf(s3_conf)
 }
 
+/// Cliente S3 específico para **generar presigned URLs públicas** cuando se
+/// usa MinIO self-hosted.
+///
+/// Paridad Django (apps/api/plane/bgtasks/export_task.py:49-79): con MinIO,
+/// Django instancia dos clientes distintos:
+///   - uno con `AWS_S3_ENDPOINT_URL` (interno, ej. `http://plane-minio:9000`)
+///     para **subir** el archivo.
+///   - otro con `f"{AWS_S3_URL_PROTOCOL}//{AWS_S3_CUSTOM_DOMAIN sin /uploads}/"`
+///     —derivado de `WEB_URL`— para **firmar** la URL que retorna al browser.
+///
+/// Sin esto, el presigned URL apunta al hostname Docker interno
+/// (`http://plane-minio:9000/...`) que el browser no puede resolver.
+///
+/// Fallback: si `USE_MINIO=false` o `WEB_URL` no está seteado, usamos el
+/// cliente normal — el endpoint público coincide con el de upload (caso S3
+/// administrado, o deploys donde el MinIO es accesible directo por el
+/// browser).
+pub fn build_s3_presign_client(config: &Config) -> Client {
+    // Sólo aplica la derivación public-domain cuando MinIO está activo Y
+    // tenemos WEB_URL — es la misma guardia que el if de common.py:253.
+    let public_endpoint = if config.use_minio {
+        config.web_url.as_deref().and_then(parse_web_url_origin)
+    } else {
+        None
+    };
+
+    // Sin endpoint público derivable → mismo cliente que upload.
+    let Some(endpoint) = public_endpoint else {
+        return build_s3_client(config);
+    };
+
+    let creds = Credentials::new(
+        &config.aws_access_key_id,
+        &config.aws_secret_access_key,
+        None,
+        None,
+        "plane-env-presign",
+    );
+
+    let s3_conf = aws_sdk_s3::Config::builder()
+        .behavior_version(BehaviorVersion::latest())
+        .credentials_provider(creds)
+        .region(Region::new(config.aws_region.clone()))
+        .endpoint_url(endpoint)
+        // Path-style obligatorio: el bucket va como primer segmento del
+        // path (`https://<host>/<bucket>/<key>`), nunca como subdominio.
+        .force_path_style(true)
+        .build();
+
+    Client::from_conf(s3_conf)
+}
+
+/// Extrae `<scheme>://<host>[:<port>]/` de una URL como `https://plane.example.com/foo/bar`.
+///
+/// Retorna `None` si la URL no tiene scheme o host válido. No dependemos del
+/// crate `url` porque el resto del codebase no lo usa y no justifica sumarlo
+/// sólo para este helper — el formato de `WEB_URL` es suficientemente
+/// restringido (`http(s)://host[:port][/path]`).
+fn parse_web_url_origin(web_url: &str) -> Option<String> {
+    let (scheme, rest) = web_url.split_once("://")?;
+    if scheme.is_empty() {
+        return None;
+    }
+    // `rest` = `host[:port][/path...]`. Nos quedamos con el primer segmento.
+    let host_and_port = rest.split('/').next().unwrap_or("");
+    if host_and_port.is_empty() {
+        return None;
+    }
+    Some(format!("{scheme}://{host_and_port}/"))
+}
+
+#[cfg(test)]
+mod tests {
+    use super::parse_web_url_origin;
+
+    #[test]
+    fn origin_strips_path_and_keeps_port() {
+        assert_eq!(
+            parse_web_url_origin("https://plane.example.com/app").as_deref(),
+            Some("https://plane.example.com/")
+        );
+        assert_eq!(
+            parse_web_url_origin("http://localhost:3000/").as_deref(),
+            Some("http://localhost:3000/")
+        );
+        assert_eq!(
+            parse_web_url_origin("https://plane.codecsrayo.com").as_deref(),
+            Some("https://plane.codecsrayo.com/")
+        );
+    }
+
+    #[test]
+    fn origin_rejects_malformed() {
+        assert!(parse_web_url_origin("plane.example.com").is_none());
+        assert!(parse_web_url_origin("://no-scheme.com").is_none());
+        assert!(parse_web_url_origin("https://").is_none());
+    }
+}
+
 /// Genera una presigned URL de `PUT` para subir un objeto.
 ///
 /// El cliente sube directamente al bucket; la API solo firma la URL.

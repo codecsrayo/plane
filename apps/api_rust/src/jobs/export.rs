@@ -23,7 +23,10 @@ use uuid::Uuid;
 
 use crate::{
     entities::{exporters, issues, labels, issue_assignees, issue_labels, states, users},
-    utils::{s3::build_s3_client, soft_delete::SoftDeleteExt},
+    utils::{
+        s3::{build_s3_client, build_s3_presign_client},
+        soft_delete::SoftDeleteExt,
+    },
     AppState,
 };
 
@@ -275,8 +278,15 @@ async fn run_export(state: &AppState, token: &str, multiple: bool) -> anyhow::Re
         .await
         .context("Error al subir ZIP a S3")?;
 
-    // URL firmada de 7 días
-    let presigned = s3
+    // URL firmada de 7 días.
+    // Paridad Django (apps/api/plane/bgtasks/export_task.py:65-79): con MinIO,
+    // se usa un cliente **distinto** con endpoint público (derivado de
+    // WEB_URL) para firmar — de lo contrario la URL apunta al hostname
+    // Docker interno (`http://plane-minio:9000/...`) que el browser no
+    // resuelve. Si `USE_MINIO=false` o `WEB_URL` no está seteado, el helper
+    // retorna el cliente de upload sin cambios.
+    let presign_s3 = build_s3_presign_client(&state.config);
+    let presigned = presign_s3
         .get_object()
         .bucket(&state.config.aws_s3_bucket)
         .key(&file_name)
