@@ -32,7 +32,7 @@ use crate::{
         apply_issue_order, collect_state_ids, empty_paginated_response, load_enrichment,
         load_triage_state_ids, paginated_response, parse_cursor, DEFAULT_PER_PAGE,
     },
-    routes::issue_filters::{apply_issue_filters, FilteredQuery},
+    routes::issue_filters::{apply_issue_filters, reject_if_rich_filters, FilteredQuery},
     utils::soft_delete::SoftDeleteExt,
     AppState,
 };
@@ -144,6 +144,13 @@ pub struct ListIssuesQuery {
     #[serde(rename = "type")]
     pub type_filter:       Option<String>,
     pub start_target_date: Option<String>,
+
+    // ── Rich filters (known gap vs Django) ───────────────────────────────────
+    //
+    // Capturado solo para detectar su presencia y rechazar con 400 antes de
+    // ejecutar la query. NO se parsea — ver
+    // `issue_filters::reject_if_rich_filters` para el contexto completo.
+    pub filters:           Option<String>,
 }
 
 impl ListIssuesQuery {
@@ -408,6 +415,12 @@ pub async fn list_issues(
     Query(params): Query<ListIssuesQuery>,
 ) -> Result<impl IntoResponse, AppError> {
     require_role(guard.project_member.role, guard.workspace_member.role, ROLE_GUEST)?;
+
+    // Rechaza `?filters=<JSON>` antes de ejecutar nada — el frontend lo envía
+    // cuando hay un rich-filter tree activo (views guardados, etc.). El port
+    // Rust aún no implementa `ComplexFilterBackend`; aceptar la request sin
+    // aplicar el filtro devolvería resultados incorrectos silenciosamente.
+    reject_if_rich_filters(params.filters.as_deref())?;
 
     let db = &state.db;
     let project_id = guard.project.id;

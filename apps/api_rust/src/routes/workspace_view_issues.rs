@@ -41,7 +41,7 @@ use crate::{
         apply_issue_order, collect_state_ids, empty_paginated_response, load_enrichment,
         load_workspace_triage_state_ids, paginated_response, parse_cursor, DEFAULT_PER_PAGE,
     },
-    routes::issue_filters::{apply_issue_filters, FilteredQuery},
+    routes::issue_filters::{apply_issue_filters, reject_if_rich_filters, FilteredQuery},
     utils::soft_delete::SoftDeleteExt,
     AppState,
 };
@@ -80,6 +80,12 @@ pub struct WorkspaceIssuesQuery {
     #[serde(rename = "type")]
     pub type_filter:       Option<String>,
     pub start_target_date: Option<String>,
+
+    // ── Rich filters (known gap vs Django) ───────────────────────────────────
+    //
+    // Capturado solo para detectar presencia y rechazar con 400.
+    // Ver `issue_filters::reject_if_rich_filters`.
+    pub filters:           Option<String>,
 }
 
 impl WorkspaceIssuesQuery {
@@ -167,6 +173,11 @@ pub async fn list_workspace_view_issues(
     guard: WorkspaceMemberGuard,
     Query(params): Query<WorkspaceIssuesQuery>,
 ) -> Result<impl IntoResponse, AppError> {
+    // Rechaza `?filters=<JSON>` antes de ejecutar nada — ver
+    // `issue_filters::reject_if_rich_filters` para el contexto completo del
+    // gap vs `ComplexFilterBackend` de Django.
+    reject_if_rich_filters(params.filters.as_deref())?;
+
     let db = &state.db;
     let workspace_id = guard.workspace.id;
     let user_id = guard.user.id;

@@ -125,6 +125,36 @@ fn csv_contains_none(raw: &str) -> bool {
     raw.split(',').map(str::trim).any(|s| s == "None")
 }
 
+// ── Guard contra rich filters (conocido gap vs Django) ───────────────────────
+
+/// El frontend envía `?filters=<JSON>` cuando hay un rich-filter tree activo
+/// (p. ej. un view guardado con `{and: [{priority__in: ["high"]}, ...]}`).
+/// Django lo procesa con `ComplexFilterBackend` + `IssueFilterSet`; la
+/// implementación Rust aún NO porta esa capa, así que ignorarlo silenciosamente
+/// produciría issues "filtrados" mal (el user vería más de lo que debería).
+///
+/// Este guard devuelve 400 BadRequest cuando el param viene con contenido,
+/// dejando el gap explícito para clientes que lo dependan. La implementación
+/// completa queda trackeada como follow-up.
+///
+/// Referencias:
+///   - Django backend: `plane/utils/filters/filter_backend.py`
+///   - Django filterset: `plane/utils/filters/filterset.py::IssueFilterSet`
+///   - Frontend origin:  `apps/web/core/store/issue/helpers/
+///                        issue-filter-helper.store.ts:116`
+pub fn reject_if_rich_filters(raw: Option<&str>) -> Result<(), AppError> {
+    match raw.map(str::trim) {
+        Some(s) if !s.is_empty() => Err(AppError::BadRequest(
+            "Rich filters (?filters=<JSON>) are not yet supported by the Rust \
+             API. Use the flat query params (priority, state, labels, \
+             assignees, cycle, module, etc.) or hit the Django backend. \
+             Tracking: rich-filters Django-parity follow-up."
+                .into(),
+        )),
+        _ => Ok(()),
+    }
+}
+
 // ── Whitelists ────────────────────────────────────────────────────────────────
 
 /// Prioridades válidas (mirror del CHOICES en db/models/issue.py:105-111).
