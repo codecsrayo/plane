@@ -779,10 +779,17 @@ pub async fn delete_workspace(
     //   return super().destroy(...)
     //
     // Sin este paso, los perfiles que apuntaban al workspace eliminado siguen
-    // devolviendo ese `last_workspace_id` en `GET /users/me/settings/`, por lo
-    // que el frontend redirige al href muerto en lugar de a la pantalla de
-    // selección de workspace. Se envuelve en transacción para que la limpieza
-    // de perfiles y el soft-delete del workspace sean atómicos.
+    // apuntando a él — `GET /users/me/profile/` devuelve el ID muerto vía
+    // `profile_to_response` (users.rs) y el frontend redirige al href muerto
+    // en lugar de a la pantalla de selección de workspace. Se envuelve en
+    // transacción para que la limpieza de perfiles y el soft-delete del
+    // workspace sean atómicos frente a lectores concurrentes.
+    //
+    // Nota de paridad: Django usa `QuerySet.update()`, que explícitamente
+    // **no** dispara `auto_now=True` sobre `updated_at`
+    // (`apps/api/plane/db/mixins.py:20`). Los perfiles afectados conservan
+    // su `updated_at` anterior. Replicamos ese comportamiento: solo se toca
+    // `last_workspace_id`, no `updated_at`.
     let txn = state.db.begin().await.map_err(AppError::Database)?;
 
     profiles::Entity::update_many()
@@ -790,7 +797,6 @@ pub async fn delete_workspace(
             profiles::Column::LastWorkspaceId,
             Expr::value(Option::<Uuid>::None),
         )
-        .col_expr(profiles::Column::UpdatedAt, Expr::value(now))
         .filter(profiles::Column::LastWorkspaceId.eq(ws_id))
         .exec(&txn)
         .await
