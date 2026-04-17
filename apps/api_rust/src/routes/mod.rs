@@ -39,6 +39,7 @@ pub mod views;
 pub mod workspaces;
 pub mod workspace_extras;
 pub mod workspace_view_issues;
+pub mod issue_description_versions;
 pub mod issue_extras2;
 pub mod api_tokens;
 pub mod instances;
@@ -295,6 +296,8 @@ pub mod instances;
         issue_extras::subscribe_to_issue,
         issue_extras::unsubscribe_from_issue,
         issue_extras::list_sub_issues,
+        issue_description_versions::list_description_versions,
+        issue_description_versions::get_description_version,
         instances::get_instance,
         instances::patch_instance,
         instances::signup_screen_visited,
@@ -1237,6 +1240,17 @@ pub fn build_router(state: AppState) -> Router {
         .route(
             "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/versions/{pk}",
             get(issue_extras2::get_issue_version),
+        )
+        // ── Work item description versions ────────────────────────────────────
+        // Mirror Django: WorkItemDescriptionVersionEndpoint
+        // (apps/api/plane/app/urls/issue.py:267-274)
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/work-items/{work_item_id}/description-versions",
+            get(issue_description_versions::list_description_versions),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/work-items/{work_item_id}/description-versions/{pk}",
+            get(issue_description_versions::get_description_version),
         )
         // ── API Tokens ────────────────────────────────────────────────────────
         .route(
