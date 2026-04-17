@@ -23,6 +23,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "react-router";
+import type { TSlackInstallPayload } from "@plane/types";
 // services
 import { AppInstallationService } from "@/services/app_installation.service";
 // components
@@ -57,8 +58,10 @@ export default function SlackIntegrationCallbackPage() {
       return;
     }
 
+    const installPayload: TSlackInstallPayload = { code };
+
     appInstallationService
-      .addInstallationApp(workspaceSlug, "slack", { code })
+      .addInstallationApp(workspaceSlug, "slack", installPayload)
       .then((result) => {
         setStatus("success");
         window.opener?.postMessage({ type: "slack-integration", success: true, csrfNonce }, window.location.origin);

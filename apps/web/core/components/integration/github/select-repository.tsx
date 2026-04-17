@@ -7,33 +7,17 @@
 import React from "react";
 import { useParams } from "react-router";
 import useSWRInfinite from "swr/infinite";
-import type { IWorkspaceIntegration } from "@plane/types";
+import type { IGithubRepoInfo, IGithubRepositoriesResponse, IWorkspaceIntegration } from "@plane/types";
 import { CustomSearchSelect, Loader } from "@plane/ui";
 import { truncateText } from "@plane/utils";
 import { ProjectService } from "@/services/project";
 
-type GithubReposResponse = {
-  repositories: {
-    id: string;
-    full_name: string;
-    name: string;
-    owner: string;
-    description: string;
-    private: boolean;
-    url: string;
-    issues_count: number;
-  }[];
-  total_count: number;
-  page: number;
-  is_installation_token?: boolean;
-  manage_installation_url?: string | null;
-};
-
 type Props = {
   integration: IWorkspaceIntegration;
-  value: any;
+  /** `full_name` of the currently synced repo, or null when none is linked. */
+  value: string | null | undefined;
   label: string | React.ReactNode;
-  onChange: (repo: any) => void;
+  onChange: (repo: IGithubRepoInfo | undefined) => void;
   characterLimit?: number;
 };
 
@@ -50,12 +34,12 @@ export function SelectRepository(props: Props) {
     }/github-repositories/?page=${pageIndex + 1}`;
   };
 
-  const fetchGithubRepos = async (url: string): Promise<GithubReposResponse> => {
+  const fetchGithubRepos = async (url: string): Promise<IGithubRepositoriesResponse> => {
     const data = await projectService.getGithubRepositories(url);
     return data;
   };
 
-  const { data: paginatedData, size, setSize, isValidating, error } = useSWRInfinite<GithubReposResponse>(
+  const { data: paginatedData, size, setSize, isValidating, error } = useSWRInfinite<IGithubRepositoriesResponse>(
     getKey,
     fetchGithubRepos
   );

@@ -23,6 +23,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "react-router";
+import type { TGitlabInstallPayload } from "@plane/types";
 // services
 import { AppInstallationService } from "@/services/app_installation.service";
 // components
@@ -57,8 +58,10 @@ export default function GitlabIntegrationCallbackPage() {
       return;
     }
 
+    const installPayload: TGitlabInstallPayload = { code };
+
     appInstallationService
-      .addInstallationApp(workspaceSlug, "gitlab", { code })
+      .addInstallationApp(workspaceSlug, "gitlab", installPayload)
       .then((result) => {
         setStatus("success");
         window.opener?.postMessage({ type: "gitlab-integration", success: true, csrfNonce }, window.location.origin);

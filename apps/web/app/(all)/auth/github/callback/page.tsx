@@ -23,6 +23,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "react-router";
+import type { TGithubInstallPayload } from "@plane/types";
 // services
 import { AppInstallationService } from "@/services/app_installation.service";
 // components
@@ -60,11 +61,13 @@ export default function GithubIntegrationCallbackPage() {
       return;
     }
 
+    const installPayload: TGithubInstallPayload = {
+      installation_id,
+      setup_action: setup_action === "update" ? "update" : "install",
+    };
+
     appInstallationService
-      .addInstallationApp(workspaceSlug, "github", {
-        installation_id,
-        setup_action: setup_action ?? "install",
-      })
+      .addInstallationApp(workspaceSlug, "github", installPayload)
       .then((result) => {
         setStatus("success");
         window.opener?.postMessage({ type: "github-integration", success: true, csrfNonce }, window.location.origin);

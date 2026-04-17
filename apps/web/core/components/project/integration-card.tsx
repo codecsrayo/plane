@@ -7,7 +7,7 @@
 import { useParams } from "next/navigation";
 import useSWR, { mutate } from "swr";
 import { TOAST_TYPE, setToast } from "@plane/propel/toast";
-import type { IWorkspaceIntegration } from "@plane/types";
+import type { IGithubRepoInfo, IWorkspaceIntegration } from "@plane/types";
 // assets
 import GithubLogo from "@/app/assets/logos/github-square.png?url";
 import SlackLogo from "@/app/assets/services/slack.png?url";
@@ -46,22 +46,21 @@ export function IntegrationCard({ integration }: Props) {
       : null
   );
 
-  const handleChange = async (repo: any) => {
-    if (!workspaceSlug || !projectId || !integration) return;
+  const handleChange = async (repo: IGithubRepoInfo | undefined) => {
+    if (!workspaceSlug || !projectId || !integration || !repo) return;
 
-    const {
-      html_url,
-      owner: { login },
-      id,
-      name,
-    } = repo;
+    // Backend (`GithubRepositoriesEndpoint`) returns `owner` as a string (the login)
+    // and keys the html URL as `url` — NOT `html_url`. The previous destructure
+    // `{ html_url, owner: { login } }` was producing `undefined` for both at
+    // runtime; `any` was masking the mismatch.
+    const { url, owner, id, name } = repo;
 
     try {
       await projectService.syncGithubRepository(workspaceSlug, projectId, integration.id, {
         name,
-        owner: login,
+        owner,
         repository_id: id,
-        url: html_url,
+        url,
       });
 
       mutate(PROJECT_GITHUB_REPOSITORY(projectId));
@@ -69,7 +68,7 @@ export function IntegrationCard({ integration }: Props) {
       setToast({
         type: TOAST_TYPE.SUCCESS,
         title: "Success!",
-        message: `${login}/${name} repository synced with the project successfully.`,
+        message: `${owner}/${name} repository synced with the project successfully.`,
       });
     } catch (err) {
       console.error(err);

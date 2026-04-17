@@ -6,15 +6,39 @@
 
 // services
 import { API_BASE_URL } from "@plane/constants";
+import type {
+  ISlackIntegration,
+  IWorkspaceIntegration,
+  TProviderInstallPayload,
+  TSlackChannelCreatePayload,
+} from "@plane/types";
 import { APIService } from "@/services/api.service";
-// helpers
 
+/**
+ * Service wrapper around workspace-integration endpoints.
+ *
+ * Backend contract mirrors Django views in
+ * `apps/api/plane/app/views/integration/base.py`:
+ *   - POST   /workspaces/{slug}/workspace-integrations/{provider}/install/
+ *   - POST   /workspaces/{slug}/projects/{pid}/workspace-integrations/{id}/project-slack-sync/
+ *   - GET    /workspaces/{slug}/projects/{pid}/workspace-integrations/{id}/project-slack-sync/
+ *   - DELETE /workspaces/{slug}/projects/{pid}/workspace-integrations/{id}/project-slack-sync/{sid}
+ */
 export class AppInstallationService extends APIService {
   constructor() {
     super(API_BASE_URL);
   }
 
-  async addInstallationApp(workspaceSlug: string, provider: string, data: any): Promise<any> {
+  /**
+   * Install a provider integration (github | gitlab | slack) for a workspace.
+   * Payload shape is discriminated by `provider`; see `TProviderInstallPayload`.
+   * Returns the created/updated `WorkspaceIntegration` as serialized by the backend.
+   */
+  async addInstallationApp(
+    workspaceSlug: string,
+    provider: string,
+    data: TProviderInstallPayload
+  ): Promise<IWorkspaceIntegration> {
     return this.post(`/api/workspaces/${workspaceSlug}/workspace-integrations/${provider}/install/`, data)
       .then((response) => response?.data)
       .catch((error) => {
@@ -26,8 +50,8 @@ export class AppInstallationService extends APIService {
     workspaceSlug: string,
     projectId: string,
     integrationId: string | null | undefined,
-    data: any
-  ): Promise<any> {
+    data: TSlackChannelCreatePayload
+  ): Promise<ISlackIntegration> {
     return this.post(
       `/api/workspaces/${workspaceSlug}/projects/${projectId}/workspace-integrations/${integrationId}/project-slack-sync/`,
       data
@@ -42,7 +66,7 @@ export class AppInstallationService extends APIService {
     workspaceSlug: string,
     projectId: string,
     integrationId: string | null | undefined
-  ): Promise<any> {
+  ): Promise<ISlackIntegration[]> {
     return this.get(
       `/api/workspaces/${workspaceSlug}/projects/${projectId}/workspace-integrations/${integrationId}/project-slack-sync/`
     )
@@ -57,7 +81,7 @@ export class AppInstallationService extends APIService {
     projectId: string,
     integrationId: string | null | undefined,
     slackSyncId: string | undefined
-  ): Promise<any> {
+  ): Promise<void> {
     return this.delete(
       `/api/workspaces/${workspaceSlug}/projects/${projectId}/workspace-integrations/${integrationId}/project-slack-sync/${slackSyncId}`
     )
