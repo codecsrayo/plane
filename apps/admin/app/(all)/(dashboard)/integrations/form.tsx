@@ -26,6 +26,7 @@ import { ControllerInput } from "@/components/common/controller-input";
 import { CopyField } from "@/components/common/copy-field";
 // hooks
 import { useInstance } from "@/hooks/store";
+import { toBool } from "@/helpers/config";
 
 type Props = {
   config: IFormattedInstanceConfiguration;
@@ -104,9 +105,9 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
   );
 
   // ── Toggle helpers ─────────────────────────────────────────────────────────
-  const isGithubEnabled = Boolean(parseInt(formattedConfig?.IS_GITHUB_INTEGRATION_ENABLED ?? "0"));
-  const isGitlabEnabled = Boolean(parseInt(formattedConfig?.IS_GITLAB_INTEGRATION_ENABLED ?? "0"));
-  const isSlackEnabled = Boolean(parseInt(formattedConfig?.IS_SLACK_ENABLED ?? "0"));
+  const isGithubEnabled = toBool(formattedConfig?.IS_GITHUB_INTEGRATION_ENABLED);
+  const isGitlabEnabled = toBool(formattedConfig?.IS_GITLAB_INTEGRATION_ENABLED);
+  const isSlackEnabled = toBool(formattedConfig?.IS_SLACK_ENABLED);
 
   const handleToggle = (key: TInstanceAuthenticationMethodKeys, current: boolean) => {
     updateInstanceConfigurations({ [key]: current ? "0" : "1" } as Record<string, string>).catch(console.error);

@@ -94,9 +94,9 @@ const WorkspaceManagementPage = observer(function WorkspaceManagementPage(_props
             <div className={`shrink-0 pr-4 ${isSubmitting && "opacity-70"}`}>
               <div className="flex items-center gap-4">
                 <ToggleSwitch
-                  value={Boolean(parseInt(disableWorkspaceCreation))}
+                  value={toBool(disableWorkspaceCreation)}
                   onChange={() => {
-                    if (parseInt(disableWorkspaceCreation)) {
+                    if (toBool(disableWorkspaceCreation)) {
                       updateConfig("DISABLE_WORKSPACE_CREATION", "0");
                     } else {
                       updateConfig("DISABLE_WORKSPACE_CREATION", "1");

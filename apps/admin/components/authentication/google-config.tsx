@@ -15,6 +15,7 @@ import { ToggleSwitch } from "@plane/ui";
 import { cn } from "@plane/utils";
 // hooks
 import { useInstance } from "@/hooks/store";
+import { toBool } from "@/helpers/config";
 
 type Props = {
   disabled: boolean;
@@ -37,9 +38,9 @@ export const GoogleConfiguration = observer(function GoogleConfiguration(props: 
             Edit
           </Link>
           <ToggleSwitch
-            value={Boolean(parseInt(enableGoogleConfig))}
+            value={toBool(enableGoogleConfig)}
             onChange={() => {
-              const newEnableGoogleConfig = Boolean(parseInt(enableGoogleConfig)) === true ? "0" : "1";
+              const newEnableGoogleConfig = toBool(enableGoogleConfig) === true ? "0" : "1";
               updateConfig("IS_GOOGLE_ENABLED", newEnableGoogleConfig);
             }}
             size="sm"

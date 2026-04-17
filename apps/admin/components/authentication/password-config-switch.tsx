@@ -10,6 +10,7 @@ import { observer } from "mobx-react";
 import type { TInstanceAuthenticationMethodKeys } from "@plane/types";
 import { ToggleSwitch } from "@plane/ui";
 import { useInstance } from "@/hooks/store";
+import { toBool } from "@/helpers/config";
 // ui
 // types
 
@@ -27,9 +28,9 @@ export const PasswordLoginConfiguration = observer(function PasswordLoginConfigu
 
   return (
     <ToggleSwitch
-      value={Boolean(parseInt(enableEmailPassword))}
+      value={toBool(enableEmailPassword)}
       onChange={() => {
-        const newEnableEmailPassword = Boolean(parseInt(enableEmailPassword)) === true ? "0" : "1";
+        const newEnableEmailPassword = toBool(enableEmailPassword) === true ? "0" : "1";
         updateConfig("ENABLE_EMAIL_PASSWORD", newEnableEmailPassword);
       }}
       size="sm"

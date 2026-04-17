@@ -15,6 +15,7 @@ import { ToggleSwitch } from "@plane/ui";
 import { cn } from "@plane/utils";
 // hooks
 import { useInstance } from "@/hooks/store";
+import { toBool } from "@/helpers/config";
 
 type Props = {
   disabled: boolean;
@@ -37,9 +38,9 @@ export const GitlabConfiguration = observer(function GitlabConfiguration(props: 
             Edit
           </Link>
           <ToggleSwitch
-            value={Boolean(parseInt(enableGitlabConfig))}
+            value={toBool(enableGitlabConfig)}
             onChange={() => {
-              const newEnableGitlabConfig = Boolean(parseInt(enableGitlabConfig)) === true ? "0" : "1";
+              const newEnableGitlabConfig = toBool(enableGitlabConfig) === true ? "0" : "1";
               updateConfig("IS_GITLAB_ENABLED", newEnableGitlabConfig);
             }}
             size="sm"

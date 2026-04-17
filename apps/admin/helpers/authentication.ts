@@ -9,6 +9,7 @@ import type {
   TInstanceAuthenticationModes,
   TInstanceConfigurationKeys,
 } from "@plane/types";
+import { toBool } from "./config";
 
 /**
  * Checks if a given authentication method can be disabled.
@@ -26,11 +27,11 @@ export const canDisableAuthMethod = (
   const enabledCount = authModes.reduce((count, method) => {
     const enabledKey = method.enabledConfigKey;
     if (!enabledKey || !formattedConfig) return count;
-    const isEnabled = Boolean(parseInt(formattedConfig[enabledKey] ?? "0"));
+    const isEnabled = toBool(formattedConfig[enabledKey]);
     return isEnabled ? count + 1 : count;
   }, 0);
 
   // If trying to disable and only 1 method is enabled, prevent it
-  const isCurrentlyEnabled = Boolean(parseInt(formattedConfig?.[configKey] ?? "0"));
+  const isCurrentlyEnabled = toBool(formattedConfig?.[configKey]);
   return !(isCurrentlyEnabled && enabledCount === 1);
 };

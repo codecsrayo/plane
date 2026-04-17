@@ -16,6 +16,7 @@ import { AuthenticationMethodCard } from "@/components/authentication/authentica
 import { PageWrapper } from "@/components/common/page-wrapper";
 // hooks
 import { useInstance } from "@/hooks/store";
+import { toBool } from "@/helpers/config";
 // types
 import type { Route } from "./+types/page";
 // local
@@ -71,9 +72,9 @@ const InstanceGitlabAuthenticationPage = observer(function InstanceGitlabAuthent
           icon={<img src={GitlabLogo} height={24} width={24} alt="GitLab Logo" />}
           config={
             <ToggleSwitch
-              value={Boolean(parseInt(enableGitlabConfig))}
+              value={toBool(enableGitlabConfig)}
               onChange={() => {
-                if (parseInt(enableGitlabConfig)) {
+                if (toBool(enableGitlabConfig)) {
                   updateConfig("IS_GITLAB_ENABLED", "0");
                 } else {
                   updateConfig("IS_GITLAB_ENABLED", "1");

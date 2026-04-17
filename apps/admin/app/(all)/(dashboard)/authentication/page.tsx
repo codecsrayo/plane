@@ -21,6 +21,7 @@ import { canDisableAuthMethod } from "@/helpers/authentication";
 // hooks
 import { useAuthenticationModes } from "@/hooks/oauth";
 import { useInstance } from "@/hooks/store";
+import { toBool } from "@/helpers/config";
 // types
 import type { Route } from "./+types/page";
 
@@ -129,9 +130,9 @@ const InstanceAuthenticationPage = observer(function InstanceAuthenticationPage(
             <div className={`shrink-0 pr-4 ${isSubmitting && "opacity-70"}`}>
               <div className="flex items-center gap-4">
                 <ToggleSwitch
-                  value={Boolean(parseInt(enableSignUpConfig))}
+                  value={toBool(enableSignUpConfig)}
                   onChange={() => {
-                    if (Boolean(parseInt(enableSignUpConfig)) === true) {
+                    if (toBool(enableSignUpConfig) === true) {
                       updateConfig("ENABLE_SIGNUP", "0");
                     } else {
                       updateConfig("ENABLE_SIGNUP", "1");

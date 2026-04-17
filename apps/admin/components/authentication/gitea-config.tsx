@@ -15,6 +15,7 @@ import { ToggleSwitch } from "@plane/ui";
 import { cn } from "@plane/utils";
 // hooks
 import { useInstance } from "@/hooks/store";
+import { toBool } from "@/helpers/config";
 
 type Props = {
   disabled: boolean;
@@ -38,9 +39,9 @@ export const GiteaConfiguration = observer(function GiteaConfiguration(props: Pr
             Edit
           </Link>
           <ToggleSwitch
-            value={Boolean(parseInt(GiteaConfig))}
+            value={toBool(GiteaConfig)}
             onChange={() => {
-              if (parseInt(GiteaConfig)) {
+              if (toBool(GiteaConfig)) {
                 updateConfig("IS_GITEA_ENABLED", "0");
               } else {
                 updateConfig("IS_GITEA_ENABLED", "1");

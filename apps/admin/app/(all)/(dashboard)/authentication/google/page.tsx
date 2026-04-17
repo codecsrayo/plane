@@ -16,6 +16,7 @@ import { AuthenticationMethodCard } from "@/components/authentication/authentica
 import { PageWrapper } from "@/components/common/page-wrapper";
 // hooks
 import { useInstance } from "@/hooks/store";
+import { toBool } from "@/helpers/config";
 // types
 import type { Route } from "./+types/page";
 // local
@@ -72,9 +73,9 @@ const InstanceGoogleAuthenticationPage = observer(function InstanceGoogleAuthent
           icon={<img src={GoogleLogo} height={24} width={24} alt="Google Logo" />}
           config={
             <ToggleSwitch
-              value={Boolean(parseInt(enableGoogleConfig))}
+              value={toBool(enableGoogleConfig)}
               onChange={() => {
-                if (parseInt(enableGoogleConfig)) {
+                if (toBool(enableGoogleConfig)) {
                   updateConfig("IS_GOOGLE_ENABLED", "0");
                 } else {
                   updateConfig("IS_GOOGLE_ENABLED", "1");
