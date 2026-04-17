@@ -24,29 +24,10 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "react-router";
-import { API_BASE_URL } from "@plane/constants";
+// services
+import { GithubUserConnectionService } from "@/services/integrations";
+// components
 import { OAuthCallbackPage, type TOAuthCallbackStatus } from "@/components/integration/oauth-callback-page";
-import { APIService } from "@/services/api.service";
-
-type TUserConnectionResponse = {
-  id: string;
-  provider: string;
-  metadata?: Record<string, unknown> | null;
-};
-
-class GithubUserConnectionService extends APIService {
-  constructor() {
-    super(API_BASE_URL);
-  }
-
-  async connectPersonalAccount(code: string): Promise<TUserConnectionResponse> {
-    return this.post("/api/auth/github/user-callback/", { code })
-      .then((res) => res?.data)
-      .catch((err) => {
-        throw err?.response;
-      });
-  }
-}
 
 const service = new GithubUserConnectionService();
 

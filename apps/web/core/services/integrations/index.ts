@@ -5,6 +5,7 @@
  */
 
 export * from "./github.service";
+export * from "./github-user-connection.service";
 export * from "./gitlab.service";
 export * from "./integration.service";
 export * from "./jira.service";
