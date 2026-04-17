@@ -6,13 +6,17 @@
  * Slack OAuth callback page.
  *
  * Slack redirects here after the user authorizes the App:
- *   /auth/slack/callback?code=XXXXX&state={workspaceSlug}
+ *   /auth/slack/callback?code=XXXXX&state=<nonce>:<workspaceSlug>
  *
  * This page:
- *   1. Reads code and state (workspaceSlug) from the query string
- *   2. POSTs to the backend to create the WorkspaceIntegration record
- *   3. Communicates the result back to the parent window (the integrations panel)
- *      via postMessage, then closes itself.
+ *   1. Reads code and state from the query string
+ *   2. Parses state as `<nonce>:<workspaceSlug>` — the nonce is sent back in
+ *      the postMessage payload so the parent window can validate the CSRF token.
+ *   3. POSTs to the backend to create the WorkspaceIntegration record
+ *   4. Communicates the result back to the parent window via postMessage, then
+ *      closes itself. The auto-close timer is cleared on unmount to avoid the
+ *      memory-leak that occurs when the component is torn down before the delay
+ *      fires.
  */
 
 import { useEffect, useRef, useState } from "react";
@@ -29,20 +33,27 @@ export default function SlackIntegrationCallbackPage() {
   const [status, setStatus] = useState<TStatus>("processing");
   const [errorMessage, setErrorMessage] = useState<string>("");
   const called = useRef(false); // guard against React double-invoke in dev
+  // Fix #3: keep a reference to the auto-close timer so it can be cancelled on unmount.
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     if (called.current) return;
     called.current = true;
 
     const code = searchParams.get("code");
-    // state param carries workspaceSlug (set in use-integration-popup.tsx)
-    const workspaceSlug = searchParams.get("state");
+
+    // Fix #1: state is now `<nonce>:<workspaceSlug>`.
+    // Split on the first colon only so workspaceSlugs containing colons are safe.
+    const rawState = searchParams.get("state") ?? "";
+    const colonIndex = rawState.indexOf(":");
+    const csrfNonce = colonIndex !== -1 ? rawState.slice(0, colonIndex) : "";
+    const workspaceSlug = colonIndex !== -1 ? rawState.slice(colonIndex + 1) : rawState;
 
     if (!code || !workspaceSlug) {
       setErrorMessage("Missing authorization code or workspace context. Please close this window and try again.");
       setStatus("error");
-      // Notify parent of failure
-      window.opener?.postMessage({ type: "slack-integration", success: false }, window.location.origin);
+      // Notify parent of failure; include nonce so parent can validate even error paths.
+      window.opener?.postMessage({ type: "slack-integration", success: false, csrfNonce }, window.location.origin);
       return;
     }
 
@@ -50,10 +61,11 @@ export default function SlackIntegrationCallbackPage() {
       .addInstallationApp(workspaceSlug, "slack", { code })
       .then((result) => {
         setStatus("success");
-        // Notify the parent window (integrations panel popup) so it can refresh
-        window.opener?.postMessage({ type: "slack-integration", success: true }, window.location.origin);
-        // Auto-close after a short delay so the user sees the success state
-        setTimeout(() => window.close(), 1500);
+        // Notify the parent window (integrations panel) so it can refresh.
+        // Return the nonce so the parent can validate the CSRF token.
+        window.opener?.postMessage({ type: "slack-integration", success: true, csrfNonce }, window.location.origin);
+        // Fix #3: store the timer ID so it can be cleared if this component unmounts early.
+        closeTimer.current = setTimeout(() => window.close(), 1500);
         return result;
       })
       .catch((err) => {
@@ -61,8 +73,16 @@ export default function SlackIntegrationCallbackPage() {
           err?.data?.error ?? err?.error ?? err?.statusText ?? "Failed to complete Slack integration. Please try again.";
         setErrorMessage(msg);
         setStatus("error");
-        window.opener?.postMessage({ type: "slack-integration", success: false, error: msg }, window.location.origin);
+        window.opener?.postMessage(
+          { type: "slack-integration", success: false, error: msg, csrfNonce },
+          window.location.origin
+        );
       });
+
+    // Fix #3: cleanup — cancel the auto-close timer if the component unmounts before it fires.
+    return () => {
+      if (closeTimer.current !== null) clearTimeout(closeTimer.current);
+    };
   }, [searchParams]);
 
   return (
