@@ -89,10 +89,16 @@ const encodePrivateKeyForStorage = (value: string) => {
 export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrationsConfigForm({ config }: Props) {
   const [isDiscardChangesModalOpen, setIsDiscardChangesModalOpen] = useState(false);
   const [isWebhookSecretCopied, setIsWebhookSecretCopied] = useState(false);
-  const [isGithubPrivateKeySaved, setIsGithubPrivateKeySaved] = useState(Boolean(config["GITHUB_APP_PRIVATE_KEY"]));
-  const [githubPrivateKeyLabel, setGithubPrivateKeyLabel] = useState(
-    config["GITHUB_APP_PRIVATE_KEY"] ? "GitHub App private key" : ""
-  );
+  // Tracks explicit user action on the private-key field within this session.
+  // null  → no action yet; derive from config prop (re-syncs on SWR revalidation)
+  // "saved"   → user clicked the per-field Save button
+  // "unsaved" → user is editing / deleted the key
+  const [localKeyState, setLocalKeyState] = useState<"saved" | "unsaved" | null>(null);
+
+  // Pure derivation — no stale closure risk, stays in sync when config revalidates
+  const isGithubPrivateKeySaved =
+    localKeyState === "saved" || (localKeyState === null && Boolean(config["GITHUB_APP_PRIVATE_KEY"]));
+  const githubPrivateKeyLabel = isGithubPrivateKeySaved ? "GitHub App private key" : "";
   const webhookSecretCopyTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const githubPrivateKeyFileInputRef = useRef<HTMLInputElement | null>(null);
   const { formattedConfig, updateInstanceConfigurations } = useInstance();
@@ -198,14 +204,12 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
       return;
     }
 
-    setIsGithubPrivateKeySaved(true);
-    if (!githubPrivateKeyLabel) setGithubPrivateKeyLabel("GitHub App private key");
+    setLocalKeyState("saved");
   };
 
   const handleGithubPrivateKeyDelete = () => {
     setValue("GITHUB_APP_PRIVATE_KEY", "", { shouldDirty: true, shouldValidate: true });
-    setIsGithubPrivateKeySaved(false);
-    setGithubPrivateKeyLabel("");
+    setLocalKeyState("unsaved");
   };
 
   // ── GitHub fields ──────────────────────────────────────────────────────────
@@ -409,7 +413,7 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
         handleClose={() => setIsDiscardChangesModalOpen(false)}
       />
 
-      <div className="flex flex-col gap-12">
+      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-12" noValidate>
         {/* ── GitHub App ── */}
         <div className="flex flex-col gap-6 border-b border-subtle pb-10">
           {/* Section header with toggle */}
@@ -492,7 +496,7 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
                                     ref={ref}
                                     value={decodePrivateKeyForDisplay(value)}
                                     onChange={(e) => {
-                                      setIsGithubPrivateKeySaved(false);
+                                      setLocalKeyState("unsaved");
                                       onChange(encodePrivateKeyForStorage(e.target.value));
                                     }}
                                     hasError={Boolean(errors[field.key as keyof typeof errors])}
@@ -537,7 +541,7 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
                                 onClick={handleGithubPrivateKeySave}
                                 disabled={!isGithubEnabled}
                               >
-                                Guardar
+                                Save
                               </Button>
                               <p className="text-11 text-tertiary">
                                 GitHub generates a PEM private key. Plane converts it to base64 before saving.
@@ -808,7 +812,7 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
           <Button
             variant="primary"
             size="lg"
-            onClick={(e) => void handleSubmit(onSubmit)(e)}
+            type="submit"
             loading={isSubmitting}
             disabled={!isDirty}
           >
@@ -818,7 +822,7 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
             Go back
           </Link>
         </div>
-      </div>
+      </form>
     </>
   );
 });
