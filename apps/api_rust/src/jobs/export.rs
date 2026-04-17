@@ -194,17 +194,29 @@ async fn run_export(state: &AppState, token: &str, multiple: bool) -> anyhow::Re
                     // UUID truncado en vez de fallar todo el export.
                     project_id.simple().to_string().chars().take(8).collect()
                 });
-            let base_name =
-                unique_base_name(&format!("{slug}-{label}"), &mut used_names);
+            // Filename per-project: `{label}-{random_uuid}`. El UUID v4
+            // garantiza unicidad a nivel de export individual (dos exports
+            // consecutivos del mismo proyecto producen nombres distintos,
+            // útil si el usuario baja varios ZIPs en la misma sesión y los
+            // extrae en la misma carpeta). `unique_base_name` sigue
+            // operando por si acaso.
+            let base_name = unique_base_name(
+                &format!("{label}-{uuid}", uuid = Uuid::new_v4()),
+                &mut used_names,
+            );
 
             let (filename, content) = encode_issues(&base_name, &project_issues, &maps, &provider)?;
             files.push((filename, content));
         }
     } else {
         // `multiple=false` → un único archivo consolidado del workspace
-        // (paridad con export_task.py:211-215). Se nombra con el slug del
-        // workspace en vez del UUID para legibilidad.
-        let base_name = format!("{slug}-all-projects");
+        // (paridad con export_task.py:211-215). Construimos el nombre a
+        // partir de la parte del slug posterior al primer `-` (ej. si el
+        // slug es `tenant-workspace`, usamos `workspace`); si el slug no
+        // contiene `-`, usamos el slug completo. Un UUID v4 al final da
+        // unicidad entre exports consecutivos.
+        let slug_tail = slug.split_once('-').map(|(_, r)| r).unwrap_or(&slug);
+        let base_name = format!("{slug_tail}-{}", Uuid::new_v4());
         let refs: Vec<&issues::Model> = all_issues.iter().collect();
         let (filename, content) = encode_issues(&base_name, &refs, &maps, &provider)?;
         files.push((filename, content));
