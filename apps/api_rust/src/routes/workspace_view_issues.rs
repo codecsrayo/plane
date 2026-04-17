@@ -39,7 +39,7 @@ use crate::{
     error::AppError,
     routes::issue_pagination::{
         apply_issue_order, collect_state_ids, empty_paginated_response, load_enrichment,
-        paginated_response, parse_cursor, DEFAULT_PER_PAGE,
+        load_workspace_triage_state_ids, paginated_response, parse_cursor, DEFAULT_PER_PAGE,
     },
     utils::soft_delete::SoftDeleteExt,
     AppState,
@@ -49,10 +49,14 @@ use crate::{
 
 #[derive(Debug, Deserialize)]
 pub struct WorkspaceIssuesQuery {
-    pub cursor:    Option<String>,
-    pub per_page:  Option<u64>,
-    pub order_by:  Option<String>,
-    pub sub_issue: Option<String>,
+    pub cursor:        Option<String>,
+    pub per_page:      Option<u64>,
+    pub order_by:      Option<String>,
+    pub sub_issue:     Option<String>,
+    /// Filtro incremental — solo issues actualizados después de este timestamp.
+    /// Mirror del `updated_at__gt` en base.py:256.
+    #[serde(rename = "updated_at__gt")]
+    pub updated_at_gt: Option<chrono::DateTime<chrono::FixedOffset>>,
 }
 
 // ── DTOs de respuesta ─────────────────────────────────────────────────────────
@@ -249,7 +253,7 @@ pub async fn list_workspace_view_issues(
         return Ok(Json(empty_paginated_response(page_size)));
     }
 
-    // Query base: issues activos (no soft-deleted), no archivados
+    // Query base: issues activos (no soft-deleted), no archivados.
     let mut base_query = issues::Entity::find()
         .active()
         .filter(issues::Column::WorkspaceId.eq(workspace_id))
@@ -259,6 +263,21 @@ pub async fn list_workspace_view_issues(
 
     if exclude_sub_issues {
         base_query = base_query.filter(issues::Column::ParentId.is_null());
+    }
+
+    // Mirror del `IssueManager.exclude(state__group='triage')` en
+    // db/models/issue.py:97. Este endpoint antes no aplicaba esta exclusión
+    // — ahora queda en paridad con Django. Usamos pre-query de state IDs
+    // en lugar de JOIN para mantener el query builder simple.
+    let triage_state_ids = load_workspace_triage_state_ids(db, workspace_id).await?;
+    if !triage_state_ids.is_empty() {
+        base_query = base_query.filter(issues::Column::StateId.is_not_in(triage_state_ids));
+    }
+
+    // Filtro incremental `updated_at__gt` (base.py:256). Útil para sincronización
+    // delta del frontend sin re-descargar toda la lista.
+    if let Some(updated_at_gt) = params.updated_at_gt {
+        base_query = base_query.filter(issues::Column::UpdatedAt.gt(updated_at_gt));
     }
 
     // ── 5. Total count (para paginación) ──────────────────────────────────────

@@ -111,6 +111,13 @@ pub struct ListIssuesQuery {
     pub cursor:   Option<String>,
     pub per_page: Option<u64>,
     pub order_by: Option<String>,
+    /// `false` excluye sub-issues (mirror de `filter_sub_issue_toggle`
+    /// en plane/utils/issue_filters.py:380).
+    pub sub_issue: Option<String>,
+    /// Filtro incremental — solo issues actualizados después de este timestamp.
+    /// Mirror del `updated_at__gt` en base.py:256.
+    #[serde(rename = "updated_at__gt")]
+    pub updated_at_gt: Option<chrono::DateTime<chrono::FixedOffset>>,
 }
 
 // ── DTO serializado en la respuesta paginada ─────────────────────────────────
@@ -410,6 +417,19 @@ pub async fn list_issues(
     let is_restricted_guest = guard.project_member.role == 5 && !guard.project.guest_view_all_features;
     if is_restricted_guest {
         base_query = base_query.filter(issues::Column::CreatedById.eq(user_id));
+    }
+
+    // Toggle de sub-issues (mirror de `filter_sub_issue_toggle` en
+    // plane/utils/issue_filters.py:380). `sub_issue=false` oculta issues que
+    // tengan parent; cualquier otro valor (o ausencia) muestra todo.
+    if matches!(params.sub_issue.as_deref(), Some("false")) {
+        base_query = base_query.filter(issues::Column::ParentId.is_null());
+    }
+
+    // Sync delta (`updated_at__gt` en base.py:256). El frontend usa este
+    // filtro para refrescar solo lo que cambió desde el último poll.
+    if let Some(updated_at_gt) = params.updated_at_gt {
+        base_query = base_query.filter(issues::Column::UpdatedAt.gt(updated_at_gt));
     }
 
     // ── 5. Total count ────────────────────────────────────────────────────────

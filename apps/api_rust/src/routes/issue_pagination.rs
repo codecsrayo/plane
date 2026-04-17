@@ -305,6 +305,29 @@ pub async fn load_triage_state_ids(
     Ok(rows)
 }
 
+/// Versión workspace-scoped de `load_triage_state_ids` — carga los IDs de
+/// states en triage de TODOS los proyectos del workspace.
+///
+/// Se usa en `list_workspace_view_issues` para aplicar la misma exclusión
+/// que Django hace a nivel de manager, sin requerir JOIN con `states` en
+/// cada query del listado.
+pub async fn load_workspace_triage_state_ids(
+    db: &DatabaseConnection,
+    workspace_id: Uuid,
+) -> Result<Vec<Uuid>, AppError> {
+    let rows: Vec<Uuid> = states::Entity::find()
+        .select_only()
+        .column(states::Column::Id)
+        .filter(states::Column::WorkspaceId.eq(workspace_id))
+        .filter(states::Column::Group.eq(STATE_GROUP_TRIAGE))
+        .filter(states::Column::DeletedAt.is_null())
+        .into_tuple()
+        .all(db)
+        .await
+        .map_err(AppError::Database)?;
+    Ok(rows)
+}
+
 // ── Ordenamiento ──────────────────────────────────────────────────────────────
 
 /// Aplica el `order_by` de Django al SelectModel de SeaORM.
