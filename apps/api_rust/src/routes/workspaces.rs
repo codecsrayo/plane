@@ -14,7 +14,7 @@ use axum::{
 };
 use chrono::{DateTime, Utc};
 use sea_orm::{
-    ActiveModelTrait, ColumnTrait, EntityTrait, FromQueryResult,
+    sea_query::Expr, ActiveModelTrait, ColumnTrait, EntityTrait, FromQueryResult,
     PaginatorTrait, QueryFilter, QueryOrder, Set, Statement, TransactionTrait,
 };
 use std::collections::HashSet;
@@ -27,7 +27,7 @@ use crate::{
         permissions::{require_workspace_admin, ROLE_ADMIN, ROLE_GUEST, ROLE_MEMBER, ROLE_VIEWER},
     },
     entities::{
-        draft_issues, issue_activities, issues, project_members, projects, users,
+        draft_issues, issue_activities, issues, profiles, project_members, projects, users,
         workspace_member_invites, workspace_members, workspaces,
     },
     error::AppError,
@@ -770,10 +770,38 @@ pub async fn delete_workspace(
     }
 
     let now = chrono::Utc::now().fixed_offset();
+    let ws_id = ws.id;
+
+    // Espejo de `WorkspaceViewSet.destroy`
+    // (`apps/api/plane/app/views/workspace/base.py:184-201`):
+    //
+    //   Profile.objects.filter(last_workspace_id=id).update(last_workspace_id=None)
+    //   return super().destroy(...)
+    //
+    // Sin este paso, los perfiles que apuntaban al workspace eliminado siguen
+    // devolviendo ese `last_workspace_id` en `GET /users/me/settings/`, por lo
+    // que el frontend redirige al href muerto en lugar de a la pantalla de
+    // selección de workspace. Se envuelve en transacción para que la limpieza
+    // de perfiles y el soft-delete del workspace sean atómicos.
+    let txn = state.db.begin().await.map_err(AppError::Database)?;
+
+    profiles::Entity::update_many()
+        .col_expr(
+            profiles::Column::LastWorkspaceId,
+            Expr::value(Option::<Uuid>::None),
+        )
+        .col_expr(profiles::Column::UpdatedAt, Expr::value(now))
+        .filter(profiles::Column::LastWorkspaceId.eq(ws_id))
+        .exec(&txn)
+        .await
+        .map_err(AppError::Database)?;
+
     let mut active: workspaces::ActiveModel = ws.into();
     active.deleted_at = Set(Some(now));
     active.updated_at = Set(now);
-    active.update(&state.db).await.map_err(AppError::Database)?;
+    active.update(&txn).await.map_err(AppError::Database)?;
+
+    txn.commit().await.map_err(AppError::Database)?;
 
     Ok(StatusCode::NO_CONTENT)
 }
