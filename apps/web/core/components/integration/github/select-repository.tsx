@@ -7,8 +7,8 @@
 import React from "react";
 import { useParams } from "react-router";
 import useSWRInfinite from "swr/infinite";
-import type { IGithubRepoInfo, IGithubRepositoriesResponse, IWorkspaceIntegration } from "@plane/types";
-import { CustomSearchSelect, Loader } from "@plane/ui";
+import type { IGithubRepo, IGithubRepositoriesResponse, IWorkspaceIntegration } from "@plane/types";
+import { CustomSearchSelect, Spinner } from "@plane/ui";
 import { truncateText } from "@plane/utils";
 import { ProjectService } from "@/services/project";
 
@@ -17,7 +17,7 @@ type Props = {
   /** `full_name` of the currently synced repo, or null when none is linked. */
   value: string | null | undefined;
   label: string | React.ReactNode;
-  onChange: (repo: IGithubRepoInfo | undefined) => void;
+  onChange: (repo: IGithubRepo | undefined) => void;
   characterLimit?: number;
 };
 
@@ -39,10 +39,13 @@ export function SelectRepository(props: Props) {
     return data;
   };
 
-  const { data: paginatedData, size, setSize, isValidating, error } = useSWRInfinite<IGithubRepositoriesResponse>(
-    getKey,
-    fetchGithubRepos
-  );
+  const {
+    data: paginatedData,
+    size,
+    setSize,
+    isValidating,
+    error,
+  } = useSWRInfinite<IGithubRepositoriesResponse>(getKey, fetchGithubRepos);
 
   const isLoading = !paginatedData && !error;
 
@@ -61,19 +64,15 @@ export function SelectRepository(props: Props) {
 
   if (isLoading) {
     return (
-      <div className="flex items-center gap-2 text-sm text-custom-text-300">
-        <Loader className="h-4 w-4 animate-spin" />
+      <div className="text-sm text-custom-text-300 flex items-center gap-2">
+        <Spinner height="16px" width="16px" />
         <span>Loading repositories…</span>
       </div>
     );
   }
 
   if (error) {
-    return (
-      <p className="text-sm text-red-500">
-        Failed to load repositories. Check your GitHub integration settings.
-      </p>
-    );
+    return <p className="text-sm text-red-500">Failed to load repositories. Check your GitHub integration settings.</p>;
   }
 
   return (
@@ -91,7 +90,7 @@ export function SelectRepository(props: Props) {
             {options.length < totalCount && (
               <button
                 type="button"
-                className="w-full p-1 text-center text-xs text-custom-text-300 hover:bg-custom-background-80"
+                className="text-xs text-custom-text-300 hover:bg-custom-background-80 w-full p-1 text-center"
                 onClick={() => setSize(size + 1)}
                 disabled={isValidating}
               >
@@ -99,14 +98,14 @@ export function SelectRepository(props: Props) {
               </button>
             )}
             {isInstallationToken && manageInstallationUrl && (
-              <div className="border-t border-custom-border-200 px-2 py-1.5">
+              <div className="border-custom-border-200 border-t px-2 py-1.5">
                 <p className="text-xs text-custom-text-400">
                   {"Can't find a repo? "}
                   <a
                     href={manageInstallationUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-custom-primary-100 underline underline-offset-2 hover:text-custom-primary-200"
+                    className="text-custom-primary-100 hover:text-custom-primary-200 underline underline-offset-2"
                   >
                     Manage GitHub App access
                   </a>
