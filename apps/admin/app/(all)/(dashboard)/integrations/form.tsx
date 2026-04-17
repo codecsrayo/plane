@@ -26,6 +26,7 @@ import { ControllerInput } from "@/components/common/controller-input";
 import { CopyField } from "@/components/common/copy-field";
 // hooks
 import { useInstance } from "@/hooks/store";
+import { useOrigin } from "@/hooks/use-origin";
 import { toBool } from "@/helpers/config";
 
 type Props = {
@@ -116,10 +117,16 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
   const isSlackEnabled = toBool(formattedConfig?.IS_SLACK_ENABLED);
 
   const handleToggle = (key: TInstanceAuthenticationMethodKeys, current: boolean) => {
-    updateInstanceConfigurations({ [key]: current ? "0" : "1" } as Record<string, string>).catch(console.error);
+    updateInstanceConfigurations({ [key]: current ? "0" : "1" } as Record<string, string>).catch(() => {
+      setToast({
+        type: TOAST_TYPE.ERROR,
+        title: "Toggle failed",
+        message: "Could not update integration status. Please try again.",
+      });
+    });
   };
 
-  const origin = typeof window !== "undefined" ? window.location.origin : "";
+  const origin = useOrigin();
 
   const {
     handleSubmit,
@@ -164,6 +171,11 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
       }, 2000);
     } catch {
       setIsWebhookSecretCopied(false);
+      setToast({
+        type: TOAST_TYPE.ERROR,
+        title: "Copy failed",
+        message: "Could not copy webhook secret to clipboard. Please copy it manually.",
+      });
     }
   };
 
@@ -175,8 +187,7 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
       const pem = await file.text();
       const pemBase64 = encodeBase64(pem);
       setValue("GITHUB_APP_PRIVATE_KEY", pemBase64, { shouldDirty: true, shouldValidate: true });
-      setIsGithubPrivateKeySaved(false);
-      setGithubPrivateKeyLabel(file.name);
+      setLocalKeyState("unsaved");
       setToast({
         type: TOAST_TYPE.SUCCESS,
         title: "Private key loaded",
@@ -388,8 +399,7 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
         GITLAB_CLIENT_ID: get("GITLAB_CLIENT_ID"),
         GITLAB_CLIENT_SECRET: get("GITLAB_CLIENT_SECRET"),
       });
-    } catch (err) {
-      console.error(err);
+    } catch {
       setToast({
         type: TOAST_TYPE.ERROR,
         title: "Error",

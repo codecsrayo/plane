@@ -8,6 +8,7 @@ import React from "react";
 // ui
 import { Button } from "@plane/propel/button";
 import { CheckIcon, CopyIcon } from "@plane/propel/icons";
+import { TOAST_TYPE, setToast } from "@plane/propel/toast";
 
 type Props = {
   label: string;
@@ -45,6 +46,11 @@ export function CopyField(props: Props) {
       }, 2000);
     } catch {
       setIsCopied(false);
+      setToast({
+        type: TOAST_TYPE.ERROR,
+        title: "Copy failed",
+        message: "Could not copy to clipboard. Please copy the value manually.",
+      });
     }
   };
 

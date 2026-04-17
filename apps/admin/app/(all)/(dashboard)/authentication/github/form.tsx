@@ -25,6 +25,7 @@ import type { TCopyField } from "@/components/common/copy-field";
 import { CopyField } from "@/components/common/copy-field";
 // hooks
 import { useInstance } from "@/hooks/store";
+import { useOrigin } from "@/hooks/use-origin";
 
 type Props = {
   config: IFormattedInstanceConfiguration;
@@ -53,7 +54,8 @@ export function InstanceGithubConfigForm(props: Props) {
     },
   });
 
-  const originURL = !isEmpty(API_BASE_URL) ? API_BASE_URL : typeof window !== "undefined" ? window.location.origin : "";
+  const windowOrigin = useOrigin();
+  const originURL = !isEmpty(API_BASE_URL) ? API_BASE_URL : windowOrigin;
 
   const GITHUB_FORM_FIELDS: TControllerInputFormField[] = [
     {
@@ -177,8 +179,12 @@ export function InstanceGithubConfigForm(props: Props) {
         GITHUB_ORGANIZATION_ID: response.find((item) => item.key === "GITHUB_ORGANIZATION_ID")?.value,
         ENABLE_GITHUB_SYNC: response.find((item) => item.key === "ENABLE_GITHUB_SYNC")?.value,
       });
-    } catch (err) {
-      console.error(err);
+    } catch {
+      setToast({
+        type: TOAST_TYPE.ERROR,
+        title: "Save failed",
+        message: "Could not save GitHub authentication settings. Please try again.",
+      });
     }
   };
 
