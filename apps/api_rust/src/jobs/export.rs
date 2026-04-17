@@ -23,7 +23,7 @@ use uuid::Uuid;
 
 use crate::{
     entities::{exporters, issues, labels, issue_assignees, issue_labels, states, users},
-    utils::soft_delete::SoftDeleteExt,
+    utils::{s3::build_s3_client, soft_delete::SoftDeleteExt},
     AppState,
 };
 
@@ -58,9 +58,12 @@ pub async fn handle_export_issues(
     let state: AppState = (*ctx).clone();
 
     if let Err(e) = run_export(&state, &job.exporter_token, job.multiple).await {
+        // `%e` sólo imprime el último wrap de `anyhow::Error`, ocultando la
+        // causa raíz (ej. error real del SDK de S3). `{:?}` expone la cadena
+        // completa de `.context()`, que es lo que sirve para debuggear.
         tracing::error!(
             token = %job.exporter_token,
-            error = %e,
+            error = ?e,
             "export_issues: job falló"
         );
         // Marcar como fallido en DB (best-effort)
@@ -251,17 +254,23 @@ async fn run_export(state: &AppState, token: &str, multiple: bool) -> anyhow::Re
         chrono::Utc::now().format("%Y-%m-%d")
     );
 
-    let s3_config = aws_config::defaults(aws_config::BehaviorVersion::latest())
-        .endpoint_url(&state.config.aws_endpoint)
-        .load()
-        .await;
-    let s3 = aws_sdk_s3::Client::new(&s3_config);
+    // El builder canónico (utils/s3.rs) aplica credentials explícitas, región
+    // con fallback a us-east-1, y `force_path_style=true` para MinIO. La
+    // versión previa usaba `aws_config::defaults()` que:
+    //   - dejaba `region: Some("")` → AWS SDK rechaza la request.
+    //   - dejaba `force_path_style: false` → MinIO recibe el bucket como
+    //     subdominio (`http://uploads.plane-minio:9000/...`) que no resuelve.
+    // Ver logs del 2026-04-17 (S3.PutObject → orchestrator halting).
+    // `cron.rs::delete_old_s3_links` ya usa este helper — mismo patrón.
+    let s3 = build_s3_client(&state.config);
 
     s3.put_object()
         .bucket(&state.config.aws_s3_bucket)
         .key(&file_name)
         .body(ByteStream::from(zip_buf))
-        .content_type("application/zip")
+        // `.tar.gz` es gzip, no zip — corrige el Content-Type que servirá el
+        // presigned GET al browser.
+        .content_type("application/gzip")
         .send()
         .await
         .context("Error al subir ZIP a S3")?;
