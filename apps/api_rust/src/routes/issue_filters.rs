@@ -133,9 +133,21 @@ fn csv_contains_none(raw: &str) -> bool {
 /// implementación Rust aún NO porta esa capa, así que ignorarlo silenciosamente
 /// produciría issues "filtrados" mal (el user vería más de lo que debería).
 ///
-/// Este guard devuelve 400 BadRequest cuando el param viene con contenido,
-/// dejando el gap explícito para clientes que lo dependan. La implementación
-/// completa queda trackeada como follow-up.
+/// Este guard devuelve 400 BadRequest cuando el param viene con **contenido
+/// real**. Formas vacías equivalentes a "sin filtros" se aceptan como no-op
+/// porque ciertos layouts del frontend (gantt_chart, spreadsheet) siempre
+/// construyen el param aunque no haya filtros activos.
+///
+/// # Formas tratadas como no-op
+/// - Param ausente (`raw == None`)
+/// - Param vacío (`filters=`)
+/// - `filters={}`  — objeto vacío (el caso del gantt chart)
+/// - `filters=[]`  — array vacío
+/// - `filters=null`
+///
+/// # Forma que dispara 400
+/// Cualquier JSON con contenido (keys en un objeto, items en un array,
+/// literal no-null) o JSON malformado.
 ///
 /// Referencias:
 ///   - Django backend: `plane/utils/filters/filter_backend.py`
@@ -143,15 +155,24 @@ fn csv_contains_none(raw: &str) -> bool {
 ///   - Frontend origin:  `apps/web/core/store/issue/helpers/
 ///                        issue-filter-helper.store.ts:116`
 pub fn reject_if_rich_filters(raw: Option<&str>) -> Result<(), AppError> {
-    match raw.map(str::trim) {
-        Some(s) if !s.is_empty() => Err(AppError::BadRequest(
+    // Early-return para param ausente o vacío — no hay nada que parsear.
+    let Some(trimmed) = raw.map(str::trim).filter(|s| !s.is_empty()) else {
+        return Ok(());
+    };
+
+    // Parsear y diferenciar "vacío estructural" de "con contenido".
+    // Si el parse falla, lo tratamos como rich-filter malformado → 400.
+    match serde_json::from_str::<serde_json::Value>(trimmed) {
+        Ok(serde_json::Value::Null) => Ok(()),
+        Ok(serde_json::Value::Object(m)) if m.is_empty() => Ok(()),
+        Ok(serde_json::Value::Array(a)) if a.is_empty() => Ok(()),
+        _ => Err(AppError::BadRequest(
             "Rich filters (?filters=<JSON>) are not yet supported by the Rust \
              API. Use the flat query params (priority, state, labels, \
              assignees, cycle, module, etc.) or hit the Django backend. \
              Tracking: rich-filters Django-parity follow-up."
                 .into(),
         )),
-        _ => Ok(()),
     }
 }
 
