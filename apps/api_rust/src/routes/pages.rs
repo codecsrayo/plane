@@ -35,7 +35,7 @@ use crate::{
         extractors::ProjectMemberGuard,
         permissions::{require_role, ROLE_GUEST, ROLE_MEMBER},
     },
-    entities::{page_versions, pages, project_pages},
+    entities::{page_labels, page_versions, pages, project_pages},
     error::AppError,
     utils::{content_validator, soft_delete::SoftDeleteExt},
     AppState,
@@ -66,10 +66,18 @@ pub struct PageResponse {
     pub created_by_id: Option<Uuid>,
     pub created_at: chrono::DateTime<chrono::FixedOffset>,
     pub updated_at: chrono::DateTime<chrono::FixedOffset>,
+    /// UUIDs de los proyectos a los que pertenece la página (M2M via
+    /// `project_pages`). Mirror de `PageSerializer.project_ids` en Django —
+    /// el frontend lo usa como `page.project_ids?.[0]` para construir rutas
+    /// y hacer llamadas HTTP; si viene vacío, el guard client-side lanza
+    /// "Missing required fields" antes de llegar al backend.
+    pub project_ids: Vec<Uuid>,
+    /// UUIDs de los labels asociados (M2M via `page_labels`).
+    pub label_ids: Vec<Uuid>,
 }
 
 impl PageResponse {
-    fn from_model(m: pages::Model) -> Self {
+    fn from_model(m: pages::Model, project_ids: Vec<Uuid>, label_ids: Vec<Uuid>) -> Self {
         Self {
             id: m.id,
             name: m.name,
@@ -84,6 +92,8 @@ impl PageResponse {
             created_by_id: m.created_by_id,
             created_at: m.created_at,
             updated_at: m.updated_at,
+            project_ids,
+            label_ids,
         }
     }
 }
@@ -163,6 +173,85 @@ async fn find_project_page(
         .ok_or(AppError::NotFound)
 }
 
+// ── M2M helpers ──────────────────────────────────────────────────────────────
+//
+// Django espeja `project_ids`/`label_ids` sobre cada fila de Page vía
+// `ArrayAgg` en el queryset (ver `page/base.py:120-123`). En SeaORM no
+// tenemos agregación nativa en la query principal sin romper el mapeo a la
+// entidad, así que resolvemos los M2M con queries auxiliares. Se respeta el
+// soft-delete en `project_pages` (`.active()`) y en `page_labels`.
+
+/// M2M de una sola página — usado por handlers que devuelven una página
+/// después de un write (create/update/archive/lock/duplicate/get).
+async fn fetch_page_m2m(
+    db: &sea_orm::DatabaseConnection,
+    page_id: Uuid,
+) -> Result<(Vec<Uuid>, Vec<Uuid>), AppError> {
+    let project_ids: Vec<Uuid> = project_pages::Entity::find()
+        .active()
+        .filter(project_pages::Column::PageId.eq(page_id))
+        .all(db)
+        .await
+        .map_err(AppError::Database)?
+        .into_iter()
+        .map(|pp| pp.project_id)
+        .collect();
+
+    let label_ids: Vec<Uuid> = page_labels::Entity::find()
+        .active()
+        .filter(page_labels::Column::PageId.eq(page_id))
+        .all(db)
+        .await
+        .map_err(AppError::Database)?
+        .into_iter()
+        .map(|pl| pl.label_id)
+        .collect();
+
+    Ok((project_ids, label_ids))
+}
+
+/// M2M de múltiples páginas — batched para `list_pages` y evitar N+1.
+/// Devuelve un par de HashMaps: `(page_id -> project_ids, page_id -> label_ids)`.
+async fn fetch_pages_m2m(
+    db: &sea_orm::DatabaseConnection,
+    page_ids: &[Uuid],
+) -> Result<
+    (
+        std::collections::HashMap<Uuid, Vec<Uuid>>,
+        std::collections::HashMap<Uuid, Vec<Uuid>>,
+    ),
+    AppError,
+> {
+    use std::collections::HashMap;
+    if page_ids.is_empty() {
+        return Ok((HashMap::new(), HashMap::new()));
+    }
+
+    let mut projects_by_page: HashMap<Uuid, Vec<Uuid>> = HashMap::new();
+    for pp in project_pages::Entity::find()
+        .active()
+        .filter(project_pages::Column::PageId.is_in(page_ids.to_vec()))
+        .all(db)
+        .await
+        .map_err(AppError::Database)?
+    {
+        projects_by_page.entry(pp.page_id).or_default().push(pp.project_id);
+    }
+
+    let mut labels_by_page: HashMap<Uuid, Vec<Uuid>> = HashMap::new();
+    for pl in page_labels::Entity::find()
+        .active()
+        .filter(page_labels::Column::PageId.is_in(page_ids.to_vec()))
+        .all(db)
+        .await
+        .map_err(AppError::Database)?
+    {
+        labels_by_page.entry(pl.page_id).or_default().push(pl.label_id);
+    }
+
+    Ok((projects_by_page, labels_by_page))
+}
+
 // ── GET /pages/ ───────────────────────────────────────────────────────────────
 
 #[utoipa::path(
@@ -212,7 +301,20 @@ pub async fn list_pages(
         .await
         .map_err(AppError::Database)?;
 
-    Ok(Json(rows.into_iter().map(PageResponse::from_model).collect()))
+    // Batched M2M para evitar N+1 en proyectos con muchas páginas.
+    let ids: Vec<Uuid> = rows.iter().map(|p| p.id).collect();
+    let (mut projects_by_page, mut labels_by_page) = fetch_pages_m2m(&state.db, &ids).await?;
+
+    let responses: Vec<PageResponse> = rows
+        .into_iter()
+        .map(|m| {
+            let pids = projects_by_page.remove(&m.id).unwrap_or_default();
+            let lids = labels_by_page.remove(&m.id).unwrap_or_default();
+            PageResponse::from_model(m, pids, lids)
+        })
+        .collect();
+
+    Ok(Json(responses))
 }
 
 // ── POST /pages/ ──────────────────────────────────────────────────────────────
@@ -308,7 +410,17 @@ pub async fn create_page(
     .await
     .map_err(AppError::Database)?;
 
-    Ok((StatusCode::CREATED, Json(PageResponse::from_model(page))))
+    // La página recién creada está asociada a exactamente un proyecto (el
+    // project_pages se acaba de insertar arriba) y no tiene labels todavía.
+    // Evitamos un round-trip a DB devolviendo los IDs conocidos inline.
+    Ok((
+        StatusCode::CREATED,
+        Json(PageResponse::from_model(
+            page,
+            vec![guard.project.id],
+            vec![],
+        )),
+    ))
 }
 
 // ── GET /pages/{page_id}/ ─────────────────────────────────────────────────────
@@ -342,7 +454,8 @@ pub async fn get_page(
         return Err(AppError::Forbidden);
     }
 
-    Ok(Json(PageResponse::from_model(page)))
+    let (pids, lids) = fetch_page_m2m(&state.db, page.id).await?;
+    Ok(Json(PageResponse::from_model(page, pids, lids)))
 }
 
 // ── PATCH /pages/{page_id}/ ───────────────────────────────────────────────────
@@ -400,7 +513,8 @@ pub async fn update_page(
     am.updated_by_id = Set(Some(guard.user.id));
 
     let updated = am.update(&state.db).await.map_err(AppError::Database)?;
-    Ok(Json(PageResponse::from_model(updated)))
+    let (pids, lids) = fetch_page_m2m(&state.db, updated.id).await?;
+    Ok(Json(PageResponse::from_model(updated, pids, lids)))
 }
 
 // ── DELETE /pages/{page_id}/ ──────────────────────────────────────────────────
@@ -467,7 +581,8 @@ pub async fn archive_page(
     let mut am: pages::ActiveModel = page.into();
     am.archived_at = Set(Some(chrono::Utc::now().date_naive()));
     let updated = am.update(&state.db).await.map_err(AppError::Database)?;
-    Ok(Json(PageResponse::from_model(updated)))
+    let (pids, lids) = fetch_page_m2m(&state.db, updated.id).await?;
+    Ok(Json(PageResponse::from_model(updated, pids, lids)))
 }
 
 // ── DELETE /pages/{page_id}/archive/ (unarchive) ─────────────────────────────
@@ -496,7 +611,8 @@ pub async fn unarchive_page(
     let mut am: pages::ActiveModel = page.into();
     am.archived_at = Set(None);
     let updated = am.update(&state.db).await.map_err(AppError::Database)?;
-    Ok(Json(PageResponse::from_model(updated)))
+    let (pids, lids) = fetch_page_m2m(&state.db, updated.id).await?;
+    Ok(Json(PageResponse::from_model(updated, pids, lids)))
 }
 
 // ── POST /pages/{page_id}/lock/ ───────────────────────────────────────────────
@@ -529,7 +645,8 @@ pub async fn lock_page(
     let mut am: pages::ActiveModel = page.into();
     am.is_locked = Set(true);
     let updated = am.update(&state.db).await.map_err(AppError::Database)?;
-    Ok(Json(PageResponse::from_model(updated)))
+    let (pids, lids) = fetch_page_m2m(&state.db, updated.id).await?;
+    Ok(Json(PageResponse::from_model(updated, pids, lids)))
 }
 
 // ── DELETE /pages/{page_id}/lock/ (unlock) ────────────────────────────────────
@@ -562,7 +679,8 @@ pub async fn unlock_page(
     let mut am: pages::ActiveModel = page.into();
     am.is_locked = Set(false);
     let updated = am.update(&state.db).await.map_err(AppError::Database)?;
-    Ok(Json(PageResponse::from_model(updated)))
+    let (pids, lids) = fetch_page_m2m(&state.db, updated.id).await?;
+    Ok(Json(PageResponse::from_model(updated, pids, lids)))
 }
 
 // ── POST /pages/{page_id}/duplicate/ ─────────────────────────────────────────
@@ -636,7 +754,17 @@ pub async fn duplicate_page(
     .await
     .map_err(AppError::Database)?;
 
-    Ok((StatusCode::CREATED, Json(PageResponse::from_model(new_page))))
+    // Usamos fetch_page_m2m en lugar de `vec![guard.project.id]` para que
+    // el response refleje lo realmente insertado si alguien arregla el TODO
+    // preexistente de esta función: Django duplica `project_pages` a todos
+    // los proyectos donde estaba la página origen (ver
+    // `apps/api/plane/app/views/page/base.py:594-611`), mientras que el
+    // Rust solo inserta una fila para el proyecto actual.
+    let (pids, lids) = fetch_page_m2m(&state.db, new_page.id).await?;
+    Ok((
+        StatusCode::CREATED,
+        Json(PageResponse::from_model(new_page, pids, lids)),
+    ))
 }
 
 // ── GET /pages/{page_id}/versions/ ───────────────────────────────────────────
