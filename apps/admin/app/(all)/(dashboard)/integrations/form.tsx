@@ -117,7 +117,11 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
   const isSlackEnabled = toBool(formattedConfig?.IS_SLACK_ENABLED);
 
   const handleToggle = (key: TInstanceAuthenticationMethodKeys, current: boolean) => {
-    updateInstanceConfigurations({ [key]: current ? "0" : "1" } as Record<string, string>).catch(() => {
+    // Build the payload with indexed assignment so TypeScript validates the key
+    // against TInstanceConfigurationKeys — avoids the `as Record<string,string>` escape hatch.
+    const payload: Partial<IFormattedInstanceConfiguration> = {};
+    payload[key] = current ? "0" : "1";
+    updateInstanceConfigurations(payload).catch(() => {
       setToast({
         type: TOAST_TYPE.ERROR,
         title: "Toggle failed",
