@@ -1557,7 +1557,13 @@ pub async fn get_user_profile(
         //
         // Filtro de proyectos: archivados = false, el REQUESTER es miembro activo.
         // Contadores: issues del TARGET user (created / assigned / completed / pending).
-        let sql = format!(
+        //
+        // Placeholders: $1 = requester_id, $2 = user_id, $3 = ws_id.
+        // Se usan parámetros bindados en vez de interpolar vía `format!` para
+        // blindar contra SQL injection (defensa en profundidad). `group` se
+        // escapa como `"group"` por ser palabra reservada en PostgreSQL.
+        let stmt = Statement::from_sql_and_values(
+            sea_orm::DatabaseBackend::Postgres,
             r#"
             SELECT
                 p.id                                  AS id,
@@ -1569,7 +1575,7 @@ pub async fn get_user_profile(
             FROM projects p
             JOIN project_members pm
                 ON  pm.project_id  = p.id
-                AND pm.member_id   = '{requester_id}'
+                AND pm.member_id   = $1
                 AND pm.is_active   = true
                 AND pm.deleted_at  IS NULL
 
@@ -1577,7 +1583,7 @@ pub async fn get_user_profile(
             LEFT JOIN (
                 SELECT project_id, COUNT(*) AS cnt
                 FROM   issues
-                WHERE  created_by_id = '{user_id}'
+                WHERE  created_by_id = $2
                   AND  archived_at   IS NULL
                   AND  is_draft      = false
                   AND  deleted_at    IS NULL
@@ -1589,7 +1595,7 @@ pub async fn get_user_profile(
                 SELECT i.project_id, COUNT(DISTINCT ia.id) AS cnt
                 FROM   issue_assignees ia
                 JOIN   issues i ON i.id = ia.issue_id
-                WHERE  ia.assignee_id = '{user_id}'
+                WHERE  ia.assignee_id = $2
                   AND  ia.deleted_at  IS NULL
                   AND  i.archived_at  IS NULL
                   AND  i.is_draft     = false
@@ -1602,7 +1608,7 @@ pub async fn get_user_profile(
                 SELECT i.project_id, COUNT(DISTINCT ia.id) AS cnt
                 FROM   issue_assignees ia
                 JOIN   issues i ON i.id = ia.issue_id
-                WHERE  ia.assignee_id    = '{user_id}'
+                WHERE  ia.assignee_id    = $2
                   AND  ia.deleted_at     IS NULL
                   AND  i.completed_at    IS NOT NULL
                   AND  i.archived_at     IS NULL
@@ -1617,31 +1623,26 @@ pub async fn get_user_profile(
                 FROM   issue_assignees ia
                 JOIN   issues i ON i.id = ia.issue_id
                 JOIN   states s ON s.id = i.state_id
-                WHERE  ia.assignee_id = '{user_id}'
+                WHERE  ia.assignee_id = $2
                   AND  ia.deleted_at  IS NULL
-                  AND  s.group        IN ('backlog', 'unstarted', 'started')
+                  AND  s."group"      IN ('backlog', 'unstarted', 'started')
                   AND  i.archived_at  IS NULL
                   AND  i.is_draft     = false
                   AND  i.deleted_at   IS NULL
                 GROUP BY i.project_id
             ) pi2 ON pi2.project_id = p.id
 
-            WHERE p.workspace_id = '{ws_id}'
+            WHERE p.workspace_id = $3
               AND p.archived_at  IS NULL
               AND p.deleted_at   IS NULL
             "#,
-            requester_id = requester.member_id,
-            user_id = user_id,
-            ws_id = ws_id,
+            vec![requester.member_id.into(), user_id.into(), ws_id.into()],
         );
 
-        let rows = ProjectProfileRow::find_by_statement(Statement::from_string(
-            sea_orm::DatabaseBackend::Postgres,
-            sql,
-        ))
-        .all(&state.db)
-        .await
-        .map_err(AppError::Database)?;
+        let rows = ProjectProfileRow::find_by_statement(stmt)
+            .all(&state.db)
+            .await
+            .map_err(AppError::Database)?;
 
         rows.into_iter()
             .map(|row| {
@@ -1772,45 +1773,47 @@ pub async fn get_user_stats(
     // Mirror: issues asignadas al user_id, agrupadas por state.group, excluye
     // issue_assignees con deleted_at != NULL (paridad con la condición
     // `Q(issue_assignee__deleted_at__isnull=True)` en Django).
-    let state_sql = format!(
+    //
+    // NOTA: `group` es palabra reservada en PostgreSQL — debe escaparse con
+    // comillas dobles (`s."group"`) para evitar errores de parsing en
+    // `GROUP BY` / `ORDER BY`. Parámetros bindados ($1..$N) en vez de
+    // interpolación `format!` para prevenir SQL injection en profundidad.
+    let state_stmt = Statement::from_sql_and_values(
+        sea_orm::DatabaseBackend::Postgres,
         r#"
-        SELECT s.group AS state_group, COUNT(DISTINCT ia.id) AS state_count
+        SELECT s."group" AS state_group, COUNT(DISTINCT ia.id) AS state_count
         FROM issue_assignees ia
         JOIN issues      i  ON i.id  = ia.issue_id
         JOIN states      s  ON s.id  = i.state_id
         JOIN projects    p  ON p.id  = i.project_id
         JOIN project_members pm
              ON  pm.project_id = p.id
-             AND pm.member_id  = '{requester_id}'
+             AND pm.member_id  = $1
              AND pm.is_active  = true
              AND pm.deleted_at IS NULL
-        WHERE ia.assignee_id = '{user_id}'
+        WHERE ia.assignee_id = $2
           AND ia.deleted_at  IS NULL
-          AND i.workspace_id = '{ws_id}'
+          AND i.workspace_id = $3
           AND i.archived_at  IS NULL
           AND i.is_draft     = false
           AND i.deleted_at   IS NULL
           AND p.deleted_at   IS NULL
-        GROUP BY s.group
-        ORDER BY s.group
+        GROUP BY s."group"
+        ORDER BY s."group"
         "#,
-        requester_id = requester_id,
-        user_id = user_id,
-        ws_id = ws_id,
+        vec![requester_id.into(), user_id.into(), ws_id.into()],
     );
 
-    let state_distribution = StateDistributionRow::find_by_statement(Statement::from_string(
-        sea_orm::DatabaseBackend::Postgres,
-        state_sql,
-    ))
-    .all(db)
-    .await
-    .map_err(AppError::Database)?;
+    let state_distribution = StateDistributionRow::find_by_statement(state_stmt)
+        .all(db)
+        .await
+        .map_err(AppError::Database)?;
 
     // ── priority_distribution ────────────────────────────────────────────────
     // Mirror: mismas issues asignadas, agrupadas por priority.
     // Orden Django: urgent=0, high=1, medium=2, low=3, none=4.
-    let priority_sql = format!(
+    let priority_stmt = Statement::from_sql_and_values(
+        sea_orm::DatabaseBackend::Postgres,
         r#"
         SELECT i.priority,
                COUNT(DISTINCT ia.id) AS priority_count,
@@ -1826,12 +1829,12 @@ pub async fn get_user_stats(
         JOIN projects p  ON p.id  = i.project_id
         JOIN project_members pm
              ON  pm.project_id = p.id
-             AND pm.member_id  = '{requester_id}'
+             AND pm.member_id  = $1
              AND pm.is_active  = true
              AND pm.deleted_at IS NULL
-        WHERE ia.assignee_id = '{user_id}'
+        WHERE ia.assignee_id = $2
           AND ia.deleted_at  IS NULL
-          AND i.workspace_id = '{ws_id}'
+          AND i.workspace_id = $3
           AND i.archived_at  IS NULL
           AND i.is_draft     = false
           AND i.deleted_at   IS NULL
@@ -1840,23 +1843,20 @@ pub async fn get_user_stats(
         HAVING COUNT(DISTINCT ia.id) >= 1
         ORDER BY priority_order
         "#,
-        requester_id = requester_id,
-        user_id = user_id,
-        ws_id = ws_id,
+        vec![requester_id.into(), user_id.into(), ws_id.into()],
     );
 
-    let priority_distribution =
-        PriorityDistributionRow::find_by_statement(Statement::from_string(
-            sea_orm::DatabaseBackend::Postgres,
-            priority_sql,
-        ))
+    let priority_distribution = PriorityDistributionRow::find_by_statement(priority_stmt)
         .all(db)
         .await
         .map_err(AppError::Database)?;
 
     // ── contadores escalares ─────────────────────────────────────────────────
     // Una sola query multi-columna para reducir round-trips a la DB.
-    let counters_sql = format!(
+    // Placeholders: $1 = requester_id, $2 = user_id, $3 = ws_id.
+    // Postgres permite reutilizar el mismo `$n` varias veces en la misma query.
+    let counters_stmt = Statement::from_sql_and_values(
+        sea_orm::DatabaseBackend::Postgres,
         r#"
         SELECT
             -- created_issues
@@ -1866,11 +1866,11 @@ pub async fn get_user_stats(
                 JOIN   projects p  ON p.id  = i.project_id
                 JOIN   project_members pm
                        ON  pm.project_id = p.id
-                       AND pm.member_id  = '{requester_id}'
+                       AND pm.member_id  = $1
                        AND pm.is_active  = true
                        AND pm.deleted_at IS NULL
-                WHERE  i.workspace_id  = '{ws_id}'
-                  AND  i.created_by_id = '{user_id}'
+                WHERE  i.workspace_id  = $3
+                  AND  i.created_by_id = $2
                   AND  i.archived_at   IS NULL
                   AND  i.is_draft      = false
                   AND  i.deleted_at    IS NULL
@@ -1885,12 +1885,12 @@ pub async fn get_user_stats(
                 JOIN   projects p ON p.id = i.project_id
                 JOIN   project_members pm
                        ON  pm.project_id = p.id
-                       AND pm.member_id  = '{requester_id}'
+                       AND pm.member_id  = $1
                        AND pm.is_active  = true
                        AND pm.deleted_at IS NULL
-                WHERE  ia.assignee_id = '{user_id}'
+                WHERE  ia.assignee_id = $2
                   AND  ia.deleted_at  IS NULL
-                  AND  i.workspace_id = '{ws_id}'
+                  AND  i.workspace_id = $3
                   AND  i.archived_at  IS NULL
                   AND  i.is_draft     = false
                   AND  i.deleted_at   IS NULL
@@ -1906,13 +1906,13 @@ pub async fn get_user_stats(
                 JOIN   projects p ON p.id = i.project_id
                 JOIN   project_members pm
                        ON  pm.project_id = p.id
-                       AND pm.member_id  = '{requester_id}'
+                       AND pm.member_id  = $1
                        AND pm.is_active  = true
                        AND pm.deleted_at IS NULL
-                WHERE  ia.assignee_id = '{user_id}'
+                WHERE  ia.assignee_id = $2
                   AND  ia.deleted_at  IS NULL
-                  AND  s.group        = 'completed'
-                  AND  i.workspace_id = '{ws_id}'
+                  AND  s."group"      = 'completed'
+                  AND  i.workspace_id = $3
                   AND  i.archived_at  IS NULL
                   AND  i.is_draft     = false
                   AND  i.deleted_at   IS NULL
@@ -1928,13 +1928,13 @@ pub async fn get_user_stats(
                 JOIN   projects p ON p.id = i.project_id
                 JOIN   project_members pm
                        ON  pm.project_id = p.id
-                       AND pm.member_id  = '{requester_id}'
+                       AND pm.member_id  = $1
                        AND pm.is_active  = true
                        AND pm.deleted_at IS NULL
-                WHERE  ia.assignee_id = '{user_id}'
+                WHERE  ia.assignee_id = $2
                   AND  ia.deleted_at  IS NULL
-                  AND  s.group        NOT IN ('completed', 'cancelled')
-                  AND  i.workspace_id = '{ws_id}'
+                  AND  s."group"      NOT IN ('completed', 'cancelled')
+                  AND  i.workspace_id = $3
                   AND  i.archived_at  IS NULL
                   AND  i.is_draft     = false
                   AND  i.deleted_at   IS NULL
@@ -1948,18 +1948,16 @@ pub async fn get_user_stats(
                 JOIN   projects p ON p.id = isub.project_id
                 JOIN   project_members pm
                        ON  pm.project_id = p.id
-                       AND pm.member_id  = '{requester_id}'
+                       AND pm.member_id  = $1
                        AND pm.is_active  = true
                        AND pm.deleted_at IS NULL
-                WHERE  isub.subscriber_id = '{user_id}'
-                  AND  isub.workspace_id  = '{ws_id}'
+                WHERE  isub.subscriber_id = $2
+                  AND  isub.workspace_id  = $3
                   AND  p.archived_at      IS NULL
                   AND  p.deleted_at       IS NULL
             ) AS subscribed_issues
         "#,
-        requester_id = requester_id,
-        user_id = user_id,
-        ws_id = ws_id,
+        vec![requester_id.into(), user_id.into(), ws_id.into()],
     );
 
     #[derive(Debug, FromQueryResult)]
@@ -1971,24 +1969,22 @@ pub async fn get_user_stats(
         subscribed_issues: i64,
     }
 
-    let counters = CountersRow::find_by_statement(Statement::from_string(
-        sea_orm::DatabaseBackend::Postgres,
-        counters_sql,
-    ))
-    .one(db)
-    .await
-    .map_err(AppError::Database)?
-    .unwrap_or(CountersRow {
-        created_issues: 0,
-        assigned_issues: 0,
-        completed_issues: 0,
-        pending_issues: 0,
-        subscribed_issues: 0,
-    });
+    let counters = CountersRow::find_by_statement(counters_stmt)
+        .one(db)
+        .await
+        .map_err(AppError::Database)?
+        .unwrap_or(CountersRow {
+            created_issues: 0,
+            assigned_issues: 0,
+            completed_issues: 0,
+            pending_issues: 0,
+            subscribed_issues: 0,
+        });
 
     // ── upcoming_cycles ──────────────────────────────────────────────────────
     // Mirror: CycleIssue donde cycle.start_date > now() e issue tiene al user asignado.
-    let upcoming_sql = format!(
+    let upcoming_stmt = Statement::from_sql_and_values(
+        sea_orm::DatabaseBackend::Postgres,
         r#"
         SELECT DISTINCT
                c.name       AS cycle_name,
@@ -1997,27 +1993,24 @@ pub async fn get_user_stats(
         FROM   cycle_issues ci
         JOIN   cycles c ON c.id = ci.cycle_id
         JOIN   issue_assignees ia ON ia.issue_id = ci.issue_id AND ia.deleted_at IS NULL
-        WHERE  c.workspace_id = '{ws_id}'
+        WHERE  c.workspace_id = $1
           AND  c.start_date   > NOW()
-          AND  ia.assignee_id = '{user_id}'
+          AND  ia.assignee_id = $2
           AND  ci.deleted_at  IS NULL
           AND  c.deleted_at   IS NULL
         "#,
-        ws_id = ws_id,
-        user_id = user_id,
+        vec![ws_id.into(), user_id.into()],
     );
 
-    let upcoming_cycles = CycleInfoRow::find_by_statement(Statement::from_string(
-        sea_orm::DatabaseBackend::Postgres,
-        upcoming_sql,
-    ))
-    .all(db)
-    .await
-    .map_err(AppError::Database)?;
+    let upcoming_cycles = CycleInfoRow::find_by_statement(upcoming_stmt)
+        .all(db)
+        .await
+        .map_err(AppError::Database)?;
 
     // ── present_cycles ───────────────────────────────────────────────────────
     // Mirror: start_date < now() AND end_date > now().
-    let present_sql = format!(
+    let present_stmt = Statement::from_sql_and_values(
+        sea_orm::DatabaseBackend::Postgres,
         r#"
         SELECT DISTINCT
                c.name       AS cycle_name,
@@ -2026,24 +2019,20 @@ pub async fn get_user_stats(
         FROM   cycle_issues ci
         JOIN   cycles c ON c.id = ci.cycle_id
         JOIN   issue_assignees ia ON ia.issue_id = ci.issue_id AND ia.deleted_at IS NULL
-        WHERE  c.workspace_id = '{ws_id}'
+        WHERE  c.workspace_id = $1
           AND  c.start_date   < NOW()
           AND  c.end_date     > NOW()
-          AND  ia.assignee_id = '{user_id}'
+          AND  ia.assignee_id = $2
           AND  ci.deleted_at  IS NULL
           AND  c.deleted_at   IS NULL
         "#,
-        ws_id = ws_id,
-        user_id = user_id,
+        vec![ws_id.into(), user_id.into()],
     );
 
-    let present_cycles = CycleInfoRow::find_by_statement(Statement::from_string(
-        sea_orm::DatabaseBackend::Postgres,
-        present_sql,
-    ))
-    .all(db)
-    .await
-    .map_err(AppError::Database)?;
+    let present_cycles = CycleInfoRow::find_by_statement(present_stmt)
+        .all(db)
+        .await
+        .map_err(AppError::Database)?;
 
     Ok(Json(UserStatsResponse {
         state_distribution,
