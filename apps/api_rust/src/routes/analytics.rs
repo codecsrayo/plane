@@ -19,6 +19,7 @@
 //!
 //!   GET    /api/workspaces/{slug}/projects/{project_id}/advance-analytics/
 //!   GET    /api/workspaces/{slug}/projects/{project_id}/advance-analytics-stats/
+//!   GET    /api/workspaces/{slug}/projects/{project_id}/advance-analytics-charts/
 
 use axum::{
     extract::{Path, Query, State},
@@ -2039,4 +2040,387 @@ pub async fn project_advance_analytics_stats(
         .collect();
 
     Ok(Json(serde_json::Value::Array(result)))
+}
+
+// ── Query struct para project advance analytics charts ───────────────────────
+
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
+pub struct ProjectAdvanceAnalyticsChartQuery {
+    /// "work-items" | "custom-work-items". Otros valores → 400.
+    ///
+    /// Nota de paridad: Django usa default "projects" pero no lo maneja en
+    /// ningún branch, por lo que cualquier request sin `type` explícito cae
+    /// en el `return Response("Invalid type", 400)`. Replicamos ese mismo
+    /// comportamiento — si el frontend no envía `type`, recibe 400.
+    #[serde(rename = "type")]
+    pub chart_type: Option<String>,
+    pub cycle_id: Option<Uuid>,
+    pub module_id: Option<Uuid>,
+    pub x_axis: Option<String>,
+    pub group_by: Option<String>,
+    pub date_filter: Option<String>,
+    /// Ignorado — el project scope viene del path.
+    #[allow(dead_code)]
+    pub project_ids: Option<String>,
+}
+
+// ── GET /workspaces/{slug}/projects/{project_id}/advance-analytics-charts/ ───
+
+/// GET /api/workspaces/{slug}/projects/{project_id}/advance-analytics-charts/
+///
+/// Datos para dos tipos de gráfica a nivel proyecto:
+///
+/// - `type=custom-work-items`: distribución sobre un eje (x_axis) con validación
+///   contra VALID_X_AXIS. Mirror de la rama `build_analytics_chart(...)` en
+///   Django, con sub-scope opcional por cycle/module.
+/// - `type=work-items`: burndown de creados vs completados. Si hay `cycle_id`
+///   o `module_id` → stats diarios entre start_date y end_date del
+///   cycle/module; agrupados por la fecha en que el issue fue agregado al
+///   cycle/module (no por fecha de creación del issue — paridad con Django).
+///   Sin cycle/module → stats mensuales desde el primer día del mes de
+///   creación del proyecto hasta hoy, agrupados por `DATE_TRUNC('month',
+///   i.created_at)`.
+///
+/// Permisos: ADMIN / MEMBER / GUEST (paridad con Django — este endpoint
+/// permite GUEST a diferencia del handler stats).
+#[utoipa::path(
+    get,
+    path = "/workspaces/{slug}/projects/{project_id}/advance-analytics-charts/",
+    tag = "Analytics",
+    security(("TokenAuth" = [])),
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project UUID"),
+        ("type" = Option<String>, Query, description = "work-items | custom-work-items"),
+        ("cycle_id" = Option<Uuid>, Query, description = "Filtrar por ciclo"),
+        ("module_id" = Option<Uuid>, Query, description = "Filtrar por módulo"),
+        ("x_axis" = Option<String>, Query, description = "Eje X para custom-work-items"),
+        ("group_by" = Option<String>, Query, description = "Agrupación (validada pero no usada en SQL, paridad con workspace-level)"),
+        ("date_filter" = Option<String>, Query, description = "Rango temporal"),
+    ),
+    responses(
+        (status = 200, description = "Datos de gráfica"),
+        (status = 400, description = "type inválido | x_axis inválido | group_by inválido"),
+        (status = 403, description = "No autorizado"),
+        (status = 404, description = "Workspace o proyecto no encontrado"),
+    )
+)]
+pub async fn project_advance_analytics_charts(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Query(params): Query<ProjectAdvanceAnalyticsChartQuery>,
+) -> Result<impl IntoResponse, AppError> {
+    if guard.project_member.role < ROLE_GUEST {
+        return Err(AppError::Forbidden);
+    }
+
+    let ws_id = guard.workspace.id;
+    let user_id = guard.user.id;
+    let project_id = guard.project.id;
+    let db = &state.db;
+
+    let chart_type = params.chart_type.as_deref().unwrap_or("projects");
+    let base_filter = base_issue_filter(ws_id, user_id);
+    let date_filter = params.date_filter.as_deref();
+
+    match chart_type {
+        "custom-work-items" => {
+            let x_axis = params.x_axis.as_deref().unwrap_or("priority");
+            if !VALID_X_AXIS.contains(&x_axis) {
+                return Err(AppError::BadRequest("x_axis value is not valid".into()));
+            }
+            if let Some(ref gb) = params.group_by {
+                if !VALID_X_AXIS.contains(&gb.as_str()) || gb.as_str() == x_axis {
+                    return Err(AppError::BadRequest(
+                        "group_by must be valid and different from x_axis".into(),
+                    ));
+                }
+            }
+
+            let (x_col, x_join) = axis_to_sql_col(x_axis);
+            let date_clause = analytics_date_clause(date_filter, "i.created_at");
+
+            // Sub-scope por cycle/module via JOIN (mismo patrón que endpoints hermanos)
+            let (scope_join, scope_where) = if let Some(cid) = params.cycle_id {
+                (
+                    format!(
+                        "JOIN cycle_issues ci ON ci.issue_id = i.id
+                           AND ci.cycle_id = '{cid}'
+                           AND ci.workspace_id = '{ws_id}'
+                           AND ci.project_id = '{project_id}'
+                           AND ci.deleted_at IS NULL"
+                    ),
+                    String::new(),
+                )
+            } else if let Some(mid) = params.module_id {
+                (
+                    format!(
+                        "JOIN module_issues mi ON mi.issue_id = i.id
+                           AND mi.module_id = '{mid}'
+                           AND mi.workspace_id = '{ws_id}'
+                           AND mi.project_id = '{project_id}'
+                           AND mi.deleted_at IS NULL"
+                    ),
+                    String::new(),
+                )
+            } else {
+                (String::new(), format!("AND i.project_id = '{project_id}'"))
+            };
+
+            let sql = format!(
+                "SELECT {x_col} AS x_axis_value, COUNT(DISTINCT i.id) AS value
+                 FROM issues i {x_join}
+                 {scope_join}
+                 WHERE {base_filter} {scope_where} {date_clause}
+                 GROUP BY {x_col}
+                 ORDER BY value DESC",
+            );
+
+            let rows = db
+                .query_all(Statement::from_string(sea_orm::DatabaseBackend::Postgres, sql))
+                .await
+                .map_err(AppError::Database)?;
+
+            let distribution: Vec<serde_json::Value> = rows
+                .iter()
+                .map(|r| {
+                    serde_json::json!({
+                        "x_axis": r.try_get::<String>("", "x_axis_value").ok()
+                            .or_else(|| r.try_get::<Uuid>("", "x_axis_value").ok().map(|u| u.to_string())),
+                        "value": r.try_get::<i64>("", "value").unwrap_or(0),
+                    })
+                })
+                .collect();
+
+            Ok(Json(serde_json::json!({ "distribution": distribution })))
+        }
+
+        "work-items" => {
+            // Resolvemos el rango temporal y el modo (daily vs monthly).
+            //
+            // Paridad con Django:
+            // - cycle_id: start=cycle.start_date, end=cycle.end_date, daily
+            // - module_id: start=module.start_date, end=module.target_date, daily
+            // - else: start=primer día del mes de project.created_at, end=hoy, monthly
+            //
+            // Si falta start_date en cycle/module → retornar {data:[], schema:{}}
+            // sin query adicional.
+
+            let empty_payload = || {
+                Json(serde_json::json!({
+                    "data": [],
+                    "schema": {}
+                }))
+            };
+
+            enum Mode {
+                Daily {
+                    start: chrono::NaiveDate,
+                    end: chrono::NaiveDate,
+                    is_cycle: bool,
+                    scope_id: Uuid,
+                },
+                Monthly {
+                    start: chrono::NaiveDate,
+                    end: chrono::NaiveDate,
+                },
+            }
+
+            let mode = if let Some(cid) = params.cycle_id {
+                // Fetch cycle dates — filtrado por workspace y project (defensa extra).
+                let sql = format!(
+                    "SELECT DATE(start_date) AS sd, DATE(end_date) AS ed
+                     FROM cycles
+                     WHERE id = '{cid}'
+                       AND workspace_id = '{ws_id}'
+                       AND project_id = '{project_id}'
+                       AND deleted_at IS NULL",
+                );
+                let row = db.query_one(Statement::from_string(
+                    sea_orm::DatabaseBackend::Postgres,
+                    sql,
+                )).await.map_err(AppError::Database)?;
+                match row.and_then(|r| {
+                    let sd = r.try_get::<chrono::NaiveDate>("", "sd").ok();
+                    let ed = r.try_get::<chrono::NaiveDate>("", "ed").ok();
+                    sd.zip(ed)
+                }) {
+                    Some((s, e)) => Mode::Daily { start: s, end: e, is_cycle: true, scope_id: cid },
+                    None => return Ok(empty_payload()),
+                }
+            } else if let Some(mid) = params.module_id {
+                let sql = format!(
+                    "SELECT start_date AS sd, target_date AS ed
+                     FROM modules
+                     WHERE id = '{mid}'
+                       AND workspace_id = '{ws_id}'
+                       AND project_id = '{project_id}'
+                       AND deleted_at IS NULL",
+                );
+                let row = db.query_one(Statement::from_string(
+                    sea_orm::DatabaseBackend::Postgres,
+                    sql,
+                )).await.map_err(AppError::Database)?;
+                match row.and_then(|r| {
+                    let sd = r.try_get::<chrono::NaiveDate>("", "sd").ok();
+                    let ed = r.try_get::<chrono::NaiveDate>("", "ed").ok();
+                    sd.zip(ed)
+                }) {
+                    Some((s, e)) => Mode::Daily { start: s, end: e, is_cycle: false, scope_id: mid },
+                    None => return Ok(empty_payload()),
+                }
+            } else {
+                // Monthly: start = primer día del mes de project.created_at
+                let project_created = guard.project.created_at.date_naive();
+                let start = project_created.with_day(1).unwrap_or(project_created);
+
+                // Si date_filter está presente, sobrescribe el rango (paridad Django).
+                let (start, end) = if let Some((s, e)) = chart_period_range(date_filter) {
+                    (s, e)
+                } else {
+                    (start, chrono::Utc::now().date_naive())
+                };
+
+                Mode::Monthly { start, end }
+            };
+
+            match mode {
+                Mode::Daily { start, end, is_cycle, scope_id } => {
+                    // Agrupado por fecha en que el issue fue agregado al cycle/module.
+                    let (join_table, alias, scope_col) = if is_cycle {
+                        ("cycle_issues", "ci", "cycle_id")
+                    } else {
+                        ("module_issues", "mi", "module_id")
+                    };
+                    let sql = format!(
+                        "SELECT
+                           DATE({alias}.created_at) AS day,
+                           COUNT(*) AS created_count,
+                           COUNT(*) FILTER (WHERE s.group = 'completed') AS completed_count
+                         FROM {join_table} {alias}
+                         JOIN issues i ON i.id = {alias}.issue_id
+                           AND i.deleted_at IS NULL
+                           AND i.archived_at IS NULL
+                         JOIN states s ON s.id = i.state_id
+                         WHERE {alias}.{scope_col} = '{scope_id}'
+                           AND {alias}.workspace_id = '{ws_id}'
+                           AND {alias}.project_id = '{project_id}'
+                           AND {alias}.deleted_at IS NULL
+                         GROUP BY day
+                         ORDER BY day",
+                    );
+                    let rows = db.query_all(Statement::from_string(
+                        sea_orm::DatabaseBackend::Postgres,
+                        sql,
+                    )).await.map_err(AppError::Database)?;
+
+                    use std::collections::HashMap;
+                    let stats_map: HashMap<String, (i64, i64)> = rows
+                        .iter()
+                        .filter_map(|r| {
+                            let day = r.try_get::<chrono::NaiveDate>("", "day").ok()?;
+                            let c = r.try_get::<i64>("", "created_count").unwrap_or(0);
+                            let cp = r.try_get::<i64>("", "completed_count").unwrap_or(0);
+                            Some((day.format("%Y-%m-%d").to_string(), (c, cp)))
+                        })
+                        .collect();
+
+                    // Fill gaps día por día entre start y end (inclusive).
+                    let mut data = Vec::new();
+                    let mut current = start;
+                    while current <= end {
+                        let key = current.format("%Y-%m-%d").to_string();
+                        let (created, completed) = stats_map.get(&key).copied().unwrap_or((0, 0));
+                        data.push(serde_json::json!({
+                            "key": key,
+                            "name": key,
+                            "count": created + completed,
+                            "completed_issues": completed,
+                            "created_issues": created,
+                        }));
+                        current += chrono::Duration::days(1);
+                    }
+
+                    Ok(Json(serde_json::json!({
+                        "data": data,
+                        "schema": {
+                            "completed_issues": "completed_issues",
+                            "created_issues": "created_issues",
+                        }
+                    })))
+                }
+
+                Mode::Monthly { start, end } => {
+                    // Stats mensuales por i.created_at, filtrado al project.
+                    let sql = format!(
+                        "SELECT
+                           DATE_TRUNC('month', i.created_at)::date AS month,
+                           COUNT(*) AS created_count,
+                           COUNT(*) FILTER (WHERE s.group = 'completed') AS completed_count
+                         FROM issues i
+                         JOIN states s ON s.id = i.state_id
+                         WHERE {base_filter}
+                           AND i.project_id = '{project_id}'
+                           AND DATE(i.created_at) >= '{start}'
+                           AND DATE(i.created_at) <= '{end}'
+                         GROUP BY month
+                         ORDER BY month",
+                    );
+                    let rows = db.query_all(Statement::from_string(
+                        sea_orm::DatabaseBackend::Postgres,
+                        sql,
+                    )).await.map_err(AppError::Database)?;
+
+                    use std::collections::HashMap;
+                    let stats_map: HashMap<String, (i64, i64)> = rows
+                        .iter()
+                        .filter_map(|r| {
+                            let month = r.try_get::<chrono::NaiveDate>("", "month").ok()?;
+                            let c = r.try_get::<i64>("", "created_count").unwrap_or(0);
+                            let cp = r.try_get::<i64>("", "completed_count").unwrap_or(0);
+                            Some((month.format("%Y-%m-%d").to_string(), (c, cp)))
+                        })
+                        .collect();
+
+                    // Fill gaps mes por mes. last_month = primer día del mes actual
+                    // (paridad con Django que siempre incluye hasta el mes actual).
+                    let mut data = Vec::new();
+                    let mut current = start.with_day(1).unwrap_or(start);
+                    let today = chrono::Utc::now().date_naive();
+                    let last_month = today.with_day(1).unwrap_or(end);
+
+                    while current <= last_month {
+                        let key = current.format("%Y-%m-%d").to_string();
+                        let (created, completed) = stats_map.get(&key).copied().unwrap_or((0, 0));
+                        data.push(serde_json::json!({
+                            "key": key,
+                            "name": key,
+                            "count": created,
+                            "completed_issues": completed,
+                            "created_issues": created,
+                        }));
+                        // Avanzar al siguiente mes
+                        current = if current.month() == 12 {
+                            current
+                                .with_year(current.year() + 1)
+                                .and_then(|d| d.with_month(1))
+                                .unwrap_or(current)
+                        } else {
+                            current.with_month(current.month() + 1).unwrap_or(current)
+                        };
+                    }
+
+                    Ok(Json(serde_json::json!({
+                        "data": data,
+                        "schema": {
+                            "completed_issues": "completed_issues",
+                            "created_issues": "created_issues",
+                        }
+                    })))
+                }
+            }
+        }
+
+        _ => Err(AppError::BadRequest("Invalid type".into())),
+    }
 }
