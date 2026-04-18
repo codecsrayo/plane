@@ -29,7 +29,8 @@ use uuid::Uuid;
 
 use crate::{
     auth::any_auth::AnyAuth,
-    auth::extractors::WorkspaceMemberGuard,
+    auth::extractors::{ProjectMemberGuard, WorkspaceMemberGuard},
+    auth::permissions::{require_role, ROLE_GUEST},
     entities::{file_assets, projects, users, workspaces},
     error::AppError,
     utils::s3_presigned_post::{generate_presigned_post, PresignedPost},
@@ -672,4 +673,166 @@ pub async fn get_static_asset(
         .ok_or(AppError::NotFound)?;
 
     Ok(Json(asset_to_response(&asset)))
+}
+
+// ── Issue Attachments (V2) ────────────────────────────────────────────────────
+//
+// Mirror Django: `IssueAttachmentV2Endpoint` en
+// `apps/api/plane/app/views/issue/attachment.py`.
+// URL Django: `apps/api/plane/app/urls/issue.py:137-146`.
+
+/// Response shape del `IssueAttachmentSerializer` Django (`fields = "__all__"` + `asset_url`).
+///
+/// Espejo de `plane/app/serializers/issue.py:IssueAttachmentSerializer`.
+/// Campos en orden idéntico al modelo `FileAsset` para paridad con consumidores
+/// que iteren por `Object.keys()` en el frontend.
+#[derive(Debug, Serialize, utoipa::ToSchema)]
+pub struct IssueAttachmentV2Response {
+    pub id: Uuid,
+    pub created_at: DateTime<FixedOffset>,
+    pub updated_at: DateTime<FixedOffset>,
+    pub attributes: serde_json::Value,
+    pub asset: String,
+    pub entity_type: Option<String>,
+    pub entity_identifier: Option<String>,
+    pub is_deleted: bool,
+    pub is_archived: bool,
+    pub external_id: Option<String>,
+    pub external_source: Option<String>,
+    pub size: f64,
+    pub is_uploaded: bool,
+    pub storage_metadata: Option<serde_json::Value>,
+    pub deleted_at: Option<DateTime<FixedOffset>>,
+    pub created_by: Option<Uuid>,
+    pub updated_by: Option<Uuid>,
+    pub user: Option<Uuid>,
+    pub workspace: Option<Uuid>,
+    pub project: Option<Uuid>,
+    pub issue: Option<Uuid>,
+    pub comment: Option<Uuid>,
+    pub page: Option<Uuid>,
+    pub draft_issue: Option<Uuid>,
+    /// Ruta relativa al endpoint de descarga del attachment.
+    /// Mirror: `FileAsset.asset_url` property (Django) cuando
+    /// `entity_type == ISSUE_ATTACHMENT`:
+    /// `/api/assets/v2/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/attachments/{id}/`
+    pub asset_url: String,
+}
+
+/// Construye el `asset_url` relativo para un `ISSUE_ATTACHMENT`.
+///
+/// Mirror exacto de `FileAsset.asset_url` property para ISSUE_ATTACHMENT:
+/// `apps/api/plane/db/models/asset.py:89-90`.
+fn issue_attachment_asset_url(
+    slug: &str,
+    project_id: Uuid,
+    issue_id: Uuid,
+    asset_id: Uuid,
+) -> String {
+    format!(
+        "/api/assets/v2/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/attachments/{asset_id}/"
+    )
+}
+
+fn issue_attachment_to_response(
+    a: &file_assets::Model,
+    slug: &str,
+) -> IssueAttachmentV2Response {
+    // Los campos FK con nombre original del modelo (`workspace`, `project`, `issue`, ...)
+    // se rellenan con los UUID crudos — mismo shape que DRF default con
+    // `fields = "__all__"` sobre un `ForeignKey`.
+    let asset_url = match (a.project_id, a.issue_id) {
+        (Some(pid), Some(iid)) => issue_attachment_asset_url(slug, pid, iid, a.id),
+        // Fallback seguro: si falta algún id (no debería para ISSUE_ATTACHMENT),
+        // emitimos la ruta relativa al asset estático para no romper el cliente.
+        _ => format!("/api/assets/v2/static/{}/", a.id),
+    };
+
+    IssueAttachmentV2Response {
+        id: a.id,
+        created_at: a.created_at,
+        updated_at: a.updated_at,
+        attributes: a.attributes.clone(),
+        asset: a.asset.clone(),
+        entity_type: a.entity_type.clone(),
+        entity_identifier: a.entity_identifier.clone(),
+        is_deleted: a.is_deleted,
+        is_archived: a.is_archived,
+        external_id: a.external_id.clone(),
+        external_source: a.external_source.clone(),
+        size: a.size,
+        is_uploaded: a.is_uploaded,
+        storage_metadata: a.storage_metadata.clone(),
+        deleted_at: a.deleted_at,
+        created_by: a.created_by_id,
+        updated_by: a.updated_by_id,
+        user: a.user_id,
+        workspace: a.workspace_id,
+        project: a.project_id,
+        issue: a.issue_id,
+        comment: a.comment_id,
+        page: a.page_id,
+        draft_issue: a.draft_issue_id,
+        asset_url,
+    }
+}
+
+/// GET /api/assets/v2/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/attachments/
+///
+/// Lista los attachments subidos (`is_uploaded = true`) de un issue.
+///
+/// Mirror exacto de `IssueAttachmentV2Endpoint.get` sin `pk`
+/// (`apps/api/plane/app/views/issue/attachment.py:169-200`):
+/// - Permisos: ADMIN / MEMBER / GUEST (validado por `ProjectMemberGuard` +
+///   `require_role(ROLE_GUEST)`).
+/// - Filtro: `issue_id`, `entity_type = 'ISSUE_ATTACHMENT'`, workspace, project,
+///   `is_uploaded = true`.
+#[utoipa::path(
+    get,
+    path = "/assets/v2/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/attachments/",
+    tag = "Assets",
+    security(("TokenAuth" = [])),
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project ID"),
+        ("issue_id" = Uuid, Path, description = "Issue ID"),
+    ),
+    responses(
+        (status = 200, description = "Lista de attachments del issue",
+            body = Vec<IssueAttachmentV2Response>),
+        (status = 403, description = "Sin permisos"),
+    )
+)]
+pub async fn list_issue_attachments_v2(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Path((slug, _project_id, issue_id)): Path<(String, Uuid, Uuid)>,
+) -> Result<Json<Vec<IssueAttachmentV2Response>>, AppError> {
+    // `allow_permission([ROLE.ADMIN, ROLE.MEMBER, ROLE.GUEST])` en Django.
+    require_role(
+        guard.project_member.role,
+        guard.workspace_member.role,
+        ROLE_GUEST,
+    )?;
+
+    // Importante: filtramos por `project.id` del guard (ya resuelto y validado
+    // contra el workspace). No confiamos en el `project_id` del path extractor
+    // crudo — `guard.project` garantiza que existe y pertenece al workspace.
+    let attachments = file_assets::Entity::find()
+        .filter(file_assets::Column::WorkspaceId.eq(guard.workspace.id))
+        .filter(file_assets::Column::ProjectId.eq(guard.project.id))
+        .filter(file_assets::Column::IssueId.eq(issue_id))
+        .filter(file_assets::Column::EntityType.eq(ENTITY_ISSUE_ATTACHMENT))
+        .filter(file_assets::Column::IsUploaded.eq(true))
+        .filter(file_assets::Column::IsDeleted.eq(false))
+        .all(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    let response: Vec<IssueAttachmentV2Response> = attachments
+        .iter()
+        .map(|a| issue_attachment_to_response(a, &slug))
+        .collect();
+
+    Ok(Json(response))
 }
