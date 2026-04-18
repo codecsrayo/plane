@@ -16,7 +16,10 @@ import { groupMonthsToQuarters } from "../../views";
 
 export const QuarterChartView = observer(function QuarterChartView(_props: any) {
   const { currentViewData, renderView } = useTimeLineChartStore();
-  const monthBlocks: IMonthBlock[] = renderView;
+  // `renderView` is a union (IWeekBlock[] | IMonthView | IMonthBlock[]); this
+  // component is mounted only when the active Gantt view is "quarter", so the
+  // runtime shape is always IMonthBlock[]. Explicit narrowing.
+  const monthBlocks = renderView as IMonthBlock[];
 
   const quarterBlocks: IQuarterMonthBlock[] = groupMonthsToQuarters(monthBlocks);
 

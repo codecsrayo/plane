@@ -15,7 +15,10 @@ import type { IWeekBlock } from "../../views";
 
 export const WeekChartView = observer(function WeekChartView(_props: any) {
   const { currentViewData, renderView } = useTimeLineChartStore();
-  const weekBlocks: IWeekBlock[] = renderView;
+  // `renderView` is a union (IWeekBlock[] | IMonthView | IMonthBlock[]); this
+  // component is mounted only when the active Gantt view is "week", so the
+  // runtime shape is always IWeekBlock[]. Explicit narrowing.
+  const weekBlocks = renderView as IWeekBlock[];
 
   return (
     <div className={`absolute top-0 left-0 flex h-max min-h-full w-max`}>

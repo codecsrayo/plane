@@ -18,7 +18,10 @@ import { getNumberOfDaysBetweenTwoDates } from "../../views/helpers";
 export const MonthChartView = observer(function MonthChartView(_props: any) {
   // chart hook
   const { currentViewData, renderView } = useTimeLineChartStore();
-  const monthView: IMonthView = renderView;
+  // `renderView` is a union (IWeekBlock[] | IMonthView | IMonthBlock[]); this
+  // component is mounted only when the active Gantt view is "month", so the
+  // runtime shape is always IMonthView. Explicit narrowing.
+  const monthView = renderView as IMonthView;
 
   if (!monthView) return <></>;
 

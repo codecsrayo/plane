@@ -17,6 +17,7 @@ import type {
 } from "@plane/types";
 import { renderFormattedPayloadDate } from "@plane/utils";
 import { currentViewDataWithView } from "@/components/gantt-chart/data";
+import type { IMonthBlock, IMonthView, IWeekBlock } from "@/components/gantt-chart/views";
 import {
   getDateFromPositionOnGantt,
   getItemPositionWidth,
@@ -36,12 +37,24 @@ type BlockData = {
   project_id?: string | undefined | null;
 };
 
+/**
+ * Shape of the `renderView` observable. The actual runtime shape depends on
+ * the currently-active Gantt view:
+ *   - "week"    → IWeekBlock[]
+ *   - "month"   → IMonthView ({ months, weeks })
+ *   - "quarter" → IMonthBlock[]
+ * Consumers must narrow based on `currentView` before reading. This is
+ * explicitly a union (not `any`) so callers lose `: any`-silencing if they
+ * try to use the wrong shape.
+ */
+export type TGanttRenderPayload = IWeekBlock[] | IMonthView | IMonthBlock[];
+
 export interface IBaseTimelineStore {
   // observables
   currentView: TGanttViews;
   currentViewData: ChartDataType | undefined;
   activeBlockId: string | null;
-  renderView: any;
+  renderView: TGanttRenderPayload;
   isDragging: boolean;
   isDependencyEnabled: boolean;
   //
@@ -54,7 +67,7 @@ export interface IBaseTimelineStore {
   updateCurrentView: (view: TGanttViews) => void;
   updateCurrentViewData: (data: ChartDataType | undefined) => void;
   updateActiveBlockId: (blockId: string | null) => void;
-  updateRenderView: (data: any) => void;
+  updateRenderView: (data: TGanttRenderPayload) => void;
   updateAllBlocksOnChartChangeWhileDragging: (addedWidth: number) => void;
   getUpdatedPositionAfterDrag: (
     id: string,
@@ -78,7 +91,7 @@ export class BaseTimeLineStore implements IBaseTimelineStore {
   currentView: TGanttViews = "week";
   currentViewData: ChartDataType | undefined = undefined;
   activeBlockId: string | null = null;
-  renderView: any = [];
+  renderView: TGanttRenderPayload = [];
 
   rootStore: RootStore;
 
@@ -161,9 +174,9 @@ export class BaseTimeLineStore implements IBaseTimelineStore {
 
   /**
    * @description update render view
-   * @param {any[]} data
+   * @param {TGanttRenderPayload} data
    */
-  updateRenderView = (data: any[]) => {
+  updateRenderView = (data: TGanttRenderPayload) => {
     this.renderView = data;
   };
 
@@ -191,7 +204,7 @@ export class BaseTimeLineStore implements IBaseTimelineStore {
   updateBlocks(getDataById: (id: string) => BlockData | undefined | null, type?: EGanttBlockType, index?: number) {
     if (!this.blockIds || !Array.isArray(this.blockIds) || this.isDragging) return true;
 
-    const updatedBlockMaps: { path: string[]; value: any }[] = [];
+    const updatedBlockMaps: { path: [string, keyof IGanttBlock]; value: IGanttBlock[keyof IGanttBlock] }[] = [];
     const newBlocks: IGanttBlock[] = [];
 
     // Loop through blockIds to generate blocks Data
@@ -218,9 +231,9 @@ export class BaseTimeLineStore implements IBaseTimelineStore {
 
       // create block updates if the block already exists, or push them to newBlocks
       if (this.blocksMap[blockId]) {
-        for (const key of Object.keys(block)) {
-          const currValue = this.blocksMap[blockId][key as keyof IGanttBlock];
-          const nextValue = block[key as keyof IGanttBlock];
+        for (const key of Object.keys(block) as (keyof IGanttBlock)[]) {
+          const currValue = this.blocksMap[blockId][key];
+          const nextValue = block[key];
           if (!isEqual(currValue, nextValue)) {
             updatedBlockMaps.push({ path: [blockId, key], value: nextValue });
           }

@@ -1079,7 +1079,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `ce/store/timeline/`
 
-- [!] `ce/store/timeline/base-timeline.store.ts` — `renderView: any` observable (MobX) + `updateRenderView(data: any)` action (5× `any` en el store). Perder tipado sobre un observable MobX es particularmente malo porque elimina safety en consumidores. Refactor: tipar `renderView` con el shape real de `ChartDataType` o la lista que use.
+- [x] `ce/store/timeline/base-timeline.store.ts` — Nuevo tipo `TGanttRenderPayload = IWeekBlock[] | IMonthView | IMonthBlock[]` reemplaza `any` en el observable y en `updateRenderView`. `updatedBlockMaps` pasa de `{ path: string[]; value: any }[]` a `{ path: [string, keyof IGanttBlock]; value: IGanttBlock[keyof IGanttBlock] }[]`. Loop sobre `Object.keys(block)` ahora cast a `(keyof IGanttBlock)[]` una sola vez (no por iteración). Consumidores `week/month/quarter.tsx` actualizados con narrowing explícito (`as IWeekBlock[]` / `as IMonthView` / `as IMonthBlock[]`) y comentario del invariante runtime (la vista sólo se monta cuando `currentView` coincide con su tipo). `root.tsx` ya usaba la unión completa en su cast de `mergeRenderPayloads` → compatible sin cambios.
 - [x] `ce/store/timeline/index.ts`
 
 #### `ce/store/user/`
