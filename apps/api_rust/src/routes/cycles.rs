@@ -204,6 +204,32 @@ pub async fn create_cycle(
         }
     }
 
+    // Paridad con `CycleWriteSerializer.validate` (Django): cuando AMBAS
+    // fechas están presentes, se convierten a UTC usando la zona horaria
+    // del proyecto (start → 00:00:01 local, end → 23:59:00 local). Si solo
+    // viene una, Django NO aplica la conversión — replicamos esa quirk.
+    let (start_date, end_date) = match (body.start_date, body.end_date) {
+        (Some(s), Some(e)) => {
+            let now_utc = chrono::Utc::now();
+            let start = crate::utils::serde_date::project_tz_to_utc(
+                s.date_naive(),
+                &guard.project.timezone,
+                true,
+                now_utc,
+            )
+            .map_err(|e| AppError::BadRequest(e.to_string()))?;
+            let end = crate::utils::serde_date::project_tz_to_utc(
+                e.date_naive(),
+                &guard.project.timezone,
+                false,
+                now_utc,
+            )
+            .map_err(|e| AppError::BadRequest(e.to_string()))?;
+            (Some(start), Some(end))
+        }
+        other => other,
+    };
+
     // created_at / updated_at explícitos: cycles::ActiveModelBehavior está
     // vacío y la columna es NOT NULL sin DEFAULT. Mismo patrón que
     // labels.rs / issues.rs.
@@ -213,8 +239,8 @@ pub async fn create_cycle(
         id: Set(Uuid::new_v4()),
         name: Set(body.name),
         description: Set(body.description.unwrap_or_default()),
-        start_date: Set(body.start_date),
-        end_date: Set(body.end_date),
+        start_date: Set(start_date),
+        end_date: Set(end_date),
         project_id: Set(guard.project.id),
         workspace_id: Set(guard.workspace.id),
         owned_by_id: Set(guard.user.id),
@@ -313,12 +339,42 @@ pub async fn update_cycle(
     if let Some(desc) = body.description {
         am.description = Set(desc);
     }
-    if body.start_date.is_some() {
-        am.start_date = Set(body.start_date);
+
+    // Paridad con `CycleWriteSerializer.validate` (Django): la conversión a
+    // UTC tz-aware solo aplica cuando AMBOS dates están en el payload de
+    // este PATCH. Si viene solo uno, se persiste tal cual — mismo quirk
+    // que Django, donde `validate()` opera sobre el `data` parcial y no
+    // sobre la instancia mergeada. Sirve para que un PATCH que toque solo
+    // `name`/`description` no recalcule las fechas existentes.
+    match (body.start_date, body.end_date) {
+        (Some(s), Some(e)) => {
+            let now_utc = chrono::Utc::now();
+            let start = crate::utils::serde_date::project_tz_to_utc(
+                s.date_naive(),
+                &guard.project.timezone,
+                true,
+                now_utc,
+            )
+            .map_err(|e| AppError::BadRequest(e.to_string()))?;
+            let end = crate::utils::serde_date::project_tz_to_utc(
+                e.date_naive(),
+                &guard.project.timezone,
+                false,
+                now_utc,
+            )
+            .map_err(|e| AppError::BadRequest(e.to_string()))?;
+            am.start_date = Set(Some(start));
+            am.end_date = Set(Some(end));
+        }
+        (Some(s), None) => {
+            am.start_date = Set(Some(s));
+        }
+        (None, Some(e)) => {
+            am.end_date = Set(Some(e));
+        }
+        (None, None) => {}
     }
-    if body.end_date.is_some() {
-        am.end_date = Set(body.end_date);
-    }
+
     am.updated_by_id = Set(Some(guard.user.id));
 
     let updated = am.update(&state.db).await.map_err(AppError::Database)?;
