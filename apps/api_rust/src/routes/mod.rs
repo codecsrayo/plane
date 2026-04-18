@@ -306,6 +306,7 @@ pub mod instances;
         issue_extras::subscribe_to_issue,
         issue_extras::unsubscribe_from_issue,
         issue_extras::list_sub_issues,
+        issue_extras::assign_sub_issues,
         issue_description_versions::list_description_versions,
         issue_description_versions::get_description_version,
         instances::get_instance,
@@ -1207,7 +1208,7 @@ pub fn build_router(state: AppState) -> Router {
         )
         .route(
             "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/sub-issues",
-            get(issue_extras::list_sub_issues),
+            get(issue_extras::list_sub_issues).post(issue_extras::assign_sub_issues),
         )
         // ── Workspace Extras (favorites, home prefs, quick links, recent visits, stickies) ──
         .route(

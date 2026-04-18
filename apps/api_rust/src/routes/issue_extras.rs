@@ -26,7 +26,7 @@ use axum::{
 };
 use chrono::{DateTime, FixedOffset, Utc};
 use sea_orm::{
-    ActiveModelTrait, ColumnTrait, EntityTrait, QueryFilter, QueryOrder, Set,
+    sea_query::Expr, ActiveModelTrait, ColumnTrait, EntityTrait, QueryFilter, QueryOrder, Set,
 };
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
@@ -38,7 +38,7 @@ use crate::{
     },
     entities::{
         comment_reactions, issue_activities, issue_comments, issue_links,
-        issue_reactions, issue_relations, issue_subscribers, issues,
+        issue_reactions, issue_relations, issue_subscribers, issues, states,
     },
     error::AppError,
     utils::soft_delete::SoftDeleteExt,
@@ -974,4 +974,152 @@ pub async fn list_sub_issues(
     })).collect();
 
     Ok(Json(resp))
+}
+
+// ── POST sub-issues: asignación masiva de parent ──────────────────────────────
+
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
+pub struct AssignSubIssuesRequest {
+    /// IDs de issues a re-parentar hacia `issue_id`. Debe tener al menos 1.
+    pub sub_issue_ids: Vec<Uuid>,
+}
+
+/// POST /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/sub-issues/
+///
+/// Asigna múltiples issues como sub-issues del issue `{issue_id}` (bulk set
+/// de `parent_id`).
+///
+/// Mirror exacto de `SubIssuesEndpoint.post`
+/// (`apps/api/plane/app/views/issue/sub_issue.py:173-217`):
+/// - Lista vacía → 400.
+/// - Bulk update de `parent` en todos los `sub_issue_ids`.
+/// - Response: `{sub_issues: [...], state_distribution: {group: [id, ...]}}`.
+///
+/// Permisos: equivalente a `ProjectEntityPermission` Django (ADMIN / MEMBER).
+/// Django no expone esta acción a GUEST porque modifica relaciones — aquí se
+/// exige ROLE_MEMBER para mantener esa barrera.
+#[utoipa::path(
+    post,
+    path = "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/sub-issues/",
+    tag = "Issues",
+    security(("TokenAuth" = [])),
+    request_body = AssignSubIssuesRequest,
+    responses(
+        (status = 200, description = "Sub-issues asignados"),
+        (status = 400, description = "sub_issue_ids vacío"),
+        (status = 403, description = "Sin permisos"),
+    )
+)]
+pub async fn assign_sub_issues(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Path((_slug, _project_id, issue_id)): Path<(String, Uuid, Uuid)>,
+    Json(body): Json<AssignSubIssuesRequest>,
+) -> Result<Json<serde_json::Value>, AppError> {
+    // Django permite ADMIN/MEMBER (ProjectEntityPermission). Mantenemos esa
+    // barrera — GUEST no puede re-parentar issues.
+    require_role(
+        guard.project_member.role,
+        guard.workspace_member.role,
+        ROLE_MEMBER,
+    )?;
+
+    // Mirror: `if not len(sub_issue_ids): return 400`.
+    if body.sub_issue_ids.is_empty() {
+        return Err(AppError::BadRequest("Sub Issue IDs are required".into()));
+    }
+
+    // Validar que el parent existe en el mismo workspace y project.
+    // Django solo hace `Issue.issue_objects.get(pk=issue_id)` pero eso puede
+    // re-parentar un sub-issue bajo un parent de otro workspace — bug sutil que
+    // prevenimos aquí. Filtro explícito por guard.workspace.id / project.id.
+    let parent = issues::Entity::find_by_id(issue_id)
+        .filter(issues::Column::WorkspaceId.eq(guard.workspace.id))
+        .filter(issues::Column::ProjectId.eq(guard.project.id))
+        .filter(issues::Column::DeletedAt.is_null())
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    // Bulk update: `UPDATE issues SET parent_id = $1 WHERE id IN ($2...)`
+    // con filtro de seguridad por workspace_id + project_id para evitar que
+    // un sub_issue_id de otro workspace/proyecto se reparente cross-boundary.
+    let now: DateTime<FixedOffset> = Utc::now().into();
+    issues::Entity::update_many()
+        .col_expr(issues::Column::ParentId, Expr::value(parent.id))
+        .col_expr(issues::Column::UpdatedAt, Expr::value(now))
+        .col_expr(issues::Column::UpdatedById, Expr::value(guard.user.id))
+        .filter(issues::Column::Id.is_in(body.sub_issue_ids.clone()))
+        .filter(issues::Column::WorkspaceId.eq(guard.workspace.id))
+        .filter(issues::Column::ProjectId.eq(guard.project.id))
+        .filter(issues::Column::DeletedAt.is_null())
+        .exec(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    // Re-consulta los sub-issues actualizados para armar el response.
+    // Aplicamos el mismo guardrail de workspace/project al leer.
+    let updated = issues::Entity::find()
+        .filter(issues::Column::Id.is_in(body.sub_issue_ids))
+        .filter(issues::Column::WorkspaceId.eq(guard.workspace.id))
+        .filter(issues::Column::ProjectId.eq(guard.project.id))
+        .filter(issues::Column::DeletedAt.is_null())
+        .all(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    // `state_distribution`: diccionario `{state.group: [issue_id, ...]}`.
+    // Django lo construye con `F("state__group")` en un annotate; aquí lo
+    // resolvemos con una query extra sobre los state_ids presentes.
+    let state_ids: Vec<Uuid> = updated.iter().filter_map(|i| i.state_id).collect();
+    let states_map: std::collections::HashMap<Uuid, String> = if state_ids.is_empty() {
+        Default::default()
+    } else {
+        states::Entity::find()
+            .filter(states::Column::Id.is_in(state_ids))
+            .all(&state.db)
+            .await
+            .map_err(AppError::Database)?
+            .into_iter()
+            .map(|s| (s.id, s.group))
+            .collect()
+    };
+
+    let mut state_distribution: std::collections::HashMap<String, Vec<Uuid>> =
+        std::collections::HashMap::new();
+    for issue in &updated {
+        if let Some(sid) = issue.state_id {
+            if let Some(group) = states_map.get(&sid) {
+                state_distribution
+                    .entry(group.clone())
+                    .or_default()
+                    .push(issue.id);
+            }
+        }
+    }
+
+    // Shape de cada sub_issue: mismo shape que `list_sub_issues` GET — así el
+    // frontend consume ambos endpoints con el mismo tipo. Paridad funcional
+    // con Django aunque IssueSerializer devuelva más campos; si más adelante
+    // el cliente necesita campos extra, se extiende en el GET y el POST juntos.
+    let sub_issues_payload: Vec<serde_json::Value> = updated
+        .iter()
+        .map(|i| {
+            serde_json::json!({
+                "id": i.id,
+                "sequence_id": i.sequence_id,
+                "name": i.name,
+                "state_id": i.state_id,
+                "priority": i.priority,
+                "project_id": i.project_id,
+                "parent_id": i.parent_id,
+            })
+        })
+        .collect();
+
+    Ok(Json(serde_json::json!({
+        "sub_issues": sub_issues_payload,
+        "state_distribution": state_distribution,
+    })))
 }
