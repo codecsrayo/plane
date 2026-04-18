@@ -3612,7 +3612,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `core/store/issue/helpers/`
 
-- [!] `core/store/issue/helpers/base-issues-utils.ts` — `: any` + 2× `!` non-null assertions. Requiere refactor del pipeline. Deuda pendiente.
+- [x] `core/store/issue/helpers/base-issues-utils.ts` — `getSortOrderToFilterEmptyValues(key, object: any)` → `object: Record<string, unknown> | null | undefined` con retorno `0 | 1`. En `getFilteredWorkItems`, `Object.entries(filters).filter(...)` reemplazado por predicado de tipo `entry is [keyof IIssueFilterOptions, string[]]`, lo que elimina 2× `filterValues!` (non-null assertions) y el `filterValue: any` en el `.some()`. También removido un `as string[]` redundante en la llamada a `checkIssueDateFilter`.
 - [x] `core/store/issue/helpers/base-issues.store.ts` — raw rethrow → toApiError
 - [x] `core/store/issue/helpers/issue-filter-helper.store.ts`
 

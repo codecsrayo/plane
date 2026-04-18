@@ -178,7 +178,10 @@ export const getDifference = (
  * @param object any object in which the key's value is to be checked
  * @returns 1 if empty, 0 if not empty
  */
-export const getSortOrderToFilterEmptyValues = (key: string, object: any) => {
+export const getSortOrderToFilterEmptyValues = (
+  key: string,
+  object: Record<string, unknown> | null | undefined
+): 0 | 1 => {
   const value = object?.[key];
 
   if (typeof value !== "number" && isEmpty(value)) return 1;
@@ -243,8 +246,14 @@ export const getPreviousIssuesState = (issues: TIssue[]) => {
  */
 export const getFilteredWorkItems = (workItems: TIssue[], filters: IIssueFilterOptions | undefined): TIssue[] => {
   if (!filters) return workItems;
-  // Get all active filters
-  const activeFilters = Object.entries(filters).filter(([, value]) => value && value.length > 0);
+  // Narrow via a type predicate so the filterValues downstream is proven non-null string[]
+  // (drops the !-non-null assertions inside the .every() body below).
+  const activeFilters = Object.entries(filters).filter(
+    (entry): entry is [keyof IIssueFilterOptions, string[]] => {
+      const value = entry[1];
+      return Array.isArray(value) && value.length > 0;
+    }
+  );
   // If no active filters, return all issues
   if (activeFilters.length === 0) {
     return workItems;
@@ -255,7 +264,7 @@ export const getFilteredWorkItems = (workItems: TIssue[], filters: IIssueFilterO
     activeFilters.every(([filterKey, filterValues]) => {
       // Handle date filters separately
       if (filterKey === "start_date" || filterKey === "target_date") {
-        return checkIssueDateFilter(workItem, filterKey, filterValues as string[]);
+        return checkIssueDateFilter(workItem, filterKey, filterValues);
       }
       // Handle regular filters
       const issueKey = FILTER_TO_ISSUE_MAP[filterKey as keyof IIssueFilterOptions];
@@ -263,9 +272,9 @@ export const getFilteredWorkItems = (workItems: TIssue[], filters: IIssueFilterO
       const issueValue = workItem[issueKey];
       // Handle array-based properties vs single value properties
       if (Array.isArray(issueValue)) {
-        return filterValues!.some((filterValue: any) => issueValue.includes(filterValue));
+        return filterValues.some((filterValue) => issueValue.includes(filterValue));
       } else {
-        return filterValues!.includes(issueValue as string);
+        return filterValues.includes(issueValue as string);
       }
     })
   );
