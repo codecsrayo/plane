@@ -60,7 +60,26 @@ export class IssueSubscriptionStore implements IIssueSubscriptionStore {
 
   addSubscription = (issueId: string, isSubscribed: boolean | undefined | null) => {
     const currentUserId = this.rootIssueDetail.rootIssueStore.currentUserId;
-    if (!currentUserId) throw new Error("user id not available");
+    // addSubscription es una escritura de cache local (map keyed por
+    // userId). Si el user aún no hidrató (autorun de root.store.ts pendiente
+    // o sesión no cargada), no podemos almacenar — pero no es fatal: el
+    // próximo fetchIssue repoblará. Hacer throw aquí abortaba `fetchIssue`
+    // a mitad (activities/comments/sub_issues/relations nunca se cargaban)
+    // y disparaba "Error fetching the parent issue" en el peek-overview.
+    // Consistente con `getSubscriptionByIssueId` (mismo guard, retorno
+    // silencioso); las mutaciones remotas (createSubscription /
+    // removeSubscription) sí siguen throweando porque necesitan el user
+    // para pegarle al backend.
+    if (!currentUserId) {
+      if (process.env.NODE_ENV !== "production") {
+        // eslint-disable-next-line no-console
+        console.warn(
+          "[IssueSubscriptionStore] addSubscription: currentUserId no disponible aún — skip write",
+          { issueId }
+        );
+      }
+      return;
+    }
 
     runInAction(() => {
       set(this.subscriptionMap, [issueId, currentUserId], isSubscribed ?? false);
