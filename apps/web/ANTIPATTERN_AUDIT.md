@@ -3594,7 +3594,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 - [x] `core/store/issue/issue.store.ts`
 - [!] `core/store/issue/issue_calendar_view.store.ts` — `eslint-disable` + `: any`.
-- [!] `core/store/issue/issue_gantt_view.store.ts` — `: any` (4×) — ya flagged en scan general inicial.
+- [x] `core/store/issue/issue_gantt_view.store.ts` — Mismo refactor que `ce/store/timeline/base-timeline.store.ts`: `renderView: any[]` → `TGanttRenderPayload` (union local: `IWeekBlock[] | IMonthView | IMonthBlock[]`); `updateRenderView(data: any[])` → `updateRenderView(data: TGanttRenderPayload)`. El tipo se define localmente (no re-exportado desde `ce/`) para no invertir la dirección de dependencia core→ce.
 - [x] `core/store/issue/issue_kanban_view.store.ts`
 - [x] `core/store/issue/root.store.ts`
 

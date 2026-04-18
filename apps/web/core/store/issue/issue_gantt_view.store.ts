@@ -9,21 +9,31 @@ import { computedFn } from "mobx-utils";
 // helpers
 import type { ChartDataType, TGanttViews } from "@plane/types";
 import { currentViewDataWithView } from "@/components/gantt-chart/data";
+import type { IMonthBlock, IMonthView, IWeekBlock } from "@/components/gantt-chart/views";
 // types
+
+/**
+ * Shape of the `renderView` observable. Identical contract to
+ * `TGanttRenderPayload` in `ce/store/timeline/base-timeline.store.ts`:
+ * the runtime shape is determined by `currentView`. Defined locally to
+ * avoid a cross-package import (ce → core) that would invert the layer
+ * direction.
+ */
+type TGanttRenderPayload = IWeekBlock[] | IMonthView | IMonthBlock[];
 
 export interface IGanttStore {
   // observables
   currentView: TGanttViews;
   currentViewData: ChartDataType | undefined;
   activeBlockId: string | null;
-  renderView: any;
+  renderView: TGanttRenderPayload;
   // computed functions
   isBlockActive: (blockId: string) => boolean;
   // actions
   updateCurrentView: (view: TGanttViews) => void;
   updateCurrentViewData: (data: ChartDataType | undefined) => void;
   updateActiveBlockId: (blockId: string | null) => void;
-  updateRenderView: (data: any[]) => void;
+  updateRenderView: (data: TGanttRenderPayload) => void;
 }
 
 export class GanttStore implements IGanttStore {
@@ -31,7 +41,7 @@ export class GanttStore implements IGanttStore {
   currentView: TGanttViews = "month";
   currentViewData: ChartDataType | undefined = undefined;
   activeBlockId: string | null = null;
-  renderView: any[] = [];
+  renderView: TGanttRenderPayload = [];
 
   constructor() {
     makeObservable(this, {
@@ -82,9 +92,9 @@ export class GanttStore implements IGanttStore {
 
   /**
    * @description update render view
-   * @param {any[]} data
+   * @param {TGanttRenderPayload} data
    */
-  updateRenderView = (data: any[]) => {
+  updateRenderView = (data: TGanttRenderPayload) => {
     this.renderView = data;
   };
 
