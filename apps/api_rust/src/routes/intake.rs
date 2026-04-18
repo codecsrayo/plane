@@ -397,26 +397,28 @@ pub async fn create_intake_issue(
 
     // Calcular sequence_id.
     //
-    // NOTA: MAX() sin GROUP BY siempre devuelve una fila (aunque la tabla
-    // esté vacía, con valor NULL). Declaramos el decode como `Option<i64>` y
-    // flatten sobre el `Option<Option<i64>>` de .one(). Con .into_tuple()
-    // sin type params SeaORM inferiría `i64` y fallaría con
-    // "A null value was encountered while decoding 0" al crear la primera
-    // issue de intake en un proyecto nuevo.
+    // NOTA 1: MAX() sin GROUP BY siempre devuelve una fila (aunque la tabla
+    // esté vacía, con valor NULL). Decodificamos a Option<i32> y flatten
+    // sobre el Option<Option<i32>> de .one().
+    //
+    // NOTA 2: el target es i32 (NO i64). En Postgres MAX(INT4) → INT4;
+    // no se promueve a BIGINT como en MySQL. Usar i64 produce
+    // "mismatched types; Rust type Option<i64> (as SQL type INT8) is not
+    // compatible with SQL type INT4".
     use sea_orm::QuerySelect;
-    let max_seq: Option<i64> = issues::Entity::find()
+    let max_seq: Option<i32> = issues::Entity::find()
         .filter(issues::Column::ProjectId.eq(guard.project.id))
         .select_only()
         .column_as(
             sea_orm::sea_query::Expr::col(issues::Column::SequenceId).max(),
             "max_seq",
         )
-        .into_tuple::<Option<i64>>()
+        .into_tuple::<Option<i32>>()
         .one(&state.db)
         .await
         .map_err(AppError::Database)?
         .flatten();
-    let sequence_id = (max_seq.unwrap_or(0) + 1) as i32;
+    let sequence_id = max_seq.unwrap_or(0) + 1;
 
     // created_at / updated_at explícitos: ActiveModelBehavior vacío,
     // columnas NOT NULL. Mismo patrón que labels.rs / issues.rs::create_issue.

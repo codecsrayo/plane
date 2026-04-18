@@ -846,29 +846,33 @@ pub async fn create_issue(
                 Box::pin(async move {
                     // sequence_id = MAX(sequence_id) + 1 dentro del proyecto.
                     //
-                    // NOTA: MAX() sin GROUP BY siempre devuelve una fila (aunque la
-                    // tabla esté vacía, con valor NULL). Por eso declaramos el
-                    // decode como `Option<i64>` y hacemos .flatten() sobre el
-                    // `Option<Option<i64>>` que devuelve .one(). Con el binding a
-                    // `Option<i64>` y .into_tuple() sin type params, SeaORM infería
-                    // `i64` como target y reventaba con
-                    // "A null value was encountered while decoding 0" al crear la
-                    // primera issue de un proyecto vacío.
+                    // NOTA 1: MAX() sin GROUP BY siempre devuelve una fila
+                    // (aunque la tabla esté vacía, con valor NULL). Por eso
+                    // decodificamos a Option<i32> y flatten sobre el
+                    // Option<Option<i32>> que devuelve .one(); sin el
+                    // Option más externo, SeaORM trataría NULL como error de
+                    // decode ("A null value was encountered while decoding 0").
+                    //
+                    // NOTA 2: el target es i32 (NO i64). En Postgres
+                    // MAX(INT4) → INT4; no se promueve a BIGINT como en MySQL.
+                    // Usar i64 produce
+                    // "mismatched types; Rust type Option<i64> (as SQL type
+                    // INT8) is not compatible with SQL type INT4".
                     use sea_orm::QuerySelect;
-                    let max_seq: Option<i64> = issues::Entity::find()
+                    let max_seq: Option<i32> = issues::Entity::find()
                         .filter(issues::Column::ProjectId.eq(project_id))
                         .select_only()
                         .column_as(
                             sea_orm::sea_query::Expr::col(issues::Column::SequenceId).max(),
                             "max_seq",
                         )
-                        .into_tuple::<Option<i64>>()
+                        .into_tuple::<Option<i32>>()
                         .one(txn)
                         .await
                         .map_err(AppError::Database)?
                         .flatten();
 
-                    let sequence_id = (max_seq.unwrap_or(0) + 1) as i32;
+                    let sequence_id = max_seq.unwrap_or(0) + 1;
 
                     // created_at / updated_at se setean explícitamente porque
                     // issues::ActiveModelBehavior está vacío (sin hook
