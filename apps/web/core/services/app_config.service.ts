@@ -6,7 +6,7 @@
 
 // services
 import { API_BASE_URL } from "@plane/constants";
-import { APIService } from "@/services/api.service";
+import { APIService, ApiError } from "@/services/api.service";
 // helper
 // types
 // FIXME:
@@ -23,7 +23,7 @@ export class AppConfigService extends APIService {
     })
       .then((response) => response.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 }

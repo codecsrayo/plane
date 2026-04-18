@@ -9,7 +9,7 @@ import { API_BASE_URL } from "@plane/constants";
 import type { ICycle } from "@plane/types";
 // helpers
 // services
-import { APIService } from "@/services/api.service";
+import { APIService, ApiError } from "@/services/api.service";
 
 export class CycleArchiveService extends APIService {
   constructor() {
@@ -20,7 +20,7 @@ export class CycleArchiveService extends APIService {
     return this.get(`/api/workspaces/${workspaceSlug}/projects/${projectId}/archived-cycles/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -42,7 +42,7 @@ export class CycleArchiveService extends APIService {
     return this.post(`/api/workspaces/${workspaceSlug}/projects/${projectId}/cycles/${cycleId}/archive/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -50,7 +50,7 @@ export class CycleArchiveService extends APIService {
     return this.delete(`/api/workspaces/${workspaceSlug}/projects/${projectId}/cycles/${cycleId}/archive/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 }

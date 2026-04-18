@@ -15,7 +15,7 @@ import type {
 } from "@plane/types";
 // helpers
 // services
-import { APIService } from "@/services/api.service";
+import { APIService, toApiError } from "@/services/api.service";
 
 export class WorkspaceNotificationService extends APIService {
   constructor() {
@@ -27,7 +27,7 @@ export class WorkspaceNotificationService extends APIService {
       const { data } = await this.get(`/api/workspaces/${workspaceSlug}/users/notifications/unread/`);
       return data || undefined;
     } catch (error) {
-      throw error;
+      throw toApiError(error);
     }
   }
 
@@ -41,7 +41,7 @@ export class WorkspaceNotificationService extends APIService {
       });
       return data || undefined;
     } catch (error) {
-      throw error;
+      throw toApiError(error);
     }
   }
 
@@ -57,7 +57,7 @@ export class WorkspaceNotificationService extends APIService {
       );
       return data || undefined;
     } catch (error) {
-      throw error;
+      throw toApiError(error);
     }
   }
 
@@ -66,7 +66,7 @@ export class WorkspaceNotificationService extends APIService {
       const { data } = await this.post(`/api/workspaces/${workspaceSlug}/users/notifications/${notificationId}/read/`);
       return data || undefined;
     } catch (error) {
-      throw error;
+      throw toApiError(error);
     }
   }
 
@@ -77,7 +77,7 @@ export class WorkspaceNotificationService extends APIService {
       );
       return data || undefined;
     } catch (error) {
-      throw error;
+      throw toApiError(error);
     }
   }
 
@@ -88,7 +88,7 @@ export class WorkspaceNotificationService extends APIService {
       );
       return data || undefined;
     } catch (error) {
-      throw error;
+      throw toApiError(error);
     }
   }
 
@@ -102,7 +102,7 @@ export class WorkspaceNotificationService extends APIService {
       );
       return data || undefined;
     } catch (error) {
-      throw error;
+      throw toApiError(error);
     }
   }
 
@@ -114,7 +114,7 @@ export class WorkspaceNotificationService extends APIService {
       const { data } = await this.post(`/api/workspaces/${workspaceSlug}/users/notifications/mark-all-read/`, payload);
       return data || undefined;
     } catch (error) {
-      throw error;
+      throw toApiError(error);
     }
   }
 }

@@ -6,7 +6,7 @@
 
 import { API_BASE_URL } from "@plane/constants";
 import type { THomeDashboardResponse, TWidget, TWidgetStatsResponse, TWidgetStatsRequestParams } from "@plane/types";
-import { APIService } from "@/services/api.service";
+import { APIService, ApiError } from "@/services/api.service";
 // helpers
 // types
 
@@ -23,7 +23,7 @@ export class DashboardService extends APIService {
     })
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -37,7 +37,7 @@ export class DashboardService extends APIService {
     })
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -45,7 +45,7 @@ export class DashboardService extends APIService {
     return this.get(`/api/dashboard/${dashboardId}/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -53,7 +53,7 @@ export class DashboardService extends APIService {
     return this.patch(`/api/dashboard/${dashboardId}/widgets/${widgetId}/`, data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 }

@@ -7,7 +7,7 @@
 // api services
 import { API_BASE_URL } from "@plane/constants";
 import type { IWebhook } from "@plane/types";
-import { APIService } from "@/services/api.service";
+import { APIService, ApiError } from "@/services/api.service";
 // helpers
 // types
 
@@ -20,7 +20,7 @@ export class WebhookService extends APIService {
     return this.get(`/api/workspaces/${workspaceSlug}/webhooks/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -28,7 +28,7 @@ export class WebhookService extends APIService {
     return this.get(`/api/workspaces/${workspaceSlug}/webhooks/${webhookId}/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -36,7 +36,7 @@ export class WebhookService extends APIService {
     return this.post(`/api/workspaces/${workspaceSlug}/webhooks/`, data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -44,7 +44,7 @@ export class WebhookService extends APIService {
     return this.patch(`/api/workspaces/${workspaceSlug}/webhooks/${webhookId}/`, data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -52,7 +52,7 @@ export class WebhookService extends APIService {
     return this.delete(`/api/workspaces/${workspaceSlug}/webhooks/${webhookId}/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -60,7 +60,7 @@ export class WebhookService extends APIService {
     return this.post(`/api/workspaces/${workspaceSlug}/webhooks/${webhookId}/regenerate/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 }

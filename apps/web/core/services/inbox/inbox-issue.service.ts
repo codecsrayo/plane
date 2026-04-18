@@ -10,7 +10,7 @@ import type { TInboxIssue, TIssue, TInboxIssueWithPagination } from "@plane/type
 import { EInboxIssueSource } from "@plane/types";
 // helpers
 // services
-import { APIService } from "@/services/api.service";
+import { APIService, ApiError } from "@/services/api.service";
 
 export class InboxIssueService extends APIService {
   constructor() {
@@ -23,7 +23,7 @@ export class InboxIssueService extends APIService {
     })
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -33,7 +33,7 @@ export class InboxIssueService extends APIService {
     )
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -44,7 +44,7 @@ export class InboxIssueService extends APIService {
     })
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -57,7 +57,7 @@ export class InboxIssueService extends APIService {
     return this.patch(`/api/workspaces/${workspaceSlug}/projects/${projectId}/inbox-issues/${inboxIssueId}/`, data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -72,7 +72,7 @@ export class InboxIssueService extends APIService {
     })
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -80,7 +80,7 @@ export class InboxIssueService extends APIService {
     return this.delete(`/api/workspaces/${workspaceSlug}/projects/${projectId}/inbox-issues/${inboxIssueId}/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 }

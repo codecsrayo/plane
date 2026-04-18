@@ -9,7 +9,7 @@ import { API_BASE_URL } from "@plane/constants";
 import type { TDocumentPayload, TPage } from "@plane/types";
 // helpers
 // services
-import { APIService } from "@/services/api.service";
+import { APIService, ApiError, toApiError } from "@/services/api.service";
 import { FileUploadService } from "@/services/file-upload.service";
 
 export class ProjectPageService extends APIService {
@@ -25,7 +25,7 @@ export class ProjectPageService extends APIService {
     return this.get(`/api/workspaces/${workspaceSlug}/projects/${projectId}/pages/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -37,7 +37,7 @@ export class ProjectPageService extends APIService {
     })
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -45,7 +45,7 @@ export class ProjectPageService extends APIService {
     return this.post(`/api/workspaces/${workspaceSlug}/projects/${projectId}/pages/`, data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -53,7 +53,7 @@ export class ProjectPageService extends APIService {
     return this.patch(`/api/workspaces/${workspaceSlug}/projects/${projectId}/pages/${pageId}/`, data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -66,7 +66,7 @@ export class ProjectPageService extends APIService {
     return this.post(`/api/workspaces/${workspaceSlug}/projects/${projectId}/pages/${pageId}/access/`, data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -74,7 +74,7 @@ export class ProjectPageService extends APIService {
     return this.delete(`/api/workspaces/${workspaceSlug}/projects/${projectId}/pages/${pageId}/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -82,7 +82,7 @@ export class ProjectPageService extends APIService {
     return this.get(`/api/workspaces/${workspaceSlug}/projects/${projectId}/favorite-pages/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -90,7 +90,7 @@ export class ProjectPageService extends APIService {
     return this.post(`/api/workspaces/${workspaceSlug}/projects/${projectId}/favorite-pages/${pageId}/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -98,7 +98,7 @@ export class ProjectPageService extends APIService {
     return this.delete(`/api/workspaces/${workspaceSlug}/projects/${projectId}/favorite-pages/${pageId}/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -106,7 +106,7 @@ export class ProjectPageService extends APIService {
     return this.get(`/api/workspaces/${workspaceSlug}/projects/${projectId}/archived-pages/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -120,7 +120,7 @@ export class ProjectPageService extends APIService {
     return this.post(`/api/workspaces/${workspaceSlug}/projects/${projectId}/pages/${pageId}/archive/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -128,7 +128,7 @@ export class ProjectPageService extends APIService {
     return this.delete(`/api/workspaces/${workspaceSlug}/projects/${projectId}/pages/${pageId}/archive/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -136,7 +136,7 @@ export class ProjectPageService extends APIService {
     return this.post(`/api/workspaces/${workspaceSlug}/projects/${projectId}/pages/${pageId}/lock/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -144,7 +144,7 @@ export class ProjectPageService extends APIService {
     return this.delete(`/api/workspaces/${workspaceSlug}/projects/${projectId}/pages/${pageId}/lock/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -157,7 +157,7 @@ export class ProjectPageService extends APIService {
     })
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -170,7 +170,7 @@ export class ProjectPageService extends APIService {
     return this.patch(`/api/workspaces/${workspaceSlug}/projects/${projectId}/pages/${pageId}/description/`, data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error;
+        throw toApiError(error);
       });
   }
 
@@ -178,7 +178,7 @@ export class ProjectPageService extends APIService {
     return this.post(`/api/workspaces/${workspaceSlug}/projects/${projectId}/pages/${pageId}/duplicate/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -188,7 +188,7 @@ export class ProjectPageService extends APIService {
     })
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 }

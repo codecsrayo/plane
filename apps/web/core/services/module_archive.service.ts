@@ -9,7 +9,7 @@ import { API_BASE_URL } from "@plane/constants";
 import type { IModule } from "@plane/types";
 // helpers
 // services
-import { APIService } from "@/services/api.service";
+import { APIService, ApiError } from "@/services/api.service";
 
 export class ModuleArchiveService extends APIService {
   constructor() {
@@ -20,7 +20,7 @@ export class ModuleArchiveService extends APIService {
     return this.get(`/api/workspaces/${workspaceSlug}/projects/${projectId}/archived-modules/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -28,7 +28,7 @@ export class ModuleArchiveService extends APIService {
     return this.get(`/api/workspaces/${workspaceSlug}/projects/${projectId}/archived-modules/${moduleId}/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -42,7 +42,7 @@ export class ModuleArchiveService extends APIService {
     return this.post(`/api/workspaces/${workspaceSlug}/projects/${projectId}/modules/${moduleId}/archive/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -50,7 +50,7 @@ export class ModuleArchiveService extends APIService {
     return this.delete(`/api/workspaces/${workspaceSlug}/projects/${projectId}/modules/${moduleId}/archive/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 }

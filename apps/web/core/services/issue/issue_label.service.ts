@@ -7,7 +7,7 @@
 import { API_BASE_URL } from "@plane/constants";
 import type { IIssueLabel } from "@plane/types";
 // services
-import { APIService } from "@/services/api.service";
+import { APIService, ApiError } from "@/services/api.service";
 // types
 
 export class IssueLabelService extends APIService {
@@ -19,7 +19,7 @@ export class IssueLabelService extends APIService {
     return this.get(`/api/workspaces/${workspaceSlug}/labels/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -27,7 +27,7 @@ export class IssueLabelService extends APIService {
     return this.get(`/api/workspaces/${workspaceSlug}/projects/${projectId}/issue-labels/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -35,7 +35,7 @@ export class IssueLabelService extends APIService {
     return this.post(`/api/workspaces/${workspaceSlug}/projects/${projectId}/issue-labels/`, data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -43,7 +43,7 @@ export class IssueLabelService extends APIService {
     return this.patch(`/api/workspaces/${workspaceSlug}/projects/${projectId}/issue-labels/${labelId}/`, data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -51,7 +51,7 @@ export class IssueLabelService extends APIService {
     return this.delete(`/api/workspaces/${workspaceSlug}/projects/${projectId}/issue-labels/${labelId}/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 }

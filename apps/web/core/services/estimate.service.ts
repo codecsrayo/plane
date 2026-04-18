@@ -11,7 +11,7 @@ import { API_BASE_URL } from "@plane/constants";
 import type { IEstimate, IEstimateFormData, IEstimatePoint } from "@plane/types";
 // helpers
 // services
-import { APIService } from "@/services/api.service";
+import { APIService, toApiError } from "@/services/api.service";
 
 export class EstimateService extends APIService {
   constructor() {
@@ -23,7 +23,7 @@ export class EstimateService extends APIService {
       const { data } = await this.get(`/api/workspaces/${workspaceSlug}/estimates/`);
       return data || undefined;
     } catch (error) {
-      throw error;
+      throw toApiError(error);
     }
   }
 
@@ -32,7 +32,7 @@ export class EstimateService extends APIService {
       const { data } = await this.get(`/api/workspaces/${workspaceSlug}/projects/${projectId}/estimates/`);
       return data || undefined;
     } catch (error) {
-      throw error;
+      throw toApiError(error);
     }
   }
 
@@ -47,7 +47,7 @@ export class EstimateService extends APIService {
       );
       return data || undefined;
     } catch (error) {
-      throw error;
+      throw toApiError(error);
     }
   }
 
@@ -60,7 +60,7 @@ export class EstimateService extends APIService {
       const { data } = await this.post(`/api/workspaces/${workspaceSlug}/projects/${projectId}/estimates/`, payload);
       return data || undefined;
     } catch (error) {
-      throw error;
+      throw toApiError(error);
     }
   }
 
@@ -68,7 +68,7 @@ export class EstimateService extends APIService {
     try {
       await this.delete(`/api/workspaces/${workspaceSlug}/projects/${projectId}/estimates/${estimateId}/`);
     } catch (error) {
-      throw error;
+      throw toApiError(error);
     }
   }
 
@@ -85,7 +85,7 @@ export class EstimateService extends APIService {
       );
       return data || undefined;
     } catch (error) {
-      throw error;
+      throw toApiError(error);
     }
   }
 
@@ -103,7 +103,7 @@ export class EstimateService extends APIService {
       );
       return data || undefined;
     } catch (error) {
-      throw error;
+      throw toApiError(error);
     }
   }
 }

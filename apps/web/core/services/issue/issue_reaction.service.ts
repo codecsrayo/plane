@@ -8,7 +8,7 @@ import { API_BASE_URL } from "@plane/constants";
 import { EIssueServiceType } from "@plane/types";
 import type { TIssueCommentReaction, TIssueReaction, TIssueServiceType } from "@plane/types";
 // services
-import { APIService } from "@/services/api.service";
+import { APIService, ApiError } from "@/services/api.service";
 // types
 
 export class IssueReactionService extends APIService {
@@ -31,7 +31,7 @@ export class IssueReactionService extends APIService {
     )
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -39,7 +39,7 @@ export class IssueReactionService extends APIService {
     return this.get(`/api/workspaces/${workspaceSlug}/projects/${projectId}/${this.serviceType}/${issueId}/reactions/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -49,7 +49,7 @@ export class IssueReactionService extends APIService {
     )
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -62,7 +62,7 @@ export class IssueReactionService extends APIService {
     return this.post(`/api/workspaces/${workspaceSlug}/projects/${projectId}/comments/${commentId}/reactions/`, data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -74,7 +74,7 @@ export class IssueReactionService extends APIService {
     return this.get(`/api/workspaces/${workspaceSlug}/projects/${projectId}/comments/${commentId}/reactions/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -89,7 +89,7 @@ export class IssueReactionService extends APIService {
     )
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 }

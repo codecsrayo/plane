@@ -10,7 +10,7 @@ import type { TIssueRelation, TIssue } from "@plane/types";
 // Plane-web
 import type { TIssueRelationTypes } from "@/plane-web/types";
 // services
-import { APIService } from "@/services/api.service";
+import { APIService, ApiError } from "@/services/api.service";
 
 export class IssueRelationService extends APIService {
   constructor() {
@@ -21,7 +21,7 @@ export class IssueRelationService extends APIService {
     return this.get(`/api/workspaces/${workspaceSlug}/projects/${projectId}/issues/${issueId}/issue-relation/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -34,7 +34,7 @@ export class IssueRelationService extends APIService {
     return this.post(`/api/workspaces/${workspaceSlug}/projects/${projectId}/issues/${issueId}/issue-relation/`, data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -47,7 +47,7 @@ export class IssueRelationService extends APIService {
     return this.post(`/api/workspaces/${workspaceSlug}/projects/${projectId}/issues/${issueId}/remove-relation/`, data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 }

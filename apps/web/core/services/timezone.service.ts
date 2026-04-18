@@ -8,7 +8,7 @@ import { API_BASE_URL } from "@plane/constants";
 import type { TTimezones } from "@plane/types";
 // helpers
 // api services
-import { APIService } from "@/services/api.service";
+import { APIService, ApiError } from "@/services/api.service";
 
 export class TimezoneService extends APIService {
   constructor() {
@@ -19,7 +19,7 @@ export class TimezoneService extends APIService {
     return this.get(`/api/timezones/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 }

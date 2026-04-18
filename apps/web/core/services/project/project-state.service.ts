@@ -7,7 +7,7 @@
 // services
 import { API_BASE_URL } from "@plane/constants";
 import type { IIntakeState, IState } from "@plane/types";
-import { APIService } from "@/services/api.service";
+import { APIService, ApiError } from "@/services/api.service";
 // helpers
 // types
 
@@ -20,7 +20,7 @@ export class ProjectStateService extends APIService {
     return this.post(`/api/workspaces/${workspaceSlug}/projects/${projectId}/states/`, data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -28,7 +28,7 @@ export class ProjectStateService extends APIService {
     return this.post(`/api/workspaces/${workspaceSlug}/projects/${projectId}/states/${stateId}/mark-default/`, {})
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -36,7 +36,7 @@ export class ProjectStateService extends APIService {
     return this.get(`/api/workspaces/${workspaceSlug}/projects/${projectId}/states/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -44,7 +44,7 @@ export class ProjectStateService extends APIService {
     return this.get(`/api/workspaces/${workspaceSlug}/projects/${projectId}/intake-state/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -52,7 +52,7 @@ export class ProjectStateService extends APIService {
     return this.get(`/api/workspaces/${workspaceSlug}/projects/${projectId}/states/${stateId}/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -60,7 +60,7 @@ export class ProjectStateService extends APIService {
     return this.put(`/api/workspaces/${workspaceSlug}/projects/${projectId}/states/${stateId}/`, data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -68,7 +68,7 @@ export class ProjectStateService extends APIService {
     return this.patch(`/api/workspaces/${workspaceSlug}/projects/${projectId}/states/${stateId}/`, data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -76,7 +76,7 @@ export class ProjectStateService extends APIService {
     return this.delete(`/api/workspaces/${workspaceSlug}/projects/${projectId}/states/${stateId}/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -84,7 +84,7 @@ export class ProjectStateService extends APIService {
     return this.get(`/api/workspaces/${workspaceSlug}/states/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 }

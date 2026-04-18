@@ -9,7 +9,7 @@ import { API_BASE_URL } from "@plane/constants";
 // plane web constants
 import type { AI_EDITOR_TASKS } from "@/constants/ai";
 // services
-import { APIService } from "@/services/api.service";
+import { APIService, ApiError } from "@/services/api.service";
 // types
 // FIXME:
 // import { IGptResponse } from "@plane/types";
@@ -33,7 +33,7 @@ export class AIService extends APIService {
     return this.post(`/api/workspaces/${workspaceSlug}/ai-assistant/`, data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -46,7 +46,7 @@ export class AIService extends APIService {
     return this.post(`/api/workspaces/${workspaceSlug}/rephrase-grammar/`, data)
       .then((res) => res?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 }

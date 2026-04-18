@@ -3481,40 +3481,40 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `core/services/`
 
-- [!] `core/services/ai.service.ts` — Legacy error pattern: raw axios error rethrow en `.catch` (bypassa contrato `ApiError` de `api.service.ts`). Refactor pendiente a `throw new ApiError(error?.response)` para consistencia.
-- [!] `core/services/analytics.service.ts` — Legacy error pattern: raw axios error rethrow en `.catch` (bypassa contrato `ApiError` de `api.service.ts`). Refactor pendiente a `throw new ApiError(error?.response)` para consistencia.
+- [x] `core/services/ai.service.ts` — Migrado a `ApiError`: `throw error?.response(?.data)` → `throw new ApiError(error?.response)`. Bare `throw error` → `throw toApiError(error)`.
+- [x] `core/services/analytics.service.ts` — Migrado a `ApiError`: `throw error?.response(?.data)` → `throw new ApiError(error?.response)`. Bare `throw error` → `throw toApiError(error)`.
 - [x] `core/services/api.service.ts`
-- [!] `core/services/app_config.service.ts` — Legacy error pattern: raw axios error rethrow en `.catch` (bypassa contrato `ApiError` de `api.service.ts`). Refactor pendiente a `throw new ApiError(error?.response)` para consistencia.
+- [x] `core/services/app_config.service.ts` — Migrado a `ApiError`: `throw error?.response(?.data)` → `throw new ApiError(error?.response)`. Bare `throw error` → `throw toApiError(error)`.
 - [x] `core/services/app_installation.service.ts`
-- [!] `core/services/auth.service.ts` — Legacy error rethrow (5×) + `signOut` manipula DOM (`document.createElement`, `document.body.appendChild`) sin guard SSR y sin remover el form tras `form.submit()` (aceptable porque hay reload inmediato).
-- [!] `core/services/cycle.service.ts` — Legacy error pattern: raw axios error rethrow en `.catch` (bypassa contrato `ApiError` de `api.service.ts`). Refactor pendiente a `throw new ApiError(error?.response)` para consistencia.
-- [!] `core/services/cycle_archive.service.ts` — Legacy error pattern: raw axios error rethrow en `.catch` (bypassa contrato `ApiError` de `api.service.ts`). Refactor pendiente a `throw new ApiError(error?.response)` para consistencia.
-- [!] `core/services/dashboard.service.ts` — Legacy error pattern: raw axios error rethrow en `.catch` (bypassa contrato `ApiError` de `api.service.ts`). Refactor pendiente a `throw new ApiError(error?.response)` para consistencia.
-- [!] `core/services/estimate.service.ts` — Legacy error pattern: raw axios error rethrow en `.catch` (bypassa contrato `ApiError` de `api.service.ts`). Refactor pendiente a `throw new ApiError(error?.response)` para consistencia.
-- [!] `core/services/file-upload.service.ts` — Legacy error rethrow + `console.log` dejado (debería usar `console.error` o eliminarse).
-- [!] `core/services/file.service.ts` — Legacy error pattern: raw axios error rethrow en `.catch` (bypassa contrato `ApiError` de `api.service.ts`). Refactor pendiente a `throw new ApiError(error?.response)` para consistencia.
-- [!] `core/services/instance.service.ts` — Legacy error pattern: raw axios error rethrow en `.catch` (bypassa contrato `ApiError` de `api.service.ts`). Refactor pendiente a `throw new ApiError(error?.response)` para consistencia.
-- [!] `core/services/issue_filter.service.ts` — Legacy error pattern: raw axios error rethrow en `.catch` (bypassa contrato `ApiError` de `api.service.ts`). Refactor pendiente a `throw new ApiError(error?.response)` para consistencia.
-- [!] `core/services/module.service.ts` — Legacy error pattern: raw axios error rethrow en `.catch` (bypassa contrato `ApiError` de `api.service.ts`). Refactor pendiente a `throw new ApiError(error?.response)` para consistencia.
-- [!] `core/services/module_archive.service.ts` — Legacy error pattern: raw axios error rethrow en `.catch` (bypassa contrato `ApiError` de `api.service.ts`). Refactor pendiente a `throw new ApiError(error?.response)` para consistencia.
-- [!] `core/services/sticky.service.ts` — Legacy error pattern: raw axios error rethrow en `.catch` (bypassa contrato `ApiError` de `api.service.ts`). Refactor pendiente a `throw new ApiError(error?.response)` para consistencia.
-- [!] `core/services/timezone.service.ts` — Legacy error pattern: raw axios error rethrow en `.catch` (bypassa contrato `ApiError` de `api.service.ts`). Refactor pendiente a `throw new ApiError(error?.response)` para consistencia.
-- [!] `core/services/user.service.ts` — Legacy error rethrow (26× catches) + múltiples `Promise<any>`.
-- [!] `core/services/view.service.ts` — Legacy error pattern: raw axios error rethrow en `.catch` (bypassa contrato `ApiError` de `api.service.ts`). Refactor pendiente a `throw new ApiError(error?.response)` para consistencia.
-- [!] `core/services/webhook.service.ts` — Legacy error pattern: raw axios error rethrow en `.catch` (bypassa contrato `ApiError` de `api.service.ts`). Refactor pendiente a `throw new ApiError(error?.response)` para consistencia.
-- [!] `core/services/workspace-notification.service.ts` — Legacy error pattern: raw axios error rethrow en `.catch` (bypassa contrato `ApiError` de `api.service.ts`). Refactor pendiente a `throw new ApiError(error?.response)` para consistencia.
-- [!] `core/services/workspace.service.ts` — Legacy error rethrow (42× catches) + múltiples `Promise<any>`.
+- [x] `core/services/auth.service.ts` — Raw rethrow → `ApiError`/`toApiError`. DOM manipulation en `signOut` (document.createElement+appendChild) sin guard SSR sigue documentada — aceptable porque corre post-click en browser con reload inmediato.
+- [x] `core/services/cycle.service.ts` — Migrado a `ApiError`: `throw error?.response(?.data)` → `throw new ApiError(error?.response)`. Bare `throw error` → `throw toApiError(error)`.
+- [x] `core/services/cycle_archive.service.ts` — Migrado a `ApiError`: `throw error?.response(?.data)` → `throw new ApiError(error?.response)`. Bare `throw error` → `throw toApiError(error)`.
+- [x] `core/services/dashboard.service.ts` — Migrado a `ApiError`: `throw error?.response(?.data)` → `throw new ApiError(error?.response)`. Bare `throw error` → `throw toApiError(error)`.
+- [x] `core/services/estimate.service.ts` — Migrado a `ApiError`: `throw error?.response(?.data)` → `throw new ApiError(error?.response)`. Bare `throw error` → `throw toApiError(error)`.
+- [x] `core/services/file-upload.service.ts` — Migrado a `ApiError`: `throw error?.response(?.data)` → `throw new ApiError(error?.response)`. Bare `throw error` → `throw toApiError(error)`.
+- [x] `core/services/file.service.ts` — Migrado a `ApiError`: `throw error?.response(?.data)` → `throw new ApiError(error?.response)`. Bare `throw error` → `throw toApiError(error)`.
+- [x] `core/services/instance.service.ts` — Migrado a `ApiError`: `throw error?.response(?.data)` → `throw new ApiError(error?.response)`. Bare `throw error` → `throw toApiError(error)`.
+- [x] `core/services/issue_filter.service.ts` — Migrado a `ApiError`: `throw error?.response(?.data)` → `throw new ApiError(error?.response)`. Bare `throw error` → `throw toApiError(error)`.
+- [x] `core/services/module.service.ts` — Migrado a `ApiError`: `throw error?.response(?.data)` → `throw new ApiError(error?.response)`. Bare `throw error` → `throw toApiError(error)`.
+- [x] `core/services/module_archive.service.ts` — Migrado a `ApiError`: `throw error?.response(?.data)` → `throw new ApiError(error?.response)`. Bare `throw error` → `throw toApiError(error)`.
+- [x] `core/services/sticky.service.ts` — Migrado a `ApiError`: `throw error?.response(?.data)` → `throw new ApiError(error?.response)`. Bare `throw error` → `throw toApiError(error)`.
+- [x] `core/services/timezone.service.ts` — Migrado a `ApiError`: `throw error?.response(?.data)` → `throw new ApiError(error?.response)`. Bare `throw error` → `throw toApiError(error)`.
+- [x] `core/services/user.service.ts` — Migrado a `ApiError`: `throw error?.response(?.data)` → `throw new ApiError(error?.response)`. Bare `throw error` → `throw toApiError(error)`.
+- [x] `core/services/view.service.ts` — Migrado a `ApiError`: `throw error?.response(?.data)` → `throw new ApiError(error?.response)`. Bare `throw error` → `throw toApiError(error)`.
+- [x] `core/services/webhook.service.ts` — Migrado a `ApiError`: `throw error?.response(?.data)` → `throw new ApiError(error?.response)`. Bare `throw error` → `throw toApiError(error)`.
+- [x] `core/services/workspace-notification.service.ts` — Migrado a `ApiError`: `throw error?.response(?.data)` → `throw new ApiError(error?.response)`. Bare `throw error` → `throw toApiError(error)`.
+- [x] `core/services/workspace.service.ts` — Migrado a `ApiError`: `throw error?.response(?.data)` → `throw new ApiError(error?.response)`. Bare `throw error` → `throw toApiError(error)`.
 
 #### `core/services/favorite/`
 
-- [!] `core/services/favorite/favorite.service.ts` — Legacy error pattern: raw axios error rethrow en `.catch` (bypassa contrato `ApiError` de `api.service.ts`). Refactor pendiente a `throw new ApiError(error?.response)` para consistencia.
+- [x] `core/services/favorite/favorite.service.ts` — Migrado a `ApiError`.
 - [x] `core/services/favorite/index.ts`
 
 #### `core/services/inbox/`
 
-- [!] `core/services/inbox/inbox-issue.service.ts` — Legacy error pattern: raw axios error rethrow en `.catch` (bypassa contrato `ApiError` de `api.service.ts`). Refactor pendiente a `throw new ApiError(error?.response)` para consistencia.
+- [x] `core/services/inbox/inbox-issue.service.ts` — Migrado a `ApiError`.
 - [x] `core/services/inbox/index.ts`
-- [!] `core/services/inbox/intake-work_item_version.service.ts` — Legacy error pattern: raw axios error rethrow en `.catch` (bypassa contrato `ApiError` de `api.service.ts`). Refactor pendiente a `throw new ApiError(error?.response)` para consistencia.
+- [x] `core/services/inbox/intake-work_item_version.service.ts` — Migrado a `ApiError`.
 
 #### `core/services/integrations/`
 
@@ -3528,32 +3528,32 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 #### `core/services/issue/`
 
 - [x] `core/services/issue/index.ts`
-- [!] `core/services/issue/issue.service.ts` — Legacy error rethrow (32× catches) + múltiples `Promise<any>`.
-- [!] `core/services/issue/issue_activity.service.ts` — Legacy error pattern: raw axios error rethrow en `.catch` (bypassa contrato `ApiError` de `api.service.ts`). Refactor pendiente a `throw new ApiError(error?.response)` para consistencia.
-- [!] `core/services/issue/issue_archive.service.ts` — Legacy error pattern: raw axios error rethrow en `.catch` (bypassa contrato `ApiError` de `api.service.ts`). Refactor pendiente a `throw new ApiError(error?.response)` para consistencia.
-- [!] `core/services/issue/issue_attachment.service.ts` — Legacy error pattern: raw axios error rethrow en `.catch` (bypassa contrato `ApiError` de `api.service.ts`). Refactor pendiente a `throw new ApiError(error?.response)` para consistencia.
-- [!] `core/services/issue/issue_comment.service.ts` — Legacy error pattern: raw axios error rethrow en `.catch` (bypassa contrato `ApiError` de `api.service.ts`). Refactor pendiente a `throw new ApiError(error?.response)` para consistencia.
-- [!] `core/services/issue/issue_label.service.ts` — Legacy error pattern: raw axios error rethrow en `.catch` (bypassa contrato `ApiError` de `api.service.ts`). Refactor pendiente a `throw new ApiError(error?.response)` para consistencia.
-- [!] `core/services/issue/issue_reaction.service.ts` — Legacy error pattern: raw axios error rethrow en `.catch` (bypassa contrato `ApiError` de `api.service.ts`). Refactor pendiente a `throw new ApiError(error?.response)` para consistencia.
-- [!] `core/services/issue/issue_relation.service.ts` — Legacy error pattern: raw axios error rethrow en `.catch` (bypassa contrato `ApiError` de `api.service.ts`). Refactor pendiente a `throw new ApiError(error?.response)` para consistencia.
-- [!] `core/services/issue/work_item_version.service.ts` — Legacy error pattern: raw axios error rethrow en `.catch` (bypassa contrato `ApiError` de `api.service.ts`). Refactor pendiente a `throw new ApiError(error?.response)` para consistencia.
-- [!] `core/services/issue/workspace_draft.service.ts` — Legacy error pattern: raw axios error rethrow en `.catch` (bypassa contrato `ApiError` de `api.service.ts`). Refactor pendiente a `throw new ApiError(error?.response)` para consistencia.
+- [x] `core/services/issue/issue.service.ts` — Migrado a `ApiError`.
+- [x] `core/services/issue/issue_activity.service.ts` — Migrado a `ApiError`.
+- [x] `core/services/issue/issue_archive.service.ts` — Migrado a `ApiError`.
+- [x] `core/services/issue/issue_attachment.service.ts` — Migrado a `ApiError`.
+- [x] `core/services/issue/issue_comment.service.ts` — Migrado a `ApiError`.
+- [x] `core/services/issue/issue_label.service.ts` — Migrado a `ApiError`.
+- [x] `core/services/issue/issue_reaction.service.ts` — Migrado a `ApiError`.
+- [x] `core/services/issue/issue_relation.service.ts` — Migrado a `ApiError`.
+- [x] `core/services/issue/work_item_version.service.ts` — Migrado a `ApiError`.
+- [x] `core/services/issue/workspace_draft.service.ts` — Migrado a `ApiError`.
 
 #### `core/services/page/`
 
 - [x] `core/services/page/index.ts`
-- [!] `core/services/page/project-page-version.service.ts` — Legacy error pattern: raw axios error rethrow en `.catch` (bypassa contrato `ApiError` de `api.service.ts`). Refactor pendiente a `throw new ApiError(error?.response)` para consistencia.
-- [!] `core/services/page/project-page.service.ts` — Legacy error pattern: raw axios error rethrow en `.catch` (bypassa contrato `ApiError` de `api.service.ts`). Refactor pendiente a `throw new ApiError(error?.response)` para consistencia.
+- [x] `core/services/page/project-page-version.service.ts` — Migrado a `ApiError`.
+- [x] `core/services/page/project-page.service.ts` — Migrado a `ApiError`.
 
 #### `core/services/project/`
 
 - [x] `core/services/project/index.ts`
-- [!] `core/services/project/project-archive.service.ts` — Legacy error pattern: raw axios error rethrow en `.catch` (bypassa contrato `ApiError` de `api.service.ts`). Refactor pendiente a `throw new ApiError(error?.response)` para consistencia.
-- [!] `core/services/project/project-export.service.ts` — Legacy error pattern: raw axios error rethrow en `.catch` (bypassa contrato `ApiError` de `api.service.ts`). Refactor pendiente a `throw new ApiError(error?.response)` para consistencia.
-- [!] `core/services/project/project-member.service.ts` — Legacy error pattern: raw axios error rethrow en `.catch` (bypassa contrato `ApiError` de `api.service.ts`). Refactor pendiente a `throw new ApiError(error?.response)` para consistencia.
-- [!] `core/services/project/project-publish.service.ts` — Legacy error pattern: raw axios error rethrow en `.catch` (bypassa contrato `ApiError` de `api.service.ts`). Refactor pendiente a `throw new ApiError(error?.response)` para consistencia.
-- [!] `core/services/project/project-state.service.ts` — Legacy error pattern: raw axios error rethrow en `.catch` (bypassa contrato `ApiError` de `api.service.ts`). Refactor pendiente a `throw new ApiError(error?.response)` para consistencia.
-- [!] `core/services/project/project.service.ts` — Legacy error pattern: raw axios error rethrow en `.catch` (bypassa contrato `ApiError` de `api.service.ts`). Refactor pendiente a `throw new ApiError(error?.response)` para consistencia.
+- [x] `core/services/project/project-archive.service.ts` — Migrado a `ApiError`.
+- [x] `core/services/project/project-export.service.ts` — Migrado a `ApiError`.
+- [x] `core/services/project/project-member.service.ts` — Migrado a `ApiError`.
+- [x] `core/services/project/project-publish.service.ts` — Migrado a `ApiError`.
+- [x] `core/services/project/project-state.service.ts` — Migrado a `ApiError`.
+- [x] `core/services/project/project.service.ts` — Migrado a `ApiError`.
 
 #### `core/store/`
 

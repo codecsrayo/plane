@@ -11,7 +11,7 @@ import { getFileMetaDataForUpload, generateFileUploadPayload } from "@plane/serv
 import type { TIssueAttachment, TIssueAttachmentUploadResponse, TIssueServiceType } from "@plane/types";
 import { EIssueServiceType } from "@plane/types";
 // services
-import { APIService } from "@/services/api.service";
+import { APIService, ApiError } from "@/services/api.service";
 import { FileUploadService } from "@/services/file-upload.service";
 
 export class IssueAttachmentService extends APIService {
@@ -36,7 +36,7 @@ export class IssueAttachmentService extends APIService {
     )
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -64,7 +64,7 @@ export class IssueAttachmentService extends APIService {
         return signedURLResponse.attachment;
       })
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -74,7 +74,7 @@ export class IssueAttachmentService extends APIService {
     )
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -89,7 +89,7 @@ export class IssueAttachmentService extends APIService {
     )
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 }

@@ -7,7 +7,7 @@
 // helpers
 import { API_BASE_URL } from "@plane/constants";
 // services
-import { APIService } from "@/services/api.service";
+import { APIService, ApiError } from "@/services/api.service";
 
 export class ProjectArchiveService extends APIService {
   constructor() {
@@ -23,7 +23,7 @@ export class ProjectArchiveService extends APIService {
     return this.post(`/api/workspaces/${workspaceSlug}/projects/${projectId}/archive/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -31,7 +31,7 @@ export class ProjectArchiveService extends APIService {
     return this.delete(`/api/workspaces/${workspaceSlug}/projects/${projectId}/archive/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 }

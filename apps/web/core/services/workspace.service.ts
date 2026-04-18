@@ -28,7 +28,7 @@ import type {
   IWorkspaceUserPropertiesResponse,
 } from "@plane/types";
 // services
-import { APIService } from "@/services/api.service";
+import { APIService, ApiError } from "@/services/api.service";
 
 export class WorkspaceService extends APIService {
   constructor() {
@@ -39,7 +39,7 @@ export class WorkspaceService extends APIService {
     return this.get("/api/users/me/workspaces/")
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -47,7 +47,7 @@ export class WorkspaceService extends APIService {
     return this.get(`/api/workspaces/${workspaceSlug}/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -55,7 +55,7 @@ export class WorkspaceService extends APIService {
     return this.post("/api/workspaces/", data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -63,7 +63,7 @@ export class WorkspaceService extends APIService {
     return this.patch(`/api/workspaces/${workspaceSlug}/`, data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -71,7 +71,7 @@ export class WorkspaceService extends APIService {
     return this.delete(`/api/workspaces/${workspaceSlug}/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -79,7 +79,7 @@ export class WorkspaceService extends APIService {
     return this.post(`/api/workspaces/${workspaceSlug}/invitations/`, data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -89,7 +89,7 @@ export class WorkspaceService extends APIService {
     })
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -97,7 +97,7 @@ export class WorkspaceService extends APIService {
     return this.post("/api/users/me/workspaces/invitations/", data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -105,7 +105,7 @@ export class WorkspaceService extends APIService {
     return this.get("/api/users/last-visited-workspace/")
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -113,7 +113,7 @@ export class WorkspaceService extends APIService {
     return this.get("/api/users/me/workspaces/invitations/")
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -121,10 +121,10 @@ export class WorkspaceService extends APIService {
     return this.get(`/api/workspaces/${workspaceSlug}/workspace-members/me/`)
       .then((response) => response?.data)
       .catch((error) => {
-        // Preserve the full response object so callers can check `.status`.
-        // For network errors (no HTTP response), synthesize a response-like
-        // object with status 0 to avoid silent undefined propagation.
-        throw error?.response ?? { status: 0, data: null };
+        // ApiError preserves `.status`, `.statusText`, `.data`. For network errors
+        // (no HTTP response) the constructor defaults status to 0, so downstream
+        // checks like `error.status >= 500` still work correctly.
+        throw new ApiError(error?.response);
       });
   }
 
@@ -132,7 +132,7 @@ export class WorkspaceService extends APIService {
     return this.post(`/api/workspaces/${workspaceSlug}/workspace-views/`, data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -140,7 +140,7 @@ export class WorkspaceService extends APIService {
     return this.get(`/api/workspaces/${workspaceSlug}/members/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -152,7 +152,7 @@ export class WorkspaceService extends APIService {
     return this.patch(`/api/workspaces/${workspaceSlug}/members/${memberId}/`, data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -160,7 +160,7 @@ export class WorkspaceService extends APIService {
     return this.delete(`/api/workspaces/${workspaceSlug}/members/${memberId}/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -168,7 +168,7 @@ export class WorkspaceService extends APIService {
     return this.get(`/api/workspaces/${workspaceSlug}/invitations/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -176,7 +176,7 @@ export class WorkspaceService extends APIService {
     return this.get(`/api/workspaces/${workspaceSlug}/invitations/${invitationId}/join/`, { headers: {} })
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -188,7 +188,7 @@ export class WorkspaceService extends APIService {
     return this.patch(`/api/workspaces/${workspaceSlug}/invitations/${invitationId}/`, data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -196,7 +196,7 @@ export class WorkspaceService extends APIService {
     return this.delete(`/api/workspaces/${workspaceSlug}/invitations/${invitationId}/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -204,7 +204,7 @@ export class WorkspaceService extends APIService {
     return this.get(`/api/workspace-slug-check/?slug=${slug}`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -221,14 +221,14 @@ export class WorkspaceService extends APIService {
     })
       .then((res) => res?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
   async getProductUpdates(): Promise<IProductUpdateResponse[]> {
     return this.get("/api/release-notes/")
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -236,7 +236,7 @@ export class WorkspaceService extends APIService {
     return this.post(`/api/workspaces/${workspaceSlug}/views/`, data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -244,7 +244,7 @@ export class WorkspaceService extends APIService {
     return this.patch(`/api/workspaces/${workspaceSlug}/views/${viewId}/`, data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -252,7 +252,7 @@ export class WorkspaceService extends APIService {
     return this.delete(`/api/workspaces/${workspaceSlug}/views/${viewId}/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -260,7 +260,7 @@ export class WorkspaceService extends APIService {
     return this.get(`/api/workspaces/${workspaceSlug}/views/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -268,7 +268,7 @@ export class WorkspaceService extends APIService {
     return this.get(`/api/workspaces/${workspaceSlug}/views/${viewId}/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -285,7 +285,7 @@ export class WorkspaceService extends APIService {
     )
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -293,7 +293,7 @@ export class WorkspaceService extends APIService {
     return this.get(`/api/users/me/workspaces/${workspaceSlug}/project-roles/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -302,7 +302,7 @@ export class WorkspaceService extends APIService {
     return this.get(`/api/workspaces/${workspaceSlug}/quick-links/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -310,7 +310,7 @@ export class WorkspaceService extends APIService {
     return this.post(`/api/workspaces/${workspaceSlug}/quick-links/`, data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -318,7 +318,7 @@ export class WorkspaceService extends APIService {
     return this.patch(`/api/workspaces/${workspaceSlug}/quick-links/${linkId}/`, data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -326,7 +326,7 @@ export class WorkspaceService extends APIService {
     return this.delete(`/api/workspaces/${workspaceSlug}/quick-links/${linkId}/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -339,7 +339,7 @@ export class WorkspaceService extends APIService {
     })
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -352,7 +352,7 @@ export class WorkspaceService extends APIService {
     })
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -361,7 +361,7 @@ export class WorkspaceService extends APIService {
     return this.get(`/api/workspaces/${workspaceSlug}/home-preferences/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -373,7 +373,7 @@ export class WorkspaceService extends APIService {
     return this.patch(`/api/workspaces/${workspaceSlug}/home-preferences/${widgetKey}/`, data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -381,7 +381,7 @@ export class WorkspaceService extends APIService {
     return this.get(`/api/workspaces/${workspaceSlug}/sidebar-preferences/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -393,7 +393,7 @@ export class WorkspaceService extends APIService {
     return this.patch(`/api/workspaces/${workspaceSlug}/sidebar-preferences/${key}/`, data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -404,7 +404,7 @@ export class WorkspaceService extends APIService {
     return this.patch(`/api/workspaces/${workspaceSlug}/sidebar-preferences/`, data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -412,7 +412,7 @@ export class WorkspaceService extends APIService {
     return this.get(`/api/workspaces/${workspaceSlug}/user-properties/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -423,7 +423,7 @@ export class WorkspaceService extends APIService {
     return this.patch(`/api/workspaces/${workspaceSlug}/user-properties/`, data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 }

@@ -8,7 +8,7 @@ import { API_BASE_URL } from "@plane/constants";
 import type { TIssue, TWorkspaceDraftIssue, TWorkspaceDraftPaginationInfo } from "@plane/types";
 // helpers
 // services
-import { APIService } from "@/services/api.service";
+import { APIService, ApiError } from "@/services/api.service";
 
 export class WorkspaceDraftService extends APIService {
   constructor() {
@@ -22,7 +22,7 @@ export class WorkspaceDraftService extends APIService {
     return this.get(`/api/workspaces/${workspaceSlug}/draft-issues/`, { params: { ...query } })
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -30,7 +30,7 @@ export class WorkspaceDraftService extends APIService {
     return this.get(`/api/workspaces/${workspaceSlug}/draft-issues/${issueId}/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -41,7 +41,7 @@ export class WorkspaceDraftService extends APIService {
     return this.post(`/api/workspaces/${workspaceSlug}/draft-issues/`, payload)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -53,7 +53,7 @@ export class WorkspaceDraftService extends APIService {
     return this.patch(`/api/workspaces/${workspaceSlug}/draft-issues/${issueId}/`, payload)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -61,7 +61,7 @@ export class WorkspaceDraftService extends APIService {
     return this.delete(`/api/workspaces/${workspaceSlug}/draft-issues/${issueId}/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -69,7 +69,7 @@ export class WorkspaceDraftService extends APIService {
     return this.post(`/api/workspaces/${workspaceSlug}/draft-to-issue/${issueId}/`, payload)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response;
+        throw new ApiError(error?.response);
       });
   }
 }

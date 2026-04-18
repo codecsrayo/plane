@@ -100,6 +100,22 @@ export const extractApiErrorMessage = (error: unknown, fallback: string): string
   return fallback;
 };
 
+/**
+ * Converts an unknown caught value (typically an axios error) into an `ApiError`.
+ * Safely extracts `.response` without relying on `any`.
+ *
+ * Usage:
+ *   try { ... } catch (error) { throw toApiError(error); }
+ */
+export const toApiError = (error: unknown): ApiError => {
+  if (error instanceof ApiError) return error;
+  const response =
+    error && typeof error === "object" && "response" in error
+      ? ((error as { response?: { status?: number; statusText?: string; data?: unknown } }).response ?? null)
+      : null;
+  return new ApiError(response);
+};
+
 export abstract class APIService {
   protected baseURL: string;
   private axiosInstance: AxiosInstance;

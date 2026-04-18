@@ -9,7 +9,7 @@ import { API_BASE_URL } from "@plane/constants";
 import type { ICsrfTokenData, IEmailCheckData, IEmailCheckResponse } from "@plane/types";
 // helpers
 // services
-import { APIService } from "@/services/api.service";
+import { APIService, ApiError, toApiError } from "@/services/api.service";
 
 export class AuthService extends APIService {
   constructor() {
@@ -20,7 +20,7 @@ export class AuthService extends APIService {
     return this.get("/auth/get-csrf-token/")
       .then((response) => response.data)
       .catch((error) => {
-        throw error;
+        throw toApiError(error);
       });
   }
 
@@ -28,14 +28,14 @@ export class AuthService extends APIService {
     this.post("/auth/email-check/", data, { headers: {} })
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
 
   async sendResetPasswordLink(data: { email: string }): Promise<any> {
     return this.post(`/auth/forgot-password/`, data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -47,7 +47,7 @@ export class AuthService extends APIService {
     })
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -55,7 +55,7 @@ export class AuthService extends APIService {
     return this.post("/auth/magic-generate/", data, { headers: {} })
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 

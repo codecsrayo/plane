@@ -9,7 +9,7 @@ import { API_BASE_URL } from "@plane/constants";
 import type { TDescriptionVersionsListResponse, TDescriptionVersionDetails } from "@plane/types";
 // helpers
 // services
-import { APIService } from "@/services/api.service";
+import { APIService, ApiError } from "@/services/api.service";
 
 export class IntakeWorkItemVersionService extends APIService {
   constructor() {
@@ -26,7 +26,7 @@ export class IntakeWorkItemVersionService extends APIService {
     )
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -41,7 +41,7 @@ export class IntakeWorkItemVersionService extends APIService {
     )
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 }

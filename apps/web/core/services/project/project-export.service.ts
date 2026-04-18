@@ -6,7 +6,7 @@
 
 import { API_BASE_URL } from "@plane/constants";
 import type { TWorkItemFilterExpression } from "@plane/types";
-import { APIService } from "@/services/api.service";
+import { APIService, ApiError } from "@/services/api.service";
 // helpers
 
 export class ProjectExportService extends APIService {
@@ -26,7 +26,7 @@ export class ProjectExportService extends APIService {
     return this.post(`/api/workspaces/${workspaceSlug}/export-issues/`, data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 }

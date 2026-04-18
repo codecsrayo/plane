@@ -19,7 +19,7 @@ import type {
   TUserProfile,
   IEmailCheckResponse,
 } from "@plane/types";
-import { APIService } from "@/services/api.service";
+import { APIService, ApiError } from "@/services/api.service";
 // types
 // helpers
 
@@ -48,7 +48,7 @@ export class UserService extends APIService {
     })
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -57,7 +57,7 @@ export class UserService extends APIService {
     return this.get("/api/users/me/", { validateStatus: null })
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -65,14 +65,14 @@ export class UserService extends APIService {
     return this.get("/api/users/me/profile/")
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response;
+        throw new ApiError(error?.response);
       });
   }
   async updateCurrentUserProfile(data: any): Promise<any> {
     return this.patch("/api/users/me/profile/", data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -80,7 +80,7 @@ export class UserService extends APIService {
     return this.get("/api/users/me/accounts/")
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -88,7 +88,7 @@ export class UserService extends APIService {
     return this.get("/api/users/me/instance-admin/")
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -97,7 +97,7 @@ export class UserService extends APIService {
     return this.get(url)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -105,7 +105,7 @@ export class UserService extends APIService {
     return this.get("/api/users/me/notification-preferences/")
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -113,7 +113,7 @@ export class UserService extends APIService {
     return this.patch("/api/users/me/", data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -123,7 +123,7 @@ export class UserService extends APIService {
     })
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -133,7 +133,7 @@ export class UserService extends APIService {
     })
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -141,7 +141,7 @@ export class UserService extends APIService {
     return this.patch("/api/users/me/notification-preferences/", data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -149,7 +149,7 @@ export class UserService extends APIService {
     return this.get("/api/users/me/activities/", { params })
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -161,7 +161,7 @@ export class UserService extends APIService {
     })
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -169,7 +169,7 @@ export class UserService extends APIService {
     return this.get(`/api/workspaces/${workspaceSlug}/user-stats/${userId}/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -180,7 +180,7 @@ export class UserService extends APIService {
     return this.get(`/api/workspaces/${workspaceSlug}/user-profile/${userId}/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -197,7 +197,7 @@ export class UserService extends APIService {
     })
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -211,7 +211,7 @@ export class UserService extends APIService {
     return this.post(`/api/workspaces/${workspaceSlug}/user-activity/${userId}/export/`, data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -230,7 +230,7 @@ export class UserService extends APIService {
     )
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -238,7 +238,7 @@ export class UserService extends APIService {
     return this.delete(`/api/users/me/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -246,7 +246,7 @@ export class UserService extends APIService {
     return this.post(`/api/workspaces/${workspaceSlug}/members/leave/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -254,7 +254,7 @@ export class UserService extends APIService {
     return this.post(`/api/users/me/workspaces/${workspaceSlug}/projects/invitations/`, { project_ids })
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -262,7 +262,7 @@ export class UserService extends APIService {
     return this.post(`/api/workspaces/${workspaceSlug}/projects/${projectId}/members/leave/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -278,7 +278,7 @@ export class UserService extends APIService {
     )
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -286,7 +286,7 @@ export class UserService extends APIService {
     return this.post("/api/users/me/email/generate-code/", data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -294,7 +294,7 @@ export class UserService extends APIService {
     return this.patch("/api/users/me/email/", data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 }

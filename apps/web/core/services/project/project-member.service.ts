@@ -8,7 +8,7 @@
 import { API_BASE_URL } from "@plane/constants";
 import type { IProjectBulkAddFormData, TProjectMembership } from "@plane/types";
 // services
-import { APIService } from "@/services/api.service";
+import { APIService, ApiError } from "@/services/api.service";
 
 export class ProjectMemberService extends APIService {
   constructor() {
@@ -19,7 +19,7 @@ export class ProjectMemberService extends APIService {
     return this.get(`/api/workspaces/${workspaceSlug}/projects/${projectId}/members/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -31,7 +31,7 @@ export class ProjectMemberService extends APIService {
     return this.post(`/api/workspaces/${workspaceSlug}/projects/${projectId}/members/`, data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -39,7 +39,7 @@ export class ProjectMemberService extends APIService {
     return this.get(`/api/workspaces/${workspaceSlug}/projects/${projectId}/project-members/me/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -47,7 +47,7 @@ export class ProjectMemberService extends APIService {
     return this.get(`/api/workspaces/${workspaceSlug}/projects/${projectId}/members/${memberId}/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -60,7 +60,7 @@ export class ProjectMemberService extends APIService {
     return this.patch(`/api/workspaces/${workspaceSlug}/projects/${projectId}/members/${memberId}/`, data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -68,7 +68,7 @@ export class ProjectMemberService extends APIService {
     return this.delete(`/api/workspaces/${workspaceSlug}/projects/${projectId}/members/${memberId}/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 }

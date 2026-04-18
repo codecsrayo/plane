@@ -8,7 +8,7 @@ import { API_BASE_URL } from "@plane/constants";
 import type { IFavorite } from "@plane/types";
 // helpers
 // services
-import { APIService } from "@/services/api.service";
+import { APIService, ApiError } from "@/services/api.service";
 // types
 
 export class FavoriteService extends APIService {
@@ -20,7 +20,7 @@ export class FavoriteService extends APIService {
     return this.post(`/api/workspaces/${workspaceSlug}/user-favorites/`, data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -28,7 +28,7 @@ export class FavoriteService extends APIService {
     return this.patch(`/api/workspaces/${workspaceSlug}/user-favorites/${favoriteId}/`, data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -36,7 +36,7 @@ export class FavoriteService extends APIService {
     return this.delete(`/api/workspaces/${workspaceSlug}/user-favorites/${favoriteId}/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -48,7 +48,7 @@ export class FavoriteService extends APIService {
     })
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -56,7 +56,7 @@ export class FavoriteService extends APIService {
     return this.get(`/api/workspaces/${workspaceSlug}/user-favorites/${favoriteId}/group/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 }

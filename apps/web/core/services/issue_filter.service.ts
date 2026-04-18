@@ -7,7 +7,7 @@
 // services
 import { API_BASE_URL } from "@plane/constants";
 import type { IIssueFiltersResponse } from "@plane/types";
-import { APIService } from "@/services/api.service";
+import { APIService, ApiError } from "@/services/api.service";
 // types
 
 export class IssueFiltersService extends APIService {
@@ -20,7 +20,7 @@ export class IssueFiltersService extends APIService {
   //   return this.get(`/api/workspaces/${workspaceSlug}/user-properties/`)
   //     .then((response) => response?.data)
   //     .catch((error) => {
-  //       throw error?.response?.data;
+  //       throw new ApiError(error?.response);
   //     });
   // }
   // async patchWorkspaceFilters(
@@ -30,7 +30,7 @@ export class IssueFiltersService extends APIService {
   //   return this.patch(`/api/workspaces/${workspaceSlug}/user-properties/`, data)
   //     .then((response) => response?.data)
   //     .catch((error) => {
-  //       throw error?.response?.data;
+  //       throw new ApiError(error?.response);
   //     });
   // }
 
@@ -39,7 +39,7 @@ export class IssueFiltersService extends APIService {
     return this.get(`/api/workspaces/${workspaceSlug}/projects/${projectId}/epics-user-properties/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
   async patchProjectEpicFilters(
@@ -50,7 +50,7 @@ export class IssueFiltersService extends APIService {
     return this.patch(`/api/workspaces/${workspaceSlug}/projects/${projectId}/epics-user-properties/`, data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -63,7 +63,7 @@ export class IssueFiltersService extends APIService {
     return this.get(`/api/workspaces/${workspaceSlug}/projects/${projectId}/cycles/${cycleId}/user-properties/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
   async patchCycleIssueFilters(
@@ -75,7 +75,7 @@ export class IssueFiltersService extends APIService {
     return this.patch(`/api/workspaces/${workspaceSlug}/projects/${projectId}/cycles/${cycleId}/user-properties/`, data)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -88,7 +88,7 @@ export class IssueFiltersService extends APIService {
     return this.get(`/api/workspaces/${workspaceSlug}/projects/${projectId}/modules/${moduleId}/user-properties/`)
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
   async patchModuleIssueFilters(
@@ -103,7 +103,7 @@ export class IssueFiltersService extends APIService {
     )
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 }

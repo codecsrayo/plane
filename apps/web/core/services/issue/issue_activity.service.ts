@@ -7,7 +7,7 @@
 import { API_BASE_URL } from "@plane/constants";
 import type { TIssueActivity, TIssueServiceType } from "@plane/types";
 import { EIssueServiceType } from "@plane/types";
-import { APIService } from "@/services/api.service";
+import { APIService, ApiError } from "@/services/api.service";
 // types
 // helper
 
@@ -37,7 +37,7 @@ export class IssueActivityService extends APIService {
     })
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 }

@@ -9,7 +9,7 @@ import { API_BASE_URL } from "@plane/constants";
 import type { IInstanceInfo } from "@plane/types";
 // helpers
 // services
-import { APIService } from "@/services/api.service";
+import { APIService, toApiError } from "@/services/api.service";
 
 export class InstanceService extends APIService {
   constructor() {
@@ -20,7 +20,7 @@ export class InstanceService extends APIService {
     return this.get("/auth/get-csrf-token/")
       .then((response) => response.data)
       .catch((error) => {
-        throw error;
+        throw toApiError(error);
       });
   }
 
@@ -28,7 +28,7 @@ export class InstanceService extends APIService {
     return this.get("/api/instances/")
       .then((response) => response.data)
       .catch((error) => {
-        throw error;
+        throw toApiError(error);
       });
   }
 }

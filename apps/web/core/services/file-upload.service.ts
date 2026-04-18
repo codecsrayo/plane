@@ -7,7 +7,7 @@
 import type { AxiosRequestConfig } from "axios";
 import { CancelToken, isCancel } from "axios";
 // services
-import { APIService } from "@/services/api.service";
+import { APIService, ApiError } from "@/services/api.service";
 
 export class FileUploadService extends APIService {
   private cancelSource: any;
@@ -29,9 +29,9 @@ export class FileUploadService extends APIService {
       .then((response) => response?.data)
       .catch((error) => {
         if (isCancel(error)) {
-          console.log(error.message);
+          console.error("File upload error:", error.message);
         } else {
-          throw error?.response?.data;
+          throw new ApiError(error?.response);
         }
       });
   }

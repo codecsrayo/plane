@@ -10,7 +10,7 @@ import { EIssueServiceType } from "@plane/types";
 import type { TDescriptionVersionsListResponse, TDescriptionVersionDetails, TIssueServiceType } from "@plane/types";
 // helpers
 // services
-import { APIService } from "@/services/api.service";
+import { APIService, ApiError } from "@/services/api.service";
 
 export class WorkItemVersionService extends APIService {
   private serviceType: TIssueServiceType;
@@ -30,7 +30,7 @@ export class WorkItemVersionService extends APIService {
     )
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 
@@ -45,7 +45,7 @@ export class WorkItemVersionService extends APIService {
     )
       .then((response) => response?.data)
       .catch((error) => {
-        throw error?.response?.data;
+        throw new ApiError(error?.response);
       });
   }
 }
