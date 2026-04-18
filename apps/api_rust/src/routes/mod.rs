@@ -94,6 +94,7 @@ pub mod instances;
         workspaces::get_user_profile,
         workspaces::get_user_stats,
         workspaces::get_workspace_user_activity,
+        workspaces::export_workspace_user_activity,
         user_profile_issues::list_user_profile_issues,
         workspaces::list_invitations,
         workspaces::create_invitations,
@@ -355,6 +356,7 @@ pub mod instances;
             workspaces::CreateInvitationRequest,
             workspaces::InviteEmail,
             workspaces::SlugCheckResponse,
+            workspaces::ExportUserActivityBody,
             projects::ProjectResponse,
             projects::ProjectListResponse,
             projects::ProjectDetailResponse,
@@ -560,6 +562,12 @@ pub fn build_router(state: AppState) -> Router {
         .route(
             "/workspaces/{slug}/user-activity/{user_id}",
             get(workspaces::get_workspace_user_activity),
+        )
+        // Mirror Django: workspaces/<slug>/user-activity/<user_id>/export/ -> ExportWorkspaceUserActivityEndpoint
+        // CSV download del log de actividades del usuario para una fecha dada.
+        .route(
+            "/workspaces/{slug}/user-activity/{user_id}/export",
+            post(workspaces::export_workspace_user_activity),
         )
         // Mirror Django: workspaces/<slug>/user-issues/<user_id>/ -> WorkspaceUserProfileIssuesEndpoint
         // Sirve las pestañas Assigned / Created / Subscribed del perfil del usuario.

@@ -8,14 +8,14 @@
 
 use axum::{
     extract::{Path, Query, State},
-    http::StatusCode,
+    http::{header, StatusCode},
     response::IntoResponse,
     Json,
 };
-use chrono::{DateTime, Utc};
+use chrono::{DateTime, Duration, NaiveDate, TimeZone, Utc};
 use sea_orm::{
     sea_query::Expr, ActiveModelTrait, ColumnTrait, EntityTrait, FromQueryResult,
-    PaginatorTrait, QueryFilter, QueryOrder, Set, Statement, TransactionTrait,
+    PaginatorTrait, QueryFilter, QueryOrder, QuerySelect, Set, Statement, TransactionTrait,
 };
 use std::collections::HashSet;
 use serde::{Deserialize, Serialize};
@@ -33,7 +33,8 @@ use crate::{
     error::AppError,
     routes::helpers::{require_workspace_member, workspace_by_slug},
     utils::{
-        color::get_random_color, instance_config::get_config_value,
+        color::get_random_color, csv_sanitize::sanitize_csv_cell,
+        instance_config::get_config_value,
         pagination,
         posthog::{track_event, EVENT_WORKSPACE_DELETED},
         soft_delete::SoftDeleteExt, url::contains_url,
@@ -2463,4 +2464,382 @@ pub async fn get_workspace_user_activity(
 
     let body = pagination::build_response(results, total_count, limit, cursor.offset);
     Ok((axum::http::StatusCode::OK, axum::Json(body)))
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// EXPORT WORKSPACE USER ACTIVITY  (ExportWorkspaceUserActivityEndpoint)
+// ═══════════════════════════════════════════════════════════════════════════
+//
+// POST /workspaces/{slug}/user-activity/{user_id}/export
+//
+// Mirror de Django `ExportWorkspaceUserActivityEndpoint.post`
+// (plane/app/views/workspace/base.py:368).
+//
+// Body JSON:   `{ "date": "YYYY-MM-DD" }`  (requerido)
+// Respuesta:   `text/csv` con `Content-Disposition: attachment; filename="workspace-user-activity.csv"`
+//
+// Paridad del CSV:
+//   - 9 columnas en este orden exacto: Actor name, Issue ID, Project,
+//     Created at, Updated at, Action, Field, Old value, New value.
+//   - `Issue ID` es `"{identifier} - {sequence_id_or_empty}"` (el separador
+//     Django tiene espacios a ambos lados — se respeta literalmente).
+//   - Todos los valores quoted (`QUOTE_ALL` en Django ⇒ `QuoteStyle::Always`
+//     en el writer de la crate `csv`).
+//   - Cada celda pasa por `sanitize_csv_cell` para prevenir CSV injection
+//     (paridad con `sanitize_csv_row` en Django).
+//   - Cap de 10_000 filas (espejo de `[:10000]` en el queryset Django).
+//
+// Filtros aplicados al queryset (mismos que el GET homólogo **más** el filtro
+// de fecha):
+//   * workspace_id = ws.id
+//   * actor_id = user_id  (parámetro de path)
+//   * project_id ∈ accessible_project_ids
+//     (proyectos del workspace en los que el *requester* es miembro activo
+//     y el proyecto no está archivado ni borrado)
+//   * field NOT IN (comment, vote, reaction, draft) OR field IS NULL
+//   * created_at ∈ [date 00:00:00 UTC, date+1 00:00:00 UTC)
+//   * deleted_at IS NULL (soft-delete respetado)
+//
+// Autorización:
+//   - El requester debe ser miembro activo del workspace (`require_workspace_member`).
+//   - Django aplica `WorkspaceEntityPermission` ⇒ en POST exige role ∈
+//     {Admin=20, Member=15}. Guests y Viewers reciben 403.
+//
+// Nota de zona horaria:
+//   - Django evalúa `created_at__date` contra el TZ activo. Deploys estándar
+//     de Plane usan `TIME_ZONE='UTC'` con `USE_TZ=True`, así que comparamos
+//     contra UTC. Si en el futuro Plane deja configurable el TZ por workspace,
+//     este handler debe recalibrar.
+//
+// Nota de ordenamiento:
+//   - Django no añade `.order_by(...)` antes del `[:10000]`, dejando el orden
+//     indefinido. En Rust añadimos `-created_at` explícito para que el CSV
+//     sea determinista entre ejecuciones; mismo criterio que el GET.
+
+/// Body JSON de `POST /workspaces/{slug}/user-activity/{user_id}/export`.
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
+pub struct ExportUserActivityBody {
+    /// Fecha local (UTC) para la que se exportarán las actividades.
+    /// Formato ISO 8601 `YYYY-MM-DD`.
+    pub date: Option<String>,
+}
+
+/// `POST /workspaces/{slug}/user-activity/{user_id}/export`
+///
+/// Exporta en formato CSV las actividades del actor `user_id` registradas en
+/// una fecha específica. Requiere role ≥ Member para el requester.
+#[utoipa::path(
+    post,
+    path = "/api/workspaces/{slug}/user-activity/{user_id}/export",
+    tag = "Workspaces",
+    security(("TokenAuth" = []), ("SessionCookie" = [])),
+    params(
+        ("slug"    = String, Path, description = "Workspace slug"),
+        ("user_id" = Uuid,   Path, description = "Actor user UUID"),
+    ),
+    request_body = ExportUserActivityBody,
+    responses(
+        (status = 200, description = "CSV file con las actividades del día"),
+        (status = 400, description = "Falta `date` o formato inválido"),
+        (status = 401, description = "Unauthorized"),
+        (status = 403, description = "No es miembro del workspace o role < Member"),
+        (status = 404, description = "Workspace no encontrado"),
+    )
+)]
+pub async fn export_workspace_user_activity(
+    State(state): State<AppState>,
+    AnyAuth(auth_user): AnyAuth,
+    Path((slug, user_id)): Path<(String, Uuid)>,
+    Json(body): Json<ExportUserActivityBody>,
+) -> Result<axum::response::Response, AppError> {
+    let db = &state.db;
+
+    // ── Validación del body ───────────────────────────────────────────────
+    // Django: `if not request.data.get("date"): return 400 {"error": "Date is required"}`
+    let date_str = body.date.as_deref().unwrap_or("").trim();
+    if date_str.is_empty() {
+        return Err(AppError::BadRequest("Date is required".into()));
+    }
+    let target_date = NaiveDate::parse_from_str(date_str, "%Y-%m-%d").map_err(|_| {
+        AppError::BadRequest("Invalid date format. Expected YYYY-MM-DD".into())
+    })?;
+
+    // Rango [00:00:00, +1 día) en UTC. Usamos `and_hms_opt` + `single()` —
+    // ambas devuelven Option porque medianoche UTC no sufre de DST, pero el
+    // API de chrono no lo sabe estáticamente. Fallar aquí sería un bug de
+    // chrono, no input del usuario, así que mapeamos a 500.
+    let start_of_day_utc = target_date
+        .and_hms_opt(0, 0, 0)
+        .and_then(|ndt| Utc.from_local_datetime(&ndt).single())
+        .ok_or_else(|| AppError::Internal(anyhow::anyhow!("Failed to build start_of_day UTC")))?;
+    let end_of_day_utc = start_of_day_utc + Duration::days(1);
+
+    // Convertir a `DateTime<FixedOffset>` — el alias de `DateTimeWithTimeZone`
+    // en SeaORM. Patrón consistente con `src/jobs/cleanup.rs:207`.
+    let start_of_day: DateTime<chrono::FixedOffset> = start_of_day_utc.into();
+    let end_of_day: DateTime<chrono::FixedOffset> = end_of_day_utc.into();
+
+    // ── Workspace + autorización ──────────────────────────────────────────
+    let ws = workspace_by_slug(db, &slug).await?;
+    let member = require_workspace_member(db, ws.id, auth_user.id).await?;
+
+    // Paridad con `WorkspaceEntityPermission` en POST:
+    // role ∈ {Admin(20), Member(15)} ⇒ Guest/Viewer rechazados.
+    if member.role < ROLE_MEMBER {
+        return Err(AppError::Forbidden);
+    }
+
+    // ── Proyectos accesibles para el requester ────────────────────────────
+    // Misma lógica que `get_workspace_user_activity` — duplicada intencional:
+    // refactorizar a helper solo cuando aparezca un 3er call-site.
+    let accessible_project_ids: Vec<Uuid> = {
+        let memberships = project_members::Entity::find()
+            .filter(project_members::Column::MemberId.eq(auth_user.id))
+            .filter(project_members::Column::IsActive.eq(true))
+            .filter(project_members::Column::DeletedAt.is_null())
+            .all(db)
+            .await
+            .map_err(AppError::Database)?;
+
+        if memberships.is_empty() {
+            return build_empty_user_activity_csv_response();
+        }
+
+        let project_ids_from_memberships: Vec<Uuid> =
+            memberships.iter().map(|pm| pm.project_id).collect();
+
+        let visible_projects = projects::Entity::find()
+            .filter(projects::Column::Id.is_in(project_ids_from_memberships))
+            .filter(projects::Column::WorkspaceId.eq(ws.id))
+            .filter(projects::Column::ArchivedAt.is_null())
+            .filter(projects::Column::DeletedAt.is_null())
+            .all(db)
+            .await
+            .map_err(AppError::Database)?;
+
+        visible_projects.into_iter().map(|p| p.id).collect()
+    };
+
+    if accessible_project_ids.is_empty() {
+        return build_empty_user_activity_csv_response();
+    }
+
+    // ── Query de actividades ──────────────────────────────────────────────
+    const EXCLUDED_FIELDS: &[&str] = &["comment", "vote", "reaction", "draft"];
+    const ROW_CAP: u64 = 10_000;
+
+    let activities = issue_activities::Entity::find()
+        .filter(issue_activities::Column::WorkspaceId.eq(ws.id))
+        .filter(issue_activities::Column::ActorId.eq(user_id))
+        .filter(issue_activities::Column::ProjectId.is_in(accessible_project_ids))
+        .filter(issue_activities::Column::DeletedAt.is_null())
+        .filter(issue_activities::Column::CreatedAt.gte(start_of_day))
+        .filter(issue_activities::Column::CreatedAt.lt(end_of_day))
+        // NOT IN con NULL-safe: SQL `NOT IN (...)` evalúa a NULL cuando field
+        // es NULL, excluyendo esas filas — usamos Condition::any para
+        // capturarlas explícitamente (mismo patrón que el GET homólogo).
+        .filter(
+            sea_orm::Condition::any()
+                .add(issue_activities::Column::Field.is_null())
+                .add(
+                    issue_activities::Column::Field.is_not_in(
+                        EXCLUDED_FIELDS.iter().map(|s| s.to_string()).collect::<Vec<_>>(),
+                    ),
+                ),
+        )
+        // Orden explícito — divergencia justificada con Django (ver header).
+        .order_by_desc(issue_activities::Column::CreatedAt)
+        .limit(ROW_CAP)
+        .all(db)
+        .await
+        .map_err(AppError::Database)?;
+
+    if activities.is_empty() {
+        return build_empty_user_activity_csv_response();
+    }
+
+    // ── Batch-load de objetos relacionados (evitar N+1) ───────────────────
+    let actor_ids: Vec<Uuid> = activities
+        .iter()
+        .filter_map(|a| a.actor_id)
+        .collect::<HashSet<_>>()
+        .into_iter()
+        .collect();
+
+    let actors_map: std::collections::HashMap<Uuid, users::Model> = if !actor_ids.is_empty() {
+        users::Entity::find()
+            .filter(users::Column::Id.is_in(actor_ids))
+            .all(db)
+            .await
+            .map_err(AppError::Database)?
+            .into_iter()
+            .map(|u| (u.id, u))
+            .collect()
+    } else {
+        std::collections::HashMap::new()
+    };
+
+    let issue_ids: Vec<Uuid> = activities
+        .iter()
+        .filter_map(|a| a.issue_id)
+        .collect::<HashSet<_>>()
+        .into_iter()
+        .collect();
+
+    let issues_map: std::collections::HashMap<Uuid, issues::Model> = if !issue_ids.is_empty() {
+        issues::Entity::find()
+            .filter(issues::Column::Id.is_in(issue_ids))
+            .filter(issues::Column::DeletedAt.is_null())
+            .all(db)
+            .await
+            .map_err(AppError::Database)?
+            .into_iter()
+            .map(|i| (i.id, i))
+            .collect()
+    } else {
+        std::collections::HashMap::new()
+    };
+
+    let page_project_ids: Vec<Uuid> = activities
+        .iter()
+        .map(|a| a.project_id)
+        .collect::<HashSet<_>>()
+        .into_iter()
+        .collect();
+
+    let projects_map: std::collections::HashMap<Uuid, projects::Model> =
+        projects::Entity::find()
+            .filter(projects::Column::Id.is_in(page_project_ids))
+            .all(db)
+            .await
+            .map_err(AppError::Database)?
+            .into_iter()
+            .map(|p| (p.id, p))
+            .collect();
+
+    // ── Serialización CSV ─────────────────────────────────────────────────
+    // QuoteStyle::Always ≡ Django `csv.QUOTE_ALL`.
+    let bytes = encode_user_activity_csv(&activities, &actors_map, &issues_map, &projects_map)
+        .map_err(|e| AppError::Internal(anyhow::anyhow!("CSV encoding failed: {e}")))?;
+
+    build_user_activity_csv_response(bytes)
+}
+
+/// Formatea un `DateTime<FixedOffset>` al mismo string que `str(datetime)` en
+/// Python: `YYYY-MM-DD HH:MM:SS.ffffff+HH:MM`. Usado para las columnas
+/// `Created at` / `Updated at` del CSV para paridad visual con Django.
+fn format_activity_datetime(dt: &sea_orm::prelude::DateTimeWithTimeZone) -> String {
+    // `%:z` produce `+HH:MM` (con dos puntos), igual que el repr de `datetime`.
+    // `%.6f` produce microsegundos con seis dígitos (padding con ceros).
+    dt.format("%Y-%m-%d %H:%M:%S%.6f%:z").to_string()
+}
+
+/// Construye el buffer CSV — extraído para testabilidad y legibilidad del
+/// handler. Devuelve los bytes listos para enviar como body de la respuesta.
+fn encode_user_activity_csv(
+    activities: &[issue_activities::Model],
+    actors_map: &std::collections::HashMap<Uuid, users::Model>,
+    issues_map: &std::collections::HashMap<Uuid, issues::Model>,
+    projects_map: &std::collections::HashMap<Uuid, projects::Model>,
+) -> Result<Vec<u8>, csv::Error> {
+    let mut wtr = csv::WriterBuilder::new()
+        .quote_style(csv::QuoteStyle::Always)
+        .from_writer(Vec::<u8>::new());
+
+    // Header — orden y etiquetas exactas de Django.
+    wtr.write_record([
+        "Actor name",
+        "Issue ID",
+        "Project",
+        "Created at",
+        "Updated at",
+        "Action",
+        "Field",
+        "Old value",
+        "New value",
+    ])?;
+
+    // Cada fila pasa por `sanitize_csv_cell` para prevenir CSV injection.
+    // Campos nullable se convierten a "" cuando son None (paridad con
+    // Python: `csv.writer.writerow([..., None, ...])` escribe celda vacía).
+    for a in activities {
+        let actor_display = a
+            .actor_id
+            .and_then(|id| actors_map.get(&id))
+            .map(|u| u.display_name.as_str())
+            .unwrap_or("");
+
+        let project = projects_map.get(&a.project_id);
+        let project_identifier = project.map(|p| p.identifier.as_str()).unwrap_or("");
+        let project_name = project.map(|p| p.name.as_str()).unwrap_or("");
+
+        // Django: `f"{identifier} - {issue.sequence_id if issue else ''}"`
+        // Espacios alrededor del guion se respetan literalmente.
+        let issue_seq = a
+            .issue_id
+            .and_then(|id| issues_map.get(&id))
+            .map(|i| i.sequence_id.to_string())
+            .unwrap_or_default();
+        let issue_id_col = format!("{project_identifier} - {issue_seq}");
+
+        let created_at = format_activity_datetime(&a.created_at);
+        let updated_at = format_activity_datetime(&a.updated_at);
+
+        let field = a.field.as_deref().unwrap_or("");
+        let old_value = a.old_value.as_deref().unwrap_or("");
+        let new_value = a.new_value.as_deref().unwrap_or("");
+
+        wtr.write_record([
+            &sanitize_csv_cell(actor_display),
+            &sanitize_csv_cell(&issue_id_col),
+            &sanitize_csv_cell(project_name),
+            &sanitize_csv_cell(&created_at),
+            &sanitize_csv_cell(&updated_at),
+            &sanitize_csv_cell(&a.verb),
+            &sanitize_csv_cell(field),
+            &sanitize_csv_cell(old_value),
+            &sanitize_csv_cell(new_value),
+        ])?;
+    }
+
+    wtr.into_inner().map_err(|e| e.into_error())
+}
+
+/// Respuesta CSV "vacía" — solo header, sin filas. Usada cuando el requester
+/// no tiene proyectos visibles o cuando no hay actividades para la fecha.
+/// Django en esos casos devuelve un CSV de solo-header (el list comprehension
+/// no produce filas pero el header siempre se escribe).
+fn build_empty_user_activity_csv_response() -> Result<axum::response::Response, AppError> {
+    let mut wtr = csv::WriterBuilder::new()
+        .quote_style(csv::QuoteStyle::Always)
+        .from_writer(Vec::<u8>::new());
+    wtr.write_record([
+        "Actor name",
+        "Issue ID",
+        "Project",
+        "Created at",
+        "Updated at",
+        "Action",
+        "Field",
+        "Old value",
+        "New value",
+    ])
+    .map_err(|e| AppError::Internal(anyhow::anyhow!("CSV header write failed: {e}")))?;
+    let bytes = wtr
+        .into_inner()
+        .map_err(|e| AppError::Internal(anyhow::anyhow!("CSV flush failed: {e}")))?;
+    build_user_activity_csv_response(bytes)
+}
+
+/// Wraps bytes en una respuesta HTTP con los headers de descarga esperados
+/// por el frontend (`text/csv` + `Content-Disposition: attachment`).
+fn build_user_activity_csv_response(bytes: Vec<u8>) -> Result<axum::response::Response, AppError> {
+    let headers = [
+        (header::CONTENT_TYPE, "text/csv"),
+        (
+            header::CONTENT_DISPOSITION,
+            r#"attachment; filename="workspace-user-activity.csv""#,
+        ),
+    ];
+    Ok((StatusCode::OK, headers, bytes).into_response())
 }
