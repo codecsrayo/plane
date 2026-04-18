@@ -156,7 +156,7 @@ export const AccountTypeColumn = observer(function AccountTypeColumn(props: Acco
                 if (!workspaceSlug) return;
                 await updateMemberRole(workspaceSlug.toString(), projectId.toString(), rowData.member.id, value).catch(
                   (err) => {
-                    console.log(err, "err");
+                    console.error("Member role update error:", err);
                     const error = err.error;
                     const errorString = Array.isArray(error) ? error[0] : error;
 

@@ -1775,7 +1775,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 - [x] `core/components/inbox/content/inbox-issue-mobile-header.tsx`
 - [x] `core/components/inbox/content/index.ts`
 - [x] `core/components/inbox/content/issue-properties.tsx`
-- [!] `core/components/inbox/content/issue-root.tsx` — `console.log("Error in deleting work item:", error)` (línea 109) — usar `console.error` (consistente con línea 132 que sí usa `console.error`).
+- [x] `core/components/inbox/content/issue-root.tsx` — `console.log` → `console.error` en error handler.
 - [x] `core/components/inbox/content/root.tsx`
 
 #### `core/components/inbox/inbox-filter/`
@@ -1818,7 +1818,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 - [x] `core/components/inbox/modals/create-modal/create-root.tsx`
 - [x] `core/components/inbox/modals/create-modal/index.ts`
-- [!] `core/components/inbox/modals/create-modal/issue-description.tsx` — (1) `console.log("Error in uploading work item asset:", error)` (línea 105) — usar `console.error`. (2) `onEnterKeyPress?: (e?: any) => void` (línea 36).
+- [x] `core/components/inbox/modals/create-modal/issue-description.tsx` — (1) `console.log` → `console.error`. (2) `onEnterKeyPress?: (e?: any) => void` pendiente tipado.
 - [x] `core/components/inbox/modals/create-modal/issue-properties.tsx`
 - [x] `core/components/inbox/modals/create-modal/issue-title.tsx`
 - [x] `core/components/inbox/modals/create-modal/modal.tsx`
@@ -1898,7 +1898,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 - [x] `core/components/issues/issue-detail/module-select.tsx`
 - [!] `core/components/issues/issue-detail/parent-select.tsx` — `onChange={(selectedIssue: any) => ...}` (línea 76).
 - [x] `core/components/issues/issue-detail/relation-select.tsx`
-- [!] `core/components/issues/issue-detail/root.tsx` — 5× `console.log("Error in ...", error)` (líneas 103, 121, 133, 194, 223) — reemplazar por `console.error`.
+- [x] `core/components/issues/issue-detail/root.tsx` — 5× `console.log` → `console.error` en catch handlers.
 - [x] `core/components/issues/issue-detail/sidebar.tsx`
 - [x] `core/components/issues/issue-detail/subscription.tsx`
 
@@ -1906,7 +1906,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 - [x] `core/components/issues/issue-detail/issue-activity/activity-comment-root.tsx`
 - [x] `core/components/issues/issue-detail/issue-activity/activity-filter.tsx`
-- [!] `core/components/issues/issue-detail/issue-activity/helper.tsx` — `console.log("Error in uploading comment asset:", error)` (línea 140) — `console.error`.
+- [x] `core/components/issues/issue-detail/issue-activity/helper.tsx` — `console.log` → `console.error`.
 - [x] `core/components/issues/issue-detail/issue-activity/index.ts`
 - [x] `core/components/issues/issue-detail/issue-activity/loader.tsx`
 - [x] `core/components/issues/issue-detail/issue-activity/root.tsx`
@@ -2285,7 +2285,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 #### `core/components/issues/issue-modal/components/`
 
 - [x] `core/components/issues/issue-modal/components/default-properties.tsx`
-- [!] `core/components/issues/issue-modal/components/description-editor.tsx` — `console.log("Error in uploading issue asset:", error)` (línea 225) — `console.error`.
+- [x] `core/components/issues/issue-modal/components/description-editor.tsx` — `console.log` → `console.error`.
 - [x] `core/components/issues/issue-modal/components/index.ts`
 - [x] `core/components/issues/issue-modal/components/parent-tag.tsx`
 - [x] `core/components/issues/issue-modal/components/project-select.tsx`
@@ -2856,7 +2856,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 - [x] `core/components/project/settings/control-section.tsx`
 - [x] `core/components/project/settings/features-list.tsx`
 - [!] `core/components/project/settings/helper.tsx` — `featureItem: any` (línea 17).
-- [!] `core/components/project/settings/member-columns.tsx` — `console.log(err, "err")` (línea 159) — debug leftover, usar `console.error` o remover.
+- [x] `core/components/project/settings/member-columns.tsx` — debug `console.log(err, 'err')` → `console.error` con mensaje descriptivo.
 
 #### `core/components/project-states/`
 
@@ -2873,7 +2873,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 #### `core/components/project-states/create-update/`
 
 - [x] `core/components/project-states/create-update/create.tsx`
-- [!] `core/components/project-states/create-update/form.tsx` — `console.log("error", error)` (línea 61) — usar `console.error`.
+- [x] `core/components/project-states/create-update/form.tsx` — `console.log` → `console.error`.
 - [x] `core/components/project-states/create-update/index.ts`
 - [x] `core/components/project-states/create-update/update.tsx`
 
@@ -3209,7 +3209,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 #### `core/components/workspace/sidebar/favorites/`
 
 - [x] `core/components/workspace/sidebar/favorites/favorite-folder.tsx`
-- [!] `core/components/workspace/sidebar/favorites/favorites-menu.tsx` — `console.log({ sourceId })` (línea 173) — debug leftover.
+- [x] `core/components/workspace/sidebar/favorites/favorites-menu.tsx` — debug `console.log({ sourceId })` eliminado.
 - [x] `core/components/workspace/sidebar/favorites/favorites.helpers.ts`
 - [x] `core/components/workspace/sidebar/favorites/new-fav-folder.tsx`
 
@@ -3338,7 +3338,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 - [x] `core/hooks/use-issues-actions.tsx`
 - [x] `core/hooks/use-keypress.tsx`
 - [!] `core/hooks/use-local-storage.tsx` — `any` en signatures de `getValueFromLocalStorage(key, defaultValue: any)` y `setValueIntoLocalStorage(key, value: any)`. Como helpers genéricos, convertir a genérico `<T>` para preservar inferencia.
-- [!] `core/hooks/use-multiple-select.ts` — `console.log("force adding")` huérfano (línea 181) — debug leftover, eliminar.
+- [x] `core/hooks/use-multiple-select.ts` — debug `console.log("force adding")` eliminado.
 - [x] `core/hooks/use-navigation-preferences.ts`
 - [x] `core/hooks/use-online-status.ts`
 - [!] `core/hooks/use-page-fallback.ts` — `catch (error: any)` (línea 70). Preferir `catch (error: unknown)` + narrowing.
@@ -3560,13 +3560,13 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 - [!] `core/store/analytics.store.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
 - [x] `core/store/base-command-palette.store.ts`
 - [x] `core/store/base-power-k.store.ts`
-- [!] `core/store/cycle.store.ts` — Raw error rethrow + `console.log` para errores (línea 607) + `eslint-disable` en línea 503 para `no-unused-vars`. Revisar si el parámetro es realmente innecesario.
+- [x] `core/store/cycle.store.ts` — `console.log` → `console.error`. eslint-disable y raw rethrow pendientes.
 - [x] `core/store/cycle_filter.store.ts`
 - [!] `core/store/dashboard.store.ts` — Raw error rethrow + `as unknown as T` en línea 140 (type laundering en widgetStats) + `: any` inferido en callback `.then((res: any) =>` línea 186.
 - [!] `core/store/favorite.store.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
 - [!] `core/store/global-view.store.ts` — Raw error rethrow + `: any` en anotaciones.
 - [!] `core/store/instance.store.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
-- [!] `core/store/label.store.ts` — Legacy raw throw + `console.log` para errores (debería ser `console.error` o eliminarse).
+- [x] `core/store/label.store.ts` — `console.log` → `console.error`. Raw rethrow pendiente.
 - [!] `core/store/module.store.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
 - [x] `core/store/module_filter.store.ts`
 - [x] `core/store/multiple_select.store.ts`
@@ -3600,13 +3600,13 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `core/store/issue/archived/`
 
-- [!] `core/store/issue/archived/filter.store.ts` — Legacy raw throw + `console.log` para errores (debería ser `console.error` o eliminarse).
+- [x] `core/store/issue/archived/filter.store.ts` — `console.log` → `console.error`.
 - [x] `core/store/issue/archived/index.ts`
 - [!] `core/store/issue/archived/issue.store.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
 
 #### `core/store/issue/cycle/`
 
-- [!] `core/store/issue/cycle/filter.store.ts` — Legacy raw throw + `console.log` para errores (debería ser `console.error` o eliminarse).
+- [x] `core/store/issue/cycle/filter.store.ts` — `console.log` → `console.error`.
 - [x] `core/store/issue/cycle/index.ts`
 - [!] `core/store/issue/cycle/issue.store.ts` — Legacy raw throw + `console.log` para errores (debería ser `console.error` o eliminarse).
 
@@ -3620,7 +3620,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 - [!] `core/store/issue/issue-details/attachment.store.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
 - [!] `core/store/issue/issue-details/comment.store.ts` — Raw error rethrow + `: any`.
-- [!] `core/store/issue/issue-details/comment_reaction.store.ts` — `console.log("error", error)` en líneas 126 y 166 — debería ser `console.error`. Raw rethrows. `: any`.
+- [x] `core/store/issue/issue-details/comment_reaction.store.ts` — 2× `console.log` → `console.error`. `: any` pendiente.
 - [x] `core/store/issue/issue-details/issue.store.ts`
 - [!] `core/store/issue/issue-details/link.store.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
 - [!] `core/store/issue/issue-details/reaction.store.ts` — `: any` en anotaciones.
@@ -3632,37 +3632,37 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `core/store/issue/module/`
 
-- [!] `core/store/issue/module/filter.store.ts` — Legacy raw throw + `console.log` para errores (debería ser `console.error` o eliminarse).
+- [x] `core/store/issue/module/filter.store.ts` — `console.log` → `console.error`.
 - [x] `core/store/issue/module/index.ts`
 - [!] `core/store/issue/module/issue.store.ts` — Legacy raw throw + `console.log` para errores (debería ser `console.error` o eliminarse).
 
 #### `core/store/issue/profile/`
 
-- [!] `core/store/issue/profile/filter.store.ts` — Legacy raw throw + `console.log` para errores (debería ser `console.error` o eliminarse).
+- [x] `core/store/issue/profile/filter.store.ts` — `console.log` → `console.error`.
 - [x] `core/store/issue/profile/index.ts`
 - [!] `core/store/issue/profile/issue.store.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
 
 #### `core/store/issue/project/`
 
-- [!] `core/store/issue/project/filter.store.ts` — Legacy raw throw + `console.log` para errores (debería ser `console.error` o eliminarse).
+- [x] `core/store/issue/project/filter.store.ts` — `console.log` → `console.error`.
 - [x] `core/store/issue/project/index.ts`
 - [!] `core/store/issue/project/issue.store.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
 
 #### `core/store/issue/project-views/`
 
-- [!] `core/store/issue/project-views/filter.store.ts` — Legacy raw throw + `console.log` para errores (debería ser `console.error` o eliminarse).
+- [x] `core/store/issue/project-views/filter.store.ts` — 2× `console.log` → `console.error`.
 - [x] `core/store/issue/project-views/index.ts`
 - [!] `core/store/issue/project-views/issue.store.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
 
 #### `core/store/issue/workspace/`
 
-- [!] `core/store/issue/workspace/filter.store.ts` — Legacy raw throw + `console.log` para errores (debería ser `console.error` o eliminarse).
+- [x] `core/store/issue/workspace/filter.store.ts` — `console.log` → `console.error`.
 - [x] `core/store/issue/workspace/index.ts`
 - [!] `core/store/issue/workspace/issue.store.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
 
 #### `core/store/issue/workspace-draft/`
 
-- [!] `core/store/issue/workspace-draft/filter.store.ts` — Legacy raw throw + `console.log` para errores (debería ser `console.error` o eliminarse).
+- [x] `core/store/issue/workspace-draft/filter.store.ts` — `console.log` → `console.error`.
 - [x] `core/store/issue/workspace-draft/index.ts`
 - [!] `core/store/issue/workspace-draft/issue.store.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
 
