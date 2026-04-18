@@ -874,6 +874,13 @@ pub fn build_router(state: AppState) -> Router {
             get(pages::get_page_description).patch(pages::update_page_description),
         )
         // ── Intake ───────────────────────────────────────────────────────────
+        // Django registra ambos nombres (`intakes/` / `inboxes/`,
+        // `intake-issues/` / `inbox-issues/`) apuntando al mismo
+        // ViewSet — ver apps/api/plane/app/urls/intake.py:17-55. El
+        // frontend actual usa el nombre legacy `inbox-issues`
+        // (apps/web/core/services/inbox/inbox-issue.service.ts) y por eso
+        // devolvía 404 al crear intake issues hasta que se agregaron estos
+        // aliases. Todos los handlers son compartidos; no hay divergencia.
         .route(
             "/workspaces/{slug}/projects/{project_id}/intakes",
             get(intake::list_intakes).post(intake::create_intake),
@@ -884,12 +891,35 @@ pub fn build_router(state: AppState) -> Router {
                 .patch(intake::update_intake)
                 .delete(intake::delete_intake),
         )
+        // Alias legacy (Django: name="inbox").
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/inboxes",
+            get(intake::list_intakes).post(intake::create_intake),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/inboxes/{pk}",
+            get(intake::get_intake)
+                .patch(intake::update_intake)
+                .delete(intake::delete_intake),
+        )
         .route(
             "/workspaces/{slug}/projects/{project_id}/intake-issues",
             get(intake::list_intake_issues).post(intake::create_intake_issue),
         )
         .route(
             "/workspaces/{slug}/projects/{project_id}/intake-issues/{pk}",
+            get(intake::get_intake_issue)
+                .patch(intake::update_intake_issue)
+                .delete(intake::delete_intake_issue),
+        )
+        // Alias legacy (Django: name="inbox-issue"). El frontend actual
+        // usa este URL en apps/web/core/services/inbox/inbox-issue.service.ts.
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/inbox-issues",
+            get(intake::list_intake_issues).post(intake::create_intake_issue),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/inbox-issues/{pk}",
             get(intake::get_intake_issue)
                 .patch(intake::update_intake_issue)
                 .delete(intake::delete_intake_issue),
