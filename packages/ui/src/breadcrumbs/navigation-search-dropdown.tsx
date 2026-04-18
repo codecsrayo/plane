@@ -57,8 +57,18 @@ export function BreadcrumbNavigationSearchDropdown(props: TBreadcrumbNavigationS
       }}
       customButton={
         <>
+          {/*
+           * IMPORTANTE: NO usar <button> aquí. `CustomSearchSelect` envuelve todo
+           * `customButton` en un <button> propio (Combobox.Button), y <Tooltip>
+           * con base-ui usa `render={children}` — clona el hijo como trigger sin
+           * crear un botón adicional. Si este nodo fuese <button>, el DOM final
+           * sería <button><button/></button> → warning validateDOMNesting.
+           * Mantener como <div> con onClick: el <button> externo provee
+           * la semántica accesible; `stopPropagation` evita que el click de
+           * navegación dispare el toggle del dropdown.
+           */}
           <Tooltip tooltipContent={title} position="bottom">
-            <button
+            <div
               onClick={(e) => {
                 if (!isLast) {
                   e.preventDefault();
@@ -82,7 +92,7 @@ export function BreadcrumbNavigationSearchDropdown(props: TBreadcrumbNavigationS
                 {icon && <Breadcrumbs.Icon>{icon}</Breadcrumbs.Icon>}
                 <Breadcrumbs.Label>{title}</Breadcrumbs.Label>
               </div>
-            </button>
+            </div>
           </Tooltip>
           <Breadcrumbs.Separator
             className={cn("rounded-r-sm", {
