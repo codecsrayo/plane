@@ -503,7 +503,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `ce/components/command-palette/`
 
-- [!] `ce/components/command-palette/helpers.tsx` — Tipos con `any` en callbacks (`itemName: (item: any) => ReactNode`, `path: (item: any, ...) => string`). Reemplazar por genérico `<T>` para preservar inferencia en call sites.
+- [x] `ce/components/command-palette/helpers.tsx` — `TCommandGroups` pasó de index signature uniforme con `(item: any) => ReactNode` a objeto tipado por clave con generic `TCommandGroup<T>`, donde cada entrada (`cycle`/`issue`/`issue_view`/`module`/`page`/`project`/`workspace`) se ancla al shape real (`IWorkspaceIssueSearchResult`, `IWorkspacePageSearchResult`, etc.). Los parámetros `cycle`/`issue`/etc. en cada callback ahora inferidos automáticamente — sin anotaciones redundantes ni `any`. El archivo no tiene importers externos todavía (probablemente punto de extensión EE) pero el tipado correcto en el punto de definición previene bugs si/cuando se consume.
 - [x] `ce/components/command-palette/index.ts`
 
 #### `ce/components/command-palette/actions/`
