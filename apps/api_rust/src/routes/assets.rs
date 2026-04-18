@@ -18,7 +18,7 @@
 
 use axum::{
     extract::{Path, State},
-    http::StatusCode,
+    http::{HeaderMap, StatusCode},
     response::IntoResponse,
     Json,
 };
@@ -33,7 +33,7 @@ use crate::{
     auth::permissions::{require_role, ROLE_GUEST},
     entities::{file_assets, projects, users, workspaces},
     error::AppError,
-    utils::s3_presigned_post::{generate_presigned_post, PresignedPost},
+    utils::s3_presigned_post::{generate_presigned_post, public_s3_endpoint, PresignedPost},
     AppState,
 };
 
@@ -989,6 +989,7 @@ pub async fn initiate_issue_attachment_upload_v2(
     State(state): State<AppState>,
     guard: ProjectMemberGuard,
     Path((slug, _project_id, issue_id)): Path<(String, Uuid, Uuid)>,
+    headers: HeaderMap,
     Json(body): Json<InitiateIssueAttachmentV2Request>,
 ) -> Result<Json<InitiateIssueAttachmentV2Response>, AppError> {
     // Mirror: `allow_permission([ROLE.ADMIN, ROLE.MEMBER, ROLE.GUEST])` Django.
@@ -1060,9 +1061,15 @@ pub async fn initiate_issue_attachment_upload_v2(
         .await
         .map_err(AppError::Database)?;
 
+    // Mirror Django S3Storage.__init__ (storage.py:40-58): cuando USE_MINIO=1
+    // el presigned debe firmarse contra el dominio público del request, no
+    // contra el hostname interno de Docker, para evitar Mixed-Content
+    // blocking y fallos de DNS en el navegador.
+    let signing_endpoint = public_s3_endpoint(&state.config, &headers);
+
     let upload_data = generate_presigned_post(
         &state.config.aws_s3_bucket,
-        &state.config.aws_endpoint,
+        &signing_endpoint,
         &state.config.aws_region,
         &state.config.aws_access_key_id,
         &state.config.aws_secret_access_key,

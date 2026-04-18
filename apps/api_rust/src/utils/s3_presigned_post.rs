@@ -22,11 +22,12 @@
 
 use std::collections::HashMap;
 
+use axum::http::HeaderMap;
 use base64::{engine::general_purpose::STANDARD, Engine as _};
 use chrono::{DateTime, Duration, Utc};
 use serde_json::json;
 
-use crate::error::AppError;
+use crate::{config::Config, error::AppError};
 
 /// Resultado del `generate_presigned_post`: se serializa directo al frontend como
 /// `{ url, fields }`, coincidiendo con `TFileSignedURLResponse.upload_data` en
@@ -35,6 +36,72 @@ use crate::error::AppError;
 pub struct PresignedPost {
     pub url: String,
     pub fields: HashMap<String, String>,
+}
+
+/// Resuelve el endpoint **público** para firmar presigned URLs que serán usados
+/// directamente por el navegador del usuario.
+///
+/// Mirror exacto del comportamiento de Django `S3Storage.__init__` cuando
+/// `USE_MINIO=1` (`apps/api/plane/settings/storage.py:40-58`):
+///
+/// - Si `!use_minio` → devuelve `aws_endpoint` tal cual. En este modo se asume
+///   AWS S3 real (o un MinIO expuesto con dominio público), y el endpoint del
+///   config YA es la URL pública correcta.
+/// - Si `use_minio` → construye `{scheme}://{host}` donde:
+///     * `scheme` proviene de `WEB_URL` (ej. "https://plane.example.com"
+///       → "https"). Fallback: "http".
+///     * `host` proviene del header `X-Forwarded-Host` (si el proxy lo setea)
+///       o del header `Host`. Fallback: `aws_endpoint` completo del config.
+///
+/// **Por qué esto es necesario**: en despliegues self-hosted con MinIO detrás
+/// de un proxy (nginx), `AWS_S3_ENDPOINT_URL` típicamente apunta al hostname
+/// interno de Docker (`http://plane-minio:9000`), que el navegador no puede
+/// resolver y además violaría Mixed-Content en HTTPS. El proxy rutea
+/// `https://<dominio-público>/uploads/...` hacia MinIO internamente; el
+/// presigned debe estar firmado contra el dominio público para que el browser
+/// pueda hacer el POST sin bloqueo.
+pub fn public_s3_endpoint(config: &Config, headers: &HeaderMap) -> String {
+    if !config.use_minio {
+        return config.aws_endpoint.clone();
+    }
+
+    // Scheme: del WEB_URL configurado (https en prod típico).
+    let scheme = config
+        .web_url
+        .as_deref()
+        .and_then(scheme_from_url)
+        .unwrap_or("http")
+        .to_string();
+
+    // Host: honrar X-Forwarded-Host primero (cuando hay proxy), luego Host.
+    // Sólo aceptamos el primer valor y desechamos listas (CVE-2019-16782-like
+    // rarity defensiva: un atacante podría inyectar coma-separados).
+    let host_header = headers
+        .get("x-forwarded-host")
+        .or_else(|| headers.get("host"))
+        .and_then(|v| v.to_str().ok())
+        .and_then(|raw| raw.split(',').next())
+        .map(|s| s.trim().to_string());
+
+    match host_header {
+        Some(h) if !h.is_empty() => format!("{scheme}://{h}"),
+        // Fallback conservador: si por alguna razón no hay Host header,
+        // caemos al endpoint interno. Esto no rompe más de lo que ya estaba
+        // roto, y evita emitir un presigned con URL vacía.
+        _ => config.aws_endpoint.clone(),
+    }
+}
+
+/// Extrae el scheme (`https`, `http`, …) de una URL sin traer el crate `url`.
+/// Devuelve `None` si no hay `://` o si el prefijo está vacío.
+fn scheme_from_url(url: &str) -> Option<&str> {
+    let (scheme, _) = url.split_once("://")?;
+    let scheme = scheme.trim();
+    if scheme.is_empty() {
+        None
+    } else {
+        Some(scheme)
+    }
 }
 
 /// Genera un presigned POST para subir un objeto a S3/MinIO por multipart/form-data.
