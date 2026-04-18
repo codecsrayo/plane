@@ -10,6 +10,7 @@ import { Disclosure } from "@headlessui/react";
 import { EmptyStateDetailed } from "@plane/propel/empty-state";
 // plane imports
 import { useTranslation } from "@plane/i18n";
+import type { TWorkItemFilterCondition } from "@plane/shared-state";
 import type { ICycle } from "@plane/types";
 import { Row } from "@plane/ui";
 // assets
@@ -39,7 +40,7 @@ type ActiveCyclesComponentProps = {
   activeCycleResolvedPath: string;
   workspaceSlug: string;
   projectId: string;
-  handleFiltersUpdate: (filters: any) => void;
+  handleFiltersUpdate: (conditions: TWorkItemFilterCondition[]) => void;
   cycleIssueDetails?: ActiveCycleIssueDetails | { nextPageResults: boolean };
 };
 

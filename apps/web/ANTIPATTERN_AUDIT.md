@@ -571,7 +571,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 #### `ce/components/cycles/active-cycle/`
 
 - [x] `ce/components/cycles/active-cycle/index.ts`
-- [!] `ce/components/cycles/active-cycle/root.tsx` — Prop `handleFiltersUpdate: (filters: any) => void` — tipar con el shape real de filters (p.e. `Partial<IIssueFilterOptions>`).
+- [x] `ce/components/cycles/active-cycle/root.tsx` — `handleFiltersUpdate: (filters: any) => void` reemplazado por `(conditions: TWorkItemFilterCondition[]) => void`, alineado con el tipo real que retorna `useCyclesDetails` (y que los consumidores downstream `active-cycle/progress.tsx` y `cycle-stats.tsx` ya declaraban correctamente — este era el único eslabón con `any` en la cadena). Import de `TWorkItemFilterCondition` agregado desde `@plane/shared-state`. El parámetro también estaba mal nombrado (`filters`); la signature ahora refleja que son condiciones de filtro, no un objeto de filtros.
 
 #### `ce/components/cycles/analytics-sidebar/`
 
