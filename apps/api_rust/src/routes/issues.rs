@@ -219,6 +219,9 @@ pub struct ListIssuesQuery {
     pub assignees:         Option<String>,
     pub module:            Option<String>,
     pub cycle:             Option<String>,
+    /// CSV de `user_ids` — mirror de `filter_subscribed_issues`
+    /// (issue_filters.py:392-403). Shared con el resto de listados de issues.
+    pub subscriber:        Option<String>,
     #[serde(rename = "type")]
     pub type_filter:       Option<String>,
     pub start_target_date: Option<String>,
@@ -249,6 +252,7 @@ impl ListIssuesQuery {
             assignees:         self.assignees.clone(),
             module:            self.module.clone(),
             cycle:             self.cycle.clone(),
+            subscriber:        self.subscriber.clone(),
             type_filter:       self.type_filter.clone(),
             start_target_date: self.start_target_date.clone(),
         }
