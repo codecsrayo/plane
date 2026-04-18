@@ -30,7 +30,7 @@ use uuid::Uuid;
 use crate::{
     auth::any_auth::AnyAuth,
     auth::extractors::{ProjectMemberGuard, WorkspaceMemberGuard},
-    auth::permissions::{require_role, ROLE_GUEST},
+    auth::permissions::{require_role, ROLE_ADMIN, ROLE_GUEST},
     entities::{file_assets, projects, users, workspaces},
     error::AppError,
     utils::s3_presigned_post::{generate_presigned_post, public_s3_endpoint, PresignedPost},
@@ -1088,4 +1088,132 @@ pub async fn initiate_issue_attachment_upload_v2(
         attachment,
         asset_url,
     }))
+}
+
+// ── PATCH /assets/v2/.../issues/{id}/attachments/{pk}/ (complete upload) ──────
+
+/// PATCH /api/assets/v2/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/attachments/{pk}/
+///
+/// Confirma que el upload al bucket completó. Marca `is_uploaded = true` y fija
+/// `created_by` al usuario autenticado la primera vez que se confirma.
+///
+/// Mirror exacto de `IssueAttachmentV2Endpoint.patch`
+/// (`apps/api/plane/app/views/issue/attachment.py:202-229`):
+/// - Idempotente: si ya estaba `is_uploaded = true`, no vuelve a disparar la
+///   activity (que aquí se omite por ser una task async Django; se puede
+///   migrar después sin cambiar el contrato).
+/// - Retorna 204.
+#[utoipa::path(
+    patch,
+    path = "/assets/v2/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/attachments/{pk}/",
+    tag = "Assets",
+    security(("TokenAuth" = [])),
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project ID"),
+        ("issue_id" = Uuid, Path, description = "Issue ID"),
+        ("pk" = Uuid, Path, description = "FileAsset ID"),
+    ),
+    responses(
+        (status = 204, description = "Upload confirmado"),
+        (status = 403, description = "Sin permisos"),
+        (status = 404, description = "Asset no encontrado"),
+    )
+)]
+pub async fn complete_issue_attachment_upload_v2(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Path((_slug, _project_id, issue_id, pk)): Path<(String, Uuid, Uuid, Uuid)>,
+) -> Result<StatusCode, AppError> {
+    // Mirror: `allow_permission([ROLE.ADMIN, ROLE.MEMBER, ROLE.GUEST])`.
+    require_role(
+        guard.project_member.role,
+        guard.workspace_member.role,
+        ROLE_GUEST,
+    )?;
+
+    // Fetch con filtros de seguridad: workspace + project + issue del guard.
+    // Django solo filtra por slug + project_id — aquí además confirmamos que
+    // el asset pertenece al issue del path para prevenir confirmar uploads
+    // de otros issues con un pk cualquiera.
+    let asset = file_assets::Entity::find_by_id(pk)
+        .filter(file_assets::Column::WorkspaceId.eq(guard.workspace.id))
+        .filter(file_assets::Column::ProjectId.eq(guard.project.id))
+        .filter(file_assets::Column::IssueId.eq(issue_id))
+        .filter(file_assets::Column::EntityType.eq(ENTITY_ISSUE_ATTACHMENT))
+        .filter(file_assets::Column::IsDeleted.eq(false))
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    // Mirror Django: solo si no estaba uploaded antes, marca is_uploaded=true
+    // y setea created_by al usuario actual (primer confirmador = "dueño"
+    // del attachment para efectos de permisos de borrado posterior).
+    if !asset.is_uploaded {
+        let mut am: file_assets::ActiveModel = asset.into();
+        am.is_uploaded = Set(true);
+        am.created_by_id = Set(Some(guard.user.id));
+        am.updated_by_id = Set(Some(guard.user.id));
+        am.updated_at = Set(Utc::now().into());
+        am.update(&state.db).await.map_err(AppError::Database)?;
+    }
+
+    Ok(StatusCode::NO_CONTENT)
+}
+
+// ── DELETE /assets/v2/.../issues/{id}/attachments/{pk}/ ───────────────────────
+
+/// DELETE /api/assets/v2/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/attachments/{pk}/
+///
+/// Soft-delete de un attachment: `is_deleted = true` + `deleted_at = now()`.
+/// No borra del bucket (mirror Django V2 que también hace soft-delete).
+///
+/// Permisos: `@allow_permission([ROLE.ADMIN], creator=True, model=FileAsset)`
+/// (`apps/api/plane/app/views/issue/attachment.py:148`). En Rust esto se
+/// traduce a: ADMIN **o** creador del asset.
+#[utoipa::path(
+    delete,
+    path = "/assets/v2/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/attachments/{pk}/",
+    tag = "Assets",
+    security(("TokenAuth" = [])),
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project ID"),
+        ("issue_id" = Uuid, Path, description = "Issue ID"),
+        ("pk" = Uuid, Path, description = "FileAsset ID"),
+    ),
+    responses(
+        (status = 204, description = "Attachment eliminado"),
+        (status = 403, description = "Solo ADMIN o creador del asset"),
+        (status = 404, description = "Asset no encontrado"),
+    )
+)]
+pub async fn delete_issue_attachment_v2(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Path((_slug, _project_id, issue_id, pk)): Path<(String, Uuid, Uuid, Uuid)>,
+) -> Result<StatusCode, AppError> {
+    let asset = file_assets::Entity::find_by_id(pk)
+        .filter(file_assets::Column::WorkspaceId.eq(guard.workspace.id))
+        .filter(file_assets::Column::ProjectId.eq(guard.project.id))
+        .filter(file_assets::Column::IssueId.eq(issue_id))
+        .filter(file_assets::Column::EntityType.eq(ENTITY_ISSUE_ATTACHMENT))
+        .filter(file_assets::Column::IsDeleted.eq(false))
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    // Mirror `@allow_permission([ROLE.ADMIN], creator=True, model=FileAsset)`:
+    // ADMIN de project/workspace O creator del asset.
+    let is_admin = guard.project_member.role >= ROLE_ADMIN
+        || guard.workspace_member.role >= ROLE_ADMIN;
+    let is_creator = asset.created_by_id == Some(guard.user.id);
+    if !is_admin && !is_creator {
+        return Err(AppError::Forbidden);
+    }
+
+    soft_delete_asset(&state.db, asset).await?;
+    Ok(StatusCode::NO_CONTENT)
 }
