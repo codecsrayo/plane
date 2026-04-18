@@ -10,13 +10,17 @@ import { cn } from "@plane/utils";
 // components
 import { ProIcon } from "@/components/common/pro-icon";
 
-export function IssueEmbedUpgradeCard(props: any) {
+type IssueEmbedUpgradeCardProps = {
+  selected?: boolean;
+};
+
+export function IssueEmbedUpgradeCard({ selected }: IssueEmbedUpgradeCardProps) {
   return (
     <div
       className={cn(
         "flex w-full items-center justify-between gap-5 rounded-md border-[0.5px] border-subtle bg-layer-1 px-5 py-2 shadow-raised-100 max-md:flex-wrap",
         {
-          "border-2": props.selected,
+          "border-2": selected,
         }
       )}
     >

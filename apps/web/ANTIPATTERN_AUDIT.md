@@ -817,7 +817,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 #### `ce/components/pages/editor/embed/`
 
 - [x] `ce/components/pages/editor/embed/index.ts`
-- [!] `ce/components/pages/editor/embed/issue-embed-upgrade-card.tsx` — `props: any` (sólo usa `props.selected` internamente). Tipar al menos `{ selected?: boolean }`.
+- [x] `ce/components/pages/editor/embed/issue-embed-upgrade-card.tsx` — `props: any` reemplazado por `IssueEmbedUpgradeCardProps = { selected?: boolean }` destructurado en el parámetro. Único uso interno (`props.selected`) confirmó que no hay más props; tipado mínimo y preciso.
 
 #### `ce/components/pages/header/`
 
