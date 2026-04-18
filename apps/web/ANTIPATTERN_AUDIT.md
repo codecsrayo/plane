@@ -73,10 +73,10 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `app/(all)/[workspaceSlug]/(projects)/browse/[workItem]/`
 
-- [ ] `app/(all)/[workspaceSlug]/(projects)/browse/[workItem]/header.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/browse/[workItem]/layout.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/browse/[workItem]/header.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/browse/[workItem]/layout.tsx`
 - [!] `app/(all)/[workspaceSlug]/(projects)/browse/[workItem]/page.tsx` — Guards `if (window && ...)` redundantes dentro de `useEffect` (el efecto solo corre client-side; `window` siempre está definido). No es bug, es código defensivo innecesario — limpiar para mantener claridad. Listener de resize bien registrado y limpiado.
-- [ ] `app/(all)/[workspaceSlug]/(projects)/browse/[workItem]/work-item-header.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/browse/[workItem]/work-item-header.tsx`
 
 #### `app/(all)/[workspaceSlug]/(projects)/drafts/`
 
@@ -91,15 +91,15 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `app/(all)/[workspaceSlug]/(projects)/profile/[userId]/`
 
-- [ ] `app/(all)/[workspaceSlug]/(projects)/profile/[userId]/header.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/profile/[userId]/layout.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/profile/[userId]/mobile-header.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/profile/[userId]/navbar.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/profile/[userId]/page.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/profile/[userId]/header.tsx`
+- [!] `app/(all)/[workspaceSlug]/(projects)/profile/[userId]/layout.tsx` — (1) Variable `isSmallerScreen = windowSize[0] >= 768` tiene semántica invertida: es `true` cuando la pantalla es GRANDE (desktop), no pequeña. El nombre miente — renombrar a `isDesktop` o `isLargerScreen`. Confuso para el próximo dev. (2) `isAuthorizedPath` y `isIssuesTab` calculan exactamente la misma expresión (duplicación inútil, líneas 48-49).
+- [x] `app/(all)/[workspaceSlug]/(projects)/profile/[userId]/mobile-header.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/profile/[userId]/navbar.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/profile/[userId]/page.tsx`
 
 #### `app/(all)/[workspaceSlug]/(projects)/profile/[userId]/[profileViewId]/`
 
-- [ ] `app/(all)/[workspaceSlug]/(projects)/profile/[userId]/[profileViewId]/page.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/profile/[userId]/[profileViewId]/page.tsx`
 
 #### `app/(all)/[workspaceSlug]/(projects)/profile/[userId]/activity/`
 
@@ -236,13 +236,13 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `app/(all)/[workspaceSlug]/(projects)/workspace-views/`
 
-- [ ] `app/(all)/[workspaceSlug]/(projects)/workspace-views/header.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/workspace-views/layout.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/workspace-views/page.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/workspace-views/header.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/workspace-views/layout.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/workspace-views/page.tsx`
 
 #### `app/(all)/[workspaceSlug]/(projects)/workspace-views/[globalViewId]/`
 
-- [ ] `app/(all)/[workspaceSlug]/(projects)/workspace-views/[globalViewId]/page.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/workspace-views/[globalViewId]/page.tsx`
 
 #### `app/(all)/[workspaceSlug]/(settings)/`
 
