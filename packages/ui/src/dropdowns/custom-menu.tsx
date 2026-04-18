@@ -246,18 +246,33 @@ function CustomMenu(props: ICustomMenuDropdownProps) {
         <>
           {customButton ? (
             <Menu.Button as={React.Fragment}>
-              <button
+              {/*
+                Wrapper como <span role="button"> (no <button>) para evitar
+                DOM nesting inválido cuando customButton ya es un <button>
+                (caso típico: IconButton de @plane/propel como customButton).
+                React warna: validateDOMNesting — <button> cannot appear as
+                a descendant of <button>.
+
+                Accesibilidad preservada:
+                  - role="button" expone el rol a AT,
+                  - tabIndex hace el span focuseable (tabIndex={-1} si disabled),
+                  - onKeyDown mantiene Enter/Space,
+                  - aria-label / aria-disabled reemplazan los atributos nativos.
+                Los handlers ya hacen `if (disabled) return` al inicio, por lo
+                que la ausencia de `disabled` nativo no cambia la UX.
+              */}
+              <span
                 ref={setReferenceElement}
-                type="button"
+                role="button"
                 onClick={handleMenuButtonClick}
                 onKeyDown={handleCustomButtonKeyDown}
                 className={customButtonClassName}
-                tabIndex={customButtonTabIndex}
+                tabIndex={disabled ? -1 : customButtonTabIndex}
                 aria-label={ariaLabel}
-                disabled={disabled}
+                aria-disabled={disabled}
               >
                 {customButton}
-              </button>
+              </span>
             </Menu.Button>
           ) : (
             <>
