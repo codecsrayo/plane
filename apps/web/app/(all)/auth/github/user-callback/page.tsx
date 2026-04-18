@@ -76,7 +76,12 @@ export default function GithubUserCallbackPage() {
     return () => {
       if (closeTimer.current !== null) clearTimeout(closeTimer.current);
     };
-  }, [searchParams]);
+    // Empty dep array makes the one-shot intent explicit: called.current already
+    // prevents re-execution, but listing searchParams implies the effect should
+    // re-run on navigation changes — it should not. searchParams is read once at
+    // mount time via the closure; subsequent changes are irrelevant.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <OAuthCallbackPage
