@@ -469,645 +469,645 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `ce/components/active-cycles/`
 
-- [ ] `ce/components/active-cycles/index.ts`
-- [ ] `ce/components/active-cycles/root.tsx`
-- [ ] `ce/components/active-cycles/workspace-active-cycles-upgrade.tsx`
+- [x] `ce/components/active-cycles/index.ts`
+- [x] `ce/components/active-cycles/root.tsx`
+- [x] `ce/components/active-cycles/workspace-active-cycles-upgrade.tsx`
 
 #### `ce/components/analytics/`
 
-- [ ] `ce/components/analytics/tabs.tsx`
-- [ ] `ce/components/analytics/use-analytics-tabs.tsx`
+- [x] `ce/components/analytics/tabs.tsx`
+- [x] `ce/components/analytics/use-analytics-tabs.tsx`
 
 #### `ce/components/app-rail/`
 
-- [ ] `ce/components/app-rail/app-rail-hoc.tsx`
-- [ ] `ce/components/app-rail/index.ts`
+- [x] `ce/components/app-rail/app-rail-hoc.tsx`
+- [x] `ce/components/app-rail/index.ts`
 
 #### `ce/components/automations/`
 
-- [ ] `ce/components/automations/root.tsx`
+- [x] `ce/components/automations/root.tsx`
 
 #### `ce/components/automations/list/`
 
-- [ ] `ce/components/automations/list/wrapper.tsx`
+- [x] `ce/components/automations/list/wrapper.tsx`
 
 #### `ce/components/breadcrumbs/`
 
-- [ ] `ce/components/breadcrumbs/common.tsx`
-- [ ] `ce/components/breadcrumbs/project-feature.tsx`
-- [ ] `ce/components/breadcrumbs/project.tsx`
+- [x] `ce/components/breadcrumbs/common.tsx`
+- [x] `ce/components/breadcrumbs/project-feature.tsx`
+- [x] `ce/components/breadcrumbs/project.tsx`
 
 #### `ce/components/browse/`
 
-- [ ] `ce/components/browse/workItem-detail.tsx`
+- [x] `ce/components/browse/workItem-detail.tsx`
 
 #### `ce/components/command-palette/`
 
-- [ ] `ce/components/command-palette/helpers.tsx`
-- [ ] `ce/components/command-palette/index.ts`
+- [!] `ce/components/command-palette/helpers.tsx` — Tipos con `any` en callbacks (`itemName: (item: any) => ReactNode`, `path: (item: any, ...) => string`). Reemplazar por genérico `<T>` para preservar inferencia en call sites.
+- [x] `ce/components/command-palette/index.ts`
 
 #### `ce/components/command-palette/actions/`
 
-- [ ] `ce/components/command-palette/actions/index.ts`
+- [x] `ce/components/command-palette/actions/index.ts`
 
 #### `ce/components/command-palette/actions/work-item-actions/`
 
-- [ ] `ce/components/command-palette/actions/work-item-actions/change-state-list.tsx`
-- [ ] `ce/components/command-palette/actions/work-item-actions/index.ts`
+- [x] `ce/components/command-palette/actions/work-item-actions/change-state-list.tsx`
+- [x] `ce/components/command-palette/actions/work-item-actions/index.ts`
 
 #### `ce/components/command-palette/modals/`
 
-- [ ] `ce/components/command-palette/modals/project-level.tsx`
-- [ ] `ce/components/command-palette/modals/work-item-level.tsx`
-- [ ] `ce/components/command-palette/modals/workspace-level.tsx`
+- [x] `ce/components/command-palette/modals/project-level.tsx`
+- [x] `ce/components/command-palette/modals/work-item-level.tsx`
+- [x] `ce/components/command-palette/modals/workspace-level.tsx`
 
 #### `ce/components/command-palette/power-k/`
 
-- [ ] `ce/components/command-palette/power-k/constants.ts`
-- [ ] `ce/components/command-palette/power-k/context-detector.ts`
-- [ ] `ce/components/command-palette/power-k/types.ts`
+- [x] `ce/components/command-palette/power-k/constants.ts`
+- [x] `ce/components/command-palette/power-k/context-detector.ts`
+- [x] `ce/components/command-palette/power-k/types.ts`
 
 #### `ce/components/command-palette/power-k/hooks/`
 
-- [ ] `ce/components/command-palette/power-k/hooks/use-extended-context-indicator.ts`
+- [x] `ce/components/command-palette/power-k/hooks/use-extended-context-indicator.ts`
 
 #### `ce/components/command-palette/power-k/pages/context-based/`
 
-- [ ] `ce/components/command-palette/power-k/pages/context-based/index.ts`
-- [ ] `ce/components/command-palette/power-k/pages/context-based/root.tsx`
+- [x] `ce/components/command-palette/power-k/pages/context-based/index.ts`
+- [x] `ce/components/command-palette/power-k/pages/context-based/root.tsx`
 
 #### `ce/components/command-palette/power-k/pages/context-based/work-item/`
 
-- [ ] `ce/components/command-palette/power-k/pages/context-based/work-item/state-menu-item.tsx`
+- [x] `ce/components/command-palette/power-k/pages/context-based/work-item/state-menu-item.tsx`
 
 #### `ce/components/command-palette/power-k/search/`
 
-- [ ] `ce/components/command-palette/power-k/search/no-results-command.tsx`
-- [ ] `ce/components/command-palette/power-k/search/search-results-map.tsx`
+- [x] `ce/components/command-palette/power-k/search/no-results-command.tsx`
+- [x] `ce/components/command-palette/power-k/search/search-results-map.tsx`
 
 #### `ce/components/comments/`
 
-- [ ] `ce/components/comments/comment-block.tsx`
-- [ ] `ce/components/comments/index.ts`
+- [x] `ce/components/comments/comment-block.tsx`
+- [x] `ce/components/comments/index.ts`
 
 #### `ce/components/common/`
 
-- [ ] `ce/components/common/extended-app-header.tsx`
-- [ ] `ce/components/common/quick-actions-factory.tsx`
+- [x] `ce/components/common/extended-app-header.tsx`
+- [x] `ce/components/common/quick-actions-factory.tsx`
 
 #### `ce/components/common/modal/`
 
-- [ ] `ce/components/common/modal/global.tsx`
+- [x] `ce/components/common/modal/global.tsx`
 
 #### `ce/components/common/subscription/`
 
-- [ ] `ce/components/common/subscription/subscription-pill.tsx`
+- [x] `ce/components/common/subscription/subscription-pill.tsx`
 
 #### `ce/components/cycles/`
 
-- [ ] `ce/components/cycles/additional-actions.tsx`
-- [ ] `ce/components/cycles/index.ts`
+- [x] `ce/components/cycles/additional-actions.tsx`
+- [x] `ce/components/cycles/index.ts`
 
 #### `ce/components/cycles/active-cycle/`
 
-- [ ] `ce/components/cycles/active-cycle/index.ts`
-- [ ] `ce/components/cycles/active-cycle/root.tsx`
+- [x] `ce/components/cycles/active-cycle/index.ts`
+- [!] `ce/components/cycles/active-cycle/root.tsx` — Prop `handleFiltersUpdate: (filters: any) => void` — tipar con el shape real de filters (p.e. `Partial<IIssueFilterOptions>`).
 
 #### `ce/components/cycles/analytics-sidebar/`
 
-- [ ] `ce/components/cycles/analytics-sidebar/base.tsx`
-- [ ] `ce/components/cycles/analytics-sidebar/index.ts`
-- [ ] `ce/components/cycles/analytics-sidebar/root.tsx`
+- [x] `ce/components/cycles/analytics-sidebar/base.tsx`
+- [x] `ce/components/cycles/analytics-sidebar/index.ts`
+- [x] `ce/components/cycles/analytics-sidebar/root.tsx`
 
 #### `ce/components/cycles/end-cycle/`
 
-- [ ] `ce/components/cycles/end-cycle/index.ts`
-- [ ] `ce/components/cycles/end-cycle/modal.tsx`
+- [x] `ce/components/cycles/end-cycle/index.ts`
+- [x] `ce/components/cycles/end-cycle/modal.tsx`
 
 #### `ce/components/de-dupe/`
 
-- [ ] `ce/components/de-dupe/de-dupe-button.tsx`
+- [x] `ce/components/de-dupe/de-dupe-button.tsx`
 
 #### `ce/components/de-dupe/duplicate-modal/`
 
-- [ ] `ce/components/de-dupe/duplicate-modal/index.ts`
-- [ ] `ce/components/de-dupe/duplicate-modal/root.tsx`
+- [x] `ce/components/de-dupe/duplicate-modal/index.ts`
+- [x] `ce/components/de-dupe/duplicate-modal/root.tsx`
 
 #### `ce/components/de-dupe/duplicate-popover/`
 
-- [ ] `ce/components/de-dupe/duplicate-popover/index.ts`
-- [ ] `ce/components/de-dupe/duplicate-popover/root.tsx`
+- [x] `ce/components/de-dupe/duplicate-popover/index.ts`
+- [x] `ce/components/de-dupe/duplicate-popover/root.tsx`
 
 #### `ce/components/de-dupe/issue-block/`
 
-- [ ] `ce/components/de-dupe/issue-block/button-label.tsx`
+- [x] `ce/components/de-dupe/issue-block/button-label.tsx`
 
 #### `ce/components/desktop/`
 
-- [ ] `ce/components/desktop/helper.ts`
-- [ ] `ce/components/desktop/index.ts`
-- [ ] `ce/components/desktop/sidebar-workspace-menu.tsx`
+- [x] `ce/components/desktop/helper.ts`
+- [x] `ce/components/desktop/index.ts`
+- [x] `ce/components/desktop/sidebar-workspace-menu.tsx`
 
 #### `ce/components/editor/embeds/mentions/`
 
-- [ ] `ce/components/editor/embeds/mentions/index.ts`
-- [ ] `ce/components/editor/embeds/mentions/root.tsx`
+- [x] `ce/components/editor/embeds/mentions/index.ts`
+- [x] `ce/components/editor/embeds/mentions/root.tsx`
 
 #### `ce/components/epics/epic-modal/`
 
-- [ ] `ce/components/epics/epic-modal/index.ts`
-- [ ] `ce/components/epics/epic-modal/modal.tsx`
+- [x] `ce/components/epics/epic-modal/index.ts`
+- [x] `ce/components/epics/epic-modal/modal.tsx`
 
 #### `ce/components/estimates/`
 
-- [ ] `ce/components/estimates/estimate-list-item-buttons.tsx`
-- [ ] `ce/components/estimates/helper.tsx`
-- [ ] `ce/components/estimates/index.ts`
+- [x] `ce/components/estimates/estimate-list-item-buttons.tsx`
+- [x] `ce/components/estimates/helper.tsx`
+- [x] `ce/components/estimates/index.ts`
 
 #### `ce/components/estimates/inputs/`
 
-- [ ] `ce/components/estimates/inputs/index.ts`
-- [ ] `ce/components/estimates/inputs/time-input.tsx`
+- [x] `ce/components/estimates/inputs/index.ts`
+- [x] `ce/components/estimates/inputs/time-input.tsx`
 
 #### `ce/components/estimates/points/`
 
-- [ ] `ce/components/estimates/points/delete.tsx`
-- [ ] `ce/components/estimates/points/index.ts`
+- [x] `ce/components/estimates/points/delete.tsx`
+- [x] `ce/components/estimates/points/index.ts`
 
 #### `ce/components/estimates/update/`
 
-- [ ] `ce/components/estimates/update/index.ts`
-- [ ] `ce/components/estimates/update/modal.tsx`
+- [x] `ce/components/estimates/update/index.ts`
+- [x] `ce/components/estimates/update/modal.tsx`
 
 #### `ce/components/gantt-chart/`
 
-- [ ] `ce/components/gantt-chart/index.ts`
+- [x] `ce/components/gantt-chart/index.ts`
 
 #### `ce/components/gantt-chart/blocks/`
 
-- [ ] `ce/components/gantt-chart/blocks/block-row-list.tsx`
-- [ ] `ce/components/gantt-chart/blocks/blocks-list.tsx`
+- [!] `ce/components/gantt-chart/blocks/block-row-list.tsx` — Prop `blockUpdateHandler: (block: any, payload: IBlockUpdateData) => void` — tipar con genérico o `IGanttBlock`.
+- [!] `ce/components/gantt-chart/blocks/blocks-list.tsx` — Prop `blockToRender: (data: any) => ReactNode` — tipar con genérico `<T>` o `IGanttBlock`.
 
 #### `ce/components/gantt-chart/dependency/`
 
-- [ ] `ce/components/gantt-chart/dependency/dependency-paths.tsx`
-- [ ] `ce/components/gantt-chart/dependency/draggable-dependency-path.tsx`
-- [ ] `ce/components/gantt-chart/dependency/index.ts`
+- [x] `ce/components/gantt-chart/dependency/dependency-paths.tsx`
+- [x] `ce/components/gantt-chart/dependency/draggable-dependency-path.tsx`
+- [x] `ce/components/gantt-chart/dependency/index.ts`
 
 #### `ce/components/gantt-chart/dependency/blockDraggables/`
 
-- [ ] `ce/components/gantt-chart/dependency/blockDraggables/index.ts`
-- [ ] `ce/components/gantt-chart/dependency/blockDraggables/left-draggable.tsx`
-- [ ] `ce/components/gantt-chart/dependency/blockDraggables/right-draggable.tsx`
+- [x] `ce/components/gantt-chart/dependency/blockDraggables/index.ts`
+- [x] `ce/components/gantt-chart/dependency/blockDraggables/left-draggable.tsx`
+- [x] `ce/components/gantt-chart/dependency/blockDraggables/right-draggable.tsx`
 
 #### `ce/components/gantt-chart/layers/`
 
-- [ ] `ce/components/gantt-chart/layers/additional-layers.tsx`
-- [ ] `ce/components/gantt-chart/layers/index.ts`
+- [x] `ce/components/gantt-chart/layers/additional-layers.tsx`
+- [x] `ce/components/gantt-chart/layers/index.ts`
 
 #### `ce/components/global/`
 
-- [ ] `ce/components/global/index.ts`
-- [ ] `ce/components/global/version-number.tsx`
+- [x] `ce/components/global/index.ts`
+- [x] `ce/components/global/version-number.tsx`
 
 #### `ce/components/global/product-updates/`
 
-- [ ] `ce/components/global/product-updates/changelog.tsx`
-- [ ] `ce/components/global/product-updates/header.tsx`
+- [x] `ce/components/global/product-updates/changelog.tsx`
+- [x] `ce/components/global/product-updates/header.tsx`
 
 #### `ce/components/home/`
 
-- [ ] `ce/components/home/header.tsx`
-- [ ] `ce/components/home/index.ts`
-- [ ] `ce/components/home/peek-overviews.tsx`
+- [x] `ce/components/home/header.tsx`
+- [x] `ce/components/home/index.ts`
+- [x] `ce/components/home/peek-overviews.tsx`
 
 #### `ce/components/inbox/`
 
-- [ ] `ce/components/inbox/source-pill.tsx`
+- [x] `ce/components/inbox/source-pill.tsx`
 
 #### `ce/components/instance/`
 
-- [ ] `ce/components/instance/index.ts`
-- [ ] `ce/components/instance/maintenance-message.tsx`
+- [x] `ce/components/instance/index.ts`
+- [x] `ce/components/instance/maintenance-message.tsx`
 
 #### `ce/components/issues/`
 
-- [ ] `ce/components/issues/header.tsx`
+- [x] `ce/components/issues/header.tsx`
 
 #### `ce/components/issues/bulk-operations/`
 
-- [ ] `ce/components/issues/bulk-operations/index.ts`
-- [ ] `ce/components/issues/bulk-operations/root.tsx`
+- [x] `ce/components/issues/bulk-operations/index.ts`
+- [x] `ce/components/issues/bulk-operations/root.tsx`
 
 #### `ce/components/issues/filters/`
 
-- [ ] `ce/components/issues/filters/issue-types.tsx`
-- [ ] `ce/components/issues/filters/team-project.tsx`
+- [x] `ce/components/issues/filters/issue-types.tsx`
+- [x] `ce/components/issues/filters/team-project.tsx`
 
 #### `ce/components/issues/filters/applied-filters/`
 
-- [ ] `ce/components/issues/filters/applied-filters/issue-types.tsx`
+- [x] `ce/components/issues/filters/applied-filters/issue-types.tsx`
 
 #### `ce/components/issues/issue-detail-widgets/`
 
-- [ ] `ce/components/issues/issue-detail-widgets/action-buttons.tsx`
-- [ ] `ce/components/issues/issue-detail-widgets/collapsibles.tsx`
-- [ ] `ce/components/issues/issue-detail-widgets/modals.tsx`
+- [x] `ce/components/issues/issue-detail-widgets/action-buttons.tsx`
+- [x] `ce/components/issues/issue-detail-widgets/collapsibles.tsx`
+- [x] `ce/components/issues/issue-detail-widgets/modals.tsx`
 
 #### `ce/components/issues/issue-details/`
 
-- [ ] `ce/components/issues/issue-details/additional-activity-root.tsx`
-- [ ] `ce/components/issues/issue-details/additional-properties.tsx`
-- [ ] `ce/components/issues/issue-details/index.ts`
-- [ ] `ce/components/issues/issue-details/issue-creator.tsx`
-- [ ] `ce/components/issues/issue-details/issue-identifier.tsx`
-- [ ] `ce/components/issues/issue-details/issue-type-activity.tsx`
-- [ ] `ce/components/issues/issue-details/issue-type-switcher.tsx`
-- [ ] `ce/components/issues/issue-details/parent-select-root.tsx`
+- [x] `ce/components/issues/issue-details/additional-activity-root.tsx`
+- [x] `ce/components/issues/issue-details/additional-properties.tsx`
+- [x] `ce/components/issues/issue-details/index.ts`
+- [x] `ce/components/issues/issue-details/issue-creator.tsx`
+- [x] `ce/components/issues/issue-details/issue-identifier.tsx`
+- [x] `ce/components/issues/issue-details/issue-type-activity.tsx`
+- [x] `ce/components/issues/issue-details/issue-type-switcher.tsx`
+- [x] `ce/components/issues/issue-details/parent-select-root.tsx`
 
 #### `ce/components/issues/issue-details/issue-properties-activity/`
 
-- [ ] `ce/components/issues/issue-details/issue-properties-activity/index.ts`
-- [ ] `ce/components/issues/issue-details/issue-properties-activity/root.tsx`
+- [x] `ce/components/issues/issue-details/issue-properties-activity/index.ts`
+- [x] `ce/components/issues/issue-details/issue-properties-activity/root.tsx`
 
 #### `ce/components/issues/issue-details/sidebar/`
 
-- [ ] `ce/components/issues/issue-details/sidebar/date-alert.tsx`
-- [ ] `ce/components/issues/issue-details/sidebar/transfer-hop-info.tsx`
+- [x] `ce/components/issues/issue-details/sidebar/date-alert.tsx`
+- [x] `ce/components/issues/issue-details/sidebar/transfer-hop-info.tsx`
 
 #### `ce/components/issues/issue-layouts/`
 
-- [ ] `ce/components/issues/issue-layouts/additional-properties.tsx`
-- [ ] `ce/components/issues/issue-layouts/issue-stats.tsx`
-- [ ] `ce/components/issues/issue-layouts/utils.tsx`
+- [x] `ce/components/issues/issue-layouts/additional-properties.tsx`
+- [x] `ce/components/issues/issue-layouts/issue-stats.tsx`
+- [x] `ce/components/issues/issue-layouts/utils.tsx`
 
 #### `ce/components/issues/issue-layouts/empty-states/`
 
-- [ ] `ce/components/issues/issue-layouts/empty-states/index.ts`
-- [ ] `ce/components/issues/issue-layouts/empty-states/team-issues.tsx`
-- [ ] `ce/components/issues/issue-layouts/empty-states/team-project.tsx`
-- [ ] `ce/components/issues/issue-layouts/empty-states/team-view-issues.tsx`
+- [x] `ce/components/issues/issue-layouts/empty-states/index.ts`
+- [x] `ce/components/issues/issue-layouts/empty-states/team-issues.tsx`
+- [x] `ce/components/issues/issue-layouts/empty-states/team-project.tsx`
+- [x] `ce/components/issues/issue-layouts/empty-states/team-view-issues.tsx`
 
 #### `ce/components/issues/issue-layouts/quick-action-dropdowns/`
 
-- [ ] `ce/components/issues/issue-layouts/quick-action-dropdowns/copy-menu-helper.tsx`
-- [ ] `ce/components/issues/issue-layouts/quick-action-dropdowns/duplicate-modal.tsx`
-- [ ] `ce/components/issues/issue-layouts/quick-action-dropdowns/index.ts`
+- [x] `ce/components/issues/issue-layouts/quick-action-dropdowns/copy-menu-helper.tsx`
+- [x] `ce/components/issues/issue-layouts/quick-action-dropdowns/duplicate-modal.tsx`
+- [x] `ce/components/issues/issue-layouts/quick-action-dropdowns/index.ts`
 
 #### `ce/components/issues/issue-modal/`
 
-- [ ] `ce/components/issues/issue-modal/index.ts`
-- [ ] `ce/components/issues/issue-modal/issue-type-select.tsx`
-- [ ] `ce/components/issues/issue-modal/modal-additional-properties.tsx`
-- [ ] `ce/components/issues/issue-modal/provider.tsx`
-- [ ] `ce/components/issues/issue-modal/template-select.tsx`
+- [x] `ce/components/issues/issue-modal/index.ts`
+- [x] `ce/components/issues/issue-modal/issue-type-select.tsx`
+- [x] `ce/components/issues/issue-modal/modal-additional-properties.tsx`
+- [x] `ce/components/issues/issue-modal/provider.tsx`
+- [x] `ce/components/issues/issue-modal/template-select.tsx`
 
 #### `ce/components/issues/quick-add/`
 
-- [ ] `ce/components/issues/quick-add/index.ts`
-- [ ] `ce/components/issues/quick-add/root.tsx`
+- [x] `ce/components/issues/quick-add/index.ts`
+- [x] `ce/components/issues/quick-add/root.tsx`
 
 #### `ce/components/issues/worklog/activity/`
 
-- [ ] `ce/components/issues/worklog/activity/filter-root.tsx`
-- [ ] `ce/components/issues/worklog/activity/index.ts`
-- [ ] `ce/components/issues/worklog/activity/root.tsx`
-- [ ] `ce/components/issues/worklog/activity/worklog-create-button.tsx`
+- [x] `ce/components/issues/worklog/activity/filter-root.tsx`
+- [x] `ce/components/issues/worklog/activity/index.ts`
+- [x] `ce/components/issues/worklog/activity/root.tsx`
+- [x] `ce/components/issues/worklog/activity/worklog-create-button.tsx`
 
 #### `ce/components/issues/worklog/property/`
 
-- [ ] `ce/components/issues/worklog/property/index.ts`
-- [ ] `ce/components/issues/worklog/property/root.tsx`
+- [x] `ce/components/issues/worklog/property/index.ts`
+- [x] `ce/components/issues/worklog/property/root.tsx`
 
 #### `ce/components/license/`
 
-- [ ] `ce/components/license/index.ts`
+- [x] `ce/components/license/index.ts`
 
 #### `ce/components/license/modal/`
 
-- [ ] `ce/components/license/modal/index.ts`
-- [ ] `ce/components/license/modal/upgrade-modal.tsx`
+- [x] `ce/components/license/modal/index.ts`
+- [x] `ce/components/license/modal/upgrade-modal.tsx`
 
 #### `ce/components/navigations/`
 
-- [ ] `ce/components/navigations/index.ts`
-- [ ] `ce/components/navigations/top-navigation-root.tsx`
-- [ ] `ce/components/navigations/use-navigation-items.ts`
+- [x] `ce/components/navigations/index.ts`
+- [x] `ce/components/navigations/top-navigation-root.tsx`
+- [x] `ce/components/navigations/use-navigation-items.ts`
 
 #### `ce/components/onboarding/tour/`
 
-- [ ] `ce/components/onboarding/tour/root.tsx`
-- [ ] `ce/components/onboarding/tour/sidebar.tsx`
+- [x] `ce/components/onboarding/tour/root.tsx`
+- [x] `ce/components/onboarding/tour/sidebar.tsx`
 
 #### `ce/components/pages/`
 
-- [ ] `ce/components/pages/extra-actions.tsx`
-- [ ] `ce/components/pages/index.ts`
+- [x] `ce/components/pages/extra-actions.tsx`
+- [x] `ce/components/pages/index.ts`
 
 #### `ce/components/pages/editor/`
 
-- [ ] `ce/components/pages/editor/index.ts`
+- [x] `ce/components/pages/editor/index.ts`
 
 #### `ce/components/pages/editor/ai/`
 
-- [ ] `ce/components/pages/editor/ai/ask-pi-menu.tsx`
-- [ ] `ce/components/pages/editor/ai/index.ts`
-- [ ] `ce/components/pages/editor/ai/menu.tsx`
+- [x] `ce/components/pages/editor/ai/ask-pi-menu.tsx`
+- [x] `ce/components/pages/editor/ai/index.ts`
+- [x] `ce/components/pages/editor/ai/menu.tsx`
 
 #### `ce/components/pages/editor/embed/`
 
-- [ ] `ce/components/pages/editor/embed/index.ts`
-- [ ] `ce/components/pages/editor/embed/issue-embed-upgrade-card.tsx`
+- [x] `ce/components/pages/editor/embed/index.ts`
+- [!] `ce/components/pages/editor/embed/issue-embed-upgrade-card.tsx` — `props: any` (sólo usa `props.selected` internamente). Tipar al menos `{ selected?: boolean }`.
 
 #### `ce/components/pages/header/`
 
-- [ ] `ce/components/pages/header/collaborators-list.tsx`
-- [ ] `ce/components/pages/header/lock-control.tsx`
-- [ ] `ce/components/pages/header/move-control.tsx`
-- [ ] `ce/components/pages/header/share-control.tsx`
+- [x] `ce/components/pages/header/collaborators-list.tsx`
+- [x] `ce/components/pages/header/lock-control.tsx`
+- [x] `ce/components/pages/header/move-control.tsx`
+- [x] `ce/components/pages/header/share-control.tsx`
 
 #### `ce/components/pages/modals/`
 
-- [ ] `ce/components/pages/modals/index.ts`
-- [ ] `ce/components/pages/modals/modals.tsx`
-- [ ] `ce/components/pages/modals/move-page-modal.tsx`
+- [x] `ce/components/pages/modals/index.ts`
+- [x] `ce/components/pages/modals/modals.tsx`
+- [x] `ce/components/pages/modals/move-page-modal.tsx`
 
 #### `ce/components/pages/navigation-pane/`
 
-- [ ] `ce/components/pages/navigation-pane/index.ts`
+- [x] `ce/components/pages/navigation-pane/index.ts`
 
 #### `ce/components/pages/navigation-pane/tab-panels/`
 
-- [ ] `ce/components/pages/navigation-pane/tab-panels/assets.tsx`
-- [ ] `ce/components/pages/navigation-pane/tab-panels/root.tsx`
+- [x] `ce/components/pages/navigation-pane/tab-panels/assets.tsx`
+- [x] `ce/components/pages/navigation-pane/tab-panels/root.tsx`
 
 #### `ce/components/pages/navigation-pane/tab-panels/empty-states/`
 
-- [ ] `ce/components/pages/navigation-pane/tab-panels/empty-states/assets.tsx`
-- [ ] `ce/components/pages/navigation-pane/tab-panels/empty-states/outline.tsx`
+- [x] `ce/components/pages/navigation-pane/tab-panels/empty-states/assets.tsx`
+- [x] `ce/components/pages/navigation-pane/tab-panels/empty-states/outline.tsx`
 
 #### `ce/components/preferences/`
 
-- [ ] `ce/components/preferences/theme-switcher.tsx`
+- [x] `ce/components/preferences/theme-switcher.tsx`
 
 #### `ce/components/projects/`
 
-- [ ] `ce/components/projects/header.tsx`
-- [ ] `ce/components/projects/mobile-header.tsx`
-- [ ] `ce/components/projects/page.tsx`
+- [x] `ce/components/projects/header.tsx`
+- [x] `ce/components/projects/mobile-header.tsx`
+- [x] `ce/components/projects/page.tsx`
 
 #### `ce/components/projects/create/`
 
-- [ ] `ce/components/projects/create/attributes.tsx`
-- [ ] `ce/components/projects/create/root.tsx`
-- [ ] `ce/components/projects/create/template-select.tsx`
-- [ ] `ce/components/projects/create/utils.ts`
+- [x] `ce/components/projects/create/attributes.tsx`
+- [x] `ce/components/projects/create/root.tsx`
+- [x] `ce/components/projects/create/template-select.tsx`
+- [x] `ce/components/projects/create/utils.ts`
 
 #### `ce/components/projects/navigation/`
 
-- [ ] `ce/components/projects/navigation/helper.tsx`
+- [x] `ce/components/projects/navigation/helper.tsx`
 
 #### `ce/components/projects/settings/`
 
-- [ ] `ce/components/projects/settings/features-list.tsx`
-- [ ] `ce/components/projects/settings/useProjectColumns.tsx`
+- [x] `ce/components/projects/settings/features-list.tsx`
+- [x] `ce/components/projects/settings/useProjectColumns.tsx`
 
 #### `ce/components/projects/settings/intake/`
 
-- [ ] `ce/components/projects/settings/intake/header.tsx`
+- [x] `ce/components/projects/settings/intake/header.tsx`
 
 #### `ce/components/projects/teamspaces/`
 
-- [ ] `ce/components/projects/teamspaces/teamspace-list.tsx`
+- [x] `ce/components/projects/teamspaces/teamspace-list.tsx`
 
 #### `ce/components/relations/`
 
-- [ ] `ce/components/relations/activity.ts`
-- [ ] `ce/components/relations/index.tsx`
+- [x] `ce/components/relations/activity.ts`
+- [x] `ce/components/relations/index.tsx`
 
 #### `ce/components/rich-filters/filter-value-input/`
 
-- [ ] `ce/components/rich-filters/filter-value-input/root.tsx`
+- [x] `ce/components/rich-filters/filter-value-input/root.tsx`
 
 #### `ce/components/sidebar/`
 
-- [ ] `ce/components/sidebar/app-switcher.tsx`
-- [ ] `ce/components/sidebar/index.ts`
-- [ ] `ce/components/sidebar/project-navigation-root.tsx`
+- [x] `ce/components/sidebar/app-switcher.tsx`
+- [x] `ce/components/sidebar/index.ts`
+- [x] `ce/components/sidebar/project-navigation-root.tsx`
 
 #### `ce/components/views/`
 
-- [ ] `ce/components/views/access-controller.tsx`
-- [ ] `ce/components/views/helper.tsx`
+- [!] `ce/components/views/access-controller.tsx` — Stub CE (`export function AccessController(props: any) { return <></>; }`) — placeholder vacío con props `any`. Override real en `plane-web/`. Aceptable patrón de CE/EE split pero el `any` se tolera sólo porque nunca se renderiza nada.
+- [x] `ce/components/views/helper.tsx`
 
 #### `ce/components/views/filters/`
 
-- [ ] `ce/components/views/filters/access-filter.tsx`
+- [!] `ce/components/views/filters/access-filter.tsx` — Stub CE idéntico a `access-controller.tsx` (`props: any`, retorna `<></>`).
 
 #### `ce/components/views/publish/`
 
-- [ ] `ce/components/views/publish/index.ts`
-- [ ] `ce/components/views/publish/modal.tsx`
-- [ ] `ce/components/views/publish/use-view-publish.tsx`
+- [x] `ce/components/views/publish/index.ts`
+- [x] `ce/components/views/publish/modal.tsx`
+- [x] `ce/components/views/publish/use-view-publish.tsx`
 
 #### `ce/components/workflow/`
 
-- [ ] `ce/components/workflow/index.ts`
-- [ ] `ce/components/workflow/state-option.tsx`
-- [ ] `ce/components/workflow/use-workflow-drag-n-drop.ts`
-- [ ] `ce/components/workflow/workflow-disabled-message.tsx`
-- [ ] `ce/components/workflow/workflow-disabled-overlay.tsx`
-- [ ] `ce/components/workflow/workflow-group-tree.tsx`
+- [x] `ce/components/workflow/index.ts`
+- [x] `ce/components/workflow/state-option.tsx`
+- [x] `ce/components/workflow/use-workflow-drag-n-drop.ts`
+- [x] `ce/components/workflow/workflow-disabled-message.tsx`
+- [x] `ce/components/workflow/workflow-disabled-overlay.tsx`
+- [x] `ce/components/workflow/workflow-group-tree.tsx`
 
 #### `ce/components/workspace/`
 
-- [ ] `ce/components/workspace/app-switcher.tsx`
-- [ ] `ce/components/workspace/content-wrapper.tsx`
-- [ ] `ce/components/workspace/delete-workspace-modal.tsx`
-- [ ] `ce/components/workspace/delete-workspace-section.tsx`
-- [ ] `ce/components/workspace/edition-badge.tsx`
-- [ ] `ce/components/workspace/upgrade-badge.tsx`
+- [x] `ce/components/workspace/app-switcher.tsx`
+- [x] `ce/components/workspace/content-wrapper.tsx`
+- [x] `ce/components/workspace/delete-workspace-modal.tsx`
+- [x] `ce/components/workspace/delete-workspace-section.tsx`
+- [x] `ce/components/workspace/edition-badge.tsx`
+- [x] `ce/components/workspace/upgrade-badge.tsx`
 
 #### `ce/components/workspace/billing/`
 
-- [ ] `ce/components/workspace/billing/billing-actions-button.tsx`
-- [ ] `ce/components/workspace/billing/index.ts`
-- [ ] `ce/components/workspace/billing/root.tsx`
+- [x] `ce/components/workspace/billing/billing-actions-button.tsx`
+- [x] `ce/components/workspace/billing/index.ts`
+- [x] `ce/components/workspace/billing/root.tsx`
 
 #### `ce/components/workspace/billing/comparison/`
 
-- [ ] `ce/components/workspace/billing/comparison/frequency-toggle.tsx`
-- [ ] `ce/components/workspace/billing/comparison/plan-detail.tsx`
-- [ ] `ce/components/workspace/billing/comparison/root.tsx`
+- [x] `ce/components/workspace/billing/comparison/frequency-toggle.tsx`
+- [x] `ce/components/workspace/billing/comparison/plan-detail.tsx`
+- [x] `ce/components/workspace/billing/comparison/root.tsx`
 
 #### `ce/components/workspace/members/`
 
-- [ ] `ce/components/workspace/members/index.ts`
-- [ ] `ce/components/workspace/members/invite-modal.tsx`
-- [ ] `ce/components/workspace/members/members-activity-button.tsx`
+- [x] `ce/components/workspace/members/index.ts`
+- [x] `ce/components/workspace/members/invite-modal.tsx`
+- [x] `ce/components/workspace/members/members-activity-button.tsx`
 
 #### `ce/components/workspace/settings/`
 
-- [ ] `ce/components/workspace/settings/useMemberColumns.tsx`
+- [x] `ce/components/workspace/settings/useMemberColumns.tsx`
 
 #### `ce/components/workspace/sidebar/`
 
-- [ ] `ce/components/workspace/sidebar/extended-sidebar-item.tsx`
-- [ ] `ce/components/workspace/sidebar/helper.tsx`
-- [ ] `ce/components/workspace/sidebar/sidebar-item.tsx`
-- [ ] `ce/components/workspace/sidebar/teams-sidebar-list.tsx`
+- [!] `ce/components/workspace/sidebar/extended-sidebar-item.tsx` — `item.access as any` (línea 153) en llamada a `allowPermissions`. Silencia mismatch de tipos en lugar de arreglar `item.access` o la signature de `allowPermissions`. Refactor: unificar tipos en vez de ocultar el mismatch.
+- [x] `ce/components/workspace/sidebar/helper.tsx`
+- [x] `ce/components/workspace/sidebar/sidebar-item.tsx`
+- [x] `ce/components/workspace/sidebar/teams-sidebar-list.tsx`
 
 #### `ce/components/workspace-notifications/`
 
-- [ ] `ce/components/workspace-notifications/index.ts`
-- [ ] `ce/components/workspace-notifications/list-root.tsx`
+- [x] `ce/components/workspace-notifications/index.ts`
+- [x] `ce/components/workspace-notifications/list-root.tsx`
 
 #### `ce/components/workspace-notifications/notification-card/`
 
-- [ ] `ce/components/workspace-notifications/notification-card/content.ts`
-- [ ] `ce/components/workspace-notifications/notification-card/root.tsx`
+- [x] `ce/components/workspace-notifications/notification-card/content.ts`
+- [x] `ce/components/workspace-notifications/notification-card/root.tsx`
 
 #### `ce/hooks/`
 
-- [ ] `ce/hooks/use-additional-editor-mention.tsx`
-- [ ] `ce/hooks/use-additional-favorite-item-details.ts`
-- [ ] `ce/hooks/use-bulk-operation-status.ts`
-- [ ] `ce/hooks/use-debounced-duplicate-issues.tsx`
-- [ ] `ce/hooks/use-editor-flagging.ts`
-- [ ] `ce/hooks/use-file-size.ts`
-- [ ] `ce/hooks/use-issue-embed.tsx`
-- [ ] `ce/hooks/use-issue-properties.tsx`
-- [ ] `ce/hooks/use-notification-preview.tsx`
-- [ ] `ce/hooks/use-page-flag.ts`
-- [ ] `ce/hooks/use-timeline-chart.ts`
-- [ ] `ce/hooks/use-workspace-issue-properties-extended.tsx`
+- [x] `ce/hooks/use-additional-editor-mention.tsx`
+- [x] `ce/hooks/use-additional-favorite-item-details.ts`
+- [x] `ce/hooks/use-bulk-operation-status.ts`
+- [x] `ce/hooks/use-debounced-duplicate-issues.tsx`
+- [x] `ce/hooks/use-editor-flagging.ts`
+- [x] `ce/hooks/use-file-size.ts`
+- [x] `ce/hooks/use-issue-embed.tsx`
+- [x] `ce/hooks/use-issue-properties.tsx`
+- [x] `ce/hooks/use-notification-preview.tsx`
+- [x] `ce/hooks/use-page-flag.ts`
+- [x] `ce/hooks/use-timeline-chart.ts`
+- [x] `ce/hooks/use-workspace-issue-properties-extended.tsx`
 
 #### `ce/hooks/app-rail/`
 
-- [ ] `ce/hooks/app-rail/index.ts`
-- [ ] `ce/hooks/app-rail/provider.tsx`
+- [x] `ce/hooks/app-rail/index.ts`
+- [x] `ce/hooks/app-rail/provider.tsx`
 
 #### `ce/hooks/editor/`
 
-- [ ] `ce/hooks/editor/use-extended-editor-config.ts`
+- [x] `ce/hooks/editor/use-extended-editor-config.ts`
 
 #### `ce/hooks/pages/`
 
-- [ ] `ce/hooks/pages/index.ts`
-- [ ] `ce/hooks/pages/use-extended-editor-extensions.ts`
-- [ ] `ce/hooks/pages/use-pages-pane-extensions.ts`
+- [x] `ce/hooks/pages/index.ts`
+- [x] `ce/hooks/pages/use-extended-editor-extensions.ts`
+- [x] `ce/hooks/pages/use-pages-pane-extensions.ts`
 
 #### `ce/hooks/rich-filters/`
 
-- [ ] `ce/hooks/rich-filters/use-filters-operator-configs.ts`
+- [x] `ce/hooks/rich-filters/use-filters-operator-configs.ts`
 
 #### `ce/hooks/store/`
 
-- [ ] `ce/hooks/store/index.ts`
-- [ ] `ce/hooks/store/use-page-store.ts`
-- [ ] `ce/hooks/store/use-page.ts`
+- [x] `ce/hooks/store/index.ts`
+- [x] `ce/hooks/store/use-page-store.ts`
+- [x] `ce/hooks/store/use-page.ts`
 
 #### `ce/hooks/work-item-filters/`
 
-- [ ] `ce/hooks/work-item-filters/use-work-item-filters-config.tsx`
+- [x] `ce/hooks/work-item-filters/use-work-item-filters-config.tsx`
 
 #### `ce/store/`
 
-- [ ] `ce/store/analytics.store.ts`
-- [ ] `ce/store/command-palette.store.ts`
-- [ ] `ce/store/global-view.store.ts`
-- [ ] `ce/store/power-k.store.ts`
-- [ ] `ce/store/project-inbox.store.ts`
-- [ ] `ce/store/project-view.store.ts`
-- [ ] `ce/store/root.store.ts`
-- [ ] `ce/store/state.store.ts`
+- [x] `ce/store/analytics.store.ts`
+- [x] `ce/store/command-palette.store.ts`
+- [x] `ce/store/global-view.store.ts`
+- [x] `ce/store/power-k.store.ts`
+- [x] `ce/store/project-inbox.store.ts`
+- [x] `ce/store/project-view.store.ts`
+- [x] `ce/store/root.store.ts`
+- [x] `ce/store/state.store.ts`
 
 #### `ce/store/cycle/`
 
-- [ ] `ce/store/cycle/index.ts`
+- [x] `ce/store/cycle/index.ts`
 
 #### `ce/store/estimates/`
 
-- [ ] `ce/store/estimates/estimate.ts`
+- [x] `ce/store/estimates/estimate.ts`
 
 #### `ce/store/issue/epic/`
 
-- [ ] `ce/store/issue/epic/filter.store.ts`
-- [ ] `ce/store/issue/epic/index.ts`
-- [ ] `ce/store/issue/epic/issue.store.ts`
+- [!] `ce/store/issue/epic/filter.store.ts` — `@ts-nocheck` (dos veces) sobre clase-stub que extiende similar — comentario dice "This class will never be used". Si no se usa, eliminarla; si se usa como CE fallback, tipar correctamente.
+- [x] `ce/store/issue/epic/index.ts`
+- [!] `ce/store/issue/epic/issue.store.ts` — `@ts-nocheck` stub — misma deuda que filter.store.ts del mismo directorio.
 
 #### `ce/store/issue/helpers/`
 
-- [ ] `ce/store/issue/helpers/base-issue-store.ts`
-- [ ] `ce/store/issue/helpers/base-issue.store.ts`
-- [ ] `ce/store/issue/helpers/filter-utils.ts`
+- [x] `ce/store/issue/helpers/base-issue-store.ts`
+- [x] `ce/store/issue/helpers/base-issue.store.ts`
+- [x] `ce/store/issue/helpers/filter-utils.ts`
 
 #### `ce/store/issue/issue-details/`
 
-- [ ] `ce/store/issue/issue-details/activity.store.ts`
-- [ ] `ce/store/issue/issue-details/root.store.ts`
+- [x] `ce/store/issue/issue-details/activity.store.ts`
+- [x] `ce/store/issue/issue-details/root.store.ts`
 
 #### `ce/store/issue/team/`
 
-- [ ] `ce/store/issue/team/filter.store.ts`
-- [ ] `ce/store/issue/team/index.ts`
-- [ ] `ce/store/issue/team/issue.store.ts`
+- [!] `ce/store/issue/team/filter.store.ts` — `@ts-nocheck` stub — misma deuda que epic/ del mismo patrón.
+- [x] `ce/store/issue/team/index.ts`
+- [!] `ce/store/issue/team/issue.store.ts` — `@ts-nocheck` stub — misma deuda.
 
 #### `ce/store/issue/team-project/`
 
-- [ ] `ce/store/issue/team-project/filter.store.ts`
-- [ ] `ce/store/issue/team-project/index.ts`
-- [ ] `ce/store/issue/team-project/issue.store.ts`
+- [!] `ce/store/issue/team-project/filter.store.ts` — `@ts-nocheck` stub — misma deuda.
+- [x] `ce/store/issue/team-project/index.ts`
+- [!] `ce/store/issue/team-project/issue.store.ts` — `@ts-nocheck` stub — misma deuda.
 
 #### `ce/store/issue/team-views/`
 
-- [ ] `ce/store/issue/team-views/filter.store.ts`
-- [ ] `ce/store/issue/team-views/index.ts`
-- [ ] `ce/store/issue/team-views/issue.store.ts`
+- [!] `ce/store/issue/team-views/filter.store.ts` — `@ts-nocheck` stub — misma deuda.
+- [x] `ce/store/issue/team-views/index.ts`
+- [!] `ce/store/issue/team-views/issue.store.ts` — `@ts-nocheck` stub — misma deuda.
 
 #### `ce/store/issue/workspace/`
 
-- [ ] `ce/store/issue/workspace/issue.store.ts`
+- [x] `ce/store/issue/workspace/issue.store.ts`
 
 #### `ce/store/member/`
 
-- [ ] `ce/store/member/project-member.store.ts`
+- [x] `ce/store/member/project-member.store.ts`
 
 #### `ce/store/pages/`
 
-- [ ] `ce/store/pages/extended-base-page.ts`
+- [x] `ce/store/pages/extended-base-page.ts`
 
 #### `ce/store/timeline/`
 
-- [ ] `ce/store/timeline/base-timeline.store.ts`
-- [ ] `ce/store/timeline/index.ts`
+- [!] `ce/store/timeline/base-timeline.store.ts` — `renderView: any` observable (MobX) + `updateRenderView(data: any)` action (5× `any` en el store). Perder tipado sobre un observable MobX es particularmente malo porque elimina safety en consumidores. Refactor: tipar `renderView` con el shape real de `ChartDataType` o la lista que use.
+- [x] `ce/store/timeline/index.ts`
 
 #### `ce/store/user/`
 
-- [ ] `ce/store/user/permission.store.ts`
+- [x] `ce/store/user/permission.store.ts`
 
 #### `ce/store/workspace/`
 
-- [ ] `ce/store/workspace/index.ts`
+- [x] `ce/store/workspace/index.ts`
 
 #### `ce/types/`
 
-- [ ] `ce/types/gantt-chart.ts`
-- [ ] `ce/types/index.ts`
+- [x] `ce/types/gantt-chart.ts`
+- [x] `ce/types/index.ts`
 
 #### `ce/types/issue-types/`
 
-- [ ] `ce/types/issue-types/index.ts`
+- [x] `ce/types/issue-types/index.ts`
 
 #### `ce/types/pages/`
 
-- [ ] `ce/types/pages/pane-extensions.ts`
+- [x] `ce/types/pages/pane-extensions.ts`
 
 #### `ce/types/projects/`
 
-- [ ] `ce/types/projects/index.ts`
-- [ ] `ce/types/projects/project-activity.ts`
-- [ ] `ce/types/projects/projects.ts`
+- [x] `ce/types/projects/index.ts`
+- [x] `ce/types/projects/project-activity.ts`
+- [x] `ce/types/projects/projects.ts`
 
 ## `core/` — 1589 archivos
 
