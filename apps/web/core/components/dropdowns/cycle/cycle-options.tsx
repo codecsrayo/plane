@@ -144,7 +144,6 @@ export const CycleOptions = observer(function CycleOptions(props: CycleOptionsPr
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder={t("common.search.label")}
-            displayValue={(assigned: any) => assigned?.name}
             onKeyDown={searchInputKeyDown}
           />
         </div>
