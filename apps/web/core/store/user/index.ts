@@ -218,7 +218,7 @@ export class UserStore implements IUserStore {
       if (this.data) set(this.data, ["is_password_autoset"], false);
       return user;
     } catch (error) {
-      console.log(error);
+      console.error("Failed to change password from user store", error);
       throw error;
     }
   };

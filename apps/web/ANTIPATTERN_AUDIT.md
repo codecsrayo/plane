@@ -3713,7 +3713,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 - [!] `core/store/user/account.store.ts` — `: any` en anotaciones.
 - [!] `core/store/user/base-permissions.store.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
-- [!] `core/store/user/index.ts` — Legacy raw throw + `console.log` para errores (debería ser `console.error` o eliminarse).
+- [x] `core/store/user/index.ts` — `console.log(error)` en `changePassword` → `console.error("Failed to change password from user store", error)` (mensaje contextual, nivel de log correcto). Raw rethrows se mantienen como legacy consistente con el resto de stores.
 - [!] `core/store/user/profile.store.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
 - [!] `core/store/user/settings.store.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
 
