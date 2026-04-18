@@ -25,7 +25,7 @@ use crate::{
         permissions::{ROLE_ADMIN, ROLE_GUEST, ROLE_MEMBER, ROLE_VIEWER},
     },
     entities::{
-        intake_issues, issue_sequences, project_deploy_boards, project_member_invites,
+        intake_issues, intakes, issue_sequences, project_deploy_boards, project_member_invites,
         project_members, project_user_properties, projects, states, user_favorites, users,
         workspace_members, workspaces,
     },
@@ -1116,6 +1116,11 @@ pub async fn update_project(
     let now = chrono::Utc::now().fixed_offset();
     let mut active: projects::ActiveModel = project.into();
 
+    // Capturar si el cliente está activando intake_view para aplicar la
+    // creación idempotente del Intake row después del update — paridad con
+    // Django (apps/api/plane/app/views/project/base.py:353-360).
+    let enabled_intake = body.intake_view == Some(true);
+
     if let Some(v) = body.name { active.name = Set(v); }
     if let Some(v) = body.description { active.description = Set(v); }
     if let Some(v) = body.network { active.network = Set(v); }
@@ -1138,6 +1143,47 @@ pub async fn update_project(
     active.updated_at = Set(now);
 
     let updated = active.update(&state.db).await.map_err(AppError::Database)?;
+
+    // Paridad Django: si intake_view acaba de activarse, hacer get-or-create
+    // del Intake row para el proyecto. Sin esto, `projects.intake_view=true`
+    // pero la tabla `intakes` vacía → el frontend ve UI de intake pero el
+    // handler POST /intake-issues/ falla (ver routes/intake.rs).
+    //
+    // NOTA: Django tampoco usa transaction.atomic() aquí, así que si este
+    // INSERT falla, el cliente verá intake_view=true pero el intake no
+    // existirá. El handler de create_intake_issue tiene get-or-create
+    // defensivo como safety net.
+    if enabled_intake {
+        let existing = intakes::Entity::find()
+            .active()
+            .filter(intakes::Column::ProjectId.eq(updated.id))
+            .filter(intakes::Column::IsDefault.eq(true))
+            .one(&state.db)
+            .await
+            .map_err(AppError::Database)?;
+
+        if existing.is_none() {
+            intakes::ActiveModel {
+                id: Set(Uuid::new_v4()),
+                name: Set(format!("{} Intake", updated.name)),
+                description: Set(String::new()),
+                is_default: Set(true),
+                view_props: Set(serde_json::json!({})),
+                logo_props: Set(serde_json::json!({})),
+                project_id: Set(updated.id),
+                workspace_id: Set(updated.workspace_id),
+                created_by_id: Set(Some(user.id)),
+                updated_by_id: Set(Some(user.id)),
+                created_at: Set(now),
+                updated_at: Set(now),
+                deleted_at: Set(None),
+            }
+            .insert(&state.db)
+            .await
+            .map_err(AppError::Database)?;
+        }
+    }
+
     let role = pm.as_ref().map(|m| m.role);
     Ok(Json(ProjectResponse::from_model(&updated, None, role)))
 }
