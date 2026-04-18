@@ -67,7 +67,7 @@ export const usePageFallback = (args: TArgs) => {
         description_html: html,
         description_json: json,
       });
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error(error);
     } finally {
       setIsFetchingFallbackBinary(false);

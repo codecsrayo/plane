@@ -251,7 +251,7 @@ export const CreateUpdateIssueModalBase = observer(function CreateUpdateIssueMod
       setDescription("<p></p>");
       setChangesMade(null);
       return response;
-    } catch (error: any) {
+    } catch (error: unknown) {
       setToast({
         type: TOAST_TYPE.ERROR,
         title: t("error"),
@@ -355,7 +355,7 @@ export const CreateUpdateIssueModalBase = observer(function CreateUpdateIssueMod
           ) : undefined,
       });
       handleClose();
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error(error);
       setToast({
         type: TOAST_TYPE.ERROR,

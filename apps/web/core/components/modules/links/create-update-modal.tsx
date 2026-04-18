@@ -66,7 +66,7 @@ export function CreateUpdateModuleLinkModal(props: Props) {
         });
       }
       onClose();
-    } catch (error: any) {
+    } catch (error: unknown) {
       setToast({
         type: TOAST_TYPE.ERROR,
         title: "Error!",

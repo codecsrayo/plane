@@ -1705,7 +1705,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 - [x] `core/components/home/widgets/links/link-detail.tsx`
 - [x] `core/components/home/widgets/links/links.tsx`
 - [x] `core/components/home/widgets/links/root.tsx`
-- [!] `core/components/home/widgets/links/use-links.tsx` — 3× `catch (error: any)` (líneas 50, 70, 88) — migrar a `unknown`.
+- [x] `core/components/home/widgets/links/use-links.tsx` — 3× `catch (error: any)` → `unknown`; `error?.data?.error` → `extractApiErrorMessage`.
 
 #### `core/components/home/widgets/loaders/`
 
@@ -1810,7 +1810,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 #### `core/components/inbox/modals/`
 
 - [x] `core/components/inbox/modals/decline-issue-modal.tsx`
-- [!] `core/components/inbox/modals/delete-issue-modal.tsx` — `catch (errors: any)` (línea 55).
+- [x] `core/components/inbox/modals/delete-issue-modal.tsx` — `catch (errors: any)` → `unknown`; `errors?.error` → `extractApiErrorMessage`.
 - [x] `core/components/inbox/modals/select-duplicate.tsx`
 - [x] `core/components/inbox/modals/snooze-issue-modal.tsx`
 
@@ -1966,7 +1966,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 - [x] `core/components/issues/issue-detail/links/link-item.tsx`
 - [x] `core/components/issues/issue-detail/links/link-list.tsx`
 - [x] `core/components/issues/issue-detail/links/links.tsx`
-- [!] `core/components/issues/issue-detail/links/root.tsx` — `catch (error: any)` (línea 60).
+- [x] `core/components/issues/issue-detail/links/root.tsx` — `catch (error: any)` → `unknown`; `error?.data?.error` → `extractApiErrorMessage`.
 
 #### `core/components/issues/issue-detail/parent/`
 
@@ -2002,7 +2002,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 #### `core/components/issues/issue-detail-widgets/links/`
 
 - [x] `core/components/issues/issue-detail-widgets/links/content.tsx`
-- [!] `core/components/issues/issue-detail-widgets/links/helper.tsx` — 2× `catch (error: any)` (líneas 38, 56).
+- [x] `core/components/issues/issue-detail-widgets/links/helper.tsx` — 2× `catch (error: any)` → `unknown`; `error?.data?.error` → `extractApiErrorMessage`.
 - [x] `core/components/issues/issue-detail-widgets/links/index.ts`
 - [x] `core/components/issues/issue-detail-widgets/links/quick-action-button.tsx`
 - [x] `core/components/issues/issue-detail-widgets/links/root.tsx`
@@ -2277,7 +2277,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `core/components/issues/issue-modal/`
 
-- [!] `core/components/issues/issue-modal/base.tsx` — 2× `catch (error: any)` (líneas 254, 358).
+- [x] `core/components/issues/issue-modal/base.tsx` — 2× `catch (error: any)` → `unknown`.
 - [x] `core/components/issues/issue-modal/draft-issue-layout.tsx`
 - [!] `core/components/issues/issue-modal/form.tsx` — `dataResetProperties?: any[]` (línea 75).
 - [x] `core/components/issues/issue-modal/modal.tsx`
@@ -2327,7 +2327,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `core/components/issues/workspace-draft/`
 
-- [!] `core/components/issues/workspace-draft/delete-modal.tsx` — `catch (errors: any)` (línea 78).
+- [x] `core/components/issues/workspace-draft/delete-modal.tsx` — `catch (errors: any)` → `unknown`; `errors?.error` → `extractApiErrorMessage`.
 - [x] `core/components/issues/workspace-draft/draft-issue-block.tsx`
 - [x] `core/components/issues/workspace-draft/draft-issue-properties.tsx`
 - [x] `core/components/issues/workspace-draft/empty-state.tsx`
@@ -2339,7 +2339,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 #### `core/components/labels/`
 
 - [!] `core/components/labels/create-update-label-inline.tsx` — `getErrorMessage = (error: any, operation) => string` (línea 73) — tipar `error` como `unknown` + narrowing.
-- [!] `core/components/labels/delete-label-modal.tsx` — `catch (err: any)` (línea 46).
+- [x] `core/components/labels/delete-label-modal.tsx` — `catch (err: any)` → `unknown`; `err?.error` → `extractApiErrorMessage`.
 - [x] `core/components/labels/index.ts`
 - [x] `core/components/labels/label-drag-n-drop-HOC.tsx`
 - [x] `core/components/labels/label-utils.ts`
@@ -2375,10 +2375,10 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 - [x] `core/components/modules/delete-module-modal.tsx`
 - [!] `core/components/modules/form.tsx` — `handleFormSubmit: (values, dirtyFields: any) => ...` (línea 26) — tipar `dirtyFields` con el tipo de react-hook-form.
 - [x] `core/components/modules/index.ts`
-- [!] `core/components/modules/modal.tsx` — `catch (err: any)` (líneas 68, 89).
+- [x] `core/components/modules/modal.tsx` — 2× `catch (err: any)` → `unknown`.
 - [x] `core/components/modules/module-card-item.tsx`
 - [x] `core/components/modules/module-layout-icon.tsx`
-- [!] `core/components/modules/module-list-item-action.tsx` — `catch (error: any)` (línea 120).
+- [x] `core/components/modules/module-list-item-action.tsx` — `catch (error: any)` → `unknown`.
 - [x] `core/components/modules/module-list-item.tsx`
 - [x] `core/components/modules/module-peek-overview.tsx`
 - [x] `core/components/modules/module-status-dropdown.tsx`
@@ -2432,7 +2432,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `core/components/modules/links/`
 
-- [!] `core/components/modules/links/create-update-modal.tsx` — `catch (error: any)` (línea 69).
+- [x] `core/components/modules/links/create-update-modal.tsx` — `catch (error: any)` → `unknown`.
 - [x] `core/components/modules/links/index.ts`
 - [x] `core/components/modules/links/list-item.tsx`
 - [x] `core/components/modules/links/list.tsx`
@@ -2473,7 +2473,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 - [x] `core/components/onboarding/header.tsx`
 - [x] `core/components/onboarding/index.ts`
 - [x] `core/components/onboarding/invitations.tsx`
-- [!] `core/components/onboarding/invite-members.tsx` — (1) `errors: any` (línea 64) en prop type — tipar con `FieldErrors<T>` de react-hook-form. (2) `catch (err: any)` (línea 306).
+- [x] `core/components/onboarding/invite-members.tsx` — `errors: any` → `FieldErrors<FormValues>`; `catch (err: any)` → `unknown`.
 - [x] `core/components/onboarding/profile-setup.tsx`
 - [x] `core/components/onboarding/root.tsx`
 - [x] `core/components/onboarding/step-indicator.tsx`
@@ -2505,7 +2505,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 #### `core/components/onboarding/steps/team/`
 
 - [x] `core/components/onboarding/steps/team/index.ts`
-- [!] `core/components/onboarding/steps/team/root.tsx` — (1) `errors: any` (línea 60). (2) `catch (err: any)` (línea 306). Mismo patrón que invite-members.tsx.
+- [x] `core/components/onboarding/steps/team/root.tsx` — `errors: any` → `FieldErrors<FormValues>`; `catch (err: any)` → `unknown`.
 
 #### `core/components/onboarding/steps/usecase/`
 
@@ -2516,7 +2516,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 - [x] `core/components/onboarding/steps/workspace/create.tsx`
 - [x] `core/components/onboarding/steps/workspace/index.ts`
-- [!] `core/components/onboarding/steps/workspace/join-invites.tsx` — `catch (error: any)` (línea 62).
+- [x] `core/components/onboarding/steps/workspace/join-invites.tsx` — `catch (error: any)` → `unknown`.
 - [x] `core/components/onboarding/steps/workspace/root.tsx`
 
 #### `core/components/pages/`
@@ -3055,7 +3055,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 - [x] `core/components/stickies/sticky/inputs.tsx`
 - [x] `core/components/stickies/sticky/root.tsx`
 - [x] `core/components/stickies/sticky/sticky-item-drag-handle.tsx`
-- [!] `core/components/stickies/sticky/use-operations.tsx` — `catch (error: any)` (línea 91).
+- [x] `core/components/stickies/sticky/use-operations.tsx` — `catch (error: any)` → `unknown`.
 
 #### `core/components/ui/`
 
@@ -3341,7 +3341,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 - [x] `core/hooks/use-multiple-select.ts` — debug `console.log("force adding")` eliminado.
 - [x] `core/hooks/use-navigation-preferences.ts`
 - [x] `core/hooks/use-online-status.ts`
-- [!] `core/hooks/use-page-fallback.ts` — `catch (error: any)` (línea 70). Preferir `catch (error: unknown)` + narrowing.
+- [x] `core/hooks/use-page-fallback.ts` — `catch (error: any)` → `unknown`.
 - [x] `core/hooks/use-page-filters.ts`
 - [x] `core/hooks/use-page-operations.ts`
 - [x] `core/hooks/use-parse-editor-content.ts`

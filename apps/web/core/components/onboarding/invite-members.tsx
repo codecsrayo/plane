@@ -14,7 +14,7 @@ import type {
   UseFormSetValue,
   UseFormWatch,
 } from "react-hook-form";
-import { Controller, useFieldArray, useForm } from "react-hook-form";
+import { Controller, useFieldArray, useForm , FieldErrors } from "react-hook-form";
 // icons
 import { usePopper } from "react-popper";
 import { XCircle } from "lucide-react";
@@ -61,7 +61,7 @@ type InviteMemberFormProps = {
   watch: UseFormWatch<FormValues>;
   field: FieldArrayWithId<FormValues, "emails", "id">;
   fields: FieldArrayWithId<FormValues, "emails", "id">[];
-  errors: any;
+  errors: FieldErrors<FormValues>;
   isInvitationDisabled: boolean;
   setIsInvitationDisabled: (value: boolean) => void;
 };
@@ -303,7 +303,7 @@ export function InviteMembers(props: Props) {
         message: "Invitations sent successfully.",
       });
       await nextStep();
-    } catch (err: any) {
+    } catch (err: unknown) {
       setToast({
         type: TOAST_TYPE.ERROR,
         title: "Error!",

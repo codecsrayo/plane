@@ -9,6 +9,7 @@ import { useTranslation } from "@plane/i18n";
 import { TOAST_TYPE, setToast } from "@plane/propel/toast";
 import type { TProjectLink } from "@plane/types";
 import { useHome } from "@/hooks/store/use-home";
+import { extractApiErrorMessage } from "@/services/api.service";
 
 export type TLinkOperations = {
   create: (data: Partial<TProjectLink>) => Promise<void>;
@@ -47,10 +48,10 @@ export const useLinks = (workspaceSlug: string) => {
             title: t("links.toasts.created.title"),
           });
           toggleLinkModal(false);
-        } catch (error: any) {
-          console.error("error", error?.data?.error);
+        } catch (error: unknown) {
+          console.error("error", error);
           setToast({
-            message: error?.data?.error ?? t("links.toasts.not_created.message"),
+            message: extractApiErrorMessage(error, t("links.toasts.not_created.message")),
             type: TOAST_TYPE.ERROR,
             title: t("links.toasts.not_created.title"),
           });
@@ -67,9 +68,9 @@ export const useLinks = (workspaceSlug: string) => {
             title: t("links.toasts.updated.title"),
           });
           toggleLinkModal(false);
-        } catch (error: any) {
+        } catch (error: unknown) {
           setToast({
-            message: error?.data?.error ?? t("links.toasts.not_updated.message"),
+            message: extractApiErrorMessage(error, t("links.toasts.not_updated.message")),
             type: TOAST_TYPE.ERROR,
             title: t("links.toasts.not_updated.title"),
           });
@@ -85,9 +86,9 @@ export const useLinks = (workspaceSlug: string) => {
             type: TOAST_TYPE.SUCCESS,
             title: t("links.toasts.removed.message"),
           });
-        } catch (error: any) {
+        } catch (error: unknown) {
           setToast({
-            message: error?.data?.error ?? t("links.toasts.not_removed.message"),
+            message: extractApiErrorMessage(error, t("links.toasts.not_removed.message")),
             type: TOAST_TYPE.ERROR,
             title: t("links.toasts.not_removed.title"),
           });

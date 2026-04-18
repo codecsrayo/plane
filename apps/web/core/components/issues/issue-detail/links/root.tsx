@@ -16,6 +16,7 @@ import { useIssueDetail } from "@/hooks/store/use-issue-detail";
 // local imports
 import { IssueLinkCreateUpdateModal } from "./create-update-link-modal";
 import { IssueLinkList } from "./links";
+import { extractApiErrorMessage } from "@/services/api.service";
 
 export type TLinkOperations = {
   create: (data: Partial<TIssueLink>) => Promise<void>;
@@ -57,9 +58,9 @@ export function IssueLinkRoot(props: TIssueLinkRoot) {
             title: "Link created",
           });
           toggleIssueLinkModal(false);
-        } catch (error: any) {
+        } catch (error: unknown) {
           setToast({
-            message: error?.data?.error ?? "The link could not be created",
+            message: extractApiErrorMessage(error, "The link could not be created"),
             type: TOAST_TYPE.ERROR,
             title: "Link not created",
           });

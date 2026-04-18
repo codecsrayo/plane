@@ -65,7 +65,7 @@ export const CreateUpdateModuleModal = observer(function CreateUpdateModuleModal
         title: "Success!",
         message: "Module created successfully.",
       });
-    } catch (err: any) {
+    } catch (err: unknown) {
       setToast({
         type: TOAST_TYPE.ERROR,
         title: "Error!",
@@ -86,7 +86,7 @@ export const CreateUpdateModuleModal = observer(function CreateUpdateModuleModal
         title: "Success!",
         message: "Module updated successfully.",
       });
-    } catch (err: any) {
+    } catch (err: unknown) {
       setToast({
         type: TOAST_TYPE.ERROR,
         title: "Error!",

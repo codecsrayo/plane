@@ -13,6 +13,7 @@ import type { TIssueLink, TIssueServiceType } from "@plane/types";
 import { useIssueDetail } from "@/hooks/store/use-issue-detail";
 // local imports
 import type { TLinkOperations } from "../../issue-detail/links";
+import { extractApiErrorMessage } from "@/services/api.service";
 
 export const useLinkOperations = (
   workspaceSlug: string,
@@ -35,9 +36,9 @@ export const useLinkOperations = (
             type: TOAST_TYPE.SUCCESS,
             title: t("links.toasts.created.title"),
           });
-        } catch (error: any) {
+        } catch (error: unknown) {
           setToast({
-            message: error?.data?.error ?? t("links.toasts.not_created.message"),
+            message: extractApiErrorMessage(error, t("links.toasts.not_created.message")),
             type: TOAST_TYPE.ERROR,
             title: t("links.toasts.not_created.title"),
           });
@@ -53,9 +54,9 @@ export const useLinkOperations = (
             type: TOAST_TYPE.SUCCESS,
             title: t("links.toasts.updated.title"),
           });
-        } catch (error: any) {
+        } catch (error: unknown) {
           setToast({
-            message: error?.data?.error ?? t("links.toasts.not_updated.message"),
+            message: extractApiErrorMessage(error, t("links.toasts.not_updated.message")),
             type: TOAST_TYPE.ERROR,
             title: t("links.toasts.not_updated.title"),
           });

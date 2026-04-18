@@ -14,6 +14,7 @@ import type { IIssueLabel } from "@plane/types";
 import { AlertModalCore } from "@plane/ui";
 // hooks
 import { useLabel } from "@/hooks/store/use-label";
+import { extractApiErrorMessage } from "@/services/api.service";
 
 type Props = {
   isOpen: boolean;
@@ -43,9 +44,9 @@ export const DeleteLabelModal = observer(function DeleteLabelModal(props: Props)
     try {
       await deleteLabel(workspaceSlug.toString(), projectId.toString(), data.id);
       handleClose();
-    } catch (err: any) {
+    } catch (err: unknown) {
       setIsDeleteLoading(false);
-      const error = err?.error || "Label could not be deleted. Please try again.";
+      const error = extractApiErrorMessage(err, "Label could not be deleted. Please try again.");
       setToast({
         type: TOAST_TYPE.ERROR,
         title: "Error!",

@@ -16,6 +16,7 @@ import { AlertModalCore } from "@plane/ui";
 // hooks
 import { useIssues } from "@/hooks/store/use-issues";
 import { useUser, useUserPermissions } from "@/hooks/store/user";
+import { extractApiErrorMessage } from "@/services/api.service";
 
 type Props = {
   isOpen: boolean;
@@ -75,8 +76,8 @@ export function WorkspaceDraftIssueDeleteIssueModal(props: Props) {
           title: `${t("success")}!`,
           message: t("workspace_draft_issues.toasts.deleted.success"),
         });
-      } catch (errors: any) {
-        const isPermissionError = errors?.error === "Only admin or creator can delete the work item";
+      } catch (errors: unknown) {
+        const isPermissionError = extractApiErrorMessage(errors, "") === "Only admin or creator can delete the work item";
         const currentError = isPermissionError
           ? PROJECT_ERROR_MESSAGES.permissionError
           : PROJECT_ERROR_MESSAGES.issueDeleteError;

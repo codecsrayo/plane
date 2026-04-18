@@ -74,6 +74,32 @@ export class ApiError extends Error {
 }
 
 
+/**
+ * Extracts a user-facing error message from an unknown catch value.
+ * Handles both `ApiError` (`.data.error`) and legacy plain objects (`.error`).
+ * Falls back to `fallback` if no string message can be found.
+ */
+export const extractApiErrorMessage = (error: unknown, fallback: string): string => {
+  if (error instanceof ApiError) {
+    if (error.data && typeof error.data === "object" && "error" in error.data) {
+      const msg = (error.data as Record<string, unknown>).error;
+      if (typeof msg === "string" && msg.length > 0) return msg;
+    }
+    if (error.message && error.message !== "API request failed") return error.message;
+  }
+  if (error && typeof error === "object") {
+    const plain = error as Record<string, unknown>;
+    // legacy pattern: error.data?.error
+    if (plain.data && typeof plain.data === "object" && "error" in (plain.data as object)) {
+      const msg = (plain.data as Record<string, unknown>).error;
+      if (typeof msg === "string" && msg.length > 0) return msg;
+    }
+    // legacy pattern: error.error
+    if (typeof plain.error === "string" && plain.error.length > 0) return plain.error;
+  }
+  return fallback;
+};
+
 export abstract class APIService {
   protected baseURL: string;
   private axiosInstance: AxiosInstance;

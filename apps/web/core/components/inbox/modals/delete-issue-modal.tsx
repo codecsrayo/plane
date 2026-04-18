@@ -16,6 +16,7 @@ import { AlertModalCore } from "@plane/ui";
 // constants
 // hooks
 import { useProject } from "@/hooks/store/use-project";
+import { extractApiErrorMessage } from "@/services/api.service";
 
 type Props = {
   data: Partial<TIssue>;
@@ -52,8 +53,8 @@ export const DeleteInboxIssueModal = observer(function DeleteInboxIssueModal({
         title: `${t("success")}`,
         message: `${t("inbox_issue.modals.delete.success")}`,
       });
-    } catch (errors: any) {
-      const isPermissionError = errors?.error === "Only admin or creator can delete the work item";
+    } catch (errors: unknown) {
+      const isPermissionError = extractApiErrorMessage(errors, "") === "Only admin or creator can delete the work item";
       const currentError = isPermissionError
         ? PROJECT_ERROR_MESSAGES.permissionError
         : PROJECT_ERROR_MESSAGES.issueDeleteError;

@@ -88,7 +88,7 @@ export const useStickyOperations = (props: TProps) => {
             title: t("stickies.toasts.created.title"),
             message: t("stickies.toasts.created.message"),
           });
-        } catch (error: any) {
+        } catch (error: unknown) {
           console.error("Error in creating sticky:", error);
           setToast({
             type: TOAST_TYPE.ERROR,
