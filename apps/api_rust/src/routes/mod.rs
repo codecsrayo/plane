@@ -153,6 +153,7 @@ pub mod instances;
         cycles::add_issues_to_cycle,
         cycles::remove_issue_from_cycle,
         cycles::cycle_analytics,
+        cycles::cycle_progress,
         cycles::get_cycle_user_properties,
         cycles::update_cycle_user_properties,
         modules::list_modules,
@@ -752,6 +753,10 @@ pub fn build_router(state: AppState) -> Router {
             "/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/user-properties",
             get(cycles::get_cycle_user_properties)
                 .patch(cycles::update_cycle_user_properties),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/progress",
+            get(cycles::cycle_progress),
         )
         // ── Modules ─────────────────────────────────────────────────────────
         .route(

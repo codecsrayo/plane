@@ -1433,3 +1433,280 @@ pub async fn update_cycle_user_properties(
     let updated = am.update(&state.db).await.map_err(AppError::Database)?;
     Ok(Json(CycleUserPropertiesResponse::from(&updated)))
 }
+
+// ═════════════════════════════════════════════════════════════════════════════
+// Cycle Progress
+// ═════════════════════════════════════════════════════════════════════════════
+//
+// Mirror de `CycleProgressEndpoint` en
+// apps/api/plane/app/views/cycle/base.py:658-783.
+//
+// Devuelve counts de issues y sumas de estimate_points agrupados por
+// state.group (backlog/unstarted/started/cancelled/completed) + totales.
+//
+// Semántica clave (paridad Django):
+//   - Si el ciclo tiene `progress_snapshot` no vacío → los counts de issues
+//     vienen del snapshot (ciclo cerrado con issues transferidos).
+//     Las sumas de estimate_points SIEMPRE se calculan live — el snapshot
+//     no las contiene (línea 664 en base.py: `aggregate_estimates` se
+//     computa antes del branch).
+//   - Sin snapshot → counts live sobre `issues` JOIN `cycle_issues`.
+//   - Estimate sums: sólo suman puntos de issues cuyo estimate.type='points'.
+//   - Permisos: ADMIN / MEMBER / GUEST.
+//
+// Optimización sobre Django: una sola query agregada por cada bloque (counts
+// y estimates), en vez de 6 y 6 queries separadas como hace el ORM.
+
+/// Estructura interna para deserializar los counts del SQL agregado.
+#[derive(Debug, Default)]
+struct ProgressIssueCounts {
+    backlog: i64,
+    unstarted: i64,
+    started: i64,
+    cancelled: i64,
+    completed: i64,
+    total: i64,
+}
+
+/// Estructura interna para deserializar las sumas de estimate_points.
+#[derive(Debug, Default)]
+struct ProgressEstimatePoints {
+    backlog: f64,
+    unstarted: f64,
+    started: f64,
+    cancelled: f64,
+    completed: f64,
+    total: f64,
+}
+
+/// Suma de `CAST(estimate_points.value AS DOUBLE PRECISION)` agrupada por
+/// `state.group`, filtrando issues del ciclo cuyo `estimate_point` pertenece
+/// a un `estimate` con `type='points'`.
+///
+/// Mirror de la query compuesta en cycle/base.py:664-711. Django hace esto
+/// con 6 `Sum(Case(When(...), default=0))` en un único `.aggregate(...)`,
+/// que se compila a exactamente esta forma en SQL.
+///
+/// Todos los resultados se COALESCE a 0 — Django usa `default=Value(0)` en
+/// cada Sum y además `or 0` en la mayoría de los campos de respuesta.
+async fn compute_estimate_points(
+    db: &sea_orm::DatabaseConnection,
+    ws_id: Uuid,
+    project_id: Uuid,
+    cycle_id: Uuid,
+) -> Result<ProgressEstimatePoints, AppError> {
+    // UUIDs van interpolados: son type-safe (Uuid::Display solo produce
+    // hex+dashes), no hay superficie de SQL injection. Mismo patrón que
+    // `cycle_analytics` más arriba en este archivo.
+    let sql = format!(
+        "SELECT
+            COALESCE(SUM(CAST(ep.value AS DOUBLE PRECISION)) FILTER (WHERE s.\"group\" = 'backlog'), 0)::float8   AS backlog,
+            COALESCE(SUM(CAST(ep.value AS DOUBLE PRECISION)) FILTER (WHERE s.\"group\" = 'unstarted'), 0)::float8 AS unstarted,
+            COALESCE(SUM(CAST(ep.value AS DOUBLE PRECISION)) FILTER (WHERE s.\"group\" = 'started'), 0)::float8   AS started,
+            COALESCE(SUM(CAST(ep.value AS DOUBLE PRECISION)) FILTER (WHERE s.\"group\" = 'cancelled'), 0)::float8 AS cancelled,
+            COALESCE(SUM(CAST(ep.value AS DOUBLE PRECISION)) FILTER (WHERE s.\"group\" = 'completed'), 0)::float8 AS completed,
+            COALESCE(SUM(CAST(ep.value AS DOUBLE PRECISION)), 0)::float8                                          AS total
+         FROM issues i
+         JOIN cycle_issues ci
+           ON ci.issue_id = i.id
+          AND ci.cycle_id = '{cycle_id}'
+          AND ci.workspace_id = '{ws_id}'
+          AND ci.project_id = '{project_id}'
+          AND ci.deleted_at IS NULL
+         JOIN estimate_points ep
+           ON ep.id = i.estimate_point_id
+          AND ep.deleted_at IS NULL
+         JOIN estimates e
+           ON e.id = ep.estimate_id
+          AND e.\"type\" = 'points'
+          AND e.deleted_at IS NULL
+         LEFT JOIN states s ON s.id = i.state_id
+         WHERE i.workspace_id = '{ws_id}'
+           AND i.project_id = '{project_id}'
+           AND i.deleted_at IS NULL
+           AND i.archived_at IS NULL
+           AND i.is_draft = FALSE
+           AND (s.\"group\" IS NULL OR s.\"group\" <> 'triage')"
+    );
+
+    let row = db
+        .query_one(Statement::from_string(
+            sea_orm::DatabaseBackend::Postgres,
+            sql,
+        ))
+        .await
+        .map_err(AppError::Database)?;
+
+    let Some(row) = row else {
+        return Ok(ProgressEstimatePoints::default());
+    };
+
+    Ok(ProgressEstimatePoints {
+        backlog: row.try_get::<f64>("", "backlog").unwrap_or(0.0),
+        unstarted: row.try_get::<f64>("", "unstarted").unwrap_or(0.0),
+        started: row.try_get::<f64>("", "started").unwrap_or(0.0),
+        cancelled: row.try_get::<f64>("", "cancelled").unwrap_or(0.0),
+        completed: row.try_get::<f64>("", "completed").unwrap_or(0.0),
+        total: row.try_get::<f64>("", "total").unwrap_or(0.0),
+    })
+}
+
+/// Counts live de issues por `state.group` para el ciclo. Una query en vez
+/// de 6. Mirror de cycle/base.py:720-765 (que Django resuelve con 6 queries
+/// separadas). Respeta el manager `issue_objects` (excluye triage, archived,
+/// draft, soft-deleted).
+async fn compute_issue_counts(
+    db: &sea_orm::DatabaseConnection,
+    ws_id: Uuid,
+    project_id: Uuid,
+    cycle_id: Uuid,
+) -> Result<ProgressIssueCounts, AppError> {
+    let sql = format!(
+        "SELECT
+            COUNT(*) FILTER (WHERE s.\"group\" = 'backlog')   AS backlog,
+            COUNT(*) FILTER (WHERE s.\"group\" = 'unstarted') AS unstarted,
+            COUNT(*) FILTER (WHERE s.\"group\" = 'started')   AS started,
+            COUNT(*) FILTER (WHERE s.\"group\" = 'cancelled') AS cancelled,
+            COUNT(*) FILTER (WHERE s.\"group\" = 'completed') AS completed,
+            COUNT(*)                                          AS total
+         FROM issues i
+         JOIN cycle_issues ci
+           ON ci.issue_id = i.id
+          AND ci.cycle_id = '{cycle_id}'
+          AND ci.workspace_id = '{ws_id}'
+          AND ci.project_id = '{project_id}'
+          AND ci.deleted_at IS NULL
+         LEFT JOIN states s ON s.id = i.state_id
+         WHERE i.workspace_id = '{ws_id}'
+           AND i.project_id = '{project_id}'
+           AND i.deleted_at IS NULL
+           AND i.archived_at IS NULL
+           AND i.is_draft = FALSE
+           AND (s.\"group\" IS NULL OR s.\"group\" <> 'triage')"
+    );
+
+    let row = db
+        .query_one(Statement::from_string(
+            sea_orm::DatabaseBackend::Postgres,
+            sql,
+        ))
+        .await
+        .map_err(AppError::Database)?;
+
+    let Some(row) = row else {
+        return Ok(ProgressIssueCounts::default());
+    };
+
+    Ok(ProgressIssueCounts {
+        backlog: row.try_get::<i64>("", "backlog").unwrap_or(0),
+        unstarted: row.try_get::<i64>("", "unstarted").unwrap_or(0),
+        started: row.try_get::<i64>("", "started").unwrap_or(0),
+        cancelled: row.try_get::<i64>("", "cancelled").unwrap_or(0),
+        completed: row.try_get::<i64>("", "completed").unwrap_or(0),
+        total: row.try_get::<i64>("", "total").unwrap_or(0),
+    })
+}
+
+/// Extrae un count entero de `progress_snapshot[key]`. El snapshot guarda
+/// los valores como números JSON; si falta la clave o no es número, 0.
+fn snapshot_i64(snapshot: &serde_json::Map<String, serde_json::Value>, key: &str) -> i64 {
+    snapshot
+        .get(key)
+        .and_then(|v| v.as_i64().or_else(|| v.as_f64().map(|f| f as i64)))
+        .unwrap_or(0)
+}
+
+/// GET /api/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/progress/
+///
+/// Devuelve 12 métricas: counts de issues por estado + sumas de estimate_points
+/// por estado, más totales. Mirror exacto de `CycleProgressEndpoint.get`
+/// (cycle/base.py:658-783).
+///
+/// Comportamiento:
+/// - Si el ciclo no existe → 404 (paridad Django: `{"error": "Cycle not found"}`).
+/// - Si `progress_snapshot` es un objeto no vacío → los counts de issues se
+///   leen del snapshot (ciclo cerrado, issues transferidos).
+/// - Las sumas de estimate_points SIEMPRE se calculan live (Django también
+///   lo hace: `aggregate_estimates` se computa antes del branch del snapshot).
+///
+/// Permisos: ADMIN / MEMBER / GUEST (paridad Django).
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/progress/",
+    tag = "Cycles",
+    params(
+        ("slug"       = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid,   Path, description = "Project UUID"),
+        ("cycle_id"   = Uuid,   Path, description = "Cycle UUID"),
+    ),
+    responses(
+        (status = 200, description = "Cycle progress counts + estimate points sums"),
+        (status = 403, description = "Not authorized"),
+        (status = 404, description = "Cycle not found"),
+    ),
+    security(("TokenAuth" = []))
+)]
+pub async fn cycle_progress(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Path((_slug, _project_id, cycle_id)): Path<(String, Uuid, Uuid)>,
+) -> Result<impl IntoResponse, AppError> {
+    require_role(
+        guard.project_member.role,
+        guard.workspace_member.role,
+        ROLE_GUEST,
+    )?;
+
+    let ws_id = guard.workspace.id;
+    let project_id = guard.project.id;
+    let db = &state.db;
+
+    // ── 1. Validar que el ciclo existe y pertenece al proyecto ────────────────
+    let cycle =
+        ensure_cycle_belongs_to_project(db, ws_id, project_id, cycle_id).await?;
+
+    // ── 2. Sumas de estimate_points — SIEMPRE live, como en Django ────────────
+    //
+    // Django computa `aggregate_estimates` en cycle/base.py:664, ANTES del
+    // branch del snapshot. El snapshot no contiene estas sumas.
+    let estimates = compute_estimate_points(db, ws_id, project_id, cycle_id).await?;
+
+    // ── 3. Counts de issues: desde snapshot si existe y no está vacío ────────
+    //
+    // Django: `if cycle.progress_snapshot:` — truthy sobre dict. En Postgres
+    // la columna es NOT NULL con default `{}` (falsy en Python) así que
+    // tenemos que distinguir objeto vacío de objeto con datos.
+    let counts = if let serde_json::Value::Object(snapshot) = &cycle.progress_snapshot {
+        if !snapshot.is_empty() {
+            // Leer del snapshot — mismas claves que usa Django al persistirlo.
+            ProgressIssueCounts {
+                backlog: snapshot_i64(snapshot, "backlog_issues"),
+                unstarted: snapshot_i64(snapshot, "unstarted_issues"),
+                started: snapshot_i64(snapshot, "started_issues"),
+                cancelled: snapshot_i64(snapshot, "cancelled_issues"),
+                completed: snapshot_i64(snapshot, "completed_issues"),
+                total: snapshot_i64(snapshot, "total_issues"),
+            }
+        } else {
+            compute_issue_counts(db, ws_id, project_id, cycle_id).await?
+        }
+    } else {
+        compute_issue_counts(db, ws_id, project_id, cycle_id).await?
+    };
+
+    // ── 4. Respuesta — mismas claves que Django (cycle/base.py:768-781) ───────
+    Ok(Json(serde_json::json!({
+        "backlog_estimate_points":   estimates.backlog,
+        "unstarted_estimate_points": estimates.unstarted,
+        "started_estimate_points":   estimates.started,
+        "cancelled_estimate_points": estimates.cancelled,
+        "completed_estimate_points": estimates.completed,
+        "total_estimate_points":     estimates.total,
+        "backlog_issues":   counts.backlog,
+        "unstarted_issues": counts.unstarted,
+        "started_issues":   counts.started,
+        "cancelled_issues": counts.cancelled,
+        "completed_issues": counts.completed,
+        "total_issues":     counts.total,
+    })))
+}
