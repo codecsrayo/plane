@@ -4,7 +4,7 @@
  * See the LICENSE file for details.
  */
 
-import { useEffect, useMemo } from "react";
+import { useEffect, useLayoutEffect, useMemo } from "react";
 import { observer } from "mobx-react";
 import { v4 as uuidv4 } from "uuid";
 // plane imports
@@ -43,7 +43,15 @@ export const WorkItemFiltersHOC = observer(function WorkItemFiltersHOC(props: TW
 type TWorkItemFilterProps = TSharedWorkItemFiltersProps &
   TAdditionalWorkItemFiltersProps & {
     initialWorkItemFilters: IIssueFilters;
-    children: React.ReactNode | ((props: { filter: IWorkItemFilterInstance }) => React.ReactNode);
+    // `filter` puede ser undefined en el render inicial: la creación del
+    // FilterInstance ocurre en useLayoutEffect (post-commit) para no escribir
+    // en el observable store durante el render y evitar el warning de React
+    // "Cannot update a component while rendering a different component" —
+    // típico cuando otro observer (p.ej. WorkItemFiltersToggle en el header)
+    // está suscrito a `getFilter` sobre el mismo entity. Todos los call sites
+    // (project-layout-root, cycle-layout-root, etc.) ya aplican `filter && …`
+    // defensivamente, así que widen-ear el tipo es no-breaking.
+    children: React.ReactNode | ((props: { filter: IWorkItemFilterInstance | undefined }) => React.ReactNode);
   };
 
 const WorkItemFilterRoot = observer(function WorkItemFilterRoot(props: TWorkItemFilterProps) {
@@ -61,7 +69,7 @@ const WorkItemFilterRoot = observer(function WorkItemFilterRoot(props: TWorkItem
     ...entityConfigProps
   } = props;
   // store hooks
-  const { getOrCreateFilter, deleteFilter } = useWorkItemFilters();
+  const { getFilter, getOrCreateFilter, deleteFilter } = useWorkItemFilters();
   // derived values
   const workItemEntityID = useMemo(
     () => (isTemporary ? `TEMP-${entityId ?? uuidv4()}` : entityId),
@@ -73,9 +81,29 @@ const WorkItemFilterRoot = observer(function WorkItemFilterRoot(props: TWorkItem
     allowedFilters: filtersToShowByLayout ? filtersToShowByLayout : [],
     ...entityConfigProps,
   });
-  // get or create filter instance
-  const workItemLayoutFilter = useMemo(
-    () =>
+
+  // Lectura reactiva del filter instance. `getFilter` es un computedFn que
+  // lee `filters.get(...)` del observable Map; suscribe a este observer a
+  // cambios en ese slot sin mutarlo, por lo que es seguro en render.
+  const workItemLayoutFilter = getFilter(entityType, workItemEntityID);
+
+  // Sincroniza el FilterInstance dentro del store DESPUÉS del commit.
+  // Antipatrón anterior: se llamaba `getOrCreateFilter` dentro de `useMemo`
+  // (durante render) — esa action muta `this.filters.set(...)` y además,
+  // en la rama "existing filter", asigna `onExpressionChange`,
+  // `updateExpressionOptions` y `toggleVisibility` sobre campos observables
+  // del FilterInstance. Cualquier otro observer suscrito via `getFilter`
+  // (p.ej. WorkItemFiltersToggle en el header) es re-programado por MobX a
+  // mitad del render de WorkItemFilterRoot → warning de React:
+  // "Cannot update a component (`WorkItemFiltersToggle`) while rendering a
+  // different component (`WorkItemFilterRoot`)".
+  //
+  // `useLayoutEffect` corre sincrónicamente post-commit y antes del paint,
+  // así que el render inicial con `filter === undefined` no genera flash
+  // visible: MobX notifica a los observers suscritos inmediatamente y
+  // React re-renderiza con el filter disponible en el mismo frame.
+  useLayoutEffect(
+    () => {
       getOrCreateFilter({
         entityType,
         entityId: workItemEntityID,
@@ -86,7 +114,12 @@ const WorkItemFilterRoot = observer(function WorkItemFilterRoot(props: TWorkItem
           updateViewOptions,
         },
         showOnMount,
-      }),
+      });
+    },
+    // Mismas deps que el useMemo original — `initialUserFilters` y
+    // `showOnMount` se mantienen fuera a propósito: sólo aplican a la
+    // creación inicial y no deben recrear/ocultar un filter ya visible que
+    // el usuario haya interactuado.
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [entityType, workItemEntityID, saveViewOptions, updateViewOptions, updateFilters]
   );
@@ -100,13 +133,13 @@ const WorkItemFilterRoot = observer(function WorkItemFilterRoot(props: TWorkItem
   );
 
   useEffect(() => {
+    // En el primer render `workItemLayoutFilter` aún es undefined porque la
+    // creación se difiere a useLayoutEffect. Este effect se vuelve a disparar
+    // cuando la instancia aparece (cambio de identidad en deps).
+    if (!workItemLayoutFilter) return;
     workItemLayoutFilter.configManager.setAreConfigsReady(workItemFiltersConfig.areAllConfigsInitialized);
     workItemLayoutFilter.configManager.registerAll(workItemFiltersConfig.configs);
-  }, [
-    workItemFiltersConfig.areAllConfigsInitialized,
-    workItemFiltersConfig.configs,
-    workItemLayoutFilter.configManager,
-  ]);
+  }, [workItemLayoutFilter, workItemFiltersConfig.areAllConfigsInitialized, workItemFiltersConfig.configs]);
 
   return <>{typeof children === "function" ? children({ filter: workItemLayoutFilter }) : children}</>;
 });
