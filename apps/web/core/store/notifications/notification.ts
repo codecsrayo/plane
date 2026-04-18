@@ -4,7 +4,6 @@
  * See the LICENSE file for details.
  */
 
-/* eslint-disable no-useless-catch */
 import { set } from "lodash-es";
 import { action, computed, makeObservable, observable, runInAction } from "mobx";
 import type { IUserLite, TNotification, TNotificationData } from "@plane/types";

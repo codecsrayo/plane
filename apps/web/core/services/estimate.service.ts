@@ -4,8 +4,6 @@
  * See the LICENSE file for details.
  */
 
-/* eslint-disable no-useless-catch */
-
 // types
 import { API_BASE_URL } from "@plane/constants";
 import type { IEstimate, IEstimateFormData, IEstimatePoint } from "@plane/types";

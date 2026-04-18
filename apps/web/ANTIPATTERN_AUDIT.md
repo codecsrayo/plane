@@ -3490,7 +3490,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 - [x] `core/services/cycle.service.ts` — Migrado a `ApiError`: `throw error?.response(?.data)` → `throw new ApiError(error?.response)`. Bare `throw error` → `throw toApiError(error)`.
 - [x] `core/services/cycle_archive.service.ts` — Migrado a `ApiError`: `throw error?.response(?.data)` → `throw new ApiError(error?.response)`. Bare `throw error` → `throw toApiError(error)`.
 - [x] `core/services/dashboard.service.ts` — Migrado a `ApiError`: `throw error?.response(?.data)` → `throw new ApiError(error?.response)`. Bare `throw error` → `throw toApiError(error)`.
-- [x] `core/services/estimate.service.ts` — Migrado a `ApiError`: `throw error?.response(?.data)` → `throw new ApiError(error?.response)`. Bare `throw error` → `throw toApiError(error)`.
+- [x] `core/services/estimate.service.ts` — Migrado a `ApiError`: `throw error?.response(?.data)` → `throw new ApiError(error?.response)`. Bare `throw error` → `throw toApiError(error)`. Directiva obsoleta `/* eslint-disable no-useless-catch */` removida.
 - [x] `core/services/file-upload.service.ts` — Migrado a `ApiError`: `throw error?.response(?.data)` → `throw new ApiError(error?.response)`. Bare `throw error` → `throw toApiError(error)`.
 - [x] `core/services/file.service.ts` — Migrado a `ApiError`: `throw error?.response(?.data)` → `throw new ApiError(error?.response)`. Bare `throw error` → `throw toApiError(error)`.
 - [x] `core/services/instance.service.ts` — Migrado a `ApiError`: `throw error?.response(?.data)` → `throw new ApiError(error?.response)`. Bare `throw error` → `throw toApiError(error)`.
@@ -3502,7 +3502,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 - [x] `core/services/user.service.ts` — Migrado a `ApiError`: `throw error?.response(?.data)` → `throw new ApiError(error?.response)`. Bare `throw error` → `throw toApiError(error)`.
 - [x] `core/services/view.service.ts` — Migrado a `ApiError`: `throw error?.response(?.data)` → `throw new ApiError(error?.response)`. Bare `throw error` → `throw toApiError(error)`.
 - [x] `core/services/webhook.service.ts` — Migrado a `ApiError`: `throw error?.response(?.data)` → `throw new ApiError(error?.response)`. Bare `throw error` → `throw toApiError(error)`.
-- [x] `core/services/workspace-notification.service.ts` — Migrado a `ApiError`: `throw error?.response(?.data)` → `throw new ApiError(error?.response)`. Bare `throw error` → `throw toApiError(error)`.
+- [x] `core/services/workspace-notification.service.ts` — Migrado a `ApiError`: `throw error?.response(?.data)` → `throw new ApiError(error?.response)`. Bare `throw error` → `throw toApiError(error)`. Directiva obsoleta `/* eslint-disable no-useless-catch */` removida.
 - [x] `core/services/workspace.service.ts` — Migrado a `ApiError`: `throw error?.response(?.data)` → `throw new ApiError(error?.response)`. Bare `throw error` → `throw toApiError(error)`.
 
 #### `core/services/favorite/`
@@ -3582,7 +3582,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `core/store/estimates/`
 
-- [x] `core/store/estimates/estimate-point.ts` — Raw rethrow → toApiError. eslint-disable pendiente de revisar.
+- [x] `core/store/estimates/estimate-point.ts` — Raw rethrow → toApiError. Directiva obsoleta `/* eslint-disable no-useless-catch */` removida (los catch sí transforman vía `throw toApiError(error)`).
 - [x] `core/store/estimates/project-estimate.store.ts` — raw rethrow → toApiError
 
 #### `core/store/inbox/`
@@ -3683,7 +3683,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `core/store/notifications/`
 
-- [x] `core/store/notifications/notification.ts` — Raw rethrow → toApiError. eslint-disable pendiente.
+- [x] `core/store/notifications/notification.ts` — Raw rethrow → toApiError. Directiva obsoleta `/* eslint-disable no-useless-catch */` removida (los catch sí transforman vía `throw toApiError(error)`).
 - [x] `core/store/notifications/workspace-notifications.store.ts` — raw rethrow → toApiError
 
 #### `core/store/pages/`
