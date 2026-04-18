@@ -28,7 +28,7 @@ use crate::{
         extractors::ProjectMemberGuard,
         permissions::{require_role, ROLE_GUEST, ROLE_MEMBER},
     },
-    entities::{intake_issues, intakes, issues},
+    entities::{intake_issues, intakes, issues, states},
     error::AppError,
     utils::soft_delete::SoftDeleteExt,
     AppState,
@@ -40,6 +40,15 @@ pub const STATUS_REJECTED: i32 = -1;
 pub const STATUS_SNOOZED: i32 = 0;
 pub const STATUS_ACCEPTED: i32 = 1;
 pub const STATUS_DUPLICATE: i32 = 2;
+
+// ── Source constants (matches Django SourceType.TextChoices) ──────────────────
+// Ver: apps/api/plane/db/models/intake.py → class SourceType.
+// Django sólo define IN_APP por ahora; el handler de create hard-codea este
+// valor e ignora el `source` que venga del cliente (base.py:270).
+pub const SOURCE_IN_APP: &str = "IN_APP";
+
+// ── Priority constants (matches Django IssueCreateSerializer validation) ──────
+pub const VALID_PRIORITIES: &[&str] = &["low", "medium", "high", "urgent", "none"];
 
 // ── DTOs ─────────────────────────────────────────────────────────────────────
 
@@ -117,14 +126,33 @@ pub struct UpdateIntakeRequest {
     pub description: Option<String>,
 }
 
+/// Body del POST /intake-issues/ — paridad con Django IntakeIssueViewSet.create
+/// (`apps/api/plane/app/views/intake/base.py:222-284`).
+///
+/// El frontend envía el payload anidado `{source, issue: {...}}`. Django **ignora**
+/// cualquier `intake_id` que venga en el body y auto-resuelve el intake del
+/// proyecto (`base.py:264`). El `source` del cliente también se descarta y se
+/// hard-codea a `IN_APP` (`base.py:270`). Mantenemos `source` en el DTO para
+/// log/telemetría, pero nunca se usa al persistir.
+///
+/// Campos adicionales que el frontend puede mandar en `issue` (parent_id,
+/// start_date, target_date, estimate_point, type_id, assignee_ids, label_ids)
+/// los procesa Django vía `IssueCreateSerializer`. Aquí serde los descarta
+/// silenciosamente — ver TODO en el handler.
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct CreateIntakeIssueRequest {
-    pub intake_id: Uuid,
-    // Issue fields
+    /// Ignorado por paridad con Django (hard-code `IN_APP`). Aceptado para no
+    /// reventar clientes que lo envíen.
+    #[serde(default)]
+    pub source: Option<String>,
+    pub issue: CreateIntakeIssueBody,
+}
+
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
+pub struct CreateIntakeIssueBody {
     pub name: String,
     pub description_html: Option<String>,
     pub priority: Option<String>,
-    pub source: Option<String>,
 }
 
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
@@ -386,22 +414,90 @@ pub async fn create_intake_issue(
     guard: ProjectMemberGuard,
     Json(body): Json<CreateIntakeIssueRequest>,
 ) -> Result<(StatusCode, Json<IntakeIssueResponse>), AppError> {
-    require_role(guard.project_member.role, guard.workspace_member.role, ROLE_MEMBER)?;
+    // Django usa @allow_permission([ADMIN, MEMBER, GUEST]) — el intake acepta
+    // tickets de guests (base.py:221). Bajamos a ROLE_GUEST.
+    require_role(guard.project_member.role, guard.workspace_member.role, ROLE_GUEST)?;
 
-    if body.name.trim().is_empty() {
-        return Err(AppError::BadRequest("name es requerido".into()));
+    // ── Validaciones (paridad Django base.py:223-234) ─────────────────────────
+    if body.issue.name.trim().is_empty() {
+        return Err(AppError::BadRequest("Name is required".into()));
     }
 
-    // Verificar que el intake pertenece al proyecto
-    let _ = intakes::Entity::find_by_id(body.intake_id)
+    if let Some(ref p) = body.issue.priority {
+        if !VALID_PRIORITIES.contains(&p.as_str()) {
+            return Err(AppError::BadRequest("Invalid priority".into()));
+        }
+    }
+
+    // ── Auto-resolver intake del proyecto (paridad Django base.py:264) ────────
+    //
+    // Django hace `Intake.objects.filter(project_id=...).first()` sin order_by.
+    // Añadimos `.order_by_asc(CreatedAt)` como tiebreaker determinista — en la
+    // práctica cada proyecto tiene un único intake, pero evita flaky tests si
+    // alguna vez hay >1.
+    //
+    // NOTA: ignoramos cualquier `intake_id` que venga en el body. El DTO ya no
+    // lo acepta (paridad estricta con Django — él también lo descarta).
+    let intake = intakes::Entity::find()
         .active()
         .filter(intakes::Column::ProjectId.eq(guard.project.id))
+        .filter(intakes::Column::WorkspaceId.eq(guard.workspace.id))
+        .order_by_asc(intakes::Column::CreatedAt)
         .one(&state.db)
         .await
         .map_err(AppError::Database)?
-        .ok_or_else(|| AppError::BadRequest("intake_id no válido para este proyecto".into()))?;
+        .ok_or_else(|| {
+            AppError::BadRequest("El proyecto no tiene intake configurado".into())
+        })?;
 
-    // Calcular sequence_id.
+    // ── Get-or-create triage state (paridad Django base.py:239-249) ───────────
+    //
+    // TODO(refactor): esta lógica es idéntica a routes::states::intake_state.
+    // Extraer a `pub(crate) fn ensure_triage_state(db, workspace_id, project_id)`
+    // en un helper compartido.
+    let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
+
+    let triage_state = if let Some(existing) = states::Entity::find()
+        .active()
+        .filter(states::Column::ProjectId.eq(guard.project.id))
+        .filter(states::Column::WorkspaceId.eq(guard.workspace.id))
+        .filter(states::Column::IsTriage.eq(true))
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+    {
+        existing
+    } else {
+        // Mismos valores que Django (base.py:241-249):
+        // name="Triage", color="#4E5355", sequence=65000, group="triage",
+        // default=false, is_triage=true. El estado triage es de sistema
+        // (sin propietario explícito), igual que en routes::states::intake_state.
+        states::ActiveModel {
+            id: Set(Uuid::new_v4()),
+            name: Set("Triage".to_string()),
+            description: Set(String::new()),
+            color: Set("#4E5355".to_string()),
+            slug: Set("triage".to_string()),
+            group: Set("triage".to_string()),
+            sequence: Set(65000.0),
+            default: Set(false),
+            is_triage: Set(true),
+            project_id: Set(guard.project.id),
+            workspace_id: Set(guard.workspace.id),
+            created_by_id: Set(None),
+            updated_by_id: Set(None),
+            external_id: Set(None),
+            external_source: Set(None),
+            created_at: Set(now),
+            updated_at: Set(now),
+            deleted_at: Set(None),
+        }
+        .insert(&state.db)
+        .await
+        .map_err(AppError::Database)?
+    };
+
+    // ── Calcular sequence_id ──────────────────────────────────────────────────
     //
     // NOTA 1: MAX() sin GROUP BY siempre devuelve una fila (aunque la tabla
     // esté vacía, con valor NULL). Decodificamos a Option<i32> y flatten
@@ -426,24 +522,34 @@ pub async fn create_intake_issue(
         .flatten();
     let sequence_id = max_seq.unwrap_or(0) + 1;
 
-    // created_at / updated_at explícitos: ActiveModelBehavior vacío,
-    // columnas NOT NULL. Mismo patrón que labels.rs / issues.rs::create_issue.
-    let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
-
-    // Crear el issue subyacente con is_draft=true
+    // ── Crear el issue (paridad Django IssueCreateSerializer.save) ────────────
+    //
+    // DIVERGENCIA: Django usa IssueCreateSerializer que acepta parent_id,
+    // start_date, target_date, estimate_point, type_id, assignee_ids,
+    // label_ids. Aquí esos campos se descartan silenciosamente por serde.
+    //
+    // TODO(paridad-completa): añadir esos campos a CreateIntakeIssueBody,
+    // envolver issue INSERT + sync_assignees + sync_labels en una transacción
+    // (patrón ya existe en issues::create_issue), y hacer pub(crate) las
+    // funciones sync_assignees/sync_labels de issues.rs.
+    //
+    // is_draft=false: paridad Django. IssueCreateSerializer no marca is_draft,
+    // y el campo es bool NOT NULL con default false en la DB. El tweak
+    // anterior (is_draft=true) era una divergencia nuestra.
     let issue = issues::ActiveModel {
         id: Set(Uuid::new_v4()),
-        name: Set(body.name),
-        description_html: Set(body.description_html.unwrap_or_default()),
+        name: Set(body.issue.name),
+        description_html: Set(body.issue.description_html.unwrap_or_default()),
         description_json: Set(serde_json::json!({})),
-        priority: Set(body.priority.unwrap_or_else(|| "none".to_owned())),
+        priority: Set(body.issue.priority.unwrap_or_else(|| "none".to_owned())),
         sequence_id: Set(sequence_id),
         sort_order: Set(65535.0),
         project_id: Set(guard.project.id),
         workspace_id: Set(guard.workspace.id),
+        state_id: Set(Some(triage_state.id)), // Django base.py:250
         created_by_id: Set(Some(guard.user.id)),
         updated_by_id: Set(Some(guard.user.id)),
-        is_draft: Set(true), // intake issues son drafts hasta ser aceptados
+        is_draft: Set(false),
         description_stripped: Set(None),
         created_at: Set(now),
         updated_at: Set(now),
@@ -454,12 +560,18 @@ pub async fn create_intake_issue(
     .await
     .map_err(AppError::Database)?;
 
+    // ── Crear el intake_issue (paridad Django base.py:266-271) ────────────────
+    //
+    // `source` hard-codeado a IN_APP — Django ignora el valor del cliente
+    // (base.py:270). El `body.source` solo se acepta para no reventar clientes
+    // viejos; se descarta aquí.
+    let _ = body.source; // silence unused-field lint; ver doc del DTO
     let intake_issue = intake_issues::ActiveModel {
         id: Set(Uuid::new_v4()),
         issue_id: Set(issue.id),
-        intake_id: Set(body.intake_id),
+        intake_id: Set(intake.id),
         status: Set(STATUS_PENDING),
-        source: Set(body.source),
+        source: Set(Some(SOURCE_IN_APP.to_string())),
         project_id: Set(guard.project.id),
         workspace_id: Set(guard.workspace.id),
         created_by_id: Set(Some(guard.user.id)),
