@@ -1329,6 +1329,16 @@ pub fn build_router(state: AppState) -> Router {
             "/workspaces/{slug}/projects/{project_id}/work-items/{work_item_id}/description-versions/{pk}",
             get(issue_description_versions::get_description_version),
         )
+        // Alias de intake-work-items: mirror Django IntakeWorkItemDescriptionVersionEndpoint
+        // (apps/api/plane/app/urls/intake.py:57-65). Mismo handler que work-items.
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/intake-work-items/{work_item_id}/description-versions",
+            get(issue_description_versions::list_description_versions),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/intake-work-items/{work_item_id}/description-versions/{pk}",
+            get(issue_description_versions::get_description_version),
+        )
         // ── API Tokens ────────────────────────────────────────────────────────
         .route(
             "/api-tokens",
