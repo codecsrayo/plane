@@ -43,8 +43,8 @@ type Props = {
   canLoadMoreBlocks?: boolean;
   loadMoreBlocks?: () => void;
   updateBlockDates?: (updates: IBlockUpdateDependencyData[]) => Promise<void>;
-  blockToRender: (data: any) => React.ReactNode;
-  blockUpdateHandler: (block: any, payload: IBlockUpdateData) => void;
+  blockToRender: (data: unknown) => React.ReactNode;
+  blockUpdateHandler: (block: unknown, payload: IBlockUpdateData) => void;
   bottomSpacing: boolean;
   enableBlockLeftResize: boolean | ((blockId: string) => boolean);
   enableBlockMove: boolean | ((blockId: string) => boolean);
@@ -55,7 +55,7 @@ type Props = {
   enableDependency: boolean | ((blockId: string) => boolean);
   itemsContainerWidth: number;
   showAllBlocks: boolean;
-  sidebarToRender: (props: any) => React.ReactNode;
+  sidebarToRender: (props: unknown) => React.ReactNode;
   title: string;
   updateCurrentViewRenderPayload: (
     direction: "left" | "right",

@@ -17,9 +17,9 @@ type GanttChartRootProps = {
   title: string;
   loaderTitle: string;
   blockIds: string[];
-  blockUpdateHandler: (block: any, payload: IBlockUpdateData) => void;
-  blockToRender: (data: any) => React.ReactNode;
-  sidebarToRender: (props: any) => React.ReactNode;
+  blockUpdateHandler: (block: unknown, payload: IBlockUpdateData) => void;
+  blockToRender: (data: unknown) => React.ReactNode;
+  sidebarToRender: (props: unknown) => React.ReactNode;
   quickAdd?: React.ReactNode | undefined;
   canLoadMoreBlocks?: boolean;
   loadMoreBlocks?: () => void;

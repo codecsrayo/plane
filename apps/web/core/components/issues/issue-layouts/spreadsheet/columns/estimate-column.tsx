@@ -9,11 +9,12 @@ import { observer } from "mobx-react";
 import type { TIssue } from "@plane/types";
 // components
 import { EstimateDropdown } from "@/components/dropdowns/estimate";
+import type { TSpreadsheetColumnOnChange } from "./types";
 
 type Props = {
   issue: TIssue;
   onClose: () => void;
-  onChange: (issue: TIssue, data: Partial<TIssue>, updates: any) => void;
+  onChange: TSpreadsheetColumnOnChange;
   disabled: boolean;
 };
 

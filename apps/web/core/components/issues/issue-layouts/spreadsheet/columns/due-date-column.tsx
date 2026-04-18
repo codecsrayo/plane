@@ -15,11 +15,12 @@ import { DateDropdown } from "@/components/dropdowns/date";
 // helpers
 // hooks
 import { useProjectState } from "@/hooks/store/use-project-state";
+import type { TSpreadsheetColumnOnChange } from "./types";
 
 type Props = {
   issue: TIssue;
   onClose: () => void;
-  onChange: (issue: TIssue, data: Partial<TIssue>, updates: any) => void;
+  onChange: TSpreadsheetColumnOnChange;
   disabled: boolean;
 };
 

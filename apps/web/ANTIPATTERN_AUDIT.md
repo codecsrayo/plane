@@ -1597,19 +1597,19 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 - [x] `core/components/gantt-chart/constants.ts`
 - [x] `core/components/gantt-chart/index.ts`
-- [!] `core/components/gantt-chart/root.tsx` — 3× prop types con `any`: `blockUpdateHandler: (block: any, ...)`, `blockToRender: (data: any) => ReactNode`, `sidebarToRender: (props: any) => ReactNode`. Convertir a genérico `<T>` o tipar con `IGanttBlock`.
+- [x] `core/components/gantt-chart/root.tsx` — `blockUpdateHandler`/`blockToRender`/`sidebarToRender` tipados con `unknown` (tightening del boundary).
 
 #### `core/components/gantt-chart/blocks/`
 
-- [!] `core/components/gantt-chart/blocks/block-row.tsx` — `blockUpdateHandler: (block: any, ...)` (línea 24).
-- [!] `core/components/gantt-chart/blocks/block.tsx` — `blockToRender: (data: any) => ReactNode` (línea 26).
+- [x] `core/components/gantt-chart/blocks/block-row.tsx` — `blockUpdateHandler` `any`→`unknown`.
+- [x] `core/components/gantt-chart/blocks/block.tsx` — `blockToRender` `any`→`unknown`.
 
 #### `core/components/gantt-chart/chart/`
 
 - [x] `core/components/gantt-chart/chart/header.tsx` — `VIEWS_LIST.map((chartView: any))` → `(chartView: ChartDataType)`.
 - [x] `core/components/gantt-chart/chart/index.ts`
-- [!] `core/components/gantt-chart/chart/main-content.tsx` — Mismo cluster de 3× `any`.
-- [!] `core/components/gantt-chart/chart/root.tsx` — Mismo cluster de 3× `any` en props `blockUpdateHandler`/`blockToRender`/`sidebarToRender`.
+- [x] `core/components/gantt-chart/chart/main-content.tsx` — Cluster 3× `any`→`unknown`.
+- [x] `core/components/gantt-chart/chart/root.tsx` — Cluster 3× `any`→`unknown`.
 - [x] `core/components/gantt-chart/chart/timeline-drag-helper.tsx`
 
 #### `core/components/gantt-chart/chart/views/`
@@ -1630,7 +1630,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 #### `core/components/gantt-chart/helpers/`
 
 - [x] `core/components/gantt-chart/helpers/add-block.tsx` — Resuelto: `blockUpdateHandler: (block: any, ...)` → `(block: unknown, ...)`. Consistente con el fix aplicado previamente en `ce/components/gantt-chart/blocks/block-row-list.tsx` y `blocks-list.tsx` (tanda 2). La rigidez `any` de `IGanttBlock.data` en `packages/types/src/layout/gantt.ts` es la fuente raíz, pero esta signature ya no la propaga.
-- [!] `core/components/gantt-chart/helpers/draggable.tsx` — `blockToRender: (data: any) => ReactNode` (línea 22).
+- [x] `core/components/gantt-chart/helpers/draggable.tsx` — `blockToRender` `any`→`unknown`.
 - [x] `core/components/gantt-chart/helpers/index.ts`
 
 #### `core/components/gantt-chart/helpers/blockResizables/`
@@ -1643,20 +1643,20 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 - [x] `core/components/gantt-chart/sidebar/gantt-dnd-HOC.tsx`
 - [x] `core/components/gantt-chart/sidebar/index.ts`
-- [!] `core/components/gantt-chart/sidebar/root.tsx` — 2× `any` en `blockUpdateHandler` y `sidebarToRender` props.
-- [!] `core/components/gantt-chart/sidebar/utils.ts` — Mismo patrón en firma utility (línea 15).
+- [x] `core/components/gantt-chart/sidebar/root.tsx` — 2× `any`→`unknown`.
+- [x] `core/components/gantt-chart/sidebar/utils.ts` — `blockUpdateHandler` signature `any`→`unknown`.
 
 #### `core/components/gantt-chart/sidebar/issues/`
 
 - [x] `core/components/gantt-chart/sidebar/issues/block.tsx`
 - [x] `core/components/gantt-chart/sidebar/issues/index.ts`
-- [!] `core/components/gantt-chart/sidebar/issues/sidebar.tsx` — Mismo patrón (línea 28).
+- [x] `core/components/gantt-chart/sidebar/issues/sidebar.tsx` — `blockUpdateHandler` `any`→`unknown`.
 
 #### `core/components/gantt-chart/sidebar/modules/`
 
 - [x] `core/components/gantt-chart/sidebar/modules/block.tsx`
 - [x] `core/components/gantt-chart/sidebar/modules/index.ts`
-- [!] `core/components/gantt-chart/sidebar/modules/sidebar.tsx` — `blockUpdateHandler: (block: any, ...)` (línea 22).
+- [x] `core/components/gantt-chart/sidebar/modules/sidebar.tsx` — `blockUpdateHandler` `any`→`unknown`.
 
 #### `core/components/gantt-chart/views/`
 
@@ -2250,20 +2250,20 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `core/components/issues/issue-layouts/spreadsheet/columns/`
 
-- [!] `core/components/issues/issue-layouts/spreadsheet/columns/assignee-column.tsx` — Mismo patrón.
+- [x] `core/components/issues/issue-layouts/spreadsheet/columns/assignee-column.tsx` — `onChange` usa `TSpreadsheetColumnOnChange` (shared type).
 - [x] `core/components/issues/issue-layouts/spreadsheet/columns/attachment-column.tsx`
 - [x] `core/components/issues/issue-layouts/spreadsheet/columns/created-on-column.tsx`
 - [x] `core/components/issues/issue-layouts/spreadsheet/columns/cycle-column.tsx`
-- [!] `core/components/issues/issue-layouts/spreadsheet/columns/due-date-column.tsx` — Mismo patrón. Considerar definir un shared type `TSpreadsheetColumnOnChange` tipado correctamente.
-- [!] `core/components/issues/issue-layouts/spreadsheet/columns/estimate-column.tsx` — `onChange: (issue, data, updates: any) => void` — cluster replicado en las 7 columnas de spreadsheet.
+- [x] `core/components/issues/issue-layouts/spreadsheet/columns/due-date-column.tsx` — `onChange` usa `TSpreadsheetColumnOnChange`.
+- [x] `core/components/issues/issue-layouts/spreadsheet/columns/estimate-column.tsx` — `onChange` usa `TSpreadsheetColumnOnChange`.
 - [x] `core/components/issues/issue-layouts/spreadsheet/columns/header-column.tsx`
 - [x] `core/components/issues/issue-layouts/spreadsheet/columns/index.ts`
-- [!] `core/components/issues/issue-layouts/spreadsheet/columns/label-column.tsx` — Mismo patrón: `updates: any` en `onChange` prop.
+- [x] `core/components/issues/issue-layouts/spreadsheet/columns/label-column.tsx` — `onChange` usa `TSpreadsheetColumnOnChange`.
 - [x] `core/components/issues/issue-layouts/spreadsheet/columns/link-column.tsx`
 - [x] `core/components/issues/issue-layouts/spreadsheet/columns/module-column.tsx`
-- [!] `core/components/issues/issue-layouts/spreadsheet/columns/priority-column.tsx` — Mismo patrón.
-- [!] `core/components/issues/issue-layouts/spreadsheet/columns/start-date-column.tsx` — Mismo patrón.
-- [!] `core/components/issues/issue-layouts/spreadsheet/columns/state-column.tsx` — Mismo patrón.
+- [x] `core/components/issues/issue-layouts/spreadsheet/columns/priority-column.tsx` — `onChange` usa `TSpreadsheetColumnOnChange`.
+- [x] `core/components/issues/issue-layouts/spreadsheet/columns/start-date-column.tsx` — `onChange` usa `TSpreadsheetColumnOnChange`.
+- [x] `core/components/issues/issue-layouts/spreadsheet/columns/state-column.tsx` — `onChange` usa `TSpreadsheetColumnOnChange`.
 - [x] `core/components/issues/issue-layouts/spreadsheet/columns/sub-issue-column.tsx`
 - [x] `core/components/issues/issue-layouts/spreadsheet/columns/updated-on-column.tsx`
 
@@ -2299,7 +2299,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 #### `core/components/issues/peek-overview/`
 
 - [x] `core/components/issues/peek-overview/error.tsx`
-- [!] `core/components/issues/peek-overview/header.tsx` — (1) `icon: any` en `PEEK_OPTIONS` (línea 34). (2) `onChange={(val: any) => ...}` (línea 175).
+- [x] `core/components/issues/peek-overview/header.tsx` — `icon: any`→`FC<SVGAttributes<SVGElement>>`; `onChange val: any`→`TPeekModes`.
 - [x] `core/components/issues/peek-overview/index.ts`
 - [x] `core/components/issues/peek-overview/issue-detail.tsx`
 - [x] `core/components/issues/peek-overview/loader.tsx`

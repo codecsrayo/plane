@@ -12,7 +12,7 @@ export const handleOrderChange = (
   dropAtEndOfList: boolean,
   blockIds: string[] | null,
   getBlockById: (id: string, currentViewData?: ChartDataType) => IGanttBlock,
-  blockUpdateHandler: (block: any, payload: IBlockUpdateData) => void
+  blockUpdateHandler: (block: unknown, payload: IBlockUpdateData) => void
 ) => {
   if (!blockIds || !draggingBlockId || !droppedBlockId) return;
 

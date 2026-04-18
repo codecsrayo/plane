@@ -21,7 +21,7 @@ import { ChartAddBlock } from "../helpers";
 type Props = {
   blockId: string;
   showAllBlocks: boolean;
-  blockUpdateHandler: (block: any, payload: IBlockUpdateData) => void;
+  blockUpdateHandler: (block: unknown, payload: IBlockUpdateData) => void;
   handleScrollToBlock: (block: IGanttBlock) => void;
   enableAddBlock: boolean;
   selectionHelpers: TSelectionHelper;

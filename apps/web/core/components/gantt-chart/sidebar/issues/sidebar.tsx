@@ -25,7 +25,7 @@ import { handleOrderChange } from "../utils";
 import { IssuesSidebarBlock } from "./block";
 
 type Props = {
-  blockUpdateHandler: (block: any, payload: IBlockUpdateData) => void;
+  blockUpdateHandler: (block: unknown, payload: IBlockUpdateData) => void;
   canLoadMoreBlocks?: boolean;
   loadMoreBlocks?: () => void;
   ganttContainerRef: RefObject<HTMLDivElement>;

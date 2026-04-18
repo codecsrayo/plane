@@ -20,13 +20,13 @@ import { GANTT_SELECT_GROUP, HEADER_HEIGHT, SIDEBAR_WIDTH } from "../constants";
 
 type Props = {
   blockIds: string[];
-  blockUpdateHandler: (block: any, payload: IBlockUpdateData) => void;
+  blockUpdateHandler: (block: unknown, payload: IBlockUpdateData) => void;
   canLoadMoreBlocks?: boolean;
   loadMoreBlocks?: () => void;
   ganttContainerRef: RefObject<HTMLDivElement>;
   enableReorder: boolean | ((blockId: string) => boolean);
   enableSelection: boolean | ((blockId: string) => boolean);
-  sidebarToRender: (props: any) => React.ReactNode;
+  sidebarToRender: (props: unknown) => React.ReactNode;
   title: string;
   selectionHelpers: TSelectionHelper;
   showAllBlocks?: boolean;

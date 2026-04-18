@@ -19,7 +19,7 @@ import { ModulesSidebarBlock } from "./block";
 
 type Props = {
   title: string;
-  blockUpdateHandler: (block: any, payload: IBlockUpdateData) => void;
+  blockUpdateHandler: (block: unknown, payload: IBlockUpdateData) => void;
   blockIds: string[];
   enableReorder: boolean;
 };

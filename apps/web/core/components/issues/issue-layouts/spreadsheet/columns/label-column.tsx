@@ -12,11 +12,12 @@ import type { TIssue } from "@plane/types";
 import { useLabel } from "@/hooks/store/use-label";
 // components
 import { IssuePropertyLabels } from "../../properties";
+import type { TSpreadsheetColumnOnChange } from "./types";
 
 type Props = {
   issue: TIssue;
   onClose: () => void;
-  onChange: (issue: TIssue, data: Partial<TIssue>, updates: any) => void;
+  onChange: TSpreadsheetColumnOnChange;
   disabled: boolean;
 };
 

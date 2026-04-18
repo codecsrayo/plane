@@ -23,7 +23,7 @@ import { useGanttResizable } from "../helpers/blockResizables/use-gantt-resizabl
 type Props = {
   blockId: string;
   showAllBlocks: boolean;
-  blockToRender: (data: any) => React.ReactNode;
+  blockToRender: (data: unknown) => React.ReactNode;
   enableBlockLeftResize: boolean;
   enableBlockRightResize: boolean;
   enableBlockMove: boolean;

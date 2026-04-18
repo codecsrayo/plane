@@ -4,7 +4,7 @@
  * See the LICENSE file for details.
  */
 
-import { useRef } from "react";
+import { useRef, type FC, type SVGAttributes } from "react";
 import { observer } from "mobx-react";
 import Link from "next/link";
 import { MoveDiagonal, MoveRight } from "lucide-react";
@@ -31,7 +31,7 @@ import { IconButton } from "@plane/propel/icon-button";
 
 export type TPeekModes = "side-peek" | "modal" | "full-screen";
 
-const PEEK_OPTIONS: { key: TPeekModes; icon: any; i18n_title: string }[] = [
+const PEEK_OPTIONS: { key: TPeekModes; icon: FC<SVGAttributes<SVGElement>>; i18n_title: string }[] = [
   {
     key: "side-peek",
     icon: SidePanelIcon,
@@ -172,7 +172,7 @@ export const IssuePeekOverviewHeader = observer(function IssuePeekOverviewHeader
           <div className="flex flex-shrink-0 items-center gap-2">
             <CustomSelect
               value={currentMode}
-              onChange={(val: any) => setPeekMode(val)}
+              onChange={(val: TPeekModes) => setPeekMode(val)}
               customButton={
                 <Tooltip tooltipContent={t("common.toggle_peek_view_layout")} isMobile={isMobile}>
                   <button type="button" className="">

@@ -34,9 +34,9 @@ type ChartViewRootProps = {
   title: string;
   loaderTitle: string;
   blockIds: string[];
-  blockUpdateHandler: (block: any, payload: IBlockUpdateData) => void;
-  blockToRender: (data: any) => React.ReactNode;
-  sidebarToRender: (props: any) => React.ReactNode;
+  blockUpdateHandler: (block: unknown, payload: IBlockUpdateData) => void;
+  blockToRender: (data: unknown) => React.ReactNode;
+  sidebarToRender: (props: unknown) => React.ReactNode;
   enableBlockLeftResize: boolean | ((blockId: string) => boolean);
   enableBlockRightResize: boolean | ((blockId: string) => boolean);
   enableBlockMove: boolean | ((blockId: string) => boolean);
