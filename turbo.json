@@ -6,6 +6,7 @@
     "DEV",
     "LOG_LEVEL",
     "NODE_ENV",
+    "PORT",
     "SENTRY_DSN",
     "SENTRY_ENVIRONMENT",
     "SENTRY_TRACES_SAMPLE_RATE",
@@ -89,5 +90,6 @@
       "dependsOn": ["^build"],
       "outputs": []
     }
-  }
+  },
+  "globalPassThroughEnv": ["PORT"]
 }
