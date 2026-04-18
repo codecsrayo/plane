@@ -12,7 +12,12 @@ import { logger } from "@/lib/logger";
  * @param url - The URL to process
  * @returns The URL with a trailing slash added to the pathname (if not already present)
  */
-export function ensureTrailingSlash(url: string): string {
+export function ensureTrailingSlash(url: string | null | undefined): string {
+  // Defensive: although the compile-time type is 'string', this helper is on the
+  // next/link compat path where callers occasionally pass an undefined 'href'
+  // (e.g. 'router.push(maybe?.link)'). Returning '' keeps RRLink / navigate as
+  // safe no-ops instead of a 'Cannot read properties of undefined' at runtime.
+  if (!url) return "";
   try {
     const fallbackBaseUrl =
       typeof window !== "undefined" && window.location.origin ? window.location.origin : "http://dummy.com";
