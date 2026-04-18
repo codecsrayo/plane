@@ -1859,482 +1859,482 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `core/components/issues/`
 
-- [ ] `core/components/issues/archive-issue-modal.tsx`
-- [ ] `core/components/issues/archived-issues-header.tsx`
-- [ ] `core/components/issues/confirm-issue-discard.tsx`
-- [ ] `core/components/issues/create-issue-toast-action-items.tsx`
-- [ ] `core/components/issues/delete-issue-modal.tsx`
-- [ ] `core/components/issues/filters.tsx`
-- [ ] `core/components/issues/issue-update-status.tsx`
-- [ ] `core/components/issues/label.tsx`
-- [ ] `core/components/issues/layout-quick-actions.tsx`
-- [ ] `core/components/issues/parent-issues-list-modal.tsx`
-- [ ] `core/components/issues/title-input.tsx`
+- [x] `core/components/issues/archive-issue-modal.tsx`
+- [x] `core/components/issues/archived-issues-header.tsx`
+- [x] `core/components/issues/confirm-issue-discard.tsx`
+- [x] `core/components/issues/create-issue-toast-action-items.tsx`
+- [x] `core/components/issues/delete-issue-modal.tsx`
+- [x] `core/components/issues/filters.tsx`
+- [x] `core/components/issues/issue-update-status.tsx`
+- [!] `core/components/issues/label.tsx` — `labelDetails: any[]` (línea 12) — tipar con `ILabel[]`.
+- [x] `core/components/issues/layout-quick-actions.tsx`
+- [!] `core/components/issues/parent-issues-list-modal.tsx` — `value?: any` (línea 35) en prop type.
+- [x] `core/components/issues/title-input.tsx`
 
 #### `core/components/issues/attachment/`
 
-- [ ] `core/components/issues/attachment/attachment-detail.tsx`
-- [ ] `core/components/issues/attachment/attachment-item-list.tsx`
-- [ ] `core/components/issues/attachment/attachment-list-item.tsx`
-- [ ] `core/components/issues/attachment/attachment-list-upload-item.tsx`
-- [ ] `core/components/issues/attachment/attachment-upload-details.tsx`
-- [ ] `core/components/issues/attachment/attachment-upload.tsx`
-- [ ] `core/components/issues/attachment/attachments-list.tsx`
-- [ ] `core/components/issues/attachment/delete-attachment-modal.tsx`
-- [ ] `core/components/issues/attachment/index.ts`
-- [ ] `core/components/issues/attachment/root.tsx`
+- [x] `core/components/issues/attachment/attachment-detail.tsx`
+- [x] `core/components/issues/attachment/attachment-item-list.tsx`
+- [x] `core/components/issues/attachment/attachment-list-item.tsx`
+- [x] `core/components/issues/attachment/attachment-list-upload-item.tsx`
+- [x] `core/components/issues/attachment/attachment-upload-details.tsx`
+- [x] `core/components/issues/attachment/attachment-upload.tsx`
+- [x] `core/components/issues/attachment/attachments-list.tsx`
+- [x] `core/components/issues/attachment/delete-attachment-modal.tsx`
+- [x] `core/components/issues/attachment/index.ts`
+- [x] `core/components/issues/attachment/root.tsx`
 
 #### `core/components/issues/bulk-operations/`
 
-- [ ] `core/components/issues/bulk-operations/upgrade-banner.tsx`
+- [x] `core/components/issues/bulk-operations/upgrade-banner.tsx`
 
 #### `core/components/issues/issue-detail/`
 
-- [ ] `core/components/issues/issue-detail/cycle-select.tsx`
-- [ ] `core/components/issues/issue-detail/identifier-text.tsx`
-- [ ] `core/components/issues/issue-detail/index.ts`
-- [ ] `core/components/issues/issue-detail/issue-detail-quick-actions.tsx`
-- [ ] `core/components/issues/issue-detail/main-content.tsx`
-- [ ] `core/components/issues/issue-detail/module-select.tsx`
-- [ ] `core/components/issues/issue-detail/parent-select.tsx`
-- [ ] `core/components/issues/issue-detail/relation-select.tsx`
-- [ ] `core/components/issues/issue-detail/root.tsx`
-- [ ] `core/components/issues/issue-detail/sidebar.tsx`
-- [ ] `core/components/issues/issue-detail/subscription.tsx`
+- [x] `core/components/issues/issue-detail/cycle-select.tsx`
+- [x] `core/components/issues/issue-detail/identifier-text.tsx`
+- [x] `core/components/issues/issue-detail/index.ts`
+- [x] `core/components/issues/issue-detail/issue-detail-quick-actions.tsx`
+- [x] `core/components/issues/issue-detail/main-content.tsx`
+- [x] `core/components/issues/issue-detail/module-select.tsx`
+- [!] `core/components/issues/issue-detail/parent-select.tsx` — `onChange={(selectedIssue: any) => ...}` (línea 76).
+- [x] `core/components/issues/issue-detail/relation-select.tsx`
+- [!] `core/components/issues/issue-detail/root.tsx` — 5× `console.log("Error in ...", error)` (líneas 103, 121, 133, 194, 223) — reemplazar por `console.error`.
+- [x] `core/components/issues/issue-detail/sidebar.tsx`
+- [x] `core/components/issues/issue-detail/subscription.tsx`
 
 #### `core/components/issues/issue-detail/issue-activity/`
 
-- [ ] `core/components/issues/issue-detail/issue-activity/activity-comment-root.tsx`
-- [ ] `core/components/issues/issue-detail/issue-activity/activity-filter.tsx`
-- [ ] `core/components/issues/issue-detail/issue-activity/helper.tsx`
-- [ ] `core/components/issues/issue-detail/issue-activity/index.ts`
-- [ ] `core/components/issues/issue-detail/issue-activity/loader.tsx`
-- [ ] `core/components/issues/issue-detail/issue-activity/root.tsx`
-- [ ] `core/components/issues/issue-detail/issue-activity/sort-root.tsx`
+- [x] `core/components/issues/issue-detail/issue-activity/activity-comment-root.tsx`
+- [x] `core/components/issues/issue-detail/issue-activity/activity-filter.tsx`
+- [!] `core/components/issues/issue-detail/issue-activity/helper.tsx` — `console.log("Error in uploading comment asset:", error)` (línea 140) — `console.error`.
+- [x] `core/components/issues/issue-detail/issue-activity/index.ts`
+- [x] `core/components/issues/issue-detail/issue-activity/loader.tsx`
+- [x] `core/components/issues/issue-detail/issue-activity/root.tsx`
+- [x] `core/components/issues/issue-detail/issue-activity/sort-root.tsx`
 
 #### `core/components/issues/issue-detail/issue-activity/activity/`
 
-- [ ] `core/components/issues/issue-detail/issue-activity/activity/activity-list.tsx`
+- [x] `core/components/issues/issue-detail/issue-activity/activity/activity-list.tsx`
 
 #### `core/components/issues/issue-detail/issue-activity/activity/actions/`
 
-- [ ] `core/components/issues/issue-detail/issue-activity/activity/actions/archived-at.tsx`
-- [ ] `core/components/issues/issue-detail/issue-activity/activity/actions/assignee.tsx`
-- [ ] `core/components/issues/issue-detail/issue-activity/activity/actions/attachment.tsx`
-- [ ] `core/components/issues/issue-detail/issue-activity/activity/actions/cycle.tsx`
-- [ ] `core/components/issues/issue-detail/issue-activity/activity/actions/default.tsx`
-- [ ] `core/components/issues/issue-detail/issue-activity/activity/actions/description.tsx`
-- [ ] `core/components/issues/issue-detail/issue-activity/activity/actions/estimate.tsx`
-- [ ] `core/components/issues/issue-detail/issue-activity/activity/actions/inbox.tsx`
-- [ ] `core/components/issues/issue-detail/issue-activity/activity/actions/index.ts`
-- [ ] `core/components/issues/issue-detail/issue-activity/activity/actions/label-activity-chip.tsx`
-- [ ] `core/components/issues/issue-detail/issue-activity/activity/actions/label.tsx`
-- [ ] `core/components/issues/issue-detail/issue-activity/activity/actions/link.tsx`
-- [ ] `core/components/issues/issue-detail/issue-activity/activity/actions/module.tsx`
-- [ ] `core/components/issues/issue-detail/issue-activity/activity/actions/name.tsx`
-- [ ] `core/components/issues/issue-detail/issue-activity/activity/actions/parent.tsx`
-- [ ] `core/components/issues/issue-detail/issue-activity/activity/actions/priority.tsx`
-- [ ] `core/components/issues/issue-detail/issue-activity/activity/actions/relation.tsx`
-- [ ] `core/components/issues/issue-detail/issue-activity/activity/actions/start_date.tsx`
-- [ ] `core/components/issues/issue-detail/issue-activity/activity/actions/state.tsx`
-- [ ] `core/components/issues/issue-detail/issue-activity/activity/actions/target_date.tsx`
+- [x] `core/components/issues/issue-detail/issue-activity/activity/actions/archived-at.tsx`
+- [x] `core/components/issues/issue-detail/issue-activity/activity/actions/assignee.tsx`
+- [x] `core/components/issues/issue-detail/issue-activity/activity/actions/attachment.tsx`
+- [x] `core/components/issues/issue-detail/issue-activity/activity/actions/cycle.tsx`
+- [x] `core/components/issues/issue-detail/issue-activity/activity/actions/default.tsx`
+- [x] `core/components/issues/issue-detail/issue-activity/activity/actions/description.tsx`
+- [x] `core/components/issues/issue-detail/issue-activity/activity/actions/estimate.tsx`
+- [x] `core/components/issues/issue-detail/issue-activity/activity/actions/inbox.tsx`
+- [x] `core/components/issues/issue-detail/issue-activity/activity/actions/index.ts`
+- [x] `core/components/issues/issue-detail/issue-activity/activity/actions/label-activity-chip.tsx`
+- [x] `core/components/issues/issue-detail/issue-activity/activity/actions/label.tsx`
+- [x] `core/components/issues/issue-detail/issue-activity/activity/actions/link.tsx`
+- [x] `core/components/issues/issue-detail/issue-activity/activity/actions/module.tsx`
+- [x] `core/components/issues/issue-detail/issue-activity/activity/actions/name.tsx`
+- [x] `core/components/issues/issue-detail/issue-activity/activity/actions/parent.tsx`
+- [x] `core/components/issues/issue-detail/issue-activity/activity/actions/priority.tsx`
+- [x] `core/components/issues/issue-detail/issue-activity/activity/actions/relation.tsx`
+- [x] `core/components/issues/issue-detail/issue-activity/activity/actions/start_date.tsx`
+- [x] `core/components/issues/issue-detail/issue-activity/activity/actions/state.tsx`
+- [x] `core/components/issues/issue-detail/issue-activity/activity/actions/target_date.tsx`
 
 #### `core/components/issues/issue-detail/issue-activity/activity/actions/helpers/`
 
-- [ ] `core/components/issues/issue-detail/issue-activity/activity/actions/helpers/activity-block.tsx`
-- [ ] `core/components/issues/issue-detail/issue-activity/activity/actions/helpers/issue-link.tsx`
-- [ ] `core/components/issues/issue-detail/issue-activity/activity/actions/helpers/issue-user.tsx`
+- [x] `core/components/issues/issue-detail/issue-activity/activity/actions/helpers/activity-block.tsx`
+- [x] `core/components/issues/issue-detail/issue-activity/activity/actions/helpers/issue-link.tsx`
+- [x] `core/components/issues/issue-detail/issue-activity/activity/actions/helpers/issue-user.tsx`
 
 #### `core/components/issues/issue-detail/label/`
 
-- [ ] `core/components/issues/issue-detail/label/create-label.tsx`
-- [ ] `core/components/issues/issue-detail/label/index.ts`
-- [ ] `core/components/issues/issue-detail/label/label-list-item.tsx`
-- [ ] `core/components/issues/issue-detail/label/label-list.tsx`
-- [ ] `core/components/issues/issue-detail/label/root.tsx`
+- [x] `core/components/issues/issue-detail/label/create-label.tsx`
+- [x] `core/components/issues/issue-detail/label/index.ts`
+- [x] `core/components/issues/issue-detail/label/label-list-item.tsx`
+- [x] `core/components/issues/issue-detail/label/label-list.tsx`
+- [!] `core/components/issues/issue-detail/label/root.tsx` — Cast `error as any` (línea 90) para leer `.error`. Tipar como `unknown` y narrowing con `typeof error === 'object' && 'error' in error`.
 
 #### `core/components/issues/issue-detail/label/select/`
 
-- [ ] `core/components/issues/issue-detail/label/select/label-select.tsx`
-- [ ] `core/components/issues/issue-detail/label/select/root.tsx`
+- [!] `core/components/issues/issue-detail/label/select/label-select.tsx` — `displayValue={(assigned: any) => ...}` (línea 160).
+- [x] `core/components/issues/issue-detail/label/select/root.tsx`
 
 #### `core/components/issues/issue-detail/links/`
 
-- [ ] `core/components/issues/issue-detail/links/create-update-link-modal.tsx`
-- [ ] `core/components/issues/issue-detail/links/index.ts`
-- [ ] `core/components/issues/issue-detail/links/link-detail.tsx`
-- [ ] `core/components/issues/issue-detail/links/link-item.tsx`
-- [ ] `core/components/issues/issue-detail/links/link-list.tsx`
-- [ ] `core/components/issues/issue-detail/links/links.tsx`
-- [ ] `core/components/issues/issue-detail/links/root.tsx`
+- [x] `core/components/issues/issue-detail/links/create-update-link-modal.tsx`
+- [x] `core/components/issues/issue-detail/links/index.ts`
+- [x] `core/components/issues/issue-detail/links/link-detail.tsx`
+- [x] `core/components/issues/issue-detail/links/link-item.tsx`
+- [x] `core/components/issues/issue-detail/links/link-list.tsx`
+- [x] `core/components/issues/issue-detail/links/links.tsx`
+- [!] `core/components/issues/issue-detail/links/root.tsx` — `catch (error: any)` (línea 60).
 
 #### `core/components/issues/issue-detail/parent/`
 
-- [ ] `core/components/issues/issue-detail/parent/index.ts`
-- [ ] `core/components/issues/issue-detail/parent/root.tsx`
-- [ ] `core/components/issues/issue-detail/parent/sibling-item.tsx`
-- [ ] `core/components/issues/issue-detail/parent/siblings.tsx`
+- [x] `core/components/issues/issue-detail/parent/index.ts`
+- [x] `core/components/issues/issue-detail/parent/root.tsx`
+- [x] `core/components/issues/issue-detail/parent/sibling-item.tsx`
+- [x] `core/components/issues/issue-detail/parent/siblings.tsx`
 
 #### `core/components/issues/issue-detail/reactions/`
 
-- [ ] `core/components/issues/issue-detail/reactions/index.ts`
-- [ ] `core/components/issues/issue-detail/reactions/issue-comment.tsx`
-- [ ] `core/components/issues/issue-detail/reactions/issue.tsx`
+- [x] `core/components/issues/issue-detail/reactions/index.ts`
+- [x] `core/components/issues/issue-detail/reactions/issue-comment.tsx`
+- [x] `core/components/issues/issue-detail/reactions/issue.tsx`
 
 #### `core/components/issues/issue-detail-widgets/`
 
-- [ ] `core/components/issues/issue-detail-widgets/action-buttons.tsx`
-- [ ] `core/components/issues/issue-detail-widgets/index.ts`
-- [ ] `core/components/issues/issue-detail-widgets/issue-detail-widget-collapsibles.tsx`
-- [ ] `core/components/issues/issue-detail-widgets/issue-detail-widget-modals.tsx`
-- [ ] `core/components/issues/issue-detail-widgets/root.tsx`
-- [ ] `core/components/issues/issue-detail-widgets/widget-button.tsx`
+- [x] `core/components/issues/issue-detail-widgets/action-buttons.tsx`
+- [x] `core/components/issues/issue-detail-widgets/index.ts`
+- [x] `core/components/issues/issue-detail-widgets/issue-detail-widget-collapsibles.tsx`
+- [x] `core/components/issues/issue-detail-widgets/issue-detail-widget-modals.tsx`
+- [x] `core/components/issues/issue-detail-widgets/root.tsx`
+- [x] `core/components/issues/issue-detail-widgets/widget-button.tsx`
 
 #### `core/components/issues/issue-detail-widgets/attachments/`
 
-- [ ] `core/components/issues/issue-detail-widgets/attachments/content.tsx`
-- [ ] `core/components/issues/issue-detail-widgets/attachments/helper.tsx`
-- [ ] `core/components/issues/issue-detail-widgets/attachments/index.ts`
-- [ ] `core/components/issues/issue-detail-widgets/attachments/quick-action-button.tsx`
-- [ ] `core/components/issues/issue-detail-widgets/attachments/root.tsx`
-- [ ] `core/components/issues/issue-detail-widgets/attachments/title.tsx`
+- [x] `core/components/issues/issue-detail-widgets/attachments/content.tsx`
+- [x] `core/components/issues/issue-detail-widgets/attachments/helper.tsx`
+- [x] `core/components/issues/issue-detail-widgets/attachments/index.ts`
+- [x] `core/components/issues/issue-detail-widgets/attachments/quick-action-button.tsx`
+- [x] `core/components/issues/issue-detail-widgets/attachments/root.tsx`
+- [x] `core/components/issues/issue-detail-widgets/attachments/title.tsx`
 
 #### `core/components/issues/issue-detail-widgets/links/`
 
-- [ ] `core/components/issues/issue-detail-widgets/links/content.tsx`
-- [ ] `core/components/issues/issue-detail-widgets/links/helper.tsx`
-- [ ] `core/components/issues/issue-detail-widgets/links/index.ts`
-- [ ] `core/components/issues/issue-detail-widgets/links/quick-action-button.tsx`
-- [ ] `core/components/issues/issue-detail-widgets/links/root.tsx`
-- [ ] `core/components/issues/issue-detail-widgets/links/title.tsx`
+- [x] `core/components/issues/issue-detail-widgets/links/content.tsx`
+- [!] `core/components/issues/issue-detail-widgets/links/helper.tsx` — 2× `catch (error: any)` (líneas 38, 56).
+- [x] `core/components/issues/issue-detail-widgets/links/index.ts`
+- [x] `core/components/issues/issue-detail-widgets/links/quick-action-button.tsx`
+- [x] `core/components/issues/issue-detail-widgets/links/root.tsx`
+- [x] `core/components/issues/issue-detail-widgets/links/title.tsx`
 
 #### `core/components/issues/issue-detail-widgets/relations/`
 
-- [ ] `core/components/issues/issue-detail-widgets/relations/content.tsx`
-- [ ] `core/components/issues/issue-detail-widgets/relations/helper.tsx`
-- [ ] `core/components/issues/issue-detail-widgets/relations/index.ts`
-- [ ] `core/components/issues/issue-detail-widgets/relations/quick-action-button.tsx`
-- [ ] `core/components/issues/issue-detail-widgets/relations/root.tsx`
-- [ ] `core/components/issues/issue-detail-widgets/relations/title.tsx`
+- [x] `core/components/issues/issue-detail-widgets/relations/content.tsx`
+- [x] `core/components/issues/issue-detail-widgets/relations/helper.tsx`
+- [x] `core/components/issues/issue-detail-widgets/relations/index.ts`
+- [x] `core/components/issues/issue-detail-widgets/relations/quick-action-button.tsx`
+- [x] `core/components/issues/issue-detail-widgets/relations/root.tsx`
+- [x] `core/components/issues/issue-detail-widgets/relations/title.tsx`
 
 #### `core/components/issues/issue-detail-widgets/sub-issues/`
 
-- [ ] `core/components/issues/issue-detail-widgets/sub-issues/content.tsx`
-- [ ] `core/components/issues/issue-detail-widgets/sub-issues/display-filters.tsx`
-- [ ] `core/components/issues/issue-detail-widgets/sub-issues/filters.tsx`
-- [ ] `core/components/issues/issue-detail-widgets/sub-issues/helper.ts`
-- [ ] `core/components/issues/issue-detail-widgets/sub-issues/index.ts`
-- [ ] `core/components/issues/issue-detail-widgets/sub-issues/quick-action-button.tsx`
-- [ ] `core/components/issues/issue-detail-widgets/sub-issues/root.tsx`
-- [ ] `core/components/issues/issue-detail-widgets/sub-issues/title-actions.tsx`
-- [ ] `core/components/issues/issue-detail-widgets/sub-issues/title.tsx`
+- [x] `core/components/issues/issue-detail-widgets/sub-issues/content.tsx`
+- [x] `core/components/issues/issue-detail-widgets/sub-issues/display-filters.tsx`
+- [x] `core/components/issues/issue-detail-widgets/sub-issues/filters.tsx`
+- [x] `core/components/issues/issue-detail-widgets/sub-issues/helper.ts`
+- [x] `core/components/issues/issue-detail-widgets/sub-issues/index.ts`
+- [x] `core/components/issues/issue-detail-widgets/sub-issues/quick-action-button.tsx`
+- [x] `core/components/issues/issue-detail-widgets/sub-issues/root.tsx`
+- [x] `core/components/issues/issue-detail-widgets/sub-issues/title-actions.tsx`
+- [x] `core/components/issues/issue-detail-widgets/sub-issues/title.tsx`
 
 #### `core/components/issues/issue-detail-widgets/sub-issues/issues-list/`
 
-- [ ] `core/components/issues/issue-detail-widgets/sub-issues/issues-list/list-group.tsx`
-- [ ] `core/components/issues/issue-detail-widgets/sub-issues/issues-list/list-item.tsx`
-- [ ] `core/components/issues/issue-detail-widgets/sub-issues/issues-list/properties.tsx`
-- [ ] `core/components/issues/issue-detail-widgets/sub-issues/issues-list/root.tsx`
+- [x] `core/components/issues/issue-detail-widgets/sub-issues/issues-list/list-group.tsx`
+- [x] `core/components/issues/issue-detail-widgets/sub-issues/issues-list/list-item.tsx`
+- [x] `core/components/issues/issue-detail-widgets/sub-issues/issues-list/properties.tsx`
+- [x] `core/components/issues/issue-detail-widgets/sub-issues/issues-list/root.tsx`
 
 #### `core/components/issues/issue-layouts/`
 
-- [ ] `core/components/issues/issue-layouts/group-drag-overlay.tsx`
-- [ ] `core/components/issues/issue-layouts/issue-layout-HOC.tsx`
-- [ ] `core/components/issues/issue-layouts/layout-icon.tsx`
-- [ ] `core/components/issues/issue-layouts/utils.tsx`
+- [x] `core/components/issues/issue-layouts/group-drag-overlay.tsx`
+- [x] `core/components/issues/issue-layouts/issue-layout-HOC.tsx`
+- [x] `core/components/issues/issue-layouts/layout-icon.tsx`
+- [!] `core/components/issues/issue-layouts/utils.tsx` — 2× `let groupValue: any` (línea 549) y `subGroupValue: any` (línea 569).
 
 #### `core/components/issues/issue-layouts/calendar/`
 
-- [ ] `core/components/issues/issue-layouts/calendar/base-calendar-root.tsx`
-- [ ] `core/components/issues/issue-layouts/calendar/calendar.tsx`
-- [ ] `core/components/issues/issue-layouts/calendar/day-tile.tsx`
-- [ ] `core/components/issues/issue-layouts/calendar/header.tsx`
-- [ ] `core/components/issues/issue-layouts/calendar/issue-block-root.tsx`
-- [ ] `core/components/issues/issue-layouts/calendar/issue-block.tsx`
-- [ ] `core/components/issues/issue-layouts/calendar/issue-blocks.tsx`
-- [ ] `core/components/issues/issue-layouts/calendar/quick-add-issue-actions.tsx`
-- [ ] `core/components/issues/issue-layouts/calendar/utils.ts`
-- [ ] `core/components/issues/issue-layouts/calendar/week-days.tsx`
-- [ ] `core/components/issues/issue-layouts/calendar/week-header.tsx`
+- [x] `core/components/issues/issue-layouts/calendar/base-calendar-root.tsx`
+- [x] `core/components/issues/issue-layouts/calendar/calendar.tsx`
+- [x] `core/components/issues/issue-layouts/calendar/day-tile.tsx`
+- [x] `core/components/issues/issue-layouts/calendar/header.tsx`
+- [x] `core/components/issues/issue-layouts/calendar/issue-block-root.tsx`
+- [x] `core/components/issues/issue-layouts/calendar/issue-block.tsx`
+- [x] `core/components/issues/issue-layouts/calendar/issue-blocks.tsx`
+- [x] `core/components/issues/issue-layouts/calendar/quick-add-issue-actions.tsx`
+- [x] `core/components/issues/issue-layouts/calendar/utils.ts`
+- [x] `core/components/issues/issue-layouts/calendar/week-days.tsx`
+- [x] `core/components/issues/issue-layouts/calendar/week-header.tsx`
 
 #### `core/components/issues/issue-layouts/calendar/dropdowns/`
 
-- [ ] `core/components/issues/issue-layouts/calendar/dropdowns/index.ts`
-- [ ] `core/components/issues/issue-layouts/calendar/dropdowns/months-dropdown.tsx`
-- [ ] `core/components/issues/issue-layouts/calendar/dropdowns/options-dropdown.tsx`
+- [x] `core/components/issues/issue-layouts/calendar/dropdowns/index.ts`
+- [x] `core/components/issues/issue-layouts/calendar/dropdowns/months-dropdown.tsx`
+- [!] `core/components/issues/issue-layouts/calendar/dropdowns/options-dropdown.tsx` — `closePopover: any` (línea 69) — tipar con `() => void`.
 
 #### `core/components/issues/issue-layouts/calendar/roots/`
 
-- [ ] `core/components/issues/issue-layouts/calendar/roots/cycle-root.tsx`
-- [ ] `core/components/issues/issue-layouts/calendar/roots/module-root.tsx`
-- [ ] `core/components/issues/issue-layouts/calendar/roots/project-root.tsx`
-- [ ] `core/components/issues/issue-layouts/calendar/roots/project-view-root.tsx`
+- [x] `core/components/issues/issue-layouts/calendar/roots/cycle-root.tsx`
+- [x] `core/components/issues/issue-layouts/calendar/roots/module-root.tsx`
+- [x] `core/components/issues/issue-layouts/calendar/roots/project-root.tsx`
+- [x] `core/components/issues/issue-layouts/calendar/roots/project-view-root.tsx`
 
 #### `core/components/issues/issue-layouts/empty-states/`
 
-- [ ] `core/components/issues/issue-layouts/empty-states/archived-issues.tsx`
-- [ ] `core/components/issues/issue-layouts/empty-states/cycle.tsx`
-- [ ] `core/components/issues/issue-layouts/empty-states/global-view.tsx`
-- [ ] `core/components/issues/issue-layouts/empty-states/index.tsx`
-- [ ] `core/components/issues/issue-layouts/empty-states/module.tsx`
-- [ ] `core/components/issues/issue-layouts/empty-states/profile-view.tsx`
-- [ ] `core/components/issues/issue-layouts/empty-states/project-epic.tsx`
-- [ ] `core/components/issues/issue-layouts/empty-states/project-issues.tsx`
-- [ ] `core/components/issues/issue-layouts/empty-states/project-view.tsx`
+- [x] `core/components/issues/issue-layouts/empty-states/archived-issues.tsx`
+- [x] `core/components/issues/issue-layouts/empty-states/cycle.tsx`
+- [x] `core/components/issues/issue-layouts/empty-states/global-view.tsx`
+- [x] `core/components/issues/issue-layouts/empty-states/index.tsx`
+- [x] `core/components/issues/issue-layouts/empty-states/module.tsx`
+- [x] `core/components/issues/issue-layouts/empty-states/profile-view.tsx`
+- [x] `core/components/issues/issue-layouts/empty-states/project-epic.tsx`
+- [x] `core/components/issues/issue-layouts/empty-states/project-issues.tsx`
+- [x] `core/components/issues/issue-layouts/empty-states/project-view.tsx`
 
 #### `core/components/issues/issue-layouts/filters/`
 
-- [ ] `core/components/issues/issue-layouts/filters/index.ts`
+- [x] `core/components/issues/issue-layouts/filters/index.ts`
 
 #### `core/components/issues/issue-layouts/filters/applied-filters/`
 
-- [ ] `core/components/issues/issue-layouts/filters/applied-filters/cycle.tsx`
-- [ ] `core/components/issues/issue-layouts/filters/applied-filters/date.tsx`
-- [ ] `core/components/issues/issue-layouts/filters/applied-filters/index.ts`
-- [ ] `core/components/issues/issue-layouts/filters/applied-filters/label.tsx`
-- [ ] `core/components/issues/issue-layouts/filters/applied-filters/members.tsx`
-- [ ] `core/components/issues/issue-layouts/filters/applied-filters/module.tsx`
-- [ ] `core/components/issues/issue-layouts/filters/applied-filters/priority.tsx`
-- [ ] `core/components/issues/issue-layouts/filters/applied-filters/project.tsx`
-- [ ] `core/components/issues/issue-layouts/filters/applied-filters/state-group.tsx`
-- [ ] `core/components/issues/issue-layouts/filters/applied-filters/state.tsx`
+- [x] `core/components/issues/issue-layouts/filters/applied-filters/cycle.tsx`
+- [x] `core/components/issues/issue-layouts/filters/applied-filters/date.tsx`
+- [x] `core/components/issues/issue-layouts/filters/applied-filters/index.ts`
+- [x] `core/components/issues/issue-layouts/filters/applied-filters/label.tsx`
+- [x] `core/components/issues/issue-layouts/filters/applied-filters/members.tsx`
+- [x] `core/components/issues/issue-layouts/filters/applied-filters/module.tsx`
+- [x] `core/components/issues/issue-layouts/filters/applied-filters/priority.tsx`
+- [x] `core/components/issues/issue-layouts/filters/applied-filters/project.tsx`
+- [x] `core/components/issues/issue-layouts/filters/applied-filters/state-group.tsx`
+- [x] `core/components/issues/issue-layouts/filters/applied-filters/state.tsx`
 
 #### `core/components/issues/issue-layouts/filters/header/`
 
-- [ ] `core/components/issues/issue-layouts/filters/header/index.ts`
-- [ ] `core/components/issues/issue-layouts/filters/header/layout-selection.tsx`
-- [ ] `core/components/issues/issue-layouts/filters/header/mobile-layout-selection.tsx`
+- [x] `core/components/issues/issue-layouts/filters/header/index.ts`
+- [x] `core/components/issues/issue-layouts/filters/header/layout-selection.tsx`
+- [x] `core/components/issues/issue-layouts/filters/header/mobile-layout-selection.tsx`
 
 #### `core/components/issues/issue-layouts/filters/header/display-filters/`
 
-- [ ] `core/components/issues/issue-layouts/filters/header/display-filters/display-filters-selection.tsx`
-- [ ] `core/components/issues/issue-layouts/filters/header/display-filters/display-properties.tsx`
-- [ ] `core/components/issues/issue-layouts/filters/header/display-filters/extra-options.tsx`
-- [ ] `core/components/issues/issue-layouts/filters/header/display-filters/group-by.tsx`
-- [ ] `core/components/issues/issue-layouts/filters/header/display-filters/index.ts`
-- [ ] `core/components/issues/issue-layouts/filters/header/display-filters/order-by.tsx`
-- [ ] `core/components/issues/issue-layouts/filters/header/display-filters/sub-group-by.tsx`
+- [x] `core/components/issues/issue-layouts/filters/header/display-filters/display-filters-selection.tsx`
+- [x] `core/components/issues/issue-layouts/filters/header/display-filters/display-properties.tsx`
+- [x] `core/components/issues/issue-layouts/filters/header/display-filters/extra-options.tsx`
+- [x] `core/components/issues/issue-layouts/filters/header/display-filters/group-by.tsx`
+- [x] `core/components/issues/issue-layouts/filters/header/display-filters/index.ts`
+- [x] `core/components/issues/issue-layouts/filters/header/display-filters/order-by.tsx`
+- [x] `core/components/issues/issue-layouts/filters/header/display-filters/sub-group-by.tsx`
 
 #### `core/components/issues/issue-layouts/filters/header/filters/`
 
-- [ ] `core/components/issues/issue-layouts/filters/header/filters/assignee.tsx`
-- [ ] `core/components/issues/issue-layouts/filters/header/filters/created-by.tsx`
-- [ ] `core/components/issues/issue-layouts/filters/header/filters/cycle.tsx`
-- [ ] `core/components/issues/issue-layouts/filters/header/filters/due-date.tsx`
-- [ ] `core/components/issues/issue-layouts/filters/header/filters/index.ts`
-- [ ] `core/components/issues/issue-layouts/filters/header/filters/labels.tsx`
-- [ ] `core/components/issues/issue-layouts/filters/header/filters/mentions.tsx`
-- [ ] `core/components/issues/issue-layouts/filters/header/filters/module.tsx`
-- [ ] `core/components/issues/issue-layouts/filters/header/filters/priority.tsx`
-- [ ] `core/components/issues/issue-layouts/filters/header/filters/project.tsx`
-- [ ] `core/components/issues/issue-layouts/filters/header/filters/start-date.tsx`
-- [ ] `core/components/issues/issue-layouts/filters/header/filters/state-group.tsx`
-- [ ] `core/components/issues/issue-layouts/filters/header/filters/state.tsx`
+- [x] `core/components/issues/issue-layouts/filters/header/filters/assignee.tsx`
+- [x] `core/components/issues/issue-layouts/filters/header/filters/created-by.tsx`
+- [x] `core/components/issues/issue-layouts/filters/header/filters/cycle.tsx`
+- [x] `core/components/issues/issue-layouts/filters/header/filters/due-date.tsx`
+- [x] `core/components/issues/issue-layouts/filters/header/filters/index.ts`
+- [x] `core/components/issues/issue-layouts/filters/header/filters/labels.tsx`
+- [x] `core/components/issues/issue-layouts/filters/header/filters/mentions.tsx`
+- [x] `core/components/issues/issue-layouts/filters/header/filters/module.tsx`
+- [x] `core/components/issues/issue-layouts/filters/header/filters/priority.tsx`
+- [x] `core/components/issues/issue-layouts/filters/header/filters/project.tsx`
+- [x] `core/components/issues/issue-layouts/filters/header/filters/start-date.tsx`
+- [x] `core/components/issues/issue-layouts/filters/header/filters/state-group.tsx`
+- [x] `core/components/issues/issue-layouts/filters/header/filters/state.tsx`
 
 #### `core/components/issues/issue-layouts/filters/header/helpers/`
 
-- [ ] `core/components/issues/issue-layouts/filters/header/helpers/dropdown.tsx`
-- [ ] `core/components/issues/issue-layouts/filters/header/helpers/filter-header.tsx`
-- [ ] `core/components/issues/issue-layouts/filters/header/helpers/filter-option.tsx`
-- [ ] `core/components/issues/issue-layouts/filters/header/helpers/index.ts`
+- [x] `core/components/issues/issue-layouts/filters/header/helpers/dropdown.tsx`
+- [x] `core/components/issues/issue-layouts/filters/header/helpers/filter-header.tsx`
+- [x] `core/components/issues/issue-layouts/filters/header/helpers/filter-option.tsx`
+- [x] `core/components/issues/issue-layouts/filters/header/helpers/index.ts`
 
 #### `core/components/issues/issue-layouts/gantt/`
 
-- [ ] `core/components/issues/issue-layouts/gantt/base-gantt-root.tsx`
-- [ ] `core/components/issues/issue-layouts/gantt/blocks.tsx`
-- [ ] `core/components/issues/issue-layouts/gantt/index.ts`
+- [!] `core/components/issues/issue-layouts/gantt/base-gantt-root.tsx` — `const payload: any = { ...data }` (línea 87) — réplica del patrón en `modules/gantt-chart/modules-list-layout.tsx`.
+- [!] `core/components/issues/issue-layouts/gantt/blocks.tsx` — `handleIssuePeekOverview = (e: any) => ...` (línea 130) — tipar como `React.MouseEvent`.
+- [x] `core/components/issues/issue-layouts/gantt/index.ts`
 
 #### `core/components/issues/issue-layouts/kanban/`
 
-- [ ] `core/components/issues/issue-layouts/kanban/base-kanban-root.tsx`
-- [ ] `core/components/issues/issue-layouts/kanban/block.tsx`
-- [ ] `core/components/issues/issue-layouts/kanban/blocks-list.tsx`
-- [ ] `core/components/issues/issue-layouts/kanban/default.tsx`
-- [ ] `core/components/issues/issue-layouts/kanban/kanban-group.tsx`
-- [ ] `core/components/issues/issue-layouts/kanban/swimlanes.tsx`
+- [x] `core/components/issues/issue-layouts/kanban/base-kanban-root.tsx`
+- [x] `core/components/issues/issue-layouts/kanban/block.tsx`
+- [x] `core/components/issues/issue-layouts/kanban/blocks-list.tsx`
+- [x] `core/components/issues/issue-layouts/kanban/default.tsx`
+- [x] `core/components/issues/issue-layouts/kanban/kanban-group.tsx`
+- [x] `core/components/issues/issue-layouts/kanban/swimlanes.tsx`
 
 #### `core/components/issues/issue-layouts/kanban/headers/`
 
-- [ ] `core/components/issues/issue-layouts/kanban/headers/group-by-card.tsx`
-- [ ] `core/components/issues/issue-layouts/kanban/headers/sub-group-by-card.tsx`
+- [x] `core/components/issues/issue-layouts/kanban/headers/group-by-card.tsx`
+- [x] `core/components/issues/issue-layouts/kanban/headers/sub-group-by-card.tsx`
 
 #### `core/components/issues/issue-layouts/kanban/roots/`
 
-- [ ] `core/components/issues/issue-layouts/kanban/roots/cycle-root.tsx`
-- [ ] `core/components/issues/issue-layouts/kanban/roots/module-root.tsx`
-- [ ] `core/components/issues/issue-layouts/kanban/roots/profile-issues-root.tsx`
-- [ ] `core/components/issues/issue-layouts/kanban/roots/project-root.tsx`
-- [ ] `core/components/issues/issue-layouts/kanban/roots/project-view-root.tsx`
+- [x] `core/components/issues/issue-layouts/kanban/roots/cycle-root.tsx`
+- [x] `core/components/issues/issue-layouts/kanban/roots/module-root.tsx`
+- [x] `core/components/issues/issue-layouts/kanban/roots/profile-issues-root.tsx`
+- [x] `core/components/issues/issue-layouts/kanban/roots/project-root.tsx`
+- [x] `core/components/issues/issue-layouts/kanban/roots/project-view-root.tsx`
 
 #### `core/components/issues/issue-layouts/list/`
 
-- [ ] `core/components/issues/issue-layouts/list/base-list-root.tsx`
-- [ ] `core/components/issues/issue-layouts/list/block-root.tsx`
-- [ ] `core/components/issues/issue-layouts/list/block.tsx`
-- [ ] `core/components/issues/issue-layouts/list/blocks-list.tsx`
-- [ ] `core/components/issues/issue-layouts/list/default.tsx`
-- [ ] `core/components/issues/issue-layouts/list/list-group.tsx`
+- [x] `core/components/issues/issue-layouts/list/base-list-root.tsx`
+- [x] `core/components/issues/issue-layouts/list/block-root.tsx`
+- [x] `core/components/issues/issue-layouts/list/block.tsx`
+- [x] `core/components/issues/issue-layouts/list/blocks-list.tsx`
+- [x] `core/components/issues/issue-layouts/list/default.tsx`
+- [!] `core/components/issues/issue-layouts/list/list-group.tsx` — `prePopulateQuickAddData(groupByKey, value: any)` (línea 151).
 
 #### `core/components/issues/issue-layouts/list/headers/`
 
-- [ ] `core/components/issues/issue-layouts/list/headers/group-by-card.tsx`
+- [x] `core/components/issues/issue-layouts/list/headers/group-by-card.tsx`
 
 #### `core/components/issues/issue-layouts/list/roots/`
 
-- [ ] `core/components/issues/issue-layouts/list/roots/archived-issue-root.tsx`
-- [ ] `core/components/issues/issue-layouts/list/roots/cycle-root.tsx`
+- [x] `core/components/issues/issue-layouts/list/roots/archived-issue-root.tsx`
+- [x] `core/components/issues/issue-layouts/list/roots/cycle-root.tsx`
 - [x] `core/components/issues/issue-layouts/list/roots/module-root.tsx`
-- [ ] `core/components/issues/issue-layouts/list/roots/profile-issues-root.tsx`
-- [ ] `core/components/issues/issue-layouts/list/roots/project-root.tsx`
-- [ ] `core/components/issues/issue-layouts/list/roots/project-view-root.tsx`
+- [x] `core/components/issues/issue-layouts/list/roots/profile-issues-root.tsx`
+- [x] `core/components/issues/issue-layouts/list/roots/project-root.tsx`
+- [x] `core/components/issues/issue-layouts/list/roots/project-view-root.tsx`
 
 #### `core/components/issues/issue-layouts/properties/`
 
-- [ ] `core/components/issues/issue-layouts/properties/all-properties.tsx`
-- [ ] `core/components/issues/issue-layouts/properties/index.ts`
-- [ ] `core/components/issues/issue-layouts/properties/label-dropdown.tsx`
-- [ ] `core/components/issues/issue-layouts/properties/labels.tsx`
-- [ ] `core/components/issues/issue-layouts/properties/with-display-properties-HOC.tsx`
+- [x] `core/components/issues/issue-layouts/properties/all-properties.tsx`
+- [x] `core/components/issues/issue-layouts/properties/index.ts`
+- [!] `core/components/issues/issue-layouts/properties/label-dropdown.tsx` — (1) `defaultOptions?: any` (línea 36). (2) `displayValue={(assigned: any) => ...}` (línea 274).
+- [x] `core/components/issues/issue-layouts/properties/labels.tsx`
+- [x] `core/components/issues/issue-layouts/properties/with-display-properties-HOC.tsx`
 
 #### `core/components/issues/issue-layouts/quick-action-dropdowns/`
 
-- [ ] `core/components/issues/issue-layouts/quick-action-dropdowns/all-issue.tsx`
-- [ ] `core/components/issues/issue-layouts/quick-action-dropdowns/archived-issue.tsx`
-- [ ] `core/components/issues/issue-layouts/quick-action-dropdowns/cycle-issue.tsx`
-- [ ] `core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx`
-- [ ] `core/components/issues/issue-layouts/quick-action-dropdowns/index.ts`
-- [ ] `core/components/issues/issue-layouts/quick-action-dropdowns/issue-detail.tsx`
-- [ ] `core/components/issues/issue-layouts/quick-action-dropdowns/module-issue.tsx`
-- [ ] `core/components/issues/issue-layouts/quick-action-dropdowns/project-issue.tsx`
+- [x] `core/components/issues/issue-layouts/quick-action-dropdowns/all-issue.tsx`
+- [x] `core/components/issues/issue-layouts/quick-action-dropdowns/archived-issue.tsx`
+- [x] `core/components/issues/issue-layouts/quick-action-dropdowns/cycle-issue.tsx`
+- [x] `core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx`
+- [x] `core/components/issues/issue-layouts/quick-action-dropdowns/index.ts`
+- [x] `core/components/issues/issue-layouts/quick-action-dropdowns/issue-detail.tsx`
+- [x] `core/components/issues/issue-layouts/quick-action-dropdowns/module-issue.tsx`
+- [x] `core/components/issues/issue-layouts/quick-action-dropdowns/project-issue.tsx`
 
 #### `core/components/issues/issue-layouts/quick-add/`
 
-- [ ] `core/components/issues/issue-layouts/quick-add/index.ts`
-- [ ] `core/components/issues/issue-layouts/quick-add/root.tsx`
+- [x] `core/components/issues/issue-layouts/quick-add/index.ts`
+- [x] `core/components/issues/issue-layouts/quick-add/root.tsx`
 
 #### `core/components/issues/issue-layouts/quick-add/button/`
 
-- [ ] `core/components/issues/issue-layouts/quick-add/button/gantt.tsx`
-- [ ] `core/components/issues/issue-layouts/quick-add/button/index.ts`
-- [ ] `core/components/issues/issue-layouts/quick-add/button/kanban.tsx`
-- [ ] `core/components/issues/issue-layouts/quick-add/button/list.tsx`
-- [ ] `core/components/issues/issue-layouts/quick-add/button/spreadsheet.tsx`
+- [x] `core/components/issues/issue-layouts/quick-add/button/gantt.tsx`
+- [x] `core/components/issues/issue-layouts/quick-add/button/index.ts`
+- [x] `core/components/issues/issue-layouts/quick-add/button/kanban.tsx`
+- [x] `core/components/issues/issue-layouts/quick-add/button/list.tsx`
+- [x] `core/components/issues/issue-layouts/quick-add/button/spreadsheet.tsx`
 
 #### `core/components/issues/issue-layouts/quick-add/form/`
 
-- [ ] `core/components/issues/issue-layouts/quick-add/form/calendar.tsx`
-- [ ] `core/components/issues/issue-layouts/quick-add/form/gantt.tsx`
-- [ ] `core/components/issues/issue-layouts/quick-add/form/index.ts`
-- [ ] `core/components/issues/issue-layouts/quick-add/form/kanban.tsx`
-- [ ] `core/components/issues/issue-layouts/quick-add/form/list.tsx`
-- [ ] `core/components/issues/issue-layouts/quick-add/form/spreadsheet.tsx`
+- [x] `core/components/issues/issue-layouts/quick-add/form/calendar.tsx`
+- [x] `core/components/issues/issue-layouts/quick-add/form/gantt.tsx`
+- [x] `core/components/issues/issue-layouts/quick-add/form/index.ts`
+- [x] `core/components/issues/issue-layouts/quick-add/form/kanban.tsx`
+- [x] `core/components/issues/issue-layouts/quick-add/form/list.tsx`
+- [x] `core/components/issues/issue-layouts/quick-add/form/spreadsheet.tsx`
 
 #### `core/components/issues/issue-layouts/roots/`
 
-- [ ] `core/components/issues/issue-layouts/roots/all-issue-layout-root.tsx`
-- [ ] `core/components/issues/issue-layouts/roots/archived-issue-layout-root.tsx`
-- [ ] `core/components/issues/issue-layouts/roots/cycle-layout-root.tsx`
-- [ ] `core/components/issues/issue-layouts/roots/module-layout-root.tsx`
-- [ ] `core/components/issues/issue-layouts/roots/project-layout-root.tsx`
-- [ ] `core/components/issues/issue-layouts/roots/project-view-layout-root.tsx`
+- [x] `core/components/issues/issue-layouts/roots/all-issue-layout-root.tsx`
+- [x] `core/components/issues/issue-layouts/roots/archived-issue-layout-root.tsx`
+- [x] `core/components/issues/issue-layouts/roots/cycle-layout-root.tsx`
+- [x] `core/components/issues/issue-layouts/roots/module-layout-root.tsx`
+- [x] `core/components/issues/issue-layouts/roots/project-layout-root.tsx`
+- [x] `core/components/issues/issue-layouts/roots/project-view-layout-root.tsx`
 
 #### `core/components/issues/issue-layouts/spreadsheet/`
 
-- [ ] `core/components/issues/issue-layouts/spreadsheet/base-spreadsheet-root.tsx`
-- [ ] `core/components/issues/issue-layouts/spreadsheet/issue-column.tsx`
-- [ ] `core/components/issues/issue-layouts/spreadsheet/issue-row.tsx`
-- [ ] `core/components/issues/issue-layouts/spreadsheet/spreadsheet-header-column.tsx`
-- [ ] `core/components/issues/issue-layouts/spreadsheet/spreadsheet-header.tsx`
-- [ ] `core/components/issues/issue-layouts/spreadsheet/spreadsheet-table.tsx`
-- [ ] `core/components/issues/issue-layouts/spreadsheet/spreadsheet-view.tsx`
+- [x] `core/components/issues/issue-layouts/spreadsheet/base-spreadsheet-root.tsx`
+- [x] `core/components/issues/issue-layouts/spreadsheet/issue-column.tsx`
+- [x] `core/components/issues/issue-layouts/spreadsheet/issue-row.tsx`
+- [x] `core/components/issues/issue-layouts/spreadsheet/spreadsheet-header-column.tsx`
+- [x] `core/components/issues/issue-layouts/spreadsheet/spreadsheet-header.tsx`
+- [x] `core/components/issues/issue-layouts/spreadsheet/spreadsheet-table.tsx`
+- [x] `core/components/issues/issue-layouts/spreadsheet/spreadsheet-view.tsx`
 
 #### `core/components/issues/issue-layouts/spreadsheet/columns/`
 
-- [ ] `core/components/issues/issue-layouts/spreadsheet/columns/assignee-column.tsx`
-- [ ] `core/components/issues/issue-layouts/spreadsheet/columns/attachment-column.tsx`
-- [ ] `core/components/issues/issue-layouts/spreadsheet/columns/created-on-column.tsx`
-- [ ] `core/components/issues/issue-layouts/spreadsheet/columns/cycle-column.tsx`
-- [ ] `core/components/issues/issue-layouts/spreadsheet/columns/due-date-column.tsx`
-- [ ] `core/components/issues/issue-layouts/spreadsheet/columns/estimate-column.tsx`
-- [ ] `core/components/issues/issue-layouts/spreadsheet/columns/header-column.tsx`
-- [ ] `core/components/issues/issue-layouts/spreadsheet/columns/index.ts`
-- [ ] `core/components/issues/issue-layouts/spreadsheet/columns/label-column.tsx`
-- [ ] `core/components/issues/issue-layouts/spreadsheet/columns/link-column.tsx`
-- [ ] `core/components/issues/issue-layouts/spreadsheet/columns/module-column.tsx`
-- [ ] `core/components/issues/issue-layouts/spreadsheet/columns/priority-column.tsx`
-- [ ] `core/components/issues/issue-layouts/spreadsheet/columns/start-date-column.tsx`
-- [ ] `core/components/issues/issue-layouts/spreadsheet/columns/state-column.tsx`
-- [ ] `core/components/issues/issue-layouts/spreadsheet/columns/sub-issue-column.tsx`
-- [ ] `core/components/issues/issue-layouts/spreadsheet/columns/updated-on-column.tsx`
+- [!] `core/components/issues/issue-layouts/spreadsheet/columns/assignee-column.tsx` — Mismo patrón.
+- [x] `core/components/issues/issue-layouts/spreadsheet/columns/attachment-column.tsx`
+- [x] `core/components/issues/issue-layouts/spreadsheet/columns/created-on-column.tsx`
+- [x] `core/components/issues/issue-layouts/spreadsheet/columns/cycle-column.tsx`
+- [!] `core/components/issues/issue-layouts/spreadsheet/columns/due-date-column.tsx` — Mismo patrón. Considerar definir un shared type `TSpreadsheetColumnOnChange` tipado correctamente.
+- [!] `core/components/issues/issue-layouts/spreadsheet/columns/estimate-column.tsx` — `onChange: (issue, data, updates: any) => void` — cluster replicado en las 7 columnas de spreadsheet.
+- [x] `core/components/issues/issue-layouts/spreadsheet/columns/header-column.tsx`
+- [x] `core/components/issues/issue-layouts/spreadsheet/columns/index.ts`
+- [!] `core/components/issues/issue-layouts/spreadsheet/columns/label-column.tsx` — Mismo patrón: `updates: any` en `onChange` prop.
+- [x] `core/components/issues/issue-layouts/spreadsheet/columns/link-column.tsx`
+- [x] `core/components/issues/issue-layouts/spreadsheet/columns/module-column.tsx`
+- [!] `core/components/issues/issue-layouts/spreadsheet/columns/priority-column.tsx` — Mismo patrón.
+- [!] `core/components/issues/issue-layouts/spreadsheet/columns/start-date-column.tsx` — Mismo patrón.
+- [!] `core/components/issues/issue-layouts/spreadsheet/columns/state-column.tsx` — Mismo patrón.
+- [x] `core/components/issues/issue-layouts/spreadsheet/columns/sub-issue-column.tsx`
+- [x] `core/components/issues/issue-layouts/spreadsheet/columns/updated-on-column.tsx`
 
 #### `core/components/issues/issue-layouts/spreadsheet/roots/`
 
-- [ ] `core/components/issues/issue-layouts/spreadsheet/roots/cycle-root.tsx`
-- [ ] `core/components/issues/issue-layouts/spreadsheet/roots/module-root.tsx`
-- [ ] `core/components/issues/issue-layouts/spreadsheet/roots/project-root.tsx`
-- [ ] `core/components/issues/issue-layouts/spreadsheet/roots/project-view-root.tsx`
-- [ ] `core/components/issues/issue-layouts/spreadsheet/roots/workspace-root.tsx`
+- [x] `core/components/issues/issue-layouts/spreadsheet/roots/cycle-root.tsx`
+- [x] `core/components/issues/issue-layouts/spreadsheet/roots/module-root.tsx`
+- [x] `core/components/issues/issue-layouts/spreadsheet/roots/project-root.tsx`
+- [x] `core/components/issues/issue-layouts/spreadsheet/roots/project-view-root.tsx`
+- [x] `core/components/issues/issue-layouts/spreadsheet/roots/workspace-root.tsx`
 
 #### `core/components/issues/issue-modal/`
 
-- [ ] `core/components/issues/issue-modal/base.tsx`
-- [ ] `core/components/issues/issue-modal/draft-issue-layout.tsx`
-- [ ] `core/components/issues/issue-modal/form.tsx`
-- [ ] `core/components/issues/issue-modal/modal.tsx`
+- [!] `core/components/issues/issue-modal/base.tsx` — 2× `catch (error: any)` (líneas 254, 358).
+- [x] `core/components/issues/issue-modal/draft-issue-layout.tsx`
+- [!] `core/components/issues/issue-modal/form.tsx` — `dataResetProperties?: any[]` (línea 75).
+- [x] `core/components/issues/issue-modal/modal.tsx`
 
 #### `core/components/issues/issue-modal/components/`
 
-- [ ] `core/components/issues/issue-modal/components/default-properties.tsx`
-- [ ] `core/components/issues/issue-modal/components/description-editor.tsx`
-- [ ] `core/components/issues/issue-modal/components/index.ts`
-- [ ] `core/components/issues/issue-modal/components/parent-tag.tsx`
-- [ ] `core/components/issues/issue-modal/components/project-select.tsx`
-- [ ] `core/components/issues/issue-modal/components/title-input.tsx`
+- [x] `core/components/issues/issue-modal/components/default-properties.tsx`
+- [!] `core/components/issues/issue-modal/components/description-editor.tsx` — `console.log("Error in uploading issue asset:", error)` (línea 225) — `console.error`.
+- [x] `core/components/issues/issue-modal/components/index.ts`
+- [x] `core/components/issues/issue-modal/components/parent-tag.tsx`
+- [x] `core/components/issues/issue-modal/components/project-select.tsx`
+- [x] `core/components/issues/issue-modal/components/title-input.tsx`
 
 #### `core/components/issues/issue-modal/context/`
 
-- [ ] `core/components/issues/issue-modal/context/index.ts`
-- [ ] `core/components/issues/issue-modal/context/issue-modal-context.tsx`
+- [x] `core/components/issues/issue-modal/context/index.ts`
+- [x] `core/components/issues/issue-modal/context/issue-modal-context.tsx`
 
 #### `core/components/issues/peek-overview/`
 
-- [ ] `core/components/issues/peek-overview/error.tsx`
-- [ ] `core/components/issues/peek-overview/header.tsx`
-- [ ] `core/components/issues/peek-overview/index.ts`
-- [ ] `core/components/issues/peek-overview/issue-detail.tsx`
-- [ ] `core/components/issues/peek-overview/loader.tsx`
-- [ ] `core/components/issues/peek-overview/properties.tsx`
-- [ ] `core/components/issues/peek-overview/root.tsx`
-- [ ] `core/components/issues/peek-overview/view.tsx`
+- [x] `core/components/issues/peek-overview/error.tsx`
+- [!] `core/components/issues/peek-overview/header.tsx` — (1) `icon: any` en `PEEK_OPTIONS` (línea 34). (2) `onChange={(val: any) => ...}` (línea 175).
+- [x] `core/components/issues/peek-overview/index.ts`
+- [x] `core/components/issues/peek-overview/issue-detail.tsx`
+- [x] `core/components/issues/peek-overview/loader.tsx`
+- [x] `core/components/issues/peek-overview/properties.tsx`
+- [x] `core/components/issues/peek-overview/root.tsx`
+- [x] `core/components/issues/peek-overview/view.tsx`
 
 #### `core/components/issues/preview-card/`
 
-- [ ] `core/components/issues/preview-card/date.tsx`
-- [ ] `core/components/issues/preview-card/index.ts`
-- [ ] `core/components/issues/preview-card/root.tsx`
+- [x] `core/components/issues/preview-card/date.tsx`
+- [x] `core/components/issues/preview-card/index.ts`
+- [x] `core/components/issues/preview-card/root.tsx`
 
 #### `core/components/issues/relations/`
 
-- [ ] `core/components/issues/relations/issue-list-item.tsx`
-- [ ] `core/components/issues/relations/issue-list.tsx`
-- [ ] `core/components/issues/relations/properties.tsx`
+- [x] `core/components/issues/relations/issue-list-item.tsx`
+- [x] `core/components/issues/relations/issue-list.tsx`
+- [x] `core/components/issues/relations/properties.tsx`
 
 #### `core/components/issues/select/`
 
-- [ ] `core/components/issues/select/base.tsx`
-- [ ] `core/components/issues/select/dropdown.tsx`
-- [ ] `core/components/issues/select/index.ts`
+- [!] `core/components/issues/select/base.tsx` — `displayValue={(assigned: any) => assigned?.name}` (línea 211) — patrón repetido en dropdowns.
+- [x] `core/components/issues/select/dropdown.tsx`
+- [x] `core/components/issues/select/index.ts`
 
 #### `core/components/issues/workspace-draft/`
 
-- [ ] `core/components/issues/workspace-draft/delete-modal.tsx`
-- [ ] `core/components/issues/workspace-draft/draft-issue-block.tsx`
-- [ ] `core/components/issues/workspace-draft/draft-issue-properties.tsx`
-- [ ] `core/components/issues/workspace-draft/empty-state.tsx`
-- [ ] `core/components/issues/workspace-draft/index.ts`
-- [ ] `core/components/issues/workspace-draft/loader.tsx`
-- [ ] `core/components/issues/workspace-draft/quick-action.tsx`
-- [ ] `core/components/issues/workspace-draft/root.tsx`
+- [!] `core/components/issues/workspace-draft/delete-modal.tsx` — `catch (errors: any)` (línea 78).
+- [x] `core/components/issues/workspace-draft/draft-issue-block.tsx`
+- [x] `core/components/issues/workspace-draft/draft-issue-properties.tsx`
+- [x] `core/components/issues/workspace-draft/empty-state.tsx`
+- [x] `core/components/issues/workspace-draft/index.ts`
+- [x] `core/components/issues/workspace-draft/loader.tsx`
+- [x] `core/components/issues/workspace-draft/quick-action.tsx`
+- [x] `core/components/issues/workspace-draft/root.tsx`
 
 #### `core/components/labels/`
 
@@ -3746,6 +3746,6 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `./`
 
-- [ ] `react-router.config.ts`
-- [ ] `vite.config.ts`
+- [x] `react-router.config.ts`
+- [x] `vite.config.ts`
 
