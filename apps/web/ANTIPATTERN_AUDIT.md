@@ -1032,9 +1032,9 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `ce/store/issue/epic/`
 
-- [!] `ce/store/issue/epic/filter.store.ts` — `@ts-nocheck` (dos veces) sobre clase-stub que extiende similar — comentario dice "This class will never be used". Si no se usa, eliminarla; si se usa como CE fallback, tipar correctamente.
+- [x] `ce/store/issue/epic/filter.store.ts` — Comentarios `// @ts-nocheck` eran no-ops (TS solo los reconoce al inicio del archivo). Stub reescrito: body vacío — el parent `ProjectIssuesFilter` ya asigna `rootIssueStore`, y `implements IProjectEpicsFilter` se satisface automáticamente porque `IProjectEpicsFilter = IProjectIssuesFilter` y el parent ya lo implementa. El comentario anterior "this class will never be used" era incorrecto: sí se usa como CE fallback vía module resolver (`@/plane-web/store/issue/epic` → `ce/store/issue/epic/` en builds CE).
 - [x] `ce/store/issue/epic/index.ts`
-- [!] `ce/store/issue/epic/issue.store.ts` — `@ts-nocheck` stub — misma deuda que filter.store.ts del mismo directorio.
+- [x] `ce/store/issue/epic/issue.store.ts` — Mismo patrón que epic/filter.store.ts — `@ts-nocheck` removido, body vacío, CE fallback documentado.
 
 #### `ce/store/issue/helpers/`
 
@@ -1049,21 +1049,21 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `ce/store/issue/team/`
 
-- [!] `ce/store/issue/team/filter.store.ts` — `@ts-nocheck` stub — misma deuda que epic/ del mismo patrón.
+- [x] `ce/store/issue/team/filter.store.ts` — Mismo patrón que epic/filter.store.ts — `@ts-nocheck` removido, CE fallback documentado. `implements IProjectIssuesFilter` cambiado a `implements ITeamIssuesFilter` (tipo alias local, más expresivo).
 - [x] `ce/store/issue/team/index.ts`
-- [!] `ce/store/issue/team/issue.store.ts` — `@ts-nocheck` stub — misma deuda.
+- [x] `ce/store/issue/team/issue.store.ts` — Mismo patrón. `implements IProjectIssues` → `implements ITeamIssues`.
 
 #### `ce/store/issue/team-project/`
 
-- [!] `ce/store/issue/team-project/filter.store.ts` — `@ts-nocheck` stub — misma deuda.
+- [x] `ce/store/issue/team-project/filter.store.ts` — Mismo patrón. `@ts-nocheck` removido, CE fallback documentado.
 - [x] `ce/store/issue/team-project/index.ts`
-- [!] `ce/store/issue/team-project/issue.store.ts` — `@ts-nocheck` stub — misma deuda.
+- [x] `ce/store/issue/team-project/issue.store.ts` — Mismo patrón. `implements IProjectIssues` → `implements ITeamProjectWorkItems`.
 
 #### `ce/store/issue/team-views/`
 
-- [!] `ce/store/issue/team-views/filter.store.ts` — `@ts-nocheck` stub — misma deuda.
+- [x] `ce/store/issue/team-views/filter.store.ts` — Mismo patrón. `implements IProjectViewIssuesFilter` → `implements ITeamViewIssuesFilter`.
 - [x] `ce/store/issue/team-views/index.ts`
-- [!] `ce/store/issue/team-views/issue.store.ts` — `@ts-nocheck` stub — misma deuda.
+- [x] `ce/store/issue/team-views/issue.store.ts` — Mismo patrón. `implements IProjectViewIssues` → `implements ITeamViewIssues`.
 
 #### `ce/store/issue/workspace/`
 

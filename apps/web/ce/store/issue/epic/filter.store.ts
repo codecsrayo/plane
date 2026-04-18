@@ -6,17 +6,17 @@
 
 import type { IProjectIssuesFilter } from "@/store/issue/project";
 import { ProjectIssuesFilter } from "@/store/issue/project";
-import type { IIssueRootStore } from "@/store/issue/root.store";
 
-// @ts-nocheck - This class will never be used, extending similar class to avoid type errors
+/**
+ * CE fallback for epic filters. Real implementation lives in
+ * `plane-web/store/issue/epic`; in CE builds the module resolver points
+ * `@/plane-web/store/issue/epic` at this file, so the class IS instantiated
+ * at runtime even though the previous audit note said "this class will
+ * never be used". See `core/store/issue/root.store.ts::projectEpicsFilter`.
+ *
+ * The parent constructor already assigns `rootIssueStore`, so no body is
+ * needed here — the `extends` is sufficient to satisfy the interface.
+ */
 export type IProjectEpicsFilter = IProjectIssuesFilter;
 
-// @ts-nocheck - This class will never be used, extending similar class to avoid type errors
-export class ProjectEpicsFilter extends ProjectIssuesFilter implements IProjectEpicsFilter {
-  constructor(_rootStore: IIssueRootStore) {
-    super(_rootStore);
-
-    // root store
-    this.rootIssueStore = _rootStore;
-  }
-}
+export class ProjectEpicsFilter extends ProjectIssuesFilter implements IProjectEpicsFilter {}

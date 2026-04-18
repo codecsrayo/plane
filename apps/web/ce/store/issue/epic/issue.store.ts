@@ -7,9 +7,10 @@
 import type { IProjectIssues } from "@/store/issue/project";
 import { ProjectIssues } from "@/store/issue/project";
 
-// @ts-nocheck - This class will never be used, extending similar class to avoid type errors
-
+/**
+ * CE fallback for the epics issue store. Real implementation lives in
+ * `plane-web/store/issue/epic`; this is what resolves in CE builds.
+ */
 export type IProjectEpics = IProjectIssues;
 
-// @ts-nocheck - This class will never be used, extending similar class to avoid type errors
 export class ProjectEpics extends ProjectIssues implements IProjectEpics {}

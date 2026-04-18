@@ -7,8 +7,10 @@
 import type { IProjectIssues } from "@/store/issue/project";
 import { ProjectIssues } from "@/store/issue/project";
 
-// @ts-nocheck - This class will never be used, extending similar class to avoid type errors
+/**
+ * CE fallback for team-project work-items. Real implementation lives in
+ * `plane-web/store/issue/team-project`; this is what resolves in CE builds.
+ */
 export type ITeamProjectWorkItems = IProjectIssues;
 
-// @ts-nocheck - This class will never be used, extending similar class to avoid type errors
 export class TeamProjectWorkItems extends ProjectIssues implements ITeamProjectWorkItems {}

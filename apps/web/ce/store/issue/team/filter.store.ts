@@ -7,8 +7,10 @@
 import type { IProjectIssuesFilter } from "@/store/issue/project";
 import { ProjectIssuesFilter } from "@/store/issue/project";
 
-// @ts-nocheck - This class will never be used, extending similar class to avoid type errors
+/**
+ * CE fallback for team issue filters. Real implementation lives in
+ * `plane-web/store/issue/team`; this is what resolves in CE builds.
+ */
 export type ITeamIssuesFilter = IProjectIssuesFilter;
 
-// @ts-nocheck - This class will never be used, extending similar class to avoid type errors
-export class TeamIssuesFilter extends ProjectIssuesFilter implements IProjectIssuesFilter {}
+export class TeamIssuesFilter extends ProjectIssuesFilter implements ITeamIssuesFilter {}
