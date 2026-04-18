@@ -700,7 +700,7 @@ const useGlobalIssueActions = () => {
       if (!workspaceSlug || !globalViewId) return;
       return issues.fetchNextIssues(workspaceSlug.toString(), globalViewId.toString(), groupId, subGroupId);
     },
-    [issues.fetchIssues, workspaceSlug, globalViewId]
+    [issues.fetchNextIssues, workspaceSlug, globalViewId]
   );
 
   const createIssue = useCallback(

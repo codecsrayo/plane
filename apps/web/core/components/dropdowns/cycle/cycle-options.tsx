@@ -4,7 +4,7 @@
  * See the LICENSE file for details.
  */
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { Placement } from "@popperjs/core";
 import { observer } from "mobx-react";
 import { useParams } from "next/navigation";
@@ -52,14 +52,18 @@ export const CycleOptions = observer(function CycleOptions(props: CycleOptionsPr
   const { getProjectCycleIds, fetchAllCycles, getCycleById } = useCycle();
   const { isMobile } = usePlatformOS();
 
-  const cycleIds = (getProjectCycleIds(projectId) ?? [])?.filter((cycleId) => {
-    const cycleDetails = getCycleById(cycleId);
-    if (currentCycleId && currentCycleId === cycleId) return false;
-    return cycleDetails?.status ? cycleDetails.status.toLowerCase() !== "completed" : true;
-  });
+  const cycleIds = useMemo(
+    () =>
+      (getProjectCycleIds(projectId) ?? []).filter((cycleId) => {
+        const cycleDetails = getCycleById(cycleId);
+        if (currentCycleId && currentCycleId === cycleId) return false;
+        return cycleDetails?.status ? cycleDetails.status.toLowerCase() !== "completed" : true;
+      }),
+    [getProjectCycleIds, getCycleById, projectId, currentCycleId]
+  );
 
   const onOpen = useCallback(() => {
-    if (workspaceSlug && !cycleIds) fetchAllCycles(workspaceSlug.toString(), projectId);
+    if (workspaceSlug && cycleIds.length === 0) fetchAllCycles(workspaceSlug.toString(), projectId);
   }, [cycleIds, fetchAllCycles, projectId, workspaceSlug]);
 
   useEffect(() => {
