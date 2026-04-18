@@ -1289,10 +1289,10 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 - [x] `core/components/common/breadcrumb-link.tsx`
 - [x] `core/components/common/count-chip.tsx`
 - [x] `core/components/common/cover-image.tsx`
-- [!] `core/components/common/empty-state.tsx` — `image: any` + `icon?: any` — mismo patrón que `new-empty-state.tsx`.
+- [x] `core/components/common/empty-state.tsx` — Resuelto: `image: any` → `string | undefined` (verificado: todos los callers usan `import ... from "...svg?url"`, que resuelve a string URL). `icon?: any` → `React.ReactElement` (consistente con el prop `prependIcon` del Button de propel).
 - [x] `core/components/common/latest-feature-block.tsx`
 - [x] `core/components/common/logo-spinner.tsx`
-- [!] `core/components/common/new-empty-state.tsx` — `image: any` (línea 15) y `icon?: any` (línea 23) en props — tipar como `string | StaticImageData` e `IconComponent`.
+- [x] `core/components/common/new-empty-state.tsx` — Resuelto: `image: any` → `string | undefined`; `icon?: any` → `React.ReactElement`. Mismo patrón aplicado al gemelo `empty-state.tsx`.
 - [x] `core/components/common/page-access-icon.tsx`
 - [x] `core/components/common/pro-icon.tsx`
 - [x] `core/components/common/quick-actions-factory.tsx`
@@ -1341,7 +1341,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 #### `core/components/core/filters/`
 
 - [x] `core/components/core/filters/date-filter-modal.tsx`
-- [!] `core/components/core/filters/date-filter-select.tsx` — `icon: any` (línea 22) — tipar como componente de icono.
+- [x] `core/components/core/filters/date-filter-select.tsx` — Resuelto: `icon: any` → `React.ReactElement`. En la data, los iconos son JSX pre-renderizado (`<CalendarBeforeIcon className="h-4 w-4" />`), no componentes — por eso `ReactElement` es la tipificación correcta (no `ComponentType`).
 
 #### `core/components/core/list/`
 
@@ -1355,9 +1355,9 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 - [x] `core/components/core/modals/bulk-delete-issues-modal.tsx`
 - [x] `core/components/core/modals/change-email-modal.tsx`
 - [x] `core/components/core/modals/existing-issues-list-modal.tsx`
-- [!] `core/components/core/modals/gpt-assistant-popover.tsx` — Múltiples `any`: `onResponse: (response: any)` (28), `onError?: (error: any)` (29), `handleServiceError(err: any)` (91).
+- [x] `core/components/core/modals/gpt-assistant-popover.tsx` — Resuelto: (1) `onResponse: (response: any)` → `(response: string)` — la `response` state es `useState<string>`. (2) `onError?: (error: any)` → `(error: unknown)`. (3) `handleServiceError(err: any)` → `(err: unknown)` con narrowing antes de acceder a `err.data.error` y `err.status`.
 - [x] `core/components/core/modals/issue-search-modal-empty-state.tsx`
-- [!] `core/components/core/modals/user-image-upload-modal.tsx` — `console.log("Error in uploading user asset:", error)` (línea 90) — usar `console.error`.
+- [x] `core/components/core/modals/user-image-upload-modal.tsx` — Resuelto: `console.log` → `console.error`. Mensaje corregido: el catch está dentro del path de `delete` (no `upload`), así que se cambió a "Error removing user asset:".
 - [!] `core/components/core/modals/workspace-image-upload-modal.tsx` — (1) `catch (error: any)` (línea 78). (2) `console.log("error", error)` (línea 79) y `console.log("Error in removing workspace asset:", error)` (línea 103) — reemplazar por `console.error` y/o sentry.
 
 #### `core/components/core/multiple-select/`

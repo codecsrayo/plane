@@ -25,8 +25,8 @@ const aiService = new AIService();
 type Props = {
   isOpen: boolean;
   handleClose: () => void;
-  onResponse: (response: any) => void;
-  onError?: (error: any) => void;
+  onResponse: (response: string) => void;
+  onError?: (error: unknown) => void;
   placement?: Placement;
   prompt?: string;
   button: React.ReactNode;
@@ -88,10 +88,11 @@ export function GptAssistantPopover(props: Props) {
     reset();
   };
 
-  const handleServiceError = (err: any) => {
-    const error = err?.data?.error;
+  const handleServiceError = (err: unknown) => {
+    const errObj = typeof err === "object" && err !== null ? (err as { data?: { error?: string }; status?: number }) : undefined;
+    const error = errObj?.data?.error;
     const errorMessage =
-      err?.status === 429
+      errObj?.status === 429
         ? error || "You have reached the maximum number of requests of 50 requests per month per user."
         : error || "Some error occurred. Please try again.";
 

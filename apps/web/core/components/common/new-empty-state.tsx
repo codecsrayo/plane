@@ -12,7 +12,7 @@ import { Button } from "@plane/propel/button";
 type Props = {
   title: string;
   description?: React.ReactNode;
-  image: any;
+  image: string | undefined;
   comicBox?: {
     direction: "left" | "right";
     title: string;
@@ -20,7 +20,7 @@ type Props = {
     extraPadding?: boolean;
   };
   primaryButton?: {
-    icon?: any;
+    icon?: React.ReactElement;
     text: string;
     onClick: () => void;
   };

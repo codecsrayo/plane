@@ -19,7 +19,7 @@ type Props = {
 type DueDate = {
   name: string;
   value: string;
-  icon: any;
+  icon: React.ReactElement;
 };
 
 const dueDateRange: DueDate[] = [
