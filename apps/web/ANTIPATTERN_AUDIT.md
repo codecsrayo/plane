@@ -3757,8 +3757,8 @@ Archivos de declaración de tipos (sin código runtime). Revisión enfocada en: 
 
 - [x] `app/types/next-link.d.ts`
 - [x] `app/types/next-navigation.d.ts`
-- [!] `app/types/next-script.d.ts` — `[key: string]: any` en shim de compat Next Script. Aceptable como deuda técnica documentada; restringir cuando se elimine dependencia legacy.
-- [!] `app/types/react-router-virtual.d.ts` — `const build: any` shim para módulo virtual. Aceptable (documentado).
+- [x] `app/types/next-script.d.ts` — `[key: string]: any` eliminado; `ScriptProps` ahora extiende `Omit<React.ScriptHTMLAttributes<HTMLScriptElement>, "onLoad" | "onError" | "children">` con los overrides específicos de Next (`strategy`, `onLoad/onError: () => void`, `children: string`).
+- [x] `app/types/react-router-virtual.d.ts` — `const build: any` → `const build: ServerBuild` importado con `import type { ServerBuild } from "react-router"`. Elimina también el `eslint-disable @typescript-eslint/no-explicit-any`.
 
 ### `ce/types/issue-types/`
 
@@ -3779,6 +3779,6 @@ Archivos de declaración de tipos (sin código runtime). Revisión enfocada en: 
 
 ### `./`
 
-- [!] `google.d.ts` — `(...args: any[])` en callbacks de Google Identity Services (tipos externos a la lib). Aceptable como shim documentado.
+- [x] `google.d.ts` — `(...args: any[]) => void` reemplazado por firmas concretas de Google Identity Services: `native_callback?: (credential: Credential) => void` (Credential ya tipado localmente como `{id, password}`) y `intermediate_iframe_close_callback?: () => void` (no recibe argumentos según GIS docs).
 - [x] `use-font-face-observer.d.ts`
 
