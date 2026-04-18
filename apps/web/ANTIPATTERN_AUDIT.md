@@ -1606,7 +1606,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `core/components/gantt-chart/chart/`
 
-- [!] `core/components/gantt-chart/chart/header.tsx` — `VIEWS_LIST.map((chartView: any) => ...)` (línea 51).
+- [x] `core/components/gantt-chart/chart/header.tsx` — `VIEWS_LIST.map((chartView: any))` → `(chartView: ChartDataType)`.
 - [x] `core/components/gantt-chart/chart/index.ts`
 - [!] `core/components/gantt-chart/chart/main-content.tsx` — Mismo cluster de 3× `any`.
 - [!] `core/components/gantt-chart/chart/root.tsx` — Mismo cluster de 3× `any` en props `blockUpdateHandler`/`blockToRender`/`sidebarToRender`.
@@ -1615,9 +1615,9 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 #### `core/components/gantt-chart/chart/views/`
 
 - [x] `core/components/gantt-chart/chart/views/index.ts`
-- [!] `core/components/gantt-chart/chart/views/month.tsx` — `observer(function MonthChartView(_props: any))` (línea 18) — si no usa props, omitir `_props` en lugar de tiparlo `any`.
-- [!] `core/components/gantt-chart/chart/views/quarter.tsx` — Mismo patrón `_props: any` (línea 17).
-- [!] `core/components/gantt-chart/chart/views/week.tsx` — Mismo patrón `_props: any` (línea 16).
+- [x] `core/components/gantt-chart/chart/views/month.tsx` — `_props: any` eliminado (componente no recibe props).
+- [x] `core/components/gantt-chart/chart/views/quarter.tsx` — `_props: any` eliminado.
+- [x] `core/components/gantt-chart/chart/views/week.tsx` — `_props: any` eliminado.
 
 #### `core/components/gantt-chart/contexts/`
 
@@ -2391,7 +2391,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 - [x] `core/components/modules/analytics-sidebar/index.ts`
 - [x] `core/components/modules/analytics-sidebar/issue-progress.tsx`
 - [x] `core/components/modules/analytics-sidebar/progress-stats.tsx`
-- [!] `core/components/modules/analytics-sidebar/root.tsx` — `onChange={(nextValue: any) => ...}` (línea 218).
+- [x] `core/components/modules/analytics-sidebar/root.tsx` — `onChange={(nextValue: any)}` → `TModuleStatus`.
 
 #### `core/components/modules/applied-filters/`
 
@@ -2445,7 +2445,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 #### `core/components/modules/sidebar-select/`
 
 - [x] `core/components/modules/sidebar-select/index.ts`
-- [!] `core/components/modules/sidebar-select/select-status.tsx` — `onChange={(nextValue: any) => ...}` (línea 54).
+- [x] `core/components/modules/sidebar-select/select-status.tsx` — `onChange={(nextValue: any)}` → `TModuleStatus`.
 
 #### `core/components/navigation/`
 
@@ -2597,7 +2597,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 - [x] `core/components/pages/modals/create-page-modal.tsx`
 - [x] `core/components/pages/modals/delete-page-modal.tsx`
 - [x] `core/components/pages/modals/export-page-modal.tsx`
-- [!] `core/components/pages/modals/page-form.tsx` — `onChange={(val: any) => ...}` (línea 89).
+- [x] `core/components/pages/modals/page-form.tsx` — `onChange={(val: any)}` → `TChangeHandlerProps` (propel emoji-icon-picker).
 
 #### `core/components/pages/navigation-pane/`
 
@@ -2801,7 +2801,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 - [!] `core/components/project/empty-state.tsx` — `image: any` + `icon?: any` — mismo patrón de `common/empty-state.tsx`.
 - [x] `core/components/project/filters.tsx`
 - [x] `core/components/project/form-loader.tsx`
-- [!] `core/components/project/form.tsx` — `onChange={(val: any) => ...}` (línea 209).
+- [x] `core/components/project/form.tsx` — `onChange={(val: any)}` → `TChangeHandlerProps`. Elimina TODO de tipado.
 - [x] `core/components/project/header.tsx`
 - [x] `core/components/project/integration-card.tsx`
 - [x] `core/components/project/join-project-modal.tsx`
@@ -2830,7 +2830,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 #### `core/components/project/create/`
 
 - [x] `core/components/project/create/common-attributes.tsx`
-- [!] `core/components/project/create/header.tsx` — `onChange={(val: any) => ...}` (línea 103).
+- [x] `core/components/project/create/header.tsx` — `onChange={(val: any)}` → `TChangeHandlerProps`.
 - [x] `core/components/project/create/project-create-buttons.tsx`
 
 #### `core/components/project/dropdowns/`
@@ -3107,7 +3107,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 #### `core/components/views/`
 
 - [x] `core/components/views/delete-view-modal.tsx`
-- [!] `core/components/views/form.tsx` — `onChange={(val: any) => ...}` (línea 132).
+- [x] `core/components/views/form.tsx` — `onChange={(val: any)}` → `TChangeHandlerProps`. Elimina TODO de tipado.
 - [x] `core/components/views/helper.tsx`
 - [x] `core/components/views/modal.tsx`
 - [x] `core/components/views/quick-actions.tsx`

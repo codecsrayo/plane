@@ -13,7 +13,7 @@ import { useTimeLineChartStore } from "@/hooks/use-timeline-chart";
 import { HEADER_HEIGHT, SIDEBAR_WIDTH } from "../../constants";
 import type { IWeekBlock } from "../../views";
 
-export const WeekChartView = observer(function WeekChartView(_props: any) {
+export const WeekChartView = observer(function WeekChartView() {
   const { currentViewData, renderView } = useTimeLineChartStore();
   // `renderView` is a union (IWeekBlock[] | IMonthView | IMonthBlock[]); this
   // component is mounted only when the active Gantt view is "week", so the

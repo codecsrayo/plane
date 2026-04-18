@@ -12,7 +12,7 @@ import { Controller } from "react-hook-form";
 import { MODULE_STATUS } from "@plane/constants";
 import { useTranslation } from "@plane/i18n";
 import { StatePropertyIcon } from "@plane/propel/icons";
-import type { IModule } from "@plane/types";
+import type { IModule , TModuleStatus} from "@plane/types";
 // ui
 import { CustomSelect } from "@plane/ui";
 // types
@@ -51,7 +51,7 @@ export function SidebarStatusSelect({ control, submitChanges, watch }: Props) {
                 </span>
               }
               value={value}
-              onChange={(nextValue: any) => {
+              onChange={(nextValue: TModuleStatus) => {
                 submitChanges({ status: nextValue });
               }}
             >

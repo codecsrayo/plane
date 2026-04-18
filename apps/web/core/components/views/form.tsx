@@ -11,7 +11,7 @@ import { Controller, useForm } from "react-hook-form";
 import { ETabIndices, ISSUE_DISPLAY_FILTERS_BY_PAGE } from "@plane/constants";
 import { useTranslation } from "@plane/i18n";
 import { Button } from "@plane/propel/button";
-import { EmojiPicker, EmojiIconPickerTypes, Logo } from "@plane/propel/emoji-icon-picker";
+import { EmojiPicker, EmojiIconPickerTypes, Logo , TChangeHandlerProps } from "@plane/propel/emoji-icon-picker";
 import { ViewsIcon } from "@plane/propel/icons";
 import type {
   IIssueDisplayFilterOptions,
@@ -129,7 +129,7 @@ export const ProjectViewForm = observer(function ProjectViewForm(props: Props) {
                 </span>
               }
               // TODO: fix types
-              onChange={(val: any) => {
+              onChange={(val: TChangeHandlerProps) => {
                 let nextLogoValue = {};
 
                 if (val?.type === "emoji")

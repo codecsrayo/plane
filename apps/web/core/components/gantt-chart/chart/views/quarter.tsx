@@ -14,7 +14,7 @@ import { HEADER_HEIGHT, SIDEBAR_WIDTH } from "../../constants";
 import type { IMonthBlock, IQuarterMonthBlock } from "../../views";
 import { groupMonthsToQuarters } from "../../views";
 
-export const QuarterChartView = observer(function QuarterChartView(_props: any) {
+export const QuarterChartView = observer(function QuarterChartView() {
   const { currentViewData, renderView } = useTimeLineChartStore();
   // `renderView` is a union (IWeekBlock[] | IMonthView | IMonthBlock[]); this
   // component is mounted only when the active Gantt view is "quarter", so the

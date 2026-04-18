@@ -12,7 +12,7 @@ import type { LucideIcon } from "lucide-react";
 import { ETabIndices, EPageAccess } from "@plane/constants";
 import { useTranslation } from "@plane/i18n";
 import { Button } from "@plane/propel/button";
-import { EmojiPicker, EmojiIconPickerTypes, Logo } from "@plane/propel/emoji-icon-picker";
+import { EmojiPicker, EmojiIconPickerTypes, Logo , TChangeHandlerProps } from "@plane/propel/emoji-icon-picker";
 import { GlobeIcon, LockIcon, PageIcon } from "@plane/propel/icons";
 import type { ISvgIcons } from "@plane/propel/icons";
 import type { TPage } from "@plane/types";
@@ -86,7 +86,7 @@ export function PageForm(props: Props) {
                 </>
               </span>
             }
-            onChange={(val: any) => {
+            onChange={(val: TChangeHandlerProps) => {
               let logoValue = {};
 
               if (val?.type === "emoji")

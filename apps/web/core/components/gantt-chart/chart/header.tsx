@@ -8,7 +8,7 @@ import { observer } from "mobx-react";
 import { Expand, Shrink } from "lucide-react";
 import { useTranslation } from "@plane/i18n";
 // plane
-import type { TGanttViews } from "@plane/types";
+import type { ChartDataType, TGanttViews } from "@plane/types";
 import { Row } from "@plane/ui";
 // components
 import { cn } from "@plane/utils";
@@ -48,7 +48,7 @@ export const GanttChartHeader = observer(function GanttChartHeader(props: Props)
       </div>
 
       <div className="flex flex-wrap items-center gap-2">
-        {VIEWS_LIST.map((chartView: any) => (
+        {VIEWS_LIST.map((chartView: ChartDataType) => (
           <button
             type="button"
             key={chartView?.key}

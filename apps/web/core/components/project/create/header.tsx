@@ -9,7 +9,7 @@ import { Controller, useFormContext } from "react-hook-form";
 // plane imports
 import { ETabIndices } from "@plane/constants";
 import { useTranslation } from "@plane/i18n";
-import { EmojiPicker, EmojiIconPickerTypes, Logo } from "@plane/propel/emoji-icon-picker";
+import { EmojiPicker, EmojiIconPickerTypes, Logo , TChangeHandlerProps } from "@plane/propel/emoji-icon-picker";
 import { CloseIcon } from "@plane/propel/icons";
 // plane types
 import type { IProject } from "@plane/types";
@@ -100,7 +100,7 @@ function ProjectCreateHeader(props: Props) {
                   <Logo logo={value} size={20} />
                 </span>
               }
-              onChange={(val: any) => {
+              onChange={(val: TChangeHandlerProps) => {
                 let logoValue = {};
 
                 if (val?.type === "emoji")

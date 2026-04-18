@@ -23,7 +23,7 @@ import {
   ChevronRightIcon,
 } from "@plane/propel/icons";
 import { TOAST_TYPE, setToast } from "@plane/propel/toast";
-import type { ILinkDetails, IModule, ModuleLink } from "@plane/types";
+import type { ILinkDetails, IModule, ModuleLink , TModuleStatus} from "@plane/types";
 // plane ui
 import { Loader, CustomSelect, TextArea } from "@plane/ui";
 // components
@@ -215,7 +215,7 @@ export const ModuleAnalyticsSidebar = observer(function ModuleAnalyticsSidebar(p
                     </span>
                   }
                   value={value}
-                  onChange={(nextValue: any) => {
+                  onChange={(nextValue: TModuleStatus) => {
                     submitChanges({ status: nextValue });
                   }}
                   disabled={!isEditingAllowed || isArchived}

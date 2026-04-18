@@ -11,7 +11,7 @@ import { NETWORK_CHOICES } from "@plane/constants";
 import { useTranslation } from "@plane/i18n";
 // plane imports
 import { Button } from "@plane/propel/button";
-import { EmojiPicker, EmojiIconPickerTypes, Logo } from "@plane/propel/emoji-icon-picker";
+import { EmojiPicker, EmojiIconPickerTypes, Logo , TChangeHandlerProps } from "@plane/propel/emoji-icon-picker";
 import { LockIcon } from "@plane/propel/icons";
 import { TOAST_TYPE, setToast } from "@plane/propel/toast";
 import { Tooltip } from "@plane/propel/tooltip";
@@ -206,7 +206,7 @@ export function ProjectDetailsForm(props: IProjectDetailsForm) {
                   buttonClassName="flex h-[52px] w-[52px] flex-shrink-0 items-center justify-center rounded-lg bg-white/10"
                   label={<Logo logo={value} size={28} />}
                   // TODO: fix types
-                  onChange={(val: any) => {
+                  onChange={(val: TChangeHandlerProps) => {
                     let logoValue = {};
 
                     if (val?.type === "emoji")
