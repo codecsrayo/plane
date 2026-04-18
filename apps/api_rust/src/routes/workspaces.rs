@@ -2802,7 +2802,10 @@ fn encode_user_activity_csv(
         ])?;
     }
 
-    wtr.into_inner().map_err(|e| e.into_error())
+    // `into_inner()` returns `Result<Vec<u8>, csv::IntoInnerError<_>>` y
+    // `into_error()` en csv 1.4 devuelve `std::io::Error` (no `csv::Error`).
+    // El `?` hace la coerción vía `impl From<io::Error> for csv::Error`.
+    Ok(wtr.into_inner().map_err(|e| e.into_error())?)
 }
 
 /// Respuesta CSV "vacía" — solo header, sin filas. Usada cuando el requester
