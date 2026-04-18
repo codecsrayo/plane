@@ -500,10 +500,14 @@ async fn sync_assignees(
     for row in existing {
         let mut am: issue_assignees::ActiveModel = row.into();
         am.deleted_at = Set(Some(now));
+        // Django usa auto_now=True en updated_at (TimeAuditModel).
+        am.updated_at = Set(now);
         am.update(txn).await.map_err(AppError::Database)?;
     }
 
-    // Insertar nuevos
+    // Insertar nuevos. created_at / updated_at explícitos porque
+    // issue_assignees::ActiveModelBehavior está vacío y las columnas son
+    // NOT NULL (mismo patrón que labels.rs / issues).
     for assignee_id in new_ids {
         issue_assignees::ActiveModel {
             id: Set(Uuid::new_v4()),
@@ -513,6 +517,9 @@ async fn sync_assignees(
             workspace_id: Set(workspace_id),
             created_by_id: Set(Some(actor_id)),
             updated_by_id: Set(Some(actor_id)),
+            created_at: Set(now),
+            updated_at: Set(now),
+            deleted_at: Set(None),
             ..Default::default()
         }
         .insert(txn)
@@ -542,6 +549,8 @@ async fn sync_labels(
     for row in existing {
         let mut am: issue_labels::ActiveModel = row.into();
         am.deleted_at = Set(Some(now));
+        // Django usa auto_now=True en updated_at (TimeAuditModel).
+        am.updated_at = Set(now);
         am.update(txn).await.map_err(AppError::Database)?;
     }
 
@@ -555,6 +564,9 @@ async fn sync_labels(
             .map_err(AppError::Database)?;
 
         if exists.is_some() {
+            // created_at / updated_at explícitos (misma razón que
+            // sync_assignees / labels.rs: ActiveModelBehavior vacío,
+            // columnas NOT NULL).
             issue_labels::ActiveModel {
                 id: Set(Uuid::new_v4()),
                 issue_id: Set(issue_id),
@@ -563,6 +575,9 @@ async fn sync_labels(
                 workspace_id: Set(workspace_id),
                 created_by_id: Set(Some(actor_id)),
                 updated_by_id: Set(Some(actor_id)),
+                created_at: Set(now),
+                updated_at: Set(now),
+                deleted_at: Set(None),
                 ..Default::default()
             }
             .insert(txn)
@@ -829,7 +844,16 @@ pub async fn create_issue(
                 let assignees = assignees.clone();
                 let label_ids = label_ids.clone();
                 Box::pin(async move {
-                    // sequence_id = MAX(sequence_id) + 1 dentro del proyecto
+                    // sequence_id = MAX(sequence_id) + 1 dentro del proyecto.
+                    //
+                    // NOTA: MAX() sin GROUP BY siempre devuelve una fila (aunque la
+                    // tabla esté vacía, con valor NULL). Por eso declaramos el
+                    // decode como `Option<i64>` y hacemos .flatten() sobre el
+                    // `Option<Option<i64>>` que devuelve .one(). Con el binding a
+                    // `Option<i64>` y .into_tuple() sin type params, SeaORM infería
+                    // `i64` como target y reventaba con
+                    // "A null value was encountered while decoding 0" al crear la
+                    // primera issue de un proyecto vacío.
                     use sea_orm::QuerySelect;
                     let max_seq: Option<i64> = issues::Entity::find()
                         .filter(issues::Column::ProjectId.eq(project_id))
@@ -838,12 +862,22 @@ pub async fn create_issue(
                             sea_orm::sea_query::Expr::col(issues::Column::SequenceId).max(),
                             "max_seq",
                         )
-                        .into_tuple()
+                        .into_tuple::<Option<i64>>()
                         .one(txn)
                         .await
-                        .map_err(AppError::Database)?;
+                        .map_err(AppError::Database)?
+                        .flatten();
 
                     let sequence_id = (max_seq.unwrap_or(0) + 1) as i32;
+
+                    // created_at / updated_at se setean explícitamente porque
+                    // issues::ActiveModelBehavior está vacío (sin hook
+                    // before_save) y las columnas son NOT NULL. Dejarlas con
+                    // Default::default() hacía que SeaORM enviara NULL y la BD
+                    // rechazara con 23502 ("violates not-null constraint").
+                    // Mismo patrón que labels.rs / issue_extras.rs / pages.rs.
+                    let now: chrono::DateTime<chrono::FixedOffset> =
+                        chrono::Utc::now().into();
 
                     let new_issue = issues::ActiveModel {
                         id: Set(Uuid::new_v4()),
@@ -865,6 +899,9 @@ pub async fn create_issue(
                         type_id: Set(type_id),
                         is_draft: Set(false),
                         description_stripped: Set(None),
+                        created_at: Set(now),
+                        updated_at: Set(now),
+                        deleted_at: Set(None),
                         ..Default::default()
                     };
 

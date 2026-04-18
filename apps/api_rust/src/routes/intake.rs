@@ -395,7 +395,14 @@ pub async fn create_intake_issue(
         .map_err(AppError::Database)?
         .ok_or_else(|| AppError::BadRequest("intake_id no válido para este proyecto".into()))?;
 
-    // Calcular sequence_id
+    // Calcular sequence_id.
+    //
+    // NOTA: MAX() sin GROUP BY siempre devuelve una fila (aunque la tabla
+    // esté vacía, con valor NULL). Declaramos el decode como `Option<i64>` y
+    // flatten sobre el `Option<Option<i64>>` de .one(). Con .into_tuple()
+    // sin type params SeaORM inferiría `i64` y fallaría con
+    // "A null value was encountered while decoding 0" al crear la primera
+    // issue de intake en un proyecto nuevo.
     use sea_orm::QuerySelect;
     let max_seq: Option<i64> = issues::Entity::find()
         .filter(issues::Column::ProjectId.eq(guard.project.id))
@@ -404,11 +411,16 @@ pub async fn create_intake_issue(
             sea_orm::sea_query::Expr::col(issues::Column::SequenceId).max(),
             "max_seq",
         )
-        .into_tuple()
+        .into_tuple::<Option<i64>>()
         .one(&state.db)
         .await
-        .map_err(AppError::Database)?;
+        .map_err(AppError::Database)?
+        .flatten();
     let sequence_id = (max_seq.unwrap_or(0) + 1) as i32;
+
+    // created_at / updated_at explícitos: ActiveModelBehavior vacío,
+    // columnas NOT NULL. Mismo patrón que labels.rs / issues.rs::create_issue.
+    let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
 
     // Crear el issue subyacente con is_draft=true
     let issue = issues::ActiveModel {
@@ -425,6 +437,9 @@ pub async fn create_intake_issue(
         updated_by_id: Set(Some(guard.user.id)),
         is_draft: Set(true), // intake issues son drafts hasta ser aceptados
         description_stripped: Set(None),
+        created_at: Set(now),
+        updated_at: Set(now),
+        deleted_at: Set(None),
         ..Default::default()
     }
     .insert(&state.db)
@@ -442,6 +457,9 @@ pub async fn create_intake_issue(
         created_by_id: Set(Some(guard.user.id)),
         updated_by_id: Set(Some(guard.user.id)),
         extra: Set(serde_json::json!({})),
+        created_at: Set(now),
+        updated_at: Set(now),
+        deleted_at: Set(None),
         ..Default::default()
     }
     .insert(&state.db)
