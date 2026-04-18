@@ -645,8 +645,8 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `ce/components/gantt-chart/blocks/`
 
-- [!] `ce/components/gantt-chart/blocks/block-row-list.tsx` — Prop `blockUpdateHandler: (block: any, payload: IBlockUpdateData) => void` — tipar con genérico o `IGanttBlock`.
-- [!] `ce/components/gantt-chart/blocks/blocks-list.tsx` — Prop `blockToRender: (data: any) => ReactNode` — tipar con genérico `<T>` o `IGanttBlock`.
+- [x] `ce/components/gantt-chart/blocks/block-row-list.tsx` — Resuelto: `blockUpdateHandler: (block: any, ...)` → `(block: unknown, ...)`. La rigidez `any` queda empujada a la capa `core/` (auditada como flag separado) pero la interfaz pública del CE ya no propaga `any`.
+- [x] `ce/components/gantt-chart/blocks/blocks-list.tsx` — Resuelto: `blockToRender: (data: any) => ReactNode` → `(data: unknown) => ReactNode`.
 
 #### `ce/components/gantt-chart/dependency/`
 
@@ -902,7 +902,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `ce/components/views/filters/`
 
-- [!] `ce/components/views/filters/access-filter.tsx` — Stub CE idéntico a `access-controller.tsx` (`props: any`, retorna `<></>`).
+- [x] `ce/components/views/filters/access-filter.tsx` — Resuelto: `props: any` → `FilterByAccessProps` con shape explícito (`appliedFilters`, `handleUpdate`, `searchQuery`, `accessFilters`) basado en el único caller en `filter-selection.tsx`. Props renombrado a `_props` para silenciar `@typescript-eslint/no-unused-vars`.
 
 #### `ce/components/views/publish/`
 
@@ -952,7 +952,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `ce/components/workspace/sidebar/`
 
-- [!] `ce/components/workspace/sidebar/extended-sidebar-item.tsx` — `item.access as any` (línea 153) en llamada a `allowPermissions`. Silencia mismatch de tipos en lugar de arreglar `item.access` o la signature de `allowPermissions`. Refactor: unificar tipos en vez de ocultar el mismatch.
+- [x] `ce/components/workspace/sidebar/extended-sidebar-item.tsx` — Resuelto: `item.access as any` eliminado. `item.access` es `EUserWorkspaceRoles[]` y `allowPermissions` acepta `ETempUserRole[] = TUserPermissions | EUserWorkspaceRoles | EUserProjectRoles` — el array es estructuralmente compatible sin cast.
 - [x] `ce/components/workspace/sidebar/helper.tsx`
 - [x] `ce/components/workspace/sidebar/sidebar-item.tsx`
 - [x] `ce/components/workspace/sidebar/teams-sidebar-list.tsx`
@@ -1239,7 +1239,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 #### `core/components/base-layouts/gantt/`
 
 - [x] `core/components/base-layouts/gantt/index.ts`
-- [!] `core/components/base-layouts/gantt/layout.tsx` — `(sidebarProps: any) => ...` (línea 78) — tipar la firma.
+- [x] `core/components/base-layouts/gantt/layout.tsx` — Resuelto: `sidebarProps: any` → `Omit<React.ComponentProps<typeof BaseGanttSidebar<T>>, "items" | "renderItem" | "loadMoreItems">` (los campos que este wrapper inyecta). Removido el `eslint-disable`.
 - [x] `core/components/base-layouts/gantt/sidebar.tsx`
 
 #### `core/components/base-layouts/hooks/`

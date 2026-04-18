@@ -15,7 +15,7 @@ import type { TSelectionHelper } from "@/hooks/use-multiple-select";
 
 export type GanttChartBlocksProps = {
   blockIds: string[];
-  blockUpdateHandler: (block: any, payload: IBlockUpdateData) => void;
+  blockUpdateHandler: (block: unknown, payload: IBlockUpdateData) => void;
   handleScrollToBlock: (block: IGanttBlock) => void;
   enableAddBlock: boolean | ((blockId: string) => boolean);
   showAllBlocks: boolean;

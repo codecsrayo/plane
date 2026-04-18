@@ -74,8 +74,7 @@ export const BaseGanttLayout = observer(function BaseGanttLayout<T extends IBase
 
   // Sidebar renderer - uses custom or default
   const sidebarToRender = useCallback(
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (sidebarProps: any) => {
+    (sidebarProps: Omit<React.ComponentProps<typeof BaseGanttSidebar<T>>, "items" | "renderItem" | "loadMoreItems">) => {
       if (renderSidebar) {
         // If custom sidebar renderer provided, use it
         return (

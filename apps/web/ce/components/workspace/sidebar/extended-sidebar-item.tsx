@@ -150,7 +150,10 @@ export const ExtendedSidebarItem = observer(function ExtendedSidebarItem(props: 
 
   const icon = getSidebarNavigationItemIcon(item.key);
 
-  if (!allowPermissions(item.access as any, EUserPermissionsLevel.WORKSPACE, workspaceSlug.toString())) {
+  // `item.access` is `EUserWorkspaceRoles[]` and `allowPermissions` accepts a
+  // union that includes `EUserWorkspaceRoles`, so the array is structurally
+  // compatible — no cast needed.
+  if (!allowPermissions(item.access, EUserPermissionsLevel.WORKSPACE, workspaceSlug.toString())) {
     return null;
   }
 
