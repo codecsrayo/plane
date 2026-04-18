@@ -1113,281 +1113,281 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `core/components/account/`
 
-- [ ] `core/components/account/deactivate-account-modal.tsx`
-- [ ] `core/components/account/terms-and-conditions.tsx`
+- [!] `core/components/account/deactivate-account-modal.tsx` — `.catch((err: any) => {...})` (línea 53) — pattern legacy consistente con otros auth forms.
+- [x] `core/components/account/terms-and-conditions.tsx`
 
 #### `core/components/account/auth-forms/`
 
-- [ ] `core/components/account/auth-forms/auth-banner.tsx`
-- [ ] `core/components/account/auth-forms/auth-header.tsx`
-- [ ] `core/components/account/auth-forms/auth-root.tsx`
-- [ ] `core/components/account/auth-forms/email.tsx`
-- [ ] `core/components/account/auth-forms/forgot-password-popover.tsx`
-- [ ] `core/components/account/auth-forms/forgot-password.tsx`
-- [ ] `core/components/account/auth-forms/form-root.tsx`
-- [ ] `core/components/account/auth-forms/index.ts`
-- [ ] `core/components/account/auth-forms/password.tsx`
-- [ ] `core/components/account/auth-forms/reset-password.tsx`
-- [ ] `core/components/account/auth-forms/set-password.tsx`
-- [ ] `core/components/account/auth-forms/unique-code.tsx`
+- [x] `core/components/account/auth-forms/auth-banner.tsx`
+- [x] `core/components/account/auth-forms/auth-header.tsx`
+- [x] `core/components/account/auth-forms/auth-root.tsx`
+- [x] `core/components/account/auth-forms/email.tsx`
+- [x] `core/components/account/auth-forms/forgot-password-popover.tsx`
+- [!] `core/components/account/auth-forms/forgot-password.tsx` — `catch (err: any)` (línea 70). Preferir `unknown` + narrowing.
+- [!] `core/components/account/auth-forms/form-root.tsx` — `catch (error: any)` (línea 82).
+- [x] `core/components/account/auth-forms/index.ts`
+- [x] `core/components/account/auth-forms/password.tsx`
+- [x] `core/components/account/auth-forms/reset-password.tsx`
+- [x] `core/components/account/auth-forms/set-password.tsx`
+- [x] `core/components/account/auth-forms/unique-code.tsx`
 
 #### `core/components/account/auth-forms/common/`
 
-- [ ] `core/components/account/auth-forms/common/container.tsx`
-- [ ] `core/components/account/auth-forms/common/header.tsx`
+- [x] `core/components/account/auth-forms/common/container.tsx`
+- [x] `core/components/account/auth-forms/common/header.tsx`
 
 #### `core/components/analytics/`
 
-- [ ] `core/components/analytics/analytics-filter-actions.tsx`
-- [ ] `core/components/analytics/analytics-section-wrapper.tsx`
-- [ ] `core/components/analytics/analytics-wrapper.tsx`
-- [ ] `core/components/analytics/empty-state.tsx`
-- [ ] `core/components/analytics/export.ts`
-- [ ] `core/components/analytics/insight-card.tsx`
-- [ ] `core/components/analytics/loaders.tsx`
-- [ ] `core/components/analytics/total-insights.tsx`
-- [ ] `core/components/analytics/trend-piece.tsx`
+- [x] `core/components/analytics/analytics-filter-actions.tsx`
+- [x] `core/components/analytics/analytics-section-wrapper.tsx`
+- [x] `core/components/analytics/analytics-wrapper.tsx`
+- [x] `core/components/analytics/empty-state.tsx`
+- [x] `core/components/analytics/export.ts`
+- [x] `core/components/analytics/insight-card.tsx`
+- [x] `core/components/analytics/loaders.tsx`
+- [x] `core/components/analytics/total-insights.tsx`
+- [x] `core/components/analytics/trend-piece.tsx`
 
 #### `core/components/analytics/insight-table/`
 
-- [ ] `core/components/analytics/insight-table/data-table.tsx`
-- [ ] `core/components/analytics/insight-table/index.ts`
-- [ ] `core/components/analytics/insight-table/loader.tsx`
-- [ ] `core/components/analytics/insight-table/root.tsx`
+- [!] `core/components/analytics/insight-table/data-table.tsx` — Dos casts `as any` (líneas 141, 153) sobre el resultado de `flexRender(...)` para forzar un tipo. Arreglar la firma o el genérico en lugar de silenciar.
+- [x] `core/components/analytics/insight-table/index.ts`
+- [x] `core/components/analytics/insight-table/loader.tsx`
+- [x] `core/components/analytics/insight-table/root.tsx`
 
 #### `core/components/analytics/overview/`
 
-- [ ] `core/components/analytics/overview/active-project-item.tsx`
-- [ ] `core/components/analytics/overview/active-projects.tsx`
-- [ ] `core/components/analytics/overview/index.ts`
-- [ ] `core/components/analytics/overview/project-insights.tsx`
-- [ ] `core/components/analytics/overview/root.tsx`
+- [x] `core/components/analytics/overview/active-project-item.tsx`
+- [x] `core/components/analytics/overview/active-projects.tsx`
+- [x] `core/components/analytics/overview/index.ts`
+- [x] `core/components/analytics/overview/project-insights.tsx`
+- [x] `core/components/analytics/overview/root.tsx`
 
 #### `core/components/analytics/select/`
 
-- [ ] `core/components/analytics/select/analytics-params.tsx`
-- [ ] `core/components/analytics/select/duration.tsx`
-- [ ] `core/components/analytics/select/project.tsx`
-- [ ] `core/components/analytics/select/select-x-axis.tsx`
-- [ ] `core/components/analytics/select/select-y-axis.tsx`
+- [x] `core/components/analytics/select/analytics-params.tsx`
+- [x] `core/components/analytics/select/duration.tsx`
+- [x] `core/components/analytics/select/project.tsx`
+- [x] `core/components/analytics/select/select-x-axis.tsx`
+- [x] `core/components/analytics/select/select-y-axis.tsx`
 
 #### `core/components/analytics/work-items/`
 
-- [ ] `core/components/analytics/work-items/created-vs-resolved.tsx`
-- [ ] `core/components/analytics/work-items/customized-insights.tsx`
-- [ ] `core/components/analytics/work-items/index.ts`
-- [ ] `core/components/analytics/work-items/priority-chart.tsx`
-- [ ] `core/components/analytics/work-items/root.tsx`
-- [ ] `core/components/analytics/work-items/utils.ts`
-- [ ] `core/components/analytics/work-items/workitems-insight-table.tsx`
+- [x] `core/components/analytics/work-items/created-vs-resolved.tsx`
+- [x] `core/components/analytics/work-items/customized-insights.tsx`
+- [x] `core/components/analytics/work-items/index.ts`
+- [x] `core/components/analytics/work-items/priority-chart.tsx`
+- [x] `core/components/analytics/work-items/root.tsx`
+- [x] `core/components/analytics/work-items/utils.ts`
+- [x] `core/components/analytics/work-items/workitems-insight-table.tsx`
 
 #### `core/components/analytics/work-items/modal/`
 
-- [ ] `core/components/analytics/work-items/modal/content.tsx`
-- [ ] `core/components/analytics/work-items/modal/header.tsx`
-- [ ] `core/components/analytics/work-items/modal/index.tsx`
+- [x] `core/components/analytics/work-items/modal/content.tsx`
+- [x] `core/components/analytics/work-items/modal/header.tsx`
+- [x] `core/components/analytics/work-items/modal/index.tsx`
 
 #### `core/components/api-token/`
 
-- [ ] `core/components/api-token/delete-token-modal.tsx`
-- [ ] `core/components/api-token/empty-state.tsx`
-- [ ] `core/components/api-token/token-list-item.tsx`
+- [x] `core/components/api-token/delete-token-modal.tsx`
+- [x] `core/components/api-token/empty-state.tsx`
+- [x] `core/components/api-token/token-list-item.tsx`
 
 #### `core/components/api-token/modal/`
 
-- [ ] `core/components/api-token/modal/create-token-modal.tsx`
-- [ ] `core/components/api-token/modal/form.tsx`
-- [ ] `core/components/api-token/modal/generated-token-details.tsx`
+- [!] `core/components/api-token/modal/create-token-modal.tsx` — `catch (err: any)` (línea 71).
+- [x] `core/components/api-token/modal/form.tsx`
+- [x] `core/components/api-token/modal/generated-token-details.tsx`
 
 #### `core/components/appearance/`
 
-- [ ] `core/components/appearance/index.ts`
-- [ ] `core/components/appearance/theme-switcher.tsx`
+- [x] `core/components/appearance/index.ts`
+- [x] `core/components/appearance/theme-switcher.tsx`
 
 #### `core/components/archives/`
 
-- [ ] `core/components/archives/archive-tabs-list.tsx`
-- [ ] `core/components/archives/index.ts`
+- [x] `core/components/archives/archive-tabs-list.tsx`
+- [x] `core/components/archives/index.ts`
 
 #### `core/components/auth-screens/`
 
-- [ ] `core/components/auth-screens/auth-base.tsx`
-- [ ] `core/components/auth-screens/footer.tsx`
-- [ ] `core/components/auth-screens/header.tsx`
-- [ ] `core/components/auth-screens/not-authorized-view.tsx`
+- [x] `core/components/auth-screens/auth-base.tsx`
+- [x] `core/components/auth-screens/footer.tsx`
+- [x] `core/components/auth-screens/header.tsx`
+- [x] `core/components/auth-screens/not-authorized-view.tsx`
 
 #### `core/components/auth-screens/project/`
 
-- [ ] `core/components/auth-screens/project/project-access-restriction.tsx`
+- [x] `core/components/auth-screens/project/project-access-restriction.tsx`
 
 #### `core/components/auth-screens/workspace/`
 
-- [ ] `core/components/auth-screens/workspace/not-a-member.tsx`
+- [x] `core/components/auth-screens/workspace/not-a-member.tsx`
 
 #### `core/components/automation/`
 
-- [ ] `core/components/automation/auto-archive-automation.tsx`
-- [ ] `core/components/automation/auto-close-automation.tsx`
-- [ ] `core/components/automation/index.ts`
-- [ ] `core/components/automation/select-month-modal.tsx`
+- [x] `core/components/automation/auto-archive-automation.tsx`
+- [x] `core/components/automation/auto-close-automation.tsx`
+- [x] `core/components/automation/index.ts`
+- [x] `core/components/automation/select-month-modal.tsx`
 
 #### `core/components/base-layouts/`
 
-- [ ] `core/components/base-layouts/constants.ts`
-- [ ] `core/components/base-layouts/layout-switcher.tsx`
+- [x] `core/components/base-layouts/constants.ts`
+- [x] `core/components/base-layouts/layout-switcher.tsx`
 
 #### `core/components/base-layouts/gantt/`
 
-- [ ] `core/components/base-layouts/gantt/index.ts`
-- [ ] `core/components/base-layouts/gantt/layout.tsx`
-- [ ] `core/components/base-layouts/gantt/sidebar.tsx`
+- [x] `core/components/base-layouts/gantt/index.ts`
+- [!] `core/components/base-layouts/gantt/layout.tsx` — `(sidebarProps: any) => ...` (línea 78) — tipar la firma.
+- [x] `core/components/base-layouts/gantt/sidebar.tsx`
 
 #### `core/components/base-layouts/hooks/`
 
-- [ ] `core/components/base-layouts/hooks/use-group-drop-target.ts`
-- [ ] `core/components/base-layouts/hooks/use-layout-state.ts`
+- [x] `core/components/base-layouts/hooks/use-group-drop-target.ts`
+- [x] `core/components/base-layouts/hooks/use-layout-state.ts`
 
 #### `core/components/base-layouts/kanban/`
 
-- [ ] `core/components/base-layouts/kanban/group-header.tsx`
-- [ ] `core/components/base-layouts/kanban/group.tsx`
-- [ ] `core/components/base-layouts/kanban/item.tsx`
-- [ ] `core/components/base-layouts/kanban/layout.tsx`
+- [x] `core/components/base-layouts/kanban/group-header.tsx`
+- [x] `core/components/base-layouts/kanban/group.tsx`
+- [x] `core/components/base-layouts/kanban/item.tsx`
+- [x] `core/components/base-layouts/kanban/layout.tsx`
 
 #### `core/components/base-layouts/list/`
 
-- [ ] `core/components/base-layouts/list/group-header.tsx`
-- [ ] `core/components/base-layouts/list/group.tsx`
-- [ ] `core/components/base-layouts/list/item.tsx`
-- [ ] `core/components/base-layouts/list/layout.tsx`
+- [x] `core/components/base-layouts/list/group-header.tsx`
+- [x] `core/components/base-layouts/list/group.tsx`
+- [x] `core/components/base-layouts/list/item.tsx`
+- [x] `core/components/base-layouts/list/layout.tsx`
 
 #### `core/components/base-layouts/loaders/`
 
-- [ ] `core/components/base-layouts/loaders/layout-loader.tsx`
+- [x] `core/components/base-layouts/loaders/layout-loader.tsx`
 
 #### `core/components/chart/`
 
-- [ ] `core/components/chart/utils.ts`
+- [x] `core/components/chart/utils.ts`
 
 #### `core/components/comments/`
 
-- [ ] `core/components/comments/comment-create.tsx`
-- [ ] `core/components/comments/comment-reaction.tsx`
-- [ ] `core/components/comments/comments.tsx`
-- [ ] `core/components/comments/index.ts`
-- [ ] `core/components/comments/quick-actions.tsx`
+- [x] `core/components/comments/comment-create.tsx`
+- [x] `core/components/comments/comment-reaction.tsx`
+- [x] `core/components/comments/comments.tsx`
+- [x] `core/components/comments/index.ts`
+- [x] `core/components/comments/quick-actions.tsx`
 
 #### `core/components/comments/card/`
 
-- [ ] `core/components/comments/card/display.tsx`
-- [ ] `core/components/comments/card/edit-form.tsx`
-- [ ] `core/components/comments/card/root.tsx`
+- [x] `core/components/comments/card/display.tsx`
+- [x] `core/components/comments/card/edit-form.tsx`
+- [x] `core/components/comments/card/root.tsx`
 
 #### `core/components/common/`
 
-- [ ] `core/components/common/access-field.tsx`
-- [ ] `core/components/common/breadcrumb-link.tsx`
-- [ ] `core/components/common/count-chip.tsx`
-- [ ] `core/components/common/cover-image.tsx`
-- [ ] `core/components/common/empty-state.tsx`
-- [ ] `core/components/common/latest-feature-block.tsx`
-- [ ] `core/components/common/logo-spinner.tsx`
-- [ ] `core/components/common/new-empty-state.tsx`
-- [ ] `core/components/common/page-access-icon.tsx`
-- [ ] `core/components/common/pro-icon.tsx`
-- [ ] `core/components/common/quick-actions-factory.tsx`
-- [ ] `core/components/common/quick-actions-helper.tsx`
-- [ ] `core/components/common/switcher-label.tsx`
+- [x] `core/components/common/access-field.tsx`
+- [x] `core/components/common/breadcrumb-link.tsx`
+- [x] `core/components/common/count-chip.tsx`
+- [x] `core/components/common/cover-image.tsx`
+- [!] `core/components/common/empty-state.tsx` — `image: any` + `icon?: any` — mismo patrón que `new-empty-state.tsx`.
+- [x] `core/components/common/latest-feature-block.tsx`
+- [x] `core/components/common/logo-spinner.tsx`
+- [!] `core/components/common/new-empty-state.tsx` — `image: any` (línea 15) y `icon?: any` (línea 23) en props — tipar como `string | StaticImageData` e `IconComponent`.
+- [x] `core/components/common/page-access-icon.tsx`
+- [x] `core/components/common/pro-icon.tsx`
+- [x] `core/components/common/quick-actions-factory.tsx`
+- [x] `core/components/common/quick-actions-helper.tsx`
+- [x] `core/components/common/switcher-label.tsx`
 
 #### `core/components/common/activity/`
 
-- [ ] `core/components/common/activity/activity-block.tsx`
-- [ ] `core/components/common/activity/activity-item.tsx`
-- [ ] `core/components/common/activity/helper.tsx`
-- [ ] `core/components/common/activity/user.tsx`
+- [x] `core/components/common/activity/activity-block.tsx`
+- [x] `core/components/common/activity/activity-item.tsx`
+- [x] `core/components/common/activity/helper.tsx`
+- [x] `core/components/common/activity/user.tsx`
 
 #### `core/components/common/applied-filters/`
 
-- [ ] `core/components/common/applied-filters/date.tsx`
-- [ ] `core/components/common/applied-filters/members.tsx`
+- [x] `core/components/common/applied-filters/date.tsx`
+- [x] `core/components/common/applied-filters/members.tsx`
 
 #### `core/components/common/filters/`
 
-- [ ] `core/components/common/filters/created-at.tsx`
-- [ ] `core/components/common/filters/created-by.tsx`
+- [x] `core/components/common/filters/created-at.tsx`
+- [x] `core/components/common/filters/created-by.tsx`
 
 #### `core/components/common/layout/sidebar/`
 
-- [ ] `core/components/common/layout/sidebar/property-list-item.tsx`
+- [x] `core/components/common/layout/sidebar/property-list-item.tsx`
 
 #### `core/components/core/`
 
-- [ ] `core/components/core/activity.tsx`
-- [ ] `core/components/core/app-header.tsx`
-- [ ] `core/components/core/content-overflow-HOC.tsx`
-- [ ] `core/components/core/content-wrapper.tsx`
-- [ ] `core/components/core/image-picker-popover.tsx`
-- [ ] `core/components/core/page-title.tsx`
-- [ ] `core/components/core/render-if-visible-HOC.tsx`
+- [x] `core/components/core/activity.tsx`
+- [x] `core/components/core/app-header.tsx`
+- [x] `core/components/core/content-overflow-HOC.tsx`
+- [x] `core/components/core/content-wrapper.tsx`
+- [x] `core/components/core/image-picker-popover.tsx`
+- [x] `core/components/core/page-title.tsx`
+- [x] `core/components/core/render-if-visible-HOC.tsx`
 
 #### `core/components/core/description-versions/`
 
-- [ ] `core/components/core/description-versions/dropdown-item.tsx`
-- [ ] `core/components/core/description-versions/dropdown.tsx`
-- [ ] `core/components/core/description-versions/index.ts`
-- [ ] `core/components/core/description-versions/modal.tsx`
-- [ ] `core/components/core/description-versions/root.tsx`
+- [x] `core/components/core/description-versions/dropdown-item.tsx`
+- [x] `core/components/core/description-versions/dropdown.tsx`
+- [x] `core/components/core/description-versions/index.ts`
+- [x] `core/components/core/description-versions/modal.tsx`
+- [x] `core/components/core/description-versions/root.tsx`
 
 #### `core/components/core/filters/`
 
-- [ ] `core/components/core/filters/date-filter-modal.tsx`
-- [ ] `core/components/core/filters/date-filter-select.tsx`
+- [x] `core/components/core/filters/date-filter-modal.tsx`
+- [!] `core/components/core/filters/date-filter-select.tsx` — `icon: any` (línea 22) — tipar como componente de icono.
 
 #### `core/components/core/list/`
 
-- [ ] `core/components/core/list/index.ts`
-- [ ] `core/components/core/list/list-item.tsx`
-- [ ] `core/components/core/list/list-root.tsx`
+- [x] `core/components/core/list/index.ts`
+- [x] `core/components/core/list/list-item.tsx`
+- [x] `core/components/core/list/list-root.tsx`
 
 #### `core/components/core/modals/`
 
-- [ ] `core/components/core/modals/bulk-delete-issues-modal-item.tsx`
-- [ ] `core/components/core/modals/bulk-delete-issues-modal.tsx`
-- [ ] `core/components/core/modals/change-email-modal.tsx`
-- [ ] `core/components/core/modals/existing-issues-list-modal.tsx`
-- [ ] `core/components/core/modals/gpt-assistant-popover.tsx`
-- [ ] `core/components/core/modals/issue-search-modal-empty-state.tsx`
-- [ ] `core/components/core/modals/user-image-upload-modal.tsx`
-- [ ] `core/components/core/modals/workspace-image-upload-modal.tsx`
+- [x] `core/components/core/modals/bulk-delete-issues-modal-item.tsx`
+- [x] `core/components/core/modals/bulk-delete-issues-modal.tsx`
+- [x] `core/components/core/modals/change-email-modal.tsx`
+- [x] `core/components/core/modals/existing-issues-list-modal.tsx`
+- [!] `core/components/core/modals/gpt-assistant-popover.tsx` — Múltiples `any`: `onResponse: (response: any)` (28), `onError?: (error: any)` (29), `handleServiceError(err: any)` (91).
+- [x] `core/components/core/modals/issue-search-modal-empty-state.tsx`
+- [!] `core/components/core/modals/user-image-upload-modal.tsx` — `console.log("Error in uploading user asset:", error)` (línea 90) — usar `console.error`.
+- [!] `core/components/core/modals/workspace-image-upload-modal.tsx` — (1) `catch (error: any)` (línea 78). (2) `console.log("error", error)` (línea 79) y `console.log("Error in removing workspace asset:", error)` (línea 103) — reemplazar por `console.error` y/o sentry.
 
 #### `core/components/core/multiple-select/`
 
-- [ ] `core/components/core/multiple-select/entity-select-action.tsx`
-- [ ] `core/components/core/multiple-select/group-select-action.tsx`
-- [ ] `core/components/core/multiple-select/index.ts`
-- [ ] `core/components/core/multiple-select/select-group.tsx`
+- [x] `core/components/core/multiple-select/entity-select-action.tsx`
+- [x] `core/components/core/multiple-select/group-select-action.tsx`
+- [x] `core/components/core/multiple-select/index.ts`
+- [x] `core/components/core/multiple-select/select-group.tsx`
 
 #### `core/components/core/sidebar/`
 
-- [ ] `core/components/core/sidebar/progress-chart.tsx`
-- [ ] `core/components/core/sidebar/sidebar-menu-hamburger-toggle.tsx`
-- [ ] `core/components/core/sidebar/single-progress-stats.tsx`
+- [x] `core/components/core/sidebar/progress-chart.tsx`
+- [x] `core/components/core/sidebar/sidebar-menu-hamburger-toggle.tsx`
+- [!] `core/components/core/sidebar/single-progress-stats.tsx` — `title: any` (línea 10) — debería ser `React.ReactNode`.
 
 #### `core/components/core/sidebar/progress-stats/`
 
-- [ ] `core/components/core/sidebar/progress-stats/assignee.tsx`
-- [ ] `core/components/core/sidebar/progress-stats/label.tsx`
-- [ ] `core/components/core/sidebar/progress-stats/shared.ts`
-- [ ] `core/components/core/sidebar/progress-stats/state_group.tsx`
+- [x] `core/components/core/sidebar/progress-stats/assignee.tsx`
+- [x] `core/components/core/sidebar/progress-stats/label.tsx`
+- [x] `core/components/core/sidebar/progress-stats/shared.ts`
+- [x] `core/components/core/sidebar/progress-stats/state_group.tsx`
 
 #### `core/components/core/theme/`
 
-- [ ] `core/components/core/theme/color-inputs.tsx`
-- [ ] `core/components/core/theme/custom-theme-selector.tsx`
-- [ ] `core/components/core/theme/download-config-button.tsx`
-- [ ] `core/components/core/theme/import-config-button.tsx`
-- [ ] `core/components/core/theme/theme-mode-selector.tsx`
-- [ ] `core/components/core/theme/theme-switch.tsx`
+- [x] `core/components/core/theme/color-inputs.tsx`
+- [x] `core/components/core/theme/custom-theme-selector.tsx`
+- [x] `core/components/core/theme/download-config-button.tsx`
+- [x] `core/components/core/theme/import-config-button.tsx`
+- [x] `core/components/core/theme/theme-mode-selector.tsx`
+- [x] `core/components/core/theme/theme-switch.tsx`
 
 #### `core/components/cycles/`
 
@@ -1457,141 +1457,141 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `core/components/dropdowns/`
 
-- [ ] `core/components/dropdowns/buttons.tsx`
-- [ ] `core/components/dropdowns/constants.ts`
-- [ ] `core/components/dropdowns/date-range.tsx`
-- [ ] `core/components/dropdowns/date.tsx`
-- [ ] `core/components/dropdowns/estimate.tsx`
-- [ ] `core/components/dropdowns/layout.tsx`
-- [ ] `core/components/dropdowns/merged-date.tsx`
-- [ ] `core/components/dropdowns/priority.tsx`
+- [x] `core/components/dropdowns/buttons.tsx`
+- [x] `core/components/dropdowns/constants.ts`
+- [x] `core/components/dropdowns/date-range.tsx`
+- [x] `core/components/dropdowns/date.tsx`
+- [!] `core/components/dropdowns/estimate.tsx` — `displayValue={(assigned: any) => assigned?.name}` (línea 250) — patrón repetido.
+- [!] `core/components/dropdowns/layout.tsx` — `keyExtractor = useCallback((option: any) => option.value, [])` (línea 75) — tipar con genérico del dropdown.
+- [x] `core/components/dropdowns/merged-date.tsx`
+- [!] `core/components/dropdowns/priority.tsx` — `displayValue={(assigned: any) => assigned?.name}` (línea 481).
 
 #### `core/components/dropdowns/cycle/`
 
-- [ ] `core/components/dropdowns/cycle/cycle-options.tsx`
-- [ ] `core/components/dropdowns/cycle/index.tsx`
+- [x] `core/components/dropdowns/cycle/cycle-options.tsx`
+- [x] `core/components/dropdowns/cycle/index.tsx`
 
 #### `core/components/dropdowns/intake-state/`
 
-- [ ] `core/components/dropdowns/intake-state/base.tsx`
-- [ ] `core/components/dropdowns/intake-state/dropdown.tsx`
+- [!] `core/components/dropdowns/intake-state/base.tsx` — `displayValue={(assigned: any) => assigned?.name}` (línea 232) — patrón replicado (7 ubicaciones en dropdowns/).
+- [x] `core/components/dropdowns/intake-state/dropdown.tsx`
 
 #### `core/components/dropdowns/member/`
 
-- [ ] `core/components/dropdowns/member/avatar.tsx`
-- [ ] `core/components/dropdowns/member/base.tsx`
-- [ ] `core/components/dropdowns/member/dropdown.tsx`
-- [ ] `core/components/dropdowns/member/member-options.tsx`
+- [x] `core/components/dropdowns/member/avatar.tsx`
+- [x] `core/components/dropdowns/member/base.tsx`
+- [x] `core/components/dropdowns/member/dropdown.tsx`
+- [!] `core/components/dropdowns/member/member-options.tsx` — `displayValue={(assigned: any) => assigned?.name}` (línea 152).
 
 #### `core/components/dropdowns/module/`
 
-- [ ] `core/components/dropdowns/module/base.tsx`
-- [ ] `core/components/dropdowns/module/button-content.tsx`
-- [ ] `core/components/dropdowns/module/dropdown.tsx`
-- [ ] `core/components/dropdowns/module/module-options.tsx`
+- [!] `core/components/dropdowns/module/base.tsx` — Cast `onChange={onChange as any}` (línea 169) — arreglar el tipo de `onChange` en la prop o del hijo receptor.
+- [x] `core/components/dropdowns/module/button-content.tsx`
+- [x] `core/components/dropdowns/module/dropdown.tsx`
+- [!] `core/components/dropdowns/module/module-options.tsx` — `displayValue={(assigned: any) => assigned?.name}` (línea 132).
 
 #### `core/components/dropdowns/project/`
 
-- [ ] `core/components/dropdowns/project/base.tsx`
-- [ ] `core/components/dropdowns/project/dropdown.tsx`
+- [!] `core/components/dropdowns/project/base.tsx` — `displayValue={(assigned: any) => assigned?.name}` (línea 261) — patrón repetido en otros 6 dropdowns; debería tipar con el genérico del dropdown.
+- [x] `core/components/dropdowns/project/dropdown.tsx`
 
 #### `core/components/dropdowns/state/`
 
-- [ ] `core/components/dropdowns/state/base.tsx`
-- [ ] `core/components/dropdowns/state/dropdown.tsx`
+- [!] `core/components/dropdowns/state/base.tsx` — `displayValue={(assigned: any) => assigned?.name}` (línea 234).
+- [x] `core/components/dropdowns/state/dropdown.tsx`
 
 #### `core/components/editor/document/`
 
-- [ ] `core/components/editor/document/editor.tsx`
+- [x] `core/components/editor/document/editor.tsx`
 
 #### `core/components/editor/embeds/mentions/`
 
-- [ ] `core/components/editor/embeds/mentions/index.ts`
-- [ ] `core/components/editor/embeds/mentions/root.tsx`
-- [ ] `core/components/editor/embeds/mentions/user.tsx`
+- [x] `core/components/editor/embeds/mentions/index.ts`
+- [x] `core/components/editor/embeds/mentions/root.tsx`
+- [x] `core/components/editor/embeds/mentions/user.tsx`
 
 #### `core/components/editor/lite-text/`
 
-- [ ] `core/components/editor/lite-text/editor.tsx`
-- [ ] `core/components/editor/lite-text/index.ts`
-- [ ] `core/components/editor/lite-text/lite-toolbar.tsx`
-- [ ] `core/components/editor/lite-text/toolbar.tsx`
+- [x] `core/components/editor/lite-text/editor.tsx`
+- [x] `core/components/editor/lite-text/index.ts`
+- [x] `core/components/editor/lite-text/lite-toolbar.tsx`
+- [x] `core/components/editor/lite-text/toolbar.tsx`
 
 #### `core/components/editor/pdf/`
 
-- [ ] `core/components/editor/pdf/document.tsx`
-- [ ] `core/components/editor/pdf/index.ts`
+- [x] `core/components/editor/pdf/document.tsx`
+- [x] `core/components/editor/pdf/index.ts`
 
 #### `core/components/editor/rich-text/`
 
-- [ ] `core/components/editor/rich-text/editor.tsx`
-- [ ] `core/components/editor/rich-text/index.ts`
+- [x] `core/components/editor/rich-text/editor.tsx`
+- [x] `core/components/editor/rich-text/index.ts`
 
 #### `core/components/editor/rich-text/description-input/`
 
-- [ ] `core/components/editor/rich-text/description-input/index.ts`
-- [ ] `core/components/editor/rich-text/description-input/loader.tsx`
-- [ ] `core/components/editor/rich-text/description-input/root.tsx`
+- [x] `core/components/editor/rich-text/description-input/index.ts`
+- [x] `core/components/editor/rich-text/description-input/loader.tsx`
+- [!] `core/components/editor/rich-text/description-input/root.tsx` — `console.log("Error in uploading asset:", error)` (línea 276) — usar `console.error`.
 
 #### `core/components/editor/sticky-editor/`
 
-- [ ] `core/components/editor/sticky-editor/color-palette.tsx`
-- [ ] `core/components/editor/sticky-editor/editor.tsx`
-- [ ] `core/components/editor/sticky-editor/index.ts`
-- [ ] `core/components/editor/sticky-editor/toolbar.tsx`
+- [x] `core/components/editor/sticky-editor/color-palette.tsx`
+- [x] `core/components/editor/sticky-editor/editor.tsx`
+- [x] `core/components/editor/sticky-editor/index.ts`
+- [x] `core/components/editor/sticky-editor/toolbar.tsx`
 
 #### `core/components/empty-state/`
 
-- [ ] `core/components/empty-state/comic-box-button.tsx`
-- [ ] `core/components/empty-state/detailed-empty-state-root.tsx`
-- [ ] `core/components/empty-state/helper.tsx`
-- [ ] `core/components/empty-state/section-empty-state-root.tsx`
-- [ ] `core/components/empty-state/simple-empty-state-root.tsx`
+- [!] `core/components/empty-state/comic-box-button.tsx` — `icon?: any` (línea 16) — tipar.
+- [x] `core/components/empty-state/detailed-empty-state-root.tsx`
+- [x] `core/components/empty-state/helper.tsx`
+- [x] `core/components/empty-state/section-empty-state-root.tsx`
+- [x] `core/components/empty-state/simple-empty-state-root.tsx`
 
 #### `core/components/estimates/`
 
-- [ ] `core/components/estimates/empty-screen.tsx`
-- [ ] `core/components/estimates/estimate-disable-switch.tsx`
-- [ ] `core/components/estimates/estimate-list-item.tsx`
-- [ ] `core/components/estimates/estimate-list.tsx`
-- [ ] `core/components/estimates/estimate-search.tsx`
-- [ ] `core/components/estimates/index.ts`
-- [ ] `core/components/estimates/loader-screen.tsx`
-- [ ] `core/components/estimates/radio-select.tsx`
-- [ ] `core/components/estimates/root.tsx`
+- [x] `core/components/estimates/empty-screen.tsx`
+- [x] `core/components/estimates/estimate-disable-switch.tsx`
+- [x] `core/components/estimates/estimate-list-item.tsx`
+- [x] `core/components/estimates/estimate-list.tsx`
+- [x] `core/components/estimates/estimate-search.tsx`
+- [x] `core/components/estimates/index.ts`
+- [x] `core/components/estimates/loader-screen.tsx`
+- [x] `core/components/estimates/radio-select.tsx`
+- [x] `core/components/estimates/root.tsx`
 
 #### `core/components/estimates/create/`
 
-- [ ] `core/components/estimates/create/modal.tsx`
-- [ ] `core/components/estimates/create/stage-one.tsx`
+- [x] `core/components/estimates/create/modal.tsx`
+- [x] `core/components/estimates/create/stage-one.tsx`
 
 #### `core/components/estimates/delete/`
 
-- [ ] `core/components/estimates/delete/modal.tsx`
+- [x] `core/components/estimates/delete/modal.tsx`
 
 #### `core/components/estimates/inputs/`
 
-- [ ] `core/components/estimates/inputs/index.ts`
-- [ ] `core/components/estimates/inputs/number-input.tsx`
-- [ ] `core/components/estimates/inputs/root.tsx`
-- [ ] `core/components/estimates/inputs/text-input.tsx`
+- [x] `core/components/estimates/inputs/index.ts`
+- [x] `core/components/estimates/inputs/number-input.tsx`
+- [x] `core/components/estimates/inputs/root.tsx`
+- [x] `core/components/estimates/inputs/text-input.tsx`
 
 #### `core/components/estimates/points/`
 
-- [ ] `core/components/estimates/points/create-root.tsx`
-- [ ] `core/components/estimates/points/create.tsx`
-- [ ] `core/components/estimates/points/index.ts`
-- [ ] `core/components/estimates/points/preview.tsx`
-- [ ] `core/components/estimates/points/update.tsx`
+- [x] `core/components/estimates/points/create-root.tsx`
+- [x] `core/components/estimates/points/create.tsx`
+- [x] `core/components/estimates/points/index.ts`
+- [x] `core/components/estimates/points/preview.tsx`
+- [x] `core/components/estimates/points/update.tsx`
 
 #### `core/components/exporter/`
 
-- [ ] `core/components/exporter/column.tsx`
-- [ ] `core/components/exporter/export-form.tsx`
-- [ ] `core/components/exporter/export-modal.tsx`
-- [ ] `core/components/exporter/guide.tsx`
-- [ ] `core/components/exporter/prev-exports.tsx`
-- [ ] `core/components/exporter/single-export.tsx`
+- [x] `core/components/exporter/column.tsx`
+- [x] `core/components/exporter/export-form.tsx`
+- [!] `core/components/exporter/export-modal.tsx` — `const onChange = (val: any) => ...` (línea 69) — tipar.
+- [x] `core/components/exporter/guide.tsx`
+- [x] `core/components/exporter/prev-exports.tsx`
+- [x] `core/components/exporter/single-export.tsx`
 
 #### `core/components/gantt-chart/`
 
@@ -1668,15 +1668,15 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `core/components/global/`
 
-- [ ] `core/components/global/index.ts`
+- [x] `core/components/global/index.ts`
 - [x] `core/components/global/timezone-select.tsx`
 
 #### `core/components/global/product-updates/`
 
-- [ ] `core/components/global/product-updates/fallback.tsx`
-- [ ] `core/components/global/product-updates/footer.tsx`
-- [ ] `core/components/global/product-updates/index.ts`
-- [ ] `core/components/global/product-updates/modal.tsx`
+- [x] `core/components/global/product-updates/fallback.tsx`
+- [x] `core/components/global/product-updates/footer.tsx`
+- [x] `core/components/global/product-updates/index.ts`
+- [x] `core/components/global/product-updates/modal.tsx`
 
 #### `core/components/home/`
 
@@ -1733,34 +1733,34 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `core/components/icons/`
 
-- [ ] `core/components/icons/index.ts`
-- [ ] `core/components/icons/locked-component.tsx`
+- [x] `core/components/icons/index.ts`
+- [x] `core/components/icons/locked-component.tsx`
 
 #### `core/components/icons/attachment/`
 
-- [ ] `core/components/icons/attachment/attachment-icon.tsx`
-- [ ] `core/components/icons/attachment/audio-file-icon.tsx`
-- [ ] `core/components/icons/attachment/css-file-icon.tsx`
-- [ ] `core/components/icons/attachment/csv-file-icon.tsx`
-- [ ] `core/components/icons/attachment/default-file-icon.tsx`
-- [ ] `core/components/icons/attachment/doc-file-icon.tsx`
-- [ ] `core/components/icons/attachment/document-icon.tsx`
-- [ ] `core/components/icons/attachment/figma-file-icon.tsx`
-- [ ] `core/components/icons/attachment/html-file-icon.tsx`
-- [ ] `core/components/icons/attachment/img-file-icon.tsx`
-- [ ] `core/components/icons/attachment/index.ts`
-- [ ] `core/components/icons/attachment/jpg-file-icon.tsx`
-- [ ] `core/components/icons/attachment/js-file-icon.tsx`
-- [ ] `core/components/icons/attachment/pdf-file-icon.tsx`
-- [ ] `core/components/icons/attachment/png-file-icon.tsx`
-- [ ] `core/components/icons/attachment/rar-file-icon.tsx`
-- [ ] `core/components/icons/attachment/setting-icon.tsx`
-- [ ] `core/components/icons/attachment/sheet-file-icon.tsx`
-- [ ] `core/components/icons/attachment/svg-file-icon.tsx`
-- [ ] `core/components/icons/attachment/tune-icon.tsx`
-- [ ] `core/components/icons/attachment/txt-file-icon.tsx`
-- [ ] `core/components/icons/attachment/video-file-icon.tsx`
-- [ ] `core/components/icons/attachment/zip-file-icon.tsx`
+- [x] `core/components/icons/attachment/attachment-icon.tsx`
+- [x] `core/components/icons/attachment/audio-file-icon.tsx`
+- [x] `core/components/icons/attachment/css-file-icon.tsx`
+- [x] `core/components/icons/attachment/csv-file-icon.tsx`
+- [x] `core/components/icons/attachment/default-file-icon.tsx`
+- [x] `core/components/icons/attachment/doc-file-icon.tsx`
+- [x] `core/components/icons/attachment/document-icon.tsx`
+- [x] `core/components/icons/attachment/figma-file-icon.tsx`
+- [x] `core/components/icons/attachment/html-file-icon.tsx`
+- [x] `core/components/icons/attachment/img-file-icon.tsx`
+- [x] `core/components/icons/attachment/index.ts`
+- [x] `core/components/icons/attachment/jpg-file-icon.tsx`
+- [x] `core/components/icons/attachment/js-file-icon.tsx`
+- [x] `core/components/icons/attachment/pdf-file-icon.tsx`
+- [x] `core/components/icons/attachment/png-file-icon.tsx`
+- [x] `core/components/icons/attachment/rar-file-icon.tsx`
+- [x] `core/components/icons/attachment/setting-icon.tsx`
+- [x] `core/components/icons/attachment/sheet-file-icon.tsx`
+- [x] `core/components/icons/attachment/svg-file-icon.tsx`
+- [x] `core/components/icons/attachment/tune-icon.tsx`
+- [x] `core/components/icons/attachment/txt-file-icon.tsx`
+- [x] `core/components/icons/attachment/video-file-icon.tsx`
+- [x] `core/components/icons/attachment/zip-file-icon.tsx`
 
 #### `core/components/inbox/`
 
@@ -1832,30 +1832,30 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `core/components/instance/`
 
-- [ ] `core/components/instance/index.ts`
-- [ ] `core/components/instance/maintenance-view.tsx`
-- [ ] `core/components/instance/not-ready-view.tsx`
+- [x] `core/components/instance/index.ts`
+- [x] `core/components/instance/maintenance-view.tsx`
+- [x] `core/components/instance/not-ready-view.tsx`
 
 #### `core/components/integration/`
 
-- [ ] `core/components/integration/confirm-action-modal.tsx`
-- [ ] `core/components/integration/connected-account-details.tsx`
-- [ ] `core/components/integration/oauth-callback-page.tsx`
-- [ ] `core/components/integration/single-integration-card.tsx`
-- [ ] `core/components/integration/utils.ts`
+- [x] `core/components/integration/confirm-action-modal.tsx`
+- [x] `core/components/integration/connected-account-details.tsx`
+- [x] `core/components/integration/oauth-callback-page.tsx`
+- [x] `core/components/integration/single-integration-card.tsx`
+- [x] `core/components/integration/utils.ts`
 
 #### `core/components/integration/github/`
 
-- [ ] `core/components/integration/github/personal-connect-card.tsx`
-- [ ] `core/components/integration/github/pr-state-mapping-modal.tsx`
-- [ ] `core/components/integration/github/pr-state-mapping.tsx`
-- [ ] `core/components/integration/github/project-issue-sync-modal.tsx`
-- [ ] `core/components/integration/github/project-issue-sync.tsx`
-- [ ] `core/components/integration/github/select-repository.tsx`
+- [x] `core/components/integration/github/personal-connect-card.tsx`
+- [x] `core/components/integration/github/pr-state-mapping-modal.tsx`
+- [x] `core/components/integration/github/pr-state-mapping.tsx`
+- [x] `core/components/integration/github/project-issue-sync-modal.tsx`
+- [x] `core/components/integration/github/project-issue-sync.tsx`
+- [x] `core/components/integration/github/select-repository.tsx`
 
 #### `core/components/integration/slack/`
 
-- [ ] `core/components/integration/slack/select-channel.tsx`
+- [x] `core/components/integration/slack/select-channel.tsx`
 
 #### `core/components/issues/`
 
@@ -2338,37 +2338,37 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `core/components/labels/`
 
-- [ ] `core/components/labels/create-update-label-inline.tsx`
-- [ ] `core/components/labels/delete-label-modal.tsx`
-- [ ] `core/components/labels/index.ts`
-- [ ] `core/components/labels/label-drag-n-drop-HOC.tsx`
-- [ ] `core/components/labels/label-utils.ts`
-- [ ] `core/components/labels/project-setting-label-group.tsx`
-- [ ] `core/components/labels/project-setting-label-item.tsx`
-- [ ] `core/components/labels/project-setting-label-list.tsx`
+- [!] `core/components/labels/create-update-label-inline.tsx` — `getErrorMessage = (error: any, operation) => string` (línea 73) — tipar `error` como `unknown` + narrowing.
+- [!] `core/components/labels/delete-label-modal.tsx` — `catch (err: any)` (línea 46).
+- [x] `core/components/labels/index.ts`
+- [x] `core/components/labels/label-drag-n-drop-HOC.tsx`
+- [x] `core/components/labels/label-utils.ts`
+- [x] `core/components/labels/project-setting-label-group.tsx`
+- [x] `core/components/labels/project-setting-label-item.tsx`
+- [x] `core/components/labels/project-setting-label-list.tsx`
 
 #### `core/components/labels/label-block/`
 
-- [ ] `core/components/labels/label-block/label-item-block.tsx`
-- [ ] `core/components/labels/label-block/label-name.tsx`
+- [x] `core/components/labels/label-block/label-item-block.tsx`
+- [x] `core/components/labels/label-block/label-name.tsx`
 
 #### `core/components/license/`
 
-- [ ] `core/components/license/index.ts`
+- [x] `core/components/license/index.ts`
 
 #### `core/components/license/modal/`
 
-- [ ] `core/components/license/modal/index.ts`
+- [x] `core/components/license/modal/index.ts`
 
 #### `core/components/license/modal/card/`
 
-- [ ] `core/components/license/modal/card/base-paid-plan-card.tsx`
-- [ ] `core/components/license/modal/card/checkout-button.tsx`
-- [ ] `core/components/license/modal/card/discount-info.tsx`
-- [ ] `core/components/license/modal/card/free-plan.tsx`
-- [ ] `core/components/license/modal/card/index.ts`
-- [ ] `core/components/license/modal/card/plan-upgrade.tsx`
-- [ ] `core/components/license/modal/card/talk-to-sales.tsx`
+- [x] `core/components/license/modal/card/base-paid-plan-card.tsx`
+- [x] `core/components/license/modal/card/checkout-button.tsx`
+- [x] `core/components/license/modal/card/discount-info.tsx`
+- [x] `core/components/license/modal/card/free-plan.tsx`
+- [x] `core/components/license/modal/card/index.ts`
+- [x] `core/components/license/modal/card/plan-upgrade.tsx`
+- [x] `core/components/license/modal/card/talk-to-sales.tsx`
 
 #### `core/components/modules/`
 
@@ -2449,75 +2449,75 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `core/components/navigation/`
 
-- [ ] `core/components/navigation/app-rail-root.tsx`
-- [ ] `core/components/navigation/customize-navigation-dialog.tsx`
-- [ ] `core/components/navigation/index.ts`
-- [ ] `core/components/navigation/items-root.tsx`
-- [ ] `core/components/navigation/project-actions-menu.tsx`
-- [ ] `core/components/navigation/project-header-button.tsx`
-- [ ] `core/components/navigation/project-header.tsx`
-- [ ] `core/components/navigation/tab-navigation-overflow-menu.tsx`
-- [ ] `core/components/navigation/tab-navigation-root.tsx`
-- [ ] `core/components/navigation/tab-navigation-utils.ts`
-- [ ] `core/components/navigation/tab-navigation-visible-item.tsx`
-- [ ] `core/components/navigation/top-nav-power-k.tsx`
-- [ ] `core/components/navigation/use-active-tab.ts`
-- [ ] `core/components/navigation/use-project-actions.ts`
-- [ ] `core/components/navigation/use-responsive-tab-layout.ts`
-- [ ] `core/components/navigation/use-tab-preferences.ts`
+- [x] `core/components/navigation/app-rail-root.tsx`
+- [x] `core/components/navigation/customize-navigation-dialog.tsx`
+- [x] `core/components/navigation/index.ts`
+- [x] `core/components/navigation/items-root.tsx`
+- [x] `core/components/navigation/project-actions-menu.tsx`
+- [x] `core/components/navigation/project-header-button.tsx`
+- [x] `core/components/navigation/project-header.tsx`
+- [x] `core/components/navigation/tab-navigation-overflow-menu.tsx`
+- [x] `core/components/navigation/tab-navigation-root.tsx`
+- [x] `core/components/navigation/tab-navigation-utils.ts`
+- [x] `core/components/navigation/tab-navigation-visible-item.tsx`
+- [x] `core/components/navigation/top-nav-power-k.tsx`
+- [x] `core/components/navigation/use-active-tab.ts`
+- [x] `core/components/navigation/use-project-actions.ts`
+- [x] `core/components/navigation/use-responsive-tab-layout.ts`
+- [x] `core/components/navigation/use-tab-preferences.ts`
 
 #### `core/components/onboarding/`
 
-- [ ] `core/components/onboarding/create-or-join-workspaces.tsx`
-- [ ] `core/components/onboarding/create-workspace.tsx`
-- [ ] `core/components/onboarding/header.tsx`
-- [ ] `core/components/onboarding/index.ts`
-- [ ] `core/components/onboarding/invitations.tsx`
-- [ ] `core/components/onboarding/invite-members.tsx`
-- [ ] `core/components/onboarding/profile-setup.tsx`
-- [ ] `core/components/onboarding/root.tsx`
-- [ ] `core/components/onboarding/step-indicator.tsx`
-- [ ] `core/components/onboarding/switch-account-dropdown.tsx`
-- [ ] `core/components/onboarding/switch-account-modal.tsx`
+- [x] `core/components/onboarding/create-or-join-workspaces.tsx`
+- [x] `core/components/onboarding/create-workspace.tsx`
+- [x] `core/components/onboarding/header.tsx`
+- [x] `core/components/onboarding/index.ts`
+- [x] `core/components/onboarding/invitations.tsx`
+- [!] `core/components/onboarding/invite-members.tsx` — (1) `errors: any` (línea 64) en prop type — tipar con `FieldErrors<T>` de react-hook-form. (2) `catch (err: any)` (línea 306).
+- [x] `core/components/onboarding/profile-setup.tsx`
+- [x] `core/components/onboarding/root.tsx`
+- [x] `core/components/onboarding/step-indicator.tsx`
+- [x] `core/components/onboarding/switch-account-dropdown.tsx`
+- [x] `core/components/onboarding/switch-account-modal.tsx`
 
 #### `core/components/onboarding/steps/`
 
-- [ ] `core/components/onboarding/steps/index.ts`
-- [ ] `core/components/onboarding/steps/root.tsx`
+- [x] `core/components/onboarding/steps/index.ts`
+- [x] `core/components/onboarding/steps/root.tsx`
 
 #### `core/components/onboarding/steps/common/`
 
-- [ ] `core/components/onboarding/steps/common/header.tsx`
-- [ ] `core/components/onboarding/steps/common/index.ts`
+- [x] `core/components/onboarding/steps/common/header.tsx`
+- [x] `core/components/onboarding/steps/common/index.ts`
 
 #### `core/components/onboarding/steps/profile/`
 
-- [ ] `core/components/onboarding/steps/profile/consent.tsx`
-- [ ] `core/components/onboarding/steps/profile/index.ts`
-- [ ] `core/components/onboarding/steps/profile/root.tsx`
-- [ ] `core/components/onboarding/steps/profile/set-password.tsx`
+- [x] `core/components/onboarding/steps/profile/consent.tsx`
+- [x] `core/components/onboarding/steps/profile/index.ts`
+- [x] `core/components/onboarding/steps/profile/root.tsx`
+- [x] `core/components/onboarding/steps/profile/set-password.tsx`
 
 #### `core/components/onboarding/steps/role/`
 
-- [ ] `core/components/onboarding/steps/role/index.ts`
-- [ ] `core/components/onboarding/steps/role/root.tsx`
+- [x] `core/components/onboarding/steps/role/index.ts`
+- [x] `core/components/onboarding/steps/role/root.tsx`
 
 #### `core/components/onboarding/steps/team/`
 
-- [ ] `core/components/onboarding/steps/team/index.ts`
-- [ ] `core/components/onboarding/steps/team/root.tsx`
+- [x] `core/components/onboarding/steps/team/index.ts`
+- [!] `core/components/onboarding/steps/team/root.tsx` — (1) `errors: any` (línea 60). (2) `catch (err: any)` (línea 306). Mismo patrón que invite-members.tsx.
 
 #### `core/components/onboarding/steps/usecase/`
 
-- [ ] `core/components/onboarding/steps/usecase/index.ts`
-- [ ] `core/components/onboarding/steps/usecase/root.tsx`
+- [x] `core/components/onboarding/steps/usecase/index.ts`
+- [x] `core/components/onboarding/steps/usecase/root.tsx`
 
 #### `core/components/onboarding/steps/workspace/`
 
-- [ ] `core/components/onboarding/steps/workspace/create.tsx`
-- [ ] `core/components/onboarding/steps/workspace/index.ts`
-- [ ] `core/components/onboarding/steps/workspace/join-invites.tsx`
-- [ ] `core/components/onboarding/steps/workspace/root.tsx`
+- [x] `core/components/onboarding/steps/workspace/create.tsx`
+- [x] `core/components/onboarding/steps/workspace/index.ts`
+- [!] `core/components/onboarding/steps/workspace/join-invites.tsx` — `catch (error: any)` (línea 62).
+- [x] `core/components/onboarding/steps/workspace/root.tsx`
 
 #### `core/components/pages/`
 
@@ -2768,27 +2768,27 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `core/components/profile/`
 
-- [ ] `core/components/profile/profile-issues-filter.tsx`
-- [ ] `core/components/profile/profile-issues.tsx`
-- [ ] `core/components/profile/profile-setting-content-wrapper.tsx`
-- [ ] `core/components/profile/sidebar.tsx`
-- [ ] `core/components/profile/start-of-week-preference.tsx`
-- [ ] `core/components/profile/time.tsx`
+- [x] `core/components/profile/profile-issues-filter.tsx`
+- [x] `core/components/profile/profile-issues.tsx`
+- [x] `core/components/profile/profile-setting-content-wrapper.tsx`
+- [x] `core/components/profile/sidebar.tsx`
+- [x] `core/components/profile/start-of-week-preference.tsx`
+- [x] `core/components/profile/time.tsx`
 
 #### `core/components/profile/activity/`
 
-- [ ] `core/components/profile/activity/activity-list.tsx`
-- [ ] `core/components/profile/activity/download-button.tsx`
-- [ ] `core/components/profile/activity/profile-activity-list.tsx`
-- [ ] `core/components/profile/activity/workspace-activity-list.tsx`
+- [x] `core/components/profile/activity/activity-list.tsx`
+- [x] `core/components/profile/activity/download-button.tsx`
+- [!] `core/components/profile/activity/profile-activity-list.tsx` — `.map((activityItem: any) => ...)` (línea 65) — tipar con el shape de actividad.
+- [x] `core/components/profile/activity/workspace-activity-list.tsx`
 
 #### `core/components/profile/overview/`
 
-- [ ] `core/components/profile/overview/activity.tsx`
-- [ ] `core/components/profile/overview/priority-distribution.tsx`
-- [ ] `core/components/profile/overview/state-distribution.tsx`
-- [ ] `core/components/profile/overview/stats.tsx`
-- [ ] `core/components/profile/overview/workload.tsx`
+- [x] `core/components/profile/overview/activity.tsx`
+- [!] `core/components/profile/overview/priority-distribution.tsx` — `fill: (payload: any) => ...` (línea 48) con comment `// TODO: fix types` — deuda documentada, resolver.
+- [x] `core/components/profile/overview/state-distribution.tsx`
+- [x] `core/components/profile/overview/stats.tsx`
+- [x] `core/components/profile/overview/workload.tsx`
 
 #### `core/components/project/`
 
@@ -2860,76 +2860,76 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `core/components/project-states/`
 
-- [ ] `core/components/project-states/group-item.tsx`
-- [ ] `core/components/project-states/group-list.tsx`
-- [ ] `core/components/project-states/index.ts`
-- [ ] `core/components/project-states/loader.tsx`
-- [ ] `core/components/project-states/root.tsx`
-- [ ] `core/components/project-states/state-delete-modal.tsx`
-- [ ] `core/components/project-states/state-item-title.tsx`
-- [ ] `core/components/project-states/state-item.tsx`
-- [ ] `core/components/project-states/state-list.tsx`
+- [x] `core/components/project-states/group-item.tsx`
+- [x] `core/components/project-states/group-list.tsx`
+- [x] `core/components/project-states/index.ts`
+- [x] `core/components/project-states/loader.tsx`
+- [x] `core/components/project-states/root.tsx`
+- [x] `core/components/project-states/state-delete-modal.tsx`
+- [x] `core/components/project-states/state-item-title.tsx`
+- [x] `core/components/project-states/state-item.tsx`
+- [x] `core/components/project-states/state-list.tsx`
 
 #### `core/components/project-states/create-update/`
 
-- [ ] `core/components/project-states/create-update/create.tsx`
-- [ ] `core/components/project-states/create-update/form.tsx`
-- [ ] `core/components/project-states/create-update/index.ts`
-- [ ] `core/components/project-states/create-update/update.tsx`
+- [x] `core/components/project-states/create-update/create.tsx`
+- [!] `core/components/project-states/create-update/form.tsx` — `console.log("error", error)` (línea 61) — usar `console.error`.
+- [x] `core/components/project-states/create-update/index.ts`
+- [x] `core/components/project-states/create-update/update.tsx`
 
 #### `core/components/project-states/options/`
 
-- [ ] `core/components/project-states/options/delete.tsx`
-- [ ] `core/components/project-states/options/index.ts`
-- [ ] `core/components/project-states/options/mark-as-default.tsx`
+- [x] `core/components/project-states/options/delete.tsx`
+- [x] `core/components/project-states/options/index.ts`
+- [x] `core/components/project-states/options/mark-as-default.tsx`
 
 #### `core/components/readonly/`
 
-- [ ] `core/components/readonly/cycle.tsx`
-- [ ] `core/components/readonly/date.tsx`
-- [ ] `core/components/readonly/estimate.tsx`
-- [ ] `core/components/readonly/index.tsx`
-- [ ] `core/components/readonly/labels.tsx`
-- [ ] `core/components/readonly/member.tsx`
-- [ ] `core/components/readonly/module.tsx`
-- [ ] `core/components/readonly/priority.tsx`
-- [ ] `core/components/readonly/state.tsx`
+- [x] `core/components/readonly/cycle.tsx`
+- [x] `core/components/readonly/date.tsx`
+- [x] `core/components/readonly/estimate.tsx`
+- [x] `core/components/readonly/index.tsx`
+- [x] `core/components/readonly/labels.tsx`
+- [x] `core/components/readonly/member.tsx`
+- [x] `core/components/readonly/module.tsx`
+- [x] `core/components/readonly/priority.tsx`
+- [x] `core/components/readonly/state.tsx`
 
 #### `core/components/rich-filters/`
 
-- [ ] `core/components/rich-filters/filters-row.tsx`
-- [ ] `core/components/rich-filters/filters-toggle.tsx`
-- [ ] `core/components/rich-filters/shared.ts`
+- [x] `core/components/rich-filters/filters-row.tsx`
+- [x] `core/components/rich-filters/filters-toggle.tsx`
+- [x] `core/components/rich-filters/shared.ts`
 
 #### `core/components/rich-filters/add-filters/`
 
-- [ ] `core/components/rich-filters/add-filters/button.tsx`
-- [ ] `core/components/rich-filters/add-filters/dropdown.tsx`
+- [x] `core/components/rich-filters/add-filters/button.tsx`
+- [x] `core/components/rich-filters/add-filters/dropdown.tsx`
 
 #### `core/components/rich-filters/filter-item/`
 
-- [ ] `core/components/rich-filters/filter-item/close-button.tsx`
-- [ ] `core/components/rich-filters/filter-item/container.tsx`
-- [ ] `core/components/rich-filters/filter-item/invalid.tsx`
-- [ ] `core/components/rich-filters/filter-item/loader.tsx`
-- [ ] `core/components/rich-filters/filter-item/property.tsx`
-- [ ] `core/components/rich-filters/filter-item/root.tsx`
+- [x] `core/components/rich-filters/filter-item/close-button.tsx`
+- [x] `core/components/rich-filters/filter-item/container.tsx`
+- [x] `core/components/rich-filters/filter-item/invalid.tsx`
+- [x] `core/components/rich-filters/filter-item/loader.tsx`
+- [x] `core/components/rich-filters/filter-item/property.tsx`
+- [x] `core/components/rich-filters/filter-item/root.tsx`
 
 #### `core/components/rich-filters/filter-value-input/`
 
-- [ ] `core/components/rich-filters/filter-value-input/root.tsx`
+- [x] `core/components/rich-filters/filter-value-input/root.tsx`
 
 #### `core/components/rich-filters/filter-value-input/date/`
 
-- [ ] `core/components/rich-filters/filter-value-input/date/range.tsx`
-- [ ] `core/components/rich-filters/filter-value-input/date/single.tsx`
+- [x] `core/components/rich-filters/filter-value-input/date/range.tsx`
+- [x] `core/components/rich-filters/filter-value-input/date/single.tsx`
 
 #### `core/components/rich-filters/filter-value-input/select/`
 
-- [ ] `core/components/rich-filters/filter-value-input/select/multi.tsx`
-- [ ] `core/components/rich-filters/filter-value-input/select/selected-options-display.tsx`
-- [ ] `core/components/rich-filters/filter-value-input/select/shared.tsx`
-- [ ] `core/components/rich-filters/filter-value-input/select/single.tsx`
+- [x] `core/components/rich-filters/filter-value-input/select/multi.tsx`
+- [x] `core/components/rich-filters/filter-value-input/select/selected-options-display.tsx`
+- [x] `core/components/rich-filters/filter-value-input/select/shared.tsx`
+- [x] `core/components/rich-filters/filter-value-input/select/single.tsx`
 
 #### `core/components/settings/`
 
@@ -3020,13 +3020,13 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `core/components/sidebar/`
 
-- [ ] `core/components/sidebar/add-button.tsx`
-- [ ] `core/components/sidebar/resizable-sidebar.tsx`
-- [ ] `core/components/sidebar/search-button.tsx`
-- [ ] `core/components/sidebar/sidebar-item.tsx`
-- [ ] `core/components/sidebar/sidebar-navigation.tsx`
-- [ ] `core/components/sidebar/sidebar-toggle-button.tsx`
-- [ ] `core/components/sidebar/sidebar-wrapper.tsx`
+- [x] `core/components/sidebar/add-button.tsx`
+- [!] `core/components/sidebar/resizable-sidebar.tsx` — Firma `= {} as any)` (línea 52) al default de props — reemplazar con default real tipado.
+- [x] `core/components/sidebar/search-button.tsx`
+- [x] `core/components/sidebar/sidebar-item.tsx`
+- [x] `core/components/sidebar/sidebar-navigation.tsx`
+- [x] `core/components/sidebar/sidebar-toggle-button.tsx`
+- [x] `core/components/sidebar/sidebar-wrapper.tsx`
 
 #### `core/components/stickies/`
 
@@ -3101,65 +3101,65 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `core/components/user/`
 
-- [ ] `core/components/user/index.ts`
-- [ ] `core/components/user/user-greetings.tsx`
+- [x] `core/components/user/index.ts`
+- [x] `core/components/user/user-greetings.tsx`
 
 #### `core/components/views/`
 
-- [ ] `core/components/views/delete-view-modal.tsx`
-- [ ] `core/components/views/form.tsx`
-- [ ] `core/components/views/helper.tsx`
-- [ ] `core/components/views/modal.tsx`
-- [ ] `core/components/views/quick-actions.tsx`
-- [ ] `core/components/views/view-list-header.tsx`
-- [ ] `core/components/views/view-list-item-action.tsx`
-- [ ] `core/components/views/view-list-item.tsx`
-- [ ] `core/components/views/views-list.tsx`
+- [x] `core/components/views/delete-view-modal.tsx`
+- [!] `core/components/views/form.tsx` — `onChange={(val: any) => ...}` (línea 132).
+- [x] `core/components/views/helper.tsx`
+- [x] `core/components/views/modal.tsx`
+- [x] `core/components/views/quick-actions.tsx`
+- [x] `core/components/views/view-list-header.tsx`
+- [x] `core/components/views/view-list-item-action.tsx`
+- [x] `core/components/views/view-list-item.tsx`
+- [x] `core/components/views/views-list.tsx`
 
 #### `core/components/views/applied-filters/`
 
-- [ ] `core/components/views/applied-filters/access.tsx`
-- [ ] `core/components/views/applied-filters/index.tsx`
-- [ ] `core/components/views/applied-filters/root.tsx`
+- [x] `core/components/views/applied-filters/access.tsx`
+- [x] `core/components/views/applied-filters/index.tsx`
+- [x] `core/components/views/applied-filters/root.tsx`
 
 #### `core/components/views/filters/`
 
-- [ ] `core/components/views/filters/filter-selection.tsx`
-- [ ] `core/components/views/filters/order-by.tsx`
+- [x] `core/components/views/filters/filter-selection.tsx`
+- [x] `core/components/views/filters/order-by.tsx`
 
 #### `core/components/web-hooks/`
 
-- [ ] `core/components/web-hooks/create-webhook-modal.tsx`
-- [ ] `core/components/web-hooks/delete-webhook-modal.tsx`
-- [ ] `core/components/web-hooks/empty-state.tsx`
-- [ ] `core/components/web-hooks/generated-hook-details.tsx`
-- [ ] `core/components/web-hooks/index.ts`
-- [ ] `core/components/web-hooks/utils.ts`
-- [ ] `core/components/web-hooks/webhooks-list-item.tsx`
-- [ ] `core/components/web-hooks/webhooks-list.tsx`
+- [x] `core/components/web-hooks/create-webhook-modal.tsx`
+- [x] `core/components/web-hooks/delete-webhook-modal.tsx`
+- [x] `core/components/web-hooks/empty-state.tsx`
+- [x] `core/components/web-hooks/generated-hook-details.tsx`
+- [x] `core/components/web-hooks/index.ts`
+- [x] `core/components/web-hooks/utils.ts`
+- [x] `core/components/web-hooks/webhooks-list-item.tsx`
+- [x] `core/components/web-hooks/webhooks-list.tsx`
 
 #### `core/components/web-hooks/form/`
 
-- [ ] `core/components/web-hooks/form/delete-section.tsx`
-- [ ] `core/components/web-hooks/form/event-types.tsx`
-- [ ] `core/components/web-hooks/form/form.tsx`
-- [ ] `core/components/web-hooks/form/index.ts`
-- [ ] `core/components/web-hooks/form/individual-event-options.tsx`
-- [ ] `core/components/web-hooks/form/input.tsx`
-- [ ] `core/components/web-hooks/form/secret-key.tsx`
-- [ ] `core/components/web-hooks/form/toggle.tsx`
+- [x] `core/components/web-hooks/form/delete-section.tsx`
+- [x] `core/components/web-hooks/form/event-types.tsx`
+- [x] `core/components/web-hooks/form/form.tsx`
+- [x] `core/components/web-hooks/form/index.ts`
+- [x] `core/components/web-hooks/form/individual-event-options.tsx`
+- [x] `core/components/web-hooks/form/input.tsx`
+- [!] `core/components/web-hooks/form/secret-key.tsx` — `key={index}` (línea 118) sobre un array de puntos decorativos — aceptable visualmente pero inconsistente con el resto del codebase; preferir un id estable o fragment.
+- [x] `core/components/web-hooks/form/toggle.tsx`
 
 #### `core/components/work-item-filters/`
 
-- [ ] `core/components/work-item-filters/filters-row.tsx`
-- [ ] `core/components/work-item-filters/filters-toggle.tsx`
+- [x] `core/components/work-item-filters/filters-row.tsx`
+- [x] `core/components/work-item-filters/filters-toggle.tsx`
 
 #### `core/components/work-item-filters/filters-hoc/`
 
-- [ ] `core/components/work-item-filters/filters-hoc/base.tsx`
-- [ ] `core/components/work-item-filters/filters-hoc/project-level.tsx`
-- [ ] `core/components/work-item-filters/filters-hoc/shared.ts`
-- [ ] `core/components/work-item-filters/filters-hoc/workspace-level.tsx`
+- [x] `core/components/work-item-filters/filters-hoc/base.tsx`
+- [x] `core/components/work-item-filters/filters-hoc/project-level.tsx`
+- [x] `core/components/work-item-filters/filters-hoc/shared.ts`
+- [x] `core/components/work-item-filters/filters-hoc/workspace-level.tsx`
 
 #### `core/components/workspace/`
 
@@ -3246,61 +3246,61 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `core/components/workspace-notifications/`
 
-- [ ] `core/components/workspace-notifications/index.ts`
-- [ ] `core/components/workspace-notifications/notification-app-sidebar-option.tsx`
-- [ ] `core/components/workspace-notifications/root.tsx`
+- [x] `core/components/workspace-notifications/index.ts`
+- [x] `core/components/workspace-notifications/notification-app-sidebar-option.tsx`
+- [x] `core/components/workspace-notifications/root.tsx`
 
 #### `core/components/workspace-notifications/sidebar/`
 
-- [ ] `core/components/workspace-notifications/sidebar/empty-state.tsx`
-- [ ] `core/components/workspace-notifications/sidebar/index.ts`
-- [ ] `core/components/workspace-notifications/sidebar/loader.tsx`
-- [ ] `core/components/workspace-notifications/sidebar/root.tsx`
+- [x] `core/components/workspace-notifications/sidebar/empty-state.tsx`
+- [x] `core/components/workspace-notifications/sidebar/index.ts`
+- [!] `core/components/workspace-notifications/sidebar/loader.tsx` — `key={i}` (línea 13) en un loop de skeletons — aceptable para UI placeholder (no hay datos), documentar o usar constante.
+- [x] `core/components/workspace-notifications/sidebar/root.tsx`
 
 #### `core/components/workspace-notifications/sidebar/filters/`
 
-- [ ] `core/components/workspace-notifications/sidebar/filters/applied-filter.tsx`
+- [x] `core/components/workspace-notifications/sidebar/filters/applied-filter.tsx`
 
 #### `core/components/workspace-notifications/sidebar/filters/menu/`
 
-- [ ] `core/components/workspace-notifications/sidebar/filters/menu/index.ts`
-- [ ] `core/components/workspace-notifications/sidebar/filters/menu/menu-option-item.tsx`
-- [ ] `core/components/workspace-notifications/sidebar/filters/menu/root.tsx`
+- [x] `core/components/workspace-notifications/sidebar/filters/menu/index.ts`
+- [x] `core/components/workspace-notifications/sidebar/filters/menu/menu-option-item.tsx`
+- [x] `core/components/workspace-notifications/sidebar/filters/menu/root.tsx`
 
 #### `core/components/workspace-notifications/sidebar/header/`
 
-- [ ] `core/components/workspace-notifications/sidebar/header/index.ts`
-- [ ] `core/components/workspace-notifications/sidebar/header/root.tsx`
+- [x] `core/components/workspace-notifications/sidebar/header/index.ts`
+- [x] `core/components/workspace-notifications/sidebar/header/root.tsx`
 
 #### `core/components/workspace-notifications/sidebar/header/options/`
 
-- [ ] `core/components/workspace-notifications/sidebar/header/options/index.ts`
-- [ ] `core/components/workspace-notifications/sidebar/header/options/root.tsx`
+- [x] `core/components/workspace-notifications/sidebar/header/options/index.ts`
+- [x] `core/components/workspace-notifications/sidebar/header/options/root.tsx`
 
 #### `core/components/workspace-notifications/sidebar/header/options/menu-option/`
 
-- [ ] `core/components/workspace-notifications/sidebar/header/options/menu-option/index.ts`
-- [ ] `core/components/workspace-notifications/sidebar/header/options/menu-option/menu-item.tsx`
-- [ ] `core/components/workspace-notifications/sidebar/header/options/menu-option/root.tsx`
+- [x] `core/components/workspace-notifications/sidebar/header/options/menu-option/index.ts`
+- [x] `core/components/workspace-notifications/sidebar/header/options/menu-option/menu-item.tsx`
+- [x] `core/components/workspace-notifications/sidebar/header/options/menu-option/root.tsx`
 
 #### `core/components/workspace-notifications/sidebar/notification-card/`
 
-- [ ] `core/components/workspace-notifications/sidebar/notification-card/content.tsx`
-- [ ] `core/components/workspace-notifications/sidebar/notification-card/item.tsx`
+- [x] `core/components/workspace-notifications/sidebar/notification-card/content.tsx`
+- [x] `core/components/workspace-notifications/sidebar/notification-card/item.tsx`
 
 #### `core/components/workspace-notifications/sidebar/notification-card/options/`
 
-- [ ] `core/components/workspace-notifications/sidebar/notification-card/options/archive.tsx`
-- [ ] `core/components/workspace-notifications/sidebar/notification-card/options/button.tsx`
-- [ ] `core/components/workspace-notifications/sidebar/notification-card/options/index.ts`
-- [ ] `core/components/workspace-notifications/sidebar/notification-card/options/read.tsx`
-- [ ] `core/components/workspace-notifications/sidebar/notification-card/options/root.tsx`
+- [x] `core/components/workspace-notifications/sidebar/notification-card/options/archive.tsx`
+- [x] `core/components/workspace-notifications/sidebar/notification-card/options/button.tsx`
+- [x] `core/components/workspace-notifications/sidebar/notification-card/options/index.ts`
+- [x] `core/components/workspace-notifications/sidebar/notification-card/options/read.tsx`
+- [x] `core/components/workspace-notifications/sidebar/notification-card/options/root.tsx`
 
 #### `core/components/workspace-notifications/sidebar/notification-card/options/snooze/`
 
-- [ ] `core/components/workspace-notifications/sidebar/notification-card/options/snooze/index.ts`
-- [ ] `core/components/workspace-notifications/sidebar/notification-card/options/snooze/modal.tsx`
-- [ ] `core/components/workspace-notifications/sidebar/notification-card/options/snooze/root.tsx`
+- [x] `core/components/workspace-notifications/sidebar/notification-card/options/snooze/index.ts`
+- [x] `core/components/workspace-notifications/sidebar/notification-card/options/snooze/modal.tsx`
+- [x] `core/components/workspace-notifications/sidebar/notification-card/options/snooze/root.tsx`
 
 #### `core/constants/`
 
