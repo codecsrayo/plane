@@ -3749,3 +3749,36 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 - [x] `react-router.config.ts`
 - [x] `vite.config.ts`
 
+## Declaration files (`.d.ts`) — 11 archivos
+
+Archivos de declaración de tipos (sin código runtime). Revisión enfocada en: `any` injustificado, shims demasiado permisivos, index signatures laxos.
+
+### `app/types/`
+
+- [x] `app/types/next-link.d.ts`
+- [x] `app/types/next-navigation.d.ts`
+- [!] `app/types/next-script.d.ts` — `[key: string]: any;` en `ScriptProps` abre el tipo a cualquier prop. Justificable para shim de compat pero relaja la seguridad de tipos para todos los consumidores de `next/script`. Considerar enumerar props concretas que se usan (o al menos `unknown` en vez de `any`).
+- [!] `app/types/react-router-virtual.d.ts` — `const build: any;` con `eslint-disable`. Shim necesario para módulo virtual de react-router pero elimina toda seguridad de tipos en el build handler. Documentado con comentario, aceptable como deuda técnica conocida.
+
+### `ce/types/issue-types/`
+
+- [x] `ce/types/issue-types/issue-property-values.d.ts`
+
+### `core/components/dropdowns/`
+
+- [x] `core/components/dropdowns/types.d.ts`
+- [x] `core/components/dropdowns/member/types.d.ts`
+
+### `core/components/icons/`
+
+- [x] `core/components/icons/types.d.ts`
+
+### `core/components/issues/issue-layouts/list/`
+
+- [x] `core/components/issues/issue-layouts/list/list-view-types.d.ts`
+
+### `./`
+
+- [!] `google.d.ts` — `(...args: any[]) => void` en `native_callback` e `intermediate_iframe_close_callback` de `IdConfiguration`. Son callbacks de Google Identity Services donde los args dependen de la lib externa; aceptable como shim pero idealmente `(...args: unknown[]) => void` con narrowing en el callsite.
+- [x] `use-font-face-observer.d.ts`
+
