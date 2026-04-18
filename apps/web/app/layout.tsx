@@ -57,7 +57,8 @@ export const meta = () => [
 ];
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const isSessionRecorderEnabled = parseInt(process.env.VITE_ENABLE_SESSION_RECORDER || "0");
+  const isSessionRecorderEnabled = Number.parseInt(process.env.VITE_ENABLE_SESSION_RECORDER || "0", 10);
+  const sessionRecorderKey = process.env.VITE_SESSION_RECORDER_KEY;
 
   return (
     <html lang="en">
@@ -88,13 +89,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </div>
         </AppProvider>
       </body>
-      {!!isSessionRecorderEnabled && process.env.VITE_SESSION_RECORDER_KEY && (
+      {!!isSessionRecorderEnabled && sessionRecorderKey && (
+        // Defense-in-depth: JSON.stringify neutraliza cualquier ' " </script> o \u2028/\u2029 que
+        // pudiera romper out del string literal en el JS inline si el build-env fuera manipulado.
         <Script id="clarity-tracking">
           {`(function(c,l,a,r,i,t,y){
               c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
               t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
               y=l.getElementsByTagName(r)[0];if(y){y.parentNode.insertBefore(t,y);}
-          })(window, document, "clarity", "script", "${process.env.VITE_SESSION_RECORDER_KEY}");`}
+          })(window, document, "clarity", "script", ${JSON.stringify(sessionRecorderKey)});`}
         </Script>
       )}
     </html>
