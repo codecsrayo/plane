@@ -172,6 +172,30 @@ export function FavoriteFolder(props: Props) {
                 <GripVertical className="h-3 w-3" />
               </div>
 
+              {/* DragHandle: montado como hermano del Disclosure.Button (no como hijo),
+                  y sin el <button> wrapper externo. Evita la doble/triple anidación de
+                  <button> (Disclosure.Button > <button> > DragHandle-<button>) que
+                  disparaba el warning: "<button> cannot appear as a descendant of <button>".
+                  La posición absolute se calcula contra el contenedor .relative padre. */}
+              <Tooltip
+                isMobile={isMobile}
+                tooltipContent={
+                  favorite.sort_order === null ? "Join the project to rearrange" : "Drag to rearrange"
+                }
+                position="top-end"
+                disabled={isDragging}
+              >
+                <DragHandle
+                  className={cn(
+                    "absolute top-1/2 -left-3 z-[1] hidden -translate-y-1/2 items-center justify-center rounded-sm bg-transparent text-placeholder group-hover/project-item:flex",
+                    {
+                      "cursor-not-allowed opacity-60": favorite.sort_order === null,
+                      "cursor-grabbing": isDragging,
+                    }
+                  )}
+                />
+              </Tooltip>
+
               <>
                 <Tooltip tooltipContent={`${favorite.name}`} position="right" className="ml-8" isMobile={isMobile}>
                   <div className="flex flex-grow truncate">
@@ -180,27 +204,6 @@ export function FavoriteFolder(props: Props) {
                       type="button"
                       className="flex w-full flex-grow items-center gap-1.5 text-left select-none"
                     >
-                      <Tooltip
-                        isMobile={isMobile}
-                        tooltipContent={
-                          favorite.sort_order === null ? "Join the project to rearrange" : "Drag to rearrange"
-                        }
-                        position="top-end"
-                        disabled={isDragging}
-                      >
-                        <button
-                          type="button"
-                          className={cn(
-                            "absolute top-1/2 -left-3 hidden -translate-y-1/2 cursor-grab items-center justify-center rounded-sm text-placeholder group-hover/project-item:flex",
-                            {
-                              "cursor-not-allowed opacity-60": favorite.sort_order === null,
-                              "cursor-grabbing": isDragging,
-                            }
-                          )}
-                        >
-                          <DragHandle className="bg-transparent" />
-                        </button>
-                      </Tooltip>
                       <div className="grid size-5 flex-shrink-0 place-items-center">
                         <FavoriteFolderIcon />
                       </div>
