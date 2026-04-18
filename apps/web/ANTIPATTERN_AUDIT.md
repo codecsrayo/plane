@@ -246,108 +246,108 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `app/(all)/[workspaceSlug]/(settings)/`
 
-- [ ] `app/(all)/[workspaceSlug]/(settings)/layout.tsx`
+- [x] `app/(all)/[workspaceSlug]/(settings)/layout.tsx`
 
 #### `app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/`
 
-- [ ] `app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/header.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/layout.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/page.tsx`
+- [x] `app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/header.tsx`
+- [x] `app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/layout.tsx`
+- [x] `app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/page.tsx`
 
 #### `app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/billing/`
 
-- [ ] `app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/billing/header.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/billing/page.tsx`
+- [x] `app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/billing/header.tsx`
+- [x] `app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/billing/page.tsx`
 
 #### `app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/exports/`
 
-- [ ] `app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/exports/header.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/exports/page.tsx`
+- [x] `app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/exports/header.tsx`
+- [x] `app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/exports/page.tsx`
 
 #### `app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/integrations/`
 
-- [ ] `app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/integrations/page.tsx`
+- [x] `app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/integrations/page.tsx`
 
 #### `app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/integrations/[provider]/`
 
-- [ ] `app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/integrations/[provider]/page.tsx`
+- [x] `app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/integrations/[provider]/page.tsx`
 
 #### `app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/members/`
 
-- [ ] `app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/members/header.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/members/page.tsx`
+- [x] `app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/members/header.tsx`
+- [x] `app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/members/page.tsx`
 
 #### `app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/webhooks/`
 
-- [ ] `app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/webhooks/header.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/webhooks/page.tsx`
+- [x] `app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/webhooks/header.tsx`
+- [x] `app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/webhooks/page.tsx`
 
 #### `app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/webhooks/[webhookId]/`
 
-- [ ] `app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/webhooks/[webhookId]/header.tsx`
+- [x] `app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/webhooks/[webhookId]/header.tsx`
 - [!] `app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/webhooks/[webhookId]/page.tsx` — `catch (error: any)` (línea 71) tipado como `any` (con `eslint-disable` comentado). Preferir `catch (error: unknown)` y narrowing para acceder a `error.error`.
 
 #### `app/(all)/[workspaceSlug]/(settings)/settings/projects/`
 
-- [ ] `app/(all)/[workspaceSlug]/(settings)/settings/projects/layout.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(settings)/settings/projects/page.tsx`
+- [x] `app/(all)/[workspaceSlug]/(settings)/settings/projects/layout.tsx`
+- [x] `app/(all)/[workspaceSlug]/(settings)/settings/projects/page.tsx`
 
 #### `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/`
 
-- [ ] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/header.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/layout.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/page.tsx`
+- [x] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/header.tsx`
+- [x] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/layout.tsx`
+- [x] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/page.tsx`
 
 #### `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/automations/`
 
-- [ ] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/automations/header.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/automations/layout.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/automations/page.tsx`
+- [x] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/automations/header.tsx`
+- [x] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/automations/layout.tsx`
+- [x] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/automations/page.tsx`
 
 #### `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/estimates/`
 
-- [ ] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/estimates/header.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/estimates/page.tsx`
+- [x] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/estimates/header.tsx`
+- [x] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/estimates/page.tsx`
 
 #### `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/features/cycles/`
 
-- [ ] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/features/cycles/header.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/features/cycles/page.tsx`
+- [x] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/features/cycles/header.tsx`
+- [x] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/features/cycles/page.tsx`
 
 #### `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/features/intake/`
 
-- [ ] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/features/intake/header.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/features/intake/page.tsx`
+- [x] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/features/intake/header.tsx`
+- [x] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/features/intake/page.tsx`
 
 #### `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/features/modules/`
 
-- [ ] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/features/modules/header.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/features/modules/page.tsx`
+- [x] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/features/modules/header.tsx`
+- [x] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/features/modules/page.tsx`
 
 #### `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/features/pages/`
 
-- [ ] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/features/pages/header.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/features/pages/page.tsx`
+- [x] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/features/pages/header.tsx`
+- [x] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/features/pages/page.tsx`
 
 #### `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/features/views/`
 
-- [ ] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/features/views/header.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/features/views/page.tsx`
+- [x] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/features/views/header.tsx`
+- [x] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/features/views/page.tsx`
 
 #### `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/labels/`
 
-- [ ] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/labels/header.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/labels/page.tsx`
+- [x] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/labels/header.tsx`
+- [x] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/labels/page.tsx`
 
 #### `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/members/`
 
-- [ ] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/members/header.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/members/page.tsx`
+- [x] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/members/header.tsx`
+- [x] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/members/page.tsx`
 
 #### `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/states/`
 
-- [ ] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/states/header.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/states/page.tsx`
+- [x] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/states/header.tsx`
+- [x] `app/(all)/[workspaceSlug]/(settings)/settings/projects/[projectId]/states/page.tsx`
 
 #### `app/(all)/accounts/forgot-password/`
 
