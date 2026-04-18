@@ -1,6 +1,7 @@
 // src/utils/mod.rs
 pub mod color;
 pub mod content_validator;
+pub mod csv_sanitize;
 pub mod django_sessions;
 pub mod fernet;
 pub mod github_app;

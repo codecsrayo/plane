@@ -46,6 +46,7 @@ use crate::{
         workspaces,
     },
     utils::{
+        csv_sanitize::sanitize_csv_cell,
         s3::{build_s3_client, build_s3_presign_client},
         soft_delete::SoftDeleteExt,
     },
@@ -573,20 +574,6 @@ fn encode_csv(rows: &[IssueRow<'_>]) -> anyhow::Result<Vec<u8>> {
     }
     let buf = wtr.into_inner()?;
     Ok(buf)
-}
-
-/// Sanitización de CSV injection (paridad con `apps/api/plane/utils/csv_utils.py
-/// ::sanitize_csv_value`): si el valor empieza por `=`, `+`, `-`, `@`, `\t`, o
-/// `\r`, se prefija con comilla simple para que Excel/LibreOffice no lo evalúen
-/// como fórmula.
-fn sanitize_csv_cell(value: &str) -> String {
-    // Django sanitiza considerando el primer char — replicamos el mismo check.
-    if let Some(first) = value.chars().next() {
-        if matches!(first, '=' | '+' | '-' | '@' | '\t' | '\r') {
-            return format!("'{value}");
-        }
-    }
-    value.to_owned()
 }
 
 /// JSON indent=2. Paridad con `JSONFormatter.encode(data, indent=2)`.
