@@ -429,16 +429,29 @@ pub async fn create_intake_issue(
         }
     }
 
-    // ── Auto-resolver intake del proyecto (paridad Django base.py:264) ────────
+    // ── Auto-resolver o crear intake del proyecto ────────────────────────────
     //
-    // Django hace `Intake.objects.filter(project_id=...).first()` sin order_by.
-    // Añadimos `.order_by_asc(CreatedAt)` como tiebreaker determinista — en la
-    // práctica cada proyecto tiene un único intake, pero evita flaky tests si
-    // alguna vez hay >1.
+    // Django (base.py:264) hace `Intake.objects.filter(...).first()` y asume
+    // que existe — si no existe, crashearía con AttributeError 500 en
+    // `intake_id.id`. Nosotros somos más defensivos: hacemos get-or-create
+    // inline para reparar proyectos donde `projects.intake_view=true` pero la
+    // fila del intake nunca se creó (bug histórico de update_project en el API
+    // Rust, fix separado — ver projects.rs).
+    //
+    // Aún así, si el proyecto tiene `intake_view=false`, devolvemos 400 para
+    // no crear intakes en proyectos que explícitamente no lo tienen habilitado.
     //
     // NOTA: ignoramos cualquier `intake_id` que venga en el body. El DTO ya no
     // lo acepta (paridad estricta con Django — él también lo descarta).
-    let intake = intakes::Entity::find()
+    if !guard.project.intake_view {
+        return Err(AppError::BadRequest(
+            "Intake no está habilitado en este proyecto".into(),
+        ));
+    }
+
+    let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
+
+    let intake = if let Some(existing) = intakes::Entity::find()
         .active()
         .filter(intakes::Column::ProjectId.eq(guard.project.id))
         .filter(intakes::Column::WorkspaceId.eq(guard.workspace.id))
@@ -446,16 +459,37 @@ pub async fn create_intake_issue(
         .one(&state.db)
         .await
         .map_err(AppError::Database)?
-        .ok_or_else(|| {
-            AppError::BadRequest("El proyecto no tiene intake configurado".into())
-        })?;
+    {
+        existing
+    } else {
+        // Mismos valores que Django (project/base.py:356-360):
+        // name=f"{project.name} Intake", is_default=true.
+        // `view_props` y `logo_props` son JSON NOT NULL con default {} en la DB.
+        intakes::ActiveModel {
+            id: Set(Uuid::new_v4()),
+            name: Set(format!("{} Intake", guard.project.name)),
+            description: Set(String::new()),
+            is_default: Set(true),
+            view_props: Set(serde_json::json!({})),
+            logo_props: Set(serde_json::json!({})),
+            project_id: Set(guard.project.id),
+            workspace_id: Set(guard.workspace.id),
+            created_by_id: Set(Some(guard.user.id)),
+            updated_by_id: Set(Some(guard.user.id)),
+            created_at: Set(now),
+            updated_at: Set(now),
+            deleted_at: Set(None),
+        }
+        .insert(&state.db)
+        .await
+        .map_err(AppError::Database)?
+    };
 
     // ── Get-or-create triage state (paridad Django base.py:239-249) ───────────
     //
     // TODO(refactor): esta lógica es idéntica a routes::states::intake_state.
     // Extraer a `pub(crate) fn ensure_triage_state(db, workspace_id, project_id)`
     // en un helper compartido.
-    let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
 
     let triage_state = if let Some(existing) = states::Entity::find()
         .active()
