@@ -273,6 +273,7 @@ pub mod instances;
         assets::get_workspace_asset,
         assets::get_static_asset,
         assets::list_issue_attachments_v2,
+        assets::initiate_issue_attachment_upload_v2,
         importer::list_github_import_repositories,
         importer::list_github_importers,
         importer::create_github_importer,
@@ -1112,7 +1113,8 @@ pub fn build_router(state: AppState) -> Router {
         // URL Django: apps/api/plane/app/urls/issue.py:137-141
         .route(
             "/assets/v2/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/attachments",
-            get(assets::list_issue_attachments_v2),
+            get(assets::list_issue_attachments_v2)
+                .post(assets::initiate_issue_attachment_upload_v2),
         )
         // ── Importer ──────────────────────────────────────────────────────────
         .route(
