@@ -3304,180 +3304,180 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `core/constants/`
 
-- [ ] `core/constants/ai.ts`
-- [ ] `core/constants/calendar.ts`
-- [ ] `core/constants/editor.ts`
-- [ ] `core/constants/fetch-keys.ts`
-- [ ] `core/constants/gantt-chart.ts`
-- [ ] `core/constants/plans.tsx`
-- [ ] `core/constants/sidebar-favorites.ts`
+- [x] `core/constants/ai.ts`
+- [x] `core/constants/calendar.ts`
+- [!] `core/constants/editor.ts` — `icon: any` (línea 210) en tipo/struct de constantes — tipar como `LucideIcon | React.ComponentType<...>`.
+- [!] `core/constants/fetch-keys.ts` — `paramsToKey(params: any)` (línea 9) + `CYCLE_ISSUES_WITH_PARAMS(..., params?: any)` (línea 98) — tipar como `Record<string, unknown>` o el shape real.
+- [x] `core/constants/gantt-chart.ts`
+- [x] `core/constants/plans.tsx`
+- [x] `core/constants/sidebar-favorites.ts`
 
 #### `core/custom-events/`
 
-- [ ] `core/custom-events/chat-support.ts`
+- [x] `core/custom-events/chat-support.ts`
 
 #### `core/hooks/`
 
-- [ ] `core/hooks/use-app-router.tsx`
-- [ ] `core/hooks/use-auto-save.tsx`
-- [ ] `core/hooks/use-auto-scroller.tsx`
-- [ ] `core/hooks/use-chat-support.ts`
-- [ ] `core/hooks/use-collaborative-page-actions.tsx`
-- [ ] `core/hooks/use-current-time.tsx`
-- [ ] `core/hooks/use-debounce.tsx`
-- [ ] `core/hooks/use-dropdown-key-down.tsx`
-- [ ] `core/hooks/use-dropdown.ts`
-- [ ] `core/hooks/use-expandable-search.ts`
-- [ ] `core/hooks/use-extended-sidebar-overview-outside-click.tsx`
-- [ ] `core/hooks/use-favorite-item-details.tsx`
-- [ ] `core/hooks/use-group-dragndrop.ts`
+- [x] `core/hooks/use-app-router.tsx`
+- [x] `core/hooks/use-auto-save.tsx`
+- [x] `core/hooks/use-auto-scroller.tsx`
+- [x] `core/hooks/use-chat-support.ts`
+- [x] `core/hooks/use-collaborative-page-actions.tsx`
+- [x] `core/hooks/use-current-time.tsx`
+- [x] `core/hooks/use-debounce.tsx`
+- [x] `core/hooks/use-dropdown-key-down.tsx`
+- [x] `core/hooks/use-dropdown.ts`
+- [x] `core/hooks/use-expandable-search.ts`
+- [x] `core/hooks/use-extended-sidebar-overview-outside-click.tsx`
+- [x] `core/hooks/use-favorite-item-details.tsx`
+- [x] `core/hooks/use-group-dragndrop.ts`
 - [x] `core/hooks/use-integration-popup.tsx`
-- [ ] `core/hooks/use-intersection-observer.ts`
-- [ ] `core/hooks/use-issue-layout-store.ts`
-- [ ] `core/hooks/use-issue-peek-overview-redirection.tsx`
-- [ ] `core/hooks/use-issues-actions.tsx`
-- [ ] `core/hooks/use-keypress.tsx`
-- [ ] `core/hooks/use-local-storage.tsx`
-- [ ] `core/hooks/use-multiple-select.ts`
-- [ ] `core/hooks/use-navigation-preferences.ts`
-- [ ] `core/hooks/use-online-status.ts`
-- [ ] `core/hooks/use-page-fallback.ts`
-- [ ] `core/hooks/use-page-filters.ts`
-- [ ] `core/hooks/use-page-operations.ts`
-- [ ] `core/hooks/use-parse-editor-content.ts`
-- [ ] `core/hooks/use-peek-overview-outside-click.tsx`
-- [ ] `core/hooks/use-platform-os.tsx`
-- [ ] `core/hooks/use-project-issue-properties.ts`
-- [ ] `core/hooks/use-query-params.ts`
-- [ ] `core/hooks/use-realtime-page-events.tsx`
-- [ ] `core/hooks/use-reload-confirmation.tsx`
-- [ ] `core/hooks/use-stickies.tsx`
-- [ ] `core/hooks/use-table-keyboard-navigation.tsx`
-- [ ] `core/hooks/use-timeline-chart.ts`
-- [ ] `core/hooks/use-timer.tsx`
-- [ ] `core/hooks/use-timezone-converter.tsx`
-- [ ] `core/hooks/use-timezone.tsx`
-- [ ] `core/hooks/use-window-size.tsx`
-- [ ] `core/hooks/use-workspace-invitation.tsx`
-- [ ] `core/hooks/use-workspace-issue-properties.ts`
-- [ ] `core/hooks/use-workspace-paths.ts`
+- [x] `core/hooks/use-intersection-observer.ts`
+- [x] `core/hooks/use-issue-layout-store.ts`
+- [x] `core/hooks/use-issue-peek-overview-redirection.tsx`
+- [x] `core/hooks/use-issues-actions.tsx`
+- [x] `core/hooks/use-keypress.tsx`
+- [!] `core/hooks/use-local-storage.tsx` — `any` en signatures de `getValueFromLocalStorage(key, defaultValue: any)` y `setValueIntoLocalStorage(key, value: any)`. Como helpers genéricos, convertir a genérico `<T>` para preservar inferencia.
+- [!] `core/hooks/use-multiple-select.ts` — `console.log("force adding")` huérfano (línea 181) — debug leftover, eliminar.
+- [x] `core/hooks/use-navigation-preferences.ts`
+- [x] `core/hooks/use-online-status.ts`
+- [!] `core/hooks/use-page-fallback.ts` — `catch (error: any)` (línea 70). Preferir `catch (error: unknown)` + narrowing.
+- [x] `core/hooks/use-page-filters.ts`
+- [x] `core/hooks/use-page-operations.ts`
+- [x] `core/hooks/use-parse-editor-content.ts`
+- [x] `core/hooks/use-peek-overview-outside-click.tsx`
+- [x] `core/hooks/use-platform-os.tsx`
+- [x] `core/hooks/use-project-issue-properties.ts`
+- [x] `core/hooks/use-query-params.ts`
+- [x] `core/hooks/use-realtime-page-events.tsx`
+- [x] `core/hooks/use-reload-confirmation.tsx`
+- [x] `core/hooks/use-stickies.tsx`
+- [x] `core/hooks/use-table-keyboard-navigation.tsx`
+- [x] `core/hooks/use-timeline-chart.ts`
+- [x] `core/hooks/use-timer.tsx`
+- [x] `core/hooks/use-timezone-converter.tsx`
+- [x] `core/hooks/use-timezone.tsx`
+- [x] `core/hooks/use-window-size.tsx`
+- [x] `core/hooks/use-workspace-invitation.tsx`
+- [x] `core/hooks/use-workspace-issue-properties.ts`
+- [x] `core/hooks/use-workspace-paths.ts`
 
 #### `core/hooks/context/`
 
-- [ ] `core/hooks/context/use-issue-modal.tsx`
+- [x] `core/hooks/context/use-issue-modal.tsx`
 
 #### `core/hooks/editor/`
 
-- [ ] `core/hooks/editor/index.ts`
-- [ ] `core/hooks/editor/use-editor-config.ts`
-- [ ] `core/hooks/editor/use-editor-mention.tsx`
+- [x] `core/hooks/editor/index.ts`
+- [x] `core/hooks/editor/use-editor-config.ts`
+- [x] `core/hooks/editor/use-editor-mention.tsx`
 
 #### `core/hooks/oauth/`
 
-- [ ] `core/hooks/oauth/core.tsx`
-- [ ] `core/hooks/oauth/extended.tsx`
-- [ ] `core/hooks/oauth/index.ts`
+- [x] `core/hooks/oauth/core.tsx`
+- [x] `core/hooks/oauth/extended.tsx`
+- [x] `core/hooks/oauth/index.ts`
 
 #### `core/hooks/store/`
 
-- [ ] `core/hooks/store/use-analytics.ts`
-- [ ] `core/hooks/store/use-app-theme.ts`
-- [ ] `core/hooks/store/use-calendar-view.ts`
-- [ ] `core/hooks/store/use-command-palette.ts`
-- [ ] `core/hooks/store/use-cycle-filter.ts`
-- [ ] `core/hooks/store/use-cycle.ts`
-- [ ] `core/hooks/store/use-dashboard.ts`
-- [ ] `core/hooks/store/use-editor-asset.ts`
-- [ ] `core/hooks/store/use-favorite.ts`
-- [ ] `core/hooks/store/use-global-view.ts`
-- [ ] `core/hooks/store/use-home.ts`
-- [ ] `core/hooks/store/use-inbox-issues.ts`
-- [ ] `core/hooks/store/use-instance.ts`
-- [ ] `core/hooks/store/use-issue-detail.ts`
-- [ ] `core/hooks/store/use-issues.ts`
-- [ ] `core/hooks/store/use-kanban-view.ts`
-- [ ] `core/hooks/store/use-label.ts`
-- [ ] `core/hooks/store/use-member.ts`
-- [ ] `core/hooks/store/use-module-filter.ts`
-- [ ] `core/hooks/store/use-module.ts`
-- [ ] `core/hooks/store/use-multiple-select-store.ts`
-- [ ] `core/hooks/store/use-power-k.ts`
-- [ ] `core/hooks/store/use-project-filter.ts`
-- [ ] `core/hooks/store/use-project-inbox.ts`
-- [ ] `core/hooks/store/use-project-publish.ts`
-- [ ] `core/hooks/store/use-project-state.ts`
-- [ ] `core/hooks/store/use-project-view.ts`
-- [ ] `core/hooks/store/use-project.ts`
-- [ ] `core/hooks/store/use-router-params.ts`
-- [ ] `core/hooks/store/use-webhook.ts`
-- [ ] `core/hooks/store/use-workspace.ts`
+- [x] `core/hooks/store/use-analytics.ts`
+- [x] `core/hooks/store/use-app-theme.ts`
+- [x] `core/hooks/store/use-calendar-view.ts`
+- [x] `core/hooks/store/use-command-palette.ts`
+- [x] `core/hooks/store/use-cycle-filter.ts`
+- [x] `core/hooks/store/use-cycle.ts`
+- [x] `core/hooks/store/use-dashboard.ts`
+- [x] `core/hooks/store/use-editor-asset.ts`
+- [x] `core/hooks/store/use-favorite.ts`
+- [x] `core/hooks/store/use-global-view.ts`
+- [x] `core/hooks/store/use-home.ts`
+- [x] `core/hooks/store/use-inbox-issues.ts`
+- [x] `core/hooks/store/use-instance.ts`
+- [x] `core/hooks/store/use-issue-detail.ts`
+- [x] `core/hooks/store/use-issues.ts`
+- [x] `core/hooks/store/use-kanban-view.ts`
+- [x] `core/hooks/store/use-label.ts`
+- [x] `core/hooks/store/use-member.ts`
+- [x] `core/hooks/store/use-module-filter.ts`
+- [x] `core/hooks/store/use-module.ts`
+- [x] `core/hooks/store/use-multiple-select-store.ts`
+- [x] `core/hooks/store/use-power-k.ts`
+- [x] `core/hooks/store/use-project-filter.ts`
+- [x] `core/hooks/store/use-project-inbox.ts`
+- [x] `core/hooks/store/use-project-publish.ts`
+- [x] `core/hooks/store/use-project-state.ts`
+- [x] `core/hooks/store/use-project-view.ts`
+- [x] `core/hooks/store/use-project.ts`
+- [x] `core/hooks/store/use-router-params.ts`
+- [x] `core/hooks/store/use-webhook.ts`
+- [x] `core/hooks/store/use-workspace.ts`
 
 #### `core/hooks/store/estimates/`
 
-- [ ] `core/hooks/store/estimates/index.ts`
-- [ ] `core/hooks/store/estimates/use-estimate-point.ts`
-- [ ] `core/hooks/store/estimates/use-estimate.ts`
-- [ ] `core/hooks/store/estimates/use-project-estimate.ts`
+- [x] `core/hooks/store/estimates/index.ts`
+- [x] `core/hooks/store/estimates/use-estimate-point.ts`
+- [x] `core/hooks/store/estimates/use-estimate.ts`
+- [x] `core/hooks/store/estimates/use-project-estimate.ts`
 
 #### `core/hooks/store/notifications/`
 
-- [ ] `core/hooks/store/notifications/index.ts`
-- [ ] `core/hooks/store/notifications/use-notification.ts`
-- [ ] `core/hooks/store/notifications/use-workspace-notifications.ts`
+- [x] `core/hooks/store/notifications/index.ts`
+- [x] `core/hooks/store/notifications/use-notification.ts`
+- [x] `core/hooks/store/notifications/use-workspace-notifications.ts`
 
 #### `core/hooks/store/user/`
 
-- [ ] `core/hooks/store/user/index.ts`
-- [ ] `core/hooks/store/user/user-permissions.ts`
-- [ ] `core/hooks/store/user/user-user-profile.ts`
-- [ ] `core/hooks/store/user/user-user-settings.ts`
-- [ ] `core/hooks/store/user/user-user.ts`
+- [x] `core/hooks/store/user/index.ts`
+- [x] `core/hooks/store/user/user-permissions.ts`
+- [x] `core/hooks/store/user/user-user-profile.ts`
+- [x] `core/hooks/store/user/user-user-settings.ts`
+- [x] `core/hooks/store/user/user-user.ts`
 
 #### `core/hooks/store/work-item-filters/`
 
-- [ ] `core/hooks/store/work-item-filters/use-work-item-filter-instance.ts`
-- [ ] `core/hooks/store/work-item-filters/use-work-item-filters.ts`
+- [x] `core/hooks/store/work-item-filters/use-work-item-filter-instance.ts`
+- [x] `core/hooks/store/work-item-filters/use-work-item-filters.ts`
 
 #### `core/hooks/store/workspace-draft/`
 
-- [ ] `core/hooks/store/workspace-draft/index.ts`
-- [ ] `core/hooks/store/workspace-draft/use-workspace-draft-issue-filters.ts`
-- [ ] `core/hooks/store/workspace-draft/use-workspace-draft-issue.ts`
+- [x] `core/hooks/store/workspace-draft/index.ts`
+- [x] `core/hooks/store/workspace-draft/use-workspace-draft-issue-filters.ts`
+- [x] `core/hooks/store/workspace-draft/use-workspace-draft-issue.ts`
 
 #### `core/layouts/auth-layout/`
 
-- [ ] `core/layouts/auth-layout/project-wrapper.tsx`
-- [ ] `core/layouts/auth-layout/workspace-wrapper.tsx`
+- [x] `core/layouts/auth-layout/project-wrapper.tsx`
+- [x] `core/layouts/auth-layout/workspace-wrapper.tsx`
 
 #### `core/layouts/default-layout/`
 
-- [ ] `core/layouts/default-layout/index.tsx`
+- [x] `core/layouts/default-layout/index.tsx`
 
 #### `core/lib/`
 
-- [ ] `core/lib/local-storage.ts`
-- [ ] `core/lib/store-context.tsx`
+- [x] `core/lib/local-storage.ts`
+- [x] `core/lib/store-context.tsx`
 
 #### `core/lib/app-rail/`
 
-- [ ] `core/lib/app-rail/context.tsx`
-- [ ] `core/lib/app-rail/index.ts`
-- [ ] `core/lib/app-rail/provider.tsx`
-- [ ] `core/lib/app-rail/types.ts`
+- [x] `core/lib/app-rail/context.tsx`
+- [x] `core/lib/app-rail/index.ts`
+- [x] `core/lib/app-rail/provider.tsx`
+- [x] `core/lib/app-rail/types.ts`
 
 #### `core/lib/b-progress/`
 
-- [ ] `core/lib/b-progress/AppProgressBar.tsx`
+- [x] `core/lib/b-progress/AppProgressBar.tsx`
 
 #### `core/lib/polyfills/`
 
-- [ ] `core/lib/polyfills/index.ts`
+- [x] `core/lib/polyfills/index.ts`
 
 #### `core/lib/wrappers/`
 
-- [ ] `core/lib/wrappers/authentication-wrapper.tsx`
-- [ ] `core/lib/wrappers/instance-wrapper.tsx`
-- [ ] `core/lib/wrappers/store-wrapper.tsx`
+- [x] `core/lib/wrappers/authentication-wrapper.tsx`
+- [x] `core/lib/wrappers/instance-wrapper.tsx`
+- [x] `core/lib/wrappers/store-wrapper.tsx`
 
 #### `core/services/`
 
@@ -3727,7 +3727,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `core/types/`
 
-- [ ] `core/types/navigation-preferences.ts`
+- [x] `core/types/navigation-preferences.ts`
 
 ## `helpers/` — 8 archivos
 
