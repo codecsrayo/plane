@@ -69,7 +69,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 - [x] `app/(all)/[workspaceSlug]/(projects)/analytics/[tabId]/header.tsx`
 - [x] `app/(all)/[workspaceSlug]/(projects)/analytics/[tabId]/layout.tsx`
-- [!] `app/(all)/[workspaceSlug]/(projects)/analytics/[tabId]/page.tsx` — Antipatrón "mirror props in state": `selectedTab` es `useState` derivable directamente de `tabId` (param URL). El `useEffect` (líneas 57-61) que sincroniza `tabId → selectedTab` es innecesario y abre ventana de re-render desfasado con el URL (frame antes del efecto). Refactor: eliminar `useState` + `useEffect` y usar `const selectedTab = tabId || ANALYTICS_TABS[0]?.key` directamente. Derivación pura de la URL (source of truth).
+- [x] `app/(all)/[workspaceSlug]/(projects)/analytics/[tabId]/page.tsx` — Eliminado `useState` + `useEffect` que espejaban `tabId`. `selectedTab` ahora se deriva directamente del URL param (`const selectedTab = tabId || ANALYTICS_TABS[0]?.key`). `handleTabChange` ya no llama `setSelectedTab` — solo `router.push`, y el URL dispara el re-render con el nuevo valor derivado. Elimina la ventana de un frame con el tab desfasado vs el URL.
 
 #### `app/(all)/[workspaceSlug]/(projects)/browse/[workItem]/`
 

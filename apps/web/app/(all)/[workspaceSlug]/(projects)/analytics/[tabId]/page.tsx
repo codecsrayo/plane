@@ -4,7 +4,6 @@
  * See the LICENSE file for details.
  */
 
-import { useState, useEffect } from "react";
 import { observer } from "mobx-react";
 import { useRouter } from "next/navigation";
 // plane package imports
@@ -52,17 +51,14 @@ function AnalyticsPage({ params }: Route.ComponentProps) {
   const workspaceSlug = params.workspaceSlug;
   const ANALYTICS_TABS = useAnalyticsTabs(workspaceSlug.toString());
 
-  const [selectedTab, setSelectedTab] = useState(tabId || ANALYTICS_TABS[0]?.key);
+  // Derive `selectedTab` directly from the URL param — the URL is the single
+  // source of truth for the active tab. Previously this was mirrored into a
+  // useState + synced via useEffect, which opens a one-frame window where the
+  // rendered tab disagrees with the URL (and triggers an avoidable re-render).
+  const selectedTab = tabId || ANALYTICS_TABS[0]?.key;
 
-  useEffect(() => {
-    if (tabId) {
-      setSelectedTab(tabId);
-    }
-  }, [tabId]);
-
-  // Handle tab change
+  // Handle tab change — URL drives state, so we only navigate.
   const handleTabChange = (value: string) => {
-    setSelectedTab(value);
     router.push(`/${currentWorkspace?.slug}/analytics/${value}`);
   };
 
