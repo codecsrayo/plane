@@ -145,19 +145,42 @@ pub struct IssueCreateResponse {
     pub deleted_at: Option<chrono::DateTime<chrono::FixedOffset>>,
 }
 
+/// Shape de `POST /workspaces/{slug}/projects/{project_id}/issues/`.
+///
+/// Paridad exacta con `IssueCreateSerializer` (apps/api/plane/app/serializers/
+/// issue.py:82) y con el payload que construye el frontend desde
+/// `DEFAULT_WORK_ITEM_FORM_VALUES` (packages/constants/src/issue/modal.ts).
+///
+/// # Convenciones críticas
+/// - `label_ids` / `assignee_ids` (plural + sufijo) son los nombres que usan
+///   DRF y el frontend; renombrarlos rompía la deserialización silenciosamente
+///   (los campos quedaban en `None` y la issue se creaba sin assignees/labels).
+/// - `estimate_point` sin `_id` — DRF expone la FK con ese nombre cuando se
+///   declara como `PrimaryKeyRelatedField(source="estimate_point", ...)`.
+/// - Todos los `Option<Uuid>` / `Option<NaiveDate>` usan deserializadores que
+///   convierten `""` a `None`, porque el frontend manda `state_id: ""` y
+///   fechas vacías por default — serde nativo falla con 422.
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct CreateIssueRequest {
     pub name: String,
     pub description_html: Option<String>,
     pub priority: Option<String>,
+    #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_empty_as_none_uuid")]
     pub state_id: Option<Uuid>,
+    #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_empty_as_none_uuid")]
     pub parent_id: Option<Uuid>,
+    #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_empty_as_none_date")]
     pub start_date: Option<chrono::NaiveDate>,
+    #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_empty_as_none_date")]
     pub target_date: Option<chrono::NaiveDate>,
-    pub estimate_point_id: Option<Uuid>,
+    #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_empty_as_none_uuid")]
+    pub estimate_point: Option<Uuid>,
+    #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_empty_as_none_uuid")]
     pub type_id: Option<Uuid>,
-    pub assignees: Option<Vec<Uuid>>,
-    pub labels: Option<Vec<Uuid>>,
+    #[serde(default)]
+    pub assignee_ids: Option<Vec<Uuid>>,
+    #[serde(default)]
+    pub label_ids: Option<Vec<Uuid>>,
 }
 
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
@@ -165,14 +188,22 @@ pub struct UpdateIssueRequest {
     pub name: Option<String>,
     pub description_html: Option<String>,
     pub priority: Option<String>,
+    #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_empty_as_none_uuid")]
     pub state_id: Option<Uuid>,
+    #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_empty_as_none_uuid")]
     pub parent_id: Option<Uuid>,
+    #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_empty_as_none_date")]
     pub start_date: Option<chrono::NaiveDate>,
+    #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_empty_as_none_date")]
     pub target_date: Option<chrono::NaiveDate>,
-    pub estimate_point_id: Option<Uuid>,
+    #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_empty_as_none_uuid")]
+    pub estimate_point: Option<Uuid>,
+    #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_empty_as_none_uuid")]
     pub type_id: Option<Uuid>,
-    pub assignees: Option<Vec<Uuid>>,
-    pub labels: Option<Vec<Uuid>>,
+    #[serde(default)]
+    pub assignee_ids: Option<Vec<Uuid>>,
+    #[serde(default)]
+    pub label_ids: Option<Vec<Uuid>>,
     pub is_draft: Option<bool>,
 }
 
@@ -776,8 +807,8 @@ pub async fn create_issue(
     let project_id = guard.project.id;
     let workspace_id = guard.workspace.id;
     let user_id = guard.user.id;
-    let assignees = body.assignees.clone().unwrap_or_default();
-    let label_ids = body.labels.clone().unwrap_or_default();
+    let assignees = body.assignee_ids.clone().unwrap_or_default();
+    let label_ids = body.label_ids.clone().unwrap_or_default();
 
     let issue = state
         .db
@@ -790,7 +821,10 @@ pub async fn create_issue(
                 let parent_id = body.parent_id;
                 let start_date = body.start_date;
                 let target_date = body.target_date;
-                let estimate_point_id = body.estimate_point_id;
+                // Django expone la FK como `estimate_point` (sin `_id`) en el wire,
+                // pero el modelo SeaORM conserva `estimate_point_id` como nombre de
+                // columna. Hacemos el bridge aquí.
+                let estimate_point_id = body.estimate_point;
                 let type_id = body.type_id;
                 let assignees = assignees.clone();
                 let label_ids = label_ids.clone();
@@ -943,8 +977,8 @@ pub async fn update_issue(
     let project_id = guard.project.id;
     let workspace_id = guard.workspace.id;
     let user_id = guard.user.id;
-    let assignees = body.assignees.clone();
-    let label_ids = body.labels.clone();
+    let assignees = body.assignee_ids.clone();
+    let label_ids = body.label_ids.clone();
 
     // El valor se descarta — PATCH devuelve 204 sin body (Django parity).
     // Mantenemos el binding para propagar errores de tx; el `_` evita warning.
@@ -978,13 +1012,17 @@ pub async fn update_issue(
             if let Some(draft) = body.is_draft {
                 am.is_draft = Set(draft);
             }
-            if body.estimate_point_id.is_some() {
-                am.estimate_point_id = Set(body.estimate_point_id);
+            // Wire: `estimate_point` (paridad DRF) → columna: `estimate_point_id`.
+            if body.estimate_point.is_some() {
+                am.estimate_point_id = Set(body.estimate_point);
             }
             if body.type_id.is_some() {
                 am.type_id = Set(body.type_id);
             }
             am.updated_by_id = Set(Some(user_id));
+            // Django usa auto_now=True en updated_at (TimeAuditModel). SeaORM lo
+            // dejaría Unchanged y el UPDATE no lo tocaría; hay que setearlo.
+            am.updated_at = Set(chrono::Utc::now().into());
 
             let assignees = assignees.clone();
             let label_ids = label_ids.clone();
