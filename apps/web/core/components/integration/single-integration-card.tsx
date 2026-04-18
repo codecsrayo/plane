@@ -27,7 +27,12 @@ import useIntegrationPopup from "@/hooks/use-integration-popup";
 import { usePlatformOS } from "@/hooks/use-platform-os";
 // services
 import { integrationService } from "@/services/integrations";
-import { isIntegrationEnabled, type TIntegrationProvider } from "./utils";
+import {
+  getIsProviderConfigured,
+  isIntegrationEnabled,
+  isKnownIntegrationProvider,
+  type TIntegrationProvider,
+} from "./utils";
 
 type Props = {
   integration: IAppIntegration;
@@ -83,23 +88,16 @@ export const SingleIntegrationCard = observer(function SingleIntegrationCard({ i
     (i: IWorkspaceIntegration) => i.integration_detail?.id === integration.id
   );
 
-  // Guard: if the provider is not locally known, skip rendering to avoid runtime errors
-  const providerKey = integration.provider as TIntegrationProvider;
-  const providerDetails: TIntegrationProviderDetail | undefined = integrationDetails[providerKey];
-  const isConfigured =
-    integration.provider === "github"
-      ? !!config?.github_app_name
-      : integration.provider === "gitlab"
-        ? !!config?.gitlab_client_id
-        : integration.provider === "slack"
-          ? !!config?.slack_client_id
-          : true;
+  // Type-safe guard: unknown providers (e.g. a new backend value) are skipped
+  // entirely rather than crashing at runtime.
+  if (!isKnownIntegrationProvider(integration.provider)) return null;
+
+  const providerKey: TIntegrationProvider = integration.provider;
+  const providerDetails = integrationDetails[providerKey];
 
   // Respect God Mode enable/disable flags per integration provider
-  const isEnabled = isIntegrationEnabled(integration.provider, config);
-
-  // Guard: if the provider is not locally known, skip rendering to avoid runtime errors
-  if (!providerDetails) return null;
+  const isEnabled = isIntegrationEnabled(providerKey, config);
+  const isConfigured = getIsProviderConfigured(providerKey, config);
 
   return (
     <div className="flex flex-col gap-5 rounded-lg border border-subtle bg-surface-1 p-6">
