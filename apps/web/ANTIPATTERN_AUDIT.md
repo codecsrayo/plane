@@ -41,35 +41,35 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 #### `app/(all)/`
 
 - [x] `app/(all)/layout.preload.tsx`
-- [ ] `app/(all)/layout.tsx`
+- [x] `app/(all)/layout.tsx`
 
 #### `app/(all)/[workspaceSlug]/`
 
-- [ ] `app/(all)/[workspaceSlug]/layout.tsx`
+- [x] `app/(all)/[workspaceSlug]/layout.tsx`
 
 #### `app/(all)/[workspaceSlug]/(projects)/`
 
-- [ ] `app/(all)/[workspaceSlug]/(projects)/_sidebar.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/extended-project-sidebar.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/extended-sidebar-wrapper.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/extended-sidebar.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/header.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/layout.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/page.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/sidebar.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/star-us-link.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/_sidebar.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/extended-project-sidebar.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/extended-sidebar-wrapper.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/extended-sidebar.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/header.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/layout.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/page.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/sidebar.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/star-us-link.tsx`
 
 #### `app/(all)/[workspaceSlug]/(projects)/active-cycles/`
 
-- [ ] `app/(all)/[workspaceSlug]/(projects)/active-cycles/header.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/active-cycles/layout.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/active-cycles/page.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/active-cycles/header.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/active-cycles/layout.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/active-cycles/page.tsx`
 
 #### `app/(all)/[workspaceSlug]/(projects)/analytics/[tabId]/`
 
-- [ ] `app/(all)/[workspaceSlug]/(projects)/analytics/[tabId]/header.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/analytics/[tabId]/layout.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/analytics/[tabId]/page.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/analytics/[tabId]/header.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/analytics/[tabId]/layout.tsx`
+- [!] `app/(all)/[workspaceSlug]/(projects)/analytics/[tabId]/page.tsx` — Antipatrón "mirror props in state": `selectedTab` es `useState` derivable directamente de `tabId` (param URL). El `useEffect` (líneas 57-61) que sincroniza `tabId → selectedTab` es innecesario y abre ventana de re-render desfasado con el URL (frame antes del efecto). Refactor: eliminar `useState` + `useEffect` y usar `const selectedTab = tabId || ANALYTICS_TABS[0]?.key` directamente. Derivación pura de la URL (source of truth).
 
 #### `app/(all)/[workspaceSlug]/(projects)/browse/[workItem]/`
 
@@ -80,14 +80,14 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `app/(all)/[workspaceSlug]/(projects)/drafts/`
 
-- [ ] `app/(all)/[workspaceSlug]/(projects)/drafts/header.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/drafts/layout.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/drafts/page.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/drafts/header.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/drafts/layout.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/drafts/page.tsx`
 
 #### `app/(all)/[workspaceSlug]/(projects)/notifications/`
 
-- [ ] `app/(all)/[workspaceSlug]/(projects)/notifications/layout.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/notifications/page.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/notifications/layout.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/notifications/page.tsx`
 
 #### `app/(all)/[workspaceSlug]/(projects)/profile/[userId]/`
 
@@ -230,9 +230,9 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `app/(all)/[workspaceSlug]/(projects)/stickies/`
 
-- [ ] `app/(all)/[workspaceSlug]/(projects)/stickies/header.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/stickies/layout.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/stickies/page.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/stickies/header.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/stickies/layout.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/stickies/page.tsx`
 
 #### `app/(all)/[workspaceSlug]/(projects)/workspace-views/`
 
