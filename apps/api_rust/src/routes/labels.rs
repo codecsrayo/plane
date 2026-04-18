@@ -138,6 +138,13 @@ pub async fn create_label(
         return Err(AppError::BadRequest("name es requerido".into()));
     }
 
+    // NOTA: created_at / updated_at se setean explícitamente porque
+    // labels::ActiveModelBehavior está vacío (sin hook before_save) y las
+    // columnas son NOT NULL. Dejarlas con Default::default() hacía que SeaORM
+    // enviara NULL y la BD rechazara con 23502 ("violates not-null constraint").
+    // Mismo patrón que issue_extras.rs / pages.rs / workspace_extras.rs.
+    let now = chrono::Utc::now().into();
+
     let label = labels::ActiveModel {
         id: Set(Uuid::new_v4()),
         name: Set(body.name),
@@ -149,6 +156,11 @@ pub async fn create_label(
         sort_order: Set(65535.0),
         created_by_id: Set(Some(guard.user.id)),
         updated_by_id: Set(Some(guard.user.id)),
+        created_at: Set(now),
+        updated_at: Set(now),
+        external_id: Set(None),
+        external_source: Set(None),
+        deleted_at: Set(None),
         ..Default::default()
     }
     .insert(&state.db)
@@ -243,6 +255,10 @@ pub async fn update_label(
         am.sort_order = Set(order);
     }
     am.updated_by_id = Set(Some(guard.user.id));
+    // Django usa auto_now=True en updated_at (TimeAuditModel). En SeaORM hay
+    // que setearlo explícitamente, de lo contrario ActiveModel lo deja
+    // Unchanged y el UPDATE no lo toca.
+    am.updated_at = Set(chrono::Utc::now().into());
 
     let updated = am.update(&state.db).await.map_err(AppError::Database)?;
     Ok(Json(LabelResponse::from_model(updated)))
