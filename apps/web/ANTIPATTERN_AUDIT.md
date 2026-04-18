@@ -3697,7 +3697,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 - [x] `core/store/project/index.ts`
 - [!] `core/store/project/project-publish.store.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
-- [!] `core/store/project/project.store.ts` — 11× `console.log("Failed to ...", error)` deberían ser `console.error`. Raw error rethrows. `: any` en algún retorno.
+- [x] `core/store/project/project.store.ts` — (1) 11× `console.log(...)` → `console.error(..., error)` con el `error` pasado en todos (antes se perdía en la mayoría) y mensajes copy-paste duplicados corregidos (`removeProjectFromFavorites` decía "Failed to add"; `updateProject` decía "Failed to create"). (2) Interface: `addProjectToFavorites` → `Promise<IFavorite | undefined>`; `removeProjectFromFavorites` → `Promise<void>`; `updateProjectView(viewProps: any) => Promise<any>` → `(viewProps: { sort_order: number }) => Promise<IProjectUserPropertiesResponse>`. (3) Impl `createProject(data: any)` → `data: Partial<TProject>` (alineado con la interface). Raw error rethrows se mantienen como legacy consistente con el resto de stores (refactor separado a `ApiError` en tanda dedicada).
 - [x] `core/store/project/project_filter.store.ts`
 
 #### `core/store/sticky/`

@@ -8,7 +8,14 @@ import { sortBy, cloneDeep, update, set } from "lodash-es";
 import { observable, action, computed, makeObservable, runInAction } from "mobx";
 import { computedFn } from "mobx-utils";
 // plane imports
-import type { TFetchStatus, TLoader, TProjectAnalyticsCount, TProjectAnalyticsCountParams } from "@plane/types";
+import type {
+  IFavorite,
+  IProjectUserPropertiesResponse,
+  TFetchStatus,
+  TLoader,
+  TProjectAnalyticsCount,
+  TProjectAnalyticsCountParams,
+} from "@plane/types";
 // helpers
 import { orderProjects, shouldFilterProject } from "@plane/utils";
 // services
@@ -63,10 +70,14 @@ export interface IProjectStore {
     params?: TProjectAnalyticsCountParams
   ) => Promise<TProjectAnalyticsCount[]>;
   // favorites actions
-  addProjectToFavorites: (workspaceSlug: string, projectId: string) => Promise<any>;
-  removeProjectFromFavorites: (workspaceSlug: string, projectId: string) => Promise<any>;
+  addProjectToFavorites: (workspaceSlug: string, projectId: string) => Promise<IFavorite | undefined>;
+  removeProjectFromFavorites: (workspaceSlug: string, projectId: string) => Promise<void>;
   // project-view action
-  updateProjectView: (workspaceSlug: string, projectId: string, viewProps: any) => Promise<any>;
+  updateProjectView: (
+    workspaceSlug: string,
+    projectId: string,
+    viewProps: { sort_order: number }
+  ) => Promise<IProjectUserPropertiesResponse>;
   // CRUD actions
   createProject: (workspaceSlug: string, data: Partial<TProject>) => Promise<TProject>;
   updateProject: (workspaceSlug: string, projectId: string, data: Partial<TProject>) => Promise<TProject>;
@@ -320,7 +331,7 @@ export class ProjectStore implements IProjectStore {
       });
       return projectsResponse;
     } catch (error) {
-      console.log("Failed to fetch project from workspace store");
+      console.error("Failed to fetch partial projects from workspace store", error);
       this.loader = "loaded";
       throw error;
     }
@@ -349,7 +360,7 @@ export class ProjectStore implements IProjectStore {
       });
       return projectsResponse;
     } catch (error) {
-      console.log("Failed to fetch project from workspace store");
+      console.error("Failed to fetch projects from workspace store", error);
       this.loader = "loaded";
       throw error;
     }
@@ -369,7 +380,7 @@ export class ProjectStore implements IProjectStore {
       });
       return response;
     } catch (error) {
-      console.log("Error while fetching project details", error);
+      console.error("Error while fetching project details", error);
       throw error;
     }
   };
@@ -393,7 +404,7 @@ export class ProjectStore implements IProjectStore {
       });
       return response;
     } catch (error) {
-      console.log("Failed to fetch project analytics count", error);
+      console.error("Failed to fetch project analytics count", error);
       throw error;
     }
   };
@@ -469,7 +480,7 @@ export class ProjectStore implements IProjectStore {
       });
       return response;
     } catch (error) {
-      console.log("Failed to add project to favorite");
+      console.error("Failed to add project to favorite", error);
       runInAction(() => {
         set(this.projectMap, [projectId, "is_favorite"], false);
       });
@@ -494,7 +505,7 @@ export class ProjectStore implements IProjectStore {
 
       return response;
     } catch (error) {
-      console.log("Failed to add project to favorite");
+      console.error("Failed to remove project from favorite", error);
       runInAction(() => {
         set(this.projectMap, [projectId, "is_favorite"], true);
       });
@@ -521,7 +532,7 @@ export class ProjectStore implements IProjectStore {
       runInAction(() => {
         set(this.projectMap, [projectId, "sort_order"], currentProjectSortOrder);
       });
-      console.log("Failed to update sort order of the projects");
+      console.error("Failed to update sort order of the projects", error);
       throw error;
     }
   };
@@ -532,13 +543,13 @@ export class ProjectStore implements IProjectStore {
    * @param data
    * @returns Promise<TProject>
    */
-  createProject = async (workspaceSlug: string, data: any) => {
+  createProject = async (workspaceSlug: string, data: Partial<TProject>) => {
     try {
       const response = await this.projectService.createProject(workspaceSlug, data);
       this.processProjectAfterCreation(workspaceSlug, response);
       return response;
     } catch (error) {
-      console.log("Failed to create project from project store");
+      console.error("Failed to create project from project store", error);
       throw error;
     }
   };
@@ -563,7 +574,7 @@ export class ProjectStore implements IProjectStore {
       });
       return response;
     } catch (error) {
-      console.log("Failed to create project from project store");
+      console.error("Failed to update project from project store", error);
       runInAction(() => {
         set(this.projectMap, [projectId], projectDetails);
         this.isUpdatingProject = false;
@@ -588,7 +599,7 @@ export class ProjectStore implements IProjectStore {
         delete this.rootStore.user.permission.workspaceProjectsPermissions[workspaceSlug][projectId];
       });
     } catch (error) {
-      console.log("Failed to delete project from project store");
+      console.error("Failed to delete project from project store", error);
       throw error;
     }
   };
@@ -607,7 +618,7 @@ export class ProjectStore implements IProjectStore {
         this.rootStore.favorite.removeFavoriteFromStore(projectId);
       });
     } catch (error) {
-      console.log("Failed to archive project from project store");
+      console.error("Failed to archive project from project store", error);
       throw error;
     }
   };
@@ -625,7 +636,7 @@ export class ProjectStore implements IProjectStore {
         set(this.projectMap, [projectId, "archived_at"], null);
       });
     } catch (error) {
-      console.log("Failed to restore project from project store");
+      console.error("Failed to restore project from project store", error);
       throw error;
     }
   };
