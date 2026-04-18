@@ -1669,7 +1669,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 #### `core/components/global/`
 
 - [ ] `core/components/global/index.ts`
-- [ ] `core/components/global/timezone-select.tsx`
+- [x] `core/components/global/timezone-select.tsx`
 
 #### `core/components/global/product-updates/`
 
@@ -1726,7 +1726,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 #### `core/components/home/widgets/recents/`
 
 - [ ] `core/components/home/widgets/recents/filters.tsx`
-- [ ] `core/components/home/widgets/recents/index.tsx`
+- [x] `core/components/home/widgets/recents/index.tsx`
 - [ ] `core/components/home/widgets/recents/issue.tsx`
 - [ ] `core/components/home/widgets/recents/page.tsx`
 - [ ] `core/components/home/widgets/recents/project.tsx`
@@ -2183,7 +2183,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 - [ ] `core/components/issues/issue-layouts/list/roots/archived-issue-root.tsx`
 - [ ] `core/components/issues/issue-layouts/list/roots/cycle-root.tsx`
-- [ ] `core/components/issues/issue-layouts/list/roots/module-root.tsx`
+- [x] `core/components/issues/issue-layouts/list/roots/module-root.tsx`
 - [ ] `core/components/issues/issue-layouts/list/roots/profile-issues-root.tsx`
 - [ ] `core/components/issues/issue-layouts/list/roots/project-root.tsx`
 - [ ] `core/components/issues/issue-layouts/list/roots/project-view-root.tsx`
@@ -2840,7 +2840,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 #### `core/components/project/dropdowns/filters/`
 
 - [ ] `core/components/project/dropdowns/filters/access.tsx`
-- [ ] `core/components/project/dropdowns/filters/created-at.tsx`
+- [x] `core/components/project/dropdowns/filters/created-at.tsx`
 - [ ] `core/components/project/dropdowns/filters/index.ts`
 - [ ] `core/components/project/dropdowns/filters/lead.tsx`
 - [ ] `core/components/project/dropdowns/filters/member-list.tsx`
@@ -3331,7 +3331,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 - [ ] `core/hooks/use-extended-sidebar-overview-outside-click.tsx`
 - [ ] `core/hooks/use-favorite-item-details.tsx`
 - [ ] `core/hooks/use-group-dragndrop.ts`
-- [ ] `core/hooks/use-integration-popup.tsx`
+- [x] `core/hooks/use-integration-popup.tsx`
 - [ ] `core/hooks/use-intersection-observer.ts`
 - [ ] `core/hooks/use-issue-layout-store.ts`
 - [ ] `core/hooks/use-issue-peek-overview-redirection.tsx`
@@ -3518,7 +3518,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `core/services/integrations/`
 
-- [ ] `core/services/integrations/github-user-connection.service.ts`
+- [x] `core/services/integrations/github-user-connection.service.ts`
 - [ ] `core/services/integrations/github.service.ts`
 - [ ] `core/services/integrations/gitlab.service.ts`
 - [ ] `core/services/integrations/index.ts`
@@ -3571,7 +3571,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 - [ ] `core/store/module_filter.store.ts`
 - [ ] `core/store/multiple_select.store.ts`
 - [ ] `core/store/project-view.store.ts`
-- [ ] `core/store/root.store.ts`
+- [!] `core/store/root.store.ts` — 12× `as unknown as RootStore` (type laundering por arquitectura modular CE/EE) + 2× `localStorage.setItem` en `resetOnSignOut` sin guard SSR (aceptable por contexto de uso client-only)
 - [ ] `core/store/router.store.ts`
 - [ ] `core/store/state.store.ts`
 - [ ] `core/store/theme.store.ts`
@@ -3733,14 +3733,14 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 ### `helpers/`
 
-- [ ] `helpers/authentication.helper.tsx`
-- [ ] `helpers/cover-image.helper.ts`
-- [ ] `helpers/dashboard.helper.ts`
-- [ ] `helpers/emoji.helper.tsx`
-- [ ] `helpers/graph.helper.ts`
-- [ ] `helpers/issue-filter.helper.ts`
-- [ ] `helpers/react-hook-form.helper.ts`
-- [ ] `helpers/views.helper.ts`
+- [x] `helpers/authentication.helper.tsx`
+- [x] `helpers/cover-image.helper.ts`
+- [x] `helpers/dashboard.helper.ts`
+- [x] `helpers/emoji.helper.tsx`
+- [x] `helpers/graph.helper.ts`
+- [x] `helpers/issue-filter.helper.ts`
+- [x] `helpers/react-hook-form.helper.ts`
+- [x] `helpers/views.helper.ts`
 
 ## `./` — 2 archivos
 
