@@ -67,12 +67,15 @@ function WebhookDetailsPage({ params }: Route.ComponentProps) {
         title: "Success!",
         message: "Webhook updated successfully.",
       });
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (error: any) {
+    } catch (error: unknown) {
+      const message =
+        typeof error === "object" && error !== null && "error" in error
+          ? ((error as { error?: unknown }).error as string | undefined)
+          : undefined;
       setToast({
         type: TOAST_TYPE.ERROR,
         title: "Error!",
-        message: error?.error ?? "Something went wrong. Please try again.",
+        message: message ?? "Something went wrong. Please try again.",
       });
     }
   };

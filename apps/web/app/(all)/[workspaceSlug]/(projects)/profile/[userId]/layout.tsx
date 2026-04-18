@@ -42,15 +42,15 @@ function UseProfileLayout({ params }: Route.ComponentProps) {
   );
 
   const windowSize = useSize();
-  const isSmallerScreen = windowSize[0] >= 768;
+  const isDesktop = windowSize[0] >= 768;
 
   const { data: userProjectsData } = useSWR(USER_PROFILE_PROJECT_SEGREGATION(workspaceSlug, userId), () =>
     userService.getUserProfileProjectsSegregation(workspaceSlug, userId)
   );
   // derived values
-  const isAuthorizedPath =
+  const isIssuesTab =
     pathname.includes("assigned") || pathname.includes("created") || pathname.includes("subscribed");
-  const isIssuesTab = pathname.includes("assigned") || pathname.includes("created") || pathname.includes("subscribed");
+  const isAuthorizedPath = isIssuesTab;
 
   const tabsList = isAuthorized ? [...PROFILE_VIEWER_TAB, ...PROFILE_ADMINS_TAB] : PROFILE_VIEWER_TAB;
   const currentTab = tabsList.find((tab) => pathname === `/${workspaceSlug}/profile/${userId}${tab.selected}`);
@@ -85,11 +85,11 @@ function UseProfileLayout({ params }: Route.ComponentProps) {
                   </div>
                 )}
               </div>
-              {!isSmallerScreen && <ProfileSidebar userProjectsData={userProjectsData} />}
+              {!isDesktop && <ProfileSidebar userProjectsData={userProjectsData} />}
             </div>
           </ContentWrapper>
         </div>
-        {isSmallerScreen && <ProfileSidebar userProjectsData={userProjectsData} />}
+        {isDesktop && <ProfileSidebar userProjectsData={userProjectsData} />}
       </div>
     </>
   );

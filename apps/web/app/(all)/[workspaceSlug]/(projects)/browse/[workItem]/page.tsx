@@ -73,10 +73,9 @@ export const IssueDetailsPage = observer(function IssueDetailsPage({ params }: R
 
   useEffect(() => {
     const handleToggleIssueDetailSidebar = () => {
-      if (window && window.innerWidth < 768) {
+      if (window.innerWidth < 768) {
         toggleIssueDetailSidebar(true);
-      }
-      if (window && issueDetailSidebarCollapsed && window.innerWidth >= 768) {
+      } else if (issueDetailSidebarCollapsed) {
         toggleIssueDetailSidebar(false);
       }
     };

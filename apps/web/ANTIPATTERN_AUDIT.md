@@ -75,7 +75,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 - [x] `app/(all)/[workspaceSlug]/(projects)/browse/[workItem]/header.tsx`
 - [x] `app/(all)/[workspaceSlug]/(projects)/browse/[workItem]/layout.tsx`
-- [!] `app/(all)/[workspaceSlug]/(projects)/browse/[workItem]/page.tsx` — Guards `if (window && ...)` redundantes dentro de `useEffect` (el efecto solo corre client-side; `window` siempre está definido). No es bug, es código defensivo innecesario — limpiar para mantener claridad. Listener de resize bien registrado y limpiado.
+- [x] `app/(all)/[workspaceSlug]/(projects)/browse/[workItem]/page.tsx` — Resuelto: guards `window &&` redundantes eliminados dentro del `useEffect` (el efecto solo corre client-side). Ramas `< 768` y `>= 768` fusionadas en `if/else` único.
 - [x] `app/(all)/[workspaceSlug]/(projects)/browse/[workItem]/work-item-header.tsx`
 
 #### `app/(all)/[workspaceSlug]/(projects)/drafts/`
@@ -92,7 +92,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 #### `app/(all)/[workspaceSlug]/(projects)/profile/[userId]/`
 
 - [x] `app/(all)/[workspaceSlug]/(projects)/profile/[userId]/header.tsx`
-- [!] `app/(all)/[workspaceSlug]/(projects)/profile/[userId]/layout.tsx` — (1) Variable `isSmallerScreen = windowSize[0] >= 768` tiene semántica invertida: es `true` cuando la pantalla es GRANDE (desktop), no pequeña. El nombre miente — renombrar a `isDesktop` o `isLargerScreen`. Confuso para el próximo dev. (2) `isAuthorizedPath` y `isIssuesTab` calculan exactamente la misma expresión (duplicación inútil, líneas 48-49).
+- [x] `app/(all)/[workspaceSlug]/(projects)/profile/[userId]/layout.tsx` — Resuelto: (1) `isSmallerScreen` renombrado a `isDesktop` (semántica correcta, es `true` cuando la pantalla es ≥768px). (2) Duplicación `isAuthorizedPath`/`isIssuesTab` colapsada — ahora `isAuthorizedPath = isIssuesTab`.
 - [x] `app/(all)/[workspaceSlug]/(projects)/profile/[userId]/mobile-header.tsx`
 - [x] `app/(all)/[workspaceSlug]/(projects)/profile/[userId]/navbar.tsx`
 - [x] `app/(all)/[workspaceSlug]/(projects)/profile/[userId]/page.tsx`
@@ -103,7 +103,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `app/(all)/[workspaceSlug]/(projects)/profile/[userId]/activity/`
 
-- [!] `app/(all)/[workspaceSlug]/(projects)/profile/[userId]/activity/page.tsx` — `key={i}` (index como key, línea 42) sobre `WorkspaceActivityListPage` en loop paginado. Aceptable hoy porque las páginas solo se appendan (nunca reordenan/eliminan), pero frágil: si el cursor/paginación cambia, React reusará componentes equivocados. Mejor usar `key={\`\${PER_PAGE}:\${i}:0\`}` (el cursor mismo, que es estable y único).
+- [x] `app/(all)/[workspaceSlug]/(projects)/profile/[userId]/activity/page.tsx` — Resuelto: `key={i}` reemplazado por `key={cursor}` donde `cursor = \`${PER_PAGE}:${i}:0\`` (estable y único por página).
 
 #### `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/`
 
@@ -198,7 +198,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/pages/(list)/`
 
-- [!] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/pages/(list)/header.tsx` — `catch (err: any)` (línea 60) tipado como `any` en lugar de `unknown` + narrowing. Deuda técnica menor consistente con el resto del código legacy.
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/pages/(list)/header.tsx` — Resuelto: `catch (err: any)` → `catch (err: unknown)` con narrowing explícito antes de acceder a `err.data.error`.
 - [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/pages/(list)/layout.tsx`
 - [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/pages/(list)/page.tsx`
 
@@ -285,7 +285,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 #### `app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/webhooks/[webhookId]/`
 
 - [x] `app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/webhooks/[webhookId]/header.tsx`
-- [!] `app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/webhooks/[webhookId]/page.tsx` — `catch (error: any)` (línea 71) tipado como `any` (con `eslint-disable` comentado). Preferir `catch (error: unknown)` y narrowing para acceder a `error.error`.
+- [x] `app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/webhooks/[webhookId]/page.tsx` — Resuelto: `catch (error: any)` → `catch (error: unknown)` con narrowing explícito. Se eliminó el `eslint-disable`.
 
 #### `app/(all)/[workspaceSlug]/(settings)/settings/projects/`
 

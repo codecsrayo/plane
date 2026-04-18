@@ -36,16 +36,18 @@ function ProfileActivityPage() {
   const handleLoadMore = () => setPageCount((prev) => prev + 1);
 
   const activityPages: React.ReactNode[] = [];
-  for (let i = 0; i < pageCount; i++)
+  for (let i = 0; i < pageCount; i++) {
+    const cursor = `${PER_PAGE}:${i}:0`;
     activityPages.push(
       <WorkspaceActivityListPage
-        key={i}
-        cursor={`${PER_PAGE}:${i}:0`}
+        key={cursor}
+        cursor={cursor}
         perPage={PER_PAGE}
         updateResultsCount={updateResultsCount}
         updateTotalPages={updateTotalPages}
       />
     );
+  }
 
   const canDownloadActivity = allowPermissions(
     [EUserPermissions.ADMIN, EUserPermissions.MEMBER],

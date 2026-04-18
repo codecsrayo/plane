@@ -57,11 +57,15 @@ export const PagesListHeader = observer(function PagesListHeader() {
 
       const pageUrl = `/${workspaceSlugParam}/projects/${projectIdParam}/pages/${res.id}`;
       router.push(pageUrl);
-    } catch (err: any) {
+    } catch (err: unknown) {
+      const message =
+        typeof err === "object" && err !== null && "data" in err && typeof (err as { data?: unknown }).data === "object"
+          ? ((err as { data?: { error?: unknown } }).data?.error as string | undefined)
+          : undefined;
       setToast({
         type: TOAST_TYPE.ERROR,
         title: "Error!",
-        message: err?.data?.error || "Page could not be created. Please try again.",
+        message: message || "Page could not be created. Please try again.",
       });
     } finally {
       setIsCreatingPage(false);
