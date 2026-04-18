@@ -12,11 +12,12 @@
 //!   - name                                               (substring LIKE '%term%')
 //!   - start_date, target_date                            (YYYY-MM-DD con ;after / ;before)
 //!   - labels, assignees, module, cycle                   (m2m via pre-query de issue_ids)
+//!   - subscriber                                          (m2m via issue_subscribers)
 //!   - type                                               (all/backlog/active → state_group)
 //!   - start_target_date                                  (toggle booleano)
 //!
 //! **No implementados** (uso marginal o complejidad alta, postergados):
-//!   - mentions, subscriber, logged_by                    (relaciones poco usadas)
+//!   - mentions, logged_by                                 (relaciones poco usadas)
 //!   - estimate_point                                     (raro en vistas default)
 //!   - sintaxis relativa de fechas (`2_weeks;after;fromnow`)
 //!   - inbox_status, intake_status                        (específicos de intake)
@@ -55,7 +56,7 @@ use serde::Deserialize;
 use uuid::Uuid;
 
 use crate::{
-    entities::{cycle_issues, issue_assignees, issue_labels, issues, module_issues, states},
+    entities::{cycle_issues, issue_assignees, issue_labels, issue_subscribers, issues, module_issues, states},
     error::AppError,
 };
 
@@ -82,6 +83,11 @@ pub struct IssueFilterParams {
     pub assignees:          Option<String>,
     pub module:             Option<String>,
     pub cycle:              Option<String>,
+    /// CSV de `user_ids` usados como subscriptores. Mirror de
+    /// `filter_subscribed_issues` (issue_filters.py:392-403).
+    /// El endpoint `user-issues/{user_id}` usa este filtro para la pestaña
+    /// "Subscribed" en el perfil del usuario.
+    pub subscriber:         Option<String>,
     /// `all` | `backlog` | `active`. Mirror de
     /// `filter_issue_state_type` (issue_filters.py:296-305).
     #[serde(rename = "type")]
@@ -432,6 +438,17 @@ pub async fn apply_issue_filters(
         }
     }
 
+    if let Some(raw) = params.subscriber.as_deref() {
+        let ids = parse_uuids_csv(raw);
+        if !ids.is_empty() {
+            let issue_ids = load_issues_with_subscribers(db, workspace_id, ids).await?;
+            if issue_ids.is_empty() {
+                return Ok(FilteredQuery::Empty);
+            }
+            query = query.filter(issues::Column::Id.is_in(issue_ids));
+        }
+    }
+
     if let Some(raw) = params.module.as_deref() {
         let ids = parse_uuids_csv(raw);
         let has_none = csv_contains_none(raw);
@@ -550,6 +567,30 @@ async fn load_issues_with_assignees(
         .filter(issue_assignees::Column::WorkspaceId.eq(workspace_id))
         .filter(issue_assignees::Column::AssigneeId.is_in(assignee_ids))
         .filter(issue_assignees::Column::DeletedAt.is_null())
+        .into_tuple()
+        .all(db)
+        .await
+        .map_err(AppError::Database)?;
+    Ok(dedup(rows))
+}
+
+/// Mirror de `filter_subscribed_issues` en `issue_filters.py:392-403`.
+///
+/// Scope por `workspace_id` (defensa cross-tenant) + `deleted_at IS NULL`
+/// en la tabla puente (paridad con Django). UUIDs inválidos ya fueron
+/// descartados por `parse_uuids_csv`, así que el `is_in` recibe sólo
+/// valores válidos — sin riesgo de inyección.
+async fn load_issues_with_subscribers(
+    db: &sea_orm::DatabaseConnection,
+    workspace_id: Uuid,
+    subscriber_ids: Vec<Uuid>,
+) -> Result<Vec<Uuid>, AppError> {
+    let rows: Vec<Uuid> = issue_subscribers::Entity::find()
+        .select_only()
+        .column(issue_subscribers::Column::IssueId)
+        .filter(issue_subscribers::Column::WorkspaceId.eq(workspace_id))
+        .filter(issue_subscribers::Column::SubscriberId.is_in(subscriber_ids))
+        .filter(issue_subscribers::Column::DeletedAt.is_null())
         .into_tuple()
         .all(db)
         .await
