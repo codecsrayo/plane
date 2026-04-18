@@ -897,7 +897,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `ce/components/views/`
 
-- [!] `ce/components/views/access-controller.tsx` — Stub CE (`export function AccessController(props: any) { return <></>; }`) — placeholder vacío con props `any`. Override real en `plane-web/`. Aceptable patrón de CE/EE split pero el `any` se tolera sólo porque nunca se renderiza nada.
+- [x] `ce/components/views/access-controller.tsx` — Stub CE reescrito con genérico `<T extends FieldValues>` y `control: Control<T>` de `react-hook-form`. El CE renderiza `<></>` (feature EE) pero el prop tipado preserva la inferencia del form type en los callers (`form.tsx` con `IProjectView`, `workspace/views/form.tsx` con `IWorkspaceView`). Sin `any`; sin `eslint-disable`.
 - [x] `ce/components/views/helper.tsx`
 
 #### `ce/components/views/filters/`

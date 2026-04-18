@@ -4,7 +4,20 @@
  * See the LICENSE file for details.
  */
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function AccessController(props: any) {
+import type { Control, FieldValues } from "react-hook-form";
+
+/**
+ * CE stub for the AccessController. In CE builds this renders nothing —
+ * access-level control is an EE feature. The real implementation lives in
+ * `plane-web/components/views/access-controller`.
+ *
+ * The generic `control` prop is typed (not `any`) so that callers keep
+ * their form-type inference; the CE override silently drops the value.
+ */
+type AccessControllerProps<T extends FieldValues> = {
+  control: Control<T>;
+};
+
+export function AccessController<T extends FieldValues>(_props: AccessControllerProps<T>) {
   return <></>;
 }
