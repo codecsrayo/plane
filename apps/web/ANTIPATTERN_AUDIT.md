@@ -3702,7 +3702,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `core/store/sticky/`
 
-- [!] `core/store/sticky/sticky.store.ts` — Legacy raw throw + `console.log` para errores (debería ser `console.error` o eliminarse).
+- [x] `core/store/sticky/sticky.store.ts` — (1) 2× `console.error(e)` sin contexto → `console.error("Failed to fetch ...", e)` con mensaje identificativo. (2) `console.log(e)` en `deleteSticky` → `console.error("Failed to delete sticky", e)`. (3) `console.error("Failed to move sticky")` en `updateStickyPosition` ahora pasa `error` como segundo arg. (4) **Bug sustantivo**: `throw new Error("", { cause: error })` en `updateSticky` → `throw new Error("Failed to update sticky", { cause: error })`. Un mensaje top-level vacío rompe toasts UI (muestran string vacío) y filtrado en aggregadores — el `cause` preserva la original.
 
 #### `core/store/timeline/`
 

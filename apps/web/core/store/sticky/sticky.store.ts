@@ -146,7 +146,7 @@ export class StickyStore implements IStickyStore {
         set(this, "loader", "loaded");
       });
     } catch (e) {
-      console.error(e);
+      console.error("Failed to fetch stickies", e);
       runInAction(() => {
         this.loader = "loaded";
       });
@@ -183,7 +183,7 @@ export class StickyStore implements IStickyStore {
         this.loader = "loaded";
       });
     } catch (e) {
-      console.error(e);
+      console.error("Failed to fetch workspace stickies", e);
       runInAction(() => {
         this.loader = "loaded";
       });
@@ -220,7 +220,10 @@ export class StickyStore implements IStickyStore {
     } catch (error) {
       console.error("Error in updating sticky:", error);
       this.stickies[id] = sticky;
-      throw new Error("", { cause: error });
+      // Preserve the original error with a descriptive message instead of
+      // wrapping in `new Error("", { cause })` — an empty top-level message
+      // makes the thrown error useless in logs and UI toasts.
+      throw new Error("Failed to update sticky", { cause: error });
     }
   };
 
@@ -236,7 +239,7 @@ export class StickyStore implements IStickyStore {
       this.recentStickyId = this.workspaceStickies[workspaceSlug][0];
       await this.stickyService.deleteSticky(workspaceSlug, id);
     } catch (e) {
-      console.log(e);
+      console.error("Failed to delete sticky", e);
       this.stickies[id] = sticky;
     }
   };
@@ -282,7 +285,7 @@ export class StickyStore implements IStickyStore {
         sort_order: resultSequence,
       });
     } catch (error) {
-      console.error("Failed to move sticky");
+      console.error("Failed to move sticky", error);
       runInAction(() => {
         this.stickies[stickyId].sort_order = previousSortOrder;
       });
