@@ -75,12 +75,16 @@ export const WorkspaceImageUploadModal = observer(function WorkspaceImageUploadM
       );
       updateWorkspaceLogo(workspaceSlug.toString(), asset_url);
       onSuccess(asset_url);
-    } catch (error: any) {
-      console.log("error", error);
+    } catch (error: unknown) {
+      console.error("Error uploading workspace asset:", error);
+      const message =
+        typeof error === "object" && error !== null && "error" in error
+          ? ((error as { error?: unknown }).error as string | undefined)
+          : undefined;
       setToast({
         type: TOAST_TYPE.ERROR,
         title: "Error",
-        message: error.error || "Something went wrong",
+        message: message || "Something went wrong",
       });
     } finally {
       setIsImageUploading(false);
@@ -100,7 +104,7 @@ export const WorkspaceImageUploadModal = observer(function WorkspaceImageUploadM
       await handleRemove();
       handleClose();
     } catch (error) {
-      console.log("Error in removing workspace asset:", error);
+      console.error("Error removing workspace asset:", error);
     } finally {
       setIsRemoving(false);
     }

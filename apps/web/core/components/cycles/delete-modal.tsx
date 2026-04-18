@@ -51,9 +51,13 @@ export const CycleDeleteModal = observer(function CycleDeleteModal(props: ICycle
         title: "Success!",
         message: "Cycle deleted successfully.",
       });
-    } catch (errors: any) {
-      if (errors?.error) {
-        const isPermissionError = errors.error === "You don't have the required permissions.";
+    } catch (err: unknown) {
+      const errorMessage =
+        typeof err === "object" && err !== null && "error" in err
+          ? ((err as { error?: unknown }).error as string | undefined)
+          : undefined;
+      if (errorMessage) {
+        const isPermissionError = errorMessage === "You don't have the required permissions.";
         const currentError = isPermissionError
           ? PROJECT_ERROR_MESSAGES.permissionError
           : PROJECT_ERROR_MESSAGES.cycleDeleteError;

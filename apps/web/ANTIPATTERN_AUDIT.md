@@ -1358,7 +1358,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 - [x] `core/components/core/modals/gpt-assistant-popover.tsx` — Resuelto: (1) `onResponse: (response: any)` → `(response: string)` — la `response` state es `useState<string>`. (2) `onError?: (error: any)` → `(error: unknown)`. (3) `handleServiceError(err: any)` → `(err: unknown)` con narrowing antes de acceder a `err.data.error` y `err.status`.
 - [x] `core/components/core/modals/issue-search-modal-empty-state.tsx`
 - [x] `core/components/core/modals/user-image-upload-modal.tsx` — Resuelto: `console.log` → `console.error`. Mensaje corregido: el catch está dentro del path de `delete` (no `upload`), así que se cambió a "Error removing user asset:".
-- [!] `core/components/core/modals/workspace-image-upload-modal.tsx` — (1) `catch (error: any)` (línea 78). (2) `console.log("error", error)` (línea 79) y `console.log("Error in removing workspace asset:", error)` (línea 103) — reemplazar por `console.error` y/o sentry.
+- [x] `core/components/core/modals/workspace-image-upload-modal.tsx` — Resuelto: (1) `catch (error: any)` → `catch (error: unknown)` con narrowing. (2) Ambos `console.log` → `console.error` con mensajes corregidos ("Error uploading workspace asset:" y "Error removing workspace asset:").
 
 #### `core/components/core/multiple-select/`
 
@@ -1371,7 +1371,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 - [x] `core/components/core/sidebar/progress-chart.tsx`
 - [x] `core/components/core/sidebar/sidebar-menu-hamburger-toggle.tsx`
-- [!] `core/components/core/sidebar/single-progress-stats.tsx` — `title: any` (línea 10) — debería ser `React.ReactNode`.
+- [x] `core/components/core/sidebar/single-progress-stats.tsx` — Resuelto: `title: any` → `React.ReactNode`.
 
 #### `core/components/core/sidebar/progress-stats/`
 
@@ -1394,9 +1394,9 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 - [x] `core/components/cycles/cycle-peek-overview.tsx`
 - [x] `core/components/cycles/cycles-view-header.tsx`
 - [x] `core/components/cycles/cycles-view.tsx`
-- [!] `core/components/cycles/delete-modal.tsx` — `catch (errors: any)` (línea 54).
+- [x] `core/components/cycles/delete-modal.tsx` — Resuelto: `catch (errors: any)` → `catch (err: unknown)` con narrowing antes de leer `err.error`. Se unificó el nombre de variable (`errors` → `err`).
 - [x] `core/components/cycles/form.tsx`
-- [!] `core/components/cycles/modal.tsx` — `catch (err: any)` (líneas 69, 89) — pattern legacy.
+- [x] `core/components/cycles/modal.tsx` — Resuelto: ambos `catch (err: any)` (create cycle y update cycle) → `catch (err: unknown)` con narrowing antes de leer `err.detail`.
 - [x] `core/components/cycles/quick-actions.tsx`
 - [x] `core/components/cycles/transfer-issues-modal.tsx`
 - [x] `core/components/cycles/transfer-issues.tsx`
@@ -1405,7 +1405,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 - [x] `core/components/cycles/active-cycle/cycle-stats.tsx`
 - [x] `core/components/cycles/active-cycle/productivity.tsx`
-- [!] `core/components/cycles/active-cycle/progress.tsx` — `const groupedIssues: any = cycle ...` (línea 41).
+- [x] `core/components/cycles/active-cycle/progress.tsx` — Resuelto: `const groupedIssues: any = ...` → `const groupedIssues: Record<string, number> = ...`. Los valores del objeto (completed_issues, started_issues, etc.) son todos `number` en `ICycle`, y el uso posterior (`groupedIssues[group] > 0`) asume `number`.
 - [x] `core/components/cycles/active-cycle/use-cycles-details.ts`
 
 #### `core/components/cycles/analytics-sidebar/`

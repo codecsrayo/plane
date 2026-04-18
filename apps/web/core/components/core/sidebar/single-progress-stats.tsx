@@ -7,7 +7,7 @@
 import React from "react";
 
 type TSingleProgressStatsProps = {
-  title: any;
+  title: React.ReactNode;
   completed: number;
   total: number;
   onClick?: () => void;

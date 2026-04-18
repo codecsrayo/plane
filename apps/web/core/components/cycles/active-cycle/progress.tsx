@@ -38,7 +38,7 @@ export const ActiveCycleProgress = observer(function ActiveCycleProgress(props: 
     value: cycle && cycle.total_issues > 0 ? (cycle[group.key as keyof ICycle] as number) : 0,
     color: group.color,
   }));
-  const groupedIssues: any = cycle
+  const groupedIssues: Record<string, number> = cycle
     ? {
         completed: cycle?.completed_issues,
         started: cycle?.started_issues,

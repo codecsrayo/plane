@@ -66,11 +66,15 @@ export function CycleCreateUpdateModal(props: CycleModalProps) {
         title: "Success!",
         message: "Cycle created successfully.",
       });
-    } catch (err: any) {
+    } catch (err: unknown) {
+      const detail =
+        typeof err === "object" && err !== null && "detail" in err
+          ? ((err as { detail?: unknown }).detail as string | undefined)
+          : undefined;
       setToast({
         type: TOAST_TYPE.ERROR,
         title: "Error!",
-        message: err?.detail ?? "Error in creating cycle. Please try again.",
+        message: detail ?? "Error in creating cycle. Please try again.",
       });
     }
   };
@@ -86,11 +90,15 @@ export function CycleCreateUpdateModal(props: CycleModalProps) {
         title: "Success!",
         message: "Cycle updated successfully.",
       });
-    } catch (err: any) {
+    } catch (err: unknown) {
+      const detail =
+        typeof err === "object" && err !== null && "detail" in err
+          ? ((err as { detail?: unknown }).detail as string | undefined)
+          : undefined;
       setToast({
         type: TOAST_TYPE.ERROR,
         title: "Error!",
-        message: err?.detail ?? "Error in updating cycle. Please try again.",
+        message: detail ?? "Error in updating cycle. Please try again.",
       });
     }
   };
