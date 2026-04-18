@@ -546,7 +546,9 @@ export const handleGroupDragDrop = async (
   // update updatedIssue values based on the source and destination groupIds
   if (source.groupId && destination.groupId && source.groupId !== destination.groupId && groupBy) {
     const groupKey = ISSUE_FILTER_DEFAULT_DATA[groupBy];
-    let groupValue: any = clone(sourceIssue[groupKey]);
+    // Runtime contract: grouping fields are either single-value scalars (state_id, cycle_id, priority, ...)
+    // or multi-value id arrays (label_ids, assignee_ids, module_ids, ...). Narrow to that union.
+    let groupValue: string | string[] | null = clone(sourceIssue[groupKey]) as string | string[] | null;
 
     // If groupValues is an array, remove source groupId and add destination groupId
     if (Array.isArray(groupValue)) {
@@ -566,7 +568,8 @@ export const handleGroupDragDrop = async (
   // update updatedIssue values based on the source and destination subGroupIds
   if (subGroupBy && source.subGroupId && destination.subGroupId && source.subGroupId !== destination.subGroupId) {
     const subGroupKey = ISSUE_FILTER_DEFAULT_DATA[subGroupBy];
-    let subGroupValue: any = clone(sourceIssue[subGroupKey]);
+    // Same runtime contract as groupValue above — single-value or id-array grouping field.
+    let subGroupValue: string | string[] | null = clone(sourceIssue[subGroupKey]) as string | string[] | null;
 
     // If subGroupValue is an array, remove source subGroupId and add destination subGroupId
     if (Array.isArray(subGroupValue)) {

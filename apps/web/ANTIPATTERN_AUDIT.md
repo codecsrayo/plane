@@ -2041,7 +2041,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 - [x] `core/components/issues/issue-layouts/group-drag-overlay.tsx`
 - [x] `core/components/issues/issue-layouts/issue-layout-HOC.tsx`
 - [x] `core/components/issues/issue-layouts/layout-icon.tsx`
-- [!] `core/components/issues/issue-layouts/utils.tsx` — 2× `groupValue: any`/`subGroupValue: any` — requiere refactor del grouping engine (acumula distintos shapes según groupBy). Deuda estructural pendiente.
+- [x] `core/components/issues/issue-layouts/utils.tsx` — `groupValue: any`/`subGroupValue: any` → `string | string[] | null` (contrato runtime del grouping engine: los campos son o bien scalars id/priority o bien arrays id tipo `label_ids`/`assignee_ids`/`module_ids`). Un solo `as` al clonar documenta el narrow; las branches `Array.isArray` / else quedan correctamente tipadas sin castings adicionales.
 
 #### `core/components/issues/issue-layouts/calendar/`
 
