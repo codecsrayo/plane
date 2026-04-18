@@ -18,6 +18,7 @@
 //!   GET    /api/workspaces/{slug}/advance-analytics-charts/
 //!
 //!   GET    /api/workspaces/{slug}/projects/{project_id}/advance-analytics/
+//!   GET    /api/workspaces/{slug}/projects/{project_id}/advance-analytics-stats/
 
 use axum::{
     extract::{Path, Query, State},
@@ -1886,4 +1887,156 @@ pub async fn project_advance_analytics(
         "un_started_work_items": { "count": unstarted },
         "completed_work_items":  { "count": completed },
     })))
+}
+
+// ── Query struct para project advance analytics stats ────────────────────────
+
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
+pub struct ProjectAdvanceAnalyticsStatsQuery {
+    /// Solo se soporta "work-items" (default). Mirror de Django: cualquier otro
+    /// valor retorna 400.
+    #[serde(rename = "type")]
+    pub stat_type: Option<String>,
+    pub cycle_id: Option<Uuid>,
+    pub module_id: Option<Uuid>,
+    /// Ignorado — mantenido por paridad con Django para no romper deserialización.
+    #[allow(dead_code)]
+    pub date_filter: Option<String>,
+    /// Ignorado — el project scope viene del path.
+    #[allow(dead_code)]
+    pub project_ids: Option<String>,
+}
+
+// ── GET /workspaces/{slug}/projects/{project_id}/advance-analytics-stats/ ────
+
+/// GET /api/workspaces/{slug}/projects/{project_id}/advance-analytics-stats/
+///
+/// Stats de work-items agrupados por assignee. Mirror de
+/// `ProjectAdvanceAnalyticsStatsEndpoint.get_work_items_stats`.
+///
+/// Cada fila corresponde a un assignee (o a un bucket con valores `NULL`
+/// para issues sin assignees, equivalente al LEFT OUTER JOIN implícito de
+/// Django sobre el m2m `assignees`). Issues con múltiples assignees aparecen
+/// en múltiples filas — los conteos son `COUNT(DISTINCT i.id)` para no
+/// sobrecontar dentro de cada bucket.
+///
+/// Permisos: ADMIN o MEMBER.
+#[utoipa::path(
+    get,
+    path = "/workspaces/{slug}/projects/{project_id}/advance-analytics-stats/",
+    tag = "Analytics",
+    security(("TokenAuth" = [])),
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project UUID"),
+        ("type" = Option<String>, Query, description = "Solo 'work-items' soportado"),
+        ("cycle_id" = Option<Uuid>, Query, description = "Filtrar por ciclo"),
+        ("module_id" = Option<Uuid>, Query, description = "Filtrar por módulo"),
+    ),
+    responses(
+        (status = 200, description = "Array de stats por assignee"),
+        (status = 400, description = "type inválido"),
+        (status = 403, description = "No autorizado"),
+        (status = 404, description = "Workspace o proyecto no encontrado"),
+    )
+)]
+pub async fn project_advance_analytics_stats(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Query(params): Query<ProjectAdvanceAnalyticsStatsQuery>,
+) -> Result<impl IntoResponse, AppError> {
+    if guard.project_member.role < ROLE_MEMBER {
+        return Err(AppError::Forbidden);
+    }
+
+    let stat_type = params.stat_type.as_deref().unwrap_or("work-items");
+    if stat_type != "work-items" {
+        return Err(AppError::BadRequest("Invalid type".into()));
+    }
+
+    let ws_id = guard.workspace.id;
+    let user_id = guard.user.id;
+    let project_id = guard.project.id;
+    let db = &state.db;
+
+    let base_filter = base_issue_filter(ws_id, user_id);
+
+    // Sub-scope por cycle/module via JOIN (mismo patrón que el endpoint hermano).
+    let (scope_join, scope_where) = if let Some(cid) = params.cycle_id {
+        (
+            format!(
+                "JOIN cycle_issues ci ON ci.issue_id = i.id
+                   AND ci.cycle_id = '{cid}'
+                   AND ci.workspace_id = '{ws_id}'
+                   AND ci.project_id = '{project_id}'
+                   AND ci.deleted_at IS NULL"
+            ),
+            String::new(),
+        )
+    } else if let Some(mid) = params.module_id {
+        (
+            format!(
+                "JOIN module_issues mi ON mi.issue_id = i.id
+                   AND mi.module_id = '{mid}'
+                   AND mi.workspace_id = '{ws_id}'
+                   AND mi.project_id = '{project_id}'
+                   AND mi.deleted_at IS NULL"
+            ),
+            String::new(),
+        )
+    } else {
+        (String::new(), format!("AND i.project_id = '{project_id}'"))
+    };
+
+    // LEFT JOIN sobre assignees — Django hace equivalent via `.values(...)`
+    // sobre un m2m, lo que produce una fila por par (issue, assignee) y
+    // preserva issues sin assignees como (NULL, NULL, NULL).
+    let sql = format!(
+        "SELECT
+           u.display_name                                          AS display_name,
+           u.id                                                    AS assignee_id,
+           CASE
+             WHEN u.avatar_asset_id IS NOT NULL
+               THEN '/api/assets/v2/static/' || u.avatar_asset_id::text || '/'
+             ELSE u.avatar
+           END                                                     AS avatar_url,
+           COUNT(DISTINCT i.id) FILTER (WHERE s.group = 'cancelled')  AS cancelled_work_items,
+           COUNT(DISTINCT i.id) FILTER (WHERE s.group = 'completed')  AS completed_work_items,
+           COUNT(DISTINCT i.id) FILTER (WHERE s.group = 'backlog')    AS backlog_work_items,
+           COUNT(DISTINCT i.id) FILTER (WHERE s.group = 'unstarted')  AS un_started_work_items,
+           COUNT(DISTINCT i.id) FILTER (WHERE s.group = 'started')    AS started_work_items
+         FROM issues i
+         JOIN states s ON s.id = i.state_id
+         {scope_join}
+         LEFT JOIN issue_assignees ia
+           ON ia.issue_id = i.id
+           AND ia.deleted_at IS NULL
+         LEFT JOIN users u ON u.id = ia.assignee_id
+         WHERE {base_filter} {scope_where}
+         GROUP BY u.id, u.display_name, u.avatar_asset_id, u.avatar
+         ORDER BY u.display_name NULLS LAST",
+    );
+
+    let rows = db
+        .query_all(Statement::from_string(sea_orm::DatabaseBackend::Postgres, sql))
+        .await
+        .map_err(AppError::Database)?;
+
+    let result: Vec<serde_json::Value> = rows
+        .iter()
+        .map(|r| {
+            serde_json::json!({
+                "display_name":           r.try_get::<String>("", "display_name").ok(),
+                "assignee_id":            r.try_get::<Uuid>("", "assignee_id").ok(),
+                "avatar_url":             r.try_get::<String>("", "avatar_url").ok(),
+                "cancelled_work_items":   r.try_get::<i64>("", "cancelled_work_items").unwrap_or(0),
+                "completed_work_items":   r.try_get::<i64>("", "completed_work_items").unwrap_or(0),
+                "backlog_work_items":     r.try_get::<i64>("", "backlog_work_items").unwrap_or(0),
+                "un_started_work_items":  r.try_get::<i64>("", "un_started_work_items").unwrap_or(0),
+                "started_work_items":     r.try_get::<i64>("", "started_work_items").unwrap_or(0),
+            })
+        })
+        .collect();
+
+    Ok(Json(serde_json::Value::Array(result)))
 }
