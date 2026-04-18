@@ -264,6 +264,7 @@ pub mod instances;
         analytics::advance_analytics,
         analytics::advance_analytics_stats,
         analytics::advance_analytics_charts,
+        analytics::project_advance_analytics,
         assets::initiate_user_asset_upload,
         assets::complete_user_asset_upload,
         assets::delete_user_asset,
@@ -1087,6 +1088,10 @@ pub fn build_router(state: AppState) -> Router {
         .route(
             "/workspaces/{slug}/advance-analytics-charts",
             get(analytics::advance_analytics_charts),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/advance-analytics",
+            get(analytics::project_advance_analytics),
         )
         // ── Assets ───────────────────────────────────────────────────────────
         .route(

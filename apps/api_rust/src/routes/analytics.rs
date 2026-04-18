@@ -16,6 +16,8 @@
 //!   GET    /api/workspaces/{slug}/advance-analytics/
 //!   GET    /api/workspaces/{slug}/advance-analytics-stats/
 //!   GET    /api/workspaces/{slug}/advance-analytics-charts/
+//!
+//!   GET    /api/workspaces/{slug}/projects/{project_id}/advance-analytics/
 
 use axum::{
     extract::{Path, Query, State},
@@ -34,7 +36,7 @@ use uuid::Uuid;
 
 use crate::{
     auth::{
-        extractors::WorkspaceMemberGuard,
+        extractors::{ProjectMemberGuard, WorkspaceMemberGuard},
         permissions::{require_workspace_admin, ROLE_GUEST, ROLE_MEMBER},
     },
     entities::analytic_views,
@@ -1745,4 +1747,143 @@ pub async fn advance_analytics_charts(
 
         _ => Err(AppError::BadRequest("Invalid type".into())),
     }
+}
+
+// ── Query structs para project advance analytics ─────────────────────────────
+
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
+pub struct ProjectAdvanceAnalyticsQuery {
+    /// Sub-scope opcional por ciclo.
+    pub cycle_id: Option<Uuid>,
+    /// Sub-scope opcional por módulo.
+    pub module_id: Option<Uuid>,
+    /// Rango temporal: yesterday | last_7_days | last_30_days | last_3_months.
+    pub date_filter: Option<String>,
+    /// Ignorado — mantenido por paridad con Django para no romper deserialización.
+    /// El binding de project viene del path, no del query (evita IDOR).
+    #[allow(dead_code)]
+    pub tab: Option<String>,
+    /// Ignorado — el project scope viene del path.
+    #[allow(dead_code)]
+    pub project_ids: Option<String>,
+}
+
+// ── GET /workspaces/{slug}/projects/{project_id}/advance-analytics/ ──────────
+
+/// GET /api/workspaces/{slug}/projects/{project_id}/advance-analytics/
+///
+/// Conteos agregados de work-items a nivel proyecto. Mirror exacto de
+/// `ProjectAdvanceAnalyticsEndpoint.get` + `get_work_items_stats`
+/// (`apps/api/plane/app/views/analytic/project_analytics.py`).
+///
+/// A diferencia del handler workspace-level, no hay branching por `tab`:
+/// Django tampoco lo tiene — siempre retorna los 5 buckets de work-items.
+/// Los query params `tab` y `project_ids` se aceptan (para no romper
+/// deserialización si el frontend los envía) pero se ignoran: el binding
+/// del proyecto viene del path, garantizado por `ProjectMemberGuard`.
+///
+/// Permisos: ADMIN o MEMBER (equivalente a `@allow_permission([ADMIN, MEMBER])`).
+#[utoipa::path(
+    get,
+    path = "/workspaces/{slug}/projects/{project_id}/advance-analytics/",
+    tag = "Analytics",
+    security(("TokenAuth" = [])),
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project UUID"),
+        ("cycle_id" = Option<Uuid>, Query, description = "Filtrar por ciclo"),
+        ("module_id" = Option<Uuid>, Query, description = "Filtrar por módulo"),
+        ("date_filter" = Option<String>, Query, description = "Rango temporal"),
+    ),
+    responses(
+        (status = 200, description = "Conteos de work-items por grupo de estado"),
+        (status = 403, description = "No autorizado"),
+        (status = 404, description = "Workspace o proyecto no encontrado"),
+    )
+)]
+pub async fn project_advance_analytics(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Query(params): Query<ProjectAdvanceAnalyticsQuery>,
+) -> Result<impl IntoResponse, AppError> {
+    if guard.project_member.role < ROLE_MEMBER {
+        return Err(AppError::Forbidden);
+    }
+
+    let ws_id = guard.workspace.id;
+    let user_id = guard.user.id;
+    let project_id = guard.project.id;
+    let db = &state.db;
+
+    let date_filter = params.date_filter.as_deref();
+    let date_clause = analytics_date_clause(date_filter, "i.created_at");
+    let base_filter = base_issue_filter(ws_id, user_id);
+
+    // Si hay sub-scope por cycle o module, validamos que la relación pertenezca
+    // al mismo workspace+project (defensa en profundidad además del guard).
+    // Usamos JOIN contra la tabla de relación en vez de `WHERE issue_id IN (...)`
+    // para evitar una subconsulta adicional y dejar todo en un solo plan.
+    let (scope_join, scope_where) = if let Some(cid) = params.cycle_id {
+        (
+            format!(
+                "JOIN cycle_issues ci ON ci.issue_id = i.id
+                   AND ci.cycle_id = '{cid}'
+                   AND ci.workspace_id = '{ws_id}'
+                   AND ci.project_id = '{project_id}'
+                   AND ci.deleted_at IS NULL"
+            ),
+            String::new(),
+        )
+    } else if let Some(mid) = params.module_id {
+        (
+            format!(
+                "JOIN module_issues mi ON mi.issue_id = i.id
+                   AND mi.module_id = '{mid}'
+                   AND mi.workspace_id = '{ws_id}'
+                   AND mi.project_id = '{project_id}'
+                   AND mi.deleted_at IS NULL"
+            ),
+            String::new(),
+        )
+    } else {
+        (String::new(), format!("AND i.project_id = '{project_id}'"))
+    };
+
+    let sql = format!(
+        "SELECT
+           COUNT(*)                                            AS total,
+           COUNT(*) FILTER (WHERE s.group = 'started')         AS started,
+           COUNT(*) FILTER (WHERE s.group = 'backlog')         AS backlog,
+           COUNT(*) FILTER (WHERE s.group = 'unstarted')       AS unstarted,
+           COUNT(*) FILTER (WHERE s.group = 'completed')       AS completed
+         FROM issues i
+         JOIN states s ON s.id = i.state_id
+         {scope_join}
+         WHERE {base_filter} {scope_where} {date_clause}",
+    );
+
+    let row = db
+        .query_one(Statement::from_string(sea_orm::DatabaseBackend::Postgres, sql))
+        .await
+        .map_err(AppError::Database)?;
+
+    let (total, started, backlog, unstarted, completed) = row
+        .map(|r| {
+            (
+                r.try_get::<i64>("", "total").unwrap_or(0),
+                r.try_get::<i64>("", "started").unwrap_or(0),
+                r.try_get::<i64>("", "backlog").unwrap_or(0),
+                r.try_get::<i64>("", "unstarted").unwrap_or(0),
+                r.try_get::<i64>("", "completed").unwrap_or(0),
+            )
+        })
+        .unwrap_or((0, 0, 0, 0, 0));
+
+    Ok(Json(serde_json::json!({
+        "total_work_items":      { "count": total },
+        "started_work_items":    { "count": started },
+        "backlog_work_items":    { "count": backlog },
+        "un_started_work_items": { "count": unstarted },
+        "completed_work_items":  { "count": completed },
+    })))
 }
