@@ -107,126 +107,126 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/`
 
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/layout.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/layout.tsx`
 
 #### `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/archives/`
 
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/archives/header.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/archives/header.tsx`
 
 #### `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/archives/cycles/`
 
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/archives/cycles/layout.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/archives/cycles/page.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/archives/cycles/layout.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/archives/cycles/page.tsx`
 
 #### `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/archives/issues/(detail)/`
 
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/archives/issues/(detail)/header.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/archives/issues/(detail)/layout.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/archives/issues/(detail)/header.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/archives/issues/(detail)/layout.tsx`
 
 #### `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/archives/issues/(detail)/[archivedIssueId]/`
 
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/archives/issues/(detail)/[archivedIssueId]/page.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/archives/issues/(detail)/[archivedIssueId]/page.tsx`
 
 #### `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/archives/issues/(list)/`
 
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/archives/issues/(list)/layout.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/archives/issues/(list)/page.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/archives/issues/(list)/layout.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/archives/issues/(list)/page.tsx`
 
 #### `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/archives/modules/`
 
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/archives/modules/layout.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/archives/modules/page.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/archives/modules/layout.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/archives/modules/page.tsx`
 
 #### `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/cycles/(detail)/`
 
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/cycles/(detail)/header.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/cycles/(detail)/layout.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/cycles/(detail)/mobile-header.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/cycles/(detail)/header.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/cycles/(detail)/layout.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/cycles/(detail)/mobile-header.tsx`
 
 #### `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/cycles/(detail)/[cycleId]/`
 
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/cycles/(detail)/[cycleId]/page.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/cycles/(detail)/[cycleId]/page.tsx`
 
 #### `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/cycles/(list)/`
 
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/cycles/(list)/header.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/cycles/(list)/layout.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/cycles/(list)/mobile-header.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/cycles/(list)/page.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/cycles/(list)/header.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/cycles/(list)/layout.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/cycles/(list)/mobile-header.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/cycles/(list)/page.tsx`
 
 #### `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/intake/`
 
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/intake/layout.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/intake/page.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/intake/layout.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/intake/page.tsx`
 
 #### `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/issues/(detail)/[issueId]/`
 
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/issues/(detail)/[issueId]/page.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/issues/(detail)/[issueId]/page.tsx`
 
 #### `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/issues/(list)/`
 
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/issues/(list)/header.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/issues/(list)/layout.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/issues/(list)/mobile-header.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/issues/(list)/page.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/issues/(list)/header.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/issues/(list)/layout.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/issues/(list)/mobile-header.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/issues/(list)/page.tsx`
 
 #### `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/modules/(detail)/`
 
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/modules/(detail)/header.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/modules/(detail)/layout.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/modules/(detail)/mobile-header.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/modules/(detail)/header.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/modules/(detail)/layout.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/modules/(detail)/mobile-header.tsx`
 
 #### `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/modules/(detail)/[moduleId]/`
 
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/modules/(detail)/[moduleId]/page.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/modules/(detail)/[moduleId]/page.tsx`
 
 #### `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/modules/(list)/`
 
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/modules/(list)/header.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/modules/(list)/layout.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/modules/(list)/mobile-header.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/modules/(list)/page.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/modules/(list)/header.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/modules/(list)/layout.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/modules/(list)/mobile-header.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/modules/(list)/page.tsx`
 
 #### `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/pages/(detail)/`
 
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/pages/(detail)/header.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/pages/(detail)/layout.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/pages/(detail)/header.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/pages/(detail)/layout.tsx`
 
 #### `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/pages/(detail)/[pageId]/`
 
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/pages/(detail)/[pageId]/page.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/pages/(detail)/[pageId]/page.tsx`
 
 #### `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/pages/(list)/`
 
 - [!] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/pages/(list)/header.tsx` — `catch (err: any)` (línea 60) tipado como `any` en lugar de `unknown` + narrowing. Deuda técnica menor consistente con el resto del código legacy.
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/pages/(list)/layout.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/pages/(list)/page.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/pages/(list)/layout.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/pages/(list)/page.tsx`
 
 #### `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/views/(detail)/`
 
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/views/(detail)/layout.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/views/(detail)/layout.tsx`
 
 #### `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/views/(detail)/[viewId]/`
 
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/views/(detail)/[viewId]/header.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/views/(detail)/[viewId]/page.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/views/(detail)/[viewId]/header.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/views/(detail)/[viewId]/page.tsx`
 
 #### `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/views/(list)/`
 
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/views/(list)/header.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/views/(list)/layout.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/views/(list)/mobile-header.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/views/(list)/page.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/views/(list)/header.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/views/(list)/layout.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/views/(list)/mobile-header.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/views/(list)/page.tsx`
 
 #### `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/archives/`
 
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/archives/layout.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/archives/page.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/archives/layout.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/archives/page.tsx`
 
 #### `app/(all)/[workspaceSlug]/(projects)/projects/(list)/`
 
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(list)/layout.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(list)/page.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(list)/layout.tsx`
+- [x] `app/(all)/[workspaceSlug]/(projects)/projects/(list)/page.tsx`
 
 #### `app/(all)/[workspaceSlug]/(projects)/stickies/`
 
