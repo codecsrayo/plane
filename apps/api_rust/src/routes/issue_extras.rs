@@ -6,8 +6,10 @@
 //! Rutas implementadas:
 //!   GET/POST   issues/{id}/comments/
 //!   GET/PATCH/DELETE issues/{id}/comments/{pk}/
-//!   POST/DELETE issues/{id}/reactions/{code}/
-//!   POST/DELETE comments/{id}/reactions/{code}/
+//!   GET/POST   issues/{id}/reactions/        (reaction code en body)
+//!   DELETE     issues/{id}/reactions/{code}/
+//!   GET/POST   comments/{id}/reactions/      (reaction code en body)
+//!   DELETE     comments/{id}/reactions/{code}/
 //!   GET/POST   issues/{id}/issue-links/
 //!   PATCH/DELETE issues/{id}/issue-links/{pk}/
 //!   GET/POST   issues/{id}/issue-relation/
@@ -39,8 +41,10 @@ use crate::{
     entities::{
         comment_reactions, issue_activities, issue_comments, issue_links,
         issue_reactions, issue_relations, issue_subscribers, issues, states,
+        users,
     },
     error::AppError,
+    routes::workspaces::{user_to_lite, UserLiteDto},
     utils::soft_delete::SoftDeleteExt,
     AppState,
 };
@@ -86,7 +90,12 @@ pub struct ReactionResponse {
     pub issue_id: Uuid,
     pub actor_id: Uuid,
     pub project_id: Uuid,
+    pub workspace_id: Uuid,
     pub created_at: DateTime<FixedOffset>,
+    pub updated_at: DateTime<FixedOffset>,
+    /// Mirror de `IssueReactionSerializer.actor_detail` (UserLiteSerializer).
+    /// `apps/api/plane/app/serializers/issue.py:648-654`.
+    pub actor_detail: UserLiteDto,
 }
 
 #[derive(Debug, Serialize, utoipa::ToSchema)]
@@ -96,7 +105,23 @@ pub struct CommentReactionResponse {
     pub comment_id: Uuid,
     pub actor_id: Uuid,
     pub project_id: Uuid,
+    pub workspace_id: Uuid,
     pub created_at: DateTime<FixedOffset>,
+    pub updated_at: DateTime<FixedOffset>,
+    /// Mirror de `CommentReactionSerializer.display_name` + actor lite.
+    /// `apps/api/plane/app/serializers/issue.py:665-686`.
+    pub actor_detail: UserLiteDto,
+}
+
+/// Body de POST `/issues/{id}/reactions/` y `/comments/{id}/reactions/`.
+///
+/// Django recibe `{"reaction": "<code>"}` vía `IssueReactionSerializer` /
+/// `CommentReactionSerializer` (`apps/api/plane/app/views/issue/reaction.py:47`
+/// y `apps/api/plane/app/views/issue/comment.py:186`). El `reaction_code` NO va
+/// en la URL para create — solo para destroy.
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
+pub struct CreateReactionRequest {
+    pub reaction: String,
 }
 
 #[derive(Debug, Serialize, utoipa::ToSchema)]
@@ -362,6 +387,9 @@ pub async fn delete_comment(
 // ── Issue Reactions ───────────────────────────────────────────────────────────
 
 /// GET /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/reactions/
+///
+/// Mirror de `IssueReactionViewSet.list` (`apps/api/plane/app/views/issue/reaction.py:25`).
+/// Orden: `-created_at` (Django `Meta.ordering`).
 #[utoipa::path(
     get, path = "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/reactions/",
     tag = "Issues", security(("TokenAuth" = [])),
@@ -376,37 +404,84 @@ pub async fn list_issue_reactions(
         .active()
         .filter(issue_reactions::Column::IssueId.eq(issue_id))
         .filter(issue_reactions::Column::ProjectId.eq(guard.project.id))
-        .order_by_asc(issue_reactions::Column::CreatedAt)
+        .order_by_desc(issue_reactions::Column::CreatedAt)
         .all(&state.db)
         .await
         .map_err(AppError::Database)?;
 
-    let resp: Vec<ReactionResponse> = reactions.iter().map(|r| ReactionResponse {
-        id: r.id,
-        reaction: r.reaction.clone(),
-        issue_id: r.issue_id,
-        actor_id: r.actor_id,
-        project_id: r.project_id,
-        created_at: r.created_at,
-    }).collect();
+    // Batch-fetch distinct actors (evita N+1). Django usa ORM joins implícitos;
+    // aquí hacemos una sola query agrupada por `actor_id`.
+    let actor_ids: Vec<Uuid> = reactions
+        .iter()
+        .map(|r| r.actor_id)
+        .collect::<std::collections::HashSet<_>>()
+        .into_iter()
+        .collect();
+
+    let actors: std::collections::HashMap<Uuid, users::Model> = if actor_ids.is_empty() {
+        std::collections::HashMap::new()
+    } else {
+        users::Entity::find()
+            .filter(users::Column::Id.is_in(actor_ids))
+            .all(&state.db)
+            .await
+            .map_err(AppError::Database)?
+            .into_iter()
+            .map(|u| (u.id, u))
+            .collect()
+    };
+
+    let resp: Vec<ReactionResponse> = reactions
+        .iter()
+        .filter_map(|r| {
+            let actor = actors.get(&r.actor_id)?;
+            Some(ReactionResponse {
+                id: r.id,
+                reaction: r.reaction.clone(),
+                issue_id: r.issue_id,
+                actor_id: r.actor_id,
+                project_id: r.project_id,
+                workspace_id: r.workspace_id,
+                created_at: r.created_at,
+                updated_at: r.updated_at,
+                // `is_admin=false` → mirror de `UserLiteSerializer` (sin email /
+                // last_login_medium). Django usa la variante lite en el nested
+                // `actor_detail` de `IssueReactionSerializer`.
+                actor_detail: user_to_lite(actor, false),
+            })
+        })
+        .collect();
 
     Ok(Json(resp))
 }
 
-/// POST /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/reactions/{reaction_code}/
+/// POST /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/reactions/
+///
+/// Mirror de `IssueReactionViewSet.create` (`apps/api/plane/app/views/issue/reaction.py:45-62`).
+/// El `reaction` code viaja en el body JSON (`{"reaction": "👍"}`), NO en la URL.
+/// Idempotente: si ya existe una reacción activa del mismo actor con el mismo
+/// code, la devuelve con 201 en vez de disparar IntegrityError (mejora de UX
+/// sobre Django — `unique_together = ["issue", "actor", "reaction", "deleted_at"]`).
 #[utoipa::path(
-    post, path = "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/reactions/{reaction_code}/",
+    post, path = "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/reactions/",
     tag = "Issues", security(("TokenAuth" = [])),
+    request_body = CreateReactionRequest,
     responses((status = 201, description = "Reaction added"))
 )]
 pub async fn add_issue_reaction(
     State(state): State<AppState>,
     guard: ProjectMemberGuard,
-    Path((_slug, _project_id, issue_id, reaction_code)): Path<(String, Uuid, Uuid, String)>,
+    Path((_slug, _project_id, issue_id)): Path<(String, Uuid, Uuid)>,
+    Json(body): Json<CreateReactionRequest>,
 ) -> Result<impl IntoResponse, AppError> {
     require_role(guard.project_member.role, guard.workspace_member.role, ROLE_MEMBER)?;
 
-    // Idempotent — evitar duplicados
+    let reaction_code = body.reaction.trim().to_string();
+    if reaction_code.is_empty() {
+        return Err(AppError::BadRequest("reaction is required".into()));
+    }
+
+    // Idempotencia — evita IntegrityError del unique constraint de Django.
     let existing = issue_reactions::Entity::find()
         .active()
         .filter(issue_reactions::Column::IssueId.eq(issue_id))
@@ -423,7 +498,10 @@ pub async fn add_issue_reaction(
             issue_id: r.issue_id,
             actor_id: r.actor_id,
             project_id: r.project_id,
+            workspace_id: r.workspace_id,
             created_at: r.created_at,
+            updated_at: r.updated_at,
+            actor_detail: user_to_lite(&guard.user, false),
         })));
     }
 
@@ -449,11 +527,17 @@ pub async fn add_issue_reaction(
         issue_id: created.issue_id,
         actor_id: created.actor_id,
         project_id: created.project_id,
+        workspace_id: created.workspace_id,
         created_at: created.created_at,
+        updated_at: created.updated_at,
+        actor_detail: user_to_lite(&guard.user, false),
     })))
 }
 
 /// DELETE /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/reactions/{reaction_code}/
+///
+/// Mirror de `IssueReactionViewSet.destroy`
+/// (`apps/api/plane/app/views/issue/reaction.py:64-85`). Soft delete.
 #[utoipa::path(
     delete, path = "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/reactions/{reaction_code}/",
     tag = "Issues", security(("TokenAuth" = [])),
@@ -483,18 +567,93 @@ pub async fn remove_issue_reaction(
 
 // ── Comment Reactions ─────────────────────────────────────────────────────────
 
-/// POST /workspaces/{slug}/projects/{project_id}/comments/{comment_id}/reactions/{reaction_code}/
+/// GET /workspaces/{slug}/projects/{project_id}/comments/{comment_id}/reactions/
+///
+/// Mirror de `CommentReactionViewSet.list` (`apps/api/plane/app/views/issue/comment.py:163`).
+/// Orden: `-created_at` (Django `Meta.ordering` de `CommentReaction`).
 #[utoipa::path(
-    post, path = "/workspaces/{slug}/projects/{project_id}/comments/{comment_id}/reactions/{reaction_code}/",
+    get, path = "/workspaces/{slug}/projects/{project_id}/comments/{comment_id}/reactions/",
     tag = "Issues", security(("TokenAuth" = [])),
+    responses((status = 200, description = "Comment reactions"))
+)]
+pub async fn list_comment_reactions(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Path((_slug, _project_id, comment_id)): Path<(String, Uuid, Uuid)>,
+) -> Result<impl IntoResponse, AppError> {
+    let reactions = comment_reactions::Entity::find()
+        .active()
+        .filter(comment_reactions::Column::CommentId.eq(comment_id))
+        .filter(comment_reactions::Column::ProjectId.eq(guard.project.id))
+        .order_by_desc(comment_reactions::Column::CreatedAt)
+        .all(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    let actor_ids: Vec<Uuid> = reactions
+        .iter()
+        .map(|r| r.actor_id)
+        .collect::<std::collections::HashSet<_>>()
+        .into_iter()
+        .collect();
+
+    let actors: std::collections::HashMap<Uuid, users::Model> = if actor_ids.is_empty() {
+        std::collections::HashMap::new()
+    } else {
+        users::Entity::find()
+            .filter(users::Column::Id.is_in(actor_ids))
+            .all(&state.db)
+            .await
+            .map_err(AppError::Database)?
+            .into_iter()
+            .map(|u| (u.id, u))
+            .collect()
+    };
+
+    let resp: Vec<CommentReactionResponse> = reactions
+        .iter()
+        .filter_map(|r| {
+            let actor = actors.get(&r.actor_id)?;
+            Some(CommentReactionResponse {
+                id: r.id,
+                reaction: r.reaction.clone(),
+                comment_id: r.comment_id,
+                actor_id: r.actor_id,
+                project_id: r.project_id,
+                workspace_id: r.workspace_id,
+                created_at: r.created_at,
+                updated_at: r.updated_at,
+                actor_detail: user_to_lite(actor, false),
+            })
+        })
+        .collect();
+
+    Ok(Json(resp))
+}
+
+/// POST /workspaces/{slug}/projects/{project_id}/comments/{comment_id}/reactions/
+///
+/// Mirror de `CommentReactionViewSet.create`
+/// (`apps/api/plane/app/views/issue/comment.py:183-210`). El `reaction` code
+/// viaja en el body JSON, no en la URL. Idempotente.
+#[utoipa::path(
+    post, path = "/workspaces/{slug}/projects/{project_id}/comments/{comment_id}/reactions/",
+    tag = "Issues", security(("TokenAuth" = [])),
+    request_body = CreateReactionRequest,
     responses((status = 201, description = "Reaction added"))
 )]
 pub async fn add_comment_reaction(
     State(state): State<AppState>,
     guard: ProjectMemberGuard,
-    Path((_slug, _project_id, comment_id, reaction_code)): Path<(String, Uuid, Uuid, String)>,
+    Path((_slug, _project_id, comment_id)): Path<(String, Uuid, Uuid)>,
+    Json(body): Json<CreateReactionRequest>,
 ) -> Result<impl IntoResponse, AppError> {
     require_role(guard.project_member.role, guard.workspace_member.role, ROLE_MEMBER)?;
+
+    let reaction_code = body.reaction.trim().to_string();
+    if reaction_code.is_empty() {
+        return Err(AppError::BadRequest("reaction is required".into()));
+    }
 
     let existing = comment_reactions::Entity::find()
         .active()
@@ -507,8 +666,15 @@ pub async fn add_comment_reaction(
 
     if let Some(r) = existing {
         return Ok((StatusCode::CREATED, Json(CommentReactionResponse {
-            id: r.id, reaction: r.reaction, comment_id: r.comment_id,
-            actor_id: r.actor_id, project_id: r.project_id, created_at: r.created_at,
+            id: r.id,
+            reaction: r.reaction,
+            comment_id: r.comment_id,
+            actor_id: r.actor_id,
+            project_id: r.project_id,
+            workspace_id: r.workspace_id,
+            created_at: r.created_at,
+            updated_at: r.updated_at,
+            actor_detail: user_to_lite(&guard.user, false),
         })));
     }
 
@@ -529,12 +695,22 @@ pub async fn add_comment_reaction(
 
     let created = new_reaction.insert(&state.db).await.map_err(AppError::Database)?;
     Ok((StatusCode::CREATED, Json(CommentReactionResponse {
-        id: created.id, reaction: created.reaction, comment_id: created.comment_id,
-        actor_id: created.actor_id, project_id: created.project_id, created_at: created.created_at,
+        id: created.id,
+        reaction: created.reaction,
+        comment_id: created.comment_id,
+        actor_id: created.actor_id,
+        project_id: created.project_id,
+        workspace_id: created.workspace_id,
+        created_at: created.created_at,
+        updated_at: created.updated_at,
+        actor_detail: user_to_lite(&guard.user, false),
     })))
 }
 
 /// DELETE /workspaces/{slug}/projects/{project_id}/comments/{comment_id}/reactions/{reaction_code}/
+///
+/// Mirror de `CommentReactionViewSet.destroy`
+/// (`apps/api/plane/app/views/issue/comment.py:212-240`). Soft delete.
 #[utoipa::path(
     delete, path = "/workspaces/{slug}/projects/{project_id}/comments/{comment_id}/reactions/{reaction_code}/",
     tag = "Issues", security(("TokenAuth" = [])),

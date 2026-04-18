@@ -298,6 +298,7 @@ pub mod instances;
         issue_extras::list_issue_reactions,
         issue_extras::add_issue_reaction,
         issue_extras::remove_issue_reaction,
+        issue_extras::list_comment_reactions,
         issue_extras::add_comment_reaction,
         issue_extras::remove_comment_reaction,
         issue_extras::list_issue_links,
@@ -1190,17 +1191,21 @@ pub fn build_router(state: AppState) -> Router {
         )
         .route(
             "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/reactions",
-            get(issue_extras::list_issue_reactions),
+            get(issue_extras::list_issue_reactions)
+                .post(issue_extras::add_issue_reaction),
         )
         .route(
             "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/reactions/{reaction_code}",
-            post(issue_extras::add_issue_reaction)
-                .delete(issue_extras::remove_issue_reaction),
+            delete(issue_extras::remove_issue_reaction),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/comments/{comment_id}/reactions",
+            get(issue_extras::list_comment_reactions)
+                .post(issue_extras::add_comment_reaction),
         )
         .route(
             "/workspaces/{slug}/projects/{project_id}/comments/{comment_id}/reactions/{reaction_code}",
-            post(issue_extras::add_comment_reaction)
-                .delete(issue_extras::remove_comment_reaction),
+            delete(issue_extras::remove_comment_reaction),
         )
         .route(
             "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-links",
