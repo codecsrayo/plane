@@ -35,7 +35,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 - [!] `app/layout.tsx` — Clarity `<Script>` inyecta `${process.env.VITE_SESSION_RECORDER_KEY}` sin escapar dentro de JS inline. Aunque el valor viene de build-env, es defensa-en-profundidad: usar `JSON.stringify(process.env.VITE_SESSION_RECORDER_KEY)` para neutralizar breakouts. Además archivo duplica `<head>`/meta con `app/root.tsx` (es un layout legacy de Next.js).
 - [x] `app/not-found.tsx`
 - [x] `app/provider.tsx`
-- [!] `app/root.tsx` — Mismo issue Clarity `<Script>` (interpolación de env sin `JSON.stringify`). `parseInt(process.env.VITE_ENABLE_SESSION_RECORDER || "0")` sin radix explícito. `HydrateFallback` documenta bien paridad SSR/CSR.
+- [x] `app/root.tsx` — Clarity `<Script>` ahora interpola con `JSON.stringify(sessionRecorderKey)` (neutraliza breakouts de `</script>`/quotes/`\u2028`). `parseInt` → `Number.parseInt(..., 10)` con radix explícito. Variable extraída para evitar doble lectura de `process.env`.
 - [x] `app/routes.ts`
 
 #### `app/(all)/`
