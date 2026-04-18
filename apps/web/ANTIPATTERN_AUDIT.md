@@ -3557,173 +3557,173 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `core/store/`
 
-- [ ] `core/store/analytics.store.ts`
-- [ ] `core/store/base-command-palette.store.ts`
-- [ ] `core/store/base-power-k.store.ts`
-- [ ] `core/store/cycle.store.ts`
-- [ ] `core/store/cycle_filter.store.ts`
-- [ ] `core/store/dashboard.store.ts`
-- [ ] `core/store/favorite.store.ts`
-- [ ] `core/store/global-view.store.ts`
-- [ ] `core/store/instance.store.ts`
-- [ ] `core/store/label.store.ts`
-- [ ] `core/store/module.store.ts`
-- [ ] `core/store/module_filter.store.ts`
-- [ ] `core/store/multiple_select.store.ts`
-- [ ] `core/store/project-view.store.ts`
+- [!] `core/store/analytics.store.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
+- [x] `core/store/base-command-palette.store.ts`
+- [x] `core/store/base-power-k.store.ts`
+- [!] `core/store/cycle.store.ts` — Raw error rethrow + `console.log` para errores (línea 607) + `eslint-disable` en línea 503 para `no-unused-vars`. Revisar si el parámetro es realmente innecesario.
+- [x] `core/store/cycle_filter.store.ts`
+- [!] `core/store/dashboard.store.ts` — Raw error rethrow + `as unknown as T` en línea 140 (type laundering en widgetStats) + `: any` inferido en callback `.then((res: any) =>` línea 186.
+- [!] `core/store/favorite.store.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
+- [!] `core/store/global-view.store.ts` — Raw error rethrow + `: any` en anotaciones.
+- [!] `core/store/instance.store.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
+- [!] `core/store/label.store.ts` — Legacy raw throw + `console.log` para errores (debería ser `console.error` o eliminarse).
+- [!] `core/store/module.store.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
+- [x] `core/store/module_filter.store.ts`
+- [x] `core/store/multiple_select.store.ts`
+- [!] `core/store/project-view.store.ts` — `: any` en anotaciones.
 - [!] `core/store/root.store.ts` — 12× `as unknown as RootStore` (type laundering por arquitectura modular CE/EE) + 2× `localStorage.setItem` en `resetOnSignOut` sin guard SSR (aceptable por contexto de uso client-only)
-- [ ] `core/store/router.store.ts`
-- [ ] `core/store/state.store.ts`
-- [ ] `core/store/theme.store.ts`
+- [x] `core/store/router.store.ts`
+- [!] `core/store/state.store.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
+- [!] `core/store/theme.store.ts` — `localStorage.setItem` en 6 toggle methods sin guard SSR. `theme.store` se instancia en `CoreRootStore` constructor que SÍ corre en SSR; aunque los toggles se llaman por click, un path de hidratación podría invocarlos. Envolver con `if (typeof window !== 'undefined')`.
 
 #### `core/store/editor/`
 
-- [ ] `core/store/editor/asset.store.ts`
+- [!] `core/store/editor/asset.store.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
 
 #### `core/store/estimates/`
 
-- [ ] `core/store/estimates/estimate-point.ts`
-- [ ] `core/store/estimates/project-estimate.store.ts`
+- [!] `core/store/estimates/estimate-point.ts` — `eslint-disable` (revisar justificación) + raw error rethrow.
+- [!] `core/store/estimates/project-estimate.store.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
 
 #### `core/store/inbox/`
 
-- [ ] `core/store/inbox/inbox-issue.store.ts`
-- [ ] `core/store/inbox/project-inbox.store.ts`
+- [x] `core/store/inbox/inbox-issue.store.ts`
+- [!] `core/store/inbox/project-inbox.store.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
 
 #### `core/store/issue/`
 
-- [ ] `core/store/issue/issue.store.ts`
-- [ ] `core/store/issue/issue_calendar_view.store.ts`
-- [ ] `core/store/issue/issue_gantt_view.store.ts`
-- [ ] `core/store/issue/issue_kanban_view.store.ts`
-- [ ] `core/store/issue/root.store.ts`
+- [x] `core/store/issue/issue.store.ts`
+- [!] `core/store/issue/issue_calendar_view.store.ts` — `eslint-disable` + `: any`.
+- [!] `core/store/issue/issue_gantt_view.store.ts` — `: any` (4×) — ya flagged en scan general inicial.
+- [x] `core/store/issue/issue_kanban_view.store.ts`
+- [x] `core/store/issue/root.store.ts`
 
 #### `core/store/issue/archived/`
 
-- [ ] `core/store/issue/archived/filter.store.ts`
-- [ ] `core/store/issue/archived/index.ts`
-- [ ] `core/store/issue/archived/issue.store.ts`
+- [!] `core/store/issue/archived/filter.store.ts` — Legacy raw throw + `console.log` para errores (debería ser `console.error` o eliminarse).
+- [x] `core/store/issue/archived/index.ts`
+- [!] `core/store/issue/archived/issue.store.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
 
 #### `core/store/issue/cycle/`
 
-- [ ] `core/store/issue/cycle/filter.store.ts`
-- [ ] `core/store/issue/cycle/index.ts`
-- [ ] `core/store/issue/cycle/issue.store.ts`
+- [!] `core/store/issue/cycle/filter.store.ts` — Legacy raw throw + `console.log` para errores (debería ser `console.error` o eliminarse).
+- [x] `core/store/issue/cycle/index.ts`
+- [!] `core/store/issue/cycle/issue.store.ts` — Legacy raw throw + `console.log` para errores (debería ser `console.error` o eliminarse).
 
 #### `core/store/issue/helpers/`
 
-- [ ] `core/store/issue/helpers/base-issues-utils.ts`
-- [ ] `core/store/issue/helpers/base-issues.store.ts`
-- [ ] `core/store/issue/helpers/issue-filter-helper.store.ts`
+- [!] `core/store/issue/helpers/base-issues-utils.ts` — `: any` + `console.log` (detectado en scan previo). 2× non-null assertions (`!.`).
+- [!] `core/store/issue/helpers/base-issues.store.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
+- [x] `core/store/issue/helpers/issue-filter-helper.store.ts`
 
 #### `core/store/issue/issue-details/`
 
-- [ ] `core/store/issue/issue-details/attachment.store.ts`
-- [ ] `core/store/issue/issue-details/comment.store.ts`
-- [ ] `core/store/issue/issue-details/comment_reaction.store.ts`
-- [ ] `core/store/issue/issue-details/issue.store.ts`
-- [ ] `core/store/issue/issue-details/link.store.ts`
-- [ ] `core/store/issue/issue-details/reaction.store.ts`
-- [ ] `core/store/issue/issue-details/relation.store.ts`
-- [ ] `core/store/issue/issue-details/root.store.ts`
-- [ ] `core/store/issue/issue-details/sub_issues.store.ts`
-- [ ] `core/store/issue/issue-details/sub_issues_filter.store.ts`
-- [ ] `core/store/issue/issue-details/subscription.store.ts`
+- [!] `core/store/issue/issue-details/attachment.store.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
+- [!] `core/store/issue/issue-details/comment.store.ts` — Raw error rethrow + `: any`.
+- [!] `core/store/issue/issue-details/comment_reaction.store.ts` — `console.log("error", error)` en líneas 126 y 166 — debería ser `console.error`. Raw rethrows. `: any`.
+- [x] `core/store/issue/issue-details/issue.store.ts`
+- [!] `core/store/issue/issue-details/link.store.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
+- [!] `core/store/issue/issue-details/reaction.store.ts` — `: any` en anotaciones.
+- [!] `core/store/issue/issue-details/relation.store.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
+- [x] `core/store/issue/issue-details/root.store.ts`
+- [x] `core/store/issue/issue-details/sub_issues.store.ts`
+- [x] `core/store/issue/issue-details/sub_issues_filter.store.ts`
+- [!] `core/store/issue/issue-details/subscription.store.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
 
 #### `core/store/issue/module/`
 
-- [ ] `core/store/issue/module/filter.store.ts`
-- [ ] `core/store/issue/module/index.ts`
-- [ ] `core/store/issue/module/issue.store.ts`
+- [!] `core/store/issue/module/filter.store.ts` — Legacy raw throw + `console.log` para errores (debería ser `console.error` o eliminarse).
+- [x] `core/store/issue/module/index.ts`
+- [!] `core/store/issue/module/issue.store.ts` — Legacy raw throw + `console.log` para errores (debería ser `console.error` o eliminarse).
 
 #### `core/store/issue/profile/`
 
-- [ ] `core/store/issue/profile/filter.store.ts`
-- [ ] `core/store/issue/profile/index.ts`
-- [ ] `core/store/issue/profile/issue.store.ts`
+- [!] `core/store/issue/profile/filter.store.ts` — Legacy raw throw + `console.log` para errores (debería ser `console.error` o eliminarse).
+- [x] `core/store/issue/profile/index.ts`
+- [!] `core/store/issue/profile/issue.store.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
 
 #### `core/store/issue/project/`
 
-- [ ] `core/store/issue/project/filter.store.ts`
-- [ ] `core/store/issue/project/index.ts`
-- [ ] `core/store/issue/project/issue.store.ts`
+- [!] `core/store/issue/project/filter.store.ts` — Legacy raw throw + `console.log` para errores (debería ser `console.error` o eliminarse).
+- [x] `core/store/issue/project/index.ts`
+- [!] `core/store/issue/project/issue.store.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
 
 #### `core/store/issue/project-views/`
 
-- [ ] `core/store/issue/project-views/filter.store.ts`
-- [ ] `core/store/issue/project-views/index.ts`
-- [ ] `core/store/issue/project-views/issue.store.ts`
+- [!] `core/store/issue/project-views/filter.store.ts` — Legacy raw throw + `console.log` para errores (debería ser `console.error` o eliminarse).
+- [x] `core/store/issue/project-views/index.ts`
+- [!] `core/store/issue/project-views/issue.store.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
 
 #### `core/store/issue/workspace/`
 
-- [ ] `core/store/issue/workspace/filter.store.ts`
-- [ ] `core/store/issue/workspace/index.ts`
-- [ ] `core/store/issue/workspace/issue.store.ts`
+- [!] `core/store/issue/workspace/filter.store.ts` — Legacy raw throw + `console.log` para errores (debería ser `console.error` o eliminarse).
+- [x] `core/store/issue/workspace/index.ts`
+- [!] `core/store/issue/workspace/issue.store.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
 
 #### `core/store/issue/workspace-draft/`
 
-- [ ] `core/store/issue/workspace-draft/filter.store.ts`
-- [ ] `core/store/issue/workspace-draft/index.ts`
-- [ ] `core/store/issue/workspace-draft/issue.store.ts`
+- [!] `core/store/issue/workspace-draft/filter.store.ts` — Legacy raw throw + `console.log` para errores (debería ser `console.error` o eliminarse).
+- [x] `core/store/issue/workspace-draft/index.ts`
+- [!] `core/store/issue/workspace-draft/issue.store.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
 
 #### `core/store/member/`
 
-- [ ] `core/store/member/index.ts`
-- [ ] `core/store/member/utils.ts`
+- [x] `core/store/member/index.ts`
+- [x] `core/store/member/utils.ts`
 
 #### `core/store/member/project/`
 
-- [ ] `core/store/member/project/base-project-member.store.ts`
-- [ ] `core/store/member/project/project-member-filters.store.ts`
+- [!] `core/store/member/project/base-project-member.store.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
+- [x] `core/store/member/project/project-member-filters.store.ts`
 
 #### `core/store/member/workspace/`
 
-- [ ] `core/store/member/workspace/workspace-member-filters.store.ts`
-- [ ] `core/store/member/workspace/workspace-member.store.ts`
+- [x] `core/store/member/workspace/workspace-member-filters.store.ts`
+- [!] `core/store/member/workspace/workspace-member.store.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
 
 #### `core/store/notifications/`
 
-- [ ] `core/store/notifications/notification.ts`
-- [ ] `core/store/notifications/workspace-notifications.store.ts`
+- [!] `core/store/notifications/notification.ts` — `eslint-disable` + raw error rethrow.
+- [!] `core/store/notifications/workspace-notifications.store.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
 
 #### `core/store/pages/`
 
-- [ ] `core/store/pages/base-page.ts`
-- [ ] `core/store/pages/page-editor-info.ts`
-- [ ] `core/store/pages/project-page.store.ts`
-- [ ] `core/store/pages/project-page.ts`
+- [!] `core/store/pages/base-page.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
+- [x] `core/store/pages/page-editor-info.ts`
+- [!] `core/store/pages/project-page.store.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
+- [x] `core/store/pages/project-page.ts`
 
 #### `core/store/project/`
 
-- [ ] `core/store/project/index.ts`
-- [ ] `core/store/project/project-publish.store.ts`
-- [ ] `core/store/project/project.store.ts`
-- [ ] `core/store/project/project_filter.store.ts`
+- [x] `core/store/project/index.ts`
+- [!] `core/store/project/project-publish.store.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
+- [!] `core/store/project/project.store.ts` — 11× `console.log("Failed to ...", error)` deberían ser `console.error`. Raw error rethrows. `: any` en algún retorno.
+- [x] `core/store/project/project_filter.store.ts`
 
 #### `core/store/sticky/`
 
-- [ ] `core/store/sticky/sticky.store.ts`
+- [!] `core/store/sticky/sticky.store.ts` — Legacy raw throw + `console.log` para errores (debería ser `console.error` o eliminarse).
 
 #### `core/store/timeline/`
 
-- [ ] `core/store/timeline/issues-timeline.store.ts`
-- [ ] `core/store/timeline/modules-timeline.store.ts`
+- [x] `core/store/timeline/issues-timeline.store.ts`
+- [x] `core/store/timeline/modules-timeline.store.ts`
 
 #### `core/store/user/`
 
-- [ ] `core/store/user/account.store.ts`
-- [ ] `core/store/user/base-permissions.store.ts`
-- [ ] `core/store/user/index.ts`
-- [ ] `core/store/user/profile.store.ts`
-- [ ] `core/store/user/settings.store.ts`
+- [!] `core/store/user/account.store.ts` — `: any` en anotaciones.
+- [!] `core/store/user/base-permissions.store.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
+- [!] `core/store/user/index.ts` — Legacy raw throw + `console.log` para errores (debería ser `console.error` o eliminarse).
+- [!] `core/store/user/profile.store.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
+- [!] `core/store/user/settings.store.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
 
 #### `core/store/workspace/`
 
-- [ ] `core/store/workspace/api-token.store.ts`
-- [ ] `core/store/workspace/home.ts`
-- [ ] `core/store/workspace/index.ts`
-- [ ] `core/store/workspace/link.store.ts`
-- [ ] `core/store/workspace/webhook.store.ts`
+- [x] `core/store/workspace/api-token.store.ts`
+- [!] `core/store/workspace/home.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
+- [!] `core/store/workspace/index.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
+- [x] `core/store/workspace/link.store.ts`
+- [x] `core/store/workspace/webhook.store.ts`
 
 #### `core/types/`
 
