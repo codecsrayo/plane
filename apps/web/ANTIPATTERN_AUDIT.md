@@ -1113,7 +1113,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `core/components/account/`
 
-- [!] `core/components/account/deactivate-account-modal.tsx` — `.catch((err: any) => {...})` (línea 53) — pattern legacy consistente con otros auth forms.
+- [x] `core/components/account/deactivate-account-modal.tsx` — Resuelto: `.catch((err: any))` → `.catch((err: unknown))` con narrowing antes de acceder a `err.error`.
 - [x] `core/components/account/terms-and-conditions.tsx`
 
 #### `core/components/account/auth-forms/`
@@ -1123,8 +1123,8 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 - [x] `core/components/account/auth-forms/auth-root.tsx`
 - [x] `core/components/account/auth-forms/email.tsx`
 - [x] `core/components/account/auth-forms/forgot-password-popover.tsx`
-- [!] `core/components/account/auth-forms/forgot-password.tsx` — `catch (err: any)` (línea 70). Preferir `unknown` + narrowing.
-- [!] `core/components/account/auth-forms/form-root.tsx` — `catch (error: any)` (línea 82).
+- [x] `core/components/account/auth-forms/forgot-password.tsx` — Resuelto: `catch (err: any)` → `catch (err: unknown)` con narrowing antes de acceder a `err.error`.
+- [x] `core/components/account/auth-forms/form-root.tsx` — Resuelto: `catch (error: any)` → `catch (error: unknown)` con narrowing antes de acceder a `error.error_code`.
 - [x] `core/components/account/auth-forms/index.ts`
 - [x] `core/components/account/auth-forms/password.tsx`
 - [x] `core/components/account/auth-forms/reset-password.tsx`
@@ -1150,7 +1150,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `core/components/analytics/insight-table/`
 
-- [!] `core/components/analytics/insight-table/data-table.tsx` — Dos casts `as any` (líneas 141, 153) sobre el resultado de `flexRender(...)` para forzar un tipo. Arreglar la firma o el genérico en lugar de silenciar.
+- [x] `core/components/analytics/insight-table/data-table.tsx` — Resuelto: eliminados los dos casts `as any` sobre `flexRender(...)`. La función ya retorna `React.ReactNode`, que es válido como JSX child directo sin cast.
 - [x] `core/components/analytics/insight-table/index.ts`
 - [x] `core/components/analytics/insight-table/loader.tsx`
 - [x] `core/components/analytics/insight-table/root.tsx`
@@ -1195,7 +1195,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `core/components/api-token/modal/`
 
-- [!] `core/components/api-token/modal/create-token-modal.tsx` — `catch (err: any)` (línea 71).
+- [x] `core/components/api-token/modal/create-token-modal.tsx` — Resuelto: `catch (err: any)` → `catch (err: unknown)` con narrowing antes de acceder a `err.message` / `err.detail`. `throw err` preservado para re-propagación.
 - [x] `core/components/api-token/modal/form.tsx`
 - [x] `core/components/api-token/modal/generated-token-details.tsx`
 

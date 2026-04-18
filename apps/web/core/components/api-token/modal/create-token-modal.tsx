@@ -68,11 +68,16 @@ export function CreateApiTokenModal(props: Props) {
         },
         false
       );
-    } catch (err: any) {
+    } catch (err: unknown) {
+      const message =
+        typeof err === "object" && err !== null
+          ? ((err as { message?: unknown }).message as string | undefined) ??
+            ((err as { detail?: unknown }).detail as string | undefined)
+          : undefined;
       setToast({
         type: TOAST_TYPE.ERROR,
         title: "Error!",
-        message: err.message || err.detail,
+        message,
       });
 
       throw err;

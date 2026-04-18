@@ -50,11 +50,15 @@ export function DeactivateAccountModal(props: Props) {
         handleClose();
         return;
       })
-      .catch((err: any) => {
+      .catch((err: unknown) => {
+        const message =
+          typeof err === "object" && err !== null && "error" in err
+            ? ((err as { error?: unknown }).error as string | undefined)
+            : undefined;
         setToast({
           type: TOAST_TYPE.ERROR,
           title: "Error!",
-          message: err?.error,
+          message,
         });
       })
       .finally(() => setIsDeactivating(false));

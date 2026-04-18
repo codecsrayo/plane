@@ -138,7 +138,7 @@ export function DataTable<TData, TValue>({ columns, data, searchPlaceholder, act
                   <TableHead key={header.id} colSpan={header.colSpan} className="whitespace-nowrap">
                     {header.isPlaceholder
                       ? null
-                      : (flexRender(header.column.columnDef.header, header.getContext()) as any)}
+                      : flexRender(header.column.columnDef.header, header.getContext())}
                   </TableHead>
                 ))}
               </TableRow>
@@ -150,7 +150,7 @@ export function DataTable<TData, TValue>({ columns, data, searchPlaceholder, act
                 <TableRow key={row.id} data-state={row.getIsSelected() && "selected"}>
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
-                      {flexRender(cell.column.columnDef.cell, cell.getContext()) as any}
+                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
                     </TableCell>
                   ))}
                 </TableRow>

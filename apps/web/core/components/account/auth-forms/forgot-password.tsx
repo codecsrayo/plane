@@ -67,11 +67,15 @@ export const ForgotPasswordForm = observer(function ForgotPasswordForm() {
         message: t("auth.forgot_password.toast.success.message"),
       });
       setResendCodeTimer(30);
-    } catch (err: any) {
+    } catch (err: unknown) {
+      const errorMessage =
+        typeof err === "object" && err !== null && "error" in err
+          ? ((err as { error?: unknown }).error as string | undefined)
+          : undefined;
       setToast({
         type: TOAST_TYPE.ERROR,
         title: t("auth.forgot_password.toast.error.title"),
-        message: err?.error ?? t("auth.forgot_password.toast.error.message"),
+        message: errorMessage ?? t("auth.forgot_password.toast.error.message"),
       });
     }
   };

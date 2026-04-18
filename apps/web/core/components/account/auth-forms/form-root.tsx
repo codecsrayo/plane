@@ -79,8 +79,12 @@ export const AuthFormRoot = observer(function AuthFormRoot(props: TAuthFormRoot)
         }
       }
       setIsExistingEmail(response.existing);
-    } catch (error: any) {
-      const errorhandler = authErrorHandler(error?.error_code?.toString(), data?.email || undefined);
+    } catch (error: unknown) {
+      const errorCode =
+        typeof error === "object" && error !== null && "error_code" in error
+          ? (error as { error_code?: unknown }).error_code
+          : undefined;
+      const errorhandler = authErrorHandler(errorCode?.toString(), data?.email || undefined);
       if (errorhandler?.type) setErrorInfo(errorhandler);
     }
   };
