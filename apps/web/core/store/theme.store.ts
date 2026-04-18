@@ -94,7 +94,7 @@ export class ThemeStore implements IThemeStore {
     } else {
       this.sidebarCollapsed = collapsed;
     }
-    localStorage.setItem("app_sidebar_collapsed", this.sidebarCollapsed.toString());
+    if (typeof window !== "undefined") localStorage.setItem("app_sidebar_collapsed", this.sidebarCollapsed.toString());
   };
 
   /**
@@ -118,7 +118,7 @@ export class ThemeStore implements IThemeStore {
     runInAction(() => {
       this.isExtendedSidebarOpened = updatedState;
     });
-    localStorage.setItem("extended_sidebar_collapsed", updatedState.toString());
+    if (typeof window !== "undefined") localStorage.setItem("extended_sidebar_collapsed", updatedState.toString());
   };
 
   /**
@@ -131,7 +131,7 @@ export class ThemeStore implements IThemeStore {
     } else {
       this.isExtendedProjectSidebarOpened = collapsed;
     }
-    localStorage.setItem("extended_project_sidebar_collapsed", this.isExtendedProjectSidebarOpened.toString());
+    if (typeof window !== "undefined") localStorage.setItem("extended_project_sidebar_collapsed", this.isExtendedProjectSidebarOpened.toString());
   };
 
   /**
@@ -144,7 +144,7 @@ export class ThemeStore implements IThemeStore {
     } else {
       this.profileSidebarCollapsed = collapsed;
     }
-    localStorage.setItem("profile_sidebar_collapsed", this.profileSidebarCollapsed.toString());
+    if (typeof window !== "undefined") localStorage.setItem("profile_sidebar_collapsed", this.profileSidebarCollapsed.toString());
   };
 
   /**
@@ -157,7 +157,7 @@ export class ThemeStore implements IThemeStore {
     } else {
       this.workspaceAnalyticsSidebarCollapsed = collapsed;
     }
-    localStorage.setItem("workspace_analytics_sidebar_collapsed", this.workspaceAnalyticsSidebarCollapsed.toString());
+    if (typeof window !== "undefined") localStorage.setItem("workspace_analytics_sidebar_collapsed", this.workspaceAnalyticsSidebarCollapsed.toString());
   };
 
   toggleIssueDetailSidebar = (collapsed?: boolean) => {
@@ -166,7 +166,7 @@ export class ThemeStore implements IThemeStore {
     } else {
       this.issueDetailSidebarCollapsed = collapsed;
     }
-    localStorage.setItem("issue_detail_sidebar_collapsed", this.issueDetailSidebarCollapsed.toString());
+    if (typeof window !== "undefined") localStorage.setItem("issue_detail_sidebar_collapsed", this.issueDetailSidebarCollapsed.toString());
   };
 
   toggleEpicDetailSidebar = (collapsed?: boolean) => {
@@ -175,7 +175,7 @@ export class ThemeStore implements IThemeStore {
     } else {
       this.epicDetailSidebarCollapsed = collapsed;
     }
-    localStorage.setItem("epic_detail_sidebar_collapsed", this.epicDetailSidebarCollapsed.toString());
+    if (typeof window !== "undefined") localStorage.setItem("epic_detail_sidebar_collapsed", this.epicDetailSidebarCollapsed.toString());
   };
 
   toggleInitiativesSidebar = (collapsed?: boolean) => {
@@ -184,7 +184,7 @@ export class ThemeStore implements IThemeStore {
     } else {
       this.initiativesSidebarCollapsed = collapsed;
     }
-    localStorage.setItem("initiatives_sidebar_collapsed", this.initiativesSidebarCollapsed.toString());
+    if (typeof window !== "undefined") localStorage.setItem("initiatives_sidebar_collapsed", this.initiativesSidebarCollapsed.toString());
   };
 
   toggleProjectOverviewSidebar = (collapsed?: boolean) => {
@@ -193,6 +193,6 @@ export class ThemeStore implements IThemeStore {
     } else {
       this.projectOverviewSidebarCollapsed = collapsed;
     }
-    localStorage.setItem("project_overview_sidebar_collapsed", this.projectOverviewSidebarCollapsed.toString());
+    if (typeof window !== "undefined") localStorage.setItem("project_overview_sidebar_collapsed", this.projectOverviewSidebarCollapsed.toString());
   };
 }

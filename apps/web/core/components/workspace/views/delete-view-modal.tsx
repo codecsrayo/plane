@@ -49,7 +49,7 @@ export const DeleteGlobalViewModal = observer(function DeleteGlobalViewModal(pro
     setIsDeleteLoading(false);
     handleClose();
     // remove filters from local storage
-    localStorage.removeItem(`global_view_filters/${data.id}`);
+    if (typeof window !== "undefined") localStorage.removeItem(`global_view_filters/${data.id}`);
   };
 
   return (

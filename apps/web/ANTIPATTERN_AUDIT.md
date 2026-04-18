@@ -3194,7 +3194,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 - [x] `core/components/workspace/sidebar/dropdown-item.tsx`
 - [x] `core/components/workspace/sidebar/project-navigation.tsx`
 - [x] `core/components/workspace/sidebar/projects-list-item.tsx`
-- [!] `core/components/workspace/sidebar/projects-list.tsx` — `localStorage.setItem("isAllProjectsListOpen", ...)` directo (líneas 149, 154) sin SSR guard ni wrapper. Usar el hook `useLocalStorage` del repo para consistencia con el resto del codebase.
+- [x] `core/components/workspace/sidebar/projects-list.tsx` — Migrado de `localStorage.setItem` directo al hook `useLocalStorage` para consistencia + SSR safety.
 - [x] `core/components/workspace/sidebar/quick-actions.tsx`
 - [x] `core/components/workspace/sidebar/sidebar-item.tsx`
 - [x] `core/components/workspace/sidebar/sidebar-menu-items.tsx`
@@ -3236,7 +3236,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 - [x] `core/components/workspace/views/default-view-list-item.tsx`
 - [x] `core/components/workspace/views/default-view-quick-action.tsx`
-- [!] `core/components/workspace/views/delete-view-modal.tsx` — `localStorage.removeItem(\`global_view_filters/\${data.id}\`)` (línea 52) directo. Encapsular con `useLocalStorage` o helper.
+- [x] `core/components/workspace/views/delete-view-modal.tsx` — `localStorage.removeItem` envuelto con `typeof window !== "undefined"`.
 - [x] `core/components/workspace/views/form.tsx`
 - [x] `core/components/workspace/views/header.tsx`
 - [x] `core/components/workspace/views/modal.tsx`
@@ -3337,7 +3337,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 - [x] `core/hooks/use-issue-peek-overview-redirection.tsx`
 - [x] `core/hooks/use-issues-actions.tsx`
 - [x] `core/hooks/use-keypress.tsx`
-- [!] `core/hooks/use-local-storage.tsx` — `any` en signatures de `getValueFromLocalStorage(key, defaultValue: any)` y `setValueIntoLocalStorage(key, value: any)`. Como helpers genéricos, convertir a genérico `<T>` para preservar inferencia.
+- [x] `core/hooks/use-local-storage.tsx` — `getValueFromLocalStorage` y `setValueIntoLocalStorage` convertidos a genéricos `<T>` eliminando `any` en firmas.
 - [x] `core/hooks/use-multiple-select.ts` — debug `console.log("force adding")` eliminado.
 - [x] `core/hooks/use-navigation-preferences.ts`
 - [x] `core/hooks/use-online-status.ts`
@@ -3574,7 +3574,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 - [!] `core/store/root.store.ts` — 12× `as unknown as RootStore` (type laundering por arquitectura modular CE/EE) + 2× `localStorage.setItem` en `resetOnSignOut` sin guard SSR (aceptable por contexto de uso client-only)
 - [x] `core/store/router.store.ts`
 - [!] `core/store/state.store.ts` — Legacy error pattern: raw axios rethrow en `.catch` (no usa `ApiError`). Misma deuda técnica que los services.
-- [!] `core/store/theme.store.ts` — `localStorage.setItem` en 6 toggle methods sin guard SSR. `theme.store` se instancia en `CoreRootStore` constructor que SÍ corre en SSR; aunque los toggles se llaman por click, un path de hidratación podría invocarlos. Envolver con `if (typeof window !== 'undefined')`.
+- [x] `core/store/theme.store.ts` — 9× `localStorage.setItem` wrapped con `if (typeof window !== "undefined")` para SSR safety.
 
 #### `core/store/editor/`
 

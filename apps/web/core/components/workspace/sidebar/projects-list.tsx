@@ -28,6 +28,7 @@ import { useAppTheme } from "@/hooks/store/use-app-theme";
 import { useCommandPalette } from "@/hooks/store/use-command-palette";
 import { useProject } from "@/hooks/store/use-project";
 import { useUserPermissions } from "@/hooks/store/user";
+import useLocalStorage from "@/hooks/use-local-storage";
 import { useProjectNavigationPreferences } from "@/hooks/use-navigation-preferences";
 // plane web imports
 import type { TProject } from "@/plane-web/types";
@@ -36,7 +37,10 @@ import { SidebarProjectsListItem } from "./projects-list-item";
 
 export const SidebarProjectsList = observer(function SidebarProjectsList() {
   // states
-  const [isAllProjectsListOpen, setIsAllProjectsListOpen] = useState(true);
+  const { storedValue: isAllProjectsListOpen, setValue: setIsAllProjectsListOpen } = useLocalStorage<boolean>(
+    "isAllProjectsListOpen",
+    true
+  );
   const [isProjectModalOpen, setIsProjectModalOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false); // scroll animation state
   // refs
@@ -146,12 +150,10 @@ export const SidebarProjectsList = observer(function SidebarProjectsList() {
 
   const toggleListDisclosure = (isOpen: boolean) => {
     setIsAllProjectsListOpen(isOpen);
-    localStorage.setItem("isAllProjectsListOpen", isOpen.toString());
   };
   useEffect(() => {
     if (pathname.includes("projects")) {
       setIsAllProjectsListOpen(true);
-      localStorage.setItem("isAllProjectsListOpen", "true");
     }
   }, [pathname]);
   return (
