@@ -31,16 +31,16 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 ### `app/`
 
-- [ ] `app/entry.client.tsx`
-- [ ] `app/layout.tsx`
-- [ ] `app/not-found.tsx`
-- [ ] `app/provider.tsx`
-- [ ] `app/root.tsx`
-- [ ] `app/routes.ts`
+- [x] `app/entry.client.tsx`
+- [!] `app/layout.tsx` — Clarity `<Script>` inyecta `${process.env.VITE_SESSION_RECORDER_KEY}` sin escapar dentro de JS inline. Aunque el valor viene de build-env, es defensa-en-profundidad: usar `JSON.stringify(process.env.VITE_SESSION_RECORDER_KEY)` para neutralizar breakouts. Además archivo duplica `<head>`/meta con `app/root.tsx` (es un layout legacy de Next.js).
+- [x] `app/not-found.tsx`
+- [x] `app/provider.tsx`
+- [!] `app/root.tsx` — Mismo issue Clarity `<Script>` (interpolación de env sin `JSON.stringify`). `parseInt(process.env.VITE_ENABLE_SESSION_RECORDER || "0")` sin radix explícito. `HydrateFallback` documenta bien paridad SSR/CSR.
+- [x] `app/routes.ts`
 
 #### `app/(all)/`
 
-- [ ] `app/(all)/layout.preload.tsx`
+- [x] `app/(all)/layout.preload.tsx`
 - [ ] `app/(all)/layout.tsx`
 
 #### `app/(all)/[workspaceSlug]/`
@@ -75,7 +75,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 - [ ] `app/(all)/[workspaceSlug]/(projects)/browse/[workItem]/header.tsx`
 - [ ] `app/(all)/[workspaceSlug]/(projects)/browse/[workItem]/layout.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(projects)/browse/[workItem]/page.tsx`
+- [!] `app/(all)/[workspaceSlug]/(projects)/browse/[workItem]/page.tsx` — Guards `if (window && ...)` redundantes dentro de `useEffect` (el efecto solo corre client-side; `window` siempre está definido). No es bug, es código defensivo innecesario — limpiar para mantener claridad. Listener de resize bien registrado y limpiado.
 - [ ] `app/(all)/[workspaceSlug]/(projects)/browse/[workItem]/work-item-header.tsx`
 
 #### `app/(all)/[workspaceSlug]/(projects)/drafts/`
@@ -103,7 +103,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `app/(all)/[workspaceSlug]/(projects)/profile/[userId]/activity/`
 
-- [ ] `app/(all)/[workspaceSlug]/(projects)/profile/[userId]/activity/page.tsx`
+- [!] `app/(all)/[workspaceSlug]/(projects)/profile/[userId]/activity/page.tsx` — `key={i}` (index como key, línea 42) sobre `WorkspaceActivityListPage` en loop paginado. Aceptable hoy porque las páginas solo se appendan (nunca reordenan/eliminan), pero frágil: si el cursor/paginación cambia, React reusará componentes equivocados. Mejor usar `key={\`\${PER_PAGE}:\${i}:0\`}` (el cursor mismo, que es estable y único).
 
 #### `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/`
 
@@ -198,7 +198,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/pages/(list)/`
 
-- [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/pages/(list)/header.tsx`
+- [!] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/pages/(list)/header.tsx` — `catch (err: any)` (línea 60) tipado como `any` en lugar de `unknown` + narrowing. Deuda técnica menor consistente con el resto del código legacy.
 - [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/pages/(list)/layout.tsx`
 - [ ] `app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/pages/(list)/page.tsx`
 
@@ -285,7 +285,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 #### `app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/webhooks/[webhookId]/`
 
 - [ ] `app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/webhooks/[webhookId]/header.tsx`
-- [ ] `app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/webhooks/[webhookId]/page.tsx`
+- [!] `app/(all)/[workspaceSlug]/(settings)/settings/(workspace)/webhooks/[webhookId]/page.tsx` — `catch (error: any)` (línea 71) tipado como `any` (con `eslint-disable` comentado). Preferir `catch (error: unknown)` y narrowing para acceder a `error.error`.
 
 #### `app/(all)/[workspaceSlug]/(settings)/settings/projects/`
 
@@ -366,23 +366,23 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `app/(all)/auth/github/callback/`
 
-- [ ] `app/(all)/auth/github/callback/page.tsx`
+- [x] `app/(all)/auth/github/callback/page.tsx`
 
 #### `app/(all)/auth/github/setup/`
 
-- [ ] `app/(all)/auth/github/setup/page.tsx`
+- [x] `app/(all)/auth/github/setup/page.tsx`
 
 #### `app/(all)/auth/github/user-callback/`
 
-- [ ] `app/(all)/auth/github/user-callback/page.tsx`
+- [x] `app/(all)/auth/github/user-callback/page.tsx`
 
 #### `app/(all)/auth/gitlab/callback/`
 
-- [ ] `app/(all)/auth/gitlab/callback/page.tsx`
+- [x] `app/(all)/auth/gitlab/callback/page.tsx`
 
 #### `app/(all)/auth/slack/callback/`
 
-- [ ] `app/(all)/auth/slack/callback/page.tsx`
+- [x] `app/(all)/auth/slack/callback/page.tsx`
 
 #### `app/(all)/create-workspace/`
 
@@ -424,17 +424,17 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `app/compat/next/`
 
-- [ ] `app/compat/next/helper.ts`
-- [ ] `app/compat/next/image.tsx`
-- [ ] `app/compat/next/link.tsx`
-- [ ] `app/compat/next/navigation.ts`
-- [ ] `app/compat/next/script.tsx`
+- [x] `app/compat/next/helper.ts`
+- [x] `app/compat/next/image.tsx`
+- [x] `app/compat/next/link.tsx`
+- [!] `app/compat/next/navigation.ts` — `useRouter` shim envuelve cada `push`/`replace`/`back`/`forward` en `setTimeout(..., 0)` sin cleanup: la navegación puede dispararse post-unmount del componente llamante (no se cancela el timer). `refresh` usa `location.reload()` sin `window.` prefix (funciona pero inconsistente). Hack documentado como "defer navigation to avoid state updates during render" — el problema raíz (actualizar estado durante render) debería corregirse en el caller en lugar de parchearlo aquí.
+- [!] `app/compat/next/script.tsx` — (1) `[key: string]: any;` en `ScriptProps`; (2) `useEffect` dep array incluye `rest` (objeto nuevo en cada render) → el efecto re-crea y re-inserta el `<script>` en cada render del parent, leak potencial y doble ejecución; solución: serializar `rest` (`JSON.stringify`) o spread de props conocidas; (3) `script.setAttribute(key, rest[key])` sin validación — riesgo XSS si un caller pasa props controladas por usuario (bajo en práctica, pero sin whitelist).
 
 #### `app/error/`
 
-- [ ] `app/error/dev.tsx`
-- [ ] `app/error/index.tsx`
-- [ ] `app/error/prod.tsx`
+- [x] `app/error/dev.tsx`
+- [x] `app/error/index.tsx`
+- [x] `app/error/prod.tsx`
 
 #### `app/routes/`
 
