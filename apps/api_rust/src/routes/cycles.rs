@@ -114,7 +114,9 @@ pub struct CycleIssueResponse {
 pub struct CreateCycleRequest {
     pub name: String,
     pub description: Option<String>,
+    #[serde(default, deserialize_with = "crate::utils::serde_date::deserialize_date_or_datetime")]
     pub start_date: Option<chrono::DateTime<chrono::FixedOffset>>,
+    #[serde(default, deserialize_with = "crate::utils::serde_date::deserialize_date_or_datetime")]
     pub end_date: Option<chrono::DateTime<chrono::FixedOffset>>,
 }
 
@@ -122,7 +124,9 @@ pub struct CreateCycleRequest {
 pub struct UpdateCycleRequest {
     pub name: Option<String>,
     pub description: Option<String>,
+    #[serde(default, deserialize_with = "crate::utils::serde_date::deserialize_date_or_datetime")]
     pub start_date: Option<chrono::DateTime<chrono::FixedOffset>>,
+    #[serde(default, deserialize_with = "crate::utils::serde_date::deserialize_date_or_datetime")]
     pub end_date: Option<chrono::DateTime<chrono::FixedOffset>>,
 }
 
