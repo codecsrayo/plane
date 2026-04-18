@@ -63,6 +63,9 @@ export const GithubPRStateMappingModal = observer(function GithubPRStateMappingM
   const handleProjectChange = (projectId: string) => {
     setSelectedProject(projectId);
     setStateMapping({});
+    // Reset preventRegression when the project changes — keeps state
+    // consistent with handleClose which always resets it.
+    setPreventRegression(false);
   };
 
   const handleStateChange = (prState: string, planeStateId: string) => {
