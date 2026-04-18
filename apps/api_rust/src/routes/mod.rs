@@ -152,6 +152,7 @@ pub mod instances;
         cycles::list_cycle_issues,
         cycles::add_issues_to_cycle,
         cycles::remove_issue_from_cycle,
+        cycles::cycle_analytics,
         modules::list_modules,
         modules::create_module,
         modules::get_module,
@@ -737,6 +738,10 @@ pub fn build_router(state: AppState) -> Router {
         .route(
             "/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/cycle-issues/{issue_id}",
             delete(cycles::remove_issue_from_cycle),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/analytics",
+            get(cycles::cycle_analytics),
         )
         // ── Modules ─────────────────────────────────────────────────────────
         .route(

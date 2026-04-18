@@ -10,14 +10,17 @@
 //!   GET    /api/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/cycle-issues/
 //!   POST   /api/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/cycle-issues/
 //!   DELETE /api/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/cycle-issues/{issue_id}/
+//!   GET    /api/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/analytics/
 
 use axum::{
-    extract::{Path, State},
+    extract::{Path, Query, State},
     http::StatusCode,
+    response::IntoResponse,
     Json,
 };
 use sea_orm::{
-    ActiveModelTrait, ActiveValue::Set, ColumnTrait, EntityTrait, QueryFilter, QueryOrder,
+    ActiveModelTrait, ActiveValue::Set, ColumnTrait, ConnectionTrait, EntityTrait, QueryFilter,
+    QueryOrder, Statement,
 };
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
@@ -553,4 +556,548 @@ pub async fn remove_issue_from_cycle(
     am.update(&state.db).await.map_err(AppError::Database)?;
 
     Ok(StatusCode::NO_CONTENT)
+}
+
+// ═════════════════════════════════════════════════════════════════════════════
+// Cycle Analytics
+// ═════════════════════════════════════════════════════════════════════════════
+//
+// Mirror de `CycleAnalyticsEndpoint` en
+// apps/api/plane/app/views/cycle/base.py:786, incluyendo el helper
+// `burndown_plot` en apps/api/plane/utils/analytics_plot.py.
+
+#[derive(Debug, Deserialize)]
+pub struct CycleAnalyticsQuery {
+    /// "issues" (default) o "points".
+    #[serde(rename = "type")]
+    pub analytic_type: Option<String>,
+}
+
+/// GET /api/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/analytics/
+///
+/// Analytics del ciclo: distribución de issues por assignee y por label, más
+/// el burndown chart acumulado. Mirror exacto de `CycleAnalyticsEndpoint.get`.
+///
+/// Comportamiento:
+/// - Si el ciclo no tiene `start_date` o `end_date` → 400.
+/// - Si el ciclo tiene `progress_snapshot` no vacío → early return con los
+///   datos snapshot (el ciclo está cerrado y los issues fueron transferidos).
+/// - Si `type=points` y el proyecto no tiene estimate de tipo "points" →
+///   distribuciones vacías, chart vacío (paridad Django).
+/// - Si `type=issues` → counts de issues por assignee/label + burndown por issues.
+/// - Si `type=points` + estimate points → sum de estimate_point.value por
+///   assignee/label + burndown por puntos.
+///
+/// Permisos: ADMIN / MEMBER / GUEST (paridad con Django).
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/analytics/",
+    tag = "Cycles",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project ID"),
+        ("cycle_id" = Uuid, Path, description = "Cycle ID"),
+        ("type" = Option<String>, Query, description = "'issues' (default) o 'points'"),
+    ),
+    responses(
+        (status = 200, description = "Analytics del ciclo"),
+        (status = 400, description = "Ciclo sin fechas"),
+        (status = 403, description = "No autorizado"),
+        (status = 404, description = "Ciclo no encontrado"),
+    ),
+    security(("TokenAuth" = []))
+)]
+pub async fn cycle_analytics(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Path((_slug, _project_id, cycle_id)): Path<(String, Uuid, Uuid)>,
+    Query(params): Query<CycleAnalyticsQuery>,
+) -> Result<impl IntoResponse, AppError> {
+    // Permisos: GUEST+ a nivel proyecto o ADMIN a nivel workspace (Django
+    // permite GUEST). require_role además del guard = defensa en profundidad.
+    require_role(guard.project_member.role, guard.workspace_member.role, ROLE_GUEST)?;
+
+    let ws_id = guard.workspace.id;
+    let project_id = guard.project.id;
+    let db = &state.db;
+    let analytic_type = params.analytic_type.as_deref().unwrap_or("issues");
+
+    // ── 1. Fetch del ciclo (con filtros workspace+project como defensa extra) ──
+    let cycle = cycles::Entity::find_by_id(cycle_id)
+        .filter(cycles::Column::WorkspaceId.eq(ws_id))
+        .filter(cycles::Column::ProjectId.eq(project_id))
+        .filter(cycles::Column::DeletedAt.is_null())
+        .one(db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    // ── 2. Validación de fechas (paridad Django: 400 si falta alguna) ─────────
+    let (start_dt, end_dt) = match (cycle.start_date, cycle.end_date) {
+        (Some(s), Some(e)) => (s, e),
+        _ => {
+            return Err(AppError::BadRequest(
+                "Cycle has no start or end date".into(),
+            ));
+        }
+    };
+    let start_date = start_dt.date_naive();
+    let end_date = end_dt.date_naive();
+
+    // ── 3. Progress snapshot: si existe y es un objeto no-vacío, early return ─
+    //
+    // Django: `if cycle.progress_snapshot:` — truthy check sobre un dict.
+    // En Postgres la columna es NOT NULL con default `{}`, así que puede
+    // llegar como objeto vacío (falsy en Python).
+    if let serde_json::Value::Object(snapshot) = &cycle.progress_snapshot {
+        if !snapshot.is_empty() {
+            let distribution = snapshot
+                .get("distribution")
+                .cloned()
+                .unwrap_or(serde_json::Value::Object(serde_json::Map::new()));
+            let labels = distribution
+                .get("labels")
+                .cloned()
+                .unwrap_or(serde_json::json!([]));
+            let assignees = distribution
+                .get("assignees")
+                .cloned()
+                .unwrap_or(serde_json::json!([]));
+            let completion_chart = distribution
+                .get("completion_chart")
+                .cloned()
+                .unwrap_or(serde_json::json!({}));
+            return Ok(Json(serde_json::json!({
+                "labels": labels,
+                "assignees": assignees,
+                "completion_chart": completion_chart,
+            })));
+        }
+    }
+
+    // ── 4. ¿El proyecto usa estimate con type="points"? ───────────────────────
+    let estimate_type_points = {
+        let sql = format!(
+            "SELECT EXISTS (
+               SELECT 1 FROM estimates e
+               JOIN projects p ON p.estimate_id = e.id
+               WHERE p.id = '{project_id}'
+                 AND p.workspace_id = '{ws_id}'
+                 AND e.\"type\" = 'points'
+                 AND e.deleted_at IS NULL
+             ) AS ex"
+        );
+        db.query_one(Statement::from_string(
+            sea_orm::DatabaseBackend::Postgres,
+            sql,
+        ))
+        .await
+        .map_err(AppError::Database)?
+        .and_then(|r| r.try_get::<bool>("", "ex").ok())
+        .unwrap_or(false)
+    };
+
+    // ── 5. Fragmentos SQL reutilizables para las distribuciones ───────────────
+    //
+    // El scope_join garantiza que los issues considerados pertenecen al
+    // ciclo, al workspace y al proyecto correctos. Reusado en todas las
+    // queries de distribución + burndown.
+    let scope_join = format!(
+        "JOIN cycle_issues ci ON ci.issue_id = i.id
+           AND ci.cycle_id = '{cycle_id}'
+           AND ci.workspace_id = '{ws_id}'
+           AND ci.project_id = '{project_id}'
+           AND ci.deleted_at IS NULL"
+    );
+    // Paridad con `Issue.issue_objects` (manager): excluye draft y archived.
+    // Aquí no excluimos triage porque requiere JOIN extra con states y es
+    // extremadamente improbable que issues en triage estén en un ciclo.
+    let issue_filters = format!(
+        "i.deleted_at IS NULL
+         AND i.archived_at IS NULL
+         AND i.is_draft = false
+         AND i.workspace_id = '{ws_id}'
+         AND i.project_id = '{project_id}'"
+    );
+
+    // Default vacíos (usados cuando type=points sin estimate_type_points).
+    let mut assignee_distribution: Vec<serde_json::Value> = Vec::new();
+    let mut label_distribution: Vec<serde_json::Value> = Vec::new();
+    let mut completion_chart = serde_json::json!({});
+
+    // ── 6. type=points con estimate_type=points ───────────────────────────────
+    if analytic_type == "points" && estimate_type_points {
+        // Assignee distribution: SUM(ep.value::float) por assignee.
+        let sql = format!(
+            "SELECT
+               u.display_name                                          AS display_name,
+               u.id                                                    AS assignee_id,
+               CASE
+                 WHEN u.avatar_asset_id IS NOT NULL
+                   THEN '/api/assets/v2/static/' || u.avatar_asset_id::text || '/'
+                 ELSE u.avatar
+               END                                                     AS avatar_url,
+               COALESCE(SUM(ep.value::float), 0)                       AS total_estimates,
+               COALESCE(SUM(ep.value::float)
+                 FILTER (WHERE i.completed_at IS NOT NULL), 0)         AS completed_estimates,
+               COALESCE(SUM(ep.value::float)
+                 FILTER (WHERE i.completed_at IS NULL), 0)             AS pending_estimates
+             FROM issues i
+             {scope_join}
+             LEFT JOIN issue_assignees ia
+               ON ia.issue_id = i.id AND ia.deleted_at IS NULL
+             LEFT JOIN users u ON u.id = ia.assignee_id
+             LEFT JOIN estimate_points ep
+               ON ep.id = i.estimate_point_id AND ep.deleted_at IS NULL
+             WHERE {issue_filters}
+             GROUP BY u.id, u.display_name, u.avatar_asset_id, u.avatar
+             ORDER BY u.display_name NULLS LAST"
+        );
+        let rows = db
+            .query_all(Statement::from_string(
+                sea_orm::DatabaseBackend::Postgres,
+                sql,
+            ))
+            .await
+            .map_err(AppError::Database)?;
+        assignee_distribution = rows
+            .iter()
+            .map(|r| {
+                serde_json::json!({
+                    "display_name":        r.try_get::<String>("", "display_name").ok(),
+                    "assignee_id":         r.try_get::<Uuid>("", "assignee_id").ok(),
+                    "avatar_url":          r.try_get::<String>("", "avatar_url").ok(),
+                    "total_estimates":     r.try_get::<f64>("", "total_estimates").unwrap_or(0.0),
+                    "completed_estimates": r.try_get::<f64>("", "completed_estimates").unwrap_or(0.0),
+                    "pending_estimates":   r.try_get::<f64>("", "pending_estimates").unwrap_or(0.0),
+                })
+            })
+            .collect();
+
+        // Label distribution: SUM(ep.value::float) por label.
+        let sql = format!(
+            "SELECT
+               l.name                                                  AS label_name,
+               l.color                                                 AS color,
+               l.id                                                    AS label_id,
+               COALESCE(SUM(ep.value::float), 0)                       AS total_estimates,
+               COALESCE(SUM(ep.value::float)
+                 FILTER (WHERE i.completed_at IS NOT NULL), 0)         AS completed_estimates,
+               COALESCE(SUM(ep.value::float)
+                 FILTER (WHERE i.completed_at IS NULL), 0)             AS pending_estimates
+             FROM issues i
+             {scope_join}
+             LEFT JOIN issue_labels il
+               ON il.issue_id = i.id AND il.deleted_at IS NULL
+             LEFT JOIN labels l ON l.id = il.label_id AND l.deleted_at IS NULL
+             LEFT JOIN estimate_points ep
+               ON ep.id = i.estimate_point_id AND ep.deleted_at IS NULL
+             WHERE {issue_filters}
+             GROUP BY l.id, l.name, l.color
+             ORDER BY l.name NULLS LAST"
+        );
+        let rows = db
+            .query_all(Statement::from_string(
+                sea_orm::DatabaseBackend::Postgres,
+                sql,
+            ))
+            .await
+            .map_err(AppError::Database)?;
+        label_distribution = rows
+            .iter()
+            .map(|r| {
+                serde_json::json!({
+                    "label_name":          r.try_get::<String>("", "label_name").ok(),
+                    "color":               r.try_get::<String>("", "color").ok(),
+                    "label_id":            r.try_get::<Uuid>("", "label_id").ok(),
+                    "total_estimates":     r.try_get::<f64>("", "total_estimates").unwrap_or(0.0),
+                    "completed_estimates": r.try_get::<f64>("", "completed_estimates").unwrap_or(0.0),
+                    "pending_estimates":   r.try_get::<f64>("", "pending_estimates").unwrap_or(0.0),
+                })
+            })
+            .collect();
+
+        completion_chart = burndown_plot(
+            db,
+            ws_id,
+            project_id,
+            cycle_id,
+            start_date,
+            end_date,
+            BurndownMode::Points,
+        )
+        .await?;
+    }
+
+    // ── 7. type=issues ────────────────────────────────────────────────────────
+    if analytic_type == "issues" {
+        // Assignee distribution: COUNT de issues por assignee.
+        // Django usa Count("assignee_id", filter=...). COUNT(col) ignora NULLs,
+        // por lo que el bucket de issues sin assignee tiene 0 counts (paridad).
+        let sql = format!(
+            "SELECT
+               u.display_name                                          AS display_name,
+               u.id                                                    AS assignee_id,
+               CASE
+                 WHEN u.avatar_asset_id IS NOT NULL
+                   THEN '/api/assets/v2/static/' || u.avatar_asset_id::text || '/'
+                 ELSE u.avatar
+               END                                                     AS avatar_url,
+               COUNT(u.id)                                             AS total_issues,
+               COUNT(u.id) FILTER (WHERE i.completed_at IS NOT NULL)   AS completed_issues,
+               COUNT(u.id) FILTER (WHERE i.completed_at IS NULL)       AS pending_issues
+             FROM issues i
+             {scope_join}
+             LEFT JOIN issue_assignees ia
+               ON ia.issue_id = i.id AND ia.deleted_at IS NULL
+             LEFT JOIN users u ON u.id = ia.assignee_id
+             WHERE {issue_filters}
+             GROUP BY u.id, u.display_name, u.avatar_asset_id, u.avatar
+             ORDER BY u.display_name NULLS LAST"
+        );
+        let rows = db
+            .query_all(Statement::from_string(
+                sea_orm::DatabaseBackend::Postgres,
+                sql,
+            ))
+            .await
+            .map_err(AppError::Database)?;
+        assignee_distribution = rows
+            .iter()
+            .map(|r| {
+                serde_json::json!({
+                    "display_name":     r.try_get::<String>("", "display_name").ok(),
+                    "assignee_id":      r.try_get::<Uuid>("", "assignee_id").ok(),
+                    "avatar_url":       r.try_get::<String>("", "avatar_url").ok(),
+                    "total_issues":     r.try_get::<i64>("", "total_issues").unwrap_or(0),
+                    "completed_issues": r.try_get::<i64>("", "completed_issues").unwrap_or(0),
+                    "pending_issues":   r.try_get::<i64>("", "pending_issues").unwrap_or(0),
+                })
+            })
+            .collect();
+
+        // Label distribution: COUNT por label.
+        let sql = format!(
+            "SELECT
+               l.name                                                  AS label_name,
+               l.color                                                 AS color,
+               l.id                                                    AS label_id,
+               COUNT(l.id)                                             AS total_issues,
+               COUNT(l.id) FILTER (WHERE i.completed_at IS NOT NULL)   AS completed_issues,
+               COUNT(l.id) FILTER (WHERE i.completed_at IS NULL)       AS pending_issues
+             FROM issues i
+             {scope_join}
+             LEFT JOIN issue_labels il
+               ON il.issue_id = i.id AND il.deleted_at IS NULL
+             LEFT JOIN labels l ON l.id = il.label_id AND l.deleted_at IS NULL
+             WHERE {issue_filters}
+             GROUP BY l.id, l.name, l.color
+             ORDER BY l.name NULLS LAST"
+        );
+        let rows = db
+            .query_all(Statement::from_string(
+                sea_orm::DatabaseBackend::Postgres,
+                sql,
+            ))
+            .await
+            .map_err(AppError::Database)?;
+        label_distribution = rows
+            .iter()
+            .map(|r| {
+                serde_json::json!({
+                    "label_name":       r.try_get::<String>("", "label_name").ok(),
+                    "color":            r.try_get::<String>("", "color").ok(),
+                    "label_id":         r.try_get::<Uuid>("", "label_id").ok(),
+                    "total_issues":     r.try_get::<i64>("", "total_issues").unwrap_or(0),
+                    "completed_issues": r.try_get::<i64>("", "completed_issues").unwrap_or(0),
+                    "pending_issues":   r.try_get::<i64>("", "pending_issues").unwrap_or(0),
+                })
+            })
+            .collect();
+
+        completion_chart = burndown_plot(
+            db,
+            ws_id,
+            project_id,
+            cycle_id,
+            start_date,
+            end_date,
+            BurndownMode::Issues,
+        )
+        .await?;
+    }
+
+    Ok(Json(serde_json::json!({
+        "assignees": assignee_distribution,
+        "labels": label_distribution,
+        "completion_chart": completion_chart,
+    })))
+}
+
+// ─── Burndown plot ───────────────────────────────────────────────────────────
+//
+// Mirror de `burndown_plot` (apps/api/plane/utils/analytics_plot.py:97).
+// Genera un dict `{date_str: cumulative_pending}` para cada día en
+// [start_date, end_date]. Las fechas futuras quedan en `null` (paridad).
+
+#[derive(Debug, Clone, Copy)]
+enum BurndownMode {
+    Issues,
+    Points,
+}
+
+async fn burndown_plot(
+    db: &sea_orm::DatabaseConnection,
+    ws_id: Uuid,
+    project_id: Uuid,
+    cycle_id: Uuid,
+    start_date: chrono::NaiveDate,
+    end_date: chrono::NaiveDate,
+    mode: BurndownMode,
+) -> Result<serde_json::Value, AppError> {
+    // ── Total del ciclo ──────────────────────────────────────────────────────
+    //
+    // Paridad con Django: para issues, total = `cycle.total_issues`
+    // (issues activos no-draft en el ciclo). Para points, total = suma de
+    // estimate_point.value de todos los issues (con estimate) del ciclo.
+    let total: f64 = match mode {
+        BurndownMode::Issues => {
+            let sql = format!(
+                "SELECT COUNT(DISTINCT i.id) AS total
+                 FROM issues i
+                 JOIN cycle_issues ci ON ci.issue_id = i.id
+                   AND ci.cycle_id = '{cycle_id}'
+                   AND ci.workspace_id = '{ws_id}'
+                   AND ci.project_id = '{project_id}'
+                   AND ci.deleted_at IS NULL
+                 WHERE i.deleted_at IS NULL
+                   AND i.archived_at IS NULL
+                   AND i.is_draft = false
+                   AND i.workspace_id = '{ws_id}'
+                   AND i.project_id = '{project_id}'"
+            );
+            db.query_one(Statement::from_string(
+                sea_orm::DatabaseBackend::Postgres,
+                sql,
+            ))
+            .await
+            .map_err(AppError::Database)?
+            .and_then(|r| r.try_get::<i64>("", "total").ok())
+            .unwrap_or(0) as f64
+        }
+        BurndownMode::Points => {
+            let sql = format!(
+                "SELECT COALESCE(SUM(ep.value::float), 0) AS total
+                 FROM issues i
+                 JOIN cycle_issues ci ON ci.issue_id = i.id
+                   AND ci.cycle_id = '{cycle_id}'
+                   AND ci.workspace_id = '{ws_id}'
+                   AND ci.project_id = '{project_id}'
+                   AND ci.deleted_at IS NULL
+                 JOIN estimate_points ep
+                   ON ep.id = i.estimate_point_id AND ep.deleted_at IS NULL
+                 WHERE i.deleted_at IS NULL
+                   AND i.archived_at IS NULL
+                   AND i.is_draft = false
+                   AND i.workspace_id = '{ws_id}'
+                   AND i.project_id = '{project_id}'
+                   AND i.estimate_point_id IS NOT NULL"
+            );
+            db.query_one(Statement::from_string(
+                sea_orm::DatabaseBackend::Postgres,
+                sql,
+            ))
+            .await
+            .map_err(AppError::Database)?
+            .and_then(|r| r.try_get::<f64>("", "total").ok())
+            .unwrap_or(0.0)
+        }
+    };
+
+    // ── Completados por fecha ────────────────────────────────────────────────
+    let completed_sql = match mode {
+        BurndownMode::Issues => format!(
+            "SELECT DATE(i.completed_at) AS day, COUNT(*)::float AS completed
+             FROM issues i
+             JOIN cycle_issues ci ON ci.issue_id = i.id
+               AND ci.cycle_id = '{cycle_id}'
+               AND ci.workspace_id = '{ws_id}'
+               AND ci.project_id = '{project_id}'
+               AND ci.deleted_at IS NULL
+             WHERE i.deleted_at IS NULL
+               AND i.archived_at IS NULL
+               AND i.is_draft = false
+               AND i.workspace_id = '{ws_id}'
+               AND i.project_id = '{project_id}'
+               AND i.completed_at IS NOT NULL
+             GROUP BY DATE(i.completed_at)
+             ORDER BY DATE(i.completed_at)"
+        ),
+        BurndownMode::Points => format!(
+            "SELECT DATE(i.completed_at) AS day, SUM(ep.value::float) AS completed
+             FROM issues i
+             JOIN cycle_issues ci ON ci.issue_id = i.id
+               AND ci.cycle_id = '{cycle_id}'
+               AND ci.workspace_id = '{ws_id}'
+               AND ci.project_id = '{project_id}'
+               AND ci.deleted_at IS NULL
+             JOIN estimate_points ep
+               ON ep.id = i.estimate_point_id AND ep.deleted_at IS NULL
+             WHERE i.deleted_at IS NULL
+               AND i.archived_at IS NULL
+               AND i.is_draft = false
+               AND i.workspace_id = '{ws_id}'
+               AND i.project_id = '{project_id}'
+               AND i.completed_at IS NOT NULL
+               AND i.estimate_point_id IS NOT NULL
+             GROUP BY DATE(i.completed_at)
+             ORDER BY DATE(i.completed_at)"
+        ),
+    };
+    let rows = db
+        .query_all(Statement::from_string(
+            sea_orm::DatabaseBackend::Postgres,
+            completed_sql,
+        ))
+        .await
+        .map_err(AppError::Database)?;
+
+    // Map: fecha → total completado ese día.
+    use std::collections::BTreeMap;
+    let daily_completed: BTreeMap<chrono::NaiveDate, f64> = rows
+        .iter()
+        .filter_map(|r| {
+            let day = r.try_get::<chrono::NaiveDate>("", "day").ok()?;
+            let completed = r.try_get::<f64>("", "completed").unwrap_or(0.0);
+            Some((day, completed))
+        })
+        .collect();
+
+    // ── Construir chart_data: iterar día por día y acumular ──────────────────
+    let today = chrono::Utc::now().date_naive();
+    let mut chart_data = serde_json::Map::new();
+    let mut current = start_date;
+    while current <= end_date {
+        let key = current.to_string(); // "YYYY-MM-DD"
+        if current > today {
+            // Fechas futuras: null (paridad Django).
+            chart_data.insert(key, serde_json::Value::Null);
+        } else {
+            // Suma de todo lo completado hasta (inclusive) `current`.
+            let completed_to_date: f64 = daily_completed
+                .range(..=current)
+                .map(|(_, v)| v)
+                .sum();
+            let pending = total - completed_to_date;
+            chart_data.insert(
+                key,
+                serde_json::Number::from_f64(pending)
+                    .map(serde_json::Value::Number)
+                    .unwrap_or(serde_json::Value::Null),
+            );
+        }
+        current += chrono::Duration::days(1);
+    }
+
+    Ok(serde_json::Value::Object(chart_data))
 }
