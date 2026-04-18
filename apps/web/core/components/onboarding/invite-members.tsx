@@ -9,12 +9,13 @@ import { observer } from "mobx-react";
 import type {
   Control,
   FieldArrayWithId,
+  FieldErrors,
   UseFieldArrayRemove,
   UseFormGetValues,
   UseFormSetValue,
   UseFormWatch,
 } from "react-hook-form";
-import { Controller, useFieldArray, useForm , FieldErrors } from "react-hook-form";
+import { Controller, useFieldArray, useForm } from "react-hook-form";
 // icons
 import { usePopper } from "react-popper";
 import { XCircle } from "lucide-react";

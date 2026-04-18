@@ -5,7 +5,8 @@
  */
 
 import { useEffect } from "react";
-import { Controller, useForm, FieldNamesMarkedBoolean } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
+import type { FieldNamesMarkedBoolean } from "react-hook-form";
 // plane imports
 import { ETabIndices } from "@plane/constants";
 import { useTranslation } from "@plane/i18n";
