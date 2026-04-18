@@ -88,7 +88,11 @@ export const IssueDetailRoot = observer(function IssueDetailRoot(props: TIssueDe
         try {
           await fetchIssue(targetWorkspaceSlug, targetProjectId, targetIssueId);
         } catch (error) {
-          console.error("Error fetching the parent issue:", error);
+          // NOTA: fetchIssue es genérico, no especifico de padre. El texto
+          // "parent issue" era leftover copy-paste y mandaba a pescar bugs
+          // en lógica de padre inexistentes cuando el error venía del
+          // fetch principal.
+          console.error("Error fetching the work item:", error);
         }
       },
       update: async (

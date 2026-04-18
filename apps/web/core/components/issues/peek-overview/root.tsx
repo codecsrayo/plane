@@ -72,7 +72,9 @@ export const IssuePeekOverview = observer(function IssuePeekOverview(props: IWor
           await fetchIssue(workspaceSlug, projectId, issueId);
         } catch (fetchError) {
           setError(true);
-          console.error("Error fetching the parent issue", fetchError);
+          // NOTA: fetchIssue es genérico; el texto anterior "parent issue"
+          // era leftover copy-paste.
+          console.error("Error fetching the work item:", fetchError);
         }
       },
       update: async (workspaceSlug: string, projectId: string, issueId: string, data: Partial<TIssue>) => {
