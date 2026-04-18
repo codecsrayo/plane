@@ -12,6 +12,7 @@ pub mod passwords;
 pub mod posthog;
 pub mod s3;
 pub mod s3_presigned_post;
+pub mod serde_date;
 pub mod serde_empty;
 pub mod soft_delete;
 pub mod startup;
