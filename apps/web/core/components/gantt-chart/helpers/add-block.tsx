@@ -20,7 +20,7 @@ import { useTimeLineChartStore } from "@/hooks/use-timeline-chart";
 
 type Props = {
   block: IGanttBlock;
-  blockUpdateHandler: (block: any, payload: IBlockUpdateData) => void;
+  blockUpdateHandler: (block: unknown, payload: IBlockUpdateData) => void;
 };
 
 export const ChartAddBlock = observer(function ChartAddBlock(props: Props) {

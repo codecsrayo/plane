@@ -4,7 +4,7 @@
  * See the LICENSE file for details.
  */
 
-import type { Ref } from "react";
+import type { ReactNode, Ref } from "react";
 import { Fragment, useState } from "react";
 import { usePopper } from "react-popper";
 import { Popover } from "@headlessui/react";
@@ -13,7 +13,7 @@ import { Button } from "@plane/propel/button";
 
 type Props = {
   label: string;
-  icon?: any;
+  icon?: ReactNode;
   title: string | undefined;
   description: string | undefined;
   onClick?: () => void;

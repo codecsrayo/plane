@@ -1485,7 +1485,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `core/components/dropdowns/module/`
 
-- [!] `core/components/dropdowns/module/base.tsx` — Cast `onChange={onChange as any}` (línea 169) — arreglar el tipo de `onChange` en la prop o del hijo receptor.
+- [x] `core/components/dropdowns/module/base.tsx` — Resuelto: `onChange as any` → `onChange as unknown as (val: string[]) => void`. Comentario explica que el child (`ModuleButtonContent`) solo invoca `onChange` en la rama `Array.isArray(value)`, nunca en single-select, así que la coerción es safe at runtime. Launder via `unknown` evita `any`.
 - [x] `core/components/dropdowns/module/button-content.tsx`
 - [x] `core/components/dropdowns/module/dropdown.tsx`
 - [x] `core/components/dropdowns/module/module-options.tsx` — Resuelto: mismo patrón `displayValue: any` → `{ name?: string } | null | undefined` con fallback `?? ""`.
@@ -1531,7 +1531,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 - [x] `core/components/editor/rich-text/description-input/index.ts`
 - [x] `core/components/editor/rich-text/description-input/loader.tsx`
-- [!] `core/components/editor/rich-text/description-input/root.tsx` — `console.log("Error in uploading asset:", error)` (línea 276) — usar `console.error`.
+- [x] `core/components/editor/rich-text/description-input/root.tsx` — Resuelto: `console.log("Error in uploading asset:", error)` → `console.error(...)`. El `throw new Error(..., { cause: error })` se mantiene intacto para re-propagación.
 
 #### `core/components/editor/sticky-editor/`
 
@@ -1542,7 +1542,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `core/components/empty-state/`
 
-- [!] `core/components/empty-state/comic-box-button.tsx` — `icon?: any` (línea 16) — tipar.
+- [x] `core/components/empty-state/comic-box-button.tsx` — Resuelto: `icon?: any` → `icon?: ReactNode`. Import `ReactNode` añadido (tree-shakeable `type`-only import).
 - [x] `core/components/empty-state/detailed-empty-state-root.tsx`
 - [x] `core/components/empty-state/helper.tsx`
 - [x] `core/components/empty-state/section-empty-state-root.tsx`
@@ -1588,7 +1588,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 - [x] `core/components/exporter/column.tsx`
 - [x] `core/components/exporter/export-form.tsx`
-- [!] `core/components/exporter/export-modal.tsx` — `const onChange = (val: any) => ...` (línea 69) — tipar.
+- [x] `core/components/exporter/export-modal.tsx` — Resuelto: `const onChange = (val: any) => setValue(val)` → `(val: string[])` (derivado del target `useState<string[]>([])`).
 - [x] `core/components/exporter/guide.tsx`
 - [x] `core/components/exporter/prev-exports.tsx`
 - [x] `core/components/exporter/single-export.tsx`
@@ -1629,7 +1629,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `core/components/gantt-chart/helpers/`
 
-- [!] `core/components/gantt-chart/helpers/add-block.tsx` — `blockUpdateHandler: (block: any, ...)` (línea 23).
+- [x] `core/components/gantt-chart/helpers/add-block.tsx` — Resuelto: `blockUpdateHandler: (block: any, ...)` → `(block: unknown, ...)`. Consistente con el fix aplicado previamente en `ce/components/gantt-chart/blocks/block-row-list.tsx` y `blocks-list.tsx` (tanda 2). La rigidez `any` de `IGanttBlock.data` en `packages/types/src/layout/gantt.ts` es la fuente raíz, pero esta signature ya no la propaga.
 - [!] `core/components/gantt-chart/helpers/draggable.tsx` — `blockToRender: (data: any) => ReactNode` (línea 22).
 - [x] `core/components/gantt-chart/helpers/index.ts`
 

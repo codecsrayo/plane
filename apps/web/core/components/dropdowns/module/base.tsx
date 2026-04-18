@@ -166,7 +166,10 @@ export const ModuleDropdownBase = observer(function ModuleDropdownBase(props: TM
               showCount={showCount}
               showTooltip={showTooltip}
               value={value}
-              onChange={onChange as any}
+              // `ModuleButtonContent` only invokes `onChange` inside its multi-select branch
+              // (`Array.isArray(value)`), so in single-select mode this cast is never actually
+              // called. Launder through `unknown` to narrow the union type without using `any`.
+              onChange={onChange as unknown as (val: string[]) => void}
               className={itemClassName}
             />
           </DropdownButton>

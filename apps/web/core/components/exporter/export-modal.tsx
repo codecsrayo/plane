@@ -66,7 +66,7 @@ export const Exporter = observer(function Exporter(props: Props) {
 
   const [value, setValue] = React.useState<string[]>([]);
   const [multiple, setMultiple] = React.useState<boolean>(false);
-  const onChange = (val: any) => {
+  const onChange = (val: string[]) => {
     setValue(val);
   };
 
