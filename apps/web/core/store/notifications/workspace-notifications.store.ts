@@ -26,7 +26,7 @@ import workspaceNotificationService from "@/services/workspace-notification.serv
 import type { INotification } from "@/store/notifications/notification";
 import { Notification } from "@/store/notifications/notification";
 import type { CoreRootStore } from "@/store/root.store";
-import { toApiError } from "@/services/api.service";
+import { ApiError, toApiError } from "@/services/api.service";
 
 type TNotificationLoader = ENotificationLoader | undefined;
 type TNotificationQueryParamType = ENotificationQueryParamType;
@@ -324,8 +324,25 @@ export class WorkspaceNotificationStore implements IWorkspaceNotificationStore {
         });
       return unreadNotificationCount || undefined;
     } catch (error) {
-      console.error("WorkspaceNotificationStore -> getUnreadNotificationsCount -> error", error);
-      throw toApiError(error);
+      // Este método se dispara en polling vía SWR desde el sidebar/top-nav.
+      // Durante un rebuild/deploy del API el request falla con status 0
+      // (connection refused / network error) o 5xx — transitorio y esperado.
+      // Degradamos a `console.debug` para no saturar la consola del usuario;
+      // errores reales (4xx) siguen en `console.error` para mantener
+      // observabilidad de bugs de contrato.
+      const apiErr = error instanceof ApiError ? error : toApiError(error);
+      const isTransient = apiErr.status === 0 || apiErr.status >= 500;
+      if (isTransient) {
+        console.debug(
+          "WorkspaceNotificationStore -> getUnreadNotificationsCount -> transient (API unavailable)",
+          apiErr.status
+        );
+      } else {
+        console.error("WorkspaceNotificationStore -> getUnreadNotificationsCount -> error", apiErr);
+      }
+      // Rethrow para que SWR registre el error en su estado interno y aplique
+      // backoff — el comportamiento de UI (no actualizar el badge) se mantiene.
+      throw apiErr;
     }
   };
 
