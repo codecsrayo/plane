@@ -769,8 +769,13 @@ pub async fn get_intake_issue(
 ) -> Result<Json<IntakeIssueResponse>, AppError> {
     require_role(guard.project_member.role, guard.workspace_member.role, ROLE_GUEST)?;
 
-    let ii = intake_issues::Entity::find_by_id(pk)
+    // Django interpreta `pk` en la URL /inbox-issues/{pk}/ como el
+    // issue_id del issue, NO como el id del intake_issue
+    // (base.py:499,525 retrieve → `issue_id=pk`). El frontend también envía
+    // `response.issue.id` como path param (project-inbox.store.ts:467, 430).
+    let ii = intake_issues::Entity::find()
         .active()
+        .filter(intake_issues::Column::IssueId.eq(pk))
         .filter(intake_issues::Column::ProjectId.eq(guard.project.id))
         .one(&state.db)
         .await
@@ -815,8 +820,10 @@ pub async fn update_intake_issue(
 ) -> Result<Json<IntakeIssueResponse>, AppError> {
     require_role(guard.project_member.role, guard.workspace_member.role, ROLE_MEMBER)?;
 
-    let ii = intake_issues::Entity::find_by_id(pk)
+    // pk es el issue_id (paridad Django base.py:334 partial_update).
+    let ii = intake_issues::Entity::find()
         .active()
+        .filter(intake_issues::Column::IssueId.eq(pk))
         .filter(intake_issues::Column::ProjectId.eq(guard.project.id))
         .one(&state.db)
         .await
@@ -898,17 +905,42 @@ pub async fn delete_intake_issue(
 ) -> Result<StatusCode, AppError> {
     require_role(guard.project_member.role, guard.workspace_member.role, ROLE_MEMBER)?;
 
-    let ii = intake_issues::Entity::find_by_id(pk)
+    // pk es el issue_id (paridad Django base.py:549 destroy).
+    let ii = intake_issues::Entity::find()
         .active()
+        .filter(intake_issues::Column::IssueId.eq(pk))
         .filter(intake_issues::Column::ProjectId.eq(guard.project.id))
         .one(&state.db)
         .await
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
+    let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
+
+    // Cascada al issue: Django borra también el Issue si el intake_issue
+    // está en status pendiente/rechazado/snoozed/duplicado (base.py:556-559).
+    // Status ACCEPTED (1) mantiene el issue porque ya fue promovido al
+    // proyecto y existe como work item regular.
+    let issue_id = ii.issue_id;
+    let status_val = ii.status;
+    let cascade_statuses = [STATUS_PENDING, STATUS_REJECTED, STATUS_SNOOZED, STATUS_DUPLICATE];
+
     let mut am: intake_issues::ActiveModel = ii.into();
-    am.deleted_at = Set(Some(chrono::Utc::now().into()));
+    am.deleted_at = Set(Some(now));
     am.update(&state.db).await.map_err(AppError::Database)?;
+
+    if cascade_statuses.contains(&status_val) {
+        if let Some(issue) = issues::Entity::find_by_id(issue_id)
+            .active()
+            .one(&state.db)
+            .await
+            .map_err(AppError::Database)?
+        {
+            let mut iam: issues::ActiveModel = issue.into();
+            iam.deleted_at = Set(Some(now));
+            iam.update(&state.db).await.map_err(AppError::Database)?;
+        }
+    }
 
     Ok(StatusCode::NO_CONTENT)
 }
