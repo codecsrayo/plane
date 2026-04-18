@@ -351,18 +351,18 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `app/(all)/accounts/forgot-password/`
 
-- [ ] `app/(all)/accounts/forgot-password/layout.tsx`
-- [ ] `app/(all)/accounts/forgot-password/page.tsx`
+- [x] `app/(all)/accounts/forgot-password/layout.tsx`
+- [x] `app/(all)/accounts/forgot-password/page.tsx`
 
 #### `app/(all)/accounts/reset-password/`
 
-- [ ] `app/(all)/accounts/reset-password/layout.tsx`
-- [ ] `app/(all)/accounts/reset-password/page.tsx`
+- [x] `app/(all)/accounts/reset-password/layout.tsx`
+- [x] `app/(all)/accounts/reset-password/page.tsx`
 
 #### `app/(all)/accounts/set-password/`
 
-- [ ] `app/(all)/accounts/set-password/layout.tsx`
-- [ ] `app/(all)/accounts/set-password/page.tsx`
+- [x] `app/(all)/accounts/set-password/layout.tsx`
+- [x] `app/(all)/accounts/set-password/page.tsx`
 
 #### `app/(all)/auth/github/callback/`
 
@@ -386,41 +386,41 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `app/(all)/create-workspace/`
 
-- [ ] `app/(all)/create-workspace/layout.tsx`
-- [ ] `app/(all)/create-workspace/page.tsx`
+- [x] `app/(all)/create-workspace/layout.tsx`
+- [x] `app/(all)/create-workspace/page.tsx`
 
 #### `app/(all)/invitations/`
 
-- [ ] `app/(all)/invitations/layout.tsx`
-- [ ] `app/(all)/invitations/page.tsx`
+- [x] `app/(all)/invitations/layout.tsx`
+- [x] `app/(all)/invitations/page.tsx`
 
 #### `app/(all)/onboarding/`
 
-- [ ] `app/(all)/onboarding/layout.tsx`
-- [ ] `app/(all)/onboarding/page.tsx`
+- [x] `app/(all)/onboarding/layout.tsx`
+- [x] `app/(all)/onboarding/page.tsx`
 
 #### `app/(all)/settings/profile/`
 
-- [ ] `app/(all)/settings/profile/layout.tsx`
+- [x] `app/(all)/settings/profile/layout.tsx`
 
 #### `app/(all)/settings/profile/[profileTabId]/`
 
-- [ ] `app/(all)/settings/profile/[profileTabId]/page.tsx`
+- [x] `app/(all)/settings/profile/[profileTabId]/page.tsx`
 
 #### `app/(all)/sign-up/`
 
-- [ ] `app/(all)/sign-up/layout.tsx`
-- [ ] `app/(all)/sign-up/page.tsx`
+- [x] `app/(all)/sign-up/layout.tsx`
+- [x] `app/(all)/sign-up/page.tsx`
 
 #### `app/(all)/workspace-invitations/`
 
-- [ ] `app/(all)/workspace-invitations/layout.tsx`
-- [ ] `app/(all)/workspace-invitations/page.tsx`
+- [x] `app/(all)/workspace-invitations/layout.tsx`
+- [x] `app/(all)/workspace-invitations/page.tsx`
 
 #### `app/(home)/`
 
-- [ ] `app/(home)/layout.tsx`
-- [ ] `app/(home)/page.tsx`
+- [x] `app/(home)/layout.tsx`
+- [x] `app/(home)/page.tsx`
 
 #### `app/compat/next/`
 
@@ -438,32 +438,32 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `app/routes/`
 
-- [ ] `app/routes/core.ts`
-- [ ] `app/routes/extended.ts`
-- [ ] `app/routes/helper.ts`
+- [x] `app/routes/core.ts`
+- [x] `app/routes/extended.ts`
+- [x] `app/routes/helper.ts`
 
 #### `app/routes/redirects/`
 
-- [ ] `app/routes/redirects/index.ts`
+- [x] `app/routes/redirects/index.ts`
 
 #### `app/routes/redirects/core/`
 
-- [ ] `app/routes/redirects/core/accounts-signup.tsx`
-- [ ] `app/routes/redirects/core/analytics.tsx`
-- [ ] `app/routes/redirects/core/api-tokens.tsx`
-- [ ] `app/routes/redirects/core/inbox.tsx`
-- [ ] `app/routes/redirects/core/index.ts`
-- [ ] `app/routes/redirects/core/login.tsx`
-- [ ] `app/routes/redirects/core/profile-settings.tsx`
-- [ ] `app/routes/redirects/core/project-settings.tsx`
-- [ ] `app/routes/redirects/core/register.tsx`
-- [ ] `app/routes/redirects/core/sign-in.tsx`
-- [ ] `app/routes/redirects/core/signin.tsx`
-- [ ] `app/routes/redirects/core/workspace-account-settings.tsx`
+- [x] `app/routes/redirects/core/accounts-signup.tsx`
+- [x] `app/routes/redirects/core/analytics.tsx`
+- [x] `app/routes/redirects/core/api-tokens.tsx`
+- [x] `app/routes/redirects/core/inbox.tsx`
+- [x] `app/routes/redirects/core/index.ts`
+- [x] `app/routes/redirects/core/login.tsx`
+- [x] `app/routes/redirects/core/profile-settings.tsx`
+- [x] `app/routes/redirects/core/project-settings.tsx`
+- [x] `app/routes/redirects/core/register.tsx`
+- [x] `app/routes/redirects/core/sign-in.tsx`
+- [x] `app/routes/redirects/core/signin.tsx`
+- [x] `app/routes/redirects/core/workspace-account-settings.tsx`
 
 #### `app/routes/redirects/extended/`
 
-- [ ] `app/routes/redirects/extended/index.ts`
+- [x] `app/routes/redirects/extended/index.ts`
 
 ## `ce/` — 279 archivos
 
