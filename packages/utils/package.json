@@ -33,7 +33,6 @@
     "lodash-es": "catalog:",
     "lucide-react": "catalog:",
     "mdast": "^3.0.0",
-    "react": "catalog:",
     "rehype-parse": "^9.0.1",
     "rehype-remark": "^10.0.1",
     "remark-gfm": "^4.0.1",
@@ -54,5 +53,8 @@
     "@types/sanitize-html": "2.16.0",
     "tsdown": "catalog:",
     "typescript": "catalog:"
+  },
+  "peerDependencies": {
+    "react": "catalog:"
   }
 }
