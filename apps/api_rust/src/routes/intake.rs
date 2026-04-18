@@ -82,6 +82,90 @@ impl IntakeResponse {
 }
 
 #[derive(Debug, Serialize, utoipa::ToSchema)]
+/// Detalle del issue anidado dentro de IntakeIssueResponse.
+///
+/// Paridad con Django `IssueDetailSerializer` (serializers/issue.py:924-935)
+/// usado por `IntakeIssueDetailSerializer` (serializers/intake.py:93-107).
+/// El frontend lee `inboxIssue.issue.created_by` (root.tsx:77,80),
+/// `issue.name`, `issue.description_html`, `issue.priority`, `issue.sequence_id`,
+/// `issue.label_ids`, `issue.assignee_ids` — todos obligatorios.
+///
+/// TODO(paridad-agregados): los campos de conteo (sub_issues_count,
+/// attachment_count, link_count) y los *_ids (label_ids, assignee_ids,
+/// module_ids) requieren queries extra (ArrayAgg en Django). Por ahora se
+/// devuelven con valores por defecto (0 / vec vacío) para desbloquear el
+/// frontend. Refactor pendiente: hacer batch en list_intake_issues.
+pub struct IntakeIssueNestedIssue {
+    pub id: Uuid,
+    pub name: String,
+    pub description_html: String,
+    pub state_id: Option<Uuid>,
+    pub priority: String,
+    pub sequence_id: i32,
+    pub project_id: Uuid,
+    pub parent_id: Option<Uuid>,
+    pub sort_order: f64,
+    pub start_date: Option<chrono::NaiveDate>,
+    pub target_date: Option<chrono::NaiveDate>,
+    pub completed_at: Option<chrono::DateTime<chrono::FixedOffset>>,
+    pub archived_at: Option<chrono::NaiveDate>,
+    pub created_at: chrono::DateTime<chrono::FixedOffset>,
+    pub updated_at: chrono::DateTime<chrono::FixedOffset>,
+    /// Django serializa el FK `created_by` como UUID sin `_id`.
+    pub created_by: Option<Uuid>,
+    pub updated_by: Option<Uuid>,
+    pub is_draft: bool,
+    /// Django `is_intake` se calcula en runtime. Siempre `false` aquí porque
+    /// el issue aún está en draft/intake — el flag solo se vuelve true tras
+    /// aceptarse. TODO: calcular correctamente.
+    pub is_intake: bool,
+    pub estimate_point: Option<Uuid>,
+    pub cycle_id: Option<Uuid>,
+    pub label_ids: Vec<Uuid>,
+    pub assignee_ids: Vec<Uuid>,
+    pub module_ids: Vec<Uuid>,
+    pub sub_issues_count: i64,
+    pub attachment_count: i64,
+    pub link_count: i64,
+}
+
+impl IntakeIssueNestedIssue {
+    /// Construye el detalle del issue desde el Model, con agregados en valores
+    /// por defecto. Ver TODO en la doc del struct.
+    fn from_model(m: &issues::Model) -> Self {
+        Self {
+            id: m.id,
+            name: m.name.clone(),
+            description_html: m.description_html.clone(),
+            state_id: m.state_id,
+            priority: m.priority.clone(),
+            sequence_id: m.sequence_id,
+            project_id: m.project_id,
+            parent_id: m.parent_id,
+            sort_order: m.sort_order,
+            start_date: m.start_date,
+            target_date: m.target_date,
+            completed_at: m.completed_at,
+            archived_at: m.archived_at,
+            created_at: m.created_at,
+            updated_at: m.updated_at,
+            created_by: m.created_by_id,
+            updated_by: m.updated_by_id,
+            is_draft: m.is_draft,
+            is_intake: false,
+            estimate_point: m.estimate_point_id,
+            cycle_id: None,
+            label_ids: Vec::new(),
+            assignee_ids: Vec::new(),
+            module_ids: Vec::new(),
+            sub_issues_count: 0,
+            attachment_count: 0,
+            link_count: 0,
+        }
+    }
+}
+
+#[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct IntakeIssueResponse {
     pub id: Uuid,
     pub issue_id: Uuid,
@@ -94,22 +178,26 @@ pub struct IntakeIssueResponse {
     pub workspace_id: Uuid,
     pub created_by_id: Option<Uuid>,
     pub created_at: chrono::DateTime<chrono::FixedOffset>,
+    /// Detalle del issue asociado — requerido por el frontend. Ver
+    /// IntakeIssueNestedIssue.
+    pub issue: IntakeIssueNestedIssue,
 }
 
 impl IntakeIssueResponse {
-    fn from_model(m: intake_issues::Model) -> Self {
+    fn from_joined(ii: intake_issues::Model, issue: &issues::Model) -> Self {
         Self {
-            id: m.id,
-            issue_id: m.issue_id,
-            intake_id: m.intake_id,
-            status: m.status,
-            source: m.source,
-            snoozed_till: m.snoozed_till,
-            duplicate_to_id: m.duplicate_to_id,
-            project_id: m.project_id,
-            workspace_id: m.workspace_id,
-            created_by_id: m.created_by_id,
-            created_at: m.created_at,
+            id: ii.id,
+            issue_id: ii.issue_id,
+            intake_id: ii.intake_id,
+            status: ii.status,
+            source: ii.source,
+            snoozed_till: ii.snoozed_till,
+            duplicate_to_id: ii.duplicate_to_id,
+            project_id: ii.project_id,
+            workspace_id: ii.workspace_id,
+            created_by_id: ii.created_by_id,
+            created_at: ii.created_at,
+            issue: IntakeIssueNestedIssue::from_model(issue),
         }
     }
 }
@@ -390,7 +478,41 @@ pub async fn list_intake_issues(
         .await
         .map_err(AppError::Database)?;
 
-    Ok(Json(rows.into_iter().map(IntakeIssueResponse::from_model).collect()))
+    // Batch fetch de los issues asociados. Django usa
+    // `.select_related("issue")` en base.py (prefetch inline); nosotros
+    // hacemos un segundo query con `IN` para evitar N+1 y evitar depender de
+    // `find_also_related` (que tiene ambigüedad con Issues1/Issues2 en la
+    // entidad intake_issues — hay dos FKs hacia issues: issue_id y
+    // duplicate_to_id).
+    //
+    // Issues soft-deleted: si un issue_id apunta a un issue borrado, ese
+    // intake_issue se omite del response (Django también los excluye por el
+    // default manager que filtra deleted_at=null).
+    if rows.is_empty() {
+        return Ok(Json(Vec::new()));
+    }
+
+    let issue_ids: Vec<Uuid> = rows.iter().map(|r| r.issue_id).collect();
+    let issues_by_id: std::collections::HashMap<Uuid, issues::Model> = issues::Entity::find()
+        .active()
+        .filter(issues::Column::Id.is_in(issue_ids))
+        .all(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .into_iter()
+        .map(|i| (i.id, i))
+        .collect();
+
+    let responses: Vec<IntakeIssueResponse> = rows
+        .into_iter()
+        .filter_map(|ii| {
+            issues_by_id
+                .get(&ii.issue_id)
+                .map(|issue| IntakeIssueResponse::from_joined(ii, issue))
+        })
+        .collect();
+
+    Ok(Json(responses))
 }
 
 // ── POST /intake-issues/ ──────────────────────────────────────────────────────
@@ -620,7 +742,7 @@ pub async fn create_intake_issue(
     .await
     .map_err(AppError::Database)?;
 
-    Ok((StatusCode::CREATED, Json(IntakeIssueResponse::from_model(intake_issue))))
+    Ok((StatusCode::CREATED, Json(IntakeIssueResponse::from_joined(intake_issue, &issue))))
 }
 
 // ── GET /intake-issues/{pk}/ ──────────────────────────────────────────────────
@@ -655,7 +777,17 @@ pub async fn get_intake_issue(
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
-    Ok(Json(IntakeIssueResponse::from_model(ii)))
+    // Fetch del issue asociado (paridad Django select_related("issue")).
+    // Si el issue está soft-deleted, devolvemos 404 — el intake_issue sin
+    // issue válido es un estado inconsistente.
+    let issue = issues::Entity::find_by_id(ii.issue_id)
+        .active()
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    Ok(Json(IntakeIssueResponse::from_joined(ii, &issue)))
 }
 
 // ── PATCH /intake-issues/{pk}/ ────────────────────────────────────────────────
@@ -731,7 +863,18 @@ pub async fn update_intake_issue(
     am.updated_by_id = Set(Some(guard.user.id));
 
     let updated = am.update(&state.db).await.map_err(AppError::Database)?;
-    Ok(Json(IntakeIssueResponse::from_model(updated)))
+
+    // Fetch del issue tras el update. Si status=ACCEPTED se promovió is_draft
+    // en el bloque de arriba; necesitamos la versión post-update para reflejar
+    // ese cambio en el response.
+    let issue = issues::Entity::find_by_id(updated.issue_id)
+        .active()
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    Ok(Json(IntakeIssueResponse::from_joined(updated, &issue)))
 }
 
 // ── DELETE /intake-issues/{pk}/ ───────────────────────────────────────────────
