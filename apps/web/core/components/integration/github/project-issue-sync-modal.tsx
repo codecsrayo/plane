@@ -4,13 +4,13 @@
  * See the LICENSE file for details.
  */
 
-import { useState } from "react";
+import { useReducer } from "react";
 import { observer } from "mobx-react";
-import useSWR, { mutate } from "swr";
+import useSWR from "swr";
 import { Button } from "@plane/propel/button";
 import { TOAST_TYPE, setToast } from "@plane/propel/toast";
 import type { IGithubRepository } from "@plane/types";
-import { EModalWidth, ModalCore } from "@plane/ui";
+import { CustomSearchSelect, EModalWidth, ModalCore } from "@plane/ui";
 // hooks
 import { useProject } from "@/hooks/store/use-project";
 import { useProjectState } from "@/hooks/store/use-project-state";
@@ -18,71 +18,179 @@ import { useProjectState } from "@/hooks/store/use-project-state";
 import { getGithubReposSwrKey } from "@/components/integration/utils";
 import { integrationService } from "@/services/integrations";
 
+// ---------------------------------------------------------------------------
+// Types
+// ---------------------------------------------------------------------------
+
 type SyncDirection = "bidirectional" | "unidirectional";
-type GithubRepositoryOption = IGithubRepository & { name?: string };
-type IntegrationError = {
-  error?: string;
+
+type ModalState = {
+  selectedProject: string;
+  selectedRepo: string;
+  issueOpenStateId: string;
+  issueClosedStateId: string;
+  syncDirection: SyncDirection;
+  isSyncing: boolean;
 };
+
+type ModalAction =
+  | { type: "SET_PROJECT"; projectId: string }
+  | { type: "SET_REPO"; repoId: string }
+  | { type: "SET_OPEN_STATE"; stateId: string }
+  | { type: "SET_CLOSED_STATE"; stateId: string }
+  | { type: "SET_SYNC_DIRECTION"; direction: SyncDirection }
+  | { type: "SET_SYNCING"; syncing: boolean }
+  | { type: "RESET" };
+
+type IntegrationError = { error?: string };
 
 type Props = {
   isOpen: boolean;
   onClose: () => void;
   workspaceSlug: string;
-  swrKey: string;
+  /** Called after a successful sync creation so the parent can revalidate its own SWR key. */
+  onSuccess: () => void;
 };
+
+// ---------------------------------------------------------------------------
+// Reducer
+// ---------------------------------------------------------------------------
+
+const INITIAL_STATE: ModalState = {
+  selectedProject: "",
+  selectedRepo: "",
+  issueOpenStateId: "",
+  issueClosedStateId: "",
+  syncDirection: "bidirectional",
+  isSyncing: false,
+};
+
+function modalReducer(state: ModalState, action: ModalAction): ModalState {
+  switch (action.type) {
+    case "SET_PROJECT":
+      // Clearing state selections when the project changes avoids stale state IDs
+      // that belong to the previous project reaching the backend.
+      return { ...state, selectedProject: action.projectId, issueOpenStateId: "", issueClosedStateId: "" };
+    case "SET_REPO":
+      return { ...state, selectedRepo: action.repoId };
+    case "SET_OPEN_STATE":
+      return { ...state, issueOpenStateId: action.stateId };
+    case "SET_CLOSED_STATE":
+      return { ...state, issueClosedStateId: action.stateId };
+    case "SET_SYNC_DIRECTION":
+      return { ...state, syncDirection: action.direction };
+    case "SET_SYNCING":
+      return { ...state, isSyncing: action.syncing };
+    case "RESET":
+      return INITIAL_STATE;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Component
+// ---------------------------------------------------------------------------
 
 export const GithubProjectIssueSyncModal = observer(function GithubProjectIssueSyncModal({
   isOpen,
   onClose,
   workspaceSlug,
-  swrKey,
+  onSuccess,
 }: Props) {
   const { workspaceProjectIds, getProjectById } = useProject();
   const { getProjectStates } = useProjectState();
 
-  const [selectedProject, setSelectedProject] = useState("");
-  const [selectedRepo, setSelectedRepo] = useState("");
-  const [issueOpenStateId, setIssueOpenStateId] = useState("");
-  const [issueClosedStateId, setIssueClosedStateId] = useState("");
-  const [syncDirection, setSyncDirection] = useState<SyncDirection>("bidirectional");
-  const [isSyncing, setIsSyncing] = useState(false);
+  const [modalState, dispatch] = useReducer(modalReducer, INITIAL_STATE);
+  const { selectedProject, selectedRepo, issueOpenStateId, issueClosedStateId, syncDirection, isSyncing } = modalState;
 
+  // Only fetch repos while the modal is open — avoids background requests when closed.
   const REPOS_KEY = getGithubReposSwrKey(workspaceSlug);
-  const { data: repos, isLoading: reposLoading } = useSWR<GithubRepositoryOption[]>(isOpen ? REPOS_KEY : null, () =>
-    integrationService.getGithubRepositories(workspaceSlug)
+  const { data: repos, isLoading: reposLoading } = useSWR<IGithubRepository[]>(
+    isOpen ? REPOS_KEY : null,
+    () => integrationService.getGithubRepositories(workspaceSlug)
   );
 
   const projectStates = selectedProject ? (getProjectStates(selectedProject) ?? []) : [];
 
-  const handleProjectChange = (projectId: string) => {
-    setSelectedProject(projectId);
-    setIssueOpenStateId("");
-    setIssueClosedStateId("");
-  };
+  // -------------------------------------------------------------------------
+  // Options for CustomSearchSelect
+  // -------------------------------------------------------------------------
+
+  const projectOptions = (workspaceProjectIds ?? []).flatMap((id) => {
+    const p = getProjectById(id);
+    if (!p) return [];
+    return [{ value: id, query: p.name, content: <span className="truncate">{p.name}</span> }];
+  });
+
+  // Use repo.id (string) as the canonical identifier — stable, unlike
+  // full_name which can change on GitHub renames.
+  const repoOptions = (repos ?? []).map((r) => ({
+    value: r.id,
+    query: r.full_name,
+    content: <span className="truncate">{r.full_name}</span>,
+  }));
+
+  const stateOptions = projectStates.map((s) => ({
+    value: s.id,
+    query: s.name,
+    content: <span className="truncate">{s.name}</span>,
+  }));
+
+  // -------------------------------------------------------------------------
+  // Derived labels for CustomSearchSelect triggers
+  // -------------------------------------------------------------------------
+
+  const selectedProjectLabel = selectedProject
+    ? (getProjectById(selectedProject)?.name ?? "Choose Project…")
+    : "Choose Project…";
+
+  const selectedRepoLabel = reposLoading
+    ? "Loading repositories…"
+    : selectedRepo
+      ? (repos?.find((r) => r.id === selectedRepo)?.full_name ?? "Choose Repository…")
+      : "Choose Repository…";
+
+  const openStateLabel = issueOpenStateId
+    ? (projectStates.find((s) => s.id === issueOpenStateId)?.name ?? "Set State")
+    : "Set State";
+
+  const closedStateLabel = issueClosedStateId
+    ? (projectStates.find((s) => s.id === issueClosedStateId)?.name ?? "Set State")
+    : "Set State";
+
+  // -------------------------------------------------------------------------
+  // Handlers
+  // -------------------------------------------------------------------------
 
   const handleClose = () => {
-    setSelectedProject("");
-    setSelectedRepo("");
-    setIssueOpenStateId("");
-    setIssueClosedStateId("");
-    setSyncDirection("bidirectional");
+    dispatch({ type: "RESET" });
     onClose();
   };
 
   const handleStartSync = async () => {
     if (!selectedRepo || !selectedProject) return;
-    const repo = repos?.find((r) => r.full_name === selectedRepo || String(r.id) === selectedRepo);
-    setIsSyncing(true);
+
+    // Hard guard: if the repo is not in the loaded list, the ID is stale or
+    // invalid. Fail loudly instead of sending an opaque string to the backend.
+    const repo = repos?.find((r) => r.id === selectedRepo);
+    if (!repo) {
+      setToast({ type: TOAST_TYPE.ERROR, title: "Selected repository not found. Please reselect." });
+      dispatch({ type: "SET_REPO", repoId: "" });
+      return;
+    }
+
+    dispatch({ type: "SET_SYNCING", syncing: true });
     try {
       await integrationService.createRepoSync(workspaceSlug, {
-        repo_id: repo?.id ?? selectedRepo,
-        repo_full_name: repo?.full_name ?? selectedRepo,
+        repo_id: repo.id,
+        repo_full_name: repo.full_name,
         project_id: selectedProject,
         issue_open_state: issueOpenStateId || undefined,
         issue_closed_state: issueClosedStateId || undefined,
         sync_direction: syncDirection,
       });
-      mutate(swrKey);
+      // Delegate cache invalidation to the parent — the modal has no knowledge
+      // of which SWR key the parent uses for its sync list.
+      onSuccess();
       setToast({ type: TOAST_TYPE.SUCCESS, title: "Repository synced" });
       handleClose();
     } catch (err: unknown) {
@@ -91,9 +199,13 @@ export const GithubProjectIssueSyncModal = observer(function GithubProjectIssueS
         "Failed to start sync";
       setToast({ type: TOAST_TYPE.ERROR, title: msg });
     } finally {
-      setIsSyncing(false);
+      dispatch({ type: "SET_SYNCING", syncing: false });
     }
   };
+
+  // -------------------------------------------------------------------------
+  // Render
+  // -------------------------------------------------------------------------
 
   return (
     <ModalCore isOpen={isOpen} handleClose={handleClose} width={EModalWidth.XL}>
@@ -103,48 +215,29 @@ export const GithubProjectIssueSyncModal = observer(function GithubProjectIssueS
 
         {/* Plane Project selector */}
         <div className="flex flex-col gap-1.5">
-          <label htmlFor="github-project-issue-sync-project" className="text-xs font-medium text-secondary">
-            Plane Project
-          </label>
-          <select
-            id="github-project-issue-sync-project"
-            className="border-custom-border-200 bg-custom-background-100 text-sm focus:border-custom-primary-100 w-full rounded-md border px-3 py-2 text-primary outline-none"
+          <span className="text-xs font-medium text-secondary">Plane Project</span>
+          <CustomSearchSelect
             value={selectedProject}
-            onChange={(e) => handleProjectChange(e.target.value)}
-          >
-            <option value="">Choose Project...</option>
-            {(workspaceProjectIds ?? []).map((id) => {
-              const p = getProjectById(id);
-              return p ? (
-                <option key={id} value={id}>
-                  {p.name}
-                </option>
-              ) : null;
-            })}
-          </select>
+            options={projectOptions}
+            onChange={(val: string) => dispatch({ type: "SET_PROJECT", projectId: val })}
+            label={selectedProjectLabel}
+            optionsClassName="w-full"
+          />
         </div>
 
         {/* GitHub Repository selector */}
         <div className="flex flex-col gap-1.5">
-          <label htmlFor="github-project-issue-sync-repository" className="text-xs font-medium text-secondary">
-            Github Repository
-          </label>
+          <span className="text-xs font-medium text-secondary">Github Repository</span>
           {reposLoading ? (
             <div className="bg-custom-background-80 h-9 w-full animate-pulse rounded-md" />
           ) : (
-            <select
-              id="github-project-issue-sync-repository"
-              className="border-custom-border-200 bg-custom-background-100 text-sm focus:border-custom-primary-100 w-full rounded-md border px-3 py-2 text-primary outline-none"
+            <CustomSearchSelect
               value={selectedRepo}
-              onChange={(e) => setSelectedRepo(e.target.value)}
-            >
-              <option value="">Choose Repository...</option>
-              {(repos ?? []).map((r) => (
-                <option key={r.id ?? r.full_name} value={r.full_name ?? String(r.id)}>
-                  {r.full_name ?? r.name}
-                </option>
-              ))}
-            </select>
+              options={repoOptions}
+              onChange={(val: string) => dispatch({ type: "SET_REPO", repoId: val })}
+              label={selectedRepoLabel}
+              optionsClassName="w-full"
+            />
           )}
         </div>
 
@@ -159,37 +252,31 @@ export const GithubProjectIssueSyncModal = observer(function GithubProjectIssueS
             {/* Issue Open */}
             <div className="flex items-center justify-between gap-4">
               <span className="text-sm w-32 shrink-0 text-primary">Issue Open</span>
-              <select
-                className="border-custom-border-200 bg-custom-background-100 text-sm focus:border-custom-primary-100 flex-1 rounded-md border px-3 py-1.5 text-primary outline-none disabled:cursor-not-allowed disabled:opacity-60"
-                value={issueOpenStateId}
-                onChange={(e) => setIssueOpenStateId(e.target.value)}
-                disabled={!selectedProject}
-              >
-                <option value="">Set State</option>
-                {projectStates.map((s) => (
-                  <option key={s.id} value={s.id}>
-                    {s.name}
-                  </option>
-                ))}
-              </select>
+              <div className="flex-1">
+                <CustomSearchSelect
+                  value={issueOpenStateId}
+                  options={stateOptions}
+                  onChange={(val: string) => dispatch({ type: "SET_OPEN_STATE", stateId: val })}
+                  label={openStateLabel}
+                  disabled={!selectedProject}
+                  optionsClassName="w-full"
+                />
+              </div>
             </div>
 
             {/* Issue Closed */}
             <div className="flex items-center justify-between gap-4">
               <span className="text-sm w-32 shrink-0 text-primary">Issue Closed</span>
-              <select
-                className="border-custom-border-200 bg-custom-background-100 text-sm focus:border-custom-primary-100 flex-1 rounded-md border px-3 py-1.5 text-primary outline-none disabled:cursor-not-allowed disabled:opacity-60"
-                value={issueClosedStateId}
-                onChange={(e) => setIssueClosedStateId(e.target.value)}
-                disabled={!selectedProject}
-              >
-                <option value="">Set State</option>
-                {projectStates.map((s) => (
-                  <option key={s.id} value={s.id}>
-                    {s.name}
-                  </option>
-                ))}
-              </select>
+              <div className="flex-1">
+                <CustomSearchSelect
+                  value={issueClosedStateId}
+                  options={stateOptions}
+                  onChange={(val: string) => dispatch({ type: "SET_CLOSED_STATE", stateId: val })}
+                  label={closedStateLabel}
+                  disabled={!selectedProject}
+                  optionsClassName="w-full"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -203,7 +290,7 @@ export const GithubProjectIssueSyncModal = observer(function GithubProjectIssueS
               name="sync_direction"
               value="bidirectional"
               checked={syncDirection === "bidirectional"}
-              onChange={() => setSyncDirection("bidirectional")}
+              onChange={() => dispatch({ type: "SET_SYNC_DIRECTION", direction: "bidirectional" })}
               className="accent-custom-primary-100"
             />
             <span className="text-sm text-primary">
@@ -216,7 +303,7 @@ export const GithubProjectIssueSyncModal = observer(function GithubProjectIssueS
               name="sync_direction"
               value="unidirectional"
               checked={syncDirection === "unidirectional"}
-              onChange={() => setSyncDirection("unidirectional")}
+              onChange={() => dispatch({ type: "SET_SYNC_DIRECTION", direction: "unidirectional" })}
               className="accent-custom-primary-100"
             />
             <span className="text-sm text-primary">

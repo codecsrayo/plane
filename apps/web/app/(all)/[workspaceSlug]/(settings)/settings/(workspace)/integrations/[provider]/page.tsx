@@ -283,7 +283,7 @@ function IntegrationDetailPage({ params }: Route.ComponentProps) {
             isOpen={isIssueSyncModalOpen}
             onClose={() => setIsIssueSyncModalOpen(false)}
             workspaceSlug={workspaceSlug}
-            swrKey={repoSyncSwrKey}
+            onSuccess={() => mutate(repoSyncSwrKey)}
           />
         </>
       )}
