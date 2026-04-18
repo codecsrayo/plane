@@ -11,6 +11,9 @@
 //!   POST   /api/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/cycle-issues/
 //!   DELETE /api/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/cycle-issues/{issue_id}/
 //!   GET    /api/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/analytics/
+//!   GET    /api/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/progress/
+//!   GET    /api/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/user-properties/
+//!   PATCH  /api/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/user-properties/
 
 use axum::{
     extract::{Path, Query, State},
@@ -30,7 +33,7 @@ use crate::{
         extractors::ProjectMemberGuard,
         permissions::{require_role, ROLE_GUEST, ROLE_MEMBER},
     },
-    entities::{cycle_issues, cycles, issues},
+    entities::{cycle_issues, cycle_user_properties, cycles, issues},
     error::AppError,
     utils::soft_delete::SoftDeleteExt,
     AppState,
@@ -1100,4 +1103,333 @@ async fn burndown_plot(
     }
 
     Ok(serde_json::Value::Object(chart_data))
+}
+
+// ═════════════════════════════════════════════════════════════════════════════
+// Cycle User Properties
+// ═════════════════════════════════════════════════════════════════════════════
+//
+// Mirror de `CycleUserPropertiesEndpoint` en
+// apps/api/plane/app/views/cycle/base.py:625-655.
+//
+// Semántica clave (paridad Django):
+//   - GET hace `get_or_create` → NUNCA devuelve 404 por ausencia de fila.
+//     Si no existe, se crea con defaults y se devuelve 200.
+//   - PATCH asume que existe (Django usa `.get(...)` crudo, que lanzaría 500
+//     si faltara). Para evitar ese fallo y ser más útil al frontend, aquí
+//     también hacemos `get_or_create` y aplicamos el patch encima — no
+//     degrada ningún caso de uso válido.
+//   - Permisos: ADMIN / MEMBER / GUEST (igual que Django).
+//
+// Nota sobre el modelo: `CycleUserProperties` (cycle.py:130-153) NO tiene
+// los campos `preferences` ni `sort_order` que sí tiene `ProjectUserProperty`.
+// Por eso el request/response DTO es más simple que el de project.
+
+// ─── Defaults — mirror de `plane/db/models/issue.py:47-88` ───────────────────
+
+fn cycle_default_filters() -> serde_json::Value {
+    serde_json::json!({
+        "priority": null,
+        "state": null,
+        "state_group": null,
+        "assignees": null,
+        "created_by": null,
+        "labels": null,
+        "start_date": null,
+        "target_date": null,
+        "subscriber": null,
+    })
+}
+
+fn cycle_default_display_filters() -> serde_json::Value {
+    serde_json::json!({
+        "group_by": null,
+        "order_by": "-created_at",
+        "type": null,
+        "sub_issue": true,
+        "show_empty_groups": true,
+        "layout": "list",
+        "calendar_date_range": "",
+    })
+}
+
+fn cycle_default_display_properties() -> serde_json::Value {
+    serde_json::json!({
+        "assignee": true,
+        "attachment_count": true,
+        "created_on": true,
+        "due_date": true,
+        "estimate": true,
+        "key": true,
+        "labels": true,
+        "link": true,
+        "priority": true,
+        "start_date": true,
+        "state": true,
+        "sub_issue_count": true,
+        "updated_on": true,
+    })
+}
+
+// ─── DTOs ─────────────────────────────────────────────────────────────────────
+
+/// Mirror de `CycleUserPropertiesSerializer` (fields="__all__", read_only:
+/// workspace/project/cycle/user). Incluye todos los campos del modelo
+/// `CycleUserProperties` de `apps/api/plane/db/models/cycle.py:130-153`.
+#[derive(Debug, Serialize, utoipa::ToSchema)]
+pub struct CycleUserPropertiesResponse {
+    pub id: Uuid,
+    pub user: Uuid,
+    pub cycle: Uuid,
+    pub project: Uuid,
+    pub workspace: Uuid,
+    pub filters: serde_json::Value,
+    pub display_filters: serde_json::Value,
+    pub display_properties: serde_json::Value,
+    pub rich_filters: serde_json::Value,
+    pub created_at: chrono::DateTime<chrono::FixedOffset>,
+    pub updated_at: chrono::DateTime<chrono::FixedOffset>,
+    pub created_by: Option<Uuid>,
+    pub updated_by: Option<Uuid>,
+}
+
+impl From<&cycle_user_properties::Model> for CycleUserPropertiesResponse {
+    fn from(m: &cycle_user_properties::Model) -> Self {
+        Self {
+            id: m.id,
+            user: m.user_id,
+            cycle: m.cycle_id,
+            project: m.project_id,
+            workspace: m.workspace_id,
+            filters: m.filters.clone(),
+            display_filters: m.display_filters.clone(),
+            display_properties: m.display_properties.clone(),
+            rich_filters: m.rich_filters.clone(),
+            created_at: m.created_at,
+            updated_at: m.updated_at,
+            created_by: m.created_by_id,
+            updated_by: m.updated_by_id,
+        }
+    }
+}
+
+/// Body admitido en PATCH. Todos los campos son opcionales — semántica
+/// `partial=True` del serializer Django. Los campos read-only
+/// (workspace/project/cycle/user) se ignoran si vienen en el body.
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
+pub struct UpdateCycleUserPropertiesRequest {
+    pub filters: Option<serde_json::Value>,
+    pub display_filters: Option<serde_json::Value>,
+    pub display_properties: Option<serde_json::Value>,
+    pub rich_filters: Option<serde_json::Value>,
+}
+
+// ─── Helpers ──────────────────────────────────────────────────────────────────
+
+/// Busca o crea la fila `cycle_user_properties` para `(cycle, user)`.
+/// Mirror de `CycleUserProperties.objects.get_or_create(...)`.
+///
+/// Constraint único en Django: `(cycle, user)` WHERE `deleted_at IS NULL`
+/// (`cycle.py:144-149`). Filtramos por `.active()`. En caso de INSERT
+/// concurrente con violación del índice único, el error se propagaría como
+/// `AppError::Database` y un reintento del cliente resolvería el caso —
+/// mismo comportamiento que Django.
+async fn get_or_create_cycle_user_properties(
+    db: &sea_orm::DatabaseConnection,
+    workspace_id: Uuid,
+    project_id: Uuid,
+    cycle_id: Uuid,
+    user_id: Uuid,
+) -> Result<cycle_user_properties::Model, AppError> {
+    if let Some(existing) = cycle_user_properties::Entity::find()
+        .active()
+        .filter(cycle_user_properties::Column::UserId.eq(user_id))
+        .filter(cycle_user_properties::Column::CycleId.eq(cycle_id))
+        .filter(cycle_user_properties::Column::ProjectId.eq(project_id))
+        .one(db)
+        .await
+        .map_err(AppError::Database)?
+    {
+        return Ok(existing);
+    }
+
+    let now = chrono::Utc::now().fixed_offset();
+    let created = cycle_user_properties::ActiveModel {
+        id: Set(Uuid::new_v4()),
+        user_id: Set(user_id),
+        cycle_id: Set(cycle_id),
+        project_id: Set(project_id),
+        workspace_id: Set(workspace_id),
+        filters: Set(cycle_default_filters()),
+        display_filters: Set(cycle_default_display_filters()),
+        display_properties: Set(cycle_default_display_properties()),
+        rich_filters: Set(serde_json::json!({})),
+        created_at: Set(now),
+        updated_at: Set(now),
+        created_by_id: Set(Some(user_id)),
+        updated_by_id: Set(Some(user_id)),
+        deleted_at: Set(None),
+    }
+    .insert(db)
+    .await
+    .map_err(AppError::Database)?;
+
+    Ok(created)
+}
+
+/// Asegura que el ciclo existe y pertenece al workspace/proyecto del guard.
+/// 404 si no existe o fue soft-deleted. Defensa en profundidad — el guard
+/// sólo valida workspace + proyecto, no la pertenencia del `cycle_id`.
+async fn ensure_cycle_belongs_to_project(
+    db: &sea_orm::DatabaseConnection,
+    workspace_id: Uuid,
+    project_id: Uuid,
+    cycle_id: Uuid,
+) -> Result<cycles::Model, AppError> {
+    cycles::Entity::find_by_id(cycle_id)
+        .filter(cycles::Column::WorkspaceId.eq(workspace_id))
+        .filter(cycles::Column::ProjectId.eq(project_id))
+        .filter(cycles::Column::DeletedAt.is_null())
+        .one(db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)
+}
+
+// ─── GET ──────────────────────────────────────────────────────────────────────
+
+/// `GET /api/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/user-properties/`
+///
+/// Paridad con `CycleUserPropertiesEndpoint.get` (cycle/base.py:647-655).
+/// `get_or_create` garantiza que nunca devolvemos 404 por ausencia de la
+/// fila de propiedades — esto es lo que resuelve el 404 del frontend.
+///
+/// Permisos: ROLE_GUEST+ (ADMIN/MEMBER/GUEST, paridad Django).
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/user-properties/",
+    tag = "Cycles",
+    security(("TokenAuth" = []), ("SessionCookie" = [])),
+    params(
+        ("slug"       = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid,   Path, description = "Project UUID"),
+        ("cycle_id"   = Uuid,   Path, description = "Cycle UUID"),
+    ),
+    responses(
+        (status = 200, description = "Cycle user properties", body = CycleUserPropertiesResponse),
+        (status = 403, description = "User is not a member of the project"),
+        (status = 404, description = "Workspace, project or cycle not found"),
+    )
+)]
+pub async fn get_cycle_user_properties(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Path((_slug, _project_id, cycle_id)): Path<(String, Uuid, Uuid)>,
+) -> Result<Json<CycleUserPropertiesResponse>, AppError> {
+    require_role(
+        guard.project_member.role,
+        guard.workspace_member.role,
+        ROLE_GUEST,
+    )?;
+
+    // Validación: el ciclo debe existir y pertenecer al proyecto. Si no,
+    // 404 — evita crear una fila user-properties huérfana.
+    let _cycle = ensure_cycle_belongs_to_project(
+        &state.db,
+        guard.workspace.id,
+        guard.project.id,
+        cycle_id,
+    )
+    .await?;
+
+    let row = get_or_create_cycle_user_properties(
+        &state.db,
+        guard.workspace.id,
+        guard.project.id,
+        cycle_id,
+        guard.user.id,
+    )
+    .await?;
+
+    Ok(Json(CycleUserPropertiesResponse::from(&row)))
+}
+
+// ─── PATCH ────────────────────────────────────────────────────────────────────
+
+/// `PATCH /api/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/user-properties/`
+///
+/// Paridad con `CycleUserPropertiesEndpoint.patch` (cycle/base.py:627-644),
+/// con una mejora: Django asume que la fila existe (`.objects.get(...)`) y
+/// lanzaría 500 si faltara; aquí hacemos `get_or_create` antes del patch,
+/// lo que es estrictamente más robusto.
+///
+/// Django devuelve 201 en PATCH (comportamiento no-idiomático heredado).
+/// Mantenemos 200 aquí porque (a) no es un create, es un update, y (b) el
+/// frontend de Plane no depende del código exacto — comprueba `>=200 <300`.
+///
+/// Permisos: ROLE_GUEST+ (paridad Django).
+#[utoipa::path(
+    patch,
+    path = "/api/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/user-properties/",
+    tag = "Cycles",
+    security(("TokenAuth" = []), ("SessionCookie" = [])),
+    params(
+        ("slug"       = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid,   Path, description = "Project UUID"),
+        ("cycle_id"   = Uuid,   Path, description = "Cycle UUID"),
+    ),
+    request_body = UpdateCycleUserPropertiesRequest,
+    responses(
+        (status = 200, description = "Updated cycle user properties", body = CycleUserPropertiesResponse),
+        (status = 403, description = "User is not a member of the project"),
+        (status = 404, description = "Workspace, project or cycle not found"),
+    )
+)]
+pub async fn update_cycle_user_properties(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Path((_slug, _project_id, cycle_id)): Path<(String, Uuid, Uuid)>,
+    Json(body): Json<UpdateCycleUserPropertiesRequest>,
+) -> Result<Json<CycleUserPropertiesResponse>, AppError> {
+    require_role(
+        guard.project_member.role,
+        guard.workspace_member.role,
+        ROLE_GUEST,
+    )?;
+
+    let _cycle = ensure_cycle_belongs_to_project(
+        &state.db,
+        guard.workspace.id,
+        guard.project.id,
+        cycle_id,
+    )
+    .await?;
+
+    let row = get_or_create_cycle_user_properties(
+        &state.db,
+        guard.workspace.id,
+        guard.project.id,
+        cycle_id,
+        guard.user.id,
+    )
+    .await?;
+
+    let mut am: cycle_user_properties::ActiveModel = row.into();
+    if let Some(v) = body.filters {
+        am.filters = Set(v);
+    }
+    if let Some(v) = body.display_filters {
+        am.display_filters = Set(v);
+    }
+    if let Some(v) = body.display_properties {
+        am.display_properties = Set(v);
+    }
+    if let Some(v) = body.rich_filters {
+        am.rich_filters = Set(v);
+    }
+    am.updated_at = Set(chrono::Utc::now().fixed_offset());
+    am.updated_by_id = Set(Some(guard.user.id));
+
+    let updated = am.update(&state.db).await.map_err(AppError::Database)?;
+    Ok(Json(CycleUserPropertiesResponse::from(&updated)))
 }

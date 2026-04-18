@@ -153,6 +153,8 @@ pub mod instances;
         cycles::add_issues_to_cycle,
         cycles::remove_issue_from_cycle,
         cycles::cycle_analytics,
+        cycles::get_cycle_user_properties,
+        cycles::update_cycle_user_properties,
         modules::list_modules,
         modules::create_module,
         modules::get_module,
@@ -378,6 +380,8 @@ pub mod instances;
             projects::ProjectLiteDto,
             project_user_properties::ProjectUserPropertyResponse,
             project_user_properties::UpdateProjectUserPropertyRequest,
+            cycles::CycleUserPropertiesResponse,
+            cycles::UpdateCycleUserPropertiesRequest,
             projects::UpdateProjectMemberRequest,
             projects::ProjectInvitationResponse,
             projects::CreateProjectInvitationRequest,
@@ -743,6 +747,11 @@ pub fn build_router(state: AppState) -> Router {
         .route(
             "/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/analytics",
             get(cycles::cycle_analytics),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/user-properties",
+            get(cycles::get_cycle_user_properties)
+                .patch(cycles::update_cycle_user_properties),
         )
         // ── Modules ─────────────────────────────────────────────────────────
         .route(
