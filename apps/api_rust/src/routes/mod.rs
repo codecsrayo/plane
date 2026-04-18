@@ -39,6 +39,7 @@ pub mod views;
 pub mod workspaces;
 pub mod workspace_extras;
 pub mod workspace_view_issues;
+pub mod user_profile_issues;
 pub mod issue_description_versions;
 pub mod issue_extras2;
 pub mod api_tokens;
@@ -91,7 +92,9 @@ pub mod instances;
         workspaces::remove_member,
         workspaces::get_workspace_member_me,
         workspaces::get_user_profile,
+        workspaces::get_user_stats,
         workspaces::get_workspace_user_activity,
+        user_profile_issues::list_user_profile_issues,
         workspaces::list_invitations,
         workspaces::create_invitations,
         workspaces::delete_invitation,
@@ -557,6 +560,12 @@ pub fn build_router(state: AppState) -> Router {
         .route(
             "/workspaces/{slug}/user-activity/{user_id}",
             get(workspaces::get_workspace_user_activity),
+        )
+        // Mirror Django: workspaces/<slug>/user-issues/<user_id>/ -> WorkspaceUserProfileIssuesEndpoint
+        // Sirve las pestañas Assigned / Created / Subscribed del perfil del usuario.
+        .route(
+            "/workspaces/{slug}/user-issues/{user_id}",
+            get(user_profile_issues::list_user_profile_issues),
         )
         .route(
             "/workspaces/{slug}/invitations",
