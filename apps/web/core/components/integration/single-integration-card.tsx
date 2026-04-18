@@ -70,29 +70,40 @@ export const SingleIntegrationCard = observer(function SingleIntegrationCard({ i
   const { config } = useInstance();
   const { allowPermissions } = useUserPermissions();
 
+  // Determine provider validity *before* consuming it in hooks so that hooks
+  // always receive a stable, safe value — even for future backend providers
+  // that this client version does not yet recognise.
+  // Rules of Hooks are respected: no hook is called conditionally; instead we
+  // pass `undefined` / `null` as keys so the hooks become effective no-ops.
+  const knownProvider = isKnownIntegrationProvider(integration.provider) ? integration.provider : undefined;
+
   const isUserAdmin = allowPermissions([EUserPermissions.ADMIN], EUserPermissionsLevel.WORKSPACE);
   const { isMobile } = usePlatformOS();
+  // Pass `undefined` as provider when unknown → hook skips popup/listener setup.
   const { startAuth, isConnecting: isInstalling } = useIntegrationPopup({
-    provider: integration.provider,
+    provider: knownProvider,
     github_app_name: config?.github_app_name || "",
     gitlab_client_id: config?.gitlab_client_id || "",
     gitlab_host: config?.gitlab_host || "https://gitlab.com",
     slack_client_id: config?.slack_client_id || "",
   });
 
-  const { data: workspaceIntegrations } = useSWR(workspaceSlug ? WORKSPACE_INTEGRATIONS(workspaceSlug) : null, () =>
-    workspaceSlug ? integrationService.getWorkspaceIntegrationsList(workspaceSlug) : null
+  // Pass `null` as SWR key when the provider is unknown to suppress the
+  // network request entirely for cards we are about to discard anyway.
+  const { data: workspaceIntegrations } = useSWR(
+    knownProvider && workspaceSlug ? WORKSPACE_INTEGRATIONS(workspaceSlug) : null,
+    () => (workspaceSlug ? integrationService.getWorkspaceIntegrationsList(workspaceSlug) : null)
   );
 
   const isInstalled = workspaceIntegrations?.find(
     (i: IWorkspaceIntegration) => i.integration_detail?.id === integration.id
   );
 
-  // Type-safe guard: unknown providers (e.g. a new backend value) are skipped
-  // entirely rather than crashing at runtime.
-  if (!isKnownIntegrationProvider(integration.provider)) return null;
+  // Early-return guard: unknown providers are silently skipped rather than
+  // crashing at runtime (e.g. a new value added on the backend).
+  if (!knownProvider) return null;
 
-  const providerKey: TIntegrationProvider = integration.provider;
+  const providerKey: TIntegrationProvider = knownProvider;
   const providerDetails = integrationDetails[providerKey];
 
   // Respect God Mode enable/disable flags per integration provider
