@@ -18,6 +18,7 @@ import { useProjectColumns } from "@/plane-web/components/projects/settings/useP
 import type { IProjectMemberDetails } from "@/store/member/project/base-project-member.store";
 // local imports
 import { ConfirmProjectMemberRemove } from "./confirm-project-member-remove";
+import { extractApiErrorMessage } from "@/services/api.service";
 
 type Props = {
   memberDetails: (IProjectMemberDetails | null)[];
@@ -48,11 +49,11 @@ export const ProjectMemberListItem = observer(function ProjectMemberListItem(pro
       try {
         await leaveProject(workspaceSlug.toString(), projectId.toString());
         router.push(`/${workspaceSlug}/projects`);
-      } catch (err: any) {
+      } catch (err: unknown) {
         setToast({
           type: TOAST_TYPE.ERROR,
           title: "You can’t leave this project yet.",
-          message: err?.error || "Something went wrong. Please try again.",
+          message: extractApiErrorMessage(err, "Something went wrong. Please try again."),
         });
       }
       return;
@@ -60,11 +61,11 @@ export const ProjectMemberListItem = observer(function ProjectMemberListItem(pro
 
     try {
       await removeMemberFromProject(workspaceSlug.toString(), projectId.toString(), memberId);
-    } catch (err: any) {
+    } catch (err: unknown) {
       setToast({
         type: TOAST_TYPE.ERROR,
         title: "You can't remove the member from this project yet.",
-        message: err?.error || "Something went wrong. Please try again.",
+        message: extractApiErrorMessage(err, "Something went wrong. Please try again."),
       });
     }
   };
@@ -82,7 +83,7 @@ export const ProjectMemberListItem = observer(function ProjectMemberListItem(pro
       )}
       <Table
         columns={columns}
-        data={(memberDetails?.filter((member): member is IProjectMemberDetails => member !== null) ?? []) as any}
+        data={memberDetails?.filter((member): member is IProjectMemberDetails => member !== null) ?? []}
         keyExtractor={(rowData) => rowData?.member.id ?? ""}
         tHeadClassName="border-b border-subtle"
         thClassName="text-left font-medium divide-x-0 text-placeholder"

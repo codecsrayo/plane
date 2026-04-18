@@ -34,7 +34,7 @@ import { validatePersonName, validateDisplayName } from "@plane/utils";
 type TUserProfileForm = {
   avatar_url: string;
   cover_image: string;
-  cover_image_asset: any;
+  cover_image_asset: string | null;
   cover_image_url: string;
   first_name: string;
   last_name: string;

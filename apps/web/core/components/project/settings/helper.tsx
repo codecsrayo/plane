@@ -14,7 +14,7 @@ import { joinUrlPath } from "@plane/utils";
 type Props = {
   workspaceSlug: string;
   projectId: string;
-  featureItem: any;
+  featureItem: Record<string, unknown>;
   value: boolean;
   handleSubmit: (featureKey: string, featureProperty: string) => void;
   disabled?: boolean;

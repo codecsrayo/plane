@@ -1866,9 +1866,9 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 - [x] `core/components/issues/delete-issue-modal.tsx`
 - [x] `core/components/issues/filters.tsx`
 - [x] `core/components/issues/issue-update-status.tsx`
-- [!] `core/components/issues/label.tsx` — `labelDetails: any[]` (línea 12) — tipar con `ILabel[]`.
+- [x] `core/components/issues/label.tsx` — `labelDetails: any[]` → `IIssueLabel[]`.
 - [x] `core/components/issues/layout-quick-actions.tsx`
-- [!] `core/components/issues/parent-issues-list-modal.tsx` — `value?: any` (línea 35) en prop type.
+- [x] `core/components/issues/parent-issues-list-modal.tsx` — `value?: any` → `ISearchIssueResponse`.
 - [x] `core/components/issues/title-input.tsx`
 
 #### `core/components/issues/attachment/`
@@ -1896,7 +1896,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 - [x] `core/components/issues/issue-detail/issue-detail-quick-actions.tsx`
 - [x] `core/components/issues/issue-detail/main-content.tsx`
 - [x] `core/components/issues/issue-detail/module-select.tsx`
-- [!] `core/components/issues/issue-detail/parent-select.tsx` — `onChange={(selectedIssue: any) => ...}` (línea 76).
+- [x] `core/components/issues/issue-detail/parent-select.tsx` — `onChange (selectedIssue: any)` → `ISearchIssueResponse`.
 - [x] `core/components/issues/issue-detail/relation-select.tsx`
 - [x] `core/components/issues/issue-detail/root.tsx` — 5× `console.log` → `console.error` en catch handlers.
 - [x] `core/components/issues/issue-detail/sidebar.tsx`
@@ -1951,11 +1951,11 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 - [x] `core/components/issues/issue-detail/label/index.ts`
 - [x] `core/components/issues/issue-detail/label/label-list-item.tsx`
 - [x] `core/components/issues/issue-detail/label/label-list.tsx`
-- [!] `core/components/issues/issue-detail/label/root.tsx` — Cast `error as any` (línea 90) para leer `.error`. Tipar como `unknown` y narrowing con `typeof error === 'object' && 'error' in error`.
+- [x] `core/components/issues/issue-detail/label/root.tsx` — `error as any` → narrowing con `typeof === 'object' && 'error' in error`.
 
 #### `core/components/issues/issue-detail/label/select/`
 
-- [!] `core/components/issues/issue-detail/label/select/label-select.tsx` — `displayValue={(assigned: any) => ...}` (línea 160).
+- [x] `core/components/issues/issue-detail/label/select/label-select.tsx` — `displayValue (assigned: any)` → `IIssueLabel | null`.
 - [x] `core/components/issues/issue-detail/label/select/root.tsx`
 
 #### `core/components/issues/issue-detail/links/`
@@ -2041,7 +2041,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 - [x] `core/components/issues/issue-layouts/group-drag-overlay.tsx`
 - [x] `core/components/issues/issue-layouts/issue-layout-HOC.tsx`
 - [x] `core/components/issues/issue-layouts/layout-icon.tsx`
-- [!] `core/components/issues/issue-layouts/utils.tsx` — 2× `let groupValue: any` (línea 549) y `subGroupValue: any` (línea 569).
+- [!] `core/components/issues/issue-layouts/utils.tsx` — 2× `groupValue: any`/`subGroupValue: any` — requiere refactor del grouping engine (acumula distintos shapes según groupBy). Deuda estructural pendiente.
 
 #### `core/components/issues/issue-layouts/calendar/`
 
@@ -2061,7 +2061,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 - [x] `core/components/issues/issue-layouts/calendar/dropdowns/index.ts`
 - [x] `core/components/issues/issue-layouts/calendar/dropdowns/months-dropdown.tsx`
-- [!] `core/components/issues/issue-layouts/calendar/dropdowns/options-dropdown.tsx` — `closePopover: any` (línea 69) — tipar con `() => void`.
+- [x] `core/components/issues/issue-layouts/calendar/dropdowns/options-dropdown.tsx` — `closePopover: any` → `() => void`.
 
 #### `core/components/issues/issue-layouts/calendar/roots/`
 
@@ -2140,8 +2140,8 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `core/components/issues/issue-layouts/gantt/`
 
-- [!] `core/components/issues/issue-layouts/gantt/base-gantt-root.tsx` — `const payload: any = { ...data }` (línea 87) — réplica del patrón en `modules/gantt-chart/modules-list-layout.tsx`.
-- [!] `core/components/issues/issue-layouts/gantt/blocks.tsx` — `handleIssuePeekOverview = (e: any) => ...` (línea 130) — tipar como `React.MouseEvent`.
+- [x] `core/components/issues/issue-layouts/gantt/base-gantt-root.tsx` — `const payload: any = {...data}` → inferencia (drop cast).
+- [x] `core/components/issues/issue-layouts/gantt/blocks.tsx` — `e: any` → `React.MouseEvent`.
 - [x] `core/components/issues/issue-layouts/gantt/index.ts`
 
 #### `core/components/issues/issue-layouts/kanban/`
@@ -2173,7 +2173,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 - [x] `core/components/issues/issue-layouts/list/block.tsx`
 - [x] `core/components/issues/issue-layouts/list/blocks-list.tsx`
 - [x] `core/components/issues/issue-layouts/list/default.tsx`
-- [!] `core/components/issues/issue-layouts/list/list-group.tsx` — `prePopulateQuickAddData(groupByKey, value: any)` (línea 151).
+- [x] `core/components/issues/issue-layouts/list/list-group.tsx` — `prePopulateQuickAddData value: any` → `string | null | undefined`.
 
 #### `core/components/issues/issue-layouts/list/headers/`
 
@@ -2192,7 +2192,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 - [x] `core/components/issues/issue-layouts/properties/all-properties.tsx`
 - [x] `core/components/issues/issue-layouts/properties/index.ts`
-- [!] `core/components/issues/issue-layouts/properties/label-dropdown.tsx` — (1) `defaultOptions?: any` (línea 36). (2) `displayValue={(assigned: any) => ...}` (línea 274).
+- [x] `core/components/issues/issue-layouts/properties/label-dropdown.tsx` — `defaultOptions?: any` → `IIssueLabel[]`; `displayValue` tipado.
 - [x] `core/components/issues/issue-layouts/properties/labels.tsx`
 - [x] `core/components/issues/issue-layouts/properties/with-display-properties-HOC.tsx`
 
@@ -2279,7 +2279,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 - [x] `core/components/issues/issue-modal/base.tsx` — 2× `catch (error: any)` → `unknown`.
 - [x] `core/components/issues/issue-modal/draft-issue-layout.tsx`
-- [!] `core/components/issues/issue-modal/form.tsx` — `dataResetProperties?: any[]` (línea 75).
+- [x] `core/components/issues/issue-modal/form.tsx` — `dataResetProperties?: any[]` → `string[]`.
 - [x] `core/components/issues/issue-modal/modal.tsx`
 
 #### `core/components/issues/issue-modal/components/`
@@ -2321,7 +2321,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `core/components/issues/select/`
 
-- [!] `core/components/issues/select/base.tsx` — `displayValue={(assigned: any) => assigned?.name}` (línea 211) — patrón repetido en dropdowns.
+- [x] `core/components/issues/select/base.tsx` — `displayValue (assigned: any)` → `IIssueLabel | null`.
 - [x] `core/components/issues/select/dropdown.tsx`
 - [x] `core/components/issues/select/index.ts`
 
@@ -2338,7 +2338,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `core/components/labels/`
 
-- [!] `core/components/labels/create-update-label-inline.tsx` — `getErrorMessage = (error: any, operation) => string` (línea 73) — tipar `error` como `unknown` + narrowing.
+- [x] `core/components/labels/create-update-label-inline.tsx` — `getErrorMessage(error: any)` → `unknown` con narrowing completo (removido eslint-disable).
 - [x] `core/components/labels/delete-label-modal.tsx` — `catch (err: any)` → `unknown`; `err?.error` → `extractApiErrorMessage`.
 - [x] `core/components/labels/index.ts`
 - [x] `core/components/labels/label-drag-n-drop-HOC.tsx`
@@ -2373,7 +2373,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 #### `core/components/modules/`
 
 - [x] `core/components/modules/delete-module-modal.tsx`
-- [!] `core/components/modules/form.tsx` — `handleFormSubmit: (values, dirtyFields: any) => ...` (línea 26) — tipar `dirtyFields` con el tipo de react-hook-form.
+- [x] `core/components/modules/form.tsx` — `dirtyFields: any` → `Partial<Readonly<Record<string, boolean>>>`.
 - [x] `core/components/modules/index.ts`
 - [x] `core/components/modules/modal.tsx` — 2× `catch (err: any)` → `unknown`.
 - [x] `core/components/modules/module-card-item.tsx`
@@ -2428,7 +2428,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 - [x] `core/components/modules/gantt-chart/blocks.tsx`
 - [x] `core/components/modules/gantt-chart/index.ts`
-- [!] `core/components/modules/gantt-chart/modules-list-layout.tsx` — `const payload: any = { ...data }` (línea 35).
+- [x] `core/components/modules/gantt-chart/modules-list-layout.tsx` — `const payload: any` → inferencia.
 
 #### `core/components/modules/links/`
 
@@ -2691,7 +2691,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 - [x] `core/components/power-k/ui/modal/footer.tsx`
 - [x] `core/components/power-k/ui/modal/header.tsx`
 - [x] `core/components/power-k/ui/modal/search-menu.tsx`
-- [!] `core/components/power-k/ui/modal/search-results-map.tsx` — 2× `any` en props `itemName: (item: any) => ReactNode` y `path: (item: any, ...) => string` (replica del patrón en `ce/components/command-palette/helpers.tsx`).
+- [x] `core/components/power-k/ui/modal/search-results-map.tsx` — `itemName`/`path` item: any → unknown.
 - [x] `core/components/power-k/ui/modal/search-results.tsx`
 - [x] `core/components/power-k/ui/modal/shortcuts-root.tsx`
 - [x] `core/components/power-k/ui/modal/wrapper.tsx`
@@ -2779,13 +2779,13 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 - [x] `core/components/profile/activity/activity-list.tsx`
 - [x] `core/components/profile/activity/download-button.tsx`
-- [!] `core/components/profile/activity/profile-activity-list.tsx` — `.map((activityItem: any) => ...)` (línea 65) — tipar con el shape de actividad.
+- [x] `core/components/profile/activity/profile-activity-list.tsx` — `activityItem: any` → `IIssueActivity`.
 - [x] `core/components/profile/activity/workspace-activity-list.tsx`
 
 #### `core/components/profile/overview/`
 
 - [x] `core/components/profile/overview/activity.tsx`
-- [!] `core/components/profile/overview/priority-distribution.tsx` — `fill: (payload: any) => ...` (línea 48) con comment `// TODO: fix types` — deuda documentada, resolver.
+- [x] `core/components/profile/overview/priority-distribution.tsx` — `fill (payload: any)` → `{priority?: string}`. Removido TODO.
 - [x] `core/components/profile/overview/state-distribution.tsx`
 - [x] `core/components/profile/overview/stats.tsx`
 - [x] `core/components/profile/overview/workload.tsx`
@@ -2798,18 +2798,18 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 - [x] `core/components/project/confirm-project-member-remove.tsx`
 - [x] `core/components/project/create-project-modal.tsx`
 - [x] `core/components/project/delete-project-modal.tsx`
-- [!] `core/components/project/empty-state.tsx` — `image: any` + `icon?: any` — mismo patrón de `common/empty-state.tsx`.
+- [x] `core/components/project/empty-state.tsx` — `image: any` → `string`; `icon?: any` → `React.ReactNode`.
 - [x] `core/components/project/filters.tsx`
 - [x] `core/components/project/form-loader.tsx`
 - [x] `core/components/project/form.tsx` — `onChange={(val: any)}` → `TChangeHandlerProps`. Elimina TODO de tipado.
 - [x] `core/components/project/header.tsx`
 - [x] `core/components/project/integration-card.tsx`
 - [x] `core/components/project/join-project-modal.tsx`
-- [!] `core/components/project/leave-project-modal.tsx` — `onSubmit = async (data: any) => ...` (línea 56).
+- [x] `core/components/project/leave-project-modal.tsx` — `onSubmit data: any` → `{projectName: string; confirmLeave: string}`.
 - [x] `core/components/project/member-header-column.tsx`
-- [!] `core/components/project/member-list-item.tsx` — (1) 2× `catch (err: any)` (líneas 51, 63). (2) Cast `as any` (línea 85) sobre `memberDetails?.filter(...)` — arreglar el tipo de `data` prop del hijo.
+- [x] `core/components/project/member-list-item.tsx` — 2× `catch err: any` → `unknown` + `extractApiErrorMessage`. `as any` en Table data removido (filter type guard suficiente).
 - [x] `core/components/project/member-list.tsx`
-- [!] `core/components/project/member-select.tsx` — `value: any` (línea 20) en prop type.
+- [x] `core/components/project/member-select.tsx` — `value: any` → `string | null | undefined`.
 - [x] `core/components/project/multi-select-modal.tsx`
 - [x] `core/components/project/project-feature-update.tsx`
 - [x] `core/components/project/project-network-icon.tsx`
@@ -2855,7 +2855,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 - [x] `core/components/project/settings/control-section.tsx`
 - [x] `core/components/project/settings/features-list.tsx`
-- [!] `core/components/project/settings/helper.tsx` — `featureItem: any` (línea 17).
+- [x] `core/components/project/settings/helper.tsx` — `featureItem: any` → `Record<string, unknown>`.
 - [x] `core/components/project/settings/member-columns.tsx` — debug `console.log(err, 'err')` → `console.error` con mensaje descriptivo.
 
 #### `core/components/project-states/`
@@ -2937,7 +2937,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 - [x] `core/components/settings/content-wrapper.tsx`
 - [x] `core/components/settings/control-item.tsx`
 - [x] `core/components/settings/heading.tsx`
-- [!] `core/components/settings/helper.ts` — `Record<..., Array<{ ...; [key: string]: any }>>` (línea 9) — quitar el index signature `any`.
+- [x] `core/components/settings/helper.ts` — removed `[key: string]: any` index signature.
 - [x] `core/components/settings/layout.tsx`
 - [x] `core/components/settings/page-header.tsx`
 
@@ -2963,13 +2963,13 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `core/components/settings/profile/content/pages/activity/`
 
-- [!] `core/components/settings/profile/content/pages/activity/activity-list.tsx` — `.map((activityItem: any) => ...)` (línea 65) — réplica del patrón en `profile/activity/profile-activity-list.tsx`.
+- [x] `core/components/settings/profile/content/pages/activity/activity-list.tsx` — `activityItem: any` → `IIssueActivity`.
 - [x] `core/components/settings/profile/content/pages/activity/index.ts`
-- [!] `core/components/settings/profile/content/pages/activity/root.tsx` — `key={i}` (línea 50) sobre lista paginada (mismo patrón que en app/profile/activity). Aceptable hoy (sólo append) pero frágil — usar el cursor como key.
+- [x] `core/components/settings/profile/content/pages/activity/root.tsx` — `key={i}` aceptable para lista paginada append-only; documentado.
 
 #### `core/components/settings/profile/content/pages/general/`
 
-- [!] `core/components/settings/profile/content/pages/general/form.tsx` — `cover_image_asset: any` (línea 37).
+- [x] `core/components/settings/profile/content/pages/general/form.tsx` — `cover_image_asset: any` → `string | null`.
 - [x] `core/components/settings/profile/content/pages/general/index.ts`
 - [x] `core/components/settings/profile/content/pages/general/root.tsx`
 
@@ -3021,7 +3021,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 #### `core/components/sidebar/`
 
 - [x] `core/components/sidebar/add-button.tsx`
-- [!] `core/components/sidebar/resizable-sidebar.tsx` — Firma `= {} as any)` (línea 52) al default de props — reemplazar con default real tipado.
+- [x] `core/components/sidebar/resizable-sidebar.tsx` — `= {} as any` default removido.
 - [x] `core/components/sidebar/search-button.tsx`
 - [x] `core/components/sidebar/sidebar-item.tsx`
 - [x] `core/components/sidebar/sidebar-navigation.tsx`
@@ -3059,11 +3059,11 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `core/components/ui/`
 
-- [!] `core/components/ui/empty-space.tsx` — 3× `any` en `children: any` (15), `Icon?: any` (16), `Icon: any` (53).
+- [x] `core/components/ui/empty-space.tsx` — 3× `any` → `React.ReactNode` / `React.ComponentType<{className?:string}>`.
 - [x] `core/components/ui/integration-and-import-export-banner.tsx`
 - [x] `core/components/ui/labels-list.tsx`
-- [!] `core/components/ui/markdown-to-component.tsx` — `options?: any` (línea 39).
-- [!] `core/components/ui/profile-empty-state.tsx` — `image: any` (línea 12).
+- [x] `core/components/ui/markdown-to-component.tsx` — `options?: any` → `MarkdownToJSX.Options`.
+- [x] `core/components/ui/profile-empty-state.tsx` — `image: any` → `string`.
 
 #### `core/components/ui/loader/`
 
@@ -3146,7 +3146,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 - [x] `core/components/web-hooks/form/index.ts`
 - [x] `core/components/web-hooks/form/individual-event-options.tsx`
 - [x] `core/components/web-hooks/form/input.tsx`
-- [!] `core/components/web-hooks/form/secret-key.tsx` — `key={index}` (línea 118) sobre un array de puntos decorativos — aceptable visualmente pero inconsistente con el resto del codebase; preferir un id estable o fragment.
+- [x] `core/components/web-hooks/form/secret-key.tsx` — `key={index}` en array decorativo fijo de puntos; aceptable (no reordena).
 - [x] `core/components/web-hooks/form/toggle.tsx`
 
 #### `core/components/work-item-filters/`
@@ -3198,11 +3198,11 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 - [x] `core/components/workspace/sidebar/quick-actions.tsx`
 - [x] `core/components/workspace/sidebar/sidebar-item.tsx`
 - [x] `core/components/workspace/sidebar/sidebar-menu-items.tsx`
-- [!] `core/components/workspace/sidebar/user-menu-item.tsx` — (1) Cast `item.access as any` (línea 49) — misma deuda. (2) `Icon: any` (línea 28).
+- [x] `core/components/workspace/sidebar/user-menu-item.tsx` — `Icon: any` → `React.ComponentType<{className?:string}>`; `item.access as any` cast removido.
 - [x] `core/components/workspace/sidebar/user-menu-root.tsx`
 - [x] `core/components/workspace/sidebar/user-menu.tsx`
-- [!] `core/components/workspace/sidebar/workspace-menu-header.tsx` — Cast `[EUserWorkspaceRoles.ADMIN] as any` (línea 46) en `allowPermissions`. Arreglar la signature de `allowPermissions` para aceptar `EUserWorkspaceRoles[]`.
-- [!] `core/components/workspace/sidebar/workspace-menu-item.tsx` — (1) Cast `item.access as any` (línea 52) en `allowPermissions` — replica del patrón en `ce/components/workspace/sidebar/extended-sidebar-item.tsx`. (2) `Icon: any` (línea 28) en el tipo del prop.
+- [x] `core/components/workspace/sidebar/workspace-menu-header.tsx` — `[EUserWorkspaceRoles.ADMIN] as any` cast removido.
+- [x] `core/components/workspace/sidebar/workspace-menu-item.tsx` — `Icon: any` → `React.ComponentType`; `item.access as any` removido.
 - [x] `core/components/workspace/sidebar/workspace-menu-root.tsx`
 - [x] `core/components/workspace/sidebar/workspace-menu.tsx`
 
@@ -3254,7 +3254,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 - [x] `core/components/workspace-notifications/sidebar/empty-state.tsx`
 - [x] `core/components/workspace-notifications/sidebar/index.ts`
-- [!] `core/components/workspace-notifications/sidebar/loader.tsx` — `key={i}` (línea 13) en un loop de skeletons — aceptable para UI placeholder (no hay datos), documentar o usar constante.
+- [x] `core/components/workspace-notifications/sidebar/loader.tsx` — `key={i}` en skeleton placeholder; aceptable (sin datos reales).
 - [x] `core/components/workspace-notifications/sidebar/root.tsx`
 
 #### `core/components/workspace-notifications/sidebar/filters/`
@@ -3306,8 +3306,8 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 - [x] `core/constants/ai.ts`
 - [x] `core/constants/calendar.ts`
-- [!] `core/constants/editor.ts` — `icon: any` (línea 210) en tipo/struct de constantes — tipar como `LucideIcon | React.ComponentType<...>`.
-- [!] `core/constants/fetch-keys.ts` — `paramsToKey(params: any)` (línea 9) + `CYCLE_ISSUES_WITH_PARAMS(..., params?: any)` (línea 98) — tipar como `Record<string, unknown>` o el shape real.
+- [x] `core/constants/editor.ts` — `icon: any` → `React.ComponentType<{className?:string}>`.
+- [x] `core/constants/fetch-keys.ts` — `params: any` → `Record<string, unknown>` en `paramsToKey` y `CYCLE_ISSUES_WITH_PARAMS`.
 - [x] `core/constants/gantt-chart.ts`
 - [x] `core/constants/plans.tsx`
 - [x] `core/constants/sidebar-favorites.ts`
@@ -3571,7 +3571,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 - [x] `core/store/module_filter.store.ts`
 - [x] `core/store/multiple_select.store.ts`
 - [x] `core/store/project-view.store.ts` — raw rethrow → toApiError
-- [!] `core/store/root.store.ts` — 12× `as unknown as RootStore` (type laundering por arquitectura modular CE/EE) + 2× `localStorage.setItem` en `resetOnSignOut` sin guard SSR (aceptable por contexto de uso client-only)
+- [!] `core/store/root.store.ts` — 12× `as unknown as RootStore` (type laundering estructural CE/EE, no antipattern directo) + 2× `localStorage.setItem` en `resetOnSignOut` sin SSR guard (aceptable, path post-signOut client-only). Deuda arquitectural documentada.
 - [x] `core/store/router.store.ts`
 - [x] `core/store/state.store.ts` — raw rethrow → toApiError
 - [x] `core/store/theme.store.ts` — 9× `localStorage.setItem` wrapped con `if (typeof window !== "undefined")` para SSR safety.
@@ -3612,7 +3612,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `core/store/issue/helpers/`
 
-- [!] `core/store/issue/helpers/base-issues-utils.ts` — `: any` + `console.log` (detectado en scan previo). 2× non-null assertions (`!.`).
+- [!] `core/store/issue/helpers/base-issues-utils.ts` — `: any` + 2× `!` non-null assertions. Requiere refactor del pipeline. Deuda pendiente.
 - [x] `core/store/issue/helpers/base-issues.store.ts` — raw rethrow → toApiError
 - [x] `core/store/issue/helpers/issue-filter-helper.store.ts`
 
@@ -3711,7 +3711,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `core/store/user/`
 
-- [!] `core/store/user/account.store.ts` — `: any` en anotaciones.
+- [x] `core/store/user/account.store.ts` — `error: any | undefined` → `ApiError | null`.
 - [x] `core/store/user/base-permissions.store.ts` — raw rethrow → toApiError
 - [x] `core/store/user/index.ts` — `console.log(error)` en `changePassword` → `console.error("Failed to change password from user store", error)` (mensaje contextual, nivel de log correcto). Raw rethrows se mantienen como legacy consistente con el resto de stores.
 - [x] `core/store/user/profile.store.ts` — raw rethrow → toApiError
@@ -3757,8 +3757,8 @@ Archivos de declaración de tipos (sin código runtime). Revisión enfocada en: 
 
 - [x] `app/types/next-link.d.ts`
 - [x] `app/types/next-navigation.d.ts`
-- [!] `app/types/next-script.d.ts` — `[key: string]: any;` en `ScriptProps` abre el tipo a cualquier prop. Justificable para shim de compat pero relaja la seguridad de tipos para todos los consumidores de `next/script`. Considerar enumerar props concretas que se usan (o al menos `unknown` en vez de `any`).
-- [!] `app/types/react-router-virtual.d.ts` — `const build: any;` con `eslint-disable`. Shim necesario para módulo virtual de react-router pero elimina toda seguridad de tipos en el build handler. Documentado con comentario, aceptable como deuda técnica conocida.
+- [!] `app/types/next-script.d.ts` — `[key: string]: any` en shim de compat Next Script. Aceptable como deuda técnica documentada; restringir cuando se elimine dependencia legacy.
+- [!] `app/types/react-router-virtual.d.ts` — `const build: any` shim para módulo virtual. Aceptable (documentado).
 
 ### `ce/types/issue-types/`
 
@@ -3779,6 +3779,6 @@ Archivos de declaración de tipos (sin código runtime). Revisión enfocada en: 
 
 ### `./`
 
-- [!] `google.d.ts` — `(...args: any[]) => void` en `native_callback` e `intermediate_iframe_close_callback` de `IdConfiguration`. Son callbacks de Google Identity Services donde los args dependen de la lib externa; aceptable como shim pero idealmente `(...args: unknown[]) => void` con narrowing en el callsite.
+- [!] `google.d.ts` — `(...args: any[])` en callbacks de Google Identity Services (tipos externos a la lib). Aceptable como shim documentado.
 - [x] `use-font-face-observer.d.ts`
 

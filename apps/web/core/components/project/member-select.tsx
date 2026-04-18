@@ -17,7 +17,7 @@ import { getFileURL } from "@plane/utils";
 import { useMember } from "@/hooks/store/use-member";
 
 type Props = {
-  value: any;
+  value: string | null | undefined;
   onChange: (val: string) => void;
   isDisabled?: boolean;
 };

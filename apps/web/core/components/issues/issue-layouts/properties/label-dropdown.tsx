@@ -33,7 +33,7 @@ export interface ILabelDropdownProps {
   onChange: (data: string[]) => void;
   onClose?: () => void;
   disabled?: boolean;
-  defaultOptions?: any;
+  defaultOptions?: IIssueLabel[];
   hideDropdownArrow?: boolean;
   className?: string;
   buttonClassName?: string;
@@ -271,7 +271,7 @@ export function LabelDropdown(props: ILabelDropdownProps) {
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   placeholder={t("common.search.label")}
-                  displayValue={(assigned: any) => assigned?.name || ""}
+                  displayValue={(assigned: IIssueLabel | null) => assigned?.name || ""}
                   onKeyDown={searchInputKeyDown}
                 />
               </div>

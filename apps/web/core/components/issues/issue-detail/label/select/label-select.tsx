@@ -157,7 +157,7 @@ export const IssueLabelSelect = observer(function IssueLabelSelect(props: IIssue
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   placeholder={t("common.search.label")}
-                  displayValue={(assigned: any) => assigned?.name}
+                  displayValue={(assigned: IIssueLabel | null) => assigned?.name ?? ""}
                   onKeyDown={searchInputKeyDown}
                   tabIndex={baseTabIndex}
                 />

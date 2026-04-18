@@ -4,6 +4,7 @@
  * See the LICENSE file for details.
  */
 
+import type React from "react";
 import type { Styles } from "@react-pdf/renderer";
 import { StyleSheet } from "@react-pdf/renderer";
 import type { LucideIcon } from "lucide-react";
@@ -207,7 +208,7 @@ export const TOOLBAR_ITEMS: {
 export const EDITOR_FONT_STYLES: {
   key: TEditorFontStyle;
   label: string;
-  icon: any;
+  icon: React.ComponentType<{ className?: string }>;
 }[] = [
   {
     key: "sans-serif",

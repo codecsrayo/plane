@@ -36,7 +36,7 @@ interface Props {
     tableHead?: CustomComponent;
     tableRow?: CustomComponent;
   };
-  options?: any;
+  options?: MarkdownToJSX.Options;
 }
 
 function HeadingPrimary({ children }: { children: React.ReactNode }) {

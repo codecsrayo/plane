@@ -21,6 +21,7 @@ import { USER_ACTIVITY } from "@/constants/fetch-keys";
 import { useUser } from "@/hooks/store/user";
 // services
 import { UserService } from "@/services/user.service";
+import type { IIssueActivity } from "@plane/types";
 const userService = new UserService();
 
 type Props = {
@@ -62,7 +63,7 @@ export const ProfileActivityListPage = observer(function ProfileActivityListPage
     <>
       {userProfileActivity ? (
         <ul role="list">
-          {userProfileActivity.results.map((activityItem: any) => {
+          {userProfileActivity.results.map((activityItem: IIssueActivity) => {
             if (activityItem.field === "comment")
               return (
                 <div key={activityItem.id} className="mt-2">

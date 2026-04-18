@@ -208,7 +208,7 @@ export const WorkItemLabelSelectBase = observer(function WorkItemLabelSelectBase
                 className="w-full bg-transparent py-1 text-11 text-secondary placeholder:text-placeholder focus:outline-none"
                 onChange={(event) => setQuery(event.target.value)}
                 placeholder={t("search")}
-                displayValue={(assigned: any) => assigned?.name}
+                displayValue={(assigned: IIssueLabel | null) => assigned?.name ?? ""}
                 onKeyDown={searchInputKeyDown}
               />
             </div>

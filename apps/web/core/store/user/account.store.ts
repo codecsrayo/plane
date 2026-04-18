@@ -9,6 +9,7 @@ import { makeObservable, observable } from "mobx";
 // types
 import type { IUserAccount } from "@plane/types";
 // services
+import { ApiError } from "@/services/api.service";
 import { UserService } from "@/services/user.service";
 // store
 import type { CoreRootStore } from "../root.store";
@@ -16,7 +17,7 @@ import type { CoreRootStore } from "../root.store";
 export interface IAccountStore {
   // observables
   isLoading: boolean;
-  error: any | undefined;
+  error: ApiError | null;
   // model observables
   provider_account_id: string | undefined;
   provider: string | undefined;
@@ -24,7 +25,7 @@ export interface IAccountStore {
 
 export class AccountStore implements IAccountStore {
   isLoading: boolean = false;
-  error: any | undefined = undefined;
+  error: ApiError | null = null;
   // model observables
   provider_account_id: string | undefined = undefined;
   provider: string | undefined = undefined;

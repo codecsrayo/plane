@@ -72,7 +72,7 @@ export interface IssueFormProps {
   handleDraftAndClose?: () => void;
   isProjectSelectionDisabled?: boolean;
   showActionButtons?: boolean;
-  dataResetProperties?: any[];
+  dataResetProperties?: string[];
 }
 
 export const IssueFormRoot = observer(function IssueFormRoot(props: IssueFormProps) {

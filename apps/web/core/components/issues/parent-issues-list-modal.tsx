@@ -32,7 +32,7 @@ import { ProjectService } from "@/services/project";
 type Props = {
   isOpen: boolean;
   handleClose: () => void;
-  value?: any;
+  value?: ISearchIssueResponse;
   onChange: (issue: ISearchIssueResponse) => void;
   projectId: string | undefined;
   issueId?: string;

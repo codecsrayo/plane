@@ -12,6 +12,7 @@ import { useTranslation } from "@plane/i18n";
 import { EditIcon, CloseIcon } from "@plane/propel/icons";
 // plane imports
 import { Tooltip } from "@plane/propel/tooltip";
+import type { ISearchIssueResponse } from "@plane/types";
 import { cn } from "@plane/utils";
 // hooks
 import { useIssueDetail } from "@/hooks/store/use-issue-detail";
@@ -73,7 +74,7 @@ export const IssueParentSelect = observer(function IssueParentSelect(props: TIss
         issueId={issueId}
         isOpen={isParentIssueModalOpen === issueId}
         handleClose={() => toggleParentIssueModal(null)}
-        onChange={(selectedIssue: any) => handleParentIssue(selectedIssue?.id)}
+        onChange={(selectedIssue: ISearchIssueResponse) => handleParentIssue(selectedIssue?.id)}
       />
       <button
         type="button"

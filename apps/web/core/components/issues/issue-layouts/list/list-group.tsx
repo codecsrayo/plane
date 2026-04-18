@@ -148,7 +148,7 @@ export const ListGroup = observer(function ListGroup(props: Props) {
     return true;
   };
 
-  const prePopulateQuickAddData = (groupByKey: string | null, value: any) => {
+  const prePopulateQuickAddData = (groupByKey: string | null, value: string | null | undefined) => {
     const defaultState = projectState.projectStates?.find((state) => state.default);
     let preloadedData: object = { state_id: defaultState?.id };
 

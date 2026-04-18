@@ -5,7 +5,7 @@
  */
 
 import { useEffect } from "react";
-import { Controller, useForm } from "react-hook-form";
+import { Controller, useForm, FieldNamesMarkedBoolean } from "react-hook-form";
 // plane imports
 import { ETabIndices } from "@plane/constants";
 import { useTranslation } from "@plane/i18n";
@@ -23,7 +23,7 @@ import { ModuleStatusSelect } from "@/components/modules";
 import { useUser } from "@/hooks/store/user/user-user";
 
 type Props = {
-  handleFormSubmit: (values: Partial<IModule>, dirtyFields: any) => Promise<void>;
+  handleFormSubmit: (values: Partial<IModule>, dirtyFields: Partial<Readonly<Record<string, boolean>>>) => Promise<void>;
   handleClose: () => void;
   status: boolean;
   projectId: string;

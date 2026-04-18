@@ -53,7 +53,7 @@ export const LeaveProjectModal = observer(function LeaveProjectModal(props: ILea
     onClose();
   };
 
-  const onSubmit = async (data: any) => {
+  const onSubmit = async (data: { projectName: string; confirmLeave: string }) => {
     if (!workspaceSlug) return;
 
     if (data) {

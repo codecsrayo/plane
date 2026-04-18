@@ -66,7 +66,7 @@ export const CalendarOptionsDropdown = observer(function CalendarOptionsDropdown
   const calendarLayout = issuesFilterStore.issueFilters?.displayFilters?.calendar?.layout ?? "month";
   const showWeekends = issuesFilterStore.issueFilters?.displayFilters?.calendar?.show_weekends ?? false;
 
-  const handleLayoutChange = (layout: TCalendarLayouts, closePopover: any) => {
+  const handleLayoutChange = (layout: TCalendarLayouts, closePopover: () => void) => {
     if (!updateFilters) return;
 
     updateFilters(projectId?.toString(), EIssueFilterType.DISPLAY_FILTERS, {

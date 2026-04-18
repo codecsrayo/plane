@@ -4,6 +4,7 @@
  * See the LICENSE file for details.
  */
 
+import React from "react";
 import { observer } from "mobx-react";
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
@@ -25,7 +26,7 @@ export type SidebarWorkspaceMenuItemProps = {
     labelTranslationKey: string;
     key: string;
     href: string;
-    Icon: any;
+    Icon: React.ComponentType<{ className?: string }>;
     access: EUserWorkspaceRoles[];
   };
 };
@@ -49,7 +50,7 @@ export const SidebarWorkspaceMenuItem = observer(function SidebarWorkspaceMenuIt
     }
   };
 
-  if (!allowPermissions(item.access as any, EUserPermissionsLevel.WORKSPACE, workspaceSlug.toString())) {
+  if (!allowPermissions(item.access, EUserPermissionsLevel.WORKSPACE, workspaceSlug.toString())) {
     return null;
   }
 

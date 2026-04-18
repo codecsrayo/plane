@@ -69,21 +69,36 @@ export const CreateUpdateLabelInline = observer(
       if (onClose) onClose();
     };
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const getErrorMessage = (error: any, operation: "create" | "update"): string => {
-      const errorData = error ?? {};
+    const getErrorMessage = (error: unknown, operation: "create" | "update"): string => {
+      // Narrow `error` to a record so we can read .name / .detail / .error without `any`.
+      // Services throw `ApiError` whose `.data` is the server payload, or legacy shapes
+      // bubbled directly. Both cases expose property access via `in` checks.
+      const errorData: Record<string, unknown> =
+        error && typeof error === "object"
+          ? ("data" in error && (error as { data?: unknown }).data && typeof (error as { data?: unknown }).data === "object"
+              ? ((error as { data: Record<string, unknown> }).data)
+              : (error as Record<string, unknown>))
+          : {};
 
-      const labelError = errorData.name?.includes(errorCodes.LABEL_NAME_ALREADY_EXISTS);
+      const nameField = errorData.name;
+      const labelError = Array.isArray(nameField)
+        ? nameField.some((v) => typeof v === "string" && v.includes(errorCodes.LABEL_NAME_ALREADY_EXISTS))
+        : typeof nameField === "string"
+          ? nameField.includes(errorCodes.LABEL_NAME_ALREADY_EXISTS)
+          : false;
       if (labelError) {
         return t("label.create.already_exists");
       }
 
+      const detail = typeof errorData.detail === "string" ? errorData.detail : undefined;
+      const errMsg = typeof errorData.error === "string" ? errorData.error : undefined;
+
       // Fallback to general error messages
       if (operation === "create") {
-        return errorData?.detail ?? errorData?.error ?? t("common.something_went_wrong");
+        return detail ?? errMsg ?? t("common.something_went_wrong");
       }
 
-      return errorData?.error ?? t("project_settings.labels.toast.error");
+      return errMsg ?? t("project_settings.labels.toast.error");
     };
 
     const handleLabelCreate: SubmitHandler<IIssueLabel> = async (formData) => {

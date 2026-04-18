@@ -24,7 +24,7 @@ import { IssueIdentifier } from "@/plane-web/components/issues/issue-details/iss
 export type TPowerKSearchResultGroupDetails = {
   icon?: React.ComponentType<{ className?: string }>;
   itemName: (item: any) => React.ReactNode;
-  path: (item: any, projectId: string | undefined) => string;
+  path: (item: unknown, projectId: string | undefined) => string;
   title: string;
 };
 

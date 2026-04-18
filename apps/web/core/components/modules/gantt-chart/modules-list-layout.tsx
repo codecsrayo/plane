@@ -32,7 +32,7 @@ export const ModulesListGanttChartView = observer(function ModulesListGanttChart
   const handleModuleUpdate = async (module: IModule, data: IBlockUpdateData) => {
     if (!workspaceSlug || !module) return;
 
-    const payload: any = { ...data };
+    const payload = { ...data };
     if (data.sort_order) payload.sort_order = data.sort_order.newSortOrder;
 
     await updateModuleDetails(workspaceSlug.toString(), module.project_id, module.id, payload);

@@ -43,7 +43,7 @@ export const SidebarWorkspaceMenuHeader = observer(function SidebarWorkspaceMenu
 
   // TODO: fix types
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const isAdmin = allowPermissions([EUserWorkspaceRoles.ADMIN] as any, EUserPermissionsLevel.WORKSPACE);
+  const isAdmin = allowPermissions([EUserWorkspaceRoles.ADMIN], EUserPermissionsLevel.WORKSPACE);
 
   return (
     <div className="group/workspace-button mt-2.5 flex rounded-sm bg-surface-1 px-2 hover:bg-surface-2">

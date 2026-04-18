@@ -84,7 +84,7 @@ export const BaseGanttRoot = observer(function BaseGanttRoot(props: IBaseGanttRo
   const updateIssueBlockStructure = async (issue: TIssue, data: IBlockUpdateData) => {
     if (!workspaceSlug) return;
 
-    const payload: any = { ...data };
+    const payload = { ...data };
     if (data.sort_order) payload.sort_order = data.sort_order.newSortOrder;
 
     if (updateIssue) await updateIssue(issue.project_id, issue.id, payload);
