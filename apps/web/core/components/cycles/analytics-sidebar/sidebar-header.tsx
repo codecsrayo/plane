@@ -13,7 +13,7 @@ import { CYCLE_STATUS, EUserPermissions, EUserPermissionsLevel } from "@plane/co
 import { useTranslation } from "@plane/i18n";
 import { ChevronRightIcon } from "@plane/propel/icons";
 import { TOAST_TYPE, setToast } from "@plane/propel/toast";
-import type { ICycle } from "@plane/types";
+import type { CycleDateCheckData, ICycle } from "@plane/types";
 import { getDate, renderFormattedPayloadDate } from "@plane/utils";
 // components
 import { DateRangeDropdown } from "@/components/dropdowns/date-range";
@@ -72,7 +72,7 @@ export const CycleSidebarHeader = observer(function CycleSidebarHeader(props: Pr
       });
   }, [cycleDetails, reset]);
 
-  const dateChecker = async (payload: any) => {
+  const dateChecker = async (payload: CycleDateCheckData) => {
     try {
       const res = await cycleService.cycleDateCheck(workspaceSlug, projectId, payload);
       return res.status;

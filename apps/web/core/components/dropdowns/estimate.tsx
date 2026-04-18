@@ -247,7 +247,7 @@ export const EstimateDropdown = observer(function EstimateDropdown(props: Props)
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder={t("common.search.placeholder")}
-                displayValue={(assigned: any) => assigned?.name}
+                displayValue={(assigned: { name?: string } | null | undefined) => assigned?.name ?? ""}
                 onKeyDown={searchInputKeyDown}
               />
             </div>

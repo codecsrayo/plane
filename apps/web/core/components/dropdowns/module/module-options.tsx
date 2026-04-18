@@ -129,7 +129,7 @@ export const ModuleOptions = observer(function ModuleOptions(props: Props) {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder={t("common.search.label")}
-            displayValue={(assigned: any) => assigned?.name}
+            displayValue={(assigned: { name?: string } | null | undefined) => assigned?.name ?? ""}
             onKeyDown={searchInputKeyDown}
           />
         </div>

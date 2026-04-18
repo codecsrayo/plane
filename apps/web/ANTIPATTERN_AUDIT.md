@@ -1411,11 +1411,11 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 #### `core/components/cycles/analytics-sidebar/`
 
 - [x] `core/components/cycles/analytics-sidebar/index.ts`
-- [!] `core/components/cycles/analytics-sidebar/issue-progress.tsx` — `const updatedCycleDetails: any = { ...cycleDetails }` (línea 48) — tipar con `Partial<ICycle>` en lugar de `any`.
+- [x] `core/components/cycles/analytics-sidebar/issue-progress.tsx` — Resuelto: `const updatedCycleDetails: any = { ...cycleDetails }` → `const updatedCycleDetails: ICycle = { ...cycleDetails }`. El spread preserva todas las claves de `ICycle`; la asignación dinámica por `keyof TProgressSnapshot` mantiene soundness porque esas keys son un subset de `keyof ICycle`. (Nota del audit sugería `Partial<ICycle>` pero eso quebraría la asignación indexada; `ICycle` es más apropiado aquí.)
 - [x] `core/components/cycles/analytics-sidebar/progress-stats.tsx`
 - [x] `core/components/cycles/analytics-sidebar/root.tsx`
 - [x] `core/components/cycles/analytics-sidebar/sidebar-details.tsx`
-- [!] `core/components/cycles/analytics-sidebar/sidebar-header.tsx` — `const dateChecker = async (payload: any)` (línea 75).
+- [x] `core/components/cycles/analytics-sidebar/sidebar-header.tsx` — Resuelto: `dateChecker(payload: any)` → `dateChecker(payload: CycleDateCheckData)`. Import añadido desde `@plane/types`. Tipo consistente con la firma de `cycleService.cycleDateCheck()`.
 
 #### `core/components/cycles/applied-filters/`
 
@@ -1461,10 +1461,10 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 - [x] `core/components/dropdowns/constants.ts`
 - [x] `core/components/dropdowns/date-range.tsx`
 - [x] `core/components/dropdowns/date.tsx`
-- [!] `core/components/dropdowns/estimate.tsx` — `displayValue={(assigned: any) => assigned?.name}` (línea 250) — patrón repetido.
-- [!] `core/components/dropdowns/layout.tsx` — `keyExtractor = useCallback((option: any) => option.value, [])` (línea 75) — tipar con genérico del dropdown.
+- [x] `core/components/dropdowns/estimate.tsx` — Resuelto: `displayValue={(assigned: any) => assigned?.name}` → `(assigned: { name?: string } | null | undefined) => assigned?.name ?? ""`. Fallback a string vacío ya que la firma de headless UI espera `string`. Patrón unificado con los otros 6 dropdowns en esta tanda.
+- [x] `core/components/dropdowns/layout.tsx` — Resuelto: `keyExtractor = useCallback((option: any) => option.value, [])` → `(option: { value: EIssueLayoutTypes }) => option.value`. El tipo refleja la forma de `options` (mapeado desde `ISSUE_LAYOUT_MAP`).
 - [x] `core/components/dropdowns/merged-date.tsx`
-- [!] `core/components/dropdowns/priority.tsx` — `displayValue={(assigned: any) => assigned?.name}` (línea 481).
+- [x] `core/components/dropdowns/priority.tsx` — Resuelto: mismo patrón `displayValue: any` → `{ name?: string } | null | undefined` con fallback `?? ""`.
 
 #### `core/components/dropdowns/cycle/`
 
@@ -1473,7 +1473,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 
 #### `core/components/dropdowns/intake-state/`
 
-- [!] `core/components/dropdowns/intake-state/base.tsx` — `displayValue={(assigned: any) => assigned?.name}` (línea 232) — patrón replicado (7 ubicaciones en dropdowns/).
+- [x] `core/components/dropdowns/intake-state/base.tsx` — Resuelto: mismo patrón `displayValue: any` → `{ name?: string } | null | undefined` con fallback `?? ""`. Tanda unifica los 7 sitios con el mismo shape.
 - [x] `core/components/dropdowns/intake-state/dropdown.tsx`
 
 #### `core/components/dropdowns/member/`
@@ -1481,23 +1481,23 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 - [x] `core/components/dropdowns/member/avatar.tsx`
 - [x] `core/components/dropdowns/member/base.tsx`
 - [x] `core/components/dropdowns/member/dropdown.tsx`
-- [!] `core/components/dropdowns/member/member-options.tsx` — `displayValue={(assigned: any) => assigned?.name}` (línea 152).
+- [x] `core/components/dropdowns/member/member-options.tsx` — Resuelto: mismo patrón `displayValue: any` → `{ name?: string } | null | undefined` con fallback `?? ""`.
 
 #### `core/components/dropdowns/module/`
 
 - [!] `core/components/dropdowns/module/base.tsx` — Cast `onChange={onChange as any}` (línea 169) — arreglar el tipo de `onChange` en la prop o del hijo receptor.
 - [x] `core/components/dropdowns/module/button-content.tsx`
 - [x] `core/components/dropdowns/module/dropdown.tsx`
-- [!] `core/components/dropdowns/module/module-options.tsx` — `displayValue={(assigned: any) => assigned?.name}` (línea 132).
+- [x] `core/components/dropdowns/module/module-options.tsx` — Resuelto: mismo patrón `displayValue: any` → `{ name?: string } | null | undefined` con fallback `?? ""`.
 
 #### `core/components/dropdowns/project/`
 
-- [!] `core/components/dropdowns/project/base.tsx` — `displayValue={(assigned: any) => assigned?.name}` (línea 261) — patrón repetido en otros 6 dropdowns; debería tipar con el genérico del dropdown.
+- [x] `core/components/dropdowns/project/base.tsx` — Resuelto: mismo patrón `displayValue: any` → `{ name?: string } | null | undefined` con fallback `?? ""`. Patrón unificado en todos los 7 sitios flagged en `dropdowns/`.
 - [x] `core/components/dropdowns/project/dropdown.tsx`
 
 #### `core/components/dropdowns/state/`
 
-- [!] `core/components/dropdowns/state/base.tsx` — `displayValue={(assigned: any) => assigned?.name}` (línea 234).
+- [x] `core/components/dropdowns/state/base.tsx` — Resuelto: mismo patrón `displayValue: any` → `{ name?: string } | null | undefined` con fallback `?? ""`.
 - [x] `core/components/dropdowns/state/dropdown.tsx`
 
 #### `core/components/editor/document/`

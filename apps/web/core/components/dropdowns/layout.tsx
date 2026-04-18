@@ -72,7 +72,7 @@ export const LayoutDropDown = observer(function LayoutDropDown(props: TLayoutDro
     [t]
   );
 
-  const keyExtractor = useCallback((option: any) => option.value, []);
+  const keyExtractor = useCallback((option: { value: EIssueLayoutTypes }) => option.value, []);
 
   return (
     <Dropdown

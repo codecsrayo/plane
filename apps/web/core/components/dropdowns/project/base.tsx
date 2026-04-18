@@ -258,7 +258,7 @@ export const ProjectDropdownBase = observer(function ProjectDropdownBase(props: 
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder={t("search")}
-                displayValue={(assigned: any) => assigned?.name}
+                displayValue={(assigned: { name?: string } | null | undefined) => assigned?.name ?? ""}
                 onKeyDown={searchInputKeyDown}
               />
             </div>

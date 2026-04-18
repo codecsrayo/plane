@@ -45,7 +45,7 @@ export const cycleChartOptions: Options[] = [
 export const validateCycleSnapshot = (cycleDetails: ICycle | null): ICycle | null => {
   if (!cycleDetails || cycleDetails === null) return cycleDetails;
 
-  const updatedCycleDetails: any = { ...cycleDetails };
+  const updatedCycleDetails: ICycle = { ...cycleDetails };
   if (!isEmpty(cycleDetails.progress_snapshot)) {
     Object.keys(cycleDetails.progress_snapshot || {}).forEach((key) => {
       const currentKey = key as keyof TProgressSnapshot;
