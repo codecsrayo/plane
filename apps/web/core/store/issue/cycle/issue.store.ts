@@ -26,6 +26,7 @@ import { BaseIssuesStore } from "../helpers/base-issues.store";
 //
 import type { IIssueRootStore } from "../root.store";
 import type { ICycleIssuesFilter } from "./filter.store";
+import { toApiError } from "@/services/api.service";
 
 export const ACTIVE_CYCLE_ISSUES = "ACTIVE_CYCLE_ISSUES";
 
@@ -211,7 +212,7 @@ export class CycleIssues extends BaseIssuesStore implements ICycleIssues {
     } catch (error) {
       // set loader to undefined once errored out
       this.setLoader(undefined);
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -257,7 +258,7 @@ export class CycleIssues extends BaseIssuesStore implements ICycleIssues {
     } catch (error) {
       // set Loader as undefined if errored out
       this.setLoader(undefined, groupId, subGroupId);
-      throw error;
+      throw toApiError(error);
     }
   };
 

@@ -21,6 +21,7 @@ import { BaseIssuesStore } from "../helpers/base-issues.store";
 //
 import type { IIssueRootStore } from "../root.store";
 import type { IModuleIssuesFilter } from "./filter.store";
+import { toApiError } from "@/services/api.service";
 
 export interface IModuleIssues extends IBaseIssuesStore {
   viewFlags: ViewFlags;
@@ -161,7 +162,7 @@ export class ModuleIssues extends BaseIssuesStore implements IModuleIssues {
     } catch (error) {
       // set loader to undefined once errored out
       this.setLoader(undefined);
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -207,7 +208,7 @@ export class ModuleIssues extends BaseIssuesStore implements IModuleIssues {
     } catch (error) {
       // set Loader as undefined if errored out
       this.setLoader(undefined, groupId, subGroupId);
-      throw error;
+      throw toApiError(error);
     }
   };
 

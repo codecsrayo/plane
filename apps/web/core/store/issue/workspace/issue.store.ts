@@ -21,6 +21,7 @@ import type { IBaseIssuesStore } from "../helpers/base-issues.store";
 import { BaseIssuesStore } from "../helpers/base-issues.store";
 import type { IIssueRootStore } from "../root.store";
 import type { IWorkspaceIssuesFilter } from "./filter.store";
+import { toApiError } from "@/services/api.service";
 
 export interface IWorkspaceIssues extends IBaseIssuesStore {
   // observable
@@ -121,7 +122,7 @@ export class WorkspaceIssues extends BaseIssuesStore implements IWorkspaceIssues
     } catch (error) {
       // set loader to undefined if errored out
       this.setLoader(undefined);
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -160,7 +161,7 @@ export class WorkspaceIssues extends BaseIssuesStore implements IWorkspaceIssues
     } catch (error) {
       // set Loader as undefined if errored out
       this.setLoader(undefined, groupId, subGroupId);
-      throw error;
+      throw toApiError(error);
     }
   };
 

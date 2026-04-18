@@ -12,6 +12,7 @@ import type { TIssueComment, TIssueCommentMap, TIssueCommentIdMap, TIssueService
 import { IssueCommentService } from "@/services/issue";
 // types
 import type { IIssueDetail } from "./root.store";
+import { toApiError } from "@/services/api.service";
 
 export type TCommentLoader = "fetch" | "create" | "update" | "delete" | "mutate" | undefined;
 
@@ -166,7 +167,7 @@ export class IssueCommentStore implements IIssueCommentStore {
       return response;
     } catch (error) {
       this.rootIssueDetail.activity.fetchActivities(workspaceSlug, projectId, issueId);
-      throw error;
+      throw toApiError(error);
     }
   };
 

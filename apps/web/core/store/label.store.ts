@@ -15,6 +15,7 @@ import { buildTree } from "@plane/utils";
 import { IssueLabelService } from "@/services/issue";
 // store
 import type { CoreRootStore } from "./root.store";
+import { toApiError } from "@/services/api.service";
 
 export interface ILabelStore {
   //Loaders
@@ -224,7 +225,7 @@ export class LabelStore implements ILabelStore {
       runInAction(() => {
         set(this.labelMap, [labelId], originalLabel);
       });
-      throw error;
+      throw toApiError(error);
     }
   };
 

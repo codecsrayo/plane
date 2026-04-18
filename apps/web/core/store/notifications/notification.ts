@@ -12,6 +12,7 @@ import type { IUserLite, TNotification, TNotificationData } from "@plane/types";
 import workspaceNotificationService from "@/services/workspace-notification.service";
 // store
 import type { CoreRootStore } from "../root.store";
+import { toApiError } from "@/services/api.service";
 
 export interface INotification extends TNotification {
   // observables
@@ -182,7 +183,7 @@ export class Notification implements INotification {
       }
       return notification;
     } catch (error) {
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -207,7 +208,7 @@ export class Notification implements INotification {
     } catch (error) {
       runInAction(() => this.mutateNotification({ read_at: currentNotificationReadAt }));
       this.store.workspaceNotification.setUnreadNotificationsCount("increment");
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -232,7 +233,7 @@ export class Notification implements INotification {
     } catch (error) {
       this.store.workspaceNotification.setUnreadNotificationsCount("decrement");
       runInAction(() => this.mutateNotification({ read_at: currentNotificationReadAt }));
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -255,7 +256,7 @@ export class Notification implements INotification {
       return notification;
     } catch (error) {
       runInAction(() => this.mutateNotification({ archived_at: currentNotificationArchivedAt }));
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -278,7 +279,7 @@ export class Notification implements INotification {
       return notification;
     } catch (error) {
       runInAction(() => this.mutateNotification({ archived_at: currentNotificationArchivedAt }));
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -299,7 +300,7 @@ export class Notification implements INotification {
       return notification;
     } catch (error) {
       runInAction(() => this.mutateNotification({ snoozed_till: currentNotificationSnoozeTill }));
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -319,7 +320,7 @@ export class Notification implements INotification {
       return notification;
     } catch (error) {
       runInAction(() => this.mutateNotification({ snoozed_till: currentNotificationSnoozeTill }));
-      throw error;
+      throw toApiError(error);
     }
   };
 }

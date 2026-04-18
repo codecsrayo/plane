@@ -12,6 +12,7 @@ import type { TProjectPublishSettings } from "@plane/types";
 import { ProjectPublishService } from "@/services/project";
 // store
 import type { ProjectRootStore } from "@/store/project";
+import { toApiError } from "@/services/api.service";
 
 export interface IProjectPublishStore {
   // states
@@ -97,7 +98,7 @@ export class ProjectPublishStore implements IProjectPublishStore {
       runInAction(() => {
         this.fetchSettingsLoader = false;
       });
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -124,7 +125,7 @@ export class ProjectPublishStore implements IProjectPublishStore {
       runInAction(() => {
         this.generalLoader = false;
       });
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -161,7 +162,7 @@ export class ProjectPublishStore implements IProjectPublishStore {
       runInAction(() => {
         this.generalLoader = false;
       });
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -188,7 +189,7 @@ export class ProjectPublishStore implements IProjectPublishStore {
       runInAction(() => {
         this.generalLoader = false;
       });
-      throw error;
+      throw toApiError(error);
     }
   };
 }

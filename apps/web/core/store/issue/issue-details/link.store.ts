@@ -11,6 +11,7 @@ import type { TIssueLink, TIssueLinkMap, TIssueLinkIdMap, TIssueServiceType } fr
 import { IssueService } from "@/services/issue";
 // types
 import type { IIssueDetail } from "./root.store";
+import { toApiError } from "@/services/api.service";
 
 export interface IIssueLinkStoreActions {
   addLinks: (issueId: string, links: TIssueLink[]) => void;
@@ -147,7 +148,7 @@ export class IssueLinkStore implements IIssueLinkStore {
           set(this.linkMap, [linkId, key], initialData[key as keyof TIssueLink]);
         });
       });
-      throw error;
+      throw toApiError(error);
     }
   };
 

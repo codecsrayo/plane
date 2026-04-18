@@ -23,6 +23,7 @@ import { ProfileStore } from "@/store/user/profile.store";
 // local imports
 import type { IUserSettingsStore } from "./settings.store";
 import { UserSettingsStore } from "./settings.store";
+import { toApiError } from "@/services/api.service";
 
 type TUserErrorStatus = {
   status: string;
@@ -143,7 +144,7 @@ export class UserStore implements IUserStore {
           message: "Failed to fetch current user",
         };
       });
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -176,7 +177,7 @@ export class UserStore implements IUserStore {
           message: "Failed to update current user",
         };
       });
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -202,7 +203,7 @@ export class UserStore implements IUserStore {
           message: "Failed to update current user",
         };
       });
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -219,7 +220,7 @@ export class UserStore implements IUserStore {
       return user;
     } catch (error) {
       console.error("Failed to change password from user store", error);
-      throw error;
+      throw toApiError(error);
     }
   };
 

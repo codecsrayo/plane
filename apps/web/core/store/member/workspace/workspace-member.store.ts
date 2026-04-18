@@ -21,6 +21,7 @@ import type { IMemberRootStore } from "../index.ts";
 import type { IWorkspaceMemberFiltersStore } from "./workspace-member-filters.store";
 import { WorkspaceMemberFiltersStore } from "./workspace-member-filters.store";
 import type { RootStore } from "@/plane-web/store/root.store";
+import { toApiError } from "@/services/api.service";
 
 export interface IWorkspaceMembership {
   id: string;
@@ -270,7 +271,7 @@ export class WorkspaceMemberStore implements IWorkspaceMemberStore {
       runInAction(() => {
         set(this.workspaceMemberMap, [workspaceSlug, userId], originalProjectMemberData);
       });
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -338,7 +339,7 @@ export class WorkspaceMemberStore implements IWorkspaceMemberStore {
       runInAction(() => {
         set(this.workspaceMemberInvitations, workspaceSlug, originalMemberInvitations);
       });
-      throw error;
+      throw toApiError(error);
     }
   };
 

@@ -20,6 +20,7 @@ import type {
 import { DashboardService } from "@/services/dashboard.service";
 // plane web store
 import type { CoreRootStore } from "./root.store";
+import { toApiError } from "@/services/api.service";
 
 export interface IDashboardStore {
   // error states
@@ -169,7 +170,7 @@ export class DashboardStore implements IDashboardStore {
         this.homeDashboardId = null;
       });
 
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -196,7 +197,7 @@ export class DashboardStore implements IDashboardStore {
           set(this.widgetStatsError, [workspaceSlug, dashboardId, params.widget_key], error);
         });
 
-        throw error;
+        throw toApiError(error);
       });
 
   /**
@@ -235,7 +236,7 @@ export class DashboardStore implements IDashboardStore {
       runInAction(() => {
         this.widgetDetails[workspaceSlug][dashboardId][widgetIndex] = originalWidget;
       });
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -285,7 +286,7 @@ export class DashboardStore implements IDashboardStore {
           w.id === widgetId ? widgetDetails : w
         );
       });
-      throw error;
+      throw toApiError(error);
     }
   };
 }

@@ -9,6 +9,7 @@ import { observable, action, makeObservable, runInAction } from "mobx";
 import type { IInstance, IInstanceConfig } from "@plane/types";
 // services
 import { InstanceService } from "@/services/instance.service";
+import { toApiError } from "@/services/api.service";
 
 type TError = {
   status: string;
@@ -72,7 +73,7 @@ export class InstanceStore implements IInstanceStore {
           message: "Failed to fetch instance info",
         };
       });
-      throw error;
+      throw toApiError(error);
     }
   };
 }

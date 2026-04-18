@@ -11,6 +11,7 @@ import type { EIssueServiceType } from "@plane/types";
 import { IssueService } from "@/services/issue/issue.service";
 // types
 import type { IIssueDetail } from "./root.store";
+import { toApiError } from "@/services/api.service";
 export interface IIssueSubscriptionStoreActions {
   addSubscription: (issueId: string, isSubscribed: boolean | undefined | null) => void;
   fetchSubscriptions: (workspaceSlug: string, projectId: string, issueId: string) => Promise<boolean>;
@@ -88,7 +89,7 @@ export class IssueSubscriptionStore implements IIssueSubscriptionStore {
       await this.issueService.subscribeToIssueNotifications(workspaceSlug, projectId, issueId);
     } catch (error) {
       this.fetchSubscriptions(workspaceSlug, projectId, issueId);
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -104,7 +105,7 @@ export class IssueSubscriptionStore implements IIssueSubscriptionStore {
       await this.issueService.unsubscribeFromIssueNotifications(workspaceSlug, projectId, issueId);
     } catch (error) {
       this.fetchSubscriptions(workspaceSlug, projectId, issueId);
-      throw error;
+      throw toApiError(error);
     }
   };
 }

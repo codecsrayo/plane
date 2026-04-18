@@ -30,6 +30,7 @@ import { IssueFilterHelperStore } from "../helpers/issue-filter-helper.store";
 // helpers
 // types
 import type { IIssueRootStore } from "../root.store";
+import { toApiError } from "@/services/api.service";
 // constants
 
 export interface IProjectViewIssuesFilter extends IBaseIssueFilterStore {
@@ -179,7 +180,7 @@ export class ProjectViewIssuesFilter extends IssueFilterHelperStore implements I
       this.mutateFilters(workspaceSlug, viewId, viewDetails);
     } catch (error) {
       console.error("error while fetching project view filters", error);
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -207,7 +208,7 @@ export class ProjectViewIssuesFilter extends IssueFilterHelperStore implements I
       );
     } catch (error) {
       console.error("error while updating rich filters", error);
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -327,7 +328,7 @@ export class ProjectViewIssuesFilter extends IssueFilterHelperStore implements I
       }
     } catch (error) {
       if (viewId) this.fetchFilters(workspaceSlug, projectId, viewId);
-      throw error;
+      throw toApiError(error);
     }
   };
 

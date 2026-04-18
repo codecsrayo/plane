@@ -18,6 +18,7 @@ import type { TIssueRelationTypes } from "@/plane-web/types";
 import { IssueRelationService } from "@/services/issue";
 // types
 import type { IIssueDetail } from "./root.store";
+import { toApiError } from "@/services/api.service";
 export interface IIssueRelationStoreActions {
   // actions
   fetchRelations: (workspaceSlug: string, projectId: string, issueId: string) => Promise<TIssueRelation>;
@@ -262,7 +263,7 @@ export class IssueRelationStore implements IIssueRelationStore {
       this.rootIssueDetailStore.activity.fetchActivities(workspaceSlug, projectId, issueId);
     } catch (error) {
       this.fetchRelations(workspaceSlug, projectId, issueId);
-      throw error;
+      throw toApiError(error);
     }
   };
 

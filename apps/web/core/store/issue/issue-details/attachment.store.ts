@@ -14,6 +14,7 @@ import type { TIssueAttachment, TIssueAttachmentMap, TIssueAttachmentIdMap, TIss
 import { IssueAttachmentService } from "@/services/issue";
 import type { IIssueRootStore } from "../root.store";
 import type { IIssueDetail } from "./root.store";
+import { toApiError } from "@/services/api.service";
 
 export type TAttachmentUploadStatus = {
   id: string;
@@ -176,7 +177,7 @@ export class IssueAttachmentStore implements IIssueAttachmentStore {
       return response;
     } catch (error) {
       console.error("Error in uploading issue attachment:", error);
-      throw error;
+      throw toApiError(error);
     } finally {
       runInAction(() => {
         delete this.attachmentsUploadStatusMap[issueId][tempId];

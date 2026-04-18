@@ -27,6 +27,7 @@ import { IssueService } from "@/services/issue";
 import { ProjectService } from "@/services/project";
 // store
 import type { CoreRootStore } from "./root.store";
+import { toApiError } from "@/services/api.service";
 
 export interface ICycleStore {
   // loaders
@@ -607,7 +608,7 @@ export class CycleStore implements ICycleStore {
       console.error("Failed to patch cycle from cycle store");
       this.fetchAllCycles(workspaceSlug, projectId);
       this.fetchActiveCycle(workspaceSlug, projectId);
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -651,7 +652,7 @@ export class CycleStore implements ICycleStore {
       runInAction(() => {
         if (currentCycle) set(this.cycleMap, [cycleId, "is_favorite"], false);
       });
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -674,7 +675,7 @@ export class CycleStore implements ICycleStore {
       runInAction(() => {
         if (currentCycle) set(this.cycleMap, [cycleId, "is_favorite"], true);
       });
-      throw error;
+      throw toApiError(error);
     }
   };
 

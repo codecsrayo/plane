@@ -13,6 +13,7 @@ import type { EFileAssetType, TFileEntityInfo, TFileSignedURLResponse } from "@p
 // services
 import { FileService } from "@/services/file.service";
 import type { TAttachmentUploadStatus } from "../issue/issue-details/attachment.store";
+import { toApiError } from "@/services/api.service";
 
 export interface IEditorAssetStore {
   // computed
@@ -129,7 +130,7 @@ export class EditorAssetStore implements IEditorAssetStore {
       }
     } catch (error) {
       console.error("Error in uploading page asset:", error);
-      throw error;
+      throw toApiError(error);
     } finally {
       runInAction(() => {
         delete this.assetsUploadStatus[blockId];

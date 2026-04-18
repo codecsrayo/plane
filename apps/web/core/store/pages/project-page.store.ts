@@ -22,6 +22,7 @@ import { ProjectPageService } from "@/services/page";
 import type { CoreRootStore } from "../root.store";
 import type { TProjectPage } from "./project-page";
 import { ProjectPage } from "./project-page";
+import { toApiError } from "@/services/api.service";
 
 type TLoader = "init-loader" | "mutation-loader" | undefined;
 
@@ -248,7 +249,7 @@ export class ProjectPageStore implements IProjectPageStore {
           description: "Failed to fetch the pages, Please try again later.",
         };
       });
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -291,7 +292,7 @@ export class ProjectPageStore implements IProjectPageStore {
           description: "Failed to fetch the page, Please try again later.",
         };
       });
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -324,7 +325,7 @@ export class ProjectPageStore implements IProjectPageStore {
           description: "Failed to create a page, Please try again later.",
         };
       });
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -350,7 +351,7 @@ export class ProjectPageStore implements IProjectPageStore {
           description: "Failed to delete a page, Please try again later.",
         };
       });
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -369,7 +370,7 @@ export class ProjectPageStore implements IProjectPageStore {
       });
     } catch (error) {
       console.error("Unable to move page", error);
-      throw error;
+      throw toApiError(error);
     }
   };
 }

@@ -14,6 +14,7 @@ import type { IEstimate, IEstimatePoint as IEstimatePointType } from "@plane/typ
 import estimateService from "@/services/estimate.service";
 // store
 import type { CoreRootStore } from "@/store/root.store";
+import { toApiError } from "@/services/api.service";
 
 type TErrorCodes = {
   status: string;
@@ -151,7 +152,7 @@ export class EstimatePoint implements IEstimatePoint {
 
       return estimatePoint;
     } catch (error) {
-      throw error;
+      throw toApiError(error);
     }
   };
 }

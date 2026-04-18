@@ -28,6 +28,7 @@ import { IssueFilterHelperStore } from "../helpers/issue-filter-helper.store";
 // helpers
 // types
 import type { IIssueRootStore } from "../root.store";
+import { toApiError } from "@/services/api.service";
 // constants
 // services
 
@@ -188,7 +189,7 @@ export class ArchivedIssuesFilter extends IssueFilterHelperStore implements IArc
       );
     } catch (error) {
       console.error("error while updating rich filters", error);
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -294,7 +295,7 @@ export class ArchivedIssuesFilter extends IssueFilterHelperStore implements IArc
       }
     } catch (error) {
       this.fetchFilters(workspaceSlug, projectId);
-      throw error;
+      throw toApiError(error);
     }
   };
 }

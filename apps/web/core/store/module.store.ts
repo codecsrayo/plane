@@ -18,6 +18,7 @@ import { ModuleArchiveService } from "@/services/module_archive.service";
 import { ProjectService } from "@/services/project";
 // store
 import type { CoreRootStore } from "./root.store";
+import { toApiError } from "@/services/api.service";
 
 export interface IModuleStore {
   //Loaders
@@ -441,7 +442,7 @@ export class ModulesStore implements IModuleStore {
       runInAction(() => {
         set(this.moduleMap, [moduleId], { ...originalModuleDetails });
       });
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -513,7 +514,7 @@ export class ModulesStore implements IModuleStore {
       runInAction(() => {
         set(this.moduleMap, [moduleId, "link_module"], originalModuleDetails?.link_module);
       });
-      throw error;
+      throw toApiError(error);
     }
   };
 

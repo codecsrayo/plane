@@ -29,6 +29,7 @@ import type { IBaseIssueFilterStore } from "../helpers/issue-filter-helper.store
 import { IssueFilterHelperStore } from "../helpers/issue-filter-helper.store";
 // types
 import type { IIssueRootStore } from "../root.store";
+import { toApiError } from "@/services/api.service";
 
 export interface IWorkspaceDraftIssuesFilter extends IBaseIssueFilterStore {
   // observables
@@ -186,7 +187,7 @@ export class WorkspaceDraftIssuesFilter extends IssueFilterHelperStore implement
       );
     } catch (error) {
       console.error("error while updating rich filters", error);
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -268,7 +269,7 @@ export class WorkspaceDraftIssuesFilter extends IssueFilterHelperStore implement
       }
     } catch (error) {
       if (workspaceSlug) this.fetchFilters(workspaceSlug);
-      throw error;
+      throw toApiError(error);
     }
   };
 }

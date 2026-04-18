@@ -13,6 +13,7 @@ import { EStartOfTheWeek } from "@plane/types";
 import { UserService } from "@/services/user.service";
 // store
 import type { CoreRootStore } from "../root.store";
+import { toApiError } from "@/services/api.service";
 
 type TError = {
   status: string;
@@ -117,7 +118,7 @@ export class ProfileStore implements IUserProfileStore {
           message: "Failed to fetch user profile",
         };
       });
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -187,7 +188,7 @@ export class ProfileStore implements IUserProfileStore {
           message: "Failed to finish user onboarding",
         };
       });
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -209,7 +210,7 @@ export class ProfileStore implements IUserProfileStore {
           message: "Failed to update user profile is_tour_completed",
         };
       });
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -241,7 +242,7 @@ export class ProfileStore implements IUserProfileStore {
           message: "Failed to update user profile theme",
         };
       });
-      throw error;
+      throw toApiError(error);
     }
   };
 }

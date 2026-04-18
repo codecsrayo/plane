@@ -16,6 +16,7 @@ import type { IEstimate } from "@/plane-web/store/estimates/estimate";
 import { Estimate } from "@/plane-web/store/estimates/estimate";
 // store
 import type { CoreRootStore } from "../root.store";
+import { toApiError } from "@/services/api.service";
 
 type TEstimateLoader = "init-loader" | "mutation-loader" | undefined;
 type TErrorCodes = {
@@ -207,7 +208,7 @@ export class ProjectEstimateStore implements IProjectEstimateStore {
         status: "error",
         message: "Error fetching estimates",
       };
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -247,7 +248,7 @@ export class ProjectEstimateStore implements IProjectEstimateStore {
         status: "error",
         message: "Error fetching estimates",
       };
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -294,7 +295,7 @@ export class ProjectEstimateStore implements IProjectEstimateStore {
         status: "error",
         message: "Error creating estimate",
       };
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -313,7 +314,7 @@ export class ProjectEstimateStore implements IProjectEstimateStore {
         status: "error",
         message: "Error deleting estimate",
       };
-      throw error;
+      throw toApiError(error);
     }
   };
 }

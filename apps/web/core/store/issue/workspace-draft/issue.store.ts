@@ -27,6 +27,7 @@ import { getCurrentDateTimeInISO, convertToISODateString } from "@plane/utils";
 import workspaceDraftService from "@/services/issue/workspace_draft.service";
 // types
 import type { IIssueRootStore } from "../root.store";
+import { toApiError } from "@/services/api.service";
 
 export type TDraftIssuePaginationType = EDraftIssuePaginationType;
 
@@ -248,7 +249,7 @@ export class WorkspaceDraftIssues implements IWorkspaceDraftIssues {
     } catch (error) {
       // set loader to undefined if errored out
       this.loader = undefined;
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -280,7 +281,7 @@ export class WorkspaceDraftIssues implements IWorkspaceDraftIssues {
       return response;
     } catch (error) {
       this.loader = undefined;
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -303,7 +304,7 @@ export class WorkspaceDraftIssues implements IWorkspaceDraftIssues {
       runInAction(() => {
         set(this.issuesMap, [issueId], issueBeforeUpdate);
       });
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -332,7 +333,7 @@ export class WorkspaceDraftIssues implements IWorkspaceDraftIssues {
       return response;
     } catch (error) {
       this.loader = undefined;
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -362,7 +363,7 @@ export class WorkspaceDraftIssues implements IWorkspaceDraftIssues {
       return response;
     } catch (error) {
       this.loader = undefined;
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -373,7 +374,7 @@ export class WorkspaceDraftIssues implements IWorkspaceDraftIssues {
       return response;
     } catch (error) {
       this.loader = undefined;
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -384,7 +385,7 @@ export class WorkspaceDraftIssues implements IWorkspaceDraftIssues {
       return response;
     } catch (error) {
       this.loader = undefined;
-      throw error;
+      throw toApiError(error);
     }
   };
 

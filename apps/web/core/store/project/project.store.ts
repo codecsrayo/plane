@@ -24,6 +24,7 @@ import { IssueLabelService, IssueService } from "@/services/issue";
 import { ProjectService, ProjectStateService, ProjectArchiveService } from "@/services/project";
 // store
 import type { CoreRootStore } from "../root.store";
+import { toApiError } from "@/services/api.service";
 
 type ProjectOverviewCollapsible = "links" | "attachments" | "milestones";
 
@@ -333,7 +334,7 @@ export class ProjectStore implements IProjectStore {
     } catch (error) {
       console.error("Failed to fetch partial projects from workspace store", error);
       this.loader = "loaded";
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -362,7 +363,7 @@ export class ProjectStore implements IProjectStore {
     } catch (error) {
       console.error("Failed to fetch projects from workspace store", error);
       this.loader = "loaded";
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -381,7 +382,7 @@ export class ProjectStore implements IProjectStore {
       return response;
     } catch (error) {
       console.error("Error while fetching project details", error);
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -405,7 +406,7 @@ export class ProjectStore implements IProjectStore {
       return response;
     } catch (error) {
       console.error("Failed to fetch project analytics count", error);
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -484,7 +485,7 @@ export class ProjectStore implements IProjectStore {
       runInAction(() => {
         set(this.projectMap, [projectId, "is_favorite"], false);
       });
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -509,7 +510,7 @@ export class ProjectStore implements IProjectStore {
       runInAction(() => {
         set(this.projectMap, [projectId, "is_favorite"], true);
       });
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -533,7 +534,7 @@ export class ProjectStore implements IProjectStore {
         set(this.projectMap, [projectId, "sort_order"], currentProjectSortOrder);
       });
       console.error("Failed to update sort order of the projects", error);
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -550,7 +551,7 @@ export class ProjectStore implements IProjectStore {
       return response;
     } catch (error) {
       console.error("Failed to create project from project store", error);
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -579,7 +580,7 @@ export class ProjectStore implements IProjectStore {
         set(this.projectMap, [projectId], projectDetails);
         this.isUpdatingProject = false;
       });
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -600,7 +601,7 @@ export class ProjectStore implements IProjectStore {
       });
     } catch (error) {
       console.error("Failed to delete project from project store", error);
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -619,7 +620,7 @@ export class ProjectStore implements IProjectStore {
       });
     } catch (error) {
       console.error("Failed to archive project from project store", error);
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -637,7 +638,7 @@ export class ProjectStore implements IProjectStore {
       });
     } catch (error) {
       console.error("Failed to restore project from project store", error);
-      throw error;
+      throw toApiError(error);
     }
   };
 }

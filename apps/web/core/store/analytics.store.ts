@@ -7,6 +7,7 @@
 import { action, computed, makeObservable, observable, runInAction } from "mobx";
 import { ANALYTICS_DURATION_FILTER_OPTIONS } from "@plane/constants";
 import type { TAnalyticsTabsBase } from "@plane/types";
+import { toApiError } from "@/services/api.service";
 
 type DurationType = (typeof ANALYTICS_DURATION_FILTER_OPTIONS)[number]["value"];
 
@@ -73,7 +74,7 @@ export abstract class BaseAnalyticsStore implements IBaseAnalyticsStore {
       });
     } catch (error) {
       console.error("Failed to update selected project");
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -84,7 +85,7 @@ export abstract class BaseAnalyticsStore implements IBaseAnalyticsStore {
       });
     } catch (error) {
       console.error("Failed to update selected duration");
-      throw error;
+      throw toApiError(error);
     }
   };
 

@@ -22,6 +22,7 @@ import type { RootStore } from "@/plane-web/store/root.store";
 // services
 import projectMemberService from "@/services/project/project-member.service";
 import userService from "@/services/user.service";
+import { toApiError } from "@/services/api.service";
 
 // derived services
 const workspaceService = new WorkspaceService();
@@ -248,7 +249,7 @@ export abstract class BaseUserPermissionStore implements IBaseUserPermissionStor
     } catch (error) {
       console.error("Error fetching user workspace information", error);
       this.loader = false;
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -267,7 +268,7 @@ export abstract class BaseUserPermissionStore implements IBaseUserPermissionStor
       });
     } catch (error) {
       console.error("Error user leaving the workspace", error);
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -289,7 +290,7 @@ export abstract class BaseUserPermissionStore implements IBaseUserPermissionStor
       return response;
     } catch (error) {
       console.error("Error fetching user project information", error);
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -307,7 +308,7 @@ export abstract class BaseUserPermissionStore implements IBaseUserPermissionStor
       return response;
     } catch (error) {
       console.error("Error fetching user project permissions", error);
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -329,7 +330,7 @@ export abstract class BaseUserPermissionStore implements IBaseUserPermissionStor
       }
     } catch (error) {
       console.error("Error user joining the project", error);
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -349,7 +350,7 @@ export abstract class BaseUserPermissionStore implements IBaseUserPermissionStor
       });
     } catch (error) {
       console.error("Error user leaving the project", error);
-      throw error;
+      throw toApiError(error);
     }
   };
 }

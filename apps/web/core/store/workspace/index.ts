@@ -25,6 +25,7 @@ import type { IHomeStore } from "./home";
 import { HomeStore } from "./home";
 import type { IWebhookStore } from "./webhook.store";
 import { WebhookStore } from "./webhook.store";
+import { toApiError } from "@/services/api.service";
 
 export interface IWorkspaceRootStore {
   loader: boolean;
@@ -341,7 +342,7 @@ export abstract class BaseWorkspaceRootStore implements IWorkspaceRootStore {
         this.navigationPreferencesMap[workspaceSlug] = beforeUpdateData;
       });
       console.error("Failed to update bulk sidebar preferences:", error);
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -385,7 +386,7 @@ export abstract class BaseWorkspaceRootStore implements IWorkspaceRootStore {
         this.projectNavigationPreferencesMap[workspaceSlug] = beforeUpdateData;
       });
       console.error("Failed to update project navigation preferences:", error);
-      throw error;
+      throw toApiError(error);
     }
   };
 

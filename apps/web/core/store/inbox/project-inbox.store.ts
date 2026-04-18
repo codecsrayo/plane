@@ -26,6 +26,7 @@ import { InboxIssueService } from "@/services/inbox";
 import type { IInboxIssueStore } from "@/store/inbox/inbox-issue.store";
 import { InboxIssueStore } from "@/store/inbox/inbox-issue.store";
 import type { CoreRootStore } from "../root.store";
+import { toApiError } from "@/services/api.service";
 
 type TLoader =
   | "init-loading"
@@ -368,7 +369,7 @@ export class ProjectInboxStore implements IProjectInboxStore {
         message: "Error fetching the intake work items please try again later.",
         status: "init-error",
       };
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -408,7 +409,7 @@ export class ProjectInboxStore implements IProjectInboxStore {
         message: "Error fetching the paginated intake work items please try again later.",
         status: "pagination-error",
       };
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -448,7 +449,7 @@ export class ProjectInboxStore implements IProjectInboxStore {
     } catch (error) {
       console.error("Error fetching the intake issue with intake issue id");
       this.loader = undefined;
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -483,7 +484,7 @@ export class ProjectInboxStore implements IProjectInboxStore {
       return inboxIssueResponse;
     } catch (error) {
       console.error("Error creating the intake issue");
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -519,7 +520,7 @@ export class ProjectInboxStore implements IProjectInboxStore {
       });
     } catch (error) {
       console.error("Error removing the intake issue");
-      throw error;
+      throw toApiError(error);
     }
   };
 }

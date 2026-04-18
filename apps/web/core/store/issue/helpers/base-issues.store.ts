@@ -46,6 +46,7 @@ import {
   getSubGroupIssueKeyActions,
 } from "./base-issues-utils";
 import type { IBaseIssueFilterStore } from "./issue-filter-helper.store";
+import { toApiError } from "@/services/api.service";
 
 export type TIssueDisplayFilterOptions = Exclude<TIssueGroupByOptions, null> | "target_date";
 
@@ -585,7 +586,7 @@ export abstract class BaseIssuesStore implements IBaseIssuesStore {
       // If errored out update store again to revert the change
       this.rootIssueStore.issues.updateIssue(issueId, issueBeforeUpdate ?? {});
       this.updateIssueList(issueBeforeUpdate, { ...issueBeforeUpdate, ...data } as TIssue);
-      throw error;
+      throw toApiError(error);
     }
   }
 
@@ -917,7 +918,7 @@ export abstract class BaseIssuesStore implements IBaseIssuesStore {
         this.issueUpdate(workspaceSlug, projectId, issueId, { cycle_id: issueCycleId }, false);
       });
 
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -960,7 +961,7 @@ export abstract class BaseIssuesStore implements IBaseIssuesStore {
         this.issueUpdate(workspaceSlug, projectId, issueId, { cycle_id: issueCycleId }, false);
       });
 
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -1139,7 +1140,7 @@ export abstract class BaseIssuesStore implements IBaseIssuesStore {
         this.issueUpdate(workspaceSlug, projectId, issueId, { module_ids: originalModuleIds }, false);
       });
 
-      throw error;
+      throw toApiError(error);
     }
   }
 

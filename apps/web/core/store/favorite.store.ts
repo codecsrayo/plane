@@ -10,6 +10,7 @@ import { v4 as uuidv4 } from "uuid";
 import type { IFavorite } from "@plane/types";
 import { FavoriteService } from "@/services/favorite";
 import type { CoreRootStore } from "./root.store";
+import { toApiError } from "@/services/api.service";
 
 export interface IFavoriteStore {
   // observables
@@ -167,7 +168,7 @@ export class FavoriteStore implements IFavoriteStore {
       this.favoriteIds = this.favoriteIds.filter((favId) => favId !== id);
 
       console.error("Failed to create favorite from favorite store");
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -192,7 +193,7 @@ export class FavoriteStore implements IFavoriteStore {
       runInAction(() => {
         set(this.favoriteMap, [favoriteId], initialState);
       });
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -212,7 +213,7 @@ export class FavoriteStore implements IFavoriteStore {
       });
     } catch (error) {
       console.error("Failed to move favorite to folder", error);
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -249,7 +250,7 @@ export class FavoriteStore implements IFavoriteStore {
       });
     } catch (error) {
       console.error("Failed to move favorite folder");
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -262,7 +263,7 @@ export class FavoriteStore implements IFavoriteStore {
       });
     } catch (error) {
       console.error("Failed to move favorite");
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -337,7 +338,7 @@ export class FavoriteStore implements IFavoriteStore {
         }
         this.favoriteIds = [favoriteId, ...this.favoriteIds];
       });
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -357,7 +358,7 @@ export class FavoriteStore implements IFavoriteStore {
       runInAction(() => {
         set(this.entityMap, [entityId], initialState);
       });
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -388,7 +389,7 @@ export class FavoriteStore implements IFavoriteStore {
       });
     } catch (error) {
       console.error("Failed to remove favorite from favorite store", error);
-      throw error;
+      throw toApiError(error);
     }
   };
   /**
@@ -414,7 +415,7 @@ export class FavoriteStore implements IFavoriteStore {
       return response;
     } catch (error) {
       console.error("Failed to get grouped favorites from favorite store");
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -439,7 +440,7 @@ export class FavoriteStore implements IFavoriteStore {
       return favorites;
     } catch (error) {
       console.error("Failed to fetch favorites from workspace store");
-      throw error;
+      throw toApiError(error);
     }
   };
 }

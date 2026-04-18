@@ -13,6 +13,7 @@ import type { IWorkspaceView } from "@plane/types";
 import { WorkspaceService } from "@/services/workspace.service";
 // store
 import type { CoreRootStore } from "./root.store";
+import { toApiError } from "@/services/api.service";
 
 export interface IGlobalViewStore {
   // observables
@@ -146,7 +147,7 @@ export class GlobalViewStore implements IGlobalViewStore {
       return response;
     } catch (error) {
       console.error(error);
-      throw error;
+      throw toApiError(error);
     }
   }
 

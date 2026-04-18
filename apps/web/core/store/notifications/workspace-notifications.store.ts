@@ -26,6 +26,7 @@ import workspaceNotificationService from "@/services/workspace-notification.serv
 import type { INotification } from "@/store/notifications/notification";
 import { Notification } from "@/store/notifications/notification";
 import type { CoreRootStore } from "@/store/root.store";
+import { toApiError } from "@/services/api.service";
 
 type TNotificationLoader = ENotificationLoader | undefined;
 type TNotificationQueryParamType = ENotificationQueryParamType;
@@ -324,7 +325,7 @@ export class WorkspaceNotificationStore implements IWorkspaceNotificationStore {
       return unreadNotificationCount || undefined;
     } catch (error) {
       console.error("WorkspaceNotificationStore -> getUnreadNotificationsCount -> error", error);
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -356,7 +357,7 @@ export class WorkspaceNotificationStore implements IWorkspaceNotificationStore {
       return notificationResponse;
     } catch (error) {
       console.error("WorkspaceNotificationStore -> getNotifications -> error", error);
-      throw error;
+      throw toApiError(error);
     } finally {
       runInAction(() => (this.loader = undefined));
     }
@@ -394,7 +395,7 @@ export class WorkspaceNotificationStore implements IWorkspaceNotificationStore {
       });
     } catch (error) {
       console.error("WorkspaceNotificationStore -> markAllNotificationsAsRead -> error", error);
-      throw error;
+      throw toApiError(error);
     } finally {
       runInAction(() => (this.loader = undefined));
     }

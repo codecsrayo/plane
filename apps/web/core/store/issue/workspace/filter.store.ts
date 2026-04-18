@@ -29,6 +29,7 @@ import { WorkspaceService } from "@/services/workspace.service";
 import type { IBaseIssueFilterStore, IIssueFilterHelperStore } from "../helpers/issue-filter-helper.store";
 import { IssueFilterHelperStore } from "../helpers/issue-filter-helper.store";
 import type { IIssueRootStore } from "../root.store";
+import { toApiError } from "@/services/api.service";
 
 type TWorkspaceFilters = TStaticViewTypes;
 
@@ -207,7 +208,7 @@ export class WorkspaceIssuesFilter extends IssueFilterHelperStore implements IWo
       this.rootIssueStore.workspaceIssues.fetchIssuesWithExistingPagination(workspaceSlug, viewId, "mutation");
     } catch (error) {
       console.error("error while updating rich filters", error);
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -313,7 +314,7 @@ export class WorkspaceIssuesFilter extends IssueFilterHelperStore implements IWo
       }
     } catch (error) {
       if (viewId) this.fetchFilters(workspaceSlug, viewId);
-      throw error;
+      throw toApiError(error);
     }
   };
 }

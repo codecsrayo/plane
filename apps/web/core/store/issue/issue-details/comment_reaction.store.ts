@@ -13,6 +13,7 @@ import { groupReactions } from "@plane/utils";
 import { IssueReactionService } from "@/services/issue";
 // types
 import type { IIssueDetail } from "./root.store";
+import { toApiError } from "@/services/api.service";
 
 export interface IIssueCommentReactionStoreActions {
   // actions
@@ -124,7 +125,7 @@ export class IssueCommentReactionStore implements IIssueCommentReactionStore {
       return response;
     } catch (error) {
       console.error("error", error);
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -164,7 +165,7 @@ export class IssueCommentReactionStore implements IIssueCommentReactionStore {
       return response;
     } catch (error) {
       console.error("error", error);
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -196,7 +197,7 @@ export class IssueCommentReactionStore implements IIssueCommentReactionStore {
       return response;
     } catch (error) {
       this.fetchCommentReactions(workspaceSlug, projectId, commentId);
-      throw error;
+      throw toApiError(error);
     }
   };
 }

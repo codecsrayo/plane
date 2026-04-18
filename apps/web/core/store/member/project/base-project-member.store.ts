@@ -29,6 +29,7 @@ import type { IMemberRootStore } from "../index";
 import { sortProjectMembers } from "../utils";
 import type { IProjectMemberFiltersStore } from "./project-member-filters.store";
 import { ProjectMemberFiltersStore } from "./project-member-filters.store";
+import { toApiError } from "@/services/api.service";
 
 export interface IProjectMemberDetails extends Omit<TProjectMembership, "member"> {
   member: IUserLite;
@@ -397,7 +398,7 @@ export abstract class BaseProjectMemberStore implements IBaseProjectMemberStore 
           );
         }
       });
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -493,7 +494,7 @@ export abstract class BaseProjectMemberStore implements IBaseProjectMemberStore 
           unset(this.projectUserPropertiesMap, [projectId]);
         }
       });
-      throw error;
+      throw toApiError(error);
     }
   };
 }

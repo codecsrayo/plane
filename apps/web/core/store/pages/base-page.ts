@@ -15,6 +15,7 @@ import { ExtendedBasePage } from "@/plane-web/store/pages/extended-base-page";
 import type { RootStore } from "@/plane-web/store/root.store";
 // local imports
 import { PageEditorInstance } from "./page-editor-info";
+import { toApiError } from "@/services/api.service";
 
 export type TBasePage = TPage & {
   // observables
@@ -288,7 +289,7 @@ export class BasePage extends ExtendedBasePage implements TBasePage {
           set(this, key, currentPage?.[currentPageKey] || undefined);
         });
       });
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -317,7 +318,7 @@ export class BasePage extends ExtendedBasePage implements TBasePage {
       runInAction(() => {
         this.description_html = currentDescription;
       });
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -339,7 +340,7 @@ export class BasePage extends ExtendedBasePage implements TBasePage {
         runInAction(() => {
           this.access = pageAccess;
         });
-        throw error;
+        throw toApiError(error);
       }
     }
   };
@@ -362,7 +363,7 @@ export class BasePage extends ExtendedBasePage implements TBasePage {
         runInAction(() => {
           this.access = pageAccess;
         });
-        throw error;
+        throw toApiError(error);
       }
     }
   };
@@ -379,7 +380,7 @@ export class BasePage extends ExtendedBasePage implements TBasePage {
         runInAction(() => {
           this.is_locked = pageIsLocked;
         });
-        throw error;
+        throw toApiError(error);
       });
     }
   };
@@ -396,7 +397,7 @@ export class BasePage extends ExtendedBasePage implements TBasePage {
         runInAction(() => {
           this.is_locked = pageIsLocked;
         });
-        throw error;
+        throw toApiError(error);
       });
     }
   };
@@ -447,7 +448,7 @@ export class BasePage extends ExtendedBasePage implements TBasePage {
       runInAction(() => {
         this.archived_at = archivedAtBeforeRestore;
       });
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -478,7 +479,7 @@ export class BasePage extends ExtendedBasePage implements TBasePage {
       runInAction(() => {
         this.logo_props = originalLogoProps as TLogoProps;
       });
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -505,7 +506,7 @@ export class BasePage extends ExtendedBasePage implements TBasePage {
         runInAction(() => {
           this.is_favorite = pageIsFavorite;
         });
-        throw error;
+        throw toApiError(error);
       });
   };
 
@@ -525,7 +526,7 @@ export class BasePage extends ExtendedBasePage implements TBasePage {
       runInAction(() => {
         this.is_favorite = pageIsFavorite;
       });
-      throw error;
+      throw toApiError(error);
     });
   };
 

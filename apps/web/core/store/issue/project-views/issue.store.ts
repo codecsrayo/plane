@@ -20,6 +20,7 @@ import type { IBaseIssuesStore } from "../helpers/base-issues.store";
 import { BaseIssuesStore } from "../helpers/base-issues.store";
 import type { IIssueRootStore } from "../root.store";
 import type { IProjectViewIssuesFilter } from "./filter.store";
+import { toApiError } from "@/services/api.service";
 
 export interface IProjectViewIssues extends IBaseIssuesStore {
   viewFlags: ViewFlags;
@@ -116,7 +117,7 @@ export class ProjectViewIssues extends BaseIssuesStore implements IProjectViewIs
     } catch (error) {
       // set loader to undefined if errored out
       this.setLoader(undefined);
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -161,7 +162,7 @@ export class ProjectViewIssues extends BaseIssuesStore implements IProjectViewIs
     } catch (error) {
       // set Loader as undefined if errored out
       this.setLoader(undefined, groupId, subGroupId);
-      throw error;
+      throw toApiError(error);
     }
   };
 

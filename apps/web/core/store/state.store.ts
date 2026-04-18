@@ -15,6 +15,7 @@ import { sortStates } from "@plane/utils";
 // plane web
 import { ProjectStateService } from "@/services/project/project-state.service";
 import type { RootStore } from "@/plane-web/store/root.store";
+import { toApiError } from "@/services/api.service";
 
 export interface IStateStore {
   //Loaders
@@ -295,7 +296,7 @@ export class StateStore implements IStateStore {
           [stateId]: originalState,
         };
       });
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -335,7 +336,7 @@ export class StateStore implements IStateStore {
       runInAction(() => {
         this.stateMap = originalStates;
       });
-      throw error;
+      throw toApiError(error);
     }
   };
 

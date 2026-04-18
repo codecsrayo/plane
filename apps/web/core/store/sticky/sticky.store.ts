@@ -10,6 +10,7 @@ import { computedFn } from "mobx-utils";
 import { STICKIES_PER_PAGE } from "@plane/constants";
 import type { InstructionType, TLoader, TPaginationInfo, TSticky } from "@plane/types";
 import { StickyService } from "@/services/sticky.service";
+import { toApiError } from "@/services/api.service";
 
 export interface IStickyStore {
   creatingSticky: boolean;
@@ -289,7 +290,7 @@ export class StickyStore implements IStickyStore {
       runInAction(() => {
         this.stickies[stickyId].sort_order = previousSortOrder;
       });
-      throw error;
+      throw toApiError(error);
     }
   };
 }

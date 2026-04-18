@@ -13,6 +13,7 @@ import { WorkspaceService } from "@/services/workspace.service";
 // store
 import type { IWorkspaceLinkStore } from "./link.store";
 import { WorkspaceLinkStore } from "./link.store";
+import { toApiError } from "@/services/api.service";
 
 export interface IHomeStore {
   // observables
@@ -97,7 +98,7 @@ export class HomeStore implements IHomeStore {
     } catch (error) {
       console.error("Failed to fetch widgets");
       this.loading = false;
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -111,7 +112,7 @@ export class HomeStore implements IHomeStore {
       });
     } catch (error) {
       console.error("Failed to toggle widget");
-      throw error;
+      throw toApiError(error);
     }
   };
 
@@ -147,7 +148,7 @@ export class HomeStore implements IHomeStore {
       runInAction(() => {
         set(this.widgetsMap, [widgetKey, "sort_order"], sortOrderBeforeUpdate);
       });
-      throw error;
+      throw toApiError(error);
     }
   };
 }
