@@ -693,14 +693,17 @@ const useGlobalIssueActions = () => {
       if (!workspaceSlug || !globalViewId) return;
       return issues.fetchIssues(workspaceSlug.toString(), globalViewId.toString(), loadType, options);
     },
-    [issues.fetchIssues, workspaceSlug, globalViewId]
+    // Use store-level dep (issues) rather than method-level (issues.fetchIssues) to
+    // stay consistent with useWorkspaceDraftIssueActions and avoid stale-closure
+    // bugs when MobX swaps action references on the store.
+    [issues, workspaceSlug, globalViewId]
   );
   const fetchNextIssues = useCallback(
     async (groupId?: string, subGroupId?: string) => {
       if (!workspaceSlug || !globalViewId) return;
       return issues.fetchNextIssues(workspaceSlug.toString(), globalViewId.toString(), groupId, subGroupId);
     },
-    [issues.fetchNextIssues, workspaceSlug, globalViewId]
+    [issues, workspaceSlug, globalViewId]
   );
 
   const createIssue = useCallback(
@@ -708,21 +711,21 @@ const useGlobalIssueActions = () => {
       if (!workspaceSlug || !targetProjectId) return;
       return await issues.createIssue(workspaceSlug, targetProjectId, data);
     },
-    [issues.createIssue, workspaceSlug]
+    [issues, workspaceSlug]
   );
   const updateIssue = useCallback(
     async (targetProjectId: string | undefined | null, issueId: string, data: Partial<TIssue>) => {
       if (!workspaceSlug || !targetProjectId) return;
       return await issues.updateIssue(workspaceSlug, targetProjectId, issueId, data);
     },
-    [issues.updateIssue, workspaceSlug]
+    [issues, workspaceSlug]
   );
   const removeIssue = useCallback(
     async (targetProjectId: string | undefined | null, issueId: string) => {
       if (!workspaceSlug || !targetProjectId) return;
       return await issues.removeIssue(workspaceSlug, targetProjectId, issueId);
     },
-    [issues.removeIssue, workspaceSlug]
+    [issues, workspaceSlug]
   );
 
   const updateFilters = useCallback(
@@ -730,7 +733,7 @@ const useGlobalIssueActions = () => {
       if (!globalViewId || !workspaceSlug) return;
       return await issuesFilter.updateFilters(workspaceSlug, targetProjectId, filterType, filters, globalViewId);
     },
-    [issuesFilter.updateFilters, globalViewId, workspaceSlug]
+    [issuesFilter, globalViewId, workspaceSlug]
   );
 
   return useMemo(
@@ -798,9 +801,10 @@ const useWorkspaceDraftIssueActions = () => {
 
   const updateFilters = useCallback(
     async (_projectId: string, filterType: TSupportedFilterTypeForUpdate, filters: TSupportedFilterForUpdate) => {
-      filters = filters as IIssueDisplayFilterOptions | IIssueDisplayProperties;
+      // Narrow the union type without mutating the parameter.
+      const narrowedFilters = filters as IIssueDisplayFilterOptions | IIssueDisplayProperties;
       if (!globalViewId || !workspaceSlug) return;
-      return await issuesFilter.updateFilters(workspaceSlug, filterType, filters);
+      return await issuesFilter.updateFilters(workspaceSlug, filterType, narrowedFilters);
     },
     [globalViewId, workspaceSlug, issuesFilter]
   );
