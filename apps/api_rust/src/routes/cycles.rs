@@ -194,6 +194,11 @@ pub async fn create_cycle(
         }
     }
 
+    // created_at / updated_at explícitos: cycles::ActiveModelBehavior está
+    // vacío y la columna es NOT NULL sin DEFAULT. Mismo patrón que
+    // labels.rs / issues.rs.
+    let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
+
     let cycle = cycles::ActiveModel {
         id: Set(Uuid::new_v4()),
         name: Set(body.name),
@@ -211,6 +216,9 @@ pub async fn create_cycle(
         logo_props: Set(serde_json::json!({})),
         timezone: Set("UTC".to_owned()),
         version: Set(2),
+        created_at: Set(now),
+        updated_at: Set(now),
+        deleted_at: Set(None),
         ..Default::default()
     }
     .insert(&state.db)
@@ -458,6 +466,8 @@ pub async fn add_issues_to_cycle(
             .await
             .map_err(AppError::Database)?;
 
+        let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
+
         let ci = match existing {
             Some(ci) if ci.deleted_at.is_none() => ci, // ya existe activo
             Some(ci) => {
@@ -465,9 +475,13 @@ pub async fn add_issues_to_cycle(
                 let mut am: cycle_issues::ActiveModel = ci.into();
                 am.deleted_at = Set(None);
                 am.updated_by_id = Set(Some(user_id));
+                // Django: TimeAuditModel auto_now=True.
+                am.updated_at = Set(now);
                 am.update(&state.db).await.map_err(AppError::Database)?
             }
             None => {
+                // created_at/updated_at explícitos (cycle_issues NOT NULL sin
+                // DEFAULT; ActiveModelBehavior vacío).
                 cycle_issues::ActiveModel {
                     id: Set(Uuid::new_v4()),
                     cycle_id: Set(cycle_id),
@@ -476,6 +490,9 @@ pub async fn add_issues_to_cycle(
                     workspace_id: Set(workspace_id),
                     created_by_id: Set(Some(user_id)),
                     updated_by_id: Set(Some(user_id)),
+                    created_at: Set(now),
+                    updated_at: Set(now),
+                    deleted_at: Set(None),
                     ..Default::default()
                 }
                 .insert(&state.db)

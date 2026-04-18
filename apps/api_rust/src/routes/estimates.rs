@@ -214,6 +214,12 @@ pub async fn create_estimate(
             let description = body.description.clone().unwrap_or_default();
             let est_type = body.r#type.clone().unwrap_or_else(|| "category".to_owned());
             Box::pin(async move {
+                // created_at/updated_at explícitos (ActiveModelBehavior vacío,
+                // columnas NOT NULL sin DEFAULT). Misma now() para
+                // estimates y sus estimate_points hijos.
+                let now: chrono::DateTime<chrono::FixedOffset> =
+                    chrono::Utc::now().into();
+
                 let est = estimates::ActiveModel {
                     id: Set(Uuid::new_v4()),
                     name: Set(name),
@@ -224,6 +230,9 @@ pub async fn create_estimate(
                     workspace_id: Set(workspace_id),
                     created_by_id: Set(Some(user_id)),
                     updated_by_id: Set(Some(user_id)),
+                    created_at: Set(now),
+                    updated_at: Set(now),
+                    deleted_at: Set(None),
                     ..Default::default()
                 }
                 .insert(txn)
@@ -241,6 +250,9 @@ pub async fn create_estimate(
                         workspace_id: Set(workspace_id),
                         created_by_id: Set(Some(user_id)),
                         updated_by_id: Set(Some(user_id)),
+                        created_at: Set(now),
+                        updated_at: Set(now),
+                        deleted_at: Set(None),
                         ..Default::default()
                     }
                     .insert(txn)
@@ -435,6 +447,9 @@ pub async fn create_estimate_point(
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
+    // created_at/updated_at explícitos (NOT NULL sin DEFAULT).
+    let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
+
     let point = estimate_points::ActiveModel {
         id: Set(Uuid::new_v4()),
         key: Set(body.key),
@@ -445,6 +460,9 @@ pub async fn create_estimate_point(
         workspace_id: Set(guard.workspace.id),
         created_by_id: Set(Some(guard.user.id)),
         updated_by_id: Set(Some(guard.user.id)),
+        created_at: Set(now),
+        updated_at: Set(now),
+        deleted_at: Set(None),
         ..Default::default()
     }
     .insert(&state.db)

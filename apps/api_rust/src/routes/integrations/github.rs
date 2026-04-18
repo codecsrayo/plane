@@ -148,14 +148,19 @@ async fn github_app_callback_inner(
         .one(&state.db)
         .await?;
 
+    let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
+
     if let Some(wi) = existing {
         let mut am: workspace_integrations::ActiveModel = wi.into();
         am.metadata = Set(metadata);
         am.config = Set(config);
         am.actor_id = Set(actor_id);
         am.api_token_id = Set(api_token.id);
+        // Django: TimeAuditModel auto_now=True.
+        am.updated_at = Set(now);
         am.update(&state.db).await?;
     } else {
+        // created_at/updated_at explícitos (NOT NULL sin DEFAULT).
         workspace_integrations::ActiveModel {
             id: Set(Uuid::new_v4()),
             workspace_id: Set(workspace.id),
@@ -164,6 +169,9 @@ async fn github_app_callback_inner(
             api_token_id: Set(api_token.id),
             metadata: Set(metadata),
             config: Set(config),
+            created_at: Set(now),
+            updated_at: Set(now),
+            deleted_at: Set(None),
             ..Default::default()
         }
         .insert(&state.db)
@@ -282,14 +290,19 @@ pub async fn github_user_callback(
         .await
         .map_err(AppError::Database)?;
 
+    let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
+
     let (conn, created) = if let Some(conn) = existing {
         let mut am: user_github_connections::ActiveModel = conn.into();
         am.github_user_id = Set(github_user_id);
         am.github_username = Set(github_username);
         am.github_avatar_url = Set(github_avatar_url);
         am.access_token = Set(encrypted_token);
+        // Django: TimeAuditModel auto_now=True.
+        am.updated_at = Set(now);
         (am.update(&state.db).await.map_err(AppError::Database)?, false)
     } else {
+        // created_at/updated_at explícitos (NOT NULL sin DEFAULT).
         let new_conn = user_github_connections::ActiveModel {
             id: Set(Uuid::new_v4()),
             user_id: Set(user_id),
@@ -297,6 +310,9 @@ pub async fn github_user_callback(
             github_username: Set(github_username),
             github_avatar_url: Set(github_avatar_url),
             access_token: Set(encrypted_token),
+            created_at: Set(now),
+            updated_at: Set(now),
+            deleted_at: Set(None),
             ..Default::default()
         };
         (
@@ -618,6 +634,10 @@ pub async fn create_github_repo_sync(
         .await
         .map_err(AppError::Database)?;
 
+    // now() compartido para ambos bloques (repositorio + sync). Columnas
+    // created_at/updated_at NOT NULL sin DEFAULT en ambas entities.
+    let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
+
     let repo = match existing_repo {
         None => {
             github_repositories::ActiveModel {
@@ -629,6 +649,9 @@ pub async fn create_github_repo_sync(
                 owner: Set(repo_owner.clone()),
                 url: Set(Some(format!("https://github.com/{repo_full_name}"))),
                 config: Set(serde_json::json!({})),
+                created_at: Set(now),
+                updated_at: Set(now),
+                deleted_at: Set(None),
                 ..Default::default()
             }
             .insert(&state.db)
@@ -641,6 +664,8 @@ pub async fn create_github_repo_sync(
             am.name = Set(repo_name.clone());
             am.owner = Set(repo_owner.clone());
             am.url = Set(Some(format!("https://github.com/{repo_full_name}")));
+            // Django: TimeAuditModel auto_now=True.
+            am.updated_at = Set(now);
             am.update(&state.db).await.map_err(AppError::Database)?
         }
         Some(r) => r,
@@ -672,6 +697,8 @@ pub async fn create_github_repo_sync(
             am.actor_id = Set(guard.user.id);
             am.workspace_integration_id = Set(wi.id);
             am.credentials = Set(credentials.clone());
+            // Django: TimeAuditModel auto_now=True.
+            am.updated_at = Set(now);
             am.update(&state.db).await.map_err(AppError::Database)?
         }
         None => {
@@ -683,6 +710,9 @@ pub async fn create_github_repo_sync(
                 actor_id: Set(guard.user.id),
                 workspace_integration_id: Set(wi.id),
                 credentials: Set(credentials.clone()),
+                created_at: Set(now),
+                updated_at: Set(now),
+                deleted_at: Set(None),
                 ..Default::default()
             }
             .insert(&state.db)

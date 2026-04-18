@@ -192,6 +192,9 @@ pub async fn create_intake(
         return Err(AppError::BadRequest("name es requerido".into()));
     }
 
+    // created_at/updated_at explícitos (NOT NULL sin DEFAULT).
+    let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
+
     let intake = intakes::ActiveModel {
         id: Set(Uuid::new_v4()),
         name: Set(body.name),
@@ -203,6 +206,9 @@ pub async fn create_intake(
         logo_props: Set(serde_json::json!({})),
         created_by_id: Set(Some(guard.user.id)),
         updated_by_id: Set(Some(guard.user.id)),
+        created_at: Set(now),
+        updated_at: Set(now),
+        deleted_at: Set(None),
         ..Default::default()
     }
     .insert(&state.db)

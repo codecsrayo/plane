@@ -164,6 +164,9 @@ pub async fn create_webhook(
         return Err(AppError::BadRequest("url es requerida".into()));
     }
 
+    // created_at/updated_at explícitos (NOT NULL sin DEFAULT).
+    let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
+
     let webhook = webhooks::ActiveModel {
         id: Set(Uuid::new_v4()),
         url: Set(body.url),
@@ -179,6 +182,9 @@ pub async fn create_webhook(
         updated_by_id: Set(Some(guard.user.id)),
         is_internal: Set(false),
         version: Set("v1".to_owned()),
+        created_at: Set(now),
+        updated_at: Set(now),
+        deleted_at: Set(None),
         ..Default::default()
     }
     .insert(&state.db)

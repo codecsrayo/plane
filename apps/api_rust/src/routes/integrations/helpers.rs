@@ -47,6 +47,9 @@ pub async fn get_or_create_api_token(
                     }
 
                     let raw = Uuid::new_v4().as_simple().to_string();
+                    // created_at/updated_at explícitos (NOT NULL sin DEFAULT).
+                    let now: chrono::DateTime<chrono::FixedOffset> =
+                        chrono::Utc::now().into();
                     let new_token = api_tokens::ActiveModel {
                         id: Set(Uuid::new_v4()),
                         token: Set(raw),
@@ -58,6 +61,9 @@ pub async fn get_or_create_api_token(
                         is_active: Set(true),
                         is_service: Set(false),
                         allowed_rate_limit: Set("default".to_owned()),
+                        created_at: Set(now),
+                        updated_at: Set(now),
+                        deleted_at: Set(None),
                         ..Default::default()
                     };
 

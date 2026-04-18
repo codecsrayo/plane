@@ -102,6 +102,9 @@ pub async fn create_pr_state_mapping(
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
+    // created_at/updated_at explícitos (NOT NULL sin DEFAULT).
+    let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
+
     let mapping = db_githubprstatemapping::ActiveModel {
         id: Set(Uuid::new_v4()),
         github_pr_state: Set(body.github_pr_state),
@@ -109,6 +112,9 @@ pub async fn create_pr_state_mapping(
         state_id: Set(body.state_id),
         workspace_integration_id: Set(wi_id),
         prevent_regression: Set(body.prevent_regression.unwrap_or(false)),
+        created_at: Set(now),
+        updated_at: Set(now),
+        deleted_at: Set(None),
         ..Default::default()
     }
     .insert(&state.db)

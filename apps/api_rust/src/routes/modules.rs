@@ -189,6 +189,11 @@ pub async fn create_module(
         )));
     }
 
+    // created_at/updated_at explícitos: modules::ActiveModelBehavior vacío,
+    // columnas NOT NULL sin DEFAULT (ver baseline.sql:1724-1726). Mismo
+    // patrón que labels.rs / issues.rs / cycles.rs.
+    let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
+
     let module = modules::ActiveModel {
         id: Set(Uuid::new_v4()),
         name: Set(body.name),
@@ -204,6 +209,9 @@ pub async fn create_module(
         sort_order: Set(65535.0),
         view_props: Set(serde_json::json!({})),
         logo_props: Set(serde_json::json!({})),
+        created_at: Set(now),
+        updated_at: Set(now),
+        deleted_at: Set(None),
         ..Default::default()
     }
     .insert(&state.db)
@@ -460,15 +468,20 @@ pub async fn add_issues_to_module(
             .await
             .map_err(AppError::Database)?;
 
+        let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
+
         let mi = match existing {
             Some(mi) if mi.deleted_at.is_none() => mi,
             Some(mi) => {
                 let mut am: module_issues::ActiveModel = mi.into();
                 am.deleted_at = Set(None);
                 am.updated_by_id = Set(Some(user_id));
+                // Django: TimeAuditModel auto_now=True.
+                am.updated_at = Set(now);
                 am.update(&state.db).await.map_err(AppError::Database)?
             }
             None => {
+                // created_at/updated_at explícitos (NOT NULL sin DEFAULT).
                 module_issues::ActiveModel {
                     id: Set(Uuid::new_v4()),
                     module_id: Set(module_id),
@@ -477,6 +490,9 @@ pub async fn add_issues_to_module(
                     workspace_id: Set(workspace_id),
                     created_by_id: Set(Some(user_id)),
                     updated_by_id: Set(Some(user_id)),
+                    created_at: Set(now),
+                    updated_at: Set(now),
+                    deleted_at: Set(None),
                     ..Default::default()
                 }
                 .insert(&state.db)

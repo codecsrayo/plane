@@ -149,6 +149,10 @@ pub async fn create_workspace_integration(
                         return Err(AppError::BadRequest("Integration already installed".into()));
                     }
 
+                    // created_at/updated_at explícitos (NOT NULL sin DEFAULT).
+                    let now: chrono::DateTime<chrono::FixedOffset> =
+                        chrono::Utc::now().into();
+
                     workspace_integrations::ActiveModel {
                         id: Set(Uuid::new_v4()),
                         workspace_id: Set(workspace_id),
@@ -157,6 +161,9 @@ pub async fn create_workspace_integration(
                         api_token_id: Set(api_token_id),
                         metadata: Set(metadata),
                         config: Set(config),
+                        created_at: Set(now),
+                        updated_at: Set(now),
+                        deleted_at: Set(None),
                         ..Default::default()
                     }
                     .insert(txn)
@@ -431,12 +438,18 @@ pub async fn provider_install(
                         .await
                         .map_err(AppError::Database)?;
 
+                    let now: chrono::DateTime<chrono::FixedOffset> =
+                        chrono::Utc::now().into();
+
                     if let Some(wi) = existing {
                         let mut am: workspace_integrations::ActiveModel = wi.into();
                         am.metadata = Set(metadata);
                         am.config = Set(config);
+                        // Django: TimeAuditModel auto_now=True.
+                        am.updated_at = Set(now);
                         Ok((am.update(txn).await.map_err(AppError::Database)?, false))
                     } else {
+                        // created_at/updated_at explícitos (NOT NULL sin DEFAULT).
                         let new_wi = workspace_integrations::ActiveModel {
                             id: Set(Uuid::new_v4()),
                             workspace_id: Set(workspace_id),
@@ -445,6 +458,9 @@ pub async fn provider_install(
                             api_token_id: Set(api_token_id),
                             metadata: Set(metadata),
                             config: Set(config),
+                            created_at: Set(now),
+                            updated_at: Set(now),
+                            deleted_at: Set(None),
                             ..Default::default()
                         };
                         Ok((new_wi.insert(txn).await.map_err(AppError::Database)?, true))
