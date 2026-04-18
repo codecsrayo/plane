@@ -3571,7 +3571,7 @@ Marcar cada archivo al validar que está libre de antipatrones y patrones insegu
 - [x] `core/store/module_filter.store.ts`
 - [x] `core/store/multiple_select.store.ts`
 - [x] `core/store/project-view.store.ts` — raw rethrow → toApiError
-- [!] `core/store/root.store.ts` — 12× `as unknown as RootStore` (type laundering estructural CE/EE, no antipattern directo) + 2× `localStorage.setItem` en `resetOnSignOut` sin SSR guard (aceptable, path post-signOut client-only). Deuda arquitectural documentada.
+- [!] `core/store/root.store.ts` — SSR guard agregado en `resetOnSignOut` (`if (typeof window !== "undefined")` envolviendo 2× `localStorage.setItem`). Remanente: 12× `as unknown as RootStore` (type laundering estructural CE/EE) — deuda arquitectural documentada, no antipattern directo.
 - [x] `core/store/router.store.ts`
 - [x] `core/store/state.store.ts` — raw rethrow → toApiError
 - [x] `core/store/theme.store.ts` — 9× `localStorage.setItem` wrapped con `if (typeof window !== "undefined")` para SSR safety.
