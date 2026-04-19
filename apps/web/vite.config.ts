@@ -30,7 +30,7 @@ const viteEnv = Object.keys(process.env)
 //
 // El basename "/app" vive SOLO en react-router.config.ts (routing del browser).
 
-const basePath = process.env.VITE_WEB_BASE_PATH || "/";
+const basePath = process.env.VITE_WEB_BASE_PATH || "/app/";
 
 export default defineConfig(({ command }) => ({
   base: command === "build" ? (basePath.endsWith("/") ? basePath : `${basePath}/`) : "/",

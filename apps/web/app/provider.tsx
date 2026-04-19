@@ -44,13 +44,15 @@ export function AppProvider(props: IAppProvider = { children: null }) {
         <AppProgressBar />
         <TranslationProvider>
           <Toast theme={resolveGeneralTheme(resolvedTheme)} />
-          <StoreWrapper>
-            <InstanceWrapper>
-              <Suspense>
-                <SWRConfig value={WEB_SWR_CONFIG}>{children}</SWRConfig>
-              </Suspense>
-            </InstanceWrapper>
-          </StoreWrapper>
+          <Suspense fallback={null}>
+            <StoreWrapper>
+              <InstanceWrapper>
+                <Suspense fallback={null}>
+                  <SWRConfig value={WEB_SWR_CONFIG}>{children}</SWRConfig>
+                </Suspense>
+              </InstanceWrapper>
+            </StoreWrapper>
+          </Suspense>
         </TranslationProvider>
       </>
     </StoreProvider>
