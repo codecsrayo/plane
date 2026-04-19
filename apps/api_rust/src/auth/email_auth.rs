@@ -594,7 +594,8 @@ fn redirect_url(
 ) -> String {
     let base = match surface {
         SessionSurface::Space => space_base(state),
-        SessionSurface::App | SessionSurface::Admin => app_base(state),
+        SessionSurface::App => app_base(state),
+        SessionSurface::Admin => admin_base(state),
     };
     let mut query = Vec::new();
     if let Some(path) = safe_next_path(next_path) {
@@ -612,22 +613,61 @@ fn redirect_url(
 }
 
 fn app_base(state: &AppState) -> String {
-    state
+    let mut base = state
         .config
         .app_base_url
         .clone()
         .or_else(|| state.config.web_url.clone())
-        .unwrap_or_else(|| "/".to_owned())
+        .unwrap_or_else(|| "/".to_owned());
+
+    if let Some(path) = &state.config.app_base_path {
+        let path = if path.starts_with('/') {
+            path.clone()
+        } else {
+            format!("/{}", path)
+        };
+        base = format!("{}{}", base.trim_end_matches('/'), path);
+    }
+    base
+}
+
+fn admin_base(state: &AppState) -> String {
+    let mut base = state
+        .config
+        .admin_base_url
+        .clone()
+        .or_else(|| state.config.web_url.clone())
+        .unwrap_or_else(|| "/god-mode/".to_owned());
+
+    if let Some(path) = &state.config.admin_base_path {
+        let path = if path.starts_with('/') {
+            path.clone()
+        } else {
+            format!("/{}", path)
+        };
+        base = format!("{}{}", base.trim_end_matches('/'), path);
+    }
+    base
 }
 
 pub(crate) fn space_base(state: &AppState) -> String {
-    let base = state
+    let mut base = state
         .config
         .space_base_url
         .clone()
         .or_else(|| state.config.web_url.clone())
         .or_else(|| state.config.app_base_url.clone())
         .unwrap_or_else(|| "/spaces/".to_owned());
+
+    if let Some(path) = &state.config.space_base_path {
+        let path = if path.starts_with('/') {
+            path.clone()
+        } else {
+            format!("/{}", path)
+        };
+        base = format!("{}{}", base.trim_end_matches('/'), path);
+    }
+
     if base.ends_with("/spaces/") {
         base
     } else if base.ends_with("/spaces") {

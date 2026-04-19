@@ -20,8 +20,11 @@ pub struct Config {
     pub debug: bool,                    // DEBUG
     pub web_url: Option<String>,        // WEB_URL
     pub app_base_url: Option<String>,   // APP_BASE_URL
+    pub app_base_path: Option<String>,  // APP_BASE_PATH
     pub space_base_url: Option<String>, // SPACE_BASE_URL
+    pub space_base_path: Option<String>, // SPACE_BASE_PATH
     pub admin_base_url: Option<String>, // ADMIN_BASE_URL
+    pub admin_base_path: Option<String>, // ADMIN_BASE_PATH
 
     // S3/MinIO
     pub aws_s3_bucket: String,       // AWS_S3_BUCKET_NAME
@@ -89,8 +92,11 @@ impl Config {
             is_production: !debug,
             web_url: env::var("WEB_URL").ok(),
             app_base_url: env::var("APP_BASE_URL").ok(),
+            app_base_path: env::var("APP_BASE_PATH").ok(),
             space_base_url: env::var("SPACE_BASE_URL").ok(),
+            space_base_path: env::var("SPACE_BASE_PATH").ok(),
             admin_base_url: env::var("ADMIN_BASE_URL").ok(),
+            admin_base_path: env::var("ADMIN_BASE_PATH").ok(),
             aws_s3_bucket: env::var("AWS_S3_BUCKET_NAME").unwrap_or_default(),
             aws_endpoint: env::var("AWS_S3_ENDPOINT_URL").unwrap_or_default(),
             aws_access_key_id: env::var("AWS_ACCESS_KEY_ID").unwrap_or_else(|_| "access-key".into()),
