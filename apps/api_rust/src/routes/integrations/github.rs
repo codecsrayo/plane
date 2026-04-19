@@ -198,9 +198,12 @@ async fn github_app_callback_inner(
 )]
 pub async fn github_user_callback(
     State(state): State<AppState>,
-    guard: WorkspaceMemberGuard,
+    auth: AnyAuth,
     Json(body): Json<UserGithubCallbackRequest>,
 ) -> Result<(StatusCode, Json<UserGithubConnectionResponse>), AppError> {
+    // Django: UserGithubConnectionView usa IsAuthenticated sin scope de workspace.
+    // WorkspaceMemberGuard requería {slug} en el path, que esta ruta no tiene,
+    // causando 404 en todas las llamadas. Corregido: AnyAuth (sesión o API token).
     let client_id = get_instance_config(&state, "GITHUB_CLIENT_ID")
         .await?
         .ok_or_else(|| AppError::BadRequest("GitHub OAuth is not configured".into()))?;
@@ -209,14 +212,32 @@ pub async fn github_user_callback(
         .await?
         .ok_or_else(|| AppError::BadRequest("GitHub OAuth is not configured".into()))?;
 
+    // Django incluye redirect_uri en el token exchange para evitar
+    // redirect_uri_mismatch si la GitHub App lo tiene configurado.
+    let redirect_uri = state
+        .config
+        .web_url
+        .as_deref()
+        .map(|base| {
+            format!(
+                "{}/auth/github/user-callback/",
+                base.trim_end_matches('/')
+            )
+        });
+
+    let mut form_params: Vec<(&str, String)> = vec![
+        ("client_id", client_id.clone()),
+        ("client_secret", client_secret.clone()),
+        ("code", body.code.clone()),
+    ];
+    if let Some(ref uri) = redirect_uri {
+        form_params.push(("redirect_uri", uri.clone()));
+    }
+
     let token_resp = state
         .http
         .post("https://github.com/login/oauth/access_token")
-        .form(&[
-            ("client_id", client_id.as_str()),
-            ("client_secret", client_secret.as_str()),
-            ("code", body.code.as_str()),
-        ])
+        .form(&form_params)
         .header("Accept", "application/json")
         .send()
         .await
@@ -279,7 +300,7 @@ pub async fn github_user_callback(
         .to_owned();
 
     let github_avatar_url = github_user["avatar_url"].as_str().unwrap_or("").to_owned();
-    let user_id = guard.user.id;
+    let user_id = auth.0.id;
 
     // El access_token se cifra con AES-256-GCM antes de ser almacenado.
     let encrypted_token = encrypt_token(&access_token);
