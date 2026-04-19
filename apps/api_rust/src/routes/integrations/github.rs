@@ -26,11 +26,11 @@ use crate::{
     auth::{
         any_auth::AnyAuth,
         extractors::WorkspaceMemberGuard,
-        permissions::{require_workspace_admin, ROLE_ADMIN},
+        permissions::{require_workspace_admin, require_workspace_member, ROLE_ADMIN},
     },
     entities::{
-        github_repositories, github_repository_syncs, integrations, user_github_connections,
-        workspace_integrations, workspace_members, workspaces,
+        github_repositories, github_repository_syncs, integrations, projects,
+        user_github_connections, workspace_integrations, workspace_members, workspaces,
     },
     error::AppError,
     utils::{
@@ -500,7 +500,9 @@ pub async fn list_github_repo_syncs(
     State(state): State<AppState>,
     guard: WorkspaceMemberGuard,
 ) -> Result<Json<Vec<GithubRepoSyncResponse>>, AppError> {
-    require_workspace_admin(&guard.member)?;
+    // Django: @allow_permission([ROLE.ADMIN, ROLE.MEMBER], level="WORKSPACE")
+    // Tanto admins como members pueden listar los syncs del workspace.
+    require_workspace_member(&guard.member)?;
 
     let wi = workspace_integrations::Entity::find()
         .active()
@@ -522,7 +524,7 @@ pub async fn list_github_repo_syncs(
         .await
         .map_err(AppError::Database)?;
 
-    // Batch-fetch evita N+1.
+    // Batch-fetch de repositorios — evita N+1.
     let repo_ids: Vec<Uuid> = syncs.iter().map(|s| s.repository_id).collect();
     let repos_map: std::collections::HashMap<Uuid, github_repositories::Model> =
         github_repositories::Entity::find()
@@ -532,6 +534,19 @@ pub async fn list_github_repo_syncs(
             .map_err(AppError::Database)?
             .into_iter()
             .map(|r| (r.id, r))
+            .collect();
+
+    // Batch-fetch de proyectos para incluir `project_name` y `project_identifier`
+    // tal como hace Django en GithubRepoSyncViewSet.list().
+    let project_ids: Vec<Uuid> = syncs.iter().map(|s| s.project_id).collect();
+    let projects_map: std::collections::HashMap<Uuid, projects::Model> =
+        projects::Entity::find()
+            .filter(projects::Column::Id.is_in(project_ids))
+            .all(&state.db)
+            .await
+            .map_err(AppError::Database)?
+            .into_iter()
+            .map(|p| (p.id, p))
             .collect();
 
     let result = syncs
@@ -559,9 +574,18 @@ pub async fn list_github_repo_syncs(
                     (String::new(), String::new(), String::new())
                 };
 
+            let (project_name, project_identifier) =
+                if let Some(p) = projects_map.get(&sync.project_id) {
+                    (p.name.clone(), p.identifier.clone())
+                } else {
+                    (String::new(), String::new())
+                };
+
             GithubRepoSyncResponse {
                 id: sync.id,
                 project_id: sync.project_id,
+                project_name,
+                project_identifier,
                 repo_id,
                 repo_full_name: format!("{repo_owner}/{repo_name}"),
                 repo_name,
@@ -569,6 +593,7 @@ pub async fn list_github_repo_syncs(
                 sync_direction,
                 issue_open_state,
                 issue_closed_state,
+                created_at: sync.created_at,
             }
         })
         .collect();
@@ -729,6 +754,17 @@ pub async fn create_github_repo_sync(
         );
     }
 
+    // Fetch project para incluir project_name e project_identifier en la
+    // respuesta — espeja el campo que Django devuelve en GithubRepoSyncViewSet.create().
+    let project = projects::Entity::find_by_id(sync.project_id)
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    let (project_name, project_identifier) = project
+        .map(|p| (p.name, p.identifier))
+        .unwrap_or_default();
+
     let sync_direction = credentials
         .get("sync_direction")
         .and_then(|v| v.as_str())
@@ -740,6 +776,8 @@ pub async fn create_github_repo_sync(
         Json(GithubRepoSyncResponse {
             id: sync.id,
             project_id: sync.project_id,
+            project_name,
+            project_identifier,
             repo_id: repo.repository_id.to_string(),
             repo_full_name: format!("{}/{}", repo.owner, repo.name),
             repo_name: repo.name,
@@ -753,6 +791,7 @@ pub async fn create_github_repo_sync(
                 .get("issue_closed_state")
                 .and_then(|v| v.as_str())
                 .map(str::to_owned),
+            created_at: sync.created_at,
         }),
     ))
 }
@@ -912,8 +951,11 @@ pub async fn list_integrations(
     State(state): State<AppState>,
     _auth: AnyAuth,
 ) -> Result<Json<Vec<IntegrationResponse>>, AppError> {
+    // Django usa `self.model.objects.all()` — sin filtro de soft-delete —
+    // para garantizar que todas las integraciones aparezcan en el panel,
+    // incluidas las no verificadas. Replicamos ese comportamiento aquí.
+    // Antipatrón evitado: no usar `.active()` que filtraría registros válidos.
     let rows = integrations::Entity::find()
-        .active()
         .order_by_asc(integrations::Column::Title)
         .all(&state.db)
         .await
