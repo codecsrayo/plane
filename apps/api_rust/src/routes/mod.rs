@@ -227,6 +227,11 @@ pub mod instances;
         pages::unlock_page,
         pages::duplicate_page,
         pages::list_page_versions,
+        pages::update_page_access,
+        pages::add_page_favorite,
+        pages::remove_page_favorite,
+        pages::pages_summary,
+        labels::bulk_create_labels,
         pages::get_page_version,
         intake::list_intakes,
         intake::create_intake,
@@ -867,6 +872,10 @@ pub fn build_router(state: AppState) -> Router {
         // ── Labels ──────────────────────────────────────────────────────────
         // Rutas canónicas (/labels/)
         .route(
+            "/workspaces/{slug}/projects/{project_id}/bulk-create-labels",
+            post(labels::bulk_create_labels),
+        )
+        .route(
             "/workspaces/{slug}/projects/{project_id}/labels",
             get(labels::list_labels).post(labels::create_label),
         )
@@ -955,6 +964,10 @@ pub fn build_router(state: AppState) -> Router {
         )
         // ── Pages ────────────────────────────────────────────────────────────
         .route(
+            "/workspaces/{slug}/projects/{project_id}/pages-summary",
+            get(pages::pages_summary),
+        )
+        .route(
             "/workspaces/{slug}/projects/{project_id}/pages",
             get(pages::list_pages).post(pages::create_page),
         )
@@ -963,6 +976,14 @@ pub fn build_router(state: AppState) -> Router {
             get(pages::get_page)
                 .patch(pages::update_page)
                 .delete(pages::delete_page),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/pages/{page_id}/access",
+            post(pages::update_page_access),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/favorite-pages/{page_id}",
+            post(pages::add_page_favorite).delete(pages::remove_page_favorite),
         )
         .route(
             "/workspaces/{slug}/projects/{project_id}/pages/{page_id}/archive",
