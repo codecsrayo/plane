@@ -2913,3 +2913,380 @@ fn build_user_activity_csv_response(bytes: Vec<u8>) -> Result<axum::response::Re
     ];
     Ok((StatusCode::OK, headers, bytes).into_response())
 }
+
+// ─── GET /workspaces/{slug}/members/{pk}/ ────────────────────────────────────
+
+/// Retorna un miembro específico del workspace.
+///
+/// Espejo de `WorkSpaceMemberViewSet.retrieve`
+/// (`apps/api/plane/app/views/workspace/member.py:58-73`).
+/// Requiere membresía activa (GUEST, VIEWER, MEMBER, ADMIN).
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/members/{pk}/",
+    tag = "Workspaces",
+    security(("TokenAuth" = []), ("SessionCookie" = [])),
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("pk"   = Uuid,   Path, description = "Member record UUID"),
+    ),
+    responses(
+        (status = 200, description = "Member detail"),
+        (status = 403, description = "Not a member"),
+        (status = 404, description = "Not found"),
+    )
+)]
+pub async fn get_member(
+    State(state): State<AppState>,
+    AnyAuth(user): AnyAuth,
+    Path((slug, pk)): Path<(String, Uuid)>,
+) -> Result<Json<WorkspaceMemberNestedResponse>, AppError> {
+    let ws = workspace_by_slug(&state.db, &slug).await?;
+    let caller = require_workspace_member(&state.db, ws.id, user.id).await?;
+
+    // Paridad Django: admins ven email/last_login_medium, guests no.
+    let is_admin = caller.role > ROLE_GUEST;
+
+    let member = workspace_members::Entity::find_by_id(pk)
+        .active()
+        .filter(workspace_members::Column::WorkspaceId.eq(ws.id))
+        .filter(workspace_members::Column::IsActive.eq(true))
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    let user_model = users::Entity::find_by_id(member.member_id)
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    Ok(Json(WorkspaceMemberNestedResponse {
+        id: member.id,
+        member: user_to_lite(&user_model, is_admin),
+        role: member.role,
+    }))
+}
+
+// ─── POST /workspaces/{slug}/members/leave/ ──────────────────────────────────
+
+/// El usuario autenticado abandona el workspace.
+///
+/// Espejo de `WorkSpaceMemberViewSet.leave`
+/// (`apps/api/plane/app/views/workspace/member.py:140-185`).
+/// Reglas:
+///   - No se puede salir si eres el único Admin del workspace.
+///   - No se puede salir si eres el único Admin de algún proyecto.
+#[utoipa::path(
+    post,
+    path = "/api/workspaces/{slug}/members/leave/",
+    tag = "Workspaces",
+    security(("TokenAuth" = []), ("SessionCookie" = [])),
+    params(("slug" = String, Path, description = "Workspace slug")),
+    responses(
+        (status = 204, description = "Left workspace"),
+        (status = 400, description = "Cannot leave — last admin or sole project admin"),
+        (status = 403, description = "Not a member"),
+    )
+)]
+pub async fn leave_workspace(
+    State(state): State<AppState>,
+    AnyAuth(user): AnyAuth,
+    Path(slug): Path<String>,
+) -> Result<StatusCode, AppError> {
+    let ws = workspace_by_slug(&state.db, &slug).await?;
+    let member = require_workspace_member(&state.db, ws.id, user.id).await?;
+
+    // Si es Admin, verificar que no sea el único.
+    if member.role >= ROLE_ADMIN {
+        let admin_count = workspace_members::Entity::find()
+            .active()
+            .filter(workspace_members::Column::WorkspaceId.eq(ws.id))
+            .filter(workspace_members::Column::Role.gte(ROLE_ADMIN))
+            .filter(workspace_members::Column::IsActive.eq(true))
+            .count(&state.db)
+            .await
+            .map_err(AppError::Database)?;
+
+        if admin_count <= 1 {
+            return Err(AppError::BadRequest(
+                "You cannot leave the workspace as you are the only admin. \
+                 Please delete the workspace or promote another user to admin.".into(),
+            ));
+        }
+    }
+
+    // Verificar que no sea el único Admin en algún proyecto del workspace.
+    // Antipatrón evitado: N+1 — hacemos un raw query COUNT con subquery.
+    use sea_orm::Statement;
+    use sea_orm::ConnectionTrait;
+    let sole_admin_project: Option<bool> = state.db
+        .query_one(Statement::from_sql_and_values(
+            sea_orm::DatabaseBackend::Postgres,
+            r#"
+            SELECT EXISTS (
+                SELECT 1
+                FROM projects p
+                WHERE p.workspace_id = $1
+                  AND p.deleted_at IS NULL
+                  AND (
+                    SELECT COUNT(*) FROM project_members pm
+                    WHERE pm.project_id = p.id
+                      AND pm.is_active = true
+                      AND pm.deleted_at IS NULL
+                  ) = 1
+                  AND EXISTS (
+                    SELECT 1 FROM project_members pm2
+                    WHERE pm2.project_id = p.id
+                      AND pm2.member_id = $2
+                      AND pm2.role >= 20
+                      AND pm2.is_active = true
+                      AND pm2.deleted_at IS NULL
+                  )
+            )
+            "#,
+            vec![
+                sea_orm::Value::Uuid(Some(Box::new(ws.id))),
+                sea_orm::Value::Uuid(Some(Box::new(user.id))),
+            ],
+        ))
+        .await
+        .map_err(AppError::Database)?
+        .map(|r| r.try_get::<bool>("", "exists").unwrap_or(false));
+
+    if sole_admin_project.unwrap_or(false) {
+        return Err(AppError::BadRequest(
+            "You are the only admin in some projects. \
+             Please leave those projects or promote another user to admin first.".into(),
+        ));
+    }
+
+    // Desactivar membresías de proyectos del workspace.
+    project_members::Entity::update_many()
+        .col_expr(
+            project_members::Column::IsActive,
+            sea_orm::sea_query::Expr::value(false),
+        )
+        .filter(project_members::Column::WorkspaceId.eq(ws.id))
+        .filter(project_members::Column::MemberId.eq(user.id))
+        .filter(project_members::Column::IsActive.eq(true))
+        .exec(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    // Desactivar membresía del workspace.
+    let mut am: workspace_members::ActiveModel = member.into();
+    am.is_active = Set(false);
+    am.updated_at = Set(chrono::Utc::now().fixed_offset());
+    am.update(&state.db).await.map_err(AppError::Database)?;
+
+    Ok(StatusCode::NO_CONTENT)
+}
+
+// ─── GET /workspaces/{slug}/project-members/ ─────────────────────────────────
+
+/// Retorna un mapa `{project_id: [{member_id, role}]}` para todos los
+/// proyectos del workspace donde el usuario es miembro.
+///
+/// Espejo de `WorkspaceProjectMemberEndpoint.get`
+/// (`apps/api/plane/app/views/workspace/member.py:187-220`).
+/// Usado por el frontend para cargar permisos de proyecto cruzados.
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/project-members/",
+    tag = "Workspaces",
+    security(("TokenAuth" = []), ("SessionCookie" = [])),
+    params(("slug" = String, Path, description = "Workspace slug")),
+    responses(
+        (status = 200, description = "Mapa project_id → [member roles]"),
+        (status = 403, description = "Not a member"),
+    )
+)]
+pub async fn get_project_members(
+    State(state): State<AppState>,
+    AnyAuth(user): AnyAuth,
+    Path(slug): Path<String>,
+) -> Result<Json<serde_json::Value>, AppError> {
+    let ws = workspace_by_slug(&state.db, &slug).await?;
+    let _ = require_workspace_member(&state.db, ws.id, user.id).await?;
+
+    // Proyectos donde el usuario es miembro activo.
+    let user_project_ids: Vec<Uuid> = project_members::Entity::find()
+        .active()
+        .filter(project_members::Column::MemberId.eq(user.id))
+        .filter(project_members::Column::IsActive.eq(true))
+        .filter(project_members::Column::WorkspaceId.eq(ws.id))
+        .all(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .into_iter()
+        .map(|pm| pm.project_id)
+        .collect();
+
+    if user_project_ids.is_empty() {
+        return Ok(Json(serde_json::json!({})));
+    }
+
+    // Todos los miembros activos de esos proyectos — batch, sin N+1.
+    let all_members = project_members::Entity::find()
+        .active()
+        .filter(project_members::Column::WorkspaceId.eq(ws.id))
+        .filter(project_members::Column::ProjectId.is_in(user_project_ids))
+        .filter(project_members::Column::IsActive.eq(true))
+        .all(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    // Construir mapa { project_id: [{member_id, role}] }.
+    let mut map: std::collections::HashMap<String, Vec<serde_json::Value>> =
+        std::collections::HashMap::new();
+    for pm in all_members {
+        map.entry(pm.project_id.to_string())
+            .or_default()
+            .push(serde_json::json!({
+                "member_id": pm.member_id,
+                "role": pm.role,
+            }));
+    }
+
+    Ok(Json(serde_json::to_value(map).unwrap_or(serde_json::json!({}))))
+}
+
+// ─── POST /workspaces/{slug}/workspace-views/ ────────────────────────────────
+
+/// Persiste las preferencias de vista del workspace member.
+///
+/// Espejo de `WorkspaceMemberUserViewsEndpoint.post`
+/// (`apps/api/plane/app/views/workspace/member.py:222-229`).
+#[utoipa::path(
+    post,
+    path = "/api/workspaces/{slug}/workspace-views/",
+    tag = "Workspaces",
+    security(("TokenAuth" = []), ("SessionCookie" = [])),
+    params(("slug" = String, Path, description = "Workspace slug")),
+    responses(
+        (status = 204, description = "View props updated"),
+        (status = 403, description = "Not a member"),
+    )
+)]
+pub async fn update_workspace_views(
+    State(state): State<AppState>,
+    AnyAuth(user): AnyAuth,
+    Path(slug): Path<String>,
+    Json(body): Json<serde_json::Value>,
+) -> Result<StatusCode, AppError> {
+    let ws = workspace_by_slug(&state.db, &slug).await?;
+    let member = require_workspace_member(&state.db, ws.id, user.id).await?;
+
+    let view_props = body
+        .get("view_props")
+        .cloned()
+        .unwrap_or(serde_json::json!({}));
+
+    let now = chrono::Utc::now().fixed_offset();
+    let mut am: workspace_members::ActiveModel = member.into();
+    am.view_props = Set(view_props);
+    am.updated_at = Set(now);
+    am.update(&state.db).await.map_err(AppError::Database)?;
+
+    Ok(StatusCode::NO_CONTENT)
+}
+
+// ─── GET + PATCH /workspaces/{slug}/invitations/{pk}/ ────────────────────────
+
+/// Retorna el detalle de una invitación.
+///
+/// Espejo de `WorkspaceInvitationsViewset.retrieve`
+/// (`apps/api/plane/app/urls/workspace.py:29-33`).
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/invitations/{pk}/",
+    tag = "Workspaces",
+    security(("TokenAuth" = []), ("SessionCookie" = [])),
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("pk"   = Uuid,   Path, description = "Invitation UUID"),
+    ),
+    responses(
+        (status = 200, description = "Invitation detail"),
+        (status = 403, description = "Forbidden — requires Admin"),
+        (status = 404, description = "Not found"),
+    )
+)]
+pub async fn get_invitation(
+    State(state): State<AppState>,
+    AnyAuth(user): AnyAuth,
+    Path((slug, pk)): Path<(String, Uuid)>,
+) -> Result<Json<InvitationResponse>, AppError> {
+    let ws = workspace_by_slug(&state.db, &slug).await?;
+    let member = require_workspace_member(&state.db, ws.id, user.id).await?;
+    require_admin(&member)?;
+
+    let invite = workspace_member_invites::Entity::find_by_id(pk)
+        .active()
+        .filter(workspace_member_invites::Column::WorkspaceId.eq(ws.id))
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    Ok(Json(InvitationResponse::from(&invite)))
+}
+
+#[derive(Debug, serde::Deserialize, utoipa::ToSchema)]
+pub struct UpdateInvitationRequest {
+    pub role: Option<i16>,
+}
+
+/// Actualiza el rol de una invitación pendiente.
+///
+/// Espejo de `WorkspaceInvitationsViewset.partial_update`
+/// (`apps/api/plane/app/urls/workspace.py:29-33`).
+#[utoipa::path(
+    patch,
+    path = "/api/workspaces/{slug}/invitations/{pk}/",
+    tag = "Workspaces",
+    security(("TokenAuth" = []), ("SessionCookie" = [])),
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("pk"   = Uuid,   Path, description = "Invitation UUID"),
+    ),
+    responses(
+        (status = 200, description = "Updated invitation"),
+        (status = 403, description = "Forbidden — requires Admin"),
+        (status = 404, description = "Not found"),
+    )
+)]
+pub async fn update_invitation(
+    State(state): State<AppState>,
+    AnyAuth(user): AnyAuth,
+    Path((slug, pk)): Path<(String, Uuid)>,
+    Json(body): Json<UpdateInvitationRequest>,
+) -> Result<Json<InvitationResponse>, AppError> {
+    let ws = workspace_by_slug(&state.db, &slug).await?;
+    let member = require_workspace_member(&state.db, ws.id, user.id).await?;
+    require_admin(&member)?;
+
+    let invite = workspace_member_invites::Entity::find_by_id(pk)
+        .active()
+        .filter(workspace_member_invites::Column::WorkspaceId.eq(ws.id))
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    let now = chrono::Utc::now().fixed_offset();
+    let mut am: workspace_member_invites::ActiveModel = invite.into();
+    if let Some(role) = body.role {
+        if ![ROLE_GUEST, ROLE_VIEWER, ROLE_MEMBER, ROLE_ADMIN].contains(&role) {
+            return Err(AppError::BadRequest("Invalid role value".into()));
+        }
+        am.role = Set(role);
+    }
+    am.updated_at = Set(now);
+    am.updated_by_id = Set(Some(user.id));
+
+    let updated = am.update(&state.db).await.map_err(AppError::Database)?;
+    Ok(Json(InvitationResponse::from(&updated)))
+}
