@@ -88,9 +88,13 @@ pub mod instances;
         workspaces::update_workspace,
         workspaces::delete_workspace,
         workspaces::list_members,
+        workspaces::get_member,
         workspaces::update_member,
         workspaces::remove_member,
-        workspaces::get_workspace_member_me,
+        workspaces::leave_workspace,
+        workspaces::get_project_members,
+        workspaces::update_workspace_views,
+                workspaces::get_workspace_member_me,
         workspaces::get_user_profile,
         workspaces::get_user_stats,
         workspaces::get_workspace_user_activity,
@@ -98,6 +102,8 @@ pub mod instances;
         user_profile_issues::list_user_profile_issues,
         workspaces::list_invitations,
         workspaces::create_invitations,
+        workspaces::get_invitation,
+        workspaces::update_invitation,
         workspaces::delete_invitation,
         projects::list_projects,
         projects::list_projects_detail,
@@ -557,12 +563,31 @@ pub fn build_router(state: AppState) -> Router {
                 .patch(workspaces::update_workspace)
                 .delete(workspaces::delete_workspace),
         )
-        .route("/workspaces/{slug}/members", get(workspaces::list_members))
+        .route(
+            "/workspaces/{slug}/members",
+            get(workspaces::list_members),
+        )
+        .route(
+            "/workspaces/{slug}/members/leave",
+            post(workspaces::leave_workspace),
+        )
         .route(
             "/workspaces/{slug}/members/{pk}",
-            patch(workspaces::update_member).delete(workspaces::remove_member),
+            get(workspaces::get_member)
+                .patch(workspaces::update_member)
+                .delete(workspaces::remove_member),
         )
-        // Mirror Django: workspaces/<slug>/workspace-members/me/ -> WorkspaceMemberUserEndpoint
+        // Mirror Django: workspaces/<slug>/project-members/ -> WorkspaceProjectMemberEndpoint
+        .route(
+            "/workspaces/{slug}/project-members",
+            get(workspaces::get_project_members),
+        )
+        // Mirror Django: workspaces/<slug>/workspace-views/ -> WorkspaceMemberUserViewsEndpoint
+        .route(
+            "/workspaces/{slug}/workspace-views",
+            post(workspaces::update_workspace_views),
+        )
+        // Mirror Django: workspaces/<slug>/workspace-members/me// -> WorkspaceMemberUserEndpoint
         .route(
             "/workspaces/{slug}/workspace-members/me",
             get(workspaces::get_workspace_member_me),
@@ -600,7 +625,9 @@ pub fn build_router(state: AppState) -> Router {
         )
         .route(
             "/workspaces/{slug}/invitations/{pk}",
-            delete(workspaces::delete_invitation),
+            get(workspaces::get_invitation)
+                .patch(workspaces::update_invitation)
+                .delete(workspaces::delete_invitation),
         )
         // ── Workspace integrations ───────────────────────────────────────────
         .route(
