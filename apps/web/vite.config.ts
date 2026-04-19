@@ -53,6 +53,9 @@ export default defineConfig(({ command }) => ({
   server: {
     allowedHosts: true as const,
     host: "0.0.0.0",
+    hmr: {
+      path: "/__vite_hmr",
+    },
   },
   // No SSR-specific overrides needed; alias resolves to ESM build
 }));
