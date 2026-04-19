@@ -45,7 +45,7 @@ export function CustomSearchSelect(props: ICustomSearchSelectProps) {
   } = props;
   const [query, setQuery] = useState("");
 
-  const [referenceElement, setReferenceElement] = useState<HTMLButtonElement | null>(null);
+  const [referenceElement, setReferenceElement] = useState<HTMLElement | null>(null);
   const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(null);
   const [isOpen, setIsOpen] = useState(defaultOpen);
   // refs
@@ -85,6 +85,18 @@ export function CustomSearchSelect(props: ICustomSearchSelectProps) {
     else openDropdown();
   };
 
+  // Paridad de teclado con <button> cuando el wrapper interno es
+  // <span role="button"> (ver JSX más abajo). El `useDropdownKeyDown` ya
+  // maneja flechas/Esc a nivel Combobox; este handler complementa Enter/Space
+  // para que el span se active como un botón nativo.
+  const handleCustomButtonKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
+    if (disabled) return;
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      e.currentTarget.click();
+    }
+  };
+
   return (
     <Combobox
       ref={dropdownRef}
@@ -100,9 +112,28 @@ export function CustomSearchSelect(props: ICustomSearchSelectProps) {
           <>
             {customButton ? (
               <Combobox.Button as="div" className="contents">
-                <button
+                {/*
+                  Wrapper como <span role="button"> (no <button>) para evitar
+                  DOM nesting inválido cuando `customButton` ya contiene un
+                  elemento interactivo (caso típico: Tooltip de base-ui con
+                  `render={children}` envolviendo un <button>, o un IconButton
+                  de @plane/propel pasado directamente). React warna:
+                  validateDOMNesting — <button> cannot appear as a descendant
+                  of <button>. Mismo patrón aplicado en CustomMenu.
+
+                  Accesibilidad preservada:
+                    - role="button" expone el rol a AT,
+                    - tabIndex hace el span focuseable (-1 si disabled),
+                    - onKeyDown mantiene Enter/Space,
+                    - aria-disabled reemplaza al atributo nativo `disabled`.
+                  `toggleDropdown` mantiene el click (UX idéntica); el estado
+                  `disabled` del componente ya fluye al Combobox vía props.
+                */}
+                <span
                   ref={setReferenceElement}
-                  type="button"
+                  role="button"
+                  tabIndex={disabled ? -1 : 0}
+                  aria-disabled={disabled}
                   className={cn(
                     "flex w-full items-center justify-between gap-1 text-11",
                     {
@@ -112,9 +143,10 @@ export function CustomSearchSelect(props: ICustomSearchSelectProps) {
                     customButtonClassName
                   )}
                   onClick={toggleDropdown}
+                  onKeyDown={handleCustomButtonKeyDown}
                 >
                   {customButton}
-                </button>
+                </span>
               </Combobox.Button>
             ) : (
               <Combobox.Button as="div" className="contents">
