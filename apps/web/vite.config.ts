@@ -15,24 +15,26 @@ const viteEnv = Object.keys(process.env)
   }, {});
 
 // `base` debe coincidir con VITE_WEB_BASE_PATH ("/app") para que todos los
-// assets de Vite (CSS, JS, /node_modules/.vite/deps/…) se sirvan bajo /app/*
-// y coincidan con la regla PathPrefix(`/app`) de Traefik.
+// assets del bundle de cliente (CSS, JS, /node_modules/.vite/deps/…) se sirvan
+// bajo /app/* y coincidan con la regla PathPrefix(`/app`) de Traefik.
 //
-// Sin este `base`, los assets se generan con rutas raíz (/styles/globals.css,
-// /node_modules/.vite/…) que Traefik no enruta al contenedor web → 404 →
+// Sin este `base`, los assets se generan con rutas raiz (/styles/globals.css,
+// /node_modules/.vite/…) que Traefik no enruta al contenedor web -> 404 ->
 // pantalla negra tras login.
 //
-// Con base: '/app':
-//   · Vite sirve /app/styles/globals.css, /app/node_modules/.vite/deps/…
-//   · Traefik matchea PathPrefix(`/app`) → forward correcto al dev server ✓
-//   · Vite internamente stripea el prefijo /app y sirve el archivo ✓
-//
-// Nota: el StripPrefix que mencionaba el comentario anterior NUNCA se definió
-// en los labels de Traefik del docker-compose-dev.yml, por eso fallaba.
+// IMPORTANTE — isSsrBuild:
+//   El plugin @react-router/dev/vite v7 siempre evalua un modulo SSR
+//   `virtual:react-router/server-build` para descubrir rutas, incluso con
+//   `ssr: false` en react-router.config.ts. Cuando `base` se aplica al build
+//   SSR, Vite intenta resolver los modulos con el prefijo /app pero el plugin
+//   los referencia sin el (/root.tsx) -> "Failed to load url /root.tsx".
+//   Solucion: aplicar `base` solo al bundle de cliente (isSsrBuild === false).
 const webBasePath = process.env.VITE_WEB_BASE_PATH || "/app";
 
-export default defineConfig(() => ({
-  base: webBasePath,
+export default defineConfig(({ isSsrBuild }) => ({
+  // SSR build (route discovery del plugin react-router) usa base "/" para que
+  // la resolucion de modulos virtuales no se vea afectada por el prefijo /app.
+  base: isSsrBuild ? "/" : webBasePath,
   define: {
     "process.env": JSON.stringify(viteEnv),
   },
