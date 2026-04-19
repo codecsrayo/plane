@@ -82,6 +82,10 @@ impl WorkspaceIntegrationResponse {
 pub struct GithubRepoSyncResponse {
     pub id: Uuid,
     pub project_id: Uuid,
+    /// Nombre legible del proyecto — espeja `project_name` del Django serializer.
+    pub project_name: String,
+    /// Identificador corto del proyecto (e.g. "PLANE") — espeja `project_identifier`.
+    pub project_identifier: String,
     pub repo_id: String,
     pub repo_full_name: String,
     pub repo_name: String,
@@ -89,6 +93,8 @@ pub struct GithubRepoSyncResponse {
     pub sync_direction: String,
     pub issue_open_state: Option<String>,
     pub issue_closed_state: Option<String>,
+    /// Timestamp de creación ISO 8601 — espeja `created_at` del Django serializer.
+    pub created_at: chrono::DateTime<chrono::FixedOffset>,
 }
 
 #[derive(Debug, Serialize, utoipa::ToSchema)]
