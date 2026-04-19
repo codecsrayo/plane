@@ -35,7 +35,7 @@ use crate::{
         extractors::ProjectMemberGuard,
         permissions::{require_role, ROLE_GUEST, ROLE_MEMBER},
     },
-    entities::{page_labels, page_versions, pages, project_pages},
+    entities::{page_labels, page_versions, pages, project_pages, user_favorites},
     error::AppError,
     utils::{content_validator, soft_delete::SoftDeleteExt},
     AppState,
@@ -1048,4 +1048,129 @@ pub async fn update_page_description(
     // historial. Ver `apps/api/plane/app/views/page/base.py:556-571`.
 
     Ok(Json(serde_json::json!({ "message": "Updated successfully" })))
+}
+
+
+// ─── POST /workspaces/{slug}/projects/{project_id}/pages/{page_id}/access/ ───
+pub async fn update_page_access(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Path((_slug, _project_id, page_id)): Path<(String, Uuid, Uuid)>,
+    Json(body): Json<serde_json::Value>,
+) -> Result<StatusCode, AppError> {
+    use sea_orm::ActiveValue::Set;
+    let access: i16 = body.get("access")
+        .and_then(|v| v.as_i64())
+        .map(|v| v as i16)
+        .unwrap_or(0);
+    if ![0i16, 1].contains(&access) {
+        return Err(AppError::BadRequest("access must be 0 (public) or 1 (private)".into()));
+    }
+    let page = pages::Entity::find_by_id(page_id).active()
+        .filter(pages::Column::WorkspaceId.eq(guard.workspace.id))
+        .one(&state.db).await.map_err(AppError::Database)?.ok_or(AppError::NotFound)?;
+    if page.access != access && page.owned_by_id != guard.user.id {
+        return Err(AppError::BadRequest("Access cannot be updated since this page is owned by someone else".into()));
+    }
+    let now = chrono::Utc::now().fixed_offset();
+    let mut am: pages::ActiveModel = page.into();
+    am.access = Set(access);
+    am.updated_at = Set(now);
+    am.update(&state.db).await.map_err(AppError::Database)?;
+    Ok(StatusCode::NO_CONTENT)
+}
+
+// ─── POST + DELETE /workspaces/{slug}/projects/{project_id}/favorite-pages/{page_id}/ ──
+pub async fn add_page_favorite(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Path((_slug, project_id, page_id)): Path<(String, Uuid, Uuid)>,
+) -> Result<StatusCode, AppError> {
+    use sea_orm::ActiveValue::Set;
+    if guard.project_member.role < ROLE_MEMBER && guard.workspace_member.role < 20 {
+        return Err(AppError::Forbidden);
+    }
+    let now = chrono::Utc::now().fixed_offset();
+    let existing = user_favorites::Entity::find().active()
+        .filter(user_favorites::Column::WorkspaceId.eq(guard.workspace.id))
+        .filter(user_favorites::Column::UserId.eq(guard.user.id))
+        .filter(user_favorites::Column::EntityType.eq("page"))
+        .filter(user_favorites::Column::EntityIdentifier.eq(page_id))
+        .one(&state.db).await.map_err(AppError::Database)?;
+    if existing.is_none() {
+        user_favorites::ActiveModel {
+            id: Set(Uuid::new_v4()),
+            entity_type: Set("page".into()),
+            entity_identifier: Set(Some(page_id)),
+            project_id: Set(Some(project_id)),
+            workspace_id: Set(guard.workspace.id),
+            user_id: Set(guard.user.id),
+            is_folder: Set(false),
+            sequence: Set(65535.0),
+            created_by_id: Set(Some(guard.user.id)),
+            updated_by_id: Set(Some(guard.user.id)),
+            created_at: Set(now),
+            updated_at: Set(now),
+            deleted_at: Set(None),
+            ..Default::default()
+        }.insert(&state.db).await.map_err(AppError::Database)?;
+    }
+    Ok(StatusCode::NO_CONTENT)
+}
+
+pub async fn remove_page_favorite(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Path((_slug, _project_id, page_id)): Path<(String, Uuid, Uuid)>,
+) -> Result<StatusCode, AppError> {
+    user_favorites::Entity::delete_many()
+        .filter(user_favorites::Column::WorkspaceId.eq(guard.workspace.id))
+        .filter(user_favorites::Column::UserId.eq(guard.user.id))
+        .filter(user_favorites::Column::EntityType.eq("page"))
+        .filter(user_favorites::Column::EntityIdentifier.eq(page_id))
+        .exec(&state.db).await.map_err(AppError::Database)?;
+    Ok(StatusCode::NO_CONTENT)
+}
+
+// ─── GET /workspaces/{slug}/projects/{project_id}/pages-summary/ ─────────────
+pub async fn pages_summary(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+) -> Result<Json<serde_json::Value>, AppError> {
+    use sea_orm::{FromQueryResult, Statement, ConnectionTrait};
+
+    #[derive(FromQueryResult)]
+    struct SummaryRow {
+        public_pages: i64,
+        private_pages: i64,
+        total_pages: i64,
+        archived_pages: i64,
+    }
+
+    let row = SummaryRow::find_by_statement(Statement::from_sql_and_values(
+        sea_orm::DatabaseBackend::Postgres,
+        r#"SELECT
+            COUNT(CASE WHEN p.access = 0 AND p.archived_at IS NULL THEN 1 END) AS public_pages,
+            COUNT(CASE WHEN p.access = 1 AND p.archived_at IS NULL AND p.owned_by_id = $1 THEN 1 END) AS private_pages,
+            COUNT(CASE WHEN p.archived_at IS NULL THEN 1 END) AS total_pages,
+            COUNT(CASE WHEN p.archived_at IS NOT NULL THEN 1 END) AS archived_pages
+        FROM pages p
+        INNER JOIN project_pages pp ON pp.page_id = p.id AND pp.project_id = $2 AND pp.deleted_at IS NULL
+        WHERE p.workspace_id = $3 AND p.deleted_at IS NULL AND p.parent_id IS NULL
+          AND (p.owned_by_id = $1 OR p.access = 0)
+        "#,
+        vec![
+            sea_orm::Value::Uuid(Some(Box::new(guard.user.id))),
+            sea_orm::Value::Uuid(Some(Box::new(guard.project.id))),
+            sea_orm::Value::Uuid(Some(Box::new(guard.workspace.id))),
+        ],
+    )).one(&state.db).await.map_err(AppError::Database)?
+      .unwrap_or_else(|| SummaryRow { public_pages: 0, private_pages: 0, total_pages: 0, archived_pages: 0 });
+
+    Ok(Json(serde_json::json!({
+        "public_pages": row.public_pages,
+        "private_pages": row.private_pages,
+        "total_pages": row.total_pages,
+        "archived_pages": row.archived_pages,
+    })))
 }

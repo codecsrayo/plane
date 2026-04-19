@@ -302,3 +302,54 @@ pub async fn delete_label(
 
     Ok(StatusCode::NO_CONTENT)
 }
+
+
+// ─── POST /workspaces/{slug}/projects/{project_id}/bulk-create-labels/ ───────
+#[derive(Debug, serde::Deserialize)]
+pub struct BulkCreateLabelsRequest {
+    pub label_data: Vec<LabelEntry>,
+}
+#[derive(Debug, serde::Deserialize)]
+pub struct LabelEntry {
+    pub name: Option<String>,
+    pub description: Option<String>,
+    pub color: Option<String>,
+}
+
+pub async fn bulk_create_labels(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Json(body): Json<BulkCreateLabelsRequest>,
+) -> Result<impl axum::response::IntoResponse, AppError> {
+    use sea_orm::ActiveValue::Set;
+    use crate::auth::permissions::ROLE_ADMIN;
+    if guard.project_member.role < ROLE_ADMIN && guard.workspace_member.role < ROLE_ADMIN {
+        return Err(AppError::Forbidden);
+    }
+    if body.label_data.is_empty() {
+        return Ok((axum::http::StatusCode::CREATED, axum::Json(serde_json::json!({"labels": []}))));
+    }
+    let now = chrono::Utc::now().fixed_offset();
+    let mut created = Vec::with_capacity(body.label_data.len());
+    for (i, entry) in body.label_data.iter().enumerate() {
+        let name = entry.name.clone().unwrap_or_else(|| "Migrated".into());
+        let hue = (i * 137 + 30) % 360;
+        let color = entry.color.clone().unwrap_or_else(|| format!("hsl({hue},60%,50%)"));
+        let label = labels::ActiveModel {
+            id: Set(uuid::Uuid::new_v4()),
+            name: Set(name.clone()),
+            description: Set(entry.description.clone().unwrap_or_else(|| "Migrated Issue".into())),
+            color: Set(color),
+            project_id: Set(guard.project.id),
+            workspace_id: Set(guard.workspace.id),
+            created_by_id: Set(Some(guard.user.id)),
+            updated_by_id: Set(Some(guard.user.id)),
+            created_at: Set(now),
+            updated_at: Set(now),
+            deleted_at: Set(None),
+            ..Default::default()
+        }.insert(&state.db).await.map_err(AppError::Database)?;
+        created.push(serde_json::json!({"id": label.id, "name": label.name, "color": label.color, "project_id": label.project_id}));
+    }
+    Ok((axum::http::StatusCode::CREATED, axum::Json(serde_json::json!({"labels": created}))))
+}
