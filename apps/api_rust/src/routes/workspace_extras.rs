@@ -1383,6 +1383,170 @@ pub async fn update_user_preferences(
 // DRAFT ISSUES
 // ═══════════════════════════════════════════════════════════════════════════
 
+// ── Helpers de sync N-a-M para Draft Issues ────────────────────────────────
+//
+// Espejan la lógica de `DraftIssueCreateSerializer.create` / `.update` en
+// `apps/api/plane/app/serializers/draft.py:142-297`. Django hace hard-delete
+// (`.delete()`) sobre los assignees/labels/cycles/modules existentes y luego
+// `bulk_create` con los nuevos. Nosotros replicamos el comportamiento con
+// hard-delete + insert en la misma transacción.
+//
+// NOTA: draft_issue_* NO tiene soft-delete lógico en Django (el
+// `.delete()` sobre `BaseManager` es hard-delete porque las tablas están
+// declaradas sin soft-delete). Por paridad hacemos hard-delete aquí.
+
+/// Reemplaza los assignees del draft con `new_ids` (hard-delete existentes + insert).
+async fn sync_draft_assignees(
+    txn: &sea_orm::DatabaseTransaction,
+    draft_id: Uuid,
+    project_id: Option<Uuid>,
+    workspace_id: Uuid,
+    actor_id: Uuid,
+    new_ids: &[Uuid],
+) -> Result<(), AppError> {
+    use crate::entities::draft_issue_assignees;
+    draft_issue_assignees::Entity::delete_many()
+        .filter(draft_issue_assignees::Column::DraftIssueId.eq(draft_id))
+        .exec(txn)
+        .await
+        .map_err(AppError::Database)?;
+
+    let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
+    for assignee_id in new_ids {
+        draft_issue_assignees::ActiveModel {
+            id: Set(Uuid::new_v4()),
+            draft_issue_id: Set(draft_id),
+            assignee_id: Set(*assignee_id),
+            project_id: Set(project_id),
+            workspace_id: Set(workspace_id),
+            created_by_id: Set(Some(actor_id)),
+            updated_by_id: Set(Some(actor_id)),
+            created_at: Set(now),
+            updated_at: Set(now),
+            deleted_at: Set(None),
+        }
+        .insert(txn)
+        .await
+        .map_err(AppError::Database)?;
+    }
+    Ok(())
+}
+
+/// Reemplaza los labels del draft con `new_ids`.
+async fn sync_draft_labels(
+    txn: &sea_orm::DatabaseTransaction,
+    draft_id: Uuid,
+    project_id: Option<Uuid>,
+    workspace_id: Uuid,
+    actor_id: Uuid,
+    new_ids: &[Uuid],
+) -> Result<(), AppError> {
+    use crate::entities::draft_issue_labels;
+    draft_issue_labels::Entity::delete_many()
+        .filter(draft_issue_labels::Column::DraftIssueId.eq(draft_id))
+        .exec(txn)
+        .await
+        .map_err(AppError::Database)?;
+
+    let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
+    for label_id in new_ids {
+        draft_issue_labels::ActiveModel {
+            id: Set(Uuid::new_v4()),
+            draft_issue_id: Set(draft_id),
+            label_id: Set(*label_id),
+            project_id: Set(project_id),
+            workspace_id: Set(workspace_id),
+            created_by_id: Set(Some(actor_id)),
+            updated_by_id: Set(Some(actor_id)),
+            created_at: Set(now),
+            updated_at: Set(now),
+            deleted_at: Set(None),
+        }
+        .insert(txn)
+        .await
+        .map_err(AppError::Database)?;
+    }
+    Ok(())
+}
+
+/// Reemplaza el (único) cycle del draft. `new_id = None` solo borra.
+///
+/// Paridad con draft.py:266-276: siempre borra existentes; solo crea uno
+/// nuevo si `cycle_id` es truthy (en Django: no None, no ""; aquí no es
+/// `Option<Option<Uuid>>::Some(None)`).
+async fn sync_draft_cycle(
+    txn: &sea_orm::DatabaseTransaction,
+    draft_id: Uuid,
+    project_id: Option<Uuid>,
+    workspace_id: Uuid,
+    actor_id: Uuid,
+    new_id: Option<Uuid>,
+) -> Result<(), AppError> {
+    use crate::entities::draft_issue_cycles;
+    draft_issue_cycles::Entity::delete_many()
+        .filter(draft_issue_cycles::Column::DraftIssueId.eq(draft_id))
+        .exec(txn)
+        .await
+        .map_err(AppError::Database)?;
+
+    if let Some(cid) = new_id {
+        let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
+        draft_issue_cycles::ActiveModel {
+            id: Set(Uuid::new_v4()),
+            draft_issue_id: Set(draft_id),
+            cycle_id: Set(cid),
+            project_id: Set(project_id),
+            workspace_id: Set(workspace_id),
+            created_by_id: Set(Some(actor_id)),
+            updated_by_id: Set(Some(actor_id)),
+            created_at: Set(now),
+            updated_at: Set(now),
+            deleted_at: Set(None),
+        }
+        .insert(txn)
+        .await
+        .map_err(AppError::Database)?;
+    }
+    Ok(())
+}
+
+/// Reemplaza los modules del draft con `new_ids`.
+async fn sync_draft_modules(
+    txn: &sea_orm::DatabaseTransaction,
+    draft_id: Uuid,
+    project_id: Option<Uuid>,
+    workspace_id: Uuid,
+    actor_id: Uuid,
+    new_ids: &[Uuid],
+) -> Result<(), AppError> {
+    use crate::entities::draft_issue_modules;
+    draft_issue_modules::Entity::delete_many()
+        .filter(draft_issue_modules::Column::DraftIssueId.eq(draft_id))
+        .exec(txn)
+        .await
+        .map_err(AppError::Database)?;
+
+    let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
+    for module_id in new_ids {
+        draft_issue_modules::ActiveModel {
+            id: Set(Uuid::new_v4()),
+            draft_issue_id: Set(draft_id),
+            module_id: Set(*module_id),
+            project_id: Set(project_id),
+            workspace_id: Set(workspace_id),
+            created_by_id: Set(Some(actor_id)),
+            updated_by_id: Set(Some(actor_id)),
+            created_at: Set(now),
+            updated_at: Set(now),
+            deleted_at: Set(None),
+        }
+        .insert(txn)
+        .await
+        .map_err(AppError::Database)?;
+    }
+    Ok(())
+}
+
 #[derive(Debug, Serialize)]
 pub struct DraftIssueResponse {
     pub id: Uuid,
@@ -1430,34 +1594,127 @@ impl From<draft_issues::Model> for DraftIssueResponse {
     }
 }
 
+/// Shape de `POST /workspaces/{slug}/draft-issues/`.
+///
+/// Paridad exacta con `DraftIssueCreateSerializer` (apps/api/plane/app/
+/// serializers/draft.py:33) y con el payload que construye el frontend
+/// desde `DEFAULT_WORK_ITEM_FORM_VALUES` (packages/constants/src/issue/
+/// modal.ts).
+///
+/// # Convenciones críticas
+/// - Todos los `Option<Uuid>` / `Option<NaiveDate>` usan los helpers de
+///   `crate::utils::serde_empty` para convertir `""` → `None`. El frontend
+///   envía `project_id: ""`, `state_id: ""`, fechas vacías por default; serde
+///   nativo falla con 422 (HTTP Unprocessable Entity) al toparse con `""`
+///   donde espera un `Uuid`.
+/// - `estimate_point` sin `_id` — DRF expone la FK con ese nombre cuando se
+///   declara como `PrimaryKeyRelatedField(source="estimate_point", ...)`.
+///   La columna en la DB sí es `estimate_point_id`; el mapeo lo hace el
+///   handler (mirror de `CreateIssueRequest` en `issues.rs:163`).
+/// - `assignee_ids` / `label_ids` (plural + sufijo) son los nombres que usan
+///   DRF y el frontend; son `ListField(required=False)` en Django.
+/// - `cycle_id` y `module_ids` existen en el payload del frontend aunque
+///   el `DraftIssueCreateSerializer` los lee desde `initial_data`
+///   (draft.py:146-147) — aquí los declaramos explícitos.
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct CreateDraftIssueRequest {
     pub name: Option<String>,
     pub description_html: Option<String>,
     pub priority: Option<String>,
+    #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_empty_as_none_uuid")]
     pub state_id: Option<Uuid>,
+    #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_empty_as_none_uuid")]
     pub parent_id: Option<Uuid>,
+    #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_empty_as_none_uuid")]
     pub project_id: Option<Uuid>,
+    #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_empty_as_none_uuid")]
     pub type_id: Option<Uuid>,
-    pub estimate_point_id: Option<Uuid>,
+    #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_empty_as_none_uuid")]
+    pub estimate_point: Option<Uuid>,
+    #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_empty_as_none_date")]
     pub start_date: Option<chrono::NaiveDate>,
+    #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_empty_as_none_date")]
     pub target_date: Option<chrono::NaiveDate>,
     pub sort_order: Option<f64>,
+    #[serde(default)]
+    pub assignee_ids: Option<Vec<Uuid>>,
+    #[serde(default)]
+    pub label_ids: Option<Vec<Uuid>>,
+    #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_empty_as_none_uuid")]
+    pub cycle_id: Option<Uuid>,
+    #[serde(default)]
+    pub module_ids: Option<Vec<Uuid>>,
 }
 
+/// Shape de `PATCH /workspaces/{slug}/draft-issues/{pk}/`.
+///
+/// Paridad con `DraftIssueCreateSerializer(partial=True)` (draft.py:170-178).
+/// Mismas convenciones que `CreateDraftIssueRequest`.
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct UpdateDraftIssueRequest {
     pub name: Option<String>,
     pub description_html: Option<String>,
     pub priority: Option<String>,
+    #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_empty_as_none_uuid")]
     pub state_id: Option<Uuid>,
+    #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_empty_as_none_uuid")]
     pub parent_id: Option<Uuid>,
+    #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_empty_as_none_uuid")]
     pub project_id: Option<Uuid>,
+    #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_empty_as_none_uuid")]
     pub type_id: Option<Uuid>,
-    pub estimate_point_id: Option<Uuid>,
+    #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_empty_as_none_uuid")]
+    pub estimate_point: Option<Uuid>,
+    #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_empty_as_none_date")]
     pub start_date: Option<chrono::NaiveDate>,
+    #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_empty_as_none_date")]
     pub target_date: Option<chrono::NaiveDate>,
     pub sort_order: Option<f64>,
+    #[serde(default)]
+    pub assignee_ids: Option<Vec<Uuid>>,
+    #[serde(default)]
+    pub label_ids: Option<Vec<Uuid>>,
+    /// `cycle_id` en PATCH usa Option<Option<Uuid>> para distinguir:
+    /// - campo ausente                         → no tocar cycle (`"not_provided"` en Django)
+    /// - `cycle_id: null` o `cycle_id: ""`     → desasignar cycle
+    /// - `cycle_id: "<uuid>"`                  → asignar cycle
+    ///
+    /// Django lee `request.data.get("cycle_id", "not_provided")` (draft.py:176)
+    /// y en el serializer `if cycle_id != "not_provided"` decide si tocarlo
+    /// (draft.py:266). Replicamos ese comportamiento usando el truco de
+    /// `Option<Option<T>>` + `#[serde(default, with = "::serde_with::rust::double_option")]`
+    /// — pero sin depender de `serde_with`, implementamos el mismo doble-wrap
+    /// manualmente: `#[serde(default, deserialize_with = ...)]`.
+    #[serde(default, deserialize_with = "deserialize_double_option_uuid")]
+    pub cycle_id: Option<Option<Uuid>>,
+    #[serde(default)]
+    pub module_ids: Option<Vec<Uuid>>,
+}
+
+/// Deserializador para `Option<Option<Uuid>>` con empty-string-as-none.
+///
+/// Semántica:
+/// - campo ausente                → `None`            (no tocar)
+/// - `null` o `""`                → `Some(None)`      (desasignar)
+/// - `"<uuid>"`                   → `Some(Some(uuid))` (asignar)
+///
+/// Necesario para PATCH donde queremos distinguir "campo no enviado" de
+/// "campo enviado como null/empty". Serde nativo colapsa ambos a `None`
+/// con `Option<Uuid>`.
+fn deserialize_double_option_uuid<'de, D>(
+    deserializer: D,
+) -> Result<Option<Option<Uuid>>, D::Error>
+where
+    D: serde::Deserializer<'de>,
+{
+    let opt: Option<String> = Option::deserialize(deserializer)?;
+    match opt {
+        None => Ok(Some(None)),
+        Some(s) if s.trim().is_empty() => Ok(Some(None)),
+        Some(s) => Uuid::parse_str(&s)
+            .map(|u| Some(Some(u)))
+            .map_err(serde::de::Error::custom),
+    }
 }
 
 /// GET /workspaces/{slug}/draft-issues/
@@ -1512,36 +1769,114 @@ pub async fn create_draft_issue(
     let db = &state.db;
     let user_id = auth_user.id;
     let ws = workspace_by_slug(db, &slug).await?;
-    let _member = require_workspace_member(db, ws.id, user_id).await?;
+    let member = require_workspace_member(db, ws.id, user_id).await?;
+    // Draft issues: GUEST es permitido en Django (draft.py:111); no usamos
+    // `require_member_or_admin` aquí para mantener paridad.
+    let _ = member;
 
-    let new = draft_issues::ActiveModel {
-        id: Set(Uuid::new_v4()),
-        name: Set(body.name),
-        description_json: Set(serde_json::json!({})),
-        description_html: Set(body.description_html.unwrap_or_default()),
-        description_stripped: Set(None),
-        description_binary: Set(None),
-        priority: Set(body.priority.unwrap_or_else(|| "none".to_string())),
-        state_id: Set(body.state_id),
-        parent_id: Set(body.parent_id),
-        project_id: Set(body.project_id),
-        workspace_id: Set(ws.id),
-        type_id: Set(body.type_id),
-        estimate_point_id: Set(body.estimate_point_id),
-        start_date: Set(body.start_date),
-        target_date: Set(body.target_date),
-        sort_order: Set(body.sort_order.unwrap_or(65535.0)),
-        completed_at: Set(None),
-        external_source: Set(None),
-        external_id: Set(None),
-        created_by_id: Set(Some(user_id)),
-        updated_by_id: Set(Some(user_id)),
-        created_at: Set(chrono::Utc::now().into()),
-        updated_at: Set(chrono::Utc::now().into()),
-        deleted_at: Set(None),
-    };
+    // Validación paridad con DraftIssueCreateSerializer.validate (draft.py:72-77):
+    // start_date > target_date → error.
+    if let (Some(start), Some(target)) = (body.start_date, body.target_date) {
+        if start > target {
+            return Err(AppError::BadRequest(
+                "Start date cannot exceed target date".into(),
+            ));
+        }
+    }
 
-    let saved = new.insert(db).await.map_err(AppError::Database)?;
+    let workspace_id = ws.id;
+    let project_id = body.project_id;
+    let assignees = body.assignee_ids.clone().unwrap_or_default();
+    let labels = body.label_ids.clone().unwrap_or_default();
+    let cycle_id = body.cycle_id;
+    let modules = body.module_ids.clone().unwrap_or_default();
+
+    // Ejecutar en transacción para que el draft + sus N-a-M queden atómicos,
+    // igual que `DraftIssueCreateSerializer.create` que hace bulk_create
+    // dentro del mismo request y rollback si algo falla.
+    use sea_orm::TransactionTrait;
+    let saved = db
+        .transaction::<_, draft_issues::Model, AppError>(|txn| {
+            Box::pin(async move {
+                let new = draft_issues::ActiveModel {
+                    id: Set(Uuid::new_v4()),
+                    name: Set(body.name),
+                    description_json: Set(serde_json::json!({})),
+                    description_html: Set(body.description_html.unwrap_or_default()),
+                    description_stripped: Set(None),
+                    description_binary: Set(None),
+                    priority: Set(body.priority.unwrap_or_else(|| "none".to_string())),
+                    state_id: Set(body.state_id),
+                    parent_id: Set(body.parent_id),
+                    project_id: Set(project_id),
+                    workspace_id: Set(workspace_id),
+                    type_id: Set(body.type_id),
+                    // `estimate_point` del payload DRF → columna `estimate_point_id`.
+                    estimate_point_id: Set(body.estimate_point),
+                    start_date: Set(body.start_date),
+                    target_date: Set(body.target_date),
+                    // Django default (draft.py DraftIssue model): sort_order=65535.0
+                    // si no viene; paridad exacta.
+                    sort_order: Set(body.sort_order.unwrap_or(65535.0)),
+                    completed_at: Set(None),
+                    external_source: Set(None),
+                    external_id: Set(None),
+                    created_by_id: Set(Some(user_id)),
+                    updated_by_id: Set(Some(user_id)),
+                    created_at: Set(chrono::Utc::now().into()),
+                    updated_at: Set(chrono::Utc::now().into()),
+                    deleted_at: Set(None),
+                };
+                let saved = new.insert(txn).await.map_err(AppError::Database)?;
+
+                sync_draft_assignees(
+                    txn,
+                    saved.id,
+                    project_id,
+                    workspace_id,
+                    user_id,
+                    &assignees,
+                )
+                .await?;
+                sync_draft_labels(
+                    txn,
+                    saved.id,
+                    project_id,
+                    workspace_id,
+                    user_id,
+                    &labels,
+                )
+                .await?;
+                if let Some(cid) = cycle_id {
+                    sync_draft_cycle(
+                        txn,
+                        saved.id,
+                        project_id,
+                        workspace_id,
+                        user_id,
+                        Some(cid),
+                    )
+                    .await?;
+                }
+                sync_draft_modules(
+                    txn,
+                    saved.id,
+                    project_id,
+                    workspace_id,
+                    user_id,
+                    &modules,
+                )
+                .await?;
+
+                Ok(saved)
+            })
+        })
+        .await
+        .map_err(|e| match e {
+            sea_orm::TransactionError::Transaction(app_err) => app_err,
+            sea_orm::TransactionError::Connection(db_err) => AppError::Database(db_err),
+        })?;
+
     let resp: DraftIssueResponse = saved.into();
     Ok((StatusCode::CREATED, Json(resp)))
 }
@@ -1618,44 +1953,138 @@ pub async fn update_draft_issue(
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
-    let mut active: draft_issues::ActiveModel = issue.into();
-    if let Some(v) = body.name {
-        active.name = Set(Some(v));
+    // Validación paridad con DraftIssueCreateSerializer.validate (draft.py:72-77).
+    // En PATCH comparamos el par efectivo: campo enviado si presente, si no
+    // el valor actual del draft.
+    let effective_start = body.start_date.or(issue.start_date);
+    let effective_target = body.target_date.or(issue.target_date);
+    if let (Some(start), Some(target)) = (effective_start, effective_target) {
+        if start > target {
+            return Err(AppError::BadRequest(
+                "Start date cannot exceed target date".into(),
+            ));
+        }
     }
-    if let Some(v) = body.description_html {
-        active.description_html = Set(v);
-    }
-    if let Some(v) = body.priority {
-        active.priority = Set(v);
-    }
-    if let Some(v) = body.state_id {
-        active.state_id = Set(Some(v));
-    }
-    if let Some(v) = body.parent_id {
-        active.parent_id = Set(Some(v));
-    }
-    if let Some(v) = body.project_id {
-        active.project_id = Set(Some(v));
-    }
-    if let Some(v) = body.type_id {
-        active.type_id = Set(Some(v));
-    }
-    if let Some(v) = body.estimate_point_id {
-        active.estimate_point_id = Set(Some(v));
-    }
-    if let Some(v) = body.start_date {
-        active.start_date = Set(Some(v));
-    }
-    if let Some(v) = body.target_date {
-        active.target_date = Set(Some(v));
-    }
-    if let Some(v) = body.sort_order {
-        active.sort_order = Set(v);
-    }
-    active.updated_at = Set(chrono::Utc::now().into());
-    active.updated_by_id = Set(Some(user_id));
 
-    active.update(db).await.map_err(AppError::Database)?;
+    // `project_id` efectivo para sincronizar las N-a-M (Django toma el
+    // del request si viene, si no el del draft — draft.py:168).
+    let effective_project_id = body.project_id.or(issue.project_id);
+    let workspace_id = ws.id;
+    let issue_id = issue.id;
+
+    use sea_orm::TransactionTrait;
+    db.transaction::<_, (), AppError>(|txn| {
+        // Build ActiveModel sync — espejo del patrón de issues.rs:update_issue
+        // (evita tener que mover `body` completo al async y lidiar con borrows
+        // parciales).
+        let mut active: draft_issues::ActiveModel = issue.into();
+        if let Some(v) = body.name.clone() {
+            active.name = Set(Some(v));
+        }
+        if let Some(v) = body.description_html.clone() {
+            active.description_html = Set(v);
+        }
+        if let Some(v) = body.priority.clone() {
+            active.priority = Set(v);
+        }
+        // Para los campos UUID simples: `deserialize_empty_as_none_uuid`
+        // ya colapsa `""` → `None`, así que `is_some()` detecta solo el
+        // caso de UUID válido presente. Paridad con issues.rs:update_issue.
+        if body.state_id.is_some() {
+            active.state_id = Set(body.state_id);
+        }
+        if body.parent_id.is_some() {
+            active.parent_id = Set(body.parent_id);
+        }
+        if body.project_id.is_some() {
+            active.project_id = Set(body.project_id);
+        }
+        if body.type_id.is_some() {
+            active.type_id = Set(body.type_id);
+        }
+        if body.estimate_point.is_some() {
+            active.estimate_point_id = Set(body.estimate_point);
+        }
+        if body.start_date.is_some() {
+            active.start_date = Set(body.start_date);
+        }
+        if body.target_date.is_some() {
+            active.target_date = Set(body.target_date);
+        }
+        if let Some(v) = body.sort_order {
+            active.sort_order = Set(v);
+        }
+        active.updated_at = Set(chrono::Utc::now().into());
+        active.updated_by_id = Set(Some(user_id));
+
+        // Extraer las N-a-M para el async block.
+        let assignees = body.assignee_ids.clone();
+        let labels = body.label_ids.clone();
+        let cycle_id = body.cycle_id;
+        let modules = body.module_ids.clone();
+
+        Box::pin(async move {
+            active.update(txn).await.map_err(AppError::Database)?;
+
+            // Sync N-a-M solo si el campo vino en el payload (paridad con
+            // `if assignees is not None` en draft.py:232,249).
+            if let Some(ref a) = assignees {
+                sync_draft_assignees(
+                    txn,
+                    issue_id,
+                    effective_project_id,
+                    workspace_id,
+                    user_id,
+                    a,
+                )
+                .await?;
+            }
+            if let Some(ref l) = labels {
+                sync_draft_labels(
+                    txn,
+                    issue_id,
+                    effective_project_id,
+                    workspace_id,
+                    user_id,
+                    l,
+                )
+                .await?;
+            }
+            // cycle_id: Some(Some(uuid))=asignar, Some(None)=desasignar,
+            // None=no tocar. Paridad con `if cycle_id != "not_provided"` en
+            // draft.py:266.
+            if let Some(cid) = cycle_id {
+                sync_draft_cycle(
+                    txn,
+                    issue_id,
+                    effective_project_id,
+                    workspace_id,
+                    user_id,
+                    cid,
+                )
+                .await?;
+            }
+            if let Some(ref m) = modules {
+                sync_draft_modules(
+                    txn,
+                    issue_id,
+                    effective_project_id,
+                    workspace_id,
+                    user_id,
+                    m,
+                )
+                .await?;
+            }
+
+            Ok(())
+        })
+    })
+    .await
+    .map_err(|e| match e {
+        sea_orm::TransactionError::Transaction(app_err) => app_err,
+        sea_orm::TransactionError::Connection(db_err) => AppError::Database(db_err),
+    })?;
+
     Ok(StatusCode::NO_CONTENT)
 }
 
