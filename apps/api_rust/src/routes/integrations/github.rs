@@ -141,42 +141,64 @@ async fn github_app_callback_inner(
     });
     let config = serde_json::json!({ "installation_id": installation_id });
 
-    let existing = workspace_integrations::Entity::find()
-        .filter(workspace_integrations::Column::WorkspaceId.eq(workspace.id))
-        .filter(workspace_integrations::Column::IntegrationId.eq(integration.id))
-        .filter(workspace_integrations::Column::DeletedAt.is_null())
-        .one(&state.db)
-        .await?;
+    // Antipatron corregido: el SELECT + INSERT/UPDATE debe ejecutarse dentro de
+    // una transaccion SERIALIZABLE para eliminar la race condition TOCTOU.
+    // Django usa update_or_create dentro de transaction.atomic() + captura
+    // IntegrityError como fallback. Aqui replicamos ese contrato de forma segura.
+    state
+        .db
+        .transaction_with_config::<_, (), anyhow::Error>(
+            |txn| {
+                let metadata = metadata.clone();
+                let config = config.clone();
+                let workspace_id = workspace.id;
+                let integration_id = integration.id;
+                let api_token_id = api_token.id;
+                Box::pin(async move {
+                    let existing = workspace_integrations::Entity::find()
+                        .filter(workspace_integrations::Column::WorkspaceId.eq(workspace_id))
+                        .filter(workspace_integrations::Column::IntegrationId.eq(integration_id))
+                        .filter(workspace_integrations::Column::DeletedAt.is_null())
+                        .one(txn)
+                        .await?;
 
-    let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
+                    let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
 
-    if let Some(wi) = existing {
-        let mut am: workspace_integrations::ActiveModel = wi.into();
-        am.metadata = Set(metadata);
-        am.config = Set(config);
-        am.actor_id = Set(actor_id);
-        am.api_token_id = Set(api_token.id);
-        // Django: TimeAuditModel auto_now=True.
-        am.updated_at = Set(now);
-        am.update(&state.db).await?;
-    } else {
-        // created_at/updated_at explÃ­citos (NOT NULL sin DEFAULT).
-        workspace_integrations::ActiveModel {
-            id: Set(Uuid::new_v4()),
-            workspace_id: Set(workspace.id),
-            integration_id: Set(integration.id),
-            actor_id: Set(actor_id),
-            api_token_id: Set(api_token.id),
-            metadata: Set(metadata),
-            config: Set(config),
-            created_at: Set(now),
-            updated_at: Set(now),
-            deleted_at: Set(None),
-            ..Default::default()
-        }
-        .insert(&state.db)
+                    if let Some(wi) = existing {
+                        let mut am: workspace_integrations::ActiveModel = wi.into();
+                        am.metadata = Set(metadata);
+                        am.config = Set(config);
+                        am.actor_id = Set(actor_id);
+                        am.api_token_id = Set(api_token_id);
+                        // Django: TimeAuditModel auto_now=True.
+                        am.updated_at = Set(now);
+                        am.update(txn).await?;
+                    } else {
+                        // created_at/updated_at explicitos (NOT NULL sin DEFAULT).
+                        workspace_integrations::ActiveModel {
+                            id: Set(Uuid::new_v4()),
+                            workspace_id: Set(workspace_id),
+                            integration_id: Set(integration_id),
+                            actor_id: Set(actor_id),
+                            api_token_id: Set(api_token_id),
+                            metadata: Set(metadata),
+                            config: Set(config),
+                            created_at: Set(now),
+                            updated_at: Set(now),
+                            deleted_at: Set(None),
+                            ..Default::default()
+                        }
+                        .insert(txn)
+                        .await?;
+                    }
+
+                    Ok(())
+                })
+            },
+            Some(sea_orm::IsolationLevel::Serializable),
+            None,
+        )
         .await?;
-    }
 
     Ok(())
 }
