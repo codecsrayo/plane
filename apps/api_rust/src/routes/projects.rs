@@ -284,6 +284,13 @@ pub struct CreateProjectRequest {
     pub project_lead_id: Option<Uuid>,
     pub default_assignee_id: Option<Uuid>,
     pub timezone: Option<String>,
+    // Paridad Django: ProjectSerializer usa `fields = "__all__"` con
+    // `read_only_fields = ["workspace", "deleted_at"]`, por lo que acepta
+    // logo_props / cover_image / cover_image_asset en el body de POST.
+    // Referencia: apps/api/plane/app/serializers/project.py:30-37.
+    pub logo_props: Option<serde_json::Value>,
+    pub cover_image: Option<String>,
+    pub cover_image_asset_id: Option<Uuid>,
 }
 
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
@@ -302,6 +309,12 @@ pub struct UpdateProjectRequest {
     pub intake_view: Option<bool>,
     pub is_time_tracking_enabled: Option<bool>,
     pub cover_image: Option<String>,
+    // Paridad Django: ProjectSerializer (partial_update con partial=True)
+    // acepta logo_props y cover_image_asset en PATCH — fields = "__all__"
+    // cubre ambos y ninguno está en read_only_fields.
+    // Referencia: apps/api/plane/app/views/project/base.py:344-349.
+    pub logo_props: Option<serde_json::Value>,
+    pub cover_image_asset_id: Option<Uuid>,
     pub archive_in: Option<i32>,
     pub close_in: Option<i32>,
     pub guest_view_all_features: Option<bool>,
@@ -890,9 +903,11 @@ pub async fn create_project(
         workspace_id: Set(ws.id),
         emoji: Set(body.emoji),
         icon_prop: Set(None),
-        logo_props: Set(serde_json::json!({})),
-        cover_image: Set(None),
-        cover_image_asset_id: Set(None),
+        // Paridad Django: campos opcionales en POST, default server-side
+        // cuando el cliente no los envía (JSONField default=dict / null).
+        logo_props: Set(body.logo_props.clone().unwrap_or_else(|| serde_json::json!({}))),
+        cover_image: Set(body.cover_image.clone()),
+        cover_image_asset_id: Set(body.cover_image_asset_id),
         default_assignee_id: Set(body.default_assignee_id),
         project_lead_id: Set(body.project_lead_id),
         default_state_id: Set(None),
@@ -1135,6 +1150,8 @@ pub async fn update_project(
     if let Some(v) = body.intake_view { active.intake_view = Set(v); }
     if let Some(v) = body.is_time_tracking_enabled { active.is_time_tracking_enabled = Set(v); }
     if let Some(v) = body.cover_image { active.cover_image = Set(Some(v)); }
+    if let Some(v) = body.cover_image_asset_id { active.cover_image_asset_id = Set(Some(v)); }
+    if let Some(v) = body.logo_props { active.logo_props = Set(v); }
     if let Some(v) = body.archive_in { active.archive_in = Set(v); }
     if let Some(v) = body.close_in { active.close_in = Set(v); }
     if let Some(v) = body.guest_view_all_features { active.guest_view_all_features = Set(v); }
