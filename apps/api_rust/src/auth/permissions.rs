@@ -15,6 +15,17 @@ pub fn require_workspace_admin(member: &workspace_members::Model) -> Result<(), 
     }
 }
 
+/// Verifica que el miembro tenga rol Member o superior (Member, Admin).
+/// Equivalente a `@allow_permission([ROLE.ADMIN, ROLE.MEMBER], level="WORKSPACE")`
+/// en la API de Django — usado en endpoints de sólo lectura de integraciones.
+pub fn require_workspace_member(member: &workspace_members::Model) -> Result<(), AppError> {
+    if member.role >= ROLE_MEMBER {
+        Ok(())
+    } else {
+        Err(AppError::Forbidden)
+    }
+}
+
 pub fn require_role(
     project_role: i16,
     workspace_role: i16,
