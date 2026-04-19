@@ -184,7 +184,7 @@ tasks:
   compose:watch:
     desc: Watch and sync changes for selected development services
     cmds:
-      - docker compose -f docker-compose-dev.yml watch web admin space live
+      - docker compose -f docker-compose-dev.yml watch web admin space live home
 
   rust:clean:
     desc: Clean Rust build artifacts for the API and migration crates
@@ -292,7 +292,7 @@ tasks:
   compose:up-watch:
     desc: Start key development services with Compose watch enabled
     cmds:
-      - docker compose -f docker-compose-dev.yml up --watch web admin space live
+      - docker compose -f docker-compose-dev.yml up --watch web admin space live home
 
   prod:up:
     desc: Start production containers in detached mode
