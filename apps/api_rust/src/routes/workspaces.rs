@@ -807,6 +807,73 @@ pub async fn delete_workspace(
         .await
         .map_err(AppError::Database)?;
 
+    // ── Cascada soft-delete acotada ───────────────────────────────────────
+    //
+    // Soft-deletea dependencias directas del workspace para mantener la
+    // invisibilidad que asumen los endpoints de listado y los helpers —
+    // auditados: list_workspaces, list_user_workspaces, list_members,
+    // list_invitations, list_projects, list_projects_detail,
+    // list_project_members, list_project_invitations + workspace_by_slug,
+    // require_workspace_member, project_by_id, project_member_for_user
+    // (todos filtran con `.active()`).
+    //
+    // Paridad PARCIAL con Django: destroy() llama super().destroy() que
+    // dispara `soft_delete_related_objects.delay(...)` — un job Celery
+    // reflexivo y recursivo (apps/api/plane/bgtasks/deletion_task.py:17)
+    // que también recorre las reverse relations transitivas de `projects`
+    // (issues, cycles, modules, pages, views, labels, states, ...).
+    //
+    // Aquí aplicamos sólo el primer nivel: workspace_members,
+    // workspace_member_invites, projects, project_members. El resto
+    // (issues/cycles/etc.) no necesita marcarse porque sus endpoints
+    // pasan por project_by_id → workspace_by_slug, que ya filtran
+    // `.active()` en niveles superiores: nada accesible vía API sobrevive
+    // a este soft-delete. La purga completa de filas huérfanas la hace
+    // el hard-delete job (paridad con Django `hard_delete`).
+    //
+    // Usamos `col_expr(DeletedAt, ...)` igual que el update de profiles
+    // arriba: mirror exacto del `QuerySet.update()` de Django — NO
+    // dispara `updated_at` bump (apps/api/plane/db/mixins.py:20). El
+    // filtro `DeletedAt.is_null()` preserva el timestamp histórico de
+    // filas que ya estaban soft-deleted antes de este delete (p.ej.
+    // un member removido hace meses mantiene su `deleted_at` original).
+    let now_expr = Expr::value(Some(now));
+
+    workspace_members::Entity::update_many()
+        .col_expr(workspace_members::Column::DeletedAt, now_expr.clone())
+        .filter(workspace_members::Column::WorkspaceId.eq(ws_id))
+        .filter(workspace_members::Column::DeletedAt.is_null())
+        .exec(&txn)
+        .await
+        .map_err(AppError::Database)?;
+
+    workspace_member_invites::Entity::update_many()
+        .col_expr(
+            workspace_member_invites::Column::DeletedAt,
+            now_expr.clone(),
+        )
+        .filter(workspace_member_invites::Column::WorkspaceId.eq(ws_id))
+        .filter(workspace_member_invites::Column::DeletedAt.is_null())
+        .exec(&txn)
+        .await
+        .map_err(AppError::Database)?;
+
+    project_members::Entity::update_many()
+        .col_expr(project_members::Column::DeletedAt, now_expr.clone())
+        .filter(project_members::Column::WorkspaceId.eq(ws_id))
+        .filter(project_members::Column::DeletedAt.is_null())
+        .exec(&txn)
+        .await
+        .map_err(AppError::Database)?;
+
+    projects::Entity::update_many()
+        .col_expr(projects::Column::DeletedAt, now_expr)
+        .filter(projects::Column::WorkspaceId.eq(ws_id))
+        .filter(projects::Column::DeletedAt.is_null())
+        .exec(&txn)
+        .await
+        .map_err(AppError::Database)?;
+
     let mut active: workspaces::ActiveModel = ws.into();
     active.deleted_at = Set(Some(now));
     active.updated_at = Set(now);
