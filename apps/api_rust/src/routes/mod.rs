@@ -1301,7 +1301,9 @@ pub fn build_router(state: AppState) -> Router {
         )
         .route(
             "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/comments/{pk}",
-            patch(issue_extras::update_comment).delete(issue_extras::delete_comment),
+            get(issue_extras::get_comment)
+                .patch(issue_extras::update_comment)
+                .delete(issue_extras::delete_comment),
         )
         .route(
             "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/reactions",
@@ -1459,7 +1461,29 @@ pub fn build_router(state: AppState) -> Router {
         // ── Issue archive / unarchive ─────────────────────────────────────────
         .route(
             "/workspaces/{slug}/projects/{project_id}/issues/{pk}/archive",
-            post(issue_extras2::archive_issue).delete(issue_extras2::unarchive_issue),
+            get(issue_extras2::get_archived_issue)
+                .post(issue_extras2::archive_issue)
+                .delete(issue_extras2::unarchive_issue),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/archived-issues",
+            get(issue_extras2::list_archived_issues),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/deleted-issues",
+            get(issue_extras2::list_deleted_issues),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/bulk-delete-issues",
+            delete(issue_extras2::bulk_delete_issues),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/meta",
+            get(issue_extras2::get_issue_meta),
+        )
+        .route(
+            "/workspaces/{slug}/work-items/{combined}",
+            get(issue_extras2::get_issue_by_identifier),
         )
         .route(
             "/workspaces/{slug}/projects/{project_id}/bulk-archive-issues",
