@@ -120,6 +120,18 @@ pub mod instances;
         projects::list_project_invitations,
         projects::create_project_invitations,
         projects::delete_project_invitation,
+        projects::get_project_invitation,
+        projects::get_project_member,
+        projects::create_project_members,
+        projects::leave_project,
+        projects::update_project_views,
+        projects::list_project_favorites,
+        projects::create_project_favorite,
+        projects::delete_project_favorite,
+        projects::archive_project,
+        projects::unarchive_project,
+        projects::check_project_identifier,
+        projects::delete_project_identifier,
         states::list_states,
         states::get_state,
         states::create_state,
@@ -701,11 +713,14 @@ pub fn build_router(state: AppState) -> Router {
         )
         .route(
             "/workspaces/{slug}/projects/{project_id}/members",
-            get(projects::list_project_members),
+            get(projects::list_project_members)
+                .post(projects::create_project_members),
         )
         .route(
             "/workspaces/{slug}/projects/{project_id}/members/{pk}",
-            patch(projects::update_project_member).delete(projects::remove_project_member),
+            get(projects::get_project_member)
+                .patch(projects::update_project_member)
+                .delete(projects::remove_project_member),
         )
         // Django URL: `workspaces/<slug>/projects/<project_id>/project-members/me/`
         // (`apps/api/plane/app/urls/project.py:98-100`). Devuelve el ProjectMember
@@ -714,6 +729,36 @@ pub fn build_router(state: AppState) -> Router {
         .route(
             "/workspaces/{slug}/projects/{project_id}/project-members/me",
             get(projects::get_project_member_me),
+        )
+        // Mirror Django: /members/leave/ (literal antes que /{pk}/)
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/members/leave",
+            post(projects::leave_project),
+        )
+        // Mirror Django: /project-views/
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/project-views",
+            post(projects::update_project_views),
+        )
+        // Mirror Django: /archive/
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/archive",
+            post(projects::archive_project).delete(projects::unarchive_project),
+        )
+        // Mirror Django: /user-favorite-projects/
+        .route(
+            "/workspaces/{slug}/user-favorite-projects",
+            get(projects::list_project_favorites).post(projects::create_project_favorite),
+        )
+        .route(
+            "/workspaces/{slug}/user-favorite-projects/{project_id}",
+            delete(projects::delete_project_favorite),
+        )
+        // Mirror Django: /project-identifiers/
+        .route(
+            "/workspaces/{slug}/project-identifiers",
+            get(projects::check_project_identifier).delete(projects::delete_project_identifier),
+        )
         )
         // Django URL: `workspaces/<slug>/projects/<project_id>/user-properties/`
         // (`apps/api/plane/app/urls/issue.py:216-219`). GET hace get_or_create
@@ -730,7 +775,8 @@ pub fn build_router(state: AppState) -> Router {
         )
         .route(
             "/workspaces/{slug}/projects/{project_id}/invitations/{pk}",
-            delete(projects::delete_project_invitation),
+            get(projects::get_project_invitation)
+                .delete(projects::delete_project_invitation),
         )
         // ── States (Fase 3) ──────────────────────────────────────────────────
         .route(
