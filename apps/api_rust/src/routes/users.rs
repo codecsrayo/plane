@@ -38,7 +38,8 @@ use uuid::Uuid;
 use crate::{
     auth::any_auth::{AnyAuth, OptionalAnyAuth},
     entities::{
-        accounts, issue_activities, issues, profiles, project_members, projects, users,
+        accounts, issue_activities, issue_assignees, issues, profiles,
+        project_members, projects, states, users,
         workspace_member_invites, workspace_members, workspaces,
     },
     error::AppError,
@@ -1514,4 +1515,420 @@ pub async fn get_my_activities(
 
     let body = pagination::build_response(results, total_count, limit, cursor.offset);
     Ok((StatusCode::OK, Json(body)))
+}
+
+
+// ─── GET /users/me/workspaces/{slug}/activity-graph/ ─────────────────────────
+
+/// Actividad del usuario en el workspace agrupada por fecha (últimos 6 meses).
+///
+/// Espejo de `UserActivityGraphEndpoint`
+/// (`apps/api/plane/app/views/workspace/user.py`).
+#[utoipa::path(
+    get,
+    path = "/api/users/me/workspaces/{slug}/activity-graph/",
+    tag = "Users",
+    params(("slug" = String, Path, description = "Workspace slug")),
+    security(("TokenAuth" = []))
+)]
+pub async fn get_activity_graph(
+    State(state): State<AppState>,
+    AnyAuth(user): AnyAuth,
+    Path(slug): Path<String>,
+) -> Result<Json<Vec<serde_json::Value>>, AppError> {
+    use sea_orm::{FromQueryResult, Statement};
+    use sea_orm::ConnectionTrait;
+
+    let ws = workspaces::Entity::find()
+        .active()
+        .filter(workspaces::Column::Slug.eq(&slug))
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    #[derive(FromQueryResult)]
+    struct ActivityRow {
+        created_date: chrono::NaiveDate,
+        activity_count: i64,
+    }
+
+    let rows = ActivityRow::find_by_statement(Statement::from_sql_and_values(
+        sea_orm::DatabaseBackend::Postgres,
+        r#"
+        SELECT
+            DATE(created_at) AS created_date,
+            COUNT(*) AS activity_count
+        FROM issue_activities
+        WHERE actor_id = $1
+          AND workspace_id = $2
+          AND created_at::date >= CURRENT_DATE - INTERVAL '6 months'
+          AND deleted_at IS NULL
+        GROUP BY DATE(created_at)
+        ORDER BY created_date
+        "#,
+        vec![
+            sea_orm::Value::Uuid(Some(Box::new(user.id))),
+            sea_orm::Value::Uuid(Some(Box::new(ws.id))),
+        ],
+    ))
+    .all(&state.db)
+    .await
+    .map_err(AppError::Database)?;
+
+    let result = rows
+        .into_iter()
+        .map(|r| serde_json::json!({
+            "created_date": r.created_date.to_string(),
+            "activity_count": r.activity_count,
+        }))
+        .collect();
+
+    Ok(Json(result))
+}
+
+// ─── GET /users/me/workspaces/{slug}/issues-completed-graph/ ─────────────────
+
+/// Issues completados por el usuario en el workspace agrupados por semana del mes.
+///
+/// Espejo de `UserIssueCompletedGraphEndpoint`
+/// (`apps/api/plane/app/views/workspace/user.py`).
+#[utoipa::path(
+    get,
+    path = "/api/users/me/workspaces/{slug}/issues-completed-graph/",
+    tag = "Users",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("month" = Option<i32>, Query, description = "Mes (1-12, default 1)"),
+    ),
+    security(("TokenAuth" = []))
+)]
+pub async fn get_issues_completed_graph(
+    State(state): State<AppState>,
+    AnyAuth(user): AnyAuth,
+    Path(slug): Path<String>,
+    Query(params): Query<std::collections::HashMap<String, String>>,
+) -> Result<Json<Vec<serde_json::Value>>, AppError> {
+    use sea_orm::{FromQueryResult, Statement};
+    use sea_orm::ConnectionTrait;
+
+    let month: i32 = params.get("month")
+        .and_then(|m| m.parse().ok())
+        .unwrap_or(1)
+        .clamp(1, 12);
+
+    let ws = workspaces::Entity::find()
+        .active()
+        .filter(workspaces::Column::Slug.eq(&slug))
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    #[derive(FromQueryResult)]
+    struct CompletedRow {
+        week: i32,
+        completed_count: i64,
+    }
+
+    // Espejo Django: week = EXTRACT(WEEK FROM completed_at) % 4
+    let rows = CompletedRow::find_by_statement(Statement::from_sql_and_values(
+        sea_orm::DatabaseBackend::Postgres,
+        r#"
+        SELECT
+            (EXTRACT(WEEK FROM i.completed_at)::int % 4) AS week,
+            COUNT(*) AS completed_count
+        FROM issues i
+        INNER JOIN issue_assignees ia
+            ON ia.issue_id = i.id
+           AND ia.assignee_id = $1
+           AND ia.deleted_at IS NULL
+        WHERE i.workspace_id = $2
+          AND EXTRACT(MONTH FROM i.completed_at) = $3
+          AND i.completed_at IS NOT NULL
+          AND i.deleted_at IS NULL
+        GROUP BY (EXTRACT(WEEK FROM i.completed_at)::int % 4)
+        ORDER BY week
+        "#,
+        vec![
+            sea_orm::Value::Uuid(Some(Box::new(user.id))),
+            sea_orm::Value::Uuid(Some(Box::new(ws.id))),
+            sea_orm::Value::Int(Some(month)),
+        ],
+    ))
+    .all(&state.db)
+    .await
+    .map_err(AppError::Database)?;
+
+    let result = rows
+        .into_iter()
+        .map(|r| serde_json::json!({
+            "week": r.week,
+            "completed_count": r.completed_count,
+        }))
+        .collect();
+
+    Ok(Json(result))
+}
+
+// ─── GET /users/me/workspaces/{slug}/dashboard/ ───────────────────────────────
+
+/// Dashboard del usuario: actividad reciente + issues completados + estadísticas.
+///
+/// Espejo de `UserWorkspaceDashboardEndpoint`
+/// (`apps/api/plane/app/views/workspace/base.py`).
+#[utoipa::path(
+    get,
+    path = "/api/users/me/workspaces/{slug}/dashboard/",
+    tag = "Users",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("month" = Option<i32>, Query, description = "Mes para issues completados"),
+    ),
+    security(("TokenAuth" = []))
+)]
+pub async fn get_workspace_dashboard(
+    State(state): State<AppState>,
+    AnyAuth(user): AnyAuth,
+    Path(slug): Path<String>,
+    Query(params): Query<std::collections::HashMap<String, String>>,
+) -> Result<Json<serde_json::Value>, AppError> {
+    use sea_orm::{FromQueryResult, Statement};
+    use sea_orm::ConnectionTrait;
+
+    let month: i32 = params.get("month")
+        .and_then(|m| m.parse().ok())
+        .unwrap_or(1)
+        .clamp(1, 12);
+
+    let ws = workspaces::Entity::find()
+        .active()
+        .filter(workspaces::Column::Slug.eq(&slug))
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    // ── Actividad reciente (últimos 3 meses) ─────────────────────────────────
+    #[derive(FromQueryResult)]
+    struct ActivityRow {
+        created_date: chrono::NaiveDate,
+        activity_count: i64,
+    }
+    let issue_activities = ActivityRow::find_by_statement(Statement::from_sql_and_values(
+        sea_orm::DatabaseBackend::Postgres,
+        r#"
+        SELECT DATE(created_at) AS created_date, COUNT(*) AS activity_count
+        FROM issue_activities
+        WHERE actor_id = $1 AND workspace_id = $2
+          AND created_at::date >= CURRENT_DATE - INTERVAL '3 months'
+          AND deleted_at IS NULL
+        GROUP BY DATE(created_at)
+        ORDER BY created_date
+        "#,
+        vec![
+            sea_orm::Value::Uuid(Some(Box::new(user.id))),
+            sea_orm::Value::Uuid(Some(Box::new(ws.id))),
+        ],
+    ))
+    .all(&state.db)
+    .await
+    .map_err(AppError::Database)?;
+
+    // ── Issues completados este mes (por semana) ──────────────────────────────
+    #[derive(FromQueryResult)]
+    struct CompletedRow { week: i32, completed_count: i64 }
+    let completed_issues = CompletedRow::find_by_statement(Statement::from_sql_and_values(
+        sea_orm::DatabaseBackend::Postgres,
+        r#"
+        SELECT
+            ((EXTRACT(DAY FROM i.completed_at)::int - 1) / 7 + 1) AS week,
+            COUNT(*) AS completed_count
+        FROM issues i
+        INNER JOIN issue_assignees ia ON ia.issue_id = i.id AND ia.assignee_id = $1 AND ia.deleted_at IS NULL
+        WHERE i.workspace_id = $2
+          AND EXTRACT(MONTH FROM i.completed_at) = $3
+          AND i.completed_at IS NOT NULL AND i.deleted_at IS NULL
+        GROUP BY ((EXTRACT(DAY FROM i.completed_at)::int - 1) / 7 + 1)
+        ORDER BY week
+        "#,
+        vec![
+            sea_orm::Value::Uuid(Some(Box::new(user.id))),
+            sea_orm::Value::Uuid(Some(Box::new(ws.id))),
+            sea_orm::Value::Int(Some(month)),
+        ],
+    ))
+    .all(&state.db)
+    .await
+    .map_err(AppError::Database)?;
+
+    // ── Conteos de issues ─────────────────────────────────────────────────────
+    #[derive(FromQueryResult)]
+    struct CountRow { total: i64 }
+
+    let assigned_total = CountRow::find_by_statement(Statement::from_sql_and_values(
+        sea_orm::DatabaseBackend::Postgres,
+        r#"SELECT COUNT(DISTINCT i.id) AS total FROM issues i
+           INNER JOIN issue_assignees ia ON ia.issue_id = i.id AND ia.assignee_id = $1 AND ia.deleted_at IS NULL
+           WHERE i.workspace_id = $2 AND i.deleted_at IS NULL"#,
+        vec![sea_orm::Value::Uuid(Some(Box::new(user.id))), sea_orm::Value::Uuid(Some(Box::new(ws.id)))],
+    )).one(&state.db).await.map_err(AppError::Database)?
+      .map(|r| r.total).unwrap_or(0);
+
+    let pending_total = CountRow::find_by_statement(Statement::from_sql_and_values(
+        sea_orm::DatabaseBackend::Postgres,
+        r#"SELECT COUNT(DISTINCT i.id) AS total FROM issues i
+           INNER JOIN issue_assignees ia ON ia.issue_id = i.id AND ia.assignee_id = $1 AND ia.deleted_at IS NULL
+           INNER JOIN states s ON s.id = i.state_id
+           WHERE i.workspace_id = $2 AND i.deleted_at IS NULL
+             AND s.group NOT IN ('completed', 'cancelled')"#,
+        vec![sea_orm::Value::Uuid(Some(Box::new(user.id))), sea_orm::Value::Uuid(Some(Box::new(ws.id)))],
+    )).one(&state.db).await.map_err(AppError::Database)?
+      .map(|r| r.total).unwrap_or(0);
+
+    let completed_total = CountRow::find_by_statement(Statement::from_sql_and_values(
+        sea_orm::DatabaseBackend::Postgres,
+        r#"SELECT COUNT(DISTINCT i.id) AS total FROM issues i
+           INNER JOIN issue_assignees ia ON ia.issue_id = i.id AND ia.assignee_id = $1 AND ia.deleted_at IS NULL
+           INNER JOIN states s ON s.id = i.state_id
+           WHERE i.workspace_id = $2 AND i.deleted_at IS NULL AND s.group = 'completed'"#,
+        vec![sea_orm::Value::Uuid(Some(Box::new(user.id))), sea_orm::Value::Uuid(Some(Box::new(ws.id)))],
+    )).one(&state.db).await.map_err(AppError::Database)?
+      .map(|r| r.total).unwrap_or(0);
+
+    let issues_due_week = CountRow::find_by_statement(Statement::from_sql_and_values(
+        sea_orm::DatabaseBackend::Postgres,
+        r#"SELECT COUNT(DISTINCT i.id) AS total FROM issues i
+           INNER JOIN issue_assignees ia ON ia.issue_id = i.id AND ia.assignee_id = $1 AND ia.deleted_at IS NULL
+           WHERE i.workspace_id = $2 AND i.deleted_at IS NULL
+             AND EXTRACT(WEEK FROM i.target_date) = EXTRACT(WEEK FROM CURRENT_DATE)"#,
+        vec![sea_orm::Value::Uuid(Some(Box::new(user.id))), sea_orm::Value::Uuid(Some(Box::new(ws.id)))],
+    )).one(&state.db).await.map_err(AppError::Database)?
+      .map(|r| r.total).unwrap_or(0);
+
+    // ── State distribution ────────────────────────────────────────────────────
+    #[derive(FromQueryResult)]
+    struct StateDistRow { state_group: String, state_count: i64 }
+    let state_distribution = StateDistRow::find_by_statement(Statement::from_sql_and_values(
+        sea_orm::DatabaseBackend::Postgres,
+        r#"SELECT s.group AS state_group, COUNT(DISTINCT i.id) AS state_count
+           FROM issues i
+           INNER JOIN issue_assignees ia ON ia.issue_id = i.id AND ia.assignee_id = $1 AND ia.deleted_at IS NULL
+           INNER JOIN states s ON s.id = i.state_id
+           WHERE i.workspace_id = $2 AND i.deleted_at IS NULL
+           GROUP BY s.group ORDER BY s.group"#,
+        vec![sea_orm::Value::Uuid(Some(Box::new(user.id))), sea_orm::Value::Uuid(Some(Box::new(ws.id)))],
+    )).all(&state.db).await.map_err(AppError::Database)?;
+
+    Ok(Json(serde_json::json!({
+        "issue_activities": issue_activities.iter().map(|r| serde_json::json!({
+            "created_date": r.created_date.to_string(),
+            "activity_count": r.activity_count,
+        })).collect::<Vec<_>>(),
+        "completed_issues": completed_issues.iter().map(|r| serde_json::json!({
+            "week_in_month": r.week,
+            "completed_count": r.completed_count,
+        })).collect::<Vec<_>>(),
+        "assigned_issues_count": assigned_total,
+        "pending_issues_count": pending_total,
+        "completed_issues_count": completed_total,
+        "issues_due_week": issues_due_week,
+        "state_distribution": state_distribution.iter().map(|r| serde_json::json!({
+            "state_group": r.state_group,
+            "state_count": r.state_count,
+        })).collect::<Vec<_>>(),
+    })))
+}
+
+// ─── GET /users/last-visited-workspace/ ──────────────────────────────────────
+
+/// Retorna el último workspace visitado por el usuario con sus proyectos.
+///
+/// Espejo de `UserLastProjectWithWorkspaceEndpoint`
+/// (`apps/api/plane/app/views/workspace/user.py`).
+#[utoipa::path(
+    get,
+    path = "/api/users/last-visited-workspace/",
+    tag = "Users",
+    security(("TokenAuth" = []))
+)]
+pub async fn get_last_workspace(
+    State(state): State<AppState>,
+    AnyAuth(user): AnyAuth,
+) -> Result<Json<serde_json::Value>, AppError> {
+    // Leer last_workspace_id del perfil del usuario
+    use crate::entities::profiles;
+    let profile = profiles::Entity::find()
+        .filter(profiles::Column::UserId.eq(user.id))
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    let last_workspace_id = profile.and_then(|p| p.last_workspace_id);
+
+    let Some(ws_id) = last_workspace_id else {
+        return Ok(Json(serde_json::json!({
+            "workspace_details": {},
+            "project_details": [],
+        })));
+    };
+
+    let workspace = workspaces::Entity::find_by_id(ws_id)
+        .active()
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    let Some(ws) = workspace else {
+        return Ok(Json(serde_json::json!({
+            "workspace_details": {},
+            "project_details": [],
+        })));
+    };
+
+    let members = project_members::Entity::find()
+        .active()
+        .filter(project_members::Column::WorkspaceId.eq(ws_id))
+        .filter(project_members::Column::MemberId.eq(user.id))
+        .filter(project_members::Column::IsActive.eq(true))
+        .all(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    let project_ids: Vec<uuid::Uuid> = members.iter().map(|m| m.project_id).collect();
+    let projects_list = if project_ids.is_empty() {
+        vec![]
+    } else {
+        projects::Entity::find()
+            .active()
+            .filter(projects::Column::Id.is_in(project_ids))
+            .all(&state.db)
+            .await
+            .map_err(AppError::Database)?
+    };
+
+    let project_details: Vec<serde_json::Value> = members.iter().map(|m| {
+        let proj = projects_list.iter().find(|p| p.id == m.project_id);
+        serde_json::json!({
+            "id": m.id,
+            "member_id": m.member_id,
+            "role": m.role,
+            "project": proj.as_ref().map(|p| serde_json::json!({
+                "id": p.id,
+                "name": p.name,
+                "identifier": p.identifier,
+                "workspace_id": p.workspace_id,
+            })),
+        })
+    }).collect();
+
+    Ok(Json(serde_json::json!({
+        "workspace_details": {
+            "id": ws.id,
+            "name": ws.name,
+            "slug": ws.slug,
+            "owner_id": ws.owner_id,
+        },
+        "project_details": project_details,
+    })))
 }
