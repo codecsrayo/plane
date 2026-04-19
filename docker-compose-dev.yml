@@ -89,15 +89,39 @@ services:
       - traefik.enable=true
       - traefik.docker.network=${TRAEFIK_PUBLIC_NETWORK:-proyectos-bi-quare}
       - traefik.http.middlewares.plane-codecsrayo-https.redirectscheme.scheme=https
-      - traefik.http.routers.plane-codecsrayo-http.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && (PathPrefix(`/app`) || PathPrefix(`/@`) || PathPrefix(`/__`))
+
+      # Middleware: strip /app antes de forward al Vite dev server.
+      # Vite no tiene `base` configurado -> espera paths desde "/".
+      - traefik.http.middlewares.plane-codecsrayo-strip-app.stripprefix.prefixes=/app
+
+      # Router principal /app (p=100): HTTP->HTTPS redirect
+      - traefik.http.routers.plane-codecsrayo-http.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && PathPrefix(`/app`)
       - traefik.http.routers.plane-codecsrayo-http.entrypoints=web
       - traefik.http.routers.plane-codecsrayo-http.middlewares=plane-codecsrayo-https
-      - traefik.http.routers.plane-codecsrayo.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && (PathPrefix(`/app`) || PathPrefix(`/@`) || PathPrefix(`/__`))
+      # Router principal /app (p=100): HTTPS con StripPrefix
+      - traefik.http.routers.plane-codecsrayo.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && PathPrefix(`/app`)
       - traefik.http.routers.plane-codecsrayo.entrypoints=websecure
       - traefik.http.routers.plane-codecsrayo.tls=true
       - traefik.http.routers.plane-codecsrayo.tls.certresolver=netlify
+      - traefik.http.routers.plane-codecsrayo.middlewares=plane-codecsrayo-strip-app
       - traefik.http.routers.plane-codecsrayo.priority=100
       - traefik.http.services.plane-codecsrayo.loadbalancer.server.port=3000
+
+      # Router de assets del dev server (p=10).
+      # Vite sirve CSS/JS/fuentes con paths raiz sin prefijo /app:
+      #   /@vite/client, /__vite_hmr  -> cliente HMR de Vite
+      #   /node_modules/.vite/deps/   -> deps pre-bundleadas
+      #   /styles/                    -> CSS globales
+      #   /core/, /helpers/           -> codigo fuente de la app
+      #   /public/                    -> assets estaticos
+      # Prioridad 10: mayor que home (2), menor que api/auth/admin/spaces (100).
+      # No necesita StripPrefix: los paths ya son correctos para Vite.
+      - traefik.http.routers.plane-codecsrayo-assets.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && (PathPrefix(`/@`) || PathPrefix(`/__`) || PathPrefix(`/node_modules`) || PathPrefix(`/styles`) || PathPrefix(`/core`) || PathPrefix(`/helpers`) || PathPrefix(`/public`))
+      - traefik.http.routers.plane-codecsrayo-assets.entrypoints=websecure
+      - traefik.http.routers.plane-codecsrayo-assets.tls=true
+      - traefik.http.routers.plane-codecsrayo-assets.tls.certresolver=netlify
+      - traefik.http.routers.plane-codecsrayo-assets.priority=10
+      - traefik.http.routers.plane-codecsrayo-assets.service=plane-codecsrayo
     develop:
       watch:
         - action: sync

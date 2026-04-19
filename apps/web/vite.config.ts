@@ -14,27 +14,23 @@ const viteEnv = Object.keys(process.env)
     return a;
   }, {});
 
-// `base` debe coincidir con VITE_WEB_BASE_PATH ("/app") para que todos los
-// assets del bundle de cliente (CSS, JS, /node_modules/.vite/deps/…) se sirvan
-// bajo /app/* y coincidan con la regla PathPrefix(`/app`) de Traefik.
+// NO se configura `base` aqui intencionalmente.
 //
-// Sin este `base`, los assets se generan con rutas raiz (/styles/globals.css,
-// /node_modules/.vite/…) que Traefik no enruta al contenedor web -> 404 ->
-// pantalla negra tras login.
+// Problema: fijar base: '/app' en Vite choca con appDirectory: "app" en
+// react-router.config.ts. El plugin @react-router/dev/vite v7 evalua
+// virtual:react-router/server-build en el dev server (incluso con ssr:false)
+// importando "/app/root.tsx". Con base='/app', Vite hace strip del prefijo
+// '/app' y busca "/root.tsx" -> no existe -> pantalla de error.
 //
-// IMPORTANTE — isSsrBuild:
-//   El plugin @react-router/dev/vite v7 siempre evalua un modulo SSR
-//   `virtual:react-router/server-build` para descubrir rutas, incluso con
-//   `ssr: false` en react-router.config.ts. Cuando `base` se aplica al build
-//   SSR, Vite intenta resolver los modulos con el prefijo /app pero el plugin
-//   los referencia sin el (/root.tsx) -> "Failed to load url /root.tsx".
-//   Solucion: aplicar `base` solo al bundle de cliente (isSsrBuild === false).
-const webBasePath = process.env.VITE_WEB_BASE_PATH || "/app";
+// Solucion adoptada (ver docker-compose-dev.yml):
+//   1. Traefik aplica StripPrefix("/app") antes de hacer forward al dev server
+//      -> Vite recibe "/" y sirve assets con rutas raiz (/styles/globals.css…)
+//   2. Un segundo router de baja prioridad enruta los paths de assets de Vite
+//      (/@, /__, /styles, /core, /node_modules, etc.) al mismo contenedor web.
+//
+// El basename "/app" vive SOLO en react-router.config.ts (routing del browser).
 
-export default defineConfig(({ isSsrBuild }) => ({
-  // SSR build (route discovery del plugin react-router) usa base "/" para que
-  // la resolucion de modulos virtuales no se vea afectada por el prefijo /app.
-  base: isSsrBuild ? "/" : webBasePath,
+export default defineConfig(() => ({
   define: {
     "process.env": JSON.stringify(viteEnv),
   },
