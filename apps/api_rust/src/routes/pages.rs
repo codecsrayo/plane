@@ -355,7 +355,9 @@ pub async fn create_page(
     let name = body.name.unwrap_or_default();
 
     // Django usa `request.data.get("description_html", "<p></p>")` al crear.
-    let description_html = body.description_html.unwrap_or_else(|| "<p></p>".into());
+    let raw_html = body.description_html.unwrap_or_else(|| "<p></p>".into());
+    let description_html = content_validator::sanitize_description(&raw_html)
+        .map_err(AppError::BadRequest)?;
 
     // Django rellena created_at/updated_at vÃ­a `BaseModel.save()`
     // (`auto_now_add=True` / `auto_now=True`). Las columnas en DB son NOT NULL;
@@ -499,7 +501,9 @@ pub async fn update_page(
         am.name = Set(name);
     }
     if let Some(html) = body.description_html {
-        am.description_html = Set(html);
+        let clean = content_validator::sanitize_description(&html)
+            .map_err(AppError::BadRequest)?;
+        am.description_html = Set(clean);
     }
     if let Some(color) = body.color {
         am.color = Set(color);
@@ -1012,7 +1016,7 @@ pub async fn update_page_description(
 
     let sanitized_html: Option<String> = match body.description_html {
         Some(ref raw) => {
-            let clean = content_validator::validate_and_sanitize_html(raw)
+            let clean = content_validator::sanitize_description(raw)
                 .map_err(AppError::BadRequest)?;
             Some(clean)
         }

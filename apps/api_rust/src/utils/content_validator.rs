@@ -210,7 +210,7 @@ pub fn validate_binary_data(data: &[u8]) -> Result<(), String> {
 /// * HTML vacío → `Ok(String::new())` sin llamar al sanitizador.
 /// * Tamaño > 10 MB → rechaza.
 /// * Caso general → `ammonia::clean` con la config del editor.
-pub fn validate_and_sanitize_html(html: &str) -> Result<String, String> {
+pub fn sanitize_description(html: &str) -> Result<String, String> {
     if html.is_empty() {
         return Ok(String::new());
     }
@@ -255,19 +255,19 @@ mod tests {
 
     #[test]
     fn empty_html_returns_empty() {
-        assert_eq!(validate_and_sanitize_html("").unwrap(), "");
+        assert_eq!(sanitize_description("").unwrap(), "");
     }
 
     #[test]
     fn html_over_limit_rejected() {
         let big = "a".repeat(MAX_CONTENT_SIZE + 1);
-        assert!(validate_and_sanitize_html(&big).is_err());
+        assert!(sanitize_description(&big).is_err());
     }
 
     #[test]
     fn script_tag_stripped() {
         let dirty = "<p>hi</p><script>evil()</script>";
-        let clean = validate_and_sanitize_html(dirty).unwrap();
+        let clean = sanitize_description(dirty).unwrap();
         assert!(!clean.contains("<script"));
         assert!(clean.contains("<p>hi</p>"));
     }
@@ -275,7 +275,7 @@ mod tests {
     #[test]
     fn mention_component_preserved() {
         let dirty = r#"<p>hola <mention-component id="u1" entity_identifier="user-id" entity_name="user_mention"></mention-component></p>"#;
-        let clean = validate_and_sanitize_html(dirty).unwrap();
+        let clean = sanitize_description(dirty).unwrap();
         assert!(
             clean.contains("<mention-component"),
             "mention-component debe preservarse, got: {clean}"
@@ -286,7 +286,7 @@ mod tests {
     #[test]
     fn data_attributes_preserved() {
         let dirty = r#"<div data-block-type="callout" data-icon-name="sparkles">x</div>"#;
-        let clean = validate_and_sanitize_html(dirty).unwrap();
+        let clean = sanitize_description(dirty).unwrap();
         assert!(clean.contains("data-block-type"));
         assert!(clean.contains("data-icon-name"));
     }
@@ -294,7 +294,7 @@ mod tests {
     #[test]
     fn javascript_url_stripped() {
         let dirty = r#"<a href="javascript:alert(1)">x</a>"#;
-        let clean = validate_and_sanitize_html(dirty).unwrap();
+        let clean = sanitize_description(dirty).unwrap();
         assert!(!clean.contains("javascript:"));
     }
 }

@@ -277,10 +277,12 @@ pub async fn create_comment(
     }
 
     let now: DateTime<FixedOffset> = Utc::now().into();
-    let stripped = strip_html(&body.comment_html);
+    let comment_html = crate::utils::content_validator::sanitize_description(&body.comment_html)
+        .map_err(AppError::BadRequest)?;
+    let stripped = strip_html(&comment_html);
     let new_comment = issue_comments::ActiveModel {
         id: Set(Uuid::new_v4()),
-        comment_html: Set(body.comment_html),
+        comment_html: Set(comment_html),
         comment_stripped: Set(stripped),
         comment_json: Set(serde_json::json!({})),
         access: Set(body.access.unwrap_or_else(|| "INTERNAL".to_string())),
@@ -339,8 +341,10 @@ pub async fn update_comment(
     am.updated_by_id = Set(Some(guard.user.id));
 
     if let Some(html) = body.comment_html {
-        am.comment_stripped = Set(strip_html(&html));
-        am.comment_html = Set(html);
+        let clean = crate::utils::content_validator::sanitize_description(&html)
+            .map_err(AppError::BadRequest)?;
+        am.comment_stripped = Set(strip_html(&clean));
+        am.comment_html = Set(clean);
     }
     if let Some(access) = body.access {
         am.access = Set(access);

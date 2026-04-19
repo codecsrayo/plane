@@ -835,12 +835,16 @@ pub async fn create_issue(
     let assignees = body.assignee_ids.clone().unwrap_or_default();
     let label_ids = body.label_ids.clone().unwrap_or_default();
 
+    let raw_html = body.description_html.clone().unwrap_or_default();
+    let description_html = crate::utils::content_validator::sanitize_description(&raw_html)
+        .map_err(AppError::BadRequest)?;
+
     let issue = state
         .db
         .transaction_with_config::<_, issues::Model, AppError>(
             |txn| {
                 let name = body.name.clone();
-                let description_html = body.description_html.clone().unwrap_or_default();
+                let description_html = description_html.clone();
                 let priority = body.priority.clone().unwrap_or_else(|| "none".to_owned());
                 let state_id = body.state_id;
                 let parent_id = body.parent_id;
@@ -1031,6 +1035,13 @@ pub async fn update_issue(
     let assignees = body.assignee_ids.clone();
     let label_ids = body.label_ids.clone();
 
+    let clean_html = if let Some(ref html) = body.description_html {
+        Some(crate::utils::content_validator::sanitize_description(html)
+            .map_err(AppError::BadRequest)?)
+    } else {
+        None
+    };
+
     // El valor se descarta — PATCH devuelve 204 sin body (Django parity).
     // Mantenemos el binding para propagar errores de tx; el `_` evita warning.
     let _ = state
@@ -1040,7 +1051,7 @@ pub async fn update_issue(
             if let Some(name) = body.name.clone() {
                 am.name = Set(name);
             }
-            if let Some(html) = body.description_html.clone() {
+            if let Some(html) = clean_html.clone() {
                 am.description_html = Set(html);
             }
             if let Some(priority) = body.priority.clone() {
