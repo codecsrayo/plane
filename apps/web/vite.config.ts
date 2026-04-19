@@ -14,7 +14,12 @@ const viteEnv = Object.keys(process.env)
     return a;
   }, {});
 
+// Base path para assets — debe coincidir con VITE_WEB_BASE_PATH en Compose.
+// Fallback a "/" para desarrollo local sin Docker.
+const webBasePath = process.env.VITE_WEB_BASE_PATH || "/";
+
 export default defineConfig(() => ({
+  base: webBasePath,
   define: {
     "process.env": JSON.stringify(viteEnv),
   },

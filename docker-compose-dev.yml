@@ -32,6 +32,37 @@ services:
     networks:
       - traefik-public
 
+
+  # ── Landing page (home) ───────────────────────────────────────────────────────
+  # Primera carga del dominio: sirve apps/home (HTML estático) en la raíz "/".
+  # Actúa como fallback (priority 2) — todas las rutas específicas (priority 100)
+  # tienen prioridad mayor en Traefik.
+  home:
+    container_name: plane-codecsrayo-home
+    build:
+      context: .
+      dockerfile: ./apps/home/Dockerfile
+    restart: always
+    networks:
+      traefik-public:
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=${TRAEFIK_PUBLIC_NETWORK:-proyectos-bi-quare}
+      - traefik.http.routers.plane-codecsrayo-home-http.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`)
+      - traefik.http.routers.plane-codecsrayo-home-http.entrypoints=web
+      - traefik.http.routers.plane-codecsrayo-home-http.middlewares=plane-codecsrayo-https
+      - traefik.http.routers.plane-codecsrayo-home.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`)
+      - traefik.http.routers.plane-codecsrayo-home.entrypoints=websecure
+      - traefik.http.routers.plane-codecsrayo-home.tls=true
+      - traefik.http.routers.plane-codecsrayo-home.tls.certresolver=netlify
+      - traefik.http.routers.plane-codecsrayo-home.priority=2
+      - traefik.http.services.plane-codecsrayo-home.loadbalancer.server.port=8080
+    develop:
+      watch:
+        - action: sync+restart
+          path: ./apps/home
+          target: /usr/share/nginx/html
+
   web:
     container_name: plane-codecsrayo-web
     build:
@@ -47,7 +78,7 @@ services:
         VITE_SPACE_BASE_URL: https://plane.codecsrayo.com
         VITE_SPACE_BASE_PATH: /spaces
         VITE_WEB_BASE_URL: https://plane.codecsrayo.com
-        VITE_WEB_BASE_PATH: ""
+        VITE_WEB_BASE_PATH: /app
     restart: always
     networks:
       default:
@@ -58,14 +89,14 @@ services:
       - traefik.enable=true
       - traefik.docker.network=${TRAEFIK_PUBLIC_NETWORK:-proyectos-bi-quare}
       - traefik.http.middlewares.plane-codecsrayo-https.redirectscheme.scheme=https
-      - traefik.http.routers.plane-codecsrayo-http.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`)
+      - traefik.http.routers.plane-codecsrayo-http.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && PathPrefix(`/app`)
       - traefik.http.routers.plane-codecsrayo-http.entrypoints=web
       - traefik.http.routers.plane-codecsrayo-http.middlewares=plane-codecsrayo-https
-      - traefik.http.routers.plane-codecsrayo.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`)
+      - traefik.http.routers.plane-codecsrayo.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && PathPrefix(`/app`)
       - traefik.http.routers.plane-codecsrayo.entrypoints=websecure
       - traefik.http.routers.plane-codecsrayo.tls=true
       - traefik.http.routers.plane-codecsrayo.tls.certresolver=netlify
-      - traefik.http.routers.plane-codecsrayo.priority=1
+      - traefik.http.routers.plane-codecsrayo.priority=100
       - traefik.http.services.plane-codecsrayo.loadbalancer.server.port=3000
     develop:
       watch:
@@ -113,7 +144,7 @@ services:
         VITE_LIVE_BASE_URL: https://plane.codecsrayo.com
         VITE_LIVE_BASE_PATH: /live
         VITE_WEB_BASE_URL: https://plane.codecsrayo.com
-        VITE_WEB_BASE_PATH: ""
+        VITE_WEB_BASE_PATH: /app
     restart: always
     networks:
       default:
@@ -177,7 +208,7 @@ services:
         VITE_LIVE_BASE_URL: https://plane.codecsrayo.com
         VITE_LIVE_BASE_PATH: /live
         VITE_WEB_BASE_URL: https://plane.codecsrayo.com
-        VITE_WEB_BASE_PATH: ""
+        VITE_WEB_BASE_PATH: /app
     restart: always
     networks:
       default:
@@ -377,7 +408,7 @@ services:
       CORS_ALLOWED_ORIGINS: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
       WEB_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
       APP_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
-      APP_BASE_PATH: ""
+      APP_BASE_PATH: /app
       ADMIN_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
       ADMIN_BASE_PATH: /god-mode
       SPACE_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}

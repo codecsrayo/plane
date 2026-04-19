@@ -44,6 +44,29 @@ services:
       - "traefik.http.routers.traefik.entrypoints=web"
 
   # ── Frontend apps ─────────────────────────────────────────────────────────────
+
+  # Landing page estática — primera carga del dominio (priority 2 / fallback)
+  home:
+    container_name: home
+    build:
+      context: .
+      dockerfile: ./apps/home/Dockerfile
+    restart: always
+    networks:
+      - traefik-public
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=proyectos-bi-quare
+      - traefik.http.routers.home-http.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`)
+      - traefik.http.routers.home-http.entrypoints=web
+      - traefik.http.routers.home-http.middlewares=plane-https
+      - traefik.http.routers.home.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`)
+      - traefik.http.routers.home.entrypoints=websecure
+      - traefik.http.routers.home.tls=true
+      - traefik.http.routers.home.tls.certresolver=netlify
+      - traefik.http.routers.home.priority=2
+      - traefik.http.services.home.loadbalancer.server.port=8080
+
   web:
     container_name: web
     build:
@@ -60,7 +83,7 @@ services:
         VITE_SPACE_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
         VITE_SPACE_BASE_PATH: /spaces
         VITE_WEB_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
-        VITE_WEB_BASE_PATH: ""
+        VITE_WEB_BASE_PATH: /app
     restart: always
     networks:
       - default
@@ -69,14 +92,14 @@ services:
       - traefik.enable=true
       - traefik.docker.network=proyectos-bi-quare
       - traefik.http.middlewares.plane-https.redirectscheme.scheme=https
-      - traefik.http.routers.plane-http.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`)
+      - traefik.http.routers.plane-http.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && PathPrefix(`/app`)
       - traefik.http.routers.plane-http.entrypoints=web
       - traefik.http.routers.plane-http.middlewares=plane-https
-      - traefik.http.routers.plane.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`)
+      - traefik.http.routers.plane.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && PathPrefix(`/app`)
       - traefik.http.routers.plane.entrypoints=websecure
       - traefik.http.routers.plane.tls=true
       - traefik.http.routers.plane.tls.certresolver=netlify
-      - traefik.http.routers.plane.priority=1
+      - traefik.http.routers.plane.priority=100
       - traefik.http.services.plane.loadbalancer.server.port=3000
     depends_on:
       api:
@@ -98,7 +121,7 @@ services:
         VITE_LIVE_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
         VITE_LIVE_BASE_PATH: /live
         VITE_WEB_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
-        VITE_WEB_BASE_PATH: ""
+        VITE_WEB_BASE_PATH: /app
     restart: always
     networks:
       - default
@@ -134,7 +157,7 @@ services:
         VITE_LIVE_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
         VITE_LIVE_BASE_PATH: /live
         VITE_WEB_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
-        VITE_WEB_BASE_PATH: ""
+        VITE_WEB_BASE_PATH: /app
     restart: always
     networks:
       - default
