@@ -92,34 +92,32 @@ export const MemberOptions = observer(function MemberOptions(props: Props) {
     }
   };
 
-  const options = memberIds
-    ?.map((userId) => {
-      const userDetails = getUserDetails(userId);
-      return {
-        value: userId,
-        query: `${userDetails?.display_name} ${userDetails?.first_name} ${userDetails?.last_name}`,
-        content: (
-          <div className="flex items-center gap-2">
-            <div className="w-4">
-              {isUserSuspended(userId, workspaceSlug?.toString()) ? (
-                <SuspendedUserIcon className="h-3.5 w-3.5 text-placeholder" />
-              ) : (
-                <Avatar name={userDetails?.display_name} src={getFileURL(userDetails?.avatar_url ?? "")} />
-              )}
-            </div>
-            <span
-              className={cn(
-                "flex-grow truncate",
-                isUserSuspended(userId, workspaceSlug?.toString()) ? "text-placeholder" : ""
-              )}
-            >
-              {currentUser?.id === userId ? t("you") : userDetails?.display_name}
-            </span>
+  const options = [...new Set(memberIds ?? [])].map((userId) => {
+    const userDetails = getUserDetails(userId);
+    return {
+      value: userId,
+      query: `${userDetails?.display_name} ${userDetails?.first_name} ${userDetails?.last_name}`,
+      content: (
+        <div className="flex items-center gap-2">
+          <div className="w-4">
+            {isUserSuspended(userId, workspaceSlug?.toString()) ? (
+              <SuspendedUserIcon className="h-3.5 w-3.5 text-placeholder" />
+            ) : (
+              <Avatar name={userDetails?.display_name} src={getFileURL(userDetails?.avatar_url ?? "")} />
+            )}
           </div>
-        ),
-      };
-    })
-    .filter((o) => !!o);
+          <span
+            className={cn(
+              "flex-grow truncate",
+              isUserSuspended(userId, workspaceSlug?.toString()) ? "text-placeholder" : ""
+            )}
+          >
+            {currentUser?.id === userId ? t("you") : userDetails?.display_name}
+          </span>
+        </div>
+      ),
+    };
+  });
 
   const filteredOptions = sortByCurrentUserThenSelected(
     query === "" ? options : options?.filter((o) => o?.query.toLowerCase().includes(query.toLowerCase())),
