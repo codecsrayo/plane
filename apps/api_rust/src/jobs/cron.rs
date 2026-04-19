@@ -241,9 +241,10 @@ fn secs_until_utc(hour: u32, minute: u32) -> u64 {
 
 /// Encola un `RunIssueAutomationJob` en apalis para que el worker lo procese.
 async fn enqueue_issue_automation(state: &AppState) -> anyhow::Result<()> {
-    let pg_pool = sqlx::PgPool::connect(&state.config.database_url).await?;
+    // Reusar el PgPool compartido de AppState en vez de abrir una conexión
+    // nueva en cada tick del cron (antipatrón).
     let mut storage: PostgresStorage<RunIssueAutomationJob> =
-        PostgresStorage::new(pg_pool);
+        PostgresStorage::new(state.pg_pool.clone());
     use apalis::prelude::Storage;
     storage.push(RunIssueAutomationJob).await?;
     tracing::info!("cron: RunIssueAutomationJob encolado");

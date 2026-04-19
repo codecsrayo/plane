@@ -357,12 +357,11 @@ pub async fn export_issues(
     use apalis::prelude::Storage;
     use apalis_sql::postgres::PostgresStorage;
 
-    // Crear storage y encolar — best-effort (si falla, el cliente puede reintentar)
-    let pg_pool = sqlx::PgPool::connect(&state.config.database_url)
-        .await
-        .map_err(|e| AppError::Internal(anyhow::anyhow!("PgPool error: {e}")))?;
-
-    let mut storage: PostgresStorage<ExportIssuesJob> = PostgresStorage::new(pg_pool);
+    // Reusar el PgPool compartido de AppState en vez de abrir una conexión
+    // nueva por request (antipatrón: pagar TCP+TLS+auth en cada export y
+    // descartar el pool al salir de la función).
+    let mut storage: PostgresStorage<ExportIssuesJob> =
+        PostgresStorage::new(state.pg_pool.clone());
     storage
         .push(ExportIssuesJob {
             exporter_token: token.clone(),
