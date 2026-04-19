@@ -32,8 +32,9 @@ use uuid::Uuid;
 use crate::{
     auth::any_auth::AnyAuth,
     entities::{
-        cycles, draft_issues, estimates, estimate_points, labels, modules,
-        stickies, states, user_favorites, user_recent_visits,
+        cycle_issues, cycles, draft_issues, estimates, estimate_points, file_assets,
+        issue_assignees, issue_labels, issues, labels, module_issues, modules,
+        projects, stickies, states, user_favorites, user_recent_visits,
         workspace_home_preferences, workspace_user_links,
         workspace_user_preferences, workspace_user_properties,
     },
@@ -3008,4 +3009,286 @@ pub async fn update_workspace_user_properties(
     let saved = active.update(db).await.map_err(AppError::Database)?;
     let resp: WorkspaceUserPropertiesResponse = saved.into();
     Ok((StatusCode::OK, Json(resp)))
+}
+
+
+// ═══════════════════════════════════════════════════════════════════════════
+// DRAFT TO ISSUE
+// ═══════════════════════════════════════════════════════════════════════════
+
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
+pub struct DraftToIssueRequest {
+    pub name: String,
+    pub description_html: Option<String>,
+    pub priority: Option<String>,
+    pub state_id: Option<uuid::Uuid>,
+    pub parent_id: Option<uuid::Uuid>,
+    pub start_date: Option<chrono::NaiveDate>,
+    pub target_date: Option<chrono::NaiveDate>,
+    pub estimate_point: Option<uuid::Uuid>,
+    pub assignee_ids: Option<Vec<uuid::Uuid>>,
+    pub label_ids: Option<Vec<uuid::Uuid>>,
+    pub cycle_id: Option<uuid::Uuid>,
+    pub module_ids: Option<Vec<uuid::Uuid>>,
+    pub type_id: Option<uuid::Uuid>,
+}
+
+/// POST /workspaces/{slug}/draft-to-issue/{draft_id}/
+///
+/// Convierte un DraftIssue en un Issue real y elimina el draft.
+///
+/// Espejo de `WorkspaceDraftIssueViewSet.create_draft_to_issue`
+/// (`apps/api/plane/app/views/workspace/draft.py:196`).
+///
+/// Implementa:
+/// - Validación de project_id en el draft
+/// - Creación de Issue con sequence_id atómico (SERIALIZABLE)
+/// - Creación de CycleIssue si cycle_id está en el body
+/// - Creación de ModuleIssue(s) para cada module_id en el body
+/// - Reasignación de FileAssets del draft al nuevo issue
+/// - Soft-delete del draft
+///
+/// Nota: el job de actividad (issue_activity) es Fase 3 y se omite aquí.
+#[utoipa::path(
+    post,
+    path = "/api/workspaces/{slug}/draft-to-issue/{draft_id}/",
+    tag = "Workspace Extras",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("draft_id" = uuid::Uuid, Path, description = "Draft issue ID"),
+    ),
+    responses(
+        (status = 201, description = "Issue creado"),
+        (status = 400, description = "Draft sin proyecto asignado"),
+        (status = 404, description = "Draft no encontrado"),
+    )
+)]
+pub async fn draft_to_issue(
+    State(state): State<AppState>,
+    AnyAuth(auth_user): AnyAuth,
+    Path((slug, draft_id)): Path<(String, uuid::Uuid)>,
+    Json(body): Json<DraftToIssueRequest>,
+) -> Result<impl axum::response::IntoResponse, AppError> {
+    let db = &state.db;
+    let user_id = auth_user.id;
+    let ws = workspace_by_slug(db, &slug).await?;
+    let member = require_workspace_member(db, ws.id, user_id).await?;
+    require_member_or_admin(member.role)?;
+
+    // 1. Obtener el draft
+    let draft = draft_issues::Entity::find_by_id(draft_id)
+        .filter(draft_issues::Column::WorkspaceId.eq(ws.id))
+        .filter(draft_issues::Column::CreatedById.eq(user_id))
+        .filter(draft_issues::Column::DeletedAt.is_null())
+        .one(db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    // 2. Validar que el draft tiene proyecto
+    let project_id = draft.project_id.ok_or_else(|| {
+        AppError::BadRequest("Project is required to create an issue.".into())
+    })?;
+
+    // 3. Verificar membresía de proyecto
+    let _ = crate::routes::helpers::project_member_for_user(db, project_id, user_id)
+        .await
+        .map_err(|_| AppError::Forbidden)?;
+
+    let project = projects::Entity::find_by_id(project_id)
+        .one(db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    let assignee_ids = body.assignee_ids.clone().unwrap_or_default();
+    let label_ids = body.label_ids.clone().unwrap_or_default();
+    let cycle_id = body.cycle_id;
+    let module_ids = body.module_ids.clone().unwrap_or_default();
+
+    // 4. Crear Issue en transacción SERIALIZABLE (sequence_id atómico)
+    let issue = db
+        .transaction_with_config::<_, issues::Model, AppError>(
+            |txn| {
+                let name = body.name.clone();
+                let description_html = body.description_html.clone()
+                    .unwrap_or_else(|| draft.description_html.clone());
+                let priority = body.priority.clone()
+                    .unwrap_or_else(|| draft.priority.clone());
+                let state_id = body.state_id.or(draft.state_id);
+                let parent_id = body.parent_id.or(draft.parent_id);
+                let start_date = body.start_date.or(draft.start_date);
+                let target_date = body.target_date.or(draft.target_date);
+                let estimate_point_id = body.estimate_point.or(draft.estimate_point_id);
+                let type_id = body.type_id.or(draft.type_id);
+                let assignee_ids = assignee_ids.clone();
+                let label_ids = label_ids.clone();
+                let default_assignee_id = project.default_assignee_id;
+                Box::pin(async move {
+                    use sea_orm::QuerySelect;
+                    let max_seq: Option<i32> = issues::Entity::find()
+                        .filter(issues::Column::ProjectId.eq(project_id))
+                        .select_only()
+                        .column_as(
+                            sea_orm::sea_query::Expr::col(issues::Column::SequenceId).max(),
+                            "max_seq",
+                        )
+                        .into_tuple::<Option<i32>>()
+                        .one(txn)
+                        .await
+                        .map_err(AppError::Database)?
+                        .flatten();
+                    let sequence_id = max_seq.unwrap_or(0) + 1;
+                    let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
+
+                    let issue_id = uuid::Uuid::new_v4();
+                    let new_issue = issues::ActiveModel {
+                        id: Set(issue_id),
+                        name: Set(name),
+                        description_html: Set(description_html),
+                        priority: Set(priority),
+                        state_id: Set(state_id),
+                        parent_id: Set(parent_id),
+                        start_date: Set(start_date),
+                        target_date: Set(target_date),
+                        estimate_point_id: Set(estimate_point_id),
+                        type_id: Set(type_id),
+                        sequence_id: Set(sequence_id),
+                        project_id: Set(project_id),
+                        workspace_id: Set(ws.id),
+                        created_by_id: Set(Some(user_id)),
+                        updated_by_id: Set(Some(user_id)),
+                        sort_order: Set(65535.0),
+                        created_at: Set(now),
+                        updated_at: Set(now),
+                        deleted_at: Set(None),
+                        ..Default::default()
+                    };
+                    let saved_issue = new_issue.insert(txn).await.map_err(AppError::Database)?;
+
+                    // Assignees
+                    for assignee_id in &assignee_ids {
+                        issue_assignees::ActiveModel {
+                            id: Set(uuid::Uuid::new_v4()),
+                            issue_id: Set(issue_id),
+                            assignee_id: Set(*assignee_id),
+                            project_id: Set(project_id),
+                            workspace_id: Set(ws.id),
+                            created_by_id: Set(Some(user_id)),
+                            updated_by_id: Set(Some(user_id)),
+                            created_at: Set(now),
+                            updated_at: Set(now),
+                            deleted_at: Set(None),
+                        }
+                        .insert(txn)
+                        .await
+                        .map_err(AppError::Database)?;
+                    }
+
+                    // Labels
+                    for label_id in &label_ids {
+                        issue_labels::ActiveModel {
+                            id: Set(uuid::Uuid::new_v4()),
+                            issue_id: Set(issue_id),
+                            label_id: Set(*label_id),
+                            project_id: Set(project_id),
+                            workspace_id: Set(ws.id),
+                            created_by_id: Set(Some(user_id)),
+                            updated_by_id: Set(Some(user_id)),
+                            created_at: Set(now),
+                            updated_at: Set(now),
+                            deleted_at: Set(None),
+                        }
+                        .insert(txn)
+                        .await
+                        .map_err(AppError::Database)?;
+                    }
+
+                    Ok(saved_issue)
+                })
+            },
+            Some(sea_orm::IsolationLevel::Serializable),
+            None,
+        )
+        .await
+        .map_err(|e| match e {
+            sea_orm::TransactionError::Transaction(ae) => ae,
+            sea_orm::TransactionError::Connection(de) => AppError::Database(de),
+        })?;
+
+    let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
+    let issue_id = issue.id;
+
+    // 5. CycleIssue (best-effort, no bloquea si falla)
+    if let Some(cid) = cycle_id {
+        let _ = cycle_issues::ActiveModel {
+            id: Set(uuid::Uuid::new_v4()),
+            cycle_id: Set(cid),
+            issue_id: Set(issue_id),
+            project_id: Set(project_id),
+            workspace_id: Set(ws.id),
+            created_by_id: Set(Some(user_id)),
+            updated_by_id: Set(Some(user_id)),
+            created_at: Set(now),
+            updated_at: Set(now),
+            deleted_at: Set(None),
+        }
+        .insert(db)
+        .await
+        .map_err(|e| {
+            tracing::warn!("Failed to create CycleIssue during draft_to_issue: {e}");
+            AppError::Database(e)
+        });
+    }
+
+    // 6. ModuleIssues
+    for module_id in &module_ids {
+        let _ = module_issues::ActiveModel {
+            id: Set(uuid::Uuid::new_v4()),
+            issue_id: Set(issue_id),
+            module_id: Set(*module_id),
+            project_id: Set(project_id),
+            workspace_id: Set(ws.id),
+            created_by_id: Set(Some(user_id)),
+            updated_by_id: Set(Some(user_id)),
+            created_at: Set(now),
+            updated_at: Set(now),
+            deleted_at: Set(None),
+        }
+        .insert(db)
+        .await
+        .map_err(|e| {
+            tracing::warn!("Failed to create ModuleIssue: {e}");
+            AppError::Database(e)
+        });
+    }
+
+    // 7. Reasignar FileAssets del draft al issue real
+    // Django: file_assets.update(issue_id=..., entity_type=ISSUE_DESCRIPTION, draft_issue_id=None)
+    file_assets::Entity::update_many()
+        .col_expr(file_assets::Column::IssueId, sea_orm::sea_query::Expr::value(Some(issue_id)))
+        .col_expr(file_assets::Column::EntityType, sea_orm::sea_query::Expr::value(Some("issue_description")))
+        .col_expr(file_assets::Column::DraftIssueId, sea_orm::sea_query::Expr::value(Option::<uuid::Uuid>::None))
+        .filter(file_assets::Column::DraftIssueId.eq(draft_id))
+        .exec(db)
+        .await
+        .map_err(AppError::Database)?;
+
+    // 8. Soft-delete del draft
+    let mut draft_am: draft_issues::ActiveModel = draft.into();
+    draft_am.deleted_at = Set(Some(now));
+    draft_am.update(db).await.map_err(AppError::Database)?;
+
+    // Respuesta espejo del shape de Django: campos básicos del issue creado
+    Ok((StatusCode::CREATED, Json(serde_json::json!({
+        "id": issue_id,
+        "name": issue.name,
+        "sequence_id": issue.sequence_id,
+        "priority": issue.priority,
+        "state_id": issue.state_id,
+        "project_id": issue.project_id,
+        "workspace_id": issue.workspace_id,
+        "created_at": issue.created_at,
+        "created_by": issue.created_by_id,
+    }))))
 }
