@@ -164,6 +164,8 @@ pub mod instances;
         modules::list_module_issues,
         modules::add_issues_to_module,
         modules::remove_issue_from_module,
+        modules::get_module_user_properties,
+        modules::update_module_user_properties,
         labels::list_labels,
         labels::create_label,
         labels::get_label,
@@ -383,6 +385,8 @@ pub mod instances;
             project_user_properties::UpdateProjectUserPropertyRequest,
             cycles::CycleUserPropertiesResponse,
             cycles::UpdateCycleUserPropertiesRequest,
+            modules::ModuleUserPropertiesResponse,
+            modules::UpdateModuleUserPropertiesRequest,
             projects::UpdateProjectMemberRequest,
             projects::ProjectInvitationResponse,
             projects::CreateProjectInvitationRequest,
@@ -776,6 +780,11 @@ pub fn build_router(state: AppState) -> Router {
         .route(
             "/workspaces/{slug}/projects/{project_id}/modules/{module_id}/issues/{issue_id}",
             delete(modules::remove_issue_from_module),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/modules/{module_id}/user-properties",
+            get(modules::get_module_user_properties)
+                .patch(modules::update_module_user_properties),
         )
         // ── Labels ──────────────────────────────────────────────────────────
         // Rutas canónicas (/labels/)
