@@ -90,20 +90,20 @@ services:
       - traefik.docker.network=${TRAEFIK_PUBLIC_NETWORK:-proyectos-bi-quare}
       - traefik.http.middlewares.plane-codecsrayo-https.redirectscheme.scheme=https
 
-      # Middleware: strip /app antes de forward al Vite dev server.
-      # Vite no tiene `base` configurado -> espera paths desde "/".
-      - traefik.http.middlewares.plane-codecsrayo-strip-app.stripprefix.prefixes=/app
-
-      # Router principal /app (p=100): HTTP->HTTPS redirect
+      # Router principal /app (p=100) — SIN StripPrefix.
+      # React Router tiene basename='/app', por lo que el dev server Vite
+      # DEBE recibir el path con el prefijo /app intacto. Si se hace strip,
+      # React Router ve "/" que no empieza con "/app" y rechaza el render:
+      #   "Refusing to prerender '' because it does not start with basename '/app'"
+      # HTTP -> HTTPS redirect
       - traefik.http.routers.plane-codecsrayo-http.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && PathPrefix(`/app`)
       - traefik.http.routers.plane-codecsrayo-http.entrypoints=web
       - traefik.http.routers.plane-codecsrayo-http.middlewares=plane-codecsrayo-https
-      # Router principal /app (p=100): HTTPS con StripPrefix
+      # HTTPS directo al dev server (sin middleware de strip)
       - traefik.http.routers.plane-codecsrayo.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && PathPrefix(`/app`)
       - traefik.http.routers.plane-codecsrayo.entrypoints=websecure
       - traefik.http.routers.plane-codecsrayo.tls=true
       - traefik.http.routers.plane-codecsrayo.tls.certresolver=netlify
-      - traefik.http.routers.plane-codecsrayo.middlewares=plane-codecsrayo-strip-app
       - traefik.http.routers.plane-codecsrayo.priority=100
       - traefik.http.services.plane-codecsrayo.loadbalancer.server.port=3000
 
