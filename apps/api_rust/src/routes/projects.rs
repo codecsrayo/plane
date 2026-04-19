@@ -25,9 +25,9 @@ use crate::{
         permissions::{ROLE_ADMIN, ROLE_GUEST, ROLE_MEMBER, ROLE_VIEWER},
     },
     entities::{
-        intake_issues, intakes, issue_sequences, project_deploy_boards, project_member_invites,
-        project_members, project_user_properties, projects, states, user_favorites, users,
-        workspace_members, workspaces,
+        intake_issues, intakes, issue_sequences, project_deploy_boards, project_identifiers,
+        project_member_invites, project_members, project_user_properties, projects, states,
+        user_favorites, users, workspace_members, workspaces,
     },
     error::AppError,
     routes::helpers::{require_workspace_member, workspace_by_slug},
@@ -1742,4 +1742,686 @@ pub async fn get_project_member_me(
         workspace_id: member.workspace_id,
         member_id: member.member_id,
     }))
+}
+
+
+// ─── GET /workspaces/{slug}/projects/{project_id}/members/{pk}/ ──────────────
+
+/// Retorna un miembro específico del proyecto.
+///
+/// Espejo de `ProjectMemberViewSet.retrieve`
+/// (`apps/api/plane/app/views/project/member.py`).
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/projects/{project_id}/members/{pk}/",
+    tag = "Projects",
+    security(("TokenAuth" = []))
+)]
+pub async fn get_project_member(
+    State(state): State<AppState>,
+    AnyAuth(user): AnyAuth,
+    Path((slug, project_id, pk)): Path<(String, Uuid, Uuid)>,
+) -> Result<Json<serde_json::Value>, AppError> {
+    let ws = workspace_by_slug(&state.db, &slug).await?;
+    let wm = require_workspace_member(&state.db, ws.id, user.id).await?;
+    let caller_pm = project_member_for_user(&state.db, project_id, user.id).await?;
+    let is_admin = caller_pm.as_ref().map(|m| m.role).unwrap_or(0) > ROLE_GUEST
+        || wm.role > ROLE_GUEST;
+
+    let member = project_members::Entity::find_by_id(pk)
+        .active()
+        .filter(project_members::Column::ProjectId.eq(project_id))
+        .filter(project_members::Column::WorkspaceId.eq(ws.id))
+        .filter(project_members::Column::IsActive.eq(true))
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    let user_model = users::Entity::find_by_id(member.member_id)
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    Ok(Json(serde_json::json!({
+        "id": member.id,
+        "member_id": member.member_id,
+        "role": member.role,
+        "is_active": member.is_active,
+        "member": {
+            "id": user_model.id,
+            "display_name": user_model.display_name,
+            "first_name": user_model.first_name,
+            "last_name": user_model.last_name,
+            "avatar": user_model.avatar,
+            "email": if is_admin { user_model.email.clone() } else { None },
+        },
+    })))
+}
+
+// ─── POST /workspaces/{slug}/projects/{project_id}/members/ ──────────────────
+
+#[derive(Debug, serde::Deserialize, utoipa::ToSchema)]
+pub struct AddProjectMembersRequest {
+    pub members: Vec<ProjectMemberEntry>,
+}
+
+#[derive(Debug, serde::Deserialize, utoipa::ToSchema)]
+pub struct ProjectMemberEntry {
+    pub member_id: Uuid,
+    pub role: i16,
+}
+
+/// Agrega miembros al proyecto en bulk.
+///
+/// Espejo de `ProjectMemberViewSet.create`
+/// (`apps/api/plane/app/views/project/member.py`).
+#[utoipa::path(
+    post,
+    path = "/api/workspaces/{slug}/projects/{project_id}/members/",
+    tag = "Projects",
+    security(("TokenAuth" = []))
+)]
+pub async fn create_project_members(
+    State(state): State<AppState>,
+    AnyAuth(user): AnyAuth,
+    Path((slug, project_id)): Path<(String, Uuid)>,
+    Json(body): Json<AddProjectMembersRequest>,
+) -> Result<impl IntoResponse, AppError> {
+    let ws = workspace_by_slug(&state.db, &slug).await?;
+    let wm = require_workspace_member(&state.db, ws.id, user.id).await?;
+    let caller_pm = project_member_for_user(&state.db, project_id, user.id).await?;
+    require_project_admin(&caller_pm, &wm)?;
+
+    if body.members.is_empty() {
+        return Err(AppError::BadRequest("At least one member is required".into()));
+    }
+
+    for entry in &body.members {
+        validate_role(entry.role)?;
+    }
+
+    let project = project_by_id(&state.db, ws.id, project_id).await?;
+    let now = chrono::Utc::now().fixed_offset();
+
+    // Validar workspace roles — batch fetch en lugar de N queries.
+    let member_ids: Vec<Uuid> = body.members.iter().map(|m| m.member_id).collect();
+    let ws_members: std::collections::HashMap<Uuid, i16> = workspace_members::Entity::find()
+        .active()
+        .filter(workspace_members::Column::WorkspaceId.eq(ws.id))
+        .filter(workspace_members::Column::MemberId.is_in(member_ids.clone()))
+        .filter(workspace_members::Column::IsActive.eq(true))
+        .all(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .into_iter()
+        .map(|wm| (wm.member_id, wm.role))
+        .collect();
+
+    for entry in &body.members {
+        let ws_role = *ws_members.get(&entry.member_id).unwrap_or(&0);
+        // Workspace admin no puede tener rol bajo en proyecto.
+        if ws_role >= ROLE_ADMIN && entry.role <= ROLE_MEMBER {
+            return Err(AppError::BadRequest(
+                "Cannot assign a role lower than workspace admin role".into(),
+            ));
+        }
+        // Workspace guest no puede tener rol alto en proyecto.
+        if ws_role <= ROLE_GUEST && entry.role >= ROLE_MEMBER {
+            return Err(AppError::BadRequest(
+                "Cannot assign a role higher than workspace guest role".into(),
+            ));
+        }
+    }
+
+    // Upsert: reactivar si ya existe, o insertar nuevo.
+    let existing: std::collections::HashMap<Uuid, project_members::Model> =
+        project_members::Entity::find()
+            .filter(project_members::Column::ProjectId.eq(project_id))
+            .filter(project_members::Column::MemberId.is_in(member_ids))
+            .all(&state.db)
+            .await
+            .map_err(AppError::Database)?
+            .into_iter()
+            .map(|m| (m.member_id, m))
+            .collect();
+
+    let role_map: std::collections::HashMap<Uuid, i16> =
+        body.members.iter().map(|m| (m.member_id, m.role)).collect();
+
+    for entry in &body.members {
+        if let Some(pm) = existing.get(&entry.member_id) {
+            // Reactivar + actualizar rol
+            let mut am: project_members::ActiveModel = pm.clone().into();
+            am.role = Set(entry.role);
+            am.is_active = Set(true);
+            am.updated_at = Set(now);
+            am.update(&state.db).await.map_err(AppError::Database)?;
+        } else {
+            // Crear nuevo
+            project_members::ActiveModel {
+                id: Set(Uuid::new_v4()),
+                project_id: Set(project_id),
+                workspace_id: Set(ws.id),
+                member_id: Set(entry.member_id),
+                role: Set(entry.role),
+                is_active: Set(true),
+                created_by_id: Set(Some(user.id)),
+                updated_by_id: Set(Some(user.id)),
+                created_at: Set(now),
+                updated_at: Set(now),
+                deleted_at: Set(None),
+                ..Default::default()
+            }
+            .insert(&state.db)
+            .await
+            .map_err(AppError::Database)?;
+        }
+
+        // project_user_properties — ON CONFLICT DO NOTHING
+        use sea_orm::sea_query::{Expr, OnConflict};
+        project_user_properties::Entity::insert(project_user_properties::ActiveModel {
+            id: Set(Uuid::new_v4()),
+            project_id: Set(project_id),
+            workspace_id: Set(ws.id),
+            user_id: Set(entry.member_id),
+            created_by_id: Set(Some(user.id)),
+            updated_by_id: Set(Some(user.id)),
+            created_at: Set(now),
+            updated_at: Set(now),
+            deleted_at: Set(None),
+            ..Default::default()
+        })
+        .on_conflict(
+            OnConflict::columns([
+                project_user_properties::Column::ProjectId,
+                project_user_properties::Column::UserId,
+            ])
+            .do_nothing()
+            .to_owned(),
+        )
+        .do_nothing()
+        .exec(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+    }
+
+    // Retornar miembros actualizados
+    let updated_members = project_members::Entity::find()
+        .active()
+        .filter(project_members::Column::ProjectId.eq(project_id))
+        .filter(project_members::Column::MemberId.is_in(
+            body.members.iter().map(|m| m.member_id).collect::<Vec<_>>()
+        ))
+        .filter(project_members::Column::IsActive.eq(true))
+        .all(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    let resp: Vec<serde_json::Value> = updated_members.iter().map(|m| serde_json::json!({
+        "id": m.id,
+        "member_id": m.member_id,
+        "role": m.role,
+        "project_id": m.project_id,
+    })).collect();
+
+    Ok((StatusCode::CREATED, Json(resp)))
+}
+
+// ─── POST /workspaces/{slug}/projects/{project_id}/members/leave/ ────────────
+
+/// El usuario autenticado abandona el proyecto.
+///
+/// Espejo de `ProjectMemberViewSet.leave`
+/// (`apps/api/plane/app/views/project/member.py`).
+#[utoipa::path(
+    post,
+    path = "/api/workspaces/{slug}/projects/{project_id}/members/leave/",
+    tag = "Projects",
+    security(("TokenAuth" = []))
+)]
+pub async fn leave_project(
+    State(state): State<AppState>,
+    AnyAuth(user): AnyAuth,
+    Path((slug, project_id)): Path<(String, Uuid)>,
+) -> Result<StatusCode, AppError> {
+    let ws = workspace_by_slug(&state.db, &slug).await?;
+    let _ = require_workspace_member(&state.db, ws.id, user.id).await?;
+
+    let pm = project_members::Entity::find()
+        .active()
+        .filter(project_members::Column::ProjectId.eq(project_id))
+        .filter(project_members::Column::WorkspaceId.eq(ws.id))
+        .filter(project_members::Column::MemberId.eq(user.id))
+        .filter(project_members::Column::IsActive.eq(true))
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    // Verificar que no sea el único Admin del proyecto.
+    if pm.role >= ROLE_ADMIN {
+        let admin_count = project_members::Entity::find()
+            .active()
+            .filter(project_members::Column::ProjectId.eq(project_id))
+            .filter(project_members::Column::Role.gte(ROLE_ADMIN))
+            .filter(project_members::Column::IsActive.eq(true))
+            .count(&state.db)
+            .await
+            .map_err(AppError::Database)?;
+
+        if admin_count <= 1 {
+            return Err(AppError::BadRequest(
+                "You cannot leave the project as you are the only admin.                  Please delete the project or promote another user to admin.".into(),
+            ));
+        }
+    }
+
+    let mut am: project_members::ActiveModel = pm.into();
+    am.is_active = Set(false);
+    am.updated_at = Set(chrono::Utc::now().fixed_offset());
+    am.update(&state.db).await.map_err(AppError::Database)?;
+
+    Ok(StatusCode::NO_CONTENT)
+}
+
+// ─── POST /workspaces/{slug}/projects/{project_id}/project-views/ ────────────
+
+/// Persiste view_props, default_props, preferences y sort_order del miembro.
+///
+/// Espejo de `ProjectUserViewsEndpoint.post`
+/// (`apps/api/plane/app/views/project/base.py`).
+#[utoipa::path(
+    post,
+    path = "/api/workspaces/{slug}/projects/{project_id}/project-views/",
+    tag = "Projects",
+    security(("TokenAuth" = []))
+)]
+pub async fn update_project_views(
+    State(state): State<AppState>,
+    AnyAuth(user): AnyAuth,
+    Path((slug, project_id)): Path<(String, Uuid)>,
+    Json(body): Json<serde_json::Value>,
+) -> Result<StatusCode, AppError> {
+    let ws = workspace_by_slug(&state.db, &slug).await?;
+    let pm = project_member_for_user(&state.db, project_id, user.id)
+        .await?
+        .ok_or(AppError::Forbidden)?;
+
+    let now = chrono::Utc::now().fixed_offset();
+    let mut am: project_members::ActiveModel = pm.into();
+
+    if let Some(v) = body.get("view_props") {
+        am.view_props = Set(v.clone());
+    }
+    if let Some(v) = body.get("default_props") {
+        am.default_props = Set(v.clone());
+    }
+    if let Some(v) = body.get("sort_order") {
+        if let Some(n) = v.as_f64() {
+            am.sort_order = Set(n);
+        }
+    }
+    am.updated_at = Set(now);
+    am.update(&state.db).await.map_err(AppError::Database)?;
+
+    Ok(StatusCode::NO_CONTENT)
+}
+
+// ─── GET + POST + DELETE /workspaces/{slug}/user-favorite-projects/ ───────────
+
+/// Lista proyectos favoritos del usuario en el workspace.
+///
+/// Espejo de `ProjectFavoritesViewSet.list`
+/// (`apps/api/plane/app/views/project/base.py`).
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/user-favorite-projects/",
+    tag = "Projects",
+    security(("TokenAuth" = []))
+)]
+pub async fn list_project_favorites(
+    State(state): State<AppState>,
+    AnyAuth(user): AnyAuth,
+    Path(slug): Path<String>,
+) -> Result<Json<Vec<serde_json::Value>>, AppError> {
+    let ws = workspace_by_slug(&state.db, &slug).await?;
+    let _ = require_workspace_member(&state.db, ws.id, user.id).await?;
+
+    let favs = user_favorites::Entity::find()
+        .active()
+        .filter(user_favorites::Column::WorkspaceId.eq(ws.id))
+        .filter(user_favorites::Column::UserId.eq(user.id))
+        .filter(user_favorites::Column::EntityType.eq("project"))
+        .order_by_asc(user_favorites::Column::Sequence)
+        .all(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    let result = favs.iter().map(|f| serde_json::json!({
+        "id": f.id,
+        "entity_identifier": f.entity_identifier,
+        "entity_type": f.entity_type,
+        "project_id": f.project_id,
+    })).collect();
+
+    Ok(Json(result))
+}
+
+/// Agrega un proyecto a favoritos.
+///
+/// Espejo de `ProjectFavoritesViewSet.create`
+/// (`apps/api/plane/app/views/project/base.py`).
+#[utoipa::path(
+    post,
+    path = "/api/workspaces/{slug}/user-favorite-projects/",
+    tag = "Projects",
+    security(("TokenAuth" = []))
+)]
+pub async fn create_project_favorite(
+    State(state): State<AppState>,
+    AnyAuth(user): AnyAuth,
+    Path(slug): Path<String>,
+    Json(body): Json<serde_json::Value>,
+) -> Result<StatusCode, AppError> {
+    let ws = workspace_by_slug(&state.db, &slug).await?;
+    let _ = require_workspace_member(&state.db, ws.id, user.id).await?;
+
+    let project_id: Uuid = body.get("project")
+        .and_then(|v| v.as_str())
+        .and_then(|s| Uuid::parse_str(s).ok())
+        .ok_or_else(|| AppError::BadRequest("project is required".into()))?;
+
+    let now = chrono::Utc::now().fixed_offset();
+
+    // Idempotente: no duplicar si ya existe.
+    let existing = user_favorites::Entity::find()
+        .active()
+        .filter(user_favorites::Column::WorkspaceId.eq(ws.id))
+        .filter(user_favorites::Column::UserId.eq(user.id))
+        .filter(user_favorites::Column::EntityType.eq("project"))
+        .filter(user_favorites::Column::EntityIdentifier.eq(project_id))
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    if existing.is_none() {
+        user_favorites::ActiveModel {
+            id: Set(Uuid::new_v4()),
+            entity_type: Set("project".into()),
+            entity_identifier: Set(Some(project_id)),
+            project_id: Set(Some(project_id)),
+            workspace_id: Set(ws.id),
+            user_id: Set(user.id),
+            is_folder: Set(false),
+            sequence: Set(65535.0),
+            created_by_id: Set(Some(user.id)),
+            updated_by_id: Set(Some(user.id)),
+            created_at: Set(now),
+            updated_at: Set(now),
+            deleted_at: Set(None),
+            ..Default::default()
+        }
+        .insert(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+    }
+
+    Ok(StatusCode::NO_CONTENT)
+}
+
+/// Elimina un proyecto de favoritos.
+///
+/// Espejo de `ProjectFavoritesViewSet.destroy`
+/// (`apps/api/plane/app/views/project/base.py`).
+#[utoipa::path(
+    delete,
+    path = "/api/workspaces/{slug}/user-favorite-projects/{project_id}/",
+    tag = "Projects",
+    security(("TokenAuth" = []))
+)]
+pub async fn delete_project_favorite(
+    State(state): State<AppState>,
+    AnyAuth(user): AnyAuth,
+    Path((slug, project_id)): Path<(String, Uuid)>,
+) -> Result<StatusCode, AppError> {
+    let ws = workspace_by_slug(&state.db, &slug).await?;
+    let _ = require_workspace_member(&state.db, ws.id, user.id).await?;
+
+    // Hard delete (Django: soft=False)
+    user_favorites::Entity::delete_many()
+        .filter(user_favorites::Column::WorkspaceId.eq(ws.id))
+        .filter(user_favorites::Column::UserId.eq(user.id))
+        .filter(user_favorites::Column::EntityType.eq("project"))
+        .filter(user_favorites::Column::EntityIdentifier.eq(project_id))
+        .exec(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    Ok(StatusCode::NO_CONTENT)
+}
+
+// ─── POST + DELETE /workspaces/{slug}/projects/{project_id}/archive/ ─────────
+
+/// Archiva un proyecto.
+///
+/// Espejo de `ProjectArchiveUnarchiveEndpoint.post`
+/// (`apps/api/plane/app/views/project/base.py`).
+#[utoipa::path(
+    post,
+    path = "/api/workspaces/{slug}/projects/{project_id}/archive/",
+    tag = "Projects",
+    security(("TokenAuth" = []))
+)]
+pub async fn archive_project(
+    State(state): State<AppState>,
+    AnyAuth(user): AnyAuth,
+    Path((slug, project_id)): Path<(String, Uuid)>,
+) -> Result<Json<serde_json::Value>, AppError> {
+    let ws = workspace_by_slug(&state.db, &slug).await?;
+    let wm = require_workspace_member(&state.db, ws.id, user.id).await?;
+    let pm = project_member_for_user(&state.db, project_id, user.id).await?;
+
+    // ADMIN o MEMBER pueden archivar
+    let role = pm.as_ref().map(|m| m.role).unwrap_or(0);
+    if role < ROLE_MEMBER && wm.role < ROLE_ADMIN {
+        return Err(AppError::Forbidden);
+    }
+
+    let project = project_by_id(&state.db, ws.id, project_id).await?;
+    let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
+
+    let mut am: projects::ActiveModel = project.into();
+    am.archived_at = Set(Some(now));
+    am.updated_at = Set(now);
+    let updated = am.update(&state.db).await.map_err(AppError::Database)?;
+
+    // Eliminar favoritos del proyecto (Django behavior)
+    user_favorites::Entity::delete_many()
+        .filter(user_favorites::Column::WorkspaceId.eq(ws.id))
+        .filter(user_favorites::Column::EntityType.eq("project"))
+        .filter(user_favorites::Column::EntityIdentifier.eq(project_id))
+        .exec(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    Ok(Json(serde_json::json!({ "archived_at": updated.archived_at })))
+}
+
+/// Desarchiva un proyecto.
+///
+/// Espejo de `ProjectArchiveUnarchiveEndpoint.delete`
+/// (`apps/api/plane/app/views/project/base.py`).
+#[utoipa::path(
+    delete,
+    path = "/api/workspaces/{slug}/projects/{project_id}/archive/",
+    tag = "Projects",
+    security(("TokenAuth" = []))
+)]
+pub async fn unarchive_project(
+    State(state): State<AppState>,
+    AnyAuth(user): AnyAuth,
+    Path((slug, project_id)): Path<(String, Uuid)>,
+) -> Result<StatusCode, AppError> {
+    let ws = workspace_by_slug(&state.db, &slug).await?;
+    let wm = require_workspace_member(&state.db, ws.id, user.id).await?;
+    let pm = project_member_for_user(&state.db, project_id, user.id).await?;
+
+    let role = pm.as_ref().map(|m| m.role).unwrap_or(0);
+    if role < ROLE_MEMBER && wm.role < ROLE_ADMIN {
+        return Err(AppError::Forbidden);
+    }
+
+    let project = projects::Entity::find_by_id(project_id)
+        .filter(projects::Column::WorkspaceId.eq(ws.id))
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
+    let mut am: projects::ActiveModel = project.into();
+    am.archived_at = Set(None);
+    am.updated_at = Set(now);
+    am.update(&state.db).await.map_err(AppError::Database)?;
+
+    Ok(StatusCode::NO_CONTENT)
+}
+
+// ─── GET + DELETE /workspaces/{slug}/project-identifiers/ ────────────────────
+
+#[derive(Debug, serde::Deserialize)]
+pub struct IdentifierQuery {
+    pub name: Option<String>,
+}
+
+/// Verifica si un identificador de proyecto ya existe en el workspace.
+///
+/// Espejo de `ProjectIdentifierEndpoint.get`
+/// (`apps/api/plane/app/views/project/base.py`).
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/project-identifiers/",
+    tag = "Projects",
+    security(("TokenAuth" = []))
+)]
+pub async fn check_project_identifier(
+    State(state): State<AppState>,
+    AnyAuth(user): AnyAuth,
+    Path(slug): Path<String>,
+    Query(q): Query<IdentifierQuery>,
+) -> Result<Json<serde_json::Value>, AppError> {
+    let ws = workspace_by_slug(&state.db, &slug).await?;
+    let _ = require_workspace_member(&state.db, ws.id, user.id).await?;
+
+    let name = q.name
+        .map(|n| n.trim().to_uppercase())
+        .filter(|n| !n.is_empty())
+        .ok_or_else(|| AppError::BadRequest("name is required".into()))?;
+
+    let identifiers = project_identifiers::Entity::find()
+        .filter(project_identifiers::Column::Name.eq(&name))
+        .filter(project_identifiers::Column::WorkspaceId.eq(ws.id))
+        .all(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    let exists_count = identifiers.len();
+    let identifiers_data: Vec<serde_json::Value> = identifiers.iter().map(|i| serde_json::json!({
+        "id": i.id,
+        "name": i.name,
+        "project": i.project_id,
+    })).collect();
+
+    Ok(Json(serde_json::json!({
+        "exists": exists_count,
+        "identifiers": identifiers_data,
+    })))
+}
+
+/// Elimina un identificador de proyecto sin proyecto asociado.
+///
+/// Espejo de `ProjectIdentifierEndpoint.delete`
+/// (`apps/api/plane/app/views/project/base.py`).
+#[utoipa::path(
+    delete,
+    path = "/api/workspaces/{slug}/project-identifiers/",
+    tag = "Projects",
+    security(("TokenAuth" = []))
+)]
+pub async fn delete_project_identifier(
+    State(state): State<AppState>,
+    AnyAuth(user): AnyAuth,
+    Path(slug): Path<String>,
+    Json(body): Json<serde_json::Value>,
+) -> Result<StatusCode, AppError> {
+    let ws = workspace_by_slug(&state.db, &slug).await?;
+    let wm = require_workspace_member(&state.db, ws.id, user.id).await?;
+    if wm.role < ROLE_MEMBER {
+        return Err(AppError::Forbidden);
+    }
+
+    let name = body.get("name")
+        .and_then(|v| v.as_str())
+        .map(|s| s.trim().to_uppercase())
+        .filter(|s| !s.is_empty())
+        .ok_or_else(|| AppError::BadRequest("name is required".into()))?;
+
+    // No eliminar si hay un proyecto activo con ese identifier
+    let project_exists = projects::Entity::find()
+        .active()
+        .filter(projects::Column::Identifier.eq(&name))
+        .filter(projects::Column::WorkspaceId.eq(ws.id))
+        .count(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    if project_exists > 0 {
+        return Err(AppError::BadRequest(
+            "Cannot delete an identifier of an existing project".into(),
+        ));
+    }
+
+    project_identifiers::Entity::delete_many()
+        .filter(project_identifiers::Column::Name.eq(&name))
+        .filter(project_identifiers::Column::WorkspaceId.eq(ws.id))
+        .exec(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    Ok(StatusCode::NO_CONTENT)
+}
+
+// ─── GET /workspaces/{slug}/projects/{project_id}/invitations/{pk}/ ──────────
+
+/// Retorna el detalle de una invitación de proyecto.
+///
+/// Espejo de `ProjectInvitationsViewset.retrieve`
+/// (`apps/api/plane/app/urls/project.py`).
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/projects/{project_id}/invitations/{pk}/",
+    tag = "Projects",
+    security(("TokenAuth" = []))
+)]
+pub async fn get_project_invitation(
+    State(state): State<AppState>,
+    AnyAuth(user): AnyAuth,
+    Path((slug, project_id, pk)): Path<(String, Uuid, Uuid)>,
+) -> Result<Json<ProjectInvitationResponse>, AppError> {
+    let ws = workspace_by_slug(&state.db, &slug).await?;
+    let wm = require_workspace_member(&state.db, ws.id, user.id).await?;
+    let pm = project_member_for_user(&state.db, project_id, user.id).await?;
+    require_project_admin(&pm, &wm)?;
+
+    let invite = project_member_invites::Entity::find_by_id(pk)
+        .active()
+        .filter(project_member_invites::Column::ProjectId.eq(project_id))
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    Ok(Json(ProjectInvitationResponse::from(&invite)))
 }
