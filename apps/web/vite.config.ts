@@ -14,12 +14,25 @@ const viteEnv = Object.keys(process.env)
     return a;
   }, {});
 
-// Nota: NO configuramos `base` aquí.
-// Traefik aplica StripPrefix("/app") antes de hacer forward al dev server,
-// por lo que Vite siempre recibe paths que empiezan en "/".
-// El basename "/app" vive solo en react-router.config.ts (routing del browser).
+// `base` debe coincidir con VITE_WEB_BASE_PATH ("/app") para que todos los
+// assets de Vite (CSS, JS, /node_modules/.vite/deps/…) se sirvan bajo /app/*
+// y coincidan con la regla PathPrefix(`/app`) de Traefik.
+//
+// Sin este `base`, los assets se generan con rutas raíz (/styles/globals.css,
+// /node_modules/.vite/…) que Traefik no enruta al contenedor web → 404 →
+// pantalla negra tras login.
+//
+// Con base: '/app':
+//   · Vite sirve /app/styles/globals.css, /app/node_modules/.vite/deps/…
+//   · Traefik matchea PathPrefix(`/app`) → forward correcto al dev server ✓
+//   · Vite internamente stripea el prefijo /app y sirve el archivo ✓
+//
+// Nota: el StripPrefix que mencionaba el comentario anterior NUNCA se definió
+// en los labels de Traefik del docker-compose-dev.yml, por eso fallaba.
+const webBasePath = process.env.VITE_WEB_BASE_PATH || "/app";
 
 export default defineConfig(() => ({
+  base: webBasePath,
   define: {
     "process.env": JSON.stringify(viteEnv),
   },
