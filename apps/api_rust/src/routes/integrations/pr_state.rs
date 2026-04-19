@@ -15,7 +15,7 @@ use sea_orm::{ActiveModelTrait, ActiveValue::Set, ColumnTrait, EntityTrait, Quer
 use uuid::Uuid;
 
 use crate::{
-    auth::{extractors::WorkspaceMemberGuard, permissions::require_workspace_admin},
+    auth::{extractors::WorkspaceMemberGuard, permissions::{require_workspace_admin, require_workspace_member}},
     entities::{db_githubprstatemapping, workspace_integrations},
     error::AppError,
     utils::soft_delete::SoftDeleteExt,
@@ -44,7 +44,9 @@ pub async fn list_pr_state_mappings(
     guard: WorkspaceMemberGuard,
     Path((_slug, wi_id)): Path<(String, Uuid)>,
 ) -> Result<Json<Vec<PrStateMappingResponse>>, AppError> {
-    require_workspace_admin(&guard.member)?;
+    // Django: @allow_permission([ROLE.ADMIN, ROLE.MEMBER], level="WORKSPACE")
+    // Members también pueden listar los mapeos de estado de PR.
+    require_workspace_member(&guard.member)?;
 
     let mappings = db_githubprstatemapping::Entity::find()
         .active()
