@@ -1,7 +1,7 @@
 // src/routes/helpers.rs
 //! Helpers de dominio compartidos entre rutas.
 //!
-//! Centraliza las consultas de workspace y membresía para evitar duplicación
+//! Centraliza las consultas de workspace y membresÃ­a para evitar duplicaciÃ³n
 //! entre `workspaces.rs`, `projects.rs`, `states.rs`, etc.
 
 use sea_orm::{ColumnTrait, EntityTrait, QueryFilter};
@@ -44,4 +44,26 @@ pub async fn require_workspace_member(
         .await
         .map_err(AppError::Database)?
         .ok_or(AppError::Forbidden)
+}
+
+/// Recupera el ProjectMember activo para (project_id, user_id).
+/// Retorna Ok(None) si el usuario no es miembro del proyecto.
+/// Usado por workspace_extras.rs para verificar acceso antes de
+/// convertir un draft en issue — refleja la misma logica de
+/// Django ProjectViewSet.get_queryset() que filtra por ProjectMember.
+pub async fn project_member_for_user(
+    db: &sea_orm::DatabaseConnection,
+    project_id: uuid::Uuid,
+    user_id: uuid::Uuid,
+) -> Result<Option<crate::entities::project_members::Model>, crate::error::AppError> {
+    use sea_orm::{ColumnTrait, EntityTrait, QueryFilter};
+    use crate::utils::soft_delete::SoftDeleteExt;
+    crate::entities::project_members::Entity::find()
+        .active()
+        .filter(crate::entities::project_members::Column::ProjectId.eq(project_id))
+        .filter(crate::entities::project_members::Column::MemberId.eq(user_id))
+        .filter(crate::entities::project_members::Column::IsActive.eq(true))
+        .one(db)
+        .await
+        .map_err(crate::error::AppError::Database)
 }
