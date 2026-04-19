@@ -165,6 +165,7 @@ export const WorkItemStateDropdownBase = observer(function WorkItemStateDropdown
           disabled={disabled}
         >
           <DropdownButton
+            as="div"
             className={buttonClassName}
             isActive={isOpen}
             tooltipHeading={t("state")}

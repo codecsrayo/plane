@@ -15,6 +15,7 @@ import { BACKGROUND_BUTTON_VARIANTS, BORDER_BUTTON_VARIANTS } from "./constants"
 import type { TButtonVariants } from "./types";
 
 export type DropdownButtonProps = {
+  as?: "button" | "div";
   children: React.ReactNode;
   className?: string;
   isActive: boolean;
@@ -26,6 +27,7 @@ export type DropdownButtonProps = {
 };
 
 type ButtonProps = {
+  as?: "button" | "div";
   children: React.ReactNode;
   className?: string;
   isActive: boolean;
@@ -37,6 +39,7 @@ type ButtonProps = {
 
 export function DropdownButton(props: DropdownButtonProps) {
   const {
+    as = "button",
     children,
     className,
     isActive,
@@ -54,6 +57,7 @@ export function DropdownButton(props: DropdownButtonProps) {
 
   return (
     <ButtonToRender
+      as={as}
       className={className}
       isActive={isActive}
       tooltipContent={tooltipContent}
@@ -67,8 +71,30 @@ export function DropdownButton(props: DropdownButtonProps) {
 }
 
 function BorderButton(props: ButtonProps) {
-  const { children, className, isActive, tooltipContent, renderToolTipByDefault, tooltipHeading, showTooltip } = props;
+  const {
+    as = "button",
+    children,
+    className,
+    isActive,
+    tooltipContent,
+    renderToolTipByDefault,
+    tooltipHeading,
+    showTooltip,
+  } = props;
   const { isMobile } = usePlatformOS();
+  const content = (
+    <div
+      className={cn(
+        "flex h-full w-full items-center justify-start gap-1.5 border-[0.5px] border-strong",
+        {
+          "bg-layer-transparent-active": isActive,
+        },
+        className
+      )}
+    >
+      {children}
+    </div>
+  );
 
   return (
     <Tooltip
@@ -78,26 +104,48 @@ function BorderButton(props: ButtonProps) {
       isMobile={isMobile}
       renderByDefault={renderToolTipByDefault}
     >
-      <Button
-        variant="ghost"
-        size="sm"
-        className={cn(
-          "flex h-full w-full items-center justify-start gap-1.5 border-[0.5px] border-strong",
-          {
-            "bg-layer-transparent-active": isActive,
-          },
-          className
-        )}
-      >
-        {children}
-      </Button>
+      {as === "button" ? (
+        <Button
+          variant="ghost"
+          size="sm"
+          className={cn(
+            "flex h-full w-full items-center justify-start gap-1.5 border-[0.5px] border-strong",
+            {
+              "bg-layer-transparent-active": isActive,
+            },
+            className
+          )}
+        >
+          {children}
+        </Button>
+      ) : (
+        content
+      )}
     </Tooltip>
   );
 }
 
 function BackgroundButton(props: ButtonProps) {
-  const { children, className, tooltipContent, tooltipHeading, renderToolTipByDefault, showTooltip } = props;
+  const {
+    as = "button",
+    children,
+    className,
+    tooltipContent,
+    tooltipHeading,
+    renderToolTipByDefault,
+    showTooltip,
+  } = props;
   const { isMobile } = usePlatformOS();
+  const content = (
+    <div
+      className={cn(
+        "flex h-full w-full items-center justify-between gap-1.5 bg-layer-3 hover:bg-layer-1-hover",
+        className
+      )}
+    >
+      {children}
+    </div>
+  );
   return (
     <Tooltip
       tooltipHeading={tooltipHeading}
@@ -106,23 +154,49 @@ function BackgroundButton(props: ButtonProps) {
       isMobile={isMobile}
       renderByDefault={renderToolTipByDefault}
     >
-      <Button
-        variant="ghost"
-        size="sm"
-        className={cn(
-          "flex h-full w-full items-center justify-between gap-1.5 bg-layer-3 hover:bg-layer-1-hover",
-          className
-        )}
-      >
-        {children}
-      </Button>
+      {as === "button" ? (
+        <Button
+          variant="ghost"
+          size="sm"
+          className={cn(
+            "flex h-full w-full items-center justify-between gap-1.5 bg-layer-3 hover:bg-layer-1-hover",
+            className
+          )}
+        >
+          {children}
+        </Button>
+      ) : (
+        content
+      )}
     </Tooltip>
   );
 }
 
 function TransparentButton(props: ButtonProps) {
-  const { children, className, isActive, tooltipContent, tooltipHeading, renderToolTipByDefault, showTooltip } = props;
+  const {
+    as = "button",
+    children,
+    className,
+    isActive,
+    tooltipContent,
+    tooltipHeading,
+    renderToolTipByDefault,
+    showTooltip,
+  } = props;
   const { isMobile } = usePlatformOS();
+  const content = (
+    <div
+      className={cn(
+        "flex h-full w-full items-center justify-between gap-1.5",
+        {
+          "bg-layer-transparent-active": isActive,
+        },
+        className
+      )}
+    >
+      {children}
+    </div>
+  );
   return (
     <Tooltip
       tooltipHeading={tooltipHeading}
@@ -131,19 +205,23 @@ function TransparentButton(props: ButtonProps) {
       isMobile={isMobile}
       renderByDefault={renderToolTipByDefault}
     >
-      <Button
-        variant="ghost"
-        size="sm"
-        className={cn(
-          "flex h-full w-full items-center justify-between gap-1.5",
-          {
-            "bg-layer-transparent-active": isActive,
-          },
-          className
-        )}
-      >
-        {children}
-      </Button>
+      {as === "button" ? (
+        <Button
+          variant="ghost"
+          size="sm"
+          className={cn(
+            "flex h-full w-full items-center justify-between gap-1.5",
+            {
+              "bg-layer-transparent-active": isActive,
+            },
+            className
+          )}
+        >
+          {children}
+        </Button>
+      ) : (
+        content
+      )}
     </Tooltip>
   );
 }
