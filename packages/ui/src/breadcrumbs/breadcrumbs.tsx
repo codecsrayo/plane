@@ -48,11 +48,8 @@ function Breadcrumbs({ className, children, onBack, isLoading = false }: Breadcr
         <>
           {childrenArray.map((child, index) => {
             if (isLoading) {
-              return (
-                <>
-                  <BreadcrumbItemLoader />
-                </>
-              );
+              const loaderKey = React.isValidElement(child) && child.key != null ? child.key : `breadcrumb-loader`;
+              return <BreadcrumbItemLoader key={loaderKey} />;
             }
             if (React.isValidElement<BreadcrumbItemProps>(child)) {
               return React.cloneElement(child, {
