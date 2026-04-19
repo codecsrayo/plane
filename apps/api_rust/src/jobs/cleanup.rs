@@ -16,6 +16,8 @@
 //! eliminarlos. En Rust se omite MongoDB (no está en el stack) y se elimina
 //! directamente.
 
+use std::collections::HashSet;
+
 use aws_sdk_s3::Client as S3Client;
 use sea_orm::{
     ActiveModelTrait, ActiveValue::Set, ColumnTrait, ConnectionTrait, DatabaseConnection,
@@ -26,57 +28,187 @@ use crate::entities::{exporters};
 
 // ── hard_delete ───────────────────────────────────────────────────────────────
 
-/// Elimina definitivamente registros con `deleted_at` mayor a `days` días.
+/// Tablas procesadas en orden hoja → raíz durante la pasada explícita.
+/// Paridad con el bloque hardcodeado de `deletion_task.hard_delete()` en Django
+/// (Workspace, Project, Cycle, Module, Issue, Page, IssueView, Label, State,
+/// IssueActivity, IssueComment, IssueLink, IssueReaction, UserFavorite,
+/// ModuleIssue, CycleIssue, Estimate, EstimatePoint). El orden está invertido
+/// respecto a Django porque Rust no cascada en el ORM: tenemos que borrar
+/// hijos antes que padres al nivel SQL.
+const HARD_DELETE_ORDERED_TABLES: &[&str] = &[
+    "estimate_points",
+    "estimates",
+    "issue_reactions",
+    "issue_links",
+    "issue_comments",
+    "issue_activities",
+    "user_favorites",
+    "module_issues",
+    "cycle_issues",
+    "issues",
+    "states",
+    "labels",
+    "issue_views",
+    "pages",
+    "modules",
+    "cycles",
+    "projects",
+    "workspaces",
+];
+
+/// Elimina definitivamente registros con `deleted_at` anterior a `days` días.
 ///
-/// Equivalente a `deletion_task.hard_delete()`.
-/// Procesa las entidades en orden de dependencia (hijos antes que padres)
-/// para evitar violaciones de FK con ON DELETE RESTRICT.
+/// Equivalente a `plane/bgtasks/deletion_task.py::hard_delete()`.
+///
+/// Implementa dos pasadas, igual que la versión Django:
+///
+/// 1. **Pasada ordenada**: las 18 tablas de la jerarquía principal en orden
+///    hoja → raíz. Cualquier fallo aquí aborta (el orden importa y un fallo
+///    indica corrupción de estado).
+/// 2. **Pasada catch-all**: descubre dinámicamente toda tabla en el schema
+///    `public` con columna `deleted_at` (vía `information_schema`) y las
+///    purga. Equivalente al loop `apps.get_models()` al final del
+///    `hard_delete` de Django. Los errores por tabla se loguean como WARN
+///    pero NO abortan el barrido (más resiliente que Django: Django aborta
+///    toda la task si una sola tabla falla, lo cual es indeseable para una
+///    tarea diaria de GC — mejor purgar las que podemos).
 pub async fn hard_delete(db: &DatabaseConnection, days: i64) -> anyhow::Result<()> {
     let cutoff = chrono::Utc::now() - chrono::Duration::days(days);
     let cutoff_dt: chrono::DateTime<chrono::FixedOffset> = cutoff.into();
 
-    // Hoja → raíz para respetar FKs
-    let tables: &[&str] = &[
-        "estimate_points",
-        "estimates",
-        "issue_reactions",
-        "issue_links",
-        "issue_comments",
-        "issue_activities",
-        "user_favorites",
-        "module_issues",
-        "cycle_issues",
-        "issues",
-        "states",
-        "labels",
-        "issue_views",
-        "pages",
-        "modules",
-        "cycles",
-        "projects",
-        "workspaces",
-    ];
-
     let mut total_deleted = 0u64;
-    for table in tables {
-        let sql = format!(
-            "DELETE FROM {table} WHERE deleted_at IS NOT NULL AND deleted_at < $1"
-        );
-        let stmt = Statement::from_sql_and_values(
-            sea_orm::DatabaseBackend::Postgres,
-            &sql,
-            vec![cutoff_dt.into()],
-        );
-        let result: sea_orm::ExecResult = db.execute(stmt).await?;
-        let n = result.rows_affected();
-        if n > 0 {
-            tracing::info!(table, deleted = n, "hard_delete: purged rows");
+
+    // ── Pasada 1: tablas ordenadas (hoja → raíz) ──────────────────────────────
+    for table in HARD_DELETE_ORDERED_TABLES {
+        total_deleted += purge_soft_deleted(db, table, &cutoff_dt).await?;
+    }
+
+    // ── Pasada 2: catch-all sobre todas las tablas con `deleted_at` ──────────
+    // Paridad con:
+    //     for model in apps.get_models():
+    //         if hasattr(model, "deleted_at"):
+    //             model.all_objects.filter(deleted_at__lt=cutoff).delete()
+    let already_handled: HashSet<&str> = HARD_DELETE_ORDERED_TABLES.iter().copied().collect();
+    let discovered = find_tables_with_deleted_at(db).await?;
+    for table in discovered {
+        if already_handled.contains(table.as_str()) {
+            continue;
         }
-        total_deleted += n;
+        match purge_soft_deleted(db, &table, &cutoff_dt).await {
+            Ok(n) => total_deleted += n,
+            Err(e) => tracing::warn!(
+                table = %table,
+                error = %e,
+                "hard_delete: fallo al purgar tabla en catch-all, continuando"
+            ),
+        }
     }
 
     tracing::info!(total_deleted, days, "hard_delete completado");
     Ok(())
+}
+
+/// Ejecuta `DELETE FROM <table> WHERE deleted_at IS NOT NULL AND deleted_at < $1`.
+///
+/// Valida el identificador de tabla antes de interpolarlo para evitar
+/// inyección SQL (defensa en profundidad: los nombres vienen de
+/// `information_schema` y son siempre seguros, pero validamos igual).
+async fn purge_soft_deleted(
+    db: &DatabaseConnection,
+    table: &str,
+    cutoff_dt: &chrono::DateTime<chrono::FixedOffset>,
+) -> anyhow::Result<u64> {
+    if !is_safe_identifier(table) {
+        anyhow::bail!("hard_delete: identificador de tabla inválido: {table:?}");
+    }
+    // El identificador se cita con comillas dobles (identifier quoting de SQL
+    // estándar); el valor de cutoff va parametrizado.
+    let sql = format!(
+        r#"DELETE FROM "{table}" WHERE deleted_at IS NOT NULL AND deleted_at < $1"#
+    );
+    let stmt = Statement::from_sql_and_values(
+        sea_orm::DatabaseBackend::Postgres,
+        &sql,
+        vec![(*cutoff_dt).into()],
+    );
+    let n = db.execute(stmt).await?.rows_affected();
+    if n > 0 {
+        tracing::info!(table, deleted = n, "hard_delete: purged rows");
+    }
+    Ok(n)
+}
+
+/// Devuelve los nombres de las tablas `BASE TABLE` del schema `public` que
+/// tienen una columna `deleted_at`.
+///
+/// Mirror del `hasattr(model, "deleted_at")` de Django, pero a nivel de
+/// metadata de la BD (no depende de entities registrados en SeaORM).
+async fn find_tables_with_deleted_at(
+    db: &DatabaseConnection,
+) -> anyhow::Result<Vec<String>> {
+    let stmt = Statement::from_string(
+        sea_orm::DatabaseBackend::Postgres,
+        r#"
+        SELECT c.table_name
+        FROM   information_schema.columns c
+        JOIN   information_schema.tables  t
+          ON   t.table_schema = c.table_schema
+         AND   t.table_name   = c.table_name
+        WHERE  c.table_schema = 'public'
+          AND  c.column_name  = 'deleted_at'
+          AND  t.table_type   = 'BASE TABLE'
+        ORDER BY c.table_name
+        "#
+        .to_owned(),
+    );
+    let rows = db.query_all(stmt).await?;
+    let tables = rows
+        .iter()
+        .filter_map(|r| r.try_get::<String>("", "table_name").ok())
+        .collect();
+    Ok(tables)
+}
+
+/// Valida que un identificador sea `[a-zA-Z_][a-zA-Z0-9_]*` (snake_case
+/// estándar de Postgres). Rechaza cualquier cosa con comillas, espacios,
+/// punto y coma, etc. Defensa ante inyección SQL en el path del
+/// `format!()` del DELETE.
+fn is_safe_identifier(s: &str) -> bool {
+    if s.is_empty() || s.len() > 63 {
+        // 63 es el límite de identificador de Postgres (NAMEDATALEN-1).
+        return false;
+    }
+    let mut chars = s.chars();
+    let first = chars.next().unwrap();
+    if !(first.is_ascii_alphabetic() || first == '_') {
+        return false;
+    }
+    chars.all(|c| c.is_ascii_alphanumeric() || c == '_')
+}
+
+#[cfg(test)]
+mod tests {
+    use super::is_safe_identifier;
+
+    #[test]
+    fn safe_identifier_accepts_snake_case() {
+        assert!(is_safe_identifier("issues"));
+        assert!(is_safe_identifier("issue_description_versions"));
+        assert!(is_safe_identifier("_internal"));
+        assert!(is_safe_identifier("t1"));
+    }
+
+    #[test]
+    fn safe_identifier_rejects_injection_attempts() {
+        assert!(!is_safe_identifier(""));
+        assert!(!is_safe_identifier("1issues")); // no puede empezar con dígito
+        assert!(!is_safe_identifier("issues; DROP TABLE x"));
+        assert!(!is_safe_identifier("issues--"));
+        assert!(!is_safe_identifier("\"issues\""));
+        assert!(!is_safe_identifier("is sues"));
+        assert!(!is_safe_identifier("issues.users"));
+        assert!(!is_safe_identifier(&"a".repeat(64))); // > 63 chars
+    }
 }
 
 // ── delete_api_logs ───────────────────────────────────────────────────────────
