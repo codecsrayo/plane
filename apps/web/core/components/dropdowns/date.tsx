@@ -121,47 +121,36 @@ export const DateDropdown = observer(function DateDropdown(props: Props) {
   if (maxDate) disabledDays.push({ after: maxDate });
 
   const comboButton = (
-    <button
-      type="button"
-      className={cn(
-        "clickable block h-full max-w-full outline-none",
-        {
-          "cursor-not-allowed text-secondary": disabled,
-          "cursor-pointer": !disabled,
-        },
-        buttonContainerClassName
-      )}
-      ref={setReferenceElement}
-      onClick={handleOnClick}
+    <DropdownButton
+      buttonRef={setReferenceElement}
+      className={buttonClassName}
+      containerClassName={buttonContainerClassName}
       disabled={disabled}
+      isActive={isOpen}
+      onClick={handleOnClick}
+      tooltipHeading={placeholder}
+      tooltipContent={value ? renderFormattedDate(value, formatToken) : "None"}
+      showTooltip={showTooltip}
+      variant={buttonVariant}
+      renderToolTipByDefault={renderByDefault}
     >
-      <DropdownButton
-        className={buttonClassName}
-        isActive={isOpen}
-        tooltipHeading={placeholder}
-        tooltipContent={value ? renderFormattedDate(value, formatToken) : "None"}
-        showTooltip={showTooltip}
-        variant={buttonVariant}
-        renderToolTipByDefault={renderByDefault}
-      >
-        {!hideIcon && icon}
-        {BUTTON_VARIANTS_WITH_TEXT.includes(buttonVariant) && (
-          <span className={cn("flex-grow truncate text-left text-body-xs-medium", labelClassName)}>
-            {value ? renderFormattedDate(value, formatToken) : placeholder}
-          </span>
-        )}
-        {isClearable && !disabled && isDateSelected && (
-          <CloseIcon
-            className={cn("h-2.5 w-2.5 flex-shrink-0", clearIconClassName)}
-            onClick={(e) => {
-              e.stopPropagation();
-              e.preventDefault();
-              onChange(null);
-            }}
-          />
-        )}
-      </DropdownButton>
-    </button>
+      {!hideIcon && icon}
+      {BUTTON_VARIANTS_WITH_TEXT.includes(buttonVariant) && (
+        <span className={cn("flex-grow truncate text-left text-body-xs-medium", labelClassName)}>
+          {value ? renderFormattedDate(value, formatToken) : placeholder}
+        </span>
+      )}
+      {isClearable && !disabled && isDateSelected && (
+        <CloseIcon
+          className={cn("h-2.5 w-2.5 flex-shrink-0", clearIconClassName)}
+          onClick={(e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            onChange(null);
+          }}
+        />
+      )}
+    </DropdownButton>
   );
 
   return (

@@ -5,6 +5,7 @@
  */
 
 import React from "react";
+import type { MouseEventHandler, Ref } from "react";
 // helpers
 import { Button } from "@plane/propel/button";
 import { Tooltip } from "@plane/propel/tooltip";
@@ -16,9 +17,14 @@ import type { TButtonVariants } from "./types";
 
 export type DropdownButtonProps = {
   as?: "button" | "div";
+  buttonRef?: Ref<HTMLButtonElement>;
   children: React.ReactNode;
   className?: string;
+  containerClassName?: string;
+  disabled?: boolean;
   isActive: boolean;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
+  tabIndex?: number;
   tooltipContent?: string | React.ReactNode | null;
   tooltipHeading: string;
   showTooltip: boolean;
@@ -28,9 +34,14 @@ export type DropdownButtonProps = {
 
 type ButtonProps = {
   as?: "button" | "div";
+  buttonRef?: Ref<HTMLButtonElement>;
   children: React.ReactNode;
   className?: string;
+  containerClassName?: string;
+  disabled?: boolean;
   isActive: boolean;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
+  tabIndex?: number;
   tooltipContent?: string | React.ReactNode | null;
   tooltipHeading: string;
   showTooltip: boolean;
@@ -40,11 +51,16 @@ type ButtonProps = {
 export function DropdownButton(props: DropdownButtonProps) {
   const {
     as = "button",
+    buttonRef,
     children,
     className,
+    containerClassName,
+    disabled = false,
     isActive,
+    onClick,
     tooltipContent,
     renderToolTipByDefault = true,
+    tabIndex,
     tooltipHeading,
     showTooltip,
     variant,
@@ -58,8 +74,13 @@ export function DropdownButton(props: DropdownButtonProps) {
   return (
     <ButtonToRender
       as={as}
+      buttonRef={buttonRef}
       className={className}
+      containerClassName={containerClassName}
+      disabled={disabled}
       isActive={isActive}
+      onClick={onClick}
+      tabIndex={tabIndex}
       tooltipContent={tooltipContent}
       tooltipHeading={tooltipHeading}
       showTooltip={showTooltip}
@@ -73,11 +94,16 @@ export function DropdownButton(props: DropdownButtonProps) {
 function BorderButton(props: ButtonProps) {
   const {
     as = "button",
+    buttonRef,
     children,
     className,
+    containerClassName,
+    disabled = false,
     isActive,
+    onClick,
     tooltipContent,
     renderToolTipByDefault,
+    tabIndex,
     tooltipHeading,
     showTooltip,
   } = props;
@@ -106,10 +132,19 @@ function BorderButton(props: ButtonProps) {
     >
       {as === "button" ? (
         <Button
+          ref={buttonRef}
           variant="ghost"
           size="sm"
+          onClick={onClick}
+          disabled={disabled}
+          tabIndex={tabIndex}
           className={cn(
-            "flex h-full w-full items-center justify-start gap-1.5 border-[0.5px] border-strong",
+            "clickable block h-full max-w-full items-center justify-start gap-1.5 border-[0.5px] border-strong outline-none",
+            {
+              "cursor-not-allowed text-secondary": disabled,
+              "cursor-pointer": !disabled,
+            },
+            containerClassName,
             {
               "bg-layer-transparent-active": isActive,
             },
@@ -128,8 +163,13 @@ function BorderButton(props: ButtonProps) {
 function BackgroundButton(props: ButtonProps) {
   const {
     as = "button",
+    buttonRef,
     children,
     className,
+    containerClassName,
+    disabled = false,
+    onClick,
+    tabIndex,
     tooltipContent,
     tooltipHeading,
     renderToolTipByDefault,
@@ -156,10 +196,19 @@ function BackgroundButton(props: ButtonProps) {
     >
       {as === "button" ? (
         <Button
+          ref={buttonRef}
           variant="ghost"
           size="sm"
+          onClick={onClick}
+          disabled={disabled}
+          tabIndex={tabIndex}
           className={cn(
-            "flex h-full w-full items-center justify-between gap-1.5 bg-layer-3 hover:bg-layer-1-hover",
+            "clickable block h-full max-w-full items-center justify-between gap-1.5 bg-layer-3 outline-none hover:bg-layer-1-hover",
+            {
+              "cursor-not-allowed text-secondary": disabled,
+              "cursor-pointer": !disabled,
+            },
+            containerClassName,
             className
           )}
         >
@@ -175,9 +224,14 @@ function BackgroundButton(props: ButtonProps) {
 function TransparentButton(props: ButtonProps) {
   const {
     as = "button",
+    buttonRef,
     children,
     className,
+    containerClassName,
+    disabled = false,
     isActive,
+    onClick,
+    tabIndex,
     tooltipContent,
     tooltipHeading,
     renderToolTipByDefault,
@@ -207,10 +261,19 @@ function TransparentButton(props: ButtonProps) {
     >
       {as === "button" ? (
         <Button
+          ref={buttonRef}
           variant="ghost"
           size="sm"
+          onClick={onClick}
+          disabled={disabled}
+          tabIndex={tabIndex}
           className={cn(
-            "flex h-full w-full items-center justify-between gap-1.5",
+            "clickable block h-full max-w-full items-center justify-between gap-1.5 outline-none",
+            {
+              "cursor-not-allowed text-secondary": disabled,
+              "cursor-pointer": !disabled,
+            },
+            containerClassName,
             {
               "bg-layer-transparent-active": isActive,
             },

@@ -125,55 +125,44 @@ export const ModuleDropdownBase = observer(function ModuleDropdownBase(props: TM
           {button}
         </button>
       ) : (
-        <button
-          ref={setReferenceElement}
-          type="button"
-          className={cn(
-            "clickable block h-full max-w-full outline-none hover:bg-layer-1",
-            {
-              "cursor-not-allowed text-secondary": disabled,
-              "cursor-pointer": !disabled,
-            },
-            buttonContainerClassName
-          )}
-          onClick={handleOnClick}
+        <DropdownButton
+          buttonRef={setReferenceElement}
+          className={buttonClassName}
+          containerClassName={cn("hover:bg-layer-1", buttonContainerClassName)}
           disabled={disabled}
+          isActive={isOpen}
+          onClick={handleOnClick}
           tabIndex={tabIndex}
+          tooltipHeading={t("common.module")}
+          tooltipContent={
+            Array.isArray(value)
+              ? `${value
+                  .map((moduleId) => getModuleById(moduleId)?.name)
+                  .toString()
+                  .replaceAll(",", ", ")}`
+              : ""
+          }
+          showTooltip={showTooltip}
+          variant={buttonVariant}
+          renderToolTipByDefault={renderByDefault}
         >
-          <DropdownButton
-            className={buttonClassName}
-            isActive={isOpen}
-            tooltipHeading={t("common.module")}
-            tooltipContent={
-              Array.isArray(value)
-                ? `${value
-                    .map((moduleId) => getModuleById(moduleId)?.name)
-                    .toString()
-                    .replaceAll(",", ", ")}`
-                : ""
-            }
+          <ModuleButtonContent
+            disabled={disabled}
+            dropdownArrow={dropdownArrow}
+            dropdownArrowClassName={dropdownArrowClassName}
+            hideIcon={hideIcon}
+            hideText={BUTTON_VARIANTS_WITHOUT_TEXT.includes(buttonVariant)}
+            placeholder={placeholder}
+            showCount={showCount}
             showTooltip={showTooltip}
-            variant={buttonVariant}
-            renderToolTipByDefault={renderByDefault}
-          >
-            <ModuleButtonContent
-              disabled={disabled}
-              dropdownArrow={dropdownArrow}
-              dropdownArrowClassName={dropdownArrowClassName}
-              hideIcon={hideIcon}
-              hideText={BUTTON_VARIANTS_WITHOUT_TEXT.includes(buttonVariant)}
-              placeholder={placeholder}
-              showCount={showCount}
-              showTooltip={showTooltip}
-              value={value}
-              // `ModuleButtonContent` only invokes `onChange` inside its multi-select branch
-              // (`Array.isArray(value)`), so in single-select mode this cast is never actually
-              // called. Launder through `unknown` to narrow the union type without using `any`.
-              onChange={onChange as unknown as (val: string[]) => void}
-              className={itemClassName}
-            />
-          </DropdownButton>
-        </button>
+            value={value}
+            // `ModuleButtonContent` only invokes `onChange` inside its multi-select branch
+            // (`Array.isArray(value)`), so in single-select mode this cast is never actually
+            // called. Launder through `unknown` to narrow the union type without using `any`.
+            onChange={onChange as unknown as (val: string[]) => void}
+            className={itemClassName}
+          />
+        </DropdownButton>
       )}
     </>
   );

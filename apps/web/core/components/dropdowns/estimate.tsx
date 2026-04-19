@@ -172,48 +172,37 @@ export const EstimateDropdown = observer(function EstimateDropdown(props: Props)
           {button}
         </button>
       ) : (
-        <button
-          ref={setReferenceElement}
-          type="button"
-          className={cn(
-            "clickable block h-full max-w-full outline-none",
-            {
-              "cursor-not-allowed text-secondary": disabled,
-              "cursor-pointer": !disabled,
-            },
-            buttonContainerClassName
-          )}
-          onClick={handleOnClick}
+        <DropdownButton
+          buttonRef={setReferenceElement}
+          className={buttonClassName}
+          containerClassName={buttonContainerClassName}
           disabled={disabled}
+          isActive={isOpen}
+          onClick={handleOnClick}
+          tooltipHeading={t("project_settings.estimates.label")}
+          tooltipContent={selectedEstimate ? selectedEstimate?.value : placeholder}
+          showTooltip={showTooltip}
+          variant={buttonVariant}
+          renderToolTipByDefault={renderByDefault}
         >
-          <DropdownButton
-            className={buttonClassName}
-            isActive={isOpen}
-            tooltipHeading={t("project_settings.estimates.label")}
-            tooltipContent={selectedEstimate ? selectedEstimate?.value : placeholder}
-            showTooltip={showTooltip}
-            variant={buttonVariant}
-            renderToolTipByDefault={renderByDefault}
-          >
-            {!hideIcon && <EstimatePropertyIcon className="h-3 w-3 flex-shrink-0" />}
-            {(selectedEstimate || placeholder) && BUTTON_VARIANTS_WITH_TEXT.includes(buttonVariant) && (
-              <span className="truncate">
-                {selectedEstimate ? (
-                  currentActiveEstimate?.type === EEstimateSystem.TIME ? (
-                    convertMinutesToHoursMinutesString(Number(selectedEstimate.value))
-                  ) : (
-                    selectedEstimate.value
-                  )
+          {!hideIcon && <EstimatePropertyIcon className="h-3 w-3 flex-shrink-0" />}
+          {(selectedEstimate || placeholder) && BUTTON_VARIANTS_WITH_TEXT.includes(buttonVariant) && (
+            <span className="truncate">
+              {selectedEstimate ? (
+                currentActiveEstimate?.type === EEstimateSystem.TIME ? (
+                  convertMinutesToHoursMinutesString(Number(selectedEstimate.value))
                 ) : (
-                  <span className="text-placeholder">{placeholder}</span>
-                )}
-              </span>
-            )}
-            {dropdownArrow && (
-              <ChevronDownIcon className={cn("h-2.5 w-2.5 flex-shrink-0", dropdownArrowClassName)} aria-hidden="true" />
-            )}
-          </DropdownButton>
-        </button>
+                  selectedEstimate.value
+                )
+              ) : (
+                <span className="text-placeholder">{placeholder}</span>
+              )}
+            </span>
+          )}
+          {dropdownArrow && (
+            <ChevronDownIcon className={cn("h-2.5 w-2.5 flex-shrink-0", dropdownArrowClassName)} aria-hidden="true" />
+          )}
+        </DropdownButton>
       )}
     </>
   );

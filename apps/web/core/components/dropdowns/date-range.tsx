@@ -157,107 +157,93 @@ export const DateRangeDropdown = observer(function DateRangeDropdown(props: Prop
   }, [value]);
 
   const comboButton = (
-    <button
-      ref={setReferenceElement}
-      type="button"
-      className={cn(
-        "clickable block h-full max-w-full outline-none",
-        {
-          "cursor-not-allowed text-secondary": disabled,
-          "cursor-pointer": !disabled,
-        },
-        buttonContainerClassName
-      )}
-      onClick={handleOnClick}
+    <DropdownButton
+      buttonRef={setReferenceElement}
+      className={buttonClassName}
+      containerClassName={buttonContainerClassName}
       disabled={disabled}
+      isActive={isOpen}
+      onClick={handleOnClick}
+      tooltipHeading={customTooltipHeading ?? t("project_cycles.date_range")}
+      tooltipContent={
+        <>
+          {customTooltipContent ?? (
+            <>
+              {dateRange.from ? renderFormattedDate(dateRange.from) : ""}
+              {dateRange.from && dateRange.to ? " - " : ""}
+              {dateRange.to ? renderFormattedDate(dateRange.to) : ""}
+            </>
+          )}
+        </>
+      }
+      showTooltip={showTooltip}
+      variant={buttonVariant}
+      renderToolTipByDefault={renderByDefault}
     >
-      <DropdownButton
-        className={buttonClassName}
-        isActive={isOpen}
-        tooltipHeading={customTooltipHeading ?? t("project_cycles.date_range")}
-        tooltipContent={
-          <>
-            {customTooltipContent ?? (
+      {mergeDates ? (
+        // Merged date display
+        <div className="flex w-full items-center gap-1.5">
+          {!hideIcon.from && <CalendarDays className="h-3 w-3 flex-shrink-0" />}
+          {dateRange.from || dateRange.to ? (
+            <MergedDateDisplay
+              startDate={dateRange.from}
+              endDate={dateRange.to}
+              className="flex-grow truncate text-11"
+            />
+          ) : (
+            renderPlaceholder && (
               <>
-                {dateRange.from ? renderFormattedDate(dateRange.from) : ""}
-                {dateRange.from && dateRange.to ? " - " : ""}
-                {dateRange.to ? renderFormattedDate(dateRange.to) : ""}
+                <span className="text-placeholder">{placeholder.from}</span>
+                {placeholder.from && placeholder.to && (
+                  <ArrowRight className="h-3 w-3 flex-shrink-0 text-placeholder" />
+                )}
+                <span className="text-placeholder">{placeholder.to}</span>
               </>
+            )
+          )}
+          {isClearable && !disabled && hasDisplayedDates && (
+            <CloseIcon
+              className={cn("h-2.5 w-2.5 flex-shrink-0 cursor-pointer", clearIconClassName)}
+              onClick={(e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                clearDates();
+              }}
+            />
+          )}
+        </div>
+      ) : (
+        // Original separate date display
+        <>
+          <span
+            className={cn(
+              "flex h-full flex-grow items-center justify-center gap-1 rounded-xs",
+              buttonFromDateClassName
             )}
-          </>
-        }
-        showTooltip={showTooltip}
-        variant={buttonVariant}
-        renderToolTipByDefault={renderByDefault}
-      >
-        {mergeDates ? (
-          // Merged date display
-          <div className="flex w-full items-center gap-1.5">
+          >
             {!hideIcon.from && <CalendarDays className="h-3 w-3 flex-shrink-0" />}
-            {dateRange.from || dateRange.to ? (
-              <MergedDateDisplay
-                startDate={dateRange.from}
-                endDate={dateRange.to}
-                className="flex-grow truncate text-11"
-              />
-            ) : (
-              renderPlaceholder && (
-                <>
-                  <span className="text-placeholder">{placeholder.from}</span>
-                  {placeholder.from && placeholder.to && (
-                    <ArrowRight className="h-3 w-3 flex-shrink-0 text-placeholder" />
-                  )}
-                  <span className="text-placeholder">{placeholder.to}</span>
-                </>
-              )
-            )}
-            {isClearable && !disabled && hasDisplayedDates && (
-              <CloseIcon
-                className={cn("h-2.5 w-2.5 flex-shrink-0 cursor-pointer", clearIconClassName)}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  e.preventDefault();
-                  clearDates();
-                }}
-              />
-            )}
-          </div>
-        ) : (
-          // Original separate date display
-          <>
-            <span
-              className={cn(
-                "flex h-full flex-grow items-center justify-center gap-1 rounded-xs",
-                buttonFromDateClassName
-              )}
-            >
-              {!hideIcon.from && <CalendarDays className="h-3 w-3 flex-shrink-0" />}
-              {dateRange.from ? renderFormattedDate(dateRange.from) : renderPlaceholder ? placeholder.from : ""}
-            </span>
-            <ArrowRight className="h-3 w-3 flex-shrink-0" />
-            <span
-              className={cn(
-                "flex h-full flex-grow items-center justify-center gap-1 rounded-xs",
-                buttonToDateClassName
-              )}
-            >
-              {!hideIcon.to && <DueDatePropertyIcon className="h-3 w-3 flex-shrink-0" />}
-              {dateRange.to ? renderFormattedDate(dateRange.to) : renderPlaceholder ? placeholder.to : ""}
-            </span>
-            {isClearable && !disabled && hasDisplayedDates && (
-              <CloseIcon
-                className={cn("ml-1 h-2.5 w-2.5 flex-shrink-0 cursor-pointer", clearIconClassName)}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  e.preventDefault();
-                  clearDates();
-                }}
-              />
-            )}
-          </>
-        )}
-      </DropdownButton>
-    </button>
+            {dateRange.from ? renderFormattedDate(dateRange.from) : renderPlaceholder ? placeholder.from : ""}
+          </span>
+          <ArrowRight className="h-3 w-3 flex-shrink-0" />
+          <span
+            className={cn("flex h-full flex-grow items-center justify-center gap-1 rounded-xs", buttonToDateClassName)}
+          >
+            {!hideIcon.to && <DueDatePropertyIcon className="h-3 w-3 flex-shrink-0" />}
+            {dateRange.to ? renderFormattedDate(dateRange.to) : renderPlaceholder ? placeholder.to : ""}
+          </span>
+          {isClearable && !disabled && hasDisplayedDates && (
+            <CloseIcon
+              className={cn("ml-1 h-2.5 w-2.5 flex-shrink-0 cursor-pointer", clearIconClassName)}
+              onClick={(e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                clearDates();
+              }}
+            />
+          )}
+        </>
+      )}
+    </DropdownButton>
   );
 
   const comboOptions = (
