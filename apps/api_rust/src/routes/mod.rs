@@ -250,6 +250,11 @@ pub mod instances;
         users::list_user_workspace_invitations,
         users::join_user_workspace_invitations,
         users::get_my_activities,
+        users::get_activity_graph,
+        users::get_issues_completed_graph,
+        users::get_workspace_dashboard,
+        users::get_last_workspace,
+        workspace_extras::draft_to_issue,
         workspace_view_issues::list_workspace_view_issues,
         views::list_workspace_views,
         views::create_workspace_view,
@@ -1045,6 +1050,7 @@ pub fn build_router(state: AppState) -> Router {
             "/users/me/accounts/{pk}",
             get(users::get_account).delete(users::delete_account),
         )
+        .route("/users/last-visited-workspace", get(users::get_last_workspace))
         .route("/users/me/workspaces", get(users::list_user_workspaces))
         // Mirror Django: users/me/activities/ -> UserActivityEndpoint
         // (plane/app/urls/user.py:65, plane/app/views/user/base.py:380).
@@ -1063,6 +1069,18 @@ pub fn build_router(state: AppState) -> Router {
         .route(
             "/users/me/workspaces/{slug}/project-roles",
             get(users::get_user_project_roles),
+        )
+        .route(
+            "/users/me/workspaces/{slug}/activity-graph",
+            get(users::get_activity_graph),
+        )
+        .route(
+            "/users/me/workspaces/{slug}/issues-completed-graph",
+            get(users::get_issues_completed_graph),
+        )
+        .route(
+            "/users/me/workspaces/{slug}/dashboard",
+            get(users::get_workspace_dashboard),
         )
         // ── Workspace View Issues (global view / spreadsheet) ─────────────────
         // Mirror Django: workspaces/<slug>/issues/ → WorkspaceViewIssuesViewSet
@@ -1349,6 +1367,10 @@ pub fn build_router(state: AppState) -> Router {
         .route(
             "/workspaces/{slug}/draft-issues",
             get(workspace_extras::list_draft_issues).post(workspace_extras::create_draft_issue),
+        )
+        .route(
+            "/workspaces/{slug}/draft-to-issue/{draft_id}",
+            post(workspace_extras::draft_to_issue),
         )
         .route(
             "/workspaces/{slug}/draft-issues/{pk}",
