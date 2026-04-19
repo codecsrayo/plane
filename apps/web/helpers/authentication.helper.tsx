@@ -194,7 +194,7 @@ const errorCodeMessages: {
         Your account is already registered.&nbsp;
         <Link
           className="font-medium underline underline-offset-4 transition-all hover:font-bold"
-          href={`/sign-in${email ? `?email=${encodeURIComponent(email)}` : ``}`}
+          href="/"
         >
           Sign In
         </Link>

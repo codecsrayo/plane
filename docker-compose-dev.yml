@@ -33,9 +33,9 @@ services:
       - traefik-public
 
 
-  # ── Landing page (home) ───────────────────────────────────────────────────────
-  # Primera carga del dominio: sirve apps/home (HTML estático) en la raíz "/".
-  # Actúa como fallback (priority 2) — todas las rutas específicas (priority 100)
+  # ââ Landing page (home) âââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+  # Primera carga del dominio: sirve apps/home (HTML estÃ¡tico) en la raÃ­z "/".
+  # ActÃºa como fallback (priority 2) â todas las rutas especÃ­ficas (priority 100)
   # tienen prioridad mayor en Traefik.
   home:
     container_name: plane-codecsrayo-home
@@ -89,7 +89,6 @@ services:
       - traefik.enable=true
       - traefik.docker.network=${TRAEFIK_PUBLIC_NETWORK:-proyectos-bi-quare}
       - traefik.http.middlewares.plane-codecsrayo-https.redirectscheme.scheme=https
-      - traefik.http.middlewares.plane-codecsrayo-strip.stripprefix.prefixes=/app
       - traefik.http.routers.plane-codecsrayo-http.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && PathPrefix(`/app`)
       - traefik.http.routers.plane-codecsrayo-http.entrypoints=web
       - traefik.http.routers.plane-codecsrayo-http.middlewares=plane-codecsrayo-https
@@ -97,7 +96,6 @@ services:
       - traefik.http.routers.plane-codecsrayo.entrypoints=websecure
       - traefik.http.routers.plane-codecsrayo.tls=true
       - traefik.http.routers.plane-codecsrayo.tls.certresolver=netlify
-      - traefik.http.routers.plane-codecsrayo.middlewares=plane-codecsrayo-strip
       - traefik.http.routers.plane-codecsrayo.priority=100
       - traefik.http.services.plane-codecsrayo.loadbalancer.server.port=3000
     develop:
@@ -442,7 +440,7 @@ volumes:
   redisdata:
   uploads:
   pgdata:
-  # Caché de compilación Rust — evita recompilar deps en cada reinicio del contenedor
+  # CachÃ© de compilaciÃ³n Rust â evita recompilar deps en cada reinicio del contenedor
   rust_target:
   cargo_registry:
 
