@@ -43,7 +43,7 @@ export const CalendarIssueBlock = observer(
     const [isMenuActive, setIsMenuActive] = useState(false);
     // refs
     const blockRef = useRef(null);
-    const menuActionRef = useRef<HTMLDivElement | null>(null);
+    const menuActionRef = useRef<HTMLButtonElement | null>(null);
     // hooks
     const { workspaceSlug } = useParams();
     const { getProjectStates } = useProjectState();
@@ -138,8 +138,8 @@ export const CalendarIssueBlock = observer(
                     )}
                     <div className="truncate text-13 font-medium md:text-11 md:font-regular">{issue.name}</div>
                   </div>
-                  <button
-                    type="button"
+                  <div
+                    role="presentation"
                     className={cn("size-5 flex-shrink-0", {
                       "hidden group-hover/calendar-block:block": !isMobile,
                       block: isMenuActive,
@@ -155,7 +155,7 @@ export const CalendarIssueBlock = observer(
                       customActionButton,
                       placement,
                     })}
-                  </button>
+                  </div>
                 </div>
               </>
             </ControlLink>

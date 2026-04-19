@@ -338,15 +338,17 @@ export const ProjectCard = observer(function ProjectCard(props: Props) {
               <>
                 {isMemberOfProject &&
                   (hasAdminRole || hasMemberRole ? (
-                    <Link
+                    <button
+                      type="button"
                       className="flex items-center justify-center rounded-sm p-1 text-placeholder hover:bg-layer-1 hover:text-secondary"
                       onClick={(e) => {
+                        e.preventDefault();
                         e.stopPropagation();
+                        router.push(`/${workspaceSlug}/settings/projects/${project.id}`);
                       }}
-                      href={`/${workspaceSlug}/settings/projects/${project.id}`}
                     >
                       <Settings className="h-3.5 w-3.5" />
-                    </Link>
+                    </button>
                   ) : (
                     <span className="flex items-center gap-1 text-13 text-placeholder">
                       <CheckIcon className="h-3.5 w-3.5" />
