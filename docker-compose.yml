@@ -102,6 +102,16 @@ services:
       - traefik.http.routers.plane.tls.certresolver=netlify
       - traefik.http.routers.plane.middlewares=plane-strip
       - traefik.http.routers.plane.priority=100
+
+      # Router de assets (p=10) — mayor que home (2), menor que /app (100).
+      # El build de React Router sirve assets desde la raíz.
+      - traefik.http.routers.plane-assets.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && (PathPrefix(`/assets`) || Path(`/manifest.json`) || Path(`/site.webmanifest.json`) || Path(`/favicon.ico`) || PathPrefix(`/static`))
+      - traefik.http.routers.plane-assets.entrypoints=websecure
+      - traefik.http.routers.plane-assets.tls=true
+      - traefik.http.routers.plane-assets.tls.certresolver=netlify
+      - traefik.http.routers.plane-assets.priority=10
+      - traefik.http.routers.plane-assets.service=plane
+
       - traefik.http.services.plane.loadbalancer.server.port=3000
     depends_on:
       api:
