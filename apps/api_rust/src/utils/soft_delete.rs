@@ -10,7 +10,7 @@
 ///
 /// let issues = Issue::find()
 ///     .active()                                        // ← deleted_at IS NULL
-///     .filter(issue::Column::ProjectId.eq(project_id))
+///     .filter(issues::Column::ProjectId.eq(project_id))
 ///     .all(&db)
 ///     .await?;
 /// ```

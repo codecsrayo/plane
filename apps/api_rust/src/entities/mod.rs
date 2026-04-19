@@ -55,7 +55,6 @@ pub mod instances;
 pub mod intake_issues;
 pub mod intakes;
 pub mod integrations;
-pub mod issue;
 pub mod issue_activities;
 pub mod issue_assignees;
 pub mod issue_attachments;
@@ -86,7 +85,6 @@ pub mod page_logs;
 pub mod page_versions;
 pub mod pages;
 pub mod profiles;
-pub mod project;
 pub mod project_deploy_boards;
 pub mod project_identifiers;
 pub mod project_issue_types;
@@ -100,7 +98,6 @@ pub mod projects;
 pub mod sessions;
 pub mod slack_project_syncs;
 pub mod social_login_connections;
-pub mod state;
 pub mod states;
 pub mod stickies;
 pub mod teams;
@@ -113,7 +110,6 @@ pub mod users_groups;
 pub mod users_user_permissions;
 pub mod webhook_logs;
 pub mod webhooks;
-pub mod workspace;
 pub mod workspace_home_preferences;
 pub mod workspace_integrations;
 pub mod workspace_member_invites;
@@ -151,7 +147,6 @@ impl_soft_delete!(
 );
 
 // Workspaces
-impl_soft_delete!(workspace::Entity, workspace::Column::DeletedAt);
 impl_soft_delete!(workspaces::Entity, workspaces::Column::DeletedAt);
 impl_soft_delete!(
     workspace_home_preferences::Entity,
@@ -187,7 +182,6 @@ impl_soft_delete!(
 );
 
 // Proyectos
-impl_soft_delete!(project::Entity, project::Column::DeletedAt);
 impl_soft_delete!(projects::Entity, projects::Column::DeletedAt);
 impl_soft_delete!(
     project_deploy_boards::Entity,
@@ -221,7 +215,6 @@ impl_soft_delete!(
 );
 
 // Issues
-impl_soft_delete!(issue::Entity, issue::Column::DeletedAt);
 impl_soft_delete!(issues::Entity, issues::Column::DeletedAt);
 impl_soft_delete!(
     issue_activities::Entity,
@@ -273,7 +266,6 @@ impl_soft_delete!(
 );
 
 // States, Labels, Estimates
-impl_soft_delete!(state::Entity, state::Column::DeletedAt);
 impl_soft_delete!(states::Entity, states::Column::DeletedAt);
 impl_soft_delete!(labels::Entity, labels::Column::DeletedAt);
 impl_soft_delete!(estimates::Entity, estimates::Column::DeletedAt);
