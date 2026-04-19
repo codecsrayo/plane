@@ -33,9 +33,9 @@ services:
       - traefik-public
 
 
-  # ââ Landing page (home) âââââââââââââââââââââââââââââââââââââââââââââââââââââââ
-  # Primera carga del dominio: sirve apps/home (HTML estÃ¡tico) en la raÃ­z "/".
-  # ActÃºa como fallback (priority 2) â todas las rutas especÃ­ficas (priority 100)
+  # Ã¢ÂÂÃ¢ÂÂ Landing page (home) Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+  # Primera carga del dominio: sirve apps/home (HTML estÃÂ¡tico) en la raÃÂ­z "/".
+  # ActÃÂºa como fallback (priority 2) Ã¢ÂÂ todas las rutas especÃÂ­ficas (priority 100)
   # tienen prioridad mayor en Traefik.
   home:
     container_name: plane-codecsrayo-home
@@ -440,7 +440,7 @@ volumes:
   redisdata:
   uploads:
   pgdata:
-  # CachÃ© de compilaciÃ³n Rust â evita recompilar deps en cada reinicio del contenedor
+  # CachÃÂ© de compilaciÃÂ³n Rust Ã¢ÂÂ evita recompilar deps en cada reinicio del contenedor
   rust_target:
   cargo_registry:
 
