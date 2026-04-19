@@ -1547,6 +1547,26 @@ async fn sync_draft_modules(
     Ok(())
 }
 
+/// Response shape para draft issues. Paridad con Django
+/// `DraftIssueSerializer` (apps/api/plane/app/serializers/draft.py:300-334)
+/// y con el tipo del frontend `TWorkspaceDraftIssue`
+/// (packages/types/src/workspace-draft-issues/base.ts:9).
+///
+/// # Nombres (diferencias vs columnas DB)
+/// - `estimate_point` (no `_id`) — DRF expone la FK con el nombre declarado
+///   en `Meta.fields`. La columna DB es `estimate_point_id`; el mapeo lo
+///   hace el hidratador.
+/// - `created_by` / `updated_by` (no `_id`) — misma razón; `BaseSerializer`
+///   expone estas FK con el nombre del field.
+/// - `workspace_id` NO se expone — Django no lo incluye en `Meta.fields`.
+///
+/// # Campos anotados (ArrayAgg/Subquery en Django `draft.py:54-95`)
+/// - `cycle_id`: primer `DraftIssueCycle` activo (deleted_at NULL).
+/// - `label_ids` / `assignee_ids` / `module_ids`: lista de IDs activos,
+///   filtrando `deleted_at IS NULL` en cada tabla intermedia (mismo
+///   criterio pragmático que `load_enrichment` en `issue_pagination.rs:122`
+///   para issues regulares, que ya omite el check `member_project__is_active`
+///   de Django por simplicidad de paridad entre endpoints).
 #[derive(Debug, Serialize)]
 pub struct DraftIssueResponse {
     pub id: Uuid,
@@ -1556,42 +1576,148 @@ pub struct DraftIssueResponse {
     pub state_id: Option<Uuid>,
     pub parent_id: Option<Uuid>,
     pub project_id: Option<Uuid>,
-    pub workspace_id: Uuid,
     pub type_id: Option<Uuid>,
-    pub estimate_point_id: Option<Uuid>,
+    pub estimate_point: Option<Uuid>,
     pub start_date: Option<chrono::NaiveDate>,
     pub target_date: Option<chrono::NaiveDate>,
     pub completed_at: Option<DateTime<Utc>>,
     pub sort_order: f64,
-    pub created_by_id: Option<Uuid>,
-    pub updated_by_id: Option<Uuid>,
+    pub cycle_id: Option<Uuid>,
+    pub label_ids: Vec<Uuid>,
+    pub assignee_ids: Vec<Uuid>,
+    pub module_ids: Vec<Uuid>,
+    pub created_by: Option<Uuid>,
+    pub updated_by: Option<Uuid>,
     pub created_at: DateTime<Utc>,
     pub updated_at: DateTime<Utc>,
 }
 
-impl From<draft_issues::Model> for DraftIssueResponse {
-    fn from(m: draft_issues::Model) -> Self {
-        Self {
-            id: m.id,
-            name: m.name,
-            description_html: m.description_html,
-            priority: m.priority,
-            state_id: m.state_id,
-            parent_id: m.parent_id,
-            project_id: m.project_id,
-            workspace_id: m.workspace_id,
-            type_id: m.type_id,
-            estimate_point_id: m.estimate_point_id,
-            start_date: m.start_date,
-            target_date: m.target_date,
-            completed_at: m.completed_at.map(Into::into),
-            sort_order: m.sort_order,
-            created_by_id: m.created_by_id,
-            updated_by_id: m.updated_by_id,
-            created_at: m.created_at.into(),
-            updated_at: m.updated_at.into(),
-        }
+/// Hidrata `DraftIssueResponse` con las anotaciones M2M desde la DB.
+///
+/// Una query por tipo de relación (O(1) roundtrips), filtrando
+/// `deleted_at IS NULL` en cada tabla intermedia. Paridad con las
+/// anotaciones del queryset de `WorkspaceDraftIssueViewSet.get_queryset`
+/// (draft.py:49-95).
+///
+/// Retorna `Vec<DraftIssueResponse>` en el mismo orden que `models`.
+async fn hydrate_draft_issue_responses(
+    db: &sea_orm::DatabaseConnection,
+    models: Vec<draft_issues::Model>,
+) -> Result<Vec<DraftIssueResponse>, AppError> {
+    if models.is_empty() {
+        return Ok(Vec::new());
     }
+
+    use crate::entities::{
+        draft_issue_assignees, draft_issue_cycles, draft_issue_labels, draft_issue_modules,
+    };
+    use std::collections::HashMap;
+
+    let ids: Vec<Uuid> = models.iter().map(|m| m.id).collect();
+
+    // cycle_id (primer ciclo activo — Subquery `[:1]` en Django draft.py:55-58).
+    let cycles_rows = draft_issue_cycles::Entity::find()
+        .filter(draft_issue_cycles::Column::DraftIssueId.is_in(ids.clone()))
+        .filter(draft_issue_cycles::Column::DeletedAt.is_null())
+        .all(db)
+        .await
+        .map_err(AppError::Database)?;
+    let mut cycle_by_draft: HashMap<Uuid, Uuid> = HashMap::new();
+    for r in cycles_rows {
+        // `entry().or_insert()` preserva el primer valor visto — espejo
+        // del Subquery `[:1]` de Django.
+        cycle_by_draft.entry(r.draft_issue_id).or_insert(r.cycle_id);
+    }
+
+    // label_ids
+    let labels_rows = draft_issue_labels::Entity::find()
+        .filter(draft_issue_labels::Column::DraftIssueId.is_in(ids.clone()))
+        .filter(draft_issue_labels::Column::DeletedAt.is_null())
+        .all(db)
+        .await
+        .map_err(AppError::Database)?;
+    let mut labels_by_draft: HashMap<Uuid, Vec<Uuid>> = HashMap::new();
+    for r in labels_rows {
+        labels_by_draft
+            .entry(r.draft_issue_id)
+            .or_default()
+            .push(r.label_id);
+    }
+
+    // assignee_ids
+    let assignees_rows = draft_issue_assignees::Entity::find()
+        .filter(draft_issue_assignees::Column::DraftIssueId.is_in(ids.clone()))
+        .filter(draft_issue_assignees::Column::DeletedAt.is_null())
+        .all(db)
+        .await
+        .map_err(AppError::Database)?;
+    let mut assignees_by_draft: HashMap<Uuid, Vec<Uuid>> = HashMap::new();
+    for r in assignees_rows {
+        assignees_by_draft
+            .entry(r.draft_issue_id)
+            .or_default()
+            .push(r.assignee_id);
+    }
+
+    // module_ids
+    let modules_rows = draft_issue_modules::Entity::find()
+        .filter(draft_issue_modules::Column::DraftIssueId.is_in(ids.clone()))
+        .filter(draft_issue_modules::Column::DeletedAt.is_null())
+        .all(db)
+        .await
+        .map_err(AppError::Database)?;
+    let mut modules_by_draft: HashMap<Uuid, Vec<Uuid>> = HashMap::new();
+    for r in modules_rows {
+        modules_by_draft
+            .entry(r.draft_issue_id)
+            .or_default()
+            .push(r.module_id);
+    }
+
+    let result = models
+        .into_iter()
+        .map(|m| {
+            let id = m.id;
+            DraftIssueResponse {
+                id,
+                name: m.name,
+                description_html: m.description_html,
+                priority: m.priority,
+                state_id: m.state_id,
+                parent_id: m.parent_id,
+                project_id: m.project_id,
+                type_id: m.type_id,
+                estimate_point: m.estimate_point_id,
+                start_date: m.start_date,
+                target_date: m.target_date,
+                completed_at: m.completed_at.map(Into::into),
+                sort_order: m.sort_order,
+                cycle_id: cycle_by_draft.get(&id).copied(),
+                label_ids: labels_by_draft.remove(&id).unwrap_or_default(),
+                assignee_ids: assignees_by_draft.remove(&id).unwrap_or_default(),
+                module_ids: modules_by_draft.remove(&id).unwrap_or_default(),
+                created_by: m.created_by_id,
+                updated_by: m.updated_by_id,
+                created_at: m.created_at.into(),
+                updated_at: m.updated_at.into(),
+            }
+        })
+        .collect();
+
+    Ok(result)
+}
+
+/// Conveniencia para hidratar un solo draft (usado por `create`/`get`).
+async fn hydrate_draft_issue_response(
+    db: &sea_orm::DatabaseConnection,
+    model: draft_issues::Model,
+) -> Result<DraftIssueResponse, AppError> {
+    let mut responses = hydrate_draft_issue_responses(db, vec![model]).await?;
+    // `hydrate_draft_issue_responses` preserva el orden y nunca vacía el
+    // vec cuando la entrada tiene elementos — `pop` es seguro.
+    Ok(responses
+        .pop()
+        .expect("hydrate_draft_issue_responses preserva el vec de entrada"))
 }
 
 /// Shape de `POST /workspaces/{slug}/draft-issues/`.
@@ -1751,7 +1877,7 @@ pub async fn list_draft_issues(
         .await
         .map_err(AppError::Database)?;
 
-    let resp: Vec<DraftIssueResponse> = issues.into_iter().map(Into::into).collect();
+    let resp = hydrate_draft_issue_responses(db, issues).await?;
     Ok((StatusCode::OK, Json(resp)))
 }
 
@@ -1882,7 +2008,11 @@ pub async fn create_draft_issue(
             sea_orm::TransactionError::Connection(db_err) => AppError::Database(db_err),
         })?;
 
-    let resp: DraftIssueResponse = saved.into();
+    // Hidratar con las anotaciones M2M. Paridad con Django draft.py:124-151,
+    // que después de `serializer.save()` reconsulta el queryset anotado y
+    // devuelve el shape completo (con cycle_id/label_ids/assignee_ids/
+    // module_ids), no solo el modelo crudo.
+    let resp = hydrate_draft_issue_response(db, saved).await?;
     Ok((StatusCode::CREATED, Json(resp)))
 }
 
@@ -1919,7 +2049,7 @@ pub async fn get_draft_issue(
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
-    let resp: DraftIssueResponse = issue.into();
+    let resp = hydrate_draft_issue_response(db, issue).await?;
     Ok((StatusCode::OK, Json(resp)))
 }
 
