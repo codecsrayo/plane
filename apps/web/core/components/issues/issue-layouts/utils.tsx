@@ -719,10 +719,17 @@ export const getBlockViewDetails = (
  * @param iconKey
  */
 export function SpreadSheetPropertyIcon(props: ISvgIcons & { iconKey: string }) {
-  const { iconKey } = props;
+  // `iconKey` es el discriminante del wrapper (usado para resolver `Icon` en
+  // `SpreadSheetPropertyIconMap`) y NO forma parte del contrato `ISvgIcons`
+  // (`React.SVGAttributes<SVGElement>`). Los iconos de propel hacen
+  // `<svg {...rest} />` al final de la cadena (p.ej. StatePropertyIcon →
+  // IconWrapper → svg), por lo que spread de `props` entero filtraba `iconKey`
+  // como atributo desconocido del DOM → warning:
+  // "React does not recognize the `iconKey` prop on a DOM element".
+  const { iconKey, ...rest } = props;
   const Icon = SpreadSheetPropertyIconMap[iconKey];
   if (!Icon) return null;
-  return <Icon {...props} />;
+  return <Icon {...rest} />;
 }
 
 /**
