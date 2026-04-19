@@ -14,18 +14,12 @@ const viteEnv = Object.keys(process.env)
     return a;
   }, {});
 
-// Nota: NO configuramos `base` aquÃ­.
+// Nota: NO configuramos `base` aquí.
 // Traefik aplica StripPrefix("/app") antes de hacer forward al dev server,
 // por lo que Vite siempre recibe paths que empiezan en "/".
 // El basename "/app" vive solo en react-router.config.ts (routing del browser).
 
-const webBasePath = process.env.VITE_WEB_BASE_PATH || "/";
-
 export default defineConfig(() => ({
-  // base es el prefijo de todas las URLs de assets generados por Vite.
-  // En dev (sin strip): Vite recibe /app/... y sirve assets en /app/assets/...
-  // En prod (con strip nginx): assets en /app/assets/... → strip → /assets/...
-  base: webBasePath,
   define: {
     "process.env": JSON.stringify(viteEnv),
   },
