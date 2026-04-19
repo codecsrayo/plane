@@ -127,7 +127,7 @@ function CustomMenu(props: ICustomMenuDropdownProps) {
 
   const selectActiveItem = () => {
     const activeItem: HTMLElement | undefined | null = dropdownRef.current?.querySelector(
-      `[data-headlessui-state="active"] button`
+      `[data-headlessui-state="active"] [role="menuitem"]`
     );
     activeItem?.click();
   };
@@ -245,71 +245,58 @@ function CustomMenu(props: ICustomMenuDropdownProps) {
       {({ open }) => (
         <>
           {customButton ? (
-            <Menu.Button as={React.Fragment}>
-              {/*
-                Wrapper como <span role="button"> (no <button>) para evitar
-                DOM nesting inválido cuando customButton ya es un <button>
-                (caso típico: IconButton de @plane/propel como customButton).
-                React warna: validateDOMNesting — <button> cannot appear as
-                a descendant of <button>.
-
-                Accesibilidad preservada:
-                  - role="button" expone el rol a AT,
-                  - tabIndex hace el span focuseable (tabIndex={-1} si disabled),
-                  - onKeyDown mantiene Enter/Space,
-                  - aria-label / aria-disabled reemplazan los atributos nativos.
-                Los handlers ya hacen `if (disabled) return` al inicio, por lo
-                que la ausencia de `disabled` nativo no cambia la UX.
-              */}
-              <span
-                ref={setReferenceElement}
-                role="button"
-                onClick={handleMenuButtonClick}
-                onKeyDown={handleCustomButtonKeyDown}
-                className={customButtonClassName}
-                tabIndex={disabled ? -1 : customButtonTabIndex}
-                aria-label={ariaLabel}
-                aria-disabled={disabled}
-              >
-                {customButton}
-              </span>
+            // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role
+            <Menu.Button
+              as="div"
+              ref={setReferenceElement}
+              role="button"
+              onClick={handleMenuButtonClick}
+              onKeyDown={handleCustomButtonKeyDown}
+              className={customButtonClassName}
+              tabIndex={disabled ? -1 : customButtonTabIndex}
+              aria-label={ariaLabel}
+              aria-disabled={disabled}
+            >
+              {customButton}
             </Menu.Button>
           ) : (
             <>
               {ellipsis || verticalEllipsis ? (
-                <Menu.Button as={React.Fragment}>
-                  <button
-                    ref={setReferenceElement}
-                    type="button"
-                    onClick={handleMenuButtonClick}
-                    disabled={disabled}
-                    className={`relative grid place-items-center rounded-sm p-1 text-secondary outline-none hover:text-primary ${
-                      disabled ? "cursor-not-allowed" : "cursor-pointer hover:bg-layer-transparent-hover"
-                    } ${buttonClassName}`}
-                    tabIndex={customButtonTabIndex}
-                    aria-label={ariaLabel}
-                  >
-                    <MoreHorizontal className={`h-3.5 w-3.5 ${verticalEllipsis ? "rotate-90" : ""}`} />
-                  </button>
+                // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role
+                <Menu.Button
+                  as="div"
+                  ref={setReferenceElement}
+                  role="button"
+                  onClick={handleMenuButtonClick}
+                  onKeyDown={handleCustomButtonKeyDown}
+                  className={`relative grid place-items-center rounded-sm p-1 text-secondary outline-none hover:text-primary ${
+                    disabled ? "cursor-not-allowed" : "cursor-pointer hover:bg-layer-transparent-hover"
+                  } ${buttonClassName}`}
+                  tabIndex={disabled ? -1 : customButtonTabIndex}
+                  aria-label={ariaLabel}
+                  aria-disabled={disabled}
+                >
+                  <MoreHorizontal className={`h-3.5 w-3.5 ${verticalEllipsis ? "rotate-90" : ""}`} />
                 </Menu.Button>
               ) : (
-                <Menu.Button as={React.Fragment}>
-                  <button
-                    ref={setReferenceElement}
-                    type="button"
-                    className={`flex items-center justify-between gap-1 rounded-md px-2.5 py-1 text-11 whitespace-nowrap duration-300 ${
-                      open ? "text-primary" : "text-secondary"
-                    } ${noBorder ? "" : "shadow-sm border border-strong focus:outline-none"} ${
-                      disabled ? "cursor-not-allowed text-secondary" : "cursor-pointer hover:bg-layer-transparent-hover"
-                    } ${buttonClassName}`}
-                    onClick={handleMenuButtonClick}
-                    tabIndex={customButtonTabIndex}
-                    disabled={disabled}
-                    aria-label={ariaLabel}
-                  >
-                    {label}
-                    {!noChevron && <ChevronDownIcon className="h-3.5 w-3.5" />}
-                  </button>
+                // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role
+                <Menu.Button
+                  as="div"
+                  ref={setReferenceElement}
+                  role="button"
+                  onClick={handleMenuButtonClick}
+                  onKeyDown={handleCustomButtonKeyDown}
+                  className={`flex items-center justify-between gap-1 rounded-md px-2.5 py-1 text-11 whitespace-nowrap duration-300 ${
+                    open ? "text-primary" : "text-secondary"
+                  } ${noBorder ? "" : "shadow-sm border border-strong focus:outline-none"} ${
+                    disabled ? "cursor-not-allowed text-secondary" : "cursor-pointer hover:bg-layer-transparent-hover"
+                  } ${buttonClassName}`}
+                  tabIndex={disabled ? -1 : customButtonTabIndex}
+                  aria-label={ariaLabel}
+                  aria-disabled={disabled}
+                >
+                  {label}
+                  {!noChevron && <ChevronDownIcon className="h-3.5 w-3.5" />}
                 </Menu.Button>
               )}
             </>
@@ -419,8 +406,9 @@ function SubMenu(props: ICustomSubMenuProps) {
       <span ref={setReferenceElement} className="w-full">
         <Menu.Item as="div" disabled={disabled}>
           {({ active }) => (
-            <button
-              type="button"
+            <div
+              role="menuitem"
+              tabIndex={-1}
               className={cn(
                 "flex w-full cursor-pointer items-center justify-between rounded-sm px-1 py-1.5 text-left text-secondary select-none",
                 {
@@ -430,11 +418,18 @@ function SubMenu(props: ICustomSubMenuProps) {
                 }
               )}
               onClick={handleClick}
-              disabled={disabled}
+              onKeyDown={(e) => {
+                if (disabled) return;
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  handleClick(e as unknown as React.MouseEvent);
+                }
+              }}
+              aria-disabled={disabled}
             >
               <span className="flex-1">{trigger}</span>
               <ChevronRightIcon className="h-3.5 w-3.5 flex-shrink-0" />
-            </button>
+            </div>
           )}
         </Menu.Item>
       </span>
@@ -482,8 +477,9 @@ function MenuItem(props: ICustomMenuItemProps) {
   return (
     <Menu.Item as="div" disabled={disabled}>
       {({ active, close }) => (
-        <button
-          type="button"
+        <div
+          role="menuitem"
+          tabIndex={-1}
           className={cn(
             "w-full truncate rounded-sm px-1 py-1.5 text-left text-secondary select-none",
             {
@@ -492,16 +488,25 @@ function MenuItem(props: ICustomMenuItemProps) {
             },
             className
           )}
-          onClick={(e) => {
-            close();
-            onClick?.(e);
-            // Close submenu if this item is inside a submenu
-            submenuContext?.closeSubmenu();
-          }}
-          disabled={disabled}
-        >
-          {children}
-        </button>
+            onClick={(e) => {
+              close();
+              onClick?.(e);
+              // Close submenu if this item is inside a submenu
+              submenuContext?.closeSubmenu();
+            }}
+            onKeyDown={(e) => {
+              if (disabled) return;
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                close();
+                onClick?.(e);
+                submenuContext?.closeSubmenu();
+              }
+            }}
+            aria-disabled={disabled}
+          >
+            {children}
+        </div>
       )}
     </Menu.Item>
   );
