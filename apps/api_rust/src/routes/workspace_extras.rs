@@ -1848,6 +1848,22 @@ where
     }
 }
 
+/// Query params para `GET /workspaces/{slug}/draft-issues/`.
+///
+/// Paridad con Django `self.paginate(...)` en
+/// `WorkspaceDraftIssueViewSet.list` (draft.py:99-109), que acepta `cursor`
+/// y `per_page` vía querystring. El frontend destructura la respuesta como
+/// `{ results, ...paginationInfo }` en `issue.store.ts:231` — si no envolvemos
+/// el array la UI no puede añadir nada a `issuesMap` y el panel queda vacío.
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
+pub struct DraftIssueListQuery {
+    /// Cursor Django: `"per_page:offset:is_prev"` (ej. `"20:0:0"`).
+    pub cursor: Option<String>,
+    /// Override explícito del per_page (prioridad sobre el derivado del cursor,
+    /// mismo orden que Django en `BasePaginator.paginate`).
+    pub per_page: Option<u64>,
+}
+
 /// GET /workspaces/{slug}/draft-issues/
 #[utoipa::path(
     get,
@@ -1855,30 +1871,55 @@ where
     tag = "Workspace Extras",
     params(("slug" = String, Path, description = "Workspace slug")),
     responses(
-        (status = 200, description = "Lista de draft issues del usuario"),
+        (status = 200, description = "Página de draft issues del usuario"),
     )
 )]
 pub async fn list_draft_issues(
     State(state): State<AppState>,
     AnyAuth(auth_user): AnyAuth,
     Path(slug): Path<String>,
+    Query(q): Query<DraftIssueListQuery>,
 ) -> Result<impl axum::response::IntoResponse, AppError> {
     let db = &state.db;
     let user_id = auth_user.id;
     let ws = workspace_by_slug(db, &slug).await?;
     let _member = require_workspace_member(db, ws.id, user_id).await?;
 
-    let issues = draft_issues::Entity::find()
+    // Paridad con Django: `paginate(default_per_page=100)` heredado de
+    // `BasePaginator`. El máximo se respeta desde `pagination::resolve_per_page`.
+    const DEFAULT_PER_PAGE: u64 = 100;
+    const MAX_PER_PAGE: u64 = pagination::DEFAULT_MAX_LIMIT;
+
+    let cursor = pagination::parse_cursor_or_default(q.cursor.as_deref(), DEFAULT_PER_PAGE)?;
+    let limit = pagination::resolve_per_page(
+        Some(cursor.per_page),
+        q.per_page,
+        DEFAULT_PER_PAGE,
+        MAX_PER_PAGE,
+    );
+
+    // Filtros idénticos al queryset de Django draft.py:49-101: workspace por
+    // slug, `created_by=request.user`, soft-delete activo.
+    let base = draft_issues::Entity::find()
         .filter(draft_issues::Column::WorkspaceId.eq(ws.id))
         .filter(draft_issues::Column::CreatedById.eq(user_id))
-        .filter(draft_issues::Column::DeletedAt.is_null())
+        .filter(draft_issues::Column::DeletedAt.is_null());
+
+    // `count` y `page` usan el MISMO filtro — clonamos antes de añadir orden
+    // para no divergir (mismo patrón que `list_stickies`).
+    let total_count = base.clone().count(db).await.map_err(AppError::Database)?;
+
+    let page = base
         .order_by_desc(draft_issues::Column::CreatedAt)
-        .all(db)
+        .paginate(db, limit)
+        .fetch_page(cursor.offset)
         .await
         .map_err(AppError::Database)?;
 
-    let resp = hydrate_draft_issue_responses(db, issues).await?;
-    Ok((StatusCode::OK, Json(resp)))
+    let results = hydrate_draft_issue_responses(db, page).await?;
+    let body = pagination::build_response(results, total_count, limit, cursor.offset);
+
+    Ok((StatusCode::OK, Json(body)))
 }
 
 /// POST /workspaces/{slug}/draft-issues/
