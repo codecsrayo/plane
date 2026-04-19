@@ -14,12 +14,12 @@ const viteEnv = Object.keys(process.env)
     return a;
   }, {});
 
-// Base path para assets — debe coincidir con VITE_WEB_BASE_PATH en Compose.
-// Fallback a "/" para desarrollo local sin Docker.
-const webBasePath = process.env.VITE_WEB_BASE_PATH || "/";
+// Nota: NO configuramos `base` aquí.
+// Traefik aplica StripPrefix("/app") antes de hacer forward al dev server,
+// por lo que Vite siempre recibe paths que empiezan en "/".
+// El basename "/app" vive solo en react-router.config.ts (routing del browser).
 
 export default defineConfig(() => ({
-  base: webBasePath,
   define: {
     "process.env": JSON.stringify(viteEnv),
   },

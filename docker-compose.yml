@@ -92,6 +92,7 @@ services:
       - traefik.enable=true
       - traefik.docker.network=proyectos-bi-quare
       - traefik.http.middlewares.plane-https.redirectscheme.scheme=https
+      - traefik.http.middlewares.plane-strip.stripprefix.prefixes=/app
       - traefik.http.routers.plane-http.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && PathPrefix(`/app`)
       - traefik.http.routers.plane-http.entrypoints=web
       - traefik.http.routers.plane-http.middlewares=plane-https
@@ -99,6 +100,7 @@ services:
       - traefik.http.routers.plane.entrypoints=websecure
       - traefik.http.routers.plane.tls=true
       - traefik.http.routers.plane.tls.certresolver=netlify
+      - traefik.http.routers.plane.middlewares=plane-strip
       - traefik.http.routers.plane.priority=100
       - traefik.http.services.plane.loadbalancer.server.port=3000
     depends_on:
