@@ -103,9 +103,9 @@ services:
       - traefik.http.routers.plane.middlewares=plane-strip
       - traefik.http.routers.plane.priority=100
 
-      # Router de assets (p=10) — mayor que home (2), menor que /app (100).
-      # El build de React Router sirve assets desde la raíz.
-      - traefik.http.routers.plane-assets.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && (PathPrefix(`/assets`) || Path(`/manifest.json`) || Path(`/site.webmanifest.json`) || Path(`/favicon.ico`) || PathPrefix(`/static`))
+      # Router de assets y manifiestos (p=10) — mayor que home (2), menor que /app (100).
+      # Permite que archivos en la raíz del build sean servidos aunque se busquen sin el prefijo /app.
+      - traefik.http.routers.plane-assets.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && (PathPrefix(`/assets`) || PathPrefix(`/static`) || Path(`/manifest.json`) || Path(`/site.webmanifest.json`) || Path(`/favicon.ico`) || PathPrefix(`/favicon`) || PathPrefix(`/icons`) || PathPrefix(`/plane-logos`))
       - traefik.http.routers.plane-assets.entrypoints=websecure
       - traefik.http.routers.plane-assets.tls=true
       - traefik.http.routers.plane-assets.tls.certresolver=netlify

@@ -116,7 +116,7 @@ services:
       #   /public/                    -> assets estaticos
       # Prioridad 10: mayor que home (2), menor que api/auth/admin/spaces (100).
       # No necesita StripPrefix: los paths ya son correctos para Vite.
-      - traefik.http.routers.plane-codecsrayo-assets.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && (PathPrefix(`/@`) || PathPrefix(`/__`) || PathPrefix(`/node_modules`) || PathPrefix(`/styles`) || PathPrefix(`/core`) || PathPrefix(`/helpers`) || PathPrefix(`/public`))
+      - traefik.http.routers.plane-codecsrayo-assets.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && (PathPrefix(`/@`) || PathPrefix(`/__`) || PathPrefix(`/node_modules`) || PathPrefix(`/styles`) || PathPrefix(`/core`) || PathPrefix(`/helpers`) || PathPrefix(`/public`) || PathPrefix(`/ce`) || PathPrefix(`/app`))
       - traefik.http.routers.plane-codecsrayo-assets.entrypoints=websecure
       - traefik.http.routers.plane-codecsrayo-assets.tls=true
       - traefik.http.routers.plane-codecsrayo-assets.tls.certresolver=netlify
