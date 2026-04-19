@@ -89,15 +89,13 @@ services:
       - traefik.enable=true
       - traefik.docker.network=${TRAEFIK_PUBLIC_NETWORK:-proyectos-bi-quare}
       - traefik.http.middlewares.plane-codecsrayo-https.redirectscheme.scheme=https
-      - traefik.http.middlewares.plane-codecsrayo-strip.stripprefix.prefixes=/app
-      - traefik.http.routers.plane-codecsrayo-http.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && PathPrefix(`/app`)
+      - traefik.http.routers.plane-codecsrayo-http.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && (PathPrefix(`/app`) || PathPrefix(`/@`) || PathPrefix(`/__`))
       - traefik.http.routers.plane-codecsrayo-http.entrypoints=web
       - traefik.http.routers.plane-codecsrayo-http.middlewares=plane-codecsrayo-https
-      - traefik.http.routers.plane-codecsrayo.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && PathPrefix(`/app`)
+      - traefik.http.routers.plane-codecsrayo.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && (PathPrefix(`/app`) || PathPrefix(`/@`) || PathPrefix(`/__`))
       - traefik.http.routers.plane-codecsrayo.entrypoints=websecure
       - traefik.http.routers.plane-codecsrayo.tls=true
       - traefik.http.routers.plane-codecsrayo.tls.certresolver=netlify
-      - traefik.http.routers.plane-codecsrayo.middlewares=plane-codecsrayo-strip
       - traefik.http.routers.plane-codecsrayo.priority=100
       - traefik.http.services.plane-codecsrayo.loadbalancer.server.port=3000
     develop:
