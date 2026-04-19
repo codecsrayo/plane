@@ -1299,3 +1299,54 @@ pub async fn assign_sub_issues(
         "state_distribution": state_distribution,
     })))
 }
+
+
+// ─── GET /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/comments/{pk}/ ──
+
+/// Retorna el detalle de un comentario específico.
+///
+/// Espejo de `IssueCommentViewSet.retrieve`
+/// (`apps/api/plane/app/views/issue/comment.py`).
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/comments/{pk}/",
+    tag = "Issues",
+    security(("TokenAuth" = []))
+)]
+pub async fn get_comment(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Path((_slug, _project_id, _issue_id, pk)): Path<(String, uuid::Uuid, uuid::Uuid, uuid::Uuid)>,
+) -> Result<axum::Json<serde_json::Value>, AppError> {
+    let comment = issue_comments::Entity::find_by_id(pk)
+        .active()
+        .filter(issue_comments::Column::ProjectId.eq(guard.project.id))
+        .filter(issue_comments::Column::WorkspaceId.eq(guard.workspace.id))
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    let actor = if let Some(actor_id) = comment.actor_id {
+        users::Entity::find_by_id(actor_id)
+            .one(&state.db)
+            .await
+            .map_err(AppError::Database)?
+            .map(|u| crate::routes::workspaces::user_to_lite(&u, true))
+    } else {
+        None
+    };
+
+    Ok(axum::Json(serde_json::json!({
+        "id": comment.id,
+        "comment_html": comment.comment_html,
+        "comment_stripped": comment.comment_stripped,
+        "actor_id": comment.actor_id,
+        "actor": actor,
+        "issue_id": comment.issue_id,
+        "project_id": comment.project_id,
+        "workspace_id": comment.workspace_id,
+        "created_at": comment.created_at,
+        "updated_at": comment.updated_at,
+    })))
+}

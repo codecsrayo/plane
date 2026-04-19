@@ -8,7 +8,7 @@
 //!   issue/base.py        → bulk update de fechas de issue (IssueBulkUpdateDateEndpoint)
 
 use axum::{
-    extract::{Path, State},
+    extract::{Path, Query, State},
     http::StatusCode,
     Json,
 };
@@ -25,9 +25,13 @@ use crate::{
         extractors::ProjectMemberGuard,
         permissions::{require_role, ROLE_MEMBER},
     },
-    entities::{file_assets, issue_versions, issues, states},
+    entities::{
+        cycle_issues, file_assets, issue_assignees, issue_comments,
+        issue_labels, issue_versions, issues, module_issues, project_members,
+        projects, states, workspaces,
+    },
     error::AppError,
-    utils::s3_presigned_post::{generate_presigned_post, PresignedPost},
+    utils::{s3_presigned_post::{generate_presigned_post, PresignedPost}, soft_delete::SoftDeleteExt},
     AppState,
 };
 
@@ -759,4 +763,411 @@ pub async fn bulk_update_issue_dates(
         StatusCode::OK,
         Json(serde_json::json!({"message": "Issues updated successfully"})),
     ))
+}
+
+
+// ═══════════════════════════════════════════════════════════════════════════
+// BULK DELETE ISSUES
+// ═══════════════════════════════════════════════════════════════════════════
+
+#[derive(Debug, serde::Deserialize, utoipa::ToSchema)]
+pub struct BulkDeleteIssuesRequest {
+    pub issue_ids: Vec<uuid::Uuid>,
+}
+
+/// DELETE /workspaces/{slug}/projects/{project_id}/bulk-delete-issues/
+///
+/// Soft-deletes múltiples issues y sus CycleIssue/ModuleIssue relacionados.
+///
+/// Espejo de `BulkDeleteIssuesEndpoint`
+/// (`apps/api/plane/app/views/issue/base.py`).
+#[utoipa::path(
+    delete,
+    path = "/api/workspaces/{slug}/projects/{project_id}/bulk-delete-issues/",
+    tag = "Issues",
+    security(("TokenAuth" = []))
+)]
+pub async fn bulk_delete_issues(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Json(body): Json<BulkDeleteIssuesRequest>,
+) -> Result<axum::Json<serde_json::Value>, AppError> {
+    use sea_orm::ActiveValue::Set;
+    if guard.project_member.role < ROLE_ADMIN && guard.workspace_member.role < ROLE_ADMIN {
+        return Err(AppError::Forbidden);
+    }
+    if body.issue_ids.is_empty() {
+        return Err(AppError::BadRequest("issue_ids is required".into()));
+    }
+
+    let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
+
+    // Soft-delete cycle_issues y module_issues relacionados
+    cycle_issues::Entity::update_many()
+        .col_expr(cycle_issues::Column::DeletedAt, sea_orm::sea_query::Expr::value(Some(now)))
+        .filter(cycle_issues::Column::IssueId.is_in(body.issue_ids.clone()))
+        .filter(cycle_issues::Column::DeletedAt.is_null())
+        .exec(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    module_issues::Entity::update_many()
+        .col_expr(module_issues::Column::DeletedAt, sea_orm::sea_query::Expr::value(Some(now)))
+        .filter(module_issues::Column::IssueId.is_in(body.issue_ids.clone()))
+        .filter(module_issues::Column::DeletedAt.is_null())
+        .exec(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    // Soft-delete issues
+    let total = issues::Entity::update_many()
+        .col_expr(issues::Column::DeletedAt, sea_orm::sea_query::Expr::value(Some(now)))
+        .filter(issues::Column::Id.is_in(body.issue_ids.clone()))
+        .filter(issues::Column::ProjectId.eq(guard.project.id))
+        .filter(issues::Column::DeletedAt.is_null())
+        .exec(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .rows_affected;
+
+    Ok(axum::Json(serde_json::json!({
+        "message": format!("{total} issues were deleted"),
+    })))
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// ARCHIVED ISSUES
+// ═══════════════════════════════════════════════════════════════════════════
+
+/// GET /workspaces/{slug}/projects/{project_id}/archived-issues/
+///
+/// Lista issues archivados del proyecto.
+///
+/// Espejo de `IssueArchiveViewSet.list`
+/// (`apps/api/plane/app/views/issue/archive.py`).
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/projects/{project_id}/archived-issues/",
+    tag = "Issues",
+    security(("TokenAuth" = []))
+)]
+pub async fn list_archived_issues(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+) -> Result<axum::Json<Vec<serde_json::Value>>, AppError> {
+    use crate::auth::permissions::ROLE_MEMBER;
+    use sea_orm::QueryOrder;
+    if guard.project_member.role < ROLE_MEMBER && guard.workspace_member.role < ROLE_ADMIN {
+        return Err(AppError::Forbidden);
+    }
+
+    let archived = issues::Entity::find()
+        .filter(issues::Column::ProjectId.eq(guard.project.id))
+        .filter(issues::Column::WorkspaceId.eq(guard.workspace.id))
+        .filter(issues::Column::ArchivedAt.is_not_null())
+        .filter(issues::Column::DeletedAt.is_null())
+        .order_by_desc(issues::Column::CreatedAt)
+        .all(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    // Batch-fetch assignees y labels para evitar N+1
+    let issue_ids: Vec<uuid::Uuid> = archived.iter().map(|i| i.id).collect();
+
+    let assignees_map = issue_assignees_map(&state.db, &issue_ids).await?;
+    let labels_map = issue_labels_map(&state.db, &issue_ids).await?;
+
+    let result = archived.iter().map(|issue| {
+        serde_json::json!({
+            "id": issue.id,
+            "name": issue.name,
+            "sequence_id": issue.sequence_id,
+            "priority": issue.priority,
+            "state_id": issue.state_id,
+            "parent_id": issue.parent_id,
+            "project_id": issue.project_id,
+            "workspace_id": issue.workspace_id,
+            "archived_at": issue.archived_at,
+            "created_at": issue.created_at,
+            "updated_at": issue.updated_at,
+            "assignee_ids": assignees_map.get(&issue.id).cloned().unwrap_or_default(),
+            "label_ids": labels_map.get(&issue.id).cloned().unwrap_or_default(),
+        })
+    }).collect();
+
+    Ok(axum::Json(result))
+}
+
+/// GET /workspaces/{slug}/projects/{project_id}/issues/{pk}/archive/
+///
+/// Retorna el detalle de un issue archivado específico.
+///
+/// Espejo de `IssueArchiveViewSet.retrieve`
+/// (`apps/api/plane/app/views/issue/archive.py`).
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/projects/{project_id}/issues/{pk}/archive/",
+    tag = "Issues",
+    security(("TokenAuth" = []))
+)]
+pub async fn get_archived_issue(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Path((_slug, _project_id, pk)): Path<(String, uuid::Uuid, uuid::Uuid)>,
+) -> Result<axum::Json<serde_json::Value>, AppError> {
+    let issue = issues::Entity::find_by_id(pk)
+        .filter(issues::Column::ProjectId.eq(guard.project.id))
+        .filter(issues::Column::ArchivedAt.is_not_null())
+        .filter(issues::Column::DeletedAt.is_null())
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    let issue_ids = vec![issue.id];
+    let assignees = issue_assignees_map(&state.db, &issue_ids).await?;
+    let labels = issue_labels_map(&state.db, &issue_ids).await?;
+
+    Ok(axum::Json(serde_json::json!({
+        "id": issue.id,
+        "name": issue.name,
+        "sequence_id": issue.sequence_id,
+        "priority": issue.priority,
+        "state_id": issue.state_id,
+        "parent_id": issue.parent_id,
+        "project_id": issue.project_id,
+        "workspace_id": issue.workspace_id,
+        "archived_at": issue.archived_at,
+        "description_html": issue.description_html,
+        "created_at": issue.created_at,
+        "updated_at": issue.updated_at,
+        "assignee_ids": assignees.get(&issue.id).cloned().unwrap_or_default(),
+        "label_ids": labels.get(&issue.id).cloned().unwrap_or_default(),
+    })))
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// DELETED ISSUES LIST
+// ═══════════════════════════════════════════════════════════════════════════
+
+#[derive(Debug, serde::Deserialize)]
+pub struct DeletedIssuesQuery {
+    pub updated_at__gt: Option<String>,
+}
+
+/// GET /workspaces/{slug}/projects/{project_id}/deleted-issues/
+///
+/// Retorna IDs de issues eliminados o archivados — usado por el frontend
+/// para sincronización local (invalidar caché).
+///
+/// Espejo de `DeletedIssuesListViewSet`
+/// (`apps/api/plane/app/views/issue/base.py`).
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/projects/{project_id}/deleted-issues/",
+    tag = "Issues",
+    security(("TokenAuth" = []))
+)]
+pub async fn list_deleted_issues(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Query(q): Query<DeletedIssuesQuery>,
+) -> Result<axum::Json<Vec<uuid::Uuid>>, AppError> {
+    use sea_orm::Condition;
+
+    let mut query = issues::Entity::find()
+        .select_only()
+        .column(issues::Column::Id)
+        .filter(issues::Column::ProjectId.eq(guard.project.id))
+        .filter(issues::Column::WorkspaceId.eq(guard.workspace.id))
+        .filter(
+            Condition::any()
+                .add(issues::Column::ArchivedAt.is_not_null())
+                .add(issues::Column::DeletedAt.is_not_null())
+        );
+
+    if let Some(updated_gt) = &q.updated_at__gt {
+        if let Ok(dt) = chrono::DateTime::parse_from_rfc3339(updated_gt) {
+            query = query.filter(issues::Column::UpdatedAt.gt(dt.fixed_offset()));
+        }
+    }
+
+    let ids: Vec<uuid::Uuid> = query
+        .into_tuple::<uuid::Uuid>()
+        .all(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    Ok(axum::Json(ids))
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// ISSUE META
+// ═══════════════════════════════════════════════════════════════════════════
+
+/// GET /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/meta/
+///
+/// Retorna sequence_id y project_identifier de un issue.
+/// Usado por el frontend para construir URLs canónicas de issue.
+///
+/// Espejo de `IssueMetaEndpoint`
+/// (`apps/api/plane/app/views/issue/base.py`).
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/meta/",
+    tag = "Issues",
+    security(("TokenAuth" = []))
+)]
+pub async fn get_issue_meta(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Path((_slug, _project_id, issue_id)): Path<(String, uuid::Uuid, uuid::Uuid)>,
+) -> Result<axum::Json<serde_json::Value>, AppError> {
+    let issue = issues::Entity::find_by_id(issue_id)
+        .active()
+        .filter(issues::Column::ProjectId.eq(guard.project.id))
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    Ok(axum::Json(serde_json::json!({
+        "sequence_id": issue.sequence_id,
+        "project_identifier": guard.project.identifier,
+    })))
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// ISSUE BY IDENTIFIER (e.g. /work-items/PROJ-42/)
+// ═══════════════════════════════════════════════════════════════════════════
+
+/// GET /workspaces/{slug}/work-items/{project_identifier}-{issue_identifier}/
+///
+/// Resuelve un issue a partir del identificador de proyecto + número.
+/// Ejemplo: `/work-items/PLAN-42/` resuelve al issue con sequence_id=42
+/// en el proyecto con identifier="PLAN".
+///
+/// Espejo de `IssueDetailIdentifierEndpoint`
+/// (`apps/api/plane/app/views/issue/base.py`).
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/work-items/{project_identifier_issue_identifier}/",
+    tag = "Issues",
+    security(("TokenAuth" = []))
+)]
+pub async fn get_issue_by_identifier(
+    State(state): State<AppState>,
+    crate::auth::any_auth::AnyAuth(user): crate::auth::any_auth::AnyAuth,
+    Path((slug, combined)): Path<(String, String)>,
+) -> Result<axum::Json<serde_json::Value>, AppError> {
+    // Parsear "PROJECT_IDENTIFIER-ISSUE_NUMBER" separando por el último guión
+    // seguido de dígitos (para soportar identifiers con guiones como "MY-PROJECT-42").
+    let split_idx = combined.rfind('-').ok_or_else(|| {
+        AppError::BadRequest("Invalid identifier format. Expected: PROJECT-NUMBER".into())
+    })?;
+
+    let project_identifier = &combined[..split_idx];
+    let issue_identifier_str = &combined[split_idx + 1..];
+
+    let issue_number: i32 = issue_identifier_str.parse().map_err(|_| {
+        AppError::BadRequest("Invalid issue identifier — must be a number".into())
+    })?;
+
+    // Buscar workspace
+    let ws = workspaces::Entity::find()
+        .active()
+        .filter(workspaces::Column::Slug.eq(&slug))
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    // Buscar proyecto por identifier (case-insensitive)
+    let project = projects::Entity::find()
+        .active()
+        .filter(sea_orm::sea_query::Expr::col(projects::Column::Identifier).eq(project_identifier.to_uppercase()))
+        .filter(projects::Column::WorkspaceId.eq(ws.id))
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    // Verificar que el usuario es miembro del proyecto
+    let is_member = project_members::Entity::find()
+        .active()
+        .filter(project_members::Column::ProjectId.eq(project.id))
+        .filter(project_members::Column::MemberId.eq(user.id))
+        .filter(project_members::Column::IsActive.eq(true))
+        .count(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    if is_member == 0 {
+        return Err(AppError::Forbidden);
+    }
+
+    // Buscar issue por sequence_id
+    let issue = issues::Entity::find()
+        .active()
+        .filter(issues::Column::ProjectId.eq(project.id))
+        .filter(issues::Column::SequenceId.eq(issue_number))
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    let issue_ids = vec![issue.id];
+    let assignees = issue_assignees_map(&state.db, &issue_ids).await?;
+    let labels = issue_labels_map(&state.db, &issue_ids).await?;
+
+    Ok(axum::Json(serde_json::json!({
+        "id": issue.id,
+        "sequence_id": issue.sequence_id,
+        "name": issue.name,
+        "priority": issue.priority,
+        "state_id": issue.state_id,
+        "project_id": issue.project_id,
+        "workspace_id": issue.workspace_id,
+        "project_identifier": project.identifier,
+        "created_at": issue.created_at,
+        "updated_at": issue.updated_at,
+        "assignee_ids": assignees.get(&issue.id).cloned().unwrap_or_default(),
+        "label_ids": labels.get(&issue.id).cloned().unwrap_or_default(),
+    })))
+}
+
+// ── Helpers internos de batch-fetch ──────────────────────────────────────────
+
+/// Batch-fetch de assignee_ids por issue — evita N+1.
+async fn issue_assignees_map(
+    db: &sea_orm::DatabaseConnection,
+    issue_ids: &[uuid::Uuid],
+) -> Result<std::collections::HashMap<uuid::Uuid, Vec<uuid::Uuid>>, AppError> {
+    if issue_ids.is_empty() { return Ok(Default::default()); }
+    let rows = issue_assignees::Entity::find()
+        .filter(issue_assignees::Column::IssueId.is_in(issue_ids.to_vec()))
+        .filter(issue_assignees::Column::DeletedAt.is_null())
+        .all(db)
+        .await
+        .map_err(AppError::Database)?;
+    let mut map: std::collections::HashMap<uuid::Uuid, Vec<uuid::Uuid>> = Default::default();
+    for row in rows { map.entry(row.issue_id).or_default().push(row.assignee_id); }
+    Ok(map)
+}
+
+/// Batch-fetch de label_ids por issue — evita N+1.
+async fn issue_labels_map(
+    db: &sea_orm::DatabaseConnection,
+    issue_ids: &[uuid::Uuid],
+) -> Result<std::collections::HashMap<uuid::Uuid, Vec<uuid::Uuid>>, AppError> {
+    if issue_ids.is_empty() { return Ok(Default::default()); }
+    let rows = issue_labels::Entity::find()
+        .filter(issue_labels::Column::IssueId.is_in(issue_ids.to_vec()))
+        .filter(issue_labels::Column::DeletedAt.is_null())
+        .all(db)
+        .await
+        .map_err(AppError::Database)?;
+    let mut map: std::collections::HashMap<uuid::Uuid, Vec<uuid::Uuid>> = Default::default();
+    for row in rows { map.entry(row.issue_id).or_default().push(row.label_id); }
+    Ok(map)
 }
