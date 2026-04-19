@@ -177,9 +177,14 @@ pub struct CreateIssueRequest {
     pub estimate_point: Option<Uuid>,
     #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_empty_as_none_uuid")]
     pub type_id: Option<Uuid>,
-    #[serde(default)]
+    // `deserialize_uuid_list_filter_nulls` — el frontend (react-hook-form)
+    // a veces inicializa estos arrays con `[null]` cuando el select de
+    // asignee/label arranca en "unassigned". Serde nativo fallaría con 422
+    // al topar `null` dentro de `Vec<Uuid>`. Django lo tolera porque
+    // Postgres descarta NULLs del `IN (...)` al final.
+    #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_uuid_list_filter_nulls")]
     pub assignee_ids: Option<Vec<Uuid>>,
-    #[serde(default)]
+    #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_uuid_list_filter_nulls")]
     pub label_ids: Option<Vec<Uuid>>,
 }
 
@@ -200,9 +205,14 @@ pub struct UpdateIssueRequest {
     pub estimate_point: Option<Uuid>,
     #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_empty_as_none_uuid")]
     pub type_id: Option<Uuid>,
-    #[serde(default)]
+    // `deserialize_uuid_list_filter_nulls` — mismo motivo que en
+    // `CreateIssueRequest`: el frontend envía `[null]` desde react-hook-form
+    // al deseleccionar asignees o labels (regresión observada con payload
+    // real `PATCH /issues/{id}/` devolviendo 422 con el mensaje
+    // `assignee_ids[0]: invalid type: null, expected a formatted UUID string`).
+    #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_uuid_list_filter_nulls")]
     pub assignee_ids: Option<Vec<Uuid>>,
-    #[serde(default)]
+    #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_uuid_list_filter_nulls")]
     pub label_ids: Option<Vec<Uuid>>,
     pub is_draft: Option<bool>,
 }

@@ -1636,13 +1636,16 @@ pub struct CreateDraftIssueRequest {
     #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_empty_as_none_date")]
     pub target_date: Option<chrono::NaiveDate>,
     pub sort_order: Option<f64>,
-    #[serde(default)]
+    // Tolerante a `[null]` / `[""]` — mismo patrón que en `CreateIssueRequest`,
+    // el frontend (react-hook-form) a veces inicializa estos arrays con
+    // placeholders nulos al montar selects controlados en estado "unassigned".
+    #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_uuid_list_filter_nulls")]
     pub assignee_ids: Option<Vec<Uuid>>,
-    #[serde(default)]
+    #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_uuid_list_filter_nulls")]
     pub label_ids: Option<Vec<Uuid>>,
     #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_empty_as_none_uuid")]
     pub cycle_id: Option<Uuid>,
-    #[serde(default)]
+    #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_uuid_list_filter_nulls")]
     pub module_ids: Option<Vec<Uuid>>,
 }
 
@@ -1670,9 +1673,11 @@ pub struct UpdateDraftIssueRequest {
     #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_empty_as_none_date")]
     pub target_date: Option<chrono::NaiveDate>,
     pub sort_order: Option<f64>,
-    #[serde(default)]
+    // `deserialize_uuid_list_filter_nulls` — tolera `[null]` y `[""]` del
+    // frontend (ver `serde_empty::deserialize_uuid_list_filter_nulls`).
+    #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_uuid_list_filter_nulls")]
     pub assignee_ids: Option<Vec<Uuid>>,
-    #[serde(default)]
+    #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_uuid_list_filter_nulls")]
     pub label_ids: Option<Vec<Uuid>>,
     /// `cycle_id` en PATCH usa Option<Option<Uuid>> para distinguir:
     /// - campo ausente                         → no tocar cycle (`"not_provided"` en Django)
@@ -1687,7 +1692,7 @@ pub struct UpdateDraftIssueRequest {
     /// manualmente: `#[serde(default, deserialize_with = ...)]`.
     #[serde(default, deserialize_with = "deserialize_double_option_uuid")]
     pub cycle_id: Option<Option<Uuid>>,
-    #[serde(default)]
+    #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_uuid_list_filter_nulls")]
     pub module_ids: Option<Vec<Uuid>>,
 }
 

@@ -77,6 +77,60 @@ where
     Ok(opt.filter(|s| !s.trim().is_empty()))
 }
 
+/// Deserializa un array tolerante de UUIDs — filtra `null` y `""`.
+///
+/// El frontend de Plane envía a veces `assignee_ids: [null]` o
+/// `label_ids: ["", "<uuid>"]` cuando react-hook-form inicializa un select
+/// controlado con valor por default vacío. Serde nativo falla con
+/// 422 al intentar parsear `null` o `""` como `Uuid` dentro de `Vec<Uuid>`.
+///
+/// Django tolera este caso porque `ListField(child=PrimaryKeyRelatedField(...))`
+/// corre la validación por item y el `PrimaryKeyRelatedField` trata `None`
+/// como inválido pero el serializer en `apps/api/plane/app/serializers/
+/// issue.py:149-155` aplica `ProjectMember.objects.filter(member_id__in=...)`
+/// — Postgres simplemente descarta los NULLs del IN list.
+///
+/// Semántica:
+/// - campo ausente        → `None`
+/// - `null`               → `None`
+/// - `[]`                 → `Some(vec![])`
+/// - `[null, "", "uuid"]` → `Some(vec![uuid])` (null y "" filtrados)
+/// - `["bad"]`            → error de deserialización (400/422)
+///
+/// # Uso
+/// ```ignore
+/// #[serde(default, deserialize_with = "deserialize_uuid_list_filter_nulls")]
+/// pub assignee_ids: Option<Vec<Uuid>>,
+/// ```
+pub fn deserialize_uuid_list_filter_nulls<'de, D>(
+    deserializer: D,
+) -> Result<Option<Vec<Uuid>>, D::Error>
+where
+    D: Deserializer<'de>,
+{
+    // Paso 1: deserializar como `Option<Vec<Option<String>>>` — la
+    // representación más laxa posible. Acepta ausente, null, o array
+    // con items null / string.
+    let opt: Option<Vec<Option<String>>> = Option::deserialize(deserializer)?;
+    match opt {
+        None => Ok(None),
+        Some(items) => {
+            let mut out = Vec::with_capacity(items.len());
+            for item in items {
+                match item {
+                    None => continue,                           // filtrar null
+                    Some(s) if s.trim().is_empty() => continue, // filtrar ""
+                    Some(s) => {
+                        let u = Uuid::parse_str(&s).map_err(serde::de::Error::custom)?;
+                        out.push(u);
+                    }
+                }
+            }
+            Ok(Some(out))
+        }
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -146,5 +200,62 @@ mod tests {
         assert!(dto.s.is_none());
         let dto: TestDto = serde_json::from_str(r#"{"s": "hi"}"#).unwrap();
         assert_eq!(dto.s.as_deref(), Some("hi"));
+    }
+
+    #[derive(Deserialize)]
+    struct ListDto {
+        #[serde(default, deserialize_with = "deserialize_uuid_list_filter_nulls")]
+        ids: Option<Vec<Uuid>>,
+    }
+
+    #[test]
+    fn uuid_list_missing_is_none() {
+        let dto: ListDto = serde_json::from_str(r#"{}"#).unwrap();
+        assert!(dto.ids.is_none());
+    }
+
+    #[test]
+    fn uuid_list_null_is_none() {
+        let dto: ListDto = serde_json::from_str(r#"{"ids": null}"#).unwrap();
+        assert!(dto.ids.is_none());
+    }
+
+    #[test]
+    fn uuid_list_empty_array_is_some_empty() {
+        let dto: ListDto = serde_json::from_str(r#"{"ids": []}"#).unwrap();
+        assert_eq!(dto.ids, Some(vec![]));
+    }
+
+    #[test]
+    fn uuid_list_filters_null_items() {
+        // Esta es la regresión específica de la 422 en PATCH issues:
+        // frontend envía `assignee_ids: [null]` cuando RHF inicializa el
+        // select de "unassigned" con placeholder null.
+        let dto: ListDto = serde_json::from_str(r#"{"ids": [null]}"#).unwrap();
+        assert_eq!(dto.ids, Some(vec![]));
+    }
+
+    #[test]
+    fn uuid_list_filters_empty_strings() {
+        let dto: ListDto = serde_json::from_str(r#"{"ids": [""]}"#).unwrap();
+        assert_eq!(dto.ids, Some(vec![]));
+    }
+
+    #[test]
+    fn uuid_list_mixed_filters_and_keeps() {
+        let dto: ListDto = serde_json::from_str(
+            r#"{"ids": [null, "", "00000000-0000-0000-0000-000000000001", "   "]}"#,
+        )
+        .unwrap();
+        assert_eq!(
+            dto.ids,
+            Some(vec![Uuid::parse_str("00000000-0000-0000-0000-000000000001").unwrap()])
+        );
+    }
+
+    #[test]
+    fn uuid_list_invalid_item_fails() {
+        let res: Result<ListDto, _> = serde_json::from_str(r#"{"ids": ["not-a-uuid"]}"#);
+        assert!(res.is_err());
     }
 }
