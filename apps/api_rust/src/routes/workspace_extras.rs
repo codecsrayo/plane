@@ -1,19 +1,19 @@
 // src/routes/workspace_extras.rs
-//! Endpoints de Workspace â sub-mÃ³dulos adicionales.
+//! Endpoints de Workspace Ã¢ÂÂ sub-mÃÂ³dulos adicionales.
 //!
 //! Cubre los equivalentes Django de:
-//!   workspace/favorite.py        â favoritos del usuario
-//!   workspace/home.py            â preferencias de home
-//!   workspace/quick_link.py      â quick links
-//!   workspace/recent_visit.py    â visitas recientes
-//!   workspace/sticky.py          â stickies
-//!   workspace/user_preference.py â preferencias de usuario
-//!   workspace/draft.py           â draft issues
-//!   workspace/cycle.py           â cycles a nivel workspace
-//!   workspace/module.py          â modules a nivel workspace
-//!   workspace/estimate.py        â estimates a nivel workspace
-//!   workspace/label.py           â labels a nivel workspace
-//!   workspace/state.py           â states a nivel workspace
+//!   workspace/favorite.py        Ã¢ÂÂ favoritos del usuario
+//!   workspace/home.py            Ã¢ÂÂ preferencias de home
+//!   workspace/quick_link.py      Ã¢ÂÂ quick links
+//!   workspace/recent_visit.py    Ã¢ÂÂ visitas recientes
+//!   workspace/sticky.py          Ã¢ÂÂ stickies
+//!   workspace/user_preference.py Ã¢ÂÂ preferencias de usuario
+//!   workspace/draft.py           Ã¢ÂÂ draft issues
+//!   workspace/cycle.py           Ã¢ÂÂ cycles a nivel workspace
+//!   workspace/module.py          Ã¢ÂÂ modules a nivel workspace
+//!   workspace/estimate.py        Ã¢ÂÂ estimates a nivel workspace
+//!   workspace/label.py           Ã¢ÂÂ labels a nivel workspace
+//!   workspace/state.py           Ã¢ÂÂ states a nivel workspace
 
 use axum::{
     extract::{Path, Query, State},
@@ -44,7 +44,7 @@ use crate::{
     AppState,
 };
 
-// ââ Permisos inline ââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// Ã¢ÂÂÃ¢ÂÂ Permisos inline Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 
 /// Asegura que el rol del miembro es al menos MEMBER (no GUEST).
 fn require_member_or_admin(role: i16) -> Result<(), AppError> {
@@ -55,9 +55,9 @@ fn require_member_or_admin(role: i16) -> Result<(), AppError> {
     Ok(())
 }
 
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 // FAVORITES
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 
 #[derive(Debug, Serialize)]
 pub struct FavoriteResponse {
@@ -114,7 +114,7 @@ pub struct UpdateFavoriteRequest {
 
 /// GET /workspaces/{slug}/user-favorites/
 ///
-/// Lista favoritos del usuario en el workspace (sin padre, sin pÃ¡ginas).
+/// Lista favoritos del usuario en el workspace (sin padre, sin pÃÂ¡ginas).
 #[utoipa::path(
     get,
     path = "/api/workspaces/{slug}/user-favorites/",
@@ -158,7 +158,7 @@ pub async fn list_favorites(
     params(("slug" = String, Path, description = "Workspace slug")),
     responses(
         (status = 200, description = "Favorito creado o existente"),
-        (status = 400, description = "Error de validaciÃ³n"),
+        (status = 400, description = "Error de validaciÃÂ³n"),
     )
 )]
 pub async fn create_favorite(
@@ -299,7 +299,7 @@ pub async fn delete_favorite(
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
-    // Hard delete (Django tambiÃ©n lo hace con soft=False en este endpoint)
+    // Hard delete (Django tambiÃÂ©n lo hace con soft=False en este endpoint)
     user_favorites::Entity::delete_by_id(fav.id)
         .exec(db)
         .await
@@ -348,11 +348,11 @@ pub async fn list_favorite_children(
     Ok((StatusCode::OK, Json(resp)))
 }
 
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 // HOME PREFERENCES
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 
-/// Respuesta del GET â mirror de Django `.values("key", "is_enabled", "config", "sort_order")`.
+/// Respuesta del GET Ã¢ÂÂ mirror de Django `.values("key", "is_enabled", "config", "sort_order")`.
 /// No incluye `id` porque Django tampoco lo expone en este endpoint.
 #[derive(Debug, Serialize)]
 pub struct HomePreferenceResponse {
@@ -383,7 +383,7 @@ pub struct UpdateHomePreferenceRequest {
 /// Keys que se auto-siembran en el GET.
 ///
 /// Mirror de Django `WorkspaceHomePreference.HomeWidgetKeys.choices`
-/// EXCLUYENDO `quick_tutorial` y `new_at_plane` (filtradas explÃ­citamente
+/// EXCLUYENDO `quick_tutorial` y `new_at_plane` (filtradas explÃÂ­citamente
 /// en `workspace/home.py:33-36`).
 const HOME_PREFERENCE_KEYS: &[&str] = &["quick_links", "recents", "my_stickies"];
 
@@ -394,9 +394,9 @@ const HOME_PREFERENCE_KEYS: &[&str] = &["quick_links", "recents", "my_stickies"]
 ///
 /// Comportamiento de auto-seed: para cada key faltante en
 /// `HOME_PREFERENCE_KEYS` se crea una fila con defaults (is_enabled=true,
-/// config={}, sort_order = 1000 â position). Esto garantiza que el
+/// config={}, sort_order = 1000 Ã¢ÂÂ position). Esto garantiza que el
 /// frontend siempre reciba un set completo de widgets sin necesidad de
-/// un flujo de inicializaciÃ³n separado.
+/// un flujo de inicializaciÃÂ³n separado.
 ///
 /// Se usa `INSERT ... ON CONFLICT DO NOTHING` para evitar race conditions
 /// entre tabs del mismo usuario, coherente con el `bulk_create(
@@ -420,7 +420,7 @@ pub async fn get_home_preferences(
     let ws = workspace_by_slug(db, &slug).await?;
     let _member = require_workspace_member(db, ws.id, user_id).await?;
 
-    // ââ 1. Leer keys existentes ââââââââââââââââââââââââââââââââââââââââââââ
+    // Ã¢ÂÂÃ¢ÂÂ 1. Leer keys existentes Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
     let existing_keys: std::collections::HashSet<String> =
         workspace_home_preferences::Entity::find()
             .filter(workspace_home_preferences::Column::WorkspaceId.eq(ws.id))
@@ -433,9 +433,9 @@ pub async fn get_home_preferences(
             .map(|p| p.key)
             .collect();
 
-    // ââ 2. Auto-seed keys faltantes ââââââââââââââââââââââââââââââââââââââââ
+    // Ã¢ÂÂÃ¢ÂÂ 2. Auto-seed keys faltantes Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
     //
-    // sort_order = 1000 â position (mirror Django: `sort_order = 1000 - sort_order_counter`).
+    // sort_order = 1000 Ã¢ÂÂ position (mirror Django: `sort_order = 1000 - sort_order_counter`).
     let now = chrono::Utc::now().fixed_offset();
     let missing: Vec<_> = HOME_PREFERENCE_KEYS
         .iter()
@@ -465,7 +465,7 @@ pub async fn get_home_preferences(
             })
             .collect();
 
-        // ON CONFLICT DO NOTHING â mirror de bulk_create(ignore_conflicts=True).
+        // ON CONFLICT DO NOTHING Ã¢ÂÂ mirror de bulk_create(ignore_conflicts=True).
         // La unique constraint parcial cubre (workspace, user, key) WHERE deleted_at IS NULL.
         use sea_orm::sea_query::{Expr, OnConflict};
         workspace_home_preferences::Entity::insert_many(to_insert)
@@ -487,7 +487,7 @@ pub async fn get_home_preferences(
             .map_err(AppError::Database)?;
     }
 
-    // ââ 3. Leer todas (incluidas las reciÃ©n insertadas) ââââââââââââââââââââ
+    // Ã¢ÂÂÃ¢ÂÂ 3. Leer todas (incluidas las reciÃÂ©n insertadas) Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
     let prefs = workspace_home_preferences::Entity::find()
         .filter(workspace_home_preferences::Column::WorkspaceId.eq(ws.id))
         .filter(workspace_home_preferences::Column::UserId.eq(user_id))
@@ -554,9 +554,9 @@ pub async fn update_home_preference(
     Ok((StatusCode::OK, Json(resp)))
 }
 
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 // QUICK LINKS
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 
 #[derive(Debug, Serialize)]
 pub struct QuickLinkResponse {
@@ -773,9 +773,9 @@ pub async fn delete_quick_link(
     Ok(StatusCode::NO_CONTENT)
 }
 
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 // RECENT VISITS
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 
 #[derive(Debug, Serialize)]
 pub struct RecentVisitResponse {
@@ -819,7 +819,7 @@ pub struct RecentVisitQuery {
         ("entity_name" = Option<String>, Query, description = "Filtrar por tipo de entidad"),
     ),
     responses(
-        (status = 200, description = "Lista de visitas recientes (mÃ¡x 20)"),
+        (status = 200, description = "Lista de visitas recientes (mÃÂ¡x 20)"),
     )
 )]
 pub async fn list_recent_visits(
@@ -833,7 +833,7 @@ pub async fn list_recent_visits(
     let ws = workspace_by_slug(db, &slug).await?;
     let _member = require_workspace_member(db, ws.id, user_id).await?;
 
-    // SÃ³lo entidades vÃ¡lidas: issue, page, project
+    // SÃÂ³lo entidades vÃÂ¡lidas: issue, page, project
     let allowed = ["issue", "page", "project"];
 
     let mut query = user_recent_visits::Entity::find()
@@ -846,7 +846,7 @@ pub async fn list_recent_visits(
             query = query.filter(user_recent_visits::Column::EntityName.eq(entity_name));
         }
     } else {
-        // Filtrar sÃ³lo entidades permitidas usando sea_orm OR condition
+        // Filtrar sÃÂ³lo entidades permitidas usando sea_orm OR condition
         use sea_orm::Condition;
         let mut cond = Condition::any();
         for name in &allowed {
@@ -866,9 +866,9 @@ pub async fn list_recent_visits(
     Ok((StatusCode::OK, Json(resp)))
 }
 
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 // STICKIES
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 
 #[derive(Debug, Serialize)]
 pub struct StickyResponse {
@@ -952,7 +952,7 @@ pub struct StickyListQuery {
     tag = "Workspace Extras",
     params(
         ("slug" = String, Path, description = "Workspace slug"),
-        ("query" = Option<String>, Query, description = "Buscar en descripciÃ³n"),
+        ("query" = Option<String>, Query, description = "Buscar en descripciÃÂ³n"),
         ("cursor" = Option<String>, Query, description = "Cursor Django: per_page:offset:is_prev"),
         ("per_page" = Option<u64>, Query, description = "Override per_page"),
     ),
@@ -992,7 +992,7 @@ pub async fn list_stickies(
         query = query.filter(stickies::Column::DescriptionStripped.contains(search));
     }
 
-    // Count y page deben usar el MISMO query (mismos filtros) â clonamos antes
+    // Count y page deben usar el MISMO query (mismos filtros) Ã¢ÂÂ clonamos antes
     // de aplicar el orden para evitar divergencia.
     let total_count = query
         .clone()
@@ -1168,9 +1168,9 @@ pub async fn delete_sticky(
     Ok(StatusCode::NO_CONTENT)
 }
 
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 // USER PREFERENCES
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 
 #[derive(Debug, Serialize)]
 pub struct UserPreferenceEntry {
@@ -1199,7 +1199,7 @@ pub struct UpdateUserPreferenceItem {
     tag = "Workspace Extras",
     params(("slug" = String, Path, description = "Workspace slug")),
     responses(
-        (status = 200, description = "Preferencias de usuario (mapa key â {is_pinned, sort_order})"),
+        (status = 200, description = "Preferencias de usuario (mapa key Ã¢ÂÂ {is_pinned, sort_order})"),
     )
 )]
 pub async fn get_user_preferences(
@@ -1212,14 +1212,14 @@ pub async fn get_user_preferences(
     let ws = workspace_by_slug(db, &slug).await?;
     let _member = require_workspace_member(db, ws.id, user_id).await?;
 
-    // ââ 1. Seed de keys faltantes âââââââââââââââââââââââââââââââââââââââââââ
+    // Ã¢ÂÂÃ¢ÂÂ 1. Seed de keys faltantes Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
     //
     // Mirror exacto de Django: el GET es responsable de garantizar que
     // existan filas para cada UserPreferenceKeys.choices. Si no existen,
     // se crean con defaults; si ya existen (race condition entre tabs)
     // se ignoran via ON CONFLICT DO NOTHING.
     //
-    // Orden y defaults son normativos â el frontend asume estos valores.
+    // Orden y defaults son normativos Ã¢ÂÂ el frontend asume estos valores.
     const PREFERENCE_KEYS: &[&str] = &[
         "views",
         "active_cycles",
@@ -1245,8 +1245,8 @@ pub async fn get_user_preferences(
             .collect();
 
     // Construir ActiveModel solo para los keys que faltan, manteniendo el
-    // mismo cÃ¡lculo de sort_order que Django: 65535 + i*10000 donde `i` es
-    // la posiciÃ³n dentro del subset de keys faltantes (no del total).
+    // mismo cÃÂ¡lculo de sort_order que Django: 65535 + i*10000 donde `i` es
+    // la posiciÃÂ³n dentro del subset de keys faltantes (no del total).
     let now = chrono::Utc::now().fixed_offset();
     let mut to_insert = Vec::new();
     for (i, key) in PREFERENCE_KEYS
@@ -1272,19 +1272,19 @@ pub async fn get_user_preferences(
     }
 
     if !to_insert.is_empty() {
-        // ON CONFLICT DO NOTHING â espejo de bulk_create(ignore_conflicts=True).
+        // ON CONFLICT DO NOTHING Ã¢ÂÂ espejo de bulk_create(ignore_conflicts=True).
         // La unique constraint parcial cubre (workspace_id, user_id, key) cuando
-        // deleted_at IS NULL, asÃ­ que reaplicar el GET concurrentemente desde otra
-        // pestaÃ±a no rompe.
+        // deleted_at IS NULL, asÃÂ­ que reaplicar el GET concurrentemente desde otra
+        // pestaÃÂ±a no rompe.
         //
         // IMPORTANTE: PostgreSQL EXIGE repetir el predicado `WHERE deleted_at IS NULL`
-        // en el conflict target para poder inferir un arbiter index parcial â sin
+        // en el conflict target para poder inferir un arbiter index parcial Ã¢ÂÂ sin
         // `.target_and_where(...)` el INSERT revienta con "there is no unique or
         // exclusion constraint matching the ON CONFLICT specification" aunque las
         // columnas coincidan exactamente con la constraint. Ver
         // plane/db/models/workspace.py:443-451 (constraint Django) y
         // https://www.postgresql.org/docs/current/sql-insert.html#SQL-ON-CONFLICT
-        // ("index_predicate â¦ must satisfy arbiter indexes").
+        // ("index_predicate Ã¢ÂÂ¦ must satisfy arbiter indexes").
         use sea_orm::sea_query::{Expr, OnConflict};
         workspace_user_preferences::Entity::insert_many(to_insert)
             .on_conflict(
@@ -1305,7 +1305,7 @@ pub async fn get_user_preferences(
             .map_err(AppError::Database)?;
     }
 
-    // ââ 2. Leer todas las preferencias (incluye las reciÃ©n insertadas) ââââââ
+    // Ã¢ÂÂÃ¢ÂÂ 2. Leer todas las preferencias (incluye las reciÃÂ©n insertadas) Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
     let prefs = workspace_user_preferences::Entity::find()
         .filter(workspace_user_preferences::Column::WorkspaceId.eq(ws.id))
         .filter(workspace_user_preferences::Column::UserId.eq(user_id))
@@ -1380,21 +1380,21 @@ pub async fn update_user_preferences(
     Ok((StatusCode::OK, Json(serde_json::json!({"message": "Successfully updated"}))))
 }
 
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 // DRAFT ISSUES
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 
-// ââ Helpers de sync N-a-M para Draft Issues ââââââââââââââââââââââââââââââââ
+// Ã¢ÂÂÃ¢ÂÂ Helpers de sync N-a-M para Draft Issues Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 //
-// Espejan la lÃ³gica de `DraftIssueCreateSerializer.create` / `.update` en
+// Espejan la lÃÂ³gica de `DraftIssueCreateSerializer.create` / `.update` en
 // `apps/api/plane/app/serializers/draft.py:142-297`. Django hace hard-delete
 // (`.delete()`) sobre los assignees/labels/cycles/modules existentes y luego
 // `bulk_create` con los nuevos. Nosotros replicamos el comportamiento con
-// hard-delete + insert en la misma transacciÃ³n.
+// hard-delete + insert en la misma transacciÃÂ³n.
 //
-// NOTA: draft_issue_* NO tiene soft-delete lÃ³gico en Django (el
-// `.delete()` sobre `BaseManager` es hard-delete porque las tablas estÃ¡n
-// declaradas sin soft-delete). Por paridad hacemos hard-delete aquÃ­.
+// NOTA: draft_issue_* NO tiene soft-delete lÃÂ³gico en Django (el
+// `.delete()` sobre `BaseManager` es hard-delete porque las tablas estÃÂ¡n
+// declaradas sin soft-delete). Por paridad hacemos hard-delete aquÃÂ­.
 
 /// Reemplaza los assignees del draft con `new_ids` (hard-delete existentes + insert).
 async fn sync_draft_assignees(
@@ -1470,10 +1470,10 @@ async fn sync_draft_labels(
     Ok(())
 }
 
-/// Reemplaza el (Ãºnico) cycle del draft. `new_id = None` solo borra.
+/// Reemplaza el (ÃÂºnico) cycle del draft. `new_id = None` solo borra.
 ///
 /// Paridad con draft.py:266-276: siempre borra existentes; solo crea uno
-/// nuevo si `cycle_id` es truthy (en Django: no None, no ""; aquÃ­ no es
+/// nuevo si `cycle_id` es truthy (en Django: no None, no ""; aquÃÂ­ no es
 /// `Option<Option<Uuid>>::Some(None)`).
 async fn sync_draft_cycle(
     txn: &sea_orm::DatabaseTransaction,
@@ -1554,18 +1554,18 @@ async fn sync_draft_modules(
 /// (packages/types/src/workspace-draft-issues/base.ts:9).
 ///
 /// # Nombres (diferencias vs columnas DB)
-/// - `estimate_point` (no `_id`) â DRF expone la FK con el nombre declarado
+/// - `estimate_point` (no `_id`) Ã¢ÂÂ DRF expone la FK con el nombre declarado
 ///   en `Meta.fields`. La columna DB es `estimate_point_id`; el mapeo lo
 ///   hace el hidratador.
-/// - `created_by` / `updated_by` (no `_id`) â misma razÃ³n; `BaseSerializer`
+/// - `created_by` / `updated_by` (no `_id`) Ã¢ÂÂ misma razÃÂ³n; `BaseSerializer`
 ///   expone estas FK con el nombre del field.
-/// - `workspace_id` NO se expone â Django no lo incluye en `Meta.fields`.
+/// - `workspace_id` NO se expone Ã¢ÂÂ Django no lo incluye en `Meta.fields`.
 ///
 /// # Campos anotados (ArrayAgg/Subquery en Django `draft.py:54-95`)
 /// - `cycle_id`: primer `DraftIssueCycle` activo (deleted_at NULL).
 /// - `label_ids` / `assignee_ids` / `module_ids`: lista de IDs activos,
 ///   filtrando `deleted_at IS NULL` en cada tabla intermedia (mismo
-///   criterio pragmÃ¡tico que `load_enrichment` en `issue_pagination.rs:122`
+///   criterio pragmÃÂ¡tico que `load_enrichment` en `issue_pagination.rs:122`
 ///   para issues regulares, que ya omite el check `member_project__is_active`
 ///   de Django por simplicidad de paridad entre endpoints).
 #[derive(Debug, Serialize)]
@@ -1595,7 +1595,7 @@ pub struct DraftIssueResponse {
 
 /// Hidrata `DraftIssueResponse` con las anotaciones M2M desde la DB.
 ///
-/// Una query por tipo de relaciÃ³n (O(1) roundtrips), filtrando
+/// Una query por tipo de relaciÃÂ³n (O(1) roundtrips), filtrando
 /// `deleted_at IS NULL` en cada tabla intermedia. Paridad con las
 /// anotaciones del queryset de `WorkspaceDraftIssueViewSet.get_queryset`
 /// (draft.py:49-95).
@@ -1616,7 +1616,7 @@ async fn hydrate_draft_issue_responses(
 
     let ids: Vec<Uuid> = models.iter().map(|m| m.id).collect();
 
-    // cycle_id (primer ciclo activo â Subquery `[:1]` en Django draft.py:55-58).
+    // cycle_id (primer ciclo activo Ã¢ÂÂ Subquery `[:1]` en Django draft.py:55-58).
     let cycles_rows = draft_issue_cycles::Entity::find()
         .filter(draft_issue_cycles::Column::DraftIssueId.is_in(ids.clone()))
         .filter(draft_issue_cycles::Column::DeletedAt.is_null())
@@ -1625,7 +1625,7 @@ async fn hydrate_draft_issue_responses(
         .map_err(AppError::Database)?;
     let mut cycle_by_draft: HashMap<Uuid, Uuid> = HashMap::new();
     for r in cycles_rows {
-        // `entry().or_insert()` preserva el primer valor visto â espejo
+        // `entry().or_insert()` preserva el primer valor visto Ã¢ÂÂ espejo
         // del Subquery `[:1]` de Django.
         cycle_by_draft.entry(r.draft_issue_id).or_insert(r.cycle_id);
     }
@@ -1714,8 +1714,8 @@ async fn hydrate_draft_issue_response(
     model: draft_issues::Model,
 ) -> Result<DraftIssueResponse, AppError> {
     let mut responses = hydrate_draft_issue_responses(db, vec![model]).await?;
-    // `hydrate_draft_issue_responses` preserva el orden y nunca vacÃ­a el
-    // vec cuando la entrada tiene elementos â `pop` es seguro.
+    // `hydrate_draft_issue_responses` preserva el orden y nunca vacÃÂ­a el
+    // vec cuando la entrada tiene elementos Ã¢ÂÂ `pop` es seguro.
     Ok(responses
         .pop()
         .expect("hydrate_draft_issue_responses preserva el vec de entrada"))
@@ -1728,21 +1728,21 @@ async fn hydrate_draft_issue_response(
 /// desde `DEFAULT_WORK_ITEM_FORM_VALUES` (packages/constants/src/issue/
 /// modal.ts).
 ///
-/// # Convenciones crÃ­ticas
+/// # Convenciones crÃÂ­ticas
 /// - Todos los `Option<Uuid>` / `Option<NaiveDate>` usan los helpers de
-///   `crate::utils::serde_empty` para convertir `""` â `None`. El frontend
-///   envÃ­a `project_id: ""`, `state_id: ""`, fechas vacÃ­as por default; serde
+///   `crate::utils::serde_empty` para convertir `""` Ã¢ÂÂ `None`. El frontend
+///   envÃÂ­a `project_id: ""`, `state_id: ""`, fechas vacÃÂ­as por default; serde
 ///   nativo falla con 422 (HTTP Unprocessable Entity) al toparse con `""`
 ///   donde espera un `Uuid`.
-/// - `estimate_point` sin `_id` â DRF expone la FK con ese nombre cuando se
+/// - `estimate_point` sin `_id` Ã¢ÂÂ DRF expone la FK con ese nombre cuando se
 ///   declara como `PrimaryKeyRelatedField(source="estimate_point", ...)`.
-///   La columna en la DB sÃ­ es `estimate_point_id`; el mapeo lo hace el
+///   La columna en la DB sÃÂ­ es `estimate_point_id`; el mapeo lo hace el
 ///   handler (mirror de `CreateIssueRequest` en `issues.rs:163`).
 /// - `assignee_ids` / `label_ids` (plural + sufijo) son los nombres que usan
 ///   DRF y el frontend; son `ListField(required=False)` en Django.
 /// - `cycle_id` y `module_ids` existen en el payload del frontend aunque
 ///   el `DraftIssueCreateSerializer` los lee desde `initial_data`
-///   (draft.py:146-147) â aquÃ­ los declaramos explÃ­citos.
+///   (draft.py:146-147) Ã¢ÂÂ aquÃÂ­ los declaramos explÃÂ­citos.
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct CreateDraftIssueRequest {
     pub name: Option<String>,
@@ -1763,7 +1763,7 @@ pub struct CreateDraftIssueRequest {
     #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_empty_as_none_date")]
     pub target_date: Option<chrono::NaiveDate>,
     pub sort_order: Option<f64>,
-    // Tolerante a `[null]` / `[""]` â mismo patrÃ³n que en `CreateIssueRequest`,
+    // Tolerante a `[null]` / `[""]` Ã¢ÂÂ mismo patrÃÂ³n que en `CreateIssueRequest`,
     // el frontend (react-hook-form) a veces inicializa estos arrays con
     // placeholders nulos al montar selects controlados en estado "unassigned".
     #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_uuid_list_filter_nulls")]
@@ -1800,22 +1800,22 @@ pub struct UpdateDraftIssueRequest {
     #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_empty_as_none_date")]
     pub target_date: Option<chrono::NaiveDate>,
     pub sort_order: Option<f64>,
-    // `deserialize_uuid_list_filter_nulls` â tolera `[null]` y `[""]` del
+    // `deserialize_uuid_list_filter_nulls` Ã¢ÂÂ tolera `[null]` y `[""]` del
     // frontend (ver `serde_empty::deserialize_uuid_list_filter_nulls`).
     #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_uuid_list_filter_nulls")]
     pub assignee_ids: Option<Vec<Uuid>>,
     #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_uuid_list_filter_nulls")]
     pub label_ids: Option<Vec<Uuid>>,
     /// `cycle_id` en PATCH usa Option<Option<Uuid>> para distinguir:
-    /// - campo ausente                         â no tocar cycle (`"not_provided"` en Django)
-    /// - `cycle_id: null` o `cycle_id: ""`     â desasignar cycle
-    /// - `cycle_id: "<uuid>"`                  â asignar cycle
+    /// - campo ausente                         Ã¢ÂÂ no tocar cycle (`"not_provided"` en Django)
+    /// - `cycle_id: null` o `cycle_id: ""`     Ã¢ÂÂ desasignar cycle
+    /// - `cycle_id: "<uuid>"`                  Ã¢ÂÂ asignar cycle
     ///
     /// Django lee `request.data.get("cycle_id", "not_provided")` (draft.py:176)
     /// y en el serializer `if cycle_id != "not_provided"` decide si tocarlo
     /// (draft.py:266). Replicamos ese comportamiento usando el truco de
     /// `Option<Option<T>>` + `#[serde(default, with = "::serde_with::rust::double_option")]`
-    /// â pero sin depender de `serde_with`, implementamos el mismo doble-wrap
+    /// Ã¢ÂÂ pero sin depender de `serde_with`, implementamos el mismo doble-wrap
     /// manualmente: `#[serde(default, deserialize_with = ...)]`.
     #[serde(default, deserialize_with = "deserialize_double_option_uuid")]
     pub cycle_id: Option<Option<Uuid>>,
@@ -1825,10 +1825,10 @@ pub struct UpdateDraftIssueRequest {
 
 /// Deserializador para `Option<Option<Uuid>>` con empty-string-as-none.
 ///
-/// SemÃ¡ntica:
-/// - campo ausente                â `None`            (no tocar)
-/// - `null` o `""`                â `Some(None)`      (desasignar)
-/// - `"<uuid>"`                   â `Some(Some(uuid))` (asignar)
+/// SemÃÂ¡ntica:
+/// - campo ausente                Ã¢ÂÂ `None`            (no tocar)
+/// - `null` o `""`                Ã¢ÂÂ `Some(None)`      (desasignar)
+/// - `"<uuid>"`                   Ã¢ÂÂ `Some(Some(uuid))` (asignar)
 ///
 /// Necesario para PATCH donde queremos distinguir "campo no enviado" de
 /// "campo enviado como null/empty". Serde nativo colapsa ambos a `None`
@@ -1853,14 +1853,14 @@ where
 ///
 /// Paridad con Django `self.paginate(...)` en
 /// `WorkspaceDraftIssueViewSet.list` (draft.py:99-109), que acepta `cursor`
-/// y `per_page` vÃ­a querystring. El frontend destructura la respuesta como
-/// `{ results, ...paginationInfo }` en `issue.store.ts:231` â si no envolvemos
-/// el array la UI no puede aÃ±adir nada a `issuesMap` y el panel queda vacÃ­o.
+/// y `per_page` vÃÂ­a querystring. El frontend destructura la respuesta como
+/// `{ results, ...paginationInfo }` en `issue.store.ts:231` Ã¢ÂÂ si no envolvemos
+/// el array la UI no puede aÃÂ±adir nada a `issuesMap` y el panel queda vacÃÂ­o.
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct DraftIssueListQuery {
     /// Cursor Django: `"per_page:offset:is_prev"` (ej. `"20:0:0"`).
     pub cursor: Option<String>,
-    /// Override explÃ­cito del per_page (prioridad sobre el derivado del cursor,
+    /// Override explÃÂ­cito del per_page (prioridad sobre el derivado del cursor,
     /// mismo orden que Django en `BasePaginator.paginate`).
     pub per_page: Option<u64>,
 }
@@ -1872,7 +1872,7 @@ pub struct DraftIssueListQuery {
     tag = "Workspace Extras",
     params(("slug" = String, Path, description = "Workspace slug")),
     responses(
-        (status = 200, description = "PÃ¡gina de draft issues del usuario"),
+        (status = 200, description = "PÃÂ¡gina de draft issues del usuario"),
     )
 )]
 pub async fn list_draft_issues(
@@ -1887,7 +1887,7 @@ pub async fn list_draft_issues(
     let _member = require_workspace_member(db, ws.id, user_id).await?;
 
     // Paridad con Django: `paginate(default_per_page=100)` heredado de
-    // `BasePaginator`. El mÃ¡ximo se respeta desde `pagination::resolve_per_page`.
+    // `BasePaginator`. El mÃÂ¡ximo se respeta desde `pagination::resolve_per_page`.
     const DEFAULT_PER_PAGE: u64 = 100;
     const MAX_PER_PAGE: u64 = pagination::DEFAULT_MAX_LIMIT;
 
@@ -1899,15 +1899,15 @@ pub async fn list_draft_issues(
         MAX_PER_PAGE,
     );
 
-    // Filtros idÃ©nticos al queryset de Django draft.py:49-101: workspace por
+    // Filtros idÃÂ©nticos al queryset de Django draft.py:49-101: workspace por
     // slug, `created_by=request.user`, soft-delete activo.
     let base = draft_issues::Entity::find()
         .filter(draft_issues::Column::WorkspaceId.eq(ws.id))
         .filter(draft_issues::Column::CreatedById.eq(user_id))
         .filter(draft_issues::Column::DeletedAt.is_null());
 
-    // `count` y `page` usan el MISMO filtro â clonamos antes de aÃ±adir orden
-    // para no divergir (mismo patrÃ³n que `list_stickies`).
+    // `count` y `page` usan el MISMO filtro Ã¢ÂÂ clonamos antes de aÃÂ±adir orden
+    // para no divergir (mismo patrÃÂ³n que `list_stickies`).
     let total_count = base.clone().count(db).await.map_err(AppError::Database)?;
 
     let page = base
@@ -1944,11 +1944,11 @@ pub async fn create_draft_issue(
     let ws = workspace_by_slug(db, &slug).await?;
     let member = require_workspace_member(db, ws.id, user_id).await?;
     // Draft issues: GUEST es permitido en Django (draft.py:111); no usamos
-    // `require_member_or_admin` aquÃ­ para mantener paridad.
+    // `require_member_or_admin` aquÃÂ­ para mantener paridad.
     let _ = member;
 
-    // ValidaciÃ³n paridad con DraftIssueCreateSerializer.validate (draft.py:72-77):
-    // start_date > target_date â error.
+    // ValidaciÃÂ³n paridad con DraftIssueCreateSerializer.validate (draft.py:72-77):
+    // start_date > target_date Ã¢ÂÂ error.
     if let (Some(start), Some(target)) = (body.start_date, body.target_date) {
         if start > target {
             return Err(AppError::BadRequest(
@@ -1964,7 +1964,7 @@ pub async fn create_draft_issue(
     let cycle_id = body.cycle_id;
     let modules = body.module_ids.clone().unwrap_or_default();
 
-    // Ejecutar en transacciÃ³n para que el draft + sus N-a-M queden atÃ³micos,
+    // Ejecutar en transacciÃÂ³n para que el draft + sus N-a-M queden atÃÂ³micos,
     // igual que `DraftIssueCreateSerializer.create` que hace bulk_create
     // dentro del mismo request y rollback si algo falla.
     use sea_orm::TransactionTrait;
@@ -1984,7 +1984,7 @@ pub async fn create_draft_issue(
                     project_id: Set(project_id),
                     workspace_id: Set(workspace_id),
                     type_id: Set(body.type_id),
-                    // `estimate_point` del payload DRF â columna `estimate_point_id`.
+                    // `estimate_point` del payload DRF Ã¢ÂÂ columna `estimate_point_id`.
                     estimate_point_id: Set(body.estimate_point),
                     start_date: Set(body.start_date),
                     target_date: Set(body.target_date),
@@ -2051,7 +2051,7 @@ pub async fn create_draft_issue(
         })?;
 
     // Hidratar con las anotaciones M2M. Paridad con Django draft.py:124-151,
-    // que despuÃ©s de `serializer.save()` reconsulta el queryset anotado y
+    // que despuÃÂ©s de `serializer.save()` reconsulta el queryset anotado y
     // devuelve el shape completo (con cycle_id/label_ids/assignee_ids/
     // module_ids), no solo el modelo crudo.
     let resp = hydrate_draft_issue_response(db, saved).await?;
@@ -2130,7 +2130,7 @@ pub async fn update_draft_issue(
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
-    // ValidaciÃ³n paridad con DraftIssueCreateSerializer.validate (draft.py:72-77).
+    // ValidaciÃÂ³n paridad con DraftIssueCreateSerializer.validate (draft.py:72-77).
     // En PATCH comparamos el par efectivo: campo enviado si presente, si no
     // el valor actual del draft.
     let effective_start = body.start_date.or(issue.start_date);
@@ -2144,14 +2144,14 @@ pub async fn update_draft_issue(
     }
 
     // `project_id` efectivo para sincronizar las N-a-M (Django toma el
-    // del request si viene, si no el del draft â draft.py:168).
+    // del request si viene, si no el del draft Ã¢ÂÂ draft.py:168).
     let effective_project_id = body.project_id.or(issue.project_id);
     let workspace_id = ws.id;
     let issue_id = issue.id;
 
     use sea_orm::TransactionTrait;
     db.transaction::<_, (), AppError>(|txn| {
-        // Build ActiveModel sync â espejo del patrÃ³n de issues.rs:update_issue
+        // Build ActiveModel sync Ã¢ÂÂ espejo del patrÃÂ³n de issues.rs:update_issue
         // (evita tener que mover `body` completo al async y lidiar con borrows
         // parciales).
         let mut active: draft_issues::ActiveModel = issue.into();
@@ -2165,8 +2165,8 @@ pub async fn update_draft_issue(
             active.priority = Set(v);
         }
         // Para los campos UUID simples: `deserialize_empty_as_none_uuid`
-        // ya colapsa `""` â `None`, asÃ­ que `is_some()` detecta solo el
-        // caso de UUID vÃ¡lido presente. Paridad con issues.rs:update_issue.
+        // ya colapsa `""` Ã¢ÂÂ `None`, asÃÂ­ que `is_some()` detecta solo el
+        // caso de UUID vÃÂ¡lido presente. Paridad con issues.rs:update_issue.
         if body.state_id.is_some() {
             active.state_id = Set(body.state_id);
         }
@@ -2304,15 +2304,15 @@ pub async fn delete_draft_issue(
     Ok(StatusCode::NO_CONTENT)
 }
 
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 // WORKSPACE-LEVEL AGGREGATE VIEWS
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 //
 // Equivalentes a: workspace/cycle.py, module.py, estimate.py, label.py, state.py
-// Son vistas de sÃ³lo lectura que listan entidades a travÃ©s de todos los proyectos
+// Son vistas de sÃÂ³lo lectura que listan entidades a travÃÂ©s de todos los proyectos
 // del workspace a los que el usuario pertenece.
 
-// ââ Cycles ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// Ã¢ÂÂÃ¢ÂÂ Cycles Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 
 #[derive(Debug, Serialize)]
 pub struct WorkspaceCycleResponse {
@@ -2380,7 +2380,7 @@ pub async fn list_workspace_cycles(
     Ok((StatusCode::OK, Json(resp)))
 }
 
-// ââ Modules ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// Ã¢ÂÂÃ¢ÂÂ Modules Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 
 #[derive(Debug, Serialize)]
 pub struct WorkspaceModuleResponse {
@@ -2448,7 +2448,7 @@ pub async fn list_workspace_modules(
     Ok((StatusCode::OK, Json(resp)))
 }
 
-// ââ Estimates ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// Ã¢ÂÂÃ¢ÂÂ Estimates Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 
 #[derive(Debug, Serialize)]
 pub struct WorkspaceEstimatePointResponse {
@@ -2537,7 +2537,7 @@ pub async fn list_workspace_estimates(
     Ok((StatusCode::OK, Json(resp)))
 }
 
-// ââ Labels ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// Ã¢ÂÂÃ¢ÂÂ Labels Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 
 #[derive(Debug, Serialize)]
 pub struct WorkspaceLabelResponse {
@@ -2600,7 +2600,7 @@ pub async fn list_workspace_labels(
     Ok((StatusCode::OK, Json(resp)))
 }
 
-// ââ States ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// Ã¢ÂÂÃ¢ÂÂ States Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 
 #[derive(Debug, Serialize)]
 pub struct WorkspaceStateResponse {
@@ -2668,9 +2668,9 @@ pub async fn list_workspace_states(
     Ok((StatusCode::OK, Json(resp)))
 }
 
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 // WORKSPACE USER PROPERTIES
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 //
 // Mirror de Django `WorkspaceUserPropertiesEndpoint`
 // (plane/app/views/workspace/user.py:252).
@@ -2678,9 +2678,9 @@ pub async fn list_workspace_states(
 // GET   /workspaces/{slug}/user-properties/
 // PATCH /workspaces/{slug}/user-properties/
 //
-// Ambos operan bajo la semÃ¡ntica `get_or_create(user, workspace)`: si no
+// Ambos operan bajo la semÃÂ¡ntica `get_or_create(user, workspace)`: si no
 // existe la fila la crean con defaults. En Rust se implementa de forma
-// atÃ³mica con `INSERT ... ON CONFLICT DO NOTHING` para evitar race
+// atÃÂ³mica con `INSERT ... ON CONFLICT DO NOTHING` para evitar race
 // conditions entre tabs del mismo usuario, seguido de un SELECT.
 //
 // Permiso: `WorkspaceViewerPermission` (cualquier miembro activo del
@@ -2691,11 +2691,11 @@ pub async fn list_workspace_states(
 //   `workspace_id`, timestamps y `deleted_at` no pueden ser pisados desde
 //   el request.
 // - `navigation_control_preference` se valida contra el enum Django
-//   (`ACCORDION` | `TABBED`). Django delega la validaciÃ³n al CharField
-//   + choices a nivel de serializer; aquÃ­ se hace explÃ­cito.
+//   (`ACCORDION` | `TABBED`). Django delega la validaciÃÂ³n al CharField
+//   + choices a nivel de serializer; aquÃÂ­ se hace explÃÂ­cito.
 // - `navigation_project_limit` se valida en rango `0..=1000` para evitar
 //   valores absurdos / overflow de `i32`. Django no valida; este
-//   endurecimiento es consistente con la polÃ­tica de no introducir
+//   endurecimiento es consistente con la polÃÂ­tica de no introducir
 //   patrones inseguros.
 
 /// Valores permitidos para `navigation_control_preference`.
@@ -2704,11 +2704,11 @@ pub async fn list_workspace_states(
 /// `WorkspaceUserProperties.NavigationControlPreference.choices`.
 const NAVIGATION_CONTROL_PREFERENCES: &[&str] = &["ACCORDION", "TABBED"];
 
-/// LÃ­mite razonable para `navigation_project_limit`. Django no valida;
-/// aquÃ­ se acota para evitar valores hostiles o absurdos.
+/// LÃÂ­mite razonable para `navigation_project_limit`. Django no valida;
+/// aquÃÂ­ se acota para evitar valores hostiles o absurdos.
 const MAX_NAVIGATION_PROJECT_LIMIT: i32 = 1000;
 
-/// Defaults idÃ©nticos a Django `get_default_filters` en
+/// Defaults idÃÂ©nticos a Django `get_default_filters` en
 /// `plane/db/models/workspace.py:62`.
 fn default_filters() -> JsonValue {
     serde_json::json!({
@@ -2808,7 +2808,7 @@ impl From<workspace_user_properties::Model> for WorkspaceUserPropertiesResponse 
 
 /// Body aceptado por el PATCH. Todos los campos son opcionales
 /// (partial update, igual que Django `partial=True`). Los FKs y timestamps
-/// quedan fuera de la whitelist por diseÃ±o.
+/// quedan fuera de la whitelist por diseÃÂ±o.
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct UpdateWorkspaceUserPropertiesRequest {
     pub filters: Option<JsonValue>,
@@ -2821,7 +2821,7 @@ pub struct UpdateWorkspaceUserPropertiesRequest {
 
 /// Devuelve la fila existente o la crea con defaults.
 ///
-/// Implementa `get_or_create(user=..., workspace=...)` de forma atÃ³mica:
+/// Implementa `get_or_create(user=..., workspace=...)` de forma atÃÂ³mica:
 /// 1. `INSERT ... ON CONFLICT DO NOTHING` con defaults Django.
 /// 2. `SELECT` filtrando por `(workspace_id, user_id)` activos.
 ///
@@ -2864,13 +2864,13 @@ async fn get_or_create_workspace_user_properties(
                 workspace_user_properties::Column::WorkspaceId,
                 workspace_user_properties::Column::UserId,
             ])
-            // REQUISITO de PostgreSQL, no decoraciÃ³n: cuando el arbiter index es parcial
+            // REQUISITO de PostgreSQL, no decoraciÃÂ³n: cuando el arbiter index es parcial
             // (`UNIQUE (workspace_id, user_id) WHERE deleted_at IS NULL`, ver
             // WorkspaceUserProperties.Meta.constraints en plane/db/models/workspace.py:338-344),
             // el `ON CONFLICT` DEBE repetir el mismo predicado o PostgreSQL rechaza con
             // `there is no unique or exclusion constraint matching the ON CONFLICT specification`
             // (ver https://www.postgresql.org/docs/current/sql-insert.html#SQL-ON-CONFLICT
-            // â "If an index_predicate is specified, it must, as a further requirement for
+            // Ã¢ÂÂ "If an index_predicate is specified, it must, as a further requirement for
             //    inference, satisfy arbiter indexes"). El otro unique existente
             // (`unique_together = [workspace, user, deleted_at]`) tampoco matchea porque
             // incluye `deleted_at` como tercera columna y nosotros solo apuntamos a dos.
@@ -2888,7 +2888,7 @@ async fn get_or_create_workspace_user_properties(
         .await
         .map_err(AppError::Database)?;
 
-    // SELECT garantizado: ya sea la fila reciÃ©n insertada o la existente.
+    // SELECT garantizado: ya sea la fila reciÃÂ©n insertada o la existente.
     workspace_user_properties::Entity::find()
         .filter(workspace_user_properties::Column::WorkspaceId.eq(workspace_id))
         .filter(workspace_user_properties::Column::UserId.eq(user_id))
@@ -2934,10 +2934,10 @@ pub async fn get_workspace_user_properties(
 /// Mirror Django: `WorkspaceUserPropertiesEndpoint.patch`
 /// (plane/app/views/workspace/user.py:255).
 ///
-/// PolÃ­tica de actualizaciÃ³n:
+/// PolÃÂ­tica de actualizaciÃÂ³n:
 /// - Whitelist estricta (FKs/timestamps/id nunca se tocan desde el body).
-/// - `navigation_control_preference` â {"ACCORDION", "TABBED"}.
-/// - `navigation_project_limit` â [0, MAX_NAVIGATION_PROJECT_LIMIT].
+/// - `navigation_control_preference` Ã¢ÂÂ {"ACCORDION", "TABBED"}.
+/// - `navigation_project_limit` Ã¢ÂÂ [0, MAX_NAVIGATION_PROJECT_LIMIT].
 /// - Campos JSON (`filters`, `display_filters`, `display_properties`,
 ///   `rich_filters`) se reemplazan por valor, respetando el contrato
 ///   `partial=True` del serializer Django.
@@ -2948,7 +2948,7 @@ pub async fn get_workspace_user_properties(
     params(("slug" = String, Path, description = "Workspace slug")),
     responses(
         (status = 200, description = "Propiedades actualizadas"),
-        (status = 400, description = "Body invÃ¡lido"),
+        (status = 400, description = "Body invÃÂ¡lido"),
         (status = 403, description = "No es miembro activo del workspace"),
         (status = 404, description = "Workspace no existe"),
     )
@@ -2964,7 +2964,7 @@ pub async fn update_workspace_user_properties(
     let ws = workspace_by_slug(db, &slug).await?;
     let _member = require_workspace_member(db, ws.id, user_id).await?;
 
-    // Validaciones antes de tocar DB: fallan rÃ¡pido y no consumen escritura.
+    // Validaciones antes de tocar DB: fallan rÃÂ¡pido y no consumen escritura.
     if let Some(ref pref) = body.navigation_control_preference {
         if !NAVIGATION_CONTROL_PREFERENCES.contains(&pref.as_str()) {
             return Err(AppError::BadRequest(format!(
@@ -3012,9 +3012,9 @@ pub async fn update_workspace_user_properties(
 }
 
 
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 // DRAFT TO ISSUE
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct DraftToIssueRequest {
@@ -3041,14 +3041,14 @@ pub struct DraftToIssueRequest {
 /// (`apps/api/plane/app/views/workspace/draft.py:196`).
 ///
 /// Implementa:
-/// - ValidaciÃ³n de project_id en el draft
-/// - CreaciÃ³n de Issue con sequence_id atÃ³mico (SERIALIZABLE)
-/// - CreaciÃ³n de CycleIssue si cycle_id estÃ¡ en el body
-/// - CreaciÃ³n de ModuleIssue(s) para cada module_id en el body
-/// - ReasignaciÃ³n de FileAssets del draft al nuevo issue
+/// - ValidaciÃÂ³n de project_id en el draft
+/// - CreaciÃÂ³n de Issue con sequence_id atÃÂ³mico (SERIALIZABLE)
+/// - CreaciÃÂ³n de CycleIssue si cycle_id estÃÂ¡ en el body
+/// - CreaciÃÂ³n de ModuleIssue(s) para cada module_id en el body
+/// - ReasignaciÃÂ³n de FileAssets del draft al nuevo issue
 /// - Soft-delete del draft
 ///
-/// Nota: el job de actividad (issue_activity) es Fase 3 y se omite aquÃ­.
+/// Nota: el job de actividad (issue_activity) es Fase 3 y se omite aquÃÂ­.
 #[utoipa::path(
     post,
     path = "/api/workspaces/{slug}/draft-to-issue/{draft_id}/",
@@ -3090,9 +3090,9 @@ pub async fn draft_to_issue(
         AppError::BadRequest("Project is required to create an issue.".into())
     })?;
 
-    // 3. Verificar membresÃ­a de proyecto
+    // 3. Verificar membresÃÂ­a de proyecto
     // Verificar que el usuario es miembro activo del proyecto antes de crear el issue.
-    // Retorna 403 si no tiene acceso — refleja Django ProjectViewSet permission check.
+    // Retorna 403 si no tiene acceso â refleja Django ProjectViewSet permission check.
     crate::routes::helpers::project_member_for_user(db, project_id, user_id)
         .await
         .map_err(|_| AppError::Forbidden)?
@@ -3109,7 +3109,7 @@ pub async fn draft_to_issue(
     let cycle_id = body.cycle_id;
     let module_ids = body.module_ids.clone().unwrap_or_default();
 
-    // 4. Crear Issue en transacciÃ³n SERIALIZABLE (sequence_id atÃ³mico)
+    // 4. Crear Issue en transacciÃÂ³n SERIALIZABLE (sequence_id atÃÂ³mico)
     let issue = db
         .transaction_with_config::<_, issues::Model, AppError>(
             |txn| {
@@ -3126,7 +3126,7 @@ pub async fn draft_to_issue(
                 let type_id = body.type_id.or(draft.type_id);
                 let assignee_ids = assignee_ids.clone();
                 let label_ids = label_ids.clone();
-                let default_assignee_id = project.default_assignee_id;
+                let _default_assignee_id = project.default_assignee_id;
                 Box::pin(async move {
                     use sea_orm::QuerySelect;
                     let max_seq: Option<i32> = issues::Entity::find()
@@ -3282,7 +3282,7 @@ pub async fn draft_to_issue(
     draft_am.deleted_at = Set(Some(now));
     draft_am.update(db).await.map_err(AppError::Database)?;
 
-    // Respuesta espejo del shape de Django: campos bÃ¡sicos del issue creado
+    // Respuesta espejo del shape de Django: campos bÃÂ¡sicos del issue creado
     Ok((StatusCode::CREATED, Json(serde_json::json!({
         "id": issue_id,
         "name": issue.name,
