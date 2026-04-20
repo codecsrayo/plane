@@ -81,6 +81,10 @@ impl Config {
             };
             base = format!("{}{}", base.trim_end_matches('/'), path);
         }
+        // Garantizar trailing slash: redirige a "/app/" no "/app" (evita 308 de Traefik).
+        if !base.ends_with('/') {
+            base.push('/');
+        }
         base
     }
 
@@ -98,6 +102,10 @@ impl Config {
                 format!("/{}", path)
             };
             base = format!("{}{}", base.trim_end_matches('/'), path);
+        }
+        // Garantizar trailing slash: consistente con app_base() y space_base().
+        if !base.ends_with('/') {
+            base.push('/');
         }
         base
     }
