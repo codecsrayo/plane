@@ -212,8 +212,8 @@ mod tests {
         );
     }
 
-    #[test]
-    fn space_redirect_joins_safe_path() {
+    #[tokio::test]
+    async fn space_redirect_joins_safe_path() {
         let state = AppState {
             db: sea_orm::DatabaseConnection::Disconnected,
             redis: {
@@ -232,8 +232,11 @@ mod tests {
                 debug: false,
                 web_url: None,
                 app_base_url: Some("https://app.example.com".to_owned()),
+                app_base_path: None,
                 space_base_url: None,
+                space_base_path: None,
                 admin_base_url: None,
+                admin_base_path: None,
                 aws_s3_bucket: String::new(),
                 aws_endpoint: String::new(),
                 aws_access_key_id: "access-key".to_owned(),

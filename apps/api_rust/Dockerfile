@@ -44,7 +44,7 @@ COPY apps/api_rust/src ./src
 COPY apps/api_rust/migration/src ./migration/src
 
 # Invalidar artefactos de deps para que cargo relinquee el binario final
-RUN touch src/main.rs migration/src/main.rs
+RUN touch src/main.rs migration/src/main.rs migration/src/lib.rs
 
 RUN cargo build --release --bin api_rust
 

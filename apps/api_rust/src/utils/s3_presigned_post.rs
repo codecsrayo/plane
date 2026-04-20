@@ -225,7 +225,7 @@ mod tests {
     /// https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv-create-signed-request.html
     #[test]
     fn signing_key_matches_aws_reference() {
-        let secret = "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY";
+        let secret = "wJalrXUtnFEMI/K7MDENG+bPxRfiCYEXAMPLEKEY";
         let k_date = hmac_sha256::HMAC::mac(b"20150830", format!("AWS4{}", secret).as_bytes());
         let k_region = hmac_sha256::HMAC::mac(b"us-east-1", &k_date);
         let k_service = hmac_sha256::HMAC::mac(b"iam", &k_region);
