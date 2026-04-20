@@ -98,7 +98,7 @@ services:
       - traefik.http.middlewares.plane-strip.stripprefix.prefixes=/app
       # Fuerza trailing slash en paths base para que React Router haga match con basename
       - traefik.http.middlewares.plane-trailingslash.redirectregex.regex=^(https?://[^/]+/app(?:/god-mode|/spaces)?)$
-      - traefik.http.middlewares.plane-trailingslash.redirectregex.replacement=${1}/
+      - traefik.http.middlewares.plane-trailingslash.redirectregex.replacement=$${1}/
       - traefik.http.middlewares.plane-trailingslash.redirectregex.permanent=false
       - traefik.http.routers.plane-http.rule=Host(`${PLANE_DOMAIN:-tool.codecsrayo.com}`) && PathPrefix(`/app`)
       - traefik.http.routers.plane-http.entrypoints=web

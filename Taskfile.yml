@@ -392,3 +392,11 @@ tasks:
     desc: Show production application URLs
     cmds:
       - 'echo "App: https://${PLANE_DOMAIN:-plane.codecsrayo.com}"'
+
+  ci:deploy:
+    desc: Build production containers for CI
+    deps: [acme-create]
+    cmds:
+      - cd apps/api_rust && cargo generate-lockfile
+      - docker compose -f docker-compose.yml build --no-cache
+      - docker compose -f docker-compose.yml up -d
