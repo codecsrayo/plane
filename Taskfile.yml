@@ -129,6 +129,13 @@ tasks:
     cmds:
       - docker compose -f docker-compose.yml config
 
+  compose:prod:rebuild:
+    desc: Rebuild and restart production containers without cache
+    deps: [acme-create]
+    cmds:
+      - docker compose -f docker-compose.yml build --no-cache
+      - docker compose -f docker-compose.yml up -d
+
   compose:up:
     desc: Start development containers in detached mode
     deps: [acme-create]
