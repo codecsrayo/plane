@@ -571,15 +571,19 @@ async fn success_redirect(
             let path = safe_next_path(next_path).unwrap_or_else(|| "/".to_owned());
             Ok(format!(
                 "{}{}",
-                space_base(state).trim_end_matches('/'),
+                state.config.space_base().trim_end_matches('/'),
                 path
             ))
         }
         SessionSurface::App | SessionSurface::Admin => match safe_next_path(next_path) {
-            Some(path) => Ok(format!("{}{}", app_base(state).trim_end_matches('/'), path)),
+            Some(path) => Ok(format!(
+                "{}{}",
+                state.config.app_base().trim_end_matches('/'),
+                path
+            )),
             None => Ok(format!(
                 "{}/{}",
-                app_base(state).trim_end_matches('/'),
+                state.config.app_base().trim_end_matches('/'),
                 app_default_path(state, user).await?
             )),
         },
@@ -593,9 +597,9 @@ fn redirect_url(
     error: Option<(i32, &'static str)>,
 ) -> String {
     let base = match surface {
-        SessionSurface::Space => space_base(state),
-        SessionSurface::App => app_base(state),
-        SessionSurface::Admin => admin_base(state),
+        SessionSurface::Space => state.config.space_base(),
+        SessionSurface::App => state.config.app_base(),
+        SessionSurface::Admin => state.config.admin_base(),
     };
     let mut query = Vec::new();
     if let Some(path) = safe_next_path(next_path) {
@@ -612,70 +616,6 @@ fn redirect_url(
     }
 }
 
-fn app_base(state: &AppState) -> String {
-    let mut base = state
-        .config
-        .app_base_url
-        .clone()
-        .or_else(|| state.config.web_url.clone())
-        .unwrap_or_else(|| "/".to_owned());
-
-    if let Some(path) = &state.config.app_base_path {
-        let path = if path.starts_with('/') {
-            path.clone()
-        } else {
-            format!("/{}", path)
-        };
-        base = format!("{}{}", base.trim_end_matches('/'), path);
-    }
-    base
-}
-
-fn admin_base(state: &AppState) -> String {
-    let mut base = state
-        .config
-        .admin_base_url
-        .clone()
-        .or_else(|| state.config.web_url.clone())
-        .unwrap_or_else(|| "/god-mode/".to_owned());
-
-    if let Some(path) = &state.config.admin_base_path {
-        let path = if path.starts_with('/') {
-            path.clone()
-        } else {
-            format!("/{}", path)
-        };
-        base = format!("{}{}", base.trim_end_matches('/'), path);
-    }
-    base
-}
-
-pub(crate) fn space_base(state: &AppState) -> String {
-    let mut base = state
-        .config
-        .space_base_url
-        .clone()
-        .or_else(|| state.config.web_url.clone())
-        .or_else(|| state.config.app_base_url.clone())
-        .unwrap_or_else(|| "/spaces/".to_owned());
-
-    if let Some(path) = &state.config.space_base_path {
-        let path = if path.starts_with('/') {
-            path.clone()
-        } else {
-            format!("/{}", path)
-        };
-        base = format!("{}{}", base.trim_end_matches('/'), path);
-    }
-
-    if base.ends_with("/spaces/") {
-        base
-    } else if base.ends_with("/spaces") {
-        format!("{base}/")
-    } else {
-        format!("{}/spaces/", base.trim_end_matches('/'))
-    }
-}
 
 pub(crate) fn safe_next_path(next_path: Option<&str>) -> Option<String> {
     let path = next_path?.trim();

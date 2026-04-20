@@ -34,7 +34,6 @@ use zxcvbn::{Score, zxcvbn};
 
 use crate::{
     auth::{
-        email_auth::{space_base},
         responses::{AuthError, AuthErrorBody, PasswordMessageResponse},
         session::SessionSurface,
     },
@@ -227,7 +226,7 @@ async fn handle_forgot_password(
         .map_err(|_| AuthError::instance_not_configured())?;
 
     // 7. Enviar email (best-effort — no expone error al cliente)
-    let base = app_base(state);
+    let base = state.config.app_base();
     let reset_url = format!(
         "{}/accounts/reset-password/?uidb64={}&token={}&email={}",
         base.trim_end_matches('/'),
@@ -252,8 +251,8 @@ async fn handle_reset_password(
     surface: SessionSurface,
 ) -> Result<(CookieJar, Redirect), AppError> {
     let error_base = match surface {
-        SessionSurface::Space => space_base(state),
-        _ => app_base(state),
+        SessionSurface::Space => state.config.space_base(),
+        _ => state.config.app_base(),
     };
     let reset_page = format!(
         "{}/accounts/reset-password/",
@@ -352,8 +351,11 @@ async fn handle_reset_password(
 
     // 6. Redirect al login
     let success_url = match surface {
-        SessionSurface::Space => space_base(state),
-        _ => format!("{}/sign-in/?success=true", app_base(state).trim_end_matches('/')),
+        SessionSurface::Space => state.config.space_base(),
+        _ => format!(
+            "{}/sign-in/?success=true",
+            state.config.app_base().trim_end_matches('/')
+        ),
     };
 
     Ok((CookieJar::new(), Redirect::to(&success_url)))
@@ -376,15 +378,6 @@ fn constant_time_eq(a: &str, b: &str) -> bool {
         return false;
     }
     a.iter().zip(b.iter()).fold(0u8, |acc, (x, y)| acc | (x ^ y)) == 0
-}
-
-fn app_base(state: &AppState) -> String {
-    state
-        .config
-        .app_base_url
-        .clone()
-        .or_else(|| state.config.web_url.clone())
-        .unwrap_or_else(|| "/".to_owned())
 }
 
 async fn send_reset_email(

@@ -66,6 +66,68 @@ pub struct Config {
 }
 
 impl Config {
+    pub fn app_base(&self) -> String {
+        let mut base = self
+            .app_base_url
+            .clone()
+            .or_else(|| self.web_url.clone())
+            .unwrap_or_else(|| "/".to_owned());
+
+        if let Some(path) = &self.app_base_path {
+            let path = if path.starts_with('/') {
+                path.clone()
+            } else {
+                format!("/{}", path)
+            };
+            base = format!("{}{}", base.trim_end_matches('/'), path);
+        }
+        base
+    }
+
+    pub fn admin_base(&self) -> String {
+        let mut base = self
+            .admin_base_url
+            .clone()
+            .or_else(|| self.web_url.clone())
+            .unwrap_or_else(|| "/god-mode/".to_owned());
+
+        if let Some(path) = &self.admin_base_path {
+            let path = if path.starts_with('/') {
+                path.clone()
+            } else {
+                format!("/{}", path)
+            };
+            base = format!("{}{}", base.trim_end_matches('/'), path);
+        }
+        base
+    }
+
+    pub fn space_base(&self) -> String {
+        let mut base = self
+            .space_base_url
+            .clone()
+            .or_else(|| self.web_url.clone())
+            .or_else(|| self.app_base_url.clone())
+            .unwrap_or_else(|| "/spaces/".to_owned());
+
+        if let Some(path) = &self.space_base_path {
+            let path = if path.starts_with('/') {
+                path.clone()
+            } else {
+                format!("/{}", path)
+            };
+            base = format!("{}{}", base.trim_end_matches('/'), path);
+        }
+
+        if base.ends_with("/spaces/") {
+            base
+        } else if base.ends_with("/spaces") {
+            format!("{base}/")
+        } else {
+            format!("{}/spaces/", base.trim_end_matches('/'))
+        }
+    }
+
     pub fn from_env() -> anyhow::Result<Self> {
         // dotenv es best-effort: en producción no hay .env file y eso es normal.
         match dotenv() {

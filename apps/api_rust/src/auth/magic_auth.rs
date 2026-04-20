@@ -19,7 +19,6 @@ use crate::{
     auth::{
         email_auth::{
             ensure_profile_exists, ensure_signup_allowed, redirect_error, safe_next_path,
-            space_base,
         },
         responses::{AuthError, AuthErrorBody},
         session::{issue_session_cookie, replace_session_cookie, SessionSurface},
@@ -439,13 +438,17 @@ async fn complete_magic_auth(
             .await
             .map_err(AppError::Database)?;
         if profile.is_some_and(|profile| profile.is_onboarded) {
-            format!("{}/", app_base(state).trim_end_matches('/'))
+            format!("{}/", state.config.app_base().trim_end_matches('/'))
         } else {
             app_success_redirect(state, &user, form.next_path.as_deref()).await?
         }
     } else if matches!(surface, SessionSurface::Space) {
         let path = safe_next_path(form.next_path.as_deref()).unwrap_or_else(|| "/".to_owned());
-        format!("{}{}", space_base(state).trim_end_matches('/'), path)
+        format!(
+            "{}{}",
+            state.config.space_base().trim_end_matches('/'),
+            path
+        )
     } else {
         app_success_redirect(state, &user, form.next_path.as_deref()).await?
     };
@@ -671,22 +674,17 @@ async fn app_success_redirect(
     next_path: Option<&str>,
 ) -> Result<String, AppError> {
     if let Some(path) = safe_next_path(next_path) {
-        return Ok(format!("{}{}", app_base(state).trim_end_matches('/'), path));
+        return Ok(format!(
+            "{}{}",
+            state.config.app_base().trim_end_matches('/'),
+            path
+        ));
     }
 
     let path = crate::auth::email_auth::app_default_path(state, user).await?;
     Ok(format!(
         "{}/{}",
-        app_base(state).trim_end_matches('/'),
+        state.config.app_base().trim_end_matches('/'),
         path
     ))
-}
-
-fn app_base(state: &AppState) -> String {
-    state
-        .config
-        .app_base_url
-        .clone()
-        .or_else(|| state.config.web_url.clone())
-        .unwrap_or_else(|| "/".to_owned())
 }

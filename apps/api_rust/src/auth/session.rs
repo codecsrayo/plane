@@ -143,35 +143,9 @@ impl SessionSurface {
 
     fn device_domain(self, state: &AppState) -> String {
         match self {
-            Self::App => state
-                .config
-                .app_base_url
-                .clone()
-                .or_else(|| state.config.web_url.clone())
-                .unwrap_or_else(|| "/".to_owned()),
-            Self::Space => {
-                let base = state
-                    .config
-                    .space_base_url
-                    .clone()
-                    .or_else(|| state.config.web_url.clone())
-                    .or_else(|| state.config.app_base_url.clone())
-                    .unwrap_or_else(|| "/spaces/".to_owned());
-                if base.ends_with("/spaces/") {
-                    base
-                } else if base.ends_with("/spaces") {
-                    format!("{base}/")
-                } else {
-                    format!("{}/spaces/", base.trim_end_matches('/'))
-                }
-            }
-            Self::Admin => state
-                .config
-                .admin_base_url
-                .clone()
-                .or_else(|| state.config.web_url.clone())
-                .or_else(|| state.config.app_base_url.clone())
-                .unwrap_or_else(|| "/god-mode/".to_owned()),
+            Self::App => state.config.app_base(),
+            Self::Space => state.config.space_base(),
+            Self::Admin => state.config.admin_base(),
         }
     }
 }

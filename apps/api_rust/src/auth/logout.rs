@@ -116,7 +116,7 @@ async fn perform_logout(
         .remove(expired(CSRF_COOKIE_NAME));
 
     let redirect_to = match target {
-        LogoutTarget::App => app_redirect_base(&state),
+        LogoutTarget::App => state.config.app_base(),
         LogoutTarget::Space => {
             let next_path = safe_redirect_target(form.next_path.as_deref());
             space_redirect_url(&state, &next_path)
@@ -143,47 +143,19 @@ fn extract_client_ip(headers: &HeaderMap) -> String {
         .to_owned()
 }
 
-fn app_redirect_base(state: &AppState) -> String {
-    state
-        .config
-        .app_base_url
-        .clone()
-        .or_else(|| state.config.web_url.clone())
-        .unwrap_or_else(|| "/".to_owned())
-}
-
 fn space_redirect_url(state: &AppState, next_path: &str) -> String {
-    let base = state
-        .config
-        .space_base_url
-        .clone()
-        .or_else(|| state.config.web_url.clone())
-        .or_else(|| state.config.app_base_url.clone())
-        .unwrap_or_else(|| "/spaces/".to_owned());
+    let base = state.config.space_base();
 
     if next_path == "/" {
-        normalize_space_base(&base)
+        base
     } else {
-        format!(
-            "{}{}",
-            normalize_space_base(&base).trim_end_matches('/'),
-            next_path
-        )
-    }
-}
-
-fn normalize_space_base(base: &str) -> String {
-    let trimmed = base.trim_end_matches('/');
-    if trimmed.ends_with("/spaces") {
-        format!("{trimmed}/")
-    } else {
-        format!("{trimmed}/spaces/")
+        format!("{}{}", base.trim_end_matches('/'), next_path)
     }
 }
 
 #[cfg(test)]
 mod tests {
-    use super::{extract_client_ip, normalize_space_base, space_redirect_url};
+    use super::{extract_client_ip, space_redirect_url};
     use axum::http::{HeaderMap, HeaderValue};
     use std::sync::Arc;
 
@@ -200,17 +172,6 @@ mod tests {
         assert_eq!(extract_client_ip(&headers), "203.0.113.8");
     }
 
-    #[test]
-    fn normalize_space_base_appends_spaces_segment_once() {
-        assert_eq!(
-            normalize_space_base("https://app.example.com"),
-            "https://app.example.com/spaces/"
-        );
-        assert_eq!(
-            normalize_space_base("https://spaces.example.com/spaces/"),
-            "https://spaces.example.com/spaces/"
-        );
-    }
 
     #[tokio::test]
     async fn space_redirect_joins_safe_path() {
