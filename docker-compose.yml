@@ -57,10 +57,10 @@ services:
     labels:
       - traefik.enable=true
       - traefik.docker.network=proyectos-bi-quare
-      - traefik.http.routers.home-http.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`)
+      - traefik.http.routers.home-http.rule=Host(`${PLANE_DOMAIN:-tool.codecsrayo.com}`)
       - traefik.http.routers.home-http.entrypoints=web
       - traefik.http.routers.home-http.middlewares=plane-https
-      - traefik.http.routers.home.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`)
+      - traefik.http.routers.home.rule=Host(`${PLANE_DOMAIN:-tool.codecsrayo.com}`)
       - traefik.http.routers.home.entrypoints=websecure
       - traefik.http.routers.home.tls=true
       - traefik.http.routers.home.tls.certresolver=netlify
@@ -74,15 +74,15 @@ services:
       dockerfile: ./apps/web/Dockerfile.web
       args:
         DOCKER_BUILDKIT: 1
-        VITE_API_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
+        VITE_API_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
         VITE_API_BASE_PATH: /api
-        VITE_ADMIN_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
+        VITE_ADMIN_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
         VITE_ADMIN_BASE_PATH: /god-mode
-        VITE_LIVE_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
+        VITE_LIVE_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
         VITE_LIVE_BASE_PATH: /live
-        VITE_SPACE_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
+        VITE_SPACE_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
         VITE_SPACE_BASE_PATH: /spaces
-        VITE_WEB_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
+        VITE_WEB_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
         VITE_WEB_BASE_PATH: /app
     restart: always
     networks:
@@ -93,10 +93,10 @@ services:
       - traefik.docker.network=proyectos-bi-quare
       - traefik.http.middlewares.plane-https.redirectscheme.scheme=https
       - traefik.http.middlewares.plane-strip.stripprefix.prefixes=/app
-      - traefik.http.routers.plane-http.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && PathPrefix(`/app`)
+      - traefik.http.routers.plane-http.rule=Host(`${PLANE_DOMAIN:-tool.codecsrayo.com}`) && PathPrefix(`/app`)
       - traefik.http.routers.plane-http.entrypoints=web
       - traefik.http.routers.plane-http.middlewares=plane-https
-      - traefik.http.routers.plane.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && PathPrefix(`/app`)
+      - traefik.http.routers.plane.rule=Host(`${PLANE_DOMAIN:-tool.codecsrayo.com}`) && PathPrefix(`/app`)
       - traefik.http.routers.plane.entrypoints=websecure
       - traefik.http.routers.plane.tls=true
       - traefik.http.routers.plane.tls.certresolver=netlify
@@ -105,7 +105,7 @@ services:
 
       # Router de assets y manifiestos (p=110) — mayor que /app (100).
       # Captura peticiones a archivos raíz (manifiestos, etc) y los envía al contenedor web.
-      - traefik.http.routers.plane-assets.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && (PathPrefix(`/assets`) || PathPrefix(`/static`) || Path(`/manifest.json`) || Path(`/site.webmanifest.json`) || Path(`/favicon.ico`) || PathPrefix(`/favicon`) || PathPrefix(`/icons`) || PathPrefix(`/plane-logos`))
+      - traefik.http.routers.plane-assets.rule=Host(`${PLANE_DOMAIN:-tool.codecsrayo.com}`) && (PathPrefix(`/assets`) || PathPrefix(`/static`) || Path(`/manifest.json`) || Path(`/site.webmanifest.json`) || Path(`/favicon.ico`) || PathPrefix(`/favicon`) || PathPrefix(`/icons`) || PathPrefix(`/plane-logos`))
       - traefik.http.routers.plane-assets.entrypoints=websecure
       - traefik.http.routers.plane-assets.tls=true
       - traefik.http.routers.plane-assets.tls.certresolver=netlify
@@ -124,15 +124,15 @@ services:
       dockerfile: ./apps/admin/Dockerfile.admin
       args:
         DOCKER_BUILDKIT: 1
-        VITE_API_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
+        VITE_API_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
         VITE_API_BASE_PATH: /api
-        VITE_ADMIN_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
+        VITE_ADMIN_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
         VITE_ADMIN_BASE_PATH: /god-mode
-        VITE_SPACE_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
+        VITE_SPACE_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
         VITE_SPACE_BASE_PATH: /spaces
-        VITE_LIVE_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
+        VITE_LIVE_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
         VITE_LIVE_BASE_PATH: /live
-        VITE_WEB_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
+        VITE_WEB_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
         VITE_WEB_BASE_PATH: /app
     restart: always
     networks:
@@ -141,7 +141,7 @@ services:
     labels:
       - traefik.enable=true
       - traefik.docker.network=proyectos-bi-quare
-      - traefik.http.routers.plane-admin.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && PathPrefix(`/god-mode`)
+      - traefik.http.routers.plane-admin.rule=Host(`${PLANE_DOMAIN:-tool.codecsrayo.com}`) && PathPrefix(`/god-mode`)
       - traefik.http.routers.plane-admin.entrypoints=websecure
       - traefik.http.routers.plane-admin.tls=true
       - traefik.http.routers.plane-admin.tls.certresolver=netlify
@@ -160,15 +160,15 @@ services:
       dockerfile: ./apps/space/Dockerfile.space
       args:
         DOCKER_BUILDKIT: 1
-        VITE_API_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
+        VITE_API_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
         VITE_API_BASE_PATH: /api
-        VITE_ADMIN_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
+        VITE_ADMIN_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
         VITE_ADMIN_BASE_PATH: /god-mode
-        VITE_SPACE_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
+        VITE_SPACE_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
         VITE_SPACE_BASE_PATH: /spaces
-        VITE_LIVE_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
+        VITE_LIVE_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
         VITE_LIVE_BASE_PATH: /live
-        VITE_WEB_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
+        VITE_WEB_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
         VITE_WEB_BASE_PATH: /app
     restart: always
     networks:
@@ -177,7 +177,7 @@ services:
     labels:
       - traefik.enable=true
       - traefik.docker.network=proyectos-bi-quare
-      - traefik.http.routers.plane-space.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && PathPrefix(`/spaces`)
+      - traefik.http.routers.plane-space.rule=Host(`${PLANE_DOMAIN:-tool.codecsrayo.com}`) && PathPrefix(`/spaces`)
       - traefik.http.routers.plane-space.entrypoints=websecure
       - traefik.http.routers.plane-space.tls=true
       - traefik.http.routers.plane-space.tls.certresolver=netlify
@@ -219,13 +219,13 @@ services:
       DEBUG: ${DEBUG:-0}
       SECRET_KEY: ${SECRET_KEY}
       # CORS — permite el frontend
-      CORS_ORIGINS: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
-      COOKIE_DOMAIN: ${PLANE_DOMAIN:-plane.codecsrayo.com}
+      CORS_ORIGINS: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
+      COOKIE_DOMAIN: ${PLANE_DOMAIN:-tool.codecsrayo.com}
       # URLs del frontend (para redirecciones OAuth, emails, etc.)
-      WEB_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
-      APP_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
-      SPACE_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}/spaces
-      ADMIN_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}/god-mode
+      WEB_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
+      APP_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
+      SPACE_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}/spaces
+      ADMIN_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}/god-mode
       # S3 / MinIO
       AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
       AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
@@ -269,7 +269,7 @@ services:
       - traefik.enable=true
       - traefik.docker.network=proyectos-bi-quare
       # Mismas reglas que Django — Traefik transparente al cambio
-      - traefik.http.routers.plane-api.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && (PathPrefix(`/api`) || PathPrefix(`/auth`) || PathPrefix(`/static`))
+      - traefik.http.routers.plane-api.rule=Host(`${PLANE_DOMAIN:-tool.codecsrayo.com}`) && (PathPrefix(`/api`) || PathPrefix(`/auth`) || PathPrefix(`/static`))
       - traefik.http.routers.plane-api.entrypoints=websecure
       - traefik.http.routers.plane-api.tls=true
       - traefik.http.routers.plane-api.tls.certresolver=netlify
@@ -302,7 +302,7 @@ services:
     labels:
       - traefik.enable=true
       - traefik.docker.network=proyectos-bi-quare
-      - traefik.http.routers.plane-live.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && PathPrefix(`/live`)
+      - traefik.http.routers.plane-live.rule=Host(`${PLANE_DOMAIN:-tool.codecsrayo.com}`) && PathPrefix(`/live`)
       - traefik.http.routers.plane-live.entrypoints=websecure
       - traefik.http.routers.plane-live.tls=true
       - traefik.http.routers.plane-live.tls.certresolver=netlify
@@ -357,7 +357,7 @@ services:
     labels:
       - traefik.enable=true
       - traefik.docker.network=proyectos-bi-quare
-      - traefik.http.routers.plane-minio.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && PathPrefix(`/${AWS_S3_BUCKET_NAME:-uploads}`)
+      - traefik.http.routers.plane-minio.rule=Host(`${PLANE_DOMAIN:-tool.codecsrayo.com}`) && PathPrefix(`/${AWS_S3_BUCKET_NAME:-uploads}`)
       - traefik.http.routers.plane-minio.entrypoints=websecure
       - traefik.http.routers.plane-minio.tls=true
       - traefik.http.routers.plane-minio.tls.certresolver=netlify
