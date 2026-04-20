@@ -49,8 +49,10 @@ tasks:
       - |
         if [ -d ./apps/proxy/acme.json ]; then
           rm -rf ./apps/proxy/acme.json
+          mkdir -p ./apps/proxy
           touch ./apps/proxy/acme.json
         elif [ ! -f ./apps/proxy/acme.json ]; then
+          mkdir -p ./apps/proxy
           touch ./apps/proxy/acme.json
         fi
       - chmod 600 ./apps/proxy/acme.json
