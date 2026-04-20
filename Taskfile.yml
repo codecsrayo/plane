@@ -393,10 +393,67 @@ tasks:
     cmds:
       - 'echo "App: https://${PLANE_DOMAIN:-plane.codecsrayo.com}"'
 
+  ci:check-changes:
+    desc: Fetch origin/o and exit 1 if there are no new commits (internal guard)
+    internal: true
+    cmds:
+      - |
+        set -euo pipefail
+        git fetch origin o --quiet
+        REMOTE_SHA=$(git rev-parse origin/o)
+        LAST_SHA=""
+        if [ -f .ci-last-sha ]; then
+          LAST_SHA=$(cat .ci-last-sha)
+        fi
+        if [ "$REMOTE_SHA" = "$LAST_SHA" ]; then
+          echo "[ci:check] No changes on branch o ($(echo "$REMOTE_SHA" | cut -c1-8)). Nothing to do."
+          exit 1
+        fi
+        echo "[ci:check] Changes detected: ${LAST_SHA:-<first-run>} → $(echo "$REMOTE_SHA" | cut -c1-8)"
+
   ci:deploy:
-    desc: Build production containers for CI
+    desc: |
+      CI deploy — runs on cron; builds production only when branch o has new commits.
+      Stores the last deployed SHA in .ci-last-sha (gitignored) to avoid redundant builds.
     deps: [acme-create]
     cmds:
-      - cd apps/api_rust && cargo generate-lockfile
-      - docker compose -f docker-compose.yml build --no-cache
-      - docker compose -f docker-compose.yml up -d
+      - |
+        set -euo pipefail
+
+        # ── 1. change detection ────────────────────────────────────────────
+        echo "[ci] Fetching origin/o..."
+        git fetch origin o --quiet
+
+        REMOTE_SHA=$(git rev-parse origin/o)
+        LAST_SHA_FILE=".ci-last-sha"
+        LAST_SHA=""
+
+        if [ -f "$LAST_SHA_FILE" ]; then
+          LAST_SHA=$(cat "$LAST_SHA_FILE")
+        fi
+
+        if [ "$REMOTE_SHA" = "$LAST_SHA" ]; then
+          echo "[ci] No changes on branch o ($(echo "$REMOTE_SHA" | cut -c1-8)). Skipping build."
+          exit 0
+        fi
+
+        echo "[ci] New commits: ${LAST_SHA:-<first-run>} → $(echo "$REMOTE_SHA" | cut -c1-8)"
+
+        # ── 2. sync local branch ───────────────────────────────────────────
+        echo "[ci] Pulling branch o (fast-forward only)..."
+        git pull origin o --ff-only
+
+        # ── 3. lockfile ────────────────────────────────────────────────────
+        echo "[ci] Generating Cargo lockfile..."
+        (cd apps/api_rust && cargo generate-lockfile)
+
+        # ── 4. build & deploy ──────────────────────────────────────────────
+        echo "[ci] Building production containers..."
+        docker compose -f docker-compose.yml build --no-cache
+
+        echo "[ci] Starting containers..."
+        docker compose -f docker-compose.yml up -d
+
+        # ── 5. record deployed SHA ────────────────────────────────────────
+        echo "$REMOTE_SHA" > "$LAST_SHA_FILE"
+        echo "[ci] Deploy complete. SHA recorded: $(echo "$REMOTE_SHA" | cut -c1-8)"

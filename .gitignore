@@ -150,3 +150,6 @@ rust-project.json
 .obsidian/workspace-mobile.json
 .obsidian/cache
 .obsidian/.trash/
+-e 
+# CI sentinel — tracks last deployed SHA to avoid redundant builds
+.ci-last-sha
