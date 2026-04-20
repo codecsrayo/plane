@@ -105,7 +105,7 @@ services:
 
       # Router de assets y manifiestos (p=110) — mayor que /app (100).
       # Captura peticiones a archivos raíz (manifiestos, etc) y los envía al contenedor web.
-      - traefik.http.routers.plane-assets.rule=Host(`${PLANE_DOMAIN:-tool.codecsrayo.com}`) && (PathPrefix(`/assets`) || PathPrefix(`/static`) || Path(`/manifest.json`) || Path(`/site.webmanifest.json`) || Path(`/favicon.ico`) || PathPrefix(`/favicon`) || PathPrefix(`/icons`) || PathPrefix(`/plane-logos`))
+      - traefik.http.routers.plane-assets.rule=Host(`${PLANE_DOMAIN:-tool.codecsrayo.com}`) && (Path(`/manifest.json`) || Path(`/site.webmanifest.json`) || Path(`/favicon.ico`) || PathPrefix(`/favicon`) || PathPrefix(`/icons`) || PathPrefix(`/plane-logos`))
       - traefik.http.routers.plane-assets.entrypoints=websecure
       - traefik.http.routers.plane-assets.tls=true
       - traefik.http.routers.plane-assets.tls.certresolver=netlify
@@ -145,6 +145,7 @@ services:
       - traefik.http.routers.plane-admin.entrypoints=websecure
       - traefik.http.routers.plane-admin.tls=true
       - traefik.http.routers.plane-admin.tls.certresolver=netlify
+      - traefik.http.routers.plane-admin.middlewares=plane-strip
       - traefik.http.routers.plane-admin.priority=110
       - traefik.http.services.plane-admin.loadbalancer.server.port=3000
     depends_on:
@@ -181,6 +182,7 @@ services:
       - traefik.http.routers.plane-space.entrypoints=websecure
       - traefik.http.routers.plane-space.tls=true
       - traefik.http.routers.plane-space.tls.certresolver=netlify
+      - traefik.http.routers.plane-space.middlewares=plane-strip
       - traefik.http.routers.plane-space.priority=110
       - traefik.http.services.plane-space.loadbalancer.server.port=3000
     depends_on:
