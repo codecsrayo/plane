@@ -44,19 +44,11 @@ use crate::{
 
 // ─── helpers ────────────────────────────────────────────────────────────────
 
-fn admin_base(state: &AppState) -> String {
-    state
-        .config
-        .admin_base_url
-        .clone()
-        .or_else(|| state.config.app_base_url.clone())
-        .or_else(|| state.config.web_url.clone())
-        .unwrap_or_else(|| "/god-mode/".to_owned())
-}
-
 /// Redirige al panel de God-Mode con query params de error.
+/// Usa `config.admin_base()` que combina ADMIN_BASE_URL + ADMIN_BASE_PATH
+/// → p.ej. https://tool.codecsrayo.com/app/god-mode/
 fn admin_error(state: &AppState, code: u32, message: &str) -> (CookieJar, Redirect) {
-    let base = admin_base(state);
+    let base = state.config.admin_base();
     let url = format!(
         "{}?error_code={}&error_message={}",
         base.trim_end_matches('/'),
@@ -67,10 +59,12 @@ fn admin_error(state: &AppState, code: u32, message: &str) -> (CookieJar, Redire
 }
 
 /// Redirige al panel principal de God-Mode tras login/setup exitoso.
+/// Usa `config.admin_base()` que combina ADMIN_BASE_URL + ADMIN_BASE_PATH
+/// → p.ej. https://tool.codecsrayo.com/app/god-mode/general/
 fn admin_success(state: &AppState, path: &str) -> String {
     format!(
         "{}/{}",
-        admin_base(state).trim_end_matches('/'),
+        state.config.admin_base().trim_end_matches('/'),
         path.trim_start_matches('/'),
     )
 }
@@ -577,6 +571,6 @@ pub async fn admin_sign_out(
         .remove(expired(SESSION_COOKIE_NAME))
         .remove(expired(CSRF_COOKIE_NAME));
 
-    let redirect_to = admin_base(&state);
+    let redirect_to = state.config.admin_base();
     Ok((new_jar, Redirect::to(&redirect_to)))
 }
