@@ -133,6 +133,7 @@ tasks:
     desc: Rebuild and restart production containers without cache
     deps: [acme-create]
     cmds:
+      - cd apps/api_rust && cargo generate-lockfile
       - docker compose -f docker-compose.yml build --no-cache
       - docker compose -f docker-compose.yml up -d
 
@@ -164,6 +165,40 @@ tasks:
       - docker compose -f docker-compose-dev.yml down -v
       - docker volume ls -q --filter "label=com.docker.compose.project=plane" | xargs -r docker volume rm
       - docker compose -f docker-compose-dev.yml up -d --build
+
+  compose:purge:
+    desc: Purge all Docker containers, images, volumes and custom networks
+    cmds:
+      # detener todo
+      - |
+        if [ -n "$(docker ps -q)" ]; then
+          docker stop $(docker ps -q)
+        fi
+
+      # borrar contenedores
+      - |
+        if [ -n "$(docker ps -aq)" ]; then
+          docker rm $(docker ps -aq)
+        fi
+
+      # borrar imágenes
+      - |
+        if [ -n "$(docker images -q)" ]; then
+          docker rmi $(docker images -q)
+        fi
+
+      # borrar volúmenes
+      - |
+        if [ -n "$(docker volume ls -q)" ]; then
+          docker volume rm $(docker volume ls -q)
+        fi
+
+      # borrar SOLO redes custom (omite bridge, host, none)
+      - |
+        nets=$(docker network ls --filter "type=custom" -q)
+        if [ -n "$nets" ]; then
+          docker network rm $nets
+        fi
 
   # Pass SERVICE=<name> to follow logs for a single container.
   compose:logs:

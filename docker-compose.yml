@@ -60,12 +60,15 @@ services:
       - traefik.http.routers.home-http.rule=Host(`${PLANE_DOMAIN:-tool.codecsrayo.com}`)
       - traefik.http.routers.home-http.entrypoints=web
       - traefik.http.routers.home-http.middlewares=plane-https
+
       - traefik.http.routers.home.rule=Host(`${PLANE_DOMAIN:-tool.codecsrayo.com}`)
       - traefik.http.routers.home.entrypoints=websecure
       - traefik.http.routers.home.tls=true
       - traefik.http.routers.home.tls.certresolver=netlify
       - traefik.http.routers.home.priority=2
+
       - traefik.http.services.home.loadbalancer.server.port=8080
+      - traefik.http.middlewares.plane-https.redirectscheme.scheme=https
 
   web:
     container_name: web
