@@ -319,6 +319,7 @@ pub mod instances;
         external::unsplash,
         external::project_ai_assistant,
         external::workspace_ai_assistant,
+        external::rephrase_grammar,
         issue_extras::list_comments,
         issue_extras::create_comment,
         issue_extras::update_comment,
@@ -421,6 +422,8 @@ pub mod instances;
             timezones::TimezonesResponse,
             notifications::UserNotificationPreferenceResponse,
             notifications::UpdateUserNotificationPreferenceRequest,
+            external::RephraseGrammarRequest,
+            external::RephraseGrammarResponse,
         )
     ),
     tags(
@@ -1308,6 +1311,13 @@ pub fn build_router(state: AppState) -> Router {
         .route(
             "/workspaces/{slug}/ai-assistant",
             post(external::workspace_ai_assistant),
+        )
+        // Mirror Django: workspaces/<slug>/rephrase-grammar/ → RephraseGrammarEndpoint
+        // (apps/api/plane/app/urls/external.py). Crítico para el editor de páginas
+        // (Ask Pi + reformulación de texto). Bug registrado en todo.md.
+        .route(
+            "/workspaces/{slug}/rephrase-grammar",
+            post(external::rephrase_grammar),
         )
         // Ã¢ÂÂÃ¢ÂÂ Issue extras (comments, reactions, links, relations, history) Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
         .route(

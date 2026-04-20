@@ -1,5 +1,5 @@
 // src/routes/external.rs
-//! Endpoints de integraciones externas: AI assistant y Unsplash.
+//! Endpoints de integraciones externas: AI assistant, rephrase-grammar y Unsplash.
 //!
 //! Equivalente a `plane/app/views/external/base.py` en Django.
 //!
@@ -7,6 +7,7 @@
 //!   GET  /api/unsplash/
 //!   POST /api/workspaces/{slug}/projects/{project_id}/ai-assistant/
 //!   POST /api/workspaces/{slug}/ai-assistant/
+//!   POST /api/workspaces/{slug}/rephrase-grammar/
 
 use axum::{
     extract::{Query, State},
@@ -46,6 +47,27 @@ pub struct AiAssistantRequest {
 pub struct AiAssistantResponse {
     pub response: String,
     pub response_html: String,
+}
+
+/// Body de POST /workspaces/{slug}/rephrase-grammar/
+///
+/// Mirror de `RephraseGrammarEndpoint` en `plane/app/views/external/base.py`.
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
+pub struct RephraseGrammarRequest {
+    /// Texto seleccionado en el editor que se desea mejorar (requerido).
+    pub text_input: String,
+    /// Instrucción libre del usuario (flujo ASK_ANYTHING). Opcional.
+    pub prompt: Option<String>,
+    /// Puntaje de tono casual 0-10. Opcional.
+    pub casual_score: Option<i64>,
+    /// Puntaje de tono formal 0-10. Opcional.
+    pub formal_score: Option<i64>,
+}
+
+/// Respuesta de POST /workspaces/{slug}/rephrase-grammar/
+#[derive(Debug, Serialize, utoipa::ToSchema)]
+pub struct RephraseGrammarResponse {
+    pub response: String,
 }
 
 // ── Unsplash ──────────────────────────────────────────────────────────────────
@@ -378,4 +400,120 @@ pub async fn workspace_ai_assistant(
         response: text,
         response_html,
     }))
+}
+
+// ── Rephrase Grammar ──────────────────────────────────────────────────────────
+
+/// POST /api/workspaces/{slug}/rephrase-grammar/
+///
+/// Mejora la gramática, claridad y legibilidad del texto seleccionado en el editor.
+/// Soporta instrucciones libres (prompt) y pesos de tono casual/formal.
+///
+/// Mirror de `RephraseGrammarEndpoint` en `plane/app/views/external/base.py`.
+/// Requiere rol MEMBER o superior a nivel workspace.
+#[utoipa::path(
+    post,
+    path = "/workspaces/{slug}/rephrase-grammar/",
+    tag = "External",
+    security(("TokenAuth" = [])),
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+    ),
+    request_body = RephraseGrammarRequest,
+    responses(
+        (status = 200, description = "Texto mejorado", body = RephraseGrammarResponse),
+        (status = 400, description = "text_input vacío o LLM no configurado"),
+        (status = 403, description = "Forbidden"),
+        (status = 500, description = "Error al llamar al proveedor LLM"),
+    )
+)]
+pub async fn rephrase_grammar(
+    State(state): State<AppState>,
+    guard: WorkspaceMemberGuard,
+    Json(body): Json<RephraseGrammarRequest>,
+) -> Result<impl IntoResponse, AppError> {
+    // Mirror Django: @allow_permission([ROLE.ADMIN, ROLE.MEMBER], level="WORKSPACE")
+    if guard.member.role < ROLE_MEMBER {
+        return Err(AppError::Forbidden);
+    }
+
+    // Validar text_input antes de llamar al LLM
+    let text_input = body.text_input.trim().to_string();
+    if text_input.is_empty() {
+        return Err(AppError::BadRequest("text_input is required".into()));
+    }
+
+    let api_key = state
+        .config
+        .llm_api_key
+        .as_deref()
+        .filter(|k| !k.is_empty())
+        .ok_or_else(|| AppError::BadRequest("LLM provider is not configured".into()))?;
+
+    let model = state
+        .config
+        .llm_model
+        .as_deref()
+        .filter(|m| !m.is_empty())
+        .ok_or_else(|| AppError::BadRequest("LLM provider is not configured".into()))?;
+
+    let provider = &state.config.llm_provider;
+
+    // ── Construir instrucción del sistema ─────────────────────────────────────
+    // Mirror de la lógica en RephraseGrammarEndpoint.post():
+    //   task_parts = ["You are a writing assistant…"]
+    //   if user_prompt → "User instruction: {prompt}"
+    //   else           → "Improve the grammar, clarity, and readability…"
+    //   if casual > formal → "Use a casual, friendly tone."
+    //   if formal > casual → "Use a formal, professional tone."
+    //   task_parts.append("Return only the improved text…")
+    let mut task_parts: Vec<String> = vec![
+        "You are a writing assistant helping improve text in a project management tool.".into(),
+    ];
+
+    let user_prompt = body.prompt.as_deref().map(str::trim).unwrap_or("").to_string();
+    if !user_prompt.is_empty() {
+        task_parts.push(format!("User instruction: {user_prompt}"));
+    } else {
+        task_parts.push(
+            "Improve the grammar, clarity, and readability of the following text.".into(),
+        );
+    }
+
+    // Aplicar hints de tono cuando ambos scores están presentes
+    if let (Some(casual), Some(formal)) = (body.casual_score, body.formal_score) {
+        if casual > formal {
+            task_parts.push("Use a casual, friendly tone.".into());
+        } else if formal > casual {
+            task_parts.push("Use a formal, professional tone.".into());
+        }
+        // Si son iguales, tono neutro (sin hint adicional)
+    }
+
+    task_parts.push(
+        "Return only the improved text without any preamble, explanation, or markdown.".into(),
+    );
+
+    let task = task_parts.join(" ");
+
+    // ── Llamar al LLM — text_input va como "prompt" (concatenado con task) ───
+    // Django: get_llm_response(task, text_input, …)
+    //   final_text = task + "\n" + text_input
+    let text = call_llm(
+        &state.http,
+        api_key,
+        model,
+        provider,
+        &task,
+        Some(&text_input),
+    )
+    .await
+    .map_err(|e| {
+        tracing::error!(provider = %provider, model = %model, "rephrase-grammar LLM error: {e}");
+        AppError::Internal(anyhow::anyhow!(
+            "Failed to generate a response from the AI provider"
+        ))
+    })?;
+
+    Ok(Json(RephraseGrammarResponse { response: text }))
 }
