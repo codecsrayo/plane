@@ -66,6 +66,22 @@ pub struct Config {
 }
 
 impl Config {
+    /// Returns only the base URL for the app without appending APP_BASE_PATH.
+    /// Mirrors Django's `base_host(is_app=True)` which returns `APP_BASE_URL`
+    /// or `WEB_URL` directly, so that logout redirects to "/" and not "/app/".
+    pub fn app_base_url_only(&self) -> String {
+        let mut base = self
+            .app_base_url
+            .clone()
+            .or_else(|| self.web_url.clone())
+            .unwrap_or_else(|| "/".to_owned());
+
+        if !base.ends_with('/') {
+            base.push('/');
+        }
+        base
+    }
+
     pub fn app_base(&self) -> String {
         let mut base = self
             .app_base_url
@@ -237,4 +253,90 @@ fn build_redis_url() -> String {
 
 fn required(key: &str) -> anyhow::Result<String> {
     env::var(key).map_err(|_| anyhow::anyhow!("Variable de entorno requerida: {key}"))
+}
+
+#[cfg(test)]
+mod tests {
+    use super::Config;
+
+    fn config_with(
+        app_base_url: Option<&str>,
+        app_base_path: Option<&str>,
+        web_url: Option<&str>,
+    ) -> Config {
+        Config {
+            database_url: String::new(),
+            redis_url: String::new(),
+            host: String::new(),
+            port: 0,
+            secret_key: String::new(),
+            debug: false,
+            web_url: web_url.map(str::to_owned),
+            app_base_url: app_base_url.map(str::to_owned),
+            app_base_path: app_base_path.map(str::to_owned),
+            space_base_url: None,
+            space_base_path: None,
+            admin_base_url: None,
+            admin_base_path: None,
+            aws_s3_bucket: String::new(),
+            aws_endpoint: String::new(),
+            aws_access_key_id: String::new(),
+            aws_secret_access_key: String::new(),
+            aws_region: String::new(),
+            use_minio: false,
+            llm_api_key: None,
+            llm_provider: String::new(),
+            llm_model: None,
+            unsplash_access_key: None,
+            cookie_domain: None,
+            is_production: false,
+            session_cookie_age: 604800,
+            admin_session_cookie_age: 3600,
+            cors_origins: vec![],
+            email_host: None,
+            email_port: 587,
+            email_host_user: None,
+            email_host_password: None,
+            email_use_tls: false,
+            email_use_ssl: false,
+            email_from: String::new(),
+            hard_delete_after_days: 30,
+            unuploaded_asset_delete_days: 7,
+        }
+    }
+
+    /// app_base_url_only() never appends APP_BASE_PATH — mirrors Django's
+    /// base_host(is_app=True) which only returns APP_BASE_URL (no path).
+    #[test]
+    fn app_base_url_only_ignores_app_base_path() {
+        let cfg = config_with(
+            Some("https://plane.example.com"),
+            Some("/app"),
+            None,
+        );
+        assert_eq!(cfg.app_base_url_only(), "https://plane.example.com/");
+    }
+
+    #[test]
+    fn app_base_url_only_falls_back_to_web_url() {
+        let cfg = config_with(None, Some("/app"), Some("https://plane.example.com"));
+        assert_eq!(cfg.app_base_url_only(), "https://plane.example.com/");
+    }
+
+    #[test]
+    fn app_base_url_only_defaults_to_root_slash() {
+        let cfg = config_with(None, Some("/app"), None);
+        assert_eq!(cfg.app_base_url_only(), "/");
+    }
+
+    /// app_base() still appends the path (used for navigation, not logout).
+    #[test]
+    fn app_base_includes_path() {
+        let cfg = config_with(
+            Some("https://plane.example.com"),
+            Some("/app"),
+            None,
+        );
+        assert_eq!(cfg.app_base(), "https://plane.example.com/app/");
+    }
 }

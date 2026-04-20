@@ -116,7 +116,9 @@ async fn perform_logout(
         .remove(expired(CSRF_COOKIE_NAME));
 
     let redirect_to = match target {
-        LogoutTarget::App => state.config.app_base(),
+        // Django's SignOutAuthEndpoint redirects to APP_BASE_URL (no path),
+        // so after logout the user lands on "/" and not "/app/".
+        LogoutTarget::App => state.config.app_base_url_only(),
         LogoutTarget::Space => {
             let next_path = safe_redirect_target(form.next_path.as_deref());
             space_redirect_url(&state, &next_path)
