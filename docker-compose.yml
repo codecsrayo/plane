@@ -77,13 +77,13 @@ services:
         VITE_API_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
         VITE_API_BASE_PATH: /api
         VITE_ADMIN_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
-        VITE_ADMIN_BASE_PATH: /god-mode
+        VITE_ADMIN_BASE_PATH: /app/god-mode/
         VITE_LIVE_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
         VITE_LIVE_BASE_PATH: /live
         VITE_SPACE_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
-        VITE_SPACE_BASE_PATH: /spaces
+        VITE_SPACE_BASE_PATH: /app/spaces/
         VITE_WEB_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
-        VITE_WEB_BASE_PATH: /app
+        VITE_WEB_BASE_PATH: /app/
     restart: always
     networks:
       - default
@@ -127,13 +127,13 @@ services:
         VITE_API_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
         VITE_API_BASE_PATH: /api
         VITE_ADMIN_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
-        VITE_ADMIN_BASE_PATH: /god-mode
+        VITE_ADMIN_BASE_PATH: /app/god-mode/
         VITE_SPACE_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
-        VITE_SPACE_BASE_PATH: /spaces
+        VITE_SPACE_BASE_PATH: /app/spaces/
         VITE_LIVE_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
         VITE_LIVE_BASE_PATH: /live
         VITE_WEB_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
-        VITE_WEB_BASE_PATH: /app
+        VITE_WEB_BASE_PATH: /app/
     restart: always
     networks:
       - default
@@ -141,11 +141,11 @@ services:
     labels:
       - traefik.enable=true
       - traefik.docker.network=proyectos-bi-quare
-      - traefik.http.routers.plane-admin.rule=Host(`${PLANE_DOMAIN:-tool.codecsrayo.com}`) && PathPrefix(`/god-mode`)
+      - traefik.http.routers.plane-admin.rule=Host(`${PLANE_DOMAIN:-tool.codecsrayo.com}`) && PathPrefix(`/app/god-mode`)
       - traefik.http.routers.plane-admin.entrypoints=websecure
       - traefik.http.routers.plane-admin.tls=true
       - traefik.http.routers.plane-admin.tls.certresolver=netlify
-      - traefik.http.routers.plane-admin.priority=100
+      - traefik.http.routers.plane-admin.priority=110
       - traefik.http.services.plane-admin.loadbalancer.server.port=3000
     depends_on:
       api:
@@ -163,13 +163,13 @@ services:
         VITE_API_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
         VITE_API_BASE_PATH: /api
         VITE_ADMIN_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
-        VITE_ADMIN_BASE_PATH: /god-mode
+        VITE_ADMIN_BASE_PATH: /app/god-mode/
         VITE_SPACE_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
-        VITE_SPACE_BASE_PATH: /spaces
+        VITE_SPACE_BASE_PATH: /app/spaces/
         VITE_LIVE_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
         VITE_LIVE_BASE_PATH: /live
         VITE_WEB_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
-        VITE_WEB_BASE_PATH: /app
+        VITE_WEB_BASE_PATH: /app/
     restart: always
     networks:
       - default
@@ -177,11 +177,11 @@ services:
     labels:
       - traefik.enable=true
       - traefik.docker.network=proyectos-bi-quare
-      - traefik.http.routers.plane-space.rule=Host(`${PLANE_DOMAIN:-tool.codecsrayo.com}`) && PathPrefix(`/spaces`)
+      - traefik.http.routers.plane-space.rule=Host(`${PLANE_DOMAIN:-tool.codecsrayo.com}`) && PathPrefix(`/app/spaces`)
       - traefik.http.routers.plane-space.entrypoints=websecure
       - traefik.http.routers.plane-space.tls=true
       - traefik.http.routers.plane-space.tls.certresolver=netlify
-      - traefik.http.routers.plane-space.priority=100
+      - traefik.http.routers.plane-space.priority=110
       - traefik.http.services.plane-space.loadbalancer.server.port=3000
     depends_on:
       api:
@@ -224,8 +224,11 @@ services:
       # URLs del frontend (para redirecciones OAuth, emails, etc.)
       WEB_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
       APP_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
-      SPACE_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}/spaces
-      ADMIN_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}/god-mode
+      APP_BASE_PATH: /app/
+      SPACE_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
+      SPACE_BASE_PATH: /app/spaces/
+      ADMIN_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
+      ADMIN_BASE_PATH: /app/god-mode/
       # S3 / MinIO
       AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
       AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
