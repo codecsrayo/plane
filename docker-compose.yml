@@ -95,7 +95,6 @@ services:
       - traefik.enable=true
       - traefik.docker.network=proyectos-bi-quare
       - traefik.http.middlewares.plane-https.redirectscheme.scheme=https
-      - traefik.http.middlewares.plane-strip.stripprefix.prefixes=/app
       # Fuerza trailing slash en paths base para que React Router haga match con basename
       - traefik.http.middlewares.plane-trailingslash.redirectregex.regex=^(https?://[^/]+/app(?:/god-mode|/spaces)?)$
       - traefik.http.middlewares.plane-trailingslash.redirectregex.replacement=$${1}/
@@ -107,7 +106,7 @@ services:
       - traefik.http.routers.plane.entrypoints=websecure
       - traefik.http.routers.plane.tls=true
       - traefik.http.routers.plane.tls.certresolver=netlify
-      - traefik.http.routers.plane.middlewares=plane-trailingslash,plane-strip
+      - traefik.http.routers.plane.middlewares=plane-trailingslash
       - traefik.http.routers.plane.priority=100
 
       # Router de assets y manifiestos (p=110) — mayor que /app (100).
@@ -152,7 +151,7 @@ services:
       - traefik.http.routers.plane-admin.entrypoints=websecure
       - traefik.http.routers.plane-admin.tls=true
       - traefik.http.routers.plane-admin.tls.certresolver=netlify
-      - traefik.http.routers.plane-admin.middlewares=plane-trailingslash,plane-strip
+      - traefik.http.routers.plane-admin.middlewares=plane-trailingslash
       - traefik.http.routers.plane-admin.priority=110
       - traefik.http.services.plane-admin.loadbalancer.server.port=3000
     depends_on:
@@ -189,7 +188,7 @@ services:
       - traefik.http.routers.plane-space.entrypoints=websecure
       - traefik.http.routers.plane-space.tls=true
       - traefik.http.routers.plane-space.tls.certresolver=netlify
-      - traefik.http.routers.plane-space.middlewares=plane-trailingslash,plane-strip
+      - traefik.http.routers.plane-space.middlewares=plane-trailingslash
       - traefik.http.routers.plane-space.priority=110
       - traefik.http.services.plane-space.loadbalancer.server.port=3000
     depends_on:
@@ -320,6 +319,11 @@ services:
       - traefik.http.routers.plane-live.tls.certresolver=netlify
       - traefik.http.routers.plane-live.priority=100
       - traefik.http.services.plane-live.loadbalancer.server.port=3000
+    env_file:
+      - .env
+    environment:
+      API_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
+      LIVE_SERVER_SECRET_KEY: ${LIVE_SERVER_SECRET_KEY}
     depends_on:
       api:
         condition: service_healthy
