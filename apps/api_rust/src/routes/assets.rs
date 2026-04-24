@@ -744,19 +744,25 @@ pub async fn get_workspace_asset(
 ///
 /// Devuelve metadata de un asset estático (sin requerir pertenencia a workspace).
 /// El cliente usa la `asset` key para construir la URL de descarga.
+///
+/// **Paridad Django (`StaticFileAssetEndpoint`, `asset/v2.py:432`)**: este
+/// endpoint es público (`permission_classes = [AllowAny]`) porque lo consumen
+/// páginas sin sesión (ej. avatares en sign-in, logos de workspace en landing).
+/// Para evitar filtrar metadata de assets privados vía ID conocido, sólo se
+/// sirven entity_types que ya son públicos por naturaleza: USER_AVATAR,
+/// USER_COVER, WORKSPACE_LOGO, PROJECT_COVER (ver Django línea 449-459).
 #[utoipa::path(
     get,
     path = "/assets/v2/static/{asset_id}/",
     tag = "Assets",
-    security(("TokenAuth" = [])),
     params(("asset_id" = Uuid, Path, description = "Asset ID")),
     responses(
         (status = 200, description = "Asset metadata"),
+        (status = 400, description = "Invalid entity type"),
         (status = 404, description = "Not found"),
     )
 )]
 pub async fn get_static_asset(
-    AnyAuth(_user): AnyAuth,
     State(state): State<AppState>,
     Path(asset_id): Path<Uuid>,
 ) -> Result<impl IntoResponse, AppError> {
@@ -767,6 +773,24 @@ pub async fn get_static_asset(
         .await
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
+
+    // Whitelist: sólo permitir entity_types públicos. Evita que un ID filtrado
+    // de un ISSUE_ATTACHMENT/PAGE_DESCRIPTION exponga metadata vía endpoint
+    // público. Paridad exacta con Django `asset/v2.py:449-459`.
+    const PUBLIC_ENTITY_TYPES: &[&str] = &[
+        ENTITY_USER_AVATAR,
+        ENTITY_USER_COVER,
+        ENTITY_WORKSPACE_LOGO,
+        ENTITY_PROJECT_COVER,
+    ];
+    let is_public = asset
+        .entity_type
+        .as_deref()
+        .map(|et| PUBLIC_ENTITY_TYPES.contains(&et))
+        .unwrap_or(false);
+    if !is_public {
+        return Err(AppError::BadRequest("Invalid entity type.".into()));
+    }
 
     Ok(Json(asset_to_response(&asset)))
 }

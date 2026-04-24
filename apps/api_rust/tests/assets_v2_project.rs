@@ -125,12 +125,19 @@ async fn check_workspace_asset_nonexistent_returns_404() {
     let res = app
         .get_authed(&api_key, &format!("/assets/v2/workspaces/{slug}/check/{fake_id}"))
         .await;
+    // Paridad Django `AssetCheckEndpoint` (asset/v2.py:691): este endpoint
+    // SIEMPRE devuelve 200 con `{"exists": bool}`, nunca 404. Para asset
+    // inexistente → `exists=false`. El nombre del test es legacy; se mantiene
+    // para no cambiar el contrato externo, pero la aserción refleja el
+    // comportamiento real.
     assert_eq!(
         res.status.as_u16(),
-        404,
-        "check asset inexistente debe devolver 404: {}",
+        200,
+        "check asset siempre devuelve 200: {}",
         String::from_utf8_lossy(&res.body)
     );
+    let body = res.json();
+    assert_eq!(body["exists"], serde_json::json!(false));
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -156,12 +163,15 @@ async fn duplicate_workspace_asset_unauthenticated_returns_401() {
 async fn duplicate_workspace_asset_nonexistent_returns_404() {
     let (app, api_key, slug, _, _) = setup("dup_404").await;
     let fake_id = Uuid::new_v4();
+    // El handler monta `Json<DuplicateAssetRequest>` + valida entity_type
+    // contra VALID_ENTITY_TYPES (assets.rs:72). Sin body JSON + content-type
+    // devuelve 415 antes del lookup. Enviamos un payload válido para
+    // llegar a la rama NotFound que el test verifica.
     let res = app
-        .request(
-            Method::POST,
+        .post_json_authed(
+            &api_key,
             &format!("/assets/v2/workspaces/{slug}/duplicate-assets/{fake_id}"),
-            None,
-            &[("x-api-key", api_key.as_str())],
+            &json!({"entity_type": "WORKSPACE_LOGO"}),
         )
         .await;
     assert_eq!(
@@ -202,33 +212,13 @@ async fn download_workspace_asset_nonexistent_returns_404() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// GET/POST /assets/v2/workspaces/{slug}/projects/{project_id}
+// POST /assets/v2/workspaces/{slug}/projects/{project_id}
 // ─────────────────────────────────────────────────────────────────────────────
-
-#[tokio::test(flavor = "multi_thread")]
-async fn list_project_assets_v2_unauthenticated_returns_401() {
-    let (app, _, slug, _, proj_id) = setup("proj_list_unauth").await;
-    let res = app
-        .get(&format!("/assets/v2/workspaces/{slug}/projects/{proj_id}"))
-        .await;
-    assert_eq!(res.status.as_u16(), 401);
-}
-
-#[tokio::test(flavor = "multi_thread")]
-async fn list_project_assets_v2_returns_200_empty() {
-    let (app, api_key, slug, _, proj_id) = setup("proj_list_empty").await;
-    let res = app
-        .get_authed(&api_key, &format!("/assets/v2/workspaces/{slug}/projects/{proj_id}"))
-        .await;
-    assert_eq!(
-        res.status.as_u16(),
-        200,
-        "lista assets proyecto debe ser 200: {}",
-        String::from_utf8_lossy(&res.body)
-    );
-    let body = res.json();
-    assert_eq!(body.as_array().map(|a| a.len()).unwrap_or(0), 0);
-}
+// Nota: sólo POST está definido en esta ruta (paridad con Django
+// `ProjectAssetEndpoint`: apps/api/plane/app/views/asset/v2.py:513). Los
+// tests previos `list_project_assets_v2_*` asumían un GET que nunca existió
+// (ni en Django ni en Rust) y fueron eliminados porque verificaban un
+// endpoint inexistente — GET devolvía 405 Method Not Allowed.
 
 #[tokio::test(flavor = "multi_thread")]
 async fn initiate_project_asset_v2_unauthenticated_returns_401() {
