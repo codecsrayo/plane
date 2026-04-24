@@ -26,6 +26,10 @@ fn location_has_error(location: &str, code: &str) -> bool {
 #[tokio::test(flavor = "multi_thread")]
 async fn magic_generate_valid_email_returns_key() {
     let app = TestApp::spawn().await;
+    // magic-generate depende de `instances.is_setup_done=true` y de la config
+    // ENABLE_MAGIC_LINK_LOGIN. Sin instancia configurada el handler corta
+    // con 400 INSTANCE_NOT_CONFIGURED antes de cualquier otra validación.
+    app.ensure_instance_configured().await;
 
     let res = app
         .post_json(
@@ -150,6 +154,10 @@ async fn magic_sign_in_unknown_user_redirects_with_error() {
 #[tokio::test(flavor = "multi_thread")]
 async fn magic_sign_in_expired_code_redirects_with_error() {
     let app = TestApp::spawn().await;
+    // sign-up previo + magic-sign-in dependen de instance configurada. Sin
+    // ella el sign-up falla silenciosamente y magic-sign-in ve USER_DOES_NOT_EXIST
+    // (5060) en lugar del EXPIRED_MAGIC_CODE_SIGN_IN (5095) que verifica el test.
+    app.ensure_instance_configured().await;
 
     // Bootstrapea un usuario vía sign-up para que exista en la DB.
     let (s_up, _) = app
@@ -184,6 +192,7 @@ async fn magic_sign_in_expired_code_redirects_with_error() {
 #[tokio::test(flavor = "multi_thread")]
 async fn magic_sign_in_wrong_code_redirects_with_error() {
     let app = TestApp::spawn().await;
+    app.ensure_instance_configured().await;
 
     // Crea usuario
     let (s_up, _) = app
@@ -253,6 +262,11 @@ async fn magic_sign_up_without_code_redirects_with_error() {
 #[tokio::test(flavor = "multi_thread")]
 async fn magic_sign_up_existing_user_redirects_with_error() {
     let app = TestApp::spawn().await;
+    // El test depende de que el sign-up previo cree el usuario y que
+    // magic-sign-up llegue a validar duplicidad. Sin instance configurada
+    // el flujo corta antes y llega EXPIRED_MAGIC_CODE_SIGN_UP (5097) en
+    // lugar del USER_ALREADY_EXIST (5030) esperado.
+    app.ensure_instance_configured().await;
 
     // Crea el usuario
     let (s_up, _) = app
@@ -313,6 +327,7 @@ async fn magic_sign_up_expired_code_redirects_with_error() {
 #[tokio::test(flavor = "multi_thread")]
 async fn magic_sign_up_wrong_code_redirects_with_error() {
     let app = TestApp::spawn().await;
+    app.ensure_instance_configured().await;
 
     let gen_res = app
         .post_json(
