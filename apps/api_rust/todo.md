@@ -1328,3 +1328,151 @@ apps/api/
 | External/AI       | 6            | 0         |
 | Webhooks          | 4            | 0         |
 | **TOTAL**         | **264**      | **16**    |
+
+---
+
+## API Pública v1 (`api/v1/` — autenticación por API key)
+
+> Implementado en `apps/api_rust/src/routes/v1_router.rs`
+> Montado bajo `/api/v1/` en `src/routes/mod.rs`
+> Espejo de Django `plane.api.urls`
+
+### Users
+
+- ✅ `GET/PATCH  /users/me`
+
+### Workspace Members
+
+- ✅ `GET        /workspaces/{slug}/members`
+
+### Projects
+
+- ✅ `GET/POST   /workspaces/{slug}/projects`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{pk}`
+- ✅ `POST/DELETE /workspaces/{slug}/projects/{project_id}/archive`
+- ✅ `GET        /workspaces/{slug}/projects/{project_id}/summary`
+
+### Project Members
+
+- ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/members`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/members/{pk}`
+- ✅ `GET        /workspaces/{slug}/projects/{project_id}/project-members`
+- ✅ `GET        /workspaces/{slug}/projects/{project_id}/project-members/{pk}`
+
+### States
+
+- ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/states`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/states/{state_id}`
+
+### Labels
+
+- ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/labels`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/labels/{pk}`
+
+### Estimates
+
+- ✅ `GET        /workspaces/{slug}/projects/{project_id}/estimates`
+- ✅ `POST       /workspaces/{slug}/projects/{project_id}/estimates/{estimate_id}/estimate-points`
+- ✅ `PATCH/DELETE /workspaces/{slug}/projects/{project_id}/estimates/{estimate_id}/estimate-points/{pk}`
+
+### Cycles
+
+- ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/cycles`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/cycles/{pk}`
+- ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/cycle-issues`
+- ✅ `DELETE     /workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/cycle-issues/{issue_id}`
+- ✅ `POST       /workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/transfer-issues`
+- ✅ `POST       /workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/archive`
+- ✅ `GET        /workspaces/{slug}/projects/{project_id}/archived-cycles`
+- ✅ `GET        /workspaces/{slug}/projects/{project_id}/archived-cycles/{pk}`
+- ✅ `DELETE     /workspaces/{slug}/projects/{project_id}/archived-cycles/{pk}/unarchive`
+
+### Modules
+
+- ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/modules`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/modules/{pk}`
+- ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/modules/{module_id}/module-issues`
+- ✅ `DELETE     /workspaces/{slug}/projects/{project_id}/modules/{module_id}/module-issues/{issue_id}`
+- ✅ `POST       /workspaces/{slug}/projects/{project_id}/modules/{pk}/archive`
+- ✅ `GET        /workspaces/{slug}/projects/{project_id}/archived-modules`
+- ✅ `GET        /workspaces/{slug}/projects/{project_id}/archived-modules/{pk}`
+- ✅ `DELETE     /workspaces/{slug}/projects/{project_id}/archived-modules/{pk}/unarchive`
+
+### Work Items — nuevo prefijo `/work-items/`
+
+- ✅ `GET        /workspaces/{slug}/work-items/search`
+- ✅ `GET        /workspaces/{slug}/work-items/{combined}`
+- ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/work-items`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/work-items/{pk}`
+- ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/work-items/{issue_id}/links`
+- ✅ `PATCH/DELETE /workspaces/{slug}/projects/{project_id}/work-items/{issue_id}/links/{pk}`
+- ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/work-items/{issue_id}/comments`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/work-items/{issue_id}/comments/{pk}`
+- ✅ `GET        /workspaces/{slug}/projects/{project_id}/work-items/{issue_id}/activities`
+- ✅ `GET        /workspaces/{slug}/projects/{project_id}/work-items/{issue_id}/activities/{pk}` ← handler nuevo
+- ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/work-items/{issue_id}/attachments`
+- ✅ `PATCH/DELETE /workspaces/{slug}/projects/{project_id}/work-items/{issue_id}/attachments/{pk}`
+- ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/work-items/{issue_id}/relations`
+
+### Work Items — prefijo legacy `/issues/`
+
+- ✅ `GET        /workspaces/{slug}/issues/search`
+- ✅ `GET        /workspaces/{slug}/issues/{combined}`
+- ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/issues`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/issues/{pk}`
+- ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/links`
+- ✅ `PATCH/DELETE /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/links/{pk}`
+- ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/comments`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/comments/{pk}`
+- ✅ `GET        /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/activities`
+- ✅ `GET        /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/activities/{pk}` ← handler nuevo
+- ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-attachments`
+- ✅ `PATCH/DELETE /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-attachments/{pk}`
+
+### Intake Issues
+
+- ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/intake-issues`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/intake-issues/{pk}`
+
+### Assets (api/v1 — sin prefijo v2/)
+
+- ✅ `POST       /assets/user-assets`
+- ✅ `PATCH/DELETE /assets/user-assets/{asset_id}`
+- ✅ `POST       /assets/user-assets/server`
+- ✅ `POST       /assets/user-assets/{asset_id}/server`
+- ✅ `POST       /workspaces/{slug}/assets`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}/assets/{asset_id}`
+
+---
+
+## Resumen actualizado
+
+| Módulo              | App (session) | v1 (API key) |
+|---------------------|:-------------:|:------------:|
+| Auth                | 28 ✅         | —            |
+| License/Instance    | 14 ✅         | —            |
+| Users               | 18 ✅         | 1 ✅         |
+| API Tokens          | 4 ✅          | —            |
+| Workspaces          | 33 ✅         | 1 ✅         |
+| Projects            | 17 ✅         | 6 ✅         |
+| States              | 4 ✅          | 2 ✅         |
+| Issues              | 35 ✅         | 24 ✅        |
+| Cycles              | 21 ✅         | 9 ✅         |
+| Modules             | 23 ✅         | 8 ✅         |
+| Estimates           | 5 ✅          | 3 ✅         |
+| Pages               | 11 ✅         | —            |
+| Views               | 8 ✅          | —            |
+| Analytics           | 13 ✅         | —            |
+| Notifications       | 7 ✅          | —            |
+| Search              | 3 ✅          | —            |
+| Assets v2           | 15 ✅         | 6 ✅         |
+| Exporter            | 2 ✅          | —            |
+| Intake              | 10 ✅         | 2 ✅         |
+| Integrations        | 13 ✅         | —            |
+| Importer            | 6 ✅          | —            |
+| External/AI         | 6 ✅          | —            |
+| Webhooks            | 4 ✅          | —            |
+| Labels              | —             | 2 ✅         |
+| Members (v1)        | —             | 4 ✅         |
+| Summary             | —             | 1 ✅         |
+| **TOTAL**           | **311**       | **69**       |
