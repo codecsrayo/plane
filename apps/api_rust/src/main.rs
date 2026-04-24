@@ -115,7 +115,7 @@ async fn start_job_workers(state: AppState) -> anyhow::Result<()> {
 
 // Módulos y AppState viven ahora en `src/lib.rs` para que los tests de
 // integración bajo `tests/` puedan reutilizarlos vía `use api_rust::…`.
-use api_rust::{auth, auth::rate_limit::RateLimitState, config::Config, jobs, routes, utils, AppState};
+use api_rust::{auth::rate_limit::RateLimitState, config::Config, jobs, routes, utils, AppState};
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {

@@ -10,7 +10,6 @@
 
 mod common;
 
-use axum::http::Method;
 use common::TestApp;
 use serde_json::json;
 

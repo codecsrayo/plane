@@ -17,7 +17,6 @@ mod common;
 
 use axum::http::Method;
 use common::TestApp;
-use sea_orm::{ActiveModelTrait, ActiveValue::Set};
 use serde_json::json;
 use uuid::Uuid;
 
