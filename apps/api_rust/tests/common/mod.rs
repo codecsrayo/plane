@@ -27,6 +27,7 @@ use std::sync::Arc;
 use api_rust::{
     auth::rate_limit::RateLimitState,
     config::Config,
+    entities::{api_tokens, users},
     routes::build_router,
     utils::startup::{ensure_configurations_seeded, ensure_instance_registered},
     AppState,
@@ -36,14 +37,16 @@ use axum::{
     http::{Method, Request, StatusCode},
     Router,
 };
+use chrono::Utc;
 use fred::prelude::{Builder as RedisBuilder, ClientLike, Config as RedisConfig};
 use http_body_util::BodyExt;
 use migration::{Migrator, MigratorTrait};
-use sea_orm::Database;
+use sea_orm::{ActiveModelTrait, ActiveValue::Set, Database};
 use serde_json::Value;
 use testcontainers::{runners::AsyncRunner, ContainerAsync};
 use testcontainers_modules::{postgres::Postgres, redis::Redis};
 use tower::ServiceExt;
+use uuid::Uuid;
 
 /// App de test completa: contenedores + router listo para recibir requests.
 ///
@@ -154,7 +157,7 @@ impl TestApp {
     /// NOTA: no cifra — solo válido para configs con `is_encrypted = false`.
     pub async fn set_instance_config(&self, key: &str, value: &str) {
         use api_rust::entities::instance_configurations;
-        use sea_orm::{ActiveModelTrait, ActiveValue::Set, ColumnTrait, EntityTrait, QueryFilter};
+        use sea_orm::{ColumnTrait, EntityTrait, QueryFilter};
 
         let existing = instance_configurations::Entity::find()
             .filter(instance_configurations::Column::Key.eq(key))
@@ -186,6 +189,119 @@ impl TestApp {
                 am.insert(&self.state.db).await.expect("insert config");
             }
         }
+    }
+
+    /// Crea un usuario de test directamente en la base de datos y devuelve
+    /// `(user_id, api_key_string)`. El api_key se puede usar en el header
+    /// `x-api-key` para autenticar requests.
+    ///
+    /// No toca la lógica de sign-up — inserta directamente en `users` y
+    /// `api_tokens`, lo que hace los tests independientes de los endpoints
+    /// de auth y más rápidos.
+    pub async fn create_test_user(&self, email: &str) -> (Uuid, String) {
+        let now = Utc::now();
+        let user_id = Uuid::new_v4();
+        let api_key = format!("test-key-{}", Uuid::new_v4().as_simple());
+
+        // ── Usuario ──────────────────────────────────────────────────────
+        let user_am = users::ActiveModel {
+            id: Set(user_id),
+            username: Set(format!("test_{}", user_id.as_simple())),
+            email: Set(Some(email.to_owned())),
+            first_name: Set(String::new()),
+            last_name: Set(String::new()),
+            display_name: Set(email.split('@').next().unwrap_or("test").to_owned()),
+            password: Set("!unusable".into()),
+            is_active: Set(true),
+            is_staff: Set(false),
+            is_superuser: Set(false),
+            is_managed: Set(false),
+            is_password_expired: Set(false),
+            is_email_verified: Set(true),
+            is_email_valid: Set(true),
+            is_password_autoset: Set(false),
+            is_bot: Set(false),
+            is_password_reset_required: Set(false),
+            avatar: Set(String::new()),
+            user_timezone: Set("UTC".into()),
+            last_login_ip: Set(String::new()),
+            last_logout_ip: Set(String::new()),
+            last_login_medium: Set("email".into()),
+            last_login_uagent: Set(String::new()),
+            last_location: Set(String::new()),
+            created_location: Set(String::new()),
+            token: Set(Uuid::new_v4().to_string()),
+            date_joined: Set(now.into()),
+            created_at: Set(now.into()),
+            updated_at: Set(now.into()),
+            ..Default::default()
+        };
+        user_am.insert(&self.state.db).await.expect("insert test user");
+
+        // ── API Token ─────────────────────────────────────────────────────
+        let token_am = api_tokens::ActiveModel {
+            id: Set(Uuid::new_v4()),
+            token: Set(api_key.clone()),
+            label: Set("test-token".into()),
+            user_type: Set(0),
+            user_id: Set(user_id),
+            description: Set(String::new()),
+            is_active: Set(true),
+            is_service: Set(false),
+            allowed_rate_limit: Set("default".into()),
+            created_at: Set(now.into()),
+            updated_at: Set(now.into()),
+            ..Default::default()
+        };
+        token_am.insert(&self.state.db).await.expect("insert api token");
+
+        (user_id, api_key)
+    }
+
+    /// GET autenticado vía API key (`x-api-key` header).
+    pub async fn get_authed(&self, api_key: &str, path: &str) -> TestResponse {
+        self.request(Method::GET, path, None, &[("x-api-key", api_key)])
+            .await
+    }
+
+    /// PATCH con body JSON, autenticado vía API key.
+    pub async fn patch_json_authed(
+        &self,
+        api_key: &str,
+        path: &str,
+        payload: &Value,
+    ) -> TestResponse {
+        let body = serde_json::to_vec(payload).expect("serializar payload");
+        self.request(
+            Method::PATCH,
+            path,
+            Some(body),
+            &[
+                ("content-type", "application/json"),
+                ("x-api-key", api_key),
+            ],
+        )
+        .await
+    }
+
+    /// POST con body JSON, autenticado vía API key.
+    pub async fn post_json_authed(
+        &self,
+        api_key: &str,
+        path: &str,
+        payload: &Value,
+    ) -> TestResponse {
+        let body = serde_json::to_vec(payload).expect("serializar payload");
+        self.request(
+            Method::POST,
+            path,
+            Some(body),
+            &[
+                ("content-type", "application/json"),
+                ("x-api-key", api_key),
+            ],
+        )
+        .await
     }
 
     /// GET sin body, sin cookies.
