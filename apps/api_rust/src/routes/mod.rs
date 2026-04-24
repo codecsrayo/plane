@@ -44,6 +44,7 @@ pub mod issue_description_versions;
 pub mod issue_extras2;
 pub mod api_tokens;
 pub mod instances;
+pub mod v1_router;
 
 #[derive(OpenApi)]
 #[openapi(
@@ -1885,7 +1886,13 @@ pub fn build_router(state: AppState) -> Router {
         Router::new()
     };
 
+    // Router público api/v1 con autenticación por API key (x-api-key).
+    // Espejo de Django path("api/v1/", include("plane.api.urls")).
+    // Montado ANTES de /api para que el prefijo más específico gane.
+    let v1 = v1_router::v1_router(state.clone());
+
     let router = root
+        .nest("/api/v1", v1)
         .nest("/api", api_router)
         .nest("/api", public_routes)
         // Auth routes at /auth/* Ã¢ÂÂ matches Django: path("auth/", include("plane.authentication.urls"))
