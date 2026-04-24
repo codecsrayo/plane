@@ -253,9 +253,9 @@
 - ✅ `POST /auth/sign-up`
 - ✅ `POST /auth/sign-out`
 - ✅ `POST /auth/email-check`
-- [ ] `POST /auth/magic-sign-in`
-- [ ] `POST /auth/magic-sign-up`
-- [ ] `POST /auth/magic-generate`
+- ✅ `POST /auth/magic-sign-in`
+- ✅ `POST /auth/magic-sign-up`
+- ✅ `POST /auth/magic-generate`
 - [ ] `POST /auth/forgot-password`
 - [ ] `POST /auth/reset-password/{uidb64}/{token}`
 - [ ] `POST /auth/change-password`
