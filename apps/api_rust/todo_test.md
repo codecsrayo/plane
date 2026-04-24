@@ -298,11 +298,11 @@
 
 - ✅ `GET/PATCH  /users/me`
 - ✅ `GET/DELETE /users/session`
-- [ ] `PATCH      /users/me/settings`
+- ✅ `PATCH      /users/me/settings`
 - ✅ `GET/PATCH  /users/me/profile`
 - ✅ `GET        /users/me/accounts`
-- [ ] `DELETE     /users/me/accounts/{pk}`
-- [ ] `GET/POST   /users/me/instance-admin`
+- ✅ `DELETE     /users/me/accounts/{pk}`
+- ✅ `GET/POST   /users/me/instance-admin`
 - ✅ `POST       /users/me/onboard`
 - ✅ `POST       /users/me/tour-completed`
 - ✅ `GET        /users/me/activities`
@@ -312,8 +312,8 @@
 - ✅ `GET        /users/me/workspaces/{slug}/dashboard`
 - ✅ `GET/PATCH  /users/me/notification-preferences`
 - ✅ `GET        /users/last-visited-workspace`
-- [ ] `POST       /users/me/email/generate-code`
-- [ ] `POST       /users/me/email`
+- ✅ `POST       /users/me/email/generate-code`
+- ✅ `POST       /users/me/email`
 
 ## API Tokens (`app/urls/api.py`)
 
@@ -353,15 +353,15 @@
 - ✅ `GET        /workspaces/{slug}/cycles`
 - ✅ `GET/POST   /workspaces/{slug}/user-favorites`
 - ✅ `GET/PATCH/DELETE /workspaces/{slug}/user-favorites/{favorite_id}`
-- [ ] `GET/POST   /workspaces/{slug}/user-favorites/{favorite_id}/children`
-- [ ] `GET        /workspaces/{slug}/user-favorites/{favorite_id}/group` (alias de /children)
+- ✅ `GET/POST   /workspaces/{slug}/user-favorites/{favorite_id}/children`
+- ✅ `GET        /workspaces/{slug}/user-favorites/{favorite_id}/group` (alias de /children)
 - ✅ `GET/POST   /workspaces/{slug}/draft-issues`
 - ✅ `GET/PATCH/DELETE /workspaces/{slug}/draft-issues/{pk}`
-- [ ] `POST       /workspaces/{slug}/draft-to-issue/{draft_id}`
+- ✅ `POST       /workspaces/{slug}/draft-to-issue/{draft_id}`
 - ✅ `GET/POST   /workspaces/{slug}/quick-links`
 - ✅ `GET/PATCH/DELETE /workspaces/{slug}/quick-links/{pk}`
 - ✅ `GET/PATCH  /workspaces/{slug}/home-preferences`
-- [ ] `GET/PATCH  /workspaces/{slug}/home-preferences/{key}`
+- ✅ `GET/PATCH  /workspaces/{slug}/home-preferences/{key}`
 - ✅ `GET        /workspaces/{slug}/recent-visits`
 - ✅ `GET/POST   /workspaces/{slug}/stickies`
 - ✅ `GET/PATCH/DELETE /workspaces/{slug}/stickies/{pk}`
@@ -375,20 +375,20 @@
 - ✅ `GET/POST   /workspaces/{slug}/projects`
 - ✅ `GET        /workspaces/{slug}/projects/details`
 - ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{pk}`
-- [ ] `GET/DELETE /workspaces/{slug}/project-identifiers`
-- [ ] `GET/POST   /workspaces/{slug}/projects/{project_id}/invitations`
-- [ ] `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/invitations/{pk}`
-- [ ] `GET        /users/me/workspaces/{slug}/project-roles`
+- ✅ `GET/DELETE /workspaces/{slug}/project-identifiers`
+- ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/invitations`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/invitations/{pk}`
+- ✅ `GET        /users/me/workspaces/{slug}/project-roles`
 - ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/members`
 - ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/members/{pk}`
 - ✅ `POST       /workspaces/{slug}/projects/{project_id}/members/leave`
 - ✅ `GET        /workspaces/{slug}/projects/{project_id}/project-members/me`
-- [ ] `GET        /users/me/workspaces/{slug}/projects/invitations`
-- [ ] `POST       /workspaces/{slug}/projects/{project_id}/join/{pk}`
+- ✅ `GET        /users/me/workspaces/{slug}/projects/invitations`
+- ✅ `POST       /workspaces/{slug}/projects/{project_id}/join/{pk}`
 
-- [ ] `GET/POST  /workspaces/{slug}/projects/{project_id}/project-deploy-boards`
-- [ ] `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/project-deploy-boards/{pk}`
-- [ ] `GET/PATCH  /workspaces/{slug}/projects/{project_id}/preferences/member/{member_id}`
+- ✅ `GET/POST  /workspaces/{slug}/projects/{project_id}/project-deploy-boards`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/project-deploy-boards/{pk}`
+- ✅ `GET/PATCH  /workspaces/{slug}/projects/{project_id}/preferences/member/{member_id}`
 
 ## States (`app/urls/state.py`)
 
@@ -429,16 +429,16 @@
 - ✅ `POST       /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/remove-relation`
 - ✅ `GET        /workspaces/{slug}/projects/{project_id}/deleted-issues`
 - ✅ `GET        /workspaces/{slug}/projects/{project_id}/issue-dates`
-- [ ] `GET        /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/versions`
-- [ ] `GET/DELETE /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/versions/{pk}`
-- [ ] `GET        /workspaces/{slug}/projects/{project_id}/work-items/{work_item_id}/description-versions`
-- [ ] `GET/DELETE /workspaces/{slug}/projects/{project_id}/work-items/{work_item_id}/description-versions/{pk}`
+- ✅ `GET        /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/versions`
+- ✅ `GET/DELETE /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/versions/{pk}`
+- ✅ `GET        /workspaces/{slug}/projects/{project_id}/work-items/{work_item_id}/description-versions`
+- ✅ `GET/DELETE /workspaces/{slug}/projects/{project_id}/work-items/{work_item_id}/description-versions/{pk}`
 - ✅ `GET        /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/meta`
-- [ ] `GET        /workspaces/{slug}/work-items/{combined}`
-- [ ] `GET        /workspaces/{slug}/projects/{project_id}/issues/list`
-- [ ] `GET        /workspaces/{slug}/projects/{project_id}/issues-detail`
-- [ ] `GET        /workspaces/{slug}/projects/{project_id}/v2/issues`
-- [ ] `DELETE     /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-subscribers/{subscriber_id}`
+- ✅ `GET        /workspaces/{slug}/work-items/{combined}`
+- ✅ `GET        /workspaces/{slug}/projects/{project_id}/issues/list`
+- ✅ `GET        /workspaces/{slug}/projects/{project_id}/issues-detail`
+- ✅ `GET        /workspaces/{slug}/projects/{project_id}/v2/issues`
+- ✅ `DELETE     /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-subscribers/{subscriber_id}`
 
 ## Cycles (`app/urls/cycle.py`)
 
@@ -469,7 +469,7 @@
 - ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/modules/{module_id}/module-links/{pk}`
 - ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/user-favorite-modules`
 - ✅ `DELETE     /workspaces/{slug}/projects/{project_id}/user-favorite-modules/{module_id}`
-- [ ] `POST       /workspaces/{slug}/projects/{project_id}/modules/{module_id}/archive`
+- ✅ `POST       /workspaces/{slug}/projects/{project_id}/modules/{module_id}/archive`
 - ✅ `GET        /workspaces/{slug}/projects/{project_id}/archived-modules`
 - ✅ `GET/DELETE /workspaces/{slug}/projects/{project_id}/archived-modules/{pk}`
 
@@ -479,20 +479,20 @@
 - ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/estimates/{estimate_id}`
 - ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/estimates/{estimate_id}/estimate-points`
 - ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/estimates/{estimate_id}/estimate-points/{pk}`
-- [ ] `GET        /workspaces/{slug}/projects/{project_id}/project-estimates`
+- ✅ `GET        /workspaces/{slug}/projects/{project_id}/project-estimates`
 
 ## Pages (`app/urls/page.py`)
 
 - ✅ `GET        /workspaces/{slug}/projects/{project_id}/pages-summary`
 - ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/pages`
 - ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/pages/{page_id}`
-- [ ] `POST/DELETE /workspaces/{slug}/projects/{project_id}/favorite-pages/{page_id}`
+- ✅ `POST/DELETE /workspaces/{slug}/projects/{project_id}/favorite-pages/{page_id}`
 - ✅ `POST       /workspaces/{slug}/projects/{project_id}/pages/{page_id}/archive`
 - ✅ `POST/DELETE /workspaces/{slug}/projects/{project_id}/pages/{page_id}/lock`
-- [ ] `POST       /workspaces/{slug}/projects/{project_id}/pages/{page_id}/access`
-- [ ] `GET/POST/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/pages/{page_id}/description`
-- [ ] `GET        /workspaces/{slug}/projects/{project_id}/pages/{page_id}/versions`
-- [ ] `GET/DELETE /workspaces/{slug}/projects/{project_id}/pages/{page_id}/versions/{pk}`
+- ✅ `POST       /workspaces/{slug}/projects/{project_id}/pages/{page_id}/access`
+- ✅ `GET/POST/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/pages/{page_id}/description`
+- ✅ `GET        /workspaces/{slug}/projects/{project_id}/pages/{page_id}/versions`
+- ✅ `GET/DELETE /workspaces/{slug}/projects/{project_id}/pages/{page_id}/versions/{pk}`
 - ✅ `POST       /workspaces/{slug}/projects/{project_id}/pages/{page_id}/duplicate`
 
 ## Views (`app/urls/views.py`)
@@ -501,10 +501,10 @@
 - ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/views/{pk}`
 - ✅ `GET/POST   /workspaces/{slug}/views`
 - ✅ `GET/PATCH/DELETE /workspaces/{slug}/views/{pk}`
-- [ ] `GET        /workspaces/{slug}/issues`
-- [ ] `GET/POST   /workspaces/{slug}/projects/{project_id}/user-favorite-views`
-- [ ] `DELETE     /workspaces/{slug}/projects/{project_id}/user-favorite-views/{view_id}`
-- [ ] `GET        /workspaces/{slug}/projects/{project_id}/project-views`
+- ✅ `GET        /workspaces/{slug}/issues`
+- ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/user-favorite-views`
+- ✅ `DELETE     /workspaces/{slug}/projects/{project_id}/user-favorite-views/{view_id}`
+- ✅ `GET        /workspaces/{slug}/projects/{project_id}/project-views`
 
 ## Analytics (`app/urls/analytic.py`)
 
@@ -540,10 +540,10 @@
 
 ## Assets v2 (`app/urls/asset.py`)
 
-- [ ] `GET/POST   /assets/v2/workspaces/{slug}`
-- [ ] `GET/PATCH/DELETE /assets/v2/workspaces/{slug}/{asset_id}`
-- [ ] `GET/POST   /assets/v2/user-assets`
-- [ ] `GET/PATCH/DELETE /assets/v2/user-assets/{asset_id}`
+- ✅ `GET/POST   /assets/v2/workspaces/{slug}`
+- ✅ `GET/PATCH/DELETE /assets/v2/workspaces/{slug}/{asset_id}`
+- ✅ `GET/POST   /assets/v2/user-assets`
+- ✅ `GET/PATCH/DELETE /assets/v2/user-assets/{asset_id}`
 - [ ] `GET        /assets/v2/static/{asset_id}`
 - [ ] `GET/POST   /assets/v2/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/attachments`
 - [ ] `DELETE     /assets/v2/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/attachments/{pk}`
@@ -558,8 +558,8 @@
 
 ## Exporter (`app/urls/exporter.py`)
 
-- [ ] `GET/POST   /workspaces/{slug}/export-issues`
-- [ ] `GET        /workspaces/{slug}/export-issues/{token}`
+- ✅ `GET/POST   /workspaces/{slug}/export-issues`
+- ✅ `GET        /workspaces/{slug}/export-issues/{token}`
 
 ## Intake (`app/urls/intake.py`)
 
@@ -567,23 +567,23 @@
 - ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/intakes/{pk}`
 - ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/intake-issues`
 - ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/intake-issues/{pk}`
-- [ ] `GET/POST   /workspaces/{slug}/projects/{project_id}/inboxes`
-- [ ] `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/inboxes/{pk}`
+- ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/inboxes`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/inboxes/{pk}`
 - ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/inbox-issues`
-- [ ] `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/inbox-issues/{pk}`
-- [ ] `GET        /workspaces/{slug}/projects/{project_id}/intake-work-items/{work_item_id}/description-versions`
-- [ ] `GET/DELETE /workspaces/{slug}/projects/{project_id}/intake-work-items/{work_item_id}/description-versions/{pk}`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/inbox-issues/{pk}`
+- ✅ `GET        /workspaces/{slug}/projects/{project_id}/intake-work-items/{work_item_id}/description-versions`
+- ✅ `GET/DELETE /workspaces/{slug}/projects/{project_id}/intake-work-items/{work_item_id}/description-versions/{pk}`
 
 ## Integrations (`app/urls/integration.py`)
 
 - [ ] `GET        /github/callback`
 - [ ] `GET        /github/user-callback`
-- [ ] `GET        /integrations`
-- [ ] `GET/POST   /workspaces/{slug}/workspace-integrations`
-- [ ] `GET/PATCH/DELETE /workspaces/{slug}/workspace-integrations/{pk}`
+- ✅ `GET        /integrations`
+- ✅ `GET/POST   /workspaces/{slug}/workspace-integrations`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}/workspace-integrations/{pk}`
 - [ ] `GET        /workspaces/{slug}/workspace-integrations/{provider}/provider`
 - [ ] `POST       /workspaces/{slug}/workspace-integrations/{provider}/install`
-- [ ] `GET/POST   /workspaces/{slug}/workspace-integrations/github/repo-syncs`
+- ✅ `GET/POST   /workspaces/{slug}/workspace-integrations/github/repo-syncs`
 - [ ] `GET/PATCH/DELETE /workspaces/{slug}/workspace-integrations/github/repo-syncs/{pk}`
 - [ ] `GET        /workspaces/{slug}/workspace-integrations/{wi_id}/github-repositories`
 - [ ] `GET        /workspaces/{slug}/workspace-integrations/{wi_id}/gitlab-repositories`
@@ -592,21 +592,21 @@
 
 ## Importer (`app/urls/importer.py`)
 
-- [ ] `GET        /workspaces/{slug}/importers/github/repositories`
-- [ ] `GET/POST   /workspaces/{slug}/importers/github`
+- ✅ `GET        /workspaces/{slug}/importers/github/repositories`
+- ✅ `GET/POST   /workspaces/{slug}/importers/github`
 - [ ] `GET/PATCH/DELETE /workspaces/{slug}/importers/github/{importer_id}`
-- [ ] `GET        /workspaces/{slug}/importers/gitlab/repositories`
-- [ ] `GET/POST   /workspaces/{slug}/importers/gitlab`
+- ✅ `GET        /workspaces/{slug}/importers/gitlab/repositories`
+- ✅ `GET/POST   /workspaces/{slug}/importers/gitlab`
 - [ ] `GET/PATCH/DELETE /workspaces/{slug}/importers/gitlab/{importer_id}`
 
 ## External / AI (`app/urls/external.py`)
 
-- [ ] `GET        /unsplash`
-- [ ] `POST       /workspaces/{slug}/ai-assistant`
+- ✅ `GET        /unsplash`
+- ✅ `POST       /workspaces/{slug}/ai-assistant`
 - [ ] `POST       /workspaces/{slug}/projects/{project_id}/ai-assistant`
 - [ ] `POST       /workspaces/{slug}/rephrase-grammar`
-- [ ] `POST       /github-webhook`  ← webhook entrante de GitHub
-- [ ] `POST       /gitlab-webhook`  ← webhook entrante de GitLab
+- ✅ `POST       /github-webhook`  ← webhook entrante de GitHub
+- ✅ `POST       /gitlab-webhook`  ← webhook entrante de GitLab
 
 ## Webhooks (`app/urls/webhook.py`)
 
@@ -634,9 +634,9 @@
 ### Project Members
 
 - ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/members`
-- [ ] `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/members/{pk}`
-- [ ] `GET        /workspaces/{slug}/projects/{project_id}/project-members`
-- [ ] `GET        /workspaces/{slug}/projects/{project_id}/project-members/{pk}`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/members/{pk}`
+- ✅ `GET        /workspaces/{slug}/projects/{project_id}/project-members`
+- ✅ `GET        /workspaces/{slug}/projects/{project_id}/project-members/{pk}`
 
 ### States
 
@@ -660,11 +660,11 @@
 - ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/cycles/{pk}`
 - ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/cycle-issues`
 - ✅ `DELETE     /workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/cycle-issues/{issue_id}`
-- [ ] `POST       /workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/transfer-issues`
+- ✅ `POST       /workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/transfer-issues`
 - ✅ `POST       /workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/archive`
 - ✅ `GET        /workspaces/{slug}/projects/{project_id}/archived-cycles`
-- [ ] `GET        /workspaces/{slug}/projects/{project_id}/archived-cycles/{pk}`
-- [ ] `DELETE     /workspaces/{slug}/projects/{project_id}/archived-cycles/{pk}/unarchive`
+- ✅ `GET        /workspaces/{slug}/projects/{project_id}/archived-cycles/{pk}`
+- ✅ `DELETE     /workspaces/{slug}/projects/{project_id}/archived-cycles/{pk}/unarchive`
 
 ### Modules
 
@@ -674,13 +674,13 @@
 - ✅ `DELETE     /workspaces/{slug}/projects/{project_id}/modules/{module_id}/module-issues/{issue_id}`
 - ✅ `POST       /workspaces/{slug}/projects/{project_id}/modules/{pk}/archive`
 - ✅ `GET        /workspaces/{slug}/projects/{project_id}/archived-modules`
-- [ ] `GET        /workspaces/{slug}/projects/{project_id}/archived-modules/{pk}`
-- [ ] `DELETE     /workspaces/{slug}/projects/{project_id}/archived-modules/{pk}/unarchive`
+- ✅ `GET        /workspaces/{slug}/projects/{project_id}/archived-modules/{pk}`
+- ✅ `DELETE     /workspaces/{slug}/projects/{project_id}/archived-modules/{pk}/unarchive`
 
 ### Work Items — nuevo prefijo `/work-items/`
 
 - [ ] `GET        /workspaces/{slug}/work-items/search`
-- [ ] `GET        /workspaces/{slug}/work-items/{combined}`
+- ✅ `GET        /workspaces/{slug}/work-items/{combined}`
 - ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/work-items`
 - ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/work-items/{pk}`
 - ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/work-items/{issue_id}/links`
@@ -710,8 +710,8 @@
 
 ### Intake Issues
 
-- [ ] `GET/POST   /workspaces/{slug}/projects/{project_id}/intake-issues`
-- [ ] `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/intake-issues/{pk}`
+- ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/intake-issues`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/intake-issues/{pk}`
 
 ### Assets (api/v1 — sin prefijo v2/)
 
