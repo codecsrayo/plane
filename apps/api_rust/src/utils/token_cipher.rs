@@ -171,6 +171,7 @@ pub fn decrypt_token(stored: &str) -> Result<String, AppError> {
 mod tests {
     use super::{decrypt_token, encrypt_token, TOKEN_PREFIX};
     use base64::Engine as _;
+    use serial_test::serial;
 
     // ── Tests que no requieren clave configurada ─────────────────────────────
 
@@ -182,6 +183,7 @@ mod tests {
     }
 
     #[test]
+    #[serial(token_cipher_env)]
     fn encrypt_without_key_returns_plaintext_with_warning() {
         // Sin TOKEN_ENCRYPTION_KEY el valor se almacena sin cifrar
         std::env::remove_var("TOKEN_ENCRYPTION_KEY");
@@ -200,6 +202,7 @@ mod tests {
     }
 
     #[test]
+    #[serial(token_cipher_env)]
     fn roundtrip_encrypt_decrypt() {
         set_test_key();
         let original = "ghs_realGitHubToken_abc123";
@@ -215,6 +218,7 @@ mod tests {
     }
 
     #[test]
+    #[serial(token_cipher_env)]
     fn nonces_are_unique_per_call() {
         set_test_key();
         let token = "same_token";
@@ -225,6 +229,7 @@ mod tests {
     }
 
     #[test]
+    #[serial(token_cipher_env)]
     fn tampered_ciphertext_fails_auth() {
         set_test_key();
         let stored = encrypt_token("legit_token");
