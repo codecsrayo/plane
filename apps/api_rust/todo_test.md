@@ -1,12 +1,14 @@
 
+> ✅ = implementado en Rust | ❌ = pendiente
+
 ```tree
 .
-├── Cargo.lock
-├── Cargo.toml
-├── Dockerfile
-├── Dockerfile.dev
+├── Cargo.lock ✅
+├── Cargo.toml ✅
+├── Dockerfile ✅
+├── Dockerfile.dev ✅
 ├── migration
-│   ├── Cargo.toml
+│   ├── Cargo.toml ✅
 │   └── src
 │       ├── lib.rs
 │       ├── main.rs
@@ -15,8 +17,8 @@
 │       │   ├── m20260410_000001_baseline.rs
 │       │   └── mod.rs
 │       └── sql
-│           └── baseline.sql
-├── rust-toolchain.toml
+│           └── baseline.sql ✅
+├── rust-toolchain.toml ✅
 ├── src
 │   ├── auth
 │   │   ├── any_auth.rs
