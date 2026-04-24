@@ -48,7 +48,7 @@ export const WorkspaceDraftIssuesRoot = observer(function WorkspaceDraftIssuesRo
   useWorkspaceIssueProperties(workspaceSlug);
 
   // fetching issues
-  const { isLoading } = useSWR(
+  const { isLoading, error: swrError } = useSWR(
     workspaceSlug ? `WORKSPACE_DRAFT_ISSUES_${workspaceSlug}` : null,
     workspaceSlug ? async () => await fetchIssues(workspaceSlug, "init-loader") : null,
     { revalidateOnFocus: false, revalidateIfStale: false }
@@ -60,8 +60,15 @@ export const WorkspaceDraftIssuesRoot = observer(function WorkspaceDraftIssuesRo
     await fetchIssues(workspaceSlug, "pagination", EDraftIssuePaginationType.NEXT);
   };
 
-  if (isLoading) {
+  // Mostrar loader mientras SWR está en vuelo O mientras el store tiene
+  // loader activo (init-loader = primera carga, pagination = carga más).
+  if (isLoading || loader === "init-loader") {
     return <WorkspaceDraftIssuesLoader items={14} />;
+  }
+
+  // Si SWR lanzó error, mostrar empty state en lugar de pantalla rota
+  if (swrError) {
+    return <WorkspaceDraftEmptyState />;
   }
 
   if (workspaceProjectIds?.length === 0)

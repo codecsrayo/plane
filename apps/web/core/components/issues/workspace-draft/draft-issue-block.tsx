@@ -51,7 +51,9 @@ export const DraftIssueBlock = observer(function DraftIssueBlock(props: Props) {
   // derived values
   const issue = getIssueById(issueId);
   const projectIdentifier = (issue && issue.project_id && getProjectIdentifierById(issue.project_id)) || undefined;
-  if (!issue || !projectIdentifier) return null;
+  // Solo retornar null si no existe el issue en el store — los drafts sin
+  // project_id son válidos (estado "half-written") y deben renderizarse.
+  if (!issue) return null;
 
   const duplicateIssuePayload = omit(
     {
@@ -146,7 +148,7 @@ export const DraftIssueBlock = observer(function DraftIssueBlock(props: Props) {
             <div className="flex flex-grow items-center gap-0.5 truncate">
               <div className="flex items-center gap-1">
                 <div className="flex-shrink-0">
-                  {issue.project_id && (
+                  {issue.project_id && projectIdentifier && (
                     <div className="flex items-center space-x-2">
                       {issue?.type_id && <IssueTypeIdentifier issueTypeId={issue.type_id} />}
                       <IdentifierText
