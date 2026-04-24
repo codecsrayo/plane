@@ -50,7 +50,7 @@ use http_body_util::BodyExt;
 use migration::{Migrator, MigratorTrait};
 use sea_orm::{ActiveModelTrait, ActiveValue::Set, Database};
 use serde_json::Value;
-use testcontainers::{runners::AsyncRunner, ContainerAsync};
+use testcontainers::{runners::AsyncRunner, ContainerAsync, ImageExt};
 use testcontainers_modules::{postgres::Postgres, redis::Redis};
 use tower::ServiceExt;
 use uuid::Uuid;
@@ -87,7 +87,11 @@ impl TestApp {
     /// Se hace vía `testcontainers` — requiere docker daemon en el host.
     pub async fn spawn() -> Self {
         // ── 1. Contenedores ──────────────────────────────────────────────
+        // Imagen alineada con docker-compose.yml de producción.
+        // Postgres < 12 no soporta el GUC `default_table_access_method`
+        // que aparece en migration/src/sql/baseline.sql (dump de PG 15.7).
         let pg = Postgres::default()
+            .with_tag("15.7-alpine")
             .with_db_name("plane_test")
             .with_user("plane")
             .with_password("plane")
