@@ -30,6 +30,10 @@ async fn magic_generate_valid_email_returns_key() {
     // ENABLE_MAGIC_LINK_LOGIN. Sin instancia configurada el handler corta
     // con 400 INSTANCE_NOT_CONFIGURED antes de cualquier otra validación.
     app.ensure_instance_configured().await;
+    // El gate `ensure_magic_enabled` (magic_auth.rs:559) exige EMAIL_HOST
+    // no vacío o responde 5025 SMTP_NOT_CONFIGURED. El envío real del email
+    // falla silenciosamente (solo log), así que basta con un valor dummy.
+    app.set_instance_config("EMAIL_HOST", "localhost").await;
 
     let res = app
         .post_json(
@@ -193,6 +197,8 @@ async fn magic_sign_in_expired_code_redirects_with_error() {
 async fn magic_sign_in_wrong_code_redirects_with_error() {
     let app = TestApp::spawn().await;
     app.ensure_instance_configured().await;
+    // El magic-generate interno necesita EMAIL_HOST (gate SMTP_NOT_CONFIGURED).
+    app.set_instance_config("EMAIL_HOST", "localhost").await;
 
     // Crea usuario
     let (s_up, _) = app
@@ -328,6 +334,7 @@ async fn magic_sign_up_expired_code_redirects_with_error() {
 async fn magic_sign_up_wrong_code_redirects_with_error() {
     let app = TestApp::spawn().await;
     app.ensure_instance_configured().await;
+    app.set_instance_config("EMAIL_HOST", "localhost").await;
 
     let gen_res = app
         .post_json(
