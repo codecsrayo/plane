@@ -27,7 +27,7 @@ use std::sync::Arc;
 use api_rust::{
     auth::rate_limit::RateLimitState,
     config::Config,
-    entities::{api_tokens, users},
+    entities::{api_tokens, users, workspace_members, workspaces},
     routes::build_router,
     utils::startup::{ensure_configurations_seeded, ensure_instance_registered},
     AppState,
@@ -256,6 +256,56 @@ impl TestApp {
         token_am.insert(&self.state.db).await.expect("insert api token");
 
         (user_id, api_key)
+    }
+
+    /// Crea un workspace de test directamente en la DB y registra al usuario
+    /// como miembro con rol **Admin** (role = 20, igual que Django).
+    ///
+    /// Devuelve el `slug` del workspace creado.
+    pub async fn create_test_workspace(&self, owner_id: Uuid, slug: &str) -> String {
+        let now = Utc::now();
+        let ws_id = Uuid::new_v4();
+
+        // ── Workspace ────────────────────────────────────────────────────
+        let ws_am = workspaces::ActiveModel {
+            id: Set(ws_id),
+            name: Set(format!("Test WS {slug}")),
+            slug: Set(slug.to_owned()),
+            owner_id: Set(owner_id),
+            organization_size: Set(None),
+            logo: Set(None),
+            logo_asset_id: Set(None),
+            timezone: Set("UTC".into()),
+            background_color: Set("#000000".into()),
+            created_by_id: Set(Some(owner_id)),
+            updated_by_id: Set(Some(owner_id)),
+            created_at: Set(now.into()),
+            updated_at: Set(now.into()),
+            deleted_at: Set(None),
+        };
+        ws_am.insert(&self.state.db).await.expect("insert test workspace");
+
+        // ── WorkspaceMember (Admin = 20) ─────────────────────────────────
+        let member_am = workspace_members::ActiveModel {
+            id: Set(Uuid::new_v4()),
+            workspace_id: Set(ws_id),
+            member_id: Set(owner_id),
+            role: Set(20),
+            is_active: Set(true),
+            created_by_id: Set(Some(owner_id)),
+            updated_by_id: Set(Some(owner_id)),
+            getting_started_checklist: Set(serde_json::json!({})),
+            created_at: Set(now.into()),
+            updated_at: Set(now.into()),
+            deleted_at: Set(None),
+            ..Default::default()
+        };
+        member_am
+            .insert(&self.state.db)
+            .await
+            .expect("insert workspace member");
+
+        slug.to_owned()
     }
 
     /// GET autenticado vía API key (`x-api-key` header).
