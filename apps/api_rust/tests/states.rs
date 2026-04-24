@@ -186,7 +186,7 @@ async fn create_state_proptest_invalid_groups() {
                     .as_u16()
                 })
             });
-            prop_assert_eq!(status, 400, "grupo inválido {group:?} debe devolver 400, obtuvo {status}");
+            prop_assert_eq!(status, 400, "grupo inválido {:?} debe devolver 400, obtuvo {}", group, status);
             Ok(())
         })
         .expect("proptest falló");

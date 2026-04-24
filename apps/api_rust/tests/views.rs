@@ -107,7 +107,7 @@ async fn create_workspace_view_proptest_valid_names() {
                     .as_u16()
                 })
             });
-            prop_assert_eq!(status, 201, "nombre {name:?} debe devolver 201, obtuvo {status}");
+            prop_assert_eq!(status, 201, "nombre {:?} debe devolver 201, obtuvo {}", name, status);
             Ok(())
         })
         .expect("proptest workspace views falló");

@@ -141,7 +141,7 @@ async fn create_webhook_proptest_valid_urls() {
                     .as_u16()
                 })
             });
-            prop_assert_eq!(status, 201, "url {url:?} debe devolver 201, obtuvo {status}");
+            prop_assert_eq!(status, 201, "url {:?} debe devolver 201, obtuvo {}", url, status);
             Ok(())
         })
         .expect("proptest webhooks falló");

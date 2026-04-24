@@ -167,7 +167,7 @@ async fn create_estimate_proptest_valid_names() {
                     .as_u16()
                 })
             });
-            prop_assert_eq!(status, 201, "nombre {name:?} debe devolver 201, obtuvo {status}");
+            prop_assert_eq!(status, 201, "nombre {:?} debe devolver 201, obtuvo {}", name, status);
             Ok(())
         })
         .expect("proptest estimates falló");

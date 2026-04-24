@@ -170,7 +170,7 @@ async fn create_issue_proptest_valid_names_always_201() {
                     .as_u16()
                 })
             });
-            prop_assert_eq!(status, 201, "nombre válido {name:?} debe devolver 201, obtuvo {status}");
+            prop_assert_eq!(status, 201, "nombre válido {:?} debe devolver 201, obtuvo {}", name, status);
             Ok(())
         })
         .expect("proptest falló");

@@ -136,7 +136,7 @@ async fn create_cycle_proptest_valid_names() {
                         .await.status.as_u16()
                 })
             });
-            prop_assert_eq!(status, 201, "nombre válido {name:?} debe dar 201, obtuvo {status}");
+            prop_assert_eq!(status, 201, "nombre válido {:?} debe dar 201, obtuvo {}", name, status);
             Ok(())
         })
         .expect("proptest falló");

@@ -155,7 +155,7 @@ async fn create_module_proptest_invalid_statuses() {
                     .await.status.as_u16()
                 })
             });
-            prop_assert_eq!(status_code, 400, "status inválido {status:?} debe dar 400, obtuvo {status_code}");
+            prop_assert_eq!(status_code, 400, "status inválido {:?} debe dar 400, obtuvo {}", status, status_code);
             Ok(())
         })
         .expect("proptest falló");

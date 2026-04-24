@@ -254,7 +254,8 @@ async fn create_project_proptest_forbidden_identifier_chars() {
             });
             prop_assert_eq!(
                 status, 422,
-                "identifier con char prohibido {identifier:?} debe devolver 422, obtuvo {status}"
+                "identifier con char prohibido {:?} debe devolver 422, obtuvo {}",
+                identifier, status
             );
             Ok(())
         })

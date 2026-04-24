@@ -111,7 +111,8 @@ async fn email_check_rejects_malformed_emails() {
             prop_assert_eq!(
                 res.status.as_u16(),
                 400,
-                "email inválido debe retornar 400: input={candidate:?}"
+                "email inválido debe retornar 400: input={:?}",
+                candidate
             );
             Ok(())
         })
