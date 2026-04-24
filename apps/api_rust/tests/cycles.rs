@@ -220,7 +220,28 @@ async fn add_issue_to_cycle_and_remove() {
 #[tokio::test(flavor = "multi_thread")]
 async fn archive_cycle_and_list_archived() {
     let (app, _, api_key, ws, pid) = setup("archive").await;
-    let cid = create_cycle(&app, &api_key, &ws, pid, "To Archive").await;
+    // El handler archive_cycle (y Django) solo permite archivar ciclos ya
+    // completados: end_date estrictamente en el pasado. Por eso no se
+    // reutiliza el helper create_cycle (que deja ambas fechas en None).
+    // Creamos explícitamente un ciclo con start/end en el pasado.
+    let create_res = app
+        .post_json_authed(
+            &api_key,
+            &format!("/workspaces/{ws}/projects/{pid}/cycles"),
+            &json!({
+                "name": "To Archive",
+                "start_date": "2020-01-01T00:00:00Z",
+                "end_date":   "2020-01-15T00:00:00Z"
+            }),
+        )
+        .await;
+    assert_eq!(
+        create_res.status.as_u16(),
+        201,
+        "create_cycle con fechas en el pasado debe devolver 201, body={}",
+        String::from_utf8_lossy(&create_res.body)
+    );
+    let cid = create_res.json()["id"].as_str().expect("id").to_owned();
 
     let arc_res = app
         .post_json_authed(&api_key, &format!("/workspaces/{ws}/projects/{pid}/cycles/{cid}/archive"), &json!({}))
