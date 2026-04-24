@@ -372,14 +372,14 @@
 
 ## Projects (`app/urls/project.py`)
 
-- [ ] `GET/POST   /workspaces/{slug}/projects`
-- [ ] `GET        /workspaces/{slug}/projects/details`
-- [ ] `GET/PATCH/DELETE /workspaces/{slug}/projects/{pk}`
+- ✅ `GET/POST   /workspaces/{slug}/projects`
+- ✅ `GET        /workspaces/{slug}/projects/details`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{pk}`
 - [ ] `GET/DELETE /workspaces/{slug}/project-identifiers`
 - [ ] `GET/POST   /workspaces/{slug}/projects/{project_id}/invitations`
 - [ ] `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/invitations/{pk}`
 - [ ] `GET        /users/me/workspaces/{slug}/project-roles`
-- [ ] `GET/POST   /workspaces/{slug}/projects/{project_id}/members`
+- ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/members`
 - [ ] `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/members/{pk}`
 - [ ] `POST       /workspaces/{slug}/projects/{project_id}/members/leave`
 - [ ] `GET        /workspaces/{slug}/projects/{project_id}/project-members/me`
@@ -626,14 +626,14 @@
 
 ### Projects
 
-- [ ] `GET/POST   /workspaces/{slug}/projects`
-- [ ] `GET/PATCH/DELETE /workspaces/{slug}/projects/{pk}`
+- ✅ `GET/POST   /workspaces/{slug}/projects`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{pk}`
 - [ ] `POST/DELETE /workspaces/{slug}/projects/{project_id}/archive`
 - [ ] `GET        /workspaces/{slug}/projects/{project_id}/summary`
 
 ### Project Members
 
-- [ ] `GET/POST   /workspaces/{slug}/projects/{project_id}/members`
+- ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/members`
 - [ ] `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/members/{pk}`
 - [ ] `GET        /workspaces/{slug}/projects/{project_id}/project-members`
 - [ ] `GET        /workspaces/{slug}/projects/{project_id}/project-members/{pk}`
