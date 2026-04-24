@@ -142,10 +142,13 @@ async fn email_check_accepts_valid_email_not_registered() {
         String::from_utf8_lossy(&res.body)
     );
     let body = res.json();
+    // Paridad Django (authentication/views/app/check.py:87,99): el body es
+    // `{"existing": bool, "status": str}`. `existing_user` es la variable
+    // local del handler, no el nombre del campo serializado.
     assert_eq!(
-        body.get("existing_user").and_then(|v| v.as_bool()),
+        body.get("existing").and_then(|v| v.as_bool()),
         Some(false),
-        "usuario inexistente debe tener existing_user=false"
+        "usuario inexistente debe tener existing=false"
     );
 }
 
