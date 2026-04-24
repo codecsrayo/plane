@@ -27,7 +27,7 @@ use std::sync::Arc;
 use api_rust::{
     auth::rate_limit::RateLimitState,
     config::Config,
-    entities::{api_tokens, users, workspace_members, workspaces},
+    entities::{api_tokens, project_identifiers, project_members, projects, users, workspace_members, workspaces},
     routes::build_router,
     utils::startup::{ensure_configurations_seeded, ensure_instance_registered},
     AppState,
@@ -306,6 +306,118 @@ impl TestApp {
             .expect("insert workspace member");
 
         slug.to_owned()
+    }
+
+    /// Crea un proyecto de test directamente en la DB con el usuario como
+    /// miembro **Admin** (role = 20) y registra el identificador en
+    /// `project_identifiers`.
+    ///
+    /// Devuelve el `project_id` (UUID).
+    pub async fn create_test_project(
+        &self,
+        owner_id: Uuid,
+        workspace_id: Uuid,
+        name: &str,
+        identifier: &str,
+    ) -> Uuid {
+        let now = Utc::now();
+        let project_id = Uuid::new_v4();
+
+        // ── Project ──────────────────────────────────────────────────────
+        let proj_am = projects::ActiveModel {
+            id: Set(project_id),
+            name: Set(name.to_owned()),
+            identifier: Set(identifier.to_uppercase()),
+            description: Set(String::new()),
+            network: Set(0),
+            workspace_id: Set(workspace_id),
+            created_by_id: Set(Some(owner_id)),
+            updated_by_id: Set(Some(owner_id)),
+            cycle_view: Set(true),
+            module_view: Set(true),
+            issue_views_view: Set(true),
+            logo_props: Set(serde_json::json!({})),
+            created_at: Set(now.into()),
+            updated_at: Set(now.into()),
+            deleted_at: Set(None),
+            ..Default::default()
+        };
+        proj_am.insert(&self.state.db).await.expect("insert test project");
+
+        // ── ProjectIdentifier ────────────────────────────────────────────
+        let ident_am = project_identifiers::ActiveModel {
+            name: Set(identifier.to_uppercase()),
+            project_id: Set(project_id),
+            workspace_id: Set(Some(workspace_id)),
+            created_by_id: Set(Some(owner_id)),
+            updated_by_id: Set(Some(owner_id)),
+            created_at: Set(now.into()),
+            updated_at: Set(now.into()),
+            deleted_at: Set(None),
+            ..Default::default()
+        };
+        ident_am
+            .insert(&self.state.db)
+            .await
+            .expect("insert project identifier");
+
+        // ── ProjectMember (Admin = 20) ────────────────────────────────────
+        let pm_am = project_members::ActiveModel {
+            id: Set(Uuid::new_v4()),
+            project_id: Set(project_id),
+            member_id: Set(Some(owner_id)),
+            role: Set(20),
+            is_active: Set(true),
+            created_by_id: Set(Some(owner_id)),
+            updated_by_id: Set(Some(owner_id)),
+            created_at: Set(now.into()),
+            updated_at: Set(now.into()),
+            deleted_at: Set(None),
+            ..Default::default()
+        };
+        pm_am
+            .insert(&self.state.db)
+            .await
+            .expect("insert project member");
+
+        project_id
+    }
+
+    /// Agrega un usuario como miembro de un workspace con el rol dado.
+    /// Roles: 20 = Admin, 15 = Member, 10 = Viewer, 5 = Guest.
+    pub async fn add_workspace_member(&self, user_id: Uuid, workspace_id: Uuid, role: i16) {
+        let now = Utc::now();
+        let member_am = workspace_members::ActiveModel {
+            id: Set(Uuid::new_v4()),
+            workspace_id: Set(workspace_id),
+            member_id: Set(user_id),
+            role: Set(role),
+            is_active: Set(true),
+            created_by_id: Set(Some(user_id)),
+            updated_by_id: Set(Some(user_id)),
+            getting_started_checklist: Set(serde_json::json!({})),
+            created_at: Set(now.into()),
+            updated_at: Set(now.into()),
+            deleted_at: Set(None),
+            ..Default::default()
+        };
+        member_am
+            .insert(&self.state.db)
+            .await
+            .expect("insert workspace member");
+    }
+
+    /// Devuelve el `id` del workspace con el slug dado.
+    /// Falla el test si no existe.
+    pub async fn workspace_id_by_slug(&self, slug: &str) -> Uuid {
+        use sea_orm::{ColumnTrait, EntityTrait, QueryFilter};
+        workspaces::Entity::find()
+            .filter(workspaces::Column::Slug.eq(slug))
+            .one(&self.state.db)
+            .await
+            .expect("query workspace by slug")
+            .unwrap_or_else(|| panic!("workspace slug={slug} no existe"))
+            .id
     }
 
     /// GET autenticado vía API key (`x-api-key` header).
