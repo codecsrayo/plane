@@ -27,7 +27,7 @@ use crate::{
         extractors::ProjectMemberGuard,
         permissions::{require_role, ROLE_GUEST, ROLE_MEMBER},
     },
-    entities::{estimate_points, estimates},
+    entities::{estimate_points, estimates, projects},
     error::AppError,
     utils::soft_delete::SoftDeleteExt,
     AppState,
@@ -560,4 +560,64 @@ pub async fn delete_estimate_point(
     am.update(&state.db).await.map_err(AppError::Database)?;
 
     Ok(StatusCode::NO_CONTENT)
+}
+
+// ── GET /workspaces/{slug}/projects/{project_id}/project-estimates/ ───────────
+
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/projects/{project_id}/project-estimates/",
+    tag = "Estimates",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project ID"),
+    ),
+    responses(
+        (status = 200, description = "Estimate points del estimate activo del proyecto"),
+        (status = 403, description = "Sin permiso"),
+    ),
+    security(("TokenAuth" = []))
+)]
+pub async fn list_project_estimates(
+    State(state): State<AppState>,
+    guard: crate::auth::extractors::ProjectMemberGuard,
+) -> Result<impl axum::response::IntoResponse, AppError> {
+    // Solo MEMBER y ADMIN (role >= 10); GUEST no puede ver estimate points.
+    // Mirror de ProjectEntityPermission en plane/app/permissions/project.py.
+    require_role(
+        guard.project_member.role,
+        guard.workspace_member.role,
+        ROLE_MEMBER,
+    )?;
+
+    let db = &state.db;
+    let project_id = guard.project.id;
+
+    // Carga el proyecto para leer estimate_id.
+    // El guard ya validó que el proyecto existe en el workspace.
+    let project = projects::Entity::find_by_id(project_id)
+        .one(db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    let Some(estimate_id) = project.estimate_id else {
+        // Proyecto sin estimate asignado → retorna array vacío (mirror de Django).
+        return Ok(axum::Json(Vec::<EstimatePointResponse>::new()));
+    };
+
+    // Carga los puntos del estimate activo, ordenados por key.
+    let points = estimate_points::Entity::find()
+        .active()
+        .filter(estimate_points::Column::EstimateId.eq(estimate_id))
+        .filter(estimate_points::Column::ProjectId.eq(project_id))
+        .order_by_asc(estimate_points::Column::Key)
+        .all(db)
+        .await
+        .map_err(AppError::Database)?;
+
+    let result: Vec<EstimatePointResponse> =
+        points.into_iter().map(EstimatePointResponse::from_model).collect();
+
+    Ok(axum::Json(result))
 }

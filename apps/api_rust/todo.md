@@ -1111,9 +1111,9 @@ apps/api/
 - ✅ `GET/DELETE /workspaces/{slug}/projects/{project_id}/work-items/{work_item_id}/description-versions/{pk}`
 - ✅ `GET        /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/meta`
 - ✅ `GET        /workspaces/{slug}/work-items/{combined}`
-- ❌ `GET        /workspaces/{slug}/projects/{project_id}/issues/list`
-- ❌ `GET        /workspaces/{slug}/projects/{project_id}/issues-detail`
-- ❌ `GET        /workspaces/{slug}/projects/{project_id}/v2/issues`
+- ✅ `GET        /workspaces/{slug}/projects/{project_id}/issues/list`
+- ✅ `GET        /workspaces/{slug}/projects/{project_id}/issues-detail`
+- ✅ `GET        /workspaces/{slug}/projects/{project_id}/v2/issues`
 - ✅ `DELETE     /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-subscribers/{subscriber_id}`
 
 ## Cycles (`app/urls/cycle.py`)
@@ -1155,7 +1155,7 @@ apps/api/
 - ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/estimates/{estimate_id}`
 - ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/estimates/{estimate_id}/estimate-points`
 - ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/estimates/{estimate_id}/estimate-points/{pk}`
-- ❌ `GET        /workspaces/{slug}/projects/{project_id}/project-estimates`
+- ✅ `GET        /workspaces/{slug}/projects/{project_id}/project-estimates`
 
 ## Pages (`app/urls/page.py`)
 

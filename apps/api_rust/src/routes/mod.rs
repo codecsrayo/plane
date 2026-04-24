@@ -168,6 +168,9 @@ pub mod instances;
         issues::get_issue,
         issues::update_issue,
         issues::delete_issue,
+        issues::list_issues_by_ids,
+        issues::list_issues_detail,
+        issues::list_issues_v2,
         cycles::list_cycles,
         cycles::create_cycle,
         cycles::get_cycle,
@@ -225,6 +228,7 @@ pub mod instances;
         estimates::create_estimate_point,
         estimates::update_estimate_point,
         estimates::delete_estimate_point,
+        estimates::list_project_estimates,
         notifications::list_notifications,
         notifications::get_notification,
         notifications::update_notification,
@@ -849,6 +853,18 @@ pub fn build_router(state: AppState) -> Router {
             get(issues::list_issues).post(issues::create_issue),
         )
         .route(
+            "/workspaces/{slug}/projects/{project_id}/issues/list",
+            get(issues::list_issues_by_ids),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/issues-detail",
+            get(issues::list_issues_detail),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/v2/issues",
+            get(issues::list_issues_v2),
+        )
+        .route(
             "/workspaces/{slug}/projects/{project_id}/issues/{pk}",
             get(issues::get_issue)
                 .patch(issues::update_issue)
@@ -1000,6 +1016,10 @@ pub fn build_router(state: AppState) -> Router {
                 .delete(labels::delete_label),
         )
         // Ã¢ÂÂÃ¢ÂÂ Estimates Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/project-estimates",
+            get(estimates::list_project_estimates),
+        )
         .route(
             "/workspaces/{slug}/projects/{project_id}/estimates",
             get(estimates::list_estimates).post(estimates::create_estimate),
