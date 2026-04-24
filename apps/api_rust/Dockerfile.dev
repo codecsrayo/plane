@@ -51,7 +51,7 @@ RUN mkdir -p src migration/src && \
     echo 'fn main() {}' > migration/src/main.rs && \
     cargo build --workspace --lib || true
 
-EXPOSE 8001
+EXPOSE 8000
 
 # Forzar salida inmediata de stdout/stderr (sin buffering)
 ENV RUST_LOG=debug

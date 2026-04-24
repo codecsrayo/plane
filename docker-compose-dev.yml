@@ -347,6 +347,12 @@ services:
           - plane-redis
     volumes:
       - redisdata:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
 
   plane-minio:
     container_name: plane-codecsrayo-minio
@@ -454,13 +460,13 @@ services:
       test: ["CMD-SHELL", "curl -sf http://localhost:8000/api/health || exit 1"]
       interval: 15s
       timeout: 5s
-      retries: 5
-      start_period: 120s
+      retries: 10
+      start_period: 600s
     depends_on:
       plane-db:
         condition: service_healthy
       plane-redis:
-        condition: service_started
+        condition: service_healthy
 
 volumes:
   redisdata:
