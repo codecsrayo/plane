@@ -2624,3 +2624,378 @@ pub async fn list_user_project_invitations(
 
     Ok(Json(result))
 }
+
+// ═══════════════════════════════════════════════════════════════════════════
+// PROJECT DEPLOY BOARDS
+// ═══════════════════════════════════════════════════════════════════════════
+
+use crate::entities::deploy_boards;
+
+#[derive(Debug, Serialize)]
+pub struct DeployBoardResponse {
+    pub id: Uuid,
+    pub anchor: String,
+    pub is_comments_enabled: bool,
+    pub is_reactions_enabled: bool,
+    pub is_votes_enabled: bool,
+    pub view_props: serde_json::Value,
+    pub intake_id: Option<Uuid>,
+    pub project_id: Option<Uuid>,
+    pub workspace_id: Uuid,
+    pub entity_name: Option<String>,
+    pub entity_identifier: Option<Uuid>,
+    pub is_activity_enabled: bool,
+    pub is_disabled: bool,
+    pub created_at: DateTime<Utc>,
+    pub updated_at: DateTime<Utc>,
+}
+
+impl From<deploy_boards::Model> for DeployBoardResponse {
+    fn from(m: deploy_boards::Model) -> Self {
+        Self {
+            id: m.id,
+            anchor: m.anchor,
+            is_comments_enabled: m.is_comments_enabled,
+            is_reactions_enabled: m.is_reactions_enabled,
+            is_votes_enabled: m.is_votes_enabled,
+            view_props: m.view_props,
+            intake_id: m.intake_id,
+            project_id: m.project_id,
+            workspace_id: m.workspace_id,
+            entity_name: m.entity_name,
+            entity_identifier: m.entity_identifier,
+            is_activity_enabled: m.is_activity_enabled,
+            is_disabled: m.is_disabled,
+            created_at: m.created_at.into(),
+            updated_at: m.updated_at.into(),
+        }
+    }
+}
+
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/projects/{project_id}/project-deploy-boards",
+    tag = "Projects",
+    security((\"TokenAuth\" = []), (\"SessionCookie\" = [])),
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project ID"),
+    ),
+    responses(
+        (status = 200, description = "Deploy board or null"),
+        (status = 403, description = "Forbidden"),
+    )
+)]
+/// GET /workspaces/{slug}/projects/{project_id}/project-deploy-boards
+/// Devuelve el deploy board de un proyecto (o null si no existe).
+pub async fn get_project_deploy_board(
+    AnyAuth(user): AnyAuth,
+    State(state): State<AppState>,
+    Path((slug, project_id)): Path<(String, Uuid)>,
+) -> Result<Json<Option<DeployBoardResponse>>, AppError> {
+    let ws = workspace_by_slug(&state.db, &slug).await?;
+    require_workspace_member(&state.db, ws.id, user.id).await?;
+    let _ = project_by_id(&state.db, ws.id, project_id).await?;
+
+    let board = deploy_boards::Entity::find()
+        .filter(deploy_boards::Column::EntityName.eq("project"))
+        .filter(deploy_boards::Column::EntityIdentifier.eq(project_id))
+        .filter(deploy_boards::Column::WorkspaceId.eq(ws.id))
+        .filter(deploy_boards::Column::DeletedAt.is_null())
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    Ok(Json(board.map(DeployBoardResponse::from)))
+}
+
+#[derive(Debug, Deserialize)]
+pub struct UpsertDeployBoardRequest {
+    pub is_comments_enabled: Option<bool>,
+    pub is_reactions_enabled: Option<bool>,
+    pub is_votes_enabled: Option<bool>,
+    pub view_props: Option<serde_json::Value>,
+    pub intake_id: Option<Uuid>,
+}
+
+#[utoipa::path(
+    post,
+    path = "/api/workspaces/{slug}/projects/{project_id}/project-deploy-boards",
+    tag = "Projects",
+    security((\"TokenAuth\" = []), (\"SessionCookie\" = [])),
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project ID"),
+    ),
+    responses(
+        (status = 200, description = "Deploy board created/updated"),
+        (status = 403, description = "Forbidden"),
+    )
+)]
+/// POST /workspaces/{slug}/projects/{project_id}/project-deploy-boards
+/// Crea o actualiza el deploy board del proyecto (upsert como Django).
+pub async fn upsert_project_deploy_board(
+    AnyAuth(user): AnyAuth,
+    State(state): State<AppState>,
+    Path((slug, project_id)): Path<(String, Uuid)>,
+    Json(body): Json<UpsertDeployBoardRequest>,
+) -> Result<Json<DeployBoardResponse>, AppError> {
+    let ws = workspace_by_slug(&state.db, &slug).await?;
+    let wm = require_workspace_member(&state.db, ws.id, user.id).await?;
+    if wm.role < ROLE_MEMBER {
+        return Err(AppError::Forbidden);
+    }
+    let _ = project_by_id(&state.db, ws.id, project_id).await?;
+
+    // Busca deploy board existente
+    let existing = deploy_boards::Entity::find()
+        .filter(deploy_boards::Column::EntityName.eq("project"))
+        .filter(deploy_boards::Column::EntityIdentifier.eq(project_id))
+        .filter(deploy_boards::Column::WorkspaceId.eq(ws.id))
+        .filter(deploy_boards::Column::DeletedAt.is_null())
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    let default_view_props = serde_json::json!({
+        "list": true, "kanban": true, "calendar": true, "gantt": true, "spreadsheet": true
+    });
+
+    let board = if let Some(existing) = existing {
+        let mut am: deploy_boards::ActiveModel = existing.into();
+        if let Some(v) = body.is_comments_enabled {
+            am.is_comments_enabled = Set(v);
+        }
+        if let Some(v) = body.is_reactions_enabled {
+            am.is_reactions_enabled = Set(v);
+        }
+        if let Some(v) = body.is_votes_enabled {
+            am.is_votes_enabled = Set(v);
+        }
+        if let Some(v) = body.view_props {
+            am.view_props = Set(v);
+        }
+        am.intake_id = Set(body.intake_id);
+        am.updated_by_id = Set(Some(user.id));
+        am.update(&state.db).await.map_err(AppError::Database)?
+    } else {
+        let anchor = uuid::Uuid::new_v4().to_string().replace('-', "");
+        let am = deploy_boards::ActiveModel {
+            id: Set(Uuid::new_v4()),
+            anchor: Set(anchor),
+            entity_name: Set(Some("project".to_string())),
+            entity_identifier: Set(Some(project_id)),
+            project_id: Set(Some(project_id)),
+            workspace_id: Set(ws.id),
+            is_comments_enabled: Set(body.is_comments_enabled.unwrap_or(false)),
+            is_reactions_enabled: Set(body.is_reactions_enabled.unwrap_or(false)),
+            is_votes_enabled: Set(body.is_votes_enabled.unwrap_or(false)),
+            view_props: Set(body.view_props.unwrap_or(default_view_props)),
+            intake_id: Set(body.intake_id),
+            created_by_id: Set(Some(user.id)),
+            updated_by_id: Set(Some(user.id)),
+            is_activity_enabled: Set(true),
+            is_disabled: Set(false),
+            deleted_at: Set(None),
+            ..Default::default()
+        };
+        am.insert(&state.db).await.map_err(AppError::Database)?
+    };
+
+    Ok(Json(DeployBoardResponse::from(board)))
+}
+
+#[utoipa::path(
+    patch,
+    path = "/api/workspaces/{slug}/projects/{project_id}/project-deploy-boards/{pk}",
+    tag = "Projects",
+    security((\"TokenAuth\" = []), (\"SessionCookie\" = [])),
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project ID"),
+        ("pk" = Uuid, Path, description = "Deploy board ID"),
+    ),
+    responses(
+        (status = 200, description = "Updated deploy board"),
+        (status = 404, description = "Not found"),
+    )
+)]
+/// PATCH /workspaces/{slug}/projects/{project_id}/project-deploy-boards/{pk}
+pub async fn update_project_deploy_board(
+    AnyAuth(user): AnyAuth,
+    State(state): State<AppState>,
+    Path((slug, project_id, pk)): Path<(String, Uuid, Uuid)>,
+    Json(body): Json<UpsertDeployBoardRequest>,
+) -> Result<Json<DeployBoardResponse>, AppError> {
+    let ws = workspace_by_slug(&state.db, &slug).await?;
+    let wm = require_workspace_member(&state.db, ws.id, user.id).await?;
+    if wm.role < ROLE_MEMBER {
+        return Err(AppError::Forbidden);
+    }
+    let _ = project_by_id(&state.db, ws.id, project_id).await?;
+
+    let existing = deploy_boards::Entity::find_by_id(pk)
+        .filter(deploy_boards::Column::WorkspaceId.eq(ws.id))
+        .filter(deploy_boards::Column::DeletedAt.is_null())
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    let mut am: deploy_boards::ActiveModel = existing.into();
+    if let Some(v) = body.is_comments_enabled {
+        am.is_comments_enabled = Set(v);
+    }
+    if let Some(v) = body.is_reactions_enabled {
+        am.is_reactions_enabled = Set(v);
+    }
+    if let Some(v) = body.is_votes_enabled {
+        am.is_votes_enabled = Set(v);
+    }
+    if let Some(v) = body.view_props {
+        am.view_props = Set(v);
+    }
+    am.intake_id = Set(body.intake_id);
+    am.updated_by_id = Set(Some(user.id));
+    let board = am.update(&state.db).await.map_err(AppError::Database)?;
+
+    Ok(Json(DeployBoardResponse::from(board)))
+}
+
+#[utoipa::path(
+    delete,
+    path = "/api/workspaces/{slug}/projects/{project_id}/project-deploy-boards/{pk}",
+    tag = "Projects",
+    security((\"TokenAuth\" = []), (\"SessionCookie\" = [])),
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project ID"),
+        ("pk" = Uuid, Path, description = "Deploy board ID"),
+    ),
+    responses(
+        (status = 204, description = "Deleted"),
+        (status = 403, description = "Forbidden"),
+    )
+)]
+/// DELETE /workspaces/{slug}/projects/{project_id}/project-deploy-boards/{pk}
+pub async fn delete_project_deploy_board(
+    AnyAuth(user): AnyAuth,
+    State(state): State<AppState>,
+    Path((slug, project_id, pk)): Path<(String, Uuid, Uuid)>,
+) -> Result<StatusCode, AppError> {
+    let ws = workspace_by_slug(&state.db, &slug).await?;
+    let wm = require_workspace_member(&state.db, ws.id, user.id).await?;
+    if wm.role < ROLE_ADMIN {
+        return Err(AppError::Forbidden);
+    }
+    let _ = project_by_id(&state.db, ws.id, project_id).await?;
+
+    let board = deploy_boards::Entity::find_by_id(pk)
+        .filter(deploy_boards::Column::WorkspaceId.eq(ws.id))
+        .filter(deploy_boards::Column::DeletedAt.is_null())
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    let mut am: deploy_boards::ActiveModel = board.into();
+    am.deleted_at = Set(Some(chrono::Utc::now().into()));
+    am.update(&state.db).await.map_err(AppError::Database)?;
+
+    Ok(StatusCode::NO_CONTENT)
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// PROJECT MEMBER PREFERENCES
+// ═══════════════════════════════════════════════════════════════════════════
+
+#[derive(Debug, Serialize)]
+pub struct MemberPreferencesResponse {
+    pub preferences: serde_json::Value,
+}
+
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/projects/{project_id}/preferences/member/{member_id}",
+    tag = "Projects",
+    security((\"TokenAuth\" = []), (\"SessionCookie\" = [])),
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project ID"),
+        ("member_id" = Uuid, Path, description = "Member user ID"),
+    ),
+    responses(
+        (status = 200, description = "Member preferences JSON"),
+        (status = 404, description = "Member not found"),
+    )
+)]
+/// GET /workspaces/{slug}/projects/{project_id}/preferences/member/{member_id}
+pub async fn get_project_member_preferences(
+    AnyAuth(user): AnyAuth,
+    State(state): State<AppState>,
+    Path((slug, project_id, member_id)): Path<(String, Uuid, Uuid)>,
+) -> Result<Json<MemberPreferencesResponse>, AppError> {
+    let ws = workspace_by_slug(&state.db, &slug).await?;
+    require_workspace_member(&state.db, ws.id, user.id).await?;
+
+    let pm = project_members::Entity::find()
+        .filter(project_members::Column::ProjectId.eq(project_id))
+        .filter(project_members::Column::MemberId.eq(member_id))
+        .filter(project_members::Column::WorkspaceId.eq(ws.id))
+        .filter(project_members::Column::IsActive.eq(true))
+        .filter(project_members::Column::DeletedAt.is_null())
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    Ok(Json(MemberPreferencesResponse {
+        preferences: pm.preferences,
+    }))
+}
+
+#[utoipa::path(
+    patch,
+    path = "/api/workspaces/{slug}/projects/{project_id}/preferences/member/{member_id}",
+    tag = "Projects",
+    security((\"TokenAuth\" = []), (\"SessionCookie\" = [])),
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project ID"),
+        ("member_id" = Uuid, Path, description = "Member user ID"),
+    ),
+    responses(
+        (status = 200, description = "Updated preferences JSON"),
+        (status = 404, description = "Member not found"),
+    )
+)]
+/// PATCH /workspaces/{slug}/projects/{project_id}/preferences/member/{member_id}
+pub async fn update_project_member_preferences(
+    AnyAuth(user): AnyAuth,
+    State(state): State<AppState>,
+    Path((slug, project_id, member_id)): Path<(String, Uuid, Uuid)>,
+    Json(body): Json<serde_json::Value>,
+) -> Result<Json<MemberPreferencesResponse>, AppError> {
+    let ws = workspace_by_slug(&state.db, &slug).await?;
+    require_workspace_member(&state.db, ws.id, user.id).await?;
+
+    let pm = project_members::Entity::find()
+        .filter(project_members::Column::ProjectId.eq(project_id))
+        .filter(project_members::Column::MemberId.eq(member_id))
+        .filter(project_members::Column::WorkspaceId.eq(ws.id))
+        .filter(project_members::Column::IsActive.eq(true))
+        .filter(project_members::Column::DeletedAt.is_null())
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    let mut am: project_members::ActiveModel = pm.into();
+    am.preferences = Set(body);
+    am.updated_by_id = Set(Some(user.id));
+    let updated = am.update(&state.db).await.map_err(AppError::Database)?;
+
+    Ok(Json(MemberPreferencesResponse {
+        preferences: updated.preferences,
+    }))
+}

@@ -1002,6 +1002,8 @@ apps/api/
 
 - ✅ `GET/POST   /api-tokens`
 - ✅ `GET/PATCH/DELETE /api-tokens/{pk}`
+- ✅ `GET/POST   /users/api-tokens` (alias)
+- ✅ `GET/PATCH/DELETE /users/api-tokens/{pk}` (alias)
 
 ## Timezones
 
@@ -1035,6 +1037,7 @@ apps/api/
 - ✅ `GET/POST   /workspaces/{slug}/user-favorites`
 - ✅ `GET/PATCH/DELETE /workspaces/{slug}/user-favorites/{favorite_id}`
 - ✅ `GET/POST   /workspaces/{slug}/user-favorites/{favorite_id}/children`
+- ✅ `GET        /workspaces/{slug}/user-favorites/{favorite_id}/group` (alias de /children)
 - ✅ `GET/POST   /workspaces/{slug}/draft-issues`
 - ✅ `GET/PATCH/DELETE /workspaces/{slug}/draft-issues/{pk}`
 - ✅ `POST       /workspaces/{slug}/draft-to-issue/{draft_id}`
@@ -1065,6 +1068,10 @@ apps/api/
 - ✅ `GET        /workspaces/{slug}/projects/{project_id}/project-members/me`
 - ✅ `GET        /users/me/workspaces/{slug}/projects/invitations`
 - ✅ `POST       /workspaces/{slug}/projects/{project_id}/join/{pk}`
+
+- ✅ `GET/POST  /workspaces/{slug}/projects/{project_id}/project-deploy-boards`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/project-deploy-boards/{pk}`
+- ✅ `GET/PATCH  /workspaces/{slug}/projects/{project_id}/preferences/member/{member_id}`
 
 ## States (`app/urls/state.py`)
 
@@ -1300,9 +1307,9 @@ apps/api/
 | Auth              | 28           | 0         |
 | License/Instance  | 14           | 0         |
 | Users             | 18           | 0         |
-| API Tokens        | 2            | 0         |
-| Workspaces        | 30           | 3         |
-| Projects          | 14           | 0         |
+| API Tokens        | 4            | 0         |
+| Workspaces        | 31           | 2         |
+| Projects          | 17           | 0         |
 | States            | 4            | 0         |
 | Issues            | 31           | 4         |
 | Cycles            | 7            | 7         |
@@ -1320,4 +1327,4 @@ apps/api/
 | Importer          | 6            | 0         |
 | External/AI       | 6            | 0         |
 | Webhooks          | 4            | 0         |
-| **TOTAL**         | **258**      | **22**    |
+| **TOTAL**         | **264**      | **16**    |

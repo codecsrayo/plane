@@ -138,6 +138,12 @@ pub mod instances;
         projects::unarchive_project,
         projects::check_project_identifier,
         projects::delete_project_identifier,
+        projects::get_project_deploy_board,
+        projects::upsert_project_deploy_board,
+        projects::update_project_deploy_board,
+        projects::delete_project_deploy_board,
+        projects::get_project_member_preferences,
+        projects::update_project_member_preferences,
         states::list_states,
         states::get_state,
         states::create_state,
@@ -825,6 +831,26 @@ pub fn build_router(state: AppState) -> Router {
         .route(
             "/workspaces/{slug}/project-identifiers",
             get(projects::check_project_identifier).delete(projects::delete_project_identifier),
+        )
+        // Mirror Django: workspaces/<slug>/projects/<project_id>/project-deploy-boards/
+        // (`apps/api/plane/app/urls/project.py:113-120`). GET→list, POST→upsert deploy board.
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/project-deploy-boards",
+            get(projects::get_project_deploy_board)
+                .post(projects::upsert_project_deploy_board),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/project-deploy-boards/{pk}",
+            get(projects::get_project_deploy_board)
+                .patch(projects::update_project_deploy_board)
+                .delete(projects::delete_project_deploy_board),
+        )
+        // Mirror Django: workspaces/<slug>/projects/<project_id>/preferences/member/<member_id>/
+        // (`apps/api/plane/app/urls/project.py:128`). GET/PATCH member preferences JSON.
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/preferences/member/{member_id}",
+            get(projects::get_project_member_preferences)
+                .patch(projects::update_project_member_preferences),
         )
         // Django URL: `workspaces/<slug>/projects/<project_id>/user-properties/`
         // (`apps/api/plane/app/urls/issue.py:216-219`). GET hace get_or_create
@@ -1596,6 +1622,12 @@ pub fn build_router(state: AppState) -> Router {
             "/workspaces/{slug}/user-favorites/{favorite_id}/children",
             get(workspace_extras::list_favorite_children),
         )
+        // Mirror Django: user-favorites/<favorite_id>/group/ (alias de /children)
+        // (`apps/api/plane/app/urls/workspace.py:198-200`)
+        .route(
+            "/workspaces/{slug}/user-favorites/{favorite_id}/group",
+            get(workspace_extras::list_favorite_children),
+        )
         .route(
             "/workspaces/{slug}/home-preferences",
             get(workspace_extras::get_home_preferences),
@@ -1755,6 +1787,18 @@ pub fn build_router(state: AppState) -> Router {
         )
         .route(
             "/api-tokens/{pk}",
+            get(api_tokens::get_api_token)
+                .patch(api_tokens::update_api_token)
+                .delete(api_tokens::delete_api_token),
+        )
+        // Mirror Django: users/api-tokens/ (alias de /api-tokens/)
+        // (`apps/api/plane/app/urls/api.py:11-18`)
+        .route(
+            "/users/api-tokens",
+            get(api_tokens::list_api_tokens).post(api_tokens::create_api_token),
+        )
+        .route(
+            "/users/api-tokens/{pk}",
             get(api_tokens::get_api_token)
                 .patch(api_tokens::update_api_token)
                 .delete(api_tokens::delete_api_token),
