@@ -1591,6 +1591,9 @@ pub struct DraftIssueResponse {
     pub updated_by: Option<Uuid>,
     pub created_at: DateTime<Utc>,
     pub updated_at: DateTime<Utc>,
+    /// Siempre `true` — discriminador que usa el frontend para distinguir
+    /// drafts de issues regulares (`TWorkspaceDraftIssue.is_draft`).
+    pub is_draft: bool,
 }
 
 /// Hidrata `DraftIssueResponse` con las anotaciones M2M desde la DB.
@@ -1701,6 +1704,7 @@ async fn hydrate_draft_issue_responses(
                 updated_by: m.updated_by_id,
                 created_at: m.created_at.into(),
                 updated_at: m.updated_at.into(),
+                is_draft: true,
             }
         })
         .collect();
