@@ -995,8 +995,8 @@ apps/api/
 - ✅ `GET        /users/me/workspaces/{slug}/dashboard`
 - ✅ `GET/PATCH  /users/me/notification-preferences`
 - ✅ `GET        /users/last-visited-workspace`
-- ❌ `POST       /users/me/email/generate-code`
-- ❌ `POST       /users/me/email`
+- ✅ `POST       /users/me/email/generate-code`
+- ✅ `POST       /users/me/email`
 
 ## API Tokens (`app/urls/api.py`)
 
@@ -1063,8 +1063,8 @@ apps/api/
 - ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/members/{pk}`
 - ✅ `POST       /workspaces/{slug}/projects/{project_id}/members/leave`
 - ✅ `GET        /workspaces/{slug}/projects/{project_id}/project-members/me`
-- ❌ `GET        /users/me/workspaces/{slug}/projects/invitations`
-- ❌ `POST       /workspaces/{slug}/projects/{project_id}/join/{pk}`
+- ✅ `GET        /users/me/workspaces/{slug}/projects/invitations`
+- ✅ `POST       /workspaces/{slug}/projects/{project_id}/join/{pk}`
 
 ## States (`app/urls/state.py`)
 
@@ -1223,14 +1223,14 @@ apps/api/
 - ✅ `GET        /assets/v2/static/{asset_id}`
 - ✅ `GET/POST   /assets/v2/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/attachments`
 - ✅ `DELETE     /assets/v2/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/attachments/{pk}`
-- ❌ `POST       /assets/v2/workspaces/{slug}/restore/{asset_id}`
-- ❌ `GET/POST   /assets/v2/workspaces/{slug}/projects/{project_id}`
-- ❌ `GET/PATCH/DELETE /assets/v2/workspaces/{slug}/projects/{project_id}/{pk}`
-- ❌ `POST       /assets/v2/workspaces/{slug}/projects/{project_id}/{entity_id}/bulk`
-- ❌ `GET        /assets/v2/workspaces/{slug}/check/{asset_id}`
-- ❌ `POST       /assets/v2/workspaces/{slug}/duplicate-assets/{asset_id}`
-- ❌ `GET        /assets/v2/workspaces/{slug}/download/{asset_id}`
-- ❌ `GET        /assets/v2/workspaces/{slug}/projects/{project_id}/download/{asset_id}`
+- ✅ `POST       /assets/v2/workspaces/{slug}/restore/{asset_id}`
+- ✅ `GET/POST   /assets/v2/workspaces/{slug}/projects/{project_id}`
+- ✅ `GET/PATCH/DELETE /assets/v2/workspaces/{slug}/projects/{project_id}/{pk}`
+- ✅ `POST       /assets/v2/workspaces/{slug}/projects/{project_id}/{entity_id}/bulk`
+- ✅ `GET        /assets/v2/workspaces/{slug}/check/{asset_id}`
+- ✅ `POST       /assets/v2/workspaces/{slug}/duplicate-assets/{asset_id}`
+- ✅ `GET        /assets/v2/workspaces/{slug}/download/{asset_id}`
+- ✅ `GET        /assets/v2/workspaces/{slug}/projects/{project_id}/download/{asset_id}`
 
 ## Exporter (`app/urls/exporter.py`)
 
@@ -1281,8 +1281,8 @@ apps/api/
 - ✅ `POST       /workspaces/{slug}/ai-assistant`
 - ✅ `POST       /workspaces/{slug}/projects/{project_id}/ai-assistant`
 - ✅ `POST       /workspaces/{slug}/rephrase-grammar`
-- ❌ `POST       /github-webhook`  ← webhook entrante de GitHub
-- ❌ `POST       /gitlab-webhook`  ← webhook entrante de GitLab
+- ✅ `POST       /github-webhook`  ← webhook entrante de GitHub
+- ✅ `POST       /gitlab-webhook`  ← webhook entrante de GitLab
 
 ## Webhooks (`app/urls/webhook.py`)
 
@@ -1299,10 +1299,10 @@ apps/api/
 |-------------------|:------------:|:---------:|
 | Auth              | 28           | 0         |
 | License/Instance  | 14           | 0         |
-| Users             | 16           | 2         |
+| Users             | 18           | 0         |
 | API Tokens        | 2            | 0         |
 | Workspaces        | 30           | 3         |
-| Projects          | 12           | 2         |
+| Projects          | 14           | 0         |
 | States            | 4            | 0         |
 | Issues            | 31           | 4         |
 | Cycles            | 7            | 7         |
@@ -1313,11 +1313,11 @@ apps/api/
 | Analytics         | 13           | 0         |
 | Notifications     | 7            | 0         |
 | Search            | 2            | 1         |
-| Assets v2         | 7            | 8         |
+| Assets v2         | 15           | 0         |
 | Exporter          | 2            | 0         |
 | Intake            | 10           | 0         |
 | Integrations      | 13           | 0         |
 | Importer          | 6            | 0         |
-| External/AI       | 4            | 2         |
+| External/AI       | 6            | 0         |
 | Webhooks          | 4            | 0         |
-| **TOTAL**         | **240**      | **36**    |
+| **TOTAL**         | **258**      | **22**    |
