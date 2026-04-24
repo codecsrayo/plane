@@ -4,7 +4,7 @@
 //! Equivalente a `plane/bgtasks/webhook_task.py` de Django.
 //!
 //! Flujo:
-//!   1. Recibir `DeliverWebhookJob { webhook_id, event, action, payload, delivery_id }`.
+//!   1. Recibir `DeliverWebhookJob { webhook_id, event, action, data, activity, delivery_id }`.
 //!   2. Cargar el webhook (activo y no soft-deleted).
 //!   3. Validar URL destino (defensa SSRF: rechaza loopback/privadas/link-local/multicast).
 //!   4. Firmar el body con HMAC-SHA256(secret_key).
@@ -54,6 +54,18 @@ const REQUEST_TIMEOUT: Duration = Duration::from_secs(10);
 // ── Job payload ──────────────────────────────────────────────────────────────
 
 /// Un envío individual. El fan-out a N webhooks encola N `DeliverWebhookJob`.
+///
+/// El envelope emitido al endpoint del cliente replica el formato de Django
+/// (`plane/bgtasks/webhook_task.py::webhook_send_task`):
+///
+/// ```json
+/// { "event": ..., "action": ..., "webhook_id": ..., "workspace_id": ...,
+///   "data": ..., "activity": ... }
+/// ```
+///
+/// `workspace_id` NO viaja en el job porque siempre se deriva del row del
+/// webhook — evita cualquier desalineación con el workspace del que se
+/// disparó el evento.
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct DeliverWebhookJob {
     pub webhook_id: Uuid,
@@ -61,9 +73,18 @@ pub struct DeliverWebhookJob {
     pub event: String,
     /// `"created"`, `"updated"`, `"deleted"`.
     pub action: String,
-    /// Payload opaco — se serializa como JSON y se envía en el body bajo `data`.
-    pub payload: serde_json::Value,
+    /// Modelo serializado (o `{"id": ...}` para deletes). Va en el campo `data`
+    /// del envelope — nombre alineado con Django.
+    pub data: serde_json::Value,
+    /// Bloque opcional `activity` del envelope. Para create/delete normalmente
+    /// es `None`; para updates Django lo usa para reportar el diff por campo
+    /// (`{field, old_value, new_value, actor, ...}`). `None` → `"activity": null`
+    /// en el body, mismo contrato que Django, cuyo `webhook_activity` siempre
+    /// envía la clave.
+    #[serde(default)]
+    pub activity: Option<serde_json::Value>,
     /// UUID único por intento — se expone como header `X-Plane-Delivery`.
+    /// NO se incluye en el body del POST (Django tampoco lo incluye).
     pub delivery_id: Uuid,
 }
 
@@ -115,14 +136,26 @@ async fn run_delivery(state: &AppState, job: &DeliverWebhookJob) -> anyhow::Resu
     // 2. Validar URL destino (defensa SSRF)
     validate_outbound_url(&webhook.url)?;
 
-    // 3. Construir el sobre JSON que Django envía en el mismo formato
-    let envelope = serde_json::json!({
-        "event": job.event,
-        "action": job.action,
-        "data": job.payload,
-        "webhook_id": webhook.id,
-        "delivery_id": job.delivery_id,
-    });
+    // 3. Construir el sobre JSON — mismo orden y shape que Django
+    //    (`plane/bgtasks/webhook_task.py::webhook_send_task`):
+    //    { event, action, webhook_id, workspace_id, data, activity }
+    //
+    //    `workspace_id` se toma del row del webhook — NUNCA del job. Garantiza
+    //    que el receptor ve el workspace real al que pertenece el webhook,
+    //    incluso si un caller pasara un id incorrecto.
+    //
+    //    `activity` se incluye siempre (como `null` cuando no se proporciona),
+    //    porque los consumidores Django existentes esperan la clave presente.
+    //    `delivery_id` NO va en el body — solo en el header `X-Plane-Delivery`,
+    //    igual que Django.
+    let envelope = build_envelope(
+        &job.event,
+        &job.action,
+        webhook.id,
+        webhook.workspace_id,
+        &job.data,
+        job.activity.as_ref(),
+    );
     let body_bytes = serde_json::to_vec(&envelope)
         .context("no se pudo serializar el envelope del webhook")?;
 
@@ -367,6 +400,34 @@ fn hex_encode_lower(bytes: &[u8]) -> String {
     out
 }
 
+/// Arma el envelope JSON que viaja en el body del POST.
+///
+/// Orden y nombres de claves exactos que emite Django
+/// (`webhook_send_task`). Se extrae como función pura para poder
+/// freezar el contrato en tests — cualquier drift frente a Django
+/// (eg. renombrar `data` o mover `workspace_id`) rompería a los
+/// consumidores externos (Zapier, n8n, integraciones custom).
+fn build_envelope(
+    event: &str,
+    action: &str,
+    webhook_id: Uuid,
+    workspace_id: Uuid,
+    data: &serde_json::Value,
+    activity: Option<&serde_json::Value>,
+) -> serde_json::Value {
+    // `Option::None` se serializa como `null` — necesario para que la clave
+    // `activity` esté siempre presente en el body, como Django.
+    let activity_val: &serde_json::Value = activity.unwrap_or(&serde_json::Value::Null);
+    serde_json::json!({
+        "event": event,
+        "action": action,
+        "webhook_id": webhook_id,
+        "workspace_id": workspace_id,
+        "data": data,
+        "activity": activity_val,
+    })
+}
+
 // ── Tests unitarios ──────────────────────────────────────────────────────────
 
 #[cfg(test)]
@@ -444,5 +505,77 @@ mod tests {
     #[test]
     fn truncate_passes_short_strings_through() {
         assert_eq!(truncate_utf8("hola", 100), "hola");
+    }
+
+    // ── Contrato de envelope (paridad Django) ────────────────────────────
+    //
+    // Estos tests congelan el shape exacto del body que viaja al endpoint
+    // del cliente. Cualquier cambio — renombrar una clave, cambiar el orden,
+    // omitir `activity` cuando es None — rompería a los consumidores externos
+    // que ya procesan este formato.
+
+    #[test]
+    fn envelope_shape_matches_django_for_create() {
+        let webhook_id = Uuid::parse_str("11111111-1111-1111-1111-111111111111").unwrap();
+        let workspace_id = Uuid::parse_str("22222222-2222-2222-2222-222222222222").unwrap();
+        let data = serde_json::json!({"id": "33333333-3333-3333-3333-333333333333", "name": "Foo"});
+
+        let envelope = build_envelope(
+            "project",
+            "created",
+            webhook_id,
+            workspace_id,
+            &data,
+            None,
+        );
+
+        // Todas las claves presentes
+        let obj = envelope.as_object().expect("envelope debe ser un objeto JSON");
+        assert_eq!(obj.len(), 6, "envelope debe tener 6 claves (event, action, webhook_id, workspace_id, data, activity)");
+        assert_eq!(obj["event"], "project");
+        assert_eq!(obj["action"], "created");
+        assert_eq!(obj["webhook_id"], webhook_id.to_string());
+        assert_eq!(obj["workspace_id"], workspace_id.to_string());
+        assert_eq!(obj["data"], data);
+        // `activity: null` cuando no se proporciona — Django envía la clave siempre
+        assert_eq!(obj["activity"], serde_json::Value::Null);
+    }
+
+    #[test]
+    fn envelope_carries_activity_when_provided() {
+        let activity = serde_json::json!({
+            "field": "name",
+            "old_value": "Old",
+            "new_value": "New",
+            "actor": {"id": "abc"},
+            "old_identifier": null,
+            "new_identifier": null,
+        });
+
+        let envelope = build_envelope(
+            "project",
+            "updated",
+            Uuid::nil(),
+            Uuid::nil(),
+            &serde_json::json!({}),
+            Some(&activity),
+        );
+
+        assert_eq!(envelope["activity"], activity);
+    }
+
+    #[test]
+    fn envelope_omits_delivery_id_from_body() {
+        // Django NO incluye delivery_id en el body — solo en el header
+        // `X-Plane-Delivery`. El envelope tampoco debe incluirlo.
+        let envelope = build_envelope(
+            "issue",
+            "deleted",
+            Uuid::nil(),
+            Uuid::nil(),
+            &serde_json::json!({"id": "x"}),
+            None,
+        );
+        assert!(envelope.get("delivery_id").is_none(), "delivery_id no debe estar en el body");
     }
 }

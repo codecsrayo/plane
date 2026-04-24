@@ -91,6 +91,16 @@ impl WebhookAction {
 /// Encola una entrega de webhook por cada webhook activo del workspace
 /// cuyo flag del evento esté encendido.
 ///
+/// Parámetros:
+///   - `data`: modelo serializado que irá en `data` del envelope. Para deletes
+///     Django envía `{"id": <uuid>}`; para create/update, el modelo completo
+///     serializado con DRF (`IssueExpandSerializer`, `ProjectSerializer`, …).
+///   - `activity`: bloque `activity` opcional. `None` se propaga como `null`
+///     en el body final — el contrato Django siempre incluye la clave.
+///     Para create/delete disparados directamente desde un handler, suele ser
+///     `None`; para updates con diff por campo se llena con
+///     `{field, old_value, new_value, actor, old_identifier, new_identifier}`.
+///
 /// Devuelve el número de `DeliverWebhookJob` encolados con éxito.
 ///
 /// Errores:
@@ -102,7 +112,8 @@ pub async fn dispatch_event(
     workspace_id: Uuid,
     event: WebhookEvent,
     action: WebhookAction,
-    payload: serde_json::Value,
+    data: serde_json::Value,
+    activity: Option<serde_json::Value>,
 ) -> anyhow::Result<usize> {
     // 1. Descubrir webhooks suscritos
     let event_column = match event {
@@ -155,7 +166,8 @@ pub async fn dispatch_event(
             webhook_id: wh.id,
             event: event_str.clone(),
             action: action_str.clone(),
-            payload: payload.clone(),
+            data: data.clone(),
+            activity: activity.clone(),
             delivery_id: Uuid::new_v4(),
         };
 
