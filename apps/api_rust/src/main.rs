@@ -1,9 +1,7 @@
 // src/main.rs
 use apalis::prelude::{Monitor, WorkerBuilder, WorkerFactoryFn};
 use apalis_sql::postgres::PostgresStorage;
-use fred::prelude::{
-    Builder as RedisBuilder, ClientLike, Config as RedisConfig, Pool as RedisPool,
-};
+use fred::prelude::{Builder as RedisBuilder, ClientLike, Config as RedisConfig};
 use migration::{Migrator, MigratorTrait};
 use sea_orm::Database;
 use std::{net::SocketAddr, sync::Arc};
@@ -115,30 +113,9 @@ async fn start_job_workers(state: AppState) -> anyhow::Result<()> {
 }
 
 
-pub mod auth;
-mod config;
-pub mod entities;
-mod error;
-pub mod jobs;
-mod routes;
-pub mod utils;
-
-use auth::rate_limit::RateLimitState;
-use config::Config;
-
-/// Estado global del servidor — Fase 1.
-/// Fase 3 agrega: redis (fred::Pool), s3 (aws_sdk_s3::Client).
-#[derive(Clone)]
-pub struct AppState {
-    pub http: reqwest::Client,
-    pub db: sea_orm::DatabaseConnection,
-    pub redis: RedisPool,
-    pub config: Arc<Config>,
-    pub rate_limit: Arc<RateLimitState>,
-    /// Shared sqlx PgPool for apalis job enqueue — avoids creating a new
-    /// connection per enqueue (was an anti-pattern in create_workspace).
-    pub pg_pool: sqlx::PgPool,
-}
+// Módulos y AppState viven ahora en `src/lib.rs` para que los tests de
+// integración bajo `tests/` puedan reutilizarlos vía `use api_rust::…`.
+use api_rust::{auth, auth::rate_limit::RateLimitState, config::Config, jobs, routes, utils, AppState};
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {

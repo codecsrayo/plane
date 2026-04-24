@@ -3,6 +3,17 @@ name = "api_rust"
 version = "0.1.0"
 edition = "2021"
 
+# ── Targets ───────────────────────────────────────────────────────────────────
+# `lib` expone los módulos para los tests de integración (`tests/*.rs`).
+# `bin` es el servidor productivo; reutiliza la lib vía `use api_rust::…`.
+[lib]
+name = "api_rust"
+path = "src/lib.rs"
+
+[[bin]]
+name = "api_rust"
+path = "src/main.rs"
+
 # ── Workspace members ─────────────────────────────────────────────────────────
 [workspace]
 members = [".", "migration"]
@@ -133,3 +144,24 @@ tracing            = "0.1.44"
 tracing-subscriber = { version = "0.3.23", features = ["env-filter", "json"] }
 serde_urlencoded = "0.7.1"
 
+
+# ── Dev dependencies — tests de integración ───────────────────────────────────
+# `proptest` es el framework canónico de tests basados en propiedades para el
+# proyecto (ver `apps/api_rust/todo_test.md`). Se acompaña de:
+#   - `tower`: para `ServiceExt::oneshot` — invoca el Router sin abrir socket.
+#   - `http-body-util`: colecta el body completo de la respuesta axum.
+#   - `hyper`/`http`: construcción de requests tipados.
+#   - `testcontainers`/`testcontainers-modules`: levanta Postgres + Redis
+#     reales por test-suite para paridad completa con producción.
+#   - `tokio-test`: runtime controlado para tests async.
+[dev-dependencies]
+proptest             = "1.5"
+tower                = { version = "0.5.3", features = ["util"] }
+http-body-util       = "0.1"
+hyper                = "1.5"
+http                 = "1.2"
+tokio-test           = "0.4"
+testcontainers        = "0.23"
+testcontainers-modules = { version = "0.11", features = ["postgres", "redis"] }
+serial_test          = "3.2"
+once_cell            = "1.20"

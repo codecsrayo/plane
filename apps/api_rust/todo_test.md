@@ -248,11 +248,11 @@
 
 ## Auth (`authentication/`)
 
-- [ ] `GET  /auth/get-csrf-token`
+- ✅ `GET  /auth/get-csrf-token`
 - [ ] `POST /auth/sign-in`
 - [ ] `POST /auth/sign-up`
 - [ ] `POST /auth/sign-out`
-- [ ] `POST /auth/email-check`
+- ✅ `POST /auth/email-check`
 - [ ] `POST /auth/magic-sign-in`
 - [ ] `POST /auth/magic-sign-up`
 - [ ] `POST /auth/magic-generate`
