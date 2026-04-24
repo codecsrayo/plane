@@ -285,9 +285,9 @@
 - ✅ `POST       /instances/configurations/disable-email-feature`
 - ✅ `GET/POST   /instances/admins`
 - ✅ `GET/PATCH/DELETE /instances/admins/{pk}`
-- [ ] `POST       /instances/admins/sign-in`
-- [ ] `POST       /instances/admins/sign-up`
-- [ ] `POST       /instances/admins/sign-out`
+- ✅ `POST       /instances/admins/sign-in`
+- ✅ `POST       /instances/admins/sign-up`
+- ✅ `POST       /instances/admins/sign-out`
 - ✅ `GET        /instances/admins/me`
 - ✅ `GET/PATCH  /instances/admins/session`
 - ✅ `GET        /instances/workspaces`
@@ -409,8 +409,8 @@
 - ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/sub-issues`
 - ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-links`
 - ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-links/{pk}`
-- [ ] `GET/POST   /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-attachments`
-- [ ] `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-attachments/{pk}`
+- ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-attachments`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-attachments/{pk}`
 - [ ] `GET/POST   /assets/v2/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/attachments`
 - [ ] `DELETE     /assets/v2/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/attachments/{pk}`
 - ✅ `GET        /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/history`
@@ -594,17 +594,17 @@
 
 - ✅ `GET        /workspaces/{slug}/importers/github/repositories`
 - ✅ `GET/POST   /workspaces/{slug}/importers/github`
-- [ ] `GET/PATCH/DELETE /workspaces/{slug}/importers/github/{importer_id}`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}/importers/github/{importer_id}`
 - ✅ `GET        /workspaces/{slug}/importers/gitlab/repositories`
 - ✅ `GET/POST   /workspaces/{slug}/importers/gitlab`
-- [ ] `GET/PATCH/DELETE /workspaces/{slug}/importers/gitlab/{importer_id}`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}/importers/gitlab/{importer_id}`
 
 ## External / AI (`app/urls/external.py`)
 
 - ✅ `GET        /unsplash`
 - ✅ `POST       /workspaces/{slug}/ai-assistant`
-- [ ] `POST       /workspaces/{slug}/projects/{project_id}/ai-assistant`
-- [ ] `POST       /workspaces/{slug}/rephrase-grammar`
+- ✅ `POST       /workspaces/{slug}/projects/{project_id}/ai-assistant`
+- ✅ `POST       /workspaces/{slug}/rephrase-grammar`
 - ✅ `POST       /github-webhook`  ← webhook entrante de GitHub
 - ✅ `POST       /gitlab-webhook`  ← webhook entrante de GitLab
 
@@ -629,7 +629,7 @@
 - ✅ `GET/POST   /workspaces/{slug}/projects`
 - ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{pk}`
 - ✅ `POST/DELETE /workspaces/{slug}/projects/{project_id}/archive`
-- [ ] `GET        /workspaces/{slug}/projects/{project_id}/summary`
+- ✅ `GET        /workspaces/{slug}/projects/{project_id}/summary`
 
 ### Project Members
 
@@ -679,7 +679,7 @@
 
 ### Work Items — nuevo prefijo `/work-items/`
 
-- [ ] `GET        /workspaces/{slug}/work-items/search`
+- ✅ `GET        /workspaces/{slug}/work-items/search`
 - ✅ `GET        /workspaces/{slug}/work-items/{combined}`
 - ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/work-items`
 - ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/work-items/{pk}`
@@ -688,25 +688,25 @@
 - ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/work-items/{issue_id}/comments`
 - ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/work-items/{issue_id}/comments/{pk}`
 - ✅ `GET        /workspaces/{slug}/projects/{project_id}/work-items/{issue_id}/activities`
-- [ ] `GET        /workspaces/{slug}/projects/{project_id}/work-items/{issue_id}/activities/{pk}` ← handler nuevo
-- [ ] `GET/POST   /workspaces/{slug}/projects/{project_id}/work-items/{issue_id}/attachments`
-- [ ] `PATCH/DELETE /workspaces/{slug}/projects/{project_id}/work-items/{issue_id}/attachments/{pk}`
+- ✅ `GET        /workspaces/{slug}/projects/{project_id}/work-items/{issue_id}/activities/{pk}` ← handler nuevo
+- ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/work-items/{issue_id}/attachments`
+- ✅ `PATCH/DELETE /workspaces/{slug}/projects/{project_id}/work-items/{issue_id}/attachments/{pk}`
 - ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/work-items/{issue_id}/relations`
 
 ### Work Items — prefijo legacy `/issues/`
 
-- [ ] `GET        /workspaces/{slug}/issues/search`
-- [ ] `GET        /workspaces/{slug}/issues/{combined}`
+- ✅ `GET        /workspaces/{slug}/issues/search`
+- ✅ `GET        /workspaces/{slug}/issues/{combined}`
 - ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/issues`
 - ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/issues/{pk}`
-- [ ] `GET/POST   /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/links`
-- [ ] `PATCH/DELETE /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/links/{pk}`
+- ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/links`
+- ✅ `PATCH/DELETE /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/links/{pk}`
 - ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/comments`
 - ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/comments/{pk}`
-- [ ] `GET        /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/activities`
-- [ ] `GET        /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/activities/{pk}` ← handler nuevo
-- [ ] `GET/POST   /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-attachments`
-- [ ] `PATCH/DELETE /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-attachments/{pk}`
+- ✅ `GET        /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/activities`
+- ✅ `GET        /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/activities/{pk}` ← handler nuevo 
+- ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-attachments`
+- ✅ `PATCH/DELETE /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-attachments/{pk}`
 
 ### Intake Issues
 
