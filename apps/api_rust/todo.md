@@ -1300,37 +1300,6 @@ apps/api/
 
 ---
 
-## Resumen
-
-| Módulo            | Implementado | Pendiente |
-|-------------------|:------------:|:---------:|
-| Auth              | 28           | 0         |
-| License/Instance  | 14           | 0         |
-| Users             | 18           | 0         |
-| API Tokens        | 4            | 0         |
-| Workspaces        | 31           | 2         |
-| Projects          | 17           | 0         |
-| States            | 4            | 0         |
-| Issues            | 31           | 4         |
-| Cycles            | 7            | 7         |
-| Modules           | 5            | 8         |
-| Estimates         | 4            | 1         |
-| Pages             | 11           | 0         |
-| Views             | 8            | 0         |
-| Analytics         | 13           | 0         |
-| Notifications     | 7            | 0         |
-| Search            | 2            | 1         |
-| Assets v2         | 15           | 0         |
-| Exporter          | 2            | 0         |
-| Intake            | 10           | 0         |
-| Integrations      | 13           | 0         |
-| Importer          | 6            | 0         |
-| External/AI       | 6            | 0         |
-| Webhooks          | 4            | 0         |
-| **TOTAL**         | **264**      | **16**    |
-
----
-
 ## API Pública v1 (`api/v1/` — autenticación por API key)
 
 > Implementado en `apps/api_rust/src/routes/v1_router.rs`
@@ -1445,34 +1414,42 @@ apps/api/
 
 ---
 
-## Resumen actualizado
+## Resumen (conteo real vs. viñetas)
 
-| Módulo              | App (session) | v1 (API key) |
-|---------------------|:-------------:|:------------:|
-| Auth                | 28 ✅         | —            |
-| License/Instance    | 14 ✅         | —            |
-| Users               | 18 ✅         | 1 ✅         |
-| API Tokens          | 4 ✅          | —            |
-| Workspaces          | 33 ✅         | 1 ✅         |
-| Projects            | 17 ✅         | 6 ✅         |
-| States              | 4 ✅          | 2 ✅         |
-| Issues              | 35 ✅         | 24 ✅        |
-| Cycles              | 21 ✅         | 9 ✅         |
-| Modules             | 23 ✅         | 8 ✅         |
-| Estimates           | 5 ✅          | 3 ✅         |
-| Pages               | 11 ✅         | —            |
-| Views               | 8 ✅          | —            |
-| Analytics           | 13 ✅         | —            |
-| Notifications       | 7 ✅          | —            |
-| Search              | 3 ✅          | —            |
-| Assets v2           | 15 ✅         | 6 ✅         |
-| Exporter            | 2 ✅          | —            |
-| Intake              | 10 ✅         | 2 ✅         |
-| Integrations        | 13 ✅         | —            |
-| Importer            | 6 ✅          | —            |
-| External/AI         | 6 ✅          | —            |
-| Webhooks            | 4 ✅          | —            |
-| Labels              | —             | 2 ✅         |
-| Members (v1)        | —             | 4 ✅         |
-| Summary             | —             | 1 ✅         |
-| **TOTAL**           | **311**       | **69**       |
+> Verificado contra `.route(...)` en `src/routes/mod.rs` (300 rutas app — incluye
+> `/health` + `/api/docs` + mount `/api/v1`) y `src/routes/v1_router.rs` (67 rutas v1).
+> Sin items ❌ pendientes en la lista detallada.
+
+| Módulo              | app (session) | api/v1 (API key) | Total |
+|---------------------|:-------------:|:----------------:|:-----:|
+| Auth                |      28       |        —         |  28   |
+| License / Instance  |      14       |        —         |  14   |
+| Users               |      18       |        1         |  19   |
+| API Tokens          |       4       |        —         |   4   |
+| Timezones           |       1       |        —         |   1   |
+| Workspaces          |      41       |        1         |  42   |
+| Projects            |      16       |        6         |  22   |
+| States              |       4       |        2         |   6   |
+| Issues / Work Items |      40       |       25         |  65   |
+| Cycles              |      14       |        9         |  23   |
+| Modules             |      13       |        8         |  21   |
+| Estimates           |       5       |        3         |   8   |
+| Labels              |       —       |        2         |   2   |
+| Pages               |      11       |        —         |  11   |
+| Views               |       8       |        —         |   8   |
+| Analytics           |      13       |        —         |  13   |
+| Notifications       |       7       |        —         |   7   |
+| Search              |       3       |        —         |   3   |
+| Assets (v2 / v1)    |      15       |        6         |  21   |
+| Exporter            |       2       |        —         |   2   |
+| Intake              |      10       |        2         |  12   |
+| Integrations        |      13       |        —         |  13   |
+| Importer            |       6       |        —         |   6   |
+| External / AI       |       6       |        —         |   6   |
+| Webhooks            |       4       |        —         |   4   |
+| **TOTAL**           |   **296**     |     **67**       | **363** |
+
+**Pendientes:** ninguno en la paridad Django ↔ Rust según la lista detallada.
+Próximos pasos no cubiertos por este paridad-check: pruebas de integración,
+webhooks de salida, fan-out a workers y validación de payloads contra los
+serializers DRF.
