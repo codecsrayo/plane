@@ -124,6 +124,9 @@ async fn email_check_rejects_malformed_emails() {
 #[tokio::test(flavor = "multi_thread")]
 async fn email_check_accepts_valid_email_not_registered() {
     let app = TestApp::spawn().await;
+    // email-check corta temprano con INSTANCE_NOT_CONFIGURED si no hay fila
+    // `instances` activa con `is_setup_done=true` (src/auth/email_check.rs:59).
+    app.ensure_instance_configured().await;
 
     let res = app
         .post_json(

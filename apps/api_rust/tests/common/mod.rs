@@ -34,7 +34,7 @@ use std::sync::Arc;
 use api_rust::{
     auth::rate_limit::RateLimitState,
     config::Config,
-    entities::{api_tokens, project_identifiers, project_members, projects, users, workspace_members, workspaces},
+    entities::{api_tokens, instances, project_identifiers, project_members, projects, users, workspace_members, workspaces},
     routes::build_router,
     utils::startup::{ensure_configurations_seeded, ensure_instance_registered},
     AppState,
@@ -165,6 +165,59 @@ impl TestApp {
     }
 
     /// Actualiza (o inserta si no existe) un valor de `instance_configurations`.
+    /// Asegura que exista una `instances` activa con `is_setup_done = true`
+    /// en la DB del test. Es requisito para cualquier endpoint de auth que
+    /// llame a `instances::Entity::find().active()` (p.ej. `email-check`,
+    /// `sign-in`, `sign-up`, magic link) — sin esta fila el handler corta
+    /// temprano con `INSTANCE_NOT_CONFIGURED` (400).
+    ///
+    /// Idempotente: si ya hay una instance, fuerza `is_setup_done = true`.
+    /// Valores por defecto replican los del onboarding de Plane.
+    pub async fn ensure_instance_configured(&self) {
+        use sea_orm::{ActiveModelTrait, EntityTrait};
+
+        if let Some(existing) = instances::Entity::find()
+            .one(&self.state.db)
+            .await
+            .expect("query instances")
+        {
+            if existing.is_setup_done {
+                return;
+            }
+            let mut am: instances::ActiveModel = existing.into();
+            am.is_setup_done = Set(true);
+            am.update(&self.state.db).await.expect("mark instance setup_done");
+            return;
+        }
+
+        let now = Utc::now();
+        let am = instances::ActiveModel {
+            id: Set(Uuid::new_v4()),
+            instance_name: Set("Plane Test".to_owned()),
+            instance_id: Set(format!("test-{}", Uuid::new_v4())),
+            current_version: Set("0.0.0-test".to_owned()),
+            last_checked_at: Set(now.into()),
+            namespace: Set(None),
+            is_telemetry_enabled: Set(false),
+            is_support_required: Set(false),
+            is_setup_done: Set(true),
+            is_signup_screen_visited: Set(true),
+            is_verified: Set(true),
+            created_by_id: Set(None),
+            updated_by_id: Set(None),
+            domain: Set("localhost".to_owned()),
+            latest_version: Set(None),
+            edition: Set("plane-ce".to_owned()),
+            is_test: Set(true),
+            is_current_version_deprecated: Set(false),
+            whitelist_emails: Set(None),
+            created_at: Set(now.into()),
+            updated_at: Set(now.into()),
+            deleted_at: Set(None),
+        };
+        am.insert(&self.state.db).await.expect("insert test instance");
+    }
+
     /// Útil para activar gates en tests (p.ej. `EMAIL_HOST` para desbloquear
     /// `forgot-password`, `ENABLE_SIGNUP=0` para probar signup deshabilitado).
     ///
