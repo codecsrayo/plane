@@ -341,6 +341,22 @@ pub mod instances;
         assets::initiate_issue_attachment_upload_v2,
         assets::complete_issue_attachment_upload_v2,
         assets::delete_issue_attachment_v2,
+        assets::restore_workspace_asset,
+        assets::initiate_project_asset_upload,
+        assets::complete_project_asset_upload,
+        assets::delete_project_asset,
+        assets::get_project_asset,
+        assets::bulk_project_assets,
+        assets::check_workspace_asset,
+        assets::duplicate_workspace_asset,
+        assets::download_workspace_asset,
+        assets::download_project_asset,
+        users::generate_email_code,
+        users::update_user_email,
+        projects::join_project_invitation,
+        projects::list_user_project_invitations,
+        external::github_webhook,
+        external::gitlab_webhook,
         importer::list_github_import_repositories,
         importer::list_github_importers,
         importer::create_github_importer,
@@ -1407,6 +1423,56 @@ pub fn build_router(state: AppState) -> Router {
             patch(assets::complete_issue_attachment_upload_v2)
                 .delete(assets::delete_issue_attachment_v2),
         )
+        // Restore, project assets, check, duplicate, download
+        .route(
+            "/assets/v2/workspaces/{slug}/restore/{asset_id}",
+            post(assets::restore_workspace_asset),
+        )
+        .route(
+            "/assets/v2/workspaces/{slug}/check/{asset_id}",
+            get(assets::check_workspace_asset),
+        )
+        .route(
+            "/assets/v2/workspaces/{slug}/duplicate-assets/{asset_id}",
+            post(assets::duplicate_workspace_asset),
+        )
+        .route(
+            "/assets/v2/workspaces/{slug}/download/{asset_id}",
+            get(assets::download_workspace_asset),
+        )
+        .route(
+            "/assets/v2/workspaces/{slug}/projects/{project_id}",
+            post(assets::initiate_project_asset_upload),
+        )
+        .route(
+            "/assets/v2/workspaces/{slug}/projects/{project_id}/{pk}",
+            get(assets::get_project_asset)
+                .patch(assets::complete_project_asset_upload)
+                .delete(assets::delete_project_asset),
+        )
+        .route(
+            "/assets/v2/workspaces/{slug}/projects/{project_id}/{entity_id}/bulk",
+            post(assets::bulk_project_assets),
+        )
+        .route(
+            "/assets/v2/workspaces/{slug}/projects/{project_id}/download/{asset_id}",
+            get(assets::download_project_asset),
+        )
+        // User email update
+        .route("/users/me/email/generate-code", post(users::generate_email_code))
+        .route("/users/me/email", post(users::update_user_email))
+        // Project join (public) + user project invitations
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/join/{pk}",
+            post(projects::join_project_invitation),
+        )
+        .route(
+            "/users/me/workspaces/{slug}/projects/invitations",
+            get(projects::list_user_project_invitations),
+        )
+        // Incoming webhooks (public)
+        .route("/github-webhook", post(external::github_webhook))
+        .route("/gitlab-webhook", post(external::gitlab_webhook))
         // Ã¢ÂÂÃ¢ÂÂ Importer Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
         .route(
             "/workspaces/{slug}/importers/github/repositories",

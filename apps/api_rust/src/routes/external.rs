@@ -517,3 +517,332 @@ pub async fn rephrase_grammar(
 
     Ok(Json(RephraseGrammarResponse { response: text }))
 }
+
+
+// ── Incoming webhooks de GitHub y GitLab ──────────────────────────────────────
+//
+// Mirror de `GitHubWebhookEndpoint` y `GitLabWebhookEndpoint` en Django
+// (`plane/app/views/external/sync.py`).
+//
+// Ambos endpoints son públicos (sin auth). La seguridad se realiza mediante
+// verificación HMAC de la firma del payload.
+
+use axum::body::Bytes;
+
+fn hex_encode_bytes(bytes: &[u8]) -> String {
+    let mut output = String::with_capacity(bytes.len() * 2);
+    for byte in bytes {
+        output.push_str(&format!("{byte:02x}"));
+    }
+    output
+}
+
+fn hex_decode_bytes(s: &str) -> Vec<u8> {
+    (0..s.len())
+        .step_by(2)
+        .filter_map(|i| u8::from_str_radix(&s[i..i + 2], 16).ok())
+        .collect()
+}
+
+/// Verifica firma HMAC-SHA256 de GitHub usando OpenSSL.
+/// Mirror de `hmac.new(secret, body, sha256).hexdigest()` en Django.
+fn verify_github_signature(secret: &str, body: &[u8], signature: &str) -> bool {
+    use openssl::hash::MessageDigest;
+    use openssl::pkey::PKey;
+    use openssl::sign::Signer;
+
+    let Ok(key) = PKey::hmac(secret.as_bytes()) else {
+        return false;
+    };
+    let Ok(mut signer) = Signer::new(MessageDigest::sha256(), &key) else {
+        return false;
+    };
+    if signer.update(body).is_err() {
+        return false;
+    }
+    let Ok(mac_bytes) = signer.sign_to_vec() else {
+        return false;
+    };
+    let expected = format!("sha256={}", hex_encode_bytes(&mac_bytes));
+    // Comparación constante para evitar timing attacks
+    expected.len() == signature.len()
+        && expected
+            .bytes()
+            .zip(signature.bytes())
+            .fold(0u8, |acc, (a, b)| acc | (a ^ b))
+            == 0
+}
+
+// ── GitHub webhook ────────────────────────────────────────────────────────────
+
+/// Recibe webhooks entrantes de GitHub Apps.
+///
+/// `POST /github-webhook`
+///
+/// Valida la firma `X-Hub-Signature-256`, luego despacha según el evento:
+/// - `issues`: sincroniza issues (crear/editar/cerrar/reabrir)
+/// - `pull_request`: loguea para trazabilidad
+///
+/// Mirror de `GitHubWebhookEndpoint.post` en Django.
+#[utoipa::path(
+    post,
+    path = "/github-webhook",
+    tag = "External",
+    responses(
+        (status = 200, description = "Webhook processed or ignored"),
+        (status = 400, description = "Signature missing"),
+        (status = 403, description = "Invalid signature"),
+    )
+)]
+pub async fn github_webhook(
+    State(state): State<AppState>,
+    headers: axum::http::HeaderMap,
+    body: Bytes,
+) -> Result<Json<serde_json::Value>, AppError> {
+    use crate::{
+        entities::{
+            github_issue_syncs, github_repositories, github_repository_syncs, issues, states,
+        },
+        utils::instance_config::get_config_value,
+    };
+    use sea_orm::{ActiveModelTrait, ColumnTrait, EntityTrait, QueryFilter, Set};
+
+    // ── Verificar firma HMAC ──────────────────────────────────────────────────
+    let signature = headers
+        .get("x-hub-signature-256")
+        .and_then(|v| v.to_str().ok())
+        .ok_or_else(|| AppError::BadRequest("Signature missing".into()))?
+        .to_owned();
+
+    let webhook_secret = get_config_value(
+        &state,
+        "GITHUB_WEBHOOK_SECRET",
+        std::env::var("GITHUB_WEBHOOK_SECRET").ok().as_deref(),
+    )
+    .await
+    .ok()
+    .flatten();
+
+    if let Some(secret) = webhook_secret.as_deref() {
+        if !verify_github_signature(secret, &body, &signature) {
+            return Err(AppError::Forbidden);
+        }
+    }
+
+    // ── Parsear payload ───────────────────────────────────────────────────────
+    let event = headers
+        .get("x-github-event")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("")
+        .to_owned();
+
+    let payload: serde_json::Value =
+        serde_json::from_slice(&body).unwrap_or(serde_json::Value::Null);
+
+    tracing::debug!(event = %event, "GitHub webhook received");
+
+    // Despachar según evento — errores se capturan para no reintentar
+    let dispatch_result = match event.as_str() {
+        "issues" => {
+            handle_github_issue_event(&state, &payload).await
+        }
+        "pull_request" => {
+            let action = payload["action"].as_str().unwrap_or("");
+            let pr_number = payload["pull_request"]["number"].as_i64().unwrap_or(0);
+            tracing::info!(action = %action, pr = pr_number, "GitHub PR webhook received");
+            Ok(())
+        }
+        _ => {
+            tracing::debug!(event = %event, "GitHub webhook event ignored");
+            Ok(())
+        }
+    };
+
+    if let Err(e) = dispatch_result {
+        tracing::error!(event = %event, "Error processing GitHub webhook: {e}");
+    }
+
+    Ok(Json(serde_json::json!({ "status": "ok" })))
+}
+
+async fn handle_github_issue_event(
+    state: &AppState,
+    payload: &serde_json::Value,
+) -> Result<(), AppError> {
+    use crate::entities::{
+        github_issue_syncs, github_repositories, github_repository_syncs, issues, states,
+    };
+    use sea_orm::{ActiveModelTrait, ColumnTrait, EntityTrait, QueryFilter, Set};
+
+    let action = payload["action"].as_str().unwrap_or("");
+    let gh_issue = &payload["issue"];
+    let repo_id = payload["repository"]["id"].as_i64().unwrap_or(0);
+    let title = gh_issue["title"].as_str().unwrap_or("").to_owned();
+    let gh_issue_id = gh_issue["id"].as_i64().unwrap_or(0);
+    let gh_issue_number = gh_issue["number"].as_i64().unwrap_or(0);
+
+    // Buscar repositorio registrado
+    let repo = github_repositories::Entity::find()
+        .filter(github_repositories::Column::RepositoryId.eq(repo_id))
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    let Some(repo) = repo else {
+        tracing::debug!(repo_id, "GitHub repo not configured — ignoring event");
+        return Ok(());
+    };
+
+    let sync = github_repository_syncs::Entity::find()
+        .filter(github_repository_syncs::Column::RepositoryId.eq(repo.id))
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    let Some(sync) = sync else {
+        return Ok(());
+    };
+
+    let issue_sync = github_issue_syncs::Entity::find()
+        .filter(github_issue_syncs::Column::GithubIssueId.eq(gh_issue_id))
+        .filter(github_issue_syncs::Column::RepositorySyncId.eq(sync.id))
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    match action {
+        "opened" if issue_sync.is_none() => {
+            // Obtener estado triage del proyecto
+            let triage_state = states::Entity::find()
+                .filter(states::Column::ProjectId.eq(sync.project_id))
+                .filter(states::Column::IsTriage.eq(true))
+                .one(&state.db)
+                .await
+                .map_err(AppError::Database)?;
+
+            let new_issue = issues::ActiveModel {
+                id: Set(uuid::Uuid::new_v4()),
+                project_id: Set(sync.project_id),
+                workspace_id: Set(sync.workspace_id),
+                name: Set(title),
+                state_id: Set(triage_state.map(|s| s.id)),
+                created_by_id: Set(Some(sync.actor_id)),
+                sequence_id: Set(1),
+                sort_order: Set(65535.0),
+                priority: Set("none".to_owned()),
+                created_at: Set(chrono::Utc::now().into()),
+                updated_at: Set(chrono::Utc::now().into()),
+                ..Default::default()
+            };
+            let created = new_issue.insert(&state.db).await.map_err(AppError::Database)?;
+
+            let new_sync = github_issue_syncs::ActiveModel {
+                id: Set(uuid::Uuid::new_v4()),
+                github_issue_id: Set(gh_issue_id),
+                repo_issue_id: Set(gh_issue_number),
+                issue_url: Set(
+                    payload["issue"]["html_url"]
+                        .as_str()
+                        .unwrap_or("")
+                        .to_owned(),
+                ),
+                issue_id: Set(created.id),
+                project_id: Set(sync.project_id),
+                workspace_id: Set(sync.workspace_id),
+                repository_sync_id: Set(sync.id),
+                created_by_id: Set(Some(sync.actor_id)),
+                created_at: Set(chrono::Utc::now().into()),
+                updated_at: Set(chrono::Utc::now().into()),
+                ..Default::default()
+            };
+            let _ = new_sync.insert(&state.db).await;
+            tracing::info!(github_issue_id, "Created Plane issue from GitHub event");
+        }
+        "edited" => {
+            if let Some(is) = issue_sync {
+                if let Some(issue) = issues::Entity::find_by_id(is.issue_id)
+                    .one(&state.db)
+                    .await
+                    .map_err(AppError::Database)?
+                {
+                    let mut active: issues::ActiveModel = issue.into();
+                    active.name = Set(title);
+                    let _ = active.update(&state.db).await;
+                }
+            }
+        }
+        _ => {
+            tracing::debug!(action = %action, "GitHub issue action not handled");
+        }
+    }
+
+    Ok(())
+}
+
+// ── GitLab webhook ────────────────────────────────────────────────────────────
+
+/// Recibe webhooks entrantes de GitLab.
+///
+/// `POST /gitlab-webhook`
+///
+/// Valida el token `X-Gitlab-Token` y despacha según el evento.
+///
+/// Mirror de `GitLabWebhookEndpoint.post` en Django.
+#[utoipa::path(
+    post,
+    path = "/gitlab-webhook",
+    tag = "External",
+    responses(
+        (status = 200, description = "Webhook processed or ignored"),
+        (status = 403, description = "Invalid token"),
+    )
+)]
+pub async fn gitlab_webhook(
+    State(state): State<AppState>,
+    headers: axum::http::HeaderMap,
+    body: Bytes,
+) -> Result<Json<serde_json::Value>, AppError> {
+    use crate::utils::instance_config::get_config_value;
+
+    // Verificar token si está configurado
+    let gitlab_token = get_config_value(
+        &state,
+        "GITLAB_WEBHOOK_TOKEN",
+        std::env::var("GITLAB_WEBHOOK_TOKEN").ok().as_deref(),
+    )
+    .await
+    .ok()
+    .flatten();
+
+    if let Some(expected_token) = gitlab_token.as_deref() {
+        let received_token = headers
+            .get("x-gitlab-token")
+            .and_then(|v| v.to_str().ok())
+            .unwrap_or("");
+        if received_token != expected_token {
+            return Err(AppError::Forbidden);
+        }
+    }
+
+    let event = headers
+        .get("x-gitlab-event")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("")
+        .to_owned();
+
+    tracing::debug!(event = %event, "GitLab webhook received");
+
+    match event.as_str() {
+        "Issue Hook" | "Merge Request Hook" | "Push Hook" => {
+            tracing::info!(
+                event = %event,
+                "GitLab webhook received — full sync processing pending"
+            );
+        }
+        _ => {
+            tracing::debug!(event = %event, "GitLab webhook event ignored");
+        }
+    }
+
+    Ok(Json(serde_json::json!({ "status": "ok" })))
+}

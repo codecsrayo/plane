@@ -186,10 +186,35 @@ pub async fn presigned_put_url(
     Ok(req.uri().to_string())
 }
 
+/// Copia un objeto dentro del mismo bucket (server-side copy).
+///
+/// Mirror de `S3Storage.copy_object` en Django (`plane/settings/storage.py`).
+/// Usado por `DuplicateAssetEndpoint` para duplicar assets sin re-upload.
+pub async fn copy_object(
+    client: &Client,
+    bucket: &str,
+    source_key: &str,
+    dest_key: &str,
+) -> Result<(), AppError> {
+    let copy_source = format!("{}/{}", bucket, source_key);
+    client
+        .copy_object()
+        .bucket(bucket)
+        .copy_source(&copy_source)
+        .key(dest_key)
+        .send()
+        .await
+        .map_err(|e| {
+            tracing::error!("copy_object error: {e}");
+            AppError::Internal(anyhow::anyhow!("Failed to copy S3 object"))
+        })?;
+    Ok(())
+}
+
 /// Genera una presigned URL de `GET` para acceder a un objeto.
 ///
-/// Sin callers actuales; se conserva como helper para futuros endpoints que
-/// necesiten servir URLs de descarga con expiración.
+/// Usado por los endpoints de descarga que generan un redirect con
+/// `content-disposition: attachment`.
 #[allow(dead_code)]
 pub async fn presigned_get_url(
     client: &Client,

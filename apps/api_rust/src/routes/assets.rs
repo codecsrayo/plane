@@ -19,7 +19,7 @@
 use axum::{
     extract::{Path, State},
     http::{HeaderMap, StatusCode},
-    response::IntoResponse,
+    response::{IntoResponse, Redirect},
     Json,
 };
 use chrono::{DateTime, FixedOffset, Utc};
@@ -33,7 +33,10 @@ use crate::{
     auth::permissions::{require_role, ROLE_ADMIN, ROLE_GUEST},
     entities::{file_assets, projects, users, workspaces},
     error::AppError,
-    utils::s3_presigned_post::{generate_presigned_post, public_s3_endpoint, PresignedPost},
+    utils::{
+        s3::{build_s3_client, build_s3_presign_client, copy_object, presigned_get_url},
+        s3_presigned_post::{generate_presigned_post, public_s3_endpoint, PresignedPost},
+    },
     AppState,
 };
 
@@ -1216,4 +1219,690 @@ pub async fn delete_issue_attachment_v2(
 
     soft_delete_asset(&state.db, asset).await?;
     Ok(StatusCode::NO_CONTENT)
+}
+
+// ── DTOs adicionales ──────────────────────────────────────────────────────────
+
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
+pub struct DuplicateAssetRequest {
+    pub project_id: Option<Uuid>,
+    pub entity_id: Option<Uuid>,
+    pub entity_type: String,
+}
+
+#[derive(Debug, Serialize, utoipa::ToSchema)]
+pub struct DuplicateAssetResponse {
+    pub asset_id: Uuid,
+}
+
+#[derive(Debug, Serialize, utoipa::ToSchema)]
+pub struct AssetCheckResponse {
+    pub exists: bool,
+}
+
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
+pub struct BulkAssetRequest {
+    pub asset_ids: Vec<Uuid>,
+}
+
+// ── AssetRestoreEndpoint ──────────────────────────────────────────────────────
+
+/// Restaura un asset previamente eliminado (soft-delete).
+///
+/// `POST /assets/v2/workspaces/{slug}/restore/{asset_id}`
+///
+/// Mirror de `AssetRestoreEndpoint.post` en Django.
+#[utoipa::path(
+    post,
+    path = "/assets/v2/workspaces/{slug}/restore/{asset_id}",
+    tag = "Assets",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("asset_id" = Uuid, Path, description = "Asset ID to restore"),
+    ),
+    responses(
+        (status = 204, description = "Asset restored"),
+        (status = 404, description = "Asset not found"),
+    ),
+    security(("sessionAuth" = []))
+)]
+pub async fn restore_workspace_asset(
+    guard: WorkspaceMemberGuard,
+    State(state): State<AppState>,
+    Path((slug, asset_id)): Path<(String, Uuid)>,
+) -> Result<StatusCode, AppError> {
+    let _ = (guard, &slug);
+
+    // Buscar incluyendo soft-deleted (all_objects en Django)
+    let asset = file_assets::Entity::find()
+        .filter(file_assets::Column::Id.eq(asset_id))
+        .filter(file_assets::Column::WorkspaceId.is_not_null())
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    let mut active: file_assets::ActiveModel = asset.into();
+    active.is_deleted = Set(false);
+    active.deleted_at = Set(None);
+    active.update(&state.db).await.map_err(AppError::Database)?;
+
+    Ok(StatusCode::NO_CONTENT)
+}
+
+// ── ProjectAssetEndpoint ──────────────────────────────────────────────────────
+
+/// Inicia un upload de asset a nivel proyecto (cover, issue description, etc.)
+///
+/// `POST /assets/v2/workspaces/{slug}/projects/{project_id}`
+///
+/// Mirror de `ProjectAssetEndpoint.post` en Django.
+#[utoipa::path(
+    post,
+    path = "/assets/v2/workspaces/{slug}/projects/{project_id}",
+    tag = "Assets",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project ID"),
+    ),
+    request_body = InitiateUploadRequest,
+    responses(
+        (status = 200, description = "Upload URL generated", body = UploadResponse),
+        (status = 400, description = "Invalid entity type or file type"),
+    ),
+    security(("sessionAuth" = []))
+)]
+pub async fn initiate_project_asset_upload(
+    guard: ProjectMemberGuard,
+    State(state): State<AppState>,
+    Path((slug, project_id)): Path<(String, Uuid)>,
+    headers: HeaderMap,
+    Json(body): Json<InitiateUploadRequest>,
+) -> Result<Json<UploadResponse>, AppError> {
+    let _ = &slug;
+
+    if !VALID_ENTITY_TYPES.contains(&body.entity_type.as_str()) {
+        return Err(AppError::BadRequest("Invalid entity type".into()));
+    }
+
+    let content_type = body.content_type.as_deref().unwrap_or("image/jpeg");
+    if !ALLOWED_IMAGE_TYPES.contains(&content_type) {
+        return Err(AppError::BadRequest(
+            "Invalid file type. Only JPEG, PNG, WebP, JPG and GIF files are allowed.".into(),
+        ));
+    }
+
+    let size = body.size.unwrap_or(DEFAULT_FILE_SIZE_LIMIT);
+    let size_limit = size.min(DEFAULT_FILE_SIZE_LIMIT);
+
+    // Obtener workspace
+    let workspace = workspaces::Entity::find()
+        .filter(workspaces::Column::Slug.eq(&slug))
+        .filter(workspaces::Column::DeletedAt.is_null())
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    let asset_key = format!("{}/{}-{}", workspace.id, uuid::Uuid::new_v4().simple(), body.name);
+
+    // Campos de FK según entity_type + entity_identifier
+    let entity_id = body.entity_identifier;
+    let mut new_asset = file_assets::ActiveModel {
+        id: Set(uuid::Uuid::new_v4()),
+        asset: Set(asset_key.clone()),
+        size: Set(size_limit as f64),
+        attributes: Set(serde_json::json!({
+            "name": body.name,
+            "type": content_type,
+            "size": size_limit,
+        })),
+        entity_type: Set(Some(body.entity_type.clone())),
+        workspace_id: Set(Some(workspace.id)),
+        project_id: Set(Some(project_id)),
+        created_by_id: Set(Some(guard.user.id)),
+        is_uploaded: Set(false),
+        is_deleted: Set(false),
+        ..Default::default()
+    };
+
+    // Asignar FK de entidad según tipo
+    match body.entity_type.as_str() {
+        ENTITY_ISSUE_DESCRIPTION | ENTITY_ISSUE_ATTACHMENT => {
+            new_asset.issue_id = Set(entity_id);
+        }
+        ENTITY_PAGE_DESCRIPTION => {
+            new_asset.page_id = Set(entity_id);
+        }
+        ENTITY_COMMENT_DESCRIPTION => {
+            new_asset.comment_id = Set(entity_id);
+        }
+        _ => {}
+    }
+
+    let asset = new_asset.insert(&state.db).await.map_err(AppError::Database)?;
+
+    let endpoint = public_s3_endpoint(&state.config, &headers);
+    let presigned = generate_presigned_post(
+        &state.config,
+        &asset_key,
+        content_type,
+        size_limit,
+        UPLOAD_URL_TTL_SECS,
+        &endpoint,
+    )
+    .map_err(|e| AppError::Internal(anyhow::anyhow!("presigned post error: {e}")))?;
+
+    let asset_url = asset_url_from_key(&asset_key, &state.config.aws_endpoint, &state.config.aws_s3_bucket);
+
+    Ok(Json(UploadResponse {
+        upload_data: presigned,
+        asset_id: asset.id,
+        asset_url,
+    }))
+}
+
+/// Marca un asset de proyecto como subido (complete upload).
+///
+/// `PATCH /assets/v2/workspaces/{slug}/projects/{project_id}/{pk}`
+///
+/// Mirror de `ProjectAssetEndpoint.patch` en Django.
+#[utoipa::path(
+    patch,
+    path = "/assets/v2/workspaces/{slug}/projects/{project_id}/{pk}",
+    tag = "Assets",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project ID"),
+        ("pk" = Uuid, Path, description = "Asset ID"),
+    ),
+    request_body = CompleteUploadRequest,
+    responses(
+        (status = 204, description = "Asset marked as uploaded"),
+        (status = 404, description = "Asset not found"),
+    ),
+    security(("sessionAuth" = []))
+)]
+pub async fn complete_project_asset_upload(
+    _guard: ProjectMemberGuard,
+    State(state): State<AppState>,
+    Path((_slug, project_id, pk)): Path<(String, Uuid, Uuid)>,
+    Json(body): Json<CompleteUploadRequest>,
+) -> Result<StatusCode, AppError> {
+    let asset = file_assets::Entity::find()
+        .filter(file_assets::Column::Id.eq(pk))
+        .filter(file_assets::Column::ProjectId.eq(project_id))
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    let mut active: file_assets::ActiveModel = asset.into();
+    active.is_uploaded = Set(true);
+    if let Some(attrs) = body.attributes {
+        active.attributes = Set(attrs);
+    }
+    active.update(&state.db).await.map_err(AppError::Database)?;
+
+    Ok(StatusCode::NO_CONTENT)
+}
+
+/// Elimina (soft-delete) un asset de proyecto.
+///
+/// `DELETE /assets/v2/workspaces/{slug}/projects/{project_id}/{pk}`
+///
+/// Mirror de `ProjectAssetEndpoint.delete` en Django.
+#[utoipa::path(
+    delete,
+    path = "/assets/v2/workspaces/{slug}/projects/{project_id}/{pk}",
+    tag = "Assets",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project ID"),
+        ("pk" = Uuid, Path, description = "Asset ID"),
+    ),
+    responses(
+        (status = 204, description = "Asset deleted"),
+        (status = 404, description = "Asset not found"),
+    ),
+    security(("sessionAuth" = []))
+)]
+pub async fn delete_project_asset(
+    _guard: ProjectMemberGuard,
+    State(state): State<AppState>,
+    Path((_slug, project_id, pk)): Path<(String, Uuid, Uuid)>,
+) -> Result<StatusCode, AppError> {
+    let asset = file_assets::Entity::find()
+        .filter(file_assets::Column::Id.eq(pk))
+        .filter(file_assets::Column::ProjectId.eq(project_id))
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    soft_delete_asset(&state.db, asset).await?;
+    Ok(StatusCode::NO_CONTENT)
+}
+
+/// Obtiene un asset de proyecto y redirige a la URL firmada.
+///
+/// `GET /assets/v2/workspaces/{slug}/projects/{project_id}/{pk}`
+///
+/// Mirror de `ProjectAssetEndpoint.get` en Django.
+#[utoipa::path(
+    get,
+    path = "/assets/v2/workspaces/{slug}/projects/{project_id}/{pk}",
+    tag = "Assets",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project ID"),
+        ("pk" = Uuid, Path, description = "Asset ID"),
+    ),
+    responses(
+        (status = 302, description = "Redirect to signed URL"),
+        (status = 404, description = "Asset not found or not uploaded"),
+    ),
+    security(("sessionAuth" = []))
+)]
+pub async fn get_project_asset(
+    _guard: ProjectMemberGuard,
+    State(state): State<AppState>,
+    Path((_slug, project_id, pk)): Path<(String, Uuid, Uuid)>,
+) -> Result<impl IntoResponse, AppError> {
+    let asset = file_assets::Entity::find()
+        .filter(file_assets::Column::Id.eq(pk))
+        .filter(file_assets::Column::ProjectId.eq(project_id))
+        .filter(file_assets::Column::IsUploaded.eq(true))
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    let s3 = build_s3_presign_client(&state.config);
+    let url = presigned_get_url(&s3, &state.config.aws_s3_bucket, &asset.asset, 3600).await?;
+    Ok(Redirect::temporary(&url))
+}
+
+// ── ProjectBulkAssetEndpoint ──────────────────────────────────────────────────
+
+/// Asigna en bulk assets a una entidad (issue, page, comment, draft, project cover).
+///
+/// `POST /assets/v2/workspaces/{slug}/projects/{project_id}/{entity_id}/bulk`
+///
+/// Mirror de `ProjectBulkAssetEndpoint.post` en Django.
+#[utoipa::path(
+    post,
+    path = "/assets/v2/workspaces/{slug}/projects/{project_id}/{entity_id}/bulk",
+    tag = "Assets",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project ID"),
+        ("entity_id" = Uuid, Path, description = "Entity ID (issue, page, comment, etc.)"),
+    ),
+    request_body = BulkAssetRequest,
+    responses(
+        (status = 204, description = "Assets updated"),
+        (status = 400, description = "No asset IDs provided"),
+        (status = 404, description = "No assets found"),
+    ),
+    security(("sessionAuth" = []))
+)]
+pub async fn bulk_project_assets(
+    _guard: ProjectMemberGuard,
+    State(state): State<AppState>,
+    Path((_slug, project_id, entity_id)): Path<(String, Uuid, Uuid)>,
+    Json(body): Json<BulkAssetRequest>,
+) -> Result<StatusCode, AppError> {
+    if body.asset_ids.is_empty() {
+        return Err(AppError::BadRequest("No asset ids provided.".into()));
+    }
+
+    // Obtener el primer asset para inferir entity_type
+    let first_asset = file_assets::Entity::find()
+        .filter(file_assets::Column::Id.is_in(body.asset_ids.clone()))
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    let entity_type = first_asset.entity_type.as_deref().unwrap_or("");
+
+    // Actualizar todos los assets del batch
+    use sea_orm::sea_query::Expr;
+    match entity_type {
+        ENTITY_PROJECT_COVER => {
+            // Asignar project_id y actualizar cover del proyecto
+            file_assets::Entity::update_many()
+                .col_expr(file_assets::Column::ProjectId, Expr::value(project_id))
+                .filter(file_assets::Column::Id.is_in(body.asset_ids.clone()))
+                .exec(&state.db)
+                .await
+                .map_err(AppError::Database)?;
+
+            // Actualizar cover del proyecto
+            if let Some(project) = projects::Entity::find_by_id(project_id)
+                .one(&state.db)
+                .await
+                .map_err(AppError::Database)?
+            {
+                let mut p: projects::ActiveModel = project.into();
+                p.cover_image_asset_id = Set(body.asset_ids.first().copied());
+                p.update(&state.db).await.map_err(AppError::Database)?;
+            }
+        }
+        ENTITY_ISSUE_DESCRIPTION => {
+            let _ = file_assets::Entity::update_many()
+                .col_expr(file_assets::Column::IssueId, Expr::value(entity_id))
+                .col_expr(file_assets::Column::ProjectId, Expr::value(project_id))
+                .filter(file_assets::Column::Id.is_in(body.asset_ids.clone()))
+                .exec(&state.db)
+                .await; // ignore IntegrityError (issue deleted)
+        }
+        ENTITY_COMMENT_DESCRIPTION => {
+            let _ = file_assets::Entity::update_many()
+                .col_expr(file_assets::Column::CommentId, Expr::value(entity_id))
+                .filter(file_assets::Column::Id.is_in(body.asset_ids.clone()))
+                .exec(&state.db)
+                .await; // ignore IntegrityError
+        }
+        ENTITY_PAGE_DESCRIPTION => {
+            file_assets::Entity::update_many()
+                .col_expr(file_assets::Column::PageId, Expr::value(entity_id))
+                .filter(file_assets::Column::Id.is_in(body.asset_ids.clone()))
+                .exec(&state.db)
+                .await
+                .map_err(AppError::Database)?;
+        }
+        _ => {}
+    }
+
+    Ok(StatusCode::NO_CONTENT)
+}
+
+// ── AssetCheckEndpoint ────────────────────────────────────────────────────────
+
+/// Verifica si un asset existe en el workspace (incluyendo eliminados no expirados).
+///
+/// `GET /assets/v2/workspaces/{slug}/check/{asset_id}`
+///
+/// Mirror de `AssetCheckEndpoint.get` en Django.
+#[utoipa::path(
+    get,
+    path = "/assets/v2/workspaces/{slug}/check/{asset_id}",
+    tag = "Assets",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("asset_id" = Uuid, Path, description = "Asset ID to check"),
+    ),
+    responses(
+        (status = 200, description = "Check result", body = AssetCheckResponse),
+    ),
+    security(("sessionAuth" = []))
+)]
+pub async fn check_workspace_asset(
+    guard: WorkspaceMemberGuard,
+    State(state): State<AppState>,
+    Path((_slug, asset_id)): Path<(String, Uuid)>,
+) -> Result<Json<AssetCheckResponse>, AppError> {
+    let _ = guard;
+    let exists = file_assets::Entity::find()
+        .filter(file_assets::Column::Id.eq(asset_id))
+        .filter(file_assets::Column::WorkspaceId.is_not_null())
+        .filter(file_assets::Column::DeletedAt.is_null())
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .is_some();
+
+    Ok(Json(AssetCheckResponse { exists }))
+}
+
+// ── DuplicateAssetEndpoint ────────────────────────────────────────────────────
+
+/// Duplica un asset existente (copia en S3 + nuevo registro en DB).
+///
+/// `POST /assets/v2/workspaces/{slug}/duplicate-assets/{asset_id}`
+///
+/// Mirror de `DuplicateAssetEndpoint.post` en Django.
+#[utoipa::path(
+    post,
+    path = "/assets/v2/workspaces/{slug}/duplicate-assets/{asset_id}",
+    tag = "Assets",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("asset_id" = Uuid, Path, description = "Source asset ID to duplicate"),
+    ),
+    request_body = DuplicateAssetRequest,
+    responses(
+        (status = 200, description = "Asset duplicated", body = DuplicateAssetResponse),
+        (status = 400, description = "Invalid entity type"),
+        (status = 404, description = "Asset or project not found"),
+    ),
+    security(("sessionAuth" = []))
+)]
+pub async fn duplicate_workspace_asset(
+    guard: WorkspaceMemberGuard,
+    State(state): State<AppState>,
+    Path((slug, asset_id)): Path<(String, Uuid)>,
+    Json(body): Json<DuplicateAssetRequest>,
+) -> Result<Json<DuplicateAssetResponse>, AppError> {
+    if !VALID_ENTITY_TYPES.contains(&body.entity_type.as_str()) {
+        return Err(AppError::BadRequest("Invalid entity type or entity id".into()));
+    }
+
+    let workspace = workspaces::Entity::find()
+        .filter(workspaces::Column::Slug.eq(&slug))
+        .filter(workspaces::Column::DeletedAt.is_null())
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    // Verificar que el proyecto existe si se especificó
+    if let Some(pid) = body.project_id {
+        let project_exists = projects::Entity::find()
+            .filter(projects::Column::Id.eq(pid))
+            .filter(projects::Column::WorkspaceId.eq(workspace.id))
+            .filter(projects::Column::DeletedAt.is_null())
+            .one(&state.db)
+            .await
+            .map_err(AppError::Database)?
+            .is_some();
+        if !project_exists {
+            return Err(AppError::NotFound);
+        }
+    }
+
+    // Obtener el asset original (solo uploaded)
+    let original = file_assets::Entity::find()
+        .filter(file_assets::Column::Id.eq(asset_id))
+        .filter(file_assets::Column::IsUploaded.eq(true))
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    let orig_name = original.attributes
+        .get("name")
+        .and_then(|v| v.as_str())
+        .unwrap_or("file");
+
+    let dest_key = format!(
+        "{}/{}-{}",
+        workspace.id,
+        uuid::Uuid::new_v4().simple(),
+        orig_name,
+    );
+
+    // Copiar en S3
+    let s3 = build_s3_client(&state.config);
+    copy_object(&s3, &state.config.aws_s3_bucket, &original.asset, &dest_key).await?;
+
+    // Crear nuevo registro en DB
+    let mut new_asset = file_assets::ActiveModel {
+        id: Set(uuid::Uuid::new_v4()),
+        asset: Set(dest_key.clone()),
+        size: Set(original.size),
+        attributes: Set(original.attributes.clone()),
+        entity_type: Set(Some(body.entity_type.clone())),
+        workspace_id: Set(Some(workspace.id)),
+        project_id: Set(body.project_id),
+        created_by_id: Set(Some(guard.user.id)),
+        is_uploaded: Set(true),
+        is_deleted: Set(false),
+        storage_metadata: Set(original.storage_metadata.clone()),
+        ..Default::default()
+    };
+
+    // Asignar FK según entity_type
+    let entity_id = body.entity_id;
+    match body.entity_type.as_str() {
+        ENTITY_WORKSPACE_LOGO => {
+            new_asset.workspace_id = Set(entity_id.or(Some(workspace.id)));
+        }
+        ENTITY_PROJECT_COVER => {
+            new_asset.project_id = Set(entity_id);
+        }
+        ENTITY_USER_AVATAR | ENTITY_USER_COVER => {
+            new_asset.user_id = Set(entity_id);
+        }
+        ENTITY_ISSUE_ATTACHMENT | ENTITY_ISSUE_DESCRIPTION => {
+            new_asset.issue_id = Set(entity_id);
+        }
+        ENTITY_PAGE_DESCRIPTION => {
+            new_asset.page_id = Set(entity_id);
+        }
+        ENTITY_COMMENT_DESCRIPTION => {
+            new_asset.comment_id = Set(entity_id);
+        }
+        _ => {}
+    }
+
+    let created = new_asset.insert(&state.db).await.map_err(AppError::Database)?;
+
+    Ok(Json(DuplicateAssetResponse { asset_id: created.id }))
+}
+
+// ── Download endpoints ────────────────────────────────────────────────────────
+
+/// Genera URL de descarga (attachment) para un asset de workspace y redirige.
+///
+/// `GET /assets/v2/workspaces/{slug}/download/{asset_id}`
+///
+/// Mirror de `WorkspaceAssetDownloadEndpoint.get` en Django.
+#[utoipa::path(
+    get,
+    path = "/assets/v2/workspaces/{slug}/download/{asset_id}",
+    tag = "Assets",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("asset_id" = Uuid, Path, description = "Asset ID"),
+    ),
+    responses(
+        (status = 302, description = "Redirect to download URL"),
+        (status = 404, description = "Asset not found or not uploaded"),
+    ),
+    security(("sessionAuth" = []))
+)]
+pub async fn download_workspace_asset(
+    guard: WorkspaceMemberGuard,
+    State(state): State<AppState>,
+    Path((_slug, asset_id)): Path<(String, Uuid)>,
+) -> Result<impl IntoResponse, AppError> {
+    let _ = guard;
+    let asset = file_assets::Entity::find()
+        .filter(file_assets::Column::Id.eq(asset_id))
+        .filter(file_assets::Column::IsUploaded.eq(true))
+        .filter(file_assets::Column::IsDeleted.eq(false))
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    let filename = asset
+        .attributes
+        .get("name")
+        .and_then(|v| v.as_str())
+        .unwrap_or("download");
+
+    let s3 = build_s3_presign_client(&state.config);
+    // Presigned GET con content-disposition attachment
+    let url = presigned_get_download_url(&s3, &state.config.aws_s3_bucket, &asset.asset, filename, 3600).await?;
+    Ok(Redirect::temporary(&url))
+}
+
+/// Genera URL de descarga (attachment) para un asset de proyecto y redirige.
+///
+/// `GET /assets/v2/workspaces/{slug}/projects/{project_id}/download/{asset_id}`
+///
+/// Mirror de `ProjectAssetDownloadEndpoint.get` en Django.
+#[utoipa::path(
+    get,
+    path = "/assets/v2/workspaces/{slug}/projects/{project_id}/download/{asset_id}",
+    tag = "Assets",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project ID"),
+        ("asset_id" = Uuid, Path, description = "Asset ID"),
+    ),
+    responses(
+        (status = 302, description = "Redirect to download URL"),
+        (status = 404, description = "Asset not found or not uploaded"),
+    ),
+    security(("sessionAuth" = []))
+)]
+pub async fn download_project_asset(
+    _guard: ProjectMemberGuard,
+    State(state): State<AppState>,
+    Path((_slug, project_id, asset_id)): Path<(String, Uuid, Uuid)>,
+) -> Result<impl IntoResponse, AppError> {
+    let asset = file_assets::Entity::find()
+        .filter(file_assets::Column::Id.eq(asset_id))
+        .filter(file_assets::Column::ProjectId.eq(project_id))
+        .filter(file_assets::Column::IsUploaded.eq(true))
+        .filter(file_assets::Column::IsDeleted.eq(false))
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    let filename = asset
+        .attributes
+        .get("name")
+        .and_then(|v| v.as_str())
+        .unwrap_or("download");
+
+    let s3 = build_s3_presign_client(&state.config);
+    let url = presigned_get_download_url(&s3, &state.config.aws_s3_bucket, &asset.asset, filename, 3600).await?;
+    Ok(Redirect::temporary(&url))
+}
+
+/// Helper: genera presigned GET URL con Content-Disposition: attachment.
+async fn presigned_get_download_url(
+    client: &aws_sdk_s3::Client,
+    bucket: &str,
+    key: &str,
+    filename: &str,
+    ttl_secs: u64,
+) -> Result<String, AppError> {
+    use aws_sdk_s3::presigning::PresigningConfig;
+    use std::time::Duration;
+
+    let config = PresigningConfig::expires_in(Duration::from_secs(ttl_secs))
+        .map_err(|e| AppError::Internal(anyhow::anyhow!("presigning config: {e}")))?;
+
+    let safe_filename = filename.replace('"', "\\\"");
+    let req = client
+        .get_object()
+        .bucket(bucket)
+        .key(key)
+        .response_content_disposition(format!("attachment; filename=\"{safe_filename}\""))
+        .presigned(config)
+        .await
+        .map_err(|e| {
+            tracing::error!("presigned_get_download_url error: {e}");
+            AppError::Internal(anyhow::anyhow!("Failed to generate download URL"))
+        })?;
+
+    Ok(req.uri().to_string())
 }

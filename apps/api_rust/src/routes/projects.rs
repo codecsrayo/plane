@@ -2425,3 +2425,202 @@ pub async fn get_project_invitation(
 
     Ok(Json(ProjectInvitationResponse::from(&invite)))
 }
+
+// ── Project Join & User Invitations ─────────────────────────────────────────
+
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
+pub struct ProjectJoinRequest {
+    /// Email del usuario que acepta la invitación.
+    pub email: String,
+    /// Si acepta o rechaza la invitación.
+    #[serde(default)]
+    pub accepted: bool,
+}
+
+/// Acepta o rechaza una invitación a un proyecto (endpoint público).
+///
+/// `POST /workspaces/{slug}/projects/{project_id}/join/{pk}`
+///
+/// Mirror de `ProjectJoinEndpoint.post` en Django.
+/// No requiere autenticación (AllowAny), solo el email correcto.
+#[utoipa::path(
+    post,
+    path = "/workspaces/{slug}/projects/{project_id}/join/{pk}",
+    tag = "Projects",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project ID"),
+        ("pk" = Uuid, Path, description = "Invitation ID"),
+    ),
+    request_body = ProjectJoinRequest,
+    responses(
+        (status = 200, description = "Invitation accepted or declined"),
+        (status = 400, description = "Already responded"),
+        (status = 403, description = "Email mismatch"),
+        (status = 404, description = "Invitation not found"),
+    )
+)]
+pub async fn join_project_invitation(
+    State(state): State<AppState>,
+    Path((slug, project_id, pk)): Path<(String, Uuid, Uuid)>,
+    Json(body): Json<ProjectJoinRequest>,
+) -> Result<Json<serde_json::Value>, AppError> {
+    let email = body.email.trim().to_lowercase();
+
+    let invite = project_member_invites::Entity::find_by_id(pk)
+        .filter(project_member_invites::Column::ProjectId.eq(project_id))
+        .filter(project_member_invites::Column::WorkspaceId.is_not_null())
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    // Verificar que el email coincide
+    if email.is_empty() || invite.email.to_lowercase() != email {
+        return Err(AppError::Forbidden);
+    }
+
+    // Ya respondió
+    if invite.responded_at.is_some() {
+        return Err(AppError::BadRequest(
+            "You have already responded to the invitation request".into(),
+        ));
+    }
+
+    // Registrar respuesta
+    let mut active: project_member_invites::ActiveModel = invite.clone().into();
+    active.accepted = Set(body.accepted);
+    active.responded_at = Set(Some(chrono::Utc::now().into()));
+    active.update(&state.db).await.map_err(AppError::Database)?;
+
+    if !body.accepted {
+        return Ok(Json(serde_json::json!({
+            "message": "Project Invitation was not accepted"
+        })));
+    }
+
+    // Aceptó — incorporar al workspace y proyecto
+    let user = users::Entity::find()
+        .filter(users::Column::Email.eq(&email))
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    if let Some(user) = user {
+        // Asegurar membresía en workspace
+        let ws_member = workspace_members::Entity::find()
+            .filter(workspace_members::Column::WorkspaceId.eq(invite.workspace_id))
+            .filter(workspace_members::Column::MemberId.eq(user.id))
+            .one(&state.db)
+            .await
+            .map_err(AppError::Database)?;
+
+        if ws_member.is_none() {
+            let role = if invite.role >= 15 { 15i16 } else { invite.role };
+            let new_wm = workspace_members::ActiveModel {
+                id: Set(uuid::Uuid::new_v4()),
+                workspace_id: Set(invite.workspace_id),
+                member_id: Set(user.id),
+                role: Set(role),
+                is_active: Set(true),
+                created_at: Set(chrono::Utc::now().into()),
+                updated_at: Set(chrono::Utc::now().into()),
+                ..Default::default()
+            };
+            let _ = new_wm.insert(&state.db).await; // ignorar conflicto
+        } else if let Some(wm) = ws_member {
+            let mut wm_active: workspace_members::ActiveModel = wm.into();
+            wm_active.is_active = Set(true);
+            let _ = wm_active.update(&state.db).await;
+        }
+
+        // Asegurar membresía en proyecto
+        let pm = project_members::Entity::find()
+            .filter(project_members::Column::ProjectId.eq(project_id))
+            .filter(project_members::Column::MemberId.eq(user.id))
+            .one(&state.db)
+            .await
+            .map_err(AppError::Database)?;
+
+        if pm.is_none() {
+            let new_pm = project_members::ActiveModel {
+                id: Set(uuid::Uuid::new_v4()),
+                project_id: Set(project_id),
+                member_id: Set(Some(user.id)),
+                role: Set(invite.role),
+                workspace_id: Set(invite.workspace_id),
+                is_active: Set(true),
+                created_at: Set(chrono::Utc::now().into()),
+                updated_at: Set(chrono::Utc::now().into()),
+                ..Default::default()
+            };
+            let _ = new_pm.insert(&state.db).await; // ignorar conflicto
+        } else if let Some(pm_model) = pm {
+            let mut pm_active: project_members::ActiveModel = pm_model.into();
+            pm_active.is_active = Set(true);
+            let _ = pm_active.update(&state.db).await;
+        }
+    }
+
+    Ok(Json(serde_json::json!({
+        "message": "Project Invitation Accepted"
+    })))
+}
+
+#[derive(Debug, Serialize, utoipa::ToSchema)]
+pub struct UserProjectInvitationResponse {
+    pub id: Uuid,
+    pub email: String,
+    pub accepted: bool,
+    pub role: i16,
+    pub project_id: Uuid,
+    pub workspace_id: Uuid,
+}
+
+/// Lista las invitaciones de proyectos del usuario autenticado.
+///
+/// `GET /users/me/workspaces/{slug}/projects/invitations`
+///
+/// Mirror de `UserProjectInvitationsViewset.list` en Django.
+#[utoipa::path(
+    get,
+    path = "/users/me/workspaces/{slug}/projects/invitations",
+    tag = "Projects",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+    ),
+    responses(
+        (status = 200, description = "List of project invitations"),
+    ),
+    security(("sessionAuth" = []))
+)]
+pub async fn list_user_project_invitations(
+    AnyAuth(user): AnyAuth,
+    State(state): State<AppState>,
+    Path(slug): Path<String>,
+) -> Result<Json<Vec<UserProjectInvitationResponse>>, AppError> {
+    let ws = workspace_by_slug(&state.db, &slug).await?;
+
+    let invites = project_member_invites::Entity::find()
+        .filter(project_member_invites::Column::Email.eq(
+            user.email.as_deref().unwrap_or(""),
+        ))
+        .filter(project_member_invites::Column::WorkspaceId.eq(ws.id))
+        .all(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    let result = invites
+        .iter()
+        .map(|i| UserProjectInvitationResponse {
+            id: i.id,
+            email: i.email.clone(),
+            accepted: i.accepted,
+            role: i.role,
+            project_id: i.project_id,
+            workspace_id: i.workspace_id,
+        })
+        .collect();
+
+    Ok(Json(result))
+}
