@@ -22,6 +22,13 @@
 //! }
 //! ```
 
+// Cada binario de tests/*.rs compila este módulo de forma independiente y
+// usa solo un subconjunto de los helpers; el resto aparece como `dead_code`
+// aunque sí esté en uso desde otros binarios. Es el patrón estándar para
+// `tests/common/mod.rs` — silenciar a nivel de módulo evita decorar cada
+// helper individualmente.
+#![allow(dead_code)]
+
 use std::sync::Arc;
 
 use api_rust::{
