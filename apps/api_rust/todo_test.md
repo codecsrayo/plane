@@ -268,14 +268,14 @@
 - ✅ `GET  /auth/google/callback`
 - ✅ `GET  /auth/gitea`
 - ✅ `GET  /auth/gitea/callback`
-- [ ] `POST /spaces/sign-in`
-- [ ] `POST /spaces/sign-out`
-- [ ] `POST /spaces/magic-sign-in`
-- [ ] `POST /spaces/magic-sign-up`
-- [ ] `POST /spaces/magic-generate`
-- [ ] `POST /spaces/email-check`
-- [ ] `POST /spaces/forgot-password`
-- [ ] `POST /spaces/reset-password/{uidb64}/{token}`
+- ✅ `POST /spaces/sign-in`
+- ✅ `POST /spaces/sign-out`
+- ✅ `POST /spaces/magic-sign-in`
+- ✅ `POST /spaces/magic-sign-up`
+- ✅ `POST /spaces/magic-generate`
+- ✅ `POST /spaces/email-check`
+- ✅ `POST /spaces/forgot-password`
+- ✅ `POST /spaces/reset-password/{uidb64}/{token}`
 
 ## License / Instance (`license/`)
 
