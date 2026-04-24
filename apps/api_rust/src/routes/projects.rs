@@ -2676,7 +2676,7 @@ impl From<deploy_boards::Model> for DeployBoardResponse {
     get,
     path = "/api/workspaces/{slug}/projects/{project_id}/project-deploy-boards",
     tag = "Projects",
-    security((\"TokenAuth\" = []), (\"SessionCookie\" = [])),
+    security(("TokenAuth" = []), ("SessionCookie" = [])),
     params(
         ("slug" = String, Path, description = "Workspace slug"),
         ("project_id" = Uuid, Path, description = "Project ID"),
@@ -2722,7 +2722,7 @@ pub struct UpsertDeployBoardRequest {
     post,
     path = "/api/workspaces/{slug}/projects/{project_id}/project-deploy-boards",
     tag = "Projects",
-    security((\"TokenAuth\" = []), (\"SessionCookie\" = [])),
+    security(("TokenAuth" = []), ("SessionCookie" = [])),
     params(
         ("slug" = String, Path, description = "Workspace slug"),
         ("project_id" = Uuid, Path, description = "Project ID"),
@@ -2809,7 +2809,7 @@ pub async fn upsert_project_deploy_board(
     patch,
     path = "/api/workspaces/{slug}/projects/{project_id}/project-deploy-boards/{pk}",
     tag = "Projects",
-    security((\"TokenAuth\" = []), (\"SessionCookie\" = [])),
+    security(("TokenAuth" = []), ("SessionCookie" = [])),
     params(
         ("slug" = String, Path, description = "Workspace slug"),
         ("project_id" = Uuid, Path, description = "Project ID"),
@@ -2866,7 +2866,7 @@ pub async fn update_project_deploy_board(
     delete,
     path = "/api/workspaces/{slug}/projects/{project_id}/project-deploy-boards/{pk}",
     tag = "Projects",
-    security((\"TokenAuth\" = []), (\"SessionCookie\" = [])),
+    security(("TokenAuth" = []), ("SessionCookie" = [])),
     params(
         ("slug" = String, Path, description = "Workspace slug"),
         ("project_id" = Uuid, Path, description = "Project ID"),
@@ -2918,7 +2918,7 @@ pub struct MemberPreferencesResponse {
     get,
     path = "/api/workspaces/{slug}/projects/{project_id}/preferences/member/{member_id}",
     tag = "Projects",
-    security((\"TokenAuth\" = []), (\"SessionCookie\" = [])),
+    security(("TokenAuth" = []), ("SessionCookie" = [])),
     params(
         ("slug" = String, Path, description = "Workspace slug"),
         ("project_id" = Uuid, Path, description = "Project ID"),
@@ -2958,7 +2958,7 @@ pub async fn get_project_member_preferences(
     patch,
     path = "/api/workspaces/{slug}/projects/{project_id}/preferences/member/{member_id}",
     tag = "Projects",
-    security((\"TokenAuth\" = []), (\"SessionCookie\" = [])),
+    security(("TokenAuth" = []), ("SessionCookie" = [])),
     params(
         ("slug" = String, Path, description = "Workspace slug"),
         ("project_id" = Uuid, Path, description = "Project ID"),
