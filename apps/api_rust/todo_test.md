@@ -1,5 +1,6 @@
 
 > [ ] = implementado en Rust | ❌ = pendiente
+> pruebas de integración
 
 ```tree
 .
