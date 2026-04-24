@@ -328,13 +328,13 @@
 
 ## Workspaces (`app/urls/workspace.py`)
 
-- [ ] `GET        /workspace-slug-check`
-- [ ] `GET/POST   /workspaces`
-- [ ] `GET/PATCH/DELETE /workspaces/{slug}`
+- ✅ `GET        /workspace-slug-check`
+- ✅ `GET/POST   /workspaces`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}`
 - [ ] `GET/POST   /workspaces/{slug}/invitations`
 - [ ] `GET/PATCH/DELETE /workspaces/{slug}/invitations/{pk}`
 - [ ] `GET        /users/me/workspaces/invitations`
-- [ ] `GET        /workspaces/{slug}/members`
+- ✅ `GET        /workspaces/{slug}/members`
 - [ ] `GET        /workspaces/{slug}/project-members`
 - [ ] `GET/PATCH/DELETE /workspaces/{slug}/members/{pk}`
 - [ ] `POST       /workspaces/{slug}/members/leave`
@@ -622,7 +622,7 @@
 
 ### Workspace Members
 
-- [ ] `GET        /workspaces/{slug}/members`
+- ✅ `GET        /workspaces/{slug}/members`
 
 ### Projects
 
