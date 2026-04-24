@@ -335,9 +335,9 @@
 - [ ] `GET/PATCH/DELETE /workspaces/{slug}/invitations/{pk}`
 - [ ] `GET        /users/me/workspaces/invitations`
 - ✅ `GET        /workspaces/{slug}/members`
-- [ ] `GET        /workspaces/{slug}/project-members`
-- [ ] `GET/PATCH/DELETE /workspaces/{slug}/members/{pk}`
-- [ ] `POST       /workspaces/{slug}/members/leave`
+- ✅ `GET        /workspaces/{slug}/project-members`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}/members/{pk}`
+- ✅ `POST       /workspaces/{slug}/members/leave`
 - ✅ `GET        /workspaces/{slug}/workspace-members/me`
 - [ ] `GET        /workspaces/{slug}/workspace-views`
 - [ ] `GET        /workspaces/{slug}/user-stats/{user_id}`
@@ -380,9 +380,9 @@
 - [ ] `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/invitations/{pk}`
 - [ ] `GET        /users/me/workspaces/{slug}/project-roles`
 - ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/members`
-- [ ] `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/members/{pk}`
-- [ ] `POST       /workspaces/{slug}/projects/{project_id}/members/leave`
-- [ ] `GET        /workspaces/{slug}/projects/{project_id}/project-members/me`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/members/{pk}`
+- ✅ `POST       /workspaces/{slug}/projects/{project_id}/members/leave`
+- ✅ `GET        /workspaces/{slug}/projects/{project_id}/project-members/me`
 - [ ] `GET        /users/me/workspaces/{slug}/projects/invitations`
 - [ ] `POST       /workspaces/{slug}/projects/{project_id}/join/{pk}`
 
@@ -395,7 +395,7 @@
 - ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/states`
 - ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/states/{pk}`
 - ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/intake-state`
-- [ ] `POST       /workspaces/{slug}/projects/{project_id}/states/{pk}/mark-default`
+- ✅ `POST       /workspaces/{slug}/projects/{project_id}/states/{pk}/mark-default`
 
 ## Issues (`app/urls/issue.py`)
 
@@ -422,18 +422,18 @@
 - ✅ `DELETE     /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/reactions/{reaction_code}`
 - ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/comments/{comment_id}/reactions`
 - ✅ `DELETE     /workspaces/{slug}/projects/{project_id}/comments/{comment_id}/reactions/{reaction_code}`
-- [ ] `GET/PATCH  /workspaces/{slug}/projects/{project_id}/user-properties`
-- [ ] `GET        /workspaces/{slug}/projects/{project_id}/archived-issues`
-- [ ] `POST       /workspaces/{slug}/projects/{project_id}/issues/{pk}/archive`
+- ✅ `GET/PATCH  /workspaces/{slug}/projects/{project_id}/user-properties`
+- ✅ `GET        /workspaces/{slug}/projects/{project_id}/archived-issues`
+- ✅ `POST       /workspaces/{slug}/projects/{project_id}/issues/{pk}/archive`
 - ✅ `POST       /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-relation`
 - ✅ `POST       /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/remove-relation`
-- [ ] `GET        /workspaces/{slug}/projects/{project_id}/deleted-issues`
-- [ ] `GET        /workspaces/{slug}/projects/{project_id}/issue-dates`
+- ✅ `GET        /workspaces/{slug}/projects/{project_id}/deleted-issues`
+- ✅ `GET        /workspaces/{slug}/projects/{project_id}/issue-dates`
 - [ ] `GET        /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/versions`
 - [ ] `GET/DELETE /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/versions/{pk}`
 - [ ] `GET        /workspaces/{slug}/projects/{project_id}/work-items/{work_item_id}/description-versions`
 - [ ] `GET/DELETE /workspaces/{slug}/projects/{project_id}/work-items/{work_item_id}/description-versions/{pk}`
-- [ ] `GET        /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/meta`
+- ✅ `GET        /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/meta`
 - [ ] `GET        /workspaces/{slug}/work-items/{combined}`
 - [ ] `GET        /workspaces/{slug}/projects/{project_id}/issues/list`
 - [ ] `GET        /workspaces/{slug}/projects/{project_id}/issues-detail`
@@ -610,10 +610,10 @@
 
 ## Webhooks (`app/urls/webhook.py`)
 
-- [ ] `GET/POST   /workspaces/{slug}/webhooks`
-- [ ] `GET/PATCH/DELETE /workspaces/{slug}/webhooks/{pk}`
-- [ ] `POST       /workspaces/{slug}/webhooks/{pk}/regenerate`
-- [ ] `GET        /workspaces/{slug}/webhook-logs/{webhook_id}`
+- ✅ `GET/POST   /workspaces/{slug}/webhooks`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}/webhooks/{pk}`
+- ✅ `POST       /workspaces/{slug}/webhooks/{pk}/regenerate`
+- ✅ `GET        /workspaces/{slug}/webhook-logs/{webhook_id}`
 
 
 ### Users
@@ -628,7 +628,7 @@
 
 - ✅ `GET/POST   /workspaces/{slug}/projects`
 - ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{pk}`
-- [ ] `POST/DELETE /workspaces/{slug}/projects/{project_id}/archive`
+- ✅ `POST/DELETE /workspaces/{slug}/projects/{project_id}/archive`
 - [ ] `GET        /workspaces/{slug}/projects/{project_id}/summary`
 
 ### Project Members
