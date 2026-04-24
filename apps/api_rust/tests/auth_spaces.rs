@@ -27,6 +27,7 @@ const SPACE_BASE: &str = "http://localhost:3001";
 #[tokio::test(flavor = "multi_thread")]
 async fn space_email_check_accepts_valid_email() {
     let app = TestApp::spawn().await;
+    app.ensure_instance_configured().await;
 
     let res = app
         .post_json(
@@ -57,6 +58,7 @@ async fn space_email_check_rejects_empty_email() {
 #[tokio::test(flavor = "multi_thread")]
 async fn space_sign_in_missing_credentials_redirects_to_space_base() {
     let app = TestApp::spawn().await;
+    app.ensure_instance_configured().await;
 
     let (status, loc) = app.post_form_location("/auth/spaces/sign-in", &[]).await;
 
@@ -76,6 +78,7 @@ async fn space_sign_in_missing_credentials_redirects_to_space_base() {
 #[tokio::test(flavor = "multi_thread")]
 async fn space_sign_in_unknown_user_redirects_with_error() {
     let app = TestApp::spawn().await;
+    app.ensure_instance_configured().await;
 
     let (status, loc) = app
         .post_form_location(
@@ -100,6 +103,12 @@ async fn space_sign_in_unknown_user_redirects_with_error() {
 #[tokio::test(flavor = "multi_thread")]
 async fn space_magic_generate_valid_email_returns_key() {
     let app = TestApp::spawn().await;
+    app.ensure_instance_configured().await;
+    // Gates de magic-generate (magic_auth.rs:559-591): EMAIL_HOST no vacío
+    // (5025 SMTP_NOT_CONFIGURED) + ENABLE_MAGIC_LINK_LOGIN="1" (5016
+    // MAGIC_LINK_LOGIN_DISABLED, default "0" en startup.rs:102).
+    app.set_instance_config("EMAIL_HOST", "localhost").await;
+    app.set_instance_config("ENABLE_MAGIC_LINK_LOGIN", "1").await;
 
     let res = app
         .post_json(
