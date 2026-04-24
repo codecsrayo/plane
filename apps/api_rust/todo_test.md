@@ -282,9 +282,9 @@
 - ✅ `GET/POST   /instances`
 - ✅ `GET        /instances/email-credentials-check`
 - ✅ `GET/PATCH  /instances/configurations`
-- [ ] `POST       /instances/configurations/disable-email-feature`
-- [ ] `GET/POST   /instances/admins`
-- [ ] `GET/PATCH/DELETE /instances/admins/{pk}`
+- ✅ `POST       /instances/configurations/disable-email-feature`
+- ✅ `GET/POST   /instances/admins`
+- ✅ `GET/PATCH/DELETE /instances/admins/{pk}`
 - [ ] `POST       /instances/admins/sign-in`
 - [ ] `POST       /instances/admins/sign-up`
 - [ ] `POST       /instances/admins/sign-out`
@@ -331,20 +331,20 @@
 - ✅ `GET        /workspace-slug-check`
 - ✅ `GET/POST   /workspaces`
 - ✅ `GET/PATCH/DELETE /workspaces/{slug}`
-- [ ] `GET/POST   /workspaces/{slug}/invitations`
-- [ ] `GET/PATCH/DELETE /workspaces/{slug}/invitations/{pk}`
-- [ ] `GET        /users/me/workspaces/invitations`
+- ✅ `GET/POST   /workspaces/{slug}/invitations`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}/invitations/{pk}`
+- ✅ `GET        /users/me/workspaces/invitations`
 - ✅ `GET        /workspaces/{slug}/members`
 - ✅ `GET        /workspaces/{slug}/project-members`
 - ✅ `GET/PATCH/DELETE /workspaces/{slug}/members/{pk}`
 - ✅ `POST       /workspaces/{slug}/members/leave`
 - ✅ `GET        /workspaces/{slug}/workspace-members/me`
-- [ ] `GET        /workspaces/{slug}/workspace-views`
-- [ ] `GET        /workspaces/{slug}/user-stats/{user_id}`
-- [ ] `GET        /workspaces/{slug}/user-activity/{user_id}`
-- [ ] `GET        /workspaces/{slug}/user-activity/{user_id}/export`
-- [ ] `GET        /workspaces/{slug}/user-profile/{user_id}`
-- [ ] `GET        /workspaces/{slug}/user-issues/{user_id}`
+- ✅ `GET        /workspaces/{slug}/workspace-views`
+- ✅ `GET        /workspaces/{slug}/user-stats/{user_id}`
+- ✅ `GET        /workspaces/{slug}/user-activity/{user_id}`
+- ✅ `GET        /workspaces/{slug}/user-activity/{user_id}/export`
+- ✅ `GET        /workspaces/{slug}/user-profile/{user_id}`
+- ✅ `GET        /workspaces/{slug}/user-issues/{user_id}`
 - ✅ `GET        /workspaces/{slug}/labels`
 - ✅ `GET/PATCH  /workspaces/{slug}/user-properties`
 - ✅ `GET        /workspaces/{slug}/states`
@@ -366,9 +366,9 @@
 - ✅ `GET/POST   /workspaces/{slug}/stickies`
 - ✅ `GET/PATCH/DELETE /workspaces/{slug}/stickies/{pk}`
 - ✅ `GET/PATCH  /workspaces/{slug}/sidebar-preferences`
-- [ ] `POST       /workspaces/{slug}/invitations/{pk}/join`
-- [ ] `GET/POST   /workspaces/{slug}/workspace-themes`
-- [ ] `GET/PATCH/DELETE /workspaces/{slug}/workspace-themes/{pk}`
+- ✅ `POST       /workspaces/{slug}/invitations/{pk}/join`
+- ✅ `GET/POST   /workspaces/{slug}/workspace-themes`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}/workspace-themes/{pk}`
 
 ## Projects (`app/urls/project.py`)
 
@@ -508,19 +508,19 @@
 
 ## Analytics (`app/urls/analytic.py`)
 
-- [ ] `GET/POST   /workspaces/{slug}/analytics`
-- [ ] `GET/POST   /workspaces/{slug}/analytic-view`
-- [ ] `GET/PATCH/DELETE /workspaces/{slug}/analytic-view/{pk}`
-- [ ] `GET/POST/PATCH/DELETE /workspaces/{slug}/saved-analytic-view/{analytic_id}`
-- [ ] `POST       /workspaces/{slug}/export-analytics`
-- [ ] `GET        /workspaces/{slug}/default-analytics`
-- [ ] `GET        /workspaces/{slug}/project-stats`
-- [ ] `GET        /workspaces/{slug}/advance-analytics`
-- [ ] `GET        /workspaces/{slug}/advance-analytics-stats`
-- [ ] `GET        /workspaces/{slug}/advance-analytics-charts`
-- [ ] `GET        /workspaces/{slug}/projects/{project_id}/advance-analytics`
-- [ ] `GET        /workspaces/{slug}/projects/{project_id}/advance-analytics-stats`
-- [ ] `GET        /workspaces/{slug}/projects/{project_id}/advance-analytics-charts`
+- ✅ `GET/POST   /workspaces/{slug}/analytics`
+- ✅ `GET/POST   /workspaces/{slug}/analytic-view`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}/analytic-view/{pk}`
+- ✅ `GET/POST/PATCH/DELETE /workspaces/{slug}/saved-analytic-view/{analytic_id}`
+- ✅ `POST       /workspaces/{slug}/export-analytics`
+- ✅ `GET        /workspaces/{slug}/default-analytics`
+- ✅ `GET        /workspaces/{slug}/project-stats`
+- ✅ `GET        /workspaces/{slug}/advance-analytics`
+- ✅ `GET        /workspaces/{slug}/advance-analytics-stats`
+- ✅ `GET        /workspaces/{slug}/advance-analytics-charts`
+- ✅ `GET        /workspaces/{slug}/projects/{project_id}/advance-analytics`
+- ✅ `GET        /workspaces/{slug}/projects/{project_id}/advance-analytics-stats`
+- ✅ `GET        /workspaces/{slug}/projects/{project_id}/advance-analytics-charts`
 
 ## Notifications (`app/urls/notification.py`)
 
@@ -534,9 +534,9 @@
 
 ## Search (`app/urls/search.py`)
 
-- [ ] `GET        /workspaces/{slug}/search`
-- [ ] `GET        /workspaces/{slug}/projects/{project_id}/search-issues`
-- [ ] `GET        /workspaces/{slug}/entity-search`
+- ✅ `GET        /workspaces/{slug}/search`
+- ✅ `GET        /workspaces/{slug}/projects/{project_id}/search-issues`
+- ✅ `GET        /workspaces/{slug}/entity-search`
 
 ## Assets v2 (`app/urls/asset.py`)
 
