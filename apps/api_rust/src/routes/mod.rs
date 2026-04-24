@@ -105,6 +105,12 @@ pub mod instances;
         workspaces::get_invitation,
         workspaces::update_invitation,
         workspaces::delete_invitation,
+        workspaces::join_workspace_invitation,
+        workspaces::list_workspace_themes,
+        workspaces::create_workspace_theme,
+        workspaces::get_workspace_theme,
+        workspaces::update_workspace_theme,
+        workspaces::delete_workspace_theme,
         projects::list_projects,
         projects::list_projects_detail,
         projects::create_project,
@@ -265,6 +271,7 @@ pub mod instances;
         exporter::get_export_status,
         search::global_search,
         search::search_issues,
+        search::entity_search,
         timezones::list_timezones,
         users::get_me,
         users::update_me,
@@ -363,6 +370,7 @@ pub mod instances;
         issue_extras::list_issue_subscribers,
         issue_extras::subscribe_to_issue,
         issue_extras::unsubscribe_from_issue,
+        issue_extras::delete_issue_subscriber,
         issue_extras::list_sub_issues,
         issue_extras::assign_sub_issues,
         issue_description_versions::list_description_versions,
@@ -670,6 +678,20 @@ pub fn build_router(state: AppState) -> Router {
             get(workspaces::get_invitation)
                 .patch(workspaces::update_invitation)
                 .delete(workspaces::delete_invitation),
+        )
+        .route(
+            "/workspaces/{slug}/invitations/{pk}/join",
+            post(workspaces::join_workspace_invitation),
+        )
+        .route(
+            "/workspaces/{slug}/workspace-themes",
+            get(workspaces::list_workspace_themes).post(workspaces::create_workspace_theme),
+        )
+        .route(
+            "/workspaces/{slug}/workspace-themes/{pk}",
+            get(workspaces::get_workspace_theme)
+                .patch(workspaces::update_workspace_theme)
+                .delete(workspaces::delete_workspace_theme),
         )
         // Ã¢ÂÂÃ¢ÂÂ Workspace integrations Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
         .route(
@@ -1159,6 +1181,10 @@ pub fn build_router(state: AppState) -> Router {
             "/workspaces/{slug}/projects/{project_id}/search-issues",
             get(search::search_issues),
         )
+        .route(
+            "/workspaces/{slug}/entity-search",
+            get(search::entity_search),
+        )
         // Ã¢ÂÂÃ¢ÂÂ Timezones Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
         .route("/timezones", get(timezones::list_timezones))
         // Ã¢ÂÂÃ¢ÂÂ Users (me) Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
@@ -1457,6 +1483,10 @@ pub fn build_router(state: AppState) -> Router {
         .route(
             "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-subscribers",
             get(issue_extras::list_issue_subscribers),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-subscribers/{subscriber_id}",
+            delete(issue_extras::delete_issue_subscriber),
         )
         .route(
             "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/subscribe",

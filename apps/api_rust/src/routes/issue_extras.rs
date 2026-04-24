@@ -1354,3 +1354,45 @@ pub async fn get_comment(
         "updated_at": comment.updated_at,
     })))
 }
+
+// ─── DELETE /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-subscribers/{subscriber_id}/ ──
+
+/// Elimina la suscripción de un usuario específico a un issue.
+///
+/// Espejo de `IssueSubscriberViewSet.destroy`
+/// (`apps/api/plane/app/views/issue/subscriber.py`).
+#[utoipa::path(
+    delete,
+    path = "/api/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-subscribers/{subscriber_id}/",
+    tag = "Issues",
+    security(("TokenAuth" = []), ("SessionCookie" = [])),
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project UUID"),
+        ("issue_id" = Uuid, Path, description = "Issue UUID"),
+        ("subscriber_id" = Uuid, Path, description = "Subscriber user UUID"),
+    ),
+    responses(
+        (status = 204, description = "Unsubscribed"),
+        (status = 404, description = "Subscription not found"),
+    )
+)]
+pub async fn delete_issue_subscriber(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Path((_slug, _project_id, issue_id, subscriber_id)): Path<(String, Uuid, Uuid, Uuid)>,
+) -> Result<StatusCode, AppError> {
+    let sub = issue_subscribers::Entity::find()
+        .filter(issue_subscribers::Column::IssueId.eq(issue_id))
+        .filter(issue_subscribers::Column::SubscriberId.eq(subscriber_id))
+        .filter(issue_subscribers::Column::ProjectId.eq(guard.project.id))
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    let am: issue_subscribers::ActiveModel = sub.into();
+    am.delete(&state.db).await.map_err(AppError::Database)?;
+
+    Ok(StatusCode::NO_CONTENT)
+}

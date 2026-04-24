@@ -3290,3 +3290,368 @@ pub async fn update_invitation(
     let updated = am.update(&state.db).await.map_err(AppError::Database)?;
     Ok(Json(InvitationResponse::from(&updated)))
 }
+
+// ─── POST /workspaces/{slug}/invitations/{pk}/join/ ───────────────────────────
+
+/// Responde a una invitación de workspace (aceptar o rechazar).
+///
+/// Espejo de `WorkspaceJoinEndpoint.post`
+/// (`apps/api/plane/app/views/workspace/invite.py`).
+///
+/// Body: `{ "token": "<invite_token>", "accepted": true|false }`
+#[derive(Debug, serde::Deserialize, utoipa::ToSchema)]
+pub struct JoinWorkspaceRequest {
+    pub token: String,
+    pub accepted: Option<bool>,
+}
+
+#[utoipa::path(
+    post,
+    path = "/api/workspaces/{slug}/invitations/{pk}/join/",
+    tag = "Workspaces",
+    security(("TokenAuth" = []), ("SessionCookie" = [])),
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("pk"   = Uuid,   Path, description = "Invitation UUID"),
+    ),
+    responses(
+        (status = 200, description = "Invitation response processed"),
+        (status = 400, description = "Already responded"),
+        (status = 403, description = "Invalid token"),
+        (status = 404, description = "Invitation not found"),
+    )
+)]
+pub async fn join_workspace_invitation(
+    State(state): State<AppState>,
+    AnyAuth(user): AnyAuth,
+    Path((slug, pk)): Path<(String, Uuid)>,
+    Json(body): Json<JoinWorkspaceRequest>,
+) -> Result<axum::Json<serde_json::Value>, AppError> {
+    let ws = workspace_by_slug(&state.db, &slug).await?;
+
+    let invite = workspace_member_invites::Entity::find_by_id(pk)
+        .filter(workspace_member_invites::Column::WorkspaceId.eq(ws.id))
+        .filter(workspace_member_invites::Column::DeletedAt.is_null())
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    // Validar token
+    if invite.token != body.token {
+        return Err(AppError::Forbidden);
+    }
+
+    // Ya respondió
+    if invite.responded_at.is_some() {
+        return Err(AppError::BadRequest(
+            "You have already responded to the invitation request".into(),
+        ));
+    }
+
+    let accepted = body.accepted.unwrap_or(false);
+    let now = chrono::Utc::now().fixed_offset();
+
+    let mut am: workspace_member_invites::ActiveModel = invite.clone().into();
+    am.accepted = Set(accepted);
+    am.responded_at = Set(Some(now));
+    am.updated_at = Set(now);
+    am.updated_by_id = Set(Some(user.id));
+    am.update(&state.db).await.map_err(AppError::Database)?;
+
+    if accepted {
+        // Verificar si el usuario invitado coincide con el autenticado (por email)
+        if invite.email == user.email {
+            // Buscar membresía existente
+            let existing = workspace_members::Entity::find()
+                .filter(workspace_members::Column::WorkspaceId.eq(ws.id))
+                .filter(workspace_members::Column::MemberId.eq(user.id))
+                .filter(workspace_members::Column::DeletedAt.is_null())
+                .one(&state.db)
+                .await
+                .map_err(AppError::Database)?;
+
+            if let Some(member) = existing {
+                let mut mam: workspace_members::ActiveModel = member.into();
+                mam.is_active = Set(true);
+                mam.role = Set(invite.role);
+                mam.updated_at = Set(now);
+                mam.updated_by_id = Set(Some(user.id));
+                mam.update(&state.db).await.map_err(AppError::Database)?;
+            } else {
+                let new_member = workspace_members::ActiveModel {
+                    id: Set(Uuid::new_v4()),
+                    workspace_id: Set(ws.id),
+                    member_id: Set(user.id),
+                    role: Set(invite.role),
+                    is_active: Set(true),
+                    created_at: Set(now),
+                    updated_at: Set(now),
+                    created_by_id: Set(Some(user.id)),
+                    updated_by_id: Set(Some(user.id)),
+                    ..Default::default()
+                };
+                new_member.insert(&state.db).await.map_err(AppError::Database)?;
+            }
+        }
+
+        // Eliminar la invitación aceptada
+        let del_am: workspace_member_invites::ActiveModel = invite.into();
+        del_am.delete(&state.db).await.map_err(AppError::Database)?;
+
+        return Ok(axum::Json(serde_json::json!({
+            "message": "Workspace Invitation Accepted"
+        })));
+    }
+
+    Ok(axum::Json(serde_json::json!({
+        "message": "Workspace Invitation was not accepted"
+    })))
+}
+
+// ─── Workspace Themes ─────────────────────────────────────────────────────────
+
+#[derive(Debug, serde::Serialize, utoipa::ToSchema)]
+pub struct WorkspaceThemeResponse {
+    pub id: Uuid,
+    pub name: String,
+    pub colors: serde_json::Value,
+    pub workspace_id: Uuid,
+    pub actor_id: Uuid,
+    pub created_by_id: Option<Uuid>,
+    pub updated_by_id: Option<Uuid>,
+    pub created_at: chrono::DateTime<chrono::FixedOffset>,
+    pub updated_at: chrono::DateTime<chrono::FixedOffset>,
+}
+
+impl From<crate::entities::workspace_themes::Model> for WorkspaceThemeResponse {
+    fn from(m: crate::entities::workspace_themes::Model) -> Self {
+        Self {
+            id: m.id,
+            name: m.name,
+            colors: m.colors,
+            workspace_id: m.workspace_id,
+            actor_id: m.actor_id,
+            created_by_id: m.created_by_id,
+            updated_by_id: m.updated_by_id,
+            created_at: m.created_at,
+            updated_at: m.updated_at,
+        }
+    }
+}
+
+#[derive(Debug, serde::Deserialize, utoipa::ToSchema)]
+pub struct CreateWorkspaceThemeRequest {
+    pub name: String,
+    pub colors: Option<serde_json::Value>,
+}
+
+#[derive(Debug, serde::Deserialize, utoipa::ToSchema)]
+pub struct UpdateWorkspaceThemeRequest {
+    pub name: Option<String>,
+    pub colors: Option<serde_json::Value>,
+}
+
+/// Lista todos los temas del workspace.
+///
+/// Espejo de `WorkspaceThemeViewSet.list`
+/// (`apps/api/plane/app/views/workspace/base.py`).
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/workspace-themes/",
+    tag = "Workspaces",
+    security(("TokenAuth" = []), ("SessionCookie" = [])),
+    params(("slug" = String, Path, description = "Workspace slug")),
+    responses((status = 200, description = "Lista de temas"))
+)]
+pub async fn list_workspace_themes(
+    State(state): State<AppState>,
+    AnyAuth(user): AnyAuth,
+    Path(slug): Path<String>,
+) -> Result<axum::Json<Vec<WorkspaceThemeResponse>>, AppError> {
+    let ws = workspace_by_slug(&state.db, &slug).await?;
+    require_workspace_member(&state.db, ws.id, user.id).await?;
+
+    let themes = crate::entities::workspace_themes::Entity::find()
+        .filter(crate::entities::workspace_themes::Column::WorkspaceId.eq(ws.id))
+        .filter(crate::entities::workspace_themes::Column::DeletedAt.is_null())
+        .order_by_desc(crate::entities::workspace_themes::Column::CreatedAt)
+        .all(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    Ok(axum::Json(
+        themes.into_iter().map(WorkspaceThemeResponse::from).collect(),
+    ))
+}
+
+/// Crea un nuevo tema del workspace.
+///
+/// Espejo de `WorkspaceThemeViewSet.create`
+/// (`apps/api/plane/app/views/workspace/base.py`).
+#[utoipa::path(
+    post,
+    path = "/api/workspaces/{slug}/workspace-themes/",
+    tag = "Workspaces",
+    security(("TokenAuth" = []), ("SessionCookie" = [])),
+    params(("slug" = String, Path, description = "Workspace slug")),
+    responses(
+        (status = 201, description = "Tema creado"),
+        (status = 400, description = "Nombre duplicado"),
+    )
+)]
+pub async fn create_workspace_theme(
+    State(state): State<AppState>,
+    AnyAuth(user): AnyAuth,
+    Path(slug): Path<String>,
+    Json(body): Json<CreateWorkspaceThemeRequest>,
+) -> Result<(axum::http::StatusCode, axum::Json<WorkspaceThemeResponse>), AppError> {
+    let ws = workspace_by_slug(&state.db, &slug).await?;
+    require_workspace_member(&state.db, ws.id, user.id).await?;
+
+    let now = chrono::Utc::now().fixed_offset();
+    let new_theme = crate::entities::workspace_themes::ActiveModel {
+        id: Set(Uuid::new_v4()),
+        workspace_id: Set(ws.id),
+        actor_id: Set(user.id),
+        name: Set(body.name),
+        colors: Set(body.colors.unwrap_or_else(|| serde_json::json!({}))),
+        created_at: Set(now),
+        updated_at: Set(now),
+        created_by_id: Set(Some(user.id)),
+        updated_by_id: Set(Some(user.id)),
+        deleted_at: Set(None),
+    };
+
+    let theme = new_theme
+        .insert(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    Ok((
+        axum::http::StatusCode::CREATED,
+        axum::Json(WorkspaceThemeResponse::from(theme)),
+    ))
+}
+
+/// Obtiene el detalle de un tema.
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/workspace-themes/{pk}/",
+    tag = "Workspaces",
+    security(("TokenAuth" = []), ("SessionCookie" = [])),
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("pk" = Uuid, Path, description = "Theme UUID"),
+    ),
+    responses(
+        (status = 200, description = "Detalle del tema"),
+        (status = 404, description = "Not found"),
+    )
+)]
+pub async fn get_workspace_theme(
+    State(state): State<AppState>,
+    AnyAuth(user): AnyAuth,
+    Path((slug, pk)): Path<(String, Uuid)>,
+) -> Result<axum::Json<WorkspaceThemeResponse>, AppError> {
+    let ws = workspace_by_slug(&state.db, &slug).await?;
+    require_workspace_member(&state.db, ws.id, user.id).await?;
+
+    let theme = crate::entities::workspace_themes::Entity::find_by_id(pk)
+        .filter(crate::entities::workspace_themes::Column::WorkspaceId.eq(ws.id))
+        .filter(crate::entities::workspace_themes::Column::DeletedAt.is_null())
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    Ok(axum::Json(WorkspaceThemeResponse::from(theme)))
+}
+
+/// Actualiza un tema del workspace.
+#[utoipa::path(
+    patch,
+    path = "/api/workspaces/{slug}/workspace-themes/{pk}/",
+    tag = "Workspaces",
+    security(("TokenAuth" = []), ("SessionCookie" = [])),
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("pk" = Uuid, Path, description = "Theme UUID"),
+    ),
+    responses(
+        (status = 200, description = "Tema actualizado"),
+        (status = 404, description = "Not found"),
+    )
+)]
+pub async fn update_workspace_theme(
+    State(state): State<AppState>,
+    AnyAuth(user): AnyAuth,
+    Path((slug, pk)): Path<(String, Uuid)>,
+    Json(body): Json<UpdateWorkspaceThemeRequest>,
+) -> Result<axum::Json<WorkspaceThemeResponse>, AppError> {
+    let ws = workspace_by_slug(&state.db, &slug).await?;
+    require_workspace_member(&state.db, ws.id, user.id).await?;
+
+    let theme = crate::entities::workspace_themes::Entity::find_by_id(pk)
+        .filter(crate::entities::workspace_themes::Column::WorkspaceId.eq(ws.id))
+        .filter(crate::entities::workspace_themes::Column::DeletedAt.is_null())
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    let now = chrono::Utc::now().fixed_offset();
+    let mut am: crate::entities::workspace_themes::ActiveModel = theme.into();
+    if let Some(name) = body.name {
+        am.name = Set(name);
+    }
+    if let Some(colors) = body.colors {
+        am.colors = Set(colors);
+    }
+    am.updated_at = Set(now);
+    am.updated_by_id = Set(Some(user.id));
+
+    let updated = am.update(&state.db).await.map_err(AppError::Database)?;
+    Ok(axum::Json(WorkspaceThemeResponse::from(updated)))
+}
+
+/// Elimina (soft-delete) un tema del workspace.
+#[utoipa::path(
+    delete,
+    path = "/api/workspaces/{slug}/workspace-themes/{pk}/",
+    tag = "Workspaces",
+    security(("TokenAuth" = []), ("SessionCookie" = [])),
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("pk" = Uuid, Path, description = "Theme UUID"),
+    ),
+    responses(
+        (status = 204, description = "Eliminado"),
+        (status = 404, description = "Not found"),
+    )
+)]
+pub async fn delete_workspace_theme(
+    State(state): State<AppState>,
+    AnyAuth(user): AnyAuth,
+    Path((slug, pk)): Path<(String, Uuid)>,
+) -> Result<axum::http::StatusCode, AppError> {
+    let ws = workspace_by_slug(&state.db, &slug).await?;
+    require_workspace_member(&state.db, ws.id, user.id).await?;
+
+    let theme = crate::entities::workspace_themes::Entity::find_by_id(pk)
+        .filter(crate::entities::workspace_themes::Column::WorkspaceId.eq(ws.id))
+        .filter(crate::entities::workspace_themes::Column::DeletedAt.is_null())
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    let now = chrono::Utc::now().fixed_offset();
+    let mut am: crate::entities::workspace_themes::ActiveModel = theme.into();
+    am.deleted_at = Set(Some(now));
+    am.updated_at = Set(now);
+    am.updated_by_id = Set(Some(user.id));
+    am.update(&state.db).await.map_err(AppError::Database)?;
+
+    Ok(axum::http::StatusCode::NO_CONTENT)
+}
