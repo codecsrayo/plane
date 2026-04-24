@@ -426,6 +426,12 @@ impl TestApp {
             .await
     }
 
+    /// DELETE autenticado vía API key, sin body.
+    pub async fn delete_authed(&self, api_key: &str, path: &str) -> TestResponse {
+        self.request(Method::DELETE, path, None, &[("x-api-key", api_key)])
+            .await
+    }
+
     /// PATCH con body JSON, autenticado vía API key.
     pub async fn patch_json_authed(
         &self,
