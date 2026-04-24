@@ -358,6 +358,17 @@ impl TestApp {
             cycle_view: Set(true),
             module_view: Set(true),
             issue_views_view: Set(true),
+            // Columnas NOT NULL sin DEFAULT en la baseline SQL. Django las llena
+            // vía `default=` en el modelo (`apps/api/plane/db/models/project.py`);
+            // acá hay que ser explícito o el INSERT falla con 23502.
+            page_view: Set(true),
+            intake_view: Set(false),
+            archive_in: Set(0),
+            close_in: Set(0),
+            is_time_tracking_enabled: Set(false),
+            is_issue_type_enabled: Set(false),
+            guest_view_all_features: Set(false),
+            timezone: Set("UTC".to_owned()),
             logo_props: Set(serde_json::json!({})),
             created_at: Set(now.into()),
             updated_at: Set(now.into()),
@@ -606,6 +617,16 @@ impl TestApp {
 
 /// Imita el `NormalizePathLayer::trim_trailing_slash()` de producción.
 /// Trimea SOLO la barra final del path, conservando query string si existe.
+///
+/// Además **prefija `/api`** cuando el path no empieza por un mount conocido
+/// (`/api`, `/auth`) ni es la raíz. El router real anida TODAS las rutas
+/// de negocio bajo `.nest("/api", api_router)` (ver `src/routes/mod.rs`),
+/// mientras que los tests de integración se escribieron contra los paths
+/// "lógicos" (ej. `/workspaces/{slug}/analytics`). Sin este prefijo
+/// automático, el router devuelve 404 en lugar del 401/200 esperado.
+/// Los tests que quieran hitear `/api/...` o `/auth/...` explícitamente
+/// (ej. OAuth callbacks, auth flows) siguen funcionando porque ya traen
+/// el prefijo.
 fn normalize_path(path: &str) -> String {
     let (path_only, query) = match path.find('?') {
         Some(i) => (&path[..i], Some(&path[i..])),
@@ -616,9 +637,20 @@ fn normalize_path(path: &str) -> String {
     } else {
         path_only
     };
+    // Prefija `/api` si el path no viene ya con un mount conocido.
+    let prefixed: std::borrow::Cow<'_, str> = if trimmed == "/"
+        || trimmed.starts_with("/api/")
+        || trimmed == "/api"
+        || trimmed.starts_with("/auth/")
+        || trimmed == "/auth"
+    {
+        std::borrow::Cow::Borrowed(trimmed)
+    } else {
+        std::borrow::Cow::Owned(format!("/api{trimmed}"))
+    };
     match query {
-        Some(q) => format!("{trimmed}{q}"),
-        None => trimmed.to_owned(),
+        Some(q) => format!("{prefixed}{q}"),
+        None => prefixed.into_owned(),
     }
 }
 
