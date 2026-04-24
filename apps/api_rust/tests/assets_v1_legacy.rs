@@ -37,7 +37,7 @@ async fn post_user_assets_unauthenticated_returns_401() {
     let res = app
         .request(
             Method::POST,
-            "/assets/user-assets",
+            "/api/v1/assets/user-assets",
             Some(serde_json::to_vec(&json!({"name":"avatar.png","type":"image/png","size":51200})).unwrap()),
             &[("content-type", "application/json")],
         )
@@ -51,7 +51,7 @@ async fn post_user_assets_authenticated_initiates_upload() {
     let res = app
         .post_json_authed(
             &api_key,
-            "/assets/user-assets",
+            "/api/v1/assets/user-assets",
             &json!({
                 "name": "profile.jpg",
                 "type": "image/jpeg",
@@ -83,7 +83,7 @@ async fn patch_user_asset_unauthenticated_returns_401() {
     let res = app
         .request(
             Method::PATCH,
-            &format!("/assets/user-assets/{fake_id}"),
+            &format!("/api/v1/assets/user-assets/{fake_id}"),
             Some(serde_json::to_vec(&json!({})).unwrap()),
             &[("content-type", "application/json")],
         )
@@ -96,7 +96,7 @@ async fn patch_user_asset_nonexistent_returns_404() {
     let (app, api_key, _) = setup("ua_patch_404").await;
     let fake_id = Uuid::new_v4();
     let res = app
-        .patch_json_authed(&api_key, &format!("/assets/user-assets/{fake_id}"), &json!({}))
+        .patch_json_authed(&api_key, &format!("/api/v1/assets/user-assets/{fake_id}"), &json!({}))
         .await;
     assert_eq!(
         res.status.as_u16(),
@@ -111,7 +111,7 @@ async fn delete_user_asset_unauthenticated_returns_401() {
     let (app, _, _) = setup("ua_del_unauth").await;
     let fake_id = Uuid::new_v4();
     let res = app
-        .delete_authed("", &format!("/assets/user-assets/{fake_id}"))
+        .delete_authed("", &format!("/api/v1/assets/user-assets/{fake_id}"))
         .await;
     assert_eq!(res.status.as_u16(), 401);
 }
@@ -121,7 +121,7 @@ async fn delete_user_asset_nonexistent_returns_404() {
     let (app, api_key, _) = setup("ua_del_404").await;
     let fake_id = Uuid::new_v4();
     let res = app
-        .delete_authed(&api_key, &format!("/assets/user-assets/{fake_id}"))
+        .delete_authed(&api_key, &format!("/api/v1/assets/user-assets/{fake_id}"))
         .await;
     assert_eq!(
         res.status.as_u16(),
@@ -141,7 +141,7 @@ async fn post_user_assets_server_unauthenticated_returns_401() {
     let res = app
         .request(
             Method::POST,
-            "/assets/user-assets/server",
+            "/api/v1/assets/user-assets/server",
             Some(serde_json::to_vec(&json!({"name":"logo.svg","type":"image/svg+xml","size":2048})).unwrap()),
             &[("content-type", "application/json")],
         )
@@ -160,7 +160,7 @@ async fn post_user_asset_server_complete_unauthenticated_returns_401() {
     let res = app
         .request(
             Method::POST,
-            &format!("/assets/user-assets/{fake_id}/server"),
+            &format!("/api/v1/assets/user-assets/{fake_id}/server"),
             None,
             &[],
         )
@@ -175,7 +175,7 @@ async fn post_user_asset_server_complete_nonexistent_returns_404() {
     let res = app
         .request(
             Method::POST,
-            &format!("/assets/user-assets/{fake_id}/server"),
+            &format!("/api/v1/assets/user-assets/{fake_id}/server"),
             None,
             &[("x-api-key", api_key.as_str())],
         )
@@ -198,7 +198,7 @@ async fn post_workspace_asset_unauthenticated_returns_401() {
     let res = app
         .request(
             Method::POST,
-            &format!("/workspaces/{slug}/assets"),
+            &format!("/api/v1/workspaces/{slug}/assets"),
             Some(serde_json::to_vec(&json!({"name":"banner.png","type":"image/png","size":204800,"entity_type":"workspace_logo"})).unwrap()),
             &[("content-type", "application/json")],
         )
@@ -212,7 +212,7 @@ async fn post_workspace_asset_authenticated_initiates_upload() {
     let res = app
         .post_json_authed(
             &api_key,
-            &format!("/workspaces/{slug}/assets"),
+            &format!("/api/v1/workspaces/{slug}/assets"),
             &json!({
                 "name": "workspace-logo.png",
                 "type": "image/png",
@@ -239,7 +239,7 @@ async fn get_workspace_asset_unauthenticated_returns_401() {
     let (app, _, slug) = setup("wa_get_unauth").await;
     let fake_id = Uuid::new_v4();
     let res = app
-        .get(&format!("/workspaces/{slug}/assets/{fake_id}"))
+        .get(&format!("/api/v1/workspaces/{slug}/assets/{fake_id}"))
         .await;
     assert_eq!(res.status.as_u16(), 401);
 }
@@ -249,7 +249,7 @@ async fn get_workspace_asset_nonexistent_returns_404() {
     let (app, api_key, slug) = setup("wa_get_404").await;
     let fake_id = Uuid::new_v4();
     let res = app
-        .get_authed(&api_key, &format!("/workspaces/{slug}/assets/{fake_id}"))
+        .get_authed(&api_key, &format!("/api/v1/workspaces/{slug}/assets/{fake_id}"))
         .await;
     assert_eq!(
         res.status.as_u16(),
@@ -264,7 +264,7 @@ async fn patch_workspace_asset_nonexistent_returns_404() {
     let (app, api_key, slug) = setup("wa_patch_404").await;
     let fake_id = Uuid::new_v4();
     let res = app
-        .patch_json_authed(&api_key, &format!("/workspaces/{slug}/assets/{fake_id}"), &json!({}))
+        .patch_json_authed(&api_key, &format!("/api/v1/workspaces/{slug}/assets/{fake_id}"), &json!({}))
         .await;
     assert_eq!(res.status.as_u16(), 404);
 }
@@ -274,7 +274,7 @@ async fn delete_workspace_asset_unauthenticated_returns_401() {
     let (app, _, slug) = setup("wa_del_unauth").await;
     let fake_id = Uuid::new_v4();
     let res = app
-        .delete_authed("", &format!("/workspaces/{slug}/assets/{fake_id}"))
+        .delete_authed("", &format!("/api/v1/workspaces/{slug}/assets/{fake_id}"))
         .await;
     assert_eq!(res.status.as_u16(), 401);
 }
@@ -284,7 +284,7 @@ async fn delete_workspace_asset_nonexistent_returns_404() {
     let (app, api_key, slug) = setup("wa_del_404").await;
     let fake_id = Uuid::new_v4();
     let res = app
-        .delete_authed(&api_key, &format!("/workspaces/{slug}/assets/{fake_id}"))
+        .delete_authed(&api_key, &format!("/api/v1/workspaces/{slug}/assets/{fake_id}"))
         .await;
     assert_eq!(res.status.as_u16(), 404);
 }
