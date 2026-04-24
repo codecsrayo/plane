@@ -2709,7 +2709,7 @@ pub async fn get_project_deploy_board(
     Ok(Json(board.map(DeployBoardResponse::from)))
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct UpsertDeployBoardRequest {
     pub is_comments_enabled: Option<bool>,
     pub is_reactions_enabled: Option<bool>,

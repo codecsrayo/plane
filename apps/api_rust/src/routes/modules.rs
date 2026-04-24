@@ -906,10 +906,21 @@ pub struct IssueModulesRequest {
 
 /// `POST /api/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/modules/`
 ///
-/// Asigna o elimina módulos de una issue.
-/// Paridad con `ModuleIssueViewSet.create_issue_modules`.
-///
-/// Permisos: ADMIN / MEMBER.
+#[utoipa::path(
+    post,
+    path = "/api/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/modules/",
+    tag = "Modules",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project ID"),
+        ("issue_id" = Uuid, Path, description = "Issue ID"),
+    ),
+    responses(
+        (status = 200, description = "Modules updated for issue"),
+        (status = 403, description = "Not authorized"),
+    ),
+    security(("TokenAuth" = []))
+)]
 pub async fn set_issue_modules(
     State(state): State<AppState>,
     guard: ProjectMemberGuard,
@@ -1023,10 +1034,21 @@ pub struct UpdateModuleLinkRequest {
 
 /// `GET /api/workspaces/{slug}/projects/{project_id}/modules/{module_id}/module-links/`
 ///
-/// Lista los links del módulo.
-/// Paridad con `ModuleLinkViewSet.list`.
-///
-/// Permisos: ADMIN / MEMBER / GUEST.
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/projects/{project_id}/modules/{module_id}/module-links/",
+    tag = "Modules",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project ID"),
+        ("module_id" = Uuid, Path, description = "Module ID"),
+    ),
+    responses(
+        (status = 200, description = "List of module links"),
+        (status = 403, description = "Not authorized"),
+    ),
+    security(("TokenAuth" = []))
+)]
 pub async fn list_module_links(
     State(state): State<AppState>,
     guard: ProjectMemberGuard,
@@ -1058,10 +1080,21 @@ pub async fn list_module_links(
 
 /// `POST /api/workspaces/{slug}/projects/{project_id}/modules/{module_id}/module-links/`
 ///
-/// Crea un link para el módulo.
-/// Paridad con `ModuleLinkViewSet.create`.
-///
-/// Permisos: ADMIN / MEMBER.
+#[utoipa::path(
+    post,
+    path = "/api/workspaces/{slug}/projects/{project_id}/modules/{module_id}/module-links/",
+    tag = "Modules",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project ID"),
+        ("module_id" = Uuid, Path, description = "Module ID"),
+    ),
+    responses(
+        (status = 201, description = "Module link created"),
+        (status = 400, description = "Invalid request"),
+    ),
+    security(("TokenAuth" = []))
+)]
 pub async fn create_module_link(
     State(state): State<AppState>,
     guard: ProjectMemberGuard,
@@ -1099,9 +1132,22 @@ pub async fn create_module_link(
 
 /// `GET /api/workspaces/{slug}/projects/{project_id}/modules/{module_id}/module-links/{pk}/`
 ///
-/// Obtiene un link del módulo por ID.
-///
-/// Permisos: ADMIN / MEMBER / GUEST.
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/projects/{project_id}/modules/{module_id}/module-links/{pk}/",
+    tag = "Modules",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project ID"),
+        ("module_id" = Uuid, Path, description = "Module ID"),
+        ("pk" = Uuid, Path, description = "Link ID"),
+    ),
+    responses(
+        (status = 200, description = "Module link"),
+        (status = 404, description = "Not found"),
+    ),
+    security(("TokenAuth" = []))
+)]
 pub async fn get_module_link(
     State(state): State<AppState>,
     guard: ProjectMemberGuard,
@@ -1131,10 +1177,22 @@ pub async fn get_module_link(
 
 /// `PATCH /api/workspaces/{slug}/projects/{project_id}/modules/{module_id}/module-links/{pk}/`
 ///
-/// Actualiza un link del módulo.
-/// Paridad con `ModuleLinkViewSet.partial_update`.
-///
-/// Permisos: ADMIN / MEMBER.
+#[utoipa::path(
+    patch,
+    path = "/api/workspaces/{slug}/projects/{project_id}/modules/{module_id}/module-links/{pk}/",
+    tag = "Modules",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project ID"),
+        ("module_id" = Uuid, Path, description = "Module ID"),
+        ("pk" = Uuid, Path, description = "Link ID"),
+    ),
+    responses(
+        (status = 200, description = "Updated module link"),
+        (status = 404, description = "Not found"),
+    ),
+    security(("TokenAuth" = []))
+)]
 pub async fn update_module_link(
     State(state): State<AppState>,
     guard: ProjectMemberGuard,
@@ -1176,10 +1234,22 @@ pub async fn update_module_link(
 
 /// `DELETE /api/workspaces/{slug}/projects/{project_id}/modules/{module_id}/module-links/{pk}/`
 ///
-/// Elimina un link del módulo (soft delete).
-/// Paridad con `ModuleLinkViewSet.destroy`.
-///
-/// Permisos: ADMIN / MEMBER.
+#[utoipa::path(
+    delete,
+    path = "/api/workspaces/{slug}/projects/{project_id}/modules/{module_id}/module-links/{pk}/",
+    tag = "Modules",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project ID"),
+        ("module_id" = Uuid, Path, description = "Module ID"),
+        ("pk" = Uuid, Path, description = "Link ID"),
+    ),
+    responses(
+        (status = 204, description = "Module link deleted"),
+        (status = 404, description = "Not found"),
+    ),
+    security(("TokenAuth" = []))
+)]
 pub async fn delete_module_link(
     State(state): State<AppState>,
     guard: ProjectMemberGuard,
@@ -1219,10 +1289,20 @@ pub struct FavoriteModuleRequest {
 
 /// `GET /api/workspaces/{slug}/projects/{project_id}/user-favorite-modules/`
 ///
-/// Lista los módulos favoritos del usuario en el proyecto.
-/// Paridad con `ModuleFavoriteViewSet.list`.
-///
-/// Permisos: ADMIN / MEMBER.
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/projects/{project_id}/user-favorite-modules/",
+    tag = "Modules",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project ID"),
+    ),
+    responses(
+        (status = 200, description = "List of favorite modules"),
+        (status = 403, description = "Not authorized"),
+    ),
+    security(("TokenAuth" = []))
+)]
 pub async fn list_favorite_modules(
     State(state): State<AppState>,
     guard: ProjectMemberGuard,
@@ -1264,10 +1344,20 @@ pub async fn list_favorite_modules(
 
 /// `POST /api/workspaces/{slug}/projects/{project_id}/user-favorite-modules/`
 ///
-/// Marca un módulo como favorito.
-/// Paridad con `ModuleFavoriteViewSet.create` (retorna 204).
-///
-/// Permisos: ADMIN / MEMBER.
+#[utoipa::path(
+    post,
+    path = "/api/workspaces/{slug}/projects/{project_id}/user-favorite-modules/",
+    tag = "Modules",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project ID"),
+    ),
+    responses(
+        (status = 204, description = "Module added to favorites"),
+        (status = 403, description = "Not authorized"),
+    ),
+    security(("TokenAuth" = []))
+)]
 pub async fn create_favorite_module(
     State(state): State<AppState>,
     guard: ProjectMemberGuard,
@@ -1317,10 +1407,21 @@ pub async fn create_favorite_module(
 
 /// `DELETE /api/workspaces/{slug}/projects/{project_id}/user-favorite-modules/{module_id}/`
 ///
-/// Elimina un módulo de favoritos.
-/// Paridad con `ModuleFavoriteViewSet.destroy`.
-///
-/// Permisos: ADMIN / MEMBER.
+#[utoipa::path(
+    delete,
+    path = "/api/workspaces/{slug}/projects/{project_id}/user-favorite-modules/{module_id}/",
+    tag = "Modules",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project ID"),
+        ("module_id" = Uuid, Path, description = "Module ID"),
+    ),
+    responses(
+        (status = 204, description = "Module removed from favorites"),
+        (status = 404, description = "Not found"),
+    ),
+    security(("TokenAuth" = []))
+)]
 pub async fn delete_favorite_module(
     State(state): State<AppState>,
     guard: ProjectMemberGuard,
@@ -1359,10 +1460,22 @@ pub async fn delete_favorite_module(
 
 /// `POST /api/workspaces/{slug}/projects/{project_id}/modules/{module_id}/archive/`
 ///
-/// Archiva un módulo completado o cancelado.
-/// Paridad con `ModuleArchiveUnarchiveEndpoint.post`.
-///
-/// Permisos: ADMIN / MEMBER.
+#[utoipa::path(
+    post,
+    path = "/api/workspaces/{slug}/projects/{project_id}/modules/{module_id}/archive/",
+    tag = "Modules",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project ID"),
+        ("module_id" = Uuid, Path, description = "Module ID"),
+    ),
+    responses(
+        (status = 200, description = "Module archived"),
+        (status = 400, description = "Invalid state for archiving"),
+        (status = 404, description = "Not found"),
+    ),
+    security(("TokenAuth" = []))
+)]
 pub async fn archive_module(
     State(state): State<AppState>,
     guard: ProjectMemberGuard,
@@ -1414,10 +1527,21 @@ pub async fn archive_module(
 
 /// `DELETE /api/workspaces/{slug}/projects/{project_id}/modules/{module_id}/archive/`
 ///
-/// Desarchiva un módulo.
-/// Paridad con `ModuleArchiveUnarchiveEndpoint.delete`.
-///
-/// Permisos: ADMIN / MEMBER.
+#[utoipa::path(
+    delete,
+    path = "/api/workspaces/{slug}/projects/{project_id}/modules/{module_id}/archive/",
+    tag = "Modules",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project ID"),
+        ("module_id" = Uuid, Path, description = "Module ID"),
+    ),
+    responses(
+        (status = 200, description = "Module unarchived"),
+        (status = 404, description = "Not found"),
+    ),
+    security(("TokenAuth" = []))
+)]
 pub async fn unarchive_module(
     State(state): State<AppState>,
     guard: ProjectMemberGuard,
@@ -1453,10 +1577,20 @@ pub async fn unarchive_module(
 
 /// `GET /api/workspaces/{slug}/projects/{project_id}/archived-modules/`
 ///
-/// Lista los módulos archivados del proyecto.
-/// Paridad con `ModuleArchiveUnarchiveEndpoint.get` (pk=None).
-///
-/// Permisos: ADMIN / MEMBER.
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/projects/{project_id}/archived-modules/",
+    tag = "Modules",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project ID"),
+    ),
+    responses(
+        (status = 200, description = "List of archived modules"),
+        (status = 403, description = "Not authorized"),
+    ),
+    security(("TokenAuth" = []))
+)]
 pub async fn list_archived_modules(
     State(state): State<AppState>,
     guard: ProjectMemberGuard,
@@ -1487,10 +1621,21 @@ pub async fn list_archived_modules(
 
 /// `GET /api/workspaces/{slug}/projects/{project_id}/archived-modules/{pk}/`
 ///
-/// Devuelve un módulo archivado por su ID.
-/// Paridad con `ModuleArchiveUnarchiveEndpoint.get` (pk provisto).
-///
-/// Permisos: ADMIN / MEMBER.
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/projects/{project_id}/archived-modules/{pk}/",
+    tag = "Modules",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project ID"),
+        ("pk" = Uuid, Path, description = "Module ID"),
+    ),
+    responses(
+        (status = 200, description = "Archived module"),
+        (status = 404, description = "Not found"),
+    ),
+    security(("TokenAuth" = []))
+)]
 pub async fn get_archived_module(
     State(state): State<AppState>,
     guard: ProjectMemberGuard,

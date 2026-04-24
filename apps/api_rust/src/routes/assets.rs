@@ -1382,14 +1382,17 @@ pub async fn initiate_project_asset_upload(
 
     let asset = new_asset.insert(&state.db).await.map_err(AppError::Database)?;
 
-    let endpoint = public_s3_endpoint(&state.config, &headers);
+    let _endpoint = public_s3_endpoint(&state.config, &headers);
     let presigned = generate_presigned_post(
-        &state.config,
+        &state.config.aws_s3_bucket,
+        &state.config.aws_endpoint,
+        &state.config.aws_region,
+        &state.config.aws_access_key_id,
+        &state.config.aws_secret_access_key,
         &asset_key,
         content_type,
-        size_limit,
-        UPLOAD_URL_TTL_SECS,
-        &endpoint,
+        size_limit as i64,
+        UPLOAD_URL_TTL_SECS as i64,
     )
     .map_err(|e| AppError::Internal(anyhow::anyhow!("presigned post error: {e}")))?;
 

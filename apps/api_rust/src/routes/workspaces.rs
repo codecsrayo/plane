@@ -3361,7 +3361,7 @@ pub async fn join_workspace_invitation(
 
     if accepted {
         // Verificar si el usuario invitado coincide con el autenticado (por email)
-        if invite.email == user.email {
+        if user.email.as_deref() == Some(invite.email.as_str()) {
             // Buscar membresía existente
             let existing = workspace_members::Entity::find()
                 .filter(workspace_members::Column::WorkspaceId.eq(ws.id))

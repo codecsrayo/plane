@@ -185,7 +185,7 @@ pub async fn get_project_summary(
 
     // WorkSpaceAdminPermission: role >= ADMIN (20)
     const ROLE_ADMIN: i32 = 20;
-    if wm.role < ROLE_ADMIN {
+    if i32::from(wm.role) < ROLE_ADMIN {
         return Err(AppError::Forbidden);
     }
 
@@ -512,7 +512,7 @@ pub fn v1_router(state: AppState) -> Router<AppState> {
         // (project_identifier-issue_identifier)
         .route(
             "/workspaces/{slug}/work-items/{combined}",
-            get(issues::get_issue_by_identifier),
+            get(issue_extras2::get_issue_by_identifier),
         )
         // GET/POST /api/v1/workspaces/{slug}/projects/{project_id}/work-items/
         .route(
@@ -584,7 +584,7 @@ pub fn v1_router(state: AppState) -> Router<AppState> {
         // GET /api/v1/workspaces/{slug}/issues/{combined}
         .route(
             "/workspaces/{slug}/issues/{combined}",
-            get(issues::get_issue_by_identifier),
+            get(issue_extras2::get_issue_by_identifier),
         )
         // GET/POST /api/v1/workspaces/{slug}/projects/{project_id}/issues/
         .route(

@@ -374,51 +374,28 @@ pub async fn entity_search(
                 // Busca miembros activos del proyecto (si project_id) o del workspace
                 let members: Vec<serde_json::Value> = if let Some(pid) = project_id {
                     let mut qb = project_members::Entity::find()
-                        .inner_join(users::Entity)
                         .filter(project_members::Column::ProjectId.eq(pid))
                         .filter(project_members::Column::WorkspaceId.eq(workspace_id))
                         .filter(project_members::Column::IsActive.eq(true))
                         .filter(project_members::Column::DeletedAt.is_null());
 
-                    if !q.is_empty() {
-                        qb = qb.filter(
-                            Condition::any()
-                                .add(users::Column::DisplayName.contains(&q))
-                                .add(users::Column::FirstName.contains(&q))
-                                .add(users::Column::LastName.contains(&q)),
-                        );
-                    }
-
-                    qb.limit(count)
+                    let _ = &q; // query filtering done in fetch_user_mentions below
+                    let _ = qb.limit(count)
                         .all(&state.db)
                         .await
-                        .map_err(AppError::Database)?
-                        .into_iter()
-                        .map(|_pm| serde_json::json!({})) // placeholder — join via separate query
-                        .collect()
+                        .map_err(AppError::Database)?;
+                    vec![]
                 } else {
                     let mut qb = workspace_members::Entity::find()
-                        .inner_join(users::Entity)
                         .filter(workspace_members::Column::WorkspaceId.eq(workspace_id))
                         .filter(workspace_members::Column::IsActive.eq(true))
                         .filter(workspace_members::Column::DeletedAt.is_null());
 
-                    if !q.is_empty() {
-                        qb = qb.filter(
-                            Condition::any()
-                                .add(users::Column::DisplayName.contains(&q))
-                                .add(users::Column::FirstName.contains(&q))
-                                .add(users::Column::LastName.contains(&q)),
-                        );
-                    }
-
-                    qb.limit(count)
+                    let _ = qb.limit(count)
                         .all(&state.db)
                         .await
-                        .map_err(AppError::Database)?
-                        .into_iter()
-                        .map(|_wm| serde_json::json!({}))
-                        .collect()
+                        .map_err(AppError::Database)?;
+                    vec![]
                 };
                 // Fetch with user join properly via raw members
                 let user_results = fetch_user_mentions(&state.db, workspace_id, project_id, &q, count, user_id).await?;
@@ -664,7 +641,7 @@ async fn fetch_user_mentions(
             .await
             .map_err(AppError::Database)?;
 
-        let user_ids: Vec<Uuid> = members.iter().filter_map(|m| m.member_id).collect();
+        let user_ids: Vec<Uuid> = members.iter().map(|m| m.member_id).collect();
 
         let mut uq = users::Entity::find()
             .filter(users::Column::Id.is_in(user_ids))

@@ -588,6 +588,7 @@ fn verify_github_signature(secret: &str, body: &[u8], signature: &str) -> bool {
     post,
     path = "/github-webhook",
     tag = "External",
+    request_body(content = String, description = "Raw GitHub webhook payload"),
     responses(
         (status = 200, description = "Webhook processed or ignored"),
         (status = 400, description = "Signature missing"),
@@ -756,7 +757,7 @@ async fn handle_github_issue_event(
                 ..Default::default()
             };
             let _ = new_sync.insert(&state.db).await;
-            tracing::info!(github_issue_id, "Created Plane issue from GitHub event");
+            tracing::info!(gh_issue_id, "Created Plane issue from GitHub event");
         }
         "edited" => {
             if let Some(is) = issue_sync {
@@ -792,6 +793,7 @@ async fn handle_github_issue_event(
     post,
     path = "/gitlab-webhook",
     tag = "External",
+    request_body(content = String, description = "Raw GitLab webhook payload"),
     responses(
         (status = 200, description = "Webhook processed or ignored"),
         (status = 403, description = "Invalid token"),

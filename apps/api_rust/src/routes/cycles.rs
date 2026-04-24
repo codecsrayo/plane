@@ -1777,7 +1777,7 @@ pub async fn cycle_progress(
 
 // ── date-check ────────────────────────────────────────────────────────────────
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct DateCheckRequest {
     pub start_date: String,
     pub end_date: String,
@@ -1869,12 +1869,20 @@ pub struct FavoriteCycleRequest {
     pub cycle: Uuid,
 }
 
-/// `GET /api/workspaces/{slug}/projects/{project_id}/user-favorite-cycles/`
-///
-/// Lista los ciclos favoritos del usuario en un proyecto.
-/// Paridad con `CycleFavoriteViewSet.list`.
-///
-/// Permisos: ADMIN / MEMBER.
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/projects/{project_id}/user-favorite-cycles/",
+    tag = "Cycles",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project ID"),
+    ),
+    responses(
+        (status = 200, description = "List of favorite cycles"),
+        (status = 403, description = "Not authorized"),
+    ),
+    security(("TokenAuth" = []))
+)]
 pub async fn list_favorite_cycles(
     State(state): State<AppState>,
     guard: ProjectMemberGuard,
@@ -1918,10 +1926,20 @@ pub async fn list_favorite_cycles(
 
 /// `POST /api/workspaces/{slug}/projects/{project_id}/user-favorite-cycles/`
 ///
-/// Marca un ciclo como favorito del usuario.
-/// Paridad con `CycleFavoriteViewSet.create` (retorna 204).
-///
-/// Permisos: ADMIN / MEMBER.
+#[utoipa::path(
+    post,
+    path = "/api/workspaces/{slug}/projects/{project_id}/user-favorite-cycles/",
+    tag = "Cycles",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project ID"),
+    ),
+    responses(
+        (status = 204, description = "Cycle added to favorites"),
+        (status = 403, description = "Not authorized"),
+    ),
+    security(("TokenAuth" = []))
+)]
 pub async fn create_favorite_cycle(
     State(state): State<AppState>,
     guard: ProjectMemberGuard,
@@ -1972,10 +1990,21 @@ pub async fn create_favorite_cycle(
 
 /// `DELETE /api/workspaces/{slug}/projects/{project_id}/user-favorite-cycles/{cycle_id}/`
 ///
-/// Elimina un ciclo de favoritos del usuario.
-/// Paridad con `CycleFavoriteViewSet.destroy`.
-///
-/// Permisos: ADMIN / MEMBER.
+#[utoipa::path(
+    delete,
+    path = "/api/workspaces/{slug}/projects/{project_id}/user-favorite-cycles/{cycle_id}/",
+    tag = "Cycles",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project ID"),
+        ("cycle_id" = Uuid, Path, description = "Cycle ID"),
+    ),
+    responses(
+        (status = 204, description = "Cycle removed from favorites"),
+        (status = 404, description = "Not found"),
+    ),
+    security(("TokenAuth" = []))
+)]
 pub async fn delete_favorite_cycle(
     State(state): State<AppState>,
     guard: ProjectMemberGuard,
@@ -2017,13 +2046,22 @@ pub struct TransferCycleIssuesRequest {
     pub new_cycle_id: Uuid,
 }
 
-/// `POST /api/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/transfer-issues/`
-///
-/// Transfiere las issues incompletas (backlog/unstarted/started) del ciclo origen al destino
-/// y guarda un progress_snapshot en el ciclo origen.
-/// Paridad con `TransferCycleIssueEndpoint.post` + `transfer_cycle_issues` utility.
-///
-/// Permisos: ADMIN / MEMBER.
+#[utoipa::path(
+    post,
+    path = "/api/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/transfer-issues/",
+    tag = "Cycles",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project ID"),
+        ("cycle_id" = Uuid, Path, description = "Cycle ID"),
+    ),
+    responses(
+        (status = 200, description = "Issues transferred"),
+        (status = 400, description = "Invalid request"),
+        (status = 403, description = "Not authorized"),
+    ),
+    security(("TokenAuth" = []))
+)]
 pub async fn transfer_cycle_issues(
     State(state): State<AppState>,
     guard: ProjectMemberGuard,
@@ -2117,11 +2155,22 @@ pub async fn transfer_cycle_issues(
 
 /// `POST /api/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/archive/`
 ///
-/// Archiva un ciclo completado.
-/// Paridad con `CycleArchiveUnarchiveEndpoint.post`.
-/// Solo se pueden archivar ciclos cuya `end_date` sea pasada.
-///
-/// Permisos: ADMIN / MEMBER.
+#[utoipa::path(
+    post,
+    path = "/api/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/archive/",
+    tag = "Cycles",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project ID"),
+        ("cycle_id" = Uuid, Path, description = "Cycle ID"),
+    ),
+    responses(
+        (status = 200, description = "Cycle archived"),
+        (status = 400, description = "Only completed cycles can be archived"),
+        (status = 404, description = "Not found"),
+    ),
+    security(("TokenAuth" = []))
+)]
 pub async fn archive_cycle(
     State(state): State<AppState>,
     guard: ProjectMemberGuard,
@@ -2175,10 +2224,21 @@ pub async fn archive_cycle(
 
 /// `DELETE /api/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/archive/`
 ///
-/// Desarchiva un ciclo.
-/// Paridad con `CycleArchiveUnarchiveEndpoint.delete`.
-///
-/// Permisos: ADMIN / MEMBER.
+#[utoipa::path(
+    delete,
+    path = "/api/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/archive/",
+    tag = "Cycles",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project ID"),
+        ("cycle_id" = Uuid, Path, description = "Cycle ID"),
+    ),
+    responses(
+        (status = 200, description = "Cycle unarchived"),
+        (status = 404, description = "Not found"),
+    ),
+    security(("TokenAuth" = []))
+)]
 pub async fn unarchive_cycle(
     State(state): State<AppState>,
     guard: ProjectMemberGuard,
@@ -2215,9 +2275,20 @@ pub async fn unarchive_cycle(
 /// `GET /api/workspaces/{slug}/projects/{project_id}/archived-cycles/`
 ///
 /// Lista los ciclos archivados del proyecto.
-/// Paridad con `CycleArchiveUnarchiveEndpoint.get` (pk=None).
-///
-/// Permisos: ADMIN / MEMBER.
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/projects/{project_id}/archived-cycles/",
+    tag = "Cycles",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project ID"),
+    ),
+    responses(
+        (status = 200, description = "List of archived cycles"),
+        (status = 403, description = "Not authorized"),
+    ),
+    security(("TokenAuth" = []))
+)]
 pub async fn list_archived_cycles(
     State(state): State<AppState>,
     guard: ProjectMemberGuard,
@@ -2282,9 +2353,21 @@ pub async fn list_archived_cycles(
 /// `GET /api/workspaces/{slug}/projects/{project_id}/archived-cycles/{pk}/`
 ///
 /// Devuelve un ciclo archivado por su ID.
-/// Paridad con `CycleArchiveUnarchiveEndpoint.get` (pk provisto).
-///
-/// Permisos: ADMIN / MEMBER.
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/projects/{project_id}/archived-cycles/{pk}/",
+    tag = "Cycles",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project ID"),
+        ("pk" = Uuid, Path, description = "Cycle ID"),
+    ),
+    responses(
+        (status = 200, description = "Archived cycle"),
+        (status = 404, description = "Not found"),
+    ),
+    security(("TokenAuth" = []))
+)]
 pub async fn get_archived_cycle(
     State(state): State<AppState>,
     guard: ProjectMemberGuard,
