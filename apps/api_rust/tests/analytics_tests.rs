@@ -51,8 +51,14 @@ async fn workspace_analytics_unauthenticated_returns_401() {
 #[tokio::test(flavor = "multi_thread")]
 async fn workspace_analytics_member_returns_200() {
     let (app, api_key, slug, _, _) = setup("anl").await;
+    // El endpoint /workspaces/{slug}/analytics exige x_axis ∈ VALID_X_AXIS y
+    // y_axis ∈ {issue_count, estimate}, idéntico a Django (base.py::AnalyticsEndpoint).
+    // Sin esos params devuelve 400 con "x-axis and y-axis dimensions are required...".
     let res = app
-        .get_authed(&api_key, &format!("/workspaces/{slug}/analytics"))
+        .get_authed(
+            &api_key,
+            &format!("/workspaces/{slug}/analytics?x_axis=priority&y_axis=issue_count"),
+        )
         .await;
     assert_eq!(
         res.status.as_u16(),
@@ -343,11 +349,16 @@ async fn project_advance_analytics_stats_member_returns_200() {
 #[tokio::test(flavor = "multi_thread")]
 async fn project_advance_analytics_charts_member_returns_200() {
     let (app, api_key, slug, _, project_id) = setup("projadvanlcharts").await;
+    // Django (project_analytics.py::ProjectAdvanceAnalyticsChartEndpoint.get)
+    // solo acepta type ∈ {"custom-work-items", "work-items"}. El default
+    // "projects" NO está implementado a nivel proyecto y devuelve 400
+    // "Invalid type" — paridad con Rust. Usamos "work-items" porque no
+    // requiere x_axis adicional.
     let res = app
         .get_authed(
             &api_key,
             &format!(
-                "/workspaces/{slug}/projects/{project_id}/advance-analytics-charts"
+                "/workspaces/{slug}/projects/{project_id}/advance-analytics-charts?type=work-items"
             ),
         )
         .await;
