@@ -153,3 +153,6 @@ rust-project.json
 -e 
 # CI sentinel — tracks last deployed SHA to avoid redundant builds
 .ci-last-sha
+
+# Nix
+flake.lock
