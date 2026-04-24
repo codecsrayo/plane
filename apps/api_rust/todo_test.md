@@ -279,39 +279,39 @@
 
 ## License / Instance (`license/`)
 
-- [ ] `GET/POST   /instances`
-- [ ] `GET        /instances/email-credentials-check`
-- [ ] `GET/PATCH  /instances/configurations`
+- ✅ `GET/POST   /instances`
+- ✅ `GET        /instances/email-credentials-check`
+- ✅ `GET/PATCH  /instances/configurations`
 - [ ] `POST       /instances/configurations/disable-email-feature`
 - [ ] `GET/POST   /instances/admins`
 - [ ] `GET/PATCH/DELETE /instances/admins/{pk}`
 - [ ] `POST       /instances/admins/sign-in`
 - [ ] `POST       /instances/admins/sign-up`
 - [ ] `POST       /instances/admins/sign-out`
-- [ ] `GET        /instances/admins/me`
-- [ ] `GET/PATCH  /instances/admins/session`
-- [ ] `GET        /instances/workspaces`
-- [ ] `GET        /instances/workspace-slug-check`
-- [ ] `POST       /instances/admins/sign-up-screen-visited`
+- ✅ `GET        /instances/admins/me`
+- ✅ `GET/PATCH  /instances/admins/session`
+- ✅ `GET        /instances/workspaces`
+- ✅ `GET        /instances/workspace-slug-check`
+- ✅ `POST       /instances/admins/sign-up-screen-visited`
 
 ## Users (`app/urls/user.py`)
 
 - ✅ `GET/PATCH  /users/me`
 - ✅ `GET/DELETE /users/session`
 - [ ] `PATCH      /users/me/settings`
-- [ ] `GET/PATCH  /users/me/profile`
-- [ ] `GET        /users/me/accounts`
+- ✅ `GET/PATCH  /users/me/profile`
+- ✅ `GET        /users/me/accounts`
 - [ ] `DELETE     /users/me/accounts/{pk}`
 - [ ] `GET/POST   /users/me/instance-admin`
-- [ ] `POST       /users/me/onboard`
-- [ ] `POST       /users/me/tour-completed`
-- [ ] `GET        /users/me/activities`
-- [ ] `GET        /users/me/workspaces`
-- [ ] `GET        /users/me/workspaces/{slug}/activity-graph`
-- [ ] `GET        /users/me/workspaces/{slug}/issues-completed-graph`
-- [ ] `GET        /users/me/workspaces/{slug}/dashboard`
+- ✅ `POST       /users/me/onboard`
+- ✅ `POST       /users/me/tour-completed`
+- ✅ `GET        /users/me/activities`
+- ✅ `GET        /users/me/workspaces`
+- ✅ `GET        /users/me/workspaces/{slug}/activity-graph`
+- ✅ `GET        /users/me/workspaces/{slug}/issues-completed-graph`
+- ✅ `GET        /users/me/workspaces/{slug}/dashboard`
 - ✅ `GET/PATCH  /users/me/notification-preferences`
-- [ ] `GET        /users/last-visited-workspace`
+- ✅ `GET        /users/last-visited-workspace`
 - [ ] `POST       /users/me/email/generate-code`
 - [ ] `POST       /users/me/email`
 
@@ -338,34 +338,34 @@
 - [ ] `GET        /workspaces/{slug}/project-members`
 - [ ] `GET/PATCH/DELETE /workspaces/{slug}/members/{pk}`
 - [ ] `POST       /workspaces/{slug}/members/leave`
-- [ ] `GET        /workspaces/{slug}/workspace-members/me`
+- ✅ `GET        /workspaces/{slug}/workspace-members/me`
 - [ ] `GET        /workspaces/{slug}/workspace-views`
 - [ ] `GET        /workspaces/{slug}/user-stats/{user_id}`
 - [ ] `GET        /workspaces/{slug}/user-activity/{user_id}`
 - [ ] `GET        /workspaces/{slug}/user-activity/{user_id}/export`
 - [ ] `GET        /workspaces/{slug}/user-profile/{user_id}`
 - [ ] `GET        /workspaces/{slug}/user-issues/{user_id}`
-- [ ] `GET        /workspaces/{slug}/labels`
-- [ ] `GET/PATCH  /workspaces/{slug}/user-properties`
-- [ ] `GET        /workspaces/{slug}/states`
-- [ ] `GET        /workspaces/{slug}/estimates`
-- [ ] `GET        /workspaces/{slug}/modules`
-- [ ] `GET        /workspaces/{slug}/cycles`
-- [ ] `GET/POST   /workspaces/{slug}/user-favorites`
-- [ ] `GET/PATCH/DELETE /workspaces/{slug}/user-favorites/{favorite_id}`
+- ✅ `GET        /workspaces/{slug}/labels`
+- ✅ `GET/PATCH  /workspaces/{slug}/user-properties`
+- ✅ `GET        /workspaces/{slug}/states`
+- ✅ `GET        /workspaces/{slug}/estimates`
+- ✅ `GET        /workspaces/{slug}/modules`
+- ✅ `GET        /workspaces/{slug}/cycles`
+- ✅ `GET/POST   /workspaces/{slug}/user-favorites`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}/user-favorites/{favorite_id}`
 - [ ] `GET/POST   /workspaces/{slug}/user-favorites/{favorite_id}/children`
 - [ ] `GET        /workspaces/{slug}/user-favorites/{favorite_id}/group` (alias de /children)
-- [ ] `GET/POST   /workspaces/{slug}/draft-issues`
-- [ ] `GET/PATCH/DELETE /workspaces/{slug}/draft-issues/{pk}`
+- ✅ `GET/POST   /workspaces/{slug}/draft-issues`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}/draft-issues/{pk}`
 - [ ] `POST       /workspaces/{slug}/draft-to-issue/{draft_id}`
-- [ ] `GET/POST   /workspaces/{slug}/quick-links`
-- [ ] `GET/PATCH/DELETE /workspaces/{slug}/quick-links/{pk}`
-- [ ] `GET/PATCH  /workspaces/{slug}/home-preferences`
+- ✅ `GET/POST   /workspaces/{slug}/quick-links`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}/quick-links/{pk}`
+- ✅ `GET/PATCH  /workspaces/{slug}/home-preferences`
 - [ ] `GET/PATCH  /workspaces/{slug}/home-preferences/{key}`
-- [ ] `GET        /workspaces/{slug}/recent-visits`
-- [ ] `GET/POST   /workspaces/{slug}/stickies`
-- [ ] `GET/PATCH/DELETE /workspaces/{slug}/stickies/{pk}`
-- [ ] `GET/PATCH  /workspaces/{slug}/sidebar-preferences`
+- ✅ `GET        /workspaces/{slug}/recent-visits`
+- ✅ `GET/POST   /workspaces/{slug}/stickies`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}/stickies/{pk}`
+- ✅ `GET/PATCH  /workspaces/{slug}/sidebar-preferences`
 - [ ] `POST       /workspaces/{slug}/invitations/{pk}/join`
 - [ ] `GET/POST   /workspaces/{slug}/workspace-themes`
 - [ ] `GET/PATCH/DELETE /workspaces/{slug}/workspace-themes/{pk}`
