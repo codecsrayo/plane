@@ -156,3 +156,5 @@ rust-project.json
 
 # Nix
 flake.lock
+.direnv/
+result

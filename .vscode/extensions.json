@@ -36,7 +36,8 @@
     "mvintg.pg-manager",
     "task.vscode-task",
     "vadimcn.vscode-lldb",
-    "rust-lang.rust-analyzer"
+    "rust-lang.rust-analyzer",
+    "arrterian.nix-env-selector"
   ],
 
   // Extensiones explícitamente NO recomendadas (evitar conflictos)
