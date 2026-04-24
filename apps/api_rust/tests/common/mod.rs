@@ -164,6 +164,44 @@ impl TestApp {
         .await
     }
 
+    /// POST con body `application/x-www-form-urlencoded` — usado por los
+    /// endpoints heredados de Django (`sign-in`, `sign-up`, `sign-out`,
+    /// `magic-*`, `forgot-password`, `reset-password`).
+    pub async fn post_form(&self, path: &str, fields: &[(&str, &str)]) -> TestResponse {
+        let body = serde_urlencoded::to_string(fields).expect("urlencode");
+        self.request(
+            Method::POST,
+            path,
+            Some(body.into_bytes()),
+            &[("content-type", "application/x-www-form-urlencoded")],
+        )
+        .await
+    }
+
+    /// Extrae la ubicación (header `Location`) de una respuesta de redirect.
+    /// Devuelve `None` si la respuesta no es redirect.
+    pub async fn post_form_location(&self, path: &str, fields: &[(&str, &str)]) -> (StatusCode, Option<String>) {
+        let body = serde_urlencoded::to_string(fields).expect("urlencode");
+        let req = Request::builder()
+            .method(Method::POST)
+            .uri(path)
+            .header("content-type", "application/x-www-form-urlencoded")
+            .body(Body::from(body))
+            .expect("request build");
+        let res = self
+            .router
+            .clone()
+            .oneshot(req)
+            .await
+            .expect("router oneshot");
+        let status = res.status();
+        let location = res
+            .headers()
+            .get("location")
+            .and_then(|v| v.to_str().ok().map(String::from));
+        (status, location)
+    }
+
     /// Ejecuta una request arbitraria contra el router.
     pub async fn request(
         &self,
