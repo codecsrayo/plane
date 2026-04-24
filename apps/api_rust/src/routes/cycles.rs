@@ -22,7 +22,7 @@ use axum::{
     Json,
 };
 use sea_orm::{
-    ActiveModelTrait, ActiveValue::Set, ColumnTrait, ConnectionTrait, EntityTrait, QueryFilter,
+    ActiveModelTrait, ActiveValue::Set, ColumnTrait, ConnectionTrait, EntityTrait, PaginatorTrait, QueryFilter,
     QueryOrder, Statement,
 };
 use serde::{Deserialize, Serialize};
@@ -33,7 +33,7 @@ use crate::{
         extractors::ProjectMemberGuard,
         permissions::{require_role, ROLE_GUEST, ROLE_MEMBER},
     },
-    entities::{cycle_issues, cycle_user_properties, cycles, issues},
+    entities::{cycle_issues, cycle_user_properties, cycles, issues, user_favorites},
     error::AppError,
     utils::soft_delete::SoftDeleteExt,
     AppState,
@@ -1768,5 +1768,577 @@ pub async fn cycle_progress(
         "cancelled_issues": counts.cancelled,
         "completed_issues": counts.completed,
         "total_issues":     counts.total,
+    })))
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// ENDPOINTS PENDIENTES — implementados a continuación
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// ── date-check ────────────────────────────────────────────────────────────────
+
+#[derive(Debug, Deserialize)]
+pub struct DateCheckRequest {
+    pub start_date: String,
+    pub end_date: String,
+    pub cycle_id: Option<Uuid>,
+}
+
+/// `POST /api/workspaces/{slug}/projects/{project_id}/cycles/date-check/`
+///
+/// Verifica si un rango de fechas se solapa con algún ciclo existente en el proyecto.
+/// Paridad con `CycleDateCheckEndpoint.post` (cycle/base.py).
+/// Retorna `{"status": true}` si hay solapamiento, `{"status": false}` si no.
+///
+/// Permisos: ADMIN / MEMBER.
+#[utoipa::path(
+    post,
+    path = "/api/workspaces/{slug}/projects/{project_id}/cycles/date-check/",
+    tag = "Cycles",
+    params(
+        ("slug"       = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid,   Path, description = "Project UUID"),
+    ),
+    responses(
+        (status = 200, description = "Date overlap check result"),
+        (status = 400, description = "Missing start_date or end_date"),
+        (status = 403, description = "Not authorized"),
+    ),
+    security((\"TokenAuth\" = []))
+)]
+pub async fn cycle_date_check(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Json(body): Json<DateCheckRequest>,
+) -> Result<impl IntoResponse, AppError> {
+    require_role(
+        guard.project_member.role,
+        guard.workspace_member.role,
+        ROLE_MEMBER,
+    )?;
+
+    let ws_id = guard.workspace.id;
+    let project_id = guard.project.id;
+    let db = &state.db;
+
+    // Parsear fechas — acepta "YYYY-MM-DD" o ISO 8601
+    let start: chrono::NaiveDate = body
+        .start_date
+        .parse()
+        .map_err(|_| AppError::BadRequest("Invalid start_date format".into()))?;
+    let end: chrono::NaiveDate = body
+        .end_date
+        .parse()
+        .map_err(|_| AppError::BadRequest("Invalid end_date format".into()))?;
+
+    // Convertir a DateTimeWithTimeZone para comparar con la columna
+    let start_dt: chrono::DateTime<chrono::FixedOffset> =
+        chrono::NaiveDateTime::new(start, chrono::NaiveTime::MIN)
+            .and_utc()
+            .fixed_offset();
+    let end_dt: chrono::DateTime<chrono::FixedOffset> =
+        chrono::NaiveDateTime::new(end, chrono::NaiveTime::from_hms_opt(23, 59, 59).unwrap())
+            .and_utc()
+            .fixed_offset();
+
+    // Buscar ciclos que se solapan con el rango dado
+    // Solapamiento: start_cycle <= end_input AND end_cycle >= start_input
+    let mut query = cycles::Entity::find()
+        .filter(cycles::Column::WorkspaceId.eq(ws_id))
+        .filter(cycles::Column::ProjectId.eq(project_id))
+        .filter(cycles::Column::DeletedAt.is_null())
+        .filter(cycles::Column::ArchivedAt.is_null())
+        .filter(cycles::Column::StartDate.is_not_null())
+        .filter(cycles::Column::EndDate.is_not_null())
+        .filter(cycles::Column::StartDate.lte(end_dt))
+        .filter(cycles::Column::EndDate.gte(start_dt));
+
+    if let Some(cid) = body.cycle_id {
+        query = query.filter(cycles::Column::Id.ne(cid));
+    }
+
+    let overlapping = query.count(db).await.map_err(AppError::Database)?;
+
+    Ok(Json(serde_json::json!({ "status": overlapping > 0 })))
+}
+
+// ── user-favorite-cycles ──────────────────────────────────────────────────────
+
+#[derive(Debug, Deserialize)]
+pub struct FavoriteCycleRequest {
+    pub cycle: Uuid,
+}
+
+/// `GET /api/workspaces/{slug}/projects/{project_id}/user-favorite-cycles/`
+///
+/// Lista los ciclos favoritos del usuario en un proyecto.
+/// Paridad con `CycleFavoriteViewSet.list`.
+///
+/// Permisos: ADMIN / MEMBER.
+pub async fn list_favorite_cycles(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+) -> Result<impl IntoResponse, AppError> {
+    require_role(
+        guard.project_member.role,
+        guard.workspace_member.role,
+        ROLE_MEMBER,
+    )?;
+
+    let user_id = guard.user.id;
+    let ws_id = guard.workspace.id;
+    let project_id = guard.project.id;
+    let db = &state.db;
+
+    let favorites = user_favorites::Entity::find()
+        .filter(user_favorites::Column::WorkspaceId.eq(ws_id))
+        .filter(user_favorites::Column::ProjectId.eq(project_id))
+        .filter(user_favorites::Column::UserId.eq(user_id))
+        .filter(user_favorites::Column::EntityType.eq("cycle"))
+        .filter(user_favorites::Column::DeletedAt.is_null())
+        .all(db)
+        .await
+        .map_err(AppError::Database)?;
+
+    let resp: Vec<serde_json::Value> = favorites
+        .into_iter()
+        .map(|f| {
+            serde_json::json!({
+                "id": f.id,
+                "entity_type": f.entity_type,
+                "entity_identifier": f.entity_identifier,
+                "project_id": f.project_id,
+                "workspace_id": f.workspace_id,
+            })
+        })
+        .collect();
+
+    Ok(Json(resp))
+}
+
+/// `POST /api/workspaces/{slug}/projects/{project_id}/user-favorite-cycles/`
+///
+/// Marca un ciclo como favorito del usuario.
+/// Paridad con `CycleFavoriteViewSet.create` (retorna 204).
+///
+/// Permisos: ADMIN / MEMBER.
+pub async fn create_favorite_cycle(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Json(body): Json<FavoriteCycleRequest>,
+) -> Result<impl IntoResponse, AppError> {
+    require_role(
+        guard.project_member.role,
+        guard.workspace_member.role,
+        ROLE_MEMBER,
+    )?;
+
+    let user_id = guard.user.id;
+    let ws_id = guard.workspace.id;
+    let project_id = guard.project.id;
+    let db = &state.db;
+
+    // Idempotente: si ya existe no duplicamos
+    let existing = user_favorites::Entity::find()
+        .filter(user_favorites::Column::WorkspaceId.eq(ws_id))
+        .filter(user_favorites::Column::ProjectId.eq(project_id))
+        .filter(user_favorites::Column::UserId.eq(user_id))
+        .filter(user_favorites::Column::EntityType.eq("cycle"))
+        .filter(user_favorites::Column::EntityIdentifier.eq(body.cycle))
+        .filter(user_favorites::Column::DeletedAt.is_null())
+        .one(db)
+        .await
+        .map_err(AppError::Database)?;
+
+    if existing.is_none() {
+        let new_fav = user_favorites::ActiveModel {
+            id: Set(Uuid::new_v4()),
+            entity_type: Set("cycle".to_string()),
+            entity_identifier: Set(Some(body.cycle)),
+            project_id: Set(Some(project_id)),
+            workspace_id: Set(ws_id),
+            user_id: Set(user_id),
+            created_by_id: Set(Some(user_id)),
+            updated_by_id: Set(Some(user_id)),
+            sequence: Set(65535.0_f64),
+            is_folder: Set(false),
+            ..Default::default()
+        };
+        new_fav.insert(db).await.map_err(AppError::Database)?;
+    }
+
+    Ok(StatusCode::NO_CONTENT)
+}
+
+/// `DELETE /api/workspaces/{slug}/projects/{project_id}/user-favorite-cycles/{cycle_id}/`
+///
+/// Elimina un ciclo de favoritos del usuario.
+/// Paridad con `CycleFavoriteViewSet.destroy`.
+///
+/// Permisos: ADMIN / MEMBER.
+pub async fn delete_favorite_cycle(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Path((_slug, _project_id, cycle_id)): Path<(String, Uuid, Uuid)>,
+) -> Result<impl IntoResponse, AppError> {
+    require_role(
+        guard.project_member.role,
+        guard.workspace_member.role,
+        ROLE_MEMBER,
+    )?;
+
+    let user_id = guard.user.id;
+    let ws_id = guard.workspace.id;
+    let project_id = guard.project.id;
+    let db = &state.db;
+
+    let fav = user_favorites::Entity::find()
+        .filter(user_favorites::Column::WorkspaceId.eq(ws_id))
+        .filter(user_favorites::Column::ProjectId.eq(project_id))
+        .filter(user_favorites::Column::UserId.eq(user_id))
+        .filter(user_favorites::Column::EntityType.eq("cycle"))
+        .filter(user_favorites::Column::EntityIdentifier.eq(cycle_id))
+        .filter(user_favorites::Column::DeletedAt.is_null())
+        .one(db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    let active: user_favorites::ActiveModel = fav.into();
+    active.delete(db).await.map_err(AppError::Database)?;
+
+    Ok(StatusCode::NO_CONTENT)
+}
+
+// ── transfer-issues ───────────────────────────────────────────────────────────
+
+#[derive(Debug, Deserialize)]
+pub struct TransferCycleIssuesRequest {
+    pub new_cycle_id: Uuid,
+}
+
+/// `POST /api/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/transfer-issues/`
+///
+/// Transfiere las issues incompletas (backlog/unstarted/started) del ciclo origen al destino
+/// y guarda un progress_snapshot en el ciclo origen.
+/// Paridad con `TransferCycleIssueEndpoint.post` + `transfer_cycle_issues` utility.
+///
+/// Permisos: ADMIN / MEMBER.
+pub async fn transfer_cycle_issues(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Path((_slug, _project_id, cycle_id)): Path<(String, Uuid, Uuid)>,
+    Json(body): Json<TransferCycleIssuesRequest>,
+) -> Result<impl IntoResponse, AppError> {
+    require_role(
+        guard.project_member.role,
+        guard.workspace_member.role,
+        ROLE_MEMBER,
+    )?;
+
+    let ws_id = guard.workspace.id;
+    let project_id = guard.project.id;
+    let new_cycle_id = body.new_cycle_id;
+    let db = &state.db;
+
+    // Validar que el ciclo destino existe y no está completado
+    let new_cycle = cycles::Entity::find_by_id(new_cycle_id)
+        .filter(cycles::Column::WorkspaceId.eq(ws_id))
+        .filter(cycles::Column::ProjectId.eq(project_id))
+        .filter(cycles::Column::DeletedAt.is_null())
+        .one(db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    let now = chrono::Utc::now();
+    if let Some(end) = new_cycle.end_date {
+        if end.with_timezone(&chrono::Utc) < now {
+            return Err(AppError::BadRequest(
+                "The cycle where the issues are transferred is already completed".into(),
+            ));
+        }
+    }
+
+    // Validar que el ciclo origen existe
+    let old_cycle = ensure_cycle_belongs_to_project(db, ws_id, project_id, cycle_id).await?;
+
+    // Computar counts de issues por estado para el snapshot
+    let counts = compute_issue_counts(db, ws_id, project_id, cycle_id).await?;
+
+    // Guardar progress snapshot en el ciclo origen
+    let snapshot = serde_json::json!({
+        "total_issues":     counts.total,
+        "completed_issues": counts.completed,
+        "cancelled_issues": counts.cancelled,
+        "started_issues":   counts.started,
+        "unstarted_issues": counts.unstarted,
+        "backlog_issues":   counts.backlog,
+        "distribution": {
+            "labels": [],
+            "assignees": [],
+            "completion_chart": {}
+        },
+        "estimate_distribution": {}
+    });
+
+    let mut old_active: cycles::ActiveModel = old_cycle.into();
+    old_active.progress_snapshot = Set(snapshot);
+    old_active.update(db).await.map_err(AppError::Database)?;
+
+    // Transferir las issues incompletas al nuevo ciclo
+    // Solo issues con estado: backlog, unstarted, started
+    let sql = Statement::from_sql_and_values(
+        sea_orm::DatabaseBackend::Postgres,
+        r#"
+        UPDATE cycle_issues ci
+        SET cycle_id = $1, updated_at = NOW()
+        FROM issues i
+        JOIN states s ON s.id = i.state_id
+        WHERE ci.cycle_id = $2
+          AND ci.deleted_at IS NULL
+          AND ci.issue_id = i.id
+          AND i.archived_at IS NULL
+          AND i.is_draft = FALSE
+          AND i.deleted_at IS NULL
+          AND s.group IN ('backlog', 'unstarted', 'started')
+        "#,
+        vec![
+            new_cycle_id.into(),
+            cycle_id.into(),
+        ],
+    );
+    db.execute(sql).await.map_err(AppError::Database)?;
+
+    Ok(Json(serde_json::json!({ "message": "Success" })))
+}
+
+// ── archive / unarchive cycle ─────────────────────────────────────────────────
+
+/// `POST /api/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/archive/`
+///
+/// Archiva un ciclo completado.
+/// Paridad con `CycleArchiveUnarchiveEndpoint.post`.
+/// Solo se pueden archivar ciclos cuya `end_date` sea pasada.
+///
+/// Permisos: ADMIN / MEMBER.
+pub async fn archive_cycle(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Path((_slug, _project_id, cycle_id)): Path<(String, Uuid, Uuid)>,
+) -> Result<impl IntoResponse, AppError> {
+    require_role(
+        guard.project_member.role,
+        guard.workspace_member.role,
+        ROLE_MEMBER,
+    )?;
+
+    let ws_id = guard.workspace.id;
+    let project_id = guard.project.id;
+    let db = &state.db;
+
+    let cycle = ensure_cycle_belongs_to_project(db, ws_id, project_id, cycle_id).await?;
+
+    // Solo ciclos completados (end_date en el pasado) pueden archivarse
+    let now = chrono::Utc::now();
+    match cycle.end_date {
+        Some(end) if end.with_timezone(&chrono::Utc) >= now => {
+            return Err(AppError::BadRequest(
+                "Only completed cycles can be archived".into(),
+            ));
+        }
+        None => {
+            return Err(AppError::BadRequest(
+                "Only completed cycles can be archived".into(),
+            ));
+        }
+        _ => {}
+    }
+
+    let archived_at = chrono::Utc::now().fixed_offset();
+    let mut active: cycles::ActiveModel = cycle.into();
+    active.archived_at = Set(Some(archived_at));
+    active.update(db).await.map_err(AppError::Database)?;
+
+    // Eliminar de favoritos (paridad Django)
+    let _ = user_favorites::Entity::delete_many()
+        .filter(user_favorites::Column::EntityType.eq("cycle"))
+        .filter(user_favorites::Column::EntityIdentifier.eq(cycle_id))
+        .filter(user_favorites::Column::ProjectId.eq(project_id))
+        .filter(user_favorites::Column::WorkspaceId.eq(ws_id))
+        .exec(db)
+        .await
+        .map_err(AppError::Database)?;
+
+    Ok(Json(serde_json::json!({ "archived_at": archived_at.to_rfc3339() })))
+}
+
+/// `DELETE /api/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/archive/`
+///
+/// Desarchiva un ciclo.
+/// Paridad con `CycleArchiveUnarchiveEndpoint.delete`.
+///
+/// Permisos: ADMIN / MEMBER.
+pub async fn unarchive_cycle(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Path((_slug, _project_id, cycle_id)): Path<(String, Uuid, Uuid)>,
+) -> Result<impl IntoResponse, AppError> {
+    require_role(
+        guard.project_member.role,
+        guard.workspace_member.role,
+        ROLE_MEMBER,
+    )?;
+
+    let ws_id = guard.workspace.id;
+    let project_id = guard.project.id;
+    let db = &state.db;
+
+    let cycle = cycles::Entity::find_by_id(cycle_id)
+        .filter(cycles::Column::WorkspaceId.eq(ws_id))
+        .filter(cycles::Column::ProjectId.eq(project_id))
+        .filter(cycles::Column::DeletedAt.is_null())
+        .one(db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    let mut active: cycles::ActiveModel = cycle.into();
+    active.archived_at = Set(None);
+    active.update(db).await.map_err(AppError::Database)?;
+
+    Ok(StatusCode::NO_CONTENT)
+}
+
+// ── archived-cycles ───────────────────────────────────────────────────────────
+
+/// `GET /api/workspaces/{slug}/projects/{project_id}/archived-cycles/`
+///
+/// Lista los ciclos archivados del proyecto.
+/// Paridad con `CycleArchiveUnarchiveEndpoint.get` (pk=None).
+///
+/// Permisos: ADMIN / MEMBER.
+pub async fn list_archived_cycles(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+) -> Result<impl IntoResponse, AppError> {
+    require_role(
+        guard.project_member.role,
+        guard.workspace_member.role,
+        ROLE_MEMBER,
+    )?;
+
+    let ws_id = guard.workspace.id;
+    let project_id = guard.project.id;
+    let db = &state.db;
+
+    let cycles_list = cycles::Entity::find()
+        .filter(cycles::Column::WorkspaceId.eq(ws_id))
+        .filter(cycles::Column::ProjectId.eq(project_id))
+        .filter(cycles::Column::DeletedAt.is_null())
+        .filter(cycles::Column::ArchivedAt.is_not_null())
+        .order_by_desc(cycles::Column::CreatedAt)
+        .all(db)
+        .await
+        .map_err(AppError::Database)?;
+
+    let resp: Vec<serde_json::Value> = cycles_list
+        .into_iter()
+        .map(|c| {
+            let now = chrono::Utc::now();
+            let status = match (c.start_date, c.end_date) {
+                (None, _) | (_, None) => "draft",
+                (Some(s), Some(e)) => {
+                    let s_utc = s.with_timezone(&chrono::Utc);
+                    let e_utc = e.with_timezone(&chrono::Utc);
+                    if now < s_utc { "upcoming" } else if now > e_utc { "completed" } else { "started" }
+                }
+            };
+            serde_json::json!({
+                "id": c.id,
+                "workspace_id": c.workspace_id,
+                "project_id": c.project_id,
+                "name": c.name,
+                "description": c.description,
+                "start_date": c.start_date,
+                "end_date": c.end_date,
+                "owned_by_id": c.owned_by_id,
+                "view_props": c.view_props,
+                "sort_order": c.sort_order,
+                "external_source": c.external_source,
+                "external_id": c.external_id,
+                "progress_snapshot": c.progress_snapshot,
+                "status": status,
+                "archived_at": c.archived_at,
+                "created_at": c.created_at,
+                "updated_at": c.updated_at,
+            })
+        })
+        .collect();
+
+    Ok(Json(resp))
+}
+
+/// `GET /api/workspaces/{slug}/projects/{project_id}/archived-cycles/{pk}/`
+///
+/// Devuelve un ciclo archivado por su ID.
+/// Paridad con `CycleArchiveUnarchiveEndpoint.get` (pk provisto).
+///
+/// Permisos: ADMIN / MEMBER.
+pub async fn get_archived_cycle(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Path((_slug, _project_id, pk)): Path<(String, Uuid, Uuid)>,
+) -> Result<impl IntoResponse, AppError> {
+    require_role(
+        guard.project_member.role,
+        guard.workspace_member.role,
+        ROLE_MEMBER,
+    )?;
+
+    let ws_id = guard.workspace.id;
+    let project_id = guard.project.id;
+    let db = &state.db;
+
+    let c = cycles::Entity::find_by_id(pk)
+        .filter(cycles::Column::WorkspaceId.eq(ws_id))
+        .filter(cycles::Column::ProjectId.eq(project_id))
+        .filter(cycles::Column::DeletedAt.is_null())
+        .filter(cycles::Column::ArchivedAt.is_not_null())
+        .one(db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    let now = chrono::Utc::now();
+    let status = match (c.start_date, c.end_date) {
+        (None, _) | (_, None) => "draft",
+        (Some(s), Some(e)) => {
+            if now < s.with_timezone(&chrono::Utc) { "upcoming" }
+            else if now > e.with_timezone(&chrono::Utc) { "completed" }
+            else { "started" }
+        }
+    };
+
+    Ok(Json(serde_json::json!({
+        "id": c.id,
+        "workspace_id": c.workspace_id,
+        "project_id": c.project_id,
+        "name": c.name,
+        "description": c.description,
+        "start_date": c.start_date,
+        "end_date": c.end_date,
+        "owned_by_id": c.owned_by_id,
+        "view_props": c.view_props,
+        "sort_order": c.sort_order,
+        "external_source": c.external_source,
+        "external_id": c.external_id,
+        "progress_snapshot": c.progress_snapshot,
+        "logo_props": c.logo_props,
+        "status": status,
+        "archived_at": c.archived_at,
+        "created_at": c.created_at,
+        "updated_at": c.updated_at,
+        "created_by_id": c.created_by_id,
     })))
 }

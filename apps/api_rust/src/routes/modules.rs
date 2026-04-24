@@ -16,6 +16,7 @@
 use axum::{
     extract::{Path, State},
     http::StatusCode,
+    response::IntoResponse,
     Json,
 };
 use sea_orm::{
@@ -29,7 +30,7 @@ use crate::{
         extractors::ProjectMemberGuard,
         permissions::{require_role, ROLE_GUEST, ROLE_MEMBER},
     },
-    entities::{issues, module_issues, module_user_properties, modules},
+    entities::{issues, module_issues, module_links, module_user_properties, modules, user_favorites},
     error::AppError,
     utils::soft_delete::SoftDeleteExt,
     AppState,
@@ -889,4 +890,631 @@ pub async fn update_module_user_properties(
 
     let updated = am.update(&state.db).await.map_err(AppError::Database)?;
     Ok(Json(ModuleUserPropertiesResponse::from(&updated)))
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// ENDPOINTS PENDIENTES
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// ── POST /issues/{issue_id}/modules ──────────────────────────────────────────
+
+#[derive(Debug, Deserialize)]
+pub struct IssueModulesRequest {
+    pub modules: Option<Vec<Uuid>>,
+    pub removed_modules: Option<Vec<Uuid>>,
+}
+
+/// `POST /api/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/modules/`
+///
+/// Asigna o elimina módulos de una issue.
+/// Paridad con `ModuleIssueViewSet.create_issue_modules`.
+///
+/// Permisos: ADMIN / MEMBER.
+pub async fn set_issue_modules(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Path((_slug, _project_id, issue_id)): Path<(String, Uuid, Uuid)>,
+    Json(body): Json<IssueModulesRequest>,
+) -> Result<impl IntoResponse, AppError> {
+    require_role(
+        guard.project_member.role,
+        guard.workspace_member.role,
+        ROLE_MEMBER,
+    )?;
+
+    let ws_id = guard.workspace.id;
+    let project_id = guard.project.id;
+    let user_id = guard.user.id;
+    let db = &state.db;
+
+    // Agregar módulos
+    if let Some(mods) = body.modules {
+        for module_id in mods {
+            // Idempotente: verificar si ya existe
+            let existing = module_issues::Entity::find()
+                .filter(module_issues::Column::IssueId.eq(issue_id))
+                .filter(module_issues::Column::ModuleId.eq(module_id))
+                .filter(module_issues::Column::ProjectId.eq(project_id))
+                .filter(module_issues::Column::DeletedAt.is_null())
+                .one(db)
+                .await
+                .map_err(AppError::Database)?;
+
+            if existing.is_none() {
+                let mi = module_issues::ActiveModel {
+                    id: Set(Uuid::new_v4()),
+                    issue_id: Set(issue_id),
+                    module_id: Set(module_id),
+                    project_id: Set(project_id),
+                    workspace_id: Set(ws_id),
+                    created_by_id: Set(Some(user_id)),
+                    updated_by_id: Set(Some(user_id)),
+                    ..Default::default()
+                };
+                mi.insert(db).await.map_err(AppError::Database)?;
+            }
+        }
+    }
+
+    // Eliminar módulos (soft-delete)
+    if let Some(removed) = body.removed_modules {
+        for module_id in removed {
+            if let Some(mi) = module_issues::Entity::find()
+                .filter(module_issues::Column::IssueId.eq(issue_id))
+                .filter(module_issues::Column::ModuleId.eq(module_id))
+                .filter(module_issues::Column::ProjectId.eq(project_id))
+                .filter(module_issues::Column::DeletedAt.is_null())
+                .one(db)
+                .await
+                .map_err(AppError::Database)?
+            {
+                let mut am: module_issues::ActiveModel = mi.into();
+                am.deleted_at = Set(Some(chrono::Utc::now().into()));
+                am.update(db).await.map_err(AppError::Database)?;
+            }
+        }
+    }
+
+    Ok(StatusCode::NO_CONTENT)
+}
+
+// ── module-links ──────────────────────────────────────────────────────────────
+
+#[derive(Debug, Serialize)]
+pub struct ModuleLinkResponse {
+    pub id: Uuid,
+    pub title: Option<String>,
+    pub url: String,
+    pub module_id: Uuid,
+    pub project_id: Uuid,
+    pub workspace_id: Uuid,
+    pub created_by_id: Option<Uuid>,
+    pub created_at: chrono::DateTime<chrono::FixedOffset>,
+    pub updated_at: chrono::DateTime<chrono::FixedOffset>,
+}
+
+impl From<module_links::Model> for ModuleLinkResponse {
+    fn from(m: module_links::Model) -> Self {
+        Self {
+            id: m.id,
+            title: m.title,
+            url: m.url,
+            module_id: m.module_id,
+            project_id: m.project_id,
+            workspace_id: m.workspace_id,
+            created_by_id: m.created_by_id,
+            created_at: m.created_at,
+            updated_at: m.updated_at,
+        }
+    }
+}
+
+#[derive(Debug, Deserialize)]
+pub struct CreateModuleLinkRequest {
+    pub url: String,
+    pub title: Option<String>,
+}
+
+#[derive(Debug, Deserialize)]
+pub struct UpdateModuleLinkRequest {
+    pub url: Option<String>,
+    pub title: Option<String>,
+}
+
+/// `GET /api/workspaces/{slug}/projects/{project_id}/modules/{module_id}/module-links/`
+///
+/// Lista los links del módulo.
+/// Paridad con `ModuleLinkViewSet.list`.
+///
+/// Permisos: ADMIN / MEMBER / GUEST.
+pub async fn list_module_links(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Path((_slug, _project_id, module_id)): Path<(String, Uuid, Uuid)>,
+) -> Result<impl IntoResponse, AppError> {
+    require_role(
+        guard.project_member.role,
+        guard.workspace_member.role,
+        ROLE_GUEST,
+    )?;
+
+    let ws_id = guard.workspace.id;
+    let project_id = guard.project.id;
+    let db = &state.db;
+
+    let links = module_links::Entity::find()
+        .filter(module_links::Column::WorkspaceId.eq(ws_id))
+        .filter(module_links::Column::ProjectId.eq(project_id))
+        .filter(module_links::Column::ModuleId.eq(module_id))
+        .filter(module_links::Column::DeletedAt.is_null())
+        .order_by_desc(module_links::Column::CreatedAt)
+        .all(db)
+        .await
+        .map_err(AppError::Database)?;
+
+    let resp: Vec<ModuleLinkResponse> = links.into_iter().map(Into::into).collect();
+    Ok(Json(resp))
+}
+
+/// `POST /api/workspaces/{slug}/projects/{project_id}/modules/{module_id}/module-links/`
+///
+/// Crea un link para el módulo.
+/// Paridad con `ModuleLinkViewSet.create`.
+///
+/// Permisos: ADMIN / MEMBER.
+pub async fn create_module_link(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Path((_slug, _project_id, module_id)): Path<(String, Uuid, Uuid)>,
+    Json(body): Json<CreateModuleLinkRequest>,
+) -> Result<impl IntoResponse, AppError> {
+    require_role(
+        guard.project_member.role,
+        guard.workspace_member.role,
+        ROLE_MEMBER,
+    )?;
+
+    let ws_id = guard.workspace.id;
+    let project_id = guard.project.id;
+    let user_id = guard.user.id;
+    let db = &state.db;
+
+    let link = module_links::ActiveModel {
+        id: Set(Uuid::new_v4()),
+        url: Set(body.url),
+        title: Set(body.title),
+        module_id: Set(module_id),
+        project_id: Set(project_id),
+        workspace_id: Set(ws_id),
+        created_by_id: Set(Some(user_id)),
+        updated_by_id: Set(Some(user_id)),
+        metadata: Set(serde_json::json!({})),
+        ..Default::default()
+    };
+
+    let created = link.insert(db).await.map_err(AppError::Database)?;
+    let resp: ModuleLinkResponse = created.into();
+    Ok((StatusCode::CREATED, Json(resp)))
+}
+
+/// `GET /api/workspaces/{slug}/projects/{project_id}/modules/{module_id}/module-links/{pk}/`
+///
+/// Obtiene un link del módulo por ID.
+///
+/// Permisos: ADMIN / MEMBER / GUEST.
+pub async fn get_module_link(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Path((_slug, _project_id, module_id, pk)): Path<(String, Uuid, Uuid, Uuid)>,
+) -> Result<impl IntoResponse, AppError> {
+    require_role(
+        guard.project_member.role,
+        guard.workspace_member.role,
+        ROLE_GUEST,
+    )?;
+
+    let project_id = guard.project.id;
+    let db = &state.db;
+
+    let link = module_links::Entity::find_by_id(pk)
+        .filter(module_links::Column::ProjectId.eq(project_id))
+        .filter(module_links::Column::ModuleId.eq(module_id))
+        .filter(module_links::Column::DeletedAt.is_null())
+        .one(db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    let resp: ModuleLinkResponse = link.into();
+    Ok(Json(resp))
+}
+
+/// `PATCH /api/workspaces/{slug}/projects/{project_id}/modules/{module_id}/module-links/{pk}/`
+///
+/// Actualiza un link del módulo.
+/// Paridad con `ModuleLinkViewSet.partial_update`.
+///
+/// Permisos: ADMIN / MEMBER.
+pub async fn update_module_link(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Path((_slug, _project_id, module_id, pk)): Path<(String, Uuid, Uuid, Uuid)>,
+    Json(body): Json<UpdateModuleLinkRequest>,
+) -> Result<impl IntoResponse, AppError> {
+    require_role(
+        guard.project_member.role,
+        guard.workspace_member.role,
+        ROLE_MEMBER,
+    )?;
+
+    let project_id = guard.project.id;
+    let user_id = guard.user.id;
+    let db = &state.db;
+
+    let link = module_links::Entity::find_by_id(pk)
+        .filter(module_links::Column::ProjectId.eq(project_id))
+        .filter(module_links::Column::ModuleId.eq(module_id))
+        .filter(module_links::Column::DeletedAt.is_null())
+        .one(db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    let mut active: module_links::ActiveModel = link.into();
+    if let Some(url) = body.url {
+        active.url = Set(url);
+    }
+    if let Some(title) = body.title {
+        active.title = Set(Some(title));
+    }
+    active.updated_by_id = Set(Some(user_id));
+    let updated = active.update(db).await.map_err(AppError::Database)?;
+
+    let resp: ModuleLinkResponse = updated.into();
+    Ok(Json(resp))
+}
+
+/// `DELETE /api/workspaces/{slug}/projects/{project_id}/modules/{module_id}/module-links/{pk}/`
+///
+/// Elimina un link del módulo (soft delete).
+/// Paridad con `ModuleLinkViewSet.destroy`.
+///
+/// Permisos: ADMIN / MEMBER.
+pub async fn delete_module_link(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Path((_slug, _project_id, module_id, pk)): Path<(String, Uuid, Uuid, Uuid)>,
+) -> Result<impl IntoResponse, AppError> {
+    require_role(
+        guard.project_member.role,
+        guard.workspace_member.role,
+        ROLE_MEMBER,
+    )?;
+
+    let project_id = guard.project.id;
+    let db = &state.db;
+
+    let link = module_links::Entity::find_by_id(pk)
+        .filter(module_links::Column::ProjectId.eq(project_id))
+        .filter(module_links::Column::ModuleId.eq(module_id))
+        .filter(module_links::Column::DeletedAt.is_null())
+        .one(db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    let mut am: module_links::ActiveModel = link.into();
+    am.deleted_at = Set(Some(chrono::Utc::now().into()));
+    am.update(db).await.map_err(AppError::Database)?;
+
+    Ok(StatusCode::NO_CONTENT)
+}
+
+// ── user-favorite-modules ─────────────────────────────────────────────────────
+
+#[derive(Debug, Deserialize)]
+pub struct FavoriteModuleRequest {
+    pub module: Uuid,
+}
+
+/// `GET /api/workspaces/{slug}/projects/{project_id}/user-favorite-modules/`
+///
+/// Lista los módulos favoritos del usuario en el proyecto.
+/// Paridad con `ModuleFavoriteViewSet.list`.
+///
+/// Permisos: ADMIN / MEMBER.
+pub async fn list_favorite_modules(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+) -> Result<impl IntoResponse, AppError> {
+    require_role(
+        guard.project_member.role,
+        guard.workspace_member.role,
+        ROLE_MEMBER,
+    )?;
+
+    let user_id = guard.user.id;
+    let ws_id = guard.workspace.id;
+    let project_id = guard.project.id;
+    let db = &state.db;
+
+    let favorites = user_favorites::Entity::find()
+        .filter(user_favorites::Column::WorkspaceId.eq(ws_id))
+        .filter(user_favorites::Column::ProjectId.eq(project_id))
+        .filter(user_favorites::Column::UserId.eq(user_id))
+        .filter(user_favorites::Column::EntityType.eq("module"))
+        .filter(user_favorites::Column::DeletedAt.is_null())
+        .all(db)
+        .await
+        .map_err(AppError::Database)?;
+
+    let resp: Vec<serde_json::Value> = favorites
+        .into_iter()
+        .map(|f| serde_json::json!({
+            "id": f.id,
+            "entity_type": f.entity_type,
+            "entity_identifier": f.entity_identifier,
+            "project_id": f.project_id,
+            "workspace_id": f.workspace_id,
+        }))
+        .collect();
+
+    Ok(Json(resp))
+}
+
+/// `POST /api/workspaces/{slug}/projects/{project_id}/user-favorite-modules/`
+///
+/// Marca un módulo como favorito.
+/// Paridad con `ModuleFavoriteViewSet.create` (retorna 204).
+///
+/// Permisos: ADMIN / MEMBER.
+pub async fn create_favorite_module(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Json(body): Json<FavoriteModuleRequest>,
+) -> Result<impl IntoResponse, AppError> {
+    require_role(
+        guard.project_member.role,
+        guard.workspace_member.role,
+        ROLE_MEMBER,
+    )?;
+
+    let user_id = guard.user.id;
+    let ws_id = guard.workspace.id;
+    let project_id = guard.project.id;
+    let db = &state.db;
+
+    let existing = user_favorites::Entity::find()
+        .filter(user_favorites::Column::WorkspaceId.eq(ws_id))
+        .filter(user_favorites::Column::ProjectId.eq(project_id))
+        .filter(user_favorites::Column::UserId.eq(user_id))
+        .filter(user_favorites::Column::EntityType.eq("module"))
+        .filter(user_favorites::Column::EntityIdentifier.eq(body.module))
+        .filter(user_favorites::Column::DeletedAt.is_null())
+        .one(db)
+        .await
+        .map_err(AppError::Database)?;
+
+    if existing.is_none() {
+        let new_fav = user_favorites::ActiveModel {
+            id: Set(Uuid::new_v4()),
+            entity_type: Set("module".to_string()),
+            entity_identifier: Set(Some(body.module)),
+            project_id: Set(Some(project_id)),
+            workspace_id: Set(ws_id),
+            user_id: Set(user_id),
+            created_by_id: Set(Some(user_id)),
+            updated_by_id: Set(Some(user_id)),
+            sequence: Set(65535.0_f64),
+            is_folder: Set(false),
+            ..Default::default()
+        };
+        new_fav.insert(db).await.map_err(AppError::Database)?;
+    }
+
+    Ok(StatusCode::NO_CONTENT)
+}
+
+/// `DELETE /api/workspaces/{slug}/projects/{project_id}/user-favorite-modules/{module_id}/`
+///
+/// Elimina un módulo de favoritos.
+/// Paridad con `ModuleFavoriteViewSet.destroy`.
+///
+/// Permisos: ADMIN / MEMBER.
+pub async fn delete_favorite_module(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Path((_slug, _project_id, module_id)): Path<(String, Uuid, Uuid)>,
+) -> Result<impl IntoResponse, AppError> {
+    require_role(
+        guard.project_member.role,
+        guard.workspace_member.role,
+        ROLE_MEMBER,
+    )?;
+
+    let user_id = guard.user.id;
+    let ws_id = guard.workspace.id;
+    let project_id = guard.project.id;
+    let db = &state.db;
+
+    let fav = user_favorites::Entity::find()
+        .filter(user_favorites::Column::WorkspaceId.eq(ws_id))
+        .filter(user_favorites::Column::ProjectId.eq(project_id))
+        .filter(user_favorites::Column::UserId.eq(user_id))
+        .filter(user_favorites::Column::EntityType.eq("module"))
+        .filter(user_favorites::Column::EntityIdentifier.eq(module_id))
+        .filter(user_favorites::Column::DeletedAt.is_null())
+        .one(db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    let active: user_favorites::ActiveModel = fav.into();
+    active.delete(db).await.map_err(AppError::Database)?;
+
+    Ok(StatusCode::NO_CONTENT)
+}
+
+// ── archive / unarchive module ────────────────────────────────────────────────
+
+/// `POST /api/workspaces/{slug}/projects/{project_id}/modules/{module_id}/archive/`
+///
+/// Archiva un módulo completado o cancelado.
+/// Paridad con `ModuleArchiveUnarchiveEndpoint.post`.
+///
+/// Permisos: ADMIN / MEMBER.
+pub async fn archive_module(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Path((_slug, _project_id, module_id)): Path<(String, Uuid, Uuid)>,
+) -> Result<impl IntoResponse, AppError> {
+    require_role(
+        guard.project_member.role,
+        guard.workspace_member.role,
+        ROLE_MEMBER,
+    )?;
+
+    let ws_id = guard.workspace.id;
+    let project_id = guard.project.id;
+    let db = &state.db;
+
+    let module = modules::Entity::find_by_id(module_id)
+        .filter(modules::Column::WorkspaceId.eq(ws_id))
+        .filter(modules::Column::ProjectId.eq(project_id))
+        .filter(modules::Column::DeletedAt.is_null())
+        .one(db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    // Solo módulos completados o cancelados pueden archivarse
+    if !["completed", "cancelled"].contains(&module.status.as_str()) {
+        return Err(AppError::BadRequest(
+            "Only completed or cancelled modules can be archived".into(),
+        ));
+    }
+
+    let archived_at = chrono::Utc::now().fixed_offset();
+    let mut active: modules::ActiveModel = module.into();
+    active.archived_at = Set(Some(archived_at));
+    active.update(db).await.map_err(AppError::Database)?;
+
+    // Eliminar de favoritos
+    let _ = user_favorites::Entity::delete_many()
+        .filter(user_favorites::Column::EntityType.eq("module"))
+        .filter(user_favorites::Column::EntityIdentifier.eq(module_id))
+        .filter(user_favorites::Column::ProjectId.eq(project_id))
+        .filter(user_favorites::Column::WorkspaceId.eq(ws_id))
+        .exec(db)
+        .await
+        .map_err(AppError::Database)?;
+
+    Ok(Json(serde_json::json!({ "archived_at": archived_at.to_rfc3339() })))
+}
+
+/// `DELETE /api/workspaces/{slug}/projects/{project_id}/modules/{module_id}/archive/`
+///
+/// Desarchiva un módulo.
+/// Paridad con `ModuleArchiveUnarchiveEndpoint.delete`.
+///
+/// Permisos: ADMIN / MEMBER.
+pub async fn unarchive_module(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Path((_slug, _project_id, module_id)): Path<(String, Uuid, Uuid)>,
+) -> Result<impl IntoResponse, AppError> {
+    require_role(
+        guard.project_member.role,
+        guard.workspace_member.role,
+        ROLE_MEMBER,
+    )?;
+
+    let ws_id = guard.workspace.id;
+    let project_id = guard.project.id;
+    let db = &state.db;
+
+    let module = modules::Entity::find_by_id(module_id)
+        .filter(modules::Column::WorkspaceId.eq(ws_id))
+        .filter(modules::Column::ProjectId.eq(project_id))
+        .filter(modules::Column::DeletedAt.is_null())
+        .one(db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    let mut active: modules::ActiveModel = module.into();
+    active.archived_at = Set(None);
+    active.update(db).await.map_err(AppError::Database)?;
+
+    Ok(StatusCode::NO_CONTENT)
+}
+
+// ── archived-modules ──────────────────────────────────────────────────────────
+
+/// `GET /api/workspaces/{slug}/projects/{project_id}/archived-modules/`
+///
+/// Lista los módulos archivados del proyecto.
+/// Paridad con `ModuleArchiveUnarchiveEndpoint.get` (pk=None).
+///
+/// Permisos: ADMIN / MEMBER.
+pub async fn list_archived_modules(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+) -> Result<impl IntoResponse, AppError> {
+    require_role(
+        guard.project_member.role,
+        guard.workspace_member.role,
+        ROLE_MEMBER,
+    )?;
+
+    let ws_id = guard.workspace.id;
+    let project_id = guard.project.id;
+    let db = &state.db;
+
+    let mods = modules::Entity::find()
+        .filter(modules::Column::WorkspaceId.eq(ws_id))
+        .filter(modules::Column::ProjectId.eq(project_id))
+        .filter(modules::Column::DeletedAt.is_null())
+        .filter(modules::Column::ArchivedAt.is_not_null())
+        .order_by_desc(modules::Column::CreatedAt)
+        .all(db)
+        .await
+        .map_err(AppError::Database)?;
+
+    let resp: Vec<ModuleResponse> = mods.into_iter().map(ModuleResponse::from_model).collect();
+    Ok(Json(resp))
+}
+
+/// `GET /api/workspaces/{slug}/projects/{project_id}/archived-modules/{pk}/`
+///
+/// Devuelve un módulo archivado por su ID.
+/// Paridad con `ModuleArchiveUnarchiveEndpoint.get` (pk provisto).
+///
+/// Permisos: ADMIN / MEMBER.
+pub async fn get_archived_module(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Path((_slug, _project_id, pk)): Path<(String, Uuid, Uuid)>,
+) -> Result<impl IntoResponse, AppError> {
+    require_role(
+        guard.project_member.role,
+        guard.workspace_member.role,
+        ROLE_MEMBER,
+    )?;
+
+    let ws_id = guard.workspace.id;
+    let project_id = guard.project.id;
+    let db = &state.db;
+
+    let module = modules::Entity::find_by_id(pk)
+        .filter(modules::Column::WorkspaceId.eq(ws_id))
+        .filter(modules::Column::ProjectId.eq(project_id))
+        .filter(modules::Column::DeletedAt.is_null())
+        .filter(modules::Column::ArchivedAt.is_not_null())
+        .one(db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    Ok(Json(ModuleResponse::from_model(module)))
 }

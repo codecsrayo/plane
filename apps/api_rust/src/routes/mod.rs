@@ -174,6 +174,15 @@ pub mod instances;
         cycles::cycle_progress,
         cycles::get_cycle_user_properties,
         cycles::update_cycle_user_properties,
+        cycles::cycle_date_check,
+        cycles::list_favorite_cycles,
+        cycles::create_favorite_cycle,
+        cycles::delete_favorite_cycle,
+        cycles::transfer_cycle_issues,
+        cycles::archive_cycle,
+        cycles::unarchive_cycle,
+        cycles::list_archived_cycles,
+        cycles::get_archived_cycle,
         modules::list_modules,
         modules::create_module,
         modules::get_module,
@@ -184,6 +193,19 @@ pub mod instances;
         modules::remove_issue_from_module,
         modules::get_module_user_properties,
         modules::update_module_user_properties,
+        modules::set_issue_modules,
+        modules::list_module_links,
+        modules::create_module_link,
+        modules::get_module_link,
+        modules::update_module_link,
+        modules::delete_module_link,
+        modules::list_favorite_modules,
+        modules::create_favorite_module,
+        modules::delete_favorite_module,
+        modules::archive_module,
+        modules::unarchive_module,
+        modules::list_archived_modules,
+        modules::get_archived_module,
         labels::list_labels,
         labels::create_label,
         labels::get_label,
@@ -842,6 +864,34 @@ pub fn build_router(state: AppState) -> Router {
             "/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/progress",
             get(cycles::cycle_progress),
         )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/cycles/date-check",
+            post(cycles::cycle_date_check),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/user-favorite-cycles",
+            get(cycles::list_favorite_cycles).post(cycles::create_favorite_cycle),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/user-favorite-cycles/{cycle_id}",
+            delete(cycles::delete_favorite_cycle),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/transfer-issues",
+            post(cycles::transfer_cycle_issues),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/archive",
+            post(cycles::archive_cycle).delete(cycles::unarchive_cycle),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/archived-cycles",
+            get(cycles::list_archived_cycles),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/archived-cycles/{pk}",
+            get(cycles::get_archived_cycle).delete(cycles::unarchive_cycle),
+        )
         // Ã¢ÂÂÃ¢ÂÂ Modules Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
         .route(
             "/workspaces/{slug}/projects/{project_id}/modules",
@@ -865,6 +915,40 @@ pub fn build_router(state: AppState) -> Router {
             "/workspaces/{slug}/projects/{project_id}/modules/{module_id}/user-properties",
             get(modules::get_module_user_properties)
                 .patch(modules::update_module_user_properties),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/modules",
+            post(modules::set_issue_modules),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/modules/{module_id}/module-links",
+            get(modules::list_module_links).post(modules::create_module_link),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/modules/{module_id}/module-links/{pk}",
+            get(modules::get_module_link)
+                .patch(modules::update_module_link)
+                .delete(modules::delete_module_link),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/user-favorite-modules",
+            get(modules::list_favorite_modules).post(modules::create_favorite_module),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/user-favorite-modules/{module_id}",
+            delete(modules::delete_favorite_module),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/modules/{module_id}/archive",
+            post(modules::archive_module).delete(modules::unarchive_module),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/archived-modules",
+            get(modules::list_archived_modules),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/archived-modules/{pk}",
+            get(modules::get_archived_module).delete(modules::unarchive_module),
         )
         // Ã¢ÂÂÃ¢ÂÂ Labels Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
         // Rutas canÃÂ³nicas (/labels/)
