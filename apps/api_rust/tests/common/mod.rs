@@ -90,11 +90,14 @@ impl TestApp {
         // Imagen alineada con docker-compose.yml de producción.
         // Postgres < 12 no soporta el GUC `default_table_access_method`
         // que aparece en migration/src/sql/baseline.sql (dump de PG 15.7).
+        // `.with_tag()` (ImageExt) consume `Postgres` y devuelve
+        // `ContainerRequest<Postgres>`, así que va AL FINAL — después de
+        // los métodos propios de la imagen (with_db_name/user/password).
         let pg = Postgres::default()
-            .with_tag("15.7-alpine")
             .with_db_name("plane_test")
             .with_user("plane")
             .with_password("plane")
+            .with_tag("15.7-alpine")
             .start()
             .await
             .expect("postgres container no arrancó — ¿está docker corriendo?");
