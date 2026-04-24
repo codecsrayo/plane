@@ -183,7 +183,7 @@ async fn post_user_asset_server_complete_nonexistent_returns_404() {
     assert_eq!(
         res.status.as_u16(),
         404,
-        "user-assets/{id}/server inexistente: {}",
+        "user-assets/{{id}}/server inexistente: {}",
         String::from_utf8_lossy(&res.body)
     );
 }
