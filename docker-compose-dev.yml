@@ -423,12 +423,14 @@ services:
       - rust_target:/app/target
       - cargo_registry:/usr/local/cargo/registry
     env_file:
-      - ./apps/api/.env
+      - .env
     environment:
       DEBUG: "true"
       API_PORT: "8000"
       RUST_LOG: "debug,sea_orm=info,sqlx=warn"
       RUST_BACKTRACE: "1"
+      POSTGRES_HOST: plane-db
+      POSTGRES_PORT: "5432"
       CORS_ALLOWED_ORIGINS: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
       WEB_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
       APP_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
