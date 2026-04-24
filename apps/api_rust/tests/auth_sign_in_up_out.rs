@@ -26,6 +26,7 @@ fn location_has_error(location: &str, code: &str) -> bool {
 #[tokio::test(flavor = "multi_thread")]
 async fn sign_up_without_email_redirects_with_error() {
     let app = TestApp::spawn().await;
+    app.ensure_instance_configured().await;
 
     let (status, location) = app
         .post_form_location("/auth/sign-up/", &[("password", "Test12345!")])
@@ -46,6 +47,7 @@ async fn sign_up_without_email_redirects_with_error() {
 #[tokio::test(flavor = "multi_thread")]
 async fn sign_up_without_password_redirects_with_error() {
     let app = TestApp::spawn().await;
+    app.ensure_instance_configured().await;
 
     let (status, location) = app
         .post_form_location("/auth/sign-up/", &[("email", "test@plane.local")])
@@ -64,6 +66,7 @@ async fn sign_up_without_password_redirects_with_error() {
 #[tokio::test(flavor = "multi_thread")]
 async fn sign_up_rejects_invalid_emails() {
     let app = TestApp::spawn().await;
+    app.ensure_instance_configured().await;
 
     let strategy = "[a-zA-Z0-9]{1,16}"; // garantiza ausencia de '@' → inválido
     let mut runner = TestRunner::new(PropConfig {
@@ -104,6 +107,7 @@ async fn sign_up_rejects_invalid_emails() {
 #[tokio::test(flavor = "multi_thread")]
 async fn sign_up_with_valid_credentials_redirects_to_success() {
     let app = TestApp::spawn().await;
+    app.ensure_instance_configured().await;
 
     let (status, location) = app
         .post_form_location(
@@ -130,6 +134,7 @@ async fn sign_up_with_valid_credentials_redirects_to_success() {
 #[tokio::test(flavor = "multi_thread")]
 async fn sign_up_duplicate_email_redirects_with_error() {
     let app = TestApp::spawn().await;
+    app.ensure_instance_configured().await;
 
     // Primer sign-up: éxito
     let (s1, _) = app
@@ -164,6 +169,7 @@ async fn sign_up_duplicate_email_redirects_with_error() {
 #[tokio::test(flavor = "multi_thread")]
 async fn sign_in_missing_credentials_redirects_with_error() {
     let app = TestApp::spawn().await;
+    app.ensure_instance_configured().await;
 
     for fields in [
         vec![("password", "whatever")],
@@ -184,6 +190,7 @@ async fn sign_in_missing_credentials_redirects_with_error() {
 #[tokio::test(flavor = "multi_thread")]
 async fn sign_in_invalid_email_redirects_with_error() {
     let app = TestApp::spawn().await;
+    app.ensure_instance_configured().await;
 
     let (status, loc) = app
         .post_form_location(
@@ -204,6 +211,7 @@ async fn sign_in_invalid_email_redirects_with_error() {
 #[tokio::test(flavor = "multi_thread")]
 async fn sign_in_unknown_user_redirects_with_error() {
     let app = TestApp::spawn().await;
+    app.ensure_instance_configured().await;
 
     let (status, loc) = app
         .post_form_location(
@@ -228,6 +236,7 @@ async fn sign_in_unknown_user_redirects_with_error() {
 #[tokio::test(flavor = "multi_thread")]
 async fn sign_in_wrong_password_redirects_with_error() {
     let app = TestApp::spawn().await;
+    app.ensure_instance_configured().await;
 
     // Crea el usuario.
     let (s_up, _) = app
@@ -258,6 +267,7 @@ async fn sign_in_wrong_password_redirects_with_error() {
 #[tokio::test(flavor = "multi_thread")]
 async fn sign_in_valid_credentials_redirects_to_success() {
     let app = TestApp::spawn().await;
+    app.ensure_instance_configured().await;
 
     let (s_up, _) = app
         .post_form_location(
@@ -290,6 +300,7 @@ async fn sign_in_valid_credentials_redirects_to_success() {
 #[tokio::test(flavor = "multi_thread")]
 async fn sign_out_without_session_returns_401() {
     let app = TestApp::spawn().await;
+    app.ensure_instance_configured().await;
 
     let (status, _loc) = app
         .post_form_location(
