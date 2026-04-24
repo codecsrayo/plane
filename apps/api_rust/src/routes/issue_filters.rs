@@ -100,6 +100,13 @@ pub struct IssueFilterParams {
 /// en el grupo `backlog`), devolvemos este enum en vez de seguir
 /// mutando la query. El handler que llama a `apply_issue_filters` puede
 /// hacer early-return con `empty_paginated_response`.
+//
+// `Active` es el camino caliente (~100% de los requests reales) y la
+// variante `Empty` es un marcador que sólo se devuelve en casos borde
+// (filtro que anula la query). Boxear `Select<issues::Entity>` para
+// equilibrar tamaños añade una alloc por request en el happy-path sin
+// beneficio real; preferimos aceptar el size-skew.
+#[allow(clippy::large_enum_variant)]
 pub enum FilteredQuery {
     /// Query con los filtros aplicados — sigue siendo `Select<issues::Entity>`.
     Active(Select<issues::Entity>),

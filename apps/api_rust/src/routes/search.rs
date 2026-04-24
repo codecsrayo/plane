@@ -307,6 +307,7 @@ pub struct EntitySearchQuery {
 }
 
 #[derive(Debug, Serialize, utoipa::ToSchema)]
+#[allow(dead_code)]
 pub struct UserMentionResult {
     #[serde(rename = "member__avatar_url")]
     pub avatar_url: Option<String>,
@@ -317,6 +318,7 @@ pub struct UserMentionResult {
 }
 
 #[derive(Debug, Serialize, utoipa::ToSchema)]
+#[allow(dead_code)]
 pub struct EntitySearchResponse {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub user_mention: Option<Vec<serde_json::Value>>,

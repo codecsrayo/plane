@@ -272,9 +272,7 @@ pub async fn list_user_profile_issues(
             continue;
         }
 
-        if workspace_member_role >= 20 || role > ROLE_GUEST {
-            full_access_ids.insert(pid);
-        } else if guest_view_all_features {
+        if workspace_member_role >= 20 || role > ROLE_GUEST || guest_view_all_features {
             full_access_ids.insert(pid);
         } else {
             restricted_ids.insert(pid);

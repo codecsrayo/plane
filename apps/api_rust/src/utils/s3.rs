@@ -120,34 +120,6 @@ fn parse_web_url_origin(web_url: &str) -> Option<String> {
     Some(format!("{scheme}://{host_and_port}/"))
 }
 
-#[cfg(test)]
-mod tests {
-    use super::parse_web_url_origin;
-
-    #[test]
-    fn origin_strips_path_and_keeps_port() {
-        assert_eq!(
-            parse_web_url_origin("https://plane.example.com/app").as_deref(),
-            Some("https://plane.example.com/")
-        );
-        assert_eq!(
-            parse_web_url_origin("http://localhost:3000/").as_deref(),
-            Some("http://localhost:3000/")
-        );
-        assert_eq!(
-            parse_web_url_origin("https://plane.codecsrayo.com").as_deref(),
-            Some("https://plane.codecsrayo.com/")
-        );
-    }
-
-    #[test]
-    fn origin_rejects_malformed() {
-        assert!(parse_web_url_origin("plane.example.com").is_none());
-        assert!(parse_web_url_origin("://no-scheme.com").is_none());
-        assert!(parse_web_url_origin("https://").is_none());
-    }
-}
-
 /// Genera una presigned URL de `PUT` para subir un objeto.
 ///
 /// El cliente sube directamente al bucket; la API solo firma la URL.
@@ -237,4 +209,32 @@ pub async fn presigned_get_url(
         })?;
 
     Ok(req.uri().to_string())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::parse_web_url_origin;
+
+    #[test]
+    fn origin_strips_path_and_keeps_port() {
+        assert_eq!(
+            parse_web_url_origin("https://plane.example.com/app").as_deref(),
+            Some("https://plane.example.com/")
+        );
+        assert_eq!(
+            parse_web_url_origin("http://localhost:3000/").as_deref(),
+            Some("http://localhost:3000/")
+        );
+        assert_eq!(
+            parse_web_url_origin("https://plane.codecsrayo.com").as_deref(),
+            Some("https://plane.codecsrayo.com/")
+        );
+    }
+
+    #[test]
+    fn origin_rejects_malformed() {
+        assert!(parse_web_url_origin("plane.example.com").is_none());
+        assert!(parse_web_url_origin("://no-scheme.com").is_none());
+        assert!(parse_web_url_origin("https://").is_none());
+    }
 }

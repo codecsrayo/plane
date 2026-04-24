@@ -161,7 +161,6 @@ pub async fn create_label(
         external_id: Set(None),
         external_source: Set(None),
         deleted_at: Set(None),
-        ..Default::default()
     }
     .insert(&state.db)
     .await

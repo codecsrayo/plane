@@ -10,7 +10,7 @@
 //!   4. Según `multiple`:
 //!        - `true`  → un archivo por proyecto (`{slug}-{project_id}.{ext}`).
 //!        - `false` → un único archivo consolidado (`{slug}-{workspace_id}.{ext}`).
-//!      Formato de cada archivo según `exporter.provider`:
+//!          Formato de cada archivo según `exporter.provider`:
 //!        - `csv`  → CSV con headers prettificados (csv.DictWriter de Django).
 //!        - `json` → JSON indent=2.
 //!        - `xlsx` → Excel vía `rust_xlsxwriter` (espejo de `openpyxl`).
@@ -634,10 +634,10 @@ fn encode_xlsx(rows: &[IssueRow<'_>]) -> anyhow::Result<Vec<u8>> {
             .write_string(row, 3, r.priority)
             .map_err(|e| anyhow::anyhow!("xlsx write priority: {e}"))?;
         sheet
-            .write_string(row, 4, &r.assignees.join(", "))
+            .write_string(row, 4, r.assignees.join(", "))
             .map_err(|e| anyhow::anyhow!("xlsx write assignees: {e}"))?;
         sheet
-            .write_string(row, 5, &r.labels.join(", "))
+            .write_string(row, 5, r.labels.join(", "))
             .map_err(|e| anyhow::anyhow!("xlsx write labels: {e}"))?;
         sheet
             .write_string(row, 6, &r.start_date)

@@ -186,31 +186,6 @@ fn is_safe_identifier(s: &str) -> bool {
     chars.all(|c| c.is_ascii_alphanumeric() || c == '_')
 }
 
-#[cfg(test)]
-mod tests {
-    use super::is_safe_identifier;
-
-    #[test]
-    fn safe_identifier_accepts_snake_case() {
-        assert!(is_safe_identifier("issues"));
-        assert!(is_safe_identifier("issue_description_versions"));
-        assert!(is_safe_identifier("_internal"));
-        assert!(is_safe_identifier("t1"));
-    }
-
-    #[test]
-    fn safe_identifier_rejects_injection_attempts() {
-        assert!(!is_safe_identifier(""));
-        assert!(!is_safe_identifier("1issues")); // no puede empezar con dígito
-        assert!(!is_safe_identifier("issues; DROP TABLE x"));
-        assert!(!is_safe_identifier("issues--"));
-        assert!(!is_safe_identifier("\"issues\""));
-        assert!(!is_safe_identifier("is sues"));
-        assert!(!is_safe_identifier("issues.users"));
-        assert!(!is_safe_identifier(&"a".repeat(64))); // > 63 chars
-    }
-}
-
 // ── delete_api_logs ───────────────────────────────────────────────────────────
 
 /// Elimina registros de `api_activity_logs` más antiguos que `days` días.
@@ -394,4 +369,29 @@ pub async fn delete_unuploaded_file_assets(
     let n = db.execute(stmt).await?.rows_affected();
     tracing::info!(deleted = n, days, "delete_unuploaded_file_assets completado");
     Ok(n)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::is_safe_identifier;
+
+    #[test]
+    fn safe_identifier_accepts_snake_case() {
+        assert!(is_safe_identifier("issues"));
+        assert!(is_safe_identifier("issue_description_versions"));
+        assert!(is_safe_identifier("_internal"));
+        assert!(is_safe_identifier("t1"));
+    }
+
+    #[test]
+    fn safe_identifier_rejects_injection_attempts() {
+        assert!(!is_safe_identifier(""));
+        assert!(!is_safe_identifier("1issues")); // no puede empezar con dígito
+        assert!(!is_safe_identifier("issues; DROP TABLE x"));
+        assert!(!is_safe_identifier("issues--"));
+        assert!(!is_safe_identifier("\"issues\""));
+        assert!(!is_safe_identifier("is sues"));
+        assert!(!is_safe_identifier("issues.users"));
+        assert!(!is_safe_identifier(&"a".repeat(64))); // > 63 chars
+    }
 }

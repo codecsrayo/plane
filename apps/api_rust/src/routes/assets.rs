@@ -1391,7 +1391,7 @@ pub async fn initiate_project_asset_upload(
         &state.config.aws_secret_access_key,
         &asset_key,
         content_type,
-        size_limit as i64,
+        size_limit,
         UPLOAD_URL_TTL_SECS as i64,
     )
     .map_err(|e| AppError::Internal(anyhow::anyhow!("presigned post error: {e}")))?;

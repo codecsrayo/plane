@@ -530,7 +530,6 @@ async fn sync_assignees(
             created_at: Set(now),
             updated_at: Set(now),
             deleted_at: Set(None),
-            ..Default::default()
         }
         .insert(txn)
         .await
@@ -588,7 +587,6 @@ async fn sync_labels(
                 created_at: Set(now),
                 updated_at: Set(now),
                 deleted_at: Set(None),
-                ..Default::default()
             }
             .insert(txn)
             .await
@@ -1444,7 +1442,8 @@ pub struct V2IssuesQuery {
     pub cursor:        Option<String>,
     pub per_page:      Option<u64>,
     /// Fecha ISO-8601; solo retorna issues actualizados después de esta fecha.
-    pub updated_at__gt: Option<chrono::DateTime<chrono::FixedOffset>>,
+    #[serde(rename = "updated_at__gt")]
+    pub updated_at_gt: Option<chrono::DateTime<chrono::FixedOffset>>,
     /// Si `"true"`, incluye `description_html` en la respuesta.
     pub description:   Option<String>,
 }
@@ -1505,7 +1504,7 @@ pub async fn list_issues_v2(
     }
 
     // Sync delta filter
-    if let Some(updated_at_gt) = params.updated_at__gt {
+    if let Some(updated_at_gt) = params.updated_at_gt {
         base_query = base_query.filter(issues::Column::UpdatedAt.gt(updated_at_gt));
     }
 

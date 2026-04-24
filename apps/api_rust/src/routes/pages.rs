@@ -829,7 +829,7 @@ pub async fn list_page_versions(
         ("pk" = Uuid, Path, description = "Version ID"),
     ),
     responses(
-        (status = 200, description = "VersiÃ³n especÃ­fica"),
+        (status = 200, description = "Versión específica"),
         (status = 404, description = "No encontrada"),
     ),
     security(("TokenAuth" = []))
@@ -1169,7 +1169,7 @@ pub async fn pages_summary(
             sea_orm::Value::Uuid(Some(Box::new(guard.workspace.id))),
         ],
     )).one(&state.db).await.map_err(AppError::Database)?
-      .unwrap_or_else(|| SummaryRow { public_pages: 0, private_pages: 0, total_pages: 0, archived_pages: 0 });
+      .unwrap_or(SummaryRow { public_pages: 0, private_pages: 0, total_pages: 0, archived_pages: 0 });
 
     Ok(Json(serde_json::json!({
         "public_pages": row.public_pages,

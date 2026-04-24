@@ -559,7 +559,6 @@ pub async fn add_issues_to_cycle(
                     created_at: Set(now),
                     updated_at: Set(now),
                     deleted_at: Set(None),
-                    ..Default::default()
                 }
                 .insert(&state.db)
                 .await

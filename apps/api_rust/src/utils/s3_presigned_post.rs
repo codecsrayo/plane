@@ -122,6 +122,9 @@ fn scheme_from_url(url: &str) -> Option<&str> {
 ///   * `{"x-amz-algorithm": "AWS4-HMAC-SHA256"}`
 ///   * `{"x-amz-credential": "<access_key>/<yyyymmdd>/<region>/s3/aws4_request"}`
 ///   * `{"x-amz-date": "<yyyymmddThhmmssZ>"}`
+// SigV4 requiere todos estos inputs por separado: agruparlos en un struct
+// sería ruido dado que esta función es una implementación única del spec.
+#[allow(clippy::too_many_arguments)]
 pub fn generate_presigned_post(
     bucket: &str,
     endpoint_url: &str,
@@ -171,13 +174,13 @@ pub fn generate_presigned_post(
         date_stamp.as_bytes(),
         format!("AWS4{}", secret_access_key).as_bytes(),
     );
-    let k_region = hmac_sha256::HMAC::mac(region.as_bytes(), &k_date);
-    let k_service = hmac_sha256::HMAC::mac(b"s3", &k_region);
-    let k_signing = hmac_sha256::HMAC::mac(b"aws4_request", &k_service);
+    let k_region = hmac_sha256::HMAC::mac(region.as_bytes(), k_date);
+    let k_service = hmac_sha256::HMAC::mac(b"s3", k_region);
+    let k_signing = hmac_sha256::HMAC::mac(b"aws4_request", k_service);
 
     // En presigned POST el string-to-sign es EL policy base64 directamente
     // (no el "AWS4-HMAC-SHA256\n<date>\n<scope>\n<hash>" típico de los otros flujos SigV4).
-    let signature_bytes = hmac_sha256::HMAC::mac(policy_b64.as_bytes(), &k_signing);
+    let signature_bytes = hmac_sha256::HMAC::mac(policy_b64.as_bytes(), k_signing);
     let signature_hex = hex_encode_lower(&signature_bytes);
 
     // ── URL al bucket ────────────────────────────────────────────────────────
@@ -227,9 +230,9 @@ mod tests {
     fn signing_key_matches_aws_reference() {
         let secret = "wJalrXUtnFEMI/K7MDENG+bPxRfiCYEXAMPLEKEY";
         let k_date = hmac_sha256::HMAC::mac(b"20150830", format!("AWS4{}", secret).as_bytes());
-        let k_region = hmac_sha256::HMAC::mac(b"us-east-1", &k_date);
-        let k_service = hmac_sha256::HMAC::mac(b"iam", &k_region);
-        let k_signing = hmac_sha256::HMAC::mac(b"aws4_request", &k_service);
+        let k_region = hmac_sha256::HMAC::mac(b"us-east-1", k_date);
+        let k_service = hmac_sha256::HMAC::mac(b"iam", k_region);
+        let k_signing = hmac_sha256::HMAC::mac(b"aws4_request", k_service);
         // Valor documentado por AWS para estos inputs (sección "Derive signing key").
         assert_eq!(
             hex_encode_lower(&k_signing),

@@ -9,13 +9,13 @@
 //!   - `parse_cursor`               → parsea `{page_size}:{page}:{is_prev}`.
 //!   - `EnrichmentMaps` +
 //!     `load_enrichment`            → carga batch de relaciones (N+1 evitado)
-//!                                    para los 8 campos enriquecidos que
-//!                                    replica el `issue_on_results` de Django
-//!                                    (grouper.py:93-141).
+//!     para los 8 campos enriquecidos que
+//!     replica el `issue_on_results` de Django
+//!     (grouper.py:93-141).
 //!   - `apply_issue_order`          → mapea `order_by` de Django a SeaORM.
 //!   - `empty_paginated_response`   → shape exacto del paginator Django para
-//!                                    respuestas vacías (evita construirlo a
-//!                                    mano en cada early-return).
+//!     respuestas vacías (evita construirlo a
+//!     mano en cada early-return).
 //!
 //! # Antipatrones evitados
 //! - **N+1**: todas las relaciones se cargan con `is_in()` en una sola query.

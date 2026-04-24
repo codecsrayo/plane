@@ -537,13 +537,6 @@ fn hex_encode_bytes(bytes: &[u8]) -> String {
     output
 }
 
-fn hex_decode_bytes(s: &str) -> Vec<u8> {
-    (0..s.len())
-        .step_by(2)
-        .filter_map(|i| u8::from_str_radix(&s[i..i + 2], 16).ok())
-        .collect()
-}
-
 /// Verifica firma HMAC-SHA256 de GitHub usando OpenSSL.
 /// Mirror de `hmac.new(secret, body, sha256).hexdigest()` en Django.
 fn verify_github_signature(secret: &str, body: &[u8], signature: &str) -> bool {
