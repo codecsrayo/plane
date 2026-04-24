@@ -1804,7 +1804,7 @@ pub struct DateCheckRequest {
         (status = 400, description = "Missing start_date or end_date"),
         (status = 403, description = "Not authorized"),
     ),
-    security((\"TokenAuth\" = []))
+    security(("TokenAuth" = []))
 )]
 pub async fn cycle_date_check(
     State(state): State<AppState>,
