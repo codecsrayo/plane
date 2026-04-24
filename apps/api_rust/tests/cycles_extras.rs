@@ -48,6 +48,35 @@ async fn create_cycle(
     res.json()["id"].as_str().unwrap().to_owned()
 }
 
+/// Crea un cycle con start_date/end_date explícitos (RFC3339). Necesario
+/// para endpoints que exigen fechas: `/analytics` (400 "Cycle has no start
+/// or end date") y `/archive` (400 "Only completed cycles can be archived"
+/// cuando end_date está en el futuro o es None).
+async fn create_cycle_with_dates(
+    app: &TestApp,
+    api_key: &str,
+    ws_slug: &str,
+    proj_id: uuid::Uuid,
+    name: &str,
+    start_date: &str,
+    end_date: &str,
+) -> String {
+    let res = app
+        .post_json_authed(
+            api_key,
+            &format!("/workspaces/{ws_slug}/projects/{proj_id}/cycles"),
+            &json!({ "name": name, "start_date": start_date, "end_date": end_date }),
+        )
+        .await;
+    assert_eq!(
+        res.status.as_u16(),
+        201,
+        "crear cycle con fechas falló: {}",
+        String::from_utf8_lossy(&res.body)
+    );
+    res.json()["id"].as_str().unwrap().to_owned()
+}
+
 async fn create_issue(
     app: &TestApp,
     api_key: &str,
@@ -115,7 +144,17 @@ async fn get_cycle_user_properties_unauthenticated_returns_401() {
 #[tokio::test(flavor = "multi_thread")]
 async fn get_cycle_analytics_returns_200() {
     let (app, api_key, ws_slug, proj_id) = setup("analytics").await;
-    let cycle_id = create_cycle(&app, &api_key, &ws_slug, proj_id, "Analytics Cycle").await;
+    // /analytics exige start_date y end_date (cycles.rs:698-704).
+    let cycle_id = create_cycle_with_dates(
+        &app,
+        &api_key,
+        &ws_slug,
+        proj_id,
+        "Analytics Cycle",
+        "2025-01-01T00:00:00Z",
+        "2025-01-15T00:00:00Z",
+    )
+    .await;
 
     let res = app
         .get_authed(
@@ -200,8 +239,13 @@ async fn cycle_date_check_non_overlapping_returns_200() {
 #[tokio::test(flavor = "multi_thread")]
 async fn cycle_date_check_unauthenticated_returns_401() {
     let (app, _, ws_slug, proj_id) = setup("datecheck_unauth").await;
+    // date-check es POST (routes/mod.rs:949). GET devolvía 405 en lugar del
+    // 401 esperado porque se filtraba antes del middleware de auth.
     let res = app
-        .get(&format!("/workspaces/{ws_slug}/projects/{proj_id}/cycles/date-check"))
+        .post_json(
+            &format!("/workspaces/{ws_slug}/projects/{proj_id}/cycles/date-check"),
+            &json!({"start_date":"2025-01-01","end_date":"2025-01-15"}),
+        )
         .await;
     assert_eq!(res.status.as_u16(), 401);
 }
@@ -238,9 +282,13 @@ async fn add_favorite_cycle_returns_201() {
         )
         .await;
     let status = res.status.as_u16();
+    // Django CycleFavoriteViewSet.create devuelve 204 NO_CONTENT
+    // (base.py:573-579). El handler Rust replica exactamente esa firma.
+    // El nombre del test es legacy ("_returns_201") pero la aserción
+    // ahora refleja el comportamiento real.
     assert!(
-        status == 201 || status == 200,
-        "add-favorite-cycle debe devolver 200/201, obtuvo {status}, body: {}",
+        status == 204 || status == 201 || status == 200,
+        "add-favorite-cycle debe devolver 204/201/200, obtuvo {status}, body: {}",
         String::from_utf8_lossy(&res.body)
     );
 }
@@ -330,7 +378,18 @@ async fn transfer_issues_nonexistent_cycle_returns_404() {
 #[tokio::test(flavor = "multi_thread")]
 async fn get_archived_cycle_returns_200() {
     let (app, api_key, ws_slug, proj_id) = setup("arch_get").await;
-    let cycle_id = create_cycle(&app, &api_key, &ws_slug, proj_id, "Archive Me Cycle").await;
+    // archive exige end_date < now (cycles.rs:2191-2204). Creamos el cycle
+    // con fechas en el pasado para que el archive tenga efecto.
+    let cycle_id = create_cycle_with_dates(
+        &app,
+        &api_key,
+        &ws_slug,
+        proj_id,
+        "Archive Me Cycle",
+        "2020-01-01T00:00:00Z",
+        "2020-01-15T00:00:00Z",
+    )
+    .await;
 
     // Archivar el ciclo
     app.post_json_authed(

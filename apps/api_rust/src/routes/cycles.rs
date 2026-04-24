@@ -1968,6 +1968,7 @@ pub async fn create_favorite_cycle(
         .map_err(AppError::Database)?;
 
     if existing.is_none() {
+        let now = chrono::Utc::now();
         let new_fav = user_favorites::ActiveModel {
             id: Set(Uuid::new_v4()),
             entity_type: Set("cycle".to_string()),
@@ -1979,6 +1980,12 @@ pub async fn create_favorite_cycle(
             updated_by_id: Set(Some(user_id)),
             sequence: Set(65535.0_f64),
             is_folder: Set(false),
+            // `created_at` y `updated_at` son NOT NULL sin DEFAULT en la
+            // baseline SQL. Django los llena vía `auto_now_add` / `auto_now`,
+            // acá hay que setearlos explícitos o el INSERT revienta con
+            // 23502 → AppError::Database → 500.
+            created_at: Set(now.into()),
+            updated_at: Set(now.into()),
             ..Default::default()
         };
         new_fav.insert(db).await.map_err(AppError::Database)?;
