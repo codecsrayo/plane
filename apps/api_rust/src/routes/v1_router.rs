@@ -28,12 +28,11 @@
 
 use axum::{
     extract::{Path, Query, State},
-    http::StatusCode,
     response::IntoResponse,
     routing::{delete, get, patch, post},
     Json, Router,
 };
-use chrono::{DateTime, FixedOffset, Utc};
+use chrono::{DateTime, FixedOffset};
 use sea_orm::{ColumnTrait, EntityTrait, PaginatorTrait, QueryFilter};
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
@@ -45,7 +44,7 @@ use crate::{
         permissions::{require_role, ROLE_GUEST},
     },
     entities::{
-        cycles, intake_issues, issue_activities, labels, modules, pages, project_members,
+        cycles, intake_issues, issue_activities, labels, modules, project_members,
         project_pages, states,
     },
     error::AppError,
@@ -162,7 +161,6 @@ pub async fn get_project_summary(
     Query(query): Query<SummaryQuery>,
 ) -> Result<impl IntoResponse, AppError> {
     use crate::entities::{projects, workspace_members, workspaces};
-    use sea_orm::QuerySelect;
 
     // Verificar workspace membership y rol admin
     let ws = workspaces::Entity::find()

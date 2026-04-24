@@ -600,13 +600,7 @@ pub async fn github_webhook(
     headers: axum::http::HeaderMap,
     body: Bytes,
 ) -> Result<Json<serde_json::Value>, AppError> {
-    use crate::{
-        entities::{
-            github_issue_syncs, github_repositories, github_repository_syncs, issues, states,
-        },
-        utils::instance_config::get_config_value,
-    };
-    use sea_orm::{ActiveModelTrait, ColumnTrait, EntityTrait, QueryFilter, Set};
+    use crate::utils::instance_config::get_config_value;
 
     // ── Verificar firma HMAC ──────────────────────────────────────────────────
     let signature = headers
@@ -673,7 +667,7 @@ async fn handle_github_issue_event(
     use crate::entities::{
         github_issue_syncs, github_repositories, github_repository_syncs, issues, states,
     };
-    use sea_orm::{ActiveModelTrait, ColumnTrait, EntityTrait, QueryFilter, Set};
+    use sea_orm::{ActiveModelTrait, EntityTrait, Set};
 
     let action = payload["action"].as_str().unwrap_or("");
     let gh_issue = &payload["issue"];
@@ -802,7 +796,7 @@ async fn handle_github_issue_event(
 pub async fn gitlab_webhook(
     State(state): State<AppState>,
     headers: axum::http::HeaderMap,
-    body: Bytes,
+    _body: Bytes,
 ) -> Result<Json<serde_json::Value>, AppError> {
     use crate::utils::instance_config::get_config_value;
 

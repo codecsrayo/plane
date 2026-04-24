@@ -373,7 +373,7 @@ pub async fn entity_search(
             "user_mention" => {
                 // Busca miembros activos del proyecto (si project_id) o del workspace
                 let members: Vec<serde_json::Value> = if let Some(pid) = project_id {
-                    let mut qb = project_members::Entity::find()
+                    let qb = project_members::Entity::find()
                         .filter(project_members::Column::ProjectId.eq(pid))
                         .filter(project_members::Column::WorkspaceId.eq(workspace_id))
                         .filter(project_members::Column::IsActive.eq(true))
@@ -386,7 +386,7 @@ pub async fn entity_search(
                         .map_err(AppError::Database)?;
                     vec![]
                 } else {
-                    let mut qb = workspace_members::Entity::find()
+                    let qb = workspace_members::Entity::find()
                         .filter(workspace_members::Column::WorkspaceId.eq(workspace_id))
                         .filter(workspace_members::Column::IsActive.eq(true))
                         .filter(workspace_members::Column::DeletedAt.is_null());
@@ -494,7 +494,7 @@ pub async fn entity_search(
                     .map(|c| {
                         let now = chrono::Utc::now();
                         let status = match (c.start_date, c.end_date) {
-                            (Some(s), Some(e)) if now < s.with_timezone(&chrono::Utc) => "UPCOMING",
+                            (Some(s), Some(_e)) if now < s.with_timezone(&chrono::Utc) => "UPCOMING",
                             (Some(_), Some(e)) if now > e.with_timezone(&chrono::Utc) => "COMPLETED",
                             (Some(_), Some(_)) => "CURRENT",
                             _ => "DRAFT",

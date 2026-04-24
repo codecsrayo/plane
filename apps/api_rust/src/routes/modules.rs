@@ -898,7 +898,7 @@ pub async fn update_module_user_properties(
 
 // ── POST /issues/{issue_id}/modules ──────────────────────────────────────────
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct IssueModulesRequest {
     pub modules: Option<Vec<Uuid>>,
     pub removed_modules: Option<Vec<Uuid>>,
@@ -1020,13 +1020,13 @@ impl From<module_links::Model> for ModuleLinkResponse {
     }
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct CreateModuleLinkRequest {
     pub url: String,
     pub title: Option<String>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct UpdateModuleLinkRequest {
     pub url: Option<String>,
     pub title: Option<String>,
@@ -1282,7 +1282,7 @@ pub async fn delete_module_link(
 
 // ── user-favorite-modules ─────────────────────────────────────────────────────
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct FavoriteModuleRequest {
     pub module: Uuid,
 }

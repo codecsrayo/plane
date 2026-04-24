@@ -1864,7 +1864,7 @@ pub async fn cycle_date_check(
 
 // ── user-favorite-cycles ──────────────────────────────────────────────────────
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct FavoriteCycleRequest {
     pub cycle: Uuid,
 }
@@ -2041,7 +2041,7 @@ pub async fn delete_favorite_cycle(
 
 // ── transfer-issues ───────────────────────────────────────────────────────────
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct TransferCycleIssuesRequest {
     pub new_cycle_id: Uuid,
 }
