@@ -1307,7 +1307,7 @@ pub async fn list_project_members(
 pub async fn update_project_member(
     State(state): State<AppState>,
     AnyAuth(user): AnyAuth,
-    Path((_slug, project_id, pk)): Path<(String, Uuid, Uuid)>,
+    Path((slug, project_id, pk)): Path<(String, Uuid, Uuid)>,
     Json(body): Json<UpdateProjectMemberRequest>,
 ) -> Result<Json<ProjectMemberResponse>, AppError> {
     validate_role(body.role)?;
@@ -1357,7 +1357,7 @@ pub async fn update_project_member(
 pub async fn remove_project_member(
     State(state): State<AppState>,
     AnyAuth(user): AnyAuth,
-    Path((_slug, project_id, pk)): Path<(String, Uuid, Uuid)>,
+    Path((slug, project_id, pk)): Path<(String, Uuid, Uuid)>,
 ) -> Result<StatusCode, AppError> {
     let ws = workspace_by_slug(&state.db, &slug).await?;
     let wm = require_workspace_member(&state.db, ws.id, user.id).await?;
@@ -1533,7 +1533,7 @@ pub async fn create_project_invitations(
 pub async fn delete_project_invitation(
     State(state): State<AppState>,
     AnyAuth(user): AnyAuth,
-    Path((_slug, project_id, pk)): Path<(String, Uuid, Uuid)>,
+    Path((slug, project_id, pk)): Path<(String, Uuid, Uuid)>,
 ) -> Result<StatusCode, AppError> {
     let ws = workspace_by_slug(&state.db, &slug).await?;
     let wm = require_workspace_member(&state.db, ws.id, user.id).await?;
@@ -1760,7 +1760,7 @@ pub async fn get_project_member_me(
 pub async fn get_project_member(
     State(state): State<AppState>,
     AnyAuth(user): AnyAuth,
-    Path((_slug, project_id, pk)): Path<(String, Uuid, Uuid)>,
+    Path((slug, project_id, pk)): Path<(String, Uuid, Uuid)>,
 ) -> Result<Json<serde_json::Value>, AppError> {
     let ws = workspace_by_slug(&state.db, &slug).await?;
     let wm = require_workspace_member(&state.db, ws.id, user.id).await?;
@@ -2408,7 +2408,7 @@ pub async fn delete_project_identifier(
 pub async fn get_project_invitation(
     State(state): State<AppState>,
     AnyAuth(user): AnyAuth,
-    Path((_slug, project_id, pk)): Path<(String, Uuid, Uuid)>,
+    Path((slug, project_id, pk)): Path<(String, Uuid, Uuid)>,
 ) -> Result<Json<ProjectInvitationResponse>, AppError> {
     let ws = workspace_by_slug(&state.db, &slug).await?;
     let wm = require_workspace_member(&state.db, ws.id, user.id).await?;
@@ -2824,7 +2824,7 @@ pub async fn upsert_project_deploy_board(
 pub async fn update_project_deploy_board(
     AnyAuth(user): AnyAuth,
     State(state): State<AppState>,
-    Path((_slug, project_id, pk)): Path<(String, Uuid, Uuid)>,
+    Path((slug, project_id, pk)): Path<(String, Uuid, Uuid)>,
     Json(body): Json<UpsertDeployBoardRequest>,
 ) -> Result<Json<DeployBoardResponse>, AppError> {
     let ws = workspace_by_slug(&state.db, &slug).await?;
@@ -2881,7 +2881,7 @@ pub async fn update_project_deploy_board(
 pub async fn delete_project_deploy_board(
     AnyAuth(user): AnyAuth,
     State(state): State<AppState>,
-    Path((_slug, project_id, pk)): Path<(String, Uuid, Uuid)>,
+    Path((slug, project_id, pk)): Path<(String, Uuid, Uuid)>,
 ) -> Result<StatusCode, AppError> {
     let ws = workspace_by_slug(&state.db, &slug).await?;
     let wm = require_workspace_member(&state.db, ws.id, user.id).await?;

@@ -667,7 +667,7 @@ async fn handle_github_issue_event(
     use crate::entities::{
         github_issue_syncs, github_repositories, github_repository_syncs, issues, states,
     };
-    use sea_orm::{ActiveModelTrait, EntityTrait, Set};
+    use sea_orm::{ActiveModelTrait, ColumnTrait, EntityTrait, QueryFilter, Set};
 
     let action = payload["action"].as_str().unwrap_or("");
     let gh_issue = &payload["issue"];
