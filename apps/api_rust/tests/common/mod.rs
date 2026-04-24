@@ -408,6 +408,9 @@ impl TestApp {
             view_props: Set(serde_json::json!({})),
             default_props: Set(serde_json::json!({})),
             preferences: Set(serde_json::json!({})),
+            // NOT NULL sin DEFAULT en baseline; Django usa default=65535
+            // (apps/api/plane/db/models/project.py::ProjectMember.sort_order).
+            sort_order: Set(65535.0),
             created_at: Set(now.into()),
             updated_at: Set(now.into()),
             deleted_at: Set(None),
