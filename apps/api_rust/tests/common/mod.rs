@@ -225,7 +225,7 @@ impl TestApp {
         let body = serde_urlencoded::to_string(fields).expect("urlencode");
         let req = Request::builder()
             .method(Method::POST)
-            .uri(path)
+            .uri(normalize_path(path))
             .header("content-type", "application/x-www-form-urlencoded")
             .body(Body::from(body))
             .expect("request build");
@@ -244,6 +244,12 @@ impl TestApp {
     }
 
     /// Ejecuta una request arbitraria contra el router.
+    ///
+    /// Trimea la barra final del path para imitar el comportamiento del
+    /// `NormalizePathLayer::trim_trailing_slash()` que envuelve al router
+    /// en producción (ver `main.rs`). Así los tests pueden usar tanto
+    /// `"/auth/sign-in"` como `"/auth/sign-in/"` sin diferencia, igual que
+    /// hacen el frontend y Caddy.
     pub async fn request(
         &self,
         method: Method,
@@ -251,7 +257,8 @@ impl TestApp {
         body: Option<Vec<u8>>,
         headers: &[(&str, &str)],
     ) -> TestResponse {
-        let mut builder = Request::builder().method(method).uri(path);
+        let normalized = normalize_path(path);
+        let mut builder = Request::builder().method(method).uri(normalized);
         for (k, v) in headers {
             builder = builder.header(*k, *v);
         }
@@ -278,6 +285,24 @@ impl TestApp {
             status,
             body: bytes.to_vec(),
         }
+    }
+}
+
+/// Imita el `NormalizePathLayer::trim_trailing_slash()` de producción.
+/// Trimea SOLO la barra final del path, conservando query string si existe.
+fn normalize_path(path: &str) -> String {
+    let (path_only, query) = match path.find('?') {
+        Some(i) => (&path[..i], Some(&path[i..])),
+        None => (path, None),
+    };
+    let trimmed = if path_only.len() > 1 && path_only.ends_with('/') {
+        path_only.trim_end_matches('/')
+    } else {
+        path_only
+    };
+    match query {
+        Some(q) => format!("{trimmed}{q}"),
+        None => trimmed.to_owned(),
     }
 }
 

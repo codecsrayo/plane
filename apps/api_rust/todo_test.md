@@ -260,14 +260,14 @@
 - ✅ `POST /auth/reset-password/{uidb64}/{token}`
 - ✅ `POST /auth/change-password`
 - ✅ `POST /auth/set-password`
-- [ ] `GET  /auth/github/callback`
-- [ ] `GET  /auth/github/user-callback`
-- [ ] `GET  /auth/gitlab`
-- [ ] `GET  /auth/gitlab/callback`
-- [ ] `GET  /auth/google`
-- [ ] `GET  /auth/google/callback`
-- [ ] `GET  /auth/gitea`
-- [ ] `GET  /auth/gitea/callback`
+- ✅ `GET  /auth/github/callback`
+- ✅ `GET  /auth/github/user-callback`
+- ✅ `GET  /auth/gitlab`
+- ✅ `GET  /auth/gitlab/callback`
+- ✅ `GET  /auth/google`
+- ✅ `GET  /auth/google/callback`
+- ✅ `GET  /auth/gitea`
+- ✅ `GET  /auth/gitea/callback`
 - [ ] `POST /spaces/sign-in`
 - [ ] `POST /spaces/sign-out`
 - [ ] `POST /spaces/magic-sign-in`
