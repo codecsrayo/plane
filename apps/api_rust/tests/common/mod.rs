@@ -308,7 +308,15 @@ impl TestApp {
             is_active: Set(true),
             created_by_id: Set(Some(owner_id)),
             updated_by_id: Set(Some(owner_id)),
+            // 5 columnas JSON NOT NULL sin DEFAULT en la baseline; Django
+            // las llena vía `default=dict` en el modelo, acá hay que ser
+            // explícito.
+            view_props: Set(serde_json::json!({})),
+            default_props: Set(serde_json::json!({})),
+            issue_props: Set(serde_json::json!({})),
+            explored_features: Set(serde_json::json!({})),
             getting_started_checklist: Set(serde_json::json!({})),
+            tips: Set(serde_json::json!({})),
             created_at: Set(now.into()),
             updated_at: Set(now.into()),
             deleted_at: Set(None),
@@ -384,6 +392,10 @@ impl TestApp {
             is_active: Set(true),
             created_by_id: Set(Some(owner_id)),
             updated_by_id: Set(Some(owner_id)),
+            // 3 columnas JSON NOT NULL en project_members.
+            view_props: Set(serde_json::json!({})),
+            default_props: Set(serde_json::json!({})),
+            preferences: Set(serde_json::json!({})),
             created_at: Set(now.into()),
             updated_at: Set(now.into()),
             deleted_at: Set(None),
@@ -409,7 +421,13 @@ impl TestApp {
             is_active: Set(true),
             created_by_id: Set(Some(user_id)),
             updated_by_id: Set(Some(user_id)),
+            // Mismas 5 columnas JSON NOT NULL que en create_test_workspace.
+            view_props: Set(serde_json::json!({})),
+            default_props: Set(serde_json::json!({})),
+            issue_props: Set(serde_json::json!({})),
+            explored_features: Set(serde_json::json!({})),
             getting_started_checklist: Set(serde_json::json!({})),
+            tips: Set(serde_json::json!({})),
             created_at: Set(now.into()),
             updated_at: Set(now.into()),
             deleted_at: Set(None),
