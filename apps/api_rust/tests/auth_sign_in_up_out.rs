@@ -86,12 +86,14 @@ async fn sign_up_rejects_invalid_emails() {
             });
             prop_assert!(
                 status.is_redirection(),
-                "3xx esperado para email={email:?}, obtuvo {status}"
+                "3xx esperado para email={:?}, obtuvo {}",
+                email, status
             );
             let loc = loc.expect("Location requerido");
             prop_assert!(
                 location_has_error(&loc, "5045"),
-                "error_code=5045 esperado para email={email:?}, Location={loc:?}"
+                "error_code=5045 esperado para email={:?}, Location={:?}",
+                email, loc
             );
             Ok(())
         })

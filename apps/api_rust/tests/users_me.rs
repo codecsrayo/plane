@@ -169,7 +169,8 @@ async fn patch_me_valid_display_name_always_200() {
             prop_assert_eq!(
                 status,
                 200,
-                "display_name válido debe devolver 200, obtuvo {status} para input={name:?}"
+                "display_name válido debe devolver 200, obtuvo {} para input={:?}",
+                status, name
             );
             Ok(())
         })

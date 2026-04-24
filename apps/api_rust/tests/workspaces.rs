@@ -255,7 +255,8 @@ async fn create_workspace_invalid_slugs_always_400() {
             });
             prop_assert!(
                 status == 400 || status == 409,
-                "slug inválido {slug:?} debe devolver 4xx, obtuvo {status}"
+                "slug inválido {:?} debe devolver 4xx, obtuvo {}",
+                slug, status
             );
             Ok(())
         })
