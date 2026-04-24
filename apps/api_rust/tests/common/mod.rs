@@ -398,6 +398,7 @@ impl TestApp {
         let pm_am = project_members::ActiveModel {
             id: Set(Uuid::new_v4()),
             project_id: Set(project_id),
+            workspace_id: Set(workspace_id),
             member_id: Set(Some(owner_id)),
             role: Set(20),
             is_active: Set(true),
