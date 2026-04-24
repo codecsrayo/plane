@@ -411,8 +411,8 @@
 - ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-links/{pk}`
 - ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-attachments`
 - ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-attachments/{pk}`
-- [ ] `GET/POST   /assets/v2/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/attachments`
-- [ ] `DELETE     /assets/v2/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/attachments/{pk}`
+- ✅ `GET/POST   /assets/v2/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/attachments`
+- ✅ `DELETE     /assets/v2/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/attachments/{pk}`
 - ✅ `GET        /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/history`
 - ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/comments`
 - ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/comments/{pk}`
@@ -544,17 +544,17 @@
 - ✅ `GET/PATCH/DELETE /assets/v2/workspaces/{slug}/{asset_id}`
 - ✅ `GET/POST   /assets/v2/user-assets`
 - ✅ `GET/PATCH/DELETE /assets/v2/user-assets/{asset_id}`
-- [ ] `GET        /assets/v2/static/{asset_id}`
-- [ ] `GET/POST   /assets/v2/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/attachments`
-- [ ] `DELETE     /assets/v2/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/attachments/{pk}`
-- [ ] `POST       /assets/v2/workspaces/{slug}/restore/{asset_id}`
-- [ ] `GET/POST   /assets/v2/workspaces/{slug}/projects/{project_id}`
-- [ ] `GET/PATCH/DELETE /assets/v2/workspaces/{slug}/projects/{project_id}/{pk}`
-- [ ] `POST       /assets/v2/workspaces/{slug}/projects/{project_id}/{entity_id}/bulk`
-- [ ] `GET        /assets/v2/workspaces/{slug}/check/{asset_id}`
-- [ ] `POST       /assets/v2/workspaces/{slug}/duplicate-assets/{asset_id}`
-- [ ] `GET        /assets/v2/workspaces/{slug}/download/{asset_id}`
-- [ ] `GET        /assets/v2/workspaces/{slug}/projects/{project_id}/download/{asset_id}`
+- ✅ `GET        /assets/v2/static/{asset_id}`
+- ✅ `GET/POST   /assets/v2/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/attachments`
+- ✅ `DELETE     /assets/v2/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/attachments/{pk}`
+- ✅ `POST       /assets/v2/workspaces/{slug}/restore/{asset_id}`
+- ✅ `GET/POST   /assets/v2/workspaces/{slug}/projects/{project_id}`
+- ✅ `GET/PATCH/DELETE /assets/v2/workspaces/{slug}/projects/{project_id}/{pk}`
+- ✅ `POST       /assets/v2/workspaces/{slug}/projects/{project_id}/{entity_id}/bulk`
+- ✅ `GET        /assets/v2/workspaces/{slug}/check/{asset_id}`
+- ✅ `POST       /assets/v2/workspaces/{slug}/duplicate-assets/{asset_id}`
+- ✅ `GET        /assets/v2/workspaces/{slug}/download/{asset_id}`
+- ✅ `GET        /assets/v2/workspaces/{slug}/projects/{project_id}/download/{asset_id}`
 
 ## Exporter (`app/urls/exporter.py`)
 
@@ -576,19 +576,19 @@
 
 ## Integrations (`app/urls/integration.py`)
 
-- [ ] `GET        /github/callback`
-- [ ] `GET        /github/user-callback`
+- ✅ `GET        /github/callback`
+- ✅ `GET        /github/user-callback`
 - ✅ `GET        /integrations`
 - ✅ `GET/POST   /workspaces/{slug}/workspace-integrations`
 - ✅ `GET/PATCH/DELETE /workspaces/{slug}/workspace-integrations/{pk}`
-- [ ] `GET        /workspaces/{slug}/workspace-integrations/{provider}/provider`
-- [ ] `POST       /workspaces/{slug}/workspace-integrations/{provider}/install`
+- ✅ `GET        /workspaces/{slug}/workspace-integrations/{provider}/provider`
+- ✅ `POST       /workspaces/{slug}/workspace-integrations/{provider}/install`
 - ✅ `GET/POST   /workspaces/{slug}/workspace-integrations/github/repo-syncs`
-- [ ] `GET/PATCH/DELETE /workspaces/{slug}/workspace-integrations/github/repo-syncs/{pk}`
-- [ ] `GET        /workspaces/{slug}/workspace-integrations/{wi_id}/github-repositories`
-- [ ] `GET        /workspaces/{slug}/workspace-integrations/{wi_id}/gitlab-repositories`
-- [ ] `GET/POST   /workspaces/{slug}/workspace-integrations/{wi_id}/pr-state-mappings`
-- [ ] `GET/PATCH/DELETE /workspaces/{slug}/workspace-integrations/{wi_id}/pr-state-mappings/{pk}`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}/workspace-integrations/github/repo-syncs/{pk}`
+- ✅ `GET        /workspaces/{slug}/workspace-integrations/{wi_id}/github-repositories`
+- ✅ `GET        /workspaces/{slug}/workspace-integrations/{wi_id}/gitlab-repositories`
+- ✅ `GET/POST   /workspaces/{slug}/workspace-integrations/{wi_id}/pr-state-mappings`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}/workspace-integrations/{wi_id}/pr-state-mappings/{pk}`
 
 ## Importer (`app/urls/importer.py`)
 
@@ -650,9 +650,9 @@
 
 ### Estimates
 
-- [ ] `GET        /workspaces/{slug}/projects/{project_id}/estimates`
-- [ ] `POST       /workspaces/{slug}/projects/{project_id}/estimates/{estimate_id}/estimate-points`
-- [ ] `PATCH/DELETE /workspaces/{slug}/projects/{project_id}/estimates/{estimate_id}/estimate-points/{pk}`
+- ✅ `GET        /workspaces/{slug}/projects/{project_id}/estimates`
+- ✅ `POST       /workspaces/{slug}/projects/{project_id}/estimates/{estimate_id}/estimate-points`
+- ✅ `PATCH/DELETE /workspaces/{slug}/projects/{project_id}/estimates/{estimate_id}/estimate-points/{pk}`
 
 ### Cycles
 
@@ -715,11 +715,11 @@
 
 ### Assets (api/v1 — sin prefijo v2/)
 
-- [ ] `POST       /assets/user-assets`
-- [ ] `PATCH/DELETE /assets/user-assets/{asset_id}`
-- [ ] `POST       /assets/user-assets/server`
-- [ ] `POST       /assets/user-assets/{asset_id}/server`
-- [ ] `POST       /workspaces/{slug}/assets`
-- [ ] `GET/PATCH/DELETE /workspaces/{slug}/assets/{asset_id}`
+- ✅ `POST       /assets/user-assets`
+- ✅ `PATCH/DELETE /assets/user-assets/{asset_id}`
+- ✅ `POST       /assets/user-assets/server`
+- ✅ `POST       /assets/user-assets/{asset_id}/server`
+- ✅ `POST       /workspaces/{slug}/assets`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}/assets/{asset_id}`
 
 ---
