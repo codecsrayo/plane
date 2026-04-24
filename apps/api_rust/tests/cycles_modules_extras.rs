@@ -72,11 +72,13 @@ async fn get_archived_cycle_nonexistent_returns_404() {
 async fn unarchive_cycle_unauthenticated_returns_401() {
     let (app, _, _, slug, _, project_id) = setup("unarcyc-unauth").await;
     let fake_pk = uuid::Uuid::new_v4();
+    // Paridad Django (cycle.py:92-95) y Rust (routes/mod.rs:973-974):
+    // el unarchive es DELETE /archived-cycles/{pk}, sin segmento /unarchive.
     let res = app
         .delete_authed(
             "no-key",
             &format!(
-                "/workspaces/{slug}/projects/{project_id}/archived-cycles/{fake_pk}/unarchive"
+                "/workspaces/{slug}/projects/{project_id}/archived-cycles/{fake_pk}"
             ),
         )
         .await;
