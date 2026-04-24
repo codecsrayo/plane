@@ -147,6 +147,47 @@ impl TestApp {
         }
     }
 
+    /// Actualiza (o inserta si no existe) un valor de `instance_configurations`.
+    /// Útil para activar gates en tests (p.ej. `EMAIL_HOST` para desbloquear
+    /// `forgot-password`, `ENABLE_SIGNUP=0` para probar signup deshabilitado).
+    ///
+    /// NOTA: no cifra — solo válido para configs con `is_encrypted = false`.
+    pub async fn set_instance_config(&self, key: &str, value: &str) {
+        use api_rust::entities::instance_configurations;
+        use sea_orm::{ActiveModelTrait, ActiveValue::Set, ColumnTrait, EntityTrait, QueryFilter};
+
+        let existing = instance_configurations::Entity::find()
+            .filter(instance_configurations::Column::Key.eq(key))
+            .one(&self.state.db)
+            .await
+            .expect("query instance_configurations");
+
+        match existing {
+            Some(row) => {
+                let mut am: instance_configurations::ActiveModel = row.into();
+                am.value = Set(Some(value.to_owned()));
+                am.update(&self.state.db).await.expect("update config");
+            }
+            None => {
+                // Las filas default ya las sembró `ensure_configurations_seeded`.
+                // Si llegamos acá es una config nueva de test.
+                let am = instance_configurations::ActiveModel {
+                    created_at: Set(chrono::Utc::now().into()),
+                    updated_at: Set(chrono::Utc::now().into()),
+                    id: Set(uuid::Uuid::new_v4()),
+                    key: Set(key.to_owned()),
+                    value: Set(Some(value.to_owned())),
+                    category: Set("TEST".to_owned()),
+                    is_encrypted: Set(false),
+                    created_by_id: Set(None),
+                    updated_by_id: Set(None),
+                    deleted_at: Set(None),
+                };
+                am.insert(&self.state.db).await.expect("insert config");
+            }
+        }
+    }
+
     /// GET sin body, sin cookies.
     pub async fn get(&self, path: &str) -> TestResponse {
         self.request(Method::GET, path, None, &[]).await

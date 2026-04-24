@@ -165,3 +165,11 @@ testcontainers        = "0.23"
 testcontainers-modules = { version = "0.11", features = ["postgres", "redis"] }
 serial_test          = "3.2"
 once_cell            = "1.20"
+# Los tests reutilizan los mismos tipos del crate bajo prueba (uuid, chrono,
+# base64, serde_json) pero éstos no quedan expuestos automáticamente a los
+# integration tests — se declaran explícitamente aquí.
+base64               = "0.22.1"
+chrono               = { version = "0.4.44", features = ["serde"] }
+uuid                 = { version = "1.23.1", features = ["v4", "serde"] }
+serde_json           = "1.0.149"
+serde_urlencoded     = "0.7.1"
