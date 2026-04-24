@@ -392,18 +392,18 @@
 
 ## States (`app/urls/state.py`)
 
-- [ ] `GET/POST   /workspaces/{slug}/projects/{project_id}/states`
-- [ ] `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/states/{pk}`
-- [ ] `GET/POST   /workspaces/{slug}/projects/{project_id}/intake-state`
+- ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/states`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/states/{pk}`
+- ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/intake-state`
 - [ ] `POST       /workspaces/{slug}/projects/{project_id}/states/{pk}/mark-default`
 
 ## Issues (`app/urls/issue.py`)
 
 - [ ] `GET/POST   /workspaces/{slug}/projects/{project_id}/issues`
 - [ ] `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/issues/{pk}`
-- [ ] `GET/POST   /workspaces/{slug}/projects/{project_id}/issue-labels`
-- [ ] `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/issue-labels/{pk}`
-- [ ] `POST       /workspaces/{slug}/projects/{project_id}/bulk-create-labels`
+- ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/issue-labels`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/issue-labels/{pk}`
+- ✅ `POST       /workspaces/{slug}/projects/{project_id}/bulk-create-labels`
 - [ ] `POST       /workspaces/{slug}/projects/{project_id}/bulk-delete-issues`
 - [ ] `POST       /workspaces/{slug}/projects/{project_id}/bulk-archive-issues`
 - [ ] `GET/POST   /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/sub-issues`
@@ -640,13 +640,13 @@
 
 ### States
 
-- [ ] `GET/POST   /workspaces/{slug}/projects/{project_id}/states`
-- [ ] `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/states/{state_id}`
+- ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/states`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/states/{state_id}`
 
 ### Labels
 
-- [ ] `GET/POST   /workspaces/{slug}/projects/{project_id}/labels`
-- [ ] `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/labels/{pk}`
+- ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/labels`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/labels/{pk}`
 
 ### Estimates
 
