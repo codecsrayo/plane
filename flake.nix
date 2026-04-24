@@ -54,6 +54,7 @@
           cargo-edit
           go-task   # Para ejecutar comandos del Taskfile.yml
           direnv    # Para carga automática del entorno Nix
+          tree
         ];
 
         # Variables de entorno necesarias para cargo
