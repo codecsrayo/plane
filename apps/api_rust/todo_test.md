@@ -296,8 +296,8 @@
 
 ## Users (`app/urls/user.py`)
 
-- [ ] `GET/PATCH  /users/me`
-- [ ] `GET/DELETE /users/session`
+- ✅ `GET/PATCH  /users/me`
+- ✅ `GET/DELETE /users/session`
 - [ ] `PATCH      /users/me/settings`
 - [ ] `GET/PATCH  /users/me/profile`
 - [ ] `GET        /users/me/accounts`
@@ -618,7 +618,7 @@
 
 ### Users
 
-- [ ] `GET/PATCH  /users/me`
+- ✅ `GET/PATCH  /users/me`
 
 ### Workspace Members
 
