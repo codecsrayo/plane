@@ -399,12 +399,12 @@
 
 ## Issues (`app/urls/issue.py`)
 
-- [ ] `GET/POST   /workspaces/{slug}/projects/{project_id}/issues`
-- [ ] `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/issues/{pk}`
+- ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/issues`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/issues/{pk}`
 - ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/issue-labels`
 - ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/issue-labels/{pk}`
 - ✅ `POST       /workspaces/{slug}/projects/{project_id}/bulk-create-labels`
-- [ ] `POST       /workspaces/{slug}/projects/{project_id}/bulk-delete-issues`
+- ✅ `POST       /workspaces/{slug}/projects/{project_id}/bulk-delete-issues`
 - [ ] `POST       /workspaces/{slug}/projects/{project_id}/bulk-archive-issues`
 - [ ] `GET/POST   /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/sub-issues`
 - [ ] `GET/POST   /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-links`
@@ -413,10 +413,10 @@
 - [ ] `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-attachments/{pk}`
 - [ ] `GET/POST   /assets/v2/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/attachments`
 - [ ] `DELETE     /assets/v2/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/attachments/{pk}`
-- [ ] `GET        /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/history`
-- [ ] `GET/POST   /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/comments`
+- ✅ `GET        /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/history`
+- ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/comments`
 - [ ] `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/comments/{pk}`
-- [ ] `GET/POST   /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-subscribers`
+- ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-subscribers`
 - [ ] `POST       /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/subscribe`
 - [ ] `GET/POST   /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/reactions`
 - [ ] `DELETE     /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/reactions/{reaction_code}`
@@ -425,7 +425,7 @@
 - [ ] `GET/PATCH  /workspaces/{slug}/projects/{project_id}/user-properties`
 - [ ] `GET        /workspaces/{slug}/projects/{project_id}/archived-issues`
 - [ ] `POST       /workspaces/{slug}/projects/{project_id}/issues/{pk}/archive`
-- [ ] `POST       /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-relation`
+- ✅ `POST       /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-relation`
 - [ ] `POST       /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/remove-relation`
 - [ ] `GET        /workspaces/{slug}/projects/{project_id}/deleted-issues`
 - [ ] `GET        /workspaces/{slug}/projects/{project_id}/issue-dates`
@@ -697,11 +697,11 @@
 
 - [ ] `GET        /workspaces/{slug}/issues/search`
 - [ ] `GET        /workspaces/{slug}/issues/{combined}`
-- [ ] `GET/POST   /workspaces/{slug}/projects/{project_id}/issues`
-- [ ] `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/issues/{pk}`
+- ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/issues`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/issues/{pk}`
 - [ ] `GET/POST   /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/links`
 - [ ] `PATCH/DELETE /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/links/{pk}`
-- [ ] `GET/POST   /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/comments`
+- ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/comments`
 - [ ] `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/comments/{pk}`
 - [ ] `GET        /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/activities`
 - [ ] `GET        /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/activities/{pk}` ← handler nuevo
