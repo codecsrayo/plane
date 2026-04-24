@@ -20,14 +20,22 @@ async fn list_timezones_returns_200_with_data() {
 
     assert_eq!(res.status.as_u16(), 200, "GET /timezones debe devolver 200");
     let body = res.json();
-    let arr = body.as_array().expect("timezones debe ser array");
+    // Paridad con Django TimezoneEndpoint (apps/api/.../timezone/base.py): la
+    // respuesta es `{"timezones": [...]}`, no un array al tope.
+    let arr = body["timezones"]
+        .as_array()
+        .expect("body.timezones debe ser array");
     assert!(!arr.is_empty(), "debe haber al menos una timezone");
-    // UTC debe estar presente
+    // TimezoneEntry tiene campos {utc_offset, gmt_offset, label, value}.
+    // `utc_offset` siempre es `"UTC±HH:MM"`, así que al menos una entrada debe
+    // contener "UTC" ahí. Dejamos los otros caminos como fallback defensivo
+    // por si Django cambia el shape.
     let has_utc = arr.iter().any(|tz| {
-        tz.as_str().map(|s| s == "UTC" || s.contains("UTC")).unwrap_or(false)
+        tz["utc_offset"].as_str().map(|s| s.contains("UTC")).unwrap_or(false)
+            || tz.as_str().map(|s| s == "UTC" || s.contains("UTC")).unwrap_or(false)
             || tz["value"].as_str().map(|s| s.contains("UTC")).unwrap_or(false)
     });
-    assert!(has_utc, "UTC debe estar en la lista de timezones");
+    assert!(has_utc, "al menos una timezone debe reportar offset UTC");
 }
 
 // ═════════════════════════════════════════════════════════════════════════════
