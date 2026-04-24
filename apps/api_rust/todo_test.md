@@ -310,21 +310,21 @@
 - [ ] `GET        /users/me/workspaces/{slug}/activity-graph`
 - [ ] `GET        /users/me/workspaces/{slug}/issues-completed-graph`
 - [ ] `GET        /users/me/workspaces/{slug}/dashboard`
-- [ ] `GET/PATCH  /users/me/notification-preferences`
+- ✅ `GET/PATCH  /users/me/notification-preferences`
 - [ ] `GET        /users/last-visited-workspace`
 - [ ] `POST       /users/me/email/generate-code`
 - [ ] `POST       /users/me/email`
 
 ## API Tokens (`app/urls/api.py`)
 
-- [ ] `GET/POST   /api-tokens`
-- [ ] `GET/PATCH/DELETE /api-tokens/{pk}`
-- [ ] `GET/POST   /users/api-tokens` (alias)
-- [ ] `GET/PATCH/DELETE /users/api-tokens/{pk}` (alias)
+- ✅ `GET/POST   /api-tokens`
+- ✅ `GET/PATCH/DELETE /api-tokens/{pk}`
+- ✅ `GET/POST   /users/api-tokens` (alias)
+- ✅ `GET/PATCH/DELETE /users/api-tokens/{pk}` (alias)
 
 ## Timezones
 
-- [ ] `GET /timezones`
+- ✅ `GET /timezones`
 
 ## Workspaces (`app/urls/workspace.py`)
 
@@ -483,17 +483,17 @@
 
 ## Pages (`app/urls/page.py`)
 
-- [ ] `GET        /workspaces/{slug}/projects/{project_id}/pages-summary`
-- [ ] `GET/POST   /workspaces/{slug}/projects/{project_id}/pages`
-- [ ] `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/pages/{page_id}`
+- ✅ `GET        /workspaces/{slug}/projects/{project_id}/pages-summary`
+- ✅ `GET/POST   /workspaces/{slug}/projects/{project_id}/pages`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/pages/{page_id}`
 - [ ] `POST/DELETE /workspaces/{slug}/projects/{project_id}/favorite-pages/{page_id}`
-- [ ] `POST       /workspaces/{slug}/projects/{project_id}/pages/{page_id}/archive`
-- [ ] `POST/DELETE /workspaces/{slug}/projects/{project_id}/pages/{page_id}/lock`
+- ✅ `POST       /workspaces/{slug}/projects/{project_id}/pages/{page_id}/archive`
+- ✅ `POST/DELETE /workspaces/{slug}/projects/{project_id}/pages/{page_id}/lock`
 - [ ] `POST       /workspaces/{slug}/projects/{project_id}/pages/{page_id}/access`
 - [ ] `GET/POST/PATCH/DELETE /workspaces/{slug}/projects/{project_id}/pages/{page_id}/description`
 - [ ] `GET        /workspaces/{slug}/projects/{project_id}/pages/{page_id}/versions`
 - [ ] `GET/DELETE /workspaces/{slug}/projects/{project_id}/pages/{page_id}/versions/{pk}`
-- [ ] `POST       /workspaces/{slug}/projects/{project_id}/pages/{page_id}/duplicate`
+- ✅ `POST       /workspaces/{slug}/projects/{project_id}/pages/{page_id}/duplicate`
 
 ## Views (`app/urls/views.py`)
 
@@ -524,13 +524,13 @@
 
 ## Notifications (`app/urls/notification.py`)
 
-- [ ] `GET        /workspaces/{slug}/users/notifications`
-- [ ] `GET/PATCH/DELETE /workspaces/{slug}/users/notifications/{pk}`
-- [ ] `POST       /workspaces/{slug}/users/notifications/{pk}/read`
-- [ ] `POST       /workspaces/{slug}/users/notifications/{pk}/archive`
-- [ ] `GET        /workspaces/{slug}/users/notifications/unread`
-- [ ] `POST       /workspaces/{slug}/users/notifications/mark-all-read`
-- [ ] `GET/PATCH  /users/me/notification-preferences`
+- ✅ `GET        /workspaces/{slug}/users/notifications`
+- ✅ `GET/PATCH/DELETE /workspaces/{slug}/users/notifications/{pk}`
+- ✅ `POST       /workspaces/{slug}/users/notifications/{pk}/read`
+- ✅ `POST       /workspaces/{slug}/users/notifications/{pk}/archive`
+- ✅ `GET        /workspaces/{slug}/users/notifications/unread`
+- ✅ `POST       /workspaces/{slug}/users/notifications/mark-all-read`
+- ✅ `GET/PATCH  /users/me/notification-preferences`
 
 ## Search (`app/urls/search.py`)
 
