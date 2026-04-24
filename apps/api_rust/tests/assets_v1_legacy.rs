@@ -55,7 +55,8 @@ async fn post_user_assets_authenticated_initiates_upload() {
             &json!({
                 "name": "profile.jpg",
                 "type": "image/jpeg",
-                "size": 102400
+                "size": 102400,
+                "entity_type": "USER_AVATAR"
             }),
         )
         .await;
@@ -172,12 +173,19 @@ async fn post_user_asset_server_complete_unauthenticated_returns_401() {
 async fn post_user_asset_server_complete_nonexistent_returns_404() {
     let (app, api_key, _) = setup("ua_srv2_404").await;
     let fake_id = Uuid::new_v4();
+    // El handler monta `Json<CompleteUploadRequest>` como extractor, así que
+    // sin content-type + body JSON válido devuelve 415 antes de chequear la
+    // existencia. Enviamos `{}` (todos los campos son opcionales) para
+    // alcanzar la rama NotFound que el test verifica.
     let res = app
         .request(
             Method::POST,
             &format!("/api/v1/assets/user-assets/{fake_id}/server"),
-            None,
-            &[("x-api-key", api_key.as_str())],
+            Some(b"{}".to_vec()),
+            &[
+                ("content-type", "application/json"),
+                ("x-api-key", api_key.as_str()),
+            ],
         )
         .await;
     assert_eq!(
@@ -199,7 +207,7 @@ async fn post_workspace_asset_unauthenticated_returns_401() {
         .request(
             Method::POST,
             &format!("/api/v1/workspaces/{slug}/assets"),
-            Some(serde_json::to_vec(&json!({"name":"banner.png","type":"image/png","size":204800,"entity_type":"workspace_logo"})).unwrap()),
+            Some(serde_json::to_vec(&json!({"name":"banner.png","type":"image/png","size":204800,"entity_type":"WORKSPACE_LOGO"})).unwrap()),
             &[("content-type", "application/json")],
         )
         .await;
@@ -217,7 +225,7 @@ async fn post_workspace_asset_authenticated_initiates_upload() {
                 "name": "workspace-logo.png",
                 "type": "image/png",
                 "size": 204800,
-                "entity_type": "workspace_logo"
+                "entity_type": "WORKSPACE_LOGO"
             }),
         )
         .await;
