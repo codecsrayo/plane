@@ -254,7 +254,7 @@ tasks:
   rust:clippy-strict:
     desc: Run clippy treating all warnings as errors (-D warnings)
     cmds:
-      - cd apps/api_rust && cargo clippy --all-targets --all-features -- -D warnings
+      - cd apps/api_rust && cargo clippy --all-targets --all-features -- -D warnings > clippy.log 2>&1
 
   rust:lint:
     desc: Full lint pass — clippy strict + rustfmt check

@@ -28,7 +28,12 @@
           pkg-config
           rustToolchain
         ];
-
+        extensions = [
+            "rust-src"
+            "rust-analyzer"
+            "clippy"
+            "rustfmt"
+          ];
         buildInputs = with pkgs; [
           # OpenSSL - soluciona el error de PKG_CONFIG_PATH
           openssl
