@@ -10,6 +10,7 @@
 //!   email_notification   — Envío de emails agrupados por receptor cada 5 min
 //!   instance_traces      — Telemetría de instancia cada 6 h
 //!   cron                 — Scheduler tokio que reemplaza Celery beat
+//!   webhook_delivery     — Entrega de webhooks salientes con firma HMAC-SHA256
 
 pub mod cleanup;
 pub mod cron;
@@ -19,4 +20,5 @@ pub mod github_sync;
 pub mod instance_traces;
 pub mod notifications;
 pub mod scheduled;
+pub mod webhook_delivery;
 pub mod workspace_seed;

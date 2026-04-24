@@ -45,6 +45,7 @@ async fn start_job_workers(state: AppState) -> anyhow::Result<()> {
         github_sync::{GithubInitialSyncJob, handle_github_initial_sync},
         notifications::{IssueActivityNotificationJob, handle_issue_activity_notification},
         scheduled::{RunIssueAutomationJob, handle_run_issue_automation},
+        webhook_delivery::{DeliverWebhookJob, handle_deliver_webhook},
         workspace_seed::{WorkspaceSeedJob, handle_workspace_seed},
     };
 
@@ -63,6 +64,8 @@ async fn start_job_workers(state: AppState) -> anyhow::Result<()> {
     let export_storage: PostgresStorage<ExportIssuesJob> =
         PostgresStorage::new(pg_pool.clone());
     let scheduled_storage: PostgresStorage<RunIssueAutomationJob> =
+        PostgresStorage::new(pg_pool.clone());
+    let webhook_storage: PostgresStorage<DeliverWebhookJob> =
         PostgresStorage::new(pg_pool.clone());
     let seed_storage: PostgresStorage<WorkspaceSeedJob> =
         PostgresStorage::new(pg_pool);
@@ -92,6 +95,12 @@ async fn start_job_workers(state: AppState) -> anyhow::Result<()> {
                 .data(state.clone())
                 .backend(scheduled_storage)
                 .build_fn(handle_run_issue_automation),
+        )
+        .register(
+            WorkerBuilder::new("webhook-delivery")
+                .data(state.clone())
+                .backend(webhook_storage)
+                .build_fn(handle_deliver_webhook),
         )
         .register(
             WorkerBuilder::new("workspace-seed")
