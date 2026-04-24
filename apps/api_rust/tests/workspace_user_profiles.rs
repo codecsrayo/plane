@@ -28,7 +28,7 @@ async fn setup(
     ).await;
     // target también es miembro
     app.add_workspace_member(target_id, ws_id, 15).await;
-    (app, owner_id, owner_key, slug, target_id, slug.clone())
+    (app, owner_id, owner_key, slug.clone(), target_id, slug)
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
