@@ -80,8 +80,13 @@ async fn unarchive_project_returns_200_or_204() {
 #[tokio::test(flavor = "multi_thread")]
 async fn archive_project_unauthenticated_returns_401() {
     let (app, _, _, ws_slug, proj_id) = setup("arch_unauth").await;
+    // El endpoint /archive sólo acepta POST/DELETE (mirror Django
+    // archive_unarchive_project en project/base.py + mod.rs:805).
+    // Antes el test usaba GET → Axum devuelve 405 Method Not Allowed
+    // antes de llegar al guard de auth, lo que NO valida la auth chain.
+    // Usamos POST sin token para ejercitar realmente el camino 401.
     let res = app
-        .get(&format!("/workspaces/{ws_slug}/projects/{proj_id}/archive"))
+        .post_json(&format!("/workspaces/{ws_slug}/projects/{proj_id}/archive"), &json!({}))
         .await;
     assert_eq!(res.status.as_u16(), 401);
 }
@@ -237,12 +242,25 @@ async fn leave_project_as_member_returns_204() {
 
     let (member_id, member_key) = app.create_test_user("pext_leave_m@plane.test").await;
     app.add_workspace_member(member_id, ws_id, 10).await;
-    app.post_json_authed(
-        &owner_key,
-        &format!("/workspaces/{ws_slug}/projects/{proj_id}/members"),
-        &json!({ "member_ids": [member_id], "role": 10 }),
-    )
-    .await;
+    // Shape Django (apps/api/plane/app/views/project/member.py:48-66):
+    //   { "members": [ {"member_id": <uuid>, "role": <int>} ] }
+    // Antes el test enviaba {member_ids: [...], role: 10} → el handler lo
+    // deserializaba a Vec vacío, no se agregaba ningún miembro, y el
+    // subsiguiente leave devolvía 404 correctamente. Validamos también
+    // el status del POST para que el bug no vuelva a esconderse.
+    let add_res = app
+        .post_json_authed(
+            &owner_key,
+            &format!("/workspaces/{ws_slug}/projects/{proj_id}/members"),
+            &json!({ "members": [ { "member_id": member_id, "role": 10 } ] }),
+        )
+        .await;
+    assert!(
+        add_res.status.is_success(),
+        "POST /members debe agregar al usuario, status={} body={}",
+        add_res.status,
+        String::from_utf8_lossy(&add_res.body)
+    );
 
     let res = app
         .post_json_authed(
