@@ -62,11 +62,14 @@ async fn create_instance_admin_regular_user_returns_403() {
     let app = TestApp::spawn().await;
     let (_, api_key) = app.create_test_user("regular_admin_create@plane.test").await;
 
+    // CreateAdminRequest.email es required (paridad Django:
+    // InstanceAdminEndpoint.post lee request.data.get("email")). Enviar
+    // user_id provocaba 422 antes de llegar al chequeo de permisos.
     let res = app
         .post_json_authed(
             &api_key,
             "/instances/admins",
-            &json!({ "user_id": uuid::Uuid::new_v4() }),
+            &json!({ "email": "target_admin@plane.test" }),
         )
         .await;
     assert!(
@@ -354,9 +357,16 @@ async fn admin_sign_in_wrong_password_redirects_error() {
 #[tokio::test(flavor = "multi_thread")]
 async fn admin_sign_out_without_csrf_rejected() {
     let app = TestApp::spawn().await;
-    // Sin token CSRF → debe retornar 403 o redirigir a error
+    // CsrfForm requiere csrfmiddlewaretoken (Form extractor → 422 si falta).
+    // Enviamos un token cualquiera; sin la cookie csrf que lo respalde,
+    // el handler devuelve 403 en la validación del par token/cookie.
+    // Es la trayectoria real de "request sin CSRF válido", no un fallo
+    // de deserialización.
     let res = app
-        .post_form("/instances/admins/sign-out", &[])
+        .post_form(
+            "/instances/admins/sign-out",
+            &[("csrfmiddlewaretoken", "invalid-token")],
+        )
         .await;
     assert!(
         res.status.as_u16() == 403 || res.status.as_u16() == 303,
