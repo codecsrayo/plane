@@ -2110,7 +2110,7 @@ pub async fn get_draft_issue(
         ("pk" = Uuid, Path, description = "Draft Issue ID"),
     ),
     responses(
-        (status = 200, description = "Draft actualizado", body = DraftIssueResponse),
+        (status = 200, description = "Draft actualizado"),
         (status = 404, description = "No encontrado"),
     )
 )]
