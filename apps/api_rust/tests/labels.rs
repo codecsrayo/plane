@@ -267,11 +267,16 @@ async fn bulk_create_labels_returns_201() {
         .post_json_authed(
             &api_key,
             &format!("/workspaces/bl-ws/projects/{proj_id}/bulk-create-labels"),
-            &json!([
-                { "name": "Label A", "color": "#f00" },
-                { "name": "Label B", "color": "#0f0" },
-                { "name": "Label C", "color": "#00f" }
-            ]),
+            // Shape Django (apps/api/plane/app/views/issue/label.py:93):
+            // body = { "label_data": [ {name, description?, color?}, ... ] }
+            // Antes el test enviaba un array bare → 422 al deserializar.
+            &json!({
+                "label_data": [
+                    { "name": "Label A", "color": "#f00" },
+                    { "name": "Label B", "color": "#0f0" },
+                    { "name": "Label C", "color": "#00f" }
+                ]
+            }),
         )
         .await;
 
@@ -281,7 +286,11 @@ async fn bulk_create_labels_returns_201() {
         "bulk-create-labels debe devolver 201, body: {}",
         String::from_utf8_lossy(&res.body)
     );
+    // Shape de respuesta Django (label.py:114-117):
+    //   { "labels": [ <LabelSerializer>, ... ] }
     let body = res.json();
-    let arr = body.as_array().expect("debe ser array");
+    let arr = body["labels"]
+        .as_array()
+        .expect("response.labels debe ser array");
     assert_eq!(arr.len(), 3, "debe haber 3 labels creados");
 }
