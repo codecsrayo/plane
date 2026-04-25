@@ -1094,6 +1094,16 @@ pub async fn add_page_favorite(
     if guard.project_member.role < ROLE_MEMBER && guard.workspace_member.role < 20 {
         return Err(AppError::Forbidden);
     }
+
+    // Validar que la página existe y pertenece al proyecto.
+    // Django (apps/api/plane/app/views/page/base.py:476-483) crea el favorito
+    // sin validar la existencia, lo que produce filas huérfanas en
+    // user_favorites apuntando a UUIDs ghost (UserFavorite no tiene FK a
+    // pages porque entity_identifier es polimórfico). Refuerzo deliberado
+    // para preservar integridad referencial. Mismo helper que el resto de
+    // pages.rs (find_project_page).
+    find_project_page(&state.db, project_id, page_id).await?;
+
     let now = chrono::Utc::now().fixed_offset();
     let existing = user_favorites::Entity::find().active()
         .filter(user_favorites::Column::WorkspaceId.eq(guard.workspace.id))
@@ -1127,12 +1137,21 @@ pub async fn remove_page_favorite(
     guard: ProjectMemberGuard,
     Path((_slug, _project_id, page_id)): Path<(String, Uuid, Uuid)>,
 ) -> Result<StatusCode, AppError> {
-    user_favorites::Entity::delete_many()
+    // Paridad Django (apps/api/plane/app/views/page/base.py:486-495):
+    //   `UserFavorite.objects.get(...)` lanza DoesNotExist si no hay fila
+    //   → DRF lo traduce a 404. El handler antes usaba delete_many() que
+    //   silenciosamente devolvía 204 con 0 filas afectadas, divergiendo de
+    //   Django y enmascarando bugs del cliente.
+    let fav = user_favorites::Entity::find().active()
         .filter(user_favorites::Column::WorkspaceId.eq(guard.workspace.id))
         .filter(user_favorites::Column::UserId.eq(guard.user.id))
         .filter(user_favorites::Column::EntityType.eq("page"))
         .filter(user_favorites::Column::EntityIdentifier.eq(page_id))
-        .exec(&state.db).await.map_err(AppError::Database)?;
+        .one(&state.db).await.map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    let am: user_favorites::ActiveModel = fav.into();
+    am.delete(&state.db).await.map_err(AppError::Database)?;
     Ok(StatusCode::NO_CONTENT)
 }
 
