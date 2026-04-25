@@ -100,7 +100,7 @@ async fn rephrase_grammar_unauthenticated_returns_401() {
         .request(
             axum::http::Method::POST,
             &format!("/workspaces/{slug}/rephrase-grammar"),
-            Some(serde_json::to_vec(&json!({"text": "This are wrong grammar"})).unwrap()),
+            Some(serde_json::to_vec(&json!({"text_input": "This are wrong grammar"})).unwrap()),
             &[("content-type", "application/json")],
         )
         .await;
@@ -114,7 +114,7 @@ async fn rephrase_grammar_without_llm_key_returns_error() {
         .post_json_authed(
             &api_key,
             &format!("/workspaces/{slug}/rephrase-grammar"),
-            &json!({ "text": "This sentence have some grammar error in it." }),
+            &json!({ "text_input": "This sentence have some grammar error in it." }),
         )
         .await;
     let status = res.status.as_u16();
@@ -132,7 +132,7 @@ async fn rephrase_grammar_empty_text_returns_400() {
         .post_json_authed(
             &api_key,
             &format!("/workspaces/{slug}/rephrase-grammar"),
-            &json!({ "text": "" }),
+            &json!({ "text_input": "" }),
         )
         .await;
     // Texto vacío → 400 o error de validación
