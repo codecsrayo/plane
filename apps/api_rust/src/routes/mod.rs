@@ -1587,7 +1587,11 @@ pub fn build_router(state: AppState) -> Router {
         )
         .route(
             "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/remove-relation",
-            delete(issue_extras::remove_issue_relation),
+            // Paridad Django: apps/api/plane/app/urls/issue.py:241-242 enruta
+            // **POST** a `IssueRelationViewSet.remove_relation`. Antes esto
+            // estaba registrado con `delete()`, lo que devolvía 405 al
+            // frontend (que envía POST) y rompía el integration test.
+            post(issue_extras::remove_issue_relation),
         )
         .route(
             "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/history",

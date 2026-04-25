@@ -31,6 +31,7 @@
 mod common;
 
 use common::TestApp;
+use axum::http::Method;
 use serde_json::json;
 
 // ── Setup compartido ─────────────────────────────────────────────────────────
@@ -547,8 +548,17 @@ async fn bulk_archive_empty_list_returns_400() {
 async fn bulk_archive_unauthenticated_returns_401() {
     let (app, _, ws_slug, proj_id) = setup("bulk_arch_unauth").await;
 
+    // El endpoint solo acepta POST (issue_extras2:409 + mod.rs router).
+    // GET sin auth devuelve 405 — el method-not-allowed se evalúa antes
+    // que el auth guard, por lo que el test nunca exercita el 401 si
+    // usa GET. Mandamos POST para alcanzar el guard.
     let res = app
-        .get(&format!("/workspaces/{ws_slug}/projects/{proj_id}/bulk-archive-issues"))
+        .request(
+            Method::POST,
+            &format!("/workspaces/{ws_slug}/projects/{proj_id}/bulk-archive-issues"),
+            Some(serde_json::to_vec(&json!({"issue_ids": []})).unwrap()),
+            &[("content-type", "application/json")],
+        )
         .await;
     assert_eq!(res.status.as_u16(), 401);
 }
