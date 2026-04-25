@@ -51,7 +51,6 @@ use super::{
     },
     helpers::get_or_create_api_token,
 };
-};
 
 // New aliases for /auth prefix
 use axum::response::IntoResponse;
