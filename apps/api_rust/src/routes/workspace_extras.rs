@@ -210,7 +210,8 @@ pub async fn create_favorite(
 
     let saved = new_fav.insert(db).await.map_err(AppError::Database)?;
     let resp: FavoriteResponse = saved.into();
-    Ok((StatusCode::OK, Json(resp)))
+    // 201 al crear nuevo recurso. La rama idempotente arriba devuelve 200.
+    Ok((StatusCode::CREATED, Json(resp)))
 }
 
 /// PATCH /workspaces/{slug}/user-favorites/{favorite_id}/
@@ -2109,7 +2110,7 @@ pub async fn get_draft_issue(
         ("pk" = Uuid, Path, description = "Draft Issue ID"),
     ),
     responses(
-        (status = 204, description = "Actualizado"),
+        (status = 200, description = "Draft actualizado", body = DraftIssueResponse),
         (status = 404, description = "No encontrado"),
     )
 )]
@@ -2118,7 +2119,7 @@ pub async fn update_draft_issue(
     AnyAuth(auth_user): AnyAuth,
     Path((slug, pk)): Path<(String, Uuid)>,
     Json(body): Json<UpdateDraftIssueRequest>,
-) -> Result<StatusCode, AppError> {
+) -> Result<impl axum::response::IntoResponse, AppError> {
     let db = &state.db;
     let user_id = auth_user.id;
     let ws = workspace_by_slug(db, &slug).await?;
@@ -2266,7 +2267,17 @@ pub async fn update_draft_issue(
         sea_orm::TransactionError::Connection(db_err) => AppError::Database(db_err),
     })?;
 
-    Ok(StatusCode::NO_CONTENT)
+    // Re-leer el draft actualizado para devolver el shape canónico
+    // (las relaciones M2M sincronizadas en la transacción ya están en DB).
+    let updated = draft_issues::Entity::find_by_id(pk)
+        .filter(draft_issues::Column::WorkspaceId.eq(ws.id))
+        .filter(draft_issues::Column::DeletedAt.is_null())
+        .one(db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+    let resp = hydrate_draft_issue_response(db, updated).await?;
+    Ok((StatusCode::OK, Json(resp)))
 }
 
 /// DELETE /workspaces/{slug}/draft-issues/{pk}/
