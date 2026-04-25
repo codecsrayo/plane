@@ -241,6 +241,24 @@ async fn archive_module_and_list_archived() {
     let (app, _, api_key, ws, pid) = setup("archive").await;
     let mid = create_module(&app, &api_key, &ws, pid, "To Archive").await;
 
+    // Precondición de archive_module (mirror de Django en
+    // apps/api/plane/app/views/module/archive.py:546-550):
+    // solo módulos con status "completed" o "cancelled" se pueden archivar.
+    // Sin este PATCH el backend devuelve 400 correctamente.
+    let patch_res = app
+        .patch_json_authed(
+            &api_key,
+            &format!("/workspaces/{ws}/projects/{pid}/modules/{mid}"),
+            &json!({ "status": "completed" }),
+        )
+        .await;
+    assert_eq!(
+        patch_res.status.as_u16(),
+        200,
+        "PATCH módulo a 'completed' falló: {}",
+        String::from_utf8_lossy(&patch_res.body)
+    );
+
     let arc_res = app
         .post_json_authed(&api_key, &format!("/workspaces/{ws}/projects/{pid}/modules/{mid}/archive"), &json!({}))
         .await;
