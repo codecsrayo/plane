@@ -75,8 +75,10 @@ impl IntoResponse for AppError {
             )
                 .into_response(),
             AppError::Validation(body) => {
-                // DRF format: render the field-keyed JSON as-is, no wrapper.
-                (StatusCode::BAD_REQUEST, Json(body.clone())).into_response()
+                // 422 Unprocessable Entity — body bien formado pero contenido
+                // inválido a nivel de campo. Permite que el cliente discrimine
+                // entre malformed JSON (400 BadRequest) y errores de validación.
+                (StatusCode::UNPROCESSABLE_ENTITY, Json(body.clone())).into_response()
             }
             AppError::Conflict(m) => (
                 StatusCode::CONFLICT,

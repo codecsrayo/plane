@@ -1066,10 +1066,12 @@ pub async fn get_project(
     let wm = require_workspace_member(&state.db, ws.id, user.id).await?;
     let project = project_by_id(&state.db, ws.id, project_id).await?;
 
-    // Verificar acceso: workspace admin o miembro del proyecto
+    // Verificar acceso: workspace admin o miembro del proyecto.
+    // No-miembros reciben 404 (no 403) para no filtrar la existencia del
+    // proyecto a usuarios no autorizados — práctica estándar de seguridad.
     let pm = project_member_for_user(&state.db, project_id, user.id).await?;
     if pm.is_none() && wm.role < ROLE_ADMIN {
-        return Err(AppError::Forbidden);
+        return Err(AppError::NotFound);
     }
 
     let total = project_members::Entity::find()
