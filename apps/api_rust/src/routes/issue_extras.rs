@@ -1225,6 +1225,52 @@ pub async fn list_issue_activities(
     Ok(Json(resp))
 }
 
+/// GET /workspaces/{slug}/projects/{project_id}/{issues|work-items}/{issue_id}/activities/{pk}
+///
+/// Devuelve una actividad concreta del issue. 404 si no existe.
+/// Espejo del path-by-pk usado por el frontend para deep-linking a una
+/// entrada específica del activity log.
+#[utoipa::path(
+    get,
+    path = "/workspaces/{slug}/projects/{project_id}/work-items/{issue_id}/activities/{pk}/",
+    tag = "Issues",
+    security(("TokenAuth" = [])),
+    responses(
+        (status = 200, description = "Actividad encontrada"),
+        (status = 401, description = "Unauthenticated"),
+        (status = 404, description = "Actividad inexistente"),
+    )
+)]
+pub async fn get_issue_activity(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Path((_slug, _project_id, issue_id, pk)): Path<(String, Uuid, Uuid, Uuid)>,
+) -> Result<impl IntoResponse, AppError> {
+    require_role(guard.project_member.role, guard.workspace_member.role, ROLE_GUEST)?;
+
+    let act = issue_activities::Entity::find_by_id(pk)
+        .active()
+        .filter(issue_activities::Column::IssueId.eq(issue_id))
+        .filter(issue_activities::Column::ProjectId.eq(guard.project.id))
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    Ok(Json(ActivityResponse {
+        id: act.id,
+        verb: act.verb,
+        field: act.field,
+        old_value: act.old_value,
+        new_value: act.new_value,
+        comment: act.comment,
+        actor_id: act.actor_id,
+        issue_id: act.issue_id,
+        project_id: act.project_id,
+        workspace_id: act.workspace_id,
+    }))
+}
+
 // ── Issue Subscribers ─────────────────────────────────────────────────────────
 
 /// GET /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-subscribers/

@@ -397,6 +397,7 @@ pub mod v1_router;
         issue_extras::create_issue_relation,
         issue_extras::remove_issue_relation,
         issue_extras::list_issue_activities,
+        issue_extras::get_issue_activity,
         issue_extras::list_issue_subscribers,
         issue_extras::subscribe_to_issue,
         issue_extras::unsubscribe_from_issue,
@@ -1248,6 +1249,22 @@ pub fn build_router(state: AppState) -> Router {
             "/workspaces/{slug}/search",
             get(search::global_search),
         )
+        // Workspace-level search por work-items. Reutiliza global_search con
+        // contrato simétrico (200 con auth; 401 sin). Espejo del frontend.
+        .route(
+            "/workspaces/{slug}/work-items/search",
+            get(search::global_search),
+        )
+        // Alias legacy del prefijo `issues/` — el frontend antiguo lo seguía
+        // consumiendo con el mismo shape; mantener paridad evita regresiones.
+        .route(
+            "/workspaces/{slug}/issues/search",
+            get(search::global_search),
+        )
+        .route(
+            "/workspaces/{slug}/issues/{combined}",
+            get(issue_extras2::get_issue_by_identifier),
+        )
         .route(
             "/workspaces/{slug}/projects/{project_id}/search-issues",
             get(search::search_issues),
@@ -1587,6 +1604,39 @@ pub fn build_router(state: AppState) -> Router {
             "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-links/{pk}",
             patch(issue_extras::update_issue_link)
                 .delete(issue_extras::delete_issue_link),
+        )
+        // Alias legacy del frontend (path corto `/links` sin `issue-` prefix).
+        // Cubre el shape histórico de issues/ y el nuevo work-items/.
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/links",
+            get(issue_extras::list_issue_links).post(issue_extras::create_issue_link),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/links/{pk}",
+            patch(issue_extras::update_issue_link)
+                .delete(issue_extras::delete_issue_link),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/work-items/{issue_id}/links",
+            get(issue_extras::list_issue_links).post(issue_extras::create_issue_link),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/work-items/{issue_id}/links/{pk}",
+            patch(issue_extras::update_issue_link)
+                .delete(issue_extras::delete_issue_link),
+        )
+        // Activities por PK (404 si no existe). Path corto del nuevo frontend.
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/activities/{pk}",
+            get(issue_extras::get_issue_activity),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/work-items/{issue_id}/activities/{pk}",
+            get(issue_extras::get_issue_activity),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/work-items/{issue_id}/activities",
+            get(issue_extras::list_issue_activities),
         )
         .route(
             "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-relation",
