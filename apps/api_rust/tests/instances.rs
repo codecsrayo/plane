@@ -2,15 +2,16 @@
 //!
 //! Cobertura:
 //!   - GET  /instances                              → 200 (no requiere auth)
-//!   - GET  /instances/email-credentials-check      → 200
-//!   - GET  /instances/workspace-slug-check         → 200
+//!   - POST /instances/email-credentials-check      → 401 sin auth (admin-only)
+//!   - GET  /instances/workspace-slug-check         → 401 sin auth (admin-only)
 //!   - GET  /instances/workspaces                   → 401 sin auth de instancia
-//!   - GET/PATCH /instances/configurations          → 200
+//!   - GET/PATCH /instances/configurations          → 401 sin auth
 //!   - POST /instances/admins/sign-up-screen-visited → 204
 //!   - GET  /instances/admins/me                    → 200 con usuario válido
 
 mod common;
 
+use axum::http::Method;
 use common::TestApp;
 use serde_json::json;
 
@@ -46,32 +47,44 @@ async fn get_instance_is_activated() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// GET /instances/email-credentials-check
+// POST /instances/email-credentials-check  (admin-only, mirror Django)
 // ─────────────────────────────────────────────────────────────────────────────
 
+/// Django: EmailCredentialCheckEndpoint.post requiere auth de instance-admin
+/// (BaseAPIView con autenticación por defecto). El handler Rust replica el
+/// contrato vía AnyAuth + require_instance_admin. Una llamada anónima debe
+/// rechazarse con 401 antes de tocar cualquier configuración SMTP.
 #[tokio::test(flavor = "multi_thread")]
-async fn email_credentials_check_returns_200() {
+async fn email_credentials_check_unauthenticated_returns_401() {
     let app = TestApp::spawn().await;
-    let res = app.get("/instances/email-credentials-check").await;
-    // Sin EMAIL_HOST configurado → puede devolver 200 con is_configured=false
-    assert_eq!(res.status.as_u16(), 200, "body: {}", String::from_utf8_lossy(&res.body));
+    let res = app
+        .request(
+            Method::POST,
+            "/instances/email-credentials-check",
+            Some(serde_json::to_vec(&json!({"receiver_email": "test@plane.test"})).unwrap()),
+            &[("content-type", "application/json")],
+        )
+        .await;
+    assert_eq!(
+        res.status.as_u16(),
+        401,
+        "anonymous POST debe ser 401: {}",
+        String::from_utf8_lossy(&res.body)
+    );
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// GET /instances/workspace-slug-check
+// GET /instances/workspace-slug-check  (admin-only, mirror Django)
 // ─────────────────────────────────────────────────────────────────────────────
 
+/// Django: InstanceWorkSpaceAvailabilityCheckEndpoint declara
+/// `permission_classes = [InstanceAdminPermission]`. El handler Rust usa
+/// `require_instance_admin`. Sin auth → 401 (no se llega a evaluar el slug).
 #[tokio::test(flavor = "multi_thread")]
-async fn instance_workspace_slug_check_returns_200() {
+async fn instance_workspace_slug_check_unauthenticated_returns_401() {
     let app = TestApp::spawn().await;
     let res = app.get("/instances/workspace-slug-check?slug=unique-test-slug-xyz").await;
-    assert_eq!(res.status.as_u16(), 200);
-    let body = res.json();
-    assert_eq!(
-        body["status"].as_bool(),
-        Some(true),
-        "slug no tomado debe devolver status=true"
-    );
+    assert_eq!(res.status.as_u16(), 401);
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
