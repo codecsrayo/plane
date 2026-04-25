@@ -140,6 +140,44 @@ pub async fn list_webhooks(
     Ok(Json(rows.into_iter().map(WebhookResponse::from_model).collect()))
 }
 
+// ── Validación de URL (espejo Django webhook.validate_schema/validate_domain)──
+
+/// Valida que la URL sea un webhook destino válido.
+///
+/// Reglas (espejan `plane.db.models.webhook.validate_schema/validate_domain`):
+/// 1. Esquema obligatorio `http` o `https`.
+/// 2. Host presente y no es loopback (`localhost`, `127.0.0.1`).
+///
+/// Antipatrón evitado: no se ejecuta `getaddrinfo` aquí (lo que sí hace el
+/// serializer de Django) porque acoplar la validación a DNS introduce no
+/// determinismo y latencia en una ruta caliente. La verificación SSRF
+/// (rangos privados / link-local) se realiza en el pipeline de envío real.
+fn validate_webhook_url(raw: &str) -> Result<(), AppError> {
+    let trimmed = raw.trim();
+    let lower = trimmed.to_ascii_lowercase();
+
+    let rest = if let Some(r) = lower.strip_prefix("http://") {
+        r
+    } else if let Some(r) = lower.strip_prefix("https://") {
+        r
+    } else {
+        return Err(AppError::BadRequest(
+            "Invalid schema. Only HTTP and HTTPS are allowed.".into(),
+        ));
+    };
+
+    let host_with_port = rest.split('/').next().unwrap_or("");
+    let host = host_with_port.split(':').next().unwrap_or("");
+    if host.is_empty() {
+        return Err(AppError::BadRequest("Invalid URL: No hostname found.".into()));
+    }
+    if matches!(host, "localhost" | "127.0.0.1") {
+        return Err(AppError::BadRequest("Local URLs are not allowed.".into()));
+    }
+
+    Ok(())
+}
+
 // ── POST /webhooks/ ───────────────────────────────────────────────────────────
 
 #[utoipa::path(
@@ -163,6 +201,8 @@ pub async fn create_webhook(
     if body.url.trim().is_empty() {
         return Err(AppError::BadRequest("url es requerida".into()));
     }
+
+    validate_webhook_url(&body.url)?;
 
     // created_at/updated_at explícitos (NOT NULL sin DEFAULT).
     let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
@@ -261,6 +301,7 @@ pub async fn update_webhook(
 
     let mut am: webhooks::ActiveModel = wh.into();
     if let Some(url) = body.url {
+        validate_webhook_url(&url)?;
         am.url = Set(url);
     }
     if let Some(active) = body.is_active {
