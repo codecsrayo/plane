@@ -75,11 +75,19 @@ async fn unread_count_returns_200_with_counts() {
         .await;
     assert_eq!(res.status.as_u16(), 200, "body: {}", String::from_utf8_lossy(&res.body));
     let body = res.json();
-    // El response tiene total_unread_notifications y total_unread_mention_notifications
+    // Shape Django (apps/api/plane/app/views/notification/base.py:223-229):
+    //   { "total_unread_notifications_count": int,
+    //     "mention_unread_notifications_count": int }
+    // El frontend (web/.../use-notification.ts) consume estos nombres con
+    // sufijo _count; el test antes asertaba contra "total_unread_notifications"
+    // (sin _count) que no existe en ningún lado.
     assert!(
-        body["total_unread_notifications"].is_number()
-            || body["total_unread_notifications"].as_i64().is_some(),
-        "debe tener total_unread_notifications numérico, got: {body}"
+        body["total_unread_notifications_count"].is_number(),
+        "debe tener total_unread_notifications_count numérico, got: {body}"
+    );
+    assert!(
+        body["mention_unread_notifications_count"].is_number(),
+        "debe tener mention_unread_notifications_count numérico, got: {body}"
     );
 }
 
