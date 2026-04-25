@@ -39,7 +39,8 @@ async fn create_estimate(app: &TestApp, api_key: &str, slug: &str, proj_id: Uuid
             &format!("/workspaces/{slug}/projects/{proj_id}/estimates"),
             &json!({
                 "name": "Story Points v1",
-                "type": "category"
+                "type": "category",
+                "points": []
             }),
         )
         .await;
