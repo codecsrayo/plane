@@ -1073,8 +1073,15 @@ pub async fn create_issue_relation(
         .collect();
 
     // Insert con tolerancia a duplicados — paridad `ignore_conflicts=True`.
-    // Si la unique constraint (issue_id, related_issue_id, relation_type)
-    // se viola, simplemente saltamos esa fila sin abortar el batch.
+    // La unique constraint en BD es `(issue_id, related_issue_id, deleted_at)`
+    // (`migration/src/sql/baseline.sql:3504`), NO incluye `relation_type`.
+    //
+    // Decisión de diseño de Plane: un par (A, B) admite una sola relación
+    // viva (deleted_at IS NULL) sin importar el tipo. Si el cliente intenta
+    // crear A→B "blocked_by" cuando ya existe A→B "duplicate", el segundo
+    // INSERT colisiona y se ignora — paridad con
+    // `IssueRelation.objects.bulk_create([...], ignore_conflicts=True)`.
+    //
     // Patrón sea-orm: `.on_conflict(...).do_nothing()` requiere el
     // `.do_nothing()` final para devolver `TryInsertResult` y manejar el
     // caso "0 rows inserted" sin propagar error (ver
@@ -1084,7 +1091,7 @@ pub async fn create_issue_relation(
             OnConflict::columns([
                 issue_relations::Column::IssueId,
                 issue_relations::Column::RelatedIssueId,
-                issue_relations::Column::RelationType,
+                issue_relations::Column::DeletedAt,
             ])
             .do_nothing()
             .to_owned(),
@@ -1112,11 +1119,14 @@ pub async fn create_issue_relation(
 
     let mut resp: Vec<IssueRelationResponse> = Vec::with_capacity(created_pairs.len());
     for (src, dst) in created_pairs {
+        // No filtramos por relation_type: la unique constraint en BD
+        // permite una sola relación viva por par (src, dst) sin importar
+        // el tipo. Si ya existía con un tipo distinto, esa es la fuente
+        // de verdad y la devolvemos al cliente.
         if let Some(r) = issue_relations::Entity::find()
             .active()
             .filter(issue_relations::Column::IssueId.eq(src))
             .filter(issue_relations::Column::RelatedIssueId.eq(dst))
-            .filter(issue_relations::Column::RelationType.eq(actual_type.as_str()))
             .filter(issue_relations::Column::ProjectId.eq(project_id))
             .one(&state.db)
             .await
