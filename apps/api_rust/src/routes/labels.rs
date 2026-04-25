@@ -334,19 +334,29 @@ pub async fn bulk_create_labels(
         let name = entry.name.clone().unwrap_or_else(|| "Migrated".into());
         let hue = (i * 137 + 30) % 360;
         let color = entry.color.clone().unwrap_or_else(|| format!("hsl({hue},60%,50%)"));
+        // NOTA: setear TODAS las columnas NOT NULL explícitamente.
+        // labels.sort_order es `double precision NOT NULL` sin DEFAULT en BD
+        // (ver migration/src/sql/baseline.sql:1635). Usar `..Default::default()`
+        // dejaba sort_order como NotSet → INSERT sin la columna → error 23502.
+        // Mismo patrón que create_label (labels.rs:148-164).
+        // Stagger por índice para que cada label tenga sort_order distinto,
+        // preservando el orden recibido en label_data.
         let label = labels::ActiveModel {
             id: Set(uuid::Uuid::new_v4()),
             name: Set(name.clone()),
             description: Set(entry.description.clone().unwrap_or_else(|| "Migrated Issue".into())),
             color: Set(color),
+            parent_id: Set(None),
             project_id: Set(Some(guard.project.id)),
             workspace_id: Set(guard.workspace.id),
+            sort_order: Set(65535.0 + (i as f64) * 10000.0),
             created_by_id: Set(Some(guard.user.id)),
             updated_by_id: Set(Some(guard.user.id)),
             created_at: Set(now),
             updated_at: Set(now),
+            external_id: Set(None),
+            external_source: Set(None),
             deleted_at: Set(None),
-            ..Default::default()
         }.insert(&state.db).await.map_err(AppError::Database)?;
         created.push(serde_json::json!({"id": label.id, "name": label.name, "color": label.color, "project_id": label.project_id}));
     }
