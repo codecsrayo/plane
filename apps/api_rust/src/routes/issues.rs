@@ -995,28 +995,35 @@ pub async fn get_issue(
         ("pk" = Uuid, Path, description = "Issue ID"),
     ),
     responses(
-        (status = 204, description = "Issue actualizado (sin body, paridad Django)"),
+        (status = 200, description = "Issue actualizado (body: IssueDetailResponse)"),
         (status = 404, description = "No encontrado"),
     ),
     security(("TokenAuth" = []))
 )]
 /// Actualiza un issue parcialmente.
 ///
-/// # Paridad con Django
-/// Django responde **204 No Content** (ver `base.py:700`), no el issue
-/// actualizado. El frontend resuelve el nuevo estado por optimistic update
-/// a partir del body de la request (`base-issues.store.ts` → `updateIssue`).
-/// Devolver un body aquí sería divergencia de contrato.
+/// # Contrato de respuesta: 200 + IssueDetailResponse
+/// Django responde 204 No Content (`base.py:700`), pero esto fuerza al
+/// frontend a hacer un GET adicional o aplicar optimistic updates con
+/// riesgo de divergencia (race conditions con otros writers, normalización
+/// de campos derivados como `updated_at`/`updated_by`/`label_ids`, etc.).
 ///
-/// # Side-effect del `let _ = ...`
-/// La transacción se ejecuta y persiste igual; el valor devuelto se
-/// descarta porque ya no se serializa.
+/// Devolver el issue actualizado:
+///   - elimina el round-trip GET tras cada PATCH,
+///   - es la fuente de verdad para campos calculados por el backend
+///     (timestamps, ids de M2M tras sync de labels/assignees),
+///   - mantiene compatibilidad para clientes que solo verifican
+///     `2xx` (lo común con fetch/axios — `response.ok` es `true`
+///     tanto para 200 como para 204).
+///
+/// Decisión deliberada de DIVERGENCIA con Django; documentada también en
+/// el campo `responses` del `#[utoipa::path]` arriba.
 pub async fn update_issue(
     State(state): State<AppState>,
     guard: ProjectMemberGuard,
     Path((_slug, _project_id, pk)): Path<(String, Uuid, Uuid)>,
     Json(body): Json<UpdateIssueRequest>,
-) -> Result<StatusCode, AppError> {
+) -> Result<Json<IssueDetailResponse>, AppError> {
     require_role(guard.project_member.role, guard.workspace_member.role, ROLE_MEMBER)?;
 
     let issue = issues::Entity::find_by_id(pk)
@@ -1040,9 +1047,10 @@ pub async fn update_issue(
         None
     };
 
-    // El valor se descarta — PATCH devuelve 204 sin body (Django parity).
-    // Mantenemos el binding para propagar errores de tx; el `_` evita warning.
-    let _ = state
+    // El valor de la tx ya no se descarta — lo usamos como base para construir
+    // la respuesta. `build_detail_response` re-lee con annotations (cycle_id,
+    // assignee_ids, label_ids, etc.) para devolver el shape completo.
+    let updated = state
         .db
         .transaction::<_, issues::Model, AppError>(|txn| {
             let mut am: issues::ActiveModel = issue.into();
@@ -1104,7 +1112,8 @@ pub async fn update_issue(
             sea_orm::TransactionError::Connection(db_err) => AppError::Database(db_err),
         })?;
 
-    Ok(StatusCode::NO_CONTENT)
+    let response = build_detail_response(&state.db, updated, user_id).await?;
+    Ok(Json(response))
 }
 
 // ── DELETE /workspaces/{slug}/projects/{project_id}/issues/{pk}/ ──────────────

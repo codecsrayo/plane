@@ -165,8 +165,24 @@ pub struct IssueRelationResponse {
 
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct CreateRelationRequest {
+    /// Tipo de relación. Django no valida estrictamente el valor — lo pasa
+    /// por `get_actual_relation` (apps/api/plane/utils/issue_relation_mapper.py)
+    /// que mapea tipos "inversos" al canónico almacenado en BD. La columna
+    /// es `varchar(20)` (`migration/src/sql/baseline.sql:1420`) sin enum
+    /// constraint.
     pub relation_type: String,
-    pub related_issue_id: Uuid,
+
+    /// Lista de UUIDs de issues a relacionar. Shape único, alineado con:
+    ///   - Django: `apps/api/plane/app/views/issue/relation.py:217`
+    ///     (`request.data.get("issues", [])`).
+    ///   - Frontend canónico: `apps/web/core/services/issue/issue_relation.service.ts:33`
+    ///     (`data: { relation_type, issues: string[] }`).
+    ///
+    /// Nota histórica: existió un `related_list: Vec<Uuid>` en un servicio
+    /// frontend obsoleto (`issue.service.ts:177`) que nadie consumía. Se
+    /// estandarizó en este shape para evitar parsers polimórficos en el
+    /// handler.
+    pub issues: Vec<Uuid>,
 }
 
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
@@ -985,35 +1001,140 @@ pub async fn create_issue_relation(
 ) -> Result<impl IntoResponse, AppError> {
     require_role(guard.project_member.role, guard.workspace_member.role, ROLE_MEMBER)?;
 
-    let valid_types = ["duplicate", "relates_to", "blocked_by", "blocking"];
-    if !valid_types.contains(&body.relation_type.as_str()) {
-        return Err(AppError::BadRequest(format!(
-            "relation_type must be one of: {}", valid_types.join(", ")
-        )));
+    if body.issues.is_empty() {
+        return Err(AppError::BadRequest("issues no puede estar vacío".into()));
     }
 
-    let now: DateTime<FixedOffset> = Utc::now().into();
-    let new_relation = issue_relations::ActiveModel {
-        id: Set(Uuid::new_v4()),
-        relation_type: Set(body.relation_type),
-        issue_id: Set(issue_id),
-        related_issue_id: Set(body.related_issue_id),
-        project_id: Set(guard.project.id),
-        workspace_id: Set(guard.workspace.id),
-        created_by_id: Set(Some(guard.user.id)),
-        updated_by_id: Set(Some(guard.user.id)),
-        created_at: Set(now),
-        updated_at: Set(now),
-        deleted_at: Set(None),
+    // Paridad Django (`apps/api/plane/utils/issue_relation_mapper.py:19-31`,
+    // `apps/api/plane/app/views/issue/relation.py:220-237`):
+    //
+    // `get_actual_relation` mapea los tipos "inversos" al canónico almacenado
+    // en BD, y la creación invierte la orientación de la relación cuando el
+    // tipo es uno de los inversos. La idea: una relación A→B "blocking"
+    // se almacena como B→A "blocked_by", de modo que toda la BD habla en
+    // términos canónicos y los queries simétricos del frontend son simples.
+    //
+    // Sin este mapping, la BD acumula tipos duplicados/inconsistentes
+    // ("blocking" y "blocked_by" coexistiendo) y los reads del frontend
+    // se rompen.
+    let is_inverse = matches!(
+        body.relation_type.as_str(),
+        "blocking" | "start_after" | "finish_after" | "implements"
+    );
+    let actual_type: String = match body.relation_type.as_str() {
+        "blocking" => "blocked_by".into(),
+        "start_after" => "start_before".into(),
+        "finish_after" => "finish_before".into(),
+        "implements" => "implemented_by".into(),
+        // Pass-through. Truncamos a 20 chars (límite de columna en BD) para
+        // evitar 500 desde sea-orm si llega un valor absurdamente largo.
+        other => other.chars().take(20).collect(),
     };
 
-    let created = new_relation.insert(&state.db).await.map_err(AppError::Database)?;
-    Ok((StatusCode::CREATED, Json(IssueRelationResponse {
-        id: created.id, relation_type: created.relation_type,
-        issue_id: created.issue_id, related_issue_id: created.related_issue_id,
-        project_id: created.project_id, workspace_id: created.workspace_id,
-        created_at: created.created_at,
-    })))
+    let now: DateTime<FixedOffset> = Utc::now().into();
+    let workspace_id = guard.workspace.id;
+    let project_id = guard.project.id;
+    let user_id = guard.user.id;
+
+    // Bulk-create con paridad `IssueRelation.objects.bulk_create([...],
+    // ignore_conflicts=True)`. Sea-ORM no expone `ignore_conflicts` directo;
+    // usamos `on_conflict().do_nothing()` vía sea-query para el mismo efecto:
+    // si ya existe la relación (por unique constraint), no falla.
+    use sea_orm::sea_query::OnConflict;
+
+    let models: Vec<issue_relations::ActiveModel> = body
+        .issues
+        .iter()
+        .map(|other_id| {
+            // Inversión de orientación cuando el tipo es inverso:
+            //   - "blocking":     A→B(blocking) se guarda como B→A(blocked_by)
+            //   - "start_after":  A→B(start_after) se guarda como B→A(start_before)
+            //   - etc.
+            // El `issue_id` del path es A; los `body.issues` son los B.
+            let (src, dst) = if is_inverse {
+                (*other_id, issue_id)
+            } else {
+                (issue_id, *other_id)
+            };
+            issue_relations::ActiveModel {
+                id: Set(Uuid::new_v4()),
+                relation_type: Set(actual_type.clone()),
+                issue_id: Set(src),
+                related_issue_id: Set(dst),
+                project_id: Set(project_id),
+                workspace_id: Set(workspace_id),
+                created_by_id: Set(Some(user_id)),
+                updated_by_id: Set(Some(user_id)),
+                created_at: Set(now),
+                updated_at: Set(now),
+                deleted_at: Set(None),
+            }
+        })
+        .collect();
+
+    // Insert con tolerancia a duplicados — paridad `ignore_conflicts=True`.
+    // Si la unique constraint (issue_id, related_issue_id, relation_type)
+    // se viola, simplemente saltamos esa fila sin abortar el batch.
+    // Patrón sea-orm: `.on_conflict(...).do_nothing()` requiere el
+    // `.do_nothing()` final para devolver `TryInsertResult` y manejar el
+    // caso "0 rows inserted" sin propagar error (ver
+    // `src/routes/projects.rs:1936-1947` para precedente en este codebase).
+    issue_relations::Entity::insert_many(models)
+        .on_conflict(
+            OnConflict::columns([
+                issue_relations::Column::IssueId,
+                issue_relations::Column::RelatedIssueId,
+                issue_relations::Column::RelationType,
+            ])
+            .do_nothing()
+            .to_owned(),
+        )
+        .do_nothing()
+        .exec(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    // Releemos las relaciones recién creadas/existentes para devolver el
+    // shape esperado por el cliente. No usamos los `models` locales porque
+    // `on_conflict do_nothing` no garantiza que se hayan persistido (puede
+    // haber colisión); la lectura es la fuente de verdad.
+    let created_pairs: Vec<(Uuid, Uuid)> = body
+        .issues
+        .iter()
+        .map(|other_id| {
+            if is_inverse {
+                (*other_id, issue_id)
+            } else {
+                (issue_id, *other_id)
+            }
+        })
+        .collect();
+
+    let mut resp: Vec<IssueRelationResponse> = Vec::with_capacity(created_pairs.len());
+    for (src, dst) in created_pairs {
+        if let Some(r) = issue_relations::Entity::find()
+            .active()
+            .filter(issue_relations::Column::IssueId.eq(src))
+            .filter(issue_relations::Column::RelatedIssueId.eq(dst))
+            .filter(issue_relations::Column::RelationType.eq(actual_type.as_str()))
+            .filter(issue_relations::Column::ProjectId.eq(project_id))
+            .one(&state.db)
+            .await
+            .map_err(AppError::Database)?
+        {
+            resp.push(IssueRelationResponse {
+                id: r.id,
+                relation_type: r.relation_type,
+                issue_id: r.issue_id,
+                related_issue_id: r.related_issue_id,
+                project_id: r.project_id,
+                workspace_id: r.workspace_id,
+                created_at: r.created_at,
+            });
+        }
+    }
+
+    Ok((StatusCode::CREATED, Json(resp)))
 }
 
 /// POST /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/remove-relation/

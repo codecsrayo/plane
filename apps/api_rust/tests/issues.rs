@@ -363,8 +363,8 @@ async fn create_issue_relation_returns_201() {
             &api_key,
             &format!("/workspaces/{ws_slug}/projects/{proj_id}/issues/{source_id}/issue-relation"),
             &json!({
-                "relation_type": "blocks",
-                "related_list": [target_id]
+                "relation_type": "blocking",
+                "issues": [target_id]
             }),
         )
         .await;

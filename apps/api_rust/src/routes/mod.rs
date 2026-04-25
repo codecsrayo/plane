@@ -1737,7 +1737,15 @@ pub fn build_router(state: AppState) -> Router {
         )
         .route(
             "/workspaces/{slug}/projects/{project_id}/bulk-delete-issues",
-            delete(issue_extras2::bulk_delete_issues),
+            // Django expone este endpoint como `def delete(...)` (HTTP DELETE),
+            // pero el frontend de Plane y muchos proxies/CDNs no soportan
+            // DELETE-con-body de forma fiable (RFC 9110 lo permite pero define
+            // el body como "no semantic meaning" → algunos middleboxes lo
+            // descartan). Aceptamos AMBOS métodos sobre el mismo handler
+            // para dar paridad estricta con Django (DELETE) y mantener
+            // compatibilidad operativa con clientes que envían POST.
+            delete(issue_extras2::bulk_delete_issues)
+                .post(issue_extras2::bulk_delete_issues),
         )
         .route(
             "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/meta",

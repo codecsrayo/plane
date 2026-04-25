@@ -366,7 +366,7 @@ async fn create_work_item_relation_returns_201() {
         .post_json_authed(
             &api_key,
             &format!("{V1}/workspaces/{ws_slug}/projects/{proj_id}/work-items/{src_id}/relations"),
-            &json!({ "relation_type": "blocks", "related_list": [tgt_id] }),
+            &json!({ "relation_type": "blocking", "issues": [tgt_id] }),
         )
         .await;
     let status = res.status.as_u16();
