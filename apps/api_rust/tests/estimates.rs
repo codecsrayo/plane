@@ -245,7 +245,7 @@ async fn create_estimate_point(
     ws_slug: &str,
     proj_id: uuid::Uuid,
     est_id: &str,
-    key: &str,
+    key: i32,
     value: &str,
 ) -> String {
     let res = app
@@ -277,7 +277,7 @@ async fn create_estimate_point_returns_201() {
         )
         .await;
     assert_eq!(res.status.as_u16(), 201, "body: {}", String::from_utf8_lossy(&res.body));
-    assert_eq!(res.json()["key"].as_str().unwrap_or(""), "5");
+    assert_eq!(res.json()["key"].as_i64().unwrap_or(-1), 5);
 }
 
 #[tokio::test(flavor = "multi_thread")]
@@ -308,7 +308,7 @@ async fn create_estimate_point_missing_key_returns_400() {
 async fn update_estimate_point_returns_200() {
     let (app, api_key, ws_slug, proj_id) = setup("pt_patch").await;
     let est_id = create_estimate(&app, &api_key, &ws_slug, proj_id, "Patch Points").await;
-    let pt_id = create_estimate_point(&app, &api_key, &ws_slug, proj_id, &est_id, "8", "8").await;
+    let pt_id = create_estimate_point(&app, &api_key, &ws_slug, proj_id, &est_id, 8, "8").await;
 
     let res = app
         .patch_json_authed(
@@ -318,14 +318,14 @@ async fn update_estimate_point_returns_200() {
         )
         .await;
     assert_eq!(res.status.as_u16(), 200, "body: {}", String::from_utf8_lossy(&res.body));
-    assert_eq!(res.json()["key"].as_str().unwrap_or(""), "13");
+    assert_eq!(res.json()["key"].as_i64().unwrap_or(-1), 13);
 }
 
 #[tokio::test(flavor = "multi_thread")]
 async fn delete_estimate_point_returns_204() {
     let (app, api_key, ws_slug, proj_id) = setup("pt_del").await;
     let est_id = create_estimate(&app, &api_key, &ws_slug, proj_id, "Del Points").await;
-    let pt_id = create_estimate_point(&app, &api_key, &ws_slug, proj_id, &est_id, "21", "21").await;
+    let pt_id = create_estimate_point(&app, &api_key, &ws_slug, proj_id, &est_id, 21, "21").await;
 
     let res = app
         .delete_authed(
