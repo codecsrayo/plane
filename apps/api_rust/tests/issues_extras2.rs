@@ -48,6 +48,75 @@ async fn create_issue(
     res.json()["id"].as_str().unwrap().to_owned()
 }
 
+/// Crea un state con `group="completed"` en el proyecto y devuelve su id.
+///
+/// Helper para los tests de archive: el handler `archive_issue` exige
+/// paridad Django (`apps/api/plane/app/views/issue/archive.py:259`):
+/// solo issues cuyo state.group sea "completed" o "cancelled" se pueden
+/// archivar. `create_test_project` no siembra states por defecto, así
+/// que el helper crea uno on-demand.
+///
+/// Se añade un sufijo aleatorio al nombre para evitar colisión de
+/// `unique(project_id, name)` cuando varios tests del mismo módulo
+/// piden states sobre el mismo proyecto (no es el caso actual, pero
+/// previene bugs futuros si alguien refactoriza setup).
+async fn create_completed_state(
+    app: &TestApp,
+    api_key: &str,
+    ws_slug: &str,
+    proj_id: uuid::Uuid,
+) -> String {
+    let unique_name = format!("Done {}", uuid::Uuid::new_v4());
+    let res = app
+        .post_json_authed(
+            api_key,
+            &format!("/workspaces/{ws_slug}/projects/{proj_id}/states"),
+            &json!({
+                "name": unique_name,
+                "group": "completed",
+                "color": "#10b981"
+            }),
+        )
+        .await;
+    assert_eq!(
+        res.status.as_u16(),
+        200,
+        "create state debe devolver 200, body: {}",
+        String::from_utf8_lossy(&res.body)
+    );
+    res.json()["id"].as_str().unwrap().to_owned()
+}
+
+/// Crea un issue YA en estado completed — listo para archive.
+///
+/// Composición: crea un state group="completed", crea el issue con
+/// `state_id` apuntando a ese state. El handler `create_issue` acepta
+/// `state_id` opcional; si no se pasa, queda NULL y el archive falla
+/// con 400 ("Can only archive completed or cancelled state group issue").
+async fn create_completed_issue(
+    app: &TestApp,
+    api_key: &str,
+    ws_slug: &str,
+    proj_id: uuid::Uuid,
+    name: &str,
+) -> String {
+    let state_id = create_completed_state(app, api_key, ws_slug, proj_id).await;
+    let res = app
+        .post_json_authed(
+            api_key,
+            &format!("/workspaces/{ws_slug}/projects/{proj_id}/issues"),
+            &json!({ "name": name, "state_id": state_id }),
+        )
+        .await;
+    assert_eq!(
+        res.status.as_u16(),
+        201,
+        "create completed issue debe devolver 201, body: {}",
+        String::from_utf8_lossy(&res.body)
+    );
+    res.json()["id"].as_str().unwrap().to_owned()
+}
+
 // ═════════════════════════════════════════════════════════════════════════════
 // ARCHIVE / UNARCHIVE — POST/DELETE /issues/{pk}/archive
 // ═════════════════════════════════════════════════════════════════════════════
@@ -55,7 +124,7 @@ async fn create_issue(
 #[tokio::test(flavor = "multi_thread")]
 async fn archive_issue_returns_200_or_204() {
     let (app, api_key, ws_slug, proj_id) = setup("arch").await;
-    let issue_id = create_issue(&app, &api_key, &ws_slug, proj_id, "Archive Me").await;
+    let issue_id = create_completed_issue(&app, &api_key, &ws_slug, proj_id, "Archive Me").await;
 
     let res = app
         .post_json_authed(
@@ -75,7 +144,7 @@ async fn archive_issue_returns_200_or_204() {
 #[tokio::test(flavor = "multi_thread")]
 async fn get_archived_issue_returns_200() {
     let (app, api_key, ws_slug, proj_id) = setup("get_arch").await;
-    let issue_id = create_issue(&app, &api_key, &ws_slug, proj_id, "Archived Issue").await;
+    let issue_id = create_completed_issue(&app, &api_key, &ws_slug, proj_id, "Archived Issue").await;
 
     // Archivar
     app.post_json_authed(
@@ -98,7 +167,7 @@ async fn get_archived_issue_returns_200() {
 #[tokio::test(flavor = "multi_thread")]
 async fn unarchive_issue_returns_200_or_204() {
     let (app, api_key, ws_slug, proj_id) = setup("unarch").await;
-    let issue_id = create_issue(&app, &api_key, &ws_slug, proj_id, "Unarchive Me").await;
+    let issue_id = create_completed_issue(&app, &api_key, &ws_slug, proj_id, "Unarchive Me").await;
 
     // Archivar primero
     app.post_json_authed(
@@ -172,7 +241,7 @@ async fn list_archived_issues_empty_returns_200() {
 #[tokio::test(flavor = "multi_thread")]
 async fn list_archived_issues_shows_archived_issue() {
     let (app, api_key, ws_slug, proj_id) = setup("arclist_ok").await;
-    let issue_id = create_issue(&app, &api_key, &ws_slug, proj_id, "Listed Archived").await;
+    let issue_id = create_completed_issue(&app, &api_key, &ws_slug, proj_id, "Listed Archived").await;
 
     // Archivar
     app.post_json_authed(
@@ -301,11 +370,17 @@ async fn bulk_update_issue_dates_returns_200() {
         .post_json_authed(
             &api_key,
             &format!("/workspaces/{ws_slug}/projects/{proj_id}/issue-dates"),
-            &json!([{
-                "issue_id": issue_id,
-                "start_date": "2025-01-01",
-                "target_date": "2025-12-31"
-            }]),
+            // Shape Django (apps/api/plane/app/views/issue/base.py:1115):
+            // body = { "updates": [ { "id", "start_date", "target_date" } ] }.
+            // El campo es "id", no "issue_id" — paridad con
+            // `update["id"]` en el handler Python.
+            &json!({
+                "updates": [{
+                    "id": issue_id,
+                    "start_date": "2025-01-01",
+                    "target_date": "2025-12-31"
+                }]
+            }),
         )
         .await;
     let status = res.status.as_u16();
@@ -324,7 +399,9 @@ async fn bulk_update_issue_dates_empty_list_returns_400_or_200() {
         .post_json_authed(
             &api_key,
             &format!("/workspaces/{ws_slug}/projects/{proj_id}/issue-dates"),
-            &json!([]),
+            // Shape Django: { "updates": [...] }. Lista vacía dentro del
+            // wrapper para no fallar al deserializar.
+            &json!({ "updates": [] }),
         )
         .await;
     let status = res.status.as_u16();

@@ -1597,6 +1597,17 @@ pub fn build_router(state: AppState) -> Router {
             "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/history",
             get(issue_extras::list_issue_activities),
         )
+        // Alias `/activities` → mismo handler que `/history`. Django solo
+        // expone `/history` (`apps/api/plane/app/urls/issue.py:150`), pero
+        // el v1 router público (`src/routes/v1_router.rs:551`) y el
+        // frontend reciente usan `/activities`. Mantener ambos paths bajo
+        // un único handler evita duplicar lógica y unifica el contrato:
+        // /history sigue funcionando para clientes Django-paridad estricta,
+        // /activities para clientes que siguen el shape v1.
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/activities",
+            get(issue_extras::list_issue_activities),
+        )
         .route(
             "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-subscribers",
             get(issue_extras::list_issue_subscribers),
