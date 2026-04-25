@@ -1912,6 +1912,7 @@ pub async fn create_project_members(
                 member_id: Set(Some(entry.member_id)),
                 role: Set(entry.role),
                 is_active: Set(true),
+                comment: Set(None),
                 view_props: Set(crate::utils::django_defaults::default_props()),
                 default_props: Set(crate::utils::django_defaults::default_props()),
                 preferences: Set(crate::utils::django_defaults::default_preferences()),
@@ -1921,49 +1922,66 @@ pub async fn create_project_members(
                 created_at: Set(now),
                 updated_at: Set(now),
                 deleted_at: Set(None),
-                ..Default::default()
             }
             .insert(&state.db)
             .await
-            .map_err(AppError::Database)?;
+            .map_err(|e| {
+                tracing::error!(error = %e, project_id = %project_id, member_id = %entry.member_id, "create_project_members: insert project_members falló");
+                AppError::Database(e)
+            })?;
         }
 
         // project_user_properties ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ ON CONFLICT DO NOTHING
-        use sea_orm::sea_query::OnConflict;
         // project_user_properties: mismas columnas NOT NULL sin DEFAULT en
         // BD (display_properties, display_filters, filters, rich_filters,
         // preferences, sort_order). Django defaults en
         // apps/api/plane/db/models/project.py:ProjectUserProperty.
-        project_user_properties::Entity::insert(project_user_properties::ActiveModel {
-            id: Set(Uuid::new_v4()),
-            project_id: Set(project_id),
-            workspace_id: Set(ws.id),
-            user_id: Set(entry.member_id),
-            display_properties: Set(crate::utils::django_defaults::default_display_properties()),
-            display_filters: Set(crate::utils::django_defaults::default_display_filters()),
-            filters: Set(crate::utils::django_defaults::default_filters()),
-            rich_filters: Set(serde_json::json!({})),
-            preferences: Set(crate::utils::django_defaults::default_preferences()),
-            sort_order: Set(65535.0),
-            created_by_id: Set(Some(user.id)),
-            updated_by_id: Set(Some(user.id)),
-            created_at: Set(now),
-            updated_at: Set(now),
-            deleted_at: Set(None),
-            ..Default::default()
-        })
-        .on_conflict(
-            OnConflict::columns([
-                project_user_properties::Column::ProjectId,
-                project_user_properties::Column::UserId,
-            ])
-            .do_nothing()
-            .to_owned(),
-        )
-        .do_nothing()
-        .exec(&state.db)
-        .await
-        .map_err(AppError::Database)?;
+        //
+        // Idempotencia: la versión anterior usaba
+        //   ON CONFLICT (project_id, user_id) DO NOTHING
+        // pero la BD NO tiene un unique constraint sobre esas 2 columnas;
+        // sólo:
+        //   1) UNIQUE (user_id, project_id, deleted_at)  — 3 columnas
+        //   2) partial unique (user_id, project_id) WHERE deleted_at IS NULL
+        // Postgres rechaza el ON CONFLICT con
+        //   "there is no unique or exclusion constraint matching the
+        //    ON CONFLICT specification"
+        // que el handler convertía en AppError::Database → 500.
+        // Fix: chequeo previo (mismo patrón que el INSERT de project_members
+        // arriba), sin ON CONFLICT.
+        let existing_pup = project_user_properties::Entity::find()
+            .filter(project_user_properties::Column::ProjectId.eq(project_id))
+            .filter(project_user_properties::Column::UserId.eq(entry.member_id))
+            .filter(project_user_properties::Column::DeletedAt.is_null())
+            .one(&state.db)
+            .await
+            .map_err(AppError::Database)?;
+
+        if existing_pup.is_none() {
+            project_user_properties::ActiveModel {
+                id: Set(Uuid::new_v4()),
+                project_id: Set(project_id),
+                workspace_id: Set(ws.id),
+                user_id: Set(entry.member_id),
+                display_properties: Set(crate::utils::django_defaults::default_display_properties()),
+                display_filters: Set(crate::utils::django_defaults::default_display_filters()),
+                filters: Set(crate::utils::django_defaults::default_filters()),
+                rich_filters: Set(serde_json::json!({})),
+                preferences: Set(crate::utils::django_defaults::default_preferences()),
+                sort_order: Set(65535.0),
+                created_by_id: Set(Some(user.id)),
+                updated_by_id: Set(Some(user.id)),
+                created_at: Set(now),
+                updated_at: Set(now),
+                deleted_at: Set(None),
+            }
+            .insert(&state.db)
+            .await
+            .map_err(|e| {
+                tracing::error!(error = %e, project_id = %project_id, user_id = %entry.member_id, "create_project_members: insert project_user_properties falló");
+                AppError::Database(e)
+            })?;
+        }
     }
 
     // Retornar miembros actualizados
