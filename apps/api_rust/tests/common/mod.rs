@@ -411,7 +411,14 @@ impl TestApp {
             // vía `default=` en el modelo (`apps/api/plane/db/models/project.py`);
             // acá hay que ser explícito o el INSERT falla con 23502.
             page_view: Set(true),
-            intake_view: Set(false),
+            // Paridad con el route real `routes::projects::create_project` —
+            // el endpoint productivo setea `intake_view: true` al crear un
+            // proyecto (projects.rs:919). El helper antes seteaba `false`,
+            // lo que impedía a los tests de intake/inbox funcionar (POST
+            // /intake-issues exige `project.intake_view=true`). Mantener
+            // esto alineado con el route evita scaffolding por test y
+            // refleja el estado real de un proyecto recién creado.
+            intake_view: Set(true),
             archive_in: Set(0),
             close_in: Set(0),
             is_time_tracking_enabled: Set(false),
