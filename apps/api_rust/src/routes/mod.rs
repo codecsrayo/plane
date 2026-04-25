@@ -133,6 +133,7 @@ pub mod v1_router;
         projects::leave_project,
         projects::update_project_views,
         projects::get_project_user_views,
+        projects::get_project_summary,
         projects::list_project_favorites,
         projects::create_project_favorite,
         projects::delete_project_favorite,
@@ -815,6 +816,11 @@ pub fn build_router(state: AppState) -> Router {
         .route(
             "/workspaces/{slug}/projects/{project_id}/project-views",
             get(projects::get_project_user_views).post(projects::update_project_views),
+        )
+        // Project summary — variante interna (sin admin); v1 sigue activo.
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/summary",
+            get(projects::get_project_summary),
         )
         // Mirror Django: /archive/
         .route(

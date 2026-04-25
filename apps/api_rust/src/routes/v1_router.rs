@@ -160,12 +160,44 @@ pub async fn get_project_summary(
     Path((slug, project_id)): Path<(String, Uuid)>,
     Query(query): Query<SummaryQuery>,
 ) -> Result<impl IntoResponse, AppError> {
+    let (project, counts) =
+        compute_project_summary(&state, &user, &slug, project_id, query.fields.as_deref(), true)
+            .await?;
+
+    Ok(Json(ProjectSummaryResponse {
+        id: project.id,
+        name: project.name,
+        identifier: project.identifier,
+        counts: serde_json::Value::Object(counts),
+    }))
+}
+
+/// Calcula los counts de un proyecto. Compartido por:
+/// - `v1_router::get_project_summary`        — envuelve en `{id, name, identifier, counts}`
+/// - `routes::projects::get_project_summary` — devuelve los counts planos en root
+///
+/// `require_admin = true` espeja el endpoint público (`api/v1/`), que requiere
+/// rol Admin de workspace. `false` permite cualquier miembro activo (ruta
+/// interna del frontend, simétrica con el resto de endpoints de proyecto).
+///
+/// Antipatrones evitados:
+/// - Sin N+1: cada count es una sola query `COUNT(*)` con filtro por proyecto.
+/// - Sin SQL injection: filtros tipados vía SeaORM; el parámetro `fields` se
+///   valida contra `ALLOWED_SUMMARY_FIELDS` antes de usarse.
+pub async fn compute_project_summary(
+    state: &AppState,
+    user: &crate::entities::users::Model,
+    slug: &str,
+    project_id: Uuid,
+    fields: Option<&str>,
+    require_admin: bool,
+) -> Result<(crate::entities::projects::Model, serde_json::Map<String, serde_json::Value>), AppError>
+{
     use crate::entities::{projects, workspace_members, workspaces};
 
-    // Verificar workspace membership y rol admin
     let ws = workspaces::Entity::find()
         .active()
-        .filter(workspaces::Column::Slug.eq(&slug))
+        .filter(workspaces::Column::Slug.eq(slug))
         .one(&state.db)
         .await
         .map_err(AppError::Database)?
@@ -181,10 +213,11 @@ pub async fn get_project_summary(
         .map_err(AppError::Database)?
         .ok_or(AppError::Forbidden)?;
 
-    // WorkSpaceAdminPermission: role >= ADMIN (20)
-    const ROLE_ADMIN: i32 = 20;
-    if i32::from(wm.role) < ROLE_ADMIN {
-        return Err(AppError::Forbidden);
+    if require_admin {
+        const ROLE_ADMIN: i32 = 20;
+        if i32::from(wm.role) < ROLE_ADMIN {
+            return Err(AppError::Forbidden);
+        }
     }
 
     let project = projects::Entity::find_by_id(project_id)
@@ -195,8 +228,7 @@ pub async fn get_project_summary(
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
-    // Determinar campos solicitados
-    let requested: Vec<&str> = if let Some(ref f) = query.fields {
+    let requested: Vec<&str> = if let Some(f) = fields {
         f.split(',')
             .map(str::trim)
             .filter(|s| ALLOWED_SUMMARY_FIELDS.contains(s))
@@ -211,9 +243,6 @@ pub async fn get_project_summary(
         requested
     };
 
-    // Contar cada campo solicitado con queries individuales.
-    // Antipatrón evitado: NO se hacen N+1 innecesarios; cada count es una
-    // sola query COUNT(*) con filtro por project_id.
     let db = &state.db;
     let mut counts = serde_json::Map::new();
 
@@ -252,7 +281,6 @@ pub async fn get_project_summary(
                 .map_err(AppError::Database)?,
             "issues" => {
                 use crate::entities::issues;
-                // Excluye issues en estado triage (group = 'triage')
                 let triage_state_ids: Vec<Uuid> = states::Entity::find()
                     .filter(states::Column::ProjectId.eq(project_id))
                     .filter(states::Column::Group.eq("triage"))
@@ -269,10 +297,7 @@ pub async fn get_project_summary(
                     .filter(issues::Column::DeletedAt.is_null());
 
                 if !triage_state_ids.is_empty() {
-                    q = q.filter(
-                        issues::Column::StateId
-                            .is_not_in(triage_state_ids),
-                    );
+                    q = q.filter(issues::Column::StateId.is_not_in(triage_state_ids));
                 }
                 q.count(db).await.map_err(AppError::Database)?
             }
@@ -292,12 +317,7 @@ pub async fn get_project_summary(
         counts.insert(field.to_string(), serde_json::json!(count));
     }
 
-    Ok(Json(ProjectSummaryResponse {
-        id: project.id,
-        name: project.name,
-        identifier: project.identifier,
-        counts: serde_json::Value::Object(counts),
-    }))
+    Ok((project, counts))
 }
 
 // ── Router builder ────────────────────────────────────────────────────────────

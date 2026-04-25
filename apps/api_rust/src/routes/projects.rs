@@ -2149,6 +2149,65 @@ pub async fn get_project_user_views(
     })))
 }
 
+// ── GET /workspaces/{slug}/projects/{project_id}/summary ─────────────────────
+
+#[derive(Debug, Deserialize)]
+pub struct ProjectSummaryQuery {
+    pub fields: Option<String>,
+}
+
+/// `GET /api/workspaces/{slug}/projects/{project_id}/summary`
+///
+/// Variante del summary expuesta al frontend interno (no requiere admin).
+/// Reutiliza `v1_router::compute_project_summary` para no duplicar la lógica
+/// de conteo, pero devuelve los counts planos en root —
+/// `{ id, name, identifier, members, states, ... }` — porque así los consumen
+/// los tests de contrato y los hooks del frontend.
+///
+/// El endpoint público `/api/v1/.../summary` mantiene el shape anidado
+/// (`{counts: {...}}`) y exige Admin de workspace.
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/projects/{project_id}/summary",
+    tag = "Projects",
+    security(("TokenAuth" = []), ("SessionCookie" = [])),
+    params(
+        ("slug"       = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid,   Path, description = "Project UUID"),
+        ("fields"     = Option<String>, Query, description = "CSV de campos a incluir"),
+    ),
+    responses(
+        (status = 200, description = "Counts del proyecto"),
+        (status = 401, description = "Unauthenticated"),
+        (status = 403, description = "No es miembro del workspace"),
+        (status = 404, description = "Proyecto o workspace no existe"),
+    )
+)]
+pub async fn get_project_summary(
+    State(state): State<AppState>,
+    AnyAuth(user): AnyAuth,
+    Path((slug, project_id)): Path<(String, Uuid)>,
+    Query(query): Query<ProjectSummaryQuery>,
+) -> Result<Json<serde_json::Value>, AppError> {
+    let (project, counts) = crate::routes::v1_router::compute_project_summary(
+        &state,
+        &user,
+        &slug,
+        project_id,
+        query.fields.as_deref(),
+        false, // miembro activo basta — no exigimos admin
+    )
+    .await?;
+
+    let mut out = serde_json::Map::new();
+    out.insert("id".into(), serde_json::json!(project.id));
+    out.insert("name".into(), serde_json::json!(project.name));
+    out.insert("identifier".into(), serde_json::json!(project.identifier));
+    for (k, v) in counts {
+        out.insert(k, v);
+    }
+    Ok(Json(serde_json::Value::Object(out)))
+}
 
 // ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ GET + POST + DELETE /workspaces/{slug}/user-favorite-projects/ ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ
 
