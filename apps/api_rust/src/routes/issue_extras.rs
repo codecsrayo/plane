@@ -1268,6 +1268,7 @@ pub async fn get_issue_activity(
         issue_id: act.issue_id,
         project_id: act.project_id,
         workspace_id: act.workspace_id,
+        created_at: act.created_at,
     }))
 }
 
