@@ -123,6 +123,16 @@ impl TestApp {
             .await
             .expect("sqlx PgPool connect");
 
+        // Instalar el schema de apalis (tabla `apalis.jobs` y triggers). En
+        // producción esto lo hace `start_job_workers` (main.rs:55) llamando
+        // a `PostgresStorage::<()>::setup`. Sin este paso, cualquier handler
+        // que enqueue un job (export_issues, github webhook, workspace seed,
+        // etc.) responde 500 con `relation "apalis.jobs" does not exist`.
+        // Idempotente — `CREATE SCHEMA/TABLE IF NOT EXISTS`.
+        apalis_sql::postgres::PostgresStorage::<()>::setup(&pg_pool)
+            .await
+            .expect("apalis schema setup");
+
         let redis_config = RedisConfig::from_url(&redis_url).expect("redis config");
         let redis = RedisBuilder::from_config(redis_config)
             .build_pool(2)

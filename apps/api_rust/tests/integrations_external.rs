@@ -236,66 +236,42 @@ async fn github_webhook_without_signature_returns_4xx() {
 }
 
 #[tokio::test(flavor = "multi_thread")]
-async fn gitlab_webhook_without_token_returns_4xx() {
+async fn gitlab_webhook_with_invalid_token_returns_403() {
+    // Paridad Django (apps/api/plane/app/views/external/sync.py:392-397):
+    // el handler valida el header X-Gitlab-Token solo si el server tiene
+    // GITLAB_WEBHOOK_TOKEN configurado. Sin token configurado, todas las
+    // requests pasan — un test que postee sin token y espere 4xx falla
+    // porque el contrato es "open by default". Para ejercitar la
+    // trayectoria de rechazo hay que sembrar la config primero y luego
+    // mandar un token inválido (o ninguno).
     let app = TestApp::spawn().await;
+    app.set_instance_config("GITLAB_WEBHOOK_TOKEN", "expected-secret").await;
+
     let res = app
         .post_json("/gitlab-webhook", &json!({ "object_kind": "push" }))
         .await;
     let status = res.status.as_u16();
     assert!(
-        status >= 400,
-        "gitlab-webhook sin token debe devolver 4xx, obtuvo {status}"
+        status == 403,
+        "gitlab-webhook con token inválido debe devolver 403, obtuvo {status}"
     );
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// GET/POST /assets/v2/user-assets
-// ─────────────────────────────────────────────────────────────────────────────
-
-#[tokio::test(flavor = "multi_thread")]
-async fn list_user_assets_unauthenticated_returns_401() {
-    let app = TestApp::spawn().await;
-    let res = app.get("/assets/v2/user-assets").await;
-    assert_eq!(res.status.as_u16(), 401);
-}
-
-#[tokio::test(flavor = "multi_thread")]
-async fn list_user_assets_authenticated_returns_200() {
-    let app = TestApp::spawn().await;
-    let (_, api_key) = app.create_test_user("assets_user@plane.test").await;
-    let res = app.get_authed(&api_key, "/assets/v2/user-assets").await;
-    let status = res.status.as_u16();
-    assert!(
-        status == 200 || status == 404,
-        "user-assets debe devolver 200/404, obtuvo {status}, body: {}",
-        String::from_utf8_lossy(&res.body)
-    );
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
-// GET/POST /assets/v2/workspaces/{slug}
-// ─────────────────────────────────────────────────────────────────────────────
-
-#[tokio::test(flavor = "multi_thread")]
-async fn list_workspace_assets_unauthenticated_returns_401() {
-    let (app, _, slug, _) = setup("wsassets-unauth").await;
-    let res = app.get(&format!("/assets/v2/workspaces/{slug}")).await;
-    assert_eq!(res.status.as_u16(), 401);
-}
-
-#[tokio::test(flavor = "multi_thread")]
-async fn list_workspace_assets_member_returns_200() {
-    let (app, api_key, slug, _) = setup("wsassets-ok").await;
-    let res = app
-        .get_authed(&api_key, &format!("/assets/v2/workspaces/{slug}"))
-        .await;
-    let status = res.status.as_u16();
-    assert!(
-        status == 200 || status == 404,
-        "workspace assets debe devolver 200/404, obtuvo {status}, body: {}",
-        String::from_utf8_lossy(&res.body)
-    );
-}
+// Endpoints no expuestos en estas URLs (paridad Django):
+//
+//   GET /assets/v2/user-assets        → no existe. Django UserAssetsV2Endpoint
+//     define solo post/patch/delete (asset/v2.py:109,170,191). Llamar GET
+//     enruta al view y produce 405 (no `get` method).
+//   GET /assets/v2/workspaces/{slug}  → no existe. WorkspaceFileAssetEndpoint
+//     define `get(self, request, slug, asset_id)` — la URL bare /{slug}/
+//     tiene el método `get` pero la firma exige asset_id; solo /{slug}/
+//     /{asset_id}/ es una ruta GET válida.
+//
+// Antes había 4 tests aquí esperando 200/401 sobre estas URLs; producían
+// 405 en ambos backends. Removidos por ser endpoints fantasma.
+//
+// Cobertura real de assets vive en tests/assets.rs (POST/PATCH/DELETE).
 
 // ─────────────────────────────────────────────────────────────────────────────
 // GET/POST /workspaces/{slug}/export-issues
@@ -311,13 +287,21 @@ async fn export_issues_unauthenticated_returns_401() {
 #[tokio::test(flavor = "multi_thread")]
 async fn list_exports_member_returns_200() {
     let (app, api_key, slug, _) = setup("expiss-ok").await;
+    // El handler exige `per_page` y `cursor` ambos presentes (paridad Django
+    // exporter/base.py:73-84; ver exporter.rs:142-150). Sin esos parámetros
+    // el endpoint responde 400 antes de listar nada — el frontend siempre
+    // los envía vía SWR con un cursor por defecto.
     let res = app
-        .get_authed(&api_key, &format!("/workspaces/{slug}/export-issues"))
+        .get_authed(
+            &api_key,
+            &format!("/workspaces/{slug}/export-issues?per_page=10&cursor=10:0:0"),
+        )
         .await;
     let status = res.status.as_u16();
     assert!(
         status == 200 || status == 404,
-        "export-issues lista debe devolver 200/404, obtuvo {status}"
+        "export-issues lista debe devolver 200/404, obtuvo {status}, body: {}",
+        String::from_utf8_lossy(&res.body)
     );
 }
 
