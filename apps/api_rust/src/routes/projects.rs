@@ -1899,7 +1899,12 @@ pub async fn create_project_members(
             am.updated_at = Set(now);
             am.update(&state.db).await.map_err(AppError::Database)?;
         } else {
-            // Crear nuevo
+            // Crear nuevo. NOTA: project_members tiene varias columnas
+            // jsonb/double NOT NULL sin DEFAULT en BD (baseline.sql
+            // project_members): view_props, default_props, preferences,
+            // sort_order. Django las popula vía model defaults (Python),
+            // SeaORM no replica eso → debemos setearlas explícitamente o
+            // el INSERT falla con 23502 → 500.
             project_members::ActiveModel {
                 id: Set(Uuid::new_v4()),
                 project_id: Set(project_id),
@@ -1907,6 +1912,10 @@ pub async fn create_project_members(
                 member_id: Set(Some(entry.member_id)),
                 role: Set(entry.role),
                 is_active: Set(true),
+                view_props: Set(crate::utils::django_defaults::default_props()),
+                default_props: Set(crate::utils::django_defaults::default_props()),
+                preferences: Set(crate::utils::django_defaults::default_preferences()),
+                sort_order: Set(65535.0),
                 created_by_id: Set(Some(user.id)),
                 updated_by_id: Set(Some(user.id)),
                 created_at: Set(now),
@@ -1921,11 +1930,21 @@ pub async fn create_project_members(
 
         // project_user_properties ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ ON CONFLICT DO NOTHING
         use sea_orm::sea_query::OnConflict;
+        // project_user_properties: mismas columnas NOT NULL sin DEFAULT en
+        // BD (display_properties, display_filters, filters, rich_filters,
+        // preferences, sort_order). Django defaults en
+        // apps/api/plane/db/models/project.py:ProjectUserProperty.
         project_user_properties::Entity::insert(project_user_properties::ActiveModel {
             id: Set(Uuid::new_v4()),
             project_id: Set(project_id),
             workspace_id: Set(ws.id),
             user_id: Set(entry.member_id),
+            display_properties: Set(crate::utils::django_defaults::default_display_properties()),
+            display_filters: Set(crate::utils::django_defaults::default_display_filters()),
+            filters: Set(crate::utils::django_defaults::default_filters()),
+            rich_filters: Set(serde_json::json!({})),
+            preferences: Set(crate::utils::django_defaults::default_preferences()),
+            sort_order: Set(65535.0),
             created_by_id: Set(Some(user.id)),
             updated_by_id: Set(Some(user.id)),
             created_at: Set(now),
