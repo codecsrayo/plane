@@ -227,7 +227,14 @@ async fn create_intake_issue(
         )
         .await;
     assert_eq!(res.status.as_u16(), 201, "crear intake-issue falló: {}", String::from_utf8_lossy(&res.body));
-    res.json()["id"].as_str().unwrap().to_owned()
+    // Django interpreta el `pk` en /intake-issues/{pk}/ como el issue_id del
+    // issue subyacente, NO como el id del intake_issue (Django base.py:499,
+    // 525; frontend project-inbox.store.ts:430,467 también envía
+    // `response.issue.id`). Los handlers Rust (get/update/delete) replican
+    // esto vía `intake_issues::Column::IssueId.eq(pk)`. El helper antes
+    // devolvía `res.json()["id"]` (intake_issue.id), provocando 404 en
+    // get/update/delete; lo corrijo para devolver el issue_id real.
+    res.json()["issue_id"].as_str().unwrap().to_owned()
 }
 
 // ═════════════════════════════════════════════════════════════════════════════
