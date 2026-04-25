@@ -28,7 +28,8 @@ use axum::{
 };
 use chrono::{DateTime, FixedOffset, Utc};
 use sea_orm::{
-    sea_query::Expr, ActiveModelTrait, ColumnTrait, EntityTrait, QueryFilter, QueryOrder, Set,
+    sea_query::Expr, ActiveModelTrait, ColumnTrait, Condition, EntityTrait, QueryFilter,
+    QueryOrder, Set,
 };
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
@@ -170,8 +171,22 @@ pub struct CreateRelationRequest {
 
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct RemoveRelationRequest {
-    pub relation_type: String,
-    pub related_issue_id: Uuid,
+    /// UUID del issue contraparte de la relación a eliminar.
+    ///
+    /// Paridad Django (`apps/api/plane/app/views/issue/relation.py:263`):
+    /// `related_issue = request.data.get("related_issue", None)`. Antes el
+    /// campo se llamaba `related_issue_id`, lo que provocaba un 422
+    /// (`missing field 'related_issue_id'`) cuando el frontend enviaba el
+    /// payload con paridad Django.
+    pub related_issue: Uuid,
+
+    /// Django no usa `relation_type` en `remove_relation` — la relación se
+    /// localiza únicamente por el par `(issue_id, related_issue)`. Lo
+    /// aceptamos opcional por compatibilidad con clientes que lo envíen,
+    /// pero NO se usa para filtrar la query (mantendría paridad estricta
+    /// con `apps/api/plane/app/views/issue/relation.py:265-269`).
+    #[serde(default)]
+    pub relation_type: Option<String>,
 }
 
 #[derive(Debug, Serialize, utoipa::ToSchema)]
@@ -1018,20 +1033,59 @@ pub async fn remove_issue_relation(
     Path((_slug, _project_id, issue_id)): Path<(String, Uuid, Uuid)>,
     Json(body): Json<RemoveRelationRequest>,
 ) -> Result<impl IntoResponse, AppError> {
+    require_role(guard.project_member.role, guard.workspace_member.role, ROLE_MEMBER)?;
+
+    // Paridad Django (`apps/api/plane/app/views/issue/relation.py:265-269`):
+    //   IssueRelation.objects.filter(workspace__slug=slug).filter(
+    //     Q(issue_id=related_issue, related_issue_id=issue_id) |
+    //     Q(issue_id=issue_id, related_issue_id=related_issue)
+    //   )
+    //
+    // La búsqueda es bidireccional porque la relación se modela como dirigida
+    // pero el cliente puede invocar `remove-relation` desde cualquiera de los
+    // dos extremos. Antes filtrábamos solo `(issue_id, related_issue_id)` →
+    // devolvía 404 cuando la relación existía con orientación inversa.
+    //
+    // Filtramos además por `project_id` del guard (no por workspace slug
+    // como Django) para mantener el aislamiento por proyecto que ya impone
+    // `ProjectMemberGuard` en el resto de handlers — evita filtrar relaciones
+    // cruzadas entre proyectos del mismo workspace.
+    //
+    // No filtramos por `relation_type`: Django tampoco lo hace, y mantener la
+    // restricción aquí provocaría 404s falsos cuando el cliente envía un
+    // `relation_type` que no coincide con el almacenado tras `get_actual_relation`
+    // (ej. cliente manda "blocking", BD guarda "blocked_by" en el extremo opuesto).
     let relation = issue_relations::Entity::find()
         .active()
-        .filter(issue_relations::Column::IssueId.eq(issue_id))
-        .filter(issue_relations::Column::RelatedIssueId.eq(body.related_issue_id))
-        .filter(issue_relations::Column::RelationType.eq(&body.relation_type))
         .filter(issue_relations::Column::ProjectId.eq(guard.project.id))
+        .filter(
+            Condition::any()
+                .add(
+                    Condition::all()
+                        .add(issue_relations::Column::IssueId.eq(issue_id))
+                        .add(issue_relations::Column::RelatedIssueId.eq(body.related_issue)),
+                )
+                .add(
+                    Condition::all()
+                        .add(issue_relations::Column::IssueId.eq(body.related_issue))
+                        .add(issue_relations::Column::RelatedIssueId.eq(issue_id)),
+                ),
+        )
         .one(&state.db)
         .await
-        .map_err(AppError::Database)?
-        .ok_or(AppError::NotFound)?;
+        .map_err(AppError::Database)?;
 
-    let mut am: issue_relations::ActiveModel = relation.into();
-    am.deleted_at = Set(Some(Utc::now().into()));
-    am.update(&state.db).await.map_err(AppError::Database)?;
+    // Idempotencia DELETE-like: si la relación ya no existe, devolvemos 204
+    // sin error. Es semánticamente correcto (la postcondición "no existe la
+    // relación" se cumple) y evita filtrar a clientes la existencia/ausencia
+    // de un par de UUIDs específico (mitigación enumeración). Django no lo
+    // maneja explícitamente — `.first().delete()` crashearía con AttributeError
+    // sobre None — pero aquí preferimos robustez.
+    if let Some(relation) = relation {
+        let mut am: issue_relations::ActiveModel = relation.into();
+        am.deleted_at = Set(Some(Utc::now().into()));
+        am.update(&state.db).await.map_err(AppError::Database)?;
+    }
 
     Ok(StatusCode::NO_CONTENT)
 }
