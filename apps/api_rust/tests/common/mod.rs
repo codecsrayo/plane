@@ -34,7 +34,7 @@ use std::sync::Arc;
 use api_rust::{
     auth::rate_limit::RateLimitState,
     config::Config,
-    entities::{api_tokens, instances, project_identifiers, project_members, projects, users, workspace_members, workspaces},
+    entities::{api_tokens, instances, profiles, project_identifiers, project_members, projects, users, workspace_members, workspaces},
     routes::build_router,
     utils::startup::{ensure_configurations_seeded, ensure_instance_registered},
     AppState,
@@ -327,6 +327,47 @@ impl TestApp {
             ..Default::default()
         };
         token_am.insert(&self.state.db).await.expect("insert api token");
+
+        // ── Profile ───────────────────────────────────────────────────────
+        // El signup real (auth/email_auth.rs:335) crea un Profile junto al
+        // User. Replicar aquí evita que tests de endpoints de perfil/settings
+        // (que asumen profile existente, igual que Django) caigan en 404.
+        // Espeja columnas NOT NULL incluidas migraciones recientes.
+        let profile_am = profiles::ActiveModel {
+            id: Set(Uuid::new_v4()),
+            user_id: Set(user_id),
+            theme: Set(serde_json::json!({})),
+            is_tour_completed: Set(false),
+            onboarding_step: Set(serde_json::json!({})),
+            use_case: Set(None),
+            role: Set(None),
+            is_onboarded: Set(false),
+            last_workspace_id: Set(None),
+            billing_address_country: Set("US".into()),
+            billing_address: Set(None),
+            has_billing_address: Set(false),
+            company_name: Set(String::new()),
+            is_mobile_onboarded: Set(false),
+            mobile_onboarding_step: Set(serde_json::json!({})),
+            mobile_timezone_auto_set: Set(false),
+            language: Set("en".into()),
+            is_smooth_cursor_enabled: Set(false),
+            start_of_the_week: Set(0),
+            is_app_rail_docked: Set(false),
+            background_color: Set(String::new()),
+            goals: Set(serde_json::json!({})),
+            has_marketing_email_consent: Set(false),
+            is_navigation_tour_completed: Set(false),
+            is_subscribed_to_changelog: Set(false),
+            notification_view_mode: Set(String::new()),
+            product_tour: Set(serde_json::json!({})),
+            created_at: Set(now.into()),
+            updated_at: Set(now.into()),
+        };
+        profile_am
+            .insert(&self.state.db)
+            .await
+            .expect("insert test profile");
 
         (user_id, api_key)
     }
