@@ -51,6 +51,45 @@ use super::{
     },
     helpers::get_or_create_api_token,
 };
+};
+
+// New aliases for /auth prefix
+use axum::response::IntoResponse;
+
+/// Alias del callback GitHub App bajo `/auth`.
+///
+/// Sin params (`installation_id`, `state`) -> 400. Con params delega al
+/// handler `github_app_callback`. Mantener ambas rutas evita migrar la
+/// configuracion de GitHub Apps ya provisionadas que apuntan a `/api`.
+pub async fn github_callback_auth_alias(
+    state: axum::extract::State<crate::AppState>,
+    Query(params): Query<GithubCallbackQuery>,
+) -> axum::response::Response {
+    if params.installation_id.is_none() || params.state.is_none() {
+        return (
+            StatusCode::BAD_REQUEST,
+            axum::Json(serde_json::json!({
+                "error": "Missing installation_id or state."
+            })),
+        )
+            .into_response();
+    }
+    github_app_callback(state, Query(params)).await.into_response()
+}
+
+/// `GET /auth/github/user-callback` -- el flujo real es `POST` con body
+/// JSON; un `GET` siempre es error de configuracion del cliente. Devolver
+/// 400 explicito evita el 405 confuso.
+pub async fn github_user_callback_get_stub() -> axum::response::Response {
+    (
+        StatusCode::BAD_REQUEST,
+        axum::Json(serde_json::json!({
+            "error": "user-callback requires POST with JSON body { code, workspace_slug }."
+        })),
+    )
+        .into_response()
+}
+
 
 // ââ GET /api/github/callback/ (sin auth) âââââââââââââââââââââââââââââââââââââ
 

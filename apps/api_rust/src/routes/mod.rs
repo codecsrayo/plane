@@ -548,7 +548,13 @@ pub fn build_router(state: AppState) -> Router {
     let auth_public_routes = Router::new()
         .route("/gitlab/callback", get(auth::oauth::gitlab_callback))
         .route("/google/callback", get(auth::oauth::google_callback))
-        .route("/gitea/callback", get(auth::oauth::gitea_callback));
+        .route("/gitea/callback", get(auth::oauth::gitea_callback))
+        // GitHub OAuth callback bajo /auth (sin auth middleware: GitHub
+        // redirige al popup directamente).
+        .route(
+            "/github/callback",
+            get(integrations::github_callback_auth_alias),
+        );
 
     // Auth routes with rate limiting (mirrors plane.authentication.urls)
     let auth_router = Router::new()
@@ -615,7 +621,8 @@ pub fn build_router(state: AppState) -> Router {
         // Ã¢ÂÂÃ¢ÂÂ GitHub user OAuth callback (con auth) Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
         .route(
             "/github/user-callback",
-            post(integrations::github_user_callback),
+            get(integrations::github_user_callback_get_stub)
+                .post(integrations::github_user_callback),
         )
         // Ã¢ÂÂÃ¢ÂÂ OAuth Initiation Ã¢ÂÂÃ¢ÂÂ
         .route("/gitlab", get(auth::oauth::gitlab_initiate))

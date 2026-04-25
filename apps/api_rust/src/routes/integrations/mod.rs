@@ -20,7 +20,9 @@ pub mod workspace;
 // usando la sintaxis `integrations::handler_name` sin cambios.
 pub use github::{
     github_app_callback,
+    github_callback_auth_alias,
     github_user_callback,
+    github_user_callback_get_stub,
     list_github_repositories,
     list_github_repo_syncs,
     create_github_repo_sync,
