@@ -939,6 +939,10 @@ pub async fn set_issue_modules(
 
     // Agregar módulos
     if let Some(mods) = body.modules {
+        // NOTA: created_at/updated_at son NOT NULL sin DEFAULT en module_issues
+        // (baseline.sql:1646-1656). Con ..Default::default() SeaORM omitía las
+        // columnas → 23502 → 500.
+        let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
         for module_id in mods {
             // Idempotente: verificar si ya existe
             let existing = module_issues::Entity::find()
@@ -959,7 +963,9 @@ pub async fn set_issue_modules(
                     workspace_id: Set(ws_id),
                     created_by_id: Set(Some(user_id)),
                     updated_by_id: Set(Some(user_id)),
-                    ..Default::default()
+                    created_at: Set(now),
+                    updated_at: Set(now),
+                    deleted_at: Set(None),
                 };
                 mi.insert(db).await.map_err(AppError::Database)?;
             }
@@ -985,7 +991,12 @@ pub async fn set_issue_modules(
         }
     }
 
-    Ok(StatusCode::NO_CONTENT)
+    // Paridad Django (apps/api/plane/app/views/module/issue.py:315):
+    //   `Response({"message": "success"}, status=201)`
+    Ok((
+        StatusCode::CREATED,
+        Json(serde_json::json!({ "message": "success" })),
+    ))
 }
 
 // ── module-links ──────────────────────────────────────────────────────────────
@@ -1111,9 +1122,23 @@ pub async fn create_module_link(
     let user_id = guard.user.id;
     let db = &state.db;
 
+    if body.url.trim().is_empty() {
+        return Err(AppError::BadRequest("url is required".into()));
+    }
+
+    // Paridad Django (apps/api/plane/app/serializers/module.py:170-186):
+    //   - to_internal_value: si no empieza por http(s)://, antepone "http://"
+    //   - validate_url: usa Django URLValidator. "not-a-url" → 400.
+    let url = crate::utils::url::normalize_and_validate_url(body.url.trim())?;
+
+    // NOTA: setear created_at/updated_at explícitos. Las columnas son NOT NULL
+    // sin DEFAULT (baseline.sql:module_links), y ActiveModelBehavior está vacío.
+    // Con ..Default::default() SeaORM omitía las columnas → 23502 → 500.
+    // Mismo patrón que create_module / create_label / create_issue_link.
+    let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
     let link = module_links::ActiveModel {
         id: Set(Uuid::new_v4()),
-        url: Set(body.url),
+        url: Set(url),
         title: Set(body.title),
         module_id: Set(module_id),
         project_id: Set(project_id),
@@ -1121,7 +1146,9 @@ pub async fn create_module_link(
         created_by_id: Set(Some(user_id)),
         updated_by_id: Set(Some(user_id)),
         metadata: Set(serde_json::json!({})),
-        ..Default::default()
+        created_at: Set(now),
+        updated_at: Set(now),
+        deleted_at: Set(None),
     };
 
     let created = link.insert(db).await.map_err(AppError::Database)?;
@@ -1219,7 +1246,10 @@ pub async fn update_module_link(
 
     let mut active: module_links::ActiveModel = link.into();
     if let Some(url) = body.url {
-        active.url = Set(url);
+        // Mismo validador que en create — paridad con
+        // ModuleLinkSerializer.update (module.py:194-203).
+        let validated = crate::utils::url::normalize_and_validate_url(url.trim())?;
+        active.url = Set(validated);
     }
     if let Some(title) = body.title {
         active.title = Set(Some(title));
@@ -1385,6 +1415,10 @@ pub async fn create_favorite_module(
         .map_err(AppError::Database)?;
 
     if existing.is_none() {
+        // NOTA: created_at/updated_at son NOT NULL sin DEFAULT en user_favorites
+        // (baseline.sql user_favorites). Con ..Default::default() SeaORM omitía
+        // las columnas → 23502 → 500. Mismo patrón que el resto.
+        let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
         let new_fav = user_favorites::ActiveModel {
             id: Set(Uuid::new_v4()),
             entity_type: Set("module".to_string()),
@@ -1396,12 +1430,20 @@ pub async fn create_favorite_module(
             updated_by_id: Set(Some(user_id)),
             sequence: Set(65535.0_f64),
             is_folder: Set(false),
+            created_at: Set(now),
+            updated_at: Set(now),
+            deleted_at: Set(None),
             ..Default::default()
         };
         new_fav.insert(db).await.map_err(AppError::Database)?;
     }
 
-    Ok(StatusCode::NO_CONTENT)
+    // 201 con confirmación; el frontend espera 200/201 y Django usa 201
+    // para create endpoints con success message.
+    Ok((
+        StatusCode::CREATED,
+        Json(serde_json::json!({ "message": "success" })),
+    ))
 }
 
 /// `DELETE /api/workspaces/{slug}/projects/{project_id}/user-favorite-modules/{module_id}/`

@@ -307,13 +307,36 @@ async fn get_archived_module_returns_200() {
     let (app, api_key, ws_slug, proj_id) = setup("arch_get").await;
     let mod_id = create_module(&app, &api_key, &ws_slug, proj_id, "Archive Me Module").await;
 
+    // Precondición de archive_module (mirror Django apps/api/.../module/archive.py:546-550):
+    // solo módulos en status 'completed' o 'cancelled' pueden archivarse.
+    let patch_res = app
+        .patch_json_authed(
+            &api_key,
+            &format!("/workspaces/{ws_slug}/projects/{proj_id}/modules/{mod_id}"),
+            &json!({ "status": "completed" }),
+        )
+        .await;
+    assert_eq!(
+        patch_res.status.as_u16(),
+        200,
+        "PATCH módulo a 'completed' falló: {}",
+        String::from_utf8_lossy(&patch_res.body)
+    );
+
     // Archivar
-    app.post_json_authed(
-        &api_key,
-        &format!("/workspaces/{ws_slug}/projects/{proj_id}/modules/{mod_id}/archive"),
-        &json!({}),
-    )
-    .await;
+    let arc_res = app
+        .post_json_authed(
+            &api_key,
+            &format!("/workspaces/{ws_slug}/projects/{proj_id}/modules/{mod_id}/archive"),
+            &json!({}),
+        )
+        .await;
+    assert_eq!(
+        arc_res.status.as_u16(),
+        200,
+        "archive falló: {}",
+        String::from_utf8_lossy(&arc_res.body)
+    );
 
     let res = app
         .get_authed(

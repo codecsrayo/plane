@@ -102,3 +102,80 @@ mod tests {
         assert!(!contains_url(&long));
     }
 }
+
+// ─────────────────────────────────────────────────────────────────────────────
+// URL validation for link payloads (issue-links / module-links / cycle-links)
+// ─────────────────────────────────────────────────────────────────────────────
+
+/// Replica `*LinkSerializer.to_internal_value` + `validate_url` de Django.
+///
+/// 1. Si la URL no empieza con `http://` o `https://`, antepone `http://`
+///    (paridad apps/api/plane/app/serializers/issue.py:565-571 y
+///    apps/api/plane/app/serializers/module.py:170-176).
+/// 2. Valida con un regex equivalente al `URLValidator` de Django (host con
+///    TLD válido o IP, scheme http/https/ftp, puerto opcional, path opcional).
+///    Strings sin TLD como `"not-a-url"` → tras prepend `http://not-a-url` →
+///    rechazado por carecer de dominio válido.
+///
+/// Devuelve `AppError::BadRequest` con mensaje idéntico al de Django si la
+/// URL no es válida, lo que el frontend reconoce como error de validación.
+pub fn normalize_and_validate_url(raw: &str) -> Result<String, crate::error::AppError> {
+    use std::sync::OnceLock;
+
+    let normalized = if raw.starts_with("http://") || raw.starts_with("https://") {
+        raw.to_owned()
+    } else {
+        format!("http://{raw}")
+    };
+
+    // Regex pragmático: scheme + host (con TLD ≥ 2 chars o IPv4) + puerto/
+    // path opcionales. No replica el `URLValidator` byte-a-byte (Django
+    // soporta IPv6, IDN punycode, etc.) pero cubre los casos del frontend
+    // y rechaza basura como "not-a-url".
+    static URL_RE: OnceLock<Regex> = OnceLock::new();
+    let re = URL_RE.get_or_init(|| {
+        Regex::new(
+            r"(?i)^(https?|ftp)://(?:[^\s/@:]+(?::[^\s/@:]*)?@)?(?:(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,}|localhost|(?:\d{1,3}\.){3}\d{1,3})(?::\d{1,5})?(?:[/?#]\S*)?$",
+        )
+        .expect("URL regex válido")
+    });
+
+    if !re.is_match(&normalized) {
+        return Err(crate::error::AppError::BadRequest("Invalid URL format.".into()));
+    }
+    Ok(normalized)
+}
+
+#[cfg(test)]
+mod url_validation_tests {
+    use super::normalize_and_validate_url;
+
+    #[test]
+    fn accepts_full_https() {
+        assert_eq!(
+            normalize_and_validate_url("https://docs.plane.so").unwrap(),
+            "https://docs.plane.so"
+        );
+    }
+
+    #[test]
+    fn prepends_http_when_missing_scheme() {
+        assert_eq!(
+            normalize_and_validate_url("example.com").unwrap(),
+            "http://example.com"
+        );
+    }
+
+    #[test]
+    fn rejects_garbage() {
+        assert!(normalize_and_validate_url("not-a-url").is_err());
+        assert!(normalize_and_validate_url("").is_err());
+        assert!(normalize_and_validate_url("ftp://").is_err());
+    }
+
+    #[test]
+    fn accepts_localhost_and_ipv4() {
+        assert!(normalize_and_validate_url("http://localhost:3000").is_ok());
+        assert!(normalize_and_validate_url("http://127.0.0.1:8080/path").is_ok());
+    }
+}
