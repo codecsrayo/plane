@@ -52,6 +52,14 @@ async fn seed_profile(app: &TestApp, user_id: uuid::Uuid) {
             onboarding_step: Set(serde_json::json!({})),
             goals: Set(serde_json::json!({})),
             mobile_onboarding_step: Set(serde_json::json!({})),
+            // Columnas NOT NULL agregadas en migraciones posteriores que la
+            // baseline original no cubría. Sin defaults a nivel SQL → hay que
+            // setearlas explícitamente o el INSERT falla con 23502.
+            has_marketing_email_consent: Set(false),
+            is_navigation_tour_completed: Set(false),
+            is_subscribed_to_changelog: Set(false),
+            notification_view_mode: Set(String::new()),
+            product_tour: Set(serde_json::json!({})),
             created_at: Set(now.into()),
             updated_at: Set(now.into()),
             ..Default::default()
