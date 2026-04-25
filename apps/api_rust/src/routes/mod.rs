@@ -132,6 +132,7 @@ pub mod v1_router;
         projects::create_project_members,
         projects::leave_project,
         projects::update_project_views,
+        projects::get_project_user_views,
         projects::list_project_favorites,
         projects::create_project_favorite,
         projects::delete_project_favorite,
@@ -319,6 +320,7 @@ pub mod v1_router;
         views::update_project_view,
         views::delete_project_view,
         views::add_favorite_view,
+        views::list_user_favorite_views,
         views::remove_favorite_view,
         analytics::list_analytic_views,
         analytics::create_analytic_view,
@@ -812,7 +814,7 @@ pub fn build_router(state: AppState) -> Router {
         // Mirror Django: /project-views/
         .route(
             "/workspaces/{slug}/projects/{project_id}/project-views",
-            post(projects::update_project_views),
+            get(projects::get_project_user_views).post(projects::update_project_views),
         )
         // Mirror Django: /archive/
         .route(
@@ -1352,7 +1354,7 @@ pub fn build_router(state: AppState) -> Router {
         // Ã¢ÂÂÃ¢ÂÂ View Favorites Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
         .route(
             "/workspaces/{slug}/projects/{project_id}/user-favorite-views",
-            post(views::add_favorite_view),
+            get(views::list_user_favorite_views).post(views::add_favorite_view),
         )
         .route(
             "/workspaces/{slug}/projects/{project_id}/user-favorite-views/{view_id}",

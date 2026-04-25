@@ -16,6 +16,7 @@
 //!   PATCH  /api/workspaces/{slug}/projects/{project_id}/views/{pk}/
 //!   DELETE /api/workspaces/{slug}/projects/{project_id}/views/{pk}/
 //!
+//!   GET    /api/workspaces/{slug}/projects/{project_id}/user-favorite-views/
 //!   POST   /api/workspaces/{slug}/projects/{project_id}/user-favorite-views/
 //!   DELETE /api/workspaces/{slug}/projects/{project_id}/user-favorite-views/{view_id}/
 
@@ -781,6 +782,61 @@ pub async fn delete_project_view(
 }
 
 // ── View Favorites ────────────────────────────────────────────────────────────
+
+/// GET /api/workspaces/{slug}/projects/{project_id}/user-favorite-views/
+///
+/// Lista las vistas favoritas del usuario autenticado en el proyecto.
+/// Espejo de `IssueViewFavoriteViewSet.list` (Django).
+#[utoipa::path(
+    get,
+    path = "/workspaces/{slug}/projects/{project_id}/user-favorite-views/",
+    tag = "Views",
+    security(("TokenAuth" = [])),
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project ID"),
+    ),
+    responses(
+        (status = 200, description = "Listado de vistas favoritas"),
+        (status = 401, description = "Unauthenticated"),
+        (status = 403, description = "Forbidden"),
+    )
+)]
+pub async fn list_user_favorite_views(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+) -> Result<Json<Vec<serde_json::Value>>, AppError> {
+    let rows = user_favorites::Entity::find()
+        .active()
+        .filter(user_favorites::Column::UserId.eq(guard.user.id))
+        .filter(user_favorites::Column::EntityType.eq("view"))
+        .filter(user_favorites::Column::ProjectId.eq(guard.project.id))
+        .filter(user_favorites::Column::WorkspaceId.eq(guard.workspace.id))
+        .order_by_asc(user_favorites::Column::Sequence)
+        .all(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    let out = rows
+        .into_iter()
+        .map(|f| {
+            serde_json::json!({
+                "id":                f.id,
+                "entity_type":       f.entity_type,
+                "entity_identifier": f.entity_identifier,
+                "name":              f.name,
+                "is_folder":         f.is_folder,
+                "sequence":          f.sequence,
+                "project_id":        f.project_id,
+                "workspace_id":      f.workspace_id,
+                "parent_id":         f.parent_id,
+                "created_at":        f.created_at,
+                "updated_at":        f.updated_at,
+            })
+        })
+        .collect();
+    Ok(Json(out))
+}
 
 /// POST /api/workspaces/{slug}/projects/{project_id}/user-favorite-views/
 #[utoipa::path(

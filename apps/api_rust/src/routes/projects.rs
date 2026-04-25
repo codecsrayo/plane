@@ -375,6 +375,11 @@ impl From<&project_member_invites::Model> for ProjectInvitationResponse {
     }
 }
 
+/// Body esperado: `{"emails": [{"email": "...", "role": 15}, ...]}`.
+///
+/// Espejo exacto del contrato de Django (`ProjectInvitationsViewset.create`),
+/// que lee `request.data.get("emails", [])`. Mantener un solo formato evita
+/// extractores polimórficos que esconden bugs y simplifica el cliente.
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct CreateProjectInvitationRequest {
     pub emails: Vec<ProjectInviteEmail>,
@@ -2105,6 +2110,45 @@ pub async fn update_project_views(
 
     Ok(StatusCode::NO_CONTENT)
 }
+
+/// `GET /api/workspaces/{slug}/projects/{project_id}/project-views/`
+///
+/// Devuelve `view_props`, `default_props`, `preferences` y `sort_order` del
+/// miembro autenticado en el proyecto. Contraparte simétrica de
+/// `update_project_views`: lee lo que el `POST` persiste.
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/projects/{project_id}/project-views/",
+    tag = "Projects",
+    security(("TokenAuth" = []), ("SessionCookie" = [])),
+    params(
+        ("slug"       = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid,   Path, description = "Project UUID"),
+    ),
+    responses(
+        (status = 200, description = "View props del miembro"),
+        (status = 401, description = "Unauthenticated"),
+        (status = 403, description = "No es miembro del proyecto"),
+    )
+)]
+pub async fn get_project_user_views(
+    State(state): State<AppState>,
+    AnyAuth(user): AnyAuth,
+    Path((slug, project_id)): Path<(String, Uuid)>,
+) -> Result<Json<serde_json::Value>, AppError> {
+    let _ws = workspace_by_slug(&state.db, &slug).await?;
+    let pm = project_member_for_user(&state.db, project_id, user.id)
+        .await?
+        .ok_or(AppError::Forbidden)?;
+
+    Ok(Json(serde_json::json!({
+        "view_props":    pm.view_props,
+        "default_props": pm.default_props,
+        "preferences":   pm.preferences,
+        "sort_order":    pm.sort_order,
+    })))
+}
+
 
 // ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ GET + POST + DELETE /workspaces/{slug}/user-favorite-projects/ ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ
 

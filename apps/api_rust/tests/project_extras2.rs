@@ -75,7 +75,7 @@ async fn create_project_invitation_returns_2xx() {
         .post_json_authed(
             &api_key,
             &format!("/workspaces/{slug}/projects/{project_id}/invitations"),
-            &json!([{ "email": "pinvitee@plane.test", "role": 15 }]),
+            &json!({ "emails": [{ "email": "pinvitee@plane.test", "role": 15 }] }),
         )
         .await;
     let status = res.status.as_u16();
