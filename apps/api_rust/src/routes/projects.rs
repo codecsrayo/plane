@@ -2457,27 +2457,34 @@ pub async fn check_project_identifier(
     let ws = workspace_by_slug(&state.db, &slug).await?;
     let _ = require_workspace_member(&state.db, ws.id, user.id).await?;
 
-    let name = q.name
-        .map(|n: String| n.trim().to_uppercase())
-        .filter(|n: &String| !n.is_empty())
-        .ok_or_else(|| AppError::BadRequest("name is required".into()))?;
+    // Modo único: lista identifiers del workspace, con filtro opcional por
+    // `?name=`. El nombre del handler se mantiene por compatibilidad con
+    // su uso histórico (check existencia ⇔ exists>0 en la respuesta).
+    let mut q_select = project_identifiers::Entity::find()
+        .filter(project_identifiers::Column::WorkspaceId.eq(ws.id));
 
-    let identifiers = project_identifiers::Entity::find()
-        .filter(project_identifiers::Column::Name.eq(&name))
-        .filter(project_identifiers::Column::WorkspaceId.eq(ws.id))
+    if let Some(name) = q.name.map(|n| n.trim().to_uppercase()).filter(|n| !n.is_empty()) {
+        q_select = q_select.filter(project_identifiers::Column::Name.eq(name));
+    }
+
+    let identifiers = q_select
         .all(&state.db)
         .await
         .map_err(AppError::Database)?;
 
-    let exists_count = identifiers.len();
-    let identifiers_data: Vec<serde_json::Value> = identifiers.iter().map(|i| serde_json::json!({
-        "id": i.id,
-        "name": i.name,
-        "project": i.project_id,
-    })).collect();
+    let identifiers_data: Vec<serde_json::Value> = identifiers
+        .iter()
+        .map(|i| {
+            serde_json::json!({
+                "id": i.id,
+                "name": i.name,
+                "project": i.project_id,
+            })
+        })
+        .collect();
 
     Ok(Json(serde_json::json!({
-        "exists": exists_count,
+        "exists": identifiers_data.len(),
         "identifiers": identifiers_data,
     })))
 }

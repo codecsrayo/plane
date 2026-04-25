@@ -1708,7 +1708,8 @@ pub fn build_router(state: AppState) -> Router {
         )
         .route(
             "/workspaces/{slug}/home-preferences/{key}",
-            patch(workspace_extras::update_home_preference),
+            get(workspace_extras::get_home_preference_key)
+                .patch(workspace_extras::update_home_preference),
         )
         .route(
             "/workspaces/{slug}/quick-links",

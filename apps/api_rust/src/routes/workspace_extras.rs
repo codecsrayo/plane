@@ -527,6 +527,86 @@ pub async fn update_home_preference(
     let ws = workspace_by_slug(db, &slug).await?;
     let _member = require_workspace_member(db, ws.id, user_id).await?;
 
+    // Upsert: si la key no existe la creamos con defaults + overrides.
+    // El frontend asume que PATCH es idempotente (no necesita pre-seed
+    // explícito, evitando una llamada GET previa).
+    let existing = workspace_home_preferences::Entity::find()
+        .filter(workspace_home_preferences::Column::WorkspaceId.eq(ws.id))
+        .filter(workspace_home_preferences::Column::UserId.eq(user_id))
+        .filter(workspace_home_preferences::Column::Key.eq(&key))
+        .filter(workspace_home_preferences::Column::DeletedAt.is_null())
+        .one(db)
+        .await
+        .map_err(AppError::Database)?;
+
+    let saved = if let Some(pref) = existing {
+        let mut active: workspace_home_preferences::ActiveModel = pref.into();
+        if let Some(v) = body.is_enabled {
+            active.is_enabled = Set(v);
+        }
+        if let Some(v) = body.config {
+            active.config = Set(v);
+        }
+        if let Some(v) = body.sort_order {
+            active.sort_order = Set(v);
+        }
+        active.updated_at = Set(chrono::Utc::now().into());
+        active.updated_by_id = Set(Some(user_id));
+        active.update(db).await.map_err(AppError::Database)?
+    } else {
+        let now = chrono::Utc::now().fixed_offset();
+        workspace_home_preferences::ActiveModel {
+            id: Set(Uuid::new_v4()),
+            key: Set(key.clone()),
+            is_enabled: Set(body.is_enabled.unwrap_or(true)),
+            config: Set(body.config.unwrap_or_else(|| serde_json::json!({}))),
+            sort_order: Set(body.sort_order.unwrap_or(0.0)),
+            user_id: Set(user_id),
+            workspace_id: Set(ws.id),
+            created_by_id: Set(Some(user_id)),
+            updated_by_id: Set(Some(user_id)),
+            created_at: Set(now),
+            updated_at: Set(now),
+            deleted_at: Set(None),
+        }
+        .insert(db)
+        .await
+        .map_err(AppError::Database)?
+    };
+
+    let resp: HomePreferenceResponse = saved.into();
+    Ok((StatusCode::OK, Json(resp)))
+}
+
+/// GET /workspaces/{slug}/home-preferences/{key}/
+///
+/// Devuelve la preferencia individual del usuario autenticado para `key`.
+/// 404 si la key todavía no fue inicializada (el frontend hace fallback al
+/// PATCH upsert para crearla on-demand).
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/home-preferences/{key}/",
+    tag = "Workspace Extras",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("key"  = String, Path, description = "Preference key"),
+    ),
+    responses(
+        (status = 200, description = "Preferencia"),
+        (status = 401, description = "Unauthenticated"),
+        (status = 404, description = "Key no inicializada"),
+    )
+)]
+pub async fn get_home_preference_key(
+    State(state): State<AppState>,
+    AnyAuth(auth_user): AnyAuth,
+    Path((slug, key)): Path<(String, String)>,
+) -> Result<impl axum::response::IntoResponse, AppError> {
+    let db = &state.db;
+    let user_id = auth_user.id;
+    let ws = workspace_by_slug(db, &slug).await?;
+    let _member = require_workspace_member(db, ws.id, user_id).await?;
+
     let pref = workspace_home_preferences::Entity::find()
         .filter(workspace_home_preferences::Column::WorkspaceId.eq(ws.id))
         .filter(workspace_home_preferences::Column::UserId.eq(user_id))
@@ -537,21 +617,7 @@ pub async fn update_home_preference(
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
-    let mut active: workspace_home_preferences::ActiveModel = pref.into();
-    if let Some(v) = body.is_enabled {
-        active.is_enabled = Set(v);
-    }
-    if let Some(v) = body.config {
-        active.config = Set(v);
-    }
-    if let Some(v) = body.sort_order {
-        active.sort_order = Set(v);
-    }
-    active.updated_at = Set(chrono::Utc::now().into());
-    active.updated_by_id = Set(Some(user_id));
-
-    let saved = active.update(db).await.map_err(AppError::Database)?;
-    let resp: HomePreferenceResponse = saved.into();
+    let resp: HomePreferenceResponse = pref.into();
     Ok((StatusCode::OK, Json(resp)))
 }
 
