@@ -80,8 +80,8 @@ async fn create_completed_state(
         .await;
     assert_eq!(
         res.status.as_u16(),
-        200,
-        "create state debe devolver 200, body: {}",
+        201,
+        "create state debe devolver 201, body: {}",
         String::from_utf8_lossy(&res.body)
     );
     res.json()["id"].as_str().unwrap().to_owned()

@@ -269,7 +269,7 @@ pub async fn get_state(
         ("project_id" = Uuid, Path),
     ),
     responses(
-        (status = 200, description = "Estado creado", body = StateResponse),
+        (status = 201, description = "Estado creado", body = StateResponse),
         (status = 400, description = "Nombre duplicado o datos inválidos"),
         (status = 403, description = "Sin permisos"),
     ),
