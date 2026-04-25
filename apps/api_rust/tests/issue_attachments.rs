@@ -210,6 +210,12 @@ async fn delete_attachment_nonexistent_returns_404() {
 
 // ─────────────────────────────────────────────────────────────────────────────
 // GET work-items/attachments (nuevo prefijo vía v1_router)
+//
+// Las rutas /work-items/{issue_id}/attachments viven en `v1_router`
+// (src/routes/v1_router.rs:561-567), montado en `/api/v1`. El listado/CRUD
+// legacy /issue-attachments sí está en el router principal — pero estos
+// tests apuntan al endpoint moderno, así que necesitan el prefijo /api/v1
+// para no caer al matcher general (404).
 // ─────────────────────────────────────────────────────────────────────────────
 
 #[tokio::test(flavor = "multi_thread")]
@@ -218,7 +224,7 @@ async fn list_work_item_attachments_unauthenticated_returns_401() {
     let issue_id = Uuid::new_v4();
     let res = app
         .get(&format!(
-            "/workspaces/{slug}/projects/{proj_id}/work-items/{issue_id}/attachments"
+            "/api/v1/workspaces/{slug}/projects/{proj_id}/work-items/{issue_id}/attachments"
         ))
         .await;
     assert_eq!(res.status.as_u16(), 401);
@@ -232,7 +238,7 @@ async fn list_work_item_attachments_empty_returns_200() {
     let res = app
         .get_authed(
             &api_key,
-            &format!("/workspaces/{slug}/projects/{proj_id}/work-items/{issue_id}/attachments"),
+            &format!("/api/v1/workspaces/{slug}/projects/{proj_id}/work-items/{issue_id}/attachments"),
         )
         .await;
     assert_eq!(
@@ -256,7 +262,7 @@ async fn initiate_work_item_attachment_unauthenticated_returns_401() {
     let res = app
         .request(
             Method::POST,
-            &format!("/workspaces/{slug}/projects/{proj_id}/work-items/{issue_id}/attachments"),
+            &format!("/api/v1/workspaces/{slug}/projects/{proj_id}/work-items/{issue_id}/attachments"),
             Some(serde_json::to_vec(&json!({"name":"file.pdf","type":"application/pdf"})).unwrap()),
             &[("content-type", "application/json")],
         )
@@ -278,7 +284,7 @@ async fn delete_work_item_attachment_nonexistent_returns_404() {
         .delete_authed(
             &api_key,
             &format!(
-                "/workspaces/{slug}/projects/{proj_id}/work-items/{issue_id}/attachments/{fake_pk}"
+                "/api/v1/workspaces/{slug}/projects/{proj_id}/work-items/{issue_id}/attachments/{fake_pk}"
             ),
         )
         .await;
