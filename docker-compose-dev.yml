@@ -478,10 +478,17 @@ services:
       - traefik.http.services.plane-codecsrayo-api.loadbalancer.server.port=8000
     healthcheck:
       test: ["CMD-SHELL", "curl -sf http://localhost:8000/api/health || exit 1"]
-      interval: 15s
-      timeout: 5s
-      retries: 10
-      start_period: 600s
+      interval: 30s
+      timeout: 10s
+      # start_period largo: la primera compilación de Rust en dev puede tomar
+      # 15-25 min en máquinas modestas (~400 deps + bin). Durante este periodo
+      # los fallos del healthcheck NO cuentan como retries — el contenedor se
+      # mantiene en estado `starting` sin ser reiniciado por la política
+      # `restart: unless-stopped`.
+      start_period: 1800s
+      # Tras start_period, retries * interval = ventana adicional antes de
+      # marcar unhealthy. 40 * 30s = 20 min extra de tolerancia.
+      retries: 40
     depends_on:
       plane-db:
         condition: service_healthy
