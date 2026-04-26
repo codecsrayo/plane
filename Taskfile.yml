@@ -487,16 +487,58 @@ tasks:
           ARGS: '{{.ARGS}}'
 
   e2e:all:
-      desc: Run Playwright suite across web, admin and space
-      cmds:
-        - task: rust:stop-container
-        - task: wait-api-stopped
-        - task: rust:migrations:drop-db
-        - task: rust:start-container
-        - task: wait-api-healthy
-        - task: e2e:web
-        - task: e2e:admin
-        - task: e2e:space
+    desc: Run Playwright suite across web, admin and space (genera log combinado)
+    set: [pipefail]                       # crítico: para que `task ... | tee` propague el exit code
+    vars:
+      LOG_DIR: '{{.ROOT_DIR}}/logs/e2e'
+      TS:
+        sh: date +%Y%m%d-%H%M%S
+      LOG_FILE: '{{.LOG_DIR}}/run-{{.TS}}.log'
+    cmds:
+      - mkdir -p {{.LOG_DIR}}
+      - ln -sfn "{{.LOG_FILE}}" "{{.LOG_DIR}}/latest.log"
+      - |
+        {
+          echo "============================================================"
+          echo " E2E run started: $(date -Iseconds)"
+          echo " API_BASE_URL:    ${API_BASE_URL:-<unset>}"
+          echo " Log file:        {{.LOG_FILE}}"
+          echo "============================================================"
+
+          # Setup: si algo aquí falla, no tiene sentido correr los specs
+          set -e
+          echo; echo "── [setup] rust:stop-container ──"; task rust:stop-container
+          echo; echo "── [setup] wait-api-stopped ──";    task wait-api-stopped
+          echo; echo "── [setup] rust:migrations:drop-db ──"; task rust:migrations:drop-db
+          echo; echo "── [setup] rust:start-container ──"; task rust:start-container
+          echo; echo "── [setup] wait-api-healthy ──";   task wait-api-healthy
+          set +e
+
+          # Specs: corremos los 3 aunque alguno falle, para tener panorama completo
+          rc=0
+          for app in web admin space; do
+            echo
+            echo "============================================================"
+            echo " RUN: e2e:$app — $(date -Iseconds)"
+            echo "============================================================"
+            if task "e2e:$app"; then
+              echo "[OK] e2e:$app"
+            else
+              echo "[FAIL] e2e:$app (exit=$?)"
+              rc=1
+            fi
+          done
+
+          echo
+          echo "============================================================"
+          echo " E2E run finished: $(date -Iseconds) (exit=$rc)"
+          echo " HTML reports:    apps/{web,admin,space}/playwright-report/index.html"
+          echo " Raw log:         {{.LOG_FILE}}"
+          echo "============================================================"
+          exit $rc
+        } 2>&1 | tee "{{.LOG_FILE}}"
+      # Rotación: mantener solo los 20 runs más recientes
+      - find {{.LOG_DIR}} -maxdepth 1 -name 'run-*.log' -type f | sort -r | tail -n +21 | xargs -r rm -f
 
   wait-api-stopped:
     internal: true
