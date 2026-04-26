@@ -541,43 +541,42 @@ tasks:
       - find {{.LOG_DIR}} -maxdepth 1 -name 'run-*.log' -type f | sort -r | tail -n +21 | xargs -r rm -f
 
   wait-api-stopped:
-    internal: true
+    desc: (helper) Espera a que el contenedor api se detenga
     cmds:
       - |
         echo "Esperando a que el contenedor se detenga..."
         timeout=60
-        while [ "$(docker inspect -f '{{`{{.State.Running}}`}}' api 2>/dev/null)" = "true" ]; do
+        while [ "$(docker inspect -f '{{`{{.State.Running}}`}}' plane-codecsrayo-api 2>/dev/null)" = "true" ]; do
           [ $timeout -le 0 ] && echo "timeout esperando stop" && exit 1
           sleep 1; timeout=$((timeout-1))
         done
 
   wait-api-healthy:
-      internal: true
-      desc: Espera a que la API responda /api/health
-      vars:
-        CONTAINER: plane-codecsrayo-api
-      cmds:
-        - |
-          : "${API_BASE_URL:?API_BASE_URL no está definida}"
-          echo "Esperando API en $API_BASE_URL/api/health (timeout 10 min)..."
-          timeout=600
-          attempt=0
-          until curl -fsS -o /dev/null --max-time 3 "$API_BASE_URL/api/health"; do
-            attempt=$((attempt+1))
-            if [ $timeout -le 0 ]; then
-              echo "❌ timeout esperando /api/health"
-              docker logs --tail 80 {{.CONTAINER}} 2>&1 || true
-              exit 1
-            fi
-            if [ $((attempt % 15)) -eq 0 ]; then
-              elapsed=$((600-timeout))
-              status=$(docker inspect -f '{{`{{if .State.Health}}{{.State.Health.Status}}{{else}}no-healthcheck{{end}}`}}' {{.CONTAINER}} 2>/dev/null || echo "?")
-              echo "  ...${elapsed}s — docker health: $status"
-            fi
-            sleep 2
-            timeout=$((timeout-2))
-          done
-          echo "✅ API responde"
+    desc: (helper) Espera a que la API responda /api/health
+    vars:
+      CONTAINER: plane-codecsrayo-api
+    cmds:
+      - |
+        : "${API_BASE_URL:?API_BASE_URL no está definida}"
+        echo "Esperando API en $API_BASE_URL/api/health (timeout 10 min)..."
+        timeout=600
+        attempt=0
+        until curl -fsS -o /dev/null --max-time 3 "$API_BASE_URL/api/health"; do
+          attempt=$((attempt+1))
+          if [ $timeout -le 0 ]; then
+            echo "❌ timeout esperando /api/health"
+            docker logs --tail 80 {{.CONTAINER}} 2>&1 || true
+            exit 1
+          fi
+          if [ $((attempt % 15)) -eq 0 ]; then
+            elapsed=$((600-timeout))
+            status=$(docker inspect -f '{{`{{if .State.Health}}{{.State.Health.Status}}{{else}}no-healthcheck{{end}}`}}' {{.CONTAINER}} 2>/dev/null || echo "?")
+            echo "  ...${elapsed}s — docker health: $status"
+          fi
+          sleep 2
+          timeout=$((timeout-2))
+        done
+        echo "✅ API responde"
 
 
   e2e:headed:
