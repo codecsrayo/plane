@@ -62,10 +62,12 @@ pub async fn handle_run_issue_automation(
 ///
 /// Retorna el número de issues archivados.
 ///
-/// Visibilidad `pub(crate)` para permitir tests de integración del job
-/// sin tener que montar el storage de apalis (`handle_run_issue_automation`
-/// requiere `apalis::Data<AppState>`).
-pub(crate) async fn archive_old_issues(state: &AppState) -> anyhow::Result<u64> {
+/// Visibilidad `pub` para permitir tests de integración (ver
+/// `tests/jobs_scheduler.rs`). Los tests de integración están en un crate
+/// separado, por lo que `pub(crate)` no los alcanza. Permite invocar la
+/// lógica del job sin tener que montar el storage de apalis
+/// (`handle_run_issue_automation` requiere `apalis::Data<AppState>`).
+pub async fn archive_old_issues(state: &AppState) -> anyhow::Result<u64> {
     // Proyectos con archivado automático activado
     let archive_projects = projects::Entity::find()
         .filter(projects::Column::ArchiveIn.gt(0))
@@ -132,9 +134,9 @@ pub(crate) async fn archive_old_issues(state: &AppState) -> anyhow::Result<u64> 
 ///
 /// Retorna el número de issues cerrados.
 ///
-/// Visibilidad `pub(crate)` por la misma razón que `archive_old_issues` —
-/// permitir tests de integración sin scaffolding de apalis.
-pub(crate) async fn close_old_issues(state: &AppState) -> anyhow::Result<u64> {
+/// Visibilidad `pub` por la misma razón que `archive_old_issues` — permitir
+/// tests de integración (crate separado del binario) sin scaffolding de apalis.
+pub async fn close_old_issues(state: &AppState) -> anyhow::Result<u64> {
     // Proyectos con close_in > 0 (cierre automático)
     let close_projects = projects::Entity::find()
         .filter(projects::Column::CloseIn.gt(0))
