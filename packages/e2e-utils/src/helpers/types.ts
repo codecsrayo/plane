@@ -87,7 +87,37 @@ export function buildCursor(pageSize = 100, page = 0, isPrev = false): string {
   return `${pageSize}:${page}:${isPrev ? 1 : 0}`;
 }
 
-// ── Workspace ─────────────────────────────────────────────────────────────────
+// ── Webhook payload ────────────────────────────────────────────────────────────
+
+/**
+ * Envelope de webhook saliente.
+ * Fuente: `src/jobs/webhook_delivery.rs` → `build_envelope()`.
+ * Siempre 6 claves: event, action, webhook_id, workspace_id, data, activity.
+ *
+ * Headers enviados al receptor:
+ *   Content-Type: application/json
+ *   User-Agent: Plane-Webhook/1.0
+ *   X-Plane-Event: {event}
+ *   X-Plane-Delivery: {delivery_id UUID}    ← NO va en el body
+ *   X-Plane-Signature: {HMAC-SHA256 hex}
+ */
+export interface WebhookEnvelope {
+  event: "project" | "issue" | "module" | "module_issue" | "cycle" | "cycle_issue" | "issue_comment";
+  action: "created" | "updated" | "deleted";
+  webhook_id: string;
+  workspace_id: string;
+  data: Record<string, unknown>;
+  activity: WebhookActivity | null;
+}
+
+export interface WebhookActivity {
+  field: string;
+  old_value: unknown;
+  new_value: unknown;
+  actor: string;
+  old_identifier?: string;
+  new_identifier?: string;
+}
 
 export interface WorkspaceShape {
   id: string;

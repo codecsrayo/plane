@@ -1083,7 +1083,8 @@ test('crear y obtener issue', async ({ request }) => {
 
 | Suite | Motivo |
 |---|---|
-| `assets.spec.ts` | Requiere MinIO local o mock de S3 presigned URL |
+| `assets.spec.ts` ✅ | Flujo presigned URL con `page.route()` S3 mock — user-assets, workspace-assets, project-assets, static |
+| `feature-flags.spec.ts` ✅ | 44 feature flag keys, FLAG_GATED_ENDPOINTS, tests de ENABLE_SIGNUP, UNSPLASH, AI |
 | `integrations.spec.ts` | Requiere GitHub App + GitLab OAuth configurados en instancia |
 
 ### 22.8 Validación de contratos contra OpenAPI
@@ -1132,8 +1133,8 @@ expect(validate(body), JSON.stringify(validate.errors)).toBe(true);
 - ✅ Verificar lista completa de roles en respuestas de `/members` y mapear a constantes en Playwright → `packages/e2e-utils/src/helpers/roles.ts` (`ROLES.GUEST=5, VIEWER=10, MEMBER=15, ADMIN=20` — extraídos de `src/auth/permissions.rs`).
 - ✅ Documentar payload exacto de creación de issue (campos requeridos vs. opcionales) → `packages/e2e-utils/src/helpers/types.ts` (`IssueCreatePayload`, `IssueCreateShape`, `IssueDetailShape` — extraídos de `CreateIssueRequest` en `src/routes/issues.rs`). Solo `name` es requerido.
 - ✅ Verificar formato del cursor de paginación → `{page_size}:{page}:{is_prev}` (e.g. `"100:0:0"`) — extraído de `src/routes/issue_pagination.rs`. `DEFAULT_PER_PAGE=100`. Helpers `buildCursor()`/`parseCursor()` en `types.ts`.
-- [ ] Identificar endpoints que requieren feature flags habilitados en `/api/instances/configurations`.
-- [ ] Cubrir flujo de assets V2 con MinIO local (presigned URL S3) vs. mock con `page.route()`.
+- ✅ Identificar endpoints que requieren feature flags → `helpers/feature-flags.ts`. 44 claves con grupo/encrypted. `FLAG_GATED_ENDPOINTS` documenta qué endpoints bloquea cada flag. Cubierto en `feature-flags.spec.ts`.
+- ✅ Cubrir flujo de assets V2 → `assets.spec.ts`. POST initiate → mock S3 vía `page.route()` → PATCH complete → DELETE. Cubre user-assets, workspace-assets, project-assets, `/static/{id}`.
 - ✅ Validar comportamiento de `entity-search` con distintos `entity_name` → cubierto en `search.spec.ts` (issue, page, cycle, module, view, project).
 - ✅ Determinar si el frontend `apps/admin` consume endpoints adicionales fuera de `/api/instances/*` → confirmado vía `packages/services/src/instance/instance.service.ts`. Expandido en `admin-instances.spec.ts`: PATCH `/instances`, GET/PATCH `/instances/configurations`, POST `/email-credentials-check`, GET `/instances/workspaces`.
-- [ ] Confirmar payloads de webhook (GitHub/GitLab) que son disparados desde los integration tests.
+- ✅ Confirmar payloads de webhook → `src/jobs/webhook_delivery.rs` `build_envelope()`. Envelope: 6 claves exactas `{event, action, webhook_id, workspace_id, data, activity}`. `delivery_id` en header `X-Plane-Delivery`, NO en body. Tipos en `types.ts` (`WebhookEnvelope`). Cubierto en `webhooks.spec.ts`.

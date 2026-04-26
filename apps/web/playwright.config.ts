@@ -35,6 +35,8 @@ export default defineConfig({
         "users.spec.ts",
         "permissions.spec.ts",
         "contracts.spec.ts",
+        "assets.spec.ts",
+        "feature-flags.spec.ts",
       ],
     },
     {
