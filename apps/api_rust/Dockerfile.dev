@@ -45,9 +45,17 @@ COPY apps/api_rust/Cargo.toml apps/api_rust/Cargo.lock ./
 COPY apps/api_rust/migration/Cargo.toml ./migration/
 
 # PRE-COMPILAR todas las dependencias (no solo descargar).
+#
+# Importante: el stub de `migration/src/lib.rs` NO puede ser un archivo
+# vacío — si lo es, cargo cachea metadata de un lib sin símbolos públicos
+# y la primera invocación de `cargo run` desde el volumen falla con E0432
+# (no `Migrator` in the root) hasta que cargo-watch detecte un cambio.
+# El stub re-exporta `sea_orm_migration::prelude::*` y declara `Migrator`
+# para que la metadata cacheada coincida con el lib real montado luego.
 RUN mkdir -p src migration/src && \
     echo 'fn main() {}' > src/main.rs && \
-    echo '' > migration/src/lib.rs && \
+    printf 'pub use sea_orm_migration::prelude::*;\npub struct Migrator;\n' \
+        > migration/src/lib.rs && \
     echo 'fn main() {}' > migration/src/main.rs && \
     cargo build --workspace --lib || true
 

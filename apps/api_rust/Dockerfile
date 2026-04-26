@@ -32,18 +32,28 @@ COPY apps/api_rust/migration/Cargo.toml ./migration/
 
 RUN mkdir -p src migration/src && \
     echo 'fn main() {}' > src/main.rs && \
-    touch migration/src/lib.rs && \
+    echo '// stub' > migration/src/lib.rs && \
     echo 'fn main() {}' > migration/src/main.rs
 
-# Compilar deps en release (la capa más costosa — se cachea)
-RUN cargo build --release 2>&1 | tail -5 || true
-RUN rm -rf src migration/src
+# Compilar deps en release (la capa más costosa — se cachea).
+# Sin `|| true`: si los manifiestos no resuelven aquí, no debe seguir el build.
+RUN cargo build --release --bin api_rust
+
+# Limpiar fuentes-stub. Importante: borrar también los artefactos del crate
+# `migration` para que la copia real (con lib.rs poblado) se recompile desde
+# cero. Sin esto, cargo ha cacheado metadata de un lib vacío y el binario
+# final no encuentra `migration::Migrator` (E0432) — paquete vacío reusado.
+RUN rm -rf src migration/src \
+    target/release/deps/migration-* \
+    target/release/deps/libmigration-* \
+    target/release/.fingerprint/migration-*
 
 # ── Código fuente ─────────────────────────────────────────────────────────────
 COPY apps/api_rust/src ./src
 COPY apps/api_rust/migration/src ./migration/src
 
-# Invalidar artefactos de deps para que cargo relinquee el binario final
+# `touch` solo es defensivo; el `rm -rf` anterior ya garantiza recompilación
+# de migration. El touch sobre src/main.rs hace lo propio para el bin final.
 RUN touch src/main.rs migration/src/main.rs migration/src/lib.rs
 
 RUN cargo build --release --bin api_rust
