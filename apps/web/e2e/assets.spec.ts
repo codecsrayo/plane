@@ -16,13 +16,29 @@
  *   - Delete  (DELETE) → valida 204
  *   - Static  (GET /static/{asset_id}) → valida redirect o 200
  */
-import { test, expect, type Page } from "@playwright/test";
+import { test, expect, chromium, type Page } from "@playwright/test";
 import { Env } from "@plane/e2e-utils/helpers/env";
 import { fetchCsrfToken } from "@plane/e2e-utils/helpers/api";
+import { existsSync } from "node:fs";
 
 const BASE = Env.API_BASE;
 const slug = () => Env.WORKSPACE_SLUG;
 const pid = () => Env.PROJECT_ID;
+
+/**
+ * Detecta si el binario de Chromium está disponible. El fixture `browser` lo
+ * lanza eagerly, así que si falta el ejecutable la prueba falla antes de
+ * entrar al cuerpo del test (try/catch interno no alcanza). Detectarlo aquí
+ * permite saltar el describe entero con `test.skip(condition, reason)`.
+ */
+const CHROMIUM_AVAILABLE = (() => {
+  try {
+    const p = chromium.executablePath();
+    return Boolean(p) && existsSync(p);
+  } catch {
+    return false;
+  }
+})();
 
 // ── Helpers ────────────────────────────────────────────────────────────────────
 
@@ -180,26 +196,21 @@ test.describe("Assets V2 — static URL", () => {
 // ── S3 mock con page.route() (requiere contexto browser) ──────────────────────
 
 test.describe("Assets V2 — S3 upload mock con page.route()", () => {
+  // Skip a nivel describe: el fixture `browser` lanza Chromium antes del
+  // cuerpo del test, así que un try/catch interno no captura el error de
+  // "Executable doesn't exist". Saltar antes evita falsos negativos en
+  // entornos donde no se ejecutó `pnpm exec playwright install`.
+  test.skip(
+    !CHROMIUM_AVAILABLE,
+    "Chromium binary no instalado — ejecutar `pnpm exec playwright install`",
+  );
+
   /**
    * Este test usa browser context para poder interceptar la URL presigned de S3.
    * page.route() intercepta la petición multipart antes de que salga a internet.
-   *
-   * Requiere `pnpm exec playwright install` para descargar Chromium. En entornos
-   * donde el binario no está instalado, lo saltamos para no fallar el suite.
    */
-  test("flujo completo con S3 mockeado vía page.route()", async ({ browser }, testInfo) => {
-    let context: import("@playwright/test").BrowserContext;
-    try {
-      context = await browser.newContext({ storageState: "state.json" });
-    } catch (err) {
-      const msg = err instanceof Error ? err.message : String(err);
-      // chromium binary missing → skip; no es regresión funcional sino infra.
-      if (msg.includes("Executable doesn't exist") || msg.includes("playwright install")) {
-        testInfo.skip(true, "Playwright browser binary no instalado — ejecutar `pnpm exec playwright install`");
-        return;
-      }
-      throw err;
-    }
+  test("flujo completo con S3 mockeado vía page.route()", async ({ browser }) => {
+    const context = await browser.newContext({ storageState: "state.json" });
     const page = await context.newPage();
 
     // Interceptar cualquier petición a dominios S3/MinIO

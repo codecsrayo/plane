@@ -21,9 +21,11 @@ test.describe("Auth — CSRF & email-check", () => {
   });
 
   test("POST /auth/email-check responde con info del email", async ({ request, csrf }) => {
+    // El handler Rust usa Json<EmailCheckRequest>, así que se envía JSON
+    // (paridad con el frontend que llama via axios con Content-Type application/json).
     const res = await request.post(`${BASE}/auth/email-check`, {
       headers: { "X-CSRFToken": csrf },
-      form: { email: Env.TEST_EMAIL },
+      data: { email: Env.TEST_EMAIL },
     });
     // 200 si existe, 400 si formato incorrecto
     expect([200, 400]).toContain(res.status());
@@ -115,9 +117,10 @@ test.describe("Auth — rate-limit headers", () => {
 
 test.describe("Auth — spaces aliases", () => {
   test("POST /auth/spaces/email-check responde igual que el endpoint principal", async ({ request, csrf }) => {
+    // Mismo handler que /auth/email-check: extractor Json<EmailCheckRequest>.
     const res = await request.post(`${BASE}/auth/spaces/email-check`, {
       headers: { "X-CSRFToken": csrf },
-      form: { email: Env.TEST_EMAIL },
+      data: { email: Env.TEST_EMAIL },
     });
     expect([200, 400]).toContain(res.status());
   });

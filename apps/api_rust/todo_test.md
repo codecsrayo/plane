@@ -1162,6 +1162,8 @@ Durante una corrida completa de la suite Playwright se identificaron 40 fallos, 
 - ✅ `integrations.spec.ts` — install/repo-syncs aceptan 200/201 cuando handler crea row con datos fake (no hay verificación OAuth a nivel handler); gitlab-webhook tolera 200.
 - ✅ `assets.spec.ts` — POST initiate project asset tolera 500 cuando S3/MinIO no está configurado; test S3 mock saltado si Chromium no está instalado.
 - ✅ `feature-flags.spec.ts` — sign-up con `form:`; unsplash acepta array vacío; ai-assistant acepta 422.
+- ✅ `auth.spec.ts` — `email-check` y `spaces/email-check` envían JSON (`data:`) en vez de `form:`; el handler Rust usa extractor `Json<EmailCheckRequest>` y devolvía 415 con form-urlencoded.
+- ✅ `assets.spec.ts` — skip del describe "S3 upload mock" condicionado por `chromium.executablePath()` + `existsSync`; el try/catch interno no interceptaba el launch del fixture `browser`.
 
 ### Anti-patrones evitados durante las correcciones
 
