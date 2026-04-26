@@ -65,4 +65,14 @@ EXPOSE 8000
 ENV RUST_LOG=debug
 ENV RUST_BACKTRACE=full
 
-CMD ["sh", "-c", "cargo watch --why --watch src --watch Cargo.toml --watch migration/src -x run 2>&1"]
+# Al arrancar el contenedor:
+#   1. Limpiar SOLO los artefactos del crate `migration` del target cacheado.
+#      Esto invalida la metadata stub (lib vacío) que pueda persistir en el
+#      volumen `rust_target` de builds anteriores, sin tirar la cache de
+#      las ~400 deps del workspace (~3 GB) que sigue siendo válida.
+#   2. Lanzar cargo-watch como antes.
+#
+# Coste: ~2-3 s al arranque + un re-build de migration en la primera
+# compilación (~5 s). Trivial frente al ahorro de no recompilar todas
+# las deps cada vez (~10 min).
+CMD ["sh", "-c", "rm -rf target/debug/deps/migration-* target/debug/deps/libmigration-* target/debug/.fingerprint/migration-* 2>/dev/null; cargo watch --why --watch src --watch Cargo.toml --watch migration/src -x run 2>&1"]
