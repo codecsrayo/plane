@@ -60,7 +60,7 @@ async fn create_invitation_unauthenticated_returns_401() {
     let res = app
         .post_json(
             &format!("/workspaces/{slug}/invitations"),
-            &json!([{ "email": "invited@plane.test", "role": 15 }]),
+            &json!({ "emails": [{ "email": "invited@plane.test", "role": 15 }] }),
         )
         .await;
     assert_eq!(res.status.as_u16(), 401);
@@ -73,7 +73,7 @@ async fn create_invitation_as_admin_returns_2xx() {
         .post_json_authed(
             &api_key,
             &format!("/workspaces/{slug}/invitations"),
-            &json!([{ "email": "newinvite@plane.test", "role": 15 }]),
+            &json!({ "emails": [{ "email": "newinvite@plane.test", "role": 15 }] }),
         )
         .await;
     let status = res.status.as_u16();
