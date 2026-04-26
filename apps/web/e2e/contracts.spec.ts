@@ -55,11 +55,22 @@ test.describe("Contracts — OpenAPI schema", () => {
     );
     expect(res.status()).toBe(200);
     const body = await res.json() as Record<string, unknown>;
+    // IssueDetailResponse — campos garantizados por el struct Rust
     expect(body).toMatchObject({
       id: expect.any(String),
       name: expect.any(String),
+      priority: expect.any(String),
+      sequence_id: expect.any(Number),
+      project_id: expect.any(String),
+      is_draft: expect.any(Boolean),
+      attachment_count: expect.any(Number),
+      link_count: expect.any(Number),
+      sub_issues_count: expect.any(Number),
+      description_html: expect.any(String),   // solo en detail, no en create
+      is_subscribed: expect.any(Boolean),
+      is_intake: expect.any(Boolean),
     });
-    expect(Object.prototype.hasOwnProperty.call(body, "state_id")).toBe(true);
-    expect(Object.prototype.hasOwnProperty.call(body, "priority")).toBe(true);
+    // estimate_point renombrado desde estimate_point_id en la serialización
+    expect(Object.prototype.hasOwnProperty.call(body, "estimate_point")).toBe(true);
   });
 });

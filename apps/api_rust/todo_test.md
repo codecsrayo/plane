@@ -1129,11 +1129,11 @@ expect(validate(body), JSON.stringify(validate.errors)).toBe(true);
 
 ## 24. Pendientes / observaciones para los tests
 
-- [ ] Verificar lista completa de roles en respuestas de `/members` y mapear a constantes en Playwright (member: 5/10/15/20).
-- [ ] Documentar payload exacto de creación de issue (campos requeridos vs. opcionales) — extraer de `src/routes/issues.rs`.
-- [ ] Verificar formato del cursor de paginación (`?cursor=` vs. `?per_page=&page=`).
+- ✅ Verificar lista completa de roles en respuestas de `/members` y mapear a constantes en Playwright → `packages/e2e-utils/src/helpers/roles.ts` (`ROLES.GUEST=5, VIEWER=10, MEMBER=15, ADMIN=20` — extraídos de `src/auth/permissions.rs`).
+- ✅ Documentar payload exacto de creación de issue (campos requeridos vs. opcionales) → `packages/e2e-utils/src/helpers/types.ts` (`IssueCreatePayload`, `IssueCreateShape`, `IssueDetailShape` — extraídos de `CreateIssueRequest` en `src/routes/issues.rs`). Solo `name` es requerido.
+- ✅ Verificar formato del cursor de paginación → `{page_size}:{page}:{is_prev}` (e.g. `"100:0:0"`) — extraído de `src/routes/issue_pagination.rs`. `DEFAULT_PER_PAGE=100`. Helpers `buildCursor()`/`parseCursor()` en `types.ts`.
 - [ ] Identificar endpoints que requieren feature flags habilitados en `/api/instances/configurations`.
 - [ ] Cubrir flujo de assets V2 con MinIO local (presigned URL S3) vs. mock con `page.route()`.
-- [ ] Validar comportamiento de `entity-search` con distintos `entity_name` (issue, page, cycle, module, view, project).
-- [ ] Determinar si el frontend `apps/admin` consume endpoints adicionales fuera de `/api/instances/*`.
-- [ ] Confirmar payloads de webhook (GitHub/GitLab) que son disparados desde el integration tests.
+- ✅ Validar comportamiento de `entity-search` con distintos `entity_name` → cubierto en `search.spec.ts` (issue, page, cycle, module, view, project).
+- ✅ Determinar si el frontend `apps/admin` consume endpoints adicionales fuera de `/api/instances/*` → confirmado vía `packages/services/src/instance/instance.service.ts`. Expandido en `admin-instances.spec.ts`: PATCH `/instances`, GET/PATCH `/instances/configurations`, POST `/email-credentials-check`, GET `/instances/workspaces`.
+- [ ] Confirmar payloads de webhook (GitHub/GitLab) que son disparados desde los integration tests.

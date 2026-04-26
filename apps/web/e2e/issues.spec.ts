@@ -5,6 +5,8 @@
  */
 import { test, expect } from "@plane/e2e-utils/fixtures";
 import { Env } from "@plane/e2e-utils/helpers/env";
+import type { IssueCreateShape, IssueDetailShape, PaginatedResponse } from "@plane/e2e-utils/helpers/types";
+import { buildCursor } from "@plane/e2e-utils/helpers/types";
 
 const BASE = Env.API_BASE;
 const slug = () => Env.WORKSPACE_SLUG;
@@ -15,19 +17,39 @@ test.describe("Issues — CRUD básico", () => {
   test("POST + GET + PATCH + DELETE issue (ciclo completo)", async ({ request, csrf }) => {
     const stateId = Env.STATE_IDS[0];
 
-    // CREATE
+    // CREATE — solo `name` es requerido; el resto opcional
     const create = await request.post(issuesPath(), {
       headers: { "X-CSRFToken": csrf },
       data: { name: "E2E Issue full cycle", state_id: stateId },
     });
     expect(create.status()).toBe(201);
-    const issue = await create.json() as { id: string; name: string };
-    expect(issue).toMatchObject({ name: "E2E Issue full cycle" });
+    const issue = await create.json() as IssueCreateShape;
+    // Validar shape exacto de IssueCreateResponse (no incluye description_html)
+    expect(issue).toMatchObject({
+      name: "E2E Issue full cycle",
+      id: expect.any(String),
+      priority: expect.any(String),       // "none" por defecto
+      sequence_id: expect.any(Number),
+      project_id: Env.PROJECT_ID,
+      is_draft: false,
+      attachment_count: 0,
+      link_count: 0,
+      sub_issues_count: 0,
+      module_ids: expect.any(Array),
+      label_ids: expect.any(Array),
+      assignee_ids: expect.any(Array),
+    });
 
-    // READ
+    // READ — GET /issues/{pk} devuelve IssueDetailResponse (añade description_html, is_subscribed, is_intake)
     const get = await request.get(`${issuesPath()}/${issue.id}`);
     expect(get.status()).toBe(200);
-    expect(await get.json()).toMatchObject({ id: issue.id });
+    const detail = await get.json() as IssueDetailShape;
+    expect(detail).toMatchObject({
+      id: issue.id,
+      description_html: expect.any(String),
+      is_subscribed: expect.any(Boolean),
+      is_intake: expect.any(Boolean),
+    });
 
     // UPDATE
     const patch = await request.patch(`${issuesPath()}/${issue.id}`, {
@@ -35,8 +57,7 @@ test.describe("Issues — CRUD básico", () => {
       data: { name: "E2E Issue updated", priority: "high" },
     });
     expect(patch.status()).toBe(200);
-    const updated = await patch.json() as Record<string, unknown>;
-    expect(updated).toMatchObject({ name: "E2E Issue updated", priority: "high" });
+    expect(await patch.json()).toMatchObject({ name: "E2E Issue updated", priority: "high" });
 
     // READ-BACK verificar persistencia
     const readBack = await request.get(`${issuesPath()}/${issue.id}`);
@@ -50,7 +71,7 @@ test.describe("Issues — CRUD básico", () => {
 
     // Confirmar eliminación
     const gone = await request.get(`${issuesPath()}/${issue.id}`);
-    expect([404]).toContain(gone.status());
+    expect(gone.status()).toBe(404);
   });
 
   test("GET /issues/list devuelve 200", async ({ request }) => {
@@ -125,7 +146,24 @@ test.describe("Issues — bulk ops", () => {
   });
 });
 
-test.describe("Issues — archive", () => {
+test.describe("Issues — paginación por cursor", () => {
+  test("GET /issues con cursor devuelve shape paginado correcto", async ({ request }) => {
+    // Cursor format: {page_size}:{page}:{is_prev} — DEFAULT_PER_PAGE=100
+    const cursor = buildCursor(10, 0, false); // "10:0:0"
+    const res = await request.get(`${issuesPath()}?cursor=${cursor}`);
+    expect(res.status()).toBe(200);
+    const body = await res.json() as PaginatedResponse<IssueCreateShape>;
+    // Validar shape paginado
+    expect(body).toMatchObject({
+      results: expect.any(Array),
+      next_cursor: expect.stringMatching(/^\d+:\d+:[01]$/),
+      prev_cursor: expect.stringMatching(/^\d+:-?\d+:[01]$/),
+      next_page_results: expect.any(Boolean),
+      prev_page_results: expect.any(Boolean),
+      total_results: expect.any(Number),
+    });
+  });
+});
   test("POST/DELETE /issues/{pk}/archive — archive y unarchive", async ({ request, csrf, freshIssue }) => {
     const archivePath = `${issuesPath()}/${freshIssue.id}/archive`;
 

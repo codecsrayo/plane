@@ -5,6 +5,7 @@
  */
 import { test, expect } from "@plane/e2e-utils/fixtures";
 import { Env } from "@plane/e2e-utils/helpers/env";
+import { VALID_ROLES } from "@plane/e2e-utils/helpers/roles";
 import { request as playwrightRequest } from "@playwright/test";
 
 const BASE = Env.API_BASE;
@@ -50,7 +51,7 @@ test.describe("Permissions — rol de workspace", () => {
     );
     expect(res.status()).toBe(200);
     const body = await res.json() as Record<string, unknown>;
-    // Roles válidos: 5 (Guest), 10 (Viewer), 15 (Member), 20 (Admin)
-    expect([5, 10, 15, 20]).toContain(body.role);
+    // Roles válidos: 5 (Guest), 10 (Viewer), 15 (Member), 20 (Admin) — de src/auth/permissions.rs
+    expect(VALID_ROLES).toContain(body.role);
   });
 });
