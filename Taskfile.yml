@@ -1,7 +1,21 @@
 version: "3"
 
+# ============================================================
+# Plane — Taskfile
+# Convención: <namespace>:<action>[:<modificador>]
+# Ejecutar `task` o `task help` para listar todas las tareas
+# ============================================================
+
+vars:
+  COMPOSE_DEV: docker-compose-dev.yml
+  COMPOSE_PROD: docker-compose.yml
+  API_RUST_DIR: apps/api_rust
+  MIGRATION_MANIFEST: apps/api_rust/migration/Cargo.toml
+
 tasks:
-  # Show available tasks.
+  # ----------------------------------------------------------
+  # Help
+  # ----------------------------------------------------------
   default:
     desc: List available tasks
     cmds:
@@ -12,39 +26,12 @@ tasks:
     cmds:
       - task --list
 
-
-  npm:install:
-    desc: Install JavaScript dependencies with pnpm
-    cmds:
-      - pnpm install
-
-  npm:build:
-    desc: Build all JavaScript packages and applications
-    cmds:
-      - pnpm build
-
-  npm:check:
-    desc: Run all JavaScript checks
-    cmds:
-      - pnpm check
-
-  npm:lint:
-    desc: Run JavaScript lint checks
-    cmds:
-      - pnpm check:lint
-
-  npm:types:
-    desc: Run JavaScript and TypeScript type checks
-    cmds:
-      - pnpm check:types
-
-  npm:fix:
-    desc: Auto-fix JavaScript formatting and lint issues
-    cmds:
-      - pnpm fix
-  
-  acme-create:
-    desc: Ensure the local ACME certificate file exists with secure permissions
+  # ----------------------------------------------------------
+  # Internal helpers
+  # ----------------------------------------------------------
+  acme:create:
+    desc: Ensure ACME certificate file exists with secure permissions
+    internal: true
     cmds:
       - |
         if [ -d ./apps/proxy/acme.json ]; then
@@ -54,23 +41,23 @@ tasks:
           touch ./apps/proxy/acme.json
         fi
       - chmod 600 ./apps/proxy/acme.json
-    internal: true
 
-  # Bootstrap local development without overwriting existing env files.
+  # ----------------------------------------------------------
+  # Setup — bootstrap local development
+  # ----------------------------------------------------------
   setup:
     desc: Bootstrap the local development environment
-    deps: [acme-create]
+    deps: [acme:create]
     cmds:
       - task: setup:env
       - task: setup:secret
       - task: setup:rust
       - task: setup:deps
       - echo "Setup complete."
-      - 'echo "Next step: task dev:up"'
+      - 'echo "Next step: task compose:up"'
 
-  # Create .env files from examples only when they do not already exist.
   setup:env:
-    desc: Create missing environment files from examples
+    desc: Create missing .env files from .env.example
     cmds:
       - |
         for path in . ./apps/web ./apps/api ./apps/space ./apps/admin ./apps/live; do
@@ -82,9 +69,8 @@ tasks:
           fi
         done
 
-  # Generate the Django secret once and keep it stable across reruns.
   setup:secret:
-    desc: Generate and persist the Django secret key for local development
+    desc: Generate and persist Django SECRET_KEY for local dev
     cmds:
       - |
         if ! grep -q '^SECRET_KEY=' ./apps/api/.env; then
@@ -95,7 +81,6 @@ tasks:
           echo "Skipped SECRET_KEY (already exists in ./apps/api/.env)"
         fi
 
-  # Ensure the local Rust toolchain matches the repo for api_rust work.
   setup:rust:
     desc: Install and configure the local Rust toolchain for api_rust
     cmds:
@@ -104,296 +89,415 @@ tasks:
           echo "Installing rustup..."
           curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal
         fi
-
         . "$HOME/.cargo/env"
         rustup toolchain install stable --profile minimal --component rustfmt --component clippy
         rustup override set stable
         cargo --version
       - sudo apt update && sudo apt install -y pkg-config libssl-dev
 
-  # Install JS dependencies using the repo's pinned pnpm setup.
   setup:deps:
     desc: Enable pnpm and install JavaScript dependencies
     cmds:
       - corepack enable pnpm
       - pnpm install
 
-  # Validate generated compose configuration before running containers.
-  compose:config:
-    desc: Validate the development Docker Compose configuration
+  # ----------------------------------------------------------
+  # JavaScript / pnpm / turbo
+  # ----------------------------------------------------------
+  npm:install:
+    desc: Install JS dependencies with pnpm
     cmds:
-      - docker compose -f docker-compose-dev.yml config
+      - pnpm install
 
-  compose:prod:config:
-    desc: Validate the production Docker Compose configuration
+  npm:build:
+    desc: Build all JS packages and applications
     cmds:
-      - docker compose -f docker-compose.yml config
+      - pnpm build
 
-  compose:prod:rebuild:
-    desc: Rebuild and restart production containers without cache
-    deps: [acme-create]
+  npm:check:
+    desc: Run all JS checks (format + lint + types)
     cmds:
-      - cd apps/api_rust && cargo generate-lockfile
-      - docker compose -f docker-compose.yml build --no-cache
-      - docker compose -f docker-compose.yml up -d
+      - pnpm check
 
-  compose:up:
-    desc: Start development containers in detached mode
-    deps: [acme-create]
+  npm:lint:
+    desc: Run JS lint checks
     cmds:
-      - docker compose -f docker-compose-dev.yml up -d --build
+      - pnpm check:lint
 
-  compose:down:
-    desc: Stop development containers
+  npm:types:
+    desc: Run JS / TypeScript type checks
     cmds:
-      - docker compose -f docker-compose-dev.yml down
+      - pnpm check:types
 
-  compose:restart:
-    desc: Restart development containers
+  npm:fix:
+    desc: Auto-fix JS formatting and lint issues
     cmds:
-      - docker compose -f docker-compose-dev.yml down
-      - docker compose -f docker-compose-dev.yml up -d --build
+      - pnpm fix
 
-  compose:ps:
-    desc: Show running development containers
+  # ----------------------------------------------------------
+  # Rust — api_rust workspace
+  # ----------------------------------------------------------
+  rust:build:
+    desc: Build the Rust API workspace
     cmds:
-      - docker compose -f docker-compose-dev.yml ps
-  
-  compose:clean-volumes:
-    desc: Recreate development containers after removing Compose-managed volumes
+      - cd {{.API_RUST_DIR}} && cargo build
+
+  rust:check:
+    desc: Run cargo check on the Rust API workspace
     cmds:
-      - docker compose -f docker-compose-dev.yml down -v
-      - docker volume ls -q --filter "label=com.docker.compose.project=plane" | xargs -r docker volume rm
-      - docker compose -f docker-compose-dev.yml up -d --build
-
-  compose:purge:
-    desc: Purge all Docker containers, images, volumes and custom networks
-    cmds:
-      # detener todo
-      - |
-        if [ -n "$(docker ps -q)" ]; then
-          docker stop $(docker ps -q)
-        fi
-
-      # borrar contenedores
-      - |
-        if [ -n "$(docker ps -aq)" ]; then
-          docker rm $(docker ps -aq)
-        fi
-
-      # borrar imágenes
-      - |
-        if [ -n "$(docker images -q)" ]; then
-          docker rmi $(docker images -q)
-        fi
-
-      # borrar volúmenes
-      - |
-        if [ -n "$(docker volume ls -q)" ]; then
-          docker volume rm $(docker volume ls -q)
-        fi
-
-      # borrar SOLO redes custom (omite bridge, host, none)
-      - |
-        nets=$(docker network ls --filter "type=custom" -q)
-        if [ -n "$nets" ]; then
-          docker network rm $nets
-        fi
-
-  # Pass SERVICE=<name> to follow logs for a single container.
-  compose:logs:
-    desc: Follow development container logs, optionally filtered by SERVICE
-    cmds:
-      - |
-        if [ -n "{{.SERVICE}}" ]; then
-          docker compose -f docker-compose-dev.yml logs -f {{.SERVICE}}
-        else
-          docker compose -f docker-compose-dev.yml logs -f
-        fi
-
-  compose:logs:proxy:
-    desc: Follow proxy logs in development
-    cmds:
-      - docker compose -f docker-compose-dev.yml logs -f proxy
-
-  compose:rebuild:
-    desc: Rebuild and restart development containers without cache
-    deps: [acme-create]
-    cmds:
-      - docker compose -f docker-compose-dev.yml build --no-cache
-      - docker compose -f docker-compose-dev.yml up -d
-
-  compose:watch:
-    desc: Watch and sync changes for selected development services
-    cmds:
-      - docker compose -f docker-compose-dev.yml watch web admin space live home
+      - cd {{.API_RUST_DIR}} && cargo check
 
   rust:clean:
-    desc: Clean Rust build artifacts for the API and migration crates
+    desc: Clean Rust build artifacts (api + migration)
     cmds:
-      - cd apps/api_rust && cargo clean
-      - rm -rf apps/api_rust/target
-      - cd apps/api_rust/migration && cargo clean
-      - rm -rf apps/api_rust/migration/target
-  
-  rust:watch-run:
-    desc: Run the Rust API with cargo-watch
-    cmds:
-      - cd apps/api_rust && cargo watch -x run
-
-  rust:watch-x-clippy:
-    desc: Run clippy on file changes for the Rust API workspace
-    cmds:
-      - cd apps/api_rust && cargo watch -x clippy
+      - cd {{.API_RUST_DIR}} && cargo clean
+      - rm -rf {{.API_RUST_DIR}}/target
+      - cd {{.API_RUST_DIR}}/migration && cargo clean
+      - rm -rf {{.API_RUST_DIR}}/migration/target
 
   rust:clippy:
-    desc: Run clippy with default lints (warnings shown, not fatal)
+    desc: Run clippy (warnings shown, not fatal)
     cmds:
-      - cd apps/api_rust && cargo clippy --all-targets --all-features
+      - cd {{.API_RUST_DIR}} && cargo clippy --all-targets --all-features
 
-  rust:clippy-strict:
-    desc: Run clippy treating all warnings as errors (-D warnings)
+  rust:clippy:strict:
+    desc: Run clippy treating warnings as errors (-> clippy.log)
     cmds:
-      - cd apps/api_rust && cargo clippy --all-targets --all-features -- -D warnings > clippy.log 2>&1
+      - cd {{.API_RUST_DIR}} && cargo clippy --all-targets --all-features -- -D warnings > clippy.log 2>&1
 
   rust:lint:
-    desc: Full lint pass — clippy strict + rustfmt check
+    desc: Full Rust lint pass — clippy strict + rustfmt check
     cmds:
-      - task: rust:clippy-strict
-      - cd apps/api_rust && cargo fmt --all -- --check
+      - task: rust:clippy:strict
+      - cd {{.API_RUST_DIR}} && cargo fmt --all -- --check
 
+  # ── Rust watch (cargo-watch) ───────────────────────────────
+  rust:watch:run:
+    desc: Run the Rust API with cargo-watch
+    cmds:
+      - cd {{.API_RUST_DIR}} && cargo watch -x run
+
+  rust:watch:clippy:
+    desc: Run clippy on file changes
+    cmds:
+      - cd {{.API_RUST_DIR}} && cargo watch -x clippy
+
+  rust:watch:test:
+    desc: Run Rust tests on file changes
+    cmds:
+      - cd {{.API_RUST_DIR}} && cargo watch -x test
+
+  # ── Rust migrations (SeaORM) ───────────────────────────────
   rust:migrations:
     desc: Run SeaORM migrations with CMD=<up|down|fresh|refresh|reset|status>
     vars:
       CMD: '{{default "status" .CMD}}'
     cmds:
-      - cd apps/api_rust && cargo run -p migration --features migrate -- {{.CMD}}
+      - cargo run --manifest-path {{.MIGRATION_MANIFEST}} --features migrate -- {{.CMD}}
 
   rust:migrations:up:
-    desc: Apply all pending 
+    desc: Apply all pending migrations
     cmds:
-      - cargo run --manifest-path apps/api_rust/migration/Cargo.toml --features migrate -- up
-
-  rust:migrations:validate:
-    desc: Validate the current schema against the baseline
-    cmds:
-      - task: rust:migrations:drop-db
-      - task: rust:migrations:up
+      - cargo run --manifest-path {{.MIGRATION_MANIFEST}} --features migrate -- up
 
   rust:migrations:down:
     desc: Revert the last migration
     cmds:
-      - cargo run --manifest-path apps/api_rust/migration/Cargo.toml --features migrate -- down
+      - cargo run --manifest-path {{.MIGRATION_MANIFEST}} --features migrate -- down
 
   rust:migrations:status:
     desc: Show status of all migrations
     cmds:
-      - cargo run --manifest-path apps/api_rust/migration/Cargo.toml --features migrate -- status
+      - cargo run --manifest-path {{.MIGRATION_MANIFEST}} --features migrate -- status
 
   rust:migrations:fresh:
     desc: Drop all tables and re-apply all migrations
     cmds:
-      - cargo run --manifest-path apps/api_rust/migration/Cargo.toml --features migrate -- fresh
+      - cargo run --manifest-path {{.MIGRATION_MANIFEST}} --features migrate -- fresh
 
   rust:migrations:refresh:
     desc: Rollback all and re-apply all migrations
     cmds:
-      - cargo run --manifest-path apps/api_rust/migration/Cargo.toml --features migrate -- refresh
+      - cargo run --manifest-path {{.MIGRATION_MANIFEST}} --features migrate -- refresh
 
   rust:migrations:reset:
     desc: Rollback all migrations
     cmds:
-      - cargo run --manifest-path apps/api_rust/migration/Cargo.toml --features migrate -- reset
-
+      - cargo run --manifest-path {{.MIGRATION_MANIFEST}} --features migrate -- reset
 
   rust:migrations:drop-db:
-    desc: Drop and recreate the plane database
+    desc: Drop and recreate the plane database (containerized postgres)
     cmds:
       - docker exec -it plane-codecsrayo-db psql -U plane -d postgres -c "DROP DATABASE plane WITH (FORCE);"
       - docker exec -it plane-codecsrayo-db psql -U plane -d postgres -c "CREATE DATABASE plane;"
-    
-  rust:build:
-    desc: Build the Rust API workspace
-    cmds:
-      - cd apps/api_rust && cargo build
-      
-  rust:cargo-check:
-    desc: Run cargo check for the Rust API workspace
-    cmds:
-      - cd apps/api_rust && cargo check
-  
-  
 
-  rust:watch-test:
-    desc: Run Rust tests on file changes with cargo-watch
+  rust:migrations:validate:
+    desc: Validate the schema against baseline (drop-db + up)
     cmds:
-      - cd apps/api_rust && cargo watch -x test
+      - task: rust:migrations:drop-db
+      - task: rust:migrations:up
 
-
-  # Start frontend services and attach compose watch in one command.
-  compose:up-watch:
-    desc: Start key development services with Compose watch enabled
+  # ----------------------------------------------------------
+  # Docker Compose — development
+  # ----------------------------------------------------------
+  compose:config:
+    desc: Validate dev Docker Compose configuration
     cmds:
-      - docker compose -f docker-compose-dev.yml up --watch web admin space live home
+      - docker compose -f {{.COMPOSE_DEV}} config
 
-  prod:up:
-    desc: Start production containers in detached mode
-    deps: [acme-create]
+  compose:up:
+    desc: Start dev containers in detached mode
+    deps: [acme:create]
     cmds:
-      - docker compose -f docker-compose.yml up -d --build
+      - docker compose -f {{.COMPOSE_DEV}} up -d --build
 
-  prod:down:
-    desc: Stop production containers
+  compose:up:watch:
+    desc: Start key dev services with Compose watch enabled
     cmds:
-      - docker compose -f docker-compose.yml down
+      - docker compose -f {{.COMPOSE_DEV}} up --watch web admin space live home
 
-  prod:restart:
-    desc: Restart production containers
+  compose:down:
+    desc: Stop dev containers
     cmds:
-      - docker compose -f docker-compose.yml down
-      - docker compose -f docker-compose.yml up -d --build
+      - docker compose -f {{.COMPOSE_DEV}} down
 
-  prod:ps:
-    desc: Show running production containers
+  compose:restart:
+    desc: Restart dev containers (down + up --build)
     cmds:
-      - docker compose -f docker-compose.yml ps
+      - docker compose -f {{.COMPOSE_DEV}} down
+      - docker compose -f {{.COMPOSE_DEV}} up -d --build
 
-  # Pass SERVICE=<name> to follow logs for a single container.
-  prod:logs:
-    desc: Follow production container logs, optionally filtered by SERVICE
+  compose:rebuild:
+    desc: Rebuild and restart dev containers without cache
+    deps: [acme:create]
+    cmds:
+      - docker compose -f {{.COMPOSE_DEV}} build --no-cache
+      - docker compose -f {{.COMPOSE_DEV}} up -d
+
+  compose:watch:
+    desc: Watch and sync changes for selected dev services
+    cmds:
+      - docker compose -f {{.COMPOSE_DEV}} watch web admin space live home
+
+  compose:ps:
+    desc: Show running dev containers
+    cmds:
+      - docker compose -f {{.COMPOSE_DEV}} ps
+
+  compose:logs:
+    desc: Follow dev container logs (use SERVICE=<name> to filter)
     cmds:
       - |
         if [ -n "{{.SERVICE}}" ]; then
-          docker compose -f docker-compose.yml logs -f {{.SERVICE}}
+          docker compose -f {{.COMPOSE_DEV}} logs -f {{.SERVICE}}
         else
-          docker compose -f docker-compose.yml logs -f
+          docker compose -f {{.COMPOSE_DEV}} logs -f
         fi
 
-  prod:logs:proxy:
-    desc: Follow proxy logs in production
+  compose:logs:proxy:
+    desc: Follow proxy logs (dev)
     cmds:
-      - docker compose -f docker-compose.yml logs -f proxy
-
-  prod:rebuild:
-    desc: Rebuild and restart a specific production service
-    deps: [acme-create]
-    requires:
-      vars: [SERVICE]
-    cmds:
-      - docker compose -f docker-compose.yml up -d --build {{.SERVICE}}
+      - docker compose -f {{.COMPOSE_DEV}} logs -f proxy
 
   compose:url:
-    desc: Show development application URLs
+    desc: Show dev application URLs
     cmds:
       - 'echo "App: https://${PLANE_DOMAIN:-plane.codecsrayo.com}"'
       - 'echo "Dashboard Proxy: http://localhost:8080"'
 
+  compose:clean-volumes:
+    desc: Recreate dev containers after removing Compose-managed volumes
+    cmds:
+      - docker compose -f {{.COMPOSE_DEV}} down -v
+      - docker volume ls -q --filter "label=com.docker.compose.project=plane" | xargs -r docker volume rm
+      - docker compose -f {{.COMPOSE_DEV}} up -d --build
+
+  compose:purge:
+    desc: Purge ALL Docker containers, images, volumes and custom networks
+    cmds:
+      - |
+        if [ -n "$(docker ps -q)" ]; then docker stop $(docker ps -q); fi
+      - |
+        if [ -n "$(docker ps -aq)" ]; then docker rm $(docker ps -aq); fi
+      - |
+        if [ -n "$(docker images -q)" ]; then docker rmi $(docker images -q); fi
+      - |
+        if [ -n "$(docker volume ls -q)" ]; then docker volume rm $(docker volume ls -q); fi
+      - |
+        nets=$(docker network ls --filter "type=custom" -q)
+        if [ -n "$nets" ]; then docker network rm $nets; fi
+
+  # ----------------------------------------------------------
+  # Docker Compose — production
+  # ----------------------------------------------------------
+  prod:config:
+    desc: Validate prod Docker Compose configuration
+    cmds:
+      - docker compose -f {{.COMPOSE_PROD}} config
+
+  prod:up:
+    desc: Start prod containers in detached mode
+    deps: [acme:create]
+    cmds:
+      - docker compose -f {{.COMPOSE_PROD}} up -d --build
+
+  prod:down:
+    desc: Stop prod containers
+    cmds:
+      - docker compose -f {{.COMPOSE_PROD}} down
+
+  prod:restart:
+    desc: Restart prod containers
+    cmds:
+      - docker compose -f {{.COMPOSE_PROD}} down
+      - docker compose -f {{.COMPOSE_PROD}} up -d --build
+
+  prod:rebuild:
+    desc: Rebuild and restart a specific prod service (requires SERVICE)
+    deps: [acme:create]
+    requires:
+      vars: [SERVICE]
+    cmds:
+      - docker compose -f {{.COMPOSE_PROD}} up -d --build {{.SERVICE}}
+
+  prod:rebuild:all:
+    desc: Rebuild and restart all prod containers without cache
+    deps: [acme:create]
+    cmds:
+      - cd {{.API_RUST_DIR}} && cargo generate-lockfile
+      - docker compose -f {{.COMPOSE_PROD}} build --no-cache
+      - docker compose -f {{.COMPOSE_PROD}} up -d
+
+  prod:ps:
+    desc: Show running prod containers
+    cmds:
+      - docker compose -f {{.COMPOSE_PROD}} ps
+
+  prod:logs:
+    desc: Follow prod container logs (use SERVICE=<name> to filter)
+    cmds:
+      - |
+        if [ -n "{{.SERVICE}}" ]; then
+          docker compose -f {{.COMPOSE_PROD}} logs -f {{.SERVICE}}
+        else
+          docker compose -f {{.COMPOSE_PROD}} logs -f
+        fi
+
+  prod:logs:proxy:
+    desc: Follow proxy logs (prod)
+    cmds:
+      - docker compose -f {{.COMPOSE_PROD}} logs -f proxy
+
   prod:url:
-    desc: Show production application URLs
+    desc: Show prod application URLs
     cmds:
       - 'echo "App: https://${PLANE_DOMAIN:-plane.codecsrayo.com}"'
 
-  ci:check-changes:
+  # ----------------------------------------------------------
+  # E2E — Playwright integration tests
+  #
+  # Variables soportadas (todas opcionales salvo APP en e2e:run):
+  #   APP=web|admin|space    (default: web)
+  #   SPEC=auth.spec.ts      (un spec o glob)
+  #   PROJECT=web-session    (proyecto definido en playwright.config)
+  #   ARGS=--headed --workers=1
+  #
+  # Ejemplos:
+  #   task e2e:install
+  #   task e2e:web
+  #   task e2e:web SPEC=auth.spec.ts
+  #   task e2e:admin PROJECT=admin-session
+  #   task e2e:web ARGS="--reporter=line --workers=1"
+  # ----------------------------------------------------------
+  e2e:install:
+    desc: Install Playwright browsers (chromium) and OS deps
+    cmds:
+      - pnpm exec playwright install --with-deps chromium
+
+  e2e:run:
+    desc: Run Playwright suite for APP (web|admin|space). Requires APP var.
+    requires:
+      vars: [APP]
+    cmds:
+      - cd apps/{{.APP}} && pnpm exec playwright test {{if .PROJECT}}--project={{.PROJECT}}{{end}} {{.SPEC}} {{.ARGS}}
+
+  e2e:web:
+    desc: Run Playwright suite for the web app
+    cmds:
+      - task: e2e:run
+        vars:
+          APP: web
+          SPEC: '{{.SPEC}}'
+          PROJECT: '{{.PROJECT}}'
+          ARGS: '{{.ARGS}}'
+
+  e2e:admin:
+    desc: Run Playwright suite for the admin app
+    cmds:
+      - task: e2e:run
+        vars:
+          APP: admin
+          SPEC: '{{.SPEC}}'
+          PROJECT: '{{.PROJECT}}'
+          ARGS: '{{.ARGS}}'
+
+  e2e:space:
+    desc: Run Playwright suite for the space app
+    cmds:
+      - task: e2e:run
+        vars:
+          APP: space
+          SPEC: '{{.SPEC}}'
+          PROJECT: '{{.PROJECT}}'
+          ARGS: '{{.ARGS}}'
+
+  e2e:all:
+    desc: Run Playwright suite across web, admin and space
+    cmds:
+      - task: e2e:web
+      - task: e2e:admin
+      - task: e2e:space
+
+  e2e:headed:
+    desc: Run Playwright in headed mode (APP=web by default)
+    vars:
+      APP: '{{default "web" .APP}}'
+    cmds:
+      - cd apps/{{.APP}} && pnpm exec playwright test --headed {{.SPEC}}
+
+  e2e:ui:
+    desc: Open Playwright UI mode (APP=web by default)
+    vars:
+      APP: '{{default "web" .APP}}'
+    cmds:
+      - cd apps/{{.APP}} && pnpm exec playwright test --ui
+
+  e2e:debug:
+    desc: Run Playwright in debug mode (APP=web by default)
+    vars:
+      APP: '{{default "web" .APP}}'
+    cmds:
+      - cd apps/{{.APP}} && PWDEBUG=1 pnpm exec playwright test {{.SPEC}}
+
+  e2e:report:
+    desc: Open the last HTML report (APP=web by default)
+    vars:
+      APP: '{{default "web" .APP}}'
+    cmds:
+      - cd apps/{{.APP}} && pnpm exec playwright show-report playwright-report
+
+  e2e:codegen:
+    desc: Open Playwright codegen (APP=web, URL=http://localhost:3000 by default)
+    vars:
+      APP: '{{default "web" .APP}}'
+      URL: '{{default "http://localhost:3000" .URL}}'
+    cmds:
+      - cd apps/{{.APP}} && pnpm exec playwright codegen {{.URL}}
+
+  # ----------------------------------------------------------
+  # CI — automated deploy from cron
+  # ----------------------------------------------------------
+  ci:check:changes:
     desc: Fetch origin/o and exit 1 if there are no new commits (internal guard)
     internal: true
     cmds:
@@ -415,12 +519,12 @@ tasks:
     desc: |
       CI deploy — runs on cron; builds production only when branch o has new commits.
       Stores the last deployed SHA in .ci-last-sha (gitignored) to avoid redundant builds.
-    deps: [acme-create]
+    deps: [acme:create]
     cmds:
       - |
         set -euo pipefail
 
-        # ── 1. change detection ────────────────────────────────────────────
+        # ── 1. change detection ────────────────────────────────
         echo "[ci] Fetching origin/o..."
         git fetch origin o --quiet
 
@@ -439,21 +543,21 @@ tasks:
 
         echo "[ci] New commits: ${LAST_SHA:-<first-run>} → $(echo "$REMOTE_SHA" | cut -c1-8)"
 
-        # ── 2. sync local branch ───────────────────────────────────────────
+        # ── 2. sync local branch ───────────────────────────────
         echo "[ci] Pulling branch o (fast-forward only)..."
         git pull origin o --ff-only
 
-        # ── 3. lockfile ────────────────────────────────────────────────────
+        # ── 3. lockfile ────────────────────────────────────────
         echo "[ci] Generating Cargo lockfile..."
-        (cd apps/api_rust && cargo generate-lockfile)
+        (cd {{.API_RUST_DIR}} && cargo generate-lockfile)
 
-        # ── 4. build & deploy ──────────────────────────────────────────────
+        # ── 4. build & deploy ──────────────────────────────────
         echo "[ci] Building production containers..."
-        docker compose -f docker-compose.yml build --no-cache
+        docker compose -f {{.COMPOSE_PROD}} build --no-cache
 
         echo "[ci] Starting containers..."
-        docker compose -f docker-compose.yml up -d
+        docker compose -f {{.COMPOSE_PROD}} up -d
 
-        # ── 5. record deployed SHA ────────────────────────────────────────
+        # ── 5. record deployed SHA ────────────────────────────
         echo "$REMOTE_SHA" > "$LAST_SHA_FILE"
         echo "[ci] Deploy complete. SHA recorded: $(echo "$REMOTE_SHA" | cut -c1-8)"
