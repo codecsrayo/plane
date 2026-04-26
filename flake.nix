@@ -56,6 +56,9 @@
           direnv    # Para carga automática del entorno Nix
           tree
           btop
+
+          # E2E testing — browsers para Playwright (evita `playwright install`)
+          playwright-driver.browsers
         ];
 
         # Variables de entorno necesarias para cargo
@@ -67,6 +70,11 @@
 
           # Para postgresql
           export PG_CONFIG="${pkgs.postgresql}/bin/pg_config"
+
+          # Playwright — usar browsers provistos por Nix; saltar la descarga de `playwright install`
+          export PLAYWRIGHT_BROWSERS_PATH="${pkgs.playwright-driver.browsers}"
+          export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
+          export PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS=true
 
           # Nota: pnpm ya está habilitado vía corepack_22 en buildInputs
           # No es necesario ejecutar 'corepack enable pnpm' manualmente
