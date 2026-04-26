@@ -102,17 +102,17 @@ test.describe("Issue — relations", () => {
     expect(secondary.status()).toBe(201);
     const sec = await secondary.json() as { id: string };
 
-    // Crear relación
+    // Crear relación — paridad Django: { relation_type, issues: [...] }
     const addRel = await request.post(`${issuePath(freshIssue.id)}/issue-relation`, {
       headers: { "X-CSRFToken": csrf },
-      data: { relation_type: "duplicate_of", related_issue: sec.id },
+      data: { relation_type: "duplicate", issues: [sec.id] },
     });
     expect([200, 201]).toContain(addRel.status());
 
-    // Remover relación — es POST, no DELETE (paridad Django)
+    // Remover relación — POST /remove-relation con { related_issue }
     const removeRel = await request.post(`${issuePath(freshIssue.id)}/remove-relation`, {
       headers: { "X-CSRFToken": csrf },
-      data: { relation_type: "duplicate_of", related_issue: sec.id },
+      data: { related_issue: sec.id },
     });
     expect([200, 204]).toContain(removeRel.status());
 

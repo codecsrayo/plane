@@ -35,11 +35,12 @@ test.describe("Labels — CRUD (canónico)", () => {
 
   test("POST bulk-create-labels crea múltiples labels", async ({ request, csrf }) => {
     const names = [`BL1-${Date.now()}`, `BL2-${Date.now()}`];
+    // Paridad: handler espera body { label_data: [...] } (no array directo)
     const res = await request.post(
       `${BASE}/api/workspaces/${slug()}/projects/${pid()}/bulk-create-labels`,
       {
         headers: { "X-CSRFToken": csrf },
-        data: names.map((name) => ({ name, color: "#aaaaaa" })),
+        data: { label_data: names.map((name) => ({ name, color: "#aaaaaa" })) },
       },
     );
     expect([200, 201]).toContain(res.status());

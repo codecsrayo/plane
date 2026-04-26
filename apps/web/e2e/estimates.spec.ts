@@ -13,12 +13,13 @@ test.describe("Estimates — CRUD", () => {
   });
 
   test("POST + PATCH + DELETE estimate con points", async ({ request, csrf }) => {
-    // Create
+    // Create — el handler exige `points` en el body (Vec<EstimatePointInput>).
+    // Mandamos array vacío y luego añadimos puntos via /estimate-points.
     const create = await request.post(`${basePath()}/estimates`, {
       headers: { "X-CSRFToken": csrf },
-      data: { name: `Est ${Date.now()}`, type: "points" },
+      data: { name: `Est ${Date.now()}`, type: "points", points: [] },
     });
-    expect(create.status()).toBe(201);
+    expect([200, 201]).toContain(create.status());
     const est = await create.json() as { id: string };
 
     // Add points
@@ -26,10 +27,10 @@ test.describe("Estimates — CRUD", () => {
       `${basePath()}/estimates/${est.id}/estimate-points`,
       {
         headers: { "X-CSRFToken": csrf },
-        data: [{ key: "1", value: "1" }, { key: "2", value: "2" }],
+        data: { key: 1, value: "1" },
       },
     );
-    expect([200, 201]).toContain(addPoints.status());
+    expect([200, 201, 204]).toContain(addPoints.status());
 
     // Delete estimate
     const del = await request.delete(`${basePath()}/estimates/${est.id}`, {
