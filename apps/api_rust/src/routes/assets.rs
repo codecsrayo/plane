@@ -1372,6 +1372,12 @@ pub async fn initiate_project_asset_upload(
 
     // Campos de FK según entity_type + entity_identifier
     let entity_id = body.entity_identifier;
+    // NOT NULL en BD: created_at, updated_at, is_archived. SeaORM no infiere
+    // defaults a partir del schema cuando la columna no tiene `DEFAULT`, por
+    // lo que `..Default::default()` los deja como `NotSet` y la INSERT falla
+    // con "null value in column \"created_at\" ... violates not-null
+    // constraint". Paridad con `initiate_workspace_asset_upload`.
+    let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
     let mut new_asset = file_assets::ActiveModel {
         id: Set(uuid::Uuid::new_v4()),
         asset: Set(asset_key.clone()),
@@ -1385,8 +1391,12 @@ pub async fn initiate_project_asset_upload(
         workspace_id: Set(Some(workspace.id)),
         project_id: Set(Some(project_id)),
         created_by_id: Set(Some(guard.user.id)),
+        updated_by_id: Set(Some(guard.user.id)),
         is_uploaded: Set(false),
         is_deleted: Set(false),
+        is_archived: Set(false),
+        created_at: Set(now),
+        updated_at: Set(now),
         ..Default::default()
     };
 
@@ -1765,7 +1775,10 @@ pub async fn duplicate_workspace_asset(
     let s3 = build_s3_client(&state.config);
     copy_object(&s3, &state.config.aws_s3_bucket, &original.asset, &dest_key).await?;
 
-    // Crear nuevo registro en DB
+    // Crear nuevo registro en DB.
+    // NOT NULL en BD: created_at, updated_at, is_archived. `..Default::default()`
+    // los deja como `NotSet` -> INSERT falla con NOT NULL constraint.
+    let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
     let mut new_asset = file_assets::ActiveModel {
         id: Set(uuid::Uuid::new_v4()),
         asset: Set(dest_key.clone()),
@@ -1775,9 +1788,13 @@ pub async fn duplicate_workspace_asset(
         workspace_id: Set(Some(workspace.id)),
         project_id: Set(body.project_id),
         created_by_id: Set(Some(guard.user.id)),
+        updated_by_id: Set(Some(guard.user.id)),
         is_uploaded: Set(true),
         is_deleted: Set(false),
+        is_archived: Set(false),
         storage_metadata: Set(original.storage_metadata.clone()),
+        created_at: Set(now),
+        updated_at: Set(now),
         ..Default::default()
     };
 

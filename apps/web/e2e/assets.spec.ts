@@ -151,13 +151,6 @@ test.describe("Assets V2 — project assets", () => {
         },
       },
     );
-    // 500 puede ocurrir cuando S3/MinIO no está configurado en el entorno de
-    // test (presigned_post requiere credenciales válidas). Validamos contrato
-    // pero toleramos 500 por config faltante.
-    if (res.status() === 500) {
-      // S3 no disponible — saltamos validación de shape
-      return;
-    }
     expect([200, 201]).toContain(res.status());
     const body = await res.json() as InitiateResponse;
     expect(body).toMatchObject({
