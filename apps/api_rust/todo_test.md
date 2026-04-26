@@ -330,7 +330,7 @@ Documento de referencia para construir suites de tests E2E con **Playwright** so
 | Documentación | Scalar UI en `/api/docs` cuando `DEBUG=true`. OpenAPI JSON: `/api/docs/openapi.json` |
 | Identificadores | `slug` = workspace slug (string), todos los `pk`, `project_id`, `issue_id`, etc. son **UUID v4** |
 
-> **Importante para Playwright**: el frontend hace los requests, los tests **no** deben llamar la API directamente para validaciones funcionales — sólo para `setup` (crear workspace de test, sembrar proyecto/issue) y `teardown` (limpieza). Para datos en pantalla, validar el DOM.
+> **Tests de integración**: los tests Playwright **llaman directamente a la API** (`request` fixture / `APIRequestContext`) para validar el contrato HTTP — status codes, headers, shape del JSON y side-effects en BD. Las llamadas directas a la API son la modalidad principal de prueba; los flujos UI complementan validando que el frontend consume correctamente esos contratos.
 
 ---
 
@@ -942,39 +942,121 @@ Todos requieren sesión activa.
 
 ---
 
-## 22. Setup recomendado para Playwright
+## 22. Estrategia de integration testing con Playwright
 
-### 22.1 globalSetup
+Los tests Playwright invocan la API **directamente** vía `APIRequestContext` (`request` fixture). Cada test valida el contrato extremo a extremo: request → respuesta HTTP → estado persistido → respuesta de un GET subsiguiente.
+
+### 22.1 Patrón base (request fixture)
+
+```ts
+import { test, expect } from '@playwright/test';
+
+test('crear y obtener issue', async ({ request }) => {
+  // CREATE
+  const create = await request.post(
+    `/api/workspaces/${slug}/projects/${projectId}/issues`,
+    { data: { name: 'Test issue', state_id: stateId } }
+  );
+  expect(create.status()).toBe(201);
+  const issue = await create.json();
+  expect(issue).toMatchObject({ name: 'Test issue', id: expect.any(String) });
+
+  // READ-back (verificar persistencia)
+  const get = await request.get(
+    `/api/workspaces/${slug}/projects/${projectId}/issues/${issue.id}`
+  );
+  expect(get.status()).toBe(200);
+  expect(await get.json()).toMatchObject({ id: issue.id, name: 'Test issue' });
+});
+```
+
+### 22.2 Aspectos a validar en cada endpoint
+
+| Aspecto | Cómo validar |
+|---|---|
+| Status code | `expect(res.status()).toBe(200/201/204/400/401/403/404)` |
+| Shape del response | `expect(body).toMatchObject({...})` o JSON Schema |
+| Headers críticos | `Content-Type`, `X-RateLimit-*`, `Set-Cookie` (CSRF/session) |
+| Idempotencia | Repetir PATCH/DELETE — el segundo call debe dar el resultado esperado (no 500) |
+| Side-effect en BD | GET subsiguiente al endpoint mutador |
+| Permisos | Repetir el call con sesión sin acceso → esperar 403/404 |
+| Validación de input | Enviar payloads inválidos → esperar 400 con mensaje específico |
+| Cascada | `DELETE /workspaces/{slug}` → confirmar que `GET /projects` devuelve 404 |
+
+### 22.3 globalSetup
 
 1. `GET /api/health` — esperar `200 ok` antes de iniciar la suite.
-2. `POST /auth/get-csrf-token` → guardar cookie + token.
-3. `POST /auth/sign-up` (o `sign-in` si el user ya existe) → guardar `storageState` con `request.storageState({ path: 'state.json' })`.
-4. `POST /api/workspaces` con slug único `e2e-${Date.now()}`.
-5. `POST /api/workspaces/{slug}/projects` con `identifier` corto y aleatorio.
-6. Sembrar **estados por defecto** vía `POST /states` (Backlog, Todo, In Progress, Done) — verificar primero con `GET /states` ya que el backend puede crearlos automáticamente al crear proyecto.
-7. Persistir `slug`, `project_id` en `process.env` o en `playwright.config.ts > use.extraHTTPHeaders`.
+2. `GET /auth/get-csrf-token` → guardar cookie `csrftoken` + token en body.
+3. `POST /auth/sign-up` (o `sign-in` si el user ya existe) con header `X-CSRFToken`.
+4. Persistir storage con `request.storageState({ path: 'state.json' })`.
+5. `POST /api/workspaces` con slug único `e2e-${Date.now()}`.
+6. `POST /api/workspaces/{slug}/projects` con `identifier` corto y aleatorio.
+7. Verificar estados por defecto con `GET /states` (Backlog, Todo, In Progress, Done) — el backend los crea automáticamente al crear proyecto en la mayoría de los flujos; si no, sembrar manualmente.
+8. Persistir `slug`, `project_id`, `state_ids` en `process.env` o en `playwright.config.ts > use.extraHTTPHeaders`.
 
-### 22.2 globalTeardown
+### 22.4 globalTeardown
 
-1. `DELETE /api/workspaces/{slug}` (cascade) — elimina projects, issues, etc.
+1. `DELETE /api/workspaces/{slug}` (cascade) — elimina projects, issues, cycles, modules, etc.
 2. `DELETE /api/users/me` solo si el usuario fue creado durante el run.
 
-### 22.3 Por test (fixtures)
+### 22.5 Fixtures por test (creación + cleanup automático)
 
-| Fixture | Endpoints usados |
-|---|---|
-| `freshIssue` | `POST .../issues` → cleanup `DELETE .../issues/{pk}` |
-| `freshCycle` | `POST .../cycles` |
-| `freshLabel` | `POST .../labels` |
-| `freshPage` | `POST .../pages` |
-| `freshModule` | `POST .../modules` |
-| `freshView` | `POST .../views` |
+| Fixture | Setup | Teardown |
+|---|---|---|
+| `freshIssue` | `POST .../issues` | `DELETE .../issues/{pk}` |
+| `freshCycle` | `POST .../cycles` | `DELETE .../cycles/{pk}` |
+| `freshLabel` | `POST .../labels` | `DELETE .../labels/{pk}` |
+| `freshPage` | `POST .../pages` | `DELETE .../pages/{pk}` |
+| `freshModule` | `POST .../modules` | `DELETE .../modules/{pk}` |
+| `freshView` | `POST .../views` | `DELETE .../views/{pk}` |
+| `freshWebhook` | `POST .../webhooks` | `DELETE .../webhooks/{pk}` |
+| `freshApiToken` | `POST /api/api-tokens` | `DELETE /api/api-tokens/{pk}` |
 
-### 22.4 Endpoints de validación previos a cada suite
+### 22.6 Pre-checks antes de cada suite
 
-- `GET /api/users/me` → confirmar sesión activa.
-- `GET /api/workspaces/{slug}/workspace-members/me` → confirmar permisos de workspace.
+- `GET /api/users/me` → confirmar sesión activa (401 → re-login).
+- `GET /api/workspaces/{slug}/workspace-members/me` → confirmar rol y permisos de workspace.
 - `GET /api/workspaces/{slug}/projects/{project_id}/project-members/me` → permisos de proyecto.
+
+### 22.7 Suites recomendadas (organización)
+
+| Suite | Cobertura |
+|---|---|
+| `auth.spec.ts` | sign-in / sign-up / magic-link / sign-out / CSRF / rate-limit headers |
+| `workspaces.spec.ts` | CRUD workspace, miembros, invitaciones, themes |
+| `projects.spec.ts` | CRUD project, miembros, invitaciones, archive/unarchive, identifiers |
+| `issues.spec.ts` | CRUD issue, paths legacy `issues/` y nuevos `work-items/` (cubrir ambos), bulk ops |
+| `issues-extras.spec.ts` | comments, reactions, links, relations, subscribers, sub-issues |
+| `cycles.spec.ts` | CRUD, cycle-issues, transfer, archive, analytics |
+| `modules.spec.ts` | CRUD, module-issues, module-links, archive |
+| `pages.spec.ts` | CRUD, archive, lock, duplicate, versions |
+| `intake.spec.ts` | aliases `intakes`/`inboxes`, `intake-issues`/`inbox-issues` |
+| `analytics.spec.ts` | workspace, project-stats, advance-analytics |
+| `assets.spec.ts` | flujo presigned URL S3 (con MinIO local) |
+| `integrations.spec.ts` | github / gitlab / pr-state-mappings |
+| `api-v1.spec.ts` | endpoints `/api/v1/*` con header `X-Api-Key` |
+| `permissions.spec.ts` | matrix de roles (admin/member/viewer/guest) × endpoints |
+| `contracts.spec.ts` | validación contra OpenAPI spec (`/api/docs/openapi.json`) |
+
+### 22.8 Validación de contratos contra OpenAPI
+
+Usar `/api/docs/openapi.json` como fuente de verdad. Librería sugerida: `openapi-response-validator` o `ajv` con el schema importado:
+
+```ts
+import Ajv from 'ajv';
+import openapi from './openapi.json';
+
+const ajv = new Ajv();
+const validate = ajv.compile(openapi.components.schemas.WorkspaceResponse);
+
+const res = await request.get(`/api/workspaces/${slug}`);
+const body = await res.json();
+expect(validate(body), JSON.stringify(validate.errors)).toBe(true);
+```
+
+### 22.9 Concurrencia
+
+`playwright.config.ts > workers` debe limitarse a `1-2` mientras los tests compartan workspace, o usar **un workspace por worker** (`process.env.TEST_WORKER_INDEX`) para evitar contención en endpoints como `/states`, `/labels`, `/issues`.
 
 ---
 
