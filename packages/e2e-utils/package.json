@@ -1,0 +1,20 @@
+{
+  "name": "@plane/e2e-utils",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./fixtures": "./src/fixtures/index.ts",
+    "./helpers/*": "./src/helpers/*.ts",
+    "./setup/global-setup": "./src/setup/global-setup.ts",
+    "./setup/global-teardown": "./src/setup/global-teardown.ts",
+    "./setup/base-config": "./src/setup/base-config.ts"
+  },
+  "dependencies": {
+    "@playwright/test": "^1.44.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.12.0",
+    "typescript": "^5.8.3"
+  }
+}

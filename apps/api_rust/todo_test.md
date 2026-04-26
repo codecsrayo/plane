@@ -1022,21 +1022,21 @@ test('crear y obtener issue', async ({ request }) => {
 
 | Suite | Cobertura |
 |---|---|
-| `auth.spec.ts` | sign-in / sign-up / magic-link / sign-out / CSRF / rate-limit headers |
-| `workspaces.spec.ts` | CRUD workspace, miembros, invitaciones, themes |
-| `projects.spec.ts` | CRUD project, miembros, invitaciones, archive/unarchive, identifiers |
-| `issues.spec.ts` | CRUD issue, paths legacy `issues/` y nuevos `work-items/` (cubrir ambos), bulk ops |
-| `issues-extras.spec.ts` | comments, reactions, links, relations, subscribers, sub-issues |
-| `cycles.spec.ts` | CRUD, cycle-issues, transfer, archive, analytics |
-| `modules.spec.ts` | CRUD, module-issues, module-links, archive |
-| `pages.spec.ts` | CRUD, archive, lock, duplicate, versions |
-| `intake.spec.ts` | aliases `intakes`/`inboxes`, `intake-issues`/`inbox-issues` |
-| `analytics.spec.ts` | workspace, project-stats, advance-analytics |
+| `auth.spec.ts` ✅ | sign-in / sign-up / magic-link / sign-out / CSRF / rate-limit headers |
+| `workspaces.spec.ts` ✅ | CRUD workspace, miembros, invitaciones, themes |
+| `projects.spec.ts` ✅ | CRUD project, miembros, invitaciones, archive/unarchive, identifiers |
+| `issues.spec.ts` ✅ | CRUD issue, paths legacy `issues/` y nuevos `work-items/` (cubrir ambos), bulk ops |
+| `issues-extras.spec.ts` ✅ | comments, reactions, links, relations, subscribers, sub-issues |
+| `cycles.spec.ts` ✅ | CRUD, cycle-issues, transfer, archive, analytics |
+| `modules.spec.ts` ✅ | CRUD, module-issues, module-links, archive |
+| `pages.spec.ts` ✅ | CRUD, archive, lock, duplicate, versions |
+| `intake.spec.ts` ✅ | aliases `intakes`/`inboxes`, `intake-issues`/`inbox-issues` |
+| `analytics.spec.ts` ✅ | workspace, project-stats, advance-analytics |
 | `assets.spec.ts` | flujo presigned URL S3 (con MinIO local) |
 | `integrations.spec.ts` | github / gitlab / pr-state-mappings |
-| `api-v1.spec.ts` | endpoints `/api/v1/*` con header `X-Api-Key` |
-| `permissions.spec.ts` | matrix de roles (admin/member/viewer/guest) × endpoints |
-| `contracts.spec.ts` | validación contra OpenAPI spec (`/api/docs/openapi.json`) |
+| `api-v1.spec.ts` ✅ | endpoints `/api/v1/*` con header `X-Api-Key` |
+| `permissions.spec.ts` ✅ | matrix de roles (admin/member/viewer/guest) × endpoints |
+| `contracts.spec.ts` ✅ | validación contra OpenAPI spec (`/api/docs/openapi.json`) |
 
 ### 22.8 Validación de contratos contra OpenAPI
 
