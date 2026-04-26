@@ -11,7 +11,7 @@
     "./setup/base-config": "./src/setup/base-config.ts"
   },
   "dependencies": {
-    "@playwright/test": "^1.44.0"
+    "@playwright/test": "catalog:"
   },
   "devDependencies": {
     "@types/node": "^22.12.0",
