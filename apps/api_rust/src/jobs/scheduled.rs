@@ -61,7 +61,11 @@ pub async fn handle_run_issue_automation(
 /// - No tienen `archived_at` ya establecido
 ///
 /// Retorna el número de issues archivados.
-async fn archive_old_issues(state: &AppState) -> anyhow::Result<u64> {
+///
+/// Visibilidad `pub(crate)` para permitir tests de integración del job
+/// sin tener que montar el storage de apalis (`handle_run_issue_automation`
+/// requiere `apalis::Data<AppState>`).
+pub(crate) async fn archive_old_issues(state: &AppState) -> anyhow::Result<u64> {
     // Proyectos con archivado automático activado
     let archive_projects = projects::Entity::find()
         .filter(projects::Column::ArchiveIn.gt(0))
@@ -127,7 +131,10 @@ async fn archive_old_issues(state: &AppState) -> anyhow::Result<u64> {
 /// o "unstarted". Mueve al primer estado "completed" del proyecto.
 ///
 /// Retorna el número de issues cerrados.
-async fn close_old_issues(state: &AppState) -> anyhow::Result<u64> {
+///
+/// Visibilidad `pub(crate)` por la misma razón que `archive_old_issues` —
+/// permitir tests de integración sin scaffolding de apalis.
+pub(crate) async fn close_old_issues(state: &AppState) -> anyhow::Result<u64> {
     // Proyectos con close_in > 0 (cierre automático)
     let close_projects = projects::Entity::find()
         .filter(projects::Column::CloseIn.gt(0))

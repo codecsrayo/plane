@@ -226,7 +226,12 @@ where
 
 /// Segundos desde ahora hasta la próxima ocurrencia de `hour:minute` UTC.
 /// Si la hora ya pasó hoy, devuelve el tiempo hasta mañana a esa hora.
-fn secs_until_utc(hour: u32, minute: u32) -> u64 {
+///
+/// Visibilidad `pub(crate)` para permitir tests de integración (ver
+/// `tests/jobs_scheduler.rs`). La función es pura — todo input lo recibe
+/// como argumento o vía `Utc::now()` — por lo que se puede ejercer
+/// directamente sin scaffolding de DB.
+pub(crate) fn secs_until_utc(hour: u32, minute: u32) -> u64 {
     let now = Utc::now();
     let today_secs = now.num_seconds_from_midnight() as u64;
     let target_secs = (hour as u64) * 3600 + (minute as u64) * 60;
