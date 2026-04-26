@@ -79,6 +79,46 @@ export async function getMe(request: APIRequestContext): Promise<Record<string, 
   return res.json();
 }
 
+/**
+ * Bootstrap idempotente del setup de la instancia (paridad con
+ * ensure_instance_configured de los tests Rust).
+ *
+ * Plane bloquea /auth/sign-{in,up} con error_code=5000 INSTANCE_NOT_CONFIGURED
+ * mientras `instances.is_setup_done` sea false. La unica forma soportada de
+ * activarlo desde el API es POST /api/instances/admins/sign-up, que crea el
+ * primer admin y marca is_setup_done=true.
+ *
+ * Resultados aceptables:
+ *   - 303 sin error_code  → admin recien creado, instancia configurada.
+ *   - 303 error_code=5150 → admin ya existia, no-op idempotente.
+ * Resto de error_codes → throw (incluye 5000 si la fila instances no existe).
+ *
+ * IMPORTANTE: se llama desde un APIRequestContext aparte para no contaminar
+ * las cookies de sesion admin sobre el context de los specs.
+ */
+export async function ensureInstanceConfigured(
+  request: APIRequestContext,
+  email: string,
+  password: string,
+  firstName: string
+): Promise<void> {
+  const csrfToken = await fetchCsrfToken(request);
+  const res = await request.post(`${API_BASE}/api/instances/admins/sign-up`, {
+    headers: { "X-CSRFToken": csrfToken },
+    form: { email, password, first_name: firstName },
+    maxRedirects: 0,
+  });
+  const status = res.status();
+  if (status < 300 || status >= 400) {
+    throw new Error(`ensureInstanceConfigured failed: HTTP ${status} ${await res.text()}`);
+  }
+  const location = res.headers()["location"];
+  const errorCode = extractErrorCode(location);
+  if (!errorCode) return; // exito — instancia configurada
+  if (errorCode === "5150") return; // ADMIN_ALREADY_EXIST — no-op
+  throw new Error(`ensureInstanceConfigured failed: error_code=${errorCode} (Location=${location ?? ""})`);
+}
+
 /** Espera a que el backend responda /api/health con 200. */
 export async function waitForHealth(request: APIRequestContext, retries = 10, delayMs = 2000): Promise<void> {
   // Polling secuencial intencional: cada intento espera al anterior y
