@@ -1018,25 +1018,73 @@ test('crear y obtener issue', async ({ request }) => {
 - `GET /api/workspaces/{slug}/workspace-members/me` → confirmar rol y permisos de workspace.
 - `GET /api/workspaces/{slug}/projects/{project_id}/project-members/me` → permisos de proyecto.
 
-### 22.7 Suites recomendadas (organización)
+### 22.7 Suites implementadas — distribución por app
 
-| Suite | Cobertura |
+> **Infraestructura compartida:** `packages/e2e-utils/`
+>
+> | Archivo | Responsabilidad |
+> |---|---|
+> | `src/setup/global-setup.ts` | health → CSRF → auth → workspace → project → states → API token |
+> | `src/setup/global-teardown.ts` | DELETE workspace (cascade) + usuario de prueba opcional |
+> | `src/setup/base-config.ts` | `createBaseConfig()` — factory compartida por todas las apps |
+> | `src/helpers/api.ts` | Cliente HTTP tipado: `waitForHealth`, `fetchCsrfToken`, `signIn/Up`, `createWorkspace/Project`, `getStates` |
+> | `src/helpers/env.ts` | Accessors de env: `API_BASE`, `TEST_EMAIL`, `WORKSPACE_SLUG`, `PROJECT_ID`, `STATE_IDS`, `API_TOKEN` |
+> | `src/fixtures/index.ts` | Fixtures con setup/teardown automático: `csrf`, `freshIssue`, `freshCycle`, `freshLabel`, `freshModule`, `freshPage`, `freshView`, `freshWebhook`, `freshApiToken` |
+
+---
+
+#### `apps/web/e2e/` — frontend principal (sesión + API key)
+
+| Suite | Estado | Cobertura |
+|---|---|---|
+| `auth.spec.ts` | ✅ | CSRF, sign-in, sign-out, validación de input, rate-limit headers, alias `/spaces/` |
+| `users.spec.ts` | ✅ | `/api/users/me`, session, settings, profile, accounts, workspaces, activities, notif-preferences |
+| `workspaces.spec.ts` | ✅ | CRUD workspace, miembros, workspace-members/me, themes, aggregate (cycles/modules/labels/states/issues/estimates) |
+| `projects.spec.ts` | ✅ | CRUD project, details literal, archive/unarchive, miembros, project-members/me, summary, user-properties |
+| `states.spec.ts` | ✅ | CRUD states, mark-default |
+| `labels.spec.ts` | ✅ | CRUD canónico `/labels`, alias `/issue-labels`, bulk-create-labels |
+| `estimates.spec.ts` | ✅ | CRUD estimates + estimate-points |
+| `issues.spec.ts` | ✅ | CRUD completo, `/issues/list`, `/issues-detail`, `/v2/issues`, path `/work-items/{combined}`, bulk-delete, bulk-archive, archive/unarchive, validación de input |
+| `issues-extras.spec.ts` | ✅ | comments CRUD, reactions POST/DELETE, links canónico + alias, relations (POST `/remove-relation` no DELETE), subscribers, sub-issues, activities/history, versions |
+| `cycles.spec.ts` | ✅ | CRUD, cycle-issues, date-check, analytics, progress, user-properties, archive/unarchive, favorites |
+| `modules.spec.ts` | ✅ | CRUD, module-issues, module-links, archive/unarchive, favorites |
+| `pages.spec.ts` | ✅ | pages-summary, CRUD, archive/unarchive, lock/unlock, favorites, duplicate, versions, description GET/PATCH |
+| `intake.spec.ts` | ✅ | aliases `intakes`/`inboxes`, `intake-issues`/`inbox-issues` |
+| `views.spec.ts` | ✅ | workspace views CRUD, project views CRUD + favorites |
+| `notifications.spec.ts` | ✅ | list, unread count, mark-all-read |
+| `webhooks.spec.ts` | ✅ | CRUD, regenerate secret, webhook-logs |
+| `analytics.spec.ts` | ✅ | workspace legacy (analytics/default-analytics/project-stats), analytic-view CRUD, advance-analytics × workspace + project |
+| `search.spec.ts` | ✅ | `/search`, `/work-items/search`, `/issues/search` (legacy), `/search-issues`, `/entity-search` con todos los `entity_name` |
+| `api-tokens.spec.ts` | ✅ | CRUD `/api-tokens` + alias `/users/api-tokens`, validación de token no vacío |
+| `permissions.spec.ts` | ✅ | 401 sin sesión en todos los endpoints protegidos, 403 sin CSRF en mutaciones, rol numérico válido (5/10/15/20) |
+| `contracts.spec.ts` | ✅ | OpenAPI schema shape, `/api/health`, `/api/timezones`, workspace shape, issue shape |
+| `api-v1.spec.ts` | ✅ | Auth por `X-Api-Key`: `/api/v1/users/me`, workspace members, projects CRUD, work-items CRUD, states, labels, cycles, modules — 401 sin key |
+
+---
+
+#### `apps/space/e2e/` — frontend público (deploy boards / spaces)
+
+| Suite | Estado | Cobertura |
+|---|---|---|
+| `auth-spaces.spec.ts` | ✅ | `/auth/spaces/email-check`, `sign-in`, `forgot-password`, `sign-out` |
+| `spaces-deploy-boards.spec.ts` | ✅ | `project-deploy-boards` GET + POST (upsert) |
+
+---
+
+#### `apps/admin/e2e/` — frontend god mode
+
+| Suite | Estado | Cobertura |
+|---|---|---|
+| `admin-instances.spec.ts` | ✅ | `sign-in`/`sign-out` admin, `/api/instances`, `/instances/admins/me`, `/instances/admins/session`, `/instances/configurations`, `workspace-slug-check` |
+
+---
+
+#### Pendientes (no implementados)
+
+| Suite | Motivo |
 |---|---|
-| `auth.spec.ts` ✅ | sign-in / sign-up / magic-link / sign-out / CSRF / rate-limit headers |
-| `workspaces.spec.ts` ✅ | CRUD workspace, miembros, invitaciones, themes |
-| `projects.spec.ts` ✅ | CRUD project, miembros, invitaciones, archive/unarchive, identifiers |
-| `issues.spec.ts` ✅ | CRUD issue, paths legacy `issues/` y nuevos `work-items/` (cubrir ambos), bulk ops |
-| `issues-extras.spec.ts` ✅ | comments, reactions, links, relations, subscribers, sub-issues |
-| `cycles.spec.ts` ✅ | CRUD, cycle-issues, transfer, archive, analytics |
-| `modules.spec.ts` ✅ | CRUD, module-issues, module-links, archive |
-| `pages.spec.ts` ✅ | CRUD, archive, lock, duplicate, versions |
-| `intake.spec.ts` ✅ | aliases `intakes`/`inboxes`, `intake-issues`/`inbox-issues` |
-| `analytics.spec.ts` ✅ | workspace, project-stats, advance-analytics |
-| `assets.spec.ts` | flujo presigned URL S3 (con MinIO local) |
-| `integrations.spec.ts` | github / gitlab / pr-state-mappings |
-| `api-v1.spec.ts` ✅ | endpoints `/api/v1/*` con header `X-Api-Key` |
-| `permissions.spec.ts` ✅ | matrix de roles (admin/member/viewer/guest) × endpoints |
-| `contracts.spec.ts` ✅ | validación contra OpenAPI spec (`/api/docs/openapi.json`) |
+| `assets.spec.ts` | Requiere MinIO local o mock de S3 presigned URL |
+| `integrations.spec.ts` | Requiere GitHub App + GitLab OAuth configurados en instancia |
 
 ### 22.8 Validación de contratos contra OpenAPI
 
