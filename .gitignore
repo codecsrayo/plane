@@ -40,6 +40,17 @@ pnpm-debug.log*
 .env.development.local
 .env.test.local
 .env.production.local
+.env.e2e
+!.env.e2e.example
+
+# Playwright (E2E)
+state.json
+apps/*/state.json
+playwright-report/
+apps/*/playwright-report/
+test-results/
+apps/*/test-results/
+apps/*/.auth/
 
 # Vercel
 .vercel

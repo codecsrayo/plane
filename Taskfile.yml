@@ -396,19 +396,41 @@ tasks:
   # ----------------------------------------------------------
   # E2E — Playwright integration tests
   #
-  # Variables soportadas (todas opcionales salvo APP en e2e:run):
-  #   APP=web|admin|space    (default: web)
-  #   SPEC=auth.spec.ts      (un spec o glob)
-  #   PROJECT=web-session    (proyecto definido en playwright.config)
-  #   ARGS=--headed --workers=1
+  # Las tareas e2e:* cargan ./.env.e2e (si existe) antes de ejecutar
+  # Playwright. Variables soportadas por el harness:
+  #
+  #   API_BASE_URL          URL del backend bajo prueba.
+  #                         default: http://localhost:8000
+  #                         Ejemplo: https://plane.codecsrayo.com
+  #   E2E_EMAIL             email para sign-in / sign-up del runner.
+  #   E2E_PASSWORD          password del runner E2E.
+  #   E2E_STORAGE_PATH      ruta del storageState de Playwright.
+  #
+  # Argumentos (CLI vars del Taskfile, todas opcionales):
+  #   APP=web|admin|space    (default: web en e2e:headed/ui/debug/report/codegen)
+  #   SPEC=auth.spec.ts      un spec o glob
+  #   PROJECT=web-session    proyecto definido en playwright.config
+  #   ARGS=--workers=1 ...   flags extra para playwright test
   #
   # Ejemplos:
-  #   task e2e:install
+  #   task e2e:env                          # crea .env.e2e desde el ejemplo
+  #   task e2e:install                      # descarga browsers (no Nix)
   #   task e2e:web
   #   task e2e:web SPEC=auth.spec.ts
   #   task e2e:admin PROJECT=admin-session
   #   task e2e:web ARGS="--reporter=line --workers=1"
   # ----------------------------------------------------------
+  e2e:env:
+    desc: Create .env.e2e from .env.e2e.example (idempotente)
+    cmds:
+      - |
+        if [ ! -f "{{.ROOT_DIR}}/.env.e2e" ]; then
+          cp "{{.ROOT_DIR}}/.env.e2e.example" "{{.ROOT_DIR}}/.env.e2e"
+          echo "Created .env.e2e — edit API_BASE_URL / E2E_EMAIL / E2E_PASSWORD"
+        else
+          echo "Skipped .env.e2e (already exists)"
+        fi
+
   e2e:install:
     desc: Install Playwright browsers (chromium) and OS deps
     cmds:
@@ -419,7 +441,11 @@ tasks:
     requires:
       vars: [APP]
     cmds:
-      - cd apps/{{.APP}} && pnpm exec playwright test {{if .PROJECT}}--project={{.PROJECT}}{{end}} {{.SPEC}} {{.ARGS}}
+      - |
+        set -a
+        [ -f "{{.ROOT_DIR}}/.env.e2e" ] && . "{{.ROOT_DIR}}/.env.e2e"
+        set +a
+        cd "{{.ROOT_DIR}}/apps/{{.APP}}" && pnpm exec playwright test {{if .PROJECT}}--project={{.PROJECT}}{{end}} {{.SPEC}} {{.ARGS}}
 
   e2e:web:
     desc: Run Playwright suite for the web app
@@ -463,36 +489,52 @@ tasks:
     vars:
       APP: '{{default "web" .APP}}'
     cmds:
-      - cd apps/{{.APP}} && pnpm exec playwright test --headed {{.SPEC}}
+      - |
+        set -a
+        [ -f "{{.ROOT_DIR}}/.env.e2e" ] && . "{{.ROOT_DIR}}/.env.e2e"
+        set +a
+        cd "{{.ROOT_DIR}}/apps/{{.APP}}" && pnpm exec playwright test --headed {{.SPEC}}
 
   e2e:ui:
     desc: Open Playwright UI mode (APP=web by default)
     vars:
       APP: '{{default "web" .APP}}'
     cmds:
-      - cd apps/{{.APP}} && pnpm exec playwright test --ui
+      - |
+        set -a
+        [ -f "{{.ROOT_DIR}}/.env.e2e" ] && . "{{.ROOT_DIR}}/.env.e2e"
+        set +a
+        cd "{{.ROOT_DIR}}/apps/{{.APP}}" && pnpm exec playwright test --ui
 
   e2e:debug:
     desc: Run Playwright in debug mode (APP=web by default)
     vars:
       APP: '{{default "web" .APP}}'
     cmds:
-      - cd apps/{{.APP}} && PWDEBUG=1 pnpm exec playwright test {{.SPEC}}
+      - |
+        set -a
+        [ -f "{{.ROOT_DIR}}/.env.e2e" ] && . "{{.ROOT_DIR}}/.env.e2e"
+        set +a
+        cd "{{.ROOT_DIR}}/apps/{{.APP}}" && PWDEBUG=1 pnpm exec playwright test {{.SPEC}}
 
   e2e:report:
     desc: Open the last HTML report (APP=web by default)
     vars:
       APP: '{{default "web" .APP}}'
     cmds:
-      - cd apps/{{.APP}} && pnpm exec playwright show-report playwright-report
+      - cd "{{.ROOT_DIR}}/apps/{{.APP}}" && pnpm exec playwright show-report playwright-report
 
   e2e:codegen:
-    desc: Open Playwright codegen (APP=web, URL=http://localhost:3000 by default)
+    desc: Open Playwright codegen (APP=web, URL=https from .env.e2e or http://localhost:3000)
     vars:
       APP: '{{default "web" .APP}}'
       URL: '{{default "http://localhost:3000" .URL}}'
     cmds:
-      - cd apps/{{.APP}} && pnpm exec playwright codegen {{.URL}}
+      - |
+        set -a
+        [ -f "{{.ROOT_DIR}}/.env.e2e" ] && . "{{.ROOT_DIR}}/.env.e2e"
+        set +a
+        cd "{{.ROOT_DIR}}/apps/{{.APP}}" && pnpm exec playwright codegen {{.URL}}
 
   # ----------------------------------------------------------
   # CI — automated deploy from cron
