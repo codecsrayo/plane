@@ -95,6 +95,7 @@ pub mod v1_router;
         workspaces::leave_workspace,
         workspaces::get_project_members,
         workspaces::update_workspace_views,
+        workspaces::get_workspace_views,
                 workspaces::get_workspace_member_me,
         workspaces::get_user_profile,
         workspaces::get_user_stats,
@@ -673,7 +674,7 @@ pub fn build_router(state: AppState) -> Router {
         // Mirror Django: workspaces/<slug>/workspace-views/ -> WorkspaceMemberUserViewsEndpoint
         .route(
             "/workspaces/{slug}/workspace-views",
-            post(workspaces::update_workspace_views),
+            get(workspaces::get_workspace_views).post(workspaces::update_workspace_views),
         )
         // Mirror Django: workspaces/<slug>/workspace-members/me// -> WorkspaceMemberUserEndpoint
         .route(
@@ -699,7 +700,8 @@ pub fn build_router(state: AppState) -> Router {
         // CSV download del log de actividades del usuario para una fecha dada.
         .route(
             "/workspaces/{slug}/user-activity/{user_id}/export",
-            post(workspaces::export_workspace_user_activity),
+            get(workspaces::export_workspace_user_activity_get)
+                .post(workspaces::export_workspace_user_activity),
         )
         // Mirror Django: workspaces/<slug>/user-issues/<user_id>/ -> WorkspaceUserProfileIssuesEndpoint
         // Sirve las pestaÃÂ±as Assigned / Created / Subscribed del perfil del usuario.

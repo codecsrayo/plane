@@ -2583,6 +2583,16 @@ pub async fn get_workspace_user_activity(
 //     indefinido. En Rust añadimos `-created_at` explícito para que el CSV
 //     sea determinista entre ejecuciones; mismo criterio que el GET.
 
+/// Query params de `GET /workspaces/{slug}/user-activity/{user_id}/export`.
+///
+/// El handler GET se mantiene como alias del POST (ambos exportan CSV).
+/// Si `date` no se envía se usa `today()` UTC, lo que permite al frontend
+/// invocarlo sin form (link directo de descarga).
+#[derive(Debug, Deserialize)]
+pub struct ExportUserActivityQuery {
+    pub date: Option<String>,
+}
+
 /// Body JSON de `POST /workspaces/{slug}/user-activity/{user_id}/export`.
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct ExportUserActivityBody {
@@ -2790,6 +2800,30 @@ pub async fn export_workspace_user_activity(
         .map_err(|e| AppError::Internal(anyhow::anyhow!("CSV encoding failed: {e}")))?;
 
     build_user_activity_csv_response(bytes)
+}
+
+/// `GET /workspaces/{slug}/user-activity/{user_id}/export?date=YYYY-MM-DD`
+///
+/// Alias GET del POST: permite usar la URL como link de descarga directo
+/// (`<a href>`). Si `date` falta se usa hoy UTC. Reusa el handler POST
+/// rearmando el body — un solo flujo de validación/auth/serialización.
+pub async fn export_workspace_user_activity_get(
+    state: State<AppState>,
+    auth: AnyAuth,
+    path: Path<(String, Uuid)>,
+    Query(q): Query<ExportUserActivityQuery>,
+) -> Result<axum::response::Response, AppError> {
+    let date = q
+        .date
+        .filter(|s| !s.trim().is_empty())
+        .unwrap_or_else(|| chrono::Utc::now().date_naive().format("%Y-%m-%d").to_string());
+    export_workspace_user_activity(
+        state,
+        auth,
+        path,
+        Json(ExportUserActivityBody { date: Some(date) }),
+    )
+    .await
 }
 
 /// Formatea un `DateTime<FixedOffset>` al mismo string que `str(datetime)` en
@@ -3191,6 +3225,35 @@ pub async fn update_workspace_views(
     am.update(&state.db).await.map_err(AppError::Database)?;
 
     Ok(StatusCode::NO_CONTENT)
+}
+
+/// `GET /api/workspaces/{slug}/workspace-views/`
+///
+/// Contraparte simétrica de `update_workspace_views`: devuelve el
+/// `view_props` del miembro autenticado para el workspace. El frontend
+/// lo consume para pre-poblar la UI de filtros guardados.
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/workspace-views/",
+    tag = "Workspaces",
+    security(("TokenAuth" = []), ("SessionCookie" = [])),
+    params(("slug" = String, Path, description = "Workspace slug")),
+    responses(
+        (status = 200, description = "view_props del miembro"),
+        (status = 401, description = "Unauthenticated"),
+        (status = 403, description = "Not a member"),
+    )
+)]
+pub async fn get_workspace_views(
+    State(state): State<AppState>,
+    AnyAuth(user): AnyAuth,
+    Path(slug): Path<String>,
+) -> Result<Json<serde_json::Value>, AppError> {
+    let ws = workspace_by_slug(&state.db, &slug).await?;
+    let member = require_workspace_member(&state.db, ws.id, user.id).await?;
+    Ok(Json(serde_json::json!({
+        "view_props": member.view_props,
+    })))
 }
 
 // ─── GET + PATCH /workspaces/{slug}/invitations/{pk}/ ────────────────────────
