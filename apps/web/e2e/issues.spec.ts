@@ -23,12 +23,12 @@ test.describe("Issues — CRUD básico", () => {
       data: { name: "E2E Issue full cycle", state_id: stateId },
     });
     expect(create.status()).toBe(201);
-    const issue = await create.json() as IssueCreateShape;
+    const issue = (await create.json()) as IssueCreateShape;
     // Validar shape exacto de IssueCreateResponse (no incluye description_html)
     expect(issue).toMatchObject({
       name: "E2E Issue full cycle",
       id: expect.any(String),
-      priority: expect.any(String),       // "none" por defecto
+      priority: expect.any(String), // "none" por defecto
       sequence_id: expect.any(Number),
       project_id: Env.PROJECT_ID,
       is_draft: false,
@@ -43,7 +43,7 @@ test.describe("Issues — CRUD básico", () => {
     // READ — GET /issues/{pk} devuelve IssueDetailResponse (añade description_html, is_subscribed, is_intake)
     const get = await request.get(`${issuesPath()}/${issue.id}`);
     expect(get.status()).toBe(200);
-    const detail = await get.json() as IssueDetailShape;
+    const detail = (await get.json()) as IssueDetailShape;
     expect(detail).toMatchObject({
       id: issue.id,
       description_html: expect.any(String),
@@ -80,16 +80,12 @@ test.describe("Issues — CRUD básico", () => {
   });
 
   test("GET /issues-detail devuelve 200", async ({ request }) => {
-    const res = await request.get(
-      `${BASE}/api/workspaces/${slug()}/projects/${pid()}/issues-detail`,
-    );
+    const res = await request.get(`${BASE}/api/workspaces/${slug()}/projects/${pid()}/issues-detail`);
     expect(res.status()).toBe(200);
   });
 
   test("GET /v2/issues devuelve 200", async ({ request }) => {
-    const res = await request.get(
-      `${BASE}/api/workspaces/${slug()}/projects/${pid()}/v2/issues`,
-    );
+    const res = await request.get(`${BASE}/api/workspaces/${slug()}/projects/${pid()}/v2/issues`);
     expect(res.status()).toBe(200);
   });
 });
@@ -108,11 +104,11 @@ test.describe("Issues — path work-items (nuevo)", () => {
   test("freshIssue es accesible vía /work-items/{combined} (PROJ-N)", async ({ request, freshIssue }) => {
     // El combined es formato {identifier}-{sequence} — obtenemos el issue para saber su sequence
     const get = await request.get(`${issuesPath()}/${freshIssue.id}`);
-    const body = await get.json() as Record<string, unknown>;
+    const body = (await get.json()) as Record<string, unknown>;
     const seqId = body.sequence_id as number;
     // Obtener identifier del proyecto
     const proj = await request.get(`${BASE}/api/workspaces/${slug()}/projects/${pid()}`);
-    const projBody = await proj.json() as Record<string, unknown>;
+    const projBody = (await proj.json()) as Record<string, unknown>;
     const combined = `${projBody.identifier}-${seqId}`;
 
     const workItem = await request.get(`${BASE}/api/workspaces/${slug()}/work-items/${combined}`);
@@ -123,25 +119,19 @@ test.describe("Issues — path work-items (nuevo)", () => {
 
 test.describe("Issues — bulk ops", () => {
   test("POST /bulk-delete-issues acepta lista de ids", async ({ request, csrf, freshIssue }) => {
-    const res = await request.post(
-      `${BASE}/api/workspaces/${slug()}/projects/${pid()}/bulk-delete-issues`,
-      {
-        headers: { "X-CSRFToken": csrf },
-        data: { issue_ids: [] }, // lista vacía = no-op
-      },
-    );
+    const res = await request.post(`${BASE}/api/workspaces/${slug()}/projects/${pid()}/bulk-delete-issues`, {
+      headers: { "X-CSRFToken": csrf },
+      data: { issue_ids: [] }, // lista vacía = no-op
+    });
     expect([200, 204]).toContain(res.status());
     void freshIssue; // fixture crea/elimina el issue independientemente
   });
 
   test("POST /bulk-archive-issues acepta lista de ids", async ({ request, csrf }) => {
-    const res = await request.post(
-      `${BASE}/api/workspaces/${slug()}/projects/${pid()}/bulk-archive-issues`,
-      {
-        headers: { "X-CSRFToken": csrf },
-        data: { issue_ids: [] },
-      },
-    );
+    const res = await request.post(`${BASE}/api/workspaces/${slug()}/projects/${pid()}/bulk-archive-issues`, {
+      headers: { "X-CSRFToken": csrf },
+      data: { issue_ids: [] },
+    });
     expect([200, 204]).toContain(res.status());
   });
 });
@@ -152,7 +142,7 @@ test.describe("Issues — paginación por cursor", () => {
     const cursor = buildCursor(10, 0, false); // "10:0:0"
     const res = await request.get(`${issuesPath()}?cursor=${cursor}`);
     expect(res.status()).toBe(200);
-    const body = await res.json() as PaginatedResponse<IssueCreateShape>;
+    const body = (await res.json()) as PaginatedResponse<IssueCreateShape>;
     // Validar shape paginado
     expect(body).toMatchObject({
       results: expect.any(Array),
@@ -164,6 +154,8 @@ test.describe("Issues — paginación por cursor", () => {
     });
   });
 });
+
+test.describe("Issues — archive ops", () => {
   test("POST/DELETE /issues/{pk}/archive — archive y unarchive", async ({ request, csrf, freshIssue }) => {
     const archivePath = `${issuesPath()}/${freshIssue.id}/archive`;
 
@@ -179,9 +171,7 @@ test.describe("Issues — paginación por cursor", () => {
   });
 
   test("GET /archived-issues devuelve lista", async ({ request }) => {
-    const res = await request.get(
-      `${BASE}/api/workspaces/${slug()}/projects/${pid()}/archived-issues`,
-    );
+    const res = await request.get(`${BASE}/api/workspaces/${slug()}/projects/${pid()}/archived-issues`);
     expect(res.status()).toBe(200);
   });
 });
