@@ -37,6 +37,9 @@ export default defineConfig({
         "contracts.spec.ts",
         "assets.spec.ts",
         "feature-flags.spec.ts",
+        "integrations.spec.ts",
+        "workspace-extras.spec.ts",
+        "workspace-profile.spec.ts",
       ],
     },
     {

@@ -1085,7 +1085,9 @@ test('crear y obtener issue', async ({ request }) => {
 |---|---|
 | `assets.spec.ts` ✅ | Flujo presigned URL con `page.route()` S3 mock — user-assets, workspace-assets, project-assets, static |
 | `feature-flags.spec.ts` ✅ | 44 feature flag keys, FLAG_GATED_ENDPOINTS, tests de ENABLE_SIGNUP, UNSPLASH, AI |
-| `integrations.spec.ts` | Requiere GitHub App + GitLab OAuth configurados en instancia |
+| `workspace-extras.spec.ts` ✅ | favorites, home-preferences, quick-links, stickies, sidebar-preferences, recent-visits, draft-issues, user-properties, draft-to-issue |
+| `workspace-profile.spec.ts` ✅ | user-profile/{id}, user-stats, user-activity/export, user-issues (assigned/created/subscribed), dashboard, activity-graph, issues-completed-graph, workspace-views |
+| `integrations.spec.ts` ✅ | GET /integrations, workspace-integrations CRUD, repo-syncs, pr-state-mappings, github/gitlab webhook externos — contratos de error validados sin OAuth real |
 
 ### 22.8 Validación de contratos contra OpenAPI
 
