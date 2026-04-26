@@ -11,20 +11,20 @@ vars:
   COMPOSE_PROD: docker-compose.yml
   API_RUST_DIR: apps/api_rust
   MIGRATION_MANIFEST: apps/api_rust/migration/Cargo.toml
+  MIGRATION_RUN: cargo run --manifest-path apps/api_rust/migration/Cargo.toml --features migrate --
+  PW_RUNNER: bash {{.ROOT_DIR}}/scripts/playwright.sh
 
 tasks:
   # ----------------------------------------------------------
-  # Help
+  # Help (default)
   # ----------------------------------------------------------
   default:
     desc: List available tasks
-    cmds:
-      - task --list
+    cmds: [task --list]
 
   help:
-    desc: List available tasks
-    cmds:
-      - task --list
+    desc: Alias of `task default` — list available tasks
+    cmds: [task --list]
 
   # ----------------------------------------------------------
   # Internal helpers
@@ -41,6 +41,21 @@ tasks:
           touch ./apps/proxy/acme.json
         fi
       - chmod 600 ./apps/proxy/acme.json
+
+  ci:_detect-changes:
+    desc: (helper) Imprime "<old> <new>" si hay cambios en origin/o; vacío si no.
+    internal: true
+    silent: true
+    cmds:
+      - |
+        set -euo pipefail
+        git fetch origin o --quiet
+        REMOTE_SHA=$(git rev-parse origin/o)
+        LAST_SHA=""
+        [ -f .ci-last-sha ] && LAST_SHA=$(cat .ci-last-sha)
+        if [ "$REMOTE_SHA" != "$LAST_SHA" ]; then
+          echo "$LAST_SHA $REMOTE_SHA"
+        fi
 
   # ----------------------------------------------------------
   # Setup — bootstrap local development
@@ -106,33 +121,27 @@ tasks:
   # ----------------------------------------------------------
   npm:install:
     desc: Install JS dependencies with pnpm
-    cmds:
-      - pnpm install
+    cmds: [pnpm install]
 
   npm:build:
     desc: Build all JS packages and applications
-    cmds:
-      - pnpm build
+    cmds: [pnpm build]
 
   npm:check:
     desc: Run all JS checks (format + lint + types)
-    cmds:
-      - pnpm check
+    cmds: [pnpm check]
 
   npm:lint:
     desc: Run JS lint checks
-    cmds:
-      - pnpm check:lint
+    cmds: [pnpm check:lint]
 
   npm:types:
     desc: Run JS / TypeScript type checks
-    cmds:
-      - pnpm check:types
+    cmds: [pnpm check:types]
 
   npm:fix:
     desc: Auto-fix JS formatting and lint issues
-    cmds:
-      - pnpm fix
+    cmds: [pnpm fix]
 
   # ----------------------------------------------------------
   # Rust — api_rust workspace
@@ -188,42 +197,49 @@ tasks:
       - cd {{.API_RUST_DIR}} && cargo watch -x test
 
   # ── Rust migrations (SeaORM) ───────────────────────────────
+  # Subtasks concretas delegan en la genérica para no duplicar el comando.
   rust:migrations:
     desc: Run SeaORM migrations with CMD=<up|down|fresh|refresh|reset|status>
     vars:
       CMD: '{{default "status" .CMD}}'
     cmds:
-      - cargo run --manifest-path {{.MIGRATION_MANIFEST}} --features migrate -- {{.CMD}}
+      - '{{.MIGRATION_RUN}} {{.CMD}}'
 
   rust:migrations:up:
     desc: Apply all pending migrations
     cmds:
-      - cargo run --manifest-path {{.MIGRATION_MANIFEST}} --features migrate -- up
+      - task: rust:migrations
+        vars: { CMD: up }
 
   rust:migrations:down:
     desc: Revert the last migration
     cmds:
-      - cargo run --manifest-path {{.MIGRATION_MANIFEST}} --features migrate -- down
+      - task: rust:migrations
+        vars: { CMD: down }
 
   rust:migrations:status:
     desc: Show status of all migrations
     cmds:
-      - cargo run --manifest-path {{.MIGRATION_MANIFEST}} --features migrate -- status
+      - task: rust:migrations
+        vars: { CMD: status }
 
   rust:migrations:fresh:
     desc: Drop all tables and re-apply all migrations
     cmds:
-      - cargo run --manifest-path {{.MIGRATION_MANIFEST}} --features migrate -- fresh
+      - task: rust:migrations
+        vars: { CMD: fresh }
 
   rust:migrations:refresh:
     desc: Rollback all and re-apply all migrations
     cmds:
-      - cargo run --manifest-path {{.MIGRATION_MANIFEST}} --features migrate -- refresh
+      - task: rust:migrations
+        vars: { CMD: refresh }
 
   rust:migrations:reset:
     desc: Rollback all migrations
     cmds:
-      - cargo run --manifest-path {{.MIGRATION_MANIFEST}} --features migrate -- reset
+      - task: rust:migrations
+        vars: { CMD: reset }
 
   rust:migrations:drop-db:
     desc: Drop and recreate the plane database (containerized postgres)
@@ -241,6 +257,7 @@ tasks:
     desc: Stop the Rust container
     cmds:
       - docker compose -f {{.COMPOSE_DEV}} stop api
+
   rust:start-container:
     desc: Start the Rust container
     cmds:
@@ -261,7 +278,7 @@ tasks:
       - docker compose -f {{.COMPOSE_DEV}} up -d --build
 
   compose:up:watch:
-    desc: Start key dev services with Compose watch enabled
+    desc: Start key dev services with Compose watch enabled (foreground)
     cmds:
       - docker compose -f {{.COMPOSE_DEV}} up --watch web admin space live home
 
@@ -273,8 +290,8 @@ tasks:
   compose:restart:
     desc: Restart dev containers (down + up --build)
     cmds:
-      - docker compose -f {{.COMPOSE_DEV}} down
-      - docker compose -f {{.COMPOSE_DEV}} up -d --build
+      - task: compose:down
+      - task: compose:up
 
   compose:rebuild:
     desc: Rebuild and restart dev containers without cache
@@ -284,7 +301,7 @@ tasks:
       - docker compose -f {{.COMPOSE_DEV}} up -d
 
   compose:watch:
-    desc: Watch and sync changes for selected dev services
+    desc: Watch and sync changes for already-running dev services
     cmds:
       - docker compose -f {{.COMPOSE_DEV}} watch web admin space live home
 
@@ -294,7 +311,7 @@ tasks:
       - docker compose -f {{.COMPOSE_DEV}} ps
 
   compose:logs:
-    desc: Follow dev container logs (use SERVICE=<name> to filter)
+    desc: Follow dev container logs (use SERVICE=<n> to filter)
     cmds:
       - |
         if [ -n "{{.SERVICE}}" ]; then
@@ -358,8 +375,8 @@ tasks:
   prod:restart:
     desc: Restart prod containers
     cmds:
-      - docker compose -f {{.COMPOSE_PROD}} down
-      - docker compose -f {{.COMPOSE_PROD}} up -d --build
+      - task: prod:down
+      - task: prod:up
 
   prod:rebuild:
     desc: Rebuild and restart a specific prod service (requires SERVICE)
@@ -383,7 +400,7 @@ tasks:
       - docker compose -f {{.COMPOSE_PROD}} ps
 
   prod:logs:
-    desc: Follow prod container logs (use SERVICE=<name> to filter)
+    desc: Follow prod container logs (use SERVICE=<n> to filter)
     cmds:
       - |
         if [ -n "{{.SERVICE}}" ]; then
@@ -405,26 +422,17 @@ tasks:
   # ----------------------------------------------------------
   # E2E — Playwright integration tests
   #
-  # Las tareas e2e:* cargan ./.env.e2e (si existe) antes de ejecutar
-  # Playwright. Variables soportadas por el harness:
+  # Toda la carga de ./.env.e2e y el `cd apps/<APP>` está centralizada en
+  # scripts/playwright.sh; las tareas son envoltorios delgados.
   #
-  #   API_BASE_URL          URL del backend bajo prueba.
-  #                         default: http://localhost:8000
-  #                         Ejemplo: https://plane.codecsrayo.com
-  #   E2E_EMAIL             email para sign-in / sign-up del runner.
-  #   E2E_PASSWORD          password del runner E2E.
-  #   E2E_STORAGE_PATH      ruta del storageState de Playwright.
-  #
-  # Argumentos (CLI vars del Taskfile, todas opcionales):
-  #   APP=web|admin|space    (default: web en e2e:headed/ui/debug/report/codegen)
-  #   SPEC=auth.spec.ts      un spec o glob
-  #   PROJECT=web-session    proyecto definido en playwright.config
-  #   ARGS=--workers=1 ...   flags extra para playwright test
+  # Variables (.env.e2e): API_BASE_URL, E2E_EMAIL, E2E_PASSWORD, E2E_STORAGE_PATH
+  # CLI vars (todas opcionales):
+  #   APP=web|admin|space   SPEC=auth.spec.ts   PROJECT=web-session
+  #   ARGS="--workers=1 --reporter=line"        URL=http://localhost:3000
   #
   # Ejemplos:
-  #   task e2e:env                          # crea .env.e2e desde el ejemplo
-  #   task e2e:install                      # descarga browsers (no Nix)
-  #   task e2e:web
+  #   task e2e:env
+  #   task e2e:install
   #   task e2e:web SPEC=auth.spec.ts
   #   task e2e:admin PROJECT=admin-session
   #   task e2e:web ARGS="--reporter=line --workers=1"
@@ -450,41 +458,61 @@ tasks:
     requires:
       vars: [APP]
     cmds:
-      - |
-        set -a
-        [ -f "{{.ROOT_DIR}}/.env.e2e" ] && . "{{.ROOT_DIR}}/.env.e2e"
-        set +a
-        cd "{{.ROOT_DIR}}/apps/{{.APP}}" && pnpm exec playwright test {{if .PROJECT}}--project={{.PROJECT}}{{end}} {{.SPEC}} {{.ARGS}}
+      - '{{.PW_RUNNER}} {{.APP}} {{if .PROJECT}}--project={{.PROJECT}}{{end}} {{.SPEC}} {{.ARGS}}'
 
   e2e:web:
     desc: Run Playwright suite for the web app
     cmds:
       - task: e2e:run
-        vars:
-          APP: web
-          SPEC: '{{.SPEC}}'
-          PROJECT: '{{.PROJECT}}'
-          ARGS: '{{.ARGS}}'
+        vars: { APP: web, SPEC: '{{.SPEC}}', PROJECT: '{{.PROJECT}}', ARGS: '{{.ARGS}}' }
 
   e2e:admin:
     desc: Run Playwright suite for the admin app
     cmds:
       - task: e2e:run
-        vars:
-          APP: admin
-          SPEC: '{{.SPEC}}'
-          PROJECT: '{{.PROJECT}}'
-          ARGS: '{{.ARGS}}'
+        vars: { APP: admin, SPEC: '{{.SPEC}}', PROJECT: '{{.PROJECT}}', ARGS: '{{.ARGS}}' }
 
   e2e:space:
     desc: Run Playwright suite for the space app
     cmds:
       - task: e2e:run
-        vars:
-          APP: space
-          SPEC: '{{.SPEC}}'
-          PROJECT: '{{.PROJECT}}'
-          ARGS: '{{.ARGS}}'
+        vars: { APP: space, SPEC: '{{.SPEC}}', PROJECT: '{{.PROJECT}}', ARGS: '{{.ARGS}}' }
+
+  e2e:headed:
+    desc: Run Playwright in headed mode (APP=web by default)
+    vars:
+      APP: '{{default "web" .APP}}'
+    cmds:
+      - '{{.PW_RUNNER}} {{.APP}} --headed {{.SPEC}}'
+
+  e2e:ui:
+    desc: Open Playwright UI mode (APP=web by default)
+    vars:
+      APP: '{{default "web" .APP}}'
+    cmds:
+      - '{{.PW_RUNNER}} {{.APP}} --ui'
+
+  e2e:debug:
+    desc: Run Playwright in debug mode (APP=web by default)
+    vars:
+      APP: '{{default "web" .APP}}'
+    cmds:
+      - PWDEBUG=1 {{.PW_RUNNER}} {{.APP}} {{.SPEC}}
+
+  e2e:report:
+    desc: Open the last HTML report (APP=web by default)
+    vars:
+      APP: '{{default "web" .APP}}'
+    cmds:
+      - cd "{{.ROOT_DIR}}/apps/{{.APP}}" && pnpm exec playwright show-report playwright-report
+
+  e2e:codegen:
+    desc: Open Playwright codegen (APP=web, URL=http://localhost:3000)
+    vars:
+      APP: '{{default "web" .APP}}'
+      URL: '{{default "http://localhost:3000" .URL}}'
+    cmds:
+      - '{{.PW_RUNNER}} {{.APP}} codegen {{.URL}}'
 
   e2e:all:
     desc: Run Playwright suite across web, admin and space (genera log combinado)
@@ -578,79 +606,23 @@ tasks:
         done
         echo "✅ API responde"
 
-
-  e2e:headed:
-    desc: Run Playwright in headed mode (APP=web by default)
-    vars:
-      APP: '{{default "web" .APP}}'
-    cmds:
-      - |
-        set -a
-        [ -f "{{.ROOT_DIR}}/.env.e2e" ] && . "{{.ROOT_DIR}}/.env.e2e"
-        set +a
-        cd "{{.ROOT_DIR}}/apps/{{.APP}}" && pnpm exec playwright test --headed {{.SPEC}}
-
-  e2e:ui:
-    desc: Open Playwright UI mode (APP=web by default)
-    vars:
-      APP: '{{default "web" .APP}}'
-    cmds:
-      - |
-        set -a
-        [ -f "{{.ROOT_DIR}}/.env.e2e" ] && . "{{.ROOT_DIR}}/.env.e2e"
-        set +a
-        cd "{{.ROOT_DIR}}/apps/{{.APP}}" && pnpm exec playwright test --ui
-
-  e2e:debug:
-    desc: Run Playwright in debug mode (APP=web by default)
-    vars:
-      APP: '{{default "web" .APP}}'
-    cmds:
-      - |
-        set -a
-        [ -f "{{.ROOT_DIR}}/.env.e2e" ] && . "{{.ROOT_DIR}}/.env.e2e"
-        set +a
-        cd "{{.ROOT_DIR}}/apps/{{.APP}}" && PWDEBUG=1 pnpm exec playwright test {{.SPEC}}
-
-  e2e:report:
-    desc: Open the last HTML report (APP=web by default)
-    vars:
-      APP: '{{default "web" .APP}}'
-    cmds:
-      - cd "{{.ROOT_DIR}}/apps/{{.APP}}" && pnpm exec playwright show-report playwright-report
-
-  e2e:codegen:
-    desc: Open Playwright codegen (APP=web, URL=https from .env.e2e or http://localhost:3000)
-    vars:
-      APP: '{{default "web" .APP}}'
-      URL: '{{default "http://localhost:3000" .URL}}'
-    cmds:
-      - |
-        set -a
-        [ -f "{{.ROOT_DIR}}/.env.e2e" ] && . "{{.ROOT_DIR}}/.env.e2e"
-        set +a
-        cd "{{.ROOT_DIR}}/apps/{{.APP}}" && pnpm exec playwright codegen {{.URL}}
-
   # ----------------------------------------------------------
   # CI — automated deploy from cron
   # ----------------------------------------------------------
   ci:check:changes:
-    desc: Fetch origin/o and exit 1 if there are no new commits (internal guard)
-    internal: true
+    desc: Fetch origin/o and exit 1 if there are no new commits (preflight guard)
     cmds:
       - |
         set -euo pipefail
-        git fetch origin o --quiet
-        REMOTE_SHA=$(git rev-parse origin/o)
-        LAST_SHA=""
-        if [ -f .ci-last-sha ]; then
-          LAST_SHA=$(cat .ci-last-sha)
-        fi
-        if [ "$REMOTE_SHA" = "$LAST_SHA" ]; then
+        diff="$(task ci:_detect-changes)"
+        if [ -z "$diff" ]; then
+          REMOTE_SHA=$(git rev-parse origin/o)
           echo "[ci:check] No changes on branch o ($(echo "$REMOTE_SHA" | cut -c1-8)). Nothing to do."
           exit 1
         fi
-        echo "[ci:check] Changes detected: ${LAST_SHA:-<first-run>} → $(echo "$REMOTE_SHA" | cut -c1-8)"
+        OLD=$(echo "$diff" | awk '{print $1}')
+        NEW=$(echo "$diff" | awk '{print $2}')
+        echo "[ci:check] Changes detected: ${OLD:-<first-run>} → $(echo "$NEW" | cut -c1-8)"
 
   ci:deploy:
     desc: |
@@ -661,24 +633,19 @@ tasks:
       - |
         set -euo pipefail
 
-        # ── 1. change detection ────────────────────────────────
+        # ── 1. change detection (delegada en ci:_detect-changes) ──
         echo "[ci] Fetching origin/o..."
-        git fetch origin o --quiet
+        diff="$(task ci:_detect-changes)"
 
-        REMOTE_SHA=$(git rev-parse origin/o)
-        LAST_SHA_FILE=".ci-last-sha"
-        LAST_SHA=""
-
-        if [ -f "$LAST_SHA_FILE" ]; then
-          LAST_SHA=$(cat "$LAST_SHA_FILE")
-        fi
-
-        if [ "$REMOTE_SHA" = "$LAST_SHA" ]; then
+        if [ -z "$diff" ]; then
+          REMOTE_SHA=$(git rev-parse origin/o)
           echo "[ci] No changes on branch o ($(echo "$REMOTE_SHA" | cut -c1-8)). Skipping build."
           exit 0
         fi
 
-        echo "[ci] New commits: ${LAST_SHA:-<first-run>} → $(echo "$REMOTE_SHA" | cut -c1-8)"
+        OLD=$(echo "$diff" | awk '{print $1}')
+        NEW=$(echo "$diff" | awk '{print $2}')
+        echo "[ci] New commits: ${OLD:-<first-run>} → $(echo "$NEW" | cut -c1-8)"
 
         # ── 2. sync local branch ───────────────────────────────
         echo "[ci] Pulling branch o (fast-forward only)..."
@@ -696,5 +663,5 @@ tasks:
         docker compose -f {{.COMPOSE_PROD}} up -d
 
         # ── 5. record deployed SHA ────────────────────────────
-        echo "$REMOTE_SHA" > "$LAST_SHA_FILE"
-        echo "[ci] Deploy complete. SHA recorded: $(echo "$REMOTE_SHA" | cut -c1-8)"
+        echo "$NEW" > .ci-last-sha
+        echo "[ci] Deploy complete. SHA recorded: $(echo "$NEW" | cut -c1-8)"
