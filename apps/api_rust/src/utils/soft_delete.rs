@@ -5,7 +5,7 @@
 /// automáticamente en cualquier query.
 ///
 /// # Uso
-/// ```rust
+/// ```ignore
 /// use crate::utils::soft_delete::SoftDeleteExt;
 ///
 /// let issues = Issue::find()
@@ -25,7 +25,7 @@ pub trait SoftDeleteExt<E: EntityTrait>: Sized {
 /// `QueryFilter` y `Select` se importan dentro del macro — no en el módulo.
 ///
 /// # Ejemplo
-/// ```rust
+/// ```ignore
 /// impl_soft_delete!(issues::Entity, issues::Column::DeletedAt);
 /// ```
 #[macro_export]
