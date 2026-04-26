@@ -168,8 +168,10 @@ async fn remove_workspace_member_returns_204() {
 async fn leave_workspace_as_member_returns_204() {
     let (app, owner_key, ws_slug, ws_id) = setup("leave").await;
 
-    // Un segundo usuario se une al workspace
-    let (member_id, member_key) = app.create_test_user("wsmem_leave@plane.test").await;
+    // Un segundo usuario se une al workspace.
+    // El email lleva sufijo `2` porque setup("leave") ya creó
+    // `wsmem_leave@plane.test` para el owner.
+    let (member_id, member_key) = app.create_test_user("wsmem_leave2@plane.test").await;
     app.add_workspace_member(member_id, ws_id, 10).await;
 
     // El segundo usuario hace leave
