@@ -151,7 +151,12 @@ services:
           path: ./apps/web/package.json
     depends_on:
       api:
-        condition: service_healthy
+        # Relajado de service_healthy a service_started: el frontend
+        # arranca tan pronto como exista el contenedor de api, sin
+        # esperar a que termine de compilar (~10 min en dev). Si el
+        # navegador hace fetch antes de que la API esté lista verá el
+        # error de red habitual y se recuperará al refresh.
+        condition: service_started
 
   admin:
     container_name: plane-codecsrayo-admin
@@ -213,7 +218,12 @@ services:
           path: ./apps/admin/package.json
     depends_on:
       api:
-        condition: service_healthy
+        # Relajado de service_healthy a service_started: el frontend
+        # arranca tan pronto como exista el contenedor de api, sin
+        # esperar a que termine de compilar (~10 min en dev). Si el
+        # navegador hace fetch antes de que la API esté lista verá el
+        # error de red habitual y se recuperará al refresh.
+        condition: service_started
       web:
         condition: service_started
 
@@ -277,7 +287,12 @@ services:
           path: ./apps/space/package.json
     depends_on:
       api:
-        condition: service_healthy
+        # Relajado de service_healthy a service_started: el frontend
+        # arranca tan pronto como exista el contenedor de api, sin
+        # esperar a que termine de compilar (~10 min en dev). Si el
+        # navegador hace fetch antes de que la API esté lista verá el
+        # error de red habitual y se recuperará al refresh.
+        condition: service_started
       web:
         condition: service_started
 
@@ -335,7 +350,12 @@ services:
           path: ./apps/live/package.json
     depends_on:
       api:
-        condition: service_healthy
+        # Relajado de service_healthy a service_started: el frontend
+        # arranca tan pronto como exista el contenedor de api, sin
+        # esperar a que termine de compilar (~10 min en dev). Si el
+        # navegador hace fetch antes de que la API esté lista verá el
+        # error de red habitual y se recuperará al refresh.
+        condition: service_started
 
   plane-redis:
     container_name: plane-codecsrayo-redis
