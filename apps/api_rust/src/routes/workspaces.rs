@@ -658,7 +658,18 @@ pub async fn get_workspace(
     Path(slug): Path<String>,
 ) -> Result<Json<WorkspaceResponse>, AppError> {
     let ws = workspace_by_slug(&state.db, &slug).await?;
-    let member = require_workspace_member(&state.db, ws.id, user.id).await?;
+    // No-miembros reciben 404 (no 403) para no filtrar la existencia del
+    // workspace a usuarios no autorizados — práctica estándar de seguridad,
+    // simétrica con `get_project`.
+    let member = workspace_members::Entity::find()
+        .active()
+        .filter(workspace_members::Column::WorkspaceId.eq(ws.id))
+        .filter(workspace_members::Column::MemberId.eq(user.id))
+        .filter(workspace_members::Column::IsActive.eq(true))
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
 
     let total = workspace_members::Entity::find()
         .active()
