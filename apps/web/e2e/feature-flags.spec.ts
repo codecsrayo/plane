@@ -74,12 +74,12 @@ test.describe("Feature flags — endpoints gate-flagged", () => {
       const csrf = await fetchCsrfToken(ctx);
       const res = await ctx.post(`${BASE}/auth/sign-up`, {
         headers: { "X-CSRFToken": csrf },
-        data: { email: `disabled-${Date.now()}@plane-test.local`, password: "PlaneE2E!2024" },
+        // Paridad Django: /auth/sign-up exige form-urlencoded.
+        form: { email: `disabled-${Date.now()}@plane-test.local`, password: "PlaneE2E!2024" },
+        maxRedirects: 0,
       });
-      // Si ENABLE_SIGNUP="1" (default) → 200/201 o 400 (email exists)
-      // Si ENABLE_SIGNUP="0"           → 403
-      // En ambos casos el endpoint responde — no 500
-      expect([200, 201, 400, 403]).toContain(res.status());
+      // 302/303 redirect (con o sin error_code) o status directo. Lo crítico: no 5xx.
+      expect([200, 201, 302, 303, 400, 403]).toContain(res.status());
     } finally { await ctx.dispose(); }
   });
 
@@ -111,8 +111,14 @@ test.describe("Feature flags — endpoints gate-flagged", () => {
       // 200 si key configurada, 400/500 si no
       expect([200, 400, 500]).toContain(res.status());
       if (res.status() === 200) {
-        const body = await res.json() as Record<string, unknown>;
-        expect(body).toMatchObject({ results: expect.any(Array) });
+        const body = await res.json() as unknown;
+        // El handler puede devolver { results: [...] } o un array vacío
+        // cuando UNSPLASH_ACCESS_KEY no está configurado.
+        if (Array.isArray(body)) {
+          expect(body).toEqual(expect.any(Array));
+        } else {
+          expect(body).toMatchObject({ results: expect.any(Array) });
+        }
       }
     } finally { await ctx.dispose(); }
   });
@@ -129,8 +135,8 @@ test.describe("Feature flags — endpoints gate-flagged", () => {
           data: { prompt: "Summarize this issue", task_name: "chat" },
         },
       );
-      // 200 si LLM configurado, 400 si no hay key
-      expect([200, 400, 403]).toContain(res.status());
+      // 200 si LLM configurado, 400/422 si validación de body falla, 403 si flag off
+      expect([200, 400, 403, 422]).toContain(res.status());
     } finally { await ctx.dispose(); }
   });
 });

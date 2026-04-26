@@ -6,12 +6,21 @@ const slug = () => Env.WORKSPACE_SLUG;
 const pid = () => Env.PROJECT_ID;
 
 test.describe("Analytics — workspace legacy", () => {
-  for (const path of ["analytics", "default-analytics", "project-stats"]) {
+  // analytics requiere x_axis/y_axis. default-analytics y project-stats no.
+  for (const path of ["default-analytics", "project-stats"]) {
     test(`GET /api/workspaces/{slug}/${path} devuelve 200`, async ({ request }) => {
       const res = await request.get(`${BASE}/api/workspaces/${slug()}/${path}`);
       expect(res.status()).toBe(200);
     });
   }
+
+  test(`GET /api/workspaces/{slug}/analytics con x_axis/y_axis devuelve 200`, async ({ request }) => {
+    // Paridad Django: x_axis y y_axis son requeridos. Valores válidos del whitelist.
+    const res = await request.get(
+      `${BASE}/api/workspaces/${slug()}/analytics?x_axis=priority&y_axis=issue_count`,
+    );
+    expect(res.status()).toBe(200);
+  });
 
   test("GET/POST analytic-view CRUD", async ({ request, csrf }) => {
     const create = await request.post(`${BASE}/api/workspaces/${slug()}/analytic-view`, {
@@ -40,8 +49,12 @@ test.describe("Analytics — advance analytics", () => {
     });
 
     test(`GET /projects/{project_id}/${suffix} devuelve 200`, async ({ request }) => {
+      // El handler project-level de "advance-analytics-charts" valida `type` y
+      // defaults a "projects" que solo es válido a nivel workspace. A nivel
+      // proyecto solo acepta "work-items" | "custom-work-items".
+      const qs = suffix === "advance-analytics-charts" ? "?type=work-items" : "";
       const res = await request.get(
-        `${BASE}/api/workspaces/${slug()}/projects/${pid()}/${suffix}`,
+        `${BASE}/api/workspaces/${slug()}/projects/${pid()}/${suffix}${qs}`,
       );
       expect(res.status()).toBe(200);
     });

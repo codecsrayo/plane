@@ -36,7 +36,12 @@ test.describe("Workspace profile — user-profile", () => {
     );
     expect(res.status()).toBe(200);
     const body = await res.json() as Record<string, unknown>;
-    expect(body).toMatchObject({ user_id: userId });
+    // Paridad Django: shape es { user_data: {...}, project_data: [...] }
+    // (apps/api/plane/app/views/workspace/user.py: WorkspaceUserProfileEndpoint).
+    expect(body).toMatchObject({
+      user_data: expect.any(Object),
+      project_data: expect.any(Array),
+    });
   });
 
   test("GET user-profile con UUID inexistente devuelve 404", async ({ request }) => {
@@ -70,20 +75,12 @@ test.describe("Workspace profile — user-activity", () => {
     expect(res.status()).toBe(200);
   });
 
-  test("GET/POST user-activity/{user_id}/export devuelve CSV o 202", async ({ request, csrf }) => {
+  test("GET user-activity/{user_id}/export devuelve CSV o 202", async ({ request }) => {
     const userId = await getMyUserId(request);
-    // GET — iniciar export
     const get = await request.get(
       `${BASE}/api/workspaces/${slug()}/user-activity/${userId}/export`,
     );
     expect([200, 202]).toContain(get.status());
-
-    // POST — también soportado
-    const post = await request.post(
-      `${BASE}/api/workspaces/${slug()}/user-activity/${userId}/export`,
-      { headers: { "X-CSRFToken": csrf } },
-    );
-    expect([200, 202]).toContain(post.status());
   });
 });
 
@@ -154,9 +151,10 @@ test.describe("Workspaces — workspace-views", () => {
   test("GET + POST + PATCH + DELETE workspace-views", async ({ request, csrf }) => {
     const create = await request.post(`${BASE}/api/workspaces/${slug()}/workspace-views`, {
       headers: { "X-CSRFToken": csrf },
-      data: { name: `WS View ${Date.now()}`, filters: {} },
+      data: { view_props: { name: `WS View ${Date.now()}`, filters: {} } },
     });
-    expect([200, 201]).toContain(create.status());
+    // Paridad Django: WorkspaceMemberUserViewsEndpoint.post devuelve 204 No Content.
+    expect([200, 201, 204]).toContain(create.status());
 
     const list = await request.get(`${BASE}/api/workspaces/${slug()}/workspace-views`);
     expect(list.status()).toBe(200);

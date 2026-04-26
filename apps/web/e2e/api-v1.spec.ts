@@ -127,8 +127,13 @@ test.describe("API v1 — cycles y modules", () => {
 });
 
 test.describe("API v1 — sin API key devuelve 401", () => {
-  test("GET /api/v1/users/me sin key", async ({ request }) => {
-    const res = await request.get(`${BASE}/api/v1/users/me`);
+  test("GET /api/v1/users/me sin key", async () => {
+    // Forzamos contexto totalmente limpio sin storage para garantizar
+    // que ningún cookie de sesión inherited del config base se cuele.
+    const { request: pwRequest } = await import("@playwright/test");
+    const ctx = await pwRequest.newContext({ storageState: undefined });
+    const res = await ctx.get(`${BASE}/api/v1/users/me`);
     expect(res.status()).toBe(401);
+    await ctx.dispose();
   });
 });

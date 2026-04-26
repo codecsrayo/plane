@@ -132,9 +132,10 @@ test.describe("Workspace extras — sidebar-preferences", () => {
   });
 
   test("PATCH sidebar-preferences actualiza preferencia", async ({ request, csrf }) => {
+    // Paridad Django: PATCH espera un ARRAY de { key, is_pinned?, sort_order? }
     const res = await request.patch(`${base()}/sidebar-preferences`, {
       headers: { "X-CSRFToken": csrf },
-      data: { is_collapsed: false },
+      data: [{ key: "drafts", is_pinned: true }],
     });
     expect([200, 204]).toContain(res.status());
   });

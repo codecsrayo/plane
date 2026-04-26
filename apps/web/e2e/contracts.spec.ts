@@ -30,12 +30,13 @@ test.describe("Contracts — OpenAPI schema", () => {
     expect(typeof body.status).toBe("string");
   });
 
-  test("GET /api/timezones devuelve array de strings", async ({ request }) => {
+  test("GET /api/timezones devuelve { timezones: [...] }", async ({ request }) => {
+    // Paridad Django (TimezoneEndpoint): respuesta envuelta en { timezones: [...] }
     const res = await request.get(`${BASE}/api/timezones`);
     expect(res.status()).toBe(200);
-    const body = await res.json() as unknown[];
-    expect(Array.isArray(body)).toBe(true);
-    expect(body.length).toBeGreaterThan(0);
+    const body = await res.json() as { timezones: unknown[] };
+    expect(Array.isArray(body.timezones)).toBe(true);
+    expect(body.timezones.length).toBeGreaterThan(0);
   });
 
   test("Workspace response shape incluye slug, name, id", async ({ request }) => {

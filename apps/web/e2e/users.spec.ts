@@ -80,9 +80,9 @@ test.describe("Users — me", () => {
 
 test.describe("Users — sin autenticación", () => {
   test("GET /api/users/me sin sesión devuelve 401", async () => {
-    // Contexto limpio sin cookies
+    // Contexto limpio sin cookies — storageState: undefined sobrescribe el default del config
     const { request: playwrightRequest } = await import("@playwright/test");
-    const ctx = await playwrightRequest.newContext();
+    const ctx = await playwrightRequest.newContext({ storageState: undefined });
     const res = await ctx.get(`${BASE}/api/users/me`);
     expect(res.status()).toBe(401);
     await ctx.dispose();
