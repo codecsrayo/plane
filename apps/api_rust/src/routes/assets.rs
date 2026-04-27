@@ -1950,3 +1950,52 @@ async fn presigned_get_download_url(
 
     Ok(req.uri().to_string())
 }
+
+// ── Workspace-level bulk asset update ─────────────────────────────────────────
+/// POST /assets/v2/workspaces/{slug}/{entity_id}/bulk
+///
+/// Equivalente workspace del bulk_project_assets — usado cuando el frontend
+/// llama desde contexto de workspace (sin project_id, e.g. workspace cover).
+pub async fn bulk_workspace_assets(
+    guard: WorkspaceMemberGuard,
+    State(state): State<AppState>,
+    Path((_slug, entity_id)): Path<(String, Uuid)>,
+    Json(body): Json<BulkAssetRequest>,
+) -> Result<StatusCode, AppError> {
+    let _ = guard;
+    if body.asset_ids.is_empty() {
+        return Err(AppError::BadRequest("No asset ids provided.".into()));
+    }
+
+    let first_asset = file_assets::Entity::find()
+        .filter(file_assets::Column::Id.is_in(body.asset_ids.clone()))
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    let entity_type = first_asset.entity_type.as_deref().unwrap_or("");
+
+    use sea_orm::sea_query::Expr;
+    match entity_type {
+        ENTITY_PAGE_DESCRIPTION => {
+            file_assets::Entity::update_many()
+                .col_expr(file_assets::Column::PageId, Expr::value(entity_id))
+                .filter(file_assets::Column::Id.is_in(body.asset_ids.clone()))
+                .exec(&state.db)
+                .await
+                .map_err(AppError::Database)?;
+        }
+        // Workspace cover or other workspace-scoped types — just mark is_uploaded
+        _ => {
+            file_assets::Entity::update_many()
+                .col_expr(file_assets::Column::IsUploaded, Expr::value(true))
+                .filter(file_assets::Column::Id.is_in(body.asset_ids.clone()))
+                .exec(&state.db)
+                .await
+                .map_err(AppError::Database)?;
+        }
+    }
+
+    Ok(StatusCode::NO_CONTENT)
+}

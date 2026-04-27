@@ -1548,6 +1548,10 @@ pub fn build_router(state: AppState) -> Router {
                 .delete(assets::delete_project_asset),
         )
         .route(
+            "/assets/v2/workspaces/{slug}/{entity_id}/bulk",
+            post(assets::bulk_workspace_assets),
+        )
+        .route(
             "/assets/v2/workspaces/{slug}/projects/{project_id}/{entity_id}/bulk",
             post(assets::bulk_project_assets),
         )

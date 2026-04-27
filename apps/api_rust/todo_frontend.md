@@ -615,118 +615,124 @@ Todos requieren sesión activa.
 
 ---
 
-## 8. Cycles
+## 8. Cycles ✅ Revisado
 
-| Método               | Path                                          |
-| -------------------- | --------------------------------------------- |
-| GET / POST           | `…/projects/{project_id}/cycles`              |
-| GET / PATCH / DELETE | `…/cycles/{pk}`                               |
-| GET / POST           | `…/cycles/{cycle_id}/cycle-issues`            |
-| DELETE               | `…/cycles/{cycle_id}/cycle-issues/{issue_id}` |
-| GET                  | `…/cycles/{cycle_id}/analytics`               |
-| GET / PATCH          | `…/cycles/{cycle_id}/user-properties`         |
-| GET                  | `…/cycles/{cycle_id}/progress`                |
-| POST                 | `…/cycles/date-check`                         |
-| GET / POST           | `…/user-favorite-cycles`                      |
-| DELETE               | `…/user-favorite-cycles/{cycle_id}`           |
-| POST                 | `…/cycles/{cycle_id}/transfer-issues`         |
-| POST / DELETE        | `…/cycles/{cycle_id}/archive`                 |
-| GET                  | `…/archived-cycles`                           |
-| GET / DELETE         | `…/archived-cycles/{pk}`                      |
-
----
-
-## 9. Modules
-
-| Método               | Path                                      |
-| -------------------- | ----------------------------------------- |
-| GET / POST           | `…/projects/{project_id}/modules`         |
-| GET / PATCH / DELETE | `…/modules/{pk}`                          |
-| GET / POST           | `…/modules/{module_id}/issues`            |
-| DELETE               | `…/modules/{module_id}/issues/{issue_id}` |
-| GET / PATCH          | `…/modules/{module_id}/user-properties`   |
-| POST                 | `…/issues/{issue_id}/modules`             |
-| GET / POST           | `…/modules/{module_id}/module-links`      |
-| GET / PATCH / DELETE | `…/modules/{module_id}/module-links/{pk}` |
-| GET / POST           | `…/user-favorite-modules`                 |
-| DELETE               | `…/user-favorite-modules/{module_id}`     |
-| POST / DELETE        | `…/modules/{module_id}/archive`           |
-| GET                  | `…/archived-modules`                      |
-| GET / DELETE         | `…/archived-modules/{pk}`                 |
+| Método               | Path                                          | Estado | Notas |
+| -------------------- | --------------------------------------------- | ------ | ----- |
+| GET / POST           | `…/projects/{project_id}/cycles`              | ✅ OK  | |
+| GET / PATCH / DELETE | `…/cycles/{pk}`                               | ✅ OK  | |
+| GET / POST           | `…/cycles/{cycle_id}/cycle-issues`            | ✅ OK  | |
+| DELETE               | `…/cycles/{cycle_id}/cycle-issues/{issue_id}` | ✅ OK  | |
+| GET                  | `…/cycles/{cycle_id}/analytics`               | ✅ OK  | |
+| GET / PATCH          | `…/cycles/{cycle_id}/user-properties`         | ✅ OK  | |
+| GET                  | `…/cycles/{cycle_id}/progress`                | ✅ OK  | |
+| POST                 | `…/cycles/date-check`                         | ✅ OK  | |
+| GET / POST           | `…/user-favorite-cycles`                      | ✅ OK  | |
+| DELETE               | `…/user-favorite-cycles/{cycle_id}`           | ✅ OK  | |
+| POST                 | `…/cycles/{cycle_id}/transfer-issues`         | ✅ OK  | |
+| POST / DELETE        | `…/cycles/{cycle_id}/archive`                 | ✅ OK  | |
+| GET                  | `…/archived-cycles`                           | ✅ OK  | |
+| GET / DELETE         | `…/archived-cycles/{pk}`                      | ✅ OK  | |
+| GET                  | `GET /workspaces/{slug}/cycles`               | 🐛 FIXED | `WorkspaceCycleResponse` reemplazado por `CycleResponse::from_model()`. Faltaban status, sort_order, archived_at, view_props, version, created_by, updated_by (ff11860). |
 
 ---
 
-## 10. Pages
+## 9. Modules ✅ Revisado
 
-| Método               | Path                                    |
-| -------------------- | --------------------------------------- |
-| GET                  | `…/projects/{project_id}/pages-summary` |
-| GET / POST           | `…/projects/{project_id}/pages`         |
-| GET / PATCH / DELETE | `…/pages/{page_id}`                     |
-| POST                 | `…/pages/{page_id}/access`              |
-| POST / DELETE        | `…/favorite-pages/{page_id}`            |
-| POST / DELETE        | `…/pages/{page_id}/archive`             |
-| POST / DELETE        | `…/pages/{page_id}/lock`                |
-| POST                 | `…/pages/{page_id}/duplicate`           |
-| GET                  | `…/pages/{page_id}/versions`            |
-| GET                  | `…/pages/{page_id}/versions/{pk}`       |
-| GET / PATCH          | `…/pages/{page_id}/description`         |
-
----
-
-## 11. Intake (Inbox)
-
-| Método               | Path                                            |
-| -------------------- | ----------------------------------------------- |
-| GET / POST           | `…/intakes` (+ `/inboxes`)                      |
-| GET / PATCH / DELETE | `…/intakes/{pk}` (+ `/inboxes/{pk}`)            |
-| GET / POST           | `…/intake-issues` (+ `/inbox-issues`)           |
-| GET / PATCH / DELETE | `…/intake-issues/{pk}` (+ `/inbox-issues/{pk}`) |
+| Método               | Path                                      | Estado | Notas |
+| -------------------- | ----------------------------------------- | ------ | ----- |
+| GET / POST           | `…/projects/{project_id}/modules`         | 🐛 FIXED | `ModuleResponse` le faltaban `view_props`, `is_favorite`, `member_ids`, serde renames `created_by`/`updated_by`. `list_modules` enriquecido con batch-load (ff11860). |
+| GET / PATCH / DELETE | `…/modules/{pk}`                          | 🐛 FIXED | `get_module` y `update_module` enriquecidos con is_favorite + member_ids (ff11860). |
+| GET / POST           | `…/modules/{module_id}/issues`            | ✅ OK  | GET retorna join records; fronted activo usa `/issues/` con filtro module_id. |
+| DELETE               | `…/modules/{module_id}/issues/{issue_id}` | ✅ OK  | |
+| GET / PATCH          | `…/modules/{module_id}/user-properties`   | ✅ OK  | |
+| POST                 | `…/issues/{issue_id}/modules`             | ✅ OK  | |
+| GET / POST           | `…/modules/{module_id}/module-links`      | ✅ OK  | |
+| GET / PATCH / DELETE | `…/modules/{module_id}/module-links/{pk}` | ✅ OK  | |
+| GET / POST           | `…/user-favorite-modules`                 | ✅ OK  | |
+| DELETE               | `…/user-favorite-modules/{module_id}`     | ✅ OK  | |
+| POST / DELETE        | `…/modules/{module_id}/archive`           | ✅ OK  | |
+| GET                  | `…/archived-modules`                      | ✅ OK  | |
+| GET / DELETE         | `…/archived-modules/{pk}`                 | ✅ OK  | |
+| GET                  | `GET /workspaces/{slug}/modules`          | 🐛 FIXED | `WorkspaceModuleResponse` eliminado; usa `ModuleResponse` con enrichment batch cross-workspace (ff11860). |
 
 ---
 
-## 12. Views
+## 10. Pages ✅ Revisado
 
-| Método               | Path                                                    |
-| -------------------- | ------------------------------------------------------- |
-| GET / POST           | `/api/workspaces/{slug}/views`                          |
-| GET / PATCH / DELETE | `/api/workspaces/{slug}/views/{pk}`                     |
-| GET / POST           | `…/projects/{project_id}/views`                         |
-| GET / PATCH / DELETE | `…/projects/{project_id}/views/{pk}`                    |
-| GET / POST           | `…/projects/{project_id}/user-favorite-views`           |
-| DELETE               | `…/projects/{project_id}/user-favorite-views/{view_id}` |
-
----
-
-## 13. Notifications
-
-| Método               | Path                                  |
-| -------------------- | ------------------------------------- |
-| GET                  | `…/users/notifications/unread`        |
-| POST                 | `…/users/notifications/mark-all-read` |
-| GET                  | `…/users/notifications`               |
-| GET / PATCH / DELETE | `…/users/notifications/{pk}`          |
-| POST / DELETE        | `…/users/notifications/{pk}/read`     |
-| POST / DELETE        | `…/users/notifications/{pk}/archive`  |
+| Método               | Path                                    | Estado | Notas |
+| -------------------- | --------------------------------------- | ------ | ----- |
+| GET                  | `…/projects/{project_id}/pages-summary` | ✅ OK  | |
+| GET / POST           | `…/projects/{project_id}/pages`         | ✅ OK  | |
+| GET / PATCH / DELETE | `…/pages/{page_id}`                     | ✅ OK  | |
+| POST                 | `…/pages/{page_id}/access`              | ✅ OK  | |
+| GET                  | `…/favorite-pages/`                     | 🐛 FIXED | Faltaba `list_favorite_pages` (ff11860). |
+| POST / DELETE        | `…/favorite-pages/{page_id}`            | ✅ OK  | |
+| GET                  | `…/archived-pages/`                     | 🐛 FIXED | Faltaba `list_archived_pages` (ff11860). |
+| POST / DELETE        | `…/pages/{page_id}/archive`             | ✅ OK  | |
+| POST / DELETE        | `…/pages/{page_id}/lock`                | ✅ OK  | |
+| POST                 | `…/pages/{page_id}/duplicate`           | ✅ OK  | |
+| POST                 | `…/pages/{page_id}/move`                | 🐛 FIXED | Faltaba `move_page` — verifica membership destino y ownership (ff11860). |
+| GET                  | `…/pages/{page_id}/versions`            | ✅ OK  | |
+| GET                  | `…/pages/{page_id}/versions/{pk}`       | ✅ OK  | |
+| GET / PATCH          | `…/pages/{page_id}/description`         | ✅ OK  | |
 
 ---
 
-## 14. Webhooks
+## 11. Intake (Inbox) ✅ Revisado
 
-| Método               | Path                                               |
-| -------------------- | -------------------------------------------------- |
-| GET / POST           | `/api/workspaces/{slug}/webhooks`                  |
-| GET / PATCH / DELETE | `/api/workspaces/{slug}/webhooks/{pk}`             |
-| POST                 | `/api/workspaces/{slug}/webhooks/{pk}/regenerate`  |
-| GET                  | `/api/workspaces/{slug}/webhook-logs/{webhook_id}` |
-| POST                 | `/api/github-webhook` (público, externo)           |
-| POST                 | `/api/gitlab-webhook` (público, externo)           |
+| Método               | Path                                            | Estado |
+| -------------------- | ----------------------------------------------- | ------ |
+| GET / POST           | `…/intakes` (+ `/inboxes`)                      | ✅ OK  |
+| GET / PATCH / DELETE | `…/intakes/{pk}` (+ `/inboxes/{pk}`)            | ✅ OK  |
+| GET / POST           | `…/intake-issues` (+ `/inbox-issues`)           | ✅ OK  |
+| GET / PATCH / DELETE | `…/intake-issues/{pk}` (+ `/inbox-issues/{pk}`) | ✅ OK  |
 
 ---
 
-## 15. Search / Exporter / Importer
+## 12. Views ✅ Revisado
 
-### 15.1 Search
+| Método               | Path                                                    | Estado | Notas |
+| -------------------- | ------------------------------------------------------- | ------ | ----- |
+| GET / POST           | `/api/workspaces/{slug}/views`                          | ✅ OK  | |
+| GET / PATCH / DELETE | `/api/workspaces/{slug}/views/{pk}`                     | ✅ OK  | |
+| GET / POST           | `…/projects/{project_id}/views`                         | ✅ OK  | |
+| GET / PATCH / DELETE | `…/projects/{project_id}/views/{pk}`                    | ✅ OK  | |
+| GET / POST           | `…/projects/{project_id}/user-favorite-views`           | ✅ OK  | |
+| DELETE               | `…/projects/{project_id}/user-favorite-views/{view_id}` | ✅ OK  | |
+| GET                  | `…/views/{view_id}/issues/` (project)                   | ℹ️ N/A | Definido en servicio pero no llamado desde el store activo; el store usa `/issues/` con filtros. |
+
+---
+
+## 13. Notifications ✅ Revisado
+
+| Método               | Path                                  | Estado | Notas |
+| -------------------- | ------------------------------------- | ------ | ----- |
+| GET                  | `…/users/notifications/unread`        | ✅ OK  | |
+| POST                 | `…/users/notifications/mark-all-read` | ✅ OK  | |
+| GET                  | `…/users/notifications`               | 🐛 FIXED | `NotificationResponse` incompleto — faltaban `data`, `message`, `receiver`, `workspace`, `project`, `triggered_by_details`, `is_inbox_issue`, `is_mentioned_notification`, `updated_at`, `created_by`, `updated_by`. `enrich_notifications()` batch sin N+1 (606c3c7). |
+| GET / PATCH / DELETE | `…/users/notifications/{pk}`          | 🐛 FIXED | Mismo fix. |
+| POST / DELETE        | `…/users/notifications/{pk}/read`     | 🐛 FIXED | Mismo fix en respuesta. |
+| POST / DELETE        | `…/users/notifications/{pk}/archive`  | 🐛 FIXED | Mismo fix en respuesta. |
+
+---
+
+## 14. Webhooks ✅ Revisado
+
+| Método               | Path                                               | Estado |
+| -------------------- | -------------------------------------------------- | ------ |
+| GET / POST           | `/api/workspaces/{slug}/webhooks`                  | ✅ OK  |
+| GET / PATCH / DELETE | `/api/workspaces/{slug}/webhooks/{pk}`             | ✅ OK  |
+| POST                 | `/api/workspaces/{slug}/webhooks/{pk}/regenerate`  | ✅ OK  |
+| GET                  | `/api/workspaces/{slug}/webhook-logs/{webhook_id}` | ✅ OK  |
+| POST                 | `/api/github-webhook` (público, externo)           | ✅ OK  |
+| POST                 | `/api/gitlab-webhook` (público, externo)           | ✅ OK  |
+
+---
+
+## 15. Search / Exporter / Importer ✅ Revisado
+
+### 15.1 Search ✅
 
 | Método | Path                                                  |
 | ------ | ----------------------------------------------------- |
@@ -736,14 +742,14 @@ Todos requieren sesión activa.
 | GET    | `…/projects/{project_id}/search-issues`               |
 | GET    | `/api/workspaces/{slug}/entity-search`                |
 
-### 15.2 Exporter
+### 15.2 Exporter ✅
 
-| Método     | Path                                           |
-| ---------- | ---------------------------------------------- |
-| GET / POST | `/api/workspaces/{slug}/export-issues`         |
-| GET        | `/api/workspaces/{slug}/export-issues/{token}` |
+| Método     | Path                                           | Estado |
+| ---------- | ---------------------------------------------- | ------ |
+| GET / POST | `/api/workspaces/{slug}/export-issues`         | ✅ OK  |
+| GET        | `/api/workspaces/{slug}/export-issues/{token}` | ✅ OK  |
 
-### 15.3 Importer (GitHub / GitLab)
+### 15.3 Importer (GitHub / GitLab) ✅
 
 | Método     | Path                               |
 | ---------- | ---------------------------------- |
@@ -756,9 +762,9 @@ Todos requieren sesión activa.
 
 ---
 
-## 16. Analytics
+## 16. Analytics ✅ Revisado
 
-### 16.1 Workspace analytics (legacy)
+### 16.1 Workspace analytics (legacy) ✅
 
 | Método               | Path                                                       |
 | -------------------- | ---------------------------------------------------------- |
@@ -770,7 +776,7 @@ Todos requieren sesión activa.
 | GET / PATCH / DELETE | `/api/workspaces/{slug}/analytic-view/{pk}`                |
 | GET                  | `/api/workspaces/{slug}/saved-analytic-view/{analytic_id}` |
 
-### 16.2 Advance analytics
+### 16.2 Advance analytics ✅
 
 | Método | Path                                               |
 | ------ | -------------------------------------------------- |
@@ -783,7 +789,7 @@ Todos requieren sesión activa.
 
 ---
 
-## 17. Assets (V2)
+## 17. Assets (V2) ✅ Revisado
 
 | Método               | Path                                                                         |
 | -------------------- | ---------------------------------------------------------------------------- |
@@ -798,12 +804,13 @@ Todos requieren sesión activa.
 | GET                  | `/api/assets/v2/workspaces/{slug}/download/{asset_id}`                       |
 | POST                 | `/api/assets/v2/workspaces/{slug}/projects/{project_id}`                     |
 | GET / PATCH / DELETE | `/api/assets/v2/workspaces/{slug}/projects/{project_id}/{pk}`                |
-| POST                 | `/api/assets/v2/workspaces/{slug}/projects/{project_id}/{entity_id}/bulk`    |
+| POST                 | `/api/assets/v2/workspaces/{slug}/{entity_id}/bulk`                           | 🐛 FIXED | Faltaba endpoint workspace-level; `bulk_workspace_assets` añadido. |
+| POST                 | `/api/assets/v2/workspaces/{slug}/projects/{project_id}/{entity_id}/bulk`    | ✅ OK  |
 | GET                  | `/api/assets/v2/workspaces/{slug}/projects/{project_id}/download/{asset_id}` |
 
 ---
 
-## 18. External (AI / Unsplash)
+## 18. External (AI / Unsplash) ✅ Revisado
 
 | Método | Path                                                        |
 | ------ | ----------------------------------------------------------- |
@@ -814,7 +821,7 @@ Todos requieren sesión activa.
 
 ---
 
-## 19. Integrations (GitHub / GitLab)
+## 19. Integrations (GitHub / GitLab) ✅ Revisado
 
 | Método               | Path                                                      |
 | -------------------- | --------------------------------------------------------- |
@@ -832,7 +839,7 @@ Todos requieren sesión activa.
 
 ---
 
-## 20. API Tokens (sesión-based)
+## 20. API Tokens ✅ Revisado
 
 | Método               | Path                                 |
 | -------------------- | ------------------------------------ |
@@ -843,7 +850,7 @@ Todos requieren sesión activa.
 
 ---
 
-## 21. API v1 pública (`/api/v1/*`)
+## 21. API v1 pública ✅ Revisado
 
 ``
 /api/v1/users/me GET, PATCH
