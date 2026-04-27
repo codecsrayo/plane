@@ -342,27 +342,28 @@ Rutas con rate limiting. Todas devuelven cookies de sesión cuando exitosas.
 | POST   | `/auth/forgot-password` (+ `/auth/spaces/forgot-password`) | ✅ OK  | JSON `{ email }`. Token almacenado en Redis 24h. |
 | POST   | `/auth/reset-password/{uidb64}/{token}` (+ versión spaces) | 🐛 FIXED | `constant_time_eq` custom reemplazado por `openssl::memcmp` (a26a455). Form-body correcto. |
 
-### 1.4 OAuth (initiate / callback)
+### 1.4 OAuth (initiate / callback) ✅ Revisado
 
-| Método     | Path                         | Notas                                           |
-| ---------- | ---------------------------- | ----------------------------------------------- |
-| GET        | `/auth/gitlab`               | Initiate                                        |
-| GET        | `/auth/gitlab/callback`      | Callback                                        |
-| GET        | `/auth/google`               | Initiate                                        |
-| GET        | `/auth/google/callback`      | Callback                                        |
-| GET        | `/auth/gitea`                | Initiate                                        |
-| GET        | `/auth/gitea/callback`       | Callback                                        |
-| GET        | `/auth/github/callback`      | GitHub user OAuth (alias bajo /auth)            |
-| GET / POST | `/auth/github/user-callback` | GitHub user-callback                            |
-| GET        | `/github/callback`           | GitHub App setup callback (sin auth middleware) |
+| Método     | Path                         | Estado | Notas |
+| ---------- | ---------------------------- | ------ | ----- |
+| GET        | `/auth/gitlab`               | ✅ OK  | Correcto. |
+| GET        | `/auth/gitlab/callback`      | ✅ OK  | Correcto. |
+| GET        | `/auth/google`               | ✅ OK  | Correcto. |
+| GET        | `/auth/google/callback`      | ✅ OK  | Correcto. |
+| GET        | `/auth/gitea`                | ✅ OK  | Correcto. |
+| GET        | `/auth/gitea/callback`       | ✅ OK  | Correcto. |
+| GET        | `/auth/github`               | 🐛 FIXED | **Endpoint faltante** — implementado `github_initiate` (fc42528). |
+| GET        | `/auth/github/callback`      | 🐛 FIXED | Estaba mapeado al handler de GitHub App. Reemplazado con `github_auth_callback` con fallback a `/user/emails` (fc42528). |
+| GET / POST | `/auth/github/user-callback` | 🐛 FIXED | Path mismatch `/api/auth/...` vs `/auth/...` + faltaba `provider` en respuesta (6c0bea4). |
+| GET        | `/github/callback`           | ✅ OK  | GitHub App setup callback correcto. |
 
-### 1.5 God Mode (admin)
+### 1.5 God Mode (admin) ✅ Revisado
 
-| Método | Path                             |
-| ------ | -------------------------------- |
-| POST   | `/api/instances/admins/sign-up`  |
-| POST   | `/api/instances/admins/sign-in`  |
-| POST   | `/api/instances/admins/sign-out` |
+| Método | Path                             | Estado | Notas |
+| ------ | -------------------------------- | ------ | ----- |
+| POST   | `/api/instances/admins/sign-up`  | 🐛 FIXED | `is_telemetry_enabled` case-insensitive — frontend envía "True" no "true" (c73c217). |
+| POST   | `/api/instances/admins/sign-in`  | ✅ OK  | Form-body correcto. |
+| POST   | `/api/instances/admins/sign-out` | ✅ OK  | CSRF validado correctamente. |
 
 ---
 
