@@ -14,6 +14,7 @@
 //   Django usa PasswordResetTokenGenerator (HMAC stateless ligado al hash de contraseña).
 //   Rust usa Redis con TTL de 24 h — más seguro (revocable) y sin dependencia de la clave secreta Django.
 
+use openssl::memcmp;
 use axum::{
     extract::{Form, Path, State},
     http::HeaderMap,
@@ -295,7 +296,7 @@ async fn handle_reset_password(
         serde_json::from_str(&raw).map_err(|e| AppError::Internal(anyhow::anyhow!(e)))?;
 
     // Comparación constante para evitar timing attacks
-    if !constant_time_eq(&data.token, &token) || data.user_id != user_id {
+    if data.token.len() != token.len() || !memcmp::eq(data.token.as_bytes(), token.as_bytes()) || data.user_id != user_id {
         return Ok((
             CookieJar::new(),
             Redirect::to(&format!(
@@ -367,17 +368,6 @@ fn decode_uidb64(uidb64: &str) -> Option<uuid::Uuid> {
     let bytes = URL_SAFE_NO_PAD.decode(uidb64).ok()?;
     let uuid_str = std::str::from_utf8(&bytes).ok()?;
     uuid_str.parse::<uuid::Uuid>().ok()
-}
-
-/// Comparación en tiempo constante para tokens string.
-/// Previene timing attacks en la validación del token de reset.
-fn constant_time_eq(a: &str, b: &str) -> bool {
-    let a = a.as_bytes();
-    let b = b.as_bytes();
-    if a.len() != b.len() {
-        return false;
-    }
-    a.iter().zip(b.iter()).fold(0u8, |acc, (x, y)| acc | (x ^ y)) == 0
 }
 
 async fn send_reset_email(
