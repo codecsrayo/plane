@@ -315,15 +315,15 @@
 
 Rutas con rate limiting. Todas devuelven cookies de sesión cuando exitosas.
 
-### 1.1 Sesión / CSRF
+### 1.1 Sesión / CSRF ✅ Revisado
 
-| Método | Path                   | Notas                                                                              |
-| ------ | ---------------------- | ---------------------------------------------------------------------------------- |
-| GET    | `/auth/get-csrf-token` | Necesario antes de cualquier POST de auth. Devuelve `csrf_token` en cookie + body. |
-| POST   | `/auth/sign-in`        | Body `{ email, password }`. Espacio: `/auth/spaces/sign-in`                        |
-| POST   | `/auth/sign-up`        | Crea usuario. Espacio: `/auth/spaces/sign-up`                                      |
-| POST   | `/auth/sign-out`       | Cierra sesión. Espacio: `/auth/spaces/sign-out`                                    |
-| POST   | `/auth/email-check`    | Verifica si email existe. Espacio: `/auth/spaces/email-check`                      |
+| Método | Path                   | Estado | Notas                                                                              |
+| ------ | ---------------------- | ------ | ---------------------------------------------------------------------------------- |
+| GET    | `/auth/get-csrf-token` | ✅ OK  | Contrato correcto. Cookie + body `{ csrf_token }`. Timing-safe con openssl::memcmp. |
+| POST   | `/auth/sign-in`        | ✅ OK  | Form-body `{ email, password, next_path }`. Contrato correcto.                     |
+| POST   | `/auth/sign-up`        | ✅ OK  | Mismo form. Contrato correcto.                                                     |
+| POST   | `/auth/sign-out`       | ✅ OK  | Acepta `csrfmiddlewaretoken` en form-body — compatible con patrón Django del frontend. |
+| POST   | `/auth/email-check`    | 🐛 FIXED | **Faltaba `is_password_autoset`** en respuesta. Corregido en fa067a8.             |
 
 ### 1.2 Magic link
 
