@@ -1173,3 +1173,129 @@ async fn issue_labels_map(
     for row in rows { map.entry(row.issue_id).or_default().push(row.label_id); }
     Ok(map)
 }
+
+// ── POST /workspaces/{slug}/projects/{project_id}/bulk-operation-issues/ ──────
+//
+// Bulk-updates properties of multiple issues in a single request.
+// Mirror of BulkIssueOperationEndpoint in Django.
+// Payload: { issue_ids: [], properties: { state_id?, priority?, label_ids?,
+//            assignee_ids?, start_date?, target_date?, module_ids?, cycle_id? } }
+
+#[derive(Debug, serde::Deserialize)]
+pub struct BulkOperationProperties {
+    pub state_id: Option<Uuid>,
+    pub priority: Option<String>,
+    pub label_ids: Option<Vec<Uuid>>,
+    pub assignee_ids: Option<Vec<Uuid>>,
+    pub start_date: Option<String>,
+    pub target_date: Option<String>,
+    pub module_ids: Option<Vec<Uuid>>,
+    pub cycle_id: Option<Uuid>,
+}
+
+#[derive(Debug, serde::Deserialize)]
+pub struct BulkOperationRequest {
+    pub issue_ids: Vec<Uuid>,
+    pub properties: BulkOperationProperties,
+}
+
+pub async fn bulk_operation_issues(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Json(body): Json<BulkOperationRequest>,
+) -> Result<impl IntoResponse, AppError> {
+    if body.issue_ids.is_empty() {
+        return Ok(StatusCode::NO_CONTENT);
+    }
+
+    require_role(guard.member.role, ROLE_MEMBER)?;
+
+    let now: chrono::DateTime<chrono::FixedOffset> = Utc::now().into();
+    let props = &body.properties;
+
+    for issue_id in &body.issue_ids {
+        let issue = issues::Entity::find_by_id(*issue_id)
+            .active()
+            .filter(issues::Column::ProjectId.eq(guard.project.id))
+            .one(&state.db)
+            .await
+            .map_err(AppError::Database)?;
+
+        let Some(issue) = issue else { continue };
+
+        let mut am: issues::ActiveModel = issue.into();
+        if let Some(v) = props.state_id { am.state_id = Set(Some(v)); }
+        if let Some(ref v) = props.priority { am.priority = Set(v.clone()); }
+        if let Some(ref v) = props.start_date {
+            am.start_date = Set(v.parse::<chrono::NaiveDate>().ok());
+        }
+        if let Some(ref v) = props.target_date {
+            am.target_date = Set(v.parse::<chrono::NaiveDate>().ok());
+        }
+        am.updated_at = Set(now);
+        am.updated_by_id = Set(Some(guard.user.id));
+        am.update(&state.db).await.map_err(AppError::Database)?;
+
+        // Update assignees
+        if let Some(ref assignee_ids) = props.assignee_ids {
+            // Remove existing
+            let existing = issue_assignees::Entity::find()
+                .filter(issue_assignees::Column::IssueId.eq(*issue_id))
+                .filter(issue_assignees::Column::DeletedAt.is_null())
+                .all(&state.db)
+                .await
+                .map_err(AppError::Database)?;
+            for ea in existing {
+                let mut a: issue_assignees::ActiveModel = ea.into();
+                a.deleted_at = Set(Some(now));
+                a.update(&state.db).await.map_err(AppError::Database)?;
+            }
+            // Insert new
+            for uid in assignee_ids {
+                issue_assignees::ActiveModel {
+                    id: Set(Uuid::new_v4()),
+                    issue_id: Set(*issue_id),
+                    assignee_id: Set(*uid),
+                    project_id: Set(guard.project.id),
+                    workspace_id: Set(guard.workspace.id),
+                    created_by_id: Set(Some(guard.user.id)),
+                    updated_by_id: Set(Some(guard.user.id)),
+                    created_at: Set(now),
+                    updated_at: Set(now),
+                    deleted_at: Set(None),
+                }.insert(&state.db).await.map_err(AppError::Database)?;
+            }
+        }
+
+        // Update labels
+        if let Some(ref label_ids) = props.label_ids {
+            let existing = issue_labels::Entity::find()
+                .filter(issue_labels::Column::IssueId.eq(*issue_id))
+                .filter(issue_labels::Column::DeletedAt.is_null())
+                .all(&state.db)
+                .await
+                .map_err(AppError::Database)?;
+            for el in existing {
+                let mut l: issue_labels::ActiveModel = el.into();
+                l.deleted_at = Set(Some(now));
+                l.update(&state.db).await.map_err(AppError::Database)?;
+            }
+            for lid in label_ids {
+                issue_labels::ActiveModel {
+                    id: Set(Uuid::new_v4()),
+                    issue_id: Set(*issue_id),
+                    label_id: Set(*lid),
+                    project_id: Set(guard.project.id),
+                    workspace_id: Set(guard.workspace.id),
+                    created_by_id: Set(Some(guard.user.id)),
+                    updated_by_id: Set(Some(guard.user.id)),
+                    created_at: Set(now),
+                    updated_at: Set(now),
+                    deleted_at: Set(None),
+                }.insert(&state.db).await.map_err(AppError::Database)?;
+            }
+        }
+    }
+
+    Ok(StatusCode::NO_CONTENT)
+}

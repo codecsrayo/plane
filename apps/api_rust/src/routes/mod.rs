@@ -1696,7 +1696,8 @@ pub fn build_router(state: AppState) -> Router {
         )
         .route(
             "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/subscribe",
-            post(issue_extras::subscribe_to_issue)
+            get(issue_extras::get_issue_subscription_status)
+                .post(issue_extras::subscribe_to_issue)
                 .delete(issue_extras::unsubscribe_from_issue),
         )
         .route(
@@ -1848,6 +1849,10 @@ pub fn build_router(state: AppState) -> Router {
         .route(
             "/workspaces/{slug}/projects/{project_id}/bulk-archive-issues",
             post(issue_extras2::bulk_archive_issues),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/bulk-operation-issues",
+            post(issue_extras2::bulk_operation_issues),
         )
         .route(
             "/workspaces/{slug}/projects/{project_id}/issue-dates",

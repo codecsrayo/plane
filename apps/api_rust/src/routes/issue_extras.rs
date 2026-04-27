@@ -1650,3 +1650,30 @@ pub async fn delete_issue_subscriber(
 
     Ok(StatusCode::NO_CONTENT)
 }
+
+/// GET /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/subscribe/
+/// Checks whether the current user is subscribed to the issue.
+/// Returns { subscribed: bool } — mirror of IssueSubscriberEndpoint.get in Django.
+#[utoipa::path(
+    get, path = "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/subscribe/",
+    tag = "Issues", security((("sessionAuth" = []))),
+    responses(
+        (status = 200, description = "Subscription status"),
+    )
+)]
+pub async fn get_issue_subscription_status(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Path((_slug, _project_id, issue_id)): Path<(String, Uuid, Uuid)>,
+) -> Result<impl IntoResponse, AppError> {
+    let subscribed = issue_subscribers::Entity::find()
+        .active()
+        .filter(issue_subscribers::Column::IssueId.eq(issue_id))
+        .filter(issue_subscribers::Column::SubscriberId.eq(guard.user.id))
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .is_some();
+
+    Ok(Json(serde_json::json!({ "subscribed": subscribed })))
+}
