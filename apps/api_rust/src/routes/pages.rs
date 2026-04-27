@@ -1199,6 +1199,17 @@ pub async fn pages_summary(
 }
 // ── GET /workspaces/{slug}/projects/{project_id}/favorite-pages/ ─────────────
 /// Lista las páginas marcadas como favoritas por el usuario en el proyecto.
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/projects/{project_id}/favorite-pages/",
+    tag = "Pages",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project ID"),
+    ),
+    responses((status = 200, description = "Lista de páginas favoritas")),
+    security(("TokenAuth" = []))
+)]
 pub async fn list_favorite_pages(
     State(state): State<AppState>,
     guard: ProjectMemberGuard,
@@ -1246,6 +1257,17 @@ pub async fn list_favorite_pages(
 
 // ── GET /workspaces/{slug}/projects/{project_id}/archived-pages/ ─────────────
 /// Lista las páginas archivadas del proyecto.
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/projects/{project_id}/archived-pages/",
+    tag = "Pages",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project ID"),
+    ),
+    responses((status = 200, description = "Lista de páginas archivadas")),
+    security(("TokenAuth" = []))
+)]
 pub async fn list_archived_pages(
     State(state): State<AppState>,
     guard: ProjectMemberGuard,
@@ -1295,6 +1317,18 @@ pub async fn list_archived_pages(
 
 // ── POST /workspaces/{slug}/projects/{project_id}/pages/{page_id}/move/ ──────
 /// Mueve una página a otro proyecto del mismo workspace.
+#[utoipa::path(
+    post,
+    path = "/api/workspaces/{slug}/projects/{project_id}/pages/{page_id}/move/",
+    tag = "Pages",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("project_id" = Uuid, Path, description = "Project ID"),
+        ("page_id" = Uuid, Path, description = "Page ID"),
+    ),
+    responses((status = 200, description = "Página movida")),
+    security(("TokenAuth" = []))
+)]
 pub async fn move_page(
     State(state): State<AppState>,
     guard: ProjectMemberGuard,
