@@ -37,6 +37,8 @@ pub struct LabelResponse {
     pub name: String,
     pub description: String,
     pub color: String,
+    // Frontend IIssueLabel expects "parent" not "parent_id"
+    #[serde(rename = "parent")]
     pub parent_id: Option<Uuid>,
     pub project_id: Option<Uuid>,
     pub workspace_id: Uuid,

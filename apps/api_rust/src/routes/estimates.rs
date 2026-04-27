@@ -67,10 +67,15 @@ pub struct EstimateResponse {
     pub description: String,
     pub r#type: String,
     pub last_used: bool,
+    // Frontend IEstimate uses "project" and "workspace" (not project_id/workspace_id)
+    #[serde(rename = "project")]
     pub project_id: Uuid,
+    #[serde(rename = "workspace")]
     pub workspace_id: Uuid,
     pub points: Vec<EstimatePointResponse>,
+    #[serde(rename = "created_by")]
     pub created_by_id: Option<Uuid>,
+    pub updated_by: Option<Uuid>,
     pub created_at: chrono::DateTime<chrono::FixedOffset>,
     pub updated_at: chrono::DateTime<chrono::FixedOffset>,
 }
@@ -135,6 +140,7 @@ async fn enrich_estimate(
         project_id: est.project_id,
         workspace_id: est.workspace_id,
         created_by_id: est.created_by_id,
+        updated_by: est.updated_by_id,
         created_at: est.created_at,
         updated_at: est.updated_at,
         points: points.into_iter().map(EstimatePointResponse::from_model).collect(),

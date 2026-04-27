@@ -79,6 +79,8 @@ pub struct StateResponse {
     pub group: String,
     /// Posición normalizada dentro del grupo (calculada en tiempo de respuesta).
     pub sequence: f64,
+    /// Alias de sequence — requerido por IState del frontend (usado en StateGroupIcon como percentage).
+    pub order: f64,
     pub default: bool,
     pub is_triage: bool,
     pub project_id: Uuid,
@@ -101,6 +103,7 @@ impl From<&states::Model> for StateResponse {
             slug: s.slug.clone(),
             group: s.group.clone(),
             sequence: s.sequence,
+            order: s.sequence,
             default: s.default,
             is_triage: s.is_triage,
             project_id: s.project_id,
