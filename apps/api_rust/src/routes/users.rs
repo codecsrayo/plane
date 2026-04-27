@@ -62,16 +62,23 @@ pub struct UserMeResponse {
     pub first_name: String,
     pub last_name: String,
     pub avatar: String,
+    /// Computed from avatar_asset_id or legacy avatar string (paridad Django User.avatar_url).
+    pub avatar_url: Option<String>,
     pub cover_image: Option<String>,
+    /// Computed from cover_image_asset or cover_image (paridad Django User.cover_image_url).
+    pub cover_image_url: Option<String>,
     pub is_active: bool,
     pub is_bot: bool,
     pub is_email_verified: bool,
     pub is_password_autoset: bool,
     pub is_superuser: bool,
     pub is_managed: bool,
+    pub is_tour_completed: bool,
     pub user_timezone: String,
+    pub last_login_medium: String,
     pub date_joined: DateTime<FixedOffset>,
     pub last_login: Option<DateTime<FixedOffset>>,
+    pub mobile_number: Option<String>,
 }
 
 /// Settings del usuario (`/users/me/settings/`).
@@ -192,6 +199,22 @@ pub struct TourCompletedRequest {
 // ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ Conversiones ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ
 
 fn user_to_me_response(u: &users::Model) -> UserMeResponse {
+    // Compute avatar_url: prefer asset-based URL, fall back to legacy avatar string.
+    let avatar_url = if let Some(asset_id) = u.avatar_asset_id {
+        Some(format!("/api/assets/v2/static/{}/", asset_id))
+    } else if !u.avatar.is_empty() {
+        Some(u.avatar.clone())
+    } else {
+        None
+    };
+
+    // Compute cover_image_url: prefer asset-based URL, fall back to cover_image.
+    let cover_image_url = if let Some(asset_id) = u.cover_image_asset_id {
+        Some(format!("/api/assets/v2/static/{}/", asset_id))
+    } else {
+        u.cover_image.clone()
+    };
+
     UserMeResponse {
         id: u.id,
         username: u.username.clone(),
@@ -200,16 +223,21 @@ fn user_to_me_response(u: &users::Model) -> UserMeResponse {
         first_name: u.first_name.clone(),
         last_name: u.last_name.clone(),
         avatar: u.avatar.clone(),
+        avatar_url,
         cover_image: u.cover_image.clone(),
+        cover_image_url,
         is_active: u.is_active,
         is_bot: u.is_bot,
         is_email_verified: u.is_email_verified,
         is_password_autoset: u.is_password_autoset,
         is_superuser: u.is_superuser,
         is_managed: u.is_managed,
+        is_tour_completed: u.is_tour_completed,
         user_timezone: u.user_timezone.clone(),
+        last_login_medium: u.last_login_medium.clone(),
         date_joined: u.date_joined,
         last_login: u.last_login,
+        mobile_number: u.mobile_number.clone(),
     }
 }
 
