@@ -333,14 +333,14 @@ Rutas con rate limiting. Todas devuelven cookies de sesión cuando exitosas.
 | POST   | `/auth/magic-sign-in` (+ `/auth/spaces/magic-sign-in`)   | 🐛 FIXED | Comparación de código no era constant-time. Corregido con `is_valid_csrf()` (751e998). |
 | POST   | `/auth/magic-sign-up` (+ `/auth/spaces/magic-sign-up`)   | 🐛 FIXED | Mismo fix. Form-body `{ email, code, next_path }`. Contrato correcto. |
 
-### 1.3 Password
+### 1.3 Password ✅ Revisado
 
-| Método | Path                                                       |
-| ------ | ---------------------------------------------------------- |
-| POST   | `/auth/change-password`                                    |
-| POST   | `/auth/set-password`                                       |
-| POST   | `/auth/forgot-password` (+ `/auth/spaces/forgot-password`) |
-| POST   | `/auth/reset-password/{uidb64}/{token}` (+ versión spaces) |
+| Método | Path                                                       | Estado | Notas |
+| ------ | ---------------------------------------------------------- | ------ | ----- |
+| POST   | `/auth/change-password`                                    | ✅ OK  | JSON + X-CSRFTOKEN header. `old_password` opcional si `is_password_autoset`. |
+| POST   | `/auth/set-password`                                       | ✅ OK  | JSON + X-CSRFTOKEN header. Guard correcto para usuarios con password real. |
+| POST   | `/auth/forgot-password` (+ `/auth/spaces/forgot-password`) | ✅ OK  | JSON `{ email }`. Token almacenado en Redis 24h. |
+| POST   | `/auth/reset-password/{uidb64}/{token}` (+ versión spaces) | 🐛 FIXED | `constant_time_eq` custom reemplazado por `openssl::memcmp` (a26a455). Form-body correcto. |
 
 ### 1.4 OAuth (initiate / callback)
 
