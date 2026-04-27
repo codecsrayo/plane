@@ -408,10 +408,12 @@ pub async fn github_user_callback(
         status,
         Json(UserGithubConnectionResponse {
             id: conn.id,
+            provider: "github",
             github_user_id: conn.github_user_id,
             github_username: conn.github_username,
             github_avatar_url: conn.github_avatar_url,
             created,
+            metadata: None,
         }),
     ))
 }

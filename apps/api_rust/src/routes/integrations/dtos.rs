@@ -123,10 +123,12 @@ impl PrStateMappingResponse {
 #[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct UserGithubConnectionResponse {
     pub id: Uuid,
+    pub provider: &'static str,
     pub github_user_id: String,
     pub github_username: String,
     pub github_avatar_url: String,
     pub created: bool,
+    pub metadata: Option<serde_json::Value>,
 }
 
 // ── Request DTOs ──────────────────────────────────────────────────────────────
