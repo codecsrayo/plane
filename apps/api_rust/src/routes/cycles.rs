@@ -54,10 +54,18 @@ pub struct CycleResponse {
     pub owned_by_id: Uuid,
     pub archived_at: Option<chrono::DateTime<chrono::FixedOffset>>,
     pub sort_order: f64,
+    // Frontend ICycle uses "created_by" not "created_by_id"
+    #[serde(rename = "created_by")]
     pub created_by_id: Option<Uuid>,
+    // Frontend ICycle uses "updated_by" not "updated_by_id"
+    #[serde(rename = "updated_by")]
     pub updated_by_id: Option<Uuid>,
     pub created_at: chrono::DateTime<chrono::FixedOffset>,
     pub updated_at: chrono::DateTime<chrono::FixedOffset>,
+    pub is_favorite: bool,
+    pub view_props: serde_json::Value,
+    pub progress_snapshot: serde_json::Value,
+    pub version: i32,
 }
 
 impl CycleResponse {
@@ -96,6 +104,10 @@ impl CycleResponse {
             updated_by_id: m.updated_by_id,
             created_at: m.created_at,
             updated_at: m.updated_at,
+            is_favorite: false,
+            view_props: m.view_props,
+            progress_snapshot: m.progress_snapshot,
+            version: m.version,
         }
     }
 }
@@ -165,7 +177,27 @@ pub async fn list_cycles(
         .await
         .map_err(AppError::Database)?;
 
-    Ok(Json(rows.into_iter().map(CycleResponse::from_model).collect()))
+    // Batch-load user favorites for cycles in this project
+    let fav_ids: std::collections::HashSet<Uuid> = user_favorites::Entity::find()
+        .filter(user_favorites::Column::UserId.eq(guard.user.id))
+        .filter(user_favorites::Column::ProjectId.eq(guard.project.id))
+        .filter(user_favorites::Column::EntityType.eq("cycle"))
+        .filter(user_favorites::Column::DeletedAt.is_null())
+        .all(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .into_iter()
+        .filter_map(|f| f.entity_identifier)
+        .collect();
+
+    let result = rows.into_iter().map(|m| {
+        let is_fav = fav_ids.contains(&m.id);
+        let mut r = CycleResponse::from_model(m);
+        r.is_favorite = is_fav;
+        r
+    }).collect();
+
+    Ok(Json(result))
 }
 
 // ── POST /workspaces/{slug}/projects/{project_id}/cycles/ ────────────────────
