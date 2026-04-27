@@ -142,10 +142,17 @@ async fn enrich_notifications(
             .map_err(AppError::Database)?
             .into_iter()
             .map(|u| {
+                let avatar_url = if let Some(asset_id) = u.avatar_asset_id {
+                    Some(format!("/api/assets/v2/static/{}/", asset_id))
+                } else if !u.avatar.is_empty() {
+                    Some(u.avatar)
+                } else {
+                    None
+                };
                 (u.id, UserLite {
                     id: u.id,
                     display_name: u.display_name,
-                    avatar_url: u.avatar,
+                    avatar_url,
                 })
             })
             .collect()
