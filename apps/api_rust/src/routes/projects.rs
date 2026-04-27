@@ -3169,7 +3169,7 @@ pub async fn update_project_member_preferences(
 // de cada proyecto si tiene una invitación pendiente o el proyecto es público.
 // Mirror de `UserProjectInvitationsViewSet.create` en Django.
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct BulkJoinProjectsRequest {
     pub project_ids: Vec<Uuid>,
 }
@@ -3241,9 +3241,10 @@ pub async fn join_user_project_invitations(
             id: Set(Uuid::new_v4()),
             project_id: Set(project.id),
             workspace_id: Set(ws.id),
-            member_id: Set(user.id),
+            member_id: Set(Some(user.id)),
             role: Set(role),
             is_active: Set(true),
+            comment: Set(None),
             view_props: Set(serde_json::json!({})),
             default_props: Set(serde_json::json!({})),
             preferences: Set(serde_json::json!({})),

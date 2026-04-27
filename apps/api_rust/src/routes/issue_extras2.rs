@@ -1209,7 +1209,7 @@ pub async fn bulk_operation_issues(
         return Ok(StatusCode::NO_CONTENT);
     }
 
-    require_role(guard.member.role, ROLE_MEMBER)?;
+    require_role(guard.project_member.role, guard.workspace_member.role, ROLE_MEMBER)?;
 
     let now: chrono::DateTime<chrono::FixedOffset> = Utc::now().into();
     let props = &body.properties;
