@@ -367,6 +367,7 @@ pub mod v1_router;
         users::generate_email_code,
         users::update_user_email,
         projects::join_project_invitation,
+        projects::join_user_project_invitations,
         projects::list_user_project_invitations,
         external::github_webhook,
         external::gitlab_webhook,
@@ -1528,7 +1529,7 @@ pub fn build_router(state: AppState) -> Router {
         )
         // User email update
         .route("/users/me/email/generate-code", post(users::generate_email_code))
-        .route("/users/me/email", post(users::update_user_email))
+        .route("/users/me/email", post(users::update_user_email).patch(users::update_user_email))
         // Project join (public) + user project invitations
         .route(
             "/workspaces/{slug}/projects/{project_id}/join/{pk}",
@@ -1536,7 +1537,8 @@ pub fn build_router(state: AppState) -> Router {
         )
         .route(
             "/users/me/workspaces/{slug}/projects/invitations",
-            get(projects::list_user_project_invitations),
+            get(projects::list_user_project_invitations)
+                .post(projects::join_user_project_invitations),
         )
         // Incoming webhooks (public)
         .route("/github-webhook", post(external::github_webhook))

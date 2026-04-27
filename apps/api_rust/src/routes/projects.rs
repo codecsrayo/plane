@@ -3148,3 +3148,112 @@ pub async fn update_project_member_preferences(
         preferences: updated.preferences,
     }))
 }
+
+// ─── POST /api/users/me/workspaces/{slug}/projects/invitations ────────────────
+//
+// Bulk-join: acepta una lista de project_ids y agrega al usuario como miembro
+// de cada proyecto si tiene una invitación pendiente o el proyecto es público.
+// Mirror de `UserProjectInvitationsViewSet.create` en Django.
+
+#[derive(Debug, Deserialize)]
+pub struct BulkJoinProjectsRequest {
+    pub project_ids: Vec<Uuid>,
+}
+
+#[utoipa::path(
+    post,
+    path = "/users/me/workspaces/{slug}/projects/invitations",
+    tag = "Projects",
+    request_body = inline(BulkJoinProjectsRequest),
+    params(("slug" = String, Path, description = "Workspace slug")),
+    responses(
+        (status = 200, description = "Joined projects"),
+        (status = 404, description = "Workspace not found"),
+    ),
+    security((("sessionAuth" = [])))
+)]
+pub async fn join_user_project_invitations(
+    AnyAuth(user): AnyAuth,
+    State(state): State<AppState>,
+    Path(slug): Path<String>,
+    Json(body): Json<BulkJoinProjectsRequest>,
+) -> Result<impl IntoResponse, AppError> {
+    let ws = workspace_by_slug(&state.db, &slug).await?;
+    let now = chrono::Utc::now().fixed_offset();
+    let mut joined: Vec<serde_json::Value> = Vec::new();
+
+    for project_id in &body.project_ids {
+        // Verificar que el proyecto existe y pertenece al workspace
+        let project = projects::Entity::find_by_id(*project_id)
+            .filter(projects::Column::WorkspaceId.eq(ws.id))
+            .active()
+            .one(&state.db)
+            .await
+            .map_err(AppError::Database)?;
+
+        let Some(project) = project else { continue };
+
+        // Verificar si ya es miembro
+        let already_member = project_members::Entity::find()
+            .filter(project_members::Column::ProjectId.eq(project.id))
+            .filter(project_members::Column::MemberId.eq(user.id))
+            .filter(project_members::Column::IsActive.eq(true))
+            .active()
+            .one(&state.db)
+            .await
+            .map_err(AppError::Database)?
+            .is_some();
+
+        if already_member {
+            joined.push(serde_json::json!({"project_id": project_id, "status": "already_member"}));
+            continue;
+        }
+
+        // Buscar invitación pendiente
+        let invite = project_member_invites::Entity::find()
+            .filter(project_member_invites::Column::ProjectId.eq(project.id))
+            .filter(project_member_invites::Column::Email.eq(
+                user.email.as_deref().unwrap_or(""),
+            ))
+            .active()
+            .one(&state.db)
+            .await
+            .map_err(AppError::Database)?;
+
+        let role = invite.as_ref().map(|i| i.role).unwrap_or(10); // default: member
+
+        // Crear membresía
+        project_members::ActiveModel {
+            id: Set(Uuid::new_v4()),
+            project_id: Set(project.id),
+            workspace_id: Set(ws.id),
+            member_id: Set(user.id),
+            role: Set(role),
+            is_active: Set(true),
+            view_props: Set(serde_json::json!({})),
+            default_props: Set(serde_json::json!({})),
+            preferences: Set(serde_json::json!({})),
+            sort_order: Set(65535.0),
+            created_by_id: Set(Some(user.id)),
+            updated_by_id: Set(Some(user.id)),
+            created_at: Set(now),
+            updated_at: Set(now),
+            deleted_at: Set(None),
+        }
+        .insert(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+        // Marcar invitación como aceptada si existía
+        if let Some(inv) = invite {
+            let mut am: project_member_invites::ActiveModel = inv.into();
+            am.accepted = Set(true);
+            am.updated_at = Set(now);
+            let _ = am.update(&state.db).await;
+        }
+
+        joined.push(serde_json::json!({"project_id": project_id, "status": "joined"}));
+    }
+
+    Ok(Json(joined))
+}
