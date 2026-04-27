@@ -325,13 +325,13 @@ Rutas con rate limiting. Todas devuelven cookies de sesión cuando exitosas.
 | POST   | `/auth/sign-out`       | ✅ OK  | Acepta `csrfmiddlewaretoken` en form-body — compatible con patrón Django del frontend. |
 | POST   | `/auth/email-check`    | 🐛 FIXED | **Faltaba `is_password_autoset`** en respuesta. Corregido en fa067a8.             |
 
-### 1.2 Magic link
+### 1.2 Magic link ✅ Revisado
 
-| Método | Path                                                     |
-| ------ | -------------------------------------------------------- |
-| POST   | `/auth/magic-generate` (+ `/auth/spaces/magic-generate`) |
-| POST   | `/auth/magic-sign-in` (+ `/auth/spaces/magic-sign-in`)   |
-| POST   | `/auth/magic-sign-up` (+ `/auth/spaces/magic-sign-up`)   |
+| Método | Path                                                     | Estado | Notas |
+| ------ | -------------------------------------------------------- | ------ | ----- |
+| POST   | `/auth/magic-generate` (+ `/auth/spaces/magic-generate`) | ✅ OK  | JSON body `{ email }`. Respuesta `{ key }` ignorada por frontend. Rutas registradas. |
+| POST   | `/auth/magic-sign-in` (+ `/auth/spaces/magic-sign-in`)   | 🐛 FIXED | Comparación de código no era constant-time. Corregido con `is_valid_csrf()` (751e998). |
+| POST   | `/auth/magic-sign-up` (+ `/auth/spaces/magic-sign-up`)   | 🐛 FIXED | Mismo fix. Form-body `{ email, code, next_path }`. Contrato correcto. |
 
 ### 1.3 Password
 
