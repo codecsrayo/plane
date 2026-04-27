@@ -41,8 +41,8 @@ use crate::{
     },
     entities::{
         comment_reactions, issue_activities, issue_comments, issue_links,
-        issue_reactions, issue_relations, issue_subscribers, issues, projects, states,
-        users, workspaces,
+        issue_reactions, issue_relations, issue_subscribers, issues, states,
+        users,
     },
     error::AppError,
     routes::workspaces::{user_to_lite, UserLiteDto},
