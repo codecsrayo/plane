@@ -536,79 +536,82 @@ Todos requieren sesión activa.
 
 ---
 
-## 7. Issues / Work Items (núcleo)
+## 7. Issues / Work Items (núcleo) ✅ Revisado
 
-### 7.1 CRUD básico
+### 7.1 CRUD básico ✅
 
-| Método               | Path                                                                    |
-| -------------------- | ----------------------------------------------------------------------- |
-| GET / POST           | `/api/workspaces/{slug}/projects/{project_id}/issues`                   |
-| GET                  | `/api/workspaces/{slug}/projects/{project_id}/issues/list`              |
-| GET                  | `/api/workspaces/{slug}/projects/{project_id}/issues-detail`            |
-| GET                  | `/api/workspaces/{slug}/projects/{project_id}/v2/issues`                |
-| GET / PATCH / DELETE | `/api/workspaces/{slug}/projects/{project_id}/issues/{pk}`              |
-| GET                  | `/api/workspaces/{slug}/work-items/{combined}` (lookup por `PROJ-1234`) |
-| GET                  | `/api/workspaces/{slug}/issues/{combined}` (alias)                      |
+| Método               | Path                                                                    | Estado |
+| -------------------- | ----------------------------------------------------------------------- | ------ |
+| GET / POST           | `/api/workspaces/{slug}/projects/{project_id}/issues`                   | ✅ OK  |
+| GET                  | `/api/workspaces/{slug}/projects/{project_id}/issues/list`              | ✅ OK  |
+| GET                  | `/api/workspaces/{slug}/projects/{project_id}/issues-detail`            | ✅ OK  |
+| GET                  | `/api/workspaces/{slug}/projects/{project_id}/v2/issues`                | ✅ OK  |
+| GET / PATCH / DELETE | `/api/workspaces/{slug}/projects/{project_id}/issues/{pk}`              | ✅ OK  |
+| GET                  | `/api/workspaces/{slug}/work-items/{combined}` (lookup por `PROJ-1234`) | ✅ OK  |
+| GET                  | `/api/workspaces/{slug}/issues/{combined}` (alias)                      | ✅ OK  |
 
-### 7.2 Comments / Reactions / Links / Relations / Subscribers
+### 7.2 Comments / Reactions / Links / Relations / Subscribers ✅
 
-| Método               | Path                                                        |
-| -------------------- | ----------------------------------------------------------- |
-| GET / POST           | `…/issues/{issue_id}/comments`                              |
-| GET / PATCH / DELETE | `…/issues/{issue_id}/comments/{pk}`                         |
-| GET / POST           | `…/issues/{issue_id}/reactions`                             |
-| DELETE               | `…/issues/{issue_id}/reactions/{reaction_code}`             |
-| GET / POST           | `…/comments/{comment_id}/reactions`                         |
-| DELETE               | `…/comments/{comment_id}/reactions/{reaction_code}`         |
-| GET / POST           | `…/issues/{issue_id}/issue-links` (canónica)                |
-| PATCH / DELETE       | `…/issues/{issue_id}/issue-links/{pk}`                      |
-| GET / POST           | `…/issues/{issue_id}/links` (alias corto)                   |
-| PATCH / DELETE       | `…/issues/{issue_id}/links/{pk}`                            |
-| GET / POST           | `…/work-items/{issue_id}/links` (alias work-items)          |
-| PATCH / DELETE       | `…/work-items/{issue_id}/links/{pk}`                        |
-| GET / POST           | `…/issues/{issue_id}/issue-relation`                        |
-| POST                 | `…/issues/{issue_id}/remove-relation` (**POST**, no DELETE) |
-| GET                  | `…/issues/{issue_id}/issue-subscribers`                     |
-| DELETE               | `…/issues/{issue_id}/issue-subscribers/{subscriber_id}`     |
-| POST / DELETE        | `…/issues/{issue_id}/subscribe`                             |
-| GET / POST           | `…/issues/{issue_id}/sub-issues`                            |
+| Método               | Path                                                        | Estado | Notas |
+| -------------------- | ----------------------------------------------------------- | ------ | ----- |
+| GET / POST           | `…/issues/{issue_id}/comments`                              | ✅ OK  |       |
+| GET / PATCH / DELETE | `…/issues/{issue_id}/comments/{pk}`                         | ✅ OK  |       |
+| GET / POST           | `…/issues/{issue_id}/reactions`                             | ✅ OK  |       |
+| DELETE               | `…/issues/{issue_id}/reactions/{reaction_code}`             | ✅ OK  |       |
+| GET / POST           | `…/comments/{comment_id}/reactions`                         | ✅ OK  |       |
+| DELETE               | `…/comments/{comment_id}/reactions/{reaction_code}`         | ✅ OK  |       |
+| GET / POST           | `…/issues/{issue_id}/issue-links`                           | ✅ OK  |       |
+| PATCH / DELETE       | `…/issues/{issue_id}/issue-links/{pk}`                      | ✅ OK  |       |
+| GET / POST           | `…/issues/{issue_id}/links` (alias)                         | ✅ OK  |       |
+| PATCH / DELETE       | `…/issues/{issue_id}/links/{pk}`                            | ✅ OK  |       |
+| GET / POST           | `…/work-items/{issue_id}/links`                             | ✅ OK  |       |
+| PATCH / DELETE       | `…/work-items/{issue_id}/links/{pk}`                        | ✅ OK  |       |
+| GET / POST           | `…/issues/{issue_id}/issue-relation`                        | ✅ OK  |       |
+| POST                 | `…/issues/{issue_id}/remove-relation`                       | ✅ OK  |       |
+| GET                  | `…/issues/{issue_id}/issue-subscribers`                     | ✅ OK  |       |
+| DELETE               | `…/issues/{issue_id}/issue-subscribers/{subscriber_id}`     | ✅ OK  |       |
+| GET / POST / DELETE  | `…/issues/{issue_id}/subscribe`                             | 🐛 FIXED | GET faltaba — status check `{ subscribed: bool }` (2d3140e). |
+| GET / POST           | `…/issues/{issue_id}/sub-issues`                            | ✅ OK  |       |
 
-### 7.3 Activity / History / Versions
+### 7.3 Activity / History / Versions ✅
 
-| Método | Path                                                           |
-| ------ | -------------------------------------------------------------- |
-| GET    | `…/issues/{issue_id}/activities` (alias `/history`)            |
-| GET    | `…/issues/{issue_id}/history`                                  |
-| GET    | `…/issues/{issue_id}/activities/{pk}`                          |
-| GET    | `…/work-items/{issue_id}/activities`                           |
-| GET    | `…/work-items/{issue_id}/activities/{pk}`                      |
-| GET    | `…/issues/{issue_id}/versions`                                 |
-| GET    | `…/issues/{issue_id}/versions/{pk}`                            |
-| GET    | `…/work-items/{work_item_id}/description-versions`             |
-| GET    | `…/work-items/{work_item_id}/description-versions/{pk}`        |
-| GET    | `…/intake-work-items/{work_item_id}/description-versions`      |
-| GET    | `…/intake-work-items/{work_item_id}/description-versions/{pk}` |
+| Método | Path                                                           | Estado | Notas |
+| ------ | -------------------------------------------------------------- | ------ | ----- |
+| GET    | `…/issues/{issue_id}/activities` (alias `/history`)            | 🐛 FIXED | `ActivityResponse` faltaba `actor_detail`, `project_detail`, `workspace_detail`, renames `actor`/`issue`/`project`. (ecc1a02). |
+| GET    | `…/issues/{issue_id}/history`                                  | 🐛 FIXED | Mismo fix. |
+| GET    | `…/issues/{issue_id}/activities/{pk}`                          | 🐛 FIXED | Mismo fix. |
+| GET    | `…/work-items/{issue_id}/activities`                           | 🐛 FIXED | Mismo fix. |
+| GET    | `…/work-items/{issue_id}/activities/{pk}`                      | 🐛 FIXED | Mismo fix. |
+| GET    | `…/issues/{issue_id}/versions`                                 | ✅ OK  |       |
+| GET    | `…/issues/{issue_id}/versions/{pk}`                            | ✅ OK  |       |
+| GET    | `…/work-items/{work_item_id}/description-versions`             | ✅ OK  |       |
+| GET    | `…/work-items/{work_item_id}/description-versions/{pk}`        | ✅ OK  |       |
+| GET    | `…/intake-work-items/{work_item_id}/description-versions`      | ✅ OK  |       |
+| GET    | `…/intake-work-items/{work_item_id}/description-versions/{pk}` | ✅ OK  |       |
 
-### 7.4 Attachments (V2)
+### 7.4 Attachments (V2) ✅
 
-| Método         | Path                                                                                        |
-| -------------- | ------------------------------------------------------------------------------------------- |
-| GET / POST     | `/api/assets/v2/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/attachments`      |
-| PATCH / DELETE | `/api/assets/v2/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/attachments/{pk}` |
-| GET / POST     | `…/issues/{issue_id}/issue-attachments` (legacy)                                            |
-| PATCH / DELETE | `…/issues/{issue_id}/issue-attachments/{pk}`                                                |
+| Método         | Path                                                                                        | Estado | Notas |
+| -------------- | ------------------------------------------------------------------------------------------- | ------ | ----- |
+| GET / POST     | `/api/assets/v2/…/issues/{issue_id}/attachments`                                            | ✅ OK  |       |
+| PATCH / DELETE | `/api/assets/v2/…/issues/{issue_id}/attachments/{pk}`                                       | ✅ OK  |       |
+| GET / POST     | `/api/assets/v2/…/work-items/{issue_id}/attachments`                                        | 🐛 FIXED | Alias faltaba para serviceType='work-items' (2472b0d). |
+| PATCH / DELETE | `/api/assets/v2/…/work-items/{issue_id}/attachments/{pk}`                                   | 🐛 FIXED | Alias faltaba (2472b0d). |
+| GET / POST     | `…/issues/{issue_id}/issue-attachments` (legacy)                                            | ✅ OK  |       |
+| PATCH / DELETE | `…/issues/{issue_id}/issue-attachments/{pk}`                                                | ✅ OK  |       |
 
-### 7.5 Archive / Bulk
+### 7.5 Archive / Bulk ✅
 
-| Método              | Path                       | Notas                                                     |
-| ------------------- | -------------------------- | --------------------------------------------------------- |
-| GET / POST / DELETE | `…/issues/{pk}/archive`    |                                                           |
-| GET                 | `…/archived-issues`        |                                                           |
-| GET                 | `…/deleted-issues`         |                                                           |
-| DELETE / POST       | `…/bulk-delete-issues`     | Acepta ambos métodos (DELETE-with-body inestable en CDNs) |
-| GET                 | `…/issues/{issue_id}/meta` |                                                           |
-| POST                | `…/bulk-archive-issues`    |                                                           |
-| POST                | `…/issue-dates`            | Bulk update fechas                                        |
+| Método              | Path                       | Estado | Notas |
+| ------------------- | -------------------------- | ------ | ----- |
+| GET / POST / DELETE | `…/issues/{pk}/archive`    | ✅ OK  |       |
+| GET                 | `…/archived-issues`        | ✅ OK  |       |
+| GET                 | `…/deleted-issues`         | ✅ OK  |       |
+| DELETE / POST       | `…/bulk-delete-issues`     | ✅ OK  |       |
+| GET                 | `…/issues/{issue_id}/meta` | ✅ OK  |       |
+| POST                | `…/bulk-archive-issues`    | ✅ OK  |       |
+| POST                | `…/bulk-operation-issues`  | 🐛 FIXED | Faltaba — llamado por bulkUpdateProperties del store (2d3140e). |
+| POST                | `…/issue-dates`            | ✅ OK  |       |
 
 ---
 
