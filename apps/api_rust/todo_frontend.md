@@ -476,30 +476,30 @@ Todos requieren sesión activa.
 
 ---
 
-## 5. Projects
+## 5. Projects ✅ Revisado
 
-| Método               | Path                                                                          | Notas                                 |
-| -------------------- | ----------------------------------------------------------------------------- | ------------------------------------- |
-| GET / POST           | `/api/workspaces/{slug}/projects`                                             |                                       |
-| GET                  | `/api/workspaces/{slug}/projects/details`                                     | **Literal antes que `/{project_id}`** |
-| GET / PATCH / DELETE | `/api/workspaces/{slug}/projects/{project_id}`                                |                                       |
-| GET / POST           | `/api/workspaces/{slug}/projects/{project_id}/members`                        |                                       |
-| GET / PATCH / DELETE | `/api/workspaces/{slug}/projects/{project_id}/members/{pk}`                   |                                       |
-| GET                  | `/api/workspaces/{slug}/projects/{project_id}/project-members/me`             | Permisos del usuario                  |
-| POST                 | `/api/workspaces/{slug}/projects/{project_id}/members/leave`                  |                                       |
-| GET / POST           | `/api/workspaces/{slug}/projects/{project_id}/project-views`                  | User views                            |
-| GET                  | `/api/workspaces/{slug}/projects/{project_id}/summary`                        |                                       |
-| POST / DELETE        | `/api/workspaces/{slug}/projects/{project_id}/archive`                        | DELETE = unarchive                    |
-| GET / POST           | `/api/workspaces/{slug}/user-favorite-projects`                               |                                       |
-| DELETE               | `/api/workspaces/{slug}/user-favorite-projects/{project_id}`                  |                                       |
-| GET / DELETE         | `/api/workspaces/{slug}/project-identifiers`                                  |                                       |
-| GET / POST           | `/api/workspaces/{slug}/projects/{project_id}/project-deploy-boards`          | POST = upsert                         |
-| GET / PATCH / DELETE | `/api/workspaces/{slug}/projects/{project_id}/project-deploy-boards/{pk}`     |                                       |
-| GET / PATCH          | `/api/workspaces/{slug}/projects/{project_id}/preferences/member/{member_id}` |                                       |
-| GET / PATCH          | `/api/workspaces/{slug}/projects/{project_id}/user-properties`                | get_or_create                         |
-| GET / POST           | `/api/workspaces/{slug}/projects/{project_id}/invitations`                    |                                       |
-| GET / DELETE         | `/api/workspaces/{slug}/projects/{project_id}/invitations/{pk}`               |                                       |
-| POST                 | `/api/workspaces/{slug}/projects/{project_id}/join/{pk}`                      | Public join                           |
+| Método               | Path                                                                          | Estado | Notas |
+| -------------------- | ----------------------------------------------------------------------------- | ------ | ----- |
+| GET / POST           | `/api/workspaces/{slug}/projects`                                             | ✅ OK  | `IPartialProject` completo. |
+| GET                  | `/api/workspaces/{slug}/projects/details`                                     | ✅ OK  | Literal registrado antes de `/{project_id}`. |
+| GET / PATCH / DELETE | `/api/workspaces/{slug}/projects/{project_id}`                                | ✅ OK  | Correcto. |
+| GET / POST           | `/api/workspaces/{slug}/projects/{project_id}/members`                        | ✅ OK  | Correcto. |
+| GET / PATCH / DELETE | `/api/workspaces/{slug}/projects/{project_id}/members/{pk}`                   | ✅ OK  | Correcto. |
+| GET                  | `/api/workspaces/{slug}/projects/{project_id}/project-members/me`             | ✅ OK  | Correcto. |
+| POST                 | `/api/workspaces/{slug}/projects/{project_id}/members/leave`                  | ✅ OK  | Correcto. |
+| GET / POST           | `/api/workspaces/{slug}/projects/{project_id}/project-views`                  | ✅ OK  | Correcto. |
+| GET                  | `/api/workspaces/{slug}/projects/{project_id}/summary`                        | ✅ OK  | Correcto. |
+| POST / DELETE        | `/api/workspaces/{slug}/projects/{project_id}/archive`                        | ✅ OK  | Correcto. |
+| GET / POST           | `/api/workspaces/{slug}/user-favorite-projects`                               | ✅ OK  | Correcto. |
+| DELETE               | `/api/workspaces/{slug}/user-favorite-projects/{project_id}`                  | ✅ OK  | Correcto. |
+| GET / DELETE         | `/api/workspaces/{slug}/project-identifiers`                                  | ✅ OK  | `{ exists: count, identifiers: [] }` correcto. |
+| GET / POST           | `/api/workspaces/{slug}/projects/{project_id}/project-deploy-boards`          | 🐛 FIXED | `project_id`→`project`, `workspace_id`→`workspace`; faltaban `created_by`, `updated_by`, `inbox`, `project_details`, `workspace_detail` (430a23a). |
+| GET / PATCH / DELETE | `/api/workspaces/{slug}/projects/{project_id}/project-deploy-boards/{pk}`     | 🐛 FIXED | Mismo fix struct. |
+| GET / PATCH          | `/api/workspaces/{slug}/projects/{project_id}/preferences/member/{member_id}` | ✅ OK  | Correcto. |
+| GET / PATCH          | `/api/workspaces/{slug}/projects/{project_id}/user-properties`                | ✅ OK  | get_or_create correcto. |
+| GET / POST           | `/api/workspaces/{slug}/projects/{project_id}/invitations`                    | ✅ OK  | Correcto. |
+| GET / DELETE         | `/api/workspaces/{slug}/projects/{project_id}/invitations/{pk}`               | ✅ OK  | Correcto. |
+| POST                 | `/api/workspaces/{slug}/projects/{project_id}/join/{pk}`                      | ✅ OK  | Correcto. |
 
 ---
 
