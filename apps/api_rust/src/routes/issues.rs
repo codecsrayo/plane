@@ -92,6 +92,7 @@ pub struct IssueDetailResponse {
     pub link_count: i64,
     pub is_draft: bool,
     pub archived_at: Option<chrono::NaiveDate>,
+    pub type_id: Option<Uuid>,
     // Extras propios de `IssueDetailSerializer` (no están en el shape list).
     pub description_html: String,
     pub is_subscribed: bool,
@@ -142,6 +143,7 @@ pub struct IssueCreateResponse {
     pub link_count: i64,
     pub is_draft: bool,
     pub archived_at: Option<chrono::NaiveDate>,
+    pub type_id: Option<Uuid>,
     pub deleted_at: Option<chrono::DateTime<chrono::FixedOffset>>,
 }
 
@@ -437,6 +439,7 @@ async fn build_detail_response(
         updated_by_id: issue_model.updated_by_id,
         is_draft: issue_model.is_draft,
         archived_at: issue_model.archived_at,
+        type_id: issue_model.type_id,
         description_html: issue_model.description_html,
         is_subscribed,
         is_intake,
@@ -484,6 +487,7 @@ async fn build_create_response(
         updated_by_id: issue_model.updated_by_id,
         is_draft: issue_model.is_draft,
         archived_at: issue_model.archived_at,
+        type_id: issue_model.type_id,
         deleted_at: issue_model.deleted_at,
     })
 }
@@ -777,6 +781,7 @@ pub async fn list_issues(
                 link_count: enrich.links.get(&id).copied().unwrap_or(0),
                 is_draft: m.is_draft,
                 archived_at: m.archived_at,
+                type_id: m.type_id,
                 state_group,
                 assignee_ids: enrich.assignees.remove(&id).unwrap_or_default(),
                 label_ids: enrich.labels.remove(&id).unwrap_or_default(),
@@ -1267,6 +1272,7 @@ pub async fn list_issues_by_ids(
                 link_count: enrich.links.get(&id).copied().unwrap_or(0),
                 is_draft: m.is_draft,
                 archived_at: m.archived_at,
+                type_id: m.type_id,
                 state_group,
                 assignee_ids: enrich.assignees.remove(&id).unwrap_or_default(),
                 label_ids: enrich.labels.remove(&id).unwrap_or_default(),
@@ -1390,6 +1396,7 @@ pub async fn list_issues_detail(
                 link_count: enrich.links.get(&id).copied().unwrap_or(0),
                 is_draft: m.is_draft,
                 archived_at: m.archived_at,
+                type_id: m.type_id,
                 state_group,
                 assignee_ids: enrich.assignees.remove(&id).unwrap_or_default(),
                 label_ids: enrich.labels.remove(&id).unwrap_or_default(),
@@ -1573,6 +1580,7 @@ pub async fn list_issues_v2(
                 updated_by: m.updated_by_id,
                 is_draft: m.is_draft,
                 archived_at: m.archived_at,
+                type_id: m.type_id,
                 module_ids: enrich.modules.remove(&id).unwrap_or_default(),
                 label_ids: enrich.labels.remove(&id).unwrap_or_default(),
                 assignee_ids: enrich.assignees.remove(&id).unwrap_or_default(),

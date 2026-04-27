@@ -56,14 +56,23 @@ pub struct PageResponse {
     pub id: Uuid,
     pub name: String,
     pub description_html: String,
+    pub description_json: serde_json::Value,
     pub access: i16,
+    #[serde(rename = "owned_by")]
     pub owned_by_id: Uuid,
+    #[serde(rename = "workspace")]
     pub workspace_id: Uuid,
+    #[serde(rename = "created_by")]
+    pub created_by_id: Option<Uuid>,
+    #[serde(rename = "updated_by")]
+    pub updated_by_id: Option<Uuid>,
     pub is_locked: bool,
+    pub is_favorite: bool,
     pub archived_at: Option<chrono::NaiveDate>,
+    pub deleted_at: Option<chrono::DateTime<chrono::FixedOffset>>,
     pub parent_id: Option<Uuid>,
     pub color: String,
-    pub created_by_id: Option<Uuid>,
+    pub logo_props: serde_json::Value,
     pub created_at: chrono::DateTime<chrono::FixedOffset>,
     pub updated_at: chrono::DateTime<chrono::FixedOffset>,
     /// UUIDs de los proyectos a los que pertenece la pÃ¡gina (M2M via
@@ -82,14 +91,19 @@ impl PageResponse {
             id: m.id,
             name: m.name,
             description_html: m.description_html,
+            description_json: m.description_json,
             access: m.access,
             owned_by_id: m.owned_by_id,
             workspace_id: m.workspace_id,
+            created_by_id: m.created_by_id,
+            updated_by_id: m.updated_by_id,
             is_locked: m.is_locked,
+            is_favorite: false,
             archived_at: m.archived_at,
+            deleted_at: m.deleted_at.map(Into::into),
             parent_id: m.parent_id,
             color: m.color,
-            created_by_id: m.created_by_id,
+            logo_props: m.logo_props,
             created_at: m.created_at,
             updated_at: m.updated_at,
             project_ids,
@@ -252,6 +266,34 @@ async fn fetch_pages_m2m(
     Ok((projects_by_page, labels_by_page))
 }
 
+/// Batch-load is_favorite for a list of PageResponse (single query, no N+1).
+async fn enrich_page_favorites(
+    db: &sea_orm::DatabaseConnection,
+    user_id: Uuid,
+    workspace_id: Uuid,
+    mut pages: Vec<PageResponse>,
+) -> Result<Vec<PageResponse>, AppError> {
+    if pages.is_empty() {
+        return Ok(pages);
+    }
+    let fav_ids: std::collections::HashSet<Uuid> = user_favorites::Entity::find()
+        .filter(user_favorites::Column::UserId.eq(user_id))
+        .filter(user_favorites::Column::WorkspaceId.eq(workspace_id))
+        .filter(user_favorites::Column::EntityType.eq("page"))
+        .filter(user_favorites::Column::DeletedAt.is_null())
+        .all(db)
+        .await
+        .map_err(AppError::Database)?
+        .into_iter()
+        .filter_map(|f| f.entity_identifier)
+        .collect();
+
+    for p in &mut pages {
+        p.is_favorite = fav_ids.contains(&p.id);
+    }
+    Ok(pages)
+}
+
 // ââ GET /pages/ âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 
 #[utoipa::path(
@@ -314,6 +356,7 @@ pub async fn list_pages(
         })
         .collect();
 
+    let responses = enrich_page_favorites(&state.db, guard.user.id, guard.workspace.id, responses).await?;
     Ok(Json(responses))
 }
 
@@ -457,7 +500,14 @@ pub async fn get_page(
     }
 
     let (pids, lids) = fetch_page_m2m(&state.db, page.id).await?;
-    Ok(Json(PageResponse::from_model(page, pids, lids)))
+    let mut _single_resp = PageResponse::from_model(page, pids, lids);
+    _single_resp.is_favorite = user_favorites::Entity::find()
+        .filter(user_favorites::Column::UserId.eq(guard.user.id))
+        .filter(user_favorites::Column::EntityIdentifier.eq(_single_resp.id))
+        .filter(user_favorites::Column::EntityType.eq("page"))
+        .filter(user_favorites::Column::DeletedAt.is_null())
+        .count(&state.db).await.map_err(AppError::Database)? > 0;
+    Ok(Json(_single_resp))
 }
 
 // ââ PATCH /pages/{page_id}/ âââââââââââââââââââââââââââââââââââââââââââââââââââ
@@ -518,7 +568,14 @@ pub async fn update_page(
 
     let updated = am.update(&state.db).await.map_err(AppError::Database)?;
     let (pids, lids) = fetch_page_m2m(&state.db, updated.id).await?;
-    Ok(Json(PageResponse::from_model(updated, pids, lids)))
+    let mut _single_resp = PageResponse::from_model(updated, pids, lids);
+    _single_resp.is_favorite = user_favorites::Entity::find()
+        .filter(user_favorites::Column::UserId.eq(guard.user.id))
+        .filter(user_favorites::Column::EntityIdentifier.eq(_single_resp.id))
+        .filter(user_favorites::Column::EntityType.eq("page"))
+        .filter(user_favorites::Column::DeletedAt.is_null())
+        .count(&state.db).await.map_err(AppError::Database)? > 0;
+    Ok(Json(_single_resp))
 }
 
 // ââ DELETE /pages/{page_id}/ ââââââââââââââââââââââââââââââââââââââââââââââââââ
@@ -586,7 +643,14 @@ pub async fn archive_page(
     am.archived_at = Set(Some(chrono::Utc::now().date_naive()));
     let updated = am.update(&state.db).await.map_err(AppError::Database)?;
     let (pids, lids) = fetch_page_m2m(&state.db, updated.id).await?;
-    Ok(Json(PageResponse::from_model(updated, pids, lids)))
+    let mut _single_resp = PageResponse::from_model(updated, pids, lids);
+    _single_resp.is_favorite = user_favorites::Entity::find()
+        .filter(user_favorites::Column::UserId.eq(guard.user.id))
+        .filter(user_favorites::Column::EntityIdentifier.eq(_single_resp.id))
+        .filter(user_favorites::Column::EntityType.eq("page"))
+        .filter(user_favorites::Column::DeletedAt.is_null())
+        .count(&state.db).await.map_err(AppError::Database)? > 0;
+    Ok(Json(_single_resp))
 }
 
 // ââ DELETE /pages/{page_id}/archive/ (unarchive) âââââââââââââââââââââââââââââ
@@ -616,7 +680,14 @@ pub async fn unarchive_page(
     am.archived_at = Set(None);
     let updated = am.update(&state.db).await.map_err(AppError::Database)?;
     let (pids, lids) = fetch_page_m2m(&state.db, updated.id).await?;
-    Ok(Json(PageResponse::from_model(updated, pids, lids)))
+    let mut _single_resp = PageResponse::from_model(updated, pids, lids);
+    _single_resp.is_favorite = user_favorites::Entity::find()
+        .filter(user_favorites::Column::UserId.eq(guard.user.id))
+        .filter(user_favorites::Column::EntityIdentifier.eq(_single_resp.id))
+        .filter(user_favorites::Column::EntityType.eq("page"))
+        .filter(user_favorites::Column::DeletedAt.is_null())
+        .count(&state.db).await.map_err(AppError::Database)? > 0;
+    Ok(Json(_single_resp))
 }
 
 // ââ POST /pages/{page_id}/lock/ âââââââââââââââââââââââââââââââââââââââââââââââ
@@ -650,7 +721,14 @@ pub async fn lock_page(
     am.is_locked = Set(true);
     let updated = am.update(&state.db).await.map_err(AppError::Database)?;
     let (pids, lids) = fetch_page_m2m(&state.db, updated.id).await?;
-    Ok(Json(PageResponse::from_model(updated, pids, lids)))
+    let mut _single_resp = PageResponse::from_model(updated, pids, lids);
+    _single_resp.is_favorite = user_favorites::Entity::find()
+        .filter(user_favorites::Column::UserId.eq(guard.user.id))
+        .filter(user_favorites::Column::EntityIdentifier.eq(_single_resp.id))
+        .filter(user_favorites::Column::EntityType.eq("page"))
+        .filter(user_favorites::Column::DeletedAt.is_null())
+        .count(&state.db).await.map_err(AppError::Database)? > 0;
+    Ok(Json(_single_resp))
 }
 
 // ââ DELETE /pages/{page_id}/lock/ (unlock) ââââââââââââââââââââââââââââââââââââ
@@ -684,7 +762,14 @@ pub async fn unlock_page(
     am.is_locked = Set(false);
     let updated = am.update(&state.db).await.map_err(AppError::Database)?;
     let (pids, lids) = fetch_page_m2m(&state.db, updated.id).await?;
-    Ok(Json(PageResponse::from_model(updated, pids, lids)))
+    let mut _single_resp = PageResponse::from_model(updated, pids, lids);
+    _single_resp.is_favorite = user_favorites::Entity::find()
+        .filter(user_favorites::Column::UserId.eq(guard.user.id))
+        .filter(user_favorites::Column::EntityIdentifier.eq(_single_resp.id))
+        .filter(user_favorites::Column::EntityType.eq("page"))
+        .filter(user_favorites::Column::DeletedAt.is_null())
+        .count(&state.db).await.map_err(AppError::Database)? > 0;
+    Ok(Json(_single_resp))
 }
 
 // ââ POST /pages/{page_id}/duplicate/ âââââââââââââââââââââââââââââââââââââââââ
@@ -1252,6 +1337,7 @@ pub async fn list_favorite_pages(
         PageResponse::from_model(m, pids, lids)
     }).collect();
 
+    let responses = enrich_page_favorites(&state.db, guard.user.id, guard.workspace.id, responses).await?;
     Ok(Json(responses))
 }
 
@@ -1312,6 +1398,7 @@ pub async fn list_archived_pages(
         PageResponse::from_model(m, pids, lids)
     }).collect();
 
+    let responses = enrich_page_favorites(&state.db, guard.user.id, guard.workspace.id, responses).await?;
     Ok(Json(responses))
 }
 
@@ -1387,5 +1474,12 @@ pub async fn move_page(
     let (mut projects_by_page, mut labels_by_page) = fetch_pages_m2m(db, &ids).await?;
     let pids = projects_by_page.remove(&page.id).unwrap_or_default();
     let lids = labels_by_page.remove(&page.id).unwrap_or_default();
-    Ok(Json(PageResponse::from_model(page, pids, lids)))
+    let mut _single_resp = PageResponse::from_model(page, pids, lids);
+    _single_resp.is_favorite = user_favorites::Entity::find()
+        .filter(user_favorites::Column::UserId.eq(guard.user.id))
+        .filter(user_favorites::Column::EntityIdentifier.eq(_single_resp.id))
+        .filter(user_favorites::Column::EntityType.eq("page"))
+        .filter(user_favorites::Column::DeletedAt.is_null())
+        .count(&state.db).await.map_err(AppError::Database)? > 0;
+    Ok(Json(_single_resp))
 }

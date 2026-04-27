@@ -141,6 +141,7 @@ pub struct WorkspaceIssueItem {
     pub link_count:      i64,
     pub is_draft:        bool,
     pub archived_at:     Option<chrono::NaiveDate>,
+    pub type_id:         Option<Uuid>,
     #[serde(rename = "state__group")]
     pub state_group:     Option<String>,
     pub assignee_ids:    Vec<Uuid>,
@@ -405,6 +406,7 @@ pub async fn list_workspace_view_issues(
                 link_count: enrich.links.get(&id).copied().unwrap_or(0),
                 is_draft: m.is_draft,
                 archived_at: m.archived_at,
+                type_id: m.type_id,
                 state_group,
                 assignee_ids: enrich.assignees.remove(&id).unwrap_or_default(),
                 label_ids: enrich.labels.remove(&id).unwrap_or_default(),
