@@ -1,5 +1,5 @@
 // src/routes/integrations/github.rs
-//! Endpoints especÃ­ficos de GitHub.
+//! Endpoints específicos de GitHub.
 //!
 //! Endpoints implementados:
 //!   GET  /api/github/callback/                                         (sin auth)
@@ -90,10 +90,10 @@ pub async fn github_user_callback_get_stub() -> axum::response::Response {
 }
 
 
-// ââ GET /api/github/callback/ (sin auth) âââââââââââââââââââââââââââââââââââââ
+// ── GET /api/github/callback/ (sin auth) ─────────────────────────────────────
 
-/// Callback de GitHub App â Setup URL registrada en la GitHub App.
-/// No requiere autenticaciÃ³n (GitHub redirige el popup aquÃ­ directamente).
+/// Callback de GitHub App — Setup URL registrada en la GitHub App.
+/// No requiere autenticación (GitHub redirige el popup aquí directamente).
 #[utoipa::path(
     get,
     path = "/api/github/callback/",
@@ -157,7 +157,7 @@ async fn github_app_callback_inner(
         .await?
         .context("GitHub integration not found in DB")?;
 
-    // Este callback es sin auth â usar el primer workspace admin como actor.
+    // Este callback es sin auth — usar el primer workspace admin como actor.
     let admin_member = workspace_members::Entity::find()
         .active()
         .filter(workspace_members::Column::WorkspaceId.eq(workspace.id))
@@ -166,7 +166,7 @@ async fn github_app_callback_inner(
         .order_by_asc(workspace_members::Column::CreatedAt)
         .one(&state.db)
         .await?
-        .context("No workspace admin found â installation_id cannot be persisted")?;
+        .context("No workspace admin found — installation_id cannot be persisted")?;
 
     let actor_id = admin_member.member_id;
     let api_token =
@@ -241,7 +241,7 @@ async fn github_app_callback_inner(
     Ok(())
 }
 
-// ââ POST /auth/github/user-callback/ âââââââââââââââââââââââââââââââââââââ
+// ── POST /auth/github/user-callback/ ─────────────────────────────────────
 
 /// Intercambia un OAuth code de GitHub por un token personal de usuario.
 #[utoipa::path(
@@ -249,9 +249,9 @@ async fn github_app_callback_inner(
     path = "/auth/github/user-callback/",
     tag = "Integrations",
     responses(
-        (status = 201, description = "ConexiÃ³n creada"),
-        (status = 200, description = "ConexiÃ³n actualizada"),
-        (status = 400, description = "Error de validaciÃ³n"),
+        (status = 201, description = "Conexión creada"),
+        (status = 200, description = "Conexión actualizada"),
+        (status = 400, description = "Error de validación"),
         (status = 502, description = "Error al contactar GitHub"),
     ),
     security(("TokenAuth" = []))
@@ -383,7 +383,7 @@ pub async fn github_user_callback(
         am.updated_at = Set(now);
         (am.update(&state.db).await.map_err(AppError::Database)?, false)
     } else {
-        // created_at/updated_at explÃ­citos (NOT NULL sin DEFAULT).
+        // created_at/updated_at explícitos (NOT NULL sin DEFAULT).
         let new_conn = user_github_connections::ActiveModel {
             id: Set(Uuid::new_v4()),
             user_id: Set(user_id),
@@ -418,7 +418,7 @@ pub async fn github_user_callback(
     ))
 }
 
-// ââ GET /workspaces/{slug}/workspace-integrations/{wi_id}/github-repositories/ â
+// ── GET /workspaces/{slug}/workspace-integrations/{wi_id}/github-repositories/ ─
 
 #[utoipa::path(
     get,
@@ -427,12 +427,12 @@ pub async fn github_user_callback(
     params(
         ("slug" = String, Path, description = "Workspace slug"),
         ("wi_id" = Uuid, Path, description = "WorkspaceIntegration ID"),
-        ("page" = Option<u32>, Query, description = "PÃ¡gina (default 1)"),
-        ("per_page" = Option<u32>, Query, description = "Repos por pÃ¡gina (default 30)"),
+        ("page" = Option<u32>, Query, description = "Página (default 1)"),
+        ("per_page" = Option<u32>, Query, description = "Repos por página (default 30)"),
     ),
     responses(
         (status = 200, description = "Lista de repositorios GitHub"),
-        (status = 400, description = "Error de configuraciÃ³n"),
+        (status = 400, description = "Error de configuración"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -567,7 +567,7 @@ pub async fn list_github_repositories(
     })))
 }
 
-// ââ GET /workspaces/{slug}/workspace-integrations/github/repo-syncs/ âââââââââ
+// ── GET /workspaces/{slug}/workspace-integrations/github/repo-syncs/ ─────────
 
 #[utoipa::path(
     get,
@@ -607,7 +607,7 @@ pub async fn list_github_repo_syncs(
         .await
         .map_err(AppError::Database)?;
 
-    // Batch-fetch de repositorios â evita N+1.
+    // Batch-fetch de repositorios — evita N+1.
     let repo_ids: Vec<Uuid> = syncs.iter().map(|s| s.repository_id).collect();
     let repos_map: std::collections::HashMap<Uuid, github_repositories::Model> =
         github_repositories::Entity::find()
@@ -684,7 +684,7 @@ pub async fn list_github_repo_syncs(
     Ok(Json(result))
 }
 
-// ââ POST /workspaces/{slug}/workspace-integrations/github/repo-syncs/ âââââââââ
+// ── POST /workspaces/{slug}/workspace-integrations/github/repo-syncs/ ─────────
 
 #[utoipa::path(
     post,
@@ -693,7 +693,7 @@ pub async fn list_github_repo_syncs(
     params(("slug" = String, Path, description = "Workspace slug")),
     responses(
         (status = 201, description = "Repo sync creado"),
-        (status = 400, description = "Error de validaciÃ³n"),
+        (status = 400, description = "Error de validación"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -734,7 +734,7 @@ pub async fn create_github_repo_sync(
             AppError::BadRequest("GitHub integration not installed for this workspace".into())
         })?;
 
-    // Buscar GithubRepository â incluyendo soft-deleted para no violar unique constraint.
+    // Buscar GithubRepository — incluyendo soft-deleted para no violar unique constraint.
     let existing_repo = github_repositories::Entity::find()
         .filter(github_repositories::Column::RepositoryId.eq(repo_id_int))
         .filter(github_repositories::Column::ProjectId.eq(body.project_id))
@@ -829,7 +829,7 @@ pub async fn create_github_repo_sync(
         }
     };
 
-    // Registrar webhook en GitHub â best-effort, no bloquea la respuesta.
+    // Registrar webhook en GitHub — best-effort, no bloquea la respuesta.
     if let Err(e) = register_github_webhook(&state, &wi, &repo_owner, &repo_name).await {
         tracing::warn!(
             repo_sync_id = %sync.id,
@@ -838,7 +838,7 @@ pub async fn create_github_repo_sync(
     }
 
     // Fetch project para incluir project_name e project_identifier en la
-    // respuesta â espeja el campo que Django devuelve en GithubRepoSyncViewSet.create().
+    // respuesta — espeja el campo que Django devuelve en GithubRepoSyncViewSet.create().
     let project = projects::Entity::find_by_id(sync.project_id)
         .one(&state.db)
         .await
@@ -879,7 +879,7 @@ pub async fn create_github_repo_sync(
     ))
 }
 
-// ââ DELETE /workspaces/{slug}/workspace-integrations/github/repo-syncs/{pk}/ â
+// ── DELETE /workspaces/{slug}/workspace-integrations/github/repo-syncs/{pk}/ ─
 
 #[utoipa::path(
     delete,
@@ -912,7 +912,7 @@ pub async fn delete_github_repo_sync(
 
     let repo_id = sync.repository_id;
 
-    // Ambos soft-deletes deben ser atÃ³micos â sin transacciÃ³n quedarÃ­a estado
+    // Ambos soft-deletes deben ser atómicos — sin transacción quedaría estado
     // inconsistente si el segundo update falla.
     state
         .db
@@ -946,7 +946,7 @@ pub async fn delete_github_repo_sync(
     Ok(StatusCode::NO_CONTENT)
 }
 
-// ââ GitHub webhook registration (helper interno) ââââââââââââââââââââââââââââââ
+// ── GitHub webhook registration (helper interno) ──────────────────────────────
 
 /// Registra el webhook de Plane en el repositorio GitHub.
 /// Best-effort: nunca debe fallar el handler padre.
@@ -966,7 +966,7 @@ async fn register_github_webhook(
         .await?
         .context("No se pudo obtener installation token")?;
 
-    // AntipatrÃ³n corregido: get_instance_config en lugar de std::env::var().
+    // Antipatrón corregido: get_instance_config en lugar de std::env::var().
     let webhook_secret = get_instance_config(state, "GITHUB_WEBHOOK_SECRET")
         .await
         .unwrap_or_default()
@@ -976,7 +976,7 @@ async fn register_github_webhook(
         .config
         .web_url
         .as_deref()
-        .context("WEB_URL no configurado â requerido para registrar webhooks de GitHub")?
+        .context("WEB_URL no configurado — requerido para registrar webhooks de GitHub")?
         .to_owned();
 
     let resp = state
@@ -1005,19 +1005,19 @@ async fn register_github_webhook(
     if !resp.status().is_success() {
         let status = resp.status();
         let body = resp.text().await.unwrap_or_default();
-        anyhow::bail!("GitHub webhook registration failed: {status} â {body}");
+        anyhow::bail!("GitHub webhook registration failed: {status} — {body}");
     }
 
     Ok(())
 }
 
-// ââ list_integrations (endpoint global) âââââââââââââââââââââââââââââââââââââ
+// ── list_integrations (endpoint global) ─────────────────────────────────────
 //
-// CatÃ¡logo global de integraciones disponibles. En Django el equivalente
-// (`IntegrationViewSet`) usa `IsAuthenticated`, que acepta tanto sesiÃ³n como
-// API token. Usamos `AnyAuth` para replicar ese contrato â de lo contrario el
-// frontend, que manda cookie de sesiÃ³n, recibe 401 y cae en el loop del
-// interceptor (`/settings/integrations/` â `/?next_path=â¦`).
+// Catálogo global de integraciones disponibles. En Django el equivalente
+// (`IntegrationViewSet`) usa `IsAuthenticated`, que acepta tanto sesión como
+// API token. Usamos `AnyAuth` para replicar ese contrato — de lo contrario el
+// frontend, que manda cookie de sesión, recibe 401 y cae en el loop del
+// interceptor (`/settings/integrations/` → `/?next_path=…`).
 
 /// Lista todas las integraciones disponibles (GitHub, GitLab, Slack).
 #[utoipa::path(
@@ -1034,10 +1034,10 @@ pub async fn list_integrations(
     State(state): State<AppState>,
     _auth: AnyAuth,
 ) -> Result<Json<Vec<IntegrationResponse>>, AppError> {
-    // Django usa `self.model.objects.all()` â sin filtro de soft-delete â
+    // Django usa `self.model.objects.all()` — sin filtro de soft-delete —
     // para garantizar que todas las integraciones aparezcan en el panel,
-    // incluidas las no verificadas. Replicamos ese comportamiento aquÃ­.
-    // AntipatrÃ³n evitado: no usar `.active()` que filtrarÃ­a registros vÃ¡lidos.
+    // incluidas las no verificadas. Replicamos ese comportamiento aquí.
+    // Antipatrón evitado: no usar `.active()` que filtraría registros válidos.
     let rows = integrations::Entity::find()
         .order_by_asc(integrations::Column::Title)
         .all(&state.db)

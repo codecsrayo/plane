@@ -29,7 +29,7 @@ use crate::{
     AppState,
 };
 
-// ââ DTOs âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ── DTOs ─────────────────────────────────────────────────────────────────────
 
 #[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct LabelResponse {
@@ -83,7 +83,7 @@ pub struct UpdateLabelRequest {
     pub sort_order: Option<f64>,
 }
 
-// ââ GET /labels/ âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ── GET /labels/ ─────────────────────────────────────────────────────────────
 
 #[utoipa::path(
     get,
@@ -113,7 +113,7 @@ pub async fn list_labels(
     Ok(Json(rows.into_iter().map(LabelResponse::from_model).collect()))
 }
 
-// ââ POST /labels/ âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ── POST /labels/ ─────────────────────────────────────────────────────────────
 
 #[utoipa::path(
     post,
@@ -125,7 +125,7 @@ pub async fn list_labels(
     ),
     responses(
         (status = 201, description = "Label creado"),
-        (status = 400, description = "Error de validaciÃ³n"),
+        (status = 400, description = "Error de validación"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -140,11 +140,11 @@ pub async fn create_label(
         return Err(AppError::BadRequest("name es requerido".into()));
     }
 
-    // NOTA: created_at / updated_at se setean explÃ­citamente porque
-    // labels::ActiveModelBehavior estÃ¡ vacÃ­o (sin hook before_save) y las
-    // columnas son NOT NULL. Dejarlas con Default::default() hacÃ­a que SeaORM
+    // NOTA: created_at / updated_at se setean explícitamente porque
+    // labels::ActiveModelBehavior está vacío (sin hook before_save) y las
+    // columnas son NOT NULL. Dejarlas con Default::default() hacía que SeaORM
     // enviara NULL y la BD rechazara con 23502 ("violates not-null constraint").
-    // Mismo patrÃ³n que issue_extras.rs / pages.rs / workspace_extras.rs.
+    // Mismo patrón que issue_extras.rs / pages.rs / workspace_extras.rs.
     let now = chrono::Utc::now().into();
 
     let label = labels::ActiveModel {
@@ -171,7 +171,7 @@ pub async fn create_label(
     Ok((StatusCode::CREATED, Json(LabelResponse::from_model(label))))
 }
 
-// ââ GET /labels/{pk}/ âââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ── GET /labels/{pk}/ ─────────────────────────────────────────────────────────
 
 #[utoipa::path(
     get,
@@ -206,7 +206,7 @@ pub async fn get_label(
     Ok(Json(LabelResponse::from_model(label)))
 }
 
-// ââ PATCH /labels/{pk}/ âââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ── PATCH /labels/{pk}/ ───────────────────────────────────────────────────────
 
 #[utoipa::path(
     patch,
@@ -257,7 +257,7 @@ pub async fn update_label(
     }
     am.updated_by_id = Set(Some(guard.user.id));
     // Django usa auto_now=True en updated_at (TimeAuditModel). En SeaORM hay
-    // que setearlo explÃ­citamente, de lo contrario ActiveModel lo deja
+    // que setearlo explícitamente, de lo contrario ActiveModel lo deja
     // Unchanged y el UPDATE no lo toca.
     am.updated_at = Set(chrono::Utc::now().into());
 
@@ -265,7 +265,7 @@ pub async fn update_label(
     Ok(Json(LabelResponse::from_model(updated)))
 }
 
-// ââ DELETE /labels/{pk}/ ââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ── DELETE /labels/{pk}/ ──────────────────────────────────────────────────────
 
 #[utoipa::path(
     delete,
@@ -305,7 +305,7 @@ pub async fn delete_label(
 }
 
 
-// âââ POST /workspaces/{slug}/projects/{project_id}/bulk-create-labels/ âââââââ
+// ─── POST /workspaces/{slug}/projects/{project_id}/bulk-create-labels/ ───────
 #[derive(Debug, serde::Deserialize)]
 pub struct BulkCreateLabelsRequest {
     pub label_data: Vec<LabelEntry>,

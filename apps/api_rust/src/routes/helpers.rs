@@ -1,7 +1,7 @@
 // src/routes/helpers.rs
 //! Helpers de dominio compartidos entre rutas.
 //!
-//! Centraliza las consultas de workspace y membresÃ­a para evitar duplicaciÃ³n
+//! Centraliza las consultas de workspace y membresía para evitar duplicación
 //! entre `workspaces.rs`, `projects.rs`, `states.rs`, etc.
 
 use sea_orm::{ColumnTrait, EntityTrait, QueryFilter};
