@@ -110,6 +110,7 @@ pub mod v1_router;
         workspaces::update_invitation,
         workspaces::delete_invitation,
         workspaces::join_workspace_invitation,
+        workspaces::get_invitation_join,
         workspaces::list_workspace_themes,
         workspaces::create_workspace_theme,
         workspaces::get_workspace_theme,
@@ -729,7 +730,8 @@ pub fn build_router(state: AppState) -> Router {
         )
         .route(
             "/workspaces/{slug}/invitations/{pk}/join",
-            post(workspaces::join_workspace_invitation),
+            get(workspaces::get_invitation_join)
+                .post(workspaces::join_workspace_invitation),
         )
         .route(
             "/workspaces/{slug}/workspace-themes",

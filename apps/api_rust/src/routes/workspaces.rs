@@ -12,6 +12,7 @@ use axum::{
     response::IntoResponse,
     Json,
 };
+use openssl::memcmp as ct_memcmp;
 use chrono::{DateTime, Duration, NaiveDate, TimeZone, Utc};
 use sea_orm::{
     sea_query::Expr, ActiveModelTrait, ColumnTrait, EntityTrait, FromQueryResult,
@@ -3411,10 +3412,147 @@ pub async fn join_workspace_invitation(
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
-    // Validar token
-    if invite.token != body.token {
+    // Validar token — constant-time para evitar timing attack
+    let token_bytes = body.token.as_bytes();
+    let invite_bytes = invite.token.as_bytes();
+    let token_valid = token_bytes.len() == invite_bytes.len()
+        && ct_memcmp::eq(token_bytes, invite_bytes);
+    if !token_valid {
         return Err(AppError::Forbidden);
     }
+
+    // Ya respondió
+    if invite.responded_at.is_some() {
+        return Err(AppError::BadRequest(
+            "You have already responded to the invitation request".into(),
+        ));
+    }
+
+    let accepted = body.accepted.unwrap_or(false);
+    let now = chrono::Utc::now().fixed_offset();
+
+    let mut am: workspace_member_invites::ActiveModel = invite.clone().into();
+    am.accepted = Set(accepted);
+    am.responded_at = Set(Some(now));
+    am.updated_at = Set(now);
+    am.updated_by_id = Set(Some(user.id));
+    am.update(&state.db).await.map_err(AppError::Database)?;
+
+    if accepted {
+        // Verificar si el usuario invitado coincide con el autenticado (por email)
+        if user.email.as_deref() == Some(invite.email.as_str()) {
+            // Buscar membresía existente
+            let existing = workspace_members::Entity::find()
+                .filter(workspace_members::Column::WorkspaceId.eq(ws.id))
+                .filter(workspace_members::Column::MemberId.eq(user.id))
+                .filter(workspace_members::Column::DeletedAt.is_null())
+                .one(&state.db)
+                .await
+                .map_err(AppError::Database)?;
+
+            if let Some(member) = existing {
+                let mut mam: workspace_members::ActiveModel = member.into();
+                mam.is_active = Set(true);
+                mam.role = Set(invite.role);
+                mam.updated_at = Set(now);
+                mam.updated_by_id = Set(Some(user.id));
+                mam.update(&state.db).await.map_err(AppError::Database)?;
+            } else {
+                let new_member = workspace_members::ActiveModel {
+                    id: Set(Uuid::new_v4()),
+                    workspace_id: Set(ws.id),
+                    member_id: Set(user.id),
+                    role: Set(invite.role),
+                    is_active: Set(true),
+                    created_at: Set(now),
+                    updated_at: Set(now),
+                    created_by_id: Set(Some(user.id)),
+                    updated_by_id: Set(Some(user.id)),
+                    ..Default::default()
+                };
+                new_member.insert(&state.db).await.map_err(AppError::Database)?;
+            }
+        }
+
+        // Eliminar la invitación aceptada
+        let del_am: workspace_member_invites::ActiveModel = invite.into();
+        del_am.delete(&state.db).await.map_err(AppError::Database)?;
+
+        return Ok(axum::Json(serde_json::json!({
+            "message": "Workspace Invitation Accepted"
+        })));
+    }
+
+    Ok(axum::Json(serde_json::json!({
+        "message": "Workspace Invitation was not accepted"
+    })))
+}
+
+// ─── GET /workspaces/{slug}/invitations/{pk}/join — public ────────────────────
+//
+// Devuelve los detalles de una invitación para la página de aceptar/rechazar.
+// Esta ruta es PÚBLICA: el invitado puede no estar autenticado aún.
+// Mirror de WorkspaceJoinEndpoint.get en Django.
+
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/invitations/{pk}/join",
+    tag = "Workspaces",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("pk"   = Uuid,   Path, description = "Invitation UUID"),
+    ),
+    responses(
+        (status = 200, description = "Invitation detail for join page"),
+        (status = 404, description = "Invitation not found"),
+    )
+)]
+pub async fn get_invitation_join(
+    State(state): State<AppState>,
+    Path((slug, pk)): Path<(String, Uuid)>,
+) -> Result<axum::Json<serde_json::Value>, AppError> {
+    let ws = workspace_by_slug(&state.db, &slug).await?;
+
+    let invite = workspace_member_invites::Entity::find_by_id(pk)
+        .filter(workspace_member_invites::Column::WorkspaceId.eq(ws.id))
+        .filter(workspace_member_invites::Column::DeletedAt.is_null())
+        .one(&state.db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    let logo_url = ws
+        .logo_asset_id
+        .map(|aid| format!("/api/assets/v2/static/{}/", aid))
+        .or_else(|| ws.logo.clone())
+        .unwrap_or_default();
+
+    let app_base = state.config.app_base();
+    let invite_link = format!(
+        "{}/workspace-invitations/?invitation_id={}&email={}&slug={}",
+        app_base.trim_end_matches('/'),
+        invite.id,
+        urlencoding::encode(invite.email.as_str()),
+        ws.slug,
+    );
+
+    Ok(axum::Json(serde_json::json!({
+        "id":           invite.id,
+        "email":        invite.email,
+        "message":      invite.message,
+        "role":         invite.role,
+        "token":        invite.token,
+        "accepted":     invite.accepted,
+        "responded_at": invite.responded_at,
+        "invite_link":  invite_link,
+        "workspace": {
+            "id":       ws.id,
+            "name":     ws.name,
+            "slug":     ws.slug,
+            "logo_url": logo_url,
+        }
+    })))
+}
 
     // Ya respondió
     if invite.responded_at.is_some() {
