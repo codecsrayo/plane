@@ -27,7 +27,8 @@ use uuid::Uuid;
 use crate::{
     auth::{any_auth::AnyAuth, extractors::WorkspaceMemberGuard},
     entities::{
-        issue_assignees, issue_subscribers, issues, notifications, user_notification_preferences,
+        intake_issues, issue_assignees, issue_subscribers, issues, notifications, users,
+        user_notification_preferences,
     },
     error::AppError,
     utils::soft_delete::SoftDeleteExt,
@@ -36,45 +37,170 @@ use crate::{
 
 // ── DTOs ─────────────────────────────────────────────────────────────────────
 
+/// Shape mínimo de IUserLite para triggered_by_details.
+#[derive(Debug, Serialize, utoipa::ToSchema)]
+pub struct UserLite {
+    pub id: Uuid,
+    pub display_name: String,
+    pub avatar_url: Option<String>,
+}
+
 #[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct NotificationResponse {
     pub id: Uuid,
     pub title: String,
-    pub message_html: String,
+    pub data: Option<serde_json::Value>,
     pub entity_identifier: Option<Uuid>,
     pub entity_name: String,
+    pub message_html: String,
+    pub message: Option<serde_json::Value>,
+    pub message_stripped: Option<String>,
     pub sender: String,
+    // serde renames to match TNotification field names
+    #[serde(rename = "receiver")]
+    pub receiver_id: Uuid,
+    #[serde(rename = "triggered_by")]
+    pub triggered_by_id: Option<Uuid>,
+    pub triggered_by_details: Option<UserLite>,
     pub read_at: Option<chrono::DateTime<chrono::FixedOffset>>,
     pub archived_at: Option<chrono::DateTime<chrono::FixedOffset>>,
     pub snoozed_till: Option<chrono::DateTime<chrono::FixedOffset>>,
+    #[serde(rename = "project")]
     pub project_id: Option<Uuid>,
+    #[serde(rename = "workspace")]
     pub workspace_id: Uuid,
-    pub triggered_by_id: Option<Uuid>,
+    #[serde(rename = "created_by")]
+    pub created_by_id: Option<Uuid>,
+    #[serde(rename = "updated_by")]
+    pub updated_by_id: Option<Uuid>,
     pub created_at: chrono::DateTime<chrono::FixedOffset>,
+    pub updated_at: chrono::DateTime<chrono::FixedOffset>,
+    // computed annotations (mirror of Django)
+    pub is_inbox_issue: bool,
+    pub is_mentioned_notification: bool,
 }
 
 impl NotificationResponse {
-    fn from_model(m: notifications::Model) -> Self {
+    fn from_model(
+        m: notifications::Model,
+        triggered_by_details: Option<UserLite>,
+        is_inbox_issue: bool,
+    ) -> Self {
+        let is_mentioned_notification = m.sender.to_lowercase().contains("mentioned");
         Self {
             id: m.id,
             title: m.title,
-            message_html: m.message_html,
+            data: m.data,
             entity_identifier: m.entity_identifier,
             entity_name: m.entity_name,
+            message_html: m.message_html,
+            message: m.message,
+            message_stripped: m.message_stripped,
             sender: m.sender,
+            receiver_id: m.receiver_id,
+            triggered_by_id: m.triggered_by_id,
+            triggered_by_details,
             read_at: m.read_at,
             archived_at: m.archived_at,
             snoozed_till: m.snoozed_till,
             project_id: m.project_id,
             workspace_id: m.workspace_id,
-            triggered_by_id: m.triggered_by_id,
+            created_by_id: m.created_by_id,
+            updated_by_id: m.updated_by_id,
             created_at: m.created_at,
+            updated_at: m.updated_at,
+            is_inbox_issue,
+            is_mentioned_notification,
         }
     }
 }
 
-#[derive(Debug, Serialize, utoipa::ToSchema)]
-pub struct UnreadCountResponse {
+/// Carga triggered_by_details e is_inbox_issue para un conjunto de notificaciones
+/// en batch (sin N+1). Retorna los NotificationResponse enriquecidos.
+async fn enrich_notifications(
+    db: &sea_orm::DatabaseConnection,
+    rows: Vec<notifications::Model>,
+    workspace_id: Uuid,
+) -> Result<Vec<NotificationResponse>, AppError> {
+    use sea_orm::{ColumnTrait as _, EntityTrait as _, QueryFilter as _, QuerySelect as _};
+
+    // Batch-load triggered_by users
+    let triggered_ids: Vec<Uuid> = rows
+        .iter()
+        .filter_map(|n| n.triggered_by_id)
+        .collect::<std::collections::HashSet<_>>()
+        .into_iter()
+        .collect();
+
+    let user_map: std::collections::HashMap<Uuid, UserLite> = if triggered_ids.is_empty() {
+        std::collections::HashMap::new()
+    } else {
+        users::Entity::find()
+            .filter(users::Column::Id.is_in(triggered_ids))
+            .all(db)
+            .await
+            .map_err(AppError::Database)?
+            .into_iter()
+            .map(|u| {
+                (u.id, UserLite {
+                    id: u.id,
+                    display_name: u.display_name,
+                    avatar_url: u.avatar,
+                })
+            })
+            .collect()
+    };
+
+    // Batch-load is_inbox_issue: entity_identifier IN (intake_issues.issue_id)
+    // status in [0, 2, -2] (pending=0, accepted=2, rejected=-2 like Django)
+    let entity_ids: Vec<Uuid> = rows
+        .iter()
+        .filter(|n| n.entity_name == "issue")
+        .filter_map(|n| n.entity_identifier)
+        .collect::<std::collections::HashSet<_>>()
+        .into_iter()
+        .collect();
+
+    let inbox_issue_ids: std::collections::HashSet<Uuid> = if entity_ids.is_empty() {
+        std::collections::HashSet::new()
+    } else {
+        intake_issues::Entity::find()
+            .select_only()
+            .column(intake_issues::Column::IssueId)
+            .filter(intake_issues::Column::IssueId.is_in(entity_ids))
+            .filter(
+                intake_issues::Column::Status
+                    .is_in(vec![0i32, 2i32, -2i32]),
+            )
+            .filter(intake_issues::Column::WorkspaceId.eq(workspace_id))
+            .into_tuple::<Uuid>()
+            .all(db)
+            .await
+            .map_err(AppError::Database)?
+            .into_iter()
+            .collect()
+    };
+
+    Ok(rows
+        .into_iter()
+        .map(|n| {
+            let details = n.triggered_by_id.and_then(|id| {
+                user_map.get(&id).map(|u| UserLite {
+                    id: u.id,
+                    display_name: u.display_name.clone(),
+                    avatar_url: u.avatar_url.clone(),
+                })
+            });
+            let is_inbox = n
+                .entity_identifier
+                .map(|id| inbox_issue_ids.contains(&id))
+                .unwrap_or(false);
+            NotificationResponse::from_model(n, details, is_inbox)
+        })
+        .collect())
+}
+
+
     pub total_unread_notifications_count: u64,
     pub mention_unread_notifications_count: u64,
 }
@@ -189,7 +315,8 @@ pub async fn list_notifications(
         .await
         .map_err(AppError::Database)?;
 
-    Ok(Json(rows.into_iter().map(NotificationResponse::from_model).collect()))
+    let result = enrich_notifications(&state.db, rows, guard.workspace.id).await?;
+    Ok(Json(result))
 }
 
 // ── GET /notifications/{pk}/ ──────────────────────────────────────────────────
@@ -221,7 +348,11 @@ pub async fn get_notification(
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
-    Ok(Json(NotificationResponse::from_model(n)))
+    {
+        let ws_id = guard.workspace.id;
+        let mut enriched = enrich_notifications(&state.db, vec![n], ws_id).await?;
+        Ok(Json(enriched.remove(0)))
+    }
 }
 
 // ── PATCH /notifications/{pk}/ ────────────────────────────────────────────────
@@ -259,7 +390,11 @@ pub async fn update_notification(
     let mut am: notifications::ActiveModel = n.into();
     am.snoozed_till = Set(body.snoozed_till);
     let updated = am.update(&state.db).await.map_err(AppError::Database)?;
-    Ok(Json(NotificationResponse::from_model(updated)))
+    {
+        let ws_id = guard.workspace.id;
+        let mut enriched = enrich_notifications(&state.db, vec![updated], ws_id).await?;
+        Ok(Json(enriched.remove(0)))
+    }
 }
 
 // ── DELETE /notifications/{pk}/ ───────────────────────────────────────────────
@@ -323,7 +458,11 @@ pub async fn mark_read(
     let mut am: notifications::ActiveModel = n.into();
     am.read_at = Set(Some(chrono::Utc::now().into()));
     let updated = am.update(&state.db).await.map_err(AppError::Database)?;
-    Ok(Json(NotificationResponse::from_model(updated)))
+    {
+        let ws_id = guard.workspace.id;
+        let mut enriched = enrich_notifications(&state.db, vec![updated], ws_id).await?;
+        Ok(Json(enriched.remove(0)))
+    }
 }
 
 // ── DELETE /notifications/{pk}/read/ ─────────────────────────────────────────
@@ -355,7 +494,11 @@ pub async fn mark_unread(
     let mut am: notifications::ActiveModel = n.into();
     am.read_at = Set(None);
     let updated = am.update(&state.db).await.map_err(AppError::Database)?;
-    Ok(Json(NotificationResponse::from_model(updated)))
+    {
+        let ws_id = guard.workspace.id;
+        let mut enriched = enrich_notifications(&state.db, vec![updated], ws_id).await?;
+        Ok(Json(enriched.remove(0)))
+    }
 }
 
 // ── POST /notifications/{pk}/archive/ ────────────────────────────────────────
@@ -387,7 +530,11 @@ pub async fn archive_notification(
     let mut am: notifications::ActiveModel = n.into();
     am.archived_at = Set(Some(chrono::Utc::now().into()));
     let updated = am.update(&state.db).await.map_err(AppError::Database)?;
-    Ok(Json(NotificationResponse::from_model(updated)))
+    {
+        let ws_id = guard.workspace.id;
+        let mut enriched = enrich_notifications(&state.db, vec![updated], ws_id).await?;
+        Ok(Json(enriched.remove(0)))
+    }
 }
 
 // ── DELETE /notifications/{pk}/archive/ ──────────────────────────────────────
@@ -419,7 +566,11 @@ pub async fn unarchive_notification(
     let mut am: notifications::ActiveModel = n.into();
     am.archived_at = Set(None);
     let updated = am.update(&state.db).await.map_err(AppError::Database)?;
-    Ok(Json(NotificationResponse::from_model(updated)))
+    {
+        let ws_id = guard.workspace.id;
+        let mut enriched = enrich_notifications(&state.db, vec![updated], ws_id).await?;
+        Ok(Json(enriched.remove(0)))
+    }
 }
 
 // ── GET /notifications/unread/ ────────────────────────────────────────────────
