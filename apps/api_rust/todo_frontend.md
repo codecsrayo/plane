@@ -388,33 +388,33 @@ Rutas con rate limiting. Todas devuelven cookies de sesión cuando exitosas.
 
 ---
 
-## 3. Users (current user / `me`)
+## 3. Users (current user / `me`) ✅ Revisado
 
 Todos requieren sesión activa.
 
-| Método               | Path                                                     | Notas                            |
-| -------------------- | -------------------------------------------------------- | -------------------------------- |
-| GET / PATCH / DELETE | `/api/users/me`                                          | DELETE = desactivar cuenta       |
-| GET                  | `/api/users/session`                                     |                                  |
-| GET                  | `/api/users/me/settings`                                 |                                  |
-| GET                  | `/api/users/me/instance-admin`                           |                                  |
-| GET / PATCH          | `/api/users/me/notification-preferences`                 | get_or_create — nunca 404        |
-| PATCH                | `/api/users/me/onboard`                                  |                                  |
-| PATCH                | `/api/users/me/tour-completed`                           |                                  |
-| GET / PATCH          | `/api/users/me/profile`                                  |                                  |
-| GET                  | `/api/users/me/accounts`                                 |                                  |
-| GET / DELETE         | `/api/users/me/accounts/{pk}`                            |                                  |
-| GET                  | `/api/users/last-visited-workspace`                      |                                  |
-| GET                  | `/api/users/me/workspaces`                               |                                  |
-| GET                  | `/api/users/me/activities`                               | Cursor-paginated cross-workspace |
-| GET / POST           | `/api/users/me/workspaces/invitations`                   | POST = bulk-accept               |
-| GET                  | `/api/users/me/workspaces/{slug}/project-roles`          |                                  |
-| GET                  | `/api/users/me/workspaces/{slug}/activity-graph`         |                                  |
-| GET                  | `/api/users/me/workspaces/{slug}/issues-completed-graph` |                                  |
-| GET                  | `/api/users/me/workspaces/{slug}/dashboard`              |                                  |
-| POST                 | `/api/users/me/email/generate-code`                      |                                  |
-| POST                 | `/api/users/me/email`                                    | Update email                     |
-| GET                  | `/api/users/me/workspaces/{slug}/projects/invitations`   |                                  |
+| Método               | Path                                                     | Estado | Notas |
+| -------------------- | -------------------------------------------------------- | ------ | ----- |
+| GET / PATCH / DELETE | `/api/users/me`                                          | ✅ OK  | DELETE soft-delete. IUser contract correcto. |
+| GET                  | `/api/users/session`                                     | ✅ OK  | Correcto. |
+| GET                  | `/api/users/me/settings`                                 | ✅ OK  | `IUserSettings` completo con fallback workspace. |
+| GET                  | `/api/users/me/instance-admin`                           | ✅ OK  | `{ is_instance_admin: bool }` correcto. |
+| GET / PATCH          | `/api/users/me/notification-preferences`                 | ✅ OK  | get_or_create correcto, nunca 404. |
+| PATCH                | `/api/users/me/onboard`                                  | ✅ OK  | `{ is_onboarded: true }` correcto. |
+| PATCH                | `/api/users/me/tour-completed`                           | ✅ OK  | Correcto. |
+| GET / PATCH          | `/api/users/me/profile`                                  | ✅ OK  | `TUserProfile` correcto. |
+| GET                  | `/api/users/me/accounts`                                 | ✅ OK  | Correcto. |
+| GET / DELETE         | `/api/users/me/accounts/{pk}`                            | ✅ OK  | Correcto. |
+| GET                  | `/api/users/last-visited-workspace`                      | ✅ OK  | Correcto. |
+| GET                  | `/api/users/me/workspaces`                               | ✅ OK  | Correcto. |
+| GET                  | `/api/users/me/activities`                               | ✅ OK  | Cursor paginado, `IUserActivityResponse` correcto. |
+| GET / POST           | `/api/users/me/workspaces/invitations`                   | ✅ OK  | POST bulk-accept correcto. |
+| GET                  | `/api/users/me/workspaces/{slug}/project-roles`          | ✅ OK  | Correcto. |
+| GET                  | `/api/users/me/workspaces/{slug}/activity-graph`         | ✅ OK  | Correcto. |
+| GET                  | `/api/users/me/workspaces/{slug}/issues-completed-graph` | ✅ OK  | Correcto. |
+| GET                  | `/api/users/me/workspaces/{slug}/dashboard`              | ✅ OK  | Correcto. |
+| POST                 | `/api/users/me/email/generate-code`                      | ✅ OK  | `{ email }` → código Redis TTL 10min. |
+| POST / PATCH         | `/api/users/me/email`                                    | 🐛 FIXED | Frontend usa PATCH, Rust solo tenía POST. Añadido alias PATCH (0b3b86f). |
+| GET / POST           | `/api/users/me/workspaces/{slug}/projects/invitations`   | 🐛 FIXED | POST bulk-join faltaba. Implementado `join_user_project_invitations` con `{ project_ids[] }` (0b3b86f). |
 
 ---
 
