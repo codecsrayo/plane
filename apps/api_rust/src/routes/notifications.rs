@@ -201,6 +201,8 @@ async fn enrich_notifications(
 }
 
 
+#[derive(Debug, Serialize, utoipa::ToSchema)]
+pub struct UnreadCountResponse {
     pub total_unread_notifications_count: u64,
     pub mention_unread_notifications_count: u64,
 }
