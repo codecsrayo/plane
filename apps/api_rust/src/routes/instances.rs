@@ -323,11 +323,20 @@ pub async fn list_instance_admins(
     for admin in &admins {
         let user_detail = if let Some(uid) = admin.user_id {
             users::Entity::find_by_id(uid).one(&state.db).await.map_err(AppError::Database)?
-                .map(|u| json!({"id": u.id, "email": u.email, "first_name": u.first_name, "last_name": u.last_name}))
+                .map(|u| json!({
+                    "id": u.id,
+                    "email": u.email,
+                    "first_name": u.first_name,
+                    "last_name": u.last_name,
+                    "display_name": u.display_name,
+                    "avatar_url": u.avatar,
+                    "is_bot": u.is_bot,
+                }))
         } else { None };
         result.push(json!({
             "id": admin.id, "role": admin.role, "is_verified": admin.is_verified,
             "instance": admin.instance_id, "user": admin.user_id, "user_detail": user_detail,
+            "created_by": admin.created_by_id, "updated_by": admin.updated_by_id,
             "created_at": admin.created_at, "updated_at": admin.updated_at,
         }));
     }
@@ -372,9 +381,19 @@ pub async fn create_instance_admin(
     responses((status = 200, description = "Current admin")))]
 pub async fn get_instance_admin_me(AnyAuth(user): AnyAuth) -> impl IntoResponse {
     Json(json!({
-        "id": user.id, "email": user.email,
-        "first_name": user.first_name, "last_name": user.last_name,
-        "avatar": user.avatar, "is_superuser": user.is_superuser,
+        "id": user.id,
+        "email": user.email,
+        "first_name": user.first_name,
+        "last_name": user.last_name,
+        "display_name": user.display_name,
+        "avatar_url": user.avatar,
+        "avatar": user.avatar,
+        "is_bot": user.is_bot,
+        "is_superuser": user.is_superuser,
+        "is_staff": user.is_staff,
+        "is_active": user.is_active,
+        "user_timezone": user.user_timezone,
+        "cover_image_url": null::<String>,
     }))
 }
 
