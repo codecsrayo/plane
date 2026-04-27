@@ -22,8 +22,8 @@ use axum::{
     Json,
 };
 use sea_orm::{
-    ActiveModelTrait, ActiveValue::Set, ColumnTrait, EntityTrait, FromQueryResult,
-    PaginatorTrait, QueryFilter, QueryOrder, Statement,
+    ActiveModelTrait, ActiveValue::Set, ColumnTrait, ConnectionTrait, EntityTrait,
+    FromQueryResult, PaginatorTrait, QueryFilter, QueryOrder, Statement,
 };
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
