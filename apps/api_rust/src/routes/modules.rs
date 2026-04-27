@@ -31,7 +31,7 @@ use crate::{
         extractors::ProjectMemberGuard,
         permissions::{require_role, ROLE_GUEST, ROLE_MEMBER},
     },
-    entities::{issues, module_issues, module_links, module_members, module_user_properties, modules, user_favorites},
+    entities::{issues, module_issues, module_links, module_members, module_user_properties, modules, states, user_favorites},
     error::AppError,
     utils::soft_delete::SoftDeleteExt,
     AppState,
@@ -63,6 +63,19 @@ pub struct ModuleResponse {
     // enriched post-query
     pub is_favorite: bool,
     pub member_ids: Vec<Uuid>,
+    // IModule issue count fields — annotated by Django, computed here
+    pub total_issues: i64,
+    pub completed_issues: i64,
+    pub cancelled_issues: i64,
+    pub started_issues: i64,
+    pub unstarted_issues: i64,
+    pub backlog_issues: i64,
+    pub total_estimate_points: i64,
+    pub completed_estimate_points: i64,
+    pub cancelled_estimate_points: i64,
+    pub started_estimate_points: i64,
+    pub unstarted_estimate_points: i64,
+    pub backlog_estimate_points: i64,
 }
 
 impl ModuleResponse {
@@ -86,6 +99,18 @@ impl ModuleResponse {
             updated_at: m.updated_at,
             is_favorite: false,
             member_ids: vec![],
+            total_issues: 0,
+            completed_issues: 0,
+            cancelled_issues: 0,
+            started_issues: 0,
+            unstarted_issues: 0,
+            backlog_issues: 0,
+            total_estimate_points: 0,
+            completed_estimate_points: 0,
+            cancelled_estimate_points: 0,
+            started_estimate_points: 0,
+            unstarted_estimate_points: 0,
+            backlog_estimate_points: 0,
         }
     }
 }
@@ -128,6 +153,93 @@ pub struct AddModuleIssuesRequest {
 /// Valores válidos de status para un módulo.
 const VALID_MODULE_STATUSES: &[&str] =
     &["backlog", "in-progress", "paused", "completed", "cancelled"];
+
+// ── Helpers ───────────────────────────────────────────────────────────────────
+
+#[derive(sea_orm::FromQueryResult)]
+struct ModuleCountRow {
+    module_id: Uuid,
+    group_name: String,
+    cnt: i64,
+}
+
+/// Batch-load issue group counts for a set of modules (single SQL, no N+1).
+/// Mirror de la anotación Django sobre ModuleIssue.
+async fn enrich_module_counts(
+    db: &sea_orm::DatabaseConnection,
+    mut mods: Vec<ModuleResponse>,
+) -> Result<Vec<ModuleResponse>, AppError> {
+    use sea_orm::{ConnectionTrait, Statement};
+
+    if mods.is_empty() {
+        return Ok(mods);
+    }
+
+    let module_ids: Vec<Uuid> = mods.iter().map(|m| m.id).collect();
+    let placeholders = module_ids
+        .iter()
+        .enumerate()
+        .map(|(i, _)| format!("${}", i + 1))
+        .collect::<Vec<_>>()
+        .join(", ");
+
+    let sql = format!(
+        r#"SELECT
+             mi.module_id,
+             COALESCE(s.group, 'backlog') AS group_name,
+             COUNT(mi.issue_id)::BIGINT   AS cnt
+           FROM module_issues mi
+           JOIN issues      i ON i.id = mi.issue_id AND i.deleted_at IS NULL
+           LEFT JOIN states s ON s.id = i.state_id
+           WHERE mi.module_id IN ({})
+             AND mi.deleted_at IS NULL
+             AND i.archived_at IS NULL
+             AND i.is_draft   = FALSE
+           GROUP BY mi.module_id, COALESCE(s.group, 'backlog')"#,
+        placeholders
+    );
+
+    let values: Vec<sea_orm::Value> = module_ids
+        .iter()
+        .map(|id| sea_orm::Value::Uuid(Some(Box::new(*id))))
+        .collect();
+
+    let rows = ModuleCountRow::find_by_statement(Statement::from_sql_and_values(
+        sea_orm::DatabaseBackend::Postgres,
+        &sql,
+        values,
+    ))
+    .all(db)
+    .await
+    .map_err(AppError::Database)?;
+
+    let mut counts: std::collections::HashMap<Uuid, [i64; 6]> = std::collections::HashMap::new();
+    for row in rows {
+        let entry = counts.entry(row.module_id).or_insert([0i64; 6]);
+        let n = row.cnt;
+        entry[0] += n;
+        match row.group_name.as_str() {
+            "done"      => entry[1] += n,
+            "cancelled" => entry[2] += n,
+            "started"   => entry[3] += n,
+            "unstarted" => entry[4] += n,
+            _           => entry[5] += n,
+        }
+    }
+
+    for m in &mut mods {
+        if let Some(cnt) = counts.get(&m.id) {
+            m.total_issues     = cnt[0];
+            m.completed_issues = cnt[1];
+            m.cancelled_issues = cnt[2];
+            m.started_issues   = cnt[3];
+            m.unstarted_issues = cnt[4];
+            m.backlog_issues   = cnt[5];
+        }
+    }
+
+    Ok(mods)
+}
 
 // ── GET /workspaces/{slug}/projects/{project_id}/modules/ ────────────────────
 
@@ -202,6 +314,7 @@ pub async fn list_modules(
         r
     }).collect();
 
+    let result = enrich_module_counts(db, result).await?;
     Ok(Json(result))
 }
 
@@ -333,7 +446,7 @@ pub async fn get_module(
     let mut resp = ModuleResponse::from_model(module);
     resp.is_favorite = is_favorite;
     resp.member_ids = member_ids;
-    Ok(Json(resp))
+    { let mut enriched = enrich_module_counts(db, vec![resp]).await?; Ok(Json(enriched.remove(0))) }
 }
 
 // ── PATCH /workspaces/{slug}/projects/{project_id}/modules/{pk}/ ─────────────
@@ -417,7 +530,7 @@ pub async fn update_module(
         .all(&state.db)
         .await
         .map_err(AppError::Database)?;
-    Ok(Json(resp))
+    { let mut enriched = enrich_module_counts(&state.db, vec![resp]).await?; Ok(Json(enriched.remove(0))) }
 }
 
 // ── DELETE /workspaces/{slug}/projects/{project_id}/modules/{pk}/ ────────────

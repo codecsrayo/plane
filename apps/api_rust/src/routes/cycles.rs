@@ -22,8 +22,8 @@ use axum::{
     Json,
 };
 use sea_orm::{
-    ActiveModelTrait, ActiveValue::Set, ColumnTrait, ConnectionTrait, EntityTrait, PaginatorTrait, QueryFilter,
-    QueryOrder, Statement,
+    ActiveModelTrait, ActiveValue::Set, ColumnTrait, ConnectionTrait, EntityTrait, PaginatorTrait,
+    QueryFilter, QueryOrder, QuerySelect, Statement,
 };
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
@@ -33,7 +33,7 @@ use crate::{
         extractors::ProjectMemberGuard,
         permissions::{require_role, ROLE_GUEST, ROLE_MEMBER},
     },
-    entities::{cycle_issues, cycle_user_properties, cycles, issues, user_favorites},
+    entities::{cycle_issues, cycle_user_properties, cycles, issues, states, user_favorites},
     error::AppError,
     utils::soft_delete::SoftDeleteExt,
     AppState,
@@ -66,6 +66,19 @@ pub struct CycleResponse {
     pub view_props: serde_json::Value,
     pub progress_snapshot: serde_json::Value,
     pub version: i32,
+    // TProgressSnapshot fields — annotated by Django, computed here per cycle
+    pub total_issues: i64,
+    pub completed_issues: i64,
+    pub cancelled_issues: i64,
+    pub started_issues: i64,
+    pub unstarted_issues: i64,
+    pub backlog_issues: i64,
+    pub total_estimate_points: i64,
+    pub completed_estimate_points: i64,
+    pub cancelled_estimate_points: i64,
+    pub started_estimate_points: i64,
+    pub unstarted_estimate_points: i64,
+    pub backlog_estimate_points: i64,
 }
 
 impl CycleResponse {
@@ -108,6 +121,19 @@ impl CycleResponse {
             view_props: m.view_props,
             progress_snapshot: m.progress_snapshot,
             version: m.version,
+            // Populated by enrich_cycle_counts after batch query
+            total_issues: 0,
+            completed_issues: 0,
+            cancelled_issues: 0,
+            started_issues: 0,
+            unstarted_issues: 0,
+            backlog_issues: 0,
+            total_estimate_points: 0,
+            completed_estimate_points: 0,
+            cancelled_estimate_points: 0,
+            started_estimate_points: 0,
+            unstarted_estimate_points: 0,
+            backlog_estimate_points: 0,
         }
     }
 }
@@ -145,6 +171,95 @@ pub struct UpdateCycleRequest {
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct AddCycleIssuesRequest {
     pub issues: Vec<Uuid>,
+}
+
+// ── Helpers ───────────────────────────────────────────────────────────────────
+
+/// Rows returned by the issue-counts SQL.
+#[derive(sea_orm::FromQueryResult)]
+struct CycleCountRow {
+    cycle_id: Uuid,
+    group_name: String,
+    cnt: i64,
+}
+
+/// Batch-load TProgressSnapshot counts (total/completed/cancelled/started/
+/// unstarted/backlog) for a set of cycles, using a single SQL query.
+/// Mirror de la anotación Django `CycleIssueGroupedCount`.
+async fn enrich_cycle_counts(
+    db: &sea_orm::DatabaseConnection,
+    mut cycles: Vec<CycleResponse>,
+) -> Result<Vec<CycleResponse>, AppError> {
+    if cycles.is_empty() {
+        return Ok(cycles);
+    }
+
+    let cycle_ids: Vec<Uuid> = cycles.iter().map(|c| c.id).collect();
+    let placeholders = cycle_ids
+        .iter()
+        .enumerate()
+        .map(|(i, _)| format!("${}", i + 1))
+        .collect::<Vec<_>>()
+        .join(", ");
+
+    let sql = format!(
+        r#"SELECT
+             ci.cycle_id,
+             COALESCE(s.group, 'backlog') AS group_name,
+             COUNT(ci.issue_id)::BIGINT   AS cnt
+           FROM cycle_issues ci
+           JOIN issues        i  ON i.id = ci.issue_id   AND i.deleted_at IS NULL
+           LEFT JOIN states   s  ON s.id = i.state_id
+           WHERE ci.cycle_id IN ({})
+             AND ci.deleted_at IS NULL
+             AND i.archived_at  IS NULL
+             AND i.is_draft     = FALSE
+           GROUP BY ci.cycle_id, COALESCE(s.group, 'backlog')"#,
+        placeholders
+    );
+
+    let values: Vec<sea_orm::Value> = cycle_ids
+        .iter()
+        .map(|id| sea_orm::Value::Uuid(Some(Box::new(*id))))
+        .collect();
+
+    let rows = CycleCountRow::find_by_statement(Statement::from_sql_and_values(
+        sea_orm::DatabaseBackend::Postgres,
+        &sql,
+        values,
+    ))
+    .all(db)
+    .await
+    .map_err(AppError::Database)?;
+
+    // Build a map: cycle_id → (total, completed, cancelled, started, unstarted, backlog)
+    let mut counts: std::collections::HashMap<Uuid, [i64; 6]> = std::collections::HashMap::new();
+    for row in rows {
+        let entry = counts.entry(row.cycle_id).or_insert([0i64; 6]);
+        let n = row.cnt;
+        // indices: 0=total,1=completed,2=cancelled,3=started,4=unstarted,5=backlog
+        entry[0] += n;
+        match row.group_name.as_str() {
+            "done"      => entry[1] += n,
+            "cancelled" => entry[2] += n,
+            "started"   => entry[3] += n,
+            "unstarted" => entry[4] += n,
+            _           => entry[5] += n, // backlog + triage + unknown
+        }
+    }
+
+    for c in &mut cycles {
+        if let Some(cnt) = counts.get(&c.id) {
+            c.total_issues     = cnt[0];
+            c.completed_issues = cnt[1];
+            c.cancelled_issues = cnt[2];
+            c.started_issues   = cnt[3];
+            c.unstarted_issues = cnt[4];
+            c.backlog_issues   = cnt[5];
+        }
+    }
+
+    Ok(cycles)
 }
 
 // ── GET /workspaces/{slug}/projects/{project_id}/cycles/ ─────────────────────
@@ -197,6 +312,7 @@ pub async fn list_cycles(
         r
     }).collect();
 
+    let result = enrich_cycle_counts(&state.db, result).await?;
     Ok(Json(result))
 }
 
@@ -328,7 +444,19 @@ pub async fn get_cycle(
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
-    Ok(Json(CycleResponse::from_model(cycle)))
+    let is_favorite = user_favorites::Entity::find()
+        .filter(user_favorites::Column::UserId.eq(guard.user.id))
+        .filter(user_favorites::Column::EntityIdentifier.eq(pk))
+        .filter(user_favorites::Column::EntityType.eq("cycle"))
+        .filter(user_favorites::Column::DeletedAt.is_null())
+        .count(&state.db)
+        .await
+        .map_err(AppError::Database)? > 0;
+
+    let mut resp = CycleResponse::from_model(cycle);
+    resp.is_favorite = is_favorite;
+    let mut enriched = enrich_cycle_counts(&state.db, vec![resp]).await?;
+    Ok(Json(enriched.remove(0)))
 }
 
 // ── PATCH /workspaces/{slug}/projects/{project_id}/cycles/{pk}/ ──────────────
@@ -410,7 +538,9 @@ pub async fn update_cycle(
     am.updated_by_id = Set(Some(guard.user.id));
 
     let updated = am.update(&state.db).await.map_err(AppError::Database)?;
-    Ok(Json(CycleResponse::from_model(updated)))
+    let resp = CycleResponse::from_model(updated);
+    let mut enriched = enrich_cycle_counts(&state.db, vec![resp]).await?;
+    Ok(Json(enriched.remove(0)))
 }
 
 // ── DELETE /workspaces/{slug}/projects/{project_id}/cycles/{pk}/ ─────────────
