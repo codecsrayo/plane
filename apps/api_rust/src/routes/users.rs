@@ -198,7 +198,10 @@ pub struct TourCompletedRequest {
 
 // ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ Conversiones ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ
 
-fn user_to_me_response(u: &users::Model) -> UserMeResponse {
+async fn user_to_me_response(
+    u: &users::Model,
+    db: &sea_orm::DatabaseConnection,
+) -> Result<UserMeResponse, AppError> {
     // Compute avatar_url: prefer asset-based URL, fall back to legacy avatar string.
     let avatar_url = if let Some(asset_id) = u.avatar_asset_id {
         Some(format!("/api/assets/v2/static/{}/", asset_id))
@@ -215,7 +218,18 @@ fn user_to_me_response(u: &users::Model) -> UserMeResponse {
         u.cover_image.clone()
     };
 
-    UserMeResponse {
+    // is_tour_completed lives on the profile in Django (see Profile model in
+    // apps/api/plane/db/models/user.py). Fetch it; missing profile defaults
+    // to false, matching DRF's serializer behaviour.
+    let is_tour_completed = profiles::Entity::find()
+        .filter(profiles::Column::UserId.eq(u.id))
+        .one(db)
+        .await
+        .map_err(AppError::Database)?
+        .map(|p| p.is_tour_completed)
+        .unwrap_or(false);
+
+    Ok(UserMeResponse {
         id: u.id,
         username: u.username.clone(),
         email: u.email.clone(),
@@ -232,13 +246,13 @@ fn user_to_me_response(u: &users::Model) -> UserMeResponse {
         is_password_autoset: u.is_password_autoset,
         is_superuser: u.is_superuser,
         is_managed: u.is_managed,
-        is_tour_completed: u.is_tour_completed,
+        is_tour_completed,
         user_timezone: u.user_timezone.clone(),
         last_login_medium: u.last_login_medium.clone(),
         date_joined: u.date_joined,
         last_login: u.last_login,
         mobile_number: u.mobile_number.clone(),
-    }
+    })
 }
 
 fn profile_to_response(p: &profiles::Model) -> ProfileResponse {
@@ -287,8 +301,11 @@ fn account_to_response(a: &accounts::Model) -> AccountResponse {
         (status = 401, description = "Unauthorized"),
     )
 )]
-pub async fn get_me(AnyAuth(user): AnyAuth) -> impl IntoResponse {
-    Json(user_to_me_response(&user))
+pub async fn get_me(
+    AnyAuth(user): AnyAuth,
+    State(state): State<AppState>,
+) -> Result<impl IntoResponse, AppError> {
+    Ok(Json(user_to_me_response(&user, &state.db).await?))
 }
 
 /// PATCH /api/users/me/
@@ -346,7 +363,7 @@ pub async fn update_me(
         AppError::Database(e)
     })?;
 
-    Ok(Json(user_to_me_response(&updated)))
+    Ok(Json(user_to_me_response(&updated, &state.db).await?))
 }
 
 /// DELETE /api/users/me/ ÃÂ¢ÃÂÃÂ desactiva la cuenta del usuario.
@@ -436,13 +453,16 @@ pub async fn deactivate_me(
         (status = 200, description = "Session info"),
     )
 )]
-pub async fn get_session(OptionalAnyAuth(user_opt): OptionalAnyAuth) -> impl IntoResponse {
+pub async fn get_session(
+    OptionalAnyAuth(user_opt): OptionalAnyAuth,
+    State(state): State<AppState>,
+) -> Result<impl IntoResponse, AppError> {
     match user_opt {
-        Some(user) => Json(serde_json::json!({
+        Some(user) => Ok(Json(serde_json::json!({
             "is_authenticated": true,
-            "user": user_to_me_response(&user),
-        })),
-        None => Json(serde_json::json!({ "is_authenticated": false })),
+            "user": user_to_me_response(&user, &state.db).await?,
+        }))),
+        None => Ok(Json(serde_json::json!({ "is_authenticated": false }))),
     }
 }
 
