@@ -418,61 +418,61 @@ Todos requieren sesión activa.
 
 ---
 
-## 4. Workspaces
+## 4. Workspaces ✅ Revisado
 
-| Método               | Path                                                    | Notas                                |
-| -------------------- | ------------------------------------------------------- | ------------------------------------ |
-| GET                  | `/api/workspace-slug-check`                             | Validar slug único antes de crear    |
-| GET / POST           | `/api/workspaces`                                       | List / Create                        |
-| GET / PATCH / DELETE | `/api/workspaces/{slug}`                                |                                      |
-| GET                  | `/api/workspaces/{slug}/members`                        |                                      |
-| POST                 | `/api/workspaces/{slug}/members/leave`                  |                                      |
-| GET / PATCH / DELETE | `/api/workspaces/{slug}/members/{pk}`                   |                                      |
-| GET                  | `/api/workspaces/{slug}/project-members`                |                                      |
-| GET / POST           | `/api/workspaces/{slug}/workspace-views`                |                                      |
-| GET                  | `/api/workspaces/{slug}/workspace-members/me`           |                                      |
-| GET                  | `/api/workspaces/{slug}/user-profile/{user_id}`         |                                      |
-| GET                  | `/api/workspaces/{slug}/user-stats/{user_id}`           |                                      |
-| GET                  | `/api/workspaces/{slug}/user-activity/{user_id}`        |                                      |
-| GET / POST           | `/api/workspaces/{slug}/user-activity/{user_id}/export` | CSV download                         |
-| GET                  | `/api/workspaces/{slug}/user-issues/{user_id}`          | Pestañas Assigned/Created/Subscribed |
-| GET / POST           | `/api/workspaces/{slug}/invitations`                    |                                      |
-| GET / PATCH / DELETE | `/api/workspaces/{slug}/invitations/{pk}`               |                                      |
-| POST                 | `/api/workspaces/{slug}/invitations/{pk}/join`          |                                      |
-| GET / POST           | `/api/workspaces/{slug}/workspace-themes`               |                                      |
-| GET / PATCH / DELETE | `/api/workspaces/{slug}/workspace-themes/{pk}`          |                                      |
+| Método               | Path                                                    | Estado | Notas |
+| -------------------- | ------------------------------------------------------- | ------ | ----- |
+| GET                  | `/api/workspace-slug-check`                             | ✅ OK  | Correcto. |
+| GET / POST           | `/api/workspaces`                                       | ✅ OK  | Correcto. |
+| GET / PATCH / DELETE | `/api/workspaces/{slug}`                                | ✅ OK  | Correcto. |
+| GET                  | `/api/workspaces/{slug}/members`                        | ✅ OK  | Correcto. |
+| POST                 | `/api/workspaces/{slug}/members/leave`                  | ✅ OK  | Correcto. |
+| GET / PATCH / DELETE | `/api/workspaces/{slug}/members/{pk}`                   | ✅ OK  | Correcto. |
+| GET                  | `/api/workspaces/{slug}/project-members`                | ✅ OK  | Correcto. |
+| GET / POST           | `/api/workspaces/{slug}/workspace-views`                | ✅ OK  | Correcto. |
+| GET                  | `/api/workspaces/{slug}/workspace-members/me`           | ✅ OK  | Correcto. |
+| GET                  | `/api/workspaces/{slug}/user-profile/{user_id}`         | ✅ OK  | Correcto. |
+| GET                  | `/api/workspaces/{slug}/user-stats/{user_id}`           | ✅ OK  | Correcto. |
+| GET                  | `/api/workspaces/{slug}/user-activity/{user_id}`        | ✅ OK  | Correcto. |
+| GET / POST           | `/api/workspaces/{slug}/user-activity/{user_id}/export` | ✅ OK  | CSV correcto. |
+| GET                  | `/api/workspaces/{slug}/user-issues/{user_id}`          | ✅ OK  | Correcto. |
+| GET / POST           | `/api/workspaces/{slug}/invitations`                    | ✅ OK  | Correcto. |
+| GET / PATCH / DELETE | `/api/workspaces/{slug}/invitations/{pk}`               | ✅ OK  | Correcto. |
+| GET / POST           | `/api/workspaces/{slug}/invitations/{pk}/join`          | 🐛 FIXED | GET faltaba (página pública de accept/reject). Timing attack en token comparison. Ambos corregidos (a94766f). |
+| GET / POST           | `/api/workspaces/{slug}/workspace-themes`               | ✅ OK  | Correcto. |
+| GET / PATCH / DELETE | `/api/workspaces/{slug}/workspace-themes/{pk}`          | ✅ OK  | Correcto. |
 
-### 4.1 Workspace extras (favorites, home, sidebar, stickies, drafts)
+### 4.1 Workspace extras (favorites, home, sidebar, stickies, drafts) ✅ Revisado
 
-| Método               | Path                                                                            |
-| -------------------- | ------------------------------------------------------------------------------- |
-| GET / POST           | `/api/workspaces/{slug}/user-favorites`                                         |
-| PATCH / DELETE       | `/api/workspaces/{slug}/user-favorites/{favorite_id}`                           |
-| GET                  | `/api/workspaces/{slug}/user-favorites/{favorite_id}/children`                  |
-| GET                  | `/api/workspaces/{slug}/user-favorites/{favorite_id}/group` (alias `/children`) |
-| GET                  | `/api/workspaces/{slug}/home-preferences`                                       |
-| GET / PATCH          | `/api/workspaces/{slug}/home-preferences/{key}`                                 |
-| GET / POST           | `/api/workspaces/{slug}/quick-links`                                            |
-| PATCH / DELETE       | `/api/workspaces/{slug}/quick-links/{pk}`                                       |
-| GET                  | `/api/workspaces/{slug}/recent-visits`                                          |
-| GET / POST           | `/api/workspaces/{slug}/stickies`                                               |
-| PATCH / DELETE       | `/api/workspaces/{slug}/stickies/{pk}`                                          |
-| GET / PATCH          | `/api/workspaces/{slug}/sidebar-preferences`                                    |
-| GET / PATCH          | `/api/workspaces/{slug}/user-properties`                                        |
-| GET / POST           | `/api/workspaces/{slug}/draft-issues`                                           |
-| POST                 | `/api/workspaces/{slug}/draft-to-issue/{draft_id}`                              |
-| GET / PATCH / DELETE | `/api/workspaces/{slug}/draft-issues/{pk}`                                      |
+| Método               | Path                                                                            | Estado |
+| -------------------- | ------------------------------------------------------------------------------- | ------ |
+| GET / POST           | `/api/workspaces/{slug}/user-favorites`                                         | ✅ OK  |
+| PATCH / DELETE       | `/api/workspaces/{slug}/user-favorites/{favorite_id}`                           | ✅ OK  |
+| GET                  | `/api/workspaces/{slug}/user-favorites/{favorite_id}/children`                  | ✅ OK  |
+| GET                  | `/api/workspaces/{slug}/user-favorites/{favorite_id}/group` (alias `/children`) | ✅ OK  |
+| GET                  | `/api/workspaces/{slug}/home-preferences`                                       | ✅ OK  |
+| GET / PATCH          | `/api/workspaces/{slug}/home-preferences/{key}`                                 | ✅ OK  |
+| GET / POST           | `/api/workspaces/{slug}/quick-links`                                            | ✅ OK  |
+| PATCH / DELETE       | `/api/workspaces/{slug}/quick-links/{pk}`                                       | ✅ OK  |
+| GET                  | `/api/workspaces/{slug}/recent-visits`                                          | ✅ OK  |
+| GET / POST           | `/api/workspaces/{slug}/stickies`                                               | ✅ OK  |
+| PATCH / DELETE       | `/api/workspaces/{slug}/stickies/{pk}`                                          | ✅ OK  |
+| GET / PATCH          | `/api/workspaces/{slug}/sidebar-preferences`                                    | ✅ OK  |
+| GET / PATCH          | `/api/workspaces/{slug}/user-properties`                                        | ✅ OK  |
+| GET / POST           | `/api/workspaces/{slug}/draft-issues`                                           | ✅ OK  |
+| POST                 | `/api/workspaces/{slug}/draft-to-issue/{draft_id}`                              | ✅ OK  |
+| GET / PATCH / DELETE | `/api/workspaces/{slug}/draft-issues/{pk}`                                      | ✅ OK  |
 
-### 4.2 Workspace aggregate (read-only, cross-project)
+### 4.2 Workspace aggregate (read-only, cross-project) ✅ Revisado
 
-| Método | Path                               |
-| ------ | ---------------------------------- |
-| GET    | `/api/workspaces/{slug}/cycles`    |
-| GET    | `/api/workspaces/{slug}/modules`   |
-| GET    | `/api/workspaces/{slug}/estimates` |
-| GET    | `/api/workspaces/{slug}/labels`    |
-| GET    | `/api/workspaces/{slug}/states`    |
-| GET    | `/api/workspaces/{slug}/issues`    |
+| Método | Path                               | Estado |
+| ------ | ---------------------------------- | ------ |
+| GET    | `/api/workspaces/{slug}/cycles`    | ✅ OK  |
+| GET    | `/api/workspaces/{slug}/modules`   | ✅ OK  |
+| GET    | `/api/workspaces/{slug}/estimates` | ✅ OK  |
+| GET    | `/api/workspaces/{slug}/labels`    | ✅ OK  |
+| GET    | `/api/workspaces/{slug}/states`    | ✅ OK  |
+| GET    | `/api/workspaces/{slug}/issues`    | ✅ OK  |
 
 ---
 
