@@ -74,6 +74,8 @@ pub mod v1_router;
         auth::oauth::google_callback,
         auth::oauth::gitea_initiate,
         auth::oauth::gitea_callback,
+        auth::oauth::github_initiate,
+        auth::oauth::github_auth_callback,
         auth::forgot_reset_password::forgot_password,
         auth::forgot_reset_password::reset_password,
         auth::forgot_reset_password::forgot_password_space,
@@ -550,12 +552,9 @@ pub fn build_router(state: AppState) -> Router {
         .route("/gitlab/callback", get(auth::oauth::gitlab_callback))
         .route("/google/callback", get(auth::oauth::google_callback))
         .route("/gitea/callback", get(auth::oauth::gitea_callback))
-        // GitHub OAuth callback bajo /auth (sin auth middleware: GitHub
-        // redirige al popup directamente).
-        .route(
-            "/github/callback",
-            get(integrations::github_callback_auth_alias),
-        );
+        // GitHub user OAuth callback (login flow - NOT the GitHub App setup).
+        // The App setup callback lives at /github/callback (no /auth prefix).
+        .route("/github/callback", get(auth::oauth::github_auth_callback));
 
     // Auth routes with rate limiting (mirrors plane.authentication.urls)
     let auth_router = Router::new()
@@ -629,6 +628,7 @@ pub fn build_router(state: AppState) -> Router {
         .route("/gitlab", get(auth::oauth::gitlab_initiate))
         .route("/google", get(auth::oauth::google_initiate))
         .route("/gitea", get(auth::oauth::gitea_initiate))
+        .route("/github", get(auth::oauth::github_initiate))
         .layer(middleware::from_fn(
             auth::rate_limit::rate_limit_headers_middleware,
         ))

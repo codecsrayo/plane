@@ -11,6 +11,7 @@ use axum::response::Html;
 #[derive(Debug, Clone, Copy)]
 pub enum OAuthMessageType {
     GithubIntegration,
+    GithubAuth,
     GitlabIntegration,
     SlackIntegration,
     GithubUserConnection,
@@ -24,6 +25,7 @@ impl OAuthMessageType {
     pub fn as_str(&self) -> &'static str {
         match self {
             Self::GithubIntegration => "github-integration",
+            Self::GithubAuth => "github-auth",
             Self::GitlabIntegration => "gitlab-integration",
             Self::SlackIntegration => "slack-integration",
             Self::GithubUserConnection => "github-user-connection",

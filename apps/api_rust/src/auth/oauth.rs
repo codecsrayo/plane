@@ -496,3 +496,188 @@ pub async fn gitea_callback(
 
     Ok((jar, postmessage_html(true, OAuthMessageType::GiteaAuth, None, None)).into_response())
 }
+
+// ── GitHub user OAuth (login) ─────────────────────────────────────────────────
+
+#[utoipa::path(
+    get,
+    path = "/auth/github",
+    tag = "Auth",
+    responses(
+        (status = 302, description = "Redirección a GitHub para autenticación"),
+    ),
+)]
+pub async fn github_initiate(
+    State(state): State<AppState>,
+    jar: CookieJar,
+) -> Result<impl IntoResponse, AppError> {
+    let client_id = get_instance_config(&state, "GITHUB_CLIENT_ID")
+        .await?
+        .ok_or_else(|| AppError::BadRequest("GitHub OAuth is not configured".into()))?;
+
+    let base_url = state.config.app_base();
+    let redirect_uri = format!("{}/auth/github/callback/", base_url.trim_end_matches('/'));
+
+    let oauth_state = Uuid::new_v4().simple().to_string();
+    let params = [
+        ("client_id", client_id.as_str()),
+        ("redirect_uri", redirect_uri.as_str()),
+        ("scope", "user:email"),
+        ("state", oauth_state.as_str()),
+    ];
+
+    let query = serde_urlencoded::to_string(params).unwrap();
+    let url = format!("https://github.com/login/oauth/authorize?{query}");
+
+    let cookie = Cookie::build((OAUTH_STATE_COOKIE, oauth_state))
+        .path("/")
+        .http_only(true)
+        .secure(state.config.is_production)
+        .same_site(SameSite::Lax)
+        .max_age(time::Duration::minutes(10));
+
+    Ok((jar.add(cookie), Redirect::to(&url)))
+}
+
+#[utoipa::path(
+    get,
+    path = "/auth/github/callback",
+    tag = "Auth",
+    params(
+        ("code" = Option<String>, Query, description = "Authorization code"),
+        ("state" = Option<String>, Query, description = "OAuth state"),
+    ),
+    responses(
+        (status = 200, description = "HTML de cierre de popup con postMessage"),
+    ),
+)]
+pub async fn github_auth_callback(
+    State(state): State<AppState>,
+    headers: HeaderMap,
+    jar: CookieJar,
+    Query(params): Query<OAuthCallbackQuery>,
+) -> Result<impl IntoResponse, AppError> {
+    let code = params.code.ok_or_else(|| AppError::BadRequest("Missing code".into()))?;
+    let state_val = params.state.unwrap_or_default();
+    let saved_state = jar.get(OAUTH_STATE_COOKIE).map(|c| c.value().to_owned());
+
+    if saved_state.as_deref() != Some(&state_val) {
+        return Ok((
+            jar.remove(OAUTH_STATE_COOKIE),
+            postmessage_html(false, OAuthMessageType::GithubAuth, Some("Invalid OAuth state"), None),
+        )
+            .into_response());
+    }
+
+    let client_id = get_instance_config(&state, "GITHUB_CLIENT_ID")
+        .await?
+        .unwrap_or_default();
+    let client_secret = get_instance_config(&state, "GITHUB_CLIENT_SECRET")
+        .await?
+        .unwrap_or_default();
+    let base_url = state.config.app_base();
+    let redirect_uri = format!("{}/auth/github/callback/", base_url.trim_end_matches('/'));
+
+    // Exchange code for access token
+    let token_resp = state
+        .http
+        .post("https://github.com/login/oauth/access_token")
+        .header("Accept", "application/json")
+        .form(&[
+            ("client_id", client_id.as_str()),
+            ("client_secret", client_secret.as_str()),
+            ("code", code.as_str()),
+            ("redirect_uri", redirect_uri.as_str()),
+        ])
+        .send()
+        .await
+        .map_err(|e| AppError::Internal(anyhow::anyhow!("GitHub token exchange failed: {e}")))?;
+
+    if !token_resp.status().is_success() {
+        return Ok((
+            jar.remove(OAUTH_STATE_COOKIE),
+            postmessage_html(false, OAuthMessageType::GithubAuth, Some("Failed to exchange GitHub code"), None),
+        )
+            .into_response());
+    }
+
+    let token_data: serde_json::Value = token_resp.json().await.unwrap_or_default();
+    let access_token = token_data["access_token"].as_str().unwrap_or_default();
+    if access_token.is_empty() {
+        return Ok((
+            jar.remove(OAUTH_STATE_COOKIE),
+            postmessage_html(false, OAuthMessageType::GithubAuth, Some("GitHub denied access"), None),
+        )
+            .into_response());
+    }
+
+    // Fetch user info
+    let user_resp = state
+        .http
+        .get("https://api.github.com/user")
+        .header("Authorization", format!("Bearer {access_token}"))
+        .header("User-Agent", "plane-api")
+        .send()
+        .await
+        .map_err(|e| AppError::Internal(anyhow::anyhow!("GitHub user fetch failed: {e}")))?;
+
+    if !user_resp.status().is_success() {
+        return Ok((
+            jar.remove(OAUTH_STATE_COOKIE),
+            postmessage_html(false, OAuthMessageType::GithubAuth, Some("Failed to fetch GitHub user info"), None),
+        )
+            .into_response());
+    }
+
+    let github_user: serde_json::Value = user_resp.json().await.unwrap_or_default();
+
+    // GitHub may not expose email publicly; fetch from /user/emails
+    let email = if let Some(e) = github_user["email"].as_str().filter(|e| !e.is_empty()) {
+        e.to_owned()
+    } else {
+        let emails_resp = state
+            .http
+            .get("https://api.github.com/user/emails")
+            .header("Authorization", format!("Bearer {access_token}"))
+            .header("User-Agent", "plane-api")
+            .send()
+            .await
+            .map_err(|e| AppError::Internal(anyhow::anyhow!("GitHub emails fetch failed: {e}")))?;
+
+        let emails: serde_json::Value = emails_resp.json().await.unwrap_or_default();
+        emails
+            .as_array()
+            .and_then(|arr| {
+                arr.iter()
+                    .find(|e| e["primary"].as_bool().unwrap_or(false))
+                    .and_then(|e| e["email"].as_str())
+                    .map(str::to_owned)
+            })
+            .ok_or_else(|| AppError::Internal(anyhow::anyhow!("GitHub user has no email")))?
+    };
+
+    let name = github_user["name"].as_str().unwrap_or("");
+    let avatar = github_user["avatar_url"].as_str().unwrap_or("");
+
+    let user = find_or_create_oauth_user(
+        &state,
+        &headers,
+        email,
+        name.to_owned(),
+        String::new(),
+        avatar.to_owned(),
+        "github",
+    )
+    .await?;
+
+    let jar = issue_session_cookie(
+        &state,
+        &headers,
+        jar.remove(OAUTH_STATE_COOKIE),
+        &user,
+        SessionSurface::App,
+    )
+    .await?;
+
+    Ok((jar, postmessage_html(true, OAuthMessageType::GithubAuth, None, None)).into_response())
+}
