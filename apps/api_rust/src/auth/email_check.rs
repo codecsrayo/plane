@@ -111,6 +111,9 @@ async fn run_email_check(
     };
 
     Ok(EmailCheckResponse {
+        is_password_autoset: existing
+            .as_ref()
+            .is_some_and(|user| user.is_password_autoset),
         existing: existing.is_some(),
         status,
     })

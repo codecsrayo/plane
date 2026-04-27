@@ -93,6 +93,7 @@ impl IntoResponse for AuthError {
 pub struct EmailCheckResponse {
     pub existing: bool,
     pub status: &'static str,
+    pub is_password_autoset: bool,
 }
 
 #[derive(Debug, Serialize, Deserialize, ToSchema)]
