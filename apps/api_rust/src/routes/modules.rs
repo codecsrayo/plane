@@ -169,7 +169,7 @@ async fn enrich_module_counts(
     db: &sea_orm::DatabaseConnection,
     mut mods: Vec<ModuleResponse>,
 ) -> Result<Vec<ModuleResponse>, AppError> {
-    use sea_orm::Statement;
+    use sea_orm::{FromQueryResult, Statement};
 
     if mods.is_empty() {
         return Ok(mods);
