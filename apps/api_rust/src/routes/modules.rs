@@ -31,7 +31,7 @@ use crate::{
         extractors::ProjectMemberGuard,
         permissions::{require_role, ROLE_GUEST, ROLE_MEMBER},
     },
-    entities::{issues, module_issues, module_links, module_members, module_user_properties, modules, states, user_favorites},
+    entities::{issues, module_issues, module_links, module_members, module_user_properties, modules, user_favorites},
     error::AppError,
     utils::soft_delete::SoftDeleteExt,
     AppState,
@@ -169,7 +169,7 @@ async fn enrich_module_counts(
     db: &sea_orm::DatabaseConnection,
     mut mods: Vec<ModuleResponse>,
 ) -> Result<Vec<ModuleResponse>, AppError> {
-    use sea_orm::{ConnectionTrait, Statement};
+    use sea_orm::Statement;
 
     if mods.is_empty() {
         return Ok(mods);

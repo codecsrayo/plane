@@ -33,7 +33,7 @@ use crate::{
         extractors::ProjectMemberGuard,
         permissions::{require_role, ROLE_GUEST, ROLE_MEMBER},
     },
-    entities::{cycle_issues, cycle_user_properties, cycles, issues, states, user_favorites},
+    entities::{cycle_issues, cycle_user_properties, cycles, issues, user_favorites},
     error::AppError,
     utils::soft_delete::SoftDeleteExt,
     AppState,
