@@ -1719,7 +1719,7 @@ pub async fn delete_issue_subscriber(
 /// Returns { subscribed: bool } — mirror of IssueSubscriberEndpoint.get in Django.
 #[utoipa::path(
     get, path = "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/subscribe/",
-    tag = "Issues", security((("sessionAuth" = []))),
+    tag = "Issues", security(("sessionAuth" = [])),
     responses(
         (status = 200, description = "Subscription status"),
     )

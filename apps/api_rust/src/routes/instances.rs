@@ -393,7 +393,7 @@ pub async fn get_instance_admin_me(AnyAuth(user): AnyAuth) -> impl IntoResponse 
         "is_staff": user.is_staff,
         "is_active": user.is_active,
         "user_timezone": user.user_timezone,
-        "cover_image_url": null::<String>,
+        "cover_image_url": serde_json::Value::Null,
     }))
 }
 

@@ -3184,7 +3184,7 @@ pub struct BulkJoinProjectsRequest {
         (status = 200, description = "Joined projects"),
         (status = 404, description = "Workspace not found"),
     ),
-    security((("sessionAuth" = [])))
+    security(("sessionAuth" = []))
 )]
 pub async fn join_user_project_invitations(
     AnyAuth(user): AnyAuth,
