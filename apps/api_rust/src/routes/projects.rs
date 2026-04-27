@@ -2789,7 +2789,10 @@ pub struct DeployBoardResponse {
     pub is_votes_enabled: bool,
     pub view_props: serde_json::Value,
     pub intake_id: Option<Uuid>,
+    // Frontend TPublishSettings uses "project" and "workspace" (not project_id/workspace_id)
+    #[serde(rename = "project")]
     pub project_id: Option<Uuid>,
+    #[serde(rename = "workspace")]
     pub workspace_id: Uuid,
     pub entity_name: Option<String>,
     pub entity_identifier: Option<Uuid>,
@@ -2797,6 +2800,12 @@ pub struct DeployBoardResponse {
     pub is_disabled: bool,
     pub created_at: DateTime<Utc>,
     pub updated_at: DateTime<Utc>,
+    pub created_by: Option<Uuid>,
+    pub updated_by: Option<Uuid>,
+    // Required by TPublishSettings — null in CE
+    pub inbox: Option<serde_json::Value>,
+    pub project_details: Option<serde_json::Value>,
+    pub workspace_detail: Option<serde_json::Value>,
 }
 
 impl From<deploy_boards::Model> for DeployBoardResponse {
@@ -2817,6 +2826,11 @@ impl From<deploy_boards::Model> for DeployBoardResponse {
             is_disabled: m.is_disabled,
             created_at: m.created_at.into(),
             updated_at: m.updated_at.into(),
+            created_by: m.created_by_id,
+            updated_by: m.updated_by_id,
+            inbox: None,
+            project_details: None,
+            workspace_detail: None,
         }
     }
 }
