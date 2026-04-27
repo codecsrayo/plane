@@ -503,36 +503,36 @@ Todos requieren sesión activa.
 
 ---
 
-## 6. States, Labels, Estimates
+## 6. States, Labels, Estimates ✅ Revisado
 
-### 6.1 States
+### 6.1 States ✅
 
-| Método               | Path                                                                    |
-| -------------------- | ----------------------------------------------------------------------- |
-| GET / POST           | `/api/workspaces/{slug}/projects/{project_id}/states`                   |
-| GET / PATCH / DELETE | `/api/workspaces/{slug}/projects/{project_id}/states/{pk}`              |
-| GET                  | `/api/workspaces/{slug}/projects/{project_id}/intake-state`             |
-| POST                 | `/api/workspaces/{slug}/projects/{project_id}/states/{pk}/mark-default` |
+| Método               | Path                                                                    | Estado | Notas |
+| -------------------- | ----------------------------------------------------------------------- | ------ | ----- |
+| GET / POST           | `/api/workspaces/{slug}/projects/{project_id}/states`                   | 🐛 FIXED | Faltaba campo `order` en `StateResponse` (usado en `StateGroupIcon`). Añadido como alias de `sequence` (d741df7). |
+| GET / PATCH / DELETE | `/api/workspaces/{slug}/projects/{project_id}/states/{pk}`              | ✅ OK  | Correcto. |
+| GET                  | `/api/workspaces/{slug}/projects/{project_id}/intake-state`             | ✅ OK  | Correcto. |
+| POST                 | `/api/workspaces/{slug}/projects/{project_id}/states/{pk}/mark-default` | ✅ OK  | Correcto. |
 
-### 6.2 Labels
+### 6.2 Labels ✅
 
-| Método               | Path                                                              | Notas                   |
-| -------------------- | ----------------------------------------------------------------- | ----------------------- |
-| POST                 | `/api/workspaces/{slug}/projects/{project_id}/bulk-create-labels` |                         |
-| GET / POST           | `/api/workspaces/{slug}/projects/{project_id}/labels`             | Canónica                |
-| GET / PATCH / DELETE | `/api/workspaces/{slug}/projects/{project_id}/labels/{pk}`        | Canónica                |
-| GET / POST           | `/api/workspaces/{slug}/projects/{project_id}/issue-labels`       | **Alias Django-compat** |
-| GET / PATCH / DELETE | `/api/workspaces/{slug}/projects/{project_id}/issue-labels/{pk}`  | Alias                   |
+| Método               | Path                                                              | Estado | Notas |
+| -------------------- | ----------------------------------------------------------------- | ------ | ----- |
+| POST                 | `/api/workspaces/{slug}/projects/{project_id}/bulk-create-labels` | ✅ OK  | Correcto. |
+| GET / POST           | `/api/workspaces/{slug}/projects/{project_id}/labels`             | 🐛 FIXED | `parent_id` → serde rename a `parent` (IIssueLabel.parent). (d741df7). |
+| GET / PATCH / DELETE | `/api/workspaces/{slug}/projects/{project_id}/labels/{pk}`        | 🐛 FIXED | Mismo fix. |
+| GET / POST           | `/api/workspaces/{slug}/projects/{project_id}/issue-labels`       | 🐛 FIXED | Alias, mismo fix. |
+| GET / PATCH / DELETE | `/api/workspaces/{slug}/projects/{project_id}/issue-labels/{pk}`  | 🐛 FIXED | Alias, mismo fix. |
 
-### 6.3 Estimates
+### 6.3 Estimates ✅
 
-| Método               | Path                                                                                        |
-| -------------------- | ------------------------------------------------------------------------------------------- |
-| GET                  | `/api/workspaces/{slug}/projects/{project_id}/project-estimates`                            |
-| GET / POST           | `/api/workspaces/{slug}/projects/{project_id}/estimates`                                    |
-| GET / PATCH / DELETE | `/api/workspaces/{slug}/projects/{project_id}/estimates/{estimate_id}`                      |
-| POST                 | `/api/workspaces/{slug}/projects/{project_id}/estimates/{estimate_id}/estimate-points`      |
-| PATCH / DELETE       | `/api/workspaces/{slug}/projects/{project_id}/estimates/{estimate_id}/estimate-points/{pk}` |
+| Método               | Path                                                                                        | Estado | Notas |
+| -------------------- | ------------------------------------------------------------------------------------------- | ------ | ----- |
+| GET                  | `/api/workspaces/{slug}/projects/{project_id}/project-estimates`                            | ✅ OK  | Correcto. |
+| GET / POST           | `/api/workspaces/{slug}/projects/{project_id}/estimates`                                    | 🐛 FIXED | `project_id`→`project`, `workspace_id`→`workspace`, `created_by_id`→`created_by`; faltaba `updated_by` (d741df7). |
+| GET / PATCH / DELETE | `/api/workspaces/{slug}/projects/{project_id}/estimates/{estimate_id}`                      | 🐛 FIXED | Mismo fix struct. |
+| POST                 | `/api/workspaces/{slug}/projects/{project_id}/estimates/{estimate_id}/estimate-points`      | ✅ OK  | Correcto. |
+| PATCH / DELETE       | `/api/workspaces/{slug}/projects/{project_id}/estimates/{estimate_id}/estimate-points/{pk}` | ✅ OK  | Correcto. |
 
 ---
 
