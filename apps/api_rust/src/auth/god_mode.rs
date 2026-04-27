@@ -155,7 +155,7 @@ pub async fn admin_sign_up(
     let telemetry_enabled = form
         .is_telemetry_enabled
         .as_deref()
-        .map(|v| v == "true" || v == "1")
+        .map(|v| matches!(v.to_lowercase().as_str(), "true" | "1"))
         .unwrap_or(true);
 
     if email.is_empty() || password.is_empty() || first_name.is_empty() {
