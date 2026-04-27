@@ -514,13 +514,13 @@ pub mod v1_router;
         (name = "Exporter",      description = "Issue export"),
         (name = "Search",        description = "Global and project search"),
         (name = "Analytics",    description = "Workspace analytics and project stats"),
-        (name = "Assets",       description = "File assets Ã¢ÂÂ user/workspace/project uploads"),
+        (name = "Assets",       description = "File assets — user/workspace/project uploads"),
         (name = "External",     description = "AI assistant and Unsplash integration"),
         (name = "Importer",     description = "GitHub and GitLab issue importers"),
         (name = "Timezones",     description = "Supported timezones"),
         (name = "Users",         description = "Current user profile and settings"),
         (name = "Views",         description = "Issue views (workspace & project)"),
-        (name = "Integrations", description = "GitHub ÃÂ· GitLab ÃÂ· Slack integrations"),
+        (name = "Integrations", description = "GitHub · GitLab · Slack integrations"),
     ),
     modifiers(&SecurityAddon)
 )]
@@ -546,12 +546,12 @@ async fn openapi_json() -> Json<utoipa::openapi::OpenApi> {
 }
 
 pub fn build_router(state: AppState) -> Router {
-    // Ã¢ÂÂÃ¢ÂÂ Rutas sin autenticaciÃÂ³n Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+    // ── Rutas sin autenticación ──────────────────────────────────────────────
     let public_routes = Router::new()
-        // GitHub App Setup URL callback Ã¢ÂÂ sin middleware de auth
+        // GitHub App Setup URL callback — sin middleware de auth
         .route("/github/callback", get(integrations::github_app_callback));
 
-    // Ã¢ÂÂÃ¢ÂÂ Auth routes Ã¢ÂÂ nested at /auth to match Django's path("auth/", ...) Ã¢ÂÂÃ¢ÂÂ
+    // ── Auth routes — nested at /auth to match Django's path("auth/", ...) ──
     // Public auth routes (no auth middleware, e.g. OAuth callbacks)
     let auth_public_routes = Router::new()
         .route("/gitlab/callback", get(auth::oauth::gitlab_callback))
@@ -623,13 +623,13 @@ pub fn build_router(state: AppState) -> Router {
         )
         .route("/sign-out", post(auth::logout::logout))
         .route("/spaces/sign-out", post(auth::logout::logout_space))
-        // Ã¢ÂÂÃ¢ÂÂ GitHub user OAuth callback (con auth) Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+        // ── GitHub user OAuth callback (con auth) ────────────────────────────
         .route(
             "/github/user-callback",
             get(integrations::github_user_callback_get_stub)
                 .post(integrations::github_user_callback),
         )
-        // Ã¢ÂÂÃ¢ÂÂ OAuth Initiation Ã¢ÂÂÃ¢ÂÂ
+        // ── OAuth Initiation ──
         .route("/gitlab", get(auth::oauth::gitlab_initiate))
         .route("/google", get(auth::oauth::google_initiate))
         .route("/gitea", get(auth::oauth::gitea_initiate))
@@ -648,11 +648,11 @@ pub fn build_router(state: AppState) -> Router {
             get(integrations::github_user_callback_get_stub)
                 .post(integrations::github_user_callback),
         )
-        // Ã¢ÂÂÃ¢ÂÂ Integrations globales Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+        // ── Integrations globales ────────────────────────────────────────────
         .route("/integrations", get(integrations::list_integrations))
-        // Ã¢ÂÂÃ¢ÂÂ Workspaces (Fase 2) Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+        // ── Workspaces (Fase 2) ──────────────────────────────────────────────
         // NormalizePathLayer (aplicado al router final) elimina trailing slashes
-        // automÃÂ¡ticamente, por lo que solo se necesita una variante por ruta.
+        // automáticamente, por lo que solo se necesita una variante por ruta.
         .route("/workspace-slug-check", get(workspaces::slug_check))
         .route(
             "/workspaces",
@@ -716,7 +716,7 @@ pub fn build_router(state: AppState) -> Router {
                 .post(workspaces::export_workspace_user_activity),
         )
         // Mirror Django: workspaces/<slug>/user-issues/<user_id>/ -> WorkspaceUserProfileIssuesEndpoint
-        // Sirve las pestaÃÂ±as Assigned / Created / Subscribed del perfil del usuario.
+        // Sirve las pestañas Assigned / Created / Subscribed del perfil del usuario.
         .route(
             "/workspaces/{slug}/user-issues/{user_id}",
             get(user_profile_issues::list_user_profile_issues),
@@ -746,13 +746,13 @@ pub fn build_router(state: AppState) -> Router {
                 .patch(workspaces::update_workspace_theme)
                 .delete(workspaces::delete_workspace_theme),
         )
-        // Ã¢ÂÂÃ¢ÂÂ Workspace integrations Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+        // ── Workspace integrations ───────────────────────────────────────────
         .route(
             "/workspaces/{slug}/workspace-integrations",
             get(integrations::list_workspace_integrations)
                 .post(integrations::create_workspace_integration),
         )
-        // Rutas especÃÂ­ficas de GitHub ANTES de las rutas genÃÂ©ricas con :pk
+        // Rutas específicas de GitHub ANTES de las rutas genéricas con :pk
         // para evitar que "github" sea capturado como un UUID
         .route(
             "/workspaces/{slug}/workspace-integrations/github/repo-syncs",
@@ -794,7 +794,7 @@ pub fn build_router(state: AppState) -> Router {
             "/workspaces/{slug}/workspace-integrations/{wi_id}/pr-state-mappings/{pk}",
             delete(integrations::delete_pr_state_mapping),
         )
-        // Ã¢ÂÂÃ¢ÂÂ Projects (Fase 2b) Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+        // ── Projects (Fase 2b) ───────────────────────────────────────────────
         .route(
             "/workspaces/{slug}/projects",
             get(projects::list_projects).post(projects::create_project),
@@ -886,7 +886,7 @@ pub fn build_router(state: AppState) -> Router {
         )
         // Django URL: `workspaces/<slug>/projects/<project_id>/user-properties/`
         // (`apps/api/plane/app/urls/issue.py:216-219`). GET hace get_or_create
-        // asÃÂ­ que NUNCA devuelve 404 si el proyecto existe.
+        // así que NUNCA devuelve 404 si el proyecto existe.
         .route(
             "/workspaces/{slug}/projects/{project_id}/user-properties",
             get(project_user_properties::get_project_user_properties)
@@ -902,7 +902,7 @@ pub fn build_router(state: AppState) -> Router {
             get(projects::get_project_invitation)
                 .delete(projects::delete_project_invitation),
         )
-        // Ã¢ÂÂÃ¢ÂÂ States (Fase 3) Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+        // ── States (Fase 3) ──────────────────────────────────────────────────
         .route(
             "/workspaces/{slug}/projects/{project_id}/states",
             get(states::list_states).post(states::create_state),
@@ -921,7 +921,7 @@ pub fn build_router(state: AppState) -> Router {
             "/workspaces/{slug}/projects/{project_id}/states/{pk}/mark-default",
             post(states::mark_default),
         )
-        // Ã¢ÂÂÃ¢ÂÂ Issues Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+        // ── Issues ──────────────────────────────────────────────────────────
         .route(
             "/workspaces/{slug}/projects/{project_id}/issues",
             get(issues::list_issues).post(issues::create_issue),
@@ -944,7 +944,7 @@ pub fn build_router(state: AppState) -> Router {
                 .patch(issues::update_issue)
                 .delete(issues::delete_issue),
         )
-        // Ã¢ÂÂÃ¢ÂÂ Cycles Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+        // ── Cycles ──────────────────────────────────────────────────────────
         .route(
             "/workspaces/{slug}/projects/{project_id}/cycles",
             get(cycles::list_cycles).post(cycles::create_cycle),
@@ -1004,7 +1004,7 @@ pub fn build_router(state: AppState) -> Router {
             "/workspaces/{slug}/projects/{project_id}/archived-cycles/{pk}",
             get(cycles::get_archived_cycle).delete(cycles::unarchive_cycle),
         )
-        // Ã¢ÂÂÃ¢ÂÂ Modules Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+        // ── Modules ─────────────────────────────────────────────────────────
         .route(
             "/workspaces/{slug}/projects/{project_id}/modules",
             get(modules::list_modules).post(modules::create_module),
@@ -1062,8 +1062,8 @@ pub fn build_router(state: AppState) -> Router {
             "/workspaces/{slug}/projects/{project_id}/archived-modules/{pk}",
             get(modules::get_archived_module).delete(modules::unarchive_module),
         )
-        // Ã¢ÂÂÃ¢ÂÂ Labels Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
-        // Rutas canÃÂ³nicas (/labels/)
+        // ── Labels ──────────────────────────────────────────────────────────
+        // Rutas canónicas (/labels/)
         .route(
             "/workspaces/{slug}/projects/{project_id}/bulk-create-labels",
             post(labels::bulk_create_labels),
@@ -1078,7 +1078,7 @@ pub fn build_router(state: AppState) -> Router {
                 .patch(labels::update_label)
                 .delete(labels::delete_label),
         )
-        // Alias Django-compatible (/issue-labels/) Ã¢ÂÂ mismos handlers
+        // Alias Django-compatible (/issue-labels/) – mismos handlers
         .route(
             "/workspaces/{slug}/projects/{project_id}/issue-labels",
             get(labels::list_labels).post(labels::create_label),
@@ -1089,7 +1089,7 @@ pub fn build_router(state: AppState) -> Router {
                 .patch(labels::update_label)
                 .delete(labels::delete_label),
         )
-        // Ã¢ÂÂÃ¢ÂÂ Estimates Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+        // ── Estimates ────────────────────────────────────────────────────────
         .route(
             "/workspaces/{slug}/projects/{project_id}/project-estimates",
             get(estimates::list_project_estimates),
@@ -1112,7 +1112,7 @@ pub fn build_router(state: AppState) -> Router {
             "/workspaces/{slug}/projects/{project_id}/estimates/{estimate_id}/estimate-points/{pk}",
             patch(estimates::update_estimate_point).delete(estimates::delete_estimate_point),
         )
-        // Ã¢ÂÂÃ¢ÂÂ Notifications Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+        // ── Notifications ────────────────────────────────────────────────────
         .route(
             "/workspaces/{slug}/users/notifications/unread",
             get(notifications::unread_count),
@@ -1140,7 +1140,7 @@ pub fn build_router(state: AppState) -> Router {
             post(notifications::archive_notification)
                 .delete(notifications::unarchive_notification),
         )
-        // Ã¢ÂÂÃ¢ÂÂ Webhooks Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+        // ── Webhooks ─────────────────────────────────────────────────────────
         .route(
             "/workspaces/{slug}/webhooks",
             get(webhooks::list_webhooks).post(webhooks::create_webhook),
@@ -1159,7 +1159,7 @@ pub fn build_router(state: AppState) -> Router {
             "/workspaces/{slug}/webhook-logs/{webhook_id}",
             get(webhooks::list_webhook_logs),
         )
-        // Ã¢ÂÂÃ¢ÂÂ Pages Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+        // ── Pages ────────────────────────────────────────────────────────────
         .route(
             "/workspaces/{slug}/projects/{project_id}/pages-summary",
             get(pages::pages_summary),
@@ -1218,13 +1218,13 @@ pub fn build_router(state: AppState) -> Router {
             "/workspaces/{slug}/projects/{project_id}/pages/{page_id}/description",
             get(pages::get_page_description).patch(pages::update_page_description),
         )
-        // Ã¢ÂÂÃ¢ÂÂ Intake Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+        // ── Intake ───────────────────────────────────────────────────────────
         // Django registra ambos nombres (`intakes/` / `inboxes/`,
         // `intake-issues/` / `inbox-issues/`) apuntando al mismo
-        // ViewSet Ã¢ÂÂ ver apps/api/plane/app/urls/intake.py:17-55. El
+        // ViewSet — ver apps/api/plane/app/urls/intake.py:17-55. El
         // frontend actual usa el nombre legacy `inbox-issues`
         // (apps/web/core/services/inbox/inbox-issue.service.ts) y por eso
-        // devolvÃÂ­a 404 al crear intake issues hasta que se agregaron estos
+        // devolvía 404 al crear intake issues hasta que se agregaron estos
         // aliases. Todos los handlers son compartidos; no hay divergencia.
         .route(
             "/workspaces/{slug}/projects/{project_id}/intakes",
@@ -1269,7 +1269,7 @@ pub fn build_router(state: AppState) -> Router {
                 .patch(intake::update_intake_issue)
                 .delete(intake::delete_intake_issue),
         )
-        // Ã¢ÂÂÃ¢ÂÂ Exporter Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+        // ── Exporter ─────────────────────────────────────────────────────────
         .route(
             "/workspaces/{slug}/export-issues",
             get(exporter::list_export_issues).post(exporter::export_issues),
@@ -1278,7 +1278,7 @@ pub fn build_router(state: AppState) -> Router {
             "/workspaces/{slug}/export-issues/{token}",
             get(exporter::get_export_status),
         )
-        // Ã¢ÂÂÃ¢ÂÂ Search Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+        // ── Search ───────────────────────────────────────────────────────────
         .route(
             "/workspaces/{slug}/search",
             get(search::global_search),
@@ -1307,9 +1307,9 @@ pub fn build_router(state: AppState) -> Router {
             "/workspaces/{slug}/entity-search",
             get(search::entity_search),
         )
-        // Ã¢ÂÂÃ¢ÂÂ Timezones Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+        // ── Timezones ─────────────────────────────────────────────────────────
         .route("/timezones", get(timezones::list_timezones))
-        // Ã¢ÂÂÃ¢ÂÂ Users (me) Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+        // ── Users (me) ───────────────────────────────────────────────────────
         .route(
             "/users/me",
             get(users::get_me)
@@ -1320,13 +1320,13 @@ pub fn build_router(state: AppState) -> Router {
         .route("/users/me/settings", get(users::get_settings))
         .route("/users/me/instance-admin", get(users::get_instance_admin))
         // Mirror Django: users/me/notification-preferences/
-        //   Ã¢ÂÂ UserNotificationPreferenceEndpoint
+        //   → UserNotificationPreferenceEndpoint
         //   (apps/api/plane/app/urls/notification.py:47-51)
         //
-        // GET/PATCH sobre la fila ÃÂºnica de preferencias del usuario
+        // GET/PATCH sobre la fila única de preferencias del usuario
         // autenticado. Si la fila no existe (usuarios migrados o creados
         // por flujos que no disparan el signal Django), se crea con los
-        // defaults del modelo. Evita el 500 que tendrÃÂ­a Django con `.get()`.
+        // defaults del modelo. Evita el 500 que tendría Django con `.get()`.
         .route(
             "/users/me/notification-preferences",
             get(notifications::get_user_notification_preferences)
@@ -1351,7 +1351,7 @@ pub fn build_router(state: AppState) -> Router {
         // Mirror Django: users/me/activities/ -> UserActivityEndpoint
         // (plane/app/urls/user.py:65, plane/app/views/user/base.py:380).
         // Devuelve todas las IssueActivity del requester (cross-workspace)
-        // con paginaciÃÂ³n cursor estilo Django.
+        // con paginación cursor estilo Django.
         .route("/users/me/activities", get(users::get_my_activities))
         // Mirror Django: users/me/workspaces/invitations/ -> UserWorkspaceInvitationsViewSet
         // (GET list pending invites, POST bulk-accept). Llamado por el flujo
@@ -1378,15 +1378,15 @@ pub fn build_router(state: AppState) -> Router {
             "/users/me/workspaces/{slug}/dashboard",
             get(users::get_workspace_dashboard),
         )
-        // Ã¢ÂÂÃ¢ÂÂ Workspace View Issues (global view / spreadsheet) Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
-        // Mirror Django: workspaces/<slug>/issues/ Ã¢ÂÂ WorkspaceViewIssuesViewSet
+        // ── Workspace View Issues (global view / spreadsheet) ─────────────────
+        // Mirror Django: workspaces/<slug>/issues/ → WorkspaceViewIssuesViewSet
         // (plane/app/urls/views.py:52). Retorna issues de todos los proyectos
         // del workspace a los que el usuario tiene acceso.
         .route(
             "/workspaces/{slug}/issues",
             get(workspace_view_issues::list_workspace_view_issues),
         )
-        // Ã¢ÂÂÃ¢ÂÂ Workspace Views Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+        // ── Workspace Views ───────────────────────────────────────────────────
         .route(
             "/workspaces/{slug}/views",
             get(views::list_workspace_views).post(views::create_workspace_view),
@@ -1397,7 +1397,7 @@ pub fn build_router(state: AppState) -> Router {
                 .patch(views::update_workspace_view)
                 .delete(views::delete_workspace_view),
         )
-        // Ã¢ÂÂÃ¢ÂÂ Project Views Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+        // ── Project Views ─────────────────────────────────────────────────────
         .route(
             "/workspaces/{slug}/projects/{project_id}/views",
             get(views::list_project_views).post(views::create_project_view),
@@ -1408,7 +1408,7 @@ pub fn build_router(state: AppState) -> Router {
                 .patch(views::update_project_view)
                 .delete(views::delete_project_view),
         )
-        // Ã¢ÂÂÃ¢ÂÂ View Favorites Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+        // ── View Favorites ────────────────────────────────────────────────────
         .route(
             "/workspaces/{slug}/projects/{project_id}/user-favorite-views",
             get(views::list_user_favorite_views).post(views::add_favorite_view),
@@ -1417,7 +1417,7 @@ pub fn build_router(state: AppState) -> Router {
             "/workspaces/{slug}/projects/{project_id}/user-favorite-views/{view_id}",
             delete(views::remove_favorite_view),
         )
-        // Ã¢ÂÂÃ¢ÂÂ Analytics Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+        // ── Analytics ─────────────────────────────────────────────────────────
         .route(
             "/workspaces/{slug}/analytics",
             get(analytics::workspace_analytics),
@@ -1448,7 +1448,7 @@ pub fn build_router(state: AppState) -> Router {
             "/workspaces/{slug}/saved-analytic-view/{analytic_id}",
             get(analytics::get_saved_analytic_view),
         )
-        // Ã¢ÂÂÃ¢ÂÂ Advance Analytics Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+        // ── Advance Analytics ─────────────────────────────────────────────────
         .route(
             "/workspaces/{slug}/advance-analytics",
             get(analytics::advance_analytics),
@@ -1473,7 +1473,7 @@ pub fn build_router(state: AppState) -> Router {
             "/workspaces/{slug}/projects/{project_id}/advance-analytics-charts",
             get(analytics::project_advance_analytics_charts),
         )
-        // Ã¢ÂÂÃ¢ÂÂ Assets Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+        // ── Assets ───────────────────────────────────────────────────────────
         .route(
             "/assets/v2/user-assets",
             post(assets::initiate_user_asset_upload),
@@ -1575,7 +1575,7 @@ pub fn build_router(state: AppState) -> Router {
         // Incoming webhooks (public)
         .route("/github-webhook", post(external::github_webhook))
         .route("/gitlab-webhook", post(external::gitlab_webhook))
-        // Ã¢ÂÂÃ¢ÂÂ Importer Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+        // ── Importer ──────────────────────────────────────────────────────────
         .route(
             "/workspaces/{slug}/importers/github/repositories",
             get(importer::list_github_import_repositories),
@@ -1600,7 +1600,7 @@ pub fn build_router(state: AppState) -> Router {
             "/workspaces/{slug}/importers/gitlab/{importer_id}",
             delete(importer::delete_gitlab_importer),
         )
-        // Ã¢ÂÂÃ¢ÂÂ External Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+        // ── External ──────────────────────────────────────────────────────────
         .route("/unsplash", get(external::unsplash))
         .route(
             "/workspaces/{slug}/projects/{project_id}/ai-assistant",
@@ -1617,7 +1617,7 @@ pub fn build_router(state: AppState) -> Router {
             "/workspaces/{slug}/rephrase-grammar",
             post(external::rephrase_grammar),
         )
-        // Ã¢ÂÂÃ¢ÂÂ Issue extras (comments, reactions, links, relations, history) Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+        // ── Issue extras (comments, reactions, links, relations, history) ────
         .route(
             "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/comments",
             get(issue_extras::list_comments).post(issue_extras::create_comment),
@@ -1734,7 +1734,7 @@ pub fn build_router(state: AppState) -> Router {
             "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/sub-issues",
             get(issue_extras::list_sub_issues).post(issue_extras::assign_sub_issues),
         )
-        // Ã¢ÂÂÃ¢ÂÂ Workspace Extras (favorites, home prefs, quick links, recent visits, stickies) Ã¢ÂÂÃ¢ÂÂ
+        // ── Workspace Extras (favorites, home prefs, quick links, recent visits, stickies) ──
         .route(
             "/workspaces/{slug}/user-favorites",
             get(workspace_extras::list_favorites).post(workspace_extras::create_favorite),
@@ -1788,13 +1788,13 @@ pub fn build_router(state: AppState) -> Router {
                 .patch(workspace_extras::update_user_preferences),
         )
         // Mirror Django: workspaces/<slug>/user-properties/
-        //   Ã¢ÂÂ WorkspaceUserPropertiesEndpoint (plane/app/urls/workspace.py:162)
+        //   → WorkspaceUserPropertiesEndpoint (plane/app/urls/workspace.py:162)
         .route(
             "/workspaces/{slug}/user-properties",
             get(workspace_extras::get_workspace_user_properties)
                 .patch(workspace_extras::update_workspace_user_properties),
         )
-        // Ã¢ÂÂÃ¢ÂÂ Draft Issues Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+        // ── Draft Issues ──────────────────────────────────────────────────────
         .route(
             "/workspaces/{slug}/draft-issues",
             get(workspace_extras::list_draft_issues).post(workspace_extras::create_draft_issue),
@@ -1809,7 +1809,7 @@ pub fn build_router(state: AppState) -> Router {
                 .patch(workspace_extras::update_draft_issue)
                 .delete(workspace_extras::delete_draft_issue),
         )
-        // Ã¢ÂÂÃ¢ÂÂ Workspace-level aggregate views Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+        // ── Workspace-level aggregate views ──────────────────────────────────
         .route(
             "/workspaces/{slug}/cycles",
             get(workspace_extras::list_workspace_cycles),
@@ -1830,7 +1830,7 @@ pub fn build_router(state: AppState) -> Router {
             "/workspaces/{slug}/states",
             get(workspace_extras::list_workspace_states),
         )
-        // Ã¢ÂÂÃ¢ÂÂ Issue attachments Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+        // ── Issue attachments ─────────────────────────────────────────────────
         .route(
             "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-attachments",
             get(issue_extras2::list_issue_attachments)
@@ -1841,7 +1841,7 @@ pub fn build_router(state: AppState) -> Router {
             patch(issue_extras2::complete_issue_attachment_upload)
                 .delete(issue_extras2::delete_issue_attachment),
         )
-        // Ã¢ÂÂÃ¢ÂÂ Issue archive / unarchive Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+        // ── Issue archive / unarchive ─────────────────────────────────────────
         .route(
             "/workspaces/{slug}/projects/{project_id}/issues/{pk}/archive",
             get(issue_extras2::get_archived_issue)
@@ -1888,7 +1888,7 @@ pub fn build_router(state: AppState) -> Router {
             "/workspaces/{slug}/projects/{project_id}/issue-dates",
             post(issue_extras2::bulk_update_issue_dates),
         )
-        // Ã¢ÂÂÃ¢ÂÂ Issue versions Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+        // ── Issue versions ────────────────────────────────────────────────────
         .route(
             "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/versions",
             get(issue_extras2::list_issue_versions),
@@ -1897,7 +1897,7 @@ pub fn build_router(state: AppState) -> Router {
             "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/versions/{pk}",
             get(issue_extras2::get_issue_version),
         )
-        // Ã¢ÂÂÃ¢ÂÂ Work item description versions Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+        // ── Work item description versions ────────────────────────────────────
         // Mirror Django: WorkItemDescriptionVersionEndpoint
         // (apps/api/plane/app/urls/issue.py:267-274)
         .route(
@@ -1918,7 +1918,7 @@ pub fn build_router(state: AppState) -> Router {
             "/workspaces/{slug}/projects/{project_id}/intake-work-items/{work_item_id}/description-versions/{pk}",
             get(issue_description_versions::get_description_version),
         )
-        // Ã¢ÂÂÃ¢ÂÂ API Tokens Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+        // ── API Tokens ────────────────────────────────────────────────────────
         .route(
             "/api-tokens",
             get(api_tokens::list_api_tokens).post(api_tokens::create_api_token),
@@ -1941,12 +1941,12 @@ pub fn build_router(state: AppState) -> Router {
                 .patch(api_tokens::update_api_token)
                 .delete(api_tokens::delete_api_token),
         )
-        // Ã¢ÂÂÃ¢ÂÂ Instance Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+        // ── Instance ──────────────────────────────────────────────────────────
         .route(
             "/instances",
             get(instances::get_instance).patch(instances::patch_instance),
         )
-        // God Mode auth Ã¢ÂÂ rutas especÃÂ­ficas ANTES de /admins/ para evitar conflictos
+        // God Mode auth — rutas específicas ANTES de /admins/ para evitar conflictos
         .route(
             "/instances/admins/sign-up",
             post(auth::god_mode::admin_sign_up),
@@ -1967,14 +1967,14 @@ pub fn build_router(state: AppState) -> Router {
             "/instances/admins",
             get(instances::list_instance_admins).post(instances::create_instance_admin),
         )
-        // Rutas especÃÂ­ficas ANTES de /{pk}/ para evitar captura incorrecta
+        // Rutas específicas ANTES de /{pk}/ para evitar captura incorrecta
         .route("/instances/admins/me",      get(instances::get_instance_admin_me))
         .route("/instances/admins/session", get(instances::get_instance_admin_session))
         .route(
             "/instances/admins/{pk}",
             delete(instances::delete_instance_admin),
         )
-        // Configurations Ã¢ÂÂ disable-email-feature ANTES de la ruta raÃÂ­z
+        // Configurations — disable-email-feature ANTES de la ruta raíz
         .route(
             "/instances/configurations/disable-email-feature",
             delete(instances::disable_email_feature),
@@ -1998,24 +1998,24 @@ pub fn build_router(state: AppState) -> Router {
         .layer(middleware::from_fn(
             auth::rate_limit::rate_limit_headers_middleware,
         ))
-        .layer(DefaultBodyLimit::max(1_048_576)); // 1 MB Ã¢ÂÂ previene DoS por payload masivo
+        .layer(DefaultBodyLimit::max(1_048_576)); // 1 MB — previene DoS por payload masivo
 
-    // Ã¢ÂÂ Scalar UI solo en desarrollo (DEBUG=true).
+    // ✅ Scalar UI solo en desarrollo (DEBUG=true).
     //
-    // FIX (axum 0.8): las rutas de Scalar se mergean al router raÃÂ­z ANTES
-    // de los `nest("/api", ...)`. Antes se agregaban despuÃÂ©s y devolvÃÂ­an 404:
+    // FIX (axum 0.8): las rutas de Scalar se mergean al router raíz ANTES
+    // de los `nest("/api", ...)`. Antes se agregaban después y devolvían 404:
     // `nest("/api", api_router)` registra internamente un wildcard que
     // capturaba `/api/docs`, enruta al `api_router` (donde no existe
     // `/docs`) y responde 404 sin caer en el `.route("/api/docs", ...)` del
-    // router raÃÂ­z.
+    // router raíz.
     //
-    // Registrando Scalar primero, la ruta estÃÂ¡tica `/api/docs` queda como
-    // mÃÂ¡s especÃÂ­fica que el catch-all del nest y axum la prioriza correctamente.
+    // Registrando Scalar primero, la ruta estática `/api/docs` queda como
+    // más específica que el catch-all del nest y axum la prioriza correctamente.
     //
-    // AdemÃÂ¡s: docs NO pasa por el rate-limit middleware (aplicado al
-    // api_router), lo cual es correcto Ã¢ÂÂ no queremos rate-limit en docs.
+    // Además: docs NO pasa por el rate-limit middleware (aplicado al
+    // api_router), lo cual es correcto — no queremos rate-limit en docs.
     let root = if state.config.debug {
-        tracing::warn!("Scalar UI habilitado (DEBUG=true) Ã¢ÂÂ deshabilitar en producciÃÂ³n");
+        tracing::warn!("Scalar UI habilitado (DEBUG=true) — deshabilitar en producción");
         Router::new()
             .route("/api/docs/openapi.json", get(openapi_json))
             .merge(Scalar::with_url("/api/docs", ApiDoc::openapi()))
@@ -2032,7 +2032,7 @@ pub fn build_router(state: AppState) -> Router {
         .nest("/api/v1", v1)
         .nest("/api", api_router)
         .nest("/api", public_routes)
-        // Auth routes at /auth/* Ã¢ÂÂ matches Django: path("auth/", include("plane.authentication.urls"))
+        // Auth routes at /auth/* — matches Django: path("auth/", include("plane.authentication.urls"))
         // Caddy routes /auth/* to the API server, frontend calls /auth/email-check/ etc.
         .nest("/auth", auth_router)
         .nest("/auth", auth_public_routes);
@@ -2040,7 +2040,7 @@ pub fn build_router(state: AppState) -> Router {
     // NormalizePathLayer se aplica en main.rs envolviendo al Router *desde
     // fuera* con `NormalizePathLayer::trim_trailing_slash().layer(router)`.
     //
-    // RazÃÂ³n: `Router::layer()` en axum 0.8 ejecuta el middleware DESPUÃÂS
+    // Razón: `Router::layer()` en axum 0.8 ejecuta el middleware DESPUÉS
     // del path-matching, por lo que la barra final no se stripea a tiempo.
     // Envolviendo externamente, la capa corre ANTES del routing.
     router.with_state(state)

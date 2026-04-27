@@ -47,12 +47,12 @@ use crate::{
     AppState,
 };
 
-// Alias para legibilidad ÃÂ¢ÃÂÃÂ `.active()` filtra `deleted_at IS NULL`
+// Alias para legibilidad — `.active()` filtra `deleted_at IS NULL`
 // (implementado via `impl_soft_delete!` en entities/mod.rs)
 
-// ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ DTOs ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ
+// ── DTOs ─────────────────────────────────────────────────────────────────────
 
-/// RepresentaciÃÂÃÂ³n pÃÂÃÂºblica del usuario autenticado (`/users/me/`).
+/// Representación pública del usuario autenticado (`/users/me/`).
 #[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct UserMeResponse {
     pub id: Uuid,
@@ -86,7 +86,7 @@ pub struct UserMeResponse {
 /// Mirror exacto de `UserMeSettingsSerializer`
 /// (`apps/api/plane/app/serializers/user.py:90-138`): expone SOLO
 /// `["id", "email", "workspace"]`. El bloque `workspace` resuelve server-side
-/// la lÃÂÃÂ³gica de redirecciÃÂÃÂ³n que consume el SPA al iniciar sesiÃÂÃÂ³n.
+/// la lógica de redirección que consume el SPA al iniciar sesión.
 #[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct UserSettingsResponse {
     pub id: Uuid,
@@ -96,8 +96,8 @@ pub struct UserSettingsResponse {
 
 /// Bloque `workspace` dentro de `/users/me/settings/`.
 ///
-/// La shape es asimÃÂÃÂ©trica (paridad con Django):
-/// - Cuando hay `last_workspace_id` vÃÂÃÂ¡lido y membresÃÂÃÂ­a activa: se incluyen
+/// La shape es asimétrica (paridad con Django):
+/// - Cuando hay `last_workspace_id` válido y membresía activa: se incluyen
 ///   `last_workspace_name` y `last_workspace_logo`.
 /// - En caso contrario: esas dos claves se omiten del JSON (no se emiten
 ///   como `null`).
@@ -196,7 +196,7 @@ pub struct TourCompletedRequest {
     pub is_tour_completed: Option<bool>,
 }
 
-// ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ Conversiones ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ
+// ── Conversiones ─────────────────────────────────────────────────────────────
 
 async fn user_to_me_response(
     u: &users::Model,
@@ -286,7 +286,7 @@ fn account_to_response(a: &accounts::Model) -> AccountResponse {
     }
 }
 
-// ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ Handlers ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ
+// ── Handlers ─────────────────────────────────────────────────────────────────
 
 /// GET /api/users/me/
 ///
@@ -366,7 +366,7 @@ pub async fn update_me(
     Ok(Json(user_to_me_response(&updated, &state.db).await?))
 }
 
-/// DELETE /api/users/me/ ÃÂ¢ÃÂÃÂ desactiva la cuenta del usuario.
+/// DELETE /api/users/me/ — desactiva la cuenta del usuario.
 #[utoipa::path(
     delete,
     path = "/users/me/",
@@ -382,7 +382,7 @@ pub async fn deactivate_me(
     AnyAuth(user): AnyAuth,
     State(state): State<AppState>,
 ) -> Result<impl IntoResponse, AppError> {
-    // Verificar que no es el ÃÂÃÂºnico admin en algÃÂÃÂºn workspace activo
+    // Verificar que no es el único admin en algún workspace activo
     let memberships = workspace_members::Entity::find()
         .filter(workspace_members::Column::MemberId.eq(user.id))
         .filter(workspace_members::Column::IsActive.eq(true))
@@ -444,7 +444,7 @@ pub async fn deactivate_me(
 
 /// GET /api/users/session/
 ///
-/// Retorna si el usuario estÃÂÃÂ¡ autenticado. No requiere auth.
+/// Retorna si el usuario está autenticado. No requiere auth.
 #[utoipa::path(
     get,
     path = "/users/session/",
@@ -490,7 +490,7 @@ pub async fn get_settings(
 
     // `workspace_invites` = count de WorkspaceMemberInvite por email del user.
     // Mirror: `WorkspaceMemberInvite.objects.filter(email=obj.email).count()`.
-    // `WorkspaceMemberInvite` hereda de `BaseModel ÃÂ¢ÃÂÃÂ AuditModel ÃÂ¢ÃÂÃÂ SoftDeleteModel`
+    // `WorkspaceMemberInvite` hereda de `BaseModel → AuditModel → SoftDeleteModel`
     // (apps/api/plane/db/mixins.py:61-66), cuyo manager por defecto
     // `SoftDeletionManager` aplica `.filter(deleted_at__isnull=True)`
     // (apps/api/plane/db/mixins.py:58). Por tanto `.objects` ya excluye
@@ -506,7 +506,7 @@ pub async fn get_settings(
         0
     };
 
-    // Rama 1: hay `last_workspace_id` + membresÃÂÃÂ­a activa del user en ese workspace.
+    // Rama 1: hay `last_workspace_id` + membresía activa del user en ese workspace.
     // Mirror: `Workspace.objects.filter(pk=..., workspace_member__member=obj.id,
     //                                   workspace_member__is_active=True).exists()`.
     let last_workspace = if let Some(last_id) = profile.last_workspace_id {
@@ -534,8 +534,8 @@ pub async fn get_settings(
     };
 
     let workspace = if let Some(ws) = last_workspace {
-        // `workspace.logo_asset.asset_url` ÃÂ¢ÃÂÃÂ `/api/assets/v2/static/{id}/`
-        // Django: `"" ` si no hay asset (string vacÃÂÃÂ­o, no None).
+        // `workspace.logo_asset.asset_url` → `/api/assets/v2/static/{id}/`
+        // Django: `"" ` si no hay asset (string vacío, no None).
         let logo = ws
             .logo_asset_id
             .map(|aid| format!("/api/assets/v2/static/{}/", aid))
@@ -550,22 +550,22 @@ pub async fn get_settings(
             invites,
         }
     } else {
-        // Rama 2: sin last_workspace vÃÂÃÂ¡lido ÃÂ¢ÃÂÃÂ fallback = workspace mÃÂÃÂ¡s antiguo
+        // Rama 2: sin last_workspace válido → fallback = workspace más antiguo
         // donde el user es miembro activo.
         // Mirror: `.filter(workspace_member__member_id=obj.id,
         //                  workspace_member__is_active=True).order_by("created_at").first()`.
         //
         // Implementado como JOIN single-query para mantener paridad con Django:
-        // una versiÃÂÃÂ³n previa hacÃÂÃÂ­a `workspace_members.find().order_by(wm.created_at)
-        // .limit(1)` y luego `workspaces.find_by_id(...)`. Ese patrÃÂÃÂ³n rompe en dos
+        // una versión previa hacía `workspace_members.find().order_by(wm.created_at)
+        // .limit(1)` y luego `workspaces.find_by_id(...)`. Ese patrón rompe en dos
         // dimensiones respecto a Django:
-        //   1) Si el user tiene una membresÃÂÃÂ­a activa en un workspace
-        //      soft-deleted MÃÂÃÂS ANTIGUO que uno vivo, el LIMIT 1 captura la fila
-        //      muerta y el find_by_id posterior devuelve None ÃÂ¢ÃÂÃÂ fallback = null.
+        //   1) Si el user tiene una membresía activa en un workspace
+        //      soft-deleted MÁS ANTIGUO que uno vivo, el LIMIT 1 captura la fila
+        //      muerta y el find_by_id posterior devuelve None → fallback = null.
         //      El ORM de Django filtra `workspaces.deleted_at IS NULL` en el mismo
-        //      SELECT antes del LIMIT, asÃÂÃÂ­ que el soft-deleted nunca compite.
+        //      SELECT antes del LIMIT, así que el soft-deleted nunca compite.
         //   2) Ordenaba por `workspace_members.created_at`, pero Django ordena por
-        //      `workspaces.created_at` ÃÂ¢ÃÂÃÂ columnas distintas, valores distintos.
+        //      `workspaces.created_at` — columnas distintas, valores distintos.
         let fallback_ws = workspaces::Entity::find()
             .active()
             .inner_join(workspace_members::Entity)
@@ -609,7 +609,7 @@ pub async fn get_settings(
     )
 )]
 pub async fn get_instance_admin(AnyAuth(user): AnyAuth) -> impl IntoResponse {
-    // Solo superusers son instance admins en la implementaciÃÂÃÂ³n base
+    // Solo superusers son instance admins en la implementación base
     Json(serde_json::json!({ "is_instance_admin": user.is_superuser }))
 }
 
@@ -856,7 +856,7 @@ pub async fn list_user_workspaces(
     AnyAuth(user): AnyAuth,
     State(state): State<AppState>,
 ) -> Result<impl IntoResponse, AppError> {
-    // Obtener membresÃÂÃÂ­as activas del usuario
+    // Obtener membresías activas del usuario
     let memberships = workspace_members::Entity::find()
         .filter(workspace_members::Column::MemberId.eq(user.id))
         .filter(workspace_members::Column::IsActive.eq(true))
@@ -908,7 +908,7 @@ pub async fn list_user_workspaces(
     Ok(Json(resp))
 }
 
-// ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ GET /api/users/me/workspaces/{slug}/project-roles ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ
+// ─── GET /api/users/me/workspaces/{slug}/project-roles ───────────────────────
 //
 // Espejo de Django `UserProjectRolesEndpoint` en
 // `plane/app/views/project/member.py:327`. Devuelve un mapa
@@ -920,7 +920,7 @@ pub async fn list_user_workspaces(
 ///
 /// Devuelve `HashMap<project_id_string, role_int>` con los roles del
 /// usuario en cada proyecto del workspace. Solo incluye proyectos donde
-/// el usuario tiene `is_active = true` Y existe membresÃÂÃÂ­a activa al
+/// el usuario tiene `is_active = true` Y existe membresía activa al
 /// workspace (mirror del filtro `member__member_workspace__is_active=True`
 /// de Django).
 #[utoipa::path(
@@ -953,9 +953,9 @@ pub async fn get_user_project_roles(
     //    member__member_workspace__workspace__slug=slug
     //    AND member__member_workspace__is_active=True
     //
-    //    Equivale a: el usuario debe tener una membresÃÂÃÂ­a activa AL WORKSPACE
-    //    ademÃÂÃÂ¡s de a los proyectos. Si no la tiene, devolvemos mapa vacÃÂÃÂ­o
-    //    (Django retorna {} tambiÃÂÃÂ©n porque el queryset queda vacÃÂÃÂ­o, no 403).
+    //    Equivale a: el usuario debe tener una membresía activa AL WORKSPACE
+    //    además de a los proyectos. Si no la tiene, devolvemos mapa vacío
+    //    (Django retorna {} también porque el queryset queda vacío, no 403).
     let ws_membership = workspace_members::Entity::find()
         .active()
         .filter(workspace_members::Column::WorkspaceId.eq(ws.id))
@@ -971,7 +971,7 @@ pub async fn get_user_project_roles(
 
     // 3) Proyectos del workspace donde el usuario es miembro activo.
     //    Nota: project_members.member_id es Option<Uuid> en el schema,
-    //    asÃÂÃÂ­ que el filtro por igualdad ya descarta NULLs.
+    //    así que el filtro por igualdad ya descarta NULLs.
     let pms = project_members::Entity::find()
         .active()
         .filter(project_members::Column::WorkspaceId.eq(ws.id))
@@ -991,14 +991,14 @@ pub async fn get_user_project_roles(
     Ok(Json(map))
 }
 
-// ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ /api/users/me/workspaces/invitations/ (GET + POST) ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ
+// ─── /api/users/me/workspaces/invitations/ (GET + POST) ─────────────────────
 //
 // Espejo de Django `UserWorkspaceInvitationsViewSet` en
 // `plane/app/views/workspace/invite.py:244`. El frontend lo consume durante
 // onboarding (`apps/web/app/(all)/onboarding/page.tsx:43`) para mostrar
 // invitaciones pendientes y aceptarlas en bulk.
 
-/// Workspace embebido en la respuesta de invitaciÃÂÃÂ³n (mirror de
+/// Workspace embebido en la respuesta de invitación (mirror de
 /// `WorkspaceLiteSerializer`: id, name, slug, logo_url).
 #[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct UserInviteWorkspaceLite {
@@ -1006,8 +1006,8 @@ pub struct UserInviteWorkspaceLite {
     pub name: String,
     pub slug: String,
     /// Mirror simplificado de `Workspace.logo_url`. Si el workspace usa
-    /// `logo_asset` (no el campo `logo` legacy) este campo serÃÂÃÂ¡ `None` ÃÂ¢ÃÂÃÂ
-    /// limitaciÃÂÃÂ³n aceptable para el flujo de onboarding (no hay UI que
+    /// `logo_asset` (no el campo `logo` legacy) este campo será `None` —
+    /// limitación aceptable para el flujo de onboarding (no hay UI que
     /// muestre el logo en esta vista). Si se requiere, hacer JOIN con
     /// `file_assets` similar a `WorkspaceResponse::from_model`.
     pub logo_url: Option<String>,
@@ -1036,7 +1036,7 @@ pub struct UserWorkspaceInviteResponse {
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct JoinWorkspacesRequest {
     /// Lista de UUIDs de invitaciones a aceptar. Mirror exacto del campo
-    /// `invitations` que envÃÂÃÂ­a el frontend en el POST.
+    /// `invitations` que envía el frontend en el POST.
     pub invitations: Vec<Uuid>,
 }
 
@@ -1060,7 +1060,7 @@ pub async fn list_user_workspace_invitations(
     AnyAuth(user): AnyAuth,
 ) -> Result<Json<Vec<UserWorkspaceInviteResponse>>, AppError> {
     // Sin email no hay forma de matchear invitaciones (Django igual: filter
-    // por email vacÃÂÃÂ­o devuelve queryset vacÃÂÃÂ­o).
+    // por email vacío devuelve queryset vacío).
     let Some(email) = user.email.as_ref() else {
         return Ok(Json(Vec::new()));
     };
@@ -1092,8 +1092,8 @@ pub async fn list_user_workspace_invitations(
         .into_iter()
         .filter_map(|i| {
             // Si el workspace fue eliminado entre queries, descartamos la
-            // invitaciÃÂÃÂ³n (Django con select_related dejarÃÂÃÂ­a workspace=None y
-            // el serializer fallarÃÂÃÂ­a ÃÂ¢ÃÂÃÂ preferimos filtrar silenciosamente).
+            // invitación (Django con select_related dejaría workspace=None y
+            // el serializer fallaría — preferimos filtrar silenciosamente).
             let ws = workspaces_by_id.get(&i.workspace_id)?;
             Some(UserWorkspaceInviteResponse {
                 id: i.id,
@@ -1130,13 +1130,13 @@ pub async fn list_user_workspace_invitations(
 /// Acepta en bulk las invitaciones cuyos UUIDs vienen en el body
 /// (`{"invitations": [uuid, ...]}`). Para cada una:
 ///   1. Si ya existe `WorkspaceMember` (incluso desactivado), lo reactiva
-///      con el rol de la invitaciÃÂÃÂ³n.
+///      con el rol de la invitación.
 ///   2. Si no existe, lo crea via `INSERT ... ON CONFLICT DO NOTHING`
 ///      (mirror de `bulk_create(ignore_conflicts=True)`).
 ///   3. Borra las invitaciones procesadas.
 ///
 /// Devuelve 204. Solo procesa invitaciones cuyo `email` coincide con el
-/// del usuario autenticado ÃÂ¢ÃÂÃÂ defensa contra UUID-guessing.
+/// del usuario autenticado — defensa contra UUID-guessing.
 #[utoipa::path(
     post,
     path = "/api/users/me/workspaces/invitations/",
@@ -1161,10 +1161,10 @@ pub async fn join_user_workspace_invitations(
         return Ok(StatusCode::NO_CONTENT);
     }
 
-    // ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ 1. Cargar invitaciones que matchean pk ÃÂ¢ÃÂÃÂ payload AND email == user.email
+    // ── 1. Cargar invitaciones que matchean pk ∈ payload AND email == user.email
     //
     // El doble filtro (pk + email) es la defensa de Django contra que un
-    // usuario acepte la invitaciÃÂÃÂ³n de OTRO conociendo su UUID. Crucial
+    // usuario acepte la invitación de OTRO conociendo su UUID. Crucial
     // mantenerlo en Rust.
     let invites = workspace_member_invites::Entity::find()
         .active()
@@ -1185,15 +1185,15 @@ pub async fn join_user_workspace_invitations(
         .await
         .map_err(AppError::Database)?;
 
-    // ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ 2. Reactivar membresÃÂÃÂ­as existentes con el rol de la invitaciÃÂÃÂ³n.
+    // ── 2. Reactivar membresías existentes con el rol de la invitación.
     //
     // Mirror de:
     //   WorkspaceMember.objects.filter(workspace_id=invitation.workspace_id,
     //                                  member=request.user)
     //                          .update(is_active=True, role=invitation.role)
     //
-    // Iteramos para preservar el `role` por invitaciÃÂÃÂ³n (un UPDATE bulk con
-    // mismo rol perderÃÂÃÂ­a la granularidad).
+    // Iteramos para preservar el `role` por invitación (un UPDATE bulk con
+    // mismo rol perdería la granularidad).
     for inv in &invites {
         if let Some(existing) = workspace_members::Entity::find()
             .filter(workspace_members::Column::WorkspaceId.eq(inv.workspace_id))
@@ -1212,10 +1212,10 @@ pub async fn join_user_workspace_invitations(
         }
     }
 
-    // ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ 3. Bulk insert de membresÃÂÃÂ­as nuevas con ON CONFLICT DO NOTHING.
+    // ── 3. Bulk insert de membresías nuevas con ON CONFLICT DO NOTHING.
     //
     // La unique constraint `workspace_member_unique_workspace_member_when_deleted_at_null`
-    // cubre (workspace_id, member_id) cuando deleted_at IS NULL ÃÂ¢ÃÂÃÂ mirror del
+    // cubre (workspace_id, member_id) cuando deleted_at IS NULL — mirror del
     // `ignore_conflicts=True` de Django.
     let new_members: Vec<workspace_members::ActiveModel> = invites
         .iter()
@@ -1252,7 +1252,7 @@ pub async fn join_user_workspace_invitations(
             //   UNIQUE (workspace_id, member_id) WHERE deleted_at IS NULL
             // y sin `.target_and_where(...)` el INSERT revienta con
             // "there is no unique or exclusion constraint matching the ON CONFLICT
-            // specification" ÃÂ¢ÃÂÃÂ el otro unique existente (unique_together sobre las
+            // specification" — el otro unique existente (unique_together sobre las
             // 3 columnas incluyendo deleted_at) tampoco matchea porque el conflict
             // target solo menciona 2. Ver
             // https://www.postgresql.org/docs/current/sql-insert.html#SQL-ON-CONFLICT.
@@ -1265,10 +1265,10 @@ pub async fn join_user_workspace_invitations(
         .await
         .map_err(AppError::Database)?;
 
-    // ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ 4. Soft-delete de las invitaciones procesadas.
+    // ── 4. Soft-delete de las invitaciones procesadas.
     //
     // Django hace .delete() (con soft delete habilitado a nivel de manager
-    // base). Replicamos seteando deleted_at en lugar de DELETE fÃÂÃÂ­sico para
+    // base). Replicamos seteando deleted_at en lugar de DELETE físico para
     // mantener trazabilidad y consistencia con el resto del codebase.
     let invite_ids: Vec<Uuid> = invites.iter().map(|i| i.id).collect();
     workspace_member_invites::Entity::update_many()
@@ -1290,9 +1290,9 @@ pub async fn join_user_workspace_invitations(
     Ok(StatusCode::NO_CONTENT)
 }
 
-// ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ
+// ═══════════════════════════════════════════════════════════════════════════
 // ME ACTIVITIES  (UserActivityEndpoint)
-// ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ
+// ═══════════════════════════════════════════════════════════════════════════
 //
 // GET /api/users/me/activities/
 //
@@ -1300,17 +1300,17 @@ pub async fn join_user_workspace_invitations(
 // (plane/app/views/user/base.py:380).
 //
 // Devuelve TODAS las `IssueActivity` del requester en cualquier workspace/
-// proyecto, con paginaciÃÂÃÂ³n cursor estilo Django.
+// proyecto, con paginación cursor estilo Django.
 //
 // A diferencia de `WorkspaceUserActivityEndpoint`:
 //   - No filtra por workspace/proyecto (es cross-workspace).
-//   - No excluye field in (comment|vote|reaction|draft) ÃÂ¢ÃÂÃÂ Django tampoco lo hace
-//     en este endpoint (sÃÂÃÂ³lo en el workspace-scoped). Ver Django: queryset
+//   - No excluye field in (comment|vote|reaction|draft) — Django tampoco lo hace
+//     en este endpoint (sólo en el workspace-scoped). Ver Django: queryset
 //     puro `actor=request.user`.
-//   - No requiere membership checks (sÃÂÃÂ³lo actividades del propio usuario).
+//   - No requiere membership checks (sólo actividades del propio usuario).
 //   - `default_per_page = 1000` (mirror de `BasePaginator.get_per_page`).
 //
-// Response shape idÃÂÃÂ©ntico a `BasePaginator.paginate`, los DTOs de detalle se
+// Response shape idéntico a `BasePaginator.paginate`, los DTOs de detalle se
 // re-usan desde `routes::workspaces`.
 
 /// Query params de `GET /users/me/activities/`.
@@ -1365,16 +1365,16 @@ pub async fn get_my_activities(
         MAX_PER_PAGE,
     );
 
-    // ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ Base query ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ
+    // ── Base query ───────────────────────────────────────────────────────────
     // Django: IssueActivity.objects.filter(actor=request.user)
     //
-    // SECURITY NOTE: el filtro por `actor_id = auth_user.id` es el ÃÂÃÂºnico
-    // control de acceso necesario ÃÂ¢ÃÂÃÂ un usuario sÃÂÃÂ³lo puede ver SUS propias
+    // SECURITY NOTE: el filtro por `actor_id = auth_user.id` es el único
+    // control de acceso necesario — un usuario sólo puede ver SUS propias
     // actividades. No hay IDOR posible porque el actor se deriva de la
     // credencial, no del path.
     // Soft-delete: filtramos `deleted_at IS NULL` para alinear con el manager
     // base del resto del codebase Rust (el queryset de Django aplica el mismo
-    // filtro vÃÂÃÂ­a `SoftDeleteManager` a nivel de modelo).
+    // filtro vía `SoftDeleteManager` a nivel de modelo).
     let base = issue_activities::Entity::find()
         .filter(issue_activities::Column::ActorId.eq(user.id))
         .filter(issue_activities::Column::DeletedAt.is_null());
@@ -1382,7 +1382,7 @@ pub async fn get_my_activities(
     // Total antes de paginar (mismo filtro, sin orden ni offset).
     let total_count = base.clone().count(db).await.map_err(AppError::Database)?;
 
-    // ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ Ordenamiento (default -created_at) ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ
+    // ── Ordenamiento (default -created_at) ───────────────────────────────────
     let order_col = q.order_by.as_deref().unwrap_or("-created_at");
     let (col, asc) = if let Some(stripped) = order_col.strip_prefix('-') {
         (stripped, false)
@@ -1404,13 +1404,13 @@ pub async fn get_my_activities(
                 base.order_by_desc(issue_activities::Column::UpdatedAt)
             }
         }
-        // Cualquier columna no whitelisted ÃÂ¢ÃÂÃÂ fallback seguro al default.
-        // Esto previene SQL injection vÃÂÃÂ­a `order_by` y alinea con el spirit
-        // del `BasePaginator` de Django (que sÃÂÃÂ³lo acepta columnas del modelo).
+        // Cualquier columna no whitelisted → fallback seguro al default.
+        // Esto previene SQL injection vía `order_by` y alinea con el spirit
+        // del `BasePaginator` de Django (que sólo acepta columnas del modelo).
         _ => base.order_by_desc(issue_activities::Column::CreatedAt),
     };
 
-    // ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ Fetch de la pÃÂÃÂ¡gina ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ
+    // ── Fetch de la página ───────────────────────────────────────────────────
     let activities = ordered
         .paginate(db, limit)
         .fetch_page(cursor.offset)
@@ -1427,7 +1427,7 @@ pub async fn get_my_activities(
         return Ok((StatusCode::OK, Json(body)));
     }
 
-    // ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ Batch-fetch de objetos relacionados (evitar N+1) ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ
+    // ── Batch-fetch de objetos relacionados (evitar N+1) ─────────────────────
     //
     // Como el actor siempre es el requester, reutilizamos el `users::Model`
     // que ya trae AnyAuth, evitando una query extra.
@@ -1440,7 +1440,7 @@ pub async fn get_my_activities(
         None
     };
 
-    // Issue IDs de la pÃÂÃÂ¡gina actual
+    // Issue IDs de la página actual
     let issue_ids: Vec<Uuid> = activities
         .iter()
         .filter_map(|a| a.issue_id)
@@ -1479,7 +1479,7 @@ pub async fn get_my_activities(
         .map(|p| (p.id, p))
         .collect();
 
-    // Workspace IDs ÃÂ¢ÃÂÃÂ cross-workspace, por eso batch-fetch (a diferencia del
+    // Workspace IDs — cross-workspace, por eso batch-fetch (a diferencia del
     // endpoint workspace-scoped que resuelve uno solo).
     let workspace_ids: Vec<Uuid> = activities
         .iter()
@@ -1497,7 +1497,7 @@ pub async fn get_my_activities(
         .map(|w| (w.id, w))
         .collect();
 
-    // ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ Ensamblar respuesta ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ
+    // ── Ensamblar respuesta ──────────────────────────────────────────────────
     let results: Vec<UserActivityItem> = activities
         .into_iter()
         .map(|a| {
@@ -1566,9 +1566,9 @@ pub async fn get_my_activities(
 }
 
 
-// ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ GET /users/me/workspaces/{slug}/activity-graph/ ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ
+// ─── GET /users/me/workspaces/{slug}/activity-graph/ ─────────────────────────
 
-/// Actividad del usuario en el workspace agrupada por fecha (ÃÂÃÂºltimos 6 meses).
+/// Actividad del usuario en el workspace agrupada por fecha (últimos 6 meses).
 ///
 /// Espejo de `UserActivityGraphEndpoint`
 /// (`apps/api/plane/app/views/workspace/user.py`).
@@ -1634,7 +1634,7 @@ pub async fn get_activity_graph(
     Ok(Json(result))
 }
 
-// ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ GET /users/me/workspaces/{slug}/issues-completed-graph/ ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ
+// ─── GET /users/me/workspaces/{slug}/issues-completed-graph/ ─────────────────
 
 /// Issues completados por el usuario en el workspace agrupados por semana del mes.
 ///
@@ -1717,9 +1717,9 @@ pub async fn get_issues_completed_graph(
     Ok(Json(result))
 }
 
-// ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ GET /users/me/workspaces/{slug}/dashboard/ ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ
+// ─── GET /users/me/workspaces/{slug}/dashboard/ ───────────────────────────────
 
-/// Dashboard del usuario: actividad reciente + issues completados + estadÃÂÃÂ­sticas.
+/// Dashboard del usuario: actividad reciente + issues completados + estadísticas.
 ///
 /// Espejo de `UserWorkspaceDashboardEndpoint`
 /// (`apps/api/plane/app/views/workspace/base.py`).
@@ -1754,7 +1754,7 @@ pub async fn get_workspace_dashboard(
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
-    // ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ Actividad reciente (ÃÂÃÂºltimos 3 meses) ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ
+    // ── Actividad reciente (últimos 3 meses) ─────────────────────────────────
     #[derive(FromQueryResult)]
     struct ActivityRow {
         created_date: chrono::NaiveDate,
@@ -1780,7 +1780,7 @@ pub async fn get_workspace_dashboard(
     .await
     .map_err(AppError::Database)?;
 
-    // ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ Issues completados este mes (por semana) ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ
+    // ── Issues completados este mes (por semana) ──────────────────────────────
     #[derive(FromQueryResult)]
     struct CompletedRow { week: i32, completed_count: i64 }
     let completed_issues = CompletedRow::find_by_statement(Statement::from_sql_and_values(
@@ -1807,7 +1807,7 @@ pub async fn get_workspace_dashboard(
     .await
     .map_err(AppError::Database)?;
 
-    // ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ Conteos de issues ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ
+    // ── Conteos de issues ─────────────────────────────────────────────────────
     #[derive(FromQueryResult)]
     struct CountRow { total: i64 }
 
@@ -1851,7 +1851,7 @@ pub async fn get_workspace_dashboard(
     )).one(&state.db).await.map_err(AppError::Database)?
       .map(|r| r.total).unwrap_or(0);
 
-    // ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ State distribution ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ
+    // ── State distribution ────────────────────────────────────────────────────
     #[derive(FromQueryResult)]
     struct StateDistRow { state_group: String, state_count: i64 }
     let state_distribution = StateDistRow::find_by_statement(Statement::from_sql_and_values(
@@ -1885,9 +1885,9 @@ pub async fn get_workspace_dashboard(
     })))
 }
 
-// ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ GET /users/last-visited-workspace/ ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ
+// ─── GET /users/last-visited-workspace/ ──────────────────────────────────────
 
-/// Retorna el ÃÂÃÂºltimo workspace visitado por el usuario con sus proyectos.
+/// Retorna el último workspace visitado por el usuario con sus proyectos.
 ///
 /// Espejo de `UserLastProjectWithWorkspaceEndpoint`
 /// (`apps/api/plane/app/views/workspace/user.py`).
