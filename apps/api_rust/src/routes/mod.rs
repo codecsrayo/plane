@@ -368,6 +368,11 @@ pub mod v1_router;
         assets::duplicate_workspace_asset,
         assets::download_workspace_asset,
         assets::download_project_asset,
+        assets::delete_legacy_workspace_file_asset,
+        assets::restore_legacy_workspace_file_asset,
+        assets::delete_legacy_user_file_asset,
+        workspace_extras::list_workspace_active_cycles,
+        importer::list_all_importers,
         users::generate_email_code,
         users::update_user_email,
         projects::join_project_invitation,
@@ -383,6 +388,7 @@ pub mod v1_router;
         importer::list_gitlab_importers,
         importer::create_gitlab_importer,
         importer::delete_gitlab_importer,
+        importer::list_all_importers,
         external::unsplash,
         external::project_ai_assistant,
         external::workspace_ai_assistant,
@@ -1559,6 +1565,19 @@ pub fn build_router(state: AppState) -> Router {
             "/assets/v2/workspaces/{slug}/projects/{project_id}/download/{asset_id}",
             get(assets::download_project_asset),
         )
+        // Legacy V1 file-asset endpoints (pre-v2, still called by FileService)
+        .route(
+            "/workspaces/file-assets/{workspace_id}/{asset_key}",
+            delete(assets::delete_legacy_workspace_file_asset),
+        )
+        .route(
+            "/workspaces/file-assets/{workspace_id}/{asset_key}/restore",
+            post(assets::restore_legacy_workspace_file_asset),
+        )
+        .route(
+            "/users/file-assets/{asset_key}",
+            delete(assets::delete_legacy_user_file_asset),
+        )
         // User email update
         .route("/users/me/email/generate-code", post(users::generate_email_code))
         .route("/users/me/email", post(users::update_user_email).patch(users::update_user_email))
@@ -1600,7 +1619,13 @@ pub fn build_router(state: AppState) -> Router {
             "/workspaces/{slug}/importers/gitlab/{importer_id}",
             delete(importer::delete_gitlab_importer),
         )
-        // ── External ──────────────────────────────────────────────────────────
+        // Generic importers list — returns all services (github + gitlab)
+        // Frontend: IntegrationService.getImporterServicesList
+        .route(
+            "/workspaces/{slug}/importers",
+            get(importer::list_all_importers),
+        )
+        // -- External -------------------------------------------------------
         .route("/unsplash", get(external::unsplash))
         .route(
             "/workspaces/{slug}/projects/{project_id}/ai-assistant",
@@ -1813,6 +1838,12 @@ pub fn build_router(state: AppState) -> Router {
         .route(
             "/workspaces/{slug}/cycles",
             get(workspace_extras::list_workspace_cycles),
+        )
+        // Active cycles across all projects -- paginated, sidebar widget
+        // Frontend: CycleService.workspaceActiveCycles
+        .route(
+            "/workspaces/{slug}/active-cycles",
+            get(workspace_extras::list_workspace_active_cycles),
         )
         .route(
             "/workspaces/{slug}/modules",

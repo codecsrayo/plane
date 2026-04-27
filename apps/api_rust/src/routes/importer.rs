@@ -627,3 +627,35 @@ pub async fn delete_gitlab_importer(
 
     Ok(StatusCode::NO_CONTENT)
 }
+
+/// GET /api/workspaces/{slug}/importers/
+///
+/// Returns all importers (github + gitlab) for the workspace.
+/// Mirrors Django `ImporterEndpoint.get` which returns all services combined.
+/// Frontend `IntegrationService.getImporterServicesList` calls this path.
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/importers/",
+    tag = "Importer",
+    params(("slug" = String, Path, description = "Workspace slug")),
+    responses(
+        (status = 200, description = "All importers for the workspace"),
+        (status = 403, description = "Not a workspace member"),
+    ),
+    security(("TokenAuth" = []))
+)]
+pub async fn list_all_importers(
+    State(state): State<AppState>,
+    guard: WorkspaceMemberGuard,
+) -> Result<impl IntoResponse, AppError> {
+    let items = importers::Entity::find()
+        .filter(importers::Column::WorkspaceId.eq(guard.workspace.id))
+        .filter(importers::Column::DeletedAt.is_null())
+        .order_by_desc(importers::Column::CreatedAt)
+        .all(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+
+    let resp: Vec<ImporterResponse> = items.iter().map(importer_to_response).collect();
+    Ok(Json(resp))
+}

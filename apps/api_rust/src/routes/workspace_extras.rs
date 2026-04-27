@@ -3357,3 +3357,87 @@ pub async fn draft_to_issue(
         "created_by": issue.created_by_id,
     }))))
 }
+
+// ── Active Cycles ─────────────────────────────────────────────────────────────
+
+#[derive(Debug, Deserialize, utoipa::ToSchema)]
+pub struct ActiveCyclesQuery {
+    /// Django-style cursor: "per_page:offset:is_prev"
+    pub cursor: Option<String>,
+    /// Per-page override
+    pub per_page: Option<u64>,
+}
+
+/// GET /api/workspaces/{slug}/active-cycles/
+///
+/// Returns a cursor-paginated list of currently active cycles (status = "started")
+/// across all projects in the workspace.
+/// Mirrors Django `WorkspaceActiveCycleEndpoint` behaviour.
+#[utoipa::path(
+    get,
+    path = "/api/workspaces/{slug}/active-cycles/",
+    tag = "Workspace Extras",
+    params(
+        ("slug" = String, Path, description = "Workspace slug"),
+        ("cursor" = Option<String>, Query, description = "Cursor: per_page:offset:is_prev"),
+        ("per_page" = Option<u64>, Query, description = "Items per page"),
+    ),
+    responses(
+        (status = 200, description = "Paginated active cycles"),
+        (status = 403, description = "Not a workspace member"),
+    ),
+    security(("TokenAuth" = []))
+)]
+pub async fn list_workspace_active_cycles(
+    State(state): State<AppState>,
+    AnyAuth(auth_user): AnyAuth,
+    Path(slug): Path<String>,
+    Query(q): Query<ActiveCyclesQuery>,
+) -> Result<impl axum::response::IntoResponse, AppError> {
+    const DEFAULT_PER_PAGE: u64 = 10;
+
+    let db = &state.db;
+    let user_id = auth_user.id;
+    let ws = workspace_by_slug(db, &slug).await?;
+    let _member = require_workspace_member(db, ws.id, user_id).await?;
+
+    let cursor = pagination::parse_cursor_or_default(q.cursor.as_deref(), DEFAULT_PER_PAGE)?;
+    let limit = pagination::resolve_per_page(Some(cursor.per_page), q.per_page, DEFAULT_PER_PAGE);
+    let offset = cursor.offset * limit;
+
+    let now = chrono::Utc::now();
+
+    // Active = start_date <= now AND end_date >= now, not archived, not deleted
+    let now_fixed: chrono::DateTime<chrono::FixedOffset> = now.into();
+
+    let total_count = cycles::Entity::find()
+        .filter(cycles::Column::WorkspaceId.eq(ws.id))
+        .filter(cycles::Column::DeletedAt.is_null())
+        .filter(cycles::Column::ArchivedAt.is_null())
+        .filter(cycles::Column::StartDate.lte(now_fixed))
+        .filter(cycles::Column::EndDate.gte(now_fixed))
+        .count(db)
+        .await
+        .map_err(AppError::Database)?;
+
+    let items = cycles::Entity::find()
+        .filter(cycles::Column::WorkspaceId.eq(ws.id))
+        .filter(cycles::Column::DeletedAt.is_null())
+        .filter(cycles::Column::ArchivedAt.is_null())
+        .filter(cycles::Column::StartDate.lte(now_fixed))
+        .filter(cycles::Column::EndDate.gte(now_fixed))
+        .order_by_desc(cycles::Column::UpdatedAt)
+        .limit(limit)
+        .offset(offset)
+        .all(db)
+        .await
+        .map_err(AppError::Database)?;
+
+    let cycle_responses: Vec<super::cycles::CycleResponse> = items
+        .into_iter()
+        .map(super::cycles::CycleResponse::from_model)
+        .collect();
+
+    let body = pagination::build_response(cycle_responses, total_count, limit, cursor.offset);
+    Ok((StatusCode::OK, Json(body)))
+}

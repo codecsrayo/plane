@@ -1999,3 +1999,134 @@ pub async fn bulk_workspace_assets(
 
     Ok(StatusCode::NO_CONTENT)
 }
+
+// ── Legacy V1 file-assets endpoints ───────────────────────────────────────────
+//
+// These are the pre-v2 asset paths still called by FileService in the frontend:
+//   DELETE /api/workspaces/file-assets/{workspace_id}/{asset_key}/
+//   POST   /api/workspaces/file-assets/{workspace_id}/{asset_key}/restore/
+//   DELETE /api/users/file-assets/{asset_key}/
+//
+// Django implementation: plane/app/views/asset/base.py
+// FileAssetEndpoint.delete  → set is_deleted = True
+// FileAssetViewSet.restore  → set is_deleted = False
+// UserAssetsEndpoint.delete → set is_deleted = True (scoped to created_by)
+
+/// DELETE /api/workspaces/file-assets/{workspace_id}/{asset_key}/
+///
+/// Soft-deletes a legacy workspace file asset by constructing the asset key
+/// as `"{workspace_id}/{asset_key}"` — mirrors Django FileAssetEndpoint.delete.
+#[utoipa::path(
+    delete,
+    path = "/api/workspaces/file-assets/{workspace_id}/{asset_key}",
+    tag = "Assets",
+    params(
+        ("workspace_id" = Uuid, Path, description = "Workspace UUID"),
+        ("asset_key"    = String, Path, description = "Asset key (filename)"),
+    ),
+    responses(
+        (status = 204, description = "Asset soft-deleted"),
+        (status = 404, description = "Asset not found"),
+    ),
+    security(("TokenAuth" = []))
+)]
+pub async fn delete_legacy_workspace_file_asset(
+    State(state): State<AppState>,
+    _: AnyAuth,
+    Path((workspace_id, asset_key)): Path<(Uuid, String)>,
+) -> Result<impl IntoResponse, AppError> {
+    let db = &state.db;
+    let full_key = format!("{}/{}", workspace_id, asset_key);
+
+    let asset = file_assets::Entity::find()
+        .filter(file_assets::Column::Asset.eq(&full_key))
+        .one(db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or_else(|| AppError::NotFound("Asset not found".into()))?;
+
+    let mut am: file_assets::ActiveModel = asset.into();
+    am.is_deleted = Set(true);
+    am.update(db).await.map_err(AppError::Database)?;
+
+    Ok(StatusCode::NO_CONTENT)
+}
+
+/// POST /api/workspaces/file-assets/{workspace_id}/{asset_key}/restore/
+///
+/// Restores a soft-deleted legacy workspace file asset.
+/// Mirrors Django FileAssetViewSet.restore.
+#[utoipa::path(
+    post,
+    path = "/api/workspaces/file-assets/{workspace_id}/{asset_key}/restore",
+    tag = "Assets",
+    params(
+        ("workspace_id" = Uuid, Path, description = "Workspace UUID"),
+        ("asset_key"    = String, Path, description = "Asset key (filename)"),
+    ),
+    responses(
+        (status = 204, description = "Asset restored"),
+        (status = 404, description = "Asset not found"),
+    ),
+    security(("TokenAuth" = []))
+)]
+pub async fn restore_legacy_workspace_file_asset(
+    State(state): State<AppState>,
+    _: AnyAuth,
+    Path((workspace_id, asset_key)): Path<(Uuid, String)>,
+) -> Result<impl IntoResponse, AppError> {
+    let db = &state.db;
+    let full_key = format!("{}/{}", workspace_id, asset_key);
+
+    let asset = file_assets::Entity::find()
+        .filter(file_assets::Column::Asset.eq(&full_key))
+        .one(db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or_else(|| AppError::NotFound("Asset not found".into()))?;
+
+    let mut am: file_assets::ActiveModel = asset.into();
+    am.is_deleted = Set(false);
+    am.update(db).await.map_err(AppError::Database)?;
+
+    Ok(StatusCode::NO_CONTENT)
+}
+
+/// DELETE /api/users/file-assets/{asset_key}/
+///
+/// Soft-deletes a legacy user file asset scoped to the authenticated user.
+/// Mirrors Django UserAssetsEndpoint.delete.
+#[utoipa::path(
+    delete,
+    path = "/api/users/file-assets/{asset_key}",
+    tag = "Assets",
+    params(
+        ("asset_key" = String, Path, description = "Asset key"),
+    ),
+    responses(
+        (status = 204, description = "Asset soft-deleted"),
+        (status = 404, description = "Asset not found"),
+    ),
+    security(("TokenAuth" = []))
+)]
+pub async fn delete_legacy_user_file_asset(
+    State(state): State<AppState>,
+    AnyAuth(auth_user): AnyAuth,
+    Path(asset_key): Path<String>,
+) -> Result<impl IntoResponse, AppError> {
+    let db = &state.db;
+
+    let asset = file_assets::Entity::find()
+        .filter(file_assets::Column::Asset.eq(&asset_key))
+        .filter(file_assets::Column::CreatedById.eq(auth_user.id))
+        .one(db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or_else(|| AppError::NotFound("Asset not found".into()))?;
+
+    let mut am: file_assets::ActiveModel = asset.into();
+    am.is_deleted = Set(true);
+    am.update(db).await.map_err(AppError::Database)?;
+
+    Ok(StatusCode::NO_CONTENT)
+}

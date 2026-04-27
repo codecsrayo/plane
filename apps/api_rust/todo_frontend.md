@@ -922,3 +922,49 @@ Todos requieren sesión activa.
 
 ---
 ```
+
+---
+
+## 22. Active Cycles / My Issues / Legacy File Assets ✅ Revisado
+
+### 22.1 Workspace Active Cycles
+
+| Método | Path | Estado | Notas |
+| ------ | ---- | ------ | ----- |
+| GET | `/api/workspaces/{slug}/active-cycles/` | 🐛 FIXED | Missing — `CycleService.workspaceActiveCycles` calls this with `cursor`+`per_page`. Implemented cursor-paginated handler filtering `start_date <= now <= end_date`, not archived, not deleted. Response shape matches `IWorkspaceActiveCyclesResponse { count, next_cursor, prev_cursor, next_page_results, prev_page_results, results: ICycle[], total_pages }`. |
+| GET | `/api/workspaces/{slug}/my-issues/` | ℹ️ N/A | Called by `UserService.getWorkspaceIssues`. Not present in Django CE urlpatterns — appears to be EE-only. Deferred. |
+| GET | `/api/workspaces/{slug}/dashboard/` | ℹ️ N/A | Called by `DashboardService.getHomeDashboardWidgets`. Not in Django CE urlpatterns (`users/me/workspaces/{slug}/dashboard/` exists but is different). Likely EE. Deferred. |
+| GET | `/api/workspaces/{slug}/dashboard/{dashboardId}/` | ℹ️ N/A | Called by `DashboardService.getWidgetStats`. EE endpoint. Deferred. |
+| GET / PATCH | `/api/dashboard/{dashboardId}/` | ℹ️ N/A | `DashboardService.getDashboardDetails`. EE. Deferred. |
+| PATCH | `/api/dashboard/{dashboardId}/widgets/{widgetId}/` | ℹ️ N/A | `DashboardService.updateDashboardWidget`. EE. Deferred. |
+
+### 22.2 Importers (generic list)
+
+| Método | Path | Estado | Notas |
+| ------ | ---- | ------ | ----- |
+| GET | `/api/workspaces/{slug}/importers/` | 🐛 FIXED | `IntegrationService.getImporterServicesList` calls this. Returns all importers (github+gitlab) combined. Implemented `list_all_importers` in `importer.rs`. |
+| GET | `/api/workspaces/{slug}/importers/jira` | ℹ️ N/A | `JiraImporterService.getJiraProjectInfo`. Jira not in CE. Deferred. |
+| POST | `/api/workspaces/{slug}/projects/importers/jira/` | ℹ️ N/A | `JiraImporterService.createJiraImporter`. Jira not in CE. Deferred. |
+
+### 22.3 Legacy V1 File Assets
+
+These pre-v2 paths are still called by `FileService` for cleanup of old tiptap-editor blobs.
+
+| Método | Path | Estado | Notas |
+| ------ | ---- | ------ | ----- |
+| DELETE | `/api/workspaces/file-assets/{workspace_id}/{asset_key}/` | 🐛 FIXED | `FileService.deleteOldWorkspaceAsset`. Soft-delete via `is_deleted=true`. |
+| POST | `/api/workspaces/file-assets/{workspace_id}/{asset_key}/restore/` | 🐛 FIXED | `FileService.restoreOldWorkspaceAsset`. Sets `is_deleted=false`. |
+| DELETE | `/api/users/file-assets/{asset_key}/` | 🐛 FIXED | `FileService.deleteOldUserAsset`. Scoped to `created_by_id = auth_user`. |
+
+### 22.4 App Config
+
+| Método | Path | Estado | Notas |
+| ------ | ---- | ------ | ----- |
+| GET | `/api/configs/` | ℹ️ N/A | `AppConfigService.envConfig`. Not found in Django CE urlpatterns. May be served by Next.js or a reverse-proxy env-injection layer. Not blocking. |
+
+### 22.5 Slack Project Sync
+
+| Método | Path | Estado | Notas |
+| ------ | ---- | ------ | ----- |
+| GET / POST | `/api/workspaces/{slug}/projects/{pid}/workspace-integrations/{id}/project-slack-sync/` | ⏳ Pending | `AppInstallationService.addSlackChannel` / `getSlackChannelDetail`. Entity `slack_project_syncs` exists; no handler implemented yet. Low priority (Slack CE integration rare). |
+| DELETE | `/api/workspaces/{slug}/projects/{pid}/workspace-integrations/{id}/project-slack-sync/{sid}` | ⏳ Pending | `AppInstallationService.removeSlackChannel`. Same as above. |
