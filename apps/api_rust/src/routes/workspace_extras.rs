@@ -3395,6 +3395,7 @@ pub async fn list_workspace_active_cycles(
     Query(q): Query<ActiveCyclesQuery>,
 ) -> Result<impl axum::response::IntoResponse, AppError> {
     const DEFAULT_PER_PAGE: u64 = 10;
+    const MAX_PER_PAGE: u64 = pagination::DEFAULT_MAX_LIMIT;
 
     let db = &state.db;
     let user_id = auth_user.id;
@@ -3402,7 +3403,7 @@ pub async fn list_workspace_active_cycles(
     let _member = require_workspace_member(db, ws.id, user_id).await?;
 
     let cursor = pagination::parse_cursor_or_default(q.cursor.as_deref(), DEFAULT_PER_PAGE)?;
-    let limit = pagination::resolve_per_page(Some(cursor.per_page), q.per_page, DEFAULT_PER_PAGE);
+    let limit = pagination::resolve_per_page(Some(cursor.per_page), q.per_page, DEFAULT_PER_PAGE, MAX_PER_PAGE);
     let offset = cursor.offset * limit;
 
     let now = chrono::Utc::now();

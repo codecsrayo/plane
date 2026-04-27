@@ -388,7 +388,6 @@ pub mod v1_router;
         importer::list_gitlab_importers,
         importer::create_gitlab_importer,
         importer::delete_gitlab_importer,
-        importer::list_all_importers,
         external::unsplash,
         external::project_ai_assistant,
         external::workspace_ai_assistant,

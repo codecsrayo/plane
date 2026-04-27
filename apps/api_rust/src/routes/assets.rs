@@ -2043,7 +2043,7 @@ pub async fn delete_legacy_workspace_file_asset(
         .one(db)
         .await
         .map_err(AppError::Database)?
-        .ok_or_else(|| AppError::NotFound("Asset not found".into()))?;
+        .ok_or_else(|| AppError::NotFound)?;
 
     let mut am: file_assets::ActiveModel = asset.into();
     am.is_deleted = Set(true);
@@ -2083,7 +2083,7 @@ pub async fn restore_legacy_workspace_file_asset(
         .one(db)
         .await
         .map_err(AppError::Database)?
-        .ok_or_else(|| AppError::NotFound("Asset not found".into()))?;
+        .ok_or_else(|| AppError::NotFound)?;
 
     let mut am: file_assets::ActiveModel = asset.into();
     am.is_deleted = Set(false);
@@ -2122,7 +2122,7 @@ pub async fn delete_legacy_user_file_asset(
         .one(db)
         .await
         .map_err(AppError::Database)?
-        .ok_or_else(|| AppError::NotFound("Asset not found".into()))?;
+        .ok_or_else(|| AppError::NotFound)?;
 
     let mut am: file_assets::ActiveModel = asset.into();
     am.is_deleted = Set(true);
