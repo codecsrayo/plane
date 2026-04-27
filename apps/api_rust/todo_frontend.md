@@ -367,23 +367,24 @@ Rutas con rate limiting. Todas devuelven cookies de sesión cuando exitosas.
 
 ---
 
-## 2. Health / Instance / Timezones
+## 2. Health / Instance / Timezones ✅ Revisado
 
-| Método      | Path                                                  | Auth  | Notas                                                       |
-| ----------- | ----------------------------------------------------- | ----- | ----------------------------------------------------------- |
-| GET         | `/api/health`                                         | No    | Status + DB ping. Útil para `waitForHealth` en globalSetup. |
-| GET         | `/api/timezones`                                      | Sí    | Lista TZ. Datos estáticos.                                  |
-| GET / PATCH | `/api/instances`                                      | Admin | Configuración de instancia.                                 |
-| POST        | `/api/instances/admins/sign-up-screen-visited`        | Admin |                                                             |
-| GET / POST  | `/api/instances/admins`                               | Admin |                                                             |
-| GET         | `/api/instances/admins/me`                            | Admin |                                                             |
-| GET         | `/api/instances/admins/session`                       | Admin |                                                             |
-| DELETE      | `/api/instances/admins/{pk}`                          | Admin |                                                             |
-| GET / PATCH | `/api/instances/configurations`                       | Admin |                                                             |
-| DELETE      | `/api/instances/configurations/disable-email-feature` | Admin |                                                             |
-| POST        | `/api/instances/email-credentials-check`              | Admin |                                                             |
-| GET         | `/api/instances/workspace-slug-check`                 | Admin |                                                             |
-| GET         | `/api/instances/workspaces`                           | Admin |                                                             |
+| Método      | Path                                                  | Auth  | Estado | Notas |
+| ----------- | ----------------------------------------------------- | ----- | ------ | ----- |
+| GET         | `/api/health`                                         | No    | ✅ OK  | Correcto. |
+| GET         | `/api/timezones`                                      | Sí    | ✅ OK  | Respuesta `{ timezones: [] }` coincide con `TTimezones`. |
+| GET / PATCH | `/api/instances`                                      | Admin | ✅ OK  | `IInstanceInfo { instance, config }` completo. |
+| POST        | `/api/instances/admins/sign-up-screen-visited`        | Admin | ✅ OK  | Correcto. |
+| GET / POST  | `/api/instances/admins`                               | Admin | 🐛 FIXED | `user_detail` faltaba `display_name`, `avatar_url`, `is_bot`; `created_by`/`updated_by` faltantes (7e16041). |
+| GET         | `/api/instances/admins/me`                            | Admin | 🐛 FIXED | Retornaba `avatar` en vez de `avatar_url`, faltaban campos `IUser` (7e16041). |
+| GET         | `/api/instances/admins/session`                       | Admin | ✅ OK  | Correcto. |
+| DELETE      | `/api/instances/admins/{pk}`                          | Admin | ✅ OK  | Soft delete correcto. |
+| GET / PATCH | `/api/instances/configurations`                       | Admin | ✅ OK  | Cifrado/descifrado correcto. |
+| DELETE      | `/api/instances/configurations/disable-email-feature` | Admin | ✅ OK  | Correcto. |
+| POST        | `/api/instances/email-credentials-check`              | Admin | ✅ OK  | `{ receiver_email }` correcto. |
+| GET         | `/api/instances/workspace-slug-check`                 | Admin | ✅ OK  | Correcto. |
+| GET         | `/api/instances/workspaces`                           | Admin | ✅ OK  | Correcto. |
+| GET         | `/api/instances/changelog`                            | No    | ℹ️ N/A | Método `changelog()` definido en servicio pero nunca llamado en el frontend. `instance_changelog_url` se expone via `/api/instances`. |
 
 ---
 
