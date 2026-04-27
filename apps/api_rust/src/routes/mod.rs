@@ -1494,6 +1494,17 @@ pub fn build_router(state: AppState) -> Router {
             patch(assets::complete_issue_attachment_upload_v2)
                 .delete(assets::delete_issue_attachment_v2),
         )
+        // Alias for work-items serviceType (same handlers)
+        .route(
+            "/assets/v2/workspaces/{slug}/projects/{project_id}/work-items/{issue_id}/attachments",
+            get(assets::list_issue_attachments_v2)
+                .post(assets::initiate_issue_attachment_upload_v2),
+        )
+        .route(
+            "/assets/v2/workspaces/{slug}/projects/{project_id}/work-items/{issue_id}/attachments/{pk}",
+            patch(assets::complete_issue_attachment_upload_v2)
+                .delete(assets::delete_issue_attachment_v2),
+        )
         // Restore, project assets, check, duplicate, download
         .route(
             "/assets/v2/workspaces/{slug}/restore/{asset_id}",
