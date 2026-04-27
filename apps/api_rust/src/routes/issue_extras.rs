@@ -41,8 +41,8 @@ use crate::{
     },
     entities::{
         comment_reactions, issue_activities, issue_comments, issue_links,
-        issue_reactions, issue_relations, issue_subscribers, issues, states,
-        users,
+        issue_reactions, issue_relations, issue_subscribers, issues, projects, states,
+        users, workspaces,
     },
     error::AppError,
     routes::workspaces::{user_to_lite, UserLiteDto},
@@ -212,12 +212,28 @@ pub struct ActivityResponse {
     pub field: Option<String>,
     pub old_value: Option<String>,
     pub new_value: Option<String>,
+    pub old_identifier: Option<String>,
+    pub new_identifier: Option<String>,
     pub comment: String,
+    // Frontend IIssueActivity uses "actor" not "actor_id"
+    #[serde(rename = "actor")]
     pub actor_id: Option<Uuid>,
+    pub actor_detail: Option<UserLiteDto>,
+    // Frontend uses "issue" not "issue_id"
+    #[serde(rename = "issue")]
     pub issue_id: Option<Uuid>,
+    pub issue_comment: Option<String>,
+    // Frontend uses "project" not "project_id"
+    #[serde(rename = "project")]
     pub project_id: Uuid,
-    pub workspace_id: Uuid,
+    pub project_detail: Option<serde_json::Value>,
+    pub workspace_detail: Option<serde_json::Value>,
+    pub attachments: Vec<serde_json::Value>,
     pub created_at: DateTime<FixedOffset>,
+    pub updated_at: DateTime<FixedOffset>,
+    pub created_by: Option<Uuid>,
+    pub updated_by: Option<Uuid>,
+    pub access: String,
 }
 
 #[derive(Debug, Serialize, utoipa::ToSchema)]
@@ -1215,11 +1231,44 @@ pub async fn list_issue_activities(
         .await
         .map_err(AppError::Database)?;
 
-    let resp: Vec<ActivityResponse> = activities.iter().map(|a| ActivityResponse {
-        id: a.id, verb: a.verb.clone(), field: a.field.clone(),
-        old_value: a.old_value.clone(), new_value: a.new_value.clone(),
-        comment: a.comment.clone(), actor_id: a.actor_id, issue_id: a.issue_id,
-        project_id: a.project_id, workspace_id: a.workspace_id, created_at: a.created_at,
+    // Batch-load actors
+    let actor_ids: Vec<Uuid> = activities.iter()
+        .filter_map(|a| a.actor_id).collect::<std::collections::HashSet<_>>()
+        .into_iter().collect();
+    let actor_map: std::collections::HashMap<Uuid, users::Model> =
+        users::Entity::find()
+            .filter(users::Column::Id.is_in(actor_ids))
+            .all(&state.db).await.map_err(AppError::Database)?
+            .into_iter().map(|u| (u.id, u)).collect();
+
+    let project_detail = serde_json::json!({
+        "id": guard.project.id,
+        "name": guard.project.name,
+        "identifier": guard.project.identifier,
+        "logo_props": guard.project.logo_props,
+    });
+    let workspace_detail = serde_json::json!({
+        "id": guard.workspace.id,
+        "name": guard.workspace.name,
+        "slug": guard.workspace.slug,
+    });
+
+    let resp: Vec<ActivityResponse> = activities.iter().map(|a| {
+        let actor_detail = a.actor_id.and_then(|id| actor_map.get(&id)).map(|u| user_to_lite(u, false));
+        ActivityResponse {
+            id: a.id, verb: a.verb.clone(), field: a.field.clone(),
+            old_value: a.old_value.clone(), new_value: a.new_value.clone(),
+            old_identifier: a.old_identifier.clone(), new_identifier: a.new_identifier.clone(),
+            comment: a.comment.clone(), actor_id: a.actor_id, actor_detail,
+            issue_id: a.issue_id, issue_comment: a.issue_comment.clone(),
+            project_id: a.project_id,
+            project_detail: Some(project_detail.clone()),
+            workspace_detail: Some(workspace_detail.clone()),
+            attachments: vec![],
+            created_at: a.created_at, updated_at: a.updated_at,
+            created_by: a.created_by_id, updated_by: a.updated_by_id,
+            access: "INTERNAL".to_owned(),
+        }
     }).collect();
 
     Ok(Json(resp))
@@ -1257,18 +1306,32 @@ pub async fn get_issue_activity(
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
+    let actor_detail = if let Some(uid) = act.actor_id {
+        users::Entity::find_by_id(uid).one(&state.db).await.map_err(AppError::Database)?
+            .map(|u| user_to_lite(&u, false))
+    } else { None };
+
+    let project_detail = serde_json::json!({
+        "id": guard.project.id, "name": guard.project.name,
+        "identifier": guard.project.identifier, "logo_props": guard.project.logo_props,
+    });
+    let workspace_detail = serde_json::json!({
+        "id": guard.workspace.id, "name": guard.workspace.name, "slug": guard.workspace.slug,
+    });
+
     Ok(Json(ActivityResponse {
-        id: act.id,
-        verb: act.verb,
-        field: act.field,
-        old_value: act.old_value,
-        new_value: act.new_value,
-        comment: act.comment,
-        actor_id: act.actor_id,
-        issue_id: act.issue_id,
+        id: act.id, verb: act.verb, field: act.field,
+        old_value: act.old_value, new_value: act.new_value,
+        old_identifier: act.old_identifier, new_identifier: act.new_identifier,
+        comment: act.comment, actor_id: act.actor_id, actor_detail,
+        issue_id: act.issue_id, issue_comment: act.issue_comment,
         project_id: act.project_id,
-        workspace_id: act.workspace_id,
-        created_at: act.created_at,
+        project_detail: Some(project_detail),
+        workspace_detail: Some(workspace_detail),
+        attachments: vec![],
+        created_at: act.created_at, updated_at: act.updated_at,
+        created_by: act.created_by_id, updated_by: act.updated_by_id,
+        access: "INTERNAL".to_owned(),
     }))
 }
 
