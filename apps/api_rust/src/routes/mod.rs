@@ -273,6 +273,9 @@ pub mod v1_router;
         pages::duplicate_page,
         pages::list_page_versions,
         pages::get_page_version,
+        pages::list_favorite_pages,
+        pages::list_archived_pages,
+        pages::move_page,
         intake::list_intakes,
         intake::create_intake,
         intake::get_intake,
@@ -1176,12 +1179,24 @@ pub fn build_router(state: AppState) -> Router {
             post(pages::update_page_access),
         )
         .route(
+            "/workspaces/{slug}/projects/{project_id}/favorite-pages",
+            get(pages::list_favorite_pages),
+        )
+        .route(
             "/workspaces/{slug}/projects/{project_id}/favorite-pages/{page_id}",
             post(pages::add_page_favorite).delete(pages::remove_page_favorite),
         )
         .route(
+            "/workspaces/{slug}/projects/{project_id}/archived-pages",
+            get(pages::list_archived_pages),
+        )
+        .route(
             "/workspaces/{slug}/projects/{project_id}/pages/{page_id}/archive",
             post(pages::archive_page).delete(pages::unarchive_page),
+        )
+        .route(
+            "/workspaces/{slug}/projects/{project_id}/pages/{page_id}/move",
+            post(pages::move_page),
         )
         .route(
             "/workspaces/{slug}/projects/{project_id}/pages/{page_id}/lock",

@@ -20,7 +20,8 @@ use axum::{
     Json,
 };
 use sea_orm::{
-    ActiveModelTrait, ActiveValue::Set, ColumnTrait, EntityTrait, QueryFilter, QueryOrder,
+    ActiveModelTrait, ActiveValue::Set, ColumnTrait, EntityTrait, PaginatorTrait, QueryFilter, QueryOrder,
+    QuerySelect,
 };
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
@@ -30,7 +31,7 @@ use crate::{
         extractors::ProjectMemberGuard,
         permissions::{require_role, ROLE_GUEST, ROLE_MEMBER},
     },
-    entities::{issues, module_issues, module_links, module_user_properties, modules, user_favorites},
+    entities::{issues, module_issues, module_links, module_members, module_user_properties, modules, user_favorites},
     error::AppError,
     utils::soft_delete::SoftDeleteExt,
     AppState,
@@ -51,14 +52,21 @@ pub struct ModuleResponse {
     pub workspace_id: Uuid,
     pub archived_at: Option<chrono::DateTime<chrono::FixedOffset>>,
     pub sort_order: f64,
+    pub view_props: serde_json::Value,
+    // serde rename: frontend IModule uses "created_by" / "updated_by"
+    #[serde(rename = "created_by")]
     pub created_by_id: Option<Uuid>,
+    #[serde(rename = "updated_by")]
     pub updated_by_id: Option<Uuid>,
     pub created_at: chrono::DateTime<chrono::FixedOffset>,
     pub updated_at: chrono::DateTime<chrono::FixedOffset>,
+    // enriched post-query
+    pub is_favorite: bool,
+    pub member_ids: Vec<Uuid>,
 }
 
 impl ModuleResponse {
-    fn from_model(m: modules::Model) -> Self {
+    pub fn from_model(m: modules::Model) -> Self {
         Self {
             id: m.id,
             name: m.name,
@@ -71,10 +79,13 @@ impl ModuleResponse {
             workspace_id: m.workspace_id,
             archived_at: m.archived_at,
             sort_order: m.sort_order,
+            view_props: m.view_props,
             created_by_id: m.created_by_id,
             updated_by_id: m.updated_by_id,
             created_at: m.created_at,
             updated_at: m.updated_at,
+            is_favorite: false,
+            member_ids: vec![],
         }
     }
 }
@@ -139,16 +150,59 @@ pub async fn list_modules(
 ) -> Result<Json<Vec<ModuleResponse>>, AppError> {
     require_role(guard.project_member.role, guard.workspace_member.role, ROLE_GUEST)?;
 
+    let db = &state.db;
+    let project_id = guard.project.id;
+    let user_id = guard.user.id;
+
     let rows = modules::Entity::find()
         .active()
-        .filter(modules::Column::ProjectId.eq(guard.project.id))
+        .filter(modules::Column::ProjectId.eq(project_id))
         .filter(modules::Column::ArchivedAt.is_null())
         .order_by_asc(modules::Column::CreatedAt)
-        .all(&state.db)
+        .all(db)
         .await
         .map_err(AppError::Database)?;
 
-    Ok(Json(rows.into_iter().map(ModuleResponse::from_model).collect()))
+    // Batch-load favorites — single query, no N+1
+    let fav_ids: std::collections::HashSet<Uuid> = user_favorites::Entity::find()
+        .filter(user_favorites::Column::UserId.eq(user_id))
+        .filter(user_favorites::Column::ProjectId.eq(project_id))
+        .filter(user_favorites::Column::EntityType.eq("module"))
+        .filter(user_favorites::Column::DeletedAt.is_null())
+        .all(db)
+        .await
+        .map_err(AppError::Database)?
+        .into_iter()
+        .filter_map(|f| f.entity_identifier)
+        .collect();
+
+    // Batch-load member_ids — single query, no N+1
+    let member_rows = module_members::Entity::find()
+        .select_only()
+        .column(module_members::Column::ModuleId)
+        .column(module_members::Column::MemberId)
+        .filter(module_members::Column::ProjectId.eq(project_id))
+        .filter(module_members::Column::DeletedAt.is_null())
+        .into_tuple::<(Uuid, Uuid)>()
+        .all(db)
+        .await
+        .map_err(AppError::Database)?;
+
+    let mut members_map: std::collections::HashMap<Uuid, Vec<Uuid>> = std::collections::HashMap::new();
+    for (mod_id, member_id) in member_rows {
+        members_map.entry(mod_id).or_default().push(member_id);
+    }
+
+    let result = rows.into_iter().map(|m| {
+        let is_favorite = fav_ids.contains(&m.id);
+        let member_ids = members_map.remove(&m.id).unwrap_or_default();
+        let mut r = ModuleResponse::from_model(m);
+        r.is_favorite = is_favorite;
+        r.member_ids = member_ids;
+        r
+    }).collect();
+
+    Ok(Json(result))
 }
 
 // ── POST /workspaces/{slug}/projects/{project_id}/modules/ ───────────────────
@@ -248,15 +302,38 @@ pub async fn get_module(
 ) -> Result<Json<ModuleResponse>, AppError> {
     require_role(guard.project_member.role, guard.workspace_member.role, ROLE_GUEST)?;
 
+    let db = &state.db;
     let module = modules::Entity::find_by_id(pk)
         .active()
         .filter(modules::Column::ProjectId.eq(guard.project.id))
-        .one(&state.db)
+        .one(db)
         .await
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
-    Ok(Json(ModuleResponse::from_model(module)))
+    let is_favorite = user_favorites::Entity::find()
+        .filter(user_favorites::Column::UserId.eq(guard.user.id))
+        .filter(user_favorites::Column::EntityIdentifier.eq(pk))
+        .filter(user_favorites::Column::EntityType.eq("module"))
+        .filter(user_favorites::Column::DeletedAt.is_null())
+        .count(db)
+        .await
+        .map_err(AppError::Database)? > 0;
+
+    let member_ids: Vec<Uuid> = module_members::Entity::find()
+        .select_only()
+        .column(module_members::Column::MemberId)
+        .filter(module_members::Column::ModuleId.eq(pk))
+        .filter(module_members::Column::DeletedAt.is_null())
+        .into_tuple::<Uuid>()
+        .all(db)
+        .await
+        .map_err(AppError::Database)?;
+
+    let mut resp = ModuleResponse::from_model(module);
+    resp.is_favorite = is_favorite;
+    resp.member_ids = member_ids;
+    Ok(Json(resp))
 }
 
 // ── PATCH /workspaces/{slug}/projects/{project_id}/modules/{pk}/ ─────────────
@@ -320,7 +397,27 @@ pub async fn update_module(
     am.updated_by_id = Set(Some(guard.user.id));
 
     let updated = am.update(&state.db).await.map_err(AppError::Database)?;
-    Ok(Json(ModuleResponse::from_model(updated)))
+    let module_id = updated.id;
+    let mut resp = ModuleResponse::from_model(updated);
+    // Re-use same enrichment as get_module
+    resp.is_favorite = user_favorites::Entity::find()
+        .filter(user_favorites::Column::UserId.eq(guard.user.id))
+        .filter(user_favorites::Column::EntityIdentifier.eq(module_id))
+        .filter(user_favorites::Column::EntityType.eq("module"))
+        .filter(user_favorites::Column::DeletedAt.is_null())
+        .count(&state.db)
+        .await
+        .map_err(AppError::Database)? > 0;
+    resp.member_ids = module_members::Entity::find()
+        .select_only()
+        .column(module_members::Column::MemberId)
+        .filter(module_members::Column::ModuleId.eq(module_id))
+        .filter(module_members::Column::DeletedAt.is_null())
+        .into_tuple::<Uuid>()
+        .all(&state.db)
+        .await
+        .map_err(AppError::Database)?;
+    Ok(Json(resp))
 }
 
 // ── DELETE /workspaces/{slug}/projects/{project_id}/modules/{pk}/ ────────────

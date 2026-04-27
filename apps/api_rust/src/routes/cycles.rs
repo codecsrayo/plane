@@ -69,7 +69,7 @@ pub struct CycleResponse {
 }
 
 impl CycleResponse {
-    fn from_model(m: cycles::Model) -> Self {
+    pub fn from_model(m: cycles::Model) -> Self {
         // Status derivado de fechas — refleja la lógica de Django CycleViewSet
         let now = chrono::Utc::now();
         let status = match (m.start_date, m.end_date) {

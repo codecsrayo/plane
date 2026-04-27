@@ -1197,3 +1197,161 @@ pub async fn pages_summary(
         "archived_pages": row.archived_pages,
     })))
 }
+// ── GET /workspaces/{slug}/projects/{project_id}/favorite-pages/ ─────────────
+/// Lista las páginas marcadas como favoritas por el usuario en el proyecto.
+pub async fn list_favorite_pages(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+) -> Result<Json<Vec<PageResponse>>, AppError> {
+    require_role(guard.project_member.role, guard.workspace_member.role, ROLE_GUEST)?;
+
+    let db = &state.db;
+
+    // Cargar page_ids favoritos del usuario en este proyecto
+    let fav_page_ids: Vec<Uuid> = user_favorites::Entity::find()
+        .filter(user_favorites::Column::UserId.eq(guard.user.id))
+        .filter(user_favorites::Column::ProjectId.eq(guard.project.id))
+        .filter(user_favorites::Column::EntityType.eq("page"))
+        .filter(user_favorites::Column::DeletedAt.is_null())
+        .all(db)
+        .await
+        .map_err(AppError::Database)?
+        .into_iter()
+        .filter_map(|f| f.entity_identifier)
+        .collect();
+
+    if fav_page_ids.is_empty() {
+        return Ok(Json(vec![]));
+    }
+
+    let rows = pages::Entity::find()
+        .active()
+        .filter(pages::Column::Id.is_in(fav_page_ids))
+        .filter(pages::Column::ArchivedAt.is_null())
+        .order_by_desc(pages::Column::UpdatedAt)
+        .all(db)
+        .await
+        .map_err(AppError::Database)?;
+
+    let ids: Vec<Uuid> = rows.iter().map(|p| p.id).collect();
+    let (mut projects_by_page, mut labels_by_page) = fetch_pages_m2m(db, &ids).await?;
+    let responses = rows.into_iter().map(|m| {
+        let pids = projects_by_page.remove(&m.id).unwrap_or_default();
+        let lids = labels_by_page.remove(&m.id).unwrap_or_default();
+        PageResponse::from_model(m, pids, lids)
+    }).collect();
+
+    Ok(Json(responses))
+}
+
+// ── GET /workspaces/{slug}/projects/{project_id}/archived-pages/ ─────────────
+/// Lista las páginas archivadas del proyecto.
+pub async fn list_archived_pages(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+) -> Result<Json<Vec<PageResponse>>, AppError> {
+    require_role(guard.project_member.role, guard.workspace_member.role, ROLE_GUEST)?;
+
+    let db = &state.db;
+
+    let page_ids: Vec<Uuid> = project_pages::Entity::find()
+        .active()
+        .filter(project_pages::Column::ProjectId.eq(guard.project.id))
+        .all(db)
+        .await
+        .map_err(AppError::Database)?
+        .into_iter()
+        .map(|pp| pp.page_id)
+        .collect();
+
+    if page_ids.is_empty() {
+        return Ok(Json(vec![]));
+    }
+
+    let rows = pages::Entity::find()
+        .active()
+        .filter(pages::Column::Id.is_in(page_ids))
+        .filter(pages::Column::ArchivedAt.is_not_null())
+        .filter(
+            pages::Column::Access
+                .eq(ACCESS_PUBLIC)
+                .or(pages::Column::OwnedById.eq(guard.user.id)),
+        )
+        .order_by_desc(pages::Column::ArchivedAt)
+        .all(db)
+        .await
+        .map_err(AppError::Database)?;
+
+    let ids: Vec<Uuid> = rows.iter().map(|p| p.id).collect();
+    let (mut projects_by_page, mut labels_by_page) = fetch_pages_m2m(db, &ids).await?;
+    let responses = rows.into_iter().map(|m| {
+        let pids = projects_by_page.remove(&m.id).unwrap_or_default();
+        let lids = labels_by_page.remove(&m.id).unwrap_or_default();
+        PageResponse::from_model(m, pids, lids)
+    }).collect();
+
+    Ok(Json(responses))
+}
+
+// ── POST /workspaces/{slug}/projects/{project_id}/pages/{page_id}/move/ ──────
+/// Mueve una página a otro proyecto del mismo workspace.
+pub async fn move_page(
+    State(state): State<AppState>,
+    guard: ProjectMemberGuard,
+    Path((_slug, _project_id, page_id)): Path<(String, Uuid, Uuid)>,
+    Json(body): Json<serde_json::Value>,
+) -> Result<Json<PageResponse>, AppError> {
+    require_role(guard.project_member.role, guard.workspace_member.role, ROLE_MEMBER)?;
+
+    let db = &state.db;
+
+    let new_project_id: Uuid = body
+        .get("new_project_id")
+        .and_then(|v| v.as_str())
+        .and_then(|s| s.parse().ok())
+        .ok_or_else(|| AppError::BadRequest("new_project_id requerido".into()))?;
+
+    // Verificar que el usuario es miembro del proyecto destino
+    use crate::entities::project_members;
+    let _dest_member = project_members::Entity::find()
+        .filter(project_members::Column::ProjectId.eq(new_project_id))
+        .filter(project_members::Column::MemberId.eq(guard.user.id))
+        .filter(project_members::Column::DeletedAt.is_null())
+        .one(db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::Forbidden)?;
+
+    // Verificar que la página existe y pertenece al proyecto origen
+    let pp = project_pages::Entity::find()
+        .active()
+        .filter(project_pages::Column::ProjectId.eq(guard.project.id))
+        .filter(project_pages::Column::PageId.eq(page_id))
+        .one(db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    // Solo el owner puede mover
+    let page = pages::Entity::find_by_id(page_id)
+        .active()
+        .one(db)
+        .await
+        .map_err(AppError::Database)?
+        .ok_or(AppError::NotFound)?;
+
+    if page.owned_by_id != guard.user.id {
+        return Err(AppError::Forbidden);
+    }
+
+    // Actualizar la relación project_pages al nuevo proyecto
+    let mut am: project_pages::ActiveModel = pp.into();
+    am.project_id = sea_orm::Set(new_project_id);
+    am.update(db).await.map_err(AppError::Database)?;
+
+    let ids = vec![page.id];
+    let (mut projects_by_page, mut labels_by_page) = fetch_pages_m2m(db, &ids).await?;
+    let pids = projects_by_page.remove(&page.id).unwrap_or_default();
+    let lids = labels_by_page.remove(&page.id).unwrap_or_default();
+    Ok(Json(PageResponse::from_model(page, pids, lids)))
+}

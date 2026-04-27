@@ -2395,36 +2395,7 @@ pub async fn delete_draft_issue(
 
 // Ã¢ÂÂÃ¢ÂÂ Cycles Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 
-#[derive(Debug, Serialize)]
-pub struct WorkspaceCycleResponse {
-    pub id: Uuid,
-    pub name: String,
-    pub description: String,
-    pub start_date: Option<DateTime<Utc>>,
-    pub end_date: Option<DateTime<Utc>>,
-    pub project_id: Uuid,
-    pub workspace_id: Uuid,
-    pub owned_by_id: Uuid,
-    pub created_at: DateTime<Utc>,
-    pub updated_at: DateTime<Utc>,
-}
-
-impl From<cycles::Model> for WorkspaceCycleResponse {
-    fn from(m: cycles::Model) -> Self {
-        Self {
-            id: m.id,
-            name: m.name,
-            description: m.description,
-            start_date: m.start_date.map(Into::into),
-            end_date: m.end_date.map(Into::into),
-            project_id: m.project_id,
-            workspace_id: m.workspace_id,
-            owned_by_id: m.owned_by_id,
-            created_at: m.created_at.into(),
-            updated_at: m.updated_at.into(),
-        }
-    }
-}
+// WorkspaceCycleResponse removed — reuse cycles::CycleResponse for full ICycle contract.
 
 /// GET /workspaces/{slug}/cycles/
 ///
@@ -2457,44 +2428,14 @@ pub async fn list_workspace_cycles(
         .await
         .map_err(AppError::Database)?;
 
-    let resp: Vec<WorkspaceCycleResponse> = items.into_iter().map(Into::into).collect();
+    let resp: Vec<super::cycles::CycleResponse> =
+        items.into_iter().map(super::cycles::CycleResponse::from_model).collect();
     Ok((StatusCode::OK, Json(resp)))
 }
 
 // Ã¢ÂÂÃ¢ÂÂ Modules Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 
-#[derive(Debug, Serialize)]
-pub struct WorkspaceModuleResponse {
-    pub id: Uuid,
-    pub name: String,
-    pub description: String,
-    pub status: String,
-    pub start_date: Option<chrono::NaiveDate>,
-    pub target_date: Option<chrono::NaiveDate>,
-    pub project_id: Uuid,
-    pub workspace_id: Uuid,
-    pub lead_id: Option<Uuid>,
-    pub created_at: DateTime<Utc>,
-    pub updated_at: DateTime<Utc>,
-}
-
-impl From<modules::Model> for WorkspaceModuleResponse {
-    fn from(m: modules::Model) -> Self {
-        Self {
-            id: m.id,
-            name: m.name,
-            description: m.description,
-            status: m.status,
-            start_date: m.start_date,
-            target_date: m.target_date,
-            project_id: m.project_id,
-            workspace_id: m.workspace_id,
-            lead_id: m.lead_id,
-            created_at: m.created_at.into(),
-            updated_at: m.updated_at.into(),
-        }
-    }
-}
+// WorkspaceModuleResponse removed — reuse modules::ModuleResponse for full IModule contract.
 
 /// GET /workspaces/{slug}/modules/
 #[utoipa::path(
@@ -2525,7 +2466,47 @@ pub async fn list_workspace_modules(
         .await
         .map_err(AppError::Database)?;
 
-    let resp: Vec<WorkspaceModuleResponse> = items.into_iter().map(Into::into).collect();
+    // Batch-load favorites across the entire workspace for this user
+    use crate::entities::user_favorites;
+    let fav_ids: std::collections::HashSet<uuid::Uuid> = user_favorites::Entity::find()
+        .filter(user_favorites::Column::UserId.eq(user_id))
+        .filter(user_favorites::Column::WorkspaceId.eq(ws.id))
+        .filter(user_favorites::Column::EntityType.eq("module"))
+        .filter(user_favorites::Column::DeletedAt.is_null())
+        .all(db)
+        .await
+        .map_err(AppError::Database)?
+        .into_iter()
+        .filter_map(|f| f.entity_identifier)
+        .collect();
+
+    use crate::entities::module_members;
+    use sea_orm::{ColumnTrait as _, EntityTrait as _, QueryFilter as _, QuerySelect as _};
+    let member_rows = module_members::Entity::find()
+        .select_only()
+        .column(module_members::Column::ModuleId)
+        .column(module_members::Column::MemberId)
+        .filter(module_members::Column::WorkspaceId.eq(ws.id))
+        .filter(module_members::Column::DeletedAt.is_null())
+        .into_tuple::<(uuid::Uuid, uuid::Uuid)>()
+        .all(db)
+        .await
+        .map_err(AppError::Database)?;
+
+    let mut members_map: std::collections::HashMap<uuid::Uuid, Vec<uuid::Uuid>> =
+        std::collections::HashMap::new();
+    for (mod_id, member_id) in member_rows {
+        members_map.entry(mod_id).or_default().push(member_id);
+    }
+
+    let resp: Vec<super::modules::ModuleResponse> = items.into_iter().map(|m| {
+        let is_favorite = fav_ids.contains(&m.id);
+        let member_ids = members_map.remove(&m.id).unwrap_or_default();
+        let mut r = super::modules::ModuleResponse::from_model(m);
+        r.is_favorite = is_favorite;
+        r.member_ids = member_ids;
+        r
+    }).collect();
     Ok((StatusCode::OK, Json(resp)))
 }
 
