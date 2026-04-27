@@ -17,6 +17,7 @@ use utoipa::ToSchema;
 
 use crate::{
     auth::{
+        csrf::is_valid_csrf,
         email_auth::{
             ensure_profile_exists, ensure_signup_allowed, redirect_error, safe_next_path,
         },
@@ -394,7 +395,7 @@ async fn complete_magic_auth(
     };
     let data: MagicCodeData =
         serde_json::from_str(&raw).map_err(|e| AppError::Internal(anyhow::anyhow!(e)))?;
-    if data.token != code {
+    if !is_valid_csrf(&data.token, code) {
         return Ok(redirect_error(
             state,
             surface,
