@@ -1,99 +1,14 @@
-# Woodpecker CI Pipeline - Plane
-# Documentacion: https://woodpecker-ci.org/docs
-
-variables:
-  - &node_image "node:20-alpine"
-  - &rust_image "rust:1.77-alpine"
-
-when:
-  - event: push
-    branch:
-      - dev
-      - main
-  - event: pull_request
+# Pipeline de prueba - Woodpecker CI
+# Ejecuta un simple hello world para verificar que el agente funciona correctamente
 
 steps:
-  # ─── Frontend ───────────────────────────────────────────────
-  lint-frontend:
-    image: *node_image
-    when:
-      - changeset:
-          includes:
-            - "apps/web/**"
-            - "apps/admin/**"
-            - "apps/space/**"
-            - "packages/**"
+  hello-world:
+    # Imagen minimalista con shell disponible
+    image: alpine
     commands:
-      - corepack enable
-      - pnpm install --frozen-lockfile
-      - pnpm lint
-
-  build-frontend:
-    image: *node_image
-    depends_on: [lint-frontend]
-    when:
-      - changeset:
-          includes:
-            - "apps/web/**"
-            - "apps/admin/**"
-            - "apps/space/**"
-            - "packages/**"
-    commands:
-      - corepack enable
-      - pnpm install --frozen-lockfile
-      - pnpm build
-
-  # ─── API Rust ────────────────────────────────────────────────
-  lint-api-rust:
-    image: *rust_image
-    when:
-      - changeset:
-          includes:
-            - "apps/api_rust/**"
-    commands:
-      - apk add --no-cache musl-dev
-      - cd apps/api_rust
-      - cargo fmt --check
-      - cargo clippy -- -D warnings
-
-  test-api-rust:
-    image: *rust_image
-    depends_on: [lint-api-rust]
-    when:
-      - changeset:
-          includes:
-            - "apps/api_rust/**"
-    commands:
-      - apk add --no-cache musl-dev
-      - cd apps/api_rust
-      - cargo test
-
-  build-api-rust:
-    image: *rust_image
-    depends_on: [test-api-rust]
-    when:
-      - branch: [main, dev]
-      - changeset:
-          includes:
-            - "apps/api_rust/**"
-    commands:
-      - apk add --no-cache musl-dev
-      - cd apps/api_rust
-      - cargo build --release
-
-  # ─── Docker (solo en merge a main) ──────────────────────────
-  build-docker:
-    image: gcr.io/kaniko-project/executor:debug
-    depends_on: [build-frontend, build-api-rust]
-    when:
-      - event: push
-        branch: main
-    environment:
-      DOCKER_USERNAME:
-        from_secret: DOCKER_USERNAME
-      DOCKER_PASSWORD:
-        from_secret: DOCKER_PASSWORD
-    commands:
-      - mkdir -p /kaniko/.docker
-      - echo "{\"auths\":{\"https://index.docker.io/v1/\":{\"username\":\"$DOCKER_USERNAME\",\"password\":\"$DOCKER_PASSWORD\"}}}" > /kaniko/.docker/config.json
-      - /kaniko/executor --context=. --dockerfile=Dockerfile --destination=codecsrayo/plane:latest --destination=codecsrayo/plane:${CI_COMMIT_SHA}
+      # Saludo basico
+      - echo "Hello World desde Woodpecker CI!"
+      # Info del entorno de ejecucion
+      - echo "Rama: $CI_COMMIT_BRANCH"
+      - echo "Commit: $CI_COMMIT_SHA"
+      - echo "Repo: $CI_REPO"
