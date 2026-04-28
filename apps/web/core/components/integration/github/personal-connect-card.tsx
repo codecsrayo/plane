@@ -8,6 +8,8 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import useSWR, { mutate } from "swr";
 import { Button } from "@plane/propel/button";
 import { TOAST_TYPE, setToast } from "@plane/propel/toast";
+// plane constants
+import { WEB_URL } from "@plane/constants";
 import { UserService } from "@/services/user.service";
 
 type Props = {
@@ -68,7 +70,7 @@ export function GithubPersonalConnectCard({ githubClientId }: Props) {
   // (colons, slashes in edge cases) accept the round-trip.
   const oauthUrlTemplate = useMemo(() => {
     if (!githubClientId) return null;
-    const redirectUri = encodeURIComponent(`${window.location.origin}/auth/github/user-callback`);
+    const redirectUri = encodeURIComponent(`${WEB_URL}auth/github/user-callback`);
     const scope = encodeURIComponent("read:user user:email");
     return `https://github.com/login/oauth/authorize?client_id=${githubClientId}&scope=${scope}&redirect_uri=${redirectUri}`;
   }, [githubClientId]);

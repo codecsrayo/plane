@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import { observer } from "mobx-react";
 import { Controller, useForm } from "react-hook-form";
 // Plane Imports
-import { ORGANIZATION_SIZE, EUserPermissions, EUserPermissionsLevel } from "@plane/constants";
+import { ORGANIZATION_SIZE, EUserPermissions, EUserPermissionsLevel, WEB_URL } from "@plane/constants";
 import { useTranslation } from "@plane/i18n";
 import { Button } from "@plane/propel/button";
 import { EditIcon } from "@plane/propel/icons";
@@ -166,9 +166,10 @@ export const WorkspaceDetails = observer(function WorkspaceDetails() {
           </div>
           <div className="flex flex-col gap-1">
             <div className="mb:-my-5 text-h5-semibold leading-6">{watch("name")}</div>
-            <button type="button" onClick={handleCopyUrl} className="text-left text-body-xs-regular tracking-tight">{`${
-              typeof window !== "undefined" && window.location.origin.replace("http://", "").replace("https://", "")
-            }/${currentWorkspace.slug}`}</button>
+            <button type="button" onClick={handleCopyUrl} className="text-left text-body-xs-regular tracking-tight">{`${WEB_URL.replace(
+              "http://",
+              ""
+            ).replace("https://", "")}${currentWorkspace.slug}`}</button>
             {isAdmin && (
               <button
                 type="button"
@@ -252,10 +253,7 @@ export const WorkspaceDetails = observer(function WorkspaceDetails() {
                     id="url"
                     name="url"
                     type="url"
-                    value={`${
-                      typeof window !== "undefined" &&
-                      window.location.origin.replace("http://", "").replace("https://", "")
-                    }/${currentWorkspace.slug}`}
+                    value={`${WEB_URL.replace("http://", "").replace("https://", "")}${currentWorkspace.slug}`}
                     onChange={onChange}
                     ref={ref}
                     hasError={Boolean(errors.url)}

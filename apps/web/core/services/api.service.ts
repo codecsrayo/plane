@@ -6,6 +6,8 @@
 
 import type { AxiosInstance, AxiosRequestConfig } from "axios";
 import axios from "axios";
+// plane constants
+import { WEB_URL } from "@plane/constants";
 
 /**
  * Rutas desde las cuales NO debemos disparar un redirect "a login con next_path":
@@ -154,7 +156,7 @@ export abstract class APIService {
           // contexto de filtros, tabs y anchors. `encodeURIComponent` evita romper el
           // parseo del query string del landing.
           const currentPath = `${pathname}${search}${hash}`;
-          window.location.replace(`/?next_path=${encodeURIComponent(currentPath)}`);
+          window.location.replace(`${WEB_URL}?next_path=${encodeURIComponent(currentPath)}`);
         }
         return Promise.reject(error);
       }

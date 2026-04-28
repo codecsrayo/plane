@@ -5,6 +5,7 @@
  */
 
 import sanitizeHtml from "sanitize-html";
+import { WEB_URL } from "@plane/constants";
 import type { Content, JSONContent } from "@plane/types";
 
 /**
@@ -70,10 +71,8 @@ export const createSimilarString = (str: string) => {
  * await copyUrlToClipboard("issues/123") // copies "https://example.com/issues/123"
  */
 export const copyUrlToClipboard = async (path: string) => {
-  // get origin or default to empty string if not in browser
-  const originUrl = typeof window !== "undefined" ? window.location.origin : "";
-  // create URL object and ensure proper path formatting
-  const url = new URL(path, originUrl);
+  // create URL object using WEB_URL as base to ensure it respects sub-paths like /app/
+  const url = new URL(path, WEB_URL);
   await copyTextToClipboard(url.toString());
 };
 
