@@ -1,5 +1,4 @@
 # Pipeline de prueba - Woodpecker CI
-# Ejecuta un simple hello world para verificar que el agente funciona correctamente
 
 steps:
   hello-world:
@@ -9,6 +8,6 @@ steps:
       # Saludo basico
       - echo "Hello World desde Woodpecker CI!"
       # Info del entorno de ejecucion
-      - echo "Rama: $CI_COMMIT_BRANCH"
-      - echo "Commit: $CI_COMMIT_SHA"
-      - echo "Repo: $CI_REPO"
+      - echo "Rama $CI_COMMIT_BRANCH"
+      - echo "Commit $CI_COMMIT_SHA"
+      - echo "Repo $CI_REPO"
