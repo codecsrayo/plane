@@ -12,6 +12,8 @@ import { ROLE, EUserPermissions, EUserPermissionsLevel } from "@plane/constants"
 import { useTranslation } from "@plane/i18n";
 import { LinkIcon, TrashIcon, ChevronDownIcon } from "@plane/propel/icons";
 import { TOAST_TYPE, setToast } from "@plane/propel/toast";
+// plane constants
+import { WEB_URL } from "@plane/constants";
 import type { TContextMenuItem } from "@plane/ui";
 import { CustomSelect, CustomMenu } from "@plane/ui";
 import { cn, copyTextToClipboard } from "@plane/utils";
@@ -77,7 +79,7 @@ export const WorkspaceInvitationsListItem = observer(function WorkspaceInvitatio
 
   const handleCopyText = async () => {
     try {
-      const inviteLink = new URL(invitationDetails.invite_link, window.location.origin).href;
+      const inviteLink = new URL(invitationDetails.invite_link, WEB_URL).href;
       await copyTextToClipboard(inviteLink);
       setToast({
         type: TOAST_TYPE.SUCCESS,

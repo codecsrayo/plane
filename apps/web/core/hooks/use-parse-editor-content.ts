@@ -5,6 +5,8 @@
  */
 
 import { useCallback } from "react";
+// plane constants
+import { WEB_URL } from "@plane/constants";
 // plane types
 import type { TSearchEntities } from "@plane/types";
 // helpers
@@ -175,7 +177,7 @@ export const useParseEditorContent = (args: TArgs) => {
       // replace the matched mention components with [display_name](redirect_url)
       const mentionRegex =
         /<mention-component[^>]*entity_identifier="([^"]+)"[^>]*entity_name="([^"]+)"[^>]*><\/mention-component>/g;
-      const originUrl = typeof window !== "undefined" && (window.location.origin ?? "");
+      const originUrl = WEB_URL.endsWith("/") ? WEB_URL.slice(0, -1) : WEB_URL;
       parsedMarkdownContent = parsedMarkdownContent.replace(mentionRegex, (_match, id, entity_type) => {
         const entityType = entity_type as TSearchEntities;
         if (!id || !entityType) return "";
@@ -250,9 +252,9 @@ export const useParseEditorContent = (args: TArgs) => {
         const id = element.getAttribute("entity_identifier");
         if (id) {
           const userDetails = getUserDetails(id);
-          const originUrl = typeof window !== "undefined" && (window.location.origin ?? "");
+          const originUrl = WEB_URL.endsWith("/") ? WEB_URL : `${WEB_URL}/`;
           const path = `${workspaceSlug}/profile/${id}`;
-          const url = `${originUrl}/${path}`;
+          const url = `${originUrl}${path}`;
           if (userDetails) {
             userMentions.push({
               id,

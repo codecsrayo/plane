@@ -7,7 +7,7 @@
 import { useCallback, useEffect, useMemo, useRef } from "react";
 import { observer } from "mobx-react";
 // plane imports
-import { LIVE_BASE_PATH, LIVE_BASE_URL } from "@plane/constants";
+import { LIVE_BASE_PATH, LIVE_BASE_URL, WEB_URL } from "@plane/constants";
 import { CollaborativeDocumentEditorWithRef } from "@plane/editor";
 import type {
   CollaborationState,
@@ -190,9 +190,10 @@ export const PageEditorBody = observer(function PageEditorBody(props: Props) {
   const realtimeConfig: TRealtimeConfig | undefined = useMemo(() => {
     // Construct the WebSocket Collaboration URL
     try {
-      const LIVE_SERVER_BASE_URL = LIVE_BASE_URL?.trim() || window.location.origin;
+      const originFallback = new URL(WEB_URL).origin;
+      const LIVE_SERVER_BASE_URL = LIVE_BASE_URL?.trim() || originFallback;
       const WS_LIVE_URL = new URL(LIVE_SERVER_BASE_URL);
-      const isSecureEnvironment = window.location.protocol === "https:";
+      const isSecureEnvironment = WS_LIVE_URL.protocol === "https:" || window.location.protocol === "https:";
       WS_LIVE_URL.protocol = isSecureEnvironment ? "wss" : "ws";
       WS_LIVE_URL.pathname = `${LIVE_BASE_PATH}/collaboration`;
 

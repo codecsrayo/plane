@@ -10,7 +10,7 @@ import { useParams } from "next/navigation";
 import { Controller, useForm } from "react-hook-form";
 
 // types
-import { SPACE_BASE_PATH, SPACE_BASE_URL } from "@plane/constants";
+import { SPACE_BASE_PATH, SPACE_BASE_URL, WEB_URL } from "@plane/constants";
 import { Button } from "@plane/propel/button";
 import { GlobeIcon, NewTabIcon, CheckIcon } from "@plane/propel/icons";
 import { TOAST_TYPE, setToast } from "@plane/propel/toast";
@@ -164,7 +164,8 @@ export const PublishProjectModal = observer(function PublishProjectModal(props: 
     });
   }, [projectPublishSettings, reset]);
 
-  const SPACE_APP_URL = (SPACE_BASE_URL.trim() === "" ? window.location.origin : SPACE_BASE_URL) + SPACE_BASE_PATH;
+  const SPACE_APP_URL =
+    (SPACE_BASE_URL.trim() === "" ? new URL(WEB_URL).origin : SPACE_BASE_URL) + SPACE_BASE_PATH;
   const publishLink = `${SPACE_APP_URL}/issues/${projectPublishSettings?.anchor}`;
 
   const handleCopyLink = () =>
