@@ -168,9 +168,16 @@ pub struct ProjectResponse {
     pub icon_prop: Option<serde_json::Value>,
     pub logo_props: serde_json::Value,
     pub cover_image: Option<String>,
+    /// FKs exposed under Django's serializer naming convention (no `_id`
+    /// suffix); the frontend reads `default_assignee`, `project_lead`,
+    /// `default_state`, `estimate` directly.
+    #[serde(rename = "default_assignee")]
     pub default_assignee_id: Option<Uuid>,
+    #[serde(rename = "project_lead")]
     pub project_lead_id: Option<Uuid>,
+    #[serde(rename = "default_state")]
     pub default_state_id: Option<Uuid>,
+    #[serde(rename = "estimate")]
     pub estimate_id: Option<Uuid>,
     pub cycle_view: bool,
     pub module_view: bool,

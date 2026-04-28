@@ -71,8 +71,10 @@ export interface IModule {
   id: string;
   name: string;
   description: string;
-  description_text: any;
-  description_html: any;
+  // Rich-text fields are not emitted by the Rust API base DTO (only `description`
+  // is). Optional so consumers must guard before access.
+  description_text?: any;
+  description_html?: any;
   workspace_id: string;
   project_id: string;
   lead_id: string | null;

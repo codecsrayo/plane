@@ -44,12 +44,16 @@ export interface IUser extends IUserLite {
   is_email_verified: boolean;
   is_password_autoset: boolean;
   is_tour_completed: boolean;
+  // Emitted by the Rust /users/me/ DTO (Django parity).
+  is_superuser?: boolean;
+  is_managed?: boolean;
   mobile_number: string | null;
   last_workspace_id: string;
   user_timezone: string;
   username: string;
   last_login_medium: TLoginMediums;
-  theme: IUserTheme;
+  // Rust returns `theme` in the separate /users/me/profile/ DTO, not here.
+  theme?: IUserTheme;
 }
 
 export interface IUserAccount {

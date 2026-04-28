@@ -77,6 +77,9 @@ export type TBaseIssue = {
   is_draft: boolean;
   is_epic?: boolean;
   is_intake?: boolean;
+  // Emitted by the Rust API list DTO (`ProjectIssueItem.state__group`,
+  // Django parity). Only the detail DTO omits it.
+  state__group?: TStateGroups | null;
 };
 
 type IssueRelation = {
@@ -100,7 +103,6 @@ export type TIssue = TBaseIssue & {
   tempId?: string;
   // sourceIssueId is used to store the original issue id when creating a copy of an issue. Used in cloning property values. It is not a part of the API response.
   sourceIssueId?: string;
-  state__group?: TStateGroups | null;
 };
 
 export type TIssueMap = {

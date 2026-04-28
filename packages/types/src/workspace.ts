@@ -20,17 +20,21 @@ export enum EUserWorkspaceRoles {
 
 export interface IWorkspace {
   readonly id: string;
-  readonly owner: IUser;
+  // Rust API serializes the FK as a UUID string (Django parity); some legacy
+  // endpoints embed the full user object, so the type accepts either shape.
+  readonly owner: IUser | string;
   readonly created_at: Date;
   readonly updated_at: Date;
   name: string;
-  url: string;
+  url?: string;
+  logo?: string | null;
   logo_url: string | null;
   readonly total_members: number;
   readonly slug: string;
   readonly created_by: string;
   readonly updated_by: string;
   organization_size: string;
+  background_color?: string;
   total_projects?: number;
   role: number;
   timezone: string;

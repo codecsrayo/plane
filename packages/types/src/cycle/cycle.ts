@@ -108,8 +108,10 @@ export interface ICycle extends TProgressSnapshot {
     filters: IIssueFilterOptions;
   };
   workspace_id: string;
-  project_detail: IProjectDetails;
-  progress: any[];
+  // Not emitted by the Rust API list/detail endpoints; legacy responses include
+  // it. Marked optional so callers must guard before access.
+  project_detail?: IProjectDetails;
+  progress?: any[];
   version: number;
 }
 

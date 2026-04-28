@@ -17,6 +17,13 @@ export interface IState {
   sequence: number;
   workspace_id: string;
   order: number;
+  // Optional fields included by the Rust API (Django parity).
+  slug?: string;
+  is_triage?: boolean;
+  external_id?: string | null;
+  external_source?: string | null;
+  created_at?: string;
+  updated_at?: string;
 }
 
 export interface IStateLite {
