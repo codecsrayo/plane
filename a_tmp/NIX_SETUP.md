@@ -14,6 +14,19 @@ Este proyecto utiliza [Nix](https://nixos.org/) para proporcionar un entorno de 
    echo "experimental-features = nix-command flakes" > ~/.config/nix/nix.conf
    ```
 
+## Estructura
+
+Las configuraciones de Nix viven agrupadas en `nix/`:
+
+```
+flake.nix             # Entry point del flake (en la raíz, requerido por Nix)
+nix/
+├── devshell.nix      # Definición del devShell por defecto
+├── idx.nix           # Configuración para Project IDX
+└── dev-shell.sh      # Script wrapper para `nix develop`
+.idx/dev.nix          # Wrapper que importa nix/idx.nix (ruta requerida por IDX)
+```
+
 ## Uso del Entorno Nix
 
 ### Opción 1: Carga Manual
@@ -22,6 +35,8 @@ Para entrar al entorno de desarrollo:
 
 ```bash
 nix develop
+# o, vía el script wrapper:
+./nix/dev-shell.sh
 ```
 
 Esto cargará automáticamente:
@@ -117,7 +132,7 @@ echo "experimental-features = nix-command flakes" > ~/.config/nix/nix.conf
 Agrega los archivos de Nix a Git:
 
 ```bash
-git add flake.nix .envrc
+git add flake.nix .envrc nix/
 ```
 
 ### Error de OpenSSL al compilar Rust
