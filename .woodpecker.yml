@@ -83,17 +83,17 @@ steps:
 
   # ─── Docker (solo en merge a main) ──────────────────────────
   build-docker:
-    image: woodpeckerci/plugin-docker-buildx
+    image: gcr.io/kaniko-project/executor:debug
     depends_on: [build-frontend, build-api-rust]
     when:
       - event: push
         branch: main
-    settings:
-      repo: codecsrayo/plane
-      tags:
-        - latest
-        - ${CI_COMMIT_SHA:0:8}
-      username:
+    environment:
+      DOCKER_USERNAME:
         from_secret: DOCKER_USERNAME
-      password:
+      DOCKER_PASSWORD:
         from_secret: DOCKER_PASSWORD
+    commands:
+      - mkdir -p /kaniko/.docker
+      - echo "{\"auths\":{\"https://index.docker.io/v1/\":{\"username\":\"$DOCKER_USERNAME\",\"password\":\"$DOCKER_PASSWORD\"}}}" > /kaniko/.docker/config.json
+      - /kaniko/executor --context=. --dockerfile=Dockerfile --destination=codecsrayo/plane:latest --destination=codecsrayo/plane:${CI_COMMIT_SHA}
