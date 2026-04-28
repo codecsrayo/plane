@@ -1,5 +1,5 @@
 // src/routes/labels.rs
-//! Endpoints de Labels (etiquetas de proyecto).
+//! Labels endpoints (project tags).
 //!
 //!   GET    /api/workspaces/{slug}/projects/{project_id}/labels/
 //!   POST   /api/workspaces/{slug}/projects/{project_id}/labels/
@@ -93,7 +93,7 @@ pub struct UpdateLabelRequest {
         ("slug" = String, Path, description = "Workspace slug"),
         ("project_id" = Uuid, Path, description = "Project ID"),
     ),
-    responses((status = 200, description = "Lista de labels")),
+    responses((status = 200, description = "Labels list")),
     security(("TokenAuth" = []))
 )]
 pub async fn list_labels(
@@ -124,8 +124,8 @@ pub async fn list_labels(
         ("project_id" = Uuid, Path, description = "Project ID"),
     ),
     responses(
-        (status = 201, description = "Label creado"),
-        (status = 400, description = "Error de validación"),
+        (status = 201, description = "Label created"),
+        (status = 400, description = "Validation error"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -137,14 +137,14 @@ pub async fn create_label(
     require_role(guard.project_member.role, guard.workspace_member.role, ROLE_MEMBER)?;
 
     if body.name.trim().is_empty() {
-        return Err(AppError::BadRequest("name es requerido".into()));
+        return Err(AppError::BadRequest("name is required".into()));
     }
 
-    // NOTA: created_at / updated_at se setean explícitamente porque
-    // labels::ActiveModelBehavior está vacío (sin hook before_save) y las
-    // columnas son NOT NULL. Dejarlas con Default::default() hacía que SeaORM
-    // enviara NULL y la BD rechazara con 23502 ("violates not-null constraint").
-    // Mismo patrón que issue_extras.rs / pages.rs / workspace_extras.rs.
+    // NOTE: created_at / updated_at are explicitly set because
+    // labels::ActiveModelBehavior is empty (no before_save hook) and the
+    // columns are NOT NULL. Leaving them with Default::default() caused SeaORM
+    // to send NULL and the DB to reject with 23502 ("violates not-null constraint").
+    // Same pattern as issue_extras.rs / pages.rs / workspace_extras.rs.
     let now = chrono::Utc::now().into();
 
     let label = labels::ActiveModel {
@@ -183,8 +183,8 @@ pub async fn create_label(
         ("pk" = Uuid, Path, description = "Label ID"),
     ),
     responses(
-        (status = 200, description = "Detalle del label"),
-        (status = 404, description = "No encontrado"),
+        (status = 200, description = "Label detail"),
+        (status = 404, description = "Not found"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -218,8 +218,8 @@ pub async fn get_label(
         ("pk" = Uuid, Path, description = "Label ID"),
     ),
     responses(
-        (status = 200, description = "Label actualizado"),
-        (status = 404, description = "No encontrado"),
+        (status = 200, description = "Label updated"),
+        (status = 404, description = "Not found"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -256,9 +256,9 @@ pub async fn update_label(
         am.sort_order = Set(order);
     }
     am.updated_by_id = Set(Some(guard.user.id));
-    // Django usa auto_now=True en updated_at (TimeAuditModel). En SeaORM hay
-    // que setearlo explícitamente, de lo contrario ActiveModel lo deja
-    // Unchanged y el UPDATE no lo toca.
+    // Django uses auto_now=True in updated_at (TimeAuditModel). In SeaORM we
+    // must set it explicitly, otherwise ActiveModel leaves it
+    // Unchanged and UPDATE won't touch it.
     am.updated_at = Set(chrono::Utc::now().into());
 
     let updated = am.update(&state.db).await.map_err(AppError::Database)?;
@@ -277,8 +277,8 @@ pub async fn update_label(
         ("pk" = Uuid, Path, description = "Label ID"),
     ),
     responses(
-        (status = 204, description = "Eliminado"),
-        (status = 404, description = "No encontrado"),
+        (status = 204, description = "Deleted"),
+        (status = 404, description = "Not found"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -336,13 +336,13 @@ pub async fn bulk_create_labels(
         let name = entry.name.clone().unwrap_or_else(|| "Migrated".into());
         let hue = (i * 137 + 30) % 360;
         let color = entry.color.clone().unwrap_or_else(|| format!("hsl({hue},60%,50%)"));
-        // NOTA: setear TODAS las columnas NOT NULL explícitamente.
-        // labels.sort_order es `double precision NOT NULL` sin DEFAULT en BD
-        // (ver migration/src/sql/baseline.sql:1635). Usar `..Default::default()`
-        // dejaba sort_order como NotSet → INSERT sin la columna → error 23502.
-        // Mismo patrón que create_label (labels.rs:148-164).
-        // Stagger por índice para que cada label tenga sort_order distinto,
-        // preservando el orden recibido en label_data.
+        // NOTE: set ALL NOT NULL columns explicitly.
+        // labels.sort_order is `double precision NOT NULL` without DEFAULT in DB
+        // (see migration/src/sql/baseline.sql:1635). Using `..Default::default()`
+        // left sort_order as NotSet → INSERT without column → error 23502.
+        // Same pattern as create_label (labels.rs:148-164).
+        // Stagger by index so each label has a distinct sort_order,
+        // preserving order received in label_data.
         let label = labels::ActiveModel {
             id: Set(uuid::Uuid::new_v4()),
             name: Set(name.clone()),

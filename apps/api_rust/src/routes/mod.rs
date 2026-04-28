@@ -531,7 +531,7 @@ pub mod v1_router;
 )]
 pub struct ApiDoc;
 
-/// Agrega el esquema de seguridad "TokenAuth" a la spec OpenAPI.
+/// Adds the "TokenAuth" security scheme to the OpenAPI spec.
 struct SecurityAddon;
 
 impl utoipa::Modify for SecurityAddon {
@@ -551,9 +551,9 @@ async fn openapi_json() -> Json<utoipa::openapi::OpenApi> {
 }
 
 pub fn build_router(state: AppState) -> Router {
-    // ── Rutas sin autenticación ──────────────────────────────────────────────
+    // ── Public routes (no authentication) ────────────────────────────────────
     let public_routes = Router::new()
-        // GitHub App Setup URL callback — sin middleware de auth
+        // GitHub App Setup URL callback — without auth middleware
         .route("/github/callback", get(integrations::github_app_callback));
 
     // ── Auth routes — nested at /auth to match Django's path("auth/", ...) ──
@@ -628,7 +628,7 @@ pub fn build_router(state: AppState) -> Router {
         )
         .route("/sign-out", post(auth::logout::logout))
         .route("/spaces/sign-out", post(auth::logout::logout_space))
-        // ── GitHub user OAuth callback (con auth) ────────────────────────────
+        // ── GitHub user OAuth callback (with auth) ───────────────────────────
         .route(
             "/github/user-callback",
             get(integrations::github_user_callback_get_stub)
@@ -653,11 +653,11 @@ pub fn build_router(state: AppState) -> Router {
             get(integrations::github_user_callback_get_stub)
                 .post(integrations::github_user_callback),
         )
-        // ── Integrations globales ────────────────────────────────────────────
+        // ── Global Integrations ─────────────────────────────────────────────
         .route("/integrations", get(integrations::list_integrations))
-        // ── Workspaces (Fase 2) ──────────────────────────────────────────────
-        // NormalizePathLayer (aplicado al router final) elimina trailing slashes
-        // automáticamente, por lo que solo se necesita una variante por ruta.
+        // ── Workspaces (Phase 2) ──────────────────────────────────────────────
+        // NormalizePathLayer (applied to the final router) removes trailing slashes
+        // automatically, so only one variant per route is needed.
         .route("/workspace-slug-check", get(workspaces::slug_check))
         .route(
             "/workspaces",
@@ -714,14 +714,14 @@ pub fn build_router(state: AppState) -> Router {
             get(workspaces::get_workspace_user_activity),
         )
         // Mirror Django: workspaces/<slug>/user-activity/<user_id>/export/ -> ExportWorkspaceUserActivityEndpoint
-        // CSV download del log de actividades del usuario para una fecha dada.
+        // CSV download of the user activity log for a given date.
         .route(
             "/workspaces/{slug}/user-activity/{user_id}/export",
             get(workspaces::export_workspace_user_activity_get)
                 .post(workspaces::export_workspace_user_activity),
         )
         // Mirror Django: workspaces/<slug>/user-issues/<user_id>/ -> WorkspaceUserProfileIssuesEndpoint
-        // Sirve las pestañas Assigned / Created / Subscribed del perfil del usuario.
+        // Serves the Assigned / Created / Subscribed tabs of the user profile.
         .route(
             "/workspaces/{slug}/user-issues/{user_id}",
             get(user_profile_issues::list_user_profile_issues),
@@ -757,8 +757,8 @@ pub fn build_router(state: AppState) -> Router {
             get(integrations::list_workspace_integrations)
                 .post(integrations::create_workspace_integration),
         )
-        // Rutas específicas de GitHub ANTES de las rutas genéricas con :pk
-        // para evitar que "github" sea capturado como un UUID
+        // GitHub specific routes BEFORE generic routes with :pk
+        // to prevent "github" from being captured as a UUID
         .route(
             "/workspaces/{slug}/workspace-integrations/github/repo-syncs",
             get(integrations::list_github_repo_syncs)
@@ -799,13 +799,13 @@ pub fn build_router(state: AppState) -> Router {
             "/workspaces/{slug}/workspace-integrations/{wi_id}/pr-state-mappings/{pk}",
             delete(integrations::delete_pr_state_mapping),
         )
-        // ── Projects (Fase 2b) ───────────────────────────────────────────────
+        // ── Projects (Phase 2b) ───────────────────────────────────────────────
         .route(
             "/workspaces/{slug}/projects",
             get(projects::list_projects).post(projects::create_project),
         )
-        // IMPORTANTE: esta ruta literal debe ir ANTES de /{project_id} para que
-        // "details" no sea interpretado como un UUID de proyecto.
+        // IMPORTANT: this literal route must come BEFORE /{project_id} so that
+        // "details" is not interpreted as a project UUID.
         .route(
             "/workspaces/{slug}/projects/details",
             get(projects::list_projects_detail),
@@ -828,14 +828,14 @@ pub fn build_router(state: AppState) -> Router {
                 .delete(projects::remove_project_member),
         )
         // Django URL: `workspaces/<slug>/projects/<project_id>/project-members/me/`
-        // (`apps/api/plane/app/urls/project.py:98-100`). Devuelve el ProjectMember
-        // del usuario autenticado. El frontend (base-permissions.store) depende
-        // de este endpoint para cargar permisos de proyecto.
+        // (`apps/api/plane/app/urls/project.py:98-100`). Returns the ProjectMember
+        // of the authenticated user. The frontend (base-permissions.store) depends
+        // on this endpoint to load project permissions.
         .route(
             "/workspaces/{slug}/projects/{project_id}/project-members/me",
             get(projects::get_project_member_me),
         )
-        // Mirror Django: /members/leave/ (literal antes que /{pk}/)
+        // Mirror Django: /members/leave/ (literal before /{pk}/)
         .route(
             "/workspaces/{slug}/projects/{project_id}/members/leave",
             post(projects::leave_project),
@@ -845,7 +845,7 @@ pub fn build_router(state: AppState) -> Router {
             "/workspaces/{slug}/projects/{project_id}/project-views",
             get(projects::get_project_user_views).post(projects::update_project_views),
         )
-        // Project summary — variante interna (sin admin); v1 sigue activo.
+        // Project summary — internal variant (no admin); v1 remains active.
         .route(
             "/workspaces/{slug}/projects/{project_id}/summary",
             get(projects::get_project_summary),
@@ -890,8 +890,8 @@ pub fn build_router(state: AppState) -> Router {
                 .patch(projects::update_project_member_preferences),
         )
         // Django URL: `workspaces/<slug>/projects/<project_id>/user-properties/`
-        // (`apps/api/plane/app/urls/issue.py:216-219`). GET hace get_or_create
-        // así que NUNCA devuelve 404 si el proyecto existe.
+        // (`apps/api/plane/app/urls/issue.py:216-219`). GET performs get_or_create
+        // so it NEVER returns 404 if the project exists.
         .route(
             "/workspaces/{slug}/projects/{project_id}/user-properties",
             get(project_user_properties::get_project_user_properties)
@@ -907,7 +907,7 @@ pub fn build_router(state: AppState) -> Router {
             get(projects::get_project_invitation)
                 .delete(projects::delete_project_invitation),
         )
-        // ── States (Fase 3) ──────────────────────────────────────────────────
+        // ── States (Phase 3) ──────────────────────────────────────────────────
         .route(
             "/workspaces/{slug}/projects/{project_id}/states",
             get(states::list_states).post(states::create_state),
@@ -1068,7 +1068,7 @@ pub fn build_router(state: AppState) -> Router {
             get(modules::get_archived_module).delete(modules::unarchive_module),
         )
         // ── Labels ──────────────────────────────────────────────────────────
-        // Rutas canónicas (/labels/)
+        // Canonical routes (/labels/)
         .route(
             "/workspaces/{slug}/projects/{project_id}/bulk-create-labels",
             post(labels::bulk_create_labels),
@@ -1083,7 +1083,7 @@ pub fn build_router(state: AppState) -> Router {
                 .patch(labels::update_label)
                 .delete(labels::delete_label),
         )
-        // Alias Django-compatible (/issue-labels/) – mismos handlers
+        // Django-compatible alias (/issue-labels/) – same handlers
         .route(
             "/workspaces/{slug}/projects/{project_id}/issue-labels",
             get(labels::list_labels).post(labels::create_label),
@@ -1224,13 +1224,13 @@ pub fn build_router(state: AppState) -> Router {
             get(pages::get_page_description).patch(pages::update_page_description),
         )
         // ── Intake ───────────────────────────────────────────────────────────
-        // Django registra ambos nombres (`intakes/` / `inboxes/`,
-        // `intake-issues/` / `inbox-issues/`) apuntando al mismo
-        // ViewSet — ver apps/api/plane/app/urls/intake.py:17-55. El
-        // frontend actual usa el nombre legacy `inbox-issues`
-        // (apps/web/core/services/inbox/inbox-issue.service.ts) y por eso
-        // devolvía 404 al crear intake issues hasta que se agregaron estos
-        // aliases. Todos los handlers son compartidos; no hay divergencia.
+        // Django registers both names (`intakes/` / `inboxes/`,
+        // `intake-issues/` / `inbox-issues/`) pointing to the same
+        // ViewSet — see apps/api/plane/app/urls/intake.py:17-55. The
+        // current frontend uses the legacy name `inbox-issues`
+        // (apps/web/core/services/inbox/inbox-issue.service.ts) and therefore
+        // returned 404 when creating intake issues until these aliases
+        // were added. All handlers are shared; there is no divergence.
         .route(
             "/workspaces/{slug}/projects/{project_id}/intakes",
             get(intake::list_intakes).post(intake::create_intake),
@@ -1262,8 +1262,8 @@ pub fn build_router(state: AppState) -> Router {
                 .patch(intake::update_intake_issue)
                 .delete(intake::delete_intake_issue),
         )
-        // Alias legacy (Django: name="inbox-issue"). El frontend actual
-        // usa este URL en apps/web/core/services/inbox/inbox-issue.service.ts.
+        // Legacy alias (Django: name="inbox-issue"). The current frontend
+        // uses this URL in apps/web/core/services/inbox/inbox-issue.service.ts.
         .route(
             "/workspaces/{slug}/projects/{project_id}/inbox-issues",
             get(intake::list_intake_issues).post(intake::create_intake_issue),
@@ -1288,14 +1288,14 @@ pub fn build_router(state: AppState) -> Router {
             "/workspaces/{slug}/search",
             get(search::global_search),
         )
-        // Workspace-level search por work-items. Reutiliza global_search con
-        // contrato simétrico (200 con auth; 401 sin). Espejo del frontend.
+        // Workspace-level search for work-items. Reuses global_search with
+        // symmetric contract (200 with auth; 401 without). Frontend mirror.
         .route(
             "/workspaces/{slug}/work-items/search",
             get(search::global_search),
         )
-        // Alias legacy del prefijo `issues/` — el frontend antiguo lo seguía
-        // consumiendo con el mismo shape; mantener paridad evita regresiones.
+        // Legacy alias for the `issues/` prefix — the old frontend continued
+        // consuming it with the same shape; maintaining parity avoids regressions.
         .route(
             "/workspaces/{slug}/issues/search",
             get(search::global_search),
@@ -1328,10 +1328,10 @@ pub fn build_router(state: AppState) -> Router {
         //   → UserNotificationPreferenceEndpoint
         //   (apps/api/plane/app/urls/notification.py:47-51)
         //
-        // GET/PATCH sobre la fila única de preferencias del usuario
-        // autenticado. Si la fila no existe (usuarios migrados o creados
-        // por flujos que no disparan el signal Django), se crea con los
-        // defaults del modelo. Evita el 500 que tendría Django con `.get()`.
+        // GET/PATCH over the single authenticated user preference row.
+        // If the row does not exist (migrated users or users created
+        // through flows that do not trigger the Django signal), it is created
+        // with model defaults. Avoids the 500 that Django would have with `.get()`.
         .route(
             "/users/me/notification-preferences",
             get(notifications::get_user_notification_preferences)
@@ -1355,12 +1355,12 @@ pub fn build_router(state: AppState) -> Router {
         .route("/users/me/workspaces", get(users::list_user_workspaces))
         // Mirror Django: users/me/activities/ -> UserActivityEndpoint
         // (plane/app/urls/user.py:65, plane/app/views/user/base.py:380).
-        // Devuelve todas las IssueActivity del requester (cross-workspace)
-        // con paginación cursor estilo Django.
+        // Returns all IssueActivity for the requester (cross-workspace)
+        // with Django-style cursor pagination.
         .route("/users/me/activities", get(users::get_my_activities))
         // Mirror Django: users/me/workspaces/invitations/ -> UserWorkspaceInvitationsViewSet
-        // (GET list pending invites, POST bulk-accept). Llamado por el flujo
-        // de onboarding del frontend.
+        // (GET list pending invites, POST bulk-accept). Called by the frontend
+        // onboarding flow.
         .route(
             "/users/me/workspaces/invitations",
             get(users::list_user_workspace_invitations)
@@ -1385,8 +1385,8 @@ pub fn build_router(state: AppState) -> Router {
         )
         // ── Workspace View Issues (global view / spreadsheet) ─────────────────
         // Mirror Django: workspaces/<slug>/issues/ → WorkspaceViewIssuesViewSet
-        // (plane/app/urls/views.py:52). Retorna issues de todos los proyectos
-        // del workspace a los que el usuario tiene acceso.
+        // (plane/app/urls/views.py:52). Returns issues from all workspace
+        // projects the user has access to.
         .route(
             "/workspaces/{slug}/issues",
             get(workspace_view_issues::list_workspace_view_issues),
@@ -1635,8 +1635,8 @@ pub fn build_router(state: AppState) -> Router {
             post(external::workspace_ai_assistant),
         )
         // Mirror Django: workspaces/<slug>/rephrase-grammar/ → RephraseGrammarEndpoint
-        // (apps/api/plane/app/urls/external.py). Crítico para el editor de páginas
-        // (Ask Pi + reformulación de texto). Bug registrado en todo.md.
+        // (apps/api/plane/app/urls/external.py). Critical for the page editor
+        // (Ask Pi + text rephrasing). Bug tracked in todo.md.
         .route(
             "/workspaces/{slug}/rephrase-grammar",
             post(external::rephrase_grammar),
@@ -1679,8 +1679,8 @@ pub fn build_router(state: AppState) -> Router {
             patch(issue_extras::update_issue_link)
                 .delete(issue_extras::delete_issue_link),
         )
-        // Alias legacy del frontend (path corto `/links` sin `issue-` prefix).
-        // Cubre el shape histórico de issues/ y el nuevo work-items/.
+        // Legacy frontend alias (short path `/links` without `issue-` prefix).
+        // Covers historical issues/ shape and the new work-items/.
         .route(
             "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/links",
             get(issue_extras::list_issue_links).post(issue_extras::create_issue_link),
@@ -1699,7 +1699,7 @@ pub fn build_router(state: AppState) -> Router {
             patch(issue_extras::update_issue_link)
                 .delete(issue_extras::delete_issue_link),
         )
-        // Activities por PK (404 si no existe). Path corto del nuevo frontend.
+        // Activities by PK (404 if not found). Short path for the new frontend.
         .route(
             "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/activities/{pk}",
             get(issue_extras::get_issue_activity),
@@ -1719,23 +1719,23 @@ pub fn build_router(state: AppState) -> Router {
         )
         .route(
             "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/remove-relation",
-            // Paridad Django: apps/api/plane/app/urls/issue.py:241-242 enruta
-            // **POST** a `IssueRelationViewSet.remove_relation`. Antes esto
-            // estaba registrado con `delete()`, lo que devolvía 405 al
-            // frontend (que envía POST) y rompía el integration test.
+            // Django Parity: apps/api/plane/app/urls/issue.py:241-242 routes
+            // **POST** to `IssueRelationViewSet.remove_relation`. Previously
+            // this was registered with `delete()`, which returned 405 to the
+            // frontend (which sends POST) and broke the integration test.
             post(issue_extras::remove_issue_relation),
         )
         .route(
             "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/history",
             get(issue_extras::list_issue_activities),
         )
-        // Alias `/activities` → mismo handler que `/history`. Django solo
-        // expone `/history` (`apps/api/plane/app/urls/issue.py:150`), pero
-        // el v1 router público (`src/routes/v1_router.rs:551`) y el
-        // frontend reciente usan `/activities`. Mantener ambos paths bajo
-        // un único handler evita duplicar lógica y unifica el contrato:
-        // /history sigue funcionando para clientes Django-paridad estricta,
-        // /activities para clientes que siguen el shape v1.
+        // Alias `/activities` → same handler as `/history`. Django only
+        // exposes `/history` (`apps/api/plane/app/urls/issue.py:150`), but
+        // the public v1 router (`src/routes/v1_router.rs:551`) and the
+        // recent frontend use `/activities`. Keeping both paths under
+        // a single handler avoids logic duplication and unifies the contract:
+        // /history continues to work for strict Django-parity clients,
+        // /activities for clients following the v1 shape.
         .route(
             "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/activities",
             get(issue_extras::list_issue_activities),
@@ -1888,13 +1888,13 @@ pub fn build_router(state: AppState) -> Router {
         )
         .route(
             "/workspaces/{slug}/projects/{project_id}/bulk-delete-issues",
-            // Django expone este endpoint como `def delete(...)` (HTTP DELETE),
-            // pero el frontend de Plane y muchos proxies/CDNs no soportan
-            // DELETE-con-body de forma fiable (RFC 9110 lo permite pero define
-            // el body como "no semantic meaning" → algunos middleboxes lo
-            // descartan). Aceptamos AMBOS métodos sobre el mismo handler
-            // para dar paridad estricta con Django (DELETE) y mantener
-            // compatibilidad operativa con clientes que envían POST.
+            // Django exposes this endpoint as `def delete(...)` (HTTP DELETE),
+            // but the Plane frontend and many proxies/CDNs do not reliably
+            // support DELETE-with-body (RFC 9110 allows it but defines
+            // the body as "no semantic meaning" -> some middleboxes discard it).
+            // We accept BOTH methods on the same handler to provide strict
+            // Django parity (DELETE) and maintain operational compatibility
+            // with clients sending POST.
             delete(issue_extras2::bulk_delete_issues)
                 .post(issue_extras2::bulk_delete_issues),
         )
@@ -1976,7 +1976,7 @@ pub fn build_router(state: AppState) -> Router {
             "/instances",
             get(instances::get_instance).patch(instances::patch_instance),
         )
-        // God Mode auth — rutas específicas ANTES de /admins/ para evitar conflictos
+        // God Mode auth — specific routes BEFORE /admins/ to avoid conflicts
         .route(
             "/instances/admins/sign-up",
             post(auth::god_mode::admin_sign_up),
@@ -1997,14 +1997,14 @@ pub fn build_router(state: AppState) -> Router {
             "/instances/admins",
             get(instances::list_instance_admins).post(instances::create_instance_admin),
         )
-        // Rutas específicas ANTES de /{pk}/ para evitar captura incorrecta
+        // Specific routes BEFORE /{pk}/ to avoid incorrect capture
         .route("/instances/admins/me",      get(instances::get_instance_admin_me))
         .route("/instances/admins/session", get(instances::get_instance_admin_session))
         .route(
             "/instances/admins/{pk}",
             delete(instances::delete_instance_admin),
         )
-        // Configurations — disable-email-feature ANTES de la ruta raíz
+        // Configurations — disable-email-feature BEFORE the root route
         .route(
             "/instances/configurations/disable-email-feature",
             delete(instances::disable_email_feature),
@@ -2028,24 +2028,24 @@ pub fn build_router(state: AppState) -> Router {
         .layer(middleware::from_fn(
             auth::rate_limit::rate_limit_headers_middleware,
         ))
-        .layer(DefaultBodyLimit::max(1_048_576)); // 1 MB — previene DoS por payload masivo
+        .layer(DefaultBodyLimit::max(1_048_576)); // 1 MB — prevents DoS by massive payload
 
-    // ✅ Scalar UI solo en desarrollo (DEBUG=true).
+    // ✅ Scalar UI only in development (DEBUG=true).
     //
-    // FIX (axum 0.8): las rutas de Scalar se mergean al router raíz ANTES
-    // de los `nest("/api", ...)`. Antes se agregaban después y devolvían 404:
-    // `nest("/api", api_router)` registra internamente un wildcard que
-    // capturaba `/api/docs`, enruta al `api_router` (donde no existe
-    // `/docs`) y responde 404 sin caer en el `.route("/api/docs", ...)` del
-    // router raíz.
+    // FIX (axum 0.8): Scalar routes are merged into the root router BEFORE
+    // the `nest("/api", ...)` calls. Previously they were added after and returned 404:
+    // `nest("/api", api_router)` internally registers a wildcard that
+    // captured `/api/docs`, routed to `api_router` (where `/docs` does
+    // not exist) and responded with 404 without falling into the
+    // `.route("/api/docs", ...)` of the root router.
     //
-    // Registrando Scalar primero, la ruta estática `/api/docs` queda como
-    // más específica que el catch-all del nest y axum la prioriza correctamente.
+    // By registering Scalar first, the static route `/api/docs` remains as
+    // more specific than the nest catch-all and axum prioritizes it correctly.
     //
-    // Además: docs NO pasa por el rate-limit middleware (aplicado al
-    // api_router), lo cual es correcto — no queremos rate-limit en docs.
+    // Also: docs does NOT pass through the rate-limit middleware (applied to the
+    // api_router), which is correct — we don't want rate-limiting on docs.
     let root = if state.config.debug {
-        tracing::warn!("Scalar UI habilitado (DEBUG=true) — deshabilitar en producción");
+        tracing::warn!("Scalar UI enabled (DEBUG=true) — disable in production");
         Router::new()
             .route("/api/docs/openapi.json", get(openapi_json))
             .merge(Scalar::with_url("/api/docs", ApiDoc::openapi()))
@@ -2053,9 +2053,9 @@ pub fn build_router(state: AppState) -> Router {
         Router::new()
     };
 
-    // Router público api/v1 con autenticación por API key (x-api-key).
-    // Espejo de Django path("api/v1/", include("plane.api.urls")).
-    // Montado ANTES de /api para que el prefijo más específico gane.
+    // Public api/v1 router with API key authentication (x-api-key).
+    // Mirror of Django path("api/v1/", include("plane.api.urls")).
+    // Mounted BEFORE /api so that the more specific prefix wins.
     let v1 = v1_router::v1_router(state.clone());
 
     let router = root
@@ -2067,11 +2067,11 @@ pub fn build_router(state: AppState) -> Router {
         .nest("/auth", auth_router)
         .nest("/auth", auth_public_routes);
 
-    // NormalizePathLayer se aplica en main.rs envolviendo al Router *desde
-    // fuera* con `NormalizePathLayer::trim_trailing_slash().layer(router)`.
+    // NormalizePathLayer is applied in main.rs wrapping the Router *from
+    // the outside* with `NormalizePathLayer::trim_trailing_slash().layer(router)`.
     //
-    // Razón: `Router::layer()` en axum 0.8 ejecuta el middleware DESPUÉS
-    // del path-matching, por lo que la barra final no se stripea a tiempo.
-    // Envolviendo externamente, la capa corre ANTES del routing.
+    // Reason: `Router::layer()` in axum 0.8 executes the middleware AFTER
+    // path-matching, so the trailing slash is not stripped in time.
+    // Wrapping externally, the layer runs BEFORE routing.
     router.with_state(state)
 }

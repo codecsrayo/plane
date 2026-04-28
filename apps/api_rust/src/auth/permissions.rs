@@ -5,8 +5,8 @@ pub const ROLE_VIEWER: i16 = 10;
 pub const ROLE_MEMBER: i16 = 15;
 pub const ROLE_ADMIN: i16 = 20;
 
-/// Verifica que el miembro tenga rol Admin en el workspace.
-/// Equivalente a la verificación `role >= 20` usada en la API de Django.
+/// Verifies that the member has the Admin role in the workspace.
+/// Equivalent to the `role >= 20` check used in the Django API.
 pub fn require_workspace_admin(member: &workspace_members::Model) -> Result<(), AppError> {
     if member.role >= ROLE_ADMIN {
         Ok(())
@@ -15,9 +15,9 @@ pub fn require_workspace_admin(member: &workspace_members::Model) -> Result<(), 
     }
 }
 
-/// Verifica que el miembro tenga rol Member o superior (Member, Admin).
-/// Equivalente a `@allow_permission([ROLE.ADMIN, ROLE.MEMBER], level="WORKSPACE")`
-/// en la API de Django — usado en endpoints de sólo lectura de integraciones.
+/// Verifies that the member has the Member role or higher (Member, Admin).
+/// Equivalent to `@allow_permission([ROLE.ADMIN, ROLE.MEMBER], level="WORKSPACE")`
+/// in the Django API — used in read-only integration endpoints.
 pub fn require_workspace_member(member: &workspace_members::Model) -> Result<(), AppError> {
     if member.role >= ROLE_MEMBER {
         Ok(())

@@ -1,15 +1,15 @@
 // src/jobs/notifications.rs
-//! Job: creación de notificaciones in-app para actividades de issues.
+//! Job: in-app notification creation for issue activities.
 //!
-//! Equivalente a `plane/bgtasks/notification_task.py`.
+//! Equivalent to `plane/bgtasks/notification_task.py`.
 //!
-//! Flujo:
-//!   1. Recibir IssueActivityNotificationJob con el ID de actividad
-//!   2. Determinar destinatarios: assignees + subscribers + creador + mencionados
-//!   3. Insertar registros en la tabla `notifications` (sin duplicados)
+//! Flow:
+//!   1. Receive IssueActivityNotificationJob with activity ID
+//!   2. Determine recipients: assignees + subscribers + creator + mentioned
+//!   3. Insert records into `notifications` table (without duplicates)
 //!
-//! No envía emails en este job — el envío de emails es responsabilidad
-//! de un job separado que lee `email_notification_logs`.
+//! This job does not send emails — email delivery is the responsibility
+//! of a separate job that reads `email_notification_logs`.
 
 use apalis::prelude::*;
 use sea_orm::{
@@ -29,7 +29,7 @@ use crate::{
 
 // ── Job payload ───────────────────────────────────────────────────────────────
 
-/// Payload del job: ID de la actividad que disparó la notificación.
+/// Job payload: ID of the activity that triggered the notification.
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct IssueActivityNotificationJob {
     pub activity_id: Uuid,
@@ -48,7 +48,7 @@ pub async fn handle_issue_activity_notification(
         tracing::error!(
             activity_id = %job.activity_id,
             error = %e,
-            "issue_activity_notification: job falló"
+            "issue_activity_notification: job failed"
         );
         return Err(apalis::prelude::Error::Failed(std::sync::Arc::new(e.into())));
     }
@@ -59,35 +59,35 @@ pub async fn handle_issue_activity_notification(
 async fn run_notification(state: &AppState, activity_id: Uuid) -> anyhow::Result<()> {
     use anyhow::Context as _;
 
-    // 1. Cargar la actividad
+    // 1. Load the activity
     let activity = issue_activities::Entity::find_by_id(activity_id)
         .one(&state.db)
         .await?
-        .context("IssueActivity no encontrada")?;
+        .context("IssueActivity not found")?;
 
     let issue_id = match activity.issue_id {
         Some(id) => id,
-        None => return Ok(()), // actividad sin issue asociado — ignorar
+        None => return Ok(()), // activity without associated issue — ignore
     };
 
     let actor_id = activity.actor_id;
 
-    // 2. Cargar el issue para contexto
+    // 2. Load issue for context
     let issue = issues::Entity::find_by_id(issue_id)
         .active()
         .one(&state.db)
         .await?
-        .context("Issue no encontrado")?;
+        .context("Issue not found")?;
 
-    // 3. Recolectar destinatarios únicos (excluyendo al actor)
+    // 3. Collect unique recipients (excluding the actor)
     let mut receiver_ids: std::collections::HashSet<Uuid> = std::collections::HashSet::new();
 
-    // Creador del issue
+    // Issue creator
     if let Some(creator) = issue.created_by_id {
         receiver_ids.insert(creator);
     }
 
-    // Assignees activos
+    // Active assignees
     let assignees = issue_assignees::Entity::find()
         .active()
         .filter(issue_assignees::Column::IssueId.eq(issue_id))
@@ -97,7 +97,7 @@ async fn run_notification(state: &AppState, activity_id: Uuid) -> anyhow::Result
         receiver_ids.insert(a.assignee_id);
     }
 
-    // Subscribers activos
+    // Active subscribers
     let subscribers = issue_subscribers::Entity::find()
         .active()
         .filter(issue_subscribers::Column::IssueId.eq(issue_id))
@@ -107,7 +107,7 @@ async fn run_notification(state: &AppState, activity_id: Uuid) -> anyhow::Result
         receiver_ids.insert(s.subscriber_id);
     }
 
-    // Excluir al actor — no se notifica a uno mismo
+    // Exclude the actor — don't notify oneself
     if let Some(actor) = actor_id {
         receiver_ids.remove(&actor);
     }
@@ -116,7 +116,7 @@ async fn run_notification(state: &AppState, activity_id: Uuid) -> anyhow::Result
         return Ok(());
     }
 
-    // 4. Verificar que los destinatarios son miembros activos del proyecto
+    // 4. Verify recipients are active project members
     let active_members: std::collections::HashSet<Uuid> = project_members::Entity::find()
         .active()
         .filter(project_members::Column::ProjectId.eq(issue.project_id))
@@ -132,20 +132,20 @@ async fn run_notification(state: &AppState, activity_id: Uuid) -> anyhow::Result
         .filter(|id| active_members.contains(id))
         .collect();
 
-    // 5. Construir el título de la notificación
+    // 5. Build notification title
     let title = build_notification_title(&activity, &issue.name);
     let message_html = format!(
         "<p>{}</p>",
         ammonia::clean(&title)
     );
 
-    // 6. Insertar notificaciones (ignorar duplicados: misma actividad + receiver)
+    // 6. Insert notifications (ignore duplicates: same activity + receiver)
     let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
     let triggered_by = activity.actor_id;
 
     for receiver_id in valid_receivers {
-        // Comprobar si ya existe una notificación para esta actividad + receptor
-        // para garantizar idempotencia en caso de re-ejecución del job.
+        // Check if a notification for this activity + receptor already exists
+        // to ensure idempotency in case of job re-execution.
         let already_exists = notifications::Entity::find()
             .filter(notifications::Column::ReceiverId.eq(receiver_id))
             .filter(notifications::Column::EntityIdentifier.eq(activity_id))
@@ -194,27 +194,27 @@ async fn run_notification(state: &AppState, activity_id: Uuid) -> anyhow::Result
     tracing::debug!(
         activity_id = %activity_id,
         issue_id = %issue_id,
-        "issue_activity_notification: notificaciones creadas"
+        "issue_activity_notification: notifications created"
     );
 
     Ok(())
 }
 
-/// Construye el título legible de la notificación según el campo modificado.
+/// Builds the readable notification title based on the modified field.
 fn build_notification_title(activity: &issue_activities::Model, issue_name: &str) -> String {
     let field = activity.field.as_deref().unwrap_or("unknown");
     let new_val = activity.new_value.as_deref().unwrap_or("");
 
     match field {
-        "state" => format!("Estado actualizado a «{new_val}» en «{issue_name}»"),
-        "assignees" => format!("Asignados cambiados en «{issue_name}»"),
-        "priority" => format!("Prioridad cambiada a «{new_val}» en «{issue_name}»"),
-        "comment" => format!("Nuevo comentario en «{issue_name}»"),
-        "name" => format!("Título actualizado a «{new_val}»"),
-        "description" => format!("Descripción actualizada en «{issue_name}»"),
-        "target_date" => format!("Fecha límite actualizada en «{issue_name}»"),
-        "cycle" => format!("Issue movido a ciclo «{new_val}»"),
-        "module" => format!("Issue movido al módulo «{new_val}»"),
-        _ => format!("Actualización en «{issue_name}»"),
+        "state" => format!("State updated to «{new_val}» in «{issue_name}»"),
+        "assignees" => format!("Assignees changed in «{issue_name}»"),
+        "priority" => format!("Priority changed to «{new_val}» in «{issue_name}»"),
+        "comment" => format!("New comment in «{issue_name}»"),
+        "name" => format!("Title updated to «{new_val}»"),
+        "description" => format!("Description updated in «{issue_name}»"),
+        "target_date" => format!("Due date updated in «{issue_name}»"),
+        "cycle" => format!("Issue moved to cycle «{new_val}»"),
+        "module" => format!("Issue moved to module «{new_val}»"),
+        _ => format!("Update in «{issue_name}»"),
     }
 }

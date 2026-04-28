@@ -1,5 +1,5 @@
 // src/routes/search.rs
-//! Endpoints de búsqueda global y por proyecto.
+//! Global and project-level search endpoints.
 //!
 //!   GET /api/workspaces/{slug}/search/
 //!   GET /api/workspaces/{slug}/projects/{project_id}/search-issues/
@@ -61,10 +61,10 @@ pub struct GlobalSearchResponse {
     tag = "Search",
     params(
         ("slug" = String, Path, description = "Workspace slug"),
-        ("query" = Option<String>, Query, description = "Texto a buscar"),
-        ("type" = Option<String>, Query, description = "Filtrar por tipo: issues|cycles|modules|pages|projects"),
+        ("query" = Option<String>, Query, description = "Search query"),
+        ("type" = Option<String>, Query, description = "Filter by type: issues|cycles|modules|pages|projects"),
     ),
-    responses((status = 200, description = "Resultados de búsqueda")),
+    responses((status = 200, description = "Search results")),
     security(("TokenAuth" = []))
 )]
 pub async fn global_search(
@@ -179,7 +179,7 @@ pub async fn global_search(
             .filter(pages::Column::WorkspaceId.eq(workspace_id))
             .filter(pages::Column::ArchivedAt.is_null())
             .filter(
-                pages::Column::Access.eq(0_i16) // público
+                pages::Column::Access.eq(0_i16) // public
                     .or(pages::Column::OwnedById.eq(guard.user.id)),
             )
             .filter(pages::Column::Name.contains(&q))
@@ -193,7 +193,7 @@ pub async fn global_search(
                 entity_name: "page".to_owned(),
                 id: p.id,
                 name: p.name,
-                project_id: None, // pages pueden estar en múltiples proyectos
+                project_id: None, // pages can be in multiple projects
                 workspace_id: p.workspace_id,
             })
             .collect()
@@ -243,9 +243,9 @@ pub async fn global_search(
     params(
         ("slug" = String, Path, description = "Workspace slug"),
         ("project_id" = Uuid, Path, description = "Project ID"),
-        ("query" = Option<String>, Query, description = "Texto a buscar"),
+        ("query" = Option<String>, Query, description = "Search query"),
     ),
-    responses((status = 200, description = "Issues encontrados")),
+    responses((status = 200, description = "Issues found")),
     security(("TokenAuth" = []))
 )]
 pub async fn search_issues(
@@ -288,16 +288,16 @@ pub async fn search_issues(
 
 // ── GET /workspaces/{slug}/entity-search/ ─────────────────────────────────────
 
-/// Búsqueda contextual de entidades (user_mention, project, issue, cycle, module, page).
+/// Contextual search for entities (user_mention, project, issue, cycle, module, page).
 ///
-/// Espejo de `SearchEndpoint.get`
+/// Mirror of `SearchEndpoint.get`
 /// (`apps/api/plane/app/views/search/base.py`).
 ///
 /// Query params:
-///   - `query`:      texto a buscar
-///   - `query_type`: tipos separados por coma (default: "user_mention")
-///   - `count`:      máx resultados por tipo (default: 5)
-///   - `project_id`: UUID del proyecto (opcional — restringe resultados)
+///   - `query`:      search query
+///   - `query_type`: comma-separated types (default: "user_mention")
+///   - `count`:      max results per type (default: 5)
+///   - `project_id`: Project UUID (optional — restricts results)
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct EntitySearchQuery {
     pub query: Option<String>,
@@ -340,12 +340,12 @@ pub struct EntitySearchResponse {
     tag = "Search",
     params(
         ("slug" = String, Path, description = "Workspace slug"),
-        ("query" = Option<String>, Query, description = "Texto a buscar"),
-        ("query_type" = Option<String>, Query, description = "Tipos separados por coma: user_mention,project,issue,cycle,module,page"),
-        ("count" = Option<u64>, Query, description = "Máximo de resultados por tipo (default: 5)"),
-        ("project_id" = Option<Uuid>, Query, description = "UUID del proyecto para restringir búsqueda"),
+        ("query" = Option<String>, Query, description = "Search query"),
+        ("query_type" = Option<String>, Query, description = "Comma-separated types: user_mention,project,issue,cycle,module,page"),
+        ("count" = Option<u64>, Query, description = "Maximum results per type (default: 5)"),
+        ("project_id" = Option<Uuid>, Query, description = "Project UUID to restrict search"),
     ),
-    responses((status = 200, description = "Resultados de búsqueda por entidad")),
+    responses((status = 200, description = "Entity search results")),
     security(("TokenAuth" = []), ("SessionCookie" = []))
 )]
 pub async fn entity_search(
@@ -373,7 +373,7 @@ pub async fn entity_search(
     for query_type in &query_types {
         match *query_type {
             "user_mention" => {
-                // Busca miembros activos del proyecto (si project_id) o del workspace
+                // Find active members of the project (if project_id) or the workspace
                 let members: Vec<serde_json::Value> = if let Some(pid) = project_id {
                     let qb = project_members::Entity::find()
                         .filter(project_members::Column::ProjectId.eq(pid))
@@ -574,14 +574,14 @@ pub async fn entity_search(
 
                 response.insert("page".into(), serde_json::Value::Array(results));
             }
-            _ => {} // tipo desconocido — ignorar
+            _ => {} // unknown type — ignore
         }
     }
 
     Ok(axum::Json(serde_json::Value::Object(response)))
 }
 
-/// Recupera usuarios para user_mention con join correcto sobre `users`.
+/// Fetches users for user_mention with correct join on `users`.
 async fn fetch_user_mentions(
     db: &sea_orm::DatabaseConnection,
     workspace_id: Uuid,
@@ -594,7 +594,7 @@ async fn fetch_user_mentions(
 
 
     let results = if let Some(pid) = project_id {
-        // Búsqueda restringida al proyecto
+        // Project-restricted search
         let members = project_members::Entity::find()
             .filter(project_members::Column::ProjectId.eq(pid))
             .filter(project_members::Column::WorkspaceId.eq(workspace_id))
@@ -634,7 +634,7 @@ async fn fetch_user_mentions(
             })
             .collect()
     } else {
-        // Búsqueda en workspace completo
+        // Full workspace search
         let members = workspace_members::Entity::find()
             .filter(workspace_members::Column::WorkspaceId.eq(workspace_id))
             .filter(workspace_members::Column::IsActive.eq(true))

@@ -1,5 +1,5 @@
 // src/routes/pages.rs
-//! Endpoints de Pages (documentos de proyecto).
+//! Pages endpoints (project documents).
 //!
 //!   GET    /api/workspaces/{slug}/projects/{project_id}/pages/
 //!   POST   /api/workspaces/{slug}/projects/{project_id}/pages/
@@ -76,13 +76,13 @@ pub struct PageResponse {
     pub logo_props: serde_json::Value,
     pub created_at: chrono::DateTime<chrono::FixedOffset>,
     pub updated_at: chrono::DateTime<chrono::FixedOffset>,
-    /// UUIDs de los proyectos a los que pertenece la página (M2M via
-    /// `project_pages`). Mirror de `PageSerializer.project_ids` en Django —
-    /// el frontend lo usa como `page.project_ids?.[0]` para construir rutas
-    /// y hacer llamadas HTTP; si viene vacío, el guard client-side lanza
-    /// "Missing required fields" antes de llegar al backend.
+    /// UUIDs of the projects the page belongs to (M2M via
+    /// `project_pages`). Mirror of `PageSerializer.project_ids` in Django —
+    /// the frontend uses it as `page.project_ids?.[0]` to build routes
+    /// and make HTTP calls; if it's empty, the client-side guard throws
+    /// "Missing required fields" before reaching the backend.
     pub project_ids: Vec<Uuid>,
-    /// UUIDs de los labels asociados (M2M via `page_labels`).
+    /// UUIDs of associated labels (M2M via `page_labels`).
     pub label_ids: Vec<Uuid>,
 }
 
@@ -125,10 +125,10 @@ pub struct PageVersionResponse {
 
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct CreatePageRequest {
-    // `name` es opcional y por defecto vacío para reflejar Django:
-    // `Page.name = TextField(blank=True)` + PageSerializer sin `required=True`.
-    // El frontend crea páginas desde el botón "Create your first Page"
-    // enviando únicamente `{ access }`, sin `name`.
+    // `name` is optional and empty by default to reflect Django:
+    // `Page.name = TextField(blank=True)` + PageSerializer without `required=True`.
+    // The frontend creates pages from the "Create your first Page" button
+    // sending only `{ access }`, without `name`.
     #[serde(default)]
     pub name: Option<String>,
     pub description_html: Option<String>,
@@ -146,20 +146,20 @@ pub struct UpdatePageRequest {
     pub parent_id: Option<Uuid>,
 }
 
-/// Body para `PATCH /pages/{id}/description/` — mirror de
-/// `PageBinaryUpdateSerializer` en Django. Todos los campos son opcionales: el
-/// cliente puede enviar solo el que necesita actualizar (e.g. el editor Y.js
-/// envía únicamente `description_binary` al autosave, mientras que al cerrar
-/// la página envía también `description_html` y `description_json`).
+/// Body for `PATCH /pages/{id}/description/` — mirror of
+/// `PageBinaryUpdateSerializer` in Django. All fields are optional: the
+/// client can send only the one it needs to update (e.g. the Y.js editor
+/// sends only `description_binary` on autosave, while on closing
+/// the page it also sends `description_html` and `description_json`).
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct UpdatePageDescriptionRequest {
-    /// Base64 del documento Y.js serializado. Decode + validación de tamaño
-    /// (10 MB) + heurística de patrones sospechosos aplican en el handler.
+    /// Base64 of the serialized Y.js document. Decoding + size validation
+    /// (10 MB) + suspicious pattern heuristics apply in the handler.
     pub description_binary: Option<String>,
-    /// HTML del editor. Será sanitizado con `ammonia` antes de guardar,
-    /// preservando los tags custom de Plane (`mention-component`, etc.).
+    /// Editor HTML. It will be sanitized with `ammonia` before saving,
+    /// preserving Plane custom tags (`mention-component`, etc.).
     pub description_html: Option<String>,
-    /// Representación JSON (Tiptap ProseMirror doc). Se guarda tal cual.
+    /// JSON representation (Tiptap ProseMirror doc). It is saved as is.
     pub description_json: Option<serde_json::Value>,
 }
 
@@ -170,7 +170,7 @@ async fn find_project_page(
     project_id: Uuid,
     page_id: Uuid,
 ) -> Result<pages::Model, AppError> {
-    // Verificar que la página pertenece a este proyecto vía project_pages
+    // Verify that the page belongs to this project via project_pages
     let pp = project_pages::Entity::find()
         .active()
         .filter(project_pages::Column::ProjectId.eq(project_id))
@@ -190,14 +190,14 @@ async fn find_project_page(
 
 // ── M2M helpers ──────────────────────────────────────────────────────────────
 //
-// Django espeja `project_ids`/`label_ids` sobre cada fila de Page vía
-// `ArrayAgg` en el queryset (ver `page/base.py:120-123`). En SeaORM no
-// tenemos agregación nativa en la query principal sin romper el mapeo a la
-// entidad, así que resolvemos los M2M con queries auxiliares. Se respeta el
-// soft-delete en `project_pages` (`.active()`) y en `page_labels`.
+// Django mirrors `project_ids`/`label_ids` on each Page row via
+// `ArrayAgg` in the queryset (see `page/base.py:120-123`). In SeaORM we
+// don't have native aggregation in the main query without breaking the mapping to the
+// entity, so we resolve M2M with auxiliary queries. Soft-delete is respected
+// in `project_pages` (`.active()`) and in `page_labels`.
 
-/// M2M de una sola página — usado por handlers que devuelven una página
-/// después de un write (create/update/archive/lock/duplicate/get).
+/// M2M of a single page — used by handlers that return a page
+/// after a write (create/update/archive/lock/duplicate/get).
 async fn fetch_page_m2m(
     db: &sea_orm::DatabaseConnection,
     page_id: Uuid,
@@ -225,8 +225,8 @@ async fn fetch_page_m2m(
     Ok((project_ids, label_ids))
 }
 
-/// M2M de múltiples páginas — batched para `list_pages` y evitar N+1.
-/// Devuelve un par de HashMaps: `(page_id -> project_ids, page_id -> label_ids)`.
+/// M2M of multiple pages — batched for `list_pages` to avoid N+1.
+/// Returns a pair of HashMaps: `(page_id -> project_ids, page_id -> label_ids)`.
 async fn fetch_pages_m2m(
     db: &sea_orm::DatabaseConnection,
     page_ids: &[Uuid],
@@ -305,7 +305,7 @@ async fn enrich_page_favorites(
         ("slug" = String, Path, description = "Workspace slug"),
         ("project_id" = Uuid, Path, description = "Project ID"),
     ),
-    responses((status = 200, description = "Lista de páginas")),
+    responses((status = 200, description = "List of pages")),
     security(("TokenAuth" = []))
 )]
 pub async fn list_pages(
@@ -314,7 +314,7 @@ pub async fn list_pages(
 ) -> Result<Json<Vec<PageResponse>>, AppError> {
     require_role(guard.project_member.role, guard.workspace_member.role, ROLE_GUEST)?;
 
-    // Obtener IDs de páginas del proyecto a través de project_pages
+    // Get page IDs of the project through project_pages
     let page_ids: Vec<Uuid> = project_pages::Entity::find()
         .active()
         .filter(project_pages::Column::ProjectId.eq(guard.project.id))
@@ -333,7 +333,7 @@ pub async fn list_pages(
         .active()
         .filter(pages::Column::Id.is_in(page_ids))
         .filter(pages::Column::ArchivedAt.is_null())
-        // Usuarios ven páginas públicas o propias
+        // Users see public or their own pages
         .filter(
             pages::Column::Access
                 .eq(ACCESS_PUBLIC)
@@ -344,7 +344,7 @@ pub async fn list_pages(
         .await
         .map_err(AppError::Database)?;
 
-    // Batched M2M para evitar N+1 en proyectos con muchas páginas.
+    // Batched M2M to avoid N+1 in projects with many pages.
     let ids: Vec<Uuid> = rows.iter().map(|p| p.id).collect();
     let (mut projects_by_page, mut labels_by_page) = fetch_pages_m2m(&state.db, &ids).await?;
 
@@ -372,8 +372,8 @@ pub async fn list_pages(
         ("project_id" = Uuid, Path, description = "Project ID"),
     ),
     responses(
-        (status = 201, description = "Página creada"),
-        (status = 400, description = "Error de validación"),
+        (status = 201, description = "Page created"),
+        (status = 400, description = "Validation error"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -384,29 +384,29 @@ pub async fn create_page(
 ) -> Result<(StatusCode, Json<PageResponse>), AppError> {
     require_role(guard.project_member.role, guard.workspace_member.role, ROLE_MEMBER)?;
 
-    // Validar `access` contra el choice set de Django
+    // Validate `access` against Django's choice set
     // `Page.access = PositiveSmallIntegerField(choices=((0, "Public"), (1, "Private")), default=0)`.
-    // Django rechazaría cualquier otro valor en el serializer; replicamos esa
-    // validación aquí para no guardar basura en DB.
+    // Django would reject any other value in the serializer; we replicate that
+    // validation here to avoid saving garbage in DB.
     let access = body.access.unwrap_or(ACCESS_PUBLIC);
     if access != ACCESS_PUBLIC && access != ACCESS_PRIVATE {
         return Err(AppError::BadRequest(
-            "access debe ser 0 (Public) o 1 (Private)".into(),
+            "access must be 0 (Public) or 1 (Private)".into(),
         ));
     }
 
-    // Django permite nombres vacíos (`TextField(blank=True)`), no rechazamos.
+    // Django allows empty names (`TextField(blank=True)`), we don't reject.
     let name = body.name.unwrap_or_default();
 
-    // Django usa `request.data.get("description_html", "<p></p>")` al crear.
+    // Django uses `request.data.get("description_html", "<p></p>")` on create.
     let raw_html = body.description_html.unwrap_or_else(|| "<p></p>".into());
     let description_html = content_validator::sanitize_description(&raw_html)
         .map_err(AppError::BadRequest)?;
 
-    // Django rellena created_at/updated_at vía `BaseModel.save()`
-    // (`auto_now_add=True` / `auto_now=True`). Las columnas en DB son NOT NULL;
-    // SeaORM no las auto-popula, hay que setearlas explícitamente. Se comparte
-    // el mismo instante para la página y su fila en project_pages.
+    // Django fills created_at/updated_at via `BaseModel.save()`
+    // (`auto_now_add=True` / `auto_now=True`). Columns in DB are NOT NULL;
+    // SeaORM does not auto-populate them, they must be explicitly set. The
+    // same instant is shared for the page and its project_pages row.
     let now: DateTime<FixedOffset> = Utc::now().into();
 
     let page = pages::ActiveModel {
@@ -424,8 +424,8 @@ pub async fn create_page(
         is_locked: Set(false),
         view_props: Set(serde_json::json!({})),
         logo_props: Set(serde_json::json!({})),
-        // NOT NULL sin default en la entidad generada — hay que setearlos
-        // explícitamente con los defaults de Django:
+        // NOT NULL without default in the generated entity — they must be
+        // explicitly set with Django defaults:
         // `is_global = BooleanField(default=False)`
         // `sort_order = FloatField(default=DEFAULT_SORT_ORDER)`
         is_global: Set(false),
@@ -440,7 +440,7 @@ pub async fn create_page(
     .await
     .map_err(AppError::Database)?;
 
-    // Asociar página al proyecto en project_pages
+    // Associate page with the project in project_pages
     project_pages::ActiveModel {
         id: Set(Uuid::new_v4()),
         page_id: Set(page.id),
@@ -456,9 +456,9 @@ pub async fn create_page(
     .await
     .map_err(AppError::Database)?;
 
-    // La página recién creada está asociada a exactamente un proyecto (el
-    // project_pages se acaba de insertar arriba) y no tiene labels todavía.
-    // Evitamos un round-trip a DB devolviendo los IDs conocidos inline.
+    // The newly created page is associated with exactly one project (the
+    // project_pages just inserted above) and has no labels yet.
+    // We avoid a DB round-trip by returning the known IDs inline.
     Ok((
         StatusCode::CREATED,
         Json(PageResponse::from_model(
@@ -481,8 +481,8 @@ pub async fn create_page(
         ("page_id" = Uuid, Path, description = "Page ID"),
     ),
     responses(
-        (status = 200, description = "Detalle de la página"),
-        (status = 404, description = "No encontrada"),
+        (status = 200, description = "Page detail"),
+        (status = 404, description = "Not found"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -495,7 +495,7 @@ pub async fn get_page(
 
     let page = find_project_page(&state.db, guard.project.id, page_id).await?;
 
-    // Verificar acceso: público o propietario
+    // Verify access: public or owner
     if page.access == ACCESS_PRIVATE && page.owned_by_id != guard.user.id {
         return Err(AppError::Forbidden);
     }
@@ -523,8 +523,8 @@ pub async fn get_page(
         ("page_id" = Uuid, Path, description = "Page ID"),
     ),
     responses(
-        (status = 200, description = "Página actualizada"),
-        (status = 403, description = "Solo el propietario puede editar"),
+        (status = 200, description = "Page updated"),
+        (status = 403, description = "Only the owner can edit"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -538,13 +538,13 @@ pub async fn update_page(
 
     let page = find_project_page(&state.db, guard.project.id, page_id).await?;
 
-    // Solo el propietario o un admin puede editar
+    // Only the owner or an admin can edit
     if page.owned_by_id != guard.user.id {
         return Err(AppError::Forbidden);
     }
 
     if page.is_locked {
-        return Err(AppError::BadRequest("La página está bloqueada".into()));
+        return Err(AppError::BadRequest("Page is locked".into()));
     }
 
     let mut am: pages::ActiveModel = page.into();
@@ -590,7 +590,7 @@ pub async fn update_page(
         ("project_id" = Uuid, Path, description = "Project ID"),
         ("page_id" = Uuid, Path, description = "Page ID"),
     ),
-    responses((status = 204, description = "Eliminada")),
+    responses((status = 204, description = "Deleted")),
     security(("TokenAuth" = []))
 )]
 pub async fn delete_page(
@@ -624,7 +624,7 @@ pub async fn delete_page(
         ("project_id" = Uuid, Path, description = "Project ID"),
         ("page_id" = Uuid, Path, description = "Page ID"),
     ),
-    responses((status = 200, description = "Página archivada")),
+    responses((status = 200, description = "Page archived")),
     security(("TokenAuth" = []))
 )]
 pub async fn archive_page(
@@ -665,7 +665,7 @@ pub async fn archive_page(
         ("project_id" = Uuid, Path, description = "Project ID"),
         ("page_id" = Uuid, Path, description = "Page ID"),
     ),
-    responses((status = 200, description = "Página desarchivada")),
+    responses((status = 200, description = "Page unarchived")),
     security(("TokenAuth" = []))
 )]
 pub async fn unarchive_page(
@@ -702,7 +702,7 @@ pub async fn unarchive_page(
         ("project_id" = Uuid, Path, description = "Project ID"),
         ("page_id" = Uuid, Path, description = "Page ID"),
     ),
-    responses((status = 200, description = "Página bloqueada")),
+    responses((status = 200, description = "Page locked")),
     security(("TokenAuth" = []))
 )]
 pub async fn lock_page(
@@ -743,7 +743,7 @@ pub async fn lock_page(
         ("project_id" = Uuid, Path, description = "Project ID"),
         ("page_id" = Uuid, Path, description = "Page ID"),
     ),
-    responses((status = 200, description = "Página desbloqueada")),
+    responses((status = 200, description = "Page unlocked")),
     security(("TokenAuth" = []))
 )]
 pub async fn unlock_page(
@@ -784,7 +784,7 @@ pub async fn unlock_page(
         ("project_id" = Uuid, Path, description = "Project ID"),
         ("page_id" = Uuid, Path, description = "Page ID"),
     ),
-    responses((status = 201, description = "Copia creada")),
+    responses((status = 201, description = "Copy created")),
     security(("TokenAuth" = []))
 )]
 pub async fn duplicate_page(
@@ -814,9 +814,9 @@ pub async fn duplicate_page(
         is_locked: Set(false),
         view_props: Set(source.view_props.clone()),
         logo_props: Set(source.logo_props.clone()),
-        // NOT NULL — conservar el valor original al duplicar (Django comparte
-        // la misma fila lógica al hacer .save() de un model nuevo con los
-        // atributos copiados). is_global se hereda; sort_order también.
+        // NOT NULL — preserve the original value when duplicating (Django shares
+        // the same logical row when doing .save() of a new model with the
+        // copied attributes). is_global is inherited; sort_order as well.
         is_global: Set(source.is_global),
         sort_order: Set(source.sort_order),
         created_by_id: Set(Some(guard.user.id)),
@@ -844,12 +844,12 @@ pub async fn duplicate_page(
     .await
     .map_err(AppError::Database)?;
 
-    // Usamos fetch_page_m2m en lugar de `vec![guard.project.id]` para que
-    // el response refleje lo realmente insertado si alguien arregla el TODO
-    // preexistente de esta función: Django duplica `project_pages` a todos
-    // los proyectos donde estaba la página origen (ver
-    // `apps/api/plane/app/views/page/base.py:594-611`), mientras que el
-    // Rust solo inserta una fila para el proyecto actual.
+    // We use fetch_page_m2m instead of `vec![guard.project.id]` so that
+    // the response reflects what was actually inserted if someone fixes the
+    // pre-existing TODO in this function: Django duplicates `project_pages` to all
+    // projects where the source page was (see
+    // `apps/api/plane/app/views/page/base.py:594-611`), while
+    // Rust only inserts a row for the current project.
     let (pids, lids) = fetch_page_m2m(&state.db, new_page.id).await?;
     Ok((
         StatusCode::CREATED,
@@ -868,7 +868,7 @@ pub async fn duplicate_page(
         ("project_id" = Uuid, Path, description = "Project ID"),
         ("page_id" = Uuid, Path, description = "Page ID"),
     ),
-    responses((status = 200, description = "Historial de versiones")),
+    responses((status = 200, description = "Version history")),
     security(("TokenAuth" = []))
 )]
 pub async fn list_page_versions(
@@ -915,8 +915,8 @@ pub async fn list_page_versions(
         ("pk" = Uuid, Path, description = "Version ID"),
     ),
     responses(
-        (status = 200, description = "Versión específica"),
-        (status = 404, description = "No encontrada"),
+        (status = 200, description = "Specific version"),
+        (status = 404, description = "Not found"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -947,16 +947,16 @@ pub async fn get_page_version(
 }
 // ── GET /pages/{page_id}/description/ ────────────────────────────────────────
 //
-// Mirror de `PagesDescriptionViewSet.retrieve` en
-// `apps/api/plane/app/views/page/base.py`. Sirve el documento Y.js binario
-// (`description_binary`) como `application/octet-stream` para que el editor
-// colaborativo lo cargue al abrir la página.
+// Mirror of `PagesDescriptionViewSet.retrieve` in
+// `apps/api/plane/app/views/page/base.py`. Serves the binary Y.js document
+// (`description_binary`) as `application/octet-stream` so that the
+// collaborative editor loads it when opening the page.
 //
-// Control de acceso: Django usa `Q(owned_by=user) | Q(access=0)`. En Rust
-// replicamos ese filtro con el mismo patrón que `get_page`: un 404/403 según
-// visibilidad — nunca revelamos que la página existe si el usuario no puede
-// verla. `find_project_page` ya garantiza que la fila pertenece al proyecto
-// y no está soft-deleted (`project_pages.deleted_at IS NULL`).
+// Access control: Django uses `Q(owned_by=user) | Q(access=0)`. In Rust
+// we replicate that filter with the same pattern as `get_page`: a 404/403 according to
+// visibility — we never reveal that the page exists if the user cannot
+// see it. `find_project_page` already guarantees that the row belongs to the project
+// and is not soft-deleted (`project_pages.deleted_at IS NULL`).
 
 #[utoipa::path(
     get,
@@ -969,8 +969,8 @@ pub async fn get_page_version(
     ),
     responses(
         (status = 200, description = "Binary Y.js document", content_type = "application/octet-stream"),
-        (status = 403, description = "Página privada de otro usuario"),
-        (status = 404, description = "No encontrada"),
+        (status = 403, description = "Private page of another user"),
+        (status = 404, description = "Not found"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -983,19 +983,19 @@ pub async fn get_page_description(
 
     let page = find_project_page(&state.db, guard.project.id, page_id).await?;
 
-    // Acceso: pública o propietario. Private de otro usuario ⇒ 403.
+    // Access: public or owner. Private of another user ⇒ 403.
     if page.access == ACCESS_PRIVATE && page.owned_by_id != guard.user.id {
         return Err(AppError::Forbidden);
     }
 
-    // Django envía `b""` cuando `description_binary` es NULL (stream_data yield
-    // b""), con status 200. Replicamos esa semántica devolviendo un body vacío
-    // en ese caso para que el editor sepa que debe inicializar un doc nuevo.
+    // Django sends `b""` when `description_binary` is NULL (stream_data yield
+    // b""), with status 200. We replicate that semantics returning an empty body
+    // in that case so the editor knows it must initialize a new doc.
     let bytes = page.description_binary.unwrap_or_default();
 
-    // Headers explícitos. Los arrays de `(HeaderName, &str)` implementan
-    // `IntoResponseParts` en Axum y se aplican antes del body, por lo que el
-    // Content-Type aquí gana frente al default de `Vec<u8>`.
+    // Explicit headers. Arrays of `(HeaderName, &str)` implement
+    // `IntoResponseParts` in Axum and are applied before the body, so the
+    // Content-Type here wins against the default of `Vec<u8>`.
     let headers = [
         (header::CONTENT_TYPE, "application/octet-stream"),
         (
@@ -1008,25 +1008,25 @@ pub async fn get_page_description(
 
 // ── PATCH /pages/{page_id}/description/ ──────────────────────────────────────
 //
-// Mirror de `PagesDescriptionViewSet.partial_update` en
-// `apps/api/plane/app/views/page/base.py:520`. Acepta cualquier combinación
-// de `description_binary` (base64), `description_html` (sanitizado) y
-// `description_json` (JSON). Los tres se guardan atómicamente en una misma
-// fila de `pages` con el timestamp de `updated_at` refrescado por SeaORM.
+// Mirror of `PagesDescriptionViewSet.partial_update` in
+// `apps/api/plane/app/views/page/base.py:520`. Accepts any combination
+// of `description_binary` (base64), `description_html` (sanitized) and
+// `description_json` (JSON). All three are saved atomically in the same
+// `pages` row with the `updated_at` timestamp refreshed by SeaORM.
 //
-// Validaciones previas al write (código de error y mensaje idénticos a Django
-// para que el frontend compartido siga funcionando):
+// Pre-write validations (error code and message identical to Django
+// so the shared frontend continues to work):
 // * `page.is_locked`   ⇒ 400 {"error_code": 4701, "error_message": "PAGE_LOCKED"}
 // * `page.archived_at` ⇒ 400 {"error_code": 4702, "error_message": "PAGE_ARCHIVED"}
 //
-// NOTA: Django dispara dos tareas Celery en background tras guardar:
-//   * `page_transaction(new_html, old_html, page_id)` — track de cambios.
-//   * `track_page_version(page_id, existing_instance, user_id)` — snapshot en
+// NOTE: Django triggers two background Celery tasks after saving:
+//   * `page_transaction(new_html, old_html, page_id)` — change tracking.
+//   * `track_page_version(page_id, existing_instance, user_id)` — snapshot in
 //     `page_versions`.
-// El API Rust aún no tiene el job system para estas tareas (el worker de jobs
-// solo cubre notificaciones hoy). Las dejamos como TODO visibles para no
-// perder trazabilidad; el editor sigue funcionando sin versionado histórico
-// en el Rust path — cuando haya cliente, el Django path sigue disponible.
+// The Rust API does not yet have the job system for these tasks (the job worker
+// only covers notifications today). We leave them as visible TODOs to not
+// lose traceability; the editor still works without historical versioning
+// in the Rust path — when there is a client, the Django path is still available.
 
 #[utoipa::path(
     patch,
@@ -1039,9 +1039,9 @@ pub async fn get_page_description(
     ),
     responses(
         (status = 200, description = "Updated successfully"),
-        (status = 400, description = "Página bloqueada, archivada o contenido inválido"),
-        (status = 403, description = "Página privada de otro usuario"),
-        (status = 404, description = "No encontrada"),
+        (status = 400, description = "Page locked, archived or invalid content"),
+        (status = 403, description = "Private page of another user"),
+        (status = 404, description = "Not found"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -1055,15 +1055,15 @@ pub async fn update_page_description(
 
     let page = find_project_page(&state.db, guard.project.id, page_id).await?;
 
-    // Mismo filtro de acceso que el GET — Django usa `Q(owned_by=user) | Q(access=0)`.
+    // Same access filter as GET — Django uses `Q(owned_by=user) | Q(access=0)`.
     if page.access == ACCESS_PRIVATE && page.owned_by_id != guard.user.id {
         return Err(AppError::Forbidden);
     }
 
-    // Validaciones de estado de la página. Mantener el mismo shape JSON que
-    // Django (`error_code` int + `error_message` str) porque el cliente
-    // compartido hace `response.data.error_code === 4701` para toast-specific.
-    // Códigos definidos en `apps/api/plane/utils/error_codes.py:12-13`.
+    // Page status validations. Keep the same JSON shape as
+    // Django (`error_code` int + `error_message` str) because the shared
+    // client does `response.data.error_code === 4701` for toast-specifics.
+    // Codes defined in `apps/api/plane/utils/error_codes.py:12-13`.
     if page.is_locked {
         return Err(AppError::Validation(serde_json::json!({
             "error_code": 4701,
@@ -1077,15 +1077,15 @@ pub async fn update_page_description(
         })));
     }
 
-    // Sanitizar/validar contenido ANTES de abrir la mutación. Cualquier
-    // fallo de validación devuelve 400 sin tocar la DB. Los mensajes espejean
-    // los de `PageBinaryUpdateSerializer` en Django para que el frontend
-    // pueda mostrarlos sin traducciones adicionales.
+    // Sanitize/validate content BEFORE opening the mutation. Any
+    // validation failure returns 400 without touching the DB. Messages mirror
+    // those of `PageBinaryUpdateSerializer` in Django so the frontend
+    // can show them without additional translations.
     let decoded_binary: Option<Vec<u8>> = if let Some(ref b64) = body.description_binary {
         if b64.is_empty() {
-            // DRF trata `""` como "no cambiar" pero el serializer usa
-            // `allow_blank=True` y guarda el binario decodificado tal cual.
-            // Un base64 vacío decodifica a `vec![]`, que el validador acepta.
+            // DRF treats `""` as "do not change" but the serializer uses
+            // `allow_blank=True` and saves the decoded binary as is.
+            // An empty base64 decodes to `vec![]`, which the validator accepts.
             Some(Vec::new())
         } else {
             let decoded = BASE64_STANDARD.decode(b64).map_err(|_| {
@@ -1109,16 +1109,16 @@ pub async fn update_page_description(
         None => None,
     };
 
-    // Aplicar solo los campos presentes. `updated_at` lo refresca SeaORM al
-    // llamar `update()` si el modelo tiene `auto_now`; en este proyecto no es
-    // así, así que lo setamos manualmente igual que en `update_page`.
+    // Apply only the fields present. `updated_at` is refreshed by SeaORM when
+    // calling `update()` if the model has `auto_now`; in this project it is
+    // not so, so we set it manually as in `update_page`.
     let now: DateTime<FixedOffset> = Utc::now().into();
     let mut am: pages::ActiveModel = page.into();
 
     if let Some(bytes) = decoded_binary {
-        // Option<Vec<u8>> en la entidad: guardamos `Some(bytes)`; un buffer
-        // vacío se guarda como `Some(vec![])` y no como `None` (Django también
-        // persiste b"" sin convertirlo a NULL).
+        // Option<Vec<u8>> in the entity: we save `Some(bytes)`; an empty
+        // buffer is saved as `Some(vec![])` and not as `None` (Django also
+        // persists b"" without converting it to NULL).
         am.description_binary = Set(Some(bytes));
     }
     if let Some(html) = sanitized_html {
@@ -1132,10 +1132,10 @@ pub async fn update_page_description(
 
     am.update(&state.db).await.map_err(AppError::Database)?;
 
-    // TODO(api_rust): encolar `page_transaction` y `track_page_version` cuando
-    // el job worker soporte tareas de page versioning. Por ahora el Django
-    // path sigue disponible como fallback para clientes que necesiten el
-    // historial. Ver `apps/api/plane/app/views/page/base.py:556-571`.
+    // TODO(api_rust): enqueue `page_transaction` and `track_page_version` when
+    // the job worker supports page versioning tasks. For now the Django
+    // path remains available as a fallback for clients that need the
+    // history. See `apps/api/plane/app/views/page/base.py:556-571`.
 
     Ok(Json(serde_json::json!({ "message": "Updated successfully" })))
 }
@@ -1181,12 +1181,12 @@ pub async fn add_page_favorite(
         return Err(AppError::Forbidden);
     }
 
-    // Validar que la página existe y pertenece al proyecto.
-    // Django (apps/api/plane/app/views/page/base.py:476-483) crea el favorito
-    // sin validar la existencia, lo que produce filas huérfanas en
-    // user_favorites apuntando a UUIDs ghost (UserFavorite no tiene FK a
-    // pages porque entity_identifier es polimórfico). Refuerzo deliberado
-    // para preservar integridad referencial. Mismo helper que el resto de
+    // Validate that the page exists and belongs to the project.
+    // Django (apps/api/plane/app/views/page/base.py:476-483) creates the favorite
+    // without validating existence, which produces orphan rows in
+    // user_favorites pointing to ghost UUIDs (UserFavorite has no FK to
+    // pages because entity_identifier is polymorphic). Deliberate reinforcement
+    // to preserve referential integrity. Same helper as the rest of
     // pages.rs (find_project_page).
     find_project_page(&state.db, project_id, page_id).await?;
 
@@ -1223,11 +1223,11 @@ pub async fn remove_page_favorite(
     guard: ProjectMemberGuard,
     Path((_slug, _project_id, page_id)): Path<(String, Uuid, Uuid)>,
 ) -> Result<StatusCode, AppError> {
-    // Paridad Django (apps/api/plane/app/views/page/base.py:486-495):
-    //   `UserFavorite.objects.get(...)` lanza DoesNotExist si no hay fila
-    //   → DRF lo traduce a 404. El handler antes usaba delete_many() que
-    //   silenciosamente devolvía 204 con 0 filas afectadas, divergiendo de
-    //   Django y enmascarando bugs del cliente.
+    // Django parity (apps/api/plane/app/views/page/base.py:486-495):
+    //   `UserFavorite.objects.get(...)` throws DoesNotExist if no row exists
+    //   → DRF translates it to 404. The handler previously used delete_many() which
+    //   silently returned 204 with 0 rows affected, diverging from
+    //   Django and masking client bugs.
     let fav = user_favorites::Entity::find().active()
         .filter(user_favorites::Column::WorkspaceId.eq(guard.workspace.id))
         .filter(user_favorites::Column::UserId.eq(guard.user.id))
@@ -1284,7 +1284,7 @@ pub async fn pages_summary(
     })))
 }
 // ── GET /workspaces/{slug}/projects/{project_id}/favorite-pages/ ─────────────
-/// Lista las páginas marcadas como favoritas por el usuario en el proyecto.
+/// Lists the pages marked as favorites by the user in the project.
 #[utoipa::path(
     get,
     path = "/api/workspaces/{slug}/projects/{project_id}/favorite-pages/",
@@ -1293,7 +1293,7 @@ pub async fn pages_summary(
         ("slug" = String, Path, description = "Workspace slug"),
         ("project_id" = Uuid, Path, description = "Project ID"),
     ),
-    responses((status = 200, description = "Lista de páginas favoritas")),
+    responses((status = 200, description = "List of favorite pages")),
     security(("TokenAuth" = []))
 )]
 pub async fn list_favorite_pages(
@@ -1304,7 +1304,7 @@ pub async fn list_favorite_pages(
 
     let db = &state.db;
 
-    // Cargar page_ids favoritos del usuario en este proyecto
+    // Load favorite page_ids of the user in this project
     let fav_page_ids: Vec<Uuid> = user_favorites::Entity::find()
         .filter(user_favorites::Column::UserId.eq(guard.user.id))
         .filter(user_favorites::Column::ProjectId.eq(guard.project.id))
@@ -1343,7 +1343,7 @@ pub async fn list_favorite_pages(
 }
 
 // ── GET /workspaces/{slug}/projects/{project_id}/archived-pages/ ─────────────
-/// Lista las páginas archivadas del proyecto.
+/// Lists the archived pages of the project.
 #[utoipa::path(
     get,
     path = "/api/workspaces/{slug}/projects/{project_id}/archived-pages/",
@@ -1352,7 +1352,7 @@ pub async fn list_favorite_pages(
         ("slug" = String, Path, description = "Workspace slug"),
         ("project_id" = Uuid, Path, description = "Project ID"),
     ),
-    responses((status = 200, description = "Lista de páginas archivadas")),
+    responses((status = 200, description = "List of archived pages")),
     security(("TokenAuth" = []))
 )]
 pub async fn list_archived_pages(
@@ -1404,7 +1404,7 @@ pub async fn list_archived_pages(
 }
 
 // ── POST /workspaces/{slug}/projects/{project_id}/pages/{page_id}/move/ ──────
-/// Mueve una página a otro proyecto del mismo workspace.
+/// Moves a page to another project in the same workspace.
 #[utoipa::path(
     post,
     path = "/api/workspaces/{slug}/projects/{project_id}/pages/{page_id}/move/",
@@ -1414,7 +1414,7 @@ pub async fn list_archived_pages(
         ("project_id" = Uuid, Path, description = "Project ID"),
         ("page_id" = Uuid, Path, description = "Page ID"),
     ),
-    responses((status = 200, description = "Página movida")),
+    responses((status = 200, description = "Page moved")),
     security(("TokenAuth" = []))
 )]
 pub async fn move_page(
@@ -1431,9 +1431,9 @@ pub async fn move_page(
         .get("new_project_id")
         .and_then(|v| v.as_str())
         .and_then(|s| s.parse().ok())
-        .ok_or_else(|| AppError::BadRequest("new_project_id requerido".into()))?;
+        .ok_or_else(|| AppError::BadRequest("new_project_id required".into()))?;
 
-    // Verificar que el usuario es miembro del proyecto destino
+    // Verify that the user is a member of the destination project
     use crate::entities::project_members;
     let _dest_member = project_members::Entity::find()
         .filter(project_members::Column::ProjectId.eq(new_project_id))
@@ -1444,7 +1444,7 @@ pub async fn move_page(
         .map_err(AppError::Database)?
         .ok_or(AppError::Forbidden)?;
 
-    // Verificar que la página existe y pertenece al proyecto origen
+    // Verify that the page exists and belongs to the source project
     let pp = project_pages::Entity::find()
         .active()
         .filter(project_pages::Column::ProjectId.eq(guard.project.id))
@@ -1454,7 +1454,7 @@ pub async fn move_page(
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
-    // Solo el owner puede mover
+    // Only the owner can move
     let page = pages::Entity::find_by_id(page_id)
         .active()
         .one(db)
@@ -1466,7 +1466,7 @@ pub async fn move_page(
         return Err(AppError::Forbidden);
     }
 
-    // Actualizar la relación project_pages al nuevo proyecto
+    // Update the project_pages relation to the new project
     let mut am: project_pages::ActiveModel = pp.into();
     am.project_id = sea_orm::Set(new_project_id);
     am.update(db).await.map_err(AppError::Database)?;

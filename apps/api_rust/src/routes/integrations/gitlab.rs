@@ -1,7 +1,7 @@
 // src/routes/integrations/gitlab.rs
-//! Endpoints específicos de GitLab.
+//! GitLab specific endpoints.
 //!
-//! Endpoints implementados:
+//! Implemented endpoints:
 //!   GET /api/workspaces/{slug}/workspace-integrations/{wi_id}/gitlab-repositories/
 
 use anyhow::Context as _;
@@ -31,13 +31,13 @@ use super::dtos::ExternalReposQuery;
     params(
         ("slug" = String, Path, description = "Workspace slug"),
         ("wi_id" = Uuid, Path, description = "WorkspaceIntegration ID"),
-        ("page" = Option<u32>, Query, description = "Página (default 1)"),
-        ("per_page" = Option<u32>, Query, description = "Proyectos por página (default 30)"),
-        ("token" = Option<String>, Query, description = "GitLab PAT (opcional si hay token en env)"),
+        ("page" = Option<u32>, Query, description = "Page (default 1)"),
+        ("per_page" = Option<u32>, Query, description = "Projects per page (default 30)"),
+        ("token" = Option<String>, Query, description = "GitLab PAT (optional if token in env)"),
     ),
     responses(
-        (status = 200, description = "Lista de proyectos GitLab"),
-        (status = 400, description = "Error de configuración o token faltante"),
+        (status = 200, description = "GitLab projects list"),
+        (status = 400, description = "Configuration error or missing token"),
     ),
     security(("TokenAuth" = []))
 )]

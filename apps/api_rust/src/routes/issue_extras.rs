@@ -1,14 +1,14 @@
 // src/routes/issue_extras.rs
-//! Sub-endpoints de issues: comments, reactions, relations, links, subscribers, activities.
+//! Issue sub-endpoints: comments, reactions, relations, links, subscribers, activities.
 //!
-//! Equivalente a `plane/app/views/issue/` (múltiples archivos) en Django.
+//! Equivalent to `plane/app/views/issue/` (multiple files) in Django.
 //!
-//! Rutas implementadas:
+//! Implemented routes:
 //!   GET/POST   issues/{id}/comments/
 //!   GET/PATCH/DELETE issues/{id}/comments/{pk}/
-//!   GET/POST   issues/{id}/reactions/        (reaction code en body)
+//!   GET/POST   issues/{id}/reactions/        (reaction code in body)
 //!   DELETE     issues/{id}/reactions/{code}/
-//!   GET/POST   comments/{id}/reactions/      (reaction code en body)
+//!   GET/POST   comments/{id}/reactions/      (reaction code in body)
 //!   DELETE     comments/{id}/reactions/{code}/
 //!   GET/POST   issues/{id}/issue-links/
 //!   PATCH/DELETE issues/{id}/issue-links/{pk}/
@@ -94,7 +94,7 @@ pub struct ReactionResponse {
     pub workspace_id: Uuid,
     pub created_at: DateTime<FixedOffset>,
     pub updated_at: DateTime<FixedOffset>,
-    /// Mirror de `IssueReactionSerializer.actor_detail` (UserLiteSerializer).
+    /// Mirror of `IssueReactionSerializer.actor_detail` (UserLiteSerializer).
     /// `apps/api/plane/app/serializers/issue.py:648-654`.
     pub actor_detail: UserLiteDto,
 }
@@ -109,17 +109,17 @@ pub struct CommentReactionResponse {
     pub workspace_id: Uuid,
     pub created_at: DateTime<FixedOffset>,
     pub updated_at: DateTime<FixedOffset>,
-    /// Mirror de `CommentReactionSerializer.display_name` + actor lite.
+    /// Mirror of `CommentReactionSerializer.display_name` + actor lite.
     /// `apps/api/plane/app/serializers/issue.py:665-686`.
     pub actor_detail: UserLiteDto,
 }
 
-/// Body de POST `/issues/{id}/reactions/` y `/comments/{id}/reactions/`.
+/// Body of POST `/issues/{id}/reactions/` and `/comments/{id}/reactions/`.
 ///
-/// Django recibe `{"reaction": "<code>"}` vía `IssueReactionSerializer` /
+/// Django receives `{"reaction": "<code>"}` via `IssueReactionSerializer` /
 /// `CommentReactionSerializer` (`apps/api/plane/app/views/issue/reaction.py:47`
-/// y `apps/api/plane/app/views/issue/comment.py:186`). El `reaction_code` NO va
-/// en la URL para create — solo para destroy.
+/// and `apps/api/plane/app/views/issue/comment.py:186`). `reaction_code` is NOT
+/// in URL for create — only for destroy.
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct CreateReactionRequest {
     pub reaction: String,
@@ -165,42 +165,41 @@ pub struct IssueRelationResponse {
 
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct CreateRelationRequest {
-    /// Tipo de relación. Django no valida estrictamente el valor — lo pasa
-    /// por `get_actual_relation` (apps/api/plane/utils/issue_relation_mapper.py)
-    /// que mapea tipos "inversos" al canónico almacenado en BD. La columna
-    /// es `varchar(20)` (`migration/src/sql/baseline.sql:1420`) sin enum
+    /// Relation type. Django does not strictly validate the value — it passes it
+    /// through `get_actual_relation` (apps/api/plane/utils/issue_relation_mapper.py)
+    /// which maps "inverse" types to the canonical ones stored in DB. The column
+    /// is `varchar(20)` (`migration/src/sql/baseline.sql:1420`) without enum
     /// constraint.
     pub relation_type: String,
 
-    /// Lista de UUIDs de issues a relacionar. Shape único, alineado con:
+    /// List of issue UUIDs to relate. Unique shape, aligned with:
     ///   - Django: `apps/api/plane/app/views/issue/relation.py:217`
     ///     (`request.data.get("issues", [])`).
-    ///   - Frontend canónico: `apps/web/core/services/issue/issue_relation.service.ts:33`
+    ///   - Canonical frontend: `apps/web/core/services/issue/issue_relation.service.ts:33`
     ///     (`data: { relation_type, issues: string[] }`).
     ///
-    /// Nota histórica: existió un `related_list: Vec<Uuid>` en un servicio
-    /// frontend obsoleto (`issue.service.ts:177`) que nadie consumía. Se
-    /// estandarizó en este shape para evitar parsers polimórficos en el
-    /// handler.
+    /// Historical note: an obsolete `related_list: Vec<Uuid>` existed in a
+    /// frontend service (`issue.service.ts:177`) that no one consumed.
+    /// It was standardized to this shape to avoid polymorphic parsers in the handler.
     pub issues: Vec<Uuid>,
 }
 
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct RemoveRelationRequest {
-    /// UUID del issue contraparte de la relación a eliminar.
+    /// UUID of the counterpart issue in the relation to be removed.
     ///
-    /// Paridad Django (`apps/api/plane/app/views/issue/relation.py:263`):
-    /// `related_issue = request.data.get("related_issue", None)`. Antes el
-    /// campo se llamaba `related_issue_id`, lo que provocaba un 422
-    /// (`missing field 'related_issue_id'`) cuando el frontend enviaba el
-    /// payload con paridad Django.
+    /// Django parity (`apps/api/plane/app/views/issue/relation.py:263`):
+    /// `related_issue = request.data.get("related_issue", None)`. Previously
+    /// the field was called `related_issue_id`, which caused a 422
+    /// (`missing field 'related_issue_id'`) when the frontend sent the
+    /// payload with Django parity.
     pub related_issue: Uuid,
 
-    /// Django no usa `relation_type` en `remove_relation` — la relación se
-    /// localiza únicamente por el par `(issue_id, related_issue)`. Lo
-    /// aceptamos opcional por compatibilidad con clientes que lo envíen,
-    /// pero NO se usa para filtrar la query (mantendría paridad estricta
-    /// con `apps/api/plane/app/views/issue/relation.py:265-269`).
+    /// Django does not use `relation_type` in `remove_relation` — the relation
+    /// is located solely by the `(issue_id, related_issue)` pair. We accept it
+    /// as optional for compatibility with clients that send it, but it is NOT
+    /// used to filter the query (maintaining strict parity with
+    /// `apps/api/plane/app/views/issue/relation.py:265-269`).
     #[serde(default)]
     pub relation_type: Option<String>,
 }
@@ -439,8 +438,8 @@ pub async fn delete_comment(
 
 /// GET /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/reactions/
 ///
-/// Mirror de `IssueReactionViewSet.list` (`apps/api/plane/app/views/issue/reaction.py:25`).
-/// Orden: `-created_at` (Django `Meta.ordering`).
+/// Mirror of `IssueReactionViewSet.list` (`apps/api/plane/app/views/issue/reaction.py:25`).
+/// Order: `-created_at` (Django `Meta.ordering`).
 #[utoipa::path(
     get, path = "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/reactions/",
     tag = "Issues", security(("TokenAuth" = [])),
@@ -460,8 +459,8 @@ pub async fn list_issue_reactions(
         .await
         .map_err(AppError::Database)?;
 
-    // Batch-fetch distinct actors (evita N+1). Django usa ORM joins implícitos;
-    // aquí hacemos una sola query agrupada por `actor_id`.
+    // Batch-fetch distinct actors (avoids N+1). Django uses implicit ORM joins;
+    // here we do a single query grouped by `actor_id`.
     let actor_ids: Vec<Uuid> = reactions
         .iter()
         .map(|r| r.actor_id)
@@ -495,9 +494,9 @@ pub async fn list_issue_reactions(
                 workspace_id: r.workspace_id,
                 created_at: r.created_at,
                 updated_at: r.updated_at,
-                // `is_admin=false` → mirror de `UserLiteSerializer` (sin email /
-                // last_login_medium). Django usa la variante lite en el nested
-                // `actor_detail` de `IssueReactionSerializer`.
+                // `is_admin=false` → mirror of `UserLiteSerializer` (no email /
+                // last_login_medium). Django uses lite variant in nested
+                // `actor_detail` of `IssueReactionSerializer`.
                 actor_detail: user_to_lite(actor, false),
             })
         })
@@ -508,11 +507,11 @@ pub async fn list_issue_reactions(
 
 /// POST /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/reactions/
 ///
-/// Mirror de `IssueReactionViewSet.create` (`apps/api/plane/app/views/issue/reaction.py:45-62`).
-/// El `reaction` code viaja en el body JSON (`{"reaction": "👍"}`), NO en la URL.
-/// Idempotente: si ya existe una reacción activa del mismo actor con el mismo
-/// code, la devuelve con 201 en vez de disparar IntegrityError (mejora de UX
-/// sobre Django — `unique_together = ["issue", "actor", "reaction", "deleted_at"]`).
+/// Mirror of `IssueReactionViewSet.create` (`apps/api/plane/app/views/issue/reaction.py:45-62`).
+/// `reaction` code travels in JSON body (`{"reaction": "👍"}`), NOT in URL.
+/// Idempotent: if an active reaction from same actor with same code exists,
+/// returns it with 201 instead of firing IntegrityError (UX improvement
+/// over Django — `unique_together = ["issue", "actor", "reaction", "deleted_at"]`).
 #[utoipa::path(
     post, path = "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/reactions/",
     tag = "Issues", security(("TokenAuth" = [])),
@@ -532,7 +531,7 @@ pub async fn add_issue_reaction(
         return Err(AppError::BadRequest("reaction is required".into()));
     }
 
-    // Idempotencia — evita IntegrityError del unique constraint de Django.
+    // Idempotency — avoids IntegrityError from Django unique constraint.
     let existing = issue_reactions::Entity::find()
         .active()
         .filter(issue_reactions::Column::IssueId.eq(issue_id))
@@ -587,7 +586,7 @@ pub async fn add_issue_reaction(
 
 /// DELETE /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/reactions/{reaction_code}/
 ///
-/// Mirror de `IssueReactionViewSet.destroy`
+/// Mirror of `IssueReactionViewSet.destroy`
 /// (`apps/api/plane/app/views/issue/reaction.py:64-85`). Soft delete.
 #[utoipa::path(
     delete, path = "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/reactions/{reaction_code}/",
@@ -620,8 +619,8 @@ pub async fn remove_issue_reaction(
 
 /// GET /workspaces/{slug}/projects/{project_id}/comments/{comment_id}/reactions/
 ///
-/// Mirror de `CommentReactionViewSet.list` (`apps/api/plane/app/views/issue/comment.py:163`).
-/// Orden: `-created_at` (Django `Meta.ordering` de `CommentReaction`).
+/// Mirror of `CommentReactionViewSet.list` (`apps/api/plane/app/views/issue/comment.py:163`).
+/// Order: `-created_at` (Django `Meta.ordering` for `CommentReaction`).
 #[utoipa::path(
     get, path = "/workspaces/{slug}/projects/{project_id}/comments/{comment_id}/reactions/",
     tag = "Issues", security(("TokenAuth" = [])),
@@ -684,9 +683,9 @@ pub async fn list_comment_reactions(
 
 /// POST /workspaces/{slug}/projects/{project_id}/comments/{comment_id}/reactions/
 ///
-/// Mirror de `CommentReactionViewSet.create`
-/// (`apps/api/plane/app/views/issue/comment.py:183-210`). El `reaction` code
-/// viaja en el body JSON, no en la URL. Idempotente.
+/// Mirror of `CommentReactionViewSet.create`
+/// (`apps/api/plane/app/views/issue/comment.py:183-210`). `reaction` code
+/// travels in JSON body, not in URL. Idempotent.
 #[utoipa::path(
     post, path = "/workspaces/{slug}/projects/{project_id}/comments/{comment_id}/reactions/",
     tag = "Issues", security(("TokenAuth" = [])),
@@ -760,7 +759,7 @@ pub async fn add_comment_reaction(
 
 /// DELETE /workspaces/{slug}/projects/{project_id}/comments/{comment_id}/reactions/{reaction_code}/
 ///
-/// Mirror de `CommentReactionViewSet.destroy`
+/// Mirror of `CommentReactionViewSet.destroy`
 /// (`apps/api/plane/app/views/issue/comment.py:212-240`). Soft delete.
 #[utoipa::path(
     delete, path = "/workspaces/{slug}/projects/{project_id}/comments/{comment_id}/reactions/{reaction_code}/",
@@ -791,9 +790,9 @@ pub async fn remove_comment_reaction(
 
 // ── Issue Links ───────────────────────────────────────────────────────────────
 
-// `normalize_and_validate_url` se movió a `crate::utils::url` (paridad con
-// Django) para reutilizarse desde issue-links, module-links y otros endpoints
-// con shape similar. Re-export local para no romper call-sites internos.
+// `normalize_and_validate_url` moved to `crate::utils::url` (Django parity)
+// for reuse by issue-links, module-links and other similar endpoints.
+// Local re-export not to break internal call-sites.
 use crate::utils::url::normalize_and_validate_url;
 
 
@@ -844,15 +843,15 @@ pub async fn create_issue_link(
         return Err(AppError::BadRequest("url is required".into()));
     }
 
-    // Paridad Django (apps/api/plane/app/serializers/issue.py:565-579):
-    //   1. to_internal_value: si la URL no empieza por http(s)://, antepone
-    //      "http://" antes de validar.
-    //   2. validate_url: usa Django URLValidator (RFC 3986 con host válido y
-    //      TLD o IP). "not-a-url" → "http://not-a-url" → rechazado por falta
-    //      de TLD.
-    // Sin esta validación el handler aceptaba cualquier string como URL
-    // (ej. "not-a-url" devolvía 201) — divergencia con Django y con la
-    // expectativa del frontend que confía en que `url` sea fetcheable.
+    // Django parity (apps/api/plane/app/serializers/issue.py:565-579):
+    //   1. to_internal_value: if URL doesn't start with http(s)://, prepends
+    //      "http://" before validation.
+    //   2. validate_url: uses Django URLValidator (RFC 3986 with valid host and
+    //      TLD or IP). "not-a-url" → "http://not-a-url" → rejected due to
+    //      missing TLD.
+    // Without this validation the handler accepted any string as URL
+    // (e.g. "not-a-url" returned 201) — divergence from Django and from
+    // frontend expectation that relies on `url` being fetchable.
     let url = normalize_and_validate_url(body.url.trim())?;
 
     let now: DateTime<FixedOffset> = Utc::now().into();
@@ -988,21 +987,19 @@ pub async fn create_issue_relation(
     require_role(guard.project_member.role, guard.workspace_member.role, ROLE_MEMBER)?;
 
     if body.issues.is_empty() {
-        return Err(AppError::BadRequest("issues no puede estar vacío".into()));
+        return Err(AppError::BadRequest("issues cannot be empty".into()));
     }
 
-    // Paridad Django (`apps/api/plane/utils/issue_relation_mapper.py:19-31`,
+    // Django parity (`apps/api/plane/utils/issue_relation_mapper.py:19-31`,
     // `apps/api/plane/app/views/issue/relation.py:220-237`):
     //
-    // `get_actual_relation` mapea los tipos "inversos" al canónico almacenado
-    // en BD, y la creación invierte la orientación de la relación cuando el
-    // tipo es uno de los inversos. La idea: una relación A→B "blocking"
-    // se almacena como B→A "blocked_by", de modo que toda la BD habla en
-    // términos canónicos y los queries simétricos del frontend son simples.
+    // `get_actual_relation` maps "inverse" types to the canonical ones stored
+    // in DB, and creation inverts relation orientation when the type is inverse.
+    // Idea: A→B "blocking" relation is stored as B→A "blocked_by", so DB uses
+    // canonical terms and frontend symmetric queries are simple.
     //
-    // Sin este mapping, la BD acumula tipos duplicados/inconsistentes
-    // ("blocking" y "blocked_by" coexistiendo) y los reads del frontend
-    // se rompen.
+    // Without this mapping, DB accumulates duplicate/inconsistent types
+    // ("blocking" and "blocked_by" coexisting) and frontend reads break.
     let is_inverse = matches!(
         body.relation_type.as_str(),
         "blocking" | "start_after" | "finish_after" | "implements"
@@ -1012,8 +1009,8 @@ pub async fn create_issue_relation(
         "start_after" => "start_before".into(),
         "finish_after" => "finish_before".into(),
         "implements" => "implemented_by".into(),
-        // Pass-through. Truncamos a 20 chars (límite de columna en BD) para
-        // evitar 500 desde sea-orm si llega un valor absurdamente largo.
+        // Pass-through. Truncate to 20 chars (DB column limit) to
+        // avoid 500 from sea-orm if absurdly long value arrives.
         other => other.chars().take(20).collect(),
     };
 
@@ -1022,21 +1019,22 @@ pub async fn create_issue_relation(
     let project_id = guard.project.id;
     let user_id = guard.user.id;
 
-    // Bulk-create con paridad `IssueRelation.objects.bulk_create([...],
-    // ignore_conflicts=True)`. Sea-ORM no expone `ignore_conflicts` directo;
-    // usamos `on_conflict().do_nothing()` vía sea-query para el mismo efecto:
-    // si ya existe la relación (por unique constraint), no falla.
+    // Bulk-create with `IssueRelation.objects.bulk_create([...],
+    // ignore_conflicts=True)` parity. Sea-ORM doesn't expose
+    // `ignore_conflicts` directly; we use `on_conflict().do_nothing()` via
+    // sea-query for same effect: if relation already exists (unique constraint),
+    // it doesn't fail.
     use sea_orm::sea_query::OnConflict;
 
     let models: Vec<issue_relations::ActiveModel> = body
         .issues
         .iter()
         .map(|other_id| {
-            // Inversión de orientación cuando el tipo es inverso:
-            //   - "blocking":     A→B(blocking) se guarda como B→A(blocked_by)
-            //   - "start_after":  A→B(start_after) se guarda como B→A(start_before)
+            // Orientation inversion when type is inverse:
+            //   - "blocking":     A→B(blocking) is saved as B→A(blocked_by)
+            //   - "start_after":  A→B(start_after) is saved as B→A(start_before)
             //   - etc.
-            // El `issue_id` del path es A; los `body.issues` son los B.
+            // `issue_id` from path is A; `body.issues` are B.
             let (src, dst) = if is_inverse {
                 (*other_id, issue_id)
             } else {
@@ -1058,20 +1056,20 @@ pub async fn create_issue_relation(
         })
         .collect();
 
-    // Insert con tolerancia a duplicados — paridad `ignore_conflicts=True`.
-    // La unique constraint en BD es `(issue_id, related_issue_id, deleted_at)`
-    // (`migration/src/sql/baseline.sql:3504`), NO incluye `relation_type`.
+    // Insert with duplicate tolerance — `ignore_conflicts=True` parity.
+    // DB unique constraint is `(issue_id, related_issue_id, deleted_at)`
+    // (`migration/src/sql/baseline.sql:3504`), does NOT include `relation_type`.
     //
-    // Decisión de diseño de Plane: un par (A, B) admite una sola relación
-    // viva (deleted_at IS NULL) sin importar el tipo. Si el cliente intenta
-    // crear A→B "blocked_by" cuando ya existe A→B "duplicate", el segundo
-    // INSERT colisiona y se ignora — paridad con
+    // Plane design decision: an (A, B) pair allows only one live relation
+    // (deleted_at IS NULL) regardless of type. If client tries to create
+    // A→B "blocked_by" when A→B "duplicate" already exists, the second
+    // INSERT collides and is ignored — parity with
     // `IssueRelation.objects.bulk_create([...], ignore_conflicts=True)`.
     //
-    // Patrón sea-orm: `.on_conflict(...).do_nothing()` requiere el
-    // `.do_nothing()` final para devolver `TryInsertResult` y manejar el
-    // caso "0 rows inserted" sin propagar error (ver
-    // `src/routes/projects.rs:1936-1947` para precedente en este codebase).
+    // sea-orm pattern: `.on_conflict(...).do_nothing()` requires final
+    // `.do_nothing()` to return `TryInsertResult` and handle "0 rows inserted"
+    // case without error propagation (see `src/routes/projects.rs:1936-1947`
+    // for precedent in this codebase).
     issue_relations::Entity::insert_many(models)
         .on_conflict(
             OnConflict::columns([
@@ -1087,10 +1085,9 @@ pub async fn create_issue_relation(
         .await
         .map_err(AppError::Database)?;
 
-    // Releemos las relaciones recién creadas/existentes para devolver el
-    // shape esperado por el cliente. No usamos los `models` locales porque
-    // `on_conflict do_nothing` no garantiza que se hayan persistido (puede
-    // haber colisión); la lectura es la fuente de verdad.
+    // Re-read newly created/existing relations to return expected shape.
+    // We don't use local `models` because `on_conflict do_nothing` doesn't
+    // guarantee persistence (collision possible); read is source of truth.
     let created_pairs: Vec<(Uuid, Uuid)> = body
         .issues
         .iter()
@@ -1105,10 +1102,10 @@ pub async fn create_issue_relation(
 
     let mut resp: Vec<IssueRelationResponse> = Vec::with_capacity(created_pairs.len());
     for (src, dst) in created_pairs {
-        // No filtramos por relation_type: la unique constraint en BD
-        // permite una sola relación viva por par (src, dst) sin importar
-        // el tipo. Si ya existía con un tipo distinto, esa es la fuente
-        // de verdad y la devolvemos al cliente.
+        // We don't filter by relation_type: DB unique constraint allows only
+        // one live relation per (src, dst) pair regardless of type.
+        // If it already existed with a different type, that's the source
+        // of truth and we return it to client.
         if let Some(r) = issue_relations::Entity::find()
             .active()
             .filter(issue_relations::Column::IssueId.eq(src))
@@ -1135,10 +1132,10 @@ pub async fn create_issue_relation(
 
 /// POST /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/remove-relation/
 ///
-/// Paridad Django (apps/api/plane/app/urls/issue.py:241-242): el endpoint usa
-/// **POST**, no DELETE. La acción es semánticamente "remove" pero Django la
-/// despacha vía POST porque el cliente envía un body con `relation_type` y
-/// `related_issue` — DELETE con body no es universalmente soportado.
+/// Django parity (apps/api/plane/app/urls/issue.py:241-242): endpoint uses
+/// **POST**, not DELETE. Action is semantically "remove" but Django dispatches
+/// via POST because client sends body with `relation_type` and `related_issue`
+/// — DELETE with body is not universally supported.
 #[utoipa::path(
     post, path = "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/remove-relation/",
     tag = "Issues", security(("TokenAuth" = [])),
@@ -1152,26 +1149,25 @@ pub async fn remove_issue_relation(
 ) -> Result<impl IntoResponse, AppError> {
     require_role(guard.project_member.role, guard.workspace_member.role, ROLE_MEMBER)?;
 
-    // Paridad Django (`apps/api/plane/app/views/issue/relation.py:265-269`):
+    // Django parity (`apps/api/plane/app/views/issue/relation.py:265-269`):
     //   IssueRelation.objects.filter(workspace__slug=slug).filter(
     //     Q(issue_id=related_issue, related_issue_id=issue_id) |
     //     Q(issue_id=issue_id, related_issue_id=related_issue)
     //   )
     //
-    // La búsqueda es bidireccional porque la relación se modela como dirigida
-    // pero el cliente puede invocar `remove-relation` desde cualquiera de los
-    // dos extremos. Antes filtrábamos solo `(issue_id, related_issue_id)` →
-    // devolvía 404 cuando la relación existía con orientación inversa.
+    // Search is bidirectional because relation is modeled as directed but
+    // client may invoke `remove-relation` from either end. Previously we
+    // filtered only `(issue_id, related_issue_id)` → returned 404 when
+    // relation existed with inverse orientation.
     //
-    // Filtramos además por `project_id` del guard (no por workspace slug
-    // como Django) para mantener el aislamiento por proyecto que ya impone
-    // `ProjectMemberGuard` en el resto de handlers — evita filtrar relaciones
-    // cruzadas entre proyectos del mismo workspace.
+    // We also filter by guard's `project_id` (not workspace slug like Django)
+    // to maintain project isolation imposed by `ProjectMemberGuard` in
+    // other handlers — avoids filtering cross-project relations in same workspace.
     //
-    // No filtramos por `relation_type`: Django tampoco lo hace, y mantener la
-    // restricción aquí provocaría 404s falsos cuando el cliente envía un
-    // `relation_type` que no coincide con el almacenado tras `get_actual_relation`
-    // (ej. cliente manda "blocking", BD guarda "blocked_by" en el extremo opuesto).
+    // We don't filter by `relation_type`: Django doesn't either, and
+    // keeping restriction here would cause false 404s when client sends
+    // `relation_type` not matching what's stored after `get_actual_relation`
+    // (e.g. client sends "blocking", DB stores "blocked_by" at other end).
     let relation = issue_relations::Entity::find()
         .active()
         .filter(issue_relations::Column::ProjectId.eq(guard.project.id))
@@ -1192,12 +1188,12 @@ pub async fn remove_issue_relation(
         .await
         .map_err(AppError::Database)?;
 
-    // Idempotencia DELETE-like: si la relación ya no existe, devolvemos 204
-    // sin error. Es semánticamente correcto (la postcondición "no existe la
-    // relación" se cumple) y evita filtrar a clientes la existencia/ausencia
-    // de un par de UUIDs específico (mitigación enumeración). Django no lo
-    // maneja explícitamente — `.first().delete()` crashearía con AttributeError
-    // sobre None — pero aquí preferimos robustez.
+    // DELETE-like idempotency: if relation no longer exists, return 204.
+    // Semantically correct (postcondition "relation does not exist" met)
+    // and avoids leaking existence/absence of specific UUID pair to
+    // clients (enumeration mitigation). Django doesn't handle it
+    // explicitly — `.first().delete()` would crash with AttributeError
+    // on None — but we prefer robustness here.
     if let Some(relation) = relation {
         let mut am: issue_relations::ActiveModel = relation.into();
         am.deleted_at = Set(Some(Utc::now().into()));
@@ -1277,18 +1273,18 @@ pub async fn list_issue_activities(
 
 /// GET /workspaces/{slug}/projects/{project_id}/{issues|work-items}/{issue_id}/activities/{pk}
 ///
-/// Devuelve una actividad concreta del issue. 404 si no existe.
-/// Espejo del path-by-pk usado por el frontend para deep-linking a una
-/// entrada específica del activity log.
+/// Returns details of a specific issue activity. 404 if not found.
+/// Mirror of path-by-pk used by frontend for deep-linking to a
+/// specific activity log entry.
 #[utoipa::path(
     get,
     path = "/workspaces/{slug}/projects/{project_id}/work-items/{issue_id}/activities/{pk}/",
     tag = "Issues",
     security(("TokenAuth" = [])),
     responses(
-        (status = 200, description = "Actividad encontrada"),
-        (status = 401, description = "Unauthenticated"),
-        (status = 404, description = "Actividad inexistente"),
+        (status = 200, description = "Activity found"),
+        (status = 401, description = "Unauthorized"),
+        (status = 404, description = "Non-existent activity"),
     )
 )]
 pub async fn get_issue_activity(
@@ -1368,7 +1364,7 @@ pub async fn list_issue_subscribers(
 }
 
 /// POST /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/subscribe/
-/// Suscribe al usuario autenticado al issue.
+/// Subscribes authenticated user to issue.
 #[utoipa::path(
     post, path = "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/subscribe/",
     tag = "Issues", security(("TokenAuth" = [])),
@@ -1411,7 +1407,7 @@ pub async fn subscribe_to_issue(
 }
 
 /// DELETE /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/subscribe/
-/// Desuscribe al usuario autenticado del issue.
+/// Unsubscribes authenticated user from issue.
 #[utoipa::path(
     delete, path = "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/subscribe/",
     tag = "Issues", security(("TokenAuth" = [])),
@@ -1462,7 +1458,7 @@ pub async fn list_sub_issues(
         .await
         .map_err(AppError::Database)?;
 
-    // Devuelve los IDs y secuencias — el cliente carga el detalle si necesita
+    // Returns IDs and sequences — client loads details if needed
     let resp: Vec<serde_json::Value> = sub_issues.iter().map(|i| serde_json::json!({
         "id": i.id,
         "sequence_id": i.sequence_id,
@@ -1475,28 +1471,28 @@ pub async fn list_sub_issues(
     Ok(Json(resp))
 }
 
-// ── POST sub-issues: asignación masiva de parent ──────────────────────────────
+// ── POST sub-issues: bulk parent assignment ──────────────────────────────
 
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct AssignSubIssuesRequest {
-    /// IDs de issues a re-parentar hacia `issue_id`. Debe tener al menos 1.
+    /// IDs of issues to re-parent towards `issue_id`. Must have at least 1.
     pub sub_issue_ids: Vec<Uuid>,
 }
 
 /// POST /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/sub-issues/
 ///
-/// Asigna múltiples issues como sub-issues del issue `{issue_id}` (bulk set
-/// de `parent_id`).
+/// Assigns multiple issues as sub-issues of issue `{issue_id}` (bulk set
+/// of `parent_id`).
 ///
-/// Mirror exacto de `SubIssuesEndpoint.post`
+/// Exact mirror of `SubIssuesEndpoint.post`
 /// (`apps/api/plane/app/views/issue/sub_issue.py:173-217`):
-/// - Lista vacía → 400.
-/// - Bulk update de `parent` en todos los `sub_issue_ids`.
+/// - Empty list → 400.
+/// - Bulk update of `parent` on all `sub_issue_ids`.
 /// - Response: `{sub_issues: [...], state_distribution: {group: [id, ...]}}`.
 ///
-/// Permisos: equivalente a `ProjectEntityPermission` Django (ADMIN / MEMBER).
-/// Django no expone esta acción a GUEST porque modifica relaciones — aquí se
-/// exige ROLE_MEMBER para mantener esa barrera.
+/// Permissions: equivalent to Django `ProjectEntityPermission` (ADMIN / MEMBER).
+/// Django does not expose this action to GUEST because it modifies relations —
+/// ROLE_MEMBER is required here to maintain that boundary.
 #[utoipa::path(
     post,
     path = "/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/sub-issues/",
@@ -1504,9 +1500,9 @@ pub struct AssignSubIssuesRequest {
     security(("TokenAuth" = [])),
     request_body = AssignSubIssuesRequest,
     responses(
-        (status = 200, description = "Sub-issues asignados"),
-        (status = 400, description = "sub_issue_ids vacío"),
-        (status = 403, description = "Sin permisos"),
+        (status = 200, description = "Sub-issues assigned"),
+        (status = 400, description = "sub_issue_ids is empty"),
+        (status = 403, description = "Unauthorized"),
     )
 )]
 pub async fn assign_sub_issues(
@@ -1515,8 +1511,8 @@ pub async fn assign_sub_issues(
     Path((_slug, _project_id, issue_id)): Path<(String, Uuid, Uuid)>,
     Json(body): Json<AssignSubIssuesRequest>,
 ) -> Result<Json<serde_json::Value>, AppError> {
-    // Django permite ADMIN/MEMBER (ProjectEntityPermission). Mantenemos esa
-    // barrera — GUEST no puede re-parentar issues.
+    // Django allows ADMIN/MEMBER (ProjectEntityPermission). We maintain
+    // that boundary — GUEST cannot re-parent issues.
     require_role(
         guard.project_member.role,
         guard.workspace_member.role,
@@ -1528,10 +1524,10 @@ pub async fn assign_sub_issues(
         return Err(AppError::BadRequest("Sub Issue IDs are required".into()));
     }
 
-    // Validar que el parent existe en el mismo workspace y project.
-    // Django solo hace `Issue.issue_objects.get(pk=issue_id)` pero eso puede
-    // re-parentar un sub-issue bajo un parent de otro workspace — bug sutil que
-    // prevenimos aquí. Filtro explícito por guard.workspace.id / project.id.
+    // Validate parent exists in same workspace and project.
+    // Django only does `Issue.issue_objects.get(pk=issue_id)` but that can
+    // re-parent a sub-issue under a parent from another workspace — subtle
+    // bug prevented here. Explicit filter by guard.workspace.id / project.id.
     let parent = issues::Entity::find_by_id(issue_id)
         .filter(issues::Column::WorkspaceId.eq(guard.workspace.id))
         .filter(issues::Column::ProjectId.eq(guard.project.id))
@@ -1542,8 +1538,8 @@ pub async fn assign_sub_issues(
         .ok_or(AppError::NotFound)?;
 
     // Bulk update: `UPDATE issues SET parent_id = $1 WHERE id IN ($2...)`
-    // con filtro de seguridad por workspace_id + project_id para evitar que
-    // un sub_issue_id de otro workspace/proyecto se reparente cross-boundary.
+    // with security filter by workspace_id + project_id to avoid
+    // cross-boundary re-parenting of sub_issue_id from another workspace/project.
     let now: DateTime<FixedOffset> = Utc::now().into();
     issues::Entity::update_many()
         .col_expr(issues::Column::ParentId, Expr::value(parent.id))
@@ -1557,8 +1553,8 @@ pub async fn assign_sub_issues(
         .await
         .map_err(AppError::Database)?;
 
-    // Re-consulta los sub-issues actualizados para armar el response.
-    // Aplicamos el mismo guardrail de workspace/project al leer.
+    // Re-query updated sub-issues to build response.
+    // Apply same workspace/project guardrail when reading.
     let updated = issues::Entity::find()
         .filter(issues::Column::Id.is_in(body.sub_issue_ids))
         .filter(issues::Column::WorkspaceId.eq(guard.workspace.id))
@@ -1568,9 +1564,9 @@ pub async fn assign_sub_issues(
         .await
         .map_err(AppError::Database)?;
 
-    // `state_distribution`: diccionario `{state.group: [issue_id, ...]}`.
-    // Django lo construye con `F("state__group")` en un annotate; aquí lo
-    // resolvemos con una query extra sobre los state_ids presentes.
+    // `state_distribution`: `{state.group: [issue_id, ...]}` dictionary.
+    // Django builds it with `F("state__group")` in an annotate; here we
+    // resolve it with an extra query over present state_ids.
     let state_ids: Vec<Uuid> = updated.iter().filter_map(|i| i.state_id).collect();
     let states_map: std::collections::HashMap<Uuid, String> = if state_ids.is_empty() {
         Default::default()
@@ -1598,10 +1594,10 @@ pub async fn assign_sub_issues(
         }
     }
 
-    // Shape de cada sub_issue: mismo shape que `list_sub_issues` GET — así el
-    // frontend consume ambos endpoints con el mismo tipo. Paridad funcional
-    // con Django aunque IssueSerializer devuelva más campos; si más adelante
-    // el cliente necesita campos extra, se extiende en el GET y el POST juntos.
+    // sub_issue shape: same shape as `list_sub_issues` GET — so frontend
+    // consumes both endpoints with same type. Functional parity with
+    // Django although IssueSerializer returns more fields; if client
+    // needs extra fields later, extend both GET and POST together.
     let sub_issues_payload: Vec<serde_json::Value> = updated
         .iter()
         .map(|i| {
@@ -1626,9 +1622,9 @@ pub async fn assign_sub_issues(
 
 // ─── GET /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/comments/{pk}/ ──
 
-/// Retorna el detalle de un comentario específico.
+/// Returns specific comment details.
 ///
-/// Espejo de `IssueCommentViewSet.retrieve`
+/// Mirror of `IssueCommentViewSet.retrieve`
 /// (`apps/api/plane/app/views/issue/comment.py`).
 #[utoipa::path(
     get,
@@ -1676,9 +1672,9 @@ pub async fn get_comment(
 
 // ─── DELETE /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/issue-subscribers/{subscriber_id}/ ──
 
-/// Elimina la suscripción de un usuario específico a un issue.
+/// Removes specific user subscription from an issue.
 ///
-/// Espejo de `IssueSubscriberViewSet.destroy`
+/// Mirror of `IssueSubscriberViewSet.destroy`
 /// (`apps/api/plane/app/views/issue/subscriber.py`).
 #[utoipa::path(
     delete,

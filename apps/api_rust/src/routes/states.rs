@@ -1,11 +1,11 @@
 // src/routes/states.rs
-//! Endpoints de State — Fase 3.
+//! State Endpoints — Phase 3.
 //!
-//! Equivalente a `plane/app/views/state/base.py` en Django.
-//! Autenticación: sesión cookie **o** API key (via `AnyAuth`).
-//! Autorización: membresía activa en el proyecto.
-//! - Lectura: cualquier miembro activo (Guest, Viewer, Member, Admin).
-//! - Escritura / borrado / mark-default: solo Admin del proyecto o Admin del workspace.
+//! Equivalent to `plane/app/views/state/base.py` in Django.
+//! Authentication: session cookie **or** API key (via `AnyAuth`).
+//! Authorization: active project membership.
+//! - Read: any active member (Guest, Viewer, Member, Admin).
+//! - Write / delete / mark-default: only Project Admin or Workspace Admin.
 
 use axum::{
     extract::{Path, Query, State},
@@ -45,7 +45,7 @@ async fn project_member_for_user(
         .map_err(AppError::Database)
 }
 
-/// El usuario necesita ser Admin del proyecto **o** Admin del workspace.
+/// The user needs to be a Project Admin or Workspace Admin.
 fn require_admin(
     pm: &Option<project_members::Model>,
     wm: &workspace_members::Model,
@@ -58,7 +58,7 @@ fn require_admin(
     }
 }
 
-/// El usuario necesita ser miembro activo del proyecto (cualquier rol).
+/// The user needs to be an active project member (any role).
 fn require_project_member(pm: &Option<project_members::Model>) -> Result<(), AppError> {
     if pm.is_some() {
         Ok(())
@@ -77,9 +77,9 @@ pub struct StateResponse {
     pub color: String,
     pub slug: String,
     pub group: String,
-    /// Posición normalizada dentro del grupo (calculada en tiempo de respuesta).
+    /// Normalized position within the group (calculated at response time).
     pub sequence: f64,
-    /// Alias de sequence — requerido por IState del frontend (usado en StateGroupIcon como percentage).
+    /// sequence alias — required by frontend's IState (used in StateGroupIcon as percentage).
     pub order: f64,
     pub default: bool,
     pub is_triage: bool,
@@ -162,9 +162,9 @@ pub struct WorkspaceProjectStatePath {
 
 // ─── Handlers ────────────────────────────────────────────────────────────────
 
-/// Lista todos los estados activos (no-triage) de un proyecto.
+/// Lists all active states (non-triage) of a project.
 ///
-/// Acepta `?grouped=true` para agrupar por grupo de estado.
+/// Accepts `?grouped=true` to group by state group.
 #[utoipa::path(
     get,
     path = "/workspaces/{slug}/projects/{project_id}/states/",
@@ -175,8 +175,8 @@ pub struct WorkspaceProjectStatePath {
         GroupedQuery,
     ),
     responses(
-        (status = 200, description = "Lista de estados"),
-        (status = 403, description = "Sin permisos"),
+        (status = 200, description = "List of states"),
+        (status = 403, description = "Forbidden"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -202,12 +202,12 @@ pub async fn list_states(
         .await
         .map_err(AppError::Database)?;
 
-    // Normaliza `sequence` dentro de cada grupo (espeja lógica Django)
+    // Normalizes `sequence` within each group (mirrors Django logic)
     let mut responses: Vec<StateResponse> = raw_states.iter().map(StateResponse::from).collect();
     normalize_sequence_by_group(&mut responses);
 
     if q.grouped.as_deref() == Some("true") {
-        // Devuelve mapa { group: [states] }
+        // Returns map { group: [states] }
         let mut map: std::collections::HashMap<String, Vec<StateResponse>> =
             std::collections::HashMap::new();
         for s in responses {
@@ -221,7 +221,7 @@ pub async fn list_states(
     Ok((StatusCode::OK, Json(responses)).into_response())
 }
 
-/// Obtiene un estado específico por ID.
+/// Gets a specific state by ID.
 #[utoipa::path(
     get,
     path = "/workspaces/{slug}/projects/{project_id}/states/{pk}/",
@@ -232,8 +232,8 @@ pub async fn list_states(
         ("pk" = Uuid, Path, description = "State UUID"),
     ),
     responses(
-        (status = 200, description = "Estado encontrado", body = StateResponse),
-        (status = 404, description = "No encontrado"),
+        (status = 200, description = "State found", body = StateResponse),
+        (status = 404, description = "Not found"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -261,7 +261,7 @@ pub async fn get_state(
     Ok((StatusCode::OK, Json(StateResponse::from(&state))).into_response())
 }
 
-/// Crea un nuevo estado en el proyecto. Solo Admin.
+/// Creates a new state in the project. Admin only.
 #[utoipa::path(
     post,
     path = "/workspaces/{slug}/projects/{project_id}/states/",
@@ -272,9 +272,9 @@ pub async fn get_state(
         ("project_id" = Uuid, Path),
     ),
     responses(
-        (status = 201, description = "Estado creado", body = StateResponse),
-        (status = 400, description = "Nombre duplicado o datos inválidos"),
-        (status = 403, description = "Sin permisos"),
+        (status = 201, description = "State created", body = StateResponse),
+        (status = 400, description = "Duplicate name or invalid data"),
+        (status = 403, description = "Forbidden"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -292,7 +292,7 @@ pub async fn create_state(
 
     validate_group(&body.group)?;
 
-    // Nombre único por proyecto (excluyendo soft-deleted)
+    // Unique name per project (excluding soft-deleted)
     let duplicate = states::Entity::find()
         .active()
         .filter(states::Column::ProjectId.eq(p.project_id))
@@ -304,7 +304,7 @@ pub async fn create_state(
         return Err(AppError::BadRequest("The state name is already taken".into()));
     }
 
-    // Calcula sequence máxima
+    // Calculates maximum sequence
     let max_seq = states::Entity::find()
         .active()
         .filter(states::Column::ProjectId.eq(p.project_id))
@@ -356,7 +356,7 @@ pub async fn create_state(
     Ok((StatusCode::CREATED, Json(StateResponse::from(&inserted))).into_response())
 }
 
-/// Actualiza parcialmente un estado. Solo Admin.
+/// Partially updates a state. Admin only.
 #[utoipa::path(
     patch,
     path = "/workspaces/{slug}/projects/{project_id}/states/{pk}/",
@@ -368,10 +368,10 @@ pub async fn create_state(
         ("pk" = Uuid, Path),
     ),
     responses(
-        (status = 200, description = "Estado actualizado", body = StateResponse),
-        (status = 400, description = "Nombre duplicado"),
-        (status = 403, description = "Sin permisos"),
-        (status = 404, description = "No encontrado"),
+        (status = 200, description = "State updated", body = StateResponse),
+        (status = 400, description = "Duplicate name"),
+        (status = 403, description = "Forbidden"),
+        (status = 404, description = "Not found"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -396,7 +396,7 @@ pub async fn update_state(
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
-    // Validar nombre único si se está cambiando
+    // Validate unique name if it is being changed
     if let Some(ref new_name) = body.name {
         let duplicate = states::Entity::find()
             .active()
@@ -453,7 +453,7 @@ pub async fn update_state(
     Ok((StatusCode::OK, Json(StateResponse::from(&updated))).into_response())
 }
 
-/// Elimina un estado (solo si está vacío y no es default). Solo Admin.
+/// Deletes a state (only if it's empty and not default). Admin only.
 #[utoipa::path(
     delete,
     path = "/workspaces/{slug}/projects/{project_id}/states/{pk}/",
@@ -464,10 +464,10 @@ pub async fn update_state(
         ("pk" = Uuid, Path),
     ),
     responses(
-        (status = 204, description = "Estado eliminado"),
-        (status = 400, description = "Estado default o con issues"),
-        (status = 403, description = "Sin permisos"),
-        (status = 404, description = "No encontrado"),
+        (status = 204, description = "State deleted"),
+        (status = 400, description = "Default state or with issues"),
+        (status = 403, description = "Forbidden"),
+        (status = 404, description = "Not found"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -498,7 +498,7 @@ pub async fn delete_state(
         ));
     }
 
-    // Verificar que no haya issues en este estado
+    // Verify that there are no issues in this state
     use crate::entities::issues;
     let issue_exists = issues::Entity::find()
         .active()
@@ -514,7 +514,7 @@ pub async fn delete_state(
         ));
     }
 
-    // Soft-delete: setear deleted_at
+    // Soft-delete: set deleted_at
     let now = chrono::Utc::now().fixed_offset();
     let mut active: states::ActiveModel = state.into();
     active.deleted_at = Set(Some(now));
@@ -523,12 +523,12 @@ pub async fn delete_state(
     Ok(StatusCode::NO_CONTENT.into_response())
 }
 
-/// Obtiene el estado de triage del proyecto (intake state).
+/// Gets the triage state of the project (intake state).
 ///
-/// Si el proyecto nunca tuvo un estado triage (e.g. creado antes de que se
-/// implementara la semilla automática, o migrado desde Django sin él), lo crea
-/// de forma idempotente — espejando la lógica de Django en
-/// `plane/app/views/intake/base.py` (líneas 239-249).
+/// If the project never had a triage state (e.g. created before automatic
+/// seeding was implemented, or migrated from Django without it), it creates it
+/// idempotently — mirroring Django logic in
+/// `plane/app/views/intake/base.py` (lines 239-249).
 #[utoipa::path(
     get,
     path = "/workspaces/{slug}/projects/{project_id}/intake-state/",
@@ -538,8 +538,8 @@ pub async fn delete_state(
         ("project_id" = Uuid, Path),
     ),
     responses(
-        (status = 200, description = "Estado triage", body = StateResponse),
-        (status = 404, description = "Proyecto o workspace no encontrado"),
+        (status = 200, description = "Triage state", body = StateResponse),
+        (status = 404, description = "Project or workspace not found"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -554,7 +554,7 @@ pub async fn intake_state(
     let pm = project_member_for_user(db, p.project_id, user.id).await?;
     require_project_member(&pm)?;
 
-    // Verificar que el proyecto realmente pertenece al workspace (y no está eliminado)
+    // Verify that the project actually belongs to the workspace (and is not deleted)
     let _project = projects::Entity::find_by_id(p.project_id)
         .active()
         .filter(projects::Column::WorkspaceId.eq(ws.id))
@@ -563,7 +563,7 @@ pub async fn intake_state(
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
-    // Buscar el estado triage existente
+    // Search for the existing triage state
     if let Some(state) = states::Entity::find()
         .active()
         .filter(states::Column::ProjectId.eq(p.project_id))
@@ -576,8 +576,8 @@ pub async fn intake_state(
         return Ok((StatusCode::OK, Json(StateResponse::from(&state))).into_response());
     }
 
-    // No existe → crear idempotente (get-or-create), igual que Django en intake POST.
-    // Los valores son los mismos que usa Django: name="Triage", color="#4E5355",
+    // Does not exist -> create idempotently (get-or-create), same as Django in intake POST.
+    // Values are the same as used by Django: name="Triage", color="#4E5355",
     // sequence=65000, group="triage", default=false, is_triage=true.
     let now = chrono::Utc::now().fixed_offset();
     let new_state = states::ActiveModel {
@@ -592,7 +592,7 @@ pub async fn intake_state(
         is_triage: Set(true),
         project_id: Set(p.project_id),
         workspace_id: Set(ws.id),
-        // El estado triage es de sistema — no tiene propietario explícito.
+        // Triage state is a system state — it has no explicit owner.
         created_by_id: Set(None),
         updated_by_id: Set(None),
         external_id: Set(None),
@@ -610,7 +610,7 @@ pub async fn intake_state(
     Ok((StatusCode::OK, Json(StateResponse::from(&inserted))).into_response())
 }
 
-/// Marca un estado como default del proyecto (desactiva el anterior). Solo Admin.
+/// Marks a state as the project default (deactivates the previous one). Admin only.
 #[utoipa::path(
     post,
     path = "/workspaces/{slug}/projects/{project_id}/states/{pk}/mark-default/",
@@ -621,9 +621,9 @@ pub async fn intake_state(
         ("pk" = Uuid, Path),
     ),
     responses(
-        (status = 204, description = "Marcado como default"),
-        (status = 403, description = "Sin permisos"),
-        (status = 404, description = "No encontrado"),
+        (status = 204, description = "Marked as default"),
+        (status = 403, description = "Forbidden"),
+        (status = 404, description = "Not found"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -638,7 +638,7 @@ pub async fn mark_default(
     let pm = project_member_for_user(db, p.project_id, user.id).await?;
     require_admin(&pm, &wm)?;
 
-    // Verificar que el estado existe
+    // Verify that the state exists
     let _target = states::Entity::find_by_id(p.pk)
         .active()
         .filter(states::Column::ProjectId.eq(p.project_id))
@@ -651,7 +651,7 @@ pub async fn mark_default(
     let txn = db.begin().await.map_err(AppError::Database)?;
     let now = chrono::Utc::now().fixed_offset();
 
-    // Quitar default de todos los estados del proyecto
+    // Remove default from all project states
     let all_defaults = states::Entity::find()
         .active()
         .filter(states::Column::ProjectId.eq(p.project_id))
@@ -668,7 +668,7 @@ pub async fn mark_default(
         a.update(&txn).await.map_err(AppError::Database)?;
     }
 
-    // Marcar el seleccionado
+    // Mark the selected one
     let target = states::Entity::find_by_id(p.pk)
         .one(&txn)
         .await
@@ -684,10 +684,10 @@ pub async fn mark_default(
     Ok(StatusCode::NO_CONTENT.into_response())
 }
 
-// ─── Utilidades internas ──────────────────────────────────────────────────────
+// ─── Internal Utilities ──────────────────────────────────────────────────────
 
-/// Normaliza la secuencia dentro de cada grupo a un valor entre 0 y 1
-/// (posición relativa), espejando la lógica de Django.
+/// Normalizes the sequence within each group to a value between 0 and 1
+/// (relative position), mirroring Django logic.
 fn normalize_sequence_by_group(states: &mut [StateResponse]) {
     use std::collections::HashMap;
     let mut group_counts: HashMap<String, usize> = HashMap::new();
@@ -704,7 +704,7 @@ fn normalize_sequence_by_group(states: &mut [StateResponse]) {
     }
 }
 
-/// Valida que el grupo sea uno de los valores aceptados.
+/// Validates that the group is one of the accepted values.
 fn validate_group(group: &str) -> Result<(), AppError> {
     const VALID: &[&str] = &[
         "backlog", "unstarted", "started", "completed", "cancelled", "triage",
@@ -719,7 +719,7 @@ fn validate_group(group: &str) -> Result<(), AppError> {
     }
 }
 
-/// Genera slug simple a partir de un nombre (baja, reemplaza espacios por guiones).
+/// Generates a simple slug from a name (lowercase, replace spaces with hyphens).
 fn slugify(name: &str) -> String {
     name.to_lowercase()
         .split_whitespace()

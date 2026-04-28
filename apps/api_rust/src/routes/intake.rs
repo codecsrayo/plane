@@ -1,5 +1,5 @@
 // src/routes/intake.rs
-//! Endpoints de Intake (buzón de entrada de issues).
+//! Intake endpoints (issue inbox).
 //!
 //!   GET    /api/workspaces/{slug}/projects/{project_id}/intakes/
 //!   POST   /api/workspaces/{slug}/projects/{project_id}/intakes/
@@ -42,9 +42,9 @@ pub const STATUS_ACCEPTED: i32 = 1;
 pub const STATUS_DUPLICATE: i32 = 2;
 
 // ── Source constants (matches Django SourceType.TextChoices) ──────────────────
-// Ver: apps/api/plane/db/models/intake.py → class SourceType.
-// Django sólo define IN_APP por ahora; el handler de create hard-codea este
-// valor e ignora el `source` que venga del cliente (base.py:270).
+// See: apps/api/plane/db/models/intake.py → class SourceType.
+// Django only defines IN_APP for now; the create handler hard-codes this
+// value and ignores the `source` provided by the client (base.py:270).
 pub const SOURCE_IN_APP: &str = "IN_APP";
 
 // ── Priority constants (matches Django IssueCreateSerializer validation) ──────
@@ -82,19 +82,19 @@ impl IntakeResponse {
 }
 
 #[derive(Debug, Serialize, utoipa::ToSchema)]
-/// Detalle del issue anidado dentro de IntakeIssueResponse.
+/// Issue detail nested within IntakeIssueResponse.
 ///
-/// Paridad con Django `IssueDetailSerializer` (serializers/issue.py:924-935)
-/// usado por `IntakeIssueDetailSerializer` (serializers/intake.py:93-107).
-/// El frontend lee `inboxIssue.issue.created_by` (root.tsx:77,80),
+/// Parity with Django `IssueDetailSerializer` (serializers/issue.py:924-935)
+/// used by `IntakeIssueDetailSerializer` (serializers/intake.py:93-107).
+/// The frontend reads `inboxIssue.issue.created_by` (root.tsx:77,80),
 /// `issue.name`, `issue.description_html`, `issue.priority`, `issue.sequence_id`,
-/// `issue.label_ids`, `issue.assignee_ids` — todos obligatorios.
+/// `issue.label_ids`, `issue.assignee_ids` — all mandatory.
 ///
-/// TODO(paridad-agregados): los campos de conteo (sub_issues_count,
-/// attachment_count, link_count) y los *_ids (label_ids, assignee_ids,
-/// module_ids) requieren queries extra (ArrayAgg en Django). Por ahora se
-/// devuelven con valores por defecto (0 / vec vacío) para desbloquear el
-/// frontend. Refactor pendiente: hacer batch en list_intake_issues.
+/// TODO(aggregate-parity): count fields (sub_issues_count,
+/// attachment_count, link_count) and *_ids (label_ids, assignee_ids,
+/// module_ids) require extra queries (ArrayAgg in Django). Currently
+/// returned with default values (0 / empty vec) to unblock the
+/// frontend. Pending refactor: batch in list_intake_issues.
 pub struct IntakeIssueNestedIssue {
     pub id: Uuid,
     pub name: String,
@@ -111,13 +111,13 @@ pub struct IntakeIssueNestedIssue {
     pub archived_at: Option<chrono::NaiveDate>,
     pub created_at: chrono::DateTime<chrono::FixedOffset>,
     pub updated_at: chrono::DateTime<chrono::FixedOffset>,
-    /// Django serializa el FK `created_by` como UUID sin `_id`.
+    /// Django serializes `created_by` FK as UUID without `_id`.
     pub created_by: Option<Uuid>,
     pub updated_by: Option<Uuid>,
     pub is_draft: bool,
-    /// Django `is_intake` se calcula en runtime. Siempre `false` aquí porque
-    /// el issue aún está en draft/intake — el flag solo se vuelve true tras
-    /// aceptarse. TODO: calcular correctamente.
+    /// Django `is_intake` is calculated at runtime. Always `false` here because
+    /// the issue is still in draft/intake — the flag only becomes true after
+    /// acceptance. TODO: calculate correctly.
     pub is_intake: bool,
     pub estimate_point: Option<Uuid>,
     pub cycle_id: Option<Uuid>,
@@ -130,8 +130,8 @@ pub struct IntakeIssueNestedIssue {
 }
 
 impl IntakeIssueNestedIssue {
-    /// Construye el detalle del issue desde el Model, con agregados en valores
-    /// por defecto. Ver TODO en la doc del struct.
+    /// Builds issue details from Model, with default values for aggregates.
+    /// See TODO in struct documentation.
     fn from_model(m: &issues::Model) -> Self {
         Self {
             id: m.id,
@@ -178,7 +178,7 @@ pub struct IntakeIssueResponse {
     pub workspace_id: Uuid,
     pub created_by_id: Option<Uuid>,
     pub created_at: chrono::DateTime<chrono::FixedOffset>,
-    /// Detalle del issue asociado — requerido por el frontend. Ver
+    /// Associated issue details — required by frontend. See
     /// IntakeIssueNestedIssue.
     pub issue: IntakeIssueNestedIssue,
 }
@@ -214,23 +214,23 @@ pub struct UpdateIntakeRequest {
     pub description: Option<String>,
 }
 
-/// Body del POST /intake-issues/ — paridad con Django IntakeIssueViewSet.create
+/// Body of POST /intake-issues/ — parity with Django IntakeIssueViewSet.create
 /// (`apps/api/plane/app/views/intake/base.py:222-284`).
 ///
-/// El frontend envía el payload anidado `{source, issue: {...}}`. Django **ignora**
-/// cualquier `intake_id` que venga en el body y auto-resuelve el intake del
-/// proyecto (`base.py:264`). El `source` del cliente también se descarta y se
-/// hard-codea a `IN_APP` (`base.py:270`). Mantenemos `source` en el DTO para
-/// log/telemetría, pero nunca se usa al persistir.
+/// The frontend sends the nested payload `{source, issue: {...}}`. Django **ignores**
+/// any `intake_id` provided in the body and auto-resolves the project's
+/// intake (`base.py:264`). The client's `source` is also discarded and
+/// hard-coded to `IN_APP` (`base.py:270`). We keep `source` in the DTO for
+/// logging/telemetry, but it is never used for persistence.
 ///
-/// Campos adicionales que el frontend puede mandar en `issue` (parent_id,
+/// Additional fields the frontend may send in `issue` (parent_id,
 /// start_date, target_date, estimate_point, type_id, assignee_ids, label_ids)
-/// los procesa Django vía `IssueCreateSerializer`. Aquí serde los descarta
-/// silenciosamente — ver TODO en el handler.
+/// are processed by Django via `IssueCreateSerializer`. Here they are silently
+/// discarded by serde — see TODO in handler.
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct CreateIntakeIssueRequest {
-    /// Ignorado por paridad con Django (hard-code `IN_APP`). Aceptado para no
-    /// reventar clientes que lo envíen.
+    /// Ignored for Django parity (hard-code `IN_APP`). Accepted to not
+    /// break clients that send it.
     #[serde(default)]
     pub source: Option<String>,
     pub issue: CreateIntakeIssueBody,
@@ -261,7 +261,7 @@ pub struct UpdateIntakeIssueRequest {
         ("slug" = String, Path, description = "Workspace slug"),
         ("project_id" = Uuid, Path, description = "Project ID"),
     ),
-    responses((status = 200, description = "Lista de intakes")),
+    responses((status = 200, description = "Intakes list")),
     security(("TokenAuth" = []))
 )]
 pub async fn list_intakes(
@@ -292,8 +292,8 @@ pub async fn list_intakes(
         ("project_id" = Uuid, Path, description = "Project ID"),
     ),
     responses(
-        (status = 201, description = "Intake creado"),
-        (status = 400, description = "Error de validación"),
+        (status = 201, description = "Intake created"),
+        (status = 400, description = "Validation error"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -305,10 +305,10 @@ pub async fn create_intake(
     require_role(guard.project_member.role, guard.workspace_member.role, ROLE_MEMBER)?;
 
     if body.name.trim().is_empty() {
-        return Err(AppError::BadRequest("name es requerido".into()));
+        return Err(AppError::BadRequest("name is required".into()));
     }
 
-    // created_at/updated_at explícitos (NOT NULL sin DEFAULT).
+    // Explicit created_at/updated_at (NOT NULL without DEFAULT).
     let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
 
     let intake = intakes::ActiveModel {
@@ -345,8 +345,8 @@ pub async fn create_intake(
         ("pk" = Uuid, Path, description = "Intake ID"),
     ),
     responses(
-        (status = 200, description = "Detalle del intake"),
-        (status = 404, description = "No encontrado"),
+        (status = 200, description = "Intake detail"),
+        (status = 404, description = "Not found"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -380,8 +380,8 @@ pub async fn get_intake(
         ("pk" = Uuid, Path, description = "Intake ID"),
     ),
     responses(
-        (status = 200, description = "Intake actualizado"),
-        (status = 404, description = "No encontrado"),
+        (status = 200, description = "Intake updated"),
+        (status = 404, description = "Not found"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -425,7 +425,7 @@ pub async fn update_intake(
         ("project_id" = Uuid, Path, description = "Project ID"),
         ("pk" = Uuid, Path, description = "Intake ID"),
     ),
-    responses((status = 204, description = "Eliminado")),
+    responses((status = 204, description = "Deleted")),
     security(("TokenAuth" = []))
 )]
 pub async fn delete_intake(
@@ -460,7 +460,7 @@ pub async fn delete_intake(
         ("slug" = String, Path, description = "Workspace slug"),
         ("project_id" = Uuid, Path, description = "Project ID"),
     ),
-    responses((status = 200, description = "Lista de intake issues")),
+    responses((status = 200, description = "Intake issues list")),
     security(("TokenAuth" = []))
 )]
 pub async fn list_intake_issues(
@@ -477,16 +477,16 @@ pub async fn list_intake_issues(
         .await
         .map_err(AppError::Database)?;
 
-    // Batch fetch de los issues asociados. Django usa
-    // `.select_related("issue")` en base.py (prefetch inline); nosotros
-    // hacemos un segundo query con `IN` para evitar N+1 y evitar depender de
-    // `find_also_related` (que tiene ambigüedad con Issues1/Issues2 en la
-    // entidad intake_issues — hay dos FKs hacia issues: issue_id y
+    // Batch fetch associated issues. Django uses
+    // `.select_related("issue")` in base.py (inline prefetch); we do a
+    // second query with `IN` to avoid N+1 and avoid depending on
+    // `find_also_related` (which has ambiguity with Issues1/Issues2 in
+    // intake_issues entity — there are two FKs to issues: issue_id and
     // duplicate_to_id).
     //
-    // Issues soft-deleted: si un issue_id apunta a un issue borrado, ese
-    // intake_issue se omite del response (Django también los excluye por el
-    // default manager que filtra deleted_at=null).
+    // Soft-deleted issues: if an issue_id points to a deleted issue, that
+    // intake_issue is omitted from response (Django also excludes them due to
+    // default manager filtering deleted_at=null).
     if rows.is_empty() {
         return Ok(Json(Vec::new()));
     }
@@ -525,8 +525,8 @@ pub async fn list_intake_issues(
         ("project_id" = Uuid, Path, description = "Project ID"),
     ),
     responses(
-        (status = 201, description = "Issue de intake creado"),
-        (status = 400, description = "Error de validación"),
+        (status = 201, description = "Intake issue created"),
+        (status = 400, description = "Validation error"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -535,11 +535,11 @@ pub async fn create_intake_issue(
     guard: ProjectMemberGuard,
     Json(body): Json<CreateIntakeIssueRequest>,
 ) -> Result<(StatusCode, Json<IntakeIssueResponse>), AppError> {
-    // Django usa @allow_permission([ADMIN, MEMBER, GUEST]) — el intake acepta
-    // tickets de guests (base.py:221). Bajamos a ROLE_GUEST.
+    // Django uses @allow_permission([ADMIN, MEMBER, GUEST]) — intake accepts
+    // tickets from guests (base.py:221). Downgraded to ROLE_GUEST.
     require_role(guard.project_member.role, guard.workspace_member.role, ROLE_GUEST)?;
 
-    // ── Validaciones (paridad Django base.py:223-234) ─────────────────────────
+    // ── Validations (Django parity base.py:223-234) ─────────────────────────
     if body.issue.name.trim().is_empty() {
         return Err(AppError::BadRequest("Name is required".into()));
     }
@@ -550,23 +550,23 @@ pub async fn create_intake_issue(
         }
     }
 
-    // ── Auto-resolver o crear intake del proyecto ────────────────────────────
+    // ── Auto-resolve or create project intake ────────────────────────────
     //
-    // Django (base.py:264) hace `Intake.objects.filter(...).first()` y asume
-    // que existe — si no existe, crashearía con AttributeError 500 en
-    // `intake_id.id`. Nosotros somos más defensivos: hacemos get-or-create
-    // inline para reparar proyectos donde `projects.intake_view=true` pero la
-    // fila del intake nunca se creó (bug histórico de update_project en el API
-    // Rust, fix separado — ver projects.rs).
+    // Django (base.py:264) does `Intake.objects.filter(...).first()` and assumes
+    // it exists — if not, it would crash with AttributeError 500 at
+    // `intake_id.id`. We are more defensive: get-or-create
+    // inline to repair projects where `projects.intake_view=true` but the
+    // intake row was never created (historical update_project bug in Rust API,
+    // separate fix — see projects.rs).
     //
-    // Aún así, si el proyecto tiene `intake_view=false`, devolvemos 400 para
-    // no crear intakes en proyectos que explícitamente no lo tienen habilitado.
+    // Still, if project has `intake_view=false`, we return 400 not to
+    // create intakes in projects that explicitly do not have them enabled.
     //
-    // NOTA: ignoramos cualquier `intake_id` que venga en el body. El DTO ya no
-    // lo acepta (paridad estricta con Django — él también lo descarta).
+    // NOTE: we ignore any `intake_id` coming in the body. The DTO no longer
+    // accepts it (strict Django parity — it also discards it).
     if !guard.project.intake_view {
         return Err(AppError::BadRequest(
-            "Intake no está habilitado en este proyecto".into(),
+            "Intake is not enabled in this project".into(),
         ));
     }
 
@@ -583,9 +583,9 @@ pub async fn create_intake_issue(
     {
         existing
     } else {
-        // Mismos valores que Django (project/base.py:356-360):
+        // Same values as Django (project/base.py:356-360):
         // name=f"{project.name} Intake", is_default=true.
-        // `view_props` y `logo_props` son JSON NOT NULL con default {} en la DB.
+        // `view_props` and `logo_props` are JSON NOT NULL with default {} in DB.
         intakes::ActiveModel {
             id: Set(Uuid::new_v4()),
             name: Set(format!("{} Intake", guard.project.name)),
@@ -606,11 +606,11 @@ pub async fn create_intake_issue(
         .map_err(AppError::Database)?
     };
 
-    // ── Get-or-create triage state (paridad Django base.py:239-249) ───────────
+    // ── Get-or-create triage state (Django parity base.py:239-249) ───────────
     //
-    // TODO(refactor): esta lógica es idéntica a routes::states::intake_state.
-    // Extraer a `pub(crate) fn ensure_triage_state(db, workspace_id, project_id)`
-    // en un helper compartido.
+    // TODO(refactor): this logic is identical to routes::states::intake_state.
+    // Extract to `pub(crate) fn ensure_triage_state(db, workspace_id, project_id)`
+    // in a shared helper.
 
     let triage_state = if let Some(existing) = states::Entity::find()
         .active()
@@ -623,10 +623,10 @@ pub async fn create_intake_issue(
     {
         existing
     } else {
-        // Mismos valores que Django (base.py:241-249):
+        // Same values as Django (base.py:241-249):
         // name="Triage", color="#4E5355", sequence=65000, group="triage",
-        // default=false, is_triage=true. El estado triage es de sistema
-        // (sin propietario explícito), igual que en routes::states::intake_state.
+        // default=false, is_triage=true. triage state is system-owned
+        // (no explicit owner), same as in routes::states::intake_state.
         states::ActiveModel {
             id: Set(Uuid::new_v4()),
             name: Set("Triage".to_string()),
@@ -652,14 +652,14 @@ pub async fn create_intake_issue(
         .map_err(AppError::Database)?
     };
 
-    // ── Calcular sequence_id ──────────────────────────────────────────────────
+    // ── Calculate sequence_id ──────────────────────────────────────────────────
     //
-    // NOTA 1: MAX() sin GROUP BY siempre devuelve una fila (aunque la tabla
-    // esté vacía, con valor NULL). Decodificamos a Option<i32> y flatten
-    // sobre el Option<Option<i32>> de .one().
+    // NOTE 1: MAX() without GROUP BY always returns a row (even if table
+    // is empty, with NULL value). We decode to Option<i32> and flatten
+    // over the Option<Option<i32>> from .one().
     //
-    // NOTA 2: el target es i32 (NO i64). En Postgres MAX(INT4) → INT4;
-    // no se promueve a BIGINT como en MySQL. Usar i64 produce
+    // NOTE 2: target is i32 (NOT i64). In Postgres MAX(INT4) → INT4;
+    // not promoted to BIGINT like in MySQL. Using i64 produces
     // "mismatched types; Rust type Option<i64> (as SQL type INT8) is not
     // compatible with SQL type INT4".
     use sea_orm::QuerySelect;
@@ -677,20 +677,20 @@ pub async fn create_intake_issue(
         .flatten();
     let sequence_id = max_seq.unwrap_or(0) + 1;
 
-    // ── Crear el issue (paridad Django IssueCreateSerializer.save) ────────────
+    // ── Create issue (Django parity IssueCreateSerializer.save) ────────────
     //
-    // DIVERGENCIA: Django usa IssueCreateSerializer que acepta parent_id,
+    // DIVERGENCE: Django uses IssueCreateSerializer which accepts parent_id,
     // start_date, target_date, estimate_point, type_id, assignee_ids,
-    // label_ids. Aquí esos campos se descartan silenciosamente por serde.
+    // label_ids. Here those fields are silently discarded by serde.
     //
-    // TODO(paridad-completa): añadir esos campos a CreateIntakeIssueBody,
-    // envolver issue INSERT + sync_assignees + sync_labels en una transacción
-    // (patrón ya existe en issues::create_issue), y hacer pub(crate) las
-    // funciones sync_assignees/sync_labels de issues.rs.
+    // TODO(full-parity): add those fields to CreateIntakeIssueBody,
+    // wrap issue INSERT + sync_assignees + sync_labels in a transaction
+    // (pattern already exists in issues::create_issue), and make
+    // sync_assignees/sync_labels from issues.rs pub(crate).
     //
-    // is_draft=false: paridad Django. IssueCreateSerializer no marca is_draft,
-    // y el campo es bool NOT NULL con default false en la DB. El tweak
-    // anterior (is_draft=true) era una divergencia nuestra.
+    // is_draft=false: Django parity. IssueCreateSerializer does not mark is_draft,
+    // and the field is bool NOT NULL with default false in DB. Previous tweak
+    // (is_draft=true) was our divergence.
     let issue = issues::ActiveModel {
         id: Set(Uuid::new_v4()),
         name: Set(body.issue.name),
@@ -715,12 +715,12 @@ pub async fn create_intake_issue(
     .await
     .map_err(AppError::Database)?;
 
-    // ── Crear el intake_issue (paridad Django base.py:266-271) ────────────────
+    // ── Create intake_issue (Django parity base.py:266-271) ────────────────
     //
-    // `source` hard-codeado a IN_APP — Django ignora el valor del cliente
-    // (base.py:270). El `body.source` solo se acepta para no reventar clientes
-    // viejos; se descarta aquí.
-    let _ = body.source; // silence unused-field lint; ver doc del DTO
+    // `source` hard-coded to IN_APP — Django ignores client value
+    // (base.py:270). `body.source` is only accepted not to break old clients;
+    // it is discarded here.
+    let _ = body.source; // silence unused-field lint; see DTO doc
     let intake_issue = intake_issues::ActiveModel {
         id: Set(Uuid::new_v4()),
         issue_id: Set(issue.id),
@@ -756,8 +756,8 @@ pub async fn create_intake_issue(
         ("pk" = Uuid, Path, description = "IntakeIssue ID"),
     ),
     responses(
-        (status = 200, description = "Detalle del intake issue"),
-        (status = 404, description = "No encontrado"),
+        (status = 200, description = "Intake issue detail"),
+        (status = 404, description = "Not found"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -768,10 +768,10 @@ pub async fn get_intake_issue(
 ) -> Result<Json<IntakeIssueResponse>, AppError> {
     require_role(guard.project_member.role, guard.workspace_member.role, ROLE_GUEST)?;
 
-    // Django interpreta `pk` en la URL /inbox-issues/{pk}/ como el
-    // issue_id del issue, NO como el id del intake_issue
-    // (base.py:499,525 retrieve → `issue_id=pk`). El frontend también envía
-    // `response.issue.id` como path param (project-inbox.store.ts:467, 430).
+    // Django interprets `pk` in /inbox-issues/{pk}/ URL as
+    // issue_id, NOT as intake_issue id
+    // (base.py:499,525 retrieve → `issue_id=pk`). Frontend also sends
+    // `response.issue.id` as path param (project-inbox.store.ts:467, 430).
     let ii = intake_issues::Entity::find()
         .active()
         .filter(intake_issues::Column::IssueId.eq(pk))
@@ -781,9 +781,9 @@ pub async fn get_intake_issue(
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
-    // Fetch del issue asociado (paridad Django select_related("issue")).
-    // Si el issue está soft-deleted, devolvemos 404 — el intake_issue sin
-    // issue válido es un estado inconsistente.
+    // Fetch associated issue (Django parity select_related("issue")).
+    // If issue is soft-deleted, return 404 — intake_issue without
+    // valid issue is inconsistent state.
     let issue = issues::Entity::find_by_id(ii.issue_id)
         .active()
         .one(&state.db)
@@ -806,8 +806,8 @@ pub async fn get_intake_issue(
         ("pk" = Uuid, Path, description = "IntakeIssue ID"),
     ),
     responses(
-        (status = 200, description = "IntakeIssue actualizado"),
-        (status = 400, description = "Status inválido"),
+        (status = 200, description = "IntakeIssue updated"),
+        (status = 400, description = "Invalid status"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -819,7 +819,7 @@ pub async fn update_intake_issue(
 ) -> Result<Json<IntakeIssueResponse>, AppError> {
     require_role(guard.project_member.role, guard.workspace_member.role, ROLE_MEMBER)?;
 
-    // pk es el issue_id (paridad Django base.py:334 partial_update).
+    // pk is issue_id (Django parity base.py:334 partial_update).
     let ii = intake_issues::Entity::find()
         .active()
         .filter(intake_issues::Column::IssueId.eq(pk))
@@ -829,12 +829,12 @@ pub async fn update_intake_issue(
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
-    // Validar status si se envía
+    // Validate status if provided
     if let Some(status) = body.status {
         let valid = [STATUS_PENDING, STATUS_REJECTED, STATUS_SNOOZED, STATUS_ACCEPTED, STATUS_DUPLICATE];
         if !valid.contains(&status) {
             return Err(AppError::BadRequest(format!(
-                "status inválido: {status}. Valores permitidos: -2, -1, 0, 1, 2"
+                "invalid status: {status}. Allowed values: -2, -1, 0, 1, 2"
             )));
         }
     }
@@ -844,7 +844,7 @@ pub async fn update_intake_issue(
 
     if let Some(status) = body.status {
         am.status = Set(status);
-        // Al aceptar, promover el issue de draft a activo
+        // Upon acceptance, promote issue from draft to active
         if status == STATUS_ACCEPTED {
             if let Some(issue) = issues::Entity::find_by_id(issue_id)
                 .one(&state.db)
@@ -870,9 +870,9 @@ pub async fn update_intake_issue(
 
     let updated = am.update(&state.db).await.map_err(AppError::Database)?;
 
-    // Fetch del issue tras el update. Si status=ACCEPTED se promovió is_draft
-    // en el bloque de arriba; necesitamos la versión post-update para reflejar
-    // ese cambio en el response.
+    // Fetch issue after update. If status=ACCEPTED, is_draft was promoted
+    // in block above; we need post-update version to reflect
+    // that change in response.
     let issue = issues::Entity::find_by_id(updated.issue_id)
         .active()
         .one(&state.db)
@@ -894,7 +894,7 @@ pub async fn update_intake_issue(
         ("project_id" = Uuid, Path, description = "Project ID"),
         ("pk" = Uuid, Path, description = "IntakeIssue ID"),
     ),
-    responses((status = 204, description = "Eliminado")),
+    responses((status = 204, description = "Deleted")),
     security(("TokenAuth" = []))
 )]
 pub async fn delete_intake_issue(
@@ -904,7 +904,7 @@ pub async fn delete_intake_issue(
 ) -> Result<StatusCode, AppError> {
     require_role(guard.project_member.role, guard.workspace_member.role, ROLE_MEMBER)?;
 
-    // pk es el issue_id (paridad Django base.py:549 destroy).
+    // pk is issue_id (Django parity base.py:549 destroy).
     let ii = intake_issues::Entity::find()
         .active()
         .filter(intake_issues::Column::IssueId.eq(pk))
@@ -916,10 +916,10 @@ pub async fn delete_intake_issue(
 
     let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
 
-    // Cascada al issue: Django borra también el Issue si el intake_issue
-    // está en status pendiente/rechazado/snoozed/duplicado (base.py:556-559).
-    // Status ACCEPTED (1) mantiene el issue porque ya fue promovido al
-    // proyecto y existe como work item regular.
+    // Cascade to issue: Django also deletes Issue if intake_issue
+    // is in pending/rejected/snoozed/duplicate status (base.py:556-559).
+    // STATUS_ACCEPTED (1) keeps issue because it was already promoted to
+    // project and exists as regular work item.
     let issue_id = ii.issue_id;
     let status_val = ii.status;
     let cascade_statuses = [STATUS_PENDING, STATUS_REJECTED, STATUS_SNOOZED, STATUS_DUPLICATE];

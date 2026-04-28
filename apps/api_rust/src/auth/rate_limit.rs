@@ -1,11 +1,11 @@
 // src/auth/rate_limit.rs
 //
-// Fase 1: rate limiter en memoria con std::sync::Mutex<HashMap>.
-// Fase 3: migrar a Redis (fred) para soporte multi-réplica.
+// Phase 1: in-memory rate limiter with std::sync::Mutex<HashMap>.
+// Phase 3: migrate to Redis (fred) for multi-replica support.
 //
-// ✅ std::sync::Mutex — NO tokio::sync::Mutex.
-// La sección crítica es trivial (lookup + increment en HashMap) y no contiene
-// ningún .await, por lo que bloquear el hilo del OS es correcto y eficiente.
+// ✅ std::sync::Mutex — NOT tokio::sync::Mutex.
+// The critical section is trivial (lookup + increment in HashMap) and does not contain
+// any .await, so blocking the OS thread is correct and efficient.
 use axum::{
     body::Body,
     http::{HeaderValue, Request, Response},
@@ -20,15 +20,15 @@ use crate::error::AppError;
 #[derive(Debug, Default)]
 pub struct RateLimitState {
     pub buckets: std::sync::Mutex<HashMap<String, (u32, u64)>>,
-    /// Contador de inserciones nuevas desde el último ciclo de poda.
-    /// Se usa para amortizar el costo de `retain` cada PRUNE_INTERVAL entradas.
+    /// Counter of new insertions since the last pruning cycle.
+    /// Used to amortize the cost of `retain` every PRUNE_INTERVAL entries.
     insert_count: std::sync::atomic::AtomicU64,
 }
 
-/// Cada cuántas inserciones nuevas se ejecuta la poda de entradas vencidas.
+/// Frequency (in new insertions) of expired entry pruning.
 const PRUNE_INTERVAL: u64 = 1_000;
 
-/// Genera un bucket key opaco a partir del raw token.
+/// Generates an opaque bucket key from the raw token.
 pub fn bucket_key(raw_token: &str) -> String {
     let mut h = Sha256::new();
     h.update(raw_token.as_bytes());
@@ -38,7 +38,7 @@ pub fn bucket_key(raw_token: &str) -> String {
         .collect()
 }
 
-/// Aplica el rate limit en memoria al bucket del token dado.
+/// Applies the in-memory rate limit to the given token bucket.
 pub fn apply_rate_limit(state: &RateLimitState, raw_key: &str, limit: u32) -> Result<(), AppError> {
     use std::time::{SystemTime, UNIX_EPOCH};
 
@@ -62,8 +62,8 @@ pub fn apply_rate_limit(state: &RateLimitState, raw_key: &str, limit: u32) -> Re
     entry.0 += 1;
     let over_limit = entry.0 > limit;
 
-    // Poda amortizada: eliminar buckets de ventanas vencidas cada PRUNE_INTERVAL
-    // inserciones nuevas para evitar crecimiento ilimitado del HashMap (memory leak).
+    // Amortized pruning: remove expired window buckets every PRUNE_INTERVAL
+    // new insertions to avoid unlimited HashMap growth (memory leak).
     if is_new_entry {
         let prev = state
             .insert_count
@@ -80,7 +80,7 @@ pub fn apply_rate_limit(state: &RateLimitState, raw_key: &str, limit: u32) -> Re
     }
 }
 
-/// Middleware Tower — inyecta headers X-RateLimit-* en la respuesta.
+/// Tower Middleware — injects X-RateLimit-* headers in the response.
 pub async fn rate_limit_headers_middleware(req: Request<Body>, next: Next) -> Response<Body> {
     let has_api_key = req.headers().contains_key("x-api-key");
     let window = 60u64;

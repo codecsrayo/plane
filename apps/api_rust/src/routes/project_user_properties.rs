@@ -1,15 +1,15 @@
 // src/routes/project_user_properties.rs
-//! Endpoint de display/filter properties por usuario-proyecto.
+//! Endpoint for display/filter properties by user-project.
 //!
-//! Mirror de `plane/app/views/issue/base.py::ProjectUserDisplayPropertyEndpoint`
-//! (líneas 730-757) y URL `apps/api/plane/app/urls/issue.py:216-219`:
+//! Mirror of `plane/app/views/issue/base.py::ProjectUserDisplayPropertyEndpoint`
+//! (lines 730-757) and URL `apps/api/plane/app/urls/issue.py:216-219`:
 //!
 //!   GET   /api/workspaces/{slug}/projects/{project_id}/user-properties/
 //!   PATCH /api/workspaces/{slug}/projects/{project_id}/user-properties/
 //!
-//! Semántica clave: ambos verbos hacen `get_or_create` — el GET jamás devuelve
-//! 404 por ausencia de fila; la crea con defaults. Esto es lo que resuelve
-//! el 404 visto en el panel de proyecto del frontend.
+//! Key semantics: both verbs perform `get_or_create` — GET never returns
+//! 404 due to row absence; it creates it with defaults. This is what resolves
+//! the 404 seen in the frontend project panel.
 
 use axum::{
     extract::State,
@@ -30,12 +30,12 @@ use crate::{
     AppState,
 };
 
-// ─── Defaults — mirror de `plane/db/models/issue.py` ──────────────────────────
+// ─── Defaults — mirror of `plane/db/models/issue.py` ──────────────────────────
 //
-// Django define `get_default_filters`, `get_default_display_filters` y
-// `get_default_display_properties` como callables que devuelven estos dicts.
-// Los replicamos aquí con el shape EXACTO para que la respuesta inicial
-// (cuando la fila aún no existe y la acabamos de crear) sea idéntica.
+// Django defines `get_default_filters`, `get_default_display_filters` and
+// `get_default_display_properties` as callables that return these dicts.
+// We replicate them here with the EXACT shape so that the initial response
+// (when the row does not yet exist and we just created it) is identical.
 
 fn default_filters() -> serde_json::Value {
     serde_json::json!({
@@ -97,8 +97,8 @@ fn default_preferences() -> serde_json::Value {
 
 // ─── DTOs ─────────────────────────────────────────────────────────────────────
 
-/// Mirror de `ProjectUserPropertySerializer` (fields="__all__").
-/// Todos los campos del modelo `ProjectUserProperty` tal como los persiste
+/// Mirror of `ProjectUserPropertySerializer` (fields="__all__").
+/// All model fields of `ProjectUserProperty` as persisted by
 /// `apps/api/plane/db/models/project.py:342-373`.
 #[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct ProjectUserPropertyResponse {
@@ -139,11 +139,11 @@ impl From<&project_user_properties::Model> for ProjectUserPropertyResponse {
     }
 }
 
-/// Body admitido en PATCH. Todos los campos son opcionales — semántica
-/// `partial=True` del serializer Django.
+/// Body allowed in PATCH. All fields are optional — `partial=True` semantics
+/// from the Django serializer.
 ///
-/// `user`, `workspace`, `project` son read-only en Django y se ignoran aquí
-/// incluso si vienen en el payload (no los incluimos en el struct).
+/// `user`, `workspace`, `project` are read-only in Django and are ignored here
+/// even if they come in the payload (we don't include them in the struct).
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct UpdateProjectUserPropertyRequest {
     pub filters: Option<serde_json::Value>,
@@ -156,15 +156,15 @@ pub struct UpdateProjectUserPropertyRequest {
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
-/// Busca o crea la fila `project_user_properties` del usuario para el proyecto.
-/// Mirror de `ProjectUserProperty.objects.get_or_create(user=..., project_id=...)`.
+/// Finds or creates the `project_user_properties` row for the user and project.
+/// Mirror of `ProjectUserProperty.objects.get_or_create(user=..., project_id=...)`.
 ///
-/// Nota importante: el índice único en Django es `(user, project, deleted_at)`
-/// con constraint `deleted_at IS NULL`. Aquí filtramos por `deleted_at IS NULL`
-/// via `.active()`. En caso de carrera, el INSERT concurrente fallaría con
-/// violación de constraint único; no necesitamos manejar eso aquí porque el
-/// backend Django tampoco lo hace — si ocurre, el cliente reintentaría y el
-/// GET siguiente ya encontraría la fila.
+/// Important note: the unique index in Django is `(user, project, deleted_at)`
+/// with the `deleted_at IS NULL` constraint. Here we filter by `deleted_at IS NULL`
+/// via `.active()`. In case of a race condition, the concurrent INSERT would fail
+/// with a unique constraint violation; we don't need to handle that here because
+/// the Django backend doesn't either — if it happens, the client would retry and
+/// the subsequent GET would find the row.
 async fn get_or_create(
     db: &sea_orm::DatabaseConnection,
     workspace_id: Uuid,
@@ -211,16 +211,16 @@ async fn get_or_create(
 
 /// `GET /api/workspaces/{slug}/projects/{project_id}/user-properties/`
 ///
-/// Paridad con Django (`ProjectUserDisplayPropertyEndpoint.get`,
+/// Parity with Django (`ProjectUserDisplayPropertyEndpoint.get`,
 /// issue/base.py:754-757) + decorator `@allow_permission([ADMIN, MEMBER, GUEST])`:
 ///
-/// - `ProjectMemberGuard` valida: workspace por slug + proyecto vivo en ese
-///   workspace + membresía activa del usuario al proyecto. Si cualquier
-///   condición falla: 404 (workspace/proyecto no existen) o 403 (sin
-///   membresía), replicando exactamente la semántica de Django.
-/// - `get_or_create` garantiza que NUNCA devolvemos 404 por ausencia de fila
-///   de propiedades — si no existe, se crea con defaults. Esto es lo que
-///   resuelve el 404 original del panel de proyecto en el frontend.
+/// - `ProjectMemberGuard` validates: workspace by slug + live project in that
+///   workspace + active user membership to the project. If any condition
+///   fails: 404 (workspace/project does not exist) or 403 (no membership),
+///   replicating Django's semantics exactly.
+/// - `get_or_create` ensures we NEVER return 404 due to property row absence
+///   — if it doesn't exist, it's created with defaults. This resolves the
+///   original 404 on the project panel in the frontend.
 #[utoipa::path(
     get,
     path = "/api/workspaces/{slug}/projects/{project_id}/user-properties/",
@@ -254,12 +254,12 @@ pub async fn get_project_user_properties(
 
 /// `PATCH /api/workspaces/{slug}/projects/{project_id}/user-properties/`
 ///
-/// Actualiza parcialmente los campos. Si la fila no existe, la crea antes
-/// de aplicar el patch (misma semántica que Django,
+/// Partially updates the fields. If the row does not exist, it creates it before
+/// applying the patch (same semantics as Django,
 /// `ProjectUserDisplayPropertyEndpoint.patch`, issue/base.py:732-751).
 ///
-/// Validación de permisos idéntica a Django: requiere membresía activa al
-/// proyecto (`ProjectMemberGuard`). Sin membresía → 403.
+/// Permission validation identical to Django: requires active membership to
+/// the project (`ProjectMemberGuard`). No membership → 403.
 #[utoipa::path(
     patch,
     path = "/api/workspaces/{slug}/projects/{project_id}/user-properties/",

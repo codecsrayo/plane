@@ -1,13 +1,13 @@
-// src/lib.rs — biblioteca pública expuesta al binario y a los tests de integración.
+// src/lib.rs — public library exposed to the binary and integration tests.
 //
-// Razón: los tests de integración en `tests/` compilan como crate externo y
-// requieren acceso a módulos del proyecto. Exponerlos aquí permite:
+// Reason: integration tests in `tests/` compile as an external crate and
+// require access to project modules. Exposing them here allows:
 //   - `use api_rust::AppState;`
 //   - `use api_rust::routes::build_router;`
-//   - tests de propiedad (proptest) contra helpers puros (p.ej. CSRF, pagination).
+//   - property tests (proptest) against pure helpers (e.g. CSRF, pagination).
 //
-// El binario (`main.rs`) importa los mismos símbolos vía `use api_rust::…`,
-// evitando duplicar el árbol de módulos entre lib y bin.
+// The binary (`main.rs`) imports the same symbols via `use api_rust::…`,
+// avoiding duplication of the module tree between lib and bin.
 
 pub mod auth;
 pub mod config;
@@ -23,11 +23,11 @@ use auth::rate_limit::RateLimitState;
 use config::Config;
 use fred::prelude::Pool as RedisPool;
 
-/// Estado global del servidor.
+/// Global server state.
 ///
-/// Clonable (todos los campos son `Arc` o pools con `Arc` interno), por lo
-/// que cada handler recibe una copia barata vía `State<AppState>` sin
-/// contención adicional.
+/// Clonable (all fields are `Arc` or pools with internal `Arc`), so
+/// each handler receives a cheap copy via `State<AppState>` without
+/// additional contention.
 #[derive(Clone)]
 pub struct AppState {
     pub http: reqwest::Client,
@@ -35,7 +35,7 @@ pub struct AppState {
     pub redis: RedisPool,
     pub config: Arc<Config>,
     pub rate_limit: Arc<RateLimitState>,
-    /// `sqlx::PgPool` compartido para el enqueue de jobs de apalis.
-    /// Evita crear una conexión nueva por cada enqueue.
+    /// Shared `sqlx::PgPool` for apalis job enqueuing.
+    /// Avoids creating a new connection for each enqueue.
     pub pg_pool: sqlx::PgPool,
 }

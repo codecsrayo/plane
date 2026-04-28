@@ -1,8 +1,8 @@
 // src/routes/integrations/github.rs
-//! Endpoints específicos de GitHub.
+//! GitHub specific endpoints.
 //!
-//! Endpoints implementados:
-//!   GET  /api/github/callback/                                         (sin auth)
+//! Implemented endpoints:
+//!   GET  /api/github/callback/                                         (public)
 //!   POST /auth/github/user-callback/
 //!   GET  /api/workspaces/{slug}/workspace-integrations/{wi_id}/github-repositories/
 //!   GET  /api/workspaces/{slug}/workspace-integrations/github/repo-syncs/
@@ -55,11 +55,11 @@ use super::{
 // New aliases for /auth prefix
 use axum::response::IntoResponse;
 
-/// Alias del callback GitHub App bajo `/auth`.
+/// Alias for GitHub App callback under `/auth`.
 ///
-/// Sin params (`installation_id`, `state`) -> 400. Con params delega al
-/// handler `github_app_callback`. Mantener ambas rutas evita migrar la
-/// configuracion de GitHub Apps ya provisionadas que apuntan a `/api`.
+/// Without params (`installation_id`, `state`) -> 400. With params, delegates to
+/// `github_app_callback` handler. Keeping both routes avoids migrating
+/// existing GitHub Apps configurations pointing to `/api`.
 pub async fn github_callback_auth_alias(
     state: axum::extract::State<crate::AppState>,
     Query(params): Query<GithubCallbackQuery>,
@@ -76,9 +76,9 @@ pub async fn github_callback_auth_alias(
     github_app_callback(state, Query(params)).await.into_response()
 }
 
-/// `GET /auth/github/user-callback` -- el flujo real es `POST` con body
-/// JSON; un `GET` siempre es error de configuracion del cliente. Devolver
-/// 400 explicito evita el 405 confuso.
+/// `GET /auth/github/user-callback` -- real flow is `POST` with JSON
+/// body; a `GET` is always a client configuration error. Returning
+/// explicit 400 avoids confusing 405.
 pub async fn github_user_callback_get_stub() -> axum::response::Response {
     (
         StatusCode::BAD_REQUEST,
@@ -90,16 +90,16 @@ pub async fn github_user_callback_get_stub() -> axum::response::Response {
 }
 
 
-// ── GET /api/github/callback/ (sin auth) ─────────────────────────────────────
+// ── GET /api/github/callback/ (public) ─────────────────────────────────────
 
-/// Callback de GitHub App — Setup URL registrada en la GitHub App.
-/// No requiere autenticación (GitHub redirige el popup aquí directamente).
+/// GitHub App callback — Setup URL registered in the GitHub App.
+/// Does not require authentication (GitHub redirects popup here directly).
 #[utoipa::path(
     get,
     path = "/api/github/callback/",
     tag = "Integrations",
     responses(
-        (status = 200, description = "HTML de cierre de popup"),
+        (status = 200, description = "Popup closure HTML"),
     )
 )]
 pub async fn github_app_callback(
@@ -157,7 +157,7 @@ async fn github_app_callback_inner(
         .await?
         .context("GitHub integration not found in DB")?;
 
-    // Este callback es sin auth — usar el primer workspace admin como actor.
+    // This callback is public — use the first workspace admin as actor.
     let admin_member = workspace_members::Entity::find()
         .active()
         .filter(workspace_members::Column::WorkspaceId.eq(workspace.id))
@@ -179,10 +179,10 @@ async fn github_app_callback_inner(
     });
     let config = serde_json::json!({ "installation_id": installation_id });
 
-    // Antipatron corregido: el SELECT + INSERT/UPDATE debe ejecutarse dentro de
-    // una transaccion SERIALIZABLE para eliminar la race condition TOCTOU.
-    // Django usa update_or_create dentro de transaction.atomic() + captura
-    // IntegrityError como fallback. Aqui replicamos ese contrato de forma segura.
+    // Antipattern fixed: SELECT + INSERT/UPDATE must execute within
+    // a SERIALIZABLE transaction to eliminate TOCTOU race conditions.
+    // Django uses update_or_create within transaction.atomic() + IntegrityError
+    // capture as fallback. We replicate that contract safely here.
     state
         .db
         .transaction_with_config::<_, (), anyhow::Error>(
@@ -212,7 +212,7 @@ async fn github_app_callback_inner(
                         am.updated_at = Set(now);
                         am.update(txn).await?;
                     } else {
-                        // created_at/updated_at explicitos (NOT NULL sin DEFAULT).
+                        // explicit created_at/updated_at (NOT NULL without DEFAULT).
                         workspace_integrations::ActiveModel {
                             id: Set(Uuid::new_v4()),
                             workspace_id: Set(workspace_id),
@@ -243,16 +243,16 @@ async fn github_app_callback_inner(
 
 // ── POST /auth/github/user-callback/ ─────────────────────────────────────
 
-/// Intercambia un OAuth code de GitHub por un token personal de usuario.
+/// Exchanges a GitHub OAuth code for a personal user token.
 #[utoipa::path(
     post,
     path = "/auth/github/user-callback/",
     tag = "Integrations",
     responses(
-        (status = 201, description = "Conexión creada"),
-        (status = 200, description = "Conexión actualizada"),
-        (status = 400, description = "Error de validación"),
-        (status = 502, description = "Error al contactar GitHub"),
+        (status = 201, description = "Connection created"),
+        (status = 200, description = "Connection updated"),
+        (status = 400, description = "Validation error"),
+        (status = 502, description = "Error contacting GitHub"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -261,9 +261,9 @@ pub async fn github_user_callback(
     auth: AnyAuth,
     Json(body): Json<UserGithubCallbackRequest>,
 ) -> Result<(StatusCode, Json<UserGithubConnectionResponse>), AppError> {
-    // Django: UserGithubConnectionView usa IsAuthenticated sin scope de workspace.
-    // WorkspaceMemberGuard requería {slug} en el path, que esta ruta no tiene,
-    // causando 404 en todas las llamadas. Corregido: AnyAuth (sesión o API token).
+    // Django: UserGithubConnectionView uses IsAuthenticated without workspace scope.
+    // WorkspaceMemberGuard required {slug} in path, which this route lacks,
+    // causing 404 on all calls. Fixed: AnyAuth (session or API token).
     let client_id = get_instance_config(&state, "GITHUB_CLIENT_ID")
         .await?
         .ok_or_else(|| AppError::BadRequest("GitHub OAuth is not configured".into()))?;
@@ -272,8 +272,8 @@ pub async fn github_user_callback(
         .await?
         .ok_or_else(|| AppError::BadRequest("GitHub OAuth is not configured".into()))?;
 
-    // Django incluye redirect_uri en el token exchange para evitar
-    // redirect_uri_mismatch si la GitHub App lo tiene configurado.
+    // Django includes redirect_uri in token exchange to avoid
+    // redirect_uri_mismatch if GitHub App has it configured.
     let redirect_uri = state
         .config
         .web_url
@@ -362,7 +362,7 @@ pub async fn github_user_callback(
     let github_avatar_url = github_user["avatar_url"].as_str().unwrap_or("").to_owned();
     let user_id = auth.0.id;
 
-    // El access_token se cifra con AES-256-GCM antes de ser almacenado.
+    // access_token is AES-256-GCM encrypted before storage.
     let encrypted_token = encrypt_token(&access_token);
 
     let existing = user_github_connections::Entity::find()
@@ -383,7 +383,7 @@ pub async fn github_user_callback(
         am.updated_at = Set(now);
         (am.update(&state.db).await.map_err(AppError::Database)?, false)
     } else {
-        // created_at/updated_at explícitos (NOT NULL sin DEFAULT).
+        // explicit created_at/updated_at (NOT NULL without DEFAULT).
         let new_conn = user_github_connections::ActiveModel {
             id: Set(Uuid::new_v4()),
             user_id: Set(user_id),
@@ -427,12 +427,12 @@ pub async fn github_user_callback(
     params(
         ("slug" = String, Path, description = "Workspace slug"),
         ("wi_id" = Uuid, Path, description = "WorkspaceIntegration ID"),
-        ("page" = Option<u32>, Query, description = "Página (default 1)"),
-        ("per_page" = Option<u32>, Query, description = "Repos por página (default 30)"),
+        ("page" = Option<u32>, Query, description = "Page (default 1)"),
+        ("per_page" = Option<u32>, Query, description = "Repos per page (default 30)"),
     ),
     responses(
-        (status = 200, description = "Lista de repositorios GitHub"),
-        (status = 400, description = "Error de configuración"),
+        (status = 200, description = "GitHub repositories list"),
+        (status = 400, description = "Configuration error"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -575,7 +575,7 @@ pub async fn list_github_repositories(
     tag = "Integrations",
     params(("slug" = String, Path, description = "Workspace slug")),
     responses(
-        (status = 200, description = "Lista de repo syncs"),
+        (status = 200, description = "Repo syncs list"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -584,7 +584,7 @@ pub async fn list_github_repo_syncs(
     guard: WorkspaceMemberGuard,
 ) -> Result<Json<Vec<GithubRepoSyncResponse>>, AppError> {
     // Django: @allow_permission([ROLE.ADMIN, ROLE.MEMBER], level="WORKSPACE")
-    // Tanto admins como members pueden listar los syncs del workspace.
+    // Both admins and members can list workspace syncs.
     require_workspace_member(&guard.member)?;
 
     let wi = workspace_integrations::Entity::find()
@@ -607,7 +607,7 @@ pub async fn list_github_repo_syncs(
         .await
         .map_err(AppError::Database)?;
 
-    // Batch-fetch de repositorios — evita N+1.
+    // Repository batch-fetch — avoids N+1.
     let repo_ids: Vec<Uuid> = syncs.iter().map(|s| s.repository_id).collect();
     let repos_map: std::collections::HashMap<Uuid, github_repositories::Model> =
         github_repositories::Entity::find()
@@ -619,8 +619,8 @@ pub async fn list_github_repo_syncs(
             .map(|r| (r.id, r))
             .collect();
 
-    // Batch-fetch de proyectos para incluir `project_name` y `project_identifier`
-    // tal como hace Django en GithubRepoSyncViewSet.list().
+    // Projects batch-fetch to include `project_name` and `project_identifier`
+    // as in Django GithubRepoSyncViewSet.list().
     let project_ids: Vec<Uuid> = syncs.iter().map(|s| s.project_id).collect();
     let projects_map: std::collections::HashMap<Uuid, projects::Model> =
         projects::Entity::find()
@@ -692,8 +692,8 @@ pub async fn list_github_repo_syncs(
     tag = "Integrations",
     params(("slug" = String, Path, description = "Workspace slug")),
     responses(
-        (status = 201, description = "Repo sync creado"),
-        (status = 400, description = "Error de validación"),
+        (status = 201, description = "Repo sync created"),
+        (status = 400, description = "Validation error"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -734,7 +734,7 @@ pub async fn create_github_repo_sync(
             AppError::BadRequest("GitHub integration not installed for this workspace".into())
         })?;
 
-    // Buscar GithubRepository — incluyendo soft-deleted para no violar unique constraint.
+    // Look for GithubRepository — including soft-deleted to avoid unique constraint violation.
     let existing_repo = github_repositories::Entity::find()
         .filter(github_repositories::Column::RepositoryId.eq(repo_id_int))
         .filter(github_repositories::Column::ProjectId.eq(body.project_id))
@@ -742,8 +742,8 @@ pub async fn create_github_repo_sync(
         .await
         .map_err(AppError::Database)?;
 
-    // now() compartido para ambos bloques (repositorio + sync). Columnas
-    // created_at/updated_at NOT NULL sin DEFAULT en ambas entities.
+    // shared now() for both blocks (repository + sync). Columns
+    // created_at/updated_at NOT NULL without DEFAULT in both entities.
     let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
 
     let repo = match existing_repo {
@@ -829,7 +829,7 @@ pub async fn create_github_repo_sync(
         }
     };
 
-    // Registrar webhook en GitHub — best-effort, no bloquea la respuesta.
+    // Register webhook on GitHub — best-effort, doesn't block response.
     if let Err(e) = register_github_webhook(&state, &wi, &repo_owner, &repo_name).await {
         tracing::warn!(
             repo_sync_id = %sync.id,
@@ -837,8 +837,8 @@ pub async fn create_github_repo_sync(
         );
     }
 
-    // Fetch project para incluir project_name e project_identifier en la
-    // respuesta — espeja el campo que Django devuelve en GithubRepoSyncViewSet.create().
+    // Fetch project to include project_name and project_identifier in
+    // response — mirrors field Django returns in GithubRepoSyncViewSet.create().
     let project = projects::Entity::find_by_id(sync.project_id)
         .one(&state.db)
         .await
@@ -890,8 +890,8 @@ pub async fn create_github_repo_sync(
         ("pk" = Uuid, Path, description = "RepoSync ID"),
     ),
     responses(
-        (status = 204, description = "Eliminado"),
-        (status = 404, description = "No encontrado"),
+        (status = 204, description = "Deleted"),
+        (status = 404, description = "Not found"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -912,8 +912,8 @@ pub async fn delete_github_repo_sync(
 
     let repo_id = sync.repository_id;
 
-    // Ambos soft-deletes deben ser atómicos — sin transacción quedaría estado
-    // inconsistente si el segundo update falla.
+    // Both soft-deletes must be atomic — without transaction, inconsistent state
+    // would remain if the second update fails.
     state
         .db
         .transaction::<_, (), AppError>(|txn| {
@@ -946,10 +946,10 @@ pub async fn delete_github_repo_sync(
     Ok(StatusCode::NO_CONTENT)
 }
 
-// ── GitHub webhook registration (helper interno) ──────────────────────────────
+// ── GitHub webhook registration (internal helper) ──────────────────────────────
 
-/// Registra el webhook de Plane en el repositorio GitHub.
-/// Best-effort: nunca debe fallar el handler padre.
+/// Registers Plane webhook in GitHub repository.
+/// Best-effort: parent handler must never fail.
 async fn register_github_webhook(
     state: &AppState,
     wi: &workspace_integrations::Model,
@@ -960,13 +960,13 @@ async fn register_github_webhook(
         .metadata
         .get("installation_id")
         .and_then(|v| v.as_str())
-        .context("No installation_id en workspace_integration")?;
+        .context("No installation_id in workspace_integration")?;
 
     let token = get_installation_access_token(state, installation_id)
         .await?
-        .context("No se pudo obtener installation token")?;
+        .context("Could not obtain installation token")?;
 
-    // Antipatrón corregido: get_instance_config en lugar de std::env::var().
+    // Antipattern fixed: get_instance_config instead of std::env::var().
     let webhook_secret = get_instance_config(state, "GITHUB_WEBHOOK_SECRET")
         .await
         .unwrap_or_default()
@@ -976,7 +976,7 @@ async fn register_github_webhook(
         .config
         .web_url
         .as_deref()
-        .context("WEB_URL no configurado — requerido para registrar webhooks de GitHub")?
+        .context("WEB_URL not configured — required to register GitHub webhooks")?
         .to_owned();
 
     let resp = state
@@ -1000,7 +1000,7 @@ async fn register_github_webhook(
         }))
         .send()
         .await
-        .context("Error al llamar GitHub webhooks API")?;
+        .context("Error calling GitHub webhooks API")?;
 
     if !resp.status().is_success() {
         let status = resp.status();
@@ -1011,22 +1011,22 @@ async fn register_github_webhook(
     Ok(())
 }
 
-// ── list_integrations (endpoint global) ─────────────────────────────────────
+// ── list_integrations (global endpoint) ─────────────────────────────────────
 //
-// Catálogo global de integraciones disponibles. En Django el equivalente
-// (`IntegrationViewSet`) usa `IsAuthenticated`, que acepta tanto sesión como
-// API token. Usamos `AnyAuth` para replicar ese contrato — de lo contrario el
-// frontend, que manda cookie de sesión, recibe 401 y cae en el loop del
-// interceptor (`/settings/integrations/` → `/?next_path=…`).
+// Global catalog of available integrations. In Django the equivalent
+// (`IntegrationViewSet`) uses `IsAuthenticated`, which accepts both session and
+// API token. We use `AnyAuth` to replicate that contract — otherwise the
+// frontend, which sends session cookie, receives 401 and falls into the
+// interceptor loop (`/settings/integrations/` → `/?next_path=…`).
 
-/// Lista todas las integraciones disponibles (GitHub, GitLab, Slack).
+/// Lists all available integrations (GitHub, GitLab, Slack).
 #[utoipa::path(
     get,
     path = "/api/integrations/",
     tag = "Integrations",
     responses(
-        (status = 200, description = "Lista de integraciones"),
-        (status = 401, description = "No autenticado"),
+        (status = 200, description = "Integrations list"),
+        (status = 401, description = "Unauthorized"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -1034,10 +1034,10 @@ pub async fn list_integrations(
     State(state): State<AppState>,
     _auth: AnyAuth,
 ) -> Result<Json<Vec<IntegrationResponse>>, AppError> {
-    // Django usa `self.model.objects.all()` — sin filtro de soft-delete —
-    // para garantizar que todas las integraciones aparezcan en el panel,
-    // incluidas las no verificadas. Replicamos ese comportamiento aquí.
-    // Antipatrón evitado: no usar `.active()` que filtraría registros válidos.
+    // Django uses `self.model.objects.all()` — without soft-delete filter —
+    // to ensure all integrations appear in panel, including unverified ones.
+    // We replicate that behavior here.
+    // Antipattern avoided: do not use `.active()` which would filter valid records.
     let rows = integrations::Entity::find()
         .order_by_asc(integrations::Column::Title)
         .all(&state.db)

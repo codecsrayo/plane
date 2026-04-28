@@ -1,11 +1,11 @@
 // src/utils/startup.rs
-//! Equivalente Rust de los comandos Django `register_instance` y
-//! `configure_instance`.  Se ejecuta una vez al arranque antes de
-//! que el servidor HTTP comience a aceptar conexiones.
+//! Rust equivalent of Django commands `register_instance` and
+//! `configure_instance`. Runs once at startup before the
+//! HTTP server begins accepting connections.
 //!
-//! - `ensure_instance_registered`: crea el registro `Instance` si no existe.
-//! - `ensure_configurations_seeded`: inserta los valores por defecto en
-//!   `InstanceConfiguration` solo para las claves que aún no existen.
+//! - `ensure_instance_registered`: creates the `Instance` record if it doesn't exist.
+//! - `ensure_configurations_seeded`: inserts default values into
+//!   `InstanceConfiguration` only for keys that do not yet exist.
 
 use chrono::Utc;
 use sea_orm::{ActiveModelTrait, ActiveValue::Set, ColumnTrait, EntityTrait, QueryFilter};
@@ -20,9 +20,9 @@ use crate::{
 
 // ─── register_instance ───────────────────────────────────────────────────────
 
-/// Garantiza que exista exactamente un registro `Instance` en la base de datos.
-/// Si no existe se crea con `is_setup_done = false`; si ya existe se actualiza
-/// la versión y la fecha de verificación.
+/// Ensures that exactly one `Instance` record exists in the database.
+/// If it doesn't exist, it is created with `is_setup_done = false`; if it already exists,
+/// the version and check date are updated.
 pub async fn ensure_instance_registered(state: &AppState) -> Result<(), AppError> {
     let existing = instances::Entity::find()
         .active()
@@ -34,7 +34,7 @@ pub async fn ensure_instance_registered(state: &AppState) -> Result<(), AppError
     let version = env::var("APP_VERSION").unwrap_or_else(|_| "v0.1.0".to_owned());
 
     if let Some(inst) = existing {
-        // Actualizar versión y last_checked_at en cada arranque
+        // Update version and last_checked_at at each startup
         let mut active: instances::ActiveModel = inst.into();
         active.current_version = Set(version.clone());
         active.last_checked_at = Set(now.into());
@@ -46,7 +46,7 @@ pub async fn ensure_instance_registered(state: &AppState) -> Result<(), AppError
             .map_err(AppError::Database)?;
         tracing::info!("Instance already registered, updated version to {version}");
     } else {
-        // Crear la instancia (is_setup_done = false hasta que God Mode completa el setup)
+        // Create the instance (is_setup_done = false until God Mode completes the setup)
         let instance_id = uuid::Uuid::new_v4().simple().to_string()[..24].to_owned();
         instances::ActiveModel {
             id: Set(uuid::Uuid::new_v4()),
@@ -83,14 +83,14 @@ pub async fn ensure_instance_registered(state: &AppState) -> Result<(), AppError
 
 // ─── configure_instance ──────────────────────────────────────────────────────
 
-/// Tabla de variables de configuración con sus valores por defecto.
-/// Solo se inserta si la clave NO existe ya en `InstanceConfiguration`.
-/// Si existe, no se toca (preserva los valores configurados por el admin).
+/// Configuration variables table with their default values.
+/// Only inserted if the key does NOT already exist in `InstanceConfiguration`.
+/// If it exists, it is not touched (preserves values configured by the admin).
 struct ConfigDefault {
     key: &'static str,
-    /// Nombre de la env var que puede sobreescribir el default (None = no env var).
+    /// Name of the env var that can override the default (None = no env var).
     env_var: Option<&'static str>,
-    /// Valor por defecto cuando la env var no está seteada.
+    /// Default value when the env var is not set.
     default: &'static str,
     category: &'static str,
     is_encrypted: bool,
@@ -140,11 +140,11 @@ static CONFIG_DEFAULTS: &[ConfigDefault] = &[
     ConfigDefault { key: "INTERCOM_APP_ID",               env_var: Some("INTERCOM_APP_ID"),               default: "",                     category: "INTERCOM",            is_encrypted: false },
 ];
 
-/// Siembra los valores por defecto en `InstanceConfiguration`.
-/// Equivalente a `manage.py configure_instance`.
+/// Seeds default values into `InstanceConfiguration`.
+/// Equivalent to `manage.py configure_instance`.
 ///
-/// Solo inserta filas que no existan. Las filas ya presentes no se modifican,
-/// preservando los cambios hechos por el admin via God Mode.
+/// Only inserts rows that do not exist. Already present rows are not modified,
+/// preserving changes made by the admin via God Mode.
 pub async fn ensure_configurations_seeded(state: &AppState) -> Result<(), AppError> {
     use crate::utils::fernet::encrypt_config_value;
 
@@ -152,7 +152,7 @@ pub async fn ensure_configurations_seeded(state: &AppState) -> Result<(), AppErr
     let mut created = 0usize;
 
     for cfg in CONFIG_DEFAULTS {
-        // ¿Ya existe esta clave?
+        // Does this key already exist?
         let exists = instance_configurations::Entity::find()
             .filter(instance_configurations::Column::Key.eq(cfg.key))
             .one(&state.db)
@@ -164,7 +164,7 @@ pub async fn ensure_configurations_seeded(state: &AppState) -> Result<(), AppErr
             continue;
         }
 
-        // Resolver valor: env var → default hardcoded
+        // Resolve value: env var → hardcoded default
         let raw_value = cfg
             .env_var
             .and_then(|var| env::var(var).ok())

@@ -1,6 +1,6 @@
 // src/routes/integrations/dtos.rs
-//! DTOs de request/response y constantes compartidas para el módulo
-//! de integraciones (GitHub, GitLab, Slack).
+//! Request/response DTOs and shared constants for the
+//! integrations module (GitHub, GitLab, Slack).
 
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
@@ -9,9 +9,9 @@ use crate::entities::{
     db_githubprstatemapping, integrations, workspace_integrations,
 };
 
-// ── Constantes ────────────────────────────────────────────────────────────────
+// ── Constants ────────────────────────────────────────────────────────────────
 
-/// Valores de `github_pr_state` permitidos (enum Postgres).
+/// Allowed `github_pr_state` values (Postgres enum).
 pub const VALID_PR_STATES: &[&str] = &[
     "draft_open",
     "open",
@@ -82,9 +82,9 @@ impl WorkspaceIntegrationResponse {
 pub struct GithubRepoSyncResponse {
     pub id: Uuid,
     pub project_id: Uuid,
-    /// Nombre legible del proyecto — espeja `project_name` del Django serializer.
+    /// Human-readable project name — mirrors `project_name` from Django serializer.
     pub project_name: String,
-    /// Identificador corto del proyecto (e.g. "PLANE") — espeja `project_identifier`.
+    /// Short project identifier (e.g. "PLANE") — mirrors `project_identifier`.
     pub project_identifier: String,
     pub repo_id: String,
     pub repo_full_name: String,
@@ -93,7 +93,7 @@ pub struct GithubRepoSyncResponse {
     pub sync_direction: String,
     pub issue_open_state: Option<String>,
     pub issue_closed_state: Option<String>,
-    /// Timestamp de creación ISO 8601 — espeja `created_at` del Django serializer.
+    /// Creation timestamp ISO 8601 — mirrors `created_at` from Django serializer.
     pub created_at: chrono::DateTime<chrono::FixedOffset>,
 }
 

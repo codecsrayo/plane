@@ -1,27 +1,27 @@
 // src/utils/django_defaults.rs
-//! Defaults JSON canónicos de Django para columnas `jsonb NOT NULL`.
+//! Canonical Django JSON defaults for `jsonb NOT NULL` columns.
 //!
-//! Django define estos valores en `models.JSONField(default=...)` a nivel
-//! Python — la BD NO tiene cláusulas DEFAULT correspondientes (las migraciones
-//! solo aplican el default en el momento del INSERT vía Python). Por eso los
-//! handlers Rust deben proveer el mismo JSON explícitamente al insertar.
+//! Django defines these values in `models.JSONField(default=...)` at the Python
+//! level — the DB does NOT have corresponding DEFAULT clauses (migrations only
+//! apply the default at INSERT time via Python). That's why Rust handlers
+//! must provide the same JSON explicitly when inserting.
 //!
-//! Fuente canónica:
+//! Canonical source:
 //! - `apps/api/plane/db/models/project.py` → `get_default_props`,
 //!   `get_default_preferences`
 //! - `apps/api/plane/db/models/issue.py` → `get_default_filters`,
 //!   `get_default_display_filters`, `get_default_display_properties`
 //!
-//! Estos defaults se usan al crear `project_members`,
+//! These defaults are used when creating `project_members`,
 //! `project_user_properties`, `cycle_user_properties`, `module_user_properties`,
-//! `workspace_members` y otras tablas que hereden de `IssueProperty`.
+//! `workspace_members` and other tables that inherit from `IssueProperty`.
 
 use serde_json::{json, Value};
 
-/// Mirror de `get_default_filters()` (issue.py).
+/// Mirror of `get_default_filters()` (issue.py).
 ///
-/// Estructura usada en `*UserProperty.filters`. Todos los slots arrancan en
-/// `null` para que el frontend muestre todos los issues sin filtrar.
+/// Structure used in `*UserProperty.filters`. All slots start at
+/// `null` so the frontend shows all issues without filtering.
 pub fn default_filters() -> Value {
     json!({
         "priority": null,
@@ -36,10 +36,10 @@ pub fn default_filters() -> Value {
     })
 }
 
-/// Mirror de `get_default_display_filters()` (issue.py).
+/// Mirror of `get_default_display_filters()` (issue.py).
 ///
-/// Configuración de visualización por defecto: lista, ordenado por fecha de
-/// creación descendente, mostrando sub-issues y grupos vacíos.
+/// Default display configuration: list, ordered by creation date
+/// descending, showing sub-issues and empty groups.
 pub fn default_display_filters() -> Value {
     json!({
         "group_by": null,
@@ -52,9 +52,9 @@ pub fn default_display_filters() -> Value {
     })
 }
 
-/// Mirror de `get_default_display_properties()` (issue.py).
+/// Mirror of `get_default_display_properties()` (issue.py).
 ///
-/// Columnas/badges visibles por defecto en la vista de issues.
+/// Columns/badges visible by default in the issues view.
 pub fn default_display_properties() -> Value {
     json!({
         "assignee": true,
@@ -73,11 +73,11 @@ pub fn default_display_properties() -> Value {
     })
 }
 
-/// Mirror de `get_default_props()` (project.py).
+/// Mirror of `get_default_props()` (project.py).
 ///
-/// Estructura compuesta usada en `project_members.view_props` y
-/// `project_members.default_props`: combina filtros base + filtros de
-/// visualización en un solo objeto.
+/// Composite structure used in `project_members.view_props` and
+/// `project_members.default_props`: combines base filters + display
+/// filters into a single object.
 pub fn default_props() -> Value {
     json!({
         "filters": default_filters(),
@@ -85,11 +85,11 @@ pub fn default_props() -> Value {
     })
 }
 
-/// Mirror de `get_default_preferences()` (project.py).
+/// Mirror of `get_default_preferences()` (project.py).
 ///
-/// Preferencias de UI a nivel proyecto. `pages.block_display=true` y
-/// `navigation.default_tab="work_items"` son los valores que asume el frontend
-/// si no recibe nada del backend.
+/// Project-level UI preferences. `pages.block_display=true` and
+/// `navigation.default_tab="work_items"` are the values assumed by the frontend
+/// if it receives nothing from the backend.
 pub fn default_preferences() -> Value {
     json!({
         "pages": { "block_display": true },
@@ -106,8 +106,8 @@ mod tests {
 
     #[test]
     fn defaults_are_objects() {
-        // Si alguno de estos no es objeto, ningún INSERT con jsonb NOT NULL
-        // funcionaría — falla rápido en compile/test en lugar de en runtime.
+        // If any of these is not an object, no INSERT with jsonb NOT NULL
+        // would work — fails fast in compile/test instead of runtime.
         assert!(default_filters().is_object());
         assert!(default_display_filters().is_object());
         assert!(default_display_properties().is_object());
@@ -120,7 +120,7 @@ mod tests {
         let v = default_props();
         assert!(v["filters"].is_object());
         assert!(v["display_filters"].is_object());
-        // Sanity: order_by debe ser el default de Django.
+        // Sanity: order_by must be the Django default.
         assert_eq!(v["display_filters"]["order_by"], "-created_at");
     }
 }

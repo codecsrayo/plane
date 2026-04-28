@@ -1,7 +1,7 @@
 // src/jobs/cleanup.rs
-//! Tareas de limpieza periódica.
+//! Periodic cleanup tasks.
 //!
-//! Equivalentes a:
+//! Equivalent to:
 //!   - `plane/bgtasks/deletion_task.py`        → hard_delete
 //!   - `plane/bgtasks/cleanup_task.py`          → delete_api_logs,
 //!     delete_email_notification_logs, delete_page_versions,
@@ -9,12 +9,12 @@
 //!   - `plane/bgtasks/exporter_expired_task.py` → delete_old_s3_links
 //!   - `plane/bgtasks/file_asset_task.py`       → delete_unuploaded_file_assets
 //!
-//! Estas funciones se invocan directamente desde el scheduler (`cron.rs`),
-//! no a través de apalis — son tareas sin estado de reintento.
+//! These functions are called directly from the scheduler (`cron.rs`),
+//! not through apalis — they are stateless tasks without retry.
 //!
-//! Nota: la versión Django intentaba archivar registros en MongoDB antes de
-//! eliminarlos. En Rust se omite MongoDB (no está en el stack) y se elimina
-//! directamente.
+//! Note: the Django version attempted to archive records in MongoDB before
+//! deleting them. In Rust, MongoDB is omitted (not in the stack) and
+//! records are deleted directly.
 
 use std::collections::HashSet;
 
@@ -28,13 +28,13 @@ use crate::entities::{exporters};
 
 // ── hard_delete ───────────────────────────────────────────────────────────────
 
-/// Tablas procesadas en orden hoja → raíz durante la pasada explícita.
-/// Paridad con el bloque hardcodeado de `deletion_task.hard_delete()` en Django
+/// Tables processed in leaf → root order during explicit pass.
+/// Parity with the hardcoded block in `deletion_task.hard_delete()` in Django
 /// (Workspace, Project, Cycle, Module, Issue, Page, IssueView, Label, State,
 /// IssueActivity, IssueComment, IssueLink, IssueReaction, UserFavorite,
-/// ModuleIssue, CycleIssue, Estimate, EstimatePoint). El orden está invertido
-/// respecto a Django porque Rust no cascada en el ORM: tenemos que borrar
-/// hijos antes que padres al nivel SQL.
+/// ModuleIssue, CycleIssue, Estimate, EstimatePoint). The order is inverted
+/// with respect to Django because Rust does not cascade in the ORM: we have to delete
+/// children before parents at the SQL level.
 const HARD_DELETE_ORDERED_TABLES: &[&str] = &[
     "estimate_points",
     "estimates",
@@ -56,35 +56,35 @@ const HARD_DELETE_ORDERED_TABLES: &[&str] = &[
     "workspaces",
 ];
 
-/// Elimina definitivamente registros con `deleted_at` anterior a `days` días.
+/// Permanently deletes records with `deleted_at` older than `days` days.
 ///
-/// Equivalente a `plane/bgtasks/deletion_task.py::hard_delete()`.
+/// Equivalent to `plane/bgtasks/deletion_task.py::hard_delete()`.
 ///
-/// Implementa dos pasadas, igual que la versión Django:
+/// Implements two passes, just like the Django version:
 ///
-/// 1. **Pasada ordenada**: las 18 tablas de la jerarquía principal en orden
-///    hoja → raíz. Cualquier fallo aquí aborta (el orden importa y un fallo
-///    indica corrupción de estado).
-/// 2. **Pasada catch-all**: descubre dinámicamente toda tabla en el schema
-///    `public` con columna `deleted_at` (vía `information_schema`) y las
-///    purga. Equivalente al loop `apps.get_models()` al final del
-///    `hard_delete` de Django. Los errores por tabla se loguean como WARN
-///    pero NO abortan el barrido (más resiliente que Django: Django aborta
-///    toda la task si una sola tabla falla, lo cual es indeseable para una
-///    tarea diaria de GC — mejor purgar las que podemos).
+/// 1. **Ordered pass**: the 18 tables of the main hierarchy in order
+///    leaf → root. Any failure here aborts (order matters and a failure
+///    indicates state corruption).
+/// 2. **Catch-all pass**: dynamically discovers all tables in the `public` schema
+///    with a `deleted_at` column (via `information_schema`) and purges them.
+///    Equivalent to the `apps.get_models()` loop at the end of
+///    Django's `hard_delete`. Errors per table are logged as WARN
+///    but DO NOT abort the sweep (more resilient than Django: Django aborts
+///    the entire task if a single table fails, which is undesirable for a
+///    daily GC task — better to purge those we can).
 pub async fn hard_delete(db: &DatabaseConnection, days: i64) -> anyhow::Result<()> {
     let cutoff = chrono::Utc::now() - chrono::Duration::days(days);
     let cutoff_dt: chrono::DateTime<chrono::FixedOffset> = cutoff.into();
 
     let mut total_deleted = 0u64;
 
-    // ── Pasada 1: tablas ordenadas (hoja → raíz) ──────────────────────────────
+    // ── Pass 1: ordered tables (leaf → root) ──────────────────────────────
     for table in HARD_DELETE_ORDERED_TABLES {
         total_deleted += purge_soft_deleted(db, table, &cutoff_dt).await?;
     }
 
-    // ── Pasada 2: catch-all sobre todas las tablas con `deleted_at` ──────────
-    // Paridad con:
+    // ── Pass 2: catch-all over all tables with `deleted_at` ──────────
+    // Parity with:
     //     for model in apps.get_models():
     //         if hasattr(model, "deleted_at"):
     //             model.all_objects.filter(deleted_at__lt=cutoff).delete()
@@ -99,30 +99,30 @@ pub async fn hard_delete(db: &DatabaseConnection, days: i64) -> anyhow::Result<(
             Err(e) => tracing::warn!(
                 table = %table,
                 error = %e,
-                "hard_delete: fallo al purgar tabla en catch-all, continuando"
+                "hard_delete: failed to purge table in catch-all, continuing"
             ),
         }
     }
 
-    tracing::info!(total_deleted, days, "hard_delete completado");
+    tracing::info!(total_deleted, days, "hard_delete completed");
     Ok(())
 }
 
-/// Ejecuta `DELETE FROM <table> WHERE deleted_at IS NOT NULL AND deleted_at < $1`.
+/// Executes `DELETE FROM <table> WHERE deleted_at IS NOT NULL AND deleted_at < $1`.
 ///
-/// Valida el identificador de tabla antes de interpolarlo para evitar
-/// inyección SQL (defensa en profundidad: los nombres vienen de
-/// `information_schema` y son siempre seguros, pero validamos igual).
+/// Validates the table identifier before interpolating it to prevent
+/// SQL injection (defense in depth: names come from `information_schema`
+/// and are always safe, but we validate anyway).
 async fn purge_soft_deleted(
     db: &DatabaseConnection,
     table: &str,
     cutoff_dt: &chrono::DateTime<chrono::FixedOffset>,
 ) -> anyhow::Result<u64> {
     if !is_safe_identifier(table) {
-        anyhow::bail!("hard_delete: identificador de tabla inválido: {table:?}");
+        anyhow::bail!("hard_delete: invalid table identifier: {table:?}");
     }
-    // El identificador se cita con comillas dobles (identifier quoting de SQL
-    // estándar); el valor de cutoff va parametrizado.
+    // Identifier is quoted with double quotes (standard SQL identifier quoting);
+    // the cutoff value is parameterized.
     let sql = format!(
         r#"DELETE FROM "{table}" WHERE deleted_at IS NOT NULL AND deleted_at < $1"#
     );
@@ -138,11 +138,11 @@ async fn purge_soft_deleted(
     Ok(n)
 }
 
-/// Devuelve los nombres de las tablas `BASE TABLE` del schema `public` que
-/// tienen una columna `deleted_at`.
+/// Returns the names of `BASE TABLE` tables in the `public` schema that
+/// have a `deleted_at` column.
 ///
-/// Mirror del `hasattr(model, "deleted_at")` de Django, pero a nivel de
-/// metadata de la BD (no depende de entities registrados en SeaORM).
+/// Mirror of Django's `hasattr(model, "deleted_at")`, but at the
+/// DB metadata level (does not depend on entities registered in SeaORM).
 async fn find_tables_with_deleted_at(
     db: &DatabaseConnection,
 ) -> anyhow::Result<Vec<String>> {
@@ -169,13 +169,12 @@ async fn find_tables_with_deleted_at(
     Ok(tables)
 }
 
-/// Valida que un identificador sea `[a-zA-Z_][a-zA-Z0-9_]*` (snake_case
-/// estándar de Postgres). Rechaza cualquier cosa con comillas, espacios,
-/// punto y coma, etc. Defensa ante inyección SQL en el path del
-/// `format!()` del DELETE.
+/// Validates that an identifier is `[a-zA-Z_][a-zA-Z0-9_]*` (standard Postgres
+/// snake_case). Rejects anything with quotes, spaces, semicolons, etc.
+/// Defense against SQL injection in the `format!()` path of the DELETE.
 fn is_safe_identifier(s: &str) -> bool {
     if s.is_empty() || s.len() > 63 {
-        // 63 es el límite de identificador de Postgres (NAMEDATALEN-1).
+        // 63 is the identifier limit for Postgres (NAMEDATALEN-1).
         return false;
     }
     let mut chars = s.chars();
@@ -188,7 +187,7 @@ fn is_safe_identifier(s: &str) -> bool {
 
 // ── delete_api_logs ───────────────────────────────────────────────────────────
 
-/// Elimina registros de `api_activity_logs` más antiguos que `days` días.
+/// Deletes `api_activity_logs` records older than `days` days.
 pub async fn delete_api_logs(db: &DatabaseConnection, days: i64) -> anyhow::Result<u64> {
     let cutoff = chrono::Utc::now() - chrono::Duration::days(days);
     let cutoff_dt: chrono::DateTime<chrono::FixedOffset> = cutoff.into();
@@ -199,13 +198,13 @@ pub async fn delete_api_logs(db: &DatabaseConnection, days: i64) -> anyhow::Resu
         vec![cutoff_dt.into()],
     );
     let n = db.execute(stmt).await?.rows_affected();
-    tracing::info!(deleted = n, days, "delete_api_logs completado");
+    tracing::info!(deleted = n, days, "delete_api_logs completed");
     Ok(n)
 }
 
 // ── delete_email_notification_logs ───────────────────────────────────────────
 
-/// Elimina `email_notification_logs` enviados hace más de `days` días.
+/// Deletes `email_notification_logs` sent more than `days` days ago.
 pub async fn delete_email_notification_logs(
     db: &DatabaseConnection,
     days: i64,
@@ -219,16 +218,16 @@ pub async fn delete_email_notification_logs(
         vec![cutoff_dt.into()],
     );
     let n = db.execute(stmt).await?.rows_affected();
-    tracing::info!(deleted = n, days, "delete_email_notification_logs completado");
+    tracing::info!(deleted = n, days, "delete_email_notification_logs completed");
     Ok(n)
 }
 
 // ── delete_page_versions ─────────────────────────────────────────────────────
 
-/// Elimina versiones de página que excedan las 20 más recientes por página.
+/// Deletes page versions exceeding the 20 most recent per page.
 ///
-/// Usa una window function (`ROW_NUMBER`) para identificar los registros
-/// más antiguos. Equivalente al subquery de Django con `annotate(row_num=Window(...))`.
+/// Uses a window function (`ROW_NUMBER`) to identify the oldest records.
+/// Equivalent to Django's subquery with `annotate(row_num=Window(...))`.
 pub async fn delete_page_versions(db: &DatabaseConnection) -> anyhow::Result<u64> {
     let stmt = Statement::from_string(
         sea_orm::DatabaseBackend::Postgres,
@@ -249,13 +248,13 @@ pub async fn delete_page_versions(db: &DatabaseConnection) -> anyhow::Result<u64
         .to_owned(),
     );
     let n = db.execute(stmt).await?.rows_affected();
-    tracing::info!(deleted = n, "delete_page_versions completado");
+    tracing::info!(deleted = n, "delete_page_versions completed");
     Ok(n)
 }
 
 // ── delete_issue_description_versions ────────────────────────────────────────
 
-/// Elimina versiones de descripción de issue que excedan las 20 más recientes por issue.
+/// Deletes issue description versions exceeding the 20 most recent per issue.
 pub async fn delete_issue_description_versions(
     db: &DatabaseConnection,
 ) -> anyhow::Result<u64> {
@@ -278,13 +277,13 @@ pub async fn delete_issue_description_versions(
         .to_owned(),
     );
     let n = db.execute(stmt).await?.rows_affected();
-    tracing::info!(deleted = n, "delete_issue_description_versions completado");
+    tracing::info!(deleted = n, "delete_issue_description_versions completed");
     Ok(n)
 }
 
 // ── delete_webhook_logs ───────────────────────────────────────────────────────
 
-/// Elimina `webhook_logs` más antiguos que `days` días.
+/// Deletes `webhook_logs` older than `days` days.
 pub async fn delete_webhook_logs(db: &DatabaseConnection, days: i64) -> anyhow::Result<u64> {
     let cutoff = chrono::Utc::now() - chrono::Duration::days(days);
     let cutoff_dt: chrono::DateTime<chrono::FixedOffset> = cutoff.into();
@@ -295,16 +294,16 @@ pub async fn delete_webhook_logs(db: &DatabaseConnection, days: i64) -> anyhow::
         vec![cutoff_dt.into()],
     );
     let n = db.execute(stmt).await?.rows_affected();
-    tracing::info!(deleted = n, days, "delete_webhook_logs completado");
+    tracing::info!(deleted = n, days, "delete_webhook_logs completed");
     Ok(n)
 }
 
 // ── delete_old_s3_links ───────────────────────────────────────────────────────
 
-/// Elimina objetos de S3 y limpia la URL en `exporter_history` para registros
-/// con más de 8 días de antigüedad.
+/// Deletes S3 objects and clears the URL in `exporter_history` for records
+/// more than 8 days old.
 ///
-/// Equivalente a `exporter_expired_task.delete_old_s3_link()`.
+/// Equivalent to `exporter_expired_task.delete_old_s3_link()`.
 pub async fn delete_old_s3_links(
     db: &DatabaseConnection,
     s3: &S3Client,
@@ -313,7 +312,7 @@ pub async fn delete_old_s3_links(
     let cutoff = chrono::Utc::now() - chrono::Duration::days(8);
     let cutoff_dt: chrono::DateTime<chrono::FixedOffset> = cutoff.into();
 
-    // Registros con URL activa creados hace más de 8 días
+    // Records with active URL created more than 8 days ago
     let expired = exporters::Entity::find()
         .filter(exporters::Column::Url.is_not_null())
         .filter(exporters::Column::CreatedAt.lte(cutoff_dt))
@@ -322,7 +321,7 @@ pub async fn delete_old_s3_links(
 
     let count = expired.len() as u64;
     for record in expired {
-        // Eliminar objeto de S3 (best-effort — error no es fatal)
+        // Delete object from S3 (best-effort — error is not fatal)
         if !record.key.is_empty() {
             if let Err(e) = s3
                 .delete_object()
@@ -334,26 +333,26 @@ pub async fn delete_old_s3_links(
                 tracing::warn!(
                     key = %record.key,
                     error = %e,
-                    "delete_old_s3_links: fallo al eliminar objeto S3"
+                    "delete_old_s3_links: failed to delete S3 object"
                 );
             }
         }
 
-        // Poner url a NULL en la BD
+        // Set url to NULL in the DB
         let mut am: exporters::ActiveModel = record.into();
         am.url = Set(None);
         am.update(db).await?;
     }
 
-    tracing::info!(deleted = count, "delete_old_s3_links completado");
+    tracing::info!(deleted = count, "delete_old_s3_links completed");
     Ok(count)
 }
 
 // ── delete_unuploaded_file_assets ─────────────────────────────────────────────
 
-/// Elimina `file_assets` que no completaron la subida y tienen más de `days` días.
+/// Deletes `file_assets` that did not complete upload and are older than `days` days.
 ///
-/// Equivalente a `file_asset_task.delete_unuploaded_file_asset()`.
+/// Equivalent to `file_asset_task.delete_unuploaded_file_asset()`.
 pub async fn delete_unuploaded_file_assets(
     db: &DatabaseConnection,
     days: i64,
@@ -367,7 +366,7 @@ pub async fn delete_unuploaded_file_assets(
         vec![cutoff_dt.into()],
     );
     let n = db.execute(stmt).await?.rows_affected();
-    tracing::info!(deleted = n, days, "delete_unuploaded_file_assets completado");
+    tracing::info!(deleted = n, days, "delete_unuploaded_file_assets completed");
     Ok(n)
 }
 
@@ -386,7 +385,7 @@ mod tests {
     #[test]
     fn safe_identifier_rejects_injection_attempts() {
         assert!(!is_safe_identifier(""));
-        assert!(!is_safe_identifier("1issues")); // no puede empezar con dígito
+        assert!(!is_safe_identifier("1issues")); // cannot start with digit
         assert!(!is_safe_identifier("issues; DROP TABLE x"));
         assert!(!is_safe_identifier("issues--"));
         assert!(!is_safe_identifier("\"issues\""));

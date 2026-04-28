@@ -1,11 +1,11 @@
 // src/utils/pagination.rs
-//! Paginación cursor-estilo Django.
+//! Django-style cursor pagination.
 //!
-//! Equivalente a `plane/utils/paginator.py::OffsetPaginator` + `Cursor`.
+//! Equivalent to `plane/utils/paginator.py::OffsetPaginator` + `Cursor`.
 //!
-//! Formato de cursor: `"{per_page}:{offset}:{is_prev}"` (e.g. `"20:0:0"`).
+//! Cursor format: `"{per_page}:{offset}:{is_prev}"` (e.g. `"20:0:0"`).
 //!
-//! El response se serializa con el mismo shape que Django produce en
+//! The response is serialized with the same shape that Django produces in
 //! `paginate()`:
 //!
 //! ```json
@@ -32,10 +32,10 @@ use crate::error::AppError;
 
 pub const DEFAULT_MAX_LIMIT: u64 = 1000;
 
-/// Cursor parseado desde `"per_page:offset:is_prev"`.
+/// Cursor parsed from `"per_page:offset:is_prev"`.
 ///
-/// Django usa `value` como el per_page (Cursor.value). Aquí lo nombramos
-/// `per_page` para mayor claridad.
+/// Django uses `value` as the per_page (Cursor.value). Here we name it
+/// `per_page` for clarity.
 #[derive(Debug, Clone, Copy)]
 pub struct Cursor {
     pub per_page: u64,
@@ -44,19 +44,19 @@ pub struct Cursor {
 }
 
 impl Cursor {
-    /// Parsea cursor desde string. Django acepta `"20:0:0"` y similar.
+    /// Parses cursor from string. Django accepts `"20:0:0"` and similar.
     ///
-    /// Paridad con `Cursor.from_string`: 3 partes separadas por `:`.
-    /// Si falla, se considera cursor inválido y devolvemos BadRequest
-    /// (igual que Django lanza ParseError).
+    /// Parity with `Cursor.from_string`: 3 parts separated by `:`.
+    /// If it fails, it is considered an invalid cursor and we return BadRequest
+    /// (same as Django throws ParseError).
     pub fn from_string(s: &str) -> Result<Self, AppError> {
         let parts: Vec<&str> = s.split(':').collect();
         if parts.len() != 3 {
             return Err(AppError::BadRequest("Invalid cursor parameter.".into()));
         }
-        // Django acepta int o float en value; aquí sólo usamos el valor como
-        // per_page entero (es lo que se pasa en la práctica). Si viene float
-        // lo truncamos de forma segura.
+        // Django accepts int or float in value; here we only use the value as
+        // an integer per_page (it's what is passed in practice). If a float
+        // comes in, we truncate it safely.
         let per_page: u64 = parts[0]
             .parse::<f64>()
             .map_err(|_| AppError::BadRequest("Invalid cursor parameter.".into()))?
@@ -70,15 +70,15 @@ impl Cursor {
         Ok(Self { per_page, offset, is_prev: is_prev_raw != 0 })
     }
 
-    /// Serialización que Django usa: `{value}:{offset}:{is_prev_int}`.
+    /// Serialization that Django uses: `{value}:{offset}:{is_prev_int}`.
     pub fn to_string_repr(&self) -> String {
         format!("{}:{}:{}", self.per_page, self.offset, self.is_prev as u32)
     }
 }
 
-/// Resuelve per_page desde query params con el mismo fallback que Django:
-/// si el cursor trae per_page, se usa; si no, `default_per_page`. Siempre
-/// tope `max_per_page`.
+/// Resolves per_page from query params with the same fallback as Django:
+/// if the cursor brings per_page, it's used; if not, `default_per_page`. Always
+/// capped by `max_per_page`.
 pub fn resolve_per_page(
     cursor_per_page: Option<u64>,
     query_per_page: Option<u64>,
@@ -91,9 +91,9 @@ pub fn resolve_per_page(
     requested.clamp(1, max_per_page.max(1))
 }
 
-/// Parsea el cursor desde la query — devuelve default si viene vacío/None.
+/// Parses the cursor from the query — returns default if empty/None.
 ///
-/// El default es `"{default_per_page}:0:0"`, igual que Django.
+/// The default is `"{default_per_page}:0:0"`, same as Django.
 pub fn parse_cursor_or_default(
     raw: Option<&str>,
     default_per_page: u64,
@@ -104,13 +104,13 @@ pub fn parse_cursor_or_default(
     }
 }
 
-/// Construye el body paginado estilo Django a partir del slice `results`
-/// ya serializado y los contadores calculados por el caller.
+/// Builds the Django-style paginated body from the already serialized
+/// `results` slice and the counters calculated by the caller.
 ///
-/// - `total_count`: total de filas que matchearon el filtro (sin paginar).
-/// - `limit`: per_page efectivo usado.
-/// - `offset_page`: la página 0-indexada que se pidió.
-/// - `results`: los registros de la página actual.
+/// - `total_count`: total rows that matched the filter (unpaginated).
+/// - `limit`: effective per_page used.
+/// - `offset_page`: the 0-indexed page requested.
+/// - `results`: the records of the current page.
 pub fn build_response<T: Serialize>(
     results: Vec<T>,
     total_count: u64,
@@ -118,8 +118,8 @@ pub fn build_response<T: Serialize>(
     offset_page: u64,
 ) -> JsonValue {
     let count = results.len() as u64;
-    // Paridad con Django: has_next se determina trayendo limit+1 y chequeando.
-    // Aquí lo aproximamos con total_count, evitando la query extra.
+    // Parity with Django: has_next is determined by fetching limit+1 and checking.
+    // Here we approximate it with total_count, avoiding the extra query.
     let has_next = (offset_page + 1) * limit < total_count;
     let has_prev = offset_page > 0;
 

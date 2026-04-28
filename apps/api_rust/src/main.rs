@@ -8,35 +8,35 @@ use std::{net::SocketAddr, sync::Arc};
 use tokio::net::TcpListener;
 use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt, EnvFilter};
 
-/// Espera SIGINT (Ctrl-C) o SIGTERM antes de iniciar el shutdown graceful.
+/// Waits for SIGINT (Ctrl-C) or SIGTERM before starting graceful shutdown.
 async fn shutdown_signal() {
     let ctrl_c = async {
         tokio::signal::ctrl_c()
             .await
-            .expect("No se pudo instalar el handler de Ctrl-C");
+            .expect("Could not install Ctrl-C handler");
     };
 
     #[cfg(unix)]
     let sigterm = async {
         tokio::signal::unix::signal(tokio::signal::unix::SignalKind::terminate())
-            .expect("No se pudo instalar el handler de SIGTERM")
+            .expect("Could not install SIGTERM handler")
             .recv()
             .await;
     };
 
-    // En plataformas no-Unix (Windows) SIGTERM no existe; se usa un future que
-    // nunca resuelve para que sólo Ctrl-C sea efectivo.
+    // On non-Unix platforms (Windows) SIGTERM does not exist; a future that
+    // never resolves is used so only Ctrl-C is effective.
     #[cfg(not(unix))]
     let sigterm = std::future::pending::<()>();
 
     tokio::select! {
-        _ = ctrl_c  => tracing::info!("SIGINT recibido, iniciando shutdown graceful..."),
-        _ = sigterm => tracing::info!("SIGTERM recibido, iniciando shutdown graceful..."),
+        _ = ctrl_c  => tracing::info!("SIGINT received, starting graceful shutdown..."),
+        _ = sigterm => tracing::info!("SIGTERM received, starting graceful shutdown..."),
     }
 }
 
-/// Inicializa los workers de apalis (jobs en segundo plano).
-/// Cada worker consume una cola de PostgreSQL de forma independiente.
+/// Initializes apalis workers (background jobs).
+/// Each worker consumes a PostgreSQL queue independently.
 async fn start_job_workers(state: AppState) -> anyhow::Result<()> {
     use jobs::{
         export::{ExportIssuesJob, handle_export_issues},
@@ -50,11 +50,11 @@ async fn start_job_workers(state: AppState) -> anyhow::Result<()> {
     // Reuse shared PgPool from AppState — no new connection needed
     let pg_pool = state.pg_pool.clone();
 
-    // setup() es asociado en PostgresStorage::<()> — se llama una vez para
-    // crear/verificar la tabla de jobs en la base de datos.
+    // setup() is associated in PostgresStorage::<()> — called once to
+    // create/verify the jobs table in the database.
     PostgresStorage::<()>::setup(&pg_pool).await?;
 
-    // Crear storages tipados (no requieren setup individual)
+    // Create typed storages (do not require individual setup)
     let github_storage: PostgresStorage<GithubInitialSyncJob> =
         PostgresStorage::new(pg_pool.clone());
     let notif_storage: PostgresStorage<IssueActivityNotificationJob> =
@@ -68,7 +68,7 @@ async fn start_job_workers(state: AppState) -> anyhow::Result<()> {
     let seed_storage: PostgresStorage<WorkspaceSeedJob> =
         PostgresStorage::new(pg_pool);
 
-    // Monitor agrupa todos los workers y los ejecuta concurrentemente
+    // Monitor groups all workers and runs them concurrently
     Monitor::new()
         .register(
             WorkerBuilder::new("github-initial-sync")
@@ -113,13 +113,13 @@ async fn start_job_workers(state: AppState) -> anyhow::Result<()> {
 }
 
 
-// Módulos y AppState viven ahora en `src/lib.rs` para que los tests de
-// integración bajo `tests/` puedan reutilizarlos vía `use api_rust::…`.
+// Modules and AppState now live in `src/lib.rs` so that
+// integration tests under `tests/` can reuse them via `use api_rust::…`.
 use api_rust::{auth::rate_limit::RateLimitState, config::Config, jobs, routes, utils, AppState};
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
-    // 1. Logging estructurado
+    // 1. Structured logging
     let env_filter = EnvFilter::try_from_default_env()
         .unwrap_or_else(|_| EnvFilter::new("info,api_rust=debug,sea_orm=warn"));
 
@@ -128,63 +128,63 @@ async fn main() -> anyhow::Result<()> {
         .with(tracing_subscriber::fmt::layer())
         .init();
 
-    tracing::info!("🦀 Plane API Rust arrancando...");
+    tracing::info!("🦀 Plane API Rust starting up...");
 
-    // 2. Configuración
+    // 2. Configuration
     let config = Config::from_env().map_err(|e| {
-        tracing::error!("Error de configuración: {e}");
+        tracing::error!("Configuration error: {e}");
         e
     })?;
 
-    tracing::info!(port = config.port, host = %config.host, "Configuración cargada");
+    tracing::info!(port = config.port, host = %config.host, "Configuration loaded");
 
     // 3. PostgreSQL
-    tracing::info!("Conectando a PostgreSQL...");
+    tracing::info!("Connecting to PostgreSQL...");
     let db = Database::connect(&config.database_url).await.map_err(|e| {
-        tracing::error!("No se pudo conectar a PostgreSQL: {e}");
+        tracing::error!("Could not connect to PostgreSQL: {e}");
         e
     })?;
 
-    tracing::info!("✅ PostgreSQL conectado");
+    tracing::info!("✅ PostgreSQL connected");
 
-    // Ejecutar migraciones SeaORM pendientes — reemplaza el servicio `migrator`
-    // (manage.py migrate). Idempotente: no hace nada si el schema ya está al día.
-    tracing::info!("Ejecutando migraciones pendientes...");
+    // Run pending SeaORM migrations — replaces the `migrator` service
+    // (manage.py migrate). Idempotent: does nothing if the schema is already up to date.
+    tracing::info!("Running pending migrations...");
     Migrator::up(&db, None::<u32>).await.map_err(|e| {
-        tracing::error!("Fallo al ejecutar migraciones: {e}");
+        tracing::error!("Failed to run migrations: {e}");
         e
     })?;
-    tracing::info!("✅ Migraciones aplicadas");
+    tracing::info!("✅ Migrations applied");
 
     // 3b. sqlx PgPool — shared pool for apalis job enqueue + workers.
     // Avoids creating a new PgPool per job enqueue (anti-pattern).
     let pg_pool = sqlx::PgPool::connect(&config.database_url).await.map_err(|e| {
-        tracing::error!("No se pudo crear sqlx PgPool: {e}");
+        tracing::error!("Could not create sqlx PgPool: {e}");
         e
     })?;
-    tracing::info!("✅ sqlx PgPool conectado");
+    tracing::info!("✅ sqlx PgPool connected");
 
-    tracing::info!("Conectando a Redis...");
+    tracing::info!("Connecting to Redis...");
     let redis_config = RedisConfig::from_url(&config.redis_url).map_err(|e| {
-        tracing::error!("No se pudo construir la configuración de Redis: {e}");
+        tracing::error!("Could not build Redis configuration: {e}");
         anyhow::anyhow!(e.to_string())
     })?;
     let redis = RedisBuilder::from_config(redis_config)
         .build_pool(4)
         .map_err(|e| {
-            tracing::error!("No se pudo crear el pool de Redis: {e}");
+            tracing::error!("Could not create Redis pool: {e}");
             anyhow::anyhow!(e.to_string())
         })?;
 
-    // Se guardan los JoinHandles para hacer join ordenado en shutdown.
-    // RedisPool es Clone (Arc interno): se clona antes de moverlo al AppState
-    // para conservar una referencia disponible en el cierre graceful.
+    // JoinHandles are kept to perform an ordered join during shutdown.
+    // RedisPool is Clone (internal Arc): cloned before moving to AppState
+    // to keep a reference available for graceful shutdown.
     let redis_tasks = redis.connect();
     redis.wait_for_connect().await.map_err(|e| {
-        tracing::error!("No se pudo conectar a Redis: {e}");
+        tracing::error!("Could not connect to Redis: {e}");
         anyhow::anyhow!(e.to_string())
     })?;
-    tracing::info!("✅ Redis conectado");
+    tracing::info!("✅ Redis connected");
 
     let redis_for_shutdown = redis.clone();
 
@@ -198,32 +198,32 @@ async fn main() -> anyhow::Result<()> {
         http: reqwest::Client::builder()
             .timeout(std::time::Duration::from_secs(30))
             .build()
-            .expect("Error al construir reqwest::Client"),
+            .expect("Error building reqwest::Client"),
     };
 
-    // 4a. Startup equivalente a `register_instance` + `configure_instance` Django.
-    //     Idempotente: no modifica filas ya existentes.
-    tracing::info!("Ejecutando bootstrap de instancia...");
+    // 4a. Startup equivalent to Django's `register_instance` + `configure_instance`.
+    //     Idempotent: does not modify existing rows.
+    tracing::info!("Running instance bootstrap...");
     utils::startup::ensure_instance_registered(&state).await.map_err(|e| {
-        tracing::error!("Error en register_instance: {e:?}");
-        anyhow::anyhow!("register_instance falló")
+        tracing::error!("Error in register_instance: {e:?}");
+        anyhow::anyhow!("register_instance failed")
     })?;
     utils::startup::ensure_configurations_seeded(&state).await.map_err(|e| {
-        tracing::error!("Error en configure_instance: {e:?}");
-        anyhow::anyhow!("configure_instance falló")
+        tracing::error!("Error in configure_instance: {e:?}");
+        anyhow::anyhow!("configure_instance failed")
     })?;
-    tracing::info!("✅ Bootstrap de instancia completado");
+    tracing::info!("✅ Instance bootstrap completed");
 
 
-    // 5a. Apalis job workers — inician en background, no bloquean el servidor
+    // 5a. Apalis job workers — start in background, do not block the server
     let state_for_jobs = state.clone();
     tokio::spawn(async move {
         if let Err(e) = start_job_workers(state_for_jobs).await {
-            tracing::error!(error = %e, "Error al iniciar workers de apalis");
+            tracing::error!(error = %e, "Error starting apalis workers");
         }
     });
 
-    // 5b. Scheduler de tareas periódicas — reemplaza Celery beat
+    // 5b. Periodic task scheduler — replaces Celery beat
     let state_for_cron = state.clone();
     tokio::spawn(async move {
         jobs::cron::start_cron(state_for_cron).await;
@@ -231,25 +231,24 @@ async fn main() -> anyhow::Result<()> {
 
     // 5. Router
     //
-    // NormalizePathLayer DEBE envolver al Router *desde fuera* usando
-    // `tower::Layer::layer()`, NO `Router::layer()`.
+    // NormalizePathLayer MUST wrap the Router *from outside* using
+    // `tower::Layer::layer()`, NOT `Router::layer()`.
     //
-    // Razón: en axum 0.8 `Router::layer()` aplica middleware DESPUÉS del
-    // path-matching (envuelve cada handler individualmente), por lo que un
-    // request a `/api/workspace-slug-check/` ya falló el match contra
-    // `/workspace-slug-check` antes de que la capa pueda strippear la barra
-    // final → 404.
+    // Reason: in axum 0.8 `Router::layer()` applies middleware AFTER
+    // path-matching (wraps each handler individually), so a
+    // request to `/api/workspace-slug-check/` already failed to match
+    // `/workspace-slug-check` before the layer could strip the trailing
+    // slash → 404.
     //
-    // Al envolver externamente, NormalizePathLayer intercepta el request
-    // ANTES de que el Router haga routing, trimmeando la barra final
-    // correctamente.
+    // By wrapping externally, NormalizePathLayer intercepts the request
+    // BEFORE the Router does routing, correctly trimming the trailing slash.
     use tower::Layer;
     use tower_http::normalize_path::NormalizePathLayer;
 
     let router = routes::build_router(state);
     let app = NormalizePathLayer::trim_trailing_slash().layer(router);
 
-    // 6. Servidor TCP
+    // 6. TCP Server
     let addr: SocketAddr = format!("{}:{}", config.host, config.port).parse()?;
     let listener = TcpListener::bind(addr).await?;
 
@@ -257,14 +256,14 @@ async fn main() -> anyhow::Result<()> {
         addr = %addr,
         scalar_ui = format!("http://{}:{}/api/docs",   config.host, config.port),
         health    = format!("http://{}:{}/api/health",  config.host, config.port),
-        "🚀 Servidor listo"
+        "🚀 Server ready"
     );
 
-    // El tipo resultante de NormalizePathLayer::layer() es `Trim<Router>`,
-    // que implementa `tower::Service<Request>` pero NO tiene
-    // `into_make_service()` (método exclusivo de `axum::Router`).
-    // `tower::make::Shared` convierte cualquier `Service + Clone` en un
-    // `MakeService` compatible con `axum::serve`.
+    // The resulting type of NormalizePathLayer::layer() is `Trim<Router>`,
+    // which implements `tower::Service<Request>` but DOES NOT have
+    // `into_make_service()` (method exclusive to `axum::Router`).
+    // `tower::make::Shared` converts any `Service + Clone` into a
+    // `MakeService` compatible with `axum::serve`.
     axum::serve(
         listener,
         tower::make::Shared::new(app),
@@ -272,16 +271,16 @@ async fn main() -> anyhow::Result<()> {
         .with_graceful_shutdown(shutdown_signal())
         .await?;
 
-    // 7. Shutdown ordenado de Redis
-    tracing::info!("Cerrando conexiones Redis...");
+    // 7. Ordered Redis shutdown
+    tracing::info!("Closing Redis connections...");
     if let Err(e) = redis_for_shutdown.quit().await {
-        tracing::warn!("Error al enviar QUIT a Redis: {e}");
+        tracing::warn!("Error sending QUIT to Redis: {e}");
     }
-    // redis.connect() retorna un único JoinHandle, no un Vec.
+    // redis.connect() returns a single JoinHandle, not a Vec.
     if let Err(e) = redis_tasks.await {
-        tracing::warn!("Error al unir tarea de Redis: {e}");
+        tracing::warn!("Error joining Redis task: {e}");
     }
-    tracing::info!("✅ Redis cerrado correctamente");
+    tracing::info!("✅ Redis closed successfully");
 
     Ok(())
 }

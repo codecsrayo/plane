@@ -1,14 +1,14 @@
 // src/routes/api_tokens.rs
-//! Endpoints de gestión de API Tokens.
+//! API Tokens management endpoints.
 //!
-//! Equivalente Django: `plane/app/views/api.py` → `ApiTokenEndpoint`.
+//! Django equivalent: `plane/app/views/api.py` → `ApiTokenEndpoint`.
 //!
-//! Rutas implementadas:
-//!   GET    /api/api-tokens/          → lista todos los tokens del usuario
-//!   POST   /api/api-tokens/          → crea un token
-//!   GET    /api/api-tokens/{pk}/     → detalle de un token
-//!   PATCH  /api/api-tokens/{pk}/     → actualiza label/description/expired_at
-//!   DELETE /api/api-tokens/{pk}/     → elimina un token
+//! Implemented routes:
+//!   GET    /api/api-tokens/          → list all user tokens
+//!   POST   /api/api-tokens/          → create a token
+//!   GET    /api/api-tokens/{pk}/     → token details
+//!   PATCH  /api/api-tokens/{pk}/     → update label/description/expired_at
+//!   DELETE /api/api-tokens/{pk}/     → delete a token
 
 use axum::{
     extract::{Path, State},
@@ -29,7 +29,7 @@ use crate::{
 
 // ── DTOs ─────────────────────────────────────────────────────────────────────
 
-/// Respuesta completa del token (incluye el valor del token — solo en creación).
+/// Full token response (includes token value — only on creation).
 #[derive(Debug, Serialize)]
 pub struct ApiTokenFullResponse {
     pub id: Uuid,
@@ -46,7 +46,7 @@ pub struct ApiTokenFullResponse {
     pub updated_at: DateTime<Utc>,
 }
 
-/// Respuesta de lectura del token (oculta el valor del token).
+/// Read token response (hides token value).
 #[derive(Debug, Serialize)]
 pub struct ApiTokenReadResponse {
     pub id: Uuid,
@@ -101,7 +101,7 @@ impl From<api_tokens::Model> for ApiTokenReadResponse {
 
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct CreateApiTokenRequest {
-    /// Etiqueta descriptiva. Si se omite, se genera un UUID hex.
+    /// Descriptive label. If omitted, a hex UUID is generated.
     pub label: Option<String>,
     pub description: Option<String>,
     pub expired_at: Option<DateTime<Utc>>,
@@ -118,14 +118,14 @@ pub struct UpdateApiTokenRequest {
 
 /// GET /api-tokens/
 ///
-/// Lista todos los tokens no-service del usuario autenticado.
+/// Lists all non-service tokens of the authenticated user.
 #[utoipa::path(
     get,
     path = "/api/api-tokens/",
     tag = "API Tokens",
     responses(
-        (status = 200, description = "Lista de API tokens"),
-        (status = 401, description = "No autenticado"),
+        (status = 200, description = "List of API tokens"),
+        (status = 401, description = "Unauthorized"),
     )
 )]
 pub async fn list_api_tokens(
@@ -150,14 +150,14 @@ pub async fn list_api_tokens(
 
 /// POST /api-tokens/
 ///
-/// Crea un nuevo API token. El valor del token sólo es visible en esta respuesta.
+/// Creates a new API token. The token value is only visible in this response.
 #[utoipa::path(
     post,
     path = "/api/api-tokens/",
     tag = "API Tokens",
     responses(
-        (status = 201, description = "Token creado (incluye el valor del token)"),
-        (status = 401, description = "No autenticado"),
+        (status = 201, description = "Token created (includes token value)"),
+        (status = 401, description = "Unauthorized"),
     )
 )]
 pub async fn create_api_token(
@@ -168,7 +168,7 @@ pub async fn create_api_token(
     let db = &state.db;
     let user_id = auth_user.id;
 
-    // Generar token aleatorio seguro (32 bytes hex = 64 caracteres)
+    // Generate secure random token (32 bytes hex = 64 characters)
     let raw_token = {
         use std::fmt::Write;
         let bytes: [u8; 32] = rand_token();
@@ -190,7 +190,7 @@ pub async fn create_api_token(
         description: Set(body.description.unwrap_or_default()),
         is_active: Set(true),
         is_service: Set(false),
-        user_type: Set(0), // 0 = usuario normal, 1 = bot
+        user_type: Set(0), // 0 = normal user, 1 = bot
         expired_at: Set(body.expired_at.map(Into::into)),
         last_used: Set(None),
         workspace_id: Set(None),
@@ -210,15 +210,15 @@ pub async fn create_api_token(
 
 /// GET /api-tokens/{pk}/
 ///
-/// Detalle de un token (sin el valor).
+/// Token details (without value).
 #[utoipa::path(
     get,
     path = "/api/api-tokens/{pk}/",
     tag = "API Tokens",
     params(("pk" = Uuid, Path, description = "Token ID")),
     responses(
-        (status = 200, description = "Token encontrado"),
-        (status = 404, description = "No encontrado"),
+        (status = 200, description = "Token found"),
+        (status = 404, description = "Not found"),
     )
 )]
 pub async fn get_api_token(
@@ -243,15 +243,15 @@ pub async fn get_api_token(
 
 /// PATCH /api-tokens/{pk}/
 ///
-/// Actualiza label, description o expired_at de un token.
+/// Updates label, description or expired_at of a token.
 #[utoipa::path(
     patch,
     path = "/api/api-tokens/{pk}/",
     tag = "API Tokens",
     params(("pk" = Uuid, Path, description = "Token ID")),
     responses(
-        (status = 200, description = "Token actualizado"),
-        (status = 404, description = "No encontrado"),
+        (status = 200, description = "Token updated"),
+        (status = 404, description = "Not found"),
     )
 )]
 pub async fn update_api_token(
@@ -294,16 +294,16 @@ pub async fn update_api_token(
 
 /// DELETE /api-tokens/{pk}/
 ///
-/// Elimina (soft-delete) un token no-service del usuario.
+/// Deletes (soft-delete) a non-service token of the user.
 #[utoipa::path(
     delete,
     path = "/api/api-tokens/{pk}/",
     tag = "API Tokens",
     params(("pk" = Uuid, Path, description = "Token ID")),
     responses(
-        (status = 204, description = "Eliminado"),
-        (status = 403, description = "No puedes eliminar tokens de servicio"),
-        (status = 404, description = "No encontrado"),
+        (status = 204, description = "Deleted"),
+        (status = 403, description = "Cannot delete service tokens"),
+        (status = 404, description = "Not found"),
     )
 )]
 pub async fn delete_api_token(
@@ -330,14 +330,14 @@ pub async fn delete_api_token(
     Ok(StatusCode::NO_CONTENT)
 }
 
-// ── Utilidad interna ──────────────────────────────────────────────────────────
+// ── Internal utility ──────────────────────────────────────────────────────────
 
-/// Genera 32 bytes aleatorios usando el OS PRNG.
-/// No requiere dependencias adicionales — usa `getrandom` vía `uuid`.
+/// Generates 32 random bytes using the OS PRNG.
+/// Requires no extra dependencies — uses `getrandom` via `uuid`.
 fn rand_token() -> [u8; 32] {
     let mut buf = [0u8; 32];
-    // Reutilizamos el generador de Uuid que ya existe en el binario
-    // (uuid::Uuid::new_v4 usa getrandom internamente).
+    // We reuse the Uuid generator already present in the binary
+    // (uuid::Uuid::new_v4 uses getrandom internally).
     for chunk in buf.chunks_mut(16) {
         let bytes = *Uuid::new_v4().as_bytes();
         chunk.copy_from_slice(&bytes[..chunk.len()]);

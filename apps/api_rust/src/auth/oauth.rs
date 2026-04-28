@@ -1,5 +1,5 @@
 // src/auth/oauth.rs
-//! Autenticación via OAuth 2.0: GitLab, Google, Gitea.
+//! Authentication via OAuth 2.0: GitLab, Google, Gitea.
 
 use axum::{
     extract::{Query, State},
@@ -36,7 +36,7 @@ pub struct OAuthCallbackQuery {
 
 const OAUTH_STATE_COOKIE: &str = "oauth-state";
 
-// ── Helpers de Usuario ───────────────────────────────────────────────────────
+// ── User Helpers ───────────────────────────────────────────────────────
 
 async fn find_or_create_oauth_user(
     state: &AppState,
@@ -59,7 +59,7 @@ async fn find_or_create_oauth_user(
         return update_oauth_login_metadata(state, user, headers, provider).await;
     }
 
-    // Crear nuevo usuario (SignUp simplificado para OAuth)
+    // Create new user (Simplified SignUp for OAuth)
     let now = Utc::now();
     let user_id = uuid::Uuid::new_v4();
     let token = format!("{}{}", uuid::Uuid::new_v4().simple(), uuid::Uuid::new_v4().simple());
@@ -74,7 +74,7 @@ async fn find_or_create_oauth_user(
         first_name: Set(first_name),
         last_name: Set(last_name),
         avatar: Set(avatar_url),
-        password: Set("!OAUTH_USER!".to_owned()), // Marcador para usuarios sin password local
+        password: Set("!OAUTH_USER!".to_owned()), // Marker for users without local password
         date_joined: Set(now.into()),
         created_at: Set(now.into()),
         updated_at: Set(now.into()),
@@ -154,7 +154,7 @@ async fn update_oauth_login_metadata(
     path = "/auth/gitlab/",
     tag = "Auth",
     responses(
-        (status = 302, description = "Redirección a GitLab"),
+        (status = 302, description = "Redirect to GitLab"),
     ),
 )]
 pub async fn gitlab_initiate(
@@ -204,7 +204,7 @@ pub async fn gitlab_initiate(
         ("state" = Option<String>, Query, description = "OAuth state"),
     ),
     responses(
-        (status = 200, description = "HTML de cierre de popup"),
+        (status = 200, description = "Popup closure HTML"),
     ),
 )]
 pub async fn gitlab_callback(
@@ -273,7 +273,7 @@ pub async fn gitlab_callback(
     path = "/auth/google/",
     tag = "Auth",
     responses(
-        (status = 302, description = "Redirección a Google"),
+        (status = 302, description = "Redirect to Google"),
     ),
 )]
 pub async fn google_initiate(
@@ -319,7 +319,7 @@ pub async fn google_initiate(
         ("state" = Option<String>, Query, description = "OAuth state"),
     ),
     responses(
-        (status = 200, description = "HTML de cierre de popup"),
+        (status = 200, description = "Popup closure HTML"),
     ),
 )]
 pub async fn google_callback(
@@ -387,7 +387,7 @@ pub async fn google_callback(
     path = "/auth/gitea/",
     tag = "Auth",
     responses(
-        (status = 302, description = "Redirección a Gitea"),
+        (status = 302, description = "Redirect to Gitea"),
     ),
 )]
 pub async fn gitea_initiate(
@@ -435,7 +435,7 @@ pub async fn gitea_initiate(
         ("state" = Option<String>, Query, description = "OAuth state"),
     ),
     responses(
-        (status = 200, description = "HTML de cierre de popup"),
+        (status = 200, description = "Popup closure HTML"),
     ),
 )]
 pub async fn gitea_callback(
@@ -504,7 +504,7 @@ pub async fn gitea_callback(
     path = "/auth/github",
     tag = "Auth",
     responses(
-        (status = 302, description = "Redirección a GitHub para autenticación"),
+        (status = 302, description = "Redirect to GitHub for authentication"),
     ),
 )]
 pub async fn github_initiate(
@@ -548,7 +548,7 @@ pub async fn github_initiate(
         ("state" = Option<String>, Query, description = "OAuth state"),
     ),
     responses(
-        (status = 200, description = "HTML de cierre de popup con postMessage"),
+        (status = 200, description = "Popup closure HTML with postMessage"),
     ),
 )]
 pub async fn github_auth_callback(

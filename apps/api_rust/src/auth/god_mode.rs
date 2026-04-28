@@ -1,10 +1,10 @@
 // src/auth/god_mode.rs
-//! God Mode authentication — espejo de `plane/license/api/views/admin.py`.
+//! God Mode authentication — mirror of `plane/license/api/views/admin.py`.
 //!
-//! Tres endpoints:
-//!   POST /api/instances/admins/sign-up/   — primer admin + is_setup_done
-//!   POST /api/instances/admins/sign-in/   — login de admin existente
-//!   POST /api/instances/admins/sign-out/  — logout de admin
+//! Three endpoints:
+//!   POST /api/instances/admins/sign-up/   — first admin + is_setup_done
+//!   POST /api/instances/admins/sign-in/   — login of existing admin
+//!   POST /api/instances/admins/sign-out/  — admin logout
 
 use axum::{
     extract::{Form, State},
@@ -44,9 +44,9 @@ use crate::{
 
 // ─── helpers ────────────────────────────────────────────────────────────────
 
-/// Redirige al panel de God-Mode con query params de error.
-/// Usa `config.admin_base()` que combina ADMIN_BASE_URL + ADMIN_BASE_PATH
-/// → p.ej. https://tool.codecsrayo.com/app/god-mode/
+/// Redirects to the God Mode panel with error query params.
+/// Uses `config.admin_base()` which combines ADMIN_BASE_URL + ADMIN_BASE_PATH
+/// → e.g. https://tool.codecsrayo.com/app/god-mode/
 fn admin_error(state: &AppState, code: u32, message: &str) -> (CookieJar, Redirect) {
     let base = state.config.admin_base();
     let url = format!(
@@ -58,9 +58,9 @@ fn admin_error(state: &AppState, code: u32, message: &str) -> (CookieJar, Redire
     (CookieJar::new(), Redirect::to(&url))
 }
 
-/// Redirige al panel principal de God-Mode tras login/setup exitoso.
-/// Usa `config.admin_base()` que combina ADMIN_BASE_URL + ADMIN_BASE_PATH
-/// → p.ej. https://tool.codecsrayo.com/app/god-mode/general/
+/// Redirects to the God Mode main panel after successful login/setup.
+/// Uses `config.admin_base()` which combines ADMIN_BASE_URL + ADMIN_BASE_PATH
+/// → e.g. https://tool.codecsrayo.com/app/god-mode/general/
 fn admin_success(state: &AppState, path: &str) -> String {
     format!(
         "{}/{}",
@@ -73,7 +73,7 @@ fn is_valid_email(email: &str) -> bool {
     email.parse::<Address>().is_ok()
 }
 
-/// Comprueba la fortaleza de la contraseña con zxcvbn (score mínimo: 3).
+/// Checks password strength with zxcvbn (minimum score: 3).
 fn is_password_strong(password: &str) -> bool {
     let estimate = zxcvbn::zxcvbn(password, &[]);
     estimate.score() >= zxcvbn::Score::Three
@@ -99,12 +99,12 @@ pub struct AdminSignInForm {
 
 // ─── POST /api/instances/admins/sign-up/ ─────────────────────────────────────
 //
-// Flujo (espeja InstanceAdminSignUpEndpoint en Django):
-//   1. Instance existe y NO tiene admin aún.
-//   2. Crea User + Profile + NotificationPreferences en una transacción.
-//   3. Crea InstanceAdmin.
-//   4. Setea instance.is_setup_done = true.
-//   5. Emite cookie de sesión Admin y redirige a /general/.
+// Flow (mirrors InstanceAdminSignUpEndpoint in Django):
+//   1. Instance exists and does NOT have an admin yet.
+//   2. Creates User + Profile + NotificationPreferences in a transaction.
+//   3. Creates InstanceAdmin.
+//   4. Sets instance.is_setup_done = true.
+//   5. Issues Admin session cookie and redirects to /general/.
 
 #[utoipa::path(
     post,
@@ -125,7 +125,7 @@ pub async fn admin_sign_up(
     jar: CookieJar,
     Form(form): Form<AdminSignUpForm>,
 ) -> Result<(CookieJar, Redirect), AppError> {
-    // 1. Verificar que la instancia existe
+    // 1. Verify that the instance exists
     let Some(instance) = instances::Entity::find()
         .active()
         .one(&state.db)
@@ -135,7 +135,7 @@ pub async fn admin_sign_up(
         return Ok(admin_error(&state, 5000, "INSTANCE_NOT_CONFIGURED"));
     };
 
-    // 2. Solo se puede registrar un admin una vez
+    // 2. An admin can only be registered once
     let admin_exists = instance_admins::Entity::find()
         .active()
         .one(&state.db)
@@ -146,7 +146,7 @@ pub async fn admin_sign_up(
         return Ok(admin_error(&state, 5150, "ADMIN_ALREADY_EXIST"));
     }
 
-    // 3. Validar campos obligatorios
+    // 3. Validate mandatory fields
     let email = form.email.as_deref().unwrap_or("").trim().to_lowercase();
     let password = form.password.as_deref().unwrap_or("");
     let first_name = form.first_name.as_deref().unwrap_or("").trim().to_owned();
@@ -170,7 +170,7 @@ pub async fn admin_sign_up(
         return Ok(admin_error(&state, 5160, "INVALID_ADMIN_EMAIL"));
     }
 
-    // 4. El correo no debe existir ya como usuario
+    // 4. The email must not already exist as a user
     let user_exists = users::Entity::find()
         .filter(users::Column::Email.eq(Some(email.clone())))
         .one(&state.db)
@@ -181,12 +181,12 @@ pub async fn admin_sign_up(
         return Ok(admin_error(&state, 5180, "ADMIN_USER_ALREADY_EXIST"));
     }
 
-    // 5. Fortaleza de contraseña (zxcvbn score >= 3)
+    // 5. Password strength (zxcvbn score >= 3)
     if !is_password_strong(password) {
         return Ok(admin_error(&state, 5021, "PASSWORD_TOO_WEAK"));
     }
 
-    // 6. Crear User + Profile + NotificationPreferences en transacción
+    // 6. Create User + Profile + NotificationPreferences in transaction
     let now = Utc::now();
     let user_id = uuid::Uuid::new_v4();
     let profile_id = uuid::Uuid::new_v4();
@@ -324,7 +324,7 @@ pub async fn admin_sign_up(
 
     txn.commit().await.map_err(AppError::Database)?;
 
-    // 7. Crear InstanceAdmin
+    // 7. Create InstanceAdmin
     let admin_id = uuid::Uuid::new_v4();
     instance_admins::ActiveModel {
         id: Set(admin_id),
@@ -342,7 +342,7 @@ pub async fn admin_sign_up(
     .await
     .map_err(AppError::Database)?;
 
-    // 8. Marcar instancia como configurada
+    // 8. Mark instance as configured
     let mut active_instance: instances::ActiveModel = instance.into();
     active_instance.is_setup_done = Set(true);
     active_instance.is_telemetry_enabled = Set(telemetry_enabled);
@@ -355,7 +355,7 @@ pub async fn admin_sign_up(
         .await
         .map_err(AppError::Database)?;
 
-    // 9. Emitir sesión de admin y redirigir
+    // 9. Issue admin session and redirect
     let user = users::Entity::find_by_id(user_id)
         .one(&state.db)
         .await
@@ -369,10 +369,10 @@ pub async fn admin_sign_up(
 
 // ─── POST /api/instances/admins/sign-in/ ─────────────────────────────────────
 //
-// Flujo (espeja InstanceAdminSignInEndpoint en Django):
-//   1. Valida instance, email, password.
-//   2. Verifica que el usuario sea InstanceAdmin activo.
-//   3. Emite cookie de sesión Admin.
+// Flow (mirrors InstanceAdminSignInEndpoint in Django):
+//   1. Validates instance, email, password.
+//   2. Verifies that the user is an active InstanceAdmin.
+//   3. Issues Admin session cookie.
 
 #[utoipa::path(
     post,
@@ -393,7 +393,7 @@ pub async fn admin_sign_in(
     jar: CookieJar,
     Form(form): Form<AdminSignInForm>,
 ) -> Result<(CookieJar, Redirect), AppError> {
-    // 1. Instance existe
+    // 1. Instance exists
     let instance = instances::Entity::find()
         .active()
         .one(&state.db)
@@ -401,7 +401,7 @@ pub async fn admin_sign_in(
         .map_err(AppError::Database)?
         .ok_or_else(|| AppError::NotFound)?;
 
-    // 2. Campos obligatorios
+    // 2. Mandatory fields
     let email = form.email.as_deref().unwrap_or("").trim().to_lowercase();
     let password = form.password.as_deref().unwrap_or("");
 
@@ -413,7 +413,7 @@ pub async fn admin_sign_in(
         return Ok(admin_error(&state, 5160, "INVALID_ADMIN_EMAIL"));
     }
 
-    // 3. Usuario existe y está activo
+    // 3. User exists and is active
     let Some(user) = users::Entity::find()
         .filter(users::Column::Email.eq(Some(email.clone())))
         .one(&state.db)
@@ -427,12 +427,12 @@ pub async fn admin_sign_in(
         return Ok(admin_error(&state, 5190, "ADMIN_USER_DEACTIVATED"));
     }
 
-    // 4. Verificar contraseña
+    // 4. Verify password
     if !verify_password(password, &user.password) {
         return Ok(admin_error(&state, 5175, "ADMIN_AUTHENTICATION_FAILED"));
     }
 
-    // 5. El usuario debe ser InstanceAdmin de esta instancia
+    // 5. The user must be an InstanceAdmin of this instance
     let is_admin = user.is_superuser
         || instance_admins::Entity::find()
             .active()
@@ -447,7 +447,7 @@ pub async fn admin_sign_in(
         return Ok(admin_error(&state, 5175, "ADMIN_AUTHENTICATION_FAILED"));
     }
 
-    // 6. Actualizar metadatos de login
+    // 6. Update login metadata
     let now = Utc::now();
     let mut user_model: users::ActiveModel = user.into();
     user_model.last_active = Set(Some(now.into()));
@@ -464,7 +464,7 @@ pub async fn admin_sign_in(
     user_model.updated_at = Set(now.into());
     let user = user_model.update(&state.db).await.map_err(AppError::Database)?;
 
-    // 7. Emitir cookie de sesión admin
+    // 7. Issue admin session cookie
     let jar =
         replace_session_cookie(&state, &headers, jar, &user, SessionSurface::Admin).await?;
     let redirect_to = admin_success(&state, "general/");
@@ -473,8 +473,8 @@ pub async fn admin_sign_in(
 
 // ─── POST /api/instances/admins/sign-out/ ────────────────────────────────────
 //
-// Invalida la sesión del admin y redirige al inicio de God Mode.
-// Requiere token CSRF para prevenir CSRF attacks (igual que el logout normal).
+// Invalidates the admin session and redirects to the God Mode start.
+// Requires CSRF token to prevent CSRF attacks (same as normal logout).
 
 #[utoipa::path(
     post,
@@ -492,7 +492,7 @@ pub async fn admin_sign_out(
     jar: CookieJar,
     form: Form<CsrfForm>,
 ) -> Result<(CookieJar, Redirect), AppError> {
-    // Validar CSRF
+    // Validate CSRF
     let csrf_cookie = jar
         .get(CSRF_COOKIE_NAME)
         .map(|c| c.value().to_owned())
@@ -502,8 +502,8 @@ pub async fn admin_sign_out(
         return Err(AppError::Forbidden);
     }
 
-    // Intentar actualizar metadatos de logout del usuario activo.
-    // Si no hay sesión activa simplemente redirigimos igual.
+    // Try to update logout metadata for the active user.
+    // If there is no active session, just redirect anyway.
     if let Ok(session_key) = jar
         .get(ADMIN_SESSION_COOKIE_NAME)
         .or_else(|| jar.get(SESSION_COOKIE_NAME))
@@ -513,16 +513,16 @@ pub async fn admin_sign_out(
         use sea_orm::EntityTrait;
         use crate::entities::sessions;
 
-        // Eliminar sesión de la BD
+        // Delete session from DB
         let _ = sessions::Entity::delete_by_id(&session_key)
             .exec(&state.db)
             .await;
     }
 
-    // Actualizar last_logout si podemos identificar al usuario por el header
+    // Update last_logout if we can identify the user by the header
     let user_ip = extract_client_ip(&headers);
     let now = Utc::now();
-    // Best-effort: no bloqueamos el logout si falla
+    // Best-effort: we do not block logout if it fails
     if let Ok(Some(session)) = {
         use sea_orm::EntityTrait;
         use crate::entities::sessions;
@@ -556,7 +556,7 @@ pub async fn admin_sign_out(
         }
     }
 
-    // Expirar cookies de sesión y CSRF
+    // Expire session and CSRF cookies
     let expired = |name: &str| {
         Cookie::build((name.to_owned(), String::new()))
             .max_age(time::Duration::ZERO)

@@ -1,9 +1,9 @@
 // src/routes/views.rs
-//! Endpoints de vistas de issues (project views y workspace views).
+//! Issue view endpoints (project views and workspace views).
 //!
-//! Equivalente a `plane/app/views/view/base.py` en Django.
+//! Equivalent to `plane/app/views/view/base.py` in Django.
 //!
-//! Rutas implementadas:
+//! Implemented routes:
 //!   GET    /api/workspaces/{slug}/views/
 //!   POST   /api/workspaces/{slug}/views/
 //!   GET    /api/workspaces/{slug}/views/{pk}/
@@ -45,9 +45,9 @@ use crate::{
     AppState,
 };
 
-// ── Constantes ────────────────────────────────────────────────────────────────
+// ── Constants ────────────────────────────────────────────────────────────────
 
-/// `access = 1` = public en Django IssueView.
+/// `access = 1` = public in Django IssueView.
 const ACCESS_PUBLIC: i16 = 1;
 
 // ── DTOs ─────────────────────────────────────────────────────────────────────
@@ -73,7 +73,7 @@ pub struct IssueViewResponse {
     pub updated_by_id: Option<Uuid>,
     pub created_at: DateTime<FixedOffset>,
     pub updated_at: DateTime<FixedOffset>,
-    /// Solo presente en project views — indica si el usuario la marcó como favorita.
+    /// Only present in project views — indicates if the user marked it as a favorite.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub is_favorite: Option<bool>,
 }
@@ -88,7 +88,7 @@ pub struct CreateViewRequest {
     pub display_properties: Option<serde_json::Value>,
     pub logo_props: Option<serde_json::Value>,
     pub rich_filters: Option<serde_json::Value>,
-    /// 0 = privado, 1 = público. Defecto: 0.
+    /// 0 = private, 1 = public. Default: 0.
     pub access: Option<i16>,
 }
 
@@ -108,7 +108,7 @@ pub struct UpdateViewRequest {
 
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct AddFavoriteRequest {
-    /// ID de la view a favoritar.
+    /// ID of the view to favorite.
     pub view: Uuid,
 }
 
@@ -139,7 +139,7 @@ fn view_to_response(v: &issue_views::Model, is_favorite: Option<bool>) -> IssueV
     }
 }
 
-/// Aplica soft-delete a una view y limpia sus favoritos.
+/// Applies soft-delete to a view and clears its favorites.
 async fn soft_delete_view(
     db: &sea_orm::DatabaseConnection,
     view: issue_views::Model,
@@ -147,12 +147,12 @@ async fn soft_delete_view(
     let view_id = view.id;
     let txn = db.begin().await.map_err(AppError::Database)?;
 
-    // Soft-delete la view
+    // Soft-delete the view
     let mut am: issue_views::ActiveModel = view.into();
     am.deleted_at = Set(Some(Utc::now().into()));
     am.update(&txn).await.map_err(AppError::Database)?;
 
-    // Hard-delete favoritos asociados (user_favorites no tiene soft-delete relevante aquí)
+    // Hard-delete associated favorites (user_favorites does not have relevant soft-delete here)
     user_favorites::Entity::delete_many()
         .filter(user_favorites::Column::EntityIdentifier.eq(view_id))
         .filter(user_favorites::Column::EntityType.eq("view"))
@@ -168,8 +168,8 @@ async fn soft_delete_view(
 
 /// GET /api/workspaces/{slug}/views/
 ///
-/// Lista las views del workspace visibles para el usuario:
-/// propias + públicas (access = 1).
+/// Lists workspace views visible to the user:
+/// owned + public (access = 1).
 #[utoipa::path(
     get,
     path = "/workspaces/{slug}/views/",
@@ -189,7 +189,7 @@ pub async fn list_workspace_views(
     let user_id = guard.user.id;
     let workspace_id = guard.workspace.id;
 
-    // Guests solo ven sus propias views
+    // Guests only see their own views
     let views = if guard.member.role <= ROLE_GUEST {
         issue_views::Entity::find()
             .active()
@@ -428,7 +428,7 @@ pub async fn delete_workspace_view(
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
-    // Solo admin del workspace o dueño puede eliminar
+    // Only workspace admin or owner can delete
     let is_admin = guard.member.role >= ROLE_ADMIN;
     let is_owner = view.owned_by_id == guard.user.id;
 
@@ -467,7 +467,7 @@ pub async fn list_project_views(
     let project_id = guard.project.id;
     let workspace_id = guard.workspace.id;
 
-    // Guests con guest_view_all_features=false ven solo sus propias views
+    // Guests with guest_view_all_features=false see only their own views
     let guest_restricted = guard.project_member.role <= ROLE_GUEST
         && !guard.project.guest_view_all_features;
 
@@ -497,7 +497,7 @@ pub async fn list_project_views(
             .map_err(AppError::Database)?
     };
 
-    // Cargar favoritos del usuario para este proyecto
+    // Load user favorites for this project
     let view_ids: Vec<Uuid> = views.iter().map(|v| v.id).collect();
     let favorites = if view_ids.is_empty() {
         vec![]
@@ -628,7 +628,7 @@ pub async fn get_project_view(
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
-    // Guest sin guest_view_all_features solo puede ver sus propias views
+    // Guest without guest_view_all_features can only view their own views
     let guest_restricted = guard.project_member.role <= ROLE_GUEST
         && !guard.project.guest_view_all_features;
 
@@ -785,8 +785,8 @@ pub async fn delete_project_view(
 
 /// GET /api/workspaces/{slug}/projects/{project_id}/user-favorite-views/
 ///
-/// Lista las vistas favoritas del usuario autenticado en el proyecto.
-/// Espejo de `IssueViewFavoriteViewSet.list` (Django).
+/// Lists the favorite views of the authenticated user in the project.
+/// Mirror of `IssueViewFavoriteViewSet.list` (Django).
 #[utoipa::path(
     get,
     path = "/workspaces/{slug}/projects/{project_id}/user-favorite-views/",
@@ -797,7 +797,7 @@ pub async fn delete_project_view(
         ("project_id" = Uuid, Path, description = "Project ID"),
     ),
     responses(
-        (status = 200, description = "Listado de vistas favoritas"),
+        (status = 200, description = "List of favorite views"),
         (status = 401, description = "Unauthenticated"),
         (status = 403, description = "Forbidden"),
     )
@@ -865,7 +865,7 @@ pub async fn add_favorite_view(
         ROLE_MEMBER,
     )?;
 
-    // Verificar que la view existe y es accesible
+    // Verify that the view exists and is accessible
     let view_exists = issue_views::Entity::find_by_id(body.view)
         .active()
         .filter(issue_views::Column::ProjectId.eq(guard.project.id))
@@ -878,7 +878,7 @@ pub async fn add_favorite_view(
         return Err(AppError::NotFound);
     }
 
-    // Evitar duplicados — idempotente
+    // Avoid duplicates — idempotent
     let already_fav = user_favorites::Entity::find()
         .active()
         .filter(user_favorites::Column::UserId.eq(guard.user.id))
@@ -954,7 +954,7 @@ pub async fn remove_favorite_view(
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
-    // Hard-delete del favorito (no tiene soft-delete semántico aquí)
+    // Hard-delete of the favorite (no semantic soft-delete here)
     let fav_id = fav.id;
     user_favorites::Entity::delete_by_id(fav_id)
         .exec(&state.db)

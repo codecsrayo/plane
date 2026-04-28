@@ -1,9 +1,9 @@
 // src/routes/users.rs
-//! Endpoints de perfil de usuario autenticado.
+//! Authenticated user profile endpoints.
 //!
-//! Equivalente a `plane/app/views/user/base.py` en Django.
+//! Equivalent to `plane/app/views/user/base.py` in Django.
 //!
-//! Rutas implementadas:
+//! Implemented routes:
 //!   GET    /api/users/me/
 //!   PATCH  /api/users/me/
 //!   DELETE /api/users/me/                    (deactivate)
@@ -47,12 +47,12 @@ use crate::{
     AppState,
 };
 
-// Alias para legibilidad — `.active()` filtra `deleted_at IS NULL`
-// (implementado via `impl_soft_delete!` en entities/mod.rs)
+// Alias for readability — `.active()` filters `deleted_at IS NULL`
+// (implemented via `impl_soft_delete!` in entities/mod.rs)
 
 // ── DTOs ─────────────────────────────────────────────────────────────────────
 
-/// Representación pública del usuario autenticado (`/users/me/`).
+/// Public representation of the authenticated user (`/users/me/`).
 #[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct UserMeResponse {
     pub id: Uuid,
@@ -62,10 +62,10 @@ pub struct UserMeResponse {
     pub first_name: String,
     pub last_name: String,
     pub avatar: String,
-    /// Computed from avatar_asset_id or legacy avatar string (paridad Django User.avatar_url).
+    /// Computed from avatar_asset_id or legacy avatar string (parity with Django User.avatar_url).
     pub avatar_url: Option<String>,
     pub cover_image: Option<String>,
-    /// Computed from cover_image_asset or cover_image (paridad Django User.cover_image_url).
+    /// Computed from cover_image_asset or cover_image (parity with Django User.cover_image_url).
     pub cover_image_url: Option<String>,
     pub is_active: bool,
     pub is_bot: bool,
@@ -81,12 +81,12 @@ pub struct UserMeResponse {
     pub mobile_number: Option<String>,
 }
 
-/// Settings del usuario (`/users/me/settings/`).
+/// User settings (`/users/me/settings/`).
 ///
-/// Mirror exacto de `UserMeSettingsSerializer`
-/// (`apps/api/plane/app/serializers/user.py:90-138`): expone SOLO
-/// `["id", "email", "workspace"]`. El bloque `workspace` resuelve server-side
-/// la lógica de redirección que consume el SPA al iniciar sesión.
+/// Exact mirror of `UserMeSettingsSerializer`
+/// (`apps/api/plane/app/serializers/user.py:90-138`): exposes ONLY
+/// `["id", "email", "workspace"]`. The `workspace` block resolves server-side
+/// the redirection logic consumed by the SPA upon login.
 #[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct UserSettingsResponse {
     pub id: Uuid,
@@ -94,13 +94,13 @@ pub struct UserSettingsResponse {
     pub workspace: UserSettingsWorkspace,
 }
 
-/// Bloque `workspace` dentro de `/users/me/settings/`.
+/// `workspace` block inside `/users/me/settings/`.
 ///
-/// La shape es asimétrica (paridad con Django):
-/// - Cuando hay `last_workspace_id` válido y membresía activa: se incluyen
-///   `last_workspace_name` y `last_workspace_logo`.
-/// - En caso contrario: esas dos claves se omiten del JSON (no se emiten
-///   como `null`).
+/// The shape is asymmetric (Django parity):
+/// - When there is a valid `last_workspace_id` and active membership:
+///   `last_workspace_name` and `last_workspace_logo` are included.
+/// - Otherwise: those two keys are omitted from the JSON (not emitted
+///   as `null`).
 #[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct UserSettingsWorkspace {
     pub last_workspace_id: Option<Uuid>,
@@ -114,7 +114,7 @@ pub struct UserSettingsWorkspace {
     pub invites: u64,
 }
 
-/// Perfil del usuario (`/users/me/profile/`).
+/// User profile (`/users/me/profile/`).
 #[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct ProfileResponse {
     pub id: Uuid,
@@ -134,7 +134,7 @@ pub struct ProfileResponse {
     pub background_color: String,
 }
 
-/// Cuenta OAuth del usuario (`/users/me/accounts/`).
+/// User OAuth account (`/users/me/accounts/`).
 #[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct AccountResponse {
     pub id: Uuid,
@@ -145,7 +145,7 @@ pub struct AccountResponse {
     pub user_id: Uuid,
 }
 
-/// Workspace del usuario (`/users/me/workspaces/`).
+/// User workspace (`/users/me/workspaces/`).
 #[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct UserWorkspaceResponse {
     pub id: Uuid,
@@ -159,7 +159,7 @@ pub struct UserWorkspaceResponse {
     pub role: i16,
 }
 
-/// Body para PATCH `/users/me/`.
+/// Body for PATCH `/users/me/`.
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct UpdateUserRequest {
     pub display_name: Option<String>,
@@ -170,7 +170,7 @@ pub struct UpdateUserRequest {
     pub user_timezone: Option<String>,
 }
 
-/// Body para PATCH `/users/me/profile/`.
+/// Body for PATCH `/users/me/profile/`.
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct UpdateProfileRequest {
     pub role: Option<String>,
@@ -184,19 +184,19 @@ pub struct UpdateProfileRequest {
     pub theme: Option<serde_json::Value>,
 }
 
-/// Body para PATCH `/users/me/onboard/`.
+/// Body for PATCH `/users/me/onboard/`.
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct OnboardRequest {
     pub is_onboarded: Option<bool>,
 }
 
-/// Body para PATCH `/users/me/tour-completed/`.
+/// Body for PATCH `/users/me/tour-completed/`.
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct TourCompletedRequest {
     pub is_tour_completed: Option<bool>,
 }
 
-// ── Conversiones ─────────────────────────────────────────────────────────────
+// ── Conversions ──────────────────────────────────────────────────────────────
 
 async fn user_to_me_response(
     u: &users::Model,
@@ -290,7 +290,7 @@ fn account_to_response(a: &accounts::Model) -> AccountResponse {
 
 /// GET /api/users/me/
 ///
-/// Devuelve el perfil del usuario autenticado.
+/// Returns the authenticated user profile.
 #[utoipa::path(
     get,
     path = "/users/me/",
@@ -310,7 +310,7 @@ pub async fn get_me(
 
 /// PATCH /api/users/me/
 ///
-/// Actualiza campos del usuario autenticado.
+/// Updates the authenticated user fields.
 #[utoipa::path(
     patch,
     path = "/users/me/",
@@ -327,7 +327,7 @@ pub async fn update_me(
     State(state): State<AppState>,
     Json(body): Json<UpdateUserRequest>,
 ) -> Result<impl IntoResponse, AppError> {
-    // Validar display_name si viene
+    // Validate display_name if provided
     if let Some(ref name) = body.display_name {
         let trimmed = name.trim();
         if trimmed.is_empty() || trimmed.len() > 255 {
@@ -366,7 +366,7 @@ pub async fn update_me(
     Ok(Json(user_to_me_response(&updated, &state.db).await?))
 }
 
-/// DELETE /api/users/me/ — desactiva la cuenta del usuario.
+/// DELETE /api/users/me/ — deactivates user account.
 #[utoipa::path(
     delete,
     path = "/users/me/",
@@ -382,7 +382,7 @@ pub async fn deactivate_me(
     AnyAuth(user): AnyAuth,
     State(state): State<AppState>,
 ) -> Result<impl IntoResponse, AppError> {
-    // Verificar que no es el único admin en algún workspace activo
+    // Verify user is not the only admin in any active workspace
     let memberships = workspace_members::Entity::find()
         .filter(workspace_members::Column::MemberId.eq(user.id))
         .filter(workspace_members::Column::IsActive.eq(true))
@@ -413,14 +413,14 @@ pub async fn deactivate_me(
         }
     }
 
-    // Desactivar workspaces memberships
+    // Deactivate workspaces memberships
     for m in memberships {
         let mut am: workspace_members::ActiveModel = m.into();
         am.is_active = Set(false);
         am.update(&state.db).await.map_err(AppError::Database)?;
     }
 
-    // Desactivar perfil
+    // Deactivate profile
     if let Some(profile) = profiles::Entity::find()
         .filter(profiles::Column::UserId.eq(user.id))
         .one(&state.db)
@@ -434,7 +434,7 @@ pub async fn deactivate_me(
         ap.update(&state.db).await.map_err(AppError::Database)?;
     }
 
-    // Desactivar usuario
+    // Deactivate user
     let mut au: users::ActiveModel = user.into();
     au.is_active = Set(false);
     au.update(&state.db).await.map_err(AppError::Database)?;
@@ -444,7 +444,7 @@ pub async fn deactivate_me(
 
 /// GET /api/users/session/
 ///
-/// Retorna si el usuario está autenticado. No requiere auth.
+/// Returns if the user is authenticated. Does not require auth.
 #[utoipa::path(
     get,
     path = "/users/session/",
@@ -488,9 +488,9 @@ pub async fn get_settings(
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
-    // `workspace_invites` = count de WorkspaceMemberInvite por email del user.
+    // `workspace_invites` = count of WorkspaceMemberInvite by user's email.
     // Mirror: `WorkspaceMemberInvite.objects.filter(email=obj.email).count()`.
-    // `WorkspaceMemberInvite` hereda de `BaseModel → AuditModel → SoftDeleteModel`
+    // `WorkspaceMemberInvite` inherits from `BaseModel → AuditModel → SoftDeleteModel`
     // (apps/api/plane/db/mixins.py:61-66), cuyo manager por defecto
     // `SoftDeletionManager` aplica `.filter(deleted_at__isnull=True)`
     // (apps/api/plane/db/mixins.py:58). Por tanto `.objects` ya excluye
@@ -506,7 +506,7 @@ pub async fn get_settings(
         0
     };
 
-    // Rama 1: hay `last_workspace_id` + membresía activa del user en ese workspace.
+    // Branch 1: valid `last_workspace_id` + active user membership in that workspace exists.
     // Mirror: `Workspace.objects.filter(pk=..., workspace_member__member=obj.id,
     //                                   workspace_member__is_active=True).exists()`.
     let last_workspace = if let Some(last_id) = profile.last_workspace_id {
@@ -535,7 +535,7 @@ pub async fn get_settings(
 
     let workspace = if let Some(ws) = last_workspace {
         // `workspace.logo_asset.asset_url` → `/api/assets/v2/static/{id}/`
-        // Django: `"" ` si no hay asset (string vacío, no None).
+        // Django: `""` if there is no asset (empty string, not None).
         let logo = ws
             .logo_asset_id
             .map(|aid| format!("/api/assets/v2/static/{}/", aid))
@@ -550,22 +550,22 @@ pub async fn get_settings(
             invites,
         }
     } else {
-        // Rama 2: sin last_workspace válido → fallback = workspace más antiguo
-        // donde el user es miembro activo.
+        // Branch 2: without valid last_workspace → fallback = oldest workspace
+        // where user is an active member.
         // Mirror: `.filter(workspace_member__member_id=obj.id,
         //                  workspace_member__is_active=True).order_by("created_at").first()`.
         //
-        // Implementado como JOIN single-query para mantener paridad con Django:
-        // una versión previa hacía `workspace_members.find().order_by(wm.created_at)
-        // .limit(1)` y luego `workspaces.find_by_id(...)`. Ese patrón rompe en dos
-        // dimensiones respecto a Django:
-        //   1) Si el user tiene una membresía activa en un workspace
-        //      soft-deleted MÁS ANTIGUO que uno vivo, el LIMIT 1 captura la fila
-        //      muerta y el find_by_id posterior devuelve None → fallback = null.
-        //      El ORM de Django filtra `workspaces.deleted_at IS NULL` en el mismo
-        //      SELECT antes del LIMIT, así que el soft-deleted nunca compite.
-        //   2) Ordenaba por `workspace_members.created_at`, pero Django ordena por
-        //      `workspaces.created_at` — columnas distintas, valores distintos.
+        // Implemented as a single-query JOIN to maintain parity with Django:
+        // a previous version did `workspace_members.find().order_by(wm.created_at)
+        // .limit(1)` and then `workspaces.find_by_id(...)`. That pattern breaks in two
+        // dimensions with respect to Django:
+        //   1) If the user has an active membership in a soft-deleted workspace
+        //      OLDER than a live one, the LIMIT 1 captures the dead row
+        //      and the subsequent find_by_id returns None → fallback = null.
+        //      Django's ORM filters `workspaces.deleted_at IS NULL` in the same
+        //      SELECT before the LIMIT, so the soft-deleted one never competes.
+        //   2) It ordered by `workspace_members.created_at`, but Django orders by
+        //      `workspaces.created_at` — different columns, different values.
         let fallback_ws = workspaces::Entity::find()
             .active()
             .inner_join(workspace_members::Entity)
@@ -580,8 +580,8 @@ pub async fn get_settings(
         UserSettingsWorkspace {
             last_workspace_id: None,
             last_workspace_slug: None,
-            // Claves omitidas del JSON (paridad con Django: rama `else` no
-            // incluye `last_workspace_name` ni `last_workspace_logo`).
+            // Keys omitted from JSON (Django parity: `else` branch
+            // does not include `last_workspace_name` nor `last_workspace_logo`).
             last_workspace_name: None,
             last_workspace_logo: None,
             fallback_workspace_id: fallback_ws.as_ref().map(|w| w.id),
@@ -609,7 +609,7 @@ pub async fn get_settings(
     )
 )]
 pub async fn get_instance_admin(AnyAuth(user): AnyAuth) -> impl IntoResponse {
-    // Solo superusers son instance admins en la implementación base
+    // Only superusers are instance admins in the base implementation
     Json(serde_json::json!({ "is_instance_admin": user.is_superuser }))
 }
 
@@ -841,7 +841,7 @@ pub async fn delete_account(
 
 /// GET /api/users/me/workspaces/
 ///
-/// Lista los workspaces activos donde el usuario es miembro.
+/// Lists active workspaces where the user is a member.
 #[utoipa::path(
     get,
     path = "/users/me/workspaces/",
@@ -856,7 +856,7 @@ pub async fn list_user_workspaces(
     AnyAuth(user): AnyAuth,
     State(state): State<AppState>,
 ) -> Result<impl IntoResponse, AppError> {
-    // Obtener membresías activas del usuario
+    // Get active memberships for the user
     let memberships = workspace_members::Entity::find()
         .filter(workspace_members::Column::MemberId.eq(user.id))
         .filter(workspace_members::Column::IsActive.eq(true))
@@ -865,14 +865,14 @@ pub async fn list_user_workspaces(
         .await
         .map_err(AppError::Database)?;
 
-    // Obtener IDs de workspaces
+    // Get workspace IDs
     let workspace_ids: Vec<Uuid> = memberships.iter().map(|m| m.workspace_id).collect();
 
     if workspace_ids.is_empty() {
         return Ok(Json(Vec::<UserWorkspaceResponse>::new()));
     }
 
-    // Cargar workspaces activos
+    // Load active workspaces
     let wss = workspaces::Entity::find()
         .filter(workspaces::Column::Id.is_in(workspace_ids))
         .active()
@@ -881,7 +881,7 @@ pub async fn list_user_workspaces(
         .await
         .map_err(AppError::Database)?;
 
-    // Construir respuesta enriquecida con rol
+    // Build enriched response with role
     let resp: Vec<UserWorkspaceResponse> = wss
         .into_iter()
         .map(|ws| {
@@ -910,19 +910,18 @@ pub async fn list_user_workspaces(
 
 // ─── GET /api/users/me/workspaces/{slug}/project-roles ───────────────────────
 //
-// Espejo de Django `UserProjectRolesEndpoint` en
-// `plane/app/views/project/member.py:327`. Devuelve un mapa
-// `{project_id_str: role_int}` con los roles del usuario en cada proyecto
-// del workspace donde es miembro activo. El frontend lo consume para
-// resolver permisos por proyecto sin hacer N requests.
+// Mirror of Django `UserProjectRolesEndpoint` in
+// `plane/app/views/project/member.py:327`. Returns a map
+// `{project_id_str: role_int}` with the user roles in each project
+// of the workspace where the user is an active member. The frontend consumes
+// it to resolve per-project permissions without making N requests.
 
 /// `GET /api/users/me/workspaces/{slug}/project-roles`
 ///
-/// Devuelve `HashMap<project_id_string, role_int>` con los roles del
-/// usuario en cada proyecto del workspace. Solo incluye proyectos donde
-/// el usuario tiene `is_active = true` Y existe membresía activa al
-/// workspace (mirror del filtro `member__member_workspace__is_active=True`
-/// de Django).
+/// Returns `HashMap<project_id_string, role_int>` with the user roles
+/// in each project of the workspace. Only includes projects where
+/// the user has `is_active = true` AND active membership to the
+/// workspace exists (mirror of Django filter `member__member_workspace__is_active=True`).
 #[utoipa::path(
     get,
     path = "/api/users/me/workspaces/{slug}/project-roles",
@@ -940,7 +939,7 @@ pub async fn get_user_project_roles(
     AnyAuth(user): AnyAuth,
     Path(slug): Path<String>,
 ) -> Result<Json<std::collections::HashMap<String, i16>>, AppError> {
-    // 1) Workspace debe existir (404 si no).
+    // 1) Workspace must exist (404 if not).
     let ws = workspaces::Entity::find()
         .active()
         .filter(workspaces::Column::Slug.eq(slug))
@@ -949,13 +948,13 @@ pub async fn get_user_project_roles(
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
-    // 2) Mirror del filtro Django:
+    // 2) Mirror of Django filter:
     //    member__member_workspace__workspace__slug=slug
     //    AND member__member_workspace__is_active=True
     //
-    //    Equivale a: el usuario debe tener una membresía activa AL WORKSPACE
-    //    además de a los proyectos. Si no la tiene, devolvemos mapa vacío
-    //    (Django retorna {} también porque el queryset queda vacío, no 403).
+    //    Equivalently: the user must have an active membership TO THE WORKSPACE
+    //    in addition to the projects. If not, an empty map is returned
+    //    (Django returns {} also because the queryset remains empty, not 403).
     let ws_membership = workspace_members::Entity::find()
         .active()
         .filter(workspace_members::Column::WorkspaceId.eq(ws.id))
@@ -969,9 +968,9 @@ pub async fn get_user_project_roles(
         return Ok(Json(std::collections::HashMap::new()));
     }
 
-    // 3) Proyectos del workspace donde el usuario es miembro activo.
-    //    Nota: project_members.member_id es Option<Uuid> en el schema,
-    //    así que el filtro por igualdad ya descarta NULLs.
+    // 3) Projects in the workspace where the user is an active member.
+    //    Note: project_members.member_id is Option<Uuid> in the schema,
+    //    so the equality filter already discards NULLs.
     let pms = project_members::Entity::find()
         .active()
         .filter(project_members::Column::WorkspaceId.eq(ws.id))
@@ -981,7 +980,7 @@ pub async fn get_user_project_roles(
         .await
         .map_err(AppError::Database)?;
 
-    // 4) Construir mapa {project_id_str: role}. Mirror exacto de Django:
+    // 4) Build map {project_id_str: role}. Exact mirror of Django:
     //    {str(member["project_id"]): member["role"] for member in project_members}
     let map: std::collections::HashMap<String, i16> = pms
         .into_iter()
@@ -993,30 +992,30 @@ pub async fn get_user_project_roles(
 
 // ─── /api/users/me/workspaces/invitations/ (GET + POST) ─────────────────────
 //
-// Espejo de Django `UserWorkspaceInvitationsViewSet` en
-// `plane/app/views/workspace/invite.py:244`. El frontend lo consume durante
-// onboarding (`apps/web/app/(all)/onboarding/page.tsx:43`) para mostrar
-// invitaciones pendientes y aceptarlas en bulk.
+// Mirror of Django `UserWorkspaceInvitationsViewSet` in
+// `plane/app/views/workspace/invite.py:244`. The frontend consumes it during
+// onboarding (`apps/web/app/(all)/onboarding/page.tsx:43`) to show
+// pending invitations and accept them in bulk.
 
-/// Workspace embebido en la respuesta de invitación (mirror de
+/// Workspace embedded in the invitation response (mirror of
 /// `WorkspaceLiteSerializer`: id, name, slug, logo_url).
 #[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct UserInviteWorkspaceLite {
     pub id: Uuid,
     pub name: String,
     pub slug: String,
-    /// Mirror simplificado de `Workspace.logo_url`. Si el workspace usa
-    /// `logo_asset` (no el campo `logo` legacy) este campo será `None` —
-    /// limitación aceptable para el flujo de onboarding (no hay UI que
-    /// muestre el logo en esta vista). Si se requiere, hacer JOIN con
-    /// `file_assets` similar a `WorkspaceResponse::from_model`.
+    /// Simplified mirror of `Workspace.logo_url`. If the workspace uses
+    /// `logo_asset` (not the legacy `logo` field) this field will be `None` —
+    /// an acceptable limitation for the onboarding flow (no UI shows the logo
+    /// in this view). If required, perform a JOIN with `file_assets`
+    /// similar to `WorkspaceResponse::from_model`.
     pub logo_url: Option<String>,
 }
 
-/// Respuesta de `GET /api/users/me/workspaces/invitations/`.
+/// Response for `GET /api/users/me/workspaces/invitations/`.
 ///
-/// Mirror de `WorkSpaceMemberInviteSerializer(model=WorkspaceMemberInvite,
-/// fields="__all__")` con `workspace` nested y `invite_link` computado.
+/// Mirror of `WorkSpaceMemberInviteSerializer(model=WorkspaceMemberInvite,
+/// fields="__all__")` with nested `workspace` and computed `invite_link`.
 #[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct UserWorkspaceInviteResponse {
     pub id: Uuid,
@@ -1035,15 +1034,15 @@ pub struct UserWorkspaceInviteResponse {
 
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct JoinWorkspacesRequest {
-    /// Lista de UUIDs de invitaciones a aceptar. Mirror exacto del campo
-    /// `invitations` que envía el frontend en el POST.
+    /// List of invitation UUIDs to accept. Exact mirror of the `invitations`
+    /// field sent by the frontend in the POST.
     pub invitations: Vec<Uuid>,
 }
 
 /// `GET /api/users/me/workspaces/invitations/`
 ///
-/// Lista las invitaciones pendientes del usuario autenticado, filtradas
-/// por su email. Mirror de `BaseViewSet.list` sobre el queryset
+/// Lists pending invitations of the authenticated user, filtered
+/// by their email. Mirror of `BaseViewSet.list` over the queryset
 /// `WorkspaceMemberInvite.objects.filter(email=request.user.email)`.
 #[utoipa::path(
     get,
@@ -1059,8 +1058,8 @@ pub async fn list_user_workspace_invitations(
     State(state): State<AppState>,
     AnyAuth(user): AnyAuth,
 ) -> Result<Json<Vec<UserWorkspaceInviteResponse>>, AppError> {
-    // Sin email no hay forma de matchear invitaciones (Django igual: filter
-    // por email vacío devuelve queryset vacío).
+    // Without email there's no way to match invitations (same as Django: filter
+    // by empty email returns an empty queryset).
     let Some(email) = user.email.as_ref() else {
         return Ok(Json(Vec::new()));
     };
@@ -1078,7 +1077,7 @@ pub async fn list_user_workspace_invitations(
         return Ok(Json(Vec::new()));
     }
 
-    // select_related("workspace"): cargar workspaces en una sola query.
+    // select_related("workspace"): load workspaces in a single query.
     let workspace_ids: Vec<Uuid> = invites.iter().map(|i| i.workspace_id).collect();
     let workspaces_list = workspaces::Entity::find()
         .filter(workspaces::Column::Id.is_in(workspace_ids))
@@ -1091,13 +1090,13 @@ pub async fn list_user_workspace_invitations(
     let resp: Vec<UserWorkspaceInviteResponse> = invites
         .into_iter()
         .filter_map(|i| {
-            // Si el workspace fue eliminado entre queries, descartamos la
-            // invitación (Django con select_related dejaría workspace=None y
-            // el serializer fallaría — preferimos filtrar silenciosamente).
+            // If the workspace was deleted between queries, we discard the
+            // invitation (Django with select_related would leave workspace=None and
+            // the serializer would fail — we prefer filtering silently).
             let ws = workspaces_by_id.get(&i.workspace_id)?;
             Some(UserWorkspaceInviteResponse {
                 id: i.id,
-                // invite_link mirror exacto de Django:
+                // invite_link exact mirror of Django:
                 //   f"/workspace-invitations/?invitation_id={obj.id}&slug={obj.workspace.slug}&token={obj.token}"
                 invite_link: format!(
                     "/workspace-invitations/?invitation_id={}&slug={}&token={}",
@@ -1127,16 +1126,16 @@ pub async fn list_user_workspace_invitations(
 
 /// `POST /api/users/me/workspaces/invitations/`
 ///
-/// Acepta en bulk las invitaciones cuyos UUIDs vienen en el body
-/// (`{"invitations": [uuid, ...]}`). Para cada una:
-///   1. Si ya existe `WorkspaceMember` (incluso desactivado), lo reactiva
-///      con el rol de la invitación.
-///   2. Si no existe, lo crea via `INSERT ... ON CONFLICT DO NOTHING`
-///      (mirror de `bulk_create(ignore_conflicts=True)`).
-///   3. Borra las invitaciones procesadas.
+/// Bulk accepts invitations whose UUIDs come in the body
+/// (`{"invitations": [uuid, ...]}`). For each one:
+///   1. If `WorkspaceMember` already exists (even if deactivated), it reactivates it
+///      with the invitation role.
+///   2. If it does not exist, it creates it via `INSERT ... ON CONFLICT DO NOTHING`
+///      (mirror of `bulk_create(ignore_conflicts=True)`).
+///   3. Deletes processed invitations.
 ///
-/// Devuelve 204. Solo procesa invitaciones cuyo `email` coincide con el
-/// del usuario autenticado — defensa contra UUID-guessing.
+/// Returns 204. Only processes invitations whose `email` matches the
+/// authenticated user's — defense against UUID-guessing.
 #[utoipa::path(
     post,
     path = "/api/users/me/workspaces/invitations/",
@@ -1153,7 +1152,7 @@ pub async fn join_user_workspace_invitations(
     AnyAuth(user): AnyAuth,
     Json(body): Json<JoinWorkspacesRequest>,
 ) -> Result<StatusCode, AppError> {
-    // Sin email -> no hay invitaciones a aceptar (silencioso, mirror Django).
+    // No email -> no invitations to accept (silent, Django mirror).
     let Some(email) = user.email.as_ref() else {
         return Ok(StatusCode::NO_CONTENT);
     };
@@ -1161,11 +1160,11 @@ pub async fn join_user_workspace_invitations(
         return Ok(StatusCode::NO_CONTENT);
     }
 
-    // ── 1. Cargar invitaciones que matchean pk ∈ payload AND email == user.email
+    // ── 1. Load invitations matching pk ∈ payload AND email == user.email
     //
-    // El doble filtro (pk + email) es la defensa de Django contra que un
-    // usuario acepte la invitación de OTRO conociendo su UUID. Crucial
-    // mantenerlo en Rust.
+    // The double filter (pk + email) is Django's defense against a
+    // user accepting ANOTHER's invitation knowing their UUID. Crucial
+    // to maintain this in Rust.
     let invites = workspace_member_invites::Entity::find()
         .active()
         .filter(workspace_member_invites::Column::Id.is_in(body.invitations.clone()))
@@ -1185,15 +1184,15 @@ pub async fn join_user_workspace_invitations(
         .await
         .map_err(AppError::Database)?;
 
-    // ── 2. Reactivar membresías existentes con el rol de la invitación.
+    // ── 2. Reactivate existing memberships with the invitation role.
     //
-    // Mirror de:
+    // Mirror of:
     //   WorkspaceMember.objects.filter(workspace_id=invitation.workspace_id,
     //                                  member=request.user)
     //                          .update(is_active=True, role=invitation.role)
     //
-    // Iteramos para preservar el `role` por invitación (un UPDATE bulk con
-    // mismo rol perdería la granularidad).
+    // We iterate to preserve the per-invitation `role` (a bulk UPDATE with
+    // the same role would lose granularity).
     for inv in &invites {
         if let Some(existing) = workspace_members::Entity::find()
             .filter(workspace_members::Column::WorkspaceId.eq(inv.workspace_id))
@@ -1212,11 +1211,11 @@ pub async fn join_user_workspace_invitations(
         }
     }
 
-    // ── 3. Bulk insert de membresías nuevas con ON CONFLICT DO NOTHING.
+    // ── 3. Bulk insert of new memberships with ON CONFLICT DO NOTHING.
     //
-    // La unique constraint `workspace_member_unique_workspace_member_when_deleted_at_null`
-    // cubre (workspace_id, member_id) cuando deleted_at IS NULL — mirror del
-    // `ignore_conflicts=True` de Django.
+    // The unique constraint `workspace_member_unique_workspace_member_when_deleted_at_null`
+    // covers (workspace_id, member_id) when deleted_at IS NULL — mirror of
+    // Django's `ignore_conflicts=True`.
     let new_members: Vec<workspace_members::ActiveModel> = invites
         .iter()
         .map(|inv| workspace_members::ActiveModel {
@@ -1252,9 +1251,9 @@ pub async fn join_user_workspace_invitations(
             //   UNIQUE (workspace_id, member_id) WHERE deleted_at IS NULL
             // y sin `.target_and_where(...)` el INSERT revienta con
             // "there is no unique or exclusion constraint matching the ON CONFLICT
-            // specification" — el otro unique existente (unique_together sobre las
-            // 3 columnas incluyendo deleted_at) tampoco matchea porque el conflict
-            // target solo menciona 2. Ver
+            // specification" — the other existing unique (unique_together on
+            // the 3 columns including deleted_at) also doesn't match because the conflict
+            // target only mentions 2. See
             // https://www.postgresql.org/docs/current/sql-insert.html#SQL-ON-CONFLICT.
             .target_and_where(Expr::col(workspace_members::Column::DeletedAt).is_null())
             .do_nothing()
@@ -1265,11 +1264,11 @@ pub async fn join_user_workspace_invitations(
         .await
         .map_err(AppError::Database)?;
 
-    // ── 4. Soft-delete de las invitaciones procesadas.
+    // ── 4. Soft-delete processed invitations.
     //
-    // Django hace .delete() (con soft delete habilitado a nivel de manager
-    // base). Replicamos seteando deleted_at en lugar de DELETE físico para
-    // mantener trazabilidad y consistencia con el resto del codebase.
+    // Django does .delete() (with soft delete enabled at the base manager level).
+    // We replicate by setting deleted_at instead of physical DELETE to
+    // maintain traceability and consistency with the rest of the codebase.
     let invite_ids: Vec<Uuid> = invites.iter().map(|i| i.id).collect();
     workspace_member_invites::Entity::update_many()
         .col_expr(
@@ -1296,24 +1295,24 @@ pub async fn join_user_workspace_invitations(
 //
 // GET /api/users/me/activities/
 //
-// Mirror de Django `UserActivityEndpoint.get`
+// Mirror of Django `UserActivityEndpoint.get`
 // (plane/app/views/user/base.py:380).
 //
-// Devuelve TODAS las `IssueActivity` del requester en cualquier workspace/
-// proyecto, con paginación cursor estilo Django.
+// Returns ALL `IssueActivity` for the requester in any workspace/
+// project, with Django-style cursor pagination.
 //
-// A diferencia de `WorkspaceUserActivityEndpoint`:
-//   - No filtra por workspace/proyecto (es cross-workspace).
-//   - No excluye field in (comment|vote|reaction|draft) — Django tampoco lo hace
-//     en este endpoint (sólo en el workspace-scoped). Ver Django: queryset
-//     puro `actor=request.user`.
-//   - No requiere membership checks (sólo actividades del propio usuario).
-//   - `default_per_page = 1000` (mirror de `BasePaginator.get_per_page`).
+// Unlike `WorkspaceUserActivityEndpoint`:
+//   - It does not filter by workspace/project (it's cross-workspace).
+//   - It does not exclude field in (comment|vote|reaction|draft) — Django doesn't
+//     either in this endpoint (only in the workspace-scoped one). See Django:
+//     pure queryset `actor=request.user`.
+//   - Does not require membership checks (only the user's own activities).
+//   - `default_per_page = 1000` (mirror of `BasePaginator.get_per_page`).
 //
-// Response shape idéntico a `BasePaginator.paginate`, los DTOs de detalle se
-// re-usan desde `routes::workspaces`.
+// Response shape identical to `BasePaginator.paginate`, detail DTOs are
+// reused from `routes::workspaces`.
 
-/// Query params de `GET /users/me/activities/`.
+/// Query params of `GET /users/me/activities/`.
 #[derive(Debug, Deserialize)]
 pub struct MeActivitiesQuery {
     pub per_page: Option<u64>,
@@ -1323,8 +1322,8 @@ pub struct MeActivitiesQuery {
 
 /// `GET /api/users/me/activities/`
 ///
-/// Actividades (issue activities) del requester en todos los workspaces.
-/// Mirror de `UserActivityEndpoint` en Django.
+/// Issue activities of the requester across all workspaces.
+/// Mirror of `UserActivityEndpoint` in Django.
 #[utoipa::path(
     get,
     path = "/api/users/me/activities/",
@@ -1353,7 +1352,7 @@ pub async fn get_my_activities(
 
     let db = &state.db;
 
-    // Mirror de `BasePaginator.get_per_page`: default_per_page=1000, max_per_page=1000.
+    // Mirror of `BasePaginator.get_per_page`: default_per_page=1000, max_per_page=1000.
     const DEFAULT_PER_PAGE: u64 = 1000;
     const MAX_PER_PAGE: u64 = pagination::DEFAULT_MAX_LIMIT;
 
@@ -1368,18 +1367,18 @@ pub async fn get_my_activities(
     // ── Base query ───────────────────────────────────────────────────────────
     // Django: IssueActivity.objects.filter(actor=request.user)
     //
-    // SECURITY NOTE: el filtro por `actor_id = auth_user.id` es el único
-    // control de acceso necesario — un usuario sólo puede ver SUS propias
-    // actividades. No hay IDOR posible porque el actor se deriva de la
-    // credencial, no del path.
-    // Soft-delete: filtramos `deleted_at IS NULL` para alinear con el manager
-    // base del resto del codebase Rust (el queryset de Django aplica el mismo
-    // filtro vía `SoftDeleteManager` a nivel de modelo).
+    // SECURITY NOTE: filtering by `actor_id = auth_user.id` is the only
+    // access control needed — a user can only see THEIR own
+    // activities. No IDOR possible because the actor is derived from the
+    // credential, not the path.
+    // Soft-delete: we filter `deleted_at IS NULL` to align with the
+    // base manager of the rest of the Rust codebase (Django's queryset
+    // applies the same filter via `SoftDeleteManager` at the model level).
     let base = issue_activities::Entity::find()
         .filter(issue_activities::Column::ActorId.eq(user.id))
         .filter(issue_activities::Column::DeletedAt.is_null());
 
-    // Total antes de paginar (mismo filtro, sin orden ni offset).
+    // Total count before paging (same filter, no order or offset).
     let total_count = base.clone().count(db).await.map_err(AppError::Database)?;
 
     // ── Ordenamiento (default -created_at) ───────────────────────────────────
@@ -1404,13 +1403,13 @@ pub async fn get_my_activities(
                 base.order_by_desc(issue_activities::Column::UpdatedAt)
             }
         }
-        // Cualquier columna no whitelisted → fallback seguro al default.
-        // Esto previene SQL injection vía `order_by` y alinea con el spirit
-        // del `BasePaginator` de Django (que sólo acepta columnas del modelo).
+        // Any non-whitelisted column -> safe fallback to default.
+        // This prevents SQL injection via `order_by` and aligns with the spirit
+        // of Django's `BasePaginator` (which only accepts model columns).
         _ => base.order_by_desc(issue_activities::Column::CreatedAt),
     };
 
-    // ── Fetch de la página ───────────────────────────────────────────────────
+    // ── Fetch page ───────────────────────────────────────────────────────────
     let activities = ordered
         .paginate(db, limit)
         .fetch_page(cursor.offset)
@@ -1427,10 +1426,10 @@ pub async fn get_my_activities(
         return Ok((StatusCode::OK, Json(body)));
     }
 
-    // ── Batch-fetch de objetos relacionados (evitar N+1) ─────────────────────
+    // ── Batch-fetch of related objects (avoid N+1) ─────────────────────
     //
-    // Como el actor siempre es el requester, reutilizamos el `users::Model`
-    // que ya trae AnyAuth, evitando una query extra.
+    // Since the actor is always the requester, we reuse the `users::Model`
+    // already provided by AnyAuth, avoiding an extra query.
 
     let actor_avatar_url = if let Some(asset_id) = user.avatar_asset_id {
         Some(format!("/api/assets/v2/static/{}/", asset_id))
@@ -1440,7 +1439,7 @@ pub async fn get_my_activities(
         None
     };
 
-    // Issue IDs de la página actual
+    // Issue IDs from current page
     let issue_ids: Vec<Uuid> = activities
         .iter()
         .filter_map(|a| a.issue_id)
@@ -1479,8 +1478,8 @@ pub async fn get_my_activities(
         .map(|p| (p.id, p))
         .collect();
 
-    // Workspace IDs — cross-workspace, por eso batch-fetch (a diferencia del
-    // endpoint workspace-scoped que resuelve uno solo).
+    // Workspace IDs — cross-workspace, that's why we batch-fetch (unlike the
+    // workspace-scoped endpoint which resolves only one).
     let workspace_ids: Vec<Uuid> = activities
         .iter()
         .map(|a| a.workspace_id)
@@ -1568,9 +1567,9 @@ pub async fn get_my_activities(
 
 // ─── GET /users/me/workspaces/{slug}/activity-graph/ ─────────────────────────
 
-/// Actividad del usuario en el workspace agrupada por fecha (últimos 6 meses).
+/// User activity in the workspace grouped by date (last 6 months).
 ///
-/// Espejo de `UserActivityGraphEndpoint`
+/// Mirror of `UserActivityGraphEndpoint`
 /// (`apps/api/plane/app/views/workspace/user.py`).
 #[utoipa::path(
     get,
@@ -1636,9 +1635,9 @@ pub async fn get_activity_graph(
 
 // ─── GET /users/me/workspaces/{slug}/issues-completed-graph/ ─────────────────
 
-/// Issues completados por el usuario en el workspace agrupados por semana del mes.
+/// Issues completed by the user in the workspace grouped by week of the month.
 ///
-/// Espejo de `UserIssueCompletedGraphEndpoint`
+/// Mirror of `UserIssueCompletedGraphEndpoint`
 /// (`apps/api/plane/app/views/workspace/user.py`).
 #[utoipa::path(
     get,
@@ -1646,7 +1645,7 @@ pub async fn get_activity_graph(
     tag = "Users",
     params(
         ("slug" = String, Path, description = "Workspace slug"),
-        ("month" = Option<i32>, Query, description = "Mes (1-12, default 1)"),
+        ("month" = Option<i32>, Query, description = "Month (1-12, default 1)"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -1677,7 +1676,7 @@ pub async fn get_issues_completed_graph(
         completed_count: i64,
     }
 
-    // Espejo Django: week = EXTRACT(WEEK FROM completed_at) % 4
+    // Django Mirror: week = EXTRACT(WEEK FROM completed_at) % 4
     let rows = CompletedRow::find_by_statement(Statement::from_sql_and_values(
         sea_orm::DatabaseBackend::Postgres,
         r#"
@@ -1719,9 +1718,9 @@ pub async fn get_issues_completed_graph(
 
 // ─── GET /users/me/workspaces/{slug}/dashboard/ ───────────────────────────────
 
-/// Dashboard del usuario: actividad reciente + issues completados + estadísticas.
+/// User dashboard: recent activity + completed issues + statistics.
 ///
-/// Espejo de `UserWorkspaceDashboardEndpoint`
+/// Mirror of `UserWorkspaceDashboardEndpoint`
 /// (`apps/api/plane/app/views/workspace/base.py`).
 #[utoipa::path(
     get,
@@ -1729,7 +1728,7 @@ pub async fn get_issues_completed_graph(
     tag = "Users",
     params(
         ("slug" = String, Path, description = "Workspace slug"),
-        ("month" = Option<i32>, Query, description = "Mes para issues completados"),
+        ("month" = Option<i32>, Query, description = "Month for completed issues"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -1754,7 +1753,7 @@ pub async fn get_workspace_dashboard(
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
-    // ── Actividad reciente (últimos 3 meses) ─────────────────────────────────
+    // ── Recent activity (last 3 months) ──────────────────────────────────────
     #[derive(FromQueryResult)]
     struct ActivityRow {
         created_date: chrono::NaiveDate,
@@ -1780,7 +1779,7 @@ pub async fn get_workspace_dashboard(
     .await
     .map_err(AppError::Database)?;
 
-    // ── Issues completados este mes (por semana) ──────────────────────────────
+    // ── Issues completed this month (per week) ───────────────────────────────
     #[derive(FromQueryResult)]
     struct CompletedRow { week: i32, completed_count: i64 }
     let completed_issues = CompletedRow::find_by_statement(Statement::from_sql_and_values(
@@ -1807,7 +1806,7 @@ pub async fn get_workspace_dashboard(
     .await
     .map_err(AppError::Database)?;
 
-    // ── Conteos de issues ─────────────────────────────────────────────────────
+    // ── Issue counts ─────────────────────────────────────────────────────────
     #[derive(FromQueryResult)]
     struct CountRow { total: i64 }
 
@@ -1887,9 +1886,9 @@ pub async fn get_workspace_dashboard(
 
 // ─── GET /users/last-visited-workspace/ ──────────────────────────────────────
 
-/// Retorna el último workspace visitado por el usuario con sus proyectos.
+/// Returns the user's last visited workspace with its projects.
 ///
-/// Espejo de `UserLastProjectWithWorkspaceEndpoint`
+/// Mirror of `UserLastProjectWithWorkspaceEndpoint`
 /// (`apps/api/plane/app/views/workspace/user.py`).
 #[utoipa::path(
     get,
@@ -1901,7 +1900,7 @@ pub async fn get_last_workspace(
     State(state): State<AppState>,
     AnyAuth(user): AnyAuth,
 ) -> Result<Json<serde_json::Value>, AppError> {
-    // Leer last_workspace_id del perfil del usuario
+    // Read last_workspace_id from user profile
     use crate::entities::profiles;
     let profile = profiles::Entity::find()
         .filter(profiles::Column::UserId.eq(user.id))
@@ -1978,30 +1977,30 @@ pub async fn get_last_workspace(
     })))
 }
 
-// ── Email update endpoints ────────────────────────────────────────────────────
-// Mirror de `UserMeEndpoint.generate_email_code` y `UserMeEndpoint.update_email`
-// en Django (`plane/app/views/user/base.py`).
+// ── Email update endpoints ───────────────────────────────────────────────────
+// Mirror of `UserMeEndpoint.generate_email_code` and `UserMeEndpoint.update_email`
+// in Django (`plane/app/views/user/base.py`).
 
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct GenerateEmailCodeRequest {
-    /// Nuevo email al que enviar el código de verificación.
+    /// New email to send the verification code to.
     pub email: String,
 }
 
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct UpdateEmailRequest {
-    /// Nuevo email a establecer.
+    /// New email to set.
     pub email: String,
-    /// Código de 6 dígitos enviado al nuevo email.
+    /// 6-digit code sent to the new email.
     pub code: String,
 }
 
-/// Genera y envía un código de verificación al nuevo email del usuario.
+/// Generates and sends a verification code to the user's new email.
 ///
 /// `POST /users/me/email/generate-code`
 ///
-/// Mirror de `UserMeEndpoint.generate_code` en Django.
-/// El código se almacena en Redis con TTL de 10 minutos bajo la clave
+/// Mirror of Django's `UserMeEndpoint.generate_code`.
+/// The code is stored in Redis with 10-minute TTL under the key
 /// `magic_email_update_{user_id}_{new_email}`.
 #[utoipa::path(
     post,
@@ -2023,19 +2022,19 @@ pub async fn generate_email_code(
 
     let new_email = body.email.trim().to_lowercase();
 
-    // Validar que no esté vacío
+    // Validate not empty
     if new_email.is_empty() {
         return Err(AppError::BadRequest("Email is required".into()));
     }
 
-    // Validar que sea distinto al email actual
+    // Validate it is different from the current email
     if user.email.as_deref() == Some(new_email.as_str()) {
         return Err(AppError::BadRequest(
             "New email must be different from current email".into(),
         ));
     }
 
-    // Verificar que el email no esté en uso
+    // Verify email is not in use
     let exists = users::Entity::find()
         .filter(users::Column::Email.eq(&new_email))
         .filter(users::Column::Id.ne(user.id))
@@ -2050,13 +2049,13 @@ pub async fn generate_email_code(
         ));
     }
 
-    // Generar código de 6 dígitos
+    // Generate 6-digit code
     let token = format!("{:06}", rand::random::<u32>() % 900_000 + 100_000);
 
     let cache_key = format!("magic_email_update_{}_{}", user.id, new_email);
     let cache_value = serde_json::json!({ "token": token }).to_string();
 
-    // Guardar en Redis con TTL 600s (10 min)
+    // Save in Redis with TTL 600s (10 min)
     state
         .redis
         .set::<(), _, _>(
@@ -2069,7 +2068,7 @@ pub async fn generate_email_code(
         .await
         .map_err(|e| AppError::Internal(anyhow::anyhow!("Redis set error: {e}")))?;
 
-    // En producción se enviaría el email; aquí logueamos el código para debugging
+    // In production, the email would be sent; here we log the code for debugging
     tracing::info!(
         user_id = %user.id,
         new_email = %new_email,
@@ -2081,12 +2080,12 @@ pub async fn generate_email_code(
     })))
 }
 
-/// Verifica el código y actualiza el email del usuario.
+/// Verifies the code and updates the user's email.
 ///
 /// `POST /users/me/email`
 ///
-/// Mirror de `UserMeEndpoint.update_email` en Django.
-/// Invalida la sesión actual tras el cambio (el usuario debe re-autenticarse).
+/// Mirror of Django's `UserMeEndpoint.update_email`.
+/// Invalidates the current session after the change (user must re-authenticate).
 #[utoipa::path(
     post,
     path = "/users/me/email",
@@ -2115,7 +2114,7 @@ pub async fn update_user_email(
         return Err(AppError::BadRequest("Verification code is required".into()));
     }
 
-    // Verificar disponibilidad del email
+    // Verify email availability
     let exists = users::Entity::find()
         .filter(users::Column::Email.eq(&new_email))
         .filter(users::Column::Id.ne(user.id))
@@ -2130,7 +2129,7 @@ pub async fn update_user_email(
         ));
     }
 
-    // Verificar código en Redis
+    // Verify code in Redis
     let cache_key = format!("magic_email_update_{}_{}", user.id, new_email);
     let cached: Option<String> = state
         .redis
@@ -2151,7 +2150,7 @@ pub async fn update_user_email(
         return Err(AppError::BadRequest("Invalid verification code".into()));
     }
 
-    // Actualizar email del usuario
+    // Update user's email
     let user_model = users::Entity::find_by_id(user.id)
         .one(&state.db)
         .await
@@ -2163,7 +2162,7 @@ pub async fn update_user_email(
     active.is_email_verified = Set(false);
     active.update(&state.db).await.map_err(AppError::Database)?;
 
-    // Eliminar el código de Redis
+    // Delete the code from Redis
     let _ = state.redis.del::<i64, _>(&cache_key).await;
 
     tracing::info!(user_id = %user.id, new_email = %new_email, "User email updated");

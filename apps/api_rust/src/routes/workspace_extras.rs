@@ -1,19 +1,19 @@
 // src/routes/workspace_extras.rs
-//! Endpoints de Workspace — sub-módulos adicionales.
+//! Workspace Endpoints — additional sub-modules.
 //!
-//! Cubre los equivalentes Django de:
-//!   workspace/favorite.py        → favoritos del usuario
-//!   workspace/home.py            → preferencias de home
+//! Covers Django equivalents of:
+//!   workspace/favorite.py        → user favorites
+//!   workspace/home.py            → home preferences
 //!   workspace/quick_link.py      → quick links
-//!   workspace/recent_visit.py    → visitas recientes
+//!   workspace/recent_visit.py    → recent visits
 //!   workspace/sticky.py          → stickies
-//!   workspace/user_preference.py → preferencias de usuario
+//!   workspace/user_preference.py → user preferences
 //!   workspace/draft.py           → draft issues
-//!   workspace/cycle.py           → cycles a nivel workspace
-//!   workspace/module.py          → modules a nivel workspace
-//!   workspace/estimate.py        → estimates a nivel workspace
-//!   workspace/label.py           → labels a nivel workspace
-//!   workspace/state.py           → states a nivel workspace
+//!   workspace/cycle.py           → workspace-level cycles
+//!   workspace/module.py          → workspace-level modules
+//!   workspace/estimate.py        → workspace-level estimates
+//!   workspace/label.py           → workspace-level labels
+//!   workspace/state.py           → workspace-level states
 
 use axum::{
     extract::{Path, Query, State},
@@ -44,9 +44,9 @@ use crate::{
     AppState,
 };
 
-// ── Permisos inline ────────────────────────────────────────────────────────
+// ── Inline Permissions ──────────────────────────────────────────────────────
 
-/// Asegura que el rol del miembro es al menos MEMBER (no GUEST).
+/// Ensures the member role is at least MEMBER (not GUEST).
 fn require_member_or_admin(role: i16) -> Result<(), AppError> {
     // ADMIN=20, MEMBER=15, VIEWER=10, GUEST=5
     if role < 15 {
@@ -114,16 +114,16 @@ pub struct UpdateFavoriteRequest {
 
 /// GET /workspaces/{slug}/user-favorites/
 ///
-/// Lista favoritos del usuario en el workspace (sin padre, sin páginas).
+/// Lists user favorites in the workspace (no parent, no pages).
 #[utoipa::path(
     get,
     path = "/api/workspaces/{slug}/user-favorites/",
     tag = "Workspace Extras",
     params(("slug" = String, Path, description = "Workspace slug")),
     responses(
-        (status = 200, description = "Lista de favoritos"),
-        (status = 401, description = "No autenticado"),
-        (status = 403, description = "Sin acceso"),
+        (status = 200, description = "List of favorites"),
+        (status = 401, description = "Unauthorized"),
+        (status = 403, description = "Forbidden"),
     )
 )]
 pub async fn list_favorites(
@@ -157,8 +157,8 @@ pub async fn list_favorites(
     tag = "Workspace Extras",
     params(("slug" = String, Path, description = "Workspace slug")),
     responses(
-        (status = 200, description = "Favorito creado o existente"),
-        (status = 400, description = "Error de validación"),
+        (status = 200, description = "Favorite created or existing"),
+        (status = 400, description = "Validation error"),
     )
 )]
 pub async fn create_favorite(
@@ -173,7 +173,7 @@ pub async fn create_favorite(
     let member = require_workspace_member(db, ws.id, user_id).await?;
     require_member_or_admin(member.role)?;
 
-    // Idempotencia: si ya existe con mismo entity_identifier + entity_type, retorna el existente
+    // Idempotency: if it already exists with same entity_identifier + entity_type, returns existing
     if let Some(eid) = body.entity_identifier {
         if let Some(existing) = user_favorites::Entity::find()
             .filter(user_favorites::Column::WorkspaceId.eq(ws.id))
@@ -210,7 +210,7 @@ pub async fn create_favorite(
 
     let saved = new_fav.insert(db).await.map_err(AppError::Database)?;
     let resp: FavoriteResponse = saved.into();
-    // 201 al crear nuevo recurso. La rama idempotente arriba devuelve 200.
+    // 201 when creating a new resource. The idempotent branch above returns 200.
     Ok((StatusCode::CREATED, Json(resp)))
 }
 
@@ -224,8 +224,8 @@ pub async fn create_favorite(
         ("favorite_id" = Uuid, Path, description = "Favorite ID"),
     ),
     responses(
-        (status = 200, description = "Favorito actualizado"),
-        (status = 404, description = "No encontrado"),
+        (status = 200, description = "Favorite updated"),
+        (status = 404, description = "Not found"),
     )
 )]
 pub async fn update_favorite(
@@ -277,8 +277,8 @@ pub async fn update_favorite(
         ("favorite_id" = Uuid, Path, description = "Favorite ID"),
     ),
     responses(
-        (status = 204, description = "Eliminado"),
-        (status = 404, description = "No encontrado"),
+        (status = 204, description = "Deleted"),
+        (status = 404, description = "Not found"),
     )
 )]
 pub async fn delete_favorite(
@@ -300,7 +300,7 @@ pub async fn delete_favorite(
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
-    // Hard delete (Django también lo hace con soft=False en este endpoint)
+    // Hard delete (Django also does it with soft=False on this endpoint)
     user_favorites::Entity::delete_by_id(fav.id)
         .exec(db)
         .await
@@ -311,7 +311,7 @@ pub async fn delete_favorite(
 
 /// GET /workspaces/{slug}/user-favorites/{favorite_id}/children/
 ///
-/// Lista favoritos hijos de un grupo/folder.
+/// Lists child favorites of a group/folder.
 #[utoipa::path(
     get,
     path = "/api/workspaces/{slug}/user-favorites/{favorite_id}/children/",
@@ -321,7 +321,7 @@ pub async fn delete_favorite(
         ("favorite_id" = Uuid, Path, description = "Favorite parent ID"),
     ),
     responses(
-        (status = 200, description = "Lista de favoritos hijos"),
+        (status = 200, description = "List of child favorites"),
     )
 )]
 pub async fn list_favorite_children(
@@ -353,8 +353,8 @@ pub async fn list_favorite_children(
 // HOME PREFERENCES
 // ═══════════════════════════════════════════════════════════════════════════
 
-/// Respuesta del GET — mirror de Django `.values("key", "is_enabled", "config", "sort_order")`.
-/// No incluye `id` porque Django tampoco lo expone en este endpoint.
+/// GET response — mirror of Django `.values("key", "is_enabled", "config", "sort_order")`.
+/// Does not include `id` because Django does not expose it in this endpoint either.
 #[derive(Debug, Serialize)]
 pub struct HomePreferenceResponse {
     pub key: String,
@@ -381,34 +381,34 @@ pub struct UpdateHomePreferenceRequest {
     pub sort_order: Option<f64>,
 }
 
-/// Keys que se auto-siembran en el GET.
+/// Keys that are auto-seeded in the GET.
 ///
-/// Mirror de Django `WorkspaceHomePreference.HomeWidgetKeys.choices`
-/// EXCLUYENDO `quick_tutorial` y `new_at_plane` (filtradas explícitamente
-/// en `workspace/home.py:33-36`).
+/// Mirror of Django `WorkspaceHomePreference.HomeWidgetKeys.choices`
+/// EXCLUDING `quick_tutorial` and `new_at_plane` (explicitly filtered
+/// in `workspace/home.py:33-36`).
 const HOME_PREFERENCE_KEYS: &[&str] = &["quick_links", "recents", "my_stickies"];
 
 /// GET /workspaces/{slug}/home-preferences/
 ///
-/// Mirror de Django `WorkspaceHomePreferenceViewSet.get`
+/// Mirror of Django `WorkspaceHomePreferenceViewSet.get`
 /// (`plane/app/views/workspace/home.py:23`).
 ///
-/// Comportamiento de auto-seed: para cada key faltante en
-/// `HOME_PREFERENCE_KEYS` se crea una fila con defaults (is_enabled=true,
-/// config={}, sort_order = 1000 − position). Esto garantiza que el
-/// frontend siempre reciba un set completo de widgets sin necesidad de
-/// un flujo de inicialización separado.
+/// Auto-seed behavior: for each missing key in
+/// `HOME_PREFERENCE_KEYS` a row is created with defaults (is_enabled=true,
+/// config={}, sort_order = 1000 − position). This ensures the
+/// frontend always receives a complete set of widgets without needing
+/// a separate initialization flow.
 ///
-/// Se usa `INSERT ... ON CONFLICT DO NOTHING` para evitar race conditions
-/// entre tabs del mismo usuario, coherente con el `bulk_create(
-/// ignore_conflicts=True)` de Django.
+/// `INSERT ... ON CONFLICT DO NOTHING` is used to avoid race conditions
+/// between tabs of the same user, consistent with Django's `bulk_create(
+/// ignore_conflicts=True)`.
 #[utoipa::path(
     get,
     path = "/api/workspaces/{slug}/home-preferences/",
     tag = "Workspace Extras",
     params(("slug" = String, Path, description = "Workspace slug")),
     responses(
-        (status = 200, description = "Preferencias de home"),
+        (status = 200, description = "Home preferences"),
     )
 )]
 pub async fn get_home_preferences(
@@ -421,7 +421,7 @@ pub async fn get_home_preferences(
     let ws = workspace_by_slug(db, &slug).await?;
     let _member = require_workspace_member(db, ws.id, user_id).await?;
 
-    // ── 1. Leer keys existentes ────────────────────────────────────────────
+    // ── 1. Read existing keys ──────────────────────────────────────────────
     let existing_keys: std::collections::HashSet<String> =
         workspace_home_preferences::Entity::find()
             .filter(workspace_home_preferences::Column::WorkspaceId.eq(ws.id))
@@ -434,7 +434,7 @@ pub async fn get_home_preferences(
             .map(|p| p.key)
             .collect();
 
-    // ── 2. Auto-seed keys faltantes ────────────────────────────────────────
+    // ── 2. Auto-seed missing keys ──────────────────────────────────────────
     //
     // sort_order = 1000 − position (mirror Django: `sort_order = 1000 - sort_order_counter`).
     let now = chrono::Utc::now().fixed_offset();
@@ -466,8 +466,8 @@ pub async fn get_home_preferences(
             })
             .collect();
 
-        // ON CONFLICT DO NOTHING — mirror de bulk_create(ignore_conflicts=True).
-        // La unique constraint parcial cubre (workspace, user, key) WHERE deleted_at IS NULL.
+        // ON CONFLICT DO NOTHING — mirror of bulk_create(ignore_conflicts=True).
+        // The partial unique constraint covers (workspace, user, key) WHERE deleted_at IS NULL.
         use sea_orm::sea_query::{Expr, OnConflict};
         workspace_home_preferences::Entity::insert_many(to_insert)
             .on_conflict(
@@ -488,7 +488,7 @@ pub async fn get_home_preferences(
             .map_err(AppError::Database)?;
     }
 
-    // ── 3. Leer todas (incluidas las recién insertadas) ────────────────────
+    // ── 3. Read all (including those just inserted) ────────────────────────
     let prefs = workspace_home_preferences::Entity::find()
         .filter(workspace_home_preferences::Column::WorkspaceId.eq(ws.id))
         .filter(workspace_home_preferences::Column::UserId.eq(user_id))
@@ -512,8 +512,8 @@ pub async fn get_home_preferences(
         ("key" = String, Path, description = "Preference key"),
     ),
     responses(
-        (status = 200, description = "Preferencia actualizada"),
-        (status = 404, description = "No encontrada"),
+        (status = 200, description = "Preference updated"),
+        (status = 404, description = "Not found"),
     )
 )]
 pub async fn update_home_preference(
@@ -527,9 +527,9 @@ pub async fn update_home_preference(
     let ws = workspace_by_slug(db, &slug).await?;
     let _member = require_workspace_member(db, ws.id, user_id).await?;
 
-    // Upsert: si la key no existe la creamos con defaults + overrides.
-    // El frontend asume que PATCH es idempotente (no necesita pre-seed
-    // explícito, evitando una llamada GET previa).
+    // Upsert: if the key doesn't exist, we create it with defaults + overrides.
+    // The frontend assumes PATCH is idempotent (no explicit pre-seed
+    // needed, avoiding a previous GET call).
     let existing = workspace_home_preferences::Entity::find()
         .filter(workspace_home_preferences::Column::WorkspaceId.eq(ws.id))
         .filter(workspace_home_preferences::Column::UserId.eq(user_id))
@@ -580,9 +580,9 @@ pub async fn update_home_preference(
 
 /// GET /workspaces/{slug}/home-preferences/{key}/
 ///
-/// Devuelve la preferencia individual del usuario autenticado para `key`.
-/// 404 si la key todavía no fue inicializada (el frontend hace fallback al
-/// PATCH upsert para crearla on-demand).
+/// Returns the individual preference of the authenticated user for `key`.
+/// 404 if the key has not been initialized yet (the frontend falls back to
+/// PATCH upsert to create it on-demand).
 #[utoipa::path(
     get,
     path = "/api/workspaces/{slug}/home-preferences/{key}/",
@@ -592,9 +592,9 @@ pub async fn update_home_preference(
         ("key"  = String, Path, description = "Preference key"),
     ),
     responses(
-        (status = 200, description = "Preferencia"),
+        (status = 200, description = "Preference"),
         (status = 401, description = "Unauthenticated"),
-        (status = 404, description = "Key no inicializada"),
+        (status = 404, description = "Key not initialized"),
     )
 )]
 pub async fn get_home_preference_key(
@@ -676,7 +676,7 @@ pub struct UpdateQuickLinkRequest {
     tag = "Workspace Extras",
     params(("slug" = String, Path, description = "Workspace slug")),
     responses(
-        (status = 200, description = "Lista de quick links"),
+        (status = 200, description = "List of quick links"),
     )
 )]
 pub async fn list_quick_links(
@@ -709,7 +709,7 @@ pub async fn list_quick_links(
     tag = "Workspace Extras",
     params(("slug" = String, Path, description = "Workspace slug")),
     responses(
-        (status = 201, description = "Quick link creado"),
+        (status = 201, description = "Quick link created"),
     )
 )]
 pub async fn create_quick_link(
@@ -757,8 +757,8 @@ pub async fn create_quick_link(
         ("pk" = Uuid, Path, description = "Quick link ID"),
     ),
     responses(
-        (status = 200, description = "Actualizado"),
-        (status = 404, description = "No encontrado"),
+        (status = 200, description = "Updated"),
+        (status = 404, description = "Not found"),
     )
 )]
 pub async fn update_quick_link(
@@ -809,8 +809,8 @@ pub async fn update_quick_link(
         ("pk" = Uuid, Path, description = "Quick link ID"),
     ),
     responses(
-        (status = 204, description = "Eliminado"),
-        (status = 404, description = "No encontrado"),
+        (status = 204, description = "Deleted"),
+        (status = 404, description = "Not found"),
     )
 )]
 pub async fn delete_quick_link(
@@ -876,17 +876,17 @@ pub struct RecentVisitQuery {
 
 /// GET /workspaces/{slug}/recent-visits/
 ///
-/// Paridad con Django (`plane/app/views/workspace/recent_visit.py::UserRecentVisitViewSet`).
+/// Parity with Django (`plane/app/views/workspace/recent_visit.py::UserRecentVisitViewSet`).
 #[utoipa::path(
     get,
     path = "/api/workspaces/{slug}/recent-visits/",
     tag = "Workspace Extras",
     params(
         ("slug" = String, Path, description = "Workspace slug"),
-        ("entity_name" = Option<String>, Query, description = "Filtrar por tipo de entidad"),
+        ("entity_name" = Option<String>, Query, description = "Filter by entity type"),
     ),
     responses(
-        (status = 200, description = "Lista de visitas recientes (máx 20)"),
+        (status = 200, description = "List of recent visits (max 20)"),
     )
 )]
 pub async fn list_recent_visits(
@@ -900,7 +900,7 @@ pub async fn list_recent_visits(
     let ws = workspace_by_slug(db, &slug).await?;
     let _member = require_workspace_member(db, ws.id, user_id).await?;
 
-    // Sólo entidades válidas: issue, page, project
+    // Valid entities only: issue, page, project
     let allowed = ["issue", "page", "project"];
 
     let mut query = user_recent_visits::Entity::find()
@@ -913,7 +913,7 @@ pub async fn list_recent_visits(
             query = query.filter(user_recent_visits::Column::EntityName.eq(entity_name));
         }
     } else {
-        // Filtrar sólo entidades permitidas usando sea_orm OR condition
+        // Filter only allowed entities using sea_orm OR condition
         use sea_orm::Condition;
         let mut cond = Condition::any();
         for name in &allowed {
@@ -1003,14 +1003,14 @@ pub struct StickyListQuery {
     pub query: Option<String>,
     /// Cursor en formato Django: `"per_page:offset:is_prev"` (e.g. `"20:0:0"`).
     pub cursor: Option<String>,
-    /// Override opcional del per_page (Django lo toma antes que el cursor).
+    /// Optional per_page override (Django takes it before the cursor).
     pub per_page: Option<u64>,
 }
 
 /// GET /workspaces/{slug}/stickies/
 ///
-/// Paridad con Django (`plane/app/views/workspace/sticky.py::WorkspaceStickyViewSet.list`).
-/// Devuelve shape paginado: `{ results, total_count, next_cursor, prev_cursor,
+/// Parity with Django (`plane/app/views/workspace/sticky.py::WorkspaceStickyViewSet.list`).
+/// Returns paged shape: `{ results, total_count, next_cursor, prev_cursor,
 /// next_page_results, prev_page_results, count, total_pages, total_results,
 /// grouped_by, sub_grouped_by, extra_stats }`.
 #[utoipa::path(
@@ -1019,12 +1019,12 @@ pub struct StickyListQuery {
     tag = "Workspace Extras",
     params(
         ("slug" = String, Path, description = "Workspace slug"),
-        ("query" = Option<String>, Query, description = "Buscar en descripción"),
-        ("cursor" = Option<String>, Query, description = "Cursor Django: per_page:offset:is_prev"),
+        ("query" = Option<String>, Query, description = "Search in description"),
+        ("cursor" = Option<String>, Query, description = "Django Cursor: per_page:offset:is_prev"),
         ("per_page" = Option<u64>, Query, description = "Override per_page"),
     ),
     responses(
-        (status = 200, description = "Lista paginada de stickies"),
+        (status = 200, description = "Paged list of stickies"),
     )
 )]
 pub async fn list_stickies(
@@ -1038,7 +1038,7 @@ pub async fn list_stickies(
     let ws = workspace_by_slug(db, &slug).await?;
     let _member = require_workspace_member(db, ws.id, user_id).await?;
 
-    // Paridad con Django `WorkspaceStickyViewSet.list` + `paginate(default_per_page=20)`.
+    // Parity with Django `WorkspaceStickyViewSet.list` + `paginate(default_per_page=20)`.
     const DEFAULT_PER_PAGE: u64 = 20;
     const MAX_PER_PAGE: u64 = pagination::DEFAULT_MAX_LIMIT;
 
@@ -1059,8 +1059,8 @@ pub async fn list_stickies(
         query = query.filter(stickies::Column::DescriptionStripped.contains(search));
     }
 
-    // Count y page deben usar el MISMO query (mismos filtros) — clonamos antes
-    // de aplicar el orden para evitar divergencia.
+    // Count and page must use the SAME query (same filters) — we clone before
+    // applying the order to avoid divergence.
     let total_count = query
         .clone()
         .count(db)
@@ -1087,7 +1087,7 @@ pub async fn list_stickies(
     tag = "Workspace Extras",
     params(("slug" = String, Path, description = "Workspace slug")),
     responses(
-        (status = 201, description = "Sticky creado"),
+        (status = 201, description = "Sticky created"),
     )
 )]
 pub async fn create_sticky(
@@ -1136,9 +1136,9 @@ pub async fn create_sticky(
         ("pk" = Uuid, Path, description = "Sticky ID"),
     ),
     responses(
-        (status = 200, description = "Sticky actualizado"),
-        (status = 403, description = "Sin permisos (solo el creador)"),
-        (status = 404, description = "No encontrado"),
+        (status = 200, description = "Sticky updated"),
+        (status = 403, description = "Forbidden (creator only)"),
+        (status = 404, description = "Not found"),
     )
 )]
 pub async fn update_sticky(
@@ -1204,8 +1204,8 @@ pub async fn update_sticky(
         ("pk" = Uuid, Path, description = "Sticky ID"),
     ),
     responses(
-        (status = 204, description = "Eliminado"),
-        (status = 404, description = "No encontrado"),
+        (status = 204, description = "Deleted"),
+        (status = 404, description = "Not found"),
     )
 )]
 pub async fn delete_sticky(
@@ -1254,19 +1254,19 @@ pub struct UpdateUserPreferenceItem {
 
 /// GET /workspaces/{slug}/sidebar-preferences/
 ///
-/// Espejo de Django `WorkspaceUserPreferenceViewSet.get` en
-/// `plane/app/views/workspace/user_preference.py:26`. Devuelve el mapa
-/// `{key: {is_pinned, sort_order}}` y SIEMBRA los keys faltantes con
-/// defaults (sort_order = 65535 + i*10000, pinned para drafts/your_work/
-/// stickies) para que el frontend tenga estado consistente desde el
-/// primer render.
+/// Mirror of Django `WorkspaceUserPreferenceViewSet.get` in
+/// `plane/app/views/workspace/user_preference.py:26`. Returns the map
+/// `{key: {is_pinned, sort_order}}` and SEEDS the missing keys with
+/// defaults (sort_order = 65535 + i*10000, pinned for drafts/your_work/
+/// stickies) so that the frontend has a consistent state from the
+/// first render.
 #[utoipa::path(
     get,
     path = "/api/workspaces/{slug}/sidebar-preferences/",
     tag = "Workspace Extras",
     params(("slug" = String, Path, description = "Workspace slug")),
     responses(
-        (status = 200, description = "Preferencias de usuario (mapa key → {is_pinned, sort_order})"),
+        (status = 200, description = "User preferences (key map → {is_pinned, sort_order})"),
     )
 )]
 pub async fn get_user_preferences(
@@ -1279,14 +1279,14 @@ pub async fn get_user_preferences(
     let ws = workspace_by_slug(db, &slug).await?;
     let _member = require_workspace_member(db, ws.id, user_id).await?;
 
-    // ── 1. Seed de keys faltantes ───────────────────────────────────────────
+    // ── 1. Seed missing keys ────────────────────────────────────────────────
     //
-    // Mirror exacto de Django: el GET es responsable de garantizar que
-    // existan filas para cada UserPreferenceKeys.choices. Si no existen,
-    // se crean con defaults; si ya existen (race condition entre tabs)
-    // se ignoran via ON CONFLICT DO NOTHING.
+    // Exact mirror of Django: GET is responsible for ensuring that
+    // rows exist for each UserPreferenceKeys.choices. If they don't exist,
+    // they are created with defaults; if they already exist (race condition
+    // between tabs) they are ignored via ON CONFLICT DO NOTHING.
     //
-    // Orden y defaults son normativos — el frontend asume estos valores.
+    // Order and defaults are normative — the frontend assumes these values.
     const PREFERENCE_KEYS: &[&str] = &[
         "views",
         "active_cycles",
@@ -1298,7 +1298,7 @@ pub async fn get_user_preferences(
     ];
     const PINNED_BY_DEFAULT: &[&str] = &["drafts", "your_work", "stickies"];
 
-    // Keys ya presentes para este (workspace, user).
+    // Keys already present for this (workspace, user).
     let existing_keys: std::collections::HashSet<String> =
         workspace_user_preferences::Entity::find()
             .filter(workspace_user_preferences::Column::WorkspaceId.eq(ws.id))
@@ -1311,9 +1311,9 @@ pub async fn get_user_preferences(
             .map(|p| p.key)
             .collect();
 
-    // Construir ActiveModel solo para los keys que faltan, manteniendo el
-    // mismo cálculo de sort_order que Django: 65535 + i*10000 donde `i` es
-    // la posición dentro del subset de keys faltantes (no del total).
+    // Build ActiveModel only for the missing keys, maintaining the
+    // same sort_order calculation as Django: 65535 + i*10000 where `i` is
+    // the position within the subset of missing keys (not the total).
     let now = chrono::Utc::now().fixed_offset();
     let mut to_insert = Vec::new();
     for (i, key) in PREFERENCE_KEYS
@@ -1339,17 +1339,17 @@ pub async fn get_user_preferences(
     }
 
     if !to_insert.is_empty() {
-        // ON CONFLICT DO NOTHING — espejo de bulk_create(ignore_conflicts=True).
-        // La unique constraint parcial cubre (workspace_id, user_id, key) cuando
-        // deleted_at IS NULL, así que reaplicar el GET concurrentemente desde otra
-        // pestaña no rompe.
+        // ON CONFLICT DO NOTHING — mirror of bulk_create(ignore_conflicts=True).
+        // The partial unique constraint covers (workspace_id, user_id, key) when
+        // deleted_at IS NULL, so re-applying the GET concurrently from another
+        // tab does not break.
         //
-        // IMPORTANTE: PostgreSQL EXIGE repetir el predicado `WHERE deleted_at IS NULL`
-        // en el conflict target para poder inferir un arbiter index parcial — sin
-        // `.target_and_where(...)` el INSERT revienta con "there is no unique or
-        // exclusion constraint matching the ON CONFLICT specification" aunque las
-        // columnas coincidan exactamente con la constraint. Ver
-        // plane/db/models/workspace.py:443-451 (constraint Django) y
+        // IMPORTANT: PostgreSQL REQUIRES repeating the `WHERE deleted_at IS NULL`
+        // predicate in the conflict target to infer a partial arbiter index — without
+        // `.target_and_where(...)` the INSERT blows up with "there is no unique or
+        // exclusion constraint matching the ON CONFLICT specification" even if the
+        // columns match the constraint exactly. See
+        // plane/db/models/workspace.py:443-451 (Django constraint) and
         // https://www.postgresql.org/docs/current/sql-insert.html#SQL-ON-CONFLICT
         // ("index_predicate … must satisfy arbiter indexes").
         use sea_orm::sea_query::{Expr, OnConflict};
@@ -1372,7 +1372,7 @@ pub async fn get_user_preferences(
             .map_err(AppError::Database)?;
     }
 
-    // ── 2. Leer todas las preferencias (incluye las recién insertadas) ──────
+    // ── 2. Read all preferences (including those just inserted) ────────────
     let prefs = workspace_user_preferences::Entity::find()
         .filter(workspace_user_preferences::Column::WorkspaceId.eq(ws.id))
         .filter(workspace_user_preferences::Column::UserId.eq(user_id))
@@ -1382,7 +1382,7 @@ pub async fn get_user_preferences(
         .await
         .map_err(AppError::Database)?;
 
-    // Devuelve mapa { key: {is_pinned, sort_order} } igual que Django
+    // Returns map { key: {is_pinned, sort_order} } same as Django
     let map: std::collections::HashMap<String, UserPreferenceEntry> = prefs
         .into_iter()
         .map(|p| {
@@ -1401,14 +1401,14 @@ pub async fn get_user_preferences(
 
 /// PATCH /workspaces/{slug}/sidebar-preferences/
 ///
-/// Body: array de objetos `{key, is_pinned?, sort_order?}`
+/// Body: array of objects `{key, is_pinned?, sort_order?}`
 #[utoipa::path(
     patch,
     path = "/api/workspaces/{slug}/sidebar-preferences/",
     tag = "Workspace Extras",
     params(("slug" = String, Path, description = "Workspace slug")),
     responses(
-        (status = 200, description = "Actualizado"),
+        (status = 200, description = "Updated"),
     )
 )]
 pub async fn update_user_preferences(
@@ -1451,19 +1451,19 @@ pub async fn update_user_preferences(
 // DRAFT ISSUES
 // ═══════════════════════════════════════════════════════════════════════════
 
-// ── Helpers de sync N-a-M para Draft Issues ────────────────────────────────
+// ── N-to-M sync helpers for Draft Issues ───────────────────────────────────
 //
-// Espejan la lógica de `DraftIssueCreateSerializer.create` / `.update` en
-// `apps/api/plane/app/serializers/draft.py:142-297`. Django hace hard-delete
-// (`.delete()`) sobre los assignees/labels/cycles/modules existentes y luego
-// `bulk_create` con los nuevos. Nosotros replicamos el comportamiento con
-// hard-delete + insert en la misma transacción.
+// Mirror the logic of `DraftIssueCreateSerializer.create` / `.update` in
+// `apps/api/plane/app/serializers/draft.py:142-297`. Django does a hard-delete
+// (`.delete()`) on existing assignees/labels/cycles/modules and then
+// `bulk_create` with the new ones. We replicate this behavior with
+// hard-delete + insert in the same transaction.
 //
-// NOTA: draft_issue_* NO tiene soft-delete lógico en Django (el
-// `.delete()` sobre `BaseManager` es hard-delete porque las tablas están
-// declaradas sin soft-delete). Por paridad hacemos hard-delete aquí.
+// NOTE: draft_issue_* does NOT have logical soft-delete in Django (the
+// `.delete()` on `BaseManager` is a hard-delete because the tables are
+// declared without soft-delete). For parity, we do hard-delete here.
 
-/// Reemplaza los assignees del draft con `new_ids` (hard-delete existentes + insert).
+/// Replaces draft assignees with `new_ids` (hard-delete existing + insert).
 async fn sync_draft_assignees(
     txn: &sea_orm::DatabaseTransaction,
     draft_id: Uuid,
@@ -1500,7 +1500,7 @@ async fn sync_draft_assignees(
     Ok(())
 }
 
-/// Reemplaza los labels del draft con `new_ids`.
+/// Replaces draft labels with `new_ids`.
 async fn sync_draft_labels(
     txn: &sea_orm::DatabaseTransaction,
     draft_id: Uuid,
@@ -1537,10 +1537,10 @@ async fn sync_draft_labels(
     Ok(())
 }
 
-/// Reemplaza el (único) cycle del draft. `new_id = None` solo borra.
+/// Replaces the (only) draft cycle. `new_id = None` only deletes.
 ///
-/// Paridad con draft.py:266-276: siempre borra existentes; solo crea uno
-/// nuevo si `cycle_id` es truthy (en Django: no None, no ""; aquí no es
+/// Parity with draft.py:266-276: always deletes existing; only creates a
+/// new one if `cycle_id` is truthy (in Django: not None, not ""; here not
 /// `Option<Option<Uuid>>::Some(None)`).
 async fn sync_draft_cycle(
     txn: &sea_orm::DatabaseTransaction,
@@ -1578,7 +1578,7 @@ async fn sync_draft_cycle(
     Ok(())
 }
 
-/// Reemplaza los modules del draft con `new_ids`.
+/// Replaces draft modules with `new_ids`.
 async fn sync_draft_modules(
     txn: &sea_orm::DatabaseTransaction,
     draft_id: Uuid,
@@ -1615,26 +1615,26 @@ async fn sync_draft_modules(
     Ok(())
 }
 
-/// Response shape para draft issues. Paridad con Django
+/// Response shape for draft issues. Parity with Django
 /// `DraftIssueSerializer` (apps/api/plane/app/serializers/draft.py:300-334)
-/// y con el tipo del frontend `TWorkspaceDraftIssue`
+/// and with the frontend type `TWorkspaceDraftIssue`
 /// (packages/types/src/workspace-draft-issues/base.ts:9).
 ///
-/// # Nombres (diferencias vs columnas DB)
-/// - `estimate_point` (no `_id`) — DRF expone la FK con el nombre declarado
-///   en `Meta.fields`. La columna DB es `estimate_point_id`; el mapeo lo
-///   hace el hidratador.
-/// - `created_by` / `updated_by` (no `_id`) — misma razón; `BaseSerializer`
-///   expone estas FK con el nombre del field.
-/// - `workspace_id` NO se expone — Django no lo incluye en `Meta.fields`.
+/// # Names (differences vs DB columns)
+/// - `estimate_point` (not `_id`) — DRF exposes the FK with the name declared
+///   in `Meta.fields`. The DB column is `estimate_point_id`; the mapping is
+///   done by the hydrator.
+/// - `created_by` / `updated_by` (not `_id`) — same reason; `BaseSerializer`
+///   exposes these FKs with the field name.
+/// - `workspace_id` is NOT exposed — Django does not include it in `Meta.fields`.
 ///
-/// # Campos anotados (ArrayAgg/Subquery en Django `draft.py:54-95`)
-/// - `cycle_id`: primer `DraftIssueCycle` activo (deleted_at NULL).
-/// - `label_ids` / `assignee_ids` / `module_ids`: lista de IDs activos,
-///   filtrando `deleted_at IS NULL` en cada tabla intermedia (mismo
-///   criterio pragmático que `load_enrichment` en `issue_pagination.rs:122`
-///   para issues regulares, que ya omite el check `member_project__is_active`
-///   de Django por simplicidad de paridad entre endpoints).
+/// # Annotated fields (ArrayAgg/Subquery in Django `draft.py:54-95`)
+/// - `cycle_id`: first active `DraftIssueCycle` (deleted_at NULL).
+/// - `label_ids` / `assignee_ids` / `module_ids`: list of active IDs,
+///   filtering `deleted_at IS NULL` on each intermediate table (same
+///   pragmatic criterion as `load_enrichment` in `issue_pagination.rs:122`
+///   for regular issues, which already omits the `member_project__is_active`
+///   check from Django for simplicity of parity between endpoints).
 #[derive(Debug, Serialize)]
 pub struct DraftIssueResponse {
     pub id: Uuid,
@@ -1658,19 +1658,19 @@ pub struct DraftIssueResponse {
     pub updated_by: Option<Uuid>,
     pub created_at: DateTime<Utc>,
     pub updated_at: DateTime<Utc>,
-    /// Siempre `true` — discriminador que usa el frontend para distinguir
-    /// drafts de issues regulares (`TWorkspaceDraftIssue.is_draft`).
+    /// Always `true` — discriminator used by the frontend to distinguish
+    /// drafts of regular issues (`TWorkspaceDraftIssue.is_draft`).
     pub is_draft: bool,
 }
 
-/// Hidrata `DraftIssueResponse` con las anotaciones M2M desde la DB.
+/// Hydrates `DraftIssueResponse` with M2M annotations from the DB.
 ///
-/// Una query por tipo de relación (O(1) roundtrips), filtrando
-/// `deleted_at IS NULL` en cada tabla intermedia. Paridad con las
-/// anotaciones del queryset de `WorkspaceDraftIssueViewSet.get_queryset`
+/// One query per relation type (O(1) roundtrips), filtering
+/// `deleted_at IS NULL` on each intermediate table. Parity with the
+/// annotations of the `WorkspaceDraftIssueViewSet.get_queryset` queryset
 /// (draft.py:49-95).
 ///
-/// Retorna `Vec<DraftIssueResponse>` en el mismo orden que `models`.
+/// Returns `Vec<DraftIssueResponse>` in the same order as `models`.
 async fn hydrate_draft_issue_responses(
     db: &sea_orm::DatabaseConnection,
     models: Vec<draft_issues::Model>,
@@ -1686,7 +1686,7 @@ async fn hydrate_draft_issue_responses(
 
     let ids: Vec<Uuid> = models.iter().map(|m| m.id).collect();
 
-    // cycle_id (primer ciclo activo — Subquery `[:1]` en Django draft.py:55-58).
+    // cycle_id (first active cycle — Subquery `[:1]` in Django draft.py:55-58).
     let cycles_rows = draft_issue_cycles::Entity::find()
         .filter(draft_issue_cycles::Column::DraftIssueId.is_in(ids.clone()))
         .filter(draft_issue_cycles::Column::DeletedAt.is_null())
@@ -1695,8 +1695,8 @@ async fn hydrate_draft_issue_responses(
         .map_err(AppError::Database)?;
     let mut cycle_by_draft: HashMap<Uuid, Uuid> = HashMap::new();
     for r in cycles_rows {
-        // `entry().or_insert()` preserva el primer valor visto — espejo
-        // del Subquery `[:1]` de Django.
+        // `entry().or_insert()` preserves the first value seen — mirror
+        // of Django's Subquery `[:1]`.
         cycle_by_draft.entry(r.draft_issue_id).or_insert(r.cycle_id);
     }
 
@@ -1779,41 +1779,41 @@ async fn hydrate_draft_issue_responses(
     Ok(result)
 }
 
-/// Conveniencia para hidratar un solo draft (usado por `create`/`get`).
+/// Convenience to hydrate a single draft (used by `create`/`get`).
 async fn hydrate_draft_issue_response(
     db: &sea_orm::DatabaseConnection,
     model: draft_issues::Model,
 ) -> Result<DraftIssueResponse, AppError> {
     let mut responses = hydrate_draft_issue_responses(db, vec![model]).await?;
-    // `hydrate_draft_issue_responses` preserva el orden y nunca vacía el
-    // vec cuando la entrada tiene elementos — `pop` es seguro.
+    // `hydrate_draft_issue_responses` preserves order and never empties the
+    // vec when input has elements — `pop` is safe.
     Ok(responses
         .pop()
-        .expect("hydrate_draft_issue_responses preserva el vec de entrada"))
+        .expect("hydrate_draft_issue_responses preserves the input vec"))
 }
 
-/// Shape de `POST /workspaces/{slug}/draft-issues/`.
+/// `POST /workspaces/{slug}/draft-issues/` shape.
 ///
-/// Paridad exacta con `DraftIssueCreateSerializer` (apps/api/plane/app/
-/// serializers/draft.py:33) y con el payload que construye el frontend
-/// desde `DEFAULT_WORK_ITEM_FORM_VALUES` (packages/constants/src/issue/
+/// Exact parity with `DraftIssueCreateSerializer` (apps/api/plane/app/
+/// serializers/draft.py:33) and with the payload the frontend builds
+/// from `DEFAULT_WORK_ITEM_FORM_VALUES` (packages/constants/src/issue/
 /// modal.ts).
 ///
-/// # Convenciones críticas
-/// - Todos los `Option<Uuid>` / `Option<NaiveDate>` usan los helpers de
-///   `crate::utils::serde_empty` para convertir `""` → `None`. El frontend
-///   envía `project_id: ""`, `state_id: ""`, fechas vacías por default; serde
-///   nativo falla con 422 (HTTP Unprocessable Entity) al toparse con `""`
-///   donde espera un `Uuid`.
-/// - `estimate_point` sin `_id` — DRF expone la FK con ese nombre cuando se
-///   declara como `PrimaryKeyRelatedField(source="estimate_point", ...)`.
-///   La columna en la DB sí es `estimate_point_id`; el mapeo lo hace el
-///   handler (mirror de `CreateIssueRequest` en `issues.rs:163`).
-/// - `assignee_ids` / `label_ids` (plural + sufijo) son los nombres que usan
-///   DRF y el frontend; son `ListField(required=False)` en Django.
-/// - `cycle_id` y `module_ids` existen en el payload del frontend aunque
-///   el `DraftIssueCreateSerializer` los lee desde `initial_data`
-///   (draft.py:146-147) — aquí los declaramos explícitos.
+/// # Critical Conventions
+/// - All `Option<Uuid>` / `Option<NaiveDate>` use the helpers in
+///   `crate::utils::serde_empty` to convert `""` → `None`. The frontend
+///   sends `project_id: ""`, `state_id: ""`, empty dates by default; native
+///   serde fails with 422 (HTTP Unprocessable Entity) when encountering `""`
+///   where it expects a `Uuid`.
+/// - `estimate_point` without `_id` — DRF exposes the FK with that name when
+///   declared as `PrimaryKeyRelatedField(source="estimate_point", ...)`.
+///   The DB column is `estimate_point_id`; the mapping is done by the
+///   handler (mirror of `CreateIssueRequest` in `issues.rs:163`).
+/// - `assignee_ids` / `label_ids` (plural + suffix) are the names used by
+///   DRF and the frontend; they are `ListField(required=False)` in Django.
+/// - `cycle_id` and `module_ids` exist in the frontend payload even though
+///   `DraftIssueCreateSerializer` reads them from `initial_data`
+///   (draft.py:146-147) — here we declare them explicitly.
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct CreateDraftIssueRequest {
     pub name: Option<String>,
@@ -1834,9 +1834,9 @@ pub struct CreateDraftIssueRequest {
     #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_empty_as_none_date")]
     pub target_date: Option<chrono::NaiveDate>,
     pub sort_order: Option<f64>,
-    // Tolerante a `[null]` / `[""]` — mismo patrón que en `CreateIssueRequest`,
-    // el frontend (react-hook-form) a veces inicializa estos arrays con
-    // placeholders nulos al montar selects controlados en estado "unassigned".
+    // Tolerant to `[null]` / `[""]` — same pattern as in `CreateIssueRequest`,
+    // the frontend (react-hook-form) sometimes initializes these arrays with
+    // null placeholders when mounting controlled selects in "unassigned" state.
     #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_uuid_list_filter_nulls")]
     pub assignee_ids: Option<Vec<Uuid>>,
     #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_uuid_list_filter_nulls")]
@@ -1847,10 +1847,10 @@ pub struct CreateDraftIssueRequest {
     pub module_ids: Option<Vec<Uuid>>,
 }
 
-/// Shape de `PATCH /workspaces/{slug}/draft-issues/{pk}/`.
+/// `PATCH /workspaces/{slug}/draft-issues/{pk}/` shape.
 ///
-/// Paridad con `DraftIssueCreateSerializer(partial=True)` (draft.py:170-178).
-/// Mismas convenciones que `CreateDraftIssueRequest`.
+/// Parity with `DraftIssueCreateSerializer(partial=True)` (draft.py:170-178).
+/// Same conventions as `CreateDraftIssueRequest`.
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct UpdateDraftIssueRequest {
     pub name: Option<String>,
@@ -1871,39 +1871,39 @@ pub struct UpdateDraftIssueRequest {
     #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_empty_as_none_date")]
     pub target_date: Option<chrono::NaiveDate>,
     pub sort_order: Option<f64>,
-    // `deserialize_uuid_list_filter_nulls` — tolera `[null]` y `[""]` del
-    // frontend (ver `serde_empty::deserialize_uuid_list_filter_nulls`).
+    // `deserialize_uuid_list_filter_nulls` — tolerates `[null]` and `[""]` from
+    // the frontend (see `serde_empty::deserialize_uuid_list_filter_nulls`).
     #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_uuid_list_filter_nulls")]
     pub assignee_ids: Option<Vec<Uuid>>,
     #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_uuid_list_filter_nulls")]
     pub label_ids: Option<Vec<Uuid>>,
-    /// `cycle_id` en PATCH usa Option<Option<Uuid>> para distinguir:
-    /// - campo ausente                         → no tocar cycle (`"not_provided"` en Django)
-    /// - `cycle_id: null` o `cycle_id: ""`     → desasignar cycle
-    /// - `cycle_id: "<uuid>"`                  → asignar cycle
+    /// `cycle_id` in PATCH uses Option<Option<Uuid>> to distinguish:
+    /// - field absent                          → do not touch cycle (`"not_provided"` in Django)
+    /// - `cycle_id: null` or `cycle_id: ""`    → unassign cycle
+    /// - `cycle_id: "<uuid>"`                  → assign cycle
     ///
-    /// Django lee `request.data.get("cycle_id", "not_provided")` (draft.py:176)
-    /// y en el serializer `if cycle_id != "not_provided"` decide si tocarlo
-    /// (draft.py:266). Replicamos ese comportamiento usando el truco de
+    /// Django reads `request.data.get("cycle_id", "not_provided")` (draft.py:176)
+    /// and in the serializer `if cycle_id != "not_provided"` decides whether to touch it
+    /// (draft.py:266). We replicate that behavior using the
     /// `Option<Option<T>>` + `#[serde(default, with = "::serde_with::rust::double_option")]`
-    /// — pero sin depender de `serde_with`, implementamos el mismo doble-wrap
-    /// manualmente: `#[serde(default, deserialize_with = ...)]`.
+    /// trick — but without depending on `serde_with`, we implement the same double-wrap
+    /// manually: `#[serde(default, deserialize_with = ...)]`.
     #[serde(default, deserialize_with = "deserialize_double_option_uuid")]
     pub cycle_id: Option<Option<Uuid>>,
     #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_uuid_list_filter_nulls")]
     pub module_ids: Option<Vec<Uuid>>,
 }
 
-/// Deserializador para `Option<Option<Uuid>>` con empty-string-as-none.
+/// Deserializer for `Option<Option<Uuid>>` with empty-string-as-none.
 ///
-/// Semántica:
-/// - campo ausente                → `None`            (no tocar)
-/// - `null` o `""`                → `Some(None)`      (desasignar)
-/// - `"<uuid>"`                   → `Some(Some(uuid))` (asignar)
+/// Semantics:
+/// - field absent                 → `None`            (do not touch)
+/// - `null` or `""`               → `Some(None)`      (unassign)
+/// - `"<uuid>"`                  → `Some(Some(uuid))` (assign)
 ///
-/// Necesario para PATCH donde queremos distinguir "campo no enviado" de
-/// "campo enviado como null/empty". Serde nativo colapsa ambos a `None`
-/// con `Option<Uuid>`.
+/// Needed for PATCH where we want to distinguish "field not sent" from
+/// "field sent as null/empty". Native Serde collapses both to `None`
+/// with `Option<Uuid>`.
 fn deserialize_double_option_uuid<'de, D>(
     deserializer: D,
 ) -> Result<Option<Option<Uuid>>, D::Error>
@@ -1920,19 +1920,19 @@ where
     }
 }
 
-/// Query params para `GET /workspaces/{slug}/draft-issues/`.
+/// Query params for `GET /workspaces/{slug}/draft-issues/`.
 ///
-/// Paridad con Django `self.paginate(...)` en
-/// `WorkspaceDraftIssueViewSet.list` (draft.py:99-109), que acepta `cursor`
-/// y `per_page` vía querystring. El frontend destructura la respuesta como
-/// `{ results, ...paginationInfo }` en `issue.store.ts:231` — si no envolvemos
-/// el array la UI no puede añadir nada a `issuesMap` y el panel queda vacío.
+/// Parity with Django `self.paginate(...)` in
+/// `WorkspaceDraftIssueViewSet.list` (draft.py:99-109), which accepts `cursor`
+/// and `per_page` via querystring. The frontend destructures the response as
+/// `{ results, ...paginationInfo }` in `issue.store.ts:231` — if we don't wrap
+/// the array the UI cannot add anything to `issuesMap` and the panel remains empty.
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct DraftIssueListQuery {
-    /// Cursor Django: `"per_page:offset:is_prev"` (ej. `"20:0:0"`).
+    /// Django Cursor: `"per_page:offset:is_prev"` (e.g. `"20:0:0"`).
     pub cursor: Option<String>,
-    /// Override explícito del per_page (prioridad sobre el derivado del cursor,
-    /// mismo orden que Django en `BasePaginator.paginate`).
+    /// Explicit per_page override (priority over cursor-derived,
+    /// same order as Django in `BasePaginator.paginate`).
     pub per_page: Option<u64>,
 }
 
@@ -1943,7 +1943,7 @@ pub struct DraftIssueListQuery {
     tag = "Workspace Extras",
     params(("slug" = String, Path, description = "Workspace slug")),
     responses(
-        (status = 200, description = "Página de draft issues del usuario"),
+        (status = 200, description = "User draft issues page"),
     )
 )]
 pub async fn list_draft_issues(
@@ -1957,8 +1957,8 @@ pub async fn list_draft_issues(
     let ws = workspace_by_slug(db, &slug).await?;
     let _member = require_workspace_member(db, ws.id, user_id).await?;
 
-    // Paridad con Django: `paginate(default_per_page=100)` heredado de
-    // `BasePaginator`. El máximo se respeta desde `pagination::resolve_per_page`.
+    // Parity with Django: `paginate(default_per_page=100)` inherited from
+    // `BasePaginator`. Maximum is respected from `pagination::resolve_per_page`.
     const DEFAULT_PER_PAGE: u64 = 100;
     const MAX_PER_PAGE: u64 = pagination::DEFAULT_MAX_LIMIT;
 
@@ -1970,15 +1970,15 @@ pub async fn list_draft_issues(
         MAX_PER_PAGE,
     );
 
-    // Filtros idénticos al queryset de Django draft.py:49-101: workspace por
-    // slug, `created_by=request.user`, soft-delete activo.
+    // Filters identical to Django queryset draft.py:49-101: workspace by
+    // slug, `created_by=request.user`, active soft-delete.
     let base = draft_issues::Entity::find()
         .filter(draft_issues::Column::WorkspaceId.eq(ws.id))
         .filter(draft_issues::Column::CreatedById.eq(user_id))
         .filter(draft_issues::Column::DeletedAt.is_null());
 
-    // `count` y `page` usan el MISMO filtro — clonamos antes de añadir orden
-    // para no divergir (mismo patrón que `list_stickies`).
+    // `count` and `page` use the SAME filter — we clone before adding order
+    // to not diverge (same pattern as `list_stickies`).
     let total_count = base.clone().count(db).await.map_err(AppError::Database)?;
 
     let page = base
@@ -2001,7 +2001,7 @@ pub async fn list_draft_issues(
     tag = "Workspace Extras",
     params(("slug" = String, Path, description = "Workspace slug")),
     responses(
-        (status = 201, description = "Draft issue creado"),
+        (status = 201, description = "Draft issue created"),
     )
 )]
 pub async fn create_draft_issue(
@@ -2014,11 +2014,11 @@ pub async fn create_draft_issue(
     let user_id = auth_user.id;
     let ws = workspace_by_slug(db, &slug).await?;
     let member = require_workspace_member(db, ws.id, user_id).await?;
-    // Draft issues: GUEST es permitido en Django (draft.py:111); no usamos
-    // `require_member_or_admin` aquí para mantener paridad.
+    // Draft issues: GUEST is allowed in Django (draft.py:111); we don't use
+    // `require_member_or_admin` here to maintain parity.
     let _ = member;
 
-    // Validación paridad con DraftIssueCreateSerializer.validate (draft.py:72-77):
+    // Parity validation with DraftIssueCreateSerializer.validate (draft.py:72-77):
     // start_date > target_date → error.
     if let (Some(start), Some(target)) = (body.start_date, body.target_date) {
         if start > target {
@@ -2035,9 +2035,9 @@ pub async fn create_draft_issue(
     let cycle_id = body.cycle_id;
     let modules = body.module_ids.clone().unwrap_or_default();
 
-    // Ejecutar en transacción para que el draft + sus N-a-M queden atómicos,
-    // igual que `DraftIssueCreateSerializer.create` que hace bulk_create
-    // dentro del mismo request y rollback si algo falla.
+    // Execute in transaction so draft + its N-to-M remain atomic,
+    // same as `DraftIssueCreateSerializer.create` which does bulk_create
+    // within the same request and rollback if something fails.
     use sea_orm::TransactionTrait;
     let saved = db
         .transaction::<_, draft_issues::Model, AppError>(|txn| {
@@ -2055,12 +2055,12 @@ pub async fn create_draft_issue(
                     project_id: Set(project_id),
                     workspace_id: Set(workspace_id),
                     type_id: Set(body.type_id),
-                    // `estimate_point` del payload DRF → columna `estimate_point_id`.
+                    // `estimate_point` from DRF payload → `estimate_point_id` column.
                     estimate_point_id: Set(body.estimate_point),
                     start_date: Set(body.start_date),
                     target_date: Set(body.target_date),
                     // Django default (draft.py DraftIssue model): sort_order=65535.0
-                    // si no viene; paridad exacta.
+                    // if not provided; exact parity.
                     sort_order: Set(body.sort_order.unwrap_or(65535.0)),
                     completed_at: Set(None),
                     external_source: Set(None),
@@ -2121,10 +2121,10 @@ pub async fn create_draft_issue(
             sea_orm::TransactionError::Connection(db_err) => AppError::Database(db_err),
         })?;
 
-    // Hidratar con las anotaciones M2M. Paridad con Django draft.py:124-151,
-    // que después de `serializer.save()` reconsulta el queryset anotado y
-    // devuelve el shape completo (con cycle_id/label_ids/assignee_ids/
-    // module_ids), no solo el modelo crudo.
+    // Hydrate with M2M annotations. Parity with Django draft.py:124-151,
+    // which after `serializer.save()` re-queries the annotated queryset and
+    // returns the full shape (with cycle_id/label_ids/assignee_ids/
+    // module_ids), not just the raw model.
     let resp = hydrate_draft_issue_response(db, saved).await?;
     Ok((StatusCode::CREATED, Json(resp)))
 }
@@ -2139,8 +2139,8 @@ pub async fn create_draft_issue(
         ("pk" = Uuid, Path, description = "Draft Issue ID"),
     ),
     responses(
-        (status = 200, description = "Draft issue detalle"),
-        (status = 404, description = "No encontrado"),
+        (status = 200, description = "Draft issue detail"),
+        (status = 404, description = "Not found"),
     )
 )]
 pub async fn get_draft_issue(
@@ -2176,8 +2176,8 @@ pub async fn get_draft_issue(
         ("pk" = Uuid, Path, description = "Draft Issue ID"),
     ),
     responses(
-        (status = 200, description = "Draft actualizado"),
-        (status = 404, description = "No encontrado"),
+        (status = 200, description = "Draft updated"),
+        (status = 404, description = "Not found"),
     )
 )]
 pub async fn update_draft_issue(
@@ -2201,9 +2201,9 @@ pub async fn update_draft_issue(
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
-    // Validación paridad con DraftIssueCreateSerializer.validate (draft.py:72-77).
-    // En PATCH comparamos el par efectivo: campo enviado si presente, si no
-    // el valor actual del draft.
+    // Parity validation with DraftIssueCreateSerializer.validate (draft.py:72-77).
+    // In PATCH we compare the effective pair: field sent if present, otherwise
+    // the current draft value.
     let effective_start = body.start_date.or(issue.start_date);
     let effective_target = body.target_date.or(issue.target_date);
     if let (Some(start), Some(target)) = (effective_start, effective_target) {
@@ -2214,17 +2214,17 @@ pub async fn update_draft_issue(
         }
     }
 
-    // `project_id` efectivo para sincronizar las N-a-M (Django toma el
-    // del request si viene, si no el del draft — draft.py:168).
+    // Effective `project_id` to sync N-to-Ms (Django takes it from
+    // the request if present, otherwise from the draft — draft.py:168).
     let effective_project_id = body.project_id.or(issue.project_id);
     let workspace_id = ws.id;
     let issue_id = issue.id;
 
     use sea_orm::TransactionTrait;
     db.transaction::<_, (), AppError>(|txn| {
-        // Build ActiveModel sync — espejo del patrón de issues.rs:update_issue
-        // (evita tener que mover `body` completo al async y lidiar con borrows
-        // parciales).
+        // Build ActiveModel sync — mirror of issues.rs:update_issue pattern
+        // (avoids having to move full `body` to async and deal with partial
+        // borrows).
         let mut active: draft_issues::ActiveModel = issue.into();
         if let Some(v) = body.name.clone() {
             active.name = Set(Some(v));
@@ -2235,9 +2235,9 @@ pub async fn update_draft_issue(
         if let Some(v) = body.priority.clone() {
             active.priority = Set(v);
         }
-        // Para los campos UUID simples: `deserialize_empty_as_none_uuid`
-        // ya colapsa `""` → `None`, así que `is_some()` detecta solo el
-        // caso de UUID válido presente. Paridad con issues.rs:update_issue.
+        // For simple UUID fields: `deserialize_empty_as_none_uuid`
+        // already collapses `""` → `None`, so `is_some()` detects only the
+        // case of valid UUID present. Parity with issues.rs:update_issue.
         if body.state_id.is_some() {
             active.state_id = Set(body.state_id);
         }
@@ -2265,7 +2265,7 @@ pub async fn update_draft_issue(
         active.updated_at = Set(chrono::Utc::now().into());
         active.updated_by_id = Set(Some(user_id));
 
-        // Extraer las N-a-M para el async block.
+        // Extract N-to-Ms for the async block.
         let assignees = body.assignee_ids.clone();
         let labels = body.label_ids.clone();
         let cycle_id = body.cycle_id;
@@ -2274,8 +2274,8 @@ pub async fn update_draft_issue(
         Box::pin(async move {
             active.update(txn).await.map_err(AppError::Database)?;
 
-            // Sync N-a-M solo si el campo vino en el payload (paridad con
-            // `if assignees is not None` en draft.py:232,249).
+            // Sync N-to-M only if field was in payload (parity with
+            // `if assignees is not None` in draft.py:232,249).
             if let Some(ref a) = assignees {
                 sync_draft_assignees(
                     txn,
@@ -2298,8 +2298,8 @@ pub async fn update_draft_issue(
                 )
                 .await?;
             }
-            // cycle_id: Some(Some(uuid))=asignar, Some(None)=desasignar,
-            // None=no tocar. Paridad con `if cycle_id != "not_provided"` en
+            // cycle_id: Some(Some(uuid))=assign, Some(None)=unassign,
+            // None=do not touch. Parity with `if cycle_id != "not_provided"` in
             // draft.py:266.
             if let Some(cid) = cycle_id {
                 sync_draft_cycle(
@@ -2333,8 +2333,8 @@ pub async fn update_draft_issue(
         sea_orm::TransactionError::Connection(db_err) => AppError::Database(db_err),
     })?;
 
-    // Re-leer el draft actualizado para devolver el shape canónico
-    // (las relaciones M2M sincronizadas en la transacción ya están en DB).
+    // Re-read updated draft to return canonical shape
+    // (M2M relations synced in transaction are already in DB).
     let updated = draft_issues::Entity::find_by_id(pk)
         .filter(draft_issues::Column::WorkspaceId.eq(ws.id))
         .filter(draft_issues::Column::DeletedAt.is_null())
@@ -2356,8 +2356,8 @@ pub async fn update_draft_issue(
         ("pk" = Uuid, Path, description = "Draft Issue ID"),
     ),
     responses(
-        (status = 204, description = "Eliminado"),
-        (status = 404, description = "No encontrado"),
+        (status = 204, description = "Deleted"),
+        (status = 404, description = "Not found"),
     )
 )]
 pub async fn delete_draft_issue(
@@ -2389,9 +2389,9 @@ pub async fn delete_draft_issue(
 // WORKSPACE-LEVEL AGGREGATE VIEWS
 // ═══════════════════════════════════════════════════════════════════════════
 //
-// Equivalentes a: workspace/cycle.py, module.py, estimate.py, label.py, state.py
-// Son vistas de sólo lectura que listan entidades a través de todos los proyectos
-// del workspace a los que el usuario pertenece.
+// Equivalents to: workspace/cycle.py, module.py, estimate.py, label.py, state.py
+// These are read-only views listing entities across all projects in the
+// workspace that the user belongs to.
 
 // ── Cycles ──────────────────────────────────────────────────────────────────
 
@@ -2399,14 +2399,14 @@ pub async fn delete_draft_issue(
 
 /// GET /workspaces/{slug}/cycles/
 ///
-/// Lista todos los cycles no archivados del workspace.
+/// Lists all non-archived cycles in the workspace.
 #[utoipa::path(
     get,
     path = "/api/workspaces/{slug}/cycles/",
     tag = "Workspace Extras",
     params(("slug" = String, Path, description = "Workspace slug")),
     responses(
-        (status = 200, description = "Lista de cycles del workspace"),
+        (status = 200, description = "List of workspace cycles"),
     )
 )]
 pub async fn list_workspace_cycles(
@@ -2444,7 +2444,7 @@ pub async fn list_workspace_cycles(
     tag = "Workspace Extras",
     params(("slug" = String, Path, description = "Workspace slug")),
     responses(
-        (status = 200, description = "Lista de modules del workspace"),
+        (status = 200, description = "List of workspace modules"),
     )
 )]
 pub async fn list_workspace_modules(
@@ -2551,7 +2551,7 @@ pub struct WorkspaceEstimateResponse {
     tag = "Workspace Extras",
     params(("slug" = String, Path, description = "Workspace slug")),
     responses(
-        (status = 200, description = "Lista de estimates del workspace"),
+        (status = 200, description = "List of workspace estimates"),
     )
 )]
 pub async fn list_workspace_estimates(
@@ -2564,7 +2564,7 @@ pub async fn list_workspace_estimates(
     let ws = workspace_by_slug(db, &slug).await?;
     let _member = require_workspace_member(db, ws.id, user_id).await?;
 
-    // Cargar estimates + sus puntos con dos queries (no ORM join con SeaORM)
+    // Load estimates + their points with two queries (no ORM join with SeaORM)
     let ests = estimates::Entity::find()
         .filter(estimates::Column::WorkspaceId.eq(ws.id))
         .filter(estimates::Column::DeletedAt.is_null())
@@ -2637,7 +2637,7 @@ impl From<labels::Model> for WorkspaceLabelResponse {
     tag = "Workspace Extras",
     params(("slug" = String, Path, description = "Workspace slug")),
     responses(
-        (status = 200, description = "Lista de labels del workspace"),
+        (status = 200, description = "List of workspace labels"),
     )
 )]
 pub async fn list_workspace_labels(
@@ -2704,7 +2704,7 @@ impl From<states::Model> for WorkspaceStateResponse {
     tag = "Workspace Extras",
     params(("slug" = String, Path, description = "Workspace slug")),
     responses(
-        (status = 200, description = "Lista de states del workspace"),
+        (status = 200, description = "List of workspace states"),
     )
 )]
 pub async fn list_workspace_states(
@@ -2734,43 +2734,41 @@ pub async fn list_workspace_states(
 // WORKSPACE USER PROPERTIES
 // ═══════════════════════════════════════════════════════════════════════════
 //
-// Mirror de Django `WorkspaceUserPropertiesEndpoint`
+// Mirror of Django `WorkspaceUserPropertiesEndpoint`
 // (plane/app/views/workspace/user.py:252).
 //
 // GET   /workspaces/{slug}/user-properties/
 // PATCH /workspaces/{slug}/user-properties/
 //
-// Ambos operan bajo la semántica `get_or_create(user, workspace)`: si no
-// existe la fila la crean con defaults. En Rust se implementa de forma
-// atómica con `INSERT ... ON CONFLICT DO NOTHING` para evitar race
-// conditions entre tabs del mismo usuario, seguido de un SELECT.
+// Both operate under `get_or_create(user, workspace)` semantics: if the row
+// doesn't exist it's created with defaults. In Rust it's implemented
+// atomically with `INSERT ... ON CONFLICT DO NOTHING` to avoid race
+// conditions between tabs of the same user, followed by a SELECT.
 //
-// Permiso: `WorkspaceViewerPermission` (cualquier miembro activo del
-// workspace).
+// Permission: `WorkspaceViewerPermission` (any active workspace member).
 //
-// Seguridad y diferencias intencionales respecto a Django:
-// - El body del PATCH usa una whitelist estricta; `id`, `user_id`,
-//   `workspace_id`, timestamps y `deleted_at` no pueden ser pisados desde
-//   el request.
-// - `navigation_control_preference` se valida contra el enum Django
-//   (`ACCORDION` | `TABBED`). Django delega la validación al CharField
-//   + choices a nivel de serializer; aquí se hace explícito.
-// - `navigation_project_limit` se valida en rango `0..=1000` para evitar
-//   valores absurdos / overflow de `i32`. Django no valida; este
-//   endurecimiento es consistente con la política de no introducir
-//   patrones inseguros.
+// Security and intentional differences from Django:
+// - PATCH body uses a strict whitelist; `id`, `user_id`, `workspace_id`,
+//   timestamps and `deleted_at` cannot be overridden from the request.
+// - `navigation_control_preference` is validated against the Django enum
+//   (`ACCORDION` | `TABBED`). Django delegates validation to the CharField
+//   + choices at serializer level; here it's made explicit.
+// - `navigation_project_limit` is validated in range `0..=1000` to avoid
+//   absurd values / `i32` overflow. Django does not validate; this
+//   hardening is consistent with the policy of not introducing unsafe
+//   patterns.
 
-/// Valores permitidos para `navigation_control_preference`.
+/// Allowed values for `navigation_control_preference`.
 ///
-/// Mirror del enum Django
+/// Mirror of Django enum
 /// `WorkspaceUserProperties.NavigationControlPreference.choices`.
 const NAVIGATION_CONTROL_PREFERENCES: &[&str] = &["ACCORDION", "TABBED"];
 
-/// Límite razonable para `navigation_project_limit`. Django no valida;
-/// aquí se acota para evitar valores hostiles o absurdos.
+/// Reasonable limit for `navigation_project_limit`. Django does not validate;
+/// here it's bounded to avoid hostile or absurd values.
 const MAX_NAVIGATION_PROJECT_LIMIT: i32 = 1000;
 
-/// Defaults idénticos a Django `get_default_filters` en
+/// Defaults identical to Django `get_default_filters` in
 /// `plane/db/models/workspace.py:62`.
 fn default_filters() -> JsonValue {
     serde_json::json!({
@@ -2786,7 +2784,7 @@ fn default_filters() -> JsonValue {
     })
 }
 
-/// Mirror de `get_default_display_filters`
+/// Mirror of `get_default_display_filters`
 /// (plane/db/models/workspace.py:76).
 fn default_display_filters() -> JsonValue {
     serde_json::json!({
@@ -2802,7 +2800,7 @@ fn default_display_filters() -> JsonValue {
     })
 }
 
-/// Mirror de `get_default_display_properties`
+/// Mirror of `get_default_display_properties`
 /// (plane/db/models/workspace.py:90).
 fn default_display_properties() -> JsonValue {
     serde_json::json!({
@@ -2846,10 +2844,10 @@ impl From<workspace_user_properties::Model> for WorkspaceUserPropertiesResponse 
     fn from(m: workspace_user_properties::Model) -> Self {
         Self {
             id: m.id,
-            // Django `WorkspaceUserPropertiesSerializer` usa `fields = "__all__"`
-            // con `read_only_fields = ["workspace", "user"]`. En la respuesta
-            // JSON esos FK aparecen como `workspace` y `user` (no como
-            // `workspace_id`/`user_id`). Preservamos ese contrato para el
+            // Django `WorkspaceUserPropertiesSerializer` uses `fields = "__all__"`
+            // with `read_only_fields = ["workspace", "user"]`. In the JSON
+            // response these FKs appear as `workspace` and `user` (not as
+            // `workspace_id`/`user_id`). We preserve this contract for the
             // frontend.
             workspace: m.workspace_id,
             user: m.user_id,
@@ -2868,9 +2866,9 @@ impl From<workspace_user_properties::Model> for WorkspaceUserPropertiesResponse 
     }
 }
 
-/// Body aceptado por el PATCH. Todos los campos son opcionales
-/// (partial update, igual que Django `partial=True`). Los FKs y timestamps
-/// quedan fuera de la whitelist por diseño.
+/// Body accepted by PATCH. All fields are optional (partial update, same
+/// as Django `partial=True`). FKs and timestamps are left out of the
+/// whitelist by design.
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct UpdateWorkspaceUserPropertiesRequest {
     pub filters: Option<JsonValue>,
@@ -2881,16 +2879,16 @@ pub struct UpdateWorkspaceUserPropertiesRequest {
     pub navigation_control_preference: Option<String>,
 }
 
-/// Devuelve la fila existente o la crea con defaults.
+/// Returns existing row or creates it with defaults.
 ///
-/// Implementa `get_or_create(user=..., workspace=...)` de forma atómica:
-/// 1. `INSERT ... ON CONFLICT DO NOTHING` con defaults Django.
-/// 2. `SELECT` filtrando por `(workspace_id, user_id)` activos.
+/// Implements `get_or_create(user=..., workspace=...)` atomically:
+/// 1. `INSERT ... ON CONFLICT DO NOTHING` with Django defaults.
+/// 2. `SELECT` filtering by active `(workspace_id, user_id)`.
 ///
-/// La unique constraint parcial
+/// The partial unique constraint
 /// `workspace_user_properties_unique_workspace_user_when_deleted_at_null`
-/// (ver `plane/db/models/workspace.py:338-344`) garantiza que no existan
-/// dos filas activas para el mismo par (workspace, user).
+/// (see `plane/db/models/workspace.py:338-344`) ensures there aren't
+/// two active rows for the same (workspace, user) pair.
 async fn get_or_create_workspace_user_properties(
     db: &sea_orm::DatabaseConnection,
     workspace_id: Uuid,
@@ -2900,9 +2898,9 @@ async fn get_or_create_workspace_user_properties(
 
     let now = chrono::Utc::now().fixed_offset();
 
-    // Intento de insert con ON CONFLICT DO NOTHING.
-    // Si ya existe una fila activa para (workspace_id, user_id) la unique
-    // constraint parcial hace fallar el insert silenciosamente.
+    // Insert attempt with ON CONFLICT DO NOTHING.
+    // If an active row already exists for (workspace_id, user_id) the
+    // partial unique constraint makes the insert fail silently.
     let to_insert = workspace_user_properties::ActiveModel {
         id: Set(Uuid::new_v4()),
         created_at: Set(now),
@@ -2926,16 +2924,16 @@ async fn get_or_create_workspace_user_properties(
                 workspace_user_properties::Column::WorkspaceId,
                 workspace_user_properties::Column::UserId,
             ])
-            // REQUISITO de PostgreSQL, no decoración: cuando el arbiter index es parcial
-            // (`UNIQUE (workspace_id, user_id) WHERE deleted_at IS NULL`, ver
-            // WorkspaceUserProperties.Meta.constraints en plane/db/models/workspace.py:338-344),
-            // el `ON CONFLICT` DEBE repetir el mismo predicado o PostgreSQL rechaza con
+            // PostgreSQL REQUIREMENT, not decoration: when the arbiter index is partial
+            // (`UNIQUE (workspace_id, user_id) WHERE deleted_at IS NULL`, see
+            // WorkspaceUserProperties.Meta.constraints in plane/db/models/workspace.py:338-344),
+            // the `ON CONFLICT` MUST repeat the same predicate or PostgreSQL rejects with
             // `there is no unique or exclusion constraint matching the ON CONFLICT specification`
-            // (ver https://www.postgresql.org/docs/current/sql-insert.html#SQL-ON-CONFLICT
+            // (see https://www.postgresql.org/docs/current/sql-insert.html#SQL-ON-CONFLICT
             // → "If an index_predicate is specified, it must, as a further requirement for
-            //    inference, satisfy arbiter indexes"). El otro unique existente
-            // (`unique_together = [workspace, user, deleted_at]`) tampoco matchea porque
-            // incluye `deleted_at` como tercera columna y nosotros solo apuntamos a dos.
+            //    inference, satisfy arbiter indexes"). The other existing unique
+            // (`unique_together = [workspace, user, deleted_at]`) also doesn't match because
+            // it includes `deleted_at` as a third column and we only target two.
             .target_and_where(
                 sea_orm::sea_query::Expr::col(
                     workspace_user_properties::Column::DeletedAt,
@@ -2950,7 +2948,7 @@ async fn get_or_create_workspace_user_properties(
         .await
         .map_err(AppError::Database)?;
 
-    // SELECT garantizado: ya sea la fila recién insertada o la existente.
+    // Guaranteed SELECT: either the newly inserted row or the existing one.
     workspace_user_properties::Entity::find()
         .filter(workspace_user_properties::Column::WorkspaceId.eq(workspace_id))
         .filter(workspace_user_properties::Column::UserId.eq(user_id))
@@ -2971,9 +2969,9 @@ async fn get_or_create_workspace_user_properties(
     tag = "Workspace Extras",
     params(("slug" = String, Path, description = "Workspace slug")),
     responses(
-        (status = 200, description = "Propiedades del usuario en el workspace"),
-        (status = 403, description = "No es miembro activo del workspace"),
-        (status = 404, description = "Workspace no existe"),
+        (status = 200, description = "User properties in the workspace"),
+        (status = 403, description = "Not an active workspace member"),
+        (status = 404, description = "Workspace does not exist"),
     )
 )]
 pub async fn get_workspace_user_properties(
@@ -2996,23 +2994,23 @@ pub async fn get_workspace_user_properties(
 /// Mirror Django: `WorkspaceUserPropertiesEndpoint.patch`
 /// (plane/app/views/workspace/user.py:255).
 ///
-/// Política de actualización:
-/// - Whitelist estricta (FKs/timestamps/id nunca se tocan desde el body).
+/// Update policy:
+/// - Strict whitelist (FKs/timestamps/id never touched from body).
 /// - `navigation_control_preference` ∈ {"ACCORDION", "TABBED"}.
 /// - `navigation_project_limit` ∈ [0, MAX_NAVIGATION_PROJECT_LIMIT].
-/// - Campos JSON (`filters`, `display_filters`, `display_properties`,
-///   `rich_filters`) se reemplazan por valor, respetando el contrato
-///   `partial=True` del serializer Django.
+/// - JSON fields (`filters`, `display_filters`, `display_properties`,
+///   `rich_filters`) are replaced by value, respecting the `partial=True`
+///   contract of the Django serializer.
 #[utoipa::path(
     patch,
     path = "/api/workspaces/{slug}/user-properties/",
     tag = "Workspace Extras",
     params(("slug" = String, Path, description = "Workspace slug")),
     responses(
-        (status = 200, description = "Propiedades actualizadas"),
-        (status = 400, description = "Body inválido"),
-        (status = 403, description = "No es miembro activo del workspace"),
-        (status = 404, description = "Workspace no existe"),
+        (status = 200, description = "Properties updated"),
+        (status = 400, description = "Invalid body"),
+        (status = 403, description = "Not an active workspace member"),
+        (status = 404, description = "Workspace does not exist"),
     )
 )]
 pub async fn update_workspace_user_properties(
@@ -3026,7 +3024,7 @@ pub async fn update_workspace_user_properties(
     let ws = workspace_by_slug(db, &slug).await?;
     let _member = require_workspace_member(db, ws.id, user_id).await?;
 
-    // Validaciones antes de tocar DB: fallan rápido y no consumen escritura.
+    // Validations before touching DB: fail fast and don't consume writes.
     if let Some(ref pref) = body.navigation_control_preference {
         if !NAVIGATION_CONTROL_PREFERENCES.contains(&pref.as_str()) {
             return Err(AppError::BadRequest(format!(
@@ -3097,20 +3095,20 @@ pub struct DraftToIssueRequest {
 
 /// POST /workspaces/{slug}/draft-to-issue/{draft_id}/
 ///
-/// Convierte un DraftIssue en un Issue real y elimina el draft.
+/// Converts a DraftIssue into a real Issue and deletes the draft.
 ///
-/// Espejo de `WorkspaceDraftIssueViewSet.create_draft_to_issue`
+/// Mirror of `WorkspaceDraftIssueViewSet.create_draft_to_issue`
 /// (`apps/api/plane/app/views/workspace/draft.py:196`).
 ///
-/// Implementa:
-/// - Validación de project_id en el draft
-/// - Creación de Issue con sequence_id atómico (SERIALIZABLE)
-/// - Creación de CycleIssue si cycle_id está en el body
-/// - Creación de ModuleIssue(s) para cada module_id en el body
-/// - Reasignación de FileAssets del draft al nuevo issue
-/// - Soft-delete del draft
+/// Implements:
+/// - project_id validation in the draft
+/// - Issue creation with atomic sequence_id (SERIALIZABLE)
+/// - CycleIssue creation if cycle_id is in body
+/// - ModuleIssue(s) creation for each module_id in body
+/// - Reassigning FileAssets from draft to the new issue
+/// - Draft soft-delete
 ///
-/// Nota: el job de actividad (issue_activity) es Fase 3 y se omite aquí.
+/// Note: activity job (issue_activity) is Phase 3 and is omitted here.
 #[utoipa::path(
     post,
     path = "/api/workspaces/{slug}/draft-to-issue/{draft_id}/",
@@ -3120,9 +3118,9 @@ pub struct DraftToIssueRequest {
         ("draft_id" = uuid::Uuid, Path, description = "Draft issue ID"),
     ),
     responses(
-        (status = 201, description = "Issue creado"),
-        (status = 400, description = "Draft sin proyecto asignado"),
-        (status = 404, description = "Draft no encontrado"),
+        (status = 201, description = "Issue created"),
+        (status = 400, description = "Draft without assigned project"),
+        (status = 404, description = "Draft not found"),
     )
 )]
 pub async fn draft_to_issue(
@@ -3137,7 +3135,7 @@ pub async fn draft_to_issue(
     let member = require_workspace_member(db, ws.id, user_id).await?;
     require_member_or_admin(member.role)?;
 
-    // 1. Obtener el draft
+    // 1. Get draft
     let draft = draft_issues::Entity::find_by_id(draft_id)
         .filter(draft_issues::Column::WorkspaceId.eq(ws.id))
         .filter(draft_issues::Column::CreatedById.eq(user_id))
@@ -3147,14 +3145,14 @@ pub async fn draft_to_issue(
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
-    // 2. Validar que el draft tiene proyecto
+    // 2. Validate that draft has a project
     let project_id = draft.project_id.ok_or_else(|| {
         AppError::BadRequest("Project is required to create an issue.".into())
     })?;
 
-    // 3. Verificar membresía de proyecto
-    // Verificar que el usuario es miembro activo del proyecto antes de crear el issue.
-    // Retorna 403 si no tiene acceso — refleja Django ProjectViewSet permission check.
+    // 3. Verify project membership
+    // Verify user is an active project member before creating the issue.
+    // Returns 403 if no access — reflects Django ProjectViewSet permission check.
     crate::routes::helpers::project_member_for_user(db, project_id, user_id)
         .await
         .map_err(|_| AppError::Forbidden)?
@@ -3171,7 +3169,7 @@ pub async fn draft_to_issue(
     let cycle_id = body.cycle_id;
     let module_ids = body.module_ids.clone().unwrap_or_default();
 
-    // 4. Crear Issue en transacción SERIALIZABLE (sequence_id atómico)
+    // 4. Create Issue in SERIALIZABLE transaction (atomic sequence_id)
     let issue = db
         .transaction_with_config::<_, issues::Model, AppError>(
             |txn| {
@@ -3284,7 +3282,7 @@ pub async fn draft_to_issue(
     let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
     let issue_id = issue.id;
 
-    // 5. CycleIssue (best-effort, no bloquea si falla)
+    // 5. CycleIssue (best-effort, does not block if it fails)
     if let Some(cid) = cycle_id {
         let _ = cycle_issues::ActiveModel {
             id: Set(uuid::Uuid::new_v4()),
@@ -3328,7 +3326,7 @@ pub async fn draft_to_issue(
         });
     }
 
-    // 7. Reasignar FileAssets del draft al issue real
+    // 7. Reassign FileAssets from draft to real issue
     // Django: file_assets.update(issue_id=..., entity_type=ISSUE_DESCRIPTION, draft_issue_id=None)
     file_assets::Entity::update_many()
         .col_expr(file_assets::Column::IssueId, sea_orm::sea_query::Expr::value(Some(issue_id)))
@@ -3339,12 +3337,12 @@ pub async fn draft_to_issue(
         .await
         .map_err(AppError::Database)?;
 
-    // 8. Soft-delete del draft
+    // 8. Draft soft-delete
     let mut draft_am: draft_issues::ActiveModel = draft.into();
     draft_am.deleted_at = Set(Some(now));
     draft_am.update(db).await.map_err(AppError::Database)?;
 
-    // Respuesta espejo del shape de Django: campos básicos del issue creado
+    // Response mirror of Django shape: basic fields of created issue
     Ok((StatusCode::CREATED, Json(serde_json::json!({
         "id": issue_id,
         "name": issue.name,

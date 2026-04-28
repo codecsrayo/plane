@@ -1,7 +1,7 @@
 // src/routes/integrations/workspace.rs
-//! Endpoints de gestión de workspace-integrations (CRUD) y provider install.
+//! Workspace integrations management (CRUD) and provider install endpoints.
 //!
-//! Endpoints implementados:
+//! Implemented endpoints:
 //!   GET    /api/workspaces/{slug}/workspace-integrations/
 //!   POST   /api/workspaces/{slug}/workspace-integrations/
 //!   GET    /api/workspaces/{slug}/workspace-integrations/{pk}/
@@ -46,9 +46,9 @@ use super::{
     tag = "Integrations",
     params(("slug" = String, Path, description = "Workspace slug")),
     responses(
-        (status = 200, description = "Lista de integraciones del workspace"),
-        (status = 401, description = "No autenticado"),
-        (status = 403, description = "Sin permiso"),
+        (status = 200, description = "Workspace integrations list"),
+        (status = 401, description = "Unauthorized"),
+        (status = 403, description = "Permission denied"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -65,7 +65,7 @@ pub async fn list_workspace_integrations(
         .await
         .map_err(AppError::Database)?;
 
-    // Batch-fetch evita N+1: una sola query para todas las integraciones.
+    // Batch-fetch avoids N+1: single query for all integrations.
     let integration_ids: Vec<Uuid> = rows.iter().map(|wi| wi.integration_id).collect();
     let integrations_map: std::collections::HashMap<Uuid, integrations::Model> =
         integrations::Entity::find()
@@ -96,10 +96,10 @@ pub async fn list_workspace_integrations(
     tag = "Integrations",
     params(("slug" = String, Path, description = "Workspace slug")),
     responses(
-        (status = 201, description = "Integración instalada"),
-        (status = 400, description = "Error de validación"),
-        (status = 401, description = "No autenticado"),
-        (status = 403, description = "Sin permiso"),
+        (status = 201, description = "Integration installed"),
+        (status = 400, description = "Validation error"),
+        (status = 401, description = "Unauthorized"),
+        (status = 403, description = "Permission denied"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -125,7 +125,7 @@ pub async fn create_workspace_integration(
     )
     .await?;
 
-    // Antipatrón corregido: SELECT luego INSERT sin transacción es TOCTOU.
+    // Antipattern fixed: SELECT then INSERT without transaction is TOCTOU.
     let wi = state
         .db
         .transaction_with_config::<_, workspace_integrations::Model, AppError>(
@@ -149,7 +149,7 @@ pub async fn create_workspace_integration(
                         return Err(AppError::BadRequest("Integration already installed".into()));
                     }
 
-                    // created_at/updated_at explícitos (NOT NULL sin DEFAULT).
+                    // explicit created_at/updated_at (NOT NULL without DEFAULT).
                     let now: chrono::DateTime<chrono::FixedOffset> =
                         chrono::Utc::now().into();
 
@@ -197,8 +197,8 @@ pub async fn create_workspace_integration(
         ("pk" = Uuid, Path, description = "WorkspaceIntegration ID"),
     ),
     responses(
-        (status = 200, description = "Detalle de la integración"),
-        (status = 404, description = "No encontrado"),
+        (status = 200, description = "Integration details"),
+        (status = 404, description = "Not found"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -236,8 +236,8 @@ pub async fn get_workspace_integration(
         ("pk" = Uuid, Path, description = "WorkspaceIntegration ID"),
     ),
     responses(
-        (status = 200, description = "Integración actualizada"),
-        (status = 404, description = "No encontrado"),
+        (status = 200, description = "Integration updated"),
+        (status = 404, description = "Not found"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -285,8 +285,8 @@ pub async fn update_workspace_integration(
         ("pk" = Uuid, Path, description = "WorkspaceIntegration ID"),
     ),
     responses(
-        (status = 204, description = "Eliminada"),
-        (status = 404, description = "No encontrado"),
+        (status = 204, description = "Deleted"),
+        (status = 404, description = "Not found"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -323,8 +323,8 @@ pub async fn delete_workspace_integration(
         ("provider" = String, Path, description = "Provider (github|gitlab|slack)"),
     ),
     responses(
-        (status = 204, description = "Eliminada"),
-        (status = 404, description = "No encontrado"),
+        (status = 204, description = "Deleted"),
+        (status = 404, description = "Not found"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -363,9 +363,9 @@ pub async fn delete_workspace_integration_by_provider(
         ("provider" = String, Path, description = "Provider (github|gitlab|slack)"),
     ),
     responses(
-        (status = 201, description = "Integración instalada"),
-        (status = 200, description = "Integración actualizada"),
-        (status = 400, description = "Error de validación"),
+        (status = 201, description = "Integration installed"),
+        (status = 200, description = "Integration updated"),
+        (status = 400, description = "Validation error"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -404,7 +404,7 @@ pub async fn provider_install(
             let code = body.code.ok_or_else(|| {
                 AppError::BadRequest("code is required for Slack integration".into())
             })?;
-            // `?` propaga errores de OAuth al cliente (400/502).
+            // `?` propagates OAuth errors to client (400/502).
             build_slack_metadata(&state, &code).await?
         }
         _ => return Err(AppError::BadRequest(format!("Unknown provider: {provider}"))),
@@ -418,7 +418,7 @@ pub async fn provider_install(
     )
     .await?;
 
-    // Upsert en transacción SERIALIZABLE — mismo patrón que get_or_create_api_token.
+    // Upsert in SERIALIZABLE transaction — same pattern as get_or_create_api_token.
     let (wi, created) = state
         .db
         .transaction_with_config::<_, (workspace_integrations::Model, bool), AppError>(
@@ -449,7 +449,7 @@ pub async fn provider_install(
                         am.updated_at = Set(now);
                         Ok((am.update(txn).await.map_err(AppError::Database)?, false))
                     } else {
-                        // created_at/updated_at explícitos (NOT NULL sin DEFAULT).
+                        // explicit created_at/updated_at (NOT NULL without DEFAULT).
                         let new_wi = workspace_integrations::ActiveModel {
                             id: Set(Uuid::new_v4()),
                             workspace_id: Set(workspace_id),
@@ -482,15 +482,15 @@ pub async fn provider_install(
 
 // ── Slack OAuth helper ────────────────────────────────────────────────────────
 
-/// Intercambia el code de Slack por access_token y construye metadata/config.
+/// Exchanges Slack code for access_token and builds metadata/config.
 ///
-/// # Degradación controlada vs. error real
-/// - Sin credenciales configuradas → `Ok((code_json, {}))` — instalación parcial
-///   intencional; no es un error.
-/// - Con credenciales pero exchange fallido → `Err` — propaga 400/502 al cliente.
+/// # Controlled degradation vs real error
+/// - No credentials configured → `Ok((code_json, {}))` — intentional partial
+///   installation; not an error.
+/// - Credentials present but exchange failed → `Err` — propagates 400/502 to client.
 ///
-/// Antipatrón corregido: la versión anterior absorbía todos los errores como
-/// fallback silencioso, devolviendo 201 con metadata incompleta.
+/// Antipattern fixed: previous version absorbed all errors as silent fallback,
+/// returning 201 with incomplete metadata.
 async fn build_slack_metadata(
     state: &AppState,
     code: &str,
@@ -514,7 +514,7 @@ async fn build_slack_metadata(
         ])
         .send()
         .await
-        .context("Error al contactar Slack OAuth endpoint")
+        .context("Error contacting Slack OAuth endpoint")
         .map_err(AppError::Internal)?;
 
     if !resp.status().is_success() {
@@ -530,7 +530,7 @@ async fn build_slack_metadata(
         .context("Slack OAuth response is not valid JSON")
         .map_err(AppError::Internal)?;
 
-    // Slack devuelve siempre HTTP 200; `ok` indica el resultado real.
+    // Slack always returns HTTP 200; `ok` indicates actual result.
     if !slack_data.get("ok").and_then(|v| v.as_bool()).unwrap_or(false) {
         let err_msg = slack_data
             .get("error")

@@ -1,17 +1,17 @@
 // src/jobs/workspace_seed.rs
-//! Job: siembra de datos iniciales al crear un workspace.
+//! Job: initial data seeding when creating a workspace.
 //!
-//! Equivalente a `plane/bgtasks/workspace_seed_task.py::workspace_seed`.
+//! Equivalent to `plane/bgtasks/workspace_seed_task.py::workspace_seed`.
 //!
-//! Flujo:
-//!   1. Crear bot user `WORKSPACE_SEED`
-//!   2. Agregar bot como miembro Admin del workspace
-//!   3. Crear proyecto demo con nombre del workspace
-//!   4. Crear states, labels, cycles, modules
-//!   5. Crear issues con asignaciones a cycles y modules
-//!   6. Crear views y pages
+//! Flow:
+//!   1. Create `WORKSPACE_SEED` bot user
+//!   2. Add bot as Admin member of the workspace
+//!   3. Create demo project with workspace name
+//!   4. Create states, labels, cycles, modules
+//!   5. Create issues with assignments to cycles and modules
+//!   6. Create views and pages
 //!
-//! El job es idempotente: si el workspace ya tiene proyectos, no hace nada.
+//! The job is idempotent: if the workspace already has projects, it does nothing.
 
 use apalis::prelude::*;
 use chrono::{Duration, Utc};
@@ -34,17 +34,17 @@ use crate::{
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct WorkspaceSeedJob {
     pub workspace_id: Uuid,
-    /// ID del owner (el usuario que creó el workspace).
+    /// Owner ID (the user who created the workspace).
     pub owner_id: Uuid,
-    /// Nombre del workspace, para usarlo en el proyecto demo.
+    /// Workspace name, to be used in the demo project.
     pub workspace_name: String,
 }
 
-// ── Constantes de roles ───────────────────────────────────────────────────────
+// ── Role Constants ───────────────────────────────────────────────────────────
 
 const ROLE_ADMIN: i16 = 20;
 
-// ── Handler apalis ────────────────────────────────────────────────────────────
+// ── Apalis Handler ────────────────────────────────────────────────────────────
 
 pub async fn handle_workspace_seed(
     job: WorkspaceSeedJob,
@@ -53,14 +53,14 @@ pub async fn handle_workspace_seed(
     let state: AppState = (*ctx).clone();
 
     if let Err(e) = run_seed(&state, job).await {
-        tracing::error!(error = %e, "workspace_seed: job falló");
+        tracing::error!(error = %e, "workspace_seed: job failed");
         return Err(apalis::prelude::Error::Failed(std::sync::Arc::new(e.into())));
     }
 
     Ok(())
 }
 
-// ── Lógica principal ──────────────────────────────────────────────────────────
+// ── Main Logic ───────────────────────────────────────────────────────────────
 
 async fn run_seed(state: &AppState, job: WorkspaceSeedJob) -> anyhow::Result<()> {
     use anyhow::Context as _;
@@ -70,7 +70,7 @@ async fn run_seed(state: &AppState, job: WorkspaceSeedJob) -> anyhow::Result<()>
     let owner_id = job.owner_id;
     let now = Utc::now().fixed_offset();
 
-    // Idempotencia: si el workspace ya tiene proyectos, salir
+    // Idempotency: if workspace already has projects, exit
     let existing = projects::Entity::find()
         .filter(projects::Column::WorkspaceId.eq(workspace_id))
         .filter(projects::Column::DeletedAt.is_null())
@@ -78,7 +78,7 @@ async fn run_seed(state: &AppState, job: WorkspaceSeedJob) -> anyhow::Result<()>
         .await?;
 
     if existing.is_some() {
-        tracing::info!(%workspace_id, "workspace_seed: ya tiene proyectos, saltando");
+        tracing::info!(%workspace_id, "workspace_seed: already has projects, skipping");
         return Ok(());
     }
 
@@ -129,9 +129,9 @@ async fn run_seed(state: &AppState, job: WorkspaceSeedJob) -> anyhow::Result<()>
         cover_image_asset_id: Set(None),
         masked_at: Set(None),
     };
-    bot.insert(db).await.context("crear bot user")?;
+    bot.insert(db).await.context("create bot user")?;
 
-    // ── 2. Bot como miembro Admin ─────────────────────────────────────────────
+    // ── 2. Bot as Admin member ─────────────────────────────────────────────
     workspace_members::ActiveModel {
         id: Set(Uuid::new_v4()),
         workspace_id: Set(workspace_id),
@@ -153,9 +153,9 @@ async fn run_seed(state: &AppState, job: WorkspaceSeedJob) -> anyhow::Result<()>
     }
     .insert(db)
     .await
-    .context("agregar bot al workspace")?;
+    .context("add bot to workspace")?;
 
-    // ── 3. Proyecto ───────────────────────────────────────────────────────────
+    // ── 3. Project ───────────────────────────────────────────────────────────
     let project_id = Uuid::new_v4();
     let identifier: String = job
         .workspace_name
@@ -206,9 +206,9 @@ async fn run_seed(state: &AppState, job: WorkspaceSeedJob) -> anyhow::Result<()>
     }
     .insert(db)
     .await
-    .context("crear proyecto")?;
+    .context("create project")?;
 
-    // Miembros del proyecto: todos los miembros actuales del workspace
+    // Project members: all current workspace members
     let ws_members = workspace_members::Entity::find()
         .filter(workspace_members::Column::WorkspaceId.eq(workspace_id))
         .filter(workspace_members::Column::IsActive.eq(true))
@@ -237,9 +237,9 @@ async fn run_seed(state: &AppState, job: WorkspaceSeedJob) -> anyhow::Result<()>
         }
         .insert(db)
         .await
-        .context("agregar miembro al proyecto")?;
+        .context("add member to project")?;
 
-        // ProjectUserProperty por cada miembro real (no bot)
+        // ProjectUserProperty for each real member (non-bot)
         if wm.member_id != bot_id {
             project_user_properties::ActiveModel {
                 id: Set(Uuid::new_v4()),
@@ -260,7 +260,7 @@ async fn run_seed(state: &AppState, job: WorkspaceSeedJob) -> anyhow::Result<()>
             }
             .insert(db)
             .await
-            .context("crear project user properties")?;
+            .context("create project user properties")?;
         }
     }
 
@@ -299,7 +299,7 @@ async fn run_seed(state: &AppState, job: WorkspaceSeedJob) -> anyhow::Result<()>
         }
         .insert(db)
         .await
-        .context("crear state")?;
+        .context("create state")?;
 
         state_map.insert(*seed_id, state_id);
     }
@@ -332,7 +332,7 @@ async fn run_seed(state: &AppState, job: WorkspaceSeedJob) -> anyhow::Result<()>
         }
         .insert(db)
         .await
-        .context("crear label")?;
+        .context("create label")?;
 
         label_map.insert(*seed_id, label_id);
     }
@@ -372,7 +372,7 @@ async fn run_seed(state: &AppState, job: WorkspaceSeedJob) -> anyhow::Result<()>
     }
     .insert(db)
     .await
-    .context("crear cycle 1")?;
+    .context("create cycle 1")?;
 
     cycles::ActiveModel {
         id: Set(cycle2_id),
@@ -400,7 +400,7 @@ async fn run_seed(state: &AppState, job: WorkspaceSeedJob) -> anyhow::Result<()>
     }
     .insert(db)
     .await
-    .context("crear cycle 2")?;
+    .context("create cycle 2")?;
 
     let cycle_map: std::collections::HashMap<u32, Uuid> = [(1, cycle1_id), (2, cycle2_id)]
         .into_iter()
@@ -446,7 +446,7 @@ async fn run_seed(state: &AppState, job: WorkspaceSeedJob) -> anyhow::Result<()>
         }
         .insert(db)
         .await
-        .context("crear module")?;
+        .context("create module")?;
 
         module_map.insert(*seed_id, module_id);
     }
@@ -499,7 +499,7 @@ async fn run_seed(state: &AppState, job: WorkspaceSeedJob) -> anyhow::Result<()>
         }
         .insert(db)
         .await
-        .context("crear issue")?;
+        .context("create issue")?;
 
         // IssueSequence
         issue_sequences::ActiveModel {
@@ -517,7 +517,7 @@ async fn run_seed(state: &AppState, job: WorkspaceSeedJob) -> anyhow::Result<()>
         }
         .insert(db)
         .await
-        .context("crear issue sequence")?;
+        .context("create issue sequence")?;
 
         // Labels
         for label_seed in label_seeds {
@@ -536,7 +536,7 @@ async fn run_seed(state: &AppState, job: WorkspaceSeedJob) -> anyhow::Result<()>
                 }
                 .insert(db)
                 .await
-                .context("crear issue label")?;
+                .context("create issue label")?;
             }
         }
 
@@ -557,7 +557,7 @@ async fn run_seed(state: &AppState, job: WorkspaceSeedJob) -> anyhow::Result<()>
                 }
                 .insert(db)
                 .await
-                .context("crear cycle issue")?;
+                .context("create cycle issue")?;
             }
         }
 
@@ -578,7 +578,7 @@ async fn run_seed(state: &AppState, job: WorkspaceSeedJob) -> anyhow::Result<()>
                 }
                 .insert(db)
                 .await
-                .context("crear module issue")?;
+                .context("create module issue")?;
             }
         }
     }
@@ -609,7 +609,7 @@ async fn run_seed(state: &AppState, job: WorkspaceSeedJob) -> anyhow::Result<()>
     }
     .insert(db)
     .await
-    .context("crear view")?;
+    .context("create view")?;
 
     // ── 10. Pages ─────────────────────────────────────────────────────────────
     let pages_data = vec![
@@ -650,7 +650,7 @@ async fn run_seed(state: &AppState, job: WorkspaceSeedJob) -> anyhow::Result<()>
         }
         .insert(db)
         .await
-        .context("crear page")?;
+        .context("create page")?;
 
         project_pages::ActiveModel {
             id: Set(Uuid::new_v4()),
@@ -665,13 +665,13 @@ async fn run_seed(state: &AppState, job: WorkspaceSeedJob) -> anyhow::Result<()>
         }
         .insert(db)
         .await
-        .context("crear project page")?;
+        .context("create project page")?;
     }
 
     tracing::info!(
         %workspace_id,
         %project_id,
-        "workspace_seed: siembra completada — 1 proyecto, 5 estados, 2 labels, 7 issues, 2 cycles, 3 modules, 1 view, 2 pages"
+        "workspace_seed: seeding completed — 1 project, 5 states, 2 labels, 7 issues, 2 cycles, 3 modules, 1 view, 2 pages"
     );
 
     Ok(())

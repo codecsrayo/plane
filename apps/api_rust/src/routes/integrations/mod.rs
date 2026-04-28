@@ -1,10 +1,10 @@
 // src/routes/integrations/mod.rs
-//! Módulo de integraciones (GitHub, GitLab, Slack).
+//! Integrations module (GitHub, GitLab, Slack).
 //!
-//! Estructura interna:
-//!   dtos.rs      — DTOs de request/response compartidos
-//!   helpers.rs   — helpers internos (get_or_create_api_token)
-//!   workspace.rs — CRUD workspace-integrations + provider_install
+//! Internal structure:
+//!   dtos.rs      — Shared request/response DTOs
+//!   helpers.rs   — Internal helpers (get_or_create_api_token)
+//!   workspace.rs — workspace-integrations CRUD + provider_install
 //!   github.rs    — GitHub App callback, user callback, repositories, repo-syncs
 //!   gitlab.rs    — GitLab repositories
 //!   pr_state.rs  — PR state mappings
@@ -16,8 +16,8 @@ pub mod gitlab;
 pub mod pr_state;
 pub mod workspace;
 
-// Re-exportar todos los handlers públicos para que `routes/mod.rs` continúe
-// usando la sintaxis `integrations::handler_name` sin cambios.
+// Re-export all public handlers so `routes/mod.rs` continues
+// using `integrations::handler_name` syntax without changes.
 pub use github::{
     github_app_callback,
     github_callback_auth_alias,

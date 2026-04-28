@@ -1,7 +1,7 @@
 // src/utils/webhook_dispatch.rs
-//! Fan-out de eventos a webhooks salientes.
+//! Fan-out of events to outgoing webhooks.
 //!
-//! Paridad con `plane/bgtasks/webhook_task.py::webhook_activity` de Django:
+//! Parity with Django's `plane/bgtasks/webhook_task.py::webhook_activity`:
 //!
 //! ```py
 //! webhooks = Webhook.objects.filter(workspace__slug=slug, is_active=True)
@@ -14,16 +14,16 @@
 //!     webhook_send_task.delay(webhook_id=webhook.id, ...)
 //! ```
 //!
-//! Diseño:
-//!   - Descubrir → encolar. Todo el I/O HTTP lo hace el worker apalis
-//!     (`jobs::webhook_delivery`), este módulo solo enqueue.
-//!   - Idempotencia débil: un `delivery_id` fresco por job encolado.
-//!     Si el caller se ejecuta dos veces (p.ej. retry de un handler HTTP),
-//!     se generarán dos entregas — es consistente con Django.
-//!   - Best-effort en el loop: un fallo al encolar a UN webhook no impide
-//!     el resto. Se loggea a `tracing::warn!` con el webhook_id.
-//!   - La tabla `project_webhooks` NO se usa como filtro de entrega — en
-//!     Django solo existe como asociación informativa; los webhooks son
+//! Design:
+//!   - Discover → enqueue. All HTTP I/O is done by the apalis worker
+//!     (`jobs::webhook_delivery`), this module only enqueues.
+//!   - Weak idempotency: a fresh `delivery_id` per enqueued job.
+//!     If the caller is executed twice (e.g. HTTP handler retry),
+//!     two deliveries will be generated — this is consistent with Django.
+//!   - Best-effort in the loop: a failure to enqueue to ONE webhook does not prevent
+//!     the rest. It is logged to `tracing::warn!` with the webhook_id.
+//!   - The `project_webhooks` table is NOT used as a delivery filter — in
+//!     Django it only exists as an informative association; webhooks are
 //!     workspace-level.
 
 use apalis::prelude::Storage;
@@ -38,11 +38,11 @@ use crate::{
     AppState,
 };
 
-/// Tipos de evento reconocidos. Se mapean 1:1 con las banderas booleanas
-/// de la tabla `webhooks` (`project`, `issue`, `module`, `cycle`, `issue_comment`).
+/// Recognized event types. They map 1:1 with the boolean flags
+/// of the `webhooks` table (`project`, `issue`, `module`, `cycle`, `issue_comment`).
 ///
-/// Los alias `ModuleIssue` y `CycleIssue` comparten bandera con `Module` y
-/// `Cycle` respectivamente — paridad con Django.
+/// The `ModuleIssue` and `CycleIssue` aliases share a flag with `Module` and
+/// `Cycle` respectively — parity with Django.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum WebhookEvent {
     Project,
@@ -55,8 +55,8 @@ pub enum WebhookEvent {
 }
 
 impl WebhookEvent {
-    /// Cadena enviada como `event` en el payload y como header `X-Plane-Event`.
-    /// Conserva el naming histórico de Django para consumidores existentes.
+    /// String sent as `event` in the payload and as `X-Plane-Event` header.
+    /// Preserves Django's historical naming for existing consumers.
     pub fn as_payload_str(&self) -> &'static str {
         match self {
             Self::Project       => "project",
@@ -70,7 +70,7 @@ impl WebhookEvent {
     }
 }
 
-/// Acción realizada sobre el recurso.
+/// Action performed on the resource.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum WebhookAction {
     Created,
@@ -88,25 +88,25 @@ impl WebhookAction {
     }
 }
 
-/// Encola una entrega de webhook por cada webhook activo del workspace
-/// cuyo flag del evento esté encendido.
+/// Enqueues a webhook delivery for each active webhook in the workspace
+/// whose event flag is on.
 ///
-/// Parámetros:
-///   - `data`: modelo serializado que irá en `data` del envelope. Para deletes
-///     Django envía `{"id": <uuid>}`; para create/update, el modelo completo
-///     serializado con DRF (`IssueExpandSerializer`, `ProjectSerializer`, …).
-///   - `activity`: bloque `activity` opcional. `None` se propaga como `null`
-///     en el body final — el contrato Django siempre incluye la clave.
-///     Para create/delete disparados directamente desde un handler, suele ser
-///     `None`; para updates con diff por campo se llena con
+/// Parameters:
+///   - `data`: serialized model that will go in `data` of the envelope. For deletes
+///     Django sends `{"id": <uuid>}`; for create/update, the complete model
+///     serialized with DRF (`IssueExpandSerializer`, `ProjectSerializer`, …).
+///   - `activity`: optional `activity` block. `None` is propagated as `null`
+///     in the final body — the Django contract always includes the key.
+///     For create/delete triggered directly from a handler, it's usually
+///     `None`; for updates with per-field diff it's filled with
 ///     `{field, old_value, new_value, actor, old_identifier, new_identifier}`.
 ///
-/// Devuelve el número de `DeliverWebhookJob` encolados con éxito.
+/// Returns the number of successfully enqueued `DeliverWebhookJob`.
 ///
-/// Errores:
-///   - La consulta a `webhooks` falla → devuelve `Err` (fallo sistémico).
-///   - Un `push` individual al storage falla → se loggea y se continúa.
-///     La cuenta devuelta refleja solo los encolados con éxito.
+/// Errors:
+///   - Query to `webhooks` fails → returns `Err` (systemic failure).
+///   - An individual `push` to storage fails → it's logged and continues.
+///     The returned count reflects only those enqueued successfully.
 pub async fn dispatch_event(
     state: &AppState,
     workspace_id: Uuid,
@@ -115,7 +115,7 @@ pub async fn dispatch_event(
     data: serde_json::Value,
     activity: Option<serde_json::Value>,
 ) -> anyhow::Result<usize> {
-    // 1. Descubrir webhooks suscritos
+    // 1. Discover subscribed webhooks
     let event_column = match event {
         WebhookEvent::Project                              => webhooks::Column::Project,
         WebhookEvent::Issue                                => webhooks::Column::Issue,
@@ -136,7 +136,7 @@ pub async fn dispatch_event(
                 workspace_id = %workspace_id,
                 event = event.as_payload_str(),
                 error = %e,
-                "dispatch_event: falló la consulta de webhooks",
+                "dispatch_event: webhook query failed",
             );
             anyhow::anyhow!(e)
         })?;
@@ -146,14 +146,14 @@ pub async fn dispatch_event(
             workspace_id = %workspace_id,
             event = event.as_payload_str(),
             action = action.as_payload_str(),
-            "dispatch_event: sin webhooks suscritos",
+            "dispatch_event: no subscribed webhooks",
         );
         return Ok(0);
     }
 
-    // 2. Encolar uno por webhook
-    //    Un solo storage para todos los push del batch — más económico que
-    //    reconstruirlo en cada iteración.
+    // 2. Enqueue one per webhook
+    //    A single storage for all pushes in the batch — cheaper than
+    //    rebuilding it in each iteration.
     let mut storage: PostgresStorage<DeliverWebhookJob> =
         PostgresStorage::new(state.pg_pool.clone());
 
@@ -174,13 +174,13 @@ pub async fn dispatch_event(
         match storage.push(job).await {
             Ok(_) => enqueued += 1,
             Err(e) => {
-                // Best-effort: no abortar el batch por un fallo transitorio.
+                // Best-effort: do not abort the batch for a transient failure.
                 tracing::warn!(
                     webhook_id = %wh.id,
                     workspace_id = %workspace_id,
                     event = %event_str,
                     error = %e,
-                    "dispatch_event: no se pudo encolar DeliverWebhookJob",
+                    "dispatch_event: could not enqueue DeliverWebhookJob",
                 );
             }
         }
@@ -191,7 +191,7 @@ pub async fn dispatch_event(
         event = %event_str,
         action = %action_str,
         enqueued,
-        "dispatch_event: fan-out completado",
+        "dispatch_event: fan-out completed",
     );
     Ok(enqueued)
 }
@@ -204,7 +204,7 @@ mod tests {
 
     #[test]
     fn event_payload_strings_match_django() {
-        // Nombres exactos que consumen los suscriptores existentes.
+        // Exact names consumed by existing subscribers.
         assert_eq!(WebhookEvent::Project.as_payload_str(),      "project");
         assert_eq!(WebhookEvent::Issue.as_payload_str(),        "issue");
         assert_eq!(WebhookEvent::Module.as_payload_str(),       "module");
@@ -223,8 +223,8 @@ mod tests {
 
     #[test]
     fn module_and_module_issue_share_column() {
-        // Contrato Django: ambos eventos consultan `module=True`.
-        // Si esto cambia, el test falla y fuerza a revisar el mapeo.
+        // Django contract: both events query `module=True`.
+        // If this changes, the test fails and forces a mapping review.
         let col_module      = matches!(WebhookEvent::Module,      WebhookEvent::Module);
         let col_mod_issue   = matches!(WebhookEvent::ModuleIssue, WebhookEvent::ModuleIssue);
         assert!(col_module && col_mod_issue);

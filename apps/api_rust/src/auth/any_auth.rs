@@ -32,14 +32,14 @@ where
     }
 }
 
-/// Extractor opcional de autenticación.
+/// Optional authentication extractor.
 ///
-/// Necesario porque axum solo genera `Option<T>` automáticamente cuando
-/// `T::Rejection = Infallible`. Como `AnyAuth::Rejection = AppError`, la orphan
-/// rule impide implementar `FromRequestParts` para `Option<AnyAuth>` (tipo foráneo).
-/// Este newtype local resuelve ambas restricciones sin modificar `AnyAuth`.
+/// Necessary because axum only generates `Option<T>` automatically when
+/// `T::Rejection = Infallible`. Since `AnyAuth::Rejection = AppError`, the orphan
+/// rule prevents implementing `FromRequestParts` for `Option<AnyAuth>` (foreign type).
+/// This local newtype resolves both restrictions without modifying `AnyAuth`.
 ///
-/// Uso en handler: `OptionalAnyAuth(user_opt): OptionalAnyAuth`
+/// Usage in handler: `OptionalAnyAuth(user_opt): OptionalAnyAuth`
 pub struct OptionalAnyAuth(pub Option<users::Model>);
 
 impl<S> FromRequestParts<S> for OptionalAnyAuth

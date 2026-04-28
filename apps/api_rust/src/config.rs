@@ -2,16 +2,16 @@
 use dotenvy::dotenv;
 use std::env;
 
-/// Equivalente a `plane/settings/common.py` en Django.
+/// Equivalent to `plane/settings/common.py` in Django.
 #[derive(Debug, Clone)]
 pub struct Config {
-    // Base de datos — construida en from_env() desde POSTGRES_*
+    // Database — built in from_env() from POSTGRES_*
     pub database_url: String,
 
-    // Redis — construida en from_env() desde REDIS_HOST / REDIS_PORT
+    // Redis — built in from_env() from REDIS_HOST / REDIS_PORT
     pub redis_url: String,
 
-    // Servidor
+    // Server
     pub host: String, // API_HOST — default "0.0.0.0"
     pub port: u16,    // API_PORT — default 8000
 
@@ -44,14 +44,14 @@ pub struct Config {
 
     // Cookies
     pub cookie_domain: Option<String>, // COOKIE_DOMAIN
-    pub is_production: bool,           // derivado de DEBUG=0
+    pub is_production: bool,           // derived from DEBUG=0
     pub session_cookie_age: i64,       // SESSION_COOKIE_AGE
     pub admin_session_cookie_age: i64, // ADMIN_SESSION_COOKIE_AGE
 
     // CORS
     pub cors_origins: Vec<String>, // CORS_ORIGINS — comma-separated
 
-    // Email — equivalente a plane/settings/common.py EMAIL_*
+    // Email — equivalent to plane/settings/common.py EMAIL_*
     pub email_host: Option<String>,          // EMAIL_HOST
     pub email_port: u16,                     // EMAIL_PORT (default 587)
     pub email_host_user: Option<String>,     // EMAIL_HOST_USER
@@ -60,7 +60,7 @@ pub struct Config {
     pub email_use_ssl: bool,                 // EMAIL_USE_SSL == "1"
     pub email_from: String,                  // EMAIL_FROM
 
-    // Limpieza periódica
+    // Periodic cleanup
     pub hard_delete_after_days: i64,        // HARD_DELETE_AFTER_DAYS (default 30)
     pub unuploaded_asset_delete_days: i64,  // UNUPLOADED_ASSET_DELETE_DAYS (default 7)
 }
@@ -97,7 +97,7 @@ impl Config {
             };
             base = format!("{}{}", base.trim_end_matches('/'), path);
         }
-        // Garantizar trailing slash: redirige a "/app/" no "/app" (evita 308 de Traefik).
+        // Ensure trailing slash: redirects to "/app/" not "/app" (avoids 308 from Traefik).
         if !base.ends_with('/') {
             base.push('/');
         }
@@ -119,7 +119,7 @@ impl Config {
             };
             base = format!("{}{}", base.trim_end_matches('/'), path);
         }
-        // Garantizar trailing slash: consistente con app_base() y space_base().
+        // Ensure trailing slash: consistent with app_base() and space_base().
         if !base.ends_with('/') {
             base.push('/');
         }
@@ -153,7 +153,7 @@ impl Config {
     }
 
     pub fn from_env() -> anyhow::Result<Self> {
-        // dotenv es best-effort: en producción no hay .env file y eso es normal.
+        // dotenv is best-effort: in production there is no .env file and that is normal.
         match dotenv() {
             Ok(path) => tracing::debug!(".env loaded from {}", path.display()),
             Err(dotenvy::Error::Io(_)) => {
@@ -229,7 +229,7 @@ impl Config {
     }
 }
 
-/// Construye `postgresql://user:pass@host:port/db` desde variables crudas.
+/// Builds `postgresql://user:pass@host:port/db` from raw variables.
 fn build_database_url() -> anyhow::Result<String> {
     let user = env::var("POSTGRES_USER").unwrap_or_else(|_| "plane".into());
     let pass = env::var("POSTGRES_PASSWORD").unwrap_or_default();
@@ -238,13 +238,13 @@ fn build_database_url() -> anyhow::Result<String> {
     let db = env::var("POSTGRES_DB").unwrap_or_else(|_| "plane".into());
 
     port.parse::<u16>().map_err(|_| {
-        anyhow::anyhow!("POSTGRES_PORT inválido: '{port}' — debe ser un número entre 1 y 65535")
+        anyhow::anyhow!("Invalid POSTGRES_PORT: '{port}' — must be a number between 1 and 65535")
     })?;
 
     Ok(format!("postgresql://{user}:{pass}@{host}:{port}/{db}"))
 }
 
-/// Construye `redis://host:port` desde variables crudas.
+/// Builds `redis://host:port` from raw variables.
 fn build_redis_url() -> String {
     let host = env::var("REDIS_HOST").unwrap_or_else(|_| "localhost".into());
     let port = env::var("REDIS_PORT").unwrap_or_else(|_| "6379".into());
@@ -252,7 +252,7 @@ fn build_redis_url() -> String {
 }
 
 fn required(key: &str) -> anyhow::Result<String> {
-    env::var(key).map_err(|_| anyhow::anyhow!("Variable de entorno requerida: {key}"))
+    env::var(key).map_err(|_| anyhow::anyhow!("Required environment variable: {key}"))
 }
 
 #[cfg(test)]

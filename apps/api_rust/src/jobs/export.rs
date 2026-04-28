@@ -1,32 +1,32 @@
 // src/jobs/export.rs
-//! Job: exportación de issues de un workspace al formato pedido (csv/json/xlsx),
-//! empaquetado en ZIP real y subido a S3.
+//! Job: exporting issues from a workspace to the requested format (csv/json/xlsx),
+//! packaged in a real ZIP and uploaded to S3.
 //!
-//! Paridad con `apps/api/plane/bgtasks/export_task.py::issue_export_task`:
-//!   1. Cargar ExporterHistory por token → marcar "processing".
-//!   2. Consultar issues de los proyectos indicados (filtradas por membresía
-//!      activa, proyecto no archivado, issue no soft-deleted ni archivada).
-//!   3. Serializar cada issue a un registro plano.
-//!   4. Según `multiple`:
-//!        - `true`  → un archivo por proyecto (`{slug}-{project_id}.{ext}`).
-//!        - `false` → un único archivo consolidado (`{slug}-{workspace_id}.{ext}`).
-//!          Formato de cada archivo según `exporter.provider`:
-//!        - `csv`  → CSV con headers prettificados (csv.DictWriter de Django).
+//! Parity with `apps/api/plane/bgtasks/export_task.py::issue_export_task`:
+//!   1. Load ExporterHistory by token → mark as "processing".
+//!   2. Query issues from the indicated projects (filtered by active membership,
+//!      unarchived project, non-soft-deleted and unarchived issue).
+//!   3. Serialize each issue to a flat record.
+//!   4. According to `multiple`:
+//!        - `true`  → one file per project (`{slug}-{project_id}.{ext}`).
+//!        - `false` → a single consolidated file (`{slug}-{workspace_id}.{ext}`).
+//!          Format of each file according to `exporter.provider`:
+//!        - `csv`  → CSV with prettified headers (Django's csv.DictWriter).
 //!        - `json` → JSON indent=2.
-//!        - `xlsx` → Excel vía `rust_xlsxwriter` (espejo de `openpyxl`).
-//!   5. Empaquetar todos los archivos en un ZIP real (deflate) — el mismo
-//!      contenedor que Django produce vía `zipfile.ZipFile(..., ZIP_DEFLATED)`.
-//!   6. Subir a S3/MinIO como `.zip` con `Content-Type: application/zip` y
-//!      persistir la URL firmada (7 días) en ExporterHistory.
+//!        - `xlsx` → Excel via `rust_xlsxwriter` (mirroring `openpyxl`).
+//!   5. Package all files in a real ZIP (deflate) — the same
+//!      container that Django produces via `zipfile.ZipFile(..., ZIP_DEFLATED)`.
+//!   6. Upload to S3/MinIO as `.zip` with `Content-Type: application/zip` and
+//!      persist the signed URL (7 days) in ExporterHistory.
 //!
-//! BUG HISTÓRICO (pre-fix): el worker generaba un buffer custom con prefijos
-//! de 8 bytes + bloques gzip concatenados, lo subía como `.tar.gz`, e ignoraba
-//! el provider — el usuario "bajaba un comprimido" ilegible. Ver todo.md.
+//! HISTORICAL BUG (pre-fix): the worker generated a custom buffer with prefixes
+//! of 8 bytes + concatenated gzip blocks, uploaded it as `.tar.gz`, and ignored
+//! the provider — the user "downloaded an unreadable compressed file". See todo.md.
 //!
-//! TODO(paridad-full): el serializer actual exporta un subset de campos
-//! (9 columnas). Django exporta ~25 (parent, identifier, cycles, modules,
+//! TODO(full-parity): the current serializer exports a subset of fields
+//! (9 columns). Django exports ~25 (parent, identifier, cycles, modules,
 //! comments, relations, subscribers, estimate, sub_issues_count, etc.).
-//! Ampliar cuando se migre `IssueExportSerializer` completo.
+//! Expand when `IssueExportSerializer` is fully migrated.
 
 use std::io::{Cursor, Write};
 
@@ -55,13 +55,13 @@ use crate::{
 
 // ── Job payload ───────────────────────────────────────────────────────────────
 
-/// Payload: token único del ExporterHistory a procesar + flag `multiple`.
+/// Payload: unique token of the ExporterHistory to process + `multiple` flag.
 ///
-/// Paridad Django (apps/api/plane/app/views/exporter/base.py:49-56):
+/// Django parity (apps/api/plane/app/views/exporter/base.py:49-56):
 /// `issue_export_task.delay(..., multiple=multiple, ...)`.
-/// - `multiple=true`  → un archivo por proyecto (ver `export_task.py:204-210`).
-/// - `multiple=false` → un único archivo consolidado con todas las issues del
-///   workspace (ver `export_task.py:211-215`).
+/// - `multiple=true`  → one file per project (see `export_task.py:204-210`).
+/// - `multiple=false` → a single consolidated file with all workspace issues
+///   (see `export_task.py:211-215`).
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ExportIssuesJob {
     pub exporter_token: String,
@@ -75,15 +75,15 @@ pub async fn handle_export_issues(job: ExportIssuesJob, ctx: Data<AppState>) -> 
     let state: AppState = (*ctx).clone();
 
     if let Err(e) = run_export(&state, &job.exporter_token, job.multiple).await {
-        // `{:?}` expone la cadena completa de `.context()` — `%e` oculta
-        // la causa raíz (ej. error real del SDK de S3).
+        // `{:?}` exposes the complete `.context()` chain — `%e` hides
+        // the root cause (e.g. real S3 SDK error).
         tracing::error!(
             token = %job.exporter_token,
             error = ?e,
-            "export_issues: job falló"
+            "export_issues: job failed"
         );
-        // Marcar como fallido en DB (best-effort — si este UPDATE también
-        // falla, al menos queda registrado en el log).
+        // Mark as failed in DB (best-effort — if this UPDATE also
+        // fails, at least it remains in the log).
         let _ = mark_export_failed(&state, &job.exporter_token, &e.to_string()).await;
         return Err(apalis::prelude::Error::Failed(std::sync::Arc::new(e.into())));
     }
@@ -98,14 +98,14 @@ async fn run_export(state: &AppState, token: &str, multiple: bool) -> anyhow::Re
 
     tracing::debug!(token, multiple, "export_issues: iniciando job");
 
-    // 1. Cargar ExporterHistory + marcar "processing"
-    // Paridad Django (export_task.py:143-145).
+    // 1. Load ExporterHistory + mark as "processing"
+    // Django parity (export_task.py:143-145).
     let exporter = exporters::Entity::find()
         .filter(exporters::Column::Token.eq(token))
         .filter(exporters::Column::DeletedAt.is_null())
         .one(&state.db)
         .await?
-        .context("ExporterHistory no encontrado")?;
+        .context("ExporterHistory not found")?;
 
     {
         let mut am: exporters::ActiveModel = exporter.clone().into();
@@ -118,25 +118,25 @@ async fn run_export(state: &AppState, token: &str, multiple: bool) -> anyhow::Re
     let provider = exporter.provider.clone();
     let project_ids: Vec<Uuid> = exporter.project.clone().unwrap_or_default();
 
-    // Validar provider — defensa en profundidad; el endpoint ya lo valida.
+    // Validate provider — defense in depth; the endpoint already validates it.
     if !matches!(provider.as_str(), "csv" | "xlsx" | "json") {
-        anyhow::bail!("Provider inválido: '{provider}' (esperado csv|xlsx|json)");
+        anyhow::bail!("Invalid provider: '{provider}' (expected csv|xlsx|json)");
     }
 
     if project_ids.is_empty() {
-        anyhow::bail!("No hay proyectos en el exporter");
+        anyhow::bail!("No projects in the exporter");
     }
 
-    // 2. Slug del workspace (se usa en nombres de archivo y S3 key — Django
-    //    lo recibe como argumento del task, export_task.py:135).
+    // 2. Workspace slug (used in filenames and S3 key — Django
+    //    receives it as a task argument, export_task.py:135).
     let workspace = workspaces::Entity::find_by_id(workspace_id)
         .one(&state.db)
         .await?
-        .context("Workspace no encontrado")?;
+        .context("Workspace not found")?;
     let slug = workspace.slug;
 
-    // 3. Consultar issues filtradas (paridad con export_task.py:148-190).
-    //    Excluimos archivadas y soft-deleted — ya hecho vía `.active()`.
+    // 3. Query filtered issues (parity with export_task.py:148-190).
+    //    Excluded archived and soft-deleted — already done via `.active()`.
     let all_issues = issues::Entity::find()
         .active()
         .filter(issues::Column::WorkspaceId.eq(workspace_id))
@@ -146,16 +146,16 @@ async fn run_export(state: &AppState, token: &str, multiple: bool) -> anyhow::Re
         .all(&state.db)
         .await?;
 
-    // 4. Batch-fetch de relaciones — evita N+1 (paridad con `prefetch_related`).
+    // 4. Batch-fetch relations — avoids N+1 (parity with `prefetch_related`).
     let maps = fetch_related_maps(state, &all_issues).await?;
 
-    // 4b. Batch-fetch de proyectos (id → identifier + name) para armar
-    //     filenames legibles. Divergimos acá de Django a propósito: el
-    //     worker Python usa `{slug}-{project_id}` con el UUID crudo
-    //     (export_task.py:208), lo que produce archivos indistinguibles
-    //     a simple vista cuando se exportan varios proyectos de un mismo
-    //     workspace. Mapeamos por identifier (ej. "FRONT", "API") que es
-    //     el short-code único por workspace que ya se muestra en la UI.
+    // 4b. Batch-fetch projects (id → identifier + name) to build
+    //     readable filenames. We diverge here from Django on purpose: the
+    //     Python worker uses `{slug}-{project_id}` with the raw UUID
+    //     (export_task.py:208), which produces indistinguishable files
+    //     at first glance when exporting multiple projects from the same
+    //     workspace. We map by identifier (e.g. "FRONT", "API") which is
+    //     the unique short-code per workspace already shown in the UI.
     let project_info: std::collections::HashMap<Uuid, (String, String)> =
         projects::Entity::find()
             .filter(projects::Column::Id.is_in(project_ids.clone()))
@@ -165,16 +165,16 @@ async fn run_export(state: &AppState, token: &str, multiple: bool) -> anyhow::Re
             .map(|p| (p.id, (p.identifier, p.name)))
             .collect();
 
-    // 5. Armar lista de (filename, bytes) según `multiple` + provider.
-    //    Django en export_task.py:203-215 construye `files = [(name, content)]`
-    //    y se lo pasa a `create_zip_file`.
+    // 5. Build list of (filename, bytes) according to `multiple` + provider.
+    //    Django in export_task.py:203-215 constructs `files = [(name, content)]`
+    //    and passes it to `create_zip_file`.
     let mut files: Vec<(String, Vec<u8>)> = Vec::new();
 
     if multiple {
-        // Proteger contra colisiones de identifier (teóricamente imposible:
-        // `identifier` es UNIQUE por workspace en el modelo de Plane) y
-        // contra proyectos que no vengan en `project_info` (borrado en
-        // carrera). Fallback: project_id truncado a 8 chars.
+        // Protect against identifier collisions (theoretically impossible:
+        // `identifier` is UNIQUE per workspace in the Plane model) and
+        // against projects not present in `project_info` (race condition delete).
+        // Fallback: project_id truncated to 8 chars.
         let mut used_names: std::collections::HashSet<String> =
             std::collections::HashSet::new();
 
@@ -189,18 +189,18 @@ async fn run_export(state: &AppState, token: &str, multiple: bool) -> anyhow::Re
                 .map(|(ident, name)| project_label(ident, name))
                 .filter(|s| !s.is_empty())
                 .unwrap_or_else(|| {
-                    // Proyecto borrado entre el enqueue del job y su
-                    // ejecución, o identifier/name que quedan vacíos tras
-                    // sanitizar (puros caracteres no-ASCII): degradamos al
-                    // UUID truncado en vez de fallar todo el export.
+                    // Project deleted between job enqueue and execution,
+                    // or identifier/name that end up empty after
+                    // sanitizing (purely non-ASCII characters): fallback to
+                    // truncated UUID instead of failing the whole export.
                     project_id.simple().to_string().chars().take(8).collect()
                 });
-            // Filename per-project: `{label}-{random_uuid}`. El UUID v4
-            // garantiza unicidad a nivel de export individual (dos exports
-            // consecutivos del mismo proyecto producen nombres distintos,
-            // útil si el usuario baja varios ZIPs en la misma sesión y los
-            // extrae en la misma carpeta). `unique_base_name` sigue
-            // operando por si acaso.
+            // Filename per-project: `{label}-{random_uuid}`. UUID v4
+            // guarantees uniqueness at individual export level (two consecutive
+            // exports of the same project produce different names,
+            // useful if the user downloads several ZIPs in the same session and
+            // extracts them in the same folder). `unique_base_name` still
+            // operates just in case.
             let base_name = unique_base_name(
                 &format!("{label}-{uuid}", uuid = Uuid::new_v4()),
                 &mut used_names,
@@ -210,12 +210,12 @@ async fn run_export(state: &AppState, token: &str, multiple: bool) -> anyhow::Re
             files.push((filename, content));
         }
     } else {
-        // `multiple=false` → un único archivo consolidado del workspace
-        // (paridad con export_task.py:211-215). Construimos el nombre a
-        // partir de la parte del slug posterior al primer `-` (ej. si el
-        // slug es `tenant-workspace`, usamos `workspace`); si el slug no
-        // contiene `-`, usamos el slug completo. Un UUID v4 al final da
-        // unicidad entre exports consecutivos.
+        // `multiple=false` → a single consolidated workspace file
+        // (parity with export_task.py:211-215). We build the name from
+        // the part of the slug after the first `-` (e.g. if slug is
+        // `tenant-workspace`, we use `workspace`); if the slug has no
+        // `-`, we use the full slug. A UUID v4 at the end gives
+        // uniqueness between consecutive exports.
         let slug_tail = slug.split_once('-').map(|(_, r)| r).unwrap_or(&slug);
         let base_name = format!("{slug_tail}-{}", Uuid::new_v4());
         let refs: Vec<&issues::Model> = all_issues.iter().collect();
@@ -223,11 +223,11 @@ async fn run_export(state: &AppState, token: &str, multiple: bool) -> anyhow::Re
         files.push((filename, content));
     }
 
-    // 6. Empaquetar en ZIP real (deflate) — paridad con `create_zip_file`.
-    let zip_buf = build_zip(&files).context("Error al generar ZIP")?;
+    // 6. Package in real ZIP (deflate) — parity with `create_zip_file`.
+    let zip_buf = build_zip(&files).context("Error generating ZIP")?;
 
-    // 7. Subir a S3/MinIO
-    // Formato de key espejo de Django (export_task.py:46):
+    // 7. Upload to S3/MinIO
+    // Key format mirroring Django (export_task.py:46):
     //   "{workspace_id}/export-{slug}-{token[:6]}-{YYYY-MM-DD}.zip"
     let file_name = format!(
         "{workspace_id}/export-{slug}-{}-{}.zip",
@@ -235,26 +235,26 @@ async fn run_export(state: &AppState, token: &str, multiple: bool) -> anyhow::Re
         chrono::Utc::now().format("%Y-%m-%d")
     );
 
-    // El builder canónico (utils/s3.rs) aplica credentials explícitas, región
-    // con fallback a us-east-1, y `force_path_style=true` para MinIO.
-    // `cron.rs::delete_old_s3_links` ya usa este helper — mismo patrón.
+    // The canonical builder (utils/s3.rs) applies explicit credentials, region
+    // with fallback to us-east-1, and `force_path_style=true` for MinIO.
+    // `cron.rs::delete_old_s3_links` already uses this helper — same pattern.
     let s3 = build_s3_client(&state.config);
 
     s3.put_object()
         .bucket(&state.config.aws_s3_bucket)
         .key(&file_name)
         .body(ByteStream::from(zip_buf))
-        // application/zip — paridad con export_task.py:61,104.
+        // application/zip — parity with export_task.py:61,104.
         .content_type("application/zip")
         .send()
         .await
-        .context("Error al subir ZIP a S3")?;
+        .context("Error uploading ZIP to S3")?;
 
-    // URL firmada de 7 días.
-    // Paridad Django (export_task.py:65-79): con MinIO se usa un cliente
-    // **distinto** con endpoint público (derivado de WEB_URL) para firmar —
-    // de lo contrario la URL apunta al hostname Docker interno que el browser
-    // no resuelve.
+    // 7-day signed URL.
+    // Django parity (export_task.py:65-79): with MinIO a **different**
+    // client with public endpoint (derived from WEB_URL) is used for signing —
+    // otherwise the URL points to the internal Docker hostname that the browser
+    // does not resolve.
     let presign_s3 = build_s3_presign_client(&state.config);
     let presigned = presign_s3
         .get_object()
@@ -266,10 +266,10 @@ async fn run_export(state: &AppState, token: &str, multiple: bool) -> anyhow::Re
             ))?,
         )
         .await
-        .context("Error al generar URL firmada")?;
+        .context("Error generating signed URL")?;
 
-    // 8. Actualizar ExporterHistory — status "completed" + url + key.
-    // SeaORM no hace auto_now; seteamos updated_at explícitamente.
+    // 8. Update ExporterHistory — status "completed" + url + key.
+    // SeaORM does not do auto_now; we set updated_at explicitly.
     let mut am: exporters::ActiveModel = exporter.into();
     am.status = Set("completed".to_owned());
     am.url = Set(Some(presigned.uri().to_string()));
@@ -277,13 +277,13 @@ async fn run_export(state: &AppState, token: &str, multiple: bool) -> anyhow::Re
     am.updated_at = Set(chrono::Utc::now().into());
     am.update(&state.db).await?;
 
-    tracing::info!(token, provider = %provider, multiple, "export_issues: completado");
+    tracing::info!(token, provider = %provider, multiple, "export_issues: completed");
     Ok(())
 }
 
 // ── Helpers: relaciones ──────────────────────────────────────────────────────
 
-/// Maps precalculados para serialización — todos batch-loaded para evitar N+1.
+/// Precalculated maps for serialization — all batch-loaded to avoid N+1.
 struct RelationMaps {
     states: std::collections::HashMap<Uuid, String>,
     assignees: std::collections::HashMap<Uuid, Vec<String>>,
@@ -394,8 +394,8 @@ async fn fetch_related_maps(
     })
 }
 
-/// Paridad con `User.full_name` en Django (usuario con nombre + apellido).
-/// Si ambos están vacíos, devolvemos cadena vacía para no emitir " " suelto.
+/// Parity with `User.full_name` in Django (user with first name + last name).
+/// If both are empty, return an empty string to avoid emitting a loose " ".
 fn format_user_name(first: &str, last: &str) -> String {
     let f = first.trim();
     let l = last.trim();
@@ -407,13 +407,13 @@ fn format_user_name(first: &str, last: &str) -> String {
     }
 }
 
-/// Construye el segmento humano-legible del filename para un proyecto.
-/// Preferimos `name` (ej. `test2`, `web-platform`) que es lo que los usuarios
-/// reconocen en la UI. `identifier` (código corto UPPER tipo `TEST2`, `FRONT`)
-/// queda solo como fallback para el caso raro en que el `name` quede vacío
-/// tras sanitizar (puros caracteres no-ASCII o string vacío).
-/// Si AMBOS están vacíos (teóricamente imposible: ambos son NOT NULL en el
-/// esquema), el caller cae al fallback UUID-truncado.
+/// Builds the human-readable segment of the filename for a project.
+/// We prefer `name` (e.g. `test2`, `web-platform`) which is what users
+/// recognize in the UI. `identifier` (UPPER short-code like `TEST2`, `FRONT`)
+/// remains only as a fallback for the rare case where `name` remains empty
+/// after sanitizing (purely non-ASCII characters or empty string).
+/// If BOTH are empty (theoretically impossible: both are NOT NULL in the
+/// schema), the caller falls back to truncated UUID.
 fn project_label(identifier: &str, name: &str) -> String {
     let name_s = sanitize_filename_segment(name);
     if !name_s.is_empty() {
@@ -422,26 +422,26 @@ fn project_label(identifier: &str, name: &str) -> String {
     sanitize_filename_segment(identifier)
 }
 
-/// Sanitiza un segmento de filename: colapsa espacios/caracteres no seguros
-/// a `-`, limita longitud y evita los problemas clásicos de filenames en
+/// Sanitizes a filename segment: collapses spaces/unsafe characters
+/// to `-`, limits length, and avoids classic filename issues on
 /// Windows/macOS/Linux (`/`, `\`, `:`, `*`, `?`, `"`, `<`, `>`, `|`).
-/// No hace lowercasing porque los identifiers de Plane son UPPER por convención
-/// y preservar el case original mejora la legibilidad.
+/// No lowercasing is done because Plane identifiers are UPPER by convention
+/// and preserving the original case improves readability.
 fn sanitize_filename_segment(s: &str) -> String {
-    const MAX_LEN: usize = 64; // Defensivo: algunos FS truncan a 255; dejamos margen.
+    const MAX_LEN: usize = 64; // Defensive: some FS truncate at 255; we leave a margin.
 
     let mut out = String::with_capacity(s.len());
     let mut last_was_dash = false;
     for ch in s.chars() {
         let safe = match ch {
-            // Permitidos tal cual: alfanuméricos ASCII + `_`.
+            // Allowed as is: ASCII alphanumeric + `_`.
             c if c.is_ascii_alphanumeric() || c == '_' => {
                 out.push(c);
                 last_was_dash = false;
                 continue;
             }
-            // Cualquier otra cosa (espacios, puntos, slashes, unicode, etc.)
-            // colapsa a un solo `-`.
+            // Anything else (spaces, dots, slashes, unicode, etc.)
+            // collapses to a single `-`.
             _ => '-',
         };
         if !last_was_dash && !out.is_empty() {
@@ -449,14 +449,14 @@ fn sanitize_filename_segment(s: &str) -> String {
             last_was_dash = true;
         }
     }
-    // Trim de dashes trailing + longitud máxima.
+    // Trim trailing dashes + max length.
     let trimmed = out.trim_matches('-').to_owned();
     trimmed.chars().take(MAX_LEN).collect()
 }
 
-/// Garantiza unicidad de `base_name` dentro del ZIP. Si el nombre ya se usó
-/// (caso degenerado: dos proyectos con el mismo identifier sanitizado),
-/// apendea `-2`, `-3`, etc. hasta encontrar uno libre.
+/// Guarantees uniqueness of `base_name` within the ZIP. If the name was already used
+/// (degenerate case: two projects with the same sanitized identifier),
+/// appends `-2`, `-3`, etc. until a free one is found.
 fn unique_base_name(
     candidate: &str,
     used: &mut std::collections::HashSet<String>,
@@ -474,10 +474,10 @@ fn unique_base_name(
     }
 }
 
-// ── Helpers: serialización por provider ──────────────────────────────────────
+// ── Helpers: serialization by provider ──────────────────────────────────────
 
-/// Row aplanado listo para cualquier formatter. Ordenado como el serializer
-/// de Django (IssueExportSerializer.Meta.fields — subset soportado).
+/// Flattened row ready for any formatter. Ordered like the Django
+/// serializer (IssueExportSerializer.Meta.fields — supported subset).
 struct IssueRow<'a> {
     sequence_id: i32,
     name: &'a str,
@@ -490,8 +490,8 @@ struct IssueRow<'a> {
     created_at: String,
 }
 
-/// Headers en el mismo orden que se escriben los valores.
-/// Nota: prettificados (`snake_case → Title Case`) para paridad con
+/// Headers in the same order as values are written.
+/// Note: prettified (`snake_case → Title Case`) for parity with
 /// `CSVFormatter.prettify_headers=True` y `XLSXFormatter.prettify_headers=True`.
 const HEADERS: &[&str] = &[
     "Sequence Id",
@@ -532,9 +532,9 @@ fn build_rows<'a>(
         .collect()
 }
 
-/// Encode: QuerySet → (filename.ext, bytes), ruteado por provider.
-/// Paridad con `DataExporter.export(filename, queryset)` — el filename incluye
-/// la extensión y el content son bytes listos para el ZIP.
+/// Encode: QuerySet → (filename.ext, bytes), routed by provider.
+/// Parity with `DataExporter.export(filename, queryset)` — filename includes
+/// the extension and content are bytes ready for the ZIP.
 fn encode_issues(
     base_name: &str,
     issues_ref: &[&issues::Model],
@@ -546,12 +546,12 @@ fn encode_issues(
         "csv" => Ok((format!("{base_name}.csv"), encode_csv(&rows)?)),
         "json" => Ok((format!("{base_name}.json"), encode_json(&rows)?)),
         "xlsx" => Ok((format!("{base_name}.xlsx"), encode_xlsx(&rows)?)),
-        other => anyhow::bail!("Provider inválido: '{other}'"),
+        other => anyhow::bail!("Invalid provider: '{other}'"),
     }
 }
 
-/// CSV con escape RFC 4180 vía la crate `csv` + sanitización de CSV injection.
-/// Paridad con `CSVFormatter.encode` usando `csv.writer` + `sanitize_csv_row`.
+/// CSV with RFC 4180 escaping via the `csv` crate + CSV injection sanitization.
+/// Parity with `CSVFormatter.encode` using `csv.writer` + `sanitize_csv_row`.
 fn encode_csv(rows: &[IssueRow<'_>]) -> anyhow::Result<Vec<u8>> {
     let mut wtr = csv::Writer::from_writer(Vec::<u8>::new());
     wtr.write_record(HEADERS)?;
@@ -561,10 +561,10 @@ fn encode_csv(rows: &[IssueRow<'_>]) -> anyhow::Result<Vec<u8>> {
             &sanitize_csv_cell(r.name),
             &sanitize_csv_cell(&r.state),
             &sanitize_csv_cell(r.priority),
-            // `XLSXFormatter` usa list_joiner=", " y `CSVFormatter` aplana listas
-            // con json.dumps — divergimos levemente acá y usamos "; " como en
-            // el worker previo para estabilidad hacia el frontend. Ver TODO
-            // de paridad-full al tope del módulo.
+            // `XLSXFormatter` uses list_joiner=", " and `CSVFormatter` flattens lists
+            // with json.dumps — we diverge slightly here and use "; " as in
+            // the previous worker for frontend stability. See full-parity TODO
+            // at the top of the module.
             &sanitize_csv_cell(&r.assignees.join("; ")),
             &sanitize_csv_cell(&r.labels.join("; ")),
             &r.start_date,
@@ -576,10 +576,10 @@ fn encode_csv(rows: &[IssueRow<'_>]) -> anyhow::Result<Vec<u8>> {
     Ok(buf)
 }
 
-/// JSON indent=2. Paridad con `JSONFormatter.encode(data, indent=2)`.
-/// Mantenemos snake_case (JSONFormatter no prettifica headers) — las mismas
-/// keys que `JSON_KEYS` arriba; se repiten acá porque el macro `json!` sólo
-/// admite literales o identificadores en scope como keys.
+/// JSON indent=2. Parity with `JSONFormatter.encode(data, indent=2)`.
+/// We keep snake_case (JSONFormatter does not prettify headers) — same
+/// keys as `JSON_KEYS` above; repeated here because the `json!` macro only
+/// admits literals or identifiers in scope as keys.
 fn encode_json(rows: &[IssueRow<'_>]) -> anyhow::Result<Vec<u8>> {
     use serde_json::{json, Value};
 
@@ -603,8 +603,8 @@ fn encode_json(rows: &[IssueRow<'_>]) -> anyhow::Result<Vec<u8>> {
     Ok(s.into_bytes())
 }
 
-/// XLSX vía `rust_xlsxwriter`. Paridad con `XLSXFormatter.encode` (openpyxl):
-/// headers prettificados, listas con join=", ".
+/// XLSX via `rust_xlsxwriter`. Parity with `XLSXFormatter.encode` (openpyxl):
+/// prettified headers, lists with join=", ".
 fn encode_xlsx(rows: &[IssueRow<'_>]) -> anyhow::Result<Vec<u8>> {
     use rust_xlsxwriter::Workbook;
 
@@ -656,17 +656,17 @@ fn encode_xlsx(rows: &[IssueRow<'_>]) -> anyhow::Result<Vec<u8>> {
     Ok(bytes)
 }
 
-// ── Helpers: ZIP real ────────────────────────────────────────────────────────
+// ── Helpers: real ZIP ────────────────────────────────────────────────────────
 
-/// Empaqueta `(filename, bytes)` en un ZIP estándar (deflate).
-/// Paridad con `create_zip_file` (export_task.py:28-38).
+/// Packages `(filename, bytes)` into a standard ZIP (deflate).
+/// Parity with `create_zip_file` (export_task.py:28-38).
 fn build_zip(files: &[(String, Vec<u8>)]) -> anyhow::Result<Vec<u8>> {
     let buf = Vec::<u8>::new();
     let cursor = Cursor::new(buf);
     let mut zip = ZipWriter::new(cursor);
 
-    // `SimpleFileOptions` evita tener que tipar el generic de `FileOptions`
-    // (cambio de la API en zip 2.x para soportar extended attributes).
+    // `SimpleFileOptions` avoids having to type the `FileOptions` generic
+    // (API change in zip 2.x to support extended attributes).
     let opts = SimpleFileOptions::default().compression_method(CompressionMethod::Deflated);
 
     for (name, bytes) in files {
@@ -678,7 +678,7 @@ fn build_zip(files: &[(String, Vec<u8>)]) -> anyhow::Result<Vec<u8>> {
     Ok(cursor.into_inner())
 }
 
-// ── Marcar job como fallido ──────────────────────────────────────────────────
+// ── Mark job as failed ──────────────────────────────────────────────────
 
 async fn mark_export_failed(state: &AppState, token: &str, reason: &str) -> anyhow::Result<()> {
     let exporter = exporters::Entity::find()
@@ -689,9 +689,9 @@ async fn mark_export_failed(state: &AppState, token: &str, reason: &str) -> anyh
     if let Some(exp) = exporter {
         let mut am: exporters::ActiveModel = exp.into();
         am.status = Set("failed".to_owned());
-        // `reason` es TEXT pero truncamos por si el upstream explota con un
-        // error gigante (ej. stack traces en errores de S3). 500 chars cubren
-        // el 99% de casos útiles.
+        // `reason` is TEXT but we truncate in case the upstream explodes with a
+        // giant error (e.g. stack traces in S3 errors). 500 chars cover
+        // 99% of useful cases.
         am.reason = Set(reason.chars().take(500).collect());
         am.updated_at = Set(chrono::Utc::now().into());
         am.update(&state.db).await?;

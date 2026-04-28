@@ -14,14 +14,14 @@ pub struct HealthResponse {
 #[derive(Serialize, Deserialize, ToSchema)]
 pub struct DbStatus {
     pub connected: bool,
-    /// Solo expuesto si DEBUG=true para facilitar diagnóstico en desarrollo.
-    /// En producción se devuelve un mensaje genérico para no filtrar detalles internos.
+    /// Only exposed if DEBUG=true to facilitate diagnosis in development.
+    /// In production a generic message is returned to avoid leaking internal details.
     #[schema(nullable)]
     pub error: Option<String>,
 }
 
-/// Verifica el estado del servidor y la conectividad con PostgreSQL.
-/// No requiere autenticación — es el único endpoint completamente público.
+/// Verifies server status and PostgreSQL connectivity.
+/// Does not require authentication — it is the only completely public endpoint.
 #[utoipa::path(
     get,
     path = "/api/health",
@@ -60,7 +60,7 @@ pub async fn health(State(state): State<AppState>) -> impl IntoResponse {
         },
     });
 
-    // HTTP 503 cuando DB no disponible — los health checks de k8s dependen del status code.
+    // HTTP 503 when DB is unavailable — k8s health checks depend on the status code.
     let status = if connected {
         StatusCode::OK
     } else {

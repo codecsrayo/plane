@@ -1,11 +1,11 @@
 // src/routes/issue_extras2.rs
-//! Endpoints adicionales de Issues.
+//! Additional Issue endpoints.
 //!
-//! Cubre los equivalentes Django de:
-//!   issue/attachment.py  → adjuntos de issue (FileAsset v2)
-//!   issue/archive.py     → archivar / desarchivar issues
-//!   issue/version.py     → versiones de issue
-//!   issue/base.py        → bulk update de fechas de issue (IssueBulkUpdateDateEndpoint)
+//! Covers Django equivalents of:
+//!   issue/attachment.py  → issue attachments (FileAsset v2)
+//!   issue/archive.py     → archive / unarchive issues
+//!   issue/version.py     → issue versions
+//!   issue/base.py        → bulk update of issue dates (IssueBulkUpdateDateEndpoint)
 
 use axum::{
     extract::{Path, Query, State},
@@ -88,7 +88,7 @@ pub struct InitiateAttachmentRequest {
 
 #[derive(Debug, Serialize)]
 pub struct InitiateAttachmentResponse {
-    /// Datos para POST multipart/form-data al bucket (espejo Django/boto3 generate_presigned_post).
+    /// POST data for multipart/form-data to the bucket (mirror Django/boto3 generate_presigned_post).
     pub upload_data: PresignedPost,
     pub asset_id: Uuid,
     pub attachment: IssueAttachmentResponse,
@@ -104,7 +104,7 @@ pub struct InitiateAttachmentResponse {
         ("project_id" = Uuid, Path, description = "Project ID"),
         ("issue_id" = Uuid, Path, description = "Issue ID"),
     ),
-    responses((status = 200, description = "Lista de adjuntos"))
+    responses((status = 200, description = "List of attachments"))
 )]
 pub async fn list_issue_attachments(
     State(state): State<AppState>,
@@ -140,7 +140,7 @@ pub async fn list_issue_attachments(
         ("project_id" = Uuid, Path, description = "Project ID"),
         ("issue_id" = Uuid, Path, description = "Issue ID"),
     ),
-    responses((status = 200, description = "Upload presignado iniciado"))
+    responses((status = 200, description = "Presigned upload initiated"))
 )]
 pub async fn initiate_issue_attachment_upload(
     State(state): State<AppState>,
@@ -225,7 +225,7 @@ pub async fn initiate_issue_attachment_upload(
         ("issue_id" = Uuid, Path, description = "Issue ID"),
         ("pk" = Uuid, Path, description = "FileAsset ID"),
     ),
-    responses((status = 204, description = "Upload confirmado"))
+    responses((status = 204, description = "Upload confirmed"))
 )]
 pub async fn complete_issue_attachment_upload(
     State(state): State<AppState>,
@@ -266,8 +266,8 @@ pub async fn complete_issue_attachment_upload(
         ("pk" = Uuid, Path, description = "FileAsset ID"),
     ),
     responses(
-        (status = 204, description = "Eliminado"),
-        (status = 403, description = "Solo ADMIN"),
+        (status = 204, description = "Deleted"),
+        (status = 403, description = "Only ADMIN"),
     )
 )]
 pub async fn delete_issue_attachment(
@@ -315,9 +315,9 @@ pub struct ArchivedAtResponse {
         ("pk" = Uuid, Path, description = "Issue ID"),
     ),
     responses(
-        (status = 200, description = "Issue archivado"),
-        (status = 400, description = "Estado inválido"),
-        (status = 403, description = "Solo MEMBER o ADMIN"),
+        (status = 200, description = "Issue archived"),
+        (status = 400, description = "Invalid state"),
+        (status = 403, description = "Only MEMBER or ADMIN"),
     )
 )]
 pub async fn archive_issue(
@@ -380,7 +380,7 @@ pub async fn archive_issue(
         ("project_id" = Uuid, Path, description = "Project ID"),
         ("pk" = Uuid, Path, description = "Issue ID"),
     ),
-    responses((status = 204, description = "Desarchivado"))
+    responses((status = 204, description = "Unarchived"))
 )]
 pub async fn unarchive_issue(
     State(state): State<AppState>,
@@ -529,7 +529,7 @@ impl From<issue_versions::Model> for IssueVersionResponse {
         ("project_id" = Uuid, Path, description = "Project ID"),
         ("issue_id" = Uuid, Path, description = "Issue ID"),
     ),
-    responses((status = 200, description = "Lista de versiones"))
+    responses((status = 200, description = "List of versions"))
 )]
 pub async fn list_issue_versions(
     State(state): State<AppState>,
@@ -564,8 +564,8 @@ pub async fn list_issue_versions(
         ("pk" = Uuid, Path, description = "Version ID"),
     ),
     responses(
-        (status = 200, description = "Versión encontrada"),
-        (status = 404, description = "No encontrada"),
+        (status = 200, description = "Version found"),
+        (status = 404, description = "Not found"),
     )
 )]
 pub async fn get_issue_version(
@@ -592,27 +592,27 @@ pub async fn get_issue_version(
 // BULK UPDATE ISSUE DATES
 // ═══════════════════════════════════════════════════════════════════════════
 //
-// Espejo Django: apps/api/plane/app/views/issue/base.py::IssueBulkUpdateDateEndpoint
+// Django mirror: apps/api/plane/app/views/issue/base.py::IssueBulkUpdateDateEndpoint
 //   POST /workspaces/{slug}/projects/{project_id}/issue-dates/
 //
-// Actualiza `start_date` y/o `target_date` de múltiples issues en una sola
-// llamada, validando que para cada issue `start_date <= target_date` tomando
-// en cuenta los valores actuales cuando el cliente omite uno de los campos.
+// Updates `start_date` and/or `target_date` of multiple issues in a single
+// call, validating that for each issue `start_date <= target_date` taking
+// into account the current values when the client omits one of the fields.
 //
-// Permisos: ADMIN | MEMBER a nivel de proyecto (ROLE_MEMBER).
+// Permissions: ADMIN | MEMBER at project level (ROLE_MEMBER).
 //
-// Notas de diseño:
-//   - Todo el trabajo ocurre dentro de una transacción para garantizar
-//     atomicidad: si alguna issue viola la validación de fechas, ninguna
-//     se persiste (evita estados parciales inconsistentes).
-//   - Filtramos por `project_id` (tomado del guard) para que ningún `id`
-//     enviado por el cliente pueda modificar issues fuera del proyecto
-//     actual, incluso si pertenecen al mismo workspace.
-//   - `updated_by_id` se setea al usuario autenticado, espejando el
-//     comportamiento de `update_issue` en este crate.
-//   - Todavía NO emitimos `issue_activity` porque el resto de endpoints de
-//     escritura del port Rust aún no lo hace; introducir un insert ad-hoc
-//     aquí sería inconsistente con el resto del código.
+// Design notes:
+//   - All work occurs within a transaction to ensure
+//     atomicity: if any issue violates date validation, none
+//     are persisted (avoids inconsistent partial states).
+//   - We filter by `project_id` (taken from the guard) so that no `id`
+//     sent by the client can modify issues outside the current
+//     project, even if they belong to the same workspace.
+//   - `updated_by_id` is set to the authenticated user, mirroring the
+//     behavior of `update_issue` in this crate.
+//   - We DO NOT yet emit `issue_activity` because the rest of the write endpoints
+//     in the Rust port don't do it yet; introducing an ad-hoc insert
+//     here would be inconsistent with the rest of the code.
 
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct IssueDateUpdate {
@@ -626,9 +626,9 @@ pub struct BulkUpdateIssueDatesRequest {
     pub updates: Vec<IssueDateUpdate>,
 }
 
-/// Devuelve `false` si, tomando en cuenta los valores actuales y los nuevos,
-/// `start_date > target_date`. Mantiene la semántica exacta de la función
-/// `validate_dates` de Django.
+/// Returns `false` if, taking into account the current and new values,
+/// `start_date > target_date`. Maintains the exact semantics of Django's
+/// `validate_dates` function.
 fn validate_dates(
     current_start: Option<NaiveDate>,
     current_target: Option<NaiveDate>,
@@ -654,8 +654,8 @@ fn validate_dates(
     ),
     request_body = BulkUpdateIssueDatesRequest,
     responses(
-        (status = 200, description = "Issues actualizados"),
-        (status = 400, description = "Start date excede target date"),
+        (status = 200, description = "Issues updated"),
+        (status = 400, description = "Start date exceeds target date"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -678,20 +678,20 @@ pub async fn bulk_update_issue_dates(
     let project_id = guard.project.id;
     let user_id = guard.user.id;
 
-    // Snapshot inmutable de IDs + payload para mover a la transacción sin
-    // perder el borrow de `body`.
+    // Immutable snapshot of IDs + payload to move into the transaction without
+    // losing the `body` borrow.
     let updates = body.updates;
 
     state
         .db
         .transaction::<_, (), AppError>(move |txn| {
-            // `move` en el closure externo toma ownership de `updates`,
-            // `project_id` y `user_id`; `async move` los transfiere al
-            // future interno. Mismo patrón de ownership que `update_issue`.
+            // `move` in the outer closure takes ownership of `updates`,
+            // `project_id` and `user_id`; `async move` transfers them to the
+            // inner future. Same ownership pattern as `update_issue`.
             Box::pin(async move {
-                // Cargamos todas las issues afectadas en una sola query,
-                // filtrando por project_id para evitar que un id malicioso
-                // alcance otro proyecto del mismo workspace.
+                // We load all affected issues in a single query,
+                // filtering by project_id to prevent a malicious id
+                // from reaching another project in the same workspace.
                 let ids: Vec<Uuid> = updates.iter().map(|u| u.id).collect();
                 let issues_loaded = issues::Entity::find()
                     .filter(issues::Column::Id.is_in(ids))
@@ -707,8 +707,8 @@ pub async fn bulk_update_issue_dates(
                     .map(|m| (m.id, m))
                     .collect();
 
-                // Primera pasada: validación pura (sin writes). Si alguna
-                // fila falla, la transacción aborta y nada persiste.
+                // First pass: pure validation (no writes). If any
+                // row fails, the transaction aborts and nothing persists.
                 for update in &updates {
                     if let Some(issue) = by_id.get(&update.id) {
                         if !validate_dates(
@@ -722,19 +722,19 @@ pub async fn bulk_update_issue_dates(
                             ));
                         }
                     }
-                    // Si `by_id` no contiene el issue (no existe, otro
-                    // proyecto, o soft-deleted), lo ignoramos silenciosamente
-                    // — mismo comportamiento que Django (`if not issue: continue`).
+                    // If `by_id` doesn't contain the issue (doesn't exist, another
+                    // project, or soft-deleted), we ignore it silently
+                    // — same behavior as Django (`if not issue: continue`).
                 }
 
-                // Segunda pasada: aplicar updates.
+                // Second pass: apply updates.
                 let now = chrono::Utc::now();
                 for update in &updates {
                     let Some(issue) = by_id.remove(&update.id) else {
                         continue;
                     };
-                    // Si el cliente no envió ninguna fecha para este issue,
-                    // no hay nada que tocar.
+                    // If the client didn't send any date for this issue,
+                    // there's nothing to touch.
                     if update.start_date.is_none() && update.target_date.is_none() {
                         continue;
                     }
@@ -778,9 +778,9 @@ pub struct BulkDeleteIssuesRequest {
 
 /// DELETE /workspaces/{slug}/projects/{project_id}/bulk-delete-issues/
 ///
-/// Soft-deletes múltiples issues y sus CycleIssue/ModuleIssue relacionados.
+/// Soft-deletes multiple issues and their related CycleIssue/ModuleIssue.
 ///
-/// Espejo de `BulkDeleteIssuesEndpoint`
+/// Mirror of `BulkDeleteIssuesEndpoint`
 /// (`apps/api/plane/app/views/issue/base.py`).
 #[utoipa::path(
     delete,
@@ -802,7 +802,7 @@ pub async fn bulk_delete_issues(
 
     let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
 
-    // Soft-delete cycle_issues y module_issues relacionados
+    // Soft-delete related cycle_issues and module_issues
     cycle_issues::Entity::update_many()
         .col_expr(cycle_issues::Column::DeletedAt, sea_orm::sea_query::Expr::value(Some(now)))
         .filter(cycle_issues::Column::IssueId.is_in(body.issue_ids.clone()))
@@ -841,9 +841,9 @@ pub async fn bulk_delete_issues(
 
 /// GET /workspaces/{slug}/projects/{project_id}/archived-issues/
 ///
-/// Lista issues archivados del proyecto.
+/// Lists archived issues of the project.
 ///
-/// Espejo de `IssueArchiveViewSet.list`
+/// Mirror of `IssueArchiveViewSet.list`
 /// (`apps/api/plane/app/views/issue/archive.py`).
 #[utoipa::path(
     get,
@@ -871,7 +871,7 @@ pub async fn list_archived_issues(
         .await
         .map_err(AppError::Database)?;
 
-    // Batch-fetch assignees y labels para evitar N+1
+    // Batch-fetch assignees and labels to avoid N+1
     let issue_ids: Vec<uuid::Uuid> = archived.iter().map(|i| i.id).collect();
 
     let assignees_map = issue_assignees_map(&state.db, &issue_ids).await?;
@@ -900,9 +900,9 @@ pub async fn list_archived_issues(
 
 /// GET /workspaces/{slug}/projects/{project_id}/issues/{pk}/archive/
 ///
-/// Retorna el detalle de un issue archivado específico.
+/// Returns the detail of a specific archived issue.
 ///
-/// Espejo de `IssueArchiveViewSet.retrieve`
+/// Mirror of `IssueArchiveViewSet.retrieve`
 /// (`apps/api/plane/app/views/issue/archive.py`).
 #[utoipa::path(
     get,
@@ -958,10 +958,10 @@ pub struct DeletedIssuesQuery {
 
 /// GET /workspaces/{slug}/projects/{project_id}/deleted-issues/
 ///
-/// Retorna IDs de issues eliminados o archivados — usado por el frontend
-/// para sincronización local (invalidar caché).
+/// Returns IDs of deleted or archived issues — used by the frontend
+/// for local synchronization (cache invalidation).
 ///
-/// Espejo de `DeletedIssuesListViewSet`
+/// Mirror of `DeletedIssuesListViewSet`
 /// (`apps/api/plane/app/views/issue/base.py`).
 #[utoipa::path(
     get,
@@ -1009,10 +1009,10 @@ pub async fn list_deleted_issues(
 
 /// GET /workspaces/{slug}/projects/{project_id}/issues/{issue_id}/meta/
 ///
-/// Retorna sequence_id y project_identifier de un issue.
-/// Usado por el frontend para construir URLs canónicas de issue.
+/// Returns sequence_id and project_identifier of an issue.
+/// Used by the frontend to build canonical issue URLs.
 ///
-/// Espejo de `IssueMetaEndpoint`
+/// Mirror of `IssueMetaEndpoint`
 /// (`apps/api/plane/app/views/issue/base.py`).
 #[utoipa::path(
     get,
@@ -1045,11 +1045,11 @@ pub async fn get_issue_meta(
 
 /// GET /workspaces/{slug}/work-items/{project_identifier}-{issue_identifier}/
 ///
-/// Resuelve un issue a partir del identificador de proyecto + número.
-/// Ejemplo: `/work-items/PLAN-42/` resuelve al issue con sequence_id=42
-/// en el proyecto con identifier="PLAN".
+/// Resolves an issue from project identifier + number.
+/// Example: `/work-items/PLAN-42/` resolves to the issue with sequence_id=42
+/// in the project with identifier="PLAN".
 ///
-/// Espejo de `IssueDetailIdentifierEndpoint`
+/// Mirror of `IssueDetailIdentifierEndpoint`
 /// (`apps/api/plane/app/views/issue/base.py`).
 #[utoipa::path(
     get,
@@ -1062,8 +1062,8 @@ pub async fn get_issue_by_identifier(
     crate::auth::any_auth::AnyAuth(user): crate::auth::any_auth::AnyAuth,
     Path((slug, combined)): Path<(String, String)>,
 ) -> Result<axum::Json<serde_json::Value>, AppError> {
-    // Parsear "PROJECT_IDENTIFIER-ISSUE_NUMBER" separando por el último guión
-    // seguido de dígitos (para soportar identifiers con guiones como "MY-PROJECT-42").
+    // Parse "PROJECT_IDENTIFIER-ISSUE_NUMBER" by splitting at the last dash
+    // followed by digits (to support identifiers with dashes like "MY-PROJECT-42").
     let split_idx = combined.rfind('-').ok_or_else(|| {
         AppError::BadRequest("Invalid identifier format. Expected: PROJECT-NUMBER".into())
     })?;
@@ -1084,7 +1084,7 @@ pub async fn get_issue_by_identifier(
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
-    // Buscar proyecto por identifier (case-insensitive)
+    // Search project by identifier (case-insensitive)
     let project = projects::Entity::find()
         .active()
         .filter(sea_orm::sea_query::Expr::col(projects::Column::Identifier).eq(project_identifier.to_uppercase()))
@@ -1094,7 +1094,7 @@ pub async fn get_issue_by_identifier(
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
-    // Verificar que el usuario es miembro del proyecto
+    // Verify that the user is a member of the project
     use sea_orm::PaginatorTrait;
     let is_member = project_members::Entity::find()
         .active()
@@ -1109,7 +1109,7 @@ pub async fn get_issue_by_identifier(
         return Err(AppError::Forbidden);
     }
 
-    // Buscar issue por sequence_id
+    // Search issue by sequence_id
     let issue = issues::Entity::find()
         .active()
         .filter(issues::Column::ProjectId.eq(project.id))
@@ -1139,9 +1139,9 @@ pub async fn get_issue_by_identifier(
     })))
 }
 
-// ── Helpers internos de batch-fetch ──────────────────────────────────────────
+// ── Internal batch-fetch helpers ──────────────────────────────────────────
 
-/// Batch-fetch de assignee_ids por issue — evita N+1.
+/// Batch-fetch of assignee_ids per issue — avoids N+1.
 async fn issue_assignees_map(
     db: &sea_orm::DatabaseConnection,
     issue_ids: &[uuid::Uuid],
@@ -1158,7 +1158,7 @@ async fn issue_assignees_map(
     Ok(map)
 }
 
-/// Batch-fetch de label_ids por issue — evita N+1.
+/// Batch-fetch of label_ids per issue — avoids N+1.
 async fn issue_labels_map(
     db: &sea_orm::DatabaseConnection,
     issue_ids: &[uuid::Uuid],

@@ -4,11 +4,11 @@ use crate::{
     entities::instance_configurations, error::AppError, utils::soft_delete::SoftDeleteExt, AppState,
 };
 
-/// Claves permitidas para `get_instance_config`.
+/// Allowed keys for `get_instance_config`.
 ///
-/// [Fix #19] Sin allowlist, cualquier código que llame a esta función con
-/// una clave arbitraria puede leer cualquier variable de entorno del proceso
-/// (DATABASE_URL, SECRET_KEY, AWS_SECRET_ACCESS_KEY, etc.) si no existe en DB.
+/// [Fix #19] Without allowlist, any code calling this function with
+/// an arbitrary key can read any environment variable of the process
+/// (DATABASE_URL, SECRET_KEY, AWS_SECRET_ACCESS_KEY, etc.) if it doesn't exist in DB.
 const ALLOWED_INSTANCE_CONFIG_KEYS: &[&str] = &[
     "GITHUB_APP_ID",
     "GITHUB_APP_PRIVATE_KEY",
@@ -50,22 +50,22 @@ pub async fn get_config_value(
     Ok(value)
 }
 
-/// Obtiene un valor de configuración de instancia validado por allowlist.
+/// Gets an instance configuration value validated by allowlist.
 ///
-/// Prioridad: DB (instance_configurations) → variable de entorno.
-/// Rechaza claves no incluidas en `ALLOWED_INSTANCE_CONFIG_KEYS`.
+/// Priority: DB (instance_configurations) → environment variable.
+/// Rejects keys not included in `ALLOWED_INSTANCE_CONFIG_KEYS`.
 pub async fn get_instance_config(
     state: &AppState,
     key: &str,
 ) -> Result<Option<String>, AppError> {
     if !ALLOWED_INSTANCE_CONFIG_KEYS.contains(&key) {
-        tracing::error!(key, "get_instance_config: clave no permitida");
+        tracing::error!(key, "get_instance_config: key not allowed");
         return Err(AppError::BadRequest(
-            format!("Clave de configuración no permitida: '{key}'"),
+            format!("Configuration key not allowed: '{key}'"),
         ));
     }
 
-    // 1. Buscar en instance_configurations (prioridad DB sobre env)
+    // 1. Search in instance_configurations (DB priority over env)
     let db_value = instance_configurations::Entity::find()
         .active()
         .filter(instance_configurations::Column::Key.eq(key))
@@ -79,6 +79,6 @@ pub async fn get_instance_config(
         return Ok(db_value);
     }
 
-    // 2. Fallback a variable de entorno (solo claves del allowlist)
+    // 2. Fallback to environment variable (only allowlist keys)
     Ok(std::env::var(key).ok())
 }

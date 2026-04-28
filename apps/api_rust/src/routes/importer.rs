@@ -1,9 +1,9 @@
 // src/routes/importer.rs
-//! Endpoints de importación de issues desde GitHub y GitLab.
+//! GitHub and GitLab issue import endpoints.
 //!
-//! Equivalente a `plane/app/views/importer/` en Django.
+//! Equivalent to `plane/app/views/importer/` in Django.
 //!
-//! Rutas implementadas:
+//! Implemented routes:
 //!   GET    /api/workspaces/{slug}/importers/github/
 //!   POST   /api/workspaces/{slug}/importers/github/
 //!   DELETE /api/workspaces/{slug}/importers/github/{importer_id}/
@@ -28,13 +28,11 @@ use sea_orm::{
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 
-use crate::{
-    auth::extractors::WorkspaceMemberGuard,
-    entities::{api_tokens, importers},
-    error::AppError,
-    utils::soft_delete::SoftDeleteExt,
-    AppState,
-};
+use crate::auth::extractors::WorkspaceMemberGuard;
+use crate::entities::{api_tokens, importers};
+use crate::error::AppError;
+use crate::utils::soft_delete::SoftDeleteExt;
+use crate::AppState;
 
 // ── DTOs ─────────────────────────────────────────────────────────────────────
 
@@ -63,11 +61,11 @@ pub struct CreateGithubImportRequest {
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct CreateGitlabImportRequest {
     pub project_id: Uuid,
-    /// Namespace del grupo o usuario (p.ej. "myorg").
+    /// Group or user namespace (e.g., "myorg").
     pub namespace: String,
-    /// Nombre del proyecto en GitLab.
+    /// GitLab project name.
     pub project_name: String,
-    /// Project ID numérico de GitLab.
+    /// Numerical GitLab project ID.
     pub gitlab_project_id: Option<i64>,
     pub personal_access_token: Option<String>,
     pub import_labels: Option<bool>,
@@ -101,13 +99,13 @@ fn importer_to_response(i: &importers::Model) -> ImporterResponse {
     }
 }
 
-/// Obtiene o crea un API token de servicio para el importer.
+/// Gets or creates a service API token for the importer.
 async fn get_or_create_importer_token(
     db: &sea_orm::DatabaseConnection,
     user_id: Uuid,
     workspace_id: Uuid,
 ) -> Result<Uuid, AppError> {
-    // Buscar token existente de importer para este user+workspace
+    // Search for existing importer token for this user+workspace
     let existing = api_tokens::Entity::find()
         .active()
         .filter(api_tokens::Column::UserId.eq(user_id))
@@ -122,7 +120,7 @@ async fn get_or_create_importer_token(
         return Ok(token.id);
     }
 
-    // Crear nuevo token
+    // Create new token
     let now: DateTime<FixedOffset> = Utc::now().into();
     let raw_token = uuid::Uuid::new_v4().simple().to_string();
     let new_token = api_tokens::ActiveModel {
@@ -153,8 +151,8 @@ async fn get_or_create_importer_token(
 
 /// GET /api/workspaces/{slug}/importers/github/repositories/
 ///
-/// Lista repositorios disponibles en GitHub para importar.
-/// Usa installation token del GitHub App si está configurado, o PAT como fallback.
+/// Lists GitHub repositories available for import.
+/// Uses GitHub App installation token if configured, or PAT as fallback.
 #[utoipa::path(
     get,
     path = "/workspaces/{slug}/importers/github/repositories/",
@@ -178,7 +176,7 @@ pub async fn list_github_import_repositories(
     let page = params.page.unwrap_or(1).max(1);
     let per_page = 30u32;
 
-    // Intentar obtener installation token del workspace integration
+    // Try to get installation token from workspace integration
     let github_token = params.token;
 
     let github_token = match github_token {
@@ -516,7 +514,7 @@ pub async fn list_gitlab_importers(
 /// POST /api/workspaces/{slug}/importers/gitlab/
 #[utoipa::path(
     post,
-    path = "/workspaces/{slug}/importers/gitlab/",
+    path = "/api/workspaces/{slug}/importers/gitlab/",
     tag = "Importer",
     security(("TokenAuth" = [])),
     params(("slug" = String, Path, description = "Workspace slug")),
@@ -595,7 +593,7 @@ pub async fn create_gitlab_importer(
 /// DELETE /api/workspaces/{slug}/importers/gitlab/{importer_id}/
 #[utoipa::path(
     delete,
-    path = "/workspaces/{slug}/importers/gitlab/{importer_id}/",
+    path = "/api/workspaces/{slug}/importers/gitlab/{importer_id}/",
     tag = "Importer",
     security(("TokenAuth" = [])),
     params(

@@ -1,8 +1,8 @@
 // src/routes/helpers.rs
-//! Helpers de dominio compartidos entre rutas.
+//! Domain helpers shared between routes.
 //!
-//! Centraliza las consultas de workspace y membresía para evitar duplicación
-//! entre `workspaces.rs`, `projects.rs`, `states.rs`, etc.
+//! Centralizes workspace and membership queries to avoid duplication
+//! between `workspaces.rs`, `projects.rs`, `states.rs`, etc.
 
 use sea_orm::{ColumnTrait, EntityTrait, QueryFilter};
 use uuid::Uuid;
@@ -13,8 +13,8 @@ use crate::{
     utils::soft_delete::SoftDeleteExt,
 };
 
-/// Recupera el workspace activo que coincide con `slug`.
-/// Retorna `AppError::NotFound` si no existe o fue eliminado (soft-delete).
+/// Retrieves the active workspace matching `slug`.
+/// Returns `AppError::NotFound` if it does not exist or was deleted (soft-delete).
 pub async fn workspace_by_slug(
     db: &sea_orm::DatabaseConnection,
     slug: &str,
@@ -28,8 +28,8 @@ pub async fn workspace_by_slug(
         .ok_or(AppError::NotFound)
 }
 
-/// Verifica que `user_id` sea miembro activo del workspace `workspace_id`.
-/// Retorna `AppError::Forbidden` si no es miembro o fue desactivado.
+/// Verifies that `user_id` is an active member of workspace `workspace_id`.
+/// Returns `AppError::Forbidden` if not a member or deactivated.
 pub async fn require_workspace_member(
     db: &sea_orm::DatabaseConnection,
     workspace_id: Uuid,
@@ -46,11 +46,11 @@ pub async fn require_workspace_member(
         .ok_or(AppError::Forbidden)
 }
 
-/// Recupera el ProjectMember activo para (project_id, user_id).
-/// Retorna Ok(None) si el usuario no es miembro del proyecto.
-/// Usado por workspace_extras.rs para verificar acceso antes de
-/// convertir un draft en issue — refleja la misma logica de
-/// Django ProjectViewSet.get_queryset() que filtra por ProjectMember.
+/// Retrieves the active ProjectMember for (project_id, user_id).
+/// Returns Ok(None) if the user is not a project member.
+/// Used by workspace_extras.rs to verify access before
+/// converting a draft to an issue — reflects the same logic as
+/// Django ProjectViewSet.get_queryset() which filters by ProjectMember.
 pub async fn project_member_for_user(
     db: &sea_orm::DatabaseConnection,
     project_id: uuid::Uuid,

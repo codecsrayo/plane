@@ -1,5 +1,5 @@
 // src/utils/github_app.rs
-//! Utilidades para autenticación con GitHub App (JWT RS256 + installation access token).
+//! Utilities for GitHub App authentication (JWT RS256 + installation access token).
 
 use anyhow::Context;
 use base64::{engine::general_purpose, Engine as _};
@@ -10,62 +10,62 @@ use crate::{error::AppError, utils::instance_config::get_instance_config, AppSta
 
 #[derive(Debug, Serialize, Deserialize)]
 struct AppClaims {
-    /// Issued at — 60 s en el pasado para compensar skew de reloj
+    /// Issued at — 60 s in the past to compensate for clock skew
     iat: i64,
-    /// Expiry — máximo 10 min, usamos 9 min para margen
+    /// Expiry — maximum 10 min, we use 9 min for margin
     exp: i64,
-    /// Issuer — GitHub App ID (string numérico)
+    /// Issuer — GitHub App ID (numeric string)
     iss: String,
 }
 
-/// Genera un JWT RS256 firmado con la private key de la GitHub App.
+/// Generates a JWT RS256 signed with the GitHub App's private key.
 ///
-/// Devuelve `Ok(None)` si la app no está configurada (GITHUB_APP_ID /
-/// GITHUB_APP_PRIVATE_KEY ausentes) para permitir degradación suave sin error fatal.
+/// Returns `Ok(None)` if the app is not configured (GITHUB_APP_ID /
+/// GITHUB_APP_PRIVATE_KEY absent) to allow soft degradation without fatal error.
 async fn build_app_jwt(state: &AppState) -> Result<Option<String>, AppError> {
     let app_id = get_instance_config(state, "GITHUB_APP_ID").await?;
     let key_b64 = get_instance_config(state, "GITHUB_APP_PRIVATE_KEY").await?;
 
     let (Some(app_id), Some(key_b64)) = (app_id, key_b64) else {
-        return Ok(None); // GitHub App no configurado
+        return Ok(None); // GitHub App not configured
     };
 
     let pem = general_purpose::STANDARD
         .decode(key_b64.trim())
-        .context("GITHUB_APP_PRIVATE_KEY: base64 inválido")
+        .context("GITHUB_APP_PRIVATE_KEY: invalid base64")
         .map_err(AppError::Internal)?;
 
     let encoding_key = EncodingKey::from_rsa_pem(&pem)
-        .context("GITHUB_APP_PRIVATE_KEY: PEM RSA inválido")
+        .context("GITHUB_APP_PRIVATE_KEY: invalid RSA PEM")
         .map_err(AppError::Internal)?;
 
     let now = chrono::Utc::now().timestamp();
     let claims = AppClaims {
         iat: now - 60,
-        exp: now + 540, // 9 min (máx 10 min permitido por GitHub)
+        exp: now + 540, // 9 min (max 10 min allowed by GitHub)
         iss: app_id,
     };
 
     let token = encode(&Header::new(Algorithm::RS256), &claims, &encoding_key)
-        .context("Error al firmar JWT RS256")
+        .context("Error signing JWT RS256")
         .map_err(AppError::Internal)?;
 
     Ok(Some(token))
 }
 
-/// Obtiene un installation access token para la GitHub App.
+/// Gets an installation access token for the GitHub App.
 ///
-/// El token es válido durante 1 hora. Esta función lo genera bajo demanda —
-/// no se cachea porque la mayoría de operaciones no son de alta frecuencia.
+/// The token is valid for 1 hour. This function generates it on demand —
+/// it is not cached because most operations are not high frequency.
 ///
-/// [Fix #18] Recibe `http: &reqwest::Client` desde AppState — nunca crear
-/// `Client::new()` por request (nuevo pool TCP por llamada, agota descriptores).
+/// [Fix #18] Receives `http: &reqwest::Client` from AppState — never create
+/// `Client::new()` per request (new TCP pool per call, exhausts descriptors).
 pub async fn get_installation_access_token(
     state: &AppState,
     installation_id: &str,
 ) -> Result<Option<String>, AppError> {
     let Some(app_jwt) = build_app_jwt(state).await? else {
-        tracing::warn!("GitHub App no configurado — GITHUB_APP_ID o GITHUB_APP_PRIVATE_KEY ausentes");
+        tracing::warn!("GitHub App not configured — GITHUB_APP_ID or GITHUB_APP_PRIVATE_KEY absent");
         return Ok(None);
     };
 
@@ -80,14 +80,14 @@ pub async fn get_installation_access_token(
         .header("User-Agent", "plane-api-rust/0.1")
         .send()
         .await
-        .context("Error al contactar GitHub API")
+        .context("Error contacting GitHub API")
         .map_err(AppError::Internal)?;
 
     if resp.status().is_success() {
         let body: serde_json::Value = resp
             .json()
             .await
-            .context("GitHub API: respuesta no es JSON válido")
+            .context("GitHub API: response is not valid JSON")
             .map_err(AppError::Internal)?;
 
         Ok(body["token"].as_str().map(String::from))
