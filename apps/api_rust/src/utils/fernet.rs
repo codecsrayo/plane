@@ -1,10 +1,10 @@
 // src/utils/fernet.rs
-//! Compatibilidad con cifrado Fernet de Django.
+//! Compatibility with Django's Fernet encryption.
 //!
-//! Usa `openssl` (ya en Cargo.toml) para evitar conflictos de versión entre
-//! `digest 0.10` (hmac 0.12) y `digest 0.11` (sha2 0.11 del proyecto).
+//! Uses `openssl` (already in Cargo.toml) to avoid version conflicts between
+//! `digest 0.10` (hmac 0.12) and `digest 0.11` (sha2 0.11 of the project).
 //!
-//! ## Formato Fernet binario
+//! ## Binary Fernet Format
 //! ```text
 //! base64url( VERSION[1] || TIME[8] || IV[16] || CIPHERTEXT[N] || HMAC[32] )
 //! ```
@@ -24,15 +24,15 @@ use openssl::{
 
 use crate::{error::AppError, utils::token_cipher::decrypt_token};
 
-// ─── API pública ──────────────────────────────────────────────────────────────
+// ─── Public API ──────────────────────────────────────────────────────────────
 
-/// Detecta y descifra valores de `instance_configurations`.
+/// Detects and decrypts values from `instance_configurations`.
 ///
-/// | Valor                          | Acción                              |
+/// | Value                          | Action                              |
 /// |--------------------------------|-------------------------------------|
 /// | `v1:<b64>`                     | AES-256-GCM (token_cipher)          |
-/// | base64url cuyo byte[0] = 0x80  | Fernet Django                       |
-/// | otro                           | texto plano — devuelve tal cual     |
+/// | base64url whose byte[0] = 0x80  | Django Fernet                       |
+/// | other                           | plain text — return as is           |
 /// | None / ""                      | `""`                                |
 pub fn decrypt_config_value(stored: Option<&str>) -> Result<String, AppError> {
     let value = match stored {
@@ -50,12 +50,12 @@ pub fn decrypt_config_value(stored: Option<&str>) -> Result<String, AppError> {
     Ok(value.to_owned())
 }
 
-/// Cifra con AES-256-GCM (`v1:` prefix). Siempre formato Rust-native.
+/// Encrypts with AES-256-GCM (`v1:` prefix). Always Rust-native format.
 pub fn encrypt_config_value(plaintext: &str) -> String {
     crate::utils::token_cipher::encrypt_token(plaintext)
 }
 
-// ─── Fernet interno ───────────────────────────────────────────────────────────
+// ─── Internal Fernet ───────────────────────────────────────────────────────────
 
 fn derive_fernet_key(secret_key: &str) -> Result<[u8; 32], AppError> {
     let mut dk = [0u8; 32];
@@ -70,19 +70,19 @@ fn derive_fernet_key(secret_key: &str) -> Result<[u8; 32], AppError> {
     Ok(dk)
 }
 
-/// Descifra un token Fernet ya decodificado de base64url.
+/// Decrypts a Fernet token already decoded from base64url.
 fn fernet_decrypt(raw: &[u8]) -> Result<String, AppError> {
     let secret_key = std::env::var("SECRET_KEY")
-        .map_err(|_| AppError::Internal(anyhow::anyhow!("fernet: SECRET_KEY no configurada")))?;
+        .map_err(|_| AppError::Internal(anyhow::anyhow!("fernet: SECRET_KEY not configured")))?;
 
     if raw.len() < 57 {
         return Err(AppError::Internal(anyhow::anyhow!(
-            "fernet: token demasiado corto ({} bytes)", raw.len()
+            "fernet: token too short ({} bytes)", raw.len()
         )));
     }
     if raw[0] != 0x80 {
         return Err(AppError::Internal(anyhow::anyhow!(
-            "fernet: versión desconocida 0x{:02X}", raw[0]
+            "fernet: unknown version 0x{:02X}", raw[0]
         )));
     }
 
@@ -108,14 +108,14 @@ fn fernet_decrypt(raw: &[u8]) -> Result<String, AppError> {
 
     if computed.len() != stored_hmac.len() || !openssl::memcmp::eq(&computed, stored_hmac) {
         return Err(AppError::Internal(anyhow::anyhow!(
-            "fernet: HMAC inválido — datos corruptos o SECRET_KEY incorrecto"
+            "fernet: invalid HMAC — corrupt data or incorrect SECRET_KEY"
         )));
     }
 
     // ── AES-128-CBC decrypt ───────────────────────────────────────────────
     if ciphertext.is_empty() || !ciphertext.len().is_multiple_of(16) {
         return Err(AppError::Internal(anyhow::anyhow!(
-            "fernet: longitud de ciphertext inválida ({})", ciphertext.len()
+            "fernet: invalid ciphertext length ({})", ciphertext.len()
         )));
     }
     let cipher = Cipher::aes_128_cbc();
@@ -128,7 +128,7 @@ fn fernet_decrypt(raw: &[u8]) -> Result<String, AppError> {
         .map_err(|e| AppError::Internal(anyhow::anyhow!("fernet: update: {e}")))?;
     n += dec.finalize(&mut buf[n..])
         .map_err(|_| AppError::Internal(anyhow::anyhow!(
-            "fernet: finalize — datos corruptos o clave incorrecta"
+            "fernet: finalize — corrupt data or incorrect key"
         )))?;
     buf.truncate(n);
 

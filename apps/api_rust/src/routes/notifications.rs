@@ -1,5 +1,5 @@
 // src/routes/notifications.rs
-//! Endpoints de Notificaciones in-app del usuario.
+//! Endpoints for user in-app notifications.
 //!
 //!   GET    /api/workspaces/{slug}/users/notifications/
 //!   GET    /api/workspaces/{slug}/users/notifications/{pk}/
@@ -37,7 +37,7 @@ use crate::{
 
 // ── DTOs ─────────────────────────────────────────────────────────────────────
 
-/// Shape mínimo de IUserLite para triggered_by_details.
+/// Minimum IUserLite shape for triggered_by_details.
 #[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct UserLite {
     pub id: Uuid,
@@ -115,8 +115,8 @@ impl NotificationResponse {
     }
 }
 
-/// Carga triggered_by_details e is_inbox_issue para un conjunto de notificaciones
-/// en batch (sin N+1). Retorna los NotificationResponse enriquecidos.
+/// Loads triggered_by_details and is_inbox_issue for a set of notifications
+/// in batch (no N+1). Returns enriched NotificationResponse.
 async fn enrich_notifications(
     db: &sea_orm::DatabaseConnection,
     rows: Vec<notifications::Model>,
@@ -230,10 +230,10 @@ pub struct NotificationFilter {
     tag = "Notifications",
     params(
         ("slug" = String, Path, description = "Workspace slug"),
-        ("read" = Option<bool>, Query, description = "Filtrar por leídas"),
-        ("archived" = Option<bool>, Query, description = "Incluir archivadas"),
+        ("read" = Option<bool>, Query, description = "Filter by read"),
+        ("archived" = Option<bool>, Query, description = "Include archived"),
     ),
-    responses((status = 200, description = "Lista de notificaciones")),
+    responses((status = 200, description = "Notification list")),
     security(("TokenAuth" = []))
 )]
 pub async fn list_notifications(
@@ -246,7 +246,7 @@ pub async fn list_notifications(
         .filter(notifications::Column::WorkspaceId.eq(guard.workspace.id))
         .filter(notifications::Column::DeletedAt.is_null());
 
-    // Filtro snoozed (default: false — no pospuestas)
+    // Snoozed filter (default: false — not snoozed)
     let show_snoozed = filter.snoozed.unwrap_or(false);
     if show_snoozed {
         query = query.filter(notifications::Column::SnoozedTill.is_not_null());
@@ -254,13 +254,13 @@ pub async fn list_notifications(
         query = query.filter(notifications::Column::SnoozedTill.is_null());
     }
 
-    // Por defecto no mostrar archivadas
+    // By default, do not show archived
     let include_archived = filter.archived.unwrap_or(false);
     if !include_archived {
         query = query.filter(notifications::Column::ArchivedAt.is_null());
     }
 
-    // Filtrar por estado leído/no leído
+    // Filter by read/unread status
     if let Some(read) = filter.read {
         if read {
             query = query.filter(notifications::Column::ReadAt.is_not_null());
@@ -269,7 +269,7 @@ pub async fn list_notifications(
         }
     }
 
-    // Filtrar por tipo: subscribed | assigned | created (comma-separated, default "all")
+    // Filter by type: subscribed | assigned | created (comma-separated, default "all")
     if let Some(ref type_str) = filter.type_filter {
         let types: Vec<&str> = type_str.split(',').map(str::trim).collect();
         if !types.contains(&"all") {
@@ -339,8 +339,8 @@ pub async fn list_notifications(
         ("pk" = Uuid, Path, description = "Notification ID"),
     ),
     responses(
-        (status = 200, description = "Detalle de la notificación"),
-        (status = 404, description = "No encontrada"),
+        (status = 200, description = "Notification detail"),
+        (status = 404, description = "Not found"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -379,7 +379,7 @@ pub struct UpdateNotificationRequest {
         ("slug" = String, Path, description = "Workspace slug"),
         ("pk" = Uuid, Path, description = "Notification ID"),
     ),
-    responses((status = 200, description = "Notificación actualizada")),
+    responses((status = 200, description = "Notification updated")),
     security(("TokenAuth" = []))
 )]
 pub async fn update_notification(
@@ -416,7 +416,7 @@ pub async fn update_notification(
         ("slug" = String, Path, description = "Workspace slug"),
         ("pk" = Uuid, Path, description = "Notification ID"),
     ),
-    responses((status = 204, description = "Eliminada")),
+    responses((status = 204, description = "Deleted")),
     security(("TokenAuth" = []))
 )]
 pub async fn delete_notification(
@@ -448,7 +448,7 @@ pub async fn delete_notification(
         ("slug" = String, Path, description = "Workspace slug"),
         ("pk" = Uuid, Path, description = "Notification ID"),
     ),
-    responses((status = 200, description = "Marcada como leída")),
+    responses((status = 200, description = "Marked as read")),
     security(("TokenAuth" = []))
 )]
 pub async fn mark_read(
@@ -484,7 +484,7 @@ pub async fn mark_read(
         ("slug" = String, Path, description = "Workspace slug"),
         ("pk" = Uuid, Path, description = "Notification ID"),
     ),
-    responses((status = 200, description = "Marcada como no leída")),
+    responses((status = 200, description = "Marked as unread")),
     security(("TokenAuth" = []))
 )]
 pub async fn mark_unread(
@@ -520,7 +520,7 @@ pub async fn mark_unread(
         ("slug" = String, Path, description = "Workspace slug"),
         ("pk" = Uuid, Path, description = "Notification ID"),
     ),
-    responses((status = 200, description = "Archivada")),
+    responses((status = 200, description = "Archived")),
     security(("TokenAuth" = []))
 )]
 pub async fn archive_notification(
@@ -556,7 +556,7 @@ pub async fn archive_notification(
         ("slug" = String, Path, description = "Workspace slug"),
         ("pk" = Uuid, Path, description = "Notification ID"),
     ),
-    responses((status = 200, description = "Desarchivada")),
+    responses((status = 200, description = "Unarchived")),
     security(("TokenAuth" = []))
 )]
 pub async fn unarchive_notification(
@@ -589,7 +589,7 @@ pub async fn unarchive_notification(
     path = "/api/workspaces/{slug}/users/notifications/unread/",
     tag = "Notifications",
     params(("slug" = String, Path, description = "Workspace slug")),
-    responses((status = 200, description = "Conteo de no leídas")),
+    responses((status = 200, description = "Unread count")),
     security(("TokenAuth" = []))
 )]
 pub async fn unread_count(
@@ -598,8 +598,8 @@ pub async fn unread_count(
 ) -> Result<Json<UnreadCountResponse>, AppError> {
     use sea_orm::PaginatorTrait;
 
-    // Total de no leídas, sin archivadas, sin pospuestas, excluyendo menciones
-    // (espeja el QuerySet de Django: .exclude(sender__icontains="mentioned"))
+    // Total unread, without archived, without snoozed, excluding mentions
+    // (mirrors Django QuerySet: .exclude(sender__icontains="mentioned"))
     let total_unread = notifications::Entity::find()
         .filter(notifications::Column::ReceiverId.eq(guard.user.id))
         .filter(notifications::Column::WorkspaceId.eq(guard.workspace.id))
@@ -616,7 +616,7 @@ pub async fn unread_count(
         .await
         .map_err(AppError::Database)?;
 
-    // Solo menciones no leídas
+    // Only unread mentions
     let mention_unread = notifications::Entity::find()
         .filter(notifications::Column::ReceiverId.eq(guard.user.id))
         .filter(notifications::Column::WorkspaceId.eq(guard.workspace.id))
@@ -642,7 +642,7 @@ pub async fn unread_count(
     path = "/api/workspaces/{slug}/users/notifications/mark-all-read/",
     tag = "Notifications",
     params(("slug" = String, Path, description = "Workspace slug")),
-    responses((status = 200, description = "Todas marcadas como leídas")),
+    responses((status = 200, description = "All marked as read")),
     security(("TokenAuth" = []))
 )]
 pub async fn mark_all_read(
@@ -671,20 +671,20 @@ pub async fn mark_all_read(
 // User Notification Preferences — /users/me/notification-preferences
 // ═════════════════════════════════════════════════════════════════════════════
 //
-// Equivale a `UserNotificationPreferenceEndpoint` de Django
+// Equivalent to Django's `UserNotificationPreferenceEndpoint`
 // (`plane/app/views/notification/base.py:291`).
 //
-// Django expone `GET` y `PATCH` sobre la fila única del usuario autenticado.
-// El queryset se resuelve con `.get(user=request.user)`, pero la existencia
-// de la fila depende de un signal `post_save` en el modelo User
-// (`plane/db/models/user.py:305`). Usuarios creados por la vía Rust no
-// disparan ese signal, así que la fila puede no existir y `.get()` haría
-// 500. Mirroring the *intent* (no el bug), aquí usamos get_or_create.
+// Django exposes `GET` and `PATCH` over the single row of the authenticated user.
+// The queryset is resolved with `.get(user=request.user)`, but existence
+// of the row depends on a `post_save` signal in the User model
+// (`plane/db/models/user.py:305`). Users created via Rust do not
+// trigger that signal, so the row might not exist and `.get()` would
+// 500. Mirroring the *intent* (not the bug), here we use get_or_create.
 //
-// Seguridad: aunque el serializer de Django usa `fields = "__all__"` y
-// aceptaría escribir FKs (`user`, `workspace`, `project`), aquí solo
-// permitimos modificar los 5 booleanos de preferencia — evita el antipatrón
-// de mass-assignment sobre foreign keys.
+// Security: although the Django serializer uses `fields = "__all__"` and
+// would accept writing FKs (`user`, `workspace`, `project`), here we only
+// allow modifying the 5 preference booleans — avoids the anti-pattern
+// of mass-assignment over foreign keys.
 
 #[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct UserNotificationPreferenceResponse {
@@ -706,10 +706,10 @@ pub struct UserNotificationPreferenceResponse {
 
 impl UserNotificationPreferenceResponse {
     fn from_model(m: user_notification_preferences::Model) -> Self {
-        // Los nombres de campos (`user`, `workspace`, `project`, `created_by`,
-        // `updated_by`) replican el output de DRF con `fields = "__all__"`,
-        // donde los FKs se serializan como el valor de su PK, no como
-        // `*_id`. Esto mantiene compatibilidad con el frontend.
+        // Field names (`user`, `workspace`, `project`, `created_by`,
+        // `updated_by`) replicate DRF output with `fields = "__all__"`,
+        // where FKs are serialized as their PK value, not as
+        // `*_id`. This maintains frontend compatibility.
         Self {
             id: m.id,
             created_at: m.created_at,
@@ -738,12 +738,12 @@ pub struct UpdateUserNotificationPreferenceRequest {
     pub issue_completed: Option<bool>,
 }
 
-/// Obtiene o crea la fila de preferencias del usuario autenticado.
+/// Gets or creates the preference row for the authenticated user.
 ///
-/// Django confía en un `post_save` signal para crear la fila al registrar
-/// al usuario; si el usuario se registró por el flujo Rust (que no dispara
-/// señales Django), la fila puede no existir. Creamos con los valores por
-/// defecto del modelo Django (todos `true`) para evitar un 500.
+/// Django relies on a `post_save` signal to create the row when registering
+/// the user; if the user registered via the Rust flow (which doesn't trigger
+/// Django signals), the row might not exist. We create it with the default
+/// values of the Django model (all `true`) to avoid a 500.
 async fn get_or_create_preferences(
     db: &sea_orm::DatabaseConnection,
     user_id: Uuid,
@@ -766,7 +766,7 @@ async fn get_or_create_preferences(
         user_id: Set(user_id),
         workspace_id: Set(None),
         project_id: Set(None),
-        // Defaults de Django (`plane/db/models/user.py:305-312`).
+        // Django Defaults (`plane/db/models/user.py:305-312`).
         property_change: Set(true),
         state_change: Set(true),
         comment: Set(true),
@@ -777,9 +777,9 @@ async fn get_or_create_preferences(
         deleted_at: Set(None),
     };
 
-    // Race-safe: si otro request creó la fila entre el SELECT y el INSERT,
-    // el INSERT falla por la (esperada) unicidad lógica por usuario; caemos
-    // al re-SELECT en lugar de propagar el error.
+    // Race-safe: if another request created the row between SELECT and INSERT,
+    // the INSERT fails due to (expected) logical uniqueness per user; we fall
+    // back to re-SELECT instead of propagating the error.
     match new_row.insert(db).await {
         Ok(m) => Ok(m),
         Err(_) => user_notification_preferences::Entity::find()
@@ -801,7 +801,7 @@ async fn get_or_create_preferences(
     path = "/api/users/me/notification-preferences",
     tag = "Notifications",
     responses(
-        (status = 200, description = "Preferencias de notificación del usuario"),
+        (status = 200, description = "User notification preferences"),
         (status = 401, description = "Unauthorized"),
     ),
     security(("TokenAuth" = []))
@@ -819,19 +819,19 @@ pub async fn get_user_notification_preferences(
 /// Mirror Django: `UserNotificationPreferenceEndpoint.patch`
 /// (`plane/app/views/notification/base.py:302`).
 ///
-/// A diferencia de Django (que usa `fields = "__all__"` y permitiría
-/// reescribir `user`, `workspace`, `project` por JSON), aquí solo se
-/// aceptan los cinco booleanos de preferencia. Esto bloquea el
-/// mass-assignment sobre foreign keys sin romper el contrato con el
-/// frontend (que solo envía esos campos).
+/// Unlike Django (which uses `fields = "__all__"` and would allow
+/// rewriting `user`, `workspace`, `project` via JSON), here only
+/// the five preference booleans are accepted. This blocks
+/// mass-assignment over foreign keys without breaking the contract with the
+/// frontend (which only sends those fields).
 #[utoipa::path(
     patch,
     path = "/api/users/me/notification-preferences",
     tag = "Notifications",
     request_body = UpdateUserNotificationPreferenceRequest,
     responses(
-        (status = 200, description = "Preferencias actualizadas"),
-        (status = 400, description = "Validación fallida"),
+        (status = 200, description = "Preferences updated"),
+        (status = 400, description = "Validation failed"),
         (status = 401, description = "Unauthorized"),
     ),
     security(("TokenAuth" = []))
@@ -861,7 +861,7 @@ pub async fn update_user_notification_preferences(
         active.issue_completed = Set(v);
     }
 
-    // Audit: el usuario autenticado es quien modifica.
+    // Audit: the authenticated user is the one modifying.
     active.updated_by_id = Set(Some(user.id));
     active.updated_at = Set(chrono::Utc::now().into());
 

@@ -1,9 +1,9 @@
 // src/routes/projects.rs
-//! Endpoints de Project — Fase 2b.
+//! Project endpoints — Phase 2b.
 //!
-//! Equivalente a `plane/app/views/project/base.py` y `member.py` en Django.
-//! Autenticación: sesión cookie **o** API key (via `AnyAuth`).
-//! Autorización: membresía activa en workspace; rol Admin para mutaciones.
+//! Equivalent to `plane/app/views/project/base.py` and `member.py` in Django.
+//! Authentication: session cookie **or** API key (via `AnyAuth`).
+//! Authorization: active workspace membership; Admin role for mutations.
 
 use axum::{
     extract::{Path, Query, State},
@@ -35,7 +35,7 @@ use crate::{
     AppState,
 };
 
-// ─── Estados por defecto al crear un proyecto (espeja DEFAULT_STATES de Django) ─
+// ─── Default states when creating a project (mirrors Django DEFAULT_STATES) ────
 
 struct DefaultState {
     name: &'static str,
@@ -99,7 +99,7 @@ const DEFAULT_STATES: &[DefaultState] = &[
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
-/// Obtiene proyecto activo por id dentro del workspace.
+/// Gets active project by id within the workspace.
 async fn project_by_id(
     db: &sea_orm::DatabaseConnection,
     workspace_id: Uuid,
@@ -114,7 +114,7 @@ async fn project_by_id(
         .ok_or(AppError::NotFound)
 }
 
-/// Obtiene membresía activa de proyecto (o Forbidden).
+/// Gets active project membership (or Forbidden).
 async fn project_member_for_user(
     db: &sea_orm::DatabaseConnection,
     project_id: Uuid,
@@ -130,7 +130,7 @@ async fn project_member_for_user(
         .map_err(AppError::Database)
 }
 
-/// Verifica Admin de proyecto O Admin de workspace.
+/// Verifies project Admin OR workspace Admin.
 fn require_project_admin(
     pm: &Option<project_members::Model>,
     wm: &workspace_members::Model,
@@ -160,8 +160,8 @@ pub struct ProjectResponse {
     pub identifier: String,
     pub description: String,
     pub network: i16,
-    /// FK al workspace. En Django el serializer expone la FK como `workspace`
-    /// (no `workspace_id`); el frontend filtra proyectos por `project.workspace`.
+    /// FK to workspace. In Django the serializer exposes the FK as `workspace`
+    /// (not `workspace_id`); the frontend filters projects by `project.workspace`.
     #[serde(rename = "workspace")]
     pub workspace_id: Uuid,
     pub emoji: Option<String>,
@@ -186,10 +186,10 @@ pub struct ProjectResponse {
     pub archived_at: Option<DateTime<Utc>>,
     pub created_at: DateTime<Utc>,
     pub updated_at: DateTime<Utc>,
-    /// Número de miembros activos en el proyecto.
+    /// Number of active members in the project.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub total_members: Option<i64>,
-    /// Rol del usuario en este proyecto.
+    /// User role in this project.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub member_role: Option<i16>,
 }
@@ -235,19 +235,19 @@ impl ProjectResponse {
     }
 }
 
-/// Respuesta plana de `GET /workspaces/{slug}/projects/` — espeja **exactamente**
-/// los 22 campos que Django expone mediante `.values(...)` en
+/// Flat response for `GET /workspaces/{slug}/projects/` — exactly mirrors
+/// the 22 fields Django exposes via `.values(...)` in
 /// `ProjectViewSet.list` (`plane/app/views/project/base.py`).
 ///
-/// Claves importantes:
-/// - `workspace` (no `workspace_id`): el frontend filtra con `project.workspace`.
-/// - `project_lead` (no `project_lead_id`): convención DRF para FK.
-/// - `inbox_view`: alias de `intake_view`.
-/// - `sort_order`: viene de `project_user_properties` del usuario.
-/// - `intake_count`: conteo de `intake_issues` con status=-2 (PENDING).
+/// Important keys:
+/// - `workspace` (not `workspace_id`): frontend filters with `project.workspace`.
+/// - `project_lead` (not `project_lead_id`): DRF convention for FK.
+/// - `inbox_view`: alias for `intake_view`.
+/// - `sort_order`: comes from the user's `project_user_properties`.
+/// - `intake_count`: count of `intake_issues` with status=-2 (PENDING).
 ///
-/// NO incluye `description`, `emoji`, `cover_image`, `timezone`, etc. — Django
-/// tampoco los manda en este endpoint; para eso existe `/projects/{id}/` y
+/// DOES NOT include `description`, `emoji`, `cover_image`, `timezone`, etc. — Django
+/// doesn't send them either in this endpoint; for those use `/projects/{id}/` and
 /// `/projects/details/`.
 #[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct ProjectListResponse {
@@ -284,10 +284,10 @@ pub struct CreateProjectRequest {
     pub project_lead_id: Option<Uuid>,
     pub default_assignee_id: Option<Uuid>,
     pub timezone: Option<String>,
-    // Paridad Django: ProjectSerializer usa `fields = "__all__"` con
-    // `read_only_fields = ["workspace", "deleted_at"]`, por lo que acepta
-    // logo_props / cover_image / cover_image_asset en el body de POST.
-    // Referencia: apps/api/plane/app/serializers/project.py:30-37.
+    // Django parity: ProjectSerializer uses `fields = "__all__"` with
+    // `read_only_fields = ["workspace", "deleted_at"]`, so it accepts
+    // logo_props / cover_image / cover_image_asset in the POST body.
+    // Reference: apps/api/plane/app/serializers/project.py:30-37.
     pub logo_props: Option<serde_json::Value>,
     pub cover_image: Option<String>,
     pub cover_image_asset_id: Option<Uuid>,
@@ -309,10 +309,10 @@ pub struct UpdateProjectRequest {
     pub intake_view: Option<bool>,
     pub is_time_tracking_enabled: Option<bool>,
     pub cover_image: Option<String>,
-    // Paridad Django: ProjectSerializer (partial_update con partial=True)
-    // acepta logo_props y cover_image_asset en PATCH — fields = "__all__"
-    // cubre ambos y ninguno está en read_only_fields.
-    // Referencia: apps/api/plane/app/views/project/base.py:344-349.
+    // Django parity: ProjectSerializer (partial_update with partial=True)
+    // accepts logo_props and cover_image_asset in PATCH — fields = "__all__"
+    // covers both and neither is in read_only_fields.
+    // Reference: apps/api/plane/app/views/project/base.py:344-349.
     pub logo_props: Option<serde_json::Value>,
     pub cover_image_asset_id: Option<Uuid>,
     pub archive_in: Option<i32>,
@@ -375,11 +375,11 @@ impl From<&project_member_invites::Model> for ProjectInvitationResponse {
     }
 }
 
-/// Body esperado: `{"emails": [{"email": "...", "role": 15}, ...]}`.
+/// Expected body: `{"emails": [{"email": "...", "role": 15}, ...]}`.
 ///
-/// Espejo exacto del contrato de Django (`ProjectInvitationsViewset.create`),
-/// que lee `request.data.get("emails", [])`. Mantener un solo formato evita
-/// extractores polimórficos que esconden bugs y simplifica el cliente.
+/// Exact mirror of Django contract (`ProjectInvitationsViewset.create`),
+/// which reads `request.data.get("emails", [])`. Maintaining a single format avoids
+/// polymorphic extractors that hide bugs and simplifies the client.
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct CreateProjectInvitationRequest {
     pub emails: Vec<ProjectInviteEmail>,
@@ -395,13 +395,13 @@ pub struct ProjectInviteEmail {
 
 /// `GET /api/workspaces/{slug}/projects/`
 ///
-/// Lista proyectos visibles para el usuario en el workspace. Espeja
-/// `ProjectViewSet.list` de Django:
-/// - ADMIN: todos los proyectos del workspace.
-/// - MEMBER: proyectos donde es miembro activo **o** `network == 2` (public).
-/// - GUEST: solo proyectos donde es miembro activo.
+/// Lists projects visible to the user in the workspace. Mirrors Django's
+/// `ProjectViewSet.list`:
+/// - ADMIN: all workspace projects.
+/// - MEMBER: projects where user is active member **or** `network == 2` (public).
+/// - GUEST: only projects where user is active member.
 ///
-/// Devuelve [`ProjectListResponse`] con el mismo shape que `.values(...)` de DRF.
+/// Returns [`ProjectListResponse`] with the same shape as DRF's `.values(...)`.
 #[utoipa::path(
     get,
     path = "/api/workspaces/{slug}/projects/",
@@ -421,7 +421,7 @@ pub async fn list_projects(
     let ws = workspace_by_slug(&state.db, &slug).await?;
     let wm = require_workspace_member(&state.db, ws.id, user.id).await?;
 
-    // ── 1. Filtrado por rol (espeja `def list` de Django) ───────────────────
+    // ── 1. Role filtering (mirrors Django's `def list`) ────────────────────
     let projects_list = if wm.role >= ROLE_ADMIN {
         projects::Entity::find()
             .active()
@@ -443,7 +443,7 @@ pub async fn list_projects(
             .collect();
 
         if wm.role == ROLE_GUEST {
-            // GUEST: estrictamente sus proyectos
+            // GUEST: strictly their projects
             if member_project_ids.is_empty() {
                 return Ok(Json(vec![]));
             }
@@ -455,7 +455,7 @@ pub async fn list_projects(
                 .await
                 .map_err(AppError::Database)?
         } else {
-            // MEMBER (o VIEWER): sus proyectos + proyectos públicos (network=2)
+            // MEMBER (or VIEWER): their projects + public projects (network=2)
             use sea_orm::Condition;
             let condition = if member_project_ids.is_empty() {
                 Condition::all().add(projects::Column::Network.eq(2i16))
@@ -480,7 +480,7 @@ pub async fn list_projects(
 
     let project_ids: Vec<Uuid> = projects_list.iter().map(|p| p.id).collect();
 
-    // ── 2. `member_role` del usuario por proyecto (solo memberships activas) ─
+    // ── 2. User's `member_role` per project (only active memberships) ──────
     let pm_map: std::collections::HashMap<Uuid, i16> = project_members::Entity::find()
         .active()
         .filter(project_members::Column::WorkspaceId.eq(ws.id))
@@ -494,7 +494,7 @@ pub async fn list_projects(
         .map(|pm| (pm.project_id, pm.role))
         .collect();
 
-    // ── 3. `sort_order` por proyecto, del usuario actual ────────────────────
+    // ── 3. `sort_order` per project for the current user ───────────────────
     let sort_orders: std::collections::HashMap<Uuid, f64> =
         project_user_properties::Entity::find()
             .filter(project_user_properties::Column::UserId.eq(user.id))
@@ -508,10 +508,10 @@ pub async fn list_projects(
             .map(|p| (p.project_id, p.sort_order))
             .collect();
 
-    // ── 4. `intake_count` por proyecto (status=-2 PENDING, no soft-deleted) ─
+    // ── 4. `intake_count` per project (status=-2 PENDING, not soft-deleted) ─
     //
-    // Una sola query agrupada en lugar de N+1 (más eficiente que el loop en
-    // `list_projects_detail`). Espeja el `Count(filter=Q(status=-2, ...))` de Django.
+    // Single grouped query instead of N+1 (more efficient than the loop in
+    // `list_projects_detail`). Mirrors Django's `Count(filter=Q(status=-2, ...))`.
     let mut intake_counts: std::collections::HashMap<Uuid, i64> =
         std::collections::HashMap::new();
     let intake_rows: Vec<(Uuid, i64)> = intake_issues::Entity::find()
@@ -533,7 +533,7 @@ pub async fn list_projects(
         intake_counts.insert(pid, c);
     }
 
-    // ── 5. Ensamblar + ordenar por (sort_order NULLS LAST, name) como Django ─
+    // ── 5. Assemble + order by (sort_order NULLS LAST, name) like Django ────
     let mut responses: Vec<ProjectListResponse> = projects_list
         .iter()
         .map(|p| ProjectListResponse {
@@ -562,7 +562,7 @@ pub async fn list_projects(
         .collect();
 
     responses.sort_by(|a, b| {
-        // NULLS LAST en sort_order, luego por name (case-sensitive como PG default).
+        // NULLS LAST on sort_order, then by name (case-sensitive as PG default).
         match (a.sort_order, b.sort_order) {
             (Some(x), Some(y)) => x
                 .partial_cmp(&y)
@@ -577,10 +577,10 @@ pub async fn list_projects(
     Ok(Json(responses))
 }
 
-// ─── DTO extendido para /details ──────────────────────────────────────────────
+// ─── Extended DTO for /details ────────────────────────────────────────────────
 
-/// Respuesta extendida de proyecto — espeja `ProjectListSerializer` de Django.
-/// Incluye campos calculados: `is_favorite`, `sort_order`, `members`, `anchor`,
+/// Extended project response — mirrors Django's `ProjectListSerializer`.
+/// Includes calculated fields: `is_favorite`, `sort_order`, `members`, `anchor`,
 /// `inbox_view`, `intake_count`, `next_work_item_sequence`.
 #[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct ProjectDetailResponse {
@@ -588,23 +588,23 @@ pub struct ProjectDetailResponse {
     pub base: ProjectResponse,
     pub is_favorite: bool,
     pub sort_order: Option<f64>,
-    /// UUIDs de miembros activos del proyecto.
+    /// UUIDs of active project members.
     pub members: Vec<Uuid>,
-    /// Anchor del deploy-board público, si existe.
+    /// Anchor of the public deploy-board, if it exists.
     pub anchor: Option<String>,
-    /// Alias de intake_view para compatibilidad con el frontend.
+    /// Alias of intake_view for frontend compatibility.
     pub inbox_view: bool,
-    /// Número de intake-issues pendientes (status = -2).
+    /// Number of pending intake-issues (status = -2).
     pub intake_count: i64,
-    /// Próximo sequence_id disponible para un nuevo issue.
+    /// Next available sequence_id for a new issue.
     pub next_work_item_sequence: i64,
 }
 
 /// `GET /api/workspaces/{slug}/projects/details/`
 ///
-/// Lista completa de proyectos con todos los campos calculados que el
-/// frontend necesita para renderizar el sidebar y la home de proyectos.
-/// Espeja `ProjectViewSet.list_detail` de Django.
+/// Complete list of projects with all calculated fields that the
+/// frontend needs to render the sidebar and projects home.
+/// Mirrors Django's `ProjectViewSet.list_detail`.
 #[utoipa::path(
     get,
     path = "/api/workspaces/{slug}/projects/details/",
@@ -624,7 +624,7 @@ pub async fn list_projects_detail(
     let ws = workspace_by_slug(&state.db, &slug).await?;
     let wm = require_workspace_member(&state.db, ws.id, user.id).await?;
 
-    // ── 1. Proyectos visibles según rol ──────────────────────────────────────
+    // ── 1. Visible projects by role ─────────────────────────────────────────
     let projects_list = if wm.role >= ROLE_ADMIN {
         projects::Entity::find()
             .active()
@@ -659,7 +659,7 @@ pub async fn list_projects_detail(
                 .await
                 .map_err(AppError::Database)?
         } else {
-            // MEMBER: propios + proyectos públicos (network=2)
+            // MEMBER: own + public projects (network=2)
             use sea_orm::Condition;
             let condition = if member_project_ids.is_empty() {
                 Condition::all().add(projects::Column::Network.eq(2i16))
@@ -685,7 +685,7 @@ pub async fn list_projects_detail(
 
     let project_ids: Vec<Uuid> = projects_list.iter().map(|p| p.id).collect();
 
-    // ── 2. Membresías: role del usuario y lista completa de miembros ─────────
+    // ── 2. Memberships: user role and full member list ──────────────────────
     let all_members = project_members::Entity::find()
         .active()
         .filter(project_members::Column::WorkspaceId.eq(ws.id))
@@ -709,7 +709,7 @@ pub async fn list_projects_detail(
         }
     }
 
-    // ── 3. Favoritos del usuario ──────────────────────────────────────────────
+    // ── 3. User favorites ───────────────────────────────────────────────────
     let favorites: std::collections::HashSet<Uuid> = user_favorites::Entity::find()
         .active()
         .filter(user_favorites::Column::UserId.eq(user.id))
@@ -723,7 +723,7 @@ pub async fn list_projects_detail(
         .filter_map(|f| f.entity_identifier)
         .collect();
 
-    // ── 4. sort_order del usuario por proyecto ────────────────────────────────
+    // ── 4. User sort_order per project ──────────────────────────────────────
     let sort_orders: std::collections::HashMap<Uuid, f64> =
         project_user_properties::Entity::find()
             .filter(project_user_properties::Column::UserId.eq(user.id))
@@ -737,7 +737,7 @@ pub async fn list_projects_detail(
             .map(|p| (p.project_id, p.sort_order))
             .collect();
 
-    // ── 5. Deploy-board anchor ────────────────────────────────────────────────
+    // ── 5. Deploy-board anchor ──────────────────────────────────────────────
     let anchors: std::collections::HashMap<Uuid, String> =
         project_deploy_boards::Entity::find()
             .filter(project_deploy_boards::Column::WorkspaceId.eq(ws.id))
@@ -750,7 +750,7 @@ pub async fn list_projects_detail(
             .map(|d| (d.project_id, d.anchor))
             .collect();
 
-    // ── 6. intake_count (pending = -2) por proyecto ───────────────────────────
+    // ── 6. intake_count (pending = -2) per project ───────────────────────────
     let mut intake_counts: std::collections::HashMap<Uuid, i64> =
         std::collections::HashMap::new();
     for &pid in &project_ids {
@@ -764,7 +764,7 @@ pub async fn list_projects_detail(
         intake_counts.insert(pid, count);
     }
 
-    // ── 7. next_work_item_sequence por proyecto ───────────────────────────────
+    // ── 7. next_work_item_sequence per project ──────────────────────────────
     let mut next_sequences: std::collections::HashMap<Uuid, i64> =
         std::collections::HashMap::new();
     for &pid in &project_ids {
@@ -782,7 +782,7 @@ pub async fn list_projects_detail(
         next_sequences.insert(pid, max_seq.map(|s| s + 1).unwrap_or(1));
     }
 
-    // ── 8. Ensamblar respuestas ───────────────────────────────────────────────
+    // ── 8. Assemble responses ───────────────────────────────────────────────
     let responses = projects_list
         .iter()
         .map(|p| {
@@ -806,8 +806,8 @@ pub async fn list_projects_detail(
 
 /// `POST /api/workspaces/{slug}/projects/`
 ///
-/// Crea un proyecto, lo inicializa con estados por defecto y agrega al
-/// usuario como Admin del proyecto.
+/// Creates a project, initializes it with default states and adds the
+/// user as project Admin.
 #[utoipa::path(
     post,
     path = "/api/workspaces/{slug}/projects/",
@@ -827,9 +827,9 @@ pub async fn create_project(
     Path(slug): Path<String>,
     Json(body): Json<CreateProjectRequest>,
 ) -> Result<impl IntoResponse, AppError> {
-    // ── Validaciones de forma (forbidden chars, longitud) ────────────────────
-    // Espejan plane.db.models.project.Project.FORBIDDEN_IDENTIFIER_CHARS_PATTERN
-    // y ProjectSerializer.validate_identifier de Django.
+    // ── Shape validations (forbidden chars, length) ────────────────────────
+    // Mirrors plane.db.models.project.Project.FORBIDDEN_IDENTIFIER_CHARS_PATTERN
+    // and Django's ProjectSerializer.validate_identifier.
     if body.name.is_empty() || body.name.len() > 255 {
         return Err(AppError::Validation(serde_json::json!({
             "name": ["PROJECT_NAME_INVALID_LENGTH"]
@@ -841,7 +841,7 @@ pub async fn create_project(
         })));
     }
     let identifier = body.identifier.trim().to_uppercase();
-    // Django rechaza: & + , : ; $ ^ } { * = ? @ # | ' < > . ( ) % ! -
+    // Django rejects: & + , : ; $ ^ } { * = ? @ # | ' < > . ( ) % ! -
     const FORBIDDEN_CHARS: &[char] = &[
         '&', '+', ',', ':', ';', '$', '^', '}', '{', '*', '=', '?', '@', '#', '|', '\'', '<',
         '>', '.', '(', ')', '%', '!', '-',
@@ -853,10 +853,10 @@ pub async fn create_project(
     }
 
     let ws = workspace_by_slug(&state.db, &slug).await?;
-    // Cualquier miembro activo puede crear proyectos
+    // Any active member can create projects
     require_workspace_member(&state.db, ws.id, user.id).await?;
 
-    // ── Unicidad de identifier (solo proyectos no soft-deleted) ──────────────
+    // ── Identifier uniqueness (only non soft-deleted projects) ─────────────
     let dup_identifier = projects::Entity::find()
         .active()
         .filter(projects::Column::WorkspaceId.eq(ws.id))
@@ -870,7 +870,7 @@ pub async fn create_project(
         })));
     }
 
-    // ── Unicidad de name (espeja ProjectSerializer.validate_name de Django) ──
+    // ── Name uniqueness (mirrors Django's ProjectSerializer.validate_name) ──
     let dup_name = projects::Entity::find()
         .active()
         .filter(projects::Column::WorkspaceId.eq(ws.id))
@@ -896,7 +896,7 @@ pub async fn create_project(
 
     let txn = state.db.begin().await.map_err(AppError::Database)?;
 
-    // Crear proyecto
+    // Create project
     let new_project = projects::ActiveModel {
         id: Set(project_id),
         name: Set(body.name.clone()),
@@ -908,8 +908,8 @@ pub async fn create_project(
         workspace_id: Set(ws.id),
         emoji: Set(body.emoji),
         icon_prop: Set(None),
-        // Paridad Django: campos opcionales en POST, default server-side
-        // cuando el cliente no los envía (JSONField default=dict / null).
+        // Django Parity: optional fields in POST, default server-side
+        // when the client doesn't send them (JSONField default=dict / null).
         logo_props: Set(body.logo_props.clone().unwrap_or_else(|| serde_json::json!({}))),
         cover_image: Set(body.cover_image.clone()),
         cover_image_asset_id: Set(body.cover_image_asset_id),
@@ -942,7 +942,7 @@ pub async fn create_project(
         AppError::Database(e)
     })?;
 
-    // Crear membresía Admin para el creador
+    // Create Admin membership for the creator
     let creator_member = project_members::ActiveModel {
         id: Set(Uuid::new_v4()),
         project_id: Set(project_id),
@@ -966,7 +966,7 @@ pub async fn create_project(
         AppError::Database(e)
     })?;
 
-    // Si project_lead es distinto del creador, agregarlo también como Admin
+    // If project_lead is different from the creator, add them as Admin as well
     if let Some(lead_id) = body.project_lead_id {
         if lead_id != user.id {
             let lead_member = project_members::ActiveModel {
@@ -994,7 +994,7 @@ pub async fn create_project(
         }
     }
 
-    // Crear estados por defecto (espeja DEFAULT_STATES de Django)
+    // Create default states (mirrors Django's DEFAULT_STATES)
     let mut default_state_id: Option<Uuid> = None;
     for ds in DEFAULT_STATES {
         let state_id = Uuid::new_v4();
@@ -1028,7 +1028,7 @@ pub async fn create_project(
         }
     }
 
-    // Fijar default_state_id en el proyecto
+    // Set default_state_id on the project
     if let Some(ds_id) = default_state_id {
         let mut active: projects::ActiveModel = project.clone().into();
         active.default_state_id = Set(Some(ds_id));
@@ -1066,9 +1066,9 @@ pub async fn get_project(
     let wm = require_workspace_member(&state.db, ws.id, user.id).await?;
     let project = project_by_id(&state.db, ws.id, project_id).await?;
 
-    // Verificar acceso: workspace admin o miembro del proyecto.
-    // No-miembros reciben 404 (no 403) para no filtrar la existencia del
-    // proyecto a usuarios no autorizados — práctica estándar de seguridad.
+    // Verify access: workspace admin or project member.
+    // Non-members receive 404 (not 403) to avoid leaking project existence
+    // to unauthorized users — standard security practice.
     let pm = project_member_for_user(&state.db, project_id, user.id).await?;
     if pm.is_none() && wm.role < ROLE_ADMIN {
         return Err(AppError::NotFound);
@@ -1138,9 +1138,9 @@ pub async fn update_project(
     let now = chrono::Utc::now().fixed_offset();
     let mut active: projects::ActiveModel = project.into();
 
-    // Capturar si el cliente está activando intake_view para aplicar la
-    // creación idempotente del Intake row después del update — paridad con
-    // Django (apps/api/plane/app/views/project/base.py:353-360).
+    // Capture if client is enabling intake_view to apply idempotent
+    // creation of the Intake row after update — Django parity
+    // (apps/api/plane/app/views/project/base.py:353-360).
     let enabled_intake = body.intake_view == Some(true);
 
     if let Some(v) = body.name { active.name = Set(v); }
@@ -1168,15 +1168,15 @@ pub async fn update_project(
 
     let updated = active.update(&state.db).await.map_err(AppError::Database)?;
 
-    // Paridad Django: si intake_view acaba de activarse, hacer get-or-create
-    // del Intake row para el proyecto. Sin esto, `projects.intake_view=true`
-    // pero la tabla `intakes` vacía → el frontend ve UI de intake pero el
-    // handler POST /intake-issues/ falla (ver routes/intake.rs).
+    // Django parity: if intake_view just got enabled, perform get-or-create
+    // of the Intake row for the project. Without this, `projects.intake_view=true`
+    // but the `intakes` table empty → frontend shows intake UI but
+    // POST /intake-issues/ handler fails (see routes/intake.rs).
     //
-    // NOTA: Django tampoco usa transaction.atomic() aquí, así que si este
-    // INSERT falla, el cliente verá intake_view=true pero el intake no
-    // existirá. El handler de create_intake_issue tiene get-or-create
-    // defensivo como safety net.
+    // NOTE: Django doesn't use transaction.atomic() here either, so if this
+    // INSERT fails, client will see intake_view=true but the intake won't
+    // exist. The create_intake_issue handler has defensive get-or-create
+    // as a safety net.
     if enabled_intake {
         let existing = intakes::Entity::find()
             .active()
@@ -1214,7 +1214,7 @@ pub async fn update_project(
 
 /// `DELETE /api/workspaces/{slug}/projects/{project_id}/`
 ///
-/// Soft-delete. Requiere Admin del proyecto o Admin del workspace.
+/// Soft-delete. Requires project Admin or workspace Admin.
 #[utoipa::path(
     delete,
     path = "/api/workspaces/{slug}/projects/{project_id}/",
@@ -1568,32 +1568,32 @@ pub async fn delete_project_invitation(
 
 // ─── GET /workspaces/{slug}/projects/{project_id}/project-members/me ──────────
 //
-// Mirror de `plane/app/views/project/member.py::ProjectMemberUserEndpoint`:
-// devuelve el ProjectMember del usuario autenticado serializado con
-// `ProjectMemberSerializer` (workspace/project/member anidados como "lite").
+// Mirror of `plane/app/views/project/member.py::ProjectMemberUserEndpoint`:
+// returns the authenticated user's ProjectMember serialized with
+// `ProjectMemberSerializer` (workspace/project/member nested as "lite").
 //
-// Nota: Django usa `ProjectMember.objects.get(...)` sobre el manager que ya
-// filtra `deleted_at__isnull=True`; la ausencia de resultado levanta 404 vía
-// DoesNotExist. Aquí lo traducimos a `AppError::NotFound` con los mismos
-// filtros (is_active + deleted_at IS NULL via `.active()`).
+// Note: Django uses `ProjectMember.objects.get(...)` on the manager which already
+// filters `deleted_at__isnull=True`; the absence of result raises 404 via
+// DoesNotExist. Here we translate it to `AppError::NotFound` with the same
+// filters (is_active + deleted_at IS NULL via `.active()`).
 
-/// Subconjunto de `WorkspaceLiteSerializer`
+/// Subset of `WorkspaceLiteSerializer`
 /// (`apps/api/plane/app/serializers/workspace.py:78-82`):
-/// `["name", "slug", "id", "logo_url"]`. NO incluye `logo` crudo, igual que Django.
+/// `["name", "slug", "id", "logo_url"]`. DOES NOT include raw `logo`, same as Django.
 #[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct WorkspaceLiteDto {
     pub id: Uuid,
     pub name: String,
     pub slug: String,
-    /// Mirror de `Workspace.logo_url` (`apps/api/plane/db/models/workspace.py:146-154`):
+    /// Mirror of `Workspace.logo_url` (`apps/api/plane/db/models/workspace.py:146-154`):
     /// `logo_asset.asset_url` → `logo` crudo → `None`.
     pub logo_url: Option<String>,
 }
 
 impl From<&workspaces::Model> for WorkspaceLiteDto {
     fn from(w: &workspaces::Model) -> Self {
-        // logo_asset.asset_url para WORKSPACE_LOGO es `/api/assets/v2/static/{id}/`
-        // (ver `apps/api/plane/db/models/asset.py:79-87`).
+        // logo_asset.asset_url for WORKSPACE_LOGO is `/api/assets/v2/static/{id}/`
+        // (see `apps/api/plane/db/models/asset.py:79-87`).
         let logo_url = if let Some(asset_id) = w.logo_asset_id {
             Some(format!("/api/assets/v2/static/{}/", asset_id))
         } else {
@@ -1608,7 +1608,7 @@ impl From<&workspaces::Model> for WorkspaceLiteDto {
     }
 }
 
-/// Subconjunto de `ProjectLiteSerializer`
+/// Subset of `ProjectLiteSerializer`
 /// (`apps/api/plane/app/serializers/project.py:97-108`):
 /// `["id","identifier","name","cover_image","cover_image_url","logo_props","description"]`.
 #[derive(Debug, Serialize, utoipa::ToSchema)]
@@ -1617,7 +1617,7 @@ pub struct ProjectLiteDto {
     pub identifier: String,
     pub name: String,
     pub cover_image: Option<String>,
-    /// Mirror de `Project.cover_image_url`
+    /// Mirror of `Project.cover_image_url`
     /// (`apps/api/plane/db/models/project.py:127-137`).
     pub cover_image_url: Option<String>,
     pub logo_props: serde_json::Value,
@@ -1644,10 +1644,10 @@ impl From<&projects::Model> for ProjectLiteDto {
     }
 }
 
-/// Mirror de `ProjectMemberSerializer` (fields="__all__") con
-/// `workspace`, `project`, `member` anidados (Lite). Se listan explícitamente
-/// los campos que el store del frontend consume para no filtrar de más; los
-/// campos devueltos son los que persiste el modelo `ProjectMember`
+/// Mirror of `ProjectMemberSerializer` (fields="__all__") with
+/// nested `workspace`, `project`, `member` (Lite). Fields consumed by the
+/// frontend store are explicitly listed to avoid over-filtering; the
+/// returned fields are those persisted by the `ProjectMember` model
 /// (`apps/api/plane/db/models/project.py::ProjectMember`).
 #[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct ProjectMemberMeResponse {
@@ -1673,8 +1673,8 @@ pub struct ProjectMemberMeResponse {
 
 /// `GET /api/workspaces/{slug}/projects/{project_id}/project-members/me/`
 ///
-/// Devuelve el ProjectMember del usuario autenticado. 404 si no tiene
-/// membresía activa (paridad con `ProjectMember.objects.get(...)` de Django).
+/// Returns the authenticated user's ProjectMember. 404 if no active
+/// membership exists (Django parity with `ProjectMember.objects.get(...)`).
 #[utoipa::path(
     get,
     path = "/api/workspaces/{slug}/projects/{project_id}/project-members/me/",
@@ -1695,10 +1695,10 @@ pub async fn get_project_member_me(
     Path((slug, project_id)): Path<(String, Uuid)>,
 ) -> Result<Json<ProjectMemberMeResponse>, AppError> {
     let ws = workspace_by_slug(&state.db, &slug).await?;
-    // Django NO exige workspace-member para este endpoint, pero la consulta
-    // por (workspace_slug, project_id, member=request.user, is_active=true)
-    // devuelve 404 si el usuario no pertenece. Replicamos la misma semántica:
-    // buscamos directamente la fila y devolvemos 404 si no existe.
+    // Django DOES NOT require workspace-member for this endpoint, but the query
+    // by (workspace_slug, project_id, member=request.user, is_active=true)
+    // returns 404 if user doesn't belong. We replicate the same semantics:
+    // search directly for the row and return 404 if it doesn't exist.
 
     let member = project_members::Entity::find()
         .active()
@@ -1711,10 +1711,10 @@ pub async fn get_project_member_me(
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
-    // Cargamos proyecto activo y usuario para los anidados.
-    // `project_by_id` filtra `deleted_at IS NULL` — si el proyecto está borrado
-    // devolvemos 404, igual que Django (`ProjectMember.project` con manager
-    // `active_objects` filtra deleted_at).
+    // Load active project and user for nested objects.
+    // `project_by_id` filters `deleted_at IS NULL` — if the project is deleted
+    // we return 404, same as Django (`ProjectMember.project` with
+    // `active_objects` manager filters deleted_at).
     let project = project_by_id(&state.db, ws.id, project_id).await?;
 
     let user_row = users::Entity::find_by_id(user.id)
@@ -1722,7 +1722,7 @@ pub async fn get_project_member_me(
         .await
         .map_err(AppError::Database)?;
 
-    // Admin-visibility para email/last_login_medium: mismos criterios que otros
+    // Admin-visibility for email/last_login_medium: same criteria as other
     // serializadores (`is_admin = role >= ROLE_ADMIN` en el proyecto).
     let is_admin = member.role >= ROLE_ADMIN;
     let member_dto = user_row
@@ -1754,9 +1754,9 @@ pub async fn get_project_member_me(
 
 // ─── GET /workspaces/{slug}/projects/{project_id}/members/{pk}/ ──────────────
 
-/// Retorna un miembro específico del proyecto.
+/// Returns a specific project member.
 ///
-/// Espejo de `ProjectMemberViewSet.retrieve`
+/// Mirror of `ProjectMemberViewSet.retrieve`
 /// (`apps/api/plane/app/views/project/member.py`).
 #[utoipa::path(
     get,
@@ -1820,9 +1820,9 @@ pub struct ProjectMemberEntry {
     pub role: i16,
 }
 
-/// Agrega miembros al proyecto en bulk.
+/// Adds members to the project in bulk.
 ///
-/// Espejo de `ProjectMemberViewSet.create`
+/// Mirror of `ProjectMemberViewSet.create`
 /// (`apps/api/plane/app/views/project/member.py`).
 #[utoipa::path(
     post,
@@ -1852,7 +1852,7 @@ pub async fn create_project_members(
     let _project = project_by_id(&state.db, ws.id, project_id).await?;
     let now = chrono::Utc::now().fixed_offset();
 
-    // Validar workspace roles — batch fetch en lugar de N queries.
+    // Validate workspace roles — batch fetch instead of N queries.
     let member_ids: Vec<Uuid> = body.members.iter().map(|m| m.member_id).collect();
     let ws_members: std::collections::HashMap<Uuid, i16> = workspace_members::Entity::find()
         .active()
@@ -1868,13 +1868,13 @@ pub async fn create_project_members(
 
     for entry in &body.members {
         let ws_role = *ws_members.get(&entry.member_id).unwrap_or(&0);
-        // Workspace admin no puede tener rol bajo en proyecto.
+        // Workspace admin cannot have a low role in the project.
         if ws_role >= ROLE_ADMIN && entry.role <= ROLE_MEMBER {
             return Err(AppError::BadRequest(
                 "Cannot assign a role lower than workspace admin role".into(),
             ));
         }
-        // Workspace guest no puede tener rol alto en proyecto.
+        // Workspace guest cannot have a high role in the project.
         if ws_role <= ROLE_GUEST && entry.role >= ROLE_MEMBER {
             return Err(AppError::BadRequest(
                 "Cannot assign a role higher than workspace guest role".into(),
@@ -1882,7 +1882,7 @@ pub async fn create_project_members(
         }
     }
 
-    // Upsert: reactivar si ya existe, o insertar nuevo.
+    // Upsert: reactivate if already exists, or insert new.
     let existing: std::collections::HashMap<Uuid, project_members::Model> =
         project_members::Entity::find()
             .filter(project_members::Column::ProjectId.eq(project_id))
@@ -1899,19 +1899,19 @@ pub async fn create_project_members(
 
     for entry in &body.members {
         if let Some(pm) = existing.get(&entry.member_id) {
-            // Reactivar + actualizar rol
+            // Reactivate + update role
             let mut am: project_members::ActiveModel = pm.clone().into();
             am.role = Set(entry.role);
             am.is_active = Set(true);
             am.updated_at = Set(now);
             am.update(&state.db).await.map_err(AppError::Database)?;
         } else {
-            // Crear nuevo. NOTA: project_members tiene varias columnas
-            // jsonb/double NOT NULL sin DEFAULT en BD (baseline.sql
+            // Create new. NOTE: project_members has several jsonb/double
+            // NOT NULL columns without DEFAULT in the DB (baseline.sql
             // project_members): view_props, default_props, preferences,
-            // sort_order. Django las popula vía model defaults (Python),
-            // SeaORM no replica eso → debemos setearlas explícitamente o
-            // el INSERT falla con 23502 → 500.
+            // sort_order. Django populates them via model defaults (Python),
+            // SeaORM doesn't replicate that → we must set them explicitly
+            // or the INSERT fails with 23502 → 500.
             project_members::ActiveModel {
                 id: Set(Uuid::new_v4()),
                 project_id: Set(project_id),
@@ -1933,29 +1933,29 @@ pub async fn create_project_members(
             .insert(&state.db)
             .await
             .map_err(|e| {
-                tracing::error!(error = %e, project_id = %project_id, member_id = %entry.member_id, "create_project_members: insert project_members falló");
+                tracing::error!(error = %e, project_id = %project_id, member_id = %entry.member_id, "create_project_members: insert project_members failed");
                 AppError::Database(e)
             })?;
         }
 
         // project_user_properties — ON CONFLICT DO NOTHING
-        // project_user_properties: mismas columnas NOT NULL sin DEFAULT en
-        // BD (display_properties, display_filters, filters, rich_filters,
-        // preferences, sort_order). Django defaults en
+        // project_user_properties: same NOT NULL columns without DEFAULT in
+        // DB (display_properties, display_filters, filters, rich_filters,
+        // preferences, sort_order). Django defaults in
         // apps/api/plane/db/models/project.py:ProjectUserProperty.
         //
-        // Idempotencia: la versión anterior usaba
+        // Idempotency: the previous version used
         //   ON CONFLICT (project_id, user_id) DO NOTHING
-        // pero la BD NO tiene un unique constraint sobre esas 2 columnas;
-        // sólo:
-        //   1) UNIQUE (user_id, project_id, deleted_at)  — 3 columnas
+        // but the DB DOES NOT have a unique constraint on those 2 columns;
+        // only:
+        //   1) UNIQUE (user_id, project_id, deleted_at)  — 3 columns
         //   2) partial unique (user_id, project_id) WHERE deleted_at IS NULL
-        // Postgres rechaza el ON CONFLICT con
+        // Postgres rejects ON CONFLICT with
         //   "there is no unique or exclusion constraint matching the
         //    ON CONFLICT specification"
-        // que el handler convertía en AppError::Database → 500.
-        // Fix: chequeo previo (mismo patrón que el INSERT de project_members
-        // arriba), sin ON CONFLICT.
+        // which the handler converted to AppError::Database → 500.
+        // Fix: pre-check (same pattern as project_members INSERT
+        // above), without ON CONFLICT.
         let existing_pup = project_user_properties::Entity::find()
             .filter(project_user_properties::Column::ProjectId.eq(project_id))
             .filter(project_user_properties::Column::UserId.eq(entry.member_id))
@@ -1985,13 +1985,13 @@ pub async fn create_project_members(
             .insert(&state.db)
             .await
             .map_err(|e| {
-                tracing::error!(error = %e, project_id = %project_id, user_id = %entry.member_id, "create_project_members: insert project_user_properties falló");
+                tracing::error!(error = %e, project_id = %project_id, user_id = %entry.member_id, "create_project_members: insert project_user_properties failed");
                 AppError::Database(e)
             })?;
         }
     }
 
-    // Retornar miembros actualizados
+    // Return updated members
     let updated_members = project_members::Entity::find()
         .active()
         .filter(project_members::Column::ProjectId.eq(project_id))
@@ -2015,9 +2015,9 @@ pub async fn create_project_members(
 
 // ─── POST /workspaces/{slug}/projects/{project_id}/members/leave/ ────────────
 
-/// El usuario autenticado abandona el proyecto.
+/// The authenticated user leaves the project.
 ///
-/// Espejo de `ProjectMemberViewSet.leave`
+/// Mirror of `ProjectMemberViewSet.leave`
 /// (`apps/api/plane/app/views/project/member.py`).
 #[utoipa::path(
     post,
@@ -2044,7 +2044,7 @@ pub async fn leave_project(
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
-    // Verificar que no sea el único Admin del proyecto.
+    // Verify they are not the only project Admin.
     if pm.role >= ROLE_ADMIN {
         let admin_count = project_members::Entity::find()
             .active()
@@ -2072,9 +2072,9 @@ pub async fn leave_project(
 
 // ─── POST /workspaces/{slug}/projects/{project_id}/project-views/ ────────────
 
-/// Persiste view_props, default_props, preferences y sort_order del miembro.
+/// Persists member's view_props, default_props, preferences, and sort_order.
 ///
-/// Espejo de `ProjectUserViewsEndpoint.post`
+/// Mirror of `ProjectUserViewsEndpoint.post`
 /// (`apps/api/plane/app/views/project/base.py`).
 #[utoipa::path(
     post,
@@ -2115,9 +2115,9 @@ pub async fn update_project_views(
 
 /// `GET /api/workspaces/{slug}/projects/{project_id}/project-views/`
 ///
-/// Devuelve `view_props`, `default_props`, `preferences` y `sort_order` del
-/// miembro autenticado en el proyecto. Contraparte simétrica de
-/// `update_project_views`: lee lo que el `POST` persiste.
+/// Returns `view_props`, `default_props`, `preferences`, and `sort_order` of the
+/// authenticated project member. Symmetric counterpart to
+/// `update_project_views`: reads what `POST` persists.
 #[utoipa::path(
     get,
     path = "/api/workspaces/{slug}/projects/{project_id}/project-views/",
@@ -2128,9 +2128,9 @@ pub async fn update_project_views(
         ("project_id" = Uuid,   Path, description = "Project UUID"),
     ),
     responses(
-        (status = 200, description = "View props del miembro"),
+        (status = 200, description = "Member's view props"),
         (status = 401, description = "Unauthenticated"),
-        (status = 403, description = "No es miembro del proyecto"),
+        (status = 403, description = "Not a project member"),
     )
 )]
 pub async fn get_project_user_views(
@@ -2160,14 +2160,14 @@ pub struct ProjectSummaryQuery {
 
 /// `GET /api/workspaces/{slug}/projects/{project_id}/summary`
 ///
-/// Variante del summary expuesta al frontend interno (no requiere admin).
-/// Reutiliza `v1_router::compute_project_summary` para no duplicar la lógica
-/// de conteo, pero devuelve los counts planos en root —
-/// `{ id, name, identifier, members, states, ... }` — porque así los consumen
-/// los tests de contrato y los hooks del frontend.
+/// Summary variant exposed to the internal frontend (does not require admin).
+/// Reuses `v1_router::compute_project_summary` to avoid duplicating counting
+/// logic, but returns flat counts at root —
+/// `{ id, name, identifier, members, states, ... }` — because that's how
+/// contract tests and frontend hooks consume them.
 ///
-/// El endpoint público `/api/v1/.../summary` mantiene el shape anidado
-/// (`{counts: {...}}`) y exige Admin de workspace.
+/// The public `/api/v1/.../summary` endpoint maintains the nested shape
+/// (`{counts: {...}}`) and requires workspace Admin.
 #[utoipa::path(
     get,
     path = "/api/workspaces/{slug}/projects/{project_id}/summary",
@@ -2176,13 +2176,13 @@ pub struct ProjectSummaryQuery {
     params(
         ("slug"       = String, Path, description = "Workspace slug"),
         ("project_id" = Uuid,   Path, description = "Project UUID"),
-        ("fields"     = Option<String>, Query, description = "CSV de campos a incluir"),
+        ("fields"     = Option<String>, Query, description = "CSV of fields to include"),
     ),
     responses(
-        (status = 200, description = "Counts del proyecto"),
+        (status = 200, description = "Project counts"),
         (status = 401, description = "Unauthenticated"),
-        (status = 403, description = "No es miembro del workspace"),
-        (status = 404, description = "Proyecto o workspace no existe"),
+        (status = 403, description = "Not a workspace member"),
+        (status = 404, description = "Project or workspace does not exist"),
     )
 )]
 pub async fn get_project_summary(
@@ -2197,7 +2197,7 @@ pub async fn get_project_summary(
         &slug,
         project_id,
         query.fields.as_deref(),
-        false, // miembro activo basta — no exigimos admin
+        false, // active member is enough — we don't require admin
     )
     .await?;
 
@@ -2213,9 +2213,9 @@ pub async fn get_project_summary(
 
 // ─── GET + POST + DELETE /workspaces/{slug}/user-favorite-projects/ ───────────
 
-/// Lista proyectos favoritos del usuario en el workspace.
+/// Lists user's favorite projects in the workspace.
 ///
-/// Espejo de `ProjectFavoritesViewSet.list`
+/// Mirror of `ProjectFavoritesViewSet.list`
 /// (`apps/api/plane/app/views/project/base.py`).
 #[utoipa::path(
     get,
@@ -2251,9 +2251,9 @@ pub async fn list_project_favorites(
     Ok(Json(result))
 }
 
-/// Agrega un proyecto a favoritos.
+/// Adds a project to favorites.
 ///
-/// Espejo de `ProjectFavoritesViewSet.create`
+/// Mirror of `ProjectFavoritesViewSet.create`
 /// (`apps/api/plane/app/views/project/base.py`).
 #[utoipa::path(
     post,
@@ -2277,7 +2277,7 @@ pub async fn create_project_favorite(
 
     let now = chrono::Utc::now().fixed_offset();
 
-    // Idempotente: no duplicar si ya existe.
+    // Idempotent: do not duplicate if already exists.
     let existing = user_favorites::Entity::find()
         .active()
         .filter(user_favorites::Column::WorkspaceId.eq(ws.id))
@@ -2313,9 +2313,9 @@ pub async fn create_project_favorite(
     Ok(StatusCode::NO_CONTENT)
 }
 
-/// Elimina un proyecto de favoritos.
+/// Removes a project from favorites.
 ///
-/// Espejo de `ProjectFavoritesViewSet.destroy`
+/// Mirror of `ProjectFavoritesViewSet.destroy`
 /// (`apps/api/plane/app/views/project/base.py`).
 #[utoipa::path(
     delete,
@@ -2346,9 +2346,9 @@ pub async fn delete_project_favorite(
 
 // ─── POST + DELETE /workspaces/{slug}/projects/{project_id}/archive/ ─────────
 
-/// Archiva un proyecto.
+/// Archives a project.
 ///
-/// Espejo de `ProjectArchiveUnarchiveEndpoint.post`
+/// Mirror of `ProjectArchiveUnarchiveEndpoint.post`
 /// (`apps/api/plane/app/views/project/base.py`).
 #[utoipa::path(
     post,
@@ -2365,7 +2365,7 @@ pub async fn archive_project(
     let wm = require_workspace_member(&state.db, ws.id, user.id).await?;
     let pm = project_member_for_user(&state.db, project_id, user.id).await?;
 
-    // ADMIN o MEMBER pueden archivar
+    // ADMIN or MEMBER can archive
     let role = pm.as_ref().map(|m| m.role).unwrap_or(0);
     if role < ROLE_MEMBER && wm.role < ROLE_ADMIN {
         return Err(AppError::Forbidden);
@@ -2379,7 +2379,7 @@ pub async fn archive_project(
     am.updated_at = Set(now);
     let updated = am.update(&state.db).await.map_err(AppError::Database)?;
 
-    // Eliminar favoritos del proyecto (Django behavior)
+    // Remove project favorites (Django behavior)
     user_favorites::Entity::delete_many()
         .filter(user_favorites::Column::WorkspaceId.eq(ws.id))
         .filter(user_favorites::Column::EntityType.eq("project"))
@@ -2391,9 +2391,9 @@ pub async fn archive_project(
     Ok(Json(serde_json::json!({ "archived_at": updated.archived_at })))
 }
 
-/// Desarchiva un proyecto.
+/// Unarchives a project.
 ///
-/// Espejo de `ProjectArchiveUnarchiveEndpoint.delete`
+/// Mirror of `ProjectArchiveUnarchiveEndpoint.delete`
 /// (`apps/api/plane/app/views/project/base.py`).
 #[utoipa::path(
     delete,
@@ -2438,9 +2438,9 @@ pub struct IdentifierQuery {
     pub name: Option<String>,
 }
 
-/// Verifica si un identificador de proyecto ya existe en el workspace.
+/// Verifies if a project identifier already exists in the workspace.
 ///
-/// Espejo de `ProjectIdentifierEndpoint.get`
+/// Mirror of `ProjectIdentifierEndpoint.get`
 /// (`apps/api/plane/app/views/project/base.py`).
 #[utoipa::path(
     get,
@@ -2457,9 +2457,9 @@ pub async fn check_project_identifier(
     let ws = workspace_by_slug(&state.db, &slug).await?;
     let _ = require_workspace_member(&state.db, ws.id, user.id).await?;
 
-    // Modo único: lista identifiers del workspace, con filtro opcional por
-    // `?name=`. El nombre del handler se mantiene por compatibilidad con
-    // su uso histórico (check existencia ⇔ exists>0 en la respuesta).
+    // Single mode: list workspace identifiers, with optional `?name=` filter.
+    // The handler name is maintained for compatibility with historical
+    // use (existence check ⇔ exists>0 in response).
     let mut q_select = project_identifiers::Entity::find()
         .filter(project_identifiers::Column::WorkspaceId.eq(ws.id));
 
@@ -2489,9 +2489,9 @@ pub async fn check_project_identifier(
     })))
 }
 
-/// Elimina un identificador de proyecto sin proyecto asociado.
+/// Deletes a project identifier without an associated project.
 ///
-/// Espejo de `ProjectIdentifierEndpoint.delete`
+/// Mirror of `ProjectIdentifierEndpoint.delete`
 /// (`apps/api/plane/app/views/project/base.py`).
 #[utoipa::path(
     delete,
@@ -2517,7 +2517,7 @@ pub async fn delete_project_identifier(
         .filter(|s| !s.is_empty())
         .ok_or_else(|| AppError::BadRequest("name is required".into()))?;
 
-    // No eliminar si hay un proyecto activo con ese identifier
+    // Do not delete if there is an active project with that identifier
     let project_exists = projects::Entity::find()
         .active()
         .filter(projects::Column::Identifier.eq(&name))
@@ -2544,9 +2544,9 @@ pub async fn delete_project_identifier(
 
 // ─── GET /workspaces/{slug}/projects/{project_id}/invitations/{pk}/ ──────────
 
-/// Retorna el detalle de una invitación de proyecto.
+/// Returns specific project invitation detail.
 ///
-/// Espejo de `ProjectInvitationsViewset.retrieve`
+/// Mirror of `ProjectInvitationsViewset.retrieve`
 /// (`apps/api/plane/app/urls/project.py`).
 #[utoipa::path(
     get,
@@ -2579,19 +2579,19 @@ pub async fn get_project_invitation(
 
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct ProjectJoinRequest {
-    /// Email del usuario que acepta la invitación.
+    /// Email of the user accepting the invitation.
     pub email: String,
-    /// Si acepta o rechaza la invitación.
+    /// Whether they accept or decline the invitation.
     #[serde(default)]
     pub accepted: bool,
 }
 
-/// Acepta o rechaza una invitación a un proyecto (endpoint público).
+/// Accepts or declines a project invitation (public endpoint).
 ///
 /// `POST /workspaces/{slug}/projects/{project_id}/join/{pk}`
 ///
-/// Mirror de `ProjectJoinEndpoint.post` en Django.
-/// No requiere autenticación (AllowAny), solo el email correcto.
+/// Mirror of `ProjectJoinEndpoint.post` in Django.
+/// Does not require authentication (AllowAny), only the correct email.
 #[utoipa::path(
     post,
     path = "/workspaces/{slug}/projects/{project_id}/join/{pk}",
@@ -2624,19 +2624,19 @@ pub async fn join_project_invitation(
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
-    // Verificar que el email coincide
+    // Verify email matches
     if email.is_empty() || invite.email.to_lowercase() != email {
         return Err(AppError::Forbidden);
     }
 
-    // Ya respondió
+    // Already responded
     if invite.responded_at.is_some() {
         return Err(AppError::BadRequest(
             "You have already responded to the invitation request".into(),
         ));
     }
 
-    // Registrar respuesta
+    // Register response
     let mut active: project_member_invites::ActiveModel = invite.clone().into();
     active.accepted = Set(body.accepted);
     active.responded_at = Set(Some(chrono::Utc::now().into()));
@@ -2648,7 +2648,7 @@ pub async fn join_project_invitation(
         })));
     }
 
-    // Aceptó — incorporar al workspace y proyecto
+    // Accepted — incorporate into workspace and project
     let user = users::Entity::find()
         .filter(users::Column::Email.eq(&email))
         .one(&state.db)
@@ -2656,7 +2656,7 @@ pub async fn join_project_invitation(
         .map_err(AppError::Database)?;
 
     if let Some(user) = user {
-        // Asegurar membresía en workspace
+        // Ensure workspace membership
         let ws_member = workspace_members::Entity::find()
             .filter(workspace_members::Column::WorkspaceId.eq(invite.workspace_id))
             .filter(workspace_members::Column::MemberId.eq(user.id))
@@ -2676,14 +2676,14 @@ pub async fn join_project_invitation(
                 updated_at: Set(chrono::Utc::now().into()),
                 ..Default::default()
             };
-            let _ = new_wm.insert(&state.db).await; // ignorar conflicto
+            let _ = new_wm.insert(&state.db).await; // ignore conflict
         } else if let Some(wm) = ws_member {
             let mut wm_active: workspace_members::ActiveModel = wm.into();
             wm_active.is_active = Set(true);
             let _ = wm_active.update(&state.db).await;
         }
 
-        // Asegurar membresía en proyecto
+        // Ensure project membership
         let pm = project_members::Entity::find()
             .filter(project_members::Column::ProjectId.eq(project_id))
             .filter(project_members::Column::MemberId.eq(user.id))
@@ -2703,7 +2703,7 @@ pub async fn join_project_invitation(
                 updated_at: Set(chrono::Utc::now().into()),
                 ..Default::default()
             };
-            let _ = new_pm.insert(&state.db).await; // ignorar conflicto
+            let _ = new_pm.insert(&state.db).await; // ignore conflict
         } else if let Some(pm_model) = pm {
             let mut pm_active: project_members::ActiveModel = pm_model.into();
             pm_active.is_active = Set(true);
@@ -2726,11 +2726,11 @@ pub struct UserProjectInvitationResponse {
     pub workspace_id: Uuid,
 }
 
-/// Lista las invitaciones de proyectos del usuario autenticado.
+/// Lists the authenticated user's project invitations.
 ///
 /// `GET /users/me/workspaces/{slug}/projects/invitations`
 ///
-/// Mirror de `UserProjectInvitationsViewset.list` en Django.
+/// Mirror of `UserProjectInvitationsViewset.list` in Django.
 #[utoipa::path(
     get,
     path = "/users/me/workspaces/{slug}/projects/invitations",
@@ -2850,7 +2850,7 @@ impl From<deploy_boards::Model> for DeployBoardResponse {
     )
 )]
 /// GET /workspaces/{slug}/projects/{project_id}/project-deploy-boards
-/// Devuelve el deploy board de un proyecto (o null si no existe).
+/// Returns the project deploy board (or null if it doesn't exist).
 pub async fn get_project_deploy_board(
     AnyAuth(user): AnyAuth,
     State(state): State<AppState>,
@@ -2896,7 +2896,7 @@ pub struct UpsertDeployBoardRequest {
     )
 )]
 /// POST /workspaces/{slug}/projects/{project_id}/project-deploy-boards
-/// Crea o actualiza el deploy board del proyecto (upsert como Django).
+/// Creates or updates the project deploy board (upsert like Django).
 pub async fn upsert_project_deploy_board(
     AnyAuth(user): AnyAuth,
     State(state): State<AppState>,
@@ -2910,7 +2910,7 @@ pub async fn upsert_project_deploy_board(
     }
     let _ = project_by_id(&state.db, ws.id, project_id).await?;
 
-    // Busca deploy board existente
+    // Search for existing deploy board
     let existing = deploy_boards::Entity::find()
         .filter(deploy_boards::Column::EntityName.eq("project"))
         .filter(deploy_boards::Column::EntityIdentifier.eq(project_id))
@@ -3165,9 +3165,9 @@ pub async fn update_project_member_preferences(
 
 // ─── POST /api/users/me/workspaces/{slug}/projects/invitations ────────────────
 //
-// Bulk-join: acepta una lista de project_ids y agrega al usuario como miembro
-// de cada proyecto si tiene una invitación pendiente o el proyecto es público.
-// Mirror de `UserProjectInvitationsViewSet.create` en Django.
+// Bulk-join: accepts a list of project_ids and adds the user as a member
+// of each project if they have a pending invitation or the project is public.
+// Mirror of `UserProjectInvitationsViewSet.create` in Django.
 
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct BulkJoinProjectsRequest {
@@ -3197,7 +3197,7 @@ pub async fn join_user_project_invitations(
     let mut joined: Vec<serde_json::Value> = Vec::new();
 
     for project_id in &body.project_ids {
-        // Verificar que el proyecto existe y pertenece al workspace
+        // Verify project exists and belongs to the workspace
         let project = projects::Entity::find_by_id(*project_id)
             .filter(projects::Column::WorkspaceId.eq(ws.id))
             .active()
@@ -3207,7 +3207,7 @@ pub async fn join_user_project_invitations(
 
         let Some(project) = project else { continue };
 
-        // Verificar si ya es miembro
+        // Verify if already a member
         let already_member = project_members::Entity::find()
             .filter(project_members::Column::ProjectId.eq(project.id))
             .filter(project_members::Column::MemberId.eq(user.id))
@@ -3223,7 +3223,7 @@ pub async fn join_user_project_invitations(
             continue;
         }
 
-        // Buscar invitación pendiente
+        // Search for pending invitation
         let invite = project_member_invites::Entity::find()
             .filter(project_member_invites::Column::ProjectId.eq(project.id))
             .filter(project_member_invites::Column::Email.eq(
@@ -3236,7 +3236,7 @@ pub async fn join_user_project_invitations(
 
         let role = invite.as_ref().map(|i| i.role).unwrap_or(10); // default: member
 
-        // Crear membresía
+        // Create membership
         project_members::ActiveModel {
             id: Set(Uuid::new_v4()),
             project_id: Set(project.id),
@@ -3259,7 +3259,7 @@ pub async fn join_user_project_invitations(
         .await
         .map_err(AppError::Database)?;
 
-        // Marcar invitación como aceptada si existía
+        // Mark invitation as accepted if it existed
         if let Some(inv) = invite {
             let mut am: project_member_invites::ActiveModel = inv.into();
             am.accepted = Set(true);

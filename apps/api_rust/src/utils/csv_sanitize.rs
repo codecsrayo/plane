@@ -1,41 +1,41 @@
 // src/utils/csv_sanitize.rs
-//! Sanitización de valores para exportación CSV — prevención de CSV injection.
+//! Value sanitization for CSV export — CSV injection prevention.
 //!
-//! Paridad exacta con `apps/api/plane/utils/csv_utils.py::sanitize_csv_value`.
-//! Si el primer carácter del valor pertenece al conjunto de disparadores de
-//! fórmula reconocidos por Excel/LibreOffice/Google Sheets, se prefija con una
-//! comilla simple (`'`) para forzar su interpretación como texto plano.
+//! Exact parity with `apps/api/plane/utils/csv_utils.py::sanitize_csv_value`.
+//! If the first character of the value belongs to the set of formula triggers
+//! recognized by Excel/LibreOffice/Google Sheets, it is prefixed with a
+//! single quote (`'`) to force its interpretation as plain text.
 //!
-//! Disparadores (espejo de `_CSV_FORMULA_TRIGGERS` en Django):
+//! Triggers (mirror of `_CSV_FORMULA_TRIGGERS` in Django):
 //!   `=`, `+`, `-`, `@`, `\t` (tab), `\r` (CR), `\n` (LF).
 //!
-//! Ver: <https://owasp.org/www-community/attacks/CSV_Injection>
+//! See: <https://owasp.org/www-community/attacks/CSV_Injection>
 //!
-//! # Contexto
+//! # Context
 //!
-//! Este módulo consolida la lógica que originalmente vivía duplicada en
-//! `src/jobs/export.rs::sanitize_csv_cell`. La implementación previa omitía
-//! `\n` en el set de disparadores — este archivo corrige ese gap y expone un
-//! único helper reutilizable por todos los exports CSV del API Rust.
+//! This module consolidates the logic that originally lived duplicated in
+//! `src/jobs/export.rs::sanitize_csv_cell`. The previous implementation omitted
+//! `\n` in the set of triggers — this file fixes that gap and exposes a
+//! single helper reusable by all Rust API CSV exports.
 //!
-//! # Ejemplo
+//! # Example
 //!
 //! ```ignore
 //! use crate::utils::csv_sanitize::sanitize_csv_cell;
 //!
 //! assert_eq!(sanitize_csv_cell("=SUM(A1:A9)"), "'=SUM(A1:A9)");
-//! assert_eq!(sanitize_csv_cell("hola"), "hola");
+//! assert_eq!(sanitize_csv_cell("hello"), "hello");
 //! assert_eq!(sanitize_csv_cell(""), "");
 //! ```
 
-/// Sanitiza un valor individual para exportación CSV segura.
+/// Sanitizes an individual value for safe CSV export.
 ///
-/// Si `value` empieza por un carácter disparador de fórmula, devuelve una
-/// nueva `String` con `'` prefijada; en caso contrario, devuelve el valor
-/// original sin copiar innecesariamente los bytes salvo por el `to_owned`
-/// final (requerido porque la firma debe ser uniforme para el writer CSV).
+/// If `value` starts with a formula trigger character, returns a
+/// new `String` with `'` prefixed; otherwise, returns the
+/// original value without unnecessarily copying bytes except for the final
+/// `to_owned` (required because the signature must be uniform for the CSV writer).
 ///
-/// Paridad 1:1 con `sanitize_csv_value` en Django.
+/// 1:1 parity with `sanitize_csv_value` in Django.
 #[inline]
 pub fn sanitize_csv_cell(value: &str) -> String {
     if let Some(first) = value.chars().next() {
@@ -55,9 +55,9 @@ mod tests {
 
     #[test]
     fn pass_through_when_safe() {
-        assert_eq!(sanitize_csv_cell("hola"), "hola");
+        assert_eq!(sanitize_csv_cell("hello"), "hello");
         assert_eq!(sanitize_csv_cell("123"), "123");
-        assert_eq!(sanitize_csv_cell("a=b"), "a=b"); // disparador no en posición 0
+        assert_eq!(sanitize_csv_cell("a=b"), "a=b"); // trigger not in position 0
     }
 
     #[test]
@@ -75,7 +75,7 @@ mod tests {
 
     #[test]
     fn prefixes_whitespace_triggers() {
-        // Paridad Django: \t, \r, \n en posición 0 también son disparadores.
+        // Django parity: \t, \r, \n in position 0 are also triggers.
         assert_eq!(sanitize_csv_cell("\tvalue"), "'\tvalue");
         assert_eq!(sanitize_csv_cell("\rvalue"), "'\rvalue");
         assert_eq!(sanitize_csv_cell("\nvalue"), "'\nvalue");
@@ -83,7 +83,7 @@ mod tests {
 
     #[test]
     fn unicode_first_char_is_safe() {
-        // Caracteres no-ASCII no son disparadores — mismo comportamiento Django.
+        // Non-ASCII characters are not triggers — same Django behavior.
         assert_eq!(sanitize_csv_cell("ñandú"), "ñandú");
         assert_eq!(sanitize_csv_cell("中文"), "中文");
     }

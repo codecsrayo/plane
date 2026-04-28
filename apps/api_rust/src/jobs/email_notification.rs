@@ -1,21 +1,21 @@
 // src/jobs/email_notification.rs
-//! Tarea periódica de envío de notificaciones por email.
+//! Periodic task for sending email notifications.
 //!
-//! Equivalente a `plane/bgtasks/email_notification_task.py →
+//! Equivalent to `plane/bgtasks/email_notification_task.py →
 //! stack_email_notification + send_email_notification`.
 //!
-//! Flujo:
-//!   1. Buscar `email_notification_logs` sin `processed_at`
-//!   2. Agrupar por `receiver_id` → por `entity_identifier` (issue_id)
-//!   3. Para cada (receiver, issue): construir HTML y enviar vía SMTP (lettre)
-//!   4. Marcar `processed_at = NOW()` en los logs procesados
-//!   5. Marcar `sent_at = NOW()` en los logs enviados exitosamente
+//! Flow:
+//!   1. Find `email_notification_logs` without `processed_at`
+//!   2. Group by `receiver_id` → by `entity_identifier` (issue_id)
+//!   3. For each (receiver, issue): build HTML and send via SMTP (lettre)
+//!   4. Mark `processed_at = NOW()` on processed logs
+//!   5. Mark `sent_at = NOW()` on successfully sent logs
 //!
-//! Redis Lock: se usa para evitar envíos duplicados en caso de concurrencia
-//! (misma semántica que el lock de Django con nx=True).
+//! Redis Lock: used to avoid duplicate sends in case of concurrency
+//! (same semantics as Django lock with nx=True).
 //!
-//! base_api: Django lo leía de Redis (set por issue_activities_task).
-//! En Rust usamos `config.app_base_url` como fuente canónica.
+//! base_api: Django read it from Redis (set by issue_activities_task).
+//! In Rust we use `config.app_base_url` as canonical source.
 
 use std::collections::HashMap;
 
@@ -36,18 +36,18 @@ use crate::{
     entities::{email_notification_logs, issues, projects, users, workspaces},
 };
 
-// ── Punto de entrada ──────────────────────────────────────────────────────────
+// ── Entry point ──────────────────────────────────────────────────────────
 
-/// Procesa todos los `email_notification_logs` sin `processed_at` y envía
-/// los emails correspondientes.
+/// Processes all `email_notification_logs` without `processed_at` and sends
+/// corresponding emails.
 ///
-/// Llamado cada 5 minutos por el scheduler (`cron.rs`).
+/// Called every 5 minutes by the scheduler (`cron.rs`).
 pub async fn stack_email_notification(
     db: &DatabaseConnection,
     redis: &RedisPool,
     config: &Config,
 ) -> anyhow::Result<()> {
-    // 1. Obtener notificaciones sin procesar, ordenadas por receiver
+    // 1. Get unprocessed notifications, ordered by receiver
     let pending = email_notification_logs::Entity::find()
         .filter(email_notification_logs::Column::ProcessedAt.is_null())
         .filter(email_notification_logs::Column::DeletedAt.is_null())
@@ -59,9 +59,9 @@ pub async fn stack_email_notification(
         return Ok(());
     }
 
-    tracing::info!(count = pending.len(), "stack_email_notification: procesando");
+    tracing::info!(count = pending.len(), "stack_email_notification: processing");
 
-    // 2. Agrupar: receiver_id → issue_id → Vec<log_id>
+    // 2. Group: receiver_id → issue_id → Vec<log_id>
     let mut by_receiver: HashMap<Uuid, HashMap<Uuid, Vec<Uuid>>> = HashMap::new();
     let mut all_ids: Vec<Uuid> = Vec::new();
 
@@ -79,7 +79,7 @@ pub async fn stack_email_notification(
         all_ids.push(log.id);
     }
 
-    // 3. Enviar emails por (receiver, issue)
+    // 3. Send emails by (receiver, issue)
     for (receiver_id, issues_map) in &by_receiver {
         for (issue_id, notif_ids) in issues_map {
             if let Err(e) = send_email_for_issue(
@@ -96,13 +96,13 @@ pub async fn stack_email_notification(
                     receiver_id = %receiver_id,
                     issue_id = %issue_id,
                     error = %e,
-                    "stack_email_notification: fallo al enviar email"
+                    "stack_email_notification: failed to send email"
                 );
             }
         }
     }
 
-    // 4. Marcar todos como processed_at = NOW() (UPDATE individual por compatibilidad de tipos)
+    // 4. Mark all as processed_at = NOW() (individual UPDATE for type compatibility)
     let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
     for id in &all_ids {
         let s = sea_orm::Statement::from_sql_and_values(
@@ -115,12 +115,12 @@ pub async fn stack_email_notification(
 
     tracing::info!(
         processed = all_ids.len(),
-        "stack_email_notification: completado"
+        "stack_email_notification: completed"
     );
     Ok(())
 }
 
-// ── Envío individual por (receiver, issue) ────────────────────────────────────
+// ── Individual send by (receiver, issue) ────────────────────────────────────
 
 async fn send_email_for_issue(
     db: &DatabaseConnection,
@@ -130,7 +130,7 @@ async fn send_email_for_issue(
     issue_id: Uuid,
     notif_ids: &[Uuid],
 ) -> anyhow::Result<()> {
-    // Redis lock para evitar envíos duplicados
+    // Redis lock to avoid duplicate sends
     let lock_key = format!("email_notif_lock:{issue_id}:{receiver_id}");
     let acquired: Option<String> = redis
         .set(
@@ -143,7 +143,7 @@ async fn send_email_for_issue(
         .await?;
 
     if acquired.is_none() {
-        tracing::debug!(%lock_key, "send_email_for_issue: lock ya tomado, omitiendo duplicado");
+        tracing::debug!(%lock_key, "send_email_for_issue: lock already taken, skipping duplicate");
         return Ok(());
     }
 
@@ -152,24 +152,24 @@ async fn send_email_for_issue(
         key: lock_key.clone(),
     };
 
-    // Cargar receptor
+    // Load receiver
     let receiver = users::Entity::find_by_id(receiver_id).one(db).await?;
     let receiver = match receiver {
         Some(u) => u,
         None => {
-            tracing::warn!(%receiver_id, "send_email_for_issue: receptor no encontrado");
+            tracing::warn!(%receiver_id, "send_email_for_issue: receiver not found");
             return Ok(());
         }
     };
     let receiver_email = match &receiver.email {
         Some(e) if !e.is_empty() => e.clone(),
         _ => {
-            tracing::debug!(%receiver_id, "send_email_for_issue: receptor sin email");
+            tracing::debug!(%receiver_id, "send_email_for_issue: receiver has no email");
             return Ok(());
         }
     };
 
-    // Cargar issue + proyecto + workspace
+    // Load issue + project + workspace
     let issue = issues::Entity::find_by_id(issue_id).one(db).await?;
     let issue = match issue {
         Some(i) => i,
@@ -186,7 +186,7 @@ async fn send_email_for_issue(
         None => return Ok(()),
     };
 
-    // base_api desde config (equivale a leer Redis en Django)
+    // base_api from config (equivalent to reading Redis in Django)
     let base_url = config
         .app_base_url
         .as_deref()
@@ -202,13 +202,13 @@ async fn send_email_for_issue(
     );
     let issue_identifier = format!("{}-{}", project.identifier, issue.sequence_id);
 
-    // Obtener notificaciones de este grupo para extraer cambios
+    // Get notifications of this group to extract changes
     let logs = email_notification_logs::Entity::find()
         .filter(email_notification_logs::Column::Id.is_in(notif_ids.to_vec()))
         .all(db)
         .await?;
 
-    // Construir HTML del email
+    // Build email HTML
     let html = build_email_html(
         &issue.name,
         &issue_identifier,
@@ -219,10 +219,10 @@ async fn send_email_for_issue(
 
     let subject = format!("{issue_identifier} {}", issue.name);
 
-    // Enviar via SMTP
+    // Send via SMTP
     send_smtp_email(config, &receiver_email, &subject, &html).await?;
 
-    // Marcar sent_at en los logs enviados
+    // Mark sent_at on sent logs
     let sent_at: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
     for id in notif_ids {
         let s = sea_orm::Statement::from_sql_and_values(
@@ -237,7 +237,7 @@ async fn send_email_for_issue(
         %receiver_email,
         %issue_identifier,
         sent = notif_ids.len(),
-        "send_email_for_issue: email enviado"
+        "send_email_for_issue: email sent"
     );
     Ok(())
 }
@@ -253,7 +253,7 @@ async fn send_smtp_email(
     let host = match &config.email_host {
         Some(h) => h.clone(),
         None => {
-            tracing::debug!("send_smtp_email: EMAIL_HOST no configurado, omitiendo envío");
+            tracing::debug!("send_smtp_email: EMAIL_HOST not configured, skipping send");
             return Ok(());
         }
     };
@@ -301,7 +301,7 @@ async fn send_smtp_email(
         }
         builder.build()
     } else {
-        // Sin TLS — sólo para dev/testing
+        // No TLS — only for dev/testing
         let mut builder =
             AsyncSmtpTransport::<Tokio1Executor>::builder_dangerous(&host).port(config.email_port);
         if let (Some(user), Some(pass)) =
@@ -347,8 +347,8 @@ fn build_email_html(
 <html>
 <head><meta charset="utf-8" /></head>
 <body style="font-family: sans-serif; color: #333; max-width: 600px; margin: auto;">
-  <p>Hola {receiver_name},</p>
-  <p>Se realizaron actualizaciones en el issue
+  <p>Hi {receiver_name},</p>
+  <p>Updates were made to issue
      <a href="{issue_url}"><strong>{issue_identifier} — {issue_name}</strong></a>:
   </p>
   <ul>{changes}</ul>
@@ -356,12 +356,12 @@ fn build_email_html(
     <a href="{issue_url}" style="
       background:#5b55f6;color:#fff;padding:8px 16px;
       border-radius:4px;text-decoration:none;display:inline-block">
-      Ver issue
+      View issue
     </a>
   </p>
   <hr />
   <p style="font-size:12px;color:#888;">
-    Recibes este email porque estás suscrito a este issue en Plane.
+    You are receiving this email because you are subscribed to this issue in Plane.
   </p>
 </body>
 </html>"#,
@@ -381,17 +381,17 @@ fn html_escape(s: &str) -> String {
 }
 
 fn html_to_text(html: &str) -> String {
-    // Eliminación simple de tags HTML para el part text/plain
-    let re = regex::Regex::new(r"<[^>]+>").expect("regex válido");
+    // Simple removal of HTML tags for the text/plain part
+    let re = regex::Regex::new(r"<[^>]+>").expect("valid regex");
     let text = re.replace_all(html, " ");
-    // Colapsar espacios múltiples
-    let re2 = regex::Regex::new(r"\s{2,}").expect("regex válido");
+    // Collapse multiple spaces
+    let re2 = regex::Regex::new(r"\s{2,}").expect("valid regex");
     re2.replace_all(&text, "\n").trim().to_string()
 }
 
 // ── Redis lock guard (RAII) ───────────────────────────────────────────────────
 
-/// Libera el lock de Redis al salir del scope.
+/// Releases Redis lock on scope exit.
 struct RedisLockGuard {
     redis: RedisPool,
     key: String,

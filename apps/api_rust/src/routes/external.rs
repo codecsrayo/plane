@@ -1,9 +1,9 @@
 // src/routes/external.rs
-//! Endpoints de integraciones externas: AI assistant, rephrase-grammar y Unsplash.
+//! External integration endpoints: AI assistant, rephrase-grammar and Unsplash.
 //!
-//! Equivalente a `plane/app/views/external/base.py` en Django.
+//! Equivalent to `plane/app/views/external/base.py` in Django.
 //!
-//! Rutas implementadas:
+//! Implemented routes:
 //!   GET  /api/unsplash/
 //!   POST /api/workspaces/{slug}/projects/{project_id}/ai-assistant/
 //!   POST /api/workspaces/{slug}/ai-assistant/
@@ -37,9 +37,9 @@ pub struct UnsplashQuery {
 
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct AiAssistantRequest {
-    /// Tarea a realizar (requerido).
+    /// Task to perform (required).
     pub task: String,
-    /// Prompt adicional de contexto.
+    /// Additional context prompt.
     pub prompt: Option<String>,
 }
 
@@ -49,22 +49,22 @@ pub struct AiAssistantResponse {
     pub response_html: String,
 }
 
-/// Body de POST /workspaces/{slug}/rephrase-grammar/
+/// Body of POST /workspaces/{slug}/rephrase-grammar/
 ///
-/// Mirror de `RephraseGrammarEndpoint` en `plane/app/views/external/base.py`.
+/// Mirror of `RephraseGrammarEndpoint` in `plane/app/views/external/base.py`.
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct RephraseGrammarRequest {
-    /// Texto seleccionado en el editor que se desea mejorar (requerido).
+    /// Selected text in editor to improve (required).
     pub text_input: String,
-    /// Instrucción libre del usuario (flujo ASK_ANYTHING). Opcional.
+    /// User's free instruction (ASK_ANYTHING flow). Optional.
     pub prompt: Option<String>,
-    /// Puntaje de tono casual 0-10. Opcional.
+    /// Casual tone score 0-10. Optional.
     pub casual_score: Option<i64>,
-    /// Puntaje de tono formal 0-10. Opcional.
+    /// Formal tone score 0-10. Optional.
     pub formal_score: Option<i64>,
 }
 
-/// Respuesta de POST /workspaces/{slug}/rephrase-grammar/
+/// Response of POST /workspaces/{slug}/rephrase-grammar/
 #[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct RephraseGrammarResponse {
     pub response: String,
@@ -74,14 +74,14 @@ pub struct RephraseGrammarResponse {
 
 /// GET /api/unsplash/
 ///
-/// Proxy hacia la API de Unsplash para búsqueda y listado de fotos.
-/// No requiere autenticación propia — usa la API key configurada en el servidor.
+/// Proxy to Unsplash API for photo search and listing.
+/// Does not require its own authentication — uses API key configured on server.
 ///
-/// Paridad con Django (`plane/app/views/external/base.py::UnsplashEndpoint`):
-/// - La key se resuelve vía `instance_configurations` (DB) con fallback a env
-///   (equivalente a `get_configuration_value`).
-/// - Si no hay key configurada, devuelve `[]` con HTTP 200 (no 400).
-/// - Codifica los query params de forma segura para evitar URL injection.
+/// Django parity (`plane/app/views/external/base.py::UnsplashEndpoint`):
+/// - Key is resolved via `instance_configurations` (DB) with env fallback
+///   (equivalent to `get_configuration_value`).
+/// - If no key is configured, returns `[]` with HTTP 200 (not 400).
+/// - Encodes query params safely to avoid URL injection.
 #[utoipa::path(
     get,
     path = "/unsplash/",
@@ -99,13 +99,13 @@ pub async fn unsplash(
     State(state): State<AppState>,
     Query(params): Query<UnsplashQuery>,
 ) -> Result<impl IntoResponse, AppError> {
-    // Paridad con Django: DB (instance_configurations) → env var.
+    // Django parity: DB (instance_configurations) → env var.
     let env_fallback = std::env::var("UNSPLASH_ACCESS_KEY").ok();
     let access_key_opt = get_config_value(&state, "UNSPLASH_ACCESS_KEY", env_fallback.as_deref())
         .await?
         .filter(|k| !k.is_empty());
 
-    // Django devuelve [] con 200 cuando UNSPLASH_ACCESS_KEY no está configurado.
+    // Django returns [] with 200 when UNSPLASH_ACCESS_KEY is not configured.
     let access_key = match access_key_opt {
         Some(k) => k,
         None => return Ok(Json(serde_json::json!([]))),
@@ -114,8 +114,8 @@ pub async fn unsplash(
     let page = params.page.unwrap_or(1).max(1);
     let per_page = params.per_page.unwrap_or(20).clamp(1, 30);
 
-    // Construir request con query params tipados (reqwest los codifica correctamente).
-    // Evita pasar `query` del usuario sin escapar a la URL.
+    // Build request with typed query params (reqwest encodes them correctly).
+    // Avoids passing unescaped user `query` to URL.
     let mut req = if let Some(q) = params.query.as_deref().filter(|s| !s.is_empty()) {
         state
             .http
@@ -143,8 +143,8 @@ pub async fn unsplash(
         AppError::Internal(anyhow::anyhow!("Failed to reach Unsplash API"))
     })?;
 
-    // Django propaga el status de Unsplash — hacemos lo mismo sin leakear detalles
-    // de la key en logs.
+    // Django propagates Unsplash status — we do the same without leaking key
+    // details in logs.
     let status = response.status();
     let data: serde_json::Value = response
         .json()
@@ -160,7 +160,7 @@ pub async fn unsplash(
 
 // ── AI Assistant ──────────────────────────────────────────────────────────────
 
-/// Llama al proveedor LLM configurado (OpenAI / Anthropic / Gemini).
+/// Calls the configured LLM provider (OpenAI / Anthropic / Gemini).
 async fn call_llm(
     http: &reqwest::Client,
     api_key: &str,
@@ -280,7 +280,7 @@ async fn call_llm(
 
 /// POST /api/workspaces/{slug}/projects/{project_id}/ai-assistant/
 ///
-/// Invoca el AI assistant en el contexto de un proyecto.
+/// Invokes the AI assistant in project context.
 #[utoipa::path(
     post,
     path = "/workspaces/{slug}/projects/{project_id}/ai-assistant/",
@@ -343,7 +343,7 @@ pub async fn project_ai_assistant(
 
 /// POST /api/workspaces/{slug}/ai-assistant/
 ///
-/// Invoca el AI assistant en el contexto del workspace (sin proyecto).
+/// Invokes the AI assistant in workspace context (without project).
 #[utoipa::path(
     post,
     path = "/workspaces/{slug}/ai-assistant/",
@@ -406,11 +406,11 @@ pub async fn workspace_ai_assistant(
 
 /// POST /api/workspaces/{slug}/rephrase-grammar/
 ///
-/// Mejora la gramática, claridad y legibilidad del texto seleccionado en el editor.
-/// Soporta instrucciones libres (prompt) y pesos de tono casual/formal.
+/// Improves grammar, clarity and readability of selected text in editor.
+/// Supports free instructions (prompt) and casual/formal tone weights.
 ///
-/// Mirror de `RephraseGrammarEndpoint` en `plane/app/views/external/base.py`.
-/// Requiere rol MEMBER o superior a nivel workspace.
+/// Mirror of `RephraseGrammarEndpoint` in `plane/app/views/external/base.py`.
+/// Requires MEMBER role or higher at workspace level.
 #[utoipa::path(
     post,
     path = "/workspaces/{slug}/rephrase-grammar/",
@@ -421,10 +421,10 @@ pub async fn workspace_ai_assistant(
     ),
     request_body = RephraseGrammarRequest,
     responses(
-        (status = 200, description = "Texto mejorado", body = RephraseGrammarResponse),
-        (status = 400, description = "text_input vacío o LLM no configurado"),
+        (status = 200, description = "Improved text", body = RephraseGrammarResponse),
+        (status = 400, description = "Empty text_input or LLM not configured"),
         (status = 403, description = "Forbidden"),
-        (status = 500, description = "Error al llamar al proveedor LLM"),
+        (status = 500, description = "Error calling LLM provider"),
     )
 )]
 pub async fn rephrase_grammar(
@@ -432,12 +432,12 @@ pub async fn rephrase_grammar(
     guard: WorkspaceMemberGuard,
     Json(body): Json<RephraseGrammarRequest>,
 ) -> Result<impl IntoResponse, AppError> {
-    // Mirror Django: @allow_permission([ROLE.ADMIN, ROLE.MEMBER], level="WORKSPACE")
+    // Django mirror: @allow_permission([ROLE.ADMIN, ROLE.MEMBER], level="WORKSPACE")
     if guard.member.role < ROLE_MEMBER {
         return Err(AppError::Forbidden);
     }
 
-    // Validar text_input antes de llamar al LLM
+    // Validate text_input before calling LLM
     let text_input = body.text_input.trim().to_string();
     if text_input.is_empty() {
         return Err(AppError::BadRequest("text_input is required".into()));
@@ -459,8 +459,8 @@ pub async fn rephrase_grammar(
 
     let provider = &state.config.llm_provider;
 
-    // ── Construir instrucción del sistema ─────────────────────────────────────
-    // Mirror de la lógica en RephraseGrammarEndpoint.post():
+    // ── Build system instruction ─────────────────────────────────────
+    // Mirror of RephraseGrammarEndpoint.post() logic:
     //   task_parts = ["You are a writing assistant…"]
     //   if user_prompt → "User instruction: {prompt}"
     //   else           → "Improve the grammar, clarity, and readability…"
@@ -480,14 +480,14 @@ pub async fn rephrase_grammar(
         );
     }
 
-    // Aplicar hints de tono cuando ambos scores están presentes
+    // Apply tone hints when both scores are present
     if let (Some(casual), Some(formal)) = (body.casual_score, body.formal_score) {
         if casual > formal {
             task_parts.push("Use a casual, friendly tone.".into());
         } else if formal > casual {
             task_parts.push("Use a formal, professional tone.".into());
         }
-        // Si son iguales, tono neutro (sin hint adicional)
+        // If equal, neutral tone (no additional hint)
     }
 
     task_parts.push(
@@ -496,7 +496,7 @@ pub async fn rephrase_grammar(
 
     let task = task_parts.join(" ");
 
-    // ── Llamar al LLM — text_input va como "prompt" (concatenado con task) ───
+    // ── Call LLM — text_input goes as "prompt" (concatenated with task) ───
     // Django: get_llm_response(task, text_input, …)
     //   final_text = task + "\n" + text_input
     let text = call_llm(
@@ -519,13 +519,13 @@ pub async fn rephrase_grammar(
 }
 
 
-// ── Incoming webhooks de GitHub y GitLab ──────────────────────────────────────
+// ── Incoming GitHub and GitLab webhooks ──────────────────────────────────────
 //
-// Mirror de `GitHubWebhookEndpoint` y `GitLabWebhookEndpoint` en Django
+// Mirror of `GitHubWebhookEndpoint` and `GitLabWebhookEndpoint` in Django
 // (`plane/app/views/external/sync.py`).
 //
-// Ambos endpoints son públicos (sin auth). La seguridad se realiza mediante
-// verificación HMAC de la firma del payload.
+// Both endpoints are public (no auth). Security is handled via HMAC payload
+// signature verification.
 
 use axum::body::Bytes;
 
@@ -537,8 +537,8 @@ fn hex_encode_bytes(bytes: &[u8]) -> String {
     output
 }
 
-/// Verifica firma HMAC-SHA256 de GitHub usando OpenSSL.
-/// Mirror de `hmac.new(secret, body, sha256).hexdigest()` en Django.
+/// Verifies GitHub HMAC-SHA256 signature using OpenSSL.
+/// Mirror of `hmac.new(secret, body, sha256).hexdigest()` in Django.
 fn verify_github_signature(secret: &str, body: &[u8], signature: &str) -> bool {
     use openssl::hash::MessageDigest;
     use openssl::pkey::PKey;
@@ -557,7 +557,7 @@ fn verify_github_signature(secret: &str, body: &[u8], signature: &str) -> bool {
         return false;
     };
     let expected = format!("sha256={}", hex_encode_bytes(&mac_bytes));
-    // Comparación constante para evitar timing attacks
+    // Constant-time comparison to avoid timing attacks
     expected.len() == signature.len()
         && expected
             .bytes()
@@ -568,15 +568,15 @@ fn verify_github_signature(secret: &str, body: &[u8], signature: &str) -> bool {
 
 // ── GitHub webhook ────────────────────────────────────────────────────────────
 
-/// Recibe webhooks entrantes de GitHub Apps.
+/// Receives incoming webhooks from GitHub Apps.
 ///
 /// `POST /github-webhook`
 ///
-/// Valida la firma `X-Hub-Signature-256`, luego despacha según el evento:
-/// - `issues`: sincroniza issues (crear/editar/cerrar/reabrir)
-/// - `pull_request`: loguea para trazabilidad
+/// Validates `X-Hub-Signature-256` signature, then dispatches based on event:
+/// - `issues`: synchronizes issues (create/edit/close/reopen)
+/// - `pull_request`: logs for traceability
 ///
-/// Mirror de `GitHubWebhookEndpoint.post` en Django.
+/// Mirror of `GitHubWebhookEndpoint.post` in Django.
 #[utoipa::path(
     post,
     path = "/github-webhook",
@@ -595,7 +595,7 @@ pub async fn github_webhook(
 ) -> Result<Json<serde_json::Value>, AppError> {
     use crate::utils::instance_config::get_config_value;
 
-    // ── Verificar firma HMAC ──────────────────────────────────────────────────
+    // ── Verify HMAC signature ──────────────────────────────────────────────────
     let signature = headers
         .get("x-hub-signature-256")
         .and_then(|v| v.to_str().ok())
@@ -617,7 +617,7 @@ pub async fn github_webhook(
         }
     }
 
-    // ── Parsear payload ───────────────────────────────────────────────────────
+    // ── Parse payload ───────────────────────────────────────────────────────
     let event = headers
         .get("x-github-event")
         .and_then(|v| v.to_str().ok())
@@ -629,7 +629,7 @@ pub async fn github_webhook(
 
     tracing::debug!(event = %event, "GitHub webhook received");
 
-    // Despachar según evento — errores se capturan para no reintentar
+    // Dispatch according to event — errors are captured not to retry
     let dispatch_result = match event.as_str() {
         "issues" => {
             handle_github_issue_event(&state, &payload).await
@@ -669,7 +669,7 @@ async fn handle_github_issue_event(
     let gh_issue_id = gh_issue["id"].as_i64().unwrap_or(0);
     let gh_issue_number = gh_issue["number"].as_i64().unwrap_or(0);
 
-    // Buscar repositorio registrado
+    // Look for registered repository
     let repo = github_repositories::Entity::find()
         .filter(github_repositories::Column::RepositoryId.eq(repo_id))
         .one(&state.db)
@@ -700,7 +700,7 @@ async fn handle_github_issue_event(
 
     match action {
         "opened" if issue_sync.is_none() => {
-            // Obtener estado triage del proyecto
+            // Get project triage state
             let triage_state = states::Entity::find()
                 .filter(states::Column::ProjectId.eq(sync.project_id))
                 .filter(states::Column::IsTriage.eq(true))
@@ -769,13 +769,13 @@ async fn handle_github_issue_event(
 
 // ── GitLab webhook ────────────────────────────────────────────────────────────
 
-/// Recibe webhooks entrantes de GitLab.
+/// Receives incoming webhooks from GitLab.
 ///
 /// `POST /gitlab-webhook`
 ///
-/// Valida el token `X-Gitlab-Token` y despacha según el evento.
+/// Validates `X-Gitlab-Token` token and dispatches according to event.
 ///
-/// Mirror de `GitLabWebhookEndpoint.post` en Django.
+/// Mirror of `GitLabWebhookEndpoint.post` in Django.
 #[utoipa::path(
     post,
     path = "/gitlab-webhook",
@@ -793,7 +793,7 @@ pub async fn gitlab_webhook(
 ) -> Result<Json<serde_json::Value>, AppError> {
     use crate::utils::instance_config::get_config_value;
 
-    // Verificar token si está configurado
+    // Verify token if configured
     let gitlab_token = get_config_value(
         &state,
         "GITLAB_WEBHOOK_TOKEN",

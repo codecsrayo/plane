@@ -121,11 +121,11 @@ pub mod workspace_user_properties;
 pub mod workspaces;
 
 // ── Soft delete ──────────────────────────────────────────────────────────────
-// FIX 1: `crate::utils` — no `..utils` (ruta relativa inválida en Rust)
-// FIX 2: `use` con `as _` — importa el trait sin re-exportarlo (solo activa el macro)
+// FIX 1: `crate::utils` — not `..utils` (invalid relative path in Rust)
+// FIX 2: `use` with `as _` — imports the trait without re-exporting it (only activates the macro)
 use crate::impl_soft_delete;
 
-// Usuarios y sesiones
+// Users and sessions
 impl_soft_delete!(devices::Entity, devices::Column::DeletedAt);
 impl_soft_delete!(device_sessions::Entity, device_sessions::Column::DeletedAt);
 impl_soft_delete!(
@@ -181,7 +181,7 @@ impl_soft_delete!(
     workspace_user_properties::Column::DeletedAt
 );
 
-// Proyectos
+// Projects
 impl_soft_delete!(projects::Entity, projects::Column::DeletedAt);
 impl_soft_delete!(
     project_deploy_boards::Entity,
@@ -295,7 +295,7 @@ impl_soft_delete!(page_labels::Entity, page_labels::Column::DeletedAt);
 impl_soft_delete!(page_logs::Entity, page_logs::Column::DeletedAt);
 impl_soft_delete!(page_versions::Entity, page_versions::Column::DeletedAt);
 
-// Integraciones
+// Integrations
 impl_soft_delete!(integrations::Entity, integrations::Column::DeletedAt);
 impl_soft_delete!(instances::Entity, instances::Column::DeletedAt);
 impl_soft_delete!(instance_admins::Entity, instance_admins::Column::DeletedAt);

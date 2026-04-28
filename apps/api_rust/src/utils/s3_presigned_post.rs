@@ -1,24 +1,24 @@
-//! Generación de S3 POST presigned (browser-based upload) con SigV4.
+//! Generation of S3 POST presigned (browser-based upload) with SigV4.
 //!
-//! Espejo funcional de `boto3.s3_client.generate_presigned_post(...)`, que Django usa
-//! en `plane/settings/storage.py::S3Storage.generate_presigned_post`. El frontend de
-//! Plane (`packages/services/src/file/helper.ts::generateFileUploadPayload`) arma un
-//! `FormData` con los `fields` devueltos + el `file` y hace `POST multipart/form-data`
-//! al `url`. Este módulo produce exactamente ese contrato.
+//! Functional mirror of `boto3.s3_client.generate_presigned_post(...)`, which Django uses
+//! in `plane/settings/storage.py::S3Storage.generate_presigned_post`. The Plane
+//! frontend (`packages/services/src/file/helper.ts::generateFileUploadPayload`) builds a
+//! `FormData` with the returned `fields` + the `file` and performs a `POST multipart/form-data`
+//! to the `url`. This module produces exactly that contract.
 //!
-//! Por qué existe: `aws-sdk-s3` 1.x para Rust NO expone presigned POST
-//! (ver awslabs/aws-sdk-rust#863, abierto desde 2023). Solo soporta presigned
-//! GET/PUT/DELETE. El contrato con el frontend requiere POST multipart con policy
-//! firmada, así que hay que calcular el SigV4 a mano.
+//! Why it exists: `aws-sdk-s3` 1.x for Rust DOES NOT expose presigned POST
+//! (see awslabs/aws-sdk-rust#863, open since 2023). It only supports presigned
+//! GET/PUT/DELETE. The contract with the frontend requires POST multipart with a
+//! signed policy, so SigV4 must be calculated manually.
 //!
-//! Referencias canónicas:
+//! Canonical references:
 //! - Policy + string-to-sign: https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-authentication-HTTPPOST.html
-//! - Derivación de signing key (igual que en el resto de SigV4):
+//! - Signing key derivation (same as the rest of SigV4):
 //!   https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-header-based-auth.html
 //!
-//! Diferencia crítica vs. SigV4 de headers/query:
-//! - En presigned POST el **string-to-sign ES el policy base64** (no hay canonical request).
-//! - El signing key se deriva igual: kDate → kRegion → kService → kSigning.
+//! Critical difference vs. SigV4 for headers/query:
+//! - In presigned POST the **string-to-sign IS the base64 policy** (no canonical request).
+//! - The signing key is derived the same way: kDate → kRegion → kService → kSigning.
 
 use std::collections::HashMap;
 
@@ -29,8 +29,8 @@ use serde_json::json;
 
 use crate::{config::Config, error::AppError};
 
-/// Resultado del `generate_presigned_post`: se serializa directo al frontend como
-/// `{ url, fields }`, coincidiendo con `TFileSignedURLResponse.upload_data` en
+/// Result of `generate_presigned_post`: serialized directly to the frontend as
+/// `{ url, fields }`, matching `TFileSignedURLResponse.upload_data` in
 /// `packages/types/src/file.ts`.
 #[derive(Debug, serde::Serialize, utoipa::ToSchema)]
 pub struct PresignedPost {
@@ -38,34 +38,34 @@ pub struct PresignedPost {
     pub fields: HashMap<String, String>,
 }
 
-/// Resuelve el endpoint **público** para firmar presigned URLs que serán usados
-/// directamente por el navegador del usuario.
+/// Resolves the **public** endpoint for signing presigned URLs that will be used
+/// directly by the user's browser.
 ///
-/// Mirror exacto del comportamiento de Django `S3Storage.__init__` cuando
+/// Exact mirror of Django's `S3Storage.__init__` behavior when
 /// `USE_MINIO=1` (`apps/api/plane/settings/storage.py:40-58`):
 ///
-/// - Si `!use_minio` → devuelve `aws_endpoint` tal cual. En este modo se asume
-///   AWS S3 real (o un MinIO expuesto con dominio público), y el endpoint del
-///   config YA es la URL pública correcta.
-/// - Si `use_minio` → construye `{scheme}://{host}` donde:
-///     * `scheme` proviene de `WEB_URL` (ej. "https://plane.example.com"
+/// - If `!use_minio` → returns `aws_endpoint` as is. In this mode, real AWS S3
+///   (or a MinIO exposed with a public domain) is assumed, and the config
+///   endpoint ALREADY is the correct public URL.
+/// - If `use_minio` → builds `{scheme}://{host}` where:
+///     * `scheme` comes from `WEB_URL` (e.g., "https://plane.example.com"
 ///       → "https"). Fallback: "http".
-///     * `host` proviene del header `X-Forwarded-Host` (si el proxy lo setea)
-///       o del header `Host`. Fallback: `aws_endpoint` completo del config.
+///     * `host` comes from the `X-Forwarded-Host` header (if the proxy sets it)
+///       or the `Host` header. Fallback: complete `aws_endpoint` from config.
 ///
-/// **Por qué esto es necesario**: en despliegues self-hosted con MinIO detrás
-/// de un proxy (nginx), `AWS_S3_ENDPOINT_URL` típicamente apunta al hostname
-/// interno de Docker (`http://plane-minio:9000`), que el navegador no puede
-/// resolver y además violaría Mixed-Content en HTTPS. El proxy rutea
-/// `https://<dominio-público>/uploads/...` hacia MinIO internamente; el
-/// presigned debe estar firmado contra el dominio público para que el browser
-/// pueda hacer el POST sin bloqueo.
+/// **Why this is necessary**: in self-hosted deployments with MinIO behind
+/// a proxy (nginx), `AWS_S3_ENDPOINT_URL` typically points to the internal
+/// Docker hostname (`http://plane-minio:9000`), which the browser cannot
+/// resolve and would also violate Mixed-Content in HTTPS. The proxy routes
+/// `https://<public-domain>/uploads/...` to MinIO internally; the
+/// presigned must be signed against the public domain so that the browser
+/// can perform the POST without blocking.
 pub fn public_s3_endpoint(config: &Config, headers: &HeaderMap) -> String {
     if !config.use_minio {
         return config.aws_endpoint.clone();
     }
 
-    // Scheme: del WEB_URL configurado (https en prod típico).
+    // Scheme: from configured WEB_URL (typically https in prod).
     let scheme = config
         .web_url
         .as_deref()
@@ -73,9 +73,9 @@ pub fn public_s3_endpoint(config: &Config, headers: &HeaderMap) -> String {
         .unwrap_or("http")
         .to_string();
 
-    // Host: honrar X-Forwarded-Host primero (cuando hay proxy), luego Host.
-    // Sólo aceptamos el primer valor y desechamos listas (CVE-2019-16782-like
-    // rarity defensiva: un atacante podría inyectar coma-separados).
+    // Host: honor X-Forwarded-Host first (when proxied), then Host.
+    // We only accept the first value and discard lists (CVE-2019-16782-like
+    // defensive rarity: an attacker could inject comma-separated values).
     let host_header = headers
         .get("x-forwarded-host")
         .or_else(|| headers.get("host"))
@@ -85,15 +85,15 @@ pub fn public_s3_endpoint(config: &Config, headers: &HeaderMap) -> String {
 
     match host_header {
         Some(h) if !h.is_empty() => format!("{scheme}://{h}"),
-        // Fallback conservador: si por alguna razón no hay Host header,
-        // caemos al endpoint interno. Esto no rompe más de lo que ya estaba
-        // roto, y evita emitir un presigned con URL vacía.
+        // Conservative fallback: if for some reason there is no Host header,
+        // we fall back to the internal endpoint. This doesn't break more than
+        // what was already broken, and avoids issuing a presigned with an empty URL.
         _ => config.aws_endpoint.clone(),
     }
 }
 
-/// Extrae el scheme (`https`, `http`, …) de una URL sin traer el crate `url`.
-/// Devuelve `None` si no hay `://` o si el prefijo está vacío.
+/// Extracts the scheme (`https`, `http`, …) from a URL without importing the `url` crate.
+/// Returns `None` if there is no `://` or if the prefix is empty.
 fn scheme_from_url(url: &str) -> Option<&str> {
     let (scheme, _) = url.split_once("://")?;
     let scheme = scheme.trim();
@@ -104,26 +104,26 @@ fn scheme_from_url(url: &str) -> Option<&str> {
     }
 }
 
-/// Genera un presigned POST para subir un objeto a S3/MinIO por multipart/form-data.
+/// Generates a presigned POST to upload an object to S3/MinIO via multipart/form-data.
 ///
-/// - `endpoint_url`: vacío ⇒ AWS S3 real, virtual-hosted style (`https://{bucket}.s3.{region}.amazonaws.com/`);
-///   con valor ⇒ MinIO/compatible, path-style (`{endpoint}/{bucket}`).
-/// - `file_size`: límite superior inclusivo para `content-length-range`. El mínimo se
-///   deja en 1 byte para rechazar uploads vacíos (igual que Django).
-/// - `ttl_secs`: ventana de validez del policy (`expiration`).
+/// - `endpoint_url`: empty ⇒ real AWS S3, virtual-hosted style (`https://{bucket}.s3.{region}.amazonaws.com/`);
+///   with value ⇒ MinIO/compatible, path-style (`{endpoint}/{bucket}`).
+/// - `file_size`: inclusive upper limit for `content-length-range`. The minimum is
+///   left at 1 byte to reject empty uploads (same as Django).
+/// - `ttl_secs`: validity window of the policy (`expiration`).
 ///
-/// Conditions emitidas (igual que Django `S3Storage.generate_presigned_post`):
+/// Emitted conditions (same as Django's `S3Storage.generate_presigned_post`):
 ///   * `{"bucket": <bucket>}`
 ///   * `["content-length-range", 1, file_size]`
 ///   * `{"Content-Type": content_type}`
 ///   * `{"key": object_key}`
 ///
-/// Se añaden las condiciones requeridas por SigV4 para que el servidor re-valide la firma:
+/// Conditions required by SigV4 for the server to re-validate the signature are added:
 ///   * `{"x-amz-algorithm": "AWS4-HMAC-SHA256"}`
 ///   * `{"x-amz-credential": "<access_key>/<yyyymmdd>/<region>/s3/aws4_request"}`
 ///   * `{"x-amz-date": "<yyyymmddThhmmssZ>"}`
-// SigV4 requiere todos estos inputs por separado: agruparlos en un struct
-// sería ruido dado que esta función es una implementación única del spec.
+// SigV4 requires all these inputs separately: grouping them in a struct
+// would be noise given that this function is a one-off implementation of the spec.
 #[allow(clippy::too_many_arguments)]
 pub fn generate_presigned_post(
     bucket: &str,
@@ -146,8 +146,8 @@ pub fn generate_presigned_post(
     let credential_scope = format!("{}/{}/s3/aws4_request", date_stamp, region);
     let x_amz_credential = format!("{}/{}", access_key_id, credential_scope);
 
-    // Ajustar file_size a un mínimo razonable. Django pasa `size_limit = min(FILE_SIZE_LIMIT, size)`;
-    // si cae a 0 o negativo por un payload malformado, corregimos para no emitir un policy inválido.
+    // Adjust file_size to a reasonable minimum. Django passes `size_limit = min(FILE_SIZE_LIMIT, size)`;
+    // if it falls to 0 or negative due to a malformed payload, we correct it to avoid emitting an invalid policy.
     let max_bytes = file_size.max(1);
 
     // ── Policy document ───────────────────────────────────────────────────────
@@ -166,10 +166,10 @@ pub fn generate_presigned_post(
 
     let policy_json = serde_json::to_string(&policy_doc)
         .map_err(|e| AppError::Internal(anyhow::anyhow!("serialize policy: {e}")))?;
-    // STANDARD (no URL-safe) coincide con boto3; S3 rechaza URL-safe aquí.
+    // STANDARD (not URL-safe) matches boto3; S3 rejects URL-safe here.
     let policy_b64 = STANDARD.encode(policy_json.as_bytes());
 
-    // ── Signing key — HMAC-SHA256 en cadena: AWS4+secret → date → region → service → aws4_request
+    // ── Signing key — Chained HMAC-SHA256: AWS4+secret → date → region → service → aws4_request
     let k_date = hmac_sha256::HMAC::mac(
         date_stamp.as_bytes(),
         format!("AWS4{}", secret_access_key).as_bytes(),
@@ -178,23 +178,23 @@ pub fn generate_presigned_post(
     let k_service = hmac_sha256::HMAC::mac(b"s3", k_region);
     let k_signing = hmac_sha256::HMAC::mac(b"aws4_request", k_service);
 
-    // En presigned POST el string-to-sign es EL policy base64 directamente
-    // (no el "AWS4-HMAC-SHA256\n<date>\n<scope>\n<hash>" típico de los otros flujos SigV4).
+    // In presigned POST the string-to-sign is the base64 policy directly
+    // (not the typical "AWS4-HMAC-SHA256\n<date>\n<scope>\n<hash>" of other SigV4 flows).
     let signature_bytes = hmac_sha256::HMAC::mac(policy_b64.as_bytes(), k_signing);
     let signature_hex = hex_encode_lower(&signature_bytes);
 
-    // ── URL al bucket ────────────────────────────────────────────────────────
+    // ── URL to the bucket ────────────────────────────────────────────────────────
     let url = if endpoint_url.trim().is_empty() {
-        // AWS S3 real → virtual-hosted style. Incluye la region para evitar el redirect 307
-        // que rompe CORS (ver boto3 issue #1982).
+        // Real AWS S3 → virtual-hosted style. Includes region to avoid 307 redirect
+        // that breaks CORS (see boto3 issue #1982).
         format!("https://{bucket}.s3.{region}.amazonaws.com/")
     } else {
-        // MinIO / compatible → path-style. El endpoint ya viene con scheme.
+        // MinIO / compatible → path-style. Endpoint already comes with scheme.
         let trimmed = endpoint_url.trim_end_matches('/');
         format!("{trimmed}/{bucket}")
     };
 
-    // ── Fields que el cliente debe enviar en el multipart ────────────────────
+    // ── Fields the client must send in the multipart ────────────────────
     let mut fields: HashMap<String, String> = HashMap::new();
     fields.insert("key".to_string(), object_key.to_string());
     fields.insert("Content-Type".to_string(), content_type.to_string());
@@ -207,8 +207,8 @@ pub fn generate_presigned_post(
     Ok(PresignedPost { url, fields })
 }
 
-/// Hex-encoding de 32 bytes (salida HMAC-SHA256) en minúsculas. Evitamos añadir
-/// un crate solo para esto; la función es trivial y libre de alocaciones intermedias.
+/// Hex-encoding of 32 bytes (HMAC-SHA256 output) in lowercase. We avoid adding
+/// a crate just for this; the function is trivial and free of intermediate allocations.
 fn hex_encode_lower(bytes: &[u8]) -> String {
     const HEX: &[u8; 16] = b"0123456789abcdef";
     let mut out = String::with_capacity(bytes.len() * 2);
@@ -223,8 +223,8 @@ fn hex_encode_lower(bytes: &[u8]) -> String {
 mod tests {
     use super::*;
 
-    /// Test vector oficial de AWS: deriva la signing key para los parámetros
-    /// canónicos de la documentación SigV4 y verifica el hex.
+    /// AWS official test vector: derives the signing key for the canonical
+    /// parameters of the SigV4 documentation and verifies the hex.
     /// https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv-create-signed-request.html
     #[test]
     fn signing_key_matches_aws_reference() {
@@ -233,7 +233,7 @@ mod tests {
         let k_region = hmac_sha256::HMAC::mac(b"us-east-1", k_date);
         let k_service = hmac_sha256::HMAC::mac(b"iam", k_region);
         let k_signing = hmac_sha256::HMAC::mac(b"aws4_request", k_service);
-        // Valor documentado por AWS para estos inputs (sección "Derive signing key").
+        // Value documented by AWS for these inputs (section "Derive signing key").
         assert_eq!(
             hex_encode_lower(&k_signing),
             "c4afb1cc5771d871763a393e44b703571b55cc28424d1a5e86da6ed3c154a4b9"
@@ -271,7 +271,7 @@ mod tests {
         assert_eq!(p.fields["Content-Type"], "image/jpeg");
         assert_eq!(p.fields["x-amz-algorithm"], "AWS4-HMAC-SHA256");
         assert!(p.fields["x-amz-credential"].contains("/us-east-1/s3/aws4_request"));
-        // signature es hex de 64 chars
+        // signature is hex of 64 chars
         assert_eq!(p.fields["x-amz-signature"].len(), 64);
         assert!(p.fields["x-amz-signature"]
             .chars()

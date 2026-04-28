@@ -1,5 +1,5 @@
 // src/routes/webhooks.rs
-//! Endpoints de Webhooks de workspace.
+//! Workspace Webhook endpoints.
 //!
 //!   GET    /api/workspaces/{slug}/webhooks/
 //!   POST   /api/workspaces/{slug}/webhooks/
@@ -102,8 +102,8 @@ pub struct UpdateWebhookRequest {
     pub issue_comment: Option<bool>,
 }
 
-/// Genera un secret key a partir de dos UUIDs v4 concatenados (sin guiones).
-/// Produce 64 caracteres hexadecimales con 128 bits de entropía del OS.
+/// Generates a secret key from two concatenated v4 UUIDs (no hyphens).
+/// Produces 64 hexadecimal characters with 128 bits of OS entropy.
 fn generate_secret() -> String {
     format!(
         "{}{}",
@@ -119,7 +119,7 @@ fn generate_secret() -> String {
     path = "/api/workspaces/{slug}/webhooks/",
     tag = "Webhooks",
     params(("slug" = String, Path, description = "Workspace slug")),
-    responses((status = 200, description = "Lista de webhooks")),
+    responses((status = 200, description = "List of webhooks")),
     security(("TokenAuth" = []))
 )]
 pub async fn list_webhooks(
@@ -140,18 +140,18 @@ pub async fn list_webhooks(
     Ok(Json(rows.into_iter().map(WebhookResponse::from_model).collect()))
 }
 
-// ── Validación de URL (espejo Django webhook.validate_schema/validate_domain)──
+// ── URL Validation (mirrors Django webhook.validate_schema/validate_domain) ──
 
-/// Valida que la URL sea un webhook destino válido.
+/// Validates that the URL is a valid destination webhook.
 ///
-/// Reglas (espejan `plane.db.models.webhook.validate_schema/validate_domain`):
-/// 1. Esquema obligatorio `http` o `https`.
-/// 2. Host presente y no es loopback (`localhost`, `127.0.0.1`).
+/// Rules (mirror `plane.db.models.webhook.validate_schema/validate_domain`):
+/// 1. Mandatory scheme `http` or `https`.
+/// 2. Host present and not loopback (`localhost`, `127.0.0.1`).
 ///
-/// Antipatrón evitado: no se ejecuta `getaddrinfo` aquí (lo que sí hace el
-/// serializer de Django) porque acoplar la validación a DNS introduce no
-/// determinismo y latencia en una ruta caliente. La verificación SSRF
-/// (rangos privados / link-local) se realiza en el pipeline de envío real.
+/// Anti-pattern avoided: `getaddrinfo` is not executed here (as Django's
+/// serializer does) because coupling validation to DNS introduces
+/// non-determinism and latency in a hot path. SSRF verification
+/// (private / link-local ranges) is performed in the actual dispatch pipeline.
 fn validate_webhook_url(raw: &str) -> Result<(), AppError> {
     let trimmed = raw.trim();
     let lower = trimmed.to_ascii_lowercase();
@@ -186,8 +186,8 @@ fn validate_webhook_url(raw: &str) -> Result<(), AppError> {
     tag = "Webhooks",
     params(("slug" = String, Path, description = "Workspace slug")),
     responses(
-        (status = 201, description = "Webhook creado"),
-        (status = 400, description = "URL inválida"),
+        (status = 201, description = "Webhook created"),
+        (status = 400, description = "Invalid URL"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -199,12 +199,12 @@ pub async fn create_webhook(
     require_workspace_admin(&guard.member)?;
 
     if body.url.trim().is_empty() {
-        return Err(AppError::BadRequest("url es requerida".into()));
+        return Err(AppError::BadRequest("url is required".into()));
     }
 
     validate_webhook_url(&body.url)?;
 
-    // created_at/updated_at explícitos (NOT NULL sin DEFAULT).
+    // explicit created_at/updated_at (NOT NULL without DEFAULT).
     let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
 
     let webhook = webhooks::ActiveModel {
@@ -244,8 +244,8 @@ pub async fn create_webhook(
         ("pk" = Uuid, Path, description = "Webhook ID"),
     ),
     responses(
-        (status = 200, description = "Detalle del webhook"),
-        (status = 404, description = "No encontrado"),
+        (status = 200, description = "Webhook details"),
+        (status = 404, description = "Not found"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -278,8 +278,8 @@ pub async fn get_webhook(
         ("pk" = Uuid, Path, description = "Webhook ID"),
     ),
     responses(
-        (status = 200, description = "Webhook actualizado"),
-        (status = 404, description = "No encontrado"),
+        (status = 200, description = "Webhook updated"),
+        (status = 404, description = "Not found"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -328,7 +328,7 @@ pub async fn update_webhook(
         ("slug" = String, Path, description = "Workspace slug"),
         ("pk" = Uuid, Path, description = "Webhook ID"),
     ),
-    responses((status = 204, description = "Eliminado")),
+    responses((status = 204, description = "Deleted")),
     security(("TokenAuth" = []))
 )]
 pub async fn delete_webhook(
@@ -363,7 +363,7 @@ pub async fn delete_webhook(
         ("slug" = String, Path, description = "Workspace slug"),
         ("pk" = Uuid, Path, description = "Webhook ID"),
     ),
-    responses((status = 200, description = "Secret regenerado")),
+    responses((status = 200, description = "Secret regenerated")),
     security(("TokenAuth" = []))
 )]
 pub async fn regenerate_secret(
@@ -399,7 +399,7 @@ pub async fn regenerate_secret(
         ("slug" = String, Path, description = "Workspace slug"),
         ("webhook_id" = Uuid, Path, description = "Webhook ID"),
     ),
-    responses((status = 200, description = "Logs del webhook")),
+    responses((status = 200, description = "Webhook logs")),
     security(("TokenAuth" = []))
 )]
 pub async fn list_webhook_logs(

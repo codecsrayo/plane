@@ -1,19 +1,19 @@
 // src/routes/v1_router.rs
-//! Router público `api/v1/` — autenticación por API key (`x-api-key`).
+//! Public router `api/v1/` — API key authentication (`x-api-key`).
 //!
-//! Espejo de `apps/api/plane/api/urls/` (Django `plane.api` app).
-//! Montado bajo `/api/v1/` en `mod.rs`.
+//! Mirror of `apps/api/plane/api/urls/` (Django `plane.api` app).
+//! Mounted under `/api/v1/` in `mod.rs`.
 //!
-//! ## Handlers reutilizados
-//! La mayoría de los handlers del router `api/` (session) usan `ProjectMemberGuard`
-//! que internamente usa `AnyAuth` (acepta session cookie O API key).
-//! Por tanto, apuntamos a los mismos handlers sin duplicar lógica.
+//! ## Reused Handlers
+//! Most of the `api/` (session) router handlers use `ProjectMemberGuard`
+//! which internally uses `AnyAuth` (accepts session cookie OR API key).
+//! Therefore, we point to the same handlers without duplicating logic.
 //!
-//! ## Handlers nuevos (solo en api/v1)
-//! - `get_issue_activity`   — detalle de una actividad individual
-//! - `get_project_summary`  — counts de members/states/labels/cycles/modules/issues/intakes/pages
+//! ## New Handlers (only in api/v1)
+//! - `get_issue_activity`   — detail of an individual activity
+//! - `get_project_summary`  — counts of members/states/labels/cycles/modules/issues/intakes/pages
 //!
-//! ## Rutas cubiertas
+//! ## Routes Covered
 //! - Work items (legacy `/issues/` + nuevo `/work-items/`)
 //! - Cycles, Modules, Labels, Members, States, Estimates
 //! - Projects (CRUD + archive + summary)
@@ -21,10 +21,10 @@
 //! - Assets (user-assets + workspace assets v1)
 //! - Users me
 //!
-//! ## Antipatrones evitados
-//! - Sin duplicación de handlers: reutiliza los existentes vía AnyAuth.
-//! - Sin SQL injection: filtros via SeaORM tipado.
-//! - Sin N+1: queries batch donde aplica.
+//! ## Avoided Anti-patterns
+//! - No handler duplication: reuses existing ones via AnyAuth.
+//! - No SQL injection: filters via typed SeaORM.
+//! - No N+1: batch queries where applicable.
 
 use axum::{
     extract::{Path, Query, State},
@@ -67,15 +67,15 @@ use crate::{
     AppState,
 };
 
-// ── Nuevos handlers exclusivos de api/v1 ─────────────────────────────────────
+// ── New handlers exclusive to api/v1 ─────────────────────────────────────
 
 /// GET /api/v1/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/activities/{pk}/
 /// GET /api/v1/workspaces/{slug}/projects/{project_id}/work-items/{issue_id}/activities/{pk}/
 ///
-/// Detalle de una actividad específica de un issue.
-/// Espejo de `IssueActivityDetailAPIEndpoint.get`
+/// Detail of a specific issue activity.
+/// Mirror of `IssueActivityDetailAPIEndpoint.get`
 /// (`apps/api/plane/api/views/issue.py`).
-/// Excluye activities de tipo comment/vote/reaction/draft.
+/// Excludes activities of type comment/vote/reaction/draft.
 pub async fn get_issue_activity(
     State(state): State<AppState>,
     guard: ProjectMemberGuard,
@@ -133,10 +133,10 @@ pub async fn get_issue_activity(
 
 /// GET /api/v1/workspaces/{slug}/projects/{project_id}/summary/
 ///
-/// Counts de: members, states, labels, cycles, modules, issues, intakes, pages.
-/// Espejo de `ProjectSummaryAPIEndpoint.get`
+/// Counts of: members, states, labels, cycles, modules, issues, intakes, pages.
+/// Mirror of `ProjectSummaryAPIEndpoint.get`
 /// (`apps/api/plane/api/views/project.py`).
-/// Requiere workspace admin.
+/// Requires workspace admin.
 #[derive(Debug, Deserialize)]
 pub struct SummaryQuery {
     fields: Option<String>,
@@ -172,18 +172,18 @@ pub async fn get_project_summary(
     }))
 }
 
-/// Calcula los counts de un proyecto. Compartido por:
-/// - `v1_router::get_project_summary`        — envuelve en `{id, name, identifier, counts}`
-/// - `routes::projects::get_project_summary` — devuelve los counts planos en root
+/// Computes project counts. Shared by:
+/// - `v1_router::get_project_summary`        — wraps in `{id, name, identifier, counts}`
+/// - `routes::projects::get_project_summary` — returns flat counts at root
 ///
-/// `require_admin = true` espeja el endpoint público (`api/v1/`), que requiere
-/// rol Admin de workspace. `false` permite cualquier miembro activo (ruta
-/// interna del frontend, simétrica con el resto de endpoints de proyecto).
+/// `require_admin = true` mirrors the public endpoint (`api/v1/`), which requires
+/// workspace Admin role. `false` allows any active member (internal
+/// frontend route, symmetric with the rest of the project endpoints).
 ///
-/// Antipatrones evitados:
-/// - Sin N+1: cada count es una sola query `COUNT(*)` con filtro por proyecto.
-/// - Sin SQL injection: filtros tipados vía SeaORM; el parámetro `fields` se
-///   valida contra `ALLOWED_SUMMARY_FIELDS` antes de usarse.
+/// Avoided Anti-patterns:
+/// - No N+1: each count is a single `COUNT(*)` query with project filter.
+/// - No SQL injection: typed filters via SeaORM; the `fields` parameter is
+///   validated against `ALLOWED_SUMMARY_FIELDS` before use.
 pub async fn compute_project_summary(
     state: &AppState,
     user: &crate::entities::users::Model,
@@ -322,15 +322,15 @@ pub async fn compute_project_summary(
 
 // ── Router builder ────────────────────────────────────────────────────────────
 
-/// Construye el router `/api/v1/` con autenticación por API key.
+/// Builds the `/api/v1/ router with API key authentication.
 ///
-/// Todos los handlers usan `AnyAuth` o `ProjectMemberGuard` (que usa `AnyAuth`)
-/// por lo que aceptan tanto session cookie como header `x-api-key`.
+/// All handlers use `AnyAuth` or `ProjectMemberGuard` (which uses `AnyAuth`)
+/// so they accept both session cookie and `x-api-key` header.
 pub fn v1_router(state: AppState) -> Router<AppState> {
     Router::new()
         // ── Users ──────────────────────────────────────────────────────────
         // GET/PATCH /api/v1/users/me/
-        // Espejo de `UserAPIEndpoint` (plane/api/views/user.py)
+        // Mirror of `UserAPIEndpoint` (plane/api/views/user.py)
         .route(
             "/users/me",
             get(users::get_me).patch(users::update_me),
@@ -468,7 +468,7 @@ pub fn v1_router(state: AppState) -> Router<AppState> {
             get(cycles_routes::list_archived_cycles),
         )
         // GET/DELETE /api/v1/workspaces/{slug}/projects/{project_id}/archived-cycles/{pk}/unarchive/
-        // Nota: Django api/v1 usa DELETE para desarchivar (distinto de app/ que usa DELETE en mismo path)
+        // Note: Django api/v1 uses DELETE to unarchive (different from app/ which uses DELETE on same path)
         .route(
             "/workspaces/{slug}/projects/{project_id}/archived-cycles/{pk}",
             get(cycles_routes::get_archived_cycle),
@@ -524,7 +524,7 @@ pub fn v1_router(state: AppState) -> Router<AppState> {
         // GET /api/v1/workspaces/{slug}/work-items/search/
         .route(
             "/workspaces/{slug}/work-items/search",
-            get(issues::list_issues),  // reutiliza list con ?search= param
+            get(issues::list_issues),  // reuses list with ?search= param
         )
         // GET /api/v1/workspaces/{slug}/work-items/{combined}
         // (project_identifier-issue_identifier)

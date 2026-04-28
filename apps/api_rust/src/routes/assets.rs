@@ -1,10 +1,10 @@
 // src/routes/assets.rs
-//! Endpoints de gestión de assets (imágenes de perfil, logos, covers, adjuntos).
+//! Asset management endpoints (profile images, logos, covers, attachments).
 //!
-//! Equivalente a `plane/app/views/asset/v2.py` en Django.
-//! Usa presigned URLs de S3/MinIO para upload directo desde el cliente.
+//! Equivalent to `plane/app/views/asset/v2.py` in Django.
+//! Uses S3/MinIO presigned URLs for direct upload from the client.
 //!
-//! Rutas implementadas:
+//! Implemented routes:
 //!   POST   /api/assets/v2/user-assets/
 //!   PATCH  /api/assets/v2/user-assets/{asset_id}/
 //!   DELETE /api/assets/v2/user-assets/{asset_id}/
@@ -40,9 +40,9 @@ use crate::{
     AppState,
 };
 
-// ── Constantes ────────────────────────────────────────────────────────────────
+// ── Constants ────────────────────────────────────────────────────────────────
 
-/// Tipos MIME permitidos para imágenes.
+/// Allowed MIME types for images.
 const ALLOWED_IMAGE_TYPES: &[&str] = &[
     "image/jpeg",
     "image/png",
@@ -51,13 +51,13 @@ const ALLOWED_IMAGE_TYPES: &[&str] = &[
     "image/gif",
 ];
 
-/// Tamaño máximo por defecto: 5 MB.
+/// Default maximum size: 5 MB.
 const DEFAULT_FILE_SIZE_LIMIT: i64 = 5 * 1024 * 1024;
 
-/// TTL de presigned URL de upload: 1 hora.
+/// Upload presigned URL TTL: 1 hour.
 const UPLOAD_URL_TTL_SECS: u64 = 3600;
 
-// ── Entity types (espejo de Django FileAsset.EntityTypeContext) ───────────────
+// ── Entity types (mirror of Django FileAsset.EntityTypeContext) ───────────────
 
 const ENTITY_USER_AVATAR: &str = "USER_AVATAR";
 const ENTITY_USER_COVER: &str = "USER_COVER";
@@ -68,7 +68,7 @@ const ENTITY_ISSUE_DESCRIPTION: &str = "ISSUE_DESCRIPTION";
 const ENTITY_PAGE_DESCRIPTION: &str = "PAGE_DESCRIPTION";
 const ENTITY_COMMENT_DESCRIPTION: &str = "COMMENT_DESCRIPTION";
 
-/// Todos los entity types válidos.
+/// All valid entity types.
 const VALID_ENTITY_TYPES: &[&str] = &[
     ENTITY_USER_AVATAR,
     ENTITY_USER_COVER,
@@ -80,15 +80,15 @@ const VALID_ENTITY_TYPES: &[&str] = &[
     ENTITY_COMMENT_DESCRIPTION,
 ];
 
-/// Entity types válidos para user-assets.
+/// Valid entity types for user-assets.
 const USER_ENTITY_TYPES: &[&str] = &[ENTITY_USER_AVATAR, ENTITY_USER_COVER];
 
-/// Tipos MIME permitidos para issue attachments (V2).
+/// Allowed MIME types for issue attachments (V2).
 ///
-/// Mirror exacto de `ATTACHMENT_MIME_TYPES` en Django
+/// Exact mirror of `ATTACHMENT_MIME_TYPES` in Django
 /// (`apps/api/plane/settings/common.py:371-459`).
-/// Se valida en el POST del upload para rechazar tipos no permitidos con
-/// HTTP 400 — paridad con `IssueAttachmentV2Endpoint.post`.
+/// Validated in upload POST to reject non-allowed types with
+/// HTTP 400 — parity with `IssueAttachmentV2Endpoint.post`.
 const ATTACHMENT_MIME_TYPES: &[&str] = &[
     // Images
     "image/jpeg",
@@ -180,30 +180,30 @@ const ATTACHMENT_MIME_TYPES: &[&str] = &[
 
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct InitiateUploadRequest {
-    /// Nombre del archivo original.
+    /// Original file name.
     pub name: String,
     /// MIME type. Default: `image/jpeg`.
     #[serde(rename = "type")]
     pub content_type: Option<String>,
-    /// Tamaño en bytes. Se limita al máximo del servidor.
+    /// Size in bytes. Limited to server maximum.
     pub size: Option<i64>,
-    /// Tipo de entidad (USER_AVATAR, WORKSPACE_LOGO, etc.).
+    /// Entity type (USER_AVATAR, WORKSPACE_LOGO, etc.).
     pub entity_type: String,
-    /// ID de la entidad asociada (issue_id, page_id, etc.) cuando aplica.
+    /// ID of the associated entity (issue_id, page_id, etc.) when applicable.
     pub entity_identifier: Option<Uuid>,
 }
 
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct CompleteUploadRequest {
-    /// Metadatos adicionales a guardar en `attributes`.
+    /// Additional metadata to save in `attributes`.
     pub attributes: Option<serde_json::Value>,
 }
 
 #[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct UploadResponse {
-    /// Datos para el POST multipart/form-data al bucket.
-    /// El cliente envía los `fields` como campos del form + el `file`.
-    /// Espejo de `S3Storage.generate_presigned_post` en Django (boto3).
+    /// Data for multipart/form-data POST to the bucket.
+    /// Client sends `fields` as form fields + the `file`.
+    /// Mirror of `S3Storage.generate_presigned_post` in Django (boto3).
     pub upload_data: PresignedPost,
     pub asset_id: Uuid,
     pub asset_url: String,
@@ -228,8 +228,8 @@ pub struct AssetResponse {
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
 fn asset_url_from_key(asset_key: &str, endpoint: &str, bucket: &str) -> String {
-    // URL pública si el bucket es público; presigned si es privado.
-    // En el flujo de Plane la URL se genera on-demand al hacer GET.
+    // Public URL if bucket is public; presigned if private.
+    // In the Plane flow, the URL is generated on-demand during GET.
     format!("{endpoint}/{bucket}/{asset_key}")
 }
 
@@ -250,7 +250,7 @@ fn asset_to_response(a: &file_assets::Model) -> AssetResponse {
     }
 }
 
-/// Marca un asset como eliminado (soft-delete) sin borrar del bucket.
+/// Marks an asset as deleted (soft-delete) without deleting from bucket.
 async fn soft_delete_asset(
     db: &sea_orm::DatabaseConnection,
     asset: file_assets::Model,
@@ -262,7 +262,7 @@ async fn soft_delete_asset(
     Ok(())
 }
 
-/// Propaga el `asset_id` a la entidad correspondiente tras confirmar el upload.
+/// Propagates `asset_id` to the corresponding entity after confirming upload.
 async fn propagate_asset_to_entity(
     db: &sea_orm::DatabaseConnection,
     asset: &file_assets::Model,
@@ -327,7 +327,7 @@ async fn propagate_asset_to_entity(
             }
         }
         // ISSUE_ATTACHMENT, ISSUE_DESCRIPTION, PAGE_DESCRIPTION, COMMENT_DESCRIPTION
-        // se resuelven por issue_id / page_id / comment_id ya almacenados en el asset.
+        // are resolved by issue_id / page_id / comment_id already stored in the asset.
         _ => {}
     }
 
@@ -338,8 +338,8 @@ async fn propagate_asset_to_entity(
 
 /// POST /api/assets/v2/user-assets/
 ///
-/// Inicia el upload de un asset de usuario (avatar o cover).
-/// Devuelve una presigned URL de PUT para subir directamente a S3.
+/// Initiates upload of a user asset (avatar or cover).
+/// Returns a PUT presigned URL for direct upload to S3.
 #[utoipa::path(
     post,
     path = "/assets/v2/user-assets/",
@@ -430,7 +430,7 @@ pub async fn initiate_user_asset_upload(
 
 /// PATCH /api/assets/v2/user-assets/{asset_id}/
 ///
-/// Confirma que el upload a S3 fue exitoso y propaga el asset_id a la entidad.
+/// Confirms that upload to S3 was successful and propagates asset_id to the entity.
 #[utoipa::path(
     patch,
     path = "/assets/v2/user-assets/{asset_id}/",
@@ -502,7 +502,7 @@ pub async fn delete_user_asset(
 
 /// POST /api/assets/v2/workspaces/{slug}/
 ///
-/// Inicia el upload de un asset de workspace (logo, project cover, issue attachment, etc.).
+/// Initiates upload of a workspace asset (logo, project cover, issue attachment, etc.).
 #[utoipa::path(
     post,
     path = "/assets/v2/workspaces/{slug}/",
@@ -536,7 +536,7 @@ pub async fn initiate_workspace_asset_upload(
     let ws_id = guard.workspace.id;
     let asset_key = format!("{}/{}-{}", ws_id, Uuid::new_v4().simple(), body.name);
 
-    // Determinar los campos de entidad según entity_type
+    // Determine entity fields according to entity_type
     let (issue_id, project_id, page_id, comment_id, entity_identifier) =
         match body.entity_type.as_str() {
             ENTITY_ISSUE_ATTACHMENT | ENTITY_ISSUE_DESCRIPTION => (
@@ -627,7 +627,7 @@ pub async fn initiate_workspace_asset_upload(
 
 /// PATCH /api/assets/v2/workspaces/{slug}/{asset_id}/
 ///
-/// Confirma el upload y propaga el asset_id a la entidad correspondiente.
+/// Confirms upload and propagates asset_id to the corresponding entity.
 #[utoipa::path(
     patch,
     path = "/assets/v2/workspaces/{slug}/{asset_id}/",
@@ -703,7 +703,7 @@ pub async fn delete_workspace_asset(
 
 /// GET /api/assets/v2/workspaces/{slug}/{asset_id}/
 ///
-/// Devuelve metadata del asset. La URL de descarga se genera on-demand en el cliente.
+/// Returns asset metadata. Download URL is generated on-demand on the client.
 #[utoipa::path(
     get,
     path = "/assets/v2/workspaces/{slug}/{asset_id}/",
@@ -742,15 +742,15 @@ pub async fn get_workspace_asset(
 
 /// GET /api/assets/v2/static/{asset_id}/
 ///
-/// Devuelve metadata de un asset estático (sin requerir pertenencia a workspace).
-/// El cliente usa la `asset` key para construir la URL de descarga.
+/// Returns metadata of a static asset (without requiring workspace membership).
+/// Client uses `asset` key to build download URL.
 ///
-/// **Paridad Django (`StaticFileAssetEndpoint`, `asset/v2.py:432`)**: este
-/// endpoint es público (`permission_classes = [AllowAny]`) porque lo consumen
-/// páginas sin sesión (ej. avatares en sign-in, logos de workspace en landing).
-/// Para evitar filtrar metadata de assets privados vía ID conocido, sólo se
-/// sirven entity_types que ya son públicos por naturaleza: USER_AVATAR,
-/// USER_COVER, WORKSPACE_LOGO, PROJECT_COVER (ver Django línea 449-459).
+/// **Django Parity (`StaticFileAssetEndpoint`, `asset/v2.py:432`)**: this
+/// endpoint is public (`permission_classes = [AllowAny]`) because it's consumed
+/// by session-less pages (e.g. avatars in sign-in, workspace logos in landing).
+/// To avoid leaking metadata of private assets via known ID, only
+/// entity_types that are already public by nature are served: USER_AVATAR,
+/// USER_COVER, WORKSPACE_LOGO, PROJECT_COVER (see Django lines 449-459).
 #[utoipa::path(
     get,
     path = "/assets/v2/static/{asset_id}/",
@@ -774,9 +774,9 @@ pub async fn get_static_asset(
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
-    // Whitelist: sólo permitir entity_types públicos. Evita que un ID filtrado
-    // de un ISSUE_ATTACHMENT/PAGE_DESCRIPTION exponga metadata vía endpoint
-    // público. Paridad exacta con Django `asset/v2.py:449-459`.
+    // Whitelist: only allow public entity_types. Prevents a leaked ID
+    // of an ISSUE_ATTACHMENT/PAGE_DESCRIPTION from exposing metadata via public
+    // endpoint. Exact parity with Django `asset/v2.py:449-459`.
     const PUBLIC_ENTITY_TYPES: &[&str] = &[
         ENTITY_USER_AVATAR,
         ENTITY_USER_COVER,
@@ -797,15 +797,15 @@ pub async fn get_static_asset(
 
 // ── Issue Attachments (V2) ────────────────────────────────────────────────────
 //
-// Mirror Django: `IssueAttachmentV2Endpoint` en
+// Mirror Django: `IssueAttachmentV2Endpoint` in
 // `apps/api/plane/app/views/issue/attachment.py`.
 // URL Django: `apps/api/plane/app/urls/issue.py:137-146`.
 
-/// Response shape del `IssueAttachmentSerializer` Django (`fields = "__all__"` + `asset_url`).
+/// Response shape of Django `IssueAttachmentSerializer` (`fields = "__all__"` + `asset_url`).
 ///
-/// Espejo de `plane/app/serializers/issue.py:IssueAttachmentSerializer`.
-/// Campos en orden idéntico al modelo `FileAsset` para paridad con consumidores
-/// que iteren por `Object.keys()` en el frontend.
+/// Mirror of `plane/app/serializers/issue.py:IssueAttachmentSerializer`.
+/// Fields in identical order to `FileAsset` model for parity with consumers
+/// that iterate via `Object.keys()` in the frontend.
 #[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct IssueAttachmentV2Response {
     pub id: Uuid,
@@ -832,16 +832,16 @@ pub struct IssueAttachmentV2Response {
     pub comment: Option<Uuid>,
     pub page: Option<Uuid>,
     pub draft_issue: Option<Uuid>,
-    /// Ruta relativa al endpoint de descarga del attachment.
-    /// Mirror: `FileAsset.asset_url` property (Django) cuando
+    /// Relative path to attachment download endpoint.
+    /// Mirror: `FileAsset.asset_url` property (Django) when
     /// `entity_type == ISSUE_ATTACHMENT`:
     /// `/api/assets/v2/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/attachments/{id}/`
     pub asset_url: String,
 }
 
-/// Construye el `asset_url` relativo para un `ISSUE_ATTACHMENT`.
+/// Builds relative `asset_url` for an `ISSUE_ATTACHMENT`.
 ///
-/// Mirror exacto de `FileAsset.asset_url` property para ISSUE_ATTACHMENT:
+/// Exact mirror of `FileAsset.asset_url` property for ISSUE_ATTACHMENT:
 /// `apps/api/plane/db/models/asset.py:89-90`.
 fn issue_attachment_asset_url(
     slug: &str,
@@ -858,13 +858,13 @@ fn issue_attachment_to_response(
     a: &file_assets::Model,
     slug: &str,
 ) -> IssueAttachmentV2Response {
-    // Los campos FK con nombre original del modelo (`workspace`, `project`, `issue`, ...)
-    // se rellenan con los UUID crudos — mismo shape que DRF default con
-    // `fields = "__all__"` sobre un `ForeignKey`.
+    // FK fields with original model names (`workspace`, `project`, `issue`, ...)
+    // are filled with raw UUIDs — same shape as DRF default with
+    // `fields = "__all__"` on a `ForeignKey`.
     let asset_url = match (a.project_id, a.issue_id) {
         (Some(pid), Some(iid)) => issue_attachment_asset_url(slug, pid, iid, a.id),
-        // Fallback seguro: si falta algún id (no debería para ISSUE_ATTACHMENT),
-        // emitimos la ruta relativa al asset estático para no romper el cliente.
+        // Safe fallback: if any id is missing (shouldn't for ISSUE_ATTACHMENT),
+        // we emit relative path to static asset to not break client.
         _ => format!("/api/assets/v2/static/{}/", a.id),
     };
 
@@ -899,13 +899,13 @@ fn issue_attachment_to_response(
 
 /// GET /api/assets/v2/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/attachments/
 ///
-/// Lista los attachments subidos (`is_uploaded = true`) de un issue.
+/// Lists uploaded attachments (`is_uploaded = true`) of an issue.
 ///
-/// Mirror exacto de `IssueAttachmentV2Endpoint.get` sin `pk`
+/// Exact mirror of `IssueAttachmentV2Endpoint.get` without `pk`
 /// (`apps/api/plane/app/views/issue/attachment.py:169-200`):
-/// - Permisos: ADMIN / MEMBER / GUEST (validado por `ProjectMemberGuard` +
+/// - Permissions: ADMIN / MEMBER / GUEST (validated by `ProjectMemberGuard` +
 ///   `require_role(ROLE_GUEST)`).
-/// - Filtro: `issue_id`, `entity_type = 'ISSUE_ATTACHMENT'`, workspace, project,
+/// - Filter: `issue_id`, `entity_type = 'ISSUE_ATTACHMENT'`, workspace, project,
 ///   `is_uploaded = true`.
 #[utoipa::path(
     get,
@@ -918,9 +918,9 @@ fn issue_attachment_to_response(
         ("issue_id" = Uuid, Path, description = "Issue ID"),
     ),
     responses(
-        (status = 200, description = "Lista de attachments del issue",
+        (status = 200, description = "List of issue attachments",
             body = Vec<IssueAttachmentV2Response>),
-        (status = 403, description = "Sin permisos"),
+        (status = 403, description = "Forbidden"),
     )
 )]
 pub async fn list_issue_attachments_v2(
@@ -928,16 +928,16 @@ pub async fn list_issue_attachments_v2(
     guard: ProjectMemberGuard,
     Path((slug, _project_id, issue_id)): Path<(String, Uuid, Uuid)>,
 ) -> Result<Json<Vec<IssueAttachmentV2Response>>, AppError> {
-    // `allow_permission([ROLE.ADMIN, ROLE.MEMBER, ROLE.GUEST])` en Django.
+    // `allow_permission([ROLE.ADMIN, ROLE.MEMBER, ROLE.GUEST])` in Django.
     require_role(
         guard.project_member.role,
         guard.workspace_member.role,
         ROLE_GUEST,
     )?;
 
-    // Importante: filtramos por `project.id` del guard (ya resuelto y validado
-    // contra el workspace). No confiamos en el `project_id` del path extractor
-    // crudo — `guard.project` garantiza que existe y pertenece al workspace.
+    // Important: we filter by `project.id` from the guard (already resolved and
+    // validated against the workspace). We don't trust raw path extractor `project_id`
+    // — `guard.project` guarantees it exists and belongs to the workspace.
     let attachments = file_assets::Entity::find()
         .filter(file_assets::Column::WorkspaceId.eq(guard.workspace.id))
         .filter(file_assets::Column::ProjectId.eq(guard.project.id))
@@ -959,20 +959,20 @@ pub async fn list_issue_attachments_v2(
 
 // ── POST /assets/v2/.../issues/{id}/attachments/ (initiate upload) ────────────
 
-/// Body del POST V2. Paridad con `request.data` de `IssueAttachmentV2Endpoint.post`:
-/// `name`, `type`, `size`. Ninguno es opcional en el path exitoso Django
-/// (faltar `type` → 400).
+/// V2 POST body. Parity with `request.data` from `IssueAttachmentV2Endpoint.post`:
+/// `name`, `type`, `size`. None are optional in successful Django path
+/// (missing `type` → 400).
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct InitiateIssueAttachmentV2Request {
     pub name: String,
-    /// MIME type. Debe estar en `ATTACHMENT_MIME_TYPES`.
+    /// MIME type. Must be in `ATTACHMENT_MIME_TYPES`.
     #[serde(rename = "type")]
     pub content_type: String,
-    /// Tamaño en bytes. Se clampa a `DEFAULT_FILE_SIZE_LIMIT`.
+    /// Size in bytes. Clamped to `DEFAULT_FILE_SIZE_LIMIT`.
     pub size: Option<i64>,
 }
 
-/// Response del POST V2. Paridad exacta con Django
+/// V2 POST response. Exact parity with Django
 /// (`apps/api/plane/app/views/issue/attachment.py:138-145`):
 /// `{upload_data, asset_id, attachment, asset_url}`.
 #[derive(Debug, Serialize, utoipa::ToSchema)]
@@ -985,15 +985,15 @@ pub struct InitiateIssueAttachmentV2Response {
 
 /// POST /api/assets/v2/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/attachments/
 ///
-/// Inicia el flujo de upload de un issue attachment:
-/// 1. Crea `FileAsset` con `is_uploaded = false`.
-/// 2. Devuelve presigned POST para que el cliente haga el upload directo al bucket.
-/// 3. El cliente confirma con PATCH al endpoint de complete (ya existente).
+/// Initiates issue attachment upload flow:
+/// 1. Creates `FileAsset` with `is_uploaded = false`.
+/// 2. Returns presigned POST so client can upload directly to bucket.
+/// 3. Client confirms with PATCH to complete endpoint (already existing).
 ///
-/// Mirror de `IssueAttachmentV2Endpoint.post`
+/// Mirror of `IssueAttachmentV2Endpoint.post`
 /// (`apps/api/plane/app/views/issue/attachment.py:98-146`).
 ///
-/// Permisos: ADMIN / MEMBER / GUEST — mismos que el GET.
+/// Permissions: ADMIN / MEMBER / GUEST — same as GET.
 #[utoipa::path(
     post,
     path = "/assets/v2/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/attachments/",
@@ -1006,10 +1006,10 @@ pub struct InitiateIssueAttachmentV2Response {
     ),
     request_body = InitiateIssueAttachmentV2Request,
     responses(
-        (status = 200, description = "Upload iniciado",
+        (status = 200, description = "Upload initiated",
             body = InitiateIssueAttachmentV2Response),
-        (status = 400, description = "MIME type no permitido"),
-        (status = 403, description = "Sin permisos"),
+        (status = 400, description = "MIME type not allowed"),
+        (status = 403, description = "Forbidden"),
     )
 )]
 pub async fn initiate_issue_attachment_upload_v2(
@@ -1033,18 +1033,18 @@ pub async fn initiate_issue_attachment_upload_v2(
         return Err(AppError::BadRequest("Invalid file type.".into()));
     }
 
-    // Mirror Django: `size = int(request.data.get("size", FILE_SIZE_LIMIT))` y luego
-    // `size_limit = min(size, FILE_SIZE_LIMIT)`. Aquí rechazamos valores negativos
-    // explícitamente — Django no lo hace, pero un size negativo es patología pura
-    // y evita que se propague un `i64` negativo a `as f64` más abajo.
+    // Mirror Django: `size = int(request.data.get("size", FILE_SIZE_LIMIT))` then
+    // `size_limit = min(size, FILE_SIZE_LIMIT)`. Here we reject negative values
+    // explicitly — Django doesn't, but negative size is pure pathology
+    // and prevents negative `i64` propagation to `as f64` below.
     let requested = body.size.unwrap_or(DEFAULT_FILE_SIZE_LIMIT);
     if requested < 0 {
         return Err(AppError::BadRequest("Invalid size.".into()));
     }
     let size_limit = requested.min(DEFAULT_FILE_SIZE_LIMIT);
 
-    // `asset_key = f"{workspace.id}/{uuid4().hex}-{name}"` — paridad byte-a-byte
-    // con `attachment.py:114`.
+    // `asset_key = f"{workspace.id}/{uuid4().hex}-{name}"` — byte-to-byte parity
+    // with `attachment.py:114`.
     let ws_id = guard.workspace.id;
     let asset_key = format!("{}/{}-{}", ws_id, Uuid::new_v4().simple(), body.name);
 
@@ -1057,9 +1057,9 @@ pub async fn initiate_issue_attachment_upload_v2(
         is_deleted: Set(false),
         is_archived: Set(false),
         entity_type: Set(Some(ENTITY_ISSUE_ATTACHMENT.to_string())),
-        // Importante: usar guard.workspace.id y guard.project.id (ya validados
-        // por el guard contra el workspace). No confiar en el path raw para
-        // prevenir IDOR cross-workspace.
+        // Important: use guard.workspace.id and guard.project.id (already validated
+        // by the guard against workspace). Don't trust raw path to
+        // prevent cross-workspace IDOR.
         workspace_id: Set(Some(ws_id)),
         project_id: Set(Some(guard.project.id)),
         issue_id: Set(Some(issue_id)),
@@ -1088,10 +1088,10 @@ pub async fn initiate_issue_attachment_upload_v2(
         .await
         .map_err(AppError::Database)?;
 
-    // Mirror Django S3Storage.__init__ (storage.py:40-58): cuando USE_MINIO=1
-    // el presigned debe firmarse contra el dominio público del request, no
-    // contra el hostname interno de Docker, para evitar Mixed-Content
-    // blocking y fallos de DNS en el navegador.
+    // Mirror Django S3Storage.__init__ (storage.py:40-58): when USE_MINIO=1
+    // the presigned must be signed against the public request domain, not
+    // the internal Docker hostname, to avoid Mixed-Content
+    // blocking and DNS failures in the browser.
     let signing_endpoint = public_s3_endpoint(&state.config, &headers);
 
     let upload_data = generate_presigned_post(
@@ -1121,15 +1121,15 @@ pub async fn initiate_issue_attachment_upload_v2(
 
 /// PATCH /api/assets/v2/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/attachments/{pk}/
 ///
-/// Confirma que el upload al bucket completó. Marca `is_uploaded = true` y fija
-/// `created_by` al usuario autenticado la primera vez que se confirma.
+/// Confirms upload to bucket completed. Marks `is_uploaded = true` and sets
+/// `created_by` to authenticated user the first time it's confirmed.
 ///
-/// Mirror exacto de `IssueAttachmentV2Endpoint.patch`
+/// Exact mirror of `IssueAttachmentV2Endpoint.patch`
 /// (`apps/api/plane/app/views/issue/attachment.py:202-229`):
-/// - Idempotente: si ya estaba `is_uploaded = true`, no vuelve a disparar la
-///   activity (que aquí se omite por ser una task async Django; se puede
-///   migrar después sin cambiar el contrato).
-/// - Retorna 204.
+/// - Idempotent: if `is_uploaded = true` already, doesn't trigger
+///   activity again (omitted here as it's a Django async task; can be
+///   migrated later without changing contract).
+/// - Returns 204.
 #[utoipa::path(
     patch,
     path = "/assets/v2/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/attachments/{pk}/",
@@ -1142,9 +1142,9 @@ pub async fn initiate_issue_attachment_upload_v2(
         ("pk" = Uuid, Path, description = "FileAsset ID"),
     ),
     responses(
-        (status = 204, description = "Upload confirmado"),
-        (status = 403, description = "Sin permisos"),
-        (status = 404, description = "Asset no encontrado"),
+        (status = 204, description = "Upload confirmed"),
+        (status = 403, description = "Forbidden"),
+        (status = 404, description = "Asset not found"),
     )
 )]
 pub async fn complete_issue_attachment_upload_v2(
@@ -1159,10 +1159,10 @@ pub async fn complete_issue_attachment_upload_v2(
         ROLE_GUEST,
     )?;
 
-    // Fetch con filtros de seguridad: workspace + project + issue del guard.
-    // Django solo filtra por slug + project_id — aquí además confirmamos que
-    // el asset pertenece al issue del path para prevenir confirmar uploads
-    // de otros issues con un pk cualquiera.
+    // Fetch with security filters: workspace + project + issue from guard.
+    // Django only filters by slug + project_id — here we also confirm
+    // asset belongs to path issue to prevent confirming uploads
+    // of other issues with an arbitrary pk.
     let asset = file_assets::Entity::find_by_id(pk)
         .filter(file_assets::Column::WorkspaceId.eq(guard.workspace.id))
         .filter(file_assets::Column::ProjectId.eq(guard.project.id))
@@ -1174,9 +1174,9 @@ pub async fn complete_issue_attachment_upload_v2(
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
-    // Mirror Django: solo si no estaba uploaded antes, marca is_uploaded=true
-    // y setea created_by al usuario actual (primer confirmador = "dueño"
-    // del attachment para efectos de permisos de borrado posterior).
+    // Mirror Django: only if not uploaded before, mark is_uploaded=true
+    // and set created_by to current user (first confirmer = "owner"
+    // of attachment for later deletion permissions).
     if !asset.is_uploaded {
         let mut am: file_assets::ActiveModel = asset.into();
         am.is_uploaded = Set(true);
@@ -1193,12 +1193,12 @@ pub async fn complete_issue_attachment_upload_v2(
 
 /// DELETE /api/assets/v2/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/attachments/{pk}/
 ///
-/// Soft-delete de un attachment: `is_deleted = true` + `deleted_at = now()`.
-/// No borra del bucket (mirror Django V2 que también hace soft-delete).
+/// Soft-delete of an attachment: `is_deleted = true` + `deleted_at = now()`.
+/// Doesn't delete from bucket (mirror Django V2 which also does soft-delete).
 ///
-/// Permisos: `@allow_permission([ROLE.ADMIN], creator=True, model=FileAsset)`
-/// (`apps/api/plane/app/views/issue/attachment.py:148`). En Rust esto se
-/// traduce a: ADMIN **o** creador del asset.
+/// Permissions: `@allow_permission([ROLE.ADMIN], creator=True, model=FileAsset)`
+/// (`apps/api/plane/app/views/issue/attachment.py:148`). In Rust this
+/// translates to: ADMIN **or** asset creator.
 #[utoipa::path(
     delete,
     path = "/assets/v2/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/attachments/{pk}/",
@@ -1211,9 +1211,9 @@ pub async fn complete_issue_attachment_upload_v2(
         ("pk" = Uuid, Path, description = "FileAsset ID"),
     ),
     responses(
-        (status = 204, description = "Attachment eliminado"),
-        (status = 403, description = "Solo ADMIN o creador del asset"),
-        (status = 404, description = "Asset no encontrado"),
+        (status = 204, description = "Attachment deleted"),
+        (status = 403, description = "Only ADMIN or asset creator"),
+        (status = 404, description = "Asset not found"),
     )
 )]
 pub async fn delete_issue_attachment_v2(
@@ -1233,7 +1233,7 @@ pub async fn delete_issue_attachment_v2(
         .ok_or(AppError::NotFound)?;
 
     // Mirror `@allow_permission([ROLE.ADMIN], creator=True, model=FileAsset)`:
-    // ADMIN de project/workspace O creator del asset.
+    // project/workspace ADMIN OR asset creator.
     let is_admin = guard.project_member.role >= ROLE_ADMIN
         || guard.workspace_member.role >= ROLE_ADMIN;
     let is_creator = asset.created_by_id == Some(guard.user.id);
@@ -1245,7 +1245,7 @@ pub async fn delete_issue_attachment_v2(
     Ok(StatusCode::NO_CONTENT)
 }
 
-// ── DTOs adicionales ──────────────────────────────────────────────────────────
+// ── Additional DTOs ──────────────────────────────────────────────────────────
 
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct DuplicateAssetRequest {
@@ -1271,11 +1271,11 @@ pub struct BulkAssetRequest {
 
 // ── AssetRestoreEndpoint ──────────────────────────────────────────────────────
 
-/// Restaura un asset previamente eliminado (soft-delete).
+/// Restores a previously deleted asset (soft-delete).
 ///
 /// `POST /assets/v2/workspaces/{slug}/restore/{asset_id}`
 ///
-/// Mirror de `AssetRestoreEndpoint.post` en Django.
+/// Mirror of `AssetRestoreEndpoint.post` in Django.
 #[utoipa::path(
     post,
     path = "/assets/v2/workspaces/{slug}/restore/{asset_id}",
@@ -1297,7 +1297,7 @@ pub async fn restore_workspace_asset(
 ) -> Result<StatusCode, AppError> {
     let _ = (guard, &slug);
 
-    // Buscar incluyendo soft-deleted (all_objects en Django)
+    // Search including soft-deleted (all_objects in Django)
     let asset = file_assets::Entity::find()
         .filter(file_assets::Column::Id.eq(asset_id))
         .filter(file_assets::Column::WorkspaceId.is_not_null())
@@ -1316,11 +1316,11 @@ pub async fn restore_workspace_asset(
 
 // ── ProjectAssetEndpoint ──────────────────────────────────────────────────────
 
-/// Inicia un upload de asset a nivel proyecto (cover, issue description, etc.)
+/// Initiates a project-level asset upload (cover, issue description, etc.)
 ///
 /// `POST /assets/v2/workspaces/{slug}/projects/{project_id}`
 ///
-/// Mirror de `ProjectAssetEndpoint.post` en Django.
+/// Mirror of `ProjectAssetEndpoint.post` in Django.
 #[utoipa::path(
     post,
     path = "/assets/v2/workspaces/{slug}/projects/{project_id}",
@@ -1359,7 +1359,7 @@ pub async fn initiate_project_asset_upload(
     let size = body.size.unwrap_or(DEFAULT_FILE_SIZE_LIMIT);
     let size_limit = size.min(DEFAULT_FILE_SIZE_LIMIT);
 
-    // Obtener workspace
+    // Get workspace
     let workspace = workspaces::Entity::find()
         .filter(workspaces::Column::Slug.eq(&slug))
         .filter(workspaces::Column::DeletedAt.is_null())
@@ -1370,13 +1370,13 @@ pub async fn initiate_project_asset_upload(
 
     let asset_key = format!("{}/{}-{}", workspace.id, uuid::Uuid::new_v4().simple(), body.name);
 
-    // Campos de FK según entity_type + entity_identifier
+    // FK fields according to entity_type + entity_identifier
     let entity_id = body.entity_identifier;
-    // NOT NULL en BD: created_at, updated_at, is_archived. SeaORM no infiere
-    // defaults a partir del schema cuando la columna no tiene `DEFAULT`, por
-    // lo que `..Default::default()` los deja como `NotSet` y la INSERT falla
-    // con "null value in column \"created_at\" ... violates not-null
-    // constraint". Paridad con `initiate_workspace_asset_upload`.
+    // NOT NULL in DB: created_at, updated_at, is_archived. SeaORM doesn't infer
+    // defaults from schema when column has no `DEFAULT`, so
+    // `..Default::default()` leaves them as `NotSet` and INSERT fails
+    // with "null value in column \"created_at\" ... violates not-null
+    // constraint". Parity with `initiate_workspace_asset_upload`.
     let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
     let mut new_asset = file_assets::ActiveModel {
         id: Set(uuid::Uuid::new_v4()),
@@ -1400,7 +1400,7 @@ pub async fn initiate_project_asset_upload(
         ..Default::default()
     };
 
-    // Asignar FK de entidad según tipo
+    // Assign entity FK according to type
     match body.entity_type.as_str() {
         ENTITY_ISSUE_DESCRIPTION | ENTITY_ISSUE_ATTACHMENT => {
             new_asset.issue_id = Set(entity_id);
@@ -1439,11 +1439,11 @@ pub async fn initiate_project_asset_upload(
     }))
 }
 
-/// Marca un asset de proyecto como subido (complete upload).
+/// Marks a project asset as uploaded (complete upload).
 ///
 /// `PATCH /assets/v2/workspaces/{slug}/projects/{project_id}/{pk}`
 ///
-/// Mirror de `ProjectAssetEndpoint.patch` en Django.
+/// Mirror of `ProjectAssetEndpoint.patch` in Django.
 #[utoipa::path(
     patch,
     path = "/assets/v2/workspaces/{slug}/projects/{project_id}/{pk}",
@@ -1484,11 +1484,11 @@ pub async fn complete_project_asset_upload(
     Ok(StatusCode::NO_CONTENT)
 }
 
-/// Elimina (soft-delete) un asset de proyecto.
+/// Deletes (soft-delete) a project asset.
 ///
 /// `DELETE /assets/v2/workspaces/{slug}/projects/{project_id}/{pk}`
 ///
-/// Mirror de `ProjectAssetEndpoint.delete` en Django.
+/// Mirror of `ProjectAssetEndpoint.delete` in Django.
 #[utoipa::path(
     delete,
     path = "/assets/v2/workspaces/{slug}/projects/{project_id}/{pk}",
@@ -1521,11 +1521,11 @@ pub async fn delete_project_asset(
     Ok(StatusCode::NO_CONTENT)
 }
 
-/// Obtiene un asset de proyecto y redirige a la URL firmada.
+/// Gets a project asset and redirects to the signed URL.
 ///
 /// `GET /assets/v2/workspaces/{slug}/projects/{project_id}/{pk}`
 ///
-/// Mirror de `ProjectAssetEndpoint.get` en Django.
+/// Mirror of `ProjectAssetEndpoint.get` in Django.
 #[utoipa::path(
     get,
     path = "/assets/v2/workspaces/{slug}/projects/{project_id}/{pk}",
@@ -1562,11 +1562,11 @@ pub async fn get_project_asset(
 
 // ── ProjectBulkAssetEndpoint ──────────────────────────────────────────────────
 
-/// Asigna en bulk assets a una entidad (issue, page, comment, draft, project cover).
+/// Bulk assigns assets to an entity (issue, page, comment, draft, project cover).
 ///
 /// `POST /assets/v2/workspaces/{slug}/projects/{project_id}/{entity_id}/bulk`
 ///
-/// Mirror de `ProjectBulkAssetEndpoint.post` en Django.
+/// Mirror of `ProjectBulkAssetEndpoint.post` in Django.
 #[utoipa::path(
     post,
     path = "/assets/v2/workspaces/{slug}/projects/{project_id}/{entity_id}/bulk",
@@ -1594,7 +1594,7 @@ pub async fn bulk_project_assets(
         return Err(AppError::BadRequest("No asset ids provided.".into()));
     }
 
-    // Obtener el primer asset para inferir entity_type
+    // Get first asset to infer entity_type
     let first_asset = file_assets::Entity::find()
         .filter(file_assets::Column::Id.is_in(body.asset_ids.clone()))
         .one(&state.db)
@@ -1604,11 +1604,11 @@ pub async fn bulk_project_assets(
 
     let entity_type = first_asset.entity_type.as_deref().unwrap_or("");
 
-    // Actualizar todos los assets del batch
+    // Update all assets in batch
     use sea_orm::sea_query::Expr;
     match entity_type {
         ENTITY_PROJECT_COVER => {
-            // Asignar project_id y actualizar cover del proyecto
+            // Assign project_id and update project cover
             file_assets::Entity::update_many()
                 .col_expr(file_assets::Column::ProjectId, Expr::value(project_id))
                 .filter(file_assets::Column::Id.is_in(body.asset_ids.clone()))
@@ -1616,7 +1616,7 @@ pub async fn bulk_project_assets(
                 .await
                 .map_err(AppError::Database)?;
 
-            // Actualizar cover del proyecto
+            // Update project cover
             if let Some(project) = projects::Entity::find_by_id(project_id)
                 .one(&state.db)
                 .await
@@ -1658,11 +1658,11 @@ pub async fn bulk_project_assets(
 
 // ── AssetCheckEndpoint ────────────────────────────────────────────────────────
 
-/// Verifica si un asset existe en el workspace (incluyendo eliminados no expirados).
+/// Verifies if an asset exists in the workspace (including non-expired deleted ones).
 ///
 /// `GET /assets/v2/workspaces/{slug}/check/{asset_id}`
 ///
-/// Mirror de `AssetCheckEndpoint.get` en Django.
+/// Mirror of `AssetCheckEndpoint.get` in Django.
 #[utoipa::path(
     get,
     path = "/assets/v2/workspaces/{slug}/check/{asset_id}",
@@ -1696,11 +1696,11 @@ pub async fn check_workspace_asset(
 
 // ── DuplicateAssetEndpoint ────────────────────────────────────────────────────
 
-/// Duplica un asset existente (copia en S3 + nuevo registro en DB).
+/// Duplicates an existing asset (copy in S3 + new record in DB).
 ///
 /// `POST /assets/v2/workspaces/{slug}/duplicate-assets/{asset_id}`
 ///
-/// Mirror de `DuplicateAssetEndpoint.post` en Django.
+/// Mirror of `DuplicateAssetEndpoint.post` in Django.
 #[utoipa::path(
     post,
     path = "/assets/v2/workspaces/{slug}/duplicate-assets/{asset_id}",
@@ -1735,7 +1735,7 @@ pub async fn duplicate_workspace_asset(
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
-    // Verificar que el proyecto existe si se especificó
+    // Verify project exists if specified
     if let Some(pid) = body.project_id {
         let project_exists = projects::Entity::find()
             .filter(projects::Column::Id.eq(pid))
@@ -1750,7 +1750,7 @@ pub async fn duplicate_workspace_asset(
         }
     }
 
-    // Obtener el asset original (solo uploaded)
+    // Get original asset (only uploaded)
     let original = file_assets::Entity::find()
         .filter(file_assets::Column::Id.eq(asset_id))
         .filter(file_assets::Column::IsUploaded.eq(true))
@@ -1771,13 +1771,13 @@ pub async fn duplicate_workspace_asset(
         orig_name,
     );
 
-    // Copiar en S3
+    // Copy in S3
     let s3 = build_s3_client(&state.config);
     copy_object(&s3, &state.config.aws_s3_bucket, &original.asset, &dest_key).await?;
 
-    // Crear nuevo registro en DB.
-    // NOT NULL en BD: created_at, updated_at, is_archived. `..Default::default()`
-    // los deja como `NotSet` -> INSERT falla con NOT NULL constraint.
+    // Create new record in DB.
+    // NOT NULL in DB: created_at, updated_at, is_archived. `..Default::default()`
+    // leaves them as `NotSet` -> INSERT fails with NOT NULL constraint.
     let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
     let mut new_asset = file_assets::ActiveModel {
         id: Set(uuid::Uuid::new_v4()),
@@ -1798,7 +1798,7 @@ pub async fn duplicate_workspace_asset(
         ..Default::default()
     };
 
-    // Asignar FK según entity_type
+    // Assign FK according to entity_type
     let entity_id = body.entity_id;
     match body.entity_type.as_str() {
         ENTITY_WORKSPACE_LOGO => {
@@ -1829,11 +1829,11 @@ pub async fn duplicate_workspace_asset(
 
 // ── Download endpoints ────────────────────────────────────────────────────────
 
-/// Genera URL de descarga (attachment) para un asset de workspace y redirige.
+/// Generates download URL (attachment) for a workspace asset and redirects.
 ///
 /// `GET /assets/v2/workspaces/{slug}/download/{asset_id}`
 ///
-/// Mirror de `WorkspaceAssetDownloadEndpoint.get` en Django.
+/// Mirror of `WorkspaceAssetDownloadEndpoint.get` in Django.
 #[utoipa::path(
     get,
     path = "/assets/v2/workspaces/{slug}/download/{asset_id}",
@@ -1870,16 +1870,16 @@ pub async fn download_workspace_asset(
         .unwrap_or("download");
 
     let s3 = build_s3_presign_client(&state.config);
-    // Presigned GET con content-disposition attachment
+    // Presigned GET with content-disposition attachment
     let url = presigned_get_download_url(&s3, &state.config.aws_s3_bucket, &asset.asset, filename, 3600).await?;
     Ok(Redirect::temporary(&url))
 }
 
-/// Genera URL de descarga (attachment) para un asset de proyecto y redirige.
+/// Generates download URL (attachment) for a project asset and redirects.
 ///
 /// `GET /assets/v2/workspaces/{slug}/projects/{project_id}/download/{asset_id}`
 ///
-/// Mirror de `ProjectAssetDownloadEndpoint.get` en Django.
+/// Mirror of `ProjectAssetDownloadEndpoint.get` in Django.
 #[utoipa::path(
     get,
     path = "/assets/v2/workspaces/{slug}/projects/{project_id}/download/{asset_id}",
@@ -1921,7 +1921,7 @@ pub async fn download_project_asset(
     Ok(Redirect::temporary(&url))
 }
 
-/// Helper: genera presigned GET URL con Content-Disposition: attachment.
+/// Helper: generates presigned GET URL with Content-Disposition: attachment.
 async fn presigned_get_download_url(
     client: &aws_sdk_s3::Client,
     bucket: &str,
@@ -1954,8 +1954,8 @@ async fn presigned_get_download_url(
 // ── Workspace-level bulk asset update ─────────────────────────────────────────
 /// POST /assets/v2/workspaces/{slug}/{entity_id}/bulk
 ///
-/// Equivalente workspace del bulk_project_assets — usado cuando el frontend
-/// llama desde contexto de workspace (sin project_id, e.g. workspace cover).
+/// Workspace equivalent of bulk_project_assets — used when the frontend
+/// calls from workspace context (without project_id, e.g. workspace cover).
 pub async fn bulk_workspace_assets(
     guard: WorkspaceMemberGuard,
     State(state): State<AppState>,

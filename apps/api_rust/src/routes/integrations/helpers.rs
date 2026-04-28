@@ -1,5 +1,5 @@
 // src/routes/integrations/helpers.rs
-//! Helpers internos compartidos por los submodulos de integraciones.
+//! Internal helpers shared by integrations submodules.
 
 use sea_orm::{
     ActiveModelTrait, ActiveValue::Set, ColumnTrait, EntityTrait, IsolationLevel, QueryFilter,
@@ -13,13 +13,13 @@ use crate::{
     AppState,
 };
 
-/// Busca o crea un api_token para (user, workspace).
-/// Replica el comportamiento de `APIToken.objects.get_or_create` de Django.
+/// Looks up or creates an api_token for (user, workspace).
+/// Replicates Django `APIToken.objects.get_or_create` behavior.
 ///
-/// La operación se ejecuta dentro de una transacción con nivel SERIALIZABLE
-/// para evitar la race condition TOCTOU (check-then-insert) que existía antes.
-/// Si dos requests concurrentes pasan el SELECT vacío al mismo tiempo, solo
-/// una INSERT tendrá éxito; la otra leerá el token recién creado.
+/// Operation executes within a transaction with SERIALIZABLE level
+/// to avoid the TOCTOU (check-then-insert) race condition that existed before.
+/// If two concurrent requests pass the empty SELECT at the same time, only
+/// one INSERT will succeed; the other will read the newly created token.
 pub async fn get_or_create_api_token(
     state: &AppState,
     user_id: Uuid,
@@ -47,7 +47,7 @@ pub async fn get_or_create_api_token(
                     }
 
                     let raw = Uuid::new_v4().as_simple().to_string();
-                    // created_at/updated_at explícitos (NOT NULL sin DEFAULT).
+                    // explicit created_at/updated_at (NOT NULL without DEFAULT).
                     let now: chrono::DateTime<chrono::FixedOffset> =
                         chrono::Utc::now().into();
                     let new_token = api_tokens::ActiveModel {

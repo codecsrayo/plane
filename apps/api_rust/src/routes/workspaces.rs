@@ -1,10 +1,10 @@
 // src/routes/workspaces.rs
 // NOTE: get_user_profile added below — mirror of WorkspaceUserProfileEndpoint
-//! Endpoints de Workspace — Fase 2.
+//! Workspace endpoints — Phase 2.
 //!
-//! Equivalente a `plane/app/views/workspace/base.py` y `member.py` en Django.
-//! Autenticación: sesión cookie **o** API key (via `AnyAuth`).
-//! Autorización: membresía activa en el workspace; rol Admin requerido en mutaciones.
+//! Equivalent to `plane/app/views/workspace/base.py` and `member.py` in Django.
+//! Authentication: session cookie **or** API key (via `AnyAuth`).
+//! Authorization: active workspace membership; Admin role required for mutations.
 
 use axum::{
     extract::{Path, Query, State},
@@ -43,21 +43,21 @@ use crate::{
     AppState,
 };
 
-// ─── Alias de permisos ───────────────────────────────────────────────────────
+// ─── Permission aliases ──────────────────────────────────────────────────────
 
-/// Alias local de [`require_workspace_admin`].
+/// Local alias for [`require_workspace_admin`].
 ///
-/// Permite usar `require_admin(&member)?` de forma concisa en todos los
-/// handlers de este módulo sin importar un símbolo adicional en cada llamada.
+/// Allows using `require_admin(&member)?` concisely across all
+/// handlers in this module without importing an additional symbol for each call.
 #[inline(always)]
 fn require_admin(member: &workspace_members::Model) -> Result<(), AppError> {
     require_workspace_admin(member)
 }
 
-// ─── Slugs reservados ────────────────────────────────────────────────────────
+// ─── Reserved slugs ──────────────────────────────────────────────────────────
 
-/// Slugs reservados — espejo exacto de `plane/utils/constants.py::RESTRICTED_WORKSPACE_SLUGS`.
-/// Actualizar aquí cuando se modifique el archivo Python.
+/// Reserved slugs — exact mirror of `plane/utils/constants.py::RESTRICTED_WORKSPACE_SLUGS`.
+/// Update here when the Python file is modified.
 const RESTRICTED_SLUGS: &[&str] = &[
     "404",
     "accounts",
@@ -123,10 +123,10 @@ const RESTRICTED_SLUGS: &[&str] = &[
     "instance",
 ];
 
-// ─── Helpers de slug ─────────────────────────────────────────────────────────
+// ─── Slug helpers ────────────────────────────────────────────────────────────
 //
-// `workspace_by_slug` y `require_workspace_member` viven en `helpers.rs`
-// y se importan arriba. Solo queda la validación local del formato del slug.
+// `workspace_by_slug` and `require_workspace_member` live in `helpers.rs`
+// and are imported above. Only local slug format validation remains.
 
 fn validate_slug(slug: &str) -> Result<(), AppError> {
     if slug.is_empty() || slug.len() > 48 {
@@ -147,7 +147,7 @@ fn validate_slug(slug: &str) -> Result<(), AppError> {
 
 // ─── DTOs ────────────────────────────────────────────────────────────────────
 
-/// Representación pública de un workspace.
+/// Public representation of a workspace.
 #[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct WorkspaceResponse {
     pub id: Uuid,
@@ -165,10 +165,10 @@ pub struct WorkspaceResponse {
     pub background_color: String,
     pub created_at: DateTime<Utc>,
     pub updated_at: DateTime<Utc>,
-    /// Número de miembros activos (excluye bots). `None` en contextos sin join.
+    /// Number of active members (excludes bots). `None` in contexts without joins.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub total_members: Option<i64>,
-    /// Rol del usuario autenticado en este workspace (solo en list/detail).
+    /// Authenticated user's role in this workspace (only in list/detail).
     #[serde(skip_serializing_if = "Option::is_none")]
     pub role: Option<i16>,
 }
@@ -256,30 +256,30 @@ impl From<&workspace_members::Model> for WorkspaceMemberResponse {
     }
 }
 
-// ─── DTOs Django-compat para listado de miembros ─────────────────────────────
+// ─── Django-compat DTOs for member listing ──────────────────────────────────
 //
-// Django expone los miembros del workspace con el `member` ANIDADO como objeto
-// de usuario (ver `WorkSpaceMemberSerializer` en
-// `apps/api/plane/app/serializers/workspace.py:85-90` con
-// `member = UserLiteSerializer(read_only=True)`). El frontend consume este
-// shape directamente en `workspace-member.store.ts:240`:
+// Django exposes workspace members with the `member` NESTED as a user object
+// (see `WorkSpaceMemberSerializer` in
+// `apps/api/plane/app/serializers/workspace.py:85-90` with
+// `member = UserLiteSerializer(read_only=True)`). The frontend consumes this
+// shape directly in `workspace-member.store.ts:240`:
 //
 //     set(this.memberRoot?.memberMap, member.member.id, { ...member.member, ... });
 //
-// El DTO flat de arriba (`WorkspaceMemberResponse`) NO es compatible con ese
-// acceso a `member.member.id` y causa
+// The flat DTO above (`WorkspaceMemberResponse`) IS NOT compatible with that
+// access to `member.member.id` and causes
 //   TypeError: Cannot read properties of undefined (reading 'id')
-// cuando el frontend apunta al Rust. Estos DTOs nuevos reflejan exactamente la
-// salida del serializer Django con `fields=("id", "member", "role")`.
+// when the frontend points to Rust. These new DTOs exactly reflect the
+// output of the Django serializer with `fields=("id", "member", "role")`.
 
-/// Mirror de `UserLiteSerializer` + rama admin de `UserAdminLiteSerializer`
+/// Mirror of `UserLiteSerializer` + admin branch of `UserAdminLiteSerializer`
 /// (`apps/api/plane/app/serializers/user.py:141-170`).
 ///
-/// `email` y `last_login_medium` solo se emiten cuando el caller es no-Guest
-/// (Django: `if workspace_member.role > 5` en
+/// `email` and `last_login_medium` are only emitted when caller is non-Guest
+/// (Django: `if workspace_member.role > 5` in
 /// `apps/api/plane/app/views/workspace/member.py:51`). `skip_serializing_if`
-/// mantiene el shape JSON idéntico al de Django cuando el caller es Guest —
-/// las claves no aparecen, no se mandan como `null`.
+/// maintains the JSON shape identical to Django when caller is Guest —
+/// keys do not appear, they are not sent as `null`.
 #[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct UserLiteDto {
     pub id: Uuid,
@@ -289,28 +289,28 @@ pub struct UserLiteDto {
     pub avatar_url: Option<String>,
     pub is_bot: bool,
     pub display_name: String,
-    /// Solo presente si el caller es no-Guest (paridad con `UserAdminLiteSerializer`).
+    /// Only present if caller is non-Guest (parity with `UserAdminLiteSerializer`).
     #[serde(skip_serializing_if = "Option::is_none")]
     pub email: Option<String>,
-    /// Solo presente si el caller es no-Guest (paridad con `UserAdminLiteSerializer`).
+    /// Only present if caller is non-Guest (parity with `UserAdminLiteSerializer`).
     #[serde(skip_serializing_if = "Option::is_none")]
     pub last_login_medium: Option<String>,
 }
 
-/// Construye un `UserLiteDto` a partir del modelo SeaORM, aplicando la misma
-/// lógica de `avatar_url` que `User.avatar_url` en Django
+/// Builds a `UserLiteDto` from SeaORM model, applying the same
+/// `avatar_url` logic as `User.avatar_url` in Django
 /// (`apps/api/plane/db/models/user.py:142-151`):
 ///
-///   1. Si hay `avatar_asset_id`, devuelve `/api/assets/v2/static/{id}/`.
-///      Este path es el branch `USER_AVATAR` de `FileAsset.asset_url`
-///      (`apps/api/plane/db/models/asset.py:79-100`), por lo que se compone
-///      directamente desde el UUID sin necesidad de un JOIN a `file_assets` —
-///      el `entity_type` del asset apuntado por `users.avatar_asset_id` es
-///      siempre `USER_AVATAR` por invariante del modelo Django.
-///   2. Si no, devuelve el string legacy `avatar` si no está vacío.
-///   3. En cualquier otro caso, `None`.
+///   1. If `avatar_asset_id` exists, returns `/api/assets/v2/static/{id}/`.
+///      This path is the `USER_AVATAR` branch of `FileAsset.asset_url`
+///      (`apps/api/plane/db/models/asset.py:79-100`), so it's composed
+///      directly from the UUID without a JOIN to `file_assets` —
+///      the `entity_type` of the asset pointed to by `users.avatar_asset_id` is
+///      always `USER_AVATAR` by Django model invariant.
+///   2. Otherwise, returns legacy `avatar` string if not empty.
+///   3. In any other case, `None`.
 ///
-/// `is_admin` activa los campos que `UserAdminLiteSerializer` añade sobre
+/// `is_admin` enables fields that `UserAdminLiteSerializer` adds over
 /// `UserLiteSerializer`.
 pub(crate) fn user_to_lite(user: &users::Model, is_admin: bool) -> UserLiteDto {
     let avatar_url = if let Some(asset_id) = user.avatar_asset_id {
@@ -338,13 +338,13 @@ pub(crate) fn user_to_lite(user: &users::Model, is_admin: bool) -> UserLiteDto {
     }
 }
 
-/// Mirror de `WorkSpaceMemberSerializer` con `fields=("id","member","role")`
-/// (uso explícito en
-/// `apps/api/plane/app/views/workspace/member.py:52,54,71,73`). NO incluye
-/// `company_role`, `is_active`, `created_at`, etc. — el serializer Django con
-/// esa whitelist tampoco los emite, y emitir campos extra rompería consumidores
-/// que hacen `{ ...member }` spread (cualquier campo extra pisaría propiedades
-/// del store MobX).
+/// Mirror of `WorkSpaceMemberSerializer` with `fields=("id","member","role")`
+/// (explicit use in
+/// `apps/api/plane/app/views/workspace/member.py:52,54,71,73`). DOES NOT include
+/// `company_role`, `is_active`, `created_at`, etc. — the Django serializer with
+/// that whitelist doesn't emit them either, and emitting extra fields would break
+/// consumers doing `{ ...member }` spread (any extra field would override
+/// MobX store properties).
 #[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct WorkspaceMemberNestedResponse {
     pub id: Uuid,
@@ -408,7 +408,7 @@ pub struct SlugCheckResponse {
 
 /// `GET /api/workspace-slug-check/?slug={slug}`
 ///
-/// Verifica disponibilidad de un slug. No requiere autenticación.
+/// Verifies slug availability. Does not require authentication.
 #[utoipa::path(
     get,
     path = "/api/workspace-slug-check/",
@@ -426,9 +426,9 @@ pub async fn slug_check(
     if RESTRICTED_SLUGS.contains(&slug.as_str()) {
         return Ok(Json(SlugCheckResponse { status: false }));
     }
-    // No usar .active() aquí: la unique constraint de la BD aplica sobre TODAS
-    // las filas (incluyendo soft-deleted).  Si filtramos solo activas, reportamos
-    // el slug como disponible pero el INSERT real falla por la constraint.
+    // Do not use .active() here: the DB unique constraint applies to ALL
+    // rows (including soft-deleted). If we filter only active ones, we report
+    // the slug as available but the real INSERT fails due to the constraint.
     let exists = workspaces::Entity::find()
         .filter(workspaces::Column::Slug.eq(&slug))
         .count(&state.db)
@@ -440,7 +440,7 @@ pub async fn slug_check(
 
 /// `GET /api/workspaces/`
 ///
-/// Lista los workspaces donde el usuario autenticado es miembro activo.
+/// Lists workspaces where the authenticated user is an active member.
 #[utoipa::path(
     get,
     path = "/api/workspaces/",
@@ -455,7 +455,7 @@ pub async fn list_workspaces(
     State(state): State<AppState>,
     AnyAuth(user): AnyAuth,
 ) -> Result<Json<Vec<WorkspaceResponse>>, AppError> {
-    // Membresías activas del usuario
+    // User's active memberships
     let memberships = workspace_members::Entity::find()
         .active()
         .filter(workspace_members::Column::MemberId.eq(user.id))
@@ -495,7 +495,7 @@ pub async fn list_workspaces(
 
 /// `POST /api/workspaces/`
 ///
-/// Crea un nuevo workspace y registra al usuario como Admin + Owner.
+/// Creates a new workspace and registers the user as Admin + Owner.
 #[utoipa::path(
     post,
     path = "/api/workspaces/",
@@ -515,7 +515,7 @@ pub async fn create_workspace(
     AnyAuth(user): AnyAuth,
     Json(body): Json<CreateWorkspaceRequest>,
 ) -> Result<impl IntoResponse, AppError> {
-    // Verificar flag de instancia
+    // Check instance flag
     let disabled = get_config_value(&state, "DISABLE_WORKSPACE_CREATION", Some("0"))
         .await?
         .unwrap_or_default();
@@ -536,17 +536,17 @@ pub async fn create_workspace(
     let slug = body.slug.to_lowercase();
     validate_slug(&slug)?;
 
-    // No hacemos pre-check de slug disponible: es un patrón TOCTOU (time-of-check
-    // vs time-of-use). Dos requests concurrentes pueden ambas pasar la verificación
-    // y una falla en el INSERT.  Dejamos que la unique constraint de la BD sea la
-    // fuente de verdad y mapeamos la violación a 409 Conflict (como Django).
+    // We don't perform a pre-check for slug availability: it's a TOCTOU pattern
+    // (time-of-check vs time-of-use). Two concurrent requests can both pass verification
+    // and one fails on INSERT. We let the DB unique constraint be the source of truth
+    // and map the violation to 409 Conflict (like Django).
 
     let ws_id = Uuid::new_v4();
     let now = chrono::Utc::now().fixed_offset();
 
     let txn = state.db.begin().await.map_err(AppError::Database)?;
 
-    // Crear workspace
+    // Create workspace
     let new_ws = workspaces::ActiveModel {
         id: Set(ws_id),
         name: Set(body.name.clone()),
@@ -564,7 +564,7 @@ pub async fn create_workspace(
         logo_asset_id: Set(None),
     };
     let ws = new_ws.insert(&txn).await.map_err(|e| {
-        // Mapear unique constraint violation → 409 Conflict (espejo de Django)
+        // Map unique constraint violation → 409 Conflict (Django mirror)
         if let sea_orm::DbErr::Query(ref runtime_err) = e {
             let msg = runtime_err.to_string();
             if msg.contains("unique") || msg.contains("duplicate key") {
@@ -573,7 +573,7 @@ pub async fn create_workspace(
                 );
             }
         }
-        // Capturar también Exec errors que SeaORM puede emitir en insert
+        // Also capture Exec errors that SeaORM might emit on insert
         if let sea_orm::DbErr::Exec(ref runtime_err) = e {
             let msg = runtime_err.to_string();
             if msg.contains("unique") || msg.contains("duplicate key") {
@@ -586,7 +586,7 @@ pub async fn create_workspace(
         AppError::Database(e)
     })?;
 
-    // Crear membresía Admin — mirrors Django: role=20, company_role from request
+    // Create Admin membership — mirrors Django: role=20, company_role from request
     let new_member = workspace_members::ActiveModel {
         id: Set(Uuid::new_v4()),
         workspace_id: Set(ws_id),
@@ -613,7 +613,7 @@ pub async fn create_workspace(
 
     txn.commit().await.map_err(AppError::Database)?;
 
-    // Encolar siembra de datos iniciales — best-effort (no bloquea la respuesta).
+    // Enqueue initial data seed — best-effort (does not block response).
     // Uses the shared pg_pool from AppState instead of opening a new connection.
     {
         use crate::jobs::workspace_seed::WorkspaceSeedJob;
@@ -640,7 +640,7 @@ pub async fn create_workspace(
 
 /// `GET /api/workspaces/{slug}/`
 ///
-/// Retorna el detalle del workspace. Requiere membresía activa.
+/// Returns workspace detail. Requires active membership.
 #[utoipa::path(
     get,
     path = "/api/workspaces/{slug}/",
@@ -659,9 +659,8 @@ pub async fn get_workspace(
     Path(slug): Path<String>,
 ) -> Result<Json<WorkspaceResponse>, AppError> {
     let ws = workspace_by_slug(&state.db, &slug).await?;
-    // No-miembros reciben 404 (no 403) para no filtrar la existencia del
-    // workspace a usuarios no autorizados — práctica estándar de seguridad,
-    // simétrica con `get_project`.
+    // Non-members receive 404 (not 403) to avoid leaking workspace existence
+    // to unauthorized users — standard security practice, symmetric with `get_project`.
     let member = workspace_members::Entity::find()
         .active()
         .filter(workspace_members::Column::WorkspaceId.eq(ws.id))
@@ -690,7 +689,7 @@ pub async fn get_workspace(
 
 /// `PATCH /api/workspaces/{slug}/`
 ///
-/// Actualiza nombre u otros campos. Requiere rol Admin.
+/// Updates name or other fields. Requires Admin role.
 #[utoipa::path(
     patch,
     path = "/api/workspaces/{slug}/",
@@ -756,7 +755,7 @@ pub async fn update_workspace(
 
 /// `DELETE /api/workspaces/{slug}/`
 ///
-/// Soft-delete del workspace. Solo el owner puede eliminarlo.
+/// Workspace soft-delete. Only the owner can delete it.
 #[utoipa::path(
     delete,
     path = "/api/workspaces/{slug}/",
@@ -776,11 +775,11 @@ pub async fn delete_workspace(
 ) -> Result<StatusCode, AppError> {
     let ws = workspace_by_slug(&state.db, &slug).await?;
 
-    // Solo el owner puede eliminar el workspace (equivalente Django)
+    // Only the owner can delete the workspace (Django equivalent)
     if ws.owner_id != user.id {
         let member = require_workspace_member(&state.db, ws.id, user.id).await?;
         require_admin(&member)?;
-        // Admin no owner puede eliminar solo si tiene permiso — aquí solo owner
+        // Admin non-owner can only delete if they have permission — here only owner
         return Err(AppError::Forbidden);
     }
 
@@ -789,24 +788,23 @@ pub async fn delete_workspace(
     let ws_name = ws.name.clone();
     let ws_slug = ws.slug.clone();
 
-    // Espejo de `WorkspaceViewSet.destroy`
+    // Mirror of `WorkspaceViewSet.destroy`
     // (`apps/api/plane/app/views/workspace/base.py:184-201`):
     //
     //   Profile.objects.filter(last_workspace_id=id).update(last_workspace_id=None)
     //   return super().destroy(...)
     //
-    // Sin este paso, los perfiles que apuntaban al workspace eliminado siguen
-    // apuntando a él — `GET /users/me/profile/` devuelve el ID muerto vía
-    // `profile_to_response` (users.rs) y el frontend redirige al href muerto
-    // en lugar de a la pantalla de selección de workspace. Se envuelve en
-    // transacción para que la limpieza de perfiles y el soft-delete del
-    // workspace sean atómicos frente a lectores concurrentes.
+    // Without this step, profiles pointing to the deleted workspace continue
+    // pointing to it — `GET /users/me/profile/` returns the dead ID via
+    // `profile_to_response` (users.rs) and the frontend redirects to the dead href
+    // instead of the workspace selection screen. Wrapped in transaction so
+    // profile cleanup and workspace soft-delete are atomic against concurrent readers.
     //
-    // Nota de paridad: Django usa `QuerySet.update()`, que explícitamente
-    // **no** dispara `auto_now=True` sobre `updated_at`
-    // (`apps/api/plane/db/mixins.py:20`). Los perfiles afectados conservan
-    // su `updated_at` anterior. Replicamos ese comportamiento: solo se toca
-    // `last_workspace_id`, no `updated_at`.
+    // Parity note: Django uses `QuerySet.update()`, which explicitly
+    // **does not** trigger `auto_now=True` on `updated_at`
+    // (`apps/api/plane/db/mixins.py:20`). Affected profiles retain their
+    // previous `updated_at`. We replicate that behavior: only `last_workspace_id`
+    // is touched, not `updated_at`.
     let txn = state.db.begin().await.map_err(AppError::Database)?;
 
     profiles::Entity::update_many()
@@ -819,36 +817,36 @@ pub async fn delete_workspace(
         .await
         .map_err(AppError::Database)?;
 
-    // ── Cascada soft-delete acotada ───────────────────────────────────────
+    // ── Restricted soft-delete cascade ───────────────────────────────────
     //
-    // Soft-deletea dependencias directas del workspace para mantener la
-    // invisibilidad que asumen los endpoints de listado y los helpers —
-    // auditados: list_workspaces, list_user_workspaces, list_members,
+    // Soft-deletes direct workspace dependencies to maintain the
+    // invisibility assumed by listing endpoints and helpers —
+    // audited: list_workspaces, list_user_workspaces, list_members,
     // list_invitations, list_projects, list_projects_detail,
     // list_project_members, list_project_invitations + workspace_by_slug,
     // require_workspace_member, project_by_id, project_member_for_user
-    // (todos filtran con `.active()`).
+    // (all filter with `.active()`).
     //
-    // Paridad PARCIAL con Django: destroy() llama super().destroy() que
-    // dispara `soft_delete_related_objects.delay(...)` — un job Celery
-    // reflexivo y recursivo (apps/api/plane/bgtasks/deletion_task.py:17)
-    // que también recorre las reverse relations transitivas de `projects`
+    // PARTIAL parity with Django: destroy() calls super().destroy() which
+    // triggers `soft_delete_related_objects.delay(...)` — a Celery job
+    // reflective and recursive (apps/api/plane/bgtasks/deletion_task.py:17)
+    // that also traverses transitive reverse relations of `projects`
     // (issues, cycles, modules, pages, views, labels, states, ...).
     //
-    // Aquí aplicamos sólo el primer nivel: workspace_members,
-    // workspace_member_invites, projects, project_members. El resto
-    // (issues/cycles/etc.) no necesita marcarse porque sus endpoints
-    // pasan por project_by_id → workspace_by_slug, que ya filtran
-    // `.active()` en niveles superiores: nada accesible vía API sobrevive
-    // a este soft-delete. La purga completa de filas huérfanas la hace
-    // el hard-delete job (paridad con Django `hard_delete`).
+    // Here we only apply the first level: workspace_members,
+    // workspace_member_invites, projects, project_members. The rest
+    // (issues/cycles/etc.) don't need marking because their endpoints
+    // go through project_by_id → workspace_by_slug, which already filter
+    // `.active()` at higher levels: nothing accessible via API survives
+    // this soft-delete. The full purge of orphaned rows is done by
+    // the hard-delete job (Django `hard_delete` parity).
     //
-    // Usamos `col_expr(DeletedAt, ...)` igual que el update de profiles
-    // arriba: mirror exacto del `QuerySet.update()` de Django — NO
-    // dispara `updated_at` bump (apps/api/plane/db/mixins.py:20). El
-    // filtro `DeletedAt.is_null()` preserva el timestamp histórico de
-    // filas que ya estaban soft-deleted antes de este delete (p.ej.
-    // un member removido hace meses mantiene su `deleted_at` original).
+    // We use `col_expr(DeletedAt, ...)` just like the profiles update
+    // above: exact mirror of Django's `QuerySet.update()` — DOES NOT
+    // trigger `updated_at` bump (apps/api/plane/db/mixins.py:20). The
+    // `DeletedAt.is_null()` filter preserves the historical timestamp of
+    // rows that were already soft-deleted before this delete (e.g.
+    // a member removed months ago keeps their original `deleted_at`).
     let now_expr = Expr::value(Some(now));
 
     workspace_members::Entity::update_many()
@@ -893,18 +891,18 @@ pub async fn delete_workspace(
 
     txn.commit().await.map_err(AppError::Database)?;
 
-    // Espejo de `track_event.delay(event_name=WORKSPACE_DELETED, ...)` en
-    // `base.py:188-200`. Django lo corre via Celery; nosotros vía `tokio::spawn`
-    // dentro de `utils::posthog::track_event`. El evento se emite sólo tras
-    // commit exitoso — si la transacción hubiera fallado, no queremos reportar
-    // un delete que no sucedió.
+    // Mirror of `track_event.delay(event_name=WORKSPACE_DELETED, ...)` in
+    // `base.py:188-200`. Django runs it via Celery; we via `tokio::spawn`
+    // inside `utils::posthog::track_event`. The event is emitted only after
+    // successful commit — if the transaction had failed, we don't want to report
+    // a delete that didn't happen.
     //
-    // Nota sobre `role`: Django hardcodea `"role": "owner"` en la view y luego
-    // `preprocess_data_properties` lo recalcula consultando `Workspace.objects`
-    // con el slug. Pero para este punto el workspace ya está soft-deleted, y el
-    // manager por defecto filtra por `deleted_at IS NULL` → `DoesNotExist` →
-    // `"role": "unknown"`. En Rust somos deterministas: ya validamos arriba
-    // que `ws.owner_id == user.id`, así que el role siempre es `owner`.
+    // Note on `role`: Django hardcodes `"role": "owner"` in the view and then
+    // `preprocess_data_properties` recalculates it by querying `Workspace.objects`
+    // with the slug. But at this point the workspace is already soft-deleted, and the
+    // default manager filters by `deleted_at IS NULL` → `DoesNotExist` →
+    // `"role": "unknown"`. In Rust we are deterministic: we already validated above
+    // that `ws.owner_id == user.id`, so the role is always `owner`.
     let mut props = serde_json::Map::new();
     props.insert("user_id".into(), serde_json::json!(user.id.to_string()));
     props.insert("workspace_id".into(), serde_json::json!(ws_id.to_string()));
@@ -927,17 +925,17 @@ pub async fn delete_workspace(
 
 /// `GET /api/workspaces/{slug}/members/`
 ///
-/// Lista miembros activos del workspace con el usuario anidado.
+/// Lists active workspace members with nested user.
 ///
-/// Mirror exacto de `WorkSpaceMemberViewSet.list`
-/// (`apps/api/plane/app/views/workspace/member.py:45-55`). Shape de respuesta
-/// idéntico al de Django con `WorkSpaceMemberSerializer(fields=("id","member",
-/// "role"))` — necesario porque el frontend (`workspace-member.store.ts:240`)
-/// accede a `member.member.id` y falla con TypeError si el shape no es nested.
+/// Exact mirror of `WorkSpaceMemberViewSet.list`
+/// (`apps/api/plane/app/views/workspace/member.py:45-55`). Response shape
+/// identical to Django with `WorkSpaceMemberSerializer(fields=("id","member",
+/// "role"))` — necessary because the frontend (`workspace-member.store.ts:240`)
+/// accesses `member.member.id` and fails with TypeError if shape is not nested.
 ///
-/// El branch admin/no-admin sigue a Django: `if workspace_member.role > 5`
-/// (ROLE_GUEST) usa `UserAdminLiteSerializer` (incluye `email`/
-/// `last_login_medium`); caso contrario `UserLiteSerializer`.
+/// The admin/no-admin branch follows Django: `if workspace_member.role > 5`
+/// (ROLE_GUEST) uses `UserAdminLiteSerializer` (includes `email`/
+/// `last_login_medium`); otherwise `UserLiteSerializer`.
 #[utoipa::path(
     get,
     path = "/api/workspaces/{slug}/members/",
@@ -957,15 +955,15 @@ pub async fn list_members(
     let ws = workspace_by_slug(&state.db, &slug).await?;
     let caller = require_workspace_member(&state.db, ws.id, user.id).await?;
 
-    // Paridad Django: `if workspace_member.role > 5` usa AdminSerializer.
-    // ROLE_GUEST = 5 en plane/app/permissions/base.py y en auth/permissions.rs.
+    // Django parity: `if workspace_member.role > 5` uses AdminSerializer.
+    // ROLE_GUEST = 5 in plane/app/permissions/base.py and in auth/permissions.rs.
     let is_admin = caller.role > ROLE_GUEST;
 
-    // ── 1. Fetch de memberships ───────────────────────────────────────────────
+    // ── 1. Memberships fetch ─────────────────────────────────────────────────
     //
-    // Django: `.filter(workspace__slug=self.kwargs.get("slug"))` sobre el
-    // queryset base del viewset + list-view adicional filtra por is_active=True.
-    // `.active()` aplica el filtro soft-delete (deleted_at IS NULL).
+    // Django: `.filter(workspace__slug=self.kwargs.get("slug"))` on the
+    // viewset base queryset + additional list-view filters by is_active=True.
+    // `.active()` applies soft-delete filter (deleted_at IS NULL).
     let members = workspace_members::Entity::find()
         .active()
         .filter(workspace_members::Column::WorkspaceId.eq(ws.id))
@@ -979,14 +977,14 @@ pub async fn list_members(
         return Ok(Json(Vec::new()));
     }
 
-    // ── 2. Batch-fetch de usuarios referenciados ──────────────────────────────
+    // ── 2. Batch-fetch of referenced users ───────────────────────────────────
     //
-    // Dos queries total (no N+1). Django hace lo equivalente con
-    // `select_related("member", "member__avatar_asset")` — nosotros resolvemos
-    // avatar_url sin JOIN adicional a `file_assets` porque el path se computa
-    // directo desde `avatar_asset_id` (ver `user_to_lite`). Deduplicamos via
-    // HashSet por si hubiera duplicados inesperados (no debería, la unique
-    // constraint parcial lo impide, pero cuesta poco protegerse).
+    // Two queries total (no N+1). Django does the equivalent with
+    // `select_related("member", "member__avatar_asset")` — we resolve
+    // avatar_url without additional JOIN to `file_assets` because the path is computed
+    // directly from `avatar_asset_id` (see `user_to_lite`). Deduplicate via
+    // HashSet in case of unexpected duplicates (shouldn't happen, partial unique
+    // constraint prevents it, but cost is low for protection).
     let member_ids: Vec<Uuid> = members
         .iter()
         .map(|m| m.member_id)
@@ -1003,13 +1001,13 @@ pub async fn list_members(
     let users_by_id: std::collections::HashMap<Uuid, users::Model> =
         users_vec.into_iter().map(|u| (u.id, u)).collect();
 
-    // ── 3. Ensamblado del shape Django-compatible ─────────────────────────────
+    // ── 3. Assembling the Django-compatible shape ────────────────────────────
     //
-    // Django hace INNER JOIN vía `select_related("member")`: si un user fue
-    // hard-deleted pero la membership quedó huérfana, la fila desaparece del
-    // resultset (comportamiento implícito de join required). Replicamos con
-    // `filter_map`: si no hay entrada en `users_by_id`, se omite la fila. Esto
-    // evita devolver `member: null` al frontend (que reventaría igual en
+    // Django does INNER JOIN via `select_related("member")`: if a user was
+    // hard-deleted but the membership remained orphaned, the row disappears from
+    // the resultset (implicit behavior of join required). We replicate with
+    // `filter_map`: if there is no entry in `users_by_id`, the row is omitted. This
+    // avoids returning `member: null` to the frontend (which would crash anyway in
     // `member.member.id`).
     let response: Vec<WorkspaceMemberNestedResponse> = members
         .iter()
@@ -1027,8 +1025,8 @@ pub async fn list_members(
 
 /// `PATCH /api/workspaces/{slug}/members/{pk}/`
 ///
-/// Actualiza rol de un miembro. Requiere Admin.
-/// No se puede degradar al owner.
+/// Updates a member's role. Requires Admin.
+/// Cannot downgrade owner.
 #[utoipa::path(
     patch,
     path = "/api/workspaces/{slug}/members/{pk}/",
@@ -1056,7 +1054,7 @@ pub async fn update_member(
     let caller = require_workspace_member(&state.db, ws.id, user.id).await?;
     require_admin(&caller)?;
 
-    // Validar rol
+    // Validate role
     if ![ROLE_GUEST, ROLE_VIEWER, ROLE_MEMBER, ROLE_ADMIN].contains(&body.role) {
         return Err(AppError::BadRequest("Invalid role value".into()));
     }
@@ -1069,7 +1067,7 @@ pub async fn update_member(
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
-    // No degradar al owner del workspace
+    // Do not downgrade workspace owner
     if target.member_id == ws.owner_id && body.role < ROLE_ADMIN {
         return Err(AppError::BadRequest(
             "Cannot downgrade workspace owner".into(),
@@ -1091,8 +1089,8 @@ pub async fn update_member(
 
 /// `DELETE /api/workspaces/{slug}/members/{pk}/`
 ///
-/// Desactiva un miembro (soft-remove). Requiere Admin.
-/// El owner no puede ser removido.
+/// Deactivates a member (soft-remove). Requires Admin.
+/// The owner cannot be removed.
 #[utoipa::path(
     delete,
     path = "/api/workspaces/{slug}/members/{pk}/",
@@ -1134,7 +1132,7 @@ pub async fn remove_member(
 
     let now = chrono::Utc::now().fixed_offset();
     let mut active: workspace_members::ActiveModel = target.into();
-    // Marcar inactivo + soft-delete para consistencia
+    // Mark inactive + soft-delete for consistency
     active.is_active = Set(false);
     active.deleted_at = Set(Some(now));
     active.updated_by_id = Set(Some(user.id));
@@ -1148,7 +1146,7 @@ pub async fn remove_member(
 
 /// `GET /api/workspaces/{slug}/invitations/`
 ///
-/// Lista invitaciones pendientes del workspace. Requiere Admin.
+/// Lists pending workspace invitations. Requires Admin.
 #[utoipa::path(
     get,
     path = "/api/workspaces/{slug}/invitations/",
@@ -1183,10 +1181,10 @@ pub async fn list_invitations(
 
 /// `POST /api/workspaces/{slug}/invitations/`
 ///
-/// Crea una o varias invitaciones al workspace. Requiere Admin.
+/// Creates one or more workspace invitations. Requires Admin.
 ///
-/// Nota: el envío de email se delegará al job `InvitationEmailJob` (Fase 3).
-/// Por ahora el registro se persiste y el token queda en la BD.
+/// Note: email sending will be delegated to `InvitationEmailJob` (Phase 3).
+/// For now, the record is persisted and the token remains in the DB.
 #[utoipa::path(
     post,
     path = "/api/workspaces/{slug}/invitations/",
@@ -1210,10 +1208,10 @@ pub async fn create_invitations(
         return Err(AppError::BadRequest("emails list is required".into()));
     }
 
-    // ── 1. Validación de roles — upfront, antes de cualquier query de BD ─────
+    // ── 1. Role validation — upfront, before any DB query ────────────────────
     //
-    // Fallar rápido evita que una solicitud parcialmente inválida emita queries
-    // o inserciones antes de descubrir el error.
+    // Fail fast avoids a partially invalid request emitting queries
+    // or insertions before discovering the error.
     for invite_req in &body.emails {
         if ![ROLE_GUEST, ROLE_VIEWER, ROLE_MEMBER, ROLE_ADMIN].contains(&invite_req.role) {
             return Err(AppError::BadRequest(format!(
@@ -1227,20 +1225,20 @@ pub async fn create_invitations(
     let member = require_workspace_member(&state.db, ws.id, user.id).await?;
     require_admin(&member)?;
 
-    // ── 2. Deduplicación en memoria del payload ───────────────────────────────
+    // ── 2. In-memory payload deduplication ────────────────────────────────────
     //
-    // Un mismo email listado dos veces en la request no debe producir dos rows;
-    // normalizar a lowercase para comparación case-insensitive (igual que Django).
+    // A single email listed twice in the request should not produce two rows;
+    // normalize to lowercase for case-insensitive comparison (same as Django).
     let mut seen_in_payload: HashSet<String> = HashSet::with_capacity(body.emails.len());
     let unique_invites: Vec<&InviteEmail> = body.emails
         .iter()
         .filter(|i| seen_in_payload.insert(i.email.to_lowercase()))
         .collect();
 
-    // ── 3. Bulk-check — 1 SELECT reemplaza N COUNT queries ───────────────────
+    // ── 3. Bulk-check — 1 SELECT replaces N COUNT queries ─────────────────────
     //
-    // Antes: por cada email → COUNT(*) WHERE email = ? (N queries)
-    // Ahora: 1 query → SELECT email WHERE email IN (e1, e2, …) AND accepted = false
+    // Before: per email → COUNT(*) WHERE email = ? (N queries)
+    // Now: 1 query → SELECT email WHERE email IN (e1, e2, …) AND accepted = false
     let candidate_emails: Vec<String> =
         unique_invites.iter().map(|i| i.email.clone()).collect();
 
@@ -1256,10 +1254,10 @@ pub async fn create_invitations(
         .map(|m| m.email.to_lowercase())
         .collect();
 
-    // ── 4. Construir ActiveModels y Models en memoria ─────────────────────────
+    // ── 4. Build ActiveModels and Models in memory ───────────────────────────
     //
-    // Los UUIDs se generan localmente — no se necesita `exec_with_returning`
-    // ni una segunda query para recuperar las filas recién insertadas.
+    // UUIDs are generated locally — no `exec_with_returning` needed
+    // nor a second query to retrieve newly inserted rows.
     let now = chrono::Utc::now().fixed_offset();
     let mut active_models: Vec<workspace_member_invites::ActiveModel> =
         Vec::with_capacity(unique_invites.len());
@@ -1295,7 +1293,7 @@ pub async fn create_invitations(
             deleted_at: Set(None),
         });
 
-        // Model local — refleja exactamente lo que se va a persistir.
+        // Local Model — reflects exactly what is about to be persisted.
         created_models.push(workspace_member_invites::Model {
             id,
             workspace_id: ws.id,
@@ -1313,10 +1311,10 @@ pub async fn create_invitations(
         });
     }
 
-    // ── 5. Bulk insert en transacción — 1 INSERT … VALUES (…), (…) ───────────
+    // ── 5. Bulk insert in transaction — 1 INSERT … VALUES (…), (…) ───────────
     //
-    // Si no hay nada nuevo que insertar (todos eran duplicados) se omite la
-    // transacción por completo.
+    // If there is nothing new to insert (all were duplicates) the transaction
+    // is skipped entirely.
     if !active_models.is_empty() {
         let txn = state.db.begin().await.map_err(AppError::Database)?;
         workspace_member_invites::Entity::insert_many(active_models)
@@ -1333,7 +1331,7 @@ pub async fn create_invitations(
 
 /// `DELETE /api/workspaces/{slug}/invitations/{pk}/`
 ///
-/// Soft-delete de una invitación. Requiere Admin.
+/// Invitation soft-delete. Requires Admin.
 #[utoipa::path(
     delete,
     path = "/api/workspaces/{slug}/invitations/{pk}/",
@@ -1377,22 +1375,22 @@ pub async fn delete_invitation(
 
 // ─── GET /api/workspaces/{slug}/workspace-members/me ─────────────────────────
 //
-// Espejo de Django `WorkspaceMemberUserEndpoint.get` en
-// `plane/app/views/workspace/member.py:217`. Devuelve la membresía completa
-// del usuario autenticado en el workspace, con un campo extra
-// `draft_issue_count` que el frontend usa para badges de "Drafts".
+// Mirror of Django `WorkspaceMemberUserEndpoint.get` in
+// `plane/app/views/workspace/member.py:217`. Returns the authenticated user's
+// full workspace membership, with an extra field `draft_issue_count` which the
+// frontend uses for "Drafts" badges.
 //
-// Comportamiento Django: si el usuario NO tiene una membresía activa,
-// `WorkspaceMemberMeSerializer(None).data` produce un objeto vacío `{}` con
-// status 200 — no 404 ni 403. Replicamos exactamente para no romper al
-// frontend que asume 200 estable y solo lee campos opcionales.
+// Django behavior: if user DOES NOT have an active membership,
+// `WorkspaceMemberMeSerializer(None).data` produces an empty object `{}` with
+// status 200 — not 404 or 403. We replicate exactly to not break the
+// frontend which assumes stable 200 and only reads optional fields.
 
-/// Respuesta de `GET /api/workspaces/{slug}/workspace-members/me`.
+/// Response for `GET /api/workspaces/{slug}/workspace-members/me`.
 ///
-/// Mirror de `WorkspaceMemberMeSerializer(model=WorkspaceMember, fields="__all__")`
-/// más el campo anotado `draft_issue_count`. Todos los campos JSONB
-/// (`view_props`, `default_props`, etc.) se exponen tal cual los almacena
-/// Postgres, igual que en Django.
+/// Mirror of `WorkspaceMemberMeSerializer(model=WorkspaceMember, fields="__all__")`
+/// plus the annotated field `draft_issue_count`. All JSONB fields
+/// (`view_props`, `default_props`, etc.) are exposed as stored by
+/// Postgres, same as in Django.
 #[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct WorkspaceMemberMeResponse {
     pub id: Uuid,
@@ -1416,8 +1414,8 @@ pub struct WorkspaceMemberMeResponse {
 
 /// `GET /api/workspaces/{slug}/workspace-members/me`
 ///
-/// Devuelve la membresía del usuario autenticado en el workspace, o un
-/// objeto vacío si no es miembro activo (compat Django).
+/// Returns the authenticated user's workspace membership, or an
+/// empty object if not an active member (Django compat).
 #[utoipa::path(
     get,
     path = "/api/workspaces/{slug}/workspace-members/me",
@@ -1446,12 +1444,12 @@ pub async fn get_workspace_member_me(
         .map_err(AppError::Database)?;
 
     let Some(m) = membership else {
-        // Compat Django: serializer sobre None produce {} con status 200.
+        // Django compat: serializer over None produces {} with status 200.
         return Ok(Json(serde_json::json!({})));
     };
 
-    // draft_issue_count: borradores creados por el usuario en este workspace
-    // (no soft-deleted). Espejo de la subquery anotada en Django:
+    // draft_issue_count: drafts created by the user in this workspace
+    // (not soft-deleted). Mirror of annotated subquery in Django:
     //   DraftIssue.objects.filter(created_by=request.user,
     //                             workspace_id=OuterRef("workspace_id"))
     //     .annotate(count=Count("id"))
@@ -1490,22 +1488,22 @@ pub async fn get_workspace_member_me(
 
 // ─── User Profile ─────────────────────────────────────────────────────────────
 //
-// Mirror de `WorkspaceUserProfileEndpoint.get`
+// Mirror of `WorkspaceUserProfileEndpoint.get`
 // (`apps/api/plane/app/views/workspace/user.py:280`).
 //
-// Shape de respuesta:
+// Response shape:
 //   { project_data: [...], user_data: { email, first_name, ... } }
 //
-// `project_data` solo se incluye cuando `requesting_workspace_member.role >= 15`
-// (MEMBER+). Cada entrada contiene contadores de issues del target user en ese
-// proyecto.  Los proyectos filtrados son aquellos donde el REQUESTER es miembro
-// activo (no el target) — igual que en Django.
+// `project_data` is only included when `requesting_workspace_member.role >= 15`
+// (MEMBER+). Each entry contains issue counters for the target user in that
+// project. The filtered projects are those where the REQUESTER is an active
+// member (not the target) — same as in Django.
 
-/// Fila de resultado del SQL de estadísticas por proyecto.
+/// Result row for project statistics SQL.
 ///
-/// `logo_props` se recupera como `String` (JSON serializado) porque SeaORM
-/// no implementa `FromQueryResult` para `serde_json::Value` directamente en
-/// consultas raw. Se deserializa en el ensamblado del DTO.
+/// `logo_props` is retrieved as `String` (serialized JSON) because SeaORM
+/// does not implement `FromQueryResult` for `serde_json::Value` directly in
+/// raw queries. It is deserialized during DTO assembly.
 #[derive(Debug, FromQueryResult)]
 struct ProjectProfileRow {
     id: Uuid,
@@ -1516,7 +1514,7 @@ struct ProjectProfileRow {
     pending_issues: i64,
 }
 
-/// Entrada de `project_data` en la respuesta final.
+/// `project_data` entry in the final response.
 #[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct ProjectProfileData {
     pub id: Uuid,
@@ -1527,7 +1525,7 @@ pub struct ProjectProfileData {
     pub pending_issues: i64,
 }
 
-/// Datos del usuario target en la respuesta.
+/// Target user data in the response.
 #[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct UserProfileData {
     pub email: Option<String>,
@@ -1540,26 +1538,26 @@ pub struct UserProfileData {
     pub display_name: String,
 }
 
-/// Respuesta de `GET /api/workspaces/{slug}/user-profile/{user_id}/`.
+/// Response for `GET /api/workspaces/{slug}/user-profile/{user_id}/`.
 ///
-/// Mirror exacto de `WorkspaceUserProfileEndpoint.get` en Django.
+/// Exact mirror of `WorkspaceUserProfileEndpoint.get` in Django.
 #[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct UserProfileResponse {
-    /// Estadísticas por proyecto — vacío si el requester es Guest/Viewer.
+    /// Stats per project — empty if requester is Guest/Viewer.
     pub project_data: Vec<ProjectProfileData>,
     pub user_data: UserProfileData,
 }
 
 /// `GET /api/workspaces/{slug}/user-profile/{user_id}/`
 ///
-/// Devuelve el perfil de un usuario en el contexto del workspace:
-/// datos personales + estadísticas de issues por proyecto.
+/// Returns user profile in workspace context:
+/// personal data + issue statistics per project.
 ///
-/// `project_data` solo se popula cuando el requester tiene rol >= Member (15).
-/// Los proyectos devueltos son aquellos donde el **requester** es miembro activo,
-/// y los contadores de issues refieren al usuario **target** (`user_id`).
+/// `project_data` is only populated when the requester has role >= Member (15).
+/// The projects returned are those where the **requester** is an active member,
+/// and the issue counters refer to the **target** user (`user_id`).
 ///
-/// Mirror de `WorkspaceUserProfileEndpoint`
+/// Mirror of `WorkspaceUserProfileEndpoint`
 /// (`apps/api/plane/app/views/workspace/user.py:280`).
 #[utoipa::path(
     get,
@@ -1584,16 +1582,16 @@ pub async fn get_user_profile(
     let ws = workspace_by_slug(&state.db, &slug).await?;
     let requester = require_workspace_member(&state.db, ws.id, user.id).await?;
 
-    // ── 1. Fetch del usuario target ───────────────────────────────────────────
+    // ── 1. Target user fetch ──────────────────────────────────────────────────
     //
-    // Django: `User.objects.get(pk=user_id)` — lanza 404 si no existe.
+    // Django: `User.objects.get(pk=user_id)` — raises 404 if it doesn	 exist.
     let target_user = users::Entity::find_by_id(user_id)
         .one(&state.db)
         .await
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
-    // ── 2. Compute avatar_url — mirror de User.avatar_url (Django) ───────────
+    // ── 2. Compute avatar_url — mirror of User.avatar_url (Django) ────────────
     //
     // Django: `avatar_asset.asset_url` > `avatar` > None
     // Path asset: `/api/assets/v2/static/{id}/` (entity_type = USER_AVATAR)
@@ -1605,7 +1603,7 @@ pub async fn get_user_profile(
         None
     };
 
-    // ── 3. Compute cover_image_url — mirror de User.cover_image_url (Django) ─
+    // ── 3. Compute cover_image_url — mirror of User.cover_image_url (Django) ──
     let cover_image_url = if let Some(asset_id) = target_user.cover_image_asset_id {
         Some(format!("/api/assets/v2/static/{}/", asset_id))
     } else {
@@ -1623,25 +1621,25 @@ pub async fn get_user_profile(
         display_name: target_user.display_name.clone(),
     };
 
-    // ── 4. Project stats — solo si requester.role >= MEMBER (15) ────────────
+    // ── 4. Project stats — only if requester.role >= MEMBER (15) ─────────────
     //
     // Django: `if requesting_workspace_member.role >= 15`
     // Roles: Guest=5, Viewer=10, Member=15, Admin=20
     let project_data = if requester.role >= ROLE_MEMBER {
         let ws_id = ws.id;
 
-        // Una sola query agrega todos los contadores por proyecto, evitando
-        // N+1 queries. Subqueries correlacionadas se reemplazan por LEFT JOINs
-        // sobre subqueries agrupadas — mismo plan que si Django hiciera
-        // `annotate(Count(...))` en bulk.
+        // A single query aggregates all counters per project, avoiding
+        // N+1 queries. Correlated subqueries are replaced by LEFT JOINs
+        // over grouped subqueries — same plan as if Django did
+        // `annotate(Count(...))` in bulk.
         //
-        // Filtro de proyectos: archivados = false, el REQUESTER es miembro activo.
-        // Contadores: issues del TARGET user (created / assigned / completed / pending).
+        // Project filter: archived = false, REQUESTER is active member.
+        // Counters: TARGET user issues (created / assigned / completed / pending).
         //
         // Placeholders: $1 = requester_id, $2 = user_id, $3 = ws_id.
-        // Se usan parámetros bindados en vez de interpolar vía `format!` para
-        // blindar contra SQL injection (defensa en profundidad). `group` se
-        // escapa como `"group"` por ser palabra reservada en PostgreSQL.
+        // Bind parameters are used instead of `format!` interpolation to
+        // shield against SQL injection (defense in depth). `group` is
+        // escaped as `"group"` because its a reserved word in PostgreSQL.
         let stmt = Statement::from_sql_and_values(
             sea_orm::DatabaseBackend::Postgres,
             r#"
@@ -1659,7 +1657,7 @@ pub async fn get_user_profile(
                 AND pm.is_active   = true
                 AND pm.deleted_at  IS NULL
 
-            -- created_issues: issues creadas por el target user en el proyecto
+            -- created_issues: issues created by the target user in the project
             LEFT JOIN (
                 SELECT project_id, COUNT(*) AS cnt
                 FROM   issues
@@ -1670,7 +1668,7 @@ pub async fn get_user_profile(
                 GROUP BY project_id
             ) ci ON ci.project_id = p.id
 
-            -- assigned_issues: issues asignadas al target user
+            -- assigned_issues: issues assigned to the target user
             LEFT JOIN (
                 SELECT i.project_id, COUNT(DISTINCT ia.id) AS cnt
                 FROM   issue_assignees ia
@@ -1683,7 +1681,7 @@ pub async fn get_user_profile(
                 GROUP BY i.project_id
             ) ai ON ai.project_id = p.id
 
-            -- completed_issues: asignadas + completadas
+            -- completed_issues: assigned + completed
             LEFT JOIN (
                 SELECT i.project_id, COUNT(DISTINCT ia.id) AS cnt
                 FROM   issue_assignees ia
@@ -1697,7 +1695,7 @@ pub async fn get_user_profile(
                 GROUP BY i.project_id
             ) compi ON compi.project_id = p.id
 
-            -- pending_issues: asignadas en estados backlog/unstarted/started
+            -- pending_issues: assigned in backlog/unstarted/started groups
             LEFT JOIN (
                 SELECT i.project_id, COUNT(DISTINCT ia.id) AS cnt
                 FROM   issue_assignees ia
@@ -1726,7 +1724,7 @@ pub async fn get_user_profile(
 
         rows.into_iter()
             .map(|row| {
-                // logo_props viene como String JSON; deserializar con fallback seguro.
+                // logo_props comes as JSON String; deserialize with safe fallback.
                 let logo_props = serde_json::from_str(&row.logo_props)
                     .unwrap_or(serde_json::json!({}));
                 ProjectProfileData {
@@ -1740,7 +1738,7 @@ pub async fn get_user_profile(
             })
             .collect()
     } else {
-        // Guest / Viewer — sin acceso a estadísticas de proyectos (paridad Django)
+        // Guest / Viewer — without access to project statistics (Django parity)
         Vec::new()
     };
 
@@ -1756,10 +1754,10 @@ pub async fn get_user_profile(
 //
 // GET /workspaces/{slug}/user-stats/{user_id}/
 //
-// Mirror de Django `WorkspaceUserProfileStatsEndpoint.get`
+// Mirror of Django `WorkspaceUserProfileStatsEndpoint.get`
 // (plane/app/views/workspace/user.py).
 //
-// Devuelve:
+// Returns:
 //   - state_distribution     : [{state_group, state_count}]
 //   - priority_distribution  : [{priority, priority_count}]
 //   - created_issues         : i64
@@ -1770,7 +1768,7 @@ pub async fn get_user_profile(
 //   - present_cycles         : [{cycle__name, cycle__id, cycle__project_id}]
 //   - upcoming_cycles        : [{cycle__name, cycle__id, cycle__project_id}]
 //
-// Permiso: miembro activo del workspace (cualquier rol).
+// Permission: active workspace member (any role).
 
 #[derive(Debug, Serialize, FromQueryResult)]
 pub struct StateDistributionRow {
@@ -1791,8 +1789,8 @@ pub struct CycleInfoRow {
     pub cycle_project_id: Uuid,
 }
 
-// Serialización que reproduce la forma Django: keys con doble underscore
-// como `cycle__name`, `cycle__id`, `cycle__project_id`.
+// Serialization that reproduces the Django form: double underscore keys
+// like `cycle__name`, `cycle__id`, `cycle__project_id`.
 impl serde::Serialize for CycleInfoRow {
     fn serialize<S: serde::Serializer>(&self, s: S) -> Result<S::Ok, S::Error> {
         use serde::ser::SerializeMap;
@@ -1820,8 +1818,8 @@ pub struct UserStatsResponse {
 /// GET /workspaces/{slug}/user-stats/{user_id}/
 ///
 /// Mirror Django `WorkspaceUserProfileStatsEndpoint.get`.
-/// Requiere membresía activa del requester en el workspace; estadísticas
-/// calculadas para el `user_id` indicado en la URL.
+/// Requires active membership of the requester in the workspace; statistics
+/// calculated for the `user_id` indicated in the URL.
 #[utoipa::path(
     get,
     path = "/api/workspaces/{slug}/user-stats/{user_id}/",
@@ -1831,10 +1829,10 @@ pub struct UserStatsResponse {
         ("user_id" = Uuid, Path, description = "Target user ID"),
     ),
     responses(
-        (status = 200, description = "Estadísticas del usuario en el workspace"),
-        (status = 401, description = "No autenticado"),
-        (status = 403, description = "No es miembro activo del workspace"),
-        (status = 404, description = "Workspace no encontrado"),
+        (status = 200, description = "User statistics in workspace"),
+        (status = 401, description = "Unauthenticated"),
+        (status = 403, description = "Not an active workspace member"),
+        (status = 404, description = "Workspace not found"),
     )
 )]
 pub async fn get_user_stats(
@@ -1844,20 +1842,20 @@ pub async fn get_user_stats(
 ) -> Result<Json<UserStatsResponse>, AppError> {
     let db = &state.db;
     let ws = workspace_by_slug(db, &slug).await?;
-    // Autorización: el requester debe ser miembro activo (cualquier rol)
+    // Authorization: requester must be an active member (any role)
     let requester_id = requester.id;
     let _member = require_workspace_member(db, ws.id, requester_id).await?;
     let ws_id = ws.id;
 
     // ── state_distribution ───────────────────────────────────────────────────
-    // Mirror: issues asignadas al user_id, agrupadas por state.group, excluye
-    // issue_assignees con deleted_at != NULL (paridad con la condición
-    // `Q(issue_assignee__deleted_at__isnull=True)` en Django).
+    // Mirror: issues assigned to user_id, grouped by state.group, excludes
+    // issue_assignees with deleted_at != NULL (parity with the condition
+    // `Q(issue_assignee__deleted_at__isnull=True)` in Django).
     //
-    // NOTA: `group` es palabra reservada en PostgreSQL — debe escaparse con
-    // comillas dobles (`s."group"`) para evitar errores de parsing en
-    // `GROUP BY` / `ORDER BY`. Parámetros bindados ($1..$N) en vez de
-    // interpolación `format!` para prevenir SQL injection en profundidad.
+    // NOTE: `group` is a reserved word in PostgreSQL — must be escaped with
+    // double quotes (`s."group"`) to avoid parsing errors in
+    // `GROUP BY` / `ORDER BY`. Bind parameters ($1..$N) instead of
+    // `format!` interpolation to prevent deep SQL injection.
     let state_stmt = Statement::from_sql_and_values(
         sea_orm::DatabaseBackend::Postgres,
         r#"
@@ -1890,8 +1888,8 @@ pub async fn get_user_stats(
         .map_err(AppError::Database)?;
 
     // ── priority_distribution ────────────────────────────────────────────────
-    // Mirror: mismas issues asignadas, agrupadas por priority.
-    // Orden Django: urgent=0, high=1, medium=2, low=3, none=4.
+    // Mirror: same assigned issues, grouped by priority.
+    // Django order: urgent=0, high=1, medium=2, low=3, none=4.
     let priority_stmt = Statement::from_sql_and_values(
         sea_orm::DatabaseBackend::Postgres,
         r#"
@@ -1931,10 +1929,10 @@ pub async fn get_user_stats(
         .await
         .map_err(AppError::Database)?;
 
-    // ── contadores escalares ─────────────────────────────────────────────────
-    // Una sola query multi-columna para reducir round-trips a la DB.
+    // ── scalar counters ──────────────────────────────────────────────────────
+    // A single multi-column query to reduce DB round-trips.
     // Placeholders: $1 = requester_id, $2 = user_id, $3 = ws_id.
-    // Postgres permite reutilizar el mismo `$n` varias veces en la misma query.
+    // Postgres allows reusing the same `$n` multiple times in the same query.
     let counters_stmt = Statement::from_sql_and_values(
         sea_orm::DatabaseBackend::Postgres,
         r#"
@@ -1999,7 +1997,7 @@ pub async fn get_user_stats(
                   AND  p.deleted_at   IS NULL
             ) AS completed_issues,
 
-            -- pending_issues: no completadas ni canceladas
+            -- pending_issues: not completed or cancelled
             (
                 SELECT COUNT(DISTINCT ia.id)
                 FROM   issue_assignees ia
@@ -2062,7 +2060,7 @@ pub async fn get_user_stats(
         });
 
     // ── upcoming_cycles ──────────────────────────────────────────────────────
-    // Mirror: CycleIssue donde cycle.start_date > now() e issue tiene al user asignado.
+    // Mirror: CycleIssue where cycle.start_date > now() and issue has the user assigned.
     let upcoming_stmt = Statement::from_sql_and_values(
         sea_orm::DatabaseBackend::Postgres,
         r#"
@@ -2133,23 +2131,23 @@ pub async fn get_user_stats(
 //
 // GET /workspaces/{slug}/user-activity/{user_id}/
 //
-// Mirror de Django `WorkspaceUserActivityEndpoint.get`
+// Mirror of Django `WorkspaceUserActivityEndpoint.get`
 // (plane/app/views/workspace/user.py:370).
 //
-// Devuelve actividades de `IssueActivity` del actor `user_id` en el workspace,
-// excluyendo los campos virtuales (comment, vote, reaction, draft), y filtrando
-// solo proyectos donde el **requester** es miembro activo no archivado.
+// Returns `IssueActivity` activities of actor `user_id` in the workspace,
+// excluding virtual fields (comment, vote, reaction, draft), and filtering
+// only projects where the **requester** is an active non-archived member.
 //
-// Query params opcionales:
-//   - `project` (repetible): UUIDs de proyecto para filtrar
-//   - `per_page`: registros por página (default 10)
-//   - `cursor`: cursor de paginación estilo Django
-//   - `order_by`: columna de ordenamiento (default `-created_at`)
+// Optional query params:
+//   - `project` (repeatable): Project UUIDs to filter
+//   - `per_page`: records per page (default 10)
+//   - `cursor`: Django-style pagination cursor
+//   - `order_by`: sort column (default `-created_at`)
 //
-// Serialización: mirror de `IssueActivitySerializer(fields="__all__")` con
+// Serialization: mirror of `IssueActivitySerializer(fields="__all__")` with
 // nested `actor_detail`, `issue_detail`, `project_detail`, `workspace_detail`.
 
-/// Mirror de `IssueActivitySerializer.actor_detail` → `UserLiteSerializer`.
+/// Mirror of `IssueActivitySerializer.actor_detail` → `UserLiteSerializer`.
 #[derive(Debug, Serialize)]
 pub struct ActivityActorDetail {
     pub id: Uuid,
@@ -2161,8 +2159,8 @@ pub struct ActivityActorDetail {
     pub display_name: String,
 }
 
-/// Mirror de `IssueFlatSerializer` — campos mínimos que el frontend consume en
-/// el panel de actividad del perfil de usuario.
+/// Mirror of `IssueFlatSerializer` — minimum fields the frontend consumes in
+/// user profile activity panel.
 #[derive(Debug, Serialize)]
 pub struct ActivityIssueDetail {
     pub id: Uuid,
@@ -2172,7 +2170,7 @@ pub struct ActivityIssueDetail {
     pub workspace_id: Uuid,
 }
 
-/// Mirror de `ProjectLiteSerializer`.
+/// Mirror of `ProjectLiteSerializer`.
 #[derive(Debug, Serialize)]
 pub struct ActivityProjectDetail {
     pub id: Uuid,
@@ -2181,7 +2179,7 @@ pub struct ActivityProjectDetail {
     pub logo_props: serde_json::Value,
 }
 
-/// Mirror de `WorkspaceLiteSerializer`.
+/// Mirror of `WorkspaceLiteSerializer`.
 #[derive(Debug, Serialize)]
 pub struct ActivityWorkspaceDetail {
     pub id: Uuid,
@@ -2190,10 +2188,10 @@ pub struct ActivityWorkspaceDetail {
     pub logo: Option<String>,
 }
 
-/// Respuesta de una actividad — mirror de `IssueActivitySerializer(fields="__all__")`.
+/// Activity response — mirror of `IssueActivitySerializer(fields="__all__")`.
 #[derive(Debug, Serialize)]
 pub struct UserActivityItem {
-    // Campos del modelo IssueActivity
+    // IssueActivity model fields
     pub id: Uuid,
     pub verb: String,
     pub field: Option<String>,
@@ -2210,17 +2208,17 @@ pub struct UserActivityItem {
     pub epoch: Option<f64>,
     pub created_at: chrono::DateTime<Utc>,
     pub updated_at: chrono::DateTime<Utc>,
-    // Campos anidados (None cuando el objeto referenciado fue eliminado)
+    // Nested fields (None when the referenced object was deleted)
     pub actor_detail: Option<ActivityActorDetail>,
     pub issue_detail: Option<ActivityIssueDetail>,
     pub project_detail: Option<ActivityProjectDetail>,
     pub workspace_detail: Option<ActivityWorkspaceDetail>,
 }
 
-/// Query params de `GET /workspaces/{slug}/user-activity/{user_id}/`.
+/// Query params for `GET /workspaces/{slug}/user-activity/{user_id}/`.
 #[derive(Debug, Deserialize)]
 pub struct UserActivityQuery {
-    /// Filtro por proyecto (multi-valor: ?project=A&project=B).
+    /// Project filter (multi-value: ?project=A&project=B).
     #[serde(default)]
     pub project: Vec<Uuid>,
     pub per_page: Option<u64>,
@@ -2230,10 +2228,10 @@ pub struct UserActivityQuery {
 
 /// `GET /workspaces/{slug}/user-activity/{user_id}/`
 ///
-/// Actividades del actor `user_id` visibles para el requester (solo proyectos
-/// donde el requester es miembro activo).
+/// Activities of actor `user_id` visible to the requester (only projects
+/// where the requester is an active member).
 ///
-/// Mirror de `WorkspaceUserActivityEndpoint` en Django con paginación cursor.
+/// Mirror of `WorkspaceUserActivityEndpoint` in Django with cursor pagination.
 #[utoipa::path(
     get,
     path = "/api/workspaces/{slug}/user-activity/{user_id}/",
@@ -2258,10 +2256,10 @@ pub async fn get_workspace_user_activity(
 ) -> Result<impl axum::response::IntoResponse, AppError> {
     let db = &state.db;
     let ws = workspace_by_slug(db, &slug).await?;
-    // Autorización: el requester debe ser miembro activo del workspace
+    // Authorization: requester must be an active member of the workspace
     let _member = require_workspace_member(db, ws.id, auth_user.id).await?;
 
-    // ── Paginación ────────────────────────────────────────────────────────────
+    // ── Pagination ────────────────────────────────────────────────────────────
     const DEFAULT_PER_PAGE: u64 = 10;
     const MAX_PER_PAGE: u64 = pagination::DEFAULT_MAX_LIMIT;
 
@@ -2273,14 +2271,14 @@ pub async fn get_workspace_user_activity(
         MAX_PER_PAGE,
     );
 
-    // ── Proyectos visibles para el requester ──────────────────────────────────
+    // ── Visible projects for the requester ────────────────────────────────────
     // Django: `project__project_projectmember__member=request.user`
     //         `project__project_projectmember__is_active=True`
     //         `project__archived_at__isnull=True`
     //
-    // Resolvemos en Rust con una query separada para obtener los IDs de proyecto
-    // accesibles, luego los usamos como filtro IN sobre IssueActivity.
-    // Esto evita un JOIN complejo en SeaORM y mantiene el código legible.
+    // We resolve in Rust with a separate query to get the project IDs
+    // accessible, then use them as an IN filter on IssueActivity.
+    // This avoids a complex JOIN in SeaORM and keeps the code readable.
     let accessible_project_ids: Vec<Uuid> = {
         let memberships = project_members::Entity::find()
             .filter(project_members::Column::MemberId.eq(auth_user.id))
@@ -2291,7 +2289,7 @@ pub async fn get_workspace_user_activity(
             .map_err(AppError::Database)?;
 
         if memberships.is_empty() {
-            // Sin proyectos accesibles → respuesta vacía paginada
+            // No accessible projects → empty paginated response
             let body = pagination::build_response(
                 Vec::<UserActivityItem>::new(),
                 0,
@@ -2301,7 +2299,7 @@ pub async fn get_workspace_user_activity(
             return Ok((axum::http::StatusCode::OK, axum::Json(body)));
         }
 
-        // Filtrar solo proyectos del workspace actual y no archivados
+        // Filter only current workspace projects and non-archived
         let project_ids_from_memberships: Vec<Uuid> =
             memberships.iter().map(|pm| pm.project_id).collect();
 
@@ -2327,16 +2325,16 @@ pub async fn get_workspace_user_activity(
         return Ok((axum::http::StatusCode::OK, axum::Json(body)));
     }
 
-    // ── Campos excluidos — mirror Django: ~Q(field__in=["comment","vote","reaction","draft"]) ──
+    // ── Excluded fields — Django mirror: ~Q(field__in=["comment","vote","reaction","draft"]) ──
     const EXCLUDED_FIELDS: &[&str] = &["comment", "vote", "reaction", "draft"];
 
-    // ── Construir query base ──────────────────────────────────────────────────
+    // ── Build base query ─────────────────────────────────────────────────────
     let mut base = issue_activities::Entity::find()
         .filter(issue_activities::Column::WorkspaceId.eq(ws.id))
         .filter(issue_activities::Column::ActorId.eq(user_id))
         .filter(issue_activities::Column::ProjectId.is_in(accessible_project_ids))
         .filter(issue_activities::Column::DeletedAt.is_null())
-        // Excluir fields virtuales (NOT IN)
+        // Exclude virtual fields (NOT IN)
         .filter(
             sea_orm::Condition::any()
                 .add(issue_activities::Column::Field.is_null())
@@ -2346,15 +2344,15 @@ pub async fn get_workspace_user_activity(
                 ),
         );
 
-    // Filtro opcional por proyecto (?project=UUID)
+    // Optional filter by project (?project=UUID)
     if !q.project.is_empty() {
         base = base.filter(issue_activities::Column::ProjectId.is_in(q.project.clone()));
     }
 
-    // ── Count (mismos filtros, sin orden ni offset) ──────────────────────────
+    // ── Count (same filters, without order or offset) ────────────────────────
     let total_count = base.clone().count(db).await.map_err(AppError::Database)?;
 
-    // ── Ordenamiento — mirror Django: default -created_at ────────────────────
+    // ── Ordering — Django mirror: default -created_at ────────────────────────
     let order_col = q.order_by.as_deref().unwrap_or("-created_at");
     let (col, asc) = if let Some(stripped) = order_col.strip_prefix('-') {
         (stripped, false)
@@ -2380,7 +2378,7 @@ pub async fn get_workspace_user_activity(
         _ => base.order_by_desc(issue_activities::Column::CreatedAt),
     };
 
-    // ── Fetch de la página ───────────────────────────────────────────────────
+    // ── Fetch page ───────────────────────────────────────────────────────────
     let activities = ordered
         .paginate(db, limit)
         .fetch_page(cursor.offset)
@@ -2397,9 +2395,9 @@ pub async fn get_workspace_user_activity(
         return Ok((axum::http::StatusCode::OK, axum::Json(body)));
     }
 
-    // ── Batch-fetch de objetos relacionados (evitar N+1) ─────────────────────
+    // ── Batch-fetch related objects (avoid N+1) ──────────────────────────────
 
-    // Actor IDs (siempre el mismo user_id, pero mantenemos el patrón genérico)
+    // Actor IDs (always the same user_id, but keeping generic pattern)
     let actor_ids: Vec<Uuid> = activities
         .iter()
         .filter_map(|a| a.actor_id)
@@ -2438,7 +2436,7 @@ pub async fn get_workspace_user_activity(
         std::collections::HashMap::new()
     };
 
-    // Project IDs de las actividades de esta página
+    // Project IDs of activities on this page
     let page_project_ids: Vec<Uuid> = activities
         .iter()
         .map(|a| a.project_id)
@@ -2456,7 +2454,7 @@ pub async fn get_workspace_user_activity(
             .map(|p| (p.id, p))
             .collect();
 
-    // Workspace detail (único para todas las actividades de la página)
+    // Workspace detail (single for all activities on the page)
     let workspace_detail = ActivityWorkspaceDetail {
         id: ws.id,
         name: ws.name.clone(),
@@ -2464,7 +2462,7 @@ pub async fn get_workspace_user_activity(
         logo: ws.logo.clone(),
     };
 
-    // ── Ensamblar respuesta ──────────────────────────────────────────────────
+    // ── Assemble response ────────────────────────────────────────────────────
     let results: Vec<UserActivityItem> = activities
         .into_iter()
         .map(|a| {
@@ -2551,72 +2549,71 @@ pub async fn get_workspace_user_activity(
 //
 // POST /workspaces/{slug}/user-activity/{user_id}/export
 //
-// Mirror de Django `ExportWorkspaceUserActivityEndpoint.post`
+// Mirror of Django `ExportWorkspaceUserActivityEndpoint.post`
 // (plane/app/views/workspace/base.py:368).
 //
-// Body JSON:   `{ "date": "YYYY-MM-DD" }`  (requerido)
-// Respuesta:   `text/csv` con `Content-Disposition: attachment; filename="workspace-user-activity.csv"`
+// Body JSON:   `{ "date": "YYYY-MM-DD" }`  (required)
+// Response:   `text/csv` with `Content-Disposition: attachment; filename="workspace-user-activity.csv"`
 //
-// Paridad del CSV:
-//   - 9 columnas en este orden exacto: Actor name, Issue ID, Project,
+// CSV Parity:
+//   - 9 columns in this exact order: Actor name, Issue ID, Project,
 //     Created at, Updated at, Action, Field, Old value, New value.
-//   - `Issue ID` es `"{identifier} - {sequence_id_or_empty}"` (el separador
-//     Django tiene espacios a ambos lados — se respeta literalmente).
-//   - Todos los valores quoted (`QUOTE_ALL` en Django ⇒ `QuoteStyle::Always`
-//     en el writer de la crate `csv`).
-//   - Cada celda pasa por `sanitize_csv_cell` para prevenir CSV injection
-//     (paridad con `sanitize_csv_row` en Django).
-//   - Cap de 10_000 filas (espejo de `[:10000]` en el queryset Django).
+//   - `Issue ID` is `"{identifier} - {sequence_id_or_empty}"` (the separator
+//     Django has spaces on both sides — it is respected literally).
+//   - All values quoted (`QUOTE_ALL` in Django ⇒ `QuoteStyle::Always`
+//     in the `csv` crate writer).
+//   - Each cell passes through `sanitize_csv_cell` to prevent CSV injection
+//     (parity with `sanitize_csv_row` in Django).
+//   - Cap of 10,000 rows (mirror of `[:10000]` in the Django queryset).
 //
-// Filtros aplicados al queryset (mismos que el GET homólogo **más** el filtro
-// de fecha):
+// Filters applied to the queryset (same as homologous GET plus date filter):
 //   * workspace_id = ws.id
-//   * actor_id = user_id  (parámetro de path)
+//   * actor_id = user_id (path parameter)
 //   * project_id ∈ accessible_project_ids
-//     (proyectos del workspace en los que el *requester* es miembro activo
-//     y el proyecto no está archivado ni borrado)
+//     (workspace projects in which the *requester* is an active member
+//     and project is not archived or deleted)
 //   * field NOT IN (comment, vote, reaction, draft) OR field IS NULL
 //   * created_at ∈ [date 00:00:00 UTC, date+1 00:00:00 UTC)
-//   * deleted_at IS NULL (soft-delete respetado)
+//   * deleted_at IS NULL (soft-delete respected)
 //
-// Autorización:
+// Authorization:
 //   - El requester debe ser miembro activo del workspace (`require_workspace_member`).
 //   - Django aplica `WorkspaceEntityPermission` ⇒ en POST exige role ∈
 //     {Admin=20, Member=15}. Guests y Viewers reciben 403.
 //
-// Nota de zona horaria:
-//   - Django evalúa `created_at__date` contra el TZ activo. Deploys estándar
-//     de Plane usan `TIME_ZONE='UTC'` con `USE_TZ=True`, así que comparamos
-//     contra UTC. Si en el futuro Plane deja configurable el TZ por workspace,
-//     este handler debe recalibrar.
+// Timezone note:
+//   - Django evaluates `created_at__date` against active TZ. Standard Plane
+//     deploys use `TIME_ZONE='UTC'` with `USE_TZ=True`, so we compare
+//     against UTC. If in the future Plane makes workspace TZ configurable,
+//     this handler must recalibrate.
 //
-// Nota de ordenamiento:
-//   - Django no añade `.order_by(...)` antes del `[:10000]`, dejando el orden
-//     indefinido. En Rust añadimos `-created_at` explícito para que el CSV
-//     sea determinista entre ejecuciones; mismo criterio que el GET.
+// Sorting note:
+//   - Django doesn	 add `.order_by(...)` before `[:10000]`, leaving order
+//     undefined. In Rust we add explicit `-created_at` so the CSV
+//     is deterministic between runs; same criterion as GET.
 
-/// Query params de `GET /workspaces/{slug}/user-activity/{user_id}/export`.
+/// Query params of `GET /workspaces/{slug}/user-activity/{user_id}/export`.
 ///
 /// El handler GET se mantiene como alias del POST (ambos exportan CSV).
-/// Si `date` no se envía se usa `today()` UTC, lo que permite al frontend
-/// invocarlo sin form (link directo de descarga).
+/// If `date` is not sent, `today()` UTC is used, allowing the frontend
+/// to invoke it without form (direct download link).
 #[derive(Debug, Deserialize)]
 pub struct ExportUserActivityQuery {
     pub date: Option<String>,
 }
 
-/// Body JSON de `POST /workspaces/{slug}/user-activity/{user_id}/export`.
+/// JSON body for `POST /workspaces/{slug}/user-activity/{user_id}/export`.
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct ExportUserActivityBody {
-    /// Fecha local (UTC) para la que se exportarán las actividades.
-    /// Formato ISO 8601 `YYYY-MM-DD`.
+    /// Local date (UTC) for which activities will be exported.
+    /// ISO 8601 format `YYYY-MM-DD`.
     pub date: Option<String>,
 }
 
 /// `POST /workspaces/{slug}/user-activity/{user_id}/export`
 ///
-/// Exporta en formato CSV las actividades del actor `user_id` registradas en
-/// una fecha específica. Requiere role ≥ Member para el requester.
+/// Exports in CSV format the activities of actor `user_id` recorded on
+/// a specific date. Requires role ≥ Member for the requester.
 #[utoipa::path(
     post,
     path = "/api/workspaces/{slug}/user-activity/{user_id}/export",
@@ -2628,11 +2625,11 @@ pub struct ExportUserActivityBody {
     ),
     request_body = ExportUserActivityBody,
     responses(
-        (status = 200, description = "CSV file con las actividades del día"),
-        (status = 400, description = "Falta `date` o formato inválido"),
+        (status = 200, description = "CSV file with the days activities"),
+        (status = 400, description = "Missing `date` or invalid format"),
         (status = 401, description = "Unauthorized"),
-        (status = 403, description = "No es miembro del workspace o role < Member"),
-        (status = 404, description = "Workspace no encontrado"),
+        (status = 403, description = "Not a workspace member or role < Member"),
+        (status = 404, description = "Workspace not found"),
     )
 )]
 pub async fn export_workspace_user_activity(
@@ -2643,7 +2640,7 @@ pub async fn export_workspace_user_activity(
 ) -> Result<axum::response::Response, AppError> {
     let db = &state.db;
 
-    // ── Validación del body ───────────────────────────────────────────────
+    // ── Body validation ───────────────────────────────────────────────────
     // Django: `if not request.data.get("date"): return 400 {"error": "Date is required"}`
     let date_str = body.date.as_deref().unwrap_or("").trim();
     if date_str.is_empty() {
@@ -2653,33 +2650,33 @@ pub async fn export_workspace_user_activity(
         AppError::BadRequest("Invalid date format. Expected YYYY-MM-DD".into())
     })?;
 
-    // Rango [00:00:00, +1 día) en UTC. Usamos `and_hms_opt` + `single()` —
-    // ambas devuelven Option porque medianoche UTC no sufre de DST, pero el
-    // API de chrono no lo sabe estáticamente. Fallar aquí sería un bug de
-    // chrono, no input del usuario, así que mapeamos a 500.
+    // Range [00:00:00, +1 day) in UTC. We use `and_hms_opt` + `single()` —
+    // both return Option because UTC midnight does not suffer from DST, but the
+    // chrono API doesn	 know statically. Failing here would be a chrono bug,
+    // not user input, so we map to 500.
     let start_of_day_utc = target_date
         .and_hms_opt(0, 0, 0)
         .and_then(|ndt| Utc.from_local_datetime(&ndt).single())
         .ok_or_else(|| AppError::Internal(anyhow::anyhow!("Failed to build start_of_day UTC")))?;
     let end_of_day_utc = start_of_day_utc + Duration::days(1);
 
-    // Convertir a `DateTime<FixedOffset>` — el alias de `DateTimeWithTimeZone`
-    // en SeaORM. Patrón consistente con `src/jobs/cleanup.rs:207`.
+    // Convert to `DateTime<FixedOffset>` — the alias for `DateTimeWithTimeZone`
+    // in SeaORM. Consistent pattern with `src/jobs/cleanup.rs:207`.
     let start_of_day: DateTime<chrono::FixedOffset> = start_of_day_utc.into();
     let end_of_day: DateTime<chrono::FixedOffset> = end_of_day_utc.into();
 
-    // ── Workspace + autorización ──────────────────────────────────────────
+    // ── Workspace + authorization ─────────────────────────────────────────
     let ws = workspace_by_slug(db, &slug).await?;
     let member = require_workspace_member(db, ws.id, auth_user.id).await?;
 
-    // Paridad con `WorkspaceEntityPermission` en POST:
+    // Parity with `WorkspaceEntityPermission` in POST:
     // role ∈ {Admin(20), Member(15)} ⇒ Guest/Viewer rechazados.
     if member.role < ROLE_MEMBER {
         return Err(AppError::Forbidden);
     }
 
-    // ── Proyectos accesibles para el requester ────────────────────────────
-    // Misma lógica que `get_workspace_user_activity` — duplicada intencional:
+    // ── Accessible projects for the requester ─────────────────────────────
+    // Same logic as `get_workspace_user_activity` — intentional duplication:
     // refactorizar a helper solo cuando aparezca un 3er call-site.
     let accessible_project_ids: Vec<Uuid> = {
         let memberships = project_members::Entity::find()
@@ -2713,7 +2710,7 @@ pub async fn export_workspace_user_activity(
         return build_empty_user_activity_csv_response();
     }
 
-    // ── Query de actividades ──────────────────────────────────────────────
+    // ── Activities query ──────────────────────────────────────────────────
     const EXCLUDED_FIELDS: &[&str] = &["comment", "vote", "reaction", "draft"];
     const ROW_CAP: u64 = 10_000;
 
@@ -2724,9 +2721,9 @@ pub async fn export_workspace_user_activity(
         .filter(issue_activities::Column::DeletedAt.is_null())
         .filter(issue_activities::Column::CreatedAt.gte(start_of_day))
         .filter(issue_activities::Column::CreatedAt.lt(end_of_day))
-        // NOT IN con NULL-safe: SQL `NOT IN (...)` evalúa a NULL cuando field
-        // es NULL, excluyendo esas filas — usamos Condition::any para
-        // capturarlas explícitamente (mismo patrón que el GET homólogo).
+        // NOT IN with NULL-safe: SQL `NOT IN (...)` evaluates to NULL when field
+        // is NULL, excluding those rows — we use Condition::any to
+        // capturing them explicitly (same pattern as homologous GET).
         .filter(
             sea_orm::Condition::any()
                 .add(issue_activities::Column::Field.is_null())
@@ -2736,7 +2733,7 @@ pub async fn export_workspace_user_activity(
                     ),
                 ),
         )
-        // Orden explícito — divergencia justificada con Django (ver header).
+        // Explicit ordering — justified divergence with Django (see header).
         .order_by_desc(issue_activities::Column::CreatedAt)
         .limit(ROW_CAP)
         .all(db)
@@ -2747,7 +2744,7 @@ pub async fn export_workspace_user_activity(
         return build_empty_user_activity_csv_response();
     }
 
-    // ── Batch-load de objetos relacionados (evitar N+1) ───────────────────
+    // ── Batch-load related objects (avoid N+1) ────────────────────────────
     let actor_ids: Vec<Uuid> = activities
         .iter()
         .filter_map(|a| a.actor_id)
@@ -2806,7 +2803,7 @@ pub async fn export_workspace_user_activity(
             .map(|p| (p.id, p))
             .collect();
 
-    // ── Serialización CSV ─────────────────────────────────────────────────
+    // ── CSV serialization ─────────────────────────────────────────────────
     // QuoteStyle::Always ≡ Django `csv.QUOTE_ALL`.
     let bytes = encode_user_activity_csv(&activities, &actors_map, &issues_map, &projects_map)
         .map_err(|e| AppError::Internal(anyhow::anyhow!("CSV encoding failed: {e}")))?;
@@ -2816,9 +2813,9 @@ pub async fn export_workspace_user_activity(
 
 /// `GET /workspaces/{slug}/user-activity/{user_id}/export?date=YYYY-MM-DD`
 ///
-/// Alias GET del POST: permite usar la URL como link de descarga directo
+/// GET alias of POST: allows using the URL as a direct download link
 /// (`<a href>`). Si `date` falta se usa hoy UTC. Reusa el handler POST
-/// rearmando el body — un solo flujo de validación/auth/serialización.
+/// reassembling the body — single validation/auth/serialization flow.
 pub async fn export_workspace_user_activity_get(
     state: State<AppState>,
     auth: AnyAuth,
@@ -2838,17 +2835,17 @@ pub async fn export_workspace_user_activity_get(
     .await
 }
 
-/// Formatea un `DateTime<FixedOffset>` al mismo string que `str(datetime)` en
-/// Python: `YYYY-MM-DD HH:MM:SS.ffffff+HH:MM`. Usado para las columnas
-/// `Created at` / `Updated at` del CSV para paridad visual con Django.
+/// Formats a `DateTime<FixedOffset>` to the same string as `str(datetime)` in
+/// Python: `YYYY-MM-DD HH:MM:SS.ffffff+HH:MM`. Used for columns
+/// `Created at` / `Updated at` of the CSV for visual parity with Django.
 fn format_activity_datetime(dt: &sea_orm::prelude::DateTimeWithTimeZone) -> String {
-    // `%:z` produce `+HH:MM` (con dos puntos), igual que el repr de `datetime`.
-    // `%.6f` produce microsegundos con seis dígitos (padding con ceros).
+    // `%:z` produces `+HH:MM` (with colon), same as `datetime` repr.
+    // `%.6f` produces microseconds with six digits (zero padding).
     dt.format("%Y-%m-%d %H:%M:%S%.6f%:z").to_string()
 }
 
-/// Construye el buffer CSV — extraído para testabilidad y legibilidad del
-/// handler. Devuelve los bytes listos para enviar como body de la respuesta.
+/// Builds the CSV buffer — extracted for testability and readability of
+/// handler. Returns the bytes ready to send as the response body.
 fn encode_user_activity_csv(
     activities: &[issue_activities::Model],
     actors_map: &std::collections::HashMap<Uuid, users::Model>,
@@ -2859,7 +2856,7 @@ fn encode_user_activity_csv(
         .quote_style(csv::QuoteStyle::Always)
         .from_writer(Vec::<u8>::new());
 
-    // Header — orden y etiquetas exactas de Django.
+    // Header — exact order and labels from Django.
     wtr.write_record([
         "Actor name",
         "Issue ID",
@@ -2872,9 +2869,9 @@ fn encode_user_activity_csv(
         "New value",
     ])?;
 
-    // Cada fila pasa por `sanitize_csv_cell` para prevenir CSV injection.
-    // Campos nullable se convierten a "" cuando son None (paridad con
-    // Python: `csv.writer.writerow([..., None, ...])` escribe celda vacía).
+    // Each row passes through `sanitize_csv_cell` to prevent CSV injection.
+    // Nullable fields are converted to "" when they are None (parity with
+    // Python: `csv.writer.writerow([..., None, ...])` writes an empty cell).
     for a in activities {
         let actor_display = a
             .actor_id
@@ -2917,14 +2914,14 @@ fn encode_user_activity_csv(
 
     // `into_inner()` returns `Result<Vec<u8>, csv::IntoInnerError<_>>` y
     // `into_error()` en csv 1.4 devuelve `std::io::Error` (no `csv::Error`).
-    // El `?` hace la coerción vía `impl From<io::Error> for csv::Error`.
+    // The `?` does coercion via `impl From<io::Error> for csv::Error`.
     Ok(wtr.into_inner().map_err(|e| e.into_error())?)
 }
 
-/// Respuesta CSV "vacía" — solo header, sin filas. Usada cuando el requester
-/// no tiene proyectos visibles o cuando no hay actividades para la fecha.
-/// Django en esos casos devuelve un CSV de solo-header (el list comprehension
-/// no produce filas pero el header siempre se escribe).
+/// "Empty" CSV response — header only, no rows. Used when requester
+/// has no visible projects or when there are no activities for the date.
+/// Django in those cases returns a header-only CSV (the list comprehension
+/// does not produce rows but the header is always written).
 fn build_empty_user_activity_csv_response() -> Result<axum::response::Response, AppError> {
     let mut wtr = csv::WriterBuilder::new()
         .quote_style(csv::QuoteStyle::Always)
@@ -2947,8 +2944,8 @@ fn build_empty_user_activity_csv_response() -> Result<axum::response::Response, 
     build_user_activity_csv_response(bytes)
 }
 
-/// Wraps bytes en una respuesta HTTP con los headers de descarga esperados
-/// por el frontend (`text/csv` + `Content-Disposition: attachment`).
+/// Wraps bytes in an HTTP response with the download headers expected
+/// by the frontend (`text/csv` + `Content-Disposition: attachment`).
 fn build_user_activity_csv_response(bytes: Vec<u8>) -> Result<axum::response::Response, AppError> {
     let headers = [
         (header::CONTENT_TYPE, "text/csv"),
@@ -2962,11 +2959,11 @@ fn build_user_activity_csv_response(bytes: Vec<u8>) -> Result<axum::response::Re
 
 // ─── GET /workspaces/{slug}/members/{pk}/ ────────────────────────────────────
 
-/// Retorna un miembro específico del workspace.
+/// Returns a specific workspace member.
 ///
-/// Espejo de `WorkSpaceMemberViewSet.retrieve`
+/// Mirror of `WorkSpaceMemberViewSet.retrieve`
 /// (`apps/api/plane/app/views/workspace/member.py:58-73`).
-/// Requiere membresía activa (GUEST, VIEWER, MEMBER, ADMIN).
+/// Requires active membership (GUEST, VIEWER, MEMBER, ADMIN).
 #[utoipa::path(
     get,
     path = "/api/workspaces/{slug}/members/{pk}/",
@@ -2990,7 +2987,7 @@ pub async fn get_member(
     let ws = workspace_by_slug(&state.db, &slug).await?;
     let caller = require_workspace_member(&state.db, ws.id, user.id).await?;
 
-    // Paridad Django: admins ven email/last_login_medium, guests no.
+    // Django Parity: admins see email/last_login_medium, guests don't.
     let is_admin = caller.role > ROLE_GUEST;
 
     let member = workspace_members::Entity::find_by_id(pk)
@@ -3017,13 +3014,13 @@ pub async fn get_member(
 
 // ─── POST /workspaces/{slug}/members/leave/ ──────────────────────────────────
 
-/// El usuario autenticado abandona el workspace.
+/// The authenticated user leaves the workspace.
 ///
-/// Espejo de `WorkSpaceMemberViewSet.leave`
+/// Mirror of `WorkSpaceMemberViewSet.leave`
 /// (`apps/api/plane/app/views/workspace/member.py:140-185`).
 /// Reglas:
-///   - No se puede salir si eres el único Admin del workspace.
-///   - No se puede salir si eres el único Admin de algún proyecto.
+///   - Cannot leave if you are the only Admin of the workspace.
+///   - Cannot leave if you are the only Admin of some project.
 #[utoipa::path(
     post,
     path = "/api/workspaces/{slug}/members/leave/",
@@ -3044,7 +3041,7 @@ pub async fn leave_workspace(
     let ws = workspace_by_slug(&state.db, &slug).await?;
     let member = require_workspace_member(&state.db, ws.id, user.id).await?;
 
-    // Si es Admin, verificar que no sea el único.
+    // If Admin, verify they are not the only one.
     if member.role >= ROLE_ADMIN {
         let admin_count = workspace_members::Entity::find()
             .active()
@@ -3063,8 +3060,8 @@ pub async fn leave_workspace(
         }
     }
 
-    // Verificar que no sea el único Admin en algún proyecto del workspace.
-    // Antipatrón evitado: N+1 — hacemos un raw query COUNT con subquery.
+    // Verify they are not the only Admin in some project of the workspace.
+    // Antipattern avoided: N+1 — we do a raw query COUNT with subquery.
     use sea_orm::Statement;
     use sea_orm::ConnectionTrait;
     let sole_admin_project: Option<bool> = state.db
@@ -3108,7 +3105,7 @@ pub async fn leave_workspace(
         ));
     }
 
-    // Desactivar membresías de proyectos del workspace.
+    // Deactivate workspace project memberships.
     project_members::Entity::update_many()
         .col_expr(
             project_members::Column::IsActive,
@@ -3121,7 +3118,7 @@ pub async fn leave_workspace(
         .await
         .map_err(AppError::Database)?;
 
-    // Desactivar membresía del workspace.
+    // Deactivate workspace membership.
     let mut am: workspace_members::ActiveModel = member.into();
     am.is_active = Set(false);
     am.updated_at = Set(chrono::Utc::now().fixed_offset());
@@ -3132,12 +3129,12 @@ pub async fn leave_workspace(
 
 // ─── GET /workspaces/{slug}/project-members/ ─────────────────────────────────
 
-/// Retorna un mapa `{project_id: [{member_id, role}]}` para todos los
-/// proyectos del workspace donde el usuario es miembro.
+/// Returns a map `{project_id: [{member_id, role}]}` for all
+/// workspace projects where the user is a member.
 ///
-/// Espejo de `WorkspaceProjectMemberEndpoint.get`
+/// Mirror of `WorkspaceProjectMemberEndpoint.get`
 /// (`apps/api/plane/app/views/workspace/member.py:187-220`).
-/// Usado por el frontend para cargar permisos de proyecto cruzados.
+/// Used by the frontend to load cross-project permissions.
 #[utoipa::path(
     get,
     path = "/api/workspaces/{slug}/project-members/",
@@ -3174,7 +3171,7 @@ pub async fn get_project_members(
         return Ok(Json(serde_json::json!({})));
     }
 
-    // Todos los miembros activos de esos proyectos — batch, sin N+1.
+    // All active members of those projects — batch, no N+1.
     let all_members = project_members::Entity::find()
         .active()
         .filter(project_members::Column::WorkspaceId.eq(ws.id))
@@ -3201,9 +3198,9 @@ pub async fn get_project_members(
 
 // ─── POST /workspaces/{slug}/workspace-views/ ────────────────────────────────
 
-/// Persiste las preferencias de vista del workspace member.
+/// Persists the workspace member's view preferences.
 ///
-/// Espejo de `WorkspaceMemberUserViewsEndpoint.post`
+/// Mirror of `WorkspaceMemberUserViewsEndpoint.post`
 /// (`apps/api/plane/app/views/workspace/member.py:222-229`).
 #[utoipa::path(
     post,
@@ -3241,9 +3238,9 @@ pub async fn update_workspace_views(
 
 /// `GET /api/workspaces/{slug}/workspace-views/`
 ///
-/// Contraparte simétrica de `update_workspace_views`: devuelve el
-/// `view_props` del miembro autenticado para el workspace. El frontend
-/// lo consume para pre-poblar la UI de filtros guardados.
+/// Symmetric counterpart to `update_workspace_views`: returns the
+/// `view_props` of the authenticated member for the workspace. The frontend
+/// consumes it to pre-populate the saved filters UI.
 #[utoipa::path(
     get,
     path = "/api/workspaces/{slug}/workspace-views/",
@@ -3270,9 +3267,9 @@ pub async fn get_workspace_views(
 
 // ─── GET + PATCH /workspaces/{slug}/invitations/{pk}/ ────────────────────────
 
-/// Retorna el detalle de una invitación.
+/// Returns invitation detail.
 ///
-/// Espejo de `WorkspaceInvitationsViewset.retrieve`
+/// Mirror of `WorkspaceInvitationsViewset.retrieve`
 /// (`apps/api/plane/app/urls/workspace.py:29-33`).
 #[utoipa::path(
     get,
@@ -3314,9 +3311,9 @@ pub struct UpdateInvitationRequest {
     pub role: Option<i16>,
 }
 
-/// Actualiza el rol de una invitación pendiente.
+/// Updates a pending invitation role.
 ///
-/// Espejo de `WorkspaceInvitationsViewset.partial_update`
+/// Mirror of `WorkspaceInvitationsViewset.partial_update`
 /// (`apps/api/plane/app/urls/workspace.py:29-33`).
 #[utoipa::path(
     patch,
@@ -3368,9 +3365,9 @@ pub async fn update_invitation(
 
 // ─── POST /workspaces/{slug}/invitations/{pk}/join/ ───────────────────────────
 
-/// Responde a una invitación de workspace (aceptar o rechazar).
+/// Responds to a workspace invitation (accept or decline).
 ///
-/// Espejo de `WorkspaceJoinEndpoint.post`
+/// Mirror of `WorkspaceJoinEndpoint.post`
 /// (`apps/api/plane/app/views/workspace/invite.py`).
 ///
 /// Body: `{ "token": "<invite_token>", "accepted": true|false }`
@@ -3412,7 +3409,7 @@ pub async fn join_workspace_invitation(
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
-    // Validar token — constant-time para evitar timing attack
+    // Validate token — constant-time to avoid timing attack
     let token_bytes = body.token.as_bytes();
     let invite_bytes = invite.token.as_bytes();
     let token_valid = token_bytes.len() == invite_bytes.len()
@@ -3421,7 +3418,7 @@ pub async fn join_workspace_invitation(
         return Err(AppError::Forbidden);
     }
 
-    // Ya respondió
+    // Already responded
     if invite.responded_at.is_some() {
         return Err(AppError::BadRequest(
             "You have already responded to the invitation request".into(),
@@ -3439,9 +3436,9 @@ pub async fn join_workspace_invitation(
     am.update(&state.db).await.map_err(AppError::Database)?;
 
     if accepted {
-        // Verificar si el usuario invitado coincide con el autenticado (por email)
+        // Verify if the invited user matches the authenticated one (by email)
         if user.email.as_deref() == Some(invite.email.as_str()) {
-            // Buscar membresía existente
+            // Find existing membership
             let existing = workspace_members::Entity::find()
                 .filter(workspace_members::Column::WorkspaceId.eq(ws.id))
                 .filter(workspace_members::Column::MemberId.eq(user.id))
@@ -3474,7 +3471,7 @@ pub async fn join_workspace_invitation(
             }
         }
 
-        // Eliminar la invitación aceptada
+        // Delete accepted invitation
         let del_am: workspace_member_invites::ActiveModel = invite.into();
         del_am.delete(&state.db).await.map_err(AppError::Database)?;
 
@@ -3490,9 +3487,9 @@ pub async fn join_workspace_invitation(
 
 // ─── GET /workspaces/{slug}/invitations/{pk}/join — public ────────────────────
 //
-// Devuelve los detalles de una invitación para la página de aceptar/rechazar.
-// Esta ruta es PÚBLICA: el invitado puede no estar autenticado aún.
-// Mirror de WorkspaceJoinEndpoint.get en Django.
+// Returns invitation details for the accept/decline page.
+// This route is PUBLIC: the guest may not be authenticated yet.
+// Mirror of WorkspaceJoinEndpoint.get in Django.
 
 #[utoipa::path(
     get,
@@ -3597,9 +3594,9 @@ pub struct UpdateWorkspaceThemeRequest {
     pub colors: Option<serde_json::Value>,
 }
 
-/// Lista todos los temas del workspace.
+/// Lists all workspace themes.
 ///
-/// Espejo de `WorkspaceThemeViewSet.list`
+/// Mirror of `WorkspaceThemeViewSet.list`
 /// (`apps/api/plane/app/views/workspace/base.py`).
 #[utoipa::path(
     get,
@@ -3607,7 +3604,7 @@ pub struct UpdateWorkspaceThemeRequest {
     tag = "Workspaces",
     security(("TokenAuth" = []), ("SessionCookie" = [])),
     params(("slug" = String, Path, description = "Workspace slug")),
-    responses((status = 200, description = "Lista de temas"))
+    responses((status = 200, description = "Theme list"))
 )]
 pub async fn list_workspace_themes(
     State(state): State<AppState>,
@@ -3630,9 +3627,9 @@ pub async fn list_workspace_themes(
     ))
 }
 
-/// Crea un nuevo tema del workspace.
+/// Creates a new workspace theme.
 ///
-/// Espejo de `WorkspaceThemeViewSet.create`
+/// Mirror of `WorkspaceThemeViewSet.create`
 /// (`apps/api/plane/app/views/workspace/base.py`).
 #[utoipa::path(
     post,
@@ -3641,8 +3638,8 @@ pub async fn list_workspace_themes(
     security(("TokenAuth" = []), ("SessionCookie" = [])),
     params(("slug" = String, Path, description = "Workspace slug")),
     responses(
-        (status = 201, description = "Tema creado"),
-        (status = 400, description = "Nombre duplicado"),
+        (status = 201, description = "Theme created"),
+        (status = 400, description = "Duplicate name"),
     )
 )]
 pub async fn create_workspace_theme(
@@ -3679,7 +3676,7 @@ pub async fn create_workspace_theme(
     ))
 }
 
-/// Obtiene el detalle de un tema.
+/// Gets theme detail.
 #[utoipa::path(
     get,
     path = "/api/workspaces/{slug}/workspace-themes/{pk}/",
@@ -3690,7 +3687,7 @@ pub async fn create_workspace_theme(
         ("pk" = Uuid, Path, description = "Theme UUID"),
     ),
     responses(
-        (status = 200, description = "Detalle del tema"),
+        (status = 200, description = "Theme detail"),
         (status = 404, description = "Not found"),
     )
 )]
@@ -3713,7 +3710,7 @@ pub async fn get_workspace_theme(
     Ok(axum::Json(WorkspaceThemeResponse::from(theme)))
 }
 
-/// Actualiza un tema del workspace.
+/// Updates a workspace theme.
 #[utoipa::path(
     patch,
     path = "/api/workspaces/{slug}/workspace-themes/{pk}/",
@@ -3724,7 +3721,7 @@ pub async fn get_workspace_theme(
         ("pk" = Uuid, Path, description = "Theme UUID"),
     ),
     responses(
-        (status = 200, description = "Tema actualizado"),
+        (status = 200, description = "Theme updated"),
         (status = 404, description = "Not found"),
     )
 )]
@@ -3760,7 +3757,7 @@ pub async fn update_workspace_theme(
     Ok(axum::Json(WorkspaceThemeResponse::from(updated)))
 }
 
-/// Elimina (soft-delete) un tema del workspace.
+/// Deletes (soft-deletes) a workspace theme.
 #[utoipa::path(
     delete,
     path = "/api/workspaces/{slug}/workspace-themes/{pk}/",
@@ -3771,7 +3768,7 @@ pub async fn update_workspace_theme(
         ("pk" = Uuid, Path, description = "Theme UUID"),
     ),
     responses(
-        (status = 204, description = "Eliminado"),
+        (status = 204, description = "Deleted"),
         (status = 404, description = "Not found"),
     )
 )]

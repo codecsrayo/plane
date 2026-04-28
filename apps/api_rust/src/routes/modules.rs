@@ -1,7 +1,7 @@
 // src/routes/modules.rs
-//! Endpoints de Modules.
+//! Modules endpoints.
 //!
-//! Endpoints implementados:
+//! Implemented endpoints:
 //!   GET    /api/workspaces/{slug}/projects/{project_id}/modules/
 //!   POST   /api/workspaces/{slug}/projects/{project_id}/modules/
 //!   GET    /api/workspaces/{slug}/projects/{project_id}/modules/{pk}/
@@ -150,7 +150,7 @@ pub struct AddModuleIssuesRequest {
     pub issues: Vec<Uuid>,
 }
 
-/// Valores válidos de status para un módulo.
+/// Valid status values for a module.
 const VALID_MODULE_STATUSES: &[&str] =
     &["backlog", "in-progress", "paused", "completed", "cancelled"];
 
@@ -164,7 +164,7 @@ struct ModuleCountRow {
 }
 
 /// Batch-load issue group counts for a set of modules (single SQL, no N+1).
-/// Mirror de la anotación Django sobre ModuleIssue.
+/// Mirror of the Django annotation on ModuleIssue.
 async fn enrich_module_counts(
     db: &sea_orm::DatabaseConnection,
     mut mods: Vec<ModuleResponse>,
@@ -252,7 +252,7 @@ async fn enrich_module_counts(
         ("project_id" = Uuid, Path, description = "Project ID"),
     ),
     responses(
-        (status = 200, description = "Lista de módulos"),
+        (status = 200, description = "List of modules"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -329,8 +329,8 @@ pub async fn list_modules(
         ("project_id" = Uuid, Path, description = "Project ID"),
     ),
     responses(
-        (status = 201, description = "Módulo creado"),
-        (status = 400, description = "Error de validación"),
+        (status = 201, description = "Module created"),
+        (status = 400, description = "Validation error"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -342,7 +342,7 @@ pub async fn create_module(
     require_role(guard.project_member.role, guard.workspace_member.role, ROLE_MEMBER)?;
 
     if body.name.trim().is_empty() {
-        return Err(AppError::BadRequest("name es requerido".into()));
+        return Err(AppError::BadRequest("name is required".into()));
     }
 
     let status = body
@@ -353,15 +353,15 @@ pub async fn create_module(
 
     if !VALID_MODULE_STATUSES.contains(&status.as_str()) {
         return Err(AppError::BadRequest(format!(
-            "status inválido '{}'. Valores permitidos: {}",
+            "invalid status '{}'. Allowed values: {}",
             status,
             VALID_MODULE_STATUSES.join(", ")
         )));
     }
 
-    // created_at/updated_at explícitos: modules::ActiveModelBehavior vacío,
-    // columnas NOT NULL sin DEFAULT (ver baseline.sql:1724-1726). Mismo
-    // patrón que labels.rs / issues.rs / cycles.rs.
+    // explicit created_at/updated_at: empty modules::ActiveModelBehavior,
+    // NOT NULL columns without DEFAULT (see baseline.sql:1724-1726). Same
+    // pattern as labels.rs / issues.rs / cycles.rs.
     let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
 
     let module = modules::ActiveModel {
@@ -403,8 +403,8 @@ pub async fn create_module(
         ("pk" = Uuid, Path, description = "Module ID"),
     ),
     responses(
-        (status = 200, description = "Detalle del módulo"),
-        (status = 404, description = "No encontrado"),
+        (status = 200, description = "Module detail"),
+        (status = 404, description = "Not found"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -461,8 +461,8 @@ pub async fn get_module(
         ("pk" = Uuid, Path, description = "Module ID"),
     ),
     responses(
-        (status = 200, description = "Módulo actualizado"),
-        (status = 404, description = "No encontrado"),
+        (status = 200, description = "Module updated"),
+        (status = 404, description = "Not found"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -492,7 +492,7 @@ pub async fn update_module(
     if let Some(status) = body.status {
         if !VALID_MODULE_STATUSES.contains(&status.as_str()) {
             return Err(AppError::BadRequest(format!(
-                "status inválido '{status}'. Valores permitidos: {}",
+                "invalid status '{status}'. Allowed values: {}",
                 VALID_MODULE_STATUSES.join(", ")
             )));
         }
@@ -545,8 +545,8 @@ pub async fn update_module(
         ("pk" = Uuid, Path, description = "Module ID"),
     ),
     responses(
-        (status = 204, description = "Eliminado"),
-        (status = 404, description = "No encontrado"),
+        (status = 204, description = "Deleted"),
+        (status = 404, description = "Not found"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -584,7 +584,7 @@ pub async fn delete_module(
         ("module_id" = Uuid, Path, description = "Module ID"),
     ),
     responses(
-        (status = 200, description = "Issues del módulo"),
+        (status = 200, description = "Module issues"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -636,8 +636,8 @@ pub async fn list_module_issues(
         ("module_id" = Uuid, Path, description = "Module ID"),
     ),
     responses(
-        (status = 200, description = "Issues agregados al módulo"),
-        (status = 400, description = "Error de validación"),
+        (status = 200, description = "Issues added to the module"),
+        (status = 400, description = "Validation error"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -694,7 +694,7 @@ pub async fn add_issues_to_module(
                 am.update(&state.db).await.map_err(AppError::Database)?
             }
             None => {
-                // created_at/updated_at explícitos (NOT NULL sin DEFAULT).
+                // explicit created_at/updated_at (NOT NULL without DEFAULT).
                 module_issues::ActiveModel {
                     id: Set(Uuid::new_v4()),
                     module_id: Set(module_id),
@@ -739,8 +739,8 @@ pub async fn add_issues_to_module(
         ("issue_id" = Uuid, Path, description = "Issue ID"),
     ),
     responses(
-        (status = 204, description = "Issue removido del módulo"),
-        (status = 404, description = "No encontrado"),
+        (status = 204, description = "Issue removed from module"),
+        (status = 404, description = "Not found"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -771,24 +771,24 @@ pub async fn remove_issue_from_module(
 // Module User Properties
 // ═════════════════════════════════════════════════════════════════════════════
 //
-// Mirror de `ModuleUserPropertiesEndpoint` en
+// Mirror of `ModuleUserPropertiesEndpoint` in
 // apps/api/plane/app/views/module/base.py:825-855.
 //
-// Semántica clave (paridad Django):
-//   - GET hace `get_or_create` → NUNCA devuelve 404 por ausencia de fila.
-//     Si no existe, se crea con defaults y se devuelve 200.
-//   - PATCH: Django usa `.get(...)` crudo, que lanzaría 500 si faltara.
-//     Para evitar ese fallo y ser más útil al frontend, aquí hacemos
-//     `get_or_create` y aplicamos el patch encima — no degrada ningún
-//     caso de uso válido. Mismo trade-off ya adoptado en cycles.rs.
-//   - Permisos: ADMIN / MEMBER / GUEST (igual que Django,
+// Key semantics (Django parity):
+//   - GET does `get_or_create` → NEVER returns 404 for lack of row.
+//     If it doesn't exist, it is created with defaults and 200 is returned.
+//   - PATCH: Django uses raw `.get(...)`, which would throw 500 if missing.
+//     To avoid that failure and be more useful to the frontend, here we do
+//     `get_or_create` and apply the patch on top — it doesn't degrade any
+//     valid use case. Same trade-off already adopted in cycles.rs.
+//   - Permissions: ADMIN / MEMBER / GUEST (same as Django,
 //     `@allow_permission([ROLE.ADMIN, ROLE.MEMBER, ROLE.GUEST])`).
 //
-// Nota sobre el modelo: `ModuleUserProperties` (module.py:190-217) tiene los
-// mismos campos que `CycleUserProperties`: filters, display_filters,
-// display_properties, rich_filters. Sin `preferences` ni `sort_order`.
+// Note on model: `ModuleUserProperties` (module.py:190-217) has the same
+// fields as `CycleUserProperties`: filters, display_filters,
+// display_properties, rich_filters. Without `preferences` or `sort_order`.
 
-// ─── Defaults — mirror de `plane/db/models/module.py:14-55` ──────────────────
+// ─── Defaults — mirror of `plane/db/models/module.py:14-55` ──────────────────
 
 fn module_default_filters() -> serde_json::Value {
     serde_json::json!({
@@ -836,9 +836,9 @@ fn module_default_display_properties() -> serde_json::Value {
 
 // ─── DTOs ─────────────────────────────────────────────────────────────────────
 
-/// Mirror de `ModuleUserPropertiesSerializer` (fields="__all__", read_only:
-/// workspace/project/module/user). Incluye todos los campos del modelo
-/// `ModuleUserProperties` de `apps/api/plane/db/models/module.py:190-217`.
+/// Mirror of `ModuleUserPropertiesSerializer` (fields="__all__", read_only:
+/// workspace/project/module/user). Includes all fields of the
+/// `ModuleUserProperties` model from `apps/api/plane/db/models/module.py:190-217`.
 #[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct ModuleUserPropertiesResponse {
     pub id: Uuid,
@@ -876,9 +876,9 @@ impl From<&module_user_properties::Model> for ModuleUserPropertiesResponse {
     }
 }
 
-/// Body admitido en PATCH. Todos los campos son opcionales — semántica
-/// `partial=True` del serializer Django. Los campos read-only
-/// (workspace/project/module/user) se ignoran si vienen en el body.
+/// Allowed PATCH body. All fields are optional — `partial=True` semantics
+/// of the Django serializer. Read-only fields
+/// (workspace/project/module/user) are ignored if they come in the body.
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct UpdateModuleUserPropertiesRequest {
     pub filters: Option<serde_json::Value>,
@@ -889,14 +889,14 @@ pub struct UpdateModuleUserPropertiesRequest {
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
-/// Busca o crea la fila `module_user_properties` para `(module, user)`.
-/// Mirror de `ModuleUserProperties.objects.get_or_create(...)`.
+/// Searches or creates the `module_user_properties` row for `(module, user)`.
+/// Mirror of `ModuleUserProperties.objects.get_or_create(...)`.
 ///
-/// Constraint único en Django: `(module, user)` WHERE `deleted_at IS NULL`
-/// (`module.py:204-209`). Filtramos por `.active()`. En caso de INSERT
-/// concurrente con violación del índice único, el error se propagaría como
-/// `AppError::Database` y un reintento del cliente resolvería el caso —
-/// mismo comportamiento que Django.
+/// Unique constraint in Django: `(module, user)` WHERE `deleted_at IS NULL`
+/// (`module.py:204-209`). We filter by `.active()`. In case of concurrent
+/// INSERT with unique index violation, the error would propagate as
+/// `AppError::Database` and a client retry would resolve the case —
+/// same behavior as Django.
 async fn get_or_create_module_user_properties(
     db: &sea_orm::DatabaseConnection,
     workspace_id: Uuid,
@@ -940,13 +940,13 @@ async fn get_or_create_module_user_properties(
     Ok(created)
 }
 
-/// Asegura que el módulo existe y pertenece al workspace/proyecto del guard.
-/// 404 si no existe o fue soft-deleted. Defensa en profundidad — el guard
-/// sólo valida workspace + proyecto, no la pertenencia del `module_id`.
+/// Ensures the module exists and belongs to the guard's workspace/project.
+/// 404 if it doesn't exist or was soft-deleted. Defense in depth — the guard
+/// only validates workspace + project, not the `module_id` ownership.
 ///
-/// Sin esta validación, un cliente podría crear una fila
-/// `module_user_properties` apuntando a un módulo de OTRO proyecto/workspace
-/// y leer/modificar filtros privados cruzando límites de tenant.
+/// Without this validation, a client could create a `module_user_properties`
+/// row pointing to a module of ANOTHER project/workspace and read/modify
+/// private filters crossing tenant boundaries.
 async fn ensure_module_belongs_to_project(
     db: &sea_orm::DatabaseConnection,
     workspace_id: Uuid,
@@ -967,11 +967,11 @@ async fn ensure_module_belongs_to_project(
 
 /// `GET /api/workspaces/{slug}/projects/{project_id}/modules/{module_id}/user-properties/`
 ///
-/// Paridad con `ModuleUserPropertiesEndpoint.get` (module/base.py:846-855).
-/// `get_or_create` garantiza que nunca devolvemos 404 por ausencia de la
-/// fila de propiedades — esto es lo que resuelve el 404 del frontend.
+/// Parity with `ModuleUserPropertiesEndpoint.get` (module/base.py:846-855).
+/// `get_or_create` guarantees that we never return 404 due to absence of the
+/// properties row — this is what resolves the frontend 404.
 ///
-/// Permisos: ROLE_GUEST+ (ADMIN/MEMBER/GUEST, paridad Django).
+/// Permissions: ROLE_GUEST+ (ADMIN/MEMBER/GUEST, Django parity).
 #[utoipa::path(
     get,
     path = "/api/workspaces/{slug}/projects/{project_id}/modules/{module_id}/user-properties/",
@@ -999,8 +999,8 @@ pub async fn get_module_user_properties(
         ROLE_GUEST,
     )?;
 
-    // Validación: el módulo debe existir y pertenecer al proyecto. Si no,
-    // 404 — evita crear una fila user-properties huérfana o cross-tenant.
+    // Validation: the module must exist and belong to the project. If not,
+    // 404 — prevents creating an orphan or cross-tenant user-properties row.
     let _module = ensure_module_belongs_to_project(
         &state.db,
         guard.workspace.id,
@@ -1025,16 +1025,16 @@ pub async fn get_module_user_properties(
 
 /// `PATCH /api/workspaces/{slug}/projects/{project_id}/modules/{module_id}/user-properties/`
 ///
-/// Paridad con `ModuleUserPropertiesEndpoint.patch` (module/base.py:826-844),
-/// con una mejora: Django asume que la fila existe (`.objects.get(...)`) y
-/// lanzaría 500 si faltara; aquí hacemos `get_or_create` antes del patch,
-/// lo que es estrictamente más robusto.
+/// Parity with `ModuleUserPropertiesEndpoint.patch` (module/base.py:826-844),
+/// with an improvement: Django assumes the row exists (`.objects.get(...)`) and
+/// would throw 500 if missing; here we do `get_or_create` before the patch,
+/// which is strictly more robust.
 ///
-/// Django devuelve 201 en PATCH (comportamiento no-idiomático heredado).
-/// Mantenemos 200 aquí porque (a) no es un create, es un update, y (b) el
-/// frontend de Plane no depende del código exacto — comprueba `>=200 <300`.
+/// Django returns 201 in PATCH (inherited non-idiomatic behavior).
+/// We keep 200 here because (a) it's not a create, it's an update, and (b) the
+/// Plane frontend doesn't depend on the exact code — it checks `>=200 <300`.
 ///
-/// Permisos: ROLE_GUEST+ (paridad Django).
+/// Permissions: ROLE_GUEST+ (Django parity).
 #[utoipa::path(
     patch,
     path = "/api/workspaces/{slug}/projects/{project_id}/modules/{module_id}/user-properties/",
@@ -1102,7 +1102,7 @@ pub async fn update_module_user_properties(
 }
 
 // ═══════════════════════════════════════════════════════════════════════════════
-// ENDPOINTS PENDIENTES
+// PENDING ENDPOINTS
 // ═══════════════════════════════════════════════════════════════════════════════
 
 // ── POST /issues/{issue_id}/modules ──────────────────────────────────────────
@@ -1147,14 +1147,14 @@ pub async fn set_issue_modules(
     let user_id = guard.user.id;
     let db = &state.db;
 
-    // Agregar módulos
+    // Add modules
     if let Some(mods) = body.modules {
-        // NOTA: created_at/updated_at son NOT NULL sin DEFAULT en module_issues
-        // (baseline.sql:1646-1656). Con ..Default::default() SeaORM omitía las
-        // columnas → 23502 → 500.
+        // NOTE: created_at/updated_at are NOT NULL without DEFAULT in module_issues
+        // (baseline.sql:1646-1656). With ..Default::default() SeaORM omitted the
+        // columns → 23502 → 500.
         let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
         for module_id in mods {
-            // Idempotente: verificar si ya existe
+            // Idempotent: check if already exists
             let existing = module_issues::Entity::find()
                 .filter(module_issues::Column::IssueId.eq(issue_id))
                 .filter(module_issues::Column::ModuleId.eq(module_id))
@@ -1182,7 +1182,7 @@ pub async fn set_issue_modules(
         }
     }
 
-    // Eliminar módulos (soft-delete)
+    // Remove modules (soft-delete)
     if let Some(removed) = body.removed_modules {
         for module_id in removed {
             if let Some(mi) = module_issues::Entity::find()
@@ -1201,7 +1201,7 @@ pub async fn set_issue_modules(
         }
     }
 
-    // Paridad Django (apps/api/plane/app/views/module/issue.py:315):
+    // Django Parity (apps/api/plane/app/views/module/issue.py:315):
     //   `Response({"message": "success"}, status=201)`
     Ok((
         StatusCode::CREATED,
@@ -1336,15 +1336,15 @@ pub async fn create_module_link(
         return Err(AppError::BadRequest("url is required".into()));
     }
 
-    // Paridad Django (apps/api/plane/app/serializers/module.py:170-186):
-    //   - to_internal_value: si no empieza por http(s)://, antepone "http://"
-    //   - validate_url: usa Django URLValidator. "not-a-url" → 400.
+    // Django parity (apps/api/plane/app/serializers/module.py:170-186):
+    //   - to_internal_value: if it doesn't start with http(s)://, prepends "http://"
+    //   - validate_url: uses Django URLValidator. "not-a-url" → 400.
     let url = crate::utils::url::normalize_and_validate_url(body.url.trim())?;
 
-    // NOTA: setear created_at/updated_at explícitos. Las columnas son NOT NULL
-    // sin DEFAULT (baseline.sql:module_links), y ActiveModelBehavior está vacío.
-    // Con ..Default::default() SeaORM omitía las columnas → 23502 → 500.
-    // Mismo patrón que create_module / create_label / create_issue_link.
+    // NOTE: set explicit created_at/updated_at. Columns are NOT NULL
+    // without DEFAULT (baseline.sql:module_links), and ActiveModelBehavior is empty.
+    // With ..Default::default() SeaORM omitted the columns → 23502 → 500.
+    // Same pattern as create_module / create_label / create_issue_link.
     let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
     let link = module_links::ActiveModel {
         id: Set(Uuid::new_v4()),
@@ -1456,7 +1456,7 @@ pub async fn update_module_link(
 
     let mut active: module_links::ActiveModel = link.into();
     if let Some(url) = body.url {
-        // Mismo validador que en create — paridad con
+        // Same validator as in create — parity with
         // ModuleLinkSerializer.update (module.py:194-203).
         let validated = crate::utils::url::normalize_and_validate_url(url.trim())?;
         active.url = Set(validated);
@@ -1625,9 +1625,9 @@ pub async fn create_favorite_module(
         .map_err(AppError::Database)?;
 
     if existing.is_none() {
-        // NOTA: created_at/updated_at son NOT NULL sin DEFAULT en user_favorites
-        // (baseline.sql user_favorites). Con ..Default::default() SeaORM omitía
-        // las columnas → 23502 → 500. Mismo patrón que el resto.
+        // NOTE: created_at/updated_at are NOT NULL without DEFAULT in user_favorites
+        // (baseline.sql user_favorites). With ..Default::default() SeaORM omitted
+        // the columns → 23502 → 500. Same pattern as the rest.
         let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
         let new_fav = user_favorites::ActiveModel {
             id: Set(Uuid::new_v4()),
@@ -1648,8 +1648,8 @@ pub async fn create_favorite_module(
         new_fav.insert(db).await.map_err(AppError::Database)?;
     }
 
-    // 201 con confirmación; el frontend espera 200/201 y Django usa 201
-    // para create endpoints con success message.
+    // 201 with confirmation; the frontend expects 200/201 and Django uses 201
+    // for create endpoints with success message.
     Ok((
         StatusCode::CREATED,
         Json(serde_json::json!({ "message": "success" })),
@@ -1751,7 +1751,7 @@ pub async fn archive_module(
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
-    // Solo módulos completados o cancelados pueden archivarse
+    // Only completed or cancelled modules can be archived
     if !["completed", "cancelled"].contains(&module.status.as_str()) {
         return Err(AppError::BadRequest(
             "Only completed or cancelled modules can be archived".into(),
@@ -1763,7 +1763,7 @@ pub async fn archive_module(
     active.archived_at = Set(Some(archived_at));
     active.update(db).await.map_err(AppError::Database)?;
 
-    // Eliminar de favoritos
+    // Remove from favorites
     let _ = user_favorites::Entity::delete_many()
         .filter(user_favorites::Column::EntityType.eq("module"))
         .filter(user_favorites::Column::EntityIdentifier.eq(module_id))

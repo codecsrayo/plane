@@ -1,5 +1,5 @@
 // src/routes/estimates.rs
-//! Endpoints de Estimates.
+//! Estimates endpoints.
 //!
 //!   GET    /api/workspaces/{slug}/projects/{project_id}/estimates/
 //!   POST   /api/workspaces/{slug}/projects/{project_id}/estimates/
@@ -157,7 +157,7 @@ async fn enrich_estimate(
         ("slug" = String, Path, description = "Workspace slug"),
         ("project_id" = Uuid, Path, description = "Project ID"),
     ),
-    responses((status = 200, description = "Lista de estimates con sus puntos")),
+    responses((status = 200, description = "List of estimates with their points")),
     security(("TokenAuth" = []))
 )]
 pub async fn list_estimates(
@@ -192,8 +192,8 @@ pub async fn list_estimates(
         ("project_id" = Uuid, Path, description = "Project ID"),
     ),
     responses(
-        (status = 201, description = "Estimate creado"),
-        (status = 400, description = "Error de validación"),
+        (status = 201, description = "Estimate created"),
+        (status = 400, description = "Validation error"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -205,7 +205,7 @@ pub async fn create_estimate(
     require_role(guard.project_member.role, guard.workspace_member.role, ROLE_MEMBER)?;
 
     if body.name.trim().is_empty() {
-        return Err(AppError::BadRequest("name es requerido".into()));
+        return Err(AppError::BadRequest("name is required".into()));
     }
 
     let project_id = guard.project.id;
@@ -220,9 +220,9 @@ pub async fn create_estimate(
             let description = body.description.clone().unwrap_or_default();
             let est_type = body.r#type.clone().unwrap_or_else(|| "category".to_owned());
             Box::pin(async move {
-                // created_at/updated_at explícitos (ActiveModelBehavior vacío,
-                // columnas NOT NULL sin DEFAULT). Misma now() para
-                // estimates y sus estimate_points hijos.
+                // Explicit created_at/updated_at (ActiveModelBehavior empty,
+                // NOT NULL columns without DEFAULT). Same now() for
+                // estimates and their child estimate_points.
                 let now: chrono::DateTime<chrono::FixedOffset> =
                     chrono::Utc::now().into();
 
@@ -289,8 +289,8 @@ pub async fn create_estimate(
         ("estimate_id" = Uuid, Path, description = "Estimate ID"),
     ),
     responses(
-        (status = 200, description = "Detalle del estimate"),
-        (status = 404, description = "No encontrado"),
+        (status = 200, description = "Estimate details"),
+        (status = 404, description = "Not found"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -324,8 +324,8 @@ pub async fn get_estimate(
         ("estimate_id" = Uuid, Path, description = "Estimate ID"),
     ),
     responses(
-        (status = 200, description = "Estimate actualizado"),
-        (status = 404, description = "No encontrado"),
+        (status = 200, description = "Estimate updated"),
+        (status = 404, description = "Not found"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -376,8 +376,8 @@ pub async fn update_estimate(
         ("estimate_id" = Uuid, Path, description = "Estimate ID"),
     ),
     responses(
-        (status = 204, description = "Eliminado"),
-        (status = 404, description = "No encontrado"),
+        (status = 204, description = "Deleted"),
+        (status = 404, description = "Not found"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -430,8 +430,8 @@ pub async fn delete_estimate(
         ("estimate_id" = Uuid, Path, description = "Estimate ID"),
     ),
     responses(
-        (status = 201, description = "Punto creado"),
-        (status = 404, description = "Estimate no encontrado"),
+        (status = 201, description = "Point created"),
+        (status = 404, description = "Estimate not found"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -451,7 +451,7 @@ pub async fn create_estimate_point(
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
-    // created_at/updated_at explícitos (NOT NULL sin DEFAULT).
+    // Explicit created_at/updated_at (NOT NULL without DEFAULT).
     let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
 
     let point = estimate_points::ActiveModel {
@@ -488,8 +488,8 @@ pub async fn create_estimate_point(
         ("pk" = Uuid, Path, description = "EstimatePoint ID"),
     ),
     responses(
-        (status = 200, description = "Punto actualizado"),
-        (status = 404, description = "No encontrado"),
+        (status = 200, description = "Point updated"),
+        (status = 404, description = "Not found"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -538,8 +538,8 @@ pub async fn update_estimate_point(
         ("pk" = Uuid, Path, description = "EstimatePoint ID"),
     ),
     responses(
-        (status = 204, description = "Eliminado"),
-        (status = 404, description = "No encontrado"),
+        (status = 204, description = "Deleted"),
+        (status = 404, description = "Not found"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -576,8 +576,8 @@ pub async fn delete_estimate_point(
         ("project_id" = Uuid, Path, description = "Project ID"),
     ),
     responses(
-        (status = 200, description = "Estimate points del estimate activo del proyecto"),
-        (status = 403, description = "Sin permiso"),
+        (status = 200, description = "Estimate points of the project's active estimate"),
+        (status = 403, description = "Unauthorized"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -585,8 +585,8 @@ pub async fn list_project_estimates(
     State(state): State<AppState>,
     guard: crate::auth::extractors::ProjectMemberGuard,
 ) -> Result<impl axum::response::IntoResponse, AppError> {
-    // Solo MEMBER y ADMIN (role >= 10); GUEST no puede ver estimate points.
-    // Mirror de ProjectEntityPermission en plane/app/permissions/project.py.
+    // Only MEMBER and ADMIN (role >= 10); GUEST cannot see estimate points.
+    // Mirror of ProjectEntityPermission in plane/app/permissions/project.py.
     require_role(
         guard.project_member.role,
         guard.workspace_member.role,
@@ -596,8 +596,8 @@ pub async fn list_project_estimates(
     let db = &state.db;
     let project_id = guard.project.id;
 
-    // Carga el proyecto para leer estimate_id.
-    // El guard ya validó que el proyecto existe en el workspace.
+    // Load project to read estimate_id.
+    // Guard already validated that project exists in workspace.
     let project = projects::Entity::find_by_id(project_id)
         .one(db)
         .await
@@ -605,11 +605,11 @@ pub async fn list_project_estimates(
         .ok_or(AppError::NotFound)?;
 
     let Some(estimate_id) = project.estimate_id else {
-        // Proyecto sin estimate asignado → retorna array vacío (mirror de Django).
+        // Project without assigned estimate → returns empty array (Django mirror).
         return Ok(axum::Json(Vec::<EstimatePointResponse>::new()));
     };
 
-    // Carga los puntos del estimate activo, ordenados por key.
+    // Load points of the active estimate, sorted by key.
     let points = estimate_points::Entity::find()
         .active()
         .filter(estimate_points::Column::EstimateId.eq(estimate_id))

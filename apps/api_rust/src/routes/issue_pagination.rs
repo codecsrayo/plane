@@ -1,28 +1,27 @@
 // src/routes/issue_pagination.rs
-//! Helpers compartidos para paginación de issues estilo Django.
+//! Shared helpers for Django-style issue pagination.
 //!
-//! Extraído de `workspace_view_issues.rs` para reutilizarlo en
-//! `issues.rs::list_issues` (y futuros endpoints que repliquen el shape
-//! de `OffsetPaginator.paginate()` en `plane/utils/paginator.py:715-730`).
+//! Extracted from `workspace_view_issues.rs` to reuse in
+//! `issues.rs::list_issues` (and future endpoints replicating the
+//! `OffsetPaginator.paginate()` shape in `plane/utils/paginator.py:715-730`).
 //!
-//! Incluye:
-//!   - `parse_cursor`               → parsea `{page_size}:{page}:{is_prev}`.
+//! Includes:
+//!   - `parse_cursor`               → parses `{page_size}:{page}:{is_prev}`.
 //!   - `EnrichmentMaps` +
-//!     `load_enrichment`            → carga batch de relaciones (N+1 evitado)
-//!     para los 8 campos enriquecidos que
-//!     replica el `issue_on_results` de Django
+//!     `load_enrichment`            → batch relationship loading (N+1 avoided)
+//!     for the 8 enriched fields that
+//!     mirror Django's `issue_on_results`
 //!     (grouper.py:93-141).
-//!   - `apply_issue_order`          → mapea `order_by` de Django a SeaORM.
-//!   - `empty_paginated_response`   → shape exacto del paginator Django para
-//!     respuestas vacías (evita construirlo a
-//!     mano en cada early-return).
+//!   - `apply_issue_order`          → maps Django `order_by` to SeaORM.
+//!   - `empty_paginated_response`   → exact Django paginator shape for
+//!     empty responses (avoids building manually in early-returns).
 //!
-//! # Antipatrones evitados
-//! - **N+1**: todas las relaciones se cargan con `is_in()` en una sola query.
-//! - **Duplicación**: este módulo sustituye ~250 líneas duplicadas entre
-//!   `workspace_view_issues.rs` y `issues.rs`.
-//! - **SQL inyection**: `order_by` se mapea vía `match` contra una whitelist;
-//!   valores no reconocidos caen al default seguro (`-created_at`).
+//! # Anti-patterns avoided
+//! - **N+1**: all relationships loaded with `is_in()` in a single query.
+//! - **Duplication**: this module replaces ~250 lines duplicated between
+//!   `workspace_view_issues.rs` and `issues.rs`.
+//! - **SQL injection**: `order_by` is mapped via `match` against a whitelist;
+//!   unrecognized values fall back to safe default (`-created_at`).
 
 use sea_orm::{
     ColumnTrait, DatabaseConnection, EntityTrait, QueryFilter, QueryOrder, QuerySelect,
@@ -40,30 +39,30 @@ use crate::{
     utils::soft_delete::SoftDeleteExt,
 };
 
-// ── Constantes ────────────────────────────────────────────────────────────────
+// ── Constants ────────────────────────────────────────────────────────────────
 
-/// Cota superior de `page_size` (paralelo al `max_limit` del paginator Django).
+/// Upper bound for `page_size` (parallel to Django's `max_limit` paginator).
 pub const PAGINATOR_MAX_LIMIT: u64 = 1000;
 
-/// Tamaño de página por defecto cuando no se envía `cursor` ni `per_page`.
+/// Default page size when neither `cursor` nor `per_page` is sent.
 pub const DEFAULT_PER_PAGE: u64 = 100;
 
-/// Identificador del entity_type en `file_assets` que representa attachments
-/// de issues (mirror de `FileAsset.EntityTypeContext.ISSUE_ATTACHMENT`).
+/// `file_assets` entity_type identifier for issue attachments
+/// (mirrors `FileAsset.EntityTypeContext.ISSUE_ATTACHMENT`).
 pub const ENTITY_TYPE_ISSUE_ATTACHMENT: &str = "issue_attachment";
 
-/// Nombre del `state.group` que Django excluye en `IssueManager.get_queryset`
-/// (db/models/issue.py:97). Los issues con state en triage NO deben
-/// aparecer en listados generales — se exponen vía intake.
+/// `state.group` name that Django excludes in `IssueManager.get_queryset`
+/// (db/models/issue.py:97). Issues with triage state MUST NOT
+/// appear in general listings — they are exposed via intake.
 pub const STATE_GROUP_TRIAGE: &str = "triage";
 
 // ── Cursor ────────────────────────────────────────────────────────────────────
 
-/// Parsea el cursor de Django: `{page_size}:{current_page}:{is_prev}`.
+/// Parses Django cursor: `{page_size}:{current_page}:{is_prev}`.
 ///
-/// Si el cursor no viene o está malformado, cae al `fallback_per_page` y
-/// page 0. El `page_size` se clampa a `[1, PAGINATOR_MAX_LIMIT]` — evita
-/// DoS por páginas gigantes.
+/// If cursor is missing or malformed, falls back to `fallback_per_page` and
+/// page 0. `page_size` is clamped to `[1, PAGINATOR_MAX_LIMIT]` — prevents
+/// DoS via giant pages.
 pub fn parse_cursor(cursor: Option<&str>, fallback_per_page: u64) -> (u64, u64) {
     if let Some(c) = cursor {
         let parts: Vec<&str> = c.splitn(3, ':').collect();
@@ -76,12 +75,12 @@ pub fn parse_cursor(cursor: Option<&str>, fallback_per_page: u64) -> (u64, u64) 
     (fallback_per_page.clamp(1, PAGINATOR_MAX_LIMIT), 0)
 }
 
-// ── Enrichment batch ──────────────────────────────────────────────────────────
+// ── Batch enrichment ──────────────────────────────────────────────────────────
 
-/// Relaciones cargadas en batch para los issues de una página.
+/// Relationships loaded in batch for page issues.
 ///
-/// Cada mapa es `issue_id → valor(es)`. Claves ausentes = valor default
-/// (`vec![]` para listas, `0` para contadores, `None` para opcionales).
+/// Each map is `issue_id → value(s)`. Absent keys = default value
+/// (`vec![]` for lists, `0` for counters, `None` for optionals).
 pub struct EnrichmentMaps {
     pub assignees:    HashMap<Uuid, Vec<Uuid>>,
     pub labels:       HashMap<Uuid, Vec<Uuid>>,
@@ -94,7 +93,7 @@ pub struct EnrichmentMaps {
 }
 
 impl EnrichmentMaps {
-    /// Mapa vacío — usado cuando no hay issues en la página.
+    /// Empty map — used when page has no issues.
     fn empty() -> Self {
         Self {
             assignees:    HashMap::new(),
@@ -109,16 +108,15 @@ impl EnrichmentMaps {
     }
 }
 
-/// Carga todas las relaciones necesarias para serializar una página de issues.
+/// Loads all relationships needed to serialize an issue page.
 ///
-/// Espejo de las anotaciones de Django en
+/// Mirrors Django annotations in
 /// `apps/api/plane/app/views/issue/base.py:213-247` +
 /// `apps/api/plane/utils/grouper.py:70-81`.
 ///
 /// # Batching
-/// Una sola query por tipo de relación → coste O(1) en roundtrips,
-/// independiente del número de issues. Las queries son `SELECT ... WHERE
-/// issue_id IN (...)`.
+/// One query per relationship type → O(1) roundtrip cost,
+/// independent of issue count. Queries are `SELECT ... WHERE issue_id IN (...)`.
 pub async fn load_enrichment(
     db: &DatabaseConnection,
     issue_ids: &[Uuid],
@@ -167,9 +165,9 @@ pub async fn load_enrichment(
         modules.entry(m.issue_id).or_default().push(m.module_id);
     }
 
-    // Cycle IDs — solo el primer ciclo activo por issue.
-    // Mirror del Subquery de Django: `CycleIssue.objects.filter(...).values("cycle_id")[:1]`
-    // El `entry(...).or_insert(...)` preserva el primer valor visto.
+    // Cycle IDs — first active cycle per issue only.
+    // Mirror of Django Subquery: `CycleIssue.objects.filter(...).values("cycle_id")[:1]`
+    // `entry(...).or_insert(...)` preserves first value seen.
     let raw_cycles = cycle_issues::Entity::find()
         .active()
         .filter(cycle_issues::Column::IssueId.is_in(issue_ids.to_vec()))
@@ -182,7 +180,7 @@ pub async fn load_enrichment(
         cycles.entry(ci.issue_id).or_insert(ci.cycle_id);
     }
 
-    // Sub-issues count — agregación agrupada para evitar N+1.
+    // Sub-issues count — grouped aggregation to avoid N+1.
     let raw_sub: Vec<(Uuid, i64)> = issues::Entity::find()
         .select_only()
         .column(issues::Column::ParentId)
@@ -203,10 +201,10 @@ pub async fn load_enrichment(
         sub_counts.insert(parent_id, cnt);
     }
 
-    // Attachment counts — agrupado por issue_id (Option<Uuid> en el modelo,
-    // porque `file_assets` también almacena attachments de otras entities
-    // como páginas, comments, etc.). El `map(Some).collect()` envuelve los
-    // UUIDs en `Option<Uuid>` para que matchee el tipo de la columna.
+    // Attachment counts — grouped by issue_id (Option<Uuid> in model,
+    // because `file_assets` also stores attachments for other entities
+    // like pages, comments, etc.). `map(Some).collect()` wraps UUIDs
+    // in `Option<Uuid>` to match column type.
     let raw_attachments: Vec<(Option<Uuid>, i64)> = file_assets::Entity::find()
         .select_only()
         .column(file_assets::Column::IssueId)
@@ -233,7 +231,7 @@ pub async fn load_enrichment(
         }
     }
 
-    // Link counts — agrupado.
+    // Link counts — grouped.
     let raw_links: Vec<(Uuid, i64)> = issue_links::Entity::find()
         .select_only()
         .column(issue_links::Column::IssueId)
@@ -254,7 +252,7 @@ pub async fn load_enrichment(
         links.insert(issue_id, cnt);
     }
 
-    // State groups — solo para los states referenciados por los issues.
+    // State groups — only for states referenced by issues.
     let state_groups: HashMap<Uuid, String> = if state_ids.is_empty() {
         HashMap::new()
     } else {
@@ -284,13 +282,13 @@ pub async fn load_enrichment(
 
 // ── Triage exclusion ──────────────────────────────────────────────────────────
 
-/// Devuelve los IDs de `states` cuyo `group = 'triage'` en un workspace o
-/// proyecto dado. Mirror de `.exclude(state__group=StateGroup.TRIAGE.value)`
-/// en `IssueManager.get_queryset` (db/models/issue.py:97).
+/// Returns `states` IDs where `group = 'triage'` in a given workspace or
+/// project. Mirror of `.exclude(state__group=StateGroup.TRIAGE.value)`
+/// in `IssueManager.get_queryset` (db/models/issue.py:97).
 ///
-/// Preferimos pre-consultar estos IDs y filtrar `issue.state_id NOT IN (...)`
-/// en lugar de hacer JOIN con `states` en cada query → mantiene los query
-/// builders de SeaORM simples y tipados.
+/// We prefer pre-querying these IDs and filtering `issue.state_id NOT IN (...)`
+/// instead of JOINing with `states` in every query → keeps SeaORM query
+/// builders simple and typed.
 pub async fn load_triage_state_ids(
     db: &DatabaseConnection,
     project_id: Uuid,
@@ -308,12 +306,12 @@ pub async fn load_triage_state_ids(
     Ok(rows)
 }
 
-/// Versión workspace-scoped de `load_triage_state_ids` — carga los IDs de
-/// states en triage de TODOS los proyectos del workspace.
+/// Workspace-scoped version of `load_triage_state_ids` — loads triage state
+/// IDs for ALL projects in workspace.
 ///
-/// Se usa en `list_workspace_view_issues` para aplicar la misma exclusión
-/// que Django hace a nivel de manager, sin requerir JOIN con `states` en
-/// cada query del listado.
+/// Used in `list_workspace_view_issues` to apply same exclusion
+/// as Django at manager level, without requiring JOIN with `states` in
+/// each listing query.
 pub async fn load_workspace_triage_state_ids(
     db: &DatabaseConnection,
     workspace_id: Uuid,
@@ -331,11 +329,11 @@ pub async fn load_workspace_triage_state_ids(
     Ok(rows)
 }
 
-// ── Ordenamiento ──────────────────────────────────────────────────────────────
+// ── Sorting ──────────────────────────────────────────────────────────────
 
-/// Aplica el `order_by` de Django al SelectModel de SeaORM.
-/// Prefijo `-` = descendente. Whitelist estricta — cualquier valor no
-/// reconocido cae al default `-created_at` (no hay riesgo de SQL injection).
+/// Applies Django `order_by` to SeaORM SelectModel.
+/// `-` prefix = descending. Strict whitelist — unrecognized values
+/// fall back to safe default `-created_at` (no SQL injection risk).
 pub fn apply_issue_order(
     query: sea_orm::Select<issues::Entity>,
     order_by: &str,
@@ -359,18 +357,18 @@ pub fn apply_issue_order(
         "start_date"    => (issues::Column::StartDate,   Asc),
         "-completed_at" => (issues::Column::CompletedAt, Desc),
         "completed_at"  => (issues::Column::CompletedAt, Asc),
-        // Default seguro
+        // Safe default
         _ => (issues::Column::CreatedAt, Desc),
     };
 
     query.order_by(col, dir)
 }
 
-// ── Respuesta paginada ────────────────────────────────────────────────────────
+// ── Paginated response ────────────────────────────────────────────────────────
 
-/// Construye el shape exacto de `OffsetPaginator.paginate()` vacío.
-/// (`plane/utils/paginator.py:715-730`). Se usa en los early-returns cuando
-/// no hay resultados válidos para el usuario.
+/// Builds exact shape of empty `OffsetPaginator.paginate()`.
+/// (`plane/utils/paginator.py:715-730`). Used in early-returns when
+/// no valid results are found for user.
 pub fn empty_paginated_response(page_size: u64) -> serde_json::Value {
     json!({
         "grouped_by":        null,
@@ -388,10 +386,10 @@ pub fn empty_paginated_response(page_size: u64) -> serde_json::Value {
     })
 }
 
-/// Construye el shape paginado con resultados. `results` debe ser serializable.
+/// Builds paginated shape with results. `results` must be serializable.
 ///
-/// Calcula `next_cursor` / `prev_cursor` y flags `*_page_results` a partir
-/// de `current_page` y `total_results` — lógica idéntica a Django.
+/// Calculates `next_cursor` / `prev_cursor` and `*_page_results` flags
+/// from `current_page` and `total_results` — same logic as Django.
 pub fn paginated_response<T: serde::Serialize>(
     results: Vec<T>,
     page_size: u64,
@@ -408,8 +406,8 @@ pub fn paginated_response<T: serde::Serialize>(
     let has_next = end_index < total_results;
     let has_prev = current_page > 0;
 
-    // En Django, next/prev cursor son SIEMPRE strings — la disponibilidad
-    // de página se comunica vía `*_page_results`.
+    // In Django, next/prev cursor are ALWAYS strings — page availability
+    // is communicated via `*_page_results`.
     let prev_cursor = if current_page == 0 {
         format!("{page_size}:-1:1")
     } else {
@@ -434,8 +432,8 @@ pub fn paginated_response<T: serde::Serialize>(
     })
 }
 
-/// Extrae los `state_ids` únicos (descartando `None`) de una lista de issues.
-/// Helper pequeño — evita repetir el pattern `filter_map + HashSet` en cada handler.
+/// Extracts unique `state_ids` (discarding `None`) from a list of issues.
+/// Small helper — avoids repeating `filter_map + HashSet` pattern in each handler.
 pub fn collect_state_ids(models: &[issues::Model]) -> Vec<Uuid> {
     models
         .iter()

@@ -1,28 +1,28 @@
 // src/jobs/cron.rs
-//! Scheduler periódico — reemplaza Celery beat.
+//! Periodic scheduler — replaces Celery beat.
 //!
-//! Equivalente a `plane/celery.py → app.conf.beat_schedule`.
+//! Equivalent to `plane/celery.py → app.conf.beat_schedule`.
 //!
-//! Cada tarea se lanza en un `tokio::spawn` independiente con su propio
-//! loop de sleep → execute → sleep. Para tareas "a las HH:MM UTC" se
-//! calcula el tiempo hasta la próxima ocurrencia antes del primer tick;
-//! después corre cada 24 h.
+//! Each task is launched in an independent `tokio::spawn` with its own
+//! sleep → execute → sleep loop. For "at HH:MM UTC" tasks, the time until
+//! the next occurrence is calculated before the first tick;
+//! then it runs every 24 hours.
 //!
-//! Tabla de equivalencias:
+//! Equivalency table:
 //!
-//! | Celery beat task                          | Frecuencia       | Función Rust                                    |
+//! | Celery beat task                          | Frequency        | Rust function                                   |
 //! |-------------------------------------------|------------------|-------------------------------------------------|
-//! | stack_email_notification                  | cada 5 min       | email_notification::stack_email_notification    |
-//! | instance_traces                           | cada 6 h         | instance_traces::instance_traces                |
-//! | hard_delete                               | diario 00:00 UTC | cleanup::hard_delete                            |
-//! | archive_and_close_old_issues              | diario 01:00 UTC | (enqueue RunIssueAutomationJob via apalis)       |
-//! | delete_old_s3_link (exporter)             | diario 01:30 UTC | cleanup::delete_old_s3_links                    |
-//! | delete_unuploaded_file_asset              | diario 02:00 UTC | cleanup::delete_unuploaded_file_assets          |
-//! | delete_api_logs                           | diario 02:30 UTC | cleanup::delete_api_logs                        |
-//! | delete_email_notification_logs            | diario 02:45 UTC | cleanup::delete_email_notification_logs         |
-//! | delete_page_versions                      | diario 03:00 UTC | cleanup::delete_page_versions                   |
-//! | delete_issue_description_versions         | diario 03:15 UTC | cleanup::delete_issue_description_versions      |
-//! | delete_webhook_logs                       | diario 03:30 UTC | cleanup::delete_webhook_logs                    |
+//! | stack_email_notification                  | every 5 min      | email_notification::stack_email_notification    |
+//! | instance_traces                           | every 6 h         | instance_traces::instance_traces                |
+//! | hard_delete                               | daily 00:00 UTC | cleanup::hard_delete                            |
+//! | archive_and_close_old_issues              | daily 01:00 UTC | (enqueue RunIssueAutomationJob via apalis)       |
+//! | delete_old_s3_link (exporter)             | daily 01:30 UTC | cleanup::delete_old_s3_links                    |
+//! | delete_unuploaded_file_asset              | daily 02:00 UTC | cleanup::delete_unuploaded_file_assets          |
+//! | delete_api_logs                           | daily 02:30 UTC | cleanup::delete_api_logs                        |
+//! | delete_email_notification_logs            | daily 02:45 UTC | cleanup::delete_email_notification_logs         |
+//! | delete_page_versions                      | daily 03:00 UTC | cleanup::delete_page_versions                   |
+//! | delete_issue_description_versions         | daily 03:15 UTC | cleanup::delete_issue_description_versions      |
+//! | delete_webhook_logs                       | daily 03:30 UTC | cleanup::delete_webhook_logs                    |
 
 use std::time::Duration;
 
@@ -41,13 +41,13 @@ use crate::{
     utils::s3::build_s3_client,
 };
 
-/// Inicia todos los workers del scheduler. Se llama una sola vez en `main`.
-/// Cada tarea corre en un `tokio::spawn` independiente — un panic en una
-/// no afecta a las demás.
+/// Starts all scheduler workers. Called once in `main`.
+/// Each task runs in an independent `tokio::spawn` — a panic in one
+/// does not affect the others.
 pub async fn start_cron(state: AppState) {
-    tracing::info!("🕐 Iniciando scheduler de tareas periódicas (reemplaza Celery beat)");
+    tracing::info!("Starting periodic task scheduler (replaces Celery beat)");
 
-    // ── Cada 5 minutos ────────────────────────────────────────────────────────
+    // ── Every 5 minutes ────────────────────────────────────────────────────────
     {
         let s = state.clone();
         tokio::spawn(async move {
@@ -62,13 +62,13 @@ pub async fn start_cron(state: AppState) {
                 )
                 .await
                 {
-                    tracing::error!(error = %e, "cron: stack_email_notification falló");
+                    tracing::error!(error = %e, "cron: stack_email_notification failed");
                 }
             }
         });
     }
 
-    // ── Cada 6 horas ─────────────────────────────────────────────────────────
+    // ── Every 6 hours ─────────────────────────────────────────────────────────
     {
         let s = state.clone();
         tokio::spawn(async move {
@@ -77,13 +77,13 @@ pub async fn start_cron(state: AppState) {
             loop {
                 interval.tick().await;
                 if let Err(e) = instance_traces::instance_traces(&s.db).await {
-                    tracing::error!(error = %e, "cron: instance_traces falló");
+                    tracing::error!(error = %e, "cron: instance_traces failed");
                 }
             }
         });
     }
 
-    // ── Tareas diarias a hora UTC fija ────────────────────────────────────────
+    // ── Daily tasks at fixed UTC time ────────────────────────────────────────
     // 00:00 — hard_delete
     {
         let s = state.clone();
@@ -192,46 +192,46 @@ pub async fn start_cron(state: AppState) {
         }));
     }
 
-    tracing::info!("✅ Scheduler iniciado (11 tareas registradas)");
+    tracing::info!("✅ Scheduler started (11 tasks registered)");
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
-/// Ejecuta `f` todos los días a `hour:minute` UTC.
-/// El primer tick espera hasta la próxima ocurrencia de esa hora;
-/// los siguientes se disparan cada 24 h exactas.
+/// Executes `f` every day at `hour:minute` UTC.
+/// The first tick waits until the next occurrence of that time;
+/// subsequent ticks fire every exactly 24 hours.
 async fn daily_at<F, Fut>(hour: u32, minute: u32, label: &'static str, f: F)
 where
     F: Fn() -> Fut + Send + 'static,
     Fut: std::future::Future<Output = anyhow::Result<()>> + Send,
 {
-    // Calcular tiempo hasta la próxima ocurrencia de HH:MM UTC
+    // Calculate time until next HH:MM UTC occurrence
     let initial_delay = secs_until_utc(hour, minute);
     tracing::debug!(
         label,
         delay_secs = initial_delay,
-        "cron: esperando primera ejecución"
+        "cron: waiting for first execution"
     );
     sleep(Duration::from_secs(initial_delay)).await;
 
     loop {
-        tracing::debug!(label, "cron: ejecutando tarea diaria");
+        tracing::debug!(label, "cron: executing daily task");
         if let Err(e) = f().await {
-            tracing::error!(label, error = %e, "cron: tarea diaria falló");
+            tracing::error!(label, error = %e, "cron: daily task failed");
         }
-        // Próxima ejecución en 24 horas
+        // Next execution in 24 hours
         sleep(Duration::from_secs(24 * 3600)).await;
     }
 }
 
-/// Segundos desde ahora hasta la próxima ocurrencia de `hour:minute` UTC.
-/// Si la hora ya pasó hoy, devuelve el tiempo hasta mañana a esa hora.
+/// Seconds from now until the next occurrence of `hour:minute` UTC.
+/// If the time has already passed today, returns the time until tomorrow at that time.
 ///
-/// Visibilidad `pub` para permitir tests de integración (ver
-/// `tests/jobs_scheduler.rs`). Los tests de integración viven en un crate
-/// separado al binario, por lo que `pub(crate)` no los alcanza. La función
-/// es pura — todo input lo recibe como argumento o vía `Utc::now()` — por
-/// lo que se puede ejercer directamente sin scaffolding de DB.
+/// Visibility `pub` to allow integration tests (see
+/// `tests/jobs_scheduler.rs`). Integration tests live in a separate crate
+/// from the binary, so `pub(crate)` doesn't reach them. The function
+/// is pure — all input is received as argument or via `Utc::now()` — so
+/// it can be exercised directly without DB scaffolding.
 pub fn secs_until_utc(hour: u32, minute: u32) -> u64 {
     let now = Utc::now();
     let today_secs = now.num_seconds_from_midnight() as u64;
@@ -240,19 +240,19 @@ pub fn secs_until_utc(hour: u32, minute: u32) -> u64 {
     if target_secs > today_secs {
         target_secs - today_secs
     } else {
-        // La hora ya pasó hoy → esperar hasta mañana
+        // Time already passed today → wait until tomorrow
         24 * 3600 - today_secs + target_secs
     }
 }
 
-/// Encola un `RunIssueAutomationJob` en apalis para que el worker lo procese.
+/// Enqueues a `RunIssueAutomationJob` in apalis for worker processing.
 async fn enqueue_issue_automation(state: &AppState) -> anyhow::Result<()> {
-    // Reusar el PgPool compartido de AppState en vez de abrir una conexión
-    // nueva en cada tick del cron (antipatrón).
+    // Reuse shared PgPool from AppState instead of opening a new connection
+    // on each cron tick (antipattern).
     let mut storage: PostgresStorage<RunIssueAutomationJob> =
         PostgresStorage::new(state.pg_pool.clone());
     use apalis::prelude::Storage;
     storage.push(RunIssueAutomationJob).await?;
-    tracing::info!("cron: RunIssueAutomationJob encolado");
+    tracing::info!("cron: RunIssueAutomationJob enqueued");
     Ok(())
 }

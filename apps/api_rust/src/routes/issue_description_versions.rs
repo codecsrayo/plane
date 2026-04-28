@@ -1,25 +1,25 @@
 // src/routes/issue_description_versions.rs
-//! Endpoints de descripción-versiones de work items.
+//! Work item description version endpoints.
 //!
-//! Espejo de `WorkItemDescriptionVersionEndpoint` en
+//! Mirror of `WorkItemDescriptionVersionEndpoint` in
 //! `apps/api/plane/app/views/issue/version.py`.
 //!
-//! Endpoints implementados:
+//! Implemented endpoints:
 //!   GET  /api/workspaces/{slug}/projects/{project_id}/work-items/{work_item_id}/description-versions/
 //!   GET  /api/workspaces/{slug}/projects/{project_id}/work-items/{work_item_id}/description-versions/{pk}/
 //!
-//! # Lógica de permisos (mirror Django)
-//! - Rol mínimo: GUEST.
-//! - Si el usuario es GUEST Y `project.guest_view_all_features = false`
-//!   Y no es el `created_by` del issue → HTTP 403.
+//! # Permission logic (Django mirror)
+//! - Minimum role: GUEST.
+//! - If user is GUEST AND `project.guest_view_all_features = false`
+//!   AND is not the `created_by` of the issue → HTTP 403.
 //!
-//! # Shape de lista
-//! Paginado estilo Django con los campos:
+//! # List Shape
+//! Django-style paginated with fields:
 //!   id, workspace, project, issue, last_saved_at, owned_by,
 //!   created_at, updated_at, created_by, updated_by.
 //!
-//! # Shape de detalle (pk)
-//! Todos los campos incluyendo description_binary, description_html,
+//! # Detail Shape (pk)
+//! All fields including description_binary, description_html,
 //! description_json, description_stripped.
 
 use axum::{
@@ -55,15 +55,15 @@ pub struct DescriptionVersionsQuery {
 
 // ── DTOs ──────────────────────────────────────────────────────────────────────
 
-/// Shape de la lista paginada.
+/// Paginated list shape.
 ///
-/// Espejo EXACTO de los `required_fields` en `version.py:WorkItemDescriptionVersionEndpoint.get`
-/// cuando no hay `pk`:
+/// EXACT mirror of `required_fields` in `version.py:WorkItemDescriptionVersionEndpoint.get`
+/// when there is no `pk`:
 ///   id, workspace, project, issue, last_saved_at, owned_by,
 ///   created_at, updated_at, created_by, updated_by.
 ///
-/// Las FK se serializa como su UUID (convención Django cuando el serializer
-/// usa `source` FK: devuelve el UUID del objeto relacionado, no el objeto).
+/// FKs are serialized as their UUID (Django convention when serializer
+/// uses `source` FK: returns the UUID of the related object, not the object).
 #[derive(Debug, Serialize)]
 pub struct DescriptionVersionListItem {
     pub id: Uuid,
@@ -84,14 +84,14 @@ pub struct DescriptionVersionListItem {
     pub updated_by_id: Option<Uuid>,
 }
 
-/// Shape del detalle (cuando se pasa pk).
+/// Detail shape (when pk is passed).
 ///
-/// Espejo de `IssueDescriptionVersionDetailSerializer` en
+/// Mirror of `IssueDescriptionVersionDetailSerializer` in
 /// `apps/api/plane/app/serializers/issue.py:1010-1029`.
 ///
-/// `description_binary` se codifica en base64 porque es un campo binario y
-/// Django lo serializa vía DRF como bytes; el frontend espera un string
-/// base64 o null.
+/// `description_binary` is base64 encoded because it's a binary field and
+/// Django serializes it via DRF as bytes; frontend expects a
+/// base64 string or null.
 #[derive(Debug, Serialize)]
 pub struct DescriptionVersionDetail {
     pub id: Uuid,
@@ -110,14 +110,14 @@ pub struct DescriptionVersionDetail {
     pub created_by_id: Option<Uuid>,
     #[serde(rename = "updated_by")]
     pub updated_by_id: Option<Uuid>,
-    // Campos de contenido — solo en el detalle
+    // Content fields — only in detail
     pub description_binary: Option<String>, // base64 o null
     pub description_html: String,
     pub description_stripped: Option<String>,
     pub description_json: serde_json::Value,
 }
 
-// ── Conversiones desde entidad ────────────────────────────────────────────────
+// ── Entity conversions ────────────────────────────────────────────────
 
 impl From<&issue_description_versions::Model> for DescriptionVersionListItem {
     fn from(m: &issue_description_versions::Model) -> Self {
@@ -163,13 +163,13 @@ impl From<issue_description_versions::Model> for DescriptionVersionDetail {
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
-/// Verifica la restricción de guest sobre un issue específico.
+/// Verifies guest restriction on a specific issue.
 ///
-/// Espejo de la lógica en `version.py:WorkItemDescriptionVersionEndpoint.get`:
-///   si el user es GUEST Y `project.guest_view_all_features = false`
-///   Y `issue.created_by != request.user` → 403.
+/// Mirror of logic in `version.py:WorkItemDescriptionVersionEndpoint.get`:
+///   if user is GUEST AND `project.guest_view_all_features = false`
+///   AND `issue.created_by != request.user` → 403.
 ///
-/// Retorna `Err(AppError::Forbidden)` si la condición se cumple.
+/// Returns `Err(AppError::Forbidden)` if the condition is met.
 async fn check_guest_issue_access(
     db: &sea_orm::DatabaseConnection,
     guard: &ProjectMemberGuard,
@@ -185,7 +185,7 @@ async fn check_guest_issue_access(
         return Ok(());
     }
 
-    // El guest solo puede ver el issue si es su creador
+    // The guest can only see the issue if they are its creator
     let issue = issues::Entity::find_by_id(work_item_id)
         .filter(issues::Column::ProjectId.eq(guard.project.id))
         .filter(issues::Column::DeletedAt.is_null())
@@ -205,7 +205,7 @@ async fn check_guest_issue_access(
 
 /// GET /workspaces/{slug}/projects/{project_id}/work-items/{work_item_id}/description-versions/
 ///
-/// Lista paginada de versiones de descripción de un work item.
+/// Paginated list of work item description versions.
 #[utoipa::path(
     get,
     path = "/api/workspaces/{slug}/projects/{project_id}/work-items/{work_item_id}/description-versions/",
@@ -214,13 +214,13 @@ async fn check_guest_issue_access(
         ("slug"          = String, Path,  description = "Workspace slug"),
         ("project_id"    = Uuid,   Path,  description = "Project ID"),
         ("work_item_id"  = Uuid,   Path,  description = "Work item (issue) ID"),
-        ("cursor"        = Option<String>, Query, description = "Cursor Django: {per_page}:{page}:{is_prev}"),
-        ("per_page"      = Option<u64>,    Query, description = "Tamaño de página"),
+        ("cursor"        = Option<String>, Query, description = "Django cursor: {per_page}:{page}:{is_prev}"),
+        ("per_page"      = Option<u64>,    Query, description = "Page size"),
     ),
     responses(
-        (status = 200, description = "Lista paginada de versiones de descripción"),
-        (status = 403, description = "Sin acceso"),
-        (status = 404, description = "Work item no encontrado"),
+        (status = 200, description = "Paginated list of description versions"),
+        (status = 403, description = "Forbidden"),
+        (status = 404, description = "Work item not found"),
     )
 )]
 pub async fn list_description_versions(
@@ -275,7 +275,7 @@ pub async fn list_description_versions(
 
 /// GET /workspaces/{slug}/projects/{project_id}/work-items/{work_item_id}/description-versions/{pk}/
 ///
-/// Detalle completo de una versión de descripción (incluye contenido binario/HTML/JSON).
+/// Full detail of a description version (includes binary/HTML/JSON content).
 #[utoipa::path(
     get,
     path = "/api/workspaces/{slug}/projects/{project_id}/work-items/{work_item_id}/description-versions/{pk}/",
@@ -287,9 +287,9 @@ pub async fn list_description_versions(
         ("pk"           = Uuid,   Path, description = "Version ID"),
     ),
     responses(
-        (status = 200, description = "Detalle de versión de descripción"),
-        (status = 403, description = "Sin acceso"),
-        (status = 404, description = "No encontrado"),
+        (status = 200, description = "Description version detail"),
+        (status = 403, description = "Forbidden"),
+        (status = 404, description = "Not found"),
     )
 )]
 pub async fn get_description_version(

@@ -1,14 +1,14 @@
 // src/jobs/instance_traces.rs
-//! Tarea periódica de telemetría de instancia.
+//! Periodic instance telemetry task.
 //!
-//! Equivalente a `plane/license/bgtasks/tracer.py → instance_traces`.
+//! Equivalent to `plane/license/bgtasks/tracer.py → instance_traces`.
 //!
-//! Diferencias respecto a Django:
-//!   - Django usa OpenTelemetry con un exporter externo (Jaeger/OTLP).
-//!     Rust emite las métricas via `tracing` (structured logging) para no
-//!     añadir la dependencia de opentelemetry al binario.
-//!   - Si la instancia tiene `is_telemetry_enabled = false`, la tarea
-//!     retorna sin emitir nada.
+//! Differences from Django:
+//!   - Django uses OpenTelemetry with an external exporter (Jaeger/OTLP).
+//!     Rust emits metrics via `tracing` (structured logging) so as not to
+//!     add the opentelemetry dependency to the binary.
+//!   - If the instance has `is_telemetry_enabled = false`, the task
+//!     returns without emitting anything.
 
 use sea_orm::{DatabaseConnection, EntityTrait, PaginatorTrait};
 
@@ -20,26 +20,26 @@ use crate::{
     utils::soft_delete::SoftDeleteExt,
 };
 
-/// Consulta conteos de la instancia y los emite como structured log.
+/// Queries instance counts and emits them as a structured log.
 ///
-/// Llamado cada 6 horas por el scheduler (`cron.rs`).
+/// Called every 6 hours by the scheduler (`cron.rs`).
 pub async fn instance_traces(db: &DatabaseConnection) -> anyhow::Result<()> {
-    // Obtener la primera (y única) instancia
+    // Get the first (and only) instance
     let instance = instances::Entity::find().one(db).await?;
     let instance = match instance {
         Some(i) => i,
         None => {
-            tracing::debug!("instance_traces: instancia no configurada, omitiendo");
+            tracing::debug!("instance_traces: instance not configured, skipping");
             return Ok(());
         }
     };
 
     if !instance.is_telemetry_enabled {
-        tracing::debug!("instance_traces: telemetría desactivada, omitiendo");
+        tracing::debug!("instance_traces: telemetry disabled, skipping");
         return Ok(());
     }
 
-    // Conteos globales
+    // Global counts
     let workspace_count = workspaces::Entity::find().active().count(db).await?;
     let user_count = users::Entity::find().count(db).await?;
     let project_count = projects::Entity::find().active().count(db).await?;

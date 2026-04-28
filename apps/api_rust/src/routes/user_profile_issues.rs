@@ -1,13 +1,13 @@
 // src/routes/user_profile_issues.rs
 //! Endpoint `GET /api/workspaces/{slug}/user-issues/{user_id}/`.
 //!
-//! Mirror de `WorkspaceUserProfileIssuesEndpoint` en
+//! Mirror of `WorkspaceUserProfileIssuesEndpoint` in
 //! `plane/app/views/workspace/user.py:98-249`.
 //!
-//! Lista issues asociadas al `user_id` (target) dentro del workspace,
-//! filtradas por proyectos a los que el **requester** tiene acceso.
+//! Lists issues associated with `user_id` (target) within the workspace,
+//! filtered by projects to which the **requester** has access.
 //!
-//! # Scope del target user (mirror Django)
+//! # Target user scope (mirror Django)
 //!
 //! ```python
 //! id__in=Issue.issue_objects.filter(
@@ -18,33 +18,32 @@
 //! ).values_list("id", flat=True)
 //! ```
 //!
-//! Ese OR se aplica SIEMPRE, independientemente de que el frontend además
-//! envíe `?assignees=user_id`, `?created_by=user_id` o `?subscriber=user_id`
-//! para las pestañas Assigned / Created / Subscribed. La ausencia del OR
-//! permitiría leer todos los issues del workspace cuando el frontend
-//! omitiera el filtro — un privilege escalation silencioso respecto a Django.
+//! That OR is ALWAYS applied, regardless of whether the frontend also
+//! sends `?assignees=user_id`, `?created_by=user_id`, or `?subscriber=user_id`
+//! for the Assigned / Created / Subscribed tabs. The absence of the OR
+//! would allow reading all workspace issues if the frontend omitted the filter
+//! — a silent privilege escalation compared to Django.
 //!
-//! # Permisos
+//! # Permissions
 //!
-//! Mirror de `WorkspaceViewerPermission`: el requester debe ser miembro
-//! activo del workspace (cualquier rol). Issues se scope-an a proyectos
-//! donde el requester sea miembro activo + lógica de guest:
-//! `guest_view_all_features = false` restringe a issues creadas por el
-//! propio requester. Idéntico a `list_workspace_view_issues`.
+//! Mirror of `WorkspaceViewerPermission`: the requester must be an active
+//! workspace member (any role). Issues are scoped to projects
+//! where the requester is an active member + guest logic:
+//! `guest_view_all_features = false` restricts to issues created by the
+//! requester themselves. Identical to `list_workspace_view_issues`.
 //!
-//! # Antipatrones evitados
+//! # Avoided Anti-patterns
 //!
-//! - **N+1**: pre-query única del `id__in` del target; enrichment batch
-//!   (8 relaciones) a través de `load_enrichment`.
-//! - **Cross-tenant leakage**: todas las subqueries filtran por
-//!   `workspace_id`, incluidas las del scope del target user.
-//! - **Privilege escalation**: el OR-scope del target user no es opcional
-//!   — se aplica aunque el frontend mande filtros; además se aplica la
-//!   `permission_condition` estándar (full_access vs guest restringido).
-//! - **SQL injection**: UUIDs se parsean/validan antes de entrar a la query;
-//!   SeaORM bindea los parámetros. Sin `format!`.
-//! - **DoS por paginación**: `parse_cursor` clampa `page_size` a
-//!   `PAGINATOR_MAX_LIMIT`.
+//! - **N+1**: single pre-query of target `id__in`; batch enrichment
+//!   (8 relations) via `load_enrichment`.
+//! - **Cross-tenant leakage**: all subqueries filter by `workspace_id`,
+//!   including target user scope subqueries.
+//! - **Privilege escalation**: the target user OR-scope is not optional
+//!   — it's applied even if the frontend sends filters; additionally, the
+//!   standard `permission_condition` is applied (full_access vs restricted guest).
+//! - **SQL injection**: UUIDs are parsed/validated before entering the query;
+//!   SeaORM binds the parameters. No `format!`.
+//! - **Paging DoS**: `parse_cursor` clamps `page_size` to `PAGINATOR_MAX_LIMIT`.
 
 use axum::{
     extract::{Path, Query, State},
@@ -74,13 +73,13 @@ use crate::{
 
 // ── Query params ──────────────────────────────────────────────────────────────
 //
-// `serde_urlencoded` no soporta `#[serde(flatten)]`, por eso los campos de
-// `IssueFilterParams` se inlinean en el struct del query. Siguiendo el mismo
-// patrón de `WorkspaceIssuesQuery` en `workspace_view_issues.rs`.
+// `serde_urlencoded` does not support `#[serde(flatten)]`, which is why the
+// `IssueFilterParams` fields are inlined in the query struct. Following the
+// same pattern as `WorkspaceIssuesQuery` in `workspace_view_issues.rs`.
 
 #[derive(Debug, Deserialize)]
 pub struct UserProfileIssuesQuery {
-    // Paginación / orden
+    // Paging / ordering
     pub cursor:            Option<String>,
     pub per_page:          Option<u64>,
     pub order_by:          Option<String>,
@@ -90,7 +89,7 @@ pub struct UserProfileIssuesQuery {
     #[serde(rename = "updated_at__gt")]
     pub updated_at_gt:     Option<chrono::DateTime<chrono::FixedOffset>>,
 
-    // Filtros (delegados a issue_filters)
+    // Filters (delegated to issue_filters)
     pub state:             Option<String>,
     pub state_group:       Option<String>,
     pub priority:          Option<String>,
@@ -108,7 +107,7 @@ pub struct UserProfileIssuesQuery {
     pub type_filter:       Option<String>,
     pub start_target_date: Option<String>,
 
-    // Rich filters (JSON blob para views guardadas / spreadsheet layout)
+    // Rich filters (JSON blob for saved views / spreadsheet layout)
     pub filters:           Option<String>,
 }
 
@@ -136,9 +135,9 @@ impl UserProfileIssuesQuery {
 
 // ── DTO ───────────────────────────────────────────────────────────────────────
 //
-// Shape idéntico a `WorkspaceIssueItem` de `workspace_view_issues.rs`. El
-// frontend consume ambos con `TIssuesResponse` (packages/types), por lo que
-// los campos deben permanecer en paridad.
+// Shape identical to `WorkspaceIssueItem` from `workspace_view_issues.rs`. The
+// frontend consumes both with `TIssuesResponse` (packages/types), so fields
+// must remain in parity.
 
 #[derive(Debug, Serialize)]
 pub struct UserProfileIssueItem {
@@ -175,10 +174,10 @@ pub struct UserProfileIssueItem {
 
 /// `GET /api/workspaces/{slug}/user-issues/{user_id}/`
 ///
-/// Lista paginada de issues asociadas al `user_id` (target) dentro de los
-/// proyectos a los que el **requester** tiene acceso en el workspace.
+/// Paged list of issues associated with `user_id` (target) within the
+/// projects to which the **requester** has access in the workspace.
 ///
-/// Mirror de `WorkspaceUserProfileIssuesEndpoint`
+/// Mirror of `WorkspaceUserProfileIssuesEndpoint`
 /// (`plane/app/views/workspace/user.py:98-249`).
 #[utoipa::path(
     get,
@@ -188,15 +187,15 @@ pub struct UserProfileIssueItem {
     params(
         ("slug"     = String, Path,  description = "Workspace slug"),
         ("user_id"  = Uuid,   Path,  description = "Target user UUID"),
-        ("cursor"   = Option<String>, Query, description = "Cursor Django: {per_page}:{page}:{is_prev}"),
-        ("per_page" = Option<u64>,    Query, description = "Tamaño de página (ignorado si está en cursor)"),
-        ("order_by" = Option<String>, Query, description = "Campo de ordenamiento, default `-created_at`"),
+        ("cursor"   = Option<String>, Query, description = "Django Cursor: {per_page}:{page}:{is_prev}"),
+        ("per_page" = Option<u64>,    Query, description = "Page size (ignored if in cursor)"),
+        ("order_by" = Option<String>, Query, description = "Sort field, default `-created_at`"),
     ),
     responses(
-        (status = 200, description = "Lista paginada de issues del perfil del usuario"),
-        (status = 401, description = "No autenticado"),
-        (status = 403, description = "No es miembro activo del workspace"),
-        (status = 404, description = "Workspace no encontrado"),
+        (status = 200, description = "Paged list of issues from the user profile"),
+        (status = 401, description = "Unauthenticated"),
+        (status = 403, description = "Not an active workspace member"),
+        (status = 404, description = "Workspace not found"),
     )
 )]
 pub async fn list_user_profile_issues(
@@ -207,24 +206,24 @@ pub async fn list_user_profile_issues(
 ) -> Result<impl IntoResponse, AppError> {
     let db = &state.db;
 
-    // ── 1. Auth + permisos de workspace ──────────────────────────────────────
+    // ── 1. Auth + workspace permissions ──────────────────────────────────────
     let ws = workspace_by_slug(db, &slug).await?;
     let workspace_id = ws.id;
     let requester_id = requester.id;
     let workspace_member = require_workspace_member(db, workspace_id, requester_id).await?;
     let workspace_member_role = workspace_member.role;
 
-    // ── 2. Paginación ────────────────────────────────────────────────────────
+    // ── 2. Paging ────────────────────────────────────────────────────────────
     let fallback_per_page = params.per_page.unwrap_or(DEFAULT_PER_PAGE);
     let (page_size, current_page) = parse_cursor(params.cursor.as_deref(), fallback_per_page);
 
-    // ── 3. Proyectos accesibles por el requester (mirror view_issues) ────────
+    // ── 3. Projects accessible by the requester (mirror view_issues) ─────────
     //
-    // Misma lógica de `_get_project_permission_filters` de Django:
-    //   - Guest (role = 5) con `guest_view_all_features = false` → sólo ve
-    //     sus propios issues (created_by_id = requester).
-    //   - Guest con `guest_view_all_features = true` o roles > 5 → ve todos
-    //     los issues del proyecto.
+    // Same logic as Django's `_get_project_permission_filters`:
+    //   - Guest (role = 5) with `guest_view_all_features = false` → only sees
+    //     their own issues (created_by_id = requester).
+    //   - Guest with `guest_view_all_features = true` or roles > 5 → sees all
+    //     issues in the project.
     let memberships = project_members::Entity::find()
         .active()
         .filter(project_members::Column::WorkspaceId.eq(workspace_id))
@@ -286,7 +285,7 @@ pub async fn list_user_profile_issues(
         return Ok(Json(empty_paginated_response(page_size)));
     }
 
-    // Condición de permisos: full_access OR (restricted AND created_by = requester)
+    // Permission condition: full_access OR (restricted AND created_by = requester)
     let permission_condition = {
         let mut cond = Condition::any();
         if !full_ids.is_empty() {
@@ -302,22 +301,22 @@ pub async fn list_user_profile_issues(
         cond
     };
 
-    // ── 4. Scope OR del target user (assignee ∪ created_by ∪ subscriber) ─────
+    // ── 4. Target user OR scope (assignee ∪ created_by ∪ subscriber) ─────────
     //
-    // Mirror EXACTO del `id__in=...` de Django. Se ejecuta SIEMPRE — es el
-    // invariante de este endpoint: nunca devuelve issues no ligadas al target.
-    // Los filtros del query string del frontend narrowean sobre este OR.
+    // EXACT mirror of Django's `id__in=...`. ALWAYS executed — it's the
+    // invariant of this endpoint: it never returns issues not linked to the target.
+    // Frontend query string filters narrow down this OR.
     //
-    // Implementación: tres pre-queries batch, luego union en memoria.
-    // Alternativa SQL `UNION` sería marginalmente más rápida, pero este
-    // patrón es consistente con `issue_filters::load_issues_with_*` y evita
-    // un statement custom adicional.
+    // Implementation: three batch pre-queries, then union in memory.
+    // SQL `UNION` alternative would be marginally faster, but this
+    // pattern is consistent with `issue_filters::load_issues_with_*` and avoids
+    // an additional custom statement.
     let target_issue_ids = load_target_user_issue_ids(db, workspace_id, target_user_id).await?;
     if target_issue_ids.is_empty() {
         return Ok(Json(empty_paginated_response(page_size)));
     }
 
-    // ── 5. Query base ────────────────────────────────────────────────────────
+    // ── 5. Base Query ────────────────────────────────────────────────────────
     let exclude_sub_issues = params
         .sub_issue
         .as_deref()
@@ -336,7 +335,7 @@ pub async fn list_user_profile_issues(
         base_query = base_query.filter(issues::Column::ParentId.is_null());
     }
 
-    // Exclusión de triage (mirror `IssueManager.get_queryset` en
+    // Triage exclusion (mirror `IssueManager.get_queryset` in
     // db/models/issue.py:97).
     let triage_state_ids = load_workspace_triage_state_ids(db, workspace_id).await?;
     if !triage_state_ids.is_empty() {
@@ -347,7 +346,7 @@ pub async fn list_user_profile_issues(
         base_query = base_query.filter(issues::Column::UpdatedAt.gt(updated_at_gt));
     }
 
-    // ── 6. Filtros de query string + blob JSON ───────────────────────────────
+    // ── 6. Query string filters + JSON blob ──────────────────────────────────
     let mut filter_params = params.to_filter_params();
     merge_json_filters(params.filters.as_deref(), &mut filter_params)?;
     let filtered = apply_issue_filters(db, base_query, &filter_params, workspace_id).await?;
@@ -356,7 +355,7 @@ pub async fn list_user_profile_issues(
         FilteredQuery::Empty => return Ok(Json(empty_paginated_response(page_size))),
     };
 
-    // ── 7. Total count + orden + paginación offset ───────────────────────────
+    // ── 7. Total count + order + offset paging ───────────────────────────────
     let total_results = base_query
         .clone()
         .count(db)
@@ -375,12 +374,12 @@ pub async fn list_user_profile_issues(
         .await
         .map_err(AppError::Database)?;
 
-    // ── 8. Enrichment batch (sin N+1) ────────────────────────────────────────
+    // ── 8. Batch enrichment (no N+1) ─────────────────────────────────────────
     let issue_ids: Vec<Uuid> = issue_models.iter().map(|i| i.id).collect();
     let state_ids = collect_state_ids(&issue_models);
     let mut enrich = load_enrichment(db, &issue_ids, &state_ids).await?;
 
-    // ── 9. Serializar ────────────────────────────────────────────────────────
+    // ── 9. Serialize ─────────────────────────────────────────────────────────
     let results: Vec<UserProfileIssueItem> = issue_models
         .into_iter()
         .map(|m| {
@@ -428,10 +427,10 @@ pub async fn list_user_profile_issues(
     )))
 }
 
-// ── Helpers internos ──────────────────────────────────────────────────────────
+// ── Internal Helpers ──────────────────────────────────────────────────────────
 
-/// Pre-query: IDs de issues donde `target_user_id` es assignee, created_by
-/// o subscriber dentro del workspace. Mirror del subquery Django:
+/// Pre-query: issue IDs where `target_user_id` is assignee, created_by
+/// or subscriber within the workspace. Mirror of Django subquery:
 ///
 /// ```python
 /// Issue.issue_objects.filter(
@@ -442,9 +441,9 @@ pub async fn list_user_profile_issues(
 /// ).values_list("id", flat=True)
 /// ```
 ///
-/// Se hacen 3 queries batch y se unen en memoria (via `HashSet`). Más simple
-/// y testeable que un `UNION` SQL custom, con overhead despreciable para los
-/// volúmenes esperados (issues por usuario típicamente < 10k).
+/// 3 batch queries are made and joined in memory (via `HashSet`). Simpler
+/// and more testable than a custom SQL `UNION`, with negligible overhead for
+/// expected volumes (issues per user typically < 10k).
 async fn load_target_user_issue_ids(
     db: &sea_orm::DatabaseConnection,
     workspace_id: Uuid,

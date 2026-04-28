@@ -107,18 +107,18 @@ mod tests {
 // URL validation for link payloads (issue-links / module-links / cycle-links)
 // ─────────────────────────────────────────────────────────────────────────────
 
-/// Replica `*LinkSerializer.to_internal_value` + `validate_url` de Django.
+/// Replicates `*LinkSerializer.to_internal_value` + `validate_url` from Django.
 ///
-/// 1. Si la URL no empieza con `http://` o `https://`, antepone `http://`
-///    (paridad apps/api/plane/app/serializers/issue.py:565-571 y
+/// 1. If the URL does not start with `http://` or `https://`, it prepends `http://`
+///    (parity with apps/api/plane/app/serializers/issue.py:565-571 and
 ///    apps/api/plane/app/serializers/module.py:170-176).
-/// 2. Valida con un regex equivalente al `URLValidator` de Django (host con
-///    TLD válido o IP, scheme http/https/ftp, puerto opcional, path opcional).
-///    Strings sin TLD como `"not-a-url"` → tras prepend `http://not-a-url` →
-///    rechazado por carecer de dominio válido.
+/// 2. Validates with a regex equivalent to Django's `URLValidator` (host with
+///    valid TLD or IP, scheme http/https/ftp, optional port, optional path).
+///    Strings without TLD like `"not-a-url"` → after prepending `http://not-a-url` →
+///    rejected for lacking a valid domain.
 ///
-/// Devuelve `AppError::BadRequest` con mensaje idéntico al de Django si la
-/// URL no es válida, lo que el frontend reconoce como error de validación.
+/// Returns `AppError::BadRequest` with a message identical to Django's if the
+/// URL is not valid, which the frontend recognizes as a validation error.
 pub fn normalize_and_validate_url(raw: &str) -> Result<String, crate::error::AppError> {
     use std::sync::OnceLock;
 
@@ -128,16 +128,16 @@ pub fn normalize_and_validate_url(raw: &str) -> Result<String, crate::error::App
         format!("http://{raw}")
     };
 
-    // Regex pragmático: scheme + host (con TLD ≥ 2 chars o IPv4) + puerto/
-    // path opcionales. No replica el `URLValidator` byte-a-byte (Django
-    // soporta IPv6, IDN punycode, etc.) pero cubre los casos del frontend
-    // y rechaza basura como "not-a-url".
+    // Pragmatic regex: scheme + host (with TLD ≥ 2 chars or IPv4) + optional
+    // port/path. It doesn't replicate `URLValidator` byte-by-byte (Django
+    // supports IPv6, IDN punycode, etc.) but it covers frontend cases
+    // and rejects garbage like "not-a-url".
     static URL_RE: OnceLock<Regex> = OnceLock::new();
     let re = URL_RE.get_or_init(|| {
         Regex::new(
             r"(?i)^(https?|ftp)://(?:[^\s/@:]+(?::[^\s/@:]*)?@)?(?:(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,}|localhost|(?:\d{1,3}\.){3}\d{1,3})(?::\d{1,5})?(?:[/?#]\S*)?$",
         )
-        .expect("URL regex válido")
+        .expect("Valid URL regex")
     });
 
     if !re.is_match(&normalized) {

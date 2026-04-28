@@ -1,16 +1,16 @@
 // src/jobs/mod.rs
-//! Background jobs procesados por apalis sobre PostgreSQL.
+//! Background jobs processed by apalis on PostgreSQL.
 //!
-//! Módulos:
-//!   github_sync          — Importación inicial de issues desde GitHub al crear un RepoSync
-//!   notifications        — Creación de notificaciones in-app para actividad de issues
-//!   export               — Exportación de issues a CSV/ZIP y subida a S3
-//!   scheduled            — Tareas periódicas: archivado y cierre automático de issues
-//!   cleanup              — Limpieza periódica de logs, versiones y soft-deletes
-//!   email_notification   — Envío de emails agrupados por receptor cada 5 min
-//!   instance_traces      — Telemetría de instancia cada 6 h
-//!   cron                 — Scheduler tokio que reemplaza Celery beat
-//!   webhook_delivery     — Entrega de webhooks salientes con firma HMAC-SHA256
+//! Modules:
+//!   github_sync          — Initial import of issues from GitHub when creating a RepoSync
+//!   notifications        — Creation of in-app notifications for issue activity
+//!   export               — Issue export to CSV/ZIP and upload to S3
+//!   scheduled            — Periodic tasks: auto-archiving and auto-closing of issues
+//!   cleanup              — Periodic cleanup of logs, versions and soft-deletes
+//!   email_notification   — Sending emails grouped by receiver every 5 min
+//!   instance_traces      — Instance telemetry every 6 h
+//!   cron                 — Tokio scheduler that replaces Celery beat
+//!   webhook_delivery     — Outgoing webhook delivery with HMAC-SHA256 signature
 
 pub mod cleanup;
 pub mod cron;

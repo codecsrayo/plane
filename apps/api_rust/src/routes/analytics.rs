@@ -1,9 +1,9 @@
 // src/routes/analytics.rs
-//! Endpoints de analytics del workspace.
+//! Workspace analytics endpoints.
 //!
-//! Equivalente a `plane/app/views/analytic/` en Django.
+//! Equivalent to `plane/app/views/analytic/` in Django.
 //!
-//! Rutas implementadas:
+//! Implemented routes:
 //!   GET    /api/workspaces/{slug}/analytics/
 //!   GET    /api/workspaces/{slug}/default-analytics/
 //!   GET    /api/workspaces/{slug}/project-stats/
@@ -47,7 +47,7 @@ use crate::{
     AppState,
 };
 
-// ── Constantes de validación ──────────────────────────────────────────────────
+// ── Validation constants ──────────────────────────────────────────────────
 
 const VALID_X_AXIS: &[&str] = &[
     "state_id",
@@ -103,7 +103,7 @@ pub struct AnalyticsQuery {
     pub x_axis: Option<String>,
     pub y_axis: Option<String>,
     pub segment: Option<String>,
-    /// IDs de proyectos separados por coma para filtrar.
+    /// Comma-separated project IDs to filter.
     pub project_ids: Option<String>,
 }
 
@@ -141,7 +141,7 @@ fn analytic_view_to_response(v: &analytic_views::Model) -> AnalyticViewResponse 
 
 /// GET /api/workspaces/{slug}/analytic-view/
 ///
-/// Lista las vistas analíticas guardadas del workspace. Solo admins.
+/// Lists saved analytic views for the workspace. Admins only.
 #[utoipa::path(
     get,
     path = "/workspaces/{slug}/analytic-view/",
@@ -350,8 +350,8 @@ pub async fn delete_analytic_view(
 
 /// GET /api/workspaces/{slug}/saved-analytic-view/{analytic_id}/
 ///
-/// Devuelve la configuración de una vista analítica guardada.
-/// La distribución real se computará en el cliente usando los parámetros de `query_dict`.
+/// Returns the configuration for a saved analytic view.
+/// The actual distribution will be computed on the client using `query_dict` parameters.
 #[utoipa::path(
     get,
     path = "/workspaces/{slug}/saved-analytic-view/{analytic_id}/",
@@ -372,7 +372,7 @@ pub async fn get_saved_analytic_view(
     guard: WorkspaceMemberGuard,
     Path((_slug, analytic_id)): Path<(String, Uuid)>,
 ) -> Result<impl IntoResponse, AppError> {
-    // Member o superior puede acceder
+    // Member or higher can access
     if guard.member.role < ROLE_MEMBER {
         return Err(AppError::Forbidden);
     }
@@ -385,7 +385,7 @@ pub async fn get_saved_analytic_view(
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
-    // Devuelve la config; el cliente usa query_dict para construir la distribución
+    // Return config; client uses query_dict to build distribution
     Ok(Json(analytic_view_to_response(&view)))
 }
 
@@ -393,7 +393,7 @@ pub async fn get_saved_analytic_view(
 
 /// POST /api/workspaces/{slug}/export-analytics/
 ///
-/// Encola una tarea de exportación. El resultado se envía por email.
+/// Enqueues an export task. Result is sent via email.
 #[utoipa::path(
     post,
     path = "/workspaces/{slug}/export-analytics/",
@@ -439,14 +439,14 @@ pub async fn export_analytics(
 
 // ── Default Analytics ─────────────────────────────────────────────────────────
 
-/// Fila de resultado para conteo por grupo de estado.
+/// Result row for count by state group.
 #[derive(Debug, FromQueryResult, Serialize)]
 struct StateGroupCount {
     state_group: String,
     state_count: i64,
 }
 
-/// Fila de resultado para conteo mensual de issues completados.
+/// Result row for monthly count of completed issues.
 #[derive(Debug, FromQueryResult, Serialize)]
 struct MonthCount {
     month: i32,
@@ -455,8 +455,8 @@ struct MonthCount {
 
 /// GET /api/workspaces/{slug}/default-analytics/
 ///
-/// Retorna métricas agregadas del workspace: clasificación por estado,
-/// issues completados por mes, usuarios más activos, etc.
+/// Returns aggregate workspace metrics: state classification,
+/// completed issues by month, most active users, etc.
 #[utoipa::path(
     get,
     path = "/workspaces/{slug}/default-analytics/",
@@ -479,7 +479,7 @@ pub async fn default_analytics(
     let ws_id = guard.workspace.id;
     let db = &state.db;
 
-    // ── Total de issues activos ───────────────────────────────────────────────
+    // ── Total active issues ───────────────────────────────────────────────
     let total_sql = format!(
         "SELECT COUNT(*) as cnt
          FROM issues i
@@ -499,7 +499,7 @@ pub async fn default_analytics(
         .and_then(|r| r.try_get::<i64>("", "cnt").ok())
         .unwrap_or(0);
 
-    // ── Issues clasificados por state group ───────────────────────────────────
+    // ── Issues classified by state group ───────────────────────────────────
     let classified_sql = format!(
         "SELECT s.group AS state_group, COUNT(i.id) AS state_count
          FROM issues i
@@ -558,7 +558,7 @@ pub async fn default_analytics(
     .await
     .map_err(AppError::Database)?;
 
-    // ── Issues completados por mes (año actual) ───────────────────────────────
+    // ── Completed issues by month (current year) ───────────────────────────────
     let current_year = Utc::now().year();
     let month_sql = format!(
         "SELECT EXTRACT(MONTH FROM i.completed_at)::int AS month, COUNT(*) AS count
@@ -578,7 +578,7 @@ pub async fn default_analytics(
     .await
     .map_err(AppError::Database)?;
 
-    // ── Top 5 creadores de issues ─────────────────────────────────────────────
+    // ── Top 5 issue creators ─────────────────────────────────────────────
     let creators_sql = format!(
         "SELECT u.id, u.first_name, u.last_name, u.display_name, u.avatar,
                 COUNT(i.id) AS count
@@ -613,7 +613,7 @@ pub async fn default_analytics(
         })
         .collect();
 
-    // ── Top usuarios que cerraron más issues ──────────────────────────────────
+    // ── Top users who closed most issues ──────────────────────────────────
     let closed_sql = format!(
         "SELECT u.id, u.first_name, u.last_name, u.display_name, u.avatar,
                 COUNT(i.id) AS count
@@ -664,7 +664,7 @@ pub async fn default_analytics(
 
 /// GET /api/workspaces/{slug}/project-stats/
 ///
-/// Retorna estadísticas por proyecto: total de issues, completados, miembros, ciclos y módulos.
+/// Returns project statistics: total issues, completed, members, cycles and modules.
 #[utoipa::path(
     get,
     path = "/workspaces/{slug}/project-stats/",
@@ -708,7 +708,7 @@ pub async fn project_stats(
         requested
     };
 
-    // Construir filtro de project_ids
+    // Build project_id filter
     let project_id_filter = if let Some(ref ids) = params.project_ids {
         let quoted: Vec<String> = ids
             .split(',')
@@ -800,12 +800,12 @@ pub async fn project_stats(
     Ok(Json(result))
 }
 
-// ── Analytics (distribución por eje X/Y) ─────────────────────────────────────
+// ── Analytics (distribution by X/Y axis) ─────────────────────────────────────
 
 /// GET /api/workspaces/{slug}/analytics/
 ///
-/// Retorna la distribución de issues agrupada por x_axis y opcionalmente segmentada.
-/// Parámetros requeridos: `x_axis`, `y_axis`.
+/// Returns issue distribution grouped by x_axis and optionally segmented.
+/// Required parameters: `x_axis`, `y_axis`.
 #[utoipa::path(
     get,
     path = "/workspaces/{slug}/analytics/",
@@ -852,8 +852,8 @@ pub async fn workspace_analytics(
     let ws_id = guard.workspace.id;
     let db = &state.db;
 
-    // Parsear y validar project_ids para evitar inyección SQL en raw SQL.
-    // Se aceptan únicamente UUIDs válidos; cualquier valor malformado produce 400.
+    // Parse and validate project_ids to prevent SQL injection in raw SQL.
+    // Only valid UUIDs are accepted; any malformed value produces 400.
     let project_id_filter = match params.project_ids.as_deref() {
         Some(raw) if !raw.is_empty() => {
             let ids: Result<Vec<Uuid>, _> = raw
@@ -879,7 +879,7 @@ pub async fn workspace_analytics(
         _ => String::new(),
     };
 
-    // Construir SELECT y GROUP BY según x_axis
+    // Build SELECT and GROUP BY according to x_axis
     let (x_col, x_join) = axis_to_sql_col(&x_axis);
     let y_col = if y_axis == "estimate" {
         "COALESCE(SUM(ep.value::numeric), 0)".to_string()
@@ -933,7 +933,7 @@ pub async fn workspace_analytics(
         })
         .collect();
 
-    // Total issues en el workspace (aplica el mismo filtro de proyectos)
+    // Total issues in workspace (applies same project filter)
     let total_sql = format!(
         "SELECT COUNT(*) AS cnt FROM issues i
          WHERE i.workspace_id = '{ws_id}'
@@ -959,7 +959,7 @@ pub async fn workspace_analytics(
     })))
 }
 
-/// Mapea un campo de eje X de la API Django a columna SQL y JOIN necesario.
+/// Maps a Django API X-axis field to SQL column and required JOIN.
 fn axis_to_sql_col(axis: &str) -> (String, String) {
     match axis {
         "state_id" => ("i.state_id::text".into(), String::new()),
@@ -1026,8 +1026,8 @@ fn chart_period_range(date_filter: Option<&str>) -> Option<(chrono::NaiveDate, c
     }
 }
 
-/// Valida y construye el filtro SQL de project_ids a partir de una cadena separada por comas.
-/// Devuelve Err si algún valor no es UUID válido (prevención de inyección SQL).
+/// Validates and builds SQL filter for project_ids from a comma-separated string.
+/// Returns Err if any value is not a valid UUID (prevention of SQL injection).
 fn project_ids_filter(raw: Option<&str>) -> Result<String, AppError> {
     match raw {
         Some(s) if !s.trim().is_empty() => {
@@ -1044,7 +1044,7 @@ fn project_ids_filter(raw: Option<&str>) -> Result<String, AppError> {
     }
 }
 
-/// Filtro base de workspace para issues: considera solo proyectos donde el usuario es miembro activo.
+/// Base workspace filter for issues: only considers projects where user is an active member.
 fn base_issue_filter(ws_id: Uuid, user_id: Uuid) -> String {
     format!(
         "i.workspace_id = '{ws_id}'
@@ -1060,7 +1060,7 @@ fn base_issue_filter(ws_id: Uuid, user_id: Uuid) -> String {
     )
 }
 
-// ── Query structs para advance analytics ─────────────────────────────────────
+// ── Query structs for advance analytics ─────────────────────────────────────
 
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct AdvanceAnalyticsQuery {
@@ -1091,7 +1091,7 @@ pub struct AdvanceAnalyticsChartQuery {
 
 /// GET /api/workspaces/{slug}/advance-analytics/
 ///
-/// Métricas agregadas del workspace. `tab=overview` (default) o `tab=work-items`.
+/// Aggregate workspace metrics. `tab=overview` (default) or `tab=work-items`.
 #[utoipa::path(
     get,
     path = "/workspaces/{slug}/advance-analytics/",
@@ -1125,11 +1125,11 @@ pub async fn advance_analytics(
     let tab = params.tab.as_deref().unwrap_or("overview");
     let date_filter = params.date_filter.as_deref();
 
-    // Validar y construir filtro de project_ids
+    // Validate and build project_ids filter
     let raw_project_ids = params.project_ids.as_deref();
     let project_id_filter = project_ids_filter(raw_project_ids)?;
 
-    // Cláusula de fecha sobre created_at
+    // Date clause on created_at
     let date_clause_created = analytics_date_clause(date_filter, "i.created_at");
 
     match tab {
@@ -1137,7 +1137,7 @@ pub async fn advance_analytics(
             let base_filter = base_issue_filter(ws_id, user_id);
 
             // Total users / admins / members / guests
-            // Si se filtra por project_ids usamos project_members, si no workspace_members
+            // If project_ids is filtered we use project_members, else workspace_members
             let (total_users, total_admins, total_members, total_guests) =
                 if let Some(raw) = raw_project_ids.filter(|s| !s.trim().is_empty()) {
                     let ids: Result<Vec<Uuid>, _> =
@@ -1254,7 +1254,7 @@ pub async fn advance_analytics(
                     (total, admins, mems, guests)
                 };
 
-            // Total projects accesibles por el usuario
+            // Total projects accessible by user
             let total_projects = {
                 let pid_filter_proj = match raw_project_ids.filter(|s| !s.trim().is_empty()) {
                     Some(raw) => {
@@ -1311,7 +1311,7 @@ pub async fn advance_analytics(
                     .and_then(|r| r.try_get::<i64>("", "cnt").ok()).unwrap_or(0)
             };
 
-            // Total intake (issues con intake_issues relacionados)
+            // Total intake (issues with related intake_issues)
             let total_intake = {
                 let sql = format!(
                     "SELECT COUNT(*) AS cnt FROM issues i
@@ -1383,7 +1383,7 @@ pub async fn advance_analytics(
 
 /// GET /api/workspaces/{slug}/advance-analytics-stats/
 ///
-/// Estadísticas por proyecto desagregadas por estado. `type=work-items` (default).
+/// Project stats broken down by state group. `type=work-items` (default).
 #[utoipa::path(
     get,
     path = "/workspaces/{slug}/advance-analytics-stats/",
@@ -1467,7 +1467,7 @@ pub async fn advance_analytics_stats(
 
 /// GET /api/workspaces/{slug}/advance-analytics-charts/
 ///
-/// Datos para gráficas de analytics avanzado.
+/// Data for advanced analytics charts.
 /// `type=projects` (default) | `type=work-items` | `type=custom-work-items`
 #[utoipa::path(
     get,
@@ -1509,7 +1509,7 @@ pub async fn advance_analytics_charts(
 
     match chart_type {
         "projects" => {
-            // Conteo de entidades por tipo en el workspace
+            // Count of entities by type in workspace
 
             let work_items: i64 = {
                 let sql = format!(
@@ -1622,7 +1622,7 @@ pub async fn advance_analytics_charts(
         }
 
         "work-items" => {
-            // Gráfica mensual de issues creados vs completados desde el inicio del workspace
+            // Monthly chart of created vs completed issues since workspace inception
             let workspace_sql = format!(
                 "SELECT created_at FROM workspaces WHERE id = '{ws_id}'",
             );
@@ -1687,7 +1687,7 @@ pub async fn advance_analytics_charts(
                     "created_issues": created,
                     "completed_issues": completed,
                 }));
-                // Avanzar al siguiente mes
+                // Advance to next month
                 if current.month() == 12 {
                     current = current.with_year(current.year() + 1).unwrap().with_month(1).unwrap();
                 } else {
@@ -1751,21 +1751,21 @@ pub async fn advance_analytics_charts(
     }
 }
 
-// ── Query structs para project advance analytics ─────────────────────────────
+// ── Query structs for project advance analytics ─────────────────────────────
 
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct ProjectAdvanceAnalyticsQuery {
-    /// Sub-scope opcional por ciclo.
+    /// Optional cycle sub-scope.
     pub cycle_id: Option<Uuid>,
-    /// Sub-scope opcional por módulo.
+    /// Optional module sub-scope.
     pub module_id: Option<Uuid>,
-    /// Rango temporal: yesterday | last_7_days | last_30_days | last_3_months.
+    /// Time range: yesterday | last_7_days | last_30_days | last_3_months.
     pub date_filter: Option<String>,
-    /// Ignorado — mantenido por paridad con Django para no romper deserialización.
-    /// El binding de project viene del path, no del query (evita IDOR).
+    /// Ignored — kept for parity with Django to avoid breaking deserialization.
+    /// Project binding comes from path, not query (prevents IDOR).
     #[allow(dead_code)]
     pub tab: Option<String>,
-    /// Ignorado — el project scope viene del path.
+    /// Ignored — project scope comes from path.
     #[allow(dead_code)]
     pub project_ids: Option<String>,
 }
@@ -1774,17 +1774,17 @@ pub struct ProjectAdvanceAnalyticsQuery {
 
 /// GET /api/workspaces/{slug}/projects/{project_id}/advance-analytics/
 ///
-/// Conteos agregados de work-items a nivel proyecto. Mirror exacto de
+/// Aggregate work-item counts at project level. Exact mirror of
 /// `ProjectAdvanceAnalyticsEndpoint.get` + `get_work_items_stats`
 /// (`apps/api/plane/app/views/analytic/project_analytics.py`).
 ///
-/// A diferencia del handler workspace-level, no hay branching por `tab`:
-/// Django tampoco lo tiene — siempre retorna los 5 buckets de work-items.
-/// Los query params `tab` y `project_ids` se aceptan (para no romper
-/// deserialización si el frontend los envía) pero se ignoran: el binding
-/// del proyecto viene del path, garantizado por `ProjectMemberGuard`.
+/// Unlike workspace-level handler, there is no branching by `tab`:
+/// Django does not have it either — always returns the 5 work-item buckets.
+/// `tab` and `project_ids` query params are accepted (not to break
+/// deserialization if frontend sends them) but ignored: project binding
+/// comes from path, guaranteed by `ProjectMemberGuard`.
 ///
-/// Permisos: ADMIN o MEMBER (equivalente a `@allow_permission([ADMIN, MEMBER])`).
+/// Permissions: ADMIN or MEMBER (equivalent to `@allow_permission([ADMIN, MEMBER])`).
 #[utoipa::path(
     get,
     path = "/workspaces/{slug}/projects/{project_id}/advance-analytics/",
@@ -1793,14 +1793,14 @@ pub struct ProjectAdvanceAnalyticsQuery {
     params(
         ("slug" = String, Path, description = "Workspace slug"),
         ("project_id" = Uuid, Path, description = "Project UUID"),
-        ("cycle_id" = Option<Uuid>, Query, description = "Filtrar por ciclo"),
-        ("module_id" = Option<Uuid>, Query, description = "Filtrar por módulo"),
-        ("date_filter" = Option<String>, Query, description = "Rango temporal"),
+        ("cycle_id" = Option<Uuid>, Query, description = "Filter by cycle"),
+        ("module_id" = Option<Uuid>, Query, description = "Filter by module"),
+        ("date_filter" = Option<String>, Query, description = "Time range"),
     ),
     responses(
-        (status = 200, description = "Conteos de work-items por grupo de estado"),
-        (status = 403, description = "No autorizado"),
-        (status = 404, description = "Workspace o proyecto no encontrado"),
+        (status = 200, description = "Work-item counts by state group"),
+        (status = 403, description = "Unauthorized"),
+        (status = 404, description = "Workspace or project not found"),
     )
 )]
 pub async fn project_advance_analytics(
@@ -1821,10 +1821,10 @@ pub async fn project_advance_analytics(
     let date_clause = analytics_date_clause(date_filter, "i.created_at");
     let base_filter = base_issue_filter(ws_id, user_id);
 
-    // Si hay sub-scope por cycle o module, validamos que la relación pertenezca
-    // al mismo workspace+project (defensa en profundidad además del guard).
-    // Usamos JOIN contra la tabla de relación en vez de `WHERE issue_id IN (...)`
-    // para evitar una subconsulta adicional y dejar todo en un solo plan.
+    // If there is a cycle or module sub-scope, validate relationship belongs
+    // to the same workspace+project (defense in depth besides guard).
+    // Use JOIN against relationship table instead of `WHERE issue_id IN (...)`
+    // to avoid extra subquery and keep everything in one plan.
     let (scope_join, scope_where) = if let Some(cid) = params.cycle_id {
         (
             format!(
@@ -1890,20 +1890,20 @@ pub async fn project_advance_analytics(
     })))
 }
 
-// ── Query struct para project advance analytics stats ────────────────────────
+// ── Query struct for project advance analytics stats ────────────────────────
 
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct ProjectAdvanceAnalyticsStatsQuery {
-    /// Solo se soporta "work-items" (default). Mirror de Django: cualquier otro
-    /// valor retorna 400.
+    /// Only "work-items" is supported (default). Django mirror: any other
+    /// value returns 400.
     #[serde(rename = "type")]
     pub stat_type: Option<String>,
     pub cycle_id: Option<Uuid>,
     pub module_id: Option<Uuid>,
-    /// Ignorado — mantenido por paridad con Django para no romper deserialización.
+    /// Ignored — kept for parity with Django not to break deserialization.
     #[allow(dead_code)]
     pub date_filter: Option<String>,
-    /// Ignorado — el project scope viene del path.
+    /// Ignored — project scope comes from path.
     #[allow(dead_code)]
     pub project_ids: Option<String>,
 }
@@ -1912,16 +1912,16 @@ pub struct ProjectAdvanceAnalyticsStatsQuery {
 
 /// GET /api/workspaces/{slug}/projects/{project_id}/advance-analytics-stats/
 ///
-/// Stats de work-items agrupados por assignee. Mirror de
+/// Work-item stats grouped by assignee. Mirror of
 /// `ProjectAdvanceAnalyticsStatsEndpoint.get_work_items_stats`.
 ///
-/// Cada fila corresponde a un assignee (o a un bucket con valores `NULL`
-/// para issues sin assignees, equivalente al LEFT OUTER JOIN implícito de
-/// Django sobre el m2m `assignees`). Issues con múltiples assignees aparecen
-/// en múltiples filas — los conteos son `COUNT(DISTINCT i.id)` para no
-/// sobrecontar dentro de cada bucket.
+/// Each row corresponds to an assignee (or a bucket with `NULL` values
+/// for issues without assignees, equivalent to implicit LEFT OUTER JOIN
+/// of Django over `assignees` m2m). Issues with multiple assignees appear
+/// in multiple rows — counts are `COUNT(DISTINCT i.id)` so as not to
+/// overcount within each bucket.
 ///
-/// Permisos: ADMIN o MEMBER.
+/// Permissions: ADMIN or MEMBER.
 #[utoipa::path(
     get,
     path = "/workspaces/{slug}/projects/{project_id}/advance-analytics-stats/",
@@ -1930,15 +1930,15 @@ pub struct ProjectAdvanceAnalyticsStatsQuery {
     params(
         ("slug" = String, Path, description = "Workspace slug"),
         ("project_id" = Uuid, Path, description = "Project UUID"),
-        ("type" = Option<String>, Query, description = "Solo 'work-items' soportado"),
-        ("cycle_id" = Option<Uuid>, Query, description = "Filtrar por ciclo"),
-        ("module_id" = Option<Uuid>, Query, description = "Filtrar por módulo"),
+        ("type" = Option<String>, Query, description = "Only 'work-items' supported"),
+        ("cycle_id" = Option<Uuid>, Query, description = "Filter by cycle"),
+        ("module_id" = Option<Uuid>, Query, description = "Filter by module"),
     ),
     responses(
-        (status = 200, description = "Array de stats por assignee"),
-        (status = 400, description = "type inválido"),
-        (status = 403, description = "No autorizado"),
-        (status = 404, description = "Workspace o proyecto no encontrado"),
+        (status = 200, description = "Array of stats per assignee"),
+        (status = 400, description = "invalid type"),
+        (status = 403, description = "Unauthorized"),
+        (status = 404, description = "Workspace or project not found"),
     )
 )]
 pub async fn project_advance_analytics_stats(
@@ -1962,7 +1962,7 @@ pub async fn project_advance_analytics_stats(
 
     let base_filter = base_issue_filter(ws_id, user_id);
 
-    // Sub-scope por cycle/module via JOIN (mismo patrón que el endpoint hermano).
+    // Cycle/module sub-scope via JOIN (same pattern as sibling endpoint).
     let (scope_join, scope_where) = if let Some(cid) = params.cycle_id {
         (
             format!(
@@ -1989,9 +1989,9 @@ pub async fn project_advance_analytics_stats(
         (String::new(), format!("AND i.project_id = '{project_id}'"))
     };
 
-    // LEFT JOIN sobre assignees — Django hace equivalent via `.values(...)`
-    // sobre un m2m, lo que produce una fila por par (issue, assignee) y
-    // preserva issues sin assignees como (NULL, NULL, NULL).
+    // LEFT JOIN on assignees — Django does equivalent via `.values(...)`
+    // on a m2m, which produces one row per (issue, assignee) pair and
+    // preserves issues without assignees as (NULL, NULL, NULL).
     let sql = format!(
         "SELECT
            u.display_name                                          AS display_name,
@@ -2042,16 +2042,16 @@ pub async fn project_advance_analytics_stats(
     Ok(Json(serde_json::Value::Array(result)))
 }
 
-// ── Query struct para project advance analytics charts ───────────────────────
+// ── Query struct for project advance analytics charts ───────────────────────
 
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct ProjectAdvanceAnalyticsChartQuery {
-    /// "work-items" | "custom-work-items". Otros valores → 400.
+    /// "work-items" | "custom-work-items". Other values → 400.
     ///
-    /// Nota de paridad: Django usa default "projects" pero no lo maneja en
-    /// ningún branch, por lo que cualquier request sin `type` explícito cae
-    /// en el `return Response("Invalid type", 400)`. Replicamos ese mismo
-    /// comportamiento — si el frontend no envía `type`, recibe 400.
+    /// Parity note: Django uses "projects" default but doesn't handle it in
+    /// any branch, so any request without explicit `type` falls into the
+    /// `return Response("Invalid type", 400)`. We replicate this same
+    /// behavior — if frontend doesn't send `type`, it receives 400.
     #[serde(rename = "type")]
     pub chart_type: Option<String>,
     pub cycle_id: Option<Uuid>,
@@ -2059,7 +2059,7 @@ pub struct ProjectAdvanceAnalyticsChartQuery {
     pub x_axis: Option<String>,
     pub group_by: Option<String>,
     pub date_filter: Option<String>,
-    /// Ignorado — el project scope viene del path.
+    /// Ignored — project scope comes from path.
     #[allow(dead_code)]
     pub project_ids: Option<String>,
 }
@@ -2068,21 +2068,21 @@ pub struct ProjectAdvanceAnalyticsChartQuery {
 
 /// GET /api/workspaces/{slug}/projects/{project_id}/advance-analytics-charts/
 ///
-/// Datos para dos tipos de gráfica a nivel proyecto:
+/// Data for two chart types at project level:
 ///
-/// - `type=custom-work-items`: distribución sobre un eje (x_axis) con validación
-///   contra VALID_X_AXIS. Mirror de la rama `build_analytics_chart(...)` en
-///   Django, con sub-scope opcional por cycle/module.
-/// - `type=work-items`: burndown de creados vs completados. Si hay `cycle_id`
-///   o `module_id` → stats diarios entre start_date y end_date del
-///   cycle/module; agrupados por la fecha en que el issue fue agregado al
-///   cycle/module (no por fecha de creación del issue — paridad con Django).
-///   Sin cycle/module → stats mensuales desde el primer día del mes de
-///   creación del proyecto hasta hoy, agrupados por `DATE_TRUNC('month',
+/// - `type=custom-work-items`: distribution over one axis (x_axis) with validation
+///   against VALID_X_AXIS. Mirror of `build_analytics_chart(...)` branch in
+///   Django, with optional cycle/module sub-scope.
+/// - `type=work-items`: burndown of created vs completed. If `cycle_id`
+///   or `module_id` → daily stats between cycle/module start_date and end_date;
+///   grouped by the date issue was added to cycle/module (not by issue
+///   creation date — parity with Django).
+///   Without cycle/module → monthly stats from first day of month of
+///   project creation until today, grouped by `DATE_TRUNC('month',
 ///   i.created_at)`.
 ///
-/// Permisos: ADMIN / MEMBER / GUEST (paridad con Django — este endpoint
-/// permite GUEST a diferencia del handler stats).
+/// Permissions: ADMIN / MEMBER / GUEST (parity with Django — this endpoint
+/// allows GUEST unlike the stats handler).
 #[utoipa::path(
     get,
     path = "/workspaces/{slug}/projects/{project_id}/advance-analytics-charts/",
@@ -2092,17 +2092,17 @@ pub struct ProjectAdvanceAnalyticsChartQuery {
         ("slug" = String, Path, description = "Workspace slug"),
         ("project_id" = Uuid, Path, description = "Project UUID"),
         ("type" = Option<String>, Query, description = "work-items | custom-work-items"),
-        ("cycle_id" = Option<Uuid>, Query, description = "Filtrar por ciclo"),
-        ("module_id" = Option<Uuid>, Query, description = "Filtrar por módulo"),
-        ("x_axis" = Option<String>, Query, description = "Eje X para custom-work-items"),
-        ("group_by" = Option<String>, Query, description = "Agrupación (validada pero no usada en SQL, paridad con workspace-level)"),
-        ("date_filter" = Option<String>, Query, description = "Rango temporal"),
+        ("cycle_id" = Option<Uuid>, Query, description = "Filter by cycle"),
+        ("module_id" = Option<Uuid>, Query, description = "Filter by module"),
+        ("x_axis" = Option<String>, Query, description = "X axis for custom-work-items"),
+        ("group_by" = Option<String>, Query, description = "Grouping (validated but not used in SQL, parity with workspace-level)"),
+        ("date_filter" = Option<String>, Query, description = "Time range"),
     ),
     responses(
-        (status = 200, description = "Datos de gráfica"),
-        (status = 400, description = "type inválido | x_axis inválido | group_by inválido"),
-        (status = 403, description = "No autorizado"),
-        (status = 404, description = "Workspace o proyecto no encontrado"),
+        (status = 200, description = "Chart data"),
+        (status = 400, description = "invalid type | invalid x_axis | invalid group_by"),
+        (status = 403, description = "Unauthorized"),
+        (status = 404, description = "Workspace or project not found"),
     )
 )]
 pub async fn project_advance_analytics_charts(
@@ -2140,7 +2140,7 @@ pub async fn project_advance_analytics_charts(
             let (x_col, x_join) = axis_to_sql_col(x_axis);
             let date_clause = analytics_date_clause(date_filter, "i.created_at");
 
-            // Sub-scope por cycle/module via JOIN (mismo patrón que endpoints hermanos)
+            // Cycle/module sub-scope via JOIN (same pattern as sibling endpoints)
             let (scope_join, scope_where) = if let Some(cid) = params.cycle_id {
                 (
                     format!(
@@ -2196,15 +2196,15 @@ pub async fn project_advance_analytics_charts(
         }
 
         "work-items" => {
-            // Resolvemos el rango temporal y el modo (daily vs monthly).
+            // Resolve time range and mode (daily vs monthly).
             //
-            // Paridad con Django:
+            // Django parity:
             // - cycle_id: start=cycle.start_date, end=cycle.end_date, daily
             // - module_id: start=module.start_date, end=module.target_date, daily
-            // - else: start=primer día del mes de project.created_at, end=hoy, monthly
+            // - else: start=first day of project.created_at month, end=today, monthly
             //
-            // Si falta start_date en cycle/module → retornar {data:[], schema:{}}
-            // sin query adicional.
+            // If cycle/module start_date is missing → return {data:[], schema:{}}
+            // without extra query.
 
             let empty_payload = || {
                 Json(serde_json::json!({
@@ -2227,7 +2227,7 @@ pub async fn project_advance_analytics_charts(
             }
 
             let mode = if let Some(cid) = params.cycle_id {
-                // Fetch cycle dates — filtrado por workspace y project (defensa extra).
+                // Fetch cycle dates — filtered by workspace and project (extra defense).
                 let sql = format!(
                     "SELECT DATE(start_date) AS sd, DATE(end_date) AS ed
                      FROM cycles
@@ -2270,11 +2270,11 @@ pub async fn project_advance_analytics_charts(
                     None => return Ok(empty_payload()),
                 }
             } else {
-                // Monthly: start = primer día del mes de project.created_at
+                // Monthly: start = first day of project.created_at month
                 let project_created = guard.project.created_at.date_naive();
                 let start = project_created.with_day(1).unwrap_or(project_created);
 
-                // Si date_filter está presente, sobrescribe el rango (paridad Django).
+                // If date_filter is present, it overrides the range (Django parity).
                 let (start, end) = if let Some((s, e)) = chart_period_range(date_filter) {
                     (s, e)
                 } else {
@@ -2286,7 +2286,7 @@ pub async fn project_advance_analytics_charts(
 
             match mode {
                 Mode::Daily { start, end, is_cycle, scope_id } => {
-                    // Agrupado por fecha en que el issue fue agregado al cycle/module.
+                    // Grouped by date issue was added to cycle/module.
                     let (join_table, alias, scope_col) = if is_cycle {
                         ("cycle_issues", "ci", "cycle_id")
                     } else {
@@ -2325,7 +2325,7 @@ pub async fn project_advance_analytics_charts(
                         })
                         .collect();
 
-                    // Fill gaps día por día entre start y end (inclusive).
+                    // Fill gaps day by day between start and end (inclusive).
                     let mut data = Vec::new();
                     let mut current = start;
                     while current <= end {
@@ -2351,7 +2351,7 @@ pub async fn project_advance_analytics_charts(
                 }
 
                 Mode::Monthly { start, end } => {
-                    // Stats mensuales por i.created_at, filtrado al project.
+                    // Monthly stats by i.created_at, filtered to project.
                     let sql = format!(
                         "SELECT
                            DATE_TRUNC('month', i.created_at)::date AS month,
@@ -2382,8 +2382,8 @@ pub async fn project_advance_analytics_charts(
                         })
                         .collect();
 
-                    // Fill gaps mes por mes. last_month = primer día del mes actual
-                    // (paridad con Django que siempre incluye hasta el mes actual).
+                    // Fill gaps month by month. last_month = first day of current month
+                    // (parity with Django which always includes up to current month).
                     let mut data = Vec::new();
                     let mut current = start.with_day(1).unwrap_or(start);
                     let today = chrono::Utc::now().date_naive();
@@ -2399,7 +2399,7 @@ pub async fn project_advance_analytics_charts(
                             "completed_issues": completed,
                             "created_issues": created,
                         }));
-                        // Avanzar al siguiente mes
+                        // Advance to next month
                         current = if current.month() == 12 {
                             current
                                 .with_year(current.year() + 1)

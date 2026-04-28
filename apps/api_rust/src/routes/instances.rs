@@ -1,5 +1,5 @@
 // src/routes/instances.rs
-//! Endpoints de Instance — espejo completo de `plane/license/api/views/`.
+//! Instance endpoints — complete mirror of `plane/license/api/views/`.
 
 use axum::{
     extract::{Path, Query, State},
@@ -26,7 +26,7 @@ use crate::{
     AppState,
 };
 
-// ─── Allowlist de claves configurables via PATCH /configurations/ ─────────────
+// ─── Allowlist of configurable keys via PATCH /configurations/ ─────────────
 
 struct ConfigVar {
     is_encrypted: bool,

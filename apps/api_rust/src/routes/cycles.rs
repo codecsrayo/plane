@@ -1,7 +1,7 @@
 // src/routes/cycles.rs
-//! Endpoints de Cycles.
+//! Cycles endpoints.
 //!
-//! Endpoints implementados:
+//! Implemented endpoints:
 //!   GET    /api/workspaces/{slug}/projects/{project_id}/cycles/
 //!   POST   /api/workspaces/{slug}/projects/{project_id}/cycles/
 //!   GET    /api/workspaces/{slug}/projects/{project_id}/cycles/{pk}/
@@ -83,7 +83,7 @@ pub struct CycleResponse {
 
 impl CycleResponse {
     pub fn from_model(m: cycles::Model) -> Self {
-        // Status derivado de fechas — refleja la lógica de Django CycleViewSet
+        // Status derived from dates — reflects Django CycleViewSet logic
         let now = chrono::Utc::now();
         let status = match (m.start_date, m.end_date) {
             (None, _) | (_, None) => "draft",
@@ -185,7 +185,7 @@ struct CycleCountRow {
 
 /// Batch-load TProgressSnapshot counts (total/completed/cancelled/started/
 /// unstarted/backlog) for a set of cycles, using a single SQL query.
-/// Mirror de la anotación Django `CycleIssueGroupedCount`.
+/// Mirror of Django `CycleIssueGroupedCount` annotation.
 async fn enrich_cycle_counts(
     db: &sea_orm::DatabaseConnection,
     mut cycles: Vec<CycleResponse>,
@@ -273,7 +273,7 @@ async fn enrich_cycle_counts(
         ("project_id" = Uuid, Path, description = "Project ID"),
     ),
     responses(
-        (status = 200, description = "Lista de ciclos"),
+        (status = 200, description = "Cycles list"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -327,8 +327,8 @@ pub async fn list_cycles(
         ("project_id" = Uuid, Path, description = "Project ID"),
     ),
     responses(
-        (status = 201, description = "Ciclo creado"),
-        (status = 400, description = "Error de validación"),
+        (status = 201, description = "Cycle created"),
+        (status = 400, description = "Validation error"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -340,22 +340,22 @@ pub async fn create_cycle(
     require_role(guard.project_member.role, guard.workspace_member.role, ROLE_MEMBER)?;
 
     if body.name.trim().is_empty() {
-        return Err(AppError::BadRequest("name es requerido".into()));
+        return Err(AppError::BadRequest("name is required".into()));
     }
 
-    // Validar que start_date < end_date si ambos están presentes
+    // Validate start_date < end_date if both are present
     if let (Some(start), Some(end)) = (body.start_date, body.end_date) {
         if start >= end {
             return Err(AppError::BadRequest(
-                "start_date debe ser anterior a end_date".into(),
+                "start_date must be before end_date".into(),
             ));
         }
     }
 
-    // Paridad con `CycleWriteSerializer.validate` (Django): cuando AMBAS
-    // fechas están presentes, se convierten a UTC usando la zona horaria
-    // del proyecto (start → 00:00:01 local, end → 23:59:00 local). Si solo
-    // viene una, Django NO aplica la conversión — replicamos esa quirk.
+    // Parity with Django `CycleWriteSerializer.validate`: when BOTH dates are
+    // present, they are converted to UTC using the project's timezone
+    // (start → 00:00:01 local, end → 23:59:00 local). If only one is
+    // provided, Django DOES NOT apply conversion — we replicate that quirk.
     let (start_date, end_date) = match (body.start_date, body.end_date) {
         (Some(s), Some(e)) => {
             let now_utc = chrono::Utc::now();
@@ -378,8 +378,8 @@ pub async fn create_cycle(
         other => other,
     };
 
-    // created_at / updated_at explícitos: cycles::ActiveModelBehavior está
-    // vacío y la columna es NOT NULL sin DEFAULT. Mismo patrón que
+    // Explicit created_at / updated_at: cycles::ActiveModelBehavior is
+    // empty and the column is NOT NULL without DEFAULT. Same pattern as
     // labels.rs / issues.rs.
     let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
 
@@ -424,8 +424,8 @@ pub async fn create_cycle(
         ("pk" = Uuid, Path, description = "Cycle ID"),
     ),
     responses(
-        (status = 200, description = "Detalle del ciclo"),
-        (status = 404, description = "No encontrado"),
+        (status = 200, description = "Cycle details"),
+        (status = 404, description = "Not found"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -471,8 +471,8 @@ pub async fn get_cycle(
         ("pk" = Uuid, Path, description = "Cycle ID"),
     ),
     responses(
-        (status = 200, description = "Ciclo actualizado"),
-        (status = 404, description = "No encontrado"),
+        (status = 200, description = "Cycle updated"),
+        (status = 404, description = "Not found"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -500,12 +500,12 @@ pub async fn update_cycle(
         am.description = Set(desc);
     }
 
-    // Paridad con `CycleWriteSerializer.validate` (Django): la conversión a
-    // UTC tz-aware solo aplica cuando AMBOS dates están en el payload de
-    // este PATCH. Si viene solo uno, se persiste tal cual — mismo quirk
-    // que Django, donde `validate()` opera sobre el `data` parcial y no
-    // sobre la instancia mergeada. Sirve para que un PATCH que toque solo
-    // `name`/`description` no recalcule las fechas existentes.
+    // Parity with Django `CycleWriteSerializer.validate`: UTC tz-aware conversion
+    // only applies when BOTH dates are in the PATCH payload. If only one is
+    // provided, it's persisted as-is — same quirk as Django, where
+    // `validate()` operates on partial `data` and not on the merged instance.
+    // This allows a PATCH touching only `name`/`description` not to recalculate
+    // existing dates.
     match (body.start_date, body.end_date) {
         (Some(s), Some(e)) => {
             let now_utc = chrono::Utc::now();
@@ -555,8 +555,8 @@ pub async fn update_cycle(
         ("pk" = Uuid, Path, description = "Cycle ID"),
     ),
     responses(
-        (status = 204, description = "Eliminado"),
-        (status = 404, description = "No encontrado"),
+        (status = 204, description = "Deleted"),
+        (status = 404, description = "Not found"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -594,7 +594,7 @@ pub async fn delete_cycle(
         ("cycle_id" = Uuid, Path, description = "Cycle ID"),
     ),
     responses(
-        (status = 200, description = "Issues del ciclo"),
+        (status = 200, description = "Cycle issues"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -605,7 +605,7 @@ pub async fn list_cycle_issues(
 ) -> Result<Json<Vec<CycleIssueResponse>>, AppError> {
     require_role(guard.project_member.role, guard.workspace_member.role, ROLE_GUEST)?;
 
-    // Verificar que el ciclo pertenece al proyecto
+    // Verify cycle belongs to project
     let _ = cycles::Entity::find_by_id(cycle_id)
         .active()
         .filter(cycles::Column::ProjectId.eq(guard.project.id))
@@ -647,8 +647,8 @@ pub async fn list_cycle_issues(
         ("cycle_id" = Uuid, Path, description = "Cycle ID"),
     ),
     responses(
-        (status = 200, description = "Issues agregados al ciclo"),
-        (status = 400, description = "Error de validación"),
+        (status = 200, description = "Issues added to cycle"),
+        (status = 400, description = "Validation error"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -674,7 +674,7 @@ pub async fn add_issues_to_cycle(
     let mut created = Vec::new();
 
     for issue_id in body.issues {
-        // Verificar que el issue existe y pertenece al proyecto
+        // Verify issue exists and belongs to project
         let issue_exists = issues::Entity::find_by_id(issue_id)
             .active()
             .filter(issues::Column::ProjectId.eq(project_id))
@@ -686,7 +686,7 @@ pub async fn add_issues_to_cycle(
             continue;
         }
 
-        // Idempotente: si ya existe (incluso soft-deleted), resucitar o ignorar
+        // Idempotent: if already exists (even soft-deleted), resurrect or ignore
         let existing = cycle_issues::Entity::find()
             .filter(cycle_issues::Column::CycleId.eq(cycle_id))
             .filter(cycle_issues::Column::IssueId.eq(issue_id))
@@ -697,9 +697,9 @@ pub async fn add_issues_to_cycle(
         let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
 
         let ci = match existing {
-            Some(ci) if ci.deleted_at.is_none() => ci, // ya existe activo
+            Some(ci) if ci.deleted_at.is_none() => ci, // already exists active
             Some(ci) => {
-                // Resucitar soft-deleted
+                // Resurrect soft-deleted
                 let mut am: cycle_issues::ActiveModel = ci.into();
                 am.deleted_at = Set(None);
                 am.updated_by_id = Set(Some(user_id));
@@ -708,8 +708,8 @@ pub async fn add_issues_to_cycle(
                 am.update(&state.db).await.map_err(AppError::Database)?
             }
             None => {
-                // created_at/updated_at explícitos (cycle_issues NOT NULL sin
-                // DEFAULT; ActiveModelBehavior vacío).
+                // Explicit created_at/updated_at (cycle_issues NOT NULL without
+                // DEFAULT; ActiveModelBehavior empty).
                 cycle_issues::ActiveModel {
                     id: Set(Uuid::new_v4()),
                     cycle_id: Set(cycle_id),
@@ -754,8 +754,8 @@ pub async fn add_issues_to_cycle(
         ("issue_id" = Uuid, Path, description = "Issue ID"),
     ),
     responses(
-        (status = 204, description = "Issue removido del ciclo"),
-        (status = 404, description = "No encontrado"),
+        (status = 204, description = "Issue removed from cycle"),
+        (status = 404, description = "Not found"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -786,33 +786,33 @@ pub async fn remove_issue_from_cycle(
 // Cycle Analytics
 // ═════════════════════════════════════════════════════════════════════════════
 //
-// Mirror de `CycleAnalyticsEndpoint` en
-// apps/api/plane/app/views/cycle/base.py:786, incluyendo el helper
-// `burndown_plot` en apps/api/plane/utils/analytics_plot.py.
+// Mirror of `CycleAnalyticsEndpoint` in
+// apps/api/plane/app/views/cycle/base.py:786, including `burndown_plot` helper
+// in apps/api/plane/utils/analytics_plot.py.
 
 #[derive(Debug, Deserialize)]
 pub struct CycleAnalyticsQuery {
-    /// "issues" (default) o "points".
+    /// "issues" (default) or "points".
     #[serde(rename = "type")]
     pub analytic_type: Option<String>,
 }
 
 /// GET /api/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/analytics/
 ///
-/// Analytics del ciclo: distribución de issues por assignee y por label, más
-/// el burndown chart acumulado. Mirror exacto de `CycleAnalyticsEndpoint.get`.
+/// Cycle analytics: issue distribution by assignee and by label, plus
+/// cumulative burndown chart. Exact mirror of `CycleAnalyticsEndpoint.get`.
 ///
-/// Comportamiento:
-/// - Si el ciclo no tiene `start_date` o `end_date` → 400.
-/// - Si el ciclo tiene `progress_snapshot` no vacío → early return con los
-///   datos snapshot (el ciclo está cerrado y los issues fueron transferidos).
-/// - Si `type=points` y el proyecto no tiene estimate de tipo "points" →
-///   distribuciones vacías, chart vacío (paridad Django).
-/// - Si `type=issues` → counts de issues por assignee/label + burndown por issues.
-/// - Si `type=points` + estimate points → sum de estimate_point.value por
-///   assignee/label + burndown por puntos.
+/// Behavior:
+/// - If cycle lacks `start_date` or `end_date` → 400.
+/// - If cycle has non-empty `progress_snapshot` → early return with snapshot
+///   data (cycle is closed and issues were transferred).
+/// - If `type=points` and project does not have "points" type estimate →
+///   empty distributions, empty chart (Django parity).
+/// - If `type=issues` → issue counts by assignee/label + burndown by issues.
+/// - If `type=points` + estimate points → sum of estimate_point.value by
+///   assignee/label + burndown by points.
 ///
-/// Permisos: ADMIN / MEMBER / GUEST (paridad con Django).
+/// Permissions: ADMIN / MEMBER / GUEST (Django parity).
 #[utoipa::path(
     get,
     path = "/api/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/analytics/",
@@ -821,13 +821,13 @@ pub struct CycleAnalyticsQuery {
         ("slug" = String, Path, description = "Workspace slug"),
         ("project_id" = Uuid, Path, description = "Project ID"),
         ("cycle_id" = Uuid, Path, description = "Cycle ID"),
-        ("type" = Option<String>, Query, description = "'issues' (default) o 'points'"),
+        ("type" = Option<String>, Query, description = "'issues' (default) or 'points'"),
     ),
     responses(
-        (status = 200, description = "Analytics del ciclo"),
-        (status = 400, description = "Ciclo sin fechas"),
-        (status = 403, description = "No autorizado"),
-        (status = 404, description = "Ciclo no encontrado"),
+        (status = 200, description = "Cycle analytics"),
+        (status = 400, description = "Cycle without dates"),
+        (status = 403, description = "Unauthorized"),
+        (status = 404, description = "Cycle not found"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -837,8 +837,8 @@ pub async fn cycle_analytics(
     Path((_slug, _project_id, cycle_id)): Path<(String, Uuid, Uuid)>,
     Query(params): Query<CycleAnalyticsQuery>,
 ) -> Result<impl IntoResponse, AppError> {
-    // Permisos: GUEST+ a nivel proyecto o ADMIN a nivel workspace (Django
-    // permite GUEST). require_role además del guard = defensa en profundidad.
+    // Permissions: GUEST+ at project level or ADMIN at workspace level (Django
+    // allows GUEST). require_role besides guard = defense in depth.
     require_role(guard.project_member.role, guard.workspace_member.role, ROLE_GUEST)?;
 
     let ws_id = guard.workspace.id;
@@ -846,7 +846,7 @@ pub async fn cycle_analytics(
     let db = &state.db;
     let analytic_type = params.analytic_type.as_deref().unwrap_or("issues");
 
-    // ── 1. Fetch del ciclo (con filtros workspace+project como defensa extra) ──
+    // ── 1. Cycle fetch (with workspace+project filters as extra defense) ──
     let cycle = cycles::Entity::find_by_id(cycle_id)
         .filter(cycles::Column::WorkspaceId.eq(ws_id))
         .filter(cycles::Column::ProjectId.eq(project_id))
@@ -856,7 +856,7 @@ pub async fn cycle_analytics(
         .map_err(AppError::Database)?
         .ok_or(AppError::NotFound)?;
 
-    // ── 2. Validación de fechas (paridad Django: 400 si falta alguna) ─────────
+    // ── 2. Date validation (Django parity: 400 if any is missing) ─────────
     let (start_dt, end_dt) = match (cycle.start_date, cycle.end_date) {
         (Some(s), Some(e)) => (s, e),
         _ => {
@@ -868,11 +868,11 @@ pub async fn cycle_analytics(
     let start_date = start_dt.date_naive();
     let end_date = end_dt.date_naive();
 
-    // ── 3. Progress snapshot: si existe y es un objeto no-vacío, early return ─
+    // ── 3. Progress snapshot: if exists and non-empty object, early return ─
     //
-    // Django: `if cycle.progress_snapshot:` — truthy check sobre un dict.
-    // En Postgres la columna es NOT NULL con default `{}`, así que puede
-    // llegar como objeto vacío (falsy en Python).
+    // Django: `if cycle.progress_snapshot:` — truthy check on a dict.
+    // In Postgres column is NOT NULL with default `{}`, so it can
+    // arrive as an empty object (falsy in Python).
     if let serde_json::Value::Object(snapshot) = &cycle.progress_snapshot {
         if !snapshot.is_empty() {
             let distribution = snapshot
@@ -899,7 +899,7 @@ pub async fn cycle_analytics(
         }
     }
 
-    // ── 4. ¿El proyecto usa estimate con type="points"? ───────────────────────
+    // ── 4. Does the project use estimate with type="points"? ───────────────────────
     let estimate_type_points = {
         let sql = format!(
             "SELECT EXISTS (
@@ -921,11 +921,11 @@ pub async fn cycle_analytics(
         .unwrap_or(false)
     };
 
-    // ── 5. Fragmentos SQL reutilizables para las distribuciones ───────────────
+    // ── 5. Reusable SQL fragments for distributions ───────────────
     //
-    // El scope_join garantiza que los issues considerados pertenecen al
-    // ciclo, al workspace y al proyecto correctos. Reusado en todas las
-    // queries de distribución + burndown.
+    // scope_join ensures issues considered belong to the correct
+    // cycle, workspace, and project. Reused in all
+    // distribution + burndown queries.
     let scope_join = format!(
         "JOIN cycle_issues ci ON ci.issue_id = i.id
            AND ci.cycle_id = '{cycle_id}'
@@ -933,9 +933,9 @@ pub async fn cycle_analytics(
            AND ci.project_id = '{project_id}'
            AND ci.deleted_at IS NULL"
     );
-    // Paridad con `Issue.issue_objects` (manager): excluye draft y archived.
-    // Aquí no excluimos triage porque requiere JOIN extra con states y es
-    // extremadamente improbable que issues en triage estén en un ciclo.
+    // Parity with `Issue.issue_objects` (manager): excludes draft and archived.
+    // We don't exclude triage here as it requires an extra JOIN with states and
+    // it's extremely unlikely that triage issues are in a cycle.
     let issue_filters = format!(
         "i.deleted_at IS NULL
          AND i.archived_at IS NULL
@@ -944,14 +944,14 @@ pub async fn cycle_analytics(
          AND i.project_id = '{project_id}'"
     );
 
-    // Default vacíos (usados cuando type=points sin estimate_type_points).
+    // Default empty (used when type=points without estimate_type_points).
     let mut assignee_distribution: Vec<serde_json::Value> = Vec::new();
     let mut label_distribution: Vec<serde_json::Value> = Vec::new();
     let mut completion_chart = serde_json::json!({});
 
-    // ── 6. type=points con estimate_type=points ───────────────────────────────
+    // ── 6. type=points with estimate_type=points ───────────────────────────────
     if analytic_type == "points" && estimate_type_points {
-        // Assignee distribution: SUM(ep.value::float) por assignee.
+        // Assignee distribution: SUM(ep.value::float) by assignee.
         let sql = format!(
             "SELECT
                u.display_name                                          AS display_name,
@@ -998,7 +998,7 @@ pub async fn cycle_analytics(
             })
             .collect();
 
-        // Label distribution: SUM(ep.value::float) por label.
+        // Label distribution: SUM(ep.value::float) by label.
         let sql = format!(
             "SELECT
                l.name                                                  AS label_name,
@@ -1055,9 +1055,9 @@ pub async fn cycle_analytics(
 
     // ── 7. type=issues ────────────────────────────────────────────────────────
     if analytic_type == "issues" {
-        // Assignee distribution: COUNT de issues por assignee.
-        // Django usa Count("assignee_id", filter=...). COUNT(col) ignora NULLs,
-        // por lo que el bucket de issues sin assignee tiene 0 counts (paridad).
+        // Assignee distribution: issue COUNT by assignee.
+        // Django uses Count("assignee_id", filter=...). COUNT(col) ignores NULLs,
+        // so bucket of issues without assignee has 0 counts (parity).
         let sql = format!(
             "SELECT
                u.display_name                                          AS display_name,
@@ -1100,7 +1100,7 @@ pub async fn cycle_analytics(
             })
             .collect();
 
-        // Label distribution: COUNT por label.
+        // Label distribution: COUNT by label.
         let sql = format!(
             "SELECT
                l.name                                                  AS label_name,
@@ -1160,9 +1160,9 @@ pub async fn cycle_analytics(
 
 // ─── Burndown plot ───────────────────────────────────────────────────────────
 //
-// Mirror de `burndown_plot` (apps/api/plane/utils/analytics_plot.py:97).
-// Genera un dict `{date_str: cumulative_pending}` para cada día en
-// [start_date, end_date]. Las fechas futuras quedan en `null` (paridad).
+// Mirror of `burndown_plot` (apps/api/plane/utils/analytics_plot.py:97).
+// Generates a `{date_str: cumulative_pending}` dict for each day in
+// [start_date, end_date]. Future dates remain `null` (parity).
 
 #[derive(Debug, Clone, Copy)]
 enum BurndownMode {
@@ -1179,11 +1179,11 @@ async fn burndown_plot(
     end_date: chrono::NaiveDate,
     mode: BurndownMode,
 ) -> Result<serde_json::Value, AppError> {
-    // ── Total del ciclo ──────────────────────────────────────────────────────
+    // ── Cycle Total ──────────────────────────────────────────────────────
     //
-    // Paridad con Django: para issues, total = `cycle.total_issues`
-    // (issues activos no-draft en el ciclo). Para points, total = suma de
-    // estimate_point.value de todos los issues (con estimate) del ciclo.
+    // Django parity: for issues, total = `cycle.total_issues`
+    // (active non-draft issues in cycle). For points, total = sum of
+    // estimate_point.value of all issues (with estimate) in cycle.
     let total: f64 = match mode {
         BurndownMode::Issues => {
             let sql = format!(
@@ -1238,7 +1238,7 @@ async fn burndown_plot(
         }
     };
 
-    // ── Completados por fecha ────────────────────────────────────────────────
+    // ── Completed by date ────────────────────────────────────────────────
     let completed_sql = match mode {
         BurndownMode::Issues => format!(
             "SELECT DATE(i.completed_at) AS day, COUNT(*)::float AS completed
@@ -1286,7 +1286,7 @@ async fn burndown_plot(
         .await
         .map_err(AppError::Database)?;
 
-    // Map: fecha → total completado ese día.
+    // Map: date → total completed that day.
     use std::collections::BTreeMap;
     let daily_completed: BTreeMap<chrono::NaiveDate, f64> = rows
         .iter()
@@ -1297,17 +1297,17 @@ async fn burndown_plot(
         })
         .collect();
 
-    // ── Construir chart_data: iterar día por día y acumular ──────────────────
+    // ── Build chart_data: iterate day by day and accumulate ──────────────────
     let today = chrono::Utc::now().date_naive();
     let mut chart_data = serde_json::Map::new();
     let mut current = start_date;
     while current <= end_date {
         let key = current.to_string(); // "YYYY-MM-DD"
         if current > today {
-            // Fechas futuras: null (paridad Django).
+            // Future dates: null (Django parity).
             chart_data.insert(key, serde_json::Value::Null);
         } else {
-            // Suma de todo lo completado hasta (inclusive) `current`.
+            // Sum of everything completed up to (inclusive) `current`.
             let completed_to_date: f64 = daily_completed
                 .range(..=current)
                 .map(|(_, v)| v)
@@ -1330,23 +1330,23 @@ async fn burndown_plot(
 // Cycle User Properties
 // ═════════════════════════════════════════════════════════════════════════════
 //
-// Mirror de `CycleUserPropertiesEndpoint` en
+// Mirror of `CycleUserPropertiesEndpoint` in
 // apps/api/plane/app/views/cycle/base.py:625-655.
 //
-// Semántica clave (paridad Django):
-//   - GET hace `get_or_create` → NUNCA devuelve 404 por ausencia de fila.
-//     Si no existe, se crea con defaults y se devuelve 200.
-//   - PATCH asume que existe (Django usa `.get(...)` crudo, que lanzaría 500
-//     si faltara). Para evitar ese fallo y ser más útil al frontend, aquí
-//     también hacemos `get_or_create` y aplicamos el patch encima — no
-//     degrada ningún caso de uso válido.
-//   - Permisos: ADMIN / MEMBER / GUEST (igual que Django).
+// Key semantics (Django parity):
+//   - GET performs `get_or_create` → NEVER returns 404 due to missing row.
+//     If it doesn't exist, it's created with defaults and 200 returned.
+//   - PATCH assumes existence (Django uses raw `.get(...)`, which would 500
+//     if missing). To avoid that crash and be more helpful to frontend, we
+//     also perform `get_or_create` before applying patch — doesn't
+//     degrade any valid use case.
+//   - Permissions: ADMIN / MEMBER / GUEST (same as Django).
 //
-// Nota sobre el modelo: `CycleUserProperties` (cycle.py:130-153) NO tiene
-// los campos `preferences` ni `sort_order` que sí tiene `ProjectUserProperty`.
-// Por eso el request/response DTO es más simple que el de project.
+// Note on model: `CycleUserProperties` (cycle.py:130-153) DOES NOT have
+// `preferences` or `sort_order` fields like `ProjectUserProperty`.
+// Thus the request/response DTO is simpler than project's.
 
-// ─── Defaults — mirror de `plane/db/models/issue.py:47-88` ───────────────────
+// ─── Defaults — mirror of `plane/db/models/issue.py:47-88` ───────────────────
 
 fn cycle_default_filters() -> serde_json::Value {
     serde_json::json!({
@@ -1394,9 +1394,9 @@ fn cycle_default_display_properties() -> serde_json::Value {
 
 // ─── DTOs ─────────────────────────────────────────────────────────────────────
 
-/// Mirror de `CycleUserPropertiesSerializer` (fields="__all__", read_only:
-/// workspace/project/cycle/user). Incluye todos los campos del modelo
-/// `CycleUserProperties` de `apps/api/plane/db/models/cycle.py:130-153`.
+/// Mirror of `CycleUserPropertiesSerializer` (fields="__all__", read_only:
+/// workspace/project/cycle/user). Includes all fields from
+/// `CycleUserProperties` model in `apps/api/plane/db/models/cycle.py:130-153`.
 #[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct CycleUserPropertiesResponse {
     pub id: Uuid,
@@ -1434,9 +1434,9 @@ impl From<&cycle_user_properties::Model> for CycleUserPropertiesResponse {
     }
 }
 
-/// Body admitido en PATCH. Todos los campos son opcionales — semántica
-/// `partial=True` del serializer Django. Los campos read-only
-/// (workspace/project/cycle/user) se ignoran si vienen en el body.
+/// Allowed body in PATCH. All fields optional — Django serializer
+/// `partial=True` semantics. Read-only fields (workspace/project/cycle/user)
+/// are ignored if provided in body.
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct UpdateCycleUserPropertiesRequest {
     pub filters: Option<serde_json::Value>,
@@ -1447,14 +1447,13 @@ pub struct UpdateCycleUserPropertiesRequest {
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
-/// Busca o crea la fila `cycle_user_properties` para `(cycle, user)`.
-/// Mirror de `CycleUserProperties.objects.get_or_create(...)`.
+/// Look up or create `cycle_user_properties` row for `(cycle, user)`.
+/// Mirror of `CycleUserProperties.objects.get_or_create(...)`.
 ///
-/// Constraint único en Django: `(cycle, user)` WHERE `deleted_at IS NULL`
-/// (`cycle.py:144-149`). Filtramos por `.active()`. En caso de INSERT
-/// concurrente con violación del índice único, el error se propagaría como
-/// `AppError::Database` y un reintento del cliente resolvería el caso —
-/// mismo comportamiento que Django.
+/// Unique constraint in Django: `(cycle, user)` WHERE `deleted_at IS NULL`
+/// (`cycle.py:144-149`). We filter by `.active()`. In case of concurrent
+/// INSERT with unique index violation, error propagates as
+/// `AppError::Database` and client retry will resolve — same as Django.
 async fn get_or_create_cycle_user_properties(
     db: &sea_orm::DatabaseConnection,
     workspace_id: Uuid,
@@ -1498,9 +1497,9 @@ async fn get_or_create_cycle_user_properties(
     Ok(created)
 }
 
-/// Asegura que el ciclo existe y pertenece al workspace/proyecto del guard.
-/// 404 si no existe o fue soft-deleted. Defensa en profundidad — el guard
-/// sólo valida workspace + proyecto, no la pertenencia del `cycle_id`.
+/// Ensures cycle exists and belongs to workspace/project of guard.
+/// 404 if not exists or soft-deleted. Defense in depth — guard only validates
+/// workspace + project, not `cycle_id` membership.
 async fn ensure_cycle_belongs_to_project(
     db: &sea_orm::DatabaseConnection,
     workspace_id: Uuid,
@@ -1521,11 +1520,11 @@ async fn ensure_cycle_belongs_to_project(
 
 /// `GET /api/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/user-properties/`
 ///
-/// Paridad con `CycleUserPropertiesEndpoint.get` (cycle/base.py:647-655).
-/// `get_or_create` garantiza que nunca devolvemos 404 por ausencia de la
-/// fila de propiedades — esto es lo que resuelve el 404 del frontend.
+/// Parity with `CycleUserPropertiesEndpoint.get` (cycle/base.py:647-655).
+/// `get_or_create` ensures we never return 404 due to missing
+/// properties row — this resolves the frontend 404.
 ///
-/// Permisos: ROLE_GUEST+ (ADMIN/MEMBER/GUEST, paridad Django).
+/// Permissions: ROLE_GUEST+ (ADMIN/MEMBER/GUEST, Django parity).
 #[utoipa::path(
     get,
     path = "/api/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/user-properties/",
@@ -1553,8 +1552,8 @@ pub async fn get_cycle_user_properties(
         ROLE_GUEST,
     )?;
 
-    // Validación: el ciclo debe existir y pertenecer al proyecto. Si no,
-    // 404 — evita crear una fila user-properties huérfana.
+    // Validation: cycle must exist and belong to project. If not,
+    // 404 — prevents creating an orphaned user-properties row.
     let _cycle = ensure_cycle_belongs_to_project(
         &state.db,
         guard.workspace.id,
@@ -1579,16 +1578,16 @@ pub async fn get_cycle_user_properties(
 
 /// `PATCH /api/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/user-properties/`
 ///
-/// Paridad con `CycleUserPropertiesEndpoint.patch` (cycle/base.py:627-644),
-/// con una mejora: Django asume que la fila existe (`.objects.get(...)`) y
-/// lanzaría 500 si faltara; aquí hacemos `get_or_create` antes del patch,
-/// lo que es estrictamente más robusto.
+/// Parity with `CycleUserPropertiesEndpoint.patch` (cycle/base.py:627-644),
+/// with one improvement: Django assumes row exists (`.objects.get(...)`) and
+/// would throw 500 if missing; here we perform `get_or_create` before patching,
+/// which is strictly more robust.
 ///
-/// Django devuelve 201 en PATCH (comportamiento no-idiomático heredado).
-/// Mantenemos 200 aquí porque (a) no es un create, es un update, y (b) el
-/// frontend de Plane no depende del código exacto — comprueba `>=200 <300`.
+/// Django returns 201 in PATCH (inherited non-idiomatic behavior).
+/// We maintain 200 here as (a) it's an update, not a create, and (b) Plane
+/// frontend doesn't depend on the exact code — it checks `>=200 <300`.
 ///
-/// Permisos: ROLE_GUEST+ (paridad Django).
+/// Permissions: ROLE_GUEST+ (Django parity).
 #[utoipa::path(
     patch,
     path = "/api/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/user-properties/",
@@ -1659,26 +1658,26 @@ pub async fn update_cycle_user_properties(
 // Cycle Progress
 // ═════════════════════════════════════════════════════════════════════════════
 //
-// Mirror de `CycleProgressEndpoint` en
+// Mirror of `CycleProgressEndpoint` in
 // apps/api/plane/app/views/cycle/base.py:658-783.
 //
-// Devuelve counts de issues y sumas de estimate_points agrupados por
-// state.group (backlog/unstarted/started/cancelled/completed) + totales.
+// Returns issue counts and estimate_points sums grouped by
+// state.group (backlog/unstarted/started/cancelled/completed) + totals.
 //
-// Semántica clave (paridad Django):
-//   - Si el ciclo tiene `progress_snapshot` no vacío → los counts de issues
-//     vienen del snapshot (ciclo cerrado con issues transferidos).
-//     Las sumas de estimate_points SIEMPRE se calculan live — el snapshot
-//     no las contiene (línea 664 en base.py: `aggregate_estimates` se
-//     computa antes del branch).
-//   - Sin snapshot → counts live sobre `issues` JOIN `cycle_issues`.
-//   - Estimate sums: sólo suman puntos de issues cuyo estimate.type='points'.
-//   - Permisos: ADMIN / MEMBER / GUEST.
+// Key semantics (Django parity):
+//   - If cycle has non-empty `progress_snapshot` → issue counts
+//     come from snapshot (closed cycle with issues transferred).
+//     estimate_points sums are ALWAYS calculated live — snapshot
+//     does not contain them (line 664 in base.py: `aggregate_estimates` is
+//     computed before branching).
+//   - Without snapshot → live counts on `issues` JOIN `cycle_issues`.
+//   - Estimate sums: only sums points of issues whose estimate.type='points'.
+//   - Permissions: ADMIN / MEMBER / GUEST.
 //
-// Optimización sobre Django: una sola query agregada por cada bloque (counts
-// y estimates), en vez de 6 y 6 queries separadas como hace el ORM.
+// Optimization over Django: single aggregate query for each block (counts
+// and estimates), instead of 6 and 6 separate queries as ORM does.
 
-/// Estructura interna para deserializar los counts del SQL agregado.
+/// Internal structure to deserialize counts from aggregated SQL.
 #[derive(Debug, Default)]
 struct ProgressIssueCounts {
     backlog: i64,
@@ -1689,7 +1688,7 @@ struct ProgressIssueCounts {
     total: i64,
 }
 
-/// Estructura interna para deserializar las sumas de estimate_points.
+/// Internal structure to deserialize estimate_points sums.
 #[derive(Debug, Default)]
 struct ProgressEstimatePoints {
     backlog: f64,
@@ -1700,25 +1699,25 @@ struct ProgressEstimatePoints {
     total: f64,
 }
 
-/// Suma de `CAST(estimate_points.value AS DOUBLE PRECISION)` agrupada por
-/// `state.group`, filtrando issues del ciclo cuyo `estimate_point` pertenece
-/// a un `estimate` con `type='points'`.
+/// Sum of `CAST(estimate_points.value AS DOUBLE PRECISION)` grouped by
+/// `state.group`, filtering cycle issues whose `estimate_point` belongs
+/// to an `estimate` with `type='points'`.
 ///
-/// Mirror de la query compuesta en cycle/base.py:664-711. Django hace esto
-/// con 6 `Sum(Case(When(...), default=0))` en un único `.aggregate(...)`,
-/// que se compila a exactamente esta forma en SQL.
+/// Mirror of compound query in cycle/base.py:664-711. Django does this
+/// with 6 `Sum(Case(When(...), default=0))` in a single `.aggregate(...)`,
+/// which compiles to exactly this form in SQL.
 ///
-/// Todos los resultados se COALESCE a 0 — Django usa `default=Value(0)` en
-/// cada Sum y además `or 0` en la mayoría de los campos de respuesta.
+/// All results are COALESCE to 0 — Django uses `default=Value(0)` in
+/// each Sum and also `or 0` in most response fields.
 async fn compute_estimate_points(
     db: &sea_orm::DatabaseConnection,
     ws_id: Uuid,
     project_id: Uuid,
     cycle_id: Uuid,
 ) -> Result<ProgressEstimatePoints, AppError> {
-    // UUIDs van interpolados: son type-safe (Uuid::Display solo produce
-    // hex+dashes), no hay superficie de SQL injection. Mismo patrón que
-    // `cycle_analytics` más arriba en este archivo.
+    // UUIDs are interpolated: they are type-safe (Uuid::Display only produces
+    // hex+dashes), no SQL injection surface. Same pattern as
+    // `cycle_analytics` earlier in this file.
     let sql = format!(
         "SELECT
             COALESCE(SUM(CAST(ep.value AS DOUBLE PRECISION)) FILTER (WHERE s.\"group\" = 'backlog'), 0)::float8   AS backlog,
@@ -1772,10 +1771,9 @@ async fn compute_estimate_points(
     })
 }
 
-/// Counts live de issues por `state.group` para el ciclo. Una query en vez
-/// de 6. Mirror de cycle/base.py:720-765 (que Django resuelve con 6 queries
-/// separadas). Respeta el manager `issue_objects` (excluye triage, archived,
-/// draft, soft-deleted).
+/// Live issue counts by `state.group` for cycle. One query instead of 6.
+/// Mirror of cycle/base.py:720-765 (which Django resolves with 6 separate queries).
+/// Respects `issue_objects` manager (excludes triage, archived, draft, soft-deleted).
 async fn compute_issue_counts(
     db: &sea_orm::DatabaseConnection,
     ws_id: Uuid,
@@ -1828,8 +1826,8 @@ async fn compute_issue_counts(
     })
 }
 
-/// Extrae un count entero de `progress_snapshot[key]`. El snapshot guarda
-/// los valores como números JSON; si falta la clave o no es número, 0.
+/// Extracts integer count from `progress_snapshot[key]`. Snapshot saves
+/// values as JSON numbers; if key is missing or not a number, 0.
 fn snapshot_i64(snapshot: &serde_json::Map<String, serde_json::Value>, key: &str) -> i64 {
     snapshot
         .get(key)
@@ -1839,18 +1837,18 @@ fn snapshot_i64(snapshot: &serde_json::Map<String, serde_json::Value>, key: &str
 
 /// GET /api/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/progress/
 ///
-/// Devuelve 12 métricas: counts de issues por estado + sumas de estimate_points
-/// por estado, más totales. Mirror exacto de `CycleProgressEndpoint.get`
+/// Returns 12 metrics: issue counts by state + estimate_points sums by state,
+/// plus totals. Exact mirror of `CycleProgressEndpoint.get`
 /// (cycle/base.py:658-783).
 ///
-/// Comportamiento:
-/// - Si el ciclo no existe → 404 (paridad Django: `{"error": "Cycle not found"}`).
-/// - Si `progress_snapshot` es un objeto no vacío → los counts de issues se
-///   leen del snapshot (ciclo cerrado, issues transferidos).
-/// - Las sumas de estimate_points SIEMPRE se calculan live (Django también
-///   lo hace: `aggregate_estimates` se computa antes del branch del snapshot).
+/// Behavior:
+/// - If cycle doesn't exist → 404 (Django parity: `{"error": "Cycle not found"}`).
+/// - If `progress_snapshot` is non-empty object → issue counts
+///   are read from snapshot (closed cycle, issues transferred).
+/// - estimate_points sums are ALWAYS calculated live (Django does too:
+///   `aggregate_estimates` is computed before snapshot branch).
 ///
-/// Permisos: ADMIN / MEMBER / GUEST (paridad Django).
+/// Permissions: ADMIN / MEMBER / GUEST (Django parity).
 #[utoipa::path(
     get,
     path = "/api/workspaces/{slug}/projects/{project_id}/cycles/{cycle_id}/progress/",
@@ -1882,24 +1880,24 @@ pub async fn cycle_progress(
     let project_id = guard.project.id;
     let db = &state.db;
 
-    // ── 1. Validar que el ciclo existe y pertenece al proyecto ────────────────
+    // ── 1. Validate cycle exists and belongs to project ────────────────
     let cycle =
         ensure_cycle_belongs_to_project(db, ws_id, project_id, cycle_id).await?;
 
-    // ── 2. Sumas de estimate_points — SIEMPRE live, como en Django ────────────
+    // ── 2. estimate_points sums — ALWAYS live, as in Django ────────────
     //
-    // Django computa `aggregate_estimates` en cycle/base.py:664, ANTES del
-    // branch del snapshot. El snapshot no contiene estas sumas.
+    // Django computes `aggregate_estimates` in cycle/base.py:664, BEFORE
+    // snapshot branch. Snapshot does not contain these sums.
     let estimates = compute_estimate_points(db, ws_id, project_id, cycle_id).await?;
 
-    // ── 3. Counts de issues: desde snapshot si existe y no está vacío ────────
+    // ── 3. Issue counts: from snapshot if exists and not empty ────────
     //
-    // Django: `if cycle.progress_snapshot:` — truthy sobre dict. En Postgres
-    // la columna es NOT NULL con default `{}` (falsy en Python) así que
-    // tenemos que distinguir objeto vacío de objeto con datos.
+    // Django: `if cycle.progress_snapshot:` — truthy on dict. In Postgres
+    // column is NOT NULL with default `{}` (falsy in Python) so we
+    // must distinguish empty object from object with data.
     let counts = if let serde_json::Value::Object(snapshot) = &cycle.progress_snapshot {
         if !snapshot.is_empty() {
-            // Leer del snapshot — mismas claves que usa Django al persistirlo.
+            // Read from snapshot — same keys used by Django when persisting it.
             ProgressIssueCounts {
                 backlog: snapshot_i64(snapshot, "backlog_issues"),
                 unstarted: snapshot_i64(snapshot, "unstarted_issues"),
@@ -1915,7 +1913,7 @@ pub async fn cycle_progress(
         compute_issue_counts(db, ws_id, project_id, cycle_id).await?
     };
 
-    // ── 4. Respuesta — mismas claves que Django (cycle/base.py:768-781) ───────
+    // ── 4. Response — same keys as Django (cycle/base.py:768-781) ───────
     Ok(Json(serde_json::json!({
         "backlog_estimate_points":   estimates.backlog,
         "unstarted_estimate_points": estimates.unstarted,
@@ -1933,7 +1931,7 @@ pub async fn cycle_progress(
 }
 
 // ═══════════════════════════════════════════════════════════════════════════════
-// ENDPOINTS PENDIENTES — implementados a continuación
+// PENDING ENDPOINTS — implemented below
 // ═══════════════════════════════════════════════════════════════════════════════
 
 // ── date-check ────────────────────────────────────────────────────────────────
@@ -1947,11 +1945,11 @@ pub struct DateCheckRequest {
 
 /// `POST /api/workspaces/{slug}/projects/{project_id}/cycles/date-check/`
 ///
-/// Verifica si un rango de fechas se solapa con algún ciclo existente en el proyecto.
-/// Paridad con `CycleDateCheckEndpoint.post` (cycle/base.py).
-/// Retorna `{"status": true}` si hay solapamiento, `{"status": false}` si no.
+/// Verifies if a date range overlaps with any existing cycle in the project.
+/// Parity with `CycleDateCheckEndpoint.post` (cycle/base.py).
+/// Returns `{"status": true}` if there is overlap, `{"status": false}` otherwise.
 ///
-/// Permisos: ADMIN / MEMBER.
+/// Permissions: ADMIN / MEMBER.
 #[utoipa::path(
     post,
     path = "/api/workspaces/{slug}/projects/{project_id}/cycles/date-check/",
@@ -1982,7 +1980,7 @@ pub async fn cycle_date_check(
     let project_id = guard.project.id;
     let db = &state.db;
 
-    // Parsear fechas — acepta "YYYY-MM-DD" o ISO 8601
+    // Parse dates — accepts "YYYY-MM-DD" or ISO 8601
     let start: chrono::NaiveDate = body
         .start_date
         .parse()
@@ -1992,7 +1990,7 @@ pub async fn cycle_date_check(
         .parse()
         .map_err(|_| AppError::BadRequest("Invalid end_date format".into()))?;
 
-    // Convertir a DateTimeWithTimeZone para comparar con la columna
+    // Convert to DateTimeWithTimeZone to compare with column
     let start_dt: chrono::DateTime<chrono::FixedOffset> =
         chrono::NaiveDateTime::new(start, chrono::NaiveTime::MIN)
             .and_utc()
@@ -2002,8 +2000,8 @@ pub async fn cycle_date_check(
             .and_utc()
             .fixed_offset();
 
-    // Buscar ciclos que se solapan con el rango dado
-    // Solapamiento: start_cycle <= end_input AND end_cycle >= start_input
+    // Look for cycles overlapping given range
+    // Overlap: start_cycle <= end_input AND end_cycle >= start_input
     let mut query = cycles::Entity::find()
         .filter(cycles::Column::WorkspaceId.eq(ws_id))
         .filter(cycles::Column::ProjectId.eq(project_id))
@@ -2117,7 +2115,7 @@ pub async fn create_favorite_cycle(
     let project_id = guard.project.id;
     let db = &state.db;
 
-    // Idempotente: si ya existe no duplicamos
+    // Idempotent: don't duplicate if already exists
     let existing = user_favorites::Entity::find()
         .filter(user_favorites::Column::WorkspaceId.eq(ws_id))
         .filter(user_favorites::Column::ProjectId.eq(project_id))
@@ -2142,9 +2140,9 @@ pub async fn create_favorite_cycle(
             updated_by_id: Set(Some(user_id)),
             sequence: Set(65535.0_f64),
             is_folder: Set(false),
-            // `created_at` y `updated_at` son NOT NULL sin DEFAULT en la
-            // baseline SQL. Django los llena vía `auto_now_add` / `auto_now`,
-            // acá hay que setearlos explícitos o el INSERT revienta con
+            // `created_at` and `updated_at` are NOT NULL without DEFAULT in
+            // baseline SQL. Django fills them via `auto_now_add` / `auto_now`,
+            // here we must set them explicitly or INSERT fails with
             // 23502 → AppError::Database → 500.
             created_at: Set(now.into()),
             updated_at: Set(now.into()),
@@ -2247,7 +2245,7 @@ pub async fn transfer_cycle_issues(
     let new_cycle_id = body.new_cycle_id;
     let db = &state.db;
 
-    // Validar que el ciclo destino existe y no está completado
+    // Validate target cycle exists and is not completed
     let new_cycle = cycles::Entity::find_by_id(new_cycle_id)
         .filter(cycles::Column::WorkspaceId.eq(ws_id))
         .filter(cycles::Column::ProjectId.eq(project_id))
@@ -2266,13 +2264,13 @@ pub async fn transfer_cycle_issues(
         }
     }
 
-    // Validar que el ciclo origen existe
+    // Validate source cycle exists
     let old_cycle = ensure_cycle_belongs_to_project(db, ws_id, project_id, cycle_id).await?;
 
-    // Computar counts de issues por estado para el snapshot
+    // Compute issue counts by state for snapshot
     let counts = compute_issue_counts(db, ws_id, project_id, cycle_id).await?;
 
-    // Guardar progress snapshot en el ciclo origen
+    // Save progress snapshot in source cycle
     let snapshot = serde_json::json!({
         "total_issues":     counts.total,
         "completed_issues": counts.completed,
@@ -2292,8 +2290,8 @@ pub async fn transfer_cycle_issues(
     old_active.progress_snapshot = Set(snapshot);
     old_active.update(db).await.map_err(AppError::Database)?;
 
-    // Transferir las issues incompletas al nuevo ciclo
-    // Solo issues con estado: backlog, unstarted, started
+    // Transfer incomplete issues to new cycle
+    // Only issues with state: backlog, unstarted, started
     let sql = Statement::from_sql_and_values(
         sea_orm::DatabaseBackend::Postgres,
         r#"
@@ -2356,7 +2354,7 @@ pub async fn archive_cycle(
 
     let cycle = ensure_cycle_belongs_to_project(db, ws_id, project_id, cycle_id).await?;
 
-    // Solo ciclos completados (end_date en el pasado) pueden archivarse
+    // Only completed cycles (end_date in past) can be archived
     let now = chrono::Utc::now();
     match cycle.end_date {
         Some(end) if end.with_timezone(&chrono::Utc) >= now => {
@@ -2377,7 +2375,7 @@ pub async fn archive_cycle(
     active.archived_at = Set(Some(archived_at));
     active.update(db).await.map_err(AppError::Database)?;
 
-    // Eliminar de favoritos (paridad Django)
+    // Remove from favorites (Django parity)
     let _ = user_favorites::Entity::delete_many()
         .filter(user_favorites::Column::EntityType.eq("cycle"))
         .filter(user_favorites::Column::EntityIdentifier.eq(cycle_id))
@@ -2442,7 +2440,7 @@ pub async fn unarchive_cycle(
 
 /// `GET /api/workspaces/{slug}/projects/{project_id}/archived-cycles/`
 ///
-/// Lista los ciclos archivados del proyecto.
+/// Lists archived cycles of the project.
 #[utoipa::path(
     get,
     path = "/api/workspaces/{slug}/projects/{project_id}/archived-cycles/",
@@ -2520,7 +2518,7 @@ pub async fn list_archived_cycles(
 
 /// `GET /api/workspaces/{slug}/projects/{project_id}/archived-cycles/{pk}/`
 ///
-/// Devuelve un ciclo archivado por su ID.
+/// Returns an archived cycle by its ID.
 #[utoipa::path(
     get,
     path = "/api/workspaces/{slug}/projects/{project_id}/archived-cycles/{pk}/",

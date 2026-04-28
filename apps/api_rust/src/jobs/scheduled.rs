@@ -1,16 +1,16 @@
 // src/jobs/scheduled.rs
-//! Tareas programadas periódicas.
+//! Scheduled periodic tasks.
 //!
-//! Equivalente a `plane/bgtasks/issue_automation_task.py`.
+//! Equivalent to `plane/bgtasks/issue_automation_task.py`.
 //!
-//! Tareas:
-//!   - `archive_old_issues` — archiva issues completados/cancelados que no
-//!     han tenido actividad en N meses (según `project.archive_in`)
-//!   - `close_old_issues`   — cierra issues vencidos (target_date < hoy)
-//!     que aún están en estado "started" o "unstarted"
+//! Tasks:
+//!   - `archive_old_issues` — archives completed/cancelled issues that
+//!     haven't had activity in N months (according to `project.archive_in`)
+//!   - `close_old_issues`   — closes overdue issues (target_date < today)
+//!     that are still in "started" or "unstarted" state
 //!
-//! Estas tareas se lanzan como jobs de apalis con scheduler externo (cron),
-//! o bien desde un loop de Tokio con `tokio::time::interval`.
+//! These tasks are launched as apalis jobs with an external scheduler (cron),
+//! or from a Tokio loop with `tokio::time::interval`.
 
 use apalis::prelude::*;
 use sea_orm::{
@@ -26,7 +26,7 @@ use crate::{
 
 // ── Job payloads ──────────────────────────────────────────────────────────────
 
-/// Job disparado periódicamente para archivar + cerrar issues viejos.
+/// Job triggered periodically to archive + close old issues.
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct RunIssueAutomationJob;
 
@@ -40,35 +40,34 @@ pub async fn handle_run_issue_automation(
     let state: AppState = (*ctx).clone();
 
     let archived = archive_old_issues(&state).await.unwrap_or_else(|e| {
-        tracing::error!(error = %e, "scheduled: archive_old_issues falló");
+        tracing::error!(error = %e, "scheduled: archive_old_issues failed");
         0
     });
 
     let closed = close_old_issues(&state).await.unwrap_or_else(|e| {
-        tracing::error!(error = %e, "scheduled: close_old_issues falló");
+        tracing::error!(error = %e, "scheduled: close_old_issues failed");
         0
     });
 
-    tracing::info!(archived, closed, "scheduled: issue_automation completado");
+    tracing::info!(archived, closed, "scheduled: issue_automation completed");
     Ok(())
 }
 
 // ── archive_old_issues ────────────────────────────────────────────────────────
 
-/// Archiva issues de proyectos con `archive_in > 0` que:
-/// - Están en estado grupo "completed" o "cancelled"
-/// - No han sido actualizados en `archive_in` meses
-/// - No tienen `archived_at` ya establecido
+/// Archives issues from projects with `archive_in > 0` that:
+/// - Are in "completed" or "cancelled" group state
+/// - Haven't been updated in `archive_in` months
+/// - Don't have `archived_at` already set
 ///
-/// Retorna el número de issues archivados.
+/// Returns the number of archived issues.
 ///
-/// Visibilidad `pub` para permitir tests de integración (ver
-/// `tests/jobs_scheduler.rs`). Los tests de integración están en un crate
-/// separado, por lo que `pub(crate)` no los alcanza. Permite invocar la
-/// lógica del job sin tener que montar el storage de apalis
-/// (`handle_run_issue_automation` requiere `apalis::Data<AppState>`).
+/// Visibility `pub` to allow integration tests (see
+/// `tests/jobs_scheduler.rs`). Integration tests are in a separate crate,
+/// so `pub(crate)` doesn't reach them. Allows invoking job logic without
+/// setting up apalis storage (`handle_run_issue_automation` requires `apalis::Data<AppState>`).
 pub async fn archive_old_issues(state: &AppState) -> anyhow::Result<u64> {
-    // Proyectos con archivado automático activado
+    // Projects with automatic archiving enabled
     let archive_projects = projects::Entity::find()
         .filter(projects::Column::ArchiveIn.gt(0))
         .filter(projects::Column::DeletedAt.is_null())
@@ -82,7 +81,7 @@ pub async fn archive_old_issues(state: &AppState) -> anyhow::Result<u64> {
         let archive_months = project.archive_in as i64;
         let cutoff = now - chrono::Duration::days(archive_months * 30);
 
-        // Estados de grupos "completed" y "cancelled" del proyecto
+        // Terminal states ("completed" and "cancelled" groups) of the project
         let terminal_states: Vec<uuid::Uuid> = states::Entity::find()
             .active()
             .filter(states::Column::ProjectId.eq(project.id))
@@ -101,7 +100,7 @@ pub async fn archive_old_issues(state: &AppState) -> anyhow::Result<u64> {
             continue;
         }
 
-        // Issues elegibles: en estado terminal, sin archivar, sin actividad reciente
+        // Eligible issues: in terminal state, not archived, no recent activity
         let candidates = issues::Entity::find()
             .active()
             .filter(issues::Column::ProjectId.eq(project.id))
@@ -129,15 +128,15 @@ pub async fn archive_old_issues(state: &AppState) -> anyhow::Result<u64> {
 
 // ── close_old_issues ─────────────────────────────────────────────────────────
 
-/// Cierra issues cuya `target_date` ya pasó y están en estados "started"
-/// o "unstarted". Mueve al primer estado "completed" del proyecto.
+/// Closes issues whose `target_date` has passed and are in "started" or "unstarted" states.
+/// Moves them to the first "completed" state of the project.
 ///
-/// Retorna el número de issues cerrados.
+/// Returns the number of closed issues.
 ///
-/// Visibilidad `pub` por la misma razón que `archive_old_issues` — permitir
-/// tests de integración (crate separado del binario) sin scaffolding de apalis.
+/// Visibility `pub` for the same reason as `archive_old_issues` — allow
+/// integration tests (separate crate from binary) without apalis scaffolding.
 pub async fn close_old_issues(state: &AppState) -> anyhow::Result<u64> {
-    // Proyectos con close_in > 0 (cierre automático)
+    // Projects with close_in > 0 (automatic closing)
     let close_projects = projects::Entity::find()
         .filter(projects::Column::CloseIn.gt(0))
         .filter(projects::Column::DeletedAt.is_null())
@@ -148,7 +147,7 @@ pub async fn close_old_issues(state: &AppState) -> anyhow::Result<u64> {
     let today = chrono::Utc::now().date_naive();
 
     for project in close_projects {
-        // Buscar estado "completed" destino
+        // Find target "completed" state
         let completed_state = states::Entity::find()
             .active()
             .filter(states::Column::ProjectId.eq(project.id))
@@ -158,10 +157,10 @@ pub async fn close_old_issues(state: &AppState) -> anyhow::Result<u64> {
 
         let target_state = match completed_state {
             Some(s) => s,
-            None => continue, // no hay estado completado — no cerrar
+            None => continue, // no completed state — don't close
         };
 
-        // Estados activos "started" / "unstarted"
+        // Active "started" / "unstarted" states
         let open_states: Vec<uuid::Uuid> = states::Entity::find()
             .active()
             .filter(states::Column::ProjectId.eq(project.id))
@@ -186,7 +185,7 @@ pub async fn close_old_issues(state: &AppState) -> anyhow::Result<u64> {
             .filter(issues::Column::StateId.is_in(open_states))
             .filter(issues::Column::ArchivedAt.is_null())
             .filter(issues::Column::IsDraft.eq(false))
-            // target_date < today — issue vencido
+            // target_date < today — overdue issue
             .filter(issues::Column::TargetDate.lt(today))
             .all(&state.db)
             .await?;

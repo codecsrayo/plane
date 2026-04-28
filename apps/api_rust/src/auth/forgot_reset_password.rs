@@ -1,18 +1,18 @@
 // src/auth/forgot_reset_password.rs
 //
-// Implementa:
+// Implements:
 //   POST  /auth/forgot-password
 //   POST  /auth/reset-password/:uidb64/:token
 //   POST  /auth/spaces/forgot-password
 //   POST  /auth/spaces/reset-password/:uidb64/:token
 //
-// Equivalente a las vistas Django:
+// Equivalent to Django views:
 //   - authentication/views/app/password_management.py   → ForgotPasswordEndpoint / ResetPasswordEndpoint
 //   - authentication/views/space/password_management.py → ForgotPasswordSpaceEndpoint / ResetPasswordSpaceEndpoint
 //
-// Diferencia clave vs Django:
-//   Django usa PasswordResetTokenGenerator (HMAC stateless ligado al hash de contraseña).
-//   Rust usa Redis con TTL de 24 h — más seguro (revocable) y sin dependencia de la clave secreta Django.
+// Key difference vs Django:
+//   Django uses PasswordResetTokenGenerator (stateless HMAC linked to password hash).
+//   Rust uses Redis with 24 h TTL — more secure (revocable) and without dependency on Django secret key.
 
 use openssl::memcmp;
 use axum::{
@@ -44,10 +44,10 @@ use crate::{
     AppState,
 };
 
-/// TTL del token de reset — 24 horas (Django default = 3 días; reducimos por seguridad)
+/// Reset token TTL — 24 hours (Django default = 3 days; we reduce for security)
 const RESET_TOKEN_TTL_SECS: i64 = 86_400;
 
-// ─── Structs públicos ──────────────────────────────────────────────────────────
+// ─── Public Structs ──────────────────────────────────────────────────────────
 
 #[derive(Debug, Deserialize, Serialize, ToSchema)]
 pub struct ForgotPasswordRequest {
@@ -158,14 +158,14 @@ pub async fn reset_password_space(
     handle_reset_password(&state, uidb64, token, form, SessionSurface::Space).await
 }
 
-// ─── Lógica compartida ────────────────────────────────────────────────────────
+// ─── Shared Logic ────────────────────────────────────────────────────────
 
 async fn handle_forgot_password(
     state: &AppState,
     payload: ForgotPasswordRequest,
     _surface: SessionSurface,
 ) -> Result<Json<PasswordMessageResponse>, AuthError> {
-    // 1. Instancia configurada
+    // 1. Instance configured
     let instance = instances::Entity::find()
         .active()
         .one(&state.db)
@@ -175,7 +175,7 @@ async fn handle_forgot_password(
         return Err(AuthError::instance_not_configured());
     }
 
-    // 2. SMTP configurado
+    // 2. SMTP configured
     let smtp_host = get_config_value(
         state,
         "EMAIL_HOST",
@@ -187,13 +187,13 @@ async fn handle_forgot_password(
         return Err(AuthError::smtp_not_configured());
     }
 
-    // 3. Email válido
+    // 3. Valid email
     let email = payload.email.trim().to_lowercase();
     if email.parse::<lettre::Address>().is_err() {
         return Err(AuthError::invalid_email());
     }
 
-    // 4. Usuario existe
+    // 4. User exists
     let user = users::Entity::find()
         .filter(users::Column::Email.eq(Some(email.clone())))
         .one(&state.db)
@@ -203,11 +203,11 @@ async fn handle_forgot_password(
         return Err(AuthError::user_does_not_exist());
     };
 
-    // 5. Generar uidb64 y token aleatorio
+    // 5. Generate uidb64 and random token
     let uidb64 = URL_SAFE_NO_PAD.encode(user.id.to_string());
     let token = uuid::Uuid::new_v4().simple().to_string();
 
-    // 6. Persistir en Redis
+    // 6. Persist in Redis
     let redis_key = format!("pwreset_{uidb64}");
     let data = ResetTokenData {
         token: token.clone(),
@@ -226,7 +226,7 @@ async fn handle_forgot_password(
         .await
         .map_err(|_| AuthError::instance_not_configured())?;
 
-    // 7. Enviar email (best-effort — no expone error al cliente)
+    // 7. Send email (best-effort — does not expose error to client)
     let base = state.config.app_base();
     let reset_url = format!(
         "{}/accounts/reset-password/?uidb64={}&token={}&email={}",
@@ -260,7 +260,7 @@ async fn handle_reset_password(
         error_base.trim_end_matches('/')
     );
 
-    // 1. Decodificar uidb64 → user_id
+    // 1. Decode uidb64 → user_id
     let user_id = match decode_uidb64(&uidb64) {
         Some(id) => id,
         None => {
@@ -274,7 +274,7 @@ async fn handle_reset_password(
         }
     };
 
-    // 2. Validar token contra Redis
+    // 2. Validate token against Redis
     let redis_key = format!("pwreset_{uidb64}");
     let cached = state
         .redis
@@ -295,7 +295,7 @@ async fn handle_reset_password(
     let data: ResetTokenData =
         serde_json::from_str(&raw).map_err(|e| AppError::Internal(anyhow::anyhow!(e)))?;
 
-    // Comparación constante para evitar timing attacks
+    // Constant time comparison to avoid timing attacks
     if data.token.len() != token.len() || !memcmp::eq(data.token.as_bytes(), token.as_bytes()) || data.user_id != user_id {
         return Ok((
             CookieJar::new(),
@@ -306,7 +306,7 @@ async fn handle_reset_password(
         ));
     }
 
-    // 3. Validar contraseña
+    // 3. Validate password
     let password = match form.password.as_deref().filter(|p| !p.trim().is_empty()) {
         Some(p) => p,
         None => {
@@ -331,7 +331,7 @@ async fn handle_reset_password(
         ));
     }
 
-    // 4. Obtener usuario y actualizar contraseña
+    // 4. Get user and update password
     let user = users::Entity::find_by_id(user_id)
         .one(&state.db)
         .await
@@ -347,10 +347,10 @@ async fn handle_reset_password(
         .await
         .map_err(AppError::Database)?;
 
-    // 5. Invalidar token en Redis
+    // 5. Invalidate token in Redis
     let _ = state.redis.del::<i64, _>(&redis_key).await;
 
-    // 6. Redirect al login
+    // 6. Redirect to login
     let success_url = match surface {
         SessionSurface::Space => state.config.space_base(),
         _ => format!(

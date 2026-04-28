@@ -1,31 +1,31 @@
 // src/jobs/webhook_delivery.rs
-//! Job: entrega (fan-out) de webhooks salientes.
+//! Job: delivery (fan-out) of outgoing webhooks.
 //!
-//! Equivalente a `plane/bgtasks/webhook_task.py` de Django.
+//! Equivalent to Django's `plane/bgtasks/webhook_task.py`.
 //!
-//! Flujo:
-//!   1. Recibir `DeliverWebhookJob { webhook_id, event, action, data, activity, delivery_id }`.
-//!   2. Cargar el webhook (activo y no soft-deleted).
-//!   3. Validar URL destino (defensa SSRF: rechaza loopback/privadas/link-local/multicast).
-//!   4. Firmar el body con HMAC-SHA256(secret_key).
-//!   5. POST con timeout de 10s y headers estandarizados.
-//!   6. Persistir request/response en `webhook_logs` (body truncado para no saturar DB).
-//!   7. Devolver `Err` en 5xx/408/429/network — permite retry cuando se añada
-//!      el middleware de reintentos de apalis (features `retry` ya habilitadas).
+//! Flow:
+//!   1. Receive `DeliverWebhookJob { webhook_id, event, action, data, activity, delivery_id }`.
+//!   2. Load the webhook (active and not soft-deleted).
+//!   3. Validate destination URL (SSRF defense: rejects loopback/private/link-local/multicast).
+//!   4. Sign the body with HMAC-SHA256(secret_key).
+//!   5. POST with 10s timeout and standardized headers.
+//!   6. Persist request/response in `webhook_logs` (body truncated to not saturate DB).
+//!   7. Return `Err` on 5xx/408/429/network — allows retry when apalis retry middleware
+//!      is added (`retry` features already enabled).
 //!
-//! Seguridad:
-//!   - Solo esquemas `http`/`https`.
-//!   - Rechazo de IPs RFC1918, loopback, link-local, CGNAT, ULA IPv6, multicast.
-//!   - El valor del header `X-Plane-Signature` se redacta en el log — el secreto
-//!     no se filtra a operadores que revisen la tabla.
-//!   - `reqwest` usa TLS rustls (ver Cargo.toml); no se desactiva la verificación.
+//! Security:
+//!   - Only `http`/`https` schemes.
+//!   - Rejection of RFC1918 IPs, loopback, link-local, CGNAT, ULA IPv6, multicast.
+//!   - The value of the `X-Plane-Signature` header is redacted in the log — the secret
+//!     does not leak to operators reviewing the table.
+//!   - `reqwest` uses rustls TLS (see Cargo.toml); verification is not disabled.
 //!
-//! No cubre aún (siguientes commits):
-//!   - Fan-out: este job entrega a UN webhook; el dispatcher que descubre los
-//!     webhooks suscritos y encola N jobs vive en `utils::webhook_dispatch`.
-//!   - Reintentos automáticos: requiere apilar `.retry(...)` sobre el worker.
-//!   - Pinning DNS (anti rebind): `reqwest` resuelve el hostname después de
-//!     nuestra validación; una IP pública podría re-resolver a una privada.
+//! Not yet covered (next commits):
+//!   - Fan-out: this job delivers to ONE webhook; the dispatcher that discovers
+//!     subscribed webhooks and enqueues N jobs lives in `utils::webhook_dispatch`.
+//!   - Automatic retries: requires stacking `.retry(...)` on the worker.
+//!   - DNS pinning (anti-rebind): `reqwest` resolves the hostname after our
+//!     validation; a public IP could re-resolve to a private one.
 
 use std::net::{IpAddr, Ipv4Addr, Ipv6Addr};
 use std::time::Duration;
@@ -41,21 +41,21 @@ use crate::{
     AppState,
 };
 
-// ── Constantes ───────────────────────────────────────────────────────────────
+// ── Constants ────────────────────────────────────────────────────────────────
 
-/// Límite de tamaño del body guardado en `webhook_logs.request_body`.
+/// Size limit of the body saved in `webhook_logs.request_body`.
 const MAX_REQUEST_BODY_LOG: usize = 64 * 1024;
-/// Límite de tamaño del body de respuesta guardado en `webhook_logs.response_body`.
+/// Size limit of the response body saved in `webhook_logs.response_body`.
 const MAX_RESPONSE_BODY_LOG: usize = 8 * 1024;
-/// Timeout por intento — menor que el timeout global del `AppState.http` (30s)
-/// para que un destino lento no bloquee el worker.
+/// Timeout per attempt — less than the global `AppState.http` timeout (30s)
+/// so a slow destination doesn't block the worker.
 const REQUEST_TIMEOUT: Duration = Duration::from_secs(10);
 
 // ── Job payload ──────────────────────────────────────────────────────────────
 
-/// Un envío individual. El fan-out a N webhooks encola N `DeliverWebhookJob`.
+/// An individual send. Fan-out to N webhooks enqueues N `DeliverWebhookJob`.
 ///
-/// El envelope emitido al endpoint del cliente replica el formato de Django
+/// The envelope emitted to the client's endpoint replicates the Django format
 /// (`plane/bgtasks/webhook_task.py::webhook_send_task`):
 ///
 /// ```json
@@ -63,9 +63,9 @@ const REQUEST_TIMEOUT: Duration = Duration::from_secs(10);
 ///   "data": ..., "activity": ... }
 /// ```
 ///
-/// `workspace_id` NO viaja en el job porque siempre se deriva del row del
-/// webhook — evita cualquier desalineación con el workspace del que se
-/// disparó el evento.
+/// `workspace_id` is NOT sent in the job because it is always derived from the
+/// webhook row — this avoids any misalignment with the workspace from which the
+/// event was triggered.
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct DeliverWebhookJob {
     pub webhook_id: Uuid,
@@ -73,18 +73,18 @@ pub struct DeliverWebhookJob {
     pub event: String,
     /// `"created"`, `"updated"`, `"deleted"`.
     pub action: String,
-    /// Modelo serializado (o `{"id": ...}` para deletes). Va en el campo `data`
-    /// del envelope — nombre alineado con Django.
+    /// Serialized model (or `{"id": ...}` for deletes). Goes in the `data` field
+    /// of the envelope — name aligned with Django.
     pub data: serde_json::Value,
-    /// Bloque opcional `activity` del envelope. Para create/delete normalmente
-    /// es `None`; para updates Django lo usa para reportar el diff por campo
+    /// Optional `activity` block of the envelope. For create/delete it's normally
+    /// `None`; for updates Django uses it to report the per-field diff
     /// (`{field, old_value, new_value, actor, ...}`). `None` → `"activity": null`
-    /// en el body, mismo contrato que Django, cuyo `webhook_activity` siempre
-    /// envía la clave.
+    /// in the body, same contract as Django, whose `webhook_activity` always
+    /// sends the key.
     #[serde(default)]
     pub activity: Option<serde_json::Value>,
-    /// UUID único por intento — se expone como header `X-Plane-Delivery`.
-    /// NO se incluye en el body del POST (Django tampoco lo incluye).
+    /// Unique UUID per attempt — exposed as `X-Plane-Delivery` header.
+    /// NOT included in the POST body (Django doesn't include it either).
     pub delivery_id: Uuid,
 }
 
@@ -97,15 +97,15 @@ pub async fn handle_deliver_webhook(
     let state: AppState = (*ctx).clone();
 
     if let Err(e) = run_delivery(&state, &job).await {
-        // `%e` oculta la causa raíz de `anyhow::Context` — aquí preferimos `?`
-        // para ver el detalle completo en incidentes.
+        // `%e` hides the root cause of `anyhow::Context` — here we prefer `?`
+        // to see full detail in incidents.
         tracing::warn!(
             webhook_id = %job.webhook_id,
             delivery_id = %job.delivery_id,
             event = %job.event,
             action = %job.action,
             error = ?e,
-            "webhook_delivery: intento fallido",
+            "webhook_delivery: failed attempt",
         );
         return Err(apalis::prelude::Error::Failed(std::sync::Arc::new(e.into())));
     }
@@ -113,41 +113,41 @@ pub async fn handle_deliver_webhook(
     Ok(())
 }
 
-// ── Flujo principal ──────────────────────────────────────────────────────────
+// ── Main Flow ────────────────────────────────────────────────────────────────
 
 async fn run_delivery(state: &AppState, job: &DeliverWebhookJob) -> anyhow::Result<()> {
     use anyhow::Context as _;
 
-    // 1. Cargar webhook (activo + no soft-deleted)
+    // 1. Load webhook (active + not soft-deleted)
     let webhook = webhooks::Entity::find_by_id(job.webhook_id)
         .active()
         .one(&state.db)
         .await?
-        .context("webhook no encontrado o soft-deleted")?;
+        .context("webhook not found or soft-deleted")?;
 
     if !webhook.is_active {
         tracing::debug!(
             webhook_id = %job.webhook_id,
-            "webhook inactivo — se omite la entrega",
+            "inactive webhook — skipping delivery",
         );
         return Ok(());
     }
 
-    // 2. Validar URL destino (defensa SSRF)
+    // 2. Validate destination URL (SSRF defense)
     validate_outbound_url(&webhook.url)?;
 
-    // 3. Construir el sobre JSON — mismo orden y shape que Django
+    // 3. Build the JSON envelope — same order and shape as Django
     //    (`plane/bgtasks/webhook_task.py::webhook_send_task`):
     //    { event, action, webhook_id, workspace_id, data, activity }
     //
-    //    `workspace_id` se toma del row del webhook — NUNCA del job. Garantiza
-    //    que el receptor ve el workspace real al que pertenece el webhook,
-    //    incluso si un caller pasara un id incorrecto.
+    //    `workspace_id` is taken from the webhook row — NEVER from the job. It guarantees
+    //    that the receiver sees the actual workspace the webhook belongs to,
+    //    even if a caller passed an incorrect id.
     //
-    //    `activity` se incluye siempre (como `null` cuando no se proporciona),
-    //    porque los consumidores Django existentes esperan la clave presente.
-    //    `delivery_id` NO va en el body — solo en el header `X-Plane-Delivery`,
-    //    igual que Django.
+    //    `activity` is always included (as `null` when not provided),
+    //    because existing Django consumers expect the key to be present.
+    //    `delivery_id` is NOT in the body — only in the `X-Plane-Delivery` header,
+    //    just like Django.
     let envelope = build_envelope(
         &job.event,
         &job.action,
@@ -157,13 +157,13 @@ async fn run_delivery(state: &AppState, job: &DeliverWebhookJob) -> anyhow::Resu
         job.activity.as_ref(),
     );
     let body_bytes = serde_json::to_vec(&envelope)
-        .context("no se pudo serializar el envelope del webhook")?;
+        .context("could not serialize webhook envelope")?;
 
-    // 4. Firma HMAC-SHA256 del body crudo con `secret_key`
+    // 4. HMAC-SHA256 signature of the raw body with `secret_key`
     let signature_bytes = hmac_sha256::HMAC::mac(&body_bytes, webhook.secret_key.as_bytes());
     let signature_hex = hex_encode_lower(&signature_bytes);
 
-    // 5. Log de request — signature redactada para no dejar rastro del HMAC
+    // 5. Request log — signature redacted not to leave traces of HMAC
     let request_headers_logged = serde_json::json!({
         "Content-Type": "application/json",
         "User-Agent": "Plane-Webhook/1.0",
@@ -175,7 +175,7 @@ async fn run_delivery(state: &AppState, job: &DeliverWebhookJob) -> anyhow::Resu
 
     let request_body_logged = truncate_utf8(&String::from_utf8_lossy(&body_bytes), MAX_REQUEST_BODY_LOG);
 
-    // 6. Envío HTTP (timeout por request — independiente del global)
+    // 6. HTTP send (timeout per request — independent from global)
     let send_result = state
         .http
         .post(&webhook.url)
@@ -189,13 +189,13 @@ async fn run_delivery(state: &AppState, job: &DeliverWebhookJob) -> anyhow::Resu
         .send()
         .await;
 
-    // 7. Clasificar respuesta y armar filas de log
+    // 7. Classify response and build log rows
     let (status_str, response_headers, response_body, transient_failure) = match send_result {
         Ok(resp) => {
             let status = resp.status();
             let status_num = status.as_u16();
 
-            // Headers → JSON objeto aplanado
+            // Headers → flattened JSON object
             let hdr_map: serde_json::Map<String, serde_json::Value> = resp
                 .headers()
                 .iter()
@@ -211,7 +211,7 @@ async fn run_delivery(state: &AppState, job: &DeliverWebhookJob) -> anyhow::Resu
             let body_text = resp.text().await.unwrap_or_default();
             let body_truncated = truncate_utf8(&body_text, MAX_RESPONSE_BODY_LOG);
 
-            // 5xx / 408 / 429 → transitorios (candidatos a reintento)
+            // 5xx / 408 / 429 → transient (retry candidates)
             let is_transient =
                 (500..600).contains(&status_num) || status_num == 408 || status_num == 429;
 
@@ -223,7 +223,7 @@ async fn run_delivery(state: &AppState, job: &DeliverWebhookJob) -> anyhow::Resu
             )
         }
         Err(e) => {
-            // network error, timeout, TLS, DNS — siempre transitorio
+            // network error, timeout, TLS, DNS — always transient
             let reason = if e.is_timeout() {
                 "timeout"
             } else if e.is_connect() {
@@ -235,7 +235,7 @@ async fn run_delivery(state: &AppState, job: &DeliverWebhookJob) -> anyhow::Resu
         }
     };
 
-    // 8. Persistir log — best-effort: si falla, se ha enviado igual
+    // 8. Persist log — best-effort: if it fails, it has been sent anyway
     let now: chrono::DateTime<chrono::FixedOffset> = chrono::Utc::now().into();
     let log_insert = webhook_logs::ActiveModel {
         id: Set(Uuid::new_v4()),
@@ -259,19 +259,19 @@ async fn run_delivery(state: &AppState, job: &DeliverWebhookJob) -> anyhow::Resu
     .await;
 
     if let Err(e) = log_insert {
-        // No abortamos: prioridad es la entrega, el log es contabilidad.
+        // We don't abort: priority is the delivery, the log is accounting.
         tracing::warn!(
             webhook_id = %webhook.id,
             delivery_id = %job.delivery_id,
             error = %e,
-            "no se pudo persistir webhook_logs",
+            "could not persist webhook_logs",
         );
     }
 
-    // 9. Señalar fallo transitorio al scheduler para reintento futuro
+    // 9. Signal transient failure to the scheduler for future retry
     if transient_failure {
         anyhow::bail!(
-            "fallo transitorio al entregar webhook (status={status_str})"
+            "transient failure delivering webhook (status={status_str})"
         );
     }
 
@@ -284,29 +284,29 @@ async fn run_delivery(state: &AppState, job: &DeliverWebhookJob) -> anyhow::Resu
     Ok(())
 }
 
-// ── Validación de URL saliente ───────────────────────────────────────────────
+// ── Outbound URL validation ───────────────────────────────────────────────
 
-/// Rechaza URLs que apunten a redes internas o loopback.
+/// Rejects URLs pointing to internal networks or loopback.
 ///
-/// Limitaciones conocidas:
-///   - Este check mira el string original. Si el host es un DNS que resuelve
-///     a una IP privada (DNS rebinding), `reqwest` lo resolverá en vuelo.
-///     Un pin de resolver sería el siguiente paso — requiere un custom
+/// Known limitations:
+///   - This check looks at the original string. If the host is a DNS that resolves
+///     to a private IP (DNS rebinding), `reqwest` will resolve it in flight.
+///     A resolver pin would be the next step — requires a custom
 ///     `reqwest::dns::Resolve`.
 fn validate_outbound_url(url: &str) -> anyhow::Result<()> {
     if !(url.starts_with("http://") || url.starts_with("https://")) {
-        anyhow::bail!("solo se aceptan esquemas http(s)");
+        anyhow::bail!("only http(s) schemes are accepted");
     }
 
-    // Extraer el componente host sin depender del crate `url`
+    // Extract host component without depending on `url` crate
     let without_scheme = url.split_once("://").map(|(_, r)| r).unwrap_or(url);
     let authority = without_scheme
         .split(['/', '?', '#'])
         .next()
         .unwrap_or("");
-    // descartar userinfo
+    // discard userinfo
     let host_port = authority.rsplit_once('@').map(|(_, h)| h).unwrap_or(authority);
-    // descartar puerto — ojo con IPv6 entre corchetes
+    // discard port — watch out for IPv6 in brackets
     let host = if let Some(stripped) = host_port.strip_prefix('[') {
         // [::1]:8080 — tomar hasta el `]`
         stripped.split_once(']').map(|(h, _)| h).unwrap_or(stripped)
@@ -315,7 +315,7 @@ fn validate_outbound_url(url: &str) -> anyhow::Result<()> {
     };
 
     if host.is_empty() {
-        anyhow::bail!("URL sin host");
+        anyhow::bail!("URL without host");
     }
 
     let lower = host.to_ascii_lowercase();
@@ -323,12 +323,12 @@ fn validate_outbound_url(url: &str) -> anyhow::Result<()> {
         lower.as_str(),
         "localhost" | "localhost.localdomain" | "broadcasthost" | "ip6-localhost" | "ip6-loopback"
     ) {
-        anyhow::bail!("host loopback no permitido");
+        anyhow::bail!("loopback host not allowed");
     }
 
     if let Ok(ip) = host.parse::<IpAddr>() {
         if is_blocked_ip(&ip) {
-            anyhow::bail!("IP privada/loopback/link-local no permitida: {ip}");
+            anyhow::bail!("Private/loopback/link-local IP not allowed: {ip}");
         }
     }
 
@@ -374,8 +374,8 @@ fn is_ipv6_link_local(v6: &Ipv6Addr) -> bool {
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
-/// Trunca una cadena a un máximo de bytes respetando char-boundaries UTF-8.
-/// Evita el panic de `&s[..n]` cuando `n` cae en medio de un codepoint.
+/// Truncates a string to a maximum of bytes respecting UTF-8 char-boundaries.
+/// Avoids the `&s[..n]` panic when `n` falls in the middle of a codepoint.
 fn truncate_utf8(s: &str, max_bytes: usize) -> String {
     if s.len() <= max_bytes {
         return s.to_owned();
@@ -400,13 +400,13 @@ fn hex_encode_lower(bytes: &[u8]) -> String {
     out
 }
 
-/// Arma el envelope JSON que viaja en el body del POST.
+/// Builds the JSON envelope that travels in the POST body.
 ///
-/// Orden y nombres de claves exactos que emite Django
-/// (`webhook_send_task`). Se extrae como función pura para poder
-/// freezar el contrato en tests — cualquier drift frente a Django
-/// (eg. renombrar `data` o mover `workspace_id`) rompería a los
-/// consumidores externos (Zapier, n8n, integraciones custom).
+/// Order and exact key names that Django emits
+/// (`webhook_send_task`). It is extracted as a pure function to be able to
+/// freeze the contract in tests — any drift compared to Django
+/// (e.g. renaming `data` or moving `workspace_id`) would break
+/// external consumers (Zapier, n8n, custom integrations).
 fn build_envelope(
     event: &str,
     action: &str,
@@ -415,8 +415,8 @@ fn build_envelope(
     data: &serde_json::Value,
     activity: Option<&serde_json::Value>,
 ) -> serde_json::Value {
-    // `Option::None` se serializa como `null` — necesario para que la clave
-    // `activity` esté siempre presente en el body, como Django.
+    // `Option::None` serializes as `null` — necessary for the
+    // `activity` key to always be present in the body, as Django does.
     let activity_val: &serde_json::Value = activity.unwrap_or(&serde_json::Value::Null);
     serde_json::json!({
         "event": event,
@@ -428,7 +428,7 @@ fn build_envelope(
     })
 }
 
-// ── Tests unitarios ──────────────────────────────────────────────────────────
+// ── Unit Tests ───────────────────────────────────────────────────────────────
 
 #[cfg(test)]
 mod tests {
@@ -482,10 +482,10 @@ mod tests {
 
     #[test]
     fn hex_encoding_matches_openssl() {
-        // 32 bytes de ceros → 64 '0'
+        // 32 zero bytes -> 64 '0'
         let zeros = [0u8; 32];
         assert_eq!(hex_encode_lower(&zeros), "0".repeat(64));
-        // Caso conocido: HMAC-SHA256("", "") = "b613679a0814d9ec772f95d778c35fc5ff1697c493715653c6c712144292c5ad"
+        // Known case: HMAC-SHA256("", "") = "b613679a0814d9ec772f95d778c35fc5ff1697c493715653c6c712144292c5ad"
         let mac = hmac_sha256::HMAC::mac(b"", b"");
         assert_eq!(
             hex_encode_lower(&mac),
@@ -495,24 +495,24 @@ mod tests {
 
     #[test]
     fn truncate_respects_utf8_boundaries() {
-        // 'é' = 2 bytes en UTF-8 — truncar en medio debería retroceder
+        // 'é' = 2 bytes in UTF-8 — truncating in the middle should back up
         let input = "a".to_owned() + &"é".repeat(100);
         let out = truncate_utf8(&input, 5);
-        // no debe panicar y debe preservar char boundary
+        // should not panic and should preserve char boundary
         assert!(out.is_char_boundary(out.find('…').unwrap_or(out.len())));
     }
 
     #[test]
     fn truncate_passes_short_strings_through() {
-        assert_eq!(truncate_utf8("hola", 100), "hola");
+        assert_eq!(truncate_utf8("hello", 100), "hello");
     }
 
-    // ── Contrato de envelope (paridad Django) ────────────────────────────
+    // ── Envelope contract (Django parity) ────────────────────────────
     //
-    // Estos tests congelan el shape exacto del body que viaja al endpoint
-    // del cliente. Cualquier cambio — renombrar una clave, cambiar el orden,
-    // omitir `activity` cuando es None — rompería a los consumidores externos
-    // que ya procesan este formato.
+    // These tests freeze the exact shape of the body that travels to the
+    // client's endpoint. Any change — renaming a key, changing the order,
+    // omitting `activity` when it is None — would break external consumers
+    // already processing this format.
 
     #[test]
     fn envelope_shape_matches_django_for_create() {
@@ -529,15 +529,15 @@ mod tests {
             None,
         );
 
-        // Todas las claves presentes
-        let obj = envelope.as_object().expect("envelope debe ser un objeto JSON");
-        assert_eq!(obj.len(), 6, "envelope debe tener 6 claves (event, action, webhook_id, workspace_id, data, activity)");
+        // All keys present
+        let obj = envelope.as_object().expect("envelope must be a JSON object");
+        assert_eq!(obj.len(), 6, "envelope must have 6 keys (event, action, webhook_id, workspace_id, data, activity)");
         assert_eq!(obj["event"], "project");
         assert_eq!(obj["action"], "created");
         assert_eq!(obj["webhook_id"], webhook_id.to_string());
         assert_eq!(obj["workspace_id"], workspace_id.to_string());
         assert_eq!(obj["data"], data);
-        // `activity: null` cuando no se proporciona — Django envía la clave siempre
+        // `activity: null` when not provided — Django always sends the key
         assert_eq!(obj["activity"], serde_json::Value::Null);
     }
 
@@ -566,8 +566,8 @@ mod tests {
 
     #[test]
     fn envelope_omits_delivery_id_from_body() {
-        // Django NO incluye delivery_id en el body — solo en el header
-        // `X-Plane-Delivery`. El envelope tampoco debe incluirlo.
+        // Django DOES NOT include delivery_id in the body — only in the
+        // `X-Plane-Delivery` header. The envelope must not include it either.
         let envelope = build_envelope(
             "issue",
             "deleted",
@@ -576,6 +576,6 @@ mod tests {
             &serde_json::json!({"id": "x"}),
             None,
         );
-        assert!(envelope.get("delivery_id").is_none(), "delivery_id no debe estar en el body");
+        assert!(envelope.get("delivery_id").is_none(), "delivery_id must not be in the body");
     }
 }

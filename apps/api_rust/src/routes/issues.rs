@@ -1,7 +1,7 @@
 // src/routes/issues.rs
-//! Endpoints de Issues (work items).
+//! Issues endpoints (work items).
 //!
-//! Endpoints implementados:
+//! Implemented endpoints:
 //!   GET    /api/workspaces/{slug}/projects/{project_id}/issues/
 //!   POST   /api/workspaces/{slug}/projects/{project_id}/issues/
 //!   GET    /api/workspaces/{slug}/projects/{project_id}/issues/{pk}/
@@ -39,21 +39,21 @@ use crate::{
 
 // ── DTOs ─────────────────────────────────────────────────────────────────────
 
-/// Shape de `GET /workspaces/{slug}/projects/{project_id}/issues/{pk}/`.
+/// Shape of `GET /workspaces/{slug}/projects/{project_id}/issues/{pk}/`.
 ///
-/// Espejo EXACTO de `IssueDetailSerializer` en
-/// `apps/api/plane/app/serializers/issue.py:924-935`, que extiende
-/// `IssueSerializer` (línea 760) con `description_html`, `is_subscribed`,
-/// `is_intake`. El frontend (`packages/types/src/issues/issue.ts:TIssue`)
-/// consume exactamente este shape.
+/// EXACT mirror of `IssueDetailSerializer` in
+/// `apps/api/plane/app/serializers/issue.py:924-935`, which extends
+/// `IssueSerializer` (line 760) with `description_html`, `is_subscribed`,
+/// `is_intake`. The frontend (`packages/types/src/issues/issue.ts:TIssue`)
+/// consumes exactly this shape.
 ///
-/// # Diferencias con el DTO previo (`IssueResponse`)
-/// - Sin `workspace_id` — Django no lo incluye en el serializer de detail.
-/// - Sin `type_id` — tampoco está en `IssueSerializer.Meta.fields`.
-/// - Renombres: `created_by_id → created_by`, `updated_by_id → updated_by`,
-///   `estimate_point_id → estimate_point` (convención Django cuando el campo
-///   se declara como FK en el serializer, no como UUIDField crudo).
-/// - Añadidos: `cycle_id`, `module_ids`, `sub_issues_count`, `attachment_count`,
+/// # Differences with previous DTO (`IssueResponse`)
+/// - No `workspace_id` — Django does not include it in the detail serializer.
+/// - No `type_id` — also not in `IssueSerializer.Meta.fields`.
+/// - Renames: `created_by_id → created_by`, `updated_by_id → updated_by`,
+///   `estimate_point_id → estimate_point` (Django convention when the field
+///   is declared as a FK in the serializer, not as a raw UUIDField).
+/// - Added: `cycle_id`, `module_ids`, `sub_issues_count`, `attachment_count`,
 ///   `link_count`, `is_subscribed`, `is_intake`.
 #[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct IssueDetailResponse {
@@ -62,8 +62,8 @@ pub struct IssueDetailResponse {
     pub state_id: Option<Uuid>,
     pub sort_order: f64,
     pub completed_at: Option<chrono::DateTime<chrono::FixedOffset>>,
-    // Django expone el FK de estimate como `estimate_point` (source de la FK),
-    // no como `estimate_point_id` crudo. El frontend lee `estimate_point`.
+    // Django exposes the estimate FK as `estimate_point` (source of the FK),
+    // not as raw `estimate_point_id`. The frontend reads `estimate_point`.
     #[serde(rename = "estimate_point")]
     pub estimate_point_id: Option<Uuid>,
     pub priority: String,
@@ -72,18 +72,18 @@ pub struct IssueDetailResponse {
     pub sequence_id: i32,
     pub project_id: Uuid,
     pub parent_id: Option<Uuid>,
-    // Enriquecido — primer cycle activo asociado al issue.
+    // Enriched — first active cycle associated with the issue.
     pub cycle_id: Option<Uuid>,
-    // Enriquecidos — arrays de IDs de relaciones M2M.
+    // Enriched — arrays of M2M relationship IDs.
     pub module_ids: Vec<Uuid>,
     pub label_ids: Vec<Uuid>,
     pub assignee_ids: Vec<Uuid>,
-    // Enriquecidos — contadores agregados.
+    // Enriched — aggregated counters.
     pub sub_issues_count: i64,
     pub created_at: chrono::DateTime<chrono::FixedOffset>,
     pub updated_at: chrono::DateTime<chrono::FixedOffset>,
-    // Django renderiza los FKs de auditoría como `created_by`/`updated_by`
-    // (no `_id`) porque el serializer los declara como ForeignKey fields.
+    // Django renders audit FKs as `created_by`/`updated_by`
+    // (not `_id`) because the serializer declares them as ForeignKey fields.
     #[serde(rename = "created_by")]
     pub created_by_id: Option<Uuid>,
     #[serde(rename = "updated_by")]
@@ -93,26 +93,26 @@ pub struct IssueDetailResponse {
     pub is_draft: bool,
     pub archived_at: Option<chrono::NaiveDate>,
     pub type_id: Option<Uuid>,
-    // Extras propios de `IssueDetailSerializer` (no están en el shape list).
+    // Extras specific to `IssueDetailSerializer` (not in the list shape).
     pub description_html: String,
     pub is_subscribed: bool,
     pub is_intake: bool,
 }
 
-/// Shape de `POST /workspaces/{slug}/projects/{project_id}/issues/`.
+/// Shape of `POST /workspaces/{slug}/projects/{project_id}/issues/`.
 ///
-/// Espejo EXACTO de la proyección `.values(...)` que Django usa en
-/// `apps/api/plane/app/views/issue/base.py:427-454` tras crear un issue.
+/// EXACT mirror of the `.values(...)` projection that Django uses in
+/// `apps/api/plane/app/views/issue/base.py:427-454` after creating an issue.
 ///
-/// # Diferencias con `IssueDetailResponse`
-/// - Incluye `deleted_at` (siempre `null` inmediatamente tras create, pero
-///   Django lo proyecta — el frontend puede leerlo sin romperse).
-/// - Omite `description_html`, `is_subscribed`, `is_intake` — la vista de
-///   create no los expone.
+/// # Differences with `IssueDetailResponse`
+/// - Includes `deleted_at` (always `null` immediately after create, but
+///   Django projects it — the frontend can read it without breaking).
+/// - Omits `description_html`, `is_subscribed`, `is_intake` — the create view
+///   does not expose them.
 ///
-/// Mantener ambos shapes separados evita el antipatrón de "DTO unión con
-/// todos los campos opcionales", que pierde información y confunde al
-/// consumidor sobre qué endpoint está llamando.
+/// Keeping both shapes separate avoids the "union DTO with all optional fields"
+/// antipattern, which loses information and confuses the consumer about
+/// which endpoint is being called.
 #[derive(Debug, Serialize, utoipa::ToSchema)]
 pub struct IssueCreateResponse {
     pub id: Uuid,
@@ -147,21 +147,21 @@ pub struct IssueCreateResponse {
     pub deleted_at: Option<chrono::DateTime<chrono::FixedOffset>>,
 }
 
-/// Shape de `POST /workspaces/{slug}/projects/{project_id}/issues/`.
+/// Shape of `POST /workspaces/{slug}/projects/{project_id}/issues/`.
 ///
-/// Paridad exacta con `IssueCreateSerializer` (apps/api/plane/app/serializers/
-/// issue.py:82) y con el payload que construye el frontend desde
+/// Exact parity with `IssueCreateSerializer` (apps/api/plane/app/serializers/
+/// issue.py:82) and with the payload the frontend builds from
 /// `DEFAULT_WORK_ITEM_FORM_VALUES` (packages/constants/src/issue/modal.ts).
 ///
-/// # Convenciones críticas
-/// - `label_ids` / `assignee_ids` (plural + sufijo) son los nombres que usan
-///   DRF y el frontend; renombrarlos rompía la deserialización silenciosamente
-///   (los campos quedaban en `None` y la issue se creaba sin assignees/labels).
-/// - `estimate_point` sin `_id` — DRF expone la FK con ese nombre cuando se
-///   declara como `PrimaryKeyRelatedField(source="estimate_point", ...)`.
-/// - Todos los `Option<Uuid>` / `Option<NaiveDate>` usan deserializadores que
-///   convierten `""` a `None`, porque el frontend manda `state_id: ""` y
-///   fechas vacías por default — serde nativo falla con 422.
+/// # Critical conventions
+/// - `label_ids` / `assignee_ids` (plural + suffix) are the names used by
+///   DRF and the frontend; renaming them silently broke deserialization
+///   (fields remained `None` and the issue was created without assignees/labels).
+/// - `estimate_point` without `_id` — DRF exposes the FK with that name when
+///   declared as `PrimaryKeyRelatedField(source="estimate_point", ...)`.
+/// - All `Option<Uuid>` / `Option<NaiveDate>` use deserializers that
+///   convert `""` to `None`, because the frontend sends `state_id: ""` and
+///   empty dates by default — native serde fails with 422.
 #[derive(Debug, Deserialize, utoipa::ToSchema)]
 pub struct CreateIssueRequest {
     pub name: String,
@@ -179,11 +179,11 @@ pub struct CreateIssueRequest {
     pub estimate_point: Option<Uuid>,
     #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_empty_as_none_uuid")]
     pub type_id: Option<Uuid>,
-    // `deserialize_uuid_list_filter_nulls` — el frontend (react-hook-form)
-    // a veces inicializa estos arrays con `[null]` cuando el select de
-    // asignee/label arranca en "unassigned". Serde nativo fallaría con 422
-    // al topar `null` dentro de `Vec<Uuid>`. Django lo tolera porque
-    // Postgres descarta NULLs del `IN (...)` al final.
+    // `deserialize_uuid_list_filter_nulls` — the frontend (react-hook-form)
+    // sometimes initializes these arrays with `[null]` when the assignee/label
+    // select starts at "unassigned". Native serde would fail with 422
+    // upon encountering `null` inside `Vec<Uuid>`. Django tolerates it because
+    // Postgres discards NULLs from the `IN (...)` at the end.
     #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_uuid_list_filter_nulls")]
     pub assignee_ids: Option<Vec<Uuid>>,
     #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_uuid_list_filter_nulls")]
@@ -207,10 +207,10 @@ pub struct UpdateIssueRequest {
     pub estimate_point: Option<Uuid>,
     #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_empty_as_none_uuid")]
     pub type_id: Option<Uuid>,
-    // `deserialize_uuid_list_filter_nulls` — mismo motivo que en
-    // `CreateIssueRequest`: el frontend envía `[null]` desde react-hook-form
-    // al deseleccionar asignees o labels (regresión observada con payload
-    // real `PATCH /issues/{id}/` devolviendo 422 con el mensaje
+    // `deserialize_uuid_list_filter_nulls` — same reason as in
+    // `CreateIssueRequest`: the frontend sends `[null]` from react-hook-form
+    // when deselecting assignees or labels (regression observed with real
+    // `PATCH /issues/{id}/` payload returning 422 with the message
     // `assignee_ids[0]: invalid type: null, expected a formatted UUID string`).
     #[serde(default, deserialize_with = "crate::utils::serde_empty::deserialize_uuid_list_filter_nulls")]
     pub assignee_ids: Option<Vec<Uuid>>,
@@ -219,37 +219,36 @@ pub struct UpdateIssueRequest {
     pub is_draft: Option<bool>,
 }
 
-// ── Query params para list_issues ────────────────────────────────────────────
+// ── Query params for list_issues ────────────────────────────────────────────
 
-/// Query params de `GET /workspaces/{slug}/projects/{project_id}/issues/`.
-/// Mirror parcial de `IssueViewSet.list()` (apps/api/plane/app/views/issue/base.py:251).
+/// Query params for `GET /workspaces/{slug}/projects/{project_id}/issues/`.
+/// Partial mirror of `IssueViewSet.list()` (apps/api/plane/app/views/issue/base.py:251).
 ///
-/// Campos postergados a futuras iteraciones (no críticos para desbloquear el
-/// render del panel de integrations):
-///   - `group_by` / `sub_group_by`    → requieren paginators dedicados.
-///   - filtros de `issue_filters(...)` → labels, assignees, priority, etc.
+/// Fields postponed to future iterations (not critical to unlock integration panel rendering):
+///   - `group_by` / `sub_group_by`    → require dedicated paginators.
+///   - filters from `issue_filters(...)` → labels, assignees, priority, etc.
 #[derive(Debug, Deserialize)]
 pub struct ListIssuesQuery {
-    // ── Paginación / orden ────────────────────────────────────────────────────
+    // ── Pagination / order ────────────────────────────────────────────────────
     pub cursor:   Option<String>,
     pub per_page: Option<u64>,
     pub order_by: Option<String>,
 
-    // ── Toggles simples ───────────────────────────────────────────────────────
-    /// `false` excluye sub-issues (mirror de `filter_sub_issue_toggle`
-    /// en plane/utils/issue_filters.py:380).
+    // ── Simple toggles ───────────────────────────────────────────────────────
+    /// `false` excludes sub-issues (mirror of `filter_sub_issue_toggle`
+    /// in plane/utils/issue_filters.py:380).
     pub sub_issue: Option<String>,
-    /// Filtro incremental — solo issues actualizados después de este timestamp.
-    /// Mirror del `updated_at__gt` en base.py:256.
+    /// Incremental filter — only issues updated after this timestamp.
+    /// Mirror of `updated_at__gt` in base.py:256.
     #[serde(rename = "updated_at__gt")]
     pub updated_at_gt: Option<chrono::DateTime<chrono::FixedOffset>>,
 
-    // ── Filtros delegados al módulo `issue_filters` ──────────────────────────
+    // ── Filters delegated to `issue_filters` module ──────────────────────────
     //
-    // Se inlinean aquí porque axum's `Query<T>` usa `serde_urlencoded`, que
-    // no soporta `#[serde(flatten)]`. La duplicación entre este struct y
-    // `WorkspaceIssuesQuery` es el precio — la lógica de parsing y
-    // aplicación vive en un solo lugar (`issue_filters::apply_issue_filters`).
+    // Inlined here because axum's `Query<T>` uses `serde_urlencoded`, which
+    // does not support `#[serde(flatten)]`. Duplication between this struct and
+    // `WorkspaceIssuesQuery` is the cost — parsing and application logic
+    // lives in one place (`issue_filters::apply_issue_filters`).
     pub state:             Option<String>,
     pub state_group:       Option<String>,
     pub priority:          Option<String>,
@@ -262,25 +261,25 @@ pub struct ListIssuesQuery {
     pub assignees:         Option<String>,
     pub module:            Option<String>,
     pub cycle:             Option<String>,
-    /// CSV de `user_ids` — mirror de `filter_subscribed_issues`
-    /// (issue_filters.py:392-403). Shared con el resto de listados de issues.
+    /// CSV of `user_ids` — mirror of `filter_subscribed_issues`
+    /// (issue_filters.py:392-403). Shared with the rest of issue listings.
     pub subscriber:        Option<String>,
     #[serde(rename = "type")]
     pub type_filter:       Option<String>,
     pub start_target_date: Option<String>,
 
-    // ── Rich filters (subconjunto Django-parity) ─────────────────────────────
+    // ── Rich filters (Django-parity subset) ─────────────────────────────
     //
-    // Blob JSON que el frontend envía en spreadsheet layout y vistas guardadas.
-    // Se parsea con `issue_filters::merge_json_filters` y se fusiona en los
-    // flat params; keys desconocidas → 400.
+    // JSON blob that the frontend sends in spreadsheet layout and saved views.
+    // Parsed with `issue_filters::merge_json_filters` and merged into
+    // flat params; unknown keys → 400.
     pub filters:           Option<String>,
 }
 
 impl ListIssuesQuery {
-    /// Construye los parámetros de filtro para pasar a
-    /// `issue_filters::apply_issue_filters`. Los campos son `Option<String>`,
-    /// así que el move es barato (no allocations extra).
+    /// Builds filter parameters to pass to
+    /// `issue_filters::apply_issue_filters`. Fields are `Option<String>`,
+    /// so the move is cheap (no extra allocations).
     fn to_filter_params(&self) -> crate::routes::issue_filters::IssueFilterParams {
         crate::routes::issue_filters::IssueFilterParams {
             state:             self.state.clone(),
@@ -302,19 +301,19 @@ impl ListIssuesQuery {
     }
 }
 
-// ── DTO serializado en la respuesta paginada ─────────────────────────────────
+// ── DTO serialized in the paginated response ─────────────────────────────────
 
-/// Espejo exacto de `issue_on_results` en
+/// Exact mirror of `issue_on_results` in
 /// `apps/api/plane/utils/grouper.py:93-141`.
 ///
-/// Son los 23 campos que Django expone vía `.values(*required_fields)` en el
-/// listado paginado, más los tres arrays enriquecidos (`assignee_ids`,
+/// These are the 23 fields Django exposes via `.values(*required_fields)` in the
+/// paginated listing, plus the three enriched arrays (`assignee_ids`,
 /// `label_ids`, `module_ids`).
 ///
-/// Los nombres se serializan exactamente como en Django para que el frontend
-/// (`base-issues.store.ts` + `packages/types/src/issues/issue.ts`) no requiera
-/// cambios. `state__group` usa rename explícito para respetar el doble-guion
-/// bajo de Django.
+/// Names are serialized exactly as in Django so the frontend
+/// (`base-issues.store.ts` + `packages/types/src/issues/issue.ts`) requires
+/// no changes. `state__group` uses explicit rename to respect Django's
+/// double-underscore.
 #[derive(Debug, Serialize)]
 pub struct ProjectIssueItem {
     pub id:               Uuid,
@@ -349,30 +348,29 @@ pub struct ProjectIssueItem {
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
-/// Construye el shape `IssueDetailResponse` para un issue individual,
-/// reutilizando el helper compartido `load_enrichment` + dos queries
-/// específicas de detalle.
+/// Builds the `IssueDetailResponse` shape for an individual issue,
+/// reusing the shared helper `load_enrichment` + two detail-specific queries.
 ///
-/// Espejo de las anotaciones del `retrieve()` en
+/// Mirror of annotations in `retrieve()` in
 /// `apps/api/plane/app/views/issue/base.py:480-575`.
 ///
-/// # Campos poblados (vs commit 1, que dejaba stubs)
+/// # Populated fields (vs commit 1, which left stubs)
 /// - `cycle_id`, `module_ids`, `sub_issues_count`, `attachment_count`,
-///   `link_count` — vía `load_enrichment`.
-/// - `is_subscribed` — query puntual a `issue_subscribers`.
-/// - `is_intake`    — query puntual a `intake_issues` con status ∈ (-2, 0).
+///   `link_count` — via `load_enrichment`.
+/// - `is_subscribed` — specific query to `issue_subscribers`.
+/// - `is_intake`    — specific query to `intake_issues` with status ∈ (-2, 0).
 ///
-/// # Estrategia
-/// `load_enrichment` está diseñado para batching N issues; aquí lo usamos
-/// con N=1. El overhead es una query por relación en lugar de una query
-/// por issue × relación — sigue siendo O(1) roundtrips. Mantener un solo
-/// helper de enrichment (en vez de una versión "single" y otra "batch")
-/// evita drift entre ambos código paths.
+/// # Strategy
+/// `load_enrichment` is designed for batching N issues; here we use it
+/// with N=1. Overhead is one query per relationship instead of one query
+/// per issue × relationship — still O(1) roundtrips. Maintaining a single
+/// enrichment helper (instead of "single" and "batch" versions)
+/// avoids drift between both code paths.
 ///
 /// # `state_ids = &[]`
-/// `IssueDetailResponse` no expone `state__group` (solo el listing lo usa
-/// vía `ProjectIssueItem`). Pasamos slice vacío → `load_enrichment` hace
-/// early-return de la query de states.
+/// `IssueDetailResponse` does not expose `state__group` (only the listing uses it
+/// via `ProjectIssueItem`). We pass an empty slice → `load_enrichment` does an
+/// early-return for the states query.
 async fn build_detail_response(
     db: &sea_orm::DatabaseConnection,
     issue_model: issues::Model,
@@ -382,9 +380,9 @@ async fn build_detail_response(
     let issue_ids = [id];
     let mut maps = load_enrichment(db, &issue_ids, &[]).await?;
 
-    // is_subscribed — mirror del `Exists(IssueSubscriber.objects.filter(...))`
-    // en base.py:566-574. Usamos `count > 0` como equivalente a EXISTS; el
-    // índice compuesto (issue_id, subscriber_id) hace que la query sea O(log n).
+    // is_subscribed — mirror of `Exists(IssueSubscriber.objects.filter(...))`
+    // in base.py:566-574. We use `count > 0` as equivalent to EXISTS; the
+    // composite index (issue_id, subscriber_id) makes the query O(log n).
     let is_subscribed = issue_subscribers::Entity::find()
         .active()
         .filter(issue_subscribers::Column::IssueId.eq(id))
@@ -394,17 +392,17 @@ async fn build_detail_response(
         .map_err(AppError::Database)?
         > 0;
 
-    // is_intake — mirror del pattern en base.py:1305-1313.
+    // is_intake — mirror of pattern in base.py:1305-1313.
     //
-    // # Sobre la divergencia con el `retrieve()` principal
-    // El `retrieve()` de Django (base.py:480-575) NO anota este campo —
-    // parece un oversight, porque `IssueDetailSerializer` lo declara como
-    // `BooleanField(read_only=True)`. El endpoint paralelo que consulta
-    // issues por `sequence_id` (`base.py:1225-1314`) sí lo anota.
+    // # About divergence with main `retrieve()`
+    // Django's `retrieve()` (base.py:480-575) DOES NOT annotate this field —
+    // seems like an oversight, as `IssueDetailSerializer` declares it as
+    // `BooleanField(read_only=True)`. The parallel endpoint that queries
+    // issues by `sequence_id` (`base.py:1225-1314`) does annotate it.
     //
-    // El Rust port lo pobla correctamente en ambos casos. Los statuses
-    // `-2` (PENDING) y `0` (SNOOZED) son los que cuentan como "en intake"
-    // según la lógica del inbox.
+    // The Rust port populates it correctly in both cases. Statuses
+    // `-2` (PENDING) and `0` (SNOOZED) are the ones that count as "in intake"
+    // according to inbox logic.
     let is_intake = intake_issues::Entity::find()
         .active()
         .filter(intake_issues::Column::IssueId.eq(id))
@@ -447,13 +445,13 @@ async fn build_detail_response(
     })
 }
 
-/// Construye el shape `IssueCreateResponse` — espejo de la proyección
-/// `.values(...)` en `base.py:427-454`.
+/// Builds `IssueCreateResponse` shape — mirror of `.values(...)` projection
+/// in `base.py:427-454`.
 ///
-/// Reutiliza `load_enrichment` para cycle/modules/labels/assignees/counts.
-/// No consulta `is_subscribed` ni `is_intake` (Django no los proyecta en
-/// create). Incluye `deleted_at` directamente del modelo (siempre `None`
-/// inmediatamente tras create, pero lo emitimos para paridad estricta).
+/// Reuses `load_enrichment` for cycle/modules/labels/assignees/counts.
+/// Does not query `is_subscribed` or `is_intake` (Django does not project them in
+/// create). Includes `deleted_at` directly from the model (always `None`
+/// immediately after create, but we emit it for strict parity).
 async fn build_create_response(
     db: &sea_orm::DatabaseConnection,
     issue_model: issues::Model,
@@ -493,8 +491,8 @@ async fn build_create_response(
     })
 }
 
-/// Sincroniza los assignees de un issue dentro de una transacción.
-/// Soft-delete los existentes que no estén en `new_ids`, inserta los nuevos.
+/// Synchronizes issue assignees within a transaction.
+/// Soft-deletes existing ones not in `new_ids`, inserts new ones.
 async fn sync_assignees(
     txn: &sea_orm::DatabaseTransaction,
     issue_id: Uuid,
@@ -503,7 +501,7 @@ async fn sync_assignees(
     actor_id: Uuid,
     new_ids: &[Uuid],
 ) -> Result<(), AppError> {
-    // Soft-delete todos los existentes
+    // Soft-delete all existing ones
     let existing = issue_assignees::Entity::find()
         .filter(issue_assignees::Column::IssueId.eq(issue_id))
         .filter(issue_assignees::Column::DeletedAt.is_null())
@@ -515,14 +513,14 @@ async fn sync_assignees(
     for row in existing {
         let mut am: issue_assignees::ActiveModel = row.into();
         am.deleted_at = Set(Some(now));
-        // Django usa auto_now=True en updated_at (TimeAuditModel).
+        // Django uses auto_now=True for updated_at (TimeAuditModel).
         am.updated_at = Set(now);
         am.update(txn).await.map_err(AppError::Database)?;
     }
 
-    // Insertar nuevos. created_at / updated_at explícitos porque
-    // issue_assignees::ActiveModelBehavior está vacío y las columnas son
-    // NOT NULL (mismo patrón que labels.rs / issues).
+    // Insert new ones. Explicit created_at / updated_at because
+    // issue_assignees::ActiveModelBehavior is empty and columns are
+    // NOT NULL (same pattern as labels.rs / issues).
     for assignee_id in new_ids {
         issue_assignees::ActiveModel {
             id: Set(Uuid::new_v4()),
@@ -543,7 +541,7 @@ async fn sync_assignees(
     Ok(())
 }
 
-/// Sincroniza los labels de un issue dentro de una transacción.
+/// Synchronizes issue labels within a transaction.
 async fn sync_labels(
     txn: &sea_orm::DatabaseTransaction,
     issue_id: Uuid,
@@ -563,13 +561,13 @@ async fn sync_labels(
     for row in existing {
         let mut am: issue_labels::ActiveModel = row.into();
         am.deleted_at = Set(Some(now));
-        // Django usa auto_now=True en updated_at (TimeAuditModel).
+        // Django uses auto_now=True for updated_at (TimeAuditModel).
         am.updated_at = Set(now);
         am.update(txn).await.map_err(AppError::Database)?;
     }
 
     for label_id in new_ids {
-        // Verificar que el label pertenece al proyecto antes de insertar
+        // Verify label belongs to project before inserting
         let exists = labels::Entity::find_by_id(*label_id)
             .filter(labels::Column::ProjectId.eq(project_id))
             .filter(labels::Column::DeletedAt.is_null())
@@ -578,9 +576,9 @@ async fn sync_labels(
             .map_err(AppError::Database)?;
 
         if exists.is_some() {
-            // created_at / updated_at explícitos (misma razón que
-            // sync_assignees / labels.rs: ActiveModelBehavior vacío,
-            // columnas NOT NULL).
+            // Explicit created_at / updated_at (same reason as
+            // sync_assignees / labels.rs: ActiveModelBehavior empty,
+            // NOT NULL columns).
             issue_labels::ActiveModel {
                 id: Set(Uuid::new_v4()),
                 issue_id: Set(issue_id),
@@ -610,13 +608,13 @@ async fn sync_labels(
     params(
         ("slug"       = String, Path,  description = "Workspace slug"),
         ("project_id" = Uuid,   Path,  description = "Project ID"),
-        ("cursor"     = Option<String>, Query, description = "Cursor Django: {per_page}:{page}:{is_prev}"),
-        ("per_page"   = Option<u64>,    Query, description = "Tamaño de página (ignorado si viene en cursor)"),
-        ("order_by"   = Option<String>, Query, description = "Campo de ordenamiento, ej: -created_at"),
+        ("cursor"     = Option<String>, Query, description = "Django Cursor: {per_page}:{page}:{is_prev}"),
+        ("per_page"   = Option<u64>,    Query, description = "Page size (ignored if coming from cursor)"),
+        ("order_by"   = Option<String>, Query, description = "Sort field, e.g.: -created_at"),
     ),
     responses(
-        (status = 200, description = "Lista paginada de issues del proyecto"),
-        (status = 403, description = "Sin acceso"),
+        (status = 200, description = "Paginated list of project issues"),
+        (status = 403, description = "No access"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -627,10 +625,10 @@ pub async fn list_issues(
 ) -> Result<impl IntoResponse, AppError> {
     require_role(guard.project_member.role, guard.workspace_member.role, ROLE_GUEST)?;
 
-    // Parsea `?filters=<JSON>` y fusiona los campos reconocidos en los
+    // Parse `?filters=<JSON>` and merge recognized fields into
     // filter_params (state_group__in, priority__in, label_id__in, etc.).
-    // Keys desconocidas retornan 400 para prevenir data leaks silenciosos.
-    // Ver `issue_filters::merge_json_filters` para el mapeo completo.
+    // Unknown keys return 400 to prevent silent data leaks.
+    // See `issue_filters::merge_json_filters` for complete mapping.
     let mut filter_params = params.to_filter_params();
     merge_json_filters(params.filters.as_deref(), &mut filter_params)?;
 
@@ -638,39 +636,38 @@ pub async fn list_issues(
     let project_id = guard.project.id;
     let user_id = guard.user.id;
 
-    // ── 1. Paginación ─────────────────────────────────────────────────────────
+    // ── 1. Pagination ─────────────────────────────────────────────────────────
     let fallback_per_page = params.per_page.unwrap_or(DEFAULT_PER_PAGE);
     let (page_size, current_page) = parse_cursor(params.cursor.as_deref(), fallback_per_page);
 
-    // ── 2. Mirror de `IssueManager.get_queryset` (db/models/issue.py:92-101) ──
+    // ── 2. Mirror of `IssueManager.get_queryset` (db/models/issue.py:92-101) ──
     //
-    // El manager Django aplica 4 exclusiones implícitas a TODOS los listados
-    // que parten de `Issue.issue_objects`. La lista hereda además el
+    // The Django manager applies 4 implicit exclusions to ALL listings
+    // starting from `Issue.issue_objects`. The list also inherits
     // `SoftDeletionManager.active()` → `deleted_at IS NULL`.
     //
     //   1. deleted_at IS NULL                    ← `.active()`
-    //   2. archived_at IS NULL                   ← filtro explícito
-    //   3. project.archived_at IS NULL           ← early-return si el project
-    //                                               cargado por el guard ya
-    //                                               está archivado. No puede
-    //                                               cambiar dentro de esta
-    //                                               request.
-    //   4. is_draft = false                      ← filtro explícito
-    //   5. state.group != 'triage'               ← pre-query de state_ids en
-    //                                               triage + NOT IN.
+    //   2. archived_at IS NULL                   ← explicit filter
+    //   3. project.archived_at IS NULL           ← early-return if the project
+    //                                               loaded by guard is already
+    //                                               archived. Cannot change
+    //                                               within this request.
+    //   4. is_draft = false                      ← explicit filter
+    //   5. state.group != 'triage'               ← pre-query of triage
+    //                                               state_ids + NOT IN.
     //
-    // Antipatrón evitado: NO hacemos JOIN con `states` en cada query; los
-    // state IDs en triage se resuelven en una única query adicional.
+    // Antipattern avoided: We DO NOT JOIN with `states` in every query;
+    // triage state IDs are resolved in a single additional query.
 
     if guard.project.archived_at.is_some() {
-        // Proyecto archivado → no hay issues visibles (mirror de la exclusión
-        // del manager). Respondemos con el shape paginado vacío.
+        // Archived project → no visible issues (mirror of manager exclusion).
+        // Return empty paginated shape.
         return Ok(Json(empty_paginated_response(page_size)));
     }
 
     let triage_state_ids = load_triage_state_ids(db, project_id).await?;
 
-    // ── 3. Query base de issues del proyecto ──────────────────────────────────
+    // ── 3. Project issues base query ──────────────────────────────────
     let mut base_query = issues::Entity::find()
         .active()
         .filter(issues::Column::ProjectId.eq(project_id))
@@ -681,46 +678,46 @@ pub async fn list_issues(
         base_query = base_query.filter(issues::Column::StateId.is_not_in(triage_state_ids));
     }
 
-    // ── 4. Restricción guest ──────────────────────────────────────────────────
+    // ── 4. Guest restriction ──────────────────────────────────────────────────
     //
-    // Mirror de base.py:297-308: si el user es role=5 en este proyecto Y el
-    // proyecto tiene `guest_view_all_features=false`, solo ve sus propios
+    // Mirror of base.py:297-308: if user is role=5 in this project AND
+    // project has `guest_view_all_features=false`, they only see their own
     // issues (`created_by = user`).
     //
-    // El guard ya validó la membresía; `project_member.role` es el rol en
-    // este proyecto específico.
+    // The guard already validated membership; `project_member.role` is the role in
+    // this specific project.
     let is_restricted_guest = guard.project_member.role == 5 && !guard.project.guest_view_all_features;
     if is_restricted_guest {
         base_query = base_query.filter(issues::Column::CreatedById.eq(user_id));
     }
 
-    // Toggle de sub-issues (mirror de `filter_sub_issue_toggle` en
-    // plane/utils/issue_filters.py:380). `sub_issue=false` oculta issues que
-    // tengan parent; cualquier otro valor (o ausencia) muestra todo.
+    // Sub-issues toggle (mirror of `filter_sub_issue_toggle` in
+    // plane/utils/issue_filters.py:380). `sub_issue=false` hides issues with
+    // a parent; any other value (or absence) shows all.
     if matches!(params.sub_issue.as_deref(), Some("false")) {
         base_query = base_query.filter(issues::Column::ParentId.is_null());
     }
 
-    // Sync delta (`updated_at__gt` en base.py:256). El frontend usa este
-    // filtro para refrescar solo lo que cambió desde el último poll.
+    // Sync delta (`updated_at__gt` in base.py:256). The frontend uses this
+    // filter to refresh only what changed since the last poll.
     if let Some(updated_at_gt) = params.updated_at_gt {
         base_query = base_query.filter(issues::Column::UpdatedAt.gt(updated_at_gt));
     }
 
-    // ── 4.5. Filtros del módulo compartido ────────────────────────────────────
+    // ── 4.5. Shared module filters ────────────────────────────────────
     //
     // `state`, `state_group`, `priority`, `created_by`, `parent`, `name`,
     // `start_date`, `target_date`, `labels`, `assignees`, `module`, `cycle`,
-    // `type`, `start_target_date`. Ver `routes::issue_filters` para la
-    // lista completa y el mapeo detallado.
+    // `type`, `start_target_date`. See `routes::issue_filters` for the
+    // complete list and detailed mapping.
     //
-    // `filter_params` ya incluye la fusión del blob `?filters=<JSON>` hecha
-    // al inicio del handler — usamos esa versión (NO llamar `to_filter_params`
-    // de nuevo, sombrearía la fusión y descartaría el JSON).
+    // `filter_params` already includes the merge of `?filters=<JSON>` blob made
+    // at the beginning of the handler — use that version (DO NOT call `to_filter_params`
+    // again, it would overshadow the merge and discard the JSON).
     //
-    // `FilteredQuery::Empty` → algún filtro implica 0 matches garantizados
-    // (p. ej. `labels=<uuid>` sin ningún issue con ese label). Hacemos
-    // early-return con el shape paginado vacío.
+    // `FilteredQuery::Empty` → some filter implies 0 guaranteed matches
+    // (e.g. `labels=<uuid>` with no issue having that label). Early-return
+    // with empty paginated shape.
     let workspace_id = guard.workspace.id;
     let filtered = apply_issue_filters(db, base_query, &filter_params, workspace_id).await?;
     let base_query = match filtered {
@@ -731,11 +728,11 @@ pub async fn list_issues(
     // ── 5. Total count ────────────────────────────────────────────────────────
     let total_results = base_query.clone().count(db).await.map_err(AppError::Database)?;
 
-    // ── 6. Ordenamiento ───────────────────────────────────────────────────────
+    // ── 6. Sorting ───────────────────────────────────────────────────────
     let order_by_param = params.order_by.as_deref().unwrap_or("-created_at");
     let ordered_query = apply_issue_order(base_query, order_by_param);
 
-    // ── 7. Paginación offset ──────────────────────────────────────────────────
+    // ── 7. Offset pagination ──────────────────────────────────────────────────
     let start_index = current_page * page_size;
     let issue_models = ordered_query
         .offset(start_index)
@@ -744,13 +741,13 @@ pub async fn list_issues(
         .await
         .map_err(AppError::Database)?;
 
-    // ── 8. Enriquecimiento batch (sin N+1) ────────────────────────────────────
+    // ── 8. Batch enrichment (no N+1) ────────────────────────────────────
     let issue_ids: Vec<Uuid> = issue_models.iter().map(|i| i.id).collect();
     let state_ids = collect_state_ids(&issue_models);
 
     let mut enrich = load_enrichment(db, &issue_ids, &state_ids).await?;
 
-    // ── 9. Serializar a ProjectIssueItem (mirror `issue_on_results`) ──────────
+    // ── 9. Serialize to ProjectIssueItem (mirror `issue_on_results`) ──────────
     let results: Vec<ProjectIssueItem> = issue_models
         .into_iter()
         .map(|m| {
@@ -791,10 +788,10 @@ pub async fn list_issues(
         })
         .collect();
 
-    // ── 10. Respuesta paginada ────────────────────────────────────────────────
+    // ── 10. Paginated response ────────────────────────────────────────────────
     //
-    // Shape mirror de `OffsetPaginator.paginate()` (plane/utils/paginator.py:715-730).
-    // El frontend lee `total_count` y `results` en base-issues.store.ts:1272-1291.
+    // Shape mirror of `OffsetPaginator.paginate()` (plane/utils/paginator.py:715-730).
+    // Frontend reads `total_count` and `results` in base-issues.store.ts:1272-1291.
     Ok(Json(paginated_response(
         results,
         page_size,
@@ -814,9 +811,9 @@ pub async fn list_issues(
         ("project_id" = Uuid, Path, description = "Project ID"),
     ),
     responses(
-        (status = 201, description = "Issue creado"),
-        (status = 400, description = "Error de validación"),
-        (status = 403, description = "Sin permiso"),
+        (status = 201, description = "Issue created"),
+        (status = 400, description = "Validation error"),
+        (status = 403, description = "Permission denied"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -828,11 +825,11 @@ pub async fn create_issue(
     require_role(guard.project_member.role, guard.workspace_member.role, ROLE_MEMBER)?;
 
     if body.name.trim().is_empty() {
-        return Err(AppError::BadRequest("name es requerido".into()));
+        return Err(AppError::BadRequest("name is required".into()));
     }
 
-    // Obtener el siguiente sequence_id de forma atómica dentro de SERIALIZABLE.
-    // Antipatrón corregido: MAX() fuera de transacción es TOCTOU bajo concurrencia.
+    // Atomic next sequence_id retrieval within SERIALIZABLE.
+    // Antipattern fixed: MAX() outside transaction is TOCTOU under concurrency.
     let project_id = guard.project.id;
     let workspace_id = guard.workspace.id;
     let user_id = guard.user.id;
@@ -854,26 +851,26 @@ pub async fn create_issue(
                 let parent_id = body.parent_id;
                 let start_date = body.start_date;
                 let target_date = body.target_date;
-                // Django expone la FK como `estimate_point` (sin `_id`) en el wire,
-                // pero el modelo SeaORM conserva `estimate_point_id` como nombre de
-                // columna. Hacemos el bridge aquí.
+                // Django exposes FK as `estimate_point` (no `_id`) over the wire,
+                // but SeaORM model keeps `estimate_point_id` as column name.
+                // Bridged here.
                 let estimate_point_id = body.estimate_point;
                 let type_id = body.type_id;
                 let assignees = assignees.clone();
                 let label_ids = label_ids.clone();
                 Box::pin(async move {
-                    // sequence_id = MAX(sequence_id) + 1 dentro del proyecto.
+                    // sequence_id = MAX(sequence_id) + 1 within project.
                     //
-                    // NOTA 1: MAX() sin GROUP BY siempre devuelve una fila
-                    // (aunque la tabla esté vacía, con valor NULL). Por eso
-                    // decodificamos a Option<i32> y flatten sobre el
-                    // Option<Option<i32>> que devuelve .one(); sin el
-                    // Option más externo, SeaORM trataría NULL como error de
-                    // decode ("A null value was encountered while decoding 0").
+                    // NOTE 1: MAX() without GROUP BY always returns a row
+                    // (even if table is empty, with NULL value). That's why
+                    // we decode to Option<i32> and flatten over the
+                    // Option<Option<i32>> returned by .one(); without the
+                    // outermost Option, SeaORM would treat NULL as decode error
+                    // ("A null value was encountered while decoding 0").
                     //
-                    // NOTA 2: el target es i32 (NO i64). En Postgres
-                    // MAX(INT4) → INT4; no se promueve a BIGINT como en MySQL.
-                    // Usar i64 produce
+                    // NOTE 2: target is i32 (NOT i64). In Postgres
+                    // MAX(INT4) → INT4; not promoted to BIGINT like in MySQL.
+                    // Using i64 produces
                     // "mismatched types; Rust type Option<i64> (as SQL type
                     // INT8) is not compatible with SQL type INT4".
                     use sea_orm::QuerySelect;
@@ -892,12 +889,12 @@ pub async fn create_issue(
 
                     let sequence_id = max_seq.unwrap_or(0) + 1;
 
-                    // created_at / updated_at se setean explícitamente porque
-                    // issues::ActiveModelBehavior está vacío (sin hook
-                    // before_save) y las columnas son NOT NULL. Dejarlas con
-                    // Default::default() hacía que SeaORM enviara NULL y la BD
-                    // rechazara con 23502 ("violates not-null constraint").
-                    // Mismo patrón que labels.rs / issue_extras.rs / pages.rs.
+                    // created_at / updated_at explicitly set because
+                    // issues::ActiveModelBehavior is empty (no before_save hook)
+                    // and columns are NOT NULL. Leaving them as
+                    // Default::default() made SeaORM send NULL and DB
+                    // reject with 23502 ("violates not-null constraint").
+                    // Same pattern as labels.rs / issue_extras.rs / pages.rs.
                     let now: chrono::DateTime<chrono::FixedOffset> =
                         chrono::Utc::now().into();
 
@@ -929,7 +926,7 @@ pub async fn create_issue(
 
                     let issue = new_issue.insert(txn).await.map_err(AppError::Database)?;
 
-                    // Sync assignees y labels dentro de la misma transacción
+                    // Sync assignees and labels within same transaction
                     if !assignees.is_empty() {
                         sync_assignees(txn, issue.id, project_id, workspace_id, user_id, &assignees).await?;
                     }
@@ -965,8 +962,8 @@ pub async fn create_issue(
         ("pk" = Uuid, Path, description = "Issue ID"),
     ),
     responses(
-        (status = 200, description = "Detalle del issue"),
-        (status = 404, description = "No encontrado"),
+        (status = 200, description = "Issue detail"),
+        (status = 404, description = "Not found"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -1001,29 +998,29 @@ pub async fn get_issue(
         ("pk" = Uuid, Path, description = "Issue ID"),
     ),
     responses(
-        (status = 200, description = "Issue actualizado (body: IssueDetailResponse)"),
-        (status = 404, description = "No encontrado"),
+        (status = 200, description = "Updated issue (body: IssueDetailResponse)"),
+        (status = 404, description = "Not found"),
     ),
     security(("TokenAuth" = []))
 )]
-/// Actualiza un issue parcialmente.
+/// Partially updates an issue.
 ///
-/// # Contrato de respuesta: 200 + IssueDetailResponse
-/// Django responde 204 No Content (`base.py:700`), pero esto fuerza al
-/// frontend a hacer un GET adicional o aplicar optimistic updates con
-/// riesgo de divergencia (race conditions con otros writers, normalización
-/// de campos derivados como `updated_at`/`updated_by`/`label_ids`, etc.).
+/// # Response contract: 200 + IssueDetailResponse
+/// Django responds with 204 No Content (`base.py:700`), but this forces
+/// frontend to perform an extra GET or apply optimistic updates with
+/// risk of divergence (race conditions with other writers, derivation
+/// of fields like `updated_at`/`updated_by`/`label_ids`, etc.).
 ///
-/// Devolver el issue actualizado:
-///   - elimina el round-trip GET tras cada PATCH,
-///   - es la fuente de verdad para campos calculados por el backend
-///     (timestamps, ids de M2M tras sync de labels/assignees),
-///   - mantiene compatibilidad para clientes que solo verifican
-///     `2xx` (lo común con fetch/axios — `response.ok` es `true`
-///     tanto para 200 como para 204).
+/// Returning the updated issue:
+///   - eliminates the GET round-trip after each PATCH,
+///   - is the source of truth for backend-calculated fields
+///     (timestamps, M2M ids after label/assignee sync),
+///   - maintains compatibility for clients that only check
+///     `2xx` (common with fetch/axios — `response.ok` is `true`
+///     for both 200 and 204).
 ///
-/// Decisión deliberada de DIVERGENCIA con Django; documentada también en
-/// el campo `responses` del `#[utoipa::path]` arriba.
+/// Deliberate DIVERGENCE decision from Django; also documented in
+/// the `responses` field of the `#[utoipa::path]` above.
 pub async fn update_issue(
     State(state): State<AppState>,
     guard: ProjectMemberGuard,
@@ -1053,9 +1050,9 @@ pub async fn update_issue(
         None
     };
 
-    // El valor de la tx ya no se descarta — lo usamos como base para construir
-    // la respuesta. `build_detail_response` re-lee con annotations (cycle_id,
-    // assignee_ids, label_ids, etc.) para devolver el shape completo.
+    // Tx value is no longer discarded — we use it as base to build
+    // response. `build_detail_response` re-reads with annotations (cycle_id,
+    // assignee_ids, label_ids, etc.) to return full shape.
     let updated = state
         .db
         .transaction::<_, issues::Model, AppError>(|txn| {
@@ -1069,8 +1066,8 @@ pub async fn update_issue(
             if let Some(priority) = body.priority.clone() {
                 am.priority = Set(priority);
             }
-            // Usar Option<Option<>> para diferenciar "no enviado" de "null explícito"
-            // En PATCH, si el campo viene en el body se aplica; si no, se preserva.
+            // Use Option<Option<>> to differentiate "not sent" from "explicit null"
+            // In PATCH, if field comes in body it's applied; if not, preserved.
             if body.state_id.is_some() {
                 am.state_id = Set(body.state_id);
             }
@@ -1086,7 +1083,7 @@ pub async fn update_issue(
             if let Some(draft) = body.is_draft {
                 am.is_draft = Set(draft);
             }
-            // Wire: `estimate_point` (paridad DRF) → columna: `estimate_point_id`.
+            // Wire: `estimate_point` (DRF parity) → column: `estimate_point_id`.
             if body.estimate_point.is_some() {
                 am.estimate_point_id = Set(body.estimate_point);
             }
@@ -1094,8 +1091,8 @@ pub async fn update_issue(
                 am.type_id = Set(body.type_id);
             }
             am.updated_by_id = Set(Some(user_id));
-            // Django usa auto_now=True en updated_at (TimeAuditModel). SeaORM lo
-            // dejaría Unchanged y el UPDATE no lo tocaría; hay que setearlo.
+            // Django uses auto_now=True for updated_at (TimeAuditModel). SeaORM would
+            // leave it Unchanged and UPDATE wouldn't touch it; must set it.
             am.updated_at = Set(chrono::Utc::now().into());
 
             let assignees = assignees.clone();
@@ -1134,8 +1131,8 @@ pub async fn update_issue(
         ("pk" = Uuid, Path, description = "Issue ID"),
     ),
     responses(
-        (status = 204, description = "Eliminado"),
-        (status = 404, description = "No encontrado"),
+        (status = 204, description = "Deleted"),
+        (status = 404, description = "Not found"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -1163,11 +1160,11 @@ pub async fn delete_issue(
 
 // ── GET /workspaces/{slug}/projects/{project_id}/issues/list/ ─────────────────
 //
-// Mirror de `IssueListEndpoint.get()` en `apps/api/plane/app/views/issue/base.py:80-133`.
-// Recibe `?issues=uuid1,uuid2,...` y retorna la lista de issues con ese ID
-// (sin paginación — el cliente ya conoce los IDs que quiere).
+// Mirror of `IssueListEndpoint.get()` in `apps/api/plane/app/views/issue/base.py:80-133`.
+// Receives `?issues=uuid1,uuid2,...` and returns the list of issues with those IDs
+// (without pagination — client already knows the IDs it wants).
 //
-// Shape de respuesta: Vec<ProjectIssueItem> (igual al shape de list_issues).
+// Response shape: Vec<ProjectIssueItem> (same as list_issues shape).
 
 #[derive(Debug, Deserialize)]
 pub struct IssueListByIdsQuery {
@@ -1185,9 +1182,9 @@ pub struct IssueListByIdsQuery {
         ("issues" = String, Query, description = "Comma-separated issue UUIDs"),
     ),
     responses(
-        (status = 200, description = "Lista de issues por IDs"),
-        (status = 400, description = "Parámetro issues requerido"),
-        (status = 403, description = "Sin permiso"),
+        (status = 200, description = "List of issues by IDs"),
+        (status = 400, description = "issues parameter is required"),
+        (status = 403, description = "Permission denied"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -1205,8 +1202,8 @@ pub async fn list_issues_by_ids(
         ));
     }
 
-    // Parse comma-separated UUIDs; ignorar strings vacíos/malformados
-    // (mirror del list-comprehension de Django: `[id for id in ids.split(",") if id != ""]`).
+    // Parse comma-separated UUIDs; ignore empty/malformed strings
+    // (mirror of Django list-comprehension: `[id for id in ids.split(",") if id != ""]`).
     let issue_ids: Vec<Uuid> = raw_ids
         .split(',')
         .filter_map(|s| s.trim().parse::<Uuid>().ok())
@@ -1220,7 +1217,7 @@ pub async fn list_issues_by_ids(
     let project_id = guard.project.id;
     let user_id = guard.user.id;
 
-    // Guest restriction: si role=5 y guest_view_all_features=false, solo sus issues.
+    // Guest restriction: if role=5 and guest_view_all_features=false, only their issues.
     let is_restricted_guest =
         guard.project_member.role == 5 && !guard.project.guest_view_all_features;
 
@@ -1287,13 +1284,13 @@ pub async fn list_issues_by_ids(
 
 // ── GET /workspaces/{slug}/projects/{project_id}/issues-detail/ ───────────────
 //
-// Mirror de `IssueDetailEndpoint.get()` en `apps/api/plane/app/views/issue/base.py:960-1090`.
-// Retorna una página paginada (shape Django OffsetPaginator) con el shape
-// completo de IssueListDetailSerializer (igual a ProjectIssueItem).
+// Mirror of `IssueDetailEndpoint.get()` in `apps/api/plane/app/views/issue/base.py:960-1090`.
+// Returns a paginated page (Django OffsetPaginator shape) with full
+// IssueListDetailSerializer shape (same as ProjectIssueItem).
 //
-// Diferencias clave vs list_issues:
-// - Incluye issues archivados y drafts (no aplica los filtros del IssueManager).
-// - Filtra por permisos de guest (owner || guest_view_all_features).
+// Key differences vs list_issues:
+// - Includes archived and draft issues (doesn't apply IssueManager filters).
+// - Filters by guest permissions (owner || guest_view_all_features).
 
 #[derive(Debug, Deserialize)]
 pub struct IssueDetailQuery {
@@ -1313,8 +1310,8 @@ pub struct IssueDetailQuery {
         ("order_by" = Option<String>, Query, description = "Sort field"),
     ),
     responses(
-        (status = 200, description = "Lista paginada de issues con detalle"),
-        (status = 403, description = "Sin permiso"),
+        (status = 200, description = "Paginated list of issues with detail"),
+        (status = 403, description = "Permission denied"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -1336,8 +1333,8 @@ pub async fn list_issues_detail(
     let is_restricted_guest =
         guard.project_member.role == 5 && !guard.project.guest_view_all_features;
 
-    // A diferencia de list_issues, IssueDetailEndpoint NO aplica los filtros
-    // del IssueManager (archived_at, is_draft, triage) — expone todos los issues.
+    // Unlike list_issues, IssueDetailEndpoint DOES NOT apply IssueManager
+    // filters (archived_at, is_draft, triage) — exposes all issues.
     let mut base_query = issues::Entity::find()
         .active()
         .filter(issues::Column::ProjectId.eq(project_id));
@@ -1411,15 +1408,15 @@ pub async fn list_issues_detail(
 
 // ── GET /workspaces/{slug}/projects/{project_id}/v2/issues/ ──────────────────
 //
-// Mirror de `IssuePaginatedViewSet.list()` en
+// Mirror of `IssuePaginatedViewSet.list()` in
 // `apps/api/plane/app/views/issue/base.py:803-958`.
 //
-// Diferencias vs list_issues (v1):
-// - Orden por `updated_at` ASC (sincronización delta para el cliente).
-// - Soporte de `?updated_at__gt=<datetime>` para sincronización incremental.
-// - Campo opcional `description_html` cuando `?description=true`.
-// - Aplica las mismas exclusiones del IssueManager (archived, draft, triage).
-// - La guest restriction también aplica.
+// Differences vs list_issues (v1):
+// - Sorted by `updated_at` ASC (delta sync for client).
+// - Supports `?updated_at__gt=<datetime>` for incremental sync.
+// - Optional `description_html` field when `?description=true`.
+// - Applies same IssueManager exclusions (archived, draft, triage).
+// - Guest restriction also applies.
 
 #[derive(Debug, Serialize)]
 pub struct V2IssueItem {
@@ -1459,10 +1456,10 @@ pub struct V2IssueItem {
 pub struct V2IssuesQuery {
     pub cursor:        Option<String>,
     pub per_page:      Option<u64>,
-    /// Fecha ISO-8601; solo retorna issues actualizados después de esta fecha.
+    /// ISO-8601 Date; only returns issues updated after this date.
     #[serde(rename = "updated_at__gt")]
     pub updated_at_gt: Option<chrono::DateTime<chrono::FixedOffset>>,
-    /// Si `"true"`, incluye `description_html` en la respuesta.
+    /// If `"true"`, includes `description_html` in response.
     pub description:   Option<String>,
 }
 
@@ -1478,8 +1475,8 @@ pub struct V2IssuesQuery {
         ("description" = Option<String>, Query, description = "Include description_html"),
     ),
     responses(
-        (status = 200, description = "Lista paginada ligera de issues (v2)"),
-        (status = 403, description = "Sin permiso"),
+        (status = 200, description = "Paginated lightweight issues list (v2)"),
+        (status = 403, description = "Permission denied"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -1497,7 +1494,7 @@ pub async fn list_issues_v2(
     let fallback_per_page = params.per_page.unwrap_or(DEFAULT_PER_PAGE);
     let (page_size, current_page) = parse_cursor(params.cursor.as_deref(), fallback_per_page);
 
-    // Proyecto archivado → vacío (mirror IssueManager)
+    // Archived project → empty (mirror IssueManager)
     if guard.project.archived_at.is_some() {
         return Ok(Json(empty_paginated_response(page_size)));
     }
@@ -1526,7 +1523,7 @@ pub async fn list_issues_v2(
         base_query = base_query.filter(issues::Column::UpdatedAt.gt(updated_at_gt));
     }
 
-    // v2 siempre ordena por updated_at ASC (para sincronización delta secuencial)
+    // v2 always sorts by updated_at ASC (for sequential delta sync)
     let ordered_query = base_query.clone().order_by(issues::Column::UpdatedAt, Order::Asc);
 
     let total_results = base_query.count(db).await.map_err(AppError::Database)?;

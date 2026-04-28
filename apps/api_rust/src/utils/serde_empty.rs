@@ -1,11 +1,11 @@
 // src/utils/serde_empty.rs
-//! Deserializers que tratan strings vacíos (`""`) como `None`.
+//! Deserializers that treat empty strings (`""`) as `None`.
 //!
-//! El frontend de Plane envía por defecto campos como `state_id: ""` cuando
-//! el usuario no ha seleccionado un valor (cf. `packages/constants/src/issue/
-//! modal.ts`). DRF/Django tolera ese caso convirtiéndolo a `None`, pero serde
-//! rechaza `""` al deserializar `Option<Uuid>` / `Option<NaiveDate>` y falla
-//! el request con 422 Unprocessable Entity.
+//! The Plane frontend by default sends fields like `state_id: ""` when
+//! the user has not selected a value (cf. `packages/constants/src/issue/
+//! modal.ts`). DRF/Django tolerates that case by converting it to `None`, but serde
+//! rejects `""` when deserializing `Option<Uuid>` / `Option<NaiveDate>` and fails
+//! the request with 422 Unprocessable Entity.
 //!
 //! Uso:
 //!
@@ -19,20 +19,20 @@
 //! }
 //! ```
 //!
-//! Nota: mantenemos un helper por tipo para que serde infiera correctamente.
-//! Un helper genérico con `T: FromStr` pelearía con la ausencia de impls de
-//! `Deserialize` por defecto en algunos tipos (e.g. `NaiveDate` acepta ISO-8601
-//! pero no rutas arbitrarias).
+//! Note: we keep one helper per type so that serde infers correctly.
+//! A generic helper with `T: FromStr` would struggle with the absence of
+//! `Deserialize` impls by default in some types (e.g., `NaiveDate` accepts ISO-8601
+//! but not arbitrary paths).
 
 use chrono::NaiveDate;
 use serde::{Deserialize, Deserializer};
 use uuid::Uuid;
 
-/// Acepta `null`, campo ausente, `""`, o un UUID válido.
+/// Accepts `null`, missing field, `""`, or a valid UUID.
 ///
-/// - `null` / ausente / `""`  → `None`
-/// - UUID válido              → `Some(Uuid)`
-/// - UUID inválido            → error de deserialización (400/422)
+/// - `null` / missing / `""`  → `None`
+/// - Valid UUID              → `Some(Uuid)`
+/// - Invalid UUID            → deserialization error (400/422)
 pub fn deserialize_empty_as_none_uuid<'de, D>(deserializer: D) -> Result<Option<Uuid>, D::Error>
 where
     D: Deserializer<'de>,
@@ -47,7 +47,7 @@ where
     }
 }
 
-/// Acepta `null`, campo ausente, `""`, o una fecha ISO-8601 (`YYYY-MM-DD`).
+/// Accepts `null`, missing field, `""`, or an ISO-8601 date (`YYYY-MM-DD`).
 pub fn deserialize_empty_as_none_date<'de, D>(
     deserializer: D,
 ) -> Result<Option<NaiveDate>, D::Error>
@@ -64,9 +64,9 @@ where
     }
 }
 
-/// Acepta `null`, campo ausente, `""`, o cualquier string no vacío.
+/// Accepts `null`, missing field, `""`, or any non-empty string.
 ///
-/// Útil para campos de texto opcionales (p. ej. `priority: ""`).
+/// Useful for optional text fields (e.g., `priority: ""`).
 pub fn deserialize_empty_as_none_string<'de, D>(
     deserializer: D,
 ) -> Result<Option<String>, D::Error>
@@ -77,25 +77,25 @@ where
     Ok(opt.filter(|s| !s.trim().is_empty()))
 }
 
-/// Deserializa un array tolerante de UUIDs — filtra `null` y `""`.
+/// Deserializes a tolerant array of UUIDs — filters `null` and `""`.
 ///
-/// El frontend de Plane envía a veces `assignee_ids: [null]` o
-/// `label_ids: ["", "<uuid>"]` cuando react-hook-form inicializa un select
-/// controlado con valor por default vacío. Serde nativo falla con
-/// 422 al intentar parsear `null` o `""` como `Uuid` dentro de `Vec<Uuid>`.
+/// The Plane frontend sometimes sends `assignee_ids: [null]` or
+/// `label_ids: ["", "<uuid>"]` when react-hook-form initializes a controlled
+/// select with an empty default value. Native Serde fails with
+/// 422 when trying to parse `null` or `""` as `Uuid` inside `Vec<Uuid>`.
 ///
-/// Django tolera este caso porque `ListField(child=PrimaryKeyRelatedField(...))`
-/// corre la validación por item y el `PrimaryKeyRelatedField` trata `None`
-/// como inválido pero el serializer en `apps/api/plane/app/serializers/
-/// issue.py:149-155` aplica `ProjectMember.objects.filter(member_id__in=...)`
-/// — Postgres simplemente descarta los NULLs del IN list.
+/// Django tolerates this case because `ListField(child=PrimaryKeyRelatedField(...))`
+/// runs per-item validation and `PrimaryKeyRelatedField` treats `None`
+/// as invalid but the serializer in `apps/api/plane/app/serializers/
+/// issue.py:149-155` applies `ProjectMember.objects.filter(member_id__in=...)`
+/// — Postgres simply discards the NULLs from the IN list.
 ///
-/// Semántica:
-/// - campo ausente        → `None`
+/// Semantics:
+/// - missing field        → `None`
 /// - `null`               → `None`
 /// - `[]`                 → `Some(vec![])`
-/// - `[null, "", "uuid"]` → `Some(vec![uuid])` (null y "" filtrados)
-/// - `["bad"]`            → error de deserialización (400/422)
+/// - `[null, "", "uuid"]` → `Some(vec![uuid])` (null and "" filtered)
+/// - `["bad"]`            → deserialization error (400/422)
 ///
 /// # Uso
 /// ```ignore
@@ -108,9 +108,9 @@ pub fn deserialize_uuid_list_filter_nulls<'de, D>(
 where
     D: Deserializer<'de>,
 {
-    // Paso 1: deserializar como `Option<Vec<Option<String>>>` — la
-    // representación más laxa posible. Acepta ausente, null, o array
-    // con items null / string.
+    // Step 1: deserialize as `Option<Vec<Option<String>>>` — the
+    // loosest possible representation. Accepts missing, null, or array
+    // with null / string items.
     let opt: Option<Vec<Option<String>>> = Option::deserialize(deserializer)?;
     match opt {
         None => Ok(None),
@@ -118,8 +118,8 @@ where
             let mut out = Vec::with_capacity(items.len());
             for item in items {
                 match item {
-                    None => continue,                           // filtrar null
-                    Some(s) if s.trim().is_empty() => continue, // filtrar ""
+                    None => continue,                           // filter null
+                    Some(s) if s.trim().is_empty() => continue, // filter ""
                     Some(s) => {
                         let u = Uuid::parse_str(&s).map_err(serde::de::Error::custom)?;
                         out.push(u);
@@ -228,9 +228,9 @@ mod tests {
 
     #[test]
     fn uuid_list_filters_null_items() {
-        // Esta es la regresión específica de la 422 en PATCH issues:
-        // frontend envía `assignee_ids: [null]` cuando RHF inicializa el
-        // select de "unassigned" con placeholder null.
+        // This is the specific regression of the 422 in PATCH issues:
+        // frontend sends `assignee_ids: [null]` when RHF initializes the
+        // "unassigned" select with null placeholder.
         let dto: ListDto = serde_json::from_str(r#"{"ids": [null]}"#).unwrap();
         assert_eq!(dto.ids, Some(vec![]));
     }

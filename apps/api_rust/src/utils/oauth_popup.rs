@@ -1,13 +1,13 @@
 // src/utils/oauth_popup.rs
-//! Helper para generar HTML de cierre de popup OAuth con postMessage al opener.
+//! Helper to generate OAuth popup closure HTML with postMessage to opener.
 
 use axum::response::Html;
 
-/// Tipos de mensaje permitidos para postMessage OAuth.
+/// Allowed message types for OAuth postMessage.
 ///
-/// [Fix #16] Allowlist tipada — evita XSS por interpolación de message_type
-/// no sanitizado (p.ej. si un atacante controla el parámetro `state=` del
-/// callback de GitHub y el tipo era un `&str` libre).
+/// [Fix #16] Typed allowlist — prevents XSS via unsanitized `message_type`
+/// interpolation (e.g. if an attacker controls the `state=` parameter of
+/// a GitHub callback and the type was a free `&str`).
 #[derive(Debug, Clone, Copy)]
 pub enum OAuthMessageType {
     GithubIntegration,
@@ -20,8 +20,8 @@ pub enum OAuthMessageType {
 }
 
 impl OAuthMessageType {
-    /// Retorna el string literal exacto enviado al frontend.
-    /// ⚠️ Los valores deben coincidir con los que espera el frontend Next.js.
+    /// Returns the exact literal string sent to the frontend.
+    /// ⚠️ Values must match what the Next.js frontend expects.
     pub fn as_str(&self) -> &'static str {
         match self {
             Self::GithubIntegration => "github-integration",
@@ -35,18 +35,18 @@ impl OAuthMessageType {
     }
 }
 
-/// Genera el HTML de cierre de popup OAuth con postMessage al opener.
+/// Generates the OAuth popup closure HTML with postMessage to the opener.
 ///
-/// [Fix #16] `message_type` es un enum tipado — nunca interpolado desde input externo.
-/// [Fix #17] El payload se serializa con `serde_json` para garantizar escaping
-/// correcto de todos los caracteres especiales (\n, ', ", backtick, etc.).
+/// [Fix #16] `message_type` is a typed enum — never interpolated from external input.
+/// [Fix #17] The payload is serialized with `serde_json` to ensure correct
+/// escaping of all special characters (\n, ', ", backtick, etc.).
 pub fn postmessage_html(
     success: bool,
     message_type: OAuthMessageType,
     error: Option<&str>,
     target_origin: Option<&str>,
 ) -> Html<String> {
-    // Serializar a JSON con escaping completo vía serde_json — nunca concatenar strings
+    // Serialize to JSON with full escaping via serde_json — never concatenate strings
     let payload = serde_json::json!({
         "type":    message_type.as_str(),
         "success": success,

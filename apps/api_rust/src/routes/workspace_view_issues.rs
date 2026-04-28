@@ -1,24 +1,24 @@
 // src/routes/workspace_view_issues.rs
-//! Endpoint de issues a nivel de workspace (vista global / spreadsheet).
+//! Issue endpoint at workspace level (global view / spreadsheet).
 //!
-//! Equivalente a `WorkspaceViewIssuesViewSet` en
+//! Equivalent to `WorkspaceViewIssuesViewSet` in
 //! `plane/app/views/view/base.py` → `plane/app/urls/views.py:52`.
 //!
-//! Ruta implementada:
+//! Implemented route:
 //!   GET /api/workspaces/{slug}/issues/
 //!
-//! Parámetros de query:
-//!   - cursor      : paginación Django (`{page_size}:{page}:{is_prev}`), default `100:0:0`
-//!   - per_page    : ignorado si viene en cursor; default 100
-//!   - order_by    : campo de ordenamiento, default `-created_at`
-//!   - sub_issue   : `false` = excluir sub-issues (parent_id IS NOT NULL), default muestra todo
+//! Query parameters:
+//!   - cursor      : Django pagination (`{page_size}:{page}:{is_prev}`), default `100:0:0`
+//!   - per_page    : ignored if provided in cursor; default 100
+//!   - order_by    : sort field, default `-created_at`
+//!   - sub_issue   : `false` = exclude sub-issues (parent_id IS NOT NULL), default shows all
 //!
-//! Lógica de permisos (mirror Django `_get_project_permission_filters`):
-//!   Para guest (role = 5):
-//!     - si project.guest_view_all_features = true  → ve todos los issues del proyecto
-//!     - si project.guest_view_all_features = false → ve solo sus propios issues (created_by)
-//!   Para member / admin (role > 5):
-//!     → ve todos los issues de los proyectos donde es miembro activo
+//! Permission logic (mirror Django `_get_project_permission_filters`):
+//!   For guests (role = 5):
+//!     - if project.guest_view_all_features = true  → sees all project issues
+//!     - if project.guest_view_all_features = false → sees only their own issues (created_by)
+//!   For member / admin (role > 5):
+//!     → sees all issues of the projects where they are an active member
 
 use axum::{
     extract::{Query, State},
@@ -50,21 +50,21 @@ use crate::{
 
 #[derive(Debug, Deserialize)]
 pub struct WorkspaceIssuesQuery {
-    // ── Paginación / orden ────────────────────────────────────────────────────
+    // ── Paging / ordering ─────────────────────────────────────────────────────
     pub cursor:        Option<String>,
     pub per_page:      Option<u64>,
     pub order_by:      Option<String>,
 
-    // ── Toggles simples ───────────────────────────────────────────────────────
+    // ── Simple Toggles ────────────────────────────────────────────────────────
     pub sub_issue:     Option<String>,
-    /// Filtro incremental — solo issues actualizados después de este timestamp.
-    /// Mirror del `updated_at__gt` en base.py:256.
+    /// Incremental filter — only issues updated after this timestamp.
+    /// Mirror of `updated_at__gt` in base.py:256.
     #[serde(rename = "updated_at__gt")]
     pub updated_at_gt: Option<chrono::DateTime<chrono::FixedOffset>>,
 
-    // ── Filtros delegados al módulo `issue_filters` (inlineados por
-    //    limitación de serde_urlencoded con `flatten`). La lógica de
-    //    parsing/aplicación vive en un solo lugar.
+    // ── Filters delegated to the `issue_filters` module (inlined due to
+    //    limitations of serde_urlencoded with `flatten`). The parsing/application
+    //    logic lives in a single place.
     pub state:             Option<String>,
     pub state_group:       Option<String>,
     pub priority:          Option<String>,
@@ -77,17 +77,17 @@ pub struct WorkspaceIssuesQuery {
     pub assignees:         Option<String>,
     pub module:            Option<String>,
     pub cycle:             Option<String>,
-    /// CSV de `user_ids` — mirror de `filter_subscribed_issues`
-    /// (issue_filters.py:392-403). Shared con el resto de listados de issues.
+    /// CSV of `user_ids` — mirror of `filter_subscribed_issues`
+    /// (issue_filters.py:392-403). Shared with other issue listings.
     pub subscriber:        Option<String>,
     #[serde(rename = "type")]
     pub type_filter:       Option<String>,
     pub start_target_date: Option<String>,
 
-    // ── Rich filters (subconjunto Django-parity) ─────────────────────────────
+    // ── Rich filters (Django-parity subset) ───────────────────────────────
     //
-    // Blob JSON que el frontend envía en spreadsheet layout y vistas guardadas.
-    // Se parsea con `issue_filters::merge_json_filters`; keys desconocidas → 400.
+    // JSON blob that the frontend sends in spreadsheet layout and saved views.
+    // Parsed with `issue_filters::merge_json_filters`; unknown keys → 400.
     pub filters:           Option<String>,
 }
 
@@ -113,10 +113,10 @@ impl WorkspaceIssuesQuery {
     }
 }
 
-// ── DTOs de respuesta ─────────────────────────────────────────────────────────
+// ── Response DTOs ─────────────────────────────────────────────────────────────
 
-/// Refleja los campos de `ViewIssueListSerializer` en Django.
-/// Los nombres de campo son snake_case → serde los serializa tal cual.
+/// Reflects the fields of `ViewIssueListSerializer` in Django.
+/// Field names are snake_case -> serde serializes them as is.
 #[derive(Debug, Serialize)]
 pub struct WorkspaceIssueItem {
     pub id:              Uuid,
@@ -153,23 +153,23 @@ pub struct WorkspaceIssueItem {
 
 /// GET /api/workspaces/{slug}/issues/
 ///
-/// Lista issues de todos los proyectos del workspace a los que el usuario
-/// tiene acceso. Equivale a `WorkspaceViewIssuesViewSet.list()` en Django.
+/// Lists issues from all workspace projects the user has access to.
+/// Equivalent to `WorkspaceViewIssuesViewSet.list()` in Django.
 #[utoipa::path(
     get,
     path = "/api/workspaces/{slug}/issues/",
     tag = "Issues",
     params(
         ("slug" = String, Path, description = "Workspace slug"),
-        ("cursor" = Option<String>, Query, description = "Cursor de paginación Django: {per_page}:{page}:{is_prev}"),
-        ("per_page" = Option<u64>, Query, description = "Resultados por página (ignorado si está en cursor)"),
-        ("order_by" = Option<String>, Query, description = "Campo de ordenamiento, ej: -created_at"),
-        ("sub_issue" = Option<String>, Query, description = "false = excluir sub-issues"),
+        ("cursor" = Option<String>, Query, description = "Django pagination cursor: {per_page}:{page}:{is_prev}"),
+        ("per_page" = Option<u64>, Query, description = "Results per page (ignored if in cursor)"),
+        ("order_by" = Option<String>, Query, description = "Sort field, e.g.: -created_at"),
+        ("sub_issue" = Option<String>, Query, description = "false = exclude sub-issues"),
     ),
     responses(
-        (status = 200, description = "Lista paginada de issues del workspace"),
-        (status = 401, description = "No autenticado"),
-        (status = 403, description = "Sin acceso al workspace"),
+        (status = 200, description = "Paged list of workspace issues"),
+        (status = 401, description = "Unauthenticated"),
+        (status = 403, description = "No access to workspace"),
     ),
     security(("TokenAuth" = []))
 )]
@@ -183,30 +183,30 @@ pub async fn list_workspace_view_issues(
     let user_id = guard.user.id;
     let workspace_member_role = guard.member.role;
 
-    // ── 1. Paginación ─────────────────────────────────────────────────────────
+    // ── 1. Paging ─────────────────────────────────────────────────────────────
     let fallback_per_page = params.per_page.unwrap_or(DEFAULT_PER_PAGE);
     let (page_size, current_page) =
         parse_cursor(params.cursor.as_deref(), fallback_per_page);
 
-    // ── 2. Filtros base de la query ───────────────────────────────────────────
+    // ── 2. Base Query Filters ────────────────────────────────────────────────
     let exclude_sub_issues = params
         .sub_issue
         .as_deref()
         .map(|v| v.eq_ignore_ascii_case("false"))
         .unwrap_or(false);
 
-    // ── 3. Calcular proyectos a los que el usuario tiene acceso ───────────────
+    // ── 3. Calculate projects the user has access to ─────────────────────────
     //
-    // Mirror de `_get_project_permission_filters` en Django:
-    //   - Traemos los project_members activos del user en este workspace
-    //   - Para guests (role = 5): si guest_view_all_features = false,
-    //     el proyecto va a "restricted" (solo ven sus propios issues).
-    //   - Para roles > 5: acceso completo al proyecto.
+    // Mirror of `_get_project_permission_filters` in Django:
+    //   - We fetch active project_members for the user in this workspace.
+    //   - For guests (role = 5): if guest_view_all_features = false,
+    //     the project goes to "restricted" (they only see their own issues).
+    //   - For roles > 5: full access to the project.
     //
-    // Optimización: si el usuario es admin del workspace (role >= 20),
-    // asumimos acceso completo a todos los proyectos activos del workspace.
+    // Optimization: if the user is a workspace admin (role >= 20),
+    // we assume full access to all active workspace projects.
 
-    // Obtener membresías de proyecto del usuario en este workspace
+    // Get user project memberships in this workspace
     let memberships = project_members::Entity::find()
         .active()
         .filter(project_members::Column::WorkspaceId.eq(workspace_id))
@@ -217,8 +217,8 @@ pub async fn list_workspace_view_issues(
         .map_err(AppError::Database)?;
 
     if memberships.is_empty() {
-        // El usuario no pertenece a ningún proyecto en el workspace.
-        // Shape mirror de Django `OffsetPaginator.paginate()`
+        // The user does not belong to any project in the workspace.
+        // Shape mirror of Django `OffsetPaginator.paginate()`
         // (plane/utils/paginator.py:715-730).
         return Ok(Json(empty_paginated_response(page_size)));
     }
@@ -238,14 +238,14 @@ pub async fn list_workspace_view_issues(
         .await
         .map_err(AppError::Database)?;
 
-    // Índice rápido project_id → (guest_view_all_features, is_archived)
+    // Fast index project_id → (guest_view_all_features, is_archived)
     let project_meta: HashMap<Uuid, (bool, bool)> = project_rows
         .into_iter()
         .map(|(id, gvaf, archived)| (id, (gvaf, archived.is_some())))
         .collect();
 
-    // Clasificar proyectos en: full_access vs own_issues_only
-    // (excluir proyectos archivados)
+    // Classify projects into: full_access vs own_issues_only
+    // (exclude archived projects)
     let mut full_access_ids: HashSet<Uuid> = HashSet::new();
     let mut restricted_ids: HashSet<Uuid> = HashSet::new();
 
@@ -255,14 +255,14 @@ pub async fn list_workspace_view_issues(
 
         let (guest_view_all_features, is_archived) = match project_meta.get(&pid) {
             Some(meta) => *meta,
-            None => continue, // proyecto no encontrado o eliminado
+            None => continue, // project not found or deleted
         };
 
         if is_archived {
-            continue; // excluir proyectos archivados
+            continue; // exclude archived projects
         }
 
-        // Workspace admin puede ver todo independientemente del rol de proyecto
+        // Workspace admin can see everything regardless of project role
         if workspace_member_role >= 20 || role > ROLE_GUEST {
             full_access_ids.insert(pid);
         } else {
@@ -275,15 +275,15 @@ pub async fn list_workspace_view_issues(
         }
     }
 
-    // ── 4. Construir query base ───────────────────────────────────────────────
+    // ── 4. Build Base Query ──────────────────────────────────────────────────
     //
-    // Antipatrón evitado: no usamos OR sin índice — separamos en dos condiciones
-    // distintas y las unimos con `sea_orm::Condition::any()`.
+    // Avoided Anti-pattern: we don't use OR without an index — we separate into two
+    // distinct conditions and join them with `sea_orm::Condition::any()`.
 
     let full_ids: Vec<Uuid> = full_access_ids.into_iter().collect();
     let rest_ids: Vec<Uuid> = restricted_ids.into_iter().collect();
 
-    // Condición de permisos: full_access OR (restricted AND created_by = user)
+    // Permission condition: full_access OR (restricted AND created_by = user)
     let permission_condition = {
         use sea_orm::Condition;
         let mut cond = Condition::any();
@@ -303,12 +303,12 @@ pub async fn list_workspace_view_issues(
         cond
     };
 
-    // Si no hay ninguna condición válida, el usuario no ve nada.
+    // If no valid condition exists, the user sees nothing.
     if full_ids.is_empty() && rest_ids.is_empty() {
         return Ok(Json(empty_paginated_response(page_size)));
     }
 
-    // Query base: issues activos (no soft-deleted), no archivados.
+    // Base query: active issues (not soft-deleted), not archived.
     let mut base_query = issues::Entity::find()
         .active()
         .filter(issues::Column::WorkspaceId.eq(workspace_id))
@@ -320,29 +320,29 @@ pub async fn list_workspace_view_issues(
         base_query = base_query.filter(issues::Column::ParentId.is_null());
     }
 
-    // Mirror del `IssueManager.exclude(state__group='triage')` en
-    // db/models/issue.py:97. Este endpoint antes no aplicaba esta exclusión
-    // — ahora queda en paridad con Django. Usamos pre-query de state IDs
-    // en lugar de JOIN para mantener el query builder simple.
+    // Mirror of `IssueManager.exclude(state__group='triage')` in
+    // db/models/issue.py:97. This endpoint previously did not apply this exclusion
+    // — it is now in parity with Django. We use a state IDs pre-query
+    // instead of JOIN to keep the query builder simple.
     let triage_state_ids = load_workspace_triage_state_ids(db, workspace_id).await?;
     if !triage_state_ids.is_empty() {
         base_query = base_query.filter(issues::Column::StateId.is_not_in(triage_state_ids));
     }
 
-    // Filtro incremental `updated_at__gt` (base.py:256). Útil para sincronización
-    // delta del frontend sin re-descargar toda la lista.
+    // Incremental filter `updated_at__gt` (base.py:256). Useful for delta
+    // sync of the frontend without re-downloading the entire list.
     if let Some(updated_at_gt) = params.updated_at_gt {
         base_query = base_query.filter(issues::Column::UpdatedAt.gt(updated_at_gt));
     }
 
-    // ── 4.5. Filtros del módulo compartido ────────────────────────────────────
+    // ── 4.5. Shared Module Filters ───────────────────────────────────────────
     //
     // state, state_group, priority, created_by, parent, name, start_date,
     // target_date, labels, assignees, module, cycle, type, start_target_date.
-    // Ver `routes::issue_filters` para el mapeo detallado.
+    // See `routes::issue_filters` for detailed mapping.
     //
-    // `merge_json_filters` fusiona el blob `?filters=<JSON>` (spreadsheet
-    // layout, views guardadas) sobre los flat params. Keys desconocidas → 400.
+    // `merge_json_filters` merges the `?filters=<JSON>` blob (spreadsheet
+    // layout, saved views) over flat params. Unknown keys → 400.
     let mut filter_params = params.to_filter_params();
     merge_json_filters(params.filters.as_deref(), &mut filter_params)?;
     let filtered = apply_issue_filters(db, base_query, &filter_params, workspace_id).await?;
@@ -351,14 +351,14 @@ pub async fn list_workspace_view_issues(
         FilteredQuery::Empty => return Ok(Json(empty_paginated_response(page_size))),
     };
 
-    // ── 5. Total count (para paginación) ──────────────────────────────────────
+    // ── 5. Total count (for paging) ───────────────────────────────────────────
     let total_results = base_query.clone().count(db).await.map_err(AppError::Database)?;
 
-    // ── 6. Ordenamiento ───────────────────────────────────────────────────────
+    // ── 6. Ordering ──────────────────────────────────────────────────────────
     let order_by_param = params.order_by.as_deref().unwrap_or("-created_at");
     let ordered_query = apply_issue_order(base_query, order_by_param);
 
-    // ── 7. Paginación offset ──────────────────────────────────────────────────
+    // ── 7. Offset Paging ──────────────────────────────────────────────────────
     let start_index = current_page * page_size;
 
     let issue_models = ordered_query
@@ -368,13 +368,13 @@ pub async fn list_workspace_view_issues(
         .await
         .map_err(AppError::Database)?;
 
-    // ── 8. Enriquecimiento batch ──────────────────────────────────────────────
+    // ── 8. Batch Enrichment ──────────────────────────────────────────────────
     let issue_ids: Vec<Uuid> = issue_models.iter().map(|i| i.id).collect();
     let state_ids = collect_state_ids(&issue_models);
 
     let mut enrich = load_enrichment(db, &issue_ids, &state_ids).await?;
 
-    // ── 9. Serializar resultados ──────────────────────────────────────────────
+    // ── 9. Serialize Results ──────────────────────────────────────────────────
     let results: Vec<WorkspaceIssueItem> = issue_models
         .into_iter()
         .map(|m| {
@@ -415,11 +415,11 @@ pub async fn list_workspace_view_issues(
         })
         .collect();
 
-    // ── 10. Respuesta paginada ────────────────────────────────────────────────
+    // ── 10. Paged Response ───────────────────────────────────────────────────
     //
-    // Shape mirror exacto de `OffsetPaginator.paginate()` en
-    // `plane/utils/paginator.py:715-730`. El frontend lee `total_count`
-    // en `base-issues.store.ts:1290`, y `TIssuesResponse`
+    // Exact mirror shape of `OffsetPaginator.paginate()` in
+    // `plane/utils/paginator.py:715-730`. The frontend reads `total_count`
+    // in `base-issues.store.ts:1290`, and `TIssuesResponse`
     // (packages/types/src/issues/issue.ts:126) declara
     // `grouped_by`, `count`, `extra_stats` como requeridos.
     Ok(Json(paginated_response(

@@ -1,7 +1,7 @@
 // src/utils/s3.rs
-//! Helper para construir un cliente S3/MinIO y generar presigned URLs.
+//! Helper to build an S3/MinIO client and generate presigned URLs.
 //!
-//! El cliente se crea on-demand por request (el SDK hace pooling internamente).
+//! The client is created on-demand per request (the SDK handles pooling internally).
 //! Equivalente a `plane/settings/storage.py → S3Storage`.
 
 use std::time::Duration;
@@ -15,27 +15,27 @@ use aws_sdk_s3::{
 
 use crate::{config::Config, error::AppError};
 
-/// Construye un cliente S3 configurado con credenciales, región y endpoint explícitos.
+/// Builds an S3 client configured with explicit credentials, region, and endpoint.
 ///
-/// Equivalente a `boto3.client("s3", aws_access_key_id=..., aws_secret_access_key=...,
-/// region_name=..., endpoint_url=..., config=Config(signature_version="s3v4"))` en Django.
+/// Equivalent to `boto3.client("s3", aws_access_key_id=..., aws_secret_access_key=...,
+/// region_name=..., endpoint_url=..., config=Config(signature_version="s3v4"))` in Django.
 ///
-/// - `force_path_style = true` siempre que haya un `aws_endpoint` personalizado — MinIO
-///   self-hosted no soporta virtual-hosted style.
-/// - La región cae a `us-east-1` si `AWS_REGION` no está configurada (igual que boto3).
+/// - `force_path_style = true` whenever there is a custom `aws_endpoint` — self-hosted
+///   MinIO does not support virtual-hosted style.
+/// - The region defaults to `us-east-1` if `AWS_REGION` is not configured (same as boto3).
 pub fn build_s3_client(config: &Config) -> Client {
     let creds = Credentials::new(
         &config.aws_access_key_id,
         &config.aws_secret_access_key,
         None,        // session token
         None,        // expiry
-        "plane-env", // provider name para logs
+        "plane-env", // provider name for logs
     );
 
     let region = Region::new(config.aws_region.clone());
 
-    // force_path_style se activa cuando hay un endpoint personalizado (MinIO / compatible)
-    // porque la mayoría de instalaciones self-hosted no soportan virtual-hosted style.
+    // force_path_style is activated when there is a custom endpoint (MinIO / compatible)
+    // because most self-hosted installations do not support virtual-hosted style.
     let force_path = config.use_minio || !config.aws_endpoint.is_empty();
 
     let s3_conf = aws_sdk_s3::Config::builder()
@@ -49,33 +49,33 @@ pub fn build_s3_client(config: &Config) -> Client {
     Client::from_conf(s3_conf)
 }
 
-/// Cliente S3 específico para **generar presigned URLs públicas** cuando se
-/// usa MinIO self-hosted.
+/// S3 client specifically for **generating public presigned URLs** when
+/// using self-hosted MinIO.
 ///
-/// Paridad Django (apps/api/plane/bgtasks/export_task.py:49-79): con MinIO,
-/// Django instancia dos clientes distintos:
-///   - uno con `AWS_S3_ENDPOINT_URL` (interno, ej. `http://plane-minio:9000`)
-///     para **subir** el archivo.
-///   - otro con `f"{AWS_S3_URL_PROTOCOL}//{AWS_S3_CUSTOM_DOMAIN sin /uploads}/"`
-///     —derivado de `WEB_URL`— para **firmar** la URL que retorna al browser.
+/// Django parity (apps/api/plane/bgtasks/export_task.py:49-79): with MinIO,
+/// Django instantiates two different clients:
+///   - one with `AWS_S3_ENDPOINT_URL` (internal, e.g. `http://plane-minio:9000`)
+///     to **upload** the file.
+///   - another with `f"{AWS_S3_URL_PROTOCOL}//{AWS_S3_CUSTOM_DOMAIN without /uploads}/"`
+///     —derived from `WEB_URL`— to **sign** the URL returned to the browser.
 ///
-/// Sin esto, el presigned URL apunta al hostname Docker interno
-/// (`http://plane-minio:9000/...`) que el browser no puede resolver.
+/// Without this, the presigned URL points to the internal Docker hostname
+/// (`http://plane-minio:9000/...`) which the browser cannot resolve.
 ///
-/// Fallback: si `USE_MINIO=false` o `WEB_URL` no está seteado, usamos el
-/// cliente normal — el endpoint público coincide con el de upload (caso S3
-/// administrado, o deploys donde el MinIO es accesible directo por el
+/// Fallback: if `USE_MINIO=false` or `WEB_URL` is not set, we use the
+/// normal client — the public endpoint matches the upload one (managed S3
+/// case, or deployments where MinIO is directly accessible by the
 /// browser).
 pub fn build_s3_presign_client(config: &Config) -> Client {
-    // Sólo aplica la derivación public-domain cuando MinIO está activo Y
-    // tenemos WEB_URL — es la misma guardia que el if de common.py:253.
+    // Only apply public-domain derivation when MinIO is active AND
+    // we have WEB_URL — same guard as the if in common.py:253.
     let public_endpoint = if config.use_minio {
         config.web_url.as_deref().and_then(parse_web_url_origin)
     } else {
         None
     };
 
-    // Sin endpoint público derivable → mismo cliente que upload.
+    // Without derivable public endpoint → same client as upload.
     let Some(endpoint) = public_endpoint else {
         return build_s3_client(config);
     };
@@ -93,26 +93,26 @@ pub fn build_s3_presign_client(config: &Config) -> Client {
         .credentials_provider(creds)
         .region(Region::new(config.aws_region.clone()))
         .endpoint_url(endpoint)
-        // Path-style obligatorio: el bucket va como primer segmento del
-        // path (`https://<host>/<bucket>/<key>`), nunca como subdominio.
+        // Mandatory path-style: the bucket goes as the first segment of the
+        // path (`https://<host>/<bucket>/<key>`), never as a subdomain.
         .force_path_style(true)
         .build();
 
     Client::from_conf(s3_conf)
 }
 
-/// Extrae `<scheme>://<host>[:<port>]/` de una URL como `https://plane.example.com/foo/bar`.
+/// Extracts `<scheme>://<host>[:<port>]/` from a URL like `https://plane.example.com/foo/bar`.
 ///
-/// Retorna `None` si la URL no tiene scheme o host válido. No dependemos del
-/// crate `url` porque el resto del codebase no lo usa y no justifica sumarlo
-/// sólo para este helper — el formato de `WEB_URL` es suficientemente
-/// restringido (`http(s)://host[:port][/path]`).
+/// Returns `None` if the URL has no valid scheme or host. We do not depend on the
+/// `url` crate because the rest of the codebase does not use it and it doesn't justify adding it
+/// just for this helper — the format of `WEB_URL` is sufficiently
+/// restricted (`http(s)://host[:port][/path]`).
 fn parse_web_url_origin(web_url: &str) -> Option<String> {
     let (scheme, rest) = web_url.split_once("://")?;
     if scheme.is_empty() {
         return None;
     }
-    // `rest` = `host[:port][/path...]`. Nos quedamos con el primer segmento.
+    // `rest` = `host[:port][/path...]`. We keep the first segment.
     let host_and_port = rest.split('/').next().unwrap_or("");
     if host_and_port.is_empty() {
         return None;
@@ -120,18 +120,18 @@ fn parse_web_url_origin(web_url: &str) -> Option<String> {
     Some(format!("{scheme}://{host_and_port}/"))
 }
 
-/// Genera una presigned URL de `PUT` para subir un objeto.
+/// Generates a presigned `PUT` URL for uploading an object.
 ///
-/// El cliente sube directamente al bucket; la API solo firma la URL.
-/// TTL por defecto: 1 hora (para completar el upload desde el browser).
+/// The client uploads directly to the bucket; the API only signs the URL.
+/// Default TTL: 1 hour (to complete the upload from the browser).
 ///
-/// NOTA: Actualmente no tiene callers en el código: el frontend
-/// (`packages/services/src/file/file-upload.service.ts`) espera el contrato
-/// de Django/boto3 que es **POST multipart/form-data** con `policy` firmada,
-/// no `PUT` directo. El flujo vigente usa
+/// NOTE: Currently has no callers in the code: the frontend
+/// (`packages/services/src/file/file-upload.service.ts`) expects the
+/// Django/boto3 contract which is **POST multipart/form-data** with signed `policy`,
+/// not direct `PUT`. The current flow uses
 /// [`crate::utils::s3_presigned_post::generate_presigned_post`].
-/// Se conserva este helper por si algún flujo server-to-server futuro (ej.
-/// carga server-side de archivos desde un worker) requiere un PUT simple.
+/// This helper is preserved in case any future server-to-server flow (e.g.
+/// server-side file upload from a worker) requires a simple PUT.
 #[allow(dead_code)]
 pub async fn presigned_put_url(
     client: &Client,
@@ -158,10 +158,10 @@ pub async fn presigned_put_url(
     Ok(req.uri().to_string())
 }
 
-/// Copia un objeto dentro del mismo bucket (server-side copy).
+/// Copies an object within the same bucket (server-side copy).
 ///
-/// Mirror de `S3Storage.copy_object` en Django (`plane/settings/storage.py`).
-/// Usado por `DuplicateAssetEndpoint` para duplicar assets sin re-upload.
+/// Mirror of `S3Storage.copy_object` in Django (`plane/settings/storage.py`).
+/// Used by `DuplicateAssetEndpoint` to duplicate assets without re-upload.
 pub async fn copy_object(
     client: &Client,
     bucket: &str,
@@ -183,9 +183,9 @@ pub async fn copy_object(
     Ok(())
 }
 
-/// Genera una presigned URL de `GET` para acceder a un objeto.
+/// Generates a presigned `GET` URL to access an object.
 ///
-/// Usado por los endpoints de descarga que generan un redirect con
+/// Used by download endpoints that generate a redirect with
 /// `content-disposition: attachment`.
 #[allow(dead_code)]
 pub async fn presigned_get_url(

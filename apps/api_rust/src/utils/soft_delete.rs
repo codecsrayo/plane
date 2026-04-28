@@ -1,8 +1,8 @@
 // src/utils/soft_delete.rs
-/// Soft-delete support para entidades SeaORM.
+/// Soft-delete support for SeaORM entities.
 ///
-/// Equivalente al `SoftDeletionManager` de Django — filtra `deleted_at IS NULL`
-/// automáticamente en cualquier query.
+/// Equivalent to Django's `SoftDeletionManager` — filters `deleted_at IS NULL`
+/// automatically in any query.
 ///
 /// # Uso
 /// ```ignore
@@ -17,12 +17,12 @@
 use sea_orm::EntityTrait;
 
 pub trait SoftDeleteExt<E: EntityTrait>: Sized {
-    /// Filtra registros activos: `WHERE deleted_at IS NULL`
+    /// Filters active records: `WHERE deleted_at IS NULL`
     fn active(self) -> Self;
 }
 
-/// Implementa `SoftDeleteExt` para una entidad con columna `deleted_at`.
-/// `QueryFilter` y `Select` se importan dentro del macro — no en el módulo.
+/// Implements `SoftDeleteExt` for an entity with a `deleted_at` column.
+/// `QueryFilter` and `Select` are imported inside the macro — not in the module.
 ///
 /// # Ejemplo
 /// ```ignore

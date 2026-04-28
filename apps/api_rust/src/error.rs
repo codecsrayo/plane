@@ -75,9 +75,9 @@ impl IntoResponse for AppError {
             )
                 .into_response(),
             AppError::Validation(body) => {
-                // 422 Unprocessable Entity — body bien formado pero contenido
-                // inválido a nivel de campo. Permite que el cliente discrimine
-                // entre malformed JSON (400 BadRequest) y errores de validación.
+                // 422 Unprocessable Entity — well-formed body but invalid content
+                // at field level. Allows the client to discriminate
+                // between malformed JSON (400 BadRequest) and validation errors.
                 (StatusCode::UNPROCESSABLE_ENTITY, Json(body.clone())).into_response()
             }
             AppError::Conflict(m) => (
