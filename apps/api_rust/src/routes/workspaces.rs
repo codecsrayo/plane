@@ -158,6 +158,9 @@ pub struct WorkspaceResponse {
     /// Mirrors Django's `Workspace.logo_url` property.
     pub logo_url: Option<String>,
     pub organization_size: Option<String>,
+    /// FK to owner. Django's WorkspaceSerializer exposes the FK as `owner`
+    /// (not `owner_id`); the frontend reads `workspace.owner`.
+    #[serde(rename = "owner")]
     pub owner_id: Uuid,
     pub created_by: Option<Uuid>,
     pub updated_by: Option<Uuid>,
