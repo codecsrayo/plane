@@ -80,13 +80,13 @@ services:
         VITE_API_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
         VITE_API_BASE_PATH: /api
         VITE_ADMIN_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
-        VITE_ADMIN_BASE_PATH: /app/god-mode/
+        VITE_ADMIN_BASE_PATH: /cronos/god-mode/
         VITE_LIVE_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
         VITE_LIVE_BASE_PATH: /live
         VITE_SPACE_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
-        VITE_SPACE_BASE_PATH: /app/spaces/
+        VITE_SPACE_BASE_PATH: /cronos/spaces/
         VITE_WEB_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
-        VITE_WEB_BASE_PATH: /app/
+        VITE_WEB_BASE_PATH: /cronos/
     restart: always
     networks:
       - default
@@ -96,20 +96,20 @@ services:
       - traefik.docker.network=proyectos-bi-quare
       - traefik.http.middlewares.plane-https.redirectscheme.scheme=https
       # Fuerza trailing slash en paths base para que React Router haga match con basename
-      - traefik.http.middlewares.plane-trailingslash.redirectregex.regex=^(https?://[^/]+/app(?:/god-mode|/spaces)?)$
+      - traefik.http.middlewares.plane-trailingslash.redirectregex.regex=^(https?://[^/]+/cronos(?:/god-mode|/spaces)?)$
       - traefik.http.middlewares.plane-trailingslash.redirectregex.replacement=$${1}/
       - traefik.http.middlewares.plane-trailingslash.redirectregex.permanent=false
-      - traefik.http.routers.plane-http.rule=Host(`${PLANE_DOMAIN:-tool.codecsrayo.com}`) && PathPrefix(`/app`)
+      - traefik.http.routers.plane-http.rule=Host(`${PLANE_DOMAIN:-tool.codecsrayo.com}`) && PathPrefix(`/cronos`)
       - traefik.http.routers.plane-http.entrypoints=web
       - traefik.http.routers.plane-http.middlewares=plane-https
-      - traefik.http.routers.plane.rule=Host(`${PLANE_DOMAIN:-tool.codecsrayo.com}`) && PathPrefix(`/app`)
+      - traefik.http.routers.plane.rule=Host(`${PLANE_DOMAIN:-tool.codecsrayo.com}`) && PathPrefix(`/cronos`)
       - traefik.http.routers.plane.entrypoints=websecure
       - traefik.http.routers.plane.tls=true
       - traefik.http.routers.plane.tls.certresolver=netlify
       - traefik.http.routers.plane.middlewares=plane-trailingslash
       - traefik.http.routers.plane.priority=100
 
-      # Router de assets y manifiestos (p=110) — mayor que /app (100).
+      # Router de assets y manifiestos (p=110) — mayor que /cronos (100).
       # Captura peticiones a archivos raíz (manifiestos, etc) y los envía al contenedor web.
       - traefik.http.routers.plane-assets.rule=Host(`${PLANE_DOMAIN:-tool.codecsrayo.com}`) && (Path(`/manifest.json`) || Path(`/site.webmanifest.json`) || Path(`/favicon.ico`) || PathPrefix(`/favicon`) || PathPrefix(`/icons`) || PathPrefix(`/plane-logos`))
       - traefik.http.routers.plane-assets.entrypoints=websecure
@@ -133,13 +133,13 @@ services:
         VITE_API_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
         VITE_API_BASE_PATH: /api
         VITE_ADMIN_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
-        VITE_ADMIN_BASE_PATH: /app/god-mode/
+        VITE_ADMIN_BASE_PATH: /cronos/god-mode/
         VITE_SPACE_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
-        VITE_SPACE_BASE_PATH: /app/spaces/
+        VITE_SPACE_BASE_PATH: /cronos/spaces/
         VITE_LIVE_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
         VITE_LIVE_BASE_PATH: /live
         VITE_WEB_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
-        VITE_WEB_BASE_PATH: /app/
+        VITE_WEB_BASE_PATH: /cronos/
     restart: always
     networks:
       - default
@@ -147,7 +147,7 @@ services:
     labels:
       - traefik.enable=true
       - traefik.docker.network=proyectos-bi-quare
-      - traefik.http.routers.plane-admin.rule=Host(`${PLANE_DOMAIN:-tool.codecsrayo.com}`) && PathPrefix(`/app/god-mode`)
+      - traefik.http.routers.plane-admin.rule=Host(`${PLANE_DOMAIN:-tool.codecsrayo.com}`) && PathPrefix(`/cronos/god-mode`)
       - traefik.http.routers.plane-admin.entrypoints=websecure
       - traefik.http.routers.plane-admin.tls=true
       - traefik.http.routers.plane-admin.tls.certresolver=netlify
@@ -170,13 +170,13 @@ services:
         VITE_API_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
         VITE_API_BASE_PATH: /api
         VITE_ADMIN_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
-        VITE_ADMIN_BASE_PATH: /app/god-mode/
+        VITE_ADMIN_BASE_PATH: /cronos/god-mode/
         VITE_SPACE_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
-        VITE_SPACE_BASE_PATH: /app/spaces/
+        VITE_SPACE_BASE_PATH: /cronos/spaces/
         VITE_LIVE_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
         VITE_LIVE_BASE_PATH: /live
         VITE_WEB_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
-        VITE_WEB_BASE_PATH: /app/
+        VITE_WEB_BASE_PATH: /cronos/
     restart: always
     networks:
       - default
@@ -184,7 +184,7 @@ services:
     labels:
       - traefik.enable=true
       - traefik.docker.network=proyectos-bi-quare
-      - traefik.http.routers.plane-space.rule=Host(`${PLANE_DOMAIN:-tool.codecsrayo.com}`) && PathPrefix(`/app/spaces`)
+      - traefik.http.routers.plane-space.rule=Host(`${PLANE_DOMAIN:-tool.codecsrayo.com}`) && PathPrefix(`/cronos/spaces`)
       - traefik.http.routers.plane-space.entrypoints=websecure
       - traefik.http.routers.plane-space.tls=true
       - traefik.http.routers.plane-space.tls.certresolver=netlify
@@ -232,11 +232,11 @@ services:
       # URLs del frontend (para redirecciones OAuth, emails, etc.)
       WEB_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
       APP_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
-      APP_BASE_PATH: /app/
+      APP_BASE_PATH: /cronos/
       SPACE_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
-      SPACE_BASE_PATH: /app/spaces/
+      SPACE_BASE_PATH: /cronos/spaces/
       ADMIN_BASE_URL: https://${PLANE_DOMAIN:-tool.codecsrayo.com}
-      ADMIN_BASE_PATH: /app/god-mode/
+      ADMIN_BASE_PATH: /cronos/god-mode/
       # S3 / MinIO
       AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
       AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
