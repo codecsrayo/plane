@@ -78,7 +78,7 @@ services:
         VITE_SPACE_BASE_URL: https://plane.codecsrayo.com
         VITE_SPACE_BASE_PATH: /spaces
         VITE_WEB_BASE_URL: https://plane.codecsrayo.com
-        VITE_WEB_BASE_PATH: /app
+        VITE_WEB_BASE_PATH: /cronos
     restart: always
     networks:
       default:
@@ -90,17 +90,17 @@ services:
       - traefik.docker.network=${TRAEFIK_PUBLIC_NETWORK:-proyectos-bi-quare}
       - traefik.http.middlewares.plane-codecsrayo-https.redirectscheme.scheme=https
 
-      # Router principal /app (p=100) — SIN StripPrefix.
-      # React Router tiene basename='/app', por lo que el dev server Vite
-      # DEBE recibir el path con el prefijo /app intacto. Si se hace strip,
-      # React Router ve "/" que no empieza con "/app" y rechaza el render:
-      #   "Refusing to prerender '' because it does not start with basename '/app'"
+      # Router principal /cronos (p=100) — SIN StripPrefix.
+      # React Router tiene basename='/cronos', por lo que el dev server Vite
+      # DEBE recibir el path con el prefijo /cronos intacto. Si se hace strip,
+      # React Router ve "/" que no empieza con "/cronos" y rechaza el render:
+      #   "Refusing to prerender '' because it does not start with basename '/cronos'"
       # HTTP -> HTTPS redirect
-      - traefik.http.routers.plane-codecsrayo-http.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && PathPrefix(`/app`)
+      - traefik.http.routers.plane-codecsrayo-http.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && PathPrefix(`/cronos`)
       - traefik.http.routers.plane-codecsrayo-http.entrypoints=web
       - traefik.http.routers.plane-codecsrayo-http.middlewares=plane-codecsrayo-https
       # HTTPS directo al dev server (sin middleware de strip)
-      - traefik.http.routers.plane-codecsrayo.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && PathPrefix(`/app`)
+      - traefik.http.routers.plane-codecsrayo.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && PathPrefix(`/cronos`)
       - traefik.http.routers.plane-codecsrayo.entrypoints=websecure
       - traefik.http.routers.plane-codecsrayo.tls=true
       - traefik.http.routers.plane-codecsrayo.tls.certresolver=netlify
@@ -108,7 +108,7 @@ services:
       - traefik.http.services.plane-codecsrayo.loadbalancer.server.port=3000
 
       # Router de assets del dev server (p=10).
-      # Vite sirve CSS/JS/fuentes con paths raiz sin prefijo /app:
+      # Vite sirve CSS/JS/fuentes con paths raiz sin prefijo /cronos:
       #   /@vite/client, /__vite_hmr  -> cliente HMR de Vite
       #   /node_modules/.vite/deps/   -> deps pre-bundleadas
       #   /styles/                    -> CSS globales
@@ -116,7 +116,7 @@ services:
       #   /public/                    -> assets estaticos
       # Prioridad 10: mayor que home (2), menor que api/auth/admin/spaces (100).
       # No necesita StripPrefix: los paths ya son correctos para Vite.
-      - traefik.http.routers.plane-codecsrayo-assets.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && (PathPrefix(`/@`) || PathPrefix(`/__`) || PathPrefix(`/node_modules`) || PathPrefix(`/styles`) || PathPrefix(`/core`) || PathPrefix(`/helpers`) || PathPrefix(`/public`) || PathPrefix(`/ce`) || PathPrefix(`/app`) || PathPrefix(`/favicon/`) || PathPrefix(`/icons/`) || PathPrefix(`/plane-logos/`) || PathPrefix(`/favicon.ico`) || PathPrefix(`/manifest.json`) || PathPrefix(`/site.webmanifest.json`) || PathPrefix(`/package.json`) || PathPrefix(`/sw.js`) || PathPrefix(`/workbox-`))
+      - traefik.http.routers.plane-codecsrayo-assets.rule=Host(`${PLANE_DOMAIN:-plane.codecsrayo.com}`) && (PathPrefix(`/@`) || PathPrefix(`/__`) || PathPrefix(`/node_modules`) || PathPrefix(`/styles`) || PathPrefix(`/core`) || PathPrefix(`/helpers`) || PathPrefix(`/public`) || PathPrefix(`/ce`) || PathPrefix(`/cronos`) || PathPrefix(`/favicon/`) || PathPrefix(`/icons/`) || PathPrefix(`/plane-logos/`) || PathPrefix(`/favicon.ico`) || PathPrefix(`/manifest.json`) || PathPrefix(`/site.webmanifest.json`) || PathPrefix(`/package.json`) || PathPrefix(`/sw.js`) || PathPrefix(`/workbox-`))
       - traefik.http.routers.plane-codecsrayo-assets.entrypoints=websecure
       - traefik.http.routers.plane-codecsrayo-assets.tls=true
       - traefik.http.routers.plane-codecsrayo-assets.tls.certresolver=netlify
@@ -173,7 +173,7 @@ services:
         VITE_LIVE_BASE_URL: https://plane.codecsrayo.com
         VITE_LIVE_BASE_PATH: /live
         VITE_WEB_BASE_URL: https://plane.codecsrayo.com
-        VITE_WEB_BASE_PATH: /app
+        VITE_WEB_BASE_PATH: /cronos
     restart: always
     networks:
       default:
@@ -242,7 +242,7 @@ services:
         VITE_LIVE_BASE_URL: https://plane.codecsrayo.com
         VITE_LIVE_BASE_PATH: /live
         VITE_WEB_BASE_URL: https://plane.codecsrayo.com
-        VITE_WEB_BASE_PATH: /app
+        VITE_WEB_BASE_PATH: /cronos
     restart: always
     networks:
       default:
@@ -460,7 +460,7 @@ services:
       CORS_ALLOWED_ORIGINS: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
       WEB_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
       APP_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
-      APP_BASE_PATH: /app
+      APP_BASE_PATH: /cronos
       ADMIN_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}
       ADMIN_BASE_PATH: /god-mode
       SPACE_BASE_URL: https://${PLANE_DOMAIN:-plane.codecsrayo.com}

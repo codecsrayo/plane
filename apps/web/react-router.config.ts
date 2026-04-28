@@ -8,6 +8,6 @@ export default {
   appDirectory: "app",
   // Web runs as a client-side app; build a static client bundle only
   ssr: false,
-  // Cuando home sirve en "/" el web app vive bajo "/app"
+  // Cuando home sirve en "/" el web app vive bajo "/cronos"
   basename: basePath || "/",
 } satisfies Config;

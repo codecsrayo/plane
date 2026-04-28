@@ -16,21 +16,21 @@ const viteEnv = Object.keys(process.env)
 
 // NO se configura `base` aqui intencionalmente.
 //
-// Problema: fijar base: '/app' en Vite choca con appDirectory: "app" en
+// Problema: fijar base: '/cronos' en Vite choca con appDirectory: "app" en
 // react-router.config.ts. El plugin @react-router/dev/vite v7 evalua
 // virtual:react-router/server-build en el dev server (incluso con ssr:false)
-// importando "/app/root.tsx". Con base='/app', Vite hace strip del prefijo
-// '/app' y busca "/root.tsx" -> no existe -> pantalla de error.
+// importando "/app/root.tsx". Con base='/cronos', Vite hace strip del prefijo
+// '/cronos' y busca "/root.tsx" -> no existe -> pantalla de error.
 //
 // Solucion adoptada (ver docker-compose-dev.yml):
-//   1. Traefik aplica StripPrefix("/app") antes de hacer forward al dev server
+//   1. Traefik aplica StripPrefix("/cronos") antes de hacer forward al dev server
 //      -> Vite recibe "/" y sirve assets con rutas raiz (/styles/globals.css…)
 //   2. Un segundo router de baja prioridad enruta los paths de assets de Vite
 //      (/@, /__, /styles, /core, /node_modules, etc.) al mismo contenedor web.
 //
-// El basename "/app" vive SOLO en react-router.config.ts (routing del browser).
+// El basename "/cronos" vive SOLO en react-router.config.ts (routing del browser).
 
-const basePath = process.env.VITE_WEB_BASE_PATH || "/app/";
+const basePath = process.env.VITE_WEB_BASE_PATH || "/cronos/";
 
 export default defineConfig(({ command }) => ({
   base: command === "build" ? (basePath.endsWith("/") ? basePath : `${basePath}/`) : "/",
