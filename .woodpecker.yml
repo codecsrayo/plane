@@ -1,0 +1,99 @@
+# Woodpecker CI Pipeline - Plane
+# Documentacion: https://woodpecker-ci.org/docs
+
+variables:
+  - &node_image "node:20-alpine"
+  - &rust_image "rust:1.77-alpine"
+
+when:
+  - event: push
+    branch:
+      - dev
+      - main
+  - event: pull_request
+
+steps:
+  # ─── Frontend ───────────────────────────────────────────────
+  lint-frontend:
+    image: *node_image
+    when:
+      - changeset:
+          includes:
+            - "apps/web/**"
+            - "apps/admin/**"
+            - "apps/space/**"
+            - "packages/**"
+    commands:
+      - corepack enable
+      - pnpm install --frozen-lockfile
+      - pnpm lint
+
+  build-frontend:
+    image: *node_image
+    depends_on: [lint-frontend]
+    when:
+      - changeset:
+          includes:
+            - "apps/web/**"
+            - "apps/admin/**"
+            - "apps/space/**"
+            - "packages/**"
+    commands:
+      - corepack enable
+      - pnpm install --frozen-lockfile
+      - pnpm build
+
+  # ─── API Rust ────────────────────────────────────────────────
+  lint-api-rust:
+    image: *rust_image
+    when:
+      - changeset:
+          includes:
+            - "apps/api_rust/**"
+    commands:
+      - apk add --no-cache musl-dev
+      - cd apps/api_rust
+      - cargo fmt --check
+      - cargo clippy -- -D warnings
+
+  test-api-rust:
+    image: *rust_image
+    depends_on: [lint-api-rust]
+    when:
+      - changeset:
+          includes:
+            - "apps/api_rust/**"
+    commands:
+      - apk add --no-cache musl-dev
+      - cd apps/api_rust
+      - cargo test
+
+  build-api-rust:
+    image: *rust_image
+    depends_on: [test-api-rust]
+    when:
+      - branch: [main, dev]
+      - changeset:
+          includes:
+            - "apps/api_rust/**"
+    commands:
+      - apk add --no-cache musl-dev
+      - cd apps/api_rust
+      - cargo build --release
+
+  # ─── Docker (solo en merge a main) ──────────────────────────
+  build-docker:
+    image: woodpeckerci/plugin-docker-buildx
+    depends_on: [build-frontend, build-api-rust]
+    when:
+      - event: push
+        branch: main
+    settings:
+      repo: codecsrayo/plane
+      tags:
+        - latest
+        - ${CI_COMMIT_SHA:0:8}
+      username:
+        from_secret: DOCKER_USERNAME
+      password:
+        from_secret: DOCKER_PASSWORD
