@@ -8,7 +8,7 @@ RUN npm install -g pnpm
 WORKDIR /app
 
 COPY apps/home/package.json ./
-RUN pnpm install
+RUN pnpm install --ignore-scripts && pnpm rebuild esbuild sharp
 
 COPY apps/home/ ./
 RUN pnpm build
