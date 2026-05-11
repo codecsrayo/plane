@@ -1,0 +1,206 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_editor_rich_text_editor_tsx",
+      "label": "editor.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/rich-text/editor.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "rich_text_editor_richtexteditorwrapperprops",
+      "label": "RichTextEditorWrapperProps",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/rich-text/editor.tsx",
+      "source_location": "L22"
+    },
+    {
+      "id": "rich_text_editor_richtexteditor",
+      "label": "RichTextEditor",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/rich-text/editor.tsx",
+      "source_location": "L42"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_rich_text_editor_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/rich-text/editor.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_rich_text_editor_tsx",
+      "target": "editor",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/rich-text/editor.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_rich_text_editor_tsx",
+      "target": "editor",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/rich-text/editor.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_rich_text_editor_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/rich-text/editor.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_rich_text_editor_tsx",
+      "target": "utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/rich-text/editor.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_rich_text_editor_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_editor_embeds_mentions_index_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/rich-text/editor.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_rich_text_editor_tsx",
+      "target": "mentions_index_editormentionsroot",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/rich-text/editor.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_rich_text_editor_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_editor_index_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/rich-text/editor.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_rich_text_editor_tsx",
+      "target": "editor_index_useeditorconfig",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/rich-text/editor.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_rich_text_editor_tsx",
+      "target": "editor_index_useeditormention",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/rich-text/editor.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_rich_text_editor_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_use_member_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/rich-text/editor.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_rich_text_editor_tsx",
+      "target": "store_use_member_usemember",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/rich-text/editor.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_rich_text_editor_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_use_parse_editor_content_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/rich-text/editor.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_rich_text_editor_tsx",
+      "target": "hooks_use_parse_editor_content_useparseeditorcontent",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/rich-text/editor.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_rich_text_editor_tsx",
+      "target": "home_nixos_plane_apps_web_core_plane_web_hooks_use_editor_flagging",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/rich-text/editor.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_rich_text_editor_tsx",
+      "target": "hooks_use_editor_flagging_useeditorflagging",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/rich-text/editor.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_rich_text_editor_tsx",
+      "target": "rich_text_editor_richtexteditorwrapperprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/rich-text/editor.tsx",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_rich_text_editor_tsx",
+      "target": "rich_text_editor_richtexteditor",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/rich-text/editor.tsx",
+      "source_location": "L42",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

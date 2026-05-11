@@ -1,0 +1,125 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_pages_list_search_input_tsx",
+      "label": "search-input.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/list/search-input.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "list_search_input_props",
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/list/search-input.tsx",
+      "source_location": "L14"
+    },
+    {
+      "id": "list_search_input_pagesearchinput",
+      "label": "PageSearchInput()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/list/search-input.tsx",
+      "source_location": "L19"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_list_search_input_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/list/search-input.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_list_search_input_tsx",
+      "target": "hooks",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/list/search-input.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_list_search_input_tsx",
+      "target": "icon_button",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/list/search-input.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_list_search_input_tsx",
+      "target": "icons",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/list/search-input.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_list_search_input_tsx",
+      "target": "utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/list/search-input.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_list_search_input_tsx",
+      "target": "list_search_input_props",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/list/search-input.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_list_search_input_tsx",
+      "target": "list_search_input_pagesearchinput",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/list/search-input.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "list_search_input_pagesearchinput",
+      "callee": "useState",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/list/search-input.tsx",
+      "source_location": "L22"
+    },
+    {
+      "caller_nid": "list_search_input_pagesearchinput",
+      "callee": "useRef",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/list/search-input.tsx",
+      "source_location": "L24"
+    },
+    {
+      "caller_nid": "list_search_input_pagesearchinput",
+      "callee": "useOutsideClickDetector",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/list/search-input.tsx",
+      "source_location": "L27"
+    },
+    {
+      "caller_nid": "list_search_input_pagesearchinput",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/list/search-input.tsx",
+      "source_location": "L56"
+    }
+  ]
+}

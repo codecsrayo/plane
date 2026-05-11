@@ -1,0 +1,239 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_api_rust_src_utils_posthog_rs",
+      "label": "posthog.rs",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/posthog.rs",
+      "source_location": "L1"
+    },
+    {
+      "id": "utils_posthog_track_event",
+      "label": "track_event()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/posthog.rs",
+      "source_location": "L63"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_utils_posthog_rs",
+      "target": "duration",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/posthog.rs",
+      "source_location": "L36",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_utils_posthog_rs",
+      "target": "serde_json",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/posthog.rs",
+      "source_location": "L38",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_utils_posthog_rs",
+      "target": "uuid",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/posthog.rs",
+      "source_location": "L39",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_utils_posthog_rs",
+      "target": "crate",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/posthog.rs",
+      "source_location": "L41",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_utils_posthog_rs",
+      "target": "utils_posthog_track_event",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/posthog.rs",
+      "source_location": "L63",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "utils_posthog_track_event",
+      "callee": "clone",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/posthog.rs",
+      "source_location": "L71"
+    },
+    {
+      "caller_nid": "utils_posthog_track_event",
+      "callee": "clone",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/posthog.rs",
+      "source_location": "L72"
+    },
+    {
+      "caller_nid": "utils_posthog_track_event",
+      "callee": "to_owned",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/posthog.rs",
+      "source_location": "L73"
+    },
+    {
+      "caller_nid": "utils_posthog_track_event",
+      "callee": "spawn",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/posthog.rs",
+      "source_location": "L75"
+    },
+    {
+      "caller_nid": "utils_posthog_track_event",
+      "callee": "get_config_value",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/posthog.rs",
+      "source_location": "L79"
+    },
+    {
+      "caller_nid": "utils_posthog_track_event",
+      "callee": "as_deref",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/posthog.rs",
+      "source_location": "L82"
+    },
+    {
+      "caller_nid": "utils_posthog_track_event",
+      "callee": "ok",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/posthog.rs",
+      "source_location": "L82"
+    },
+    {
+      "caller_nid": "utils_posthog_track_event",
+      "callee": "var",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/posthog.rs",
+      "source_location": "L82"
+    },
+    {
+      "caller_nid": "utils_posthog_track_event",
+      "callee": "is_empty",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/posthog.rs",
+      "source_location": "L86"
+    },
+    {
+      "caller_nid": "utils_posthog_track_event",
+      "callee": "get_config_value",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/posthog.rs",
+      "source_location": "L99"
+    },
+    {
+      "caller_nid": "utils_posthog_track_event",
+      "callee": "as_deref",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/posthog.rs",
+      "source_location": "L102"
+    },
+    {
+      "caller_nid": "utils_posthog_track_event",
+      "callee": "ok",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/posthog.rs",
+      "source_location": "L102"
+    },
+    {
+      "caller_nid": "utils_posthog_track_event",
+      "callee": "var",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/posthog.rs",
+      "source_location": "L102"
+    },
+    {
+      "caller_nid": "utils_posthog_track_event",
+      "callee": "is_empty",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/posthog.rs",
+      "source_location": "L106"
+    },
+    {
+      "caller_nid": "utils_posthog_track_event",
+      "callee": "insert",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/posthog.rs",
+      "source_location": "L118"
+    },
+    {
+      "caller_nid": "utils_posthog_track_event",
+      "callee": "to_string",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/posthog.rs",
+      "source_location": "L119"
+    },
+    {
+      "caller_nid": "utils_posthog_track_event",
+      "callee": "send",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/posthog.rs",
+      "source_location": "L133"
+    },
+    {
+      "caller_nid": "utils_posthog_track_event",
+      "callee": "json",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/posthog.rs",
+      "source_location": "L133"
+    },
+    {
+      "caller_nid": "utils_posthog_track_event",
+      "callee": "timeout",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/posthog.rs",
+      "source_location": "L133"
+    },
+    {
+      "caller_nid": "utils_posthog_track_event",
+      "callee": "post",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/posthog.rs",
+      "source_location": "L133"
+    },
+    {
+      "caller_nid": "utils_posthog_track_event",
+      "callee": "status",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/posthog.rs",
+      "source_location": "L142"
+    },
+    {
+      "caller_nid": "utils_posthog_track_event",
+      "callee": "is_success",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/posthog.rs",
+      "source_location": "L143"
+    },
+    {
+      "caller_nid": "utils_posthog_track_event",
+      "callee": "unwrap_or_default",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/posthog.rs",
+      "source_location": "L145"
+    },
+    {
+      "caller_nid": "utils_posthog_track_event",
+      "callee": "text",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/posthog.rs",
+      "source_location": "L145"
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_work_item_filters_filters_toggle_tsx",
+      "label": "filters-toggle.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-toggle.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "work_item_filters_filters_toggle_tworkitemfilterstoggleprops",
+      "label": "TWorkItemFiltersToggleProps",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-toggle.tsx",
+      "source_location": "L15"
+    },
+    {
+      "id": "work_item_filters_filters_toggle_workitemfilterstoggle",
+      "label": "WorkItemFiltersToggle",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-toggle.tsx",
+      "source_location": "L20"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_work_item_filters_filters_toggle_tsx",
+      "target": "mobx_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-toggle.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_work_item_filters_filters_toggle_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-toggle.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_work_item_filters_filters_toggle_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_rich_filters_filters_toggle_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-toggle.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_work_item_filters_filters_toggle_tsx",
+      "target": "rich_filters_filters_toggle_filterstoggle",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-toggle.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_work_item_filters_filters_toggle_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_work_item_filters_use_work_item_filters_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-toggle.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_work_item_filters_filters_toggle_tsx",
+      "target": "work_item_filters_use_work_item_filters_useworkitemfilters",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-toggle.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_work_item_filters_filters_toggle_tsx",
+      "target": "work_item_filters_filters_toggle_tworkitemfilterstoggleprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-toggle.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_work_item_filters_filters_toggle_tsx",
+      "target": "work_item_filters_filters_toggle_workitemfilterstoggle",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-toggle.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

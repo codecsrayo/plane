@@ -1,0 +1,122 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_empty_state_simple_empty_state_root_tsx",
+      "label": "simple-empty-state-root.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/empty-state/simple-empty-state-root.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "empty_state_simple_empty_state_root_emptystatesize",
+      "label": "EmptyStateSize",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/empty-state/simple-empty-state-root.tsx",
+      "source_location": "L11"
+    },
+    {
+      "id": "empty_state_simple_empty_state_root_props",
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/empty-state/simple-empty-state-root.tsx",
+      "source_location": "L13"
+    },
+    {
+      "id": "empty_state_simple_empty_state_root_sizeconfig",
+      "label": "sizeConfig",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/empty-state/simple-empty-state-root.tsx",
+      "source_location": "L20"
+    },
+    {
+      "id": "empty_state_simple_empty_state_root_gettitleclassname",
+      "label": "getTitleClassName()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/empty-state/simple-empty-state-root.tsx",
+      "source_location": "L31"
+    },
+    {
+      "id": "empty_state_simple_empty_state_root_simpleemptystate",
+      "label": "SimpleEmptyState",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/empty-state/simple-empty-state-root.tsx",
+      "source_location": "L37"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_empty_state_simple_empty_state_root_tsx",
+      "target": "mobx_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/empty-state/simple-empty-state-root.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_empty_state_simple_empty_state_root_tsx",
+      "target": "utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/empty-state/simple-empty-state-root.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_empty_state_simple_empty_state_root_tsx",
+      "target": "empty_state_simple_empty_state_root_emptystatesize",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/empty-state/simple-empty-state-root.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_empty_state_simple_empty_state_root_tsx",
+      "target": "empty_state_simple_empty_state_root_props",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/empty-state/simple-empty-state-root.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_empty_state_simple_empty_state_root_tsx",
+      "target": "empty_state_simple_empty_state_root_sizeconfig",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/empty-state/simple-empty-state-root.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_empty_state_simple_empty_state_root_tsx",
+      "target": "empty_state_simple_empty_state_root_gettitleclassname",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/empty-state/simple-empty-state-root.tsx",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_empty_state_simple_empty_state_root_tsx",
+      "target": "empty_state_simple_empty_state_root_simpleemptystate",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/empty-state/simple-empty-state-root.tsx",
+      "source_location": "L37",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "empty_state_simple_empty_state_root_gettitleclassname",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/empty-state/simple-empty-state-root.tsx",
+      "source_location": "L32"
+    }
+  ]
+}

@@ -1,0 +1,227 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_store_notifications_notification_ts",
+      "label": "notification.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/notifications/notification.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "notifications_notification_inotification",
+      "label": "INotification",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/notifications/notification.ts",
+      "source_location": "L16"
+    },
+    {
+      "id": "notifications_notification_notification",
+      "label": "Notification",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/notifications/notification.ts",
+      "source_location": "L33"
+    },
+    {
+      "id": "notifications_notification_notification_constructor",
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/notifications/notification.ts",
+      "source_location": "L59"
+    },
+    {
+      "id": "notifications_notification_notification_asjson",
+      "label": ".asJson()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/notifications/notification.ts",
+      "source_location": "L128"
+    },
+    {
+      "id": "notifications_notification_payload",
+      "label": "payload",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/notifications/notification.ts",
+      "source_location": "L197"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_store_notifications_notification_ts",
+      "target": "lodash_es",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/notifications/notification.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_notifications_notification_ts",
+      "target": "mobx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/notifications/notification.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_notifications_notification_ts",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/notifications/notification.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_notifications_notification_ts",
+      "target": "home_nixos_plane_apps_web_core_services_workspace_notification_service_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/notifications/notification.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_notifications_notification_ts",
+      "target": "home_nixos_plane_apps_web_core_store_root_store_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/notifications/notification.ts",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_notifications_notification_ts",
+      "target": "store_root_store_corerootstore",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/notifications/notification.ts",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_notifications_notification_ts",
+      "target": "home_nixos_plane_apps_web_core_services_api_service_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/notifications/notification.ts",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_notifications_notification_ts",
+      "target": "services_api_service_toapierror",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/notifications/notification.ts",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_notifications_notification_ts",
+      "target": "notifications_notification_inotification",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/notifications/notification.ts",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_notifications_notification_ts",
+      "target": "notifications_notification_notification",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/notifications/notification.ts",
+      "source_location": "L33",
+      "weight": 1.0
+    },
+    {
+      "source": "notifications_notification_notification",
+      "target": "notifications_notification_notification_constructor",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/notifications/notification.ts",
+      "source_location": "L59",
+      "weight": 1.0
+    },
+    {
+      "source": "notifications_notification_notification",
+      "target": "notifications_notification_notification_asjson",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/notifications/notification.ts",
+      "source_location": "L128",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_notifications_notification_ts",
+      "target": "notifications_notification_payload",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/notifications/notification.ts",
+      "source_location": "L197",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_notifications_notification_ts",
+      "target": "notifications_notification_payload",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/notifications/notification.ts",
+      "source_location": "L222",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_notifications_notification_ts",
+      "target": "notifications_notification_payload",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/notifications/notification.ts",
+      "source_location": "L247",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_notifications_notification_ts",
+      "target": "notifications_notification_payload",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/notifications/notification.ts",
+      "source_location": "L270",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_notifications_notification_ts",
+      "target": "notifications_notification_payload",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/notifications/notification.ts",
+      "source_location": "L294",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_notifications_notification_ts",
+      "target": "notifications_notification_payload",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/notifications/notification.ts",
+      "source_location": "L314",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "notifications_notification_notification_constructor",
+      "callee": "makeObservable",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/store/notifications/notification.ts",
+      "source_location": "L64"
+    }
+  ]
+}

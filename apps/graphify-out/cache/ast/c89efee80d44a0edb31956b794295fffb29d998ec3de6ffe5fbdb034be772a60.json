@@ -1,0 +1,148 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_services_file_upload_service_ts",
+      "label": "file-upload.service.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/file-upload.service.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "services_file_upload_service_fileuploadservice",
+      "label": "FileUploadService",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/file-upload.service.ts",
+      "source_location": "L12"
+    },
+    {
+      "id": "services_file_upload_service_fileuploadservice_uploadfile",
+      "label": ".uploadFile()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/file-upload.service.ts",
+      "source_location": "L15"
+    },
+    {
+      "id": "services_file_upload_service_fileuploadservice_cancelupload",
+      "label": ".cancelUpload()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/file-upload.service.ts",
+      "source_location": "L39"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_services_file_upload_service_ts",
+      "target": "axios",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/file-upload.service.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_file_upload_service_ts",
+      "target": "axios",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/file-upload.service.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_file_upload_service_ts",
+      "target": "home_nixos_plane_apps_web_core_services_api_service_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/file-upload.service.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_file_upload_service_ts",
+      "target": "services_api_service_apiservice",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/file-upload.service.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_file_upload_service_ts",
+      "target": "services_api_service_apierror",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/file-upload.service.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_file_upload_service_ts",
+      "target": "services_file_upload_service_fileuploadservice",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/file-upload.service.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "services_file_upload_service_fileuploadservice",
+      "target": "services_file_upload_service_fileuploadservice_uploadfile",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/file-upload.service.ts",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "services_file_upload_service_fileuploadservice",
+      "target": "services_file_upload_service_fileuploadservice_cancelupload",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/file-upload.service.ts",
+      "source_location": "L39",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "services_file_upload_service_fileuploadservice_uploadfile",
+      "callee": "source",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/file-upload.service.ts",
+      "source_location": "L20"
+    },
+    {
+      "caller_nid": "services_file_upload_service_fileuploadservice_uploadfile",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/file-upload.service.ts",
+      "source_location": "L21"
+    },
+    {
+      "caller_nid": "services_file_upload_service_fileuploadservice_uploadfile",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/file-upload.service.ts",
+      "source_location": "L21"
+    },
+    {
+      "caller_nid": "services_file_upload_service_fileuploadservice_uploadfile",
+      "callee": "post",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/file-upload.service.ts",
+      "source_location": "L21"
+    },
+    {
+      "caller_nid": "services_file_upload_service_fileuploadservice_cancelupload",
+      "callee": "cancel",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/file-upload.service.ts",
+      "source_location": "L40"
+    }
+  ]
+}

@@ -1,0 +1,659 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_services_cycle_service_ts",
+      "label": "cycle.service.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "services_cycle_service_cycleservice",
+      "label": "CycleService",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L20"
+    },
+    {
+      "id": "services_cycle_service_cycleservice_constructor",
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L21"
+    },
+    {
+      "id": "services_cycle_service_cycleservice_workspaceactivecyclesanalytics",
+      "label": ".workspaceActiveCyclesAnalytics()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L25"
+    },
+    {
+      "id": "services_cycle_service_cycleservice_workspaceactivecyclesprogress",
+      "label": ".workspaceActiveCyclesProgress()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L40"
+    },
+    {
+      "id": "services_cycle_service_cycleservice_workspaceactivecyclesprogresspro",
+      "label": ".workspaceActiveCyclesProgressPro()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L52"
+    },
+    {
+      "id": "services_cycle_service_cycleservice_workspaceactivecycles",
+      "label": ".workspaceActiveCycles()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L64"
+    },
+    {
+      "id": "services_cycle_service_cycleservice_getworkspacecycles",
+      "label": ".getWorkspaceCycles()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L81"
+    },
+    {
+      "id": "services_cycle_service_cycleservice_createcycle",
+      "label": ".createCycle()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L89"
+    },
+    {
+      "id": "services_cycle_service_cycleservice_getcycleswithparams",
+      "label": ".getCyclesWithParams()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L97"
+    },
+    {
+      "id": "services_cycle_service_cycleservice_getcycledetails",
+      "label": ".getCycleDetails()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L109"
+    },
+    {
+      "id": "services_cycle_service_cycleservice_getcycleissues",
+      "label": ".getCycleIssues()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L117"
+    },
+    {
+      "id": "services_cycle_service_cycleservice_patchcycle",
+      "label": ".patchCycle()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L137"
+    },
+    {
+      "id": "services_cycle_service_cycleservice_deletecycle",
+      "label": ".deleteCycle()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L145"
+    },
+    {
+      "id": "services_cycle_service_cycleservice_cycledatecheck",
+      "label": ".cycleDateCheck()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L153"
+    },
+    {
+      "id": "services_cycle_service_cycleservice_addcycletofavorites",
+      "label": ".addCycleToFavorites()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L161"
+    },
+    {
+      "id": "services_cycle_service_cycleservice_transferissues",
+      "label": ".transferIssues()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L175"
+    },
+    {
+      "id": "services_cycle_service_cycleservice_removecyclefromfavorites",
+      "label": ".removeCycleFromFavorites()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L190"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_services_cycle_service_ts",
+      "target": "constants",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_cycle_service_ts",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_cycle_service_ts",
+      "target": "home_nixos_plane_apps_web_core_services_api_service_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_cycle_service_ts",
+      "target": "services_api_service_apiservice",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_cycle_service_ts",
+      "target": "services_api_service_apierror",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_cycle_service_ts",
+      "target": "services_cycle_service_cycleservice",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "services_cycle_service_cycleservice",
+      "target": "services_cycle_service_cycleservice_constructor",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "services_cycle_service_cycleservice",
+      "target": "services_cycle_service_cycleservice_workspaceactivecyclesanalytics",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "services_cycle_service_cycleservice",
+      "target": "services_cycle_service_cycleservice_workspaceactivecyclesprogress",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L40",
+      "weight": 1.0
+    },
+    {
+      "source": "services_cycle_service_cycleservice",
+      "target": "services_cycle_service_cycleservice_workspaceactivecyclesprogresspro",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L52",
+      "weight": 1.0
+    },
+    {
+      "source": "services_cycle_service_cycleservice",
+      "target": "services_cycle_service_cycleservice_workspaceactivecycles",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L64",
+      "weight": 1.0
+    },
+    {
+      "source": "services_cycle_service_cycleservice",
+      "target": "services_cycle_service_cycleservice_getworkspacecycles",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L81",
+      "weight": 1.0
+    },
+    {
+      "source": "services_cycle_service_cycleservice",
+      "target": "services_cycle_service_cycleservice_createcycle",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L89",
+      "weight": 1.0
+    },
+    {
+      "source": "services_cycle_service_cycleservice",
+      "target": "services_cycle_service_cycleservice_getcycleswithparams",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L97",
+      "weight": 1.0
+    },
+    {
+      "source": "services_cycle_service_cycleservice",
+      "target": "services_cycle_service_cycleservice_getcycledetails",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L109",
+      "weight": 1.0
+    },
+    {
+      "source": "services_cycle_service_cycleservice",
+      "target": "services_cycle_service_cycleservice_getcycleissues",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L117",
+      "weight": 1.0
+    },
+    {
+      "source": "services_cycle_service_cycleservice",
+      "target": "services_cycle_service_cycleservice_patchcycle",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L137",
+      "weight": 1.0
+    },
+    {
+      "source": "services_cycle_service_cycleservice",
+      "target": "services_cycle_service_cycleservice_deletecycle",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L145",
+      "weight": 1.0
+    },
+    {
+      "source": "services_cycle_service_cycleservice",
+      "target": "services_cycle_service_cycleservice_cycledatecheck",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L153",
+      "weight": 1.0
+    },
+    {
+      "source": "services_cycle_service_cycleservice",
+      "target": "services_cycle_service_cycleservice_addcycletofavorites",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L161",
+      "weight": 1.0
+    },
+    {
+      "source": "services_cycle_service_cycleservice",
+      "target": "services_cycle_service_cycleservice_transferissues",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L175",
+      "weight": 1.0
+    },
+    {
+      "source": "services_cycle_service_cycleservice",
+      "target": "services_cycle_service_cycleservice_removecyclefromfavorites",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L190",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "services_cycle_service_cycleservice_constructor",
+      "callee": "super",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L22"
+    },
+    {
+      "caller_nid": "services_cycle_service_cycleservice_workspaceactivecyclesanalytics",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L31"
+    },
+    {
+      "caller_nid": "services_cycle_service_cycleservice_workspaceactivecyclesanalytics",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L31"
+    },
+    {
+      "caller_nid": "services_cycle_service_cycleservice_workspaceactivecyclesanalytics",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L31"
+    },
+    {
+      "caller_nid": "services_cycle_service_cycleservice_workspaceactivecyclesprogress",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L45"
+    },
+    {
+      "caller_nid": "services_cycle_service_cycleservice_workspaceactivecyclesprogress",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L45"
+    },
+    {
+      "caller_nid": "services_cycle_service_cycleservice_workspaceactivecyclesprogress",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L45"
+    },
+    {
+      "caller_nid": "services_cycle_service_cycleservice_workspaceactivecyclesprogresspro",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L57"
+    },
+    {
+      "caller_nid": "services_cycle_service_cycleservice_workspaceactivecyclesprogresspro",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L57"
+    },
+    {
+      "caller_nid": "services_cycle_service_cycleservice_workspaceactivecyclesprogresspro",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L57"
+    },
+    {
+      "caller_nid": "services_cycle_service_cycleservice_workspaceactivecycles",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L69"
+    },
+    {
+      "caller_nid": "services_cycle_service_cycleservice_workspaceactivecycles",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L69"
+    },
+    {
+      "caller_nid": "services_cycle_service_cycleservice_workspaceactivecycles",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L69"
+    },
+    {
+      "caller_nid": "services_cycle_service_cycleservice_getworkspacecycles",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L82"
+    },
+    {
+      "caller_nid": "services_cycle_service_cycleservice_getworkspacecycles",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L82"
+    },
+    {
+      "caller_nid": "services_cycle_service_cycleservice_getworkspacecycles",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L82"
+    },
+    {
+      "caller_nid": "services_cycle_service_cycleservice_createcycle",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L90"
+    },
+    {
+      "caller_nid": "services_cycle_service_cycleservice_createcycle",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L90"
+    },
+    {
+      "caller_nid": "services_cycle_service_cycleservice_createcycle",
+      "callee": "post",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L90"
+    },
+    {
+      "caller_nid": "services_cycle_service_cycleservice_getcycleswithparams",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L98"
+    },
+    {
+      "caller_nid": "services_cycle_service_cycleservice_getcycleswithparams",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L98"
+    },
+    {
+      "caller_nid": "services_cycle_service_cycleservice_getcycleswithparams",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L98"
+    },
+    {
+      "caller_nid": "services_cycle_service_cycleservice_getcycledetails",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L110"
+    },
+    {
+      "caller_nid": "services_cycle_service_cycleservice_getcycledetails",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L110"
+    },
+    {
+      "caller_nid": "services_cycle_service_cycleservice_getcycledetails",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L110"
+    },
+    {
+      "caller_nid": "services_cycle_service_cycleservice_getcycleissues",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L124"
+    },
+    {
+      "caller_nid": "services_cycle_service_cycleservice_getcycleissues",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L124"
+    },
+    {
+      "caller_nid": "services_cycle_service_cycleservice_getcycleissues",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L124"
+    },
+    {
+      "caller_nid": "services_cycle_service_cycleservice_patchcycle",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L138"
+    },
+    {
+      "caller_nid": "services_cycle_service_cycleservice_patchcycle",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L138"
+    },
+    {
+      "caller_nid": "services_cycle_service_cycleservice_patchcycle",
+      "callee": "patch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L138"
+    },
+    {
+      "caller_nid": "services_cycle_service_cycleservice_deletecycle",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L146"
+    },
+    {
+      "caller_nid": "services_cycle_service_cycleservice_deletecycle",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L146"
+    },
+    {
+      "caller_nid": "services_cycle_service_cycleservice_deletecycle",
+      "callee": "delete",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L146"
+    },
+    {
+      "caller_nid": "services_cycle_service_cycleservice_cycledatecheck",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L154"
+    },
+    {
+      "caller_nid": "services_cycle_service_cycleservice_cycledatecheck",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L154"
+    },
+    {
+      "caller_nid": "services_cycle_service_cycleservice_cycledatecheck",
+      "callee": "post",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L154"
+    },
+    {
+      "caller_nid": "services_cycle_service_cycleservice_addcycletofavorites",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L168"
+    },
+    {
+      "caller_nid": "services_cycle_service_cycleservice_addcycletofavorites",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L168"
+    },
+    {
+      "caller_nid": "services_cycle_service_cycleservice_addcycletofavorites",
+      "callee": "post",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L168"
+    },
+    {
+      "caller_nid": "services_cycle_service_cycleservice_transferissues",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L183"
+    },
+    {
+      "caller_nid": "services_cycle_service_cycleservice_transferissues",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L183"
+    },
+    {
+      "caller_nid": "services_cycle_service_cycleservice_transferissues",
+      "callee": "post",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L183"
+    },
+    {
+      "caller_nid": "services_cycle_service_cycleservice_removecyclefromfavorites",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L191"
+    },
+    {
+      "caller_nid": "services_cycle_service_cycleservice_removecyclefromfavorites",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L191"
+    },
+    {
+      "caller_nid": "services_cycle_service_cycleservice_removecyclefromfavorites",
+      "callee": "delete",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/cycle.service.ts",
+      "source_location": "L191"
+    }
+  ]
+}

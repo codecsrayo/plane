@@ -1,0 +1,166 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_estimates_points_preview_tsx",
+      "label": "preview.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/estimates/points/preview.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "points_preview_testimatepointitempreview",
+      "label": "TEstimatePointItemPreview",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/estimates/points/preview.tsx",
+      "source_location": "L21"
+    },
+    {
+      "id": "points_preview_estimatepointitempreview",
+      "label": "EstimatePointItemPreview",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/estimates/points/preview.tsx",
+      "source_location": "L35"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_estimates_points_preview_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/estimates/points/preview.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_estimates_points_preview_tsx",
+      "target": "mobx_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/estimates/points/preview.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_estimates_points_preview_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/estimates/points/preview.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_estimates_points_preview_tsx",
+      "target": "constants",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/estimates/points/preview.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_estimates_points_preview_tsx",
+      "target": "i18n",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/estimates/points/preview.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_estimates_points_preview_tsx",
+      "target": "icons",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/estimates/points/preview.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_estimates_points_preview_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/estimates/points/preview.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_estimates_points_preview_tsx",
+      "target": "utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/estimates/points/preview.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_estimates_points_preview_tsx",
+      "target": "home_nixos_plane_apps_web_core_plane_web_components_estimates",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/estimates/points/preview.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_estimates_points_preview_tsx",
+      "target": "components_estimates_estimatepointdelete",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/estimates/points/preview.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_estimates_points_preview_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_estimates_points_update_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/estimates/points/preview.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_estimates_points_preview_tsx",
+      "target": "points_update_estimatepointupdate",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/estimates/points/preview.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_estimates_points_preview_tsx",
+      "target": "points_preview_testimatepointitempreview",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/estimates/points/preview.tsx",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_estimates_points_preview_tsx",
+      "target": "points_preview_estimatepointitempreview",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/estimates/points/preview.tsx",
+      "source_location": "L35",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

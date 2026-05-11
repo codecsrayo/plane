@@ -1,0 +1,178 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_api_rust_src_auth_any_auth_rs",
+      "label": "any_auth.rs",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/any_auth.rs",
+      "source_location": "L1"
+    },
+    {
+      "id": "auth_any_auth_anyauth",
+      "label": "AnyAuth",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/any_auth.rs",
+      "source_location": "L13"
+    },
+    {
+      "id": "auth_any_auth_anyauth_from_request_parts",
+      "label": ".from_request_parts()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/any_auth.rs",
+      "source_location": "L22"
+    },
+    {
+      "id": "auth_any_auth_optionalanyauth",
+      "label": "OptionalAnyAuth",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/any_auth.rs",
+      "source_location": "L43"
+    },
+    {
+      "id": "auth_any_auth_optionalanyauth_from_request_parts",
+      "label": ".from_request_parts()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/any_auth.rs",
+      "source_location": "L52"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_any_auth_rs",
+      "target": "axum",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/any_auth.rs",
+      "source_location": "L1",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_any_auth_rs",
+      "target": "crate",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/any_auth.rs",
+      "source_location": "L6",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_any_auth_rs",
+      "target": "auth_any_auth_anyauth",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/any_auth.rs",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "auth_any_auth_anyauth",
+      "target": "auth_any_auth_anyauth_from_request_parts",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/any_auth.rs",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_any_auth_rs",
+      "target": "auth_any_auth_optionalanyauth",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/any_auth.rs",
+      "source_location": "L43",
+      "weight": 1.0
+    },
+    {
+      "source": "auth_any_auth_optionalanyauth",
+      "target": "auth_any_auth_optionalanyauth_from_request_parts",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/any_auth.rs",
+      "source_location": "L52",
+      "weight": 1.0
+    },
+    {
+      "source": "auth_any_auth_anyauth_from_request_parts",
+      "target": "auth_any_auth_optionalanyauth_from_request_parts",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/any_auth.rs",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "auth_any_auth_anyauth_from_request_parts",
+      "target": "auth_any_auth_anyauth",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/any_auth.rs",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "auth_any_auth_optionalanyauth_from_request_parts",
+      "target": "auth_any_auth_optionalanyauth",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/any_auth.rs",
+      "source_location": "L54",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "auth_any_auth_anyauth_from_request_parts",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/any_auth.rs",
+      "source_location": "L24"
+    },
+    {
+      "caller_nid": "auth_any_auth_anyauth_from_request_parts",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/any_auth.rs",
+      "source_location": "L28"
+    },
+    {
+      "caller_nid": "auth_any_auth_anyauth_from_request_parts",
+      "callee": "Err",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/any_auth.rs",
+      "source_location": "L31"
+    },
+    {
+      "caller_nid": "auth_any_auth_optionalanyauth_from_request_parts",
+      "callee": "map",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/any_auth.rs",
+      "source_location": "L53"
+    },
+    {
+      "caller_nid": "auth_any_auth_optionalanyauth_from_request_parts",
+      "callee": "ok",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/any_auth.rs",
+      "source_location": "L53"
+    },
+    {
+      "caller_nid": "auth_any_auth_optionalanyauth_from_request_parts",
+      "callee": "from_request_parts",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/any_auth.rs",
+      "source_location": "L53"
+    },
+    {
+      "caller_nid": "auth_any_auth_optionalanyauth_from_request_parts",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/any_auth.rs",
+      "source_location": "L54"
+    }
+  ]
+}

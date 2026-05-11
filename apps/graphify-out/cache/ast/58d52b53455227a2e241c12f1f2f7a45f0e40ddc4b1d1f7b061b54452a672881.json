@@ -1,0 +1,156 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_estimates_estimate_list_item_tsx",
+      "label": "estimate-list-item.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/estimates/estimate-list-item.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "estimates_estimate_list_item_testimatelistitem",
+      "label": "TEstimateListItem",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/estimates/estimate-list-item.tsx",
+      "source_location": "L19"
+    },
+    {
+      "id": "estimates_estimate_list_item_estimatelistitem",
+      "label": "EstimateListItem",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/estimates/estimate-list-item.tsx",
+      "source_location": "L28"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_estimates_estimate_list_item_tsx",
+      "target": "mobx_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/estimates/estimate-list-item.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_estimates_estimate_list_item_tsx",
+      "target": "constants",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/estimates/estimate-list-item.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_estimates_estimate_list_item_tsx",
+      "target": "utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/estimates/estimate-list-item.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_estimates_estimate_list_item_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_settings_boxed_control_item_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/estimates/estimate-list-item.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_estimates_estimate_list_item_tsx",
+      "target": "settings_boxed_control_item_settingsboxedcontrolitem",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/estimates/estimate-list-item.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_estimates_estimate_list_item_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_estimates_index_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/estimates/estimate-list-item.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_estimates_estimate_list_item_tsx",
+      "target": "estimates_index_useprojectestimates",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/estimates/estimate-list-item.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_estimates_estimate_list_item_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_estimates_use_estimate_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/estimates/estimate-list-item.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_estimates_estimate_list_item_tsx",
+      "target": "estimates_use_estimate_useestimate",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/estimates/estimate-list-item.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_estimates_estimate_list_item_tsx",
+      "target": "home_nixos_plane_apps_web_core_plane_web_components_estimates",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/estimates/estimate-list-item.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_estimates_estimate_list_item_tsx",
+      "target": "components_estimates_estimatelistitembuttons",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/estimates/estimate-list-item.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_estimates_estimate_list_item_tsx",
+      "target": "estimates_estimate_list_item_testimatelistitem",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/estimates/estimate-list-item.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_estimates_estimate_list_item_tsx",
+      "target": "estimates_estimate_list_item_estimatelistitem",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/estimates/estimate-list-item.tsx",
+      "source_location": "L28",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

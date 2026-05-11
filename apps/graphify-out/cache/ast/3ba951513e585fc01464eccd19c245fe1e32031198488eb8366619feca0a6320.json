@@ -1,0 +1,108 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_work_item_filters_filters_hoc_shared_ts",
+      "label": "shared.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-hoc/shared.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "filters_hoc_shared_tsharedworkitemfiltersprops",
+      "label": "TSharedWorkItemFiltersProps",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-hoc/shared.ts",
+      "source_location": "L12"
+    },
+    {
+      "id": "filters_hoc_shared_tsharedworkitemfiltershocprops",
+      "label": "TSharedWorkItemFiltersHOCProps",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-hoc/shared.ts",
+      "source_location": "L20"
+    },
+    {
+      "id": "filters_hoc_shared_tenablesaveviewprops",
+      "label": "TEnableSaveViewProps",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-hoc/shared.ts",
+      "source_location": "L25"
+    },
+    {
+      "id": "filters_hoc_shared_tenableupdateviewprops",
+      "label": "TEnableUpdateViewProps",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-hoc/shared.ts",
+      "source_location": "L30"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_work_item_filters_filters_hoc_shared_ts",
+      "target": "constants",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-hoc/shared.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_work_item_filters_filters_hoc_shared_ts",
+      "target": "shared_state",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-hoc/shared.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_work_item_filters_filters_hoc_shared_ts",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-hoc/shared.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_work_item_filters_filters_hoc_shared_ts",
+      "target": "filters_hoc_shared_tsharedworkitemfiltersprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-hoc/shared.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_work_item_filters_filters_hoc_shared_ts",
+      "target": "filters_hoc_shared_tsharedworkitemfiltershocprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-hoc/shared.ts",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_work_item_filters_filters_hoc_shared_ts",
+      "target": "filters_hoc_shared_tenablesaveviewprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-hoc/shared.ts",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_work_item_filters_filters_hoc_shared_ts",
+      "target": "filters_hoc_shared_tenableupdateviewprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-hoc/shared.ts",
+      "source_location": "L30",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

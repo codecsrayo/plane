@@ -1,0 +1,1178 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_api_rust_src_routes_workspace_view_issues_rs",
+      "label": "workspace_view_issues.rs",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L1"
+    },
+    {
+      "id": "routes_workspace_view_issues_workspaceissuesquery",
+      "label": "WorkspaceIssuesQuery",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L52"
+    },
+    {
+      "id": "routes_workspace_view_issues_workspaceissuesquery_to_filter_params",
+      "label": ".to_filter_params()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L95"
+    },
+    {
+      "id": "routes_workspace_view_issues_workspaceissueitem",
+      "label": "WorkspaceIssueItem",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L121"
+    },
+    {
+      "id": "routes_workspace_view_issues_list_workspace_view_issues",
+      "label": "list_workspace_view_issues()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L176"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_routes_workspace_view_issues_rs",
+      "target": "axum",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L23",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_routes_workspace_view_issues_rs",
+      "target": "sea_orm",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L28",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_routes_workspace_view_issues_rs",
+      "target": "serde",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L31",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_routes_workspace_view_issues_rs",
+      "target": "collections",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L32",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_routes_workspace_view_issues_rs",
+      "target": "uuid",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L33",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_routes_workspace_view_issues_rs",
+      "target": "crate",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L35",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_routes_workspace_view_issues_rs",
+      "target": "routes_workspace_view_issues_workspaceissuesquery",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L52",
+      "weight": 1.0
+    },
+    {
+      "source": "routes_workspace_view_issues_workspaceissuesquery",
+      "target": "routes_workspace_view_issues_workspaceissuesquery_to_filter_params",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L95",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_routes_workspace_view_issues_rs",
+      "target": "routes_workspace_view_issues_workspaceissueitem",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L121",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_routes_workspace_view_issues_rs",
+      "target": "routes_workspace_view_issues_list_workspace_view_issues",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L176",
+      "weight": 1.0
+    },
+    {
+      "source": "routes_workspace_view_issues_list_workspace_view_issues",
+      "target": "routes_workspace_view_issues_workspaceissuesquery_to_filter_params",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L346",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "routes_workspace_view_issues_workspaceissuesquery_to_filter_params",
+      "callee": "clone",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L97"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_workspaceissuesquery_to_filter_params",
+      "callee": "clone",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L98"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_workspaceissuesquery_to_filter_params",
+      "callee": "clone",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L99"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_workspaceissuesquery_to_filter_params",
+      "callee": "clone",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L100"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_workspaceissuesquery_to_filter_params",
+      "callee": "clone",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L101"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_workspaceissuesquery_to_filter_params",
+      "callee": "clone",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L102"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_workspaceissuesquery_to_filter_params",
+      "callee": "clone",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L103"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_workspaceissuesquery_to_filter_params",
+      "callee": "clone",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L104"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_workspaceissuesquery_to_filter_params",
+      "callee": "clone",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L105"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_workspaceissuesquery_to_filter_params",
+      "callee": "clone",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L106"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_workspaceissuesquery_to_filter_params",
+      "callee": "clone",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L107"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_workspaceissuesquery_to_filter_params",
+      "callee": "clone",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L108"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_workspaceissuesquery_to_filter_params",
+      "callee": "clone",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L109"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_workspaceissuesquery_to_filter_params",
+      "callee": "clone",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L110"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_workspaceissuesquery_to_filter_params",
+      "callee": "clone",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L111"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "unwrap_or",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L187"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "parse_cursor",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L189"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "as_deref",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L189"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "unwrap_or",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L192"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "map",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L192"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "as_deref",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L192"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "eq_ignore_ascii_case",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L195"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "map_err",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L210"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "all",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L210"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "filter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L210"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "filter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L210"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "filter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L210"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "active",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L210"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "find",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L210"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "eq",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L212"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "eq",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L213"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "eq",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L214"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "is_empty",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L219"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L223"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "Json",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L223"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "empty_paginated_response",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L223"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "collect",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L226"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "map",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L226"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "iter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L226"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "map_err",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L229"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "all",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L229"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "filter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L229"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "filter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L229"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "column",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L229"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "column",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L229"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "column",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L229"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "select_only",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L229"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "find",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L229"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "is_in",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L234"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "clone",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L234"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "is_null",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L235"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "collect",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L242"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "map",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L242"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "into_iter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L242"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "is_some",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L244"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "new",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L249"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "new",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L250"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L256"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "insert",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L267"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "insert",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L271"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "insert",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L273"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "collect",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L283"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "into_iter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L283"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "collect",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L284"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "into_iter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L284"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "any",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L289"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "is_empty",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L291"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "add",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L292"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "is_in",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L292"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "clone",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L292"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "is_empty",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L295"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "add",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L296"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "add",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L297"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "add",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L297"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "all",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L297"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "is_in",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L298"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "clone",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L298"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "eq",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L299"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "is_empty",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L307"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "is_empty",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L307"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L308"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "Json",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L308"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "empty_paginated_response",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L308"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "filter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L312"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "filter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L312"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "filter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L312"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "filter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L312"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "active",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L312"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "find",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L312"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "eq",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L314"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "eq",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L315"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "is_null",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L316"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "clone",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L317"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "filter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L320"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "is_null",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L320"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "load_workspace_triage_state_ids",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L327"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "is_empty",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L328"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "filter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L329"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "is_not_in",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L329"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "filter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L335"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "gt",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L335"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "merge_json_filters",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L347"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "as_deref",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L347"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "apply_issue_filters",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L348"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L351"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "Json",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L351"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "empty_paginated_response",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L351"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "map_err",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L355"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "count",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L355"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "clone",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L355"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "unwrap_or",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L358"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "as_deref",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L358"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "apply_issue_order",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L359"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "map_err",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L364"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "all",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L364"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "limit",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L364"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "offset",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L364"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "collect",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L372"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "map",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L372"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "iter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L372"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "collect_state_ids",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L373"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "load_enrichment",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L375"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "collect",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L378"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "map",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L378"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "into_iter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L378"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "and_then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L382"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "cloned",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L384"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L384"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "remove",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L399"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "unwrap_or",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L400"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "copied",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L400"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L400"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "unwrap_or",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L405"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "copied",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L405"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L405"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "unwrap_or",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L406"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "copied",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L406"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L406"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "unwrap_or_default",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L411"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "remove",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L411"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "unwrap_or_default",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L412"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "remove",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L412"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "unwrap_or_default",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L413"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "remove",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L413"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L425"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "Json",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L425"
+    },
+    {
+      "caller_nid": "routes_workspace_view_issues_list_workspace_view_issues",
+      "callee": "paginated_response",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/workspace_view_issues.rs",
+      "source_location": "L425"
+    }
+  ]
+}

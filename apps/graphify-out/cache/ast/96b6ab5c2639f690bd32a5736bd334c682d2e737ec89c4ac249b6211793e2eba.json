@@ -1,0 +1,206 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_cycles_active_cycle_productivity_tsx",
+      "label": "productivity.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/active-cycle/productivity.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "active_cycle_productivity_activecycleproductivityprops",
+      "label": "ActiveCycleProductivityProps",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/active-cycle/productivity.tsx",
+      "source_location": "L25"
+    },
+    {
+      "id": "active_cycle_productivity_activecycleproductivity",
+      "label": "ActiveCycleProductivity",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/active-cycle/productivity.tsx",
+      "source_location": "L31"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_active_cycle_productivity_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/active-cycle/productivity.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_active_cycle_productivity_tsx",
+      "target": "mobx_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/active-cycle/productivity.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_active_cycle_productivity_tsx",
+      "target": "link",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/active-cycle/productivity.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_active_cycle_productivity_tsx",
+      "target": "next_themes",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/active-cycle/productivity.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_active_cycle_productivity_tsx",
+      "target": "i18n",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/active-cycle/productivity.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_active_cycle_productivity_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/active-cycle/productivity.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_active_cycle_productivity_tsx",
+      "target": "ui",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/active-cycle/productivity.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_active_cycle_productivity_tsx",
+      "target": "home_nixos_plane_apps_web_core_app_assets_empty_state_active_cycle_chart_dark_webp_url",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/active-cycle/productivity.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_active_cycle_productivity_tsx",
+      "target": "home_nixos_plane_apps_web_core_app_assets_empty_state_active_cycle_chart_light_webp_url",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/active-cycle/productivity.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_active_cycle_productivity_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_core_sidebar_progress_chart_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/active-cycle/productivity.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_active_cycle_productivity_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_empty_state_simple_empty_state_root_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/active-cycle/productivity.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_active_cycle_productivity_tsx",
+      "target": "empty_state_simple_empty_state_root_simpleemptystate",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/active-cycle/productivity.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_active_cycle_productivity_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_use_cycle_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/active-cycle/productivity.tsx",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_active_cycle_productivity_tsx",
+      "target": "store_use_cycle_usecycle",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/active-cycle/productivity.tsx",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_active_cycle_productivity_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_cycles_dropdowns_estimate_type_dropdown_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/active-cycle/productivity.tsx",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_active_cycle_productivity_tsx",
+      "target": "dropdowns_estimate_type_dropdown_estimatetypedropdown",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/active-cycle/productivity.tsx",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_active_cycle_productivity_tsx",
+      "target": "active_cycle_productivity_activecycleproductivityprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/active-cycle/productivity.tsx",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_active_cycle_productivity_tsx",
+      "target": "active_cycle_productivity_activecycleproductivity",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/active-cycle/productivity.tsx",
+      "source_location": "L31",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

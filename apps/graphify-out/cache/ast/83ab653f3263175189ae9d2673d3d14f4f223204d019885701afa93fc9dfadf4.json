@@ -1,0 +1,30 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_empty_states_project_epic_tsx",
+      "label": "project-epic.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/empty-states/project-epic.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "empty_states_project_epic_projectepicsemptystate",
+      "label": "ProjectEpicsEmptyState()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/empty-states/project-epic.tsx",
+      "source_location": "L7"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_empty_states_project_epic_tsx",
+      "target": "empty_states_project_epic_projectepicsemptystate",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/empty-states/project-epic.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

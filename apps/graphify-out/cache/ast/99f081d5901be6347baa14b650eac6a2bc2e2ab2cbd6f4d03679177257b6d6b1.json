@@ -1,0 +1,145 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_hooks_use_chat_support_ts",
+      "label": "use-chat-support.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-chat-support.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "hooks_use_chat_support_iusechatsupport",
+      "label": "IUseChatSupport",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-chat-support.ts",
+      "source_location": "L14"
+    },
+    {
+      "id": "hooks_use_chat_support_usechatsupport",
+      "label": "useChatSupport()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-chat-support.ts",
+      "source_location": "L19"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_chat_support_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-chat-support.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_chat_support_ts",
+      "target": "home_nixos_plane_apps_web_core_custom_events_chat_support_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-chat-support.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_chat_support_ts",
+      "target": "custom_events_chat_support_chatsupportevent",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-chat-support.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_chat_support_ts",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_use_instance_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-chat-support.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_chat_support_ts",
+      "target": "store_use_instance_useinstance",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-chat-support.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_chat_support_ts",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_user_index_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-chat-support.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_chat_support_ts",
+      "target": "user_index_useuser",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-chat-support.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_chat_support_ts",
+      "target": "hooks_use_chat_support_iusechatsupport",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-chat-support.ts",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_chat_support_ts",
+      "target": "hooks_use_chat_support_usechatsupport",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-chat-support.ts",
+      "source_location": "L19",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "hooks_use_chat_support_usechatsupport",
+      "callee": "useUser",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-chat-support.ts",
+      "source_location": "L20"
+    },
+    {
+      "caller_nid": "hooks_use_chat_support_usechatsupport",
+      "callee": "useInstance",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-chat-support.ts",
+      "source_location": "L21"
+    },
+    {
+      "caller_nid": "hooks_use_chat_support_usechatsupport",
+      "callee": "Boolean",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-chat-support.ts",
+      "source_location": "L23"
+    },
+    {
+      "caller_nid": "hooks_use_chat_support_usechatsupport",
+      "callee": "useCallback",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-chat-support.ts",
+      "source_location": "L25"
+    }
+  ]
+}

@@ -1,0 +1,212 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_modules_modal_tsx",
+      "label": "modal.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/modules/modal.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "modules_modal_props",
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/modules/modal.tsx",
+      "source_location": "L22"
+    },
+    {
+      "id": "modules_modal_defaultvalues",
+      "label": "defaultValues",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/modules/modal.tsx",
+      "source_location": "L30"
+    },
+    {
+      "id": "modules_modal_createupdatemodulemodal",
+      "label": "CreateUpdateModuleModal",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/modules/modal.tsx",
+      "source_location": "L38"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_modules_modal_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/modules/modal.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_modules_modal_tsx",
+      "target": "mobx_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/modules/modal.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_modules_modal_tsx",
+      "target": "react_hook_form",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/modules/modal.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_modules_modal_tsx",
+      "target": "toast",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/modules/modal.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_modules_modal_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/modules/modal.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_modules_modal_tsx",
+      "target": "ui",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/modules/modal.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_modules_modal_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_modules_index_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/modules/modal.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_modules_modal_tsx",
+      "target": "modules_index_moduleform",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/modules/modal.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_modules_modal_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_use_module_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/modules/modal.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_modules_modal_tsx",
+      "target": "store_use_module_usemodule",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/modules/modal.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_modules_modal_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_use_project_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/modules/modal.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_modules_modal_tsx",
+      "target": "store_use_project_useproject",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/modules/modal.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_modules_modal_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_use_keypress_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/modules/modal.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_modules_modal_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_use_platform_os_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/modules/modal.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_modules_modal_tsx",
+      "target": "hooks_use_platform_os_useplatformos",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/modules/modal.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_modules_modal_tsx",
+      "target": "modules_modal_props",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/modules/modal.tsx",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_modules_modal_tsx",
+      "target": "modules_modal_defaultvalues",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/modules/modal.tsx",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_modules_modal_tsx",
+      "target": "modules_modal_createupdatemodulemodal",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/modules/modal.tsx",
+      "source_location": "L38",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

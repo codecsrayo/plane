@@ -1,0 +1,220 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_project_create_common_attributes_tsx",
+      "label": "common-attributes.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/create/common-attributes.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "create_common_attributes_props",
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/create/common-attributes.tsx",
+      "source_location": "L23"
+    },
+    {
+      "id": "create_common_attributes_projectcommonattributes",
+      "label": "ProjectCommonAttributes()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/create/common-attributes.tsx",
+      "source_location": "L31"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_create_common_attributes_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/create/common-attributes.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_create_common_attributes_tsx",
+      "target": "react_hook_form",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/create/common-attributes.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_create_common_attributes_tsx",
+      "target": "react_hook_form",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/create/common-attributes.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_create_common_attributes_tsx",
+      "target": "icons",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/create/common-attributes.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_create_common_attributes_tsx",
+      "target": "constants",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/create/common-attributes.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_create_common_attributes_tsx",
+      "target": "i18n",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/create/common-attributes.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_create_common_attributes_tsx",
+      "target": "tooltip",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/create/common-attributes.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_create_common_attributes_tsx",
+      "target": "ui",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/create/common-attributes.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_create_common_attributes_tsx",
+      "target": "utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/create/common-attributes.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_create_common_attributes_tsx",
+      "target": "home_nixos_plane_apps_web_core_plane_web_types_projects",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/create/common-attributes.tsx",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_create_common_attributes_tsx",
+      "target": "types_projects_tproject",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/create/common-attributes.tsx",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_create_common_attributes_tsx",
+      "target": "create_common_attributes_props",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/create/common-attributes.tsx",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_create_common_attributes_tsx",
+      "target": "create_common_attributes_projectcommonattributes",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/create/common-attributes.tsx",
+      "source_location": "L31",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "create_common_attributes_projectcommonattributes",
+      "callee": "useFormContext",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/create/common-attributes.tsx",
+      "source_location": "L36"
+    },
+    {
+      "caller_nid": "create_common_attributes_projectcommonattributes",
+      "callee": "getTabIndex",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/create/common-attributes.tsx",
+      "source_location": "L38"
+    },
+    {
+      "caller_nid": "create_common_attributes_projectcommonattributes",
+      "callee": "useTranslation",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/create/common-attributes.tsx",
+      "source_location": "L39"
+    },
+    {
+      "caller_nid": "create_common_attributes_projectcommonattributes",
+      "callee": "t",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/create/common-attributes.tsx",
+      "source_location": "L67"
+    },
+    {
+      "caller_nid": "create_common_attributes_projectcommonattributes",
+      "callee": "t",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/create/common-attributes.tsx",
+      "source_location": "L70"
+    },
+    {
+      "caller_nid": "create_common_attributes_projectcommonattributes",
+      "callee": "t",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/create/common-attributes.tsx",
+      "source_location": "L94"
+    },
+    {
+      "caller_nid": "create_common_attributes_projectcommonattributes",
+      "callee": "t",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/create/common-attributes.tsx",
+      "source_location": "L100"
+    },
+    {
+      "caller_nid": "create_common_attributes_projectcommonattributes",
+      "callee": "t",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/create/common-attributes.tsx",
+      "source_location": "L104"
+    },
+    {
+      "caller_nid": "create_common_attributes_projectcommonattributes",
+      "callee": "t",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/create/common-attributes.tsx",
+      "source_location": "L125"
+    }
+  ]
+}

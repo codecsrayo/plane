@@ -1,0 +1,76 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_auth_screens_project_project_access_restriction_tsx",
+      "label": "project-access-restriction.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/auth-screens/project/project-access-restriction.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "project_project_access_restriction_tprops",
+      "label": "TProps",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/auth-screens/project/project-access-restriction.tsx",
+      "source_location": "L12"
+    },
+    {
+      "id": "project_project_access_restriction_projectaccessrestriction",
+      "label": "ProjectAccessRestriction",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/auth-screens/project/project-access-restriction.tsx",
+      "source_location": "L19"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_auth_screens_project_project_access_restriction_tsx",
+      "target": "mobx_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/auth-screens/project/project-access-restriction.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_auth_screens_project_project_access_restriction_tsx",
+      "target": "i18n",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/auth-screens/project/project-access-restriction.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_auth_screens_project_project_access_restriction_tsx",
+      "target": "empty_state",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/auth-screens/project/project-access-restriction.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_auth_screens_project_project_access_restriction_tsx",
+      "target": "project_project_access_restriction_tprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/auth-screens/project/project-access-restriction.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_auth_screens_project_project_access_restriction_tsx",
+      "target": "project_project_access_restriction_projectaccessrestriction",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/auth-screens/project/project-access-restriction.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

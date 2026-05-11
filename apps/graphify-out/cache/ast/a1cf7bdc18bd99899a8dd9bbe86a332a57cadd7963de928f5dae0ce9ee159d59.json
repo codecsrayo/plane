@@ -1,0 +1,56 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_sidebar_add_button_tsx",
+      "label": "add-button.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/sidebar/add-button.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "sidebar_add_button_props",
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/sidebar/add-button.tsx",
+      "source_location": "L9"
+    },
+    {
+      "id": "sidebar_add_button_sidebaraddbutton",
+      "label": "SidebarAddButton()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/sidebar/add-button.tsx",
+      "source_location": "L14"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_sidebar_add_button_tsx",
+      "target": "button",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/sidebar/add-button.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_sidebar_add_button_tsx",
+      "target": "sidebar_add_button_props",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/sidebar/add-button.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_sidebar_add_button_tsx",
+      "target": "sidebar_add_button_sidebaraddbutton",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/sidebar/add-button.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

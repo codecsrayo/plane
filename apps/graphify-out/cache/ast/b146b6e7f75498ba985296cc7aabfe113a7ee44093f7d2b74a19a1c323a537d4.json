@@ -1,0 +1,126 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_power_k_ui_pages_context_based_module_status_menu_tsx",
+      "label": "status-menu.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/pages/context-based/module/status-menu.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "module_status_menu_props",
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/pages/context-based/module/status-menu.tsx",
+      "source_location": "L17"
+    },
+    {
+      "id": "module_status_menu_powerkmodulestatusmenu",
+      "label": "PowerKModuleStatusMenu",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/pages/context-based/module/status-menu.tsx",
+      "source_location": "L22"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_pages_context_based_module_status_menu_tsx",
+      "target": "cmdk",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/pages/context-based/module/status-menu.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_pages_context_based_module_status_menu_tsx",
+      "target": "mobx_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/pages/context-based/module/status-menu.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_pages_context_based_module_status_menu_tsx",
+      "target": "constants",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/pages/context-based/module/status-menu.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_pages_context_based_module_status_menu_tsx",
+      "target": "i18n",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/pages/context-based/module/status-menu.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_pages_context_based_module_status_menu_tsx",
+      "target": "icons",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/pages/context-based/module/status-menu.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_pages_context_based_module_status_menu_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/pages/context-based/module/status-menu.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_pages_context_based_module_status_menu_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_power_k_ui_modal_command_item_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/pages/context-based/module/status-menu.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_pages_context_based_module_status_menu_tsx",
+      "target": "modal_command_item_powerkmodalcommanditem",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/pages/context-based/module/status-menu.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_pages_context_based_module_status_menu_tsx",
+      "target": "module_status_menu_props",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/pages/context-based/module/status-menu.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_pages_context_based_module_status_menu_tsx",
+      "target": "module_status_menu_powerkmodulestatusmenu",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/pages/context-based/module/status-menu.tsx",
+      "source_location": "L22",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

@@ -1,0 +1,40 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_api_rust_src_utils_soft_delete_rs",
+      "label": "soft_delete.rs",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/soft_delete.rs",
+      "source_location": "L1"
+    },
+    {
+      "id": "utils_soft_delete_softdeleteext",
+      "label": "SoftDeleteExt",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/soft_delete.rs",
+      "source_location": "L19"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_utils_soft_delete_rs",
+      "target": "entitytrait",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/soft_delete.rs",
+      "source_location": "L17",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_utils_soft_delete_rs",
+      "target": "utils_soft_delete_softdeleteext",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/soft_delete.rs",
+      "source_location": "L19",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

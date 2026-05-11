@@ -1,0 +1,281 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_hooks_use_realtime_page_events_tsx",
+      "label": "use-realtime-page-events.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-realtime-page-events.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "hooks_use_realtime_page_events_pageupdatehandler",
+      "label": "PageUpdateHandler",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-realtime-page-events.tsx",
+      "source_location": "L24"
+    },
+    {
+      "id": "hooks_use_realtime_page_events_tcustomeventhandlers",
+      "label": "TCustomEventHandlers",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-realtime-page-events.tsx",
+      "source_location": "L31"
+    },
+    {
+      "id": "hooks_use_realtime_page_events_usepageeventsprops",
+      "label": "UsePageEventsProps",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-realtime-page-events.tsx",
+      "source_location": "L35"
+    },
+    {
+      "id": "hooks_use_realtime_page_events_userealtimepageevents",
+      "label": "useRealtimePageEvents()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-realtime-page-events.tsx",
+      "source_location": "L43"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_realtime_page_events_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-realtime-page-events.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_realtime_page_events_tsx",
+      "target": "editor",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-realtime-page-events.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_realtime_page_events_tsx",
+      "target": "toast",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-realtime-page-events.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_realtime_page_events_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-realtime-page-events.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_realtime_page_events_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_pages_editor_editor_body_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-realtime-page-events.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_realtime_page_events_tsx",
+      "target": "editor_editor_body_teditorbodyhandlers",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-realtime-page-events.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_realtime_page_events_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_user_index_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-realtime-page-events.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_realtime_page_events_tsx",
+      "target": "user_index_useuser",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-realtime-page-events.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_realtime_page_events_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_use_app_router_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-realtime-page-events.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_realtime_page_events_tsx",
+      "target": "hooks_use_app_router_useapprouter",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-realtime-page-events.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_realtime_page_events_tsx",
+      "target": "home_nixos_plane_apps_web_core_plane_web_hooks_store",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-realtime-page-events.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_realtime_page_events_tsx",
+      "target": "hooks_store_epagestoretype",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-realtime-page-events.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_realtime_page_events_tsx",
+      "target": "home_nixos_plane_apps_web_core_plane_web_hooks_store",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-realtime-page-events.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_realtime_page_events_tsx",
+      "target": "hooks_store_usepagestore",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-realtime-page-events.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_realtime_page_events_tsx",
+      "target": "home_nixos_plane_apps_web_core_store_pages_base_page_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-realtime-page-events.tsx",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_realtime_page_events_tsx",
+      "target": "pages_base_page_tpageinstance",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-realtime-page-events.tsx",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_realtime_page_events_tsx",
+      "target": "hooks_use_realtime_page_events_pageupdatehandler",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-realtime-page-events.tsx",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_realtime_page_events_tsx",
+      "target": "hooks_use_realtime_page_events_tcustomeventhandlers",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-realtime-page-events.tsx",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_realtime_page_events_tsx",
+      "target": "hooks_use_realtime_page_events_usepageeventsprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-realtime-page-events.tsx",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_realtime_page_events_tsx",
+      "target": "hooks_use_realtime_page_events_userealtimepageevents",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-realtime-page-events.tsx",
+      "source_location": "L43",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "hooks_use_realtime_page_events_userealtimepageevents",
+      "callee": "useAppRouter",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-realtime-page-events.tsx",
+      "source_location": "L50"
+    },
+    {
+      "caller_nid": "hooks_use_realtime_page_events_userealtimepageevents",
+      "callee": "usePageStore",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-realtime-page-events.tsx",
+      "source_location": "L51"
+    },
+    {
+      "caller_nid": "hooks_use_realtime_page_events_userealtimepageevents",
+      "callee": "useUser",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-realtime-page-events.tsx",
+      "source_location": "L53"
+    },
+    {
+      "caller_nid": "hooks_use_realtime_page_events_userealtimepageevents",
+      "callee": "useCallback",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-realtime-page-events.tsx",
+      "source_location": "L56"
+    },
+    {
+      "caller_nid": "hooks_use_realtime_page_events_userealtimepageevents",
+      "callee": "useMemo",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-realtime-page-events.tsx",
+      "source_location": "L69"
+    },
+    {
+      "caller_nid": "hooks_use_realtime_page_events_userealtimepageevents",
+      "callee": "useCallback",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-realtime-page-events.tsx",
+      "source_location": "L180"
+    }
+  ]
+}

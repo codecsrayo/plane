@@ -1,0 +1,438 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_inbox_modals_create_modal_create_root_tsx",
+      "label": "create-root.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/modals/create-modal/create-root.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "create_modal_create_root_fileservice",
+      "label": "fileService",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/modals/create-modal/create-root.tsx",
+      "source_location": "L37"
+    },
+    {
+      "id": "create_modal_create_root_tinboxissuecreateroot",
+      "label": "TInboxIssueCreateRoot",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/modals/create-modal/create-root.tsx",
+      "source_location": "L39"
+    },
+    {
+      "id": "create_modal_create_root_defaultissuedata",
+      "label": "defaultIssueData",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/modals/create-modal/create-root.tsx",
+      "source_location": "L47"
+    },
+    {
+      "id": "create_modal_create_root_inboxissuecreateroot",
+      "label": "InboxIssueCreateRoot",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/modals/create-modal/create-root.tsx",
+      "source_location": "L59"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_modals_create_modal_create_root_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/modals/create-modal/create-root.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_modals_create_modal_create_root_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/modals/create-modal/create-root.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_modals_create_modal_create_root_tsx",
+      "target": "mobx_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/modals/create-modal/create-root.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_modals_create_modal_create_root_tsx",
+      "target": "constants",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/modals/create-modal/create-root.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_modals_create_modal_create_root_tsx",
+      "target": "editor",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/modals/create-modal/create-root.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_modals_create_modal_create_root_tsx",
+      "target": "i18n",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/modals/create-modal/create-root.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_modals_create_modal_create_root_tsx",
+      "target": "button",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/modals/create-modal/create-root.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_modals_create_modal_create_root_tsx",
+      "target": "toast",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/modals/create-modal/create-root.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_modals_create_modal_create_root_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/modals/create-modal/create-root.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_modals_create_modal_create_root_tsx",
+      "target": "ui",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/modals/create-modal/create-root.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_modals_create_modal_create_root_tsx",
+      "target": "utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/modals/create-modal/create-root.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_modals_create_modal_create_root_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_use_project_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/modals/create-modal/create-root.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_modals_create_modal_create_root_tsx",
+      "target": "store_use_project_useproject",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/modals/create-modal/create-root.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_modals_create_modal_create_root_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_use_project_inbox_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/modals/create-modal/create-root.tsx",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_modals_create_modal_create_root_tsx",
+      "target": "store_use_project_inbox_useprojectinbox",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/modals/create-modal/create-root.tsx",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_modals_create_modal_create_root_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_use_workspace_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/modals/create-modal/create-root.tsx",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_modals_create_modal_create_root_tsx",
+      "target": "store_use_workspace_useworkspace",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/modals/create-modal/create-root.tsx",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_modals_create_modal_create_root_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_use_app_router_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/modals/create-modal/create-root.tsx",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_modals_create_modal_create_root_tsx",
+      "target": "hooks_use_app_router_useapprouter",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/modals/create-modal/create-root.tsx",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_modals_create_modal_create_root_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_use_keypress_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/modals/create-modal/create-root.tsx",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_modals_create_modal_create_root_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_use_platform_os_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/modals/create-modal/create-root.tsx",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_modals_create_modal_create_root_tsx",
+      "target": "hooks_use_platform_os_useplatformos",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/modals/create-modal/create-root.tsx",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_modals_create_modal_create_root_tsx",
+      "target": "home_nixos_plane_apps_web_core_plane_web_components_de_dupe_de_dupe_button",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/modals/create-modal/create-root.tsx",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_modals_create_modal_create_root_tsx",
+      "target": "de_dupe_de_dupe_button_dedupebuttonroot",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/modals/create-modal/create-root.tsx",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_modals_create_modal_create_root_tsx",
+      "target": "home_nixos_plane_apps_web_core_plane_web_components_de_dupe_duplicate_modal",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/modals/create-modal/create-root.tsx",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_modals_create_modal_create_root_tsx",
+      "target": "de_dupe_duplicate_modal_duplicatemodalroot",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/modals/create-modal/create-root.tsx",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_modals_create_modal_create_root_tsx",
+      "target": "home_nixos_plane_apps_web_core_plane_web_hooks_use_debounced_duplicate_issues",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/modals/create-modal/create-root.tsx",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_modals_create_modal_create_root_tsx",
+      "target": "hooks_use_debounced_duplicate_issues_usedebouncedduplicateissues",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/modals/create-modal/create-root.tsx",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_modals_create_modal_create_root_tsx",
+      "target": "home_nixos_plane_apps_web_core_services_file_service_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/modals/create-modal/create-root.tsx",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_modals_create_modal_create_root_tsx",
+      "target": "services_file_service_fileservice",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/modals/create-modal/create-root.tsx",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_modals_create_modal_create_root_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_inbox_modals_create_modal_issue_description_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/modals/create-modal/create-root.tsx",
+      "source_location": "L33",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_modals_create_modal_create_root_tsx",
+      "target": "create_modal_issue_description_inboxissuedescription",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/modals/create-modal/create-root.tsx",
+      "source_location": "L33",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_modals_create_modal_create_root_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_inbox_modals_create_modal_issue_properties_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/modals/create-modal/create-root.tsx",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_modals_create_modal_create_root_tsx",
+      "target": "create_modal_issue_properties_inboxissueproperties",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/modals/create-modal/create-root.tsx",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_modals_create_modal_create_root_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_inbox_modals_create_modal_issue_title_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/modals/create-modal/create-root.tsx",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_modals_create_modal_create_root_tsx",
+      "target": "create_modal_issue_title_inboxissuetitle",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/modals/create-modal/create-root.tsx",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_modals_create_modal_create_root_tsx",
+      "target": "create_modal_create_root_fileservice",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/modals/create-modal/create-root.tsx",
+      "source_location": "L37",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_modals_create_modal_create_root_tsx",
+      "target": "create_modal_create_root_tinboxissuecreateroot",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/modals/create-modal/create-root.tsx",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_modals_create_modal_create_root_tsx",
+      "target": "create_modal_create_root_defaultissuedata",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/modals/create-modal/create-root.tsx",
+      "source_location": "L47",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_modals_create_modal_create_root_tsx",
+      "target": "create_modal_create_root_inboxissuecreateroot",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/modals/create-modal/create-root.tsx",
+      "source_location": "L59",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

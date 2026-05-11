@@ -1,0 +1,30 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_account_auth_forms_common_container_tsx",
+      "label": "container.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/account/auth-forms/common/container.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "common_container_formcontainer",
+      "label": "FormContainer()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/account/auth-forms/common/container.tsx",
+      "source_location": "L7"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_account_auth_forms_common_container_tsx",
+      "target": "common_container_formcontainer",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/account/auth-forms/common/container.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

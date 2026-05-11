@@ -1,0 +1,235 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_power_k_core_registry_ts",
+      "label": "registry.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/core/registry.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "core_registry_ipowerkcommandregistry",
+      "label": "IPowerKCommandRegistry",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/core/registry.ts",
+      "source_location": "L11"
+    },
+    {
+      "id": "core_registry_powerkcommandregistry",
+      "label": "PowerKCommandRegistry",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/core/registry.ts",
+      "source_location": "L37"
+    },
+    {
+      "id": "core_registry_powerkcommandregistry_constructor",
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/core/registry.ts",
+      "source_location": "L41"
+    },
+    {
+      "id": "core_registry_shortcutmap",
+      "label": "shortcutMap",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/core/registry.ts",
+      "source_location": "L90"
+    },
+    {
+      "id": "core_registry_keysequencemap",
+      "label": "keySequenceMap",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/core/registry.ts",
+      "source_location": "L100"
+    },
+    {
+      "id": "core_registry_modifiershortcutmap",
+      "label": "modifierShortcutMap",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/core/registry.ts",
+      "source_location": "L110"
+    },
+    {
+      "id": "core_registry_commandid",
+      "label": "commandId",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/core/registry.ts",
+      "source_location": "L120"
+    },
+    {
+      "id": "core_registry_powerkcommandregistry_iscommandvisible",
+      "label": ".isCommandVisible()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/core/registry.ts",
+      "source_location": "L146"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_core_registry_ts",
+      "target": "mobx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/core/registry.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_core_registry_ts",
+      "target": "mobx_utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/core/registry.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_core_registry_ts",
+      "target": "home_nixos_plane_apps_web_core_components_power_k_core_types_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/core/registry.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_core_registry_ts",
+      "target": "core_types_tpowerkcommandconfig",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/core/registry.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_core_registry_ts",
+      "target": "core_types_tpowerkcontext",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/core/registry.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_core_registry_ts",
+      "target": "core_types_tpowerkcommandgroup",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/core/registry.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_core_registry_ts",
+      "target": "core_registry_ipowerkcommandregistry",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/core/registry.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_core_registry_ts",
+      "target": "core_registry_powerkcommandregistry",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/core/registry.ts",
+      "source_location": "L37",
+      "weight": 1.0
+    },
+    {
+      "source": "core_registry_powerkcommandregistry",
+      "target": "core_registry_powerkcommandregistry_constructor",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/core/registry.ts",
+      "source_location": "L41",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_core_registry_ts",
+      "target": "core_registry_shortcutmap",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/core/registry.ts",
+      "source_location": "L90",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_core_registry_ts",
+      "target": "core_registry_keysequencemap",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/core/registry.ts",
+      "source_location": "L100",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_core_registry_ts",
+      "target": "core_registry_modifiershortcutmap",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/core/registry.ts",
+      "source_location": "L110",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_core_registry_ts",
+      "target": "core_registry_commandid",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/core/registry.ts",
+      "source_location": "L120",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_core_registry_ts",
+      "target": "core_registry_commandid",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/core/registry.ts",
+      "source_location": "L125",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_core_registry_ts",
+      "target": "core_registry_commandid",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/core/registry.ts",
+      "source_location": "L130",
+      "weight": 1.0
+    },
+    {
+      "source": "core_registry_powerkcommandregistry",
+      "target": "core_registry_powerkcommandregistry_iscommandvisible",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/core/registry.ts",
+      "source_location": "L146",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "core_registry_powerkcommandregistry_constructor",
+      "callee": "makeObservable",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/core/registry.ts",
+      "source_location": "L42"
+    },
+    {
+      "caller_nid": "core_registry_powerkcommandregistry_iscommandvisible",
+      "callee": "isVisible",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/core/registry.ts",
+      "source_location": "L148"
+    }
+  ]
+}

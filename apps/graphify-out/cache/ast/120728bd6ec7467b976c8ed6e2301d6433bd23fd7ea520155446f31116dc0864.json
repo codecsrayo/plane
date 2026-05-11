@@ -1,0 +1,116 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_issues_attachment_root_tsx",
+      "label": "root.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/attachment/root.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "attachment_root_tissueattachmentroot",
+      "label": "TIssueAttachmentRoot",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/attachment/root.tsx",
+      "source_location": "L14"
+    },
+    {
+      "id": "attachment_root_issueattachmentroot",
+      "label": "IssueAttachmentRoot",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/attachment/root.tsx",
+      "source_location": "L21"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_attachment_root_tsx",
+      "target": "mobx_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/attachment/root.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_attachment_root_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_issues_issue_detail_widgets_attachments_helper_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/attachment/root.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_attachment_root_tsx",
+      "target": "attachments_helper_useattachmentoperations",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/attachment/root.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_attachment_root_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_issues_attachment_attachment_upload_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/attachment/root.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_attachment_root_tsx",
+      "target": "attachment_attachment_upload_issueattachmentupload",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/attachment/root.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_attachment_root_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_issues_attachment_attachments_list_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/attachment/root.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_attachment_root_tsx",
+      "target": "attachment_attachments_list_issueattachmentslist",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/attachment/root.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_attachment_root_tsx",
+      "target": "attachment_root_tissueattachmentroot",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/attachment/root.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_attachment_root_tsx",
+      "target": "attachment_root_issueattachmentroot",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/attachment/root.tsx",
+      "source_location": "L21",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

@@ -1,0 +1,56 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_filters_header_helpers_filter_option_tsx",
+      "label": "filter-option.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/filters/header/helpers/filter-option.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "helpers_filter_option_props",
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/filters/header/helpers/filter-option.tsx",
+      "source_location": "L9"
+    },
+    {
+      "id": "helpers_filter_option_filteroption",
+      "label": "FilterOption()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/filters/header/helpers/filter-option.tsx",
+      "source_location": "L18"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_filters_header_helpers_filter_option_tsx",
+      "target": "icons",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/filters/header/helpers/filter-option.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_filters_header_helpers_filter_option_tsx",
+      "target": "helpers_filter_option_props",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/filters/header/helpers/filter-option.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_filters_header_helpers_filter_option_tsx",
+      "target": "helpers_filter_option_filteroption",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/filters/header/helpers/filter-option.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

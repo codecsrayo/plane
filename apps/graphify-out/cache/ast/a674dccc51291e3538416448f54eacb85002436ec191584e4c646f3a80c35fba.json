@@ -1,0 +1,126 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_api_rust_src_entities_auth_permission_rs",
+      "label": "auth_permission.rs",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/auth_permission.rs",
+      "source_location": "L1"
+    },
+    {
+      "id": "entities_auth_permission_model",
+      "label": "Model",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/auth_permission.rs",
+      "source_location": "L8"
+    },
+    {
+      "id": "entities_auth_permission_relation",
+      "label": "Relation",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/auth_permission.rs",
+      "source_location": "L17"
+    },
+    {
+      "id": "entities_auth_permission_entity",
+      "label": "Entity",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/auth_permission.rs",
+      "source_location": "L32"
+    },
+    {
+      "id": "entities_auth_permission_entity_to",
+      "label": ".to()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/auth_permission.rs",
+      "source_location": "L33"
+    },
+    {
+      "id": "entities_auth_permission_activemodel",
+      "label": "ActiveModel",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/auth_permission.rs",
+      "source_location": "L50"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_entities_auth_permission_rs",
+      "target": "prelude",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/auth_permission.rs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_entities_auth_permission_rs",
+      "target": "entities_auth_permission_model",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/auth_permission.rs",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_entities_auth_permission_rs",
+      "target": "entities_auth_permission_relation",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/auth_permission.rs",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "entities_auth_permission_entity",
+      "target": "entities_auth_permission_entity_to",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/auth_permission.rs",
+      "source_location": "L33",
+      "weight": 1.0
+    },
+    {
+      "source": "entities_auth_permission_entity",
+      "target": "entities_auth_permission_entity_to",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/auth_permission.rs",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "entities_auth_permission_entity",
+      "target": "entities_auth_permission_entity_to",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/auth_permission.rs",
+      "source_location": "L45",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "entities_auth_permission_entity_to",
+      "callee": "def",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/auth_permission.rs",
+      "source_location": "L34"
+    },
+    {
+      "caller_nid": "entities_auth_permission_entity_to",
+      "callee": "def",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/auth_permission.rs",
+      "source_location": "L40"
+    },
+    {
+      "caller_nid": "entities_auth_permission_entity_to",
+      "callee": "def",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/auth_permission.rs",
+      "source_location": "L46"
+    }
+  ]
+}

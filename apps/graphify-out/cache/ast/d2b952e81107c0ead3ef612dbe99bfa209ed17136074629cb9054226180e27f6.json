@@ -1,0 +1,420 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_api_rust_src_utils_url_rs",
+      "label": "url.rs",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L1"
+    },
+    {
+      "id": "utils_url_url_pattern",
+      "label": "url_pattern()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L23"
+    },
+    {
+      "id": "utils_url_contains_url",
+      "label": "contains_url()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L49"
+    },
+    {
+      "id": "utils_url_detects_http_url",
+      "label": "detects_http_url()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L71"
+    },
+    {
+      "id": "utils_url_detects_www_url",
+      "label": "detects_www_url()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L77"
+    },
+    {
+      "id": "utils_url_detects_bare_domain",
+      "label": "detects_bare_domain()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L82"
+    },
+    {
+      "id": "utils_url_detects_ipv4",
+      "label": "detects_ipv4()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L87"
+    },
+    {
+      "id": "utils_url_allows_normal_names",
+      "label": "allows_normal_names()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L92"
+    },
+    {
+      "id": "utils_url_long_input_returns_false",
+      "label": "long_input_returns_false()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L100"
+    },
+    {
+      "id": "utils_url_normalize_and_validate_url",
+      "label": "normalize_and_validate_url()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L122"
+    },
+    {
+      "id": "utils_url_accepts_full_https",
+      "label": "accepts_full_https()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L154"
+    },
+    {
+      "id": "utils_url_prepends_http_when_missing_scheme",
+      "label": "prepends_http_when_missing_scheme()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L162"
+    },
+    {
+      "id": "utils_url_rejects_garbage",
+      "label": "rejects_garbage()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L170"
+    },
+    {
+      "id": "utils_url_accepts_localhost_and_ipv4",
+      "label": "accepts_localhost_and_ipv4()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L177"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_utils_url_rs",
+      "target": "oncelock",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L17",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_utils_url_rs",
+      "target": "regex",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L18",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_utils_url_rs",
+      "target": "utils_url_url_pattern",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_utils_url_rs",
+      "target": "utils_url_contains_url",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L49",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_utils_url_rs",
+      "target": "super",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L68",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_utils_url_rs",
+      "target": "utils_url_detects_http_url",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L71",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_utils_url_rs",
+      "target": "utils_url_detects_www_url",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L77",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_utils_url_rs",
+      "target": "utils_url_detects_bare_domain",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L82",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_utils_url_rs",
+      "target": "utils_url_detects_ipv4",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L87",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_utils_url_rs",
+      "target": "utils_url_allows_normal_names",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L92",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_utils_url_rs",
+      "target": "utils_url_long_input_returns_false",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L100",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_utils_url_rs",
+      "target": "utils_url_normalize_and_validate_url",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L122",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_utils_url_rs",
+      "target": "normalize_and_validate_url",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L151",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_utils_url_rs",
+      "target": "utils_url_accepts_full_https",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L154",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_utils_url_rs",
+      "target": "utils_url_prepends_http_when_missing_scheme",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L162",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_utils_url_rs",
+      "target": "utils_url_rejects_garbage",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L170",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_utils_url_rs",
+      "target": "utils_url_accepts_localhost_and_ipv4",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L177",
+      "weight": 1.0
+    },
+    {
+      "source": "utils_url_contains_url",
+      "target": "utils_url_url_pattern",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L58",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "utils_url_url_pattern",
+      "callee": "new",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L24"
+    },
+    {
+      "caller_nid": "utils_url_url_pattern",
+      "callee": "get_or_init",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L25"
+    },
+    {
+      "caller_nid": "utils_url_url_pattern",
+      "callee": "expect",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L26"
+    },
+    {
+      "caller_nid": "utils_url_url_pattern",
+      "callee": "new",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L26"
+    },
+    {
+      "caller_nid": "utils_url_contains_url",
+      "callee": "len",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L51"
+    },
+    {
+      "caller_nid": "utils_url_contains_url",
+      "callee": "lines",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L55"
+    },
+    {
+      "caller_nid": "utils_url_contains_url",
+      "callee": "len",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L57"
+    },
+    {
+      "caller_nid": "utils_url_contains_url",
+      "callee": "is_match",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L58"
+    },
+    {
+      "caller_nid": "utils_url_long_input_returns_false",
+      "callee": "repeat",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L101"
+    },
+    {
+      "caller_nid": "utils_url_normalize_and_validate_url",
+      "callee": "starts_with",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L125"
+    },
+    {
+      "caller_nid": "utils_url_normalize_and_validate_url",
+      "callee": "starts_with",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L125"
+    },
+    {
+      "caller_nid": "utils_url_normalize_and_validate_url",
+      "callee": "to_owned",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L126"
+    },
+    {
+      "caller_nid": "utils_url_normalize_and_validate_url",
+      "callee": "new",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L135"
+    },
+    {
+      "caller_nid": "utils_url_normalize_and_validate_url",
+      "callee": "get_or_init",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L136"
+    },
+    {
+      "caller_nid": "utils_url_normalize_and_validate_url",
+      "callee": "expect",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L137"
+    },
+    {
+      "caller_nid": "utils_url_normalize_and_validate_url",
+      "callee": "new",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L137"
+    },
+    {
+      "caller_nid": "utils_url_normalize_and_validate_url",
+      "callee": "is_match",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L143"
+    },
+    {
+      "caller_nid": "utils_url_normalize_and_validate_url",
+      "callee": "Err",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L144"
+    },
+    {
+      "caller_nid": "utils_url_normalize_and_validate_url",
+      "callee": "BadRequest",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L144"
+    },
+    {
+      "caller_nid": "utils_url_normalize_and_validate_url",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L144"
+    },
+    {
+      "caller_nid": "utils_url_normalize_and_validate_url",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/url.rs",
+      "source_location": "L146"
+    }
+  ]
+}

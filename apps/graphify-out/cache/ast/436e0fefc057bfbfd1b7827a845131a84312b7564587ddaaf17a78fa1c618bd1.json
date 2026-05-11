@@ -1,0 +1,76 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_web_hooks_empty_state_tsx",
+      "label": "empty-state.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/web-hooks/empty-state.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "web_hooks_empty_state_props",
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/web-hooks/empty-state.tsx",
+      "source_location": "L13"
+    },
+    {
+      "id": "web_hooks_empty_state_webhooksemptystate",
+      "label": "WebhooksEmptyState()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/web-hooks/empty-state.tsx",
+      "source_location": "L17"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_web_hooks_empty_state_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/web-hooks/empty-state.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_web_hooks_empty_state_tsx",
+      "target": "button",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/web-hooks/empty-state.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_web_hooks_empty_state_tsx",
+      "target": "home_nixos_plane_apps_web_core_app_assets_empty_state_web_hook_svg_url",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/web-hooks/empty-state.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_web_hooks_empty_state_tsx",
+      "target": "web_hooks_empty_state_props",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/web-hooks/empty-state.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_web_hooks_empty_state_tsx",
+      "target": "web_hooks_empty_state_webhooksemptystate",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/web-hooks/empty-state.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

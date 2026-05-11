@@ -1,0 +1,108 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_ui_labels_list_tsx",
+      "label": "labels-list.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/labels-list.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "ui_labels_list_issuelabelslistprops",
+      "label": "IssueLabelsListProps",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/labels-list.tsx",
+      "source_location": "L14"
+    },
+    {
+      "id": "ui_labels_list_issuelabelslist",
+      "label": "IssueLabelsList()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/labels-list.tsx",
+      "source_location": "L20"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_ui_labels_list_tsx",
+      "target": "tooltip",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/labels-list.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_ui_labels_list_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/labels-list.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_ui_labels_list_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_use_platform_os_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/labels-list.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_ui_labels_list_tsx",
+      "target": "hooks_use_platform_os_useplatformos",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/labels-list.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_ui_labels_list_tsx",
+      "target": "ui_labels_list_issuelabelslistprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/labels-list.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_ui_labels_list_tsx",
+      "target": "ui_labels_list_issuelabelslist",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/labels-list.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "ui_labels_list_issuelabelslist",
+      "callee": "usePlatformOS",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/labels-list.tsx",
+      "source_location": "L22"
+    },
+    {
+      "caller_nid": "ui_labels_list_issuelabelslist",
+      "callee": "join",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/labels-list.tsx",
+      "source_location": "L30"
+    },
+    {
+      "caller_nid": "ui_labels_list_issuelabelslist",
+      "callee": "map",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/labels-list.tsx",
+      "source_location": "L30"
+    }
+  ]
+}

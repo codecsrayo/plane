@@ -1,0 +1,136 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_filters_header_display_filters_group_by_tsx",
+      "label": "group-by.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/filters/header/display-filters/group-by.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "display_filters_group_by_props",
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/filters/header/display-filters/group-by.tsx",
+      "source_location": "L15"
+    },
+    {
+      "id": "display_filters_group_by_filtergroupby",
+      "label": "FilterGroupBy",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/filters/header/display-filters/group-by.tsx",
+      "source_location": "L22"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_filters_header_display_filters_group_by_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/filters/header/display-filters/group-by.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_filters_header_display_filters_group_by_tsx",
+      "target": "mobx_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/filters/header/display-filters/group-by.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_filters_header_display_filters_group_by_tsx",
+      "target": "i18n",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/filters/header/display-filters/group-by.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_filters_header_display_filters_group_by_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/filters/header/display-filters/group-by.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_filters_header_display_filters_group_by_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_filters_index_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/filters/header/display-filters/group-by.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_filters_header_display_filters_group_by_tsx",
+      "target": "filters_index_filterheader",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/filters/header/display-filters/group-by.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_filters_header_display_filters_group_by_tsx",
+      "target": "filters_index_filteroption",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/filters/header/display-filters/group-by.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_filters_header_display_filters_group_by_tsx",
+      "target": "home_nixos_plane_apps_web_core_plane_web_components_issues_issue_layouts_utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/filters/header/display-filters/group-by.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_filters_header_display_filters_group_by_tsx",
+      "target": "issue_layouts_utils_usegroupbyoptions",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/filters/header/display-filters/group-by.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_filters_header_display_filters_group_by_tsx",
+      "target": "display_filters_group_by_props",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/filters/header/display-filters/group-by.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_filters_header_display_filters_group_by_tsx",
+      "target": "display_filters_group_by_filtergroupby",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/filters/header/display-filters/group-by.tsx",
+      "source_location": "L22",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

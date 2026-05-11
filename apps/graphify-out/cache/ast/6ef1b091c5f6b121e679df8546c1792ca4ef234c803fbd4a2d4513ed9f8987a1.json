@@ -1,0 +1,69 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_hooks_use_reload_confirmation_tsx",
+      "label": "use-reload-confirmation.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-reload-confirmation.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "hooks_use_reload_confirmation_usereloadconfirmations",
+      "label": "useReloadConfirmations()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-reload-confirmation.tsx",
+      "source_location": "L10"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_reload_confirmation_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-reload-confirmation.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_reload_confirmation_tsx",
+      "target": "hooks_use_reload_confirmation_usereloadconfirmations",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-reload-confirmation.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "hooks_use_reload_confirmation_usereloadconfirmations",
+      "callee": "useState",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-reload-confirmation.tsx",
+      "source_location": "L11"
+    },
+    {
+      "caller_nid": "hooks_use_reload_confirmation_usereloadconfirmations",
+      "callee": "useCallback",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-reload-confirmation.tsx",
+      "source_location": "L15"
+    },
+    {
+      "caller_nid": "hooks_use_reload_confirmation_usereloadconfirmations",
+      "callee": "useCallback",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-reload-confirmation.tsx",
+      "source_location": "L24"
+    },
+    {
+      "caller_nid": "hooks_use_reload_confirmation_usereloadconfirmations",
+      "callee": "useEffect",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-reload-confirmation.tsx",
+      "source_location": "L50"
+    }
+  ]
+}

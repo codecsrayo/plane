@@ -1,0 +1,330 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_services_auth_service_ts",
+      "label": "auth.service.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/auth.service.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "services_auth_service_authservice",
+      "label": "AuthService",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/auth.service.ts",
+      "source_location": "L14"
+    },
+    {
+      "id": "services_auth_service_authservice_constructor",
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/auth.service.ts",
+      "source_location": "L15"
+    },
+    {
+      "id": "services_auth_service_authservice_requestcsrftoken",
+      "label": ".requestCSRFToken()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/auth.service.ts",
+      "source_location": "L19"
+    },
+    {
+      "id": "services_auth_service_authservice_sendresetpasswordlink",
+      "label": ".sendResetPasswordLink()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/auth.service.ts",
+      "source_location": "L34"
+    },
+    {
+      "id": "services_auth_service_authservice_setpassword",
+      "label": ".setPassword()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/auth.service.ts",
+      "source_location": "L42"
+    },
+    {
+      "id": "services_auth_service_authservice_generateuniquecode",
+      "label": ".generateUniqueCode()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/auth.service.ts",
+      "source_location": "L54"
+    },
+    {
+      "id": "services_auth_service_authservice_signout",
+      "label": ".signOut()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/auth.service.ts",
+      "source_location": "L62"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_services_auth_service_ts",
+      "target": "constants",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/auth.service.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_auth_service_ts",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/auth.service.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_auth_service_ts",
+      "target": "home_nixos_plane_apps_web_core_services_api_service_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/auth.service.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_auth_service_ts",
+      "target": "services_api_service_apiservice",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/auth.service.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_auth_service_ts",
+      "target": "services_api_service_apierror",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/auth.service.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_auth_service_ts",
+      "target": "services_api_service_toapierror",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/auth.service.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_auth_service_ts",
+      "target": "services_auth_service_authservice",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/auth.service.ts",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "services_auth_service_authservice",
+      "target": "services_auth_service_authservice_constructor",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/auth.service.ts",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "services_auth_service_authservice",
+      "target": "services_auth_service_authservice_requestcsrftoken",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/auth.service.ts",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "services_auth_service_authservice",
+      "target": "services_auth_service_authservice_sendresetpasswordlink",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/auth.service.ts",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "services_auth_service_authservice",
+      "target": "services_auth_service_authservice_setpassword",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/auth.service.ts",
+      "source_location": "L42",
+      "weight": 1.0
+    },
+    {
+      "source": "services_auth_service_authservice",
+      "target": "services_auth_service_authservice_generateuniquecode",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/auth.service.ts",
+      "source_location": "L54",
+      "weight": 1.0
+    },
+    {
+      "source": "services_auth_service_authservice",
+      "target": "services_auth_service_authservice_signout",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/auth.service.ts",
+      "source_location": "L62",
+      "weight": 1.0
+    },
+    {
+      "source": "services_auth_service_authservice_signout",
+      "target": "services_auth_service_authservice_requestcsrftoken",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/auth.service.ts",
+      "source_location": "L63",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "services_auth_service_authservice_constructor",
+      "callee": "super",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/services/auth.service.ts",
+      "source_location": "L16"
+    },
+    {
+      "caller_nid": "services_auth_service_authservice_requestcsrftoken",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/auth.service.ts",
+      "source_location": "L20"
+    },
+    {
+      "caller_nid": "services_auth_service_authservice_requestcsrftoken",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/auth.service.ts",
+      "source_location": "L20"
+    },
+    {
+      "caller_nid": "services_auth_service_authservice_requestcsrftoken",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/auth.service.ts",
+      "source_location": "L20"
+    },
+    {
+      "caller_nid": "services_auth_service_authservice_sendresetpasswordlink",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/auth.service.ts",
+      "source_location": "L35"
+    },
+    {
+      "caller_nid": "services_auth_service_authservice_sendresetpasswordlink",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/auth.service.ts",
+      "source_location": "L35"
+    },
+    {
+      "caller_nid": "services_auth_service_authservice_sendresetpasswordlink",
+      "callee": "post",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/auth.service.ts",
+      "source_location": "L35"
+    },
+    {
+      "caller_nid": "services_auth_service_authservice_setpassword",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/auth.service.ts",
+      "source_location": "L43"
+    },
+    {
+      "caller_nid": "services_auth_service_authservice_setpassword",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/auth.service.ts",
+      "source_location": "L43"
+    },
+    {
+      "caller_nid": "services_auth_service_authservice_setpassword",
+      "callee": "post",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/auth.service.ts",
+      "source_location": "L43"
+    },
+    {
+      "caller_nid": "services_auth_service_authservice_generateuniquecode",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/auth.service.ts",
+      "source_location": "L55"
+    },
+    {
+      "caller_nid": "services_auth_service_authservice_generateuniquecode",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/auth.service.ts",
+      "source_location": "L55"
+    },
+    {
+      "caller_nid": "services_auth_service_authservice_generateuniquecode",
+      "callee": "post",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/auth.service.ts",
+      "source_location": "L55"
+    },
+    {
+      "caller_nid": "services_auth_service_authservice_signout",
+      "callee": "Error",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/services/auth.service.ts",
+      "source_location": "L66"
+    },
+    {
+      "caller_nid": "services_auth_service_authservice_signout",
+      "callee": "createElement",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/auth.service.ts",
+      "source_location": "L68"
+    },
+    {
+      "caller_nid": "services_auth_service_authservice_signout",
+      "callee": "createElement",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/auth.service.ts",
+      "source_location": "L69"
+    },
+    {
+      "caller_nid": "services_auth_service_authservice_signout",
+      "callee": "appendChild",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/auth.service.ts",
+      "source_location": "L77"
+    },
+    {
+      "caller_nid": "services_auth_service_authservice_signout",
+      "callee": "appendChild",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/auth.service.ts",
+      "source_location": "L79"
+    },
+    {
+      "caller_nid": "services_auth_service_authservice_signout",
+      "callee": "submit",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/auth.service.ts",
+      "source_location": "L81"
+    }
+  ]
+}

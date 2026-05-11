@@ -1,0 +1,244 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_project_settings_member_columns_tsx",
+      "label": "member-columns.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/settings/member-columns.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "settings_member_columns_rowdata",
+      "label": "RowData",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/settings/member-columns.tsx",
+      "source_location": "L22"
+    },
+    {
+      "id": "settings_member_columns_nameprops",
+      "label": "NameProps",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/settings/member-columns.tsx",
+      "source_location": "L26"
+    },
+    {
+      "id": "settings_member_columns_accounttypeprops",
+      "label": "AccountTypeProps",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/settings/member-columns.tsx",
+      "source_location": "L34"
+    },
+    {
+      "id": "settings_member_columns_namecolumn",
+      "label": "NameColumn()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/settings/member-columns.tsx",
+      "source_location": "L41"
+    },
+    {
+      "id": "settings_member_columns_accounttypecolumn",
+      "label": "AccountTypeColumn",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/settings/member-columns.tsx",
+      "source_location": "L98"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_settings_member_columns_tsx",
+      "target": "mobx_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/settings/member-columns.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_settings_member_columns_tsx",
+      "target": "link",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/settings/member-columns.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_settings_member_columns_tsx",
+      "target": "react_hook_form",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/settings/member-columns.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_settings_member_columns_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/settings/member-columns.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_settings_member_columns_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/settings/member-columns.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_settings_member_columns_tsx",
+      "target": "constants",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/settings/member-columns.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_settings_member_columns_tsx",
+      "target": "toast",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/settings/member-columns.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_settings_member_columns_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/settings/member-columns.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_settings_member_columns_tsx",
+      "target": "ui",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/settings/member-columns.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_settings_member_columns_tsx",
+      "target": "utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/settings/member-columns.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_settings_member_columns_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_use_member_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/settings/member-columns.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_settings_member_columns_tsx",
+      "target": "store_use_member_usemember",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/settings/member-columns.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_settings_member_columns_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_user_index_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/settings/member-columns.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_settings_member_columns_tsx",
+      "target": "user_index_useuser",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/settings/member-columns.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_settings_member_columns_tsx",
+      "target": "user_index_useuserpermissions",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/settings/member-columns.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_settings_member_columns_tsx",
+      "target": "settings_member_columns_rowdata",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/settings/member-columns.tsx",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_settings_member_columns_tsx",
+      "target": "settings_member_columns_nameprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/settings/member-columns.tsx",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_settings_member_columns_tsx",
+      "target": "settings_member_columns_accounttypeprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/settings/member-columns.tsx",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_settings_member_columns_tsx",
+      "target": "settings_member_columns_namecolumn",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/settings/member-columns.tsx",
+      "source_location": "L41",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_settings_member_columns_tsx",
+      "target": "settings_member_columns_accounttypecolumn",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/settings/member-columns.tsx",
+      "source_location": "L98",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

@@ -1,0 +1,98 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_analytics_analytics_wrapper_tsx",
+      "label": "analytics-wrapper.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/analytics-wrapper.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "analytics_analytics_wrapper_props",
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/analytics-wrapper.tsx",
+      "source_location": "L12"
+    },
+    {
+      "id": "analytics_analytics_wrapper_analyticswrapper",
+      "label": "AnalyticsWrapper()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/analytics-wrapper.tsx",
+      "source_location": "L18"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_analytics_analytics_wrapper_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/analytics-wrapper.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_analytics_analytics_wrapper_tsx",
+      "target": "i18n",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/analytics-wrapper.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_analytics_analytics_wrapper_tsx",
+      "target": "utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/analytics-wrapper.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_analytics_analytics_wrapper_tsx",
+      "target": "analytics_analytics_wrapper_props",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/analytics-wrapper.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_analytics_analytics_wrapper_tsx",
+      "target": "analytics_analytics_wrapper_analyticswrapper",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/analytics-wrapper.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "analytics_analytics_wrapper_analyticswrapper",
+      "callee": "useTranslation",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/analytics-wrapper.tsx",
+      "source_location": "L20"
+    },
+    {
+      "caller_nid": "analytics_analytics_wrapper_analyticswrapper",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/analytics-wrapper.tsx",
+      "source_location": "L22"
+    },
+    {
+      "caller_nid": "analytics_analytics_wrapper_analyticswrapper",
+      "callee": "t",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/analytics-wrapper.tsx",
+      "source_location": "L23"
+    }
+  ]
+}

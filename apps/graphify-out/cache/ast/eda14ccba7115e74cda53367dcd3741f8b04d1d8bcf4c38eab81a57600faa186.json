@@ -1,0 +1,178 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_services_instance_service_ts",
+      "label": "instance.service.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/instance.service.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "services_instance_service_instanceservice",
+      "label": "InstanceService",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/instance.service.ts",
+      "source_location": "L14"
+    },
+    {
+      "id": "services_instance_service_instanceservice_constructor",
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/instance.service.ts",
+      "source_location": "L15"
+    },
+    {
+      "id": "services_instance_service_instanceservice_requestcsrftoken",
+      "label": ".requestCSRFToken()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/instance.service.ts",
+      "source_location": "L19"
+    },
+    {
+      "id": "services_instance_service_instanceservice_getinstanceinfo",
+      "label": ".getInstanceInfo()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/instance.service.ts",
+      "source_location": "L27"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_services_instance_service_ts",
+      "target": "constants",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/instance.service.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_instance_service_ts",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/instance.service.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_instance_service_ts",
+      "target": "home_nixos_plane_apps_web_core_services_api_service_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/instance.service.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_instance_service_ts",
+      "target": "services_api_service_apiservice",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/instance.service.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_instance_service_ts",
+      "target": "services_api_service_toapierror",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/instance.service.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_instance_service_ts",
+      "target": "services_instance_service_instanceservice",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/instance.service.ts",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "services_instance_service_instanceservice",
+      "target": "services_instance_service_instanceservice_constructor",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/instance.service.ts",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "services_instance_service_instanceservice",
+      "target": "services_instance_service_instanceservice_requestcsrftoken",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/instance.service.ts",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "services_instance_service_instanceservice",
+      "target": "services_instance_service_instanceservice_getinstanceinfo",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/instance.service.ts",
+      "source_location": "L27",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "services_instance_service_instanceservice_constructor",
+      "callee": "super",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/services/instance.service.ts",
+      "source_location": "L16"
+    },
+    {
+      "caller_nid": "services_instance_service_instanceservice_requestcsrftoken",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/instance.service.ts",
+      "source_location": "L20"
+    },
+    {
+      "caller_nid": "services_instance_service_instanceservice_requestcsrftoken",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/instance.service.ts",
+      "source_location": "L20"
+    },
+    {
+      "caller_nid": "services_instance_service_instanceservice_requestcsrftoken",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/instance.service.ts",
+      "source_location": "L20"
+    },
+    {
+      "caller_nid": "services_instance_service_instanceservice_getinstanceinfo",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/instance.service.ts",
+      "source_location": "L28"
+    },
+    {
+      "caller_nid": "services_instance_service_instanceservice_getinstanceinfo",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/instance.service.ts",
+      "source_location": "L28"
+    },
+    {
+      "caller_nid": "services_instance_service_instanceservice_getinstanceinfo",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/instance.service.ts",
+      "source_location": "L28"
+    }
+  ]
+}

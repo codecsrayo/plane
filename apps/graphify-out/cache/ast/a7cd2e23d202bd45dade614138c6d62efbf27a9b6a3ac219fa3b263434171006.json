@@ -1,0 +1,244 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_work_item_filters_filters_hoc_base_tsx",
+      "label": "base.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-hoc/base.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "filters_hoc_base_tadditionalworkitemfiltersprops",
+      "label": "TAdditionalWorkItemFiltersProps",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-hoc/base.tsx",
+      "source_location": "L22"
+    },
+    {
+      "id": "filters_hoc_base_tworkitemfiltershocprops",
+      "label": "TWorkItemFiltersHOCProps",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-hoc/base.tsx",
+      "source_location": "L27"
+    },
+    {
+      "id": "filters_hoc_base_workitemfiltershoc",
+      "label": "WorkItemFiltersHOC",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-hoc/base.tsx",
+      "source_location": "L29"
+    },
+    {
+      "id": "filters_hoc_base_tworkitemfilterprops",
+      "label": "TWorkItemFilterProps",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-hoc/base.tsx",
+      "source_location": "L43"
+    },
+    {
+      "id": "filters_hoc_base_workitemfilterroot",
+      "label": "WorkItemFilterRoot",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-hoc/base.tsx",
+      "source_location": "L57"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_work_item_filters_filters_hoc_base_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-hoc/base.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_work_item_filters_filters_hoc_base_tsx",
+      "target": "mobx_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-hoc/base.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_work_item_filters_filters_hoc_base_tsx",
+      "target": "uuid",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-hoc/base.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_work_item_filters_filters_hoc_base_tsx",
+      "target": "constants",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-hoc/base.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_work_item_filters_filters_hoc_base_tsx",
+      "target": "shared_state",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-hoc/base.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_work_item_filters_filters_hoc_base_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-hoc/base.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_work_item_filters_filters_hoc_base_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_work_item_filters_use_work_item_filters_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-hoc/base.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_work_item_filters_filters_hoc_base_tsx",
+      "target": "work_item_filters_use_work_item_filters_useworkitemfilters",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-hoc/base.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_work_item_filters_filters_hoc_base_tsx",
+      "target": "home_nixos_plane_apps_web_core_plane_web_hooks_work_item_filters_use_work_item_filters_config",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-hoc/base.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_work_item_filters_filters_hoc_base_tsx",
+      "target": "work_item_filters_use_work_item_filters_config_tworkitemfiltersentityprops",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-hoc/base.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_work_item_filters_filters_hoc_base_tsx",
+      "target": "home_nixos_plane_apps_web_core_plane_web_hooks_work_item_filters_use_work_item_filters_config",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-hoc/base.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_work_item_filters_filters_hoc_base_tsx",
+      "target": "work_item_filters_use_work_item_filters_config_useworkitemfiltersconfig",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-hoc/base.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_work_item_filters_filters_hoc_base_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_work_item_filters_filters_hoc_shared_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-hoc/base.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_work_item_filters_filters_hoc_base_tsx",
+      "target": "filters_hoc_shared_tsharedworkitemfiltershocprops",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-hoc/base.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_work_item_filters_filters_hoc_base_tsx",
+      "target": "filters_hoc_shared_tsharedworkitemfiltersprops",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-hoc/base.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_work_item_filters_filters_hoc_base_tsx",
+      "target": "filters_hoc_base_tadditionalworkitemfiltersprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-hoc/base.tsx",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_work_item_filters_filters_hoc_base_tsx",
+      "target": "filters_hoc_base_tworkitemfiltershocprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-hoc/base.tsx",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_work_item_filters_filters_hoc_base_tsx",
+      "target": "filters_hoc_base_workitemfiltershoc",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-hoc/base.tsx",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_work_item_filters_filters_hoc_base_tsx",
+      "target": "filters_hoc_base_tworkitemfilterprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-hoc/base.tsx",
+      "source_location": "L43",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_work_item_filters_filters_hoc_base_tsx",
+      "target": "filters_hoc_base_workitemfilterroot",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/work-item-filters/filters-hoc/base.tsx",
+      "source_location": "L57",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

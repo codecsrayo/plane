@@ -1,0 +1,193 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_hooks_use_project_issue_properties_ts",
+      "label": "use-project-issue-properties.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-project-issue-properties.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "hooks_use_project_issue_properties_useprojectissueproperties",
+      "label": "useProjectIssueProperties()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-project-issue-properties.ts",
+      "source_location": "L14"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_project_issue_properties_ts",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_estimates_index_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-project-issue-properties.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_project_issue_properties_ts",
+      "target": "estimates_index_useprojectestimates",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-project-issue-properties.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_project_issue_properties_ts",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_use_cycle_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-project-issue-properties.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_project_issue_properties_ts",
+      "target": "store_use_cycle_usecycle",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-project-issue-properties.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_project_issue_properties_ts",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_use_label_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-project-issue-properties.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_project_issue_properties_ts",
+      "target": "store_use_label_uselabel",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-project-issue-properties.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_project_issue_properties_ts",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_use_member_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-project-issue-properties.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_project_issue_properties_ts",
+      "target": "store_use_member_usemember",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-project-issue-properties.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_project_issue_properties_ts",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_use_module_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-project-issue-properties.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_project_issue_properties_ts",
+      "target": "store_use_module_usemodule",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-project-issue-properties.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_project_issue_properties_ts",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_use_project_state_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-project-issue-properties.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_project_issue_properties_ts",
+      "target": "store_use_project_state_useprojectstate",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-project-issue-properties.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_project_issue_properties_ts",
+      "target": "hooks_use_project_issue_properties_useprojectissueproperties",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-project-issue-properties.ts",
+      "source_location": "L14",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "hooks_use_project_issue_properties_useprojectissueproperties",
+      "callee": "useProjectState",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-project-issue-properties.ts",
+      "source_location": "L15"
+    },
+    {
+      "caller_nid": "hooks_use_project_issue_properties_useprojectissueproperties",
+      "callee": "useMember",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-project-issue-properties.ts",
+      "source_location": "L18"
+    },
+    {
+      "caller_nid": "hooks_use_project_issue_properties_useprojectissueproperties",
+      "callee": "useLabel",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-project-issue-properties.ts",
+      "source_location": "L19"
+    },
+    {
+      "caller_nid": "hooks_use_project_issue_properties_useprojectissueproperties",
+      "callee": "useCycle",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-project-issue-properties.ts",
+      "source_location": "L20"
+    },
+    {
+      "caller_nid": "hooks_use_project_issue_properties_useprojectissueproperties",
+      "callee": "useModule",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-project-issue-properties.ts",
+      "source_location": "L21"
+    },
+    {
+      "caller_nid": "hooks_use_project_issue_properties_useprojectissueproperties",
+      "callee": "useProjectEstimates",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-project-issue-properties.ts",
+      "source_location": "L22"
+    }
+  ]
+}

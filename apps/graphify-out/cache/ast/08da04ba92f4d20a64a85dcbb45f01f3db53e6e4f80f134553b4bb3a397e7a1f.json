@@ -1,0 +1,147 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_services_integrations_github_user_connection_service_ts",
+      "label": "github-user-connection.service.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/github-user-connection.service.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "integrations_github_user_connection_service_tuserconnectionresponse",
+      "label": "TUserConnectionResponse",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/github-user-connection.service.ts",
+      "source_location": "L19"
+    },
+    {
+      "id": "integrations_github_user_connection_service_githubuserconnectionservice",
+      "label": "GithubUserConnectionService",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/github-user-connection.service.ts",
+      "source_location": "L25"
+    },
+    {
+      "id": "integrations_github_user_connection_service_githubuserconnectionservice_constructor",
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/github-user-connection.service.ts",
+      "source_location": "L26"
+    },
+    {
+      "id": "integrations_github_user_connection_service_githubuserconnectionservice_connectpersonalaccount",
+      "label": ".connectPersonalAccount()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/github-user-connection.service.ts",
+      "source_location": "L30"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_services_integrations_github_user_connection_service_ts",
+      "target": "constants",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/github-user-connection.service.ts",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_integrations_github_user_connection_service_ts",
+      "target": "home_nixos_plane_apps_web_core_services_api_service_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/github-user-connection.service.ts",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_integrations_github_user_connection_service_ts",
+      "target": "services_api_service_apierror",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/github-user-connection.service.ts",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_integrations_github_user_connection_service_ts",
+      "target": "services_api_service_apiservice",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/github-user-connection.service.ts",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_integrations_github_user_connection_service_ts",
+      "target": "integrations_github_user_connection_service_tuserconnectionresponse",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/github-user-connection.service.ts",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_integrations_github_user_connection_service_ts",
+      "target": "integrations_github_user_connection_service_githubuserconnectionservice",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/github-user-connection.service.ts",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "integrations_github_user_connection_service_githubuserconnectionservice",
+      "target": "integrations_github_user_connection_service_githubuserconnectionservice_constructor",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/github-user-connection.service.ts",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "integrations_github_user_connection_service_githubuserconnectionservice",
+      "target": "integrations_github_user_connection_service_githubuserconnectionservice_connectpersonalaccount",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/github-user-connection.service.ts",
+      "source_location": "L30",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "integrations_github_user_connection_service_githubuserconnectionservice_constructor",
+      "callee": "super",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/github-user-connection.service.ts",
+      "source_location": "L27"
+    },
+    {
+      "caller_nid": "integrations_github_user_connection_service_githubuserconnectionservice_connectpersonalaccount",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/github-user-connection.service.ts",
+      "source_location": "L31"
+    },
+    {
+      "caller_nid": "integrations_github_user_connection_service_githubuserconnectionservice_connectpersonalaccount",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/github-user-connection.service.ts",
+      "source_location": "L31"
+    },
+    {
+      "caller_nid": "integrations_github_user_connection_service_githubuserconnectionservice_connectpersonalaccount",
+      "callee": "post",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/github-user-connection.service.ts",
+      "source_location": "L31"
+    }
+  ]
+}

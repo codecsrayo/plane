@@ -1,0 +1,146 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_pages_navigation_pane_tab_panels_info_actors_info_tsx",
+      "label": "actors-info.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/navigation-pane/tab-panels/info/actors-info.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "info_actors_info_props",
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/navigation-pane/tab-panels/info/actors-info.tsx",
+      "source_location": "L19"
+    },
+    {
+      "id": "info_actors_info_pagenavigationpaneinfotabactorsinfo",
+      "label": "PageNavigationPaneInfoTabActorsInfo",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/navigation-pane/tab-panels/info/actors-info.tsx",
+      "source_location": "L23"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_navigation_pane_tab_panels_info_actors_info_tsx",
+      "target": "mobx_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/navigation-pane/tab-panels/info/actors-info.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_navigation_pane_tab_panels_info_actors_info_tsx",
+      "target": "link",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/navigation-pane/tab-panels/info/actors-info.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_navigation_pane_tab_panels_info_actors_info_tsx",
+      "target": "navigation",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/navigation-pane/tab-panels/info/actors-info.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_navigation_pane_tab_panels_info_actors_info_tsx",
+      "target": "i18n",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/navigation-pane/tab-panels/info/actors-info.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_navigation_pane_tab_panels_info_actors_info_tsx",
+      "target": "ui",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/navigation-pane/tab-panels/info/actors-info.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_navigation_pane_tab_panels_info_actors_info_tsx",
+      "target": "utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/navigation-pane/tab-panels/info/actors-info.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_navigation_pane_tab_panels_info_actors_info_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_use_member_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/navigation-pane/tab-panels/info/actors-info.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_navigation_pane_tab_panels_info_actors_info_tsx",
+      "target": "store_use_member_usemember",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/navigation-pane/tab-panels/info/actors-info.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_navigation_pane_tab_panels_info_actors_info_tsx",
+      "target": "home_nixos_plane_apps_web_core_store_pages_base_page_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/navigation-pane/tab-panels/info/actors-info.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_navigation_pane_tab_panels_info_actors_info_tsx",
+      "target": "pages_base_page_tpageinstance",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/navigation-pane/tab-panels/info/actors-info.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_navigation_pane_tab_panels_info_actors_info_tsx",
+      "target": "info_actors_info_props",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/navigation-pane/tab-panels/info/actors-info.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_navigation_pane_tab_panels_info_actors_info_tsx",
+      "target": "info_actors_info_pagenavigationpaneinfotabactorsinfo",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/navigation-pane/tab-panels/info/actors-info.tsx",
+      "source_location": "L23",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

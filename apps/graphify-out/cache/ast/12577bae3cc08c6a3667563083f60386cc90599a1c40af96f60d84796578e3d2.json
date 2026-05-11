@@ -1,0 +1,56 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_labels_label_block_label_name_tsx",
+      "label": "label-name.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/labels/label-block/label-name.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "label_block_label_name_ilabelname",
+      "label": "ILabelName",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/labels/label-block/label-name.tsx",
+      "source_location": "L9"
+    },
+    {
+      "id": "label_block_label_name_labelname",
+      "label": "LabelName()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/labels/label-block/label-name.tsx",
+      "source_location": "L15"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_labels_label_block_label_name_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/labels/label-block/label-name.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_labels_label_block_label_name_tsx",
+      "target": "label_block_label_name_ilabelname",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/labels/label-block/label-name.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_labels_label_block_label_name_tsx",
+      "target": "label_block_label_name_labelname",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/labels/label-block/label-name.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

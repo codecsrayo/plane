@@ -1,0 +1,412 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_api_rust_src_auth_rate_limit_rs",
+      "label": "rate_limit.rs",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L1"
+    },
+    {
+      "id": "auth_rate_limit_ratelimitstate",
+      "label": "RateLimitState",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L21"
+    },
+    {
+      "id": "auth_rate_limit_bucket_key",
+      "label": "bucket_key()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L32"
+    },
+    {
+      "id": "auth_rate_limit_apply_rate_limit",
+      "label": "apply_rate_limit()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L42"
+    },
+    {
+      "id": "auth_rate_limit_rate_limit_headers_middleware",
+      "label": "rate_limit_headers_middleware()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L84"
+    },
+    {
+      "id": "auth_rate_limit_bucket_key_is_stable_and_hides_raw_token",
+      "label": "bucket_key_is_stable_and_hides_raw_token()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L104"
+    },
+    {
+      "id": "auth_rate_limit_apply_rate_limit_rejects_after_limit",
+      "label": "apply_rate_limit_rejects_after_limit()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L113"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_rate_limit_rs",
+      "target": "axum",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L9",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_rate_limit_rs",
+      "target": "sha2",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L14",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_rate_limit_rs",
+      "target": "hashmap",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L15",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_rate_limit_rs",
+      "target": "apperror",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L17",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_rate_limit_rs",
+      "target": "auth_rate_limit_ratelimitstate",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_rate_limit_rs",
+      "target": "auth_rate_limit_bucket_key",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_rate_limit_rs",
+      "target": "auth_rate_limit_apply_rate_limit",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L42",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_rate_limit_rs",
+      "target": "auth_rate_limit_rate_limit_headers_middleware",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L84",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_rate_limit_rs",
+      "target": "super",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L101",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_rate_limit_rs",
+      "target": "auth_rate_limit_bucket_key_is_stable_and_hides_raw_token",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L104",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_rate_limit_rs",
+      "target": "auth_rate_limit_apply_rate_limit_rejects_after_limit",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L113",
+      "weight": 1.0
+    },
+    {
+      "source": "auth_rate_limit_apply_rate_limit",
+      "target": "auth_rate_limit_bucket_key",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L52",
+      "weight": 1.0
+    },
+    {
+      "source": "auth_rate_limit_bucket_key_is_stable_and_hides_raw_token",
+      "target": "auth_rate_limit_bucket_key",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L105",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "auth_rate_limit_bucket_key",
+      "callee": "new",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L33"
+    },
+    {
+      "caller_nid": "auth_rate_limit_bucket_key",
+      "callee": "update",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L34"
+    },
+    {
+      "caller_nid": "auth_rate_limit_bucket_key",
+      "callee": "as_bytes",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L34"
+    },
+    {
+      "caller_nid": "auth_rate_limit_bucket_key",
+      "callee": "collect",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L35"
+    },
+    {
+      "caller_nid": "auth_rate_limit_bucket_key",
+      "callee": "map",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L35"
+    },
+    {
+      "caller_nid": "auth_rate_limit_bucket_key",
+      "callee": "iter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L35"
+    },
+    {
+      "caller_nid": "auth_rate_limit_bucket_key",
+      "callee": "finalize",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L35"
+    },
+    {
+      "caller_nid": "auth_rate_limit_apply_rate_limit",
+      "callee": "as_secs",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L46"
+    },
+    {
+      "caller_nid": "auth_rate_limit_apply_rate_limit",
+      "callee": "unwrap_or_default",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L46"
+    },
+    {
+      "caller_nid": "auth_rate_limit_apply_rate_limit",
+      "callee": "duration_since",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L46"
+    },
+    {
+      "caller_nid": "auth_rate_limit_apply_rate_limit",
+      "callee": "now",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L46"
+    },
+    {
+      "caller_nid": "auth_rate_limit_apply_rate_limit",
+      "callee": "unwrap_or_else",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L53"
+    },
+    {
+      "caller_nid": "auth_rate_limit_apply_rate_limit",
+      "callee": "lock",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L53"
+    },
+    {
+      "caller_nid": "auth_rate_limit_apply_rate_limit",
+      "callee": "into_inner",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L53"
+    },
+    {
+      "caller_nid": "auth_rate_limit_apply_rate_limit",
+      "callee": "contains_key",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L55"
+    },
+    {
+      "caller_nid": "auth_rate_limit_apply_rate_limit",
+      "callee": "or_insert",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L56"
+    },
+    {
+      "caller_nid": "auth_rate_limit_apply_rate_limit",
+      "callee": "entry",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L56"
+    },
+    {
+      "caller_nid": "auth_rate_limit_apply_rate_limit",
+      "callee": "fetch_add",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L68"
+    },
+    {
+      "caller_nid": "auth_rate_limit_apply_rate_limit",
+      "callee": "retain",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L72"
+    },
+    {
+      "caller_nid": "auth_rate_limit_apply_rate_limit",
+      "callee": "Err",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L77"
+    },
+    {
+      "caller_nid": "auth_rate_limit_apply_rate_limit",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L79"
+    },
+    {
+      "caller_nid": "auth_rate_limit_rate_limit_headers_middleware",
+      "callee": "contains_key",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L85"
+    },
+    {
+      "caller_nid": "auth_rate_limit_rate_limit_headers_middleware",
+      "callee": "headers",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L85"
+    },
+    {
+      "caller_nid": "auth_rate_limit_rate_limit_headers_middleware",
+      "callee": "timestamp",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L87"
+    },
+    {
+      "caller_nid": "auth_rate_limit_rate_limit_headers_middleware",
+      "callee": "now",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L87"
+    },
+    {
+      "caller_nid": "auth_rate_limit_rate_limit_headers_middleware",
+      "callee": "unwrap_or_else",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L89"
+    },
+    {
+      "caller_nid": "auth_rate_limit_rate_limit_headers_middleware",
+      "callee": "from_str",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L89"
+    },
+    {
+      "caller_nid": "auth_rate_limit_rate_limit_headers_middleware",
+      "callee": "to_string",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L89"
+    },
+    {
+      "caller_nid": "auth_rate_limit_rate_limit_headers_middleware",
+      "callee": "from_static",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L90"
+    },
+    {
+      "caller_nid": "auth_rate_limit_rate_limit_headers_middleware",
+      "callee": "run",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L92"
+    },
+    {
+      "caller_nid": "auth_rate_limit_rate_limit_headers_middleware",
+      "callee": "insert",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L94"
+    },
+    {
+      "caller_nid": "auth_rate_limit_rate_limit_headers_middleware",
+      "callee": "headers_mut",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L94"
+    },
+    {
+      "caller_nid": "auth_rate_limit_apply_rate_limit_rejects_after_limit",
+      "callee": "default",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/rate_limit.rs",
+      "source_location": "L114"
+    }
+  ]
+}

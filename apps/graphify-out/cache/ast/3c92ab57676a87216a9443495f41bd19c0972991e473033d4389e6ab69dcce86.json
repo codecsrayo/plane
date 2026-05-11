@@ -1,0 +1,240 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_settings_helper_ts",
+      "label": "helper.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/settings/helper.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "settings_helper_hreftolabelmap",
+      "label": "hrefToLabelMap()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/settings/helper.ts",
+      "source_location": "L9"
+    },
+    {
+      "id": "settings_helper_workspacehreftolabelmap",
+      "label": "workspaceHrefToLabelMap",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/settings/helper.ts",
+      "source_location": "L20"
+    },
+    {
+      "id": "settings_helper_projecthreftolabelmap",
+      "label": "projectHrefToLabelMap",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/settings/helper.ts",
+      "source_location": "L22"
+    },
+    {
+      "id": "settings_helper_pathnametoaccesskey",
+      "label": "pathnameToAccessKey()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/settings/helper.ts",
+      "source_location": "L30"
+    },
+    {
+      "id": "settings_helper_getworkspaceactivepath",
+      "label": "getWorkspaceActivePath()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/settings/helper.ts",
+      "source_location": "L37"
+    },
+    {
+      "id": "settings_helper_getprojectactivepath",
+      "label": "getProjectActivePath()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/settings/helper.ts",
+      "source_location": "L45"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_settings_helper_ts",
+      "target": "constants",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/settings/helper.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_settings_helper_ts",
+      "target": "settings_helper_hreftolabelmap",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/settings/helper.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_settings_helper_ts",
+      "target": "settings_helper_workspacehreftolabelmap",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/settings/helper.ts",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_settings_helper_ts",
+      "target": "settings_helper_projecthreftolabelmap",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/settings/helper.ts",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_settings_helper_ts",
+      "target": "settings_helper_pathnametoaccesskey",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/settings/helper.ts",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_settings_helper_ts",
+      "target": "settings_helper_getworkspaceactivepath",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/settings/helper.ts",
+      "source_location": "L37",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_settings_helper_ts",
+      "target": "settings_helper_getprojectactivepath",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/settings/helper.ts",
+      "source_location": "L45",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "settings_helper_hreftolabelmap",
+      "callee": "reduce",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/settings/helper.ts",
+      "source_location": "L10"
+    },
+    {
+      "caller_nid": "settings_helper_hreftolabelmap",
+      "callee": "flat",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/settings/helper.ts",
+      "source_location": "L10"
+    },
+    {
+      "caller_nid": "settings_helper_hreftolabelmap",
+      "callee": "values",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/settings/helper.ts",
+      "source_location": "L10"
+    },
+    {
+      "caller_nid": "settings_helper_pathnametoaccesskey",
+      "callee": "split",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/settings/helper.ts",
+      "source_location": "L31"
+    },
+    {
+      "caller_nid": "settings_helper_pathnametoaccesskey",
+      "callee": "replace",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/settings/helper.ts",
+      "source_location": "L31"
+    },
+    {
+      "caller_nid": "settings_helper_pathnametoaccesskey",
+      "callee": "join",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/settings/helper.ts",
+      "source_location": "L33"
+    },
+    {
+      "caller_nid": "settings_helper_pathnametoaccesskey",
+      "callee": "slice",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/settings/helper.ts",
+      "source_location": "L33"
+    },
+    {
+      "caller_nid": "settings_helper_getworkspaceactivepath",
+      "callee": "filter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/settings/helper.ts",
+      "source_location": "L38"
+    },
+    {
+      "caller_nid": "settings_helper_getworkspaceactivepath",
+      "callee": "split",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/settings/helper.ts",
+      "source_location": "L38"
+    },
+    {
+      "caller_nid": "settings_helper_getworkspaceactivepath",
+      "callee": "indexOf",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/settings/helper.ts",
+      "source_location": "L39"
+    },
+    {
+      "caller_nid": "settings_helper_getworkspaceactivepath",
+      "callee": "join",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/settings/helper.ts",
+      "source_location": "L41"
+    },
+    {
+      "caller_nid": "settings_helper_getworkspaceactivepath",
+      "callee": "slice",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/settings/helper.ts",
+      "source_location": "L41"
+    },
+    {
+      "caller_nid": "settings_helper_getprojectactivepath",
+      "callee": "filter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/settings/helper.ts",
+      "source_location": "L46"
+    },
+    {
+      "caller_nid": "settings_helper_getprojectactivepath",
+      "callee": "split",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/settings/helper.ts",
+      "source_location": "L46"
+    },
+    {
+      "caller_nid": "settings_helper_getprojectactivepath",
+      "callee": "indexOf",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/settings/helper.ts",
+      "source_location": "L47"
+    },
+    {
+      "caller_nid": "settings_helper_getprojectactivepath",
+      "callee": "join",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/settings/helper.ts",
+      "source_location": "L49"
+    },
+    {
+      "caller_nid": "settings_helper_getprojectactivepath",
+      "callee": "slice",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/settings/helper.ts",
+      "source_location": "L49"
+    }
+  ]
+}

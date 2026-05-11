@@ -1,0 +1,156 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_api_rust_src_utils_django_defaults_rs",
+      "label": "django_defaults.rs",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/django_defaults.rs",
+      "source_location": "L1"
+    },
+    {
+      "id": "utils_django_defaults_default_filters",
+      "label": "default_filters()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/django_defaults.rs",
+      "source_location": "L25"
+    },
+    {
+      "id": "utils_django_defaults_default_display_filters",
+      "label": "default_display_filters()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/django_defaults.rs",
+      "source_location": "L43"
+    },
+    {
+      "id": "utils_django_defaults_default_display_properties",
+      "label": "default_display_properties()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/django_defaults.rs",
+      "source_location": "L58"
+    },
+    {
+      "id": "utils_django_defaults_default_props",
+      "label": "default_props()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/django_defaults.rs",
+      "source_location": "L81"
+    },
+    {
+      "id": "utils_django_defaults_default_preferences",
+      "label": "default_preferences()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/django_defaults.rs",
+      "source_location": "L93"
+    },
+    {
+      "id": "utils_django_defaults_defaults_are_objects",
+      "label": "defaults_are_objects()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/django_defaults.rs",
+      "source_location": "L108"
+    },
+    {
+      "id": "utils_django_defaults_default_props_combines_filters_and_display_filters",
+      "label": "default_props_combines_filters_and_display_filters()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/django_defaults.rs",
+      "source_location": "L119"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_utils_django_defaults_rs",
+      "target": "serde_json",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/django_defaults.rs",
+      "source_location": "L19",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_utils_django_defaults_rs",
+      "target": "utils_django_defaults_default_filters",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/django_defaults.rs",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_utils_django_defaults_rs",
+      "target": "utils_django_defaults_default_display_filters",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/django_defaults.rs",
+      "source_location": "L43",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_utils_django_defaults_rs",
+      "target": "utils_django_defaults_default_display_properties",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/django_defaults.rs",
+      "source_location": "L58",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_utils_django_defaults_rs",
+      "target": "utils_django_defaults_default_props",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/django_defaults.rs",
+      "source_location": "L81",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_utils_django_defaults_rs",
+      "target": "utils_django_defaults_default_preferences",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/django_defaults.rs",
+      "source_location": "L93",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_utils_django_defaults_rs",
+      "target": "super",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/django_defaults.rs",
+      "source_location": "L105",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_utils_django_defaults_rs",
+      "target": "utils_django_defaults_defaults_are_objects",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/django_defaults.rs",
+      "source_location": "L108",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_utils_django_defaults_rs",
+      "target": "utils_django_defaults_default_props_combines_filters_and_display_filters",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/django_defaults.rs",
+      "source_location": "L119",
+      "weight": 1.0
+    },
+    {
+      "source": "utils_django_defaults_default_props_combines_filters_and_display_filters",
+      "target": "utils_django_defaults_default_props",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/django_defaults.rs",
+      "source_location": "L120",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

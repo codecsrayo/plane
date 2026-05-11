@@ -1,0 +1,55 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_ui_loader_settings_integration_tsx",
+      "label": "integration.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/settings/integration.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "settings_integration_integrationssettingsloader",
+      "label": "IntegrationsSettingsLoader()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/settings/integration.tsx",
+      "source_location": "L9"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_ui_loader_settings_integration_tsx",
+      "target": "lodash_es",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/settings/integration.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_ui_loader_settings_integration_tsx",
+      "target": "settings_integration_integrationssettingsloader",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/settings/integration.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "settings_integration_integrationssettingsloader",
+      "callee": "map",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/settings/integration.tsx",
+      "source_location": "L12"
+    },
+    {
+      "caller_nid": "settings_integration_integrationssettingsloader",
+      "callee": "range",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/settings/integration.tsx",
+      "source_location": "L12"
+    }
+  ]
+}

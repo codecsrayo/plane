@@ -1,0 +1,138 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_lib_b_progress_appprogressbar_tsx",
+      "label": "AppProgressBar.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/lib/b-progress/AppProgressBar.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "b_progress_appprogressbar_progressconfig",
+      "label": "ProgressConfig",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/lib/b-progress/AppProgressBar.tsx",
+      "source_location": "L17"
+    },
+    {
+      "id": "b_progress_appprogressbar_progress_config",
+      "label": "PROGRESS_CONFIG",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/lib/b-progress/AppProgressBar.tsx",
+      "source_location": "L39"
+    },
+    {
+      "id": "b_progress_appprogressbar_appprogressbar",
+      "label": "AppProgressBar()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/lib/b-progress/AppProgressBar.tsx",
+      "source_location": "L71"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_lib_b_progress_appprogressbar_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/lib/b-progress/AppProgressBar.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_lib_b_progress_appprogressbar_tsx",
+      "target": "core",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/lib/b-progress/AppProgressBar.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_lib_b_progress_appprogressbar_tsx",
+      "target": "react_router",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/lib/b-progress/AppProgressBar.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_lib_b_progress_appprogressbar_tsx",
+      "target": "css",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/lib/b-progress/AppProgressBar.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_lib_b_progress_appprogressbar_tsx",
+      "target": "b_progress_appprogressbar_progressconfig",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/lib/b-progress/AppProgressBar.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_lib_b_progress_appprogressbar_tsx",
+      "target": "b_progress_appprogressbar_progress_config",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/lib/b-progress/AppProgressBar.tsx",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_lib_b_progress_appprogressbar_tsx",
+      "target": "b_progress_appprogressbar_appprogressbar",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/lib/b-progress/AppProgressBar.tsx",
+      "source_location": "L71",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "b_progress_appprogressbar_appprogressbar",
+      "callee": "useNavigation",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/lib/b-progress/AppProgressBar.tsx",
+      "source_location": "L72"
+    },
+    {
+      "caller_nid": "b_progress_appprogressbar_appprogressbar",
+      "callee": "useRef",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/lib/b-progress/AppProgressBar.tsx",
+      "source_location": "L73"
+    },
+    {
+      "caller_nid": "b_progress_appprogressbar_appprogressbar",
+      "callee": "useRef",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/lib/b-progress/AppProgressBar.tsx",
+      "source_location": "L74"
+    },
+    {
+      "caller_nid": "b_progress_appprogressbar_appprogressbar",
+      "callee": "useEffect",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/lib/b-progress/AppProgressBar.tsx",
+      "source_location": "L77"
+    },
+    {
+      "caller_nid": "b_progress_appprogressbar_appprogressbar",
+      "callee": "useEffect",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/lib/b-progress/AppProgressBar.tsx",
+      "source_location": "L105"
+    }
+  ]
+}

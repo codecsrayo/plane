@@ -1,0 +1,79 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_power_k_actions_helper_ts",
+      "label": "helper.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/actions/helper.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "actions_helper_openprojectandscrolltosidebar",
+      "label": "openProjectAndScrollToSidebar()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/actions/helper.ts",
+      "source_location": "L9"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_actions_helper_ts",
+      "target": "home_nixos_plane_apps_web_core_lib_store_context_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/actions/helper.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_actions_helper_ts",
+      "target": "lib_store_context_store",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/actions/helper.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_actions_helper_ts",
+      "target": "actions_helper_openprojectandscrolltosidebar",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/actions/helper.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "actions_helper_openprojectandscrolltosidebar",
+      "callee": "warn",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/actions/helper.ts",
+      "source_location": "L11"
+    },
+    {
+      "caller_nid": "actions_helper_openprojectandscrolltosidebar",
+      "callee": "toggleProjectListOpen",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/actions/helper.ts",
+      "source_location": "L15"
+    },
+    {
+      "caller_nid": "actions_helper_openprojectandscrolltosidebar",
+      "callee": "getElementById",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/actions/helper.ts",
+      "source_location": "L18"
+    },
+    {
+      "caller_nid": "actions_helper_openprojectandscrolltosidebar",
+      "callee": "setTimeout",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/actions/helper.ts",
+      "source_location": "L21"
+    }
+  ]
+}

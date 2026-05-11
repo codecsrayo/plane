@@ -1,0 +1,98 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_instance_maintenance_view_tsx",
+      "label": "maintenance-view.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/instance/maintenance-view.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "instance_maintenance_view_maintenanceview",
+      "label": "MaintenanceView()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/instance/maintenance-view.tsx",
+      "source_location": "L16"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_instance_maintenance_view_tsx",
+      "target": "next_themes",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/instance/maintenance-view.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_instance_maintenance_view_tsx",
+      "target": "home_nixos_plane_apps_web_core_app_assets_instance_maintenance_mode_dark_svg_url",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/instance/maintenance-view.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_instance_maintenance_view_tsx",
+      "target": "home_nixos_plane_apps_web_core_app_assets_instance_maintenance_mode_light_svg_url",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/instance/maintenance-view.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_instance_maintenance_view_tsx",
+      "target": "home_nixos_plane_apps_web_core_layouts_default_layout_index_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/instance/maintenance-view.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_instance_maintenance_view_tsx",
+      "target": "home_nixos_plane_apps_web_core_plane_web_components_instance",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/instance/maintenance-view.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_instance_maintenance_view_tsx",
+      "target": "components_instance_maintenancemessage",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/instance/maintenance-view.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_instance_maintenance_view_tsx",
+      "target": "instance_maintenance_view_maintenanceview",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/instance/maintenance-view.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "instance_maintenance_view_maintenanceview",
+      "callee": "useTheme",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/instance/maintenance-view.tsx",
+      "source_location": "L18"
+    }
+  ]
+}

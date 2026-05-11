@@ -1,0 +1,136 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_dropdowns_module_dropdown_tsx",
+      "label": "dropdown.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/module/dropdown.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "module_dropdown_tmoduledropdownprops",
+      "label": "TModuleDropdownProps",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/module/dropdown.tsx",
+      "source_location": "L17"
+    },
+    {
+      "id": "module_dropdown_moduledropdown",
+      "label": "ModuleDropdown",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/module/dropdown.tsx",
+      "source_location": "L39"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_dropdowns_module_dropdown_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/module/dropdown.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_dropdowns_module_dropdown_tsx",
+      "target": "mobx_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/module/dropdown.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_dropdowns_module_dropdown_tsx",
+      "target": "navigation",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/module/dropdown.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_dropdowns_module_dropdown_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_use_module_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/module/dropdown.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_dropdowns_module_dropdown_tsx",
+      "target": "store_use_module_usemodule",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/module/dropdown.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_dropdowns_module_dropdown_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_dropdowns_types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/module/dropdown.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_dropdowns_module_dropdown_tsx",
+      "target": "dropdowns_types_tdropdownprops",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/module/dropdown.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_dropdowns_module_dropdown_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_dropdowns_module_base_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/module/dropdown.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_dropdowns_module_dropdown_tsx",
+      "target": "module_base_moduledropdownbase",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/module/dropdown.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_dropdowns_module_dropdown_tsx",
+      "target": "module_dropdown_tmoduledropdownprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/module/dropdown.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_dropdowns_module_dropdown_tsx",
+      "target": "module_dropdown_moduledropdown",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/module/dropdown.tsx",
+      "source_location": "L39",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

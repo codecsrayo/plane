@@ -1,0 +1,86 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_filters_applied_filters_module_tsx",
+      "label": "module.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/filters/applied-filters/module.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "applied_filters_module_props",
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/filters/applied-filters/module.tsx",
+      "source_location": "L13"
+    },
+    {
+      "id": "applied_filters_module_appliedmodulefilters",
+      "label": "AppliedModuleFilters",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/filters/applied-filters/module.tsx",
+      "source_location": "L19"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_filters_applied_filters_module_tsx",
+      "target": "mobx_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/filters/applied-filters/module.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_filters_applied_filters_module_tsx",
+      "target": "icons",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/filters/applied-filters/module.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_filters_applied_filters_module_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_use_module_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/filters/applied-filters/module.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_filters_applied_filters_module_tsx",
+      "target": "store_use_module_usemodule",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/filters/applied-filters/module.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_filters_applied_filters_module_tsx",
+      "target": "applied_filters_module_props",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/filters/applied-filters/module.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_filters_applied_filters_module_tsx",
+      "target": "applied_filters_module_appliedmodulefilters",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/filters/applied-filters/module.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

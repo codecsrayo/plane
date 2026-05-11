@@ -1,0 +1,78 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_common_latest_feature_block_tsx",
+      "label": "latest-feature-block.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/common/latest-feature-block.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "common_latest_feature_block_latestfeatureblock",
+      "label": "LatestFeatureBlock()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/common/latest-feature-block.tsx",
+      "source_location": "L14"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_common_latest_feature_block_tsx",
+      "target": "link",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/common/latest-feature-block.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_common_latest_feature_block_tsx",
+      "target": "next_themes",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/common/latest-feature-block.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_common_latest_feature_block_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/common/latest-feature-block.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_common_latest_feature_block_tsx",
+      "target": "home_nixos_plane_apps_web_core_app_assets_onboarding_onboarding_pages_webp_url",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/common/latest-feature-block.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_common_latest_feature_block_tsx",
+      "target": "common_latest_feature_block_latestfeatureblock",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/common/latest-feature-block.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "common_latest_feature_block_latestfeatureblock",
+      "callee": "useTheme",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/common/latest-feature-block.tsx",
+      "source_location": "L15"
+    }
+  ]
+}

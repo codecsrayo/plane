@@ -1,0 +1,178 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_services_integrations_jira_service_ts",
+      "label": "jira.service.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/jira.service.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "integrations_jira_service_jiraimporterservice",
+      "label": "JiraImporterService",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/jira.service.ts",
+      "source_location": "L12"
+    },
+    {
+      "id": "integrations_jira_service_jiraimporterservice_constructor",
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/jira.service.ts",
+      "source_location": "L13"
+    },
+    {
+      "id": "integrations_jira_service_jiraimporterservice_getjiraprojectinfo",
+      "label": ".getJiraProjectInfo()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/jira.service.ts",
+      "source_location": "L17"
+    },
+    {
+      "id": "integrations_jira_service_jiraimporterservice_createjiraimporter",
+      "label": ".createJiraImporter()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/jira.service.ts",
+      "source_location": "L27"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_services_integrations_jira_service_ts",
+      "target": "constants",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/jira.service.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_integrations_jira_service_ts",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/jira.service.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_integrations_jira_service_ts",
+      "target": "home_nixos_plane_apps_web_core_services_api_service_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/jira.service.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_integrations_jira_service_ts",
+      "target": "services_api_service_apierror",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/jira.service.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_integrations_jira_service_ts",
+      "target": "services_api_service_apiservice",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/jira.service.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_integrations_jira_service_ts",
+      "target": "integrations_jira_service_jiraimporterservice",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/jira.service.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "integrations_jira_service_jiraimporterservice",
+      "target": "integrations_jira_service_jiraimporterservice_constructor",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/jira.service.ts",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "integrations_jira_service_jiraimporterservice",
+      "target": "integrations_jira_service_jiraimporterservice_getjiraprojectinfo",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/jira.service.ts",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "integrations_jira_service_jiraimporterservice",
+      "target": "integrations_jira_service_jiraimporterservice_createjiraimporter",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/jira.service.ts",
+      "source_location": "L27",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "integrations_jira_service_jiraimporterservice_constructor",
+      "callee": "super",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/jira.service.ts",
+      "source_location": "L14"
+    },
+    {
+      "caller_nid": "integrations_jira_service_jiraimporterservice_getjiraprojectinfo",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/jira.service.ts",
+      "source_location": "L18"
+    },
+    {
+      "caller_nid": "integrations_jira_service_jiraimporterservice_getjiraprojectinfo",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/jira.service.ts",
+      "source_location": "L18"
+    },
+    {
+      "caller_nid": "integrations_jira_service_jiraimporterservice_getjiraprojectinfo",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/jira.service.ts",
+      "source_location": "L18"
+    },
+    {
+      "caller_nid": "integrations_jira_service_jiraimporterservice_createjiraimporter",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/jira.service.ts",
+      "source_location": "L28"
+    },
+    {
+      "caller_nid": "integrations_jira_service_jiraimporterservice_createjiraimporter",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/jira.service.ts",
+      "source_location": "L28"
+    },
+    {
+      "caller_nid": "integrations_jira_service_jiraimporterservice_createjiraimporter",
+      "callee": "post",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/jira.service.ts",
+      "source_location": "L28"
+    }
+  ]
+}

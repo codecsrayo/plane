@@ -1,0 +1,218 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_pages_navigation_pane_tab_panels_assets_tsx",
+      "label": "assets.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/navigation-pane/tab-panels/assets.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "tab_panels_assets_props",
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/navigation-pane/tab-panels/assets.tsx",
+      "source_location": "L22"
+    },
+    {
+      "id": "tab_panels_assets_assetitemprops",
+      "label": "AssetItemProps",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/navigation-pane/tab-panels/assets.tsx",
+      "source_location": "L26"
+    },
+    {
+      "id": "tab_panels_assets_assetitem",
+      "label": "AssetItem",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/navigation-pane/tab-panels/assets.tsx",
+      "source_location": "L31"
+    },
+    {
+      "id": "tab_panels_assets_pagenavigationpaneassetstabpanel",
+      "label": "PageNavigationPaneAssetsTabPanel",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/navigation-pane/tab-panels/assets.tsx",
+      "source_location": "L110"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_navigation_pane_tab_panels_assets_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/navigation-pane/tab-panels/assets.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_navigation_pane_tab_panels_assets_tsx",
+      "target": "mobx_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/navigation-pane/tab-panels/assets.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_navigation_pane_tab_panels_assets_tsx",
+      "target": "navigation",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/navigation-pane/tab-panels/assets.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_navigation_pane_tab_panels_assets_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/navigation-pane/tab-panels/assets.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_navigation_pane_tab_panels_assets_tsx",
+      "target": "editor",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/navigation-pane/tab-panels/assets.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_navigation_pane_tab_panels_assets_tsx",
+      "target": "editor",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/navigation-pane/tab-panels/assets.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_navigation_pane_tab_panels_assets_tsx",
+      "target": "i18n",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/navigation-pane/tab-panels/assets.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_navigation_pane_tab_panels_assets_tsx",
+      "target": "utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/navigation-pane/tab-panels/assets.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_navigation_pane_tab_panels_assets_tsx",
+      "target": "home_nixos_plane_apps_web_core_plane_web_components_pages_navigation_pane_tab_panels_assets",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/navigation-pane/tab-panels/assets.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_navigation_pane_tab_panels_assets_tsx",
+      "target": "tab_panels_assets_additionalpagenavigationpaneassetitem",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/navigation-pane/tab-panels/assets.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_navigation_pane_tab_panels_assets_tsx",
+      "target": "home_nixos_plane_apps_web_core_plane_web_components_pages_navigation_pane_tab_panels_empty_states_assets",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/navigation-pane/tab-panels/assets.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_navigation_pane_tab_panels_assets_tsx",
+      "target": "empty_states_assets_pagenavigationpaneassetstabemptystate",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/navigation-pane/tab-panels/assets.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_navigation_pane_tab_panels_assets_tsx",
+      "target": "home_nixos_plane_apps_web_core_store_pages_base_page_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/navigation-pane/tab-panels/assets.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_navigation_pane_tab_panels_assets_tsx",
+      "target": "pages_base_page_tpageinstance",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/navigation-pane/tab-panels/assets.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_navigation_pane_tab_panels_assets_tsx",
+      "target": "tab_panels_assets_props",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/navigation-pane/tab-panels/assets.tsx",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_navigation_pane_tab_panels_assets_tsx",
+      "target": "tab_panels_assets_assetitemprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/navigation-pane/tab-panels/assets.tsx",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_navigation_pane_tab_panels_assets_tsx",
+      "target": "tab_panels_assets_assetitem",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/navigation-pane/tab-panels/assets.tsx",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_navigation_pane_tab_panels_assets_tsx",
+      "target": "tab_panels_assets_pagenavigationpaneassetstabpanel",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/navigation-pane/tab-panels/assets.tsx",
+      "source_location": "L110",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

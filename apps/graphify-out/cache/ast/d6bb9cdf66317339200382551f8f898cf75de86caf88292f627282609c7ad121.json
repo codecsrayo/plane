@@ -1,0 +1,110 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_api_rust_src_entities_webhooks_rs",
+      "label": "webhooks.rs",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/webhooks.rs",
+      "source_location": "L1"
+    },
+    {
+      "id": "entities_webhooks_model",
+      "label": "Model",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/webhooks.rs",
+      "source_location": "L8"
+    },
+    {
+      "id": "entities_webhooks_relation",
+      "label": "Relation",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/webhooks.rs",
+      "source_location": "L30"
+    },
+    {
+      "id": "entities_webhooks_entity",
+      "label": "Entity",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/webhooks.rs",
+      "source_location": "L59"
+    },
+    {
+      "id": "entities_webhooks_entity_to",
+      "label": ".to()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/webhooks.rs",
+      "source_location": "L60"
+    },
+    {
+      "id": "entities_webhooks_activemodel",
+      "label": "ActiveModel",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/webhooks.rs",
+      "source_location": "L71"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_entities_webhooks_rs",
+      "target": "prelude",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/webhooks.rs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_entities_webhooks_rs",
+      "target": "entities_webhooks_model",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/webhooks.rs",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_entities_webhooks_rs",
+      "target": "entities_webhooks_relation",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/webhooks.rs",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "entities_webhooks_entity",
+      "target": "entities_webhooks_entity_to",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/webhooks.rs",
+      "source_location": "L60",
+      "weight": 1.0
+    },
+    {
+      "source": "entities_webhooks_entity",
+      "target": "entities_webhooks_entity_to",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/webhooks.rs",
+      "source_location": "L66",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "entities_webhooks_entity_to",
+      "callee": "def",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/webhooks.rs",
+      "source_location": "L61"
+    },
+    {
+      "caller_nid": "entities_webhooks_entity_to",
+      "callee": "def",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/webhooks.rs",
+      "source_location": "L67"
+    }
+  ]
+}

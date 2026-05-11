@@ -1,0 +1,156 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_gantt_chart_sidebar_gantt_dnd_hoc_tsx",
+      "label": "gantt-dnd-HOC.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/sidebar/gantt-dnd-HOC.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "sidebar_gantt_dnd_hoc_props",
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/sidebar/gantt-dnd-HOC.tsx",
+      "source_location": "L17"
+    },
+    {
+      "id": "sidebar_gantt_dnd_hoc_ganttdndhoc",
+      "label": "GanttDnDHOC",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/sidebar/gantt-dnd-HOC.tsx",
+      "source_location": "L25"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_sidebar_gantt_dnd_hoc_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/sidebar/gantt-dnd-HOC.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_sidebar_gantt_dnd_hoc_tsx",
+      "target": "combine",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/sidebar/gantt-dnd-HOC.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_sidebar_gantt_dnd_hoc_tsx",
+      "target": "adapter",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/sidebar/gantt-dnd-HOC.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_sidebar_gantt_dnd_hoc_tsx",
+      "target": "tree_item",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/sidebar/gantt-dnd-HOC.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_sidebar_gantt_dnd_hoc_tsx",
+      "target": "mobx_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/sidebar/gantt-dnd-HOC.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_sidebar_gantt_dnd_hoc_tsx",
+      "target": "hooks",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/sidebar/gantt-dnd-HOC.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_sidebar_gantt_dnd_hoc_tsx",
+      "target": "toast",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/sidebar/gantt-dnd-HOC.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_sidebar_gantt_dnd_hoc_tsx",
+      "target": "ui",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/sidebar/gantt-dnd-HOC.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_sidebar_gantt_dnd_hoc_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_utils_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/sidebar/gantt-dnd-HOC.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_sidebar_gantt_dnd_hoc_tsx",
+      "target": "issue_layouts_utils_highlight_with_line",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/sidebar/gantt-dnd-HOC.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_sidebar_gantt_dnd_hoc_tsx",
+      "target": "issue_layouts_utils_highlightissueondrop",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/sidebar/gantt-dnd-HOC.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_sidebar_gantt_dnd_hoc_tsx",
+      "target": "sidebar_gantt_dnd_hoc_props",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/sidebar/gantt-dnd-HOC.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_sidebar_gantt_dnd_hoc_tsx",
+      "target": "sidebar_gantt_dnd_hoc_ganttdndhoc",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/sidebar/gantt-dnd-HOC.tsx",
+      "source_location": "L25",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

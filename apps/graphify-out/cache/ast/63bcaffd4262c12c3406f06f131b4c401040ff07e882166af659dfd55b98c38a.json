@@ -1,0 +1,226 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_calendar_dropdowns_months_dropdown_tsx",
+      "label": "months-dropdown.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/calendar/dropdowns/months-dropdown.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "dropdowns_months_dropdown_props",
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/calendar/dropdowns/months-dropdown.tsx",
+      "source_location": "L24"
+    },
+    {
+      "id": "dropdowns_months_dropdown_calendarmonthsdropdown",
+      "label": "CalendarMonthsDropdown",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/calendar/dropdowns/months-dropdown.tsx",
+      "source_location": "L27"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_calendar_dropdowns_months_dropdown_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/calendar/dropdowns/months-dropdown.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_calendar_dropdowns_months_dropdown_tsx",
+      "target": "mobx_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/calendar/dropdowns/months-dropdown.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_calendar_dropdowns_months_dropdown_tsx",
+      "target": "react_popper",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/calendar/dropdowns/months-dropdown.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_calendar_dropdowns_months_dropdown_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/calendar/dropdowns/months-dropdown.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_calendar_dropdowns_months_dropdown_tsx",
+      "target": "icons",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/calendar/dropdowns/months-dropdown.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_calendar_dropdowns_months_dropdown_tsx",
+      "target": "utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/calendar/dropdowns/months-dropdown.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_calendar_dropdowns_months_dropdown_tsx",
+      "target": "home_nixos_plane_apps_web_core_constants_calendar_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/calendar/dropdowns/months-dropdown.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_calendar_dropdowns_months_dropdown_tsx",
+      "target": "constants_calendar_months_list",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/calendar/dropdowns/months-dropdown.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_calendar_dropdowns_months_dropdown_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_use_calendar_view_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/calendar/dropdowns/months-dropdown.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_calendar_dropdowns_months_dropdown_tsx",
+      "target": "store_use_calendar_view_usecalendarview",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/calendar/dropdowns/months-dropdown.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_calendar_dropdowns_months_dropdown_tsx",
+      "target": "home_nixos_plane_apps_web_core_store_issue_cycle_index_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/calendar/dropdowns/months-dropdown.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_calendar_dropdowns_months_dropdown_tsx",
+      "target": "cycle_index_icycleissuesfilter",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/calendar/dropdowns/months-dropdown.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_calendar_dropdowns_months_dropdown_tsx",
+      "target": "home_nixos_plane_apps_web_core_store_issue_module_index_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/calendar/dropdowns/months-dropdown.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_calendar_dropdowns_months_dropdown_tsx",
+      "target": "module_index_imoduleissuesfilter",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/calendar/dropdowns/months-dropdown.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_calendar_dropdowns_months_dropdown_tsx",
+      "target": "home_nixos_plane_apps_web_core_store_issue_project_index_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/calendar/dropdowns/months-dropdown.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_calendar_dropdowns_months_dropdown_tsx",
+      "target": "project_index_iprojectissuesfilter",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/calendar/dropdowns/months-dropdown.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_calendar_dropdowns_months_dropdown_tsx",
+      "target": "home_nixos_plane_apps_web_core_store_issue_project_views_index_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/calendar/dropdowns/months-dropdown.tsx",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_calendar_dropdowns_months_dropdown_tsx",
+      "target": "project_views_index_iprojectviewissuesfilter",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/calendar/dropdowns/months-dropdown.tsx",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_calendar_dropdowns_months_dropdown_tsx",
+      "target": "dropdowns_months_dropdown_props",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/calendar/dropdowns/months-dropdown.tsx",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_calendar_dropdowns_months_dropdown_tsx",
+      "target": "dropdowns_months_dropdown_calendarmonthsdropdown",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/calendar/dropdowns/months-dropdown.tsx",
+      "source_location": "L27",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

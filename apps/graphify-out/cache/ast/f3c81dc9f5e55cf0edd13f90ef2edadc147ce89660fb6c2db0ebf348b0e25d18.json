@@ -1,0 +1,146 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_lib_wrappers_instance_wrapper_tsx",
+      "label": "instance-wrapper.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/lib/wrappers/instance-wrapper.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "wrappers_instance_wrapper_tinstancewrapper",
+      "label": "TInstanceWrapper",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/lib/wrappers/instance-wrapper.tsx",
+      "source_location": "L16"
+    },
+    {
+      "id": "wrappers_instance_wrapper_instancewrapper",
+      "label": "InstanceWrapper",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/lib/wrappers/instance-wrapper.tsx",
+      "source_location": "L20"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_lib_wrappers_instance_wrapper_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/lib/wrappers/instance-wrapper.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_lib_wrappers_instance_wrapper_tsx",
+      "target": "mobx_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/lib/wrappers/instance-wrapper.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_lib_wrappers_instance_wrapper_tsx",
+      "target": "swr",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/lib/wrappers/instance-wrapper.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_lib_wrappers_instance_wrapper_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_common_logo_spinner_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/lib/wrappers/instance-wrapper.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_lib_wrappers_instance_wrapper_tsx",
+      "target": "common_logo_spinner_logospinner",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/lib/wrappers/instance-wrapper.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_lib_wrappers_instance_wrapper_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_instance_index_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/lib/wrappers/instance-wrapper.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_lib_wrappers_instance_wrapper_tsx",
+      "target": "instance_index_instancenotready",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/lib/wrappers/instance-wrapper.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_lib_wrappers_instance_wrapper_tsx",
+      "target": "instance_index_maintenanceview",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/lib/wrappers/instance-wrapper.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_lib_wrappers_instance_wrapper_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_use_instance_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/lib/wrappers/instance-wrapper.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_lib_wrappers_instance_wrapper_tsx",
+      "target": "store_use_instance_useinstance",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/lib/wrappers/instance-wrapper.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_lib_wrappers_instance_wrapper_tsx",
+      "target": "wrappers_instance_wrapper_tinstancewrapper",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/lib/wrappers/instance-wrapper.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_lib_wrappers_instance_wrapper_tsx",
+      "target": "wrappers_instance_wrapper_instancewrapper",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/lib/wrappers/instance-wrapper.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

@@ -1,0 +1,222 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_power_k_ui_renderer_command_tsx",
+      "label": "command.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/renderer/command.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "renderer_command_props",
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/renderer/command.tsx",
+      "source_location": "L17"
+    },
+    {
+      "id": "renderer_command_commandrenderer",
+      "label": "CommandRenderer()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/renderer/command.tsx",
+      "source_location": "L23"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_renderer_command_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/renderer/command.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_renderer_command_tsx",
+      "target": "cmdk",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/renderer/command.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_renderer_command_tsx",
+      "target": "i18n",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/renderer/command.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_renderer_command_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_power_k_core_types_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/renderer/command.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_renderer_command_tsx",
+      "target": "core_types_tpowerkcommandconfig",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/renderer/command.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_renderer_command_tsx",
+      "target": "core_types_tpowerkcommandgroup",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/renderer/command.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_renderer_command_tsx",
+      "target": "core_types_tpowerkcontext",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/renderer/command.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_renderer_command_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_power_k_ui_modal_command_item_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/renderer/command.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_renderer_command_tsx",
+      "target": "modal_command_item_powerkmodalcommanditem",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/renderer/command.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_renderer_command_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_power_k_ui_pages_context_based_index_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/renderer/command.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_renderer_command_tsx",
+      "target": "context_based_index_context_entity_map",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/renderer/command.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_renderer_command_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_power_k_ui_renderer_shared_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/renderer/command.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_renderer_command_tsx",
+      "target": "renderer_shared_power_k_group_priority",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/renderer/command.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_renderer_command_tsx",
+      "target": "renderer_shared_power_k_group_i18n_titles",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/renderer/command.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_renderer_command_tsx",
+      "target": "renderer_command_props",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/renderer/command.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_renderer_command_tsx",
+      "target": "renderer_command_commandrenderer",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/renderer/command.tsx",
+      "source_location": "L23",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "renderer_command_commandrenderer",
+      "callee": "useTranslation",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/renderer/command.tsx",
+      "source_location": "L28"
+    },
+    {
+      "caller_nid": "renderer_command_commandrenderer",
+      "callee": "reduce",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/renderer/command.tsx",
+      "source_location": "L30"
+    },
+    {
+      "caller_nid": "renderer_command_commandrenderer",
+      "callee": "toSorted",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/renderer/command.tsx",
+      "source_location": "L40"
+    },
+    {
+      "caller_nid": "renderer_command_commandrenderer",
+      "callee": "keys",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/renderer/command.tsx",
+      "source_location": "L40"
+    },
+    {
+      "caller_nid": "renderer_command_commandrenderer",
+      "callee": "map",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/renderer/command.tsx",
+      "source_location": "L48"
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_core_sidebar_progress_stats_label_tsx",
+      "label": "label.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/sidebar/progress-stats/label.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "progress_stats_label_tlabeldata",
+      "label": "TLabelData",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/sidebar/progress-stats/label.tsx",
+      "source_location": "L15"
+    },
+    {
+      "id": "progress_stats_label_tlabelstatcomponent",
+      "label": "TLabelStatComponent",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/sidebar/progress-stats/label.tsx",
+      "source_location": "L23"
+    },
+    {
+      "id": "progress_stats_label_labelstatcomponent",
+      "label": "LabelStatComponent",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/sidebar/progress-stats/label.tsx",
+      "source_location": "L30"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_core_sidebar_progress_stats_label_tsx",
+      "target": "mobx_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/sidebar/progress-stats/label.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_core_sidebar_progress_stats_label_tsx",
+      "target": "i18n",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/sidebar/progress-stats/label.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_core_sidebar_progress_stats_label_tsx",
+      "target": "home_nixos_plane_apps_web_core_app_assets_empty_state_empty_label_svg_url",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/sidebar/progress-stats/label.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_core_sidebar_progress_stats_label_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_core_sidebar_single_progress_stats_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/sidebar/progress-stats/label.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_core_sidebar_progress_stats_label_tsx",
+      "target": "sidebar_single_progress_stats_singleprogressstats",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/sidebar/progress-stats/label.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_core_sidebar_progress_stats_label_tsx",
+      "target": "progress_stats_label_tlabeldata",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/sidebar/progress-stats/label.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_core_sidebar_progress_stats_label_tsx",
+      "target": "progress_stats_label_tlabelstatcomponent",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/sidebar/progress-stats/label.tsx",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_core_sidebar_progress_stats_label_tsx",
+      "target": "progress_stats_label_labelstatcomponent",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/sidebar/progress-stats/label.tsx",
+      "source_location": "L30",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

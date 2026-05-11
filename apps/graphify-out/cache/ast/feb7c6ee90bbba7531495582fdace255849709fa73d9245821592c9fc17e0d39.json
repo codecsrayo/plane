@@ -1,0 +1,216 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_gantt_chart_sidebar_issues_block_tsx",
+      "label": "block.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/sidebar/issues/block.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "issues_block_props",
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/sidebar/issues/block.tsx",
+      "source_location": "L22"
+    },
+    {
+      "id": "issues_block_issuessidebarblock",
+      "label": "IssuesSidebarBlock",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/sidebar/issues/block.tsx",
+      "source_location": "L30"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_sidebar_issues_block_tsx",
+      "target": "mobx_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/sidebar/issues/block.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_sidebar_issues_block_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/sidebar/issues/block.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_sidebar_issues_block_tsx",
+      "target": "ui",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/sidebar/issues/block.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_sidebar_issues_block_tsx",
+      "target": "utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/sidebar/issues/block.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_sidebar_issues_block_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_core_multiple_select_index_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/sidebar/issues/block.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_sidebar_issues_block_tsx",
+      "target": "multiple_select_index_multipleselectentityaction",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/sidebar/issues/block.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_sidebar_issues_block_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_gantt_blocks_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/sidebar/issues/block.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_sidebar_issues_block_tsx",
+      "target": "gantt_blocks_issueganttsidebarblock",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/sidebar/issues/block.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_sidebar_issues_block_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_use_issue_detail_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/sidebar/issues/block.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_sidebar_issues_block_tsx",
+      "target": "store_use_issue_detail_useissuedetail",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/sidebar/issues/block.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_sidebar_issues_block_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_use_multiple_select_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/sidebar/issues/block.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_sidebar_issues_block_tsx",
+      "target": "hooks_use_multiple_select_tselectionhelper",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/sidebar/issues/block.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_sidebar_issues_block_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_use_timeline_chart_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/sidebar/issues/block.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_sidebar_issues_block_tsx",
+      "target": "hooks_use_timeline_chart_usetimelinechartstore",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/sidebar/issues/block.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_sidebar_issues_block_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_gantt_chart_constants_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/sidebar/issues/block.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_sidebar_issues_block_tsx",
+      "target": "gantt_chart_constants_block_height",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/sidebar/issues/block.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_sidebar_issues_block_tsx",
+      "target": "gantt_chart_constants_gantt_select_group",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/sidebar/issues/block.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_sidebar_issues_block_tsx",
+      "target": "issues_block_props",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/sidebar/issues/block.tsx",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_sidebar_issues_block_tsx",
+      "target": "issues_block_issuessidebarblock",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/sidebar/issues/block.tsx",
+      "source_location": "L30",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

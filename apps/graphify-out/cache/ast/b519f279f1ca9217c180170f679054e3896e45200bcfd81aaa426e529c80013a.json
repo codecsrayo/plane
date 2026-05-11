@@ -1,0 +1,314 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_services_api_service_ts",
+      "label": "api.service.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/api.service.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "services_api_service_auth_landing_routes",
+      "label": "AUTH_LANDING_ROUTES",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/api.service.ts",
+      "source_location": "L27"
+    },
+    {
+      "id": "services_api_service_isauthlandingroute",
+      "label": "isAuthLandingRoute()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/api.service.ts",
+      "source_location": "L29"
+    },
+    {
+      "id": "services_api_service_apierror",
+      "label": "ApiError",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/api.service.ts",
+      "source_location": "L59"
+    },
+    {
+      "id": "services_api_service_apierror_constructor",
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/api.service.ts",
+      "source_location": "L65"
+    },
+    {
+      "id": "services_api_service_extractapierrormessage",
+      "label": "extractApiErrorMessage()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/api.service.ts",
+      "source_location": "L84"
+    },
+    {
+      "id": "services_api_service_toapierror",
+      "label": "toApiError()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/api.service.ts",
+      "source_location": "L112"
+    },
+    {
+      "id": "services_api_service_constructor",
+      "label": "constructor()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/api.service.ts",
+      "source_location": "L125"
+    },
+    {
+      "id": "services_api_service_setupinterceptors",
+      "label": "setupInterceptors()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/api.service.ts",
+      "source_location": "L135"
+    },
+    {
+      "id": "services_api_service_get",
+      "label": "get()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/api.service.ts",
+      "source_location": "L166"
+    },
+    {
+      "id": "services_api_service_post",
+      "label": "post()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/api.service.ts",
+      "source_location": "L170"
+    },
+    {
+      "id": "services_api_service_put",
+      "label": "put()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/api.service.ts",
+      "source_location": "L174"
+    },
+    {
+      "id": "services_api_service_patch",
+      "label": "patch()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/api.service.ts",
+      "source_location": "L178"
+    },
+    {
+      "id": "services_api_service_delete",
+      "label": "delete()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/api.service.ts",
+      "source_location": "L182"
+    },
+    {
+      "id": "services_api_service_request",
+      "label": "request()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/api.service.ts",
+      "source_location": "L186"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_services_api_service_ts",
+      "target": "axios",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/api.service.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_api_service_ts",
+      "target": "axios",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/api.service.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_api_service_ts",
+      "target": "constants",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/api.service.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_api_service_ts",
+      "target": "services_api_service_auth_landing_routes",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/api.service.ts",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_api_service_ts",
+      "target": "services_api_service_isauthlandingroute",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/api.service.ts",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_api_service_ts",
+      "target": "services_api_service_apierror",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/api.service.ts",
+      "source_location": "L59",
+      "weight": 1.0
+    },
+    {
+      "source": "services_api_service_apierror",
+      "target": "services_api_service_apierror_constructor",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/api.service.ts",
+      "source_location": "L65",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_api_service_ts",
+      "target": "services_api_service_extractapierrormessage",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/api.service.ts",
+      "source_location": "L84",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_api_service_ts",
+      "target": "services_api_service_toapierror",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/api.service.ts",
+      "source_location": "L112",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_api_service_ts",
+      "target": "services_api_service_constructor",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/api.service.ts",
+      "source_location": "L125",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_api_service_ts",
+      "target": "services_api_service_setupinterceptors",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/api.service.ts",
+      "source_location": "L135",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_api_service_ts",
+      "target": "services_api_service_get",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/api.service.ts",
+      "source_location": "L166",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_api_service_ts",
+      "target": "services_api_service_post",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/api.service.ts",
+      "source_location": "L170",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_api_service_ts",
+      "target": "services_api_service_put",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/api.service.ts",
+      "source_location": "L174",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_api_service_ts",
+      "target": "services_api_service_patch",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/api.service.ts",
+      "source_location": "L178",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_api_service_ts",
+      "target": "services_api_service_delete",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/api.service.ts",
+      "source_location": "L182",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_api_service_ts",
+      "target": "services_api_service_request",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/api.service.ts",
+      "source_location": "L186",
+      "weight": 1.0
+    },
+    {
+      "source": "services_api_service_constructor",
+      "target": "services_api_service_setupinterceptors",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/api.service.ts",
+      "source_location": "L132",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "services_api_service_isauthlandingroute",
+      "callee": "some",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/api.service.ts",
+      "source_location": "L29"
+    },
+    {
+      "caller_nid": "services_api_service_apierror_constructor",
+      "callee": "super",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/services/api.service.ts",
+      "source_location": "L70"
+    },
+    {
+      "caller_nid": "services_api_service_constructor",
+      "callee": "create",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/api.service.ts",
+      "source_location": "L127"
+    },
+    {
+      "caller_nid": "services_api_service_setupinterceptors",
+      "callee": "use",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/api.service.ts",
+      "source_location": "L136"
+    },
+    {
+      "caller_nid": "services_api_service_request",
+      "callee": "axiosInstance",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/api.service.ts",
+      "source_location": "L187"
+    }
+  ]
+}

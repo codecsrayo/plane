@@ -1,0 +1,178 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_services_inbox_intake_work_item_version_service_ts",
+      "label": "intake-work_item_version.service.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/inbox/intake-work_item_version.service.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "inbox_intake_work_item_version_service_intakeworkitemversionservice",
+      "label": "IntakeWorkItemVersionService",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/inbox/intake-work_item_version.service.ts",
+      "source_location": "L14"
+    },
+    {
+      "id": "inbox_intake_work_item_version_service_intakeworkitemversionservice_constructor",
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/inbox/intake-work_item_version.service.ts",
+      "source_location": "L15"
+    },
+    {
+      "id": "inbox_intake_work_item_version_service_intakeworkitemversionservice_listdescriptionversions",
+      "label": ".listDescriptionVersions()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/inbox/intake-work_item_version.service.ts",
+      "source_location": "L19"
+    },
+    {
+      "id": "inbox_intake_work_item_version_service_intakeworkitemversionservice_retrievedescriptionversion",
+      "label": ".retrieveDescriptionVersion()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/inbox/intake-work_item_version.service.ts",
+      "source_location": "L33"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_services_inbox_intake_work_item_version_service_ts",
+      "target": "constants",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/inbox/intake-work_item_version.service.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_inbox_intake_work_item_version_service_ts",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/inbox/intake-work_item_version.service.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_inbox_intake_work_item_version_service_ts",
+      "target": "home_nixos_plane_apps_web_core_services_api_service_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/inbox/intake-work_item_version.service.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_inbox_intake_work_item_version_service_ts",
+      "target": "services_api_service_apiservice",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/inbox/intake-work_item_version.service.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_inbox_intake_work_item_version_service_ts",
+      "target": "services_api_service_apierror",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/inbox/intake-work_item_version.service.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_inbox_intake_work_item_version_service_ts",
+      "target": "inbox_intake_work_item_version_service_intakeworkitemversionservice",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/inbox/intake-work_item_version.service.ts",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "inbox_intake_work_item_version_service_intakeworkitemversionservice",
+      "target": "inbox_intake_work_item_version_service_intakeworkitemversionservice_constructor",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/inbox/intake-work_item_version.service.ts",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "inbox_intake_work_item_version_service_intakeworkitemversionservice",
+      "target": "inbox_intake_work_item_version_service_intakeworkitemversionservice_listdescriptionversions",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/inbox/intake-work_item_version.service.ts",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "inbox_intake_work_item_version_service_intakeworkitemversionservice",
+      "target": "inbox_intake_work_item_version_service_intakeworkitemversionservice_retrievedescriptionversion",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/inbox/intake-work_item_version.service.ts",
+      "source_location": "L33",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "inbox_intake_work_item_version_service_intakeworkitemversionservice_constructor",
+      "callee": "super",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/services/inbox/intake-work_item_version.service.ts",
+      "source_location": "L16"
+    },
+    {
+      "caller_nid": "inbox_intake_work_item_version_service_intakeworkitemversionservice_listdescriptionversions",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/inbox/intake-work_item_version.service.ts",
+      "source_location": "L24"
+    },
+    {
+      "caller_nid": "inbox_intake_work_item_version_service_intakeworkitemversionservice_listdescriptionversions",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/inbox/intake-work_item_version.service.ts",
+      "source_location": "L24"
+    },
+    {
+      "caller_nid": "inbox_intake_work_item_version_service_intakeworkitemversionservice_listdescriptionversions",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/inbox/intake-work_item_version.service.ts",
+      "source_location": "L24"
+    },
+    {
+      "caller_nid": "inbox_intake_work_item_version_service_intakeworkitemversionservice_retrievedescriptionversion",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/inbox/intake-work_item_version.service.ts",
+      "source_location": "L39"
+    },
+    {
+      "caller_nid": "inbox_intake_work_item_version_service_intakeworkitemversionservice_retrievedescriptionversion",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/inbox/intake-work_item_version.service.ts",
+      "source_location": "L39"
+    },
+    {
+      "caller_nid": "inbox_intake_work_item_version_service_intakeworkitemversionservice_retrievedescriptionversion",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/inbox/intake-work_item_version.service.ts",
+      "source_location": "L39"
+    }
+  ]
+}

@@ -1,0 +1,160 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_store_base_power_k_store_ts",
+      "label": "base-power-k.store.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/base-power-k.store.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "store_base_power_k_store_modaldata",
+      "label": "ModalData",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/base-power-k.store.ts",
+      "source_location": "L15"
+    },
+    {
+      "id": "store_base_power_k_store_ibasepowerkstore",
+      "label": "IBasePowerKStore",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/base-power-k.store.ts",
+      "source_location": "L20"
+    },
+    {
+      "id": "store_base_power_k_store_constructor",
+      "label": "constructor()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/base-power-k.store.ts",
+      "source_location": "L48"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_store_base_power_k_store_ts",
+      "target": "mobx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/base-power-k.store.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_base_power_k_store_ts",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/base-power-k.store.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_base_power_k_store_ts",
+      "target": "home_nixos_plane_apps_web_core_components_power_k_core_registry_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/base-power-k.store.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_base_power_k_store_ts",
+      "target": "core_registry_ipowerkcommandregistry",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/base-power-k.store.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_base_power_k_store_ts",
+      "target": "home_nixos_plane_apps_web_core_components_power_k_core_registry_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/base-power-k.store.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_base_power_k_store_ts",
+      "target": "core_registry_powerkcommandregistry",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/base-power-k.store.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_base_power_k_store_ts",
+      "target": "home_nixos_plane_apps_web_core_components_power_k_core_types_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/base-power-k.store.ts",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_base_power_k_store_ts",
+      "target": "core_types_tpowerkcontexttype",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/base-power-k.store.ts",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_base_power_k_store_ts",
+      "target": "core_types_tpowerkpagetype",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/base-power-k.store.ts",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_base_power_k_store_ts",
+      "target": "store_base_power_k_store_modaldata",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/base-power-k.store.ts",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_base_power_k_store_ts",
+      "target": "store_base_power_k_store_ibasepowerkstore",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/base-power-k.store.ts",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_base_power_k_store_ts",
+      "target": "store_base_power_k_store_constructor",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/base-power-k.store.ts",
+      "source_location": "L48",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "store_base_power_k_store_constructor",
+      "callee": "makeObservable",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/store/base-power-k.store.ts",
+      "source_location": "L49"
+    }
+  ]
+}

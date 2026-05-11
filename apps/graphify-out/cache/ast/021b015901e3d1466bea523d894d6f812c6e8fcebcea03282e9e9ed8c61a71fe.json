@@ -1,0 +1,452 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_cycles_list_cycle_list_item_action_tsx",
+      "label": "cycle-list-item-action.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/list/cycle-list-item-action.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "list_cycle_list_item_action_props",
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/list/cycle-list-item-action.tsx",
+      "source_location": "L40"
+    },
+    {
+      "id": "list_cycle_list_item_action_defaultvalues",
+      "label": "defaultValues",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/list/cycle-list-item-action.tsx",
+      "source_location": "L49"
+    },
+    {
+      "id": "list_cycle_list_item_action_cyclelistitemaction",
+      "label": "CycleListItemAction",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/list/cycle-list-item-action.tsx",
+      "source_location": "L54"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_list_cycle_list_item_action_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/list/cycle-list-item-action.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_list_cycle_list_item_action_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/list/cycle-list-item-action.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_list_cycle_list_item_action_tsx",
+      "target": "mobx_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/list/cycle-list-item-action.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_list_cycle_list_item_action_tsx",
+      "target": "navigation",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/list/cycle-list-item-action.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_list_cycle_list_item_action_tsx",
+      "target": "react_hook_form",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/list/cycle-list-item-action.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_list_cycle_list_item_action_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/list/cycle-list-item-action.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_list_cycle_list_item_action_tsx",
+      "target": "constants",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/list/cycle-list-item-action.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_list_cycle_list_item_action_tsx",
+      "target": "hooks",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/list/cycle-list-item-action.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_list_cycle_list_item_action_tsx",
+      "target": "i18n",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/list/cycle-list-item-action.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_list_cycle_list_item_action_tsx",
+      "target": "icons",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/list/cycle-list-item-action.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_list_cycle_list_item_action_tsx",
+      "target": "toast",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/list/cycle-list-item-action.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_list_cycle_list_item_action_tsx",
+      "target": "tooltip",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/list/cycle-list-item-action.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_list_cycle_list_item_action_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/list/cycle-list-item-action.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_list_cycle_list_item_action_tsx",
+      "target": "ui",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/list/cycle-list-item-action.tsx",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_list_cycle_list_item_action_tsx",
+      "target": "utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/list/cycle-list-item-action.tsx",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_list_cycle_list_item_action_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_dropdowns_date_range_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/list/cycle-list-item-action.tsx",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_list_cycle_list_item_action_tsx",
+      "target": "dropdowns_date_range_daterangedropdown",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/list/cycle-list-item-action.tsx",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_list_cycle_list_item_action_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_dropdowns_member_avatar_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/list/cycle-list-item-action.tsx",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_list_cycle_list_item_action_tsx",
+      "target": "member_avatar_buttonavatars",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/list/cycle-list-item-action.tsx",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_list_cycle_list_item_action_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_dropdowns_merged_date_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/list/cycle-list-item-action.tsx",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_list_cycle_list_item_action_tsx",
+      "target": "dropdowns_merged_date_mergeddatedisplay",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/list/cycle-list-item-action.tsx",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_list_cycle_list_item_action_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_use_cycle_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/list/cycle-list-item-action.tsx",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_list_cycle_list_item_action_tsx",
+      "target": "store_use_cycle_usecycle",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/list/cycle-list-item-action.tsx",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_list_cycle_list_item_action_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_use_member_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/list/cycle-list-item-action.tsx",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_list_cycle_list_item_action_tsx",
+      "target": "store_use_member_usemember",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/list/cycle-list-item-action.tsx",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_list_cycle_list_item_action_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_user_index_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/list/cycle-list-item-action.tsx",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_list_cycle_list_item_action_tsx",
+      "target": "user_index_useuserpermissions",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/list/cycle-list-item-action.tsx",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_list_cycle_list_item_action_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_use_app_router_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/list/cycle-list-item-action.tsx",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_list_cycle_list_item_action_tsx",
+      "target": "hooks_use_app_router_useapprouter",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/list/cycle-list-item-action.tsx",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_list_cycle_list_item_action_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_use_platform_os_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/list/cycle-list-item-action.tsx",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_list_cycle_list_item_action_tsx",
+      "target": "hooks_use_platform_os_useplatformos",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/list/cycle-list-item-action.tsx",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_list_cycle_list_item_action_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_use_timezone_converter_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/list/cycle-list-item-action.tsx",
+      "source_location": "L33",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_list_cycle_list_item_action_tsx",
+      "target": "hooks_use_timezone_converter_usetimezoneconverter",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/list/cycle-list-item-action.tsx",
+      "source_location": "L33",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_list_cycle_list_item_action_tsx",
+      "target": "home_nixos_plane_apps_web_core_plane_web_components_cycles",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/list/cycle-list-item-action.tsx",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_list_cycle_list_item_action_tsx",
+      "target": "components_cycles_cycleadditionalactions",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/list/cycle-list-item-action.tsx",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_list_cycle_list_item_action_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_cycles_quick_actions_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/list/cycle-list-item-action.tsx",
+      "source_location": "L37",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_list_cycle_list_item_action_tsx",
+      "target": "cycles_quick_actions_cyclequickactions",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/list/cycle-list-item-action.tsx",
+      "source_location": "L37",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_list_cycle_list_item_action_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_cycles_transfer_issues_modal_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/list/cycle-list-item-action.tsx",
+      "source_location": "L38",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_list_cycle_list_item_action_tsx",
+      "target": "cycles_transfer_issues_modal_transferissuesmodal",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/list/cycle-list-item-action.tsx",
+      "source_location": "L38",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_list_cycle_list_item_action_tsx",
+      "target": "list_cycle_list_item_action_props",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/list/cycle-list-item-action.tsx",
+      "source_location": "L40",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_list_cycle_list_item_action_tsx",
+      "target": "list_cycle_list_item_action_defaultvalues",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/list/cycle-list-item-action.tsx",
+      "source_location": "L49",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_list_cycle_list_item_action_tsx",
+      "target": "list_cycle_list_item_action_cyclelistitemaction",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/list/cycle-list-item-action.tsx",
+      "source_location": "L54",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

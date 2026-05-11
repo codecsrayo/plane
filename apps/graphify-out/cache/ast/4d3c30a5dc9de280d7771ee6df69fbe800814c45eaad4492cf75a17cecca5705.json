@@ -1,0 +1,115 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_analytics_empty_state_tsx",
+      "label": "empty-state.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/empty-state.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "analytics_empty_state_props",
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/empty-state.tsx",
+      "source_location": "L14"
+    },
+    {
+      "id": "analytics_empty_state_analyticsemptystate",
+      "label": "AnalyticsEmptyState()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/empty-state.tsx",
+      "source_location": "L21"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_analytics_empty_state_tsx",
+      "target": "next_themes",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/empty-state.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_analytics_empty_state_tsx",
+      "target": "utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/empty-state.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_analytics_empty_state_tsx",
+      "target": "home_nixos_plane_apps_web_core_app_assets_empty_state_analytics_empty_grid_background_dark_webp_url",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/empty-state.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_analytics_empty_state_tsx",
+      "target": "home_nixos_plane_apps_web_core_app_assets_empty_state_analytics_empty_grid_background_light_webp_url",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/empty-state.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_analytics_empty_state_tsx",
+      "target": "analytics_empty_state_props",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/empty-state.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_analytics_empty_state_tsx",
+      "target": "analytics_empty_state_analyticsemptystate",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/empty-state.tsx",
+      "source_location": "L21",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "analytics_empty_state_analyticsemptystate",
+      "callee": "useTheme",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/empty-state.tsx",
+      "source_location": "L23"
+    },
+    {
+      "caller_nid": "analytics_empty_state_analyticsemptystate",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/empty-state.tsx",
+      "source_location": "L28"
+    },
+    {
+      "caller_nid": "analytics_empty_state_analyticsemptystate",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/empty-state.tsx",
+      "source_location": "L33"
+    },
+    {
+      "caller_nid": "analytics_empty_state_analyticsemptystate",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/empty-state.tsx",
+      "source_location": "L43"
+    }
+  ]
+}

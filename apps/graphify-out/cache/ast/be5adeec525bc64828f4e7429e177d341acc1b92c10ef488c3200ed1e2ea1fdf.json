@@ -1,0 +1,288 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_power_k_ui_pages_context_based_root_tsx",
+      "label": "root.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/pages/context-based/root.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "context_based_root_contextbasedactionsprops",
+      "label": "ContextBasedActionsProps",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/pages/context-based/root.tsx",
+      "source_location": "L22"
+    },
+    {
+      "id": "context_based_root_powerkcontextbasedpageslist",
+      "label": "PowerKContextBasedPagesList()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/pages/context-based/root.tsx",
+      "source_location": "L28"
+    },
+    {
+      "id": "context_based_root_usepowerkcontextbasedactions",
+      "label": "usePowerKContextBasedActions()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/pages/context-based/root.tsx",
+      "source_location": "L44"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_pages_context_based_root_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_power_k_core_types_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/pages/context-based/root.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_pages_context_based_root_tsx",
+      "target": "core_types_tpowerkcommandconfig",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/pages/context-based/root.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_pages_context_based_root_tsx",
+      "target": "core_types_tpowerkcontexttype",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/pages/context-based/root.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_pages_context_based_root_tsx",
+      "target": "core_types_tpowerkpagetype",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/pages/context-based/root.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_pages_context_based_root_tsx",
+      "target": "home_nixos_plane_apps_web_core_plane_web_components_command_palette_power_k_pages_context_based",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/pages/context-based/root.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_pages_context_based_root_tsx",
+      "target": "pages_context_based_powerkcontextbasedactionsextended",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/pages/context-based/root.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_pages_context_based_root_tsx",
+      "target": "pages_context_based_usepowerkcontextbasedextendedactions",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/pages/context-based/root.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_pages_context_based_root_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_power_k_ui_pages_context_based_cycle_commands_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/pages/context-based/root.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_pages_context_based_root_tsx",
+      "target": "cycle_commands_usepowerkcyclecontextbasedactions",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/pages/context-based/root.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_pages_context_based_root_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_power_k_ui_pages_context_based_module_index_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/pages/context-based/root.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_pages_context_based_root_tsx",
+      "target": "module_index_powerkmodulecontextbasedpages",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/pages/context-based/root.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_pages_context_based_root_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_power_k_ui_pages_context_based_module_commands_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/pages/context-based/root.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_pages_context_based_root_tsx",
+      "target": "module_commands_usepowerkmodulecontextbasedactions",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/pages/context-based/root.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_pages_context_based_root_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_power_k_ui_pages_context_based_page_commands_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/pages/context-based/root.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_pages_context_based_root_tsx",
+      "target": "page_commands_usepowerkpagecontextbasedactions",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/pages/context-based/root.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_pages_context_based_root_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_power_k_ui_pages_context_based_work_item_index_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/pages/context-based/root.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_pages_context_based_root_tsx",
+      "target": "work_item_index_powerkworkitemcontextbasedpages",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/pages/context-based/root.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_pages_context_based_root_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_power_k_ui_pages_context_based_work_item_commands_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/pages/context-based/root.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_pages_context_based_root_tsx",
+      "target": "work_item_commands_usepowerkworkitemcontextbasedcommands",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/pages/context-based/root.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_pages_context_based_root_tsx",
+      "target": "context_based_root_contextbasedactionsprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/pages/context-based/root.tsx",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_pages_context_based_root_tsx",
+      "target": "context_based_root_powerkcontextbasedpageslist",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/pages/context-based/root.tsx",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_pages_context_based_root_tsx",
+      "target": "context_based_root_usepowerkcontextbasedactions",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/pages/context-based/root.tsx",
+      "source_location": "L44",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "context_based_root_usepowerkcontextbasedactions",
+      "callee": "usePowerKWorkItemContextBasedCommands",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/pages/context-based/root.tsx",
+      "source_location": "L45"
+    },
+    {
+      "caller_nid": "context_based_root_usepowerkcontextbasedactions",
+      "callee": "usePowerKCycleContextBasedActions",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/pages/context-based/root.tsx",
+      "source_location": "L46"
+    },
+    {
+      "caller_nid": "context_based_root_usepowerkcontextbasedactions",
+      "callee": "usePowerKModuleContextBasedActions",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/pages/context-based/root.tsx",
+      "source_location": "L47"
+    },
+    {
+      "caller_nid": "context_based_root_usepowerkcontextbasedactions",
+      "callee": "usePowerKPageContextBasedActions",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/pages/context-based/root.tsx",
+      "source_location": "L48"
+    },
+    {
+      "caller_nid": "context_based_root_usepowerkcontextbasedactions",
+      "callee": "usePowerKContextBasedExtendedActions",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/pages/context-based/root.tsx",
+      "source_location": "L49"
+    }
+  ]
+}

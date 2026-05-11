@@ -1,0 +1,174 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_api_rust_src_entities_gitlab_repository_syncs_rs",
+      "label": "gitlab_repository_syncs.rs",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/gitlab_repository_syncs.rs",
+      "source_location": "L1"
+    },
+    {
+      "id": "entities_gitlab_repository_syncs_model",
+      "label": "Model",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/gitlab_repository_syncs.rs",
+      "source_location": "L8"
+    },
+    {
+      "id": "entities_gitlab_repository_syncs_relation",
+      "label": "Relation",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/gitlab_repository_syncs.rs",
+      "source_location": "L27"
+    },
+    {
+      "id": "entities_gitlab_repository_syncs_entity",
+      "label": "Entity",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/gitlab_repository_syncs.rs",
+      "source_location": "L96"
+    },
+    {
+      "id": "entities_gitlab_repository_syncs_entity_to",
+      "label": ".to()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/gitlab_repository_syncs.rs",
+      "source_location": "L97"
+    },
+    {
+      "id": "entities_gitlab_repository_syncs_activemodel",
+      "label": "ActiveModel",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/gitlab_repository_syncs.rs",
+      "source_location": "L132"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_entities_gitlab_repository_syncs_rs",
+      "target": "prelude",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/gitlab_repository_syncs.rs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_entities_gitlab_repository_syncs_rs",
+      "target": "entities_gitlab_repository_syncs_model",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/gitlab_repository_syncs.rs",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_entities_gitlab_repository_syncs_rs",
+      "target": "entities_gitlab_repository_syncs_relation",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/gitlab_repository_syncs.rs",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "entities_gitlab_repository_syncs_entity",
+      "target": "entities_gitlab_repository_syncs_entity_to",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/gitlab_repository_syncs.rs",
+      "source_location": "L97",
+      "weight": 1.0
+    },
+    {
+      "source": "entities_gitlab_repository_syncs_entity",
+      "target": "entities_gitlab_repository_syncs_entity_to",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/gitlab_repository_syncs.rs",
+      "source_location": "L103",
+      "weight": 1.0
+    },
+    {
+      "source": "entities_gitlab_repository_syncs_entity",
+      "target": "entities_gitlab_repository_syncs_entity_to",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/gitlab_repository_syncs.rs",
+      "source_location": "L109",
+      "weight": 1.0
+    },
+    {
+      "source": "entities_gitlab_repository_syncs_entity",
+      "target": "entities_gitlab_repository_syncs_entity_to",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/gitlab_repository_syncs.rs",
+      "source_location": "L115",
+      "weight": 1.0
+    },
+    {
+      "source": "entities_gitlab_repository_syncs_entity",
+      "target": "entities_gitlab_repository_syncs_entity_to",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/gitlab_repository_syncs.rs",
+      "source_location": "L121",
+      "weight": 1.0
+    },
+    {
+      "source": "entities_gitlab_repository_syncs_entity",
+      "target": "entities_gitlab_repository_syncs_entity_to",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/gitlab_repository_syncs.rs",
+      "source_location": "L127",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "entities_gitlab_repository_syncs_entity_to",
+      "callee": "def",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/gitlab_repository_syncs.rs",
+      "source_location": "L98"
+    },
+    {
+      "caller_nid": "entities_gitlab_repository_syncs_entity_to",
+      "callee": "def",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/gitlab_repository_syncs.rs",
+      "source_location": "L104"
+    },
+    {
+      "caller_nid": "entities_gitlab_repository_syncs_entity_to",
+      "callee": "def",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/gitlab_repository_syncs.rs",
+      "source_location": "L110"
+    },
+    {
+      "caller_nid": "entities_gitlab_repository_syncs_entity_to",
+      "callee": "def",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/gitlab_repository_syncs.rs",
+      "source_location": "L116"
+    },
+    {
+      "caller_nid": "entities_gitlab_repository_syncs_entity_to",
+      "callee": "def",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/gitlab_repository_syncs.rs",
+      "source_location": "L122"
+    },
+    {
+      "caller_nid": "entities_gitlab_repository_syncs_entity_to",
+      "callee": "def",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/gitlab_repository_syncs.rs",
+      "source_location": "L128"
+    }
+  ]
+}

@@ -1,0 +1,514 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_properties_label_dropdown_tsx",
+      "label": "label-dropdown.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "properties_label_dropdown_ilabeldropdownprops",
+      "label": "ILabelDropdownProps",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L30"
+    },
+    {
+      "id": "properties_label_dropdown_preventpropagation",
+      "label": "preventPropagation()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L49"
+    },
+    {
+      "id": "properties_label_dropdown_labeldropdown",
+      "label": "LabelDropdown()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L54"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_properties_label_dropdown_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_properties_label_dropdown_tsx",
+      "target": "core",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_properties_label_dropdown_tsx",
+      "target": "navigation",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_properties_label_dropdown_tsx",
+      "target": "react_popper",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_properties_label_dropdown_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_properties_label_dropdown_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_properties_label_dropdown_tsx",
+      "target": "constants",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_properties_label_dropdown_tsx",
+      "target": "hooks",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_properties_label_dropdown_tsx",
+      "target": "i18n",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_properties_label_dropdown_tsx",
+      "target": "icons",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_properties_label_dropdown_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_properties_label_dropdown_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_properties_label_dropdown_tsx",
+      "target": "ui",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_properties_label_dropdown_tsx",
+      "target": "utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_properties_label_dropdown_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_use_label_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_properties_label_dropdown_tsx",
+      "target": "store_use_label_uselabel",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_properties_label_dropdown_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_user_index_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_properties_label_dropdown_tsx",
+      "target": "user_index_useuserpermissions",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_properties_label_dropdown_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_use_dropdown_key_down_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_properties_label_dropdown_tsx",
+      "target": "hooks_use_dropdown_key_down_usedropdownkeydown",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_properties_label_dropdown_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_use_platform_os_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_properties_label_dropdown_tsx",
+      "target": "hooks_use_platform_os_useplatformos",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_properties_label_dropdown_tsx",
+      "target": "properties_label_dropdown_ilabeldropdownprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_properties_label_dropdown_tsx",
+      "target": "properties_label_dropdown_preventpropagation",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L49",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_properties_label_dropdown_tsx",
+      "target": "properties_label_dropdown_labeldropdown",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L54",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "properties_label_dropdown_preventpropagation",
+      "callee": "stopPropagation",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L50"
+    },
+    {
+      "caller_nid": "properties_label_dropdown_preventpropagation",
+      "callee": "preventDefault",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L51"
+    },
+    {
+      "caller_nid": "properties_label_dropdown_labeldropdown",
+      "callee": "useTranslation",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L73"
+    },
+    {
+      "caller_nid": "properties_label_dropdown_labeldropdown",
+      "callee": "useParams",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L76"
+    },
+    {
+      "caller_nid": "properties_label_dropdown_labeldropdown",
+      "callee": "toString",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L77"
+    },
+    {
+      "caller_nid": "properties_label_dropdown_labeldropdown",
+      "callee": "useState",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L80"
+    },
+    {
+      "caller_nid": "properties_label_dropdown_labeldropdown",
+      "callee": "useState",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L81"
+    },
+    {
+      "caller_nid": "properties_label_dropdown_labeldropdown",
+      "callee": "useState",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L82"
+    },
+    {
+      "caller_nid": "properties_label_dropdown_labeldropdown",
+      "callee": "useState",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L83"
+    },
+    {
+      "caller_nid": "properties_label_dropdown_labeldropdown",
+      "callee": "useRef",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L86"
+    },
+    {
+      "caller_nid": "properties_label_dropdown_labeldropdown",
+      "callee": "useRef",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L87"
+    },
+    {
+      "caller_nid": "properties_label_dropdown_labeldropdown",
+      "callee": "useState",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L90"
+    },
+    {
+      "caller_nid": "properties_label_dropdown_labeldropdown",
+      "callee": "useState",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L91"
+    },
+    {
+      "caller_nid": "properties_label_dropdown_labeldropdown",
+      "callee": "useLabel",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L94"
+    },
+    {
+      "caller_nid": "properties_label_dropdown_labeldropdown",
+      "callee": "usePlatformOS",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L95"
+    },
+    {
+      "caller_nid": "properties_label_dropdown_labeldropdown",
+      "callee": "getProjectLabels",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L96"
+    },
+    {
+      "caller_nid": "properties_label_dropdown_labeldropdown",
+      "callee": "useUserPermissions",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L97"
+    },
+    {
+      "caller_nid": "properties_label_dropdown_labeldropdown",
+      "callee": "allowPermissions",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L100"
+    },
+    {
+      "caller_nid": "properties_label_dropdown_labeldropdown",
+      "callee": "useMemo",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L105"
+    },
+    {
+      "caller_nid": "properties_label_dropdown_labeldropdown",
+      "callee": "useMemo",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L125"
+    },
+    {
+      "caller_nid": "properties_label_dropdown_labeldropdown",
+      "callee": "usePopper",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L134"
+    },
+    {
+      "caller_nid": "properties_label_dropdown_labeldropdown",
+      "callee": "useCallback",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L146"
+    },
+    {
+      "caller_nid": "properties_label_dropdown_labeldropdown",
+      "callee": "useCallback",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L155"
+    },
+    {
+      "caller_nid": "properties_label_dropdown_labeldropdown",
+      "callee": "useDropdownKeyDown",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L192"
+    },
+    {
+      "caller_nid": "properties_label_dropdown_labeldropdown",
+      "callee": "useCallback",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L194"
+    },
+    {
+      "caller_nid": "properties_label_dropdown_labeldropdown",
+      "callee": "useEffect",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L203"
+    },
+    {
+      "caller_nid": "properties_label_dropdown_labeldropdown",
+      "callee": "useOutsideClickDetector",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L209"
+    },
+    {
+      "caller_nid": "properties_label_dropdown_labeldropdown",
+      "callee": "useMemo",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L211"
+    },
+    {
+      "caller_nid": "properties_label_dropdown_labeldropdown",
+      "callee": "t",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L273"
+    },
+    {
+      "caller_nid": "properties_label_dropdown_labeldropdown",
+      "callee": "t",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L280"
+    },
+    {
+      "caller_nid": "properties_label_dropdown_labeldropdown",
+      "callee": "map",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L282"
+    },
+    {
+      "caller_nid": "properties_label_dropdown_labeldropdown",
+      "callee": "t",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L328"
+    },
+    {
+      "caller_nid": "properties_label_dropdown_labeldropdown",
+      "callee": "t",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/properties/label-dropdown.tsx",
+      "source_location": "L332"
+    }
+  ]
+}

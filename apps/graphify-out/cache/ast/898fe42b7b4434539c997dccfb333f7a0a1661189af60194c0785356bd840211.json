@@ -1,0 +1,147 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_navigation_items_root_tsx",
+      "label": "items-root.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/navigation/items-root.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "navigation_items_root_props",
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/navigation/items-root.tsx",
+      "source_location": "L14"
+    },
+    {
+      "id": "navigation_items_root_component",
+      "label": "Component()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/navigation/items-root.tsx",
+      "source_location": "L19"
+    },
+    {
+      "id": "navigation_items_root_appsidebaritemsroot",
+      "label": "AppSidebarItemsRoot",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/navigation/items-root.tsx",
+      "source_location": "L31"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_navigation_items_root_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/navigation/items-root.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_navigation_items_root_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_sidebar_sidebar_item_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/navigation/items-root.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_navigation_items_root_tsx",
+      "target": "sidebar_sidebar_item_appsidebaritemdata",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/navigation/items-root.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_navigation_items_root_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_sidebar_sidebar_item_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/navigation/items-root.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_navigation_items_root_tsx",
+      "target": "sidebar_sidebar_item_appsidebaritem",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/navigation/items-root.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_navigation_items_root_tsx",
+      "target": "home_nixos_plane_apps_web_core_plane_web_components_app_rail_app_rail_hoc",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/navigation/items-root.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_navigation_items_root_tsx",
+      "target": "app_rail_app_rail_hoc_withdockitems",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/navigation/items-root.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_navigation_items_root_tsx",
+      "target": "navigation_items_root_props",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/navigation/items-root.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_navigation_items_root_tsx",
+      "target": "navigation_items_root_component",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/navigation/items-root.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_navigation_items_root_tsx",
+      "target": "navigation_items_root_appsidebaritemsroot",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/navigation/items-root.tsx",
+      "source_location": "L31",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "navigation_items_root_component",
+      "callee": "map",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/navigation/items-root.tsx",
+      "source_location": "L22"
+    },
+    {
+      "caller_nid": "navigation_items_root_component",
+      "callee": "filter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/navigation/items-root.tsx",
+      "source_location": "L22"
+    }
+  ]
+}

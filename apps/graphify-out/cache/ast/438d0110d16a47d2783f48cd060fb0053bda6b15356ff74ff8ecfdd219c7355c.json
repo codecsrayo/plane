@@ -1,0 +1,105 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_integration_connected_account_details_tsx",
+      "label": "connected-account-details.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/connected-account-details.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "integration_connected_account_details_props",
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/connected-account-details.tsx",
+      "source_location": "L7"
+    },
+    {
+      "id": "integration_connected_account_details_known_metadata_fields",
+      "label": "KNOWN_METADATA_FIELDS",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/connected-account-details.tsx",
+      "source_location": "L18"
+    },
+    {
+      "id": "integration_connected_account_details_connectedaccountdetails",
+      "label": "ConnectedAccountDetails()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/connected-account-details.tsx",
+      "source_location": "L26"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_integration_connected_account_details_tsx",
+      "target": "integration_connected_account_details_props",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/connected-account-details.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_integration_connected_account_details_tsx",
+      "target": "integration_connected_account_details_known_metadata_fields",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/connected-account-details.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_integration_connected_account_details_tsx",
+      "target": "integration_connected_account_details_connectedaccountdetails",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/connected-account-details.tsx",
+      "source_location": "L26",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "integration_connected_account_details_connectedaccountdetails",
+      "callee": "keys",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/connected-account-details.tsx",
+      "source_location": "L27"
+    },
+    {
+      "caller_nid": "integration_connected_account_details_connectedaccountdetails",
+      "callee": "flatMap",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/connected-account-details.tsx",
+      "source_location": "L34"
+    },
+    {
+      "caller_nid": "integration_connected_account_details_connectedaccountdetails",
+      "callee": "entries",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/connected-account-details.tsx",
+      "source_location": "L42"
+    },
+    {
+      "caller_nid": "integration_connected_account_details_connectedaccountdetails",
+      "callee": "push",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/connected-account-details.tsx",
+      "source_location": "L43"
+    },
+    {
+      "caller_nid": "integration_connected_account_details_connectedaccountdetails",
+      "callee": "String",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/connected-account-details.tsx",
+      "source_location": "L43"
+    },
+    {
+      "caller_nid": "integration_connected_account_details_connectedaccountdetails",
+      "callee": "map",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/connected-account-details.tsx",
+      "source_location": "L53"
+    }
+  ]
+}

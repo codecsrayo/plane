@@ -1,0 +1,13 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_gantt_chart_chart_views_index_ts",
+      "label": "index.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/chart/views/index.ts",
+      "source_location": "L1"
+    }
+  ],
+  "edges": [],
+  "raw_calls": []
+}

@@ -1,0 +1,336 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_kanban_swimlanes_tsx",
+      "label": "swimlanes.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/kanban/swimlanes.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "kanban_swimlanes_isubgroupswimlaneheader",
+      "label": "ISubGroupSwimlaneHeader",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/kanban/swimlanes.tsx",
+      "source_location": "L35"
+    },
+    {
+      "id": "kanban_swimlanes_visibilitysubgroupbygroupcount",
+      "label": "visibilitySubGroupByGroupCount()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/kanban/swimlanes.tsx",
+      "source_location": "L50"
+    },
+    {
+      "id": "kanban_swimlanes_subgroupswimlaneheader",
+      "label": "SubGroupSwimlaneHeader",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/kanban/swimlanes.tsx",
+      "source_location": "L62"
+    },
+    {
+      "id": "kanban_swimlanes_isubgroupswimlane",
+      "label": "ISubGroupSwimlane",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/kanban/swimlanes.tsx",
+      "source_location": "L107"
+    },
+    {
+      "id": "kanban_swimlanes_subgroupswimlane",
+      "label": "SubGroupSwimlane",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/kanban/swimlanes.tsx",
+      "source_location": "L133"
+    },
+    {
+      "id": "kanban_swimlanes_ikanbanswimlanes",
+      "label": "IKanBanSwimLanes",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/kanban/swimlanes.tsx",
+      "source_location": "L238"
+    },
+    {
+      "id": "kanban_swimlanes_kanbanswimlanes",
+      "label": "KanBanSwimLanes",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/kanban/swimlanes.tsx",
+      "source_location": "L266"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_kanban_swimlanes_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/kanban/swimlanes.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_kanban_swimlanes_tsx",
+      "target": "mobx_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/kanban/swimlanes.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_kanban_swimlanes_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/kanban/swimlanes.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_kanban_swimlanes_tsx",
+      "target": "ui",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/kanban/swimlanes.tsx",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_kanban_swimlanes_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_use_issue_layout_store_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/kanban/swimlanes.tsx",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_kanban_swimlanes_tsx",
+      "target": "hooks_use_issue_layout_store_useissuestoretype",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/kanban/swimlanes.tsx",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_kanban_swimlanes_tsx",
+      "target": "home_nixos_plane_apps_web_core_plane_web_components_workflow",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/kanban/swimlanes.tsx",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_kanban_swimlanes_tsx",
+      "target": "components_workflow_useworkflowfdragndrop",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/kanban/swimlanes.tsx",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_kanban_swimlanes_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_list_list_view_types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/kanban/swimlanes.tsx",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_kanban_swimlanes_tsx",
+      "target": "list_list_view_types_trenderquickactions",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/kanban/swimlanes.tsx",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_kanban_swimlanes_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_utils_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/kanban/swimlanes.tsx",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_kanban_swimlanes_tsx",
+      "target": "issue_layouts_utils_groupdroplocation",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/kanban/swimlanes.tsx",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_kanban_swimlanes_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_utils_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/kanban/swimlanes.tsx",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_kanban_swimlanes_tsx",
+      "target": "issue_layouts_utils_getgroupbycolumns",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/kanban/swimlanes.tsx",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_kanban_swimlanes_tsx",
+      "target": "issue_layouts_utils_isworkspacelevel",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/kanban/swimlanes.tsx",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_kanban_swimlanes_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_kanban_default_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/kanban/swimlanes.tsx",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_kanban_swimlanes_tsx",
+      "target": "kanban_default_kanban",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/kanban/swimlanes.tsx",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_kanban_swimlanes_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_kanban_headers_group_by_card_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/kanban/swimlanes.tsx",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_kanban_swimlanes_tsx",
+      "target": "headers_group_by_card_headergroupbycard",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/kanban/swimlanes.tsx",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_kanban_swimlanes_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_kanban_headers_sub_group_by_card_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/kanban/swimlanes.tsx",
+      "source_location": "L33",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_kanban_swimlanes_tsx",
+      "target": "headers_sub_group_by_card_headersubgroupbycard",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/kanban/swimlanes.tsx",
+      "source_location": "L33",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_kanban_swimlanes_tsx",
+      "target": "kanban_swimlanes_isubgroupswimlaneheader",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/kanban/swimlanes.tsx",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_kanban_swimlanes_tsx",
+      "target": "kanban_swimlanes_visibilitysubgroupbygroupcount",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/kanban/swimlanes.tsx",
+      "source_location": "L50",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_kanban_swimlanes_tsx",
+      "target": "kanban_swimlanes_subgroupswimlaneheader",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/kanban/swimlanes.tsx",
+      "source_location": "L62",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_kanban_swimlanes_tsx",
+      "target": "kanban_swimlanes_isubgroupswimlane",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/kanban/swimlanes.tsx",
+      "source_location": "L107",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_kanban_swimlanes_tsx",
+      "target": "kanban_swimlanes_subgroupswimlane",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/kanban/swimlanes.tsx",
+      "source_location": "L133",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_kanban_swimlanes_tsx",
+      "target": "kanban_swimlanes_ikanbanswimlanes",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/kanban/swimlanes.tsx",
+      "source_location": "L238",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_kanban_swimlanes_tsx",
+      "target": "kanban_swimlanes_kanbanswimlanes",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/kanban/swimlanes.tsx",
+      "source_location": "L266",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

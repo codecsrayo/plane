@@ -1,0 +1,140 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_gantt_chart_chart_views_month_tsx",
+      "label": "month.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/chart/views/month.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "views_month_monthchartview",
+      "label": "MonthChartView",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/chart/views/month.tsx",
+      "source_location": "L18"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_chart_views_month_tsx",
+      "target": "mobx_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/chart/views/month.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_chart_views_month_tsx",
+      "target": "utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/chart/views/month.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_chart_views_month_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_gantt_chart_constants_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/chart/views/month.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_chart_views_month_tsx",
+      "target": "gantt_chart_constants_header_height",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/chart/views/month.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_chart_views_month_tsx",
+      "target": "gantt_chart_constants_sidebar_width",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/chart/views/month.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_chart_views_month_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_use_timeline_chart_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/chart/views/month.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_chart_views_month_tsx",
+      "target": "hooks_use_timeline_chart_usetimelinechartstore",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/chart/views/month.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_chart_views_month_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_gantt_chart_views_index_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/chart/views/month.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_chart_views_month_tsx",
+      "target": "views_index_imonthview",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/chart/views/month.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_chart_views_month_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_gantt_chart_views_helpers_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/chart/views/month.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_chart_views_month_tsx",
+      "target": "views_helpers_getnumberofdaysbetweentwodates",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/chart/views/month.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_chart_views_month_tsx",
+      "target": "views_month_monthchartview",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/chart/views/month.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

@@ -1,0 +1,55 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_ui_loader_cycle_module_board_loader_tsx",
+      "label": "cycle-module-board-loader.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/cycle-module-board-loader.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "loader_cycle_module_board_loader_cyclemoduleboardlayoutloader",
+      "label": "CycleModuleBoardLayoutLoader()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/cycle-module-board-loader.tsx",
+      "source_location": "L9"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_ui_loader_cycle_module_board_loader_tsx",
+      "target": "lodash_es",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/cycle-module-board-loader.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_ui_loader_cycle_module_board_loader_tsx",
+      "target": "loader_cycle_module_board_loader_cyclemoduleboardlayoutloader",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/cycle-module-board-loader.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "loader_cycle_module_board_loader_cyclemoduleboardlayoutloader",
+      "callee": "map",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/cycle-module-board-loader.tsx",
+      "source_location": "L14"
+    },
+    {
+      "caller_nid": "loader_cycle_module_board_loader_cyclemoduleboardlayoutloader",
+      "callee": "range",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/cycle-module-board-loader.tsx",
+      "source_location": "L14"
+    }
+  ]
+}

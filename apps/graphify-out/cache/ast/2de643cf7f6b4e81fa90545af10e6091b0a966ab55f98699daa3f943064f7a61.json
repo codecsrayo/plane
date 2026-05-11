@@ -1,0 +1,323 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_services_estimate_service_ts",
+      "label": "estimate.service.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/estimate.service.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "services_estimate_service_estimateservice",
+      "label": "EstimateService",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/estimate.service.ts",
+      "source_location": "L14"
+    },
+    {
+      "id": "services_estimate_service_estimateservice_constructor",
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/estimate.service.ts",
+      "source_location": "L15"
+    },
+    {
+      "id": "services_estimate_service_estimateservice_fetchworkspaceestimates",
+      "label": ".fetchWorkspaceEstimates()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/estimate.service.ts",
+      "source_location": "L19"
+    },
+    {
+      "id": "services_estimate_service_estimateservice_fetchprojectestimates",
+      "label": ".fetchProjectEstimates()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/estimate.service.ts",
+      "source_location": "L28"
+    },
+    {
+      "id": "services_estimate_service_estimateservice_fetchestimatebyid",
+      "label": ".fetchEstimateById()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/estimate.service.ts",
+      "source_location": "L37"
+    },
+    {
+      "id": "services_estimate_service_estimateservice_createestimate",
+      "label": ".createEstimate()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/estimate.service.ts",
+      "source_location": "L52"
+    },
+    {
+      "id": "services_estimate_service_estimateservice_deleteestimate",
+      "label": ".deleteEstimate()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/estimate.service.ts",
+      "source_location": "L65"
+    },
+    {
+      "id": "services_estimate_service_estimateservice_createestimatepoint",
+      "label": ".createEstimatePoint()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/estimate.service.ts",
+      "source_location": "L73"
+    },
+    {
+      "id": "services_estimate_service_estimateservice_updateestimatepoint",
+      "label": ".updateEstimatePoint()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/estimate.service.ts",
+      "source_location": "L90"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_services_estimate_service_ts",
+      "target": "constants",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/estimate.service.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_estimate_service_ts",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/estimate.service.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_estimate_service_ts",
+      "target": "home_nixos_plane_apps_web_core_services_api_service_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/estimate.service.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_estimate_service_ts",
+      "target": "services_api_service_apiservice",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/estimate.service.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_estimate_service_ts",
+      "target": "services_api_service_toapierror",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/estimate.service.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_estimate_service_ts",
+      "target": "services_estimate_service_estimateservice",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/estimate.service.ts",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "services_estimate_service_estimateservice",
+      "target": "services_estimate_service_estimateservice_constructor",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/estimate.service.ts",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "services_estimate_service_estimateservice",
+      "target": "services_estimate_service_estimateservice_fetchworkspaceestimates",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/estimate.service.ts",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "services_estimate_service_estimateservice",
+      "target": "services_estimate_service_estimateservice_fetchprojectestimates",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/estimate.service.ts",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "services_estimate_service_estimateservice",
+      "target": "services_estimate_service_estimateservice_fetchestimatebyid",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/estimate.service.ts",
+      "source_location": "L37",
+      "weight": 1.0
+    },
+    {
+      "source": "services_estimate_service_estimateservice",
+      "target": "services_estimate_service_estimateservice_createestimate",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/estimate.service.ts",
+      "source_location": "L52",
+      "weight": 1.0
+    },
+    {
+      "source": "services_estimate_service_estimateservice",
+      "target": "services_estimate_service_estimateservice_deleteestimate",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/estimate.service.ts",
+      "source_location": "L65",
+      "weight": 1.0
+    },
+    {
+      "source": "services_estimate_service_estimateservice",
+      "target": "services_estimate_service_estimateservice_createestimatepoint",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/estimate.service.ts",
+      "source_location": "L73",
+      "weight": 1.0
+    },
+    {
+      "source": "services_estimate_service_estimateservice",
+      "target": "services_estimate_service_estimateservice_updateestimatepoint",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/estimate.service.ts",
+      "source_location": "L90",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_estimate_service_ts",
+      "target": "services_estimate_service_estimateservice",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/estimate.service.ts",
+      "source_location": "L108",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "services_estimate_service_estimateservice_constructor",
+      "callee": "super",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/services/estimate.service.ts",
+      "source_location": "L16"
+    },
+    {
+      "caller_nid": "services_estimate_service_estimateservice_fetchworkspaceestimates",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/estimate.service.ts",
+      "source_location": "L21"
+    },
+    {
+      "caller_nid": "services_estimate_service_estimateservice_fetchworkspaceestimates",
+      "callee": "toApiError",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/services/estimate.service.ts",
+      "source_location": "L24"
+    },
+    {
+      "caller_nid": "services_estimate_service_estimateservice_fetchprojectestimates",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/estimate.service.ts",
+      "source_location": "L30"
+    },
+    {
+      "caller_nid": "services_estimate_service_estimateservice_fetchprojectestimates",
+      "callee": "toApiError",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/services/estimate.service.ts",
+      "source_location": "L33"
+    },
+    {
+      "caller_nid": "services_estimate_service_estimateservice_fetchestimatebyid",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/estimate.service.ts",
+      "source_location": "L43"
+    },
+    {
+      "caller_nid": "services_estimate_service_estimateservice_fetchestimatebyid",
+      "callee": "toApiError",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/services/estimate.service.ts",
+      "source_location": "L48"
+    },
+    {
+      "caller_nid": "services_estimate_service_estimateservice_createestimate",
+      "callee": "post",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/estimate.service.ts",
+      "source_location": "L58"
+    },
+    {
+      "caller_nid": "services_estimate_service_estimateservice_createestimate",
+      "callee": "toApiError",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/services/estimate.service.ts",
+      "source_location": "L61"
+    },
+    {
+      "caller_nid": "services_estimate_service_estimateservice_deleteestimate",
+      "callee": "delete",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/estimate.service.ts",
+      "source_location": "L67"
+    },
+    {
+      "caller_nid": "services_estimate_service_estimateservice_deleteestimate",
+      "callee": "toApiError",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/services/estimate.service.ts",
+      "source_location": "L69"
+    },
+    {
+      "caller_nid": "services_estimate_service_estimateservice_createestimatepoint",
+      "callee": "post",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/estimate.service.ts",
+      "source_location": "L80"
+    },
+    {
+      "caller_nid": "services_estimate_service_estimateservice_createestimatepoint",
+      "callee": "toApiError",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/services/estimate.service.ts",
+      "source_location": "L86"
+    },
+    {
+      "caller_nid": "services_estimate_service_estimateservice_updateestimatepoint",
+      "callee": "patch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/estimate.service.ts",
+      "source_location": "L98"
+    },
+    {
+      "caller_nid": "services_estimate_service_estimateservice_updateestimatepoint",
+      "callee": "toApiError",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/services/estimate.service.ts",
+      "source_location": "L104"
+    }
+  ]
+}

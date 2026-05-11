@@ -1,0 +1,262 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_services_issue_issue_archive_service_ts",
+      "label": "issue_archive.service.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_archive.service.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "issue_issue_archive_service_issuearchiveservice",
+      "label": "IssueArchiveService",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_archive.service.ts",
+      "source_location": "L14"
+    },
+    {
+      "id": "issue_issue_archive_service_issuearchiveservice_constructor",
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_archive.service.ts",
+      "source_location": "L17"
+    },
+    {
+      "id": "issue_issue_archive_service_issuearchiveservice_getarchivedissues",
+      "label": ".getArchivedIssues()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_archive.service.ts",
+      "source_location": "L22"
+    },
+    {
+      "id": "issue_issue_archive_service_issuearchiveservice_archiveissue",
+      "label": ".archiveIssue()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_archive.service.ts",
+      "source_location": "L36"
+    },
+    {
+      "id": "issue_issue_archive_service_issuearchiveservice_restoreissue",
+      "label": ".restoreIssue()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_archive.service.ts",
+      "source_location": "L50"
+    },
+    {
+      "id": "issue_issue_archive_service_issuearchiveservice_retrievearchivedissue",
+      "label": ".retrieveArchivedIssue()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_archive.service.ts",
+      "source_location": "L58"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_services_issue_issue_archive_service_ts",
+      "target": "constants",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_archive.service.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_issue_issue_archive_service_ts",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_archive.service.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_issue_issue_archive_service_ts",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_archive.service.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_issue_issue_archive_service_ts",
+      "target": "home_nixos_plane_apps_web_core_services_api_service_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_archive.service.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_issue_issue_archive_service_ts",
+      "target": "services_api_service_apiservice",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_archive.service.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_issue_issue_archive_service_ts",
+      "target": "services_api_service_apierror",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_archive.service.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_issue_issue_archive_service_ts",
+      "target": "issue_issue_archive_service_issuearchiveservice",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_archive.service.ts",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "issue_issue_archive_service_issuearchiveservice",
+      "target": "issue_issue_archive_service_issuearchiveservice_constructor",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_archive.service.ts",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "issue_issue_archive_service_issuearchiveservice",
+      "target": "issue_issue_archive_service_issuearchiveservice_getarchivedissues",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_archive.service.ts",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "issue_issue_archive_service_issuearchiveservice",
+      "target": "issue_issue_archive_service_issuearchiveservice_archiveissue",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_archive.service.ts",
+      "source_location": "L36",
+      "weight": 1.0
+    },
+    {
+      "source": "issue_issue_archive_service_issuearchiveservice",
+      "target": "issue_issue_archive_service_issuearchiveservice_restoreissue",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_archive.service.ts",
+      "source_location": "L50",
+      "weight": 1.0
+    },
+    {
+      "source": "issue_issue_archive_service_issuearchiveservice",
+      "target": "issue_issue_archive_service_issuearchiveservice_retrievearchivedissue",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_archive.service.ts",
+      "source_location": "L58",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "issue_issue_archive_service_issuearchiveservice_constructor",
+      "callee": "super",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_archive.service.ts",
+      "source_location": "L18"
+    },
+    {
+      "caller_nid": "issue_issue_archive_service_issuearchiveservice_getarchivedissues",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_archive.service.ts",
+      "source_location": "L23"
+    },
+    {
+      "caller_nid": "issue_issue_archive_service_issuearchiveservice_getarchivedissues",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_archive.service.ts",
+      "source_location": "L23"
+    },
+    {
+      "caller_nid": "issue_issue_archive_service_issuearchiveservice_getarchivedissues",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_archive.service.ts",
+      "source_location": "L23"
+    },
+    {
+      "caller_nid": "issue_issue_archive_service_issuearchiveservice_archiveissue",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_archive.service.ts",
+      "source_location": "L43"
+    },
+    {
+      "caller_nid": "issue_issue_archive_service_issuearchiveservice_archiveissue",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_archive.service.ts",
+      "source_location": "L43"
+    },
+    {
+      "caller_nid": "issue_issue_archive_service_issuearchiveservice_archiveissue",
+      "callee": "post",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_archive.service.ts",
+      "source_location": "L43"
+    },
+    {
+      "caller_nid": "issue_issue_archive_service_issuearchiveservice_restoreissue",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_archive.service.ts",
+      "source_location": "L51"
+    },
+    {
+      "caller_nid": "issue_issue_archive_service_issuearchiveservice_restoreissue",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_archive.service.ts",
+      "source_location": "L51"
+    },
+    {
+      "caller_nid": "issue_issue_archive_service_issuearchiveservice_restoreissue",
+      "callee": "delete",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_archive.service.ts",
+      "source_location": "L51"
+    },
+    {
+      "caller_nid": "issue_issue_archive_service_issuearchiveservice_retrievearchivedissue",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_archive.service.ts",
+      "source_location": "L64"
+    },
+    {
+      "caller_nid": "issue_issue_archive_service_issuearchiveservice_retrievearchivedissue",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_archive.service.ts",
+      "source_location": "L64"
+    },
+    {
+      "caller_nid": "issue_issue_archive_service_issuearchiveservice_retrievearchivedissue",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_archive.service.ts",
+      "source_location": "L64"
+    }
+  ]
+}

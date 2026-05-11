@@ -1,0 +1,562 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_project_form_tsx",
+      "label": "form.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "project_form_iprojectdetailsform",
+      "label": "IProjectDetailsForm",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L36"
+    },
+    {
+      "id": "project_form_projectservice",
+      "label": "projectService",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L42"
+    },
+    {
+      "id": "project_form_projectdetailsform",
+      "label": "ProjectDetailsForm()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L44"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_form_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_form_tsx",
+      "target": "react_hook_form",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_form_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_form_tsx",
+      "target": "constants",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_form_tsx",
+      "target": "i18n",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_form_tsx",
+      "target": "button",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_form_tsx",
+      "target": "emoji_icon_picker",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_form_tsx",
+      "target": "emoji_icon_picker",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_form_tsx",
+      "target": "icons",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_form_tsx",
+      "target": "toast",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_form_tsx",
+      "target": "tooltip",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_form_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_form_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_form_tsx",
+      "target": "ui",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_form_tsx",
+      "target": "utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_form_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_common_cover_image_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_form_tsx",
+      "target": "common_cover_image_coverimage",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_form_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_core_image_picker_popover_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_form_tsx",
+      "target": "core_image_picker_popover_imagepickerpopover",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_form_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_global_index_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_form_tsx",
+      "target": "global_index_timezoneselect",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_form_tsx",
+      "target": "home_nixos_plane_apps_web_core_helpers_cover_image_helper",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_form_tsx",
+      "target": "helpers_cover_image_handlecoverimagechange",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_form_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_use_project_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_form_tsx",
+      "target": "store_use_project_useproject",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_form_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_use_platform_os_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_form_tsx",
+      "target": "hooks_use_platform_os_useplatformos",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_form_tsx",
+      "target": "home_nixos_plane_apps_web_core_services_project_index_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_form_tsx",
+      "target": "project_index_projectservice",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_form_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_project_project_network_icon_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_form_tsx",
+      "target": "project_project_network_icon_projectnetworkicon",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_form_tsx",
+      "target": "project_form_iprojectdetailsform",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L36",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_form_tsx",
+      "target": "project_form_projectservice",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L42",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_form_tsx",
+      "target": "project_form_projectdetailsform",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L44",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "project_form_projectdetailsform",
+      "callee": "useTranslation",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L46"
+    },
+    {
+      "caller_nid": "project_form_projectdetailsform",
+      "callee": "useState",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L48"
+    },
+    {
+      "caller_nid": "project_form_projectdetailsform",
+      "callee": "useState",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L49"
+    },
+    {
+      "caller_nid": "project_form_projectdetailsform",
+      "callee": "useProject",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L51"
+    },
+    {
+      "caller_nid": "project_form_projectdetailsform",
+      "callee": "usePlatformOS",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L52"
+    },
+    {
+      "caller_nid": "project_form_projectdetailsform",
+      "callee": "useForm",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L64"
+    },
+    {
+      "caller_nid": "project_form_projectdetailsform",
+      "callee": "find",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L71"
+    },
+    {
+      "caller_nid": "project_form_projectdetailsform",
+      "callee": "watch",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L72"
+    },
+    {
+      "caller_nid": "project_form_projectdetailsform",
+      "callee": "useEffect",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L74"
+    },
+    {
+      "caller_nid": "project_form_projectdetailsform",
+      "callee": "handleSubmit",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L191"
+    },
+    {
+      "caller_nid": "project_form_projectdetailsform",
+      "callee": "watch",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L234"
+    },
+    {
+      "caller_nid": "project_form_projectdetailsform",
+      "callee": "watch",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L236"
+    },
+    {
+      "caller_nid": "project_form_projectdetailsform",
+      "callee": "t",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L239"
+    },
+    {
+      "caller_nid": "project_form_projectdetailsform",
+      "callee": "t",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L266"
+    },
+    {
+      "caller_nid": "project_form_projectdetailsform",
+      "callee": "t",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L271"
+    },
+    {
+      "caller_nid": "project_form_projectdetailsform",
+      "callee": "t",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L295"
+    },
+    {
+      "caller_nid": "project_form_projectdetailsform",
+      "callee": "t",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L321"
+    },
+    {
+      "caller_nid": "project_form_projectdetailsform",
+      "callee": "t",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L325"
+    },
+    {
+      "caller_nid": "project_form_projectdetailsform",
+      "callee": "t",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L329"
+    },
+    {
+      "caller_nid": "project_form_projectdetailsform",
+      "callee": "t",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L349"
+    },
+    {
+      "caller_nid": "project_form_projectdetailsform",
+      "callee": "t",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L361"
+    },
+    {
+      "caller_nid": "project_form_projectdetailsform",
+      "callee": "t",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L405"
+    },
+    {
+      "caller_nid": "project_form_projectdetailsform",
+      "callee": "t",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L409"
+    },
+    {
+      "caller_nid": "project_form_projectdetailsform",
+      "callee": "t",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L430"
+    },
+    {
+      "caller_nid": "project_form_projectdetailsform",
+      "callee": "t",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L430"
+    },
+    {
+      "caller_nid": "project_form_projectdetailsform",
+      "callee": "t",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L433"
+    },
+    {
+      "caller_nid": "project_form_projectdetailsform",
+      "callee": "renderFormattedDate",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/form.tsx",
+      "source_location": "L433"
+    }
+  ]
+}

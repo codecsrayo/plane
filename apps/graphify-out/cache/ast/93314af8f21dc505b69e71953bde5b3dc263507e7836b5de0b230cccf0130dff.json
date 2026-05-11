@@ -1,0 +1,50 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_settings_profile_content_pages_index_ts",
+      "label": "index.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/settings/profile/content/pages/index.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "pages_index_profile_settings_pages_map",
+      "label": "PROFILE_SETTINGS_PAGES_MAP",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/settings/profile/content/pages/index.ts",
+      "source_location": "L11"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_settings_profile_content_pages_index_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/settings/profile/content/pages/index.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_settings_profile_content_pages_index_ts",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/settings/profile/content/pages/index.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_settings_profile_content_pages_index_ts",
+      "target": "pages_index_profile_settings_pages_map",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/settings/profile/content/pages/index.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

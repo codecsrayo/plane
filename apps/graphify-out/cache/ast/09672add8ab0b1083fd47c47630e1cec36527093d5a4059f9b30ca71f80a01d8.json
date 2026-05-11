@@ -1,0 +1,116 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_core_description_versions_dropdown_item_tsx",
+      "label": "dropdown-item.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/description-versions/dropdown-item.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "description_versions_dropdown_item_props",
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/description-versions/dropdown-item.tsx",
+      "source_location": "L16"
+    },
+    {
+      "id": "description_versions_dropdown_item_descriptionversionsdropdownitem",
+      "label": "DescriptionVersionsDropdownItem",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/description-versions/dropdown-item.tsx",
+      "source_location": "L21"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_core_description_versions_dropdown_item_tsx",
+      "target": "mobx_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/description-versions/dropdown-item.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_core_description_versions_dropdown_item_tsx",
+      "target": "i18n",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/description-versions/dropdown-item.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_core_description_versions_dropdown_item_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/description-versions/dropdown-item.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_core_description_versions_dropdown_item_tsx",
+      "target": "ui",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/description-versions/dropdown-item.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_core_description_versions_dropdown_item_tsx",
+      "target": "utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/description-versions/dropdown-item.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_core_description_versions_dropdown_item_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_use_member_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/description-versions/dropdown-item.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_core_description_versions_dropdown_item_tsx",
+      "target": "store_use_member_usemember",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/description-versions/dropdown-item.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_core_description_versions_dropdown_item_tsx",
+      "target": "description_versions_dropdown_item_props",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/description-versions/dropdown-item.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_core_description_versions_dropdown_item_tsx",
+      "target": "description_versions_dropdown_item_descriptionversionsdropdownitem",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/description-versions/dropdown-item.tsx",
+      "source_location": "L21",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

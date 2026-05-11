@@ -1,0 +1,75 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_ui_loader_utils_tsx",
+      "label": "utils.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/utils.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "loader_utils_getrandomint",
+      "label": "getRandomInt()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/utils.tsx",
+      "source_location": "L7"
+    },
+    {
+      "id": "loader_utils_getrandomlength",
+      "label": "getRandomLength()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/utils.tsx",
+      "source_location": "L9"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_ui_loader_utils_tsx",
+      "target": "loader_utils_getrandomint",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/utils.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_ui_loader_utils_tsx",
+      "target": "loader_utils_getrandomlength",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/utils.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "loader_utils_getrandomint",
+      "callee": "floor",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/utils.tsx",
+      "source_location": "L7"
+    },
+    {
+      "caller_nid": "loader_utils_getrandomint",
+      "callee": "random",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/utils.tsx",
+      "source_location": "L7"
+    },
+    {
+      "caller_nid": "loader_utils_getrandomlength",
+      "callee": "floor",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/utils.tsx",
+      "source_location": "L10"
+    },
+    {
+      "caller_nid": "loader_utils_getrandomlength",
+      "callee": "random",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/utils.tsx",
+      "source_location": "L10"
+    }
+  ]
+}

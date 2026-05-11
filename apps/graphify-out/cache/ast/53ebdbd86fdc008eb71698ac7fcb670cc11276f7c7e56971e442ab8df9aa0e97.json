@@ -1,0 +1,172 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_store_workspace_webhook_store_ts",
+      "label": "webhook.store.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/workspace/webhook.store.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "workspace_webhook_store_iwebhookstore",
+      "label": "IWebhookStore",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/workspace/webhook.store.ts",
+      "source_location": "L17"
+    },
+    {
+      "id": "workspace_webhook_store_webhookstore",
+      "label": "WebhookStore",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/workspace/webhook.store.ts",
+      "source_location": "L43"
+    },
+    {
+      "id": "workspace_webhook_store_webhookstore_constructor",
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/workspace/webhook.store.ts",
+      "source_location": "L52"
+    },
+    {
+      "id": "workspace_webhook_store_webhookstore_currentwebhook",
+      "label": ".currentWebhook()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/workspace/webhook.store.ts",
+      "source_location": "L80"
+    },
+    {
+      "id": "workspace_webhook_store_webhookobject",
+      "label": "webHookObject",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/workspace/webhook.store.ts",
+      "source_location": "L99"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_store_workspace_webhook_store_ts",
+      "target": "mobx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/workspace/webhook.store.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_workspace_webhook_store_ts",
+      "target": "mobx_utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/workspace/webhook.store.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_workspace_webhook_store_ts",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/workspace/webhook.store.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_workspace_webhook_store_ts",
+      "target": "home_nixos_plane_apps_web_core_services_webhook_service_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/workspace/webhook.store.ts",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_workspace_webhook_store_ts",
+      "target": "services_webhook_service_webhookservice",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/workspace/webhook.store.ts",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_workspace_webhook_store_ts",
+      "target": "home_nixos_plane_apps_web_core_store_root_store_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/workspace/webhook.store.ts",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_workspace_webhook_store_ts",
+      "target": "store_root_store_corerootstore",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/workspace/webhook.store.ts",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_workspace_webhook_store_ts",
+      "target": "workspace_webhook_store_iwebhookstore",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/workspace/webhook.store.ts",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_workspace_webhook_store_ts",
+      "target": "workspace_webhook_store_webhookstore",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/workspace/webhook.store.ts",
+      "source_location": "L43",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace_webhook_store_webhookstore",
+      "target": "workspace_webhook_store_webhookstore_constructor",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/workspace/webhook.store.ts",
+      "source_location": "L52",
+      "weight": 1.0
+    },
+    {
+      "source": "workspace_webhook_store_webhookstore",
+      "target": "workspace_webhook_store_webhookstore_currentwebhook",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/workspace/webhook.store.ts",
+      "source_location": "L80",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_workspace_webhook_store_ts",
+      "target": "workspace_webhook_store_webhookobject",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/workspace/webhook.store.ts",
+      "source_location": "L99",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "workspace_webhook_store_webhookstore_constructor",
+      "callee": "makeObservable",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/store/workspace/webhook.store.ts",
+      "source_location": "L53"
+    }
+  ]
+}

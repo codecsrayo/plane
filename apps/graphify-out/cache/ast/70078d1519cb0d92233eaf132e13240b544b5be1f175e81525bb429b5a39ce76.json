@@ -1,0 +1,148 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_power_k_ui_modal_context_indicator_tsx",
+      "label": "context-indicator.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/modal/context-indicator.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "modal_context_indicator_props",
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/modal/context-indicator.tsx",
+      "source_location": "L15"
+    },
+    {
+      "id": "modal_context_indicator_powerkmodalcontextindicator",
+      "label": "PowerKModalContextIndicator()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/modal/context-indicator.tsx",
+      "source_location": "L20"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_modal_context_indicator_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/modal/context-indicator.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_modal_context_indicator_tsx",
+      "target": "i18n",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/modal/context-indicator.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_modal_context_indicator_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_power_k_core_types_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/modal/context-indicator.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_modal_context_indicator_tsx",
+      "target": "core_types_tpowerkcontexttype",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/modal/context-indicator.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_modal_context_indicator_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_power_k_hooks_use_context_indicator_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/modal/context-indicator.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_modal_context_indicator_tsx",
+      "target": "hooks_use_context_indicator_usecontextindicator",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/modal/context-indicator.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_modal_context_indicator_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_power_k_ui_pages_context_based_index_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/modal/context-indicator.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_modal_context_indicator_tsx",
+      "target": "context_based_index_context_entity_map",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/modal/context-indicator.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_modal_context_indicator_tsx",
+      "target": "modal_context_indicator_props",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/modal/context-indicator.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_modal_context_indicator_tsx",
+      "target": "modal_context_indicator_powerkmodalcontextindicator",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/modal/context-indicator.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "modal_context_indicator_powerkmodalcontextindicator",
+      "callee": "useContextIndicator",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/modal/context-indicator.tsx",
+      "source_location": "L23"
+    },
+    {
+      "caller_nid": "modal_context_indicator_powerkmodalcontextindicator",
+      "callee": "useTranslation",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/modal/context-indicator.tsx",
+      "source_location": "L25"
+    },
+    {
+      "caller_nid": "modal_context_indicator_powerkmodalcontextindicator",
+      "callee": "t",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/modal/context-indicator.tsx",
+      "source_location": "L35"
+    }
+  ]
+}

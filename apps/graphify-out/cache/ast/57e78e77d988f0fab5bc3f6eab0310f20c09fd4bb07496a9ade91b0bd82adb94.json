@@ -1,0 +1,98 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_power_k_config_navigation_root_ts",
+      "label": "root.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/config/navigation/root.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "navigation_root_usepowerknavigationcommands",
+      "label": "usePowerKNavigationCommands()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/config/navigation/root.ts",
+      "source_location": "L13"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_config_navigation_root_ts",
+      "target": "home_nixos_plane_apps_web_core_components_power_k_core_types_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/config/navigation/root.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_config_navigation_root_ts",
+      "target": "core_types_tpowerkcommandconfig",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/config/navigation/root.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_config_navigation_root_ts",
+      "target": "home_nixos_plane_apps_web_core_components_power_k_config_navigation_commands_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/config/navigation/root.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_config_navigation_root_ts",
+      "target": "navigation_commands_tpowerknavigationcommandkeys",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/config/navigation/root.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_config_navigation_root_ts",
+      "target": "home_nixos_plane_apps_web_core_components_power_k_config_navigation_commands_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/config/navigation/root.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_config_navigation_root_ts",
+      "target": "navigation_commands_usepowerknavigationcommandsrecord",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/config/navigation/root.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_config_navigation_root_ts",
+      "target": "navigation_root_usepowerknavigationcommands",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/config/navigation/root.ts",
+      "source_location": "L13",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "navigation_root_usepowerknavigationcommands",
+      "callee": "usePowerKNavigationCommandsRecord",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/config/navigation/root.ts",
+      "source_location": "L14"
+    }
+  ]
+}

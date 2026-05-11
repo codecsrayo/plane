@@ -1,0 +1,126 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_ui_loader_layouts_calendar_layout_loader_tsx",
+      "label": "calendar-layout-loader.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/layouts/calendar-layout-loader.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "layouts_calendar_layout_loader_calendarday",
+      "label": "CalendarDay()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/layouts/calendar-layout-loader.tsx",
+      "source_location": "L10"
+    },
+    {
+      "id": "layouts_calendar_layout_loader_calendarlayoutloader",
+      "label": "CalendarLayoutLoader()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/layouts/calendar-layout-loader.tsx",
+      "source_location": "L26"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_ui_loader_layouts_calendar_layout_loader_tsx",
+      "target": "lodash_es",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/layouts/calendar-layout-loader.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_ui_loader_layouts_calendar_layout_loader_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_ui_loader_utils_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/layouts/calendar-layout-loader.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_ui_loader_layouts_calendar_layout_loader_tsx",
+      "target": "loader_utils_getrandomint",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/layouts/calendar-layout-loader.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_ui_loader_layouts_calendar_layout_loader_tsx",
+      "target": "layouts_calendar_layout_loader_calendarday",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/layouts/calendar-layout-loader.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_ui_loader_layouts_calendar_layout_loader_tsx",
+      "target": "layouts_calendar_layout_loader_calendarlayoutloader",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/layouts/calendar-layout-loader.tsx",
+      "source_location": "L26",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "layouts_calendar_layout_loader_calendarday",
+      "callee": "getRandomInt",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/layouts/calendar-layout-loader.tsx",
+      "source_location": "L11"
+    },
+    {
+      "caller_nid": "layouts_calendar_layout_loader_calendarday",
+      "callee": "map",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/layouts/calendar-layout-loader.tsx",
+      "source_location": "L12"
+    },
+    {
+      "caller_nid": "layouts_calendar_layout_loader_calendarday",
+      "callee": "range",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/layouts/calendar-layout-loader.tsx",
+      "source_location": "L12"
+    },
+    {
+      "caller_nid": "layouts_calendar_layout_loader_calendarlayoutloader",
+      "callee": "map",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/layouts/calendar-layout-loader.tsx",
+      "source_location": "L30"
+    },
+    {
+      "caller_nid": "layouts_calendar_layout_loader_calendarlayoutloader",
+      "callee": "range",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/layouts/calendar-layout-loader.tsx",
+      "source_location": "L30"
+    },
+    {
+      "caller_nid": "layouts_calendar_layout_loader_calendarlayoutloader",
+      "callee": "map",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/layouts/calendar-layout-loader.tsx",
+      "source_location": "L36"
+    },
+    {
+      "caller_nid": "layouts_calendar_layout_loader_calendarlayoutloader",
+      "callee": "range",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/layouts/calendar-layout-loader.tsx",
+      "source_location": "L36"
+    }
+  ]
+}

@@ -1,0 +1,905 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_api_rust_src_jobs_cleanup_rs",
+      "label": "cleanup.rs",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L1"
+    },
+    {
+      "id": "jobs_cleanup_hard_delete",
+      "label": "hard_delete()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L75"
+    },
+    {
+      "id": "jobs_cleanup_purge_soft_deleted",
+      "label": "purge_soft_deleted()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L116"
+    },
+    {
+      "id": "jobs_cleanup_find_tables_with_deleted_at",
+      "label": "find_tables_with_deleted_at()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L146"
+    },
+    {
+      "id": "jobs_cleanup_is_safe_identifier",
+      "label": "is_safe_identifier()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L175"
+    },
+    {
+      "id": "jobs_cleanup_delete_api_logs",
+      "label": "delete_api_logs()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L191"
+    },
+    {
+      "id": "jobs_cleanup_delete_email_notification_logs",
+      "label": "delete_email_notification_logs()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L208"
+    },
+    {
+      "id": "jobs_cleanup_delete_page_versions",
+      "label": "delete_page_versions()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L231"
+    },
+    {
+      "id": "jobs_cleanup_delete_issue_description_versions",
+      "label": "delete_issue_description_versions()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L258"
+    },
+    {
+      "id": "jobs_cleanup_delete_webhook_logs",
+      "label": "delete_webhook_logs()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L287"
+    },
+    {
+      "id": "jobs_cleanup_delete_old_s3_links",
+      "label": "delete_old_s3_links()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L307"
+    },
+    {
+      "id": "jobs_cleanup_delete_unuploaded_file_assets",
+      "label": "delete_unuploaded_file_assets()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L356"
+    },
+    {
+      "id": "jobs_cleanup_safe_identifier_accepts_snake_case",
+      "label": "safe_identifier_accepts_snake_case()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L378"
+    },
+    {
+      "id": "jobs_cleanup_safe_identifier_rejects_injection_attempts",
+      "label": "safe_identifier_rejects_injection_attempts()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L386"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_jobs_cleanup_rs",
+      "target": "hashset",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L19",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_jobs_cleanup_rs",
+      "target": "client_as_s3client",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L21",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_jobs_cleanup_rs",
+      "target": "sea_orm",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L22",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_jobs_cleanup_rs",
+      "target": "entities",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L27",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_jobs_cleanup_rs",
+      "target": "jobs_cleanup_hard_delete",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L75",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_jobs_cleanup_rs",
+      "target": "jobs_cleanup_purge_soft_deleted",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L116",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_jobs_cleanup_rs",
+      "target": "jobs_cleanup_find_tables_with_deleted_at",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L146",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_jobs_cleanup_rs",
+      "target": "jobs_cleanup_is_safe_identifier",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L175",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_jobs_cleanup_rs",
+      "target": "jobs_cleanup_delete_api_logs",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L191",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_jobs_cleanup_rs",
+      "target": "jobs_cleanup_delete_email_notification_logs",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L208",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_jobs_cleanup_rs",
+      "target": "jobs_cleanup_delete_page_versions",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L231",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_jobs_cleanup_rs",
+      "target": "jobs_cleanup_delete_issue_description_versions",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L258",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_jobs_cleanup_rs",
+      "target": "jobs_cleanup_delete_webhook_logs",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L287",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_jobs_cleanup_rs",
+      "target": "jobs_cleanup_delete_old_s3_links",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L307",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_jobs_cleanup_rs",
+      "target": "jobs_cleanup_delete_unuploaded_file_assets",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L356",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_jobs_cleanup_rs",
+      "target": "is_safe_identifier",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L375",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_jobs_cleanup_rs",
+      "target": "jobs_cleanup_safe_identifier_accepts_snake_case",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L378",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_jobs_cleanup_rs",
+      "target": "jobs_cleanup_safe_identifier_rejects_injection_attempts",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L386",
+      "weight": 1.0
+    },
+    {
+      "source": "jobs_cleanup_hard_delete",
+      "target": "jobs_cleanup_purge_soft_deleted",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L83",
+      "weight": 1.0
+    },
+    {
+      "source": "jobs_cleanup_hard_delete",
+      "target": "jobs_cleanup_find_tables_with_deleted_at",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L92",
+      "weight": 1.0
+    },
+    {
+      "source": "jobs_cleanup_purge_soft_deleted",
+      "target": "jobs_cleanup_is_safe_identifier",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L121",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "jobs_cleanup_hard_delete",
+      "callee": "now",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L76"
+    },
+    {
+      "caller_nid": "jobs_cleanup_hard_delete",
+      "callee": "days",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L76"
+    },
+    {
+      "caller_nid": "jobs_cleanup_hard_delete",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L77"
+    },
+    {
+      "caller_nid": "jobs_cleanup_hard_delete",
+      "callee": "collect",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L91"
+    },
+    {
+      "caller_nid": "jobs_cleanup_hard_delete",
+      "callee": "copied",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L91"
+    },
+    {
+      "caller_nid": "jobs_cleanup_hard_delete",
+      "callee": "iter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L91"
+    },
+    {
+      "caller_nid": "jobs_cleanup_hard_delete",
+      "callee": "contains",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L94"
+    },
+    {
+      "caller_nid": "jobs_cleanup_hard_delete",
+      "callee": "as_str",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L94"
+    },
+    {
+      "caller_nid": "jobs_cleanup_hard_delete",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L108"
+    },
+    {
+      "caller_nid": "jobs_cleanup_purge_soft_deleted",
+      "callee": "from_sql_and_values",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L129"
+    },
+    {
+      "caller_nid": "jobs_cleanup_purge_soft_deleted",
+      "callee": "rows_affected",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L134"
+    },
+    {
+      "caller_nid": "jobs_cleanup_purge_soft_deleted",
+      "callee": "execute",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L134"
+    },
+    {
+      "caller_nid": "jobs_cleanup_purge_soft_deleted",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L138"
+    },
+    {
+      "caller_nid": "jobs_cleanup_find_tables_with_deleted_at",
+      "callee": "from_string",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L149"
+    },
+    {
+      "caller_nid": "jobs_cleanup_find_tables_with_deleted_at",
+      "callee": "to_owned",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L151"
+    },
+    {
+      "caller_nid": "jobs_cleanup_find_tables_with_deleted_at",
+      "callee": "query_all",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L164"
+    },
+    {
+      "caller_nid": "jobs_cleanup_find_tables_with_deleted_at",
+      "callee": "collect",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L165"
+    },
+    {
+      "caller_nid": "jobs_cleanup_find_tables_with_deleted_at",
+      "callee": "filter_map",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L165"
+    },
+    {
+      "caller_nid": "jobs_cleanup_find_tables_with_deleted_at",
+      "callee": "iter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L165"
+    },
+    {
+      "caller_nid": "jobs_cleanup_find_tables_with_deleted_at",
+      "callee": "ok",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L167"
+    },
+    {
+      "caller_nid": "jobs_cleanup_find_tables_with_deleted_at",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L169"
+    },
+    {
+      "caller_nid": "jobs_cleanup_is_safe_identifier",
+      "callee": "is_empty",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L176"
+    },
+    {
+      "caller_nid": "jobs_cleanup_is_safe_identifier",
+      "callee": "len",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L176"
+    },
+    {
+      "caller_nid": "jobs_cleanup_is_safe_identifier",
+      "callee": "chars",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L180"
+    },
+    {
+      "caller_nid": "jobs_cleanup_is_safe_identifier",
+      "callee": "unwrap",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L181"
+    },
+    {
+      "caller_nid": "jobs_cleanup_is_safe_identifier",
+      "callee": "next",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L181"
+    },
+    {
+      "caller_nid": "jobs_cleanup_is_safe_identifier",
+      "callee": "is_ascii_alphabetic",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L182"
+    },
+    {
+      "caller_nid": "jobs_cleanup_is_safe_identifier",
+      "callee": "all",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L185"
+    },
+    {
+      "caller_nid": "jobs_cleanup_is_safe_identifier",
+      "callee": "is_ascii_alphanumeric",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L185"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_api_logs",
+      "callee": "now",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L192"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_api_logs",
+      "callee": "days",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L192"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_api_logs",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L193"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_api_logs",
+      "callee": "from_sql_and_values",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L195"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_api_logs",
+      "callee": "rows_affected",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L200"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_api_logs",
+      "callee": "execute",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L200"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_api_logs",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L202"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_email_notification_logs",
+      "callee": "now",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L212"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_email_notification_logs",
+      "callee": "days",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L212"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_email_notification_logs",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L213"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_email_notification_logs",
+      "callee": "from_sql_and_values",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L215"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_email_notification_logs",
+      "callee": "rows_affected",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L220"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_email_notification_logs",
+      "callee": "execute",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L220"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_email_notification_logs",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L222"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_page_versions",
+      "callee": "from_string",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L232"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_page_versions",
+      "callee": "to_owned",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L234"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_page_versions",
+      "callee": "rows_affected",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L250"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_page_versions",
+      "callee": "execute",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L250"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_page_versions",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L252"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_issue_description_versions",
+      "callee": "from_string",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L261"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_issue_description_versions",
+      "callee": "to_owned",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L263"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_issue_description_versions",
+      "callee": "rows_affected",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L279"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_issue_description_versions",
+      "callee": "execute",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L279"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_issue_description_versions",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L281"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_webhook_logs",
+      "callee": "now",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L288"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_webhook_logs",
+      "callee": "days",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L288"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_webhook_logs",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L289"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_webhook_logs",
+      "callee": "from_sql_and_values",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L291"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_webhook_logs",
+      "callee": "rows_affected",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L296"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_webhook_logs",
+      "callee": "execute",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L296"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_webhook_logs",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L298"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_old_s3_links",
+      "callee": "now",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L312"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_old_s3_links",
+      "callee": "days",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L312"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_old_s3_links",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L313"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_old_s3_links",
+      "callee": "all",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L316"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_old_s3_links",
+      "callee": "filter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L316"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_old_s3_links",
+      "callee": "filter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L316"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_old_s3_links",
+      "callee": "find",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L316"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_old_s3_links",
+      "callee": "is_not_null",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L317"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_old_s3_links",
+      "callee": "lte",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L318"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_old_s3_links",
+      "callee": "len",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L322"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_old_s3_links",
+      "callee": "is_empty",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L325"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_old_s3_links",
+      "callee": "send",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L326"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_old_s3_links",
+      "callee": "key",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L326"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_old_s3_links",
+      "callee": "bucket",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L326"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_old_s3_links",
+      "callee": "delete_object",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L326"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_old_s3_links",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L342"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_old_s3_links",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L343"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_old_s3_links",
+      "callee": "update",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L344"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_old_s3_links",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L348"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_unuploaded_file_assets",
+      "callee": "now",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L360"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_unuploaded_file_assets",
+      "callee": "days",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L360"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_unuploaded_file_assets",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L361"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_unuploaded_file_assets",
+      "callee": "from_sql_and_values",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L363"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_unuploaded_file_assets",
+      "callee": "rows_affected",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L368"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_unuploaded_file_assets",
+      "callee": "execute",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L368"
+    },
+    {
+      "caller_nid": "jobs_cleanup_delete_unuploaded_file_assets",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/cleanup.rs",
+      "source_location": "L370"
+    }
+  ]
+}

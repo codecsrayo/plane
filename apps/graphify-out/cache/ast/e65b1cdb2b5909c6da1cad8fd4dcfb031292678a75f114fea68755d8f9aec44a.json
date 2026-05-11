@@ -1,0 +1,86 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_power_k_ui_modal_constants_ts",
+      "label": "constants.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/modal/constants.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "modal_constants_tpowerkmodalpagedetails",
+      "label": "TPowerKModalPageDetails",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/modal/constants.ts",
+      "source_location": "L12"
+    },
+    {
+      "id": "modal_constants_power_k_modal_page_details",
+      "label": "POWER_K_MODAL_PAGE_DETAILS",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/modal/constants.ts",
+      "source_location": "L16"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_modal_constants_ts",
+      "target": "home_nixos_plane_apps_web_core_plane_web_components_command_palette_power_k_constants",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/modal/constants.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_modal_constants_ts",
+      "target": "power_k_constants_power_k_modal_page_details_extended",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/modal/constants.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_modal_constants_ts",
+      "target": "home_nixos_plane_apps_web_core_components_power_k_core_types_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/modal/constants.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_modal_constants_ts",
+      "target": "core_types_tpowerkpagetype",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/modal/constants.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_modal_constants_ts",
+      "target": "modal_constants_tpowerkmodalpagedetails",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/modal/constants.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_power_k_ui_modal_constants_ts",
+      "target": "modal_constants_power_k_modal_page_details",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/power-k/ui/modal/constants.ts",
+      "source_location": "L16",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

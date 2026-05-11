@@ -1,0 +1,302 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_analytics_insight_table_data_table_tsx",
+      "label": "data-table.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/insight-table/data-table.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "insight_table_data_table_datatableprops",
+      "label": "DataTableProps",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/insight-table/data-table.tsx",
+      "source_location": "L33"
+    },
+    {
+      "id": "insight_table_data_table_datatable",
+      "label": "DataTable()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/insight-table/data-table.tsx",
+      "source_location": "L40"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_analytics_insight_table_data_table_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/insight-table/data-table.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_analytics_insight_table_data_table_tsx",
+      "target": "react_table",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/insight-table/data-table.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_analytics_insight_table_data_table_tsx",
+      "target": "react_table",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/insight-table/data-table.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_analytics_insight_table_data_table_tsx",
+      "target": "i18n",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/insight-table/data-table.tsx",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_analytics_insight_table_data_table_tsx",
+      "target": "empty_state",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/insight-table/data-table.tsx",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_analytics_insight_table_data_table_tsx",
+      "target": "icons",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/insight-table/data-table.tsx",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_analytics_insight_table_data_table_tsx",
+      "target": "table",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/insight-table/data-table.tsx",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_analytics_insight_table_data_table_tsx",
+      "target": "utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/insight-table/data-table.tsx",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_analytics_insight_table_data_table_tsx",
+      "target": "insight_table_data_table_datatableprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/insight-table/data-table.tsx",
+      "source_location": "L33",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_analytics_insight_table_data_table_tsx",
+      "target": "insight_table_data_table_datatable",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/insight-table/data-table.tsx",
+      "source_location": "L40",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "insight_table_data_table_datatable",
+      "callee": "useState",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/insight-table/data-table.tsx",
+      "source_location": "L41"
+    },
+    {
+      "caller_nid": "insight_table_data_table_datatable",
+      "callee": "useState",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/insight-table/data-table.tsx",
+      "source_location": "L42"
+    },
+    {
+      "caller_nid": "insight_table_data_table_datatable",
+      "callee": "useState",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/insight-table/data-table.tsx",
+      "source_location": "L43"
+    },
+    {
+      "caller_nid": "insight_table_data_table_datatable",
+      "callee": "useState",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/insight-table/data-table.tsx",
+      "source_location": "L44"
+    },
+    {
+      "caller_nid": "insight_table_data_table_datatable",
+      "callee": "useTranslation",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/insight-table/data-table.tsx",
+      "source_location": "L45"
+    },
+    {
+      "caller_nid": "insight_table_data_table_datatable",
+      "callee": "useRef",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/insight-table/data-table.tsx",
+      "source_location": "L46"
+    },
+    {
+      "caller_nid": "insight_table_data_table_datatable",
+      "callee": "useState",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/insight-table/data-table.tsx",
+      "source_location": "L47"
+    },
+    {
+      "caller_nid": "insight_table_data_table_datatable",
+      "callee": "useReactTable",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/insight-table/data-table.tsx",
+      "source_location": "L49"
+    },
+    {
+      "caller_nid": "insight_table_data_table_datatable",
+      "callee": "getCoreRowModel",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/insight-table/data-table.tsx",
+      "source_location": "L60"
+    },
+    {
+      "caller_nid": "insight_table_data_table_datatable",
+      "callee": "getFilteredRowModel",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/insight-table/data-table.tsx",
+      "source_location": "L61"
+    },
+    {
+      "caller_nid": "insight_table_data_table_datatable",
+      "callee": "getSortedRowModel",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/insight-table/data-table.tsx",
+      "source_location": "L62"
+    },
+    {
+      "caller_nid": "insight_table_data_table_datatable",
+      "callee": "getFacetedRowModel",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/insight-table/data-table.tsx",
+      "source_location": "L63"
+    },
+    {
+      "caller_nid": "insight_table_data_table_datatable",
+      "callee": "getFacetedUniqueValues",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/insight-table/data-table.tsx",
+      "source_location": "L64"
+    },
+    {
+      "caller_nid": "insight_table_data_table_datatable",
+      "callee": "getHeaderGroups",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/insight-table/data-table.tsx",
+      "source_location": "L71"
+    },
+    {
+      "caller_nid": "insight_table_data_table_datatable",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/insight-table/data-table.tsx",
+      "source_location": "L89"
+    },
+    {
+      "caller_nid": "insight_table_data_table_datatable",
+      "callee": "getFilterValue",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/insight-table/data-table.tsx",
+      "source_location": "L101"
+    },
+    {
+      "caller_nid": "insight_table_data_table_datatable",
+      "callee": "getColumn",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/insight-table/data-table.tsx",
+      "source_location": "L101"
+    },
+    {
+      "caller_nid": "insight_table_data_table_datatable",
+      "callee": "getHeaderGroups",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/insight-table/data-table.tsx",
+      "source_location": "L101"
+    },
+    {
+      "caller_nid": "insight_table_data_table_datatable",
+      "callee": "actions",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/insight-table/data-table.tsx",
+      "source_location": "L129"
+    },
+    {
+      "caller_nid": "insight_table_data_table_datatable",
+      "callee": "map",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/insight-table/data-table.tsx",
+      "source_location": "L135"
+    },
+    {
+      "caller_nid": "insight_table_data_table_datatable",
+      "callee": "getHeaderGroups",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/insight-table/data-table.tsx",
+      "source_location": "L135"
+    },
+    {
+      "caller_nid": "insight_table_data_table_datatable",
+      "callee": "getRowModel",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/insight-table/data-table.tsx",
+      "source_location": "L148"
+    },
+    {
+      "caller_nid": "insight_table_data_table_datatable",
+      "callee": "map",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/insight-table/data-table.tsx",
+      "source_location": "L149"
+    },
+    {
+      "caller_nid": "insight_table_data_table_datatable",
+      "callee": "getRowModel",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/insight-table/data-table.tsx",
+      "source_location": "L149"
+    },
+    {
+      "caller_nid": "insight_table_data_table_datatable",
+      "callee": "t",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/insight-table/data-table.tsx",
+      "source_location": "L165"
+    }
+  ]
+}

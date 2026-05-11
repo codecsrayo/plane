@@ -1,0 +1,54 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_api_rust_src_routes_integrations_mod_rs",
+      "label": "mod.rs",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/integrations/mod.rs",
+      "source_location": "L1"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_routes_integrations_mod_rs",
+      "target": "github",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/integrations/mod.rs",
+      "source_location": "L21",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_routes_integrations_mod_rs",
+      "target": "list_gitlab_repositories",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/integrations/mod.rs",
+      "source_location": "L32",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_routes_integrations_mod_rs",
+      "target": "pr_state",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/integrations/mod.rs",
+      "source_location": "L33",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_routes_integrations_mod_rs",
+      "target": "workspace",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/integrations/mod.rs",
+      "source_location": "L38",
+      "weight": 1.0,
+      "context": "import"
+    }
+  ],
+  "raw_calls": []
+}

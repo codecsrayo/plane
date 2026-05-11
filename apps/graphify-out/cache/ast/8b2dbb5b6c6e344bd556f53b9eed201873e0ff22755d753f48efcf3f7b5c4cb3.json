@@ -1,0 +1,626 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_services_integrations_integration_service_ts",
+      "label": "integration.service.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "integrations_integration_service_igithubprstatemapping",
+      "label": "IGithubPRStateMapping",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L25"
+    },
+    {
+      "id": "integrations_integration_service_tintegrationdeleteresponse",
+      "label": "TIntegrationDeleteResponse",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L32"
+    },
+    {
+      "id": "integrations_integration_service_integrationservice",
+      "label": "IntegrationService",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L34"
+    },
+    {
+      "id": "integrations_integration_service_integrationservice_constructor",
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L35"
+    },
+    {
+      "id": "integrations_integration_service_integrationservice_getappintegrationslist",
+      "label": ".getAppIntegrationsList()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L39"
+    },
+    {
+      "id": "integrations_integration_service_integrationservice_getworkspaceintegrationslist",
+      "label": ".getWorkspaceIntegrationsList()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L47"
+    },
+    {
+      "id": "integrations_integration_service_integrationservice_deleteworkspaceintegration",
+      "label": ".deleteWorkspaceIntegration()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L55"
+    },
+    {
+      "id": "integrations_integration_service_integrationservice_getimporterserviceslist",
+      "label": ".getImporterServicesList()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L63"
+    },
+    {
+      "id": "integrations_integration_service_integrationservice_getexportsserviceslist",
+      "label": ".getExportsServicesList()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L70"
+    },
+    {
+      "id": "integrations_integration_service_integrationservice_deleteimporterservice",
+      "label": ".deleteImporterService()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L87"
+    },
+    {
+      "id": "integrations_integration_service_integrationservice_getreposyncs",
+      "label": ".getRepoSyncs()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L99"
+    },
+    {
+      "id": "integrations_integration_service_integrationservice_createreposync",
+      "label": ".createRepoSync()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L107"
+    },
+    {
+      "id": "integrations_integration_service_integrationservice_deletereposync",
+      "label": ".deleteRepoSync()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L115"
+    },
+    {
+      "id": "integrations_integration_service_integrationservice_getgithubrepositories",
+      "label": ".getGithubRepositories()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L123"
+    },
+    {
+      "id": "integrations_integration_service_integrationservice_getprstatemappings",
+      "label": ".getPRStateMappings()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L135"
+    },
+    {
+      "id": "integrations_integration_service_integrationservice_createprstatemapping",
+      "label": ".createPRStateMapping()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L145"
+    },
+    {
+      "id": "integrations_integration_service_integrationservice_deleteprstatemapping",
+      "label": ".deletePRStateMapping()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L160"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_services_integrations_integration_service_ts",
+      "target": "constants",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_integrations_integration_service_ts",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_integrations_integration_service_ts",
+      "target": "home_nixos_plane_apps_web_core_services_api_service_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_integrations_integration_service_ts",
+      "target": "services_api_service_apierror",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_integrations_integration_service_ts",
+      "target": "services_api_service_apiservice",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_integrations_integration_service_ts",
+      "target": "integrations_integration_service_igithubprstatemapping",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_integrations_integration_service_ts",
+      "target": "integrations_integration_service_tintegrationdeleteresponse",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_integrations_integration_service_ts",
+      "target": "integrations_integration_service_integrationservice",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "integrations_integration_service_integrationservice",
+      "target": "integrations_integration_service_integrationservice_constructor",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "integrations_integration_service_integrationservice",
+      "target": "integrations_integration_service_integrationservice_getappintegrationslist",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "integrations_integration_service_integrationservice",
+      "target": "integrations_integration_service_integrationservice_getworkspaceintegrationslist",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L47",
+      "weight": 1.0
+    },
+    {
+      "source": "integrations_integration_service_integrationservice",
+      "target": "integrations_integration_service_integrationservice_deleteworkspaceintegration",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L55",
+      "weight": 1.0
+    },
+    {
+      "source": "integrations_integration_service_integrationservice",
+      "target": "integrations_integration_service_integrationservice_getimporterserviceslist",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L63",
+      "weight": 1.0
+    },
+    {
+      "source": "integrations_integration_service_integrationservice",
+      "target": "integrations_integration_service_integrationservice_getexportsserviceslist",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L70",
+      "weight": 1.0
+    },
+    {
+      "source": "integrations_integration_service_integrationservice",
+      "target": "integrations_integration_service_integrationservice_deleteimporterservice",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L87",
+      "weight": 1.0
+    },
+    {
+      "source": "integrations_integration_service_integrationservice",
+      "target": "integrations_integration_service_integrationservice_getreposyncs",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L99",
+      "weight": 1.0
+    },
+    {
+      "source": "integrations_integration_service_integrationservice",
+      "target": "integrations_integration_service_integrationservice_createreposync",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L107",
+      "weight": 1.0
+    },
+    {
+      "source": "integrations_integration_service_integrationservice",
+      "target": "integrations_integration_service_integrationservice_deletereposync",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L115",
+      "weight": 1.0
+    },
+    {
+      "source": "integrations_integration_service_integrationservice",
+      "target": "integrations_integration_service_integrationservice_getgithubrepositories",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L123",
+      "weight": 1.0
+    },
+    {
+      "source": "integrations_integration_service_integrationservice",
+      "target": "integrations_integration_service_integrationservice_getprstatemappings",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L135",
+      "weight": 1.0
+    },
+    {
+      "source": "integrations_integration_service_integrationservice",
+      "target": "integrations_integration_service_integrationservice_createprstatemapping",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L145",
+      "weight": 1.0
+    },
+    {
+      "source": "integrations_integration_service_integrationservice",
+      "target": "integrations_integration_service_integrationservice_deleteprstatemapping",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L160",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_integrations_integration_service_ts",
+      "target": "integrations_integration_service_integrationservice",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L171",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "integrations_integration_service_integrationservice_constructor",
+      "callee": "super",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L36"
+    },
+    {
+      "caller_nid": "integrations_integration_service_integrationservice_getappintegrationslist",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L40"
+    },
+    {
+      "caller_nid": "integrations_integration_service_integrationservice_getappintegrationslist",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L40"
+    },
+    {
+      "caller_nid": "integrations_integration_service_integrationservice_getappintegrationslist",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L40"
+    },
+    {
+      "caller_nid": "integrations_integration_service_integrationservice_getworkspaceintegrationslist",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L48"
+    },
+    {
+      "caller_nid": "integrations_integration_service_integrationservice_getworkspaceintegrationslist",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L48"
+    },
+    {
+      "caller_nid": "integrations_integration_service_integrationservice_getworkspaceintegrationslist",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L48"
+    },
+    {
+      "caller_nid": "integrations_integration_service_integrationservice_deleteworkspaceintegration",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L56"
+    },
+    {
+      "caller_nid": "integrations_integration_service_integrationservice_deleteworkspaceintegration",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L56"
+    },
+    {
+      "caller_nid": "integrations_integration_service_integrationservice_deleteworkspaceintegration",
+      "callee": "delete",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L56"
+    },
+    {
+      "caller_nid": "integrations_integration_service_integrationservice_getimporterserviceslist",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L64"
+    },
+    {
+      "caller_nid": "integrations_integration_service_integrationservice_getimporterserviceslist",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L64"
+    },
+    {
+      "caller_nid": "integrations_integration_service_integrationservice_getimporterserviceslist",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L64"
+    },
+    {
+      "caller_nid": "integrations_integration_service_integrationservice_getexportsserviceslist",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L75"
+    },
+    {
+      "caller_nid": "integrations_integration_service_integrationservice_getexportsserviceslist",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L75"
+    },
+    {
+      "caller_nid": "integrations_integration_service_integrationservice_getexportsserviceslist",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L75"
+    },
+    {
+      "caller_nid": "integrations_integration_service_integrationservice_deleteimporterservice",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L92"
+    },
+    {
+      "caller_nid": "integrations_integration_service_integrationservice_deleteimporterservice",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L92"
+    },
+    {
+      "caller_nid": "integrations_integration_service_integrationservice_deleteimporterservice",
+      "callee": "delete",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L92"
+    },
+    {
+      "caller_nid": "integrations_integration_service_integrationservice_getreposyncs",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L100"
+    },
+    {
+      "caller_nid": "integrations_integration_service_integrationservice_getreposyncs",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L100"
+    },
+    {
+      "caller_nid": "integrations_integration_service_integrationservice_getreposyncs",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L100"
+    },
+    {
+      "caller_nid": "integrations_integration_service_integrationservice_createreposync",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L108"
+    },
+    {
+      "caller_nid": "integrations_integration_service_integrationservice_createreposync",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L108"
+    },
+    {
+      "caller_nid": "integrations_integration_service_integrationservice_createreposync",
+      "callee": "post",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L108"
+    },
+    {
+      "caller_nid": "integrations_integration_service_integrationservice_deletereposync",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L116"
+    },
+    {
+      "caller_nid": "integrations_integration_service_integrationservice_deletereposync",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L116"
+    },
+    {
+      "caller_nid": "integrations_integration_service_integrationservice_deletereposync",
+      "callee": "delete",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L116"
+    },
+    {
+      "caller_nid": "integrations_integration_service_integrationservice_getgithubrepositories",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L124"
+    },
+    {
+      "caller_nid": "integrations_integration_service_integrationservice_getgithubrepositories",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L124"
+    },
+    {
+      "caller_nid": "integrations_integration_service_integrationservice_getgithubrepositories",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L124"
+    },
+    {
+      "caller_nid": "integrations_integration_service_integrationservice_getprstatemappings",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L136"
+    },
+    {
+      "caller_nid": "integrations_integration_service_integrationservice_getprstatemappings",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L136"
+    },
+    {
+      "caller_nid": "integrations_integration_service_integrationservice_getprstatemappings",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L136"
+    },
+    {
+      "caller_nid": "integrations_integration_service_integrationservice_createprstatemapping",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L150"
+    },
+    {
+      "caller_nid": "integrations_integration_service_integrationservice_createprstatemapping",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L150"
+    },
+    {
+      "caller_nid": "integrations_integration_service_integrationservice_createprstatemapping",
+      "callee": "post",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L150"
+    },
+    {
+      "caller_nid": "integrations_integration_service_integrationservice_deleteprstatemapping",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L161"
+    },
+    {
+      "caller_nid": "integrations_integration_service_integrationservice_deleteprstatemapping",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L161"
+    },
+    {
+      "caller_nid": "integrations_integration_service_integrationservice_deleteprstatemapping",
+      "callee": "delete",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/integrations/integration.service.ts",
+      "source_location": "L161"
+    }
+  ]
+}

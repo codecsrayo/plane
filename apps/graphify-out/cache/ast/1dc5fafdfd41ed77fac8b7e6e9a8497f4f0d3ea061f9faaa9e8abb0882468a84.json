@@ -1,0 +1,74 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_onboarding_step_indicator_tsx",
+      "label": "step-indicator.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/onboarding/step-indicator.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "onboarding_step_indicator_onboardingstepindicatorprops",
+      "label": "OnboardingStepIndicatorProps",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/onboarding/step-indicator.tsx",
+      "source_location": "L11"
+    },
+    {
+      "id": "onboarding_step_indicator_onboardingstepindicator",
+      "label": "OnboardingStepIndicator()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/onboarding/step-indicator.tsx",
+      "source_location": "L16"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_onboarding_step_indicator_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/onboarding/step-indicator.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_onboarding_step_indicator_tsx",
+      "target": "utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/onboarding/step-indicator.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_onboarding_step_indicator_tsx",
+      "target": "onboarding_step_indicator_onboardingstepindicatorprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/onboarding/step-indicator.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_onboarding_step_indicator_tsx",
+      "target": "onboarding_step_indicator_onboardingstepindicator",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/onboarding/step-indicator.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "onboarding_step_indicator_onboardingstepindicator",
+      "callee": "renderIndicators",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/onboarding/step-indicator.tsx",
+      "source_location": "L48"
+    }
+  ]
+}

@@ -1,0 +1,158 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_profile_overview_priority_distribution_tsx",
+      "label": "priority-distribution.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/profile/overview/priority-distribution.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "overview_priority_distribution_props",
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/profile/overview/priority-distribution.tsx",
+      "source_location": "L15"
+    },
+    {
+      "id": "overview_priority_distribution_prioritycolors",
+      "label": "priorityColors",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/profile/overview/priority-distribution.tsx",
+      "source_location": "L19"
+    },
+    {
+      "id": "overview_priority_distribution_profileprioritydistribution",
+      "label": "ProfilePriorityDistribution()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/profile/overview/priority-distribution.tsx",
+      "source_location": "L27"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_profile_overview_priority_distribution_tsx",
+      "target": "i18n",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/profile/overview/priority-distribution.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_profile_overview_priority_distribution_tsx",
+      "target": "bar_chart",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/profile/overview/priority-distribution.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_profile_overview_priority_distribution_tsx",
+      "target": "empty_state",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/profile/overview/priority-distribution.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_profile_overview_priority_distribution_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/profile/overview/priority-distribution.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_profile_overview_priority_distribution_tsx",
+      "target": "ui",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/profile/overview/priority-distribution.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_profile_overview_priority_distribution_tsx",
+      "target": "utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/profile/overview/priority-distribution.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_profile_overview_priority_distribution_tsx",
+      "target": "overview_priority_distribution_props",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/profile/overview/priority-distribution.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_profile_overview_priority_distribution_tsx",
+      "target": "overview_priority_distribution_prioritycolors",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/profile/overview/priority-distribution.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_profile_overview_priority_distribution_tsx",
+      "target": "overview_priority_distribution_profileprioritydistribution",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/profile/overview/priority-distribution.tsx",
+      "source_location": "L27",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "overview_priority_distribution_profileprioritydistribution",
+      "callee": "useTranslation",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/profile/overview/priority-distribution.tsx",
+      "source_location": "L28"
+    },
+    {
+      "caller_nid": "overview_priority_distribution_profileprioritydistribution",
+      "callee": "t",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/profile/overview/priority-distribution.tsx",
+      "source_location": "L31"
+    },
+    {
+      "caller_nid": "overview_priority_distribution_profileprioritydistribution",
+      "callee": "map",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/profile/overview/priority-distribution.tsx",
+      "source_location": "L38"
+    },
+    {
+      "caller_nid": "overview_priority_distribution_profileprioritydistribution",
+      "callee": "t",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/profile/overview/priority-distribution.tsx",
+      "source_location": "L57"
+    },
+    {
+      "caller_nid": "overview_priority_distribution_profileprioritydistribution",
+      "callee": "t",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/profile/overview/priority-distribution.tsx",
+      "source_location": "L69"
+    }
+  ]
+}

@@ -1,0 +1,168 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_rich_filters_filter_value_input_select_shared_tsx",
+      "label": "shared.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/rich-filters/filter-value-input/select/shared.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "select_shared_tloadoptionsprops",
+      "label": "TLoadOptionsProps",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/rich-filters/filter-value-input/select/shared.tsx",
+      "source_location": "L13"
+    },
+    {
+      "id": "select_shared_loadoptions",
+      "label": "loadOptions()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/rich-filters/filter-value-input/select/shared.tsx",
+      "source_location": "L19"
+    },
+    {
+      "id": "select_shared_getformattedoptions",
+      "label": "getFormattedOptions()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/rich-filters/filter-value-input/select/shared.tsx",
+      "source_location": "L36"
+    },
+    {
+      "id": "select_shared_getcommoncustomsearchselectprops",
+      "label": "getCommonCustomSearchSelectProps()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/rich-filters/filter-value-input/select/shared.tsx",
+      "source_location": "L52"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_rich_filters_filter_value_input_select_shared_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/rich-filters/filter-value-input/select/shared.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_rich_filters_filter_value_input_select_shared_tsx",
+      "target": "utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/rich-filters/filter-value-input/select/shared.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_rich_filters_filter_value_input_select_shared_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_rich_filters_shared_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/rich-filters/filter-value-input/select/shared.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_rich_filters_filter_value_input_select_shared_tsx",
+      "target": "rich_filters_shared_common_filter_item_border_classname",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/rich-filters/filter-value-input/select/shared.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_rich_filters_filter_value_input_select_shared_tsx",
+      "target": "select_shared_tloadoptionsprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/rich-filters/filter-value-input/select/shared.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_rich_filters_filter_value_input_select_shared_tsx",
+      "target": "select_shared_loadoptions",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/rich-filters/filter-value-input/select/shared.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_rich_filters_filter_value_input_select_shared_tsx",
+      "target": "select_shared_getformattedoptions",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/rich-filters/filter-value-input/select/shared.tsx",
+      "source_location": "L36",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_rich_filters_filter_value_input_select_shared_tsx",
+      "target": "select_shared_getcommoncustomsearchselectprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/rich-filters/filter-value-input/select/shared.tsx",
+      "source_location": "L52",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "select_shared_loadoptions",
+      "callee": "setLoading",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/rich-filters/filter-value-input/select/shared.tsx",
+      "source_location": "L24"
+    },
+    {
+      "caller_nid": "select_shared_loadoptions",
+      "callee": "getOptions",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/rich-filters/filter-value-input/select/shared.tsx",
+      "source_location": "L26"
+    },
+    {
+      "caller_nid": "select_shared_loadoptions",
+      "callee": "setOptions",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/rich-filters/filter-value-input/select/shared.tsx",
+      "source_location": "L27"
+    },
+    {
+      "caller_nid": "select_shared_loadoptions",
+      "callee": "error",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/rich-filters/filter-value-input/select/shared.tsx",
+      "source_location": "L29"
+    },
+    {
+      "caller_nid": "select_shared_loadoptions",
+      "callee": "setLoading",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/rich-filters/filter-value-input/select/shared.tsx",
+      "source_location": "L31"
+    },
+    {
+      "caller_nid": "select_shared_getformattedoptions",
+      "callee": "map",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/rich-filters/filter-value-input/select/shared.tsx",
+      "source_location": "L37"
+    },
+    {
+      "caller_nid": "select_shared_getcommoncustomsearchselectprops",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/rich-filters/filter-value-input/select/shared.tsx",
+      "source_location": "L53"
+    }
+  ]
+}

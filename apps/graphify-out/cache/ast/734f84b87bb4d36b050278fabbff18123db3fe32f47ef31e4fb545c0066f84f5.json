@@ -1,0 +1,924 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_api_rust_src_auth_logout_rs",
+      "label": "logout.rs",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L1"
+    },
+    {
+      "id": "auth_logout_logout",
+      "label": "logout()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L29"
+    },
+    {
+      "id": "auth_logout_logout_space",
+      "label": "logout_space()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L49"
+    },
+    {
+      "id": "auth_logout_logouttarget",
+      "label": "LogoutTarget",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L60"
+    },
+    {
+      "id": "auth_logout_perform_logout",
+      "label": "perform_logout()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L65"
+    },
+    {
+      "id": "auth_logout_extract_client_ip",
+      "label": "extract_client_ip()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L130"
+    },
+    {
+      "id": "auth_logout_space_redirect_url",
+      "label": "space_redirect_url()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L148"
+    },
+    {
+      "id": "auth_logout_extract_client_ip_prefers_forwarded_header",
+      "label": "extract_client_ip_prefers_forwarded_header()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L167"
+    },
+    {
+      "id": "auth_logout_space_redirect_joins_safe_path",
+      "label": "space_redirect_joins_safe_path()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L179"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_logout_rs",
+      "target": "axum",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L1",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_logout_rs",
+      "target": "extract",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L2",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_logout_rs",
+      "target": "utc",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L6",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_logout_rs",
+      "target": "sea_orm",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L7",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_logout_rs",
+      "target": "crate",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L9",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_logout_rs",
+      "target": "auth_logout_logout",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_logout_rs",
+      "target": "auth_logout_logout_space",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L49",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_logout_rs",
+      "target": "auth_logout_logouttarget",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L60",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_logout_rs",
+      "target": "auth_logout_perform_logout",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L65",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_logout_rs",
+      "target": "auth_logout_extract_client_ip",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L130",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_logout_rs",
+      "target": "auth_logout_space_redirect_url",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L148",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_logout_rs",
+      "target": "super",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L160",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_logout_rs",
+      "target": "http",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L161",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_logout_rs",
+      "target": "arc",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L162",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_logout_rs",
+      "target": "crate",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L164",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_logout_rs",
+      "target": "auth_logout_extract_client_ip_prefers_forwarded_header",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L167",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_logout_rs",
+      "target": "auth_logout_space_redirect_joins_safe_path",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L179",
+      "weight": 1.0
+    },
+    {
+      "source": "auth_logout_logout",
+      "target": "auth_logout_perform_logout",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L36",
+      "weight": 1.0
+    },
+    {
+      "source": "auth_logout_logout_space",
+      "target": "auth_logout_perform_logout",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L56",
+      "weight": 1.0
+    },
+    {
+      "source": "auth_logout_perform_logout",
+      "target": "auth_logout_extract_client_ip",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L82",
+      "weight": 1.0
+    },
+    {
+      "source": "auth_logout_perform_logout",
+      "target": "auth_logout_space_redirect_url",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L124",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "auth_logout_perform_logout",
+      "callee": "ok_or",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L73"
+    },
+    {
+      "caller_nid": "auth_logout_perform_logout",
+      "callee": "map",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L73"
+    },
+    {
+      "caller_nid": "auth_logout_perform_logout",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L73"
+    },
+    {
+      "caller_nid": "auth_logout_perform_logout",
+      "callee": "to_owned",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L75"
+    },
+    {
+      "caller_nid": "auth_logout_perform_logout",
+      "callee": "value",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L75"
+    },
+    {
+      "caller_nid": "auth_logout_perform_logout",
+      "callee": "is_valid_csrf",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L78"
+    },
+    {
+      "caller_nid": "auth_logout_perform_logout",
+      "callee": "Err",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L79"
+    },
+    {
+      "caller_nid": "auth_logout_perform_logout",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L83"
+    },
+    {
+      "caller_nid": "auth_logout_perform_logout",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L84"
+    },
+    {
+      "caller_nid": "auth_logout_perform_logout",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L85"
+    },
+    {
+      "caller_nid": "auth_logout_perform_logout",
+      "callee": "Some",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L85"
+    },
+    {
+      "caller_nid": "auth_logout_perform_logout",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L85"
+    },
+    {
+      "caller_nid": "auth_logout_perform_logout",
+      "callee": "now",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L85"
+    },
+    {
+      "caller_nid": "auth_logout_perform_logout",
+      "callee": "map_err",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L86"
+    },
+    {
+      "caller_nid": "auth_logout_perform_logout",
+      "callee": "update",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L86"
+    },
+    {
+      "caller_nid": "auth_logout_perform_logout",
+      "callee": "map",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L92"
+    },
+    {
+      "caller_nid": "auth_logout_perform_logout",
+      "callee": "or_else",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L92"
+    },
+    {
+      "caller_nid": "auth_logout_perform_logout",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L92"
+    },
+    {
+      "caller_nid": "auth_logout_perform_logout",
+      "callee": "primary_cookie",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L93"
+    },
+    {
+      "caller_nid": "auth_logout_perform_logout",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L94"
+    },
+    {
+      "caller_nid": "auth_logout_perform_logout",
+      "callee": "fallback_cookie",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L94"
+    },
+    {
+      "caller_nid": "auth_logout_perform_logout",
+      "callee": "to_owned",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L95"
+    },
+    {
+      "caller_nid": "auth_logout_perform_logout",
+      "callee": "value",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L95"
+    },
+    {
+      "caller_nid": "auth_logout_perform_logout",
+      "callee": "map_err",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L98"
+    },
+    {
+      "caller_nid": "auth_logout_perform_logout",
+      "callee": "exec",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L98"
+    },
+    {
+      "caller_nid": "auth_logout_perform_logout",
+      "callee": "delete_by_id",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L98"
+    },
+    {
+      "caller_nid": "auth_logout_perform_logout",
+      "callee": "build",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L105"
+    },
+    {
+      "caller_nid": "auth_logout_perform_logout",
+      "callee": "path",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L105"
+    },
+    {
+      "caller_nid": "auth_logout_perform_logout",
+      "callee": "same_site",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L105"
+    },
+    {
+      "caller_nid": "auth_logout_perform_logout",
+      "callee": "http_only",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L105"
+    },
+    {
+      "caller_nid": "auth_logout_perform_logout",
+      "callee": "max_age",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L105"
+    },
+    {
+      "caller_nid": "auth_logout_perform_logout",
+      "callee": "build",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L105"
+    },
+    {
+      "caller_nid": "auth_logout_perform_logout",
+      "callee": "to_owned",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L105"
+    },
+    {
+      "caller_nid": "auth_logout_perform_logout",
+      "callee": "new",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L105"
+    },
+    {
+      "caller_nid": "auth_logout_perform_logout",
+      "callee": "remove",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L113"
+    },
+    {
+      "caller_nid": "auth_logout_perform_logout",
+      "callee": "remove",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L113"
+    },
+    {
+      "caller_nid": "auth_logout_perform_logout",
+      "callee": "remove",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L113"
+    },
+    {
+      "caller_nid": "auth_logout_perform_logout",
+      "callee": "expired",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L114"
+    },
+    {
+      "caller_nid": "auth_logout_perform_logout",
+      "callee": "expired",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L115"
+    },
+    {
+      "caller_nid": "auth_logout_perform_logout",
+      "callee": "expired",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L116"
+    },
+    {
+      "caller_nid": "auth_logout_perform_logout",
+      "callee": "app_base_url_only",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L121"
+    },
+    {
+      "caller_nid": "auth_logout_perform_logout",
+      "callee": "safe_redirect_target",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L123"
+    },
+    {
+      "caller_nid": "auth_logout_perform_logout",
+      "callee": "as_deref",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L123"
+    },
+    {
+      "caller_nid": "auth_logout_perform_logout",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L127"
+    },
+    {
+      "caller_nid": "auth_logout_perform_logout",
+      "callee": "to",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L127"
+    },
+    {
+      "caller_nid": "auth_logout_extract_client_ip",
+      "callee": "to_owned",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L131"
+    },
+    {
+      "caller_nid": "auth_logout_extract_client_ip",
+      "callee": "unwrap_or_default",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L131"
+    },
+    {
+      "caller_nid": "auth_logout_extract_client_ip",
+      "callee": "or_else",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L131"
+    },
+    {
+      "caller_nid": "auth_logout_extract_client_ip",
+      "callee": "filter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L131"
+    },
+    {
+      "caller_nid": "auth_logout_extract_client_ip",
+      "callee": "map",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L131"
+    },
+    {
+      "caller_nid": "auth_logout_extract_client_ip",
+      "callee": "and_then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L131"
+    },
+    {
+      "caller_nid": "auth_logout_extract_client_ip",
+      "callee": "and_then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L131"
+    },
+    {
+      "caller_nid": "auth_logout_extract_client_ip",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L131"
+    },
+    {
+      "caller_nid": "auth_logout_extract_client_ip",
+      "callee": "ok",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L133"
+    },
+    {
+      "caller_nid": "auth_logout_extract_client_ip",
+      "callee": "to_str",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L133"
+    },
+    {
+      "caller_nid": "auth_logout_extract_client_ip",
+      "callee": "next",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L134"
+    },
+    {
+      "caller_nid": "auth_logout_extract_client_ip",
+      "callee": "split",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L134"
+    },
+    {
+      "caller_nid": "auth_logout_extract_client_ip",
+      "callee": "is_empty",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L136"
+    },
+    {
+      "caller_nid": "auth_logout_extract_client_ip",
+      "callee": "filter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L138"
+    },
+    {
+      "caller_nid": "auth_logout_extract_client_ip",
+      "callee": "map",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L138"
+    },
+    {
+      "caller_nid": "auth_logout_extract_client_ip",
+      "callee": "and_then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L138"
+    },
+    {
+      "caller_nid": "auth_logout_extract_client_ip",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L138"
+    },
+    {
+      "caller_nid": "auth_logout_extract_client_ip",
+      "callee": "ok",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L140"
+    },
+    {
+      "caller_nid": "auth_logout_extract_client_ip",
+      "callee": "to_str",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L140"
+    },
+    {
+      "caller_nid": "auth_logout_extract_client_ip",
+      "callee": "is_empty",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L142"
+    },
+    {
+      "caller_nid": "auth_logout_space_redirect_url",
+      "callee": "space_base",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L149"
+    },
+    {
+      "caller_nid": "auth_logout_extract_client_ip_prefers_forwarded_header",
+      "callee": "new",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L168"
+    },
+    {
+      "caller_nid": "auth_logout_extract_client_ip_prefers_forwarded_header",
+      "callee": "insert",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L169"
+    },
+    {
+      "caller_nid": "auth_logout_extract_client_ip_prefers_forwarded_header",
+      "callee": "from_static",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L171"
+    },
+    {
+      "caller_nid": "auth_logout_space_redirect_joins_safe_path",
+      "callee": "expect",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L183"
+    },
+    {
+      "caller_nid": "auth_logout_space_redirect_joins_safe_path",
+      "callee": "from_url",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L183"
+    },
+    {
+      "caller_nid": "auth_logout_space_redirect_joins_safe_path",
+      "callee": "expect",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L185"
+    },
+    {
+      "caller_nid": "auth_logout_space_redirect_joins_safe_path",
+      "callee": "build_pool",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L185"
+    },
+    {
+      "caller_nid": "auth_logout_space_redirect_joins_safe_path",
+      "callee": "from_config",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L185"
+    },
+    {
+      "caller_nid": "auth_logout_space_redirect_joins_safe_path",
+      "callee": "new",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L189"
+    },
+    {
+      "caller_nid": "auth_logout_space_redirect_joins_safe_path",
+      "callee": "new",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L190"
+    },
+    {
+      "caller_nid": "auth_logout_space_redirect_joins_safe_path",
+      "callee": "new",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L191"
+    },
+    {
+      "caller_nid": "auth_logout_space_redirect_joins_safe_path",
+      "callee": "new",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L192"
+    },
+    {
+      "caller_nid": "auth_logout_space_redirect_joins_safe_path",
+      "callee": "new",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L194"
+    },
+    {
+      "caller_nid": "auth_logout_space_redirect_joins_safe_path",
+      "callee": "Some",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L197"
+    },
+    {
+      "caller_nid": "auth_logout_space_redirect_joins_safe_path",
+      "callee": "to_owned",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L197"
+    },
+    {
+      "caller_nid": "auth_logout_space_redirect_joins_safe_path",
+      "callee": "new",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L203"
+    },
+    {
+      "caller_nid": "auth_logout_space_redirect_joins_safe_path",
+      "callee": "new",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L204"
+    },
+    {
+      "caller_nid": "auth_logout_space_redirect_joins_safe_path",
+      "callee": "to_owned",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L205"
+    },
+    {
+      "caller_nid": "auth_logout_space_redirect_joins_safe_path",
+      "callee": "to_owned",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L206"
+    },
+    {
+      "caller_nid": "auth_logout_space_redirect_joins_safe_path",
+      "callee": "to_owned",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L207"
+    },
+    {
+      "caller_nid": "auth_logout_space_redirect_joins_safe_path",
+      "callee": "new",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L210"
+    },
+    {
+      "caller_nid": "auth_logout_space_redirect_joins_safe_path",
+      "callee": "new",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L224"
+    },
+    {
+      "caller_nid": "auth_logout_space_redirect_joins_safe_path",
+      "callee": "new",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L228"
+    },
+    {
+      "caller_nid": "auth_logout_space_redirect_joins_safe_path",
+      "callee": "default",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L228"
+    },
+    {
+      "caller_nid": "auth_logout_space_redirect_joins_safe_path",
+      "callee": "new",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L229"
+    },
+    {
+      "caller_nid": "auth_logout_space_redirect_joins_safe_path",
+      "callee": "expect",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L230"
+    },
+    {
+      "caller_nid": "auth_logout_space_redirect_joins_safe_path",
+      "callee": "connect_lazy",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/logout.rs",
+      "source_location": "L230"
+    }
+  ]
+}

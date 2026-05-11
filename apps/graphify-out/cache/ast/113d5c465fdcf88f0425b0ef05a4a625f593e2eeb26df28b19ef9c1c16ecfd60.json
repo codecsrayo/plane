@@ -1,0 +1,308 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_api_rust_src_routes_integrations_dtos_rs",
+      "label": "dtos.rs",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/integrations/dtos.rs",
+      "source_location": "L1"
+    },
+    {
+      "id": "integrations_dtos_integrationresponse",
+      "label": "IntegrationResponse",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/integrations/dtos.rs",
+      "source_location": "L27"
+    },
+    {
+      "id": "integrations_dtos_integrationresponse_from_model",
+      "label": ".from_model()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/integrations/dtos.rs",
+      "source_location": "L39"
+    },
+    {
+      "id": "integrations_dtos_workspaceintegrationresponse",
+      "label": "WorkspaceIntegrationResponse",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/integrations/dtos.rs",
+      "source_location": "L54"
+    },
+    {
+      "id": "integrations_dtos_workspaceintegrationresponse_from_model",
+      "label": ".from_model()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/integrations/dtos.rs",
+      "source_location": "L65"
+    },
+    {
+      "id": "integrations_dtos_githubreposyncresponse",
+      "label": "GithubRepoSyncResponse",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/integrations/dtos.rs",
+      "source_location": "L82"
+    },
+    {
+      "id": "integrations_dtos_prstatemappingresponse",
+      "label": "PrStateMappingResponse",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/integrations/dtos.rs",
+      "source_location": "L101"
+    },
+    {
+      "id": "integrations_dtos_prstatemappingresponse_from_model",
+      "label": ".from_model()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/integrations/dtos.rs",
+      "source_location": "L111"
+    },
+    {
+      "id": "integrations_dtos_usergithubconnectionresponse",
+      "label": "UserGithubConnectionResponse",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/integrations/dtos.rs",
+      "source_location": "L124"
+    },
+    {
+      "id": "integrations_dtos_createworkspaceintegrationrequest",
+      "label": "CreateWorkspaceIntegrationRequest",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/integrations/dtos.rs",
+      "source_location": "L137"
+    },
+    {
+      "id": "integrations_dtos_updateworkspaceintegrationrequest",
+      "label": "UpdateWorkspaceIntegrationRequest",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/integrations/dtos.rs",
+      "source_location": "L144"
+    },
+    {
+      "id": "integrations_dtos_providerinstallrequest",
+      "label": "ProviderInstallRequest",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/integrations/dtos.rs",
+      "source_location": "L150"
+    },
+    {
+      "id": "integrations_dtos_githubreposynccreaterequest",
+      "label": "GithubRepoSyncCreateRequest",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/integrations/dtos.rs",
+      "source_location": "L158"
+    },
+    {
+      "id": "integrations_dtos_prstatemappingcreaterequest",
+      "label": "PrStateMappingCreateRequest",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/integrations/dtos.rs",
+      "source_location": "L168"
+    },
+    {
+      "id": "integrations_dtos_usergithubcallbackrequest",
+      "label": "UserGithubCallbackRequest",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/integrations/dtos.rs",
+      "source_location": "L176"
+    },
+    {
+      "id": "integrations_dtos_externalreposquery",
+      "label": "ExternalReposQuery",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/integrations/dtos.rs",
+      "source_location": "L183"
+    },
+    {
+      "id": "integrations_dtos_githubcallbackquery",
+      "label": "GithubCallbackQuery",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/integrations/dtos.rs",
+      "source_location": "L190"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_routes_integrations_dtos_rs",
+      "target": "serde",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/integrations/dtos.rs",
+      "source_location": "L5",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_routes_integrations_dtos_rs",
+      "target": "uuid",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/integrations/dtos.rs",
+      "source_location": "L6",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_routes_integrations_dtos_rs",
+      "target": "entities",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/integrations/dtos.rs",
+      "source_location": "L8",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_routes_integrations_dtos_rs",
+      "target": "integrations_dtos_integrationresponse",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/integrations/dtos.rs",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "integrations_dtos_integrationresponse",
+      "target": "integrations_dtos_integrationresponse_from_model",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/integrations/dtos.rs",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_routes_integrations_dtos_rs",
+      "target": "integrations_dtos_workspaceintegrationresponse",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/integrations/dtos.rs",
+      "source_location": "L54",
+      "weight": 1.0
+    },
+    {
+      "source": "integrations_dtos_workspaceintegrationresponse",
+      "target": "integrations_dtos_workspaceintegrationresponse_from_model",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/integrations/dtos.rs",
+      "source_location": "L65",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_routes_integrations_dtos_rs",
+      "target": "integrations_dtos_githubreposyncresponse",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/integrations/dtos.rs",
+      "source_location": "L82",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_routes_integrations_dtos_rs",
+      "target": "integrations_dtos_prstatemappingresponse",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/integrations/dtos.rs",
+      "source_location": "L101",
+      "weight": 1.0
+    },
+    {
+      "source": "integrations_dtos_prstatemappingresponse",
+      "target": "integrations_dtos_prstatemappingresponse_from_model",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/integrations/dtos.rs",
+      "source_location": "L111",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_routes_integrations_dtos_rs",
+      "target": "integrations_dtos_usergithubconnectionresponse",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/integrations/dtos.rs",
+      "source_location": "L124",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_routes_integrations_dtos_rs",
+      "target": "integrations_dtos_createworkspaceintegrationrequest",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/integrations/dtos.rs",
+      "source_location": "L137",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_routes_integrations_dtos_rs",
+      "target": "integrations_dtos_updateworkspaceintegrationrequest",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/integrations/dtos.rs",
+      "source_location": "L144",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_routes_integrations_dtos_rs",
+      "target": "integrations_dtos_providerinstallrequest",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/integrations/dtos.rs",
+      "source_location": "L150",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_routes_integrations_dtos_rs",
+      "target": "integrations_dtos_githubreposynccreaterequest",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/integrations/dtos.rs",
+      "source_location": "L158",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_routes_integrations_dtos_rs",
+      "target": "integrations_dtos_prstatemappingcreaterequest",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/integrations/dtos.rs",
+      "source_location": "L168",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_routes_integrations_dtos_rs",
+      "target": "integrations_dtos_usergithubcallbackrequest",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/integrations/dtos.rs",
+      "source_location": "L176",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_routes_integrations_dtos_rs",
+      "target": "integrations_dtos_externalreposquery",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/integrations/dtos.rs",
+      "source_location": "L183",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_routes_integrations_dtos_rs",
+      "target": "integrations_dtos_githubcallbackquery",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/integrations/dtos.rs",
+      "source_location": "L190",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "integrations_dtos_workspaceintegrationresponse_from_model",
+      "callee": "map",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/integrations/dtos.rs",
+      "source_location": "L76"
+    }
+  ]
+}

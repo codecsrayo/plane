@@ -1,0 +1,437 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_services_project_project_state_service_ts",
+      "label": "project-state.service.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "project_project_state_service_projectstateservice",
+      "label": "ProjectStateService",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L14"
+    },
+    {
+      "id": "project_project_state_service_projectstateservice_constructor",
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L15"
+    },
+    {
+      "id": "project_project_state_service_projectstateservice_createstate",
+      "label": ".createState()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L19"
+    },
+    {
+      "id": "project_project_state_service_projectstateservice_markdefault",
+      "label": ".markDefault()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L27"
+    },
+    {
+      "id": "project_project_state_service_projectstateservice_getstates",
+      "label": ".getStates()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L35"
+    },
+    {
+      "id": "project_project_state_service_projectstateservice_getintakestate",
+      "label": ".getIntakeState()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L43"
+    },
+    {
+      "id": "project_project_state_service_projectstateservice_getstate",
+      "label": ".getState()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L51"
+    },
+    {
+      "id": "project_project_state_service_projectstateservice_updatestate",
+      "label": ".updateState()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L59"
+    },
+    {
+      "id": "project_project_state_service_projectstateservice_patchstate",
+      "label": ".patchState()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L67"
+    },
+    {
+      "id": "project_project_state_service_projectstateservice_deletestate",
+      "label": ".deleteState()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L75"
+    },
+    {
+      "id": "project_project_state_service_projectstateservice_getworkspacestates",
+      "label": ".getWorkspaceStates()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L83"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_services_project_project_state_service_ts",
+      "target": "constants",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_project_project_state_service_ts",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_project_project_state_service_ts",
+      "target": "home_nixos_plane_apps_web_core_services_api_service_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_project_project_state_service_ts",
+      "target": "services_api_service_apiservice",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_project_project_state_service_ts",
+      "target": "services_api_service_apierror",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_project_project_state_service_ts",
+      "target": "project_project_state_service_projectstateservice",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "project_project_state_service_projectstateservice",
+      "target": "project_project_state_service_projectstateservice_constructor",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "project_project_state_service_projectstateservice",
+      "target": "project_project_state_service_projectstateservice_createstate",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "project_project_state_service_projectstateservice",
+      "target": "project_project_state_service_projectstateservice_markdefault",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "project_project_state_service_projectstateservice",
+      "target": "project_project_state_service_projectstateservice_getstates",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "project_project_state_service_projectstateservice",
+      "target": "project_project_state_service_projectstateservice_getintakestate",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L43",
+      "weight": 1.0
+    },
+    {
+      "source": "project_project_state_service_projectstateservice",
+      "target": "project_project_state_service_projectstateservice_getstate",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L51",
+      "weight": 1.0
+    },
+    {
+      "source": "project_project_state_service_projectstateservice",
+      "target": "project_project_state_service_projectstateservice_updatestate",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L59",
+      "weight": 1.0
+    },
+    {
+      "source": "project_project_state_service_projectstateservice",
+      "target": "project_project_state_service_projectstateservice_patchstate",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L67",
+      "weight": 1.0
+    },
+    {
+      "source": "project_project_state_service_projectstateservice",
+      "target": "project_project_state_service_projectstateservice_deletestate",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L75",
+      "weight": 1.0
+    },
+    {
+      "source": "project_project_state_service_projectstateservice",
+      "target": "project_project_state_service_projectstateservice_getworkspacestates",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L83",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "project_project_state_service_projectstateservice_constructor",
+      "callee": "super",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L16"
+    },
+    {
+      "caller_nid": "project_project_state_service_projectstateservice_createstate",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L20"
+    },
+    {
+      "caller_nid": "project_project_state_service_projectstateservice_createstate",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L20"
+    },
+    {
+      "caller_nid": "project_project_state_service_projectstateservice_createstate",
+      "callee": "post",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L20"
+    },
+    {
+      "caller_nid": "project_project_state_service_projectstateservice_markdefault",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L28"
+    },
+    {
+      "caller_nid": "project_project_state_service_projectstateservice_markdefault",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L28"
+    },
+    {
+      "caller_nid": "project_project_state_service_projectstateservice_markdefault",
+      "callee": "post",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L28"
+    },
+    {
+      "caller_nid": "project_project_state_service_projectstateservice_getstates",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L36"
+    },
+    {
+      "caller_nid": "project_project_state_service_projectstateservice_getstates",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L36"
+    },
+    {
+      "caller_nid": "project_project_state_service_projectstateservice_getstates",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L36"
+    },
+    {
+      "caller_nid": "project_project_state_service_projectstateservice_getintakestate",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L44"
+    },
+    {
+      "caller_nid": "project_project_state_service_projectstateservice_getintakestate",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L44"
+    },
+    {
+      "caller_nid": "project_project_state_service_projectstateservice_getintakestate",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L44"
+    },
+    {
+      "caller_nid": "project_project_state_service_projectstateservice_getstate",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L52"
+    },
+    {
+      "caller_nid": "project_project_state_service_projectstateservice_getstate",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L52"
+    },
+    {
+      "caller_nid": "project_project_state_service_projectstateservice_getstate",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L52"
+    },
+    {
+      "caller_nid": "project_project_state_service_projectstateservice_updatestate",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L60"
+    },
+    {
+      "caller_nid": "project_project_state_service_projectstateservice_updatestate",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L60"
+    },
+    {
+      "caller_nid": "project_project_state_service_projectstateservice_updatestate",
+      "callee": "put",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L60"
+    },
+    {
+      "caller_nid": "project_project_state_service_projectstateservice_patchstate",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L68"
+    },
+    {
+      "caller_nid": "project_project_state_service_projectstateservice_patchstate",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L68"
+    },
+    {
+      "caller_nid": "project_project_state_service_projectstateservice_patchstate",
+      "callee": "patch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L68"
+    },
+    {
+      "caller_nid": "project_project_state_service_projectstateservice_deletestate",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L76"
+    },
+    {
+      "caller_nid": "project_project_state_service_projectstateservice_deletestate",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L76"
+    },
+    {
+      "caller_nid": "project_project_state_service_projectstateservice_deletestate",
+      "callee": "delete",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L76"
+    },
+    {
+      "caller_nid": "project_project_state_service_projectstateservice_getworkspacestates",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L84"
+    },
+    {
+      "caller_nid": "project_project_state_service_projectstateservice_getworkspacestates",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L84"
+    },
+    {
+      "caller_nid": "project_project_state_service_projectstateservice_getworkspacestates",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/project/project-state.service.ts",
+      "source_location": "L84"
+    }
+  ]
+}

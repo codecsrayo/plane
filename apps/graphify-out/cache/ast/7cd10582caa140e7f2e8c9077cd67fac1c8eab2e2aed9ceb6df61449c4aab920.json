@@ -1,0 +1,163 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_hooks_use_page_filters_ts",
+      "label": "use-page-filters.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-page-filters.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "hooks_use_page_filters_tpagespersonalizationconfig",
+      "label": "TPagesPersonalizationConfig",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-page-filters.ts",
+      "source_location": "L13"
+    },
+    {
+      "id": "hooks_use_page_filters_default_personalization_values",
+      "label": "DEFAULT_PERSONALIZATION_VALUES",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-page-filters.ts",
+      "source_location": "L20"
+    },
+    {
+      "id": "hooks_use_page_filters_usepagefilters",
+      "label": "usePageFilters()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-page-filters.ts",
+      "source_location": "L27"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_page_filters_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-page-filters.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_page_filters_ts",
+      "target": "editor",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-page-filters.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_page_filters_ts",
+      "target": "home_nixos_plane_apps_web_core_hooks_use_local_storage_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-page-filters.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_page_filters_ts",
+      "target": "hooks_use_page_filters_tpagespersonalizationconfig",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-page-filters.ts",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_page_filters_ts",
+      "target": "hooks_use_page_filters_default_personalization_values",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-page-filters.ts",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_page_filters_ts",
+      "target": "hooks_use_page_filters_usepagefilters",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-page-filters.ts",
+      "source_location": "L27",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "hooks_use_page_filters_usepagefilters",
+      "callee": "useLocalStorage",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-page-filters.ts",
+      "source_location": "L29"
+    },
+    {
+      "caller_nid": "hooks_use_page_filters_usepagefilters",
+      "callee": "useMemo",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-page-filters.ts",
+      "source_location": "L34"
+    },
+    {
+      "caller_nid": "hooks_use_page_filters_usepagefilters",
+      "callee": "useMemo",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-page-filters.ts",
+      "source_location": "L38"
+    },
+    {
+      "caller_nid": "hooks_use_page_filters_usepagefilters",
+      "callee": "useMemo",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-page-filters.ts",
+      "source_location": "L45"
+    },
+    {
+      "caller_nid": "hooks_use_page_filters_usepagefilters",
+      "callee": "useMemo",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-page-filters.ts",
+      "source_location": "L49"
+    },
+    {
+      "caller_nid": "hooks_use_page_filters_usepagefilters",
+      "callee": "useCallback",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-page-filters.ts",
+      "source_location": "L54"
+    },
+    {
+      "caller_nid": "hooks_use_page_filters_usepagefilters",
+      "callee": "useCallback",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-page-filters.ts",
+      "source_location": "L67"
+    },
+    {
+      "caller_nid": "hooks_use_page_filters_usepagefilters",
+      "callee": "useCallback",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-page-filters.ts",
+      "source_location": "L79"
+    },
+    {
+      "caller_nid": "hooks_use_page_filters_usepagefilters",
+      "callee": "useCallback",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-page-filters.ts",
+      "source_location": "L91"
+    },
+    {
+      "caller_nid": "hooks_use_page_filters_usepagefilters",
+      "callee": "useCallback",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-page-filters.ts",
+      "source_location": "L103"
+    }
+  ]
+}

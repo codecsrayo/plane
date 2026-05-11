@@ -1,0 +1,775 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_api_rust_src_utils_startup_rs",
+      "label": "startup.rs",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L1"
+    },
+    {
+      "id": "utils_startup_ensure_instance_registered",
+      "label": "ensure_instance_registered()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L26"
+    },
+    {
+      "id": "utils_startup_configdefault",
+      "label": "ConfigDefault",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L89"
+    },
+    {
+      "id": "utils_startup_ensure_configurations_seeded",
+      "label": "ensure_configurations_seeded()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L148"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_utils_startup_rs",
+      "target": "utc",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L10",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_utils_startup_rs",
+      "target": "sea_orm",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L11",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_utils_startup_rs",
+      "target": "env",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L12",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_utils_startup_rs",
+      "target": "crate",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L14",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_utils_startup_rs",
+      "target": "utils_startup_ensure_instance_registered",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_utils_startup_rs",
+      "target": "utils_startup_configdefault",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L89",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_utils_startup_rs",
+      "target": "utils_startup_ensure_configurations_seeded",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L148",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "map_err",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L27"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "one",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L27"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "active",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L27"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "find",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L27"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "now",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L33"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "unwrap_or_else",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L34"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "var",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L34"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "to_owned",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L34"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L38"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L39"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "clone",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L39"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L40"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L40"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L41"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "as_deref",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L41"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "var",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L41"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L41"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L42"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L42"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "map_err",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L43"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "update",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L43"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "to_owned",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L50"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "to_string",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L50"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "simple",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L50"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "new_v4",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L50"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "map_err",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L51"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "insert",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L51"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L52"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "new_v4",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L52"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L53"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "to_owned",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L53"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L54"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L55"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "clone",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L55"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L56"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L57"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L57"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L58"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L59"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L60"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L61"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L62"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L63"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "as_deref",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L63"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "var",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L63"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L63"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L64"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L65"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "to_owned",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L65"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L66"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L67"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "new",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L67"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L68"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L69"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L70"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L71"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L72"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L72"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L73"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L73"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_instance_registered",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L81"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_configurations_seeded",
+      "callee": "now",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L151"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_configurations_seeded",
+      "callee": "is_some",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L156"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_configurations_seeded",
+      "callee": "map_err",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L156"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_configurations_seeded",
+      "callee": "one",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L156"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_configurations_seeded",
+      "callee": "filter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L156"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_configurations_seeded",
+      "callee": "find",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L156"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_configurations_seeded",
+      "callee": "eq",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L157"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_configurations_seeded",
+      "callee": "unwrap_or_else",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L168"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_configurations_seeded",
+      "callee": "filter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L168"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_configurations_seeded",
+      "callee": "and_then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L168"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_configurations_seeded",
+      "callee": "ok",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L170"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_configurations_seeded",
+      "callee": "var",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L170"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_configurations_seeded",
+      "callee": "is_empty",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L171"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_configurations_seeded",
+      "callee": "to_owned",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L172"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_configurations_seeded",
+      "callee": "is_empty",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L174"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_configurations_seeded",
+      "callee": "encrypt_config_value",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L175"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_configurations_seeded",
+      "callee": "map_err",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L180"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_configurations_seeded",
+      "callee": "insert",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L180"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_configurations_seeded",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L181"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_configurations_seeded",
+      "callee": "new_v4",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L181"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_configurations_seeded",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L182"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_configurations_seeded",
+      "callee": "to_owned",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L182"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_configurations_seeded",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L183"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_configurations_seeded",
+      "callee": "Some",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L183"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_configurations_seeded",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L184"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_configurations_seeded",
+      "callee": "to_owned",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L184"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_configurations_seeded",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L185"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_configurations_seeded",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L186"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_configurations_seeded",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L187"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_configurations_seeded",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L188"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_configurations_seeded",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L189"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_configurations_seeded",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L189"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_configurations_seeded",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L190"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_configurations_seeded",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L190"
+    },
+    {
+      "caller_nid": "utils_startup_ensure_configurations_seeded",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/utils/startup.rs",
+      "source_location": "L205"
+    }
+  ]
+}

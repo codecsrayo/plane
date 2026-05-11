@@ -1,0 +1,1098 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_services_user_service_ts",
+      "label": "user.service.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "services_user_service_userservice",
+      "label": "UserService",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L26"
+    },
+    {
+      "id": "services_user_service_userservice_constructor",
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L27"
+    },
+    {
+      "id": "services_user_service_userservice_currentuserconfig",
+      "label": ".currentUserConfig()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L31"
+    },
+    {
+      "id": "services_user_service_userservice_userissues",
+      "label": ".userIssues()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L37"
+    },
+    {
+      "id": "services_user_service_userservice_currentuser",
+      "label": ".currentUser()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L55"
+    },
+    {
+      "id": "services_user_service_userservice_getcurrentuserprofile",
+      "label": ".getCurrentUserProfile()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L64"
+    },
+    {
+      "id": "services_user_service_userservice_updatecurrentuserprofile",
+      "label": ".updateCurrentUserProfile()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L71"
+    },
+    {
+      "id": "services_user_service_userservice_getcurrentuseraccounts",
+      "label": ".getCurrentUserAccounts()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L79"
+    },
+    {
+      "id": "services_user_service_userservice_currentuserinstanceadminstatus",
+      "label": ".currentUserInstanceAdminStatus()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L87"
+    },
+    {
+      "id": "services_user_service_userservice_currentusersettings",
+      "label": ".currentUserSettings()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L95"
+    },
+    {
+      "id": "services_user_service_userservice_currentuseremailnotificationsettings",
+      "label": ".currentUserEmailNotificationSettings()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L104"
+    },
+    {
+      "id": "services_user_service_userservice_updateuser",
+      "label": ".updateUser()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L112"
+    },
+    {
+      "id": "services_user_service_userservice_updateuseronboard",
+      "label": ".updateUserOnBoard()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L120"
+    },
+    {
+      "id": "services_user_service_userservice_updateusertourcompleted",
+      "label": ".updateUserTourCompleted()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L130"
+    },
+    {
+      "id": "services_user_service_userservice_updatecurrentuseremailnotificationsettings",
+      "label": ".updateCurrentUserEmailNotificationSettings()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L140"
+    },
+    {
+      "id": "services_user_service_userservice_getuseractivity",
+      "label": ".getUserActivity()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L148"
+    },
+    {
+      "id": "services_user_service_userservice_changepassword",
+      "label": ".changePassword()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L156"
+    },
+    {
+      "id": "services_user_service_userservice_getuserprofiledata",
+      "label": ".getUserProfileData()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L168"
+    },
+    {
+      "id": "services_user_service_userservice_getuserprofileprojectssegregation",
+      "label": ".getUserProfileProjectsSegregation()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L176"
+    },
+    {
+      "id": "services_user_service_userservice_getuserprofileactivity",
+      "label": ".getUserProfileActivity()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L187"
+    },
+    {
+      "id": "services_user_service_userservice_downloadprofileactivity",
+      "label": ".downloadProfileActivity()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L204"
+    },
+    {
+      "id": "services_user_service_userservice_getuserprofileissues",
+      "label": ".getUserProfileIssues()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L218"
+    },
+    {
+      "id": "services_user_service_userservice_deactivateaccount",
+      "label": ".deactivateAccount()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L237"
+    },
+    {
+      "id": "services_user_service_userservice_leaveworkspace",
+      "label": ".leaveWorkspace()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L245"
+    },
+    {
+      "id": "services_user_service_userservice_joinproject",
+      "label": ".joinProject()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L253"
+    },
+    {
+      "id": "services_user_service_userservice_leaveproject",
+      "label": ".leaveProject()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L261"
+    },
+    {
+      "id": "services_user_service_userservice_checkemail",
+      "label": ".checkEmail()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L269"
+    },
+    {
+      "id": "services_user_service_userservice_generateemailcode",
+      "label": ".generateEmailCode()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L285"
+    },
+    {
+      "id": "services_user_service_userservice_verifyemailcode",
+      "label": ".verifyEmailCode()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L293"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_services_user_service_ts",
+      "target": "constants",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_user_service_ts",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_user_service_ts",
+      "target": "home_nixos_plane_apps_web_core_services_api_service_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_user_service_ts",
+      "target": "services_api_service_apiservice",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_user_service_ts",
+      "target": "services_api_service_apierror",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_user_service_ts",
+      "target": "services_user_service_userservice",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "services_user_service_userservice",
+      "target": "services_user_service_userservice_constructor",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "services_user_service_userservice",
+      "target": "services_user_service_userservice_currentuserconfig",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "services_user_service_userservice",
+      "target": "services_user_service_userservice_userissues",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L37",
+      "weight": 1.0
+    },
+    {
+      "source": "services_user_service_userservice",
+      "target": "services_user_service_userservice_currentuser",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L55",
+      "weight": 1.0
+    },
+    {
+      "source": "services_user_service_userservice",
+      "target": "services_user_service_userservice_getcurrentuserprofile",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L64",
+      "weight": 1.0
+    },
+    {
+      "source": "services_user_service_userservice",
+      "target": "services_user_service_userservice_updatecurrentuserprofile",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L71",
+      "weight": 1.0
+    },
+    {
+      "source": "services_user_service_userservice",
+      "target": "services_user_service_userservice_getcurrentuseraccounts",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L79",
+      "weight": 1.0
+    },
+    {
+      "source": "services_user_service_userservice",
+      "target": "services_user_service_userservice_currentuserinstanceadminstatus",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L87",
+      "weight": 1.0
+    },
+    {
+      "source": "services_user_service_userservice",
+      "target": "services_user_service_userservice_currentusersettings",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L95",
+      "weight": 1.0
+    },
+    {
+      "source": "services_user_service_userservice",
+      "target": "services_user_service_userservice_currentuseremailnotificationsettings",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L104",
+      "weight": 1.0
+    },
+    {
+      "source": "services_user_service_userservice",
+      "target": "services_user_service_userservice_updateuser",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L112",
+      "weight": 1.0
+    },
+    {
+      "source": "services_user_service_userservice",
+      "target": "services_user_service_userservice_updateuseronboard",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L120",
+      "weight": 1.0
+    },
+    {
+      "source": "services_user_service_userservice",
+      "target": "services_user_service_userservice_updateusertourcompleted",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L130",
+      "weight": 1.0
+    },
+    {
+      "source": "services_user_service_userservice",
+      "target": "services_user_service_userservice_updatecurrentuseremailnotificationsettings",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L140",
+      "weight": 1.0
+    },
+    {
+      "source": "services_user_service_userservice",
+      "target": "services_user_service_userservice_getuseractivity",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L148",
+      "weight": 1.0
+    },
+    {
+      "source": "services_user_service_userservice",
+      "target": "services_user_service_userservice_changepassword",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L156",
+      "weight": 1.0
+    },
+    {
+      "source": "services_user_service_userservice",
+      "target": "services_user_service_userservice_getuserprofiledata",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L168",
+      "weight": 1.0
+    },
+    {
+      "source": "services_user_service_userservice",
+      "target": "services_user_service_userservice_getuserprofileprojectssegregation",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L176",
+      "weight": 1.0
+    },
+    {
+      "source": "services_user_service_userservice",
+      "target": "services_user_service_userservice_getuserprofileactivity",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L187",
+      "weight": 1.0
+    },
+    {
+      "source": "services_user_service_userservice",
+      "target": "services_user_service_userservice_downloadprofileactivity",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L204",
+      "weight": 1.0
+    },
+    {
+      "source": "services_user_service_userservice",
+      "target": "services_user_service_userservice_getuserprofileissues",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L218",
+      "weight": 1.0
+    },
+    {
+      "source": "services_user_service_userservice",
+      "target": "services_user_service_userservice_deactivateaccount",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L237",
+      "weight": 1.0
+    },
+    {
+      "source": "services_user_service_userservice",
+      "target": "services_user_service_userservice_leaveworkspace",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L245",
+      "weight": 1.0
+    },
+    {
+      "source": "services_user_service_userservice",
+      "target": "services_user_service_userservice_joinproject",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L253",
+      "weight": 1.0
+    },
+    {
+      "source": "services_user_service_userservice",
+      "target": "services_user_service_userservice_leaveproject",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L261",
+      "weight": 1.0
+    },
+    {
+      "source": "services_user_service_userservice",
+      "target": "services_user_service_userservice_checkemail",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L269",
+      "weight": 1.0
+    },
+    {
+      "source": "services_user_service_userservice",
+      "target": "services_user_service_userservice_generateemailcode",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L285",
+      "weight": 1.0
+    },
+    {
+      "source": "services_user_service_userservice",
+      "target": "services_user_service_userservice_verifyemailcode",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L293",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_user_service_ts",
+      "target": "services_user_service_userservice",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L302",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "services_user_service_userservice_constructor",
+      "callee": "super",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L28"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_userissues",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L46"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_userissues",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L46"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_userissues",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L46"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_currentuser",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L57"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_currentuser",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L57"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_currentuser",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L57"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_getcurrentuserprofile",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L65"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_getcurrentuserprofile",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L65"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_getcurrentuserprofile",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L65"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_updatecurrentuserprofile",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L72"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_updatecurrentuserprofile",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L72"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_updatecurrentuserprofile",
+      "callee": "patch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L72"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_getcurrentuseraccounts",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L80"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_getcurrentuseraccounts",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L80"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_getcurrentuseraccounts",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L80"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_currentuserinstanceadminstatus",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L88"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_currentuserinstanceadminstatus",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L88"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_currentuserinstanceadminstatus",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L88"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_currentusersettings",
+      "callee": "now",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L96"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_currentusersettings",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L97"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_currentusersettings",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L97"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_currentusersettings",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L97"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_currentuseremailnotificationsettings",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L105"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_currentuseremailnotificationsettings",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L105"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_currentuseremailnotificationsettings",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L105"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_updateuser",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L113"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_updateuser",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L113"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_updateuser",
+      "callee": "patch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L113"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_updateuseronboard",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L121"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_updateuseronboard",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L121"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_updateuseronboard",
+      "callee": "patch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L121"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_updateusertourcompleted",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L131"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_updateusertourcompleted",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L131"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_updateusertourcompleted",
+      "callee": "patch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L131"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_updatecurrentuseremailnotificationsettings",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L141"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_updatecurrentuseremailnotificationsettings",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L141"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_updatecurrentuseremailnotificationsettings",
+      "callee": "patch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L141"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_getuseractivity",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L149"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_getuseractivity",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L149"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_getuseractivity",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L149"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_changepassword",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L157"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_changepassword",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L157"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_changepassword",
+      "callee": "post",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L157"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_getuserprofiledata",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L169"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_getuserprofiledata",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L169"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_getuserprofiledata",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L169"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_getuserprofileprojectssegregation",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L180"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_getuserprofileprojectssegregation",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L180"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_getuserprofileprojectssegregation",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L180"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_getuserprofileactivity",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L195"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_getuserprofileactivity",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L195"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_getuserprofileactivity",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L195"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_downloadprofileactivity",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L211"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_downloadprofileactivity",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L211"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_downloadprofileactivity",
+      "callee": "post",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L211"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_getuserprofileissues",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L224"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_getuserprofileissues",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L224"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_getuserprofileissues",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L224"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_deactivateaccount",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L238"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_deactivateaccount",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L238"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_deactivateaccount",
+      "callee": "delete",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L238"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_leaveworkspace",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L246"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_leaveworkspace",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L246"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_leaveworkspace",
+      "callee": "post",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L246"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_joinproject",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L254"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_joinproject",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L254"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_joinproject",
+      "callee": "post",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L254"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_leaveproject",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L262"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_leaveproject",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L262"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_leaveproject",
+      "callee": "post",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L262"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_checkemail",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L270"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_checkemail",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L270"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_checkemail",
+      "callee": "post",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L270"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_generateemailcode",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L286"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_generateemailcode",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L286"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_generateemailcode",
+      "callee": "post",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L286"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_verifyemailcode",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L294"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_verifyemailcode",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L294"
+    },
+    {
+      "caller_nid": "services_user_service_userservice_verifyemailcode",
+      "callee": "patch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/user.service.ts",
+      "source_location": "L294"
+    }
+  ]
+}

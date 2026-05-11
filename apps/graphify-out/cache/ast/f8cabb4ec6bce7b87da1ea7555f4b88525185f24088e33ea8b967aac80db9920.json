@@ -1,0 +1,202 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_analytics_overview_project_insights_tsx",
+      "label": "project-insights.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/overview/project-insights.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "overview_project_insights_radarchart",
+      "label": "RadarChart",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/overview/project-insights.tsx",
+      "source_location": "L23"
+    },
+    {
+      "id": "overview_project_insights_analyticsservice",
+      "label": "analyticsService",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/overview/project-insights.tsx",
+      "source_location": "L29"
+    },
+    {
+      "id": "overview_project_insights_projectinsights",
+      "label": "ProjectInsights",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/overview/project-insights.tsx",
+      "source_location": "L31"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_analytics_overview_project_insights_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/overview/project-insights.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_analytics_overview_project_insights_tsx",
+      "target": "mobx_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/overview/project-insights.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_analytics_overview_project_insights_tsx",
+      "target": "navigation",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/overview/project-insights.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_analytics_overview_project_insights_tsx",
+      "target": "swr",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/overview/project-insights.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_analytics_overview_project_insights_tsx",
+      "target": "i18n",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/overview/project-insights.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_analytics_overview_project_insights_tsx",
+      "target": "empty_state",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/overview/project-insights.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_analytics_overview_project_insights_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/overview/project-insights.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_analytics_overview_project_insights_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_use_analytics_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/overview/project-insights.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_analytics_overview_project_insights_tsx",
+      "target": "store_use_analytics_useanalytics",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/overview/project-insights.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_analytics_overview_project_insights_tsx",
+      "target": "home_nixos_plane_apps_web_core_services_analytics_service_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/overview/project-insights.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_analytics_overview_project_insights_tsx",
+      "target": "services_analytics_service_analyticsservice",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/overview/project-insights.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_analytics_overview_project_insights_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_analytics_analytics_section_wrapper_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/overview/project-insights.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_analytics_overview_project_insights_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_analytics_loaders_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/overview/project-insights.tsx",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_analytics_overview_project_insights_tsx",
+      "target": "analytics_loaders_projectinsightsloader",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/overview/project-insights.tsx",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_analytics_overview_project_insights_tsx",
+      "target": "overview_project_insights_radarchart",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/overview/project-insights.tsx",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_analytics_overview_project_insights_tsx",
+      "target": "overview_project_insights_analyticsservice",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/overview/project-insights.tsx",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_analytics_overview_project_insights_tsx",
+      "target": "overview_project_insights_projectinsights",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/overview/project-insights.tsx",
+      "source_location": "L31",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

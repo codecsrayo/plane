@@ -1,0 +1,94 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_api_rust_src_entities_instance_admins_rs",
+      "label": "instance_admins.rs",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/instance_admins.rs",
+      "source_location": "L1"
+    },
+    {
+      "id": "entities_instance_admins_model",
+      "label": "Model",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/instance_admins.rs",
+      "source_location": "L8"
+    },
+    {
+      "id": "entities_instance_admins_relation",
+      "label": "Relation",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/instance_admins.rs",
+      "source_location": "L23"
+    },
+    {
+      "id": "entities_instance_admins_entity",
+      "label": "Entity",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/instance_admins.rs",
+      "source_location": "L58"
+    },
+    {
+      "id": "entities_instance_admins_entity_to",
+      "label": ".to()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/instance_admins.rs",
+      "source_location": "L59"
+    },
+    {
+      "id": "entities_instance_admins_activemodel",
+      "label": "ActiveModel",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/instance_admins.rs",
+      "source_location": "L64"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_entities_instance_admins_rs",
+      "target": "prelude",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/instance_admins.rs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_entities_instance_admins_rs",
+      "target": "entities_instance_admins_model",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/instance_admins.rs",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_entities_instance_admins_rs",
+      "target": "entities_instance_admins_relation",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/instance_admins.rs",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "entities_instance_admins_entity",
+      "target": "entities_instance_admins_entity_to",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/instance_admins.rs",
+      "source_location": "L59",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "entities_instance_admins_entity_to",
+      "callee": "def",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/instance_admins.rs",
+      "source_location": "L60"
+    }
+  ]
+}

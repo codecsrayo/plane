@@ -1,0 +1,126 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_inbox_inbox_filter_applied_filters_date_tsx",
+      "label": "date.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/inbox-filter/applied-filters/date.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "applied_filters_date_tinboxissueappliedfiltersdateprops",
+      "label": "TInboxIssueAppliedFiltersDateProps",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/inbox-filter/applied-filters/date.tsx",
+      "source_location": "L18"
+    },
+    {
+      "id": "applied_filters_date_inboxissueappliedfiltersdate",
+      "label": "InboxIssueAppliedFiltersDate",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/inbox-filter/applied-filters/date.tsx",
+      "source_location": "L23"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_inbox_filter_applied_filters_date_tsx",
+      "target": "mobx_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/inbox-filter/applied-filters/date.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_inbox_filter_applied_filters_date_tsx",
+      "target": "constants",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/inbox-filter/applied-filters/date.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_inbox_filter_applied_filters_date_tsx",
+      "target": "icons",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/inbox-filter/applied-filters/date.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_inbox_filter_applied_filters_date_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/inbox-filter/applied-filters/date.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_inbox_filter_applied_filters_date_tsx",
+      "target": "ui",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/inbox-filter/applied-filters/date.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_inbox_filter_applied_filters_date_tsx",
+      "target": "utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/inbox-filter/applied-filters/date.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_inbox_filter_applied_filters_date_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_use_project_inbox_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/inbox-filter/applied-filters/date.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_inbox_filter_applied_filters_date_tsx",
+      "target": "store_use_project_inbox_useprojectinbox",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/inbox-filter/applied-filters/date.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_inbox_filter_applied_filters_date_tsx",
+      "target": "applied_filters_date_tinboxissueappliedfiltersdateprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/inbox-filter/applied-filters/date.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_inbox_inbox_filter_applied_filters_date_tsx",
+      "target": "applied_filters_date_inboxissueappliedfiltersdate",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/inbox/inbox-filter/applied-filters/date.tsx",
+      "source_location": "L23",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

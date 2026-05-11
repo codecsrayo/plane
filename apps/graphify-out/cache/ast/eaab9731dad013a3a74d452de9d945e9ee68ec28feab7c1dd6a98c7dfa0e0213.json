@@ -1,0 +1,282 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_api_rust_src_error_rs",
+      "label": "error.rs",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/error.rs",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_error_apperror",
+      "label": "AppError",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/error.rs",
+      "source_location": "L11"
+    },
+    {
+      "id": "src_error_errorbody",
+      "label": "ErrorBody",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/error.rs",
+      "source_location": "L45"
+    },
+    {
+      "id": "src_error_apperror_into_response",
+      "label": ".into_response()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/error.rs",
+      "source_location": "L50"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_error_rs",
+      "target": "axum",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/error.rs",
+      "source_location": "L2",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_error_rs",
+      "target": "serialize",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/error.rs",
+      "source_location": "L7",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_error_rs",
+      "target": "error",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/error.rs",
+      "source_location": "L8",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_error_rs",
+      "target": "src_error_apperror",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/error.rs",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_error_rs",
+      "target": "src_error_errorbody",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/error.rs",
+      "source_location": "L45",
+      "weight": 1.0
+    },
+    {
+      "source": "src_error_apperror",
+      "target": "src_error_apperror_into_response",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/error.rs",
+      "source_location": "L50",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "src_error_apperror_into_response",
+      "callee": "into_response",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/error.rs",
+      "source_location": "L52"
+    },
+    {
+      "caller_nid": "src_error_apperror_into_response",
+      "callee": "Json",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/error.rs",
+      "source_location": "L54"
+    },
+    {
+      "caller_nid": "src_error_apperror_into_response",
+      "callee": "to_string",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/error.rs",
+      "source_location": "L54"
+    },
+    {
+      "caller_nid": "src_error_apperror_into_response",
+      "callee": "into_response",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/error.rs",
+      "source_location": "L57"
+    },
+    {
+      "caller_nid": "src_error_apperror_into_response",
+      "callee": "Json",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/error.rs",
+      "source_location": "L59"
+    },
+    {
+      "caller_nid": "src_error_apperror_into_response",
+      "callee": "to_string",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/error.rs",
+      "source_location": "L59"
+    },
+    {
+      "caller_nid": "src_error_apperror_into_response",
+      "callee": "into_response",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/error.rs",
+      "source_location": "L62"
+    },
+    {
+      "caller_nid": "src_error_apperror_into_response",
+      "callee": "Json",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/error.rs",
+      "source_location": "L64"
+    },
+    {
+      "caller_nid": "src_error_apperror_into_response",
+      "callee": "to_string",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/error.rs",
+      "source_location": "L64"
+    },
+    {
+      "caller_nid": "src_error_apperror_into_response",
+      "callee": "into_response",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/error.rs",
+      "source_location": "L67"
+    },
+    {
+      "caller_nid": "src_error_apperror_into_response",
+      "callee": "Json",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/error.rs",
+      "source_location": "L69"
+    },
+    {
+      "caller_nid": "src_error_apperror_into_response",
+      "callee": "to_string",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/error.rs",
+      "source_location": "L69"
+    },
+    {
+      "caller_nid": "src_error_apperror_into_response",
+      "callee": "into_response",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/error.rs",
+      "source_location": "L72"
+    },
+    {
+      "caller_nid": "src_error_apperror_into_response",
+      "callee": "Json",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/error.rs",
+      "source_location": "L74"
+    },
+    {
+      "caller_nid": "src_error_apperror_into_response",
+      "callee": "clone",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/error.rs",
+      "source_location": "L74"
+    },
+    {
+      "caller_nid": "src_error_apperror_into_response",
+      "callee": "into_response",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/error.rs",
+      "source_location": "L81"
+    },
+    {
+      "caller_nid": "src_error_apperror_into_response",
+      "callee": "Json",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/error.rs",
+      "source_location": "L81"
+    },
+    {
+      "caller_nid": "src_error_apperror_into_response",
+      "callee": "clone",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/error.rs",
+      "source_location": "L81"
+    },
+    {
+      "caller_nid": "src_error_apperror_into_response",
+      "callee": "into_response",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/error.rs",
+      "source_location": "L83"
+    },
+    {
+      "caller_nid": "src_error_apperror_into_response",
+      "callee": "Json",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/error.rs",
+      "source_location": "L85"
+    },
+    {
+      "caller_nid": "src_error_apperror_into_response",
+      "callee": "clone",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/error.rs",
+      "source_location": "L85"
+    },
+    {
+      "caller_nid": "src_error_apperror_into_response",
+      "callee": "into_response",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/error.rs",
+      "source_location": "L90"
+    },
+    {
+      "caller_nid": "src_error_apperror_into_response",
+      "callee": "Json",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/error.rs",
+      "source_location": "L92"
+    },
+    {
+      "caller_nid": "src_error_apperror_into_response",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/error.rs",
+      "source_location": "L92"
+    },
+    {
+      "caller_nid": "src_error_apperror_into_response",
+      "callee": "into_response",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/error.rs",
+      "source_location": "L98"
+    },
+    {
+      "caller_nid": "src_error_apperror_into_response",
+      "callee": "Json",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/error.rs",
+      "source_location": "L100"
+    },
+    {
+      "caller_nid": "src_error_apperror_into_response",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/error.rs",
+      "source_location": "L100"
+    }
+  ]
+}

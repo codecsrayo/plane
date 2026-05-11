@@ -1,0 +1,135 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_hooks_use_dropdown_ts",
+      "label": "use-dropdown.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-dropdown.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "hooks_use_dropdown_targuments",
+      "label": "TArguments",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-dropdown.ts",
+      "source_location": "L14"
+    },
+    {
+      "id": "hooks_use_dropdown_usedropdown",
+      "label": "useDropdown()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-dropdown.ts",
+      "source_location": "L25"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_dropdown_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-dropdown.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_dropdown_ts",
+      "target": "hooks",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-dropdown.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_dropdown_ts",
+      "target": "home_nixos_plane_apps_web_core_hooks_use_dropdown_key_down_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-dropdown.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_dropdown_ts",
+      "target": "hooks_use_dropdown_key_down_usedropdownkeydown",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-dropdown.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_dropdown_ts",
+      "target": "home_nixos_plane_apps_web_core_hooks_use_platform_os_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-dropdown.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_dropdown_ts",
+      "target": "hooks_use_platform_os_useplatformos",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-dropdown.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_dropdown_ts",
+      "target": "hooks_use_dropdown_targuments",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-dropdown.ts",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_dropdown_ts",
+      "target": "hooks_use_dropdown_usedropdown",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-dropdown.ts",
+      "source_location": "L25",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "hooks_use_dropdown_usedropdown",
+      "callee": "usePlatformOS",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-dropdown.ts",
+      "source_location": "L28"
+    },
+    {
+      "caller_nid": "hooks_use_dropdown_usedropdown",
+      "callee": "useDropdownKeyDown",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-dropdown.ts",
+      "source_location": "L58"
+    },
+    {
+      "caller_nid": "hooks_use_dropdown_usedropdown",
+      "callee": "useOutsideClickDetector",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-dropdown.ts",
+      "source_location": "L71"
+    },
+    {
+      "caller_nid": "hooks_use_dropdown_usedropdown",
+      "callee": "useEffect",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-dropdown.ts",
+      "source_location": "L74"
+    }
+  ]
+}

@@ -1,0 +1,714 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_api_rust_src_routes_project_user_properties_rs",
+      "label": "project_user_properties.rs",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L1"
+    },
+    {
+      "id": "routes_project_user_properties_default_filters",
+      "label": "default_filters()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L40"
+    },
+    {
+      "id": "routes_project_user_properties_default_display_filters",
+      "label": "default_display_filters()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L54"
+    },
+    {
+      "id": "routes_project_user_properties_default_display_properties",
+      "label": "default_display_properties()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L66"
+    },
+    {
+      "id": "routes_project_user_properties_default_preferences",
+      "label": "default_preferences()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L86"
+    },
+    {
+      "id": "routes_project_user_properties_projectuserpropertyresponse",
+      "label": "ProjectUserPropertyResponse",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L104"
+    },
+    {
+      "id": "routes_project_user_properties_projectuserpropertyresponse_from",
+      "label": ".from()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L122"
+    },
+    {
+      "id": "routes_project_user_properties_updateprojectuserpropertyrequest",
+      "label": "UpdateProjectUserPropertyRequest",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L148"
+    },
+    {
+      "id": "routes_project_user_properties_get_or_create",
+      "label": "get_or_create()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L168"
+    },
+    {
+      "id": "routes_project_user_properties_get_project_user_properties",
+      "label": "get_project_user_properties()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L239"
+    },
+    {
+      "id": "routes_project_user_properties_update_project_user_properties",
+      "label": "update_project_user_properties()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L279"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_routes_project_user_properties_rs",
+      "target": "axum",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L14",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_routes_project_user_properties_rs",
+      "target": "chrono",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L18",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_routes_project_user_properties_rs",
+      "target": "sea_orm",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L19",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_routes_project_user_properties_rs",
+      "target": "serde",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L22",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_routes_project_user_properties_rs",
+      "target": "uuid",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L23",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_routes_project_user_properties_rs",
+      "target": "crate",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L25",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_routes_project_user_properties_rs",
+      "target": "routes_project_user_properties_default_filters",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L40",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_routes_project_user_properties_rs",
+      "target": "routes_project_user_properties_default_display_filters",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L54",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_routes_project_user_properties_rs",
+      "target": "routes_project_user_properties_default_display_properties",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L66",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_routes_project_user_properties_rs",
+      "target": "routes_project_user_properties_default_preferences",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L86",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_routes_project_user_properties_rs",
+      "target": "routes_project_user_properties_projectuserpropertyresponse",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L104",
+      "weight": 1.0
+    },
+    {
+      "source": "routes_project_user_properties_projectuserpropertyresponse",
+      "target": "routes_project_user_properties_projectuserpropertyresponse_from",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L122",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_routes_project_user_properties_rs",
+      "target": "routes_project_user_properties_updateprojectuserpropertyrequest",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L148",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_routes_project_user_properties_rs",
+      "target": "routes_project_user_properties_get_or_create",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L168",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_routes_project_user_properties_rs",
+      "target": "routes_project_user_properties_get_project_user_properties",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L239",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_routes_project_user_properties_rs",
+      "target": "routes_project_user_properties_update_project_user_properties",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L279",
+      "weight": 1.0
+    },
+    {
+      "source": "routes_project_user_properties_get_or_create",
+      "target": "routes_project_user_properties_default_filters",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L191",
+      "weight": 1.0
+    },
+    {
+      "source": "routes_project_user_properties_get_or_create",
+      "target": "routes_project_user_properties_default_display_filters",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L192",
+      "weight": 1.0
+    },
+    {
+      "source": "routes_project_user_properties_get_or_create",
+      "target": "routes_project_user_properties_default_display_properties",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L193",
+      "weight": 1.0
+    },
+    {
+      "source": "routes_project_user_properties_get_or_create",
+      "target": "routes_project_user_properties_default_preferences",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L195",
+      "weight": 1.0
+    },
+    {
+      "source": "routes_project_user_properties_get_project_user_properties",
+      "target": "routes_project_user_properties_get_or_create",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L243",
+      "weight": 1.0
+    },
+    {
+      "source": "routes_project_user_properties_get_project_user_properties",
+      "target": "routes_project_user_properties_projectuserpropertyresponse_from",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L250",
+      "weight": 1.0
+    },
+    {
+      "source": "routes_project_user_properties_update_project_user_properties",
+      "target": "routes_project_user_properties_get_or_create",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L284",
+      "weight": 1.0
+    },
+    {
+      "source": "routes_project_user_properties_update_project_user_properties",
+      "target": "routes_project_user_properties_projectuserpropertyresponse_from",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L315",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "routes_project_user_properties_projectuserpropertyresponse_from",
+      "callee": "clone",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L128"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_projectuserpropertyresponse_from",
+      "callee": "clone",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L129"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_projectuserpropertyresponse_from",
+      "callee": "clone",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L130"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_projectuserpropertyresponse_from",
+      "callee": "clone",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L131"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_projectuserpropertyresponse_from",
+      "callee": "clone",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L132"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_projectuserpropertyresponse_from",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L134"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_projectuserpropertyresponse_from",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L135"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_get_or_create",
+      "callee": "map_err",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L174"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_get_or_create",
+      "callee": "one",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L174"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_get_or_create",
+      "callee": "filter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L174"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_get_or_create",
+      "callee": "filter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L174"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_get_or_create",
+      "callee": "active",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L174"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_get_or_create",
+      "callee": "find",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L174"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_get_or_create",
+      "callee": "eq",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L176"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_get_or_create",
+      "callee": "eq",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L177"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_get_or_create",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L182"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_get_or_create",
+      "callee": "fixed_offset",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L185"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_get_or_create",
+      "callee": "now",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L185"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_get_or_create",
+      "callee": "map_err",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L186"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_get_or_create",
+      "callee": "insert",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L186"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_get_or_create",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L187"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_get_or_create",
+      "callee": "new_v4",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L187"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_get_or_create",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L188"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_get_or_create",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L189"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_get_or_create",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L190"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_get_or_create",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L191"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_get_or_create",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L192"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_get_or_create",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L193"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_get_or_create",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L194"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_get_or_create",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L195"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_get_or_create",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L196"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_get_or_create",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L197"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_get_or_create",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L198"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_get_or_create",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L199"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_get_or_create",
+      "callee": "Some",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L199"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_get_or_create",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L200"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_get_or_create",
+      "callee": "Some",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L200"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_get_or_create",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L201"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_get_or_create",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L207"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_get_project_user_properties",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L250"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_get_project_user_properties",
+      "callee": "Json",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L250"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_update_project_user_properties",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L292"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_update_project_user_properties",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L294"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_update_project_user_properties",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L297"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_update_project_user_properties",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L300"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_update_project_user_properties",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L303"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_update_project_user_properties",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L306"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_update_project_user_properties",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L309"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_update_project_user_properties",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L311"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_update_project_user_properties",
+      "callee": "fixed_offset",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L311"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_update_project_user_properties",
+      "callee": "now",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L311"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_update_project_user_properties",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L312"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_update_project_user_properties",
+      "callee": "Some",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L312"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_update_project_user_properties",
+      "callee": "map_err",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L314"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_update_project_user_properties",
+      "callee": "update",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L314"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_update_project_user_properties",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L315"
+    },
+    {
+      "caller_nid": "routes_project_user_properties_update_project_user_properties",
+      "callee": "Json",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/routes/project_user_properties.rs",
+      "source_location": "L315"
+    }
+  ]
+}

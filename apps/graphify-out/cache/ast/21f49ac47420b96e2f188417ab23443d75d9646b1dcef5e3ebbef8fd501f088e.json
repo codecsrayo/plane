@@ -1,0 +1,246 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_dropdowns_intake_state_base_tsx",
+      "label": "base.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/intake-state/base.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "intake_state_base_tworkitemstatedropdownbaseprops",
+      "label": "TWorkItemStateDropdownBaseProps",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/intake-state/base.tsx",
+      "source_location": "L27"
+    },
+    {
+      "id": "intake_state_base_workitemstatedropdownbase",
+      "label": "WorkItemStateDropdownBase",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/intake-state/base.tsx",
+      "source_location": "L47"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_dropdowns_intake_state_base_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/intake-state/base.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_dropdowns_intake_state_base_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/intake-state/base.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_dropdowns_intake_state_base_tsx",
+      "target": "mobx_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/intake-state/base.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_dropdowns_intake_state_base_tsx",
+      "target": "react_popper",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/intake-state/base.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_dropdowns_intake_state_base_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/intake-state/base.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_dropdowns_intake_state_base_tsx",
+      "target": "i18n",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/intake-state/base.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_dropdowns_intake_state_base_tsx",
+      "target": "icons",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/intake-state/base.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_dropdowns_intake_state_base_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/intake-state/base.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_dropdowns_intake_state_base_tsx",
+      "target": "ui",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/intake-state/base.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_dropdowns_intake_state_base_tsx",
+      "target": "utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/intake-state/base.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_dropdowns_intake_state_base_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_dropdowns_buttons_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/intake-state/base.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_dropdowns_intake_state_base_tsx",
+      "target": "dropdowns_buttons_dropdownbutton",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/intake-state/base.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_dropdowns_intake_state_base_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_dropdowns_constants_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/intake-state/base.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_dropdowns_intake_state_base_tsx",
+      "target": "dropdowns_constants_button_variants_with_text",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/intake-state/base.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_dropdowns_intake_state_base_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_dropdowns_types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/intake-state/base.tsx",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_dropdowns_intake_state_base_tsx",
+      "target": "dropdowns_types_tdropdownprops",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/intake-state/base.tsx",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_dropdowns_intake_state_base_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_use_dropdown_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/intake-state/base.tsx",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_dropdowns_intake_state_base_tsx",
+      "target": "hooks_use_dropdown_usedropdown",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/intake-state/base.tsx",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_dropdowns_intake_state_base_tsx",
+      "target": "home_nixos_plane_apps_web_core_plane_web_components_workflow",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/intake-state/base.tsx",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_dropdowns_intake_state_base_tsx",
+      "target": "components_workflow_stateoption",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/intake-state/base.tsx",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_dropdowns_intake_state_base_tsx",
+      "target": "intake_state_base_tworkitemstatedropdownbaseprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/intake-state/base.tsx",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_dropdowns_intake_state_base_tsx",
+      "target": "intake_state_base_workitemstatedropdownbase",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/intake-state/base.tsx",
+      "source_location": "L47",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

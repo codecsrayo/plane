@@ -1,0 +1,131 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_hooks_editor_use_editor_mention_tsx",
+      "label": "use-editor-mention.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/editor/use-editor-mention.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "editor_use_editor_mention_targs",
+      "label": "TArgs",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/editor/use-editor-mention.tsx",
+      "source_location": "L19"
+    },
+    {
+      "id": "editor_use_editor_mention_useeditormention",
+      "label": "useEditorMention()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/editor/use-editor-mention.tsx",
+      "source_location": "L24"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_editor_use_editor_mention_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/editor/use-editor-mention.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_editor_use_editor_mention_tsx",
+      "target": "editor",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/editor/use-editor-mention.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_editor_use_editor_mention_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/editor/use-editor-mention.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_editor_use_editor_mention_tsx",
+      "target": "ui",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/editor/use-editor-mention.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_editor_use_editor_mention_tsx",
+      "target": "utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/editor/use-editor-mention.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_editor_use_editor_mention_tsx",
+      "target": "home_nixos_plane_apps_web_core_plane_web_hooks_use_additional_editor_mention",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/editor/use-editor-mention.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_editor_use_editor_mention_tsx",
+      "target": "hooks_use_additional_editor_mention_useadditionaleditormention",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/editor/use-editor-mention.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_editor_use_editor_mention_tsx",
+      "target": "editor_use_editor_mention_targs",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/editor/use-editor-mention.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_editor_use_editor_mention_tsx",
+      "target": "editor_use_editor_mention_useeditormention",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/editor/use-editor-mention.tsx",
+      "source_location": "L24",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "editor_use_editor_mention_useeditormention",
+      "callee": "useAdditionalEditorMention",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/editor/use-editor-mention.tsx",
+      "source_location": "L27"
+    },
+    {
+      "caller_nid": "editor_use_editor_mention_useeditormention",
+      "callee": "useCallback",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/editor/use-editor-mention.tsx",
+      "source_location": "L31"
+    }
+  ]
+}

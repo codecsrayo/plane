@@ -1,0 +1,88 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_hooks_store_use_command_palette_ts",
+      "label": "use-command-palette.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/store/use-command-palette.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "store_use_command_palette_usecommandpalette",
+      "label": "useCommandPalette()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/store/use-command-palette.ts",
+      "source_location": "L13"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_store_use_command_palette_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/store/use-command-palette.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_store_use_command_palette_ts",
+      "target": "home_nixos_plane_apps_web_core_lib_store_context_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/store/use-command-palette.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_store_use_command_palette_ts",
+      "target": "lib_store_context_storecontext",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/store/use-command-palette.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_store_use_command_palette_ts",
+      "target": "home_nixos_plane_apps_web_core_plane_web_store_command_palette_store",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/store/use-command-palette.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_store_use_command_palette_ts",
+      "target": "store_command_palette_icommandpalettestore",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/store/use-command-palette.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_store_use_command_palette_ts",
+      "target": "store_use_command_palette_usecommandpalette",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/store/use-command-palette.ts",
+      "source_location": "L13",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "store_use_command_palette_usecommandpalette",
+      "callee": "useContext",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/store/use-command-palette.ts",
+      "source_location": "L14"
+    }
+  ]
+}

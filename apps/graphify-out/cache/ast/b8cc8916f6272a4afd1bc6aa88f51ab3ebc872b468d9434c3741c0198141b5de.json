@@ -1,0 +1,88 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_hooks_store_use_cycle_filter_ts",
+      "label": "use-cycle-filter.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/store/use-cycle-filter.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "store_use_cycle_filter_usecyclefilter",
+      "label": "useCycleFilter()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/store/use-cycle-filter.ts",
+      "source_location": "L13"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_store_use_cycle_filter_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/store/use-cycle-filter.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_store_use_cycle_filter_ts",
+      "target": "home_nixos_plane_apps_web_core_lib_store_context_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/store/use-cycle-filter.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_store_use_cycle_filter_ts",
+      "target": "lib_store_context_storecontext",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/store/use-cycle-filter.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_store_use_cycle_filter_ts",
+      "target": "home_nixos_plane_apps_web_core_store_cycle_filter_store_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/store/use-cycle-filter.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_store_use_cycle_filter_ts",
+      "target": "store_cycle_filter_store_icyclefilterstore",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/store/use-cycle-filter.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_store_use_cycle_filter_ts",
+      "target": "store_use_cycle_filter_usecyclefilter",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/store/use-cycle-filter.ts",
+      "source_location": "L13",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "store_use_cycle_filter_usecyclefilter",
+      "callee": "useContext",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/store/use-cycle-filter.ts",
+      "source_location": "L14"
+    }
+  ]
+}

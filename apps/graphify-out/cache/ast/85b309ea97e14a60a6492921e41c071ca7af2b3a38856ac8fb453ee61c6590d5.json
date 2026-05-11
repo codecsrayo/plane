@@ -1,0 +1,40 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_lib_local_storage_ts",
+      "label": "local-storage.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/lib/local-storage.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "lib_local_storage_storage",
+      "label": "storage",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/lib/local-storage.ts",
+      "source_location": "L9"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_lib_local_storage_ts",
+      "target": "lodash_es",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/lib/local-storage.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_lib_local_storage_ts",
+      "target": "lib_local_storage_storage",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/lib/local-storage.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

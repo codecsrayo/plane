@@ -1,0 +1,94 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_api_rust_src_entities_django_celery_beat_solarschedule_rs",
+      "label": "django_celery_beat_solarschedule.rs",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/django_celery_beat_solarschedule.rs",
+      "source_location": "L1"
+    },
+    {
+      "id": "entities_django_celery_beat_solarschedule_model",
+      "label": "Model",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/django_celery_beat_solarschedule.rs",
+      "source_location": "L8"
+    },
+    {
+      "id": "entities_django_celery_beat_solarschedule_relation",
+      "label": "Relation",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/django_celery_beat_solarschedule.rs",
+      "source_location": "L19"
+    },
+    {
+      "id": "entities_django_celery_beat_solarschedule_entity",
+      "label": "Entity",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/django_celery_beat_solarschedule.rs",
+      "source_location": "L24"
+    },
+    {
+      "id": "entities_django_celery_beat_solarschedule_entity_to",
+      "label": ".to()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/django_celery_beat_solarschedule.rs",
+      "source_location": "L25"
+    },
+    {
+      "id": "entities_django_celery_beat_solarschedule_activemodel",
+      "label": "ActiveModel",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/django_celery_beat_solarschedule.rs",
+      "source_location": "L30"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_entities_django_celery_beat_solarschedule_rs",
+      "target": "prelude",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/django_celery_beat_solarschedule.rs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_entities_django_celery_beat_solarschedule_rs",
+      "target": "entities_django_celery_beat_solarschedule_model",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/django_celery_beat_solarschedule.rs",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_entities_django_celery_beat_solarschedule_rs",
+      "target": "entities_django_celery_beat_solarschedule_relation",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/django_celery_beat_solarschedule.rs",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "entities_django_celery_beat_solarschedule_entity",
+      "target": "entities_django_celery_beat_solarschedule_entity_to",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/django_celery_beat_solarschedule.rs",
+      "source_location": "L25",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "entities_django_celery_beat_solarschedule_entity_to",
+      "callee": "def",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/django_celery_beat_solarschedule.rs",
+      "source_location": "L26"
+    }
+  ]
+}

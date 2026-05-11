@@ -1,0 +1,136 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_gantt_chart_chart_timeline_drag_helper_tsx",
+      "label": "timeline-drag-helper.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/chart/timeline-drag-helper.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "chart_timeline_drag_helper_props",
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/chart/timeline-drag-helper.tsx",
+      "source_location": "L15"
+    },
+    {
+      "id": "chart_timeline_drag_helper_timelinedraghelper",
+      "label": "TimelineDragHelper",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/chart/timeline-drag-helper.tsx",
+      "source_location": "L18"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_chart_timeline_drag_helper_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/chart/timeline-drag-helper.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_chart_timeline_drag_helper_tsx",
+      "target": "mobx_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/chart/timeline-drag-helper.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_chart_timeline_drag_helper_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_use_auto_scroller_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/chart/timeline-drag-helper.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_chart_timeline_drag_helper_tsx",
+      "target": "hooks_use_auto_scroller_useautoscroller",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/chart/timeline-drag-helper.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_chart_timeline_drag_helper_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_use_timeline_chart_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/chart/timeline-drag-helper.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_chart_timeline_drag_helper_tsx",
+      "target": "hooks_use_timeline_chart_usetimelinechartstore",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/chart/timeline-drag-helper.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_chart_timeline_drag_helper_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_gantt_chart_constants_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/chart/timeline-drag-helper.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_chart_timeline_drag_helper_tsx",
+      "target": "gantt_chart_constants_header_height",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/chart/timeline-drag-helper.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_chart_timeline_drag_helper_tsx",
+      "target": "gantt_chart_constants_sidebar_width",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/chart/timeline-drag-helper.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_chart_timeline_drag_helper_tsx",
+      "target": "chart_timeline_drag_helper_props",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/chart/timeline-drag-helper.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_gantt_chart_chart_timeline_drag_helper_tsx",
+      "target": "chart_timeline_drag_helper_timelinedraghelper",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/gantt-chart/chart/timeline-drag-helper.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

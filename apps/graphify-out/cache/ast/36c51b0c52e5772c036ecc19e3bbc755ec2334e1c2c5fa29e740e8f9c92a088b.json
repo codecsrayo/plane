@@ -1,0 +1,216 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_workspace_notifications_sidebar_notification_card_item_tsx",
+      "label": "item.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/workspace-notifications/sidebar/notification-card/item.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "notification_card_item_tnotificationitem",
+      "label": "TNotificationItem",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/workspace-notifications/sidebar/notification-card/item.tsx",
+      "source_location": "L22"
+    },
+    {
+      "id": "notification_card_item_notificationitem",
+      "label": "NotificationItem",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/workspace-notifications/sidebar/notification-card/item.tsx",
+      "source_location": "L27"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_workspace_notifications_sidebar_notification_card_item_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/workspace-notifications/sidebar/notification-card/item.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_workspace_notifications_sidebar_notification_card_item_tsx",
+      "target": "mobx_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/workspace-notifications/sidebar/notification-card/item.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_workspace_notifications_sidebar_notification_card_item_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/workspace-notifications/sidebar/notification-card/item.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_workspace_notifications_sidebar_notification_card_item_tsx",
+      "target": "ui",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/workspace-notifications/sidebar/notification-card/item.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_workspace_notifications_sidebar_notification_card_item_tsx",
+      "target": "utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/workspace-notifications/sidebar/notification-card/item.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_workspace_notifications_sidebar_notification_card_item_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_notifications_index_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/workspace-notifications/sidebar/notification-card/item.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_workspace_notifications_sidebar_notification_card_item_tsx",
+      "target": "notifications_index_useworkspacenotifications",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/workspace-notifications/sidebar/notification-card/item.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_workspace_notifications_sidebar_notification_card_item_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_notifications_use_notification_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/workspace-notifications/sidebar/notification-card/item.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_workspace_notifications_sidebar_notification_card_item_tsx",
+      "target": "notifications_use_notification_usenotification",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/workspace-notifications/sidebar/notification-card/item.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_workspace_notifications_sidebar_notification_card_item_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_use_issue_detail_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/workspace-notifications/sidebar/notification-card/item.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_workspace_notifications_sidebar_notification_card_item_tsx",
+      "target": "store_use_issue_detail_useissuedetail",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/workspace-notifications/sidebar/notification-card/item.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_workspace_notifications_sidebar_notification_card_item_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_use_workspace_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/workspace-notifications/sidebar/notification-card/item.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_workspace_notifications_sidebar_notification_card_item_tsx",
+      "target": "store_use_workspace_useworkspace",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/workspace-notifications/sidebar/notification-card/item.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_workspace_notifications_sidebar_notification_card_item_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_workspace_notifications_sidebar_notification_card_content_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/workspace-notifications/sidebar/notification-card/item.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_workspace_notifications_sidebar_notification_card_item_tsx",
+      "target": "notification_card_content_notificationcontent",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/workspace-notifications/sidebar/notification-card/item.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_workspace_notifications_sidebar_notification_card_item_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_workspace_notifications_sidebar_notification_card_options_index_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/workspace-notifications/sidebar/notification-card/item.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_workspace_notifications_sidebar_notification_card_item_tsx",
+      "target": "options_index_notificationoption",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/workspace-notifications/sidebar/notification-card/item.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_workspace_notifications_sidebar_notification_card_item_tsx",
+      "target": "notification_card_item_tnotificationitem",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/workspace-notifications/sidebar/notification-card/item.tsx",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_workspace_notifications_sidebar_notification_card_item_tsx",
+      "target": "notification_card_item_notificationitem",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/workspace-notifications/sidebar/notification-card/item.tsx",
+      "source_location": "L27",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

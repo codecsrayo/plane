@@ -1,0 +1,282 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_services_issue_issue_comment_service_ts",
+      "label": "issue_comment.service.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_comment.service.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "issue_issue_comment_service_issuecommentservice",
+      "label": "IssueCommentService",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_comment.service.ts",
+      "source_location": "L15"
+    },
+    {
+      "id": "issue_issue_comment_service_issuecommentservice_constructor",
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_comment.service.ts",
+      "source_location": "L19"
+    },
+    {
+      "id": "issue_issue_comment_service_issuecommentservice_getissuecomments",
+      "label": ".getIssueComments()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_comment.service.ts",
+      "source_location": "L26"
+    },
+    {
+      "id": "issue_issue_comment_service_issuecommentservice_createissuecomment",
+      "label": ".createIssueComment()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_comment.service.ts",
+      "source_location": "L48"
+    },
+    {
+      "id": "issue_issue_comment_service_issuecommentservice_patchissuecomment",
+      "label": ".patchIssueComment()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_comment.service.ts",
+      "source_location": "L64"
+    },
+    {
+      "id": "issue_issue_comment_service_issuecommentservice_deleteissuecomment",
+      "label": ".deleteIssueComment()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_comment.service.ts",
+      "source_location": "L81"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_services_issue_issue_comment_service_ts",
+      "target": "constants",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_comment.service.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_issue_issue_comment_service_ts",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_comment.service.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_issue_issue_comment_service_ts",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_comment.service.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_issue_issue_comment_service_ts",
+      "target": "home_nixos_plane_apps_web_core_services_api_service_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_comment.service.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_issue_issue_comment_service_ts",
+      "target": "services_api_service_apiservice",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_comment.service.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_issue_issue_comment_service_ts",
+      "target": "services_api_service_apierror",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_comment.service.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_issue_issue_comment_service_ts",
+      "target": "home_nixos_plane_apps_web_core_services_file_upload_service_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_comment.service.ts",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_issue_issue_comment_service_ts",
+      "target": "services_file_upload_service_fileuploadservice",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_comment.service.ts",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_issue_issue_comment_service_ts",
+      "target": "issue_issue_comment_service_issuecommentservice",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_comment.service.ts",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "issue_issue_comment_service_issuecommentservice",
+      "target": "issue_issue_comment_service_issuecommentservice_constructor",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_comment.service.ts",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "issue_issue_comment_service_issuecommentservice",
+      "target": "issue_issue_comment_service_issuecommentservice_getissuecomments",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_comment.service.ts",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "issue_issue_comment_service_issuecommentservice",
+      "target": "issue_issue_comment_service_issuecommentservice_createissuecomment",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_comment.service.ts",
+      "source_location": "L48",
+      "weight": 1.0
+    },
+    {
+      "source": "issue_issue_comment_service_issuecommentservice",
+      "target": "issue_issue_comment_service_issuecommentservice_patchissuecomment",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_comment.service.ts",
+      "source_location": "L64",
+      "weight": 1.0
+    },
+    {
+      "source": "issue_issue_comment_service_issuecommentservice",
+      "target": "issue_issue_comment_service_issuecommentservice_deleteissuecomment",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_comment.service.ts",
+      "source_location": "L81",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "issue_issue_comment_service_issuecommentservice_constructor",
+      "callee": "super",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_comment.service.ts",
+      "source_location": "L20"
+    },
+    {
+      "caller_nid": "issue_issue_comment_service_issuecommentservice_getissuecomments",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_comment.service.ts",
+      "source_location": "L36"
+    },
+    {
+      "caller_nid": "issue_issue_comment_service_issuecommentservice_getissuecomments",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_comment.service.ts",
+      "source_location": "L36"
+    },
+    {
+      "caller_nid": "issue_issue_comment_service_issuecommentservice_getissuecomments",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_comment.service.ts",
+      "source_location": "L36"
+    },
+    {
+      "caller_nid": "issue_issue_comment_service_issuecommentservice_createissuecomment",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_comment.service.ts",
+      "source_location": "L54"
+    },
+    {
+      "caller_nid": "issue_issue_comment_service_issuecommentservice_createissuecomment",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_comment.service.ts",
+      "source_location": "L54"
+    },
+    {
+      "caller_nid": "issue_issue_comment_service_issuecommentservice_createissuecomment",
+      "callee": "post",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_comment.service.ts",
+      "source_location": "L54"
+    },
+    {
+      "caller_nid": "issue_issue_comment_service_issuecommentservice_patchissuecomment",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_comment.service.ts",
+      "source_location": "L71"
+    },
+    {
+      "caller_nid": "issue_issue_comment_service_issuecommentservice_patchissuecomment",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_comment.service.ts",
+      "source_location": "L71"
+    },
+    {
+      "caller_nid": "issue_issue_comment_service_issuecommentservice_patchissuecomment",
+      "callee": "patch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_comment.service.ts",
+      "source_location": "L71"
+    },
+    {
+      "caller_nid": "issue_issue_comment_service_issuecommentservice_deleteissuecomment",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_comment.service.ts",
+      "source_location": "L87"
+    },
+    {
+      "caller_nid": "issue_issue_comment_service_issuecommentservice_deleteissuecomment",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_comment.service.ts",
+      "source_location": "L87"
+    },
+    {
+      "caller_nid": "issue_issue_comment_service_issuecommentservice_deleteissuecomment",
+      "callee": "delete",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/issue/issue_comment.service.ts",
+      "source_location": "L87"
+    }
+  ]
+}

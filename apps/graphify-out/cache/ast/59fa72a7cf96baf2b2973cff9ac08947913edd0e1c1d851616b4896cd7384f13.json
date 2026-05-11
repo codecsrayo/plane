@@ -1,0 +1,800 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_api_rust_src_jobs_notifications_rs",
+      "label": "notifications.rs",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L1"
+    },
+    {
+      "id": "jobs_notifications_issueactivitynotificationjob",
+      "label": "IssueActivityNotificationJob",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L34"
+    },
+    {
+      "id": "jobs_notifications_handle_issue_activity_notification",
+      "label": "handle_issue_activity_notification()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L41"
+    },
+    {
+      "id": "jobs_notifications_run_notification",
+      "label": "run_notification()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L59"
+    },
+    {
+      "id": "jobs_notifications_build_notification_title",
+      "label": "build_notification_title()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L204"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_jobs_notifications_rs",
+      "target": "prelude",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L14",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_jobs_notifications_rs",
+      "target": "sea_orm",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L15",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_jobs_notifications_rs",
+      "target": "serde",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L18",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_jobs_notifications_rs",
+      "target": "uuid",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L19",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_jobs_notifications_rs",
+      "target": "crate",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L21",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_jobs_notifications_rs",
+      "target": "jobs_notifications_issueactivitynotificationjob",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_jobs_notifications_rs",
+      "target": "jobs_notifications_handle_issue_activity_notification",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L41",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_jobs_notifications_rs",
+      "target": "jobs_notifications_run_notification",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L59",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_jobs_notifications_rs",
+      "target": "jobs_notifications_build_notification_title",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L204",
+      "weight": 1.0
+    },
+    {
+      "source": "jobs_notifications_handle_issue_activity_notification",
+      "target": "jobs_notifications_run_notification",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L47",
+      "weight": 1.0
+    },
+    {
+      "source": "jobs_notifications_run_notification",
+      "target": "jobs_notifications_build_notification_title",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L136",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "jobs_notifications_handle_issue_activity_notification",
+      "callee": "clone",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L45"
+    },
+    {
+      "caller_nid": "jobs_notifications_handle_issue_activity_notification",
+      "callee": "Err",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L53"
+    },
+    {
+      "caller_nid": "jobs_notifications_handle_issue_activity_notification",
+      "callee": "Failed",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L53"
+    },
+    {
+      "caller_nid": "jobs_notifications_handle_issue_activity_notification",
+      "callee": "new",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L53"
+    },
+    {
+      "caller_nid": "jobs_notifications_handle_issue_activity_notification",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L53"
+    },
+    {
+      "caller_nid": "jobs_notifications_handle_issue_activity_notification",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L56"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "context",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L63"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "one",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L63"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "find_by_id",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L63"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L70"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "context",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L76"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "one",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L76"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "active",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L76"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "find_by_id",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L76"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "new",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L83"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "insert",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L87"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "all",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L91"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "filter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L91"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "active",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L91"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "find",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L91"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "eq",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L93"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "insert",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L97"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "all",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L101"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "filter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L101"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "active",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L101"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "find",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L101"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "eq",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L103"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "insert",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L107"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "remove",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L112"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "is_empty",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L115"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L116"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "collect",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L120"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "filter_map",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L120"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "into_iter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L120"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "all",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L120"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "filter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L120"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "filter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L120"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "active",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L120"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "find",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L120"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "eq",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L122"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "eq",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L123"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "collect",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L130"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "filter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L130"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "into_iter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L130"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "contains",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L132"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L143"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "now",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L143"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "one",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L149"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "filter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L149"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "filter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L149"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "filter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L149"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "find",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L149"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "eq",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L150"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "eq",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L151"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "is_null",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L152"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "is_some",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L156"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "insert",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L160"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L161"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "new_v4",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L161"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L162"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "clone",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L162"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L163"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "clone",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L163"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L164"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "Some",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L164"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "clone",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L164"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L165"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "Some",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L165"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L166"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "to_owned",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L166"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L167"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "to_owned",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L167"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L168"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L169"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L170"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "Some",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L170"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L171"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L172"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L173"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L174"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "Some",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L174"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L182"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L183"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L184"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L185"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L186"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L187"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L188"
+    },
+    {
+      "caller_nid": "jobs_notifications_run_notification",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L200"
+    },
+    {
+      "caller_nid": "jobs_notifications_build_notification_title",
+      "callee": "unwrap_or",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L205"
+    },
+    {
+      "caller_nid": "jobs_notifications_build_notification_title",
+      "callee": "as_deref",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L205"
+    },
+    {
+      "caller_nid": "jobs_notifications_build_notification_title",
+      "callee": "unwrap_or",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L206"
+    },
+    {
+      "caller_nid": "jobs_notifications_build_notification_title",
+      "callee": "as_deref",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/jobs/notifications.rs",
+      "source_location": "L206"
+    }
+  ]
+}

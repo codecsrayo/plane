@@ -1,0 +1,84 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_lib_app_rail_context_tsx",
+      "label": "context.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/lib/app-rail/context.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "app_rail_context_apprailvisibilitycontext",
+      "label": "AppRailVisibilityContext",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/lib/app-rail/context.tsx",
+      "source_location": "L14"
+    },
+    {
+      "id": "app_rail_context_useapprailvisibility",
+      "label": "useAppRailVisibility()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/lib/app-rail/context.tsx",
+      "source_location": "L23"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_lib_app_rail_context_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/lib/app-rail/context.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_lib_app_rail_context_tsx",
+      "target": "home_nixos_plane_apps_web_core_lib_app_rail_types_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/lib/app-rail/context.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_lib_app_rail_context_tsx",
+      "target": "app_rail_types_iapprailvisibilitycontext",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/lib/app-rail/context.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_lib_app_rail_context_tsx",
+      "target": "app_rail_context_apprailvisibilitycontext",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/lib/app-rail/context.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_lib_app_rail_context_tsx",
+      "target": "app_rail_context_useapprailvisibility",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/lib/app-rail/context.tsx",
+      "source_location": "L23",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "app_rail_context_useapprailvisibility",
+      "callee": "useContext",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/lib/app-rail/context.tsx",
+      "source_location": "L24"
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_issues_issue_detail_widgets_sub_issues_helper_ts",
+      "label": "helper.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-detail-widgets/sub-issues/helper.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "sub_issues_helper_usesubissueoperations",
+      "label": "useSubIssueOperations()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-detail-widgets/sub-issues/helper.ts",
+      "source_location": "L17"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_detail_widgets_sub_issues_helper_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-detail-widgets/sub-issues/helper.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_detail_widgets_sub_issues_helper_ts",
+      "target": "i18n",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-detail-widgets/sub-issues/helper.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_detail_widgets_sub_issues_helper_ts",
+      "target": "toast",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-detail-widgets/sub-issues/helper.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_detail_widgets_sub_issues_helper_ts",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-detail-widgets/sub-issues/helper.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_detail_widgets_sub_issues_helper_ts",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-detail-widgets/sub-issues/helper.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_detail_widgets_sub_issues_helper_ts",
+      "target": "utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-detail-widgets/sub-issues/helper.ts",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_detail_widgets_sub_issues_helper_ts",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_use_issue_detail_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-detail-widgets/sub-issues/helper.ts",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_detail_widgets_sub_issues_helper_ts",
+      "target": "store_use_issue_detail_useissuedetail",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-detail-widgets/sub-issues/helper.ts",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_detail_widgets_sub_issues_helper_ts",
+      "target": "sub_issues_helper_usesubissueoperations",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-detail-widgets/sub-issues/helper.ts",
+      "source_location": "L17",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "sub_issues_helper_usesubissueoperations",
+      "callee": "useTranslation",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-detail-widgets/sub-issues/helper.ts",
+      "source_location": "L19"
+    },
+    {
+      "caller_nid": "sub_issues_helper_usesubissueoperations",
+      "callee": "useIssueDetail",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-detail-widgets/sub-issues/helper.ts",
+      "source_location": "L28"
+    },
+    {
+      "caller_nid": "sub_issues_helper_usesubissueoperations",
+      "callee": "useMemo",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-detail-widgets/sub-issues/helper.ts",
+      "source_location": "L30"
+    }
+  ]
+}

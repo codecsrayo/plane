@@ -1,0 +1,104 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_web_hooks_form_event_types_tsx",
+      "label": "event-types.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/web-hooks/form/event-types.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "form_event_types_props",
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/web-hooks/form/event-types.tsx",
+      "source_location": "L11"
+    },
+    {
+      "id": "form_event_types_webhook_event_types",
+      "label": "WEBHOOK_EVENT_TYPES",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/web-hooks/form/event-types.tsx",
+      "source_location": "L16"
+    },
+    {
+      "id": "form_event_types_webhookoptions",
+      "label": "WebhookOptions()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/web-hooks/form/event-types.tsx",
+      "source_location": "L27"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_web_hooks_form_event_types_tsx",
+      "target": "i18n",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/web-hooks/form/event-types.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_web_hooks_form_event_types_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/web-hooks/form/event-types.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_web_hooks_form_event_types_tsx",
+      "target": "form_event_types_props",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/web-hooks/form/event-types.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_web_hooks_form_event_types_tsx",
+      "target": "form_event_types_webhook_event_types",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/web-hooks/form/event-types.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_web_hooks_form_event_types_tsx",
+      "target": "form_event_types_webhookoptions",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/web-hooks/form/event-types.tsx",
+      "source_location": "L27",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "form_event_types_webhookoptions",
+      "callee": "useTranslation",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/web-hooks/form/event-types.tsx",
+      "source_location": "L29"
+    },
+    {
+      "caller_nid": "form_event_types_webhookoptions",
+      "callee": "t",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/web-hooks/form/event-types.tsx",
+      "source_location": "L33"
+    },
+    {
+      "caller_nid": "form_event_types_webhookoptions",
+      "callee": "map",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/web-hooks/form/event-types.tsx",
+      "source_location": "L35"
+    }
+  ]
+}

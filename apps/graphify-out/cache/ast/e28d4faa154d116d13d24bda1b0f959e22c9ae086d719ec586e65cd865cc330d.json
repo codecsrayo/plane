@@ -1,0 +1,400 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_services_view_service_ts",
+      "label": "view.service.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "services_view_service_viewservice",
+      "label": "ViewService",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L13"
+    },
+    {
+      "id": "services_view_service_viewservice_constructor",
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L14"
+    },
+    {
+      "id": "services_view_service_viewservice_createview",
+      "label": ".createView()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L18"
+    },
+    {
+      "id": "services_view_service_viewservice_patchview",
+      "label": ".patchView()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L26"
+    },
+    {
+      "id": "services_view_service_viewservice_deleteview",
+      "label": ".deleteView()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L34"
+    },
+    {
+      "id": "services_view_service_viewservice_getviews",
+      "label": ".getViews()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L42"
+    },
+    {
+      "id": "services_view_service_viewservice_getviewdetails",
+      "label": ".getViewDetails()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L50"
+    },
+    {
+      "id": "services_view_service_viewservice_getviewissues",
+      "label": ".getViewIssues()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L58"
+    },
+    {
+      "id": "services_view_service_viewservice_addviewtofavorites",
+      "label": ".addViewToFavorites()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L66"
+    },
+    {
+      "id": "services_view_service_viewservice_removeviewfromfavorites",
+      "label": ".removeViewFromFavorites()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L80"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_services_view_service_ts",
+      "target": "constants",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_view_service_ts",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_view_service_ts",
+      "target": "home_nixos_plane_apps_web_core_services_api_service_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_view_service_ts",
+      "target": "services_api_service_apiservice",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_view_service_ts",
+      "target": "services_api_service_apierror",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_view_service_ts",
+      "target": "services_view_service_viewservice",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "services_view_service_viewservice",
+      "target": "services_view_service_viewservice_constructor",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "services_view_service_viewservice",
+      "target": "services_view_service_viewservice_createview",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "services_view_service_viewservice",
+      "target": "services_view_service_viewservice_patchview",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "services_view_service_viewservice",
+      "target": "services_view_service_viewservice_deleteview",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "services_view_service_viewservice",
+      "target": "services_view_service_viewservice_getviews",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L42",
+      "weight": 1.0
+    },
+    {
+      "source": "services_view_service_viewservice",
+      "target": "services_view_service_viewservice_getviewdetails",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L50",
+      "weight": 1.0
+    },
+    {
+      "source": "services_view_service_viewservice",
+      "target": "services_view_service_viewservice_getviewissues",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L58",
+      "weight": 1.0
+    },
+    {
+      "source": "services_view_service_viewservice",
+      "target": "services_view_service_viewservice_addviewtofavorites",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L66",
+      "weight": 1.0
+    },
+    {
+      "source": "services_view_service_viewservice",
+      "target": "services_view_service_viewservice_removeviewfromfavorites",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L80",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "services_view_service_viewservice_constructor",
+      "callee": "super",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L15"
+    },
+    {
+      "caller_nid": "services_view_service_viewservice_createview",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L19"
+    },
+    {
+      "caller_nid": "services_view_service_viewservice_createview",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L19"
+    },
+    {
+      "caller_nid": "services_view_service_viewservice_createview",
+      "callee": "post",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L19"
+    },
+    {
+      "caller_nid": "services_view_service_viewservice_patchview",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L27"
+    },
+    {
+      "caller_nid": "services_view_service_viewservice_patchview",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L27"
+    },
+    {
+      "caller_nid": "services_view_service_viewservice_patchview",
+      "callee": "patch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L27"
+    },
+    {
+      "caller_nid": "services_view_service_viewservice_deleteview",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L35"
+    },
+    {
+      "caller_nid": "services_view_service_viewservice_deleteview",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L35"
+    },
+    {
+      "caller_nid": "services_view_service_viewservice_deleteview",
+      "callee": "delete",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L35"
+    },
+    {
+      "caller_nid": "services_view_service_viewservice_getviews",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L43"
+    },
+    {
+      "caller_nid": "services_view_service_viewservice_getviews",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L43"
+    },
+    {
+      "caller_nid": "services_view_service_viewservice_getviews",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L43"
+    },
+    {
+      "caller_nid": "services_view_service_viewservice_getviewdetails",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L51"
+    },
+    {
+      "caller_nid": "services_view_service_viewservice_getviewdetails",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L51"
+    },
+    {
+      "caller_nid": "services_view_service_viewservice_getviewdetails",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L51"
+    },
+    {
+      "caller_nid": "services_view_service_viewservice_getviewissues",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L59"
+    },
+    {
+      "caller_nid": "services_view_service_viewservice_getviewissues",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L59"
+    },
+    {
+      "caller_nid": "services_view_service_viewservice_getviewissues",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L59"
+    },
+    {
+      "caller_nid": "services_view_service_viewservice_addviewtofavorites",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L73"
+    },
+    {
+      "caller_nid": "services_view_service_viewservice_addviewtofavorites",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L73"
+    },
+    {
+      "caller_nid": "services_view_service_viewservice_addviewtofavorites",
+      "callee": "post",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L73"
+    },
+    {
+      "caller_nid": "services_view_service_viewservice_removeviewfromfavorites",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L81"
+    },
+    {
+      "caller_nid": "services_view_service_viewservice_removeviewfromfavorites",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L81"
+    },
+    {
+      "caller_nid": "services_view_service_viewservice_removeviewfromfavorites",
+      "callee": "delete",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/view.service.ts",
+      "source_location": "L81"
+    }
+  ]
+}

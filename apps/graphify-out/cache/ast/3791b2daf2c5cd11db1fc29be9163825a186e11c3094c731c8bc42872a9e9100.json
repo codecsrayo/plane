@@ -1,0 +1,436 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_quick_action_dropdowns_helper_tsx",
+      "label": "helper.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "quick_action_dropdowns_helper_handleoptionalaction",
+      "label": "handleOptionalAction()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L34"
+    },
+    {
+      "id": "quick_action_dropdowns_helper_menuitemfactoryprops",
+      "label": "MenuItemFactoryProps",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L54"
+    },
+    {
+      "id": "quick_action_dropdowns_helper_useissueactionhandlers",
+      "label": "useIssueActionHandlers()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L84"
+    },
+    {
+      "id": "quick_action_dropdowns_helper_usemenuitemfactory",
+      "label": "useMenuItemFactory()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L139"
+    },
+    {
+      "id": "quick_action_dropdowns_helper_useprojectissuemenuitems",
+      "label": "useProjectIssueMenuItems()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L268"
+    },
+    {
+      "id": "quick_action_dropdowns_helper_useworkitemdetailmenuitems",
+      "label": "useWorkItemDetailMenuItems()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L284"
+    },
+    {
+      "id": "quick_action_dropdowns_helper_useallissuemenuitems",
+      "label": "useAllIssueMenuItems()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L300"
+    },
+    {
+      "id": "quick_action_dropdowns_helper_usecycleissuemenuitems",
+      "label": "useCycleIssueMenuItems()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L316"
+    },
+    {
+      "id": "quick_action_dropdowns_helper_usemoduleissuemenuitems",
+      "label": "useModuleIssueMenuItems()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L341"
+    },
+    {
+      "id": "quick_action_dropdowns_helper_usearchivedissuemenuitems",
+      "label": "useArchivedIssueMenuItems()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L366"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_quick_action_dropdowns_helper_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_quick_action_dropdowns_helper_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_quick_action_dropdowns_helper_tsx",
+      "target": "i18n",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_quick_action_dropdowns_helper_tsx",
+      "target": "icons",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_quick_action_dropdowns_helper_tsx",
+      "target": "toast",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_quick_action_dropdowns_helper_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_quick_action_dropdowns_helper_tsx",
+      "target": "ui",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_quick_action_dropdowns_helper_tsx",
+      "target": "utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_quick_action_dropdowns_helper_tsx",
+      "target": "home_nixos_plane_apps_web_core_plane_web_components_issues_issue_layouts_quick_action_dropdowns",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_quick_action_dropdowns_helper_tsx",
+      "target": "issue_layouts_quick_action_dropdowns_createcopymenuwithduplication",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_quick_action_dropdowns_helper_tsx",
+      "target": "quick_action_dropdowns_helper_handleoptionalaction",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_quick_action_dropdowns_helper_tsx",
+      "target": "quick_action_dropdowns_helper_menuitemfactoryprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L54",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_quick_action_dropdowns_helper_tsx",
+      "target": "quick_action_dropdowns_helper_useissueactionhandlers",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L84",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_quick_action_dropdowns_helper_tsx",
+      "target": "quick_action_dropdowns_helper_usemenuitemfactory",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L139",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_quick_action_dropdowns_helper_tsx",
+      "target": "quick_action_dropdowns_helper_useprojectissuemenuitems",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L268",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_quick_action_dropdowns_helper_tsx",
+      "target": "quick_action_dropdowns_helper_useworkitemdetailmenuitems",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L284",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_quick_action_dropdowns_helper_tsx",
+      "target": "quick_action_dropdowns_helper_useallissuemenuitems",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L300",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_quick_action_dropdowns_helper_tsx",
+      "target": "quick_action_dropdowns_helper_usecycleissuemenuitems",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L316",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_quick_action_dropdowns_helper_tsx",
+      "target": "quick_action_dropdowns_helper_usemoduleissuemenuitems",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L341",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_quick_action_dropdowns_helper_tsx",
+      "target": "quick_action_dropdowns_helper_usearchivedissuemenuitems",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L366",
+      "weight": 1.0
+    },
+    {
+      "source": "quick_action_dropdowns_helper_usemenuitemfactory",
+      "target": "quick_action_dropdowns_helper_useissueactionhandlers",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L141",
+      "weight": 1.0
+    },
+    {
+      "source": "quick_action_dropdowns_helper_useprojectissuemenuitems",
+      "target": "quick_action_dropdowns_helper_usemenuitemfactory",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L269",
+      "weight": 1.0
+    },
+    {
+      "source": "quick_action_dropdowns_helper_useworkitemdetailmenuitems",
+      "target": "quick_action_dropdowns_helper_usemenuitemfactory",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L285",
+      "weight": 1.0
+    },
+    {
+      "source": "quick_action_dropdowns_helper_useallissuemenuitems",
+      "target": "quick_action_dropdowns_helper_usemenuitemfactory",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L301",
+      "weight": 1.0
+    },
+    {
+      "source": "quick_action_dropdowns_helper_usecycleissuemenuitems",
+      "target": "quick_action_dropdowns_helper_usemenuitemfactory",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L317",
+      "weight": 1.0
+    },
+    {
+      "source": "quick_action_dropdowns_helper_usemoduleissuemenuitems",
+      "target": "quick_action_dropdowns_helper_usemenuitemfactory",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L342",
+      "weight": 1.0
+    },
+    {
+      "source": "quick_action_dropdowns_helper_usearchivedissuemenuitems",
+      "target": "quick_action_dropdowns_helper_usemenuitemfactory",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L367",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "quick_action_dropdowns_helper_handleoptionalaction",
+      "callee": "(optionalFn as (param: T) => void | Promise<void>)",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L41"
+    },
+    {
+      "caller_nid": "quick_action_dropdowns_helper_handleoptionalaction",
+      "callee": "(optionalFn as () => void | Promise<void>)",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L43"
+    },
+    {
+      "caller_nid": "quick_action_dropdowns_helper_handleoptionalaction",
+      "callee": "setToast",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L46"
+    },
+    {
+      "caller_nid": "quick_action_dropdowns_helper_useissueactionhandlers",
+      "callee": "useMemo",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L87"
+    },
+    {
+      "caller_nid": "quick_action_dropdowns_helper_usemenuitemfactory",
+      "callee": "useTranslation",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L140"
+    },
+    {
+      "caller_nid": "quick_action_dropdowns_helper_useprojectissuemenuitems",
+      "callee": "useMemo",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L271"
+    },
+    {
+      "caller_nid": "quick_action_dropdowns_helper_useworkitemdetailmenuitems",
+      "callee": "useMemo",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L288"
+    },
+    {
+      "caller_nid": "quick_action_dropdowns_helper_useallissuemenuitems",
+      "callee": "useMemo",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L303"
+    },
+    {
+      "caller_nid": "quick_action_dropdowns_helper_usecycleissuemenuitems",
+      "callee": "useCallback",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L319"
+    },
+    {
+      "caller_nid": "quick_action_dropdowns_helper_usecycleissuemenuitems",
+      "callee": "useMemo",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L327"
+    },
+    {
+      "caller_nid": "quick_action_dropdowns_helper_usemoduleissuemenuitems",
+      "callee": "useCallback",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L344"
+    },
+    {
+      "caller_nid": "quick_action_dropdowns_helper_usemoduleissuemenuitems",
+      "callee": "useMemo",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L352"
+    },
+    {
+      "caller_nid": "quick_action_dropdowns_helper_usearchivedissuemenuitems",
+      "callee": "useMemo",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/issues/issue-layouts/quick-action-dropdowns/helper.tsx",
+      "source_location": "L369"
+    }
+  ]
+}

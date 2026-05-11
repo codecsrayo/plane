@@ -1,0 +1,82 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_constants_calendar_ts",
+      "label": "calendar.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/constants/calendar.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "constants_calendar_months_list",
+      "label": "MONTHS_LIST",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/constants/calendar.ts",
+      "source_location": "L10"
+    },
+    {
+      "id": "constants_calendar_days_list",
+      "label": "DAYS_LIST",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/constants/calendar.ts",
+      "source_location": "L66"
+    },
+    {
+      "id": "constants_calendar_calendar_layouts",
+      "label": "CALENDAR_LAYOUTS",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/constants/calendar.ts",
+      "source_location": "L110"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_constants_calendar_ts",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/constants/calendar.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_constants_calendar_ts",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/constants/calendar.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_constants_calendar_ts",
+      "target": "constants_calendar_months_list",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/constants/calendar.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_constants_calendar_ts",
+      "target": "constants_calendar_days_list",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/constants/calendar.ts",
+      "source_location": "L66",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_constants_calendar_ts",
+      "target": "constants_calendar_calendar_layouts",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/constants/calendar.ts",
+      "source_location": "L110",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

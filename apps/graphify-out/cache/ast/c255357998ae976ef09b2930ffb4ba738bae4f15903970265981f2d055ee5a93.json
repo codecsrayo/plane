@@ -1,0 +1,108 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_common_cover_image_tsx",
+      "label": "cover-image.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/common/cover-image.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "common_cover_image_tcoverimageprops",
+      "label": "TCoverImageProps",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/common/cover-image.tsx",
+      "source_location": "L11"
+    },
+    {
+      "id": "common_cover_image_coverimage",
+      "label": "CoverImage()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/common/cover-image.tsx",
+      "source_location": "L32"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_common_cover_image_tsx",
+      "target": "utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/common/cover-image.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_common_cover_image_tsx",
+      "target": "home_nixos_plane_apps_web_core_helpers_cover_image_helper",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/common/cover-image.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_common_cover_image_tsx",
+      "target": "helpers_cover_image_getcoverimagedisplayurl",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/common/cover-image.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_common_cover_image_tsx",
+      "target": "helpers_cover_image_default_cover_image_url",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/common/cover-image.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_common_cover_image_tsx",
+      "target": "common_cover_image_tcoverimageprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/common/cover-image.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_common_cover_image_tsx",
+      "target": "common_cover_image_coverimage",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/common/cover-image.tsx",
+      "source_location": "L32",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "common_cover_image_coverimage",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/common/cover-image.tsx",
+      "source_location": "L44"
+    },
+    {
+      "caller_nid": "common_cover_image_coverimage",
+      "callee": "getCoverImageDisplayURL",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/common/cover-image.tsx",
+      "source_location": "L47"
+    },
+    {
+      "caller_nid": "common_cover_image_coverimage",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/common/cover-image.tsx",
+      "source_location": "L49"
+    }
+  ]
+}

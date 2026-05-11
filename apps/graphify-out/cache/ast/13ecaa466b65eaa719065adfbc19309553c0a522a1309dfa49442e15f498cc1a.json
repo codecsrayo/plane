@@ -1,0 +1,179 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_hooks_use_workspace_invitation_tsx",
+      "label": "use-workspace-invitation.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-workspace-invitation.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "hooks_use_workspace_invitation_emailrole",
+      "label": "EmailRole",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-workspace-invitation.tsx",
+      "source_location": "L13"
+    },
+    {
+      "id": "hooks_use_workspace_invitation_invitationformvalues",
+      "label": "InvitationFormValues",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-workspace-invitation.tsx",
+      "source_location": "L18"
+    },
+    {
+      "id": "hooks_use_workspace_invitation_send_workspace_invitation_modal_default_values",
+      "label": "SEND_WORKSPACE_INVITATION_MODAL_DEFAULT_VALUES",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-workspace-invitation.tsx",
+      "source_location": "L22"
+    },
+    {
+      "id": "hooks_use_workspace_invitation_tuseworkspaceinvitationprops",
+      "label": "TUseWorkspaceInvitationProps",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-workspace-invitation.tsx",
+      "source_location": "L31"
+    },
+    {
+      "id": "hooks_use_workspace_invitation_tuseworkspaceinvitationreturn",
+      "label": "TUseWorkspaceInvitationReturn",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-workspace-invitation.tsx",
+      "source_location": "L36"
+    },
+    {
+      "id": "hooks_use_workspace_invitation_useworkspaceinvitationactions",
+      "label": "useWorkspaceInvitationActions()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-workspace-invitation.tsx",
+      "source_location": "L47"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_workspace_invitation_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-workspace-invitation.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_workspace_invitation_tsx",
+      "target": "react_hook_form",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-workspace-invitation.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_workspace_invitation_tsx",
+      "target": "react_hook_form",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-workspace-invitation.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_workspace_invitation_tsx",
+      "target": "constants",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-workspace-invitation.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_workspace_invitation_tsx",
+      "target": "hooks_use_workspace_invitation_emailrole",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-workspace-invitation.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_workspace_invitation_tsx",
+      "target": "hooks_use_workspace_invitation_invitationformvalues",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-workspace-invitation.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_workspace_invitation_tsx",
+      "target": "hooks_use_workspace_invitation_send_workspace_invitation_modal_default_values",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-workspace-invitation.tsx",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_workspace_invitation_tsx",
+      "target": "hooks_use_workspace_invitation_tuseworkspaceinvitationprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-workspace-invitation.tsx",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_workspace_invitation_tsx",
+      "target": "hooks_use_workspace_invitation_tuseworkspaceinvitationreturn",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-workspace-invitation.tsx",
+      "source_location": "L36",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_workspace_invitation_tsx",
+      "target": "hooks_use_workspace_invitation_useworkspaceinvitationactions",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-workspace-invitation.tsx",
+      "source_location": "L47",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "hooks_use_workspace_invitation_useworkspaceinvitationactions",
+      "callee": "useForm",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-workspace-invitation.tsx",
+      "source_location": "L50"
+    },
+    {
+      "caller_nid": "hooks_use_workspace_invitation_useworkspaceinvitationactions",
+      "callee": "useFieldArray",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-workspace-invitation.tsx",
+      "source_location": "L54"
+    },
+    {
+      "caller_nid": "hooks_use_workspace_invitation_useworkspaceinvitationactions",
+      "callee": "useEffect",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-workspace-invitation.tsx",
+      "source_location": "L79"
+    },
+    {
+      "caller_nid": "hooks_use_workspace_invitation_useworkspaceinvitationactions",
+      "callee": "handleSubmit",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-workspace-invitation.tsx",
+      "source_location": "L89"
+    }
+  ]
+}

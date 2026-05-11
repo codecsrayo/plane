@@ -1,0 +1,91 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_project_project_network_icon_tsx",
+      "label": "project-network-icon.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/project-network-icon.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "project_project_network_icon_props",
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/project-network-icon.tsx",
+      "source_location": "L12"
+    },
+    {
+      "id": "project_project_network_icon_projectnetworkicon",
+      "label": "ProjectNetworkIcon()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/project-network-icon.tsx",
+      "source_location": "L17"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_project_network_icon_tsx",
+      "target": "constants",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/project-network-icon.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_project_network_icon_tsx",
+      "target": "icons",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/project-network-icon.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_project_network_icon_tsx",
+      "target": "utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/project-network-icon.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_project_network_icon_tsx",
+      "target": "project_project_network_icon_props",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/project-network-icon.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_project_network_icon_tsx",
+      "target": "project_project_network_icon_projectnetworkicon",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/project-network-icon.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "project_project_network_icon_projectnetworkicon",
+      "callee": "getProjectNetworkIcon",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/project-network-icon.tsx",
+      "source_location": "L32"
+    },
+    {
+      "caller_nid": "project_project_network_icon_projectnetworkicon",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/project/project-network-icon.tsx",
+      "source_location": "L35"
+    }
+  ]
+}

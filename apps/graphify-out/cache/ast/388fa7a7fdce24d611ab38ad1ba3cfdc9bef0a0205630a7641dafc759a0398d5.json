@@ -1,0 +1,320 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_core_modals_gpt_assistant_popover_tsx",
+      "label": "gpt-assistant-popover.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/modals/gpt-assistant-popover.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "modals_gpt_assistant_popover_aiservice",
+      "label": "aiService",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/modals/gpt-assistant-popover.tsx",
+      "source_location": "L23"
+    },
+    {
+      "id": "modals_gpt_assistant_popover_props",
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/modals/gpt-assistant-popover.tsx",
+      "source_location": "L25"
+    },
+    {
+      "id": "modals_gpt_assistant_popover_formdata",
+      "label": "FormData",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/modals/gpt-assistant-popover.tsx",
+      "source_location": "L39"
+    },
+    {
+      "id": "modals_gpt_assistant_popover_gptassistantpopover",
+      "label": "GptAssistantPopover()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/modals/gpt-assistant-popover.tsx",
+      "source_location": "L44"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_core_modals_gpt_assistant_popover_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/modals/gpt-assistant-popover.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_core_modals_gpt_assistant_popover_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/modals/gpt-assistant-popover.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_core_modals_gpt_assistant_popover_tsx",
+      "target": "core",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/modals/gpt-assistant-popover.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_core_modals_gpt_assistant_popover_tsx",
+      "target": "react_hook_form",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/modals/gpt-assistant-popover.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_core_modals_gpt_assistant_popover_tsx",
+      "target": "react_popper",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/modals/gpt-assistant-popover.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_core_modals_gpt_assistant_popover_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/modals/gpt-assistant-popover.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_core_modals_gpt_assistant_popover_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/modals/gpt-assistant-popover.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_core_modals_gpt_assistant_popover_tsx",
+      "target": "editor",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/modals/gpt-assistant-popover.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_core_modals_gpt_assistant_popover_tsx",
+      "target": "button",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/modals/gpt-assistant-popover.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_core_modals_gpt_assistant_popover_tsx",
+      "target": "toast",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/modals/gpt-assistant-popover.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_core_modals_gpt_assistant_popover_tsx",
+      "target": "ui",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/modals/gpt-assistant-popover.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_core_modals_gpt_assistant_popover_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_editor_rich_text_index_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/modals/gpt-assistant-popover.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_core_modals_gpt_assistant_popover_tsx",
+      "target": "rich_text_index_richtexteditor",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/modals/gpt-assistant-popover.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_core_modals_gpt_assistant_popover_tsx",
+      "target": "home_nixos_plane_apps_web_core_services_ai_service_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/modals/gpt-assistant-popover.tsx",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_core_modals_gpt_assistant_popover_tsx",
+      "target": "services_ai_service_aiservice",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/modals/gpt-assistant-popover.tsx",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_core_modals_gpt_assistant_popover_tsx",
+      "target": "modals_gpt_assistant_popover_aiservice",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/modals/gpt-assistant-popover.tsx",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_core_modals_gpt_assistant_popover_tsx",
+      "target": "modals_gpt_assistant_popover_props",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/modals/gpt-assistant-popover.tsx",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_core_modals_gpt_assistant_popover_tsx",
+      "target": "modals_gpt_assistant_popover_formdata",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/modals/gpt-assistant-popover.tsx",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_core_modals_gpt_assistant_popover_tsx",
+      "target": "modals_gpt_assistant_popover_gptassistantpopover",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/modals/gpt-assistant-popover.tsx",
+      "source_location": "L44",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "modals_gpt_assistant_popover_gptassistantpopover",
+      "callee": "useState",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/modals/gpt-assistant-popover.tsx",
+      "source_location": "L59"
+    },
+    {
+      "caller_nid": "modals_gpt_assistant_popover_gptassistantpopover",
+      "callee": "useState",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/modals/gpt-assistant-popover.tsx",
+      "source_location": "L60"
+    },
+    {
+      "caller_nid": "modals_gpt_assistant_popover_gptassistantpopover",
+      "callee": "useState",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/modals/gpt-assistant-popover.tsx",
+      "source_location": "L61"
+    },
+    {
+      "caller_nid": "modals_gpt_assistant_popover_gptassistantpopover",
+      "callee": "useState",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/modals/gpt-assistant-popover.tsx",
+      "source_location": "L62"
+    },
+    {
+      "caller_nid": "modals_gpt_assistant_popover_gptassistantpopover",
+      "callee": "useRef",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/modals/gpt-assistant-popover.tsx",
+      "source_location": "L64"
+    },
+    {
+      "caller_nid": "modals_gpt_assistant_popover_gptassistantpopover",
+      "callee": "useRef",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/modals/gpt-assistant-popover.tsx",
+      "source_location": "L65"
+    },
+    {
+      "caller_nid": "modals_gpt_assistant_popover_gptassistantpopover",
+      "callee": "usePopper",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/modals/gpt-assistant-popover.tsx",
+      "source_location": "L67"
+    },
+    {
+      "caller_nid": "modals_gpt_assistant_popover_gptassistantpopover",
+      "callee": "useForm",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/modals/gpt-assistant-popover.tsx",
+      "source_location": "L77"
+    },
+    {
+      "caller_nid": "modals_gpt_assistant_popover_gptassistantpopover",
+      "callee": "useEffect",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/modals/gpt-assistant-popover.tsx",
+      "source_location": "L143"
+    },
+    {
+      "caller_nid": "modals_gpt_assistant_popover_gptassistantpopover",
+      "callee": "useEffect",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/modals/gpt-assistant-popover.tsx",
+      "source_location": "L147"
+    },
+    {
+      "caller_nid": "modals_gpt_assistant_popover_gptassistantpopover",
+      "callee": "useEffect",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/modals/gpt-assistant-popover.tsx",
+      "source_location": "L151"
+    },
+    {
+      "caller_nid": "modals_gpt_assistant_popover_gptassistantpopover",
+      "callee": "useEffect",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/modals/gpt-assistant-popover.tsx",
+      "source_location": "L155"
+    },
+    {
+      "caller_nid": "modals_gpt_assistant_popover_gptassistantpopover",
+      "callee": "handleSubmit",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/core/modals/gpt-assistant-popover.tsx",
+      "source_location": "L293"
+    }
+  ]
+}

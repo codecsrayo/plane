@@ -1,0 +1,164 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_home_widgets_links_use_links_tsx",
+      "label": "use-links.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/home/widgets/links/use-links.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "links_use_links_tlinkoperations",
+      "label": "TLinkOperations",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/home/widgets/links/use-links.tsx",
+      "source_location": "L14"
+    },
+    {
+      "id": "links_use_links_tprojectlinkroot",
+      "label": "TProjectLinkRoot",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/home/widgets/links/use-links.tsx",
+      "source_location": "L19"
+    },
+    {
+      "id": "links_use_links_uselinks",
+      "label": "useLinks()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/home/widgets/links/use-links.tsx",
+      "source_location": "L23"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_home_widgets_links_use_links_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/home/widgets/links/use-links.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_home_widgets_links_use_links_tsx",
+      "target": "i18n",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/home/widgets/links/use-links.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_home_widgets_links_use_links_tsx",
+      "target": "toast",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/home/widgets/links/use-links.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_home_widgets_links_use_links_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/home/widgets/links/use-links.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_home_widgets_links_use_links_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_use_home_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/home/widgets/links/use-links.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_home_widgets_links_use_links_tsx",
+      "target": "store_use_home_usehome",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/home/widgets/links/use-links.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_home_widgets_links_use_links_tsx",
+      "target": "home_nixos_plane_apps_web_core_services_api_service_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/home/widgets/links/use-links.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_home_widgets_links_use_links_tsx",
+      "target": "services_api_service_extractapierrormessage",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/home/widgets/links/use-links.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_home_widgets_links_use_links_tsx",
+      "target": "links_use_links_tlinkoperations",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/home/widgets/links/use-links.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_home_widgets_links_use_links_tsx",
+      "target": "links_use_links_tprojectlinkroot",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/home/widgets/links/use-links.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_home_widgets_links_use_links_tsx",
+      "target": "links_use_links_uselinks",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/home/widgets/links/use-links.tsx",
+      "source_location": "L23",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "links_use_links_uselinks",
+      "callee": "useHome",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/home/widgets/links/use-links.tsx",
+      "source_location": "L36"
+    },
+    {
+      "caller_nid": "links_use_links_uselinks",
+      "callee": "useTranslation",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/home/widgets/links/use-links.tsx",
+      "source_location": "L37"
+    },
+    {
+      "caller_nid": "links_use_links_uselinks",
+      "callee": "useMemo",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/home/widgets/links/use-links.tsx",
+      "source_location": "L39"
+    }
+  ]
+}

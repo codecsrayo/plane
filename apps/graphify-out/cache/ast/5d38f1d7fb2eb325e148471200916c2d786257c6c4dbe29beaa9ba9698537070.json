@@ -1,0 +1,577 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_store_module_store_ts",
+      "label": "module.store.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "store_module_store_imodulestore",
+      "label": "IModuleStore",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L23"
+    },
+    {
+      "id": "store_module_store_modulesstore",
+      "label": "ModulesStore",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L83"
+    },
+    {
+      "id": "store_module_store_modulesstore_constructor",
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L97"
+    },
+    {
+      "id": "store_module_store_modulesstore_projectmoduleids",
+      "label": ".projectModuleIds()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L138"
+    },
+    {
+      "id": "store_module_store_modulesstore_projectarchivedmoduleids",
+      "label": ".projectArchivedModuleIds()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L150"
+    },
+    {
+      "id": "store_module_store_displayfilters",
+      "label": "displayFilters",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L173"
+    },
+    {
+      "id": "store_module_store_filters",
+      "label": "filters",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L174"
+    },
+    {
+      "id": "store_module_store_modules",
+      "label": "modules",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L177"
+    },
+    {
+      "id": "store_module_store_moduleids",
+      "label": "moduleIds",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L185"
+    },
+    {
+      "id": "store_module_store_projectmodules",
+      "label": "projectModules",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L231"
+    },
+    {
+      "id": "store_module_store_projectmoduleids",
+      "label": "projectModuleIds",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L243"
+    },
+    {
+      "id": "store_module_store_uniqueprojectids",
+      "label": "uniqueProjectIds",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L279"
+    },
+    {
+      "id": "store_module_store_originalmoduledetails",
+      "label": "originalModuleDetails",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L433"
+    },
+    {
+      "id": "store_module_store_moduledetails",
+      "label": "moduleDetails",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L456"
+    },
+    {
+      "id": "store_module_store_linkmodules",
+      "label": "linkModules",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L504"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_store_module_store_ts",
+      "target": "lodash_es",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_module_store_ts",
+      "target": "mobx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_module_store_ts",
+      "target": "mobx_utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_module_store_ts",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_module_store_ts",
+      "target": "utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_module_store_ts",
+      "target": "utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_module_store_ts",
+      "target": "home_nixos_plane_apps_web_core_services_module_service_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_module_store_ts",
+      "target": "services_module_service_moduleservice",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_module_store_ts",
+      "target": "home_nixos_plane_apps_web_core_services_module_archive_service_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_module_store_ts",
+      "target": "services_module_archive_service_modulearchiveservice",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_module_store_ts",
+      "target": "home_nixos_plane_apps_web_core_services_project_index_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_module_store_ts",
+      "target": "project_index_projectservice",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_module_store_ts",
+      "target": "home_nixos_plane_apps_web_core_store_root_store_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_module_store_ts",
+      "target": "store_root_store_corerootstore",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_module_store_ts",
+      "target": "home_nixos_plane_apps_web_core_services_api_service_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_module_store_ts",
+      "target": "services_api_service_toapierror",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_module_store_ts",
+      "target": "store_module_store_imodulestore",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_module_store_ts",
+      "target": "store_module_store_modulesstore",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L83",
+      "weight": 1.0
+    },
+    {
+      "source": "store_module_store_modulesstore",
+      "target": "store_module_store_modulesstore_constructor",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L97",
+      "weight": 1.0
+    },
+    {
+      "source": "store_module_store_modulesstore",
+      "target": "store_module_store_modulesstore_projectmoduleids",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L138",
+      "weight": 1.0
+    },
+    {
+      "source": "store_module_store_modulesstore",
+      "target": "store_module_store_modulesstore_projectarchivedmoduleids",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L150",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_module_store_ts",
+      "target": "store_module_store_displayfilters",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L173",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_module_store_ts",
+      "target": "store_module_store_filters",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L174",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_module_store_ts",
+      "target": "store_module_store_modules",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L177",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_module_store_ts",
+      "target": "store_module_store_moduleids",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L185",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_module_store_ts",
+      "target": "store_module_store_displayfilters",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L195",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_module_store_ts",
+      "target": "store_module_store_filters",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L196",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_module_store_ts",
+      "target": "store_module_store_modules",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L199",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_module_store_ts",
+      "target": "store_module_store_moduleids",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L207",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_module_store_ts",
+      "target": "store_module_store_projectmodules",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L231",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_module_store_ts",
+      "target": "store_module_store_projectmodules",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L241",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_module_store_ts",
+      "target": "store_module_store_projectmoduleids",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L243",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_module_store_ts",
+      "target": "store_module_store_uniqueprojectids",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L279",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_module_store_ts",
+      "target": "store_module_store_projectmodules",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L322",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_module_store_ts",
+      "target": "store_module_store_originalmoduledetails",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L433",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_module_store_ts",
+      "target": "store_module_store_moduledetails",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L456",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_module_store_ts",
+      "target": "store_module_store_originalmoduledetails",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L502",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_module_store_ts",
+      "target": "store_module_store_linkmodules",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L504",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_module_store_ts",
+      "target": "store_module_store_moduledetails",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L547",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_module_store_ts",
+      "target": "store_module_store_moduledetails",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L575",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_module_store_ts",
+      "target": "store_module_store_moduledetails",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L597",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_module_store_ts",
+      "target": "store_module_store_moduledetails",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L618",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "store_module_store_modulesstore_constructor",
+      "callee": "makeObservable",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L98"
+    },
+    {
+      "caller_nid": "store_module_store_modulesstore_projectmoduleids",
+      "callee": "filter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L141"
+    },
+    {
+      "caller_nid": "store_module_store_modulesstore_projectmoduleids",
+      "callee": "values",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L141"
+    },
+    {
+      "caller_nid": "store_module_store_modulesstore_projectmoduleids",
+      "callee": "sortBy",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L142"
+    },
+    {
+      "caller_nid": "store_module_store_modulesstore_projectmoduleids",
+      "callee": "map",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L143"
+    },
+    {
+      "caller_nid": "store_module_store_modulesstore_projectarchivedmoduleids",
+      "callee": "filter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L153"
+    },
+    {
+      "caller_nid": "store_module_store_modulesstore_projectarchivedmoduleids",
+      "callee": "values",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L153"
+    },
+    {
+      "caller_nid": "store_module_store_modulesstore_projectarchivedmoduleids",
+      "callee": "sortBy",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L154"
+    },
+    {
+      "caller_nid": "store_module_store_modulesstore_projectarchivedmoduleids",
+      "callee": "map",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/store/module.store.ts",
+      "source_location": "L155"
+    }
+  ]
+}

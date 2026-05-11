@@ -1,0 +1,130 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_analytics_trend_piece_tsx",
+      "label": "trend-piece.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/trend-piece.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "analytics_trend_piece_props",
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/trend-piece.tsx",
+      "source_location": "L13"
+    },
+    {
+      "id": "analytics_trend_piece_sizeconfig",
+      "label": "sizeConfig",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/trend-piece.tsx",
+      "source_location": "L21"
+    },
+    {
+      "id": "analytics_trend_piece_variants",
+      "label": "variants",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/trend-piece.tsx",
+      "source_location": "L40"
+    },
+    {
+      "id": "analytics_trend_piece_trendpiece",
+      "label": "TrendPiece()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/trend-piece.tsx",
+      "source_location": "L58"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_analytics_trend_piece_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/trend-piece.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_analytics_trend_piece_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/trend-piece.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_analytics_trend_piece_tsx",
+      "target": "utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/trend-piece.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_analytics_trend_piece_tsx",
+      "target": "analytics_trend_piece_props",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/trend-piece.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_analytics_trend_piece_tsx",
+      "target": "analytics_trend_piece_sizeconfig",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/trend-piece.tsx",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_analytics_trend_piece_tsx",
+      "target": "analytics_trend_piece_variants",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/trend-piece.tsx",
+      "source_location": "L40",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_analytics_trend_piece_tsx",
+      "target": "analytics_trend_piece_trendpiece",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/trend-piece.tsx",
+      "source_location": "L58",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "analytics_trend_piece_trendpiece",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/trend-piece.tsx",
+      "source_location": "L66"
+    },
+    {
+      "caller_nid": "analytics_trend_piece_trendpiece",
+      "callee": "round",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/trend-piece.tsx",
+      "source_location": "L81"
+    },
+    {
+      "caller_nid": "analytics_trend_piece_trendpiece",
+      "callee": "abs",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/analytics/trend-piece.tsx",
+      "source_location": "L81"
+    }
+  ]
+}

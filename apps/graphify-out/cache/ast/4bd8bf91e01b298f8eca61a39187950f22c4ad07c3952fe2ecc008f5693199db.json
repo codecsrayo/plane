@@ -1,0 +1,86 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_cycles_transfer_issues_tsx",
+      "label": "transfer-issues.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/transfer-issues.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "cycles_transfer_issues_props",
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/transfer-issues.tsx",
+      "source_location": "L13"
+    },
+    {
+      "id": "cycles_transfer_issues_transferissues",
+      "label": "TransferIssues()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/transfer-issues.tsx",
+      "source_location": "L19"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_transfer_issues_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/transfer-issues.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_transfer_issues_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/transfer-issues.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_transfer_issues_tsx",
+      "target": "button",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/transfer-issues.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_transfer_issues_tsx",
+      "target": "icons",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/transfer-issues.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_transfer_issues_tsx",
+      "target": "cycles_transfer_issues_props",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/transfer-issues.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_cycles_transfer_issues_tsx",
+      "target": "cycles_transfer_issues_transferissues",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/cycles/transfer-issues.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

@@ -1,0 +1,251 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_store_editor_asset_store_ts",
+      "label": "asset.store.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/editor/asset.store.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "editor_asset_store_ieditorassetstore",
+      "label": "IEditorAssetStore",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/editor/asset.store.ts",
+      "source_location": "L18"
+    },
+    {
+      "id": "editor_asset_store_editorassetstore",
+      "label": "EditorAssetStore",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/editor/asset.store.ts",
+      "source_location": "L52"
+    },
+    {
+      "id": "editor_asset_store_editorassetstore_constructor",
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/editor/asset.store.ts",
+      "source_location": "L58"
+    },
+    {
+      "id": "editor_asset_store_editorassetstore_assetsuploadpercentage",
+      "label": ".assetsUploadPercentage()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/editor/asset.store.ts",
+      "source_location": "L71"
+    },
+    {
+      "id": "editor_asset_store_tempid",
+      "label": "tempId",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/editor/asset.store.ts",
+      "source_location": "L99"
+    },
+    {
+      "id": "editor_asset_store_progresspercentage",
+      "label": "progressPercentage",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/editor/asset.store.ts",
+      "source_location": "L119"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_store_editor_asset_store_ts",
+      "target": "lodash_es",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/editor/asset.store.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_editor_asset_store_ts",
+      "target": "mobx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/editor/asset.store.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_editor_asset_store_ts",
+      "target": "mobx_utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/editor/asset.store.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_editor_asset_store_ts",
+      "target": "uuid",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/editor/asset.store.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_editor_asset_store_ts",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/editor/asset.store.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_editor_asset_store_ts",
+      "target": "home_nixos_plane_apps_web_core_services_file_service_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/editor/asset.store.ts",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_editor_asset_store_ts",
+      "target": "services_file_service_fileservice",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/editor/asset.store.ts",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_editor_asset_store_ts",
+      "target": "home_nixos_plane_apps_web_core_store_issue_issue_details_attachment_store_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/editor/asset.store.ts",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_editor_asset_store_ts",
+      "target": "issue_details_attachment_store_tattachmentuploadstatus",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/editor/asset.store.ts",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_editor_asset_store_ts",
+      "target": "home_nixos_plane_apps_web_core_services_api_service_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/editor/asset.store.ts",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_editor_asset_store_ts",
+      "target": "services_api_service_toapierror",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/editor/asset.store.ts",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_editor_asset_store_ts",
+      "target": "editor_asset_store_ieditorassetstore",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/editor/asset.store.ts",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_editor_asset_store_ts",
+      "target": "editor_asset_store_editorassetstore",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/editor/asset.store.ts",
+      "source_location": "L52",
+      "weight": 1.0
+    },
+    {
+      "source": "editor_asset_store_editorassetstore",
+      "target": "editor_asset_store_editorassetstore_constructor",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/editor/asset.store.ts",
+      "source_location": "L58",
+      "weight": 1.0
+    },
+    {
+      "source": "editor_asset_store_editorassetstore",
+      "target": "editor_asset_store_editorassetstore_assetsuploadpercentage",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/editor/asset.store.ts",
+      "source_location": "L71",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_editor_asset_store_ts",
+      "target": "editor_asset_store_tempid",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/editor/asset.store.ts",
+      "source_location": "L99",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_editor_asset_store_ts",
+      "target": "editor_asset_store_progresspercentage",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/editor/asset.store.ts",
+      "source_location": "L119",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_editor_asset_store_ts",
+      "target": "editor_asset_store_progresspercentage",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/editor/asset.store.ts",
+      "source_location": "L126",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "editor_asset_store_editorassetstore_constructor",
+      "callee": "makeObservable",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/store/editor/asset.store.ts",
+      "source_location": "L59"
+    },
+    {
+      "caller_nid": "editor_asset_store_editorassetstore_assetsuploadpercentage",
+      "callee": "forEach",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/store/editor/asset.store.ts",
+      "source_location": "L74"
+    },
+    {
+      "caller_nid": "editor_asset_store_editorassetstore_assetsuploadpercentage",
+      "callee": "keys",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/store/editor/asset.store.ts",
+      "source_location": "L74"
+    }
+  ]
+}

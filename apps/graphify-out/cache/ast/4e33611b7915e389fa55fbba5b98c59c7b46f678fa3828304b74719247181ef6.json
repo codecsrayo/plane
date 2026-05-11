@@ -1,0 +1,214 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_navigation_tab_navigation_utils_ts",
+      "label": "tab-navigation-utils.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/navigation/tab-navigation-utils.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "navigation_tab_navigation_utils_ttabpreferences",
+      "label": "TTabPreferences",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/navigation/tab-navigation-utils.ts",
+      "source_location": "L8"
+    },
+    {
+      "id": "navigation_tab_navigation_utils_gettabpreferences",
+      "label": "getTabPreferences()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/navigation/tab-navigation-utils.ts",
+      "source_location": "L22"
+    },
+    {
+      "id": "navigation_tab_navigation_utils_savetabpreferences",
+      "label": "saveTabPreferences()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/navigation/tab-navigation-utils.ts",
+      "source_location": "L48"
+    },
+    {
+      "id": "navigation_tab_navigation_utils_gettaburl",
+      "label": "getTabUrl()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/navigation/tab-navigation-utils.ts",
+      "source_location": "L66"
+    },
+    {
+      "id": "navigation_tab_navigation_utils_getdefaulttaburl",
+      "label": "getDefaultTabUrl()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/navigation/tab-navigation-utils.ts",
+      "source_location": "L88"
+    },
+    {
+      "id": "navigation_tab_navigation_utils_getvalidateddefaulttab",
+      "label": "getValidatedDefaultTab()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/navigation/tab-navigation-utils.ts",
+      "source_location": "L106"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_navigation_tab_navigation_utils_ts",
+      "target": "navigation_tab_navigation_utils_ttabpreferences",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/navigation/tab-navigation-utils.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_navigation_tab_navigation_utils_ts",
+      "target": "navigation_tab_navigation_utils_gettabpreferences",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/navigation/tab-navigation-utils.ts",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_navigation_tab_navigation_utils_ts",
+      "target": "navigation_tab_navigation_utils_savetabpreferences",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/navigation/tab-navigation-utils.ts",
+      "source_location": "L48",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_navigation_tab_navigation_utils_ts",
+      "target": "navigation_tab_navigation_utils_gettaburl",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/navigation/tab-navigation-utils.ts",
+      "source_location": "L66",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_navigation_tab_navigation_utils_ts",
+      "target": "navigation_tab_navigation_utils_getdefaulttaburl",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/navigation/tab-navigation-utils.ts",
+      "source_location": "L88",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_navigation_tab_navigation_utils_ts",
+      "target": "navigation_tab_navigation_utils_getvalidateddefaulttab",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/navigation/tab-navigation-utils.ts",
+      "source_location": "L106",
+      "weight": 1.0
+    },
+    {
+      "source": "navigation_tab_navigation_utils_getdefaulttaburl",
+      "target": "navigation_tab_navigation_utils_gettabpreferences",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/navigation/tab-navigation-utils.ts",
+      "source_location": "L89",
+      "weight": 1.0
+    },
+    {
+      "source": "navigation_tab_navigation_utils_getdefaulttaburl",
+      "target": "navigation_tab_navigation_utils_getvalidateddefaulttab",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/navigation/tab-navigation-utils.ts",
+      "source_location": "L94",
+      "weight": 1.0
+    },
+    {
+      "source": "navigation_tab_navigation_utils_getdefaulttaburl",
+      "target": "navigation_tab_navigation_utils_gettaburl",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/navigation/tab-navigation-utils.ts",
+      "source_location": "L97",
+      "weight": 1.0
+    },
+    {
+      "source": "navigation_tab_navigation_utils_getvalidateddefaulttab",
+      "target": "navigation_tab_navigation_utils_gettabpreferences",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/navigation/tab-navigation-utils.ts",
+      "source_location": "L107",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "navigation_tab_navigation_utils_gettabpreferences",
+      "callee": "getItem",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/navigation/tab-navigation-utils.ts",
+      "source_location": "L24"
+    },
+    {
+      "caller_nid": "navigation_tab_navigation_utils_gettabpreferences",
+      "callee": "parse",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/navigation/tab-navigation-utils.ts",
+      "source_location": "L26"
+    },
+    {
+      "caller_nid": "navigation_tab_navigation_utils_gettabpreferences",
+      "callee": "error",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/navigation/tab-navigation-utils.ts",
+      "source_location": "L35"
+    },
+    {
+      "caller_nid": "navigation_tab_navigation_utils_savetabpreferences",
+      "callee": "getItem",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/navigation/tab-navigation-utils.ts",
+      "source_location": "L50"
+    },
+    {
+      "caller_nid": "navigation_tab_navigation_utils_savetabpreferences",
+      "callee": "parse",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/navigation/tab-navigation-utils.ts",
+      "source_location": "L51"
+    },
+    {
+      "caller_nid": "navigation_tab_navigation_utils_savetabpreferences",
+      "callee": "setItem",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/navigation/tab-navigation-utils.ts",
+      "source_location": "L53"
+    },
+    {
+      "caller_nid": "navigation_tab_navigation_utils_savetabpreferences",
+      "callee": "stringify",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/navigation/tab-navigation-utils.ts",
+      "source_location": "L53"
+    },
+    {
+      "caller_nid": "navigation_tab_navigation_utils_savetabpreferences",
+      "callee": "error",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/navigation/tab-navigation-utils.ts",
+      "source_location": "L55"
+    },
+    {
+      "caller_nid": "navigation_tab_navigation_utils_getvalidateddefaulttab",
+      "callee": "includes",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/navigation/tab-navigation-utils.ts",
+      "source_location": "L111"
+    }
+  ]
+}

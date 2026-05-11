@@ -1,0 +1,200 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_modules_gantt_chart_modules_list_layout_tsx",
+      "label": "modules-list-layout.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/modules/gantt-chart/modules-list-layout.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "gantt_chart_modules_list_layout_moduleslistganttchartview",
+      "label": "ModulesListGanttChartView",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/modules/gantt-chart/modules-list-layout.tsx",
+      "source_location": "L21"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_modules_gantt_chart_modules_list_layout_tsx",
+      "target": "mobx_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/modules/gantt-chart/modules-list-layout.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_modules_gantt_chart_modules_list_layout_tsx",
+      "target": "navigation",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/modules/gantt-chart/modules-list-layout.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_modules_gantt_chart_modules_list_layout_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/modules/gantt-chart/modules-list-layout.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_modules_gantt_chart_modules_list_layout_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/modules/gantt-chart/modules-list-layout.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_modules_gantt_chart_modules_list_layout_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_gantt_chart_index_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/modules/gantt-chart/modules-list-layout.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_modules_gantt_chart_modules_list_layout_tsx",
+      "target": "gantt_chart_index_ganttchartroot",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/modules/gantt-chart/modules-list-layout.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_modules_gantt_chart_modules_list_layout_tsx",
+      "target": "gantt_chart_index_moduleganttsidebar",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/modules/gantt-chart/modules-list-layout.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_modules_gantt_chart_modules_list_layout_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_gantt_chart_contexts_index_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/modules/gantt-chart/modules-list-layout.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_modules_gantt_chart_modules_list_layout_tsx",
+      "target": "contexts_index_timelinetypecontext",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/modules/gantt-chart/modules-list-layout.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_modules_gantt_chart_modules_list_layout_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_modules_index_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/modules/gantt-chart/modules-list-layout.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_modules_gantt_chart_modules_list_layout_tsx",
+      "target": "modules_index_moduleganttblock",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/modules/gantt-chart/modules-list-layout.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_modules_gantt_chart_modules_list_layout_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_use_module_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/modules/gantt-chart/modules-list-layout.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_modules_gantt_chart_modules_list_layout_tsx",
+      "target": "store_use_module_usemodule",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/modules/gantt-chart/modules-list-layout.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_modules_gantt_chart_modules_list_layout_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_use_module_filter_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/modules/gantt-chart/modules-list-layout.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_modules_gantt_chart_modules_list_layout_tsx",
+      "target": "store_use_module_filter_usemodulefilter",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/modules/gantt-chart/modules-list-layout.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_modules_gantt_chart_modules_list_layout_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_use_project_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/modules/gantt-chart/modules-list-layout.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_modules_gantt_chart_modules_list_layout_tsx",
+      "target": "store_use_project_useproject",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/modules/gantt-chart/modules-list-layout.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_modules_gantt_chart_modules_list_layout_tsx",
+      "target": "gantt_chart_modules_list_layout_moduleslistganttchartview",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/modules/gantt-chart/modules-list-layout.tsx",
+      "source_location": "L21",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

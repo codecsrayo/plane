@@ -1,0 +1,186 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_editor_pdf_document_tsx",
+      "label": "document.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/pdf/document.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "pdf_document_props",
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/pdf/document.tsx",
+      "source_location": "L47"
+    },
+    {
+      "id": "pdf_document_pdfdocument",
+      "label": "PDFDocument()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/pdf/document.tsx",
+      "source_location": "L52"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_pdf_document_tsx",
+      "target": "renderer",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/pdf/document.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_pdf_document_tsx",
+      "target": "renderer",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/pdf/document.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_pdf_document_tsx",
+      "target": "react_pdf_html",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/pdf/document.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_pdf_document_tsx",
+      "target": "home_nixos_plane_apps_web_core_app_assets_fonts_inter_bold_ttf_url",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/pdf/document.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_pdf_document_tsx",
+      "target": "home_nixos_plane_apps_web_core_app_assets_fonts_inter_heavy_ttf_url",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/pdf/document.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_pdf_document_tsx",
+      "target": "home_nixos_plane_apps_web_core_app_assets_fonts_inter_light_ttf_url",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/pdf/document.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_pdf_document_tsx",
+      "target": "home_nixos_plane_apps_web_core_app_assets_fonts_inter_medium_ttf_url",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/pdf/document.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_pdf_document_tsx",
+      "target": "home_nixos_plane_apps_web_core_app_assets_fonts_inter_regular_ttf_url",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/pdf/document.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_pdf_document_tsx",
+      "target": "home_nixos_plane_apps_web_core_app_assets_fonts_inter_semibold_ttf_url",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/pdf/document.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_pdf_document_tsx",
+      "target": "home_nixos_plane_apps_web_core_app_assets_fonts_inter_thin_ttf_url",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/pdf/document.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_pdf_document_tsx",
+      "target": "home_nixos_plane_apps_web_core_app_assets_fonts_inter_ultrabold_ttf_url",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/pdf/document.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_pdf_document_tsx",
+      "target": "home_nixos_plane_apps_web_core_app_assets_fonts_inter_ultralight_ttf_url",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/pdf/document.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_pdf_document_tsx",
+      "target": "home_nixos_plane_apps_web_core_constants_editor_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/pdf/document.tsx",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_pdf_document_tsx",
+      "target": "constants_editor_editor_pdf_document_stylesheet",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/pdf/document.tsx",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_pdf_document_tsx",
+      "target": "pdf_document_props",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/pdf/document.tsx",
+      "source_location": "L47",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_pdf_document_tsx",
+      "target": "pdf_document_pdfdocument",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/pdf/document.tsx",
+      "source_location": "L52",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

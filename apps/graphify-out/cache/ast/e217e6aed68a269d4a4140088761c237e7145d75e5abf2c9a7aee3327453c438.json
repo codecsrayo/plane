@@ -1,0 +1,456 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_layouts_auth_layout_project_wrapper_tsx",
+      "label": "project-wrapper.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/layouts/auth-layout/project-wrapper.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "auth_layout_project_wrapper_iprojectauthwrapper",
+      "label": "IProjectAuthWrapper",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/layouts/auth-layout/project-wrapper.tsx",
+      "source_location": "L41"
+    },
+    {
+      "id": "auth_layout_project_wrapper_projectauthwrapper",
+      "label": "ProjectAuthWrapper",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/layouts/auth-layout/project-wrapper.tsx",
+      "source_location": "L48"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_layouts_auth_layout_project_wrapper_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/layouts/auth-layout/project-wrapper.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_layouts_auth_layout_project_wrapper_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/layouts/auth-layout/project-wrapper.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_layouts_auth_layout_project_wrapper_tsx",
+      "target": "mobx_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/layouts/auth-layout/project-wrapper.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_layouts_auth_layout_project_wrapper_tsx",
+      "target": "swr",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/layouts/auth-layout/project-wrapper.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_layouts_auth_layout_project_wrapper_tsx",
+      "target": "constants",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/layouts/auth-layout/project-wrapper.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_layouts_auth_layout_project_wrapper_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/layouts/auth-layout/project-wrapper.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_layouts_auth_layout_project_wrapper_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_auth_screens_project_project_access_restriction_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/layouts/auth-layout/project-wrapper.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_layouts_auth_layout_project_wrapper_tsx",
+      "target": "project_project_access_restriction_projectaccessrestriction",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/layouts/auth-layout/project-wrapper.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_layouts_auth_layout_project_wrapper_tsx",
+      "target": "home_nixos_plane_apps_web_core_constants_fetch_keys_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/layouts/auth-layout/project-wrapper.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_layouts_auth_layout_project_wrapper_tsx",
+      "target": "constants_fetch_keys_project_details",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/layouts/auth-layout/project-wrapper.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_layouts_auth_layout_project_wrapper_tsx",
+      "target": "constants_fetch_keys_project_me_information",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/layouts/auth-layout/project-wrapper.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_layouts_auth_layout_project_wrapper_tsx",
+      "target": "constants_fetch_keys_project_labels",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/layouts/auth-layout/project-wrapper.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_layouts_auth_layout_project_wrapper_tsx",
+      "target": "constants_fetch_keys_project_members",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/layouts/auth-layout/project-wrapper.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_layouts_auth_layout_project_wrapper_tsx",
+      "target": "constants_fetch_keys_project_member_preferences",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/layouts/auth-layout/project-wrapper.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_layouts_auth_layout_project_wrapper_tsx",
+      "target": "constants_fetch_keys_project_states",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/layouts/auth-layout/project-wrapper.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_layouts_auth_layout_project_wrapper_tsx",
+      "target": "constants_fetch_keys_project_estimates",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/layouts/auth-layout/project-wrapper.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_layouts_auth_layout_project_wrapper_tsx",
+      "target": "constants_fetch_keys_project_all_cycles",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/layouts/auth-layout/project-wrapper.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_layouts_auth_layout_project_wrapper_tsx",
+      "target": "constants_fetch_keys_project_modules",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/layouts/auth-layout/project-wrapper.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_layouts_auth_layout_project_wrapper_tsx",
+      "target": "constants_fetch_keys_project_views",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/layouts/auth-layout/project-wrapper.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_layouts_auth_layout_project_wrapper_tsx",
+      "target": "constants_fetch_keys_project_intake_state",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/layouts/auth-layout/project-wrapper.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_layouts_auth_layout_project_wrapper_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_estimates_index_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/layouts/auth-layout/project-wrapper.tsx",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_layouts_auth_layout_project_wrapper_tsx",
+      "target": "estimates_index_useprojectestimates",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/layouts/auth-layout/project-wrapper.tsx",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_layouts_auth_layout_project_wrapper_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_use_cycle_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/layouts/auth-layout/project-wrapper.tsx",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_layouts_auth_layout_project_wrapper_tsx",
+      "target": "store_use_cycle_usecycle",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/layouts/auth-layout/project-wrapper.tsx",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_layouts_auth_layout_project_wrapper_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_use_label_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/layouts/auth-layout/project-wrapper.tsx",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_layouts_auth_layout_project_wrapper_tsx",
+      "target": "store_use_label_uselabel",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/layouts/auth-layout/project-wrapper.tsx",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_layouts_auth_layout_project_wrapper_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_use_member_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/layouts/auth-layout/project-wrapper.tsx",
+      "source_location": "L33",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_layouts_auth_layout_project_wrapper_tsx",
+      "target": "store_use_member_usemember",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/layouts/auth-layout/project-wrapper.tsx",
+      "source_location": "L33",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_layouts_auth_layout_project_wrapper_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_use_module_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/layouts/auth-layout/project-wrapper.tsx",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_layouts_auth_layout_project_wrapper_tsx",
+      "target": "store_use_module_usemodule",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/layouts/auth-layout/project-wrapper.tsx",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_layouts_auth_layout_project_wrapper_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_use_project_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/layouts/auth-layout/project-wrapper.tsx",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_layouts_auth_layout_project_wrapper_tsx",
+      "target": "store_use_project_useproject",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/layouts/auth-layout/project-wrapper.tsx",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_layouts_auth_layout_project_wrapper_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_use_project_state_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/layouts/auth-layout/project-wrapper.tsx",
+      "source_location": "L36",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_layouts_auth_layout_project_wrapper_tsx",
+      "target": "store_use_project_state_useprojectstate",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/layouts/auth-layout/project-wrapper.tsx",
+      "source_location": "L36",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_layouts_auth_layout_project_wrapper_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_use_project_view_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/layouts/auth-layout/project-wrapper.tsx",
+      "source_location": "L37",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_layouts_auth_layout_project_wrapper_tsx",
+      "target": "store_use_project_view_useprojectview",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/layouts/auth-layout/project-wrapper.tsx",
+      "source_location": "L37",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_layouts_auth_layout_project_wrapper_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_user_index_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/layouts/auth-layout/project-wrapper.tsx",
+      "source_location": "L38",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_layouts_auth_layout_project_wrapper_tsx",
+      "target": "user_index_useuser",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/layouts/auth-layout/project-wrapper.tsx",
+      "source_location": "L38",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_layouts_auth_layout_project_wrapper_tsx",
+      "target": "user_index_useuserpermissions",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/layouts/auth-layout/project-wrapper.tsx",
+      "source_location": "L38",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_layouts_auth_layout_project_wrapper_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_use_timeline_chart_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/layouts/auth-layout/project-wrapper.tsx",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_layouts_auth_layout_project_wrapper_tsx",
+      "target": "hooks_use_timeline_chart_usetimelinechart",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/layouts/auth-layout/project-wrapper.tsx",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_layouts_auth_layout_project_wrapper_tsx",
+      "target": "auth_layout_project_wrapper_iprojectauthwrapper",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/layouts/auth-layout/project-wrapper.tsx",
+      "source_location": "L41",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_layouts_auth_layout_project_wrapper_tsx",
+      "target": "auth_layout_project_wrapper_projectauthwrapper",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/layouts/auth-layout/project-wrapper.tsx",
+      "source_location": "L48",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

@@ -1,0 +1,265 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_services_analytics_service_ts",
+      "label": "analytics.service.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/analytics.service.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "services_analytics_service_analyticsservice",
+      "label": "AnalyticsService",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/analytics.service.ts",
+      "source_location": "L18"
+    },
+    {
+      "id": "services_analytics_service_analyticsservice_constructor",
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/analytics.service.ts",
+      "source_location": "L19"
+    },
+    {
+      "id": "services_analytics_service_analyticsservice_getadvanceanalytics",
+      "label": ".getAdvanceAnalytics()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/analytics.service.ts",
+      "source_location": "L23"
+    },
+    {
+      "id": "services_analytics_service_analyticsservice_getadvanceanalyticsstats",
+      "label": ".getAdvanceAnalyticsStats()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/analytics.service.ts",
+      "source_location": "L41"
+    },
+    {
+      "id": "services_analytics_service_analyticsservice_getadvanceanalyticscharts",
+      "label": ".getAdvanceAnalyticsCharts()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/analytics.service.ts",
+      "source_location": "L66"
+    },
+    {
+      "id": "services_analytics_service_analyticsservice_processurl",
+      "label": ".processUrl()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/services/analytics.service.ts",
+      "source_location": "L91"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_services_analytics_service_ts",
+      "target": "constants",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/analytics.service.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_analytics_service_ts",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/analytics.service.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_analytics_service_ts",
+      "target": "home_nixos_plane_apps_web_core_services_api_service_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/analytics.service.ts",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_analytics_service_ts",
+      "target": "services_api_service_apiservice",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/analytics.service.ts",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_services_analytics_service_ts",
+      "target": "services_analytics_service_analyticsservice",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/analytics.service.ts",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "services_analytics_service_analyticsservice",
+      "target": "services_analytics_service_analyticsservice_constructor",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/analytics.service.ts",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "services_analytics_service_analyticsservice",
+      "target": "services_analytics_service_analyticsservice_getadvanceanalytics",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/analytics.service.ts",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "services_analytics_service_analyticsservice",
+      "target": "services_analytics_service_analyticsservice_getadvanceanalyticsstats",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/analytics.service.ts",
+      "source_location": "L41",
+      "weight": 1.0
+    },
+    {
+      "source": "services_analytics_service_analyticsservice",
+      "target": "services_analytics_service_analyticsservice_getadvanceanalyticscharts",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/analytics.service.ts",
+      "source_location": "L66",
+      "weight": 1.0
+    },
+    {
+      "source": "services_analytics_service_analyticsservice",
+      "target": "services_analytics_service_analyticsservice_processurl",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/analytics.service.ts",
+      "source_location": "L91",
+      "weight": 1.0
+    },
+    {
+      "source": "services_analytics_service_analyticsservice_getadvanceanalytics",
+      "target": "services_analytics_service_analyticsservice_processurl",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/analytics.service.ts",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "services_analytics_service_analyticsservice_getadvanceanalyticsstats",
+      "target": "services_analytics_service_analyticsservice_processurl",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/analytics.service.ts",
+      "source_location": "L47",
+      "weight": 1.0
+    },
+    {
+      "source": "services_analytics_service_analyticsservice_getadvanceanalyticscharts",
+      "target": "services_analytics_service_analyticsservice_processurl",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/services/analytics.service.ts",
+      "source_location": "L72",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "services_analytics_service_analyticsservice_constructor",
+      "callee": "super",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/services/analytics.service.ts",
+      "source_location": "L20"
+    },
+    {
+      "caller_nid": "services_analytics_service_analyticsservice_getadvanceanalytics",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/analytics.service.ts",
+      "source_location": "L29"
+    },
+    {
+      "caller_nid": "services_analytics_service_analyticsservice_getadvanceanalytics",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/analytics.service.ts",
+      "source_location": "L29"
+    },
+    {
+      "caller_nid": "services_analytics_service_analyticsservice_getadvanceanalytics",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/analytics.service.ts",
+      "source_location": "L29"
+    },
+    {
+      "caller_nid": "services_analytics_service_analyticsservice_getadvanceanalyticsstats",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/analytics.service.ts",
+      "source_location": "L54"
+    },
+    {
+      "caller_nid": "services_analytics_service_analyticsservice_getadvanceanalyticsstats",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/analytics.service.ts",
+      "source_location": "L54"
+    },
+    {
+      "caller_nid": "services_analytics_service_analyticsservice_getadvanceanalyticsstats",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/analytics.service.ts",
+      "source_location": "L54"
+    },
+    {
+      "caller_nid": "services_analytics_service_analyticsservice_getadvanceanalyticscharts",
+      "callee": "catch",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/analytics.service.ts",
+      "source_location": "L79"
+    },
+    {
+      "caller_nid": "services_analytics_service_analyticsservice_getadvanceanalyticscharts",
+      "callee": "then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/analytics.service.ts",
+      "source_location": "L79"
+    },
+    {
+      "caller_nid": "services_analytics_service_analyticsservice_getadvanceanalyticscharts",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/analytics.service.ts",
+      "source_location": "L79"
+    },
+    {
+      "caller_nid": "services_analytics_service_analyticsservice_processurl",
+      "callee": "trim",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/analytics.service.ts",
+      "source_location": "L101"
+    },
+    {
+      "caller_nid": "services_analytics_service_analyticsservice_processurl",
+      "callee": "split",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/services/analytics.service.ts",
+      "source_location": "L104"
+    }
+  ]
+}

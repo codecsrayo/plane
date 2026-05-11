@@ -1,0 +1,40 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_base_layouts_kanban_group_header_tsx",
+      "label": "group-header.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/base-layouts/kanban/group-header.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "kanban_group_header_groupheader",
+      "label": "GroupHeader()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/base-layouts/kanban/group-header.tsx",
+      "source_location": "L9"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_base_layouts_kanban_group_header_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/base-layouts/kanban/group-header.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_base_layouts_kanban_group_header_tsx",
+      "target": "kanban_group_header_groupheader",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/base-layouts/kanban/group-header.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

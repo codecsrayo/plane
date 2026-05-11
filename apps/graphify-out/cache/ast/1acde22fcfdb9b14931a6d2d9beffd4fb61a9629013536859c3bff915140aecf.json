@@ -1,0 +1,110 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_api_rust_src_entities_project_user_properties_rs",
+      "label": "project_user_properties.rs",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/project_user_properties.rs",
+      "source_location": "L1"
+    },
+    {
+      "id": "entities_project_user_properties_model",
+      "label": "Model",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/project_user_properties.rs",
+      "source_location": "L8"
+    },
+    {
+      "id": "entities_project_user_properties_relation",
+      "label": "Relation",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/project_user_properties.rs",
+      "source_location": "L34"
+    },
+    {
+      "id": "entities_project_user_properties_entity",
+      "label": "Entity",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/project_user_properties.rs",
+      "source_location": "L77"
+    },
+    {
+      "id": "entities_project_user_properties_entity_to",
+      "label": ".to()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/project_user_properties.rs",
+      "source_location": "L78"
+    },
+    {
+      "id": "entities_project_user_properties_activemodel",
+      "label": "ActiveModel",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/project_user_properties.rs",
+      "source_location": "L89"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_entities_project_user_properties_rs",
+      "target": "prelude",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/project_user_properties.rs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_entities_project_user_properties_rs",
+      "target": "entities_project_user_properties_model",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/project_user_properties.rs",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_entities_project_user_properties_rs",
+      "target": "entities_project_user_properties_relation",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/project_user_properties.rs",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "entities_project_user_properties_entity",
+      "target": "entities_project_user_properties_entity_to",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/project_user_properties.rs",
+      "source_location": "L78",
+      "weight": 1.0
+    },
+    {
+      "source": "entities_project_user_properties_entity",
+      "target": "entities_project_user_properties_entity_to",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/project_user_properties.rs",
+      "source_location": "L84",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "entities_project_user_properties_entity_to",
+      "callee": "def",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/project_user_properties.rs",
+      "source_location": "L79"
+    },
+    {
+      "caller_nid": "entities_project_user_properties_entity_to",
+      "callee": "def",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/project_user_properties.rs",
+      "source_location": "L85"
+    }
+  ]
+}

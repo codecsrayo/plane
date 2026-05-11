@@ -1,0 +1,55 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_hooks_use_online_status_ts",
+      "label": "use-online-status.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-online-status.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "hooks_use_online_status_useonlinestatus",
+      "label": "useOnlineStatus()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-online-status.ts",
+      "source_location": "L9"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_online_status_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-online-status.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_online_status_ts",
+      "target": "hooks_use_online_status_useonlinestatus",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-online-status.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "hooks_use_online_status_useonlinestatus",
+      "callee": "useState",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-online-status.ts",
+      "source_location": "L11"
+    },
+    {
+      "caller_nid": "hooks_use_online_status_useonlinestatus",
+      "callee": "useEffect",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-online-status.ts",
+      "source_location": "L15"
+    }
+  ]
+}

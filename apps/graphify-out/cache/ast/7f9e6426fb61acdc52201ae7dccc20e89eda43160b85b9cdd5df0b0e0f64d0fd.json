@@ -1,0 +1,128 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_integration_utils_ts",
+      "label": "utils.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/utils.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "integration_utils_tintegrationprovider",
+      "label": "TIntegrationProvider",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/utils.ts",
+      "source_location": "L9"
+    },
+    {
+      "id": "integration_utils_known_providers",
+      "label": "KNOWN_PROVIDERS",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/utils.ts",
+      "source_location": "L11"
+    },
+    {
+      "id": "integration_utils_isknownintegrationprovider",
+      "label": "isKnownIntegrationProvider()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/utils.ts",
+      "source_location": "L18"
+    },
+    {
+      "id": "integration_utils_getgithubreposswrkey",
+      "label": "getGithubReposSwrKey()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/utils.ts",
+      "source_location": "L21"
+    },
+    {
+      "id": "integration_utils_isintegrationenabled",
+      "label": "isIntegrationEnabled()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/utils.ts",
+      "source_location": "L23"
+    },
+    {
+      "id": "integration_utils_getisproviderconfigured",
+      "label": "getIsProviderConfigured()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/utils.ts",
+      "source_location": "L36"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_integration_utils_ts",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/utils.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_integration_utils_ts",
+      "target": "integration_utils_tintegrationprovider",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/utils.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_integration_utils_ts",
+      "target": "integration_utils_known_providers",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/utils.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_integration_utils_ts",
+      "target": "integration_utils_isknownintegrationprovider",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/utils.ts",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_integration_utils_ts",
+      "target": "integration_utils_getgithubreposswrkey",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/utils.ts",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_integration_utils_ts",
+      "target": "integration_utils_isintegrationenabled",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/utils.ts",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_integration_utils_ts",
+      "target": "integration_utils_getisproviderconfigured",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/utils.ts",
+      "source_location": "L36",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "integration_utils_isknownintegrationprovider",
+      "callee": "includes",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/utils.ts",
+      "source_location": "L19"
+    }
+  ]
+}

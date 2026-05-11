@@ -1,0 +1,65 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_ui_loader_layouts_project_inbox_inbox_sidebar_loader_tsx",
+      "label": "inbox-sidebar-loader.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/layouts/project-inbox/inbox-sidebar-loader.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "project_inbox_inbox_sidebar_loader_inboxsidebarloader",
+      "label": "InboxSidebarLoader()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/layouts/project-inbox/inbox-sidebar-loader.tsx",
+      "source_location": "L10"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_ui_loader_layouts_project_inbox_inbox_sidebar_loader_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/layouts/project-inbox/inbox-sidebar-loader.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_ui_loader_layouts_project_inbox_inbox_sidebar_loader_tsx",
+      "target": "lodash_es",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/layouts/project-inbox/inbox-sidebar-loader.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_ui_loader_layouts_project_inbox_inbox_sidebar_loader_tsx",
+      "target": "project_inbox_inbox_sidebar_loader_inboxsidebarloader",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/layouts/project-inbox/inbox-sidebar-loader.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "project_inbox_inbox_sidebar_loader_inboxsidebarloader",
+      "callee": "map",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/layouts/project-inbox/inbox-sidebar-loader.tsx",
+      "source_location": "L13"
+    },
+    {
+      "caller_nid": "project_inbox_inbox_sidebar_loader_inboxsidebarloader",
+      "callee": "range",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/layouts/project-inbox/inbox-sidebar-loader.tsx",
+      "source_location": "L13"
+    }
+  ]
+}

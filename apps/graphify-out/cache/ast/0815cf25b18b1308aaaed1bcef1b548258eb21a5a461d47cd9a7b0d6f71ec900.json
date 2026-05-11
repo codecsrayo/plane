@@ -1,0 +1,114 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_dropdowns_constants_ts",
+      "label": "constants.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/constants.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "dropdowns_constants_border_button_variants",
+      "label": "BORDER_BUTTON_VARIANTS",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/constants.ts",
+      "source_location": "L10"
+    },
+    {
+      "id": "dropdowns_constants_background_button_variants",
+      "label": "BACKGROUND_BUTTON_VARIANTS",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/constants.ts",
+      "source_location": "L12"
+    },
+    {
+      "id": "dropdowns_constants_transparent_button_variants",
+      "label": "TRANSPARENT_BUTTON_VARIANTS",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/constants.ts",
+      "source_location": "L14"
+    },
+    {
+      "id": "dropdowns_constants_button_variants_without_text",
+      "label": "BUTTON_VARIANTS_WITHOUT_TEXT",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/constants.ts",
+      "source_location": "L16"
+    },
+    {
+      "id": "dropdowns_constants_button_variants_with_text",
+      "label": "BUTTON_VARIANTS_WITH_TEXT",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/constants.ts",
+      "source_location": "L22"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_dropdowns_constants_ts",
+      "target": "home_nixos_plane_apps_web_core_components_dropdowns_types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/constants.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_dropdowns_constants_ts",
+      "target": "dropdowns_types_tbuttonvariants",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/constants.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_dropdowns_constants_ts",
+      "target": "dropdowns_constants_border_button_variants",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/constants.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_dropdowns_constants_ts",
+      "target": "dropdowns_constants_background_button_variants",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/constants.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_dropdowns_constants_ts",
+      "target": "dropdowns_constants_transparent_button_variants",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/constants.ts",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_dropdowns_constants_ts",
+      "target": "dropdowns_constants_button_variants_without_text",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/constants.ts",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_dropdowns_constants_ts",
+      "target": "dropdowns_constants_button_variants_with_text",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/dropdowns/constants.ts",
+      "source_location": "L22",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

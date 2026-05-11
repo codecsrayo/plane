@@ -1,0 +1,151 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_hooks_use_expandable_search_ts",
+      "label": "use-expandable-search.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-expandable-search.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "hooks_use_expandable_search_useexpandablesearchoptions",
+      "label": "UseExpandableSearchOptions",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-expandable-search.ts",
+      "source_location": "L10"
+    },
+    {
+      "id": "hooks_use_expandable_search_useexpandablesearch",
+      "label": "useExpandableSearch()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-expandable-search.ts",
+      "source_location": "L19"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_expandable_search_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-expandable-search.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_expandable_search_ts",
+      "target": "hooks",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-expandable-search.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_expandable_search_ts",
+      "target": "hooks_use_expandable_search_useexpandablesearchoptions",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-expandable-search.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_expandable_search_ts",
+      "target": "hooks_use_expandable_search_useexpandablesearch",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-expandable-search.ts",
+      "source_location": "L19",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "hooks_use_expandable_search_useexpandablesearch",
+      "callee": "useState",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-expandable-search.ts",
+      "source_location": "L23"
+    },
+    {
+      "caller_nid": "hooks_use_expandable_search_useexpandablesearch",
+      "callee": "useRef",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-expandable-search.ts",
+      "source_location": "L26"
+    },
+    {
+      "caller_nid": "hooks_use_expandable_search_useexpandablesearch",
+      "callee": "useRef",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-expandable-search.ts",
+      "source_location": "L27"
+    },
+    {
+      "caller_nid": "hooks_use_expandable_search_useexpandablesearch",
+      "callee": "useRef",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-expandable-search.ts",
+      "source_location": "L28"
+    },
+    {
+      "caller_nid": "hooks_use_expandable_search_useexpandablesearch",
+      "callee": "useRef",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-expandable-search.ts",
+      "source_location": "L29"
+    },
+    {
+      "caller_nid": "hooks_use_expandable_search_useexpandablesearch",
+      "callee": "useCallback",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-expandable-search.ts",
+      "source_location": "L32"
+    },
+    {
+      "caller_nid": "hooks_use_expandable_search_useexpandablesearch",
+      "callee": "useCallback",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-expandable-search.ts",
+      "source_location": "L39"
+    },
+    {
+      "caller_nid": "hooks_use_expandable_search_useexpandablesearch",
+      "callee": "useOutsideClickDetector",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-expandable-search.ts",
+      "source_location": "L46"
+    },
+    {
+      "caller_nid": "hooks_use_expandable_search_useexpandablesearch",
+      "callee": "useEffect",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-expandable-search.ts",
+      "source_location": "L49"
+    },
+    {
+      "caller_nid": "hooks_use_expandable_search_useexpandablesearch",
+      "callee": "useCallback",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-expandable-search.ts",
+      "source_location": "L64"
+    },
+    {
+      "caller_nid": "hooks_use_expandable_search_useexpandablesearch",
+      "callee": "useCallback",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-expandable-search.ts",
+      "source_location": "L69"
+    },
+    {
+      "caller_nid": "hooks_use_expandable_search_useexpandablesearch",
+      "callee": "useCallback",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-expandable-search.ts",
+      "source_location": "L78"
+    }
+  ]
+}

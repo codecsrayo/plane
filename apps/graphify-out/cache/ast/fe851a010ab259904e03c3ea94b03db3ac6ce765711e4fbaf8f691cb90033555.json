@@ -1,0 +1,303 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_pages_modals_page_form_tsx",
+      "label": "page-form.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/modals/page-form.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "modals_page_form_props",
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/modals/page-form.tsx",
+      "source_location": "L27"
+    },
+    {
+      "id": "modals_page_form_page_access_specifiers",
+      "label": "PAGE_ACCESS_SPECIFIERS",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/modals/page-form.tsx",
+      "source_location": "L34"
+    },
+    {
+      "id": "modals_page_form_pageform",
+      "label": "PageForm()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/modals/page-form.tsx",
+      "source_location": "L43"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_modals_page_form_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/modals/page-form.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_modals_page_form_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/modals/page-form.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_modals_page_form_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/modals/page-form.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_modals_page_form_tsx",
+      "target": "constants",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/modals/page-form.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_modals_page_form_tsx",
+      "target": "i18n",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/modals/page-form.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_modals_page_form_tsx",
+      "target": "button",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/modals/page-form.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_modals_page_form_tsx",
+      "target": "emoji_icon_picker",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/modals/page-form.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_modals_page_form_tsx",
+      "target": "emoji_icon_picker",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/modals/page-form.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_modals_page_form_tsx",
+      "target": "icons",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/modals/page-form.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_modals_page_form_tsx",
+      "target": "icons",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/modals/page-form.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_modals_page_form_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/modals/page-form.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_modals_page_form_tsx",
+      "target": "ui",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/modals/page-form.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_modals_page_form_tsx",
+      "target": "utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/modals/page-form.tsx",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_modals_page_form_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_common_access_field_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/modals/page-form.tsx",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_modals_page_form_tsx",
+      "target": "common_access_field_accessfield",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/modals/page-form.tsx",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_modals_page_form_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_use_platform_os_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/modals/page-form.tsx",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_modals_page_form_tsx",
+      "target": "hooks_use_platform_os_useplatformos",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/modals/page-form.tsx",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_modals_page_form_tsx",
+      "target": "modals_page_form_props",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/modals/page-form.tsx",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_modals_page_form_tsx",
+      "target": "modals_page_form_page_access_specifiers",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/modals/page-form.tsx",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_pages_modals_page_form_tsx",
+      "target": "modals_page_form_pageform",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/modals/page-form.tsx",
+      "source_location": "L43",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "modals_page_form_pageform",
+      "callee": "usePlatformOS",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/modals/page-form.tsx",
+      "source_location": "L46"
+    },
+    {
+      "caller_nid": "modals_page_form_pageform",
+      "callee": "useTranslation",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/modals/page-form.tsx",
+      "source_location": "L47"
+    },
+    {
+      "caller_nid": "modals_page_form_pageform",
+      "callee": "useState",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/modals/page-form.tsx",
+      "source_location": "L49"
+    },
+    {
+      "caller_nid": "modals_page_form_pageform",
+      "callee": "useState",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/modals/page-form.tsx",
+      "source_location": "L50"
+    },
+    {
+      "caller_nid": "modals_page_form_pageform",
+      "callee": "find",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/modals/page-form.tsx",
+      "source_location": "L52"
+    },
+    {
+      "caller_nid": "modals_page_form_pageform",
+      "callee": "getTabIndex",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/modals/page-form.tsx",
+      "source_location": "L54"
+    },
+    {
+      "caller_nid": "modals_page_form_pageform",
+      "callee": "getIndex",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/modals/page-form.tsx",
+      "source_location": "L125"
+    },
+    {
+      "caller_nid": "modals_page_form_pageform",
+      "callee": "t",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/modals/page-form.tsx",
+      "source_location": "L144"
+    },
+    {
+      "caller_nid": "modals_page_form_pageform",
+      "callee": "getIndex",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/modals/page-form.tsx",
+      "source_location": "L147"
+    },
+    {
+      "caller_nid": "modals_page_form_pageform",
+      "callee": "getIndex",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/pages/modals/page-form.tsx",
+      "source_location": "L156"
+    }
+  ]
+}

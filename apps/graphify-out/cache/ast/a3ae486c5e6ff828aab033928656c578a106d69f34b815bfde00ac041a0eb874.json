@@ -1,0 +1,210 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_stickies_sticky_inputs_tsx",
+      "label": "inputs.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/stickies/sticky/inputs.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "sticky_inputs_tprops",
+      "label": "TProps",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/stickies/sticky/inputs.tsx",
+      "source_location": "L22"
+    },
+    {
+      "id": "sticky_inputs_stickyinput",
+      "label": "StickyInput()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/stickies/sticky/inputs.tsx",
+      "source_location": "L32"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_stickies_sticky_inputs_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/stickies/sticky/inputs.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_stickies_sticky_inputs_tsx",
+      "target": "navigation",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/stickies/sticky/inputs.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_stickies_sticky_inputs_tsx",
+      "target": "react_hook_form",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/stickies/sticky/inputs.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_stickies_sticky_inputs_tsx",
+      "target": "editor",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/stickies/sticky/inputs.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_stickies_sticky_inputs_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/stickies/sticky/inputs.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_stickies_sticky_inputs_tsx",
+      "target": "utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/stickies/sticky/inputs.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_stickies_sticky_inputs_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_editor_sticky_editor_index_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/stickies/sticky/inputs.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_stickies_sticky_inputs_tsx",
+      "target": "sticky_editor_index_stickyeditor",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/stickies/sticky/inputs.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_stickies_sticky_inputs_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_use_workspace_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/stickies/sticky/inputs.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_stickies_sticky_inputs_tsx",
+      "target": "store_use_workspace_useworkspace",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/stickies/sticky/inputs.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_stickies_sticky_inputs_tsx",
+      "target": "sticky_inputs_tprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/stickies/sticky/inputs.tsx",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_stickies_sticky_inputs_tsx",
+      "target": "sticky_inputs_stickyinput",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/stickies/sticky/inputs.tsx",
+      "source_location": "L32",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "sticky_inputs_stickyinput",
+      "callee": "useRef",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/stickies/sticky/inputs.tsx",
+      "source_location": "L35"
+    },
+    {
+      "caller_nid": "sticky_inputs_stickyinput",
+      "callee": "usePathname",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/stickies/sticky/inputs.tsx",
+      "source_location": "L37"
+    },
+    {
+      "caller_nid": "sticky_inputs_stickyinput",
+      "callee": "useWorkspace",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/stickies/sticky/inputs.tsx",
+      "source_location": "L39"
+    },
+    {
+      "caller_nid": "sticky_inputs_stickyinput",
+      "callee": "toString",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/stickies/sticky/inputs.tsx",
+      "source_location": "L41"
+    },
+    {
+      "caller_nid": "sticky_inputs_stickyinput",
+      "callee": "getWorkspaceBySlug",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/stickies/sticky/inputs.tsx",
+      "source_location": "L41"
+    },
+    {
+      "caller_nid": "sticky_inputs_stickyinput",
+      "callee": "includes",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/stickies/sticky/inputs.tsx",
+      "source_location": "L42"
+    },
+    {
+      "caller_nid": "sticky_inputs_stickyinput",
+      "callee": "useForm",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/stickies/sticky/inputs.tsx",
+      "source_location": "L44"
+    },
+    {
+      "caller_nid": "sticky_inputs_stickyinput",
+      "callee": "useCallback",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/stickies/sticky/inputs.tsx",
+      "source_location": "L50"
+    },
+    {
+      "caller_nid": "sticky_inputs_stickyinput",
+      "callee": "useEffect",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/stickies/sticky/inputs.tsx",
+      "source_location": "L59"
+    }
+  ]
+}

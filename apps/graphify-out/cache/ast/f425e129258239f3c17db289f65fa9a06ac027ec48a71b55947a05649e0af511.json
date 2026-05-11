@@ -1,0 +1,170 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_license_modal_card_discount_info_tsx",
+      "label": "discount-info.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/license/modal/card/discount-info.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "card_discount_info_tdiscountinfoprops",
+      "label": "TDiscountInfoProps",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/license/modal/card/discount-info.tsx",
+      "source_location": "L16"
+    },
+    {
+      "id": "card_discount_info_plans_with_discount",
+      "label": "PLANS_WITH_DISCOUNT",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/license/modal/card/discount-info.tsx",
+      "source_location": "L24"
+    },
+    {
+      "id": "card_discount_info_getactualprice",
+      "label": "getActualPrice()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/license/modal/card/discount-info.tsx",
+      "source_location": "L26"
+    },
+    {
+      "id": "card_discount_info_discountinfo",
+      "label": "DiscountInfo()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/license/modal/card/discount-info.tsx",
+      "source_location": "L35"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_license_modal_card_discount_info_tsx",
+      "target": "next_themes",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/license/modal/card/discount-info.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_license_modal_card_discount_info_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/license/modal/card/discount-info.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_license_modal_card_discount_info_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/license/modal/card/discount-info.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_license_modal_card_discount_info_tsx",
+      "target": "utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/license/modal/card/discount-info.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_license_modal_card_discount_info_tsx",
+      "target": "home_nixos_plane_apps_web_core_app_assets_scribble_scribble_black_svg_url",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/license/modal/card/discount-info.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_license_modal_card_discount_info_tsx",
+      "target": "home_nixos_plane_apps_web_core_app_assets_scribble_scribble_white_svg_url",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/license/modal/card/discount-info.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_license_modal_card_discount_info_tsx",
+      "target": "card_discount_info_tdiscountinfoprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/license/modal/card/discount-info.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_license_modal_card_discount_info_tsx",
+      "target": "card_discount_info_plans_with_discount",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/license/modal/card/discount-info.tsx",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_license_modal_card_discount_info_tsx",
+      "target": "card_discount_info_getactualprice",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/license/modal/card/discount-info.tsx",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_license_modal_card_discount_info_tsx",
+      "target": "card_discount_info_discountinfo",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/license/modal/card/discount-info.tsx",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "card_discount_info_discountinfo",
+      "target": "card_discount_info_getactualprice",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/license/modal/card/discount-info.tsx",
+      "source_location": "L38",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "card_discount_info_discountinfo",
+      "callee": "useTheme",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/license/modal/card/discount-info.tsx",
+      "source_location": "L36"
+    },
+    {
+      "caller_nid": "card_discount_info_discountinfo",
+      "callee": "has",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/license/modal/card/discount-info.tsx",
+      "source_location": "L40"
+    },
+    {
+      "caller_nid": "card_discount_info_discountinfo",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/license/modal/card/discount-info.tsx",
+      "source_location": "L52"
+    }
+  ]
+}

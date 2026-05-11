@@ -1,0 +1,161 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_ui_loader_layouts_list_layout_loader_tsx",
+      "label": "list-layout-loader.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/layouts/list-layout-loader.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "layouts_list_layout_loader_listloaderitemrow",
+      "label": "ListLoaderItemRow",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/layouts/list-layout-loader.tsx",
+      "source_location": "L15"
+    },
+    {
+      "id": "layouts_list_layout_loader_listsection",
+      "label": "ListSection()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/layouts/list-layout-loader.tsx",
+      "source_location": "L76"
+    },
+    {
+      "id": "layouts_list_layout_loader_listlayoutloader",
+      "label": "ListLayoutLoader()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/layouts/list-layout-loader.tsx",
+      "source_location": "L94"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_ui_loader_layouts_list_layout_loader_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/layouts/list-layout-loader.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_ui_loader_layouts_list_layout_loader_tsx",
+      "target": "lodash_es",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/layouts/list-layout-loader.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_ui_loader_layouts_list_layout_loader_tsx",
+      "target": "ui",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/layouts/list-layout-loader.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_ui_loader_layouts_list_layout_loader_tsx",
+      "target": "utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/layouts/list-layout-loader.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_ui_loader_layouts_list_layout_loader_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_ui_loader_utils_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/layouts/list-layout-loader.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_ui_loader_layouts_list_layout_loader_tsx",
+      "target": "loader_utils_getrandomint",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/layouts/list-layout-loader.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_ui_loader_layouts_list_layout_loader_tsx",
+      "target": "loader_utils_getrandomlength",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/layouts/list-layout-loader.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_ui_loader_layouts_list_layout_loader_tsx",
+      "target": "layouts_list_layout_loader_listloaderitemrow",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/layouts/list-layout-loader.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_ui_loader_layouts_list_layout_loader_tsx",
+      "target": "layouts_list_layout_loader_listsection",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/layouts/list-layout-loader.tsx",
+      "source_location": "L76",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_ui_loader_layouts_list_layout_loader_tsx",
+      "target": "layouts_list_layout_loader_listlayoutloader",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/layouts/list-layout-loader.tsx",
+      "source_location": "L94",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "layouts_list_layout_loader_listsection",
+      "callee": "map",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/layouts/list-layout-loader.tsx",
+      "source_location": "L86"
+    },
+    {
+      "caller_nid": "layouts_list_layout_loader_listsection",
+      "callee": "range",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/layouts/list-layout-loader.tsx",
+      "source_location": "L86"
+    },
+    {
+      "caller_nid": "layouts_list_layout_loader_listlayoutloader",
+      "callee": "map",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/layouts/list-layout-loader.tsx",
+      "source_location": "L95"
+    },
+    {
+      "caller_nid": "layouts_list_layout_loader_listlayoutloader",
+      "callee": "map",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/ui/loader/layouts/list-layout-loader.tsx",
+      "source_location": "L102"
+    }
+  ]
+}

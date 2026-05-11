@@ -1,0 +1,13 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_editor_rich_text_index_ts",
+      "label": "index.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/rich-text/index.ts",
+      "source_location": "L1"
+    }
+  ],
+  "edges": [],
+  "raw_calls": []
+}

@@ -1,0 +1,140 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_base_layouts_gantt_layout_tsx",
+      "label": "layout.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/base-layouts/gantt/layout.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "gantt_layout_baseganttlayout",
+      "label": "BaseGanttLayout",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/base-layouts/gantt/layout.tsx",
+      "source_location": "L21"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_base_layouts_gantt_layout_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/base-layouts/gantt/layout.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_base_layouts_gantt_layout_tsx",
+      "target": "mobx_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/base-layouts/gantt/layout.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_base_layouts_gantt_layout_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/base-layouts/gantt/layout.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_base_layouts_gantt_layout_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/base-layouts/gantt/layout.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_base_layouts_gantt_layout_tsx",
+      "target": "utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/base-layouts/gantt/layout.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_base_layouts_gantt_layout_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_gantt_chart_contexts_index_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/base-layouts/gantt/layout.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_base_layouts_gantt_layout_tsx",
+      "target": "contexts_index_timelinetypecontext",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/base-layouts/gantt/layout.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_base_layouts_gantt_layout_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_gantt_chart_root_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/base-layouts/gantt/layout.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_base_layouts_gantt_layout_tsx",
+      "target": "gantt_chart_root_ganttchartroot",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/base-layouts/gantt/layout.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_base_layouts_gantt_layout_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_base_layouts_gantt_sidebar_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/base-layouts/gantt/layout.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_base_layouts_gantt_layout_tsx",
+      "target": "gantt_sidebar_baseganttsidebar",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/base-layouts/gantt/layout.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_base_layouts_gantt_layout_tsx",
+      "target": "gantt_layout_baseganttlayout",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/base-layouts/gantt/layout.tsx",
+      "source_location": "L21",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

@@ -1,0 +1,292 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_integration_github_project_issue_sync_modal_tsx",
+      "label": "project-issue-sync-modal.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/github/project-issue-sync-modal.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "github_project_issue_sync_modal_syncdirection",
+      "label": "SyncDirection",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/github/project-issue-sync-modal.tsx",
+      "source_location": "L25"
+    },
+    {
+      "id": "github_project_issue_sync_modal_modalstate",
+      "label": "ModalState",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/github/project-issue-sync-modal.tsx",
+      "source_location": "L27"
+    },
+    {
+      "id": "github_project_issue_sync_modal_modalaction",
+      "label": "ModalAction",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/github/project-issue-sync-modal.tsx",
+      "source_location": "L36"
+    },
+    {
+      "id": "github_project_issue_sync_modal_integrationerror",
+      "label": "IntegrationError",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/github/project-issue-sync-modal.tsx",
+      "source_location": "L45"
+    },
+    {
+      "id": "github_project_issue_sync_modal_props",
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/github/project-issue-sync-modal.tsx",
+      "source_location": "L47"
+    },
+    {
+      "id": "github_project_issue_sync_modal_initial_state",
+      "label": "INITIAL_STATE",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/github/project-issue-sync-modal.tsx",
+      "source_location": "L59"
+    },
+    {
+      "id": "github_project_issue_sync_modal_modalreducer",
+      "label": "modalReducer()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/github/project-issue-sync-modal.tsx",
+      "source_location": "L68"
+    },
+    {
+      "id": "github_project_issue_sync_modal_githubprojectissuesyncmodal",
+      "label": "GithubProjectIssueSyncModal",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/github/project-issue-sync-modal.tsx",
+      "source_location": "L93"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_integration_github_project_issue_sync_modal_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/github/project-issue-sync-modal.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_integration_github_project_issue_sync_modal_tsx",
+      "target": "mobx_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/github/project-issue-sync-modal.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_integration_github_project_issue_sync_modal_tsx",
+      "target": "swr",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/github/project-issue-sync-modal.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_integration_github_project_issue_sync_modal_tsx",
+      "target": "button",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/github/project-issue-sync-modal.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_integration_github_project_issue_sync_modal_tsx",
+      "target": "toast",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/github/project-issue-sync-modal.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_integration_github_project_issue_sync_modal_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/github/project-issue-sync-modal.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_integration_github_project_issue_sync_modal_tsx",
+      "target": "ui",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/github/project-issue-sync-modal.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_integration_github_project_issue_sync_modal_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_use_project_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/github/project-issue-sync-modal.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_integration_github_project_issue_sync_modal_tsx",
+      "target": "store_use_project_useproject",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/github/project-issue-sync-modal.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_integration_github_project_issue_sync_modal_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_use_project_state_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/github/project-issue-sync-modal.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_integration_github_project_issue_sync_modal_tsx",
+      "target": "store_use_project_state_useprojectstate",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/github/project-issue-sync-modal.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_integration_github_project_issue_sync_modal_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_integration_utils_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/github/project-issue-sync-modal.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_integration_github_project_issue_sync_modal_tsx",
+      "target": "integration_utils_getgithubreposswrkey",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/github/project-issue-sync-modal.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_integration_github_project_issue_sync_modal_tsx",
+      "target": "home_nixos_plane_apps_web_core_services_integrations_index_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/github/project-issue-sync-modal.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_integration_github_project_issue_sync_modal_tsx",
+      "target": "integrations_index_integrationservice",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/github/project-issue-sync-modal.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_integration_github_project_issue_sync_modal_tsx",
+      "target": "github_project_issue_sync_modal_syncdirection",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/github/project-issue-sync-modal.tsx",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_integration_github_project_issue_sync_modal_tsx",
+      "target": "github_project_issue_sync_modal_modalstate",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/github/project-issue-sync-modal.tsx",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_integration_github_project_issue_sync_modal_tsx",
+      "target": "github_project_issue_sync_modal_modalaction",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/github/project-issue-sync-modal.tsx",
+      "source_location": "L36",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_integration_github_project_issue_sync_modal_tsx",
+      "target": "github_project_issue_sync_modal_integrationerror",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/github/project-issue-sync-modal.tsx",
+      "source_location": "L45",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_integration_github_project_issue_sync_modal_tsx",
+      "target": "github_project_issue_sync_modal_props",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/github/project-issue-sync-modal.tsx",
+      "source_location": "L47",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_integration_github_project_issue_sync_modal_tsx",
+      "target": "github_project_issue_sync_modal_initial_state",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/github/project-issue-sync-modal.tsx",
+      "source_location": "L59",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_integration_github_project_issue_sync_modal_tsx",
+      "target": "github_project_issue_sync_modal_modalreducer",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/github/project-issue-sync-modal.tsx",
+      "source_location": "L68",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_integration_github_project_issue_sync_modal_tsx",
+      "target": "github_project_issue_sync_modal_githubprojectissuesyncmodal",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/integration/github/project-issue-sync-modal.tsx",
+      "source_location": "L93",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

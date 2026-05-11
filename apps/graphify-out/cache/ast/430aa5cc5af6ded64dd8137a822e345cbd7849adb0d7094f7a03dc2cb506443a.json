@@ -1,0 +1,74 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_hooks_use_intersection_observer_ts",
+      "label": "use-intersection-observer.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-intersection-observer.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "hooks_use_intersection_observer_useintersectionobserverprops",
+      "label": "UseIntersectionObserverProps",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-intersection-observer.ts",
+      "source_location": "L10"
+    },
+    {
+      "id": "hooks_use_intersection_observer_useintersectionobserver",
+      "label": "useIntersectionObserver()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-intersection-observer.ts",
+      "source_location": "L17"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_intersection_observer_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-intersection-observer.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_intersection_observer_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-intersection-observer.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_intersection_observer_ts",
+      "target": "hooks_use_intersection_observer_useintersectionobserverprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-intersection-observer.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_use_intersection_observer_ts",
+      "target": "hooks_use_intersection_observer_useintersectionobserver",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-intersection-observer.ts",
+      "source_location": "L17",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "hooks_use_intersection_observer_useintersectionobserver",
+      "callee": "useEffect",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/use-intersection-observer.ts",
+      "source_location": "L23"
+    }
+  ]
+}

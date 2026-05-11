@@ -1,0 +1,2779 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_api_rust_src_auth_god_mode_rs",
+      "label": "god_mode.rs",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L1"
+    },
+    {
+      "id": "auth_god_mode_admin_error",
+      "label": "admin_error()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L50"
+    },
+    {
+      "id": "auth_god_mode_admin_success",
+      "label": "admin_success()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L64"
+    },
+    {
+      "id": "auth_god_mode_is_valid_email",
+      "label": "is_valid_email()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L72"
+    },
+    {
+      "id": "auth_god_mode_is_password_strong",
+      "label": "is_password_strong()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L77"
+    },
+    {
+      "id": "auth_god_mode_adminsignupform",
+      "label": "AdminSignUpForm",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L85"
+    },
+    {
+      "id": "auth_god_mode_adminsigninform",
+      "label": "AdminSignInForm",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L95"
+    },
+    {
+      "id": "auth_god_mode_admin_sign_up",
+      "label": "admin_sign_up()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L122"
+    },
+    {
+      "id": "auth_god_mode_admin_sign_in",
+      "label": "admin_sign_in()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L390"
+    },
+    {
+      "id": "auth_god_mode_admin_sign_out",
+      "label": "admin_sign_out()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L489"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_god_mode_rs",
+      "target": "axum",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L9",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_god_mode_rs",
+      "target": "cookie",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L14",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_god_mode_rs",
+      "target": "cookiejar",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L15",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_god_mode_rs",
+      "target": "utc",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L16",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_god_mode_rs",
+      "target": "address",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L17",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_god_mode_rs",
+      "target": "sea_orm",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L18",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_god_mode_rs",
+      "target": "deserialize",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L21",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_god_mode_rs",
+      "target": "json",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L22",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_god_mode_rs",
+      "target": "toschema",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L23",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_god_mode_rs",
+      "target": "crate",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L25",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_god_mode_rs",
+      "target": "auth_god_mode_admin_error",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L50",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_god_mode_rs",
+      "target": "auth_god_mode_admin_success",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L64",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_god_mode_rs",
+      "target": "auth_god_mode_is_valid_email",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L72",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_god_mode_rs",
+      "target": "auth_god_mode_is_password_strong",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L77",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_god_mode_rs",
+      "target": "auth_god_mode_adminsignupform",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L85",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_god_mode_rs",
+      "target": "auth_god_mode_adminsigninform",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L95",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_god_mode_rs",
+      "target": "auth_god_mode_admin_sign_up",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L122",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_god_mode_rs",
+      "target": "auth_god_mode_admin_sign_in",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L390",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_auth_god_mode_rs",
+      "target": "auth_god_mode_admin_sign_out",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L489",
+      "weight": 1.0
+    },
+    {
+      "source": "auth_god_mode_admin_sign_up",
+      "target": "auth_god_mode_admin_error",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L135",
+      "weight": 1.0
+    },
+    {
+      "source": "auth_god_mode_admin_sign_up",
+      "target": "auth_god_mode_is_valid_email",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L169",
+      "weight": 1.0
+    },
+    {
+      "source": "auth_god_mode_admin_sign_up",
+      "target": "auth_god_mode_is_password_strong",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L185",
+      "weight": 1.0
+    },
+    {
+      "source": "auth_god_mode_admin_sign_up",
+      "target": "auth_god_mode_admin_success",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L366",
+      "weight": 1.0
+    },
+    {
+      "source": "auth_god_mode_admin_sign_in",
+      "target": "auth_god_mode_admin_error",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L409",
+      "weight": 1.0
+    },
+    {
+      "source": "auth_god_mode_admin_sign_in",
+      "target": "auth_god_mode_is_valid_email",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L412",
+      "weight": 1.0
+    },
+    {
+      "source": "auth_god_mode_admin_sign_in",
+      "target": "auth_god_mode_admin_success",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L470",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "auth_god_mode_admin_error",
+      "callee": "admin_base",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L51"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_error",
+      "callee": "new",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L58"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_error",
+      "callee": "to",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L58"
+    },
+    {
+      "caller_nid": "auth_god_mode_is_valid_email",
+      "callee": "is_ok",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L73"
+    },
+    {
+      "caller_nid": "auth_god_mode_is_password_strong",
+      "callee": "zxcvbn",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L78"
+    },
+    {
+      "caller_nid": "auth_god_mode_is_password_strong",
+      "callee": "score",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L79"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "map_err",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L129"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "one",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L129"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "active",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L129"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "find",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L129"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L135"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "is_some",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L139"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "map_err",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L139"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "one",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L139"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "active",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L139"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "find",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L139"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L146"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "to_lowercase",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L150"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "trim",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L150"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "unwrap_or",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L150"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "as_deref",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L150"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "unwrap_or",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L151"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "as_deref",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L151"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "to_owned",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L152"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "trim",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L152"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "unwrap_or",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L152"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "as_deref",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L152"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "to_owned",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L153"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "trim",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L153"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "unwrap_or",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L153"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "as_deref",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L153"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "to_owned",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L154"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "trim",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L154"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "unwrap_or",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L154"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "as_deref",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L154"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "unwrap_or",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L155"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "map",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L155"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "as_deref",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L155"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "is_empty",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L161"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "is_empty",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L161"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "is_empty",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L161"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L162"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L170"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "is_some",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L174"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "map_err",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L174"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "one",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L174"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "filter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L174"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "find",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L174"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "eq",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L175"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Some",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L175"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "clone",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L175"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L181"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L186"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "now",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L190"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "new_v4",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L191"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "new_v4",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L192"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "new_v4",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L193"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "into_owned",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L200"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "email_display_name",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L200"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "map_err",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L201"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "make_password",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L201"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "map_err",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L203"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "begin",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L203"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "map_err",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L205"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "insert",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L205"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L206"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L207"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "to_string",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L207"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "simple",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L207"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "new_v4",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L207"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L208"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "clone",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L208"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L209"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L210"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Some",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L210"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "clone",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L210"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L211"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L212"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L213"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L214"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L215"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L216"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L217"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L218"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L219"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L220"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L221"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L222"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "to_owned",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L222"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L223"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L224"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "new",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L224"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L225"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L226"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "new",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L226"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L227"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "new",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L227"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L228"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Some",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L228"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L228"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L229"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Some",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L229"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L229"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L230"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "extract_client_ip",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L230"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L231"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "to_owned",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L231"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L232"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "to_owned",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L232"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "unwrap_or_default",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L232"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "and_then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L232"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L232"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "ok",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L234"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "to_str",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L234"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L237"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L238"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "new",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L238"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L239"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Some",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L239"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L239"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L240"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Some",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L240"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L240"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L241"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L241"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L242"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L242"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L243"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L243"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L244"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L245"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L246"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L247"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L248"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L249"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "map_err",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L255"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "insert",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L255"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L256"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L257"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L258"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "clone",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L258"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L259"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L260"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L261"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L262"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L263"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L264"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L265"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L266"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L267"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L268"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L269"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L270"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L271"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L277"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L282"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L289"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L290"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L291"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L292"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L293"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L294"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "to_owned",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L294"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L295"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L296"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "to_owned",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L296"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L297"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "to_owned",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L297"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L298"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L298"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L299"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L299"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "map_err",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L305"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "insert",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L305"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L306"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L307"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L308"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L309"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L310"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L311"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L312"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L313"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L314"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L315"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L316"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L317"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L318"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L318"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L319"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L319"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "map_err",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L325"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "commit",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L325"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "new_v4",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L328"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "map_err",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L329"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "insert",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L329"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L330"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L331"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L332"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Some",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L332"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L333"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L334"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L335"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Some",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L335"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L336"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Some",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L336"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L337"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L337"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L338"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L338"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L339"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L346"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L347"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L348"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "is_empty",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L349"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L350"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L352"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L352"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "map_err",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L353"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "update",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L353"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "ok_or",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L359"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "map_err",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L359"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "one",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L359"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "find_by_id",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L359"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "issue_session_cookie",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L365"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L367"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_up",
+      "callee": "to",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L367"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "ok_or_else",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L397"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "map_err",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L397"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "one",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L397"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "active",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L397"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "find",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L397"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "to_lowercase",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L405"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "trim",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L405"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "unwrap_or",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L405"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "as_deref",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L405"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "unwrap_or",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L406"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "as_deref",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L406"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "is_empty",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L408"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "is_empty",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L408"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L409"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L413"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "map_err",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L417"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "one",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L417"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "filter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L417"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "find",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L417"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "eq",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L418"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "Some",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L418"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "clone",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L418"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L423"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L427"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "verify_password",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L431"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L432"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "is_some",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L437"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "map_err",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L437"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "one",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L437"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "filter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L437"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "filter",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L437"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "active",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L437"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "find",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L437"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "eq",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L439"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "eq",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L440"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L447"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "now",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L451"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L452"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L453"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "Some",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L453"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L453"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L454"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "Some",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L454"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L454"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L455"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "extract_client_ip",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L455"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L456"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "to_owned",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L456"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "unwrap_or_default",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L456"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "and_then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L456"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L456"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "ok",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L458"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "to_str",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L458"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L461"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "Some",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L461"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L461"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L462"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "Some",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L462"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L462"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L463"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L464"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L464"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "map_err",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L465"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "update",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L465"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "replace_session_cookie",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L469"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L471"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_in",
+      "callee": "to",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L471"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "ok_or",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L496"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "map",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L496"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L496"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "to_owned",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L498"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "value",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L498"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "is_valid_csrf",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L501"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "Err",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L502"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "ok_or",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L507"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "map",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L507"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "or_else",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L507"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L507"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L509"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "to_owned",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L510"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "value",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L510"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "exec",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L517"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "delete_by_id",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L517"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "extract_client_ip",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L523"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "now",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L524"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "map",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L529"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "or_else",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L529"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L529"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L531"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "to_owned",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L532"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "value",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L532"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "map_err",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L534"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "one",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L534"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "find_by_id",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L534"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L538"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "decode_session",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L542"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "and_then",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L543"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "get",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L543"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "as_str",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L543"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "one",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L545"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "find_by_id",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L545"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L549"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L550"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "Set",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L551"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "Some",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L551"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "into",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L551"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "update",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L552"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "build",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L561"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "path",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L561"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "same_site",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L561"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "http_only",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L561"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "max_age",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L561"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "build",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L561"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "to_owned",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L561"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "new",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L561"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "remove",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L569"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "remove",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L569"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "remove",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L569"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "expired",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L570"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "expired",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L571"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "expired",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L572"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "admin_base",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L574"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "Ok",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L575"
+    },
+    {
+      "caller_nid": "auth_god_mode_admin_sign_out",
+      "callee": "to",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/api_rust/src/auth/god_mode.rs",
+      "source_location": "L575"
+    }
+  ]
+}

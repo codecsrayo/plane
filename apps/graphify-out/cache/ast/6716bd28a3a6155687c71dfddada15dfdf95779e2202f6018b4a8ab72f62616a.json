@@ -1,0 +1,235 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_constants_plans_tsx",
+      "label": "plans.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/constants/plans.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "constants_plans_tplanfeaturedata",
+      "label": "TPlanFeatureData",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/constants/plans.tsx",
+      "source_location": "L12"
+    },
+    {
+      "id": "constants_plans_tplaneplans",
+      "label": "TPlanePlans",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/constants/plans.tsx",
+      "source_location": "L15"
+    },
+    {
+      "id": "constants_plans_tplandetail",
+      "label": "TPlanDetail",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/constants/plans.tsx",
+      "source_location": "L17"
+    },
+    {
+      "id": "constants_plans_tplanfeaturedetails",
+      "label": "TPlanFeatureDetails",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/constants/plans.tsx",
+      "source_location": "L28"
+    },
+    {
+      "id": "constants_plans_tplanscomparisondetails",
+      "label": "TPlansComparisonDetails",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/constants/plans.tsx",
+      "source_location": "L38"
+    },
+    {
+      "id": "constants_plans_planeplans",
+      "label": "PlanePlans",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/constants/plans.tsx",
+      "source_location": "L47"
+    },
+    {
+      "id": "constants_plans_forumicon",
+      "label": "ForumIcon()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/constants/plans.tsx",
+      "source_location": "L53"
+    },
+    {
+      "id": "constants_plans_comingsoonbadge",
+      "label": "ComingSoonBadge()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/constants/plans.tsx",
+      "source_location": "L57"
+    },
+    {
+      "id": "constants_plans_plans_list",
+      "label": "PLANS_LIST",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/constants/plans.tsx",
+      "source_location": "L70"
+    },
+    {
+      "id": "constants_plans_plans_comparison_list",
+      "label": "PLANS_COMPARISON_LIST",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/constants/plans.tsx",
+      "source_location": "L72"
+    },
+    {
+      "id": "constants_plans_plane_plans",
+      "label": "PLANE_PLANS",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/constants/plans.tsx",
+      "source_location": "L1257"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_constants_plans_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/constants/plans.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_constants_plans_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/constants/plans.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_constants_plans_tsx",
+      "target": "utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/constants/plans.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_constants_plans_tsx",
+      "target": "constants_plans_tplanfeaturedata",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/constants/plans.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_constants_plans_tsx",
+      "target": "constants_plans_tplaneplans",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/constants/plans.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_constants_plans_tsx",
+      "target": "constants_plans_tplandetail",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/constants/plans.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_constants_plans_tsx",
+      "target": "constants_plans_tplanfeaturedetails",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/constants/plans.tsx",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_constants_plans_tsx",
+      "target": "constants_plans_tplanscomparisondetails",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/constants/plans.tsx",
+      "source_location": "L38",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_constants_plans_tsx",
+      "target": "constants_plans_planeplans",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/constants/plans.tsx",
+      "source_location": "L47",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_constants_plans_tsx",
+      "target": "constants_plans_forumicon",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/constants/plans.tsx",
+      "source_location": "L53",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_constants_plans_tsx",
+      "target": "constants_plans_comingsoonbadge",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/constants/plans.tsx",
+      "source_location": "L57",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_constants_plans_tsx",
+      "target": "constants_plans_plans_list",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/constants/plans.tsx",
+      "source_location": "L70",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_constants_plans_tsx",
+      "target": "constants_plans_plans_comparison_list",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/constants/plans.tsx",
+      "source_location": "L72",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_constants_plans_tsx",
+      "target": "constants_plans_plane_plans",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/constants/plans.tsx",
+      "source_location": "L1257",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "constants_plans_forumicon",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/constants/plans.tsx",
+      "source_location": "L54"
+    },
+    {
+      "caller_nid": "constants_plans_comingsoonbadge",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/constants/plans.tsx",
+      "source_location": "L60"
+    }
+  ]
+}

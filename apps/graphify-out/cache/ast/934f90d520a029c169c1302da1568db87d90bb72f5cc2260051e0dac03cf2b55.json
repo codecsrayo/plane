@@ -1,0 +1,207 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_onboarding_steps_root_tsx",
+      "label": "root.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/onboarding/steps/root.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "steps_root_props",
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/onboarding/steps/root.tsx",
+      "source_location": "L18"
+    },
+    {
+      "id": "steps_root_onboardingstepcontent",
+      "label": "OnboardingStepContent()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/onboarding/steps/root.tsx",
+      "source_location": "L24"
+    },
+    {
+      "id": "steps_root_onboardingsteproot",
+      "label": "OnboardingStepRoot()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/onboarding/steps/root.tsx",
+      "source_location": "L41"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_onboarding_steps_root_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/onboarding/steps/root.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_onboarding_steps_root_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/onboarding/steps/root.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_onboarding_steps_root_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/onboarding/steps/root.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_onboarding_steps_root_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_onboarding_steps_profile_index_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/onboarding/steps/root.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_onboarding_steps_root_tsx",
+      "target": "profile_index_profilesetupstep",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/onboarding/steps/root.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_onboarding_steps_root_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_onboarding_steps_role_index_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/onboarding/steps/root.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_onboarding_steps_root_tsx",
+      "target": "role_index_rolesetupstep",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/onboarding/steps/root.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_onboarding_steps_root_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_onboarding_steps_team_index_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/onboarding/steps/root.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_onboarding_steps_root_tsx",
+      "target": "team_index_inviteteamstep",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/onboarding/steps/root.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_onboarding_steps_root_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_onboarding_steps_usecase_index_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/onboarding/steps/root.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_onboarding_steps_root_tsx",
+      "target": "usecase_index_usecasesetupstep",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/onboarding/steps/root.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_onboarding_steps_root_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_onboarding_steps_workspace_index_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/onboarding/steps/root.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_onboarding_steps_root_tsx",
+      "target": "workspace_index_workspacesetupstep",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/onboarding/steps/root.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_onboarding_steps_root_tsx",
+      "target": "steps_root_props",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/onboarding/steps/root.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_onboarding_steps_root_tsx",
+      "target": "steps_root_onboardingstepcontent",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/onboarding/steps/root.tsx",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_onboarding_steps_root_tsx",
+      "target": "steps_root_onboardingsteproot",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/onboarding/steps/root.tsx",
+      "source_location": "L41",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "steps_root_onboardingsteproot",
+      "callee": "useRef",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/onboarding/steps/root.tsx",
+      "source_location": "L44"
+    },
+    {
+      "caller_nid": "steps_root_onboardingsteproot",
+      "callee": "useEffect",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/onboarding/steps/root.tsx",
+      "source_location": "L47"
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_auth_screens_workspace_not_a_member_tsx",
+      "label": "not-a-member.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/auth-screens/workspace/not-a-member.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "workspace_not_a_member_notaworkspacemember",
+      "label": "NotAWorkspaceMember()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/auth-screens/workspace/not-a-member.tsx",
+      "source_location": "L13"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_auth_screens_workspace_not_a_member_tsx",
+      "target": "link",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/auth-screens/workspace/not-a-member.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_auth_screens_workspace_not_a_member_tsx",
+      "target": "button",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/auth-screens/workspace/not-a-member.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_auth_screens_workspace_not_a_member_tsx",
+      "target": "home_nixos_plane_apps_web_core_layouts_default_layout_index_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/auth-screens/workspace/not-a-member.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_auth_screens_workspace_not_a_member_tsx",
+      "target": "workspace_not_a_member_notaworkspacemember",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/auth-screens/workspace/not-a-member.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

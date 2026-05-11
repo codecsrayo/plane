@@ -1,0 +1,24 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_api_rust_src_entities_mod_rs",
+      "label": "mod.rs",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/mod.rs",
+      "source_location": "L1"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_api_rust_src_entities_mod_rs",
+      "target": "impl_soft_delete",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/api_rust/src/entities/mod.rs",
+      "source_location": "L126",
+      "weight": 1.0,
+      "context": "import"
+    }
+  ],
+  "raw_calls": []
+}

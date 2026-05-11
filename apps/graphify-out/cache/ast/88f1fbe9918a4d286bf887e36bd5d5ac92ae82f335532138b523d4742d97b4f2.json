@@ -1,0 +1,70 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_common_page_access_icon_tsx",
+      "label": "page-access-icon.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/common/page-access-icon.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "common_page_access_icon_pageaccessicon",
+      "label": "PageAccessIcon()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/common/page-access-icon.tsx",
+      "source_location": "L12"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_common_page_access_icon_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/common/page-access-icon.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_common_page_access_icon_tsx",
+      "target": "constants",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/common/page-access-icon.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_common_page_access_icon_tsx",
+      "target": "icons",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/common/page-access-icon.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_common_page_access_icon_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/common/page-access-icon.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_common_page_access_icon_tsx",
+      "target": "common_page_access_icon_pageaccessicon",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/common/page-access-icon.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

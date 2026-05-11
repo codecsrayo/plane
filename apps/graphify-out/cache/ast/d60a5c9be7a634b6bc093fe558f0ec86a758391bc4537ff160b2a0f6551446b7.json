@@ -1,0 +1,224 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_store_sticky_sticky_store_ts",
+      "label": "sticky.store.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/sticky/sticky.store.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "sticky_sticky_store_istickystore",
+      "label": "IStickyStore",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/sticky/sticky.store.ts",
+      "source_location": "L15"
+    },
+    {
+      "id": "sticky_sticky_store_stickystore",
+      "label": "StickyStore",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/sticky/sticky.store.ts",
+      "source_location": "L45"
+    },
+    {
+      "id": "sticky_sticky_store_stickystore_constructor",
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/sticky/sticky.store.ts",
+      "source_location": "L59"
+    },
+    {
+      "id": "sticky_sticky_store_currentstickykey",
+      "label": "currentStickyKey",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/sticky/sticky.store.ts",
+      "source_location": "L215"
+    },
+    {
+      "id": "sticky_sticky_store_stickies",
+      "label": "stickies",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/sticky/sticky.store.ts",
+      "source_location": "L258"
+    },
+    {
+      "id": "sticky_sticky_store_sortedstickies",
+      "label": "sortedStickies",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/sticky/sticky.store.ts",
+      "source_location": "L259"
+    },
+    {
+      "id": "sticky_sticky_store_destinationindex",
+      "label": "destinationIndex",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/store/sticky/sticky.store.ts",
+      "source_location": "L263"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_store_sticky_sticky_store_ts",
+      "target": "lodash_es",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/sticky/sticky.store.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_sticky_sticky_store_ts",
+      "target": "mobx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/sticky/sticky.store.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_sticky_sticky_store_ts",
+      "target": "mobx_utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/sticky/sticky.store.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_sticky_sticky_store_ts",
+      "target": "constants",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/sticky/sticky.store.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_sticky_sticky_store_ts",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/sticky/sticky.store.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_sticky_sticky_store_ts",
+      "target": "home_nixos_plane_apps_web_core_services_sticky_service_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/sticky/sticky.store.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_sticky_sticky_store_ts",
+      "target": "services_sticky_service_stickyservice",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/sticky/sticky.store.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_sticky_sticky_store_ts",
+      "target": "home_nixos_plane_apps_web_core_services_api_service_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/sticky/sticky.store.ts",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_sticky_sticky_store_ts",
+      "target": "services_api_service_toapierror",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/sticky/sticky.store.ts",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_sticky_sticky_store_ts",
+      "target": "sticky_sticky_store_istickystore",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/sticky/sticky.store.ts",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_sticky_sticky_store_ts",
+      "target": "sticky_sticky_store_stickystore",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/sticky/sticky.store.ts",
+      "source_location": "L45",
+      "weight": 1.0
+    },
+    {
+      "source": "sticky_sticky_store_stickystore",
+      "target": "sticky_sticky_store_stickystore_constructor",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/sticky/sticky.store.ts",
+      "source_location": "L59",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_sticky_sticky_store_ts",
+      "target": "sticky_sticky_store_currentstickykey",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/sticky/sticky.store.ts",
+      "source_location": "L215",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_sticky_sticky_store_ts",
+      "target": "sticky_sticky_store_stickies",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/sticky/sticky.store.ts",
+      "source_location": "L258",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_sticky_sticky_store_ts",
+      "target": "sticky_sticky_store_sortedstickies",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/sticky/sticky.store.ts",
+      "source_location": "L259",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_store_sticky_sticky_store_ts",
+      "target": "sticky_sticky_store_destinationindex",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/store/sticky/sticky.store.ts",
+      "source_location": "L263",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "sticky_sticky_store_stickystore_constructor",
+      "callee": "makeObservable",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/store/sticky/sticky.store.ts",
+      "source_location": "L60"
+    }
+  ]
+}

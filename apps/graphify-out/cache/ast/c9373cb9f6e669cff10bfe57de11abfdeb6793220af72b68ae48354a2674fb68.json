@@ -1,0 +1,88 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_hooks_store_user_user_user_profile_ts",
+      "label": "user-user-profile.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/store/user/user-user-profile.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "user_user_user_profile_useuserprofile",
+      "label": "useUserProfile()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/store/user/user-user-profile.ts",
+      "source_location": "L13"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_store_user_user_user_profile_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/store/user/user-user-profile.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_store_user_user_user_profile_ts",
+      "target": "home_nixos_plane_apps_web_core_lib_store_context_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/store/user/user-user-profile.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_store_user_user_user_profile_ts",
+      "target": "lib_store_context_storecontext",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/store/user/user-user-profile.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_store_user_user_user_profile_ts",
+      "target": "home_nixos_plane_apps_web_core_store_user_profile_store_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/store/user/user-user-profile.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_store_user_user_user_profile_ts",
+      "target": "user_profile_store_iuserprofilestore",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/store/user/user-user-profile.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_hooks_store_user_user_user_profile_ts",
+      "target": "user_user_user_profile_useuserprofile",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/store/user/user-user-profile.ts",
+      "source_location": "L13",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "user_user_user_profile_useuserprofile",
+      "callee": "useContext",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/hooks/store/user/user-user-profile.ts",
+      "source_location": "L14"
+    }
+  ]
+}

@@ -1,0 +1,243 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_editor_sticky_editor_toolbar_tsx",
+      "label": "toolbar.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/sticky-editor/toolbar.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "sticky_editor_toolbar_props",
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/sticky-editor/toolbar.tsx",
+      "source_location": "L23"
+    },
+    {
+      "id": "sticky_editor_toolbar_stickyeditortoolbar",
+      "label": "StickyEditorToolbar()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/sticky-editor/toolbar.tsx",
+      "source_location": "L32"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_sticky_editor_toolbar_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/sticky-editor/toolbar.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_sticky_editor_toolbar_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/sticky-editor/toolbar.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_sticky_editor_toolbar_tsx",
+      "target": "editor",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/sticky-editor/toolbar.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_sticky_editor_toolbar_tsx",
+      "target": "hooks",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/sticky-editor/toolbar.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_sticky_editor_toolbar_tsx",
+      "target": "icons",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/sticky-editor/toolbar.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_sticky_editor_toolbar_tsx",
+      "target": "tooltip",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/sticky-editor/toolbar.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_sticky_editor_toolbar_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/sticky-editor/toolbar.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_sticky_editor_toolbar_tsx",
+      "target": "utils",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/sticky-editor/toolbar.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_sticky_editor_toolbar_tsx",
+      "target": "home_nixos_plane_apps_web_core_constants_editor_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/sticky-editor/toolbar.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_sticky_editor_toolbar_tsx",
+      "target": "constants_editor_toolbarmenuitem",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/sticky-editor/toolbar.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_sticky_editor_toolbar_tsx",
+      "target": "home_nixos_plane_apps_web_core_constants_editor_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/sticky-editor/toolbar.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_sticky_editor_toolbar_tsx",
+      "target": "constants_editor_toolbar_items",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/sticky-editor/toolbar.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_sticky_editor_toolbar_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_editor_sticky_editor_color_palette_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/sticky-editor/toolbar.tsx",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_sticky_editor_toolbar_tsx",
+      "target": "sticky_editor_color_palette_colorpalette",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/sticky-editor/toolbar.tsx",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_sticky_editor_toolbar_tsx",
+      "target": "sticky_editor_toolbar_props",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/sticky-editor/toolbar.tsx",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_editor_sticky_editor_toolbar_tsx",
+      "target": "sticky_editor_toolbar_stickyeditortoolbar",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/sticky-editor/toolbar.tsx",
+      "source_location": "L32",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "sticky_editor_toolbar_stickyeditortoolbar",
+      "callee": "useState",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/sticky-editor/toolbar.tsx",
+      "source_location": "L36"
+    },
+    {
+      "caller_nid": "sticky_editor_toolbar_stickyeditortoolbar",
+      "callee": "useState",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/sticky-editor/toolbar.tsx",
+      "source_location": "L37"
+    },
+    {
+      "caller_nid": "sticky_editor_toolbar_stickyeditortoolbar",
+      "callee": "useRef",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/sticky-editor/toolbar.tsx",
+      "source_location": "L38"
+    },
+    {
+      "caller_nid": "sticky_editor_toolbar_stickyeditortoolbar",
+      "callee": "useCallback",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/sticky-editor/toolbar.tsx",
+      "source_location": "L40"
+    },
+    {
+      "caller_nid": "sticky_editor_toolbar_stickyeditortoolbar",
+      "callee": "useEffect",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/sticky-editor/toolbar.tsx",
+      "source_location": "L57"
+    },
+    {
+      "caller_nid": "sticky_editor_toolbar_stickyeditortoolbar",
+      "callee": "useOutsideClickDetector",
+      "is_member_call": false,
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/sticky-editor/toolbar.tsx",
+      "source_location": "L64"
+    },
+    {
+      "caller_nid": "sticky_editor_toolbar_stickyeditortoolbar",
+      "callee": "map",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/sticky-editor/toolbar.tsx",
+      "source_location": "L85"
+    },
+    {
+      "caller_nid": "sticky_editor_toolbar_stickyeditortoolbar",
+      "callee": "keys",
+      "is_member_call": true,
+      "source_file": "/home/nixos/plane/apps/web/core/components/editor/sticky-editor/toolbar.tsx",
+      "source_location": "L85"
+    }
+  ]
+}

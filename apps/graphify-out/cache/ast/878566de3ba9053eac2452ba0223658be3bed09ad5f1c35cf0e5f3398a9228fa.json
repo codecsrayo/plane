@@ -1,0 +1,30 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_lib_app_rail_types_ts",
+      "label": "types.ts",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/lib/app-rail/types.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "app_rail_types_iapprailvisibilitycontext",
+      "label": "IAppRailVisibilityContext",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/lib/app-rail/types.ts",
+      "source_location": "L11"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_lib_app_rail_types_ts",
+      "target": "app_rail_types_iapprailvisibilitycontext",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/lib/app-rail/types.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

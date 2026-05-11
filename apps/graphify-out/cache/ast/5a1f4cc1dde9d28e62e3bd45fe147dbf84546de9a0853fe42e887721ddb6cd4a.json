@@ -1,0 +1,204 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_project_states_state_item_title_tsx",
+      "label": "state-item-title.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project-states/state-item-title.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "project_states_state_item_title_tbasestateitemtitleprops",
+      "label": "TBaseStateItemTitleProps",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project-states/state-item-title.tsx",
+      "source_location": "L18"
+    },
+    {
+      "id": "project_states_state_item_title_tenabledstateitemtitleprops",
+      "label": "TEnabledStateItemTitleProps",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project-states/state-item-title.tsx",
+      "source_location": "L25"
+    },
+    {
+      "id": "project_states_state_item_title_tdisabledstateitemtitleprops",
+      "label": "TDisabledStateItemTitleProps",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project-states/state-item-title.tsx",
+      "source_location": "L31"
+    },
+    {
+      "id": "project_states_state_item_title_tstateitemtitleprops",
+      "label": "TStateItemTitleProps",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project-states/state-item-title.tsx",
+      "source_location": "L35"
+    },
+    {
+      "id": "project_states_state_item_title_stateitemtitle",
+      "label": "StateItemTitle",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project-states/state-item-title.tsx",
+      "source_location": "L37"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_states_state_item_title_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project-states/state-item-title.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_states_state_item_title_tsx",
+      "target": "mobx_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project-states/state-item-title.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_states_state_item_title_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project-states/state-item-title.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_states_state_item_title_tsx",
+      "target": "constants",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project-states/state-item-title.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_states_state_item_title_tsx",
+      "target": "icons",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project-states/state-item-title.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_states_state_item_title_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project-states/state-item-title.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_states_state_item_title_tsx",
+      "target": "home_nixos_plane_apps_web_core_hooks_store_use_project_state_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project-states/state-item-title.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_states_state_item_title_tsx",
+      "target": "store_use_project_state_useprojectstate",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project-states/state-item-title.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_states_state_item_title_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_project_states_options_index_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project-states/state-item-title.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_states_state_item_title_tsx",
+      "target": "options_index_statedelete",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project-states/state-item-title.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_states_state_item_title_tsx",
+      "target": "options_index_statemarksasdefault",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project-states/state-item-title.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_states_state_item_title_tsx",
+      "target": "project_states_state_item_title_tbasestateitemtitleprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project-states/state-item-title.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_states_state_item_title_tsx",
+      "target": "project_states_state_item_title_tenabledstateitemtitleprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project-states/state-item-title.tsx",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_states_state_item_title_tsx",
+      "target": "project_states_state_item_title_tdisabledstateitemtitleprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project-states/state-item-title.tsx",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_states_state_item_title_tsx",
+      "target": "project_states_state_item_title_tstateitemtitleprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project-states/state-item-title.tsx",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_project_states_state_item_title_tsx",
+      "target": "project_states_state_item_title_stateitemtitle",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/project-states/state-item-title.tsx",
+      "source_location": "L37",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

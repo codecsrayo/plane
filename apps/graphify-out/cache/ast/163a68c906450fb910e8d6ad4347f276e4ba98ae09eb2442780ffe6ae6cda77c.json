@@ -1,0 +1,96 @@
+{
+  "nodes": [
+    {
+      "id": "home_nixos_plane_apps_web_core_components_views_helper_tsx",
+      "label": "helper.tsx",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/views/helper.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "views_helper_tworkspacelayoutprops",
+      "label": "TWorkspaceLayoutProps",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/views/helper.tsx",
+      "source_location": "L11"
+    },
+    {
+      "id": "views_helper_workspaceactivelayout",
+      "label": "WorkspaceActiveLayout()",
+      "file_type": "code",
+      "source_file": "/home/nixos/plane/apps/web/core/components/views/helper.tsx",
+      "source_location": "L26"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_nixos_plane_apps_web_core_components_views_helper_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/views/helper.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_views_helper_tsx",
+      "target": "home_nixos_plane_apps_web_core_components_issues_issue_layouts_spreadsheet_roots_workspace_root_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/views/helper.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_views_helper_tsx",
+      "target": "roots_workspace_root_workspacespreadsheetroot",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/views/helper.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_views_helper_tsx",
+      "target": "home_nixos_plane_apps_web_core_plane_web_components_views_helper",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/views/helper.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_views_helper_tsx",
+      "target": "views_helper_workspaceadditionallayouts",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/views/helper.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_views_helper_tsx",
+      "target": "views_helper_tworkspacelayoutprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/views/helper.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "home_nixos_plane_apps_web_core_components_views_helper_tsx",
+      "target": "views_helper_workspaceactivelayout",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/nixos/plane/apps/web/core/components/views/helper.tsx",
+      "source_location": "L26",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}
