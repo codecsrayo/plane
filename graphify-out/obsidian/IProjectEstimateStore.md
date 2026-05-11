@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/estimates/project-estimate.store.ts"
+source_file: "store/estimates/project-estimate.store.ts"
 type: "code"
-community: "Project Estimates"
+community: "Estimate Project"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Estimates
+  - community/Estimate_Project
 ---
 
 # IProjectEstimateStore
@@ -17,4 +17,4 @@ tags:
 - [[root.store.ts]] - `imports` [EXTRACTED]
 - [[use-project-estimate.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Estimates
+#graphify/code #graphify/EXTRACTED #community/Estimate_Project

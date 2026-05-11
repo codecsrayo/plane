@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/spreadsheet/columns/header-column.tsx"
+source_file: "components/issues/issue-layouts/spreadsheet/columns/header-column.tsx"
 type: "code"
-community: "Community 62"
+community: "Rail Visibility"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_62
+  - community/Rail_Visibility
 ---
 
 # HeaderColumn()
@@ -17,4 +17,4 @@ tags:
 - [[spreadsheet-header-column.tsx]] - `imports` [EXTRACTED]
 - [[useLocalStorage()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_62
+#graphify/code #graphify/EXTRACTED #community/Rail_Visibility

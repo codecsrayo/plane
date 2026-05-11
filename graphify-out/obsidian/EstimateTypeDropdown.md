@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/cycles/dropdowns/estimate-type-dropdown.tsx"
+source_file: "components/cycles/dropdowns/estimate-type-dropdown.tsx"
 type: "code"
-community: "Cycle Analytics"
+community: "Cycle Productivity"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Analytics
+  - community/Cycle_Productivity
 ---
 
 # EstimateTypeDropdown
@@ -16,4 +16,4 @@ tags:
 - [[estimate-type-dropdown.tsx]] - `contains` [EXTRACTED]
 - [[productivity.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Analytics
+#graphify/code #graphify/EXTRACTED #community/Cycle_Productivity

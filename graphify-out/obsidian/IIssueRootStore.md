@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/issue/root.store.ts"
+source_file: "store/issue/root.store.ts"
 type: "code"
-community: "Community 138"
+community: "Filters Cycle"
 location: "L54"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_138
+  - community/Filters_Cycle
 ---
 
 # IIssueRootStore
@@ -36,4 +36,4 @@ tags:
 - [[root.store.ts_1]] - `contains` [EXTRACTED]
 - [[root.store.ts_2]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_138
+#graphify/code #graphify/EXTRACTED #community/Filters_Cycle

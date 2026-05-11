@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/project/archive-restore-modal.tsx"
+source_file: "components/project/archive-restore-modal.tsx"
 type: "code"
-community: "Applied Filters UI"
+community: "Account Settings"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Applied_Filters_UI
+  - community/Account_Settings
 ---
 
 # ArchiveRestoreProjectModal()
@@ -19,4 +19,4 @@ tags:
 - [[useAppRouter()]] - `calls` [EXTRACTED]
 - [[useProject()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Applied_Filters_UI
+#graphify/code #graphify/EXTRACTED #community/Account_Settings

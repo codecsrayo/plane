@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/labels/create-update-label-inline.tsx"
+source_file: "components/labels/create-update-label-inline.tsx"
 type: "code"
-community: "Community 76"
+community: "Label Manager"
 location: "L45"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_76
+  - community/Label_Manager
 ---
 
 # CreateUpdateLabelInline
@@ -17,4 +17,4 @@ tags:
 - [[project-setting-label-group.tsx]] - `imports` [EXTRACTED]
 - [[project-setting-label-item.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_76
+#graphify/code #graphify/EXTRACTED #community/Label_Manager

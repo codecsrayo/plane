@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/member/index.ts"
+source_file: "store/member/index.ts"
 type: "code"
-community: "Community 150"
+community: "Member Workspace"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_150
+  - community/Member_Workspace
 ---
 
 # IMemberRootStore
@@ -19,4 +19,4 @@ tags:
 - [[use-member.ts]] - `imports` [EXTRACTED]
 - [[workspace-member.store.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_150
+#graphify/code #graphify/EXTRACTED #community/Member_Workspace

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/base-layouts/kanban/group-header.tsx"
+source_file: "components/base-layouts/kanban/group-header.tsx"
 type: "code"
-community: "Community 106"
+community: "Group Drop"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_106
+  - community/Group_Drop
 ---
 
 # GroupHeader()
@@ -16,4 +16,4 @@ tags:
 - [[group-header.tsx]] - `contains` [EXTRACTED]
 - [[group.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_106
+#graphify/code #graphify/EXTRACTED #community/Group_Drop

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-modal/base.tsx"
+source_file: "components/issues/issue-modal/base.tsx"
 type: "code"
-community: "Community 55"
+community: "Issue Identifiers"
 location: "L36"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_55
+  - community/Issue_Identifiers
 ---
 
 # CreateUpdateIssueModalBase
@@ -16,4 +16,4 @@ tags:
 - [[base.tsx_7]] - `contains` [EXTRACTED]
 - [[modal.tsx_7]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_55
+#graphify/code #graphify/EXTRACTED #community/Issue_Identifiers

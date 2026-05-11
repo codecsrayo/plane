@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/issue/helpers/base-issues.store.ts"
+source_file: "store/issue/helpers/base-issues.store.ts"
 type: "code"
-community: "Community 88"
+community: "Issues Filters"
 location: "L58"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_88
+  - community/Issues_Filters
 ---
 
 # IBaseIssuesStore
@@ -22,4 +22,4 @@ tags:
 - [[issue.store.ts_7]] - `imports` [EXTRACTED]
 - [[issue.store.ts_8]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_88
+#graphify/code #graphify/EXTRACTED #community/Issues_Filters

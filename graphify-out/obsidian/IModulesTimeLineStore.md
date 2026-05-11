@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/timeline/modules-timeline.store.ts"
+source_file: "store/timeline/modules-timeline.store.ts"
 type: "code"
-community: "Community 302"
+community: "Modules Time"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_302
+  - community/Modules_Time
 ---
 
 # IModulesTimeLineStore
@@ -15,4 +15,4 @@ tags:
 
 - [[modules-timeline.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_302
+#graphify/code #graphify/EXTRACTED #community/Modules_Time

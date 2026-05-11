@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/icons/attachment/img-file-icon.tsx"
+source_file: "components/icons/attachment/img-file-icon.tsx"
 type: "code"
-community: "Community 614"
+community: "Icon"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_614
+  - community/Icon
 ---
 
 # ImgIcon()
@@ -15,4 +15,4 @@ tags:
 
 - [[img-file-icon.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_614
+#graphify/code #graphify/EXTRACTED #community/Icon

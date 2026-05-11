@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/integration/github/pr-state-mapping-modal.tsx"
+source_file: "components/integration/github/pr-state-mapping-modal.tsx"
 type: "code"
-community: "Community 36"
+community: "Calendar Blocks"
 location: "L38"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_36
+  - community/Calendar_Blocks
 ---
 
 # GithubPRStateMappingModal
@@ -15,4 +15,4 @@ tags:
 
 - [[pr-state-mapping-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_36
+#graphify/code #graphify/EXTRACTED #community/Calendar_Blocks

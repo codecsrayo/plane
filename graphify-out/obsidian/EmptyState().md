@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/project/empty-state.tsx"
+source_file: "components/project/empty-state.tsx"
 type: "code"
-community: "Community 460"
+community: "Empty State"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_460
+  - community/Empty_State
 ---
 
 # EmptyState()
@@ -15,4 +15,4 @@ tags:
 
 - [[empty-state.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_460
+#graphify/code #graphify/EXTRACTED #community/Empty_State

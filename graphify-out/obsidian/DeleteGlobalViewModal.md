@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace/views/delete-view-modal.tsx"
+source_file: "components/workspace/views/delete-view-modal.tsx"
 type: "code"
-community: "Community 96"
+community: "Global Quick"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_96
+  - community/Global_Quick
 ---
 
 # DeleteGlobalViewModal
@@ -17,4 +17,4 @@ tags:
 - [[quick-action.tsx]] - `imports` [EXTRACTED]
 - [[view-list-item.tsx_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_96
+#graphify/code #graphify/EXTRACTED #community/Global_Quick

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/create-issue-toast-action-items.tsx"
+source_file: "components/issues/create-issue-toast-action-items.tsx"
 type: "code"
-community: "Community 82"
+community: "Issue Quick"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_82
+  - community/Issue_Quick
 ---
 
 # CreateIssueToastActionItems
@@ -17,4 +17,4 @@ tags:
 - [[create-issue-toast-action-items.tsx]] - `contains` [EXTRACTED]
 - [[root.tsx_28]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_82
+#graphify/code #graphify/EXTRACTED #community/Issue_Quick

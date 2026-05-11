@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/web-hooks/create-webhook-modal.tsx"
+source_file: "components/web-hooks/create-webhook-modal.tsx"
 type: "code"
-community: "Community 169"
+community: "Inbox Issue"
 location: "L39"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_169
+  - community/Inbox_Issue
 ---
 
 # CreateWebhookModal()
@@ -16,4 +16,4 @@ tags:
 - [[create-webhook-modal.tsx]] - `contains` [EXTRACTED]
 - [[useKeypress()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_169
+#graphify/code #graphify/EXTRACTED #community/Inbox_Issue

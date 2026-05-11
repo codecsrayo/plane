@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/layouts/default-layout/index.tsx"
+source_file: "layouts/default-layout/index.tsx"
 type: "code"
-community: "Community 199"
+community: "Authorized Maintenance"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_199
+  - community/Authorized_Maintenance
 ---
 
 # DefaultLayout()
@@ -15,4 +15,4 @@ tags:
 
 - [[index.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_199
+#graphify/code #graphify/EXTRACTED #community/Authorized_Maintenance

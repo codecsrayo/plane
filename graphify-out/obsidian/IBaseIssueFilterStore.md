@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/issue/helpers/issue-filter-helper.store.ts"
+source_file: "store/issue/helpers/issue-filter-helper.store.ts"
 type: "code"
-community: "Community 149"
+community: "Filters Display"
 location: "L43"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_149
+  - community/Filters_Display
 ---
 
 # IBaseIssueFilterStore
@@ -24,4 +24,4 @@ tags:
 - [[filter.store.ts_7]] - `imports` [EXTRACTED]
 - [[issue-filter-helper.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_149
+#graphify/code #graphify/EXTRACTED #community/Filters_Display

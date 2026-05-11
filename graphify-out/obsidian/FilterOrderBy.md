@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/filters/header/display-filters/order-by.tsx"
+source_file: "components/issues/issue-layouts/filters/header/display-filters/order-by.tsx"
 type: "code"
-community: "Community 453"
+community: "Filter Selection UI"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_453
+  - community/Filter_Selection_UI
 ---
 
 # FilterOrderBy
@@ -15,4 +15,4 @@ tags:
 
 - [[order-by.tsx_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_453
+#graphify/code #graphify/EXTRACTED #community/Filter_Selection_UI

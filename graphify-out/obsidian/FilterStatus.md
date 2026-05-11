@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/inbox/inbox-filter/filters/status.tsx"
+source_file: "components/inbox/inbox-filter/filters/status.tsx"
 type: "code"
-community: "Community 311"
+community: "Filter Selection UI"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_311
+  - community/Filter_Selection_UI
 ---
 
 # FilterStatus
@@ -19,4 +19,4 @@ tags:
 - [[status.tsx_3]] - `contains` [EXTRACTED]
 - [[status.tsx_5]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_311
+#graphify/code #graphify/EXTRACTED #community/Filter_Selection_UI

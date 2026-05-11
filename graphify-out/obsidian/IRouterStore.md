@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/router.store.ts"
+source_file: "store/router.store.ts"
 type: "code"
-community: "Community 173"
+community: "Router Params"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_173
+  - community/Router_Params
 ---
 
 # IRouterStore
@@ -19,4 +19,4 @@ tags:
 - [[use-router-params.ts]] - `imports` [EXTRACTED]
 - [[workspace-member.store.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_173
+#graphify/code #graphify/EXTRACTED #community/Router_Params

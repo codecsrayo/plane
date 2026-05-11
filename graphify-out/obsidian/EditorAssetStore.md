@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/editor/asset.store.ts"
+source_file: "store/editor/asset.store.ts"
 type: "code"
-community: "Community 141"
+community: "Editor Asset"
 location: "L52"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_141
+  - community/Editor_Asset
 ---
 
 # EditorAssetStore
@@ -18,4 +18,4 @@ tags:
 - [[asset.store.ts]] - `contains` [EXTRACTED]
 - [[root.store.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_141
+#graphify/code #graphify/EXTRACTED #community/Editor_Asset

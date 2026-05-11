@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/dropdowns/cycle/index.tsx"
+source_file: "components/dropdowns/cycle/index.tsx"
 type: "code"
-community: "Spreadsheet Column Components"
+community: "Issue Properties"
 location: "L38"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Column_Components
+  - community/Issue_Properties
 ---
 
 # CycleDropdown
@@ -21,4 +21,4 @@ tags:
 - [[index.tsx_6]] - `contains` [EXTRACTED]
 - [[issue-properties.tsx_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Column_Components
+#graphify/code #graphify/EXTRACTED #community/Issue_Properties

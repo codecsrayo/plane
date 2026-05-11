@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/modules/archived-modules/header.tsx"
+source_file: "components/modules/archived-modules/header.tsx"
 type: "code"
-community: "Module Analytics"
+community: "Modules Archived"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Analytics
+  - community/Modules_Archived
 ---
 
 # ArchivedModulesHeader
@@ -15,4 +15,4 @@ tags:
 
 - [[header.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Analytics
+#graphify/code #graphify/EXTRACTED #community/Modules_Archived

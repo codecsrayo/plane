@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/gantt-chart/views/month-view.ts"
+source_file: "components/gantt-chart/views/month-view.ts"
 type: "code"
-community: "Community 59"
+community: "Calendar Helpers"
 location: "L29"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_59
+  - community/Calendar_Helpers
 ---
 
 # IMonthView
@@ -15,4 +15,4 @@ tags:
 
 - [[month-view.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_59
+#graphify/code #graphify/EXTRACTED #community/Calendar_Helpers

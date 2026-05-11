@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/favorite/favorite.service.ts"
+source_file: "services/favorite/favorite.service.ts"
 type: "code"
-community: "Community 254"
+community: "Favorite Favoriteservice"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_254
+  - community/Favorite_Favoriteservice
 ---
 
 # FavoriteService
@@ -21,4 +21,4 @@ tags:
 - [[.updateFavorite()]] - `method` [EXTRACTED]
 - [[favorite.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_254
+#graphify/code #graphify/EXTRACTED #community/Favorite_Favoriteservice

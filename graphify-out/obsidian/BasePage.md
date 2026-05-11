@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/pages/base-page.ts"
+source_file: "store/pages/base-page.ts"
 type: "code"
-community: "Community 49"
+community: "Logo Editor"
 location: "L82"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_49
+  - community/Logo_Editor
 ---
 
 # BasePage
@@ -19,4 +19,4 @@ tags:
 - [[base-page.ts]] - `contains` [EXTRACTED]
 - [[project-page.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_49
+#graphify/code #graphify/EXTRACTED #community/Logo_Editor

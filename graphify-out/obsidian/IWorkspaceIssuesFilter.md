@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/issue/workspace/filter.store.ts"
+source_file: "store/issue/workspace/filter.store.ts"
 type: "code"
-community: "Community 84"
+community: "Filters Params"
 location: "L38"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_84
+  - community/Filters_Params
 ---
 
 # IWorkspaceIssuesFilter
@@ -16,4 +16,4 @@ tags:
 - [[filter.store.ts_2]] - `contains` [EXTRACTED]
 - [[issue.store.ts_3]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_84
+#graphify/code #graphify/EXTRACTED #community/Filters_Params

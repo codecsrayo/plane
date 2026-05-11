@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/cycle_filter.store.ts"
+source_file: "store/cycle_filter.store.ts"
 type: "code"
-community: "Community 290"
+community: "Archived Cycles"
 location: "L37"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_290
+  - community/Archived_Cycles
 ---
 
 # CycleFilterStore
@@ -20,4 +20,4 @@ tags:
 - [[cycle_filter.store.ts]] - `contains` [EXTRACTED]
 - [[root.store.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_290
+#graphify/code #graphify/EXTRACTED #community/Archived_Cycles

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/rich-filters/filter-item/root.tsx"
+source_file: "components/rich-filters/filter-item/root.tsx"
 type: "code"
-community: "Filter Components"
+community: "Filter Controls"
 location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filter_Components
+  - community/Filter_Controls
 ---
 
 # IFilterItemProps
@@ -16,4 +16,4 @@ tags:
 - [[invalid.tsx]] - `imports` [EXTRACTED]
 - [[root.tsx_91]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filter_Components
+#graphify/code #graphify/EXTRACTED #community/Filter_Controls

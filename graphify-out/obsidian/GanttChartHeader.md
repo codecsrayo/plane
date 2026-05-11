@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/gantt-chart/chart/header.tsx"
+source_file: "components/gantt-chart/chart/header.tsx"
 type: "code"
-community: "Community 153"
+community: "Gantt Current"
 location: "L32"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_153
+  - community/Gantt_Current
 ---
 
 # GanttChartHeader
@@ -15,4 +15,4 @@ tags:
 
 - [[header.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_153
+#graphify/code #graphify/EXTRACTED #community/Gantt_Current

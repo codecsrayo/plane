@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/comments/card/edit-form.tsx"
+source_file: "components/comments/card/edit-form.tsx"
 type: "code"
-community: "Community 222"
+community: "Comment Card"
 location: "L29"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_222
+  - community/Comment_Card
 ---
 
 # CommentCardEditForm
@@ -16,4 +16,4 @@ tags:
 - [[display.tsx]] - `imports` [EXTRACTED]
 - [[edit-form.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_222
+#graphify/code #graphify/EXTRACTED #community/Comment_Card

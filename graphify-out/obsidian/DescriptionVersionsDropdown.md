@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/core/description-versions/dropdown.tsx"
+source_file: "components/core/description-versions/dropdown.tsx"
 type: "code"
-community: "Member Filters & Description"
+community: "Description Dropdown"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Filters__Description
+  - community/Description_Dropdown
 ---
 
 # DescriptionVersionsDropdown
@@ -16,4 +16,4 @@ tags:
 - [[dropdown.tsx_8]] - `contains` [EXTRACTED]
 - [[root.tsx_93]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Filters\_\_Description
+#graphify/code #graphify/EXTRACTED #community/Description_Dropdown

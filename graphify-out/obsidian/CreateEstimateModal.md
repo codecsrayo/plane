@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/estimates/create/modal.tsx"
+source_file: "components/estimates/create/modal.tsx"
 type: "code"
-community: "Community 225"
+community: "Estimate Stage"
 location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_225
+  - community/Estimate_Stage
 ---
 
 # CreateEstimateModal
@@ -16,4 +16,4 @@ tags:
 - [[modal.tsx_12]] - `contains` [EXTRACTED]
 - [[root.tsx_85]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_225
+#graphify/code #graphify/EXTRACTED #community/Estimate_Stage

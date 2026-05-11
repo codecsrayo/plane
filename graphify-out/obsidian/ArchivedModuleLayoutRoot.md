@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/modules/archived-modules/root.tsx"
+source_file: "components/modules/archived-modules/root.tsx"
 type: "code"
-community: "Module Analytics"
+community: "Modules Archived"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Analytics
+  - community/Modules_Archived
 ---
 
 # ArchivedModuleLayoutRoot
@@ -15,4 +15,4 @@ tags:
 
 - [[root.tsx_13]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Analytics
+#graphify/code #graphify/EXTRACTED #community/Modules_Archived

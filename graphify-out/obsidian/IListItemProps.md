@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/core/list/list-item.tsx"
+source_file: "components/core/list/list-item.tsx"
 type: "code"
-community: "Account & Sub-Issues"
+community: "Account Settings"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Account__Sub-Issues
+  - community/Account_Settings
 ---
 
 # IListItemProps
@@ -15,4 +15,4 @@ tags:
 
 - [[list-item.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Account\_\_Sub-Issues
+#graphify/code #graphify/EXTRACTED #community/Account_Settings

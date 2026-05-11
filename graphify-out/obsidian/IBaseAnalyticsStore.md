@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/analytics.store.ts"
+source_file: "store/analytics.store.ts"
 type: "code"
-community: "Community 58"
+community: "Estimate Points"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_58
+  - community/Estimate_Points
 ---
 
 # IBaseAnalyticsStore
@@ -15,4 +15,4 @@ tags:
 
 - [[analytics.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_58
+#graphify/code #graphify/EXTRACTED #community/Estimate_Points

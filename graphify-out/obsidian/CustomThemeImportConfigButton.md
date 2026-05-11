@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/core/theme/import-config-button.tsx"
+source_file: "components/core/theme/import-config-button.tsx"
 type: "code"
-community: "Community 174"
+community: "Theme Custom"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_174
+  - community/Theme_Custom
 ---
 
 # CustomThemeImportConfigButton
@@ -16,4 +16,4 @@ tags:
 - [[custom-theme-selector.tsx]] - `imports` [EXTRACTED]
 - [[import-config-button.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_174
+#graphify/code #graphify/EXTRACTED #community/Theme_Custom

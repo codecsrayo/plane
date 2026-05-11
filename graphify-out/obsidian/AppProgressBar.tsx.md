@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/lib/b-progress/AppProgressBar.tsx"
+source_file: "lib/b-progress/AppProgressBar.tsx"
 type: "code"
-community: "Community 305"
+community: "Progress Config"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_305
+  - community/Progress_Config
 ---
 
 # AppProgressBar.tsx
@@ -17,4 +17,4 @@ tags:
 - [[PROGRESS_CONFIG]] - `contains` [EXTRACTED]
 - [[ProgressConfig]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_305
+#graphify/code #graphify/EXTRACTED #community/Progress_Config

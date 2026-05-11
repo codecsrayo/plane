@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/cycles/form.tsx"
+source_file: "components/cycles/form.tsx"
 type: "code"
-community: "Cycle Services & Filters"
+community: "Module Forms"
 location: "L41"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Services__Filters
+  - community/Module_Forms
 ---
 
 # CycleForm()
@@ -17,4 +17,4 @@ tags:
 - [[modal.tsx_9]] - `imports` [EXTRACTED]
 - [[useUser()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Services\_\_Filters
+#graphify/code #graphify/EXTRACTED #community/Module_Forms

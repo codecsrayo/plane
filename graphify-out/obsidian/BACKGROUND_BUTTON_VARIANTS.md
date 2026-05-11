@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/dropdowns/constants.ts"
+source_file: "components/dropdowns/constants.ts"
 type: "code"
-community: "Spreadsheet Column Components"
+community: "Issue Properties"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Column_Components
+  - community/Issue_Properties
 ---
 
 # BACKGROUND_BUTTON_VARIANTS
@@ -17,4 +17,4 @@ tags:
 - [[constants.ts_1]] - `contains` [EXTRACTED]
 - [[priority.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Column_Components
+#graphify/code #graphify/EXTRACTED #community/Issue_Properties

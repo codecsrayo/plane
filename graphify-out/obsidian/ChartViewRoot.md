@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/gantt-chart/chart/root.tsx"
+source_file: "components/gantt-chart/chart/root.tsx"
 type: "code"
-community: "Community 176"
+community: "Gantt Chart"
 location: "L63"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_176
+  - community/Gantt_Chart
 ---
 
 # ChartViewRoot
@@ -16,4 +16,4 @@ tags:
 - [[root.tsx_5]] - `imports` [EXTRACTED]
 - [[root.tsx_7]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_176
+#graphify/code #graphify/EXTRACTED #community/Gantt_Chart

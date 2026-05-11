@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/use-collaborative-page-actions.tsx"
+source_file: "hooks/use-collaborative-page-actions.tsx"
 type: "code"
-community: "Page Actions"
+community: "Collaborative Copy"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Page_Actions
+  - community/Collaborative_Copy
 ---
 
 # CollaborativeAction
@@ -15,4 +15,4 @@ tags:
 
 - [[use-collaborative-page-actions.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Page_Actions
+#graphify/code #graphify/EXTRACTED #community/Collaborative_Copy

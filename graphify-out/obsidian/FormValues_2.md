@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace-notifications/sidebar/notification-card/options/snooze/modal.tsx"
+source_file: "components/workspace-notifications/sidebar/notification-card/options/snooze/modal.tsx"
 type: "code"
-community: "Community 243"
+community: "Notification Snooze"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_243
+  - community/Notification_Snooze
 ---
 
 # FormValues
@@ -15,4 +15,4 @@ tags:
 
 - [[modal.tsx_8]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_243
+#graphify/code #graphify/EXTRACTED #community/Notification_Snooze

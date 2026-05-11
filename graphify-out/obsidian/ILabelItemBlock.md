@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/labels/label-block/label-item-block.tsx"
+source_file: "components/labels/label-block/label-item-block.tsx"
 type: "code"
-community: "Community 76"
+community: "Label Manager"
 location: "L32"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_76
+  - community/Label_Manager
 ---
 
 # ILabelItemBlock
@@ -15,4 +15,4 @@ tags:
 
 - [[label-item-block.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_76
+#graphify/code #graphify/EXTRACTED #community/Label_Manager

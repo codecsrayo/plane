@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/gantt/base-gantt-root.tsx"
+source_file: "components/issues/issue-layouts/gantt/base-gantt-root.tsx"
 type: "code"
-community: "Community 38"
+community: "Gantt Chart"
 location: "L34"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_38
+  - community/Gantt_Chart
 ---
 
 # IBaseGanttRoot
@@ -15,4 +15,4 @@ tags:
 
 - [[base-gantt-root.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_38
+#graphify/code #graphify/EXTRACTED #community/Gantt_Chart

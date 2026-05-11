@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/cycles/dropdowns/filters/start-date.tsx"
+source_file: "components/cycles/dropdowns/filters/start-date.tsx"
 type: "code"
-community: "Community 85"
+community: "Date Start"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_85
+  - community/Date_Start
 ---
 
 # FilterStartDate
@@ -18,4 +18,4 @@ tags:
 - [[start-date.tsx_1]] - `contains` [EXTRACTED]
 - [[start-date.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_85
+#graphify/code #graphify/EXTRACTED #community/Date_Start

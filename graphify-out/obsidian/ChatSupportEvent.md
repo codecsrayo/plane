@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/custom-events/chat-support.ts"
+source_file: "custom-events/chat-support.ts"
 type: "code"
-community: "Community 80"
+community: "Chat Support"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_80
+  - community/Chat_Support
 ---
 
 # ChatSupportEvent
@@ -17,4 +17,4 @@ tags:
 - [[chat-support.ts]] - `contains` [EXTRACTED]
 - [[use-chat-support.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_80
+#graphify/code #graphify/EXTRACTED #community/Chat_Support

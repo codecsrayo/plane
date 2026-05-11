@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/icons/attachment/audio-file-icon.tsx"
+source_file: "components/icons/attachment/audio-file-icon.tsx"
 type: "code"
-community: "Community 437"
+community: "Audio Icon"
 location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_437
+  - community/Audio_Icon
 ---
 
 # AudioIcon()
@@ -15,4 +15,4 @@ tags:
 
 - [[audio-file-icon.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_437
+#graphify/code #graphify/EXTRACTED #community/Audio_Icon

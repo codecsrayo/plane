@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/estimates/estimate-search.tsx"
+source_file: "components/estimates/estimate-search.tsx"
 type: "code"
-community: "Community 642"
+community: "Estimate Search"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_642
+  - community/Estimate_Search
 ---
 
 # EstimateSearch
@@ -15,4 +15,4 @@ tags:
 
 - [[estimate-search.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_642
+#graphify/code #graphify/EXTRACTED #community/Estimate_Search

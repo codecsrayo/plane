@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/root.store.ts"
+source_file: "store/root.store.ts"
 type: "code"
-community: "Project Estimates"
+community: "Project Root Store"
 location: "L74"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Estimates
+  - community/Project_Root_Store
 ---
 
 # CoreRootStore
@@ -40,4 +40,4 @@ tags:
 - [[webhook.store.ts]] - `imports` [EXTRACTED]
 - [[workspace-notifications.store.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Estimates
+#graphify/code #graphify/EXTRACTED #community/Project_Root_Store

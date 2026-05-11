@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/hooks/use-group-dragndrop.ts"
+source_file: "hooks/use-group-dragndrop.ts"
 type: "code"
-community: "Community 41"
+community: "Issue Layout HOC"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_41
+  - community/Issue_Layout_HOC
 ---
 
 # DNDStoreType
@@ -15,4 +15,4 @@ tags:
 
 - [[use-group-dragndrop.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_41
+#graphify/code #graphify/EXTRACTED #community/Issue_Layout_HOC

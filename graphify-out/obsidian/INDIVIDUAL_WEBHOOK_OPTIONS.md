@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/web-hooks/form/individual-event-options.tsx"
+source_file: "components/web-hooks/form/individual-event-options.tsx"
 type: "code"
-community: "Community 317"
+community: "Individual Event"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_317
+  - community/Individual_Event
 ---
 
 # INDIVIDUAL_WEBHOOK_OPTIONS
@@ -15,4 +15,4 @@ tags:
 
 - [[individual-event-options.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_317
+#graphify/code #graphify/EXTRACTED #community/Individual_Event

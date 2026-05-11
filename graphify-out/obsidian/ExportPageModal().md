@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/pages/modals/export-page-modal.tsx"
+source_file: "components/pages/modals/export-page-modal.tsx"
 type: "code"
-community: "Community 54"
+community: "Formats Content"
 location: "L115"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_54
+  - community/Formats_Content
 ---
 
 # ExportPageModal()
@@ -17,4 +17,4 @@ tags:
 - [[options-dropdown.tsx_1]] - `imports` [EXTRACTED]
 - [[useParseEditorContent()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_54
+#graphify/code #graphify/EXTRACTED #community/Formats_Content

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/home/widgets/loaders/loader.tsx"
+source_file: "components/home/widgets/loaders/loader.tsx"
 type: "code"
-community: "Community 245"
+community: "Widget Quick"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_245
+  - community/Widget_Quick
 ---
 
 # EWidgetKeys
@@ -15,4 +15,4 @@ tags:
 
 - [[loader.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_245
+#graphify/code #graphify/EXTRACTED #community/Widget_Quick

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/cycles/cycles-view.tsx"
+source_file: "components/cycles/cycles-view.tsx"
 type: "code"
-community: "Community 97"
+community: "Archived Cycles"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_97
+  - community/Archived_Cycles
 ---
 
 # CyclesView
@@ -15,4 +15,4 @@ tags:
 
 - [[cycles-view.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_97
+#graphify/code #graphify/EXTRACTED #community/Archived_Cycles

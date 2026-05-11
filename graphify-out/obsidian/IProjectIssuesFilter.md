@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/issue/project/filter.store.ts"
+source_file: "store/issue/project/filter.store.ts"
 type: "code"
-community: "Community 103"
+community: "Filters Display"
 location: "L35"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_103
+  - community/Filters_Display
 ---
 
 # IProjectIssuesFilter
@@ -16,4 +16,4 @@ tags:
 - [[filter.store.ts_6]] - `contains` [EXTRACTED]
 - [[issue.store.ts_7]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_103
+#graphify/code #graphify/EXTRACTED #community/Filters_Display

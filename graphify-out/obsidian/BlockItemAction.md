@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/pages/list/block-item-action.tsx"
+source_file: "components/pages/list/block-item-action.tsx"
 type: "code"
-community: "Page Actions"
+community: "Action Pages"
 location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Page_Actions
+  - community/Action_Pages
 ---
 
 # BlockItemAction
@@ -16,4 +16,4 @@ tags:
 - [[block-item-action.tsx]] - `contains` [EXTRACTED]
 - [[block.tsx_5]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Page_Actions
+#graphify/code #graphify/EXTRACTED #community/Action_Pages

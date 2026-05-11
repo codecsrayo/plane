@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/estimates/loader-screen.tsx"
+source_file: "components/estimates/loader-screen.tsx"
 type: "code"
-community: "Community 142"
+community: "Estimate Disable"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_142
+  - community/Estimate_Disable
 ---
 
 # EstimateLoaderScreen()
@@ -16,4 +16,4 @@ tags:
 - [[loader-screen.tsx]] - `contains` [EXTRACTED]
 - [[root.tsx_85]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_142
+#graphify/code #graphify/EXTRACTED #community/Estimate_Disable

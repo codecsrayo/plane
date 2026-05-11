@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/filters/applied-filters/project.tsx"
+source_file: "components/issues/issue-layouts/filters/applied-filters/project.tsx"
 type: "code"
-community: "Applied Filters UI"
+community: "Project Archives"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Applied_Filters_UI
+  - community/Project_Archives
 ---
 
 # AppliedProjectFilters
@@ -15,4 +15,4 @@ tags:
 
 - [[project.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Applied_Filters_UI
+#graphify/code #graphify/EXTRACTED #community/Project_Archives

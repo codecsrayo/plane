@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/roots/archived-issue-layout-root.tsx"
+source_file: "components/issues/issue-layouts/roots/archived-issue-layout-root.tsx"
 type: "code"
-community: "Issue Filters & Context"
+community: "Issue Layout Roots"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Filters__Context
+  - community/Issue_Layout_Roots
 ---
 
 # ArchivedIssueLayoutRoot
@@ -15,4 +15,4 @@ tags:
 
 - [[archived-issue-layout-root.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Filters\_\_Context
+#graphify/code #graphify/EXTRACTED #community/Issue_Layout_Roots

@@ -1,5 +1,5 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/filters/applied-filters/module.tsx"
+source_file: "components/issues/issue-layouts/filters/applied-filters/module.tsx"
 type: "code"
 community: "Module Analytics"
 location: "L19"

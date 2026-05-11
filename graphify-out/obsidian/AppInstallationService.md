@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/app_installation.service.ts"
+source_file: "services/app_installation.service.ts"
 type: "code"
-community: "Community 39"
+community: "Channel Slack"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_39
+  - community/Channel_Slack
 ---
 
 # AppInstallationService
@@ -21,4 +21,4 @@ tags:
 - [[app_installation.service.ts]] - `contains` [EXTRACTED]
 - [[select-channel.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_39
+#graphify/code #graphify/EXTRACTED #community/Channel_Slack

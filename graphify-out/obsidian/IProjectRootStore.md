@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/project/index.ts"
+source_file: "store/project/index.ts"
 type: "code"
-community: "Community 67"
+community: "Project Root Store"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_67
+  - community/Project_Root_Store
 ---
 
 # IProjectRootStore
@@ -16,4 +16,4 @@ tags:
 - [[index.ts_16]] - `contains` [EXTRACTED]
 - [[root.store.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_67
+#graphify/code #graphify/EXTRACTED #community/Project_Root_Store

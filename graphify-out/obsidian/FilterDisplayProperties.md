@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/filters/header/display-filters/display-properties.tsx"
+source_file: "components/issues/issue-layouts/filters/header/display-filters/display-properties.tsx"
 type: "code"
-community: "Community 275"
+community: "Display Properties"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_275
+  - community/Display_Properties
 ---
 
 # FilterDisplayProperties
@@ -15,4 +15,4 @@ tags:
 
 - [[display-properties.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_275
+#graphify/code #graphify/EXTRACTED #community/Display_Properties

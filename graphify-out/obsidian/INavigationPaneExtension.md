@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/pages/navigation-pane/types/extensions.ts"
+source_file: "components/pages/navigation-pane/types/extensions.ts"
 type: "code"
-community: "Community 54"
+community: "Navigation Pane"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_54
+  - community/Navigation_Pane
 ---
 
 # INavigationPaneExtension
@@ -16,4 +16,4 @@ tags:
 - [[extensions.ts]] - `contains` [EXTRACTED]
 - [[root.tsx_80]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_54
+#graphify/code #graphify/EXTRACTED #community/Navigation_Pane

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/estimates/create/stage-one.tsx"
+source_file: "components/estimates/create/stage-one.tsx"
 type: "code"
-community: "Community 225"
+community: "Estimate Stage"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_225
+  - community/Estimate_Stage
 ---
 
 # EstimateCreateStageOne()
@@ -16,4 +16,4 @@ tags:
 - [[modal.tsx_12]] - `imports` [EXTRACTED]
 - [[stage-one.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_225
+#graphify/code #graphify/EXTRACTED #community/Estimate_Stage

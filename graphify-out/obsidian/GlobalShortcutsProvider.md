@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/global-shortcuts.tsx"
+source_file: "components/power-k/global-shortcuts.tsx"
 type: "code"
-community: "Community 99"
+community: "Command Palette"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_99
+  - community/Command_Palette
 ---
 
 # GlobalShortcutsProvider
@@ -16,4 +16,4 @@ tags:
 - [[global-shortcuts.tsx]] - `contains` [EXTRACTED]
 - [[projects-app-provider.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_99
+#graphify/code #graphify/EXTRACTED #community/Command_Palette

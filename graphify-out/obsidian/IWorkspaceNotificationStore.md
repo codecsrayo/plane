@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/notifications/workspace-notifications.store.ts"
+source_file: "store/notifications/workspace-notifications.store.ts"
 type: "code"
-community: "Community 159"
+community: "Workspace Notification"
 location: "L34"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_159
+  - community/Workspace_Notification
 ---
 
 # IWorkspaceNotificationStore
@@ -17,4 +17,4 @@ tags:
 - [[use-workspace-notifications.ts]] - `imports` [EXTRACTED]
 - [[workspace-notifications.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_159
+#graphify/code #graphify/EXTRACTED #community/Workspace_Notification

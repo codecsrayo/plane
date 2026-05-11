@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/core/image-picker-popover.tsx"
+source_file: "components/core/image-picker-popover.tsx"
 type: "code"
-community: "Community 102"
+community: "Image Upload"
 location: "L51"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_102
+  - community/Image_Upload
 ---
 
 # ImagePickerPopover
@@ -18,4 +18,4 @@ tags:
 - [[header.tsx_7]] - `imports` [EXTRACTED]
 - [[image-picker-popover.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_102
+#graphify/code #graphify/EXTRACTED #community/Image_Upload

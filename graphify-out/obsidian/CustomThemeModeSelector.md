@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/core/theme/theme-mode-selector.tsx"
+source_file: "components/core/theme/theme-mode-selector.tsx"
 type: "code"
-community: "Community 174"
+community: "Theme Custom"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_174
+  - community/Theme_Custom
 ---
 
 # CustomThemeModeSelector
@@ -16,4 +16,4 @@ tags:
 - [[custom-theme-selector.tsx]] - `imports` [EXTRACTED]
 - [[theme-mode-selector.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_174
+#graphify/code #graphify/EXTRACTED #community/Theme_Custom

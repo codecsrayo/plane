@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/cycles/quick-actions.tsx"
+source_file: "components/cycles/quick-actions.tsx"
 type: "code"
-community: "Cycle Services & Filters"
+community: "Cycle Cycles"
 location: "L36"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Services__Filters
+  - community/Cycle_Cycles
 ---
 
 # CycleQuickActions
@@ -17,4 +17,4 @@ tags:
 - [[cycles-list-item.tsx]] - `imports` [EXTRACTED]
 - [[quick-actions.tsx_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Services\_\_Filters
+#graphify/code #graphify/EXTRACTED #community/Cycle_Cycles

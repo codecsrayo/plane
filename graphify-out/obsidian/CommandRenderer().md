@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/power-k/ui/renderer/command.tsx"
+source_file: "components/power-k/ui/renderer/command.tsx"
 type: "code"
-community: "Community 80"
+community: "Command Palette"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_80
+  - community/Command_Palette
 ---
 
 # CommandRenderer()
@@ -16,4 +16,4 @@ tags:
 - [[command.tsx]] - `contains` [EXTRACTED]
 - [[default.tsx_3]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_80
+#graphify/code #graphify/EXTRACTED #community/Command_Palette

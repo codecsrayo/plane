@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/file-upload.service.ts"
+source_file: "services/file-upload.service.ts"
 type: "code"
-community: "Git Integrations"
+community: "API Services"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Git_Integrations
+  - community/API_Services
 ---
 
 # FileUploadService
@@ -21,4 +21,4 @@ tags:
 - [[issue_comment.service.ts]] - `imports` [EXTRACTED]
 - [[project-page.service.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Git_Integrations
+#graphify/code #graphify/EXTRACTED #community/API_Services

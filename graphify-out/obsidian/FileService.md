@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/file.service.ts"
+source_file: "services/file.service.ts"
 type: "code"
-community: "Community 120"
+community: "Workspace Upload"
 location: "L53"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_120
+  - community/Workspace_Upload
 ---
 
 # FileService
@@ -44,4 +44,4 @@ tags:
 - [[user-image-upload-modal.tsx]] - `imports` [EXTRACTED]
 - [[workspace-image-upload-modal.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_120
+#graphify/code #graphify/EXTRACTED #community/Workspace_Upload

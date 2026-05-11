@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/cycles/applied-filters/date.tsx"
+source_file: "components/cycles/applied-filters/date.tsx"
 type: "code"
-community: "Community 64"
+community: "Applied Filters"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_64
+  - community/Applied_Filters
 ---
 
 # AppliedDateFilters
@@ -23,4 +23,4 @@ tags:
 - [[root.tsx_56]] - `imports` [EXTRACTED]
 - [[root.tsx_79]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_64
+#graphify/code #graphify/EXTRACTED #community/Applied_Filters

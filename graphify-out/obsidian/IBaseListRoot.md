@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/list/base-list-root.tsx"
+source_file: "components/issues/issue-layouts/list/base-list-root.tsx"
 type: "code"
-community: "Community 41"
+community: "Issue Layout HOC"
 location: "L42"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_41
+  - community/Issue_Layout_HOC
 ---
 
 # IBaseListRoot
@@ -15,4 +15,4 @@ tags:
 
 - [[base-list-root.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_41
+#graphify/code #graphify/EXTRACTED #community/Issue_Layout_HOC

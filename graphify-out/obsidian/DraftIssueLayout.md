@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-modal/draft-issue-layout.tsx"
+source_file: "components/issues/issue-modal/draft-issue-layout.tsx"
 type: "code"
-community: "Community 41"
+community: "Issue Identifiers"
 location: "L29"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_41
+  - community/Issue_Identifiers
 ---
 
 # DraftIssueLayout
@@ -16,4 +16,4 @@ tags:
 - [[base.tsx_7]] - `imports` [EXTRACTED]
 - [[draft-issue-layout.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_41
+#graphify/code #graphify/EXTRACTED #community/Issue_Identifiers

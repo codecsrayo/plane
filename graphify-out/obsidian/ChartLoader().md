@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/analytics/loaders.tsx"
+source_file: "components/analytics/loaders.tsx"
 type: "code"
-community: "Community 186"
+community: "Analytics Project"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_186
+  - community/Analytics_Project
 ---
 
 # ChartLoader()
@@ -17,4 +17,4 @@ tags:
 - [[loaders.tsx]] - `contains` [EXTRACTED]
 - [[priority-chart.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_186
+#graphify/code #graphify/EXTRACTED #community/Analytics_Project

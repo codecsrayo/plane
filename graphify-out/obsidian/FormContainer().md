@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/account/auth-forms/common/container.tsx"
+source_file: "components/account/auth-forms/common/container.tsx"
 type: "code"
-community: "Community 644"
+community: "Container"
 location: "L7"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_644
+  - community/Container
 ---
 
 # FormContainer()
@@ -15,4 +15,4 @@ tags:
 
 - [[container.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_644
+#graphify/code #graphify/EXTRACTED #community/Container

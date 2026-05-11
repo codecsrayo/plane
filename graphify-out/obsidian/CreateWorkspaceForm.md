@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace/create-workspace-form.tsx"
+source_file: "components/workspace/create-workspace-form.tsx"
 type: "code"
-community: "Authentication UI"
+community: "Workspace Invites"
 location: "L42"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Authentication_UI
+  - community/Workspace_Invites
 ---
 
 # CreateWorkspaceForm
@@ -15,4 +15,4 @@ tags:
 
 - [[create-workspace-form.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Authentication_UI
+#graphify/code #graphify/EXTRACTED #community/Workspace_Invites

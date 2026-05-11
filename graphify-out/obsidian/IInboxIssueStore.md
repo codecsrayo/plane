@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/inbox/inbox-issue.store.ts"
+source_file: "store/inbox/inbox-issue.store.ts"
 type: "code"
-community: "Applied Filters UI"
+community: "Issue Inbox"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Applied_Filters_UI
+  - community/Issue_Inbox
 ---
 
 # IInboxIssueStore
@@ -21,4 +21,4 @@ tags:
 - [[project-inbox.store.ts]] - `imports` [EXTRACTED]
 - [[use-inbox-issues.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Applied_Filters_UI
+#graphify/code #graphify/EXTRACTED #community/Issue_Inbox

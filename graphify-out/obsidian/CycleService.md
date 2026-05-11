@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/cycle.service.ts"
+source_file: "services/cycle.service.ts"
 type: "code"
-community: "Community 148"
+community: "Cycle Cycles"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_148
+  - community/Cycle_Cycles
 ---
 
 # CycleService
@@ -35,4 +35,4 @@ tags:
 - [[modal.tsx_9]] - `imports` [EXTRACTED]
 - [[sidebar-header.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_148
+#graphify/code #graphify/EXTRACTED #community/Cycle_Cycles

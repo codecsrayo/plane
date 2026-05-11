@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/inbox/modals/create-modal/modal.tsx"
+source_file: "components/inbox/modals/create-modal/modal.tsx"
 type: "code"
-community: "Community 169"
+community: "Inbox Issue"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_169
+  - community/Inbox_Issue
 ---
 
 # InboxIssueCreateModalRoot()
@@ -16,4 +16,4 @@ tags:
 - [[modal.tsx_11]] - `contains` [EXTRACTED]
 - [[useKeypress()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_169
+#graphify/code #graphify/EXTRACTED #community/Inbox_Issue

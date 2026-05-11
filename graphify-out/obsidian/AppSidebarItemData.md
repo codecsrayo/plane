@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/sidebar/sidebar-item.tsx"
+source_file: "components/sidebar/sidebar-item.tsx"
 type: "code"
-community: "Community 94"
+community: "Sidebar Rail"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_94
+  - community/Sidebar_Rail
 ---
 
 # AppSidebarItemData
@@ -16,4 +16,4 @@ tags:
 - [[items-root.tsx]] - `imports` [EXTRACTED]
 - [[sidebar-item.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_94
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Rail

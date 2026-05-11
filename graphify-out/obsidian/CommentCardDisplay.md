@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/comments/card/display.tsx"
+source_file: "components/comments/card/display.tsx"
 type: "code"
-community: "Community 222"
+community: "Comment Card"
 location: "L43"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_222
+  - community/Comment_Card
 ---
 
 # CommentCardDisplay
@@ -15,4 +15,4 @@ tags:
 
 - [[display.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_222
+#graphify/code #graphify/EXTRACTED #community/Comment_Card

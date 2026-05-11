@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/integration/github/project-issue-sync.tsx"
+source_file: "components/integration/github/project-issue-sync.tsx"
 type: "code"
-community: "Community 39"
+community: "Github Integration"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_39
+  - community/Github_Integration
 ---
 
 # GithubProjectIssueSync
@@ -15,4 +15,4 @@ tags:
 
 - [[project-issue-sync.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_39
+#graphify/code #graphify/EXTRACTED #community/Github_Integration

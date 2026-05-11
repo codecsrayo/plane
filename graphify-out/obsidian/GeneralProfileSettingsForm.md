@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/settings/profile/content/pages/general/form.tsx"
+source_file: "components/settings/profile/content/pages/general/form.tsx"
 type: "code"
-community: "Community 102"
+community: "Image Upload"
 location: "L53"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_102
+  - community/Image_Upload
 ---
 
 # GeneralProfileSettingsForm
@@ -16,4 +16,4 @@ tags:
 - [[form.tsx_5]] - `contains` [EXTRACTED]
 - [[root.tsx_21]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_102
+#graphify/code #graphify/EXTRACTED #community/Image_Upload

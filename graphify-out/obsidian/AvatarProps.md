@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/dropdowns/member/avatar.tsx"
+source_file: "components/dropdowns/member/avatar.tsx"
 type: "code"
-community: "Module Analytics"
+community: "Module Forms"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Analytics
+  - community/Module_Forms
 ---
 
 # AvatarProps
@@ -15,4 +15,4 @@ tags:
 
 - [[avatar.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Analytics
+#graphify/code #graphify/EXTRACTED #community/Module_Forms

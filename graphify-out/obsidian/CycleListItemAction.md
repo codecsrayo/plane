@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/cycles/list/cycle-list-item-action.tsx"
+source_file: "components/cycles/list/cycle-list-item-action.tsx"
 type: "code"
-community: "Cycle Services & Filters"
+community: "Cycle Cycles"
 location: "L54"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Services__Filters
+  - community/Cycle_Cycles
 ---
 
 # CycleListItemAction
@@ -16,4 +16,4 @@ tags:
 - [[cycle-list-item-action.tsx]] - `contains` [EXTRACTED]
 - [[cycles-list-item.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Services\_\_Filters
+#graphify/code #graphify/EXTRACTED #community/Cycle_Cycles

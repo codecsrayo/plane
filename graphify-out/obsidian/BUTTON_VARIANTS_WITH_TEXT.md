@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/dropdowns/constants.ts"
+source_file: "components/dropdowns/constants.ts"
 type: "code"
-community: "Spreadsheet Column Components"
+community: "Issue Properties"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Column_Components
+  - community/Issue_Properties
 ---
 
 # BUTTON_VARIANTS_WITH_TEXT
@@ -22,4 +22,4 @@ tags:
 - [[estimate.tsx]] - `imports` [EXTRACTED]
 - [[index.tsx_6]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Column_Components
+#graphify/code #graphify/EXTRACTED #community/Issue_Properties

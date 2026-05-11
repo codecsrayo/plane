@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/issue/archived/filter.store.ts"
+source_file: "store/issue/archived/filter.store.ts"
 type: "code"
-community: "Community 138"
+community: "Filters Archived"
 location: "L35"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_138
+  - community/Filters_Archived
 ---
 
 # IArchivedIssuesFilter
@@ -16,4 +16,4 @@ tags:
 - [[filter.store.ts]] - `contains` [EXTRACTED]
 - [[issue.store.ts_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_138
+#graphify/code #graphify/EXTRACTED #community/Filters_Archived

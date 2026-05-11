@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/home/widgets/recents/page.tsx"
+source_file: "components/home/widgets/recents/page.tsx"
 type: "code"
-community: "Community 183"
+community: "Issue Filters"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_183
+  - community/Issue_Filters
 ---
 
 # BlockProps
@@ -15,4 +15,4 @@ tags:
 
 - [[page.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_183
+#graphify/code #graphify/EXTRACTED #community/Issue_Filters

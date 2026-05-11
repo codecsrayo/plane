@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/editor/embeds/mentions/user.tsx"
+source_file: "components/editor/embeds/mentions/user.tsx"
 type: "code"
-community: "Member Filters & Description"
+community: "Member Settings"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Filters__Description
+  - community/Member_Settings
 ---
 
 # EditorUserMention
@@ -16,4 +16,4 @@ tags:
 - [[root.tsx_9]] - `imports` [EXTRACTED]
 - [[user.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Filters\_\_Description
+#graphify/code #graphify/EXTRACTED #community/Member_Settings

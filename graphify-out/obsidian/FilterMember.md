@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/inbox/inbox-filter/filters/members.tsx"
+source_file: "components/inbox/inbox-filter/filters/members.tsx"
 type: "code"
-community: "Community 164"
+community: "Filter Selection UI"
 location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_164
+  - community/Filter_Selection_UI
 ---
 
 # FilterMember
@@ -16,4 +16,4 @@ tags:
 - [[filter-selection.tsx_1]] - `imports` [EXTRACTED]
 - [[members.tsx_8]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_164
+#graphify/code #graphify/EXTRACTED #community/Filter_Selection_UI

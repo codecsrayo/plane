@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/core/filters/date-filter-modal.tsx"
+source_file: "components/core/filters/date-filter-modal.tsx"
 type: "code"
-community: "Community 85"
+community: "Date Start"
 location: "L33"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_85
+  - community/Date_Start
 ---
 
 # DateFilterModal()
@@ -24,4 +24,4 @@ tags:
 - [[start-date.tsx_2]] - `imports` [EXTRACTED]
 - [[target-date.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_85
+#graphify/code #graphify/EXTRACTED #community/Date_Start

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/gantt-chart/sidebar/root.tsx"
+source_file: "components/gantt-chart/sidebar/root.tsx"
 type: "code"
-community: "Active Cycle Stats"
+community: "Multi Select Actions"
 location: "L36"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Active_Cycle_Stats
+  - community/Multi_Select_Actions
 ---
 
 # GanttChartSidebar
@@ -15,4 +15,4 @@ tags:
 
 - [[root.tsx_6]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Active_Cycle_Stats
+#graphify/code #graphify/EXTRACTED #community/Multi_Select_Actions

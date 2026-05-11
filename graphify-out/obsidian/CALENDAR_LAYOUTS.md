@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/constants/calendar.ts"
+source_file: "constants/calendar.ts"
 type: "code"
-community: "Calendar UI"
+community: "Calendar Views"
 location: "L110"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_UI
+  - community/Calendar_Views
 ---
 
 # CALENDAR_LAYOUTS
@@ -16,4 +16,4 @@ tags:
 - [[calendar.ts]] - `contains` [EXTRACTED]
 - [[options-dropdown.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_UI
+#graphify/code #graphify/EXTRACTED #community/Calendar_Views

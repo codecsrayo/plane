@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/dashboard.service.ts"
+source_file: "services/dashboard.service.ts"
 type: "code"
-community: "Community 147"
+community: "Dashboard Widget"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_147
+  - community/Dashboard_Widget
 ---
 
 # DashboardService
@@ -21,4 +21,4 @@ tags:
 - [[dashboard.service.ts]] - `contains` [EXTRACTED]
 - [[dashboard.store.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_147
+#graphify/code #graphify/EXTRACTED #community/Dashboard_Widget

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/sticky/sticky.store.ts"
+source_file: "store/sticky/sticky.store.ts"
 type: "code"
-community: "Community 158"
+community: "Sticky Stickies"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_158
+  - community/Sticky_Stickies
 ---
 
 # IStickyStore
@@ -17,4 +17,4 @@ tags:
 - [[sticky.store.ts]] - `contains` [EXTRACTED]
 - [[use-stickies.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_158
+#graphify/code #graphify/EXTRACTED #community/Sticky_Stickies

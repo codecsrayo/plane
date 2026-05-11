@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/cycles/archived-cycles/root.tsx"
+source_file: "components/cycles/archived-cycles/root.tsx"
 type: "code"
-community: "Community 97"
+community: "Archived Cycles"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_97
+  - community/Archived_Cycles
 ---
 
 # ArchivedCycleLayoutRoot
@@ -15,4 +15,4 @@ tags:
 
 - [[root.tsx_52]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_97
+#graphify/code #graphify/EXTRACTED #community/Archived_Cycles

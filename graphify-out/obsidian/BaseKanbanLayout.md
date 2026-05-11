@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/base-layouts/kanban/layout.tsx"
+source_file: "components/base-layouts/kanban/layout.tsx"
 type: "code"
-community: "Community 106"
+community: "Group Drop"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_106
+  - community/Group_Drop
 ---
 
 # BaseKanbanLayout
@@ -15,4 +15,4 @@ tags:
 
 - [[layout.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_106
+#graphify/code #graphify/EXTRACTED #community/Group_Drop

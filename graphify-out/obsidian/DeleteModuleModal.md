@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/modules/delete-module-modal.tsx"
+source_file: "components/modules/delete-module-modal.tsx"
 type: "code"
-community: "Account & Sub-Issues"
+community: "Module Analytics"
 location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Account__Sub-Issues
+  - community/Module_Analytics
 ---
 
 # DeleteModuleModal
@@ -15,4 +15,4 @@ tags:
 
 - [[delete-module-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Account\_\_Sub-Issues
+#graphify/code #graphify/EXTRACTED #community/Module_Analytics

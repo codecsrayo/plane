@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/auth.service.ts"
+source_file: "services/auth.service.ts"
 type: "code"
-community: "Community 110"
+community: "Auth Forms"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_110
+  - community/Auth_Forms
 ---
 
 # AuthService
@@ -28,4 +28,4 @@ tags:
 - [[security.tsx]] - `imports` [EXTRACTED]
 - [[unique-code.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_110
+#graphify/code #graphify/EXTRACTED #community/Auth_Forms

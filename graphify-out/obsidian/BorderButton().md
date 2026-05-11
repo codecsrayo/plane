@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/dropdowns/priority.tsx"
+source_file: "components/dropdowns/priority.tsx"
 type: "code"
-community: "Spreadsheet Column Components"
+community: "Issue Layouts"
 location: "L55"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Column_Components
+  - community/Issue_Layouts
 ---
 
 # BorderButton()
@@ -16,4 +16,4 @@ tags:
 - [[priority.tsx]] - `contains` [EXTRACTED]
 - [[usePlatformOS()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Column_Components
+#graphify/code #graphify/EXTRACTED #community/Issue_Layouts

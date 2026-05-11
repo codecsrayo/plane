@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/modules/links/create-update-modal.tsx"
+source_file: "components/modules/links/create-update-modal.tsx"
 type: "code"
-community: "Community 312"
+community: "Link Values"
 location: "L29"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_312
+  - community/Link_Values
 ---
 
 # CreateUpdateModuleLinkModal()
@@ -15,4 +15,4 @@ tags:
 
 - [[create-update-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_312
+#graphify/code #graphify/EXTRACTED #community/Link_Values

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/cycles/analytics-sidebar/sidebar-header.tsx"
+source_file: "components/cycles/analytics-sidebar/sidebar-header.tsx"
 type: "code"
-community: "Cycle Analytics"
+community: "Cycle Progress"
 location: "L42"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Analytics
+  - community/Cycle_Progress
 ---
 
 # CycleSidebarHeader
@@ -16,4 +16,4 @@ tags:
 - [[root.tsx_53]] - `imports` [EXTRACTED]
 - [[sidebar-header.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Analytics
+#graphify/code #graphify/EXTRACTED #community/Cycle_Progress

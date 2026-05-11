@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/ui/markdown-to-component.tsx"
+source_file: "components/ui/markdown-to-component.tsx"
 type: "code"
-community: "Community 210"
+community: "Markdown Custom"
 location: "L42"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_210
+  - community/Markdown_Custom
 ---
 
 # HeadingPrimary()
@@ -15,4 +15,4 @@ tags:
 
 - [[markdown-to-component.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_210
+#graphify/code #graphify/EXTRACTED #community/Markdown_Custom

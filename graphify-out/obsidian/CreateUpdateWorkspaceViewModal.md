@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/workspace/views/modal.tsx"
+source_file: "components/workspace/views/modal.tsx"
 type: "code"
-community: "Community 96"
+community: "Global Quick"
 location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_96
+  - community/Global_Quick
 ---
 
 # CreateUpdateWorkspaceViewModal
@@ -19,4 +19,4 @@ tags:
 - [[view-list-item.tsx_1]] - `imports` [EXTRACTED]
 - [[workspace-level.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_96
+#graphify/code #graphify/EXTRACTED #community/Global_Quick

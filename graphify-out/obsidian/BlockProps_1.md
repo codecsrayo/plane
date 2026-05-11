@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/home/widgets/recents/issue.tsx"
+source_file: "components/home/widgets/recents/issue.tsx"
 type: "code"
-community: "Community 36"
+community: "Calendar Blocks"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_36
+  - community/Calendar_Blocks
 ---
 
 # BlockProps
@@ -15,4 +15,4 @@ tags:
 
 - [[issue.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_36
+#graphify/code #graphify/EXTRACTED #community/Calendar_Blocks

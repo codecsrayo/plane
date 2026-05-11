@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/core/content-overflow-HOC.tsx"
+source_file: "components/core/content-overflow-HOC.tsx"
 type: "code"
-community: "Community 75"
+community: "Dashboard Widgets"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_75
+  - community/Dashboard_Widgets
 ---
 
 # IContentOverflowWrapper
@@ -15,4 +15,4 @@ tags:
 
 - [[content-overflow-HOC.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_75
+#graphify/code #graphify/EXTRACTED #community/Dashboard_Widgets

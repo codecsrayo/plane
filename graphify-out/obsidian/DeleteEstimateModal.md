@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/estimates/delete/modal.tsx"
+source_file: "components/estimates/delete/modal.tsx"
 type: "code"
-community: "Community 250"
+community: "Estimate Disable"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_250
+  - community/Estimate_Disable
 ---
 
 # DeleteEstimateModal
@@ -16,4 +16,4 @@ tags:
 - [[modal.tsx_13]] - `contains` [EXTRACTED]
 - [[root.tsx_85]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_250
+#graphify/code #graphify/EXTRACTED #community/Estimate_Disable

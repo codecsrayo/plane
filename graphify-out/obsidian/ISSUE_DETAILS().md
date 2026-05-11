@@ -1,5 +1,5 @@
 ---
-source_file: "web/core/constants/fetch-keys.ts"
+source_file: "constants/fetch-keys.ts"
 type: "code"
 community: "Auth Wrappers"
 location: "L109"

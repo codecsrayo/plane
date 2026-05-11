@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/cycles/archived-cycles/header.tsx"
+source_file: "components/cycles/archived-cycles/header.tsx"
 type: "code"
-community: "Community 97"
+community: "Archived Cycles"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_97
+  - community/Archived_Cycles
 ---
 
 # ArchivedCyclesHeader
@@ -15,4 +15,4 @@ tags:
 
 - [[header.tsx_10]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_97
+#graphify/code #graphify/EXTRACTED #community/Archived_Cycles

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/services/estimate.service.ts"
+source_file: "services/estimate.service.ts"
 type: "code"
-community: "Community 58"
+community: "Estimate Points"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_58
+  - community/Estimate_Points
 ---
 
 # EstimateService
@@ -23,4 +23,4 @@ tags:
 - [[.updateEstimatePoint()]] - `method` [EXTRACTED]
 - [[estimate.service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_58
+#graphify/code #graphify/EXTRACTED #community/Estimate_Points

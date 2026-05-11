@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/constants/editor.ts"
+source_file: "constants/editor.ts"
 type: "code"
-community: "Editor Styles"
+community: "Editor Items"
 location: "L42"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Editor_Styles
+  - community/Editor_Items
 ---
 
 # ExtraPropsForCommand
@@ -15,4 +15,4 @@ tags:
 
 - [[editor.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Editor_Styles
+#graphify/code #graphify/EXTRACTED #community/Editor_Items

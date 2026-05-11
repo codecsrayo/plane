@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/ui/loader/cycle-module-board-loader.tsx"
+source_file: "components/ui/loader/cycle-module-board-loader.tsx"
 type: "code"
-community: "Module Analytics"
+community: "Modules Archived"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Analytics
+  - community/Modules_Archived
 ---
 
 # CycleModuleBoardLayoutLoader()
@@ -16,4 +16,4 @@ tags:
 - [[cycle-module-board-loader.tsx]] - `contains` [EXTRACTED]
 - [[modules-list-view.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Analytics
+#graphify/code #graphify/EXTRACTED #community/Modules_Archived

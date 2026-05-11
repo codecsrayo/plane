@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/views/modal.tsx"
+source_file: "components/views/modal.tsx"
 type: "code"
-community: "Community 105"
+community: "Project Quick"
 location: "L32"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_105
+  - community/Project_Quick
 ---
 
 # CreateUpdateProjectViewModal
@@ -18,4 +18,4 @@ tags:
 - [[quick-actions.tsx]] - `imports` [EXTRACTED]
 - [[view-list-item-action.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_105
+#graphify/code #graphify/EXTRACTED #community/Project_Quick

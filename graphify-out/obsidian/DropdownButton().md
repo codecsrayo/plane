@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/dropdowns/buttons.tsx"
+source_file: "components/dropdowns/buttons.tsx"
 type: "code"
-community: "Spreadsheet Column Components"
+community: "Issue Properties"
 location: "L51"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Column_Components
+  - community/Issue_Properties
 ---
 
 # DropdownButton()
@@ -24,4 +24,4 @@ tags:
 - [[estimate.tsx]] - `imports` [EXTRACTED]
 - [[index.tsx_6]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Column_Components
+#graphify/code #graphify/EXTRACTED #community/Issue_Properties

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/project/applied-filters/access.tsx"
+source_file: "components/project/applied-filters/access.tsx"
 type: "code"
-community: "Community 64"
+community: "Applied Filters"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_64
+  - community/Applied_Filters
 ---
 
 # AppliedAccessFilters
@@ -18,4 +18,4 @@ tags:
 - [[root.tsx_2]] - `imports` [EXTRACTED]
 - [[root.tsx_26]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_64
+#graphify/code #graphify/EXTRACTED #community/Applied_Filters

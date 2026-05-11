@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/quick-action-dropdowns/cycle-issue.tsx"
+source_file: "components/issues/issue-layouts/quick-action-dropdowns/cycle-issue.tsx"
 type: "code"
-community: "Community 55"
+community: "Project Archives"
 location: "L33"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_55
+  - community/Project_Archives
 ---
 
 # CycleIssueQuickActions
@@ -15,4 +15,4 @@ tags:
 
 - [[cycle-issue.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_55
+#graphify/code #graphify/EXTRACTED #community/Project_Archives

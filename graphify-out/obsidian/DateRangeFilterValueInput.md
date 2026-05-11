@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/rich-filters/filter-value-input/date/range.tsx"
+source_file: "components/rich-filters/filter-value-input/date/range.tsx"
 type: "code"
-community: "Filter Components"
+community: "Filter Controls"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filter_Components
+  - community/Filter_Controls
 ---
 
 # DateRangeFilterValueInput
@@ -16,4 +16,4 @@ tags:
 - [[range.tsx]] - `contains` [EXTRACTED]
 - [[root.tsx_92]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filter_Components
+#graphify/code #graphify/EXTRACTED #community/Filter_Controls

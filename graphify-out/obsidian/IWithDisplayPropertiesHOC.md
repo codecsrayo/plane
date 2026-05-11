@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/issues/issue-layouts/properties/with-display-properties-HOC.tsx"
+source_file: "components/issues/issue-layouts/properties/with-display-properties-HOC.tsx"
 type: "code"
-community: "Community 62"
+community: "List Group Layout"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_62
+  - community/List_Group_Layout
 ---
 
 # IWithDisplayPropertiesHOC
@@ -15,4 +15,4 @@ tags:
 
 - [[with-display-properties-HOC.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_62
+#graphify/code #graphify/EXTRACTED #community/List_Group_Layout

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/project-states/group-list.tsx"
+source_file: "components/project-states/group-list.tsx"
 type: "code"
-community: "Community 133"
+community: "State Group"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_133
+  - community/State_Group
 ---
 
 # GroupList
@@ -15,4 +15,4 @@ tags:
 
 - [[group-list.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_133
+#graphify/code #graphify/EXTRACTED #community/State_Group

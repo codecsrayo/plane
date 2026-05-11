@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/exporter/export-form.tsx"
+source_file: "components/exporter/export-form.tsx"
 type: "code"
-community: "Community 100"
+community: "Project Settings"
 location: "L57"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_100
+  - community/Project_Settings
 ---
 
 # ExportForm
@@ -16,4 +16,4 @@ tags:
 - [[export-form.tsx]] - `contains` [EXTRACTED]
 - [[guide.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_100
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/instance.store.ts"
+source_file: "store/instance.store.ts"
 type: "code"
-community: "Project Estimates"
+community: "Chat Support"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Estimates
+  - community/Chat_Support
 ---
 
 # IInstanceStore
@@ -17,4 +17,4 @@ tags:
 - [[root.store.ts]] - `imports` [EXTRACTED]
 - [[use-instance.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Estimates
+#graphify/code #graphify/EXTRACTED #community/Chat_Support

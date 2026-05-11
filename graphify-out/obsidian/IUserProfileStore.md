@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/store/user/profile.store.ts"
+source_file: "store/user/profile.store.ts"
 type: "code"
-community: "Community 37"
+community: "User Profile"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_37
+  - community/User_Profile
 ---
 
 # IUserProfileStore
@@ -17,4 +17,4 @@ tags:
 - [[profile.store.ts]] - `contains` [EXTRACTED]
 - [[user-user-profile.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_37
+#graphify/code #graphify/EXTRACTED #community/User_Profile
