@@ -1,0 +1,23 @@
+---
+source_file: "web/core/hooks/use-chat-support.ts"
+type: "code"
+community: "Community 80"
+location: "L19"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Community_80
+---
+
+# useChatSupport()
+
+## Connections
+
+- [[help-commands.ts]] - `imports` [EXTRACTED]
+- [[root.tsx_4]] - `imports` [EXTRACTED]
+- [[use-chat-support.ts]] - `contains` [EXTRACTED]
+- [[useInstance()]] - `calls` [EXTRACTED]
+- [[usePowerKHelpCommands()]] - `calls` [EXTRACTED]
+- [[useUser()]] - `calls` [INFERRED]
+
+#graphify/code #graphify/EXTRACTED #community/Community_80

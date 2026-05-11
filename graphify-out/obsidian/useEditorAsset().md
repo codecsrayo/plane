@@ -1,0 +1,25 @@
+---
+source_file: "web/core/hooks/store/use-editor-asset.ts"
+type: "code"
+community: "Community 141"
+location: "L12"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Community_141
+---
+
+# useEditorAsset()
+
+## Connections
+
+- [[description-editor.tsx]] - `imports` [EXTRACTED]
+- [[helper.tsx_4]] - `imports` [EXTRACTED]
+- [[issue-description.tsx]] - `imports` [EXTRACTED]
+- [[root.tsx_10]] - `imports` [EXTRACTED]
+- [[use-editor-asset.ts]] - `contains` [EXTRACTED]
+- [[use-editor-config.ts]] - `imports` [EXTRACTED]
+- [[useEditorConfig()]] - `calls` [EXTRACTED]
+- [[useWorkItemCommentOperations()]] - `calls` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Community_141

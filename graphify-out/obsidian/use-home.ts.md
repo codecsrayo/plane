@@ -1,0 +1,30 @@
+---
+source_file: "web/core/hooks/store/use-home.ts"
+type: "code"
+community: "Community 75"
+location: "L1"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Community_75
+---
+
+# use-home.ts
+
+## Connections
+
+- [[IHomeStore]] - `imports` [EXTRACTED]
+- [[StoreContext]] - `imports` [EXTRACTED]
+- [[home-dashboard-widgets.tsx]] - `imports_from` [EXTRACTED]
+- [[home.ts]] - `imports_from` [EXTRACTED]
+- [[link-detail.tsx]] - `imports_from` [EXTRACTED]
+- [[links.tsx_1]] - `imports_from` [EXTRACTED]
+- [[root.tsx]] - `imports_from` [EXTRACTED]
+- [[root.tsx_1]] - `imports_from` [EXTRACTED]
+- [[store-context.tsx]] - `imports_from` [EXTRACTED]
+- [[use-links.tsx]] - `imports_from` [EXTRACTED]
+- [[useHome()]] - `contains` [EXTRACTED]
+- [[widget-item.tsx]] - `imports_from` [EXTRACTED]
+- [[widget-list.tsx]] - `imports_from` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Community_75
