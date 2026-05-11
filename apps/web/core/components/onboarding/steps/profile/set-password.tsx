@@ -61,19 +61,11 @@ export function SetPasswordRoot({ onPasswordChange, onConfirmPasswordChange, dis
     return confirmPassword.length > 0 && password !== confirmPassword;
   }, [passwordState]);
 
-  const chevronIconClasses = useMemo(
-    () =>
-      `size-4 text-placeholder transition-transform duration-300 ease-in-out ${isExpanded ? "rotate-180" : "rotate-0"}`,
-    [isExpanded]
-  );
+  const chevronIconClasses = `size-4 text-placeholder transition-transform duration-300 ease-in-out ${isExpanded ? "rotate-180" : "rotate-0"}`;
 
-  const expandedContentClasses = useMemo(
-    () =>
-      `flex flex-col gap-4 transition-all duration-300 ease-in-out overflow-hidden px-3 ${
-        isExpanded ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-      }`,
-    [isExpanded]
-  );
+  const expandedContentClasses = `flex flex-col gap-4 transition-all duration-300 ease-in-out overflow-hidden px-3 ${
+    isExpanded ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+  }`;
 
   return (
     <div className={`flex flex-col overflow-hidden rounded-lg bg-surface-2 transition-all duration-300 ease-in-out`}>

@@ -60,14 +60,14 @@ export const IssueDetailWidgetModals = observer(function IssueDetailWidgetModals
     _parentIssueId: string | null,
     issue: TIssue | null = null
   ) => {
-    setIssueCrudOperationState({
-      ...issueCrudOperationState,
+    setIssueCrudOperationState((prev) => ({
+      ...prev,
       [key]: {
-        toggle: !issueCrudOperationState[key].toggle,
+        toggle: !prev[key].toggle,
         parentIssueId: _parentIssueId,
         issue: issue,
       },
-    });
+    }));
   };
 
   const handleExistingIssuesModalClose = () => {

@@ -4,7 +4,7 @@
  * See the LICENSE file for details.
  */
 
-import { useCallback, useMemo } from "react";
+import { useCallback } from "react";
 import { observer } from "mobx-react";
 // plane imports
 import { ListFilter } from "lucide-react";
@@ -59,7 +59,7 @@ export const SubIssuesListRoot = observer(function SubIssuesListRoot(props: Prop
 
   // derived values
   const filters = getSubIssueFilters(rootIssueId);
-  const isRootLevel = useMemo(() => rootIssueId === parentIssueId, [rootIssueId, parentIssueId]);
+  const isRootLevel = rootIssueId === parentIssueId;
   const group_by = isRootLevel ? (filters?.displayFilters?.group_by ?? null) : null;
   const filteredSubWorkItemsCount = (getFilteredSubWorkItems(rootIssueId, filters.filters ?? {}) ?? []).length;
 

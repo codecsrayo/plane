@@ -75,8 +75,7 @@ const WorkItemFilterRoot = observer(function WorkItemFilterRoot(props: TWorkItem
     () => (isTemporary ? `TEMP-${entityId ?? uuidv4()}` : entityId),
     [isTemporary, entityId]
   );
-  // memoize initial values to prevent re-computations when reference changes
-  const initialUserFilters = useMemo(() => initialWorkItemFilters.richFilters, [initialWorkItemFilters]);
+  const initialUserFilters = initialWorkItemFilters.richFilters;
   const workItemFiltersConfig = useWorkItemFiltersConfig({
     allowedFilters: filtersToShowByLayout ? filtersToShowByLayout : [],
     ...entityConfigProps,

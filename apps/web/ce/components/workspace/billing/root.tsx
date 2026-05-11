@@ -41,7 +41,7 @@ export const BillingRoot = observer(function BillingRoot() {
    * @returns {void}
    */
   const setBillingFrequency = (subscriptionType: EProductSubscriptionEnum, frequency: TBillingFrequency): void =>
-    setProductBillingFrequency({ ...productBillingFrequency, [subscriptionType]: frequency });
+    setProductBillingFrequency((prev) => ({ ...prev, [subscriptionType]: frequency }));
 
   return (
     <section className="relative scrollbar-hide size-full overflow-y-auto">

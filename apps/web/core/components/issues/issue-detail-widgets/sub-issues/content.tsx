@@ -71,16 +71,16 @@ export const SubIssuesCollapsibleContent = observer(function SubIssuesCollapsibl
   // handler
   const handleIssueCrudState = useCallback(
     (key: "create" | "existing" | "update" | "delete", _parentIssueId: string | null, issue: TIssue | null = null) => {
-      setIssueCrudState({
-        ...issueCrudState,
+      setIssueCrudState((prev) => ({
+        ...prev,
         [key]: {
-          toggle: !issueCrudState[key].toggle,
+          toggle: !prev[key].toggle,
           parentIssueId: _parentIssueId,
           issue,
         },
-      });
+      }));
     },
-    [issueCrudState]
+    []
   );
 
   const handleFetchSubIssues = useCallback(async () => {

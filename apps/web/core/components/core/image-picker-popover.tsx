@@ -231,7 +231,7 @@ export const ImagePickerPopover = observer(function ImagePickerPopover(props: Pr
                                 }
                               }}
                               value={searchValue}
-                              onChange={(e) => setFormData({ ...formData, search: e.target.value })}
+                              onChange={(e) => setFormData((prev) => ({ ...prev, search: e.target.value }))}
                               ref={searchRef}
                               placeholder="Search for images"
                               className="w-full text-13"

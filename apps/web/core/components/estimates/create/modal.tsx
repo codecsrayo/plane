@@ -4,7 +4,7 @@
  * See the LICENSE file for details.
  */
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { observer } from "mobx-react";
 // plane imports
 import { EEstimateSystem, ESTIMATE_SYSTEMS } from "@plane/constants";
@@ -135,7 +135,7 @@ export const CreateEstimateModal = observer(function CreateEstimateModal(props: 
   };
 
   // derived values
-  const renderEstimateStepsCount = useMemo(() => (estimatePoints ? "2" : "1"), [estimatePoints]);
+  const renderEstimateStepsCount = estimatePoints ? "2" : "1";
   // const isEstimatePointError = useMemo(() => {
   //   if (!estimatePointError) return false;
   //   return Object.keys(estimatePointError).length > 0;

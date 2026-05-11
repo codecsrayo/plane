@@ -47,7 +47,6 @@ export function SelectRepository(props: Props) {
 
   const {
     data: paginatedData,
-    size,
     setSize,
     isValidating,
     error,
@@ -99,7 +98,7 @@ export function SelectRepository(props: Props) {
               <button
                 type="button"
                 className="text-xs text-custom-text-300 hover:bg-custom-background-80 w-full p-1 text-center"
-                onClick={() => setSize(size + 1)}
+                onClick={() => setSize((prev) => prev + 1)}
                 disabled={isValidating}
               >
                 {isValidating ? "Loading…" : "Load more repositories"}

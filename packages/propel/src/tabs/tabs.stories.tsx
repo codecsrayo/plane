@@ -229,7 +229,7 @@ export const DynamicTabs: Story = {
 
     const addTab = () => {
       const newTabNum = tabs.length + 1;
-      setTabs([...tabs, { label: `Tab ${newTabNum}`, value: `tab${newTabNum}` }]);
+      setTabs((prev) => [...prev, { label: `Tab ${newTabNum}`, value: `tab${newTabNum}` }]);
     };
 
     const removeTab = (valueToRemove: string) => {

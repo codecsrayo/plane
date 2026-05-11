@@ -31,7 +31,6 @@ export const SubIssuesActionButton = observer(function SubIssuesActionButton(pro
     toggleCreateIssueModal,
     toggleSubIssuesModal,
     setIssueCrudOperationState,
-    issueCrudOperationState,
   } = useIssueDetail(issueServiceType);
 
   // derived values
@@ -45,14 +44,14 @@ export const SubIssuesActionButton = observer(function SubIssuesActionButton(pro
     _parentIssueId: string | null,
     selectedIssue: TIssue | null = null
   ) => {
-    setIssueCrudOperationState({
-      ...issueCrudOperationState,
+    setIssueCrudOperationState((prev) => ({
+      ...prev,
       [key]: {
-        toggle: !issueCrudOperationState[key].toggle,
+        toggle: !prev[key].toggle,
         parentIssueId: _parentIssueId,
         issue: selectedIssue,
       },
-    });
+    }));
   };
 
   const handleCreateNew = () => {
