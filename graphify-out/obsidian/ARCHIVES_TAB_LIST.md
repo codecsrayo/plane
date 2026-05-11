@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/archives/archive-tabs-list.tsx"
+source_file: "components/archives/archive-tabs-list.tsx"
 type: "code"
-community: "Applied Filters UI"
+community: "Project Archives"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Applied_Filters_UI
+  - community/Project_Archives
 ---
 
 # ARCHIVES_TAB_LIST
@@ -15,4 +15,4 @@ tags:
 
 - [[archive-tabs-list.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Applied_Filters_UI
+#graphify/code #graphify/EXTRACTED #community/Project_Archives

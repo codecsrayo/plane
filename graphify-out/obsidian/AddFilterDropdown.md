@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/rich-filters/add-filters/dropdown.tsx"
+source_file: "components/rich-filters/add-filters/dropdown.tsx"
 type: "code"
-community: "Filter Components"
+community: "Filter Controls"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filter_Components
+  - community/Filter_Controls
 ---
 
 # AddFilterDropdown
@@ -17,4 +17,4 @@ tags:
 - [[dropdown.tsx_7]] - `contains` [EXTRACTED]
 - [[property.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filter_Components
+#graphify/code #graphify/EXTRACTED #community/Filter_Controls

@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/cycles/active-cycle/progress.tsx"
+source_file: "components/cycles/active-cycle/progress.tsx"
 type: "code"
-community: "Community 127"
+community: "Progress Empty"
 location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_127
+  - community/Progress_Empty
 ---
 
 # ActiveCycleProgress
@@ -15,4 +15,4 @@ tags:
 
 - [[progress.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_127
+#graphify/code #graphify/EXTRACTED #community/Progress_Empty

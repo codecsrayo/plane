@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/stickies/modal/index.tsx"
+source_file: "components/stickies/modal/index.tsx"
 type: "code"
-community: "Community 104"
+community: "Stickies Action"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_104
+  - community/Stickies_Action
 ---
 
 # AllStickiesModal()
@@ -16,4 +16,4 @@ tags:
 - [[action-bar.tsx]] - `imports` [EXTRACTED]
 - [[index.tsx_5]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_104
+#graphify/code #graphify/EXTRACTED #community/Stickies_Action

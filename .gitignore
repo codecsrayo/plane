@@ -170,3 +170,7 @@ rust-project.json
 flake.lock
 .direnv/
 result
+
+# Graphify
+graphify-out/
+**/graphify-out/

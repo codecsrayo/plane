@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/cycles/active-cycle/productivity.tsx"
+source_file: "components/cycles/active-cycle/productivity.tsx"
 type: "code"
-community: "Cycle Analytics"
+community: "Cycle Productivity"
 location: "L31"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Analytics
+  - community/Cycle_Productivity
 ---
 
 # ActiveCycleProductivity
@@ -15,4 +15,4 @@ tags:
 
 - [[productivity.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Analytics
+#graphify/code #graphify/EXTRACTED #community/Cycle_Productivity

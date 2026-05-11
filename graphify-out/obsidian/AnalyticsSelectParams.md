@@ -1,12 +1,12 @@
 ---
-source_file: "web/core/components/analytics/select/analytics-params.tsx"
+source_file: "components/analytics/select/analytics-params.tsx"
 type: "code"
-community: "Community 217"
+community: "Select Axis"
 location: "L31"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_217
+  - community/Select_Axis
 ---
 
 # AnalyticsSelectParams
@@ -16,4 +16,4 @@ tags:
 - [[analytics-params.tsx]] - `contains` [EXTRACTED]
 - [[customized-insights.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_217
+#graphify/code #graphify/EXTRACTED #community/Select_Axis
