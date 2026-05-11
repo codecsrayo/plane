@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/use-project-issue-properties.ts"
+source_file: "web/core/hooks/use-project-issue-properties.ts"
 type: "code"
-community: "Calendar Blocks"
+community: "Label Dropdown"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Blocks
+  - community/Label_Dropdown
 ---
 
 # use-project-issue-properties.ts
@@ -14,7 +14,7 @@ tags:
 ## Connections
 
 - [[form.tsx_8]] - `imports_from` [EXTRACTED]
-- [[index.ts_3]] - `imports_from` [EXTRACTED]
+- [[index.ts_268]] - `imports_from` [EXTRACTED]
 - [[use-cycle.ts]] - `imports_from` [EXTRACTED]
 - [[use-label.ts]] - `imports_from` [EXTRACTED]
 - [[use-member.ts]] - `imports_from` [EXTRACTED]
@@ -27,4 +27,4 @@ tags:
 - [[useProjectIssueProperties()]] - `contains` [EXTRACTED]
 - [[useProjectState()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Blocks
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

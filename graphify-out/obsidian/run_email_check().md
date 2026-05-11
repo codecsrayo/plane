@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/auth/email_check.rs"
 type: "code"
-community: "Auth Rust API"
+community: "Password Email"
 location: "L55"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Auth_Rust_API
+  - community/Password_Email
 ---
 
 # run_email_check()
@@ -21,4 +21,4 @@ tags:
 - [[email_check_space()]] - `calls` [EXTRACTED]
 - [[get_config_value()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Auth_Rust_API
+#graphify/code #graphify/INFERRED #community/Password_Email

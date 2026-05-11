@@ -1,18 +1,19 @@
 ---
 source_file: "api_rust/src/routes/workspace_view_issues.rs"
 type: "code"
-community: "Issue Routes Rust API"
+community: "Issue Issues"
 location: "L176"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Issue_Routes_Rust_API
+  - community/Issue_Issues
 ---
 
 # list_workspace_view_issues()
 
 ## Connections
 
+- [[.json()]] - `calls` [INFERRED]
 - [[.new()]] - `calls` [INFERRED]
 - [[.to_filter_params()]] - `calls` [EXTRACTED]
 - [[apply_issue_filters()]] - `calls` [INFERRED]
@@ -26,4 +27,4 @@ tags:
 - [[parse_cursor()]] - `calls` [INFERRED]
 - [[workspace_view_issues.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Issue_Routes_Rust_API
+#graphify/code #graphify/INFERRED #community/Issue_Issues

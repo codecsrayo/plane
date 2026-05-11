@@ -1,12 +1,12 @@
 ---
-source_file: "components/workspace/settings/member-columns.tsx"
+source_file: "web/core/components/workspace/settings/member-columns.tsx"
 type: "code"
-community: "Member Settings"
+community: "Member Column"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Settings
+  - community/Member_Column
 ---
 
 # member-columns.tsx
@@ -17,10 +17,11 @@ tags:
 - [[AccountTypeProps]] - `contains` [EXTRACTED]
 - [[NameColumn()]] - `contains` [EXTRACTED]
 - [[NameProps]] - `contains` [EXTRACTED]
-- [[RowData]] - `contains` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
+- [[RowData_1]] - `contains` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
 - [[members-list-item.tsx]] - `imports_from` [EXTRACTED]
 - [[use-member.ts]] - `imports_from` [EXTRACTED]
 - [[useMember()]] - `imports` [EXTRACTED]
+- [[useMemberColumns.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Settings
+#graphify/code #graphify/EXTRACTED #community/Member_Column

@@ -1,24 +1,25 @@
 ---
 source_file: "api_rust/src/routes/issues.rs"
 type: "code"
-community: "Issue Routes Rust API"
+community: "Issue Issues"
 location: "L621"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Issue_Routes_Rust_API
+  - community/Issue_Issues
 ---
 
 # list_issues()
 
 ## Connections
 
+- [[.json()]] - `calls` [INFERRED]
 - [[.to_filter_params()_1]] - `calls` [EXTRACTED]
 - [[apply_issue_filters()]] - `calls` [INFERRED]
 - [[apply_issue_order()]] - `calls` [INFERRED]
 - [[collect_state_ids()]] - `calls` [INFERRED]
 - [[empty_paginated_response()]] - `calls` [INFERRED]
-- [[issues.rs]] - `contains` [EXTRACTED]
+- [[issues.rs_1]] - `contains` [EXTRACTED]
 - [[load_enrichment()]] - `calls` [INFERRED]
 - [[load_triage_state_ids()]] - `calls` [INFERRED]
 - [[merge_json_filters()]] - `calls` [INFERRED]
@@ -26,4 +27,4 @@ tags:
 - [[parse_cursor()]] - `calls` [INFERRED]
 - [[require_role()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Issue_Routes_Rust_API
+#graphify/code #graphify/INFERRED #community/Issue_Issues

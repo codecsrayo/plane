@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/issue-layout-HOC.tsx"
+source_file: "web/core/components/issues/issue-layouts/issue-layout-HOC.tsx"
 type: "code"
-community: "Issue Layout HOC"
+community: "Loader Calendar"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Layout_HOC
+  - community/Loader_Calendar
 ---
 
 # issue-layout-HOC.tsx
@@ -20,7 +20,7 @@ tags:
 - [[IssueLayoutHOC]] - `contains` [EXTRACTED]
 - [[KanbanLayoutLoader()]] - `imports` [EXTRACTED]
 - [[ListLayoutLoader()]] - `imports` [EXTRACTED]
-- [[Props_187]] - `contains` [EXTRACTED]
+- [[Props_262]] - `contains` [EXTRACTED]
 - [[SpreadsheetLayoutLoader()]] - `imports` [EXTRACTED]
 - [[base-gantt-root.tsx]] - `imports_from` [EXTRACTED]
 - [[base-kanban-root.tsx]] - `imports_from` [EXTRACTED]
@@ -29,7 +29,7 @@ tags:
 - [[calendar-layout-loader.tsx]] - `imports_from` [EXTRACTED]
 - [[calendar.tsx]] - `imports_from` [EXTRACTED]
 - [[gantt-layout-loader.tsx]] - `imports_from` [EXTRACTED]
-- [[index.tsx_7]] - `imports_from` [EXTRACTED]
+- [[index.tsx_13]] - `imports_from` [EXTRACTED]
 - [[kanban-layout-loader.tsx]] - `imports_from` [EXTRACTED]
 - [[list-layout-loader.tsx]] - `imports_from` [EXTRACTED]
 - [[spreadsheet-layout-loader.tsx]] - `imports_from` [EXTRACTED]
@@ -39,4 +39,4 @@ tags:
 - [[useIssues()]] - `imports` [EXTRACTED]
 - [[workspace-root.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Layout_HOC
+#graphify/code #graphify/EXTRACTED #community/Loader_Calendar

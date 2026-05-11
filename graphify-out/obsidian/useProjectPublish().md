@@ -1,19 +1,19 @@
 ---
-source_file: "hooks/store/use-project-publish.ts"
+source_file: "web/core/hooks/store/use-project-publish.ts"
 type: "code"
-community: "Project Projects"
+community: "Project Navigation"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Projects
+  - community/Project_Navigation
 ---
 
 # useProjectPublish()
 
 ## Connections
 
-- [[modal.tsx_6]] - `imports` [EXTRACTED]
+- [[modal.tsx_11]] - `imports` [EXTRACTED]
 - [[use-project-publish.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Projects
+#graphify/code #graphify/EXTRACTED #community/Project_Navigation

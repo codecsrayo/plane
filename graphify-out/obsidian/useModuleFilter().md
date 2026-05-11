@@ -1,24 +1,27 @@
 ---
-source_file: "hooks/store/use-module-filter.ts"
+source_file: "web/core/hooks/store/use-module-filter.ts"
 type: "code"
-community: "Modules Archived"
+community: "Cycles Archived"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Modules_Archived
+  - community/Cycles_Archived
 ---
 
 # useModuleFilter()
 
 ## Connections
 
-- [[header.tsx_2]] - `imports` [EXTRACTED]
+- [[ProjectModulesPage()]] - `calls` [EXTRACTED]
+- [[header.tsx_44]] - `imports` [EXTRACTED]
+- [[mobile-header.tsx_3]] - `imports` [EXTRACTED]
 - [[module-view-header.tsx]] - `imports` [EXTRACTED]
 - [[modules-list-layout.tsx]] - `imports` [EXTRACTED]
 - [[modules-list-view.tsx]] - `imports` [EXTRACTED]
-- [[root.tsx_13]] - `imports` [EXTRACTED]
+- [[page.tsx_18]] - `imports` [EXTRACTED]
+- [[root.tsx_54]] - `imports` [EXTRACTED]
 - [[use-module-filter.ts]] - `contains` [EXTRACTED]
-- [[view.tsx]] - `imports` [EXTRACTED]
+- [[view.tsx_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Modules_Archived
+#graphify/code #graphify/EXTRACTED #community/Cycles_Archived

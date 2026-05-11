@@ -1,5 +1,5 @@
 ---
-source_file: "services/project/project-state.service.ts"
+source_file: "web/core/services/project/project-state.service.ts"
 type: "code"
 community: "State Project"
 location: "L1"
@@ -15,7 +15,7 @@ tags:
 
 - [[ApiError]] - `imports` [EXTRACTED]
 - [[ProjectStateService]] - `contains` [EXTRACTED]
-- [[api.service.ts]] - `imports_from` [EXTRACTED]
-- [[state.store.ts]] - `imports_from` [EXTRACTED]
+- [[api.service.ts_1]] - `imports_from` [EXTRACTED]
+- [[state.store.ts_1]] - `imports_from` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/State_Project

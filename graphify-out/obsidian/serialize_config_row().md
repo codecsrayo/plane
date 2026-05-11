@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/routes/instances.rs"
 type: "code"
-community: "Community 57"
+community: "Password Email"
 location: "L193"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_57
+  - community/Password_Email
 ---
 
 # serialize_config_row()
@@ -15,6 +15,6 @@ tags:
 
 - [[.new()]] - `calls` [INFERRED]
 - [[decrypt_config_value()]] - `calls` [INFERRED]
-- [[instances.rs]] - `contains` [EXTRACTED]
+- [[instances.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_57
+#graphify/code #graphify/INFERRED #community/Password_Email

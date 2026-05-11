@@ -1,17 +1,25 @@
 # ─────────────────────────────────────────────────────────────────────────────
-# Dockerfile — apps/home (landing page estática)
-# Sirve los archivos HTML/CSS/assets con nginx en el puerto 8080.
-# No requiere build step — los assets ya son estáticos.
+# Stage 1: Build Astro static site
+# ─────────────────────────────────────────────────────────────────────────────
+FROM node:22-alpine AS builder
+
+RUN npm install -g pnpm
+
+WORKDIR /app
+
+COPY apps/home/package.json ./
+RUN pnpm install
+
+COPY apps/home/ ./
+RUN pnpm build
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Stage 2: Serve with nginx
 # ─────────────────────────────────────────────────────────────────────────────
 FROM nginx:1.27-alpine
 
-# Configuración nginx personalizada
 COPY apps/home/nginx.conf /etc/nginx/nginx.conf
-
-# Copiar contenido estático
-COPY apps/home/index.html          /usr/share/nginx/html/index.html
-COPY apps/home/politica-datos.html /usr/share/nginx/html/politica-datos.html
-COPY apps/home/assets/             /usr/share/nginx/html/assets/
+COPY --from=builder /app/dist/ /usr/share/nginx/html/
 
 EXPOSE 8080
 

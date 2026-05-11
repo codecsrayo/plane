@@ -1,5 +1,5 @@
 ---
-source_file: "components/gantt-chart/helpers/blockResizables/use-gantt-resizable.ts"
+source_file: "web/core/components/gantt-chart/helpers/blockResizables/use-gantt-resizable.ts"
 type: "code"
 community: "Gantt Chart"
 location: "L1"
@@ -13,9 +13,9 @@ tags:
 
 ## Connections
 
-- [[block.tsx_2]] - `imports_from` [EXTRACTED]
-- [[constants.ts]] - `imports_from` [EXTRACTED]
-- [[use-timeline-chart.ts]] - `imports_from` [EXTRACTED]
+- [[block.tsx_5]] - `imports_from` [EXTRACTED]
+- [[constants.ts_4]] - `imports_from` [EXTRACTED]
+- [[use-timeline-chart.ts_1]] - `imports_from` [EXTRACTED]
 - [[useGanttResizable()]] - `contains` [EXTRACTED]
 - [[useTimeLineChartStore()]] - `imports` [EXTRACTED]
 

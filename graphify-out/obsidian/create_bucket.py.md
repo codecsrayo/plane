@@ -1,0 +1,18 @@
+---
+source_file: "api/plane/db/management/commands/create_bucket.py"
+type: "code"
+community: "Command Issue"
+location: "L1"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Command_Issue
+---
+
+# create_bucket.py
+
+## Connections
+
+- [[Command_12]] - `contains` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Command_Issue

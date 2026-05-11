@@ -1,12 +1,12 @@
 ---
-source_file: "components/profile/overview/state-distribution.tsx"
+source_file: "web/core/components/profile/overview/state-distribution.tsx"
 type: "code"
-community: "State Distribution"
+community: "Profile Priority"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/State_Distribution
+  - community/Profile_Priority
 ---
 
 # state-distribution.tsx
@@ -14,6 +14,7 @@ tags:
 ## Connections
 
 - [[ProfileStateDistribution()]] - `contains` [EXTRACTED]
-- [[Props_102]] - `contains` [EXTRACTED]
+- [[Props_177]] - `contains` [EXTRACTED]
+- [[page.tsx_10]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/State_Distribution
+#graphify/code #graphify/EXTRACTED #community/Profile_Priority

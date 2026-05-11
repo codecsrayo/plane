@@ -1,5 +1,5 @@
 ---
-source_file: "components/ui/profile-empty-state.tsx"
+source_file: "web/core/components/ui/profile-empty-state.tsx"
 type: "code"
 community: "Profile Empty"
 location: "L1"
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[ProfileEmptyState()]] - `contains` [EXTRACTED]
-- [[Props_6]] - `contains` [EXTRACTED]
+- [[Props_83]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Profile_Empty

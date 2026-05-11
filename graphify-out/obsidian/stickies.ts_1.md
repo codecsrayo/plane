@@ -1,12 +1,12 @@
 ---
 source_file: "types/src/stickies.ts"
 type: "code"
-community: "Favorites Pages"
+community: "Inbox Issue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Favorites_Pages
+  - community/Inbox_Issue
 ---
 
 # stickies.ts
@@ -17,4 +17,4 @@ tags:
 - [[TSticky]] - `contains` [EXTRACTED]
 - [[common.ts_4]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Favorites_Pages
+#graphify/code #graphify/EXTRACTED #community/Inbox_Issue

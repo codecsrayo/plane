@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/tabs/tabs.stories.tsx"
 type: "code"
-community: "Local Tabs"
+community: "Icons Icon"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Local_Tabs
+  - community/Icons_Icon
 ---
 
 # tabs.stories.tsx
@@ -31,4 +31,4 @@ tags:
 - [[tabOptions]] - `contains` [EXTRACTED]
 - [[tabs.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Local_Tabs
+#graphify/code #graphify/EXTRACTED #community/Icons_Icon

@@ -1,18 +1,18 @@
 ---
-source_file: "components/onboarding/invite-members.tsx"
+source_file: "web/core/components/power-k/ui/pages/work-item-selection-page.tsx"
 type: "code"
-community: "Invite Onboarding"
-location: "L71"
+community: "Work Selection"
+location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Invite_Onboarding
+  - community/Work_Selection
 ---
 
 # workspaceService
 
 ## Connections
 
-- [[invite-members.tsx]] - `contains` [EXTRACTED]
+- [[work-item-selection-page.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Invite_Onboarding
+#graphify/code #graphify/EXTRACTED #community/Work_Selection

@@ -1,0 +1,59 @@
+---
+---
+<section class="contact" id="contacto">
+  <div class="contact-inner">
+    <div>
+      <h2 class="reveal">Hablemos de las <em>preguntas</em> de su negocio.</h2>
+      <p class="lead reveal d1">Cuéntenos qué está buscando responder con sus datos. Le contactaremos en menos de 24 horas hábiles para entender su caso y proponer un camino.</p>
+
+      <form class="form reveal d2" id="contactForm">
+        <div class="row">
+          <div class="field"><input id="n" type="text" placeholder=" " required /><label for="n">Nombre</label></div>
+          <div class="field"><input id="co" type="text" placeholder=" " required /><label for="co">Compañía</label></div>
+        </div>
+        <div class="row">
+          <div class="field"><input id="em" type="email" placeholder=" " required /><label for="em">Email corporativo</label></div>
+          <div class="field"><input id="ph" type="tel" placeholder=" " /><label for="ph">Teléfono</label></div>
+        </div>
+        <div class="field">
+          <textarea id="ms" placeholder=" " rows="4"></textarea>
+          <label for="ms">¿En qué le podemos ayudar?</label>
+        </div>
+        <button type="submit">Enviar mensaje <span style="font-size:16px">→</span></button>
+      </form>
+    </div>
+
+    <aside class="contact-info reveal d3">
+      <div class="ci-row">
+        <div class="k">Oficina</div>
+        <div class="v">Calle 29 # 41-105<br/>Oficina 1206, Edificio SOHO<br/>Medellín — Colombia</div>
+      </div>
+      <div class="ci-row">
+        <div class="k">Teléfono</div>
+        <div class="v"><a href="tel:+5744031775">+57 (4) 403 1775</a></div>
+      </div>
+      <div class="ci-row">
+        <div class="k">Celular</div>
+        <div class="v"><a href="tel:+573157845476">+57 315 784 54 76</a></div>
+      </div>
+      <div class="ci-row">
+        <div class="k">Horario</div>
+        <div class="v">Lunes — Viernes<br/>8:00 AM — 6:00 PM (COT)</div>
+      </div>
+      <div class="ci-row">
+        <div class="k">Legal</div>
+        <div class="v"><a href="/politica-datos">Política de protección y tratamiento de datos →</a></div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('contactForm') as HTMLFormElement | null;
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('button') as HTMLButtonElement;
+    btn.textContent = 'Gracias. Le contactaremos pronto.';
+    btn.disabled = true;
+  });
+</script>

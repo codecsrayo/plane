@@ -1,12 +1,12 @@
 ---
-source_file: "components/pages/navigation-pane/tab-panels/info/version-history.tsx"
+source_file: "web/core/components/pages/navigation-pane/tab-panels/info/version-history.tsx"
 type: "code"
-community: "Page Editor"
+community: "Pane Navigation"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Page_Editor
+  - community/Pane_Navigation
 ---
 
 # version-history.tsx
@@ -14,18 +14,18 @@ tags:
 ## Connections
 
 - [[PageNavigationPaneInfoTabVersionHistory]] - `contains` [EXTRACTED]
-- [[Props_404]] - `contains` [EXTRACTED]
+- [[Props_478]] - `contains` [EXTRACTED]
 - [[TPageInstance]] - `imports` [EXTRACTED]
 - [[TPageRootHandlers]] - `imports` [EXTRACTED]
 - [[VersionHistoryItem]] - `contains` [EXTRACTED]
 - [[VersionHistoryItemProps]] - `contains` [EXTRACTED]
 - [[base-page.ts]] - `imports_from` [EXTRACTED]
-- [[index.ts_157]] - `imports_from` [EXTRACTED]
+- [[index.ts_422]] - `imports_from` [EXTRACTED]
 - [[page-root.tsx]] - `imports_from` [EXTRACTED]
-- [[root.tsx_82]] - `imports_from` [EXTRACTED]
+- [[root.tsx_123]] - `imports_from` [EXTRACTED]
 - [[use-member.ts]] - `imports_from` [EXTRACTED]
 - [[use-query-params.ts]] - `imports_from` [EXTRACTED]
 - [[useMember()]] - `imports` [EXTRACTED]
 - [[useQueryParams()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Page_Editor
+#graphify/code #graphify/EXTRACTED #community/Pane_Navigation

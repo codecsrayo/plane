@@ -1,5 +1,5 @@
 ---
-source_file: "store/sticky/sticky.store.ts"
+source_file: "web/core/store/sticky/sticky.store.ts"
 type: "code"
 community: "Sticky Stickies"
 location: "L259"

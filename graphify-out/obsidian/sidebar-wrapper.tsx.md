@@ -1,5 +1,5 @@
 ---
-source_file: "components/sidebar/sidebar-wrapper.tsx"
+source_file: "web/core/components/sidebar/sidebar-wrapper.tsx"
 type: "code"
 community: "Sidebar Navigation"
 location: "L1"
@@ -17,6 +17,8 @@ tags:
 - [[CustomizeNavigationDialog]] - `imports` [EXTRACTED]
 - [[SidebarWrapper]] - `contains` [EXTRACTED]
 - [[TSidebarWrapperProps]] - `contains` [EXTRACTED]
+- [[WorkspaceEditionBadge]] - `imports` [EXTRACTED]
+- [[_sidebar.tsx]] - `imports_from` [EXTRACTED]
 - [[customize-navigation-dialog.tsx]] - `imports_from` [EXTRACTED]
 - [[sidebar-toggle-button.tsx]] - `imports_from` [EXTRACTED]
 - [[use-app-theme.ts]] - `imports_from` [EXTRACTED]

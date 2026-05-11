@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/filters/applied-filters/members.tsx"
+source_file: "web/core/components/project/applied-filters/members.tsx"
 type: "code"
-community: "Issue Filters"
+community: "Member Members"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Filters
+  - community/Member_Members
 ---
 
 # members.tsx
@@ -14,8 +14,9 @@ tags:
 ## Connections
 
 - [[AppliedMembersFilters]] - `contains` [EXTRACTED]
-- [[Props_92]] - `contains` [EXTRACTED]
+- [[Props_167]] - `contains` [EXTRACTED]
+- [[root.tsx_67]] - `imports_from` [EXTRACTED]
 - [[use-member.ts]] - `imports_from` [EXTRACTED]
 - [[useMember()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Filters
+#graphify/code #graphify/EXTRACTED #community/Member_Members

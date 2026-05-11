@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/use-expandable-search.ts"
+source_file: "web/core/hooks/use-expandable-search.ts"
 type: "code"
-community: "Power Search"
+community: "Power Shortcuts"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Power_Search
+  - community/Power_Shortcuts
 ---
 
 # useExpandableSearch()
@@ -16,4 +16,4 @@ tags:
 - [[top-nav-power-k.tsx]] - `imports` [EXTRACTED]
 - [[use-expandable-search.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Power_Search
+#graphify/code #graphify/EXTRACTED #community/Power_Shortcuts

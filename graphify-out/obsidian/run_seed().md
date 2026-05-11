@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/jobs/workspace_seed.rs"
 type: "code"
-community: "Auth Rust API"
+community: "Password Email"
 location: "L65"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Auth_Rust_API
+  - graphify/INFERRED
+  - community/Password_Email
 ---
 
 # run_seed()
@@ -14,7 +14,9 @@ tags:
 ## Connections
 
 - [[.new()]] - `calls` [INFERRED]
+- [[.set()]] - `calls` [INFERRED]
 - [[handle_workspace_seed()]] - `calls` [EXTRACTED]
+- [[now]] - `calls` [INFERRED]
 - [[workspace_seed.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Rust_API
+#graphify/code #graphify/INFERRED #community/Password_Email

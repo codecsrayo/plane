@@ -1,12 +1,12 @@
 ---
-source_file: "store/issue/issue-details/reaction.store.ts"
+source_file: "web/core/store/issue/issue-details/reaction.store.ts"
 type: "code"
-community: "Reaction Reactions"
+community: "Issue Reaction"
 location: "L83"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Reaction_Reactions
+  - community/Issue_Reaction
 ---
 
 # reactions
@@ -15,4 +15,4 @@ tags:
 
 - [[reaction.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Reaction_Reactions
+#graphify/code #graphify/EXTRACTED #community/Issue_Reaction

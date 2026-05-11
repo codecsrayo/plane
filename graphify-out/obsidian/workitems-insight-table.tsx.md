@@ -1,5 +1,5 @@
 ---
-source_file: "components/analytics/work-items/workitems-insight-table.tsx"
+source_file: "web/core/components/analytics/work-items/workitems-insight-table.tsx"
 type: "code"
 community: "Insight Table"
 location: "L1"
@@ -21,8 +21,8 @@ tags:
 - [[content.tsx_5]] - `imports_from` [EXTRACTED]
 - [[export.ts]] - `imports_from` [EXTRACTED]
 - [[exportCSV()]] - `imports` [EXTRACTED]
-- [[index.ts_168]] - `imports_from` [EXTRACTED]
-- [[root.tsx_89]] - `imports_from` [EXTRACTED]
+- [[index.ts_433]] - `imports_from` [EXTRACTED]
+- [[root.tsx_130]] - `imports_from` [EXTRACTED]
 - [[use-analytics.ts]] - `imports_from` [EXTRACTED]
 - [[use-project.ts]] - `imports_from` [EXTRACTED]
 - [[useAnalytics()]] - `imports` [EXTRACTED]

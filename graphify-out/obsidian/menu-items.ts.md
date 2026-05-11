@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/components/menus/menu-items.ts"
 type: "code"
-community: "Toggle Insert"
+community: "Toggle Menu"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toggle_Insert
+  - community/Toggle_Menu
 ---
 
 # menu-items.ts
@@ -67,4 +67,4 @@ tags:
 - [[toggleUnderline()]] - `imports` [EXTRACTED]
 - [[unsetLinkEditor()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toggle_Insert
+#graphify/code #graphify/EXTRACTED #community/Toggle_Menu

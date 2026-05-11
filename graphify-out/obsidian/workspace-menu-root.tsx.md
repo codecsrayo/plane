@@ -1,12 +1,12 @@
 ---
-source_file: "components/workspace/sidebar/workspace-menu-root.tsx"
+source_file: "web/core/components/workspace/sidebar/workspace-menu-root.tsx"
 type: "code"
-community: "Workspace Invites"
+community: "Workspace Issue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Invites
+  - community/Workspace_Issue
 ---
 
 # workspace-menu-root.tsx
@@ -18,9 +18,10 @@ tags:
 - [[WorkspaceMenuRoot]] - `contains` [EXTRACTED]
 - [[WorkspaceMenuRootProps]] - `contains` [EXTRACTED]
 - [[dropdown-item.tsx]] - `imports_from` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
-- [[logo.tsx]] - `imports_from` [EXTRACTED]
-- [[sidebar-item.tsx]] - `imports_from` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
+- [[logo.tsx_1]] - `imports_from` [EXTRACTED]
+- [[sidebar-item.tsx_1]] - `imports_from` [EXTRACTED]
+- [[top-navigation-root.tsx]] - `imports_from` [EXTRACTED]
 - [[use-app-theme.ts]] - `imports_from` [EXTRACTED]
 - [[use-instance.ts]] - `imports_from` [EXTRACTED]
 - [[use-workspace.ts]] - `imports_from` [EXTRACTED]
@@ -28,4 +29,4 @@ tags:
 - [[useInstance()]] - `imports` [EXTRACTED]
 - [[useWorkspace()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Invites
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

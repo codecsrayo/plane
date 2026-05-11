@@ -1,20 +1,20 @@
 ---
-source_file: "components/home/widgets/links/use-links.tsx"
+source_file: "web/core/components/home/widgets/links/use-links.tsx"
 type: "code"
-community: "Dashboard Widgets"
+community: "Link Links"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Dashboard_Widgets
+  - community/Link_Links
 ---
 
 # useLinks()
 
 ## Connections
 
-- [[root.tsx_1]] - `imports` [EXTRACTED]
+- [[root.tsx_42]] - `imports` [EXTRACTED]
 - [[use-links.tsx]] - `contains` [EXTRACTED]
 - [[useHome()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Dashboard_Widgets
+#graphify/code #graphify/EXTRACTED #community/Link_Links

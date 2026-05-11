@@ -1,21 +1,19 @@
 ---
-source_file: "api_rust/src/jobs/email_notification.rs"
+source_file: "api/plane/bgtasks/email_notification_task.py"
 type: "code"
-community: "Community 229"
-location: "L45"
+community: "Email Process"
+location: "L47"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_229
+  - community/Email_Process
 ---
 
 # stack_email_notification()
 
 ## Connections
 
-- [[.new()]] - `calls` [INFERRED]
-- [[email_notification.rs]] - `contains` [EXTRACTED]
-- [[send_email_for_issue()]] - `calls` [EXTRACTED]
-- [[start_cron()]] - `calls` [INFERRED]
+- [[.set()]] - `calls` [INFERRED]
+- [[email_notification_task.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_229
+#graphify/code #graphify/EXTRACTED #community/Email_Process

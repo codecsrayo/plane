@@ -1,18 +1,21 @@
 ---
-source_file: "components/settings/layout.tsx"
+source_file: "web/app/layout.tsx"
 type: "code"
-community: "Settings Content"
+community: "Error Provider"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Settings_Content
+  - community/Error_Provider
 ---
 
 # layout.tsx
 
 ## Connections
 
-- [[SettingsContentLayout]] - `contains` [EXTRACTED]
+- [[AppProvider()]] - `imports` [EXTRACTED]
+- [[RootLayout()]] - `contains` [EXTRACTED]
+- [[meta()_2]] - `contains` [EXTRACTED]
+- [[provider.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Settings_Content
+#graphify/code #graphify/EXTRACTED #community/Error_Provider

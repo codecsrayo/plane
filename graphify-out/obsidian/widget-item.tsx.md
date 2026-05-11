@@ -1,20 +1,21 @@
 ---
-source_file: "components/home/widgets/manage/widget-item.tsx"
+source_file: "web/core/components/home/widgets/manage/widget-item.tsx"
 type: "code"
-community: "Dashboard Widgets"
+community: "Widget Home"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Dashboard_Widgets
+  - community/Widget_Home
 ---
 
 # widget-item.tsx
 
 ## Connections
 
+- [[Adapter_1]] - `imports_from` [EXTRACTED]
 - [[HOME_WIDGETS_LIST]] - `imports` [EXTRACTED]
-- [[Props_10]] - `contains` [EXTRACTED]
+- [[Props_87]] - `contains` [EXTRACTED]
 - [[WidgetItem]] - `contains` [EXTRACTED]
 - [[WidgetItemDragHandle]] - `imports` [EXTRACTED]
 - [[getCanDrop()]] - `imports` [EXTRACTED]
@@ -26,4 +27,4 @@ tags:
 - [[widget-list.tsx]] - `imports_from` [EXTRACTED]
 - [[widget.helpers.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Dashboard_Widgets
+#graphify/code #graphify/EXTRACTED #community/Widget_Home

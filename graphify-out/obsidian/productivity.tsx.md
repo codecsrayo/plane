@@ -1,12 +1,12 @@
 ---
-source_file: "components/cycles/active-cycle/productivity.tsx"
+source_file: "web/core/components/cycles/active-cycle/productivity.tsx"
 type: "code"
-community: "Cycle Productivity"
+community: "Cycle Active"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Productivity
+  - community/Cycle_Active
 ---
 
 # productivity.tsx
@@ -19,8 +19,9 @@ tags:
 - [[SimpleEmptyState]] - `imports` [EXTRACTED]
 - [[estimate-type-dropdown.tsx]] - `imports_from` [EXTRACTED]
 - [[progress-chart.tsx]] - `imports_from` [EXTRACTED]
+- [[root.tsx_34]] - `imports_from` [EXTRACTED]
 - [[simple-empty-state-root.tsx]] - `imports_from` [EXTRACTED]
 - [[use-cycle.ts]] - `imports_from` [EXTRACTED]
 - [[useCycle()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Productivity
+#graphify/code #graphify/EXTRACTED #community/Cycle_Active

@@ -1,21 +1,23 @@
 ---
-source_file: "api_rust/src/routes/integrations/workspace.rs"
+source_file: "api/plane/app/views/integration/base.py"
 type: "code"
-community: "Community 47"
-location: "L372"
+community: "Endpoint User"
+location: "L142"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Community_47
+  - graphify/INFERRED
+  - community/Endpoint_User
 ---
 
 # provider_install()
 
 ## Connections
 
-- [[build_slack_metadata()]] - `calls` [EXTRACTED]
-- [[get_or_create_api_token()]] - `calls` [INFERRED]
-- [[require_workspace_admin()]] - `calls` [INFERRED]
-- [[workspace.rs]] - `contains` [EXTRACTED]
+- [[.get()_33]] - `calls` [EXTRACTED]
+- [[.post()_14]] - `calls` [EXTRACTED]
+- [[WorkspaceIntegrationSerializer]] - `calls` [INFERRED]
+- [[base.py_12]] - `contains` [EXTRACTED]
+- [[get_configuration_value()]] - `calls` [INFERRED]
+- [[response]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_47
+#graphify/code #graphify/INFERRED #community/Endpoint_User

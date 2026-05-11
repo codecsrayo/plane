@@ -1,19 +1,18 @@
 ---
-source_file: "api_rust/src/routes/search.rs"
+source_file: "api/plane/utils/issue_search.py"
 type: "code"
-community: "Community 207"
-location: "L251"
+community: "Search Issue"
+location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_207
+  - community/Search_Issue
 ---
 
 # search_issues()
 
 ## Connections
 
-- [[require_role()]] - `calls` [INFERRED]
-- [[search.rs]] - `contains` [EXTRACTED]
+- [[issue_search.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_207
+#graphify/code #graphify/EXTRACTED #community/Search_Issue

@@ -1,21 +1,38 @@
 ---
-source_file: "api_rust/src/jobs/notifications.rs"
+source_file: "api_rust/src/routes/notifications.rs"
 type: "code"
-community: "Community 280"
+community: "User Github"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_280
+  - community/User_Github
 ---
 
 # notifications.rs
 
 ## Connections
 
-- [[IssueActivityNotificationJob]] - `contains` [EXTRACTED]
-- [[build_notification_title()]] - `contains` [EXTRACTED]
-- [[handle_issue_activity_notification()]] - `contains` [EXTRACTED]
-- [[run_notification()]] - `contains` [EXTRACTED]
+- [[NotificationFilter_1]] - `contains` [EXTRACTED]
+- [[NotificationResponse]] - `contains` [EXTRACTED]
+- [[UnreadCountResponse]] - `contains` [EXTRACTED]
+- [[UpdateNotificationRequest]] - `contains` [EXTRACTED]
+- [[UpdateUserNotificationPreferenceRequest]] - `contains` [EXTRACTED]
+- [[UserLite]] - `contains` [EXTRACTED]
+- [[UserNotificationPreferenceResponse]] - `contains` [EXTRACTED]
+- [[archive_notification()]] - `contains` [EXTRACTED]
+- [[delete_notification()]] - `contains` [EXTRACTED]
+- [[enrich_notifications()]] - `contains` [EXTRACTED]
+- [[get_notification()]] - `contains` [EXTRACTED]
+- [[get_or_create_preferences()]] - `contains` [EXTRACTED]
+- [[get_user_notification_preferences()]] - `contains` [EXTRACTED]
+- [[list_notifications()]] - `contains` [EXTRACTED]
+- [[mark_all_read()]] - `contains` [EXTRACTED]
+- [[mark_read()_1]] - `contains` [EXTRACTED]
+- [[mark_unread()_1]] - `contains` [EXTRACTED]
+- [[unarchive_notification()]] - `contains` [EXTRACTED]
+- [[unread_count()]] - `contains` [EXTRACTED]
+- [[update_notification()]] - `contains` [EXTRACTED]
+- [[update_user_notification_preferences()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_280
+#graphify/code #graphify/EXTRACTED #community/User_Github

@@ -1,0 +1,213 @@
+---
+type: community
+cohesion: 0.02
+members: 173
+---
+
+# Project Response
+
+**Cohesion:** 0.02 - loosely connected
+**Members:** 173 nodes
+
+## Members
+
+- [[.from()_22]] - code - api_rust/src/routes/projects.rs
+- [[.from()_19]] - code - api_rust/src/routes/projects.rs
+- [[.from()_21]] - code - api_rust/src/routes/projects.rs
+- [[.from()_18]] - code - api_rust/src/routes/projects.rs
+- [[.from()_20]] - code - api_rust/src/routes/projects.rs
+- [[.from()_9]] - code - api_rust/src/routes/workspace_extras.rs
+- [[.from()_10]] - code - api_rust/src/routes/workspace_extras.rs
+- [[.from()_11]] - code - api_rust/src/routes/workspace_extras.rs
+- [[.from()_12]] - code - api_rust/src/routes/workspace_extras.rs
+- [[.from()_13]] - code - api_rust/src/routes/workspace_extras.rs
+- [[.from()_14]] - code - api_rust/src/routes/workspace_extras.rs
+- [[.from()_15]] - code - api_rust/src/routes/workspace_extras.rs
+- [[.from()_16]] - code - api_rust/src/routes/workspace_extras.rs
+- [[.from()_17]] - code - api_rust/src/routes/workspace_extras.rs
+- [[.from_model()_7]] - code - api_rust/src/routes/projects.rs
+- [[.from_string()]] - code - api_rust/src/utils/pagination.rs
+- [[.to_string_repr()]] - code - api_rust/src/utils/pagination.rs
+- [[ActiveCyclesQuery]] - code - api_rust/src/routes/workspace_extras.rs
+- [[AddProjectMembersRequest]] - code - api_rust/src/routes/projects.rs
+- [[BulkJoinProjectsRequest]] - code - api_rust/src/routes/projects.rs
+- [[CreateDraftIssueRequest]] - code - api_rust/src/routes/workspace_extras.rs
+- [[CreateFavoriteRequest]] - code - api_rust/src/routes/workspace_extras.rs
+- [[CreateProjectInvitationRequest]] - code - api_rust/src/routes/projects.rs
+- [[CreateProjectRequest]] - code - api_rust/src/routes/projects.rs
+- [[CreateQuickLinkRequest]] - code - api_rust/src/routes/workspace_extras.rs
+- [[CreateStickyRequest]] - code - api_rust/src/routes/workspace_extras.rs
+- [[Cursor_1]] - code - api_rust/src/utils/pagination.rs
+- [[DefaultState]] - code - api_rust/src/routes/projects.rs
+- [[DeployBoardResponse]] - code - api_rust/src/routes/projects.rs
+- [[DraftIssueListQuery]] - code - api_rust/src/routes/workspace_extras.rs
+- [[DraftIssueResponse]] - code - api_rust/src/routes/workspace_extras.rs
+- [[DraftToIssueRequest]] - code - api_rust/src/routes/workspace_extras.rs
+- [[FavoriteResponse]] - code - api_rust/src/routes/workspace_extras.rs
+- [[HomePreferenceResponse]] - code - api_rust/src/routes/workspace_extras.rs
+- [[IdentifierQuery]] - code - api_rust/src/routes/projects.rs
+- [[MemberPreferencesResponse]] - code - api_rust/src/routes/projects.rs
+- [[ProjectDetailResponse]] - code - api_rust/src/routes/projects.rs
+- [[ProjectInvitationResponse]] - code - api_rust/src/routes/projects.rs
+- [[ProjectInviteEmail]] - code - api_rust/src/routes/projects.rs
+- [[ProjectJoinRequest]] - code - api_rust/src/routes/projects.rs
+- [[ProjectListResponse]] - code - api_rust/src/routes/projects.rs
+- [[ProjectLiteDto]] - code - api_rust/src/routes/projects.rs
+- [[ProjectMemberEntry]] - code - api_rust/src/routes/projects.rs
+- [[ProjectMemberMeResponse]] - code - api_rust/src/routes/projects.rs
+- [[ProjectMemberResponse]] - code - api_rust/src/routes/projects.rs
+- [[ProjectResponse]] - code - api_rust/src/routes/projects.rs
+- [[ProjectSummaryQuery]] - code - api_rust/src/routes/projects.rs
+- [[QuickLinkResponse]] - code - api_rust/src/routes/workspace_extras.rs
+- [[RecentVisitQuery]] - code - api_rust/src/routes/workspace_extras.rs
+- [[RecentVisitResponse]] - code - api_rust/src/routes/workspace_extras.rs
+- [[StickyListQuery]] - code - api_rust/src/routes/workspace_extras.rs
+- [[StickyResponse]] - code - api_rust/src/routes/workspace_extras.rs
+- [[UpdateDraftIssueRequest]] - code - api_rust/src/routes/workspace_extras.rs
+- [[UpdateFavoriteRequest]] - code - api_rust/src/routes/workspace_extras.rs
+- [[UpdateHomePreferenceRequest]] - code - api_rust/src/routes/workspace_extras.rs
+- [[UpdateProjectMemberRequest]] - code - api_rust/src/routes/projects.rs
+- [[UpdateProjectRequest]] - code - api_rust/src/routes/projects.rs
+- [[UpdateQuickLinkRequest]] - code - api_rust/src/routes/workspace_extras.rs
+- [[UpdateStickyRequest]] - code - api_rust/src/routes/workspace_extras.rs
+- [[UpdateUserPreferenceItem]] - code - api_rust/src/routes/workspace_extras.rs
+- [[UpdateWorkspaceUserPropertiesRequest]] - code - api_rust/src/routes/workspace_extras.rs
+- [[UpsertDeployBoardRequest]] - code - api_rust/src/routes/projects.rs
+- [[UserPreferenceEntry]] - code - api_rust/src/routes/workspace_extras.rs
+- [[UserProjectInvitationResponse]] - code - api_rust/src/routes/projects.rs
+- [[WorkspaceEstimatePointResponse]] - code - api_rust/src/routes/workspace_extras.rs
+- [[WorkspaceEstimateResponse]] - code - api_rust/src/routes/workspace_extras.rs
+- [[WorkspaceLabelResponse]] - code - api_rust/src/routes/workspace_extras.rs
+- [[WorkspaceLiteDto]] - code - api_rust/src/routes/projects.rs
+- [[WorkspaceStateResponse]] - code - api_rust/src/routes/workspace_extras.rs
+- [[WorkspaceUserPropertiesResponse]] - code - api_rust/src/routes/workspace_extras.rs
+- [[archive_project()]] - code - api_rust/src/routes/projects.rs
+- [[build_response()]] - code - api_rust/src/utils/pagination.rs
+- [[check_project_identifier()]] - code - api_rust/src/routes/projects.rs
+- [[create_draft_issue()]] - code - api_rust/src/routes/workspace_extras.rs
+- [[create_favorite()]] - code - api_rust/src/routes/workspace_extras.rs
+- [[create_project()_1]] - code - api_rust/src/routes/projects.rs
+- [[create_project_favorite()]] - code - api_rust/src/routes/projects.rs
+- [[create_project_invitations()]] - code - api_rust/src/routes/projects.rs
+- [[create_project_members()_1]] - code - api_rust/src/routes/projects.rs
+- [[create_quick_link()]] - code - api_rust/src/routes/workspace_extras.rs
+- [[create_sticky()]] - code - api_rust/src/routes/workspace_extras.rs
+- [[default_display_filters()]] - code - api_rust/src/routes/workspace_extras.rs
+- [[default_display_properties()]] - code - api_rust/src/routes/workspace_extras.rs
+- [[default_filters()]] - code - api_rust/src/routes/workspace_extras.rs
+- [[default_when_empty()]] - code - api_rust/src/utils/pagination.rs
+- [[delete_draft_issue()]] - code - api_rust/src/routes/workspace_extras.rs
+- [[delete_favorite()]] - code - api_rust/src/routes/workspace_extras.rs
+- [[delete_project()]] - code - api_rust/src/routes/projects.rs
+- [[delete_project_deploy_board()]] - code - api_rust/src/routes/projects.rs
+- [[delete_project_favorite()]] - code - api_rust/src/routes/projects.rs
+- [[delete_project_identifier()]] - code - api_rust/src/routes/projects.rs
+- [[delete_project_invitation()]] - code - api_rust/src/routes/projects.rs
+- [[delete_quick_link()]] - code - api_rust/src/routes/workspace_extras.rs
+- [[delete_sticky()]] - code - api_rust/src/routes/workspace_extras.rs
+- [[deserialize_double_option_uuid()]] - code - api_rust/src/routes/workspace_extras.rs
+- [[draft_to_issue()]] - code - api_rust/src/routes/workspace_extras.rs
+- [[get_draft_issue()]] - code - api_rust/src/routes/workspace_extras.rs
+- [[get_home_preference_key()]] - code - api_rust/src/routes/workspace_extras.rs
+- [[get_home_preferences()]] - code - api_rust/src/routes/workspace_extras.rs
+- [[get_my_activities()]] - code - api_rust/src/routes/users.rs
+- [[get_or_create_workspace_user_properties()]] - code - api_rust/src/routes/workspace_extras.rs
+- [[get_project()]] - code - api_rust/src/routes/projects.rs
+- [[get_project_deploy_board()]] - code - api_rust/src/routes/projects.rs
+- [[get_project_invitation()]] - code - api_rust/src/routes/projects.rs
+- [[get_project_member()]] - code - api_rust/src/routes/projects.rs
+- [[get_project_member_me()]] - code - api_rust/src/routes/projects.rs
+- [[get_project_member_preferences()]] - code - api_rust/src/routes/projects.rs
+- [[get_project_user_views()]] - code - api_rust/src/routes/projects.rs
+- [[get_user_preferences()]] - code - api_rust/src/routes/workspace_extras.rs
+- [[get_workspace_user_activity()]] - code - api_rust/src/routes/workspaces.rs
+- [[get_workspace_user_properties()]] - code - api_rust/src/routes/workspace_extras.rs
+- [[helpers.rs]] - code - api_rust/src/routes/helpers.rs
+- [[hydrate_draft_issue_response()]] - code - api_rust/src/routes/workspace_extras.rs
+- [[hydrate_draft_issue_responses()]] - code - api_rust/src/routes/workspace_extras.rs
+- [[join_project_invitation()]] - code - api_rust/src/routes/projects.rs
+- [[join_user_project_invitations()]] - code - api_rust/src/routes/projects.rs
+- [[leave_project()]] - code - api_rust/src/routes/projects.rs
+- [[list_draft_issues()]] - code - api_rust/src/routes/workspace_extras.rs
+- [[list_export_issues()]] - code - api_rust/src/routes/exporter.rs
+- [[list_favorite_children()]] - code - api_rust/src/routes/workspace_extras.rs
+- [[list_favorites()]] - code - api_rust/src/routes/workspace_extras.rs
+- [[list_project_favorites()]] - code - api_rust/src/routes/projects.rs
+- [[list_project_invitations()]] - code - api_rust/src/routes/projects.rs
+- [[list_project_members()]] - code - api_rust/src/routes/projects.rs
+- [[list_projects()]] - code - api_rust/src/routes/projects.rs
+- [[list_projects_detail()]] - code - api_rust/src/routes/projects.rs
+- [[list_quick_links()]] - code - api_rust/src/routes/workspace_extras.rs
+- [[list_recent_visits()]] - code - api_rust/src/routes/workspace_extras.rs
+- [[list_stickies()]] - code - api_rust/src/routes/workspace_extras.rs
+- [[list_user_project_invitations()]] - code - api_rust/src/routes/projects.rs
+- [[list_workspace_active_cycles()]] - code - api_rust/src/routes/workspace_extras.rs
+- [[list_workspace_cycles()]] - code - api_rust/src/routes/workspace_extras.rs
+- [[list_workspace_estimates()]] - code - api_rust/src/routes/workspace_extras.rs
+- [[list_workspace_labels()]] - code - api_rust/src/routes/workspace_extras.rs
+- [[list_workspace_modules()]] - code - api_rust/src/routes/workspace_extras.rs
+- [[list_workspace_states()]] - code - api_rust/src/routes/workspace_extras.rs
+- [[pagination.rs]] - code - api_rust/src/utils/pagination.rs
+- [[parse_cursor_or_default()]] - code - api_rust/src/utils/pagination.rs
+- [[parse_standard_cursor()]] - code - api_rust/src/utils/pagination.rs
+- [[parse_with_is_prev()]] - code - api_rust/src/utils/pagination.rs
+- [[project_by_id()]] - code - api_rust/src/routes/projects.rs
+- [[project_member_for_user()]] - code - api_rust/src/routes/helpers.rs
+- [[project_member_for_user()_1]] - code - api_rust/src/routes/projects.rs
+- [[projects.rs_1]] - code - api_rust/src/routes/projects.rs
+- [[reject_malformed_cursor()]] - code - api_rust/src/utils/pagination.rs
+- [[remove_project_member()]] - code - api_rust/src/routes/projects.rs
+- [[require_member_or_admin()]] - code - api_rust/src/routes/workspace_extras.rs
+- [[require_project_admin()]] - code - api_rust/src/routes/projects.rs
+- [[require_workspace_member()_1]] - code - api_rust/src/routes/helpers.rs
+- [[resolve_per_page()]] - code - api_rust/src/utils/pagination.rs
+- [[response_shape()]] - code - api_rust/src/utils/pagination.rs
+- [[response_shape_last_page()]] - code - api_rust/src/utils/pagination.rs
+- [[sync_draft_assignees()]] - code - api_rust/src/routes/workspace_extras.rs
+- [[sync_draft_cycle()]] - code - api_rust/src/routes/workspace_extras.rs
+- [[sync_draft_labels()]] - code - api_rust/src/routes/workspace_extras.rs
+- [[sync_draft_modules()]] - code - api_rust/src/routes/workspace_extras.rs
+- [[unarchive_project()]] - code - api_rust/src/routes/projects.rs
+- [[update_draft_issue()]] - code - api_rust/src/routes/workspace_extras.rs
+- [[update_favorite()]] - code - api_rust/src/routes/workspace_extras.rs
+- [[update_home_preference()]] - code - api_rust/src/routes/workspace_extras.rs
+- [[update_project()]] - code - api_rust/src/routes/projects.rs
+- [[update_project_deploy_board()]] - code - api_rust/src/routes/projects.rs
+- [[update_project_member()]] - code - api_rust/src/routes/projects.rs
+- [[update_project_member_preferences()]] - code - api_rust/src/routes/projects.rs
+- [[update_project_views()]] - code - api_rust/src/routes/projects.rs
+- [[update_quick_link()]] - code - api_rust/src/routes/workspace_extras.rs
+- [[update_sticky()]] - code - api_rust/src/routes/workspace_extras.rs
+- [[update_user_preferences()]] - code - api_rust/src/routes/workspace_extras.rs
+- [[update_workspace_user_properties()]] - code - api_rust/src/routes/workspace_extras.rs
+- [[upsert_project_deploy_board()]] - code - api_rust/src/routes/projects.rs
+- [[validate_role()]] - code - api_rust/src/routes/projects.rs
+- [[workspace_by_slug()]] - code - api_rust/src/routes/helpers.rs
+- [[workspace_extras.rs_1]] - code - api_rust/src/routes/workspace_extras.rs
+
+## Live Query (requires Dataview plugin)
+
+```dataview
+TABLE source_file, type FROM #community/Project_Response
+SORT file.name ASC
+```
+
+## Connections to other communities
+
+- 59 edges to [[_COMMUNITY_User Github]]
+- 42 edges to [[_COMMUNITY_Issue Request]]
+- 40 edges to [[_COMMUNITY_Asset Issue]]
+- 26 edges to [[_COMMUNITY_Workspace User]]
+- 12 edges to [[_COMMUNITY_Password Email]]
+- 7 edges to [[_COMMUNITY_State Project]]
+- 5 edges to [[_COMMUNITY_Workspace Webhook]]
+- 1 edge to [[_COMMUNITY_Issue Issues]]
+- 1 edge to [[_COMMUNITY_Display Defaults]]
+
+## Top bridge nodes
+
+- [[create_project_members()_1]] - degree 11, connects to 5 communities
+- [[create_project()_1]] - degree 8, connects to 5 communities
+- [[workspace_by_slug()]] - degree 104, connects to 4 communities
+- [[update_draft_issue()]] - degree 12, connects to 4 communities
+- [[create_draft_issue()]] - degree 11, connects to 4 communities

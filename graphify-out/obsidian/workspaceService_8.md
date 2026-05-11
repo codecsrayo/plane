@@ -1,18 +1,18 @@
 ---
-source_file: "components/onboarding/create-workspace.tsx"
+source_file: "web/core/components/editor/lite-text/editor.tsx"
 type: "code"
-community: "Wrapper Workspace"
-location: "L34"
+community: "Toolbar Items"
+location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Wrapper_Workspace
+  - community/Toolbar_Items
 ---
 
 # workspaceService
 
 ## Connections
 
-- [[create-workspace.tsx]] - `contains` [EXTRACTED]
+- [[editor.tsx_6]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Wrapper_Workspace
+#graphify/code #graphify/EXTRACTED #community/Toolbar_Items

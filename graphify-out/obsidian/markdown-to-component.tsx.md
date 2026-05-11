@@ -1,12 +1,12 @@
 ---
-source_file: "components/ui/markdown-to-component.tsx"
+source_file: "web/core/components/ui/markdown-to-component.tsx"
 type: "code"
-community: "Markdown Custom"
+community: "Custom Heading"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Markdown_Custom
+  - community/Custom_Heading
 ---
 
 # markdown-to-component.tsx
@@ -21,7 +21,7 @@ tags:
 - [[MarkdownRenderer()]] - `contains` [EXTRACTED]
 - [[OrderedList()]] - `contains` [EXTRACTED]
 - [[Paragraph()]] - `contains` [EXTRACTED]
-- [[Props_5]] - `contains` [EXTRACTED]
+- [[Props_82]] - `contains` [EXTRACTED]
 - [[UnorderedList()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Markdown_Custom
+#graphify/code #graphify/EXTRACTED #community/Custom_Heading

@@ -1,24 +1,24 @@
 ---
-source_file: "components/inbox/inbox-filter/filters/labels.tsx"
+source_file: "web/core/components/inbox/inbox-filter/filters/labels.tsx"
 type: "code"
-community: "Filter Selection UI"
+community: "Priority State"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filter_Selection_UI
+  - community/Priority_State
 ---
 
 # labels.tsx
 
 ## Connections
 
-- [[FilterLabels]] - `contains` [EXTRACTED]
+- [[FilterLabels()]] - `contains` [EXTRACTED]
 - [[LabelIcons()]] - `contains` [EXTRACTED]
-- [[Props_242]] - `contains` [EXTRACTED]
+- [[Props_317]] - `contains` [EXTRACTED]
 - [[filter-selection.tsx_1]] - `imports_from` [EXTRACTED]
-- [[index.ts_90]] - `imports_from` [EXTRACTED]
+- [[index.ts_355]] - `imports_from` [EXTRACTED]
 - [[use-project-inbox.ts]] - `imports_from` [EXTRACTED]
 - [[useProjectInbox()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filter_Selection_UI
+#graphify/code #graphify/EXTRACTED #community/Priority_State

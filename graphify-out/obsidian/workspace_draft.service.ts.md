@@ -1,12 +1,12 @@
 ---
-source_file: "services/issue/workspace_draft.service.ts"
+source_file: "web/core/services/issue/workspace_draft.service.ts"
 type: "code"
-community: "Issue Draft"
+community: "Draft Issue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Draft
+  - community/Draft_Issue
 ---
 
 # workspace_draft.service.ts
@@ -15,7 +15,7 @@ tags:
 
 - [[ApiError]] - `imports` [EXTRACTED]
 - [[WorkspaceDraftService]] - `contains` [EXTRACTED]
-- [[api.service.ts]] - `imports_from` [EXTRACTED]
-- [[issue.store.ts_5]] - `imports_from` [EXTRACTED]
+- [[api.service.ts_1]] - `imports_from` [EXTRACTED]
+- [[issue.store.ts_10]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Draft
+#graphify/code #graphify/EXTRACTED #community/Draft_Issue

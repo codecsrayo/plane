@@ -1,18 +1,18 @@
 ---
-source_file: "components/onboarding/steps/workspace/create.tsx"
+source_file: "web/core/components/onboarding/create-workspace.tsx"
 type: "code"
-community: "Chat Support"
-location: "L35"
+community: "Workspace Issue"
+location: "L34"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Chat_Support
+  - community/Workspace_Issue
 ---
 
 # workspaceService
 
 ## Connections
 
-- [[create.tsx_1]] - `contains` [EXTRACTED]
+- [[create-workspace.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Chat_Support
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

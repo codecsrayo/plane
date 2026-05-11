@@ -1,5 +1,5 @@
 ---
-source_file: "components/project-states/options/mark-as-default.tsx"
+source_file: "web/core/components/project-states/options/mark-as-default.tsx"
 type: "code"
 community: "State Marks"
 location: "L1"

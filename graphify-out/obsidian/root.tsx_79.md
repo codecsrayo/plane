@@ -1,25 +1,25 @@
 ---
-source_file: "components/pages/list/applied-filters/root.tsx"
+source_file: "web/core/components/issues/issue-detail-widgets/attachments/root.tsx"
 type: "code"
-community: "Applied Filters"
+community: "Attachment Issue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Applied_Filters
+  - community/Attachment_Issue
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[AppliedDateFilters]] - `imports` [EXTRACTED]
-- [[AppliedMembersFilters]] - `imports` [EXTRACTED]
-- [[DATE_FILTERS]] - `contains` [EXTRACTED]
-- [[MEMBERS_FILTERS]] - `contains` [EXTRACTED]
-- [[PageAppliedFiltersList()]] - `contains` [EXTRACTED]
-- [[Props_22]] - `contains` [EXTRACTED]
-- [[date.tsx_5]] - `imports_from` [EXTRACTED]
-- [[members.tsx_6]] - `imports_from` [EXTRACTED]
+- [[AttachmentsCollapsible]] - `contains` [EXTRACTED]
+- [[IssueAttachmentsCollapsibleContent]] - `imports` [EXTRACTED]
+- [[IssueAttachmentsCollapsibleTitle]] - `imports` [EXTRACTED]
+- [[Props_345]] - `contains` [EXTRACTED]
+- [[content.tsx]] - `imports_from` [EXTRACTED]
+- [[title.tsx]] - `imports_from` [EXTRACTED]
+- [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
+- [[useIssueDetail()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Applied_Filters
+#graphify/code #graphify/EXTRACTED #community/Attachment_Issue

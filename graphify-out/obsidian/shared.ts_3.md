@@ -1,12 +1,12 @@
 ---
 source_file: "utils/src/rich-filters/operators/shared.ts"
 type: "code"
-community: "Operator Work"
+community: "Expression Work"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Operator_Work
+  - community/Expression_Work
 ---
 
 # shared.ts
@@ -16,4 +16,4 @@ tags:
 - [[TOperatorForPayload]] - `contains` [EXTRACTED]
 - [[getOperatorForPayload()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Operator_Work
+#graphify/code #graphify/EXTRACTED #community/Expression_Work

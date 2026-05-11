@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/quote.ts"
 type: "code"
-community: "Editor Commands"
+community: "Document Custom"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Editor_Commands
+  - community/Document_Custom
 ---
 
 # quote.ts
@@ -18,4 +18,4 @@ tags:
 - [[core-without-props.ts]] - `imports_from` [EXTRACTED]
 - [[extension.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Editor_Commands
+#graphify/code #graphify/EXTRACTED #community/Document_Custom

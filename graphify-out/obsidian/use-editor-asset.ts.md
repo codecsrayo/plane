@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/store/use-editor-asset.ts"
+source_file: "web/core/hooks/store/use-editor-asset.ts"
 type: "code"
-community: "Editor Asset"
+community: "Workspace Issue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Editor_Asset
+  - community/Workspace_Issue
 ---
 
 # use-editor-asset.ts
@@ -17,11 +17,12 @@ tags:
 - [[StoreContext]] - `imports` [EXTRACTED]
 - [[asset.store.ts]] - `imports_from` [EXTRACTED]
 - [[description-editor.tsx]] - `imports_from` [EXTRACTED]
-- [[helper.tsx_4]] - `imports_from` [EXTRACTED]
+- [[helper.tsx_26]] - `imports_from` [EXTRACTED]
 - [[issue-description.tsx]] - `imports_from` [EXTRACTED]
-- [[root.tsx_10]] - `imports_from` [EXTRACTED]
+- [[page.tsx_27]] - `imports_from` [EXTRACTED]
+- [[root.tsx_51]] - `imports_from` [EXTRACTED]
 - [[store-context.tsx]] - `imports_from` [EXTRACTED]
 - [[use-editor-config.ts]] - `imports_from` [EXTRACTED]
 - [[useEditorAsset()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Editor_Asset
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

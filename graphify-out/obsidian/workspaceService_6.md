@@ -1,18 +1,18 @@
 ---
-source_file: "components/power-k/ui/pages/work-item-selection-page.tsx"
+source_file: "web/core/components/workspace/create-workspace-form.tsx"
 type: "code"
-community: "Workspace Workspaceservice"
-location: "L23"
+community: "Workspace Issue"
+location: "L40"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Workspaceservice
+  - community/Workspace_Issue
 ---
 
 # workspaceService
 
 ## Connections
 
-- [[work-item-selection-page.tsx]] - `contains` [EXTRACTED]
+- [[create-workspace-form.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Workspaceservice
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

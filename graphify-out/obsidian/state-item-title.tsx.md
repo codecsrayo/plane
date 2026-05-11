@@ -1,12 +1,12 @@
 ---
-source_file: "components/project-states/state-item-title.tsx"
+source_file: "web/core/components/project-states/state-item-title.tsx"
 type: "code"
-community: "Calendar Blocks"
+community: "State Title"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Blocks
+  - community/State_Title
 ---
 
 # state-item-title.tsx
@@ -18,8 +18,8 @@ tags:
 - [[TDisabledStateItemTitleProps]] - `contains` [EXTRACTED]
 - [[TEnabledStateItemTitleProps]] - `contains` [EXTRACTED]
 - [[TStateItemTitleProps]] - `contains` [EXTRACTED]
-- [[index.ts_48]] - `imports_from` [EXTRACTED]
+- [[index.ts_313]] - `imports_from` [EXTRACTED]
 - [[use-project-state.ts]] - `imports_from` [EXTRACTED]
 - [[useProjectState()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Blocks
+#graphify/code #graphify/EXTRACTED #community/State_Title

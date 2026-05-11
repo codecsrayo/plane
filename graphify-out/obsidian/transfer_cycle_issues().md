@@ -1,21 +1,19 @@
 ---
-source_file: "api_rust/src/routes/cycles.rs"
+source_file: "api/plane/utils/cycle_transfer_issues.py"
 type: "code"
-community: "Cycles Rust API"
-location: "L2231"
+community: "Cycle Transfer"
+location: "L35"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycles_Rust_API
+  - community/Cycle_Transfer
 ---
 
 # transfer_cycle_issues()
 
 ## Connections
 
-- [[compute_issue_counts()]] - `calls` [EXTRACTED]
-- [[cycles.rs]] - `contains` [EXTRACTED]
-- [[ensure_cycle_belongs_to_project()]] - `calls` [EXTRACTED]
-- [[require_role()]] - `calls` [INFERRED]
+- [[Transfer incomplete issues from one cycle to another and create progress snapsho]] - `rationale_for` [EXTRACTED]
+- [[cycle_transfer_issues.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycles_Rust_API
+#graphify/code #graphify/EXTRACTED #community/Cycle_Transfer

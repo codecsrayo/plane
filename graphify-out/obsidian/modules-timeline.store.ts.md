@@ -1,12 +1,12 @@
 ---
-source_file: "store/timeline/modules-timeline.store.ts"
+source_file: "web/core/store/timeline/modules-timeline.store.ts"
 type: "code"
-community: "Modules Time"
+community: "Time Month"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Modules_Time
+  - community/Time_Month
 ---
 
 # modules-timeline.store.ts
@@ -15,5 +15,6 @@ tags:
 
 - [[IModulesTimeLineStore]] - `contains` [EXTRACTED]
 - [[ModulesTimeLineStore]] - `contains` [EXTRACTED]
+- [[index.ts_209]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Modules_Time
+#graphify/code #graphify/EXTRACTED #community/Time_Month

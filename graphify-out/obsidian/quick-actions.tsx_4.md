@@ -1,12 +1,12 @@
 ---
-source_file: "components/comments/quick-actions.tsx"
+source_file: "web/core/components/comments/quick-actions.tsx"
 type: "code"
-community: "Comment Card"
+community: "Activity Issue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Comment_Card
+  - community/Activity_Issue
 ---
 
 # quick-actions.tsx
@@ -15,7 +15,7 @@ tags:
 
 - [[CommentQuickActions]] - `contains` [EXTRACTED]
 - [[TCommentCard]] - `contains` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
-- [[root.tsx_87]] - `imports_from` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
+- [[root.tsx_128]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Comment_Card
+#graphify/code #graphify/EXTRACTED #community/Activity_Issue

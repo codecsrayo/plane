@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/code/utils/replace-code-block-with-text.ts"
 type: "code"
-community: "Code Replace"
+community: "Toggle Menu"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Code_Replace
+  - community/Toggle_Menu
 ---
 
 # replace-code-block-with-text.ts
@@ -19,4 +19,4 @@ tags:
 - [[replaceCodeWithText()]] - `contains` [EXTRACTED]
 - [[transformCodeBlockToParagraphs()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Code_Replace
+#graphify/code #graphify/EXTRACTED #community/Toggle_Menu

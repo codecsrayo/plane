@@ -1,12 +1,12 @@
 ---
-source_file: "components/power-k/ui/pages/context-based/cycle/commands.ts"
+source_file: "web/core/components/power-k/ui/pages/context-based/cycle/commands.ts"
 type: "code"
-community: "Cycle Transfers"
+community: "Power Chat"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Transfers
+  - community/Power_Chat
 ---
 
 # usePowerKCycleContextBasedActions()
@@ -14,9 +14,7 @@ tags:
 ## Connections
 
 - [[commands.ts_2]] - `contains` [EXTRACTED]
-- [[root.tsx_58]] - `imports` [EXTRACTED]
-- [[useCycle()]] - `calls` [EXTRACTED]
+- [[root.tsx_99]] - `imports` [EXTRACTED]
 - [[usePowerKContextBasedActions()]] - `calls` [EXTRACTED]
-- [[useUser()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Transfers
+#graphify/code #graphify/EXTRACTED #community/Power_Chat

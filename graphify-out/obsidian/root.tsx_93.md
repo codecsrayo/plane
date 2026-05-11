@@ -1,24 +1,27 @@
 ---
-source_file: "components/core/description-versions/root.tsx"
+source_file: "web/core/components/cycles/archived-cycles/root.tsx"
 type: "code"
-community: "Description Dropdown"
+community: "Cycles Archived"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Description_Dropdown
+  - community/Cycles_Archived
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[DescriptionVersionsDropdown]] - `imports` [EXTRACTED]
-- [[DescriptionVersionsModal]] - `imports` [EXTRACTED]
-- [[DescriptionVersionsRoot]] - `contains` [EXTRACTED]
-- [[Props_446]] - `contains` [EXTRACTED]
-- [[TDescriptionVersionEntityInformation]] - `contains` [EXTRACTED]
-- [[dropdown.tsx_8]] - `imports_from` [EXTRACTED]
-- [[modal.tsx_14]] - `imports_from` [EXTRACTED]
+- [[ArchivedCycleLayoutRoot]] - `contains` [EXTRACTED]
+- [[ArchivedCyclesView]] - `imports` [EXTRACTED]
+- [[CycleModuleListLayoutLoader()]] - `imports` [EXTRACTED]
+- [[cycle-module-list-loader.tsx]] - `imports_from` [EXTRACTED]
+- [[index.ts_397]] - `imports_from` [EXTRACTED]
+- [[use-cycle-filter.ts]] - `imports_from` [EXTRACTED]
+- [[use-cycle.ts]] - `imports_from` [EXTRACTED]
+- [[useCycle()]] - `imports` [EXTRACTED]
+- [[useCycleFilter()]] - `imports` [EXTRACTED]
+- [[view.tsx_3]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Description_Dropdown
+#graphify/code #graphify/EXTRACTED #community/Cycles_Archived

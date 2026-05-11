@@ -1,19 +1,21 @@
 ---
 source_file: "api_rust/src/auth/email_auth.rs"
 type: "code"
-community: "Community 50"
+community: "Magic Sign"
 location: "L418"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Community_50
+  - graphify/INFERRED
+  - community/Magic_Sign
 ---
 
 # update_login_metadata()
 
 ## Connections
 
+- [[.set()]] - `calls` [INFERRED]
 - [[authenticate_existing_user()]] - `calls` [EXTRACTED]
 - [[email_auth.rs]] - `contains` [EXTRACTED]
+- [[now]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_50
+#graphify/code #graphify/INFERRED #community/Magic_Sign

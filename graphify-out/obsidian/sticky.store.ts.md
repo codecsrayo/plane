@@ -1,5 +1,5 @@
 ---
-source_file: "store/sticky/sticky.store.ts"
+source_file: "web/core/store/sticky/sticky.store.ts"
 type: "code"
 community: "Sticky Stickies"
 location: "L1"
@@ -16,10 +16,10 @@ tags:
 - [[IStickyStore]] - `contains` [EXTRACTED]
 - [[StickyService]] - `imports` [EXTRACTED]
 - [[StickyStore]] - `contains` [EXTRACTED]
-- [[api.service.ts]] - `imports_from` [EXTRACTED]
+- [[api.service.ts_1]] - `imports_from` [EXTRACTED]
 - [[currentStickyKey]] - `contains` [EXTRACTED]
 - [[destinationIndex_2]] - `contains` [EXTRACTED]
-- [[root.store.ts]] - `imports_from` [EXTRACTED]
+- [[root.store.ts_2]] - `imports_from` [EXTRACTED]
 - [[sortedStickies]] - `contains` [EXTRACTED]
 - [[stickies]] - `contains` [EXTRACTED]
 - [[sticky.service.ts]] - `imports_from` [EXTRACTED]

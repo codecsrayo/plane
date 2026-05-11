@@ -1,12 +1,12 @@
 ---
-source_file: "components/power-k/menus/labels.tsx"
+source_file: "web/core/components/power-k/menus/labels.tsx"
 type: "code"
-community: "File Icons Nav"
+community: "Menu Power"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/File_Icons_Nav
+  - community/Menu_Power
 ---
 
 # labels.tsx
@@ -15,8 +15,8 @@ tags:
 
 - [[PowerKLabelsMenu]] - `contains` [EXTRACTED]
 - [[PowerKMenuBuilder()]] - `imports` [EXTRACTED]
-- [[Props_353]] - `contains` [EXTRACTED]
+- [[Props_428]] - `contains` [EXTRACTED]
 - [[builder.tsx]] - `imports_from` [EXTRACTED]
 - [[labels-menu.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/File_Icons_Nav
+#graphify/code #graphify/EXTRACTED #community/Menu_Power

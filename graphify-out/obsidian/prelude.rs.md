@@ -1,14 +1,14 @@
 ---
 source_file: "api_rust/src/entities/prelude.rs"
 type: "code"
-community: "Community 759"
+community: "Prelude"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_759
+  - community/Prelude
 ---
 
 # prelude.rs
 
-#graphify/code #graphify/EXTRACTED #community/Community_759
+#graphify/code #graphify/EXTRACTED #community/Prelude

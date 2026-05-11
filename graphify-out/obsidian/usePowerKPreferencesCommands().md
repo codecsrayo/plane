@@ -1,12 +1,12 @@
 ---
-source_file: "components/power-k/config/preferences-commands.ts"
+source_file: "web/core/components/power-k/config/preferences-commands.ts"
 type: "code"
-community: "Command Palette"
+community: "Power Chat"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Command_Palette
+  - community/Power_Chat
 ---
 
 # usePowerKPreferencesCommands()
@@ -16,7 +16,6 @@ tags:
 - [[commands.ts_3]] - `imports` [EXTRACTED]
 - [[preferences-commands.ts]] - `contains` [EXTRACTED]
 - [[useProjectsAppPowerKCommands()]] - `calls` [EXTRACTED]
-- [[useUser()]] - `calls` [INFERRED]
-- [[useUserProfile()]] - `calls` [INFERRED]
+- [[useTheme()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Command_Palette
+#graphify/code #graphify/EXTRACTED #community/Power_Chat

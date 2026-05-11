@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/utils/csv_sanitize.rs"
 type: "code"
-community: "Community 263"
+community: "Encode Sanitize"
 location: "L85"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_263
+  - community/Encode_Sanitize
 ---
 
 # unicode_first_char_is_safe()
@@ -15,4 +15,4 @@ tags:
 
 - [[csv_sanitize.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_263
+#graphify/code #graphify/EXTRACTED #community/Encode_Sanitize

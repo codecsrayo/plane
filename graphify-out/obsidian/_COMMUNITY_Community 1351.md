@@ -1,0 +1,21 @@
+---
+type: community
+cohesion: 1.00
+members: 1
+---
+
+# Community 1351
+
+**Cohesion:** 1.00 - tightly connected
+**Members:** 1 nodes
+
+## Members
+
+- [[index.ts_40]] - code - editor/src/core/components/menus/bubble-menu/index.ts
+
+## Live Query (requires Dataview plugin)
+
+```dataview
+TABLE source_file, type FROM #community/Community_1351
+SORT file.name ASC
+```

@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/use-navigation-preferences.ts"
+source_file: "web/core/hooks/use-navigation-preferences.ts"
 type: "code"
-community: "Navigation Preferences"
+community: "Sidebar Navigation"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Navigation_Preferences
+  - community/Sidebar_Navigation
 ---
 
 # use-navigation-preferences.ts
@@ -26,13 +26,20 @@ tags:
 - [[TWorkspaceNavigationItemState]] - `imports` [EXTRACTED]
 - [[TWorkspaceNavigationPreferences]] - `imports` [EXTRACTED]
 - [[app-rail-root.tsx]] - `imports_from` [EXTRACTED]
+- [[common.tsx]] - `imports_from` [EXTRACTED]
 - [[customize-navigation-dialog.tsx]] - `imports_from` [EXTRACTED]
+- [[extended-app-header.tsx]] - `imports_from` [EXTRACTED]
+- [[extended-sidebar-item.tsx]] - `imports_from` [EXTRACTED]
+- [[extended-sidebar.tsx]] - `imports_from` [EXTRACTED]
+- [[header.tsx_3]] - `imports_from` [EXTRACTED]
+- [[layout.tsx_10]] - `imports_from` [EXTRACTED]
 - [[navigation-preferences.ts]] - `imports_from` [EXTRACTED]
 - [[projects-list-item.tsx]] - `imports_from` [EXTRACTED]
 - [[projects-list.tsx]] - `imports_from` [EXTRACTED]
-- [[sidebar-item.tsx_1]] - `imports_from` [EXTRACTED]
+- [[sidebar-item.tsx_2]] - `imports_from` [EXTRACTED]
 - [[sidebar-menu-items.tsx]] - `imports_from` [EXTRACTED]
-- [[use-local-storage.tsx]] - `imports_from` [EXTRACTED]
+- [[top-navigation-root.tsx]] - `imports_from` [EXTRACTED]
+- [[use-local-storage.tsx_1]] - `imports_from` [EXTRACTED]
 - [[use-workspace.ts]] - `imports_from` [EXTRACTED]
 - [[useAppRailPreferences()]] - `contains` [EXTRACTED]
 - [[usePersonalNavigationPreferences()]] - `contains` [EXTRACTED]
@@ -40,4 +47,4 @@ tags:
 - [[useWorkspace()]] - `imports` [EXTRACTED]
 - [[useWorkspaceNavigationPreferences()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Navigation_Preferences
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Navigation

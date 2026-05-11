@@ -1,0 +1,37 @@
+---
+source_file: "web/core/store/issue/cycle/issue.store.ts"
+type: "code"
+community: "Filters Issue"
+location: "L1"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Filters_Issue
+---
+
+# issue.store.ts
+
+## Connections
+
+- [[ActiveCycleIssueDetails]] - `contains` [EXTRACTED]
+- [[CycleIssues]] - `contains` [EXTRACTED]
+- [[IBaseIssuesStore]] - `imports` [EXTRACTED]
+- [[ICycleIssues]] - `contains` [EXTRACTED]
+- [[ICycleIssuesFilter]] - `imports` [EXTRACTED]
+- [[IIssueRootStore]] - `imports` [EXTRACTED]
+- [[activeCycle]] - `contains` [EXTRACTED]
+- [[activeIssueIds]] - `contains` [EXTRACTED]
+- [[api.service.ts_1]] - `imports_from` [EXTRACTED]
+- [[base-issues.store.ts]] - `imports_from` [EXTRACTED]
+- [[cursorObject_6]] - `contains` [EXTRACTED]
+- [[distributionUpdates_1]] - `contains` [EXTRACTED]
+- [[filter.store.ts_12]] - `imports_from` [EXTRACTED]
+- [[isSidebarCollapsed]] - `contains` [EXTRACTED]
+- [[local-storage.ts]] - `imports_from` [EXTRACTED]
+- [[params_7]] - `contains` [EXTRACTED]
+- [[root.store.ts_3]] - `imports_from` [EXTRACTED]
+- [[storage]] - `imports` [EXTRACTED]
+- [[toApiError()]] - `imports` [EXTRACTED]
+- [[{ issueList, groupedIssues }]] - `contains` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Filters_Issue

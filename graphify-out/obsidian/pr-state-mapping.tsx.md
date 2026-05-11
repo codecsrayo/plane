@@ -1,12 +1,12 @@
 ---
-source_file: "components/integration/github/pr-state-mapping.tsx"
+source_file: "web/core/components/integration/github/pr-state-mapping.tsx"
 type: "code"
-community: "Calendar Blocks"
+community: "Project Workspace"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Blocks
+  - community/Project_Workspace
 ---
 
 # pr-state-mapping.tsx
@@ -15,13 +15,14 @@ tags:
 
 - [[GithubPRStateMapping]] - `contains` [EXTRACTED]
 - [[IntegrationConfirmActionModal()]] - `imports` [EXTRACTED]
-- [[Props_159]] - `contains` [EXTRACTED]
+- [[Props_234]] - `contains` [EXTRACTED]
 - [[confirm-action-modal.tsx]] - `imports_from` [EXTRACTED]
 - [[getPRStateMappingSwrKey()]] - `contains` [EXTRACTED]
-- [[index.ts_21]] - `imports_from` [EXTRACTED]
+- [[index.ts_286]] - `imports_from` [EXTRACTED]
+- [[page.tsx_53]] - `imports_from` [EXTRACTED]
 - [[use-project-state.ts]] - `imports_from` [EXTRACTED]
 - [[use-project.ts]] - `imports_from` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 - [[useProjectState()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Blocks
+#graphify/code #graphify/EXTRACTED #community/Project_Workspace

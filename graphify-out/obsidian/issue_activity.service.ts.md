@@ -1,12 +1,12 @@
 ---
-source_file: "services/issue/issue_activity.service.ts"
+source_file: "web/core/services/issue/issue_activity.service.ts"
 type: "code"
-community: "API Services"
+community: "Issue Project"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/API_Services
+  - community/Issue_Project
 ---
 
 # issue_activity.service.ts
@@ -15,6 +15,6 @@ tags:
 
 - [[ApiError]] - `imports` [EXTRACTED]
 - [[IssueActivityService]] - `contains` [EXTRACTED]
-- [[api.service.ts]] - `imports_from` [EXTRACTED]
+- [[api.service.ts_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/API_Services
+#graphify/code #graphify/EXTRACTED #community/Issue_Project

@@ -1,18 +1,14 @@
 ---
-source_file: "components/common/quick-actions-factory.tsx"
+source_file: "web/ce/components/common/quick-actions-factory.tsx"
 type: "code"
-community: "Menu Quick"
+community: "Quick Factory"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Menu_Quick
+  - community/Quick_Factory
 ---
 
 # quick-actions-factory.tsx
 
-## Connections
-
-- [[useQuickActionsFactory()]] - `contains` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Menu_Quick
+#graphify/code #graphify/EXTRACTED #community/Quick_Factory

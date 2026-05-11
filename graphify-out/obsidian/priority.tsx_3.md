@@ -1,22 +1,19 @@
 ---
-source_file: "components/issues/issue-detail/issue-activity/activity/actions/priority.tsx"
+source_file: "web/core/components/issues/issue-layouts/filters/applied-filters/priority.tsx"
 type: "code"
-community: "Issue Activity"
+community: "Issue Applied"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Issue_Applied
 ---
 
 # priority.tsx
 
 ## Connections
 
-- [[IssuePriorityActivity]] - `contains` [EXTRACTED]
-- [[TIssuePriorityActivity]] - `contains` [EXTRACTED]
-- [[index.ts_104]] - `imports_from` [EXTRACTED]
-- [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
-- [[useIssueDetail()]] - `imports` [EXTRACTED]
+- [[AppliedPriorityFilters()]] - `contains` [EXTRACTED]
+- [[Props_321]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Issue_Applied

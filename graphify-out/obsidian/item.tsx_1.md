@@ -1,29 +1,23 @@
 ---
-source_file: "components/workspace-notifications/sidebar/notification-card/item.tsx"
+source_file: "web/core/components/settings/sidebar/item.tsx"
 type: "code"
-community: "Notification Option"
+community: "Sidebar Settings"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Notification_Option
+  - community/Sidebar_Settings
 ---
 
 # item.tsx
 
 ## Connections
 
-- [[NotificationContent()]] - `imports` [EXTRACTED]
-- [[NotificationItem]] - `contains` [EXTRACTED]
-- [[TNotificationItem]] - `contains` [EXTRACTED]
-- [[content.tsx_4]] - `imports_from` [EXTRACTED]
-- [[index.ts_2]] - `imports_from` [EXTRACTED]
-- [[index.ts_121]] - `imports_from` [EXTRACTED]
-- [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
-- [[use-notification.ts]] - `imports_from` [EXTRACTED]
-- [[use-workspace.ts]] - `imports_from` [EXTRACTED]
-- [[useIssueDetail()]] - `imports` [EXTRACTED]
-- [[useNotification()]] - `imports` [EXTRACTED]
-- [[useWorkspace()]] - `imports` [EXTRACTED]
+- [[Props_183]] - `contains` [EXTRACTED]
+- [[SettingsSidebarItem()]] - `contains` [EXTRACTED]
+- [[item-categories.tsx]] - `imports_from` [EXTRACTED]
+- [[item-categories.tsx_1]] - `imports_from` [EXTRACTED]
+- [[item-categories.tsx_2]] - `imports_from` [EXTRACTED]
+- [[workspace-options.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Notification_Option
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Settings

@@ -1,19 +1,21 @@
 ---
-source_file: "components/core/list/list-root.tsx"
+source_file: "web/ce/components/workspace-notifications/list-root.tsx"
 type: "code"
-community: "Container Ilistcontainer"
+community: "Notification Content"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Container_Ilistcontainer
+  - community/Notification_Content
 ---
 
 # list-root.tsx
 
 ## Connections
 
-- [[IListContainer]] - `contains` [EXTRACTED]
-- [[ListLayout()]] - `contains` [EXTRACTED]
+- [[NotificationCardListRoot]] - `imports` [EXTRACTED]
+- [[NotificationListRoot()]] - `contains` [EXTRACTED]
+- [[TNotificationListRoot]] - `contains` [EXTRACTED]
+- [[root.tsx_32]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Container_Ilistcontainer
+#graphify/code #graphify/EXTRACTED #community/Notification_Content

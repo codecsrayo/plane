@@ -1,36 +1,29 @@
 ---
-source_file: "components/estimates/root.tsx"
+source_file: "web/core/components/workspace-notifications/root.tsx"
 type: "code"
-community: "Estimate Disable"
+community: "Workspace Issue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Estimate_Disable
+  - community/Workspace_Issue
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[CreateEstimateModal]] - `imports` [EXTRACTED]
-- [[DeleteEstimateModal]] - `imports` [EXTRACTED]
-- [[EstimateDisableSwitch]] - `imports` [EXTRACTED]
-- [[EstimateList]] - `imports` [EXTRACTED]
-- [[EstimateLoaderScreen()]] - `imports` [EXTRACTED]
-- [[EstimateRoot]] - `contains` [EXTRACTED]
-- [[SettingsBoxedControlItem()]] - `imports` [EXTRACTED]
-- [[SettingsHeading()]] - `imports` [EXTRACTED]
-- [[TEstimateRoot]] - `contains` [EXTRACTED]
-- [[boxed-control-item.tsx]] - `imports_from` [EXTRACTED]
-- [[estimate-disable-switch.tsx]] - `imports_from` [EXTRACTED]
-- [[estimate-list.tsx]] - `imports_from` [EXTRACTED]
-- [[heading.tsx]] - `imports_from` [EXTRACTED]
-- [[index.ts_3]] - `imports_from` [EXTRACTED]
-- [[loader-screen.tsx]] - `imports_from` [EXTRACTED]
-- [[modal.tsx_12]] - `imports_from` [EXTRACTED]
-- [[modal.tsx_13]] - `imports_from` [EXTRACTED]
-- [[use-project.ts]] - `imports_from` [EXTRACTED]
-- [[useProject()]] - `imports` [EXTRACTED]
+- [[LogoSpinner()]] - `imports` [EXTRACTED]
+- [[NotificationsRoot]] - `contains` [EXTRACTED]
+- [[NotificationsRootProps]] - `contains` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
+- [[index.ts_267]] - `imports_from` [EXTRACTED]
+- [[index.ts_414]] - `imports_from` [EXTRACTED]
+- [[logo-spinner.tsx]] - `imports_from` [EXTRACTED]
+- [[use-workspace-issue-properties.ts]] - `imports_from` [EXTRACTED]
+- [[use-workspace.ts]] - `imports_from` [EXTRACTED]
+- [[useNotificationPreview()]] - `imports` [EXTRACTED]
+- [[useWorkspace()]] - `imports` [EXTRACTED]
+- [[useWorkspaceIssueProperties()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Estimate_Disable
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

@@ -1,5 +1,5 @@
 ---
-source_file: "components/estimates/points/preview.tsx"
+source_file: "web/core/components/estimates/points/preview.tsx"
 type: "code"
 community: "Estimate Point"
 location: "L1"
@@ -17,6 +17,6 @@ tags:
 - [[EstimatePointUpdate]] - `imports` [EXTRACTED]
 - [[TEstimatePointItemPreview]] - `contains` [EXTRACTED]
 - [[create-root.tsx_1]] - `imports_from` [EXTRACTED]
-- [[update.tsx_1]] - `imports_from` [EXTRACTED]
+- [[update.tsx_2]] - `imports_from` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Estimate_Point

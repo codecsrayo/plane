@@ -1,18 +1,18 @@
 ---
-source_file: "components/inbox/modals/create-modal/issue-description.tsx"
+source_file: "web/core/components/onboarding/invite-members.tsx"
 type: "code"
-community: "Inbox Filters"
-location: "L26"
+community: "Invite Member"
+location: "L71"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Inbox_Filters
+  - community/Invite_Member
 ---
 
 # workspaceService
 
 ## Connections
 
-- [[issue-description.tsx]] - `contains` [EXTRACTED]
+- [[invite-members.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Inbox_Filters
+#graphify/code #graphify/EXTRACTED #community/Invite_Member

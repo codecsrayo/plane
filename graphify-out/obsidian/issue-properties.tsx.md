@@ -1,12 +1,12 @@
 ---
-source_file: "components/inbox/content/issue-properties.tsx"
+source_file: "web/core/components/inbox/content/issue-properties.tsx"
 type: "code"
-community: "Issue Properties"
+community: "Label Dropdown"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Properties
+  - community/Label_Dropdown
 ---
 
 # issue-properties.tsx
@@ -18,19 +18,19 @@ tags:
 - [[IntakeStateDropdown]] - `imports` [EXTRACTED]
 - [[MemberDropdown]] - `imports` [EXTRACTED]
 - [[PriorityDropdown()]] - `imports` [EXTRACTED]
-- [[Props_375]] - `contains` [EXTRACTED]
+- [[Props_450]] - `contains` [EXTRACTED]
 - [[StateDropdown]] - `imports` [EXTRACTED]
 - [[date.tsx_1]] - `imports_from` [EXTRACTED]
-- [[dropdown.tsx_1]] - `imports_from` [EXTRACTED]
-- [[dropdown.tsx_4]] - `imports_from` [EXTRACTED]
 - [[dropdown.tsx_3]] - `imports_from` [EXTRACTED]
-- [[index.ts_102]] - `imports_from` [EXTRACTED]
-- [[index.ts_106]] - `imports_from` [EXTRACTED]
+- [[dropdown.tsx_5]] - `imports_from` [EXTRACTED]
+- [[dropdown.tsx_6]] - `imports_from` [EXTRACTED]
+- [[index.ts_367]] - `imports_from` [EXTRACTED]
+- [[index.ts_371]] - `imports_from` [EXTRACTED]
 - [[issue-root.tsx]] - `imports_from` [EXTRACTED]
-- [[priority.tsx]] - `imports_from` [EXTRACTED]
+- [[priority.tsx_1]] - `imports_from` [EXTRACTED]
 - [[use-app-router.tsx]] - `imports_from` [EXTRACTED]
 - [[use-project.ts]] - `imports_from` [EXTRACTED]
 - [[useAppRouter()]] - `imports` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Properties
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

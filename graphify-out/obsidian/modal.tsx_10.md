@@ -1,24 +1,22 @@
 ---
-source_file: "components/cycles/archived-cycles/modal.tsx"
+source_file: "web/core/components/settings/profile/modal.tsx"
 type: "code"
-community: "Cycle Cycles"
+community: "Workspace Issue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Cycles
+  - community/Workspace_Issue
 ---
 
 # modal.tsx
 
 ## Connections
 
-- [[ArchiveCycleModal()]] - `contains` [EXTRACTED]
-- [[Props_303]] - `contains` [EXTRACTED]
-- [[quick-actions.tsx_3]] - `imports_from` [EXTRACTED]
-- [[use-app-router.tsx]] - `imports_from` [EXTRACTED]
-- [[use-cycle.ts]] - `imports_from` [EXTRACTED]
-- [[useAppRouter()]] - `imports` [EXTRACTED]
-- [[useCycle()]] - `imports` [EXTRACTED]
+- [[ProfileSettingsModal_1]] - `contains` [EXTRACTED]
+- [[index.ts_338]] - `imports_from` [EXTRACTED]
+- [[index.ts_337]] - `imports_from` [EXTRACTED]
+- [[use-command-palette.ts]] - `imports_from` [EXTRACTED]
+- [[useCommandPalette()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Cycles
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

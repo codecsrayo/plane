@@ -1,20 +1,20 @@
 ---
-source_file: "components/empty-state/section-empty-state-root.tsx"
+source_file: "web/core/components/empty-state/section-empty-state-root.tsx"
 type: "code"
-community: "List Group Layout"
+community: "Issue Activity"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/List_Group_Layout
+  - community/Issue_Activity
 ---
 
 # section-empty-state-root.tsx
 
 ## Connections
 
-- [[Props_380]] - `contains` [EXTRACTED]
+- [[Props_455]] - `contains` [EXTRACTED]
 - [[SectionEmptyState()]] - `contains` [EXTRACTED]
-- [[root.tsx_41]] - `imports_from` [EXTRACTED]
+- [[root.tsx_82]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/List_Group_Layout
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

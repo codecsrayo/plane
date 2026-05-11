@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/routes/users.rs"
 type: "code"
-community: "Community 34"
+community: "User Github"
 location: "L258"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_34
+  - community/User_Github
 ---
 
 # profile_to_response()
@@ -17,4 +17,4 @@ tags:
 - [[update_profile()]] - `calls` [EXTRACTED]
 - [[users.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_34
+#graphify/code #graphify/EXTRACTED #community/User_Github

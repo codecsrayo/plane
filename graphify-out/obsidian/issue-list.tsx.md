@@ -1,5 +1,5 @@
 ---
-source_file: "components/issues/relations/issue-list.tsx"
+source_file: "web/core/components/issues/relations/issue-list.tsx"
 type: "code"
 community: "Issue Activity"
 location: "L1"
@@ -13,7 +13,7 @@ tags:
 
 ## Connections
 
-- [[Props_288]] - `contains` [EXTRACTED]
+- [[Props_363]] - `contains` [EXTRACTED]
 - [[RelationIssueList]] - `contains` [EXTRACTED]
 - [[RelationIssueListItem]] - `imports` [EXTRACTED]
 - [[content.tsx_1]] - `imports_from` [EXTRACTED]

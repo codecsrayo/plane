@@ -1,12 +1,12 @@
 ---
-source_file: "components/workspace/sidebar/user-menu.tsx"
+source_file: "web/core/components/workspace/sidebar/user-menu.tsx"
 type: "code"
-community: "Sidebar Menu"
+community: "Sidebar Navigation"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sidebar_Menu
+  - community/Sidebar_Navigation
 ---
 
 # user-menu.tsx
@@ -15,7 +15,7 @@ tags:
 
 - [[SidebarUserMenu]] - `contains` [EXTRACTED]
 - [[SidebarUserMenuItem]] - `imports` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
 - [[user-menu-item.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sidebar_Menu
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Navigation

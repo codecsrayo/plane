@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/use-timer.tsx"
+source_file: "web/core/hooks/use-timer.tsx"
 type: "code"
-community: "Auth Forms"
+community: "Unique Code"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_Forms
+  - community/Unique_Code
 ---
 
 # use-timer.tsx
@@ -16,4 +16,4 @@ tags:
 - [[unique-code.tsx]] - `imports_from` [EXTRACTED]
 - [[useTimer()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Forms
+#graphify/code #graphify/EXTRACTED #community/Unique_Code

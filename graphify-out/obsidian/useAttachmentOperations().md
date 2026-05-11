@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-detail-widgets/attachments/helper.tsx"
+source_file: "web/core/components/issues/issue-detail-widgets/attachments/helper.tsx"
 type: "code"
-community: "Issue Attachments"
+community: "Attachment Issue"
 location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Attachments
+  - community/Attachment_Issue
 ---
 
 # useAttachmentOperations()
@@ -14,9 +14,9 @@ tags:
 ## Connections
 
 - [[content.tsx]] - `imports` [EXTRACTED]
-- [[helper.tsx_5]] - `contains` [EXTRACTED]
+- [[helper.tsx_27]] - `contains` [EXTRACTED]
 - [[quick-action-button.tsx]] - `imports` [EXTRACTED]
-- [[root.tsx_36]] - `imports` [EXTRACTED]
+- [[root.tsx_77]] - `imports` [EXTRACTED]
 - [[useIssueDetail()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Attachments
+#graphify/code #graphify/EXTRACTED #community/Attachment_Issue

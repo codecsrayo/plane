@@ -1,5 +1,5 @@
 ---
-source_file: "components/analytics/trend-piece.tsx"
+source_file: "web/core/components/analytics/trend-piece.tsx"
 type: "code"
 community: "Trend Variants"
 location: "L40"

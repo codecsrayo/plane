@@ -1,25 +1,23 @@
 ---
-source_file: "components/issues/issue-detail-widgets/root.tsx"
+source_file: "web/ce/components/pages/navigation-pane/tab-panels/root.tsx"
 type: "code"
-community: "Issue Widget"
+community: "Navigation Pane"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Widget
+  - community/Navigation_Pane
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[IssueDetailWidgetActionButtons()]] - `imports` [EXTRACTED]
-- [[IssueDetailWidgetCollapsibles]] - `imports` [EXTRACTED]
-- [[IssueDetailWidgetModals]] - `imports` [EXTRACTED]
-- [[IssueDetailWidgets()]] - `contains` [EXTRACTED]
-- [[Props_264]] - `contains` [EXTRACTED]
-- [[action-buttons.tsx]] - `imports_from` [EXTRACTED]
-- [[issue-detail-widget-collapsibles.tsx]] - `imports_from` [EXTRACTED]
-- [[issue-detail-widget-modals.tsx]] - `imports_from` [EXTRACTED]
+- [[PageNavigationPaneAdditionalTabPanelsRoot()]] - `contains` [EXTRACTED]
+- [[TPageInstance]] - `imports` [EXTRACTED]
+- [[TPageNavigationPaneAdditionalTabPanelsRootProps]] - `contains` [EXTRACTED]
+- [[TPageNavigationPaneTab]] - `imports` [EXTRACTED]
+- [[base-page.ts]] - `imports_from` [EXTRACTED]
+- [[index.ts_248]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Widget
+#graphify/code #graphify/EXTRACTED #community/Navigation_Pane

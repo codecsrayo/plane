@@ -1,25 +1,31 @@
 ---
-source_file: "components/estimates/inputs/root.tsx"
+source_file: "web/core/components/workspace-notifications/sidebar/root.tsx"
 type: "code"
-community: "Input Estimate"
+community: "Settings Project"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Input_Estimate
+  - community/Settings_Project
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[EstimateInputRoot()]] - `contains` [EXTRACTED]
-- [[EstimateNumberInput()]] - `imports` [EXTRACTED]
-- [[EstimateTextInput()]] - `imports` [EXTRACTED]
-- [[TEstimateInputRootProps]] - `contains` [EXTRACTED]
-- [[create.tsx_2]] - `imports_from` [EXTRACTED]
-- [[number-input.tsx]] - `imports_from` [EXTRACTED]
-- [[text-input.tsx]] - `imports_from` [EXTRACTED]
-- [[update.tsx_1]] - `imports_from` [EXTRACTED]
+- [[AppliedFilters]] - `imports` [EXTRACTED]
+- [[CountChip()]] - `imports` [EXTRACTED]
+- [[NotificationEmptyState]] - `imports` [EXTRACTED]
+- [[NotificationListRoot()]] - `imports` [EXTRACTED]
+- [[NotificationsLoader()_1]] - `imports` [EXTRACTED]
+- [[NotificationsSidebarRoot]] - `contains` [EXTRACTED]
+- [[applied-filter.tsx]] - `imports_from` [EXTRACTED]
+- [[count-chip.tsx]] - `imports_from` [EXTRACTED]
+- [[empty-state.tsx_5]] - `imports_from` [EXTRACTED]
+- [[index.ts_267]] - `imports_from` [EXTRACTED]
+- [[index.ts_388]] - `imports_from` [EXTRACTED]
+- [[loader.tsx_9]] - `imports_from` [EXTRACTED]
+- [[use-workspace.ts]] - `imports_from` [EXTRACTED]
+- [[useWorkspace()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Input_Estimate
+#graphify/code #graphify/EXTRACTED #community/Settings_Project

@@ -1,23 +1,24 @@
 ---
-source_file: "components/power-k/ui/pages/context-based/root.tsx"
+source_file: "web/core/components/power-k/ui/pages/context-based/root.tsx"
 type: "code"
-community: "Context Based"
+community: "Power Chat"
 location: "L44"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Context_Based
+  - community/Power_Chat
 ---
 
 # usePowerKContextBasedActions()
 
 ## Connections
 
-- [[root.tsx_58]] - `contains` [EXTRACTED]
+- [[root.tsx_99]] - `contains` [EXTRACTED]
+- [[usePowerKContextBasedExtendedActions()]] - `calls` [INFERRED]
 - [[usePowerKCycleContextBasedActions()]] - `calls` [EXTRACTED]
 - [[usePowerKModuleContextBasedActions()]] - `calls` [EXTRACTED]
 - [[usePowerKPageContextBasedActions()]] - `calls` [EXTRACTED]
 - [[usePowerKWorkItemContextBasedCommands()]] - `calls` [EXTRACTED]
 - [[useProjectsAppPowerKCommands()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Context_Based
+#graphify/code #graphify/EXTRACTED #community/Power_Chat

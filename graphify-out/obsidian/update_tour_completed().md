@@ -1,18 +1,20 @@
 ---
 source_file: "api_rust/src/routes/users.rs"
 type: "code"
-community: "Community 34"
+community: "User Github"
 location: "L657"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Community_34
+  - graphify/INFERRED
+  - community/User_Github
 ---
 
 # update_tour_completed()
 
 ## Connections
 
+- [[.json()]] - `calls` [INFERRED]
+- [[.set()]] - `calls` [INFERRED]
 - [[users.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_34
+#graphify/code #graphify/INFERRED #community/User_Github

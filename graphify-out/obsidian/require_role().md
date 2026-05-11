@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/auth/permissions.rs"
 type: "code"
-community: "Modules Rust API"
+community: "Request Intake"
 location: "L29"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Modules_Rust_API
+  - community/Request_Intake
 ---
 
 # require_role()
@@ -28,21 +28,21 @@ tags:
 - [[bulk_update_issue_dates()]] - `calls` [INFERRED]
 - [[complete_issue_attachment_upload()]] - `calls` [INFERRED]
 - [[complete_issue_attachment_upload_v2()]] - `calls` [INFERRED]
-- [[create_comment()]] - `calls` [INFERRED]
-- [[create_cycle()]] - `calls` [INFERRED]
-- [[create_estimate()]] - `calls` [INFERRED]
-- [[create_estimate_point()]] - `calls` [INFERRED]
+- [[create_comment()_1]] - `calls` [INFERRED]
+- [[create_cycle()_3]] - `calls` [INFERRED]
+- [[create_estimate()_2]] - `calls` [INFERRED]
+- [[create_estimate_point()_1]] - `calls` [INFERRED]
 - [[create_favorite_cycle()]] - `calls` [INFERRED]
 - [[create_favorite_module()]] - `calls` [INFERRED]
-- [[create_intake()]] - `calls` [INFERRED]
-- [[create_intake_issue()]] - `calls` [INFERRED]
-- [[create_issue()]] - `calls` [INFERRED]
+- [[create_intake()_1]] - `calls` [INFERRED]
+- [[create_intake_issue()_1]] - `calls` [INFERRED]
+- [[create_issue()_10]] - `calls` [INFERRED]
 - [[create_issue_link()]] - `calls` [INFERRED]
-- [[create_issue_relation()]] - `calls` [INFERRED]
-- [[create_label()]] - `calls` [INFERRED]
-- [[create_module()]] - `calls` [INFERRED]
-- [[create_module_link()]] - `calls` [INFERRED]
-- [[create_page()]] - `calls` [INFERRED]
+- [[create_issue_relation()_1]] - `calls` [INFERRED]
+- [[create_label()_1]] - `calls` [INFERRED]
+- [[create_module()_2]] - `calls` [INFERRED]
+- [[create_module_link()_1]] - `calls` [INFERRED]
+- [[create_page()_1]] - `calls` [INFERRED]
 - [[create_project_view()]] - `calls` [INFERRED]
 - [[cycle_analytics()]] - `calls` [INFERRED]
 - [[cycle_date_check()]] - `calls` [INFERRED]
@@ -119,9 +119,9 @@ tags:
 - [[remove_issue_from_cycle()]] - `calls` [INFERRED]
 - [[remove_issue_from_module()]] - `calls` [INFERRED]
 - [[remove_issue_relation()]] - `calls` [INFERRED]
-- [[search_issues()]] - `calls` [INFERRED]
+- [[search_issues()_1]] - `calls` [INFERRED]
 - [[set_issue_modules()]] - `calls` [INFERRED]
-- [[transfer_cycle_issues()]] - `calls` [INFERRED]
+- [[transfer_cycle_issues()_1]] - `calls` [INFERRED]
 - [[unarchive_cycle()]] - `calls` [INFERRED]
 - [[unarchive_issue()]] - `calls` [INFERRED]
 - [[unarchive_module()]] - `calls` [INFERRED]
@@ -141,4 +141,4 @@ tags:
 - [[update_page()]] - `calls` [INFERRED]
 - [[update_page_description()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Modules_Rust_API
+#graphify/code #graphify/INFERRED #community/Request_Intake

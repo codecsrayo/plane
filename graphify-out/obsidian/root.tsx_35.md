@@ -1,32 +1,20 @@
 ---
-source_file: "components/issues/issue-detail/parent/root.tsx"
+source_file: "web/ce/components/active-cycles/root.tsx"
 type: "code"
-community: "Issue Parent"
+community: "Upgrade Workspace"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Parent
+  - community/Upgrade_Workspace
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[IssueParentDetail]] - `contains` [EXTRACTED]
-- [[IssueParentSiblings]] - `imports` [EXTRACTED]
-- [[TIssueOperations]] - `imports` [EXTRACTED]
-- [[TIssueParentDetail]] - `contains` [EXTRACTED]
-- [[root.tsx_30]] - `imports_from` [EXTRACTED]
-- [[siblings.tsx]] - `imports_from` [EXTRACTED]
-- [[use-issue-peek-overview-redirection.tsx]] - `imports_from` [EXTRACTED]
-- [[use-issues.ts]] - `imports_from` [EXTRACTED]
-- [[use-platform-os.tsx]] - `imports_from` [EXTRACTED]
-- [[use-project-state.ts]] - `imports_from` [EXTRACTED]
-- [[use-project.ts]] - `imports_from` [EXTRACTED]
-- [[useIssues()]] - `imports` [EXTRACTED]
-- [[usePlatformOS()]] - `imports` [EXTRACTED]
-- [[useProject()]] - `imports` [EXTRACTED]
-- [[useProjectState()]] - `imports` [EXTRACTED]
+- [[WorkspaceActiveCyclesRoot()]] - `contains` [EXTRACTED]
+- [[WorkspaceActiveCyclesUpgrade]] - `imports` [EXTRACTED]
+- [[workspace-active-cycles-upgrade.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Parent
+#graphify/code #graphify/EXTRACTED #community/Upgrade_Workspace

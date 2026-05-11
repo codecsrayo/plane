@@ -1,19 +1,21 @@
 ---
 source_file: "api_rust/src/routes/cycles.rs"
 type: "code"
-community: "Cycles Rust API"
+community: "Cycle Request"
 location: "L762"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Cycles_Rust_API
+  - graphify/INFERRED
+  - community/Cycle_Request
 ---
 
 # remove_issue_from_cycle()
 
 ## Connections
 
-- [[cycles.rs]] - `contains` [EXTRACTED]
+- [[.set()]] - `calls` [INFERRED]
+- [[cycles.rs_1]] - `contains` [EXTRACTED]
+- [[now]] - `calls` [INFERRED]
 - [[require_role()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycles_Rust_API
+#graphify/code #graphify/INFERRED #community/Cycle_Request

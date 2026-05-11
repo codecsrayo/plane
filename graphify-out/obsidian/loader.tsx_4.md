@@ -1,19 +1,18 @@
 ---
-source_file: "components/issues/issue-detail/issue-activity/loader.tsx"
+source_file: "web/core/components/project-states/loader.tsx"
 type: "code"
-community: "Activity Issue"
+community: "Project State"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Activity_Issue
+  - community/Project_State
 ---
 
 # loader.tsx
 
 ## Connections
 
-- [[IssueActivityLoader()]] - `contains` [EXTRACTED]
-- [[activity-comment-root.tsx]] - `imports_from` [EXTRACTED]
+- [[ProjectStateLoader()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Activity_Issue
+#graphify/code #graphify/EXTRACTED #community/Project_State

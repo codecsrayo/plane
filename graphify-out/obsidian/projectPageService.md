@@ -1,18 +1,18 @@
 ---
-source_file: "store/pages/project-page.ts"
+source_file: "web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/pages/(detail)/[pageId]/page.tsx"
 type: "code"
-community: "Page Permissions"
-location: "L16"
+community: "Project Settings"
+location: "L47"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Page_Permissions
+  - community/Project_Settings
 ---
 
 # projectPageService
 
 ## Connections
 
-- [[project-page.ts]] - `contains` [EXTRACTED]
+- [[page.tsx_27]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Page_Permissions
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

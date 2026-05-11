@@ -1,5 +1,5 @@
 ---
-source_file: "hooks/store/estimates/use-estimate-point.ts"
+source_file: "web/core/hooks/store/estimates/use-estimate-point.ts"
 type: "code"
 community: "Estimate Point"
 location: "L1"
@@ -13,11 +13,11 @@ tags:
 
 ## Connections
 
-- [[IEstimatePoint]] - `imports` [EXTRACTED]
+- [[IEstimatePoint_1]] - `imports` [EXTRACTED]
 - [[StoreContext]] - `imports` [EXTRACTED]
 - [[estimate-point.ts]] - `imports_from` [EXTRACTED]
 - [[store-context.tsx]] - `imports_from` [EXTRACTED]
-- [[update.tsx_1]] - `imports_from` [EXTRACTED]
+- [[update.tsx_2]] - `imports_from` [EXTRACTED]
 - [[useEstimatePoint()]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Estimate_Point

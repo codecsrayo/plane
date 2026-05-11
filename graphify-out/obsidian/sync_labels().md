@@ -1,20 +1,22 @@
 ---
 source_file: "api_rust/src/routes/issues.rs"
 type: "code"
-community: "Issue Routes Rust API"
+community: "Issue Issues"
 location: "L545"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Routes_Rust_API
+  - community/Issue_Issues
 ---
 
 # sync_labels()
 
 ## Connections
 
-- [[create_issue()]] - `calls` [EXTRACTED]
-- [[issues.rs]] - `contains` [EXTRACTED]
+- [[.set()]] - `calls` [INFERRED]
+- [[create_issue()_10]] - `calls` [EXTRACTED]
+- [[issues.rs_1]] - `contains` [EXTRACTED]
+- [[now]] - `calls` [INFERRED]
 - [[update_issue()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Routes_Rust_API
+#graphify/code #graphify/EXTRACTED #community/Issue_Issues

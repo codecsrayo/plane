@@ -1,33 +1,22 @@
 ---
-source_file: "components/cycles/modal.tsx"
+source_file: "web/core/components/global/product-updates/modal.tsx"
 type: "code"
-community: "Module Forms"
+community: "Product Updates"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Forms
+  - community/Product_Updates
 ---
 
 # modal.tsx
 
 ## Connections
 
-- [[CycleCreateUpdateModal()]] - `contains` [EXTRACTED]
-- [[CycleForm()]] - `imports` [EXTRACTED]
-- [[CycleModalProps]] - `contains` [EXTRACTED]
-- [[CycleService]] - `imports` [EXTRACTED]
-- [[cycle.service.ts]] - `imports_from` [EXTRACTED]
-- [[cycleService]] - `contains` [EXTRACTED]
-- [[form.tsx_10]] - `imports_from` [EXTRACTED]
-- [[quick-actions.tsx_3]] - `imports_from` [EXTRACTED]
-- [[use-cycle.ts]] - `imports_from` [EXTRACTED]
-- [[use-keypress.tsx]] - `imports_from` [EXTRACTED]
-- [[use-local-storage.tsx]] - `imports_from` [EXTRACTED]
-- [[use-platform-os.tsx]] - `imports_from` [EXTRACTED]
-- [[use-project.ts]] - `imports_from` [EXTRACTED]
-- [[useCycle()]] - `imports` [EXTRACTED]
-- [[usePlatformOS()]] - `imports` [EXTRACTED]
-- [[useProject()]] - `imports` [EXTRACTED]
+- [[ProductUpdatesChangelog]] - `imports` [EXTRACTED]
+- [[ProductUpdatesHeader]] - `imports` [EXTRACTED]
+- [[ProductUpdatesModal]] - `contains` [EXTRACTED]
+- [[ProductUpdatesModalProps]] - `contains` [EXTRACTED]
+- [[index.ts_333]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Forms
+#graphify/code #graphify/EXTRACTED #community/Product_Updates

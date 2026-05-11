@@ -1,19 +1,19 @@
 ---
 source_file: "api_rust/src/main.rs"
 type: "code"
-community: "Community 129"
+community: "Password Email"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_129
+  - community/Password_Email
 ---
 
 # shutdown_signal()
 
 ## Connections
 
-- [[main()]] - `calls` [EXTRACTED]
+- [[main()_1]] - `calls` [EXTRACTED]
 - [[main.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_129
+#graphify/code #graphify/EXTRACTED #community/Password_Email

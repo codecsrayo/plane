@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/icons/set-as-default-icon.tsx"
 type: "code"
-community: "Logo Icons"
+community: "Icon Panel"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Logo_Icons
+  - community/Icon_Panel
 ---
 
 # set-as-default-icon.tsx
@@ -17,4 +17,4 @@ tags:
 - [[SetAsDefaultIcon()]] - `contains` [EXTRACTED]
 - [[type.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Logo_Icons
+#graphify/code #graphify/EXTRACTED #community/Icon_Panel

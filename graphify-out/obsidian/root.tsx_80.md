@@ -1,32 +1,25 @@
 ---
-source_file: "components/pages/navigation-pane/root.tsx"
+source_file: "web/core/components/issues/issue-detail-widgets/relations/root.tsx"
 type: "code"
-community: "Navigation Pane"
+community: "Issue Activity"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Navigation_Pane
+  - community/Issue_Activity
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[INavigationPaneExtension]] - `imports` [EXTRACTED]
-- [[PageNavigationPaneRoot]] - `contains` [EXTRACTED]
-- [[PageNavigationPaneTabPanelsRoot()]] - `imports` [EXTRACTED]
-- [[PageNavigationPaneTabsList()]] - `imports` [EXTRACTED]
-- [[Props_399]] - `contains` [EXTRACTED]
-- [[TPageInstance]] - `imports` [EXTRACTED]
-- [[TPageRootHandlers]] - `imports` [EXTRACTED]
-- [[base-page.ts]] - `imports_from` [EXTRACTED]
-- [[extensions.ts]] - `imports_from` [EXTRACTED]
-- [[index.ts_157]] - `imports_from` [EXTRACTED]
-- [[page-root.tsx]] - `imports_from` [EXTRACTED]
-- [[root.tsx_81]] - `imports_from` [EXTRACTED]
-- [[tabs-list.tsx]] - `imports_from` [EXTRACTED]
-- [[use-query-params.ts]] - `imports_from` [EXTRACTED]
-- [[useQueryParams()]] - `imports` [EXTRACTED]
+- [[Props_349]] - `contains` [EXTRACTED]
+- [[RelationsCollapsible]] - `contains` [EXTRACTED]
+- [[RelationsCollapsibleContent]] - `imports` [EXTRACTED]
+- [[RelationsCollapsibleTitle]] - `imports` [EXTRACTED]
+- [[content.tsx_1]] - `imports_from` [EXTRACTED]
+- [[title.tsx_1]] - `imports_from` [EXTRACTED]
+- [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
+- [[useIssueDetail()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Navigation_Pane
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

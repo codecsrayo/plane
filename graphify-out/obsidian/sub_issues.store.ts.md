@@ -1,12 +1,12 @@
 ---
-source_file: "store/issue/issue-details/sub_issues.store.ts"
+source_file: "web/core/store/issue/issue-details/sub_issues.store.ts"
 type: "code"
-community: "Issue Work"
+community: "Issue Reaction"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Work
+  - community/Issue_Reaction
 ---
 
 # sub_issues.store.ts
@@ -21,15 +21,15 @@ tags:
 - [[TSubIssueHelpers]] - `contains` [EXTRACTED]
 - [[TSubIssueHelpersKeys]] - `contains` [EXTRACTED]
 - [[WorkItemSubIssueFiltersStore]] - `imports` [EXTRACTED]
-- [[index.ts_19]] - `imports_from` [EXTRACTED]
-- [[issue]] - `contains` [EXTRACTED]
+- [[index.ts_284]] - `imports_from` [EXTRACTED]
+- [[issue_1]] - `contains` [EXTRACTED]
 - [[issueList]] - `contains` [EXTRACTED]
 - [[otherProjectIds]] - `contains` [EXTRACTED]
-- [[root.store.ts_2]] - `imports_from` [EXTRACTED]
+- [[root.store.ts_4]] - `imports_from` [EXTRACTED]
 - [[state]] - `contains` [EXTRACTED]
 - [[stateGroup]] - `contains` [EXTRACTED]
 - [[subIssueIds_1]] - `contains` [EXTRACTED]
 - [[subIssues]] - `contains` [EXTRACTED]
 - [[sub_issues_filter.store.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Work
+#graphify/code #graphify/EXTRACTED #community/Issue_Reaction

@@ -1,23 +1,23 @@
 ---
-source_file: "components/issues/issue-layouts/spreadsheet/columns/state-column.tsx"
+source_file: "web/core/components/issues/issue-layouts/spreadsheet/columns/state-column.tsx"
 type: "code"
-community: "Column Spreadsheet"
+community: "Label Dropdown"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Column_Spreadsheet
+  - community/Label_Dropdown
 ---
 
 # state-column.tsx
 
 ## Connections
 
-- [[Props_203]] - `contains` [EXTRACTED]
+- [[Props_278]] - `contains` [EXTRACTED]
 - [[SpreadsheetStateColumn]] - `contains` [EXTRACTED]
 - [[StateDropdown]] - `imports` [EXTRACTED]
 - [[TSpreadsheetColumnOnChange]] - `imports` [EXTRACTED]
-- [[dropdown.tsx_3]] - `imports_from` [EXTRACTED]
-- [[types.ts_1]] - `imports_from` [EXTRACTED]
+- [[dropdown.tsx_5]] - `imports_from` [EXTRACTED]
+- [[types.ts_15]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Column_Spreadsheet
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

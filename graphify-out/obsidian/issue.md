@@ -1,18 +1,18 @@
 ---
-source_file: "store/issue/issue-details/sub_issues.store.ts"
+source_file: "web/e2e/issues.spec.ts"
 type: "code"
-community: "Issue Work"
-location: "L274"
+community: "Body Cursor"
+location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Work
+  - community/Body_Cursor
 ---
 
 # issue
 
 ## Connections
 
-- [[sub_issues.store.ts]] - `contains` [EXTRACTED]
+- [[issues.spec.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Work
+#graphify/code #graphify/EXTRACTED #community/Body_Cursor

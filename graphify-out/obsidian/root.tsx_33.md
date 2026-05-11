@@ -1,23 +1,21 @@
 ---
-source_file: "components/issues/issue-detail/label/select/root.tsx"
+source_file: "web/ce/components/cycles/analytics-sidebar/root.tsx"
 type: "code"
-community: "Label Issue"
+community: "Cycle Active"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Issue
+  - community/Cycle_Active
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[IssueLabelSelect_1]] - `imports` [EXTRACTED]
-- [[IssueLabelSelectRoot()]] - `contains` [EXTRACTED]
-- [[TIssueLabelSelectRoot]] - `contains` [EXTRACTED]
-- [[TLabelOperations]] - `imports` [EXTRACTED]
-- [[label-select.tsx]] - `imports_from` [EXTRACTED]
-- [[root.tsx_32]] - `imports_from` [EXTRACTED]
+- [[Props_70]] - `contains` [EXTRACTED]
+- [[SidebarChart]] - `imports` [EXTRACTED]
+- [[SidebarChartRoot()]] - `contains` [EXTRACTED]
+- [[base.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Issue
+#graphify/code #graphify/EXTRACTED #community/Cycle_Active

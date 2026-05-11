@@ -1,12 +1,12 @@
 ---
-source_file: "store/issue/helpers/base-issues.store.ts"
+source_file: "web/core/store/issue/helpers/base-issues.store.ts"
 type: "code"
-community: "Issue Workspace"
+community: "Issue Group"
 location: "L281"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Issue_Workspace
+  - graphify/INFERRED
+  - community/Issue_Group
 ---
 
 # orderBy()
@@ -14,10 +14,12 @@ tags:
 ## Connections
 
 - [[.archivedEstimateIds()]] - `calls` [INFERRED]
+- [[.estimatePointIds()]] - `calls` [INFERRED]
 - [[.issueIds()]] - `calls` [INFERRED]
 - [[.orderedWidgets()]] - `calls` [INFERRED]
+- [[.sortActivityComments()]] - `calls` [INFERRED]
 - [[base-issues.store.ts]] - `contains` [EXTRACTED]
 - [[getOrderedWorkItems()]] - `calls` [EXTRACTED]
 - [[populateIssueDataForSorting()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Workspace
+#graphify/code #graphify/INFERRED #community/Issue_Group

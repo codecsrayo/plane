@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/icons/icons.stories.tsx"
 type: "code"
-community: "Icons Project"
+community: "Icons Icon"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Icons_Project
+  - community/Icons_Icon
 ---
 
 # meta
@@ -15,4 +15,4 @@ tags:
 
 - [[icons.stories.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Icons_Project
+#graphify/code #graphify/EXTRACTED #community/Icons_Icon

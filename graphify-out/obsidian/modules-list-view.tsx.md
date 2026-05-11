@@ -1,12 +1,12 @@
 ---
-source_file: "components/modules/modules-list-view.tsx"
+source_file: "web/core/components/modules/modules-list-view.tsx"
 type: "code"
-community: "Modules Archived"
+community: "Cycles Archived"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Modules_Archived
+  - community/Cycles_Archived
 ---
 
 # modules-list-view.tsx
@@ -20,9 +20,9 @@ tags:
 - [[cycle-module-board-loader.tsx]] - `imports_from` [EXTRACTED]
 - [[cycle-module-list-loader.tsx]] - `imports_from` [EXTRACTED]
 - [[gantt-layout-loader.tsx]] - `imports_from` [EXTRACTED]
-- [[index.ts_177]] - `imports_from` [EXTRACTED]
-- [[index.ts_58]] - `imports_from` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
+- [[index.ts_323]] - `imports_from` [EXTRACTED]
+- [[index.ts_442]] - `imports_from` [EXTRACTED]
 - [[use-command-palette.ts]] - `imports_from` [EXTRACTED]
 - [[use-module-filter.ts]] - `imports_from` [EXTRACTED]
 - [[use-module.ts]] - `imports_from` [EXTRACTED]
@@ -30,4 +30,4 @@ tags:
 - [[useModule()]] - `imports` [EXTRACTED]
 - [[useModuleFilter()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Modules_Archived
+#graphify/code #graphify/EXTRACTED #community/Cycles_Archived

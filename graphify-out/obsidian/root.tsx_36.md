@@ -1,25 +1,26 @@
 ---
-source_file: "components/issues/attachment/root.tsx"
+source_file: "web/ce/components/onboarding/tour/root.tsx"
 type: "code"
-community: "Issue Attachments"
+community: "Tour Steps"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Attachments
+  - community/Tour_Steps
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[IssueAttachmentRoot]] - `contains` [EXTRACTED]
-- [[IssueAttachmentUpload]] - `imports` [EXTRACTED]
-- [[IssueAttachmentsList]] - `imports` [EXTRACTED]
-- [[TIssueAttachmentRoot]] - `contains` [EXTRACTED]
-- [[attachment-upload.tsx]] - `imports_from` [EXTRACTED]
-- [[attachments-list.tsx]] - `imports_from` [EXTRACTED]
-- [[helper.tsx_5]] - `imports_from` [EXTRACTED]
-- [[useAttachmentOperations()]] - `imports` [EXTRACTED]
+- [[TOUR_STEPS]] - `contains` [EXTRACTED]
+- [[TOnboardingTourProps]] - `contains` [EXTRACTED]
+- [[TTourSteps]] - `contains` [EXTRACTED]
+- [[TourRoot]] - `contains` [EXTRACTED]
+- [[TourSidebar()]] - `imports` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
+- [[sidebar.tsx]] - `imports_from` [EXTRACTED]
+- [[use-command-palette.ts]] - `imports_from` [EXTRACTED]
+- [[useCommandPalette()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Attachments
+#graphify/code #graphify/EXTRACTED #community/Tour_Steps

@@ -1,12 +1,12 @@
 ---
 source_file: "ui/src/tabs/tabs.tsx"
 type: "code"
-community: "Tabs Tablistitem"
+community: "Local Value"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Tabs_Tablistitem
+  - community/Local_Value
 ---
 
 # tabs.tsx
@@ -22,4 +22,4 @@ tags:
 - [[index.ts_14]] - `imports_from` [EXTRACTED]
 - [[tab-list.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Tabs_Tablistitem
+#graphify/code #graphify/EXTRACTED #community/Local_Value

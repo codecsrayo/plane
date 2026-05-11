@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/use-issues-actions.tsx"
+source_file: "web/core/hooks/use-issues-actions.tsx"
 type: "code"
-community: "Issue Layout HOC"
+community: "Issue Project"
 location: "L47"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Layout_HOC
+  - community/Issue_Project
 ---
 
 # useIssuesActions()
@@ -18,7 +18,8 @@ tags:
 - [[base-kanban-root.tsx]] - `imports` [EXTRACTED]
 - [[base-list-root.tsx]] - `imports` [EXTRACTED]
 - [[base-spreadsheet-root.tsx]] - `imports` [EXTRACTED]
-- [[base.tsx_7]] - `imports` [EXTRACTED]
+- [[base.tsx_8]] - `imports` [EXTRACTED]
+- [[header.tsx_7]] - `imports` [EXTRACTED]
 - [[use-group-dragndrop.ts]] - `imports` [EXTRACTED]
 - [[use-issues-actions.tsx]] - `contains` [EXTRACTED]
 - [[useArchivedIssueActions()]] - `calls` [EXTRACTED]
@@ -31,6 +32,7 @@ tags:
 - [[useProjectIssueActions()]] - `calls` [EXTRACTED]
 - [[useProjectViewIssueActions()]] - `calls` [EXTRACTED]
 - [[useWorkspaceDraftIssueActions()]] - `calls` [EXTRACTED]
+- [[work-item-level.tsx]] - `imports` [EXTRACTED]
 - [[workspace-root.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Layout_HOC
+#graphify/code #graphify/EXTRACTED #community/Issue_Project

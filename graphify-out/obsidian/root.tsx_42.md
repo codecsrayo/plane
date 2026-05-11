@@ -1,25 +1,26 @@
 ---
-source_file: "components/issues/issue-detail-widgets/links/root.tsx"
+source_file: "web/core/components/home/widgets/links/root.tsx"
 type: "code"
-community: "Issue Activity"
+community: "Link Links"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Link_Links
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[IssueLinksCollapsibleContent()]] - `imports` [EXTRACTED]
-- [[IssueLinksCollapsibleTitle]] - `imports` [EXTRACTED]
-- [[LinksCollapsible]] - `contains` [EXTRACTED]
-- [[Props_285]] - `contains` [EXTRACTED]
-- [[content.tsx_3]] - `imports_from` [EXTRACTED]
-- [[title.tsx_3]] - `imports_from` [EXTRACTED]
-- [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
-- [[useIssueDetail()]] - `imports` [EXTRACTED]
+- [[DashboardQuickLinks]] - `contains` [EXTRACTED]
+- [[LinkCreateUpdateModal]] - `imports` [EXTRACTED]
+- [[ProjectLinkList]] - `imports` [EXTRACTED]
+- [[create-update-link-modal.tsx]] - `imports_from` [EXTRACTED]
+- [[links.tsx_1]] - `imports_from` [EXTRACTED]
+- [[use-home.ts]] - `imports_from` [EXTRACTED]
+- [[use-links.tsx]] - `imports_from` [EXTRACTED]
+- [[useHome()]] - `imports` [EXTRACTED]
+- [[useLinks()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Link_Links

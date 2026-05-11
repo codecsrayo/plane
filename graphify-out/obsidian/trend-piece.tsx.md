@@ -1,5 +1,5 @@
 ---
-source_file: "components/analytics/trend-piece.tsx"
+source_file: "web/core/components/analytics/trend-piece.tsx"
 type: "code"
 community: "Trend Variants"
 location: "L1"
@@ -13,7 +13,7 @@ tags:
 
 ## Connections
 
-- [[Props_423]] - `contains` [EXTRACTED]
+- [[Props_497]] - `contains` [EXTRACTED]
 - [[TrendPiece()]] - `contains` [EXTRACTED]
 - [[sizeConfig_1]] - `contains` [EXTRACTED]
 - [[variants]] - `contains` [EXTRACTED]

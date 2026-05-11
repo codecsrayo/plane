@@ -1,12 +1,12 @@
 ---
 source_file: "types/src/issues/issue.ts"
 type: "code"
-community: "Issue Enums"
+community: "Issue Public"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Enums
+  - community/Issue_Public
 ---
 
 # issue.ts
@@ -54,4 +54,4 @@ tags:
 - [[state.ts_1]] - `imports_from` [EXTRACTED]
 - [[view-props.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Enums
+#graphify/code #graphify/EXTRACTED #community/Issue_Public

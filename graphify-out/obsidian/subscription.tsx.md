@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-detail/subscription.tsx"
+source_file: "web/core/components/issues/issue-detail/subscription.tsx"
 type: "code"
-community: "Project Archives"
+community: "Issue Inbox"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Archives
+  - community/Issue_Inbox
 ---
 
 # subscription.tsx
@@ -15,10 +15,10 @@ tags:
 
 - [[IssueSubscription]] - `contains` [EXTRACTED]
 - [[TIssueSubscription]] - `contains` [EXTRACTED]
-- [[header.tsx_9]] - `imports_from` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
+- [[header.tsx_51]] - `imports_from` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
 - [[issue-detail-quick-actions.tsx]] - `imports_from` [EXTRACTED]
 - [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
 - [[useIssueDetail()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Archives
+#graphify/code #graphify/EXTRACTED #community/Issue_Inbox

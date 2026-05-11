@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/icons/layouts/sheet-icon.tsx"
 type: "code"
-community: "Logo Icons"
+community: "Icon Property"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Logo_Icons
+  - community/Icon_Property
 ---
 
 # sheet-icon.tsx
@@ -19,4 +19,4 @@ tags:
 - [[icon-wrapper.tsx]] - `imports_from` [EXTRACTED]
 - [[type.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Logo_Icons
+#graphify/code #graphify/EXTRACTED #community/Icon_Property

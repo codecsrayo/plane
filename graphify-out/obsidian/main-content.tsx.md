@@ -1,5 +1,5 @@
 ---
-source_file: "components/gantt-chart/chart/main-content.tsx"
+source_file: "web/core/components/gantt-chart/chart/main-content.tsx"
 type: "code"
 community: "Gantt Chart"
 location: "L1"
@@ -13,15 +13,18 @@ tags:
 
 ## Connections
 
+- [[GanttChartBlocksList()]] - `imports` [EXTRACTED]
 - [[GanttChartMainContent]] - `contains` [EXTRACTED]
-- [[Props_48]] - `contains` [EXTRACTED]
+- [[GanttChartRowList()]] - `imports` [EXTRACTED]
+- [[Props_124]] - `contains` [EXTRACTED]
 - [[TimelineDragHelper]] - `imports` [EXTRACTED]
-- [[constants.ts]] - `imports_from` [EXTRACTED]
-- [[index.ts_178]] - `imports_from` [EXTRACTED]
-- [[index.ts_38]] - `imports_from` [EXTRACTED]
-- [[index.ts_42]] - `imports_from` [EXTRACTED]
+- [[constants.ts_4]] - `imports_from` [EXTRACTED]
+- [[index.ts_303]] - `imports_from` [EXTRACTED]
+- [[index.ts_307]] - `imports_from` [EXTRACTED]
+- [[index.ts_443]] - `imports_from` [EXTRACTED]
 - [[timeline-drag-helper.tsx]] - `imports_from` [EXTRACTED]
-- [[use-timeline-chart.ts]] - `imports_from` [EXTRACTED]
+- [[use-timeline-chart.ts_1]] - `imports_from` [EXTRACTED]
+- [[useBulkOperationStatus()]] - `imports` [EXTRACTED]
 - [[useTimeLineChartStore()]] - `imports` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Gantt_Chart

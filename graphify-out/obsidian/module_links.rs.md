@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/entities/module_links.rs"
 type: "code"
-community: "Community 360"
+community: "Model Relation"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_360
+  - community/Model_Relation
 ---
 
 # module_links.rs
@@ -16,4 +16,4 @@ tags:
 - [[Model_41]] - `contains` [EXTRACTED]
 - [[Relation_41]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_360
+#graphify/code #graphify/EXTRACTED #community/Model_Relation

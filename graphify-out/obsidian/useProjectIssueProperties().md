@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/use-project-issue-properties.ts"
+source_file: "web/core/hooks/use-project-issue-properties.ts"
 type: "code"
-community: "Calendar Blocks"
+community: "Project Workspace"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Blocks
+  - community/Project_Workspace
 ---
 
 # useProjectIssueProperties()
@@ -15,11 +15,7 @@ tags:
 
 - [[form.tsx_8]] - `imports` [EXTRACTED]
 - [[use-project-issue-properties.ts]] - `contains` [EXTRACTED]
-- [[useCycle()]] - `calls` [EXTRACTED]
-- [[useLabel()]] - `calls` [EXTRACTED]
-- [[useMember()]] - `calls` [EXTRACTED]
-- [[useModule()]] - `calls` [EXTRACTED]
 - [[useProjectEstimates()]] - `calls` [INFERRED]
 - [[useProjectState()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Blocks
+#graphify/code #graphify/EXTRACTED #community/Project_Workspace

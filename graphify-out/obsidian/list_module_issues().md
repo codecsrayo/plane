@@ -1,19 +1,20 @@
 ---
 source_file: "api_rust/src/routes/modules.rs"
 type: "code"
-community: "Modules Rust API"
+community: "Request Intake"
 location: "L591"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Modules_Rust_API
+  - graphify/INFERRED
+  - community/Request_Intake
 ---
 
 # list_module_issues()
 
 ## Connections
 
-- [[modules.rs]] - `contains` [EXTRACTED]
+- [[.json()]] - `calls` [INFERRED]
+- [[modules.rs_1]] - `contains` [EXTRACTED]
 - [[require_role()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Modules_Rust_API
+#graphify/code #graphify/INFERRED #community/Request_Intake

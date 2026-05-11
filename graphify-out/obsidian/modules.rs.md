@@ -1,59 +1,35 @@
 ---
-source_file: "api_rust/src/routes/modules.rs"
+source_file: "api_rust/tests/modules.rs"
 type: "code"
-community: "Modules Rust API"
+community: "Returns Modules"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Modules_Rust_API
+  - community/Returns_Modules
 ---
 
 # modules.rs
 
 ## Connections
 
-- [[AddModuleIssuesRequest]] - `contains` [EXTRACTED]
-- [[CreateModuleLinkRequest]] - `contains` [EXTRACTED]
-- [[CreateModuleRequest]] - `contains` [EXTRACTED]
-- [[FavoriteModuleRequest]] - `contains` [EXTRACTED]
-- [[IssueModulesRequest]] - `contains` [EXTRACTED]
-- [[ModuleCountRow]] - `contains` [EXTRACTED]
-- [[ModuleIssueResponse]] - `contains` [EXTRACTED]
-- [[ModuleLinkResponse]] - `contains` [EXTRACTED]
-- [[ModuleResponse]] - `contains` [EXTRACTED]
-- [[ModuleUserPropertiesResponse]] - `contains` [EXTRACTED]
-- [[UpdateModuleLinkRequest]] - `contains` [EXTRACTED]
-- [[UpdateModuleRequest]] - `contains` [EXTRACTED]
-- [[UpdateModuleUserPropertiesRequest]] - `contains` [EXTRACTED]
-- [[add_issues_to_module()]] - `contains` [EXTRACTED]
-- [[archive_module()]] - `contains` [EXTRACTED]
-- [[create_favorite_module()]] - `contains` [EXTRACTED]
-- [[create_module()]] - `contains` [EXTRACTED]
-- [[create_module_link()]] - `contains` [EXTRACTED]
-- [[delete_favorite_module()]] - `contains` [EXTRACTED]
-- [[delete_module()]] - `contains` [EXTRACTED]
-- [[delete_module_link()]] - `contains` [EXTRACTED]
-- [[enrich_module_counts()]] - `contains` [EXTRACTED]
-- [[ensure_module_belongs_to_project()]] - `contains` [EXTRACTED]
-- [[get_archived_module()]] - `contains` [EXTRACTED]
-- [[get_module()]] - `contains` [EXTRACTED]
-- [[get_module_link()]] - `contains` [EXTRACTED]
-- [[get_module_user_properties()]] - `contains` [EXTRACTED]
-- [[get_or_create_module_user_properties()]] - `contains` [EXTRACTED]
-- [[list_archived_modules()]] - `contains` [EXTRACTED]
-- [[list_favorite_modules()]] - `contains` [EXTRACTED]
-- [[list_module_issues()]] - `contains` [EXTRACTED]
-- [[list_module_links()]] - `contains` [EXTRACTED]
-- [[list_modules()]] - `contains` [EXTRACTED]
-- [[module_default_display_filters()]] - `contains` [EXTRACTED]
-- [[module_default_display_properties()]] - `contains` [EXTRACTED]
-- [[module_default_filters()]] - `contains` [EXTRACTED]
-- [[remove_issue_from_module()]] - `contains` [EXTRACTED]
-- [[set_issue_modules()]] - `contains` [EXTRACTED]
-- [[unarchive_module()]] - `contains` [EXTRACTED]
-- [[update_module()]] - `contains` [EXTRACTED]
-- [[update_module_link()]] - `contains` [EXTRACTED]
-- [[update_module_user_properties()]] - `contains` [EXTRACTED]
+- [[add_issue_to_module_and_remove()]] - `contains` [EXTRACTED]
+- [[archive_module_and_list_archived()]] - `contains` [EXTRACTED]
+- [[create_issue()_4]] - `contains` [EXTRACTED]
+- [[create_module()_1]] - `contains` [EXTRACTED]
+- [[create_module_all_valid_statuses()]] - `contains` [EXTRACTED]
+- [[create_module_empty_name_returns_400()]] - `contains` [EXTRACTED]
+- [[create_module_invalid_status_returns_400()]] - `contains` [EXTRACTED]
+- [[create_module_proptest_invalid_statuses()]] - `contains` [EXTRACTED]
+- [[create_module_success()]] - `contains` [EXTRACTED]
+- [[delete_module_returns_204()]] - `contains` [EXTRACTED]
+- [[get_module_not_found_returns_404()]] - `contains` [EXTRACTED]
+- [[get_module_returns_200()]] - `contains` [EXTRACTED]
+- [[list_module_issues_empty_returns_200()]] - `contains` [EXTRACTED]
+- [[list_modules_empty_returns_200()]] - `contains` [EXTRACTED]
+- [[list_modules_returns_created_module()]] - `contains` [EXTRACTED]
+- [[list_modules_unauthenticated_returns_401()]] - `contains` [EXTRACTED]
+- [[setup()_10]] - `contains` [EXTRACTED]
+- [[update_module_returns_200()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Modules_Rust_API
+#graphify/code #graphify/EXTRACTED #community/Returns_Modules

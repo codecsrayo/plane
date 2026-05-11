@@ -1,5 +1,5 @@
 ---
-source_file: "components/issues/issue-detail-widgets/widget-button.tsx"
+source_file: "web/core/components/issues/issue-detail-widgets/widget-button.tsx"
 type: "code"
 community: "Issue Widget"
 location: "L1"
@@ -14,7 +14,7 @@ tags:
 ## Connections
 
 - [[IssueDetailWidgetButton()]] - `contains` [EXTRACTED]
-- [[Props_266]] - `contains` [EXTRACTED]
-- [[action-buttons.tsx]] - `imports_from` [EXTRACTED]
+- [[Props_341]] - `contains` [EXTRACTED]
+- [[action-buttons.tsx_1]] - `imports_from` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Issue_Widget

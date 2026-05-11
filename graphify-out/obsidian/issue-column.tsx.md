@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/spreadsheet/issue-column.tsx"
+source_file: "web/core/components/issues/issue-layouts/spreadsheet/issue-column.tsx"
 type: "code"
-community: "List Group Layout"
+community: "Issue Activity"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/List_Group_Layout
+  - community/Issue_Activity
 ---
 
 # issue-column.tsx
@@ -14,9 +14,10 @@ tags:
 ## Connections
 
 - [[IssueColumn]] - `contains` [EXTRACTED]
-- [[Props_196]] - `contains` [EXTRACTED]
+- [[Props_271]] - `contains` [EXTRACTED]
+- [[SPREADSHEET_COLUMNS]] - `imports` [EXTRACTED]
 - [[WithDisplayPropertiesHOC]] - `imports` [EXTRACTED]
 - [[issue-row.tsx]] - `imports_from` [EXTRACTED]
 - [[with-display-properties-HOC.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/List_Group_Layout
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/peek-overview/issue-detail.tsx"
+source_file: "web/core/components/issues/peek-overview/issue-detail.tsx"
 type: "code"
-community: "Issue Content"
+community: "Issue Inbox"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Content
+  - community/Issue_Inbox
 ---
 
 # issue-detail.tsx
@@ -14,24 +14,26 @@ tags:
 ## Connections
 
 - [[IssueTitleInput]] - `imports` [EXTRACTED]
+- [[IssueTypeSwitcher]] - `imports` [EXTRACTED]
 - [[PeekOverviewIssueDetails]] - `contains` [EXTRACTED]
-- [[Props_289]] - `contains` [EXTRACTED]
-- [[index.ts_176]] - `imports_from` [EXTRACTED]
-- [[index.ts_54]] - `imports_from` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
-- [[index.ts_19]] - `imports_from` [EXTRACTED]
-- [[index.ts_102]] - `imports_from` [EXTRACTED]
-- [[index.ts_108]] - `imports_from` [EXTRACTED]
-- [[index.ts_105]] - `imports_from` [EXTRACTED]
+- [[Props_364]] - `contains` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
+- [[index.ts_284]] - `imports_from` [EXTRACTED]
+- [[index.ts_319]] - `imports_from` [EXTRACTED]
+- [[index.ts_367]] - `imports_from` [EXTRACTED]
+- [[index.ts_370]] - `imports_from` [EXTRACTED]
+- [[index.ts_373]] - `imports_from` [EXTRACTED]
+- [[index.ts_441]] - `imports_from` [EXTRACTED]
 - [[title-input.tsx]] - `imports_from` [EXTRACTED]
 - [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
 - [[use-member.ts]] - `imports_from` [EXTRACTED]
 - [[use-project.ts]] - `imports_from` [EXTRACTED]
 - [[use-reload-confirmation.tsx]] - `imports_from` [EXTRACTED]
+- [[useDebouncedDuplicateIssues()]] - `imports` [EXTRACTED]
 - [[useIssueDetail()]] - `imports` [EXTRACTED]
 - [[useMember()]] - `imports` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
-- [[view.tsx_1]] - `imports_from` [EXTRACTED]
+- [[view.tsx_2]] - `imports_from` [EXTRACTED]
 - [[workItemVersionService_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Content
+#graphify/code #graphify/EXTRACTED #community/Issue_Inbox

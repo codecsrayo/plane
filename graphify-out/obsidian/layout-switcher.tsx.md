@@ -1,12 +1,12 @@
 ---
-source_file: "components/base-layouts/layout-switcher.tsx"
+source_file: "web/core/components/base-layouts/layout-switcher.tsx"
 type: "code"
-community: "Issue Layouts"
+community: "Issue Activity"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Layouts
+  - community/Issue_Activity
 ---
 
 # layout-switcher.tsx
@@ -15,9 +15,9 @@ tags:
 
 - [[BASE_LAYOUTS]] - `imports` [EXTRACTED]
 - [[LayoutSwitcher()]] - `contains` [EXTRACTED]
-- [[Props_420]] - `contains` [EXTRACTED]
-- [[constants.ts_3]] - `imports_from` [EXTRACTED]
-- [[use-platform-os.tsx]] - `imports_from` [EXTRACTED]
+- [[Props_494]] - `contains` [EXTRACTED]
+- [[constants.ts_7]] - `imports_from` [EXTRACTED]
+- [[use-platform-os.tsx_1]] - `imports_from` [EXTRACTED]
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Layouts
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

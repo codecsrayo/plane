@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/store/use-multiple-select-store.ts"
+source_file: "web/core/hooks/store/use-multiple-select-store.ts"
 type: "code"
-community: "Multi Select Actions"
+community: "Webhook Workspace"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Multi_Select_Actions
+  - community/Webhook_Workspace
 ---
 
 # use-multiple-select-store.ts
@@ -14,8 +14,9 @@ tags:
 ## Connections
 
 - [[StoreContext]] - `imports` [EXTRACTED]
+- [[root.tsx_29]] - `imports_from` [EXTRACTED]
 - [[store-context.tsx]] - `imports_from` [EXTRACTED]
 - [[use-multiple-select.ts]] - `imports_from` [EXTRACTED]
 - [[useMultipleSelectStore()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Multi_Select_Actions
+#graphify/code #graphify/EXTRACTED #community/Webhook_Workspace

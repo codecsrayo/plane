@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/use-auto-save.tsx"
+source_file: "web/core/hooks/use-auto-save.tsx"
 type: "code"
-community: "Editor Body"
+community: "Content Body"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Editor_Body
+  - community/Content_Body
 ---
 
 # use-auto-save.tsx
@@ -16,4 +16,4 @@ tags:
 - [[use-page-fallback.ts]] - `imports_from` [EXTRACTED]
 - [[useAutoSave()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Editor_Body
+#graphify/code #graphify/EXTRACTED #community/Content_Body

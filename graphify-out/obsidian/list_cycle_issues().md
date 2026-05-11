@@ -1,19 +1,20 @@
 ---
 source_file: "api_rust/src/routes/cycles.rs"
 type: "code"
-community: "Cycles Rust API"
+community: "Cycle Request"
 location: "L601"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Cycles_Rust_API
+  - graphify/INFERRED
+  - community/Cycle_Request
 ---
 
 # list_cycle_issues()
 
 ## Connections
 
-- [[cycles.rs]] - `contains` [EXTRACTED]
+- [[.json()]] - `calls` [INFERRED]
+- [[cycles.rs_1]] - `contains` [EXTRACTED]
 - [[require_role()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycles_Rust_API
+#graphify/code #graphify/INFERRED #community/Cycle_Request

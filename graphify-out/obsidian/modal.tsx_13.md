@@ -1,25 +1,24 @@
 ---
-source_file: "components/estimates/delete/modal.tsx"
+source_file: "web/core/components/workspace-notifications/sidebar/notification-card/options/snooze/modal.tsx"
 type: "code"
-community: "Estimate Disable"
+community: "Notification Option"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Estimate_Disable
+  - community/Notification_Option
 ---
 
 # modal.tsx
 
 ## Connections
 
-- [[DeleteEstimateModal]] - `contains` [EXTRACTED]
-- [[TDeleteEstimateModal]] - `contains` [EXTRACTED]
-- [[index.ts_3]] - `imports_from` [EXTRACTED]
-- [[root.tsx_85]] - `imports_from` [EXTRACTED]
-- [[use-estimate.ts]] - `imports_from` [EXTRACTED]
-- [[use-project.ts]] - `imports_from` [EXTRACTED]
-- [[useEstimate()]] - `imports` [EXTRACTED]
-- [[useProject()]] - `imports` [EXTRACTED]
+- [[DateDropdown]] - `imports` [EXTRACTED]
+- [[FormValues_2]] - `contains` [EXTRACTED]
+- [[NotificationSnoozeModal()]] - `contains` [EXTRACTED]
+- [[TNotificationSnoozeModal]] - `contains` [EXTRACTED]
+- [[date.tsx_1]] - `imports_from` [EXTRACTED]
+- [[defaultValues_16]] - `contains` [EXTRACTED]
+- [[root.tsx_88]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Estimate_Disable
+#graphify/code #graphify/EXTRACTED #community/Notification_Option

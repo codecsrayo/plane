@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/use-navigation-preferences.ts"
+source_file: "web/core/hooks/use-navigation-preferences.ts"
 type: "code"
-community: "Sidebar Menu"
+community: "Sidebar Navigation"
 location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sidebar_Menu
+  - community/Sidebar_Navigation
 ---
 
 # usePersonalNavigationPreferences()
@@ -16,6 +16,5 @@ tags:
 - [[customize-navigation-dialog.tsx]] - `imports` [EXTRACTED]
 - [[sidebar-menu-items.tsx]] - `imports` [EXTRACTED]
 - [[use-navigation-preferences.ts]] - `contains` [EXTRACTED]
-- [[useWorkspace()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sidebar_Menu
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Navigation

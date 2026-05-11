@@ -1,12 +1,12 @@
 ---
-source_file: "components/project-states/state-delete-modal.tsx"
+source_file: "web/core/components/project-states/state-delete-modal.tsx"
 type: "code"
-community: "Calendar Blocks"
+community: "Issue Work"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Blocks
+  - community/Issue_Work
 ---
 
 # state-delete-modal.tsx
@@ -18,4 +18,4 @@ tags:
 - [[use-project-state.ts]] - `imports_from` [EXTRACTED]
 - [[useProjectState()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Blocks
+#graphify/code #graphify/EXTRACTED #community/Issue_Work

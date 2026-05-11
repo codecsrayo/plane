@@ -1,5 +1,5 @@
 ---
-source_file: "components/core/theme/theme-mode-selector.tsx"
+source_file: "web/core/components/core/theme/theme-mode-selector.tsx"
 type: "code"
 community: "Theme Custom"
 location: "L1"
@@ -14,7 +14,7 @@ tags:
 ## Connections
 
 - [[CustomThemeModeSelector]] - `contains` [EXTRACTED]
-- [[Props_462]] - `contains` [EXTRACTED]
+- [[Props_536]] - `contains` [EXTRACTED]
 - [[custom-theme-selector.tsx]] - `imports_from` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Theme_Custom

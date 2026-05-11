@@ -1,12 +1,12 @@
 ---
-source_file: "components/onboarding/invitations.tsx"
+source_file: "web/core/components/onboarding/invitations.tsx"
 type: "code"
-community: "Workspace Invites"
+community: "Workspace Issue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Invites
+  - community/Workspace_Issue
 ---
 
 # invitations.tsx
@@ -14,15 +14,15 @@ tags:
 ## Connections
 
 - [[Invitations()]] - `contains` [EXTRACTED]
-- [[Props_357]] - `contains` [EXTRACTED]
+- [[Props_432]] - `contains` [EXTRACTED]
 - [[WorkspaceLogo]] - `imports` [EXTRACTED]
-- [[WorkspaceService]] - `imports` [EXTRACTED]
+- [[WorkspaceService_1]] - `imports` [EXTRACTED]
 - [[create-or-join-workspaces.tsx]] - `imports_from` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
-- [[logo.tsx]] - `imports_from` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
+- [[logo.tsx_1]] - `imports_from` [EXTRACTED]
 - [[use-workspace.ts]] - `imports_from` [EXTRACTED]
 - [[useWorkspace()]] - `imports` [EXTRACTED]
-- [[workspace.service.ts]] - `imports_from` [EXTRACTED]
-- [[workspaceService_9]] - `contains` [EXTRACTED]
+- [[workspace.service.ts_1]] - `imports_from` [EXTRACTED]
+- [[workspaceService_13]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Invites
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

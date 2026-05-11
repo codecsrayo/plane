@@ -1,22 +1,25 @@
 ---
-source_file: "components/pages/list/root.tsx"
+source_file: "web/core/components/issues/attachment/root.tsx"
 type: "code"
-community: "Action Pages"
+community: "Attachment Issue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Action_Pages
+  - community/Attachment_Issue
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[PageListBlock]] - `imports` [EXTRACTED]
-- [[PagesListRoot]] - `contains` [EXTRACTED]
-- [[TPagesListRoot]] - `contains` [EXTRACTED]
-- [[block.tsx_5]] - `imports_from` [EXTRACTED]
-- [[index.ts_177]] - `imports_from` [EXTRACTED]
+- [[IssueAttachmentRoot]] - `contains` [EXTRACTED]
+- [[IssueAttachmentUpload]] - `imports` [EXTRACTED]
+- [[IssueAttachmentsList]] - `imports` [EXTRACTED]
+- [[TIssueAttachmentRoot]] - `contains` [EXTRACTED]
+- [[attachment-upload.tsx]] - `imports_from` [EXTRACTED]
+- [[attachments-list.tsx]] - `imports_from` [EXTRACTED]
+- [[helper.tsx_27]] - `imports_from` [EXTRACTED]
+- [[useAttachmentOperations()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Action_Pages
+#graphify/code #graphify/EXTRACTED #community/Attachment_Issue

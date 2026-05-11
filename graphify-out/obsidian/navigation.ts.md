@@ -1,21 +1,23 @@
 ---
-source_file: "components/power-k/utils/navigation.ts"
+source_file: "web/app/compat/next/navigation.ts"
 type: "code"
-community: "Navigation Power"
+community: "Link Navigation"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Navigation_Power
+  - community/Link_Navigation
 ---
 
 # navigation.ts
 
 ## Connections
 
-- [[TPowerKContext]] - `imports` [EXTRACTED]
-- [[commands.ts_4]] - `imports_from` [EXTRACTED]
-- [[handlePowerKNavigate()]] - `contains` [EXTRACTED]
-- [[types.ts_2]] - `imports_from` [EXTRACTED]
+- [[ensureTrailingSlash()]] - `imports` [EXTRACTED]
+- [[helper.ts_2]] - `imports_from` [EXTRACTED]
+- [[useParams()]] - `contains` [EXTRACTED]
+- [[usePathname()]] - `contains` [EXTRACTED]
+- [[useRouter()]] - `contains` [EXTRACTED]
+- [[useSearchParams()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Navigation_Power
+#graphify/code #graphify/EXTRACTED #community/Link_Navigation

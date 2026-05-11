@@ -1,12 +1,12 @@
 ---
-source_file: "components/core/modals/issue-search-modal-empty-state.tsx"
+source_file: "web/core/components/core/modals/issue-search-modal-empty-state.tsx"
 type: "code"
-community: "Spreadsheet Columns"
+community: "Issue Activity"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Columns
+  - community/Issue_Activity
 ---
 
 # issue-search-modal-empty-state.tsx
@@ -14,11 +14,11 @@ tags:
 ## Connections
 
 - [[EmptyStateContainer()]] - `contains` [EXTRACTED]
-- [[EmptyStateProps]] - `contains` [EXTRACTED]
+- [[EmptyStateProps_1]] - `contains` [EXTRACTED]
 - [[IssueSearchModalEmptyState()]] - `contains` [EXTRACTED]
 - [[SimpleEmptyState]] - `imports` [EXTRACTED]
 - [[existing-issues-list-modal.tsx]] - `imports_from` [EXTRACTED]
 - [[parent-issues-list-modal.tsx]] - `imports_from` [EXTRACTED]
 - [[simple-empty-state-root.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Columns
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/routes/timezones.rs"
 type: "code"
-community: "Community 218"
+community: "Offset Timezones"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_218
+  - community/Offset_Timezones
 ---
 
 # timezones.rs
@@ -23,4 +23,4 @@ tags:
 - [[list_sorted_by_offset_then_label()]] - `contains` [EXTRACTED]
 - [[list_timezones()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_218
+#graphify/code #graphify/EXTRACTED #community/Offset_Timezones

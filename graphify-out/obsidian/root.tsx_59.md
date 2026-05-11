@@ -1,29 +1,21 @@
 ---
-source_file: "components/power-k/ui/pages/context-based/module/root.tsx"
+source_file: "web/core/components/settings/profile/content/root.tsx"
 type: "code"
-community: "Member Commands"
+community: "Profile Settings"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Commands
+  - community/Profile_Settings
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[PowerKMembersMenu]] - `imports` [EXTRACTED]
-- [[PowerKModuleContextBasedPages]] - `contains` [EXTRACTED]
-- [[PowerKModuleStatusMenu]] - `imports` [EXTRACTED]
-- [[Props_315]] - `contains` [EXTRACTED]
-- [[TPowerKPageType]] - `imports` [EXTRACTED]
-- [[members.tsx_7]] - `imports_from` [EXTRACTED]
-- [[status-menu.tsx]] - `imports_from` [EXTRACTED]
-- [[types.ts_2]] - `imports_from` [EXTRACTED]
-- [[use-member.ts]] - `imports_from` [EXTRACTED]
-- [[use-module.ts]] - `imports_from` [EXTRACTED]
-- [[useMember()]] - `imports` [EXTRACTED]
-- [[useModule()]] - `imports` [EXTRACTED]
+- [[PROFILE_SETTINGS_PAGES_MAP]] - `imports` [EXTRACTED]
+- [[ProfileSettingsContent]] - `contains` [EXTRACTED]
+- [[Props_186]] - `contains` [EXTRACTED]
+- [[index.ts_339]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Commands
+#graphify/code #graphify/EXTRACTED #community/Profile_Settings

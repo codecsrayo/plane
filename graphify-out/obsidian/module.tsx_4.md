@@ -1,21 +1,22 @@
 ---
-source_file: "components/readonly/module.tsx"
+source_file: "web/core/components/issues/issue-detail/issue-activity/activity/actions/module.tsx"
 type: "code"
-community: "Module Analytics"
+community: "Issue Activity"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Analytics
+  - community/Issue_Activity
 ---
 
 # module.tsx
 
 ## Connections
 
-- [[ReadonlyModule]] - `contains` [EXTRACTED]
-- [[TReadonlyModuleProps]] - `contains` [EXTRACTED]
-- [[use-module.ts]] - `imports_from` [EXTRACTED]
-- [[useModule()]] - `imports` [EXTRACTED]
+- [[IssueModuleActivity]] - `contains` [EXTRACTED]
+- [[TIssueModuleActivity]] - `contains` [EXTRACTED]
+- [[index.ts_369]] - `imports_from` [EXTRACTED]
+- [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
+- [[useIssueDetail()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Analytics
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

@@ -1,0 +1,19 @@
+---
+source_file: "admin/components/common/header/index.tsx"
+type: "code"
+community: "Sidebar Admin"
+location: "L37"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Sidebar_Admin
+---
+
+# AdminHeader
+
+## Connections
+
+- [[index.tsx_17]] - `contains` [EXTRACTED]
+- [[layout.tsx_49]] - `imports` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Admin

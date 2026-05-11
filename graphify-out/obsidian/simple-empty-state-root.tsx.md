@@ -1,12 +1,12 @@
 ---
-source_file: "components/empty-state/simple-empty-state-root.tsx"
+source_file: "web/core/components/empty-state/simple-empty-state-root.tsx"
 type: "code"
-community: "Progress Empty"
+community: "Cycle Active"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Progress_Empty
+  - community/Cycle_Active
 ---
 
 # simple-empty-state-root.tsx
@@ -14,7 +14,7 @@ tags:
 ## Connections
 
 - [[EmptyStateSize_1]] - `contains` [EXTRACTED]
-- [[Props_382]] - `contains` [EXTRACTED]
+- [[Props_457]] - `contains` [EXTRACTED]
 - [[SimpleEmptyState]] - `contains` [EXTRACTED]
 - [[bulk-delete-issues-modal.tsx]] - `imports_from` [EXTRACTED]
 - [[cycle-stats.tsx]] - `imports_from` [EXTRACTED]
@@ -28,4 +28,4 @@ tags:
 - [[sizeConfig]] - `contains` [EXTRACTED]
 - [[stickies-list.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Progress_Empty
+#graphify/code #graphify/EXTRACTED #community/Cycle_Active

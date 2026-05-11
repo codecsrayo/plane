@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-detail-widgets/sub-issues/issues-list/list-group.tsx"
+source_file: "web/core/components/issues/issue-detail-widgets/sub-issues/issues-list/list-group.tsx"
 type: "code"
-community: "List Group Layout"
+community: "Issue Activity"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/List_Group_Layout
+  - community/Issue_Activity
 ---
 
 # list-group.tsx
@@ -17,6 +17,6 @@ tags:
 - [[SubIssuesListItem]] - `imports` [EXTRACTED]
 - [[TSubIssuesListGroupProps]] - `contains` [EXTRACTED]
 - [[list-item.tsx_1]] - `imports_from` [EXTRACTED]
-- [[root.tsx_41]] - `imports_from` [EXTRACTED]
+- [[root.tsx_82]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/List_Group_Layout
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

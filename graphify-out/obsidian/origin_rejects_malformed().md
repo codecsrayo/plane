@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/utils/s3.rs"
 type: "code"
-community: "Community 181"
+community: "Asset Issue"
 location: "L235"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_181
+  - community/Asset_Issue
 ---
 
 # origin_rejects_malformed()
@@ -15,4 +15,4 @@ tags:
 
 - [[s3.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_181
+#graphify/code #graphify/EXTRACTED #community/Asset_Issue

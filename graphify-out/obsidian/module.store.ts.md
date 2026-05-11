@@ -1,12 +1,12 @@
 ---
-source_file: "store/module.store.ts"
+source_file: "web/core/store/module.store.ts"
 type: "code"
-community: "Archived Modules"
+community: "Modules Archived"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Archived_Modules
+  - community/Modules_Archived
 ---
 
 # module.store.ts
@@ -16,14 +16,14 @@ tags:
 - [[CoreRootStore]] - `imports` [EXTRACTED]
 - [[IModuleStore]] - `contains` [EXTRACTED]
 - [[ModuleArchiveService]] - `imports` [EXTRACTED]
-- [[ModuleService]] - `imports` [EXTRACTED]
+- [[ModuleService_1]] - `imports` [EXTRACTED]
 - [[ModulesStore]] - `contains` [EXTRACTED]
-- [[api.service.ts]] - `imports_from` [EXTRACTED]
+- [[api.service.ts_1]] - `imports_from` [EXTRACTED]
 - [[displayFilters]] - `contains` [EXTRACTED]
 - [[filters]] - `contains` [EXTRACTED]
-- [[index.ts_22]] - `imports_from` [EXTRACTED]
+- [[index.ts_287]] - `imports_from` [EXTRACTED]
 - [[linkModules]] - `contains` [EXTRACTED]
-- [[module.service.ts]] - `imports_from` [EXTRACTED]
+- [[module.service.ts_1]] - `imports_from` [EXTRACTED]
 - [[moduleDetails]] - `contains` [EXTRACTED]
 - [[moduleIds]] - `contains` [EXTRACTED]
 - [[module_archive.service.ts]] - `imports_from` [EXTRACTED]
@@ -31,9 +31,9 @@ tags:
 - [[originalModuleDetails]] - `contains` [EXTRACTED]
 - [[projectModuleIds]] - `contains` [EXTRACTED]
 - [[projectModules]] - `contains` [EXTRACTED]
-- [[root.store.ts]] - `imports_from` [EXTRACTED]
+- [[root.store.ts_2]] - `imports_from` [EXTRACTED]
 - [[toApiError()]] - `imports` [EXTRACTED]
 - [[uniqueProjectIds]] - `contains` [EXTRACTED]
 - [[use-module.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Archived_Modules
+#graphify/code #graphify/EXTRACTED #community/Modules_Archived

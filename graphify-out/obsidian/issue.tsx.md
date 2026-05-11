@@ -1,12 +1,12 @@
 ---
-source_file: "components/home/widgets/recents/issue.tsx"
+source_file: "web/core/components/home/widgets/recents/issue.tsx"
 type: "code"
-community: "Calendar Blocks"
+community: "Label Dropdown"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Blocks
+  - community/Label_Dropdown
 ---
 
 # issue.tsx
@@ -14,11 +14,12 @@ tags:
 ## Connections
 
 - [[BlockProps_1]] - `contains` [EXTRACTED]
+- [[IssueIdentifier]] - `imports` [EXTRACTED]
 - [[MemberDropdown]] - `imports` [EXTRACTED]
 - [[RecentIssue]] - `contains` [EXTRACTED]
-- [[dropdown.tsx_4]] - `imports_from` [EXTRACTED]
-- [[index.ts_177]] - `imports_from` [EXTRACTED]
-- [[index.tsx_2]] - `imports_from` [EXTRACTED]
+- [[dropdown.tsx_6]] - `imports_from` [EXTRACTED]
+- [[index.ts_442]] - `imports_from` [EXTRACTED]
+- [[index.tsx_8]] - `imports_from` [EXTRACTED]
 - [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
 - [[use-project-state.ts]] - `imports_from` [EXTRACTED]
 - [[use-project.ts]] - `imports_from` [EXTRACTED]
@@ -26,4 +27,4 @@ tags:
 - [[useProject()]] - `imports` [EXTRACTED]
 - [[useProjectState()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Blocks
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

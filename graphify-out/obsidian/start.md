@@ -1,5 +1,5 @@
 ---
-source_file: "lib/polyfills/index.ts"
+source_file: "web/core/lib/polyfills/index.ts"
 type: "code"
 community: "Start"
 location: "L12"
@@ -13,6 +13,6 @@ tags:
 
 ## Connections
 
-- [[index.ts_24]] - `contains` [EXTRACTED]
+- [[index.ts_289]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Start

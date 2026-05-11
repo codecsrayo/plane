@@ -1,12 +1,12 @@
 ---
-source_file: "store/inbox/inbox-issue.store.ts"
+source_file: "web/core/store/inbox/inbox-issue.store.ts"
 type: "code"
-community: "Inbox Issue"
+community: "Project Issue"
 location: "L100"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Inbox_Issue
+  - community/Project_Issue
 ---
 
 # previousData
@@ -15,4 +15,4 @@ tags:
 
 - [[inbox-issue.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Inbox_Issue
+#graphify/code #graphify/EXTRACTED #community/Project_Issue

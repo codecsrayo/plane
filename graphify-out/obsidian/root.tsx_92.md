@@ -1,29 +1,22 @@
 ---
-source_file: "components/rich-filters/filter-value-input/root.tsx"
+source_file: "web/core/components/workspace-notifications/sidebar/filters/menu/root.tsx"
 type: "code"
-community: "Filter Controls"
+community: "Notification Content"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filter_Controls
+  - community/Notification_Content
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[DateRangeFilterValueInput]] - `imports` [EXTRACTED]
-- [[FilterValueInput]] - `contains` [EXTRACTED]
-- [[MultiSelectFilterValueInput]] - `imports` [EXTRACTED]
-- [[SingleDateFilterValueInput]] - `imports` [EXTRACTED]
-- [[SingleSelectFilterValueInput]] - `imports` [EXTRACTED]
-- [[TFilterValueInputProps]] - `imports` [EXTRACTED]
-- [[multi.tsx]] - `imports_from` [EXTRACTED]
-- [[range.tsx]] - `imports_from` [EXTRACTED]
-- [[root.tsx_91]] - `imports_from` [EXTRACTED]
-- [[shared.ts_3]] - `imports_from` [EXTRACTED]
-- [[single.tsx_1]] - `imports_from` [EXTRACTED]
-- [[single.tsx]] - `imports_from` [EXTRACTED]
+- [[NotificationFilter]] - `contains` [EXTRACTED]
+- [[NotificationFilterOptionItem]] - `imports` [EXTRACTED]
+- [[menu-option-item.tsx]] - `imports_from` [EXTRACTED]
+- [[use-platform-os.tsx_1]] - `imports_from` [EXTRACTED]
+- [[usePlatformOS()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filter_Controls
+#graphify/code #graphify/EXTRACTED #community/Notification_Content

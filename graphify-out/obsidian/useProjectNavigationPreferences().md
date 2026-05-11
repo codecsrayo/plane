@@ -1,22 +1,27 @@
 ---
-source_file: "hooks/use-navigation-preferences.ts"
+source_file: "web/core/hooks/use-navigation-preferences.ts"
 type: "code"
-community: "Project Projects"
+community: "Sidebar Navigation"
 location: "L112"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Projects
+  - community/Sidebar_Navigation
 ---
 
 # useProjectNavigationPreferences()
 
 ## Connections
 
+- [[CommonProjectBreadcrumbs()]] - `calls` [EXTRACTED]
+- [[ProjectLayout()]] - `calls` [EXTRACTED]
+- [[common.tsx]] - `imports` [EXTRACTED]
 - [[customize-navigation-dialog.tsx]] - `imports` [EXTRACTED]
+- [[extended-app-header.tsx]] - `imports` [EXTRACTED]
+- [[header.tsx_3]] - `imports` [EXTRACTED]
+- [[layout.tsx_10]] - `imports` [EXTRACTED]
 - [[projects-list-item.tsx]] - `imports` [EXTRACTED]
 - [[projects-list.tsx]] - `imports` [EXTRACTED]
 - [[use-navigation-preferences.ts]] - `contains` [EXTRACTED]
-- [[useWorkspace()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Projects
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Navigation

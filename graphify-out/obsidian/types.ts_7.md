@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/plugins/file/types.ts"
 type: "code"
-community: "Title Node"
+community: "Assets Node"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Title_Node
+  - community/Assets_Node
 ---
 
 # types.ts
@@ -17,4 +17,4 @@ tags:
 - [[delete.ts]] - `imports_from` [EXTRACTED]
 - [[restore.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Title_Node
+#graphify/code #graphify/EXTRACTED #community/Assets_Node

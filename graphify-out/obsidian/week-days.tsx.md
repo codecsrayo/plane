@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/calendar/week-days.tsx"
+source_file: "web/core/components/issues/issue-layouts/calendar/week-days.tsx"
 type: "code"
-community: "Calendar Views"
+community: "Calendar Issue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Views
+  - community/Calendar_Issue
 ---
 
 # week-days.tsx
@@ -15,13 +15,13 @@ tags:
 
 - [[CalendarDayTile]] - `imports` [EXTRACTED]
 - [[CalendarWeekDays]] - `contains` [EXTRACTED]
-- [[Props_217]] - `contains` [EXTRACTED]
+- [[Props_292]] - `contains` [EXTRACTED]
 - [[calendar.tsx]] - `imports_from` [EXTRACTED]
 - [[day-tile.tsx]] - `imports_from` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
-- [[index.ts_15]] - `imports_from` [EXTRACTED]
-- [[index.ts_11]] - `imports_from` [EXTRACTED]
-- [[index.ts_14]] - `imports_from` [EXTRACTED]
-- [[index.ts_9]] - `imports_from` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
+- [[index.ts_274]] - `imports_from` [EXTRACTED]
+- [[index.ts_276]] - `imports_from` [EXTRACTED]
+- [[index.ts_279]] - `imports_from` [EXTRACTED]
+- [[index.ts_280]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Views
+#graphify/code #graphify/EXTRACTED #community/Calendar_Issue

@@ -1,28 +1,27 @@
 ---
-source_file: "api_rust/src/routes/labels.rs"
+source_file: "api_rust/tests/labels.rs"
 type: "code"
-community: "Community 188"
+community: "Returns Sign"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_188
+  - community/Returns_Sign
 ---
 
 # labels.rs
 
 ## Connections
 
-- [[BulkCreateLabelsRequest]] - `contains` [EXTRACTED]
-- [[CreateLabelRequest]] - `contains` [EXTRACTED]
-- [[LabelEntry]] - `contains` [EXTRACTED]
-- [[LabelResponse]] - `contains` [EXTRACTED]
-- [[UpdateLabelRequest]] - `contains` [EXTRACTED]
-- [[bulk_create_labels()]] - `contains` [EXTRACTED]
-- [[create_label()]] - `contains` [EXTRACTED]
-- [[delete_label()]] - `contains` [EXTRACTED]
-- [[get_label()]] - `contains` [EXTRACTED]
-- [[list_labels()]] - `contains` [EXTRACTED]
-- [[update_label()]] - `contains` [EXTRACTED]
+- [[bulk_create_labels_returns_201()]] - `contains` [EXTRACTED]
+- [[create_label_default_color()]] - `contains` [EXTRACTED]
+- [[create_label_empty_name_returns_400()]] - `contains` [EXTRACTED]
+- [[create_label_success()]] - `contains` [EXTRACTED]
+- [[delete_label_returns_204()]] - `contains` [EXTRACTED]
+- [[get_label_by_id_returns_200()]] - `contains` [EXTRACTED]
+- [[get_label_not_found_returns_404()]] - `contains` [EXTRACTED]
+- [[list_labels_empty_returns_200()]] - `contains` [EXTRACTED]
+- [[list_labels_unauthenticated_returns_401()]] - `contains` [EXTRACTED]
+- [[update_label_returns_200()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_188
+#graphify/code #graphify/EXTRACTED #community/Returns_Sign

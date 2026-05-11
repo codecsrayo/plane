@@ -1,23 +1,20 @@
 ---
-source_file: "components/modules/dropdowns/filters/members.tsx"
+source_file: "web/core/components/ui/loader/settings/members.tsx"
 type: "code"
-community: "Lead Members"
+community: "Member Members"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Lead_Members
+  - community/Member_Members
 ---
 
 # members.tsx
 
 ## Connections
 
-- [[FilterMembers]] - `contains` [EXTRACTED]
-- [[Props_86]] - `contains` [EXTRACTED]
-- [[index.ts_90]] - `imports_from` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
-- [[use-member.ts]] - `imports_from` [EXTRACTED]
-- [[useMember()]] - `imports` [EXTRACTED]
+- [[MembersSettingsLoader()]] - `contains` [EXTRACTED]
+- [[member-list.tsx]] - `imports_from` [EXTRACTED]
+- [[members-list.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Lead_Members
+#graphify/code #graphify/EXTRACTED #community/Member_Members

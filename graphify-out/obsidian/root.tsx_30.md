@@ -1,39 +1,23 @@
 ---
-source_file: "components/issues/issue-detail/root.tsx"
+source_file: "web/ce/components/issues/quick-add/root.tsx"
 type: "code"
-community: "Issue Parent"
+community: "Issue Inbox"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Parent
+  - community/Issue_Inbox
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[EmptyState()_1]] - `imports` [EXTRACTED]
-- [[IssueDetailRoot]] - `contains` [EXTRACTED]
-- [[IssueDetailsSidebar]] - `imports` [EXTRACTED]
-- [[IssueMainContent]] - `imports` [EXTRACTED]
-- [[TIssueDetailRoot]] - `contains` [EXTRACTED]
-- [[TIssueOperations]] - `contains` [EXTRACTED]
-- [[cycle-select.tsx]] - `imports_from` [EXTRACTED]
-- [[empty-state.tsx_3]] - `imports_from` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
-- [[index.ts_117]] - `imports_from` [EXTRACTED]
-- [[main-content.tsx_1]] - `imports_from` [EXTRACTED]
-- [[module-select.tsx]] - `imports_from` [EXTRACTED]
-- [[root.tsx_35]] - `imports_from` [EXTRACTED]
-- [[sidebar.tsx_3]] - `imports_from` [EXTRACTED]
-- [[use-app-router.tsx]] - `imports_from` [EXTRACTED]
-- [[use-app-theme.ts]] - `imports_from` [EXTRACTED]
-- [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
-- [[use-issues.ts]] - `imports_from` [EXTRACTED]
-- [[useAppRouter()]] - `imports` [EXTRACTED]
-- [[useAppTheme()]] - `imports` [EXTRACTED]
-- [[useIssueDetail()]] - `imports` [EXTRACTED]
-- [[useIssues()]] - `imports` [EXTRACTED]
+- [[QuickAddIssueFormRoot]] - `contains` [EXTRACTED]
+- [[TQuickAddIssueFormRoot]] - `contains` [EXTRACTED]
+- [[index.ts_362]] - `imports_from` [EXTRACTED]
+- [[use-keypress.tsx]] - `imports_from` [EXTRACTED]
+- [[use-project.ts]] - `imports_from` [EXTRACTED]
+- [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Parent
+#graphify/code #graphify/EXTRACTED #community/Issue_Inbox

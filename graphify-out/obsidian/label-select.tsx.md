@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-detail/label/select/label-select.tsx"
+source_file: "web/core/components/issues/issue-detail/label/select/label-select.tsx"
 type: "code"
-community: "Label Issue"
+community: "Label Dropdown"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Issue
+  - community/Label_Dropdown
 ---
 
 # label-select.tsx
@@ -15,11 +15,11 @@ tags:
 
 - [[IIssueLabelSelect]] - `contains` [EXTRACTED]
 - [[IssueLabelSelect_1]] - `contains` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
-- [[root.tsx_33]] - `imports_from` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
+- [[root.tsx_74]] - `imports_from` [EXTRACTED]
 - [[use-label.ts]] - `imports_from` [EXTRACTED]
-- [[use-platform-os.tsx]] - `imports_from` [EXTRACTED]
+- [[use-platform-os.tsx_1]] - `imports_from` [EXTRACTED]
 - [[useLabel()]] - `imports` [EXTRACTED]
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Issue
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

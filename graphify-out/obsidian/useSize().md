@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/use-window-size.tsx"
+source_file: "web/core/hooks/use-window-size.tsx"
 type: "code"
-community: "Filter Selection UI"
+community: "Member Members"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filter_Selection_UI
+  - community/Member_Members
 ---
 
 # useSize()
@@ -14,6 +14,7 @@ tags:
 ## Connections
 
 - [[FiltersRoot()]] - `calls` [EXTRACTED]
+- [[UseProfileLayout()]] - `calls` [EXTRACTED]
 - [[use-window-size.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filter_Selection_UI
+#graphify/code #graphify/EXTRACTED #community/Member_Members

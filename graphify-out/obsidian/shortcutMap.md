@@ -1,18 +1,18 @@
 ---
-source_file: "components/power-k/core/registry.ts"
+source_file: "web/core/components/power-k/core/registry.ts"
 type: "code"
-community: "Shortcut Registry"
+community: "Command Shortcut"
 location: "L90"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Shortcut_Registry
+  - community/Command_Shortcut
 ---
 
 # shortcutMap
 
 ## Connections
 
-- [[registry.ts]] - `contains` [EXTRACTED]
+- [[registry.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Shortcut_Registry
+#graphify/code #graphify/EXTRACTED #community/Command_Shortcut

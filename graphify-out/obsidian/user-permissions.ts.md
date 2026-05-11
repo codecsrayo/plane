@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/store/user/user-permissions.ts"
+source_file: "web/core/hooks/store/user/user-permissions.ts"
 type: "code"
-community: "Issue Layouts"
+community: "Webhook Workspace"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Layouts
+  - community/Webhook_Workspace
 ---
 
 # user-permissions.ts
@@ -17,4 +17,4 @@ tags:
 - [[store-context.tsx]] - `imports_from` [EXTRACTED]
 - [[useUserPermissions()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Layouts
+#graphify/code #graphify/EXTRACTED #community/Webhook_Workspace

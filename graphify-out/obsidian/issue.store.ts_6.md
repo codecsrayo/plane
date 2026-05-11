@@ -1,31 +1,29 @@
 ---
-source_file: "store/issue/profile/issue.store.ts"
+source_file: "web/core/store/issue/archived/issue.store.ts"
 type: "code"
-community: "Profile Issues"
+community: "Filters Archived"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Profile_Issues
+  - community/Filters_Archived
 ---
 
 # issue.store.ts
 
 ## Connections
 
+- [[ArchivedIssues]] - `contains` [EXTRACTED]
+- [[IArchivedIssues]] - `contains` [EXTRACTED]
+- [[IArchivedIssuesFilter]] - `imports` [EXTRACTED]
 - [[IBaseIssuesStore]] - `imports` [EXTRACTED]
 - [[IIssueRootStore]] - `imports` [EXTRACTED]
-- [[IProfileIssues]] - `contains` [EXTRACTED]
-- [[IProfileIssuesFilter]] - `imports` [EXTRACTED]
-- [[ProfileIssues]] - `contains` [EXTRACTED]
-- [[UserService]] - `imports` [EXTRACTED]
-- [[api.service.ts]] - `imports_from` [EXTRACTED]
+- [[api.service.ts_1]] - `imports_from` [EXTRACTED]
 - [[base-issues.store.ts]] - `imports_from` [EXTRACTED]
-- [[cursorObject_4]] - `contains` [EXTRACTED]
+- [[cursorObject]] - `contains` [EXTRACTED]
 - [[filter.store.ts_5]] - `imports_from` [EXTRACTED]
-- [[params_5]] - `contains` [EXTRACTED]
-- [[root.store.ts_1]] - `imports_from` [EXTRACTED]
+- [[params]] - `contains` [EXTRACTED]
+- [[root.store.ts_3]] - `imports_from` [EXTRACTED]
 - [[toApiError()]] - `imports` [EXTRACTED]
-- [[user.service.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Profile_Issues
+#graphify/code #graphify/EXTRACTED #community/Filters_Archived

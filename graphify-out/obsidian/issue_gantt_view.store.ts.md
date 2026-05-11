@@ -1,12 +1,12 @@
 ---
-source_file: "store/issue/issue_gantt_view.store.ts"
+source_file: "web/core/store/issue/issue_gantt_view.store.ts"
 type: "code"
-community: "Gantt Current"
+community: "Time Month"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Gantt_Current
+  - community/Time_Month
 ---
 
 # issue_gantt_view.store.ts
@@ -15,10 +15,10 @@ tags:
 
 - [[GanttStore]] - `contains` [EXTRACTED]
 - [[IGanttStore]] - `contains` [EXTRACTED]
-- [[TGanttRenderPayload]] - `contains` [EXTRACTED]
+- [[TGanttRenderPayload_1]] - `contains` [EXTRACTED]
 - [[currentViewDataWithView()]] - `imports` [EXTRACTED]
-- [[index.ts_46]] - `imports_from` [EXTRACTED]
-- [[index.ts_42]] - `imports_from` [EXTRACTED]
-- [[newCurrentViewData]] - `contains` [EXTRACTED]
+- [[index.ts_311]] - `imports_from` [EXTRACTED]
+- [[index.ts_307]] - `imports_from` [EXTRACTED]
+- [[newCurrentViewData_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Gantt_Current
+#graphify/code #graphify/EXTRACTED #community/Time_Month

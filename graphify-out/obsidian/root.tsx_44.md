@@ -1,28 +1,26 @@
 ---
-source_file: "components/workspace-notifications/root.tsx"
+source_file: "web/core/components/workspace/sidebar/favorites/favorite-items/root.tsx"
 type: "code"
-community: "Wrapper Workspace"
+community: "Favorite Folder"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Wrapper_Workspace
+  - community/Favorite_Folder
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[LogoSpinner()]] - `imports` [EXTRACTED]
-- [[NotificationsRoot]] - `contains` [EXTRACTED]
-- [[NotificationsRootProps]] - `contains` [EXTRACTED]
-- [[index.ts_2]] - `imports_from` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
-- [[index.ts_149]] - `imports_from` [EXTRACTED]
-- [[logo-spinner.tsx]] - `imports_from` [EXTRACTED]
-- [[use-workspace-issue-properties.ts]] - `imports_from` [EXTRACTED]
-- [[use-workspace.ts]] - `imports_from` [EXTRACTED]
-- [[useWorkspace()]] - `imports` [EXTRACTED]
-- [[useWorkspaceIssueProperties()]] - `imports` [EXTRACTED]
+- [[Adapter_1]] - `imports_from` [EXTRACTED]
+- [[FavoriteRoot]] - `contains` [EXTRACTED]
+- [[Props_106]] - `contains` [EXTRACTED]
+- [[favorites.helpers.ts]] - `imports_from` [EXTRACTED]
+- [[getCanDrop()_1]] - `imports` [EXTRACTED]
+- [[getInstructionFromPayload()_1]] - `imports` [EXTRACTED]
+- [[index.ts_299]] - `imports_from` [EXTRACTED]
+- [[use-favorite-item-details.tsx]] - `imports_from` [EXTRACTED]
+- [[useFavoriteItemDetails()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Wrapper_Workspace
+#graphify/code #graphify/EXTRACTED #community/Favorite_Folder

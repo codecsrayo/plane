@@ -1,30 +1,30 @@
 ---
-source_file: "components/pages/navigation-pane/tab-panels/info/root.tsx"
+source_file: "web/core/components/issues/issue-detail-widgets/sub-issues/issues-list/root.tsx"
 type: "code"
-community: "Info Navigation"
+community: "Issue Activity"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Info_Navigation
+  - community/Issue_Activity
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[PageNavigationPaneInfoTabActorsInfo]] - `imports` [EXTRACTED]
-- [[PageNavigationPaneInfoTabDocumentInfo]] - `imports` [EXTRACTED]
-- [[PageNavigationPaneInfoTabPanel]] - `contains` [EXTRACTED]
-- [[PageNavigationPaneInfoTabVersionHistory]] - `imports` [EXTRACTED]
-- [[Props_405]] - `contains` [EXTRACTED]
-- [[TPageInstance]] - `imports` [EXTRACTED]
-- [[TPageRootHandlers]] - `imports` [EXTRACTED]
-- [[actors-info.tsx]] - `imports_from` [EXTRACTED]
-- [[base-page.ts]] - `imports_from` [EXTRACTED]
-- [[document-info.tsx]] - `imports_from` [EXTRACTED]
-- [[page-root.tsx]] - `imports_from` [EXTRACTED]
-- [[root.tsx_81]] - `imports_from` [EXTRACTED]
-- [[version-history.tsx]] - `imports_from` [EXTRACTED]
+- [[Props_356]] - `contains` [EXTRACTED]
+- [[SectionEmptyState()]] - `imports` [EXTRACTED]
+- [[SubIssuesListGroup]] - `imports` [EXTRACTED]
+- [[SubIssuesListRoot]] - `contains` [EXTRACTED]
+- [[content.tsx_2]] - `imports_from` [EXTRACTED]
+- [[getGroupByColumns()]] - `imports` [EXTRACTED]
+- [[isWorkspaceLevel()]] - `imports` [EXTRACTED]
+- [[list-group.tsx_1]] - `imports_from` [EXTRACTED]
+- [[list-item.tsx_1]] - `imports_from` [EXTRACTED]
+- [[section-empty-state-root.tsx]] - `imports_from` [EXTRACTED]
+- [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
+- [[useIssueDetail()]] - `imports` [EXTRACTED]
+- [[utils.tsx_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Info_Navigation
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

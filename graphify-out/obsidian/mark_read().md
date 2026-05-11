@@ -1,19 +1,21 @@
 ---
-source_file: "api_rust/src/routes/notifications.rs"
+source_file: "api/plane/app/views/notification/base.py"
 type: "code"
-community: "Community 91"
-location: "L454"
+community: "Partial Endpoint"
+location: "L164"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Community_91
+  - graphify/INFERRED
+  - community/Partial_Endpoint
 ---
 
 # mark_read()
 
 ## Connections
 
-- [[enrich_notifications()]] - `calls` [EXTRACTED]
-- [[notifications.rs]] - `contains` [EXTRACTED]
+- [[.get()_25]] - `calls` [EXTRACTED]
+- [[NotificationSerializer]] - `calls` [INFERRED]
+- [[base.py_8]] - `contains` [EXTRACTED]
+- [[response]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_91
+#graphify/code #graphify/INFERRED #community/Partial_Endpoint

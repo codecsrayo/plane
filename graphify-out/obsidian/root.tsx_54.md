@@ -1,26 +1,25 @@
 ---
-source_file: "components/cycles/list/root.tsx"
+source_file: "web/core/components/modules/archived-modules/root.tsx"
 type: "code"
-community: "Cycle Cycles"
+community: "Cycles Archived"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Cycles
+  - community/Cycles_Archived
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[CycleListGroupHeader()]] - `imports` [EXTRACTED]
-- [[CyclePeekOverview]] - `imports` [EXTRACTED]
-- [[CyclesList]] - `contains` [EXTRACTED]
-- [[CyclesListMap()]] - `imports` [EXTRACTED]
-- [[ICyclesList]] - `contains` [EXTRACTED]
-- [[cycle-list-group-header.tsx]] - `imports_from` [EXTRACTED]
-- [[cycle-peek-overview.tsx]] - `imports_from` [EXTRACTED]
-- [[cycles-list-map.tsx]] - `imports_from` [EXTRACTED]
-- [[index.ts_177]] - `imports_from` [EXTRACTED]
+- [[ArchivedModuleLayoutRoot]] - `contains` [EXTRACTED]
+- [[CycleModuleListLayoutLoader()]] - `imports` [EXTRACTED]
+- [[cycle-module-list-loader.tsx]] - `imports_from` [EXTRACTED]
+- [[index.ts_323]] - `imports_from` [EXTRACTED]
+- [[use-module-filter.ts]] - `imports_from` [EXTRACTED]
+- [[use-module.ts]] - `imports_from` [EXTRACTED]
+- [[useModule()]] - `imports` [EXTRACTED]
+- [[useModuleFilter()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Cycles
+#graphify/code #graphify/EXTRACTED #community/Cycles_Archived

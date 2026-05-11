@@ -1,20 +1,21 @@
 ---
 source_file: "api_rust/src/routes/estimates.rs"
 type: "code"
-community: "Community 130"
+community: "Request Intake"
 location: "L584"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_130
+  - community/Request_Intake
 ---
 
 # list_project_estimates()
 
 ## Connections
 
+- [[.json()]] - `calls` [INFERRED]
 - [[.new()]] - `calls` [INFERRED]
-- [[estimates.rs]] - `contains` [EXTRACTED]
+- [[estimates.rs_1]] - `contains` [EXTRACTED]
 - [[require_role()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Community_130
+#graphify/code #graphify/INFERRED #community/Request_Intake

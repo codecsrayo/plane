@@ -1,18 +1,18 @@
 ---
-source_file: "store/issue/issue_gantt_view.store.ts"
+source_file: "web/ce/store/timeline/base-timeline.store.ts"
 type: "code"
-community: "Gantt Current"
-location: "L105"
+community: "Time Month"
+location: "L187"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Gantt_Current
+  - community/Time_Month
 ---
 
 # newCurrentViewData
 
 ## Connections
 
-- [[issue_gantt_view.store.ts]] - `contains` [EXTRACTED]
+- [[base-timeline.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Gantt_Current
+#graphify/code #graphify/EXTRACTED #community/Time_Month

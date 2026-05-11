@@ -1,0 +1,33 @@
+---
+---
+<nav class="nav" id="nav" aria-label="Principal">
+  <a href="#top" class="brand" aria-label="BI-Quare Consulting">
+    <span class="mark" aria-hidden="true" style="width:52px;height:36px;flex:0 0 52px">
+      <img src="https://www.bi-quare.com.co/gallery_gen/58e558f37edd5cd109e5c439964719cf_221x152.41379310345.png" alt="BI-Quare" style="width:100%;height:100%;object-fit:contain;display:block"/>
+    </span>
+    BI-Quare <em>consulting</em>
+  </a>
+  <div class="nav-links">
+    <a href="#nosotros">Nosotros</a>
+    <a href="#que-hacemos">Qué hacemos</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#productos">Productos</a>
+    <a href="#trayectoria">Trayectoria</a>
+  </div>
+  <div class="nav-right">
+    <a href="#contacto" class="nav-cta">Contacto →</a>
+    <a href="/app/" class="nav-login">
+      <svg viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><path d="M10 17l5-5-5-5"/><path d="M15 12H3"/></svg>
+      <span>Iniciar sesión</span>
+    </a>
+  </div>
+</nav>
+
+<script>
+  const nav = document.getElementById('nav');
+  if (nav) {
+    const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 20);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+</script>

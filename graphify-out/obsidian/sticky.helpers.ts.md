@@ -1,5 +1,5 @@
 ---
-source_file: "components/stickies/layout/sticky.helpers.ts"
+source_file: "web/core/components/stickies/layout/sticky.helpers.ts"
 type: "code"
 community: "Stickies Sticky"
 location: "L1"

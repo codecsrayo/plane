@@ -1,27 +1,28 @@
 ---
-source_file: "components/settings/profile/content/pages/notifications/root.tsx"
+source_file: "web/ce/components/workspace/billing/comparison/root.tsx"
 type: "code"
-community: "Email Settings"
+community: "Plan Plans"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Email_Settings
+  - community/Plan_Plans
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[EmailSettingsLoader()]] - `imports` [EXTRACTED]
-- [[NotificationsProfileSettings]] - `contains` [EXTRACTED]
-- [[NotificationsProfileSettingsForm]] - `imports` [EXTRACTED]
-- [[ProfileSettingsHeading()]] - `imports` [EXTRACTED]
-- [[UserService]] - `imports` [EXTRACTED]
-- [[email-notification-form.tsx]] - `imports_from` [EXTRACTED]
-- [[email.tsx]] - `imports_from` [EXTRACTED]
-- [[heading.tsx_1]] - `imports_from` [EXTRACTED]
-- [[user.service.ts]] - `imports_from` [EXTRACTED]
-- [[userService_6]] - `contains` [EXTRACTED]
+- [[PLANE_PLANS]] - `imports` [EXTRACTED]
+- [[PlanDetail]] - `imports` [EXTRACTED]
+- [[PlansComparison]] - `contains` [EXTRACTED]
+- [[PlansComparisonBase]] - `imports` [EXTRACTED]
+- [[TPlanePlans]] - `imports` [EXTRACTED]
+- [[TPlansComparisonProps]] - `contains` [EXTRACTED]
+- [[base.tsx_1]] - `imports_from` [EXTRACTED]
+- [[plan-detail.tsx]] - `imports_from` [EXTRACTED]
+- [[plans.tsx]] - `imports_from` [EXTRACTED]
+- [[root.tsx_21]] - `imports_from` [EXTRACTED]
+- [[shouldRenderPlanDetail()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Email_Settings
+#graphify/code #graphify/EXTRACTED #community/Plan_Plans

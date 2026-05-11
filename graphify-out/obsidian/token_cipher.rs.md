@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/utils/token_cipher.rs"
 type: "code"
-community: "Community 129"
+community: "Encrypt Plaintext"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_129
+  - community/Encrypt_Plaintext
 ---
 
 # token_cipher.rs
@@ -23,4 +23,4 @@ tags:
 - [[set_test_key()]] - `contains` [EXTRACTED]
 - [[tampered_ciphertext_fails_auth()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_129
+#graphify/code #graphify/EXTRACTED #community/Encrypt_Plaintext

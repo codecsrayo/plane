@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/routes/notifications.rs"
 type: "code"
-community: "Community 91"
+community: "User Github"
 location: "L839"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Community_91
+  - graphify/INFERRED
+  - community/User_Github
 ---
 
 # update_user_notification_preferences()
@@ -14,7 +14,10 @@ tags:
 ## Connections
 
 - [[.from_model()_2]] - `calls` [EXTRACTED]
+- [[.json()]] - `calls` [INFERRED]
+- [[.set()]] - `calls` [INFERRED]
 - [[get_or_create_preferences()]] - `calls` [EXTRACTED]
-- [[notifications.rs]] - `contains` [EXTRACTED]
+- [[notifications.rs_1]] - `contains` [EXTRACTED]
+- [[now]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_91
+#graphify/code #graphify/INFERRED #community/User_Github

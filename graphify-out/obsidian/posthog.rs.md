@@ -1,18 +1,18 @@
 ---
 source_file: "api_rust/src/utils/posthog.rs"
 type: "code"
-community: "Workspace Activity & Analytics"
+community: "Returns Sign"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Activity__Analytics
+  - community/Returns_Sign
 ---
 
 # posthog.rs
 
 ## Connections
 
-- [[track_event()]] - `contains` [EXTRACTED]
+- [[track_event()_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Activity\_\_Analytics
+#graphify/code #graphify/EXTRACTED #community/Returns_Sign

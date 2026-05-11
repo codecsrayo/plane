@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/utils/serde_date.rs"
 type: "code"
-community: "Community 74"
+community: "Start Date"
 location: "L116"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_74
+  - community/Start_Date
 ---
 
 # project_tz_to_utc()
@@ -15,7 +15,7 @@ tags:
 
 - [[bogota_end_rolls_into_next_day_utc()]] - `calls` [EXTRACTED]
 - [[bogota_start_shifts_five_hours_forward()]] - `calls` [EXTRACTED]
-- [[create_cycle()]] - `calls` [INFERRED]
+- [[create_cycle()_3]] - `calls` [INFERRED]
 - [[end_utc_is_last_minute_of_day()]] - `calls` [EXTRACTED]
 - [[invalid_timezone_errors()]] - `calls` [EXTRACTED]
 - [[ny_spring_forward_midnight_is_unambiguous()]] - `calls` [EXTRACTED]
@@ -29,4 +29,4 @@ tags:
 - [[tokyo_start_rolls_back_to_previous_day_utc()]] - `calls` [EXTRACTED]
 - [[update_cycle()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_74
+#graphify/code #graphify/EXTRACTED #community/Start_Date

@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/auth/password_management.rs"
 type: "code"
-community: "Auth Rust API"
+community: "Password Email"
 location: "L108"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Auth_Rust_API
+  - graphify/INFERRED
+  - community/Password_Email
 ---
 
 # set_password()
@@ -14,10 +14,12 @@ tags:
 ## Connections
 
 - [[.invalid_password()]] - `calls` [INFERRED]
+- [[.json()]] - `calls` [INFERRED]
 - [[.password_already_set()]] - `calls` [INFERRED]
+- [[.set()]] - `calls` [INFERRED]
 - [[password_management.rs]] - `contains` [EXTRACTED]
 - [[replace_session_cookie()]] - `calls` [INFERRED]
 - [[validate_csrf_header()]] - `calls` [EXTRACTED]
 - [[validate_password_strength()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Rust_API
+#graphify/code #graphify/INFERRED #community/Password_Email

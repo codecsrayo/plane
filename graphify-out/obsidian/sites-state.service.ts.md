@@ -1,12 +1,12 @@
 ---
 source_file: "services/src/state/sites-state.service.ts"
 type: "code"
-community: "Sites State"
+community: "Sites Cycle"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sites_State
+  - community/Sites_Cycle
 ---
 
 # sites-state.service.ts
@@ -16,4 +16,4 @@ tags:
 - [[SitesStateService]] - `contains` [EXTRACTED]
 - [[api.service.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sites_State
+#graphify/code #graphify/EXTRACTED #community/Sites_Cycle

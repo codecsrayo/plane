@@ -1,12 +1,12 @@
 ---
-source_file: "components/power-k/config/account-commands.ts"
+source_file: "web/core/components/power-k/config/account-commands.ts"
 type: "code"
-community: "Command Palette"
+community: "Power Chat"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Command_Palette
+  - community/Power_Chat
 ---
 
 # usePowerKAccountCommands()
@@ -17,6 +17,5 @@ tags:
 - [[commands.ts_3]] - `imports` [EXTRACTED]
 - [[useAppRouter()]] - `calls` [EXTRACTED]
 - [[useProjectsAppPowerKCommands()]] - `calls` [EXTRACTED]
-- [[useUser()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Command_Palette
+#graphify/code #graphify/EXTRACTED #community/Power_Chat

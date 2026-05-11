@@ -1,12 +1,12 @@
 ---
-source_file: "components/integration/github/project-issue-sync.tsx"
+source_file: "web/core/components/integration/github/project-issue-sync.tsx"
 type: "code"
-community: "Github Integration"
+community: "Project Workspace"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Github_Integration
+  - community/Project_Workspace
 ---
 
 # project-issue-sync.tsx
@@ -15,12 +15,13 @@ tags:
 
 - [[GithubProjectIssueSync]] - `contains` [EXTRACTED]
 - [[IntegrationConfirmActionModal()]] - `imports` [EXTRACTED]
-- [[Props_155]] - `contains` [EXTRACTED]
+- [[Props_230]] - `contains` [EXTRACTED]
 - [[confirm-action-modal.tsx]] - `imports_from` [EXTRACTED]
 - [[getRepoSyncSwrKey()]] - `contains` [EXTRACTED]
-- [[index.ts_21]] - `imports_from` [EXTRACTED]
+- [[index.ts_286]] - `imports_from` [EXTRACTED]
 - [[integration-card.tsx]] - `imports_from` [EXTRACTED]
+- [[page.tsx_53]] - `imports_from` [EXTRACTED]
 - [[use-project.ts]] - `imports_from` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Github_Integration
+#graphify/code #graphify/EXTRACTED #community/Project_Workspace

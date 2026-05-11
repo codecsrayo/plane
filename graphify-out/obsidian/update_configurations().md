@@ -1,22 +1,25 @@
 ---
 source_file: "api_rust/src/routes/instances.rs"
 type: "code"
-community: "Community 57"
+community: "User Github"
 location: "L470"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Community_57
+  - graphify/INFERRED
+  - community/User_Github
 ---
 
 # update_configurations()
 
 ## Connections
 
+- [[.json()]] - `calls` [INFERRED]
 - [[.new()]] - `calls` [INFERRED]
+- [[.set()]] - `calls` [INFERRED]
 - [[config_var()]] - `calls` [EXTRACTED]
 - [[encrypt_config_value()]] - `calls` [INFERRED]
-- [[instances.rs]] - `contains` [EXTRACTED]
+- [[instances.rs_1]] - `contains` [EXTRACTED]
+- [[now]] - `calls` [INFERRED]
 - [[require_instance_admin()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_57
+#graphify/code #graphify/INFERRED #community/User_Github

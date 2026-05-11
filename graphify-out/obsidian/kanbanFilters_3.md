@@ -1,18 +1,18 @@
 ---
-source_file: "store/issue/module/filter.store.ts"
+source_file: "web/core/store/issue/module/filter.store.ts"
 type: "code"
-community: "Filters Display"
+community: "Filters Issue"
 location: "L157"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filters_Display
+  - community/Filters_Issue
 ---
 
 # kanbanFilters
 
 ## Connections
 
-- [[filter.store.ts_3]] - `contains` [EXTRACTED]
+- [[filter.store.ts_8]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filters_Display
+#graphify/code #graphify/EXTRACTED #community/Filters_Issue

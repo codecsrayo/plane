@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/utils/pagination.rs"
 type: "code"
-community: "Community 156"
+community: "Project Response"
 location: "L187"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_156
+  - community/Project_Response
 ---
 
 # response_shape()
@@ -15,4 +15,4 @@ tags:
 
 - [[pagination.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_156
+#graphify/code #graphify/EXTRACTED #community/Project_Response

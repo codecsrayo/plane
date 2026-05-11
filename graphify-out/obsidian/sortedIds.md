@@ -1,12 +1,12 @@
 ---
-source_file: "store/favorite.store.ts"
+source_file: "web/core/store/favorite.store.ts"
 type: "code"
-community: "Project Root Store"
+community: "Project Issue"
 location: "L229"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Root_Store
+  - community/Project_Issue
 ---
 
 # sortedIds
@@ -15,4 +15,4 @@ tags:
 
 - [[favorite.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Root_Store
+#graphify/code #graphify/EXTRACTED #community/Project_Issue

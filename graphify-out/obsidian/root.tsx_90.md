@@ -1,22 +1,24 @@
 ---
-source_file: "components/analytics/overview/root.tsx"
+source_file: "web/core/components/workspace-notifications/sidebar/header/options/root.tsx"
 type: "code"
-community: "Insight Analytics"
+community: "Notification Content"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Insight_Analytics
+  - community/Notification_Content
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[Overview()]] - `contains` [EXTRACTED]
-- [[active-projects.tsx]] - `imports_from` [EXTRACTED]
-- [[analytics-wrapper.tsx]] - `imports_from` [EXTRACTED]
-- [[project-insights.tsx]] - `imports_from` [EXTRACTED]
-- [[total-insights.tsx]] - `imports_from` [EXTRACTED]
+- [[NotificationSidebarHeaderOptions]] - `contains` [EXTRACTED]
+- [[TNotificationSidebarHeaderOptions]] - `contains` [EXTRACTED]
+- [[index.ts_267]] - `imports_from` [EXTRACTED]
+- [[index.ts_391]] - `imports_from` [EXTRACTED]
+- [[index.ts_390]] - `imports_from` [EXTRACTED]
+- [[use-platform-os.tsx_1]] - `imports_from` [EXTRACTED]
+- [[usePlatformOS()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Insight_Analytics
+#graphify/code #graphify/EXTRACTED #community/Notification_Content

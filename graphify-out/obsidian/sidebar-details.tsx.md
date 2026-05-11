@@ -1,12 +1,12 @@
 ---
-source_file: "components/cycles/analytics-sidebar/sidebar-details.tsx"
+source_file: "web/core/components/cycles/analytics-sidebar/sidebar-details.tsx"
 type: "code"
-community: "Cycle Progress"
+community: "Cycle Active"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Progress
+  - community/Cycle_Active
 ---
 
 # sidebar-details.tsx
@@ -14,10 +14,10 @@ tags:
 ## Connections
 
 - [[CycleSidebarDetails]] - `contains` [EXTRACTED]
-- [[Props_305]] - `contains` [EXTRACTED]
-- [[index.ts_3]] - `imports_from` [EXTRACTED]
-- [[root.tsx_53]] - `imports_from` [EXTRACTED]
+- [[Props_380]] - `contains` [EXTRACTED]
+- [[index.ts_268]] - `imports_from` [EXTRACTED]
+- [[root.tsx_94]] - `imports_from` [EXTRACTED]
 - [[use-member.ts]] - `imports_from` [EXTRACTED]
 - [[useMember()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Progress
+#graphify/code #graphify/EXTRACTED #community/Cycle_Active

@@ -1,27 +1,22 @@
 ---
-source_file: "components/gantt-chart/sidebar/modules/sidebar.tsx"
+source_file: "web/ce/components/onboarding/tour/sidebar.tsx"
 type: "code"
-community: "Gantt Sidebar"
+community: "Tour Steps"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Gantt_Sidebar
+  - community/Tour_Steps
 ---
 
 # sidebar.tsx
 
 ## Connections
 
-- [[GanttDnDHOC]] - `imports` [EXTRACTED]
-- [[ModuleGanttSidebar]] - `contains` [EXTRACTED]
-- [[ModulesSidebarBlock]] - `imports` [EXTRACTED]
-- [[Props_44]] - `contains` [EXTRACTED]
-- [[block.tsx]] - `imports_from` [EXTRACTED]
-- [[gantt-dnd-HOC.tsx]] - `imports_from` [EXTRACTED]
-- [[handleOrderChange()]] - `imports` [EXTRACTED]
-- [[use-timeline-chart.ts]] - `imports_from` [EXTRACTED]
-- [[useTimeLineChart()]] - `imports` [EXTRACTED]
-- [[utils.ts_1]] - `imports_from` [EXTRACTED]
+- [[Props_72]] - `contains` [EXTRACTED]
+- [[TTourSteps]] - `imports` [EXTRACTED]
+- [[TourSidebar()]] - `contains` [EXTRACTED]
+- [[root.tsx_36]] - `imports_from` [EXTRACTED]
+- [[sidebarOptions]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Gantt_Sidebar
+#graphify/code #graphify/EXTRACTED #community/Tour_Steps

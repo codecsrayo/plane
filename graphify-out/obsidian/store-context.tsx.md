@@ -1,12 +1,12 @@
 ---
-source_file: "lib/store-context.tsx"
+source_file: "web/core/lib/store-context.tsx"
 type: "code"
-community: "Workspace Draft"
+community: "Webhook Workspace"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Draft
+  - community/Webhook_Workspace
 ---
 
 # store-context.tsx
@@ -17,10 +17,12 @@ tags:
 - [[StoreProvider()]] - `contains` [EXTRACTED]
 - [[base-command-palette.store.ts]] - `imports_from` [EXTRACTED]
 - [[base-issues-utils.ts]] - `imports_from` [EXTRACTED]
-- [[helper.ts_2]] - `imports_from` [EXTRACTED]
-- [[helper.tsx_8]] - `imports_from` [EXTRACTED]
+- [[helper.ts_6]] - `imports_from` [EXTRACTED]
+- [[helper.tsx_30]] - `imports_from` [EXTRACTED]
 - [[initializeStore()]] - `contains` [EXTRACTED]
-- [[issue.store.ts]] - `imports_from` [EXTRACTED]
+- [[issue-filter.helper.ts]] - `imports_from` [EXTRACTED]
+- [[issue.store.ts_5]] - `imports_from` [EXTRACTED]
+- [[provider.tsx]] - `imports_from` [EXTRACTED]
 - [[rootStore]] - `contains` [EXTRACTED]
 - [[store]] - `contains` [EXTRACTED]
 - [[use-analytics.ts]] - `imports_from` [EXTRACTED]
@@ -47,6 +49,8 @@ tags:
 - [[use-module.ts]] - `imports_from` [EXTRACTED]
 - [[use-multiple-select-store.ts]] - `imports_from` [EXTRACTED]
 - [[use-notification.ts]] - `imports_from` [EXTRACTED]
+- [[use-page-store.ts]] - `imports_from` [EXTRACTED]
+- [[use-page.ts]] - `imports_from` [EXTRACTED]
 - [[use-power-k.ts]] - `imports_from` [EXTRACTED]
 - [[use-project-estimate.ts]] - `imports_from` [EXTRACTED]
 - [[use-project-filter.ts]] - `imports_from` [EXTRACTED]
@@ -57,7 +61,7 @@ tags:
 - [[use-project.ts]] - `imports_from` [EXTRACTED]
 - [[use-router-params.ts]] - `imports_from` [EXTRACTED]
 - [[use-stickies.tsx]] - `imports_from` [EXTRACTED]
-- [[use-timeline-chart.ts]] - `imports_from` [EXTRACTED]
+- [[use-timeline-chart.ts_1]] - `imports_from` [EXTRACTED]
 - [[use-webhook.ts]] - `imports_from` [EXTRACTED]
 - [[use-work-item-filters.ts]] - `imports_from` [EXTRACTED]
 - [[use-workspace-draft-issue-filters.ts]] - `imports_from` [EXTRACTED]
@@ -68,6 +72,7 @@ tags:
 - [[user-user-profile.ts]] - `imports_from` [EXTRACTED]
 - [[user-user-settings.ts]] - `imports_from` [EXTRACTED]
 - [[user-user.ts]] - `imports_from` [EXTRACTED]
-- [[utils.tsx_1]] - `imports_from` [EXTRACTED]
+- [[utils.tsx]] - `imports_from` [EXTRACTED]
+- [[utils.tsx_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Draft
+#graphify/code #graphify/EXTRACTED #community/Webhook_Workspace

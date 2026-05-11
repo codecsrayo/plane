@@ -1,5 +1,5 @@
 ---
-source_file: "components/power-k/ui/modal/search-results-map.tsx"
+source_file: "web/ce/components/command-palette/power-k/search/search-results-map.tsx"
 type: "code"
 community: "Search Results"
 location: "L1"
@@ -13,10 +13,11 @@ tags:
 
 ## Connections
 
-- [[POWER_K_SEARCH_RESULTS_GROUPS_MAP]] - `contains` [EXTRACTED]
-- [[TPowerKSearchResultGroupDetails]] - `contains` [EXTRACTED]
-- [[TPowerKSearchResultsKeys]] - `imports` [EXTRACTED]
-- [[search-results.tsx]] - `imports_from` [EXTRACTED]
-- [[types.ts_2]] - `imports_from` [EXTRACTED]
+- [[SEARCH_RESULTS_GROUPS_MAP_EXTENDED]] - `contains` [EXTRACTED]
+- [[TPowerKSearchResultGroupDetails]] - `imports` [EXTRACTED]
+- [[TPowerKSearchResultsKeysExtended]] - `imports` [EXTRACTED]
+- [[TSearchResultsGroupsMapExtended]] - `contains` [EXTRACTED]
+- [[search-results-map.tsx_1]] - `imports_from` [EXTRACTED]
+- [[types.ts_13]] - `imports_from` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Search_Results

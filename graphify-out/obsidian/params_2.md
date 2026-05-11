@@ -1,5 +1,5 @@
 ---
-source_file: "store/issue/workspace/issue.store.ts"
+source_file: "web/core/store/issue/workspace/issue.store.ts"
 type: "code"
 community: "Filters Params"
 location: "L113"
@@ -13,6 +13,6 @@ tags:
 
 ## Connections
 
-- [[issue.store.ts_3]] - `contains` [EXTRACTED]
+- [[issue.store.ts_8]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Filters_Params

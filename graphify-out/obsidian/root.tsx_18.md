@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/popover/root.tsx"
 type: "code"
-community: "Emoji Picker"
+community: "Emoji Icon"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Emoji_Picker
+  - community/Emoji_Icon
 ---
 
 # root.tsx
@@ -26,4 +26,4 @@ tags:
 - [[placement.ts]] - `imports_from` [EXTRACTED]
 - [[popover.stories.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Emoji_Picker
+#graphify/code #graphify/EXTRACTED #community/Emoji_Icon

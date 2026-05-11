@@ -1,19 +1,20 @@
 ---
-source_file: "store/issue/helpers/base-issues.store.ts"
+source_file: "space/store/helpers/base-issues.store.ts"
 type: "code"
-community: "Issue Store Ops"
-location: "L1505"
+community: "Issue Group"
+location: "L467"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Store_Ops
+  - community/Issue_Group
 ---
 
 # updateIssueCount()
 
 ## Connections
 
+- [[.set()]] - `calls` [INFERRED]
 - [[base-issues.store.ts]] - `contains` [EXTRACTED]
-- [[get()]] - `calls` [EXTRACTED]
+- [[base-issues.store.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Store_Ops
+#graphify/code #graphify/EXTRACTED #community/Issue_Group

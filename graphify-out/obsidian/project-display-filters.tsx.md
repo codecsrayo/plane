@@ -1,12 +1,12 @@
 ---
-source_file: "components/project/applied-filters/project-display-filters.tsx"
+source_file: "web/core/components/project/applied-filters/project-display-filters.tsx"
 type: "code"
-community: "Applied Filters"
+community: "Filters Applied"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Applied_Filters
+  - community/Filters_Applied
 ---
 
 # project-display-filters.tsx
@@ -14,7 +14,7 @@ tags:
 ## Connections
 
 - [[AppliedProjectDisplayFilters]] - `contains` [EXTRACTED]
-- [[Props_151]] - `contains` [EXTRACTED]
-- [[root.tsx_26]] - `imports_from` [EXTRACTED]
+- [[Props_226]] - `contains` [EXTRACTED]
+- [[root.tsx_67]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Applied_Filters
+#graphify/code #graphify/EXTRACTED #community/Filters_Applied

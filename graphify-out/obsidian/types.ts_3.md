@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/callout/types.ts"
 type: "code"
-community: "Callout Extension"
+community: "Callout Custom"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Callout_Extension
+  - community/Callout_Custom
 ---
 
 # types.ts
@@ -26,4 +26,4 @@ tags:
 - [[logo-selector.tsx]] - `imports_from` [EXTRACTED]
 - [[utils.ts_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Callout_Extension
+#graphify/code #graphify/EXTRACTED #community/Callout_Custom

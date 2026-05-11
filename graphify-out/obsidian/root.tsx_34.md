@@ -1,29 +1,35 @@
 ---
-source_file: "components/issues/issue-detail/links/root.tsx"
+source_file: "web/ce/components/cycles/active-cycle/root.tsx"
 type: "code"
-community: "Issue Activity"
+community: "Cycle Active"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Cycle_Active
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[IssueLinkCreateUpdateModal]] - `imports` [EXTRACTED]
-- [[IssueLinkList]] - `imports` [EXTRACTED]
-- [[IssueLinkRoot()]] - `contains` [EXTRACTED]
-- [[TIssueLinkRoot]] - `contains` [EXTRACTED]
-- [[TLinkOperations_1]] - `contains` [EXTRACTED]
-- [[api.service.ts]] - `imports_from` [EXTRACTED]
-- [[create-update-link-modal.tsx_1]] - `imports_from` [EXTRACTED]
-- [[extractApiErrorMessage()]] - `imports` [EXTRACTED]
-- [[link-list.tsx]] - `imports_from` [EXTRACTED]
-- [[links.tsx_2]] - `imports_from` [EXTRACTED]
-- [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
-- [[useIssueDetail()]] - `imports` [EXTRACTED]
+- [[ActiveCycleProductivity]] - `imports` [EXTRACTED]
+- [[ActiveCycleProgress]] - `imports` [EXTRACTED]
+- [[ActiveCycleRoot]] - `contains` [EXTRACTED]
+- [[ActiveCycleStats]] - `imports` [EXTRACTED]
+- [[ActiveCyclesComponent]] - `contains` [EXTRACTED]
+- [[ActiveCyclesComponentProps]] - `contains` [EXTRACTED]
+- [[CycleListGroupHeader()]] - `imports` [EXTRACTED]
+- [[CyclesListItem]] - `imports` [EXTRACTED]
+- [[IActiveCycleDetails]] - `contains` [EXTRACTED]
+- [[cycle-list-group-header.tsx]] - `imports_from` [EXTRACTED]
+- [[cycle-stats.tsx]] - `imports_from` [EXTRACTED]
+- [[cycles-list-item.tsx]] - `imports_from` [EXTRACTED]
+- [[index.ts_280]] - `imports_from` [EXTRACTED]
+- [[productivity.tsx]] - `imports_from` [EXTRACTED]
+- [[progress.tsx]] - `imports_from` [EXTRACTED]
+- [[use-cycle.ts]] - `imports_from` [EXTRACTED]
+- [[use-cycles-details.ts]] - `imports_from` [EXTRACTED]
+- [[useCycle()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Cycle_Active

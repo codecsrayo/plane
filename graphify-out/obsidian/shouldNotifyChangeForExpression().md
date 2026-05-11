@@ -1,12 +1,12 @@
 ---
 source_file: "utils/src/rich-filters/validators/core.ts"
 type: "code"
-community: "Condition Group"
+community: "Group Condition"
 location: "L39"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Condition_Group
+  - community/Group_Condition
 ---
 
 # shouldNotifyChangeForExpression()
@@ -19,4 +19,4 @@ tags:
 - [[isConditionNode()]] - `calls` [EXTRACTED]
 - [[isGroupNode()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Condition_Group
+#graphify/code #graphify/EXTRACTED #community/Group_Condition

@@ -1,20 +1,21 @@
 ---
-source_file: "components/issues/issue-layouts/utils.tsx"
+source_file: "space/components/issues/issue-layouts/utils.tsx"
 type: "code"
-community: "Work Filters"
-location: "L598"
+community: "Group Kanban"
+location: "L226"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Work_Filters
+  - community/Group_Kanban
 ---
 
 # removeNillKeys()
 
 ## Connections
 
-- [[project-level.tsx]] - `imports` [EXTRACTED]
-- [[utils.tsx_1]] - `contains` [EXTRACTED]
-- [[workspace-level.tsx]] - `imports` [EXTRACTED]
+- [[project-level.tsx_1]] - `imports` [EXTRACTED]
+- [[utils.tsx_2]] - `contains` [EXTRACTED]
+- [[utils.tsx_3]] - `contains` [EXTRACTED]
+- [[workspace-level.tsx_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Work_Filters
+#graphify/code #graphify/EXTRACTED #community/Group_Kanban

@@ -1,5 +1,5 @@
 ---
-source_file: "components/workspace/sidebar/favorites/new-fav-folder.tsx"
+source_file: "web/core/components/workspace/sidebar/favorites/new-fav-folder.tsx"
 type: "code"
 community: "Favorite Folder"
 location: "L1"
@@ -15,7 +15,7 @@ tags:
 
 - [[NewFavoriteFolder]] - `contains` [EXTRACTED]
 - [[TForm]] - `contains` [EXTRACTED]
-- [[TProps_3]] - `contains` [EXTRACTED]
+- [[TProps_5]] - `contains` [EXTRACTED]
 - [[favorite-folder.tsx]] - `imports_from` [EXTRACTED]
 - [[favorites-menu.tsx]] - `imports_from` [EXTRACTED]
 - [[use-favorite.ts]] - `imports_from` [EXTRACTED]

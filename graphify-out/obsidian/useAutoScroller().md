@@ -1,5 +1,5 @@
 ---
-source_file: "hooks/use-auto-scroller.tsx"
+source_file: "web/core/hooks/use-auto-scroller.tsx"
 type: "code"
 community: "Gantt Chart"
 location: "L15"

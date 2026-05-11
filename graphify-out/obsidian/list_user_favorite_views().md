@@ -1,18 +1,19 @@
 ---
 source_file: "api_rust/src/routes/views.rs"
 type: "code"
-community: "Community 124"
+community: "Project Workspace"
 location: "L805"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Community_124
+  - graphify/INFERRED
+  - community/Project_Workspace
 ---
 
 # list_user_favorite_views()
 
 ## Connections
 
-- [[views.rs]] - `contains` [EXTRACTED]
+- [[.json()]] - `calls` [INFERRED]
+- [[views.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_124
+#graphify/code #graphify/INFERRED #community/Project_Workspace

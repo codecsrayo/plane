@@ -1,5 +1,5 @@
 ---
-source_file: "components/stickies/sticky/sticky-item-drag-handle.tsx"
+source_file: "web/core/components/stickies/sticky/sticky-item-drag-handle.tsx"
 type: "code"
 community: "Sticky Drag"
 location: "L1"
@@ -13,7 +13,7 @@ tags:
 
 ## Connections
 
-- [[Props_61]] - `contains` [EXTRACTED]
+- [[Props_137]] - `contains` [EXTRACTED]
 - [[StickyItemDragHandle]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Sticky_Drag

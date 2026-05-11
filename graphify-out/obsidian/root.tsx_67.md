@@ -1,30 +1,29 @@
 ---
-source_file: "components/onboarding/steps/team/root.tsx"
+source_file: "web/core/components/project/applied-filters/root.tsx"
 type: "code"
-community: "Workspace Workspaceservice"
+community: "Filters Applied"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Workspaceservice
+  - community/Filters_Applied
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[EmailRole_2]] - `contains` [EXTRACTED]
-- [[FormValues_4]] - `contains` [EXTRACTED]
-- [[InviteMemberFormProps_1]] - `contains` [EXTRACTED]
-- [[InviteMemberInput_1]] - `contains` [EXTRACTED]
-- [[InviteTeamStep]] - `contains` [EXTRACTED]
-- [[Props_367]] - `contains` [EXTRACTED]
-- [[WorkspaceService]] - `imports` [EXTRACTED]
-- [[index.ts_145]] - `imports_from` [EXTRACTED]
-- [[placeholderEmails_1]] - `contains` [EXTRACTED]
-- [[use-workspace.ts]] - `imports_from` [EXTRACTED]
-- [[useWorkspace()]] - `imports` [EXTRACTED]
-- [[workspace.service.ts]] - `imports_from` [EXTRACTED]
-- [[workspaceService_13]] - `contains` [EXTRACTED]
+- [[AppliedAccessFilters]] - `imports` [EXTRACTED]
+- [[AppliedDateFilters]] - `imports` [EXTRACTED]
+- [[AppliedMembersFilters]] - `imports` [EXTRACTED]
+- [[AppliedProjectDisplayFilters]] - `imports` [EXTRACTED]
+- [[DATE_FILTERS]] - `contains` [EXTRACTED]
+- [[MEMBERS_FILTERS]] - `contains` [EXTRACTED]
+- [[ProjectAppliedFiltersList()]] - `contains` [EXTRACTED]
+- [[Props_99]] - `contains` [EXTRACTED]
+- [[access.tsx_2]] - `imports_from` [EXTRACTED]
+- [[date.tsx_2]] - `imports_from` [EXTRACTED]
+- [[members.tsx_5]] - `imports_from` [EXTRACTED]
+- [[project-display-filters.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Workspaceservice
+#graphify/code #graphify/EXTRACTED #community/Filters_Applied

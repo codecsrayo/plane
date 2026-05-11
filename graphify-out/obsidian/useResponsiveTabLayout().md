@@ -1,12 +1,12 @@
 ---
-source_file: "components/navigation/use-responsive-tab-layout.ts"
+source_file: "web/core/components/navigation/use-responsive-tab-layout.ts"
 type: "code"
-community: "Project Tab Nav"
+community: "Project Navigation"
 location: "L34"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Tab_Nav
+  - community/Project_Navigation
 ---
 
 # useResponsiveTabLayout()
@@ -16,4 +16,4 @@ tags:
 - [[tab-navigation-root.tsx]] - `imports` [EXTRACTED]
 - [[use-responsive-tab-layout.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Tab_Nav
+#graphify/code #graphify/EXTRACTED #community/Project_Navigation

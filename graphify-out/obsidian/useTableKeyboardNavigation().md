@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/use-table-keyboard-navigation.tsx"
+source_file: "web/core/hooks/use-table-keyboard-navigation.tsx"
 type: "code"
-community: "Spreadsheet Table"
+community: "Select Multiple"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Table
+  - community/Select_Multiple
 ---
 
 # useTableKeyboardNavigation()
@@ -18,4 +18,4 @@ tags:
 - [[spreadsheet-table.tsx]] - `imports` [EXTRACTED]
 - [[use-table-keyboard-navigation.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Table
+#graphify/code #graphify/EXTRACTED #community/Select_Multiple

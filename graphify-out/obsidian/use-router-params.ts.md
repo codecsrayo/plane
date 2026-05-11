@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/store/use-router-params.ts"
+source_file: "web/core/hooks/store/use-router-params.ts"
 type: "code"
-community: "Router Params"
+community: "Member Workspace"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Router_Params
+  - community/Member_Workspace
 ---
 
 # use-router-params.ts
@@ -20,4 +20,4 @@ tags:
 - [[store-wrapper.tsx]] - `imports_from` [EXTRACTED]
 - [[useRouterParams()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Router_Params
+#graphify/code #graphify/EXTRACTED #community/Member_Workspace

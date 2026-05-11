@@ -1,12 +1,12 @@
 ---
-source_file: "store/workspace/link.store.ts"
+source_file: "web/core/store/workspace/link.store.ts"
 type: "code"
-community: "Link Home"
+community: "Webhook Workspace"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Link_Home
+  - community/Webhook_Workspace
 ---
 
 # link.store.ts
@@ -16,9 +16,9 @@ tags:
 - [[IWorkspaceLinkStore]] - `contains` [EXTRACTED]
 - [[IWorkspaceLinkStoreActions]] - `contains` [EXTRACTED]
 - [[WorkspaceLinkStore]] - `contains` [EXTRACTED]
-- [[WorkspaceService]] - `imports` [EXTRACTED]
-- [[home.ts]] - `imports_from` [EXTRACTED]
+- [[WorkspaceService_1]] - `imports` [EXTRACTED]
+- [[home.ts_1]] - `imports_from` [EXTRACTED]
 - [[linkIndex]] - `contains` [EXTRACTED]
-- [[workspace.service.ts]] - `imports_from` [EXTRACTED]
+- [[workspace.service.ts_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Link_Home
+#graphify/code #graphify/EXTRACTED #community/Webhook_Workspace

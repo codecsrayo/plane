@@ -1,0 +1,18 @@
+---
+source_file: "web/core/components/core/theme/theme-mode-selector.tsx"
+type: "code"
+community: "Theme Custom"
+location: "L13"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Theme_Custom
+---
+
+# Props
+
+## Connections
+
+- [[theme-mode-selector.tsx]] - `contains` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Theme_Custom

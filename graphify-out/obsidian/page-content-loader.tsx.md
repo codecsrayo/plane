@@ -1,12 +1,12 @@
 ---
-source_file: "components/pages/loaders/page-content-loader.tsx"
+source_file: "web/core/components/pages/loaders/page-content-loader.tsx"
 type: "code"
-community: "Issue Filters"
+community: "Content Body"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Filters
+  - community/Content_Body
 ---
 
 # page-content-loader.tsx
@@ -14,7 +14,7 @@ tags:
 ## Connections
 
 - [[PageContentLoader()]] - `contains` [EXTRACTED]
-- [[Props_398]] - `contains` [EXTRACTED]
+- [[Props_472]] - `contains` [EXTRACTED]
 - [[editor-body.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Filters
+#graphify/code #graphify/EXTRACTED #community/Content_Body

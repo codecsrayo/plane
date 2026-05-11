@@ -1,5 +1,5 @@
 ---
-source_file: "components/gantt-chart/chart/views/month.tsx"
+source_file: "web/core/components/gantt-chart/chart/views/month.tsx"
 type: "code"
 community: "Gantt Chart"
 location: "L1"
@@ -14,11 +14,11 @@ tags:
 ## Connections
 
 - [[MonthChartView]] - `contains` [EXTRACTED]
-- [[constants.ts]] - `imports_from` [EXTRACTED]
+- [[constants.ts_4]] - `imports_from` [EXTRACTED]
 - [[getNumberOfDaysBetweenTwoDates()]] - `imports` [EXTRACTED]
-- [[helpers.ts]] - `imports_from` [EXTRACTED]
-- [[index.ts_42]] - `imports_from` [EXTRACTED]
-- [[use-timeline-chart.ts]] - `imports_from` [EXTRACTED]
+- [[helpers.ts_2]] - `imports_from` [EXTRACTED]
+- [[index.ts_307]] - `imports_from` [EXTRACTED]
+- [[use-timeline-chart.ts_1]] - `imports_from` [EXTRACTED]
 - [[useTimeLineChartStore()]] - `imports` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Gantt_Chart

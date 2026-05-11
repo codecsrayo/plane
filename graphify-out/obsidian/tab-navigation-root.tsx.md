@@ -1,12 +1,12 @@
 ---
-source_file: "components/navigation/tab-navigation-root.tsx"
+source_file: "web/core/components/navigation/tab-navigation-root.tsx"
 type: "code"
-community: "Project Tab Nav"
+community: "Project Navigation"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Tab_Nav
+  - community/Project_Navigation
 ---
 
 # tab-navigation-root.tsx
@@ -22,9 +22,10 @@ tags:
 - [[TabNavigationOverflowMenu()]] - `imports` [EXTRACTED]
 - [[TabNavigationRoot]] - `contains` [EXTRACTED]
 - [[TabNavigationVisibleItem()]] - `imports` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
+- [[layout.tsx_10]] - `imports_from` [EXTRACTED]
 - [[leave-project-modal.tsx]] - `imports_from` [EXTRACTED]
-- [[modal.tsx_6]] - `imports_from` [EXTRACTED]
+- [[modal.tsx_11]] - `imports_from` [EXTRACTED]
 - [[project-actions-menu.tsx]] - `imports_from` [EXTRACTED]
 - [[project-header.tsx]] - `imports_from` [EXTRACTED]
 - [[tab-navigation-overflow-menu.tsx]] - `imports_from` [EXTRACTED]
@@ -32,6 +33,7 @@ tags:
 - [[tab-navigation-visible-item.tsx]] - `imports_from` [EXTRACTED]
 - [[use-active-tab.ts]] - `imports_from` [EXTRACTED]
 - [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
+- [[use-navigation-items.ts]] - `imports_from` [EXTRACTED]
 - [[use-project-actions.ts]] - `imports_from` [EXTRACTED]
 - [[use-project.ts]] - `imports_from` [EXTRACTED]
 - [[use-responsive-tab-layout.ts]] - `imports_from` [EXTRACTED]
@@ -43,4 +45,4 @@ tags:
 - [[useResponsiveTabLayout()]] - `imports` [EXTRACTED]
 - [[useTabPreferences()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Tab_Nav
+#graphify/code #graphify/EXTRACTED #community/Project_Navigation

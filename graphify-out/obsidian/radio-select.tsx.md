@@ -1,5 +1,5 @@
 ---
-source_file: "components/estimates/radio-select.tsx"
+source_file: "web/core/components/estimates/radio-select.tsx"
 type: "code"
 community: "Estimate Stage"
 location: "L1"

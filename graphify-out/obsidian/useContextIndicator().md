@@ -1,12 +1,12 @@
 ---
-source_file: "components/power-k/hooks/use-context-indicator.ts"
+source_file: "web/core/components/power-k/hooks/use-context-indicator.ts"
 type: "code"
-community: "Context Power"
+community: "Power Context"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Context_Power
+  - community/Power_Context
 ---
 
 # useContextIndicator()
@@ -16,7 +16,7 @@ tags:
 - [[PowerKModalContextIndicator()]] - `calls` [EXTRACTED]
 - [[context-indicator.tsx]] - `imports` [EXTRACTED]
 - [[use-context-indicator.ts]] - `contains` [EXTRACTED]
-- [[useCycle()]] - `calls` [EXTRACTED]
-- [[useModule()]] - `calls` [EXTRACTED]
+- [[useExtendedContextIndicator()]] - `calls` [EXTRACTED]
+- [[usePageStore()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Context_Power
+#graphify/code #graphify/EXTRACTED #community/Power_Context

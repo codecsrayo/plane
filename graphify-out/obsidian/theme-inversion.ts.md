@@ -1,12 +1,12 @@
 ---
 source_file: "utils/src/theme/theme-inversion.ts"
 type: "code"
-community: "Color Utils"
+community: "Color Shade"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Color_Utils
+  - community/Color_Shade
 ---
 
 # theme-inversion.ts
@@ -21,4 +21,4 @@ tags:
 - [[palette-generator.ts]] - `imports_from` [EXTRACTED]
 - [[theme-application.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Color_Utils
+#graphify/code #graphify/EXTRACTED #community/Color_Shade

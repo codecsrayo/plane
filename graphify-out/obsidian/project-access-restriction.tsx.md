@@ -1,12 +1,12 @@
 ---
-source_file: "components/auth-screens/project/project-access-restriction.tsx"
+source_file: "web/core/components/auth-screens/project/project-access-restriction.tsx"
 type: "code"
-community: "Auth Wrappers"
+community: "Project Workspace"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_Wrappers
+  - community/Project_Workspace
 ---
 
 # project-access-restriction.tsx
@@ -14,7 +14,7 @@ tags:
 ## Connections
 
 - [[ProjectAccessRestriction]] - `contains` [EXTRACTED]
-- [[TProps_12]] - `contains` [EXTRACTED]
+- [[TProps_14]] - `contains` [EXTRACTED]
 - [[project-wrapper.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Wrappers
+#graphify/code #graphify/EXTRACTED #community/Project_Workspace

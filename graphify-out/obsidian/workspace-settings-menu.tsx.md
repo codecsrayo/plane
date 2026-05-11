@@ -1,12 +1,12 @@
 ---
-source_file: "components/power-k/ui/pages/open-entity/workspace-settings-menu.tsx"
+source_file: "web/core/components/power-k/ui/pages/open-entity/workspace-settings-menu.tsx"
 type: "code"
-community: "File Icons Nav"
+community: "Menu Power"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/File_Icons_Nav
+  - community/Menu_Power
 ---
 
 # workspace-settings-menu.tsx
@@ -15,13 +15,13 @@ tags:
 
 - [[PowerKOpenWorkspaceSettingsMenu]] - `contains` [EXTRACTED]
 - [[PowerKSettingsMenu]] - `imports` [EXTRACTED]
-- [[Props_328]] - `contains` [EXTRACTED]
+- [[Props_403]] - `contains` [EXTRACTED]
 - [[TPowerKContext]] - `imports` [EXTRACTED]
 - [[WORKSPACE_SETTINGS_ICONS]] - `imports` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
 - [[item-icon.tsx]] - `imports_from` [EXTRACTED]
-- [[root.tsx_62]] - `imports_from` [EXTRACTED]
-- [[settings.tsx]] - `imports_from` [EXTRACTED]
-- [[types.ts_2]] - `imports_from` [EXTRACTED]
+- [[root.tsx_103]] - `imports_from` [EXTRACTED]
+- [[settings.tsx_1]] - `imports_from` [EXTRACTED]
+- [[types.ts_16]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/File_Icons_Nav
+#graphify/code #graphify/EXTRACTED #community/Menu_Power

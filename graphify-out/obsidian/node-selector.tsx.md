@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/components/menus/bubble-menu/node-selector.tsx"
 type: "code"
-community: "Menu Color"
+community: "Toggle Menu"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Menu_Color
+  - community/Toggle_Menu
 ---
 
 # node-selector.tsx
@@ -22,4 +22,4 @@ tags:
 - [[use-floating-menu.ts]] - `imports_from` [EXTRACTED]
 - [[useFloatingMenu()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Menu_Color
+#graphify/code #graphify/EXTRACTED #community/Toggle_Menu

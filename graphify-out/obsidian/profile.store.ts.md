@@ -1,5 +1,5 @@
 ---
-source_file: "store/user/profile.store.ts"
+source_file: "web/core/store/user/profile.store.ts"
 type: "code"
 community: "User Profile"
 location: "L1"
@@ -17,16 +17,16 @@ tags:
 - [[IUserProfileStore]] - `contains` [EXTRACTED]
 - [[ProfileStore]] - `contains` [EXTRACTED]
 - [[TError_2]] - `contains` [EXTRACTED]
-- [[UserService]] - `imports` [EXTRACTED]
-- [[api.service.ts]] - `imports_from` [EXTRACTED]
+- [[UserService_1]] - `imports` [EXTRACTED]
+- [[api.service.ts_1]] - `imports_from` [EXTRACTED]
 - [[currentProfileTheme]] - `contains` [EXTRACTED]
 - [[dataKey]] - `contains` [EXTRACTED]
 - [[dataToUpdate]] - `contains` [EXTRACTED]
-- [[index.ts_7]] - `imports_from` [EXTRACTED]
-- [[root.store.ts]] - `imports_from` [EXTRACTED]
+- [[index.ts_272]] - `imports_from` [EXTRACTED]
+- [[root.store.ts_2]] - `imports_from` [EXTRACTED]
 - [[toApiError()]] - `imports` [EXTRACTED]
 - [[user-user-profile.ts]] - `imports_from` [EXTRACTED]
-- [[user.service.ts]] - `imports_from` [EXTRACTED]
+- [[user.service.ts_1]] - `imports_from` [EXTRACTED]
 - [[userKey_1]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/User_Profile

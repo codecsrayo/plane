@@ -1,12 +1,12 @@
 ---
-source_file: "store/issue/helpers/base-issues.store.ts"
+source_file: "web/core/store/issue/helpers/base-issues.store.ts"
 type: "code"
-community: "Issue Store Ops"
+community: "Issue Group"
 location: "L557"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Store_Ops
+  - community/Issue_Group
 ---
 
 # issueUpdate()
@@ -18,4 +18,4 @@ tags:
 - [[toApiError()]] - `calls` [EXTRACTED]
 - [[updateIssueList()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Store_Ops
+#graphify/code #graphify/EXTRACTED #community/Issue_Group

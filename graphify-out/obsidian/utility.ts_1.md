@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/utility.ts"
 type: "code"
-community: "Document Side"
+community: "Document Collaborative"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Document_Side
+  - community/Document_Collaborative
 ---
 
 # utility.ts
@@ -32,4 +32,4 @@ tags:
 - [[restorePublicImages()]] - `imports` [EXTRACTED]
 - [[root.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Document_Side
+#graphify/code #graphify/EXTRACTED #community/Document_Collaborative

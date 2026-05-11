@@ -1,12 +1,12 @@
 ---
-source_file: "components/exporter/export-modal.tsx"
+source_file: "web/core/components/exporter/export-modal.tsx"
 type: "code"
-community: "Data Export"
+community: "Project Settings"
 location: "L33"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Data_Export
+  - community/Project_Settings
 ---
 
 # projectExportService
@@ -15,4 +15,4 @@ tags:
 
 - [[export-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Data_Export
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

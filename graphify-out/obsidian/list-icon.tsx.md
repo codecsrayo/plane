@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/icons/layouts/list-icon.tsx"
 type: "code"
-community: "Icon Library"
+community: "Icon Property"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Icon_Library
+  - community/Icon_Property
 ---
 
 # list-icon.tsx
@@ -20,4 +20,4 @@ tags:
 - [[toolbar.stories.tsx]] - `imports_from` [EXTRACTED]
 - [[type.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Icon_Library
+#graphify/code #graphify/EXTRACTED #community/Icon_Property

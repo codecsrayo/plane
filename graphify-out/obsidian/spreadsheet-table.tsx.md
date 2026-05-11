@@ -1,19 +1,19 @@
 ---
-source_file: "components/issues/issue-layouts/spreadsheet/spreadsheet-table.tsx"
+source_file: "web/core/components/issues/issue-layouts/spreadsheet/spreadsheet-table.tsx"
 type: "code"
-community: "Spreadsheet Table"
+community: "Select Multiple"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Table
+  - community/Select_Multiple
 ---
 
 # spreadsheet-table.tsx
 
 ## Connections
 
-- [[Props_193]] - `contains` [EXTRACTED]
+- [[Props_268]] - `contains` [EXTRACTED]
 - [[SpreadsheetHeader]] - `imports` [EXTRACTED]
 - [[SpreadsheetIssueRow]] - `imports` [EXTRACTED]
 - [[SpreadsheetIssueRowLoader()]] - `imports` [EXTRACTED]
@@ -31,6 +31,6 @@ tags:
 - [[useIntersectionObserver()]] - `imports` [EXTRACTED]
 - [[useIssuesStore()]] - `imports` [EXTRACTED]
 - [[useTableKeyboardNavigation()]] - `imports` [EXTRACTED]
-- [[utils.tsx_1]] - `imports_from` [EXTRACTED]
+- [[utils.tsx_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Table
+#graphify/code #graphify/EXTRACTED #community/Select_Multiple

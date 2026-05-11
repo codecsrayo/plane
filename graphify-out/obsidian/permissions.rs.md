@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/auth/permissions.rs"
 type: "code"
-community: "Community 47"
+community: "Workspace Webhook"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_47
+  - community/Workspace_Webhook
 ---
 
 # permissions.rs
@@ -20,4 +20,4 @@ tags:
 - [[require_workspace_admin()]] - `contains` [EXTRACTED]
 - [[require_workspace_member()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_47
+#graphify/code #graphify/EXTRACTED #community/Workspace_Webhook

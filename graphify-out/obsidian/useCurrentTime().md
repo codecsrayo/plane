@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/use-current-time.tsx"
+source_file: "web/core/hooks/use-current-time.tsx"
 type: "code"
-community: "Dashboard Widgets"
+community: "User Greetings"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Dashboard_Widgets
+  - community/User_Greetings
 ---
 
 # useCurrentTime()
@@ -21,4 +21,4 @@ tags:
 - [[user-greetings.tsx]] - `imports` [EXTRACTED]
 - [[user-greetings.tsx_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Dashboard_Widgets
+#graphify/code #graphify/EXTRACTED #community/User_Greetings

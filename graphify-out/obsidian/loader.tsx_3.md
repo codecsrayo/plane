@@ -1,22 +1,24 @@
 ---
-source_file: "components/issues/workspace-draft/loader.tsx"
+source_file: "web/core/components/home/widgets/loaders/loader.tsx"
 type: "code"
-community: "Loader Kanban"
+community: "Widget Quick"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Loader_Kanban
+  - community/Widget_Quick
 ---
 
 # loader.tsx
 
 ## Connections
 
-- [[ListLoaderItemRow]] - `imports` [EXTRACTED]
-- [[TWorkspaceDraftIssuesLoader]] - `contains` [EXTRACTED]
-- [[WorkspaceDraftIssuesLoader()]] - `contains` [EXTRACTED]
-- [[list-layout-loader.tsx]] - `imports_from` [EXTRACTED]
-- [[root.tsx_29]] - `imports_from` [EXTRACTED]
+- [[EWidgetKeys]] - `contains` [EXTRACTED]
+- [[Props_89]] - `contains` [EXTRACTED]
+- [[QuickLinksWidgetLoader()]] - `imports` [EXTRACTED]
+- [[RecentActivityWidgetLoader()]] - `imports` [EXTRACTED]
+- [[WidgetLoader()]] - `contains` [EXTRACTED]
+- [[quick-links.tsx]] - `imports_from` [EXTRACTED]
+- [[recent-activity.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Loader_Kanban
+#graphify/code #graphify/EXTRACTED #community/Widget_Quick

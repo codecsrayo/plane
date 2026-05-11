@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/routes/user_profile_issues.rs"
 type: "code"
-community: "Issue Routes Rust API"
+community: "Issue Issues"
 location: "L447"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Routes_Rust_API
+  - community/Issue_Issues
 ---
 
 # load_target_user_issue_ids()
@@ -17,4 +17,4 @@ tags:
 - [[list_user_profile_issues()]] - `calls` [EXTRACTED]
 - [[user_profile_issues.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Routes_Rust_API
+#graphify/code #graphify/EXTRACTED #community/Issue_Issues

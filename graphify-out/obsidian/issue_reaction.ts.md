@@ -1,12 +1,12 @@
 ---
 source_file: "types/src/issues/issue_reaction.ts"
 type: "code"
-community: "Issue Enums"
+community: "Issue Public"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Enums
+  - community/Issue_Public
 ---
 
 # issue_reaction.ts
@@ -22,4 +22,4 @@ tags:
 - [[issue.ts]] - `imports_from` [EXTRACTED]
 - [[users.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Enums
+#graphify/code #graphify/EXTRACTED #community/Issue_Public

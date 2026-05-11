@@ -1,22 +1,30 @@
 ---
-source_file: "components/workspace-notifications/sidebar/header/root.tsx"
+source_file: "web/core/components/gantt-chart/chart/root.tsx"
 type: "code"
-community: "Auth UI"
+community: "Gantt Chart"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_UI
+  - community/Gantt_Chart
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[BreadcrumbLink]] - `imports` [EXTRACTED]
-- [[NotificationSidebarHeader]] - `contains` [EXTRACTED]
-- [[TNotificationSidebarHeader]] - `contains` [EXTRACTED]
-- [[breadcrumb-link.tsx]] - `imports_from` [EXTRACTED]
-- [[index.ts_124]] - `imports_from` [EXTRACTED]
+- [[ChartViewRoot]] - `contains` [EXTRACTED]
+- [[ChartViewRootProps]] - `contains` [EXTRACTED]
+- [[constants.ts_4]] - `imports_from` [EXTRACTED]
+- [[currentViewDataWithView()]] - `imports` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
+- [[index.ts_303]] - `imports_from` [EXTRACTED]
+- [[index.ts_307]] - `imports_from` [EXTRACTED]
+- [[index.ts_311]] - `imports_from` [EXTRACTED]
+- [[root.tsx_46]] - `imports_from` [EXTRACTED]
+- [[timelineViewHelpers]] - `contains` [EXTRACTED]
+- [[updateCurrentLeftScrollPosition()]] - `contains` [EXTRACTED]
+- [[use-timeline-chart.ts_1]] - `imports_from` [EXTRACTED]
+- [[useTimeLineChartStore()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_UI
+#graphify/code #graphify/EXTRACTED #community/Gantt_Chart

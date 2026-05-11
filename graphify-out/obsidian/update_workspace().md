@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/routes/workspaces.rs"
 type: "code"
-community: "Community 180"
+community: "Workspace User"
 location: "L710"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Community_180
+  - graphify/INFERRED
+  - community/Workspace_User
 ---
 
 # update_workspace()
@@ -14,9 +14,11 @@ tags:
 ## Connections
 
 - [[.from_model()_8]] - `calls` [EXTRACTED]
-- [[contains_url()]] - `calls` [INFERRED]
+- [[.json()]] - `calls` [INFERRED]
+- [[.set()]] - `calls` [INFERRED]
+- [[now]] - `calls` [INFERRED]
 - [[require_admin()_1]] - `calls` [EXTRACTED]
 - [[workspace_by_slug()]] - `calls` [INFERRED]
-- [[workspaces.rs]] - `contains` [EXTRACTED]
+- [[workspaces.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_180
+#graphify/code #graphify/INFERRED #community/Workspace_User

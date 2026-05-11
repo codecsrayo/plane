@@ -1,12 +1,12 @@
 ---
-source_file: "components/power-k/ui/pages/open-entity/workspaces-menu.tsx"
+source_file: "web/core/components/power-k/ui/pages/open-entity/workspaces-menu.tsx"
 type: "code"
-community: "Workspace Invites"
+community: "Menu Power"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Invites
+  - community/Menu_Power
 ---
 
 # workspaces-menu.tsx
@@ -15,10 +15,10 @@ tags:
 
 - [[PowerKOpenWorkspaceMenu]] - `contains` [EXTRACTED]
 - [[PowerKWorkspacesMenu()]] - `imports` [EXTRACTED]
-- [[Props_334]] - `contains` [EXTRACTED]
-- [[root.tsx_62]] - `imports_from` [EXTRACTED]
+- [[Props_409]] - `contains` [EXTRACTED]
+- [[root.tsx_103]] - `imports_from` [EXTRACTED]
 - [[use-workspace.ts]] - `imports_from` [EXTRACTED]
 - [[useWorkspace()]] - `imports` [EXTRACTED]
 - [[workspaces.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Invites
+#graphify/code #graphify/EXTRACTED #community/Menu_Power

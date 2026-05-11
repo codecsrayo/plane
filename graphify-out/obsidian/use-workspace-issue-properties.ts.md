@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/use-workspace-issue-properties.ts"
+source_file: "web/core/hooks/use-workspace-issue-properties.ts"
 type: "code"
-community: "Label Workspace"
+community: "Project Workspace"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Workspace
+  - community/Project_Workspace
 ---
 
 # use-workspace-issue-properties.ts
@@ -19,9 +19,9 @@ tags:
 - [[WORKSPACE_MODULES()]] - `imports` [EXTRACTED]
 - [[all-issue-layout-root.tsx]] - `imports_from` [EXTRACTED]
 - [[fetch-keys.ts]] - `imports_from` [EXTRACTED]
-- [[index.ts_3]] - `imports_from` [EXTRACTED]
-- [[root.tsx_29]] - `imports_from` [EXTRACTED]
-- [[root.tsx_44]] - `imports_from` [EXTRACTED]
+- [[index.ts_268]] - `imports_from` [EXTRACTED]
+- [[root.tsx_70]] - `imports_from` [EXTRACTED]
+- [[root.tsx_85]] - `imports_from` [EXTRACTED]
 - [[use-cycle.ts]] - `imports_from` [EXTRACTED]
 - [[use-label.ts]] - `imports_from` [EXTRACTED]
 - [[use-module.ts]] - `imports_from` [EXTRACTED]
@@ -29,6 +29,7 @@ tags:
 - [[useLabel()]] - `imports` [EXTRACTED]
 - [[useModule()]] - `imports` [EXTRACTED]
 - [[useWorkspaceIssueProperties()]] - `contains` [EXTRACTED]
+- [[useWorkspaceIssuePropertiesExtended()]] - `imports` [EXTRACTED]
 - [[workspace-root.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Workspace
+#graphify/code #graphify/EXTRACTED #community/Project_Workspace

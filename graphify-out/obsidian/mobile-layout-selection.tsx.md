@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/filters/header/mobile-layout-selection.tsx"
+source_file: "web/core/components/issues/issue-layouts/filters/header/mobile-layout-selection.tsx"
 type: "code"
-community: "Selection Mobile"
+community: "Issue Project"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Selection_Mobile
+  - community/Issue_Project
 ---
 
 # mobile-layout-selection.tsx
@@ -17,4 +17,4 @@ tags:
 - [[MobileLayoutSelection()]] - `contains` [EXTRACTED]
 - [[layout-icon.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Selection_Mobile
+#graphify/code #graphify/EXTRACTED #community/Issue_Project

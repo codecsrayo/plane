@@ -1,12 +1,12 @@
 ---
-source_file: "components/pages/editor/toolbar/options-dropdown.tsx"
+source_file: "web/core/components/pages/editor/toolbar/options-dropdown.tsx"
 type: "code"
-community: "Page Editor"
+community: "Formats Values"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Page_Editor
+  - community/Formats_Values
 ---
 
 # options-dropdown.tsx
@@ -15,12 +15,12 @@ tags:
 
 - [[ExportPageModal()]] - `imports` [EXTRACTED]
 - [[PageOptionsDropdown]] - `contains` [EXTRACTED]
-- [[Props_389]] - `contains` [EXTRACTED]
+- [[Props_464]] - `contains` [EXTRACTED]
 - [[TPageInstance]] - `imports` [EXTRACTED]
 - [[base-page.ts]] - `imports_from` [EXTRACTED]
 - [[export-page-modal.tsx]] - `imports_from` [EXTRACTED]
-- [[index.ts_159]] - `imports_from` [EXTRACTED]
-- [[index.ts_157]] - `imports_from` [EXTRACTED]
+- [[index.ts_424]] - `imports_from` [EXTRACTED]
+- [[index.ts_422]] - `imports_from` [EXTRACTED]
 - [[use-app-router.tsx]] - `imports_from` [EXTRACTED]
 - [[use-page-filters.ts]] - `imports_from` [EXTRACTED]
 - [[use-query-params.ts]] - `imports_from` [EXTRACTED]
@@ -28,4 +28,4 @@ tags:
 - [[usePageFilters()]] - `imports` [EXTRACTED]
 - [[useQueryParams()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Page_Editor
+#graphify/code #graphify/EXTRACTED #community/Formats_Values

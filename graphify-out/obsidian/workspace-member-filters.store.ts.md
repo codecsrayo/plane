@@ -1,5 +1,5 @@
 ---
-source_file: "store/member/workspace/workspace-member-filters.store.ts"
+source_file: "web/core/store/member/workspace/workspace-member-filters.store.ts"
 type: "code"
 community: "Workspace Member"
 location: "L1"
@@ -19,7 +19,7 @@ tags:
 - [[WorkspaceMemberFiltersStore]] - `contains` [EXTRACTED]
 - [[sortWorkspaceMembers()]] - `imports` [EXTRACTED]
 - [[sortedMembers]] - `contains` [EXTRACTED]
-- [[utils.ts]] - `imports_from` [EXTRACTED]
+- [[utils.ts_12]] - `imports_from` [EXTRACTED]
 - [[workspace-member.store.ts]] - `imports_from` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Workspace_Member

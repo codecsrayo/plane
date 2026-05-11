@@ -1,5 +1,5 @@
 ---
-source_file: "components/power-k/ui/pages/context-based/work-item/modules-menu.tsx"
+source_file: "web/core/components/power-k/ui/pages/context-based/work-item/modules-menu.tsx"
 type: "code"
 community: "Menu Power"
 location: "L1"
@@ -15,9 +15,9 @@ tags:
 
 - [[PowerKModulesMenu]] - `imports` [EXTRACTED]
 - [[PowerKWorkItemModulesMenu]] - `contains` [EXTRACTED]
-- [[Props_320]] - `contains` [EXTRACTED]
+- [[Props_395]] - `contains` [EXTRACTED]
 - [[modules.tsx]] - `imports_from` [EXTRACTED]
-- [[root.tsx_60]] - `imports_from` [EXTRACTED]
+- [[root.tsx_101]] - `imports_from` [EXTRACTED]
 - [[use-module.ts]] - `imports_from` [EXTRACTED]
 - [[useModule()]] - `imports` [EXTRACTED]
 

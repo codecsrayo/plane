@@ -1,31 +1,32 @@
 ---
-source_file: "components/power-k/ui/modal/search-menu.tsx"
+source_file: "web/core/components/power-k/ui/modal/search-menu.tsx"
 type: "code"
-community: "Power Search"
+community: "Power Shortcuts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Power_Search
+  - community/Power_Shortcuts
 ---
 
 # search-menu.tsx
 
 ## Connections
 
+- [[PowerKModalNoSearchResultsCommand()]] - `imports` [EXTRACTED]
 - [[PowerKModalSearchMenu()]] - `contains` [EXTRACTED]
 - [[PowerKModalSearchResults]] - `imports` [EXTRACTED]
-- [[Props_336]] - `contains` [EXTRACTED]
+- [[Props_411]] - `contains` [EXTRACTED]
 - [[TPowerKContext]] - `imports` [EXTRACTED]
 - [[TPowerKPageType]] - `imports` [EXTRACTED]
-- [[WorkspaceService]] - `imports` [EXTRACTED]
+- [[WorkspaceService_1]] - `imports` [EXTRACTED]
 - [[commands-list.tsx]] - `imports_from` [EXTRACTED]
 - [[search-results.tsx]] - `imports_from` [EXTRACTED]
-- [[types.ts_2]] - `imports_from` [EXTRACTED]
+- [[types.ts_16]] - `imports_from` [EXTRACTED]
 - [[use-debounce.tsx]] - `imports_from` [EXTRACTED]
 - [[use-power-k.ts]] - `imports_from` [EXTRACTED]
 - [[usePowerK()]] - `imports` [EXTRACTED]
-- [[workspace.service.ts]] - `imports_from` [EXTRACTED]
-- [[workspaceService_7]] - `contains` [EXTRACTED]
+- [[workspace.service.ts_1]] - `imports_from` [EXTRACTED]
+- [[workspaceService_11]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Power_Search
+#graphify/code #graphify/EXTRACTED #community/Power_Shortcuts

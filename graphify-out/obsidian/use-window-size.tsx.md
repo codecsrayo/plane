@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/use-window-size.tsx"
+source_file: "web/core/hooks/use-window-size.tsx"
 type: "code"
-community: "Filter Selection UI"
+community: "Member Members"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filter_Selection_UI
+  - community/Member_Members
 ---
 
 # use-window-size.tsx
@@ -14,11 +14,12 @@ tags:
 ## Connections
 
 - [[calendar.tsx]] - `imports_from` [EXTRACTED]
+- [[layout.tsx_7]] - `imports_from` [EXTRACTED]
 - [[main-content.tsx_1]] - `imports_from` [EXTRACTED]
 - [[options-dropdown.tsx]] - `imports_from` [EXTRACTED]
 - [[order-by.tsx_4]] - `imports_from` [EXTRACTED]
-- [[root.tsx_72]] - `imports_from` [EXTRACTED]
+- [[root.tsx_113]] - `imports_from` [EXTRACTED]
 - [[sidebar-wrapper.tsx]] - `imports_from` [EXTRACTED]
 - [[useSize()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filter_Selection_UI
+#graphify/code #graphify/EXTRACTED #community/Member_Members

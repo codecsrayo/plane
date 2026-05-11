@@ -1,5 +1,5 @@
 ---
-source_file: "hooks/store/use-favorite.ts"
+source_file: "web/core/hooks/store/use-favorite.ts"
 type: "code"
 community: "Favorite Folder"
 location: "L12"
@@ -14,6 +14,7 @@ tags:
 ## Connections
 
 - [[FavoriteFolder()]] - `calls` [EXTRACTED]
+- [[_sidebar.tsx]] - `imports` [EXTRACTED]
 - [[favorite-folder.tsx]] - `imports` [EXTRACTED]
 - [[favorites-menu.tsx]] - `imports` [EXTRACTED]
 - [[new-fav-folder.tsx]] - `imports` [EXTRACTED]

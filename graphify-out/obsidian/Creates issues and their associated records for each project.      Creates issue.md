@@ -1,0 +1,18 @@
+---
+source_file: "api/plane/bgtasks/workspace_seed_task.py"
+type: "rationale"
+community: "Project Creates"
+location: "L254"
+tags:
+  - graphify/rationale
+  - graphify/EXTRACTED
+  - community/Project_Creates
+---
+
+# Creates issues and their associated records for each project. Creates issue
+
+## Connections
+
+- [[create_project_issues()]] - `rationale_for` [EXTRACTED]
+
+#graphify/rationale #graphify/EXTRACTED #community/Project_Creates

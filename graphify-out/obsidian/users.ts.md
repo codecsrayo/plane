@@ -1,12 +1,12 @@
 ---
 source_file: "types/src/users.ts"
 type: "code"
-community: "Instance Config"
+community: "User Instance"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Instance_Config
+  - community/User_Instance
 ---
 
 # users.ts
@@ -49,4 +49,4 @@ tags:
 - [[workspace-notifications.ts]] - `imports_from` [EXTRACTED]
 - [[workspace.ts_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Instance_Config
+#graphify/code #graphify/EXTRACTED #community/User_Instance

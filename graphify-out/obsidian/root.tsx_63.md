@@ -1,25 +1,27 @@
 ---
-source_file: "components/onboarding/root.tsx"
+source_file: "web/core/components/settings/profile/content/pages/notifications/root.tsx"
 type: "code"
-community: "Invite Onboarding"
+community: "Settings Profile"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Invite_Onboarding
+  - community/Settings_Profile
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[OnboardingHeader]] - `imports` [EXTRACTED]
-- [[OnboardingRoot]] - `contains` [EXTRACTED]
-- [[Props_360]] - `contains` [EXTRACTED]
-- [[header.tsx_12]] - `imports_from` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
-- [[index.ts_139]] - `imports_from` [EXTRACTED]
-- [[use-workspace.ts]] - `imports_from` [EXTRACTED]
-- [[useWorkspace()]] - `imports` [EXTRACTED]
+- [[EmailSettingsLoader()]] - `imports` [EXTRACTED]
+- [[NotificationsProfileSettings]] - `contains` [EXTRACTED]
+- [[NotificationsProfileSettingsForm]] - `imports` [EXTRACTED]
+- [[ProfileSettingsHeading()]] - `imports` [EXTRACTED]
+- [[UserService_1]] - `imports` [EXTRACTED]
+- [[email-notification-form.tsx]] - `imports_from` [EXTRACTED]
+- [[email.tsx]] - `imports_from` [EXTRACTED]
+- [[heading.tsx_1]] - `imports_from` [EXTRACTED]
+- [[user.service.ts_1]] - `imports_from` [EXTRACTED]
+- [[userService_8]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Invite_Onboarding
+#graphify/code #graphify/EXTRACTED #community/Settings_Profile

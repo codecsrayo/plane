@@ -1,5 +1,5 @@
 ---
-source_file: "components/web-hooks/form/toggle.tsx"
+source_file: "web/core/components/web-hooks/form/toggle.tsx"
 type: "code"
 community: "Toggle Iwebhooktoggle"
 location: "L1"

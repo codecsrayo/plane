@@ -1,12 +1,12 @@
 ---
-source_file: "components/power-k/ui/pages/open-entity/projects-menu.tsx"
+source_file: "web/core/components/power-k/ui/pages/open-entity/projects-menu.tsx"
 type: "code"
-community: "File Icons Nav"
+community: "Menu Power"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/File_Icons_Nav
+  - community/Menu_Power
 ---
 
 # projects-menu.tsx
@@ -15,10 +15,10 @@ tags:
 
 - [[PowerKOpenProjectMenu]] - `contains` [EXTRACTED]
 - [[PowerKProjectsMenu()]] - `imports` [EXTRACTED]
-- [[Props_332]] - `contains` [EXTRACTED]
+- [[Props_407]] - `contains` [EXTRACTED]
 - [[projects.tsx]] - `imports_from` [EXTRACTED]
-- [[root.tsx_62]] - `imports_from` [EXTRACTED]
+- [[root.tsx_103]] - `imports_from` [EXTRACTED]
 - [[use-project.ts]] - `imports_from` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/File_Icons_Nav
+#graphify/code #graphify/EXTRACTED #community/Menu_Power

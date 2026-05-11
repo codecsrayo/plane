@@ -1,25 +1,23 @@
 ---
-source_file: "components/power-k/menus/members.tsx"
+source_file: "web/core/components/common/applied-filters/members.tsx"
 type: "code"
-community: "Member Commands"
+community: "Member Members"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Commands
+  - community/Member_Members
 ---
 
 # members.tsx
 
 ## Connections
 
-- [[PowerKMembersMenu]] - `contains` [EXTRACTED]
-- [[PowerKModalCommandItem()]] - `imports` [EXTRACTED]
-- [[Props_354]] - `contains` [EXTRACTED]
-- [[command-item.tsx]] - `imports_from` [EXTRACTED]
-- [[root.tsx_59]] - `imports_from` [EXTRACTED]
-- [[root.tsx_60]] - `imports_from` [EXTRACTED]
+- [[AppliedMembersFilters]] - `contains` [EXTRACTED]
+- [[Props_167]] - `contains` [EXTRACTED]
+- [[root.tsx_43]] - `imports_from` [EXTRACTED]
+- [[root.tsx_120]] - `imports_from` [EXTRACTED]
 - [[use-member.ts]] - `imports_from` [EXTRACTED]
 - [[useMember()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Commands
+#graphify/code #graphify/EXTRACTED #community/Member_Members

@@ -1,26 +1,29 @@
 ---
-source_file: "components/cycles/analytics-sidebar/root.tsx"
+source_file: "web/core/components/modules/analytics-sidebar/root.tsx"
 type: "code"
-community: "Cycle Progress"
+community: "Cycles Archived"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Progress
+  - community/Cycles_Archived
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[CycleAnalyticsProgress]] - `imports` [EXTRACTED]
-- [[CycleDetailsSidebar]] - `contains` [EXTRACTED]
-- [[CycleSidebarDetails]] - `imports` [EXTRACTED]
-- [[CycleSidebarHeader]] - `imports` [EXTRACTED]
-- [[Props_75]] - `contains` [EXTRACTED]
-- [[issue-progress.tsx_1]] - `imports_from` [EXTRACTED]
-- [[sidebar-details.tsx]] - `imports_from` [EXTRACTED]
-- [[sidebar-header.tsx]] - `imports_from` [EXTRACTED]
-- [[use-cycles-details.ts]] - `imports_from` [EXTRACTED]
+- [[DateRangeDropdown]] - `imports` [EXTRACTED]
+- [[MemberDropdown]] - `imports` [EXTRACTED]
+- [[ModuleAnalyticsSidebar]] - `contains` [EXTRACTED]
+- [[Props_70]] - `contains` [EXTRACTED]
+- [[date-range.tsx]] - `imports_from` [EXTRACTED]
+- [[defaultValues_6]] - `contains` [EXTRACTED]
+- [[dropdown.tsx_6]] - `imports_from` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
+- [[index.ts_268]] - `imports_from` [EXTRACTED]
+- [[index.ts_323]] - `imports_from` [EXTRACTED]
+- [[use-module.ts]] - `imports_from` [EXTRACTED]
+- [[useModule()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Progress
+#graphify/code #graphify/EXTRACTED #community/Cycles_Archived

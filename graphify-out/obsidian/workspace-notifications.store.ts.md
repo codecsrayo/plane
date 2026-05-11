@@ -1,12 +1,12 @@
 ---
-source_file: "store/notifications/workspace-notifications.store.ts"
+source_file: "web/core/store/notifications/workspace-notifications.store.ts"
 type: "code"
-community: "Workspace Notification"
+community: "Notification Option"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Notification
+  - community/Notification_Option
 ---
 
 # workspace-notifications.store.ts
@@ -21,11 +21,11 @@ tags:
 - [[TNotificationLoader]] - `contains` [EXTRACTED]
 - [[TNotificationQueryParamType]] - `contains` [EXTRACTED]
 - [[WorkspaceNotificationStore]] - `contains` [EXTRACTED]
-- [[api.service.ts]] - `imports_from` [EXTRACTED]
-- [[notification.ts]] - `imports_from` [EXTRACTED]
+- [[api.service.ts_1]] - `imports_from` [EXTRACTED]
+- [[notification.ts_2]] - `imports_from` [EXTRACTED]
 - [[params_8]] - `contains` [EXTRACTED]
 - [[queryParams_1]] - `contains` [EXTRACTED]
-- [[root.store.ts]] - `imports_from` [EXTRACTED]
+- [[root.store.ts_2]] - `imports_from` [EXTRACTED]
 - [[toApiError()]] - `imports` [EXTRACTED]
 - [[use-workspace-notifications.ts]] - `imports_from` [EXTRACTED]
 - [[validCount]] - `contains` [EXTRACTED]
@@ -33,4 +33,4 @@ tags:
 - [[workspaceNotificationIds]] - `contains` [EXTRACTED]
 - [[workspaceNotifications]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Notification
+#graphify/code #graphify/EXTRACTED #community/Notification_Option

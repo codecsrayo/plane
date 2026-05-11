@@ -1,23 +1,22 @@
 ---
-source_file: "components/analytics/work-items/root.tsx"
+source_file: "web/core/components/workspace-notifications/sidebar/header/root.tsx"
 type: "code"
-community: "Insight Analytics"
+community: "Settings Project"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Insight_Analytics
+  - community/Settings_Project
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[WorkItems()]] - `contains` [EXTRACTED]
-- [[analytics-wrapper.tsx]] - `imports_from` [EXTRACTED]
-- [[created-vs-resolved.tsx]] - `imports_from` [EXTRACTED]
-- [[customized-insights.tsx]] - `imports_from` [EXTRACTED]
-- [[total-insights.tsx]] - `imports_from` [EXTRACTED]
-- [[workitems-insight-table.tsx]] - `imports_from` [EXTRACTED]
+- [[BreadcrumbLink()]] - `imports` [EXTRACTED]
+- [[NotificationSidebarHeader]] - `contains` [EXTRACTED]
+- [[TNotificationSidebarHeader]] - `contains` [EXTRACTED]
+- [[breadcrumb-link.tsx]] - `imports_from` [EXTRACTED]
+- [[index.ts_389]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Insight_Analytics
+#graphify/code #graphify/EXTRACTED #community/Settings_Project

@@ -1,29 +1,20 @@
 ---
-source_file: "components/project/root.tsx"
+source_file: "web/ce/components/de-dupe/duplicate-popover/root.tsx"
 type: "code"
-community: "Auth UI"
+community: "Issue Inbox"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_UI
+  - community/Issue_Inbox
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[PageHead()]] - `imports` [EXTRACTED]
-- [[ProjectCardList]] - `imports` [EXTRACTED]
-- [[ProjectRoot]] - `contains` [EXTRACTED]
-- [[card-list.tsx]] - `imports_from` [EXTRACTED]
-- [[index.ts_81]] - `imports_from` [EXTRACTED]
-- [[page-title.tsx]] - `imports_from` [EXTRACTED]
-- [[use-project-filter.ts]] - `imports_from` [EXTRACTED]
-- [[use-project.ts]] - `imports_from` [EXTRACTED]
-- [[use-workspace.ts]] - `imports_from` [EXTRACTED]
-- [[useProject()]] - `imports` [EXTRACTED]
-- [[useProjectFilter()]] - `imports` [EXTRACTED]
-- [[useWorkspace()]] - `imports` [EXTRACTED]
+- [[DeDupeIssuePopoverRoot]] - `contains` [EXTRACTED]
+- [[TDeDupeIssuePopoverRootProps]] - `contains` [EXTRACTED]
+- [[index.ts_367]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_UI
+#graphify/code #graphify/EXTRACTED #community/Issue_Inbox

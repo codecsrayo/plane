@@ -1,5 +1,5 @@
 ---
-source_file: "components/analytics/select/select-y-axis.tsx"
+source_file: "web/core/components/analytics/select/select-y-axis.tsx"
 type: "code"
 community: "Select Axis"
 location: "L1"
@@ -13,9 +13,9 @@ tags:
 
 ## Connections
 
-- [[Props_427]] - `contains` [EXTRACTED]
+- [[Props_501]] - `contains` [EXTRACTED]
 - [[SelectYAxis]] - `contains` [EXTRACTED]
 - [[analytics-params.tsx]] - `imports_from` [EXTRACTED]
-- [[index.ts_3]] - `imports_from` [EXTRACTED]
+- [[index.ts_268]] - `imports_from` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Select_Axis

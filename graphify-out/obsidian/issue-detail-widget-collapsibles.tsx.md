@@ -1,5 +1,5 @@
 ---
-source_file: "components/issues/issue-detail-widgets/issue-detail-widget-collapsibles.tsx"
+source_file: "web/core/components/issues/issue-detail-widgets/issue-detail-widget-collapsibles.tsx"
 type: "code"
 community: "Issue Widget"
 location: "L1"
@@ -14,12 +14,13 @@ tags:
 ## Connections
 
 - [[IssueDetailWidgetCollapsibles]] - `contains` [EXTRACTED]
-- [[Props_262]] - `contains` [EXTRACTED]
-- [[index.ts_113]] - `imports_from` [EXTRACTED]
-- [[index.ts_116]] - `imports_from` [EXTRACTED]
-- [[index.ts_114]] - `imports_from` [EXTRACTED]
-- [[index.ts_115]] - `imports_from` [EXTRACTED]
-- [[root.tsx_37]] - `imports_from` [EXTRACTED]
+- [[Props_337]] - `contains` [EXTRACTED]
+- [[WorkItemAdditionalWidgetCollapsibles()]] - `imports` [EXTRACTED]
+- [[index.ts_378]] - `imports_from` [EXTRACTED]
+- [[index.ts_381]] - `imports_from` [EXTRACTED]
+- [[index.ts_379]] - `imports_from` [EXTRACTED]
+- [[index.ts_380]] - `imports_from` [EXTRACTED]
+- [[root.tsx_78]] - `imports_from` [EXTRACTED]
 - [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
 - [[useIssueDetail()]] - `imports` [EXTRACTED]
 

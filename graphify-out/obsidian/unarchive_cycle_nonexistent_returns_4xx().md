@@ -1,0 +1,19 @@
+---
+source_file: "api_rust/tests/cycles_modules_extras.rs"
+type: "code"
+community: "Returns Nonexistent"
+location: "L89"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Returns_Nonexistent
+---
+
+# unarchive_cycle_nonexistent_returns_4xx()
+
+## Connections
+
+- [[cycles_modules_extras.rs]] - `contains` [EXTRACTED]
+- [[setup()_22]] - `calls` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Returns_Nonexistent

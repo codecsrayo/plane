@@ -1,5 +1,5 @@
 ---
-source_file: "store/member/project/base-project-member.store.ts"
+source_file: "web/core/store/member/project/base-project-member.store.ts"
 type: "code"
 community: "Member Project"
 location: "L219"

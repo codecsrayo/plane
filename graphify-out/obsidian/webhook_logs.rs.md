@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/entities/webhook_logs.rs"
 type: "code"
-community: "Community 414"
+community: "Model Relation"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_414
+  - community/Model_Relation
 ---
 
 # webhook_logs.rs
@@ -16,4 +16,4 @@ tags:
 - [[Model_95]] - `contains` [EXTRACTED]
 - [[Relation_95]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_414
+#graphify/code #graphify/EXTRACTED #community/Model_Relation

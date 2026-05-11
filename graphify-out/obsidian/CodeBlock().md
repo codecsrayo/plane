@@ -1,0 +1,23 @@
+---
+source_file: "admin/components/common/code-block.tsx"
+type: "code"
+community: "Controller Values"
+location: "L15"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Controller_Values
+---
+
+# CodeBlock()
+
+## Connections
+
+- [[code-block.tsx]] - `contains` [EXTRACTED]
+- [[form.tsx_13]] - `imports` [EXTRACTED]
+- [[form.tsx_14]] - `imports` [EXTRACTED]
+- [[form.tsx_15]] - `imports` [EXTRACTED]
+- [[form.tsx_16]] - `imports` [EXTRACTED]
+- [[form.tsx_17]] - `imports` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Controller_Values

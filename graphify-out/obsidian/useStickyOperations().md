@@ -1,23 +1,24 @@
 ---
-source_file: "components/stickies/sticky/use-operations.tsx"
+source_file: "web/core/components/stickies/sticky/use-operations.tsx"
 type: "code"
-community: "Stickies Truncated"
+community: "Stickies Sticky"
 location: "L40"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Stickies_Truncated
+  - community/Stickies_Sticky
 ---
 
 # useStickyOperations()
 
 ## Connections
 
-- [[root.tsx_11]] - `imports` [EXTRACTED]
+- [[header.tsx_2]] - `imports` [EXTRACTED]
+- [[root.tsx_52]] - `imports` [EXTRACTED]
 - [[stickies-list.tsx]] - `imports` [EXTRACTED]
 - [[stickies.tsx_1]] - `imports` [EXTRACTED]
 - [[use-operations.tsx]] - `contains` [EXTRACTED]
 - [[useSticky()]] - `calls` [EXTRACTED]
 - [[widget.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Stickies_Truncated
+#graphify/code #graphify/EXTRACTED #community/Stickies_Sticky

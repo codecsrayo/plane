@@ -1,23 +1,26 @@
 ---
-source_file: "components/comments/card/root.tsx"
+source_file: "web/core/components/workspace-notifications/sidebar/notification-card/options/root.tsx"
 type: "code"
-community: "Comment Card"
+community: "Notification Option"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Comment_Card
+  - community/Notification_Option
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[CommentCard]] - `contains` [EXTRACTED]
-- [[CommentQuickActions]] - `imports` [EXTRACTED]
-- [[TCommentCard_1]] - `contains` [EXTRACTED]
-- [[activity-comment-root.tsx]] - `imports_from` [EXTRACTED]
-- [[comments.tsx]] - `imports_from` [EXTRACTED]
-- [[quick-actions.tsx_4]] - `imports_from` [EXTRACTED]
+- [[NotificationItemArchiveOption]] - `imports` [EXTRACTED]
+- [[NotificationItemReadOption]] - `imports` [EXTRACTED]
+- [[NotificationOption]] - `contains` [EXTRACTED]
+- [[TNotificationOption]] - `contains` [EXTRACTED]
+- [[archive.tsx]] - `imports_from` [EXTRACTED]
+- [[index.ts_387]] - `imports_from` [EXTRACTED]
+- [[read.tsx]] - `imports_from` [EXTRACTED]
+- [[use-notification.ts]] - `imports_from` [EXTRACTED]
+- [[useNotification()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Comment_Card
+#graphify/code #graphify/EXTRACTED #community/Notification_Option

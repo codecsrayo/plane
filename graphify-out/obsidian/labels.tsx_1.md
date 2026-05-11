@@ -1,21 +1,21 @@
 ---
-source_file: "components/issues/issue-layouts/filters/header/filters/labels.tsx"
+source_file: "web/core/components/issues/issue-layouts/filters/header/filters/labels.tsx"
 type: "code"
-community: "Filter Selection UI"
+community: "Priority State"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filter_Selection_UI
+  - community/Priority_State
 ---
 
 # labels.tsx
 
 ## Connections
 
-- [[FilterLabels]] - `contains` [EXTRACTED]
+- [[FilterLabels()]] - `contains` [EXTRACTED]
 - [[LabelIcons()]] - `contains` [EXTRACTED]
-- [[Props_242]] - `contains` [EXTRACTED]
-- [[index.ts_90]] - `imports_from` [EXTRACTED]
+- [[Props_317]] - `contains` [EXTRACTED]
+- [[index.ts_355]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filter_Selection_UI
+#graphify/code #graphify/EXTRACTED #community/Priority_State

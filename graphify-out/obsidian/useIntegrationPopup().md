@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/use-integration-popup.tsx"
+source_file: "web/core/hooks/use-integration-popup.tsx"
 type: "code"
-community: "Integration Sync"
+community: "Project Workspace"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Integration_Sync
+  - community/Project_Workspace
 ---
 
 # useIntegrationPopup()
@@ -15,4 +15,4 @@ tags:
 
 - [[use-integration-popup.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Integration_Sync
+#graphify/code #graphify/EXTRACTED #community/Project_Workspace

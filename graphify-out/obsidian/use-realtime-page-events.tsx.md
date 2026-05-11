@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/use-realtime-page-events.tsx"
+source_file: "web/core/hooks/use-realtime-page-events.tsx"
 type: "code"
-community: "Editor Body"
+community: "Content Body"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Editor_Body
+  - community/Content_Body
 ---
 
 # use-realtime-page-events.tsx
@@ -20,10 +20,10 @@ tags:
 - [[UsePageEventsProps]] - `contains` [EXTRACTED]
 - [[base-page.ts]] - `imports_from` [EXTRACTED]
 - [[editor-body.tsx]] - `imports_from` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
 - [[page-root.tsx]] - `imports_from` [EXTRACTED]
 - [[use-app-router.tsx]] - `imports_from` [EXTRACTED]
 - [[useAppRouter()]] - `imports` [EXTRACTED]
 - [[useRealtimePageEvents()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Editor_Body
+#graphify/code #graphify/EXTRACTED #community/Content_Body

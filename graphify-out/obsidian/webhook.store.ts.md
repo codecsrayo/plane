@@ -1,12 +1,12 @@
 ---
-source_file: "store/workspace/webhook.store.ts"
+source_file: "web/core/store/workspace/webhook.store.ts"
 type: "code"
-community: "Webhook Webhookservice"
+community: "Webhook Workspace"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Webhook_Webhookservice
+  - community/Webhook_Workspace
 ---
 
 # webhook.store.ts
@@ -15,12 +15,12 @@ tags:
 
 - [[CoreRootStore]] - `imports` [EXTRACTED]
 - [[IWebhookStore]] - `contains` [EXTRACTED]
-- [[WebhookService]] - `imports` [EXTRACTED]
+- [[WebhookService_1]] - `imports` [EXTRACTED]
 - [[WebhookStore]] - `contains` [EXTRACTED]
-- [[index.ts_6]] - `imports_from` [EXTRACTED]
-- [[root.store.ts]] - `imports_from` [EXTRACTED]
+- [[index.ts_271]] - `imports_from` [EXTRACTED]
+- [[root.store.ts_2]] - `imports_from` [EXTRACTED]
 - [[use-webhook.ts]] - `imports_from` [EXTRACTED]
 - [[webHookObject]] - `contains` [EXTRACTED]
-- [[webhook.service.ts]] - `imports_from` [EXTRACTED]
+- [[webhook.service.ts_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Webhook_Webhookservice
+#graphify/code #graphify/EXTRACTED #community/Webhook_Workspace

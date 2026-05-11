@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/use-reload-confirmation.tsx"
+source_file: "web/core/hooks/use-reload-confirmation.tsx"
 type: "code"
-community: "Multi Select Actions"
+community: "Issue Inbox"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Multi_Select_Actions
+  - community/Issue_Inbox
 ---
 
 # use-reload-confirmation.tsx
@@ -19,4 +19,4 @@ tags:
 - [[use-multiple-select.ts]] - `imports_from` [EXTRACTED]
 - [[useReloadConfirmations()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Multi_Select_Actions
+#graphify/code #graphify/EXTRACTED #community/Issue_Inbox

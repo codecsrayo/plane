@@ -1,12 +1,12 @@
 ---
-source_file: "components/analytics/work-items/priority-chart.tsx"
+source_file: "web/core/components/analytics/work-items/priority-chart.tsx"
 type: "code"
-community: "Chart Generate"
+community: "Table Chart"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Chart_Generate
+  - community/Table_Chart
 ---
 
 # priority-chart.tsx
@@ -18,7 +18,7 @@ tags:
 - [[ColumnMeta_1]] - `contains` [EXTRACTED]
 - [[DataTable()]] - `imports` [EXTRACTED]
 - [[PriorityChart]] - `contains` [EXTRACTED]
-- [[Props_432]] - `contains` [EXTRACTED]
+- [[Props_506]] - `contains` [EXTRACTED]
 - [[analytics.service.ts]] - `imports_from` [EXTRACTED]
 - [[analyticsService_2]] - `contains` [EXTRACTED]
 - [[customized-insights.tsx]] - `imports_from` [EXTRACTED]
@@ -33,7 +33,7 @@ tags:
 - [[use-project-state.ts]] - `imports_from` [EXTRACTED]
 - [[useAnalytics()]] - `imports` [EXTRACTED]
 - [[useProjectState()]] - `imports` [EXTRACTED]
-- [[utils.ts_2]] - `imports_from` [EXTRACTED]
-- [[utils.ts_6]] - `imports_from` [EXTRACTED]
+- [[utils.ts_14]] - `imports_from` [EXTRACTED]
+- [[utils.ts_18]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Chart_Generate
+#graphify/code #graphify/EXTRACTED #community/Table_Chart

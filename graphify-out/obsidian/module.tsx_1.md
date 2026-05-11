@@ -1,22 +1,28 @@
 ---
-source_file: "components/issues/issue-layouts/filters/header/filters/module.tsx"
+source_file: "web/core/components/issues/issue-layouts/empty-states/module.tsx"
 type: "code"
-community: "Module Analytics"
+community: "Project Profile"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Analytics
+  - community/Project_Profile
 ---
 
 # module.tsx
 
 ## Connections
 
-- [[FilterModule]] - `contains` [EXTRACTED]
-- [[Props_238]] - `contains` [EXTRACTED]
-- [[index.ts_90]] - `imports_from` [EXTRACTED]
-- [[use-module.ts]] - `imports_from` [EXTRACTED]
-- [[useModule()]] - `imports` [EXTRACTED]
+- [[ExistingIssuesListModal()]] - `imports` [EXTRACTED]
+- [[ModuleEmptyState]] - `contains` [EXTRACTED]
+- [[existing-issues-list-modal.tsx]] - `imports_from` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
+- [[index.tsx_13]] - `imports_from` [EXTRACTED]
+- [[use-command-palette.ts]] - `imports_from` [EXTRACTED]
+- [[use-issues.ts]] - `imports_from` [EXTRACTED]
+- [[use-work-item-filter-instance.ts]] - `imports_from` [EXTRACTED]
+- [[useCommandPalette()]] - `imports` [EXTRACTED]
+- [[useIssues()]] - `imports` [EXTRACTED]
+- [[useWorkItemFilterInstance()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Analytics
+#graphify/code #graphify/EXTRACTED #community/Project_Profile

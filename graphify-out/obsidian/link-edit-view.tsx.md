@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/components/links/link-edit-view.tsx"
 type: "code"
-community: "Link Insert"
+community: "Link Options"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Link_Insert
+  - community/Link_Options
 ---
 
 # link-edit-view.tsx
@@ -21,4 +21,4 @@ tags:
 - [[index.ts_45]] - `imports_from` [EXTRACTED]
 - [[isValidHttpUrl()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Link_Insert
+#graphify/code #graphify/EXTRACTED #community/Link_Options

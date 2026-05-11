@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/emoji/suggestion.ts"
 type: "code"
-community: "Emoji Suggestion"
+community: "Emoji Command"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Emoji_Suggestion
+  - community/Emoji_Command
 ---
 
 # suggestion.ts
@@ -25,10 +25,10 @@ tags:
 - [[emoji.ts]] - `imports_from` [EXTRACTED]
 - [[emojiSuggestion]] - `contains` [EXTRACTED]
 - [[emojis-list.tsx]] - `imports_from` [EXTRACTED]
-- [[extension.ts_1]] - `imports_from` [EXTRACTED]
 - [[extension.ts]] - `imports_from` [EXTRACTED]
+- [[extension.ts_1]] - `imports_from` [EXTRACTED]
 - [[floating-ui.ts]] - `imports_from` [EXTRACTED]
 - [[noopCleanup()]] - `contains` [EXTRACTED]
 - [[tippy.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Emoji_Suggestion
+#graphify/code #graphify/EXTRACTED #community/Emoji_Command

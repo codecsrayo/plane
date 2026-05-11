@@ -1,5 +1,5 @@
 ---
-source_file: "components/project-states/state-item.tsx"
+source_file: "web/core/components/project-states/state-item.tsx"
 type: "code"
 community: "State Group"
 location: "L1"
@@ -13,8 +13,9 @@ tags:
 
 ## Connections
 
+- [[Adapter_1]] - `imports_from` [EXTRACTED]
 - [[StateItem]] - `contains` [EXTRACTED]
 - [[TStateItem]] - `contains` [EXTRACTED]
-- [[index.ts_47]] - `imports_from` [EXTRACTED]
+- [[index.ts_312]] - `imports_from` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/State_Group

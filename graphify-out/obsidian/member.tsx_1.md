@@ -1,12 +1,12 @@
 ---
-source_file: "components/readonly/member.tsx"
+source_file: "web/core/components/readonly/member.tsx"
 type: "code"
-community: "Issue Filters"
+community: "Label Dropdown"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Filters
+  - community/Label_Dropdown
 ---
 
 # member.tsx
@@ -16,8 +16,8 @@ tags:
 - [[ButtonAvatars]] - `imports` [EXTRACTED]
 - [[ReadonlyMember]] - `contains` [EXTRACTED]
 - [[TReadonlyMemberProps]] - `contains` [EXTRACTED]
-- [[avatar.tsx]] - `imports_from` [EXTRACTED]
+- [[avatar.tsx_2]] - `imports_from` [EXTRACTED]
 - [[use-member.ts]] - `imports_from` [EXTRACTED]
 - [[useMember()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Filters
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

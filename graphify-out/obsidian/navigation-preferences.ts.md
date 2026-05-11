@@ -1,12 +1,12 @@
 ---
-source_file: "types/navigation-preferences.ts"
+source_file: "web/core/types/navigation-preferences.ts"
 type: "code"
-community: "Navigation Preferences"
+community: "Sidebar Navigation"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Navigation_Preferences
+  - community/Sidebar_Navigation
 ---
 
 # navigation-preferences.ts
@@ -32,4 +32,4 @@ tags:
 - [[customize-navigation-dialog.tsx]] - `imports_from` [EXTRACTED]
 - [[use-navigation-preferences.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Navigation_Preferences
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Navigation

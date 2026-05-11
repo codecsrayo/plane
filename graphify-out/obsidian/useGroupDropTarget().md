@@ -1,5 +1,5 @@
 ---
-source_file: "components/base-layouts/hooks/use-group-drop-target.ts"
+source_file: "web/core/components/base-layouts/hooks/use-group-drop-target.ts"
 type: "code"
 community: "Group Drop"
 location: "L27"

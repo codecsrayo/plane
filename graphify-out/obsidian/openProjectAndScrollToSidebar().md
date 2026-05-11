@@ -1,18 +1,18 @@
 ---
-source_file: "components/power-k/actions/helper.ts"
+source_file: "web/core/components/power-k/actions/helper.ts"
 type: "code"
-community: "Workspace Draft"
+community: "Group Kanban"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Draft
+  - community/Group_Kanban
 ---
 
 # openProjectAndScrollToSidebar()
 
 ## Connections
 
-- [[helper.ts_2]] - `contains` [EXTRACTED]
+- [[helper.ts_6]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Draft
+#graphify/code #graphify/EXTRACTED #community/Group_Kanban

@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/routes/issue_filters.rs"
 type: "code"
-community: "Issue Routes Rust API"
+community: "Load Apply"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Routes_Rust_API
+  - community/Load_Apply
 ---
 
 # issue_filters.rs
@@ -33,4 +33,4 @@ tags:
 - [[parse_uuids_csv()]] - `contains` [EXTRACTED]
 - [[split_csv()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Routes_Rust_API
+#graphify/code #graphify/EXTRACTED #community/Load_Apply

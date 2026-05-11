@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/routes/integrations/pr_state.rs"
 type: "code"
-community: "Community 47"
+community: "Workspace Webhook"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_47
+  - community/Workspace_Webhook
 ---
 
 # pr_state.rs
@@ -17,4 +17,4 @@ tags:
 - [[delete_pr_state_mapping()]] - `contains` [EXTRACTED]
 - [[list_pr_state_mappings()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_47
+#graphify/code #graphify/EXTRACTED #community/Workspace_Webhook

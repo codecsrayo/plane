@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/plugins/file/restore.ts"
 type: "code"
-community: "Title Node"
+community: "Assets Node"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Title_Node
+  - community/Assets_Node
 ---
 
 # restore.ts
@@ -25,4 +25,4 @@ tags:
 - [[types.ts_7]] - `imports_from` [EXTRACTED]
 - [[utility.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Title_Node
+#graphify/code #graphify/EXTRACTED #community/Assets_Node

@@ -1,12 +1,12 @@
 ---
 source_file: "types/src/issues/issue_relation.ts"
 type: "code"
-community: "Issue Enums"
+community: "Widget Issue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Enums
+  - community/Widget_Issue
 ---
 
 # issue_relation.ts
@@ -21,4 +21,4 @@ tags:
 - [[dashboard.ts_1]] - `imports_from` [EXTRACTED]
 - [[issue.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Enums
+#graphify/code #graphify/EXTRACTED #community/Widget_Issue

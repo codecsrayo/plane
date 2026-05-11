@@ -1,27 +1,18 @@
 ---
-source_file: "api_rust/src/main.rs"
+source_file: "api/run_tests.py"
 type: "code"
-community: "Community 129"
-location: "L121"
+community: "Tests"
+location: "L11"
 tags:
   - graphify/code
-  - graphify/INFERRED
-  - community/Community_129
+  - graphify/EXTRACTED
+  - community/Tests
 ---
 
 # main()
 
 ## Connections
 
-- [[.from_env()]] - `calls` [INFERRED]
-- [[.new()]] - `calls` [INFERRED]
-- [[build_router()]] - `calls` [INFERRED]
-- [[builder()]] - `calls` [INFERRED]
-- [[ensure_configurations_seeded()]] - `calls` [INFERRED]
-- [[ensure_instance_registered()]] - `calls` [INFERRED]
-- [[main.rs]] - `contains` [EXTRACTED]
-- [[shutdown_signal()]] - `calls` [EXTRACTED]
-- [[start_cron()]] - `calls` [INFERRED]
-- [[start_job_workers()]] - `calls` [EXTRACTED]
+- [[run_tests.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_129
+#graphify/code #graphify/EXTRACTED #community/Tests

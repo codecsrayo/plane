@@ -1,5 +1,5 @@
 ---
-source_file: "constants/sidebar-favorites.ts"
+source_file: "web/core/constants/sidebar-favorites.ts"
 type: "code"
 community: "Favorite Generate"
 location: "L1"
@@ -15,6 +15,6 @@ tags:
 
 - [[FAVORITE_ITEM_ICONS]] - `contains` [EXTRACTED]
 - [[FAVORITE_ITEM_LINKS]] - `contains` [EXTRACTED]
-- [[helper.tsx_1]] - `imports_from` [EXTRACTED]
+- [[helper.tsx_23]] - `imports_from` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Favorite_Generate

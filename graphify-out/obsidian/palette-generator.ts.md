@@ -1,12 +1,12 @@
 ---
 source_file: "utils/src/theme/palette-generator.ts"
 type: "code"
-community: "Color Utils"
+community: "Color Shade"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Color_Utils
+  - community/Color_Shade
 ---
 
 # palette-generator.ts
@@ -33,4 +33,4 @@ tags:
 - [[theme-inversion.ts]] - `imports_from` [EXTRACTED]
 - [[validateHexColor()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Color_Utils
+#graphify/code #graphify/EXTRACTED #community/Color_Shade

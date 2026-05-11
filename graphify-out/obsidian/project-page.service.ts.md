@@ -1,12 +1,12 @@
 ---
-source_file: "services/page/project-page.service.ts"
+source_file: "web/core/services/page/project-page.service.ts"
 type: "code"
-community: "API Services"
+community: "Issue Project"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/API_Services
+  - community/Issue_Project
 ---
 
 # project-page.service.ts
@@ -14,10 +14,10 @@ tags:
 ## Connections
 
 - [[ApiError]] - `imports` [EXTRACTED]
-- [[FileUploadService]] - `imports` [EXTRACTED]
+- [[FileUploadService_1]] - `imports` [EXTRACTED]
 - [[ProjectPageService]] - `contains` [EXTRACTED]
-- [[api.service.ts]] - `imports_from` [EXTRACTED]
-- [[file-upload.service.ts]] - `imports_from` [EXTRACTED]
+- [[api.service.ts_1]] - `imports_from` [EXTRACTED]
+- [[file-upload.service.ts_1]] - `imports_from` [EXTRACTED]
 - [[toApiError()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/API_Services
+#graphify/code #graphify/EXTRACTED #community/Issue_Project

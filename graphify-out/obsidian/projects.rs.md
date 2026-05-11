@@ -1,81 +1,31 @@
 ---
-source_file: "api_rust/src/routes/projects.rs"
+source_file: "api_rust/tests/projects.rs"
 type: "code"
-community: "Projects Rust API"
+community: "Returns Sign"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Projects_Rust_API
+  - community/Returns_Sign
 ---
 
 # projects.rs
 
 ## Connections
 
-- [[AddProjectMembersRequest]] - `contains` [EXTRACTED]
-- [[BulkJoinProjectsRequest]] - `contains` [EXTRACTED]
-- [[CreateProjectInvitationRequest]] - `contains` [EXTRACTED]
-- [[CreateProjectRequest]] - `contains` [EXTRACTED]
-- [[DefaultState]] - `contains` [EXTRACTED]
-- [[DeployBoardResponse]] - `contains` [EXTRACTED]
-- [[IdentifierQuery]] - `contains` [EXTRACTED]
-- [[MemberPreferencesResponse]] - `contains` [EXTRACTED]
-- [[ProjectDetailResponse]] - `contains` [EXTRACTED]
-- [[ProjectInvitationResponse]] - `contains` [EXTRACTED]
-- [[ProjectInviteEmail]] - `contains` [EXTRACTED]
-- [[ProjectJoinRequest]] - `contains` [EXTRACTED]
-- [[ProjectListResponse]] - `contains` [EXTRACTED]
-- [[ProjectLiteDto]] - `contains` [EXTRACTED]
-- [[ProjectMemberEntry]] - `contains` [EXTRACTED]
-- [[ProjectMemberMeResponse]] - `contains` [EXTRACTED]
-- [[ProjectMemberResponse]] - `contains` [EXTRACTED]
-- [[ProjectResponse]] - `contains` [EXTRACTED]
-- [[ProjectSummaryQuery]] - `contains` [EXTRACTED]
-- [[UpdateProjectMemberRequest]] - `contains` [EXTRACTED]
-- [[UpdateProjectRequest]] - `contains` [EXTRACTED]
-- [[UpsertDeployBoardRequest]] - `contains` [EXTRACTED]
-- [[UserProjectInvitationResponse]] - `contains` [EXTRACTED]
-- [[WorkspaceLiteDto]] - `contains` [EXTRACTED]
-- [[archive_project()]] - `contains` [EXTRACTED]
-- [[check_project_identifier()]] - `contains` [EXTRACTED]
-- [[create_project()]] - `contains` [EXTRACTED]
-- [[create_project_favorite()]] - `contains` [EXTRACTED]
-- [[create_project_invitations()]] - `contains` [EXTRACTED]
-- [[create_project_members()]] - `contains` [EXTRACTED]
-- [[delete_project()]] - `contains` [EXTRACTED]
-- [[delete_project_deploy_board()]] - `contains` [EXTRACTED]
-- [[delete_project_favorite()]] - `contains` [EXTRACTED]
-- [[delete_project_identifier()]] - `contains` [EXTRACTED]
-- [[delete_project_invitation()]] - `contains` [EXTRACTED]
-- [[get_project()]] - `contains` [EXTRACTED]
-- [[get_project_deploy_board()]] - `contains` [EXTRACTED]
-- [[get_project_invitation()]] - `contains` [EXTRACTED]
-- [[get_project_member()]] - `contains` [EXTRACTED]
-- [[get_project_member_me()]] - `contains` [EXTRACTED]
-- [[get_project_member_preferences()]] - `contains` [EXTRACTED]
-- [[get_project_summary()]] - `contains` [EXTRACTED]
-- [[get_project_user_views()]] - `contains` [EXTRACTED]
-- [[join_project_invitation()]] - `contains` [EXTRACTED]
-- [[join_user_project_invitations()]] - `contains` [EXTRACTED]
-- [[leave_project()]] - `contains` [EXTRACTED]
-- [[list_project_favorites()]] - `contains` [EXTRACTED]
-- [[list_project_invitations()]] - `contains` [EXTRACTED]
-- [[list_project_members()]] - `contains` [EXTRACTED]
-- [[list_projects()]] - `contains` [EXTRACTED]
-- [[list_projects_detail()]] - `contains` [EXTRACTED]
-- [[list_user_project_invitations()]] - `contains` [EXTRACTED]
-- [[project_by_id()]] - `contains` [EXTRACTED]
-- [[project_member_for_user()_1]] - `contains` [EXTRACTED]
-- [[remove_project_member()]] - `contains` [EXTRACTED]
-- [[require_project_admin()]] - `contains` [EXTRACTED]
-- [[unarchive_project()]] - `contains` [EXTRACTED]
-- [[update_project()]] - `contains` [EXTRACTED]
-- [[update_project_deploy_board()]] - `contains` [EXTRACTED]
-- [[update_project_member()]] - `contains` [EXTRACTED]
-- [[update_project_member_preferences()]] - `contains` [EXTRACTED]
-- [[update_project_views()]] - `contains` [EXTRACTED]
-- [[upsert_project_deploy_board()]] - `contains` [EXTRACTED]
-- [[validate_role()]] - `contains` [EXTRACTED]
+- [[create_project_duplicate_identifier_returns_422()]] - `contains` [EXTRACTED]
+- [[create_project_empty_name_returns_422()]] - `contains` [EXTRACTED]
+- [[create_project_identifier_forbidden_chars_returns_422()]] - `contains` [EXTRACTED]
+- [[create_project_identifier_too_long_returns_422()]] - `contains` [EXTRACTED]
+- [[create_project_proptest_forbidden_identifier_chars()]] - `contains` [EXTRACTED]
+- [[create_project_success()]] - `contains` [EXTRACTED]
+- [[get_project_member_returns_200()]] - `contains` [EXTRACTED]
+- [[get_project_non_member_returns_404()]] - `contains` [EXTRACTED]
+- [[list_project_members_returns_list()]] - `contains` [EXTRACTED]
+- [[list_projects_details_returns_member_projects()]] - `contains` [EXTRACTED]
+- [[list_projects_empty_workspace()]] - `contains` [EXTRACTED]
+- [[list_projects_returns_existing_project()]] - `contains` [EXTRACTED]
+- [[list_projects_unauthenticated_returns_401()]] - `contains` [EXTRACTED]
+- [[patch_project_admin_updates_name()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Projects_Rust_API
+#graphify/code #graphify/EXTRACTED #community/Returns_Sign

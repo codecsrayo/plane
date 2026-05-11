@@ -1,25 +1,19 @@
 ---
-source_file: "components/issues/issue-detail-widgets/sub-issues/root.tsx"
+source_file: "web/ce/components/automations/root.tsx"
 type: "code"
-community: "Title Issues"
+community: "Project Settings"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Title_Issues
+  - community/Project_Settings
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[Props_278]] - `contains` [EXTRACTED]
-- [[SubIssuesCollapsible]] - `contains` [EXTRACTED]
-- [[SubIssuesCollapsibleContent]] - `imports` [EXTRACTED]
-- [[SubIssuesCollapsibleTitle]] - `imports` [EXTRACTED]
-- [[content.tsx_2]] - `imports_from` [EXTRACTED]
-- [[title.tsx_2]] - `imports_from` [EXTRACTED]
-- [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
-- [[useIssueDetail()]] - `imports` [EXTRACTED]
+- [[CustomAutomationsRoot()]] - `contains` [EXTRACTED]
+- [[TCustomAutomationsRootProps]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Title_Issues
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

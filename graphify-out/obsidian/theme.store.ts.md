@@ -1,12 +1,12 @@
 ---
-source_file: "store/theme.store.ts"
+source_file: "web/core/store/theme.store.ts"
 type: "code"
-community: "Theme Wrapper"
+community: "Instance User"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Theme_Wrapper
+  - community/Instance_User
 ---
 
 # theme.store.ts
@@ -15,7 +15,7 @@ tags:
 
 - [[IThemeStore]] - `contains` [EXTRACTED]
 - [[ThemeStore]] - `contains` [EXTRACTED]
-- [[root.store.ts]] - `imports_from` [EXTRACTED]
+- [[root.store.ts_2]] - `imports_from` [EXTRACTED]
 - [[use-app-theme.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Theme_Wrapper
+#graphify/code #graphify/EXTRACTED #community/Instance_User

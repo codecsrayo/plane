@@ -1,12 +1,12 @@
 ---
-source_file: "components/power-k/ui/pages/context-based/module/commands.tsx"
+source_file: "web/core/components/power-k/ui/pages/context-based/module/commands.tsx"
 type: "code"
-community: "Module Analytics"
+community: "Power Chat"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Analytics
+  - community/Power_Chat
 ---
 
 # usePowerKModuleContextBasedActions()
@@ -14,9 +14,7 @@ tags:
 ## Connections
 
 - [[commands.tsx]] - `contains` [EXTRACTED]
-- [[root.tsx_58]] - `imports` [EXTRACTED]
-- [[useModule()]] - `calls` [EXTRACTED]
+- [[root.tsx_99]] - `imports` [EXTRACTED]
 - [[usePowerKContextBasedActions()]] - `calls` [EXTRACTED]
-- [[useUser()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Analytics
+#graphify/code #graphify/EXTRACTED #community/Power_Chat

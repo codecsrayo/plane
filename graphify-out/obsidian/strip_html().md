@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/routes/issue_extras.rs"
 type: "code"
-community: "Community 30"
+community: "Issue Request"
 location: "L268"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_30
+  - community/Issue_Request
 ---
 
 # strip_html()
@@ -14,8 +14,8 @@ tags:
 ## Connections
 
 - [[.new()]] - `calls` [INFERRED]
-- [[create_comment()]] - `calls` [EXTRACTED]
-- [[issue_extras.rs]] - `contains` [EXTRACTED]
+- [[create_comment()_1]] - `calls` [EXTRACTED]
+- [[issue_extras.rs_1]] - `contains` [EXTRACTED]
 - [[update_comment()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_30
+#graphify/code #graphify/EXTRACTED #community/Issue_Request

@@ -1,27 +1,25 @@
 ---
-source_file: "components/pages/editor/toolbar/toolbar.tsx"
+source_file: "web/core/components/editor/lite-text/toolbar.tsx"
 type: "code"
-community: "Toolbar Color"
+community: "Toolbar Items"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toolbar_Color
+  - community/Toolbar_Items
 ---
 
 # toolbar.tsx
 
 ## Connections
 
-- [[ColorDropdown]] - `imports` [EXTRACTED]
-- [[PageToolbar()]] - `contains` [EXTRACTED]
-- [[Props_391]] - `contains` [EXTRACTED]
-- [[TOOLBAR_ITEMS]] - `imports` [EXTRACTED]
-- [[TYPOGRAPHY_ITEMS]] - `imports` [EXTRACTED]
-- [[ToolbarButton]] - `contains` [EXTRACTED]
-- [[ToolbarButtonProps]] - `contains` [EXTRACTED]
-- [[ToolbarMenuItem]] - `imports` [EXTRACTED]
-- [[color-dropdown.tsx]] - `imports_from` [EXTRACTED]
-- [[editor.ts]] - `imports_from` [EXTRACTED]
+- [[COMMENT_ACCESS_SPECIFIERS]] - `contains` [EXTRACTED]
+- [[IssueCommentToolbar()]] - `contains` [EXTRACTED]
+- [[Props_135]] - `contains` [EXTRACTED]
+- [[TCommentAccessType]] - `contains` [EXTRACTED]
+- [[TOOLBAR_ITEMS_1]] - `imports` [EXTRACTED]
+- [[ToolbarMenuItem_1]] - `imports` [EXTRACTED]
+- [[editor.ts_20]] - `imports_from` [EXTRACTED]
+- [[editor.tsx_6]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toolbar_Color
+#graphify/code #graphify/EXTRACTED #community/Toolbar_Items

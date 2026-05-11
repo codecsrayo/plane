@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/peek-overview/issue-detail.tsx"
+source_file: "web/core/components/issues/peek-overview/issue-detail.tsx"
 type: "code"
-community: "Issue Content"
+community: "Issue Inbox"
 location: "L37"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Content
+  - community/Issue_Inbox
 ---
 
 # workItemVersionService
@@ -15,4 +15,4 @@ tags:
 
 - [[issue-detail.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Content
+#graphify/code #graphify/EXTRACTED #community/Issue_Inbox

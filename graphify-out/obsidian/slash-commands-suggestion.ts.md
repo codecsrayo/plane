@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/types/slash-commands-suggestion.ts"
 type: "code"
-community: "Document Side"
+community: "Document Collaborative"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Document_Side
+  - community/Document_Collaborative
 ---
 
 # slash-commands-suggestion.ts
@@ -18,4 +18,4 @@ tags:
 - [[TSlashCommandSectionKeys]] - `contains` [EXTRACTED]
 - [[index.ts_46]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Document_Side
+#graphify/code #graphify/EXTRACTED #community/Document_Collaborative

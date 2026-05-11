@@ -1,18 +1,18 @@
 ---
-source_file: "components/editor/lite-text/editor.tsx"
+source_file: "web/core/store/user/base-permissions.store.ts"
 type: "code"
-community: "Toolbar Lite"
+community: "Project User"
 location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toolbar_Lite
+  - community/Project_User
 ---
 
 # workspaceService
 
 ## Connections
 
-- [[editor.tsx_3]] - `contains` [EXTRACTED]
+- [[base-permissions.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toolbar_Lite
+#graphify/code #graphify/EXTRACTED #community/Project_User

@@ -1,0 +1,18 @@
+---
+source_file: "web/app/compat/next/script.tsx"
+type: "code"
+community: "Attr Script"
+location: "L40"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Attr_Script
+---
+
+# DOM_ATTR_NAME
+
+## Connections
+
+- [[script.tsx]] - `contains` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Attr_Script

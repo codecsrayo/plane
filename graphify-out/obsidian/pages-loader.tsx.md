@@ -1,5 +1,5 @@
 ---
-source_file: "components/ui/loader/pages-loader.tsx"
+source_file: "web/core/components/ui/loader/pages-loader.tsx"
 type: "code"
 community: "Pages Loader"
 location: "L1"

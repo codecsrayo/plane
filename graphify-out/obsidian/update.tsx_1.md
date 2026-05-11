@@ -1,24 +1,20 @@
 ---
-source_file: "components/estimates/points/update.tsx"
+source_file: "web/core/components/project-states/create-update/update.tsx"
 type: "code"
-community: "Estimate Point"
+community: "State Group"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Estimate_Point
+  - community/State_Group
 ---
 
 # update.tsx
 
 ## Connections
 
-- [[EstimateInputRoot()]] - `imports` [EXTRACTED]
-- [[EstimatePointUpdate]] - `contains` [EXTRACTED]
-- [[TEstimatePointUpdate]] - `contains` [EXTRACTED]
-- [[preview.tsx]] - `imports_from` [EXTRACTED]
-- [[root.tsx_86]] - `imports_from` [EXTRACTED]
-- [[use-estimate-point.ts]] - `imports_from` [EXTRACTED]
-- [[useEstimatePoint()]] - `imports` [EXTRACTED]
+- [[StateUpdate]] - `contains` [EXTRACTED]
+- [[TStateUpdate]] - `contains` [EXTRACTED]
+- [[index.ts_312]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Estimate_Point
+#graphify/code #graphify/EXTRACTED #community/State_Group

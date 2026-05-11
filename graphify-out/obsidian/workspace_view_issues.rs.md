@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/routes/workspace_view_issues.rs"
 type: "code"
-community: "Issue Routes Rust API"
+community: "Issue Issues"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Routes_Rust_API
+  - community/Issue_Issues
 ---
 
 # workspace_view_issues.rs
@@ -17,4 +17,4 @@ tags:
 - [[WorkspaceIssuesQuery]] - `contains` [EXTRACTED]
 - [[list_workspace_view_issues()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Routes_Rust_API
+#graphify/code #graphify/EXTRACTED #community/Issue_Issues

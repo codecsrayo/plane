@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/auth/logout.rs"
 type: "code"
-community: "Community 73"
+community: "Password Email"
 location: "L179"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Community_73
+  - graphify/INFERRED
+  - community/Password_Email
 ---
 
 # space_redirect_joins_safe_path()
@@ -16,4 +16,4 @@ tags:
 - [[.new()]] - `calls` [INFERRED]
 - [[logout.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_73
+#graphify/code #graphify/INFERRED #community/Password_Email

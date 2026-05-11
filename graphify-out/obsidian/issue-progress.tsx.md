@@ -1,12 +1,12 @@
 ---
-source_file: "components/modules/analytics-sidebar/issue-progress.tsx"
+source_file: "web/core/components/modules/analytics-sidebar/issue-progress.tsx"
 type: "code"
-community: "Module Analytics"
+community: "Cycles Archived"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Analytics
+  - community/Cycles_Archived
 ---
 
 # issue-progress.tsx
@@ -15,8 +15,8 @@ tags:
 
 - [[ModuleAnalyticsProgress]] - `contains` [EXTRACTED]
 - [[TModuleAnalyticsProgress]] - `contains` [EXTRACTED]
-- [[index.ts_58]] - `imports_from` [EXTRACTED]
-- [[index.ts_3]] - `imports_from` [EXTRACTED]
+- [[index.ts_268]] - `imports_from` [EXTRACTED]
+- [[index.ts_323]] - `imports_from` [EXTRACTED]
 - [[moduleBurnDownChartOptions]] - `contains` [EXTRACTED]
 - [[progress-chart.tsx]] - `imports_from` [EXTRACTED]
 - [[use-module.ts]] - `imports_from` [EXTRACTED]
@@ -24,4 +24,4 @@ tags:
 - [[useModule()]] - `imports` [EXTRACTED]
 - [[useWorkItemFilters()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Analytics
+#graphify/code #graphify/EXTRACTED #community/Cycles_Archived

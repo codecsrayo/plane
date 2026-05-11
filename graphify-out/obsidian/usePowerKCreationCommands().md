@@ -1,12 +1,12 @@
 ---
-source_file: "components/power-k/config/creation/root.ts"
+source_file: "web/core/components/power-k/config/creation/root.ts"
 type: "code"
-community: "Command Palette"
+community: "Power Chat"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Command_Palette
+  - community/Power_Chat
 ---
 
 # usePowerKCreationCommands()
@@ -14,8 +14,8 @@ tags:
 ## Connections
 
 - [[commands.ts_3]] - `imports` [EXTRACTED]
-- [[root.ts]] - `contains` [EXTRACTED]
+- [[root.ts_2]] - `contains` [EXTRACTED]
 - [[usePowerKCreationCommandsRecord()]] - `calls` [EXTRACTED]
 - [[useProjectsAppPowerKCommands()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Command_Palette
+#graphify/code #graphify/EXTRACTED #community/Power_Chat

@@ -1,5 +1,5 @@
 ---
-source_file: "components/common/quick-actions-helper.tsx"
+source_file: "web/core/components/common/quick-actions-helper.tsx"
 type: "code"
 community: "Menu Quick"
 location: "L67"

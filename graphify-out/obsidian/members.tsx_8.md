@@ -1,26 +1,25 @@
 ---
-source_file: "components/inbox/inbox-filter/filters/members.tsx"
+source_file: "web/core/components/power-k/menus/members.tsx"
 type: "code"
-community: "Filter Selection UI"
+community: "Member Members"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filter_Selection_UI
+  - community/Member_Members
 ---
 
 # members.tsx
 
 ## Connections
 
-- [[FilterMember]] - `contains` [EXTRACTED]
-- [[Props_86]] - `contains` [EXTRACTED]
-- [[filter-selection.tsx_1]] - `imports_from` [EXTRACTED]
-- [[index.ts_90]] - `imports_from` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
+- [[PowerKMembersMenu]] - `contains` [EXTRACTED]
+- [[PowerKModalCommandItem()]] - `imports` [EXTRACTED]
+- [[Props_429]] - `contains` [EXTRACTED]
+- [[command-item.tsx]] - `imports_from` [EXTRACTED]
+- [[root.tsx_100]] - `imports_from` [EXTRACTED]
+- [[root.tsx_101]] - `imports_from` [EXTRACTED]
 - [[use-member.ts]] - `imports_from` [EXTRACTED]
-- [[use-project-inbox.ts]] - `imports_from` [EXTRACTED]
 - [[useMember()]] - `imports` [EXTRACTED]
-- [[useProjectInbox()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filter_Selection_UI
+#graphify/code #graphify/EXTRACTED #community/Member_Members

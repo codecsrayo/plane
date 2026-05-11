@@ -1,30 +1,25 @@
 ---
-source_file: "components/pages/header/root.tsx"
+source_file: "web/core/components/issues/issue-detail-widgets/links/root.tsx"
 type: "code"
-community: "Order Search"
+community: "Issue Activity"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Order_Search
+  - community/Issue_Activity
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[PageOrderByDropdown()]] - `imports` [EXTRACTED]
-- [[PageSearchInput()]] - `imports` [EXTRACTED]
-- [[PageTabNavigation()]] - `imports` [EXTRACTED]
-- [[PagesListHeaderRoot]] - `contains` [EXTRACTED]
-- [[Props_393]] - `contains` [EXTRACTED]
-- [[index.ts_90]] - `imports_from` [EXTRACTED]
-- [[index.ts_156]] - `imports_from` [EXTRACTED]
-- [[index.ts_155]] - `imports_from` [EXTRACTED]
-- [[order-by.tsx_5]] - `imports_from` [EXTRACTED]
-- [[search-input.tsx]] - `imports_from` [EXTRACTED]
-- [[tab-navigation.tsx]] - `imports_from` [EXTRACTED]
-- [[use-member.ts]] - `imports_from` [EXTRACTED]
-- [[useMember()]] - `imports` [EXTRACTED]
+- [[IssueLinksCollapsibleContent()]] - `imports` [EXTRACTED]
+- [[IssueLinksCollapsibleTitle]] - `imports` [EXTRACTED]
+- [[LinksCollapsible]] - `contains` [EXTRACTED]
+- [[Props_360]] - `contains` [EXTRACTED]
+- [[content.tsx_3]] - `imports_from` [EXTRACTED]
+- [[title.tsx_3]] - `imports_from` [EXTRACTED]
+- [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
+- [[useIssueDetail()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Order_Search
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

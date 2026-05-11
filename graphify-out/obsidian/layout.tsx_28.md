@@ -1,0 +1,24 @@
+---
+source_file: "web/app/(all)/[workspaceSlug]/(projects)/analytics/[tabId]/layout.tsx"
+type: "code"
+community: "Workspace Analytics"
+location: "L1"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Workspace_Analytics
+---
+
+# layout.tsx
+
+## Connections
+
+- [[AppHeader]] - `imports` [EXTRACTED]
+- [[ContentWrapper()]] - `imports` [EXTRACTED]
+- [[WorkspaceAnalyticsHeader]] - `imports` [EXTRACTED]
+- [[WorkspaceAnalyticsTabLayout()]] - `contains` [EXTRACTED]
+- [[app-header.tsx]] - `imports_from` [EXTRACTED]
+- [[content-wrapper.tsx_3]] - `imports_from` [EXTRACTED]
+- [[header.tsx_18]] - `imports_from` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Workspace_Analytics

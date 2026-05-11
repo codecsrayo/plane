@@ -1,25 +1,32 @@
 ---
-source_file: "components/project/publish-project/modal.tsx"
+source_file: "web/core/components/workspace/views/modal.tsx"
 type: "code"
-community: "Project Projects"
+community: "Project Work"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Projects
+  - community/Project_Work
 ---
 
 # modal.tsx
 
 ## Connections
 
-- [[Props_144]] - `contains` [EXTRACTED]
-- [[PublishProjectModal]] - `contains` [EXTRACTED]
-- [[VIEW_OPTIONS]] - `contains` [EXTRACTED]
-- [[defaultValues_13]] - `contains` [EXTRACTED]
-- [[projects-list-item.tsx]] - `imports_from` [EXTRACTED]
-- [[tab-navigation-root.tsx]] - `imports_from` [EXTRACTED]
-- [[use-project-publish.ts]] - `imports_from` [EXTRACTED]
-- [[useProjectPublish()]] - `imports` [EXTRACTED]
+- [[CreateUpdateWorkspaceViewModal]] - `contains` [EXTRACTED]
+- [[Props_94]] - `contains` [EXTRACTED]
+- [[WorkspaceViewForm]] - `imports` [EXTRACTED]
+- [[form.tsx_1]] - `imports_from` [EXTRACTED]
+- [[header.tsx_17]] - `imports_from` [EXTRACTED]
+- [[header.tsx_42]] - `imports_from` [EXTRACTED]
+- [[quick-action.tsx]] - `imports_from` [EXTRACTED]
+- [[use-app-router.tsx]] - `imports_from` [EXTRACTED]
+- [[use-global-view.ts]] - `imports_from` [EXTRACTED]
+- [[use-work-item-filters.ts]] - `imports_from` [EXTRACTED]
+- [[useAppRouter()]] - `imports` [EXTRACTED]
+- [[useGlobalView()]] - `imports` [EXTRACTED]
+- [[useWorkItemFilters()]] - `imports` [EXTRACTED]
+- [[view-list-item.tsx_1]] - `imports_from` [EXTRACTED]
+- [[workspace-level.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Projects
+#graphify/code #graphify/EXTRACTED #community/Project_Work

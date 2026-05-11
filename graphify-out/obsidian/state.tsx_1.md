@@ -1,19 +1,20 @@
 ---
-source_file: "components/issues/issue-layouts/filters/applied-filters/state.tsx"
+source_file: "web/core/components/issues/issue-layouts/filters/header/filters/state.tsx"
 type: "code"
-community: "State Applied"
+community: "Priority State"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/State_Applied
+  - community/Priority_State
 ---
 
 # state.tsx
 
 ## Connections
 
-- [[AppliedStateFilters]] - `contains` [EXTRACTED]
-- [[Props_245]] - `contains` [EXTRACTED]
+- [[FilterState]] - `contains` [EXTRACTED]
+- [[Props_310]] - `contains` [EXTRACTED]
+- [[index.ts_355]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/State_Applied
+#graphify/code #graphify/EXTRACTED #community/Priority_State

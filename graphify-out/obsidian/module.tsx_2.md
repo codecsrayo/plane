@@ -1,21 +1,22 @@
 ---
-source_file: "components/issues/issue-layouts/filters/applied-filters/module.tsx"
+source_file: "web/core/components/issues/issue-layouts/filters/header/filters/module.tsx"
 type: "code"
-community: "Module Analytics"
+community: "Cycles Archived"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Analytics
+  - community/Cycles_Archived
 ---
 
 # module.tsx
 
 ## Connections
 
-- [[AppliedModuleFilters]] - `contains` [EXTRACTED]
-- [[Props_248]] - `contains` [EXTRACTED]
+- [[FilterModule]] - `contains` [EXTRACTED]
+- [[Props_313]] - `contains` [EXTRACTED]
+- [[index.ts_355]] - `imports_from` [EXTRACTED]
 - [[use-module.ts]] - `imports_from` [EXTRACTED]
 - [[useModule()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Analytics
+#graphify/code #graphify/EXTRACTED #community/Cycles_Archived

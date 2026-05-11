@@ -1,18 +1,18 @@
 ---
-source_file: "components/settings/profile/content/pages/notifications/email-notification-form.tsx"
+source_file: "web/core/components/profile/overview/activity.tsx"
 type: "code"
-community: "Email Settings"
-location: "L25"
+community: "Activity User"
+location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Email_Settings
+  - community/Activity_User
 ---
 
 # userService
 
 ## Connections
 
-- [[email-notification-form.tsx]] - `contains` [EXTRACTED]
+- [[activity.tsx_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Email_Settings
+#graphify/code #graphify/EXTRACTED #community/Activity_User

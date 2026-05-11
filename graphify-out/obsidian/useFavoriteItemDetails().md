@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/use-favorite-item-details.tsx"
+source_file: "web/core/hooks/use-favorite-item-details.tsx"
 type: "code"
-community: "Favorite Generate"
+community: "Project Work"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Favorite_Generate
+  - community/Project_Work
 ---
 
 # useFavoriteItemDetails()
@@ -15,11 +15,11 @@ tags:
 
 - [[generateFavoriteItemLink()]] - `calls` [INFERRED]
 - [[getFavoriteItemIcon()]] - `calls` [INFERRED]
-- [[root.tsx_3]] - `imports` [EXTRACTED]
+- [[root.tsx_44]] - `imports` [EXTRACTED]
 - [[use-favorite-item-details.tsx]] - `contains` [EXTRACTED]
-- [[useCycle()]] - `calls` [EXTRACTED]
-- [[useModule()]] - `calls` [EXTRACTED]
+- [[useAdditionalFavoriteItemDetails()]] - `calls` [EXTRACTED]
+- [[usePage()]] - `calls` [INFERRED]
 - [[useProject()]] - `calls` [EXTRACTED]
 - [[useProjectView()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Favorite_Generate
+#graphify/code #graphify/EXTRACTED #community/Project_Work

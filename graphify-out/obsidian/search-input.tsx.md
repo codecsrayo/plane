@@ -1,5 +1,5 @@
 ---
-source_file: "components/pages/list/search-input.tsx"
+source_file: "web/core/components/pages/list/search-input.tsx"
 type: "code"
 community: "Order Search"
 location: "L1"
@@ -14,7 +14,7 @@ tags:
 ## Connections
 
 - [[PageSearchInput()]] - `contains` [EXTRACTED]
-- [[Props_395]] - `contains` [EXTRACTED]
-- [[root.tsx_83]] - `imports_from` [EXTRACTED]
+- [[Props_469]] - `contains` [EXTRACTED]
+- [[root.tsx_124]] - `imports_from` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Order_Search

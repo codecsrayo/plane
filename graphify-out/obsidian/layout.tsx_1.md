@@ -1,22 +1,19 @@
 ---
-source_file: "components/dropdowns/layout.tsx"
+source_file: "web/app/(home)/layout.tsx"
 type: "code"
-community: "Selection Mobile"
+community: "Home"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Selection_Mobile
+  - community/Home
 ---
 
 # layout.tsx
 
 ## Connections
 
-- [[IssueLayoutIcon()]] - `imports` [EXTRACTED]
-- [[LayoutDropDown]] - `contains` [EXTRACTED]
-- [[TLayoutDropDown]] - `contains` [EXTRACTED]
-- [[form.tsx]] - `imports_from` [EXTRACTED]
-- [[layout-icon.tsx]] - `imports_from` [EXTRACTED]
+- [[HomeLayout()]] - `contains` [EXTRACTED]
+- [[meta()_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Selection_Mobile
+#graphify/code #graphify/EXTRACTED #community/Home

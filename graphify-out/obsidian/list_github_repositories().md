@@ -1,20 +1,20 @@
 ---
 source_file: "api_rust/src/routes/integrations/github.rs"
 type: "code"
-community: "Community 107"
+community: "User Github"
 location: "L439"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_107
+  - community/User_Github
 ---
 
 # list_github_repositories()
 
 ## Connections
 
-- [[get_installation_access_token()]] - `calls` [INFERRED]
+- [[.json()]] - `calls` [INFERRED]
 - [[github.rs]] - `contains` [EXTRACTED]
 - [[require_workspace_admin()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Community_107
+#graphify/code #graphify/INFERRED #community/User_Github

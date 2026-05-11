@@ -1,12 +1,12 @@
 ---
-source_file: "store/pages/project-page.ts"
+source_file: "web/core/store/pages/project-page.ts"
 type: "code"
-community: "Page Permissions"
+community: "Current User"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Page_Permissions
+  - community/Current_User
 ---
 
 # project-page.ts
@@ -19,8 +19,8 @@ tags:
 - [[TProjectPage]] - `contains` [EXTRACTED]
 - [[base-page.ts]] - `imports_from` [EXTRACTED]
 - [[currentUserProjectRole]] - `contains` [EXTRACTED]
-- [[index.ts_20]] - `imports_from` [EXTRACTED]
+- [[index.ts_285]] - `imports_from` [EXTRACTED]
 - [[project-page.store.ts]] - `imports_from` [EXTRACTED]
-- [[projectPageService]] - `contains` [EXTRACTED]
+- [[projectPageService_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Page_Permissions
+#graphify/code #graphify/EXTRACTED #community/Current_User

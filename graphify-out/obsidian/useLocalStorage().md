@@ -1,12 +1,12 @@
 ---
 source_file: "hooks/src/use-local-storage.tsx"
 type: "code"
-community: "Local Tabs"
+community: "Local Value"
 location: "L30"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Local_Tabs
+  - graphify/INFERRED
+  - community/Local_Value
 ---
 
 # useLocalStorage()
@@ -16,4 +16,4 @@ tags:
 - [[Tabs()]] - `calls` [INFERRED]
 - [[use-local-storage.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Local_Tabs
+#graphify/code #graphify/INFERRED #community/Local_Value

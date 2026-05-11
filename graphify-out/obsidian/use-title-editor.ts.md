@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/hooks/use-title-editor.ts"
 type: "code"
-community: "Title Node"
+community: "Document Collaborative"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Title_Node
+  - community/Document_Collaborative
 ---
 
 # use-title-editor.ts
@@ -27,4 +27,4 @@ tags:
 - [[use-collaborative-editor.ts]] - `imports_from` [EXTRACTED]
 - [[useTitleEditor()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Title_Node
+#graphify/code #graphify/EXTRACTED #community/Document_Collaborative

@@ -1,5 +1,5 @@
 ---
-source_file: "components/stickies/layout/sticky-dnd-wrapper.tsx"
+source_file: "web/core/components/stickies/layout/sticky-dnd-wrapper.tsx"
 type: "code"
 community: "Stickies Sticky"
 location: "L1"
@@ -13,10 +13,11 @@ tags:
 
 ## Connections
 
-- [[Props_60]] - `contains` [EXTRACTED]
+- [[Adapter_1]] - `imports_from` [EXTRACTED]
+- [[Props_136]] - `contains` [EXTRACTED]
 - [[StickyDNDWrapper]] - `contains` [EXTRACTED]
 - [[getInstructionFromPayload()_2]] - `imports` [EXTRACTED]
-- [[index.ts_56]] - `imports_from` [EXTRACTED]
+- [[index.ts_321]] - `imports_from` [EXTRACTED]
 - [[stickies-list.tsx]] - `imports_from` [EXTRACTED]
 - [[sticky.helpers.ts]] - `imports_from` [EXTRACTED]
 

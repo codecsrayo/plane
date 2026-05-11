@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-detail/issue-activity/helper.tsx"
+source_file: "web/core/components/issues/issue-detail/issue-activity/helper.tsx"
 type: "code"
-community: "Project Archives"
+community: "Workspace Issue"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Archives
+  - community/Workspace_Issue
 ---
 
 # useWorkItemCommentOperations()
@@ -14,12 +14,10 @@ tags:
 ## Connections
 
 - [[.getIssueById()]] - `calls` [INFERRED]
-- [[helper.tsx_4]] - `contains` [EXTRACTED]
-- [[root.tsx_31]] - `imports` [EXTRACTED]
+- [[helper.tsx_26]] - `contains` [EXTRACTED]
+- [[root.tsx_72]] - `imports` [EXTRACTED]
 - [[useEditorAsset()]] - `calls` [EXTRACTED]
 - [[useIssueDetail()]] - `calls` [EXTRACTED]
-- [[useMember()]] - `calls` [EXTRACTED]
 - [[useProject()]] - `calls` [EXTRACTED]
-- [[useUser()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Archives
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

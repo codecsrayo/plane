@@ -1,5 +1,5 @@
 ---
-source_file: "store/member/workspace/workspace-member.store.ts"
+source_file: "web/core/store/member/workspace/workspace-member.store.ts"
 type: "code"
 community: "Member Workspace"
 location: "L138"

@@ -1,20 +1,19 @@
 ---
-source_file: "components/global/product-updates/modal.tsx"
+source_file: "web/ce/components/estimates/update/modal.tsx"
 type: "code"
-community: "Start Week"
+community: "Estimate Tupdateestimatemodal"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Start_Week
+  - community/Estimate_Tupdateestimatemodal
 ---
 
 # modal.tsx
 
 ## Connections
 
-- [[ProductUpdatesModal]] - `contains` [EXTRACTED]
-- [[ProductUpdatesModalProps]] - `contains` [EXTRACTED]
-- [[index.ts_68]] - `imports_from` [EXTRACTED]
+- [[TUpdateEstimateModal]] - `contains` [EXTRACTED]
+- [[UpdateEstimateModal]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Start_Week
+#graphify/code #graphify/EXTRACTED #community/Estimate_Tupdateestimatemodal

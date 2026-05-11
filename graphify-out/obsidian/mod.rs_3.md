@@ -1,14 +1,14 @@
 ---
-source_file: "api_rust/src/jobs/mod.rs"
+source_file: "api_rust/src/routes/integrations/mod.rs"
 type: "code"
-community: "Community 647"
+community: "Community 1978"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_647
+  - community/Community_1978
 ---
 
 # mod.rs
 
-#graphify/code #graphify/EXTRACTED #community/Community_647
+#graphify/code #graphify/EXTRACTED #community/Community_1978

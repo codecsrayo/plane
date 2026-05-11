@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/use-multiple-select.ts"
+source_file: "web/core/hooks/use-multiple-select.ts"
 type: "code"
-community: "Multi Select Actions"
+community: "Select Multiple"
 location: "L39"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Multi_Select_Actions
+  - community/Select_Multiple
 ---
 
 # useMultipleSelect()
@@ -18,4 +18,4 @@ tags:
 - [[useMultipleSelectStore()]] - `calls` [EXTRACTED]
 - [[useReloadConfirmations()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Multi_Select_Actions
+#graphify/code #graphify/EXTRACTED #community/Select_Multiple

@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/use-navigation-preferences.ts"
+source_file: "web/core/hooks/use-navigation-preferences.ts"
 type: "code"
-community: "Rail Visibility"
+community: "Sidebar Rail"
 location: "L279"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Rail_Visibility
+  - community/Sidebar_Rail
 ---
 
 # useAppRailPreferences()
@@ -14,7 +14,8 @@ tags:
 ## Connections
 
 - [[app-rail-root.tsx]] - `imports` [EXTRACTED]
+- [[top-navigation-root.tsx]] - `imports` [EXTRACTED]
 - [[use-navigation-preferences.ts]] - `contains` [EXTRACTED]
-- [[useLocalStorage()]] - `calls` [EXTRACTED]
+- [[useLocalStorage()_1]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Rail_Visibility
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Rail

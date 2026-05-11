@@ -1,35 +1,40 @@
 ---
-source_file: "components/inbox/sidebar/root.tsx"
+source_file: "web/core/components/issues/issue-detail/root.tsx"
 type: "code"
-community: "Inbox Filters"
+community: "Label Dropdown"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Inbox_Filters
+  - community/Label_Dropdown
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[IInboxSidebarProps]] - `contains` [EXTRACTED]
-- [[InboxIssueAppliedFilters]] - `imports` [EXTRACTED]
-- [[InboxIssueList]] - `imports` [EXTRACTED]
-- [[InboxSidebar]] - `contains` [EXTRACTED]
-- [[InboxSidebarLoader()]] - `imports` [EXTRACTED]
-- [[inbox-list.tsx]] - `imports_from` [EXTRACTED]
-- [[inbox-sidebar-loader.tsx]] - `imports_from` [EXTRACTED]
-- [[index.ts_148]] - `imports_from` [EXTRACTED]
-- [[root.tsx_73]] - `imports_from` [EXTRACTED]
-- [[tabNavigationOptions]] - `contains` [EXTRACTED]
+- [[EmptyState()_2]] - `imports` [EXTRACTED]
+- [[IssueDetailRoot]] - `contains` [EXTRACTED]
+- [[IssueDetailsSidebar]] - `imports` [EXTRACTED]
+- [[IssueMainContent]] - `imports` [EXTRACTED]
+- [[TIssueDetailRoot]] - `contains` [EXTRACTED]
+- [[TIssueOperations]] - `contains` [EXTRACTED]
+- [[cycle-select.tsx]] - `imports_from` [EXTRACTED]
+- [[empty-state.tsx_4]] - `imports_from` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
+- [[index.ts_382]] - `imports_from` [EXTRACTED]
+- [[main-content.tsx_1]] - `imports_from` [EXTRACTED]
+- [[module-select.tsx]] - `imports_from` [EXTRACTED]
+- [[root.tsx_76]] - `imports_from` [EXTRACTED]
+- [[sidebar.tsx_4]] - `imports_from` [EXTRACTED]
 - [[use-app-router.tsx]] - `imports_from` [EXTRACTED]
-- [[use-intersection-observer.ts]] - `imports_from` [EXTRACTED]
-- [[use-project-inbox.ts]] - `imports_from` [EXTRACTED]
-- [[use-project.ts]] - `imports_from` [EXTRACTED]
+- [[use-app-theme.ts]] - `imports_from` [EXTRACTED]
+- [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
+- [[use-issues.ts]] - `imports_from` [EXTRACTED]
 - [[useAppRouter()]] - `imports` [EXTRACTED]
-- [[useIntersectionObserver()]] - `imports` [EXTRACTED]
-- [[useProject()]] - `imports` [EXTRACTED]
-- [[useProjectInbox()]] - `imports` [EXTRACTED]
+- [[useAppTheme()]] - `imports` [EXTRACTED]
+- [[useIssueDetail()]] - `imports` [EXTRACTED]
+- [[useIssues()]] - `imports` [EXTRACTED]
+- [[workItem-detail.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Inbox_Filters
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

@@ -1,30 +1,20 @@
 ---
-source_file: "store/issue/module/issue.store.ts"
+source_file: "web/ce/store/issue/team-views/issue.store.ts"
 type: "code"
-community: "Filters Display"
+community: "Calendar Issue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filters_Display
+  - community/Calendar_Issue
 ---
 
 # issue.store.ts
 
 ## Connections
 
-- [[IBaseIssuesStore]] - `imports` [EXTRACTED]
-- [[IIssueRootStore]] - `imports` [EXTRACTED]
-- [[IModuleIssues]] - `contains` [EXTRACTED]
-- [[IModuleIssuesFilter]] - `imports` [EXTRACTED]
-- [[ModuleIssues]] - `contains` [EXTRACTED]
-- [[api.service.ts]] - `imports_from` [EXTRACTED]
-- [[base-issues.store.ts]] - `imports_from` [EXTRACTED]
-- [[cursorObject_3]] - `contains` [EXTRACTED]
-- [[distributionUpdates]] - `contains` [EXTRACTED]
-- [[filter.store.ts_3]] - `imports_from` [EXTRACTED]
-- [[params_3]] - `contains` [EXTRACTED]
-- [[root.store.ts_1]] - `imports_from` [EXTRACTED]
-- [[toApiError()]] - `imports` [EXTRACTED]
+- [[ITeamViewIssues]] - `contains` [EXTRACTED]
+- [[TeamViewIssues]] - `contains` [EXTRACTED]
+- [[index.ts_274]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filters_Display
+#graphify/code #graphify/EXTRACTED #community/Calendar_Issue

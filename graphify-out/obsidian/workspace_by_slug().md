@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/routes/helpers.rs"
 type: "code"
-community: "Workspace & Issues Rust API"
+community: "Project Response"
 location: "L18"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Workspace__Issues_Rust_API
+  - community/Project_Response
 ---
 
 # workspace_by_slug()
@@ -18,10 +18,10 @@ tags:
 - [[create_draft_issue()]] - `calls` [INFERRED]
 - [[create_favorite()]] - `calls` [INFERRED]
 - [[create_invitations()]] - `calls` [INFERRED]
-- [[create_project()]] - `calls` [INFERRED]
+- [[create_project()_1]] - `calls` [INFERRED]
 - [[create_project_favorite()]] - `calls` [INFERRED]
 - [[create_project_invitations()]] - `calls` [INFERRED]
-- [[create_project_members()]] - `calls` [INFERRED]
+- [[create_project_members()_1]] - `calls` [INFERRED]
 - [[create_quick_link()]] - `calls` [INFERRED]
 - [[create_state()]] - `calls` [INFERRED]
 - [[create_sticky()]] - `calls` [INFERRED]
@@ -118,4 +118,4 @@ tags:
 - [[update_workspace_views()]] - `calls` [INFERRED]
 - [[upsert_project_deploy_board()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Workspace\_\_Issues_Rust_API
+#graphify/code #graphify/INFERRED #community/Project_Response

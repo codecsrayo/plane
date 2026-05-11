@@ -1,18 +1,18 @@
 ---
-source_file: "components/profile/activity/workspace-activity-list.tsx"
+source_file: "web/core/components/profile/activity/download-button.tsx"
 type: "code"
-community: "Activity List"
-location: "L18"
+community: "Activity User"
+location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Activity_List
+  - community/Activity_User
 ---
 
 # userService
 
 ## Connections
 
-- [[workspace-activity-list.tsx]] - `contains` [EXTRACTED]
+- [[download-button.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Activity_List
+#graphify/code #graphify/EXTRACTED #community/Activity_User

@@ -1,5 +1,5 @@
 ---
-source_file: "components/automation/select-month-modal.tsx"
+source_file: "web/core/components/automation/select-month-modal.tsx"
 type: "code"
 community: "Select Month"
 location: "L1"
@@ -13,7 +13,7 @@ tags:
 
 ## Connections
 
-- [[Props_175]] - `contains` [EXTRACTED]
+- [[Props_250]] - `contains` [EXTRACTED]
 - [[SelectMonthModal()]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Select_Month

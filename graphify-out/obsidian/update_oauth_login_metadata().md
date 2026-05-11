@@ -1,19 +1,21 @@
 ---
 source_file: "api_rust/src/auth/oauth.rs"
 type: "code"
-community: "Community 43"
+community: "Session Presigned"
 location: "L133"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Community_43
+  - graphify/INFERRED
+  - community/Session_Presigned
 ---
 
 # update_oauth_login_metadata()
 
 ## Connections
 
+- [[.set()]] - `calls` [INFERRED]
 - [[find_or_create_oauth_user()]] - `calls` [EXTRACTED]
+- [[now]] - `calls` [INFERRED]
 - [[oauth.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_43
+#graphify/code #graphify/INFERRED #community/Session_Presigned

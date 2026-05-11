@@ -1,28 +1,19 @@
 ---
-source_file: "components/modules/modal.tsx"
+source_file: "web/ce/components/cycles/end-cycle/modal.tsx"
 type: "code"
-community: "Module Analytics"
+community: "Cycle"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Analytics
+  - community/Cycle
 ---
 
 # modal.tsx
 
 ## Connections
 
-- [[CreateUpdateModuleModal]] - `contains` [EXTRACTED]
-- [[Props_69]] - `contains` [EXTRACTED]
-- [[defaultValues_5]] - `contains` [EXTRACTED]
-- [[index.ts_58]] - `imports_from` [EXTRACTED]
-- [[use-keypress.tsx]] - `imports_from` [EXTRACTED]
-- [[use-module.ts]] - `imports_from` [EXTRACTED]
-- [[use-platform-os.tsx]] - `imports_from` [EXTRACTED]
-- [[use-project.ts]] - `imports_from` [EXTRACTED]
-- [[useModule()]] - `imports` [EXTRACTED]
-- [[usePlatformOS()]] - `imports` [EXTRACTED]
-- [[useProject()]] - `imports` [EXTRACTED]
+- [[EndCycleModal()]] - `contains` [EXTRACTED]
+- [[Props_71]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Analytics
+#graphify/code #graphify/EXTRACTED #community/Cycle

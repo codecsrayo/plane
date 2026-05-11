@@ -1,19 +1,21 @@
 ---
-source_file: "components/readonly/priority.tsx"
+source_file: "web/core/components/inbox/inbox-filter/applied-filters/priority.tsx"
 type: "code"
-community: "Priority Readonly"
+community: "Issue Inbox"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Priority_Readonly
+  - community/Issue_Inbox
 ---
 
 # priority.tsx
 
 ## Connections
 
-- [[ReadonlyPriority]] - `contains` [EXTRACTED]
-- [[TReadonlyPriorityProps]] - `contains` [EXTRACTED]
+- [[InboxIssueAppliedFiltersPriority]] - `contains` [EXTRACTED]
+- [[root.tsx_114]] - `imports_from` [EXTRACTED]
+- [[use-project-inbox.ts]] - `imports_from` [EXTRACTED]
+- [[useProjectInbox()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Priority_Readonly
+#graphify/code #graphify/EXTRACTED #community/Issue_Inbox

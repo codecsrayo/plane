@@ -1,0 +1,153 @@
+---
+---
+<header class="hero" id="top">
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="floaters" aria-hidden="true">
+    <span style="left:12%;top:30%;animation-delay:0s"></span>
+    <span style="left:22%;top:70%;animation-delay:1.2s;background:oklch(0.72 0.12 195)"></span>
+    <span style="left:68%;top:22%;animation-delay:2.4s"></span>
+    <span style="left:82%;top:62%;animation-delay:3.6s;background:oklch(0.68 0.14 55)"></span>
+    <span style="left:48%;top:84%;animation-delay:1.8s"></span>
+  </div>
+
+  <div class="hero-inner">
+    <div>
+      <div class="eyebrow"><span class="dot"></span> Bi-Quare Consulting S.A.S. · Medellín, Colombia · Desde 2008</div>
+
+      <h1 class="display">
+        <span class="row"><span>Respuestas</span></span>
+        <span class="row"><span>correctas a las</span></span>
+        <span class="row"><span><em>preguntas</em> de su negocio.</span></span>
+      </h1>
+
+      <p class="hero-sub">
+        Somos su socio tecnológico en Business Intelligence, Business Analytics y Gestión de Riesgos.
+        Transformamos datos en decisiones con soluciones integrales, a la medida y de la más alta calidad.
+      </p>
+
+      <div class="hero-ctas">
+        <a href="#que-hacemos" class="btn btn-primary">Conoce qué hacemos <span class="arrow">→</span></a>
+        <a href="#contacto" class="btn btn-ghost">Hablemos <span class="arrow">→</span></a>
+      </div>
+    </div>
+
+    <aside class="viz-card" aria-hidden="true">
+      <div class="viz-head">
+        <div class="viz-lights"><span></span><span></span><span></span></div>
+        <div class="tag">biquare.dashboard.v4</div>
+      </div>
+      <div class="viz-kpis">
+        <div class="kpi"><div class="label">Ingresos</div><div class="val" data-count="128" data-suffix="M">0</div><div class="delta">▲ 12.4%</div></div>
+        <div class="kpi"><div class="label">Riesgo</div><div class="val" data-count="2.1" data-suffix="%" data-dec="1">0</div><div class="delta neg">▼ 0.6 pp</div></div>
+        <div class="kpi"><div class="label">NPS</div><div class="val" data-count="74">0</div><div class="delta">▲ 5</div></div>
+      </div>
+      <div class="viz-chart">
+        <svg id="heroChart" viewBox="0 0 600 240" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="g1" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stop-color="oklch(0.62 0.14 235)" stop-opacity=".35"/>
+              <stop offset="100%" stop-color="oklch(0.62 0.14 235)" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <g stroke="rgba(11,18,32,.08)">
+            <line x1="0" y1="60" x2="600" y2="60"/>
+            <line x1="0" y1="120" x2="600" y2="120"/>
+            <line x1="0" y1="180" x2="600" y2="180"/>
+          </g>
+          <path id="areaPath" d="" fill="url(#g1)" stroke="none"/>
+          <path id="linePath" d="" fill="none" stroke="oklch(0.62 0.14 235)" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+          <path id="linePath2" d="" fill="none" stroke="oklch(0.72 0.12 195)" stroke-width="1.2" stroke-dasharray="3 4" opacity=".7"/>
+          <circle id="dot" r="4" fill="oklch(0.62 0.14 235)" stroke="#fff" stroke-width="2"/>
+        </svg>
+      </div>
+      <div class="viz-foot">
+        <div class="live">STREAMING · 12 fuentes</div>
+        <div>Q1 → Q4 · 2025</div>
+      </div>
+    </aside>
+  </div>
+
+  <div class="hero-foot">
+    <div class="stat"><b>+17</b> Años de trayectoria</div>
+    <div class="stat"><b>+40</b> Proyectos entregados</div>
+    <div class="stat"><b>+8</b> Sectores atendidos</div>
+    <div class="stat"><b>100%</b> Soluciones a la medida</div>
+  </div>
+</header>
+
+<script>
+  // KPI count-up
+  const countEls = document.querySelectorAll('.kpi .val');
+  const ioCount = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target as HTMLElement;
+      const target = parseFloat(el.dataset.count!);
+      const dec = parseInt(el.dataset.dec || '0', 10);
+      const suffix = el.dataset.suffix || '';
+      const dur = 1400;
+      const start = performance.now();
+      const tick = (t: number) => {
+        const p = Math.min(1, (t - start) / dur);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = (target * eased).toFixed(dec) + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+      ioCount.unobserve(el);
+    });
+  }, { threshold: .6 });
+  countEls.forEach(el => ioCount.observe(el));
+
+  // Hero chart animation
+  (function chart() {
+    const W = 600, H = 240, N = 40;
+    const linePath = document.getElementById('linePath');
+    const linePath2 = document.getElementById('linePath2');
+    const areaPath = document.getElementById('areaPath');
+    const dot = document.getElementById('dot');
+    if (!linePath || !linePath2 || !areaPath || !dot) return;
+    let t = 0;
+
+    function build(offset: number) {
+      const pts: [number, number][] = [];
+      for (let i = 0; i <= N; i++) {
+        const x = (i / N) * W;
+        const base = 130;
+        const y = base
+          + Math.sin((i * 0.35) + offset) * 22
+          + Math.sin((i * 0.12) + offset * 0.6) * 40
+          - (i / N) * 50;
+        pts.push([x, Math.max(20, Math.min(220, y))]);
+      }
+      const d = pts.map((p, i) => (i === 0 ? 'M' : 'L') + p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' ');
+      return { d, pts };
+    }
+
+    function frame() {
+      t += 0.012;
+      const a = build(t);
+      const b = build(t + 1.4);
+      linePath.setAttribute('d', a.d);
+      linePath2.setAttribute('d', b.d);
+      areaPath.setAttribute('d', a.d + ` L ${W} ${H} L 0 ${H} Z`);
+      const idx = Math.floor(((Math.sin(t * 0.7) + 1) / 2) * (a.pts.length - 1));
+      const p = a.pts[idx];
+      dot.setAttribute('cx', String(p[0]));
+      dot.setAttribute('cy', String(p[1]));
+      requestAnimationFrame(frame);
+    }
+    frame();
+  })();
+
+  // Magnetic CTA
+  document.querySelectorAll<HTMLElement>('.btn').forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+      const r = btn.getBoundingClientRect();
+      const x = e.clientX - r.left - r.width / 2;
+      const y = e.clientY - r.top - r.height / 2;
+      btn.style.transform = `translate(${x * 0.12}px, ${y * 0.18}px)`;
+    });
+    btn.addEventListener('mouseleave', () => btn.style.transform = '');
+  });
+</script>

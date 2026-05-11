@@ -1,12 +1,12 @@
 ---
-source_file: "components/project/leave-project-modal.tsx"
+source_file: "web/core/components/project/leave-project-modal.tsx"
 type: "code"
-community: "Project Projects"
+community: "Project Profile"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Projects
+  - community/Project_Profile
 ---
 
 # leave-project-modal.tsx
@@ -17,10 +17,10 @@ tags:
 - [[ILeaveProjectModal]] - `contains` [EXTRACTED]
 - [[LeaveProjectModal]] - `contains` [EXTRACTED]
 - [[defaultValues_11]] - `contains` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
 - [[projects-list-item.tsx]] - `imports_from` [EXTRACTED]
 - [[tab-navigation-root.tsx]] - `imports_from` [EXTRACTED]
 - [[use-app-router.tsx]] - `imports_from` [EXTRACTED]
 - [[useAppRouter()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Projects
+#graphify/code #graphify/EXTRACTED #community/Project_Profile

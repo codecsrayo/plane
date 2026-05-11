@@ -1,12 +1,12 @@
 ---
-source_file: "store/issue/issue-details/subscription.store.ts"
+source_file: "web/core/store/issue/issue-details/subscription.store.ts"
 type: "code"
-community: "Comment Reactions"
+community: "Issue Reaction"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Comment_Reactions
+  - community/Issue_Reaction
 ---
 
 # subscription.store.ts
@@ -18,9 +18,9 @@ tags:
 - [[IIssueSubscriptionStoreActions]] - `contains` [EXTRACTED]
 - [[IssueService]] - `imports` [EXTRACTED]
 - [[IssueSubscriptionStore]] - `contains` [EXTRACTED]
-- [[api.service.ts]] - `imports_from` [EXTRACTED]
-- [[issue.service.ts]] - `imports_from` [EXTRACTED]
-- [[root.store.ts_2]] - `imports_from` [EXTRACTED]
+- [[api.service.ts_1]] - `imports_from` [EXTRACTED]
+- [[issue.service.ts_1]] - `imports_from` [EXTRACTED]
+- [[root.store.ts_4]] - `imports_from` [EXTRACTED]
 - [[toApiError()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Comment_Reactions
+#graphify/code #graphify/EXTRACTED #community/Issue_Reaction

@@ -1,12 +1,12 @@
 ---
-source_file: "components/inbox/modals/select-duplicate.tsx"
+source_file: "web/core/components/inbox/modals/select-duplicate.tsx"
 type: "code"
-community: "Select Duplicate"
+community: "Project Settings"
 location: "L37"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Select_Duplicate
+  - community/Project_Settings
 ---
 
 # projectService
@@ -15,4 +15,4 @@ tags:
 
 - [[select-duplicate.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Select_Duplicate
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

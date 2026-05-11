@@ -1,12 +1,12 @@
 ---
-source_file: "components/power-k/config/miscellaneous-commands.ts"
+source_file: "web/core/components/power-k/config/miscellaneous-commands.ts"
 type: "code"
-community: "Command Palette"
+community: "Power Chat"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Command_Palette
+  - community/Power_Chat
 ---
 
 # usePowerKMiscellaneousCommands()
@@ -19,4 +19,4 @@ tags:
 - [[usePowerK()]] - `calls` [EXTRACTED]
 - [[useProjectsAppPowerKCommands()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Command_Palette
+#graphify/code #graphify/EXTRACTED #community/Power_Chat

@@ -1,5 +1,5 @@
 ---
-source_file: "hooks/use-issue-peek-overview-redirection.tsx"
+source_file: "web/core/hooks/use-issue-peek-overview-redirection.tsx"
 type: "code"
 community: "Issue Activity"
 location: "L17"

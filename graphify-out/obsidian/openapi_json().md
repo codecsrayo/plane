@@ -1,18 +1,19 @@
 ---
 source_file: "api_rust/src/routes/mod.rs"
 type: "code"
-community: "Community 144"
+community: "Password Email"
 location: "L549"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Community_144
+  - graphify/INFERRED
+  - community/Password_Email
 ---
 
 # openapi_json()
 
 ## Connections
 
-- [[mod.rs_1]] - `contains` [EXTRACTED]
+- [[.json()]] - `calls` [INFERRED]
+- [[mod.rs_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_144
+#graphify/code #graphify/INFERRED #community/Password_Email

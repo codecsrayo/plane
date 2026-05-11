@@ -1,12 +1,12 @@
 ---
-source_file: "components/workspace/settings/members-list.tsx"
+source_file: "web/core/components/workspace/settings/members-list.tsx"
 type: "code"
-community: "Member Settings"
+community: "Member Members"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Settings
+  - community/Member_Members
 ---
 
 # members-list.tsx
@@ -21,8 +21,9 @@ tags:
 - [[count-chip.tsx]] - `imports_from` [EXTRACTED]
 - [[invitations-list-item.tsx]] - `imports_from` [EXTRACTED]
 - [[members-list-item.tsx]] - `imports_from` [EXTRACTED]
-- [[members.tsx]] - `imports_from` [EXTRACTED]
+- [[members.tsx_1]] - `imports_from` [EXTRACTED]
+- [[page.tsx_51]] - `imports_from` [EXTRACTED]
 - [[use-member.ts]] - `imports_from` [EXTRACTED]
 - [[useMember()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Settings
+#graphify/code #graphify/EXTRACTED #community/Member_Members

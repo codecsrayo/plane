@@ -1,12 +1,12 @@
 ---
-source_file: "store/issue/helpers/issue-filter-helper.store.ts"
+source_file: "web/core/store/issue/helpers/issue-filter-helper.store.ts"
 type: "code"
-community: "Filters Display"
+community: "Filters Issue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filters_Display
+  - community/Filters_Issue
 ---
 
 # issue-filter-helper.store.ts
@@ -25,17 +25,18 @@ tags:
 - [[computedFilters]] - `contains` [EXTRACTED]
 - [[currentFilterIndex]] - `contains` [EXTRACTED]
 - [[displayFilterKeys]] - `contains` [EXTRACTED]
-- [[filter.store.ts]] - `imports_from` [EXTRACTED]
-- [[filter.store.ts_1]] - `imports_from` [EXTRACTED]
-- [[filter.store.ts_2]] - `imports_from` [EXTRACTED]
-- [[filter.store.ts_3]] - `imports_from` [EXTRACTED]
-- [[filter.store.ts_4]] - `imports_from` [EXTRACTED]
 - [[filter.store.ts_5]] - `imports_from` [EXTRACTED]
 - [[filter.store.ts_6]] - `imports_from` [EXTRACTED]
 - [[filter.store.ts_7]] - `imports_from` [EXTRACTED]
+- [[filter.store.ts_8]] - `imports_from` [EXTRACTED]
+- [[filter.store.ts_9]] - `imports_from` [EXTRACTED]
+- [[filter.store.ts_10]] - `imports_from` [EXTRACTED]
+- [[filter.store.ts_11]] - `imports_from` [EXTRACTED]
+- [[filter.store.ts_12]] - `imports_from` [EXTRACTED]
+- [[getEnabledDisplayFilters()]] - `imports` [EXTRACTED]
 - [[issueFiltersParams]] - `contains` [EXTRACTED]
 - [[local-storage.ts]] - `imports_from` [EXTRACTED]
 - [[storage]] - `imports` [EXTRACTED]
 - [[storageFilters]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filters_Display
+#graphify/code #graphify/EXTRACTED #community/Filters_Issue

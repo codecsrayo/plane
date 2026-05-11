@@ -1,12 +1,12 @@
 ---
-source_file: "components/modules/links/list.tsx"
+source_file: "web/core/components/modules/links/list.tsx"
 type: "code"
-community: "Module Analytics"
+community: "Cycles Archived"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Analytics
+  - community/Cycles_Archived
 ---
 
 # list.tsx
@@ -14,9 +14,9 @@ tags:
 ## Connections
 
 - [[ModuleLinksList]] - `contains` [EXTRACTED]
-- [[Props_89]] - `contains` [EXTRACTED]
-- [[index.ts_58]] - `imports_from` [EXTRACTED]
+- [[Props_164]] - `contains` [EXTRACTED]
+- [[index.ts_323]] - `imports_from` [EXTRACTED]
 - [[use-module.ts]] - `imports_from` [EXTRACTED]
 - [[useModule()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Analytics
+#graphify/code #graphify/EXTRACTED #community/Cycles_Archived

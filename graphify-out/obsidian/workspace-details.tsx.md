@@ -1,26 +1,28 @@
 ---
-source_file: "components/workspace/settings/workspace-details.tsx"
+source_file: "web/core/components/workspace/settings/workspace-details.tsx"
 type: "code"
-community: "Workspace Timezone"
+community: "Workspace Issue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Timezone
+  - community/Workspace_Issue
 ---
 
 # workspace-details.tsx
 
 ## Connections
 
+- [[DeleteWorkspaceSection]] - `imports` [EXTRACTED]
 - [[TimezoneSelect]] - `imports` [EXTRACTED]
 - [[WorkspaceDetails]] - `contains` [EXTRACTED]
 - [[WorkspaceImageUploadModal]] - `imports` [EXTRACTED]
 - [[defaultValues_2]] - `contains` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
+- [[page.tsx_48]] - `imports_from` [EXTRACTED]
 - [[timezone-select.tsx]] - `imports_from` [EXTRACTED]
 - [[use-workspace.ts]] - `imports_from` [EXTRACTED]
 - [[useWorkspace()]] - `imports` [EXTRACTED]
 - [[workspace-image-upload-modal.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Timezone
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

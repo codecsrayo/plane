@@ -1,12 +1,12 @@
 ---
-source_file: "services/issue_filter.service.ts"
+source_file: "web/core/services/issue_filter.service.ts"
 type: "code"
-community: "Issue Filters"
+community: "Filters Issue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Filters
+  - community/Filters_Issue
 ---
 
 # issue_filter.service.ts
@@ -15,11 +15,11 @@ tags:
 
 - [[ApiError]] - `imports` [EXTRACTED]
 - [[IssueFiltersService]] - `contains` [EXTRACTED]
-- [[api.service.ts]] - `imports_from` [EXTRACTED]
-- [[filter.store.ts]] - `imports_from` [EXTRACTED]
-- [[filter.store.ts_3]] - `imports_from` [EXTRACTED]
-- [[filter.store.ts_4]] - `imports_from` [EXTRACTED]
+- [[api.service.ts_1]] - `imports_from` [EXTRACTED]
 - [[filter.store.ts_5]] - `imports_from` [EXTRACTED]
-- [[filter.store.ts_7]] - `imports_from` [EXTRACTED]
+- [[filter.store.ts_8]] - `imports_from` [EXTRACTED]
+- [[filter.store.ts_9]] - `imports_from` [EXTRACTED]
+- [[filter.store.ts_10]] - `imports_from` [EXTRACTED]
+- [[filter.store.ts_12]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Filters
+#graphify/code #graphify/EXTRACTED #community/Filters_Issue

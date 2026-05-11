@@ -1,20 +1,21 @@
 ---
-source_file: "api_rust/src/utils/posthog.rs"
+source_file: "api/plane/bgtasks/event_tracking_task.py"
 type: "code"
-community: "Workspace Activity & Analytics"
-location: "L63"
+community: "Event Tracking"
+location: "L62"
 tags:
   - graphify/code
-  - graphify/INFERRED
-  - community/Workspace_Activity__Analytics
+  - graphify/EXTRACTED
+  - community/Event_Tracking
 ---
 
 # track_event()
 
 ## Connections
 
-- [[delete_workspace()]] - `calls` [INFERRED]
-- [[get_config_value()]] - `calls` [INFERRED]
-- [[posthog.rs]] - `contains` [EXTRACTED]
+- [[event_tracking_task.py]] - `contains` [EXTRACTED]
+- [[log_exception()]] - `calls` [INFERRED]
+- [[posthogConfiguration()]] - `calls` [EXTRACTED]
+- [[preprocess_data_properties()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Workspace_Activity\_\_Analytics
+#graphify/code #graphify/EXTRACTED #community/Event_Tracking

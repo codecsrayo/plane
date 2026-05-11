@@ -1,12 +1,12 @@
 ---
 source_file: "types/src/reaction.ts"
 type: "code"
-community: "Instance Config"
+community: "User Instance"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Instance_Config
+  - community/User_Instance
 ---
 
 # reaction.ts
@@ -20,4 +20,4 @@ tags:
 - [[IssueReactionForm]] - `contains` [EXTRACTED]
 - [[users.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Instance_Config
+#graphify/code #graphify/EXTRACTED #community/User_Instance

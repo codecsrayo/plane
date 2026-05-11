@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/icons/type.ts"
 type: "code"
-community: "Logo Icons"
+community: "Icon Panel"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Logo_Icons
+  - community/Icon_Panel
 ---
 
 # type.ts
@@ -167,4 +167,4 @@ tags:
 - [[your-work-icon.tsx]] - `imports_from` [EXTRACTED]
 - [[zerodha-logo.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Logo_Icons
+#graphify/code #graphify/EXTRACTED #community/Icon_Panel

@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/store/use-member.ts"
+source_file: "web/core/hooks/store/use-member.ts"
 type: "code"
-community: "Issue Filters"
+community: "Member Members"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Filters
+  - community/Member_Members
 ---
 
 # use-member.ts
@@ -19,26 +19,26 @@ tags:
 - [[assignee.tsx]] - `imports_from` [EXTRACTED]
 - [[attachment-detail.tsx]] - `imports_from` [EXTRACTED]
 - [[attachment-list-item.tsx]] - `imports_from` [EXTRACTED]
-- [[avatar.tsx]] - `imports_from` [EXTRACTED]
+- [[avatar.tsx_2]] - `imports_from` [EXTRACTED]
 - [[block-item-action.tsx]] - `imports_from` [EXTRACTED]
-- [[card.tsx]] - `imports_from` [EXTRACTED]
+- [[card.tsx_2]] - `imports_from` [EXTRACTED]
 - [[created-by.tsx]] - `imports_from` [EXTRACTED]
 - [[created-by.tsx_1]] - `imports_from` [EXTRACTED]
 - [[cycle-list-item-action.tsx]] - `imports_from` [EXTRACTED]
 - [[display.tsx]] - `imports_from` [EXTRACTED]
 - [[dropdown-item.tsx_1]] - `imports_from` [EXTRACTED]
-- [[dropdown.tsx_4]] - `imports_from` [EXTRACTED]
-- [[dropdown.tsx_8]] - `imports_from` [EXTRACTED]
+- [[dropdown.tsx_6]] - `imports_from` [EXTRACTED]
+- [[dropdown.tsx_10]] - `imports_from` [EXTRACTED]
 - [[editor-body.tsx]] - `imports_from` [EXTRACTED]
-- [[editor.tsx_1]] - `imports_from` [EXTRACTED]
-- [[editor.tsx_2]] - `imports_from` [EXTRACTED]
-- [[editor.tsx_3]] - `imports_from` [EXTRACTED]
+- [[editor.tsx_4]] - `imports_from` [EXTRACTED]
+- [[editor.tsx_5]] - `imports_from` [EXTRACTED]
+- [[editor.tsx_6]] - `imports_from` [EXTRACTED]
 - [[filter-selection.tsx_1]] - `imports_from` [EXTRACTED]
 - [[filters.tsx_1]] - `imports_from` [EXTRACTED]
-- [[header.tsx_2]] - `imports_from` [EXTRACTED]
-- [[helper.tsx_4]] - `imports_from` [EXTRACTED]
+- [[header.tsx_44]] - `imports_from` [EXTRACTED]
+- [[helper.tsx_26]] - `imports_from` [EXTRACTED]
 - [[inbox-list-item.tsx]] - `imports_from` [EXTRACTED]
-- [[index.ts_17]] - `imports_from` [EXTRACTED]
+- [[index.ts_282]] - `imports_from` [EXTRACTED]
 - [[invitations-list-item.tsx]] - `imports_from` [EXTRACTED]
 - [[issue-comment.tsx]] - `imports_from` [EXTRACTED]
 - [[issue-detail.tsx_1]] - `imports_from` [EXTRACTED]
@@ -59,7 +59,6 @@ tags:
 - [[member.tsx_1]] - `imports_from` [EXTRACTED]
 - [[members-list-item.tsx]] - `imports_from` [EXTRACTED]
 - [[members-list.tsx]] - `imports_from` [EXTRACTED]
-- [[members.tsx_1]] - `imports_from` [EXTRACTED]
 - [[members.tsx_2]] - `imports_from` [EXTRACTED]
 - [[members.tsx_3]] - `imports_from` [EXTRACTED]
 - [[members.tsx_4]] - `imports_from` [EXTRACTED]
@@ -67,33 +66,40 @@ tags:
 - [[members.tsx_6]] - `imports_from` [EXTRACTED]
 - [[members.tsx_7]] - `imports_from` [EXTRACTED]
 - [[members.tsx_8]] - `imports_from` [EXTRACTED]
+- [[members.tsx_9]] - `imports_from` [EXTRACTED]
 - [[mentions.tsx]] - `imports_from` [EXTRACTED]
-- [[modal.tsx_14]] - `imports_from` [EXTRACTED]
+- [[mobile-header.tsx_1]] - `imports_from` [EXTRACTED]
+- [[mobile-header.tsx_7]] - `imports_from` [EXTRACTED]
+- [[modal.tsx_19]] - `imports_from` [EXTRACTED]
 - [[module-card-item.tsx]] - `imports_from` [EXTRACTED]
 - [[module-list-item-action.tsx]] - `imports_from` [EXTRACTED]
 - [[module-view-header.tsx]] - `imports_from` [EXTRACTED]
-- [[page.tsx]] - `imports_from` [EXTRACTED]
-- [[project-level.tsx]] - `imports_from` [EXTRACTED]
+- [[page.tsx_51]] - `imports_from` [EXTRACTED]
+- [[page.tsx_66]] - `imports_from` [EXTRACTED]
+- [[project-level.tsx_1]] - `imports_from` [EXTRACTED]
 - [[project-wrapper.tsx]] - `imports_from` [EXTRACTED]
 - [[properties.tsx_2]] - `imports_from` [EXTRACTED]
-- [[root.tsx_59]] - `imports_from` [EXTRACTED]
-- [[root.tsx_60]] - `imports_from` [EXTRACTED]
-- [[root.tsx_83]] - `imports_from` [EXTRACTED]
+- [[root.tsx_100]] - `imports_from` [EXTRACTED]
+- [[root.tsx_101]] - `imports_from` [EXTRACTED]
+- [[root.tsx_124]] - `imports_from` [EXTRACTED]
 - [[send-project-invitation-modal.tsx]] - `imports_from` [EXTRACTED]
 - [[sidebar-details.tsx]] - `imports_from` [EXTRACTED]
-- [[sidebar.tsx_3]] - `imports_from` [EXTRACTED]
+- [[sidebar.tsx_4]] - `imports_from` [EXTRACTED]
 - [[store-context.tsx]] - `imports_from` [EXTRACTED]
 - [[title-actions.tsx]] - `imports_from` [EXTRACTED]
 - [[use-parse-editor-content.ts]] - `imports_from` [EXTRACTED]
 - [[use-project-issue-properties.ts]] - `imports_from` [EXTRACTED]
 - [[use-tab-preferences.ts]] - `imports_from` [EXTRACTED]
+- [[use-work-item-filters-config.tsx]] - `imports_from` [EXTRACTED]
 - [[useMember()]] - `contains` [EXTRACTED]
+- [[useMemberColumns.tsx]] - `imports_from` [EXTRACTED]
+- [[useProjectColumns.tsx]] - `imports_from` [EXTRACTED]
 - [[user.tsx]] - `imports_from` [EXTRACTED]
 - [[user.tsx_1]] - `imports_from` [EXTRACTED]
 - [[version-history.tsx]] - `imports_from` [EXTRACTED]
 - [[view-list-header.tsx]] - `imports_from` [EXTRACTED]
 - [[view-list-item-action.tsx]] - `imports_from` [EXTRACTED]
-- [[workspace-level.tsx]] - `imports_from` [EXTRACTED]
+- [[workspace-level.tsx_1]] - `imports_from` [EXTRACTED]
 - [[workspace-wrapper.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Filters
+#graphify/code #graphify/EXTRACTED #community/Member_Members

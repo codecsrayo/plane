@@ -1,12 +1,12 @@
 ---
 source_file: "hooks/src/use-outside-click-detector.tsx"
 type: "code"
-community: "Custom Menu"
+community: "Dropdown Select"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Custom_Menu
+  - community/Dropdown_Select
 ---
 
 # use-outside-click-detector.tsx
@@ -15,4 +15,4 @@ tags:
 
 - [[useOutsideClickDetector()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Custom_Menu
+#graphify/code #graphify/EXTRACTED #community/Dropdown_Select

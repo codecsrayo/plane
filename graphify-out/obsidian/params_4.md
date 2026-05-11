@@ -1,18 +1,18 @@
 ---
-source_file: "store/issue/workspace-draft/issue.store.ts"
+source_file: "web/core/store/issue/workspace-draft/issue.store.ts"
 type: "code"
-community: "Issue Draft"
+community: "Draft Issue"
 location: "L225"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Draft
+  - community/Draft_Issue
 ---
 
 # params
 
 ## Connections
 
-- [[issue.store.ts_5]] - `contains` [EXTRACTED]
+- [[issue.store.ts_10]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Draft
+#graphify/code #graphify/EXTRACTED #community/Draft_Issue

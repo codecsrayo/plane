@@ -1,20 +1,21 @@
 ---
 source_file: "api_rust/src/routes/notifications.rs"
 type: "code"
-community: "Community 91"
+community: "User Github"
 location: "L239"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Community_91
+  - graphify/INFERRED
+  - community/User_Github
 ---
 
 # list_notifications()
 
 ## Connections
 
+- [[.json()]] - `calls` [INFERRED]
 - [[.new()]] - `calls` [INFERRED]
 - [[enrich_notifications()]] - `calls` [EXTRACTED]
-- [[notifications.rs]] - `contains` [EXTRACTED]
+- [[notifications.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_91
+#graphify/code #graphify/INFERRED #community/User_Github

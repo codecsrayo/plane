@@ -1,12 +1,12 @@
 ---
-source_file: "components/navigation/use-tab-preferences.ts"
+source_file: "web/core/components/navigation/use-tab-preferences.ts"
 type: "code"
-community: "Switcher Project"
+community: "Project Navigation"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Switcher_Project
+  - community/Project_Navigation
 ---
 
 # use-tab-preferences.ts
@@ -16,7 +16,7 @@ tags:
 - [[EMPTY_HIDDEN_TABS]] - `contains` [EXTRACTED]
 - [[TTabPreferences]] - `imports` [EXTRACTED]
 - [[TTabPreferencesHook]] - `contains` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
 - [[project-header.tsx]] - `imports_from` [EXTRACTED]
 - [[projects-list-item.tsx]] - `imports_from` [EXTRACTED]
 - [[tab-navigation-root.tsx]] - `imports_from` [EXTRACTED]
@@ -25,4 +25,4 @@ tags:
 - [[useMember()]] - `imports` [EXTRACTED]
 - [[useTabPreferences()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Switcher_Project
+#graphify/code #graphify/EXTRACTED #community/Project_Navigation

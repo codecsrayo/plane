@@ -1,5 +1,5 @@
 ---
-source_file: "components/issues/issue-detail-widgets/links/quick-action-button.tsx"
+source_file: "web/core/components/issues/issue-detail-widgets/links/quick-action-button.tsx"
 type: "code"
 community: "Issue Activity"
 location: "L1"
@@ -14,7 +14,7 @@ tags:
 ## Connections
 
 - [[IssueLinksActionButton]] - `contains` [EXTRACTED]
-- [[Props_282]] - `contains` [EXTRACTED]
+- [[Props_357]] - `contains` [EXTRACTED]
 - [[title.tsx_3]] - `imports_from` [EXTRACTED]
 - [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
 - [[useIssueDetail()]] - `imports` [EXTRACTED]

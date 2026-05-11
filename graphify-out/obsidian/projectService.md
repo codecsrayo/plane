@@ -1,12 +1,12 @@
 ---
-source_file: "components/project/form.tsx"
+source_file: "web/core/components/project/form.tsx"
 type: "code"
-community: "Issue Layouts"
+community: "Issue Activity"
 location: "L42"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Layouts
+  - community/Issue_Activity
 ---
 
 # projectService
@@ -15,4 +15,4 @@ tags:
 
 - [[form.tsx_6]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Layouts
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

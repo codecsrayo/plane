@@ -1,5 +1,5 @@
 ---
-source_file: "components/issues/issue-detail-widgets/sub-issues/helper.ts"
+source_file: "web/core/components/issues/issue-detail-widgets/sub-issues/helper.ts"
 type: "code"
 community: "Issue Activity"
 location: "L17"
@@ -14,7 +14,7 @@ tags:
 ## Connections
 
 - [[content.tsx_2]] - `imports` [EXTRACTED]
-- [[helper.ts_1]] - `contains` [EXTRACTED]
+- [[helper.ts_5]] - `contains` [EXTRACTED]
 - [[issue-detail-widget-modals.tsx]] - `imports` [EXTRACTED]
 - [[list-item.tsx_1]] - `imports` [EXTRACTED]
 - [[useIssueDetail()]] - `calls` [EXTRACTED]

@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/code/utils/replace-code-block-with-text.ts"
 type: "code"
-community: "Toggle Insert"
+community: "Toggle Menu"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toggle_Insert
+  - community/Toggle_Menu
 ---
 
 # replaceCodeWithText()
@@ -17,4 +17,4 @@ tags:
 - [[replace-code-block-with-text.ts]] - `contains` [EXTRACTED]
 - [[toggleCodeBlock()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toggle_Insert
+#graphify/code #graphify/EXTRACTED #community/Toggle_Menu

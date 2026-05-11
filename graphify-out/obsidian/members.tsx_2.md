@@ -1,21 +1,23 @@
 ---
-source_file: "components/modules/applied-filters/members.tsx"
+source_file: "web/core/components/modules/dropdowns/filters/members.tsx"
 type: "code"
-community: "Issue Filters"
+community: "Member Members"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Filters
+  - community/Member_Members
 ---
 
 # members.tsx
 
 ## Connections
 
-- [[AppliedMembersFilters]] - `contains` [EXTRACTED]
-- [[Props_92]] - `contains` [EXTRACTED]
+- [[FilterMembers]] - `contains` [EXTRACTED]
+- [[Props_161]] - `contains` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
+- [[index.ts_355]] - `imports_from` [EXTRACTED]
 - [[use-member.ts]] - `imports_from` [EXTRACTED]
 - [[useMember()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Filters
+#graphify/code #graphify/EXTRACTED #community/Member_Members

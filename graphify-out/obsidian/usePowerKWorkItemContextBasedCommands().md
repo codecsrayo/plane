@@ -1,12 +1,12 @@
 ---
-source_file: "components/power-k/ui/pages/context-based/work-item/commands.ts"
+source_file: "web/core/components/power-k/ui/pages/context-based/work-item/commands.ts"
 type: "code"
-community: "Project Archives"
+community: "Project Profile"
 location: "L38"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Archives
+  - community/Project_Profile
 ---
 
 # usePowerKWorkItemContextBasedCommands()
@@ -15,12 +15,11 @@ tags:
 
 - [[.getIssueById()]] - `calls` [INFERRED]
 - [[commands.ts]] - `contains` [EXTRACTED]
-- [[root.tsx_58]] - `imports` [EXTRACTED]
+- [[root.tsx_99]] - `imports` [EXTRACTED]
 - [[useCommandPalette()]] - `calls` [EXTRACTED]
 - [[useIssueDetail()]] - `calls` [EXTRACTED]
 - [[usePowerKContextBasedActions()]] - `calls` [EXTRACTED]
 - [[useProject()]] - `calls` [EXTRACTED]
 - [[useProjectEstimates()]] - `calls` [INFERRED]
-- [[useUser()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Archives
+#graphify/code #graphify/EXTRACTED #community/Project_Profile

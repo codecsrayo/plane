@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/table/plugins/drag-handles/marker-utils.ts"
 type: "code"
-community: "Drag Drop"
+community: "Drag Table"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Drag_Drop
+  - community/Drag_Table
 ---
 
 # marker-utils.ts
@@ -26,4 +26,4 @@ tags:
 - [[updateRowDragMarker()]] - `contains` [EXTRACTED]
 - [[updateRowDropMarker()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Drag_Drop
+#graphify/code #graphify/EXTRACTED #community/Drag_Table

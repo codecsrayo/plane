@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/jobs/webhook_delivery.rs"
 type: "code"
-community: "Community 116"
+community: "Envelope Truncate"
 location: "L338"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_116
+  - community/Envelope_Truncate
 ---
 
 # is_blocked_ip()
@@ -19,4 +19,4 @@ tags:
 - [[validate_outbound_url()]] - `calls` [EXTRACTED]
 - [[webhook_delivery.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_116
+#graphify/code #graphify/EXTRACTED #community/Envelope_Truncate

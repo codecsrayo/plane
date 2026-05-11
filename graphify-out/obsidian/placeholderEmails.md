@@ -1,12 +1,12 @@
 ---
-source_file: "components/onboarding/invite-members.tsx"
+source_file: "web/core/components/onboarding/invite-members.tsx"
 type: "code"
-community: "Invite Onboarding"
+community: "Invite Member"
 location: "L74"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Invite_Onboarding
+  - community/Invite_Member
 ---
 
 # placeholderEmails
@@ -15,4 +15,4 @@ tags:
 
 - [[invite-members.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Invite_Onboarding
+#graphify/code #graphify/EXTRACTED #community/Invite_Member

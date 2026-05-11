@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/use-debounce.tsx"
+source_file: "web/core/hooks/use-debounce.tsx"
 type: "code"
-community: "Select Duplicate"
+community: "Issue Activity"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Select_Duplicate
+  - community/Issue_Activity
 ---
 
 # use-debounce.tsx
@@ -21,4 +21,4 @@ tags:
 - [[title-input.tsx]] - `imports_from` [EXTRACTED]
 - [[useDebounce()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Select_Duplicate
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/kanban/swimlanes.tsx"
+source_file: "web/core/components/issues/issue-layouts/kanban/swimlanes.tsx"
 type: "code"
-community: "Spreadsheet Columns"
+community: "Group Kanban"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Columns
+  - community/Group_Kanban
 ---
 
 # swimlanes.tsx
@@ -31,7 +31,7 @@ tags:
 - [[sub-group-by-card.tsx]] - `imports_from` [EXTRACTED]
 - [[use-issue-layout-store.ts]] - `imports_from` [EXTRACTED]
 - [[useIssueStoreType()]] - `imports` [EXTRACTED]
-- [[utils.tsx_1]] - `imports_from` [EXTRACTED]
+- [[utils.tsx_2]] - `imports_from` [EXTRACTED]
 - [[visibilitySubGroupByGroupCount()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Columns
+#graphify/code #graphify/EXTRACTED #community/Group_Kanban

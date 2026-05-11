@@ -1,20 +1,20 @@
 ---
-source_file: "components/home/widgets/manage/widget-item-drag-handle.tsx"
+source_file: "web/core/components/home/widgets/manage/widget-item-drag-handle.tsx"
 type: "code"
-community: "Dashboard Widgets"
+community: "Widget Home"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Dashboard_Widgets
+  - community/Widget_Home
 ---
 
 # widget-item-drag-handle.tsx
 
 ## Connections
 
-- [[Props_11]] - `contains` [EXTRACTED]
+- [[Props_88]] - `contains` [EXTRACTED]
 - [[WidgetItemDragHandle]] - `contains` [EXTRACTED]
 - [[widget-item.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Dashboard_Widgets
+#graphify/code #graphify/EXTRACTED #community/Widget_Home

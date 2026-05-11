@@ -1,34 +1,23 @@
 ---
-source_file: "components/power-k/ui/pages/context-based/root.tsx"
+source_file: "web/core/components/settings/profile/sidebar/root.tsx"
 type: "code"
-community: "Context Based"
+community: "Sidebar Settings"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Context_Based
+  - community/Sidebar_Settings
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[ContextBasedActionsProps]] - `contains` [EXTRACTED]
-- [[PowerKContextBasedPagesList()]] - `contains` [EXTRACTED]
-- [[TPowerKCommandConfig]] - `imports` [EXTRACTED]
-- [[TPowerKContextType]] - `imports` [EXTRACTED]
-- [[TPowerKPageType]] - `imports` [EXTRACTED]
-- [[commands.ts_2]] - `imports_from` [EXTRACTED]
-- [[commands.ts_1]] - `imports_from` [EXTRACTED]
-- [[commands.ts]] - `imports_from` [EXTRACTED]
-- [[commands.tsx]] - `imports_from` [EXTRACTED]
-- [[index.ts_135]] - `imports_from` [EXTRACTED]
-- [[index.ts_136]] - `imports_from` [EXTRACTED]
-- [[types.ts_2]] - `imports_from` [EXTRACTED]
-- [[usePowerKContextBasedActions()]] - `contains` [EXTRACTED]
-- [[usePowerKCycleContextBasedActions()]] - `imports` [EXTRACTED]
-- [[usePowerKModuleContextBasedActions()]] - `imports` [EXTRACTED]
-- [[usePowerKPageContextBasedActions()]] - `imports` [EXTRACTED]
-- [[usePowerKWorkItemContextBasedCommands()]] - `imports` [EXTRACTED]
+- [[ProfileSettingsSidebarHeader]] - `imports` [EXTRACTED]
+- [[ProfileSettingsSidebarItemCategories]] - `imports` [EXTRACTED]
+- [[ProfileSettingsSidebarRoot()]] - `contains` [EXTRACTED]
+- [[Props_118]] - `contains` [EXTRACTED]
+- [[header.tsx_46]] - `imports_from` [EXTRACTED]
+- [[item-categories.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Context_Based
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Settings

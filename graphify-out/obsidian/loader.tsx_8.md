@@ -1,19 +1,22 @@
 ---
-source_file: "components/rich-filters/filter-item/loader.tsx"
+source_file: "web/core/components/issues/peek-overview/loader.tsx"
 type: "code"
-community: "Filter Controls"
+community: "Issue Activity"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filter_Controls
+  - community/Issue_Activity
 ---
 
 # loader.tsx
 
 ## Connections
 
-- [[FilterItemLoader()]] - `contains` [EXTRACTED]
-- [[root.tsx_91]] - `imports_from` [EXTRACTED]
+- [[IssuePeekOverviewLoader()]] - `contains` [EXTRACTED]
+- [[TIssuePeekOverviewLoader]] - `contains` [EXTRACTED]
+- [[use-platform-os.tsx_1]] - `imports_from` [EXTRACTED]
+- [[usePlatformOS()]] - `imports` [EXTRACTED]
+- [[view.tsx_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filter_Controls
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

@@ -1,12 +1,12 @@
 ---
-source_file: "store/dashboard.store.ts"
+source_file: "web/core/store/dashboard.store.ts"
 type: "code"
-community: "Dashboard Widget"
+community: "Project Issue"
 location: "L222"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Dashboard_Widget
+  - community/Project_Issue
 ---
 
 # originalWidget
@@ -15,4 +15,4 @@ tags:
 
 - [[dashboard.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Dashboard_Widget
+#graphify/code #graphify/EXTRACTED #community/Project_Issue

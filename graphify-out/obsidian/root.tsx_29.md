@@ -1,33 +1,25 @@
 ---
-source_file: "components/issues/workspace-draft/root.tsx"
+source_file: "web/ce/components/issues/bulk-operations/root.tsx"
 type: "code"
-community: "Issue Identifiers"
+community: "Select Multiple"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Identifiers
+  - community/Select_Multiple
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[DraftIssueBlock]] - `imports` [EXTRACTED]
-- [[TWorkspaceDraftIssuesRoot]] - `contains` [EXTRACTED]
-- [[WorkspaceDraftEmptyState]] - `imports` [EXTRACTED]
-- [[WorkspaceDraftIssuesLoader()]] - `imports` [EXTRACTED]
-- [[WorkspaceDraftIssuesRoot]] - `contains` [EXTRACTED]
-- [[draft-issue-block.tsx]] - `imports_from` [EXTRACTED]
-- [[empty-state.tsx_2]] - `imports_from` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
-- [[index.ts_1]] - `imports_from` [EXTRACTED]
-- [[loader.tsx_3]] - `imports_from` [EXTRACTED]
-- [[use-command-palette.ts]] - `imports_from` [EXTRACTED]
-- [[use-project.ts]] - `imports_from` [EXTRACTED]
-- [[use-workspace-issue-properties.ts]] - `imports_from` [EXTRACTED]
-- [[useCommandPalette()]] - `imports` [EXTRACTED]
-- [[useProject()]] - `imports` [EXTRACTED]
-- [[useWorkspaceIssueProperties()]] - `imports` [EXTRACTED]
+- [[BulkOperationsUpgradeBanner()]] - `imports` [EXTRACTED]
+- [[IssueBulkOperationsRoot]] - `contains` [EXTRACTED]
+- [[Props_65]] - `contains` [EXTRACTED]
+- [[TSelectionHelper]] - `imports` [EXTRACTED]
+- [[upgrade-banner.tsx]] - `imports_from` [EXTRACTED]
+- [[use-multiple-select-store.ts]] - `imports_from` [EXTRACTED]
+- [[use-multiple-select.ts]] - `imports_from` [EXTRACTED]
+- [[useMultipleSelectStore()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Identifiers
+#graphify/code #graphify/EXTRACTED #community/Select_Multiple

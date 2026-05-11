@@ -1,18 +1,18 @@
 ---
-source_file: "components/editor/rich-text/description-input/root.tsx"
+source_file: "web/app/(all)/workspace-invitations/page.tsx"
 type: "code"
-community: "Description Input"
-location: "L26"
+community: "Workspace Issue"
+location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Description_Input
+  - community/Workspace_Issue
 ---
 
 # workspaceService
 
 ## Connections
 
-- [[root.tsx_10]] - `contains` [EXTRACTED]
+- [[page.tsx_63]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Description_Input
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

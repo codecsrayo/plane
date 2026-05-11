@@ -1,24 +1,26 @@
 ---
-source_file: "lib/app-rail/provider.tsx"
+source_file: "web/app/provider.tsx"
 type: "code"
-community: "Rail Visibility"
+community: "Error Provider"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Rail_Visibility
+  - community/Error_Provider
 ---
 
 # provider.tsx
 
 ## Connections
 
-- [[AppRailVisibilityContext]] - `imports` [EXTRACTED]
-- [[AppRailVisibilityProvider]] - `contains` [EXTRACTED]
-- [[AppRailVisibilityProviderProps]] - `contains` [EXTRACTED]
-- [[IAppRailVisibilityContext]] - `imports` [EXTRACTED]
-- [[context.tsx]] - `imports_from` [EXTRACTED]
-- [[types.ts]] - `imports_from` [EXTRACTED]
-- [[use-local-storage.tsx]] - `imports_from` [EXTRACTED]
+- [[AppProgressBar]] - `contains` [EXTRACTED]
+- [[AppProvider()]] - `contains` [EXTRACTED]
+- [[IAppProvider]] - `contains` [EXTRACTED]
+- [[InstanceWrapper]] - `contains` [EXTRACTED]
+- [[StoreProvider()]] - `imports` [EXTRACTED]
+- [[StoreWrapper]] - `contains` [EXTRACTED]
+- [[layout.tsx]] - `imports_from` [EXTRACTED]
+- [[root.tsx_20]] - `imports_from` [EXTRACTED]
+- [[store-context.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Rail_Visibility
+#graphify/code #graphify/EXTRACTED #community/Error_Provider

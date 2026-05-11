@@ -1,19 +1,20 @@
 ---
 source_file: "api_rust/src/routes/importer.rs"
 type: "code"
-community: "Community 143"
+community: "User Github"
 location: "L171"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Community_143
+  - graphify/INFERRED
+  - community/User_Github
 ---
 
 # list_github_import_repositories()
 
 ## Connections
 
+- [[.json()]] - `calls` [INFERRED]
 - [[.new()]] - `calls` [INFERRED]
 - [[importer.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_143
+#graphify/code #graphify/INFERRED #community/User_Github

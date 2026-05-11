@@ -1,12 +1,12 @@
 ---
-source_file: "components/settings/profile/sidebar/item-categories.tsx"
+source_file: "web/core/components/settings/profile/sidebar/item-categories.tsx"
 type: "code"
-community: "Sidebar Nav"
+community: "Sidebar Settings"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sidebar_Nav
+  - community/Sidebar_Settings
 ---
 
 # item-categories.tsx
@@ -16,10 +16,10 @@ tags:
 - [[ICONS]] - `contains` [EXTRACTED]
 - [[ProfileSettingsSidebarItemCategories]] - `contains` [EXTRACTED]
 - [[ProfileSettingsSidebarWorkspaceOptions]] - `imports` [EXTRACTED]
-- [[Props_110]] - `contains` [EXTRACTED]
+- [[Props_185]] - `contains` [EXTRACTED]
 - [[SettingsSidebarItem()]] - `imports` [EXTRACTED]
-- [[item.tsx]] - `imports_from` [EXTRACTED]
-- [[root.tsx_17]] - `imports_from` [EXTRACTED]
+- [[item.tsx_1]] - `imports_from` [EXTRACTED]
+- [[root.tsx_58]] - `imports_from` [EXTRACTED]
 - [[workspace-options.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sidebar_Nav
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Settings

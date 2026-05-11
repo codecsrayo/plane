@@ -1,5 +1,5 @@
 ---
-source_file: "hooks/store/user/user-user-settings.ts"
+source_file: "web/core/hooks/store/user/user-user-settings.ts"
 type: "code"
 community: "User Profile"
 location: "L1"

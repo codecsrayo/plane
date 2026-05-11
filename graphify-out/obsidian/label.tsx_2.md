@@ -1,24 +1,19 @@
 ---
-source_file: "components/issues/issue-detail/issue-activity/activity/actions/label.tsx"
+source_file: "web/core/components/issues/issue-layouts/filters/applied-filters/label.tsx"
 type: "code"
-community: "Label Workspace"
+community: "Label Applied"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Workspace
+  - community/Label_Applied
 ---
 
 # label.tsx
 
 ## Connections
 
-- [[IssueLabelActivity]] - `contains` [EXTRACTED]
-- [[TIssueLabelActivity]] - `contains` [EXTRACTED]
-- [[index.ts_104]] - `imports_from` [EXTRACTED]
-- [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
-- [[use-label.ts]] - `imports_from` [EXTRACTED]
-- [[useIssueDetail()]] - `imports` [EXTRACTED]
-- [[useLabel()]] - `imports` [EXTRACTED]
+- [[AppliedLabelsFilters()]] - `contains` [EXTRACTED]
+- [[Props_324]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Workspace
+#graphify/code #graphify/EXTRACTED #community/Label_Applied

@@ -1,12 +1,12 @@
 ---
-source_file: "components/modules/analytics-sidebar/issue-progress.tsx"
+source_file: "web/core/components/modules/analytics-sidebar/issue-progress.tsx"
 type: "code"
-community: "Module Analytics"
+community: "Cycles Archived"
 location: "L35"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Analytics
+  - community/Cycles_Archived
 ---
 
 # moduleBurnDownChartOptions
@@ -15,4 +15,4 @@ tags:
 
 - [[issue-progress.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Analytics
+#graphify/code #graphify/EXTRACTED #community/Cycles_Archived

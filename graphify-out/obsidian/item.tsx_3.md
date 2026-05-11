@@ -1,5 +1,5 @@
 ---
-source_file: "components/base-layouts/list/item.tsx"
+source_file: "web/core/components/base-layouts/kanban/item.tsx"
 type: "code"
 community: "Group Drop"
 location: "L1"
@@ -13,7 +13,8 @@ tags:
 
 ## Connections
 
-- [[BaseListItem]] - `contains` [EXTRACTED]
-- [[group.tsx_1]] - `imports_from` [EXTRACTED]
+- [[Adapter_1]] - `imports_from` [EXTRACTED]
+- [[BaseKanbanItem]] - `contains` [EXTRACTED]
+- [[group.tsx]] - `imports_from` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Group_Drop

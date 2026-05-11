@@ -1,29 +1,30 @@
 ---
-source_file: "components/project/applied-filters/root.tsx"
+source_file: "web/ce/components/projects/create/root.tsx"
 type: "code"
-community: "Applied Filters"
+community: "Project Common"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Applied_Filters
+  - community/Project_Common
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[AppliedAccessFilters]] - `imports` [EXTRACTED]
-- [[AppliedDateFilters]] - `imports` [EXTRACTED]
-- [[AppliedMembersFilters]] - `imports` [EXTRACTED]
-- [[AppliedProjectDisplayFilters]] - `imports` [EXTRACTED]
-- [[DATE_FILTERS]] - `contains` [EXTRACTED]
-- [[MEMBERS_FILTERS]] - `contains` [EXTRACTED]
-- [[ProjectAppliedFiltersList()]] - `contains` [EXTRACTED]
-- [[Props_22]] - `contains` [EXTRACTED]
-- [[access.tsx_2]] - `imports_from` [EXTRACTED]
-- [[date.tsx_2]] - `imports_from` [EXTRACTED]
-- [[members.tsx_4]] - `imports_from` [EXTRACTED]
-- [[project-display-filters.tsx]] - `imports_from` [EXTRACTED]
+- [[CreateProjectForm]] - `contains` [EXTRACTED]
+- [[ProjectAttributes()]] - `imports` [EXTRACTED]
+- [[TCreateProjectFormProps]] - `contains` [EXTRACTED]
+- [[attributes.tsx]] - `imports_from` [EXTRACTED]
+- [[common-attributes.tsx]] - `imports_from` [EXTRACTED]
+- [[getProjectFormValues()]] - `imports` [EXTRACTED]
+- [[header.tsx_49]] - `imports_from` [EXTRACTED]
+- [[project-create-buttons.tsx]] - `imports_from` [EXTRACTED]
+- [[use-platform-os.tsx_1]] - `imports_from` [EXTRACTED]
+- [[use-project.ts]] - `imports_from` [EXTRACTED]
+- [[usePlatformOS()]] - `imports` [EXTRACTED]
+- [[useProject()]] - `imports` [EXTRACTED]
+- [[utils.ts_11]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Applied_Filters
+#graphify/code #graphify/EXTRACTED #community/Project_Common

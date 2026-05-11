@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/utils/serde_date.rs"
 type: "code"
-community: "Community 74"
+community: "Start Date"
 location: "L271"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_74
+  - community/Start_Date
 ---
 
 # tokyo_start_rolls_back_to_previous_day_utc()
@@ -18,4 +18,4 @@ tags:
 - [[serde_date.rs]] - `contains` [EXTRACTED]
 - [[ymd()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_74
+#graphify/code #graphify/EXTRACTED #community/Start_Date

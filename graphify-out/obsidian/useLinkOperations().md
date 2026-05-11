@@ -1,5 +1,5 @@
 ---
-source_file: "components/issues/issue-detail-widgets/links/helper.tsx"
+source_file: "web/core/components/issues/issue-detail-widgets/links/helper.tsx"
 type: "code"
 community: "Issue Activity"
 location: "L18"
@@ -15,7 +15,7 @@ tags:
 
 - [[IssueLinksCollapsibleContent()]] - `calls` [EXTRACTED]
 - [[content.tsx_3]] - `imports` [EXTRACTED]
-- [[helper.tsx_7]] - `contains` [EXTRACTED]
+- [[helper.tsx_29]] - `contains` [EXTRACTED]
 - [[issue-detail-widget-modals.tsx]] - `imports` [EXTRACTED]
 - [[useIssueDetail()]] - `calls` [EXTRACTED]
 

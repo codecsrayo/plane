@@ -1,26 +1,25 @@
 ---
-source_file: "components/pages/list/filters/root.tsx"
+source_file: "web/core/components/issues/issue-detail-widgets/root.tsx"
 type: "code"
-community: "Created Selection"
+community: "Issue Widget"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Created_Selection
+  - community/Issue_Widget
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[FilterCreatedBy]] - `imports` [EXTRACTED]
-- [[FilterCreatedDate]] - `imports` [EXTRACTED]
-- [[PageFiltersSelection]] - `contains` [EXTRACTED]
-- [[Props_84]] - `contains` [EXTRACTED]
-- [[created-at.tsx_1]] - `imports_from` [EXTRACTED]
-- [[created-by.tsx_1]] - `imports_from` [EXTRACTED]
-- [[index.ts_90]] - `imports_from` [EXTRACTED]
-- [[use-platform-os.tsx]] - `imports_from` [EXTRACTED]
-- [[usePlatformOS()]] - `imports` [EXTRACTED]
+- [[IssueDetailWidgetActionButtons()]] - `imports` [EXTRACTED]
+- [[IssueDetailWidgetCollapsibles]] - `imports` [EXTRACTED]
+- [[IssueDetailWidgetModals]] - `imports` [EXTRACTED]
+- [[IssueDetailWidgets()]] - `contains` [EXTRACTED]
+- [[Props_339]] - `contains` [EXTRACTED]
+- [[action-buttons.tsx_1]] - `imports_from` [EXTRACTED]
+- [[issue-detail-widget-collapsibles.tsx]] - `imports_from` [EXTRACTED]
+- [[issue-detail-widget-modals.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Created_Selection
+#graphify/code #graphify/EXTRACTED #community/Issue_Widget

@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/routes/issue_pagination.rs"
 type: "code"
-community: "Issue Routes Rust API"
+community: "Issue Issues"
 location: "L120"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Issue_Routes_Rust_API
+  - community/Issue_Issues
 ---
 
 # load_enrichment()
@@ -25,4 +25,4 @@ tags:
 - [[list_user_profile_issues()]] - `calls` [INFERRED]
 - [[list_workspace_view_issues()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Issue_Routes_Rust_API
+#graphify/code #graphify/INFERRED #community/Issue_Issues

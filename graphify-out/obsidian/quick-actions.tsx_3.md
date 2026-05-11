@@ -1,12 +1,12 @@
 ---
-source_file: "components/cycles/quick-actions.tsx"
+source_file: "web/core/components/cycles/quick-actions.tsx"
 type: "code"
-community: "Cycle Cycles"
+community: "Cycle Active"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Cycle_Cycles
+  - community/Cycle_Active
 ---
 
 # quick-actions.tsx
@@ -17,13 +17,14 @@ tags:
 - [[CycleCreateUpdateModal()]] - `imports` [EXTRACTED]
 - [[CycleDeleteModal]] - `imports` [EXTRACTED]
 - [[CycleQuickActions]] - `contains` [EXTRACTED]
-- [[Props_302]] - `contains` [EXTRACTED]
+- [[Props_377]] - `contains` [EXTRACTED]
 - [[cycle-list-item-action.tsx]] - `imports_from` [EXTRACTED]
 - [[cycles-list-item.tsx]] - `imports_from` [EXTRACTED]
 - [[delete-modal.tsx_2]] - `imports_from` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
-- [[modal.tsx_10]] - `imports_from` [EXTRACTED]
-- [[modal.tsx_9]] - `imports_from` [EXTRACTED]
+- [[header.tsx_12]] - `imports_from` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
+- [[modal.tsx_14]] - `imports_from` [EXTRACTED]
+- [[modal.tsx_15]] - `imports_from` [EXTRACTED]
 - [[quick-actions-helper.tsx]] - `imports_from` [EXTRACTED]
 - [[use-app-router.tsx]] - `imports_from` [EXTRACTED]
 - [[use-cycle.ts]] - `imports_from` [EXTRACTED]
@@ -31,4 +32,4 @@ tags:
 - [[useCycle()]] - `imports` [EXTRACTED]
 - [[useCycleMenuItems()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Cycle_Cycles
+#graphify/code #graphify/EXTRACTED #community/Cycle_Active

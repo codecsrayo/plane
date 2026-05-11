@@ -1,12 +1,12 @@
 ---
-source_file: "components/core/multiple-select/select-group.tsx"
+source_file: "web/core/components/core/multiple-select/select-group.tsx"
 type: "code"
-community: "Multi Select Actions"
+community: "Select Multiple"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Multi_Select_Actions
+  - community/Select_Multiple
 ---
 
 # select-group.tsx
@@ -14,9 +14,9 @@ tags:
 ## Connections
 
 - [[MultipleSelectGroup]] - `contains` [EXTRACTED]
-- [[Props_449]] - `contains` [EXTRACTED]
+- [[Props_523]] - `contains` [EXTRACTED]
 - [[TSelectionHelper]] - `imports` [EXTRACTED]
 - [[use-multiple-select.ts]] - `imports_from` [EXTRACTED]
 - [[useMultipleSelect()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Multi_Select_Actions
+#graphify/code #graphify/EXTRACTED #community/Select_Multiple

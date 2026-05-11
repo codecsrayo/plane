@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/utils/oauth_popup.rs"
 type: "code"
-community: "Community 43"
+community: "Session Presigned"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_43
+  - community/Session_Presigned
 ---
 
 # oauth_popup.rs
@@ -16,4 +16,4 @@ tags:
 - [[OAuthMessageType]] - `contains` [EXTRACTED]
 - [[postmessage_html()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_43
+#graphify/code #graphify/EXTRACTED #community/Session_Presigned

@@ -1,24 +1,24 @@
 ---
-source_file: "components/inbox/inbox-filter/applied-filters/label.tsx"
+source_file: "web/core/components/issues/issue-detail/issue-activity/activity/actions/label.tsx"
 type: "code"
-community: "Inbox Filters"
+community: "Issue Activity"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Inbox_Filters
+  - community/Issue_Activity
 ---
 
 # label.tsx
 
 ## Connections
 
-- [[InboxIssueAppliedFiltersLabel]] - `contains` [EXTRACTED]
-- [[LabelIcons()_1]] - `contains` [EXTRACTED]
-- [[root.tsx_73]] - `imports_from` [EXTRACTED]
+- [[IssueLabelActivity]] - `contains` [EXTRACTED]
+- [[TIssueLabelActivity]] - `contains` [EXTRACTED]
+- [[index.ts_369]] - `imports_from` [EXTRACTED]
+- [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
 - [[use-label.ts]] - `imports_from` [EXTRACTED]
-- [[use-project-inbox.ts]] - `imports_from` [EXTRACTED]
+- [[useIssueDetail()]] - `imports` [EXTRACTED]
 - [[useLabel()]] - `imports` [EXTRACTED]
-- [[useProjectInbox()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Inbox_Filters
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

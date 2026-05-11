@@ -1,21 +1,27 @@
 ---
-source_file: "hooks/store/use-project-view.ts"
+source_file: "web/core/hooks/store/use-project-view.ts"
 type: "code"
-community: "Project Quick"
+community: "Project Work"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Quick
+  - community/Project_Work
 ---
 
 # useProjectView()
 
 ## Connections
 
+- [[ProjectViewIssuesPage()]] - `calls` [EXTRACTED]
+- [[ProjectViewsPage()]] - `calls` [EXTRACTED]
 - [[delete-view-modal.tsx]] - `imports` [EXTRACTED]
-- [[modal.tsx]] - `imports` [EXTRACTED]
-- [[project-level.tsx]] - `imports` [EXTRACTED]
+- [[header.tsx_5]] - `imports` [EXTRACTED]
+- [[mobile-header.tsx_1]] - `imports` [EXTRACTED]
+- [[modal.tsx_5]] - `imports` [EXTRACTED]
+- [[page.tsx_15]] - `imports` [EXTRACTED]
+- [[page.tsx_16]] - `imports` [EXTRACTED]
+- [[project-level.tsx_1]] - `imports` [EXTRACTED]
 - [[project-view-layout-root.tsx]] - `imports` [EXTRACTED]
 - [[project-views-menu.tsx]] - `imports` [EXTRACTED]
 - [[project-wrapper.tsx]] - `imports` [EXTRACTED]
@@ -26,4 +32,4 @@ tags:
 - [[view-list-item-action.tsx]] - `imports` [EXTRACTED]
 - [[views-list.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Quick
+#graphify/code #graphify/EXTRACTED #community/Project_Work

@@ -1,12 +1,12 @@
 ---
-source_file: "components/stickies/sticky/use-operations.tsx"
+source_file: "web/core/components/stickies/sticky/use-operations.tsx"
 type: "code"
-community: "Sticky Tprops"
+community: "Stickies Sticky"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sticky_Tprops
+  - community/Stickies_Sticky
 ---
 
 # use-operations.tsx
@@ -15,10 +15,11 @@ tags:
 
 - [[STICKY_COLORS_LIST]] - `imports` [EXTRACTED]
 - [[TOperations]] - `contains` [EXTRACTED]
-- [[TProps_8]] - `contains` [EXTRACTED]
+- [[TProps_10]] - `contains` [EXTRACTED]
 - [[color-palette.tsx]] - `imports_from` [EXTRACTED]
 - [[getRandomStickyColor()]] - `contains` [EXTRACTED]
-- [[root.tsx_11]] - `imports_from` [EXTRACTED]
+- [[header.tsx_2]] - `imports_from` [EXTRACTED]
+- [[root.tsx_52]] - `imports_from` [EXTRACTED]
 - [[stickies-list.tsx]] - `imports_from` [EXTRACTED]
 - [[stickies.tsx_1]] - `imports_from` [EXTRACTED]
 - [[use-stickies.tsx]] - `imports_from` [EXTRACTED]
@@ -26,4 +27,4 @@ tags:
 - [[useStickyOperations()]] - `contains` [EXTRACTED]
 - [[widget.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sticky_Tprops
+#graphify/code #graphify/EXTRACTED #community/Stickies_Sticky

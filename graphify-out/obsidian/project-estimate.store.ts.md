@@ -1,5 +1,5 @@
 ---
-source_file: "store/estimates/project-estimate.store.ts"
+source_file: "web/core/store/estimates/project-estimate.store.ts"
 type: "code"
 community: "Estimate Project"
 location: "L1"
@@ -14,16 +14,18 @@ tags:
 ## Connections
 
 - [[CoreRootStore]] - `imports` [EXTRACTED]
+- [[Estimate]] - `imports` [EXTRACTED]
+- [[IEstimate_1]] - `imports` [EXTRACTED]
 - [[IProjectEstimateStore]] - `contains` [EXTRACTED]
 - [[ProjectEstimateStore]] - `contains` [EXTRACTED]
-- [[TErrorCodes]] - `contains` [EXTRACTED]
+- [[TErrorCodes_1]] - `contains` [EXTRACTED]
 - [[TEstimateLoader]] - `contains` [EXTRACTED]
-- [[api.service.ts]] - `imports_from` [EXTRACTED]
+- [[api.service.ts_1]] - `imports_from` [EXTRACTED]
 - [[currentActiveEstimateId]] - `contains` [EXTRACTED]
 - [[estimate.service.ts]] - `imports_from` [EXTRACTED]
 - [[projectDetails_1]] - `contains` [EXTRACTED]
 - [[projectEstimatesIds]] - `contains` [EXTRACTED]
-- [[root.store.ts]] - `imports_from` [EXTRACTED]
+- [[root.store.ts_2]] - `imports_from` [EXTRACTED]
 - [[toApiError()]] - `imports` [EXTRACTED]
 - [[use-project-estimate.ts]] - `imports_from` [EXTRACTED]
 

@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/mentions/utils.ts"
 type: "code"
-community: "Command Slash"
+community: "Emoji Command"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Command_Slash
+  - community/Emoji_Command
 ---
 
 # utils.ts
@@ -28,4 +28,4 @@ tags:
 - [[renderMentionsDropdown()]] - `contains` [EXTRACTED]
 - [[tippy.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Command_Slash
+#graphify/code #graphify/EXTRACTED #community/Emoji_Command

@@ -1,12 +1,12 @@
 ---
-source_file: "components/modules/dropdowns/filters/status.tsx"
+source_file: "web/core/components/modules/dropdowns/filters/status.tsx"
 type: "code"
-community: "Filter Selection UI"
+community: "Member Members"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filter_Selection_UI
+  - community/Member_Members
 ---
 
 # status.tsx
@@ -14,7 +14,7 @@ tags:
 ## Connections
 
 - [[FilterStatus]] - `contains` [EXTRACTED]
-- [[Props_83]] - `contains` [EXTRACTED]
-- [[index.ts_90]] - `imports_from` [EXTRACTED]
+- [[Props_158]] - `contains` [EXTRACTED]
+- [[index.ts_355]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filter_Selection_UI
+#graphify/code #graphify/EXTRACTED #community/Member_Members

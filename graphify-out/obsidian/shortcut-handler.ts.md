@@ -1,12 +1,12 @@
 ---
-source_file: "components/power-k/core/shortcut-handler.ts"
+source_file: "web/core/components/power-k/core/shortcut-handler.ts"
 type: "code"
-community: "Shortcut Registry"
+community: "Command Shortcut"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Shortcut_Registry
+  - community/Command_Shortcut
 ---
 
 # shortcut-handler.ts
@@ -21,7 +21,7 @@ tags:
 - [[global-shortcuts.tsx]] - `imports_from` [EXTRACTED]
 - [[isTypingInInput()]] - `contains` [EXTRACTED]
 - [[key]] - `contains` [EXTRACTED]
-- [[registry.ts]] - `imports_from` [EXTRACTED]
-- [[types.ts_2]] - `imports_from` [EXTRACTED]
+- [[registry.ts_1]] - `imports_from` [EXTRACTED]
+- [[types.ts_16]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Shortcut_Registry
+#graphify/code #graphify/EXTRACTED #community/Command_Shortcut

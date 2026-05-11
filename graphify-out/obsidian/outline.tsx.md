@@ -1,5 +1,5 @@
 ---
-source_file: "components/pages/navigation-pane/tab-panels/outline.tsx"
+source_file: "web/ce/components/pages/navigation-pane/tab-panels/empty-states/outline.tsx"
 type: "code"
 community: "Navigation Pane"
 location: "L1"
@@ -13,11 +13,6 @@ tags:
 
 ## Connections
 
-- [[PageNavigationPaneOutlineTabPanel()]] - `contains` [EXTRACTED]
-- [[Props_402]] - `contains` [EXTRACTED]
-- [[TPageInstance]] - `imports` [EXTRACTED]
-- [[base-page.ts]] - `imports_from` [EXTRACTED]
-- [[index.ts_152]] - `imports_from` [EXTRACTED]
-- [[root.tsx_81]] - `imports_from` [EXTRACTED]
+- [[PageNavigationPaneOutlineTabEmptyState()]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Navigation_Pane

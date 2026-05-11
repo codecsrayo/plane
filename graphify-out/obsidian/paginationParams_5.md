@@ -1,5 +1,5 @@
 ---
-source_file: "store/issue/profile/filter.store.ts"
+source_file: "web/core/store/issue/profile/filter.store.ts"
 type: "code"
 community: "Filters Display"
 location: "L135"
@@ -13,6 +13,6 @@ tags:
 
 ## Connections
 
-- [[filter.store.ts_5]] - `contains` [EXTRACTED]
+- [[filter.store.ts_10]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Filters_Display

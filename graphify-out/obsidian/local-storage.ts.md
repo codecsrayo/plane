@@ -1,12 +1,12 @@
 ---
-source_file: "lib/local-storage.ts"
+source_file: "web/core/lib/local-storage.ts"
 type: "code"
-community: "Storage Display"
+community: "Filters Issue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Storage_Display
+  - community/Filters_Issue
 ---
 
 # local-storage.ts
@@ -14,8 +14,8 @@ tags:
 ## Connections
 
 - [[issue-filter-helper.store.ts]] - `imports_from` [EXTRACTED]
-- [[issue.store.ts_8]] - `imports_from` [EXTRACTED]
+- [[issue.store.ts_13]] - `imports_from` [EXTRACTED]
 - [[module_filter.store.ts]] - `imports_from` [EXTRACTED]
 - [[storage]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Storage_Display
+#graphify/code #graphify/EXTRACTED #community/Filters_Issue

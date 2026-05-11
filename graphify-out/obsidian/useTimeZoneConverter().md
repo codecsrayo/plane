@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/use-timezone-converter.tsx"
+source_file: "web/core/hooks/use-timezone-converter.tsx"
 type: "code"
-community: "Project Archives"
+community: "Cycle Active"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Archives
+  - community/Cycle_Active
 ---
 
 # useTimeZoneConverter()
@@ -17,6 +17,5 @@ tags:
 - [[sidebar-header.tsx]] - `imports` [EXTRACTED]
 - [[use-timezone-converter.tsx]] - `contains` [EXTRACTED]
 - [[useProject()]] - `calls` [EXTRACTED]
-- [[useUser()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Archives
+#graphify/code #graphify/EXTRACTED #community/Cycle_Active

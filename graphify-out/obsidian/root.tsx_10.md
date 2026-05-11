@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/charts/pie-chart/root.tsx"
 type: "code"
-community: "Custom Active"
+community: "Custom Chart"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Custom_Active
+  - community/Custom_Chart
 ---
 
 # root.tsx
@@ -21,4 +21,4 @@ tags:
 - [[legend.tsx]] - `imports_from` [EXTRACTED]
 - [[tooltip.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Custom_Active
+#graphify/code #graphify/EXTRACTED #community/Custom_Chart

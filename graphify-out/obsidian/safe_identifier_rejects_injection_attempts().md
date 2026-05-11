@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/jobs/cleanup.rs"
 type: "code"
-community: "Community 115"
+community: "Issue Request"
 location: "L386"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_115
+  - community/Issue_Request
 ---
 
 # safe_identifier_rejects_injection_attempts()
@@ -15,4 +15,4 @@ tags:
 
 - [[cleanup.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_115
+#graphify/code #graphify/EXTRACTED #community/Issue_Request

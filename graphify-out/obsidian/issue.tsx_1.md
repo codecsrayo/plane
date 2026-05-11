@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-detail/reactions/issue.tsx"
+source_file: "web/core/components/issues/issue-detail/reactions/issue.tsx"
 type: "code"
-community: "Issue Filters"
+community: "Member Members"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Filters
+  - community/Member_Members
 ---
 
 # issue.tsx
@@ -14,10 +14,10 @@ tags:
 ## Connections
 
 - [[IssueReaction]] - `contains` [EXTRACTED]
-- [[TIssueReaction]] - `contains` [EXTRACTED]
+- [[TIssueReaction_1]] - `contains` [EXTRACTED]
 - [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
 - [[use-member.ts]] - `imports_from` [EXTRACTED]
 - [[useIssueDetail()]] - `imports` [EXTRACTED]
 - [[useMember()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Filters
+#graphify/code #graphify/EXTRACTED #community/Member_Members

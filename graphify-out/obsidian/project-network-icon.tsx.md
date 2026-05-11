@@ -1,12 +1,12 @@
 ---
-source_file: "components/project/project-network-icon.tsx"
+source_file: "web/core/components/project/project-network-icon.tsx"
 type: "code"
-community: "Lead Members"
+community: "Project Common"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Lead_Members
+  - community/Project_Common
 ---
 
 # project-network-icon.tsx
@@ -14,8 +14,9 @@ tags:
 ## Connections
 
 - [[ProjectNetworkIcon()]] - `contains` [EXTRACTED]
-- [[Props_132]] - `contains` [EXTRACTED]
+- [[Props_207]] - `contains` [EXTRACTED]
 - [[access.tsx_1]] - `imports_from` [EXTRACTED]
+- [[attributes.tsx]] - `imports_from` [EXTRACTED]
 - [[form.tsx_6]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Lead_Members
+#graphify/code #graphify/EXTRACTED #community/Project_Common

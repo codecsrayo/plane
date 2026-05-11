@@ -1,5 +1,5 @@
 ---
-source_file: "components/pages/list/tab-navigation.tsx"
+source_file: "web/core/components/pages/list/tab-navigation.tsx"
 type: "code"
 community: "Order Search"
 location: "L20"

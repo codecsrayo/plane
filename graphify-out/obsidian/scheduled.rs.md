@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/jobs/scheduled.rs"
 type: "code"
-community: "Community 282"
+community: "Issue Request"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_282
+  - community/Issue_Request
 ---
 
 # scheduled.rs
@@ -14,8 +14,8 @@ tags:
 ## Connections
 
 - [[RunIssueAutomationJob]] - `contains` [EXTRACTED]
-- [[archive_old_issues()]] - `contains` [EXTRACTED]
-- [[close_old_issues()]] - `contains` [EXTRACTED]
+- [[archive_old_issues()_1]] - `contains` [EXTRACTED]
+- [[close_old_issues()_1]] - `contains` [EXTRACTED]
 - [[handle_run_issue_automation()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_282
+#graphify/code #graphify/EXTRACTED #community/Issue_Request

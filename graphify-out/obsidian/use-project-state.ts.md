@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/store/use-project-state.ts"
+source_file: "web/core/hooks/store/use-project-state.ts"
 type: "code"
-community: "Calendar Blocks"
+community: "Issue Work"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Blocks
+  - community/Issue_Work
 ---
 
 # use-project-state.ts
@@ -18,10 +18,11 @@ tags:
 - [[all-properties.tsx]] - `imports_from` [EXTRACTED]
 - [[auto-close-automation.tsx]] - `imports_from` [EXTRACTED]
 - [[blocks.tsx_1]] - `imports_from` [EXTRACTED]
+- [[change-state-list.tsx]] - `imports_from` [EXTRACTED]
 - [[cycle-issue.tsx]] - `imports_from` [EXTRACTED]
 - [[draft-issue-properties.tsx]] - `imports_from` [EXTRACTED]
-- [[dropdown.tsx_1]] - `imports_from` [EXTRACTED]
 - [[dropdown.tsx_3]] - `imports_from` [EXTRACTED]
+- [[dropdown.tsx_5]] - `imports_from` [EXTRACTED]
 - [[due-date-column.tsx]] - `imports_from` [EXTRACTED]
 - [[form.tsx_8]] - `imports_from` [EXTRACTED]
 - [[issue-block.tsx]] - `imports_from` [EXTRACTED]
@@ -35,23 +36,24 @@ tags:
 - [[priority-chart.tsx]] - `imports_from` [EXTRACTED]
 - [[project-issue-sync-modal.tsx]] - `imports_from` [EXTRACTED]
 - [[project-issue.tsx]] - `imports_from` [EXTRACTED]
-- [[project-level.tsx]] - `imports_from` [EXTRACTED]
+- [[project-level.tsx_1]] - `imports_from` [EXTRACTED]
 - [[project-wrapper.tsx]] - `imports_from` [EXTRACTED]
 - [[properties.tsx]] - `imports_from` [EXTRACTED]
 - [[properties.tsx_2]] - `imports_from` [EXTRACTED]
-- [[root.tsx_8]] - `imports_from` [EXTRACTED]
-- [[root.tsx_27]] - `imports_from` [EXTRACTED]
-- [[root.tsx_35]] - `imports_from` [EXTRACTED]
-- [[sidebar.tsx_3]] - `imports_from` [EXTRACTED]
+- [[root.tsx_49]] - `imports_from` [EXTRACTED]
+- [[root.tsx_68]] - `imports_from` [EXTRACTED]
+- [[root.tsx_76]] - `imports_from` [EXTRACTED]
+- [[sidebar.tsx_4]] - `imports_from` [EXTRACTED]
 - [[state-delete-modal.tsx]] - `imports_from` [EXTRACTED]
 - [[state-item-title.tsx]] - `imports_from` [EXTRACTED]
-- [[state.tsx_4]] - `imports_from` [EXTRACTED]
 - [[state.tsx_5]] - `imports_from` [EXTRACTED]
+- [[state.tsx_6]] - `imports_from` [EXTRACTED]
 - [[states-menu.tsx]] - `imports_from` [EXTRACTED]
 - [[store-context.tsx]] - `imports_from` [EXTRACTED]
 - [[title-actions.tsx]] - `imports_from` [EXTRACTED]
 - [[use-project-issue-properties.ts]] - `imports_from` [EXTRACTED]
+- [[use-work-item-filters-config.tsx]] - `imports_from` [EXTRACTED]
 - [[useProjectState()]] - `contains` [EXTRACTED]
 - [[workspace-wrapper.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Blocks
+#graphify/code #graphify/EXTRACTED #community/Issue_Work

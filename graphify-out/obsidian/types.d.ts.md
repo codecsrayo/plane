@@ -1,12 +1,12 @@
 ---
-source_file: "components/icons/types.d.ts"
+source_file: "web/core/components/icons/types.d.ts"
 type: "code"
-community: "Types Image"
+community: "Image Icon"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Types_Image
+  - community/Image_Icon
 ---
 
 # types.d.ts
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[ImageIconPros]] - `contains` [EXTRACTED]
-- [[Props_4]] - `contains` [EXTRACTED]
+- [[Props_81]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Types_Image
+#graphify/code #graphify/EXTRACTED #community/Image_Icon

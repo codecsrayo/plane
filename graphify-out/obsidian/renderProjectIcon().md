@@ -1,18 +1,18 @@
 ---
-source_file: "components/dropdowns/project/base.tsx"
+source_file: "web/ce/components/breadcrumbs/project.tsx"
 type: "code"
-community: "Issue Properties"
-location: "L51"
+community: "Project Settings"
+location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Properties
+  - community/Project_Settings
 ---
 
 # renderProjectIcon()
 
 ## Connections
 
-- [[base.tsx_3]] - `contains` [EXTRACTED]
+- [[project.tsx_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Properties
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

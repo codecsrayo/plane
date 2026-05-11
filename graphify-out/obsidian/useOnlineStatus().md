@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/use-online-status.ts"
+source_file: "web/core/hooks/use-online-status.ts"
 type: "code"
-community: "Badge Editor"
+community: "Control Move"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Badge_Editor
+  - community/Control_Move
 ---
 
 # useOnlineStatus()
@@ -15,4 +15,4 @@ tags:
 
 - [[use-online-status.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Badge_Editor
+#graphify/code #graphify/EXTRACTED #community/Control_Move

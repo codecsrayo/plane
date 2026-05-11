@@ -1,19 +1,21 @@
 ---
 source_file: "api_rust/src/routes/issue_extras.rs"
 type: "code"
-community: "Community 30"
+community: "Issue Request"
 location: "L1144"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Community_30
+  - graphify/INFERRED
+  - community/Issue_Request
 ---
 
 # remove_issue_relation()
 
 ## Connections
 
-- [[issue_extras.rs]] - `contains` [EXTRACTED]
+- [[.set()]] - `calls` [INFERRED]
+- [[issue_extras.rs_1]] - `contains` [EXTRACTED]
+- [[now]] - `calls` [INFERRED]
 - [[require_role()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_30
+#graphify/code #graphify/INFERRED #community/Issue_Request

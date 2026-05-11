@@ -1,12 +1,12 @@
 ---
-source_file: "components/cycles/applied-filters/status.tsx"
+source_file: "web/core/components/cycles/applied-filters/status.tsx"
 type: "code"
-community: "Applied Filters"
+community: "Filters Applied"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Applied_Filters
+  - community/Filters_Applied
 ---
 
 # status.tsx
@@ -14,7 +14,7 @@ tags:
 ## Connections
 
 - [[AppliedStatusFilters]] - `contains` [EXTRACTED]
-- [[Props_90]] - `contains` [EXTRACTED]
-- [[root.tsx_56]] - `imports_from` [EXTRACTED]
+- [[Props_165]] - `contains` [EXTRACTED]
+- [[root.tsx_97]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Applied_Filters
+#graphify/code #graphify/EXTRACTED #community/Filters_Applied

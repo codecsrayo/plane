@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/spreadsheet/columns/module-column.tsx"
+source_file: "web/core/components/issues/issue-layouts/spreadsheet/columns/module-column.tsx"
 type: "code"
-community: "Spreadsheet Columns"
+community: "Label Dropdown"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Columns
+  - community/Label_Dropdown
 ---
 
 # module-column.tsx
@@ -14,10 +14,10 @@ tags:
 ## Connections
 
 - [[ModuleDropdown]] - `imports` [EXTRACTED]
-- [[Props_212]] - `contains` [EXTRACTED]
+- [[Props_287]] - `contains` [EXTRACTED]
 - [[SpreadsheetModuleColumn]] - `contains` [EXTRACTED]
-- [[dropdown.tsx]] - `imports_from` [EXTRACTED]
+- [[dropdown.tsx_2]] - `imports_from` [EXTRACTED]
 - [[use-issue-layout-store.ts]] - `imports_from` [EXTRACTED]
 - [[useIssuesStore()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Columns
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

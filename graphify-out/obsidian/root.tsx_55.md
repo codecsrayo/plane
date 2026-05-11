@@ -1,25 +1,21 @@
 ---
-source_file: "components/cycles/dropdowns/filters/root.tsx"
+source_file: "web/core/components/modules/dropdowns/filters/root.tsx"
 type: "code"
-community: "Date Start"
+community: "Member Members"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Date_Start
+  - community/Member_Members
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[CycleFiltersSelection]] - `contains` [EXTRACTED]
-- [[FilterEndDate]] - `imports` [EXTRACTED]
-- [[FilterStartDate]] - `imports` [EXTRACTED]
-- [[FilterStatus]] - `imports` [EXTRACTED]
-- [[Props_84]] - `contains` [EXTRACTED]
-- [[end-date.tsx]] - `imports_from` [EXTRACTED]
-- [[start-date.tsx_2]] - `imports_from` [EXTRACTED]
-- [[status.tsx_3]] - `imports_from` [EXTRACTED]
+- [[ModuleFiltersSelection]] - `contains` [EXTRACTED]
+- [[Props_159]] - `contains` [EXTRACTED]
+- [[index.ts_323]] - `imports_from` [EXTRACTED]
+- [[index.ts_355]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Date_Start
+#graphify/code #graphify/EXTRACTED #community/Member_Members

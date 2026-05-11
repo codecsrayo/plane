@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/store/estimates/use-estimate.ts"
+source_file: "web/core/hooks/store/estimates/use-estimate.ts"
 type: "code"
-community: "Estimate Disable"
+community: "Label Dropdown"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Estimate_Disable
+  - community/Label_Dropdown
 ---
 
 # useEstimate()
@@ -15,9 +15,9 @@ tags:
 
 - [[create.tsx_2]] - `imports` [EXTRACTED]
 - [[estimate-list-item.tsx]] - `imports` [EXTRACTED]
-- [[estimate.tsx]] - `imports` [EXTRACTED]
-- [[estimate.tsx_2]] - `imports` [EXTRACTED]
-- [[modal.tsx_13]] - `imports` [EXTRACTED]
+- [[estimate.tsx_1]] - `imports` [EXTRACTED]
+- [[estimate.tsx_3]] - `imports` [EXTRACTED]
+- [[modal.tsx_18]] - `imports` [EXTRACTED]
 - [[use-estimate.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Estimate_Disable
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

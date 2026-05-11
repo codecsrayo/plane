@@ -1,5 +1,5 @@
 ---
-source_file: "components/issues/issue-detail/links/link-detail.tsx"
+source_file: "web/core/components/issues/issue-detail/links/link-detail.tsx"
 type: "code"
 community: "Issue Activity"
 location: "L1"
@@ -20,7 +20,7 @@ tags:
 - [[links.tsx_2]] - `imports_from` [EXTRACTED]
 - [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
 - [[use-member.ts]] - `imports_from` [EXTRACTED]
-- [[use-platform-os.tsx]] - `imports_from` [EXTRACTED]
+- [[use-platform-os.tsx_1]] - `imports_from` [EXTRACTED]
 - [[useIssueDetail()]] - `imports` [EXTRACTED]
 - [[useMember()]] - `imports` [EXTRACTED]
 - [[usePlatformOS()]] - `imports` [EXTRACTED]

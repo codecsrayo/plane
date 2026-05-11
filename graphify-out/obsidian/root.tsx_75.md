@@ -1,24 +1,29 @@
 ---
-source_file: "components/pages/editor/toolbar/root.tsx"
+source_file: "web/core/components/issues/issue-detail/links/root.tsx"
 type: "code"
-community: "Badge Editor"
+community: "Issue Activity"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Badge_Editor
+  - community/Issue_Activity
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[PageEditorToolbarRoot]] - `contains` [EXTRACTED]
-- [[Props_390]] - `contains` [EXTRACTED]
-- [[TPageInstance]] - `imports` [EXTRACTED]
-- [[base-page.ts]] - `imports_from` [EXTRACTED]
-- [[index.ts_151]] - `imports_from` [EXTRACTED]
-- [[use-page-filters.ts]] - `imports_from` [EXTRACTED]
-- [[usePageFilters()]] - `imports` [EXTRACTED]
+- [[IssueLinkCreateUpdateModal]] - `imports` [EXTRACTED]
+- [[IssueLinkList]] - `imports` [EXTRACTED]
+- [[IssueLinkRoot()]] - `contains` [EXTRACTED]
+- [[TIssueLinkRoot]] - `contains` [EXTRACTED]
+- [[TLinkOperations_1]] - `contains` [EXTRACTED]
+- [[api.service.ts_1]] - `imports_from` [EXTRACTED]
+- [[create-update-link-modal.tsx_1]] - `imports_from` [EXTRACTED]
+- [[extractApiErrorMessage()]] - `imports` [EXTRACTED]
+- [[link-list.tsx]] - `imports_from` [EXTRACTED]
+- [[links.tsx_2]] - `imports_from` [EXTRACTED]
+- [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
+- [[useIssueDetail()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Badge_Editor
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

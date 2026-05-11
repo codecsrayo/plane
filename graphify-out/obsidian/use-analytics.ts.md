@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/store/use-analytics.ts"
+source_file: "web/core/hooks/store/use-analytics.ts"
 type: "code"
-community: "Active Projects"
+community: "Webhook Workspace"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Active_Projects
+  - community/Webhook_Workspace
 ---
 
 # use-analytics.ts
@@ -18,7 +18,7 @@ tags:
 - [[analytics-filter-actions.tsx]] - `imports_from` [EXTRACTED]
 - [[content.tsx_5]] - `imports_from` [EXTRACTED]
 - [[created-vs-resolved.tsx]] - `imports_from` [EXTRACTED]
-- [[index.tsx_8]] - `imports_from` [EXTRACTED]
+- [[index.tsx_14]] - `imports_from` [EXTRACTED]
 - [[priority-chart.tsx]] - `imports_from` [EXTRACTED]
 - [[project-insights.tsx]] - `imports_from` [EXTRACTED]
 - [[store-context.tsx]] - `imports_from` [EXTRACTED]
@@ -26,4 +26,4 @@ tags:
 - [[useAnalytics()]] - `contains` [EXTRACTED]
 - [[workitems-insight-table.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Active_Projects
+#graphify/code #graphify/EXTRACTED #community/Webhook_Workspace

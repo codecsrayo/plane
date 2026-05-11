@@ -1,12 +1,12 @@
 ---
-source_file: "components/labels/project-setting-label-item.tsx"
+source_file: "web/core/components/labels/project-setting-label-item.tsx"
 type: "code"
-community: "Label Manager"
+community: "Label Project"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Label_Manager
+  - community/Label_Project
 ---
 
 # project-setting-label-item.tsx
@@ -18,7 +18,7 @@ tags:
 - [[LabelDndHOC]] - `imports` [EXTRACTED]
 - [[LabelItemBlock()]] - `imports` [EXTRACTED]
 - [[ProjectSettingLabelItem()]] - `contains` [EXTRACTED]
-- [[Props_62]] - `contains` [EXTRACTED]
+- [[Props_138]] - `contains` [EXTRACTED]
 - [[TLabelOperationsCallbacks]] - `imports` [EXTRACTED]
 - [[create-update-label-inline.tsx]] - `imports_from` [EXTRACTED]
 - [[label-drag-n-drop-HOC.tsx]] - `imports_from` [EXTRACTED]
@@ -27,4 +27,4 @@ tags:
 - [[use-label.ts]] - `imports_from` [EXTRACTED]
 - [[useLabel()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Label_Manager
+#graphify/code #graphify/EXTRACTED #community/Label_Project

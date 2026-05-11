@@ -1,12 +1,12 @@
 ---
-source_file: "store/issue/issue_calendar_view.store.ts"
+source_file: "web/core/store/issue/issue_calendar_view.store.ts"
 type: "code"
-community: "Calendar Store"
+community: "Calendar Issue"
 location: "L183"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Store
+  - community/Calendar_Issue
 ---
 
 # nextDate
@@ -15,4 +15,4 @@ tags:
 
 - [[issue_calendar_view.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Store
+#graphify/code #graphify/EXTRACTED #community/Calendar_Issue

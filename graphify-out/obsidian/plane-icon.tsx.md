@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/icons/sub-brand/plane-icon.tsx"
 type: "code"
-community: "Icon Board"
+community: "Icon Property"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Icon_Board
+  - community/Icon_Property
 ---
 
 # plane-icon.tsx
@@ -19,4 +19,4 @@ tags:
 - [[icon-wrapper.tsx]] - `imports_from` [EXTRACTED]
 - [[type.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Icon_Board
+#graphify/code #graphify/EXTRACTED #community/Icon_Property

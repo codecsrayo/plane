@@ -1,5 +1,5 @@
 ---
-source_file: "components/common/new-empty-state.tsx"
+source_file: "web/core/components/common/new-empty-state.tsx"
 type: "code"
 community: "Empty State"
 location: "L1"
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[NewEmptyState()]] - `contains` [EXTRACTED]
-- [[Props_291]] - `contains` [EXTRACTED]
+- [[Props_366]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Empty_State

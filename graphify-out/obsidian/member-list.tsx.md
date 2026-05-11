@@ -1,12 +1,12 @@
 ---
-source_file: "components/project/member-list.tsx"
+source_file: "web/core/components/project/member-list.tsx"
 type: "code"
-community: "Member Project"
+community: "Member Members"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Project
+  - community/Member_Members
 ---
 
 # member-list.tsx
@@ -19,12 +19,13 @@ tags:
 - [[ProjectMemberListItem]] - `imports` [EXTRACTED]
 - [[SendProjectInvitationModal]] - `imports` [EXTRACTED]
 - [[TProjectMemberListProps]] - `contains` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
 - [[member-list-item.tsx]] - `imports_from` [EXTRACTED]
 - [[member-list.tsx_1]] - `imports_from` [EXTRACTED]
-- [[members.tsx]] - `imports_from` [EXTRACTED]
+- [[members.tsx_1]] - `imports_from` [EXTRACTED]
+- [[page.tsx_38]] - `imports_from` [EXTRACTED]
 - [[send-project-invitation-modal.tsx]] - `imports_from` [EXTRACTED]
 - [[use-member.ts]] - `imports_from` [EXTRACTED]
 - [[useMember()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Project
+#graphify/code #graphify/EXTRACTED #community/Member_Members

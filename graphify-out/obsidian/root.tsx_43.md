@@ -1,28 +1,28 @@
 ---
-source_file: "components/issues/peek-overview/root.tsx"
+source_file: "web/core/components/views/applied-filters/root.tsx"
 type: "code"
-community: "Peek Overview"
+community: "Filters Applied"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Peek_Overview
+  - community/Filters_Applied
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[IssuePeekOverview]] - `contains` [EXTRACTED]
-- [[IssueView]] - `imports` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
-- [[index.ts_102]] - `imports_from` [EXTRACTED]
-- [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
-- [[use-issue-layout-store.ts]] - `imports_from` [EXTRACTED]
-- [[use-issues.ts]] - `imports_from` [EXTRACTED]
-- [[useIssueDetail()]] - `imports` [EXTRACTED]
-- [[useIssueStoreType()]] - `imports` [EXTRACTED]
-- [[useIssues()]] - `imports` [EXTRACTED]
-- [[view.tsx_1]] - `imports_from` [EXTRACTED]
+- [[AppliedAccessFilters]] - `imports` [EXTRACTED]
+- [[AppliedDateFilters]] - `imports` [EXTRACTED]
+- [[AppliedMembersFilters]] - `imports` [EXTRACTED]
+- [[DATE_FILTERS]] - `contains` [EXTRACTED]
+- [[MEMBERS_FILTERS]] - `contains` [EXTRACTED]
+- [[Props_99]] - `contains` [EXTRACTED]
+- [[VIEW_ACCESS_FILTERS]] - `contains` [EXTRACTED]
+- [[ViewAppliedFiltersList()]] - `contains` [EXTRACTED]
+- [[access.tsx]] - `imports_from` [EXTRACTED]
+- [[date.tsx_5]] - `imports_from` [EXTRACTED]
+- [[members.tsx_7]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Peek_Overview
+#graphify/code #graphify/EXTRACTED #community/Filters_Applied

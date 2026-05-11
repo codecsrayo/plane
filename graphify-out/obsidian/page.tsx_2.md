@@ -1,0 +1,24 @@
+---
+source_file: "web/app/(all)/auth/gitlab/callback/page.tsx"
+type: "code"
+community: "Callback Installation"
+location: "L1"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Callback_Installation
+---
+
+# page.tsx
+
+## Connections
+
+- [[AppInstallationService]] - `imports` [EXTRACTED]
+- [[GitlabIntegrationCallbackPage()]] - `contains` [EXTRACTED]
+- [[OAuthCallbackPage()]] - `imports` [EXTRACTED]
+- [[TOAuthCallbackStatus]] - `imports` [EXTRACTED]
+- [[appInstallationService]] - `contains` [EXTRACTED]
+- [[app_installation.service.ts]] - `imports_from` [EXTRACTED]
+- [[oauth-callback-page.tsx]] - `imports_from` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Callback_Installation

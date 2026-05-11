@@ -1,18 +1,19 @@
 ---
 source_file: "api_rust/src/routes/pages.rs"
 type: "code"
-community: "Community 66"
+community: "Request Intake"
 location: "L1245"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Community_66
+  - graphify/INFERRED
+  - community/Request_Intake
 ---
 
 # pages_summary()
 
 ## Connections
 
-- [[pages.rs]] - `contains` [EXTRACTED]
+- [[.json()]] - `calls` [INFERRED]
+- [[pages.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_66
+#graphify/code #graphify/INFERRED #community/Request_Intake

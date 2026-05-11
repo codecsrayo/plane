@@ -1,5 +1,5 @@
 ---
-source_file: "store/member/project/project-member-filters.store.ts"
+source_file: "web/core/store/member/project/project-member-filters.store.ts"
 type: "code"
 community: "Member Project"
 location: "L1"
@@ -19,6 +19,6 @@ tags:
 - [[base-project-member.store.ts]] - `imports_from` [EXTRACTED]
 - [[sortProjectMembers()]] - `imports` [EXTRACTED]
 - [[sortedMembers_1]] - `contains` [EXTRACTED]
-- [[utils.ts]] - `imports_from` [EXTRACTED]
+- [[utils.ts_12]] - `imports_from` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Member_Project

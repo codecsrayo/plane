@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/properties/all-properties.tsx"
+source_file: "web/core/components/issues/issue-layouts/properties/all-properties.tsx"
 type: "code"
-community: "Issue Properties"
+community: "Label Dropdown"
 location: "L60"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Properties
+  - community/Label_Dropdown
 ---
 
 # stopEventPropagation()
@@ -15,4 +15,4 @@ tags:
 
 - [[all-properties.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Properties
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-detail-widgets/attachments/quick-action-button.tsx"
+source_file: "web/core/components/issues/issue-detail-widgets/attachments/quick-action-button.tsx"
 type: "code"
-community: "Issue Attachments"
+community: "Attachment Issue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Attachments
+  - community/Attachment_Issue
 ---
 
 # quick-action-button.tsx
@@ -14,11 +14,12 @@ tags:
 ## Connections
 
 - [[IssueAttachmentActionButton]] - `contains` [EXTRACTED]
-- [[Props_267]] - `contains` [EXTRACTED]
-- [[helper.tsx_5]] - `imports_from` [EXTRACTED]
+- [[Props_342]] - `contains` [EXTRACTED]
+- [[helper.tsx_27]] - `imports_from` [EXTRACTED]
 - [[title.tsx]] - `imports_from` [EXTRACTED]
 - [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
 - [[useAttachmentOperations()]] - `imports` [EXTRACTED]
+- [[useFileSize()]] - `imports` [EXTRACTED]
 - [[useIssueDetail()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Attachments
+#graphify/code #graphify/EXTRACTED #community/Attachment_Issue

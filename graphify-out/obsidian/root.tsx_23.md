@@ -1,23 +1,19 @@
 ---
-source_file: "components/settings/project/sidebar/root.tsx"
+source_file: "web/ce/components/de-dupe/duplicate-modal/root.tsx"
 type: "code"
-community: "Sidebar Nav"
+community: "Duplicate Tduplicatemodalrootprops"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sidebar_Nav
+  - community/Duplicate_Tduplicatemodalrootprops
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[ProjectSettingsSidebarHeader]] - `imports` [EXTRACTED]
-- [[ProjectSettingsSidebarItemCategories]] - `imports` [EXTRACTED]
-- [[ProjectSettingsSidebarRoot()]] - `contains` [EXTRACTED]
-- [[Props_42]] - `contains` [EXTRACTED]
-- [[header.tsx_5]] - `imports_from` [EXTRACTED]
-- [[item-categories.tsx_2]] - `imports_from` [EXTRACTED]
+- [[DuplicateModalRoot()]] - `contains` [EXTRACTED]
+- [[TDuplicateModalRootProps]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sidebar_Nav
+#graphify/code #graphify/EXTRACTED #community/Duplicate_Tduplicatemodalrootprops

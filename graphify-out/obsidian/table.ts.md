@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/table/table/table.ts"
 type: "code"
-community: "Table Drag"
+community: "Table Node"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Table_Drag
+  - community/Table_Node
 ---
 
 # table.ts
@@ -43,4 +43,4 @@ tags:
 - [[plugin.ts_2]] - `imports_from` [EXTRACTED]
 - [[table-view.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Table_Drag
+#graphify/code #graphify/EXTRACTED #community/Table_Node

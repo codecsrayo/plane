@@ -1,5 +1,5 @@
 ---
-source_file: "components/issues/layout-quick-actions.tsx"
+source_file: "web/core/components/issues/layout-quick-actions.tsx"
 type: "code"
 community: "Menu Quick"
 location: "L1"
@@ -14,7 +14,7 @@ tags:
 ## Connections
 
 - [[LayoutQuickActions]] - `contains` [EXTRACTED]
-- [[Props_176]] - `contains` [EXTRACTED]
+- [[Props_251]] - `contains` [EXTRACTED]
 - [[quick-actions-helper.tsx]] - `imports_from` [EXTRACTED]
 - [[useLayoutMenuItems()]] - `imports` [EXTRACTED]
 

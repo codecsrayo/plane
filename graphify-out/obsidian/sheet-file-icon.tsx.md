@@ -1,5 +1,5 @@
 ---
-source_file: "components/icons/attachment/sheet-file-icon.tsx"
+source_file: "web/core/components/icons/attachment/sheet-file-icon.tsx"
 type: "code"
 community: "Sheet Icon"
 location: "L1"

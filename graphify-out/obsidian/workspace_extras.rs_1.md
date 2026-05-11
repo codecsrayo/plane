@@ -1,0 +1,90 @@
+---
+source_file: "api_rust/src/routes/workspace_extras.rs"
+type: "code"
+community: "Project Response"
+location: "L1"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Project_Response
+---
+
+# workspace_extras.rs
+
+## Connections
+
+- [[ActiveCyclesQuery]] - `contains` [EXTRACTED]
+- [[CreateDraftIssueRequest]] - `contains` [EXTRACTED]
+- [[CreateFavoriteRequest]] - `contains` [EXTRACTED]
+- [[CreateQuickLinkRequest]] - `contains` [EXTRACTED]
+- [[CreateStickyRequest]] - `contains` [EXTRACTED]
+- [[DraftIssueListQuery]] - `contains` [EXTRACTED]
+- [[DraftIssueResponse]] - `contains` [EXTRACTED]
+- [[DraftToIssueRequest]] - `contains` [EXTRACTED]
+- [[FavoriteResponse]] - `contains` [EXTRACTED]
+- [[HomePreferenceResponse]] - `contains` [EXTRACTED]
+- [[QuickLinkResponse]] - `contains` [EXTRACTED]
+- [[RecentVisitQuery]] - `contains` [EXTRACTED]
+- [[RecentVisitResponse]] - `contains` [EXTRACTED]
+- [[StickyListQuery]] - `contains` [EXTRACTED]
+- [[StickyResponse]] - `contains` [EXTRACTED]
+- [[UpdateDraftIssueRequest]] - `contains` [EXTRACTED]
+- [[UpdateFavoriteRequest]] - `contains` [EXTRACTED]
+- [[UpdateHomePreferenceRequest]] - `contains` [EXTRACTED]
+- [[UpdateQuickLinkRequest]] - `contains` [EXTRACTED]
+- [[UpdateStickyRequest]] - `contains` [EXTRACTED]
+- [[UpdateUserPreferenceItem]] - `contains` [EXTRACTED]
+- [[UpdateWorkspaceUserPropertiesRequest]] - `contains` [EXTRACTED]
+- [[UserPreferenceEntry]] - `contains` [EXTRACTED]
+- [[WorkspaceEstimatePointResponse]] - `contains` [EXTRACTED]
+- [[WorkspaceEstimateResponse]] - `contains` [EXTRACTED]
+- [[WorkspaceLabelResponse]] - `contains` [EXTRACTED]
+- [[WorkspaceStateResponse]] - `contains` [EXTRACTED]
+- [[WorkspaceUserPropertiesResponse]] - `contains` [EXTRACTED]
+- [[create_draft_issue()]] - `contains` [EXTRACTED]
+- [[create_favorite()]] - `contains` [EXTRACTED]
+- [[create_quick_link()]] - `contains` [EXTRACTED]
+- [[create_sticky()]] - `contains` [EXTRACTED]
+- [[default_display_filters()]] - `contains` [EXTRACTED]
+- [[default_display_properties()]] - `contains` [EXTRACTED]
+- [[default_filters()]] - `contains` [EXTRACTED]
+- [[delete_draft_issue()]] - `contains` [EXTRACTED]
+- [[delete_favorite()]] - `contains` [EXTRACTED]
+- [[delete_quick_link()]] - `contains` [EXTRACTED]
+- [[delete_sticky()]] - `contains` [EXTRACTED]
+- [[deserialize_double_option_uuid()]] - `contains` [EXTRACTED]
+- [[draft_to_issue()]] - `contains` [EXTRACTED]
+- [[get_draft_issue()]] - `contains` [EXTRACTED]
+- [[get_home_preference_key()]] - `contains` [EXTRACTED]
+- [[get_home_preferences()]] - `contains` [EXTRACTED]
+- [[get_or_create_workspace_user_properties()]] - `contains` [EXTRACTED]
+- [[get_user_preferences()]] - `contains` [EXTRACTED]
+- [[get_workspace_user_properties()]] - `contains` [EXTRACTED]
+- [[hydrate_draft_issue_response()]] - `contains` [EXTRACTED]
+- [[hydrate_draft_issue_responses()]] - `contains` [EXTRACTED]
+- [[list_draft_issues()]] - `contains` [EXTRACTED]
+- [[list_favorite_children()]] - `contains` [EXTRACTED]
+- [[list_favorites()]] - `contains` [EXTRACTED]
+- [[list_quick_links()]] - `contains` [EXTRACTED]
+- [[list_recent_visits()]] - `contains` [EXTRACTED]
+- [[list_stickies()]] - `contains` [EXTRACTED]
+- [[list_workspace_active_cycles()]] - `contains` [EXTRACTED]
+- [[list_workspace_cycles()]] - `contains` [EXTRACTED]
+- [[list_workspace_estimates()]] - `contains` [EXTRACTED]
+- [[list_workspace_labels()]] - `contains` [EXTRACTED]
+- [[list_workspace_modules()]] - `contains` [EXTRACTED]
+- [[list_workspace_states()]] - `contains` [EXTRACTED]
+- [[require_member_or_admin()]] - `contains` [EXTRACTED]
+- [[sync_draft_assignees()]] - `contains` [EXTRACTED]
+- [[sync_draft_cycle()]] - `contains` [EXTRACTED]
+- [[sync_draft_labels()]] - `contains` [EXTRACTED]
+- [[sync_draft_modules()]] - `contains` [EXTRACTED]
+- [[update_draft_issue()]] - `contains` [EXTRACTED]
+- [[update_favorite()]] - `contains` [EXTRACTED]
+- [[update_home_preference()]] - `contains` [EXTRACTED]
+- [[update_quick_link()]] - `contains` [EXTRACTED]
+- [[update_sticky()]] - `contains` [EXTRACTED]
+- [[update_user_preferences()]] - `contains` [EXTRACTED]
+- [[update_workspace_user_properties()]] - `contains` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Project_Response

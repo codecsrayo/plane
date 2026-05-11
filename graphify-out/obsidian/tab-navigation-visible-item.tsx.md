@@ -1,12 +1,12 @@
 ---
-source_file: "components/navigation/tab-navigation-visible-item.tsx"
+source_file: "web/core/components/navigation/tab-navigation-visible-item.tsx"
 type: "code"
-community: "Project Tab Nav"
+community: "Project Navigation"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Tab_Nav
+  - community/Project_Navigation
 ---
 
 # tab-navigation-visible-item.tsx
@@ -20,4 +20,4 @@ tags:
 - [[tab-navigation-root.tsx]] - `imports_from` [EXTRACTED]
 - [[tab-navigation-utils.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Tab_Nav
+#graphify/code #graphify/EXTRACTED #community/Project_Navigation

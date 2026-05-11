@@ -1,12 +1,12 @@
 ---
-source_file: "components/pages/modals/page-form.tsx"
+source_file: "web/core/components/pages/modals/page-form.tsx"
 type: "code"
-community: "Access Field"
+community: "Project Work"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Access_Field
+  - community/Project_Work
 ---
 
 # page-form.tsx
@@ -16,10 +16,10 @@ tags:
 - [[AccessField()]] - `imports` [EXTRACTED]
 - [[PAGE_ACCESS_SPECIFIERS]] - `contains` [EXTRACTED]
 - [[PageForm()]] - `contains` [EXTRACTED]
-- [[Props_418]] - `contains` [EXTRACTED]
+- [[Props_492]] - `contains` [EXTRACTED]
 - [[access-field.tsx]] - `imports_from` [EXTRACTED]
 - [[create-page-modal.tsx]] - `imports_from` [EXTRACTED]
-- [[use-platform-os.tsx]] - `imports_from` [EXTRACTED]
+- [[use-platform-os.tsx_1]] - `imports_from` [EXTRACTED]
 - [[usePlatformOS()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Access_Field
+#graphify/code #graphify/EXTRACTED #community/Project_Work

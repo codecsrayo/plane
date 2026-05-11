@@ -1,25 +1,19 @@
 ---
-source_file: "components/issues/preview-card/root.tsx"
+source_file: "web/ce/components/issues/worklog/activity/root.tsx"
 type: "code"
-community: "Calendar Blocks"
+community: "Activity Issue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Blocks
+  - community/Activity_Issue
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[Props_185]] - `contains` [EXTRACTED]
-- [[WorkItemPreviewCard]] - `contains` [EXTRACTED]
-- [[WorkItemPreviewCardDate()]] - `imports` [EXTRACTED]
-- [[date.tsx_3]] - `imports_from` [EXTRACTED]
-- [[use-project-state.ts]] - `imports_from` [EXTRACTED]
-- [[use-project.ts]] - `imports_from` [EXTRACTED]
-- [[useProject()]] - `imports` [EXTRACTED]
-- [[useProjectState()]] - `imports` [EXTRACTED]
+- [[IssueActivityWorklog()]] - `contains` [EXTRACTED]
+- [[TIssueActivityWorklog]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Blocks
+#graphify/code #graphify/EXTRACTED #community/Activity_Issue

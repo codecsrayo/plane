@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/store/workspace-draft/use-workspace-draft-issue-filters.ts"
+source_file: "web/core/hooks/store/workspace-draft/use-workspace-draft-issue-filters.ts"
 type: "code"
-community: "Workspace Draft"
+community: "Webhook Workspace"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Draft
+  - community/Webhook_Workspace
 ---
 
 # useWorkspaceDraftIssueFilters()
@@ -15,4 +15,4 @@ tags:
 
 - [[use-workspace-draft-issue-filters.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Draft
+#graphify/code #graphify/EXTRACTED #community/Webhook_Workspace

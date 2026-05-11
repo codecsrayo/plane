@@ -1,12 +1,12 @@
 ---
 source_file: "ui/src/scroll-area.tsx"
 type: "code"
-community: "Scroll Size"
+community: "Input Checkbox"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Scroll_Size
+  - community/Input_Checkbox
 ---
 
 # scroll-area.tsx
@@ -19,4 +19,4 @@ tags:
 - [[sizeStyles]] - `contains` [EXTRACTED]
 - [[thumbSizeStyles]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Scroll_Size
+#graphify/code #graphify/EXTRACTED #community/Input_Checkbox

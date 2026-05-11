@@ -1,0 +1,18 @@
+---
+source_file: "api/plane/db/migrations/0091_issuecomment_edited_at_and_more.py"
+type: "code"
+community: "Migration Issuecomment"
+location: "L1"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Migration_Issuecomment
+---
+
+# 0091_issuecomment_edited_at_and_more.py
+
+## Connections
+
+- [[Migration_19]] - `contains` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Migration_Issuecomment

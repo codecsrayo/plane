@@ -1,5 +1,5 @@
 ---
-source_file: "components/stickies/layout/stickies-list.tsx"
+source_file: "web/core/components/stickies/layout/stickies-list.tsx"
 type: "code"
 community: "Stickies Sticky"
 location: "L1"
@@ -13,6 +13,7 @@ tags:
 
 ## Connections
 
+- [[Adapter_1]] - `imports_from` [EXTRACTED]
 - [[DetailedEmptyState]] - `imports` [EXTRACTED]
 - [[SimpleEmptyState]] - `imports` [EXTRACTED]
 - [[StickiesEmptyState()]] - `imports` [EXTRACTED]
@@ -20,12 +21,12 @@ tags:
 - [[StickiesList]] - `contains` [EXTRACTED]
 - [[StickiesLoader()]] - `imports` [EXTRACTED]
 - [[StickyDNDWrapper]] - `imports` [EXTRACTED]
-- [[TProps_5]] - `contains` [EXTRACTED]
+- [[TProps_7]] - `contains` [EXTRACTED]
 - [[TStickiesLayout]] - `contains` [EXTRACTED]
 - [[detailed-empty-state-root.tsx]] - `imports_from` [EXTRACTED]
 - [[getColumnCount()]] - `contains` [EXTRACTED]
 - [[getInstructionFromPayload()_2]] - `imports` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
 - [[simple-empty-state-root.tsx]] - `imports_from` [EXTRACTED]
 - [[stickies-infinite.tsx]] - `imports_from` [EXTRACTED]
 - [[stickies-loader.tsx]] - `imports_from` [EXTRACTED]

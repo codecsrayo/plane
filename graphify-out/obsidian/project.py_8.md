@@ -1,0 +1,23 @@
+---
+source_file: "api/plane/space/views/project.py"
+type: "code"
+community: "Project Endpoint"
+location: "L1"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Project_Endpoint
+---
+
+# project.py
+
+## Connections
+
+- [[ProjectDeployBoardPublicSettingsEndpoint]] - `contains` [EXTRACTED]
+- [[ProjectMembersEndpoint]] - `contains` [EXTRACTED]
+- [[WorkspaceProjectAnchorEndpoint]] - `contains` [EXTRACTED]
+- [[WorkspaceProjectDeployBoardEndpoint]] - `contains` [EXTRACTED]
+- [[__init__.py_65]] - `imports_from` [EXTRACTED]
+- [[base.py_32]] - `imports_from` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Project_Endpoint

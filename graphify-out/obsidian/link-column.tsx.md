@@ -1,5 +1,5 @@
 ---
-source_file: "components/issues/issue-layouts/spreadsheet/columns/link-column.tsx"
+source_file: "web/core/components/issues/issue-layouts/spreadsheet/columns/link-column.tsx"
 type: "code"
 community: "Link Column"
 location: "L1"
@@ -13,7 +13,7 @@ tags:
 
 ## Connections
 
-- [[Props_205]] - `contains` [EXTRACTED]
+- [[Props_280]] - `contains` [EXTRACTED]
 - [[SpreadsheetLinkColumn]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Link_Column

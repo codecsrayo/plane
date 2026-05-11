@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/toolbar/toolbar.tsx"
 type: "code"
-community: "Toolbar Button"
+community: "Toolbar Combobox"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Toolbar_Button
+  - community/Toolbar_Combobox
 ---
 
 # toolbar.tsx
@@ -30,4 +30,4 @@ tags:
 - [[index.ts_191]] - `imports_from` [EXTRACTED]
 - [[toolbar.stories.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Toolbar_Button
+#graphify/code #graphify/EXTRACTED #community/Toolbar_Combobox

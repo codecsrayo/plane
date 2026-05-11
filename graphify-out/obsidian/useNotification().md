@@ -1,5 +1,5 @@
 ---
-source_file: "hooks/store/notifications/use-notification.ts"
+source_file: "web/core/hooks/store/notifications/use-notification.ts"
 type: "code"
 community: "Notification Option"
 location: "L13"
@@ -13,8 +13,8 @@ tags:
 
 ## Connections
 
-- [[item.tsx_1]] - `imports` [EXTRACTED]
-- [[root.tsx_46]] - `imports` [EXTRACTED]
+- [[item.tsx_2]] - `imports` [EXTRACTED]
+- [[root.tsx_87]] - `imports` [EXTRACTED]
 - [[use-notification.ts]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Notification_Option

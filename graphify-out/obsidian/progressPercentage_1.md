@@ -1,12 +1,12 @@
 ---
-source_file: "store/issue/issue-details/attachment.store.ts"
+source_file: "web/core/store/issue/issue-details/attachment.store.ts"
 type: "code"
-community: "Attachment Attachments"
+community: "Issue Reaction"
 location: "L162"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Attachment_Attachments
+  - community/Issue_Reaction
 ---
 
 # progressPercentage
@@ -15,4 +15,4 @@ tags:
 
 - [[attachment.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Attachment_Attachments
+#graphify/code #graphify/EXTRACTED #community/Issue_Reaction

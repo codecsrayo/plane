@@ -1,24 +1,33 @@
 ---
-source_file: "components/onboarding/steps/usecase/root.tsx"
+source_file: "web/core/components/issues/issue-layouts/quick-add/root.tsx"
 type: "code"
-community: "Values Setup"
+community: "Issue Quick"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Values_Setup
+  - community/Issue_Quick
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[Props_370]] - `contains` [EXTRACTED]
-- [[TProfileSetupFormValues_1]] - `imports` [EXTRACTED]
-- [[UseCaseSetupStep]] - `contains` [EXTRACTED]
-- [[defaultValues_24]] - `contains` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
-- [[index.ts_145]] - `imports_from` [EXTRACTED]
-- [[root.tsx_68]] - `imports_from` [EXTRACTED]
+- [[CreateIssueToastActionItems]] - `imports` [EXTRACTED]
+- [[QuickAddIssueRoot]] - `contains` [EXTRACTED]
+- [[TQuickAddIssueButton]] - `contains` [EXTRACTED]
+- [[TQuickAddIssueForm]] - `contains` [EXTRACTED]
+- [[TQuickAddIssueRoot]] - `contains` [EXTRACTED]
+- [[calendar.tsx_1]] - `imports_from` [EXTRACTED]
+- [[create-issue-toast-action-items.tsx]] - `imports_from` [EXTRACTED]
+- [[defaultValues_14]] - `contains` [EXTRACTED]
+- [[gantt.tsx]] - `imports_from` [EXTRACTED]
+- [[gantt.tsx_1]] - `imports_from` [EXTRACTED]
+- [[kanban.tsx]] - `imports_from` [EXTRACTED]
+- [[kanban.tsx_1]] - `imports_from` [EXTRACTED]
+- [[list.tsx_1]] - `imports_from` [EXTRACTED]
+- [[list.tsx_2]] - `imports_from` [EXTRACTED]
+- [[spreadsheet.tsx]] - `imports_from` [EXTRACTED]
+- [[spreadsheet.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Values_Setup
+#graphify/code #graphify/EXTRACTED #community/Issue_Quick

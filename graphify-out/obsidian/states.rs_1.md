@@ -1,19 +1,36 @@
 ---
-source_file: "api_rust/src/entities/states.rs"
+source_file: "api_rust/src/routes/states.rs"
 type: "code"
-community: "Community 422"
+community: "State Project"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_422
+  - community/State_Project
 ---
 
 # states.rs
 
 ## Connections
 
-- [[Model_103]] - `contains` [EXTRACTED]
-- [[Relation_103]] - `contains` [EXTRACTED]
+- [[CreateStateRequest]] - `contains` [EXTRACTED]
+- [[GroupedQuery]] - `contains` [EXTRACTED]
+- [[StateResponse]] - `contains` [EXTRACTED]
+- [[UpdateStateRequest]] - `contains` [EXTRACTED]
+- [[WorkspaceProjectPath]] - `contains` [EXTRACTED]
+- [[WorkspaceProjectStatePath]] - `contains` [EXTRACTED]
+- [[create_state()]] - `contains` [EXTRACTED]
+- [[delete_state()]] - `contains` [EXTRACTED]
+- [[get_state()]] - `contains` [EXTRACTED]
+- [[intake_state()]] - `contains` [EXTRACTED]
+- [[list_states()]] - `contains` [EXTRACTED]
+- [[mark_default()]] - `contains` [EXTRACTED]
+- [[normalize_sequence_by_group()]] - `contains` [EXTRACTED]
+- [[project_member_for_user()_2]] - `contains` [EXTRACTED]
+- [[require_admin()]] - `contains` [EXTRACTED]
+- [[require_project_member()]] - `contains` [EXTRACTED]
+- [[slugify()]] - `contains` [EXTRACTED]
+- [[update_state()]] - `contains` [EXTRACTED]
+- [[validate_group()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_422
+#graphify/code #graphify/EXTRACTED #community/State_Project

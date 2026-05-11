@@ -1,12 +1,12 @@
 ---
-source_file: "components/stickies/layout/stickies-truncated.tsx"
+source_file: "web/core/components/stickies/layout/stickies-truncated.tsx"
 type: "code"
-community: "Stickies Truncated"
+community: "Stickies Sticky"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Stickies_Truncated
+  - community/Stickies_Sticky
 ---
 
 # stickies-truncated.tsx
@@ -24,4 +24,4 @@ tags:
 - [[useSticky()]] - `imports` [EXTRACTED]
 - [[widget.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Stickies_Truncated
+#graphify/code #graphify/EXTRACTED #community/Stickies_Sticky

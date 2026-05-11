@@ -1,18 +1,19 @@
 ---
 source_file: "api_rust/src/routes/user_profile_issues.rs"
 type: "code"
-community: "Issue Routes Rust API"
+community: "Issue Issues"
 location: "L201"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Issue_Routes_Rust_API
+  - community/Issue_Issues
 ---
 
 # list_user_profile_issues()
 
 ## Connections
 
+- [[.json()]] - `calls` [INFERRED]
 - [[.new()]] - `calls` [INFERRED]
 - [[.to_filter_params()_2]] - `calls` [EXTRACTED]
 - [[apply_issue_filters()]] - `calls` [INFERRED]
@@ -28,4 +29,4 @@ tags:
 - [[user_profile_issues.rs]] - `contains` [EXTRACTED]
 - [[workspace_by_slug()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Issue_Routes_Rust_API
+#graphify/code #graphify/INFERRED #community/Issue_Issues

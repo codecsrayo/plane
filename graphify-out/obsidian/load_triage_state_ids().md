@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/routes/issue_pagination.rs"
 type: "code"
-community: "Issue Routes Rust API"
+community: "Issue Issues"
 location: "L292"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Issue_Routes_Rust_API
+  - community/Issue_Issues
 ---
 
 # load_triage_state_ids()
@@ -17,4 +17,4 @@ tags:
 - [[list_issues()]] - `calls` [INFERRED]
 - [[list_issues_v2()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Issue_Routes_Rust_API
+#graphify/code #graphify/INFERRED #community/Issue_Issues

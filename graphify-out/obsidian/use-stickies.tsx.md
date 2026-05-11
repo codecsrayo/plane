@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/use-stickies.tsx"
+source_file: "web/core/hooks/use-stickies.tsx"
 type: "code"
-community: "Stickies Truncated"
+community: "Stickies Sticky"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Stickies_Truncated
+  - community/Stickies_Sticky
 ---
 
 # use-stickies.tsx
@@ -16,8 +16,9 @@ tags:
 - [[IStickyStore]] - `imports` [EXTRACTED]
 - [[StoreContext]] - `imports` [EXTRACTED]
 - [[action-bar.tsx]] - `imports_from` [EXTRACTED]
-- [[root.tsx_11]] - `imports_from` [EXTRACTED]
-- [[search.tsx]] - `imports_from` [EXTRACTED]
+- [[header.tsx_2]] - `imports_from` [EXTRACTED]
+- [[root.tsx_52]] - `imports_from` [EXTRACTED]
+- [[search.tsx_1]] - `imports_from` [EXTRACTED]
 - [[stickies-infinite.tsx]] - `imports_from` [EXTRACTED]
 - [[stickies-list.tsx]] - `imports_from` [EXTRACTED]
 - [[stickies-truncated.tsx]] - `imports_from` [EXTRACTED]
@@ -28,4 +29,4 @@ tags:
 - [[useSticky()]] - `contains` [EXTRACTED]
 - [[widget.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Stickies_Truncated
+#graphify/code #graphify/EXTRACTED #community/Stickies_Sticky

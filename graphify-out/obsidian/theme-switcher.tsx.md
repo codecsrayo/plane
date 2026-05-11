@@ -1,5 +1,5 @@
 ---
-source_file: "components/appearance/theme-switcher.tsx"
+source_file: "web/ce/components/preferences/theme-switcher.tsx"
 type: "code"
 community: "Theme Custom"
 location: "L1"
@@ -19,7 +19,7 @@ tags:
 - [[ThemeSwitcher]] - `contains` [EXTRACTED]
 - [[control-item.tsx]] - `imports_from` [EXTRACTED]
 - [[custom-theme-selector.tsx]] - `imports_from` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
 - [[theme-switch.tsx]] - `imports_from` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Theme_Custom

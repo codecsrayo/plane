@@ -1,12 +1,12 @@
 ---
-source_file: "components/core/modals/existing-issues-list-modal.tsx"
+source_file: "web/core/components/core/modals/existing-issues-list-modal.tsx"
 type: "code"
-community: "Spreadsheet Columns"
+community: "Issue Activity"
 location: "L45"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Columns
+  - community/Issue_Activity
 ---
 
 # projectService
@@ -15,4 +15,4 @@ tags:
 
 - [[existing-issues-list-modal.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Columns
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

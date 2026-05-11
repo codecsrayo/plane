@@ -1,19 +1,19 @@
 ---
-source_file: "hooks/use-page-operations.ts"
+source_file: "web/core/hooks/use-page-operations.ts"
 type: "code"
-community: "Collaborative Copy"
+community: "Control Move"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Collaborative_Copy
+  - community/Control_Move
 ---
 
 # use-page-operations.ts
 
 ## Connections
 
-- [[Props]] - `contains` [EXTRACTED]
+- [[Props_77]] - `contains` [EXTRACTED]
 - [[TPageInstance]] - `imports` [EXTRACTED]
 - [[TPageOperations]] - `contains` [EXTRACTED]
 - [[actions.tsx_1]] - `imports_from` [EXTRACTED]
@@ -21,9 +21,10 @@ tags:
 - [[block-item-action.tsx]] - `imports_from` [EXTRACTED]
 - [[copy-link-control.tsx]] - `imports_from` [EXTRACTED]
 - [[favorite-control.tsx]] - `imports_from` [EXTRACTED]
+- [[lock-control.tsx]] - `imports_from` [EXTRACTED]
 - [[use-collaborative-page-actions.tsx]] - `imports_from` [EXTRACTED]
-- [[use-local-storage.tsx]] - `imports_from` [EXTRACTED]
+- [[use-local-storage.tsx_1]] - `imports_from` [EXTRACTED]
 - [[useCollaborativePageActions()]] - `imports` [EXTRACTED]
 - [[usePageOperations()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Collaborative_Copy
+#graphify/code #graphify/EXTRACTED #community/Control_Move

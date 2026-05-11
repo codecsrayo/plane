@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/calendar/issue-blocks.tsx"
+source_file: "web/core/components/issues/issue-layouts/calendar/issue-blocks.tsx"
 type: "code"
-community: "Calendar Views"
+community: "Calendar Issue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calendar_Views
+  - community/Calendar_Issue
 ---
 
 # issue-blocks.tsx
@@ -16,7 +16,7 @@ tags:
 - [[CalendarIssueBlockRoot]] - `imports` [EXTRACTED]
 - [[CalendarIssueBlocks]] - `contains` [EXTRACTED]
 - [[CalendarQuickAddIssueActions]] - `imports` [EXTRACTED]
-- [[Props_220]] - `contains` [EXTRACTED]
+- [[Props_295]] - `contains` [EXTRACTED]
 - [[calendar.tsx]] - `imports_from` [EXTRACTED]
 - [[day-tile.tsx]] - `imports_from` [EXTRACTED]
 - [[issue-block-root.tsx]] - `imports_from` [EXTRACTED]
@@ -24,4 +24,4 @@ tags:
 - [[use-issue-layout-store.ts]] - `imports_from` [EXTRACTED]
 - [[useIssuesStore()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calendar_Views
+#graphify/code #graphify/EXTRACTED #community/Calendar_Issue

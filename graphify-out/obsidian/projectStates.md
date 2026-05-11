@@ -1,5 +1,5 @@
 ---
-source_file: "store/state.store.ts"
+source_file: "web/core/store/state.store.ts"
 type: "code"
 community: "State Project"
 location: "L187"
@@ -13,6 +13,6 @@ tags:
 
 ## Connections
 
-- [[state.store.ts]] - `contains` [EXTRACTED]
+- [[state.store.ts_1]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/State_Project

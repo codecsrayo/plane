@@ -1,90 +1,33 @@
 ---
-source_file: "api_rust/src/routes/workspaces.rs"
+source_file: "api_rust/tests/workspaces.rs"
 type: "code"
-community: "Workspace Activity & Analytics"
+community: "Returns Sign"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Activity__Analytics
+  - community/Returns_Sign
 ---
 
 # workspaces.rs
 
 ## Connections
 
-- [[ActivityActorDetail]] - `contains` [EXTRACTED]
-- [[ActivityIssueDetail]] - `contains` [EXTRACTED]
-- [[ActivityProjectDetail]] - `contains` [EXTRACTED]
-- [[ActivityWorkspaceDetail]] - `contains` [EXTRACTED]
-- [[CreateInvitationRequest]] - `contains` [EXTRACTED]
-- [[CreateWorkspaceRequest]] - `contains` [EXTRACTED]
-- [[CreateWorkspaceThemeRequest]] - `contains` [EXTRACTED]
-- [[CycleInfoRow]] - `contains` [EXTRACTED]
-- [[ExportUserActivityBody]] - `contains` [EXTRACTED]
-- [[ExportUserActivityQuery]] - `contains` [EXTRACTED]
-- [[InvitationResponse]] - `contains` [EXTRACTED]
-- [[InviteEmail]] - `contains` [EXTRACTED]
-- [[JoinWorkspaceRequest]] - `contains` [EXTRACTED]
-- [[PriorityDistributionRow]] - `contains` [EXTRACTED]
-- [[ProjectProfileData]] - `contains` [EXTRACTED]
-- [[ProjectProfileRow]] - `contains` [EXTRACTED]
-- [[SlugCheckQuery]] - `contains` [EXTRACTED]
-- [[SlugCheckResponse]] - `contains` [EXTRACTED]
-- [[StateDistributionRow]] - `contains` [EXTRACTED]
-- [[UpdateInvitationRequest]] - `contains` [EXTRACTED]
-- [[UpdateMemberRoleRequest]] - `contains` [EXTRACTED]
-- [[UpdateWorkspaceRequest]] - `contains` [EXTRACTED]
-- [[UpdateWorkspaceThemeRequest]] - `contains` [EXTRACTED]
-- [[UserActivityItem]] - `contains` [EXTRACTED]
-- [[UserActivityQuery]] - `contains` [EXTRACTED]
-- [[UserLiteDto]] - `contains` [EXTRACTED]
-- [[UserProfileData]] - `contains` [EXTRACTED]
-- [[UserProfileResponse]] - `contains` [EXTRACTED]
-- [[UserStatsResponse]] - `contains` [EXTRACTED]
-- [[WorkspaceMemberMeResponse]] - `contains` [EXTRACTED]
-- [[WorkspaceMemberNestedResponse]] - `contains` [EXTRACTED]
-- [[WorkspaceMemberResponse]] - `contains` [EXTRACTED]
-- [[WorkspaceResponse]] - `contains` [EXTRACTED]
-- [[WorkspaceThemeResponse]] - `contains` [EXTRACTED]
-- [[build_empty_user_activity_csv_response()]] - `contains` [EXTRACTED]
-- [[build_user_activity_csv_response()]] - `contains` [EXTRACTED]
-- [[create_invitations()]] - `contains` [EXTRACTED]
-- [[create_workspace()]] - `contains` [EXTRACTED]
-- [[create_workspace_theme()]] - `contains` [EXTRACTED]
-- [[delete_invitation()]] - `contains` [EXTRACTED]
-- [[delete_workspace()]] - `contains` [EXTRACTED]
-- [[delete_workspace_theme()]] - `contains` [EXTRACTED]
-- [[encode_user_activity_csv()]] - `contains` [EXTRACTED]
-- [[export_workspace_user_activity()]] - `contains` [EXTRACTED]
-- [[export_workspace_user_activity_get()]] - `contains` [EXTRACTED]
-- [[format_activity_datetime()]] - `contains` [EXTRACTED]
-- [[get_invitation()]] - `contains` [EXTRACTED]
-- [[get_invitation_join()]] - `contains` [EXTRACTED]
-- [[get_member()]] - `contains` [EXTRACTED]
-- [[get_project_members()]] - `contains` [EXTRACTED]
-- [[get_user_profile()]] - `contains` [EXTRACTED]
-- [[get_user_stats()]] - `contains` [EXTRACTED]
-- [[get_workspace()]] - `contains` [EXTRACTED]
-- [[get_workspace_member_me()]] - `contains` [EXTRACTED]
-- [[get_workspace_theme()]] - `contains` [EXTRACTED]
-- [[get_workspace_user_activity()]] - `contains` [EXTRACTED]
-- [[get_workspace_views()]] - `contains` [EXTRACTED]
-- [[join_workspace_invitation()]] - `contains` [EXTRACTED]
-- [[leave_workspace()]] - `contains` [EXTRACTED]
-- [[list_invitations()]] - `contains` [EXTRACTED]
-- [[list_members()]] - `contains` [EXTRACTED]
-- [[list_workspace_themes()]] - `contains` [EXTRACTED]
-- [[list_workspaces()]] - `contains` [EXTRACTED]
-- [[remove_member()]] - `contains` [EXTRACTED]
-- [[require_admin()_1]] - `contains` [EXTRACTED]
-- [[slug_check()]] - `contains` [EXTRACTED]
-- [[update_invitation()]] - `contains` [EXTRACTED]
-- [[update_member()]] - `contains` [EXTRACTED]
-- [[update_workspace()]] - `contains` [EXTRACTED]
-- [[update_workspace_theme()]] - `contains` [EXTRACTED]
-- [[update_workspace_views()]] - `contains` [EXTRACTED]
-- [[user_to_lite()]] - `contains` [EXTRACTED]
-- [[validate_slug()]] - `contains` [EXTRACTED]
+- [[create_workspace_duplicate_slug_returns_409()]] - `contains` [EXTRACTED]
+- [[create_workspace_empty_name_returns_400()]] - `contains` [EXTRACTED]
+- [[create_workspace_invalid_slugs_always_400()]] - `contains` [EXTRACTED]
+- [[create_workspace_name_with_url_returns_400()]] - `contains` [EXTRACTED]
+- [[create_workspace_restricted_slug_returns_400()]] - `contains` [EXTRACTED]
+- [[create_workspace_success()]] - `contains` [EXTRACTED]
+- [[get_workspace_member_returns_200()_1]] - `contains` [EXTRACTED]
+- [[get_workspace_non_member_returns_404()]] - `contains` [EXTRACTED]
+- [[list_workspace_members_returns_member_list()]] - `contains` [EXTRACTED]
+- [[list_workspaces_empty_for_new_user()]] - `contains` [EXTRACTED]
+- [[list_workspaces_returns_member_workspaces()]] - `contains` [EXTRACTED]
+- [[list_workspaces_unauthenticated_returns_401()]] - `contains` [EXTRACTED]
+- [[patch_workspace_admin_can_update_name()]] - `contains` [EXTRACTED]
+- [[slug_check_available_returns_true()]] - `contains` [EXTRACTED]
+- [[slug_check_restricted_returns_false()]] - `contains` [EXTRACTED]
+- [[slug_check_taken_returns_false()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Activity\_\_Analytics
+#graphify/code #graphify/EXTRACTED #community/Returns_Sign

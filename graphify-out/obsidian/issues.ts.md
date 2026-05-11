@@ -1,12 +1,12 @@
 ---
 source_file: "types/src/issues.ts"
 type: "code"
-community: "Issue Options"
+community: "Issue Entity"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Options
+  - community/Issue_Entity
 ---
 
 # issues.ts
@@ -52,4 +52,4 @@ tags:
 - [[view-props.ts]] - `imports_from` [EXTRACTED]
 - [[workspace.ts_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Options
+#graphify/code #graphify/EXTRACTED #community/Issue_Entity

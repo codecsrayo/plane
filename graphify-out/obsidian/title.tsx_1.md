@@ -1,5 +1,5 @@
 ---
-source_file: "components/issues/issue-detail-widgets/relations/title.tsx"
+source_file: "web/core/components/issues/issue-detail-widgets/relations/title.tsx"
 type: "code"
 community: "Issue Activity"
 location: "L1"
@@ -13,11 +13,11 @@ tags:
 
 ## Connections
 
-- [[Props_273]] - `contains` [EXTRACTED]
+- [[Props_348]] - `contains` [EXTRACTED]
 - [[RelationActionButton]] - `imports` [EXTRACTED]
 - [[RelationsCollapsibleTitle]] - `contains` [EXTRACTED]
 - [[quick-action-button.tsx_1]] - `imports_from` [EXTRACTED]
-- [[root.tsx_39]] - `imports_from` [EXTRACTED]
+- [[root.tsx_80]] - `imports_from` [EXTRACTED]
 - [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
 - [[useIssueDetail()]] - `imports` [EXTRACTED]
 

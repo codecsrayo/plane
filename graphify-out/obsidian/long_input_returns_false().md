@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/utils/url.rs"
 type: "code"
-community: "Community 180"
+community: "Detects Accepts"
 location: "L100"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_180
+  - community/Detects_Accepts
 ---
 
 # long_input_returns_false()
@@ -15,4 +15,4 @@ tags:
 
 - [[url.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_180
+#graphify/code #graphify/EXTRACTED #community/Detects_Accepts

@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/filters/header/filters/state-group.tsx"
+source_file: "web/core/components/issues/issue-layouts/filters/header/filters/state-group.tsx"
 type: "code"
-community: "Filter Selection UI"
+community: "Member Members"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filter_Selection_UI
+  - community/Member_Members
 ---
 
 # state-group.tsx
@@ -14,7 +14,7 @@ tags:
 ## Connections
 
 - [[FilterStateGroup]] - `contains` [EXTRACTED]
-- [[Props_234]] - `contains` [EXTRACTED]
-- [[index.ts_90]] - `imports_from` [EXTRACTED]
+- [[Props_309]] - `contains` [EXTRACTED]
+- [[index.ts_355]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filter_Selection_UI
+#graphify/code #graphify/EXTRACTED #community/Member_Members

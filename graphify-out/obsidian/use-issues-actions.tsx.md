@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/use-issues-actions.tsx"
+source_file: "web/core/hooks/use-issues-actions.tsx"
 type: "code"
-community: "Issue Layout HOC"
+community: "Issue Project"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Layout_HOC
+  - community/Issue_Project
 ---
 
 # use-issues-actions.tsx
@@ -19,7 +19,8 @@ tags:
 - [[base-kanban-root.tsx]] - `imports_from` [EXTRACTED]
 - [[base-list-root.tsx]] - `imports_from` [EXTRACTED]
 - [[base-spreadsheet-root.tsx]] - `imports_from` [EXTRACTED]
-- [[base.tsx_7]] - `imports_from` [EXTRACTED]
+- [[base.tsx_8]] - `imports_from` [EXTRACTED]
+- [[header.tsx_7]] - `imports_from` [EXTRACTED]
 - [[use-group-dragndrop.ts]] - `imports_from` [EXTRACTED]
 - [[use-issues.ts]] - `imports_from` [EXTRACTED]
 - [[useArchivedIssueActions()]] - `contains` [EXTRACTED]
@@ -33,6 +34,7 @@ tags:
 - [[useProjectIssueActions()]] - `contains` [EXTRACTED]
 - [[useProjectViewIssueActions()]] - `contains` [EXTRACTED]
 - [[useWorkspaceDraftIssueActions()]] - `contains` [EXTRACTED]
+- [[work-item-level.tsx]] - `imports_from` [EXTRACTED]
 - [[workspace-root.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Layout_HOC
+#graphify/code #graphify/EXTRACTED #community/Issue_Project

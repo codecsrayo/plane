@@ -1,33 +1,19 @@
 ---
-source_file: "components/issues/issue-detail/issue-activity/root.tsx"
+source_file: "web/ce/components/issues/issue-details/issue-properties-activity/root.tsx"
 type: "code"
-community: "Activity Issue"
+community: "Issue Additional"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Activity_Issue
+  - community/Issue_Additional
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[ActivitySortRoot]] - `imports` [EXTRACTED]
-- [[CommentCreate]] - `imports` [EXTRACTED]
-- [[IssueActivity]] - `contains` [EXTRACTED]
-- [[IssueActivityCommentRoot]] - `imports` [EXTRACTED]
-- [[TActivityOperations]] - `contains` [EXTRACTED]
-- [[TIssueActivity]] - `contains` [EXTRACTED]
-- [[activity-comment-root.tsx]] - `imports_from` [EXTRACTED]
-- [[comment-create.tsx]] - `imports_from` [EXTRACTED]
-- [[helper.tsx_4]] - `imports_from` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
-- [[sort-root.tsx]] - `imports_from` [EXTRACTED]
-- [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
-- [[use-project.ts]] - `imports_from` [EXTRACTED]
-- [[useIssueDetail()]] - `imports` [EXTRACTED]
-- [[useProject()]] - `imports` [EXTRACTED]
-- [[useWorkItemCommentOperations()]] - `imports` [EXTRACTED]
+- [[IssueAdditionalPropertiesActivity()]] - `contains` [EXTRACTED]
+- [[TIssueAdditionalPropertiesActivity]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Activity_Issue
+#graphify/code #graphify/EXTRACTED #community/Issue_Additional

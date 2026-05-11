@@ -1,18 +1,18 @@
 ---
-source_file: "components/home/widgets/recents/index.tsx"
+source_file: "web/app/(all)/invitations/page.tsx"
 type: "code"
-community: "Dashboard Widgets"
-location: "L27"
+community: "Project Settings"
+location: "L37"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Dashboard_Widgets
+  - community/Project_Settings
 ---
 
 # workspaceService
 
 ## Connections
 
-- [[index.tsx_2]] - `contains` [EXTRACTED]
+- [[page.tsx_58]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Dashboard_Widgets
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

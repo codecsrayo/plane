@@ -1,33 +1,31 @@
 ---
-source_file: "components/inbox/inbox-filter/applied-filters/root.tsx"
+source_file: "web/core/components/issues/issue-detail/label/root.tsx"
 type: "code"
-community: "Inbox Filters"
+community: "Label Dropdown"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Inbox_Filters
+  - community/Label_Dropdown
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[InboxIssueAppliedFilters]] - `contains` [EXTRACTED]
-- [[InboxIssueAppliedFiltersDate]] - `imports` [EXTRACTED]
-- [[InboxIssueAppliedFiltersLabel]] - `imports` [EXTRACTED]
-- [[InboxIssueAppliedFiltersMember]] - `imports` [EXTRACTED]
-- [[InboxIssueAppliedFiltersPriority]] - `imports` [EXTRACTED]
-- [[InboxIssueAppliedFiltersState]] - `imports` [EXTRACTED]
-- [[InboxIssueAppliedFiltersStatus]] - `imports` [EXTRACTED]
-- [[date.tsx_8]] - `imports_from` [EXTRACTED]
-- [[label.tsx_3]] - `imports_from` [EXTRACTED]
-- [[member.tsx]] - `imports_from` [EXTRACTED]
-- [[priority.tsx_5]] - `imports_from` [EXTRACTED]
-- [[root.tsx_71]] - `imports_from` [EXTRACTED]
-- [[state.tsx_4]] - `imports_from` [EXTRACTED]
-- [[status.tsx_6]] - `imports_from` [EXTRACTED]
+- [[IssueLabel]] - `contains` [EXTRACTED]
+- [[TIssueLabel]] - `contains` [EXTRACTED]
+- [[TLabelOperations]] - `contains` [EXTRACTED]
+- [[create-label.tsx]] - `imports_from` [EXTRACTED]
+- [[index.ts_371]] - `imports_from` [EXTRACTED]
+- [[label-list-item.tsx]] - `imports_from` [EXTRACTED]
+- [[label-list.tsx]] - `imports_from` [EXTRACTED]
+- [[root.tsx_74]] - `imports_from` [EXTRACTED]
+- [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
+- [[use-label.ts]] - `imports_from` [EXTRACTED]
 - [[use-project-inbox.ts]] - `imports_from` [EXTRACTED]
+- [[useIssueDetail()]] - `imports` [EXTRACTED]
+- [[useLabel()]] - `imports` [EXTRACTED]
 - [[useProjectInbox()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Inbox_Filters
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

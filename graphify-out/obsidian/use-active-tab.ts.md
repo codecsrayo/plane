@@ -1,12 +1,12 @@
 ---
-source_file: "components/navigation/use-active-tab.ts"
+source_file: "web/core/components/navigation/use-active-tab.ts"
 type: "code"
-community: "Project Tab Nav"
+community: "Project Navigation"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Tab_Nav
+  - community/Project_Navigation
 ---
 
 # use-active-tab.ts
@@ -18,4 +18,4 @@ tags:
 - [[tab-navigation-root.tsx]] - `imports_from` [EXTRACTED]
 - [[useActiveTab()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Tab_Nav
+#graphify/code #graphify/EXTRACTED #community/Project_Navigation

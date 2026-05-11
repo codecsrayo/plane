@@ -1,12 +1,12 @@
 ---
-source_file: "components/modules/module-list-item-action.tsx"
+source_file: "web/core/components/modules/module-list-item-action.tsx"
 type: "code"
-community: "Action Status"
+community: "Cycles Archived"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Action_Status
+  - community/Cycles_Archived
 ---
 
 # module-list-item-action.tsx
@@ -17,15 +17,15 @@ tags:
 - [[DateRangeDropdown]] - `imports` [EXTRACTED]
 - [[ModuleListItemAction]] - `contains` [EXTRACTED]
 - [[ModuleStatusDropdown]] - `imports` [EXTRACTED]
-- [[Props_68]] - `contains` [EXTRACTED]
-- [[avatar.tsx]] - `imports_from` [EXTRACTED]
+- [[Props_144]] - `contains` [EXTRACTED]
+- [[avatar.tsx_2]] - `imports_from` [EXTRACTED]
 - [[date-range.tsx]] - `imports_from` [EXTRACTED]
-- [[index.ts_58]] - `imports_from` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
+- [[index.ts_323]] - `imports_from` [EXTRACTED]
 - [[module-status-dropdown.tsx]] - `imports_from` [EXTRACTED]
 - [[use-member.ts]] - `imports_from` [EXTRACTED]
 - [[use-module.ts]] - `imports_from` [EXTRACTED]
 - [[useMember()]] - `imports` [EXTRACTED]
 - [[useModule()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Action_Status
+#graphify/code #graphify/EXTRACTED #community/Cycles_Archived

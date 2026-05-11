@@ -1,12 +1,12 @@
 ---
 source_file: "shared-state/src/utils/rich-filter.helper.ts"
 type: "code"
-community: "Operator Work"
+community: "Expression Work"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Operator_Work
+  - community/Expression_Work
 ---
 
 # rich-filter.helper.ts
@@ -18,4 +18,4 @@ tags:
 - [[filter.ts_3]] - `imports_from` [EXTRACTED]
 - [[work-item-filters.helper.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Operator_Work
+#graphify/code #graphify/EXTRACTED #community/Expression_Work

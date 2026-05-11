@@ -1,32 +1,37 @@
 ---
-source_file: "components/profile/sidebar.tsx"
+source_file: "web/core/components/gantt-chart/sidebar/issues/sidebar.tsx"
 type: "code"
-community: "Project Archives"
+community: "Gantt Chart"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Archives
+  - community/Gantt_Chart
 ---
 
 # sidebar.tsx
 
 ## Connections
 
-- [[CoverImage()]] - `imports` [EXTRACTED]
-- [[ProfileSidebar]] - `contains` [EXTRACTED]
-- [[ProfileSidebarTime()]] - `imports` [EXTRACTED]
-- [[TProfileSidebar]] - `contains` [EXTRACTED]
-- [[cover-image.tsx]] - `imports_from` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
-- [[time.tsx]] - `imports_from` [EXTRACTED]
-- [[use-app-theme.ts]] - `imports_from` [EXTRACTED]
-- [[use-command-palette.ts]] - `imports_from` [EXTRACTED]
-- [[use-platform-os.tsx]] - `imports_from` [EXTRACTED]
-- [[use-project.ts]] - `imports_from` [EXTRACTED]
-- [[useAppTheme()]] - `imports` [EXTRACTED]
-- [[useCommandPalette()]] - `imports` [EXTRACTED]
-- [[usePlatformOS()]] - `imports` [EXTRACTED]
-- [[useProject()]] - `imports` [EXTRACTED]
+- [[GanttDnDHOC]] - `imports` [EXTRACTED]
+- [[GanttLayoutListItemLoader()]] - `imports` [EXTRACTED]
+- [[IssueGanttSidebar]] - `contains` [EXTRACTED]
+- [[IssuesSidebarBlock]] - `imports` [EXTRACTED]
+- [[Props_122]] - `contains` [EXTRACTED]
+- [[TSelectionHelper]] - `imports` [EXTRACTED]
+- [[base-gantt-root.tsx]] - `imports_from` [EXTRACTED]
+- [[block.tsx_4]] - `imports_from` [EXTRACTED]
+- [[gantt-dnd-HOC.tsx]] - `imports_from` [EXTRACTED]
+- [[gantt-layout-loader.tsx]] - `imports_from` [EXTRACTED]
+- [[handleOrderChange()]] - `imports` [EXTRACTED]
+- [[render-if-visible-HOC.tsx]] - `imports_from` [EXTRACTED]
+- [[use-intersection-observer.ts]] - `imports_from` [EXTRACTED]
+- [[use-issue-layout-store.ts]] - `imports_from` [EXTRACTED]
+- [[use-multiple-select.ts]] - `imports_from` [EXTRACTED]
+- [[use-timeline-chart.ts_1]] - `imports_from` [EXTRACTED]
+- [[useIntersectionObserver()]] - `imports` [EXTRACTED]
+- [[useIssuesStore()]] - `imports` [EXTRACTED]
+- [[useTimeLineChart()]] - `imports` [EXTRACTED]
+- [[utils.ts_13]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Archives
+#graphify/code #graphify/EXTRACTED #community/Gantt_Chart

@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/auth/permissions.rs"
 type: "code"
-community: "Community 47"
+community: "Workspace Webhook"
 location: "L10"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_47
+  - community/Workspace_Webhook
 ---
 
 # require_workspace_admin()
@@ -16,7 +16,7 @@ tags:
 - [[create_analytic_view()]] - `calls` [INFERRED]
 - [[create_github_repo_sync()]] - `calls` [INFERRED]
 - [[create_pr_state_mapping()]] - `calls` [INFERRED]
-- [[create_webhook()]] - `calls` [INFERRED]
+- [[create_webhook()_1]] - `calls` [INFERRED]
 - [[create_workspace_integration()]] - `calls` [INFERRED]
 - [[delete_analytic_view()]] - `calls` [INFERRED]
 - [[delete_github_repo_sync()]] - `calls` [INFERRED]
@@ -34,11 +34,11 @@ tags:
 - [[list_webhooks()]] - `calls` [INFERRED]
 - [[list_workspace_integrations()]] - `calls` [INFERRED]
 - [[permissions.rs]] - `contains` [EXTRACTED]
-- [[provider_install()]] - `calls` [INFERRED]
+- [[provider_install()_1]] - `calls` [INFERRED]
 - [[regenerate_secret()]] - `calls` [INFERRED]
 - [[require_admin()_1]] - `calls` [INFERRED]
 - [[update_analytic_view()]] - `calls` [INFERRED]
 - [[update_webhook()]] - `calls` [INFERRED]
 - [[update_workspace_integration()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Community_47
+#graphify/code #graphify/INFERRED #community/Workspace_Webhook

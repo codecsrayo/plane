@@ -1,23 +1,22 @@
 ---
-source_file: "components/inbox/inbox-filter/filters/priority.tsx"
+source_file: "web/core/components/issues/issue-detail/issue-activity/activity/actions/priority.tsx"
 type: "code"
-community: "Filter Selection UI"
+community: "Issue Activity"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filter_Selection_UI
+  - community/Issue_Activity
 ---
 
 # priority.tsx
 
 ## Connections
 
-- [[FilterPriority]] - `contains` [EXTRACTED]
-- [[Props_236]] - `contains` [EXTRACTED]
-- [[filter-selection.tsx_1]] - `imports_from` [EXTRACTED]
-- [[index.ts_90]] - `imports_from` [EXTRACTED]
-- [[use-project-inbox.ts]] - `imports_from` [EXTRACTED]
-- [[useProjectInbox()]] - `imports` [EXTRACTED]
+- [[IssuePriorityActivity]] - `contains` [EXTRACTED]
+- [[TIssuePriorityActivity]] - `contains` [EXTRACTED]
+- [[index.ts_369]] - `imports_from` [EXTRACTED]
+- [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
+- [[useIssueDetail()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filter_Selection_UI
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

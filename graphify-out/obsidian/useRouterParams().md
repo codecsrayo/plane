@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/store/use-router-params.ts"
+source_file: "web/core/hooks/store/use-router-params.ts"
 type: "code"
-community: "Theme Wrapper"
+community: "Sidebar Navigation"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Theme_Wrapper
+  - community/Sidebar_Navigation
 ---
 
 # useRouterParams()
@@ -17,4 +17,4 @@ tags:
 - [[store-wrapper.tsx]] - `imports` [EXTRACTED]
 - [[use-router-params.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Theme_Wrapper
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Navigation

@@ -1,24 +1,35 @@
 ---
-source_file: "components/inbox/inbox-filter/root.tsx"
+source_file: "web/core/components/issues/issue-detail/issue-activity/root.tsx"
 type: "code"
-community: "Filter Selection UI"
+community: "Workspace Issue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Filter_Selection_UI
+  - community/Workspace_Issue
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[FiltersRoot()]] - `contains` [EXTRACTED]
-- [[InboxIssueFilterSelection]] - `imports` [EXTRACTED]
-- [[InboxIssueOrderByDropdown]] - `imports` [EXTRACTED]
-- [[filter-selection.tsx_1]] - `imports_from` [EXTRACTED]
-- [[index.ts_90]] - `imports_from` [EXTRACTED]
-- [[order-by.tsx_4]] - `imports_from` [EXTRACTED]
-- [[use-window-size.tsx]] - `imports_from` [EXTRACTED]
+- [[ActivityFilterRoot()]] - `imports` [EXTRACTED]
+- [[ActivitySortRoot]] - `imports` [EXTRACTED]
+- [[CommentCreate]] - `imports` [EXTRACTED]
+- [[IssueActivity]] - `contains` [EXTRACTED]
+- [[IssueActivityCommentRoot]] - `imports` [EXTRACTED]
+- [[IssueActivityWorklogCreateButton()]] - `imports` [EXTRACTED]
+- [[TActivityOperations]] - `contains` [EXTRACTED]
+- [[TIssueActivity_1]] - `contains` [EXTRACTED]
+- [[activity-comment-root.tsx]] - `imports_from` [EXTRACTED]
+- [[comment-create.tsx]] - `imports_from` [EXTRACTED]
+- [[helper.tsx_26]] - `imports_from` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
+- [[sort-root.tsx]] - `imports_from` [EXTRACTED]
+- [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
+- [[use-project.ts]] - `imports_from` [EXTRACTED]
+- [[useIssueDetail()]] - `imports` [EXTRACTED]
+- [[useProject()]] - `imports` [EXTRACTED]
+- [[useWorkItemCommentOperations()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Filter_Selection_UI
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

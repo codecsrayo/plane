@@ -1,5 +1,5 @@
 ---
-source_file: "components/issues/relations/properties.tsx"
+source_file: "web/core/components/issues/relations/properties.tsx"
 type: "code"
 community: "Issue Activity"
 location: "L1"
@@ -15,15 +15,15 @@ tags:
 
 - [[MemberDropdown]] - `imports` [EXTRACTED]
 - [[PriorityDropdown()]] - `imports` [EXTRACTED]
-- [[Props_286]] - `contains` [EXTRACTED]
+- [[Props_361]] - `contains` [EXTRACTED]
 - [[RelationIssueProperty]] - `contains` [EXTRACTED]
 - [[StateDropdown]] - `imports` [EXTRACTED]
 - [[TRelationIssueOperations]] - `imports` [EXTRACTED]
-- [[dropdown.tsx_4]] - `imports_from` [EXTRACTED]
-- [[dropdown.tsx_3]] - `imports_from` [EXTRACTED]
-- [[helper.tsx_6]] - `imports_from` [EXTRACTED]
+- [[dropdown.tsx_5]] - `imports_from` [EXTRACTED]
+- [[dropdown.tsx_6]] - `imports_from` [EXTRACTED]
+- [[helper.tsx_28]] - `imports_from` [EXTRACTED]
 - [[issue-list-item.tsx]] - `imports_from` [EXTRACTED]
-- [[priority.tsx]] - `imports_from` [EXTRACTED]
+- [[priority.tsx_1]] - `imports_from` [EXTRACTED]
 - [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
 - [[useIssueDetail()]] - `imports` [EXTRACTED]
 

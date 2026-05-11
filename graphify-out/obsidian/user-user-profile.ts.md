@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/store/user/user-user-profile.ts"
+source_file: "web/core/hooks/store/user/user-user-profile.ts"
 type: "code"
-community: "Activity List"
+community: "User Profile"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Activity_List
+  - community/User_Profile
 ---
 
 # user-user-profile.ts
@@ -20,4 +20,4 @@ tags:
 - [[store-context.tsx]] - `imports_from` [EXTRACTED]
 - [[useUserProfile()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Activity_List
+#graphify/code #graphify/EXTRACTED #community/User_Profile

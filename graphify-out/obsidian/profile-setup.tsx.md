@@ -1,30 +1,30 @@
 ---
-source_file: "components/onboarding/profile-setup.tsx"
+source_file: "web/core/components/onboarding/profile-setup.tsx"
 type: "code"
-community: "Image Upload"
+community: "Setup Values"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Image_Upload
+  - community/Setup_Values
 ---
 
 # profile-setup.tsx
 
 ## Connections
 
-- [[AuthService]] - `imports` [EXTRACTED]
+- [[AuthService_1]] - `imports` [EXTRACTED]
 - [[EProfileSetupSteps]] - `contains` [EXTRACTED]
 - [[ProfileSetup]] - `contains` [EXTRACTED]
-- [[Props_361]] - `contains` [EXTRACTED]
+- [[Props_436]] - `contains` [EXTRACTED]
 - [[TProfileSetupFormValues]] - `contains` [EXTRACTED]
 - [[USER_DOMAIN]] - `contains` [EXTRACTED]
 - [[USER_ROLE]] - `contains` [EXTRACTED]
 - [[UserImageUploadModal]] - `imports` [EXTRACTED]
-- [[auth.service.ts]] - `imports_from` [EXTRACTED]
+- [[auth.service.ts_1]] - `imports_from` [EXTRACTED]
 - [[authService_1]] - `contains` [EXTRACTED]
 - [[defaultValues_21]] - `contains` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
 - [[user-image-upload-modal.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Image_Upload
+#graphify/code #graphify/EXTRACTED #community/Setup_Values

@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/auth/csrf.rs"
 type: "code"
-community: "Community 73"
+community: "Password Email"
 location: "L57"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_73
+  - community/Password_Email
 ---
 
 # is_valid_csrf()
@@ -19,4 +19,4 @@ tags:
 - [[is_valid_csrf_header()]] - `calls` [EXTRACTED]
 - [[perform_logout()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Community_73
+#graphify/code #graphify/INFERRED #community/Password_Email

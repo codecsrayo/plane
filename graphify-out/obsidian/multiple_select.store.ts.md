@@ -1,12 +1,12 @@
 ---
-source_file: "store/multiple_select.store.ts"
+source_file: "web/core/store/multiple_select.store.ts"
 type: "code"
-community: "Multi Select Actions"
+community: "Project Issue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Multi_Select_Actions
+  - community/Project_Issue
 ---
 
 # multiple_select.store.ts
@@ -17,9 +17,9 @@ tags:
 - [[MultipleSelectStore]] - `contains` [EXTRACTED]
 - [[TEntityDetails]] - `imports` [EXTRACTED]
 - [[currentSelection]] - `contains` [EXTRACTED]
-- [[index.ts_19]] - `imports_from` [EXTRACTED]
+- [[index.ts_284]] - `imports_from` [EXTRACTED]
 - [[newEntities]] - `contains` [EXTRACTED]
-- [[root.store.ts]] - `imports_from` [EXTRACTED]
+- [[root.store.ts_2]] - `imports_from` [EXTRACTED]
 - [[use-multiple-select.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Multi_Select_Actions
+#graphify/code #graphify/EXTRACTED #community/Project_Issue

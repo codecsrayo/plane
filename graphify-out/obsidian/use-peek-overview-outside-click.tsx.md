@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/use-peek-overview-outside-click.tsx"
+source_file: "web/core/hooks/use-peek-overview-outside-click.tsx"
 type: "code"
-community: "Peek Overview"
+community: "Issue Inbox"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Peek_Overview
+  - community/Issue_Inbox
 ---
 
 # use-peek-overview-outside-click.tsx
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[usePeekOverviewOutsideClickDetector()]] - `contains` [EXTRACTED]
-- [[view.tsx_1]] - `imports_from` [EXTRACTED]
+- [[view.tsx_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Peek_Overview
+#graphify/code #graphify/EXTRACTED #community/Issue_Inbox

@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-detail-widgets/sub-issues/title-actions.tsx"
+source_file: "web/core/components/issues/issue-detail-widgets/sub-issues/title-actions.tsx"
 type: "code"
-community: "Title Issues"
+community: "Issue Activity"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Title_Issues
+  - community/Issue_Activity
 ---
 
 # title-actions.tsx
@@ -29,4 +29,4 @@ tags:
 - [[useMember()]] - `imports` [EXTRACTED]
 - [[useProjectState()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Title_Issues
+#graphify/code #graphify/EXTRACTED #community/Issue_Activity

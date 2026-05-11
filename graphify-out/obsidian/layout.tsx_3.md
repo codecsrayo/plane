@@ -1,22 +1,24 @@
 ---
-source_file: "components/base-layouts/list/layout.tsx"
+source_file: "web/app/(all)/[workspaceSlug]/layout.tsx"
 type: "code"
-community: "Group Drop"
+community: "Workspace Issue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Group_Drop
+  - community/Workspace_Issue
 ---
 
 # layout.tsx
 
 ## Connections
 
-- [[BaseListGroup]] - `imports` [EXTRACTED]
-- [[BaseListLayout]] - `contains` [EXTRACTED]
-- [[group.tsx_1]] - `imports_from` [EXTRACTED]
-- [[use-layout-state.ts]] - `imports_from` [EXTRACTED]
-- [[useLayoutState()]] - `imports` [EXTRACTED]
+- [[AuthenticationWrapper]] - `imports` [EXTRACTED]
+- [[GlobalModals]] - `imports` [EXTRACTED]
+- [[WorkspaceAuthWrapper]] - `imports` [EXTRACTED]
+- [[WorkspaceContentWrapper]] - `imports` [EXTRACTED]
+- [[WorkspaceLayout()]] - `contains` [EXTRACTED]
+- [[authentication-wrapper.tsx]] - `imports_from` [EXTRACTED]
+- [[workspace-wrapper.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Group_Drop
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

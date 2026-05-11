@@ -1,5 +1,5 @@
 ---
-source_file: "components/pages/pages-list-main-content.tsx"
+source_file: "web/core/components/pages/pages-list-main-content.tsx"
 type: "code"
 community: "Pages Main"
 location: "L1"
@@ -15,8 +15,8 @@ tags:
 
 - [[PageLoader()]] - `imports` [EXTRACTED]
 - [[PagesListMainContent]] - `contains` [EXTRACTED]
-- [[Props_384]] - `contains` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
+- [[Props_459]] - `contains` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
 - [[page-loader.tsx]] - `imports_from` [EXTRACTED]
 - [[pages-list-view.tsx]] - `imports_from` [EXTRACTED]
 

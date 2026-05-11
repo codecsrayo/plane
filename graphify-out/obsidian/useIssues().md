@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/store/use-issues.ts"
+source_file: "web/core/hooks/store/use-issues.ts"
 type: "code"
-community: "Issue Layout HOC"
+community: "Issue Project"
 location: "L88"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Layout_HOC
+  - community/Issue_Project
 ---
 
 # useIssues()
@@ -26,7 +26,7 @@ tags:
 - [[base-kanban-root.tsx]] - `imports` [EXTRACTED]
 - [[base-list-root.tsx]] - `imports` [EXTRACTED]
 - [[base-spreadsheet-root.tsx]] - `imports` [EXTRACTED]
-- [[base.tsx_7]] - `imports` [EXTRACTED]
+- [[base.tsx_8]] - `imports` [EXTRACTED]
 - [[blocks.tsx_1]] - `imports` [EXTRACTED]
 - [[bulk-delete-issues-modal.tsx]] - `imports` [EXTRACTED]
 - [[calendar.tsx]] - `imports` [EXTRACTED]
@@ -36,32 +36,42 @@ tags:
 - [[cycle-root.tsx_1]] - `imports` [EXTRACTED]
 - [[cycle-root.tsx_3]] - `imports` [EXTRACTED]
 - [[cycle-stats.tsx]] - `imports` [EXTRACTED]
-- [[cycle.tsx]] - `imports` [EXTRACTED]
+- [[cycle.tsx_1]] - `imports` [EXTRACTED]
 - [[delete-issue-modal.tsx]] - `imports` [EXTRACTED]
 - [[delete-modal.tsx_1]] - `imports` [EXTRACTED]
 - [[filters.tsx_2]] - `imports` [EXTRACTED]
+- [[header.tsx_5]] - `imports` [EXTRACTED]
+- [[header.tsx_7]] - `imports` [EXTRACTED]
 - [[header.tsx_9]] - `imports` [EXTRACTED]
+- [[header.tsx_12]] - `imports` [EXTRACTED]
+- [[header.tsx_17]] - `imports` [EXTRACTED]
+- [[header.tsx_41]] - `imports` [EXTRACTED]
+- [[header.tsx_51]] - `imports` [EXTRACTED]
 - [[issue-block.tsx]] - `imports` [EXTRACTED]
 - [[issue-detail-quick-actions.tsx]] - `imports` [EXTRACTED]
 - [[issue-detail.tsx]] - `imports` [EXTRACTED]
 - [[issue-layout-HOC.tsx]] - `imports` [EXTRACTED]
 - [[issue-row.tsx]] - `imports` [EXTRACTED]
-- [[modal.tsx]] - `imports` [EXTRACTED]
+- [[mobile-header.tsx]] - `imports` [EXTRACTED]
+- [[mobile-header.tsx_2]] - `imports` [EXTRACTED]
+- [[mobile-header.tsx_4]] - `imports` [EXTRACTED]
+- [[mobile-header.tsx_5]] - `imports` [EXTRACTED]
+- [[modal.tsx_5]] - `imports` [EXTRACTED]
 - [[module-issue.tsx]] - `imports` [EXTRACTED]
 - [[module-layout-root.tsx]] - `imports` [EXTRACTED]
 - [[module-root.tsx]] - `imports` [EXTRACTED]
 - [[module-root.tsx_1]] - `imports` [EXTRACTED]
 - [[module-root.tsx_3]] - `imports` [EXTRACTED]
-- [[module.tsx]] - `imports` [EXTRACTED]
+- [[module.tsx_1]] - `imports` [EXTRACTED]
 - [[profile-issues-filter.tsx]] - `imports` [EXTRACTED]
 - [[profile-issues.tsx]] - `imports` [EXTRACTED]
 - [[project-issue.tsx]] - `imports` [EXTRACTED]
 - [[project-layout-root.tsx]] - `imports` [EXTRACTED]
 - [[project-view-layout-root.tsx]] - `imports` [EXTRACTED]
 - [[relation-select.tsx]] - `imports` [EXTRACTED]
-- [[root.tsx_30]] - `imports` [EXTRACTED]
-- [[root.tsx_35]] - `imports` [EXTRACTED]
-- [[root.tsx_43]] - `imports` [EXTRACTED]
+- [[root.tsx_71]] - `imports` [EXTRACTED]
+- [[root.tsx_76]] - `imports` [EXTRACTED]
+- [[root.tsx_84]] - `imports` [EXTRACTED]
 - [[transfer-issues-modal.tsx]] - `imports` [EXTRACTED]
 - [[use-cycles-details.ts]] - `imports` [EXTRACTED]
 - [[use-group-dragndrop.ts]] - `imports` [EXTRACTED]
@@ -82,4 +92,4 @@ tags:
 - [[useWorkspaceDraftIssueActions()]] - `calls` [EXTRACTED]
 - [[workspace-root.tsx]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Layout_HOC
+#graphify/code #graphify/EXTRACTED #community/Issue_Project

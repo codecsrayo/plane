@@ -1,5 +1,5 @@
 ---
-source_file: "hooks/store/notifications/use-notification.ts"
+source_file: "web/core/hooks/store/notifications/use-notification.ts"
 type: "code"
 community: "Notification Option"
 location: "L1"
@@ -15,9 +15,9 @@ tags:
 
 - [[INotification]] - `imports` [EXTRACTED]
 - [[StoreContext]] - `imports` [EXTRACTED]
-- [[item.tsx_1]] - `imports_from` [EXTRACTED]
-- [[notification.ts]] - `imports_from` [EXTRACTED]
-- [[root.tsx_46]] - `imports_from` [EXTRACTED]
+- [[item.tsx_2]] - `imports_from` [EXTRACTED]
+- [[notification.ts_2]] - `imports_from` [EXTRACTED]
+- [[root.tsx_87]] - `imports_from` [EXTRACTED]
 - [[store-context.tsx]] - `imports_from` [EXTRACTED]
 - [[useNotification()]] - `contains` [EXTRACTED]
 

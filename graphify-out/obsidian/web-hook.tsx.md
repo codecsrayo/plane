@@ -1,12 +1,12 @@
 ---
-source_file: "components/ui/loader/settings/web-hook.tsx"
+source_file: "web/core/components/ui/loader/settings/web-hook.tsx"
 type: "code"
-community: "Webhook Settings"
+community: "Project Settings"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Webhook_Settings
+  - community/Project_Settings
 ---
 
 # web-hook.tsx
@@ -14,5 +14,6 @@ tags:
 ## Connections
 
 - [[WebhookSettingsLoader()]] - `contains` [EXTRACTED]
+- [[page.tsx_54]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Webhook_Settings
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/entities/issue_subscribers.rs"
 type: "code"
-community: "Community 411"
+community: "Model Relation"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_411
+  - community/Model_Relation
 ---
 
 # issue_subscribers.rs
@@ -16,4 +16,4 @@ tags:
 - [[Model_92]] - `contains` [EXTRACTED]
 - [[Relation_92]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_411
+#graphify/code #graphify/EXTRACTED #community/Model_Relation

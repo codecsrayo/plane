@@ -1,12 +1,12 @@
 ---
-source_file: "components/profile/profile-setting-content-wrapper.tsx"
+source_file: "web/core/components/profile/profile-setting-content-wrapper.tsx"
 type: "code"
-community: "Theme Wrapper"
+community: "Sidebar Navigation"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Theme_Wrapper
+  - community/Sidebar_Navigation
 ---
 
 # profile-setting-content-wrapper.tsx
@@ -14,8 +14,8 @@ tags:
 ## Connections
 
 - [[ProfileSettingContentWrapper()]] - `contains` [EXTRACTED]
-- [[Props_93]] - `contains` [EXTRACTED]
+- [[Props_168]] - `contains` [EXTRACTED]
 - [[SidebarHamburgerToggle]] - `imports` [EXTRACTED]
 - [[sidebar-menu-hamburger-toggle.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Theme_Wrapper
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Navigation

@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/store/use-inbox-issues.ts"
+source_file: "web/core/hooks/store/use-inbox-issues.ts"
 type: "code"
-community: "Inbox Issue"
+community: "Webhook Workspace"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Inbox_Issue
+  - community/Webhook_Workspace
 ---
 
 # use-inbox-issues.ts
@@ -19,4 +19,4 @@ tags:
 - [[store-context.tsx]] - `imports_from` [EXTRACTED]
 - [[useInboxIssues()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Inbox_Issue
+#graphify/code #graphify/EXTRACTED #community/Webhook_Workspace

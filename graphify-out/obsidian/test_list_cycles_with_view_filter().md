@@ -1,0 +1,19 @@
+---
+source_file: "api/plane/tests/contract/api/test_cycles.py"
+type: "code"
+community: "Cycle Test"
+location: "L194"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Cycle_Test
+---
+
+# test_list_cycles_with_view_filter()
+
+## Connections
+
+- [[.get_cycle_url()]] - `calls` [EXTRACTED]
+- [[test_cycles.py]] - `contains` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Cycle_Test

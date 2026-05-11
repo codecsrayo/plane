@@ -1,25 +1,26 @@
 ---
-source_file: "components/issues/issue-detail-widgets/attachments/root.tsx"
+source_file: "web/ce/components/command-palette/power-k/pages/context-based/root.tsx"
 type: "code"
-community: "Issue Attachments"
+community: "Context Power"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Attachments
+  - community/Context_Power
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[AttachmentsCollapsible]] - `contains` [EXTRACTED]
-- [[IssueAttachmentsCollapsibleContent]] - `imports` [EXTRACTED]
-- [[IssueAttachmentsCollapsibleTitle]] - `imports` [EXTRACTED]
-- [[Props_270]] - `contains` [EXTRACTED]
-- [[content.tsx]] - `imports_from` [EXTRACTED]
-- [[title.tsx]] - `imports_from` [EXTRACTED]
-- [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
-- [[useIssueDetail()]] - `imports` [EXTRACTED]
+- [[CONTEXT_ENTITY_MAP_EXTENDED]] - `contains` [EXTRACTED]
+- [[PowerKContextBasedActionsExtended()]] - `contains` [EXTRACTED]
+- [[TContextEntityMap]] - `imports` [EXTRACTED]
+- [[TPowerKCommandConfig]] - `imports` [EXTRACTED]
+- [[TPowerKContextTypeExtended]] - `imports` [EXTRACTED]
+- [[index.ts_399]] - `imports_from` [EXTRACTED]
+- [[types.ts_13]] - `imports_from` [EXTRACTED]
+- [[types.ts_16]] - `imports_from` [EXTRACTED]
+- [[usePowerKContextBasedExtendedActions()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Attachments
+#graphify/code #graphify/EXTRACTED #community/Context_Power

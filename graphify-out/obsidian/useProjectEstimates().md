@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/store/estimates/use-project-estimate.ts"
+source_file: "web/core/hooks/store/estimates/use-project-estimate.ts"
 type: "code"
-community: "Calendar Blocks"
+community: "Project Workspace"
 location: "L13"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Calendar_Blocks
+  - community/Project_Workspace
 ---
 
 # useProjectEstimates()
@@ -18,4 +18,4 @@ tags:
 - [[useProjectIssueProperties()]] - `calls` [INFERRED]
 - [[useWorkspaceIssueProperties()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Calendar_Blocks
+#graphify/code #graphify/INFERRED #community/Project_Workspace

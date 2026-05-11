@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/use-page-filters.ts"
+source_file: "web/core/hooks/use-page-filters.ts"
 type: "code"
-community: "Page Editor"
+community: "Formats Values"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Page_Editor
+  - community/Formats_Values
 ---
 
 # usePageFilters()
@@ -14,11 +14,11 @@ tags:
 ## Connections
 
 - [[editor-body.tsx]] - `imports` [EXTRACTED]
-- [[editor.tsx_4]] - `imports` [EXTRACTED]
+- [[editor.tsx_7]] - `imports` [EXTRACTED]
 - [[options-dropdown.tsx_1]] - `imports` [EXTRACTED]
-- [[root.tsx_75]] - `imports` [EXTRACTED]
+- [[root.tsx_116]] - `imports` [EXTRACTED]
 - [[title.tsx_4]] - `imports` [EXTRACTED]
 - [[use-page-filters.ts]] - `contains` [EXTRACTED]
-- [[useLocalStorage()]] - `calls` [EXTRACTED]
+- [[useLocalStorage()_1]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Page_Editor
+#graphify/code #graphify/EXTRACTED #community/Formats_Values

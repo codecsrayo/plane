@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/routes/v1_router.rs"
 type: "code"
-community: "Community 144"
+community: "Password Email"
 location: "L329"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_144
+  - community/Password_Email
 ---
 
 # v1_router()
@@ -15,10 +15,6 @@ tags:
 
 - [[.new()]] - `calls` [INFERRED]
 - [[build_router()]] - `calls` [INFERRED]
-- [[delete()]] - `calls` [INFERRED]
-- [[get()]] - `calls` [INFERRED]
-- [[patch()]] - `calls` [INFERRED]
-- [[post()]] - `calls` [INFERRED]
 - [[v1_router.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_144
+#graphify/code #graphify/INFERRED #community/Password_Email

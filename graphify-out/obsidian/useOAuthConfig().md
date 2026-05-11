@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/oauth/index.ts"
+source_file: "space/hooks/oauth/index.ts"
 type: "code"
-community: "Chat Support"
+community: "Extended Auth"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Chat_Support
+  - community/Extended_Auth
 ---
 
 # useOAuthConfig()
@@ -14,8 +14,8 @@ tags:
 ## Connections
 
 - [[auth-root.tsx]] - `imports` [EXTRACTED]
-- [[index.ts_5]] - `contains` [EXTRACTED]
-- [[useCoreOAuthConfig()]] - `calls` [EXTRACTED]
-- [[useExtendedOAuthConfig()]] - `calls` [EXTRACTED]
+- [[auth-root.tsx_1]] - `imports` [EXTRACTED]
+- [[index.ts_270]] - `contains` [EXTRACTED]
+- [[index.ts_453]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Chat_Support
+#graphify/code #graphify/EXTRACTED #community/Extended_Auth

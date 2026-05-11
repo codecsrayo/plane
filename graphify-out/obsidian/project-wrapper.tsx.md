@@ -1,12 +1,12 @@
 ---
-source_file: "layouts/auth-layout/project-wrapper.tsx"
+source_file: "web/core/layouts/auth-layout/project-wrapper.tsx"
 type: "code"
-community: "Auth Wrappers"
+community: "Project Workspace"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_Wrappers
+  - community/Project_Workspace
 ---
 
 # project-wrapper.tsx
@@ -28,8 +28,11 @@ tags:
 - [[ProjectAccessRestriction]] - `imports` [EXTRACTED]
 - [[ProjectAuthWrapper]] - `contains` [EXTRACTED]
 - [[fetch-keys.ts]] - `imports_from` [EXTRACTED]
-- [[index.ts_3]] - `imports_from` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
+- [[index.ts_268]] - `imports_from` [EXTRACTED]
+- [[layout.tsx_10]] - `imports_from` [EXTRACTED]
+- [[layout.tsx_32]] - `imports_from` [EXTRACTED]
+- [[page.tsx_9]] - `imports_from` [EXTRACTED]
 - [[project-access-restriction.tsx]] - `imports_from` [EXTRACTED]
 - [[use-cycle.ts]] - `imports_from` [EXTRACTED]
 - [[use-label.ts]] - `imports_from` [EXTRACTED]
@@ -38,7 +41,7 @@ tags:
 - [[use-project-state.ts]] - `imports_from` [EXTRACTED]
 - [[use-project-view.ts]] - `imports_from` [EXTRACTED]
 - [[use-project.ts]] - `imports_from` [EXTRACTED]
-- [[use-timeline-chart.ts]] - `imports_from` [EXTRACTED]
+- [[use-timeline-chart.ts_1]] - `imports_from` [EXTRACTED]
 - [[useCycle()]] - `imports` [EXTRACTED]
 - [[useLabel()]] - `imports` [EXTRACTED]
 - [[useMember()]] - `imports` [EXTRACTED]
@@ -48,4 +51,4 @@ tags:
 - [[useProjectView()]] - `imports` [EXTRACTED]
 - [[useTimeLineChart()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Wrappers
+#graphify/code #graphify/EXTRACTED #community/Project_Workspace

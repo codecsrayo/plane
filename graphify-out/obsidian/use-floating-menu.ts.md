@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/components/menus/floating-menu/use-floating-menu.ts"
 type: "code"
-community: "Menu Color"
+community: "Toggle Menu"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Menu_Color
+  - community/Toggle_Menu
 ---
 
 # use-floating-menu.ts
@@ -20,4 +20,4 @@ tags:
 - [[node-selector.tsx]] - `imports_from` [EXTRACTED]
 - [[useFloatingMenu()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Menu_Color
+#graphify/code #graphify/EXTRACTED #community/Toggle_Menu

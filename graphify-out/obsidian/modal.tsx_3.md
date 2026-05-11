@@ -1,23 +1,19 @@
 ---
-source_file: "components/modules/archived-modules/modal.tsx"
+source_file: "web/ce/components/epics/epic-modal/modal.tsx"
 type: "code"
-community: "Module Analytics"
+community: "Epic Epicmodalprops"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Module_Analytics
+  - community/Epic_Epicmodalprops
 ---
 
 # modal.tsx
 
 ## Connections
 
-- [[ArchiveModuleModal()]] - `contains` [EXTRACTED]
-- [[Props_79]] - `contains` [EXTRACTED]
-- [[use-app-router.tsx]] - `imports_from` [EXTRACTED]
-- [[use-module.ts]] - `imports_from` [EXTRACTED]
-- [[useAppRouter()]] - `imports` [EXTRACTED]
-- [[useModule()]] - `imports` [EXTRACTED]
+- [[CreateUpdateEpicModal()]] - `contains` [EXTRACTED]
+- [[EpicModalProps]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Module_Analytics
+#graphify/code #graphify/EXTRACTED #community/Epic_Epicmodalprops

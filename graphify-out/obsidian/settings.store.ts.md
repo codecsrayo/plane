@@ -1,5 +1,5 @@
 ---
-source_file: "store/user/settings.store.ts"
+source_file: "web/core/store/user/settings.store.ts"
 type: "code"
 community: "User Profile"
 location: "L1"
@@ -15,12 +15,12 @@ tags:
 
 - [[IUserSettingsStore]] - `contains` [EXTRACTED]
 - [[TError_1]] - `contains` [EXTRACTED]
-- [[UserService]] - `imports` [EXTRACTED]
+- [[UserService_1]] - `imports` [EXTRACTED]
 - [[UserSettingsStore]] - `contains` [EXTRACTED]
-- [[api.service.ts]] - `imports_from` [EXTRACTED]
-- [[index.ts_7]] - `imports_from` [EXTRACTED]
+- [[api.service.ts_1]] - `imports_from` [EXTRACTED]
+- [[index.ts_272]] - `imports_from` [EXTRACTED]
 - [[toApiError()]] - `imports` [EXTRACTED]
 - [[user-user-settings.ts]] - `imports_from` [EXTRACTED]
-- [[user.service.ts]] - `imports_from` [EXTRACTED]
+- [[user.service.ts_1]] - `imports_from` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/User_Profile

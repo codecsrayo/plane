@@ -1,24 +1,29 @@
 ---
-source_file: "components/settings/profile/content/pages/activity/root.tsx"
+source_file: "web/app/root.tsx"
 type: "code"
-community: "Empty State"
+community: "Error Provider"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Empty_State
+  - community/Error_Provider
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[ActivityProfileSettings]] - `contains` [EXTRACTED]
-- [[ActivityProfileSettingsList]] - `imports` [EXTRACTED]
-- [[DetailedEmptyState]] - `imports` [EXTRACTED]
-- [[ProfileSettingsHeading()]] - `imports` [EXTRACTED]
-- [[activity-list.tsx_1]] - `imports_from` [EXTRACTED]
-- [[detailed-empty-state-root.tsx]] - `imports_from` [EXTRACTED]
-- [[heading.tsx_1]] - `imports_from` [EXTRACTED]
+- [[AppProvider()]] - `imports` [EXTRACTED]
+- [[CustomErrorComponent()]] - `imports` [EXTRACTED]
+- [[ErrorBoundary()]] - `contains` [EXTRACTED]
+- [[HydrateFallback()]] - `contains` [EXTRACTED]
+- [[Layout()]] - `contains` [EXTRACTED]
+- [[LogoSpinner()]] - `imports` [EXTRACTED]
+- [[Root()_1]] - `contains` [EXTRACTED]
+- [[index.tsx_4]] - `imports_from` [EXTRACTED]
+- [[links()]] - `contains` [EXTRACTED]
+- [[logo-spinner.tsx]] - `imports_from` [EXTRACTED]
+- [[meta()_1]] - `contains` [EXTRACTED]
+- [[provider.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Empty_State
+#graphify/code #graphify/EXTRACTED #community/Error_Provider

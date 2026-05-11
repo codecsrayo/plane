@@ -1,12 +1,12 @@
 ---
-source_file: "components/project/member-list-item.tsx"
+source_file: "web/core/components/project/member-list-item.tsx"
 type: "code"
-community: "Member Project"
+community: "Member Members"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Project
+  - community/Member_Members
 ---
 
 # member-list-item.tsx
@@ -16,16 +16,17 @@ tags:
 - [[ConfirmProjectMemberRemove]] - `imports` [EXTRACTED]
 - [[IProjectMemberDetails]] - `imports` [EXTRACTED]
 - [[ProjectMemberListItem]] - `contains` [EXTRACTED]
-- [[Props_136]] - `contains` [EXTRACTED]
-- [[api.service.ts]] - `imports_from` [EXTRACTED]
+- [[Props_211]] - `contains` [EXTRACTED]
+- [[api.service.ts_1]] - `imports_from` [EXTRACTED]
 - [[base-project-member.store.ts]] - `imports_from` [EXTRACTED]
 - [[confirm-project-member-remove.tsx]] - `imports_from` [EXTRACTED]
 - [[extractApiErrorMessage()]] - `imports` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
 - [[member-list.tsx]] - `imports_from` [EXTRACTED]
 - [[use-app-router.tsx]] - `imports_from` [EXTRACTED]
 - [[use-member.ts]] - `imports_from` [EXTRACTED]
 - [[useAppRouter()]] - `imports` [EXTRACTED]
 - [[useMember()]] - `imports` [EXTRACTED]
+- [[useProjectColumns()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Project
+#graphify/code #graphify/EXTRACTED #community/Member_Members

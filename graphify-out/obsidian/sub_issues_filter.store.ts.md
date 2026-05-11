@@ -1,12 +1,12 @@
 ---
-source_file: "store/issue/issue-details/sub_issues_filter.store.ts"
+source_file: "web/core/store/issue/issue-details/sub_issues_filter.store.ts"
 type: "code"
-community: "Issue Work"
+community: "Issue Group"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Work
+  - community/Issue_Group
 ---
 
 # sub_issues_filter.store.ts
@@ -26,7 +26,7 @@ tags:
 - [[subIssueIds]] - `contains` [EXTRACTED]
 - [[sub_issues.store.ts]] - `imports_from` [EXTRACTED]
 - [[updateSubWorkItemFilters()]] - `imports` [EXTRACTED]
-- [[utils.tsx_1]] - `imports_from` [EXTRACTED]
+- [[utils.tsx_2]] - `imports_from` [EXTRACTED]
 - [[workItems]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Work
+#graphify/code #graphify/EXTRACTED #community/Issue_Group

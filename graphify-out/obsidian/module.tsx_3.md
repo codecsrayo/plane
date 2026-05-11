@@ -1,22 +1,21 @@
 ---
-source_file: "components/issues/issue-detail/issue-activity/activity/actions/module.tsx"
+source_file: "web/core/components/issues/issue-layouts/filters/applied-filters/module.tsx"
 type: "code"
-community: "Issue Activity"
+community: "Cycles Archived"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Cycles_Archived
 ---
 
 # module.tsx
 
 ## Connections
 
-- [[IssueModuleActivity]] - `contains` [EXTRACTED]
-- [[TIssueModuleActivity]] - `contains` [EXTRACTED]
-- [[index.ts_104]] - `imports_from` [EXTRACTED]
-- [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
-- [[useIssueDetail()]] - `imports` [EXTRACTED]
+- [[AppliedModuleFilters]] - `contains` [EXTRACTED]
+- [[Props_323]] - `contains` [EXTRACTED]
+- [[use-module.ts]] - `imports_from` [EXTRACTED]
+- [[useModule()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Cycles_Archived

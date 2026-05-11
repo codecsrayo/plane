@@ -1,0 +1,30 @@
+---
+source_file: "api/plane/authentication/rate_limit.py"
+type: "code"
+community: "Endpoint User"
+location: "L31"
+tags:
+  - graphify/code
+  - graphify/INFERRED
+  - community/Endpoint_User
+---
+
+# EmailVerificationThrottle
+
+## Connections
+
+- [[.get_throttles()]] - `calls` [INFERRED]
+- [[.throttle_failure_view()_1]] - `method` [EXTRACTED]
+- [[AccountEndpoint]] - `uses` [INFERRED]
+- [[AuthenticationException]] - `uses` [INFERRED]
+- [[ProfileEndpoint]] - `uses` [INFERRED]
+- [[Throttle for email verification code generation.     Limits to 3 requests per ho]] - `rationale_for` [EXTRACTED]
+- [[UpdateUserOnBoardedEndpoint]] - `uses` [INFERRED]
+- [[UpdateUserTourCompletedEndpoint]] - `uses` [INFERRED]
+- [[UserActivityEndpoint]] - `uses` [INFERRED]
+- [[UserEndpoint]] - `uses` [INFERRED]
+- [[UserRateThrottle]] - `inherits` [EXTRACTED]
+- [[UserSessionEndpoint]] - `uses` [INFERRED]
+- [[rate_limit.py_1]] - `contains` [EXTRACTED]
+
+#graphify/code #graphify/INFERRED #community/Endpoint_User

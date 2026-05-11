@@ -1,21 +1,19 @@
 ---
-source_file: "components/analytics/insight-table/loader.tsx"
+source_file: "web/core/components/issues/issue-detail/issue-activity/loader.tsx"
 type: "code"
-community: "Table Insight"
+community: "Activity Issue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Table_Insight
+  - community/Activity_Issue
 ---
 
 # loader.tsx
 
 ## Connections
 
-- [[TableLoader()]] - `contains` [EXTRACTED]
-- [[TableSkeletonProps]] - `contains` [EXTRACTED]
-- [[getColumnKey()]] - `contains` [EXTRACTED]
-- [[root.tsx_88]] - `imports_from` [EXTRACTED]
+- [[IssueActivityLoader()]] - `contains` [EXTRACTED]
+- [[activity-comment-root.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Table_Insight
+#graphify/code #graphify/EXTRACTED #community/Activity_Issue

@@ -1,29 +1,24 @@
 ---
-source_file: "components/power-k/ui/pages/preferences/root.tsx"
+source_file: "web/core/components/settings/profile/content/pages/activity/root.tsx"
 type: "code"
-community: "Member Commands"
+community: "Settings Profile"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Commands
+  - community/Settings_Profile
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[PowerKAccountPreferencesPages]] - `contains` [EXTRACTED]
-- [[PowerKPreferencesLanguagesMenu]] - `imports` [EXTRACTED]
-- [[PowerKPreferencesStartOfWeekMenu()]] - `imports` [EXTRACTED]
-- [[PowerKPreferencesThemesMenu]] - `imports` [EXTRACTED]
-- [[PowerKPreferencesTimezonesMenu]] - `imports` [EXTRACTED]
-- [[Props_326]] - `contains` [EXTRACTED]
-- [[TPowerKPageType]] - `imports` [EXTRACTED]
-- [[languages-menu.tsx]] - `imports_from` [EXTRACTED]
-- [[start-of-week-menu.tsx]] - `imports_from` [EXTRACTED]
-- [[themes-menu.tsx]] - `imports_from` [EXTRACTED]
-- [[timezone-menu.tsx]] - `imports_from` [EXTRACTED]
-- [[types.ts_2]] - `imports_from` [EXTRACTED]
+- [[ActivityProfileSettings]] - `contains` [EXTRACTED]
+- [[ActivityProfileSettingsList]] - `imports` [EXTRACTED]
+- [[DetailedEmptyState]] - `imports` [EXTRACTED]
+- [[ProfileSettingsHeading()]] - `imports` [EXTRACTED]
+- [[activity-list.tsx_1]] - `imports_from` [EXTRACTED]
+- [[detailed-empty-state-root.tsx]] - `imports_from` [EXTRACTED]
+- [[heading.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Commands
+#graphify/code #graphify/EXTRACTED #community/Settings_Profile

@@ -1,19 +1,19 @@
 ---
-source_file: "components/exporter/single-export.tsx"
+source_file: "web/core/components/exporter/single-export.tsx"
 type: "code"
-community: "Guide Prev"
+community: "Rowdata Single"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Guide_Prev
+  - community/Rowdata_Single
 ---
 
 # single-export.tsx
 
 ## Connections
 
-- [[Props_171]] - `contains` [EXTRACTED]
+- [[Props_246]] - `contains` [EXTRACTED]
 - [[SingleExport()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Guide_Prev
+#graphify/code #graphify/EXTRACTED #community/Rowdata_Single

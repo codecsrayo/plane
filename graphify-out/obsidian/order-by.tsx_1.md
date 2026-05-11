@@ -1,12 +1,12 @@
 ---
-source_file: "components/modules/dropdowns/order-by.tsx"
+source_file: "web/core/components/modules/dropdowns/order-by.tsx"
 type: "code"
-community: "Auth UI"
+community: "Member Members"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_UI
+  - community/Member_Members
 ---
 
 # order-by.tsx
@@ -14,6 +14,6 @@ tags:
 ## Connections
 
 - [[ModuleOrderByDropdown()]] - `contains` [EXTRACTED]
-- [[Props_80]] - `contains` [EXTRACTED]
+- [[Props_155]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_UI
+#graphify/code #graphify/EXTRACTED #community/Member_Members

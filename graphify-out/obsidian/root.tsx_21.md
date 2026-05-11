@@ -1,23 +1,24 @@
 ---
-source_file: "components/settings/profile/content/pages/general/root.tsx"
+source_file: "web/ce/components/workspace/billing/root.tsx"
 type: "code"
-community: "Auth UI"
+community: "Project Settings"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_UI
+  - community/Project_Settings
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[GeneralProfileSettings]] - `contains` [EXTRACTED]
-- [[GeneralProfileSettingsForm]] - `imports` [EXTRACTED]
-- [[PageHead()]] - `imports` [EXTRACTED]
-- [[form.tsx_5]] - `imports_from` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
-- [[page-title.tsx]] - `imports_from` [EXTRACTED]
+- [[BillingRoot]] - `contains` [EXTRACTED]
+- [[PlansComparison]] - `imports` [EXTRACTED]
+- [[SettingsBoxedControlItem()]] - `imports` [EXTRACTED]
+- [[SettingsHeading()]] - `imports` [EXTRACTED]
+- [[boxed-control-item.tsx]] - `imports_from` [EXTRACTED]
+- [[heading.tsx]] - `imports_from` [EXTRACTED]
+- [[root.tsx_22]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_UI
+#graphify/code #graphify/EXTRACTED #community/Project_Settings

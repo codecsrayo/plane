@@ -1,0 +1,37 @@
+---
+source_file: "admin/app/(all)/(dashboard)/authentication/gitea/form.tsx"
+type: "code"
+community: "Controller Values"
+location: "L1"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Controller_Values
+---
+
+# form.tsx
+
+## Connections
+
+- [[CodeBlock()]] - `imports` [EXTRACTED]
+- [[ConfirmDiscardModal()]] - `imports` [EXTRACTED]
+- [[ControllerInput()]] - `imports` [EXTRACTED]
+- [[ControllerSwitch()]] - `imports` [EXTRACTED]
+- [[CopyField()]] - `imports` [EXTRACTED]
+- [[GiteaConfigFormValues]] - `contains` [EXTRACTED]
+- [[InstanceGiteaConfigForm()]] - `contains` [EXTRACTED]
+- [[Props_544]] - `contains` [EXTRACTED]
+- [[TControllerInputFormField]] - `imports` [EXTRACTED]
+- [[TControllerSwitchFormField]] - `imports` [EXTRACTED]
+- [[TCopyField]] - `imports` [EXTRACTED]
+- [[code-block.tsx]] - `imports_from` [EXTRACTED]
+- [[confirm-discard-modal.tsx]] - `imports_from` [EXTRACTED]
+- [[controller-input.tsx]] - `imports_from` [EXTRACTED]
+- [[controller-switch.tsx]] - `imports_from` [EXTRACTED]
+- [[copy-field.tsx]] - `imports_from` [EXTRACTED]
+- [[index.ts_445]] - `imports_from` [EXTRACTED]
+- [[logger_2]] - `imports` [EXTRACTED]
+- [[logger.ts]] - `imports_from` [EXTRACTED]
+- [[page.tsx_76]] - `imports_from` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Controller_Values

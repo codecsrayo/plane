@@ -1,12 +1,12 @@
 ---
-source_file: "components/ui/loader/view-list-loader.tsx"
+source_file: "web/core/components/ui/loader/view-list-loader.tsx"
 type: "code"
-community: "Project Quick"
+community: "Project Work"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Project_Quick
+  - community/Project_Work
 ---
 
 # view-list-loader.tsx
@@ -17,4 +17,4 @@ tags:
 - [[views-list.tsx]] - `imports_from` [EXTRACTED]
 - [[views-list.tsx_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Project_Quick
+#graphify/code #graphify/EXTRACTED #community/Project_Work

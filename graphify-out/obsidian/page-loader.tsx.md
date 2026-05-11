@@ -1,5 +1,5 @@
 ---
-source_file: "components/pages/loaders/page-loader.tsx"
+source_file: "web/core/components/pages/loaders/page-loader.tsx"
 type: "code"
 community: "Pages Main"
 location: "L1"

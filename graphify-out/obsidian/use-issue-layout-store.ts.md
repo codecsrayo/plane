@@ -1,12 +1,12 @@
 ---
-source_file: "hooks/use-issue-layout-store.ts"
+source_file: "web/core/hooks/use-issue-layout-store.ts"
 type: "code"
-community: "Spreadsheet Columns"
+community: "Issue Project"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Spreadsheet_Columns
+  - community/Issue_Project
 ---
 
 # use-issue-layout-store.ts
@@ -22,7 +22,7 @@ tags:
 - [[base-kanban-root.tsx]] - `imports_from` [EXTRACTED]
 - [[base-list-root.tsx]] - `imports_from` [EXTRACTED]
 - [[base-spreadsheet-root.tsx]] - `imports_from` [EXTRACTED]
-- [[base.tsx_7]] - `imports_from` [EXTRACTED]
+- [[base.tsx_8]] - `imports_from` [EXTRACTED]
 - [[blocks.tsx_1]] - `imports_from` [EXTRACTED]
 - [[cycle-column.tsx]] - `imports_from` [EXTRACTED]
 - [[cycle-layout-root.tsx]] - `imports_from` [EXTRACTED]
@@ -40,8 +40,8 @@ tags:
 - [[profile-issues.tsx]] - `imports_from` [EXTRACTED]
 - [[project-layout-root.tsx]] - `imports_from` [EXTRACTED]
 - [[project-view-layout-root.tsx]] - `imports_from` [EXTRACTED]
-- [[root.tsx_43]] - `imports_from` [EXTRACTED]
-- [[sidebar.tsx_1]] - `imports_from` [EXTRACTED]
+- [[root.tsx_84]] - `imports_from` [EXTRACTED]
+- [[sidebar.tsx_2]] - `imports_from` [EXTRACTED]
 - [[spreadsheet-table.tsx]] - `imports_from` [EXTRACTED]
 - [[swimlanes.tsx]] - `imports_from` [EXTRACTED]
 - [[use-issues.ts]] - `imports_from` [EXTRACTED]
@@ -49,4 +49,4 @@ tags:
 - [[useIssues()]] - `imports` [EXTRACTED]
 - [[useIssuesStore()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Spreadsheet_Columns
+#graphify/code #graphify/EXTRACTED #community/Issue_Project

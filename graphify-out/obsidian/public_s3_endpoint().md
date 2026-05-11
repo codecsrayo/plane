@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/utils/s3_presigned_post.rs"
 type: "code"
-community: "Community 157"
+community: "Asset Issue"
 location: "L63"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_157
+  - community/Asset_Issue
 ---
 
 # public_s3_endpoint()
@@ -17,4 +17,4 @@ tags:
 - [[initiate_project_asset_upload()]] - `calls` [INFERRED]
 - [[s3_presigned_post.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_157
+#graphify/code #graphify/INFERRED #community/Asset_Issue

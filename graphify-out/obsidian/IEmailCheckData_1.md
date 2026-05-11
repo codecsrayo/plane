@@ -1,0 +1,18 @@
+---
+source_file: "space/types/auth.ts"
+type: "code"
+community: "Auth Titles"
+location: "L23"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Auth_Titles
+---
+
+# IEmailCheckData
+
+## Connections
+
+- [[auth.ts_4]] - `contains` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Auth_Titles

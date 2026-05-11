@@ -1,28 +1,23 @@
 ---
-source_file: "components/inbox/content/root.tsx"
+source_file: "web/core/components/issues/issue-detail/label/select/root.tsx"
 type: "code"
-community: "Inbox Content"
+community: "Label Dropdown"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Inbox_Content
+  - community/Label_Dropdown
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[InboxContentRoot]] - `contains` [EXTRACTED]
-- [[InboxIssueActionsHeader]] - `imports` [EXTRACTED]
-- [[InboxIssueMainContent]] - `imports` [EXTRACTED]
-- [[TInboxContentRoot]] - `contains` [EXTRACTED]
-- [[inbox-issue-header.tsx]] - `imports_from` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
-- [[issue-root.tsx]] - `imports_from` [EXTRACTED]
-- [[use-app-router.tsx]] - `imports_from` [EXTRACTED]
-- [[use-project-inbox.ts]] - `imports_from` [EXTRACTED]
-- [[useAppRouter()]] - `imports` [EXTRACTED]
-- [[useProjectInbox()]] - `imports` [EXTRACTED]
+- [[IssueLabelSelect_1]] - `imports` [EXTRACTED]
+- [[IssueLabelSelectRoot()]] - `contains` [EXTRACTED]
+- [[TIssueLabelSelectRoot]] - `contains` [EXTRACTED]
+- [[TLabelOperations]] - `imports` [EXTRACTED]
+- [[label-select.tsx]] - `imports_from` [EXTRACTED]
+- [[root.tsx_73]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Inbox_Content
+#graphify/code #graphify/EXTRACTED #community/Label_Dropdown

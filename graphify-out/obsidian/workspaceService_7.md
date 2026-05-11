@@ -1,18 +1,18 @@
 ---
-source_file: "components/power-k/ui/modal/search-menu.tsx"
+source_file: "web/core/components/editor/rich-text/description-input/root.tsx"
 type: "code"
-community: "Power Search"
-location: "L23"
+community: "Workspace Issue"
+location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Power_Search
+  - community/Workspace_Issue
 ---
 
 # workspaceService
 
 ## Connections
 
-- [[search-menu.tsx]] - `contains` [EXTRACTED]
+- [[root.tsx_51]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Power_Search
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

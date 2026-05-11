@@ -1,5 +1,5 @@
 ---
-source_file: "components/analytics/overview/project-insights.tsx"
+source_file: "web/core/components/analytics/overview/project-insights.tsx"
 type: "code"
 community: "Analytics Project"
 location: "L1"
@@ -21,7 +21,7 @@ tags:
 - [[analytics.service.ts]] - `imports_from` [EXTRACTED]
 - [[analyticsService_4]] - `contains` [EXTRACTED]
 - [[loaders.tsx]] - `imports_from` [EXTRACTED]
-- [[root.tsx_90]] - `imports_from` [EXTRACTED]
+- [[root.tsx_131]] - `imports_from` [EXTRACTED]
 - [[use-analytics.ts]] - `imports_from` [EXTRACTED]
 - [[useAnalytics()]] - `imports` [EXTRACTED]
 

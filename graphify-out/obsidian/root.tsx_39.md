@@ -1,25 +1,20 @@
 ---
-source_file: "components/issues/issue-detail-widgets/relations/root.tsx"
+source_file: "web/ce/components/rich-filters/filter-value-input/root.tsx"
 type: "code"
-community: "Issue Activity"
+community: "Value Input"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Activity
+  - community/Value_Input
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[Props_274]] - `contains` [EXTRACTED]
-- [[RelationsCollapsible]] - `contains` [EXTRACTED]
-- [[RelationsCollapsibleContent]] - `imports` [EXTRACTED]
-- [[RelationsCollapsibleTitle]] - `imports` [EXTRACTED]
-- [[content.tsx_1]] - `imports_from` [EXTRACTED]
-- [[title.tsx_1]] - `imports_from` [EXTRACTED]
-- [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
-- [[useIssueDetail()]] - `imports` [EXTRACTED]
+- [[AdditionalFilterValueInput]] - `contains` [EXTRACTED]
+- [[TFilterValueInputProps]] - `imports` [EXTRACTED]
+- [[shared.ts_14]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Activity
+#graphify/code #graphify/EXTRACTED #community/Value_Input

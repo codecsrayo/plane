@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/starter-kit.ts"
 type: "code"
-community: "Core Extensions"
+community: "Document Custom"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Core_Extensions
+  - community/Document_Custom
 ---
 
 # starter-kit.ts
@@ -18,4 +18,4 @@ tags:
 - [[core-without-props.ts]] - `imports_from` [EXTRACTED]
 - [[extensions.ts_3]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Core_Extensions
+#graphify/code #graphify/EXTRACTED #community/Document_Custom

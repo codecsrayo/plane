@@ -1,5 +1,5 @@
 ---
-source_file: "components/icons/locked-component.tsx"
+source_file: "web/core/components/icons/locked-component.tsx"
 type: "code"
 community: "Locked"
 location: "L1"

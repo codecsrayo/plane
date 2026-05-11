@@ -1,12 +1,12 @@
 ---
-source_file: "components/modules/gantt-chart/modules-list-layout.tsx"
+source_file: "web/core/components/modules/gantt-chart/modules-list-layout.tsx"
 type: "code"
-community: "Modules Archived"
+community: "Cycles Archived"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Modules_Archived
+  - community/Cycles_Archived
 ---
 
 # modules-list-layout.tsx
@@ -15,9 +15,9 @@ tags:
 
 - [[ModulesListGanttChartView]] - `contains` [EXTRACTED]
 - [[TimeLineTypeContext]] - `imports` [EXTRACTED]
-- [[index.ts_38]] - `imports_from` [EXTRACTED]
-- [[index.ts_58]] - `imports_from` [EXTRACTED]
-- [[index.tsx_4]] - `imports_from` [EXTRACTED]
+- [[index.ts_303]] - `imports_from` [EXTRACTED]
+- [[index.ts_323]] - `imports_from` [EXTRACTED]
+- [[index.tsx_10]] - `imports_from` [EXTRACTED]
 - [[use-module-filter.ts]] - `imports_from` [EXTRACTED]
 - [[use-module.ts]] - `imports_from` [EXTRACTED]
 - [[use-project.ts]] - `imports_from` [EXTRACTED]
@@ -25,4 +25,4 @@ tags:
 - [[useModuleFilter()]] - `imports` [EXTRACTED]
 - [[useProject()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Modules_Archived
+#graphify/code #graphify/EXTRACTED #community/Cycles_Archived

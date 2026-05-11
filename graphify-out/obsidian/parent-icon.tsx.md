@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/icons/properties/parent-icon.tsx"
 type: "code"
-community: "Parent Icon"
+community: "Icon Property"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Parent_Icon
+  - community/Icon_Property
 ---
 
 # parent-icon.tsx
@@ -19,4 +19,4 @@ tags:
 - [[icon-wrapper.tsx]] - `imports_from` [EXTRACTED]
 - [[type.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Parent_Icon
+#graphify/code #graphify/EXTRACTED #community/Icon_Property

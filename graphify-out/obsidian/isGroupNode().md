@@ -1,12 +1,12 @@
 ---
 source_file: "utils/src/rich-filters/types/core.ts"
 type: "code"
-community: "Find Conditions"
+community: "Group Condition"
 location: "L32"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Find_Conditions
+  - community/Group_Condition
 ---
 
 # isGroupNode()
@@ -26,4 +26,4 @@ tags:
 - [[transformExpressionTree()]] - `calls` [EXTRACTED]
 - [[traverseExpressionTree()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Find_Conditions
+#graphify/code #graphify/EXTRACTED #community/Group_Condition

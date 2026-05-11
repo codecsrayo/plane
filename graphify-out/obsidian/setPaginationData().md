@@ -1,19 +1,21 @@
 ---
-source_file: "store/issue/helpers/base-issues.store.ts"
+source_file: "space/store/helpers/base-issues.store.ts"
 type: "code"
-community: "Issue Store Ops"
-location: "L365"
+community: "Issue Group"
+location: "L149"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Issue_Store_Ops
+  - graphify/INFERRED
+  - community/Issue_Group
 ---
 
 # setPaginationData()
 
 ## Connections
 
+- [[.set()]] - `calls` [INFERRED]
 - [[base-issues.store.ts]] - `contains` [EXTRACTED]
-- [[getGroupKey()]] - `calls` [EXTRACTED]
+- [[base-issues.store.ts_1]] - `contains` [EXTRACTED]
+- [[getGroupKey()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Store_Ops
+#graphify/code #graphify/INFERRED #community/Issue_Group

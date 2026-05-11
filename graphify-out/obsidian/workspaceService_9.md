@@ -1,18 +1,18 @@
 ---
-source_file: "components/onboarding/invitations.tsx"
+source_file: "web/core/components/issues/issue-modal/components/description-editor.tsx"
 type: "code"
-community: "Workspace Invites"
-location: "L30"
+community: "Workspace Issue"
+location: "L35"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Invites
+  - community/Workspace_Issue
 ---
 
 # workspaceService
 
 ## Connections
 
-- [[invitations.tsx]] - `contains` [EXTRACTED]
+- [[description-editor.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Invites
+#graphify/code #graphify/EXTRACTED #community/Workspace_Issue

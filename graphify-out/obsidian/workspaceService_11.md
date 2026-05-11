@@ -1,18 +1,18 @@
 ---
-source_file: "components/onboarding/steps/workspace/join-invites.tsx"
+source_file: "web/core/components/power-k/ui/modal/search-menu.tsx"
 type: "code"
-community: "Workspace Invites"
-location: "L29"
+community: "Power Shortcuts"
+location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Workspace_Invites
+  - community/Power_Shortcuts
 ---
 
 # workspaceService
 
 ## Connections
 
-- [[join-invites.tsx]] - `contains` [EXTRACTED]
+- [[search-menu.tsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Workspace_Invites
+#graphify/code #graphify/EXTRACTED #community/Power_Shortcuts

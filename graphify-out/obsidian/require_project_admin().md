@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/routes/projects.rs"
 type: "code"
-community: "Projects Rust API"
+community: "Project Response"
 location: "L134"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Projects_Rust_API
+  - community/Project_Response
 ---
 
 # require_project_admin()
@@ -14,14 +14,14 @@ tags:
 ## Connections
 
 - [[create_project_invitations()]] - `calls` [EXTRACTED]
-- [[create_project_members()]] - `calls` [EXTRACTED]
+- [[create_project_members()_1]] - `calls` [EXTRACTED]
 - [[delete_project()]] - `calls` [EXTRACTED]
 - [[delete_project_invitation()]] - `calls` [EXTRACTED]
 - [[get_project_invitation()]] - `calls` [EXTRACTED]
 - [[list_project_invitations()]] - `calls` [EXTRACTED]
-- [[projects.rs]] - `contains` [EXTRACTED]
+- [[projects.rs_1]] - `contains` [EXTRACTED]
 - [[remove_project_member()]] - `calls` [EXTRACTED]
 - [[update_project()]] - `calls` [EXTRACTED]
 - [[update_project_member()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Projects_Rust_API
+#graphify/code #graphify/EXTRACTED #community/Project_Response

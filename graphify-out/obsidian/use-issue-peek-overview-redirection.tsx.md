@@ -1,5 +1,5 @@
 ---
-source_file: "hooks/use-issue-peek-overview-redirection.tsx"
+source_file: "web/core/hooks/use-issue-peek-overview-redirection.tsx"
 type: "code"
 community: "Issue Activity"
 location: "L1"
@@ -13,13 +13,13 @@ tags:
 
 ## Connections
 
-- [[block.tsx_3]] - `imports_from` [EXTRACTED]
+- [[block.tsx_6]] - `imports_from` [EXTRACTED]
 - [[blocks.tsx_1]] - `imports_from` [EXTRACTED]
 - [[issue-block.tsx]] - `imports_from` [EXTRACTED]
 - [[issue-list-item.tsx]] - `imports_from` [EXTRACTED]
 - [[issue-row.tsx]] - `imports_from` [EXTRACTED]
 - [[list-item.tsx_1]] - `imports_from` [EXTRACTED]
-- [[root.tsx_35]] - `imports_from` [EXTRACTED]
+- [[root.tsx_76]] - `imports_from` [EXTRACTED]
 - [[use-issue-detail.ts]] - `imports_from` [EXTRACTED]
 - [[use-project.ts]] - `imports_from` [EXTRACTED]
 - [[useIssueDetail()]] - `imports` [EXTRACTED]

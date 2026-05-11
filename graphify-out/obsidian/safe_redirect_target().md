@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/auth/csrf.rs"
 type: "code"
-community: "Community 73"
+community: "Password Email"
 location: "L76"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
-  - community/Community_73
+  - graphify/INFERRED
+  - community/Password_Email
 ---
 
 # safe_redirect_target()
@@ -16,4 +16,4 @@ tags:
 - [[csrf.rs]] - `contains` [EXTRACTED]
 - [[perform_logout()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_73
+#graphify/code #graphify/INFERRED #community/Password_Email

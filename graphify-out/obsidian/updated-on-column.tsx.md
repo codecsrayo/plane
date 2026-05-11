@@ -1,5 +1,5 @@
 ---
-source_file: "components/issues/issue-layouts/spreadsheet/columns/updated-on-column.tsx"
+source_file: "web/core/components/issues/issue-layouts/spreadsheet/columns/updated-on-column.tsx"
 type: "code"
 community: "Updated Column"
 location: "L1"
@@ -13,7 +13,7 @@ tags:
 
 ## Connections
 
-- [[Props_211]] - `contains` [EXTRACTED]
+- [[Props_286]] - `contains` [EXTRACTED]
 - [[SpreadsheetUpdatedOnColumn]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Updated_Column

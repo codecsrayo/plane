@@ -1,25 +1,14 @@
 ---
-source_file: "store/issue/issue.store.ts"
+source_file: "web/ce/store/issue/workspace/issue.store.ts"
 type: "code"
-community: "Comment Reactions"
+community: "Issue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Comment_Reactions
+  - community/Issue
 ---
 
 # issue.store.ts
 
-## Connections
-
-- [[IIssueStore]] - `contains` [EXTRACTED]
-- [[IssueStore]] - `contains` [EXTRACTED]
-- [[filteredIssues]] - `contains` [EXTRACTED]
-- [[index.ts_19]] - `imports_from` [EXTRACTED]
-- [[projectIdentifier]] - `contains` [EXTRACTED]
-- [[root.store.ts_1]] - `imports_from` [EXTRACTED]
-- [[rootStore]] - `imports` [EXTRACTED]
-- [[store-context.tsx]] - `imports_from` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Comment_Reactions
+#graphify/code #graphify/EXTRACTED #community/Issue

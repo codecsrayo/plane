@@ -1,0 +1,92 @@
+---
+source_file: "api/plane/space/serializer/workspace.py"
+type: "code"
+community: "Serializer Issue"
+location: "L10"
+tags:
+  - graphify/code
+  - graphify/INFERRED
+  - community/Serializer_Issue
+---
+
+# WorkspaceLiteSerializer
+
+## Connections
+
+- [[BaseSerializer]] - `inherits` [EXTRACTED]
+- [[BaseSerializer_2]] - `uses` [INFERRED]
+- [[CommentReactionLiteSerializer]] - `uses` [INFERRED]
+- [[CommentReactionSerializer]] - `uses` [INFERRED]
+- [[CommentReactionSerializer_1]] - `uses` [INFERRED]
+- [[CycleBaseSerializer]] - `uses` [INFERRED]
+- [[DeployBoardSerializer]] - `uses` [INFERRED]
+- [[ImporterSerializer]] - `uses` [INFERRED]
+- [[IssueActivitySerializer]] - `uses` [INFERRED]
+- [[IssueAssigneeSerializer]] - `uses` [INFERRED]
+- [[IssueAttachmentLiteSerializer]] - `uses` [INFERRED]
+- [[IssueAttachmentSerializer]] - `uses` [INFERRED]
+- [[IssueAttachmentSerializer_1]] - `uses` [INFERRED]
+- [[IssueCommentSerializer]] - `uses` [INFERRED]
+- [[IssueCommentSerializer_1]] - `uses` [INFERRED]
+- [[IssueCreateSerializer]] - `uses` [INFERRED]
+- [[IssueCreateSerializer_1]] - `uses` [INFERRED]
+- [[IssueCycleDetailSerializer]] - `uses` [INFERRED]
+- [[IssueCycleDetailSerializer_1]] - `uses` [INFERRED]
+- [[IssueDescriptionVersionDetailSerializer]] - `uses` [INFERRED]
+- [[IssueDetailSerializer]] - `uses` [INFERRED]
+- [[IssueFlatSerializer]] - `uses` [INFERRED]
+- [[IssueFlatSerializer_1]] - `uses` [INFERRED]
+- [[IssueIntakeSerializer]] - `uses` [INFERRED]
+- [[IssueLabelSerializer]] - `uses` [INFERRED]
+- [[IssueLinkLiteSerializer]] - `uses` [INFERRED]
+- [[IssueLinkSerializer]] - `uses` [INFERRED]
+- [[IssueLinkSerializer_1]] - `uses` [INFERRED]
+- [[IssueListDetailSerializer]] - `uses` [INFERRED]
+- [[IssueLiteSerializer]] - `uses` [INFERRED]
+- [[IssueModuleDetailSerializer]] - `uses` [INFERRED]
+- [[IssueModuleDetailSerializer_1]] - `uses` [INFERRED]
+- [[IssueProjectLiteSerializer]] - `uses` [INFERRED]
+- [[IssueProjectLiteSerializer_1]] - `uses` [INFERRED]
+- [[IssuePublicSerializer]] - `uses` [INFERRED]
+- [[IssuePublicSerializer_1]] - `uses` [INFERRED]
+- [[IssueReactionLiteSerializer]] - `uses` [INFERRED]
+- [[IssueReactionSerializer]] - `uses` [INFERRED]
+- [[IssueReactionSerializer_1]] - `uses` [INFERRED]
+- [[IssueRelationSerializer]] - `uses` [INFERRED]
+- [[IssueRelationSerializer_1]] - `uses` [INFERRED]
+- [[IssueSerializer]] - `uses` [INFERRED]
+- [[IssueSerializer_2]] - `uses` [INFERRED]
+- [[IssueStateFlatSerializer]] - `uses` [INFERRED]
+- [[IssueStateFlatSerializer_1]] - `uses` [INFERRED]
+- [[IssueStateSerializer]] - `uses` [INFERRED]
+- [[IssueSubscriberSerializer]] - `uses` [INFERRED]
+- [[IssueVersionDetailSerializer]] - `uses` [INFERRED]
+- [[IssueVoteSerializer]] - `uses` [INFERRED]
+- [[IssueVoteSerializer_1]] - `uses` [INFERRED]
+- [[LabelLiteSerializer]] - `uses` [INFERRED]
+- [[LabelLiteSerializer_1]] - `uses` [INFERRED]
+- [[LabelSerializer]] - `uses` [INFERRED]
+- [[LabelSerializer_1]] - `uses` [INFERRED]
+- [[Meta_1]] - `uses` [INFERRED]
+- [[Meta_5]] - `uses` [INFERRED]
+- [[Meta_9]] - `uses` [INFERRED]
+- [[Meta_68]] - `uses` [INFERRED]
+- [[ModuleBaseSerializer]] - `uses` [INFERRED]
+- [[ProjectDetailSerializer]] - `uses` [INFERRED]
+- [[ProjectIdentifierSerializer]] - `uses` [INFERRED]
+- [[ProjectListSerializer]] - `uses` [INFERRED]
+- [[ProjectLiteSerializer]] - `uses` [INFERRED]
+- [[ProjectMemberAdminSerializer]] - `uses` [INFERRED]
+- [[ProjectMemberInviteSerializer]] - `uses` [INFERRED]
+- [[ProjectMemberLiteSerializer]] - `uses` [INFERRED]
+- [[ProjectMemberPreferenceSerializer]] - `uses` [INFERRED]
+- [[ProjectMemberRoleSerializer]] - `uses` [INFERRED]
+- [[ProjectMemberSerializer]] - `uses` [INFERRED]
+- [[ProjectPublicMemberSerializer]] - `uses` [INFERRED]
+- [[ProjectSerializer]] - `uses` [INFERRED]
+- [[ProjectUserPropertySerializer]] - `uses` [INFERRED]
+- [[RelatedIssueSerializer]] - `uses` [INFERRED]
+- [[RelatedIssueSerializer_1]] - `uses` [INFERRED]
+- [[workspace.py_8]] - `contains` [EXTRACTED]
+
+#graphify/code #graphify/INFERRED #community/Serializer_Issue

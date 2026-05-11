@@ -1,24 +1,23 @@
 ---
-source_file: "components/workspace-notifications/sidebar/header/options/root.tsx"
+source_file: "web/core/components/project-states/root.tsx"
 type: "code"
-community: "Issue Layouts"
+community: "Issue Work"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Layouts
+  - community/Issue_Work
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[NotificationSidebarHeaderOptions]] - `contains` [EXTRACTED]
-- [[TNotificationSidebarHeaderOptions]] - `contains` [EXTRACTED]
-- [[index.ts_2]] - `imports_from` [EXTRACTED]
-- [[index.ts_126]] - `imports_from` [EXTRACTED]
-- [[index.ts_125]] - `imports_from` [EXTRACTED]
-- [[use-platform-os.tsx]] - `imports_from` [EXTRACTED]
-- [[usePlatformOS()]] - `imports` [EXTRACTED]
+- [[ProjectStateRoot]] - `contains` [EXTRACTED]
+- [[TProjectState]] - `contains` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
+- [[index.ts_312]] - `imports_from` [EXTRACTED]
+- [[use-project-state.ts]] - `imports_from` [EXTRACTED]
+- [[useProjectState()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Layouts
+#graphify/code #graphify/EXTRACTED #community/Issue_Work

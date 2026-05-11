@@ -1,0 +1,19 @@
+---
+source_file: "api_rust/tests/labels.rs"
+type: "code"
+community: "Returns Sign"
+location: "L225"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Returns_Sign
+---
+
+# delete_label_returns_204()
+
+## Connections
+
+- [[.spawn()]] - `calls` [INFERRED]
+- [[labels.rs]] - `contains` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Returns_Sign

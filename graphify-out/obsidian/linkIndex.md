@@ -1,12 +1,12 @@
 ---
-source_file: "store/workspace/link.store.ts"
+source_file: "web/core/store/workspace/link.store.ts"
 type: "code"
-community: "Link Home"
+community: "Webhook Workspace"
 location: "L126"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Link_Home
+  - community/Webhook_Workspace
 ---
 
 # linkIndex
@@ -15,4 +15,4 @@ tags:
 
 - [[link.store.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Link_Home
+#graphify/code #graphify/EXTRACTED #community/Webhook_Workspace

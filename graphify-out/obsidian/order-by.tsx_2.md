@@ -1,12 +1,12 @@
 ---
-source_file: "components/project/dropdowns/order-by.tsx"
+source_file: "web/core/components/project/dropdowns/order-by.tsx"
 type: "code"
-community: "Auth UI"
+community: "Member Members"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_UI
+  - community/Member_Members
 ---
 
 # order-by.tsx
@@ -15,7 +15,8 @@ tags:
 
 - [[DISABLED_ORDERING_OPTIONS]] - `contains` [EXTRACTED]
 - [[ProjectOrderByDropdown()]] - `contains` [EXTRACTED]
-- [[Props_80]] - `contains` [EXTRACTED]
+- [[Props_155]] - `contains` [EXTRACTED]
 - [[filters.tsx_1]] - `imports_from` [EXTRACTED]
+- [[mobile-header.tsx_7]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_UI
+#graphify/code #graphify/EXTRACTED #community/Member_Members

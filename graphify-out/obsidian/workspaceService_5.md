@@ -1,18 +1,18 @@
 ---
-source_file: "components/issues/issue-modal/components/description-editor.tsx"
+source_file: "web/core/components/home/widgets/recents/index.tsx"
 type: "code"
-community: "Editor Aiservice"
-location: "L35"
+community: "Filters Recent"
+location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Editor_Aiservice
+  - community/Filters_Recent
 ---
 
 # workspaceService
 
 ## Connections
 
-- [[description-editor.tsx]] - `contains` [EXTRACTED]
+- [[index.tsx_8]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Editor_Aiservice
+#graphify/code #graphify/EXTRACTED #community/Filters_Recent

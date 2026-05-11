@@ -1,12 +1,12 @@
 ---
 source_file: "propel/src/charts/tree-map/root.tsx"
 type: "code"
-community: "Calculate Tree"
+community: "Tabs Custom"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Calculate_Tree
+  - community/Tabs_Custom
 ---
 
 # root.tsx
@@ -21,4 +21,4 @@ tags:
 - [[map-content.tsx]] - `imports_from` [EXTRACTED]
 - [[tooltip.tsx_3]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Calculate_Tree
+#graphify/code #graphify/EXTRACTED #community/Tabs_Custom

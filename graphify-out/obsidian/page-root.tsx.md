@@ -1,12 +1,12 @@
 ---
-source_file: "components/pages/editor/page-root.tsx"
+source_file: "web/core/components/pages/editor/page-root.tsx"
 type: "code"
-community: "Editor Body"
+community: "Content Body"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Editor_Body
+  - community/Content_Body
 ---
 
 # page-root.tsx
@@ -28,16 +28,17 @@ tags:
 - [[base-page.ts]] - `imports_from` [EXTRACTED]
 - [[content-limit-banner.tsx]] - `imports_from` [EXTRACTED]
 - [[editor-body.tsx]] - `imports_from` [EXTRACTED]
-- [[editor.tsx_4]] - `imports_from` [EXTRACTED]
-- [[index.ts_157]] - `imports_from` [EXTRACTED]
-- [[index.ts_161]] - `imports_from` [EXTRACTED]
-- [[index.ts_151]] - `imports_from` [EXTRACTED]
-- [[root.tsx_80]] - `imports_from` [EXTRACTED]
-- [[root.tsx_81]] - `imports_from` [EXTRACTED]
-- [[root.tsx_82]] - `imports_from` [EXTRACTED]
+- [[editor.tsx_7]] - `imports_from` [EXTRACTED]
+- [[index.ts_422]] - `imports_from` [EXTRACTED]
+- [[index.ts_426]] - `imports_from` [EXTRACTED]
+- [[index.ts_416]] - `imports_from` [EXTRACTED]
+- [[page.tsx_27]] - `imports_from` [EXTRACTED]
+- [[root.tsx_121]] - `imports_from` [EXTRACTED]
+- [[root.tsx_122]] - `imports_from` [EXTRACTED]
+- [[root.tsx_123]] - `imports_from` [EXTRACTED]
 - [[use-page-fallback.ts]] - `imports_from` [EXTRACTED]
 - [[use-realtime-page-events.tsx]] - `imports_from` [EXTRACTED]
 - [[usePageFallback()]] - `imports` [EXTRACTED]
 - [[version-history.tsx]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Editor_Body
+#graphify/code #graphify/EXTRACTED #community/Content_Body

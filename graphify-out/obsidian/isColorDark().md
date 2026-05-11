@@ -1,12 +1,12 @@
 ---
 source_file: "utils/src/theme/theme-application.ts"
 type: "code"
-community: "Color Utils"
+community: "Color Shade"
 location: "L35"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Color_Utils
+  - community/Color_Shade
 ---
 
 # isColorDark()
@@ -19,4 +19,4 @@ tags:
 - [[hexToOKLCH()]] - `calls` [EXTRACTED]
 - [[theme-application.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Color_Utils
+#graphify/code #graphify/EXTRACTED #community/Color_Shade

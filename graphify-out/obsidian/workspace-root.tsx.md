@@ -1,12 +1,12 @@
 ---
-source_file: "components/issues/issue-layouts/spreadsheet/roots/workspace-root.tsx"
+source_file: "web/core/components/issues/issue-layouts/spreadsheet/roots/workspace-root.tsx"
 type: "code"
-community: "Issue Layout HOC"
+community: "Issue Project"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Issue_Layout_HOC
+  - community/Issue_Project
 ---
 
 # workspace-root.tsx
@@ -14,13 +14,13 @@ tags:
 ## Connections
 
 - [[IssueLayoutHOC]] - `imports` [EXTRACTED]
-- [[Props_213]] - `contains` [EXTRACTED]
+- [[Props_288]] - `contains` [EXTRACTED]
 - [[SpreadsheetLayoutLoader()]] - `imports` [EXTRACTED]
 - [[SpreadsheetView]] - `imports` [EXTRACTED]
 - [[WorkspaceSpreadsheetRoot]] - `contains` [EXTRACTED]
-- [[helper.tsx]] - `imports_from` [EXTRACTED]
-- [[index.ts_96]] - `imports_from` [EXTRACTED]
-- [[index.ts]] - `imports_from` [EXTRACTED]
+- [[helper.tsx_22]] - `imports_from` [EXTRACTED]
+- [[index.ts_265]] - `imports_from` [EXTRACTED]
+- [[index.ts_361]] - `imports_from` [EXTRACTED]
 - [[issue-layout-HOC.tsx]] - `imports_from` [EXTRACTED]
 - [[spreadsheet-layout-loader.tsx]] - `imports_from` [EXTRACTED]
 - [[spreadsheet-view.tsx]] - `imports_from` [EXTRACTED]
@@ -31,4 +31,4 @@ tags:
 - [[useIssuesActions()]] - `imports` [EXTRACTED]
 - [[useWorkspaceIssueProperties()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Issue_Layout_HOC
+#graphify/code #graphify/EXTRACTED #community/Issue_Project

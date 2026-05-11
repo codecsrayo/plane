@@ -1,12 +1,12 @@
 ---
-source_file: "store/member/utils.ts"
+source_file: "web/core/store/member/utils.ts"
 type: "code"
-community: "Member Sort"
+community: "Workspace Member"
 location: "L150"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Member_Sort
+  - community/Workspace_Member
 ---
 
 # sortProjectMembers()
@@ -18,6 +18,6 @@ tags:
 - [[project-member-filters.store.ts]] - `imports` [EXTRACTED]
 - [[projectMemberIds()]] - `calls` [EXTRACTED]
 - [[sortMembers()]] - `calls` [EXTRACTED]
-- [[utils.ts]] - `contains` [EXTRACTED]
+- [[utils.ts_12]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Member_Sort
+#graphify/code #graphify/EXTRACTED #community/Workspace_Member

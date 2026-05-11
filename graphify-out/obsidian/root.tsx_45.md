@@ -1,30 +1,26 @@
 ---
-source_file: "components/workspace-notifications/sidebar/root.tsx"
+source_file: "web/core/components/workspace/sidebar/help-section/root.tsx"
 type: "code"
-community: "Notification Option"
+community: "Sidebar Rail"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Notification_Option
+  - community/Sidebar_Rail
 ---
 
 # root.tsx
 
 ## Connections
 
-- [[AppliedFilters]] - `imports` [EXTRACTED]
-- [[CountChip()]] - `imports` [EXTRACTED]
-- [[NotificationEmptyState]] - `imports` [EXTRACTED]
-- [[NotificationsLoader()_1]] - `imports` [EXTRACTED]
-- [[NotificationsSidebarRoot]] - `contains` [EXTRACTED]
-- [[applied-filter.tsx]] - `imports_from` [EXTRACTED]
-- [[count-chip.tsx]] - `imports_from` [EXTRACTED]
-- [[empty-state.tsx_4]] - `imports_from` [EXTRACTED]
-- [[index.ts_2]] - `imports_from` [EXTRACTED]
-- [[index.ts_123]] - `imports_from` [EXTRACTED]
-- [[loader.tsx_6]] - `imports_from` [EXTRACTED]
-- [[use-workspace.ts]] - `imports_from` [EXTRACTED]
-- [[useWorkspace()]] - `imports` [EXTRACTED]
+- [[AppSidebarItem]] - `imports` [EXTRACTED]
+- [[HelpMenuRoot]] - `contains` [EXTRACTED]
+- [[index.ts_333]] - `imports_from` [EXTRACTED]
+- [[sidebar-item.tsx_1]] - `imports_from` [EXTRACTED]
+- [[top-navigation-root.tsx]] - `imports_from` [EXTRACTED]
+- [[use-chat-support.ts]] - `imports_from` [EXTRACTED]
+- [[use-power-k.ts]] - `imports_from` [EXTRACTED]
+- [[useChatSupport()]] - `imports` [EXTRACTED]
+- [[usePowerK()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Notification_Option
+#graphify/code #graphify/EXTRACTED #community/Sidebar_Rail

@@ -1,12 +1,12 @@
 ---
-source_file: "components/power-k/config/creation/command.ts"
+source_file: "web/core/components/power-k/config/creation/command.ts"
 type: "code"
-community: "Command Palette"
+community: "Project Profile"
 location: "L32"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Command_Palette
+  - community/Project_Profile
 ---
 
 # usePowerKCreationCommandsRecord()
@@ -14,11 +14,9 @@ tags:
 ## Connections
 
 - [[command.ts]] - `contains` [EXTRACTED]
-- [[root.ts]] - `imports` [EXTRACTED]
+- [[root.ts_2]] - `imports` [EXTRACTED]
 - [[useCommandPalette()]] - `calls` [EXTRACTED]
-- [[useInstance()]] - `calls` [EXTRACTED]
 - [[usePowerKCreationCommands()]] - `calls` [EXTRACTED]
 - [[useProject()]] - `calls` [EXTRACTED]
-- [[useUser()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Command_Palette
+#graphify/code #graphify/EXTRACTED #community/Project_Profile

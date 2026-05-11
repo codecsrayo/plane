@@ -1,12 +1,12 @@
 ---
 source_file: "api_rust/src/auth/logout.rs"
 type: "code"
-community: "Community 73"
+community: "Password Email"
 location: "L148"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_73
+  - community/Password_Email
 ---
 
 # space_redirect_url()
@@ -16,4 +16,4 @@ tags:
 - [[logout.rs]] - `contains` [EXTRACTED]
 - [[perform_logout()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_73
+#graphify/code #graphify/EXTRACTED #community/Password_Email

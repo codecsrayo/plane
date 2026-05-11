@@ -1,12 +1,12 @@
 ---
 source_file: "editor/src/core/extensions/table/plugins/drag-handles/column/plugin.ts"
 type: "code"
-community: "Drag Handle"
+community: "Drag Table"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Drag_Handle
+  - community/Drag_Table
 ---
 
 # plugin.ts
@@ -25,4 +25,4 @@ tags:
 - [[helpers.ts]] - `imports_from` [EXTRACTED]
 - [[table.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Drag_Handle
+#graphify/code #graphify/EXTRACTED #community/Drag_Table

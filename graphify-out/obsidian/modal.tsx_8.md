@@ -1,24 +1,23 @@
 ---
-source_file: "components/workspace-notifications/sidebar/notification-card/options/snooze/modal.tsx"
+source_file: "web/core/components/modules/archived-modules/modal.tsx"
 type: "code"
-community: "Notification Snooze"
+community: "Cycles Archived"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Notification_Snooze
+  - community/Cycles_Archived
 ---
 
 # modal.tsx
 
 ## Connections
 
-- [[DateDropdown]] - `imports` [EXTRACTED]
-- [[FormValues_2]] - `contains` [EXTRACTED]
-- [[NotificationSnoozeModal()]] - `contains` [EXTRACTED]
-- [[TNotificationSnoozeModal]] - `contains` [EXTRACTED]
-- [[date.tsx_1]] - `imports_from` [EXTRACTED]
-- [[defaultValues_16]] - `contains` [EXTRACTED]
-- [[root.tsx_47]] - `imports_from` [EXTRACTED]
+- [[ArchiveModuleModal()]] - `contains` [EXTRACTED]
+- [[Props_154]] - `contains` [EXTRACTED]
+- [[use-app-router.tsx]] - `imports_from` [EXTRACTED]
+- [[use-module.ts]] - `imports_from` [EXTRACTED]
+- [[useAppRouter()]] - `imports` [EXTRACTED]
+- [[useModule()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Notification_Snooze
+#graphify/code #graphify/EXTRACTED #community/Cycles_Archived
