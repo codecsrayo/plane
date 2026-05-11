@@ -55,7 +55,7 @@ export function PriorityIcon(props: IPriorityIcon) {
             size={size}
             className={cn(
               {
-                "translate-x-[0.0625rem]": priority === "high",
+                "translate-x-[0.06rem]": priority === "high",
                 "translate-x-0.5": priority === "medium",
                 "translate-x-1": priority === "low",
               },

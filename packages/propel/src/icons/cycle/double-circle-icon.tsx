@@ -19,7 +19,7 @@ export function DoubleCircleIcon({ className = "text-current", ...rest }: ISvgIc
       {...rest}
     >
       <circle cx="12" cy="12" r="9" />
-      <circle cx="12" cy="12" r="5.625" />
+      <circle cx="12" cy="12" r="5.62" />
     </svg>
   );
 }

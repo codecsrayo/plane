@@ -18,7 +18,7 @@ export function SetAsDefaultIcon({ className = "text-current", ...rest }: ISvgIc
       {...rest}
     >
       <path
-        d="M7.29167 0.625V13.9583M12.0057 2.57762L2.57762 12.0057M13.9583 7.29167H0.625M12.0057 12.0057L2.57762 2.57762"
+        d="M7.29167 0.62V13.9583M12.0057 2.58L2.57762 12.01M13.9583 7.29H0.625M12.0057 12.01L2.57762 2.58"
         stroke="currentColor"
         strokeWidth="1.25"
         strokeLinecap="round"
