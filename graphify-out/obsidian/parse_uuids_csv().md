@@ -1,0 +1,21 @@
+---
+source_file: "api_rust/src/routes/issue_filters.rs"
+type: "code"
+community: "Issue Routes Rust API"
+location: "L128"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Issue_Routes_Rust_API
+---
+
+# parse_uuids_csv()
+
+## Connections
+
+- [[apply_issue_filters()]] - `calls` [EXTRACTED]
+- [[apply_nullable_uuid_filter()]] - `calls` [EXTRACTED]
+- [[issue_filters.rs]] - `contains` [EXTRACTED]
+- [[split_csv()]] - `calls` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Issue_Routes_Rust_API

@@ -1,0 +1,18 @@
+---
+source_file: "web/core/components/modules/module-list-item.tsx"
+type: "code"
+community: "Module Analytics"
+location: "L29"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Module_Analytics
+---
+
+# ModuleListItem
+
+## Connections
+
+- [[module-list-item.tsx]] - `contains` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Module_Analytics

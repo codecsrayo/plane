@@ -1,0 +1,19 @@
+---
+source_file: "api_rust/src/jobs/webhook_delivery.rs"
+type: "code"
+community: "Community 116"
+location: "L518"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Community_116
+---
+
+# envelope_shape_matches_django_for_create()
+
+## Connections
+
+- [[build_envelope()]] - `calls` [EXTRACTED]
+- [[webhook_delivery.rs]] - `contains` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Community_116

@@ -1,0 +1,23 @@
+---
+source_file: "web/core/components/common/activity/helper.tsx"
+type: "code"
+community: "Community 190"
+location: "L1"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Community_190
+---
+
+# helper.tsx
+
+## Connections
+
+- [[ActivityIconMap]] - `contains` [EXTRACTED]
+- [[activity-item.tsx]] - `imports_from` [EXTRACTED]
+- [[iconsMap]] - `contains` [EXTRACTED]
+- [[messages()]] - `contains` [EXTRACTED]
+- [[store]] - `imports` [EXTRACTED]
+- [[store-context.tsx]] - `imports_from` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Community_190

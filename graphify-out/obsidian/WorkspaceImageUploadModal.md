@@ -1,0 +1,19 @@
+---
+source_file: "web/core/components/core/modals/workspace-image-upload-modal.tsx"
+type: "code"
+community: "Authentication UI"
+location: "L35"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Authentication_UI
+---
+
+# WorkspaceImageUploadModal
+
+## Connections
+
+- [[workspace-details.tsx]] - `imports` [EXTRACTED]
+- [[workspace-image-upload-modal.tsx]] - `contains` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Authentication_UI

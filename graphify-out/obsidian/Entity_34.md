@@ -1,0 +1,18 @@
+---
+source_file: "api_rust/src/entities/estimate_points.rs"
+type: "code"
+community: "Community 532"
+location: "L73"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Community_532
+---
+
+# Entity
+
+## Connections
+
+- [[.to()_34]] - `method` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Community_532

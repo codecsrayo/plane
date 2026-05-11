@@ -1,0 +1,33 @@
+---
+source_file: "web/core/components/modules/analytics-sidebar/progress-stats.tsx"
+type: "code"
+community: "Cycle Analytics"
+location: "L1"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Cycle_Analytics
+---
+
+# progress-stats.tsx
+
+## Connections
+
+- [[AssigneeStatComponent]] - `imports` [EXTRACTED]
+- [[LabelStatComponent]] - `imports` [EXTRACTED]
+- [[ModuleProgressStats]] - `contains` [EXTRACTED]
+- [[PROGRESS_STATS]] - `imports` [EXTRACTED]
+- [[StateGroupStatComponent]] - `imports` [EXTRACTED]
+- [[TAssigneeData]] - `imports` [EXTRACTED]
+- [[TLabelData]] - `imports` [EXTRACTED]
+- [[TModuleProgressStats]] - `contains` [EXTRACTED]
+- [[TSelectedFilterProgressStats]] - `imports` [EXTRACTED]
+- [[TStateGroupData]] - `imports` [EXTRACTED]
+- [[assignee.tsx_2]] - `imports_from` [EXTRACTED]
+- [[createFilterUpdateHandler()]] - `imports` [EXTRACTED]
+- [[label.tsx_4]] - `imports_from` [EXTRACTED]
+- [[shared.ts_4]] - `imports_from` [EXTRACTED]
+- [[state_group.tsx]] - `imports_from` [EXTRACTED]
+- [[use-local-storage.tsx]] - `imports_from` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Cycle_Analytics

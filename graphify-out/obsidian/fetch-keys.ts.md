@@ -1,0 +1,79 @@
+---
+source_file: "web/core/constants/fetch-keys.ts"
+type: "code"
+community: "Auth Wrappers"
+location: "L1"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Auth_Wrappers
+---
+
+# fetch-keys.ts
+
+## Connections
+
+- [[APPLICATIONS_LIST()]] - `contains` [EXTRACTED]
+- [[APPLICATION_BY_CLIENT_ID()]] - `contains` [EXTRACTED]
+- [[APPLICATION_CATEGORIES_LIST()]] - `contains` [EXTRACTED]
+- [[APPLICATION_DETAILS()]] - `contains` [EXTRACTED]
+- [[CYCLE_ISSUES_WITH_PARAMS()]] - `contains` [EXTRACTED]
+- [[EPICS_PROPERTIES_AND_OPTIONS()]] - `contains` [EXTRACTED]
+- [[EXPORT_SERVICES_LIST()]] - `contains` [EXTRACTED]
+- [[GITHUB_REPOSITORY_INFO()]] - `contains` [EXTRACTED]
+- [[IMPORTER_SERVICES_LIST()]] - `contains` [EXTRACTED]
+- [[ISSUE_DETAILS()]] - `contains` [EXTRACTED]
+- [[JIRA_IMPORTER_DETAIL()]] - `contains` [EXTRACTED]
+- [[PROJECT_ALL_CYCLES()]] - `contains` [EXTRACTED]
+- [[PROJECT_DETAILS()]] - `contains` [EXTRACTED]
+- [[PROJECT_ESTIMATES()]] - `contains` [EXTRACTED]
+- [[PROJECT_INTAKE_STATE()]] - `contains` [EXTRACTED]
+- [[PROJECT_LABELS()]] - `contains` [EXTRACTED]
+- [[PROJECT_MEMBERS()]] - `contains` [EXTRACTED]
+- [[PROJECT_MEMBER_PREFERENCES()]] - `contains` [EXTRACTED]
+- [[PROJECT_ME_INFORMATION()]] - `contains` [EXTRACTED]
+- [[PROJECT_MILESTONES()]] - `contains` [EXTRACTED]
+- [[PROJECT_MODULES()]] - `contains` [EXTRACTED]
+- [[PROJECT_STATES()]] - `contains` [EXTRACTED]
+- [[PROJECT_VIEWS()]] - `contains` [EXTRACTED]
+- [[PROJECT_WORKFLOWS()]] - `contains` [EXTRACTED]
+- [[SLACK_CHANNEL_INFO()]] - `contains` [EXTRACTED]
+- [[USER_ACTIVITY()]] - `contains` [EXTRACTED]
+- [[USER_PROFILE_ACTIVITY()]] - `contains` [EXTRACTED]
+- [[USER_PROFILE_DATA()]] - `contains` [EXTRACTED]
+- [[USER_PROFILE_PROJECT_SEGREGATION()]] - `contains` [EXTRACTED]
+- [[WORKSPACE_ACTIVE_CYCLES_LIST()]] - `contains` [EXTRACTED]
+- [[WORKSPACE_CYCLES()]] - `contains` [EXTRACTED]
+- [[WORKSPACE_ESTIMATES()]] - `contains` [EXTRACTED]
+- [[WORKSPACE_FAVORITE()]] - `contains` [EXTRACTED]
+- [[WORKSPACE_INTEGRATIONS()]] - `contains` [EXTRACTED]
+- [[WORKSPACE_INVITATION()]] - `contains` [EXTRACTED]
+- [[WORKSPACE_LABELS()]] - `contains` [EXTRACTED]
+- [[WORKSPACE_MEMBERS()]] - `contains` [EXTRACTED]
+- [[WORKSPACE_MEMBER_ACTIVITY()]] - `contains` [EXTRACTED]
+- [[WORKSPACE_MEMBER_ME_INFORMATION()]] - `contains` [EXTRACTED]
+- [[WORKSPACE_MODULES()]] - `contains` [EXTRACTED]
+- [[WORKSPACE_PARTIAL_PROJECTS()]] - `contains` [EXTRACTED]
+- [[WORKSPACE_PROJECTS_ROLES_INFORMATION()]] - `contains` [EXTRACTED]
+- [[WORKSPACE_PROJECT_NAVIGATION_PREFERENCES()]] - `contains` [EXTRACTED]
+- [[WORKSPACE_SIDEBAR_PREFERENCES()]] - `contains` [EXTRACTED]
+- [[WORKSPACE_STATES()]] - `contains` [EXTRACTED]
+- [[WORKSPACE_WORKFLOW_STATES()]] - `contains` [EXTRACTED]
+- [[WORK_ITEM_TYPES_PROPERTIES_AND_OPTIONS()]] - `contains` [EXTRACTED]
+- [[activity-list.tsx_1]] - `imports_from` [EXTRACTED]
+- [[activity.tsx_1]] - `imports_from` [EXTRACTED]
+- [[guide.tsx]] - `imports_from` [EXTRACTED]
+- [[paramsToKey()]] - `contains` [EXTRACTED]
+- [[prev-exports.tsx]] - `imports_from` [EXTRACTED]
+- [[profile-activity-list.tsx]] - `imports_from` [EXTRACTED]
+- [[project-settings-member-defaults.tsx]] - `imports_from` [EXTRACTED]
+- [[project-wrapper.tsx]] - `imports_from` [EXTRACTED]
+- [[select-channel.tsx]] - `imports_from` [EXTRACTED]
+- [[single-integration-card.tsx]] - `imports_from` [EXTRACTED]
+- [[use-cycles-details.ts]] - `imports_from` [EXTRACTED]
+- [[use-integration-popup.tsx]] - `imports_from` [EXTRACTED]
+- [[use-workspace-issue-properties.ts]] - `imports_from` [EXTRACTED]
+- [[workspace-activity-list.tsx]] - `imports_from` [EXTRACTED]
+- [[workspace-wrapper.tsx]] - `imports_from` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Auth_Wrappers

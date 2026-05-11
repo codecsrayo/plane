@@ -1,0 +1,34 @@
+---
+source_file: "web/core/components/account/auth-forms/auth-root.tsx"
+type: "code"
+community: "Community 46"
+location: "L1"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Community_46
+---
+
+# auth-root.tsx
+
+## Connections
+
+- [[AuthBanner()]] - `imports` [EXTRACTED]
+- [[AuthContainer()]] - `contains` [EXTRACTED]
+- [[AuthFormRoot]] - `imports` [EXTRACTED]
+- [[AuthHeader_1]] - `imports` [EXTRACTED]
+- [[AuthHeaderBase()_1]] - `imports` [EXTRACTED]
+- [[AuthRoot]] - `contains` [EXTRACTED]
+- [[TAuthRoot]] - `contains` [EXTRACTED]
+- [[TermsAndConditions()]] - `imports` [EXTRACTED]
+- [[auth-banner.tsx]] - `imports_from` [EXTRACTED]
+- [[auth-base.tsx]] - `imports_from` [EXTRACTED]
+- [[auth-header.tsx]] - `imports_from` [EXTRACTED]
+- [[form-root.tsx]] - `imports_from` [EXTRACTED]
+- [[index.ts_5]] - `imports_from` [EXTRACTED]
+- [[terms-and-conditions.tsx]] - `imports_from` [EXTRACTED]
+- [[use-instance.ts]] - `imports_from` [EXTRACTED]
+- [[useInstance()]] - `imports` [EXTRACTED]
+- [[useOAuthConfig()]] - `imports` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Community_46

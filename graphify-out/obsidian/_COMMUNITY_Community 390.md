@@ -1,0 +1,23 @@
+---
+type: community
+cohesion: 0.67
+members: 3
+---
+
+# Community 390
+
+**Cohesion:** 0.67 - moderately connected
+**Members:** 3 nodes
+
+## Members
+
+- [[Model_71]] - code - api_rust/src/entities/cycle_user_properties.rs
+- [[Relation_71]] - code - api_rust/src/entities/cycle_user_properties.rs
+- [[cycle_user_properties.rs]] - code - api_rust/src/entities/cycle_user_properties.rs
+
+## Live Query (requires Dataview plugin)
+
+```dataview
+TABLE source_file, type FROM #community/Community_390
+SORT file.name ASC
+```

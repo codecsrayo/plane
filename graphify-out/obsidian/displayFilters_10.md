@@ -1,0 +1,18 @@
+---
+source_file: "web/core/store/project/project_filter.store.ts"
+type: "code"
+community: "Community 52"
+location: "L123"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Community_52
+---
+
+# displayFilters
+
+## Connections
+
+- [[project_filter.store.ts]] - `contains` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Community_52
