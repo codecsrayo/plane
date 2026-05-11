@@ -186,7 +186,7 @@ export function CreateApiTokenForm(props: Props) {
                             }
                           )}
                         >
-                          <Calendar className="h-3 w-3" />
+                          <Calendar className="size-3" />
                           {value === "custom"
                             ? "Custom date"
                             : selectedOption
@@ -214,7 +214,7 @@ export function CreateApiTokenForm(props: Props) {
                     value={customDate}
                     onChange={(date) => setCustomDate(date)}
                     minDate={tomorrow}
-                    icon={<Calendar className="h-3 w-3" />}
+                    icon={<Calendar className="size-3" />}
                     buttonVariant="border-with-text"
                     placeholder="Set date"
                     disabled={neverExpires}

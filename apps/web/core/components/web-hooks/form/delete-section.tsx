@@ -22,7 +22,7 @@ export function WebhookDeleteSection(props: Props) {
         <div className="w-full">
           <Disclosure.Button as="button" type="button" className="flex w-full items-center justify-between py-4">
             <span className="text-16 tracking-tight">Danger zone</span>
-            {open ? <ChevronUpIcon className="h-5 w-5" /> : <ChevronDownIcon className="h-5 w-5" />}
+            {open ? <ChevronUpIcon className="size-5" /> : <ChevronDownIcon className="size-5" />}
           </Disclosure.Button>
 
           <Transition

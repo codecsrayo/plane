@@ -85,7 +85,7 @@ const HeaderFilters = observer(function HeaderFilters({
       />
       <div className={cn(filterClassname)}>
         <FiltersDropdown
-          icon={<ListFilter className="h-3 w-3" />}
+          icon={<ListFilter className="size-3" />}
           title={t("common.filters")}
           placement="bottom-end"
           isFiltersApplied={isFiltersApplied}

@@ -76,7 +76,7 @@ export const Controlled: Story = {
             <div className="flex items-start justify-between">
               <h3 className="text-13 font-semibold">Controlled State</h3>
               <button onClick={() => setOpen(false)} className="hover:bg-gray-100 rounded-full p-1">
-                <CloseIcon className="h-4 w-4" />
+                <CloseIcon className="size-4" />
               </button>
             </div>
             <p className="text-gray-600 mt-2 text-13">Current state: {open ? "Open" : "Closed"}</p>
@@ -295,7 +295,7 @@ export const ColorPicker: Story = {
     return (
       <Popover>
         <Popover.Button className="border-gray-300 hover:bg-gray-50 flex items-center gap-2 rounded-sm border bg-white px-4 py-2">
-          <div className="h-4 w-4 rounded-sm" style={{ backgroundColor: selectedColor }} />
+          <div className="size-4 rounded-sm" style={{ backgroundColor: selectedColor }} />
           <span className="text-13">Pick Color</span>
         </Popover.Button>
         <Popover.Panel className="border-gray-200 shadow-lg w-48 rounded-lg border bg-white p-3">
@@ -305,7 +305,7 @@ export const ColorPicker: Story = {
               <button
                 key={color}
                 onClick={() => setSelectedColor(color)}
-                className="h-8 w-8 rounded-sm border-2 transition-transform hover:scale-110"
+                className="size-8 rounded-sm border-2 transition-transform hover:scale-110"
                 style={{
                   backgroundColor: color,
                   borderColor: selectedColor === color ? "#000" : "transparent",

@@ -15,31 +15,31 @@ export const getSizeInfo = (size: TAvatarSize) => {
   switch (size) {
     case "sm":
       return {
-        avatarSize: "h-4 w-4",
+        avatarSize: "size-4",
         fontSize: "text-11",
         spacing: "-space-x-1",
       };
     case "md":
       return {
-        avatarSize: "h-5 w-5",
+        avatarSize: "size-5",
         fontSize: "text-11",
         spacing: "-space-x-1",
       };
     case "base":
       return {
-        avatarSize: "h-6 w-6",
+        avatarSize: "size-6",
         fontSize: "text-13",
         spacing: "-space-x-1.5",
       };
     case "lg":
       return {
-        avatarSize: "h-7 w-7",
+        avatarSize: "size-7",
         fontSize: "text-13",
         spacing: "-space-x-1.5",
       };
     default:
       return {
-        avatarSize: "h-5 w-5",
+        avatarSize: "size-5",
         fontSize: "text-11",
         spacing: "-space-x-1",
       };

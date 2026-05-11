@@ -156,7 +156,7 @@ export function ExistingIssuesListModal(props: Props) {
       >
         <div className="relative m-1">
           <SearchIcon
-            className="text-opacity-40 pointer-events-none absolute top-3.5 left-4 h-5 w-5 text-primary"
+            className="text-opacity-40 pointer-events-none absolute top-3.5 left-4 size-5 text-primary"
             aria-hidden="true"
           />
           <Combobox.Input
@@ -189,7 +189,7 @@ export function ExistingIssuesListModal(props: Props) {
                     className="group p-1"
                     onClick={() => setSelectedIssues((prevData) => prevData.filter((i) => i.id !== issue.id))}
                   >
-                    <CloseIcon className="h-3 w-3 text-secondary group-hover:text-primary" />
+                    <CloseIcon className="size-3 text-secondary group-hover:text-primary" />
                   </button>
                 </div>
               ))}
@@ -299,7 +299,7 @@ export function ExistingIssuesListModal(props: Props) {
                           rel="noopener noreferrer"
                           onClick={(e) => e.stopPropagation()}
                         >
-                          <Rocket className="h-4 w-4" />
+                          <Rocket className="size-4" />
                         </a>
                       </Combobox.Option>
                     );

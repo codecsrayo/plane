@@ -84,7 +84,7 @@ export const NotificationItem = observer(function NotificationItem(props: TNotif
       )}
 
       <div className="relative flex w-full gap-2">
-        <div className="relative flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-layer-1">
+        <div className="relative flex size-12 flex-shrink-0 items-center justify-center rounded-full bg-layer-1">
           {notificationTriggeredBy && (
             <Avatar
               name={notificationTriggeredBy.display_name || notificationTriggeredBy?.first_name}
@@ -124,7 +124,7 @@ export const NotificationItem = observer(function NotificationItem(props: TNotif
             <div className="flex-shrink-0">
               {notification?.snoozed_till ? (
                 <p className="flex flex-shrink-0 items-center justify-end gap-x-1 text-tertiary">
-                  <Clock className="h-4 w-4" />
+                  <Clock className="size-4" />
                   <span>
                     Till {renderFormattedDate(notification.snoozed_till)},&nbsp;
                     {renderFormattedTime(notification.snoozed_till, "12-hour")}

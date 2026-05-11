@@ -96,7 +96,7 @@ export const RowDirection: Story = {
     children: (
       <>
         <div className="flex-shrink-0">
-          <div className="bg-blue-500 h-12 w-12 rounded-sm" />
+          <div className="bg-blue-500 size-12 rounded-sm" />
         </div>
         <div className="flex-1">
           <h3 className="text-16 font-semibold">Row Direction</h3>
@@ -133,7 +133,7 @@ export const UserCard: Story = {
     direction: ECardDirection.ROW,
     children: (
       <>
-        <div className="bg-blue-500 h-16 w-16 flex-shrink-0 rounded-full" />
+        <div className="bg-blue-500 size-16 flex-shrink-0 rounded-full" />
         <div className="flex-1">
           <h3 className="text-16 font-semibold">John Doe</h3>
           <p className="text-gray-600 text-13">Software Engineer</p>
@@ -205,7 +205,7 @@ export const AllDirections: Story = {
           <button className="bg-blue-500 w-fit rounded-sm px-4 py-2 text-on-color">Button</button>
         </Card>
         <Card direction={ECardDirection.ROW}>
-          <div className="bg-blue-500 h-12 w-12 flex-shrink-0 rounded-sm" />
+          <div className="bg-blue-500 size-12 flex-shrink-0 rounded-sm" />
           <div>
             <h3 className="font-semibold">Row Direction</h3>
             <p className="text-gray-600 text-13">Horizontal layout</p>

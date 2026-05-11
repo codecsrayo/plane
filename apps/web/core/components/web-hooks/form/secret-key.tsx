@@ -115,7 +115,7 @@ export const WebhookSecretKey = observer(function WebhookSecretKey(props: Props)
                 ) : (
                   <div className="mr-2 flex items-center gap-1.5 overflow-hidden">
                     {range(30).map((index) => (
-                      <div key={index} className="h-1 w-1 flex-shrink-0 rounded-full bg-(--text-color-disabled)" />
+                      <div key={index} className="size-1 flex-shrink-0 rounded-full bg-(--text-color-disabled)" />
                     ))}
                   </div>
                 )}
@@ -125,7 +125,7 @@ export const WebhookSecretKey = observer(function WebhookSecretKey(props: Props)
                   {SECRET_KEY_OPTIONS.map((option) => (
                     <Tooltip key={option.key} tooltipContent={option.label} isMobile={isMobile}>
                       <button type="button" className="grid flex-shrink-0 place-items-center" onClick={option.onClick}>
-                        <option.Icon className="h-3 w-3 text-placeholder" />
+                        <option.Icon className="size-3 text-placeholder" />
                       </button>
                     </Tooltip>
                   ))}

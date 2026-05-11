@@ -72,7 +72,7 @@ export const WithIcon: Story = {
     tooltipContent: "Click here for help",
     children: (
       <button className="hover:bg-gray-100 rounded-full p-2">
-        <HelpCircle className="text-gray-600 h-5 w-5" />
+        <HelpCircle className="text-gray-600 size-5" />
       </button>
     ),
   },
@@ -225,7 +225,7 @@ export const IconButtons: Story = {
         <Tooltip tooltipContent="Edit" position="top">
           <button className="hover:bg-gray-100 rounded-sm p-2">
             <svg
-              className="text-gray-600 h-5 w-5"
+              className="text-gray-600 size-5"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -243,7 +243,7 @@ export const IconButtons: Story = {
         <Tooltip tooltipContent="Delete" position="top">
           <button className="hover:bg-gray-100 rounded-sm p-2">
             <svg
-              className="h-5 w-5 text-danger-primary"
+              className="size-5 text-danger-primary"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -261,7 +261,7 @@ export const IconButtons: Story = {
         <Tooltip tooltipContent="Share" position="top">
           <button className="hover:bg-gray-100 rounded-sm p-2">
             <svg
-              className="text-blue-600 h-5 w-5"
+              className="text-blue-600 size-5"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -298,7 +298,7 @@ export const InFormField: Story = {
             tooltipContent="Enter a valid email address that you have access to. We'll send a verification link."
             position="right"
           >
-            <HelpCircle className="text-gray-400 h-4 w-4 cursor-help" />
+            <HelpCircle className="text-gray-400 size-4 cursor-help" />
           </Tooltip>
         </label>
         <input

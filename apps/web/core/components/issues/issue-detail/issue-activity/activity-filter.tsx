@@ -34,7 +34,7 @@ export const ActivityFilter = observer(function ActivityFilter(props: TActivityF
         <>
           <IconButton variant="tertiary" icon={ListFilter} />
           {selectedFilters.length < filterOptions.length && (
-            <span className="absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full bg-accent-primary" />
+            <span className="absolute -top-0.5 -right-0.5 size-2 rounded-full bg-accent-primary" />
           )}
         </>
       }
@@ -50,7 +50,7 @@ export const ActivityFilter = observer(function ActivityFilter(props: TActivityF
         >
           <div
             className={cn(
-              "flex h-3 w-3 flex-shrink-0 items-center justify-center rounded-xs bg-surface-2 transition-all",
+              "flex size-3 flex-shrink-0 items-center justify-center rounded-xs bg-surface-2 transition-all",
               {
                 "bg-accent-primary text-on-color": item.isSelected,
                 "bg-layer-1 text-placeholder": item.isSelected && selectedFilters.length === 1,

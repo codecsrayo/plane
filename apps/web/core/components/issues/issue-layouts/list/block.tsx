@@ -338,8 +338,8 @@ export const IssueBlock = observer(function IssueBlock(props: IssueBlockProps) {
               </div>
             </>
           ) : (
-            <div className="h-4 w-4">
-              <Spinner className="h-4 w-4" />
+            <div className="size-4">
+              <Spinner className="size-4" />
             </div>
           )}
         </div>

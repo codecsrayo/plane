@@ -32,7 +32,7 @@ export function AuthenticationMethodCard(props: Props) {
         })}
       >
         <div className="shrink-0">
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-layer-1">{icon}</div>
+          <div className="flex size-10 items-center justify-center rounded-full bg-layer-1">{icon}</div>
         </div>
         <div className="grow">
           <div

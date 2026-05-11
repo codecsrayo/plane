@@ -283,7 +283,7 @@ export const IssueDescriptionEditor = observer(function IssueDescriptionEditor(p
                     onClick={() => setGptAssistantModal((prevData) => !prevData)}
                     tabIndex={-1}
                   >
-                    <Sparkle className="h-4 w-4" />
+                    <Sparkle className="size-4" />
                     AI
                   </button>
                 }

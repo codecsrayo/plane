@@ -53,7 +53,7 @@ const SidebarDropdownItem = observer(function SidebarDropdownItem(props: TProps)
         <div className="flex items-center justify-between gap-1 rounded-sm p-1 text-13 text-primary">
           <div className="relative flex w-[80%] items-center justify-start gap-2.5">
             <span
-              className={`relative flex h-8 w-8 flex-shrink-0 items-center justify-center border-subtle p-2 text-14 font-medium uppercase ${
+              className={`relative flex size-8 flex-shrink-0 items-center justify-center border-subtle p-2 text-14 font-medium uppercase ${
                 !workspace?.logo_url && "rounded-md bg-[#026292] text-on-color"
               }`}
             >
@@ -75,14 +75,14 @@ const SidebarDropdownItem = observer(function SidebarDropdownItem(props: TProps)
               </div>
               <div className="flex w-fit gap-2 text-13 text-tertiary capitalize">
                 <span>{getUserRole(workspace.role)?.toLowerCase() || "guest"}</span>
-                <div className="m-auto h-1 w-1 rounded-full bg-layer-1/50" />
+                <div className="m-auto size-1 rounded-full bg-layer-1/50" />
                 <span className="capitalize">{t("member", { count: workspace.total_members || 0 })}</span>
               </div>
             </div>
           </div>
           {workspace.id === activeWorkspace?.id ? (
             <span className="flex-shrink-0 p-1">
-              <CheckIcon className="h-5 w-5 text-primary" />
+              <CheckIcon className="size-5 text-primary" />
             </span>
           ) : (
             <SubscriptionPill workspace={workspace} />
@@ -100,7 +100,7 @@ const SidebarDropdownItem = observer(function SidebarDropdownItem(props: TProps)
                   }}
                   className="flex gap-1.5 rounded-md border border-strong bg-layer-2 px-2.5 py-1.5 text-secondary transition-colors hover:border-strong hover:text-secondary hover:shadow-raised-100"
                 >
-                  <Settings className="my-auto h-4 w-4 flex-shrink-0" />
+                  <Settings className="my-auto size-4 flex-shrink-0" />
                   <span className="my-auto text-13 font-medium whitespace-nowrap">{t("settings")}</span>
                 </Link>
               )}
@@ -113,7 +113,7 @@ const SidebarDropdownItem = observer(function SidebarDropdownItem(props: TProps)
                   }}
                   className="flex gap-1.5 rounded-md border border-strong bg-layer-2 px-2.5 py-1.5 text-secondary transition-colors hover:border-strong hover:text-secondary hover:shadow-raised-100"
                 >
-                  <UserPlus className="my-auto h-4 w-4 flex-shrink-0" />
+                  <UserPlus className="my-auto size-4 flex-shrink-0" />
                   <span className="my-auto text-13 font-medium whitespace-nowrap">
                     {t("project_settings.members.invite_members.title")}
                   </span>

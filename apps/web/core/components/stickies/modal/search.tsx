@@ -97,7 +97,7 @@ export const StickySearch = observer(function StickySearch() {
               fetchStickies();
             }}
           >
-            <CloseIcon className="h-3 w-3" />
+            <CloseIcon className="size-3" />
           </button>
         )}
       </div>

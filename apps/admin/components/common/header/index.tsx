@@ -67,7 +67,7 @@ export const AdminHeader = observer(function AdminHeader() {
                   <BreadcrumbLink
                     href="/general/"
                     label="Settings"
-                    icon={<Settings className="h-4 w-4 text-tertiary" />}
+                    icon={<Settings className="size-4 text-tertiary" />}
                   />
                 }
               />

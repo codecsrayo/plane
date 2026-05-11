@@ -230,7 +230,7 @@ export const MultipleCounters: Story = {
               <div className="text-13 text-placeholder">Likes</div>
               <div className="flex items-center gap-2">
                 <button
-                  className="flex h-8 w-8 items-center justify-center rounded-sm bg-layer-1 hover:bg-surface-2"
+                  className="flex size-8 items-center justify-center rounded-sm bg-layer-1 hover:bg-surface-2"
                   onClick={() => setLikes((prev) => prev + 1)}
                 >
                   +
@@ -244,7 +244,7 @@ export const MultipleCounters: Story = {
               <div className="text-13 text-placeholder">Comments</div>
               <div className="flex items-center gap-2">
                 <button
-                  className="flex h-8 w-8 items-center justify-center rounded-sm bg-layer-1 hover:bg-surface-2"
+                  className="flex size-8 items-center justify-center rounded-sm bg-layer-1 hover:bg-surface-2"
                   onClick={() => setComments((prev) => prev + 1)}
                 >
                   +
@@ -258,7 +258,7 @@ export const MultipleCounters: Story = {
               <div className="text-13 text-placeholder">Shares</div>
               <div className="flex items-center gap-2">
                 <button
-                  className="flex h-8 w-8 items-center justify-center rounded-sm bg-layer-1 hover:bg-surface-2"
+                  className="flex size-8 items-center justify-center rounded-sm bg-layer-1 hover:bg-surface-2"
                   onClick={() => setShares((prev) => prev + 1)}
                 >
                   +

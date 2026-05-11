@@ -28,7 +28,7 @@ export function NotificationItemOptionButton(props: TNotificationItemOptionButto
       <button
         type="button"
         className={cn(
-          "relative flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-xs bg-layer-1 outline-none hover:bg-surface-2",
+          "relative flex size-5 flex-shrink-0 items-center justify-center rounded-xs bg-layer-1 outline-none hover:bg-surface-2",
           buttonClassName
         )}
         onClick={(e) => {

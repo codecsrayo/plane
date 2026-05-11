@@ -43,7 +43,7 @@ export const CyclesView = observer(function CyclesView(props: ICyclesView) {
         <div className="text-center">
           <img
             src={searchQuery.trim() === "" ? AllFiltersImage : NameFilterImage}
-            className="mx-auto h-36 w-36 object-contain sm:h-48 sm:w-48"
+            className="mx-auto size-36 object-contain sm:h-48 sm:w-48"
             alt="No matching cycles"
           />
           <h5 className="mt-7 mb-1 text-18 font-medium">{t("project_cycles.no_matching_cycles")}</h5>

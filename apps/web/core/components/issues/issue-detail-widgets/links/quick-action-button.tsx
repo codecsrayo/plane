@@ -32,7 +32,7 @@ export const IssueLinksActionButton = observer(function IssueLinksActionButton(p
 
   return (
     <button type="button" onClick={handleOnClick} disabled={disabled}>
-      {customButton ? customButton : <PlusIcon className="h-4 w-4" />}
+      {customButton ? customButton : <PlusIcon className="size-4" />}
     </button>
   );
 });

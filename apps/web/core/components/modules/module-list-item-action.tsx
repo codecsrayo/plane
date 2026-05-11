@@ -167,7 +167,7 @@ export const ModuleListItemAction = observer(function ModuleListItemAction(props
         </span>
       ) : (
         <Tooltip tooltipContent="No lead">
-          <SquareUser className="h-4 w-4 text-tertiary" />
+          <SquareUser className="size-4 text-tertiary" />
         </Tooltip>
       )}
 

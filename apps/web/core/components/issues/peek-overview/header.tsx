@@ -159,13 +159,13 @@ export const IssuePeekOverviewHeader = observer(function IssuePeekOverviewHeader
       <div className="flex items-center gap-4">
         <Tooltip tooltipContent={t("common.close_peek_view")} isMobile={isMobile}>
           <button onClick={removeRoutePeekId}>
-            <MoveRight className="h-4 w-4 text-tertiary hover:text-secondary" />
+            <MoveRight className="size-4 text-tertiary hover:text-secondary" />
           </button>
         </Tooltip>
 
         <Tooltip tooltipContent={t("issue.open_in_full_screen")} isMobile={isMobile}>
           <Link href={workItemLink} onClick={() => removeRoutePeekId()}>
-            <MoveDiagonal className="h-4 w-4 text-tertiary hover:text-secondary" />
+            <MoveDiagonal className="size-4 text-tertiary hover:text-secondary" />
           </Link>
         </Tooltip>
         {currentMode && embedIssue === false && (
@@ -176,7 +176,7 @@ export const IssuePeekOverviewHeader = observer(function IssuePeekOverviewHeader
               customButton={
                 <Tooltip tooltipContent={t("common.toggle_peek_view_layout")} isMobile={isMobile}>
                   <button type="button" className="">
-                    <currentMode.icon className="h-4 w-4 text-tertiary hover:text-secondary" />
+                    <currentMode.icon className="size-4 text-tertiary hover:text-secondary" />
                   </button>
                 </Tooltip>
               }
@@ -188,7 +188,7 @@ export const IssuePeekOverviewHeader = observer(function IssuePeekOverviewHeader
                       currentMode.key === mode.key ? "text-secondary" : "text-placeholder hover:text-secondary"
                     }`}
                   >
-                    <mode.icon className="-my-1 h-4 w-4 flex-shrink-0" />
+                    <mode.icon className="-my-1 size-4 flex-shrink-0" />
                     {t(mode.i18n_title)}
                   </div>
                 </CustomSelect.Option>

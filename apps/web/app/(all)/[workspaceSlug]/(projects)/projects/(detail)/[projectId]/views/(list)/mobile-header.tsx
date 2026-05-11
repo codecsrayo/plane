@@ -40,14 +40,14 @@ export const ViewMobileHeader = observer(function ViewMobileHeader() {
         </Row>
         <div className="flex flex-grow items-center justify-center border-l border-subtle text-13 text-secondary">
           <FiltersDropdown
-            icon={<ListFilter className="h-3 w-3" />}
+            icon={<ListFilter className="size-3" />}
             title="Filters"
             placement="bottom-end"
             isFiltersApplied={false}
             menuButton={
               <Row className="flex items-center text-13 text-secondary">
                 Filters
-                <ChevronDownIcon className="ml-2 h-4 w-4 text-secondary" strokeWidth={2} />
+                <ChevronDownIcon className="ml-2 size-4 text-secondary" strokeWidth={2} />
               </Row>
             }
           >

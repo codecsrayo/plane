@@ -166,10 +166,11 @@ export const WorkspaceDetails = observer(function WorkspaceDetails() {
           </div>
           <div className="flex flex-col gap-1">
             <div className="mb:-my-5 text-h5-semibold leading-6">{watch("name")}</div>
-            <button type="button" onClick={handleCopyUrl} className="text-left text-body-xs-regular tracking-tight">{`${WEB_URL.replace(
-              "http://",
-              ""
-            ).replace("https://", "")}${currentWorkspace.slug}`}</button>
+            <button
+              type="button"
+              onClick={handleCopyUrl}
+              className="text-left text-body-xs-regular tracking-tight"
+            >{`${WEB_URL.replace("http://", "").replace("https://", "")}${currentWorkspace.slug}`}</button>
             {isAdmin && (
               <button
                 type="button"
@@ -178,7 +179,7 @@ export const WorkspaceDetails = observer(function WorkspaceDetails() {
               >
                 {workspaceLogo && workspaceLogo !== "" ? (
                   <>
-                    <EditIcon className="h-3 w-3" />
+                    <EditIcon className="size-3" />
                     {t("workspace_settings.settings.general.edit_logo")}
                   </>
                 ) : (

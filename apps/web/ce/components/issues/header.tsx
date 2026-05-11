@@ -75,7 +75,7 @@ export const IssuesHeader = observer(function IssuesHeader() {
                 <BreadcrumbLink
                   label="Work Items"
                   href={`/${workspaceSlug}/projects/${projectId}/issues/`}
-                  icon={<WorkItemsIcon className="h-4 w-4 text-tertiary" />}
+                  icon={<WorkItemsIcon className="size-4 text-tertiary" />}
                   isLast
                 />
               }
@@ -101,7 +101,7 @@ export const IssuesHeader = observer(function IssuesHeader() {
           >
             <Circle className="h-1.5 w-1.5 fill-accent-primary" strokeWidth={2} />
             {t("workspace_projects.network.public.title")}
-            <NewTabIcon className="hidden h-3 w-3 group-hover:block" strokeWidth={2} />
+            <NewTabIcon className="hidden size-3 group-hover:block" strokeWidth={2} />
           </a>
         ) : (
           <></>

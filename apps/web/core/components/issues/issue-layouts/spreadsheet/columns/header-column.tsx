@@ -55,20 +55,20 @@ export function HeaderColumn(props: Props) {
       customButton={
         <Row className="flex w-full cursor-pointer items-center justify-between gap-1.5 py-2 text-13 text-secondary hover:text-primary">
           <div className="flex items-center gap-1.5">
-            {<SpreadSheetPropertyIcon iconKey={propertyDetails.icon} className="h-4 w-4 text-placeholder" />}
+            {<SpreadSheetPropertyIcon iconKey={propertyDetails.icon} className="size-4 text-placeholder" />}
             {property === "sub_issue_count" && isEpic ? t("issue.label", { count: 2 }) : t(propertyDetails.i18n_title)}
           </div>
           <div className="ml-3 flex">
             {activeSortingProperty === property && (
               <div className="flex h-3.5 w-3.5 items-center justify-center rounded-full">
                 {propertyDetails.ascendingOrderKey === displayFilters.order_by ? (
-                  <ArrowDownWideNarrow className="h-3 w-3" />
+                  <ArrowDownWideNarrow className="size-3" />
                 ) : (
-                  <ArrowUpNarrowWide className="h-3 w-3" />
+                  <ArrowUpNarrowWide className="size-3" />
                 )}
               </div>
             )}
-            <ChevronDownIcon className="h-3 w-3" aria-hidden="true" />
+            <ChevronDownIcon className="size-3" aria-hidden="true" />
           </div>
         </Row>
       }
@@ -85,13 +85,13 @@ export function HeaderColumn(props: Props) {
           }`}
         >
           <div className="flex items-center gap-2">
-            <ArrowDownWideNarrow className="h-3 w-3 stroke-[1.5]" />
+            <ArrowDownWideNarrow className="size-3 stroke-[1.5]" />
             <span>{propertyDetails.ascendingOrderTitle}</span>
-            <MoveRight className="h-3 w-3" />
+            <MoveRight className="size-3" />
             <span>{propertyDetails.descendingOrderTitle}</span>
           </div>
 
-          {selectedMenuItem === `${propertyDetails.ascendingOrderKey}_${property}` && <CheckIcon className="h-3 w-3" />}
+          {selectedMenuItem === `${propertyDetails.ascendingOrderKey}_${property}` && <CheckIcon className="size-3" />}
         </div>
       </CustomMenu.MenuItem>
       <CustomMenu.MenuItem onClick={() => handleOrderBy(propertyDetails.descendingOrderKey, property)}>
@@ -103,15 +103,13 @@ export function HeaderColumn(props: Props) {
           }`}
         >
           <div className="flex items-center gap-2">
-            <ArrowUpNarrowWide className="h-3 w-3 stroke-[1.5]" />
+            <ArrowUpNarrowWide className="size-3 stroke-[1.5]" />
             <span>{propertyDetails.descendingOrderTitle}</span>
-            <MoveRight className="h-3 w-3" />
+            <MoveRight className="size-3" />
             <span>{propertyDetails.ascendingOrderTitle}</span>
           </div>
 
-          {selectedMenuItem === `${propertyDetails.descendingOrderKey}_${property}` && (
-            <CheckIcon className="h-3 w-3" />
-          )}
+          {selectedMenuItem === `${propertyDetails.descendingOrderKey}_${property}` && <CheckIcon className="size-3" />}
         </div>
       </CustomMenu.MenuItem>
       {selectedMenuItem &&
@@ -124,7 +122,7 @@ export function HeaderColumn(props: Props) {
             onClick={() => handleOrderBy("-created_at", property)}
           >
             <div className="flex items-center gap-2 px-1">
-              <Eraser className="h-3 w-3" />
+              <Eraser className="size-3" />
               <span>{t("common.actions.clear_sorting")}</span>
             </div>
           </CustomMenu.MenuItem>

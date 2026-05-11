@@ -115,7 +115,7 @@ export const CycleIssuesMobileHeader = observer(function CycleIssuesMobileHeader
               }}
               className="flex items-center gap-2"
             >
-              <IssueLayoutIcon layout={layout.key} className="h-3 w-3" />
+              <IssueLayoutIcon layout={layout.key} className="size-3" />
               <div className="text-tertiary">{t(layout.titleTranslationKey)}</div>
             </CustomMenu.MenuItem>
           ))}
@@ -127,7 +127,7 @@ export const CycleIssuesMobileHeader = observer(function CycleIssuesMobileHeader
             menuButton={
               <span className="flex items-center text-13 text-secondary">
                 {t("common.display")}
-                <ChevronDownIcon className="ml-2 h-4 w-4 text-secondary" />
+                <ChevronDownIcon className="ml-2 size-4 text-secondary" />
               </span>
             }
           >

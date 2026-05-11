@@ -41,7 +41,7 @@ export const ChangeWorkItemStateList = observer(function ChangeWorkItemStateList
                 />
                 <p>{state.name}</p>
               </div>
-              <div>{state.id === currentStateId && <CheckIcon className="h-3 w-3" />}</div>
+              <div>{state.id === currentStateId && <CheckIcon className="size-3" />}</div>
             </Command.Item>
           ))
         ) : (

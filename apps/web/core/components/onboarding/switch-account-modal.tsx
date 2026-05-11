@@ -87,7 +87,7 @@ export function SwitchAccountModal(props: Props) {
                   <div className="flex gap-x-4">
                     <div className="flex items-start">
                       <div className="grid place-items-center rounded-full bg-accent-primary/20 p-4">
-                        <ArrowRightLeft className="h-5 w-5 text-accent-primary" aria-hidden="true" />
+                        <ArrowRightLeft className="size-5 text-accent-primary" aria-hidden="true" />
                       </div>
                     </div>
                     <div className="flex flex-col gap-y-6 py-3">

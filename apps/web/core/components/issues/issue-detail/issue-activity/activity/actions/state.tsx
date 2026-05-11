@@ -26,7 +26,7 @@ export const IssueStateActivity = observer(function IssueStateActivity(props: TI
   if (!activity) return <></>;
   return (
     <IssueActivityBlockComponent
-      icon={<StatePropertyIcon className="h-4 w-4 flex-shrink-0 text-secondary" />}
+      icon={<StatePropertyIcon className="size-4 flex-shrink-0 text-secondary" />}
       activityId={activityId}
       ends={ends}
     >

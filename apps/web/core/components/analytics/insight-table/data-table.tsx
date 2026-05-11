@@ -121,7 +121,7 @@ export function DataTable<TData, TValue>({ columns, data, searchPlaceholder, act
                   setIsSearchOpen(false);
                 }}
               >
-                <CloseIcon className="h-3 w-3" />
+                <CloseIcon className="size-3" />
               </button>
             )}
           </div>
@@ -136,9 +136,7 @@ export function DataTable<TData, TValue>({ columns, data, searchPlaceholder, act
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
                   <TableHead key={header.id} colSpan={header.colSpan} className="whitespace-nowrap">
-                    {header.isPlaceholder
-                      ? null
-                      : flexRender(header.column.columnDef.header, header.getContext())}
+                    {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
                   </TableHead>
                 ))}
               </TableRow>
@@ -149,9 +147,7 @@ export function DataTable<TData, TValue>({ columns, data, searchPlaceholder, act
               table.getRowModel().rows.map((row) => (
                 <TableRow key={row.id} data-state={row.getIsSelected() && "selected"}>
                   {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
-                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                    </TableCell>
+                    <TableCell key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
                   ))}
                 </TableRow>
               ))

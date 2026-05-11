@@ -135,7 +135,7 @@ export function SelectDuplicateInboxIssueModal(props: Props) {
       <Combobox value={value} onChange={handleSubmit}>
         <div className="relative m-1">
           <SearchIcon
-            className="text-opacity-40 pointer-events-none absolute top-3.5 left-4 h-5 w-5 text-primary"
+            className="text-opacity-40 pointer-events-none absolute top-3.5 left-4 size-5 text-primary"
             aria-hidden="true"
           />
           <input

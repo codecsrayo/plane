@@ -62,7 +62,7 @@ export const UserProfileHeader = observer(function UserProfileHeader(props: TUse
               <BreadcrumbLink
                 label={breadcrumbLabel}
                 disableTooltip
-                icon={<YourWorkIcon className="h-4 w-4 text-tertiary" />}
+                icon={<YourWorkIcon className="size-4 text-tertiary" />}
               />
             }
           />
@@ -78,7 +78,7 @@ export const UserProfileHeader = observer(function UserProfileHeader(props: TUse
             customButton={
               <div className="flex items-center gap-2 rounded-md border border-subtle px-2 py-1.5">
                 <span className="flex flex-grow justify-center text-13 text-secondary">{type}</span>
-                <ChevronDownIcon className="h-4 w-4 text-placeholder" />
+                <ChevronDownIcon className="size-4 text-placeholder" />
               </div>
             }
             customButtonClassName="flex flex-grow justify-center text-secondary text-13"

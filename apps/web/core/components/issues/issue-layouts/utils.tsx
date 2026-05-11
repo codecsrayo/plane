@@ -139,7 +139,7 @@ const getProjectColumns = (): IGroupByColumn[] | undefined => {
         id: project.id,
         name: project.name,
         icon: (
-          <div className="grid h-6 w-6 flex-shrink-0 place-items-center">
+          <div className="grid size-6 flex-shrink-0 place-items-center">
             <Logo logo={project.logo_props} />
           </div>
         ),

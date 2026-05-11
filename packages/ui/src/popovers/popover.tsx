@@ -51,14 +51,14 @@ export function Popover(props: TPopover) {
           ref={popoverButtonRef as Ref<HTMLButtonElement>}
           className={cn(
             {
-              "flex h-6 w-6 items-center justify-center rounded-sm bg-surface-2 text-14 transition-all hover:bg-layer-1":
+              "flex size-6 items-center justify-center rounded-sm bg-surface-2 text-14 transition-all hover:bg-layer-1":
                 !button,
             },
             buttonClassName
           )}
           disabled={disabled}
         >
-          {button ? button : <EllipsisVertical className="h-3 w-3" />}
+          {button ? button : <EllipsisVertical className="size-3" />}
         </HeadlessReactPopover.Button>
       </div>
 

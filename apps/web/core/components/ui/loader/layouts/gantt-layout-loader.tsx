@@ -35,7 +35,7 @@ export function GanttLayoutLoader() {
           <Row className="flex h-11 w-full flex-col gap-3 py-4">
             {range(6).map((index) => (
               <div key={index} className="flex h-11 w-full items-center gap-3">
-                <span className="h-6 w-6 rounded-sm bg-layer-1" />
+                <span className="size-6 rounded-sm bg-layer-1" />
                 <span className={`h-6 w-${getRandomLength(["32", "52", "72"])} rounded-sm bg-layer-1`} />
               </div>
             ))}

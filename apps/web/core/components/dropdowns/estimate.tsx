@@ -110,7 +110,7 @@ export const EstimateDropdown = observer(function EstimateDropdown(props: Props)
           query: `${currentEstimatePoint?.value}`,
           content: (
             <div className="flex items-center gap-2">
-              <EstimatePropertyIcon className="h-3 w-3 flex-shrink-0" />
+              <EstimatePropertyIcon className="size-3 flex-shrink-0" />
               <span className="flex-grow truncate">
                 {currentActiveEstimate?.type === EEstimateSystem.TIME
                   ? convertMinutesToHoursMinutesString(Number(currentEstimatePoint.value))
@@ -127,7 +127,7 @@ export const EstimateDropdown = observer(function EstimateDropdown(props: Props)
     query: t("project_settings.estimates.no_estimate"),
     content: (
       <div className="flex items-center gap-2">
-        <EstimatePropertyIcon className="h-3 w-3 flex-shrink-0" />
+        <EstimatePropertyIcon className="size-3 flex-shrink-0" />
         <span className="flex-grow truncate">{t("project_settings.estimates.no_estimate")}</span>
       </div>
     ),
@@ -185,7 +185,7 @@ export const EstimateDropdown = observer(function EstimateDropdown(props: Props)
           variant={buttonVariant}
           renderToolTipByDefault={renderByDefault}
         >
-          {!hideIcon && <EstimatePropertyIcon className="h-3 w-3 flex-shrink-0" />}
+          {!hideIcon && <EstimatePropertyIcon className="size-3 flex-shrink-0" />}
           {(selectedEstimate || placeholder) && BUTTON_VARIANTS_WITH_TEXT.includes(buttonVariant) && (
             <span className="truncate">
               {selectedEstimate ? (
@@ -247,7 +247,7 @@ export const EstimateDropdown = observer(function EstimateDropdown(props: Props)
                 >
                   {/* NOTE: This condition renders when estimates are not enabled for the project */}
                   <div className="flex flex-grow items-center gap-2">
-                    <EstimatePropertyIcon className="h-3 w-3 flex-shrink-0" />
+                    <EstimatePropertyIcon className="size-3 flex-shrink-0" />
                     <span className="flex-grow truncate">{t("project_settings.estimates.no_estimate")}</span>
                   </div>
                 </div>

@@ -53,7 +53,7 @@ export const GiteaConfiguration = observer(function GiteaConfiguration(props: Pr
         </div>
       ) : (
         <Link href="/authentication/gitea" className={cn(getButtonStyling("secondary", "base"), "text-tertiary")}>
-          <Settings2 className="h-4 w-4 p-0.5 text-tertiary" />
+          <Settings2 className="size-4 p-0.5 text-tertiary" />
           Configure
         </Link>
       )}

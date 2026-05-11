@@ -80,7 +80,7 @@ export const InboxIssueRoot = observer(function InboxIssueRoot(props: TInboxIssu
         <div className="flex h-12 w-full items-center border-b border-subtle px-4 lg:hidden">
           <PanelLeft
             onClick={() => setIsMobileSidebar(!isMobileSidebar)}
-            className={cn("h-4 w-4", isMobileSidebar ? "text-accent-primary" : "text-secondary")}
+            className={cn("size-4", isMobileSidebar ? "text-accent-primary" : "text-secondary")}
           />
         </div>
       )}

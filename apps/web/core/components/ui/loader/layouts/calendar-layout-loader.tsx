@@ -16,7 +16,7 @@ function CalendarDay() {
   return (
     <div className="flex min-h-[9rem] w-full flex-col">
       <div className="flex w-full items-center justify-end p-2">
-        <span className="h-6 w-6 rounded-sm bg-layer-1" />
+        <span className="size-6 rounded-sm bg-layer-1" />
       </div>
       <div className="flex flex-col gap-2.5 p-2">{dataBlocks}</div>
     </div>

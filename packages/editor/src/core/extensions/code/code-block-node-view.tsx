@@ -58,9 +58,9 @@ export function CodeBlockComponent({ node }: Props) {
           onClick={(e) => void copyToClipboard(e)}
         >
           {copied ? (
-            <CheckIcon className="h-3 w-3 text-success-primary" strokeWidth={3} />
+            <CheckIcon className="size-3 text-success-primary" strokeWidth={3} />
           ) : (
-            <CopyIcon className="h-3 w-3 text-tertiary group-hover/button:text-primary" />
+            <CopyIcon className="size-3 text-tertiary group-hover/button:text-primary" />
           )}
         </button>
       </Tooltip>

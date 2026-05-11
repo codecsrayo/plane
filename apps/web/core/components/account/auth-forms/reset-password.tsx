@@ -146,12 +146,12 @@ export const ResetPasswordForm = observer(function ResetPasswordForm() {
             />
             {showPassword.password ? (
               <EyeOff
-                className="absolute right-3 h-5 w-5 stroke-placeholder hover:cursor-pointer"
+                className="absolute right-3 size-5 stroke-placeholder hover:cursor-pointer"
                 onClick={() => handleShowPassword("password")}
               />
             ) : (
               <Eye
-                className="absolute right-3 h-5 w-5 stroke-placeholder hover:cursor-pointer"
+                className="absolute right-3 size-5 stroke-placeholder hover:cursor-pointer"
                 onClick={() => handleShowPassword("password")}
               />
             )}
@@ -176,12 +176,12 @@ export const ResetPasswordForm = observer(function ResetPasswordForm() {
             />
             {showPassword.retypePassword ? (
               <EyeOff
-                className="absolute right-3 h-5 w-5 stroke-placeholder hover:cursor-pointer"
+                className="absolute right-3 size-5 stroke-placeholder hover:cursor-pointer"
                 onClick={() => handleShowPassword("retypePassword")}
               />
             ) : (
               <Eye
-                className="absolute right-3 h-5 w-5 stroke-placeholder hover:cursor-pointer"
+                className="absolute right-3 size-5 stroke-placeholder hover:cursor-pointer"
                 onClick={() => handleShowPassword("retypePassword")}
               />
             )}

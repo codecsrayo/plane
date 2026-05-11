@@ -70,7 +70,7 @@ export const FilterModule = observer(function FilterModule(props: Props) {
                     key={cycle.id}
                     isChecked={appliedFilters?.includes(cycle.id)}
                     onClick={() => handleUpdate(cycle.id)}
-                    icon={<ModuleIcon className="h-3 w-3 flex-shrink-0" />}
+                    icon={<ModuleIcon className="size-3 flex-shrink-0" />}
                     title={cycle.name}
                   />
                 ))}

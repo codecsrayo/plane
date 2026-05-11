@@ -70,7 +70,7 @@ export const Default: Story = {
               >
                 <TabNavigationItem isActive={activeNavTab === item.key}>
                   <div className="z-10 flex items-center gap-2">
-                    <item.icon className="h-4 w-4" />
+                    <item.icon className="size-4" />
                     <span>{item.name}</span>
                   </div>
                 </TabNavigationItem>
@@ -91,7 +91,7 @@ export const Default: Story = {
   {items.map(item => (
     <Link key={item.key} to={item.href}>
       <TabNavigationItem isActive={pathname === item.href}>
-        <item.icon className="h-4 w-4" />
+        <item.icon className="size-4" />
         <span>{item.name}</span>
       </TabNavigationItem>
     </Link>

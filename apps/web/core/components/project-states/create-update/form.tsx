@@ -21,7 +21,7 @@ type TStateForm = {
 function PopoverButton({ color }: { color?: string }) {
   return (
     <div
-      className="group inline-flex h-5 w-5 items-center rounded-sm text-14 font-medium transition-all focus:outline-none"
+      className="group inline-flex size-5 items-center rounded-sm text-14 font-medium transition-all focus:outline-none"
       style={{
         backgroundColor: color ?? "black",
       }}

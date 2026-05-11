@@ -205,7 +205,7 @@ export const WorkspaceMenuRoot = observer(function WorkspaceMenuRoot(props: Work
                         as="div"
                         className="flex items-center gap-2 rounded-sm px-2 py-1 text-13 font-medium text-secondary hover:bg-layer-transparent-hover"
                       >
-                        <Mails className="h-4 w-4 flex-shrink-0" />
+                        <Mails className="size-4 flex-shrink-0" />
                         {t("workspace_invites")}
                       </Menu.Item>
                     </Link>

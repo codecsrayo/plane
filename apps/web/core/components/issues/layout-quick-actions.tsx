@@ -69,7 +69,7 @@ export const LayoutQuickActions = observer(function LayoutQuickActions(props: Pr
               })}
               disabled={item.disabled}
             >
-              {item.icon && <item.icon className="h-3 w-3" />}
+              {item.icon && <item.icon className="size-3" />}
               <span>{item.title}</span>
             </CustomMenu.MenuItem>
           );

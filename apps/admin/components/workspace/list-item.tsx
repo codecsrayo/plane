@@ -35,7 +35,7 @@ export const WorkspaceListItem = observer(function WorkspaceListItem({ workspace
     >
       <div className="flex items-start gap-4">
         <span
-          className={`relative mt-1 flex h-8 w-8 flex-shrink-0 items-center justify-center p-2 text-11 uppercase ${
+          className={`relative mt-1 flex size-8 flex-shrink-0 items-center justify-center p-2 text-11 uppercase ${
             !workspace?.logo_url && "rounded-lg bg-accent-primary text-on-color"
           }`}
         >

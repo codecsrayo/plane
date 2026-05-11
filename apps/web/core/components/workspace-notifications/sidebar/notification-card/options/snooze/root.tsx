@@ -102,11 +102,11 @@ export const NotificationItemSnoozeOption = observer(function NotificationItemSn
               >
                 <Popover.Button
                   className={cn(
-                    "relative flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-xs bg-layer-1 outline-none hover:bg-surface-2",
+                    "relative flex size-5 flex-shrink-0 items-center justify-center rounded-xs bg-layer-1 outline-none hover:bg-surface-2",
                     open ? "bg-layer-1" : ""
                   )}
                 >
-                  <Clock className="h-3 w-3 text-tertiary" />
+                  <Clock className="size-3 text-tertiary" />
                 </Popover.Button>
               </Tooltip>
 

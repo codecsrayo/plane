@@ -77,12 +77,12 @@ export function PageForm(props: Props) {
             className="flex-shrink0 flex items-center justify-center"
             buttonClassName="flex items-center justify-center bg-layer-2 hover:bg-layer-2-hover rounded-md"
             label={
-              <span className="grid h-9 w-9 place-items-center rounded-md">
+              <span className="grid size-9 place-items-center rounded-md">
                 <>
                   {formData?.logo_props?.in_use ? (
                     <Logo logo={formData?.logo_props} size={18} type="lucide" />
                   ) : (
-                    <PageIcon className="h-4 w-4 text-tertiary" />
+                    <PageIcon className="size-4 text-tertiary" />
                   )}
                 </>
               </span>

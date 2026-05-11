@@ -25,7 +25,7 @@ export function FilterOption(props: Props) {
       onClick={onClick}
     >
       <div
-        className={`grid h-3 w-3 flex-shrink-0 place-items-center border ${
+        className={`grid size-3 flex-shrink-0 place-items-center border ${
           isChecked ? "border-accent-strong bg-accent-primary text-on-color" : "border-strong"
         } ${multiple ? "rounded-xs" : "rounded-full"}`}
       >
@@ -36,7 +36,7 @@ export function FilterOption(props: Props) {
         <div className="flex-grow truncate text-caption-sm-regular text-secondary">{title}</div>
       </div>
       {activePulse && (
-        <div className="ml-auto h-2 w-2 flex-shrink-0 animate-pulse rounded-full bg-accent-primary text-caption-sm-regular" />
+        <div className="ml-auto size-2 flex-shrink-0 animate-pulse rounded-full bg-accent-primary text-caption-sm-regular" />
       )}
     </button>
   );

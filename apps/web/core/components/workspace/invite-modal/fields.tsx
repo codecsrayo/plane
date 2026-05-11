@@ -115,7 +115,7 @@ export const InvitationFields = observer(function InvitationFields(props: TInvit
                   className="place-items-center self-center rounded-sm"
                   onClick={() => remove(index)}
                 >
-                  <CloseIcon className="h-4 w-4 text-secondary" />
+                  <CloseIcon className="size-4 text-secondary" />
                 </button>
               </div>
             )}

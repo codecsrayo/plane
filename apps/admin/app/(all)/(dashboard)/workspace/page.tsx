@@ -122,7 +122,7 @@ const WorkspaceManagementPage = observer(function WorkspaceManagementPage(_props
                 <div className="flex items-center gap-2 text-16 font-medium">
                   All workspaces on this instance <span className="text-tertiary">• {workspaceIds.length}</span>
                   {workspaceLoader && ["mutation", "pagination"].includes(workspaceLoader) && (
-                    <LoaderIcon className="h-4 w-4 animate-spin" />
+                    <LoaderIcon className="size-4 animate-spin" />
                   )}
                 </div>
                 <div className={cn("text-11 leading-5 font-regular text-tertiary")}>
@@ -150,7 +150,7 @@ const WorkspaceManagementPage = observer(function WorkspaceManagementPage(_props
                   disabled={workspaceLoader === "pagination"}
                 >
                   Load more
-                  {workspaceLoader === "pagination" && <LoaderIcon className="h-3 w-3 animate-spin" />}
+                  {workspaceLoader === "pagination" && <LoaderIcon className="size-3 animate-spin" />}
                 </Button>
               </div>
             )}

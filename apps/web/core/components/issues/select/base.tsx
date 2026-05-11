@@ -186,7 +186,7 @@ export const WorkItemLabelSelectBase = observer(function WorkItemLabelSelectBase
               buttonClassName
             )}
           >
-            <LabelPropertyIcon className="h-3 w-3 flex-shrink-0" />
+            <LabelPropertyIcon className="size-3 flex-shrink-0" />
             <span>{t("labels")}</span>
           </div>
         )}
@@ -242,7 +242,7 @@ export const WorkItemLabelSelectBase = observer(function WorkItemLabelSelectBase
                                   <span className="truncate">{optionLabel.name}</span>
                                 </div>
                                 <div className="flex shrink-0 items-center justify-center rounded-sm p-1">
-                                  <CheckIcon className={`h-3 w-3 ${selected ? "opacity-100" : "opacity-0"}`} />
+                                  <CheckIcon className={`size-3 ${selected ? "opacity-100" : "opacity-0"}`} />
                                 </div>
                               </div>
                             )}
@@ -252,7 +252,7 @@ export const WorkItemLabelSelectBase = observer(function WorkItemLabelSelectBase
                       return (
                         <div key={optionLabel.id} className="border-y border-subtle">
                           <div className="flex items-center gap-2 truncate p-2 text-primary select-none">
-                            <Component className="h-3 w-3" /> {optionLabel.name}
+                            <Component className="size-3" /> {optionLabel.name}
                           </div>
                           <div>
                             {children.map((child) => (
@@ -277,7 +277,7 @@ export const WorkItemLabelSelectBase = observer(function WorkItemLabelSelectBase
                                       <span>{child.name}</span>
                                     </div>
                                     <div className="flex items-center justify-center rounded-sm p-1">
-                                      <CheckIcon className={`h-3 w-3 ${selected ? "opacity-100" : "opacity-0"}`} />
+                                      <CheckIcon className={`size-3 ${selected ? "opacity-100" : "opacity-0"}`} />
                                     </div>
                                   </div>
                                 )}

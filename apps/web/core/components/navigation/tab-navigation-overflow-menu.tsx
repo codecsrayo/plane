@@ -40,7 +40,7 @@ export function TabNavigationOverflowMenu({ overflowItems, isActive, tabPreferen
       optionsClassName="min-w-[200px] space-y-1"
       customButton={
         <div className="flex items-center justify-center rounded-md p-1 transition-colors hover:bg-layer-1">
-          <MoreHorizontal className="h-4 w-4 text-secondary" />
+          <MoreHorizontal className="size-4 text-secondary" />
         </div>
       }
     >

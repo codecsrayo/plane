@@ -137,7 +137,7 @@ export const AuthPasswordForm = observer(function AuthPasswordForm(props: Props)
           />
           {passwordFormData.email.length > 0 && (
             <XCircle
-              className="absolute right-3 h-5 w-5 stroke-placeholder hover:cursor-pointer"
+              className="absolute right-3 size-5 stroke-placeholder hover:cursor-pointer"
               onClick={handleEmailClear}
             />
           )}
@@ -162,12 +162,12 @@ export const AuthPasswordForm = observer(function AuthPasswordForm(props: Props)
           />
           {showPassword?.password ? (
             <EyeOff
-              className="absolute right-3 h-5 w-5 stroke-placeholder hover:cursor-pointer"
+              className="absolute right-3 size-5 stroke-placeholder hover:cursor-pointer"
               onClick={() => handleShowPassword("password")}
             />
           ) : (
             <Eye
-              className="absolute right-3 h-5 w-5 stroke-placeholder hover:cursor-pointer"
+              className="absolute right-3 size-5 stroke-placeholder hover:cursor-pointer"
               onClick={() => handleShowPassword("password")}
             />
           )}
@@ -194,12 +194,12 @@ export const AuthPasswordForm = observer(function AuthPasswordForm(props: Props)
             />
             {showPassword?.retypePassword ? (
               <EyeOff
-                className="absolute right-3 h-5 w-5 stroke-placeholder hover:cursor-pointer"
+                className="absolute right-3 size-5 stroke-placeholder hover:cursor-pointer"
                 onClick={() => handleShowPassword("retypePassword")}
               />
             ) : (
               <Eye
-                className="absolute right-3 h-5 w-5 stroke-placeholder hover:cursor-pointer"
+                className="absolute right-3 size-5 stroke-placeholder hover:cursor-pointer"
                 onClick={() => handleShowPassword("retypePassword")}
               />
             )}

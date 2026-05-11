@@ -50,7 +50,7 @@ export const CyclesListMobileHeader = observer(function CyclesListMobileHeader()
         // placement="bottom-start"
         customButton={
           <span className="flex items-center gap-2">
-            <ListLayoutIcon className="h-4 w-4" />
+            <ListLayoutIcon className="size-4" />
             <span className="flex flex-grow justify-center text-13 text-secondary">Layout</span>
           </span>
         }
@@ -69,7 +69,7 @@ export const CyclesListMobileHeader = observer(function CyclesListMobileHeader()
               }}
               className="flex items-center gap-2"
             >
-              <layout.icon className="h-3 w-3" />
+              <layout.icon className="size-3" />
               <div className="text-tertiary">{layout.title}</div>
             </CustomMenu.MenuItem>
           );

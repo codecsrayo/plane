@@ -156,7 +156,7 @@ const ToolbarSubmitButton = React.forwardRef(function ToolbarSubmitButton(
         disabled={disabled || loading}
         {...props}
       >
-        {loading && <div className="h-3 w-3 animate-spin rounded-full border border-current border-t-transparent" />}
+        {loading && <div className="size-3 animate-spin rounded-full border border-current border-t-transparent" />}
         {children}
       </button>
     </div>

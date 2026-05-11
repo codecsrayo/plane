@@ -26,8 +26,8 @@ export function CycleListGroupHeader(props: Props) {
   return (
     <Row className="flex items-center justify-between py-2.5">
       <div className="flex flex-shrink-0 items-center gap-5">
-        <div className="flex h-5 w-5 flex-shrink-0 items-center justify-center overflow-hidden rounded-xs">
-          <CycleGroupIcon cycleGroup={type} className="h-5 w-5" />
+        <div className="flex size-5 flex-shrink-0 items-center justify-center overflow-hidden rounded-xs">
+          <CycleGroupIcon cycleGroup={type} className="size-5" />
         </div>
 
         <div className="relative flex w-full flex-row items-center gap-1 overflow-hidden">

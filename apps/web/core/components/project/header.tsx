@@ -46,7 +46,7 @@ export const ProjectsBaseHeader = observer(function ProjectsBaseHeader() {
             component={
               <BreadcrumbLink
                 label={t("workspace_projects.label", { count: 2 })}
-                icon={<ProjectIcon className="h-4 w-4 text-tertiary" />}
+                icon={<ProjectIcon className="size-4 text-tertiary" />}
               />
             }
           />

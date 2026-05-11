@@ -58,10 +58,10 @@ export const InboxIssueAppliedFiltersMember = observer(function InboxIssueApplie
             <div className="truncate text-11">{optionDetail?.display_name}</div>
             <button
               type="button"
-              className="relative flex h-3 w-3 flex-shrink-0 cursor-pointer items-center justify-center overflow-hidden text-tertiary transition-all hover:text-secondary"
+              className="relative flex size-3 flex-shrink-0 cursor-pointer items-center justify-center overflow-hidden text-tertiary transition-all hover:text-secondary"
               onClick={() => handleInboxIssueFilters(filterKey, handleFilterValue(value))}
             >
-              <CloseIcon className={`h-3 w-3`} />
+              <CloseIcon className={`size-3`} />
             </button>
           </div>
         );
@@ -69,10 +69,10 @@ export const InboxIssueAppliedFiltersMember = observer(function InboxIssueApplie
 
       <button
         type="button"
-        className="relative flex h-3 w-3 flex-shrink-0 cursor-pointer items-center justify-center overflow-hidden text-tertiary transition-all hover:text-secondary"
+        className="relative flex size-3 flex-shrink-0 cursor-pointer items-center justify-center overflow-hidden text-tertiary transition-all hover:text-secondary"
         onClick={clearFilter}
       >
-        <CloseIcon className={`h-3 w-3`} />
+        <CloseIcon className={`size-3`} />
       </button>
     </Tag>
   );

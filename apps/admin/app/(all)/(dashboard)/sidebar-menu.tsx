@@ -46,7 +46,7 @@ export const AdminSidebarMenu = observer(function AdminSidebarMenu() {
                     isSidebarCollapsed ? "justify-center" : "w-[260px]"
                   )}
                 >
-                  {<item.Icon className="h-4 w-4 flex-shrink-0" />}
+                  {<item.Icon className="size-4 flex-shrink-0" />}
                   {!isSidebarCollapsed && (
                     <div className="w-full">
                       <div className={cn(`text-body-xs-medium transition-colors`)}>{item.name}</div>

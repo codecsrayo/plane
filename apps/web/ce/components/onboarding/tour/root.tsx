@@ -136,7 +136,7 @@ export const TourRoot = observer(function TourRoot(props: TOnboardingTourProps) 
             className="fixed top-[19%] right-[9%] z-10 translate-x-1/2 -translate-y-1/2 cursor-pointer rounded-full border border-strong p-1 sm:top-[11.5%] md:right-[24%] lg:right-[19%]"
             onClick={onComplete}
           >
-            <CloseIcon className="border-strong- h-3 w-3 text-primary" />
+            <CloseIcon className="border-strong- size-3 text-primary" />
           </button>
           <TourSidebar step={step} setStep={setStep} />
           <div className="col-span-10 h-full overflow-hidden lg:col-span-7">

@@ -32,7 +32,7 @@ export function ProjectFeatureToggle(props: Props) {
         >
           {value ? "Enabled" : "Disabled"}
         </Pill>
-        <ChevronRightIcon className="h-4 w-4 text-tertiary" />
+        <ChevronRightIcon className="size-4 text-tertiary" />
       </div>
     </Link>
   ) : (

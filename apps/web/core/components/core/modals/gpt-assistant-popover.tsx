@@ -89,7 +89,8 @@ export function GptAssistantPopover(props: Props) {
   };
 
   const handleServiceError = (err: unknown) => {
-    const errObj = typeof err === "object" && err !== null ? (err as { data?: { error?: string }; status?: number }) : undefined;
+    const errObj =
+      typeof err === "object" && err !== null ? (err as { data?: { error?: string }; status?: number }) : undefined;
     const error = errObj?.data?.error;
     const errorMessage =
       errObj?.status === 429
@@ -281,7 +282,7 @@ export function GptAssistantPopover(props: Props) {
             ) : (
               <>
                 <div className="flex items-start justify-center gap-2 text-13 text-accent-primary">
-                  <AlertCircle className="h-4 w-4" />
+                  <AlertCircle className="size-4" />
                   <p>By using this feature, you consent to sharing the message with a 3rd party service. </p>
                 </div>
               </>

@@ -78,7 +78,7 @@ export function PageSearchInput(props: Props) {
               setIsSearchOpen(false);
             }}
           >
-            <CloseIcon className="h-3 w-3" />
+            <CloseIcon className="size-3" />
           </button>
         )}
       </div>

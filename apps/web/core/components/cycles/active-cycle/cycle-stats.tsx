@@ -231,7 +231,7 @@ export const ActiveCycleStats = observer(function ActiveCycleStats(props: Active
                                 tooltipContent={renderFormattedDate(issue.target_date)}
                               >
                                 <div className="flex h-full cursor-pointer items-center gap-1.5 truncate rounded-sm bg-layer-1 px-2 py-0.5 text-11 group-hover:bg-surface-1">
-                                  <CalendarCheck className="h-3 w-3 flex-shrink-0" />
+                                  <CalendarCheck className="size-3 flex-shrink-0" />
                                   <span className="truncate text-11">
                                     {renderFormattedDateWithoutYear(issue.target_date)}
                                   </span>
@@ -303,7 +303,7 @@ export const ActiveCycleStats = observer(function ActiveCycleStats(props: Active
                         key={`unassigned-${assignee.completed_issues}-${assignee.total_issues}`}
                         title={
                           <div className="flex items-center gap-2">
-                            <div className="h-5 w-5 rounded-full border-2 border-subtle bg-layer-1">
+                            <div className="size-5 rounded-full border-2 border-subtle bg-layer-1">
                               <img src={userImage} height="100%" width="100%" className="rounded-full" alt="User" />
                             </div>
                             <span>{t("no_assignee")}</span>
@@ -339,7 +339,7 @@ export const ActiveCycleStats = observer(function ActiveCycleStats(props: Active
                     title={
                       <div className="flex items-center gap-2 truncate">
                         <span
-                          className="block h-3 w-3 flex-shrink-0 rounded-full"
+                          className="block size-3 flex-shrink-0 rounded-full"
                           style={{
                             backgroundColor: label.color ?? "#000000",
                           }}

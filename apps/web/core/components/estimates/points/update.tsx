@@ -205,15 +205,15 @@ export const EstimatePointUpdate = observer(function EstimatePointUpdate(props: 
       {estimateInputValue && estimateInputValue.length > 0 && (
         <button
           type="submit"
-          className="relative flex h-6 w-6 flex-shrink-0 cursor-pointer items-center justify-center rounded-xs text-success-primary transition-colors hover:bg-layer-1"
+          className="relative flex size-6 flex-shrink-0 cursor-pointer items-center justify-center rounded-xs text-success-primary transition-colors hover:bg-layer-1"
           disabled={loader}
         >
-          {loader ? <Spinner className="h-4 w-4" /> : <CheckIcon width={14} height={14} />}
+          {loader ? <Spinner className="size-4" /> : <CheckIcon width={14} height={14} />}
         </button>
       )}
       <button
         type="button"
-        className="relative flex h-6 w-6 flex-shrink-0 cursor-pointer items-center justify-center rounded-xs transition-colors hover:bg-layer-1"
+        className="relative flex size-6 flex-shrink-0 cursor-pointer items-center justify-center rounded-xs transition-colors hover:bg-layer-1"
         onClick={handleClose}
         disabled={loader}
       >

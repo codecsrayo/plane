@@ -129,9 +129,10 @@ export function CustomSearchSelect(props: ICustomSearchSelectProps) {
                   `toggleDropdown` mantiene el click (UX idéntica); el estado
                   `disabled` del componente ya fluye al Combobox vía props.
                 */}
+                {/* eslint-disable-next-line jsx-a11y/prefer-tag-over-role */}
                 <span
-                  ref={setReferenceElement}
                   role="button"
+                  ref={setReferenceElement}
                   tabIndex={disabled ? -1 : 0}
                   aria-disabled={disabled}
                   className={cn(
@@ -167,7 +168,7 @@ export function CustomSearchSelect(props: ICustomSearchSelectProps) {
                 >
                   {label}
                   {!noChevron && !disabled && (
-                    <ChevronDownIcon className={cn("h-3 w-3 flex-shrink-0", chevronClassName)} aria-hidden="true" />
+                    <ChevronDownIcon className={cn("size-3 flex-shrink-0", chevronClassName)} aria-hidden="true" />
                   )}
                 </button>
               </Combobox.Button>

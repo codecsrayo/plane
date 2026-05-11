@@ -87,7 +87,7 @@ export const GithubProjectIssueSync = observer(function GithubProjectIssueSync({
               className="text-red-500 hover:text-red-400 transition-colors"
               aria-label={`Remove sync for ${projectLabel}`}
             >
-              <Trash2 className="h-4 w-4" />
+              <Trash2 className="size-4" />
             </button>
           </div>
         );

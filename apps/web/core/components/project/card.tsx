@@ -221,7 +221,7 @@ export const ProjectCard = observer(function ProjectCard(props: Props) {
 
           <div className="absolute bottom-4 z-[1] flex h-10 w-full items-center justify-between gap-3 px-4">
             <div className="flex flex-grow items-center gap-2.5 truncate">
-              <div className="grid h-9 w-9 flex-shrink-0 place-items-center rounded-sm bg-white/10">
+              <div className="grid size-9 flex-shrink-0 place-items-center rounded-sm bg-white/10">
                 <Logo logo={project.logo_props} size={18} />
               </div>
 
@@ -237,19 +237,19 @@ export const ProjectCard = observer(function ProjectCard(props: Props) {
             {!isArchived && (
               <div data-prevent-progress className="flex h-full flex-shrink-0 items-center gap-2">
                 <button
-                  className="flex h-6 w-6 items-center justify-center rounded-sm bg-white/10"
+                  className="flex size-6 items-center justify-center rounded-sm bg-white/10"
                   onClick={(e) => {
                     e.stopPropagation();
                     e.preventDefault();
                     handleCopyText();
                   }}
                 >
-                  <LinkIcon className="h-3 w-3 text-on-color" />
+                  <LinkIcon className="size-3 text-on-color" />
                 </button>
                 {shouldRenderFavorite && (
                   <FavoriteStar
-                    buttonClassName="h-6 w-6 bg-white/10 rounded-sm"
-                    iconClassName={cn("h-3 w-3", {
+                    buttonClassName="size-6 bg-white/10 rounded-sm"
+                    iconClassName={cn("size-3", {
                       "text-on-color": !project.is_favorite,
                     })}
                     onClick={(e) => {

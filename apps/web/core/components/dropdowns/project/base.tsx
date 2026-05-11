@@ -49,7 +49,7 @@ type Props = TDropdownProps & {
   );
 
 const renderProjectIcon = (logoProps: TProject["logo_props"]) => (
-  <span className="grid h-4 w-4 flex-shrink-0 place-items-center">
+  <span className="grid size-4 flex-shrink-0 place-items-center">
     <Logo logo={logoProps} size={14} />
   </span>
 );
@@ -112,7 +112,7 @@ export const ProjectDropdownBase = observer(function ProjectDropdownBase(props: 
       content: (
         <div className="flex items-center gap-2">
           {projectDetails?.logo_props && (
-            <span className="grid h-4 w-4 flex-shrink-0 place-items-center">
+            <span className="grid size-4 flex-shrink-0 place-items-center">
               <Logo logo={projectDetails?.logo_props} size={12} />
             </span>
           )}

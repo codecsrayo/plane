@@ -24,7 +24,7 @@ export const AppliedPriorityFilters = observer(function AppliedPriorityFilters(p
     <>
       {values.map((priority) => (
         <div key={priority} className="flex items-center gap-1 rounded-sm bg-layer-1 p-1 text-11">
-          <PriorityIcon priority={priority as TIssuePriorities} className={`h-3 w-3`} />
+          <PriorityIcon priority={priority as TIssuePriorities} className={`size-3`} />
           {priority}
           {editable && (
             <button

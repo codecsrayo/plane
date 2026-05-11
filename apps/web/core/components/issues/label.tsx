@@ -29,7 +29,7 @@ export function ViewIssueLabel({ labelDetails, maxRender = 1 }: Props) {
                 <Tooltip position="top" tooltipHeading="Label" tooltipContent={label.name} isMobile={isMobile}>
                   <div className="flex items-center gap-1.5 text-secondary">
                     <span
-                      className="h-2 w-2 flex-shrink-0 rounded-full"
+                      className="size-2 flex-shrink-0 rounded-full"
                       style={{
                         backgroundColor: label?.color ?? "#000000",
                       }}
@@ -49,7 +49,7 @@ export function ViewIssueLabel({ labelDetails, maxRender = 1 }: Props) {
               isMobile={isMobile}
             >
               <div className="flex items-center gap-1.5 text-secondary">
-                <span className="h-2 w-2 flex-shrink-0 rounded-full bg-accent-primary" />
+                <span className="size-2 flex-shrink-0 rounded-full bg-accent-primary" />
                 {`${labelDetails.length} Labels`}
               </div>
             </Tooltip>

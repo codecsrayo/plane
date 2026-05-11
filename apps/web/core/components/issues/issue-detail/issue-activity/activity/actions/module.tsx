@@ -26,7 +26,7 @@ export const IssueModuleActivity = observer(function IssueModuleActivity(props: 
   if (!activity) return <></>;
   return (
     <IssueActivityBlockComponent
-      icon={<ModuleIcon className="h-4 w-4 flex-shrink-0 text-secondary" />}
+      icon={<ModuleIcon className="size-4 flex-shrink-0 text-secondary" />}
       activityId={activityId}
       ends={ends}
     >

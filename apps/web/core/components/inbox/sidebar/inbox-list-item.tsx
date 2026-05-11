@@ -96,13 +96,13 @@ export const InboxIssueListItem = observer(function InboxIssueListItem(props: In
 
               {issue.priority && (
                 <Tooltip tooltipHeading="Priority" tooltipContent={`${issue.priority ?? "None"}`}>
-                  <PriorityIcon priority={issue.priority} withContainer className="h-3 w-3" />
+                  <PriorityIcon priority={issue.priority} withContainer className="size-3" />
                 </Tooltip>
               )}
 
               {issue.label_ids && issue.label_ids.length > 3 ? (
                 <div className="relative flex !h-[17.5px] items-center gap-1 rounded-sm border border-strong px-1 text-11">
-                  <span className="bg-orange-400 h-2 w-2 rounded-full" />
+                  <span className="bg-orange-400 size-2 rounded-full" />
                   <span className="max-w-28 truncate normal-case">{`${issue.label_ids.length} labels`}</span>
                 </div>
               ) : (
@@ -116,7 +116,7 @@ export const InboxIssueListItem = observer(function InboxIssueListItem(props: In
                         className="relative flex !h-[17.5px] items-center gap-1 rounded-sm border border-strong px-1 text-11"
                       >
                         <span
-                          className="h-2 w-2 rounded-full"
+                          className="size-2 rounded-full"
                           style={{
                             backgroundColor: labelDetails.color,
                           }}

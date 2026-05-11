@@ -204,7 +204,7 @@ export const ModuleCardItem = observer(function ModuleCardItem(props: Props) {
                   />
                 )}
                 <button onClick={openModuleOverview}>
-                  <Info className="h-4 w-4 text-placeholder" />
+                  <Info className="size-4 text-placeholder" />
                 </button>
               </div>
             </div>
@@ -212,7 +212,7 @@ export const ModuleCardItem = observer(function ModuleCardItem(props: Props) {
           <div className="flex flex-col gap-3">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-1.5 text-secondary">
-                <WorkItemsIcon className="h-4 w-4 text-tertiary" />
+                <WorkItemsIcon className="size-4 text-tertiary" />
                 <span className="text-11 text-tertiary">{issueCount ?? "0 Work item"}</span>
               </div>
               {moduleLeadDetails ? (
@@ -221,7 +221,7 @@ export const ModuleCardItem = observer(function ModuleCardItem(props: Props) {
                 </span>
               ) : (
                 <Tooltip tooltipContent="No lead">
-                  <SquareUser className="mx-1 h-4 w-4 text-tertiary" />
+                  <SquareUser className="mx-1 size-4 text-tertiary" />
                 </Tooltip>
               )}
             </div>

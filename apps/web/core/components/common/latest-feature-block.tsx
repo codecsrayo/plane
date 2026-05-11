@@ -17,7 +17,7 @@ export function LatestFeatureBlock() {
   return (
     <>
       <div className="mx-auto mt-16 flex rounded-[3.5px] border border-subtle bg-surface-1 py-2 sm:w-96">
-        <Lightbulb className="mx-3 mr-2 h-7 w-7" />
+        <Lightbulb className="mx-3 mr-2 size-7" />
         <p className="text-left text-13 text-primary">
           Pages gets a facelift! Write anything and use Galileo to help you start.{" "}
           <Link href="https://plane.so/changelog" target="_blank" rel="noopener noreferrer">

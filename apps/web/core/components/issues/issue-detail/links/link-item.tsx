@@ -109,7 +109,7 @@ export const IssueLinkItem = observer(function IssueLinkItem(props: TIssueLinkIt
                 toggleIssueLinkModal(true);
               }}
             >
-              <EditIcon className="h-3 w-3 stroke-[1.5] text-secondary" />
+              <EditIcon className="size-3 stroke-[1.5] text-secondary" />
               {t("common.actions.edit")}
             </CustomMenu.MenuItem>
             <CustomMenu.MenuItem
@@ -118,7 +118,7 @@ export const IssueLinkItem = observer(function IssueLinkItem(props: TIssueLinkIt
                 linkOperations.remove(linkDetail.id);
               }}
             >
-              <TrashIcon className="h-3 w-3" />
+              <TrashIcon className="size-3" />
               {t("common.actions.delete")}
             </CustomMenu.MenuItem>
           </CustomMenu>

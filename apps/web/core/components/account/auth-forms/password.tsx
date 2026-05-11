@@ -132,7 +132,7 @@ export const AuthPasswordForm = observer(function AuthPasswordForm(props: Props)
     <>
       {isBannerMessage && mode === EAuthModes.SIGN_UP && (
         <div className="relative flex items-center gap-2 rounded-md border border-danger-strong/50 bg-danger-subtle p-2">
-          <div className="relative flex h-4 w-4 shrink-0 items-center justify-center">
+          <div className="relative flex size-4 shrink-0 items-center justify-center">
             <Info size={16} className="text-danger-primary" />
           </div>
           <div className="w-full text-13 font-medium text-danger-primary">
@@ -140,10 +140,10 @@ export const AuthPasswordForm = observer(function AuthPasswordForm(props: Props)
           </div>
           <button
             type="button"
-            className="relative ml-auto flex h-6 w-6 cursor-pointer items-center justify-center rounded-xs text-accent-primary/80 transition-all hover:bg-danger-subtle-hover"
+            className="relative ml-auto flex size-6 cursor-pointer items-center justify-center rounded-xs text-accent-primary/80 transition-all hover:bg-danger-subtle-hover"
             onClick={() => setBannerMessage(false)}
           >
-            <CloseIcon className="h-4 w-4 shrink-0 text-danger-primary" />
+            <CloseIcon className="size-4 shrink-0 text-danger-primary" />
           </button>
         </div>
       )}

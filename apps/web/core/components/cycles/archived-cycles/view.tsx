@@ -37,7 +37,7 @@ export const ArchivedCyclesView = observer(function ArchivedCyclesView(props: IA
         <div className="text-center">
           <img
             src={archivedCyclesSearchQuery.trim() === "" ? AllFiltersImage : NameFilterImage}
-            className="mx-auto h-36 w-36 sm:h-48 sm:w-48"
+            className="mx-auto size-36 sm:h-48 sm:w-48"
             alt="No matching cycles"
           />
           <h5 className="mt-7 mb-1 text-18 font-medium">No matching cycles</h5>

@@ -118,7 +118,7 @@ export const ProjectSettingLabelGroup = observer(function ProjectSettingLabelGro
                       <Disclosure.Button>
                         <span>
                           <ChevronDownIcon
-                            className={`h-4 w-4 text-placeholder ${!open ? "rotate-90 transform" : ""}`}
+                            className={`size-4 text-placeholder ${!open ? "rotate-90 transform" : ""}`}
                           />
                         </span>
                       </Disclosure.Button>

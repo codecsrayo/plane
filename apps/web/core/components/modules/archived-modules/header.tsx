@@ -125,7 +125,7 @@ export const ArchivedModulesHeader = observer(function ArchivedModulesHeader() {
                 setIsSearchOpen(false);
               }}
             >
-              <CloseIcon className="h-3 w-3" />
+              <CloseIcon className="size-3" />
             </button>
           )}
         </div>
@@ -139,7 +139,7 @@ export const ArchivedModulesHeader = observer(function ArchivedModulesHeader() {
           }}
         />
         <FiltersDropdown
-          icon={<ListFilter className="h-3 w-3" />}
+          icon={<ListFilter className="size-3" />}
           title="Filters"
           placement="bottom-end"
           isFiltersApplied={isFiltersApplied}

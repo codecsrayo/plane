@@ -158,12 +158,12 @@ export const SecurityProfileSettings = observer(function SecurityProfileSettings
                 />
                 {showPassword?.oldPassword ? (
                   <EyeOff
-                    className="absolute right-3 h-5 w-5 stroke-placeholder hover:cursor-pointer"
+                    className="absolute right-3 size-5 stroke-placeholder hover:cursor-pointer"
                     onClick={() => handleShowPassword("oldPassword")}
                   />
                 ) : (
                   <Eye
-                    className="absolute right-3 h-5 w-5 stroke-placeholder hover:cursor-pointer"
+                    className="absolute right-3 size-5 stroke-placeholder hover:cursor-pointer"
                     onClick={() => handleShowPassword("oldPassword")}
                   />
                 )}
@@ -200,12 +200,12 @@ export const SecurityProfileSettings = observer(function SecurityProfileSettings
                 />
                 {showPassword?.password ? (
                   <EyeOff
-                    className="absolute right-3 h-5 w-5 stroke-placeholder hover:cursor-pointer"
+                    className="absolute right-3 size-5 stroke-placeholder hover:cursor-pointer"
                     onClick={() => handleShowPassword("password")}
                   />
                 ) : (
                   <Eye
-                    className="absolute right-3 h-5 w-5 stroke-placeholder hover:cursor-pointer"
+                    className="absolute right-3 size-5 stroke-placeholder hover:cursor-pointer"
                     onClick={() => handleShowPassword("password")}
                   />
                 )}
@@ -246,12 +246,12 @@ export const SecurityProfileSettings = observer(function SecurityProfileSettings
                 />
                 {showPassword?.confirmPassword ? (
                   <EyeOff
-                    className="absolute right-3 h-5 w-5 stroke-placeholder hover:cursor-pointer"
+                    className="absolute right-3 size-5 stroke-placeholder hover:cursor-pointer"
                     onClick={() => handleShowPassword("confirmPassword")}
                   />
                 ) : (
                   <Eye
-                    className="absolute right-3 h-5 w-5 stroke-placeholder hover:cursor-pointer"
+                    className="absolute right-3 size-5 stroke-placeholder hover:cursor-pointer"
                     onClick={() => handleShowPassword("confirmPassword")}
                   />
                 )}

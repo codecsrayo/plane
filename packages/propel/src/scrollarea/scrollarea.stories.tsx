@@ -188,7 +188,7 @@ export const ListExample: Story = {
                 key={item}
                 className="flex cursor-pointer items-center gap-3 rounded-sm bg-layer-1 p-3 hover:bg-surface-2"
               >
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accent-primary font-medium text-on-color">
+                <div className="flex size-10 items-center justify-center rounded-full bg-accent-primary font-medium text-on-color">
                   {String.fromCharCode(65 + ((item - 1) % 26))}
                 </div>
                 <div>

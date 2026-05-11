@@ -17,8 +17,8 @@ export function ViewListLoader() {
               <span className="h-6 w-28 rounded-sm bg-layer-1" />
             </div>
             <div className="flex items-center gap-2">
-              <span className="h-5 w-5 rounded-sm bg-layer-1" />
-              <span className="h-5 w-5 rounded-sm bg-layer-1" />
+              <span className="size-5 rounded-sm bg-layer-1" />
+              <span className="size-5 rounded-sm bg-layer-1" />
             </div>
           </div>
         </div>

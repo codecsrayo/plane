@@ -173,7 +173,7 @@ export function GithubPersonalConnectCard({ githubClientId }: Props) {
               <img
                 src={personalConnection.github_avatar_url}
                 alt={personalConnection.github_username}
-                className="h-6 w-6 rounded-full"
+                className="size-6 rounded-full"
               />
             )}
             <span className="text-xs text-custom-text-100 font-medium">@{personalConnection.github_username}</span>

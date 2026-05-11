@@ -142,7 +142,7 @@ function UserInvitationsPage() {
                           <p className="text-11 text-secondary">{ROLE[invitation.role]}</p>
                         </div>
                         <span className={`flex-shrink-0 ${isSelected ? "text-accent-primary" : "text-secondary"}`}>
-                          <CheckCircle2 className="h-5 w-5" />
+                          <CheckCircle2 className="size-5" />
                         </span>
                       </button>
                     );

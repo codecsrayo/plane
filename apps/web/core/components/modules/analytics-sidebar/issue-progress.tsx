@@ -152,7 +152,7 @@ export const ModuleAnalyticsProgress = observer(function ModuleAnalyticsProgress
                         ))}
                       </CustomSelect>
                     </div>
-                    {loader && <Spinner className="h-3 w-3" />}
+                    {loader && <Spinner className="size-3" />}
                   </>
                 )}
                 <Disclosure.Button className="ml-auto">

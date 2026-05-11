@@ -114,7 +114,7 @@ export const SingleIntegrationCard = observer(function SingleIntegrationCard({ i
     <div className="flex flex-col gap-5 rounded-lg border border-subtle bg-surface-1 p-6">
       {/* Logo + title */}
       <div className="flex items-center gap-3">
-        <div className="h-10 w-10 flex-shrink-0 rounded-lg border border-subtle p-1.5">
+        <div className="size-10 flex-shrink-0 rounded-lg border border-subtle p-1.5">
           <img src={providerDetails.logo} className="h-full w-full object-contain" alt={`${integration.title} Logo`} />
         </div>
         <h3 className="text-sm flex items-center gap-2 font-medium">

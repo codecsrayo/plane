@@ -51,9 +51,7 @@ export const WorkspaceDraftHeader = observer(function WorkspaceDraftHeader() {
           <div className="flex items-center gap-2.5">
             <Breadcrumbs>
               <Breadcrumbs.Item
-                component={
-                  <BreadcrumbLink label={t("drafts")} icon={<DraftIcon className="h-4 w-4 text-tertiary" />} />
-                }
+                component={<BreadcrumbLink label={t("drafts")} icon={<DraftIcon className="size-4 text-tertiary" />} />}
               />
             </Breadcrumbs>
             {paginationInfo?.total_count && paginationInfo?.total_count > 0 ? (

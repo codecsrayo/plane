@@ -76,7 +76,7 @@ export const WithCustomLabel: Story = {
           closeOnSelect
           label={
             <button className="flex items-center gap-2 rounded-sm border border-subtle bg-layer-1 px-4 py-2 hover:bg-surface-2">
-              {selectedEmoji ? stringToEmoji(selectedEmoji) : <SmilePlus className="h-4 w-4" />}
+              {selectedEmoji ? stringToEmoji(selectedEmoji) : <SmilePlus className="size-4" />}
               <span className="text-13">Add Reaction</span>
             </button>
           }
@@ -140,7 +140,7 @@ export const InlineReactions: Story = {
           onChange={handleReactionAdd}
           closeOnSelect
           label={
-            <button className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-dashed border-strong bg-surface-1 text-placeholder transition-all duration-200 hover:border-accent-strong hover:bg-accent-primary/5 hover:text-accent-primary">
+            <button className="inline-flex size-7 items-center justify-center rounded-full border border-dashed border-strong bg-surface-1 text-placeholder transition-all duration-200 hover:border-accent-strong hover:bg-accent-primary/5 hover:text-accent-primary">
               <SmilePlus className="h-3.5 w-3.5" />
             </button>
           }
@@ -172,7 +172,7 @@ export const DifferentPlacements: Story = {
             handleToggle={setIsOpen1}
             onChange={() => {}}
             placement="bottom-start"
-            label={<SmilePlus className="h-6 w-6" />}
+            label={<SmilePlus className="size-6" />}
           />
         </div>
         <div className="flex items-center gap-4">
@@ -182,7 +182,7 @@ export const DifferentPlacements: Story = {
             handleToggle={setIsOpen2}
             onChange={() => {}}
             placement="bottom-end"
-            label={<SmilePlus className="h-6 w-6" />}
+            label={<SmilePlus className="size-6" />}
           />
         </div>
         <div className="flex items-center gap-4">
@@ -192,7 +192,7 @@ export const DifferentPlacements: Story = {
             handleToggle={setIsOpen3}
             onChange={() => {}}
             placement="top-start"
-            label={<SmilePlus className="h-6 w-6" />}
+            label={<SmilePlus className="size-6" />}
           />
         </div>
         <div className="flex items-center gap-4">
@@ -202,7 +202,7 @@ export const DifferentPlacements: Story = {
             handleToggle={setIsOpen4}
             onChange={() => {}}
             placement="top-end"
-            label={<SmilePlus className="h-6 w-6" />}
+            label={<SmilePlus className="size-6" />}
           />
         </div>
       </div>
@@ -366,7 +366,7 @@ export const InMessageContext: Story = {
     return (
       <div className="max-w-md space-y-3 rounded-lg border border-subtle p-4">
         <div className="flex items-start gap-3">
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-accent-primary text-13 text-on-color">
+          <div className="flex size-8 items-center justify-center rounded-full bg-accent-primary text-13 text-on-color">
             AB
           </div>
           <div className="flex-1">
@@ -384,7 +384,7 @@ export const InMessageContext: Story = {
             onChange={handleReactionAdd}
             closeOnSelect
             label={
-              <button className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-dashed border-strong bg-surface-1 text-placeholder transition-all duration-200 hover:border-accent-strong hover:bg-accent-primary/5 hover:text-accent-primary">
+              <button className="inline-flex size-7 items-center justify-center rounded-full border border-dashed border-strong bg-surface-1 text-placeholder transition-all duration-200 hover:border-accent-strong hover:bg-accent-primary/5 hover:text-accent-primary">
                 <SmilePlus className="h-3.5 w-3.5" />
               </button>
             }

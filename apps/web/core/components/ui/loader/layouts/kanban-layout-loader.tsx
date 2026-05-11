@@ -40,7 +40,7 @@ export function KanbanColumnLoader({
       {!ignoreHeader && (
         <div className="flex h-9 w-80 items-center justify-between">
           <div className="item-center flex gap-3">
-            <span className={cn("h-6 w-6 rounded-sm bg-layer-1", { "animate-pulse": shouldAnimate })} />
+            <span className={cn("size-6 rounded-sm bg-layer-1", { "animate-pulse": shouldAnimate })} />
             <span className={cn("h-6 w-24 rounded-sm bg-layer-1", { "animate-pulse": shouldAnimate })} />
           </div>
         </div>

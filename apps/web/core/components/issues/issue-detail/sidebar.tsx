@@ -158,7 +158,7 @@ export const IssueDetailsSidebar = observer(function IssueDetailsSidebar(props: 
                 buttonContainerClassName="w-full text-left h-7.5"
                 buttonClassName={`text-body-xs-regular ${issue?.start_date ? "" : "text-placeholder"}`}
                 hideIcon
-                clearIconClassName="h-3 w-3 hidden group-hover:inline"
+                clearIconClassName="size-3 hidden group-hover:inline"
               />
             </SidebarPropertyListItem>
 
@@ -182,7 +182,7 @@ export const IssueDetailsSidebar = observer(function IssueDetailsSidebar(props: 
                     "text-danger-primary": shouldHighlightIssueDueDate(issue.target_date, stateDetails?.group),
                   })}
                   hideIcon
-                  clearIconClassName="h-3 w-3 hidden group-hover:inline text-primary"
+                  clearIconClassName="size-3 hidden group-hover:inline text-primary"
                 />
                 {issue.target_date && <DateAlert date={issue.target_date} workItem={issue} projectId={projectId} />}
               </div>

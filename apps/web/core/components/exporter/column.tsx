@@ -27,7 +27,7 @@ export const useExportColumns = () => {
           <div className="flex items-center gap-x-2">
             <div>
               {avatar_url && avatar_url.trim() !== "" ? (
-                <span className="relative flex h-4 w-4 items-center justify-center rounded-full text-on-color capitalize">
+                <span className="relative flex size-4 items-center justify-center rounded-full text-on-color capitalize">
                   <img
                     src={getFileURL(avatar_url)}
                     className="absolute top-0 left-0 h-full w-full rounded-full object-cover"
@@ -35,7 +35,7 @@ export const useExportColumns = () => {
                   />
                 </span>
               ) : (
-                <span className="bg-gray-700 relative flex h-4 w-4 items-center justify-center rounded-full text-11 text-on-color capitalize">
+                <span className="bg-gray-700 relative flex size-4 items-center justify-center rounded-full text-11 text-on-color capitalize">
                   {(email ?? display_name ?? "?")[0]}
                 </span>
               )}
@@ -59,9 +59,7 @@ export const useExportColumns = () => {
       // "Cannot read properties of null (reading 'length')". El fallback del
       // backend (routes/exporter.rs) previene nuevas filas null, pero esto
       // mantiene el listado funcional para datos históricos.
-      tdRender: (rowData: RowData) => (
-        <div className="text-13">{rowData.project?.length ?? 0} project(s)</div>
-      ),
+      tdRender: (rowData: RowData) => <div className="text-13">{rowData.project?.length ?? 0} project(s)</div>,
     },
     {
       key: "Format",
@@ -108,7 +106,7 @@ export const useExportColumns = () => {
             {rowData.status == "completed" ? (
               <a target="_blank" href={rowData?.url} rel="noopener noreferrer">
                 <button className="flex w-full items-center gap-1 font-medium text-accent-primary">
-                  <Download className="h-4 w-4" />
+                  <Download className="size-4" />
                   <div>Download</div>
                 </button>
               </a>

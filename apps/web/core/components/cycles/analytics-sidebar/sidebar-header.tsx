@@ -179,7 +179,7 @@ export const CycleSidebarHeader = observer(function CycleSidebarHeader(props: Pr
                     customTooltipContent={
                       <span className="flex gap-1">
                         {renderFormattedDateInUserTimezone(cycleDetails.start_date ?? "")}
-                        <ArrowRight className="my-auto h-3 w-3 flex-shrink-0" />
+                        <ArrowRight className="my-auto size-3 flex-shrink-0" />
                         {renderFormattedDateInUserTimezone(cycleDetails.end_date ?? "")}
                       </span>
                     }

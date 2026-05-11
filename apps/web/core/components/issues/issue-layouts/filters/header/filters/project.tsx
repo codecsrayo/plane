@@ -68,7 +68,7 @@ export const FilterProjects = observer(function FilterProjects(props: Props) {
                     isChecked={appliedFilters?.includes(project.id)}
                     onClick={() => handleUpdate(project.id)}
                     icon={
-                      <span className="grid h-4 w-4 flex-shrink-0 place-items-center">
+                      <span className="grid size-4 flex-shrink-0 place-items-center">
                         <Logo logo={project.logo_props} size={12} />
                       </span>
                     }

@@ -42,9 +42,7 @@ export type TControllerInputFormField = {
   textAreaClassName?: string;
 };
 
-export function ControllerInput<TFieldValues extends FieldValues = FieldValues>(
-  props: Props<TFieldValues>
-) {
+export function ControllerInput<TFieldValues extends FieldValues = FieldValues>(props: Props<TFieldValues>) {
   const {
     name,
     control,
@@ -114,7 +112,7 @@ export function ControllerInput<TFieldValues extends FieldValues = FieldValues>(
                   onClick={() => setShowPassword(false)}
                   disabled={disabled}
                 >
-                  <EyeOff className="h-4 w-4" />
+                  <EyeOff className="size-4" />
                 </button>
               ) : (
                 <button
@@ -124,7 +122,7 @@ export function ControllerInput<TFieldValues extends FieldValues = FieldValues>(
                   onClick={() => setShowPassword(true)}
                   disabled={disabled}
                 >
-                  <Eye className="h-4 w-4" />
+                  <Eye className="size-4" />
                 </button>
               ))}
             {rightContent}

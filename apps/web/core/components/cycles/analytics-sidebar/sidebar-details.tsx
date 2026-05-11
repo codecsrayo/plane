@@ -74,7 +74,7 @@ export const CycleSidebarDetails = observer(function CycleSidebarDetails(props: 
       <div className="flex flex-col gap-5 pt-2.5 pb-6">
         <div className="flex items-center justify-start gap-1">
           <div className="flex w-2/5 items-center justify-start gap-2 text-tertiary">
-            <SquareUser className="h-4 w-4" />
+            <SquareUser className="size-4" />
             <span className="text-14">{t("lead")}</span>
           </div>
           <div className="flex w-3/5 items-center rounded-xs">
@@ -87,7 +87,7 @@ export const CycleSidebarDetails = observer(function CycleSidebarDetails(props: 
 
         <div className="flex items-center justify-start gap-1">
           <div className="flex w-2/5 items-center justify-start gap-2 text-tertiary">
-            <MembersPropertyIcon className="h-4 w-4" />
+            <MembersPropertyIcon className="size-4" />
             <span className="text-14">{t("members")}</span>
           </div>
           <div className="flex w-3/5 items-center rounded-xs">
@@ -117,7 +117,7 @@ export const CycleSidebarDetails = observer(function CycleSidebarDetails(props: 
 
         <div className="flex items-center justify-start gap-1">
           <div className="flex w-2/5 items-center justify-start gap-2 text-tertiary">
-            <WorkItemsIcon className="h-4 w-4" />
+            <WorkItemsIcon className="size-4" />
             <span className="text-14">{t("work_items")}</span>
           </div>
           <div className="flex w-3/5 items-center">
@@ -131,7 +131,7 @@ export const CycleSidebarDetails = observer(function CycleSidebarDetails(props: 
         {isEstimatePointValid && !isCompleted && (
           <div className="flex items-center justify-start gap-1">
             <div className="flex w-2/5 items-center justify-start gap-2 text-tertiary">
-              <WorkItemsIcon className="h-4 w-4" />
+              <WorkItemsIcon className="size-4" />
               <span className="text-14">{t("points")}</span>
             </div>
             <div className="flex w-3/5 items-center">

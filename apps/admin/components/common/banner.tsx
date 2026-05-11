@@ -21,11 +21,11 @@ export function Banner(props: TBanner) {
       <div className="flex items-center justify-center">
         <div className="flex-shrink-0">
           {type === "error" ? (
-            <span className="flex h-6 w-6 items-center justify-center rounded-full">
-              <AlertCircle className="h-5 w-5 text-danger-primary" aria-hidden="true" />
+            <span className="flex size-6 items-center justify-center rounded-full">
+              <AlertCircle className="size-5 text-danger-primary" aria-hidden="true" />
             </span>
           ) : (
-            <CheckCircle2 className="h-5 w-5 text-success-primary" aria-hidden="true" />
+            <CheckCircle2 className="size-5 text-success-primary" aria-hidden="true" />
           )}
         </div>
         <div className="ml-1">

@@ -168,7 +168,7 @@ export const ModuleIssueQuickActions = observer(function ModuleIssueQuickActions
                 key={item.key}
                 trigger={
                   <div className="flex items-center gap-2">
-                    {item.icon && <item.icon className={cn("h-3 w-3", item.iconClassName)} />}
+                    {item.icon && <item.icon className={cn("size-3", item.iconClassName)} />}
                     <h5>{item.title}</h5>
                     {item.description && (
                       <p
@@ -205,7 +205,7 @@ export const ModuleIssueQuickActions = observer(function ModuleIssueQuickActions
                     )}
                     disabled={nestedItem.disabled}
                   >
-                    {nestedItem.icon && <nestedItem.icon className={cn("h-3 w-3", nestedItem.iconClassName)} />}
+                    {nestedItem.icon && <nestedItem.icon className={cn("size-3", nestedItem.iconClassName)} />}
                     <div>
                       <h5>{nestedItem.title}</h5>
                       {nestedItem.description && (
@@ -240,7 +240,7 @@ export const ModuleIssueQuickActions = observer(function ModuleIssueQuickActions
               )}
               disabled={item.disabled}
             >
-              {item.icon && <item.icon className={cn("h-3 w-3", item.iconClassName)} />}
+              {item.icon && <item.icon className={cn("size-3", item.iconClassName)} />}
               <div>
                 <h5>{item.title}</h5>
                 {item.description && (

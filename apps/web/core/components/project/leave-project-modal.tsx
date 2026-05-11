@@ -99,7 +99,7 @@ export const LeaveProjectModal = observer(function LeaveProjectModal(props: ILea
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6 p-6">
         <div className="flex w-full items-center justify-start gap-6">
           <span className="place-items-center rounded-full bg-danger-subtle p-4">
-            <AlertTriangleIcon className="h-6 w-6 text-danger-primary" aria-hidden="true" />
+            <AlertTriangleIcon className="size-6 text-danger-primary" aria-hidden="true" />
           </span>
           <span className="flex items-center justify-start">
             <h3 className="text-18 font-medium 2xl:text-20">Leave Project</h3>

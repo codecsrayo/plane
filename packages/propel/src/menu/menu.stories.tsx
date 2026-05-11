@@ -45,25 +45,25 @@ export const WithIcons: Story = {
       <Menu label="Account">
         <Menu.MenuItem onClick={() => alert("Profile")}>
           <div className="flex items-center gap-2">
-            <User className="h-4 w-4" />
+            <User className="size-4" />
             <span>Profile</span>
           </div>
         </Menu.MenuItem>
         <Menu.MenuItem onClick={() => alert("Settings")}>
           <div className="flex items-center gap-2">
-            <Settings className="h-4 w-4" />
+            <Settings className="size-4" />
             <span>Settings</span>
           </div>
         </Menu.MenuItem>
         <Menu.MenuItem onClick={() => alert("Messages")}>
           <div className="flex items-center gap-2">
-            <Mail className="h-4 w-4" />
+            <Mail className="size-4" />
             <span>Messages</span>
           </div>
         </Menu.MenuItem>
         <Menu.MenuItem onClick={() => alert("Logout")}>
           <div className="flex items-center gap-2">
-            <LogOut className="h-4 w-4" />
+            <LogOut className="size-4" />
             <span>Logout</span>
           </div>
         </Menu.MenuItem>
@@ -213,14 +213,14 @@ export const ComplexMenu: Story = {
       <Menu label="More Actions" buttonClassName="bg-gray-100">
         <Menu.MenuItem onClick={() => alert("Notifications")}>
           <div className="flex items-center gap-2">
-            <Bell className="h-4 w-4" />
+            <Bell className="size-4" />
             <span>Notifications</span>
             <span className="bg-red-500 ml-auto rounded-sm px-2 py-0.5 text-11 text-on-color">3</span>
           </div>
         </Menu.MenuItem>
         <Menu.MenuItem onClick={() => alert("Help")}>
           <div className="flex items-center gap-2">
-            <HelpCircle className="h-4 w-4" />
+            <HelpCircle className="size-4" />
             <span>Help Center</span>
           </div>
         </Menu.MenuItem>
@@ -235,7 +235,7 @@ export const ComplexMenu: Story = {
         <div className="border-gray-200 my-1 border-t" />
         <Menu.MenuItem onClick={() => alert("Logout")}>
           <div className="flex items-center gap-2 text-danger-primary">
-            <LogOut className="h-4 w-4" />
+            <LogOut className="size-4" />
             <span>Logout</span>
           </div>
         </Menu.MenuItem>

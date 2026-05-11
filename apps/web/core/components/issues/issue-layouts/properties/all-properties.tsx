@@ -270,7 +270,7 @@ export const IssueProperties = observer(function IssueProperties(props: IIssuePr
             onChange={handleStartDate}
             maxDate={maxDate}
             placeholder={t("common.order_by.start_date")}
-            icon={<StartDatePropertyIcon className="h-3 w-3 flex-shrink-0" />}
+            icon={<StartDatePropertyIcon className="size-3 flex-shrink-0" />}
             buttonVariant={issue.start_date ? "border-with-text" : "border-without-text"}
             optionsClassName="z-10"
             disabled={isReadOnly}
@@ -293,7 +293,7 @@ export const IssueProperties = observer(function IssueProperties(props: IIssuePr
             onChange={handleTargetDate}
             minDate={minDate}
             placeholder={t("common.order_by.due_date")}
-            icon={<DueDatePropertyIcon className="h-3 w-3 shrink-0" />}
+            icon={<DueDatePropertyIcon className="size-3 shrink-0" />}
             buttonVariant={issue.target_date ? "border-with-text" : "border-without-text"}
             buttonClassName={
               shouldHighlightIssueDueDate(issue.target_date, stateDetails?.group) ? "text-danger-primary" : ""
@@ -427,7 +427,7 @@ export const IssueProperties = observer(function IssueProperties(props: IIssuePr
                 }
               )}
             >
-              <ViewsIcon className="h-3 w-3 flex-shrink-0" strokeWidth={2} />
+              <ViewsIcon className="size-3 flex-shrink-0" strokeWidth={2} />
               <div className="text-caption-sm-regular">{subIssueCount}</div>
             </button>
           </Tooltip>
@@ -452,7 +452,7 @@ export const IssueProperties = observer(function IssueProperties(props: IIssuePr
             onFocus={stopEventPropagation}
             onMouseDown={stopEventPropagation}
           >
-            <Paperclip className="h-3 w-3 flex-shrink-0" strokeWidth={2} />
+            <Paperclip className="size-3 flex-shrink-0" strokeWidth={2} />
             <div className="text-caption-sm-regular">{issue.attachment_count}</div>
           </div>
         </Tooltip>
@@ -476,7 +476,7 @@ export const IssueProperties = observer(function IssueProperties(props: IIssuePr
             onFocus={stopEventPropagation}
             onMouseDown={stopEventPropagation}
           >
-            <LinkIcon className="h-3 w-3 flex-shrink-0" strokeWidth={2} />
+            <LinkIcon className="size-3 flex-shrink-0" strokeWidth={2} />
             <div className="text-caption-sm-regular">{issue.link_count}</div>
           </div>
         </Tooltip>

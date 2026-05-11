@@ -74,7 +74,7 @@ export const IssueAttachmentsDetail = observer(function IssueAttachmentsDetail(p
       <div className="flex h-[60px] items-center justify-between gap-1 rounded-md border-[2px] border-subtle bg-surface-1 px-4 py-2 text-13">
         <Link href={fileURL ?? ""} target="_blank" rel="noopener noreferrer">
           <div className="flex items-center gap-3">
-            <div className="h-7 w-7">{fileIcon}</div>
+            <div className="size-7">{fileIcon}</div>
             <div className="flex flex-col gap-1">
               <div className="flex items-center gap-2">
                 <Tooltip tooltipContent={fileName} isMobile={isMobile}>
@@ -87,7 +87,7 @@ export const IssueAttachmentsDetail = observer(function IssueAttachmentsDetail(p
                   } uploaded on ${renderFormattedDate(attachment.updated_at)}`}
                 >
                   <span>
-                    <AlertCircle className="h-3 w-3" />
+                    <AlertCircle className="size-3" />
                   </span>
                 </Tooltip>
               </div>
@@ -102,7 +102,7 @@ export const IssueAttachmentsDetail = observer(function IssueAttachmentsDetail(p
 
         {!disabled && (
           <button type="button" onClick={() => setIsDeleteIssueAttachmentModalOpen(true)}>
-            <CloseIcon className="h-4 w-4 text-secondary hover:text-primary" />
+            <CloseIcon className="size-4 text-secondary hover:text-primary" />
           </button>
         )}
       </div>

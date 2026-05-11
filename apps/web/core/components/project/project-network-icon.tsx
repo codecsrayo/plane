@@ -32,5 +32,5 @@ export function ProjectNetworkIcon(props: Props) {
   const Icon = getProjectNetworkIcon();
   if (!Icon) return null;
 
-  return <Icon className={cn("h-3 w-3", className)} />;
+  return <Icon className={cn("size-3", className)} />;
 }

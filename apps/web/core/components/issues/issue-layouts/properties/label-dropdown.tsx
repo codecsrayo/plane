@@ -224,7 +224,7 @@ export function LabelDropdown(props: ILabelDropdownProps) {
         disabled={disabled}
       >
         {label}
-        {!hideDropdownArrow && !disabled && <ChevronDownIcon className="h-3 w-3" aria-hidden="true" />}
+        {!hideDropdownArrow && !disabled && <ChevronDownIcon className="size-3" aria-hidden="true" />}
       </button>
     ),
     [

@@ -48,7 +48,7 @@ export function InputSearch(props: IInputSearch) {
         inputContainerClassName
       )}
     >
-      {inputIcon ? <>{inputIcon}</> : <SearchIcon className="h-4 w-4 text-tertiary" aria-hidden="true" />}
+      {inputIcon ? <>{inputIcon}</> : <SearchIcon className="size-4 text-tertiary" aria-hidden="true" />}
       <Combobox.Input
         as="input"
         ref={inputRef}

@@ -58,7 +58,7 @@ export function ViewOrderByDropdown(props: Props) {
           }
         >
           {t(option.i18n_label)}
-          {sortKey === option.key && <CheckIcon className="h-3 w-3" />}
+          {sortKey === option.key && <CheckIcon className="size-3" />}
         </CustomMenu.MenuItem>
       ))}
       <hr className="my-2 border-subtle" />
@@ -76,7 +76,7 @@ export function ViewOrderByDropdown(props: Props) {
             }}
           >
             {t(option.i18n_label)}
-            {isSelected && <CheckIcon className="h-3 w-3" />}
+            {isSelected && <CheckIcon className="size-3" />}
           </CustomMenu.MenuItem>
         );
       })}

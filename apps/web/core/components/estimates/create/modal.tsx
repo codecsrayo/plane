@@ -154,9 +154,9 @@ export const CreateEstimateModal = observer(function CreateEstimateModal(props: 
                   setEstimateSystem(EEstimateSystem.POINTS);
                   handleUpdatePoints(undefined);
                 }}
-                className="flex h-5 w-5 flex-shrink-0 cursor-pointer items-center justify-center"
+                className="flex size-5 flex-shrink-0 cursor-pointer items-center justify-center"
               >
-                <ChevronLeftIcon className="h-4 w-4" />
+                <ChevronLeftIcon className="size-4" />
               </button>
             )}
             <div className="text-18 font-medium text-primary">{t("project_settings.estimates.new")}</div>

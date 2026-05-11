@@ -53,8 +53,8 @@ export const AppliedFilters = observer(function AppliedFilters(props: TAppliedFi
               onClick={() => handleFilterTypeChange(filter?.value, !isSelected)}
             >
               <div className="whitespace-nowrap text-secondary">{t(filter.i18n_label)}</div>
-              <div className="flex h-4 w-4 items-center justify-center rounded-xs text-secondary transition-all hover:text-primary">
-                <CloseIcon className="h-3 w-3" />
+              <div className="flex size-4 items-center justify-center rounded-xs text-secondary transition-all hover:text-primary">
+                <CloseIcon className="size-3" />
               </div>
             </Tag>
           );

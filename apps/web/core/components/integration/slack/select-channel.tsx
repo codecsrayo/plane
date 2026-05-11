@@ -108,7 +108,7 @@ export const SelectChannel = observer(function SelectChannel({ integration }: Pr
         >
           <span
             aria-hidden="true"
-            className={`shadow inline-block h-2 w-2 transform self-center rounded-full bg-white ring-0 transition duration-200 ease-in-out ${
+            className={`shadow inline-block size-2 transform self-center rounded-full bg-white ring-0 transition duration-200 ease-in-out ${
               slackChannelAvailabilityToggle ? "translate-x-3" : "translate-x-0"
             }`}
           />

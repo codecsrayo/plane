@@ -231,7 +231,7 @@ const InviteMemberInput = observer(function InviteMemberInput(props: InviteMembe
                               <div className="text-13 font-medium">{t(roleDetails.i18n_title)}</div>
                               <div className="flex text-11 text-tertiary">{t(roleDetails.i18n_description)}</div>
                             </div>
-                            {selected && <CheckIcon className="h-4 w-4 shrink-0" />}
+                            {selected && <CheckIcon className="size-4 shrink-0" />}
                           </div>
                         )}
                       </Listbox.Option>
@@ -248,7 +248,7 @@ const InviteMemberInput = observer(function InviteMemberInput(props: InviteMembe
             className="absolute right-0 hidden place-items-center self-center rounded-sm group-hover:grid"
             onClick={() => remove(index)}
           >
-            <XCircle className="h-5 w-5 pl-0.5 text-placeholder" />
+            <XCircle className="size-5 pl-0.5 text-placeholder" />
           </button>
         )}
       </div>
@@ -377,7 +377,7 @@ export function InviteMembers(props: Props) {
                 className="mx-8 flex items-center gap-1.5 bg-transparent text-13 font-medium text-accent-primary outline-accent-strong"
                 onClick={appendField}
               >
-                <PlusIcon className="h-4 w-4" strokeWidth={2} />
+                <PlusIcon className="size-4" strokeWidth={2} />
                 Add another
               </button>
             </div>

@@ -219,14 +219,14 @@ export const GeneralProfileSettingsForm = observer(function GeneralProfileSettin
             />
             <div className="absolute -bottom-6 left-6 flex items-end justify-between">
               <div className="flex gap-3">
-                <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-surface-2">
+                <div className="flex size-16 items-center justify-center rounded-lg bg-surface-2">
                   <button type="button" onClick={() => setIsImageUploadModalOpen(true)}>
                     {!userAvatar || userAvatar === "" ? (
-                      <div className="h-16 w-16 rounded-md bg-layer-1 p-2">
+                      <div className="size-16 rounded-md bg-layer-1 p-2">
                         <CircleUserRound className="h-full w-full text-secondary" />
                       </div>
                     ) : (
-                      <div className="relative h-16 w-16 overflow-hidden">
+                      <div className="relative size-16 overflow-hidden">
                         <img
                           src={getFileURL(userAvatar)}
                           className="absolute top-0 left-0 h-full w-full rounded-lg object-cover"

@@ -86,11 +86,11 @@ export const TransferIssuesModal = observer(function TransferIssuesModal(props: 
             <h4 className="text-18 font-medium text-primary">Transfer work items</h4>
           </div>
           <button onClick={handleClose}>
-            <CloseIcon className="h-4 w-4" />
+            <CloseIcon className="size-4" />
           </button>
         </div>
         <div className="flex items-center gap-2 border-b border-subtle px-5 pb-3">
-          <SearchIcon className="h-4 w-4 text-secondary" />
+          <SearchIcon className="size-4 text-secondary" />
           <input
             className="text-13 outline-none"
             placeholder="Search for a cycle..."
@@ -117,7 +117,7 @@ export const TransferIssuesModal = observer(function TransferIssuesModal(props: 
                       handleClose();
                     }}
                   >
-                    <CycleIcon className="h-5 w-5" />
+                    <CycleIcon className="size-5" />
                     <div className="flex w-full justify-between truncate">
                       <span className="truncate">{cycleDetails?.name}</span>
                       {cycleDetails.status && (

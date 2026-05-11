@@ -12,7 +12,7 @@ export function PageNotFound() {
     <div className={`h-screen w-full overflow-hidden bg-surface-1`}>
       <div className="grid h-full place-items-center p-4">
         <div className="space-y-8 text-center">
-          <div className="relative mx-auto h-60 w-60 lg:h-80 lg:w-80">
+          <div className="relative mx-auto size-60 lg:h-80 lg:w-80">
             <img src={Image404} alt="404- Page not found" className="h-full w-full object-contain" />
           </div>
           <div className="space-y-2">

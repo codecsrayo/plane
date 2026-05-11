@@ -117,7 +117,7 @@ export const CycleOptions = observer(function CycleOptions(props: CycleOptionsPr
       query: t("cycle.no_cycle"),
       content: (
         <div className="flex items-center gap-2">
-          <CycleIcon className="h-3 w-3 flex-shrink-0" />
+          <CycleIcon className="size-3 flex-shrink-0" />
           <span className="flex-grow truncate">{t("cycle.no_cycle")}</span>
         </div>
       ),

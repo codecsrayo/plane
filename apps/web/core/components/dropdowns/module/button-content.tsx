@@ -49,7 +49,7 @@ export function ModuleButtonContent(props: ModuleButtonContentProps) {
       <>
         {showCount ? (
           <div className="relative flex max-w-full items-center gap-1">
-            {!hideIcon && <ModuleIcon className="h-3 w-3 flex-shrink-0" />}
+            {!hideIcon && <ModuleIcon className="size-3 flex-shrink-0" />}
             {(value.length > 0 || !!placeholder) && (
               <div className="max-w-40 truncate">
                 {value.length > 0
@@ -109,7 +109,7 @@ export function ModuleButtonContent(props: ModuleButtonContentProps) {
           </div>
         ) : (
           <>
-            {!hideIcon && <ModuleIcon className="h-3 w-3 flex-shrink-0" />}
+            {!hideIcon && <ModuleIcon className="size-3 flex-shrink-0" />}
             <span className="flex-grow truncate text-left">{placeholder}</span>
           </>
         )}
@@ -121,7 +121,7 @@ export function ModuleButtonContent(props: ModuleButtonContentProps) {
   else
     return (
       <>
-        {!hideIcon && <ModuleIcon className="h-3 w-3 flex-shrink-0" />}
+        {!hideIcon && <ModuleIcon className="size-3 flex-shrink-0" />}
         {!hideText && (
           <span className="flex-grow truncate text-left">{value ? getModuleById(value)?.name : placeholder}</span>
         )}

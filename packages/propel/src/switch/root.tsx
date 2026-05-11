@@ -43,7 +43,7 @@ function Switch({ value, onChange, label, size = "sm", disabled, className }: IT
         className={cn(
           "shadow inline-block self-center rounded-full ring-0 transition-transform duration-200 ease-in-out",
           // size
-          size === "sm" ? "h-3 w-3" : size === "md" ? "h-4 w-4" : "h-5 w-5",
+          size === "sm" ? "size-3" : size === "md" ? "size-4" : "size-5",
           // position + color by state
           value
             ? size === "sm"

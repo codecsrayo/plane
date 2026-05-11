@@ -63,7 +63,7 @@ export function SetPasswordRoot({ onPasswordChange, onConfirmPasswordChange, dis
 
   const chevronIconClasses = useMemo(
     () =>
-      `w-4 h-4 text-placeholder transition-transform duration-300 ease-in-out ${isExpanded ? "rotate-180" : "rotate-0"}`,
+      `size-4 text-placeholder transition-transform duration-300 ease-in-out ${isExpanded ? "rotate-180" : "rotate-0"}`,
     [isExpanded]
   );
 

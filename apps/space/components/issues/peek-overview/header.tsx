@@ -81,7 +81,7 @@ export const PeekOverviewHeader = observer(function PeekOverviewHeader(props: Pr
             <Listbox.Button
               className={`grid place-items-center text-tertiary hover:text-secondary ${peekMode === "full" ? "rotate-45" : ""}`}
             >
-              <Icon className="h-4 w-4 text-tertiary hover:text-secondary" />
+              <Icon className="size-4 text-tertiary hover:text-secondary" />
             </Listbox.Button>
 
             <Transition
@@ -106,7 +106,7 @@ export const PeekOverviewHeader = observer(function PeekOverviewHeader(props: Pr
                       }
                     >
                       <div className="flex items-center gap-1.5">
-                        <mode.icon className="-my-1 h-4 w-4 flex-shrink-0" />
+                        <mode.icon className="-my-1 size-4 flex-shrink-0" />
                         {mode.label}
                       </div>
                     </Listbox.Option>
@@ -122,7 +122,7 @@ export const PeekOverviewHeader = observer(function PeekOverviewHeader(props: Pr
             onClick={handleCopyLink}
             className="shrink-0 text-tertiary hover:text-secondary focus:outline-none"
           >
-            <LinkIcon className="h-4 w-4 -rotate-45" />
+            <LinkIcon className="size-4 -rotate-45" />
           </button>
         )}
       </div>

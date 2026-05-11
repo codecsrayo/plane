@@ -23,7 +23,7 @@ export function RadialProgressBar(props: IRadialProgressBar) {
   const progressOffset = ((100 - progress) / 100) * circumference;
 
   return (
-    <div className="relative h-4 w-4">
+    <div className="relative size-4">
       <svg className="absolute top-0 left-0" viewBox="0 0 100 100">
         <circle
           className={"stroke-current opacity-10"}

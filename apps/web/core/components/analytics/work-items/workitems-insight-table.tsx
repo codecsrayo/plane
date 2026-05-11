@@ -90,7 +90,7 @@ const WorkItemsInsightTable = observer(function WorkItemsInsightTable() {
                   {project?.logo_props ? (
                     <Logo logo={project.logo_props} size={18} />
                   ) : (
-                    <ProjectIcon className="h-4 w-4" />
+                    <ProjectIcon className="size-4" />
                   )}
                   {project?.name}
                 </div>
@@ -117,7 +117,7 @@ const WorkItemsInsightTable = observer(function WorkItemsInsightTable() {
                       shape="circle"
                     />
                   ) : (
-                    <div className="flex h-4 w-4 flex-shrink-0 items-center justify-center overflow-hidden rounded-full bg-layer-1 capitalize">
+                    <div className="flex size-4 flex-shrink-0 items-center justify-center overflow-hidden rounded-full bg-layer-1 capitalize">
                       {row.original.display_name ? (
                         row.original.display_name?.[0]
                       ) : (

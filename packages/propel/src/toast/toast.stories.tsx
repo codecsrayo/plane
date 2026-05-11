@@ -667,8 +667,7 @@ export const DesignTokens: Story = {
               <span className="font-medium text-primary">Icon Stroke Width:</span> 2px
             </li>
             <li>
-              <span className="font-medium text-primary">Icon Container:</span> 40x40px circular (w-10 h-10
-              rounded-full)
+              <span className="font-medium text-primary">Icon Container:</span> 40x40px circular (size-10 rounded-full)
             </li>
             <li>
               <span className="font-medium text-primary">Icon Color:</span>{" "}

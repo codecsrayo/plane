@@ -12,7 +12,7 @@ export interface IBannerStyling {
 
 export const bannerSizeStyling = {
   container: "py-3 px-6 h-12",
-  icon: "w-5 h-5",
+  icon: "size-5",
   title: "text-13",
   action: "gap-2",
 };

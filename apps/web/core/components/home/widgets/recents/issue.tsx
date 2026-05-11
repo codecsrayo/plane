@@ -105,7 +105,7 @@ export const RecentIssue = observer(function RecentIssue(props: BlockProps) {
               <StateGroupIcon
                 stateGroup={state?.group ?? "backlog"}
                 color={state?.color}
-                className="my-auto h-4 w-4"
+                className="my-auto size-4"
                 percentage={state?.order}
               />
             </div>

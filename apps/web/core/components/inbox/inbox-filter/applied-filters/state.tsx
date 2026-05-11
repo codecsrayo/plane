@@ -34,16 +34,16 @@ export const InboxIssueAppliedFiltersState = observer(function InboxIssueApplied
         if (!optionDetail) return <></>;
         return (
           <div key={value} className="relative flex items-center gap-1 rounded-sm bg-layer-1 p-1 text-11">
-            <div className="relative flex h-3 w-3 flex-shrink-0 items-center justify-center overflow-hidden">
+            <div className="relative flex size-3 flex-shrink-0 items-center justify-center overflow-hidden">
               <StateGroupIcon color={optionDetail.color} stateGroup={optionDetail.group} size={EIconSize.SM} />
             </div>
             <div className="truncate text-11">{optionDetail?.name}</div>
             <button
               type="button"
-              className="relative flex h-3 w-3 flex-shrink-0 cursor-pointer items-center justify-center overflow-hidden text-tertiary transition-all hover:text-secondary"
+              className="relative flex size-3 flex-shrink-0 cursor-pointer items-center justify-center overflow-hidden text-tertiary transition-all hover:text-secondary"
               onClick={() => handleInboxIssueFilters("state", handleFilterValue(optionDetail?.id))}
             >
-              <CloseIcon className={`h-3 w-3`} />
+              <CloseIcon className={`size-3`} />
             </button>
           </div>
         );
@@ -51,10 +51,10 @@ export const InboxIssueAppliedFiltersState = observer(function InboxIssueApplied
 
       <button
         type="button"
-        className="relative flex h-3 w-3 flex-shrink-0 cursor-pointer items-center justify-center overflow-hidden text-tertiary transition-all hover:text-secondary"
+        className="relative flex size-3 flex-shrink-0 cursor-pointer items-center justify-center overflow-hidden text-tertiary transition-all hover:text-secondary"
         onClick={clearFilter}
       >
-        <CloseIcon className={`h-3 w-3`} />
+        <CloseIcon className={`size-3`} />
       </button>
     </Tag>
   );

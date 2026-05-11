@@ -64,7 +64,7 @@ export function IconRoot(props: IconRootProps) {
           {showHexInput ? (
             <div className="col-span-8 ml-2 flex items-center gap-1 justify-self-stretch">
               <span
-                className="mr-1 h-4 w-4 flex-shrink-0 rounded-full"
+                className="mr-1 size-4 flex-shrink-0 rounded-full"
                 style={{
                   backgroundColor: `#${hexValue}`,
                 }}
@@ -93,13 +93,13 @@ export function IconRoot(props: IconRootProps) {
                   setHexValue(curCol.slice(1, 7));
                 }}
               >
-                <span className="h-4 w-4 cursor-pointer rounded-full" style={{ backgroundColor: curCol }} />
+                <span className="size-4 cursor-pointer rounded-full" style={{ backgroundColor: curCol }} />
               </button>
             ))
           )}
           <button
             type="button"
-            className={cn("grid h-4 w-4 place-items-center rounded-full border border-transparent", {
+            className={cn("grid size-4 place-items-center rounded-full border border-transparent", {
               "border-strong-1": !showHexInput,
             })}
             onClick={() => {
@@ -108,14 +108,14 @@ export function IconRoot(props: IconRootProps) {
             }}
           >
             {showHexInput ? (
-              <span className="h-4 w-4 rounded-full conical-gradient" />
+              <span className="size-4 rounded-full conical-gradient" />
             ) : (
               <span className="grid place-items-center text-10 text-tertiary">#</span>
             )}
           </button>
         </div>
         <div className="flex h-6 w-full items-center gap-2 py-1 pr-3 pl-4">
-          <InfoIcon className="h-3 w-3" />
+          <InfoIcon className="size-3" />
           <p className="text-11"> Colors will be adjusted to ensure sufficient contrast.</p>
         </div>
       </div>

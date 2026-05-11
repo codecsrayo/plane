@@ -105,7 +105,7 @@ function LabelSummary({ isMobile, fullWidth, noLabelBorder, disabled, projectLab
         renderByDefault={false}
       >
         <div className="flex h-full items-center gap-1.5 text-secondary">
-          <span className="h-2 w-2 flex-shrink-0 rounded-full bg-accent-primary" />
+          <span className="size-2 flex-shrink-0 rounded-full bg-accent-primary" />
           {`${value.length} Labels`}
         </div>
       </Tooltip>
@@ -150,7 +150,7 @@ const LabelItem = observer(function LabelItem({
       >
         <div className="flex max-w-full items-center gap-1.5 overflow-hidden text-secondary">
           <span
-            className="h-2 w-2 flex-shrink-0 rounded-full"
+            className="size-2 flex-shrink-0 rounded-full"
             style={{
               backgroundColor: label?.color ?? "#000000",
             }}

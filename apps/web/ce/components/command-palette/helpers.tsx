@@ -44,7 +44,7 @@ export type TCommandGroups = {
 
 export const commandGroups: TCommandGroups = {
   cycle: {
-    icon: <CycleIcon className="h-3 w-3" />,
+    icon: <CycleIcon className="size-3" />,
     itemName: (cycle) => (
       <h6>
         <span className="text-11 text-tertiary">{cycle.project__identifier}</span> {cycle.name}
@@ -78,7 +78,7 @@ export const commandGroups: TCommandGroups = {
     title: "Work items",
   },
   issue_view: {
-    icon: <ViewsIcon className="h-3 w-3" />,
+    icon: <ViewsIcon className="size-3" />,
     itemName: (view) => (
       <h6>
         <span className="text-11 text-tertiary">{view.project__identifier}</span> {view.name}
@@ -88,7 +88,7 @@ export const commandGroups: TCommandGroups = {
     title: "Views",
   },
   module: {
-    icon: <ModuleIcon className="h-3 w-3" />,
+    icon: <ModuleIcon className="size-3" />,
     itemName: (module) => (
       <h6>
         <span className="text-11 text-tertiary">{module.project__identifier}</span> {module.name}
@@ -98,7 +98,7 @@ export const commandGroups: TCommandGroups = {
     title: "Modules",
   },
   page: {
-    icon: <PageIcon className="h-3 w-3" />,
+    icon: <PageIcon className="size-3" />,
     itemName: (page) => (
       <h6>
         <span className="text-11 text-tertiary">{page.project__identifiers?.[0]}</span> {page.name}
@@ -114,13 +114,13 @@ export const commandGroups: TCommandGroups = {
     title: "Pages",
   },
   project: {
-    icon: <ProjectIcon className="h-3 w-3" />,
+    icon: <ProjectIcon className="size-3" />,
     itemName: (project) => project?.name,
     path: (project) => `/${project?.workspace__slug}/projects/${project?.id}/issues/`,
     title: "Projects",
   },
   workspace: {
-    icon: <LayoutGrid className="h-3 w-3" />,
+    icon: <LayoutGrid className="size-3" />,
     itemName: (workspace) => workspace?.name,
     path: (workspace) => `/${workspace?.slug}/`,
     title: "Workspaces",

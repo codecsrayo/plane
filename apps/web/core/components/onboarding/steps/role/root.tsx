@@ -128,7 +128,7 @@ export const RoleSetupStep = observer(function RoleSetupStep({ handleStepChange 
                         <span
                           className={`border-blue-500 flex size-4 items-center justify-center rounded-sm border-2 bg-accent-primary`}
                         >
-                          <CheckIcon className="h-3 w-3 text-on-color" />
+                          <CheckIcon className="size-3 text-on-color" />
                         </span>
                       </>
                     )}

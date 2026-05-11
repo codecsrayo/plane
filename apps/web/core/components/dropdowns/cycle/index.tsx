@@ -111,7 +111,7 @@ export const CycleDropdown = observer(function CycleDropdown(props: Props) {
           variant={buttonVariant}
           renderToolTipByDefault={renderByDefault}
         >
-          {!hideIcon && <CycleIcon className="h-3 w-3 flex-shrink-0" />}
+          {!hideIcon && <CycleIcon className="size-3 flex-shrink-0" />}
           {BUTTON_VARIANTS_WITH_TEXT.includes(buttonVariant) && (!!selectedName || !!placeholder) && (
             <span className="max-w-40 truncate">{selectedName ?? placeholder}</span>
           )}

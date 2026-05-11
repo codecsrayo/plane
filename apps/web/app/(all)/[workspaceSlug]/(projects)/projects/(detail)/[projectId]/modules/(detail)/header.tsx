@@ -141,7 +141,7 @@ export const ModuleIssuesHeader = observer(function ModuleIssuesHeader() {
                   <BreadcrumbLink
                     label="Modules"
                     href={`/${workspaceSlug}/projects/${projectId}/modules/`}
-                    icon={<ModuleIcon className="h-4 w-4 text-tertiary" />}
+                    icon={<ModuleIcon className="size-4 text-tertiary" />}
                     isLast
                   />
                 }

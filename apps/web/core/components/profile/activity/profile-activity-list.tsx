@@ -77,15 +77,15 @@ export const ProfileActivityListPage = observer(function ProfileActivityListPage
                           alt={activityItem.actor_detail.display_name}
                           height={30}
                           width={30}
-                          className="grid h-7 w-7 place-items-center rounded-full border-2 border-subtle-1 bg-layer-3"
+                          className="grid size-7 place-items-center rounded-full border-2 border-subtle-1 bg-layer-3"
                         />
                       ) : (
-                        <div className="grid h-7 w-7 place-items-center rounded-full border-2 border-subtle-1 bg-layer-3 capitalize">
+                        <div className="grid size-7 place-items-center rounded-full border-2 border-subtle-1 bg-layer-3 capitalize">
                           {activityItem.actor_detail.display_name?.[0]}
                         </div>
                       )}
 
-                      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-layer-3 p-2 text-secondary">
+                      <span className="flex size-6 items-center justify-center rounded-full bg-layer-3 p-2 text-secondary">
                         <MessageSquare className="!text-20 text-secondary" aria-hidden="true" />
                       </span>
                     </div>
@@ -129,10 +129,10 @@ export const ProfileActivityListPage = observer(function ProfileActivityListPage
                         <div>
                           <div className="relative mt-4 px-1.5">
                             <div className="mt-1.5">
-                              <div className="flex h-6 w-6 items-center justify-center rounded-lg border border-subtle shadow-raised-100">
+                              <div className="flex size-6 items-center justify-center rounded-lg border border-subtle shadow-raised-100">
                                 {activityItem.field ? (
                                   activityItem.new_value === "restore" ? (
-                                    <History className="h-5 w-5 text-secondary" />
+                                    <History className="size-5 text-secondary" />
                                   ) : (
                                     <ActivityIcon activity={activityItem} />
                                   )
@@ -146,7 +146,7 @@ export const ProfileActivityListPage = observer(function ProfileActivityListPage
                                     className="h-full w-full rounded-full object-cover"
                                   />
                                 ) : (
-                                  <div className="grid h-6 w-6 place-items-center rounded-full border-2 border-subtle-1 bg-layer-3 text-11 capitalize">
+                                  <div className="grid size-6 place-items-center rounded-full border-2 border-subtle-1 bg-layer-3 text-11 capitalize">
                                     {activityItem.actor_detail.display_name?.[0]}
                                   </div>
                                 )}

@@ -47,7 +47,7 @@ export function MobileLayoutSelection({
           }}
           className="flex items-center gap-2"
         >
-          <IssueLayoutIcon layout={layout.key} className="h-3 w-3" />
+          <IssueLayoutIcon layout={layout.key} className="size-3" />
           <div className="text-tertiary">{t(layout.i18n_label)}</div>
         </CustomMenu.MenuItem>
       ))}

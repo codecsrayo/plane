@@ -27,7 +27,7 @@ const WIDGET_KEY = EWidgetKeys.RECENT_ACTIVITY;
 const workspaceService = new WorkspaceService();
 const filters: { name: TRecentActivityFilterKeys; icon?: React.ReactNode; i18n_key: string }[] = [
   { name: "all item", i18n_key: "home.recents.filters.all" },
-  { name: "issue", icon: <WorkItemsIcon className="h-4 w-4" />, i18n_key: "home.recents.filters.issues" },
+  { name: "issue", icon: <WorkItemsIcon className="size-4" />, i18n_key: "home.recents.filters.issues" },
   { name: "page", icon: <PageIcon height={16} width={16} />, i18n_key: "home.recents.filters.pages" },
   { name: "project", icon: <ProjectIcon height={16} width={16} />, i18n_key: "home.recents.filters.projects" },
 ];

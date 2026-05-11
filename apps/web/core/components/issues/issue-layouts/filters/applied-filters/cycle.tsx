@@ -34,7 +34,7 @@ export const AppliedCycleFilters = observer(function AppliedCycleFilters(props: 
 
         return (
           <div key={cycleId} className="flex items-center gap-1 truncate rounded-sm bg-layer-1 p-1 text-11">
-            <CycleGroupIcon cycleGroup={cycleStatus} className="h-3 w-3 flex-shrink-0" />
+            <CycleGroupIcon cycleGroup={cycleStatus} className="size-3 flex-shrink-0" />
             <span className="truncate normal-case">{cycleDetails.name}</span>
             {editable && (
               <button

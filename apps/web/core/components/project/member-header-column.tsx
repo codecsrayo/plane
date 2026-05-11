@@ -54,13 +54,13 @@ export const MemberHeaderColumn = observer(function MemberHeaderColumn(props: Pr
               activeSortingProperty === propertyDetails.descendingOrderKey) && (
               <div className="flex h-3.5 w-3.5 items-center justify-center rounded-full">
                 {propertyDetails.ascendingOrderKey === activeSortingProperty ? (
-                  <ArrowDownWideNarrow className="h-3 w-3" />
+                  <ArrowDownWideNarrow className="size-3" />
                 ) : (
-                  <ArrowUpNarrowWide className="h-3 w-3" />
+                  <ArrowUpNarrowWide className="size-3" />
                 )}
               </div>
             )}
-            <ChevronDownIcon className="h-3 w-3" aria-hidden="true" />
+            <ChevronDownIcon className="size-3" aria-hidden="true" />
           </div>
         </div>
       }
@@ -78,12 +78,12 @@ export const MemberHeaderColumn = observer(function MemberHeaderColumn(props: Pr
               }`}
             >
               <div className="flex items-center gap-2">
-                <ArrowDownWideNarrow className="h-3 w-3 stroke-[1.5]" />
+                <ArrowDownWideNarrow className="size-3 stroke-[1.5]" />
                 <span>{propertyDetails.ascendingOrderTitle}</span>
-                <MoveRight className="h-3 w-3" />
+                <MoveRight className="size-3" />
                 <span>{propertyDetails.descendingOrderTitle}</span>
               </div>
-              {activeSortingProperty === propertyDetails.ascendingOrderKey && <CheckIcon className="h-3 w-3" />}
+              {activeSortingProperty === propertyDetails.ascendingOrderKey && <CheckIcon className="size-3" />}
             </div>
           </CustomMenu.MenuItem>
 
@@ -96,12 +96,12 @@ export const MemberHeaderColumn = observer(function MemberHeaderColumn(props: Pr
               }`}
             >
               <div className="flex items-center gap-2">
-                <ArrowUpNarrowWide className="h-3 w-3 stroke-[1.5]" />
+                <ArrowUpNarrowWide className="size-3 stroke-[1.5]" />
                 <span>{propertyDetails.descendingOrderTitle}</span>
-                <MoveRight className="h-3 w-3" />
+                <MoveRight className="size-3" />
                 <span>{propertyDetails.ascendingOrderTitle}</span>
               </div>
-              {activeSortingProperty === propertyDetails.descendingOrderKey && <CheckIcon className="h-3 w-3" />}
+              {activeSortingProperty === propertyDetails.descendingOrderKey && <CheckIcon className="size-3" />}
             </div>
           </CustomMenu.MenuItem>
 
@@ -109,7 +109,7 @@ export const MemberHeaderColumn = observer(function MemberHeaderColumn(props: Pr
             activeSortingProperty === propertyDetails.descendingOrderKey) && (
             <CustomMenu.MenuItem className="mt-0.5" key={property} onClick={handleClearSorting}>
               <div className="flex items-center gap-2 px-1">
-                <Eraser className="h-3 w-3" />
+                <Eraser className="size-3" />
                 <span>{t("common.actions.clear_sorting")}</span>
               </div>
             </CustomMenu.MenuItem>

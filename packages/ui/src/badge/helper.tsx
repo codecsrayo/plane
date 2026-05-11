@@ -41,9 +41,9 @@ enum badgeSizeStyling {
 
 // TODO: convert them to objects instead of enums
 enum badgeIconStyling {
-  sm = "h-3 w-3 flex justify-center items-center overflow-hidden flex-shrink-0",
+  sm = "size-3 flex justify-center items-center overflow-hidden flex-shrink-0",
   md = "h-3.5 w-3.5 flex justify-center items-center overflow-hidden flex-shrink-0",
-  lg = "h-4 w-4 flex justify-center items-center overflow-hidden flex-shrink-0",
+  lg = "size-4 flex justify-center items-center overflow-hidden flex-shrink-0",
   xl = "h-[1rem] w-[1rem] flex justify-center items-center overflow-hidden flex-shrink-0",
 }
 

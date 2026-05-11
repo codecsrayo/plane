@@ -26,7 +26,7 @@ export function FilterOption(props: Props) {
       onClick={onClick}
     >
       <div
-        className={`grid h-3 w-3 shrink-0 place-items-center border ${
+        className={`grid size-3 shrink-0 place-items-center border ${
           isChecked ? "border-accent-strong bg-accent-primary text-on-color" : "border-strong"
         } ${multiple ? "rounded-xs" : "rounded-full"}`}
       >

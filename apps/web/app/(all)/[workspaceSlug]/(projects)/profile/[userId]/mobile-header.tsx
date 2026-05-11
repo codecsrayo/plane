@@ -92,7 +92,7 @@ export const ProfileIssuesMobileHeader = observer(function ProfileIssuesMobileHe
         customButton={
           <div className="flex-center flex text-13 text-secondary">
             {t("common.layout")}
-            <ChevronDownIcon className="my-auto ml-2 h-4 w-4 text-secondary" strokeWidth={2} />
+            <ChevronDownIcon className="my-auto ml-2 size-4 text-secondary" strokeWidth={2} />
           </div>
         }
         customButtonClassName="flex flex-center text-secondary text-13"
@@ -108,7 +108,7 @@ export const ProfileIssuesMobileHeader = observer(function ProfileIssuesMobileHe
               }}
               className="flex items-center gap-2"
             >
-              <IssueLayoutIcon layout={layout.key} className="h-3 w-3" />
+              <IssueLayoutIcon layout={layout.key} className="size-3" />
               <div className="text-tertiary">{t(layout.i18n_title)}</div>
             </CustomMenu.MenuItem>
           );
@@ -121,7 +121,7 @@ export const ProfileIssuesMobileHeader = observer(function ProfileIssuesMobileHe
           menuButton={
             <div className="flex-center flex text-13 text-secondary">
               {t("common.display")}
-              <ChevronDownIcon className="ml-2 h-4 w-4 text-secondary" strokeWidth={2} />
+              <ChevronDownIcon className="ml-2 size-4 text-secondary" strokeWidth={2} />
             </div>
           }
         >

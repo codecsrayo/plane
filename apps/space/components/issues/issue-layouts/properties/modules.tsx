@@ -36,7 +36,7 @@ export const IssueBlockModules = observer(function IssueBlockModules({ moduleIds
             })}
           >
             <div className="flex items-center gap-1.5 text-secondary">
-              <ModuleIcon className="h-3 w-3 flex-shrink-0" />
+              <ModuleIcon className="size-3 flex-shrink-0" />
               <div className="text-11">{modules?.[0]?.name ?? "No Modules"}</div>
             </div>
           </div>

@@ -208,7 +208,7 @@ export const useWorkItemFiltersConfig = (props: TUseWorkItemFiltersConfigProps):
       getModuleFilterConfig<TWorkItemFilterProperty>("module_id")({
         isEnabled: isFilterEnabled("module_id") && currentProject?.module_view === true && modules !== undefined,
         filterIcon: ModuleIcon,
-        getOptionIcon: () => <ModuleIcon className="h-3 w-3 flex-shrink-0" />,
+        getOptionIcon: () => <ModuleIcon className="size-3 flex-shrink-0" />,
         modules: modules ?? [],
         ...operatorConfigs,
       }),

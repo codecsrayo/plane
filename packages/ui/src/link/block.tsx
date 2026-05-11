@@ -53,7 +53,7 @@ export function LinkItemBlock(props: TLinkItemBlockProps) {
                 })}
                 disabled={item.disabled}
               >
-                {item.icon && <item.icon className={cn("h-3 w-3", item.iconClassName)} />}
+                {item.icon && <item.icon className={cn("size-3", item.iconClassName)} />}
                 <div>
                   <h5>{item.title}</h5>
                   {item.description && (

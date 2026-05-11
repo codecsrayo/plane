@@ -119,7 +119,7 @@ export function NotificationSnoozeModal(props: TNotificationSnoozeModal) {
 
           <div>
             <button type="button" onClick={handleClose}>
-              <CloseIcon className="h-5 w-5 text-primary" />
+              <CloseIcon className="size-5 text-primary" />
             </button>
           </div>
         </div>

@@ -55,7 +55,7 @@ export function PowerKModalHeader(props: Props) {
             onClick={() => onSearchChange("")}
             className="flex-shrink-0 rounded-sm p-1 text-placeholder hover:bg-layer-1 hover:text-secondary"
           >
-            <X className="h-3 w-3" />
+            <X className="size-3" />
           </button>
         )}
       </div>

@@ -39,14 +39,14 @@ export const OAuthCallbackPage: FC<OAuthCallbackPageProps> = ({
     <div className="shadow-sm flex flex-col items-center gap-4 rounded-lg border border-subtle bg-surface-2 p-10">
       {status === "processing" && (
         <>
-          <div className="border-primary-400 h-8 w-8 animate-spin rounded-full border-4 border-t-transparent" />
+          <div className="border-primary-400 size-8 animate-spin rounded-full border-4 border-t-transparent" />
           <p className="text-body-sm-medium text-secondary">{processingText}</p>
         </>
       )}
 
       {status === "success" && (
         <>
-          <svg className="h-12 w-12 text-success-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg className="size-12 text-success-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
           </svg>
           <p className="text-body-sm-medium">{successText}</p>
@@ -55,7 +55,7 @@ export const OAuthCallbackPage: FC<OAuthCallbackPageProps> = ({
 
       {status === "error" && (
         <>
-          <svg className="text-red-500 h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg className="text-red-500 size-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
           </svg>
           <p className="text-red-500 text-body-sm-medium">{errorMessage}</p>

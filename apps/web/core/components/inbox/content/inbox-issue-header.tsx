@@ -291,7 +291,7 @@ export const InboxIssueActionsHeader = observer(function InboxIssueActionsHeader
         <div className="flex items-center gap-4">
           {isNotificationEmbed && (
             <button onClick={embedRemoveCurrentNotification}>
-              <MoveRight className="h-4 w-4 text-tertiary hover:text-secondary" />
+              <MoveRight className="size-4 text-tertiary hover:text-secondary" />
             </button>
           )}
           {issue?.project_id && issue.sequence_id && (

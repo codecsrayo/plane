@@ -23,8 +23,8 @@ export function ProjectsLoader() {
                     </div>
                   </div>
                   <div className="flex h-full flex-shrink-0 items-center gap-2">
-                    <span className="h-6 w-6 rounded-sm bg-layer-1" />
-                    <span className="h-6 w-6 rounded-sm bg-layer-1" />
+                    <span className="size-6 rounded-sm bg-layer-1" />
+                    <span className="size-6 rounded-sm bg-layer-1" />
                   </div>
                 </div>
               </div>
@@ -33,7 +33,7 @@ export function ProjectsLoader() {
               <span className="h-4 w-36 rounded-sm bg-layer-1" />
               <div className="item-center flex justify-between">
                 <span className="h-5 w-20 rounded-sm bg-layer-1" />
-                <span className="h-5 w-5 rounded-sm bg-layer-1" />
+                <span className="size-5 rounded-sm bg-layer-1" />
               </div>
             </div>
           </div>

@@ -24,7 +24,7 @@ export function EmailSettingsLoader() {
               <span className="h-5 w-96 rounded-sm bg-layer-1" />
             </div>
             <div className="flex items-center">
-              <span className="h-5 w-5 rounded-sm bg-layer-1" />
+              <span className="size-5 rounded-sm bg-layer-1" />
             </div>
           </div>
         ))}

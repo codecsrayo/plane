@@ -184,12 +184,12 @@ export const CycleListItemAction = observer(function CycleListItemAction(props: 
         onClick={openCycleOverview}
         className={`z-[1] flex flex-shrink-0 gap-1 text-11 text-accent-secondary ${isMobile || (isActive && !searchParams.has("peekCycle")) ? "flex" : "hidden group-hover:flex"}`}
       >
-        <Eye className="my-auto h-4 w-4 text-accent-secondary" />
+        <Eye className="my-auto size-4 text-accent-secondary" />
         <span>{t("project_cycles.more_details")}</span>
       </button>
       {showIssueCount && (
         <div className="flex items-center gap-1">
-          <WorkItemsIcon className="h-4 w-4 text-tertiary" />
+          <WorkItemsIcon className="size-4 text-tertiary" />
           <span className="text-11 text-tertiary">{cycleDetails.total_issues}</span>
         </div>
       )}
@@ -214,7 +214,7 @@ export const CycleListItemAction = observer(function CycleListItemAction(props: 
               tooltipContent={
                 <span className="flex gap-1">
                   {renderFormattedDateInUserTimezone(cycleDetails.start_date ?? "")}
-                  <ArrowRight className="my-auto h-3 w-3 flex-shrink-0" />
+                  <ArrowRight className="my-auto size-3 flex-shrink-0" />
                   {renderFormattedDateInUserTimezone(cycleDetails.end_date ?? "")}
                 </span>
               }
@@ -222,7 +222,7 @@ export const CycleListItemAction = observer(function CycleListItemAction(props: 
               tooltipHeading={t("project_cycles.in_your_timezone")}
             >
               <div className="flex items-center gap-1 text-11 font-medium text-tertiary">
-                <CalendarDays className="my-auto h-3 w-3 flex-shrink-0" />
+                <CalendarDays className="my-auto size-3 flex-shrink-0" />
                 <MergedDateDisplay startDate={cycleDetails.start_date} endDate={cycleDetails.end_date} />
               </div>
             </Tooltip>
@@ -256,7 +256,7 @@ export const CycleListItemAction = observer(function CycleListItemAction(props: 
               customTooltipContent={
                 <span className="flex gap-1">
                   {renderFormattedDateInUserTimezone(cycleDetails.start_date ?? "")}
-                  <ArrowRight className="my-auto h-3 w-3 flex-shrink-0" />
+                  <ArrowRight className="my-auto size-3 flex-shrink-0" />
                   {renderFormattedDateInUserTimezone(cycleDetails.end_date ?? "")}
                 </span>
               }
@@ -286,7 +286,7 @@ export const CycleListItemAction = observer(function CycleListItemAction(props: 
                 })}
               </AvatarGroup>
             ) : (
-              <MembersPropertyIcon className="h-4 w-4 text-tertiary" />
+              <MembersPropertyIcon className="size-4 text-tertiary" />
             )}
           </div>
         </Tooltip>

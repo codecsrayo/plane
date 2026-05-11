@@ -140,14 +140,14 @@ export const CommentCard = observer(function CommentCard(props: Props) {
                 disabled={isSubmitting}
                 className="group shadow-md rounded-sm border border-success-strong bg-success-primary p-2 duration-300 hover:bg-success-primary"
               >
-                <CheckIcon className="h-3 w-3 text-on-color" strokeWidth={2} />
+                <CheckIcon className="size-3 text-on-color" strokeWidth={2} />
               </button>
               <button
                 type="button"
                 className="group shadow-md rounded-sm border border-danger-strong bg-danger-primary p-2 duration-300 hover:bg-danger-primary-hover"
                 onClick={() => setIsEditing(false)}
               >
-                <CloseIcon className="h-3 w-3 text-on-color" strokeWidth={2} />
+                <CloseIcon className="size-3 text-on-color" strokeWidth={2} />
               </button>
             </div>
           </form>

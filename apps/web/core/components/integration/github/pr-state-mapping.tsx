@@ -93,7 +93,7 @@ export const GithubPRStateMapping = observer(function GithubPRStateMapping({ wor
               className="text-red-500 hover:text-red-400 transition-colors"
               aria-label={`Delete mapping for ${project?.name ?? mapping.project}`}
             >
-              <Trash2 className="h-4 w-4" />
+              <Trash2 className="size-4" />
             </button>
           </div>
         );

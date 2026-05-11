@@ -78,7 +78,7 @@ export const IssueParentDetail = observer(function IssueParentDetail(props: TIss
         <ControlLink href={workItemLink} onClick={handleParentIssueClick}>
           <div className="flex items-center gap-2">
             <div className="flex items-center gap-2.5">
-              <span className="block h-2 w-2 rounded-full" style={{ backgroundColor: stateColor }} />
+              <span className="block size-2 rounded-full" style={{ backgroundColor: stateColor }} />
               {parentIssue.project_id && (
                 <IssueIdentifier
                   projectId={parentIssue.project_id}
@@ -101,7 +101,7 @@ export const IssueParentDetail = observer(function IssueParentDetail(props: TIss
             onClick={() => issueOperations.update(workspaceSlug, projectId, issueId, { parent_id: null })}
             className="flex items-center gap-2 py-2 text-danger-primary"
           >
-            <MinusCircle className="h-4 w-4" />
+            <MinusCircle className="size-4" />
             <span>{t("issue.remove.parent.label")}</span>
           </CustomMenu.MenuItem>
         </CustomMenu>

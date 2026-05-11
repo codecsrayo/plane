@@ -53,7 +53,7 @@ export const ProjectInboxHeader = observer(function ProjectInboxHeader() {
                 <BreadcrumbLink
                   label="Intake"
                   href={`/${workspaceSlug}/projects/${projectId}/intake/`}
-                  icon={<IntakeIcon className="h-4 w-4 text-tertiary" />}
+                  icon={<IntakeIcon className="size-4 text-tertiary" />}
                   isLast
                 />
               }

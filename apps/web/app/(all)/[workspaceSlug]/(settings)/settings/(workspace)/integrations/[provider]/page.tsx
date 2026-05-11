@@ -170,7 +170,7 @@ function IntegrationDetailPage({ params }: Route.ComponentProps) {
 
           {/* Logo + name */}
           <div className="flex items-center gap-4">
-            <div className="border-custom-border-200 h-12 w-12 flex-shrink-0 rounded-xl border p-2">
+            <div className="border-custom-border-200 size-12 flex-shrink-0 rounded-xl border p-2">
               <img src={meta.logo} className="h-full w-full object-contain" alt={`${meta.title} logo`} />
             </div>
             <div>
@@ -221,10 +221,10 @@ function IntegrationDetailPage({ params }: Route.ComponentProps) {
               <button
                 type="button"
                 onClick={() => setIsPRMappingModalOpen(true)}
-                className="border-custom-border-200 text-custom-text-300 hover:text-custom-text-100 hover:border-custom-border-100 flex h-7 w-7 items-center justify-center rounded-md border transition-colors"
+                className="border-custom-border-200 text-custom-text-300 hover:text-custom-text-100 hover:border-custom-border-100 flex size-7 items-center justify-center rounded-md border transition-colors"
                 title="Add PR state mapping"
               >
-                <Plus className="h-4 w-4" />
+                <Plus className="size-4" />
               </button>
             )}
           </div>
@@ -252,10 +252,10 @@ function IntegrationDetailPage({ params }: Route.ComponentProps) {
               <button
                 type="button"
                 onClick={() => setIsIssueSyncModalOpen(true)}
-                className="border-custom-border-200 text-custom-text-300 hover:text-custom-text-100 hover:border-custom-border-100 flex h-7 w-7 items-center justify-center rounded-md border transition-colors"
+                className="border-custom-border-200 text-custom-text-300 hover:text-custom-text-100 hover:border-custom-border-100 flex size-7 items-center justify-center rounded-md border transition-colors"
                 title="Add project issue sync"
               >
-                <Plus className="h-4 w-4" />
+                <Plus className="size-4" />
               </button>
             )}
           </div>

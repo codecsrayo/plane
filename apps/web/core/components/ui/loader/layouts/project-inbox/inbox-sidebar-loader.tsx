@@ -18,7 +18,7 @@ export function InboxSidebarLoader() {
           </div>
           <div className="flex items-center gap-2">
             <span className="h-4 w-20 rounded-sm bg-layer-1" />
-            <span className="h-2 w-2 rounded-full bg-layer-1" />
+            <span className="size-2 rounded-full bg-layer-1" />
             <span className="h-4 w-16 rounded-sm bg-layer-1" />
             <span className="h-4 w-16 rounded-sm bg-layer-1" />
           </div>

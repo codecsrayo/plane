@@ -103,10 +103,10 @@ export const MemberListFiltersDropdown = observer(function MemberListFiltersDrop
         <div className="relative">
           <Button variant="secondary" size="lg" className="flex items-center gap-2">
             <span>Filters</span>
-            <ChevronDownIcon className="h-3 w-3" />
+            <ChevronDownIcon className="size-3" />
           </Button>
           {appliedFiltersCount > 0 && (
-            <div className="absolute -top-1 -right-1 h-2 w-2 rounded-full bg-accent-primary" />
+            <div className="absolute -top-1 -right-1 size-2 rounded-full bg-accent-primary" />
           )}
         </div>
       }

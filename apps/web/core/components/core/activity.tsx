@@ -517,7 +517,7 @@ const activityDetails: {
           </>
         );
     },
-    icon: <ModuleIcon className="h-3 w-3 !text-secondary" aria-hidden="true" />,
+    icon: <ModuleIcon className="size-3 !text-secondary" aria-hidden="true" />,
   },
   name: {
     message: (activity, showIssue) => (
@@ -560,7 +560,7 @@ const activityDetails: {
           </>
         );
     },
-    icon: <UsersIcon className="h-3 w-3 !text-secondary" aria-hidden="true" />,
+    icon: <UsersIcon className="size-3 !text-secondary" aria-hidden="true" />,
   },
   priority: {
     message: (activity, showIssue) => (

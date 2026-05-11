@@ -29,83 +29,83 @@ import {
 
 export const HorizontalStackAssetsMap = [
   {
-    asset: <CustomerHorizontalStackIllustration className="h-20 w-20" />,
+    asset: <CustomerHorizontalStackIllustration className="size-20" />,
     title: "Customer",
   },
   {
-    asset: <EpicHorizontalStackIllustration className="h-20 w-20" />,
+    asset: <EpicHorizontalStackIllustration className="size-20" />,
     title: "Epic",
   },
   {
-    asset: <EstimateHorizontalStackIllustration className="h-20 w-20" />,
+    asset: <EstimateHorizontalStackIllustration className="size-20" />,
     title: "Estimate",
   },
   {
-    asset: <ExportHorizontalStackIllustration className="h-20 w-20" />,
+    asset: <ExportHorizontalStackIllustration className="size-20" />,
     title: "Export",
   },
   {
-    asset: <IntakeHorizontalStackIllustration className="h-20 w-20" />,
+    asset: <IntakeHorizontalStackIllustration className="size-20" />,
     title: "Intake",
   },
   {
-    asset: <LabelHorizontalStackIllustration className="h-20 w-20" />,
+    asset: <LabelHorizontalStackIllustration className="size-20" />,
     title: "Label",
   },
   {
-    asset: <LinkHorizontalStackIllustration className="h-20 w-20" />,
+    asset: <LinkHorizontalStackIllustration className="size-20" />,
     title: "Link",
   },
   {
-    asset: <MembersHorizontalStackIllustration className="h-20 w-20" />,
+    asset: <MembersHorizontalStackIllustration className="size-20" />,
     title: "Members",
   },
   {
-    asset: <NoteHorizontalStackIllustration className="h-20 w-20" />,
+    asset: <NoteHorizontalStackIllustration className="size-20" />,
     title: "Note",
   },
   {
-    asset: <PriorityHorizontalStackIllustration className="h-20 w-20" />,
+    asset: <PriorityHorizontalStackIllustration className="size-20" />,
     title: "Priority",
   },
   {
-    asset: <ProjectHorizontalStackIllustration className="h-20 w-20" />,
+    asset: <ProjectHorizontalStackIllustration className="size-20" />,
     title: "Project",
   },
   {
-    asset: <SettingsHorizontalStackIllustration className="h-20 w-20" />,
+    asset: <SettingsHorizontalStackIllustration className="size-20" />,
     title: "Settings",
   },
   {
-    asset: <StateHorizontalStackIllustration className="h-20 w-20" />,
+    asset: <StateHorizontalStackIllustration className="size-20" />,
     title: "State",
   },
   {
-    asset: <TemplateHorizontalStackIllustration className="h-20 w-20" />,
+    asset: <TemplateHorizontalStackIllustration className="size-20" />,
     title: "Template",
   },
   {
-    asset: <TokenHorizontalStackIllustration className="h-20 w-20" />,
+    asset: <TokenHorizontalStackIllustration className="size-20" />,
     title: "Token",
   },
   {
-    asset: <UnknownHorizontalStackIllustration className="h-20 w-20" />,
+    asset: <UnknownHorizontalStackIllustration className="size-20" />,
     title: "Unknown",
   },
   {
-    asset: <UpdateHorizontalStackIllustration className="h-20 w-20" />,
+    asset: <UpdateHorizontalStackIllustration className="size-20" />,
     title: "Update",
   },
   {
-    asset: <WebhookHorizontalStackIllustration className="h-20 w-20" />,
+    asset: <WebhookHorizontalStackIllustration className="size-20" />,
     title: "Webhook",
   },
   {
-    asset: <WorkItemHorizontalStackIllustration className="h-20 w-20" />,
+    asset: <WorkItemHorizontalStackIllustration className="size-20" />,
     title: "WorkItem",
   },
   {
-    asset: <WorklogHorizontalStackIllustration className="h-20 w-20" />,
+    asset: <WorklogHorizontalStackIllustration className="size-20" />,
     title: "Worklog",
   },
 ];

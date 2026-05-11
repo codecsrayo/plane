@@ -55,7 +55,7 @@ export const AdminSidebarDropdown = observer(function AdminSidebarDropdown() {
           className="flex w-full items-center gap-2 rounded-sm px-2 py-1 hover:bg-layer-1-hover"
           onClick={handleThemeSwitch}
         >
-          <Palette className="h-4 w-4 stroke-[1.5]" />
+          <Palette className="size-4 stroke-[1.5]" />
           Switch to {resolvedTheme === "dark" ? "light" : "dark"} mode
         </Menu.Item>
       </div>
@@ -67,7 +67,7 @@ export const AdminSidebarDropdown = observer(function AdminSidebarDropdown() {
             type="submit"
             className="flex w-full items-center gap-2 rounded-sm px-2 py-1 hover:bg-layer-1-hover"
           >
-            <LogOut className="h-4 w-4 stroke-[1.5]" />
+            <LogOut className="size-4 stroke-[1.5]" />
             Sign out
           </Menu.Item>
         </form>

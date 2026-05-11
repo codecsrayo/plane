@@ -104,7 +104,7 @@ export const IssueAttachmentActionButton = observer(function IssueAttachmentActi
     >
       <span {...getRootProps()} aria-disabled={disabled}>
         <input {...getInputProps()} />
-        {customButton ? customButton : <PlusIcon className="h-4 w-4" />}
+        {customButton ? customButton : <PlusIcon className="size-4" />}
       </span>
     </button>
   );

@@ -125,7 +125,7 @@ export const WorkspaceInvitationsListItem = observer(function WorkspaceInvitatio
       />
       <div className="group flex h-full w-full items-center justify-between px-3 py-4 hover:bg-layer-transparent-hover">
         <div className="flex items-center gap-x-4 gap-y-2">
-          <span className="relative flex h-10 w-10 items-center justify-center rounded-sm bg-layer-3 p-4 text-tertiary capitalize">
+          <span className="relative flex size-10 items-center justify-center rounded-sm bg-layer-3 p-4 text-tertiary capitalize">
             {(invitationDetails.email ?? "?")[0]}
           </span>
           <div>
@@ -148,7 +148,7 @@ export const WorkspaceInvitationsListItem = observer(function WorkspaceInvitatio
                 </span>
                 {hasRoleChangeAccess && (
                   <span className="grid place-items-center">
-                    <ChevronDownIcon className="h-3 w-3" />
+                    <ChevronDownIcon className="size-3" />
                   </span>
                 )}
               </div>
@@ -205,7 +205,7 @@ export const WorkspaceInvitationsListItem = observer(function WorkspaceInvitatio
                     )}
                     disabled={item.disabled}
                   >
-                    {item.icon && <item.icon className={cn("h-3 w-3", item.iconClassName)} />}
+                    {item.icon && <item.icon className={cn("size-3", item.iconClassName)} />}
                     <div>
                       <h5>{item.title}</h5>
                       {item.description && (

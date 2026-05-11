@@ -89,7 +89,7 @@ export const ModuleOptions = observer(function ModuleOptions(props: Props) {
       query: `${moduleDetails?.name}`,
       content: (
         <div className="flex items-center gap-2">
-          <ModuleIcon className="h-3 w-3 flex-shrink-0" />
+          <ModuleIcon className="size-3 flex-shrink-0" />
           <span className="flex-grow truncate">{moduleDetails?.name}</span>
         </div>
       ),
@@ -101,7 +101,7 @@ export const ModuleOptions = observer(function ModuleOptions(props: Props) {
       query: t("module.no_module"),
       content: (
         <div className="flex items-center gap-2">
-          <ModuleIcon className="h-3 w-3 flex-shrink-0" />
+          <ModuleIcon className="size-3 flex-shrink-0" />
           <span className="flex-grow truncate">{t("module.no_module")}</span>
         </div>
       ),

@@ -20,16 +20,16 @@ export function CycleModuleBoardLayoutLoader() {
                 <span className="h-6 w-24 rounded-sm bg-layer-1" />
                 <div className="flex items-center gap-2">
                   <span className="h-6 w-20 rounded-sm bg-layer-1" />
-                  <span className="h-6 w-6 rounded-sm bg-layer-1" />
+                  <span className="size-6 rounded-sm bg-layer-1" />
                 </div>
               </div>
               <div className="flex flex-col gap-3">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <span className="h-5 w-5 rounded-sm bg-layer-1" />
+                    <span className="size-5 rounded-sm bg-layer-1" />
                     <span className="h-5 w-20 rounded-sm bg-layer-1" />
                   </div>
-                  <span className="h-5 w-5 rounded-full bg-layer-1" />
+                  <span className="size-5 rounded-full bg-layer-1" />
                 </div>
                 <span className="h-1.5 rounded-sm bg-layer-1" />
                 <div className="flex items-center justify-between">
@@ -37,8 +37,8 @@ export function CycleModuleBoardLayoutLoader() {
                     <span className="h-4 w-16 rounded-sm bg-layer-1" />
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="h-4 w-4 rounded-sm bg-layer-1" />
-                    <span className="h-4 w-4 rounded-sm bg-layer-1" />
+                    <span className="size-4 rounded-sm bg-layer-1" />
+                    <span className="size-4 rounded-sm bg-layer-1" />
                   </div>
                 </div>
               </div>

@@ -164,7 +164,7 @@ export const ProfileSidebar = observer(function ProfileSidebar(props: TProfileSi
                       <div className="w-full">
                         <Disclosure.Button className="flex w-full items-center justify-between gap-2">
                           <div className="flex w-3/4 items-center gap-2">
-                            <span className="grid h-7 w-7 flex-shrink-0 place-items-center">
+                            <span className="grid size-7 flex-shrink-0 place-items-center">
                               <Logo logo={projectDetails.logo_props} />
                             </span>
                             <div className="truncate text-13 font-medium break-words">{projectDetails.name}</div>
@@ -185,7 +185,7 @@ export const ProfileSidebar = observer(function ProfileSidebar(props: TProfileSi
                                 </div>
                               </Tooltip>
                             )}
-                            <ChevronDownIcon className="h-4 w-4" />
+                            <ChevronDownIcon className="size-4" />
                           </div>
                         </Disclosure.Button>
                         <Transition

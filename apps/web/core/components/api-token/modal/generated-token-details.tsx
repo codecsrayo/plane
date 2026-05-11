@@ -49,7 +49,7 @@ export function GeneratedTokenDetails(props: Props) {
       >
         <span className="truncate pr-2">{tokenDetails.token}</span>
         <Tooltip tooltipContent="Copy secret key" isMobile={isMobile}>
-          <CopyIcon className="h-4 w-4 flex-shrink-0 text-placeholder" />
+          <CopyIcon className="size-4 flex-shrink-0 text-placeholder" />
         </Tooltip>
       </button>
       <div className="mt-6 flex items-center justify-between">

@@ -197,7 +197,8 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
         setToast({
           type: TOAST_TYPE.ERROR,
           title: "Invalid file",
-          message: "The selected file does not appear to be a valid PEM key. Make sure you upload the .pem file downloaded from GitHub.",
+          message:
+            "The selected file does not appear to be a valid PEM key. Make sure you upload the .pem file downloaded from GitHub.",
         });
         return;
       }
@@ -484,8 +485,8 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
                         {isGithubPrivateKeySaved ? (
                           <div className="flex items-center justify-between gap-4 rounded-lg border border-subtle bg-layer-1 px-5 py-4">
                             <div className="flex items-center gap-4">
-                              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-layer-2">
-                                <KeyRound className="h-5 w-5" />
+                              <div className="flex size-10 items-center justify-center rounded-full bg-layer-2">
+                                <KeyRound className="size-5" />
                               </div>
                               <div className="flex flex-col">
                                 <p className="text-base font-medium">
@@ -615,7 +616,7 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
                 {/* Webhook URL */}
                 <div className="flex flex-col overflow-hidden rounded-lg">
                   <div className="flex items-center gap-x-3 bg-layer-3 px-6 py-3 text-11 font-medium text-secondary uppercase">
-                    <Monitor className="h-3 w-3" />
+                    <Monitor className="size-3" />
                     Webhooks
                   </div>
                   <div className="flex flex-col gap-y-4 bg-layer-1 px-6 py-4">
@@ -650,9 +651,9 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
                               disabled={!isGithubEnabled || !getValues("GITHUB_WEBHOOK_SECRET")}
                             >
                               {isWebhookSecretCopied ? (
-                                <Check className="h-4 w-4 text-success-primary" />
+                                <Check className="size-4 text-success-primary" />
                               ) : (
-                                <Copy className="h-4 w-4" />
+                                <Copy className="size-4" />
                               )}
                             </button>
                           }
@@ -734,7 +735,7 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
               <div className="flex flex-col gap-y-4">
                 <div className="flex flex-col overflow-hidden rounded-lg">
                   <div className="flex items-center gap-x-3 bg-layer-3 px-6 py-3 text-11 font-medium text-secondary uppercase">
-                    <Monitor className="h-3 w-3" />
+                    <Monitor className="size-3" />
                     OAuth
                   </div>
                   <div className="flex flex-col gap-y-4 bg-layer-1 px-6 py-4">
@@ -813,7 +814,7 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
               <div className="flex flex-col gap-y-4">
                 <div className="flex flex-col overflow-hidden rounded-lg">
                   <div className="flex items-center gap-x-3 bg-layer-3 px-6 py-3 text-11 font-medium text-secondary uppercase">
-                    <Monitor className="h-3 w-3" />
+                    <Monitor className="size-3" />
                     OAuth
                   </div>
                   <div className="flex flex-col gap-y-4 bg-layer-1 px-6 py-4">
@@ -836,13 +837,7 @@ export const InstanceIntegrationsConfigForm = observer(function InstanceIntegrat
 
         {/* Actions */}
         <div className="flex items-center gap-4 pt-2">
-          <Button
-            variant="primary"
-            size="lg"
-            type="submit"
-            loading={isSubmitting}
-            disabled={!isDirty}
-          >
+          <Button variant="primary" size="lg" type="submit" loading={isSubmitting} disabled={!isDirty}>
             {isSubmitting ? "Saving…" : "Save changes"}
           </Button>
           <Link href="/general" className={getButtonStyling("secondary", "lg")} onClick={handleGoBack}>

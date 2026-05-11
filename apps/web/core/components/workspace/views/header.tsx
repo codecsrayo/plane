@@ -111,7 +111,7 @@ export const GlobalViewsHeader = observer(function GlobalViewsHeader() {
           className="sticky -right-4 flex flex-shrink-0 items-center justify-center border-transparent bg-surface-1 py-3 hover:border-subtle hover:text-placeholder"
           onClick={() => setCreateViewModal(true)}
         >
-          <PlusIcon className="h-4 w-4 text-accent-secondary" />
+          <PlusIcon className="size-4 text-accent-secondary" />
         </button>
       ) : (
         <></>

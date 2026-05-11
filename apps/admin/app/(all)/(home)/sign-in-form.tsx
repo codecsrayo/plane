@@ -172,7 +172,7 @@ export function InstanceSignInForm() {
                     className="absolute top-3.5 right-3 flex items-center justify-center text-placeholder"
                     onClick={() => setShowPassword(false)}
                   >
-                    <EyeOff className="h-4 w-4" />
+                    <EyeOff className="size-4" />
                   </button>
                 ) : (
                   <button
@@ -180,7 +180,7 @@ export function InstanceSignInForm() {
                     className="absolute top-3.5 right-3 flex items-center justify-center text-placeholder"
                     onClick={() => setShowPassword(true)}
                   >
-                    <Eye className="h-4 w-4" />
+                    <Eye className="size-4" />
                   </button>
                 )}
               </div>

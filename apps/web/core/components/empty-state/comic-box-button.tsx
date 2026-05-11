@@ -52,7 +52,7 @@ export function ComicBoxButton(props: Props) {
         <Button variant="primary" size="lg" ref={setReferenceElement} onClick={onClick} disabled={disabled}>
           {icon}
           <span className="leading-4">{label}</span>
-          <span className="relative h-2 w-2">
+          <span className="relative size-2">
             <div
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
@@ -70,7 +70,7 @@ export function ComicBoxButton(props: Props) {
             style={styles.popper}
             {...attributes.popper}
           >
-            <div className="rounded-lb-sm absolute bottom-2 -left-[5px] h-2 w-2 rotate-45 transform border border-t-0 border-r-0 border-subtle bg-surface-1" />
+            <div className="rounded-lb-sm absolute bottom-2 -left-[5px] size-2 rotate-45 transform border border-t-0 border-r-0 border-subtle bg-surface-1" />
             <h3 className="w-full text-16 font-semibold">{title}</h3>
             <h4 className="mt-1 text-13">{description}</h4>
           </div>

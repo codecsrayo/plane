@@ -105,7 +105,7 @@ export function LabelCreate(props: ILabelCreate) {
                       <button type="button" ref={setReferenceElement} className="grid place-items-center outline-none">
                         {value && value?.trim() !== "" && (
                           <span
-                            className="h-5 w-5 rounded-sm"
+                            className="size-5 rounded-sm"
                             style={{
                               backgroundColor: value ?? "black",
                             }}

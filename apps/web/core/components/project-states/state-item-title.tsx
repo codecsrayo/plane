@@ -47,8 +47,8 @@ export const StateItemTitle = observer(function StateItemTitle(props: TStateItem
       <div className="flex items-center gap-1 px-1">
         {/* draggable indicator */}
         {!disabled && stateCount != 1 && (
-          <div className="absolute -left-1.5 hidden h-3 w-3 flex-shrink-0 cursor-pointer items-center justify-center rounded-xs bg-surface-2 text-secondary transition-colors group-hover:flex hover:text-primary">
-            <GripVertical className="h-3 w-3" />
+          <div className="absolute -left-1.5 hidden size-3 flex-shrink-0 cursor-pointer items-center justify-center rounded-xs bg-surface-2 text-secondary transition-colors group-hover:flex hover:text-primary">
+            <GripVertical className="size-3" />
           </div>
         )}
         {/* state icon */}
@@ -74,11 +74,11 @@ export const StateItemTitle = observer(function StateItemTitle(props: TStateItem
           {/* state edit options */}
           <div className="flex items-center gap-1 transition-all">
             <button
-              className="flex h-5 w-5 flex-shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-sm text-secondary transition-colors hover:bg-layer-1 hover:text-primary"
+              className="flex size-5 flex-shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-sm text-secondary transition-colors hover:bg-layer-1 hover:text-primary"
               onClick={() => setUpdateStateModal(true)}
               data-ph-element={STATE_TRACKER_ELEMENTS.STATE_LIST_EDIT_BUTTON}
             >
-              <EditIcon className="h-3 w-3" />
+              <EditIcon className="size-3" />
             </button>
             <StateDelete
               totalStates={stateCount}

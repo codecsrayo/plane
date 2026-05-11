@@ -49,16 +49,16 @@ export const BlockItemAction = observer(function BlockItemAction(props: Props) {
       </div>
       <div className="cursor-default text-tertiary">
         <Tooltip tooltipContent={access === 0 ? "Public" : "Private"}>
-          {access === 0 ? <Earth className="h-4 w-4" /> : <LockIcon className="h-4 w-4" />}
+          {access === 0 ? <Earth className="size-4" /> : <LockIcon className="size-4" />}
         </Tooltip>
       </div>
       {/* vertical divider */}
-      <Minus className="-mx-3 h-5 w-5 rotate-90 text-placeholder" strokeWidth={1} />
+      <Minus className="-mx-3 size-5 rotate-90 text-placeholder" strokeWidth={1} />
 
       {/* page info */}
       <Tooltip tooltipContent={`Created on ${renderFormattedDate(created_at)}`}>
-        <span className="grid h-4 w-4 cursor-default place-items-center">
-          <Info className="h-4 w-4 text-tertiary" />
+        <span className="grid size-4 cursor-default place-items-center">
+          <Info className="size-4 text-tertiary" />
         </span>
       </Tooltip>
 

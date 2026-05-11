@@ -41,7 +41,7 @@ export const IssueInboxActivity = observer(function IssueInboxActivity(props: TI
   if (!activity) return <></>;
   return (
     <IssueActivityBlockComponent
-      icon={<IntakeIcon className="h-4 w-4 flex-shrink-0 text-secondary" />}
+      icon={<IntakeIcon className="size-4 flex-shrink-0 text-secondary" />}
       activityId={activityId}
       ends={ends}
     >

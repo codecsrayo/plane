@@ -276,7 +276,7 @@ export function InstanceSetupForm() {
                     className="absolute top-3.5 right-3 flex items-center justify-center text-placeholder"
                     onClick={() => handleShowPassword("password")}
                   >
-                    <EyeOff className="h-4 w-4" />
+                    <EyeOff className="size-4" />
                   </button>
                 ) : (
                   <button
@@ -285,7 +285,7 @@ export function InstanceSetupForm() {
                     className="absolute top-3.5 right-3 flex items-center justify-center text-placeholder"
                     onClick={() => handleShowPassword("password")}
                   >
-                    <Eye className="h-4 w-4" />
+                    <Eye className="size-4" />
                   </button>
                 )}
               </div>
@@ -320,7 +320,7 @@ export function InstanceSetupForm() {
                     className="absolute top-3.5 right-3 flex items-center justify-center text-placeholder"
                     onClick={() => handleShowPassword("retypePassword")}
                   >
-                    <EyeOff className="h-4 w-4" />
+                    <EyeOff className="size-4" />
                   </button>
                 ) : (
                   <button
@@ -329,7 +329,7 @@ export function InstanceSetupForm() {
                     className="absolute top-3.5 right-3 flex items-center justify-center text-placeholder"
                     onClick={() => handleShowPassword("retypePassword")}
                   >
-                    <Eye className="h-4 w-4" />
+                    <Eye className="size-4" />
                   </button>
                 )}
               </div>
@@ -343,8 +343,8 @@ export function InstanceSetupForm() {
             <div className="relative flex gap-2">
               <div>
                 <Checkbox
-                  className="h-4 w-4"
-                  iconClassName="w-3 h-3"
+                  className="size-4"
+                  iconClassName="size-3"
                   id="is_telemetry_enabled"
                   onChange={() => handleFormChange("is_telemetry_enabled", !formData.is_telemetry_enabled)}
                   checked={formData.is_telemetry_enabled}

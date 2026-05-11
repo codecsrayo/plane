@@ -58,9 +58,9 @@ export function AuthInput({
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
-            className="absolute right-3 h-5 w-5 stroke-placeholder hover:cursor-pointer"
+            className="absolute right-3 size-5 stroke-placeholder hover:cursor-pointer"
           >
-            {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+            {showPassword ? <EyeOff className="size-5" /> : <Eye className="size-5" />}
           </button>
         )}
       </div>

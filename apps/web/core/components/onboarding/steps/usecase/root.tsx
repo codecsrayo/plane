@@ -128,7 +128,7 @@ export const UseCaseSetupStep = observer(function UseCaseSetupStep({ handleStepC
                       })}
                     >
                       <CheckIcon
-                        className={cn("h-3 w-3 text-on-color", {
+                        className={cn("size-3 text-on-color", {
                           "opacity-100": isSelected,
                           "opacity-0": !isSelected,
                         })}

@@ -183,7 +183,7 @@ export const DateRangeDropdown = observer(function DateRangeDropdown(props: Prop
       {mergeDates ? (
         // Merged date display
         <div className="flex w-full items-center gap-1.5">
-          {!hideIcon.from && <CalendarDays className="h-3 w-3 flex-shrink-0" />}
+          {!hideIcon.from && <CalendarDays className="size-3 flex-shrink-0" />}
           {dateRange.from || dateRange.to ? (
             <MergedDateDisplay
               startDate={dateRange.from}
@@ -194,9 +194,7 @@ export const DateRangeDropdown = observer(function DateRangeDropdown(props: Prop
             renderPlaceholder && (
               <>
                 <span className="text-placeholder">{placeholder.from}</span>
-                {placeholder.from && placeholder.to && (
-                  <ArrowRight className="h-3 w-3 flex-shrink-0 text-placeholder" />
-                )}
+                {placeholder.from && placeholder.to && <ArrowRight className="size-3 flex-shrink-0 text-placeholder" />}
                 <span className="text-placeholder">{placeholder.to}</span>
               </>
             )
@@ -221,14 +219,14 @@ export const DateRangeDropdown = observer(function DateRangeDropdown(props: Prop
               buttonFromDateClassName
             )}
           >
-            {!hideIcon.from && <CalendarDays className="h-3 w-3 flex-shrink-0" />}
+            {!hideIcon.from && <CalendarDays className="size-3 flex-shrink-0" />}
             {dateRange.from ? renderFormattedDate(dateRange.from) : renderPlaceholder ? placeholder.from : ""}
           </span>
-          <ArrowRight className="h-3 w-3 flex-shrink-0" />
+          <ArrowRight className="size-3 flex-shrink-0" />
           <span
             className={cn("flex h-full flex-grow items-center justify-center gap-1 rounded-xs", buttonToDateClassName)}
           >
-            {!hideIcon.to && <DueDatePropertyIcon className="h-3 w-3 flex-shrink-0" />}
+            {!hideIcon.to && <DueDatePropertyIcon className="size-3 flex-shrink-0" />}
             {dateRange.to ? renderFormattedDate(dateRange.to) : renderPlaceholder ? placeholder.to : ""}
           </span>
           {isClearable && !disabled && hasDisplayedDates && (

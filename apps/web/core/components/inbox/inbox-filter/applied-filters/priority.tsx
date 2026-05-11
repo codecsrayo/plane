@@ -36,16 +36,16 @@ export const InboxIssueAppliedFiltersPriority = observer(function InboxIssueAppl
         if (!optionDetail) return <></>;
         return (
           <div key={value} className="relative flex items-center gap-1 rounded-sm bg-layer-1 p-1 text-11">
-            <div className="relative flex h-3 w-3 flex-shrink-0 items-center justify-center overflow-hidden">
-              <PriorityIcon priority={optionDetail.key} className="h-3 w-3" />
+            <div className="relative flex size-3 flex-shrink-0 items-center justify-center overflow-hidden">
+              <PriorityIcon priority={optionDetail.key} className="size-3" />
             </div>
             <div className="truncate text-11">{optionDetail?.title}</div>
             <button
               type="button"
-              className="relative flex h-3 w-3 flex-shrink-0 cursor-pointer items-center justify-center overflow-hidden text-tertiary transition-all hover:text-secondary"
+              className="relative flex size-3 flex-shrink-0 cursor-pointer items-center justify-center overflow-hidden text-tertiary transition-all hover:text-secondary"
               onClick={() => handleInboxIssueFilters("priority", handleFilterValue(optionDetail?.key))}
             >
-              <CloseIcon className={`h-3 w-3`} />
+              <CloseIcon className={`size-3`} />
             </button>
           </div>
         );
@@ -53,10 +53,10 @@ export const InboxIssueAppliedFiltersPriority = observer(function InboxIssueAppl
 
       <button
         type="button"
-        className="relative flex h-3 w-3 flex-shrink-0 cursor-pointer items-center justify-center overflow-hidden text-tertiary transition-all hover:text-secondary"
+        className="relative flex size-3 flex-shrink-0 cursor-pointer items-center justify-center overflow-hidden text-tertiary transition-all hover:text-secondary"
         onClick={clearFilter}
       >
-        <CloseIcon className={`h-3 w-3`} />
+        <CloseIcon className={`size-3`} />
       </button>
     </Tag>
   );

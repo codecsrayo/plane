@@ -101,7 +101,7 @@ export const UserImageUploadModal = observer(function UserImageUploadModal(props
           <div className="flex items-center justify-center gap-3">
             <div
               {...getRootProps()}
-              className={`relative grid h-80 w-80 cursor-pointer place-items-center rounded-lg p-12 text-center focus:ring-2 focus:ring-accent-strong focus:ring-offset-2 focus:outline-none ${
+              className={`relative grid size-80 cursor-pointer place-items-center rounded-lg p-12 text-center focus:ring-2 focus:ring-accent-strong focus:ring-offset-2 focus:outline-none ${
                 (image === null && isDragActive) || !value
                   ? "border-2 border-dashed border-subtle hover:bg-surface-2"
                   : ""
@@ -123,7 +123,7 @@ export const UserImageUploadModal = observer(function UserImageUploadModal(props
                 </>
               ) : (
                 <div>
-                  <UserCirclePropertyIcon className="mx-auto h-16 w-16 text-secondary" />
+                  <UserCirclePropertyIcon className="mx-auto size-16 text-secondary" />
                   <span className="mt-2 block text-13 font-medium text-secondary">
                     {isDragActive ? "Drop image here to upload" : "Drag & drop image here"}
                   </span>

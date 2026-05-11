@@ -32,7 +32,7 @@ export const IssueBlockCycle = observer(function IssueBlockCycle({ cycleId, shou
         )}
       >
         <div className="flex w-full items-center gap-1.5 text-11">
-          <CycleIcon className="h-3 w-3 flex-shrink-0" />
+          <CycleIcon className="size-3 flex-shrink-0" />
           <div className="max-w-40 truncate">{cycle?.name ?? "No Cycle"}</div>
         </div>
       </div>

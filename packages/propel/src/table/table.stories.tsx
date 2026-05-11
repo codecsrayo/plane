@@ -219,7 +219,7 @@ export const WithCheckboxes: Story = {
         <TableHeader>
           <TableRow>
             <TableHead>
-              <input type="checkbox" className="h-4 w-4" aria-label="Select all rows" />
+              <input type="checkbox" className="size-4" aria-label="Select all rows" />
             </TableHead>
             <TableHead>Name</TableHead>
             <TableHead>Email</TableHead>
@@ -229,7 +229,7 @@ export const WithCheckboxes: Story = {
         <TableBody>
           <TableRow>
             <TableCell>
-              <input type="checkbox" className="h-4 w-4" aria-label="Select row for John Doe" />
+              <input type="checkbox" className="size-4" aria-label="Select row for John Doe" />
             </TableCell>
             <TableCell>John Doe</TableCell>
             <TableCell>john@example.com</TableCell>
@@ -237,7 +237,7 @@ export const WithCheckboxes: Story = {
           </TableRow>
           <TableRow>
             <TableCell>
-              <input type="checkbox" className="h-4 w-4" aria-label="Select row for Jane Smith" />
+              <input type="checkbox" className="size-4" aria-label="Select row for Jane Smith" />
             </TableCell>
             <TableCell>Jane Smith</TableCell>
             <TableCell>jane@example.com</TableCell>
@@ -245,7 +245,7 @@ export const WithCheckboxes: Story = {
           </TableRow>
           <TableRow>
             <TableCell>
-              <input type="checkbox" className="h-4 w-4" aria-label="Select row for Bob Wilson" />
+              <input type="checkbox" className="size-4" aria-label="Select row for Bob Wilson" />
             </TableCell>
             <TableCell>Bob Wilson</TableCell>
             <TableCell>bob@example.com</TableCell>

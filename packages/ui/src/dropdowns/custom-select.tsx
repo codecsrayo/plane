@@ -115,7 +115,7 @@ function CustomSelect(props: ICustomSelectProps) {
                   onClick={toggleDropdown}
                 >
                   {label}
-                  {!noChevron && !disabled && <ChevronDownIcon className="h-3 w-3" aria-hidden="true" />}
+                  {!noChevron && !disabled && <ChevronDownIcon className="size-3" aria-hidden="true" />}
                 </button>
               </Combobox.Button>
             )}

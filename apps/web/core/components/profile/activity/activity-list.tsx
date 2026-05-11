@@ -52,16 +52,16 @@ export const ActivityList = observer(function ActivityList(props: Props) {
                           alt={activityItem.actor_detail.display_name}
                           height={30}
                           width={30}
-                          className="bg-gray-500 grid h-7 w-7 place-items-center rounded-full border-2 border-white text-on-color"
+                          className="bg-gray-500 grid size-7 place-items-center rounded-full border-2 border-white text-on-color"
                         />
                       ) : (
-                        <div className="bg-gray-500 grid h-7 w-7 place-items-center rounded-full border-2 border-white text-on-color capitalize">
+                        <div className="bg-gray-500 grid size-7 place-items-center rounded-full border-2 border-white text-on-color capitalize">
                           {activityItem.actor_detail.display_name?.[0]}
                         </div>
                       )}
 
-                      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-layer-1 text-secondary ring-6 ring-white">
-                        <MessageSquare className="h-6 w-6 !text-20 text-secondary" aria-hidden="true" />
+                      <span className="flex size-6 items-center justify-center rounded-full bg-layer-1 text-secondary ring-6 ring-white">
+                        <MessageSquare className="size-6 !text-20 text-secondary" aria-hidden="true" />
                       </span>
                     </div>
                     <div className="min-w-0 flex-1">
@@ -117,10 +117,10 @@ export const ActivityList = observer(function ActivityList(props: Props) {
                         <div>
                           <div className="relative mt-4 px-1.5">
                             <div className="mt-1.5">
-                              <div className="flex h-6 w-6 items-center justify-center">
+                              <div className="flex size-6 items-center justify-center">
                                 {activityItem.field ? (
                                   activityItem.new_value === "restore" ? (
-                                    <History className="h-5 w-5 text-secondary" />
+                                    <History className="size-5 text-secondary" />
                                   ) : (
                                     <ActivityIcon activity={activityItem} />
                                   )
@@ -134,7 +134,7 @@ export const ActivityList = observer(function ActivityList(props: Props) {
                                     className="h-full w-full rounded-full object-cover"
                                   />
                                 ) : (
-                                  <div className="bg-gray-700 grid h-6 w-6 place-items-center rounded-full border-2 border-white text-11 text-on-color capitalize">
+                                  <div className="bg-gray-700 grid size-6 place-items-center rounded-full border-2 border-white text-11 text-on-color capitalize">
                                     {activityItem.actor_detail.display_name?.[0]}
                                   </div>
                                 )}

@@ -67,16 +67,16 @@ export const GroupItem = observer(function GroupItem(props: TGroupItem) {
         >
           <div
             className={cn(
-              "flex h-5 w-5 flex-shrink-0 items-center justify-center overflow-hidden rounded-sm transition-all",
+              "flex size-5 flex-shrink-0 items-center justify-center overflow-hidden rounded-sm transition-all",
               {
                 "rotate-0": currentStateExpanded,
                 "-rotate-90": !currentStateExpanded,
               }
             )}
           >
-            <ChevronDownIcon className="h-4 w-4" />
+            <ChevronDownIcon className="size-4" />
           </div>
-          <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center overflow-hidden rounded-sm">
+          <div className="flex size-6 flex-shrink-0 items-center justify-center overflow-hidden rounded-sm">
             <StateGroupIcon stateGroup={groupKey} size={EIconSize.XL} />
           </div>
           <div className="px-1 text-14 font-medium text-secondary capitalize">{groupKey}</div>
@@ -85,7 +85,7 @@ export const GroupItem = observer(function GroupItem(props: TGroupItem) {
           type="button"
           data-ph-element={STATE_TRACKER_ELEMENTS.STATE_GROUP_ADD_BUTTON}
           className={cn(
-            "flex h-6 w-6 flex-shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-sm text-accent-primary/80 transition-colors hover:bg-layer-1 hover:text-accent-primary",
+            "flex size-6 flex-shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-sm text-accent-primary/80 transition-colors hover:bg-layer-1 hover:text-accent-primary",
             (!isEditable || createState) && "cursor-not-allowed text-placeholder hover:text-placeholder"
           )}
           onClick={() => {
@@ -96,7 +96,7 @@ export const GroupItem = observer(function GroupItem(props: TGroupItem) {
           }}
           disabled={!isEditable || createState}
         >
-          <PlusIcon className="h-4 w-4" />
+          <PlusIcon className="size-4" />
         </button>
       </div>
 

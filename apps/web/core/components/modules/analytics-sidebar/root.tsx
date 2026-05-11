@@ -23,7 +23,7 @@ import {
   ChevronRightIcon,
 } from "@plane/propel/icons";
 import { TOAST_TYPE, setToast } from "@plane/propel/toast";
-import type { ILinkDetails, IModule, ModuleLink , TModuleStatus} from "@plane/types";
+import type { ILinkDetails, IModule, ModuleLink, TModuleStatus } from "@plane/types";
 // plane ui
 import { Loader, CustomSelect, TextArea } from "@plane/ui";
 // components
@@ -186,10 +186,10 @@ export const ModuleAnalyticsSidebar = observer(function ModuleAnalyticsSidebar(p
         <div className={`sticky top-0 z-10 flex items-center justify-between bg-surface-1 pt-5 pb-5`}>
           <div>
             <button
-              className="flex h-5 w-5 items-center justify-center rounded-full bg-layer-3"
+              className="flex size-5 items-center justify-center rounded-full bg-layer-3"
               onClick={() => handleClose()}
             >
-              <ChevronRightIcon className="h-3 w-3 stroke-2 text-on-color" />
+              <ChevronRightIcon className="size-3 stroke-2 text-on-color" />
             </button>
           </div>
         </div>
@@ -246,7 +246,7 @@ export const ModuleAnalyticsSidebar = observer(function ModuleAnalyticsSidebar(p
         <div className="flex flex-col gap-5 pt-2.5 pb-6">
           <div className="flex items-center justify-start gap-1">
             <div className="flex w-2/5 items-center justify-start gap-2 text-tertiary">
-              <StartDatePropertyIcon className="h-4 w-4" />
+              <StartDatePropertyIcon className="size-4" />
               <span className="text-14">{t("date_range")}</span>
             </div>
             <div className="h-7">
@@ -288,7 +288,7 @@ export const ModuleAnalyticsSidebar = observer(function ModuleAnalyticsSidebar(p
           </div>
           <div className="flex items-center justify-start gap-1">
             <div className="flex w-2/5 items-center justify-start gap-2 text-tertiary">
-              <SquareUser className="h-4 w-4" />
+              <SquareUser className="size-4" />
               <span className="text-14">{t("lead")}</span>
             </div>
             <Controller
@@ -314,7 +314,7 @@ export const ModuleAnalyticsSidebar = observer(function ModuleAnalyticsSidebar(p
           </div>
           <div className="flex items-center justify-start gap-1">
             <div className="flex w-2/5 items-center justify-start gap-2 text-tertiary">
-              <MembersPropertyIcon className="h-4 w-4" />
+              <MembersPropertyIcon className="size-4" />
               <span className="text-14">{t("members")}</span>
             </div>
             <Controller
@@ -339,7 +339,7 @@ export const ModuleAnalyticsSidebar = observer(function ModuleAnalyticsSidebar(p
           </div>
           <div className="flex items-center justify-start gap-1">
             <div className="flex w-2/5 items-center justify-start gap-2 text-tertiary">
-              <WorkItemsIcon className="h-4 w-4" />
+              <WorkItemsIcon className="size-4" />
               <span className="text-14">{t("issues")}</span>
             </div>
             <div className="flex h-7 w-3/5 items-center">
@@ -353,7 +353,7 @@ export const ModuleAnalyticsSidebar = observer(function ModuleAnalyticsSidebar(p
           {isEstimatePointValid && (
             <div className="flex items-center justify-start gap-1">
               <div className="flex w-2/5 items-center justify-start gap-2 text-tertiary">
-                <WorkItemsIcon className="h-4 w-4" />
+                <WorkItemsIcon className="size-4" />
                 <span className="text-14">{t("points")}</span>
               </div>
               <div className="flex h-7 w-3/5 items-center">
@@ -399,7 +399,7 @@ export const ModuleAnalyticsSidebar = observer(function ModuleAnalyticsSidebar(p
                                   className="flex items-center gap-1.5 text-13 font-medium text-accent-primary"
                                   onClick={() => setModuleLinkModal(true)}
                                 >
-                                  <PlusIcon className="h-3 w-3" />
+                                  <PlusIcon className="size-3" />
                                   {t("add_link")}
                                 </button>
                               </div>
@@ -425,7 +425,7 @@ export const ModuleAnalyticsSidebar = observer(function ModuleAnalyticsSidebar(p
                                 className="flex items-center gap-1.5 text-13 font-medium text-accent-primary"
                                 onClick={() => setModuleLinkModal(true)}
                               >
-                                <PlusIcon className="h-3 w-3" />
+                                <PlusIcon className="size-3" />
                                 {t("add_link")}
                               </button>
                             )}

@@ -79,12 +79,12 @@ export const ModuleListItem = observer(function ModuleListItem(props: Props) {
         <CircularProgressIndicator size={30} percentage={progress} strokeWidth={3}>
           {completedModuleCheck ? (
             progress === 100 ? (
-              <CheckIcon className="h-3 w-3 stroke-[2] text-accent-primary" />
+              <CheckIcon className="size-3 stroke-[2] text-accent-primary" />
             ) : (
               <span className="text-13 text-accent-primary">{`!`}</span>
             )
           ) : progress === 100 ? (
-            <CheckIcon className="h-3 w-3 stroke-[2] text-accent-primary" />
+            <CheckIcon className="size-3 stroke-[2] text-accent-primary" />
           ) : (
             <span className="text-9 text-tertiary">{`${progress}%`}</span>
           )}
@@ -95,7 +95,7 @@ export const ModuleListItem = observer(function ModuleListItem(props: Props) {
           onClick={openModuleOverview}
           className={`z-[5] flex-shrink-0 ${isMobile ? "flex" : "hidden group-hover:flex"}`}
         >
-          <Info className="h-4 w-4 text-placeholder" />
+          <Info className="size-4 text-placeholder" />
         </button>
       }
       actionableItems={<ModuleListItemAction moduleId={moduleId} moduleDetails={moduleDetails} parentRef={parentRef} />}

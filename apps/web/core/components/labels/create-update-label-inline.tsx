@@ -75,9 +75,11 @@ export const CreateUpdateLabelInline = observer(
       // bubbled directly. Both cases expose property access via `in` checks.
       const errorData: Record<string, unknown> =
         error && typeof error === "object"
-          ? ("data" in error && (error as { data?: unknown }).data && typeof (error as { data?: unknown }).data === "object"
-              ? ((error as { data: Record<string, unknown> }).data)
-              : (error as Record<string, unknown>))
+          ? "data" in error &&
+            (error as { data?: unknown }).data &&
+            typeof (error as { data?: unknown }).data === "object"
+            ? (error as { data: Record<string, unknown> }).data
+            : (error as Record<string, unknown>)
           : {};
 
       const nameField = errorData.name;
@@ -184,7 +186,7 @@ export const CreateUpdateLabelInline = observer(
                     }`}
                   >
                     <span
-                      className="h-4 w-4 rounded-full"
+                      className="size-4 rounded-full"
                       style={{
                         backgroundColor: watch("color"),
                       }}

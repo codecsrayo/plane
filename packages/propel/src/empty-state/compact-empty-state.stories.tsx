@@ -126,7 +126,7 @@ export const WithAssetKeyAndMultipleActions: Story = {
 export const WithCustomAsset: Story = {
   args: {
     asset: (
-      <svg className="h-40 w-40" viewBox="0 0 160 180" fill="none">
+      <svg className="size-40" viewBox="0 0 160 180" fill="none">
         <rect width="160" height="180" fill="#F3F4F6" rx="8" />
       </svg>
     ),

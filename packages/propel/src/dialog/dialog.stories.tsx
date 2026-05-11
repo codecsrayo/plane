@@ -208,7 +208,7 @@ export const WithCloseButton: Story = {
                 <div className="flex items-start justify-between">
                   <Dialog.Title>Dialog with Close Button</Dialog.Title>
                   <button onClick={() => setOpen(false)} className="hover:bg-gray-100 rounded-full p-1">
-                    <CloseIcon className="h-4 w-4" />
+                    <CloseIcon className="size-4" />
                   </button>
                 </div>
                 <div className="mt-4">

@@ -69,7 +69,7 @@ export const IssueParentTag = observer(function IssueParentTag(props: TIssuePare
               }}
               tabIndex={getIndex("remove_parent")}
             >
-              <CloseIcon className="h-3 w-3 cursor-pointer" />
+              <CloseIcon className="size-3 cursor-pointer" />
             </button>
           </div>
         </div>

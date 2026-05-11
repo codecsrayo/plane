@@ -56,7 +56,7 @@ export function PageOrderByDropdown(props: Props) {
           }
         >
           {option.label}
-          {sortKey === option.key && <CheckIcon className="h-3 w-3" />}
+          {sortKey === option.key && <CheckIcon className="size-3" />}
         </CustomMenu.MenuItem>
       ))}
       <hr className="my-2 border-subtle" />
@@ -70,7 +70,7 @@ export function PageOrderByDropdown(props: Props) {
         }}
       >
         Ascending
-        {!isDescending && <CheckIcon className="h-3 w-3" />}
+        {!isDescending && <CheckIcon className="size-3" />}
       </CustomMenu.MenuItem>
       <CustomMenu.MenuItem
         className="flex items-center justify-between gap-2"
@@ -82,7 +82,7 @@ export function PageOrderByDropdown(props: Props) {
         }}
       >
         Descending
-        {isDescending && <CheckIcon className="h-3 w-3" />}
+        {isDescending && <CheckIcon className="size-3" />}
       </CustomMenu.MenuItem>
     </CustomMenu>
   );

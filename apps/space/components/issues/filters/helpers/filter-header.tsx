@@ -20,7 +20,7 @@ export function FilterHeader({ title, isPreviewEnabled, handleIsPreviewEnabled }
       <div className="grow truncate text-11 font-medium text-tertiary">{title}</div>
       <button
         type="button"
-        className="grid h-5 w-5 shrink-0 place-items-center rounded-sm hover:bg-layer-transparent-hover"
+        className="grid size-5 shrink-0 place-items-center rounded-sm hover:bg-layer-transparent-hover"
         onClick={handleIsPreviewEnabled}
       >
         {isPreviewEnabled ? <ChevronUpIcon height={14} width={14} /> : <ChevronDownIcon height={14} width={14} />}

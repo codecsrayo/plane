@@ -171,7 +171,7 @@ export const WithIcons: Story = {
           <Tabs.List>
             {tabsWithIcons.map((tab) => (
               <Tabs.Trigger key={tab.value} value={tab.value}>
-                <tab.icon className="mr-2 h-4 w-4" />
+                <tab.icon className="mr-2 size-4" />
                 {tab.label}
               </Tabs.Trigger>
             ))}
@@ -203,7 +203,7 @@ export const IconsOnly: Story = {
           <Tabs.List>
             {iconTabs.map((tab) => (
               <Tabs.Trigger key={tab.value} value={tab.value}>
-                <tab.icon className="h-4 w-4" />
+                <tab.icon className="size-4" />
               </Tabs.Trigger>
             ))}
             <Tabs.Indicator />

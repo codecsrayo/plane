@@ -80,7 +80,7 @@ export const GanttChartHeader = observer(function GanttChartHeader(props: Props)
         className="flex items-center justify-center rounded-md border border-subtle bg-layer-transparent p-1 transition-all hover:bg-layer-transparent-hover"
         onClick={toggleFullScreenMode}
       >
-        {fullScreenMode ? <Shrink className="h-4 w-4" /> : <Expand className="h-4 w-4" />}
+        {fullScreenMode ? <Shrink className="size-4" /> : <Expand className="size-4" />}
       </button>
     </Row>
   );

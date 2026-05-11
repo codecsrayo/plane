@@ -35,17 +35,17 @@ export const InboxIssueAppliedFiltersStatus = observer(function InboxIssueApplie
         if (!optionDetail) return <></>;
         return (
           <div key={value} className="relative flex items-center gap-1 rounded-sm bg-layer-1 p-1 text-11">
-            <div className="relative flex h-3 w-3 flex-shrink-0 items-center justify-center overflow-hidden">
+            <div className="relative flex size-3 flex-shrink-0 items-center justify-center overflow-hidden">
               <InboxStatusIcon type={optionDetail?.status} />
             </div>
             <div className="truncate text-11">{t(optionDetail?.i18n_title)}</div>
             {handleFilterValue(optionDetail?.status).length >= 1 && (
               <button
                 type="button"
-                className="relative flex h-3 w-3 flex-shrink-0 cursor-pointer items-center justify-center overflow-hidden text-tertiary transition-all hover:text-secondary"
+                className="relative flex size-3 flex-shrink-0 cursor-pointer items-center justify-center overflow-hidden text-tertiary transition-all hover:text-secondary"
                 onClick={() => handleInboxIssueFilters("status", handleFilterValue(optionDetail?.status))}
               >
-                <CloseIcon className={`h-3 w-3`} />
+                <CloseIcon className={`size-3`} />
               </button>
             )}
           </div>

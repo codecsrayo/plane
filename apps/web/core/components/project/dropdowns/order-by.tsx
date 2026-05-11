@@ -62,7 +62,7 @@ export function ProjectOrderByDropdown(props: Props) {
           }}
         >
           {option && t(option?.i18n_label)}
-          {value?.includes(option.key) && <CheckIcon className="h-3 w-3" />}
+          {value?.includes(option.key) && <CheckIcon className="size-3" />}
         </CustomMenu.MenuItem>
       ))}
       <hr className="my-2 border-subtle" />
@@ -74,7 +74,7 @@ export function ProjectOrderByDropdown(props: Props) {
         disabled={isOrderingDisabled}
       >
         Ascending
-        {!isOrderingDisabled && !isDescending && <CheckIcon className="h-3 w-3" />}
+        {!isOrderingDisabled && !isDescending && <CheckIcon className="size-3" />}
       </CustomMenu.MenuItem>
       <CustomMenu.MenuItem
         className="flex items-center justify-between gap-2"
@@ -84,7 +84,7 @@ export function ProjectOrderByDropdown(props: Props) {
         disabled={isOrderingDisabled}
       >
         Descending
-        {!isOrderingDisabled && isDescending && <CheckIcon className="h-3 w-3" />}
+        {!isOrderingDisabled && isDescending && <CheckIcon className="size-3" />}
       </CustomMenu.MenuItem>
     </CustomMenu>
   );

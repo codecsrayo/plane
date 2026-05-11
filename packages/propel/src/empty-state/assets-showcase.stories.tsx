@@ -46,7 +46,7 @@ export const HorizontalStackAssets: Story = {
             key={item.title}
             className="col-span-6 flex flex-col items-center justify-center gap-3 rounded-lg border border-subtle bg-surface-1 p-6 sm:col-span-4 lg:col-span-3"
           >
-            <div className="flex h-24 w-24 items-center justify-center">{item.asset}</div>
+            <div className="flex size-24 items-center justify-center">{item.asset}</div>
             <p className="text-center text-11 font-medium text-secondary">{item.title}</p>
             <code className="rounded-sm bg-layer-1 px-2 py-1 text-11 text-tertiary">
               {item.title.toLowerCase().replace(/\s+/g, "-")}
@@ -79,7 +79,7 @@ export const VerticalStackAssets: Story = {
             key={item.title}
             className="col-span-6 flex flex-col items-center justify-center gap-3 rounded-lg border border-subtle bg-surface-1 p-6 sm:col-span-4 lg:col-span-3"
           >
-            <div className="flex h-32 w-32 items-center justify-center">{item.asset}</div>
+            <div className="flex size-32 items-center justify-center">{item.asset}</div>
             <p className="text-center text-11 font-medium text-secondary">
               {item.title.replace(/VerticalStackIllustration$/, "")}
             </p>
@@ -117,7 +117,7 @@ export const IllustrationAssets: Story = {
             key={item.title}
             className="col-span-6 flex flex-col items-center justify-center gap-3 rounded-lg border border-subtle bg-surface-1 p-6 sm:col-span-4 lg:col-span-3"
           >
-            <div className="flex h-24 w-24 items-center justify-center">{item.asset}</div>
+            <div className="flex size-24 items-center justify-center">{item.asset}</div>
             <p className="text-center text-11 font-medium text-secondary">{item.title}</p>
             <code className="rounded-sm bg-layer-1 px-2 py-1 text-11 text-tertiary">{item.title.toLowerCase()}</code>
           </div>
@@ -149,7 +149,7 @@ export const AllAssets: Story = {
               key={item.title}
               className="col-span-6 flex flex-col items-center justify-center gap-2 rounded-sm border border-subtle bg-surface-1 p-4 sm:col-span-3 lg:col-span-2"
             >
-              <div className="flex h-16 w-16 items-center justify-center">{item.asset}</div>
+              <div className="flex size-16 items-center justify-center">{item.asset}</div>
               <code className="text-10 text-placeholder">{item.title.toLowerCase().replace(/\s+/g, "-")}</code>
             </div>
           ))}
@@ -168,7 +168,7 @@ export const AllAssets: Story = {
               key={item.title}
               className="col-span-6 flex flex-col items-center justify-center gap-2 rounded-sm border border-subtle bg-surface-1 p-4 sm:col-span-3 lg:col-span-2"
             >
-              <div className="flex h-20 w-20 items-center justify-center">{item.asset}</div>
+              <div className="flex size-20 items-center justify-center">{item.asset}</div>
               <code className="text-center text-10 text-placeholder">
                 {item.title
                   .replace(/VerticalStackIllustration$/, "")
@@ -193,7 +193,7 @@ export const AllAssets: Story = {
               key={item.title}
               className="col-span-6 flex flex-col items-center justify-center gap-2 rounded-sm border border-subtle bg-surface-1 p-4 sm:col-span-3 lg:col-span-2"
             >
-              <div className="flex h-16 w-16 items-center justify-center">{item.asset}</div>
+              <div className="flex size-16 items-center justify-center">{item.asset}</div>
               <code className="text-10 text-placeholder">{item.title.toLowerCase()}</code>
             </div>
           ))}

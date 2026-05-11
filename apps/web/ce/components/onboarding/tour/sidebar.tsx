@@ -65,7 +65,7 @@ export function TourSidebar({ step, setStep }: Props) {
             }`}
             onClick={() => setStep(option.key)}
           >
-            <option.Icon className="h-4 w-4" aria-hidden="true" />
+            <option.Icon className="size-4" aria-hidden="true" />
             {option.label}
           </button>
         ))}

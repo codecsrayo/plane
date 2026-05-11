@@ -181,7 +181,7 @@ export const DraftIssueProperties = observer(function DraftIssueProperties(props
           onChange={handleStartDate}
           maxDate={maxDate}
           placeholder="Start date"
-          icon={<StartDatePropertyIcon className="h-3 w-3 flex-shrink-0" />}
+          icon={<StartDatePropertyIcon className="size-3 flex-shrink-0" />}
           buttonVariant={issue.start_date ? "border-with-text" : "border-without-text"}
           optionsClassName="z-10"
           renderByDefault={isMobile}
@@ -196,7 +196,7 @@ export const DraftIssueProperties = observer(function DraftIssueProperties(props
           onChange={handleTargetDate}
           minDate={minDate}
           placeholder="Due date"
-          icon={<DueDatePropertyIcon className="h-3 w-3 flex-shrink-0" />}
+          icon={<DueDatePropertyIcon className="size-3 flex-shrink-0" />}
           buttonVariant={issue.target_date ? "border-with-text" : "border-without-text"}
           buttonClassName={
             shouldHighlightIssueDueDate(issue?.target_date || null, stateDetails?.group) ? "text-danger-primary" : ""

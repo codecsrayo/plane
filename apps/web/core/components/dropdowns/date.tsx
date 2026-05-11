@@ -56,7 +56,7 @@ export const DateDropdown = observer(function DateDropdown(props: Props) {
     closeOnSelect = true,
     disabled = false,
     hideIcon = false,
-    icon = <CalendarDays className="h-3 w-3 flex-shrink-0" />,
+    icon = <CalendarDays className="size-3 flex-shrink-0" />,
     isClearable = true,
     minDate,
     maxDate,

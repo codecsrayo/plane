@@ -82,7 +82,7 @@ export const PagesListHeader = observer(function PagesListHeader() {
               <BreadcrumbLink
                 label="Pages"
                 href={`/${workspaceSlugParam}/projects/${projectIdParam}/pages/`}
-                icon={<PageIcon className="h-4 w-4 text-tertiary" />}
+                icon={<PageIcon className="size-4 text-tertiary" />}
                 isLast
               />
             }

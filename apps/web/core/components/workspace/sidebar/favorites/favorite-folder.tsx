@@ -168,8 +168,8 @@ export function FavoriteFolder(props: Props) {
             >
               {/* draggable indicator */}
 
-              <div className="absolute left-0 hidden h-3 w-3 flex-shrink-0 cursor-pointer items-center justify-center rounded-xs bg-surface-2 text-secondary transition-colors group-hover:flex hover:text-primary">
-                <GripVertical className="h-3 w-3" />
+              <div className="absolute left-0 hidden size-3 flex-shrink-0 cursor-pointer items-center justify-center rounded-xs bg-surface-2 text-secondary transition-colors group-hover:flex hover:text-primary">
+                <GripVertical className="size-3" />
               </div>
 
               {/* DragHandle: montado como hermano del Disclosure.Button (no como hijo),
@@ -179,9 +179,7 @@ export function FavoriteFolder(props: Props) {
                   La posición absolute se calcula contra el contenedor .relative padre. */}
               <Tooltip
                 isMobile={isMobile}
-                tooltipContent={
-                  favorite.sort_order === null ? "Join the project to rearrange" : "Drag to rearrange"
-                }
+                tooltipContent={favorite.sort_order === null ? "Join the project to rearrange" : "Drag to rearrange"}
                 position="top-end"
                 disabled={isDragging}
               >

@@ -48,7 +48,7 @@ export const WorkspaceDraftIssueQuickActions = observer(function WorkspaceDraftI
             )}
             disabled={item.disabled}
           >
-            {item.icon && <item.icon className={cn("h-3 w-3", item.iconClassName)} />}
+            {item.icon && <item.icon className={cn("size-3", item.iconClassName)} />}
             <div>
               <h5>{t(item.title || "")}</h5>
               {item.description && (

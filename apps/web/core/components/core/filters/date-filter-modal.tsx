@@ -61,7 +61,7 @@ export function DateFilterModal({ title, handleClose, isOpen, onSelect }: Props)
               <DateFilterSelect title={title} value={value} onChange={onChange} />
             )}
           />
-          <CloseIcon className="h-4 w-4 cursor-pointer" onClick={handleClose} />
+          <CloseIcon className="size-4 cursor-pointer" onClick={handleClose} />
         </div>
         <div className="flex w-full justify-between gap-4">
           <Controller

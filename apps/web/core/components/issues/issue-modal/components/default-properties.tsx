@@ -316,7 +316,7 @@ export const IssueDefaultProperties = observer(function IssueDefaultProperties(p
             className="flex h-full cursor-pointer items-center justify-between gap-1 rounded-sm border-[0.5px] border-strong px-2 py-0.5 text-caption-sm-regular hover:bg-layer-1"
             onClick={() => setParentIssueListModalOpen(true)}
           >
-            <ParentPropertyIcon className="h-3 w-3 flex-shrink-0" />
+            <ParentPropertyIcon className="size-3 flex-shrink-0" />
             <span className="whitespace-nowrap">{t("add_parent")}</span>
           </button>
         )}

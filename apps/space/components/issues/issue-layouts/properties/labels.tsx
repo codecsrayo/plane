@@ -47,7 +47,7 @@ export const IssueBlockLabels = observer(function IssueBlockLabels({ labelIds, s
               >
                 <div className="flex max-w-full items-center gap-1.5 overflow-hidden text-secondary">
                   <span
-                    className="h-2 w-2 flex-shrink-0 rounded-full"
+                    className="size-2 flex-shrink-0 rounded-full"
                     style={{
                       backgroundColor: label?.color ?? "#000000",
                     }}
@@ -64,7 +64,7 @@ export const IssueBlockLabels = observer(function IssueBlockLabels({ labelIds, s
         >
           <Tooltip position="top" tooltipHeading="Labels" tooltipContent={labelsString}>
             <div className="flex h-full items-center gap-1.5 text-secondary">
-              <span className="h-2 w-2 flex-shrink-0 rounded-full bg-accent-primary" />
+              <span className="size-2 flex-shrink-0 rounded-full bg-accent-primary" />
               {`${labels.length} Labels`}
             </div>
           </Tooltip>

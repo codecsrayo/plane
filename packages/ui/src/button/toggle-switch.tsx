@@ -42,12 +42,12 @@ function ToggleSwitch(props: IToggleSwitchProps) {
       <span
         aria-hidden="true"
         className={cn(
-          "inline-block h-5 w-5 transform self-center rounded-full bg-(--text-color-icon-on-color) ring-0 transition duration-200 ease-in-out",
+          "inline-block size-5 transform self-center rounded-full bg-(--text-color-icon-on-color) ring-0 transition duration-200 ease-in-out",
           {
-            "h-3 w-3 translate-x-3.5": size === "sm" && value,
-            "h-3 w-3 translate-x-0.5": size === "sm" && !value,
-            "h-4 w-4 translate-x-4": size === "md" && value,
-            "h-4 w-4 translate-x-0.5": size === "md" && !value,
+            "size-3 translate-x-3.5": size === "sm" && value,
+            "size-3 translate-x-0.5": size === "sm" && !value,
+            "size-4 translate-x-4": size === "md" && value,
+            "size-4 translate-x-0.5": size === "md" && !value,
             "translate-x-4": size === "lg" && value,
             "translate-x-0.5": size === "lg" && !value,
           }

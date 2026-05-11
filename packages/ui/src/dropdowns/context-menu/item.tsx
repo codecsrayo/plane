@@ -177,7 +177,7 @@ export function ContextMenuItem(props: ContextMenuItemProps) {
       >
         {item.customContent ?? (
           <>
-            {item.icon && <item.icon className={cn("h-3 w-3", item.iconClassName)} />}
+            {item.icon && <item.icon className={cn("size-3", item.iconClassName)} />}
             <div className="flex-1">
               <h5>{item.title}</h5>
               {item.description && (
@@ -190,7 +190,7 @@ export function ContextMenuItem(props: ContextMenuItemProps) {
                 </p>
               )}
             </div>
-            {hasNestedItems && <ChevronRightIcon className="h-3 w-3 flex-shrink-0" />}
+            {hasNestedItems && <ChevronRightIcon className="size-3 flex-shrink-0" />}
           </>
         )}
       </button>
@@ -229,7 +229,7 @@ export function ContextMenuItem(props: ContextMenuItemProps) {
                 >
                   {nestedItem.customContent ?? (
                     <>
-                      {nestedItem.icon && <nestedItem.icon className={cn("h-3 w-3", nestedItem.iconClassName)} />}
+                      {nestedItem.icon && <nestedItem.icon className={cn("size-3", nestedItem.iconClassName)} />}
                       <div>
                         <h5>{nestedItem.title}</h5>
                         {nestedItem.description && (

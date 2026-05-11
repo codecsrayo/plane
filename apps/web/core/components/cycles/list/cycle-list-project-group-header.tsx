@@ -32,7 +32,7 @@ export const CycleListProjectGroupHeader = observer(function CycleListProjectGro
   return (
     <Row className="flex flex-shrink-0 items-center gap-2 py-2.5">
       <ChevronRightIcon
-        className={cn("h-4 w-4 text-tertiary duration-300", {
+        className={cn("size-4 text-tertiary duration-300", {
           "rotate-90": isExpanded,
         })}
         strokeWidth={2}

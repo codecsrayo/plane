@@ -40,7 +40,7 @@ export const RelationActionButton = observer(function RelationActionButton(props
   };
 
   // button element
-  const customButtonElement = customButton ? <>{customButton}</> : <PlusIcon className="h-4 w-4" />;
+  const customButtonElement = customButton ? <>{customButton}</> : <PlusIcon className="size-4" />;
 
   return (
     <CustomMenu

@@ -52,8 +52,8 @@ export function ProfileStats({ userProfile }: Props) {
           {overviewCards.map((card) => (
             <Link key={card.route} href={`/${workspaceSlug}/profile/${userId}/${card.route}`}>
               <Card direction={ECardDirection.ROW} spacing={ECardSpacing.SM} className="h-full">
-                <div className="grid h-11 w-11 place-items-center rounded-sm bg-surface-2">
-                  <card.icon className="h-5 w-5" />
+                <div className="grid size-11 place-items-center rounded-sm bg-surface-2">
+                  <card.icon className="size-5" />
                 </div>
                 <div className="space-y-1">
                   <p className="text-13 text-placeholder">{t(card.i18n_title)}</p>

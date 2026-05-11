@@ -206,7 +206,7 @@ export const SendProjectInvitationModal = observer(function SendProjectInvitatio
                               ) : (
                                 <div className="flex items-center gap-2 py-0.5">Select co-worker</div>
                               )}
-                              <ChevronDownIcon className="h-3 w-3" aria-hidden="true" />
+                              <ChevronDownIcon className="size-3" aria-hidden="true" />
                             </button>
                           }
                           onChange={(val: string) => {
@@ -247,7 +247,7 @@ export const SendProjectInvitationModal = observer(function SendProjectInvitatio
                               <span className="capitalize">
                                 {roleField.value ? ROLE[roleField.value] : "Select role"}
                               </span>
-                              <ChevronDownIcon className="h-3 w-3" aria-hidden="true" />
+                              <ChevronDownIcon className="size-3" aria-hidden="true" />
                             </div>
                           }
                           input
@@ -278,7 +278,7 @@ export const SendProjectInvitationModal = observer(function SendProjectInvitatio
                         className="place-items-center self-center rounded-sm"
                         onClick={() => remove(index)}
                       >
-                        <CloseIcon className="h-4 w-4 text-secondary" />
+                        <CloseIcon className="size-4 text-secondary" />
                       </button>
                     </div>
                   )}
@@ -293,7 +293,7 @@ export const SendProjectInvitationModal = observer(function SendProjectInvitatio
             className="flex items-center gap-2 bg-transparent py-2 pr-3 text-13 font-medium text-accent-primary outline-accent-strong"
             onClick={appendField}
           >
-            <PlusIcon className="h-4 w-4" />
+            <PlusIcon className="size-4" />
             {t("common.add_more")}
           </button>
           <div className="flex items-center gap-2">
